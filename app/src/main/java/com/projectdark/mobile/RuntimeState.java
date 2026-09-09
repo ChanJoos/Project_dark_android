@@ -28,15 +28,22 @@ public final class RuntimeState {
   }
 
   public static final class Monster {
+    /**
+     * Runtime-only lifecycle states. They do not assert original server AI timings/behavior.
+     * WANDER/DETECT are reserved contract states and remain unused until evidence-safe policies exist.
+     */
+    public enum State { SPAWN,IDLE,WANDER,DETECT,CHASE,ATTACK,DEAD,RESPAWN }
+
     public final String id,name,assetStatus;public final float spawnX,spawnY;public float x,y;
     public int hp;public final int maxHp;public boolean alive=true;
+    public State state=State.SPAWN;
     public float attackCooldown=0f,attackWindup=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
     public boolean attackPrimed=false;
     public int lastDamage=0;
     /** [B] Small bounded steering memory used only to avoid obstacle deadlocks in the prototype. */
     public int detourSign=1;
     public float detourClock=0f;
-    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;}
+    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;state=State.IDLE;}
   }
 
   private final WorldDef world=new WorldDef();
@@ -76,6 +83,7 @@ public final class RuntimeState {
    */
   public boolean tryMoveMonster(Monster m,float dx,float dy){
     if(m==null||!m.alive)return false;
+    if(m.state!=Monster.State.ATTACK)m.state=Monster.State.CHASE;
     float bx=m.x,by=m.y;
     moveMonsterAxes(m,dx,dy);
     if(m.x!=bx||m.y!=by){m.detourClock=Math.max(0f,m.detourClock-.05f);return true;}
@@ -120,25 +128,26 @@ public final class RuntimeState {
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 
   /** [B] Neutral combat telegraph scaffold; not an original monster animation/timing claim. */
-  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){m.attackPrimed=true;m.attackWindup=.24f;}}
-  public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.attackPrimed&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
+  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;}}
+  public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.state==Monster.State.ATTACK&&m.attackPrimed&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
   public void resolveMonsterAttack(Monster m,int damage,float cooldown){
     if(!monsterAttackReady(m))return;
     m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);damagePlayer(damage);
+    if(m.alive)m.state=Monster.State.IDLE;
   }
-  public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;}}
+  public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;if(m.alive)m.state=Monster.State.IDLE;}}
 
   public void damage(Monster m,int amount){
     if(m==null||!m.alive||amount<=0)return;
     m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;
     ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);
-    if(m.hp==0){m.alive=false;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}
+    if(m.hp==0){m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}
   }
 
   public void damagePlayer(int amount){
     if(amount<=0||!player.alive)return;
     player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);
-    if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);}
+    if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.state=Monster.State.IDLE;}}
   }
 
   public void revivePlayer(){player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;player.hitFlash=0f;ledger.add(CombatLedger.Type.PLAYER_REVIVED,"runtime","player",0);}
@@ -148,8 +157,9 @@ public final class RuntimeState {
     for(Monster m:monsters){
       m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);m.detourClock=Math.max(0f,m.detourClock-dt*.25f);
       if(m.alive)continue;
+      if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;
       m.respawnClock=Math.max(0f,m.respawnClock-dt);
-      if(m.respawnClock<=0f){m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}
+      if(m.respawnClock<=0f){m.state=Monster.State.SPAWN;m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}
     }
     metrics.consume(ledger.snapshot());
   }
