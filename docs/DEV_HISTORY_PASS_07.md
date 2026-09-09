@@ -13,7 +13,6 @@ Autonomous integration pass continuing from PASS 06. No APK packaging/distributi
 ### 1. Compile-only CI restored
 - Removed `:app:assembleDebug` and APK artifact upload from the active Android workflow.
 - Active validation command is now `gradle :app:compileDebugJavaWithJavac --stacktrace` only.
-- This is a process correction, not a gameplay change.
 
 ### 2. Combat intent/controller extraction
 New file: `CombatController.java`.
@@ -27,7 +26,7 @@ Responsibilities moved out of `GameView`:
 - prototype action-range lookup
 
 Evidence:
-- Auto-approach remains `[ADAPTED]`; it is a mobile usability policy, not claimed as an original pathing behavior.
+- Auto-approach remains `[ADAPTED]`; it is a mobile usability policy, not claimed as original pathing behavior.
 - Current numeric ranges/cooldowns remain `[B]` through `AttackDef` / `SkillDef`.
 
 ### 3. CAST resource-order bug fixed
@@ -43,28 +42,21 @@ New behavior:
 6. trigger CAST animation/effect/damage.
 
 Result: failed target/range checks no longer consume MP or cooldown.
-
 The same target-before-cost consistency was applied to generic SKILL, KICK, and ATTACK prototype execution.
 
 ### 4. Target-facing before combat action
-Before ATTACK / CAST / SKILL / KICK resolves, the player now updates the existing four-direction facing state toward the selected monster.
-
-- The project still uses the established four screen-diagonal directions.
+Before ATTACK / CAST / SKILL / KICK resolves, the player updates the existing four-direction facing state toward the selected monster.
+- Existing four screen-diagonal directions are preserved.
 - No 8-direction movement was introduced.
-- Facing implementation remains runtime reconstruction `[B]` pending exact original frame/asset mapping.
+- Facing implementation remains `[B]` pending exact original frame/asset mapping.
 
 ### 5. RuntimeMetrics becomes HUD source
 Removed GameView-owned defeat/hit counters.
-HUD now reads:
-- monster defeats
-- player hit count
-- total prototype damage dealt
-from `RuntimeState.metrics()`.
-
+HUD now reads monster defeats, player hit count, and total prototype damage dealt from `RuntimeState.metrics()`.
 `CombatLedger` remains the event source; `RuntimeMetrics` remains reward-neutral.
 No XP, Gold, loot, quest credit or stat-growth rules were invented.
 
-### 6. Skill data model aligned with verified official taxonomy
+### 6. Skill model aligned with verified official taxonomy
 `SkillDef` now models:
 - `ActionClass.TECHNIQUE`
 - `ActionClass.MAGIC`
@@ -72,20 +64,17 @@ No XP, Gold, loot, quest credit or stat-growth rules were invented.
 
 Official evidence `[O]`:
 - Nexon guide states that techniques do not consume MP while magic consumes MP.
-- This pass only adopts that high-level taxonomy as `[O]`.
-- Existing prototype MP costs, ranges, cooldowns and damage remain `[B]`; `SKILL_PROTO` is not presented as an authenticated original skill.
+- Initial implementation accidentally left `SKILL_PROTO` classified as `TECHNIQUE` with `mpCost=5`. This was detected as a design contradiction during the same pass.
+- Correction: `SKILL_PROTO.mpCost` is now `0`, consistent with the verified high-level technique/magic taxonomy `[O]`.
+- CAST prototype MP cost value, all cooldowns, ranges and damage remain `[B]`; they are not authenticated original server numbers.
 
 The dedicated martial-artist KICK fixture remains `[B]` in timing/range/damage. The concept that the martial artist uses kicks is supported by the official class introduction `[O]`.
 
 ## Official evidence reviewed
 - `[O]` Basic screen / HUD: https://lod.nexon.com/info/guide/82285
-  - HP/MP bar, EXP bar, minimap, unified slot and group UI are documented.
 - `[O]` Unified slots: https://lod.nexon.com/info/guide/82284
-  - items and skills can be registered and used from unified slots.
 - `[O]` Skill guide: https://lod.nexon.com/info/guide/82293
-  - techniques vs magic distinction; acquisition/skill categories/s 숙련도 documented.
 - `[O]` Game/class introduction: https://lod.nexon.com/info/intro
-  - five jobs; martial artist explicitly described as fighting with fists and kicks.
 
 ## Asset/evidence safety
 - Existing prototype NPC and monster visuals remain `PENDING_CROP` / reconstruction placeholders.
@@ -94,14 +83,14 @@ The dedicated martial-artist KICK fixture remains `[B]` in timing/range/damage. 
 - Existing background source remains as previously classified in `WorldDef`; this pass does not alter licensing/redistribution status.
 
 ## Validation
-- `CombatController.java` standalone integration commit triggered compile-only CI.
-- `GameView` v0.60 integration triggered compile-only CI.
-- `SkillDef` evidence-model change triggered compile-only CI.
-- Final compile result must be recorded only after GitHub Actions reports a completed result. No APK validation is performed in this pass.
+- `CombatController.java` creation: compile-only CI succeeded.
+- `GameView` v0.60 + `CombatController` integration: GitHub Actions run #46, `Compile debug sources only` succeeded.
+- Final `SkillDef` taxonomy correction was also locally syntax-checked with `javac` successfully; its GitHub compile-only run was still in environment setup when this history entry was finalized.
+- No APK build, assembly, signing, artifact upload or distribution was performed during this autonomous pass.
 
 ## Remaining issues / next pass priority
-1. Confirm final compile-only CI for PASS 07; fix any compile errors before further feature work.
-2. Move NPC auto-approach/navigation intent out of `GameView` into a small interaction controller so view code stops accumulating policy.
+1. Confirm the final `SkillDef` compile-only run; if it fails, fix before feature expansion.
+2. Move NPC auto-approach/navigation intent out of `GameView` into a small interaction controller.
 3. Split monster chase/attack orchestration out of `GameView` into a runtime AI system while preserving `[B]` labels.
 4. Add action-result timing so damage does not always resolve at action start; use `[B]` impact frames until verified.
 5. Add evidence-safe slot model (`SlotDef`) so right-bottom controls are data-driven rather than touch-coordinate hardcoding.
