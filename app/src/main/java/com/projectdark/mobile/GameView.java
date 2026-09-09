@@ -345,11 +345,10 @@ public final class GameView extends View {
           return true;
         }
         if(dist(x,y,jx,jy)<=jr*1.5f){joy=true;approachNpc=null;stick(x,y);return true;}
-        if(dist(x,y,698,466)<=25){attackMode=(attackMode+1)%4;return true;}
-        if(dist(x,y,746,466)<=25){trigger(Action.KICK);return true;}
-        if(dist(x,y,895,478)<=42){trigger(new Action[]{Action.SWING,Action.THRUST,Action.THROW,Action.PUNCH}[attackMode]);return true;}
         if(dist(x,y,698,466)<=25){trigger(Action.CAST);return true;}
-        if(dist(x,y,650+48,466)<=25){trigger(Action.CAST);return true;}
+        if(dist(x,y,746,466)<=25){attackMode=(attackMode+1)%4;return true;}
+        if(dist(x,y,794,466)<=25){trigger(Action.KICK);return true;}
+        if(dist(x,y,895,478)<=42){trigger(new Action[]{Action.SWING,Action.THRUST,Action.THROW,Action.PUNCH}[attackMode]);return true;}
         return true;
       case MotionEvent.ACTION_MOVE:
         if(joy)stick(x,y);
