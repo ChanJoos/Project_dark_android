@@ -12,7 +12,7 @@ import java.util.List;
  */
 public final class RuntimeState {
   public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
-  public static final float PLAYER_RADIUS=9f,MONSTER_RADIUS=11f;
+  public static final float PLAYER_RADIUS=9f,MONSTER_RADIUS=11f,NPC_RADIUS=10f;
 
   public static final class Player {
     public final float spawnX=WorldDef.PLAYER_SPAWN_X,spawnY=WorldDef.PLAYER_SPAWN_Y;
@@ -33,6 +33,9 @@ public final class RuntimeState {
     public float attackCooldown=0f,attackWindup=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
     public boolean attackPrimed=false;
     public int lastDamage=0;
+    /** [B] Small bounded steering memory used only to avoid obstacle deadlocks in the prototype. */
+    public int detourSign=1;
+    public float detourClock=0f;
     Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;}
   }
 
@@ -59,23 +62,55 @@ public final class RuntimeState {
   public boolean tryMove(float dx,float dy){
     if(!player.alive)return false;float bx=player.x,by=player.y;
     float nx=clamp(player.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(player.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);
-    if(!blocked(nx,player.y,PLAYER_RADIUS)&&!monsterOccupied(nx,player.y,PLAYER_RADIUS))player.x=nx;
-    if(!blocked(player.x,ny,PLAYER_RADIUS)&&!monsterOccupied(player.x,ny,PLAYER_RADIUS))player.y=ny;
+    if(playerCanOccupy(nx,player.y))player.x=nx;
+    if(playerCanOccupy(player.x,ny))player.y=ny;
     return player.x!=bx||player.y!=by;
   }
 
+  /**
+   * [B] Bounded local steering for prototype monster pursuit.
+   * The caller still chooses the pursuit vector; this method only prevents simple blocker/NPC/monster deadlocks.
+   * It is not claimed to reproduce original server pathfinding.
+   */
   public boolean tryMoveMonster(Monster m,float dx,float dy){
-    if(m==null||!m.alive)return false;float bx=m.x,by=m.y;
+    if(m==null||!m.alive)return false;
+    float bx=m.x,by=m.y;
+    moveMonsterAxes(m,dx,dy);
+    if(m.x!=bx||m.y!=by){m.detourClock=Math.max(0f,m.detourClock-.05f);return true;}
+
+    m.detourClock+=.05f;
+    float px=-dy*m.detourSign,py=dx*m.detourSign;
+    moveMonsterAxes(m,px,py);
+    if(m.x!=bx||m.y!=by)return true;
+
+    m.detourSign=-m.detourSign;
+    px=-dy*m.detourSign;py=dx*m.detourSign;
+    moveMonsterAxes(m,px,py);
+    if(m.x!=bx||m.y!=by)return true;
+
+    if(m.detourClock>.75f){m.detourSign=-m.detourSign;m.detourClock=0f;}
+    return false;
+  }
+
+  private void moveMonsterAxes(Monster m,float dx,float dy){
     float nx=clamp(m.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(m.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);
-    if(!blocked(nx,m.y,MONSTER_RADIUS)&&!playerOccupied(nx,m.y,MONSTER_RADIUS))m.x=nx;
-    if(!blocked(m.x,ny,MONSTER_RADIUS)&&!playerOccupied(m.x,ny,MONSTER_RADIUS))m.y=ny;
-    return m.x!=bx||m.y!=by;
+    if(monsterCanOccupy(m,nx,m.y))m.x=nx;
+    if(monsterCanOccupy(m,m.x,ny))m.y=ny;
+  }
+
+  private boolean playerCanOccupy(float x,float y){
+    return !blocked(x,y,PLAYER_RADIUS)&&!monsterOccupied(null,x,y,PLAYER_RADIUS)&&!npcOccupied(x,y,PLAYER_RADIUS);
+  }
+
+  private boolean monsterCanOccupy(Monster self,float x,float y){
+    return !blocked(x,y,MONSTER_RADIUS)&&!playerOccupied(x,y,MONSTER_RADIUS)&&!monsterOccupied(self,x,y,MONSTER_RADIUS)&&!npcOccupied(x,y,MONSTER_RADIUS);
   }
 
   public boolean blocked(float x,float y){return blocked(x,y,PLAYER_RADIUS);}
   private boolean blocked(float x,float y,float radius){for(RectF r:obstacles)if(x+radius>r.left&&x-radius<r.right&&y+radius>r.top&&y-radius<r.bottom)return true;return false;}
   private boolean playerOccupied(float x,float y,float radius){if(!player.alive)return false;float min=radius+PLAYER_RADIUS+3f;return distance(x,y,player.x,player.y)<min;}
-  private boolean monsterOccupied(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float min=radius+MONSTER_RADIUS+3f;if(distance(x,y,m.x,m.y)<min)return true;}return false;}
+  private boolean monsterOccupied(Monster self,float x,float y,float radius){for(Monster m:monsters){if(m==self||!m.alive)continue;float min=radius+MONSTER_RADIUS+3f;if(distance(x,y,m.x,m.y)<min)return true;}return false;}
+  private boolean npcOccupied(float x,float y,float radius){for(Npc n:npcs){float min=radius+NPC_RADIUS+2f;if(distance(x,y,n.x,n.y)<min)return true;}return false;}
 
   public Npc hitNpc(float x,float y,float radius){for(Npc n:npcs){float dx=x-n.x,dy=y-n.y;if(dx*dx+dy*dy<=radius*radius)return n;}return null;}
   public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;}return null;}
@@ -95,7 +130,7 @@ public final class RuntimeState {
     if(m==null||!m.alive||amount<=0)return;
     m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;
     ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);
-    if(m.hp==0){m.alive=false;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}
+    if(m.hp==0){m.alive=false;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}
   }
 
   public void damagePlayer(int amount){
@@ -109,10 +144,10 @@ public final class RuntimeState {
   public void tick(float dt){
     player.hitFlash=Math.max(0f,player.hitFlash-dt);
     for(Monster m:monsters){
-      m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);
+      m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);m.detourClock=Math.max(0f,m.detourClock-dt*.25f);
       if(m.alive)continue;
       m.respawnClock=Math.max(0f,m.respawnClock-dt);
-      if(m.respawnClock<=0f){m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.alive=true;m.lastDamage=0;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}
+      if(m.respawnClock<=0f){m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}
     }
   }
 
