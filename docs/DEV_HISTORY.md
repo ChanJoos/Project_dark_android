@@ -176,6 +176,21 @@ Evidence grades used throughout this project:
 - GitHub Actions compile-only run #25 for `48aa561...` completed **successfully**.
 - The `Compile debug sources only` step completed successfully; no `assembleDebug`, APK upload or packaging step was run.
 
+### Additional v0.58 integration in the same pass
+- Added `AttackDef.java` so SWING / THRUST / THROW / PUNCH cooldown, range and damage are represented as explicit **[B]** data definitions rather than renderer constants.
+- Added player-vs-monster occupancy checks so the two entity bodies no longer freely overlap in open space.
+- Added monster hit flash and floating damage feedback state.
+- Added compact runtime feedback messages for MP shortage, out-of-range actions and incoming prototype damage.
+- Added **[ADAPTED]** ATK target approach: pressing ATK on an out-of-range selected monster walks toward attack range, then executes the current weapon attack; manual joystick input cancels the approach.
+- `P` continues to cycle the four weapon action definitions.
+- Commits: `cbd1d4ca3f45efa402f5c9774f3607c648b49167`, `74ef070409c5d66c648c210f18711492a279b36c`, `8587b1b9e635baa8db2f5c8ccc840779433b6d63`.
+
+### Validation failure and correction
+- Intermediate compile-only run #28 failed after `RuntimeState` changed its per-frame method from `tickRespawns()` to the broader `tick()` while the then-current `GameView` still referenced the previous method. This was an integration sequencing mismatch between the state-layer commit and renderer commit, not a design rollback.
+- `GameView` v0.58 was updated to call `state.tick(dt)` and integrate the new attack/entity-feedback APIs.
+- On run #29, the **Compile debug sources only** step completed successfully for commit `8587b1b9e635baa8db2f5c8ccc840779433b6d63`.
+- APK packaging remained disabled.
+
 ### Evidence anchors retained
 - **[O] Basic UI:** https://lod.nexon.com/info/guide/82285
 - **[O] Unified slots:** https://lod.nexon.com/info/guide/82284
@@ -186,13 +201,13 @@ Evidence grades used throughout this project:
 ### Design constraints / unresolved fidelity
 - Screenshot-backed world geometry and collision rectangles remain **[B]**; they are not original tile collision data.
 - Character, NPC and monster bodies remain prototype procedural drawings / `PENDING_CROP`, not authenticated original sprites.
-- Cooldown arcs and numeric countdowns are **[ADAPTED]** mobile feedback.
+- Cooldown arcs, numeric countdowns, floating damage and auto-approach are **[ADAPTED]** mobile/runtime feedback unless later verified otherwise.
 - Exact original combat timings, MP costs, damage, aggro, death penalties and respawn behavior remain unverified and must not be promoted beyond `[B]`.
 
 ### Next autonomous priority
-1. Split weapon attacks into data definitions parallel to `SkillDef`, including reach/cooldown/effect presentation and evidence grade.
-2. Add combat feedback events: hit flash, floating damage, miss/out-of-range feedback, monster attack telegraph.
-3. Add minimal target-follow/approach behavior for melee ATK/SKILL so touch combat is less stationary while retaining manual override.
-4. Improve entity collision so player and monster do not overlap each other even when neither is inside a world blocker.
-5. Introduce a small world/map manifest (`WorldDef`) separating verified visual source URL, `[B]` collision primitives and future `PENDING_CROP` tile/object mapping slots.
-6. Continue replacing HUD development labels with the previously approved compact mobile composition without claiming unverified PC UI details as original.
+1. Introduce `WorldDef`/map manifest separating `[O]` visual source, `[B]` collision geometry and `PENDING_CROP` future tile/object assets.
+2. Add a minimal monster attack telegraph and player damage flash without inventing an original animation.
+3. Extend target approach to generic SKILL/KICK only where interaction remains intuitive, retaining manual override.
+4. Add simple combat event/result bookkeeping so later XP/drop prototypes can be connected without coupling them to drawing code.
+5. Reduce remaining development-only HUD text and move closer to the approved compact mobile composition.
+6. Continue official-hosted asset identification before replacing any prototype body/effect with a claimed original sprite.
