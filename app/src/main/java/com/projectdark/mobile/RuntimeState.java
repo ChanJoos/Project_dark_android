@@ -19,14 +19,18 @@ public final class RuntimeState {
   public static final float WORLD_MIN_Y = 120f;
   public static final float WORLD_MAX_Y = 455f;
   public static final float PLAYER_RADIUS = 9f;
+  public static final float MONSTER_RADIUS = 11f;
 
   public static final class Player {
-    public float x = 480f;
-    public float y = 300f;
+    public final float spawnX = 480f;
+    public final float spawnY = 300f;
+    public float x = spawnX;
+    public float y = spawnY;
     public int hp = 100;
     public int maxHp = 100;
     public int mp = 90;
     public int maxMp = 100;
+    public boolean alive = true;
   }
 
   public static final class Npc {
@@ -48,16 +52,21 @@ public final class RuntimeState {
   public static final class Monster {
     public final String id;
     public final String name;
+    public final float spawnX;
+    public final float spawnY;
     public float x;
     public float y;
     public int hp;
     public final int maxHp;
     public boolean alive = true;
     public float attackCooldown = 0f;
+    public float respawnClock = 0f;
 
     Monster(String id, String name, float x, float y, int hp) {
       this.id = id;
       this.name = name;
+      this.spawnX = x;
+      this.spawnY = y;
       this.x = x;
       this.y = y;
       this.hp = hp;
@@ -96,17 +105,36 @@ public final class RuntimeState {
   public List<Monster> monsters() { return Collections.unmodifiableList(monsters); }
 
   public boolean tryMove(float dx, float dy) {
+    if (!player.alive) return false;
+    float beforeX = player.x;
+    float beforeY = player.y;
     float nx = clamp(player.x + dx, WORLD_MIN_X, WORLD_MAX_X);
     float ny = clamp(player.y + dy, WORLD_MIN_Y, WORLD_MAX_Y);
-    if (!blocked(nx, player.y)) player.x = nx;
-    if (!blocked(player.x, ny)) player.y = ny;
-    return player.x == nx && player.y == ny;
+    if (!blocked(nx, player.y, PLAYER_RADIUS)) player.x = nx;
+    if (!blocked(player.x, ny, PLAYER_RADIUS)) player.y = ny;
+    return player.x != beforeX || player.y != beforeY;
+  }
+
+  /** [B] Axis-separated monster movement using the same prototype blockers as the player. */
+  public boolean tryMoveMonster(Monster monster, float dx, float dy) {
+    if (monster == null || !monster.alive) return false;
+    float beforeX = monster.x;
+    float beforeY = monster.y;
+    float nx = clamp(monster.x + dx, WORLD_MIN_X, WORLD_MAX_X);
+    float ny = clamp(monster.y + dy, WORLD_MIN_Y, WORLD_MAX_Y);
+    if (!blocked(nx, monster.y, MONSTER_RADIUS)) monster.x = nx;
+    if (!blocked(monster.x, ny, MONSTER_RADIUS)) monster.y = ny;
+    return monster.x != beforeX || monster.y != beforeY;
   }
 
   public boolean blocked(float x, float y) {
+    return blocked(x, y, PLAYER_RADIUS);
+  }
+
+  private boolean blocked(float x, float y, float radius) {
     for (RectF r : obstacles) {
-      if (x + PLAYER_RADIUS > r.left && x - PLAYER_RADIUS < r.right
-          && y + PLAYER_RADIUS > r.top && y - PLAYER_RADIUS < r.bottom) return true;
+      if (x + radius > r.left && x - radius < r.right
+          && y + radius > r.top && y - radius < r.bottom) return true;
     }
     return false;
   }
@@ -139,12 +167,41 @@ public final class RuntimeState {
   public void damage(Monster monster,int amount){
     if(monster==null||!monster.alive||amount<=0)return;
     monster.hp=Math.max(0,monster.hp-amount);
-    if(monster.hp==0)monster.alive=false;
+    if(monster.hp==0){
+      monster.alive=false;
+      monster.attackCooldown=0f;
+      monster.respawnClock=4f; // [B] fast prototype reset for play-loop validation.
+    }
   }
 
   public void damagePlayer(int amount){
-    if(amount<=0)return;
+    if(amount<=0||!player.alive)return;
     player.hp=Math.max(0,player.hp-amount);
+    if(player.hp==0)player.alive=false;
+  }
+
+  /** [B] Prototype field revive; not an original death/penalty rule. */
+  public void revivePlayer(){
+    player.x=player.spawnX;
+    player.y=player.spawnY;
+    player.hp=player.maxHp;
+    player.mp=player.maxMp;
+    player.alive=true;
+  }
+
+  /** [B] Tick prototype monster respawns to keep the single-screen loop repeatable. */
+  public void tickRespawns(float dt){
+    for(Monster m:monsters){
+      if(m.alive)continue;
+      m.respawnClock=Math.max(0f,m.respawnClock-dt);
+      if(m.respawnClock<=0f){
+        m.x=m.spawnX;
+        m.y=m.spawnY;
+        m.hp=m.maxHp;
+        m.attackCooldown=0f;
+        m.alive=true;
+      }
+    }
   }
 
   private static float distance(float ax,float ay,float bx,float by){
