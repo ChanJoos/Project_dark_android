@@ -17,7 +17,7 @@ public final class GameView extends View {
   private Bitmap world; private float scale=1,ox,oy,px=480,py=300,vx,vy;
   private final float jx=92,jy=444,jr=60; private float knobX=jx,knobY=jy;
   private boolean joy,running; private long last; private int dir=0; private float walkClock=0,actionClock=0; private Action action=Action.IDLE; private int attackMode=0;
-  private final Runnable loop=()->{if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;update(dt);invalidate();postDelayed(this,16);};
+  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;update(dt);invalidate();postDelayed(this,16);}};
 
   public GameView(Context c){super(c);pixel.setFilterBitmap(false);setKeepScreenOn(true);loadWorld();}
   private void loadWorld(){new Thread(()->{try(InputStream in=new URL(WORLD_URL).openStream()){world=BitmapFactory.decodeStream(in);}catch(Exception ignored){}postInvalidate();}).start();}
