@@ -127,16 +127,15 @@ Evidence grades used throughout this project:
 - **[O] Five base jobs:** https://lod.nexon.com/info/intro
 - **[O] Official-hosted screenshot background:** https://storage.nexon.com/dsk03/13/NX_FILE/Board/196608/05/2/000/00/69/5557538701493472772.png
 
-### Validation status at history write
+### Validation result
 - RuntimeState monster/combat primitive compile run #19 completed **successfully**.
-- Full `GameView` v0.56 combat/skill integration compile run #20 was queued when this history entry was written; the next pass must inspect its final result before extending code.
+- Full `GameView` v0.56 combat/skill integration compile run #20 completed **successfully** on commit `a1398cfff1db6ebf49cf25510e825b7d136333ba`.
 - APK was not built or packaged.
 
 ### Remaining problems / next priority
-1. Verify run #20; if it fails, fix compiler errors before any new feature work.
-2. Monster chase currently ignores world blockers; route monster motion through world walkability/collision rules.
-3. NPC auto-approach is direct four-diagonal pursuit only; add a tiny obstacle-aware detour/path recalculation instead of cancelling on first blocker.
-4. Move skill definitions out of `GameView` into a data model (`SkillDef`/`SkillRuntime`) with evidence grade, cost, cooldown, range and effect type.
-5. Add visual cooldown masks/remaining time to the bottom-right slots.
-6. Add player death/monster death state feedback and a minimal reset/revive prototype.
-7. Current screenshot-backed world must eventually be replaced by a proper tile/object/collision representation when official assets can be positively identified; until then keep map geometry `[B]` and asset sprites `PENDING_CROP`.
+1. Monster chase currently ignores world blockers; route monster motion through world walkability/collision rules.
+2. NPC auto-approach is direct four-diagonal pursuit only; add a tiny obstacle-aware detour/path recalculation instead of cancelling on first blocker.
+3. Move skill definitions out of `GameView` into a data model (`SkillDef`/`SkillRuntime`) with evidence grade, cost, cooldown, range and effect type.
+4. Add visual cooldown masks/remaining time to the bottom-right slots.
+5. Add player death/monster death state feedback and a minimal reset/revive prototype.
+6. Current screenshot-backed world must eventually be replaced by a proper tile/object/collision representation when official assets can be positively identified; until then keep map geometry `[B]` and asset sprites `PENDING_CROP`.
