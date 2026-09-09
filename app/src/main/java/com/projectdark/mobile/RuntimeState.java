@@ -45,6 +45,7 @@ public final class RuntimeState {
   private final List<Npc> npcs=new ArrayList<>();
   private final List<Monster> monsters=new ArrayList<>();
   private final CombatLedger ledger=new CombatLedger();
+  private final RuntimeMetrics metrics=new RuntimeMetrics();
 
   public RuntimeState(){
     for(RectF r:world.blockers())obstacles.add(new RectF(r));
@@ -55,6 +56,7 @@ public final class RuntimeState {
   public WorldDef world(){return world;}
   public Player player(){return player;}
   public CombatLedger ledger(){return ledger;}
+  public RuntimeMetrics metrics(){return metrics;}
   public List<RectF> obstacles(){return Collections.unmodifiableList(obstacles);}
   public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
   public List<Monster> monsters(){return Collections.unmodifiableList(monsters);}
@@ -149,6 +151,7 @@ public final class RuntimeState {
       m.respawnClock=Math.max(0f,m.respawnClock-dt);
       if(m.respawnClock<=0f){m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}
     }
+    metrics.consume(ledger.snapshot());
   }
 
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}
