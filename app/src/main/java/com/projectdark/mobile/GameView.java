@@ -8,7 +8,7 @@ import android.view.View;
 import java.io.InputStream;
 import java.net.URL;
 
-/** PROJECT DARK v0.56 - integrated movement/action/collision/NPC/combat prototype. */
+/** PROJECT DARK v0.57 - integrated world/entity/action/combat runtime prototype. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private static final String WORLD_URL="https://storage.nexon.com/dsk03/13/NX_FILE/Board/196608/05/2/000/00/69/5557538701493472772.png";
@@ -23,7 +23,7 @@ public final class GameView extends View {
   private boolean joy,running;
   private long last;
   private int dir=0;
-  private float walkClock=0,actionClock=0;
+  private float walkClock=0,actionClock=0,approachBlockedClock=0;
   private float attackCooldown=0,spellCooldown=0,skillCooldown=0,kickCooldown=0;
   private Action action=Action.IDLE;
   private int attackMode=0;
@@ -35,11 +35,8 @@ public final class GameView extends View {
     @Override public void run(){
       if(!running)return;
       long n=SystemClock.uptimeMillis();
-      float dt=Math.min(.05f,(n-last)/1000f);
-      last=n;
-      update(dt);
-      invalidate();
-      postDelayed(this,16);
+      float dt=Math.min(.05f,(n-last)/1000f);last=n;
+      update(dt);invalidate();postDelayed(this,16);
     }
   };
 
@@ -53,90 +50,80 @@ public final class GameView extends View {
     spellCooldown=Math.max(0,spellCooldown-dt);
     skillCooldown=Math.max(0,skillCooldown-dt);
     kickCooldown=Math.max(0,kickCooldown-dt);
+    state.tickRespawns(dt);
     updateMonsters(dt);
     if(targetMonster!=null&&!targetMonster.alive)targetMonster=null;
 
+    if(!state.player().alive){action=Action.IDLE;approachNpc=null;joy=false;vx=vy=0;knobX=jx;knobY=jy;return;}
     if(isActing()){
       actionClock+=dt;
-      if(actionClock>=duration(action)){
-        actionClock=0;
-        action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;
-      }
+      if(actionClock>=duration(action)){actionClock=0;action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}
       return;
     }
     if(joy&&(vx!=0||vy!=0)){
-      action=Action.WALK;
-      state.tryMove(vx*145*dt,vy*145*dt);
-      walkClock+=dt;
-      approachNpc=null;
-      return;
+      action=Action.WALK;state.tryMove(vx*145*dt,vy*145*dt);walkClock+=dt;approachNpc=null;approachBlockedClock=0;return;
     }
-    if(approachNpc!=null){
-      float dx=approachNpc.x-state.player().x,dy=approachNpc.y-state.player().y;
-      float dist=(float)Math.sqrt(dx*dx+dy*dy);
-      if(dist<=56f){dialogNpc=approachNpc;approachNpc=null;action=Action.IDLE;return;}
-      setAutoDirection(dx,dy);
-      action=Action.WALK;
-      boolean moved=state.tryMove(vx*92*dt,vy*92*dt);
-      walkClock+=dt;
-      if(!moved){approachNpc=null;action=Action.IDLE;}
-      return;
-    }
+    if(approachNpc!=null){updateNpcApproach(dt);return;}
     action=Action.IDLE;
   }
 
+  private void updateNpcApproach(float dt){
+    float dx=approachNpc.x-state.player().x,dy=approachNpc.y-state.player().y;
+    float d=(float)Math.sqrt(dx*dx+dy*dy);
+    if(d<=56f){dialogNpc=approachNpc;approachNpc=null;approachBlockedClock=0;action=Action.IDLE;return;}
+    setAutoDirection(dx,dy);action=Action.WALK;
+    boolean moved=state.tryMove(vx*92*dt,vy*92*dt);walkClock+=dt;
+    if(moved){approachBlockedClock=0;return;}
+    approachBlockedClock+=dt;
+    // [B] Tiny deterministic detour: try the two perpendicular screen diagonals before abandoning approach.
+    float oldVx=vx,oldVy=vy;
+    boolean detour=state.tryMove(oldVx*92*dt,-oldVy*92*dt);
+    if(!detour)detour=state.tryMove(-oldVx*92*dt,oldVy*92*dt);
+    if(detour){approachBlockedClock=Math.max(0,approachBlockedClock-.12f);return;}
+    if(approachBlockedClock>2f){approachNpc=null;approachBlockedClock=0;action=Action.IDLE;}
+  }
+
   private void updateMonsters(float dt){
+    if(!state.player().alive)return;
     for(RuntimeState.Monster m:state.monsters()){
       if(!m.alive)continue;
       m.attackCooldown=Math.max(0,m.attackCooldown-dt);
-      float dx=state.player().x-m.x,dy=state.player().y-m.y;
-      float d=(float)Math.sqrt(dx*dx+dy*dy);
+      float dx=state.player().x-m.x,dy=state.player().y-m.y,d=(float)Math.sqrt(dx*dx+dy*dy);
       if(d<180f&&d>42f){
         float step=28f*dt;
-        m.x+=Math.signum(dx)*step;
-        m.y+=Math.signum(dy)*step;
+        state.tryMoveMonster(m,Math.signum(dx)*step,Math.signum(dy)*step);
       }else if(d<=42f&&m.attackCooldown<=0){
-        state.damagePlayer(4); // [B] prototype incoming damage.
-        m.attackCooldown=1.2f;
+        state.damagePlayer(4);m.attackCooldown=1.2f; // [B]
       }
     }
   }
 
   private void setAutoDirection(float dx,float dy){
-    float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;
-    vx=.707f*sx;vy=.707f*sy;
+    float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;vx=.707f*sx;vy=.707f*sy;
     if(sx<0&&sy>0)dir=0;else if(sx>0&&sy>0)dir=1;else if(sx<0)dir=2;else dir=3;
   }
 
   private boolean isActing(){return action!=Action.IDLE&&action!=Action.WALK;}
   private float duration(Action a){switch(a){case CAST:return .65f;case SWING:return .45f;case THRUST:return .38f;case THROW:return .52f;case PUNCH:return .32f;case SKILL:return .50f;case KICK:return .45f;default:return 0;}}
-  private void trigger(Action a){if(isActing())return;approachNpc=null;dialogNpc=null;action=a;actionClock=0;}
+  private void trigger(Action a){if(isActing()||!state.player().alive)return;approachNpc=null;dialogNpc=null;action=a;actionClock=0;}
 
-  private void cast(){
-    if(isActing()||spellCooldown>0||state.player().mp<8)return;
-    state.player().mp-=8;spellCooldown=1.2f;trigger(Action.CAST);
-    if(targetMonster!=null&&targetMonster.alive&&state.distanceTo(targetMonster)<=150f)state.damage(targetMonster,12);
+  private boolean consume(SkillDef def){
+    if(state.player().mp<def.mpCost)return false;
+    state.player().mp-=def.mpCost;return true;
   }
+  private void applyToTarget(SkillDef def){if(targetMonster!=null&&targetMonster.alive&&state.distanceTo(targetMonster)<=def.range)state.damage(targetMonster,def.damage);}
+  private void cast(){if(isActing()||spellCooldown>0||!consume(SkillDef.CAST_PROTO))return;spellCooldown=SkillDef.CAST_PROTO.cooldown;trigger(Action.CAST);applyToTarget(SkillDef.CAST_PROTO);}
+  private void skill(){if(isActing()||skillCooldown>0||!consume(SkillDef.SKILL_PROTO))return;skillCooldown=SkillDef.SKILL_PROTO.cooldown;trigger(Action.SKILL);applyToTarget(SkillDef.SKILL_PROTO);}
+  private void kick(){if(isActing()||kickCooldown>0)return;kickCooldown=SkillDef.KICK_PROTO.cooldown;trigger(Action.KICK);applyToTarget(SkillDef.KICK_PROTO);}
   private void attack(){
-    if(isActing()||attackCooldown>0)return;
+    if(isActing()||attackCooldown>0||!state.player().alive)return;
     Action a=new Action[]{Action.SWING,Action.THRUST,Action.THROW,Action.PUNCH}[attackMode];
-    attackCooldown=.38f;trigger(a);
-    float reach=attackMode==2?130f:78f;
-    if(targetMonster!=null&&targetMonster.alive&&state.distanceTo(targetMonster)<=reach)state.damage(targetMonster,8);
-  }
-  private void skill(){
-    if(isActing()||skillCooldown>0||state.player().mp<5)return;
-    state.player().mp-=5;skillCooldown=2f;trigger(Action.SKILL);
-    if(targetMonster!=null&&targetMonster.alive&&state.distanceTo(targetMonster)<=90f)state.damage(targetMonster,16);
-  }
-  private void kick(){
-    if(isActing()||kickCooldown>0)return;
-    kickCooldown=1f;trigger(Action.KICK);
-    if(targetMonster!=null&&targetMonster.alive&&state.distanceTo(targetMonster)<=82f)state.damage(targetMonster,14);
+    attackCooldown=.38f;trigger(a);float reach=attackMode==2?130f:78f;
+    if(targetMonster!=null&&targetMonster.alive&&state.distanceTo(targetMonster)<=reach)state.damage(targetMonster,8); // [B]
   }
 
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);ox=(w-W*scale)/2;oy=(h-H*scale)/2;}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);drawWorld(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);drawActionFx(c);drawHud(c);drawDialogue(c);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);drawWorld(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);drawActionFx(c);drawHud(c);drawDialogue(c);drawDeath(c);c.restore();}
 
   private void drawWorld(Canvas c){
     if(world==null){p.setColor(0xff090909);c.drawRect(0,0,W,H,p);return;}
@@ -158,7 +145,6 @@ public final class GameView extends View {
   private void drawMonsters(Canvas c){
     for(RuntimeState.Monster m:state.monsters()){
       if(!m.alive)continue;
-      // [B]/PENDING_CROP marker only; not original monster art.
       p.setColor(0x66000000);c.drawOval(new RectF(m.x-15,m.y-4,m.x+15,m.y+5),p);
       p.setColor(0xff6a7c69);c.drawOval(new RectF(m.x-13,m.y-31,m.x+13,m.y-5),p);
       p.setColor(0xffd8c27b);c.drawCircle(m.x-5,m.y-20,2,p);c.drawCircle(m.x+5,m.y-20,2,p);
@@ -201,14 +187,19 @@ public final class GameView extends View {
     panel(c,372,12,604,55);if(targetMonster!=null){text(c,targetMonster.name,405,29,11);bar(c,392,36,584,44,0xffe21d2e,targetMonster.hp/(float)targetMonster.maxHp);}else{text(c,"타깃 없음",456,31,11);}
     panel(c,714,12,902,124);text(c,"밀레스",728,31,11);p.setColor(0xaa090909);c.drawRect(728,38,887,104,p);text(c,"X:"+(int)state.player().x+" Y:"+(int)state.player().y,800,117,9);
     String[] menu={"≡","▣","Q","G","W","⚙"};for(int i=0;i<6;i++){panel(c,912,20+i*50,948,58+i*50);text(c,menu[i],925,45+i*50,15);}
-    panel(c,12,294,272,382);text(c,"[일반] PROJECT DARK runtime",23,316,9);text(c,"NPC:접근/대화  몬스터:타깃",23,332,9);text(c,"MP:마법 P:공격형태 SK:기술 K:발차기",23,348,9);text(c,"일반   파티   길드   귓속말   시스템",23,373,9);
+    panel(c,12,294,272,382);text(c,"[일반] PROJECT DARK runtime",23,316,9);text(c,"NPC:접근/대화  몬스터:타깃/추적",23,332,9);text(c,"MP:마법 P:공격형태 SK:기술 K:발차기",23,348,9);text(c,"일반   파티   길드   귓속말   시스템",23,373,9);
     p.setColor(0x33101010);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0x99d8c49b);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.FILL);p.setColor(0x997e7057);c.drawCircle(knobX,knobY,24,p);
     panel(c,337,462,608,528);text(c,"Lv 1",351,486,12);bar(c,400,474,594,485,0xffe62c42,state.player().hp/(float)state.player().maxHp);bar(c,400,490,594,501,0xff2388df,state.player().mp/(float)state.player().maxMp);bar(c,400,507,594,518,0xff48b84d,.35f);
     String[] slots={"HP","MP","P","SK","K"};for(int i=0;i<5;i++)round(c,650+i*48,466,20,slots[i]);
-    round(c,895,478,34,"ATK");round(c,920,516,26,"AUTO");text(c,attackName(),840,530,8);
+    cooldown(c,698,466,20,spellCooldown,SkillDef.CAST_PROTO.cooldown);cooldown(c,794,466,20,skillCooldown,SkillDef.SKILL_PROTO.cooldown);cooldown(c,842,466,20,kickCooldown,SkillDef.KICK_PROTO.cooldown);
+    round(c,895,478,34,"ATK");cooldown(c,895,478,34,attackCooldown,.38f);round(c,920,516,26,"AUTO");text(c,attackName(),840,530,8);
   }
 
+  private void cooldown(Canvas c,float x,float y,float r,float remaining,float total){
+    if(remaining<=0||total<=0)return;float ratio=Math.min(1f,remaining/total);p.setColor(0x99000000);c.drawArc(new RectF(x-r,y-r,x+r,y+r),-90,360*ratio,true,p);p.setTextSize(8);p.setColor(Color.WHITE);String s=String.format(java.util.Locale.US,"%.1f",remaining);float tw=p.measureText(s);c.drawText(s,x-tw/2,y+3,p);
+  }
   private void drawDialogue(Canvas c){if(dialogNpc==null)return;panel(c,250,330,710,440);text(c,dialogNpc.name,270,355,13);drawWrappedText(c,dialogNpc.dialogue,270,380,420,12,18);text(c,"화면을 터치하면 닫기",555,425,9);}
+  private void drawDeath(Canvas c){if(state.player().alive)return;p.setColor(0xaa000000);c.drawRect(0,0,W,H,p);panel(c,330,205,630,335);text(c,"행동 불능 [B]",421,240,18);text(c,"프로토타입 부활: 화면 중앙 터치",375,276,12);text(c,"원작 사망/패널티 규칙을 의미하지 않음",368,302,10);}
   private void drawWrappedText(Canvas c,String s,float x,float y,float maxWidth,float size,float lineHeight){p.setTextSize(size);p.setColor(0xffeee4cf);String[] words=s.split(" ");String line="";float yy=y;for(String word:words){String test=line.length()==0?word:line+" "+word;if(p.measureText(test)>maxWidth&&line.length()>0){c.drawText(line,x,yy,p);yy+=lineHeight;line=word;}else line=test;}if(line.length()>0)c.drawText(line,x,yy,p);}
   private String attackName(){return new String[]{"SWING","THRUST","THROW","PUNCH"}[attackMode];}
   private void round(Canvas c,float x,float y,float r,String s){p.setColor(0xaa15120e);c.drawCircle(x,y,r,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xffc9a86c);c.drawCircle(x,y,r,p);p.setStyle(Paint.Style.FILL);p.setTextSize(s.length()>3?8:10);p.setColor(0xffffefd0);float tw=p.measureText(s);c.drawText(s,x-tw/2,y+3,p);}
@@ -217,8 +208,9 @@ public final class GameView extends View {
     float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;
     switch(e.getActionMasked()){
       case MotionEvent.ACTION_DOWN:
+        if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();targetMonster=null;action=Action.IDLE;}return true;}
         if(dialogNpc!=null){dialogNpc=null;return true;}
-        RuntimeState.Npc npc=state.hitNpc(x,y,34f);if(npc!=null){if(state.distanceTo(npc)<=56f)dialogNpc=npc;else approachNpc=npc;return true;}
+        RuntimeState.Npc npc=state.hitNpc(x,y,34f);if(npc!=null){if(state.distanceTo(npc)<=56f)dialogNpc=npc;else{approachNpc=npc;approachBlockedClock=0;}return true;}
         RuntimeState.Monster monster=state.hitMonster(x,y,34f);if(monster!=null){targetMonster=monster;approachNpc=null;return true;}
         if(dist(x,y,jx,jy)<=jr*1.5f){joy=true;approachNpc=null;stick(x,y);return true;}
         if(dist(x,y,698,466)<=25){cast();return true;}
@@ -233,6 +225,6 @@ public final class GameView extends View {
     return true;
   }
 
-  private void stick(float x,float y){if(isActing())return;float dx=x-jx,dy=y-jy,len=(float)Math.sqrt(dx*dx+dy*dy);if(len>jr){dx=dx/len*jr;dy=dy/len*jr;len=jr;}knobX=jx+dx;knobY=jy+dy;if(len<8){vx=vy=0;return;}float nx=dx/len,ny=dy/len;if(Math.abs(nx)>Math.abs(ny)){if(nx>0){vx=.707f;vy=.707f;dir=1;}else{vx=-.707f;vy=-.707f;dir=2;}}else{if(ny>0){vx=-.707f;vy=.707f;dir=0;}else{vx=.707f;vy=-.707f;dir=3;}}}
+  private void stick(float x,float y){if(isActing()||!state.player().alive)return;float dx=x-jx,dy=y-jy,len=(float)Math.sqrt(dx*dx+dy*dy);if(len>jr){dx=dx/len*jr;dy=dy/len*jr;len=jr;}knobX=jx+dx;knobY=jy+dy;if(len<8){vx=vy=0;return;}float nx=dx/len,ny=dy/len;if(Math.abs(nx)>Math.abs(ny)){if(nx>0){vx=.707f;vy=.707f;dir=1;}else{vx=-.707f;vy=-.707f;dir=2;}}else{if(ny>0){vx=-.707f;vy=.707f;dir=0;}else{vx=.707f;vy=-.707f;dir=3;}}}
   private float dist(float a,float b,float c,float d){float x=a-c,y=b-d;return(float)Math.sqrt(x*x+y*y);}
 }
