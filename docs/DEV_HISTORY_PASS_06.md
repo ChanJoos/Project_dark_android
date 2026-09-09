@@ -59,18 +59,17 @@ Evidence grades used in this pass:
 - Procedural player/NPC/monster bodies remain prototype visualization / **PENDING_CROP**; they are not claimed to be original LOD sprites.
 - No new AI-generated visual asset was added or promoted as original art.
 
-## Validation status
-- Compile-only validation is triggered for every pushed commit.
-- Code head for this pass: `f24a7fe2b3dcde8e91957f72847cfe70726872c2`.
-- At the moment this history entry was written, compile-only run #40 had started and had not yet reported a final conclusion. The next pass must read the final run result first; if failed, inspect the compiler log and repair before feature work.
-- No APK packaging/distribution was performed.
+## Validation
+- Compile-only GitHub Actions run #40 validated code head `f24a7fe2b3dcde8e91957f72847cfe70726872c2`.
+- `Compile debug sources only` completed **successfully**.
+- Workflow remains `gradle :app:compileDebugJavaWithJavac --stacktrace` only.
+- No `assembleDebug`, APK packaging, signing, artifact upload, or distribution was performed.
 
 ## Remaining issues / next autonomous priority
-1. Read compile-only run #40 result and repair immediately if needed.
-2. Fix CAST order so target/range validity is decided before MP/cooldown consumption. Prefer explicit range failure for magic unless auto-approach is deliberately selected as `[ADAPTED]`.
-3. Update facing toward selected target immediately before CAST/ATTACK/SKILL/KICK.
-4. Extract `CombatIntent`/approach state from `GameView` into a gameplay controller/policy class before the view accumulates more combat rules.
-5. Replace GameView-local defeat/hit counters with `RuntimeMetrics` once controller extraction makes the change low-risk.
-6. Continue refining monster pursuit only as bounded `[B]` steering; do not claim original AI/pathfinding behavior.
-7. Continue official-hosted sprite/effect identification; keep visual bodies/effects `PENDING_CROP` until positively identified and legally usable.
-8. Keep compile-only validation and do not assemble an APK during autonomous night passes.
+1. Fix CAST order so target/range validity is decided before MP/cooldown consumption. Prefer explicit range failure for magic unless auto-approach is deliberately selected as `[ADAPTED]`.
+2. Update facing toward selected target immediately before CAST/ATTACK/SKILL/KICK.
+3. Extract `CombatIntent`/approach state from `GameView` into a gameplay controller/policy class before the view accumulates more combat rules.
+4. Replace GameView-local defeat/hit counters with `RuntimeMetrics` once controller extraction makes the change low-risk.
+5. Continue refining monster pursuit only as bounded `[B]` steering; do not claim original AI/pathfinding behavior.
+6. Continue official-hosted sprite/effect identification; keep visual bodies/effects `PENDING_CROP` until positively identified and legally usable.
+7. Keep compile-only validation and do not assemble an APK during autonomous night passes.
