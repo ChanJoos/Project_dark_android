@@ -11,42 +11,46 @@ import java.util.List;
  * [ADAPTED] Screen-space geometry validates mobile controls before verified tile collision exists.
  */
 public final class RuntimeState {
-  public static final float WORLD_MIN_X=180f,WORLD_MAX_X=760f,WORLD_MIN_Y=120f,WORLD_MAX_Y=455f;
+  public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
   public static final float PLAYER_RADIUS=9f,MONSTER_RADIUS=11f;
 
   public static final class Player {
-    public final float spawnX=480f,spawnY=300f;
+    public final float spawnX=WorldDef.PLAYER_SPAWN_X,spawnY=WorldDef.PLAYER_SPAWN_Y;
     public float x=spawnX,y=spawnY;
     public int hp=100,maxHp=100,mp=90,maxMp=100;
     public boolean alive=true;
+    public float hitFlash=0f;
   }
 
   public static final class Npc {
-    public final String id,name,dialogue;public final float x,y;
-    Npc(String id,String name,float x,float y,String dialogue){this.id=id;this.name=name;this.x=x;this.y=y;this.dialogue=dialogue;}
+    public final String id,name,dialogue,assetStatus;public final float x,y;
+    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name=name;this.x=x;this.y=y;this.dialogue=dialogue;this.assetStatus=assetStatus;}
   }
 
   public static final class Monster {
-    public final String id,name;public final float spawnX,spawnY;public float x,y;
+    public final String id,name,assetStatus;public final float spawnX,spawnY;public float x,y;
     public int hp;public final int maxHp;public boolean alive=true;
-    public float attackCooldown=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
+    public float attackCooldown=0f,attackWindup=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
     public int lastDamage=0;
-    Monster(String id,String name,float x,float y,int hp){this.id=id;this.name=name;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;}
+    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;}
   }
 
+  private final WorldDef world=new WorldDef();
   private final Player player=new Player();
   private final List<RectF> obstacles=new ArrayList<>();
   private final List<Npc> npcs=new ArrayList<>();
   private final List<Monster> monsters=new ArrayList<>();
+  private final CombatLedger ledger=new CombatLedger();
 
   public RuntimeState(){
-    obstacles.add(new RectF(272f,170f,342f,238f));obstacles.add(new RectF(600f,150f,684f,218f));
-    obstacles.add(new RectF(312f,350f,374f,430f));obstacles.add(new RectF(620f,332f,700f,420f));
-    npcs.add(new Npc("milles_guide_proto","밀레스 안내인 [B]",555f,248f,"밀레스에 온 것을 환영합니다. 이 대화는 모바일 접근/대화 루프 검증용 프로토타입입니다."));
-    monsters.add(new Monster("combat_dummy_01","훈련용 몬스터 [B]",430f,205f,60));
+    for(RectF r:world.blockers())obstacles.add(new RectF(r));
+    for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
+    for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
   }
 
+  public WorldDef world(){return world;}
   public Player player(){return player;}
+  public CombatLedger ledger(){return ledger;}
   public List<RectF> obstacles(){return Collections.unmodifiableList(obstacles);}
   public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
   public List<Monster> monsters(){return Collections.unmodifiableList(monsters);}
@@ -77,18 +81,31 @@ public final class RuntimeState {
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 
+  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&m.attackWindup<=0f)m.attackWindup=.24f;}
+  public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
+
   public void damage(Monster m,int amount){
-    if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;
-    if(m.hp==0){m.alive=false;m.attackCooldown=0f;m.respawnClock=4f;}
+    if(m==null||!m.alive||amount<=0)return;
+    m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;
+    ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);
+    if(m.hp==0){m.alive=false;m.attackCooldown=0f;m.attackWindup=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}
   }
-  public void damagePlayer(int amount){if(amount<=0||!player.alive)return;player.hp=Math.max(0,player.hp-amount);if(player.hp==0)player.alive=false;}
-  public void revivePlayer(){player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;}
+
+  public void damagePlayer(int amount){
+    if(amount<=0||!player.alive)return;
+    player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);
+    if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);}
+  }
+
+  public void revivePlayer(){player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;player.hitFlash=0f;ledger.add(CombatLedger.Type.PLAYER_REVIVED,"runtime","player",0);}
 
   public void tick(float dt){
+    player.hitFlash=Math.max(0f,player.hitFlash-dt);
     for(Monster m:monsters){
-      m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);
-      if(m.alive)continue;m.respawnClock=Math.max(0f,m.respawnClock-dt);
-      if(m.respawnClock<=0f){m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.alive=true;m.lastDamage=0;}
+      m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);
+      if(m.alive)continue;
+      m.respawnClock=Math.max(0f,m.respawnClock-dt);
+      if(m.respawnClock<=0f){m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.alive=true;m.lastDamage=0;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}
     }
   }
 
