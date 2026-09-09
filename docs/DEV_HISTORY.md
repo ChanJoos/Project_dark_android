@@ -139,3 +139,60 @@ Evidence grades used throughout this project:
 4. Add visual cooldown masks/remaining time to the bottom-right slots.
 5. Add player death/monster death state feedback and a minimal reset/revive prototype.
 6. Current screenshot-backed world must eventually be replaced by a proper tile/object/collision representation when official assets can be positively identified; until then keep map geometry `[B]` and asset sprites `PENDING_CROP`.
+
+## 2026-09-10 — Autonomous pass 03
+
+### Repository state read
+- Started from `GameView` v0.56 and the pass-02 `RuntimeState` implementation.
+- Prior compile-only validation was successful, so this pass continued directly with the next documented priorities rather than rewriting existing movement/action code.
+
+### Monster collision and repeated combat loop
+- Added `RuntimeState.tryMoveMonster()` so monster pursuit uses the same prototype rectangular blockers/world bounds as the player.
+- **[B]** Monster collision radius is currently 11 screen units; this exists only to validate non-wall-clipping chase behavior against the screenshot-backed scene.
+- Added spawn coordinates and respawn state to monsters.
+- **[B]** Dead training monster respawns after 4 seconds so combat can be repeatedly exercised without relaunching the runtime.
+- Added explicit `Player.alive` state and a prototype full-HP/full-MP field revive at the player spawn point.
+- These death/respawn rules are not claimed to represent original LOD penalties or resurrection mechanics.
+- Commit: `6383ab7827be5860cbb009efc82e1736714bee42`.
+- Compile-only run #24 completed **successfully**.
+
+### Skill definition model separated from renderer
+- Added `SkillDef.java` with evidence metadata, MP cost, cooldown, range, damage and effect type.
+- Current `CAST_PROTO`, `SKILL_PROTO`, and `KICK_PROTO` values remain **[B]**.
+- `EffectType` is **[ADAPTED]** runtime presentation metadata, not an authenticated original effect asset mapping.
+- This removes the first set of magic/skill balance constants from `GameView` and establishes a path for later verified `[O]`/`[V]` replacements.
+- Commit: `5708d8c18d9a32c6df540b7d37ceba38336a3b71`.
+
+### Integrated GameView v0.57
+- `GameView` now consumes `SkillDef` for CAST / generic SKILL / martial KICK MP, cooldown, range and damage rules.
+- Monster chase routes through `RuntimeState.tryMoveMonster()` rather than directly mutating `m.x/m.y`, eliminating the previous blocker-clipping contradiction.
+- NPC auto-approach no longer cancels on the first blocked step. **[B]** It attempts two deterministic perpendicular four-diagonal detours and only gives up after 2 seconds without progress.
+- Added visible radial cooldown masks plus remaining seconds for CAST, SKILL, KICK and ATK slots.
+- Added player death overlay and touch-to-revive prototype state. Movement/actions are disabled while dead.
+- The existing right-bottom control vocabulary remains `MP / P / SK / K / ATK / AUTO`; `P` cycles weapon attack form rather than firing an ability.
+- Commit: `48aa561714d4fb1d6e5e917b620d305b94d9f88d`.
+
+### Validation result
+- GitHub Actions compile-only run #25 for `48aa561...` completed **successfully**.
+- The `Compile debug sources only` step completed successfully; no `assembleDebug`, APK upload or packaging step was run.
+
+### Evidence anchors retained
+- **[O] Basic UI:** https://lod.nexon.com/info/guide/82285
+- **[O] Unified slots:** https://lod.nexon.com/info/guide/82284
+- **[O] Character creation:** https://lod.nexon.com/info/guide/82283
+- **[O] Five base jobs:** https://lod.nexon.com/info/intro
+- **[O] Official-hosted screenshot background:** https://storage.nexon.com/dsk03/13/NX_FILE/Board/196608/05/2/000/00/69/5557538701493472772.png
+
+### Design constraints / unresolved fidelity
+- Screenshot-backed world geometry and collision rectangles remain **[B]**; they are not original tile collision data.
+- Character, NPC and monster bodies remain prototype procedural drawings / `PENDING_CROP`, not authenticated original sprites.
+- Cooldown arcs and numeric countdowns are **[ADAPTED]** mobile feedback.
+- Exact original combat timings, MP costs, damage, aggro, death penalties and respawn behavior remain unverified and must not be promoted beyond `[B]`.
+
+### Next autonomous priority
+1. Split weapon attacks into data definitions parallel to `SkillDef`, including reach/cooldown/effect presentation and evidence grade.
+2. Add combat feedback events: hit flash, floating damage, miss/out-of-range feedback, monster attack telegraph.
+3. Add minimal target-follow/approach behavior for melee ATK/SKILL so touch combat is less stationary while retaining manual override.
+4. Improve entity collision so player and monster do not overlap each other even when neither is inside a world blocker.
+5. Introduce a small world/map manifest (`WorldDef`) separating verified visual source URL, `[B]` collision primitives and future `PENDING_CROP` tile/object mapping slots.
+6. Continue replacing HUD development labels with the previously approved compact mobile composition without claiming unverified PC UI details as original.
