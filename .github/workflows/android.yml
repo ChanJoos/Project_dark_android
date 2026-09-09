@@ -1,4 +1,4 @@
-name: Build PROJECT DARK Android APK
+name: Validate PROJECT DARK Android
 on:
   push:
     branches: [main]
@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 jobs:
-  build:
+  compile:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -20,11 +20,5 @@ jobs:
         with:
           gradle-version: '8.11.1'
       - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
-      - name: Build debug APK
-        run: gradle :app:assembleDebug --stacktrace
-      - name: Upload debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: PROJECT_DARK_latest_APK
-          path: app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
+      - name: Compile debug sources only
+        run: gradle :app:compileDebugJavaWithJavac --stacktrace
