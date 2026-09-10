@@ -21,6 +21,7 @@ import java.util.Set;
 public final class RpgProgressionState {
   public enum Evidence { O,V,U,B,ADAPTED,PENDING,FAN }
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
+  public enum RewardSource { CANONICAL, ADAPTED_TEST, UNRESOLVED }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
   public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
@@ -62,9 +63,21 @@ public final class RpgProgressionState {
     public final RewardStatus status;
     public final Integer exp;
     public final Map<String,Integer> autoLootedItems;
+    public final Map<String,AutoLootResult> itemOutcomes;
+    public final RewardSource source;
+    public final String policyId,evidence;
     RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,Map<String,Integer> autoLootedItems){
+      this(combatSequence,monsterId,status,exp,autoLootedItems,
+          Collections.<String,AutoLootResult>emptyMap(),
+          status==RewardStatus.RESOLVED?RewardSource.CANONICAL:RewardSource.UNRESOLVED,null,null);
+    }
+    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,
+        Map<String,Integer> autoLootedItems,Map<String,AutoLootResult> itemOutcomes,
+        RewardSource source,String policyId,String evidence){
       this.combatSequence=combatSequence;this.monsterId=monsterId;this.status=status;this.exp=exp;
       this.autoLootedItems=Collections.unmodifiableMap(new LinkedHashMap<>(autoLootedItems));
+      this.itemOutcomes=Collections.unmodifiableMap(new LinkedHashMap<>(itemOutcomes));
+      this.source=source==null?RewardSource.UNRESOLVED:source;this.policyId=policyId;this.evidence=evidence;
     }
   }
 
@@ -84,6 +97,7 @@ public final class RpgProgressionState {
   private final Map<String,Integer> baseStats=new LinkedHashMap<>();
   private final List<RewardResolution> rewardHistory=new ArrayList<>();
   private final CanonicalMonsterRewardCatalog monsterRewards=new CanonicalMonsterRewardCatalog();
+  private final AdaptedPrototypeRewardCatalog prototypeRewards=new AdaptedPrototypeRewardCatalog();
   private long lastCombatSequence=0L;
 
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
@@ -113,6 +127,8 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_NECK_FIRE_PEARL","화염의진주목걸이","목걸이",11,anyJob,true,"화염",null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_BELT_FIRE_LEATHER","화염의가죽벨트","벨트",11,anyJob,true,null,"화염",noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,
+        "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
   }
 
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
@@ -155,18 +171,33 @@ public final class RpgProgressionState {
   private void resolveMonsterDefeat(CombatLedger.Event e){
     CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
     if(reward==null){
+      AdaptedPrototypeRewardCatalog.Entry prototype=prototypeRewards.find(e.targetId);
+      if(prototype!=null){
+        Map<String,Integer> granted=new LinkedHashMap<>();
+        Map<String,AutoLootResult> outcomes=new LinkedHashMap<>();
+        AutoLootResult result=autoLootResolvedItem(prototype.itemId,prototype.quantity);
+        outcomes.put(prototype.itemId,result);
+        if(result==AutoLootResult.LOOTED)granted.put(prototype.itemId,prototype.quantity);
+        rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,null,granted,outcomes,
+            RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence));
+        trimRewardHistory();
+        return;
+      }
       rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,null,Collections.<String,Integer>emptyMap()));
       trimRewardHistory();
       return;
     }
 
     Map<String,Integer> looted=new LinkedHashMap<>();
+    Map<String,AutoLootResult> outcomes=new LinkedHashMap<>();
     for(CanonicalMonsterRewardCatalog.DropHint hint:reward.dropHints){
       if(!hint.emissionResolved())continue;
       AutoLootResult result=autoLootResolvedItem(hint.itemId,hint.quantity);
+      outcomes.put(hint.itemId,result);
       if(result==AutoLootResult.LOOTED)looted.put(hint.itemId,value(looted,hint.itemId)+hint.quantity);
     }
-    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted));
+    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes,
+        RewardSource.CANONICAL,"CANONICAL_MONSTER_REWARD",reward.expEvidence==null?null:reward.expEvidence.name()));
     trimRewardHistory();
   }
 
