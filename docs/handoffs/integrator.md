@@ -4,7 +4,7 @@
 
 - Latest main before integration: `a58e351`.
 - Integrated World result: PR #81 follow-up branch `agent/world/20260911-0117`, head `464f315`.
-- Local integration commit: `7a7e234` (World commit cherry-picked onto the newer main so the THREE-role guide update is preserved).
+- Main integration commit: `b8f36e6` (World result applied onto the newer main so the THREE-role guide update is preserved).
 
 ### Implemented and reviewed
 
