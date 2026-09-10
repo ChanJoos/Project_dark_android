@@ -24,7 +24,8 @@ public final class RpgProgressionPresentationAudit {
     if(toTen.status!=RpgProgressionState.ExpApplyStatus.APPLIED||fresh.normalLevel()!=10||fresh.normalExp()!=300000L)return false;
     RpgProgressionPresentation.LevelProgress ten=p.levelProgress(fresh);
     if(ten.expRequiredThisLevel==null||ten.expRequiredThisLevel!=78000L||ten.expToNextLevel!=78000L)return false;
-    if(p.basicJobSelectionGate(fresh).status!=RpgProgressionPresentation.JobSelectionGateStatus.SKILL_REQUIREMENT_PENDING)return false;
+    RpgProgressionPresentation.JobSelectionGate gate=p.basicJobSelectionGate(fresh);
+    if(gate.status!=RpgProgressionPresentation.JobSelectionGateStatus.READY||!gate.ready)return false;
 
     RpgProgressionState high=new RpgProgressionState();
     RpgProgressionState.ExpApplyOutcome toNinetyNine=high.applyNormalExp(150000000,RpgProgressionState.Evidence.B);
@@ -34,6 +35,6 @@ public final class RpgProgressionPresentationAudit {
     if(high.applyNormalExp(1,RpgProgressionState.Evidence.B).status!=RpgProgressionState.ExpApplyStatus.LEVEL_CAP)return false;
 
     RpgVisibleProgressionPresentation.Snapshot visible=new RpgVisibleProgressionPresentation().snapshot(fresh);
-    return visible.levelProgress!=null&&visible.jobSelectionGate!=null&&visible.levelProgress.level==10;
+    return visible.levelProgress!=null&&visible.jobSelectionGate!=null&&visible.levelProgress.level==10&&visible.jobSelectionGate.ready;
   }
 }
