@@ -3,13 +3,13 @@
 - Base `main`: `3b58a8d08805cf9031466fe0c50d56e17aa1344d`
 - Master: M001 / current 92-CSV baseline (no Master values changed)
 - Branch: `agent/world/20260910-1415`
-- Draft PR: https://github.com/ChanJoos/Project_dark_android/pull/11
+- Draft PR: pending creation after this commit
 
 ## Implemented
 
 - Added `world/WorldMoveTargetController.java`.
 - Ground tap and NPC approach are separate entry points.
-- New target replaces the active target using a monotonically increasing request ID.
+- New target replaces the active target using a monotonically increasing request ID and reports the superseded request ID.
 - Direct input, action input and explicit cancellation have distinct reasons.
 - Four-neighbour A* produces WALK waypoints and calls the runtime-provided `Walker.tryWalkStep`; it never writes player coordinates or teleports.
 - World bounds and `NavigationWorld.canPlayerOccupy` gate every path node.
