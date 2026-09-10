@@ -16,10 +16,14 @@ public final class CharacterRenderer {
   public static final String EVIDENCE="B";
   public static final String ASSET_STATUS="PENDING_CROP";
 
+  /** [ADAPTED] Presentation-only scale. Logical/world coordinates are intentionally unchanged. */
+  public static final float PLAYER_RENDER_SCALE=1.35f;
+  public static final float SHADOW_RENDER_SCALE=0.72f;
+
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
   public enum Layer { BODY, HAIR, EQUIPMENT, WEAPON, EFFECT }
-  public enum EffectFamily { NONE, CAST, THROW, PUNCH, KICK, SKILL, HIT }
+  public enum EffectFamily { NONE, CAST, MAGIC, THROW, PUNCH, KICK, SKILL, HIT }
 
   public static final List<Layer> DRAW_ORDER=Collections.unmodifiableList(Arrays.asList(
       Layer.BODY,Layer.HAIR,Layer.EQUIPMENT,Layer.WEAPON,Layer.EFFECT));
@@ -55,11 +59,17 @@ public final class CharacterRenderer {
     if(pose==null||pose.direction==null||pose.state==null)throw new IllegalArgumentException("Character pose requires direction and state");
     int frame=pose.state==State.WALK?((int)(pose.walkClock*8f)%4):0; // [B] prototype cadence
     float bob=(frame==1||frame==3)?-2f:0f;
+
+    // Shadow and body scale are presentation-only. pose.x/pose.y remain world/screen anchor coordinates.
+    float shadowHalfWidth=13f*SHADOW_RENDER_SCALE;
+    float shadowHalfHeight=4f*SHADOW_RENDER_SCALE;
     p.setColor(pose.hitFlash?0x99ff7766:0x66000000);
-    c.drawOval(new RectF(pose.x-13,pose.y-4,pose.x+13,pose.y+4),p);
+    c.drawOval(new RectF(pose.x-shadowHalfWidth,pose.y-shadowHalfHeight,
+        pose.x+shadowHalfWidth,pose.y+shadowHalfHeight),p);
+
     c.save();
-    c.translate(pose.x,pose.y-56+bob);
-    c.scale(2f,2f);
+    c.translate(pose.x,pose.y-(28f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE);
+    c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
     c.translate(-8,0);
     for(Layer layer:DRAW_ORDER)drawLayer(c,pose,layer,frame);
     c.restore();
@@ -109,7 +119,7 @@ public final class CharacterRenderer {
     c.drawLine(left?2:15,14,left?-7:23,7,p); // [B] generic weapon placeholder
   }
 
-  /** Owns all player-local prototype action effects formerly drawn by GameView.drawActionFx(). */
+  /** Owns player-local prototype action effects. Combat semantics stay outside this renderer. */
   private void drawEffect(Canvas c,Pose pose){
     EffectFamily family=pose.hitFlash?EffectFamily.HIT:pose.effectFamily;
     if(family==EffectFamily.NONE)return;
@@ -121,6 +131,13 @@ public final class CharacterRenderer {
       case CAST:
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaa78b9ff);
         c.drawCircle(8,-7,5+9*q,p);c.drawCircle(8,-7,12-4*q,p);p.setStyle(Paint.Style.FILL);break;
+      case MAGIC:
+        // [ADAPTED] Distinct presentation hook so MAGIC can be visually distinguished from generic CAST/SKILL.
+        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2f);p.setColor(0xaa9d7cff);
+        c.drawCircle(8,-7,4+7*q,p);
+        c.drawLine(8,-16-(5*q),8,-1+(3*q),p);
+        c.drawLine(-1+(4*q),-7,17-(4*q),-7,p);
+        p.setStyle(Paint.Style.FILL);break;
       case THROW:
         p.setColor(0xffffd76b);c.drawCircle(8+sx*27.5f*q,13+sy*17.5f*q,2,p);break;
       case PUNCH:
@@ -142,4 +159,5 @@ public final class CharacterRenderer {
   public boolean hasRequiredStateContract(){return CharacterRendererAudit.passes();}
   public String contractAuditSummary(){return CharacterRendererAudit.summary();}
   public boolean ownsPlayerLocalEffects(){return true;}
+  public float playerRenderScale(){return PLAYER_RENDER_SCALE;}
 }
