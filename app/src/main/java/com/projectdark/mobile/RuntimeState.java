@@ -53,9 +53,10 @@ public final class RuntimeState {
   private final RuntimeMetrics metrics=new RuntimeMetrics();
   private final RpgProgressionState rpg=new RpgProgressionState();
 
-  public RuntimeState(){this(BootMode.MILLES);}
+  public RuntimeState(){this(BootMode.MILLES,false);}
+  public RuntimeState(BootMode bootMode){this(bootMode,false);}
 
-  public RuntimeState(BootMode bootMode){
+  RuntimeState(BootMode bootMode,boolean skipPoteRuntimeE2EAudit){
     this.bootMode=bootMode==null?BootMode.MILLES:bootMode;
     if(!RewardPipelineAudit.verify())throw new IllegalStateException("Direct auto-loot contract audit failed");
     if(!MonsterDefeatIdempotencyAudit.verify())throw new IllegalStateException("Monster defeat reward idempotency audit failed");
@@ -73,6 +74,8 @@ public final class RuntimeState {
       for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
       for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
     }
+
+    if(!skipPoteRuntimeE2EAudit&&!PotePrototypeRuntimeE2EAudit.verify())throw new IllegalStateException("Pote prototype runtime E2E audit failed");
   }
 
   public BootMode bootMode(){return bootMode;}
