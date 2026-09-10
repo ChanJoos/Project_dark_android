@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Evidence-safe trace/transform contract for MAP_MILLES.
- *
- * Master tile coordinates and current prototype screen coordinates are intentionally distinct spaces.
- * No tile->screen transform is exposed until authenticated, version-compatible trace anchors exist.
- */
+/** Evidence-safe trace/transform contract for MAP_MILLES. */
 public final class MillesTraceContract {
   public enum CoordinateSpace { MASTER_TILE, PROTOTYPE_SCREEN }
   public enum TransformStatus { PENDING_ANCHORS, CALIBRATED }
@@ -29,33 +24,20 @@ public final class MillesTraceContract {
     MasterAnchor(String locationId,int tileX,int tileY){this.locationId=locationId;this.tileX=tileX;this.tileY=tileY;}
   }
 
-  /** A candidate correspondence never becomes usable merely because both coordinate pairs are present. */
   public static final class CalibrationAnchor {
     public final String sourceId,locationId,evidence;
     public final int tileX,tileY;
     public final float visualX,visualY;
     public final SourceEra era;
     public final AnchorStatus status;
-
-    public CalibrationAnchor(String sourceId,String locationId,int tileX,int tileY,
-        float visualX,float visualY,String evidence,SourceEra era,AnchorStatus status){
-      this.sourceId=sourceId;
-      this.locationId=locationId;
-      this.tileX=tileX;
-      this.tileY=tileY;
-      this.visualX=visualX;
-      this.visualY=visualY;
-      this.evidence=evidence;
-      this.era=era;
-      this.status=status;
+    public CalibrationAnchor(String sourceId,String locationId,int tileX,int tileY,float visualX,float visualY,
+        String evidence,SourceEra era,AnchorStatus status){
+      this.sourceId=sourceId;this.locationId=locationId;this.tileX=tileX;this.tileY=tileY;
+      this.visualX=visualX;this.visualY=visualY;this.evidence=evidence;this.era=era;this.status=status;
     }
-
     public boolean isVerifiedLegacyAnchor(){
-      return sourceId!=null&&!sourceId.isEmpty()
-          &&locationId!=null&&!locationId.isEmpty()
-          &&evidence!=null&&!evidence.isEmpty()
-          &&era==SourceEra.LEGACY_OLD_MAP
-          &&status==AnchorStatus.VERIFIED;
+      return sourceId!=null&&!sourceId.isEmpty()&&locationId!=null&&!locationId.isEmpty()
+          &&evidence!=null&&!evidence.isEmpty()&&era==SourceEra.LEGACY_OLD_MAP&&status==AnchorStatus.VERIFIED;
     }
   }
 
@@ -66,6 +48,7 @@ public final class MillesTraceContract {
 
   private final List<MasterAnchor> masterAnchors;
   private final List<CalibrationAnchor> calibrationAnchors;
+  private final MillesVisualEvidenceRegistry visualEvidence=new MillesVisualEvidenceRegistry();
 
   public MillesTraceContract(MillesMasterManifest manifest){
     if(manifest==null||!manifest.hasCanonicalIdentity())throw new IllegalArgumentException("Milles Master manifest required");
@@ -73,7 +56,6 @@ public final class MillesTraceContract {
     for(MillesMasterManifest.LocationRecord location:manifest.locations())
       anchors.add(new MasterAnchor(location.locationId,location.x,location.y));
     masterAnchors=Collections.unmodifiableList(anchors);
-    // PASS 21: source registry has candidates, but no pixel-verified legacy correspondence yet.
     calibrationAnchors=Collections.emptyList();
   }
 
@@ -81,16 +63,12 @@ public final class MillesTraceContract {
   public CoordinateSpace prototypeCoordinateSpace(){return CoordinateSpace.PROTOTYPE_SCREEN;}
   public List<MasterAnchor> masterAnchors(){return masterAnchors;}
   public List<CalibrationAnchor> calibrationAnchors(){return calibrationAnchors;}
+  public MillesVisualEvidenceRegistry visualEvidence(){return visualEvidence;}
 
-  public TransformStatus transformStatus(){
-    return hasCalibrationEvidence() ? TransformStatus.CALIBRATED : TransformStatus.PENDING_ANCHORS;
-  }
+  public TransformStatus transformStatus(){return hasCalibrationEvidence()?TransformStatus.CALIBRATED:TransformStatus.PENDING_ANCHORS;}
 
-  /**
-   * Calibration requires two verified LEGACY_OLD_MAP correspondences with distinct tile and visual
-   * positions. Modern/event coordinates are intentionally excluded until map-version compatibility is proven.
-   */
   public boolean hasCalibrationEvidence(){
+    if(visualEvidence.verifiedCalibrationSourceCount()==0)return false;
     CalibrationAnchor first=null;
     for(CalibrationAnchor anchor:calibrationAnchors){
       if(!anchor.isVerifiedLegacyAnchor())continue;
@@ -102,30 +80,18 @@ public final class MillesTraceContract {
     return false;
   }
 
-  /**
-   * Deliberately refuses projection while calibration is unresolved. Callers must not infer a transform
-   * from screenshots, prototype blockers, player spawn, modern event coordinates, or arbitrary fitting.
-   */
   public ScreenPoint projectMasterToScreen(int tileX,int tileY){
     if(!canProject())throw new IllegalStateException("MAP_MILLES tile->screen transform is PENDING_ANCHORS");
     throw new IllegalStateException("MAP_MILLES calibrated projection implementation is not yet installed");
   }
 
   public boolean canProject(){return transformStatus()==TransformStatus.CALIBRATED;}
-
   public boolean hasRequiredTraceLayers(){return TraceLayer.values().length==6;}
-
-  public boolean preservesCoordinateSeparation(){
-    return canonicalCoordinateSpace()!=prototypeCoordinateSpace()&&!canProject();
-  }
+  public boolean preservesCoordinateSeparation(){return canonicalCoordinateSpace()!=prototypeCoordinateSpace()&&!canProject();}
 
   public boolean passesAudit(){
-    return MAP_ID.equals("MAP_MILLES")
-        &&SOURCE_STATUS.equals("SOURCE_FOUND")
-        &&TRACE_STATUS.equals("READY_FOR_TRACE")
-        &&masterAnchors.size()==6
-        &&hasRequiredTraceLayers()
-        &&calibrationAnchors.isEmpty()
-        &&preservesCoordinateSeparation();
+    return MAP_ID.equals("MAP_MILLES")&&SOURCE_STATUS.equals("SOURCE_FOUND")&&TRACE_STATUS.equals("READY_FOR_TRACE")
+        &&masterAnchors.size()==6&&hasRequiredTraceLayers()&&calibrationAnchors.isEmpty()
+        &&visualEvidence.preservesEvidenceGate()&&preservesCoordinateSeparation();
   }
 }
