@@ -8,12 +8,14 @@ import java.util.List;
  * Evidence-safe trace/transform contract for MAP_MILLES.
  *
  * Master tile coordinates and current prototype screen coordinates are intentionally distinct spaces.
- * No tile->screen transform is exposed until authenticated trace anchors are available.
+ * No tile->screen transform is exposed until authenticated, version-compatible trace anchors exist.
  */
 public final class MillesTraceContract {
   public enum CoordinateSpace { MASTER_TILE, PROTOTYPE_SCREEN }
   public enum TransformStatus { PENDING_ANCHORS, CALIBRATED }
   public enum TraceLayer { TILE, OBJECT, COLLISION, NPC, MONSTER_SPAWN, PORTAL }
+  public enum SourceEra { LEGACY_OLD_MAP, MODERN_MAP, EVENT_MAP, UNKNOWN }
+  public enum AnchorStatus { PENDING_PIXEL_IDENTIFICATION, VERIFIED }
 
   public static final String MAP_ID=MillesMasterManifest.MAP_ID;
   public static final String SOURCE_STATUS="SOURCE_FOUND";
@@ -27,12 +29,43 @@ public final class MillesTraceContract {
     MasterAnchor(String locationId,int tileX,int tileY){this.locationId=locationId;this.tileX=tileX;this.tileY=tileY;}
   }
 
+  /** A candidate correspondence never becomes usable merely because both coordinate pairs are present. */
+  public static final class CalibrationAnchor {
+    public final String sourceId,locationId,evidence;
+    public final int tileX,tileY;
+    public final float visualX,visualY;
+    public final SourceEra era;
+    public final AnchorStatus status;
+
+    public CalibrationAnchor(String sourceId,String locationId,int tileX,int tileY,
+        float visualX,float visualY,String evidence,SourceEra era,AnchorStatus status){
+      this.sourceId=sourceId;
+      this.locationId=locationId;
+      this.tileX=tileX;
+      this.tileY=tileY;
+      this.visualX=visualX;
+      this.visualY=visualY;
+      this.evidence=evidence;
+      this.era=era;
+      this.status=status;
+    }
+
+    public boolean isVerifiedLegacyAnchor(){
+      return sourceId!=null&&!sourceId.isEmpty()
+          &&locationId!=null&&!locationId.isEmpty()
+          &&evidence!=null&&!evidence.isEmpty()
+          &&era==SourceEra.LEGACY_OLD_MAP
+          &&status==AnchorStatus.VERIFIED;
+    }
+  }
+
   public static final class ScreenPoint {
     public final float x,y;
     ScreenPoint(float x,float y){this.x=x;this.y=y;}
   }
 
   private final List<MasterAnchor> masterAnchors;
+  private final List<CalibrationAnchor> calibrationAnchors;
 
   public MillesTraceContract(MillesMasterManifest manifest){
     if(manifest==null||!manifest.hasCanonicalIdentity())throw new IllegalArgumentException("Milles Master manifest required");
@@ -40,26 +73,47 @@ public final class MillesTraceContract {
     for(MillesMasterManifest.LocationRecord location:manifest.locations())
       anchors.add(new MasterAnchor(location.locationId,location.x,location.y));
     masterAnchors=Collections.unmodifiableList(anchors);
+    // PASS 21: source registry has candidates, but no pixel-verified legacy correspondence yet.
+    calibrationAnchors=Collections.emptyList();
   }
 
   public CoordinateSpace canonicalCoordinateSpace(){return CoordinateSpace.MASTER_TILE;}
   public CoordinateSpace prototypeCoordinateSpace(){return CoordinateSpace.PROTOTYPE_SCREEN;}
-  public TransformStatus transformStatus(){return TransformStatus.PENDING_ANCHORS;}
   public List<MasterAnchor> masterAnchors(){return masterAnchors;}
+  public List<CalibrationAnchor> calibrationAnchors(){return calibrationAnchors;}
+
+  public TransformStatus transformStatus(){
+    return hasCalibrationEvidence() ? TransformStatus.CALIBRATED : TransformStatus.PENDING_ANCHORS;
+  }
+
+  /**
+   * Calibration requires two verified LEGACY_OLD_MAP correspondences with distinct tile and visual
+   * positions. Modern/event coordinates are intentionally excluded until map-version compatibility is proven.
+   */
+  public boolean hasCalibrationEvidence(){
+    CalibrationAnchor first=null;
+    for(CalibrationAnchor anchor:calibrationAnchors){
+      if(!anchor.isVerifiedLegacyAnchor())continue;
+      if(first==null){first=anchor;continue;}
+      boolean distinctTile=first.tileX!=anchor.tileX||first.tileY!=anchor.tileY;
+      boolean distinctVisual=first.visualX!=anchor.visualX||first.visualY!=anchor.visualY;
+      if(distinctTile&&distinctVisual)return true;
+    }
+    return false;
+  }
 
   /**
    * Deliberately refuses projection while calibration is unresolved. Callers must not infer a transform
-   * from the screenshot, prototype blockers, player spawn, or arbitrary fitting.
+   * from screenshots, prototype blockers, player spawn, modern event coordinates, or arbitrary fitting.
    */
   public ScreenPoint projectMasterToScreen(int tileX,int tileY){
-    throw new IllegalStateException("MAP_MILLES tile->screen transform is PENDING_ANCHORS");
+    if(!canProject())throw new IllegalStateException("MAP_MILLES tile->screen transform is PENDING_ANCHORS");
+    throw new IllegalStateException("MAP_MILLES calibrated projection implementation is not yet installed");
   }
 
   public boolean canProject(){return transformStatus()==TransformStatus.CALIBRATED;}
 
-  public boolean hasRequiredTraceLayers(){
-    return TraceLayer.values().length==6;
-  }
+  public boolean hasRequiredTraceLayers(){return TraceLayer.values().length==6;}
 
   public boolean preservesCoordinateSeparation(){
     return canonicalCoordinateSpace()!=prototypeCoordinateSpace()&&!canProject();
@@ -71,6 +125,7 @@ public final class MillesTraceContract {
         &&TRACE_STATUS.equals("READY_FOR_TRACE")
         &&masterAnchors.size()==6
         &&hasRequiredTraceLayers()
+        &&calibrationAnchors.isEmpty()
         &&preservesCoordinateSeparation();
   }
 }
