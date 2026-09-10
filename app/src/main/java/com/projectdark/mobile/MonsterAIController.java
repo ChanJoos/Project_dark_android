@@ -8,6 +8,7 @@ package com.projectdark.mobile;
  * - The thresholds, movement speed, damage and cooldown below preserve the pre-existing [B]
  *   prototype behavior exactly; they are not promoted to original-game facts.
  * - WANDER and DETECT remain contract states only. No behavior is invented for them here.
+ * - Master-backed canonical monsters do not silently inherit this prototype AI profile.
  */
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
@@ -17,15 +18,21 @@ public final class MonsterAIController {
   private static final int ATTACK_DAMAGE_B = 4;
   private static final float ATTACK_COOLDOWN_B = 1.2f;
 
+  private final MonsterDefinitionRegistry definitions=new MonsterDefinitionRegistry();
+
   public void tick(RuntimeState state,float dt){
     if(state==null||!state.player().alive)return;
     for(RuntimeState.Monster m:state.monsters()){
       if(!m.alive)continue;
-      tickMonster(state,m,dt);
+      MonsterDefinition def=definitions.resolve(m.id);
+      // Current [B] combat behavior is valid only for explicit prototype fixtures.
+      // Canonical/unknown monsters remain inert until their evidenced AI/action profile is projected.
+      if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING)continue;
+      tickPrototypeMonster(state,m,dt);
     }
   }
 
-  private void tickMonster(RuntimeState state,RuntimeState.Monster m,float dt){
+  private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
