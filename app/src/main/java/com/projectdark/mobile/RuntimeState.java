@@ -59,6 +59,7 @@ public final class RuntimeState {
     if(!RewardPipelineAudit.verify())throw new IllegalStateException("Direct auto-loot contract audit failed");
     if(!MonsterDefeatIdempotencyAudit.verify())throw new IllegalStateException("Monster defeat reward idempotency audit failed");
     if(!MonsterSpawnAdmissionAudit.verify(world))throw new IllegalStateException("Monster spawn admission audit failed");
+    if(!RpgEquipmentInteractionAudit.verify())throw new IllegalStateException("RPG equipment interaction audit failed");
     for(RectF r:world.blockers())obstacles.add(new RectF(r));
     for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
     for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
@@ -128,7 +129,7 @@ public final class RuntimeState {
   private boolean npcOccupied(float x,float y,float radius){for(Npc n:npcs){float min=radius+NPC_RADIUS+2f;if(distance(x,y,n.x,n.y)<min)return true;}return false;}
 
   public Npc hitNpc(float x,float y,float radius){for(Npc n:npcs){float dx=x-n.x,dy=y-n.y;if(dx*dx+dy*dy<=radius*radius)return n;}return null;}
-  public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;}return null;}
+  public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters()){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;}return null;}
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 
