@@ -91,9 +91,8 @@ Persist IDs and mutable state, not duplicated canonical definitions. Save data m
 
 ## Ownership boundaries
 
-- World·Character owns map/entity presentation, character animation and world interaction plumbing; monster reward ground entities are not part of its target contract.
-- Combat·Monster owns combat resolution/action execution and monster runtime AI, and emits one `MONSTER_DEFEATED` event.
-- RPG·Progression owns definitions/state for items, inventory, equipment, stats, EXP, reward resolution and progression, including direct reward inventory mutation.
-- Integrator·UX·QA owns mobile orchestration/UI, NPC/Quest/AUTO integration, cross-module contract enforcement and regression gates.
+Operational ownership follows docs/DIRECTOR_GUIDE.md (THREE-20260910): World owns map/movement, Character owns sprite/render/motion, Director owns runtime integration and current-loop UX/Combat/RPG/save fixes. This replaces historical scheduled-worker assignments; domain contracts remain unchanged.
 
-Cross-domain access should occur through stable contracts/data definitions, not by duplicating logic in GameView.
+Combat emits MONSTER_DEFEATED; RPG resolves and mutates rewards through its existing centralized APIs. Director connects and fixes these modules without cloning their internals into GameView. World step direction must be consumed consistently by Character.
+
+Cross-domain access uses stable existing APIs/data definitions. Add only the minimum adapter needed to complete the active playable slice.

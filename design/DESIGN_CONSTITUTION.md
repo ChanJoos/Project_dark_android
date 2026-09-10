@@ -1,6 +1,8 @@
 # PROJECT DARK — DESIGN CONSTITUTION
 
 Status: CANONICAL / Source of Truth gate
+
+Current amendments: `design/PLAYTEST_CANON_20260910_2149.md` supersedes conflicting older scale/movement/world-expansion requirements below. Operational ownership and execution priorities follow `docs/DIRECTOR_GUIDE.md` (THREE-20260910, three active roles). One coherent village screen is the first production milestone; do not expand bounds before its acceptance.
 Updated: 2026-09-10
 
 ## 1. Product canon
