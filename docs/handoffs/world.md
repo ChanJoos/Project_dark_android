@@ -54,6 +54,17 @@
 - BUILD VERIFIED (full Gradle/APK): not claimed.
 - RUNTIME VERIFIED (device): no; pending Director wiring and APK playtest.
 
+## 2026-09-10 Director integration blocker — superseding movement canon
+
+Latest user canon is now `design/PLAYTEST_CANON_20260910_2149.md` as corrected on main. The current `WorldMoveTargetController` does **not** satisfy it and must not be treated as tile-locked movement:
+
+- current path lattice uses `DEFAULT_CELL_SIZE=16f`, not the 64×32 isometric tile adjacency contract;
+- A* expands cardinal lattice neighbors `(±1,0)/(0,±1)` in that 16-unit world grid rather than explicit NW/NE/SW/SE adjacent isometric tiles;
+- runtime `tick()` normalizes arbitrary waypoint vectors and consumes `walkSpeed*dt`, so logical movement advances by fractional/free-pixel distances;
+- `reconstruct()` may append the exact arbitrary ground tap `(gx,gy)` as a final waypoint, explicitly creating a non-tile-centered final leg.
+
+Therefore current main fails the new acceptance gate for one-step tile adjacency, zero drift, tile-center final snap, and direct World step-direction delivery to Character. Do not expand the village further until this controller is replaced/reworked around actual isometric tile nodes and the required one-step/round-trip/10-step/camera/path-adjacency audits pass.
+
 ## Next World priority
 
-After Director proves the live renderer is visible, continue actual map production from screenshots/reference evidence: district-specific structure palettes, collision-aware vegetation clusters, road shoulders and source-backed replacements. Do not report map completion before the live APK shows the TILE/OBJECT path.
+P0 is no longer map expansion. First implement the corrected 4-diagonal, one-adjacent-isometric-tile movement contract. Only after it passes should work continue on a single coherent one-screen village slice with properly projected buildings and props.
