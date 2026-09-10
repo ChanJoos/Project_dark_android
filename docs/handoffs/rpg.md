@@ -1,67 +1,76 @@
 # RPG Agent Handoff
 
-Run: `20260910-1338`
+Run: `20260910-1454`
 Branch: `agent/rpg/20260910-1338`
-Base main at branch creation: `611cd2342a8ca010211c28794c1004663db8b1ef`
 Draft PR: `#5`
 Role: RPG · Progression · Persistence
 
-## PASS 25 continuation — durable file persistence
+## PASS 26 — visible progression/action projection
 
-Continued this existing Draft PR after re-reading current `main` at `3b58a8d08805cf9031466fe0c50d56e17aa1344d`. The PR remains mergeable and no newer main-side RPG persistence implementation was found.
+User direction for this pass: stop spending the pass on persistence internals and make RPG state consumable by the live UI.
 
-- Added `RpgSaveCodec`: deterministic schema-v1 binary encoding with SHA-256 integrity digest.
-- The codec preserves nullable unknown EXP/Gold and stores only mutable IDs/state, never canonical definitions.
-- Decode outcomes are explicit: `DECODED`, `CHECKSUM_MISMATCH`, `UNSUPPORTED_SCHEMA`, `MALFORMED`.
-- Added `RpgFileSaveStore`: callers provide an app-private directory and safe slot ID.
-- Save writes and `fsync`s a temporary file, rotates the previous complete primary to `.bak`, then atomically replaces the primary where supported.
-- Load prefers the current valid save and falls back to the last-known-good backup if the newest file is torn or corrupt.
-- Load outcomes are explicit: `LOADED`, `LOADED_BACKUP`, `EMPTY`, `CORRUPT`, `IO_ERROR`.
-- Added `RpgFileSaveStoreAudit` covering restart load, second-save replacement, corrupt-primary backup recovery and checksum rejection.
+Ownership boundary is preserved: this RPG branch does **not** modify `GameView.java`, CombatResolver, map/camera/pathfinding, character rendering, or NPC presentation.
 
-PASS 25 validation:
-- isolated Java compile: PASS via `java com.sun.tools.javac.Main` with a minimal enum stub only for the pre-existing snapshot dependency;
-- `RpgFileSaveStoreAudit`: PASS;
-- full Gradle/APK and Android runtime: not verified in this worker image (`gradle` executable unavailable; workflow is main-only).
+### Implemented
 
-Director integration request:
-1. Construct `RpgFileSaveStore(context.getFilesDir(), "player-1")` or another validated profile slot.
-2. Save `rpg.saveSnapshot()` at explicit checkpoints/background transitions.
-3. On boot, call `load()`, then apply only a non-null snapshot via `rpg.restoreSnapshot()` and surface backup recovery/corrupt outcomes.
-4. Do not silently create zero EXP/Gold when the snapshot preserves `null`.
+1. Expanded `RpgActionMetadataCatalog` from prototype-only action metadata into a canonical-aware stable HUD catalog.
+   - Existing executing CAST/SKILL/KICK prototype bindings stay explicit `[B]` and `runtimeBound=true`.
+   - Added canonical `Skill_Master.csv` projection for:
+     - `SK_전사_001` 숏블레이드
+     - `SK_전사_002` 더블어택
+     - `SK_전사_003` 윈드블레이드
+     - `SK_전사_004` 디바투
+     - `SK_전사_005` 트리플어택
+   - Exposes `actionId/name/iconKey/jobCode/circle/actionClass/resourceCost/cooldown/runtimeBound/learned/state/evidence`.
+   - Unresolved Master resource-cost/cooldown values stay nullable. They are not converted to zero.
+   - `visibleFor(rpg)` provides the HUD-facing projection without coupling HUD to combat execution internals.
+   - Learned canonical IDs now pass the same `isKnownAction()` validation used by save/restore.
 
-## Source-of-Truth gate
-Read current main canonical contracts, latest RPG history, and `master/data/Skill_Master.csv`. `docs/handoffs/rpg.md` did not exist on main at run start, so this file establishes the handoff surface.
+2. Added `RpgVisibleProgressionPresentation`.
+   - Single read-only snapshot for visible RPG UI.
+   - Exposes player job/level/nullable EXP/nullable Gold/progression node.
+   - Reuses existing inventory rows.
+   - Exposes HUD action metadata via `RpgActionMetadataCatalog.visibleFor(rpg)`.
+   - Converts the latest reward resolution into player-facing reward lines such as `EXP +...`, `<item> xN 자동 획득`, or an explicit reward-data-pending line.
+   - `numericOrPending()` prevents unresolved numeric values from silently rendering as zero.
+
+### Existing live UI bridge already on main
+
+Current `GameView` already owns and draws `RpgInventoryPresentation`, an inventory-open panel, selected item detail, equip outcome and latest reward status. `RuntimeState.tick()` already forwards the combat ledger into `rpg.consumeCombat(events,this)`. Therefore the RPG state is already in the live runtime path; the missing integration is presentation breadth, not another RPG state instance.
+
+### Integrator / UX request — next visible wiring
+
+Consume `new RpgVisibleProgressionPresentation().snapshot(state.rpg())` from the Integrator-owned HUD/GameView layer.
+
+Recommended visible mapping:
+- bottom player panel: `player.jobCode`, `player.level`, `player.exp`, `player.gold`;
+- SK/MAGIC quick-slot/detail overlay: `actions` using `name/iconKey/actionId/resourceCost/cooldown/learned/state`;
+- reward toast/chat line immediately after `MONSTER_DEFEATED`: `latestRewardLines`;
+- existing inventory panel continues using `RpgInventoryPresentation` rows.
+
+Do **not** reinterpret `PENDING_CROP:*` as a real icon asset and do not render null cost/cooldown as 0.
+
+### Reward truth boundary
 
 Authoritative reward flow remains:
 `MONSTER_DEFEATED -> reward resolution -> direct inventory grant -> EXP/Gold/quest progression`.
 Ground drop/pickup remains retired.
 
-## Delta in this branch
-- Added `RpgSaveSnapshot` schema v1. It persists mutable RPG IDs/state only: progression node, job, normal level/EXP, nullable Gold, reward sequence checkpoint, inventory, equipment, learned action IDs.
-- Added `RpgProgressionState.saveSnapshot()` and atomic fail-closed `restoreSnapshot()`.
-- Restore rejects unsupported schema, invalid canonical item IDs, invalid quantities, invalid equipment references/slots, unknown action IDs, invalid progression fields, and negative known Gold.
-- `lastCombatSequence` is persisted/restored so process restart cannot reset the RPG defeat/reward deduplication checkpoint.
-- Added persistent `learnedActionIds` and a validated mutation API.
-- Added stable `RpgActionMetadataCatalog` DTO/API exposing `actionId`, `name`, `iconKey`, `resourceCost`, `cooldown`, `learned/state`, evidence. Current runtime actions remain explicit prototype `[B]` fixtures; icon keys are `PENDING_CROP`.
-- Added `RpgPersistenceAudit` covering inventory round-trip, learned-action round-trip, nullable unresolved Gold preservation, non-zero defeat sequence persistence, same-sequence replay suppression after a fresh RPG instance restore, next-sequence acceptance, and atomic rejection of an unknown item ID.
+Current canonical drop probability/quantity remains unresolved for the known reward hints, so this RPG agent still does not fabricate deterministic item emission. An unresolved reward must remain visibly pending instead of manufacturing an item.
 
-## Evidence / 92-CSV projection status
-- `Skill_Master.csv` contains canonical skill IDs/names/job/circle/action classification and source/evidence fields. This branch does not silently replace the currently executing prototype `SkillDef` IDs with those canonical IDs because execution wiring is owned elsewhere and acquisition/resource/cooldown coverage is incomplete.
-- Starting Gold remains `null` / PENDING; no zero value was invented.
-- Starting normal EXP remains `null` / PENDING.
-- No drop probability/quantity was invented.
-- No EXP/Gold progression mutation was enabled.
-- Save payload stores mutable IDs/state, not duplicated canonical definitions.
+## Persistence state retained from PASS 25
 
-## Validation
-Repository workflow currently triggers only for pushes to `main` or manual dispatch, so this agent branch cannot run CI without changing a non-owned workflow or merging to main. No APK was packaged by this agent. Static review was performed against current Java signatures and `CombatLedger.Event` package visibility. Director/Integrator must run compile validation before merge.
+- `RpgSaveSnapshot` schema v1 persists progression/job/level/nullable EXP/nullable Gold/reward sequence/inventory/equipment/learned action IDs.
+- `RpgSaveCodec` provides deterministic binary encoding with SHA-256 integrity validation.
+- `RpgFileSaveStore` provides temp-write/fsync/replace plus last-known-good backup recovery.
+- `lastCombatSequence` persists, preserving defeat/reward idempotency across process restart.
 
-At PR creation, main had advanced beyond the branch base; the latest checked `RpgProgressionState.java` on main was still unchanged from the branch merge base, so no direct RPG-file concurrent edit was detected. PR remains draft.
+Director integration still required for Android app-private save directory + process-kill restore verification; do not move that lifecycle wiring into this RPG branch.
 
-## P0 next
-1. Add schema migration entry points before schema v2 exists; unknown future schemas already fail closed.
-2. Wire the durable store at the Director-owned Android lifecycle boundary and verify a real process-kill restart.
-3. Project canonical `Skill_Master.csv` metadata into an RPG-owned definition catalog with provenance/nullable unknowns, then map learned state onto those IDs without modifying CombatResolver/GameView.
-4. Expand item/action runtime projection incrementally from the 92 CSV baseline with source/evidence retained.
-5. Keep HUD/GameView integration outside this agent; consumers should use RPG DTOs only.
+## Next RPG P0
+
+1. Continue `Skill_Master.csv` projection beyond the first canonical slice, prioritizing actions for the first playable job path rather than broad low-value coverage.
+2. Add equivalent Magic Master projection if/when the canonical magic CSV contract is located and stable.
+3. Expand direct-grant outcome DTO so `INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / unresolved reward` can be surfaced verbatim by the visible reward feed.
+4. Resolve normal EXP start/threshold truth before enabling EXP mutation; resolved monster EXP facts alone are insufficient to invent a level curve.
+5. Keep all GameView/HUD rendering edits in Integrator ownership.
