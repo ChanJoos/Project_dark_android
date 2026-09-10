@@ -1,5 +1,43 @@
 # UX / NPC / Quest handoff
 
+## 2026-09-10 20:27 KST — original-inspired HUD/action-grid adaptation
+
+Branch: `agent/ux/auto-20260910-1958`
+
+### User-directed visual delta
+- Applied the user-approved reference direction directly to runtime HUD rather than generating another detached mockup.
+- `GameView` advanced to v0.74.
+- Left/top information architecture now follows the supplied original-game references more closely: compact top-left player HP/MP + level/buff block, left quest panel, top-right utility group + minimap, translucent bottom-center chat, bottom-left joystick.
+- Rebuilt the bottom-right combat shell around a 2x5 square quick-slot grid plus a large dedicated attack button, mode control and AUTO control.
+- Removed the previous text-heavy circular SKILL/MAG/KICK arrangement as the primary presentation.
+
+### Icon implementation
+- Added `ClassicHudIconAtlas.java`.
+- It reconstructs the supplied reference vocabulary as crisp procedural/vector icons: slash, wave, claw, burst, aura, flame, palm, spiral, body, comet, mode, auto and attack/sword motifs.
+- No whole screenshot or cropped screenshot texture is shipped in the runtime. The references are used as visual source; the runtime assets are `[ADAPTED]` reproductions.
+- Existing live actions are wired into the first three quick slots: SKILL, MAGIC and KICK. Remaining slots are visible quick-slot placeholders until stable learned-action metadata is available.
+- Large sword button invokes the existing ATTACK path. Existing combat calculation is not duplicated or modified.
+
+### Input/tap safety
+- HUD hit testing was updated to match the new visible panels, 2x5 quick-slot cells, attack button, mode/AUTO controls and utility icons.
+- Invisible broad interception rectangles were not reintroduced.
+- Generic empty-world taps still route to `WorldRuntimeAdapter.requestGroundScreenTap(...)` after modal/control/NPC/monster priority.
+- Existing `UxTapAcceptanceAudit` remains the regression gate and must still pass 10/10 on initial and moved camera.
+
+### Ownership boundaries
+- No World algorithms changed.
+- No CharacterRenderer internals changed.
+- No Combat resolver/math/MonsterAI changes.
+- No RPG mutation/reward/save internals changed.
+- AUTO remains presentation-only/locked until a stable player AUTO orchestration contract exists.
+
+### Device acceptance for this delta
+1. Visually confirm the lower-right 2x5 grid reads as one original-inspired skill deck, not isolated debug circles.
+2. SKILL/MAGIC/KICK slots and the large sword ATTACK button must invoke the same existing runtime action paths.
+3. Disabled/pressed/selected states must remain visually legible.
+4. Empty world around and between visible HUD regions must still accept tap-to-move with marker + WALK.
+5. Re-run `UxTapAcceptanceAudit` after integration.
+
 ## 2026-09-10 19:58 KST — playtest-canon tap/world/HUD integration
 
 Branch: `agent/ux/auto-20260910-1958`
