@@ -50,3 +50,43 @@ No `GameView.java`, map/camera/collision/pathfinding/portal, CombatResolver/Mons
 
 ### PR
 Draft PR #40: `Character: enforce diagonal facing across all presentation states`.
+
+---
+
+## 2026-09-10 17:39 KST — agent/character/20260910-1739
+
+### Source-of-Truth gate / continuity
+Re-read latest `main` (`405bd764dd38146304fb3939709cf0def17f6958`) canonical design, data contract, source-of-truth, `docs/DEV_HISTORY.md`, and `docs/DEV_HISTORY_PASS_23_WORLD_CHARACTER.md` before coding. No newer canonical commit exists after the directional-character canon. Continued directly from draft PR #40 head rather than starting an unrelated topic.
+
+### Actual unresolved seam found
+NPC and monster bodies are still drawn directly inside `GameView.java` (`drawNpcs` / `drawMonsters`). Character agent does not own that file, so replacing those calls there would violate the MECE boundary.
+
+### Completed renderer-owned delta
+Added `WorldEntityPresentationRenderer.java` and `WorldEntityPresentationAudit.java`:
+- independent NPC/monster presentation seam using the shared `CharacterRenderer.Direction` and `CharacterRenderer.State` contracts;
+- `[ADAPTED]` reduced presentation scales `NPC_RENDER_SCALE=0.84`, `MONSTER_RENDER_SCALE=0.88` with independent shadow scales;
+- `LOGICAL_FOOT_ANCHOR_Y=0` keeps runtime/world positions and collision radii untouched;
+- four diagonal NW/NE/SW/SE silhouettes with direction-dependent head/body offsets and far/near limb overlap;
+- NPC WALK stepping preserves facing rather than a frontal billboard;
+- generic monster placeholder uses a lower/hunched directional silhouette explicitly tagged `[B]`, not claimed as original LOD art;
+- ATTACK directional lunge, HIT recoil/flash, DEAD directional fall, selection ring and renderer-local effect hooks;
+- `presentationState(RuntimeState.Monster)` consumes existing monster runtime state without changing combat behavior;
+- `directionToward(...)` is presentation-only and never moves an entity;
+- all source sprite mappings remain `PENDING_CROP`.
+
+### Regression gate
+`WorldEntityPresentationAudit` verifies:
+- both actor kinds exist;
+- both render scales are below 1.0 and shadow scales remain below actor scales;
+- logical foot anchor remains zero;
+- all four directional transforms resolve correctly;
+- existing monster CHASE/WANDER, ATTACK, hitFlash and DEAD runtime states map to WALK, ATTACK, HIT and DEAD presentation states respectively.
+
+### Integration request — owner: Integrator/UX
+Replace the legacy direct primitive drawing inside `GameView.drawNpcs()` / `drawMonsters()` with `WorldEntityPresentationRenderer.draw(...)`. Integrator must own this wiring because Character agent is explicitly prohibited from modifying `GameView.java`. Feed/retain a last-known facing direction per entity so IDLE/HIT/DEAD do not collapse to a frontal or arbitrary orientation. Do not change collision radii or entity logical coordinates when adopting the renderer.
+
+### Remaining Character P0
+1. Integrator wiring of the new NPC/monster renderer seam is the concrete blocker to seeing this delta in the integrated APK.
+2. Once wired, device-playtest NPC/monster proportions against the player-approved 0.92 player scale and adjust only presentation constants if needed.
+3. Continue source-backed directional sprite acquisition; retain `PENDING_CROP` until positive identification.
+4. After actual source crops exist, bind per-direction assets without changing the logical/state contracts introduced here.
