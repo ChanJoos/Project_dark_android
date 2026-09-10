@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-/** PROJECT DARK v0.66 - integrated world/action/NPC/combat/RPG equipment interaction prototype. */
+/** PROJECT DARK v0.67 - integrated world/action/NPC/combat/RPG equipment detail prototype. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -153,50 +153,58 @@ public final class GameView extends View {
 
   private void panel(Canvas c,float l,float t,float r,float b){p.setColor(0x9a0b0b0b);p.setStyle(Paint.Style.FILL);c.drawRoundRect(new RectF(l,t,r,b),10,10,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xaaad9364);c.drawRoundRect(new RectF(l,t,r,b),10,10,p);p.setStyle(Paint.Style.FILL);}private void text(Canvas c,String s,float x,float y,float size){p.setTextSize(size);p.setColor(0xffeee4cf);c.drawText(s,x,y,p);}private void bar(Canvas c,float l,float t,float r,float b,int color,float ratio){ratio=Math.max(0,Math.min(1,ratio));p.setColor(0xb51a1714);c.drawRoundRect(new RectF(l,t,r,b),5,5,p);p.setColor(color);c.drawRoundRect(new RectF(l,t,l+(r-l)*ratio,b),5,5,p);}
 
-  private void drawHud(Canvas c){RuntimeState.Monster selected=combat.target();RuntimeMetrics metrics=state.metrics();panel(c,12,12,165,116);text(c,"GROUP",24,31,12);String[] n={"조춘찬","수수료좀챙","이루","별빛영혼"};for(int i=0;i<4;i++){text(c,n[i],27,50+i*15,10);bar(c,91,42+i*15,154,48+i*15,0xffdf3342,1f);}panel(c,176,12,320,70);text(c,"퀘스트",190,32,13);text(c,"밀레스의 첫걸음 0/4",190,52,10);panel(c,372,12,604,55);if(selected!=null){text(c,selected.name,405,29,11);bar(c,392,36,584,44,0xffe21d2e,selected.hp/(float)selected.maxHp);}else{text(c,"타깃 없음",456,31,11);}panel(c,714,12,902,124);text(c,"밀레스",728,31,11);p.setColor(0xaa090909);c.drawRect(728,38,887,104,p);text(c,"X:"+(int)state.player().x+" Y:"+(int)state.player().y,800,117,9);String[] menu={"≡","▣","Q","G","W","⚙"};for(int i=0;i<6;i++){panel(c,912,20+i*50,948,58+i*50);text(c,menu[i],925,45+i*50,15);}panel(c,12,304,272,382);text(c,"[일반] 밀레스",23,326,9);text(c,"타깃/접근/대화/전투 프로토타입",23,342,9);text(c,"격파 "+metrics.monsterDefeats()+" · 피격 "+metrics.playerHits()+" · DMG "+metrics.damageDealt(),23,358,9);if(feedbackClock>0)text(c,feedback,23,374,10);p.setColor(0x33101010);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0x99d8c49b);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.FILL);p.setColor(0x997e7057);c.drawCircle(knobX,knobY,24,p);panel(c,337,462,608,528);text(c,"Lv 1",351,486,12);bar(c,400,474,594,485,0xffe62c42,state.player().hp/(float)state.player().maxHp);bar(c,400,490,594,501,0xff2388df,state.player().mp/(float)state.player().maxMp);bar(c,400,507,594,518,0xff48b84d,.35f);String[] slots={"HP","MP","P","SK","K"};for(int i=0;i<5;i++)round(c,650+i*48,466,20,slots[i]);cooldown(c,698,466,20,combat.castCooldown(),SkillDef.CAST_PROTO.cooldown);cooldown(c,794,466,20,combat.skillCooldown(),SkillDef.SKILL_PROTO.cooldown);cooldown(c,842,466,20,combat.kickCooldown(),SkillDef.KICK_PROTO.cooldown);round(c,895,478,34,"ATK");cooldown(c,895,478,34,combat.attackCooldown(),combat.attackDef().cooldown);round(c,920,516,26,"AUTO");text(c,combat.attackDef().label,840,530,8);}
+  private void drawHud(Canvas c){RuntimeState.Monster selected=combat.target();RuntimeMetrics metrics=state.metrics();panel(c,12,12,165,116);text(c,"GROUP",24,31,12);String[] n={"조춘찬","수수료좀챙","이루","별빛영혼"};for(int i=0;i<4;i++){text(c,n[i],27,50+i*15,10);bar(c,91,42+i*15,154,48+i*15,0xffdf3342,1f);}panel(c,176,12,320,70);text(c,"퀘스트",190,32,13);text(c,"밀레스의 첫걸음 0/4",190,52,10);panel(c,372,12,604,55);if(selected!=null){text(c,selected.name,405,29,11);bar(c,392,36,584,44,0xffe21d2e,selected.hp/(float)selected.maxHp);}else{text(c,"타깃 없음",456,31,11);}panel(c,714,12,902,124);text(c,"밀레스",728,31,11);p.setColor(0xaa090909);c.drawRect(728,38,887,104,p);text(c,"X:"+(int)state.player().x+" Y:"+(int)state.player().y,800,117,9);String[] menu={"≡","▣","Q","G","W","⚙"};for(int i=0;i<6;i++){panel(c,912,20+i*50,948,58+i*50);text(c,menu[i],925,45+i*50,15);}panel(c,12,304,272,382);text(c,"[일반] 밀레스",23,326,9);text(c,"타깃/접근/대화/전투 프로토타입",23,342,9);text(c,"격파 "+metrics.monsterDefeats()+" · 피격 "+metrics.playerHits()+" · DMG "+metrics.damageDealt(),23,358,9);if(feedbackClock>0)text(c,feedback,23,374,10);p.setColor(0x33101010);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0x99d8c49b);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.FILL);p.setColor(0x997e7057);c.drawCircle(knobX,knobY,24,p);panel(c,337,462,608,528);Integer level=state.rpg().normalLevel();text(c,"Lv "+(level==null?"?":level),351,486,12);bar(c,400,474,594,485,0xffe62c42,state.player().hp/(float)state.player().maxHp);bar(c,400,490,594,501,0xff2388df,state.player().mp/(float)state.player().maxMp);bar(c,400,507,594,518,0xff48b84d,.35f);String[] slots={"HP","MP","P","SK","K"};for(int i=0;i<5;i++)round(c,650+i*48,466,20,slots[i]);cooldown(c,698,466,20,combat.castCooldown(),SkillDef.CAST_PROTO.cooldown);cooldown(c,794,466,20,combat.skillCooldown(),SkillDef.SKILL_PROTO.cooldown);cooldown(c,842,466,20,combat.kickCooldown(),SkillDef.KICK_PROTO.cooldown);round(c,895,478,34,"ATK");cooldown(c,895,478,34,combat.attackCooldown(),combat.attackDef().cooldown);round(c,920,516,26,"AUTO");text(c,combat.attackDef().label,840,530,8);}
+
   private void drawInventory(Canvas c){
     if(!inventoryOpen)return;
-    panel(c,620,132,900,410);
-    text(c,"인벤토리",638,156,14);
+    panel(c,606,124,904,430);
+    text(c,"인벤토리",622,148,14);
     Integer level=state.rpg().normalLevel();
-    text(c,"평민 · Lv "+(level==null?"?":level),638,174,9);
+    text(c,"평민 · Lv "+(level==null?"?":level),622,166,9);
     List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());
     String selectedId=rpgInteraction.selectedInventoryItemId();
-    if(rows.isEmpty())text(c,"보유 아이템 없음",638,205,11);
+    if(rows.isEmpty())text(c,"보유 아이템 없음",622,196,11);
     else{
-      int limit=Math.min(7,rows.size());
+      int limit=Math.min(6,rows.size());
       for(int i=0;i<limit;i++){
         RpgInventoryPresentation.ItemRow row=rows.get(i);
-        float rowY=203+i*19;
-        if(row.itemId.equals(selectedId)){p.setColor(0x445f4f31);c.drawRoundRect(new RectF(630,rowY-13,892,rowY+5),4,4,p);}
+        float rowY=193+i*19;
+        if(row.itemId.equals(selectedId)){p.setColor(0x445f4f31);c.drawRoundRect(new RectF(616,rowY-13,894,rowY+5),4,4,p);}
         String equipped=row.equipped?" [장착]":"";
         String req=row.requiredLevel==null?"":" · Lv"+row.requiredLevel;
-        text(c,row.name+" x"+row.quantity+equipped,638,rowY,10);
-        text(c,row.itemId+req,760,rowY,8);
+        text(c,row.name+" x"+row.quantity+equipped,624,rowY,10);
+        text(c,row.itemId+req,756,rowY,8);
       }
-      if(rows.size()>limit)text(c,"외 "+(rows.size()-limit)+"개",638,203+limit*19,9);
+      if(rows.size()>limit)text(c,"외 "+(rows.size()-limit)+"개",624,193+limit*19,9);
     }
-    RpgInventoryPresentation.RewardNotice notice=rpgPresentation.latestRewardNotice(state.rpg());
-    if(notice!=null){
-      String rewardState=notice.status==RpgProgressionState.RewardStatus.RESOLVED?"처리됨":"PENDING";
-      text(c,"최근 몬스터 보상: "+rewardState,638,318,9);
-      if(!notice.autoLootedItems.isEmpty())text(c,"자동루팅 아이템 "+notice.autoLootedItems.size()+"종",638,334,9);
+
+    RpgInventoryPresentation.ItemRow selectedRow=null;
+    if(selectedId!=null)for(RpgInventoryPresentation.ItemRow row:rows)if(selectedId.equals(row.itemId)){selectedRow=row;break;}
+    if(selectedRow!=null){
+      text(c,"선택: "+selectedRow.name+" · "+selectedRow.equipSlot,622,326,10);
+      text(c,"조건: "+rpgPresentation.requirementLabel(selectedRow),622,343,9);
+      String jobs=selectedRow.jobRestrictionResolved?(selectedRow.allowedJobCodes.isEmpty()?"공통":selectedRow.allowedJobCodes.toString()):"PENDING";
+      text(c,"직업: "+jobs,622,359,9);
+      String element=rpgPresentation.elementLabel(selectedRow);
+      text(c,element.isEmpty()?"속성: 없음":"속성: "+element,622,375,9);
+    }else{
+      text(c,"아이템을 선택하세요",622,343,9);
     }
-    if(selectedId!=null){
-      RpgProgressionState.ItemDefinition def=state.rpg().itemDefinitions().get(selectedId);
-      String selectedName=def==null?selectedId:def.name;
-      text(c,"선택: "+selectedName,638,355,9);
-    }else text(c,"아이템을 선택하세요",638,355,9);
-    panel(c,804,342,888,376);text(c,"장착",832,364,11);
+
+    panel(c,808,338,892,372);text(c,"장착",836,360,11);
     RpgProgressionState.StatSnapshot stats=rpgInteraction.statSnapshot(state.rpg());
-    text(c,"장비 보정 항목 "+stats.equipment.size()+"개",638,379,9);
+    text(c,"장비 보정 항목 "+stats.equipment.size()+"개",622,395,9);
     RpgProgressionState.EquipResult equipResult=rpgInteraction.lastEquipResult();
-    if(equipResult!=null)text(c,equipResultLabel(equipResult),638,397,9);
+    if(equipResult!=null)text(c,equipResultLabel(equipResult),622,412,9);
+
+    RpgInventoryPresentation.RewardNotice notice=rpgPresentation.latestRewardNotice(state.rpg());
+    if(notice!=null){String rewardState=notice.status==RpgProgressionState.RewardStatus.RESOLVED?"처리됨":"PENDING";text(c,"최근 보상 "+rewardState,808,395,8);if(!notice.autoLootedItems.isEmpty())text(c,"자동루팅 "+notice.autoLootedItems.size()+"종",808,410,8);}
   }
+
   private String equipResultLabel(RpgProgressionState.EquipResult result){
     switch(result){
       case EQUIPPED:return "장착 완료";
-      case REQUIREMENT_NOT_MET:return "장착 불가: 요구 레벨 미충족";
+      case REQUIREMENT_NOT_MET:return "장착 불가: 레벨/직업 조건 미충족";
       case REQUIREMENT_PENDING:return "장착 보류: 요구 조건 PENDING";
       case NOT_EQUIPPABLE:return "장착 불가: 장비 아이템 아님";
       case UNKNOWN_ITEM:return "장착 불가: 알 수 없는 아이템";
@@ -204,27 +212,29 @@ public final class GameView extends View {
       default:return "장착 불가: 보유 아이템 아님";
     }
   }
+
   private boolean handleInventoryTouch(float x,float y){
     if(!inventoryOpen)return false;
     List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());
-    int limit=Math.min(7,rows.size());
-    if(x>=630&&x<=892){
+    int limit=Math.min(6,rows.size());
+    if(x>=616&&x<=894){
       for(int i=0;i<limit;i++){
-        float rowY=203+i*19;
+        float rowY=193+i*19;
         if(y>=rowY-14&&y<=rowY+6){
           RpgInventoryPresentation.ItemRow row=rows.get(i);
-          if(rpgInteraction.selectInventoryItem(state.rpg(),row.itemId))showFeedback(row.name+" 선택");
+          if(rpgInteraction.selectInventoryItem(state.rpg(),row.itemId))showFeedback(row.name+" 선택 · "+rpgPresentation.requirementLabel(row));
           return true;
         }
       }
     }
-    if(x>=804&&x<=888&&y>=342&&y<=376){
+    if(x>=808&&x<=892&&y>=338&&y<=372){
       RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());
       showFeedback(equipResultLabel(result));
       return true;
     }
-    return x>=620&&x<=900&&y>=132&&y<=410;
+    return x>=606&&x<=904&&y>=124&&y<=430;
   }
+
   private void cooldown(Canvas c,float x,float y,float r,float remaining,float total){if(remaining<=0||total<=0)return;float ratio=Math.min(1f,remaining/total);p.setColor(0x99000000);c.drawArc(new RectF(x-r,y-r,x+r,y+r),-90,360*ratio,true,p);p.setTextSize(8);p.setColor(Color.WHITE);String s=String.format(java.util.Locale.US,"%.1f",remaining);float tw=p.measureText(s);c.drawText(s,x-tw/2,y+3,p);}
   private void drawDialogue(Canvas c){RuntimeState.Npc dialogNpc=interaction.dialogNpc();if(dialogNpc==null)return;panel(c,250,330,710,440);text(c,dialogNpc.name,270,355,13);drawWrappedText(c,dialogNpc.dialogue,270,380,420,12,18);text(c,"화면을 터치하면 닫기",555,425,9);}private void drawDeath(Canvas c){if(state.player().alive)return;p.setColor(0xaa000000);c.drawRect(0,0,W,H,p);panel(c,330,205,630,335);text(c,"행동 불능 [B]",421,240,18);text(c,"프로토타입 부활: 화면 중앙 터치",375,276,12);text(c,"원작 사망/패널티 규칙을 의미하지 않음",368,302,10);}private void drawWrappedText(Canvas c,String s,float x,float y,float maxWidth,float size,float lineHeight){p.setTextSize(size);p.setColor(0xffeee4cf);String[] words=s.split(" ");String line="";float yy=y;for(String word:words){String test=line.length()==0?word:line+" "+word;if(p.measureText(test)>maxWidth&&line.length()>0){c.drawText(line,x,yy,p);yy+=lineHeight;line=word;}else line=test;}if(line.length()>0)c.drawText(line,x,yy,p);}private void round(Canvas c,float x,float y,float r,String s){p.setColor(0xaa15120e);c.drawCircle(x,y,r,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xffc9a86c);c.drawCircle(x,y,r,p);p.setStyle(Paint.Style.FILL);p.setTextSize(s.length()>3?8:10);p.setColor(0xffffefd0);float tw=p.measureText(s);c.drawText(s,x-tw/2,y+3,p);}
 
