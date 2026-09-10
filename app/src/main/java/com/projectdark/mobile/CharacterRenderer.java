@@ -81,13 +81,15 @@ public final class CharacterRenderer {
       throw new IllegalStateException("Default player atlas decode/shape failed");
   }
 
+  public static boolean isDefaultAtlasState(State state){return DEFAULT_ATLAS_ENABLED&&(state==State.IDLE||state==State.WALK);}
+
   public void draw(Canvas c,Pose pose){
     if(c==null||pose==null||pose.direction==null||pose.state==null)throw new IllegalArgumentException("Character pose requires direction and state");
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
     float sw=10.5f*SHADOW_RENDER_SCALE,sh=2.8f*SHADOW_RENDER_SCALE;
     fxPaint.setStyle(Paint.Style.FILL);fxPaint.setColor(0x50000000);
     c.drawOval(new RectF(pose.x-sw,anchorY-sh,pose.x+sw,anchorY+sh),fxPaint);
-    if(pose.state==State.IDLE||pose.state==State.WALK){drawDefaultAtlas(c,pose,anchorY);return;}
+    if(isDefaultAtlasState(pose.state)){drawDefaultAtlas(c,pose,anchorY);return;}
     drawActionFallback(c,pose,anchorY);
   }
 
@@ -117,14 +119,11 @@ public final class CharacterRenderer {
     px(c,outline,5,12,4,9);px(c,skin,6,13,2,7);px(c,outline,16,12,4+Math.abs(reach),9);px(c,skin,17,13,2+Math.abs(reach),7);
     px(c,outline,6+s*2,0,12,11);px(c,white,7+s*2,1,10,5);px(c,red,left?7+s*2:14+s*2,4,3,4);px(c,skin,8+s*2,5,8,5);
     int handX=left?5-reach:20+reach,handY=down?18:15;
-    if(pose.state==State.ATTACK||pose.state==State.SKILL){
-      px(c,0xff6c4528,handX-s,handY-v,3,2);
-      for(int i=1;i<=8+reach;i++)px(c,i==8+reach?0xffffffff:0xffdbe1e4,handX+s*i,handY+v*i,2,2);
-    }
+    if(pose.state==State.ATTACK||pose.state==State.SKILL){px(c,0xff6c4528,handX-s,handY-v,3,2);for(int i=1;i<=8+reach;i++)px(c,i==8+reach?0xffffffff:0xffdbe1e4,handX+s*i,handY+v*i,2,2);}
     if(pose.state==State.CAST){fxPaint.setStyle(Paint.Style.STROKE);fxPaint.setStrokeWidth(2f);fxPaint.setColor(0xcc76caff);c.drawCircle(12+s*6,8+v*4,4+phase*7,fxPaint);fxPaint.setStyle(Paint.Style.FILL);}
     if(pose.state==State.SKILL){fxPaint.setStyle(Paint.Style.STROKE);fxPaint.setStrokeWidth(3f);fxPaint.setColor(0xdd78ceff);c.drawArc(new RectF(12+s*8-13,15+v*3-11,12+s*8+13,15+v*3+11),left?25:195,150,false,fxPaint);fxPaint.setStyle(Paint.Style.FILL);}
     if(pose.state==State.HIT){fxPaint.setStyle(Paint.Style.STROKE);fxPaint.setStrokeWidth(2f);fxPaint.setColor(0xddff765e);c.drawCircle(12-s*3,11-v*2,5,fxPaint);fxPaint.setStyle(Paint.Style.FILL);}
-    if(pose.state==State.DEAD){c.rotate(left?-76f:76f,12,29);}
+    if(pose.state==State.DEAD)c.rotate(left?-76f:76f,12,29);
     c.restore();
   }
 
@@ -133,5 +132,5 @@ public final class CharacterRenderer {
   public String contractAuditSummary(){return CharacterRendererAudit.summary();}
   public boolean ownsPlayerLocalEffects(){return true;}
   public float playerRenderScale(){return PLAYER_RENDER_SCALE;}
-  public boolean usesDefaultAtlasFor(State state){return DEFAULT_ATLAS_ENABLED&&(state==State.IDLE||state==State.WALK);}
+  public boolean usesDefaultAtlasFor(State state){return isDefaultAtlasState(state);}
 }
