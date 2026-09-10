@@ -2,6 +2,12 @@
 
 2026-09-10 사용자 지시: 기존 4개 시간제 배치를 유지하고 역할을 재정의한다. Master는 완성된 정답지가 아니라 근거와 함께 지속 개정하는 공통 기준이다. 이 문서는 현재 사용자 지시를 실행 규칙으로 옮긴다.
 
+## 고정 프리픽스 공식 기준 지속 개정
+
+사용자 추가 확정: 필요 시 넥슨 어둠의전설 공식 홈페이지 https://lod.nexon.com/ 의 공식 가이드·공지·업데이트를 직접 확인하여 Master/기획을 지속 보완한다. 디렉터가 누락·오류 조사, 원문 대조, Master revision 갱신, runtime adapter/code 반영, regression/build/runtime 검증과 다음 지시 갱신까지 책임진다. 검토나 제안만 반복하지 말고 확정 가능한 변경은 직접 수행한다.
+
+공식 작성 자료와 공식 사이트 내 이용자 게시글을 구분하고 URL·버전·확인일·source cell/ID·before/after·근거·영향 코드·검증을 남긴다. 현행 서비스 변경이 사용자 확정 원작 버전/범위와 다르면 차이를 기록하고 범위를 자동 확장하지 않는다. 원문 불확실성은 보존한다. 네 예약 배치의 프롬프트 첫머리에도 같은 의무를 고정한다.
+
 ## 매 실행 필수 절차
 
 1. 최신 main SHA, `AGENTS.md`, 이 문서, `docs/DIRECTOR_BACKLOG.md`, `master/MASTER_MANIFEST.md`, `master/RECONCILIATION.md`, `design/DESIGN_CONSTITUTION.md`, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, `docs/DEV_HISTORY*`의 최신 기록과 해당 역할 handoff를 읽는다.

@@ -7,8 +7,9 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 45
-        versionName '0.45-movement-rendering'
+        versionCode 62
+        versionName '0.62-director-audit'
+        testInstrumentationRunner 'com.projectdark.mobile.RuntimeSmokeInstrumentation'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }

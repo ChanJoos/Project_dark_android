@@ -37,6 +37,10 @@ public final class MainActivity extends Activity {
         game.resume();
     }
 
+    @Override public void onBackPressed() {
+        if (!game.handleBack()) super.onBackPressed();
+    }
+
     @Override protected void onPause() {
         game.pause();
         super.onPause();
