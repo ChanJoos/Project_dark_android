@@ -89,14 +89,24 @@ public final class CharacterRenderer {
 
   private void drawBody(Canvas c,Pose pose,int frame){
     int outline=0xff171313,skin=pose.hitFlash?0xffffe0d0:0xffffc68f,pants=0xff393a3a,shoe=0xff6a4526;
+    boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
     int step=frame==1?1:frame==3?-1:0;
+    int depthStep=down?step:-step;
     int kick=pose.effectFamily==EffectFamily.KICK&&phase(pose)>.22f&&phase(pose)<.78f?5:0; // [B] presentation only
-    rect(c,outline,4+step-kick,19,7+step,26);rect(c,outline,10-step,19,13-step+kick,26);
-    rect(c,pants,5+step-kick,19,7+step,24);rect(c,pants,10-step,19,12-step+kick,24);
-    rect(c,shoe,4+step-kick,24,7+step,27);rect(c,shoe,10-step,24,13-step+kick,27);
+    rect(c,outline,4+step-kick,19+depthStep,7+step,26+depthStep);rect(c,outline,10-step,19-depthStep,13-step+kick,26-depthStep);
+    rect(c,pants,5+step-kick,19+depthStep,7+step,24+depthStep);rect(c,pants,10-step,19-depthStep,12-step+kick,24-depthStep);
+    rect(c,shoe,4+step-kick,24+depthStep,7+step,27+depthStep);rect(c,shoe,10-step,24-depthStep,13-step+kick,27-depthStep);
+
+    int walkSwing=pose.state==State.WALK?step*2:0; // [B] visible gait motion; not original timing.
     int armLift=pose.state==State.CAST?-7:pose.state==State.SKILL?-3:0;
-    rect(c,outline,1,11+armLift,4,19);rect(c,skin,2,12+armLift,3,18);
-    rect(c,outline,13,11+armLift,16,19);rect(c,skin,14,12+armLift,15,18);
+    int nearSwing=left?walkSwing:-walkSwing;
+    int farSwing=-nearSwing;
+    int verticalBias=down?1:-1;
+    rect(c,outline,1,11+armLift+farSwing*verticalBias,4,19+farSwing*verticalBias);
+    rect(c,skin,2,12+armLift+farSwing*verticalBias,3,18+farSwing*verticalBias);
+    rect(c,outline,13,11+armLift+nearSwing*verticalBias,16,19+nearSwing*verticalBias);
+    rect(c,skin,14,12+armLift+nearSwing*verticalBias,15,18+nearSwing*verticalBias);
     rect(c,outline,3,2,14,12);rect(c,skin,4,3,13,11);
     if(pose.state==State.DEAD){p.setColor(0x66000000);c.drawRect(1,11,16,24,p);}
   }
