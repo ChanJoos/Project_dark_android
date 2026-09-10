@@ -9,8 +9,8 @@ import java.util.List;
 
 /**
  * [O+B] Layered character presentation scaffold.
- * Base-avatar silhouette/proportion and creation choices are grounded in Nexon's official
- * character-creation screenshot while exact directional sprite crops remain PENDING_CROP.
+ * Male creation-avatar and female character-info silhouettes are grounded in official Nexon captures;
+ * exact directional sprite crops and exact per-item sprite pixels remain PENDING_CROP.
  */
 public final class CharacterRenderer {
   public static final String EVIDENCE="O+B";
@@ -54,10 +54,10 @@ public final class CharacterRenderer {
     if(!CONTRACT_VALID)throw new IllegalStateException("CharacterRenderer contract audit failed: "+CharacterRendererAudit.summary());
   }
 
-  /** Backward-compatible runtime entry: current GameView automatically receives the guide-backed male appearance. */
+  /** Backward-compatible runtime entry: current GameView still receives the guide-backed male appearance. */
   public void draw(Canvas c,Pose pose){draw(c,pose,CharacterAppearance.defaultGuideMale());}
 
-  /** Appearance-aware renderer API for later character-creation wiring without changing gameplay semantics. */
+  /** Appearance-aware renderer API for later character-creation wiring without gameplay ownership leakage. */
   public void draw(Canvas c,Pose pose,CharacterAppearance appearance){
     if(pose==null||pose.direction==null||pose.state==null)throw new IllegalArgumentException("Character pose requires direction and state");
     if(appearance==null)appearance=CharacterAppearance.defaultGuideMale();
@@ -94,7 +94,12 @@ public final class CharacterRenderer {
   }
 
   private void drawBody(Canvas c,Pose pose,CharacterAppearance appearance,int frame){
-    int outline=0xff2a1b17,skin=pose.hitFlash?0xffffe0d0:0xffefb58b,baseGarment=0xff5f4439,foot=0xff7f5b44;
+    boolean female=appearance.gender==CharacterAppearance.Gender.FEMALE;
+    int outline=0xff2a1b17;
+    int skin=pose.hitFlash?0xffffe0d0:0xffefb58b;
+    int baseGarment=female?0xffeee2ce:0xff5f4439;
+    int garmentShadow=female?0xffb99f83:0xff3f302b;
+    int foot=0xff7f5b44;
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
     boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
     int step=frame==1?1:frame==3?-1:0,depthStep=down?step:-step;
@@ -106,29 +111,41 @@ public final class CharacterRenderer {
     rect(c,skin,10.5f-step,20-depthStep,11.5f-step+kick,27-depthStep);
     rect(c,foot,4.5f+step-kick,27+depthStep,7.5f+step,30+depthStep);
     rect(c,foot,9.5f-step,27-depthStep,12.5f-step+kick,30-depthStep);
-    rect(c,outline,4,15,13,22);rect(c,baseGarment,5,16,12,21);
+
+    if(female){
+      // [ADAPTED_FROM_O] Official character-info capture visibly shows a narrow-waist female avatar
+      // with a light long lower silhouette. Exact base-vs-equipped separation is not yet resolved.
+      rect(c,outline,4.5f,14,12.5f,23);
+      rect(c,baseGarment,5.3f,15,11.7f,22);
+      rect(c,garmentShadow,4.8f,21,12.2f,24);
+    }else{
+      rect(c,outline,4,15,13,22);
+      rect(c,baseGarment,5,16,12,21);
+    }
 
     int walkSwing=pose.state==State.WALK?step*2:0;
     int armLift=pose.state==State.CAST?-7:pose.state==State.SKILL?-3:0;
     int nearSwing=left?walkSwing:-walkSwing,farSwing=-nearSwing,verticalBias=down?1:-1;
-    rect(c,outline,5,8,12,17);rect(c,skin,6,9,11,16);
+
+    if(female){
+      rect(c,outline,5.5f,8,11.5f,17);rect(c,skin,6.2f,9,10.8f,16);
+    }else{
+      rect(c,outline,5,8,12,17);rect(c,skin,6,9,11,16);
+    }
     rect(c,outline,2,10+armLift+farSwing*verticalBias,4,20+farSwing*verticalBias);
     rect(c,skin,2.5f,11+armLift+farSwing*verticalBias,3.5f,19+farSwing*verticalBias);
     rect(c,outline,13,10+armLift+nearSwing*verticalBias,15,20+nearSwing*verticalBias);
     rect(c,skin,13.5f,11+armLift+nearSwing*verticalBias,14.5f,19+nearSwing*verticalBias);
-    p.setColor(outline);c.drawOval(new RectF(3.5f,0f,13.5f,10f),p);
-    p.setColor(skin);c.drawOval(new RectF(4.5f,1f,12.5f,9f),p);
-    if(appearance.gender==CharacterAppearance.Gender.FEMALE){
-      // Gender selection is official; exact female body pixels are still PENDING_CROP, so do not fabricate a new anatomy.
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.7f);p.setColor(0x55ffffff);c.drawOval(new RectF(4.2f,.2f,13.2f,9.8f),p);p.setStyle(Paint.Style.FILL);
-    }
+
+    p.setColor(outline);c.drawOval(new RectF(female?3.8f:3.5f,0f,female?13.2f:13.5f,10f),p);
+    p.setColor(skin);c.drawOval(new RectF(female?4.7f:4.5f,1f,female?12.3f:12.5f,9f),p);
+
     if(pose.state==State.DEAD){p.setColor(0x44000000);c.drawRect(2,8,15,26,p);}
   }
 
   private void drawHair(Canvas c,Pose pose,CharacterAppearance appearance){
     int hair=appearance.previewHairColor();
     int s=appearance.hairStyleIndex;
-    // [O+B] Eighteen selectable silhouettes are visible in the official creation UI. Exact pixels remain adapted.
     switch(s){
       case 0: rect(c,hair,3,0,14,4);rect(c,hair,2,2,5,8);rect(c,hair,12,2,15,7);rect(c,hair,5,-1,12,2);break;
       case 1: rect(c,hair,4,-1,13,3);rect(c,hair,2,1,6,6);rect(c,hair,11,2,15,8);rect(c,hair,3,5,5,10);break;
@@ -149,6 +166,13 @@ public final class CharacterRenderer {
       case 16: rect(c,hair,2,0,15,3);rect(c,hair,1,2,4,8);rect(c,hair,13,2,16,8);rect(c,hair,6,3,11,9);break;
       default: rect(c,hair,3,-1,14,4);rect(c,hair,1,2,5,7);rect(c,hair,12,2,16,7);rect(c,hair,4,5,6,10);rect(c,hair,11,5,13,10);break;
     }
+
+    if(appearance.gender==CharacterAppearance.Gender.FEMALE){
+      // [ADAPTED_FROM_O] Long side/back fall is visible in the official character-info female avatar.
+      rect(c,hair,2.2f,6,4.5f,15);
+      rect(c,hair,12.5f,6,14.8f,15);
+    }
+
     boolean back=pose.direction==Direction.NW||pose.direction==Direction.NE;
     if(!back){int eye=0xff2a2020;boolean left=pose.direction==Direction.SW;rect(c,eye,left?5:7,6,left?6:8,7);rect(c,eye,left?9:11,6,left?10:12,7);}
   }
