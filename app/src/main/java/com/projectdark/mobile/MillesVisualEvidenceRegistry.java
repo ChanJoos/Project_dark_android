@@ -65,6 +65,12 @@ public final class MillesVisualEvidenceRegistry {
           "https://lod.nexon.com/Community/screenshot/137421?Category2=2",
           "밀레스 이벤트 맵",
           "2024-04-11 12:23","V",SourceStatus.PIXEL_FETCH_PENDING,
+          GeometryUse.REFERENCE_ONLY),
+      new SourceRecord(
+          "NX_MILLES_MODERN_SCENE_20240418_137555",
+          "https://lod.nexon.com/community/screenshot/137555",
+          "[넥슨30주년] 밀레스마을, 감탄을 하게되네요..",
+          "2024-04-18 10:15","V",SourceStatus.PIXEL_FETCH_PENDING,
           GeometryUse.REFERENCE_ONLY)
   ));
 
