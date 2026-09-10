@@ -74,6 +74,7 @@ public final class WorldDef {
   private final List<PortalSpawn> portalSpawns;
   private final List<WorldObject> objects;
   private final Map<LayerKind,LayerStatus> layerStatuses;
+  private final MillesMasterManifest masterManifest=new MillesMasterManifest();
 
   public WorldDef(){
     List<RectF> b=new ArrayList<>();
@@ -112,10 +113,16 @@ public final class WorldDef {
   public List<PortalSpawn> portalSpawns(){return portalSpawns;}
   public List<WorldObject> objects(){return objects;}
   public Map<LayerKind,LayerStatus> layerStatuses(){return layerStatuses;}
+  public MillesMasterManifest masterManifest(){return masterManifest;}
 
   /** Static/runtime audit hook: every required layer kind must remain explicitly represented. */
   public boolean hasCompleteLayerContract(){
     for(LayerKind kind:LayerKind.values())if(!layerStatuses.containsKey(kind))return false;
     return true;
   }
+
+  /**
+   * Confirms that canonical Milles identity/ID projection is present without claiming tile/collision readiness.
+   */
+  public boolean hasMasterBackedMillesIdentity(){return masterManifest.hasCanonicalIdentity();}
 }
