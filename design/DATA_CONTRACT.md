@@ -21,7 +21,7 @@ Unknown canonical fields must support `null/PENDING`; do not replace missing dat
 
 ## MonsterDefinition
 
-Required conceptual fields: `monsterId`, canonical/display name, evidence, region/spawn relation, visualAssetRef/PENDING_CROP, base stats when known, detection/AI profile, attack/action refs, EXP ref/value with evidence, dropTableId, respawn policy.
+Required conceptual fields: `monsterId`, canonical/display name, evidence, region/spawn relation, visualAssetRef/PENDING_CROP, base stats when known, detection/AI profile, attack/action refs, EXP ref/value with evidence, dropTableId/reward relation, respawn policy.
 
 Runtime monster instance state is separate: current HP, tile, state, target, timers. Never mutate MonsterDefinition to store instance state.
 
@@ -33,7 +33,7 @@ Fields: `actionId`, name, kind, job/usage restrictions, acquisition conditions, 
 
 ## ItemDefinition
 
-Fields: `itemId`, canonical name, category, equip slot where applicable, job/level/circle restrictions, element, stat modifiers with evidence, acquisition source, drop/shop/quest relationships, visual ref, evidence.
+Fields: `itemId`, canonical name, category, equip slot where applicable, job/level/circle restrictions, element, stat modifiers with evidence, acquisition source, monster/shop/quest reward relationships, visual ref, evidence.
 
 Attack element via necklace and defense element via belt are first-class equipment semantics where supported by canonical design data. Do not implement them as free UI toggles and call that original behavior.
 
@@ -68,15 +68,22 @@ Fields: `questId`, title/status, prerequisites, start NPC, state graph, objectiv
 
 Reward claim must be idempotent. Save/load must preserve branch and reward state.
 
-## Monster rewards and inventory
+## Monster rewards and inventory — CANONICAL
 
-Combat death emits a reward-resolution request. RPG·Progression resolves only evidence-backed EXP/Gold/item relationships. Resolved item rewards are **auto-looted directly into inventory** through one centralized inventory-mutation path; no ground item entity and no pickup-distance validation are used in the target runtime loop.
+Combat emits `MONSTER_DEFEATED` exactly once for a valid monster death. RPG·Progression resolves only evidence-backed EXP/Gold/item relationships and applies resolved rewards through centralized mutation APIs.
 
-AUTO and manual combat must call the same reward-resolution and inventory APIs. Full inventory, invalid item IDs, invalid quantity, unresolved probability/quantity, and unresolved monster→reward relationships must remain explicit outcomes. Removing ground pickup does not permit deterministic or invented rewards.
+Canonical item flow:
+`MONSTER_DEFEATED → reward resolution → inventory mutation`.
+
+There is **no world-drop/pickup stage**. Target runtime must not create a ground item entity for monster rewards and must not require proximity, pickup input, pickup pathfinding, or pickup animation before inventory mutation. AUTO and manual combat call the same reward-resolution and inventory APIs.
+
+The previous contract `combat death → world drop entity → pickup validation → inventory mutation` is **RETIRED / SUPERSEDED (2026-09-10)**. It must not be implemented, tested as desired behavior, or used as a fallback. Existing code using that path is legacy code to remove/disconnect.
+
+Full inventory, invalid item IDs, invalid quantity, unresolved probability/quantity, and unresolved monster→reward relationships must remain explicit outcomes. Direct inventory delivery does not permit deterministic or invented rewards. Defeat/reward processing must be idempotent so one monster death cannot grant the same reward twice.
 
 ## AUTO
 
-AUTO is an orchestration layer over existing movement/target/combat/survival/reward APIs. It may not implement a second combat formula or a separate loot formula. Manual commands have priority over AUTO.
+AUTO is an orchestration layer over existing movement/target/combat/survival/reward APIs. It may not implement a second combat formula, separate loot formula, ground-loot navigation, or pickup subsystem. Manual commands have priority over AUTO.
 
 ## Save contract
 
@@ -84,9 +91,9 @@ Persist IDs and mutable state, not duplicated canonical definitions. Save data m
 
 ## Ownership boundaries
 
-- World·Character owns map/entity presentation, character animation and world interaction plumbing.
-- Combat·Monster owns combat resolution/action execution and monster runtime AI.
-- RPG·Progression owns definitions/state for items, inventory, equipment, stats, EXP, reward resolution and progression.
+- World·Character owns map/entity presentation, character animation and world interaction plumbing; monster reward ground entities are not part of its target contract.
+- Combat·Monster owns combat resolution/action execution and monster runtime AI, and emits one `MONSTER_DEFEATED` event.
+- RPG·Progression owns definitions/state for items, inventory, equipment, stats, EXP, reward resolution and progression, including direct reward inventory mutation.
 - Integrator·UX·QA owns mobile orchestration/UI, NPC/Quest/AUTO integration, cross-module contract enforcement and regression gates.
 
 Cross-domain access should occur through stable contracts/data definitions, not by duplicating logic in GameView.
