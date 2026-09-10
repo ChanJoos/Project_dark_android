@@ -7,24 +7,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * RPG/Progression-owned runtime state for the reward -> world drop -> pickup -> inventory
- * -> equipment -> stat recomputation chain.
+ * RPG/Progression-owned runtime state for reward -> auto-loot -> inventory -> equipment -> stat recomputation.
  *
  * Design constraints:
  * - Content IDs/values may only enter through canonical definitions.
  * - Unknown EXP/drop/stat data stays PENDING; this class never fabricates rewards.
+ * - Monster item rewards never create ground entities; resolved rewards mutate inventory exactly once.
  * - Equipment modifiers are additive projections over immutable base stats. They never mutate base stats.
  */
 public final class RpgProgressionState {
   public enum Evidence { O,V,U,B,ADAPTED,PENDING,FAN }
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
-  public enum PickupResult { PICKED_UP, NOT_FOUND, TOO_FAR, INVALID_ITEM, INVENTORY_FULL }
+  public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
   public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
 
-  /**
-   * Canonical runtime progression nodes only. No node beyond FIRST_ADVANCEMENT is permitted.
-   * This enum describes state identity; transition requirements remain Master/data driven.
-   */
   public enum ProgressionNode {
     COMMONER,
     BASIC_JOB,
@@ -48,26 +44,15 @@ public final class RpgProgressionState {
     public boolean equippable(){return equipSlot!=null&&!equipSlot.isEmpty();}
   }
 
-  public static final class WorldDrop {
-    public final long dropId;
-    public final String itemId,sourceMonsterId;
-    public final int quantity;
-    public final float x,y;
-    public final Evidence evidence;
-    WorldDrop(long dropId,String itemId,String sourceMonsterId,int quantity,float x,float y,Evidence evidence){
-      this.dropId=dropId;this.itemId=itemId;this.sourceMonsterId=sourceMonsterId;this.quantity=quantity;this.x=x;this.y=y;this.evidence=evidence;
-    }
-  }
-
   public static final class RewardResolution {
     public final long combatSequence;
     public final String monsterId;
     public final RewardStatus status;
     public final Integer exp;
-    public final List<Long> createdDropIds;
-    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,List<Long> createdDropIds){
+    public final Map<String,Integer> autoLootedItems;
+    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,Map<String,Integer> autoLootedItems){
       this.combatSequence=combatSequence;this.monsterId=monsterId;this.status=status;this.exp=exp;
-      this.createdDropIds=Collections.unmodifiableList(new ArrayList<>(createdDropIds));
+      this.autoLootedItems=Collections.unmodifiableMap(new LinkedHashMap<>(autoLootedItems));
     }
   }
 
@@ -80,26 +65,21 @@ public final class RpgProgressionState {
     }
   }
 
-  private static final float PICKUP_RADIUS=34f; // [B] interaction fixture, not original pickup distance.
   private static final int INVENTORY_STACK_LIMIT=999999; // safety ceiling only; per-item canonical stack limits remain PENDING.
   private final Map<String,ItemDefinition> items=new LinkedHashMap<>();
   private final Map<String,Integer> inventory=new LinkedHashMap<>();
   private final Map<String,String> equipmentBySlot=new LinkedHashMap<>();
   private final Map<String,Integer> baseStats=new LinkedHashMap<>();
-  private final List<WorldDrop> worldDrops=new ArrayList<>();
   private final List<RewardResolution> rewardHistory=new ArrayList<>();
-  private long nextDropId=1L,lastCombatSequence=0L;
+  private final CanonicalMonsterRewardCatalog monsterRewards=new CanonicalMonsterRewardCatalog();
+  private long lastCombatSequence=0L;
 
-  // Canonical creation/progression facts: character starts as COMMONER at normal Lv1.
-  // Exact starting EXP representation and base STR/CON/INT/DEX/WIS values are not evidenced here,
-  // so they remain null/empty instead of being invented.
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
   private Long normalExp=null;
 
   public RpgProgressionState(){
-    // Canonical identity/requirements copied from Master Item_Master; no unverified stat modifiers are invented.
     registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,Collections.<String,Integer>emptyMap(),Evidence.O));
   }
 
@@ -107,7 +87,6 @@ public final class RpgProgressionState {
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
   public Map<String,String> equipment(){return Collections.unmodifiableMap(equipmentBySlot);}
-  public List<WorldDrop> worldDrops(){return Collections.unmodifiableList(worldDrops);}
   public List<RewardResolution> rewardHistory(){return Collections.unmodifiableList(rewardHistory);}
   public ProgressionNode progressionNode(){return progressionNode;}
   public String currentJobCode(){return currentJobCode;}
@@ -115,46 +94,47 @@ public final class RpgProgressionState {
   public Long normalExp(){return normalExp;}
 
   /**
-   * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result
-   * and no EXP/Gold/drop mutation.
+   * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.
+   * Resolved item rewards are inserted directly into inventory; no world-drop entity or pickup phase exists.
    */
   public void consumeCombat(List<CombatLedger.Event> events,RuntimeState runtime){
     for(CombatLedger.Event e:events){
       if(e.sequence<=lastCombatSequence)continue;
       lastCombatSequence=e.sequence;
       if(e.type!=CombatLedger.Type.MONSTER_DEFEATED)continue;
-      resolveMonsterDefeat(e,runtime);
+      resolveMonsterDefeat(e);
     }
   }
 
-  private void resolveMonsterDefeat(CombatLedger.Event e,RuntimeState runtime){
-    // combat_dummy_01 is explicitly a [B] fixture and has no canonical Master reward row.
-    // Any future canonical monster must be mapped from Master data before rewards are emitted.
-    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,null,Collections.<Long>emptyList()));
+  private void resolveMonsterDefeat(CombatLedger.Event e){
+    CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
+    if(reward==null){
+      rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,null,Collections.<String,Integer>emptyMap()));
+      trimRewardHistory();
+      return;
+    }
+
+    Map<String,Integer> looted=new LinkedHashMap<>();
+    for(CanonicalMonsterRewardCatalog.DropHint hint:reward.dropHints){
+      if(!hint.emissionResolved())continue;
+      AutoLootResult result=autoLootResolvedItem(hint.itemId,hint.quantity);
+      if(result==AutoLootResult.LOOTED)looted.put(hint.itemId,value(looted,hint.itemId)+hint.quantity);
+    }
+    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted));
     trimRewardHistory();
   }
 
-  /** Canonical reward systems may call this only after item/drop evidence is resolved upstream. */
-  public long createWorldDrop(String itemId,String sourceMonsterId,int quantity,float x,float y,Evidence evidence){
-    if(quantity<=0||!items.containsKey(itemId))return -1L;
-    WorldDrop d=new WorldDrop(nextDropId++,itemId,sourceMonsterId,quantity,x,y,evidence);
-    worldDrops.add(d);return d.dropId;
-  }
-
-  public PickupResult pickup(long dropId,float playerX,float playerY){
-    for(int i=0;i<worldDrops.size();i++){
-      WorldDrop d=worldDrops.get(i);
-      if(d.dropId!=dropId)continue;
-      if(!items.containsKey(d.itemId))return PickupResult.INVALID_ITEM;
-      float dx=playerX-d.x,dy=playerY-d.y;
-      if(dx*dx+dy*dy>PICKUP_RADIUS*PICKUP_RADIUS)return PickupResult.TOO_FAR;
-      int current=inventory.containsKey(d.itemId)?inventory.get(d.itemId):0;
-      if(current>INVENTORY_STACK_LIMIT-d.quantity)return PickupResult.INVENTORY_FULL;
-      inventory.put(d.itemId,current+d.quantity);
-      worldDrops.remove(i);
-      return PickupResult.PICKED_UP;
-    }
-    return PickupResult.NOT_FOUND;
+  /**
+   * Direct-inventory endpoint for a reward whose item identity and quantity were already resolved upstream.
+   * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
+   */
+  public AutoLootResult autoLootResolvedItem(String itemId,int quantity){
+    if(quantity<=0)return AutoLootResult.INVALID_QUANTITY;
+    if(!items.containsKey(itemId))return AutoLootResult.INVALID_ITEM;
+    int current=inventory.containsKey(itemId)?inventory.get(itemId):0;
+    if(current>INVENTORY_STACK_LIMIT-quantity)return AutoLootResult.INVENTORY_FULL;
+    inventory.put(itemId,current+quantity);
+    return AutoLootResult.LOOTED;
   }
 
   public EquipResult equip(String itemId){
