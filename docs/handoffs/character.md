@@ -51,23 +51,42 @@ Extended `WorldEntityPresentationRenderer` with renderer-only `[B]` IDLE motion 
 - shadow width/height subtly counter-pulse during IDLE;
 - WALK/ATTACK/HIT/DEAD behavior remains unchanged and logical coordinates/anchors are untouched.
 
-This is intentionally a prototype animation cue, not claimed as original LOD timing/frame data.
-
 ### Directional asset binding contract
-Added `DirectionalVisualBinding.java`:
-- binds independently by `CharacterRenderer.State × CharacterRenderer.Direction`;
-- supports all common states (`IDLE/WALK/CAST/ATTACK/SKILL/HIT/DEAD`) and all four directions;
-- `null`, empty refs, and `PENDING_CROP` never resolve as valid source assets;
-- `resolvedVisualRef(Pose)` in `WorldEntityPresentationRenderer` prefers the state+direction binding and safely falls back to the legacy single `visualRef` only when it is actually resolved;
-- existing Pose constructor remains available, so Integrator wiring is not broken by the new contract.
+Added `DirectionalVisualBinding.java` keyed by common state × direction. Null/empty/PENDING_CROP refs never resolve. Existing Pose constructors remain compatible.
 
-`WorldEntityPresentationAudit` now verifies unresolved fallback safety, partial directional binding, PENDING_CROP rejection, and resolved NW binding behavior.
+### PR
+Draft stacked PR #47: `Character: add directional asset binding and idle motion`.
+
+---
+
+## 2026-09-10 18:00 KST — agent/character/20260910-1800
+
+### Source-of-Truth gate / continuity
+Re-read latest `main` (`6785efb6f7504e070ee0c0aa6924d1281e444469`), `DESIGN_CONSTITUTION`, `DATA_CONTRACT`, `SOURCE_OF_TRUTH`, `docs/DEV_HISTORY.md`, `docs/DEV_HISTORY_PASS_23_WORLD_CHARACTER.md`, and the prior character handoff before coding. No newer canonical character rule supersedes the four-direction side-diagonal contract. Continued directly from PR #47 head.
+
+### Completed layered asset contract
+Added `LayeredDirectionalVisualBinding.java` so future verified assets can resolve independently by:
+- layer: `BODY / HAIR / EQUIPMENT / WEAPON / EFFECT`;
+- common state: `IDLE / WALK / CAST / ATTACK / SKILL / HIT / DEAD`;
+- direction: `NW / NE / SW / SE`.
+
+This preserves a single shared state/direction/anchor basis while allowing individual layers to be replaced as positive source crops become available. Missing or `PENDING_CROP` layer refs remain unresolved and keep the procedural fallback. `WorldEntityPresentationRenderer.Pose` now optionally accepts this layered binding while retaining both older constructors for integration compatibility. `resolvedLayerVisualRef(...)` exposes the selected layer asset without inventing bitmap loading or source frames.
+
+### User-visible visual delta
+Added a renderer-only `[B]/[ADAPTED]` action envelope:
+- `ATTACK` now leans along the current NW/NE/SW/SE facing axis during its action phase;
+- attack shadow widens/compresses slightly at impact, making the strike read more clearly;
+- `CAST` and `SKILL` receive smaller direction-preserving body emphasis;
+- logical coordinates, collision radii, combat timing and damage semantics are unchanged.
+
+### Regression gate
+`WorldEntityPresentationAudit` now verifies BODY and HAIR can resolve independently for the same state/direction, unresolved WEAPON remains null, `PENDING_CROP` is rejected, and layered/whole-actor bindings coexist safely.
 
 ### Evidence / boundary
-No original sprite/frame/timing was fabricated. All procedural IDLE motion remains `[B]/[ADAPTED]`, original sprites remain `PENDING_CROP`. No `GameView.java`, map/camera/collision/pathfinding/portal, combat math/AI, inventory/reward/EXP/save/progression, HUD/input, NPC dialogue or quest-state file was modified.
+No original sprite/frame/timing was fabricated. Layer refs remain evidence-gated; unresolved source art stays `PENDING_CROP`. No `GameView.java`, map/camera/collision/pathfinding/portal, combat math/AI, inventory/reward/EXP/save/progression, HUD/input, dialogue/quest-state or APK packaging file was modified.
 
 ### Remaining Character P0
-1. Integrator must wire PR #44 renderer seam into `GameView` before NPC/monster deltas are visible in the integrated APK.
-2. After positive identification of real directional source crops, populate `DirectionalVisualBinding` by state/direction and add bitmap/sprite drawing behind `resolvedVisualRef(...)`; do not guess missing directions.
-3. Device-playtest NPC 0.84 / monster 0.88 against approved player 0.92 and adjust presentation-only constants only if needed.
-4. Keep acquiring source-backed directional evidence; `PENDING_CROP` remains authoritative until positively identified.
+1. Integrator/UX still must wire `WorldEntityPresentationRenderer` into `GameView.drawNpcs()` / `drawMonsters()`; Character agent will not cross that ownership boundary.
+2. Positive source crop identification is required before any BODY/HAIR/EQUIPMENT/WEAPON/EFFECT ref is populated as an actual source asset.
+3. After source crops exist, add the bitmap/sprite resolver behind `resolvedLayerVisualRef(...)` while preserving shared anchor/facing contracts.
+4. Device-playtest NPC/monster proportions and ATTACK readability once the Integrator wiring lands.

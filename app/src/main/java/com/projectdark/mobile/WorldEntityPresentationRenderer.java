@@ -30,24 +30,35 @@ public final class WorldEntityPresentationRenderer {
     public final boolean hitFlash,selected;
     public final String visualRef,effectVisualRef;
     public final DirectionalVisualBinding visualBinding;
+    public final LayeredDirectionalVisualBinding layeredVisualBinding;
 
     public Pose(Kind kind,float x,float y,CharacterRenderer.Direction direction,
         CharacterRenderer.State state,float walkClock,float stateClock,float stateDuration,
         CharacterRenderer.EffectFamily effectFamily,boolean hitFlash,boolean selected,
         String visualRef,String effectVisualRef){
       this(kind,x,y,direction,state,walkClock,stateClock,stateDuration,effectFamily,hitFlash,selected,
-          visualRef,effectVisualRef,null);
+          visualRef,effectVisualRef,null,null);
     }
 
     public Pose(Kind kind,float x,float y,CharacterRenderer.Direction direction,
         CharacterRenderer.State state,float walkClock,float stateClock,float stateDuration,
         CharacterRenderer.EffectFamily effectFamily,boolean hitFlash,boolean selected,
         String visualRef,String effectVisualRef,DirectionalVisualBinding visualBinding){
+      this(kind,x,y,direction,state,walkClock,stateClock,stateDuration,effectFamily,hitFlash,selected,
+          visualRef,effectVisualRef,visualBinding,null);
+    }
+
+    public Pose(Kind kind,float x,float y,CharacterRenderer.Direction direction,
+        CharacterRenderer.State state,float walkClock,float stateClock,float stateDuration,
+        CharacterRenderer.EffectFamily effectFamily,boolean hitFlash,boolean selected,
+        String visualRef,String effectVisualRef,DirectionalVisualBinding visualBinding,
+        LayeredDirectionalVisualBinding layeredVisualBinding){
       this.kind=kind;this.x=x;this.y=y;this.direction=direction;this.state=state;
       this.walkClock=walkClock;this.stateClock=stateClock;this.stateDuration=stateDuration;
       this.effectFamily=effectFamily==null?CharacterRenderer.EffectFamily.NONE:effectFamily;
       this.hitFlash=hitFlash;this.selected=selected;this.visualRef=visualRef;
       this.effectVisualRef=effectVisualRef;this.visualBinding=visualBinding;
+      this.layeredVisualBinding=layeredVisualBinding;
     }
   }
 
@@ -71,6 +82,11 @@ public final class WorldEntityPresentationRenderer {
     float idleWave=pose.state==CharacterRenderer.State.IDLE?(float)Math.sin(pose.stateClock*4.2f):0f; // [B]
     float idleBob=idleWave*(pose.kind==Kind.NPC?.55f:.8f);
     float idleSway=idleWave*(pose.kind==Kind.NPC?.45f:.7f)*sx;
+    float q=phase(pose);
+    float actionWave=(pose.state==CharacterRenderer.State.ATTACK||pose.state==CharacterRenderer.State.SKILL||pose.state==CharacterRenderer.State.CAST)
+        ?(float)Math.sin(Math.PI*q):0f; // [B] presentation-only anticipation/impact envelope
+    float actionLean=actionWave*sx*(pose.state==CharacterRenderer.State.ATTACK?1.8f:pose.state==CharacterRenderer.State.SKILL?1.0f:.55f);
+    float actionLift=-actionWave*sy*(pose.state==CharacterRenderer.State.ATTACK?.45f:.25f);
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
     float recoilX=pose.state==CharacterRenderer.State.HIT?-sx*3f:0f;
     float recoilY=pose.state==CharacterRenderer.State.HIT?-sy*1.2f:0f;
@@ -79,6 +95,7 @@ public final class WorldEntityPresentationRenderer {
     float shadowH=(pose.kind==Kind.NPC?3.6f:4.4f)*shadowScale;
     if(pose.state==CharacterRenderer.State.DEAD){shadowW*=1.28f;shadowH*=.72f;}
     if(pose.state==CharacterRenderer.State.IDLE){shadowW*=1f+.025f*idleWave;shadowH*=1f-.018f*idleWave;}
+    if(pose.state==CharacterRenderer.State.ATTACK){shadowW*=1f+.07f*actionWave;shadowH*=1f-.11f*actionWave;}
     p.setStyle(Paint.Style.FILL);
     p.setColor(pose.hitFlash?0x88ff7755:0x55000000);
     c.drawOval(new RectF(pose.x-shadowW,anchorY-shadowH,pose.x+shadowW,anchorY+shadowH),p);
@@ -90,8 +107,8 @@ public final class WorldEntityPresentationRenderer {
     }
 
     c.save();
-    c.translate(pose.x+recoilX+idleSway,
-        anchorY-(pose.kind==Kind.NPC?28f:25f)*actorScale+(walkBob+idleBob)*actorScale+recoilY);
+    c.translate(pose.x+recoilX+idleSway+actionLean,
+        anchorY-(pose.kind==Kind.NPC?28f:25f)*actorScale+(walkBob+idleBob)*actorScale+recoilY+actionLift);
     c.scale(actorScale,actorScale);
     c.translate(-8f,0f);
     if(pose.state==CharacterRenderer.State.DEAD){
@@ -172,7 +189,7 @@ public final class WorldEntityPresentationRenderer {
     p.setStyle(Paint.Style.FILL);
   }
 
-  /** Resolved directional source ref for future bitmap/sprite draw; null keeps procedural fallback. */
+  /** Resolved whole-actor directional source ref for future bitmap/sprite draw; null keeps fallback. */
   public static String resolvedVisualRef(Pose pose){
     if(pose==null)return null;
     if(pose.visualBinding!=null){
@@ -181,6 +198,12 @@ public final class WorldEntityPresentationRenderer {
     }
     if(pose.visualRef==null||pose.visualRef.trim().isEmpty()||ASSET_STATUS.equals(pose.visualRef))return null;
     return pose.visualRef;
+  }
+
+  /** Layer-specific source ref. Each visual layer can be replaced independently without anchor drift. */
+  public static String resolvedLayerVisualRef(Pose pose,CharacterRenderer.Layer layer){
+    if(pose==null||layer==null||pose.layeredVisualBinding==null)return null;
+    return pose.layeredVisualBinding.resolve(layer,pose.state,pose.direction);
   }
 
   /** Presentation helper only: chooses the closest screen diagonal without moving any entity. */
