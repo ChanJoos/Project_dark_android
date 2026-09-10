@@ -34,6 +34,7 @@ public final class AdaptedMillesMapRenderer {
       fill.setColor(tileColor(tile.kind,tile.variant));
       diamond(c.x,c.y,AdaptedMillesIsometricTileLayer.HALF_WIDTH,AdaptedMillesIsometricTileLayer.HALF_HEIGHT);
       canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+      drawTileDetail(canvas,c.x,c.y,tile);
       drawTransitionEdges(canvas,c.x,c.y,tile.transitionMask);
     }
   }
@@ -153,6 +154,35 @@ public final class AdaptedMillesMapRenderer {
     if((mask&AdaptedMillesIsometricTileLayer.EDGE_NE)!=0)canvas.drawLine(cx,cy-hh,cx+hw,cy,edge);
     if((mask&AdaptedMillesIsometricTileLayer.EDGE_SE)!=0)canvas.drawLine(cx+hw,cy,cx,cy+hh,edge);
     if((mask&AdaptedMillesIsometricTileLayer.EDGE_SW)!=0)canvas.drawLine(cx,cy+hh,cx-hw,cy,edge);
+    edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
+  }
+
+  /** Procedural [ADAPTED]/[B] material detail keeps the live map readable without claiming source art. */
+  private void drawTileDetail(Canvas canvas,float cx,float cy,AdaptedMillesIsometricTileLayer.Tile tile){
+    float hw=AdaptedMillesIsometricTileLayer.HALF_WIDTH,hh=AdaptedMillesIsometricTileLayer.HALF_HEIGHT;
+    switch(tile.kind){
+      case GROUND:
+        edge.setColor(tile.variant%2==0?0x5541533e:0x554b5b46);edge.setStrokeWidth(1f);
+        float gx=cx-11f+tile.variant*4f,gy=cy+2f-(tile.variant&1)*5f;
+        canvas.drawLine(gx,gy,gx+3f,gy-5f,edge);canvas.drawLine(gx+3f,gy-5f,gx+6f,gy,edge);
+        break;
+      case ROAD:
+        edge.setColor(0x6655483c);edge.setStrokeWidth(1f);
+        canvas.drawLine(cx-hw*.52f,cy,cx,cy+hh*.52f,edge);
+        canvas.drawLine(cx,cy-hh*.52f,cx+hw*.52f,cy,edge);
+        if((tile.row+tile.column)%3==0)canvas.drawCircle(cx,cy,1.5f,edge);
+        break;
+      case PLAZA:
+        edge.setColor(0x77605e59);edge.setStrokeWidth(1f);
+        diamond(cx,cy,hw*.54f,hh*.54f);canvas.drawPath(path,edge);
+        canvas.drawLine(cx-hw*.34f,cy,cx+hw*.34f,cy,edge);
+        break;
+      case GATE:
+        edge.setColor(0x88715f4b);edge.setStrokeWidth(2f);
+        canvas.drawLine(cx-hw*.55f,cy-hh*.18f,cx+hw*.55f,cy-hh*.18f,edge);
+        canvas.drawLine(cx-hw*.55f,cy+hh*.18f,cx+hw*.55f,cy+hh*.18f,edge);
+        break;
+    }
     edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
   }
 

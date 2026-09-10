@@ -23,7 +23,7 @@ public final class WorldExplorationContract {
       new Anchor("west_district",320f,705f,"DISTRICT_APPROACH","ADAPTED/B","PROTOTYPE"),
       new Anchor("east_district",1350f,715f,"DISTRICT_APPROACH","ADAPTED/B","PROTOTYPE"),
       new Anchor("east_market",1900f,760f,"MARKET_PLAZA","ADAPTED/B","PROTOTYPE"),
-      new Anchor("east_outer_lane",2070f,1320f,"OUTER_ROAD","ADAPTED/B","PROTOTYPE"),
+      new Anchor("east_outer_lane",2070f,1360f,"OUTER_ROAD","ADAPTED/B","PROTOTYPE"),
       new Anchor("south_west_lane",650f,900f,"ROAD","ADAPTED/B","PROTOTYPE"),
       new Anchor("south_east_lane",930f,900f,"ROAD","ADAPTED/B","PROTOTYPE"),
       new Anchor("south_commons",790f,1360f,"PLAZA","ADAPTED/B","PROTOTYPE"),
