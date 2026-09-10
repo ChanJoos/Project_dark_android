@@ -1,49 +1,51 @@
-# World handoff — PLAYABLE VILLAGE M2
+# World handoff — PLAYABLE VILLAGE M3 2.5D PROPS
 
-- Active branch / PR: `agent/world/playable-village` / `#82`
-- Base main: `e04b758745c41ecef4cdc2a810846af7bcda3762`
-- Current World code head before handoff: `765c64e74f881cef85102c0d62a1e0823bddc44b`
-- Canon: `design/PLAYTEST_CANON_20260910_2149.md` plus latest user direction.
-- Evidence: all new village geometry/presentation remains `ADAPTED/B`; source art remains `PENDING_CROP`.
+- Persistent branch: `agent/world/playable-village`
+- Base main: `77132528a29d073080e5966844d033dcefb62fef`
+- M2 main integration: `77132528a29d073080e5966844d033dcefb62fef` (`Director: integrate coherent opening-screen isometric village`)
+- Current M3 code head before this handoff: `2e55002958e7383afbaf56b925fdbf74dd64dd30`
+- Canon: `design/PLAYTEST_CANON_20260910_2149.md` plus latest user direction that village props must read as 2.5D, not flat 2D.
+- Evidence: procedural geometry is `ADAPTED/B`; verified original source art remains `PENDING_CROP`.
 
-## M1 movement disposition
+## Already integrated — do not reopen
 
-Tile-locked movement is already integrated on main through `b8f36e6787267faca86a66bfe863713afb6c4b9e`. Do not reimplement it in this branch. Joystick/tap/NPC/monster approach share the World tile-step path and World supplies NW/NE/SW/SE facing.
+- Tile-locked NW/NE/SW/SE movement is on main.
+- Opening screen has three coherent 2:1 isometric buildings on main: `west_house`, `plaza_landmark_a`, `plaza_landmark_b`.
 
-## M2 visible result in PR #82
+## M3 visible result
 
-The opening-camera village now has three structures on the coherent isometric renderer path instead of one:
+`AdaptedMillesDecorationLayer` now gives directional props an explicit isometric axis (`NW_SE` / `NE_SW`) and adds opening-screen tree/fence/shop-sign/bench grouping around the three coherent buildings.
 
-- `west_house`: 2:1 footprint `(256,528)–(384,592)`, center `(320,560)`.
-- `plaza_landmark_a`: SHOP footprint `(672,480)–(800,544)`, center `(736,512)`.
-- `plaza_landmark_b`: HOUSE footprint `(800,608)–(928,672)`, center `(864,640)`.
+`AdaptedMillesMapRenderer.drawDecorations(...)` no longer renders village props as flat screen-space primitives. Every prop family now has a 2.5D renderer:
 
-All three are supplied by `AdaptedMillesIsoBuildingLayer` and consumed by the existing `AdaptedMillesMapRenderer.drawObjects(...) -> drawIsometricBuilding(...)` branch. No new `GameView` wiring is required. Each renders through the same projected diamond footprint, two wall faces, hip-roof faces, face-aligned door/window, shadow and threshold path.
+- TREE: projected ground shadow, two-face trunk prism, four layered faceted canopy masses.
+- FENCE: endpoints derived in world coordinates and passed through `worldToScreen`; rails follow the 2:1 world slope and posts are two-face prisms with caps.
+- SIGN: isometric post plus axis-aligned projected sign board.
+- WELL: raised diamond stone ring with two visible vertical faces and inset opening.
+- BENCH: axis-projected seat slab, thickness, supports, and back rail.
+- LAMP: projected base, vertical post, diamond lantern and cap.
+- BUSH: projected shadow plus layered faceted crown masses.
+- GATEPOST: two-face stone prism with projected cap/roof.
 
-`AdaptedMillesMapLayer` structure bounds and `WorldDef.blockers()` were updated to the same footprints, so visual footprint and runtime collision remain aligned. `AdaptedMillesEntranceLayer` automatically consumes each iso building's door foot and approach tile.
+The live call path remains `GameView -> AdaptedMillesMapRenderer.draw(...) -> drawDecorations(...)`; no new GameView wiring is required.
 
-## Verification contract
+## Regression audit
 
-`AdaptedMillesIsoBuildingAudit` now requires exactly three coherent iso buildings and verifies for every building:
+`AdaptedMillesDecoration25DAudit` enforces:
 
-- 2:1 `halfWidth == halfDepth * 2` projection.
-- map-structure bounds == iso collision bounds.
-- non-WALL/non-LANDMARK structure kind.
-- entrance door/approach values == iso building values.
-- approach resolves to an authored tile and lies outside the building footprint.
-- center is inside and the collision-corner is outside the diamond footprint.
+- depth-sorted decoration data;
+- `ADAPTED/B` + `ISOMETRIC_25D` evidence/status;
+- positive dimensions;
+- FENCE/SIGN/BENCH cannot use `Axis.NONE`;
+- opening-screen tree/fence/shop-sign/shop-bench groups must remain present.
 
-BUILD VERIFIED and RUNTIME VERIFIED are not claimed until GitHub Actions / Director APK-device gate completes.
+## Verification status
 
-## Exact integration surface
-
-- Data: `app/src/main/java/com/projectdark/mobile/world/AdaptedMillesIsoBuildingLayer.java`
-- Structure geometry: `app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapLayer.java`
-- Runtime collision: `app/src/main/java/com/projectdark/mobile/WorldDef.java`
-- Entrance adapter: `app/src/main/java/com/projectdark/mobile/world/AdaptedMillesEntranceLayer.java`
-- Renderer: `app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java`
-- Audit: `app/src/main/java/com/projectdark/mobile/world/AdaptedMillesIsoBuildingAudit.java`
+- IMPLEMENTED: yes.
+- Static code/diff inspection: complete.
+- Full Android BUILD VERIFIED: not claimed; no Actions run is attached yet.
+- RUNTIME VERIFIED: not claimed; requires Director APK/device visual check.
 
 ## Next one World result
 
-Do not expand the map or revisit movement. Add collision-aware tree/fence/prop grouping around these three opening-screen buildings and road/plaza edges so the first screen reads as one finished village composition. Then hand the branch to Director for APK/device visual acceptance.
+Do not add more systems or expand map bounds. After Director build/device inspection, tune only the opening-screen composition if occlusion/scale is visibly wrong; otherwise continue replacing remaining flat fallback buildings with the coherent isometric building path.
