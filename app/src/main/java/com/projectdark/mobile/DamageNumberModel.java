@@ -1,0 +1,9 @@
+package com.projectdark.mobile;
+import java.util.*;
+/** Combat-owned damage-number lifecycle; renderer/UI only consumes snapshots. */
+public final class DamageNumberModel {
+ public enum SemanticType{DAMAGE,CRIT,MISS,HEAL}
+ public static final class Snapshot{public final long id;public final String targetId;public final SemanticType type;public final int amount;public final float anchorX,anchorY,offsetY,alpha,progress;Snapshot(long i,String t,SemanticType s,int a,float x,float y,float o,float al,float p){id=i;targetId=t;type=s;amount=a;anchorX=x;anchorY=y;offsetY=o;alpha=al;progress=p;}public String displayText(){switch(type){case MISS:return "MISS";case HEAL:return "+"+amount;default:return "-"+amount;}}}
+ private static final class E{final long id;final String t;final SemanticType s;final int a;final float x,y,d,r;float age;E(long i,String t,SemanticType s,int a,float x,float y,float d,float r){id=i;this.t=t;this.s=s;this.a=a;this.x=x;this.y=y;this.d=d;this.r=r;}}
+ private final List<E> active=new ArrayList<>();private long seq;public long spawn(String t,SemanticType s,int a,float x,float y){return spawn(t,s,a,x,y,.72f,22f);}public long spawn(String t,SemanticType s,int a,float x,float y,float d,float r){if(s==SemanticType.MISS)a=0;long id=++seq;active.add(new E(id,t,s,a,x,y,d,r));return id;}public void tick(float dt){if(dt<=0)return;for(Iterator<E>i=active.iterator();i.hasNext();){E e=i.next();e.age+=dt;if(e.age>=e.d)i.remove();}}public List<Snapshot> snapshot(){List<Snapshot>o=new ArrayList<>();for(E e:active){float q=Math.max(0,Math.min(1,e.age/e.d));float al=q<.45f?1f:Math.max(0,1-(q-.45f)/.55f);o.add(new Snapshot(e.id,e.t,e.s,e.a,e.x,e.y,-e.r*q,al,q));}return Collections.unmodifiableList(o);}public int size(){return active.size();}public void clear(){active.clear();}
+}
