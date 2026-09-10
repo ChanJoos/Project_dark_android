@@ -10,83 +10,64 @@ Read latest `main` first:
 - `docs/DEV_HISTORY.md`
 - latest relevant World/Character history `docs/DEV_HISTORY_PASS_23_WORLD_CHARACTER.md`
 
-`docs/handoffs/character.md` did not exist on latest main, so this file re-establishes the Character handoff on the current canonical lineage.
-
-### Canon change detected
-Latest main commit `405bd764dd38146304fb3939709cf0def17f6958` canonized a stronger directional presentation rule after the previous Character PR base: normal field presentation may not remain front-facing, and `IDLE/WALK/CAST/ATTACK/SKILL/HIT/DEAD` must preserve `NW/NE/SW/SE` facing where applicable. BODY/HAIR/EQUIPMENT/WEAPON/EFFECT must share the same directional anchor/facing contract.
-
-Therefore this run started from latest main rather than stacking further work onto stale Character PR #37.
-
 ### Completed visual delta
-Updated `CharacterRenderer`:
-- current user-approved presentation scale: `PLAYER_RENDER_SCALE=0.92`, `SHADOW_RENDER_SCALE=0.58`;
-- logical world foot anchor remains independent at `LOGICAL_FOOT_ANCHOR_Y=0`;
-- NW/NE/SW/SE now change head/torso offset and near/far arm/leg overlap, yielding four side-diagonal procedural silhouettes rather than one frontal body;
-- WALK depth stepping reverses with diagonal facing;
-- ATTACK weapon reach and effect direction follow facing;
-- CAST/MAGIC/SKILL/PUNCH/KICK effects are direction-aware;
-- HIT recoil moves opposite the current facing vector;
-- DEAD fall direction follows facing while retaining the logical foot anchor;
-- `DirectionalVisualSet` exposes separate NW/NE/SW/SE future sprite slots so verified crops can replace the procedural placeholder without collapsing direction.
-
-All procedural geometry, frame cadence and effects remain `[B]/[ADAPTED]`. Authenticated original directional sprite/frame/timing remains `PENDING_CROP`.
-
-### Regression gate
-Updated `CharacterRendererAudit` to require:
-- 4 directions / 7 states / 5 ordered layers / 28 direction-state cases;
-- current reduced render scale `< 1.0`;
-- shadow scale below actor scale;
-- zero logical foot-anchor presentation offset;
-- unresolved four-direction asset slots remain safe while source crops are unavailable.
-
-### Boundaries preserved
-No `GameView.java`, map/camera/collision/pathfinding/portal, CombatResolver/MonsterAI/damage, inventory/reward/EXP/save/progression, HUD/input, or NPC dialogue/quest state files were modified.
-
-### Remaining Character P0
-1. NPC/monster presentation still needs the same renderer-owned scale/anchor/directional contract once stable presentation seams are available without editing `GameView.java`.
-2. Continue original/fan visual evidence acquisition, but do not spend repeated passes on the exhausted legacy Tistory CDN hash path unless a new mirror/cache becomes available.
-3. Replace procedural per-direction placeholder shapes only after actual directional source crops are positively identified; keep them `PENDING_CROP` otherwise.
-4. Runtime integration should continue feeding `Pose.direction`, `Pose.state`, and `effectFamily`; Character agent must not duplicate combat semantics.
+Updated `CharacterRenderer` with the user-approved reduced player scale (`0.92`), independent logical foot anchor, four side-diagonal NW/NE/SW/SE silhouettes, direction-preserving WALK/ATTACK/CAST/SKILL/HIT/DEAD presentation, and separate future directional asset slots. Procedural geometry/timing remains `[B]/[ADAPTED]`; authenticated original frames remain `PENDING_CROP`.
 
 ### PR
-Draft PR #40: `Character: enforce diagonal facing across all presentation states`.
+Draft PR #40 was later integrated by Director into main.
 
 ---
 
-## 2026-09-10 17:39 KST — agent/character/20260910-1739
+## 2026-09-10 17:47 KST — agent/character/20260910-1747
 
 ### Source-of-Truth gate / continuity
-Re-read latest `main` (`405bd764dd38146304fb3939709cf0def17f6958`) canonical design, data contract, source-of-truth, `docs/DEV_HISTORY.md`, and `docs/DEV_HISTORY_PASS_23_WORLD_CHARACTER.md` before coding. No newer canonical commit exists after the directional-character canon. Continued directly from draft PR #40 head rather than starting an unrelated topic.
-
-### Actual unresolved seam found
-NPC and monster bodies are still drawn directly inside `GameView.java` (`drawNpcs` / `drawMonsters`). Character agent does not own that file, so replacing those calls there would violate the MECE boundary.
+Re-read latest canonical design/data/source-of-truth and history before coding. Director integrated PR #40 and aligned its audit on main, so player directional presentation is now canonical runtime code.
 
 ### Completed renderer-owned delta
 Added `WorldEntityPresentationRenderer.java` and `WorldEntityPresentationAudit.java`:
-- independent NPC/monster presentation seam using the shared `CharacterRenderer.Direction` and `CharacterRenderer.State` contracts;
-- `[ADAPTED]` reduced presentation scales `NPC_RENDER_SCALE=0.84`, `MONSTER_RENDER_SCALE=0.88` with independent shadow scales;
-- `LOGICAL_FOOT_ANCHOR_Y=0` keeps runtime/world positions and collision radii untouched;
-- four diagonal NW/NE/SW/SE silhouettes with direction-dependent head/body offsets and far/near limb overlap;
-- NPC WALK stepping preserves facing rather than a frontal billboard;
-- generic monster placeholder uses a lower/hunched directional silhouette explicitly tagged `[B]`, not claimed as original LOD art;
-- ATTACK directional lunge, HIT recoil/flash, DEAD directional fall, selection ring and renderer-local effect hooks;
-- `presentationState(RuntimeState.Monster)` consumes existing monster runtime state without changing combat behavior;
-- `directionToward(...)` is presentation-only and never moves an entity;
-- all source sprite mappings remain `PENDING_CROP`.
-
-### Regression gate
-`WorldEntityPresentationAudit` verifies:
-- both actor kinds exist;
-- both render scales are below 1.0 and shadow scales remain below actor scales;
-- logical foot anchor remains zero;
-- all four directional transforms resolve correctly;
-- existing monster CHASE/WANDER, ATTACK, hitFlash and DEAD runtime states map to WALK, ATTACK, HIT and DEAD presentation states respectively.
+- NPC scale `0.84`, monster scale `0.88`, independent shadow scales, logical foot anchor `0`;
+- NW/NE/SW/SE side-diagonal silhouettes and far/near overlap;
+- monster CHASE/WANDER→WALK, ATTACK→ATTACK, hitFlash→HIT, death/respawn→DEAD presentation mapping;
+- directional attack lunge, hit recoil/flash, directional fall, selection ring and effect hooks;
+- all source sprites remain `PENDING_CROP`.
 
 ### Integration request — owner: Integrator/UX
-Replace the legacy direct primitive drawing inside `GameView.drawNpcs()` / `drawMonsters()` with `WorldEntityPresentationRenderer.draw(...)`. Integrator must own this wiring because Character agent is explicitly prohibited from modifying `GameView.java`. Feed/retain a last-known facing direction per entity so IDLE/HIT/DEAD do not collapse to a frontal or arbitrary orientation. Do not change collision radii or entity logical coordinates when adopting the renderer.
+`GameView.drawNpcs()` / `drawMonsters()` still own legacy primitive drawing. Replace those calls with `WorldEntityPresentationRenderer.draw(...)` and retain per-entity last-known facing so IDLE/HIT/DEAD preserve direction. Character agent must not modify `GameView.java`.
+
+### PR
+Draft PR #44: `Character: add directional NPC and monster renderer seam`.
+
+---
+
+## 2026-09-10 17:54 KST — agent/character/20260910-1754
+
+### Source-of-Truth gate / continuity
+Started by re-reading latest main `6785efb6f7504e070ee0c0aa6924d1281e444469`, `DESIGN_CONSTITUTION`, `DATA_CONTRACT`, `SOURCE_OF_TRUTH`, and current DEV_HISTORY. No newer character visual canon supersedes the NW/NE/SW/SE requirement. PR #44 remains open/mergeable, so this run deliberately continues its lineage instead of choosing a new topic.
+
+### Completed visual delta
+Extended `WorldEntityPresentationRenderer` with renderer-only `[B]` IDLE motion while preserving current facing:
+- NPC receives a small breathing vertical motion and facing-axis sway;
+- monster receives a slightly stronger low-body breathing/sway cycle;
+- shadow width/height subtly counter-pulse during IDLE;
+- WALK/ATTACK/HIT/DEAD behavior remains unchanged and logical coordinates/anchors are untouched.
+
+This is intentionally a prototype animation cue, not claimed as original LOD timing/frame data.
+
+### Directional asset binding contract
+Added `DirectionalVisualBinding.java`:
+- binds independently by `CharacterRenderer.State × CharacterRenderer.Direction`;
+- supports all common states (`IDLE/WALK/CAST/ATTACK/SKILL/HIT/DEAD`) and all four directions;
+- `null`, empty refs, and `PENDING_CROP` never resolve as valid source assets;
+- `resolvedVisualRef(Pose)` in `WorldEntityPresentationRenderer` prefers the state+direction binding and safely falls back to the legacy single `visualRef` only when it is actually resolved;
+- existing Pose constructor remains available, so Integrator wiring is not broken by the new contract.
+
+`WorldEntityPresentationAudit` now verifies unresolved fallback safety, partial directional binding, PENDING_CROP rejection, and resolved NW binding behavior.
+
+### Evidence / boundary
+No original sprite/frame/timing was fabricated. All procedural IDLE motion remains `[B]/[ADAPTED]`, original sprites remain `PENDING_CROP`. No `GameView.java`, map/camera/collision/pathfinding/portal, combat math/AI, inventory/reward/EXP/save/progression, HUD/input, NPC dialogue or quest-state file was modified.
 
 ### Remaining Character P0
-1. Integrator wiring of the new NPC/monster renderer seam is the concrete blocker to seeing this delta in the integrated APK.
-2. Once wired, device-playtest NPC/monster proportions against the player-approved 0.92 player scale and adjust only presentation constants if needed.
-3. Continue source-backed directional sprite acquisition; retain `PENDING_CROP` until positive identification.
-4. After actual source crops exist, bind per-direction assets without changing the logical/state contracts introduced here.
+1. Integrator must wire PR #44 renderer seam into `GameView` before NPC/monster deltas are visible in the integrated APK.
+2. After positive identification of real directional source crops, populate `DirectionalVisualBinding` by state/direction and add bitmap/sprite drawing behind `resolvedVisualRef(...)`; do not guess missing directions.
+3. Device-playtest NPC 0.84 / monster 0.88 against approved player 0.92 and adjust presentation-only constants only if needed.
+4. Keep acquiring source-backed directional evidence; `PENDING_CROP` remains authoritative until positively identified.
