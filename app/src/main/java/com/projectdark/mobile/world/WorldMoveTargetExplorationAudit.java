@@ -8,15 +8,18 @@ import java.util.List;
  * It drives the real WorldMoveTargetController from spawn through stable exploration anchors.
  */
 public final class WorldMoveTargetExplorationAudit {
-  private static final float MIN_X=64f,MAX_X=1664f,MIN_Y=48f,MAX_Y=1168f;
+  private static final float MIN_X=64f,MAX_X=2304f,MIN_Y=48f,MAX_Y=1600f;
   private static final float PLAYER_RADIUS=9f,NPC_RADIUS=10f,MONSTER_RADIUS=11f;
   private static final float[][] BLOCKERS={
       {150f,105f,390f,300f},{540f,90f,800f,280f},{1040f,110f,1320f,315f},
       {120f,430f,350f,650f},{1210f,410f,1480f,660f},{330f,760f,570f,980f},
       {1000f,770f,1260f,995f},{700f,470f,765f,535f},{850f,625f,920f,690f},
-      {80f,820f,250f,1050f},{1390f,790f,1580f,1040f}
+      {80f,820f,250f,1050f},{1390f,790f,1580f,1040f},{1660f,420f,1900f,580f},
+      {1960f,420f,2200f,600f},{2140f,700f,2260f,950f},{1700f,1000f,1940f,1200f},
+      {2020f,1120f,2220f,1330f},{300f,1100f,560f,1300f},{1040f,1120f,1300f,1320f},
+      {520f,1460f,700f,1580f},{880f,1460f,1060f,1580f}
   };
-  private static final float[][] NPCS={{665f,615f},{1120f,365f},{790f,1035f},{285f,705f}};
+  private static final float[][] NPCS={{665f,615f},{1120f,365f},{790f,1450f},{285f,705f},{1900f,820f}};
   private static final float[][] MONSTERS={{1315f,715f}};
 
   private static final class SimWorld implements WorldMoveTargetController.NavigationWorld {
