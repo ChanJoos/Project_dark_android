@@ -10,5 +10,12 @@ android {
         versionCode 45
         versionName '0.45-movement-rendering'
     }
+    sourceSets {
+        main {
+            // Package canonical master CSVs directly so RPG runtime can consume the same source-of-truth
+            // instead of maintaining hand-copied Java constants.
+            assets.srcDirs = ['src/main/assets', '../master/data']
+        }
+    }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
