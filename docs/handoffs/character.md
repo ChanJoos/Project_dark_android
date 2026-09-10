@@ -1,41 +1,33 @@
 # Character / Animation Handoff
 
-## 2026-09-10 16:50 KST — agent/character/20260910-1650
+## 2026-09-10 17:05 KST — agent/character/20260910-1705
 
 ### Priority
-Per user direction, Character work remains focused on complete item-image coverage before additional micro-animation work. Current acquisition family: shields.
+Continue exhaustive item-image coverage before more animation polish. Current family remains shields.
 
-### Source/data state
-- Continued from `agent/character/20260910-1635`; prior Character work remains unmerged.
-- Canonical shield IDs remain: `IT_SHIELD_LEATHER`, `IT_SHIELD_COPPER`, `IT_SHIELD_IRON`, `IT_SHIELD_SILVER`, `IT_SHIELD_GOLD`, `IT_SHIELD_PLANUM`, `IT_SHIELD_PAPAYA`.
-- Official Nexon probability page `https://lod.nexon.com/cashshop/probability` explicitly names `가죽방패`.
-- Nexon-hosted game-board post `https://lod.nexon.com/community/game/7009?SearchBoard=1` explicitly enumerates the common shield family `가죽방패/구리방패/철방패/은제방패/금제방패/플라늄방패`; this is Nexon-hosted community evidence `[V]`, not automatically `[O]` official-art evidence.
-- Nexon-hosted Papaya quest guide `https://lod.nexon.com/community/game/791?SearchBoard=1` explicitly names `파파야방패` as the quest reward.
-- The current search pass did **not** produce a positively identifiable isolated inventory icon or equipped-world sprite for any of the seven shields. Therefore none is promoted to image `SOURCE_FOUND`, `PENDING_CROP`, or `READY_FOR_RENDER` yet.
+### Search result this run
+- Re-searched the seven canonical shield names individually across current web/Nexon evidence pools.
+- No source was found that safely ties an isolated inventory icon or equipped-world sprite to any of the seven current canonical shield IDs.
+- A fan/community screenshot for `기사단 방패` was found at `https://gall.dcinside.com/mgallery/board/view/?id=darkages&no=3326`. The image visibly contains shield-related inventory/game imagery, but `기사단 방패` is not one of the seven canonical shield IDs in the current Item_Master batch.
+- Therefore it is **not** promoted to any canonical shield. Current render-ready shield count remains 0.
 
 ### Completed this run
-- Added `ShieldVisualEvidenceCatalog` for the seven canonical shield IDs.
-- Separated text/item-existence evidence from image evidence in code. A textual source can prove an item name without falsely making that item render-ready.
-- `ItemVisualManifest.Entry` now exposes `textEvidenceUrl`, `textEvidenceKind`, `imageSourceUrl`, and `imageProvenance` independently.
-- Added `readyForEquippedRender()` gating: an equipped sprite is only renderable when status is `READY_FOR_RENDER` and a positively identified image source exists.
-- Added `pendingImageAcquisition()` and `readyForEquippedRender()` queries so subsequent Character passes can work the backlog deterministically.
-- Seeded all seven shield evidence rows. Current verified shield-image count is intentionally 0 rather than inventing procedural/original-looking shield art.
+- Added `ItemVisualCandidateEvidence` as a staging layer for candidate screenshots/images discovered during research.
+- Candidate rows record source URL/host, provenance, surface hint (`INVENTORY_ICON`, `EQUIPPED_WORLD`, `MIXED_SCREENSHOT`, `UNKNOWN`) and identity status (`UNMAPPED`, `FAMILY_ONLY`, `ITEM_CONFIRMED`).
+- Added a hard `canPromoteToRender()` rule: an image cannot become renderer-authoritative until exact item identity is confirmed and the relevant image surface is known.
+- Recorded the `기사단 방패` screenshot as `FAN + MIXED_SCREENSHOT + FAMILY_ONLY`; no canonical Item ID is assigned.
+- Updated `data/design/ITEM_VISUAL_MANIFEST.md` with this candidate-evidence workflow and current shield acquisition state.
 
-### User-visible / quality delta
-This pass prevents a major asset-integrity bug: item names or inventory evidence can no longer accidentally authorize an arbitrary world-character shield sprite. The renderer pipeline now has a hard gate requiring verified image evidence before a canonical shield is visually equipped.
+### Quality / blocker delta
+This pass prevents visual-similarity contamination of the item catalog. A shield-looking image from the same game is no longer enough to bind a canonical shield ID. Exact identity remains required before `READY_FOR_RENDER` and OFF_HAND presentation.
 
-### Evidence discipline
-- `가죽방패` official probability-page name evidence: `[O]` text only.
-- Shield list and Papaya quest posts: Nexon-hosted community evidence `[V]` text only.
-- Isolated shield inventory icons: unresolved.
-- Equipped-world shield sprites: unresolved.
-- No unrelated web image or visually similar shield was accepted as Legend of Darkness evidence.
+### Current blocker
+The seven canonical shields have text/name evidence but no positively identified image evidence in the searched pool. Until a source labels the visible icon/sprite or a trusted asset package is found, attaching a specific shield graphic would be invention.
+
+### Next Character pass
+1. Broaden image acquisition from shield-name pages to old Nexon guide attachments, archived item/shop screenshots, and trusted asset dumps if present in repo/source packages.
+2. In parallel, start the next equipment family (common gloves/leggings/shoes) so image-catalog progress is not blocked by shields alone.
+3. Promote the first exact item image to `PENDING_CROP`/`READY_FOR_RENDER` only after item identity is positively established.
 
 ### Boundaries preserved
 No `GameView.java`, combat/AI/damage, world/pathfinding, RPG mutation/progression/save, HUD/input, dialogue/quest, APK packaging or Director integration changes.
-
-### Next Character pass
-1. Continue shield-image acquisition using Nexon-hosted guide/community attachments and old board captures; inspect attachments rather than relying only on page text search.
-2. Promote the first shield only after item identity can be visually tied to a canonical name/ID.
-3. Once one shield has a verified equipped-world source, crop it by direction, define foot/hand anchor offsets, set `READY_FOR_RENDER`, and wire the OFF_HAND renderer preview.
-4. Do not use generic shield drawings as canonical item art.
