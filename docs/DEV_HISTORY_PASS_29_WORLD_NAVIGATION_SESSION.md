@@ -30,7 +30,8 @@ Draft PR: #30
 
 - IMPLEMENTED: yes.
 - STATIC API REVIEW: passed against the branch versions of `WorldMoveTargetController`, `WorldCameraTransform` and `WorldPortalTransitionController`.
-- ISOLATED JAVA COMPILE: blocked because this runner has no `javac` executable.
+- ISOLATED JAVA COMPILE: passed via the JDK compiler module (`java --module jdk.compiler/com.sun.tools.javac.Main`).
+- DETERMINISTIC AUDIT: `WorldNavigationSessionAudit PASS`.
 - GRADLE/APK BUILD: not run; Director-owned.
 - ANDROID RUNTIME / SCREENSHOT: not verified; Director integration remains required.
 
