@@ -14,6 +14,8 @@ public final class RpgProgressionState {
   public enum Evidence { O,V,U,B,ADAPTED,PENDING,FAN }
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
+  public enum RewardGrantStatus { GRANTED, INVENTORY_FULL, INVALID_ITEM, INVALID_QUANTITY, UNRESOLVED_REWARD }
+  public enum CombatConsumeStatus { PROCESSED_DEFEAT, DUPLICATE_OR_STALE, IGNORED_NON_DEFEAT }
   public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
   public enum RestoreResult { RESTORED, UNSUPPORTED_SCHEMA, INVALID_STATE }
@@ -39,13 +41,32 @@ public final class RpgProgressionState {
     public boolean unrestrictedJob(){return jobRestrictionResolved&&allowedJobCodes.isEmpty();}
   }
 
+  public static final class RewardGrantOutcome {
+    public final String itemId;
+    public final Integer requestedQuantity;
+    public final RewardGrantStatus status;
+    public final Evidence evidence;
+    RewardGrantOutcome(String itemId,Integer requestedQuantity,RewardGrantStatus status,Evidence evidence){
+      this.itemId=itemId;this.requestedQuantity=requestedQuantity;this.status=status;this.evidence=evidence;
+    }
+  }
+
   public static final class RewardResolution {
     public final long combatSequence;public final String monsterId;public final RewardStatus status;public final Integer exp;
     public final Map<String,Integer> autoLootedItems;
-    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,Map<String,Integer> autoLootedItems){
+    public final List<RewardGrantOutcome> grantOutcomes;
+    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,Map<String,Integer> autoLootedItems,
+        List<RewardGrantOutcome> grantOutcomes){
       this.combatSequence=combatSequence;this.monsterId=monsterId;this.status=status;this.exp=exp;
       this.autoLootedItems=Collections.unmodifiableMap(new LinkedHashMap<>(autoLootedItems));
+      this.grantOutcomes=Collections.unmodifiableList(new ArrayList<>(grantOutcomes));
     }
+  }
+
+  public static final class CombatConsumeOutcome {
+    public final long combatSequence;
+    public final CombatConsumeStatus status;
+    CombatConsumeOutcome(long combatSequence,CombatConsumeStatus status){this.combatSequence=combatSequence;this.status=status;}
   }
 
   public static final class StatSnapshot {
@@ -121,22 +142,54 @@ public final class RpgProgressionState {
   }
   public RequirementResult currentRequirements(String itemId){return evaluateRequirements(itemId,currentJobCode,normalLevel);}
 
-  public void consumeCombat(List<CombatLedger.Event> events,RuntimeState runtime){
-    for(CombatLedger.Event e:events){if(e.sequence<=lastCombatSequence)continue;lastCombatSequence=e.sequence;if(e.type==CombatLedger.Type.MONSTER_DEFEATED)resolveMonsterDefeat(e);}
+  public void consumeCombat(List<CombatLedger.Event> events,RuntimeState runtime){consumeCombatWithOutcomes(events,runtime);}
+
+  public List<CombatConsumeOutcome> consumeCombatWithOutcomes(List<CombatLedger.Event> events,RuntimeState runtime){
+    List<CombatConsumeOutcome> outcomes=new ArrayList<>();
+    for(CombatLedger.Event e:events){
+      if(e.sequence<=lastCombatSequence){outcomes.add(new CombatConsumeOutcome(e.sequence,CombatConsumeStatus.DUPLICATE_OR_STALE));continue;}
+      lastCombatSequence=e.sequence;
+      if(e.type==CombatLedger.Type.MONSTER_DEFEATED){
+        resolveMonsterDefeat(e);outcomes.add(new CombatConsumeOutcome(e.sequence,CombatConsumeStatus.PROCESSED_DEFEAT));
+      }else outcomes.add(new CombatConsumeOutcome(e.sequence,CombatConsumeStatus.IGNORED_NON_DEFEAT));
+    }
+    return Collections.unmodifiableList(outcomes);
   }
 
   private void resolveMonsterDefeat(CombatLedger.Event e){
     CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
-    if(reward==null){rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,null,Collections.emptyMap()));trimRewardHistory();return;}
-    Map<String,Integer> looted=new LinkedHashMap<>();
-    for(CanonicalMonsterRewardCatalog.DropHint hint:reward.dropHints){if(!hint.emissionResolved())continue;AutoLootResult result=autoLootResolvedItem(hint.itemId,hint.quantity);if(result==AutoLootResult.LOOTED)looted.put(hint.itemId,value(looted,hint.itemId)+hint.quantity);}
-    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted));trimRewardHistory();
+    if(reward==null){rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,
+        null,Collections.emptyMap(),Collections.emptyList()));trimRewardHistory();return;}
+    Map<String,Integer> looted=new LinkedHashMap<>();List<RewardGrantOutcome> outcomes=new ArrayList<>();
+    for(CanonicalMonsterRewardCatalog.DropHint hint:reward.dropHints){
+      RewardGrantOutcome outcome=hint.emissionResolved()
+          ?grantResolvedRewardItem(hint.itemId,hint.quantity,hint.evidence)
+          :new RewardGrantOutcome(hint.itemId,hint.quantity,RewardGrantStatus.UNRESOLVED_REWARD,hint.evidence);
+      outcomes.add(outcome);
+      if(outcome.status==RewardGrantStatus.GRANTED)looted.put(hint.itemId,value(looted,hint.itemId)+outcome.requestedQuantity);
+    }
+    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes));trimRewardHistory();
+  }
+
+  public RewardGrantOutcome grantResolvedRewardItem(String itemId,Integer quantity,Evidence evidence){
+    if(quantity==null)return new RewardGrantOutcome(itemId,null,RewardGrantStatus.UNRESOLVED_REWARD,evidence);
+    if(quantity<=0)return new RewardGrantOutcome(itemId,quantity,RewardGrantStatus.INVALID_QUANTITY,evidence);
+    if(itemId==null||!items.containsKey(itemId))return new RewardGrantOutcome(itemId,quantity,RewardGrantStatus.INVALID_ITEM,evidence);
+    int current=inventory.containsKey(itemId)?inventory.get(itemId):0;
+    if(current>INVENTORY_STACK_LIMIT-quantity)return new RewardGrantOutcome(itemId,quantity,RewardGrantStatus.INVENTORY_FULL,evidence);
+    inventory.put(itemId,current+quantity);return new RewardGrantOutcome(itemId,quantity,RewardGrantStatus.GRANTED,evidence);
   }
 
   public AutoLootResult autoLootResolvedItem(String itemId,int quantity){
-    if(quantity<=0)return AutoLootResult.INVALID_QUANTITY;if(!items.containsKey(itemId))return AutoLootResult.INVALID_ITEM;
-    int current=inventory.containsKey(itemId)?inventory.get(itemId):0;if(current>INVENTORY_STACK_LIMIT-quantity)return AutoLootResult.INVENTORY_FULL;
-    inventory.put(itemId,current+quantity);return AutoLootResult.LOOTED;
+    RewardGrantStatus status=grantResolvedRewardItem(itemId,quantity,Evidence.PENDING).status;
+    switch(status){
+      case GRANTED:return AutoLootResult.LOOTED;
+      case INVALID_ITEM:return AutoLootResult.INVALID_ITEM;
+      case INVALID_QUANTITY:return AutoLootResult.INVALID_QUANTITY;
+      case INVENTORY_FULL:return AutoLootResult.INVENTORY_FULL;
+      case UNRESOLVED_REWARD:
+      default:return AutoLootResult.INVALID_QUANTITY;
+    }
   }
 
   public EquipResult equip(String itemId){
