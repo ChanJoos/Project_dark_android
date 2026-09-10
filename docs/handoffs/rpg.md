@@ -6,6 +6,30 @@ Base main at branch creation: `611cd2342a8ca010211c28794c1004663db8b1ef`
 Draft PR: `#5`
 Role: RPG · Progression · Persistence
 
+## PASS 25 continuation — durable file persistence
+
+Continued this existing Draft PR after re-reading current `main` at `3b58a8d08805cf9031466fe0c50d56e17aa1344d`. The PR remains mergeable and no newer main-side RPG persistence implementation was found.
+
+- Added `RpgSaveCodec`: deterministic schema-v1 binary encoding with SHA-256 integrity digest.
+- The codec preserves nullable unknown EXP/Gold and stores only mutable IDs/state, never canonical definitions.
+- Decode outcomes are explicit: `DECODED`, `CHECKSUM_MISMATCH`, `UNSUPPORTED_SCHEMA`, `MALFORMED`.
+- Added `RpgFileSaveStore`: callers provide an app-private directory and safe slot ID.
+- Save writes and `fsync`s a temporary file, rotates the previous complete primary to `.bak`, then atomically replaces the primary where supported.
+- Load prefers the current valid save and falls back to the last-known-good backup if the newest file is torn or corrupt.
+- Load outcomes are explicit: `LOADED`, `LOADED_BACKUP`, `EMPTY`, `CORRUPT`, `IO_ERROR`.
+- Added `RpgFileSaveStoreAudit` covering restart load, second-save replacement, corrupt-primary backup recovery and checksum rejection.
+
+PASS 25 validation:
+- isolated Java compile: PASS via `java com.sun.tools.javac.Main` with a minimal enum stub only for the pre-existing snapshot dependency;
+- `RpgFileSaveStoreAudit`: PASS;
+- full Gradle/APK and Android runtime: not verified in this worker image (`gradle` executable unavailable; workflow is main-only).
+
+Director integration request:
+1. Construct `RpgFileSaveStore(context.getFilesDir(), "player-1")` or another validated profile slot.
+2. Save `rpg.saveSnapshot()` at explicit checkpoints/background transitions.
+3. On boot, call `load()`, then apply only a non-null snapshot via `rpg.restoreSnapshot()` and surface backup recovery/corrupt outcomes.
+4. Do not silently create zero EXP/Gold when the snapshot preserves `null`.
+
 ## Source-of-Truth gate
 Read current main canonical contracts, latest RPG history, and `master/data/Skill_Master.csv`. `docs/handoffs/rpg.md` did not exist on main at run start, so this file establishes the handoff surface.
 
@@ -36,8 +60,8 @@ Repository workflow currently triggers only for pushes to `main` or manual dispa
 At PR creation, main had advanced beyond the branch base; the latest checked `RpgProgressionState.java` on main was still unchanged from the branch merge base, so no direct RPG-file concurrent edit was detected. PR remains draft.
 
 ## P0 next
-1. Add a serialization backend / Android process-storage adapter around `RpgSaveSnapshot` without persisting canonical definitions.
-2. Add schema migration entry points before schema v2 exists; unknown future schemas must continue to fail closed.
+1. Add schema migration entry points before schema v2 exists; unknown future schemas already fail closed.
+2. Wire the durable store at the Director-owned Android lifecycle boundary and verify a real process-kill restart.
 3. Project canonical `Skill_Master.csv` metadata into an RPG-owned definition catalog with provenance/nullable unknowns, then map learned state onto those IDs without modifying CombatResolver/GameView.
 4. Expand item/action runtime projection incrementally from the 92 CSV baseline with source/evidence retained.
 5. Keep HUD/GameView integration outside this agent; consumers should use RPG DTOs only.
