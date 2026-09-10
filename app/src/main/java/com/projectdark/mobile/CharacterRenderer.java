@@ -64,16 +64,19 @@ public final class CharacterRenderer {
     float bob=(frame==1||frame==3)?-1.5f:0f;
     boolean left=isLeft(pose.direction),down=isDown(pose.direction);
     float facingX=left?-1f:1f,facingY=down?1f:-1f;
+    float gait=pose.state==State.WALK?(float)Math.sin(pose.walkClock*Math.PI*8f):0f; // [B] visual cadence only
+    float walkSway=gait*.55f*facingX;
     float recoilX=pose.state==State.HIT?-facingX*3.5f:0f;
     float recoilY=pose.state==State.HIT?-facingY*1.4f:0f;
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
 
     float sw=13f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?1.32f:1f);
     float sh=4f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?0.72f:1f);
+    if(pose.state==State.WALK){float contact=Math.abs(gait);sw*=1f+.025f*contact;sh*=1f-.06f*contact;}
     p.setColor(pose.hitFlash?0x99ff7766:0x66000000);
     c.drawOval(new RectF(pose.x-sw,anchorY-sh,pose.x+sw,anchorY+sh),p);
 
-    c.save();c.translate(pose.x+recoilX,anchorY-(30f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE+recoilY);
+    c.save();c.translate(pose.x+recoilX+walkSway,anchorY-(30f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE+recoilY);
     c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);c.translate(-8,0);
     if(pose.state==State.DEAD){c.rotate(left?-72f:72f,8f,29f);c.scale(1f,0.84f,8f,29f);}
     for(Layer layer:DRAW_ORDER)drawLayer(c,pose,layer,frame);c.restore();
