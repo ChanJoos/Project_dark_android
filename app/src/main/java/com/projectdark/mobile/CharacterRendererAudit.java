@@ -10,6 +10,8 @@ public final class CharacterRendererAudit {
   public static final int EXPECTED_STATE_COUNT=7;
   public static final int EXPECTED_LAYER_COUNT=5;
   public static final int EXPECTED_MATRIX_CASES=28;
+  public static final float USER_APPROVED_PLAYER_RENDER_SCALE=1.35f;
+  public static final float USER_APPROVED_SHADOW_RENDER_SCALE=0.72f;
 
   public static final class Case {
     public final CharacterRenderer.Direction direction;
@@ -37,7 +39,8 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.DRAW_ORDER.get(3)!=CharacterRenderer.Layer.WEAPON)return false;
     if(CharacterRenderer.DRAW_ORDER.get(4)!=CharacterRenderer.Layer.EFFECT)return false;
     if(!"PENDING_CROP".equals(CharacterRenderer.ASSET_STATUS))return false;
-    if(CharacterRenderer.PLAYER_RENDER_SCALE>=1f||CharacterRenderer.PLAYER_RENDER_SCALE<=0f)return false;
+    if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>0.0001f)return false;
+    if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>0.0001f)return false;
     if(CharacterRenderer.SHADOW_RENDER_SCALE>=CharacterRenderer.PLAYER_RENDER_SCALE)return false;
     if(CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f)return false;
     CharacterRenderer.DirectionalVisualSet unresolved=new CharacterRenderer.DirectionalVisualSet(null,null,null,null);
