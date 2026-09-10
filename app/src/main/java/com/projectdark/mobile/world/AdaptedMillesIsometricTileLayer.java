@@ -4,6 +4,8 @@ import com.projectdark.mobile.WorldDef;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Render-ready [ADAPTED]/[B] isometric ground composition for the current Milles prototype.
@@ -18,6 +20,7 @@ public final class AdaptedMillesIsometricTileLayer {
   public static final float HALF_WIDTH=TILE_WIDTH*.5f;
   public static final float HALF_HEIGHT=TILE_HEIGHT*.5f;
   public static final float ROW_STEP=HALF_HEIGHT;
+  public static final int EDGE_NW=1,EDGE_NE=2,EDGE_SE=4,EDGE_SW=8;
 
   public enum TileKind { GROUND, ROAD, PLAZA, GATE }
 
@@ -27,12 +30,15 @@ public final class AdaptedMillesIsometricTileLayer {
     public final float leftX,topY,rightX,bottomY;
     public final TileKind kind;
     public final int variant;
+    /** Bit mask of diamond edges touching a different surface kind or the map exterior. */
+    public final int transitionMask;
     public final String evidence,status,assetRef;
 
-    Tile(int row,int column,float centerX,float centerY,TileKind kind,int variant){
+    Tile(int row,int column,float centerX,float centerY,TileKind kind,int variant,int transitionMask){
       this.row=row;this.column=column;this.centerX=centerX;this.centerY=centerY;
       leftX=centerX-HALF_WIDTH;topY=centerY-HALF_HEIGHT;rightX=centerX+HALF_WIDTH;bottomY=centerY+HALF_HEIGHT;
       this.kind=kind;this.variant=variant;
+      this.transitionMask=transitionMask;
       evidence="ADAPTED/B";
       status="PROTOTYPE_REPLACE_WITH_VERIFIED_MILLES";
       assetRef=assetRefFor(kind,variant);
@@ -63,7 +69,7 @@ public final class AdaptedMillesIsometricTileLayer {
   }
 
   private static List<Tile> build(){
-    List<Tile> result=new ArrayList<>();
+    List<Tile> raw=new ArrayList<>();
     int row=0;
     for(float y=WorldDef.MIN_Y+HALF_HEIGHT;y<=WorldDef.MAX_Y-HALF_HEIGHT+.01f;y+=ROW_STEP,row++){
       float offset=(row&1)==0?0f:HALF_WIDTH;
@@ -71,11 +77,25 @@ public final class AdaptedMillesIsometricTileLayer {
       for(float x=WorldDef.MIN_X+HALF_WIDTH+offset;x<=WorldDef.MAX_X-HALF_WIDTH+.01f;x+=TILE_WIDTH,column++){
         TileKind kind=classify(x,y);
         int variant=Math.floorMod(row*31+column*17+kind.ordinal()*7,4);
-        result.add(new Tile(row,column,x,y,kind,variant));
+        raw.add(new Tile(row,column,x,y,kind,variant,0));
       }
+    }
+    Map<String,Tile> byCenter=new HashMap<>();
+    for(Tile tile:raw)byCenter.put(key(tile.centerX,tile.centerY),tile);
+    List<Tile> result=new ArrayList<>(raw.size());
+    for(Tile tile:raw){
+      int mask=0;
+      if(differs(tile,byCenter.get(key(tile.centerX-HALF_WIDTH,tile.centerY-HALF_HEIGHT))))mask|=EDGE_NW;
+      if(differs(tile,byCenter.get(key(tile.centerX+HALF_WIDTH,tile.centerY-HALF_HEIGHT))))mask|=EDGE_NE;
+      if(differs(tile,byCenter.get(key(tile.centerX+HALF_WIDTH,tile.centerY+HALF_HEIGHT))))mask|=EDGE_SE;
+      if(differs(tile,byCenter.get(key(tile.centerX-HALF_WIDTH,tile.centerY+HALF_HEIGHT))))mask|=EDGE_SW;
+      result.add(new Tile(tile.row,tile.column,tile.centerX,tile.centerY,tile.kind,tile.variant,mask));
     }
     return Collections.unmodifiableList(result);
   }
+
+  private static boolean differs(Tile tile,Tile neighbor){return neighbor==null||neighbor.kind!=tile.kind;}
+  private static String key(float x,float y){return Math.round(x*10f)+":"+Math.round(y*10f);}
 
   private static TileKind classify(float x,float y){
     AdaptedMillesMapLayer.SurfaceKind best=AdaptedMillesMapLayer.SurfaceKind.GROUND;

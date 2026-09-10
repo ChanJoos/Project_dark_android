@@ -29,6 +29,7 @@ public final class WorldMapProjection {
   private final List<AdaptedMillesMapLayer.Structure> structures;
   private final List<AdaptedMillesIsometricTileLayer.Tile> tiles;
   private final List<AdaptedMillesObjectLayer.ObjectInstance> renderObjects;
+  private final List<AdaptedMillesDecorationLayer.Decoration> decorations;
 
   private WorldMapProjection(WorldDef world){
     mapId=WorldDef.ID;evidence=WorldDef.EVIDENCE_GEOMETRY;status=WorldDef.GEOMETRY_STATUS;
@@ -44,6 +45,7 @@ public final class WorldMapProjection {
     structures=AdaptedMillesMapLayer.structures();
     tiles=AdaptedMillesIsometricTileLayer.tiles();
     renderObjects=AdaptedMillesObjectLayer.objects();
+    decorations=AdaptedMillesDecorationLayer.decorations();
   }
 
   public static WorldMapProjection from(WorldDef world){if(world==null)throw new IllegalArgumentException("world required");return new WorldMapProjection(world);}
@@ -53,5 +55,6 @@ public final class WorldMapProjection {
   public List<ObjectMarker> objects(){return objects;} public List<WorldExplorationContract.Anchor> anchors(){return anchors;}
   public List<AdaptedMillesMapLayer.Surface> surfaces(){return surfaces;} public List<AdaptedMillesMapLayer.Structure> structures(){return structures;}
   public List<AdaptedMillesIsometricTileLayer.Tile> tiles(){return tiles;} public List<AdaptedMillesObjectLayer.ObjectInstance> renderObjects(){return renderObjects;}
+  public List<AdaptedMillesDecorationLayer.Decoration> decorations(){return decorations;}
   public WorldCameraTransform newCamera(float viewportWidth,float viewportHeight){return new WorldCameraTransform(bounds.minX,bounds.maxX,bounds.minY,bounds.maxY,viewportWidth,viewportHeight);}
 }

@@ -21,10 +21,11 @@ public final class AdaptedMillesMapRenderer {
     edge.setStyle(Paint.Style.STROKE);edge.setStrokeWidth(1f);edge.setAntiAlias(false);edge.setColor(0x55312B24);
   }
 
-  /** Draw TILE first, then static OBJECT silhouettes. Dynamic entities remain owned by their renderers. */
+  /** Draw TILE, decoration, then static structure silhouettes. Dynamic entities remain separately owned. */
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
     drawTiles(canvas,world);
+    drawDecorations(canvas,world);
     drawObjects(canvas,world);
   }
 
@@ -37,6 +38,38 @@ public final class AdaptedMillesMapRenderer {
       diamond(c.x,c.y,AdaptedMillesIsometricTileLayer.HALF_WIDTH,AdaptedMillesIsometricTileLayer.HALF_HEIGHT);
       canvas.drawPath(path,fill);
       canvas.drawPath(path,edge);
+      drawTransitionEdges(canvas,c.x,c.y,tile.transitionMask);
+    }
+  }
+
+  public void drawDecorations(Canvas canvas,WorldRuntimeAdapter world){
+    for(AdaptedMillesDecorationLayer.Decoration d:world.map().decorations()){
+      WorldCameraTransform.Point foot=world.worldToScreen(d.footX,d.footY);
+      if(foot.x+d.width<0||foot.x-d.width>canvas.getWidth()||foot.y<0||foot.y-d.height>canvas.getHeight())continue;
+      float l=foot.x-d.width*.5f,r=foot.x+d.width*.5f,t=foot.y-d.height,b=foot.y;
+      switch(d.kind){
+        case TREE:
+          fill.setColor(0xff493a2e);canvas.drawRect(foot.x-6,t+d.height*.48f,foot.x+6,b,fill);
+          fill.setColor(0xff3f5941);canvas.drawCircle(foot.x,t+d.height*.38f,d.width*.48f,fill);
+          edge.setColor(0xff293b2d);canvas.drawCircle(foot.x,t+d.height*.38f,d.width*.48f,edge);break;
+        case FENCE:
+          edge.setColor(0xff57483a);edge.setStrokeWidth(6f);canvas.drawLine(l,foot.y-8,r,foot.y-8,edge);
+          canvas.drawLine(l,foot.y-18,l,foot.y+2,edge);canvas.drawLine(r,foot.y-18,r,foot.y+2,edge);
+          edge.setStrokeWidth(1f);break;
+        case SIGN:
+          fill.setColor(0xff5b4736);canvas.drawRect(foot.x-4,t+18,foot.x+4,b,fill);
+          fill.setColor(0xff786044);canvas.drawRect(l,t,r,t+25,fill);canvas.drawRect(l,t,r,t+25,edge);break;
+        case WELL:
+          fill.setColor(0xff625c52);canvas.drawCircle(foot.x,foot.y-d.height*.45f,d.width*.5f,fill);
+          edge.setColor(0xff34383a);canvas.drawCircle(foot.x,foot.y-d.height*.45f,d.width*.30f,edge);break;
+        case BENCH:
+          fill.setColor(0xff684f38);canvas.drawRect(l,t+d.height*.35f,r,b-5,fill);
+          canvas.drawRect(l+8,b-8,l+13,b+4,fill);canvas.drawRect(r-13,b-8,r-8,b+4,fill);break;
+        case LAMP:
+          fill.setColor(0xff3e3d39);canvas.drawRect(foot.x-3,t+12,foot.x+3,b,fill);
+          fill.setColor(0xffffd88a);canvas.drawCircle(foot.x,t+10,8,fill);break;
+      }
+      edge.setColor(0x55312B24);
     }
   }
 
@@ -61,6 +94,17 @@ public final class AdaptedMillesMapRenderer {
     path.lineTo(cx,cy+halfHeight);
     path.lineTo(cx-halfWidth,cy);
     path.close();
+  }
+
+  private void drawTransitionEdges(Canvas canvas,float cx,float cy,int mask){
+    if(mask==0)return;
+    edge.setColor(0x99504436);edge.setStrokeWidth(2f);
+    float hw=AdaptedMillesIsometricTileLayer.HALF_WIDTH,hh=AdaptedMillesIsometricTileLayer.HALF_HEIGHT;
+    if((mask&AdaptedMillesIsometricTileLayer.EDGE_NW)!=0)canvas.drawLine(cx-hw,cy,cx,cy-hh,edge);
+    if((mask&AdaptedMillesIsometricTileLayer.EDGE_NE)!=0)canvas.drawLine(cx,cy-hh,cx+hw,cy,edge);
+    if((mask&AdaptedMillesIsometricTileLayer.EDGE_SE)!=0)canvas.drawLine(cx+hw,cy,cx,cy+hh,edge);
+    if((mask&AdaptedMillesIsometricTileLayer.EDGE_SW)!=0)canvas.drawLine(cx,cy+hh,cx-hw,cy,edge);
+    edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
   }
 
   private static int tileColor(AdaptedMillesIsometricTileLayer.TileKind kind,int variant){
