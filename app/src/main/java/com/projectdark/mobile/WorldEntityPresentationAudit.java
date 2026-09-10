@@ -31,6 +31,20 @@ public final class WorldEntityPresentationAudit {
     if(WorldEntityPresentationRenderer.presentationState(m)!=CharacterRenderer.State.HIT)return false;
     m.hitFlash=0f;m.alive=false;m.state=RuntimeState.Monster.State.DEAD;
     if(WorldEntityPresentationRenderer.presentationState(m)!=CharacterRenderer.State.DEAD)return false;
+
+    DirectionalVisualBinding binding=new DirectionalVisualBinding();
+    if(!binding.stateUnresolved(CharacterRenderer.State.IDLE))return false;
+    binding.bind(CharacterRenderer.State.IDLE,new CharacterRenderer.DirectionalVisualSet(
+        "npc_idle_nw",DirectionalVisualBinding.PENDING_CROP,null,"npc_idle_se"));
+    if(binding.resolvedDirectionCount(CharacterRenderer.State.IDLE)!=2)return false;
+    if(!"npc_idle_nw".equals(binding.resolve(CharacterRenderer.State.IDLE,CharacterRenderer.Direction.NW)))return false;
+    if(binding.resolve(CharacterRenderer.State.IDLE,CharacterRenderer.Direction.NE)!=null)return false;
+
+    WorldEntityPresentationRenderer.Pose pose=new WorldEntityPresentationRenderer.Pose(
+        WorldEntityPresentationRenderer.Kind.NPC,0f,0f,CharacterRenderer.Direction.NW,
+        CharacterRenderer.State.IDLE,0f,0f,1f,CharacterRenderer.EffectFamily.NONE,false,false,
+        "PENDING_CROP",null,binding);
+    if(!"npc_idle_nw".equals(WorldEntityPresentationRenderer.resolvedVisualRef(pose)))return false;
     return true;
   }
 
@@ -40,6 +54,7 @@ public final class WorldEntityPresentationAudit {
         ",npcScale="+WorldEntityPresentationRenderer.NPC_RENDER_SCALE+
         ",monsterScale="+WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE+
         ",anchorY="+WorldEntityPresentationRenderer.LOGICAL_FOOT_ANCHOR_Y+
-        ",assets="+WorldEntityPresentationRenderer.ASSET_STATUS;
+        ",assets="+WorldEntityPresentationRenderer.ASSET_STATUS+
+        ",directionalBinding=true";
   }
 }
