@@ -6,7 +6,7 @@ import android.graphics.Path;
 
 /**
  * [ADAPTED]/[B] evidence-safe renderer for the current Milles prototype map.
- * Geometric fallback is intentionally distinct from unverified original Nexon art.
+ * Geometry is authored in the live 64x32 isometric plane; unverified original art remains PENDING_CROP.
  */
 public final class AdaptedMillesMapRenderer {
   private final Paint fill=new Paint();
@@ -18,7 +18,7 @@ public final class AdaptedMillesMapRenderer {
     edge.setStyle(Paint.Style.STROKE);edge.setStrokeWidth(1f);edge.setAntiAlias(false);edge.setColor(0x55312B24);
   }
 
-  /** Draw TILE, decoration, then collision-aligned static structures. Dynamic entities remain separately owned. */
+  /** Draw TILE, 2.5D decoration, then collision-aligned static structures. */
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
     drawTiles(canvas,world);
@@ -39,42 +39,157 @@ public final class AdaptedMillesMapRenderer {
     }
   }
 
+  /**
+   * Props are grounded on world coordinates and projected on the same 2:1 axes as tiles/buildings.
+   * No TREE/FENCE/BENCH/SIGN is rendered as a screen-aligned flat icon anymore.
+   */
   public void drawDecorations(Canvas canvas,WorldRuntimeAdapter world){
     for(AdaptedMillesDecorationLayer.Decoration d:world.map().decorations()){
       WorldCameraTransform.Point foot=world.worldToScreen(d.footX,d.footY);
-      if(foot.x+d.width<0||foot.x-d.width>canvas.getWidth()||foot.y<0||foot.y-d.height>canvas.getHeight())continue;
-      float l=foot.x-d.width*.5f,r=foot.x+d.width*.5f,t=foot.y-d.height,b=foot.y;
+      if(foot.x+d.width<0||foot.x-d.width>canvas.getWidth()||foot.y+d.height*.25f<0||foot.y-d.height>canvas.getHeight())continue;
       switch(d.kind){
-        case TREE:
-          fill.setColor(0xff493a2e);canvas.drawRect(foot.x-6,t+d.height*.48f,foot.x+6,b,fill);
-          fill.setColor(0xff3f5941);canvas.drawCircle(foot.x,t+d.height*.38f,d.width*.48f,fill);
-          edge.setColor(0xff293b2d);canvas.drawCircle(foot.x,t+d.height*.38f,d.width*.48f,edge);break;
-        case FENCE:
-          edge.setColor(0xff57483a);edge.setStrokeWidth(6f);canvas.drawLine(l,foot.y-8,r,foot.y-8,edge);
-          canvas.drawLine(l,foot.y-18,l,foot.y+2,edge);canvas.drawLine(r,foot.y-18,r,foot.y+2,edge);edge.setStrokeWidth(1f);break;
-        case SIGN:
-          fill.setColor(0xff5b4736);canvas.drawRect(foot.x-4,t+18,foot.x+4,b,fill);
-          fill.setColor(0xff786044);canvas.drawRect(l,t,r,t+25,fill);canvas.drawRect(l,t,r,t+25,edge);break;
-        case WELL:
-          fill.setColor(0xff625c52);canvas.drawCircle(foot.x,foot.y-d.height*.45f,d.width*.5f,fill);
-          edge.setColor(0xff34383a);canvas.drawCircle(foot.x,foot.y-d.height*.45f,d.width*.30f,edge);break;
-        case BENCH:
-          fill.setColor(0xff684f38);canvas.drawRect(l,t+d.height*.35f,r,b-5,fill);
-          canvas.drawRect(l+8,b-8,l+13,b+4,fill);canvas.drawRect(r-13,b-8,r-8,b+4,fill);break;
-        case LAMP:
-          fill.setColor(0xff3e3d39);canvas.drawRect(foot.x-3,t+12,foot.x+3,b,fill);
-          fill.setColor(0xffffd88a);canvas.drawCircle(foot.x,t+10,8,fill);break;
-        case BUSH:
-          fill.setColor(0xff40533d);canvas.drawCircle(foot.x-d.width*.22f,foot.y-d.height*.42f,d.height*.42f,fill);
-          canvas.drawCircle(foot.x+d.width*.22f,foot.y-d.height*.40f,d.height*.44f,fill);
-          fill.setColor(0xff53654b);canvas.drawCircle(foot.x,foot.y-d.height*.55f,d.height*.38f,fill);break;
-        case GATEPOST:
-          fill.setColor(0xff5d584f);canvas.drawRect(foot.x-d.width*.34f,t+12f,foot.x+d.width*.34f,b,fill);
-          edge.setColor(0xff35322e);canvas.drawRect(foot.x-d.width*.34f,t+12f,foot.x+d.width*.34f,b,edge);
-          fill.setColor(0xff726a5d);path.reset();path.moveTo(l,t+14f);path.lineTo(foot.x,t);path.lineTo(r,t+14f);path.lineTo(r,t+24f);path.lineTo(l,t+24f);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);break;
+        case TREE:drawIsoTree(canvas,foot,d);break;
+        case FENCE:drawIsoFence(canvas,world,d);break;
+        case SIGN:drawIsoSign(canvas,world,d);break;
+        case WELL:drawIsoWell(canvas,foot,d);break;
+        case BENCH:drawIsoBench(canvas,world,d);break;
+        case LAMP:drawIsoLamp(canvas,foot,d);break;
+        case BUSH:drawIsoBush(canvas,foot,d);break;
+        case GATEPOST:drawIsoGatepost(canvas,foot,d);break;
       }
-      edge.setColor(0x55312B24);
+      edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
     }
+  }
+
+  private void drawIsoTree(Canvas canvas,WorldCameraTransform.Point foot,AdaptedMillesDecorationLayer.Decoration d){
+    float fw=Math.max(10f,d.width*.18f),fd=fw*.48f;
+    // Soft projected ground shadow/footprint.
+    fill.setColor(0x40161713);diamond(foot.x+5f,foot.y+4f,d.width*.34f,d.width*.13f);canvas.drawPath(path,fill);
+
+    float trunkH=d.height*.46f,topY=foot.y-trunkH;
+    // Faceted trunk: two visible vertical faces share one projected diamond foot.
+    fill.setColor(0xff6a4b31);quad(canvas,foot.x-fw,foot.y-fd,foot.x,foot.y,foot.x,topY,foot.x-fw*.55f,topY-fd*.45f,fill);
+    fill.setColor(0xff493424);quad(canvas,foot.x,foot.y,foot.x+fw,foot.y-fd,foot.x+fw*.55f,topY-fd*.45f,foot.x,topY,fill);
+    edge.setColor(0xff34251b);canvas.drawLine(foot.x,foot.y,foot.x,topY,edge);
+
+    // Layered faceted canopy, deliberately irregular like a classic pre-rendered RPG tree sprite.
+    float crownY=foot.y-d.height*.67f,cw=d.width*.50f,ch=d.height*.22f;
+    fill.setColor(0xff253c2c);isoCrown(canvas,foot.x+4f,crownY+8f,cw,ch);
+    fill.setColor(0xff355239);isoCrown(canvas,foot.x-cw*.22f,crownY-4f,cw*.82f,ch*.9f);
+    fill.setColor(0xff426246);isoCrown(canvas,foot.x+cw*.22f,crownY-8f,cw*.78f,ch*.82f);
+    fill.setColor(0xff547351);isoCrown(canvas,foot.x,crownY-ch*.68f,cw*.62f,ch*.72f);
+    edge.setColor(0xff263b2c);edge.setStrokeWidth(2f);
+    canvas.drawLine(foot.x-cw*.45f,crownY+ch*.2f,foot.x,crownY+ch*.72f,edge);
+    canvas.drawLine(foot.x+cw*.4f,crownY,foot.x,crownY+ch*.72f,edge);
+  }
+
+  private void isoCrown(Canvas canvas,float cx,float cy,float hw,float hh){
+    path.reset();path.moveTo(cx,cy-hh);path.lineTo(cx+hw*.82f,cy-hh*.18f);path.lineTo(cx+hw*.58f,cy+hh*.7f);
+    path.lineTo(cx,cy+hh);path.lineTo(cx-hw*.7f,cy+hh*.55f);path.lineTo(cx-hw*.9f,cy-hh*.12f);path.close();
+    canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+  }
+
+  private void drawIsoFence(Canvas canvas,WorldRuntimeAdapter world,AdaptedMillesDecorationLayer.Decoration d){
+    WorldCameraTransform.Point[] ends=axisEnds(world,d,d.width*.5f);
+    WorldCameraTransform.Point a=ends[0],b=ends[1];
+    float postH=Math.max(20f,d.height),rail1=postH*.38f,rail2=postH*.68f;
+    fill.setColor(0x35191512);projectedStrip(canvas,a.x+4f,a.y+4f,b.x+4f,b.y+4f,7f,fill);
+
+    // Rails are sloped with the isometric world axis, not screen-horizontal.
+    edge.setColor(0xff5a412b);edge.setStrokeWidth(5f);
+    canvas.drawLine(a.x,a.y-rail1,b.x,b.y-rail1,edge);
+    canvas.drawLine(a.x,a.y-rail2,b.x,b.y-rail2,edge);
+    edge.setColor(0xff7a5938);edge.setStrokeWidth(2f);
+    canvas.drawLine(a.x,a.y-rail2-2f,b.x,b.y-rail2-2f,edge);
+
+    int posts=Math.max(2,(int)(d.width/48f)+1);
+    for(int i=0;i<posts;i++){
+      float t=posts==1?0f:(float)i/(posts-1),x=lerp(a.x,b.x,t),y=lerp(a.y,b.y,t);
+      drawWoodPost(canvas,x,y,postH,6f);
+    }
+  }
+
+  private void drawWoodPost(Canvas canvas,float x,float y,float h,float half){
+    fill.setColor(0xff60462f);quad(canvas,x-half,y-3f,x,y,x,y-h,x-half*.65f,y-h-3f,fill);
+    fill.setColor(0xff422f22);quad(canvas,x,y,x+half,y-3f,x+half*.65f,y-h-3f,x,y-h,fill);
+    fill.setColor(0xff7d5d3c);path.reset();path.moveTo(x-half*.65f,y-h-3f);path.lineTo(x,y-h-7f);path.lineTo(x+half*.65f,y-h-3f);path.lineTo(x,y-h);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+  }
+
+  private void drawIsoSign(Canvas canvas,WorldRuntimeAdapter world,AdaptedMillesDecorationLayer.Decoration d){
+    WorldCameraTransform.Point foot=world.worldToScreen(d.footX,d.footY);
+    float h=d.height,postTop=foot.y-h*.78f;
+    drawWoodPost(canvas,foot.x,foot.y,h*.74f,4f);
+    WorldCameraTransform.Point[] ends=axisEnds(world,d,d.width*.48f);
+    float ax=ends[0].x,ay=postTop+(ends[0].y-foot.y)*.22f,bx=ends[1].x,by=postTop+(ends[1].y-foot.y)*.22f;
+    fill.setColor(0xff775638);projectedStrip(canvas,ax,ay,bx,by,18f,fill);
+    edge.setColor(0xff382a20);edge.setStrokeWidth(2f);canvas.drawLine(ax,ay,bx,by,edge);canvas.drawLine(ax,ay+18f,bx,by+18f,edge);
+    // Small hanging tab suggests shop/wayfinding signage without claiming original pixels.
+    fill.setColor(0xffb08a55);float mx=(ax+bx)*.5f,my=(ay+by)*.5f;diamond(mx,my+9f,4f,2f);canvas.drawPath(path,fill);
+  }
+
+  private void drawIsoWell(Canvas canvas,WorldCameraTransform.Point foot,AdaptedMillesDecorationLayer.Decoration d){
+    float hw=d.width*.5f,hh=d.width*.22f,h=Math.max(16f,d.height*.48f);
+    // Raised stone ring as a low isometric prism.
+    fill.setColor(0x35181715);diamond(foot.x+4f,foot.y+4f,hw,hh);canvas.drawPath(path,fill);
+    fill.setColor(0xff5b574f);quad(canvas,foot.x-hw,foot.y,foot.x,foot.y+hh,foot.x,foot.y+hh-h,foot.x-hw,foot.y-h,fill);
+    fill.setColor(0xff777168);quad(canvas,foot.x,foot.y+hh,foot.x+hw,foot.y,foot.x+hw,foot.y-h,foot.x,foot.y+hh-h,fill);
+    fill.setColor(0xff8a8478);diamond(foot.x,foot.y-h,hw,hh);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+    fill.setColor(0xff272b2b);diamond(foot.x,foot.y-h+2f,hw*.62f,hh*.58f);canvas.drawPath(path,fill);
+  }
+
+  private void drawIsoBench(Canvas canvas,WorldRuntimeAdapter world,AdaptedMillesDecorationLayer.Decoration d){
+    WorldCameraTransform.Point[] ends=axisEnds(world,d,d.width*.44f);
+    WorldCameraTransform.Point a=ends[0],b=ends[1];
+    float seatH=Math.max(10f,d.height*.45f);
+    fill.setColor(0x30171310);projectedStrip(canvas,a.x+3f,a.y+4f,b.x+3f,b.y+4f,10f,fill);
+    // Seat slab as a projected parallelogram with visible thickness.
+    fill.setColor(0xff765137);projectedStrip(canvas,a.x,a.y-seatH,b.x,b.y-seatH,12f,fill);
+    edge.setColor(0xff402d21);canvas.drawLine(a.x,a.y-seatH,b.x,b.y-seatH,edge);
+    drawWoodPost(canvas,lerp(a.x,b.x,.18f),lerp(a.y,b.y,.18f),seatH,3f);
+    drawWoodPost(canvas,lerp(a.x,b.x,.82f),lerp(a.y,b.y,.82f),seatH,3f);
+    edge.setStrokeWidth(4f);canvas.drawLine(a.x,a.y-seatH-12f,b.x,b.y-seatH-12f,edge);
+  }
+
+  private void drawIsoLamp(Canvas canvas,WorldCameraTransform.Point foot,AdaptedMillesDecorationLayer.Decoration d){
+    float h=d.height;
+    fill.setColor(0x35181715);diamond(foot.x+3f,foot.y+3f,10f,4f);canvas.drawPath(path,fill);
+    fill.setColor(0xff45423d);diamond(foot.x,foot.y,8f,4f);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+    fill.setColor(0xff363633);quad(canvas,foot.x-3f,foot.y-2f,foot.x+3f,foot.y-2f,foot.x+2f,foot.y-h*.76f,foot.x-2f,foot.y-h*.76f,fill);
+    float ly=foot.y-h*.82f;
+    fill.setColor(0xffd6aa58);diamond(foot.x,ly,9f,7f);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+    fill.setColor(0xffffdc83);diamond(foot.x,ly-2f,5f,4f);canvas.drawPath(path,fill);
+    fill.setColor(0xff3a332b);path.reset();path.moveTo(foot.x-10f,ly-7f);path.lineTo(foot.x,ly-14f);path.lineTo(foot.x+10f,ly-7f);path.lineTo(foot.x,ly-4f);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+  }
+
+  private void drawIsoBush(Canvas canvas,WorldCameraTransform.Point foot,AdaptedMillesDecorationLayer.Decoration d){
+    fill.setColor(0x30151613);diamond(foot.x+3f,foot.y+3f,d.width*.42f,d.width*.16f);canvas.drawPath(path,fill);
+    float h=d.height*.58f;
+    fill.setColor(0xff314832);isoCrown(canvas,foot.x-d.width*.18f,foot.y-h*.55f,d.width*.28f,h*.55f);
+    fill.setColor(0xff405c3f);isoCrown(canvas,foot.x+d.width*.18f,foot.y-h*.5f,d.width*.30f,h*.58f);
+    fill.setColor(0xff56704e);isoCrown(canvas,foot.x,foot.y-h*.8f,d.width*.26f,h*.5f);
+  }
+
+  private void drawIsoGatepost(Canvas canvas,WorldCameraTransform.Point foot,AdaptedMillesDecorationLayer.Decoration d){
+    float hw=d.width*.28f,hh=hw*.48f,h=d.height*.78f;
+    fill.setColor(0x35161513);diamond(foot.x+4f,foot.y+4f,hw*1.4f,hh*1.4f);canvas.drawPath(path,fill);
+    fill.setColor(0xff5b554b);quad(canvas,foot.x-hw,foot.y-hh,foot.x,foot.y,foot.x,foot.y-h,foot.x-hw,foot.y-h-hh,fill);
+    fill.setColor(0xff403d38);quad(canvas,foot.x,foot.y,foot.x+hw,foot.y-hh,foot.x+hw,foot.y-h-hh,foot.x,foot.y-h,fill);
+    fill.setColor(0xff777064);diamond(foot.x,foot.y-h-hh,hw*1.35f,hh*1.35f);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+    fill.setColor(0xff4d4238);path.reset();path.moveTo(foot.x-hw*1.15f,foot.y-h-hh);path.lineTo(foot.x,foot.y-h-hh-12f);path.lineTo(foot.x+hw*1.15f,foot.y-h-hh);path.lineTo(foot.x,foot.y-h-hh+5f);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+  }
+
+  private WorldCameraTransform.Point[] axisEnds(WorldRuntimeAdapter world,AdaptedMillesDecorationLayer.Decoration d,float halfSpan){
+    float dx=halfSpan,dy=halfSpan*.5f;
+    if(d.axis==AdaptedMillesDecorationLayer.Axis.NE_SW)dy=-dy;
+    if(d.axis==AdaptedMillesDecorationLayer.Axis.NONE)dy=0f;
+    return new WorldCameraTransform.Point[]{world.worldToScreen(d.footX-dx,d.footY-dy),world.worldToScreen(d.footX+dx,d.footY+dy)};
+  }
+
+  private void projectedStrip(Canvas canvas,float ax,float ay,float bx,float by,float thickness,Paint paint){
+    float len=(float)Math.sqrt((bx-ax)*(bx-ax)+(by-ay)*(by-ay));
+    if(len<.001f)return;
+    float nx=-(by-ay)/len*thickness*.5f,ny=(bx-ax)/len*thickness*.5f;
+    quad(canvas,ax+nx,ay+ny,bx+nx,by+ny,bx-nx,by-ny,ax-nx,ay-ny,paint);
   }
 
   /**
@@ -96,46 +211,32 @@ public final class AdaptedMillesMapRenderer {
     }
   }
 
-  /**
-   * First M2 building: footprint, walls, roof, door, shadow and threshold all share the 64x32
-   * projected diamond. Unlike the older fallback this contains no screen-aligned facade rectangle.
-   */
   private void drawIsometricBuilding(Canvas canvas,WorldRuntimeAdapter world,AdaptedMillesIsoBuildingLayer.Building b){
     WorldCameraTransform.Point n=world.worldToScreen(b.centerX,b.centerY-b.halfDepth);
     WorldCameraTransform.Point e=world.worldToScreen(b.centerX+b.halfWidth,b.centerY);
     WorldCameraTransform.Point s=world.worldToScreen(b.centerX,b.centerY+b.halfDepth);
     WorldCameraTransform.Point w=world.worldToScreen(b.centerX-b.halfWidth,b.centerY);
 
-    // Ground shadow and two diamond threshold stones visibly connect the southeast door to plaza.
     fill.setColor(0x4d171a18);quad(canvas,n.x+8f,n.y+6f,e.x+10f,e.y+7f,s.x+10f,s.y+7f,w.x+8f,w.y+6f,fill);
     WorldCameraTransform.Point approach=world.worldToScreen(b.approachX,b.approachY);
     fill.setColor(0xff81745f);diamond(approach.x-8f,approach.y-8f,22f,9f);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
     diamond(approach.x-20f,approach.y-18f,18f,8f);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
 
     float h=b.wallHeight;
-    // Southwest wall.
-    fill.setColor(0xff8a715b);
-    quad(canvas,w.x,w.y-h,s.x,s.y-h,s.x,s.y,w.x,w.y,fill);
-    // Southeast wall.
-    fill.setColor(0xff665447);
-    quad(canvas,s.x,s.y-h,e.x,e.y-h,e.x,e.y,s.x,s.y,fill);
-
-    // Timber beams follow the wall edges instead of screen-horizontal rectangle borders.
+    fill.setColor(0xff8a715b);quad(canvas,w.x,w.y-h,s.x,s.y-h,s.x,s.y,w.x,w.y,fill);
+    fill.setColor(0xff665447);quad(canvas,s.x,s.y-h,e.x,e.y-h,e.x,e.y,s.x,s.y,fill);
     edge.setColor(0xff42352c);edge.setStrokeWidth(3f);
     canvas.drawLine(w.x,w.y-h,w.x,w.y,edge);canvas.drawLine(s.x,s.y-h,s.x,s.y,edge);canvas.drawLine(e.x,e.y-h,e.x,e.y,edge);
     canvas.drawLine(w.x,w.y-h,s.x,s.y-h,edge);canvas.drawLine(s.x,s.y-h,e.x,e.y-h,edge);
 
-    // Door is a vertical parallelogram embedded in the southeast wall.
     float db1x=lerp(s.x,e.x,.24f),db1y=lerp(s.y,e.y,.24f),db2x=lerp(s.x,e.x,.62f),db2y=lerp(s.y,e.y,.62f);
     fill.setColor(0xff35271f);quad(canvas,db1x,db1y-34f,db2x,db2y-34f,db2x,db2y,db1x,db1y,fill);
     edge.setColor(0xff211914);canvas.drawLine(db1x,db1y-34f,db2x,db2y-34f,edge);canvas.drawLine(db2x,db2y-34f,db2x,db2y,edge);
     fill.setColor(0xffc5a05d);canvas.drawCircle(lerp(db1x,db2x,.76f),lerp(db1y,db2y,.76f)-15f,2.2f,fill);
 
-    // A window on the southwest wall uses the opposite face slope.
     float wb1x=lerp(w.x,s.x,.22f),wb1y=lerp(w.y,s.y,.22f),wb2x=lerp(w.x,s.x,.48f),wb2y=lerp(w.y,s.y,.48f);
     fill.setColor(0xff9dc0bd);quad(canvas,wb1x,wb1y-39f,wb2x,wb2y-39f,wb2x,wb2y-22f,wb1x,wb1y-22f,fill);
 
-    // Four hip-roof faces meet at one raised peak; back faces first, then visible front faces.
     float o=b.roofOverhang;
     float tnX=n.x,tnY=n.y-h-o*.5f,teX=e.x+o,teY=e.y-h,tsX=s.x,tsY=s.y-h+o*.5f,twX=w.x-o,twY=w.y-h;
     float peakX=(n.x+s.x)*.5f,peakY=(n.y+s.y)*.5f-h-b.roofRise;
@@ -218,31 +319,21 @@ public final class AdaptedMillesMapRenderer {
     edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
   }
 
-  /** Procedural [ADAPTED]/[B] material detail keeps the live map readable without claiming source art. */
   private void drawTileDetail(Canvas canvas,float cx,float cy,AdaptedMillesIsometricTileLayer.Tile tile){
     float hw=AdaptedMillesIsometricTileLayer.HALF_WIDTH,hh=AdaptedMillesIsometricTileLayer.HALF_HEIGHT;
     switch(tile.kind){
       case GROUND:
         edge.setColor(tile.variant%2==0?0x5541533e:0x554b5b46);edge.setStrokeWidth(1f);
         float gx=cx-11f+tile.variant*4f,gy=cy+2f-(tile.variant&1)*5f;
-        canvas.drawLine(gx,gy,gx+3f,gy-5f,edge);canvas.drawLine(gx+3f,gy-5f,gx+6f,gy,edge);
-        break;
+        canvas.drawLine(gx,gy,gx+3f,gy-5f,edge);canvas.drawLine(gx+3f,gy-5f,gx+6f,gy,edge);break;
       case ROAD:
         edge.setColor(0x6655483c);edge.setStrokeWidth(1f);
-        canvas.drawLine(cx-hw*.52f,cy,cx,cy+hh*.52f,edge);
-        canvas.drawLine(cx,cy-hh*.52f,cx+hw*.52f,cy,edge);
-        if((tile.row+tile.column)%3==0)canvas.drawCircle(cx,cy,1.5f,edge);
-        break;
+        canvas.drawLine(cx-hw*.52f,cy,cx,cy+hh*.52f,edge);canvas.drawLine(cx,cy-hh*.52f,cx+hw*.52f,cy,edge);
+        if((tile.row+tile.column)%3==0)canvas.drawCircle(cx,cy,1.5f,edge);break;
       case PLAZA:
-        edge.setColor(0x77605e59);edge.setStrokeWidth(1f);
-        diamond(cx,cy,hw*.54f,hh*.54f);canvas.drawPath(path,edge);
-        canvas.drawLine(cx-hw*.34f,cy,cx+hw*.34f,cy,edge);
-        break;
+        edge.setColor(0x77605e59);edge.setStrokeWidth(1f);diamond(cx,cy,hw*.54f,hh*.54f);canvas.drawPath(path,edge);canvas.drawLine(cx-hw*.34f,cy,cx+hw*.34f,cy,edge);break;
       case GATE:
-        edge.setColor(0x88715f4b);edge.setStrokeWidth(2f);
-        canvas.drawLine(cx-hw*.55f,cy-hh*.18f,cx+hw*.55f,cy-hh*.18f,edge);
-        canvas.drawLine(cx-hw*.55f,cy+hh*.18f,cx+hw*.55f,cy+hh*.18f,edge);
-        break;
+        edge.setColor(0x88715f4b);edge.setStrokeWidth(2f);canvas.drawLine(cx-hw*.55f,cy-hh*.18f,cx+hw*.55f,cy-hh*.18f,edge);canvas.drawLine(cx-hw*.55f,cy+hh*.18f,cx+hw*.55f,cy+hh*.18f,edge);break;
     }
     edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
   }
