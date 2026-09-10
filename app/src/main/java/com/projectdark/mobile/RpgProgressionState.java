@@ -1,10 +1,13 @@
 package com.projectdark.mobile;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * RPG/Progression-owned runtime state for reward -> auto-loot -> inventory -> equipment -> stat recomputation.
@@ -34,14 +37,22 @@ public final class RpgProgressionState {
   public static final class ItemDefinition {
     public final String itemId,name,equipSlot;
     public final Integer requiredLevel;
+    public final Set<String> allowedJobCodes;
+    public final boolean jobRestrictionResolved;
+    public final String attackElement,defenseElement;
     public final Map<String,Integer> statModifiers;
     public final Evidence evidence;
 
-    public ItemDefinition(String itemId,String name,String equipSlot,Integer requiredLevel,Map<String,Integer> statModifiers,Evidence evidence){
+    public ItemDefinition(String itemId,String name,String equipSlot,Integer requiredLevel,Set<String> allowedJobCodes,
+        boolean jobRestrictionResolved,String attackElement,String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
       this.itemId=itemId;this.name=name;this.equipSlot=equipSlot;this.requiredLevel=requiredLevel;
+      this.allowedJobCodes=Collections.unmodifiableSet(new LinkedHashSet<>(allowedJobCodes));
+      this.jobRestrictionResolved=jobRestrictionResolved;
+      this.attackElement=attackElement;this.defenseElement=defenseElement;
       this.statModifiers=Collections.unmodifiableMap(new LinkedHashMap<>(statModifiers));this.evidence=evidence;
     }
     public boolean equippable(){return equipSlot!=null&&!equipSlot.isEmpty();}
+    public boolean unrestrictedJob(){return jobRestrictionResolved&&allowedJobCodes.isEmpty();}
   }
 
   public static final class RewardResolution {
@@ -81,22 +92,29 @@ public final class RpgProgressionState {
 
   public RpgProgressionState(){
     Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
-    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_SHOES","신발","신발",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_NECK_WATER_PEARL","바다의진주목걸이","목걸이",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_BELT_WATER_LEATHER","바다의가죽벨트","벨트",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_NECK_EARTH_PEARL","대지의진주목걸이","목걸이",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_BELT_EARTH_LEATHER","대지의가죽벨트","벨트",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_NECK_WIND_PEARL","바람의진주목걸이","목걸이",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_BELT_WIND_LEATHER","바람의가죽벨트","벨트",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_NECK_FIRE_PEARL","화염의진주목걸이","목걸이",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_BELT_FIRE_LEATHER","화염의가죽벨트","벨트",11,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,noStats,Evidence.O));
+    Set<String> anyJob=Collections.<String>emptySet();
+    Set<String> physicalJobs=jobSet("WARRIOR","ROGUE","MARTIAL_ARTIST");
+    Set<String> magicJobs=jobSet("MAGE","CLERIC");
+
+    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_SHOES","신발","신발",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_GORU","고루반지","반지",11,magicJobs,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_WATER_PEARL","바다의진주목걸이","목걸이",11,anyJob,true,"바다",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_WATER_LEATHER","바다의가죽벨트","벨트",11,anyJob,true,null,"바다",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_EARTH_PEARL","대지의진주목걸이","목걸이",11,anyJob,true,"대지",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_EARTH_LEATHER","대지의가죽벨트","벨트",11,anyJob,true,null,"대지",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_WIND_PEARL","바람의진주목걸이","목걸이",11,anyJob,true,"바람",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_WIND_LEATHER","바람의가죽벨트","벨트",11,anyJob,true,null,"바람",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_FIRE_PEARL","화염의진주목걸이","목걸이",11,anyJob,true,"화염",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_FIRE_LEATHER","화염의가죽벨트","벨트",11,anyJob,true,null,"화염",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,anyJob,true,null,null,noStats,Evidence.O));
   }
 
+  private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
   private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
@@ -106,6 +124,14 @@ public final class RpgProgressionState {
   public String currentJobCode(){return currentJobCode;}
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
+
+  /** Read-only requirement projection used by UI/audits without duplicating job logic. */
+  public Boolean currentJobMeetsRequirement(String itemId){
+    ItemDefinition def=items.get(itemId);
+    if(def==null)return null;
+    if(!def.jobRestrictionResolved)return null;
+    return def.allowedJobCodes.isEmpty()||def.allowedJobCodes.contains(currentJobCode);
+  }
 
   /**
    * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.
@@ -159,6 +185,8 @@ public final class RpgProgressionState {
     if(!def.equippable())return EquipResult.NOT_EQUIPPABLE;
     if(def.requiredLevel!=null&&normalLevel==null)return EquipResult.REQUIREMENT_PENDING;
     if(def.requiredLevel!=null&&normalLevel<def.requiredLevel)return EquipResult.REQUIREMENT_NOT_MET;
+    if(!def.jobRestrictionResolved)return EquipResult.REQUIREMENT_PENDING;
+    if(!def.allowedJobCodes.isEmpty()&&!def.allowedJobCodes.contains(currentJobCode))return EquipResult.REQUIREMENT_NOT_MET;
     equipmentBySlot.put(def.equipSlot,itemId);
     return EquipResult.EQUIPPED;
   }
