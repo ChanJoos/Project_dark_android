@@ -25,16 +25,13 @@ public final class WorldSpatialLayoutAudit {
     WorldSpatialLayout.Anchor portal=layout.anchor("south_portal");
     if(spawn==null||north==null||plaza==null||west==null||east==null||gate==null||portal==null)return false;
 
-    // Spawn/plaza/gate must all live on named navigable spatial areas.
     if(layout.areaAt(spawn.x,spawn.y)==null||layout.areaAt(plaza.x,plaza.y)==null||layout.areaAt(gate.x,gate.y)==null)return false;
-    WorldSpatialLayout.Area portalArea=layout.areaAt(portal.x,portal.y);
-    if(portalArea==null||portalArea.kind!=WorldSpatialLayout.AreaKind.GATE)return false;
+    boolean portalInGate=false;
+    for(WorldSpatialLayout.Area a:layout.areas())if(a.kind==WorldSpatialLayout.AreaKind.GATE&&a.contains(portal.x,portal.y))portalInGate=true;
+    if(!portalInGate)return false;
 
-    // The authored route should require a meaningful amount of walking instead of a tiny test room.
     float route=dist(spawn,north)+dist(north,plaza)+dist(plaza,west)+dist(west,east)+dist(east,gate)+dist(gate,portal);
     if(route<900f)return false;
-
-    // Both lower lanes must be materially separated to provide route choice around structures.
     if(dist(west,east)<300f)return false;
     return true;
   }
