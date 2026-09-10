@@ -20,6 +20,7 @@ public final class CombatResolver {
   public enum InputMode { MANUAL, AUTO }
   public enum RejectReason { ACTOR_DEAD, TARGET_DEAD, NOT_LEARNED, COOLDOWN, RESOURCE, RANGE, LOS, ACTION_BUSY }
   public enum EventType { ACTION_STARTED, ACTION_REJECTED, EFFECT_APPLIED, HIT_FEEDBACK, MONSTER_DEFEATED }
+  public enum DefeatPublication { RESOLVER_OWNS, PORT_ALREADY_PUBLISHED }
 
   public static final class Definition {
     public final String actionId;
@@ -41,7 +42,14 @@ public final class CombatResolver {
   public static final class EffectResult {
     public final int appliedAmount;
     public final boolean defeatedNow;
-    public EffectResult(int appliedAmount,boolean defeatedNow){this.appliedAmount=Math.max(0,appliedAmount);this.defeatedNow=defeatedNow;}
+    public final DefeatPublication defeatPublication;
+    public EffectResult(int appliedAmount,boolean defeatedNow){
+      this(appliedAmount,defeatedNow,DefeatPublication.RESOLVER_OWNS);
+    }
+    public EffectResult(int appliedAmount,boolean defeatedNow,DefeatPublication defeatPublication){
+      this.appliedAmount=Math.max(0,appliedAmount);this.defeatedNow=defeatedNow;
+      this.defeatPublication=defeatPublication==null?DefeatPublication.RESOLVER_OWNS:defeatPublication;
+    }
   }
 
   /** Adapter boundary. RPG/world/UI owners provide facts; resolver owns validation ordering and effect timing. */
@@ -128,7 +136,7 @@ public final class CombatResolver {
     EffectResult result=port.applyDamage(a.actorId,a.targetId,a.def.actionId,a.def.damage);
     emit(EventType.EFFECT_APPLIED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.appliedAmount);
     emit(EventType.HIT_FEEDBACK,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.appliedAmount);
-    if(result.defeatedNow&&defeatPublishedForLife.add(a.targetId)){
+    if(result.defeatedNow&&result.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeatPublishedForLife.add(a.targetId)){
       emit(EventType.MONSTER_DEFEATED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,0);
     }
     active=null;
