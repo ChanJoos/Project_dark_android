@@ -6,10 +6,7 @@ import android.graphics.Path;
 
 /**
  * [ADAPTED]/[B] evidence-safe renderer for the current Milles prototype map.
- *
- * This is intentionally a simple geometric presentation, not fabricated original Nexon artwork.
- * It exists so the authored TILE/OBJECT map is visible on-device immediately. PENDING_CROP slots can
- * replace these fills one-by-one without changing the map/runtime contract.
+ * Geometric fallback is intentionally distinct from unverified original Nexon art.
  */
 public final class AdaptedMillesMapRenderer {
   private final Paint fill=new Paint();
@@ -21,7 +18,7 @@ public final class AdaptedMillesMapRenderer {
     edge.setStyle(Paint.Style.STROKE);edge.setStrokeWidth(1f);edge.setAntiAlias(false);edge.setColor(0x55312B24);
   }
 
-  /** Draw TILE, decoration, then static structure silhouettes. Dynamic entities remain separately owned. */
+  /** Draw TILE, decoration, then collision-aligned static structures. Dynamic entities remain separately owned. */
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
     drawTiles(canvas,world);
@@ -36,8 +33,7 @@ public final class AdaptedMillesMapRenderer {
       if(c.x<-margin||c.x>canvas.getWidth()+margin||c.y<-margin||c.y>canvas.getHeight()+margin)continue;
       fill.setColor(tileColor(tile.kind,tile.variant));
       diamond(c.x,c.y,AdaptedMillesIsometricTileLayer.HALF_WIDTH,AdaptedMillesIsometricTileLayer.HALF_HEIGHT);
-      canvas.drawPath(path,fill);
-      canvas.drawPath(path,edge);
+      canvas.drawPath(path,fill);canvas.drawPath(path,edge);
       drawTransitionEdges(canvas,c.x,c.y,tile.transitionMask);
     }
   }
@@ -54,8 +50,7 @@ public final class AdaptedMillesMapRenderer {
           edge.setColor(0xff293b2d);canvas.drawCircle(foot.x,t+d.height*.38f,d.width*.48f,edge);break;
         case FENCE:
           edge.setColor(0xff57483a);edge.setStrokeWidth(6f);canvas.drawLine(l,foot.y-8,r,foot.y-8,edge);
-          canvas.drawLine(l,foot.y-18,l,foot.y+2,edge);canvas.drawLine(r,foot.y-18,r,foot.y+2,edge);
-          edge.setStrokeWidth(1f);break;
+          canvas.drawLine(l,foot.y-18,l,foot.y+2,edge);canvas.drawLine(r,foot.y-18,r,foot.y+2,edge);edge.setStrokeWidth(1f);break;
         case SIGN:
           fill.setColor(0xff5b4736);canvas.drawRect(foot.x-4,t+18,foot.x+4,b,fill);
           fill.setColor(0xff786044);canvas.drawRect(l,t,r,t+25,fill);canvas.drawRect(l,t,r,t+25,edge);break;
@@ -73,27 +68,77 @@ public final class AdaptedMillesMapRenderer {
     }
   }
 
+  /**
+   * Draws prototype buildings as layered roof/wall/door silhouettes instead of blocker rectangles.
+   * Footprints remain identical to WorldDef collision; only presentation extends upward.
+   */
   public void drawObjects(Canvas canvas,WorldRuntimeAdapter world){
     for(AdaptedMillesObjectLayer.ObjectInstance object:world.map().renderObjects()){
       WorldCameraTransform.Point tl=world.worldToScreen(object.collisionLeft,object.collisionTop);
       WorldCameraTransform.Point br=world.worldToScreen(object.collisionRight,object.collisionBottom);
-      if(br.x<0f||tl.x>canvas.getWidth()||br.y<0f||tl.y>canvas.getHeight())continue;
-      fill.setColor(objectColor(object.kind));
-      canvas.drawRect(tl.x,tl.y,br.x,br.y,fill);
-      canvas.drawRect(tl.x,tl.y,br.x,br.y,edge);
-      // Diagonal mark keeps geometric fallback visibly distinct from evidence-backed final art.
-      canvas.drawLine(tl.x,tl.y,br.x,br.y,edge);
-      canvas.drawLine(br.x,tl.y,tl.x,br.y,edge);
+      AdaptedMillesStructureVisualLayer.Visual visual=AdaptedMillesStructureVisualLayer.byStructureId(object.id);
+      float wallHeight=visual==null?44f:visual.wallHeight;
+      float roofRise=visual==null?20f:visual.roofRise;
+      float overhang=visual==null?8f:visual.roofOverhang;
+      if(br.x+overhang<0f||tl.x-overhang>canvas.getWidth()||br.y<0f||tl.y-wallHeight-roofRise>canvas.getHeight())continue;
+      drawStructure(canvas,object,visual,tl.x,tl.y,br.x,br.y);
     }
   }
 
+  private void drawStructure(Canvas canvas,AdaptedMillesObjectLayer.ObjectInstance object,
+      AdaptedMillesStructureVisualLayer.Visual visual,float l,float top,float r,float foot){
+    if(object.kind==AdaptedMillesMapLayer.StructureKind.WALL){drawWall(canvas,l,top,r,foot,visual);return;}
+    if(object.kind==AdaptedMillesMapLayer.StructureKind.LANDMARK){drawLandmark(canvas,l,top,r,foot,visual);return;}
+
+    float wallH=visual==null?56f:visual.wallHeight;
+    float roofRise=visual==null?30f:visual.roofRise;
+    float overhang=visual==null?12f:visual.roofOverhang;
+    float facadeTop=foot-wallH;
+    float mid=(l+r)*.5f;
+
+    // Side shadow gives the footprint a readable volume instead of a flat collision box.
+    fill.setColor(sideColor(object.kind));
+    path.reset();path.moveTo(r,facadeTop);path.lineTo(r,foot);path.lineTo(r-24f,foot+12f);path.lineTo(r-24f,facadeTop+12f);path.close();
+    canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+
+    fill.setColor(wallColor(object.kind));
+    canvas.drawRect(l,facadeTop,r,foot,fill);canvas.drawRect(l,facadeTop,r,foot,edge);
+
+    // Roof is a simple pitched silhouette; this is explicitly prototype geometry, not source art.
+    fill.setColor(roofColor(object.kind));
+    path.reset();path.moveTo(l-overhang,facadeTop);path.lineTo(mid,facadeTop-roofRise);path.lineTo(r+overhang,facadeTop);path.lineTo(r-overhang*.3f,facadeTop+18f);path.lineTo(l+overhang*.3f,facadeTop+18f);path.close();
+    canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+
+    // Small eaves line helps distinguish roof from facade at mobile scale.
+    edge.setColor(0xaa302820);edge.setStrokeWidth(2f);canvas.drawLine(l-overhang,facadeTop,r+overhang,facadeTop,edge);edge.setStrokeWidth(1f);
+
+    AdaptedMillesEntranceLayer.Entrance entrance=AdaptedMillesEntranceLayer.byStructureId(object.id);
+    if(entrance!=null&&(visual==null||visual.hasDoor)){
+      float doorW=visual==null?entrance.width:Math.min(entrance.width,visual.doorWidth);
+      float doorH=visual==null?38f:visual.doorHeight;
+      float cx=(l+r)*.5f;
+      fill.setColor(0xff33281f);canvas.drawRect(cx-doorW*.5f,foot-doorH,cx+doorW*.5f,foot,fill);
+      edge.setColor(0xff211b17);canvas.drawRect(cx-doorW*.5f,foot-doorH,cx+doorW*.5f,foot,edge);
+      fill.setColor(0xff81705a);canvas.drawCircle(cx+doorW*.27f,foot-doorH*.45f,2.5f,fill);
+      // Exterior step remains outside collision and visually communicates the stable approach point.
+      fill.setColor(0xff71685b);path.reset();path.moveTo(cx-doorW*.65f,foot);path.lineTo(cx+doorW*.65f,foot);path.lineTo(cx+doorW*.9f,foot+10f);path.lineTo(cx-doorW*.9f,foot+10f);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+    }
+    edge.setColor(0x55312B24);
+  }
+
+  private void drawWall(Canvas canvas,float l,float top,float r,float foot,AdaptedMillesStructureVisualLayer.Visual visual){
+    float h=visual==null?42f:visual.wallHeight;
+    fill.setColor(0xff55514a);canvas.drawRect(l,foot-h,r,foot,fill);canvas.drawRect(l,foot-h,r,foot,edge);
+    fill.setColor(0xff6b665d);path.reset();path.moveTo(l-4f,foot-h);path.lineTo(r+4f,foot-h);path.lineTo(r-4f,foot-h-10f);path.lineTo(l+4f,foot-h-10f);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+  }
+
+  private void drawLandmark(Canvas canvas,float l,float top,float r,float foot,AdaptedMillesStructureVisualLayer.Visual visual){
+    float cx=(l+r)*.5f,w=Math.max(24f,(r-l)*.68f),h=visual==null?52f:visual.wallHeight;
+    fill.setColor(0xff666158);path.reset();path.moveTo(cx-w*.5f,foot);path.lineTo(cx-w*.35f,foot-h);path.lineTo(cx,foot-h-22f);path.lineTo(cx+w*.35f,foot-h);path.lineTo(cx+w*.5f,foot);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+  }
+
   private void diamond(float cx,float cy,float halfWidth,float halfHeight){
-    path.reset();
-    path.moveTo(cx,cy-halfHeight);
-    path.lineTo(cx+halfWidth,cy);
-    path.lineTo(cx,cy+halfHeight);
-    path.lineTo(cx-halfWidth,cy);
-    path.close();
+    path.reset();path.moveTo(cx,cy-halfHeight);path.lineTo(cx+halfWidth,cy);path.lineTo(cx,cy+halfHeight);path.lineTo(cx-halfWidth,cy);path.close();
   }
 
   private void drawTransitionEdges(Canvas canvas,float cx,float cy,int mask){
@@ -109,21 +154,9 @@ public final class AdaptedMillesMapRenderer {
 
   private static int tileColor(AdaptedMillesIsometricTileLayer.TileKind kind,int variant){
     int delta=(variant-1)*0x00030303;
-    switch(kind){
-      case ROAD:return 0xff756653+delta;
-      case PLAZA:return 0xff77756d+delta;
-      case GATE:return 0xff665a4c+delta;
-      default:return 0xff586451+delta;
-    }
+    switch(kind){case ROAD:return 0xff756653+delta;case PLAZA:return 0xff77756d+delta;case GATE:return 0xff665a4c+delta;default:return 0xff586451+delta;}
   }
-
-  private static int objectColor(AdaptedMillesMapLayer.StructureKind kind){
-    switch(kind){
-      case HALL:return 0xff574943;
-      case SHOP:return 0xff655044;
-      case WALL:return 0xff494846;
-      case LANDMARK:return 0xff6b675c;
-      default:return 0xff5b4d45;
-    }
-  }
+  private static int wallColor(AdaptedMillesMapLayer.StructureKind kind){switch(kind){case HALL:return 0xff77685d;case SHOP:return 0xff806858;default:return 0xff746257;}}
+  private static int sideColor(AdaptedMillesMapLayer.StructureKind kind){switch(kind){case HALL:return 0xff51463f;case SHOP:return 0xff59473d;default:return 0xff4d423c;}}
+  private static int roofColor(AdaptedMillesMapLayer.StructureKind kind){switch(kind){case HALL:return 0xff493e44;case SHOP:return 0xff604844;default:return 0xff55434a;}}
 }
