@@ -16,8 +16,9 @@ public final class CharacterRenderer {
   public static final String EVIDENCE="B+ADAPTED";
   public static final String ASSET_STATUS="PENDING_CROP";
 
-  public static final float PLAYER_RENDER_SCALE=0.92f;
-  public static final float SHADOW_RENDER_SCALE=0.58f;
+  /** User runtime-approved baseline restored from c149434f; logical/world coordinates stay unchanged. */
+  public static final float PLAYER_RENDER_SCALE=1.35f;
+  public static final float SHADOW_RENDER_SCALE=0.72f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
 
   public enum Direction { NW, NE, SW, SE }
