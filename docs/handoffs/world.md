@@ -1,60 +1,51 @@
-# World handoff — PASS 34
+# World handoff — PASS 36 MAP PRODUCTION
 
-- Branch: `agent/world/20260910-1840`
-- Base: `main@ef211e54ff71027477020f9347d2acf96ceb9561`
-- Geometry: current Milles map remains `[ADAPTED]/[B]`; original geometry still unverified.
+- Branch: `agent/world/20260910-1847`
+- Base lineage: stacked on World PR #57 head `b4b37e0b96aae33f50e6f55a2647384b731d4e3e` because runtime adapter/map projection work is not yet in main.
+- Geometry/visual status: `[ADAPTED]/[B]`; exact original Milles geometry and tile/object assets remain unverified/PENDING_CROP.
 
 ## Runtime integration surface
-Use `WorldRuntimeAdapter` as the single World→GameView/UX integration surface.
+Use `WorldRuntimeAdapter` as the single World→GameView/UX integration surface. It owns camera projection, screen↔world conversion, ground tap movement, NPC approach, WALK ticking and current occupancy/portal lookup.
 
-It provides:
-- `map()` → `WorldMapProjection`
-- `screenToWorld()` / `worldToScreen()`
-- `requestGroundScreenTap()` / `requestGroundWorld()`
-- separate `requestNpcApproach(npcId)`
-- `tickNavigation(dt)` with WALK first, camera follow second
-- direct-input/action/explicit move cancellation
-- player world/screen coordinates + camera coordinates in `FrameSnapshot`
-- current portal overlap in the same frame snapshot
-- `canPlayerOccupy()` matching current RuntimeState blocker/NPC/monster occupancy rules
+## Actual map now available
+### TILE layer
+`AdaptedMillesIsometricTileLayer`
+- 64×32 diamond tiles
+- 16-unit staggered row step
+- 69 rows
+- 1,691 tile instances over current 1600×1120 village
+- current composition: 1,072 GROUND / 409 ROAD / 187 PLAZA / 23 GATE
+- each tile exposes row/column, world center, diamond geometry/hit-test, deterministic variant slot, evidence/status and PENDING_CROP asset ref
 
-Director/UX should not duplicate path/camera/collision logic in `GameView.java`.
+### OBJECT layer
+`AdaptedMillesObjectLayer`
+- 11 static structure instances from the authored village composition
+- collision footprint preserved from the same structure definitions
+- foot point + depthKey supplied for painter ordering with field entities
 
-## Actual map production started
-`AdaptedMillesMapLayer` is now the first renderable village composition rather than only blocker rectangles/anchors.
-
-Surface layer:
-- whole-map ground
-- north cross-road
-- west/east road branches
-- central plaza
-- south spine
-- south-west / south-east lanes
-- south gate
-
-Object/structure layer:
-- 3 north structures
-- west/east structures
-- 2 south structures
-- 2 plaza landmarks
-- west/east perimeter structures
-
-`WorldMapProjection.surfaces()` and `.structures()` expose these directly for renderer integration. All remain `[ADAPTED]/[B]` / `PENDING_CROP`, so they can be replaced zone-by-zone with calibrated source-backed Milles geometry/assets later.
+### Visible renderer
+`AdaptedMillesMapRenderer`
+- Android Canvas renderer for the TILE + static OBJECT layers
+- camera-culls off-screen tiles/objects
+- currently uses deliberately simple geometric `[ADAPTED]/[B]` fills so the village is visible immediately without pretending unverified art is original
+- source-backed tile/object art can replace each `PENDING_CROP` slot without changing navigation/collision contracts
 
 ## Director / UX integration request
-1. Construct `WorldRuntimeAdapter(runtime, worldViewportWidth, worldViewportHeight)` for MILLES.
-2. Empty eligible map tap → `adapter.requestGroundScreenTap(x,y)` after UI hit rejection.
-3. NPC tap → `adapter.requestNpcApproach(npc.id)`; do not also send a ground move.
-4. Per frame call `adapter.tickNavigation(dt)` before rendering.
-5. Render `map.surfaces()` then `map.structures()` in world-space through `adapter.worldToScreen(...)`.
-6. Render NPC/monster/portal from the same map/runtime projection; keep HUD screen-space.
-7. South portal remains fail-closed because target map is still PENDING.
+`GameView.java` remains World-non-owned. Integration is now intentionally small:
+1. Keep/create one `WorldRuntimeAdapter` for MILLES.
+2. Keep/create one `AdaptedMillesMapRenderer`.
+3. In world draw order, call `mapRenderer.draw(canvas, worldAdapter)` before player/NPC/monster rendering.
+4. Dynamic entities should continue using the same camera/world projection; HUD remains screen-space.
+5. Empty world taps use `worldAdapter.requestGroundScreenTap`; NPC taps use the separate NPC approach route.
+
+Do not redraw the old empty background over this map renderer. Do not duplicate tile generation/camera math inside GameView.
 
 ## Verification
 - IMPLEMENTED: yes.
+- MAP DATA GENERATED: 1,691 diamond tiles + 11 static objects.
 - BUILD VERIFIED: not claimed in this World pass.
-- RUNTIME VERIFIED: pending Director APK/device integration.
-- `GameView.java`, CharacterRenderer, Combat, RPG, HUD and quest code were not modified.
+- RUNTIME VERIFIED: pending Director wiring and real Android screenshot/playtest.
+- No CharacterRenderer, Combat, RPG, HUD, quest or `GameView.java` modifications were made.
 
 ## Next World priority
-Continue map creation itself: isometric tile/object composition and visual replacement of the `[ADAPTED]` zones, not more isolated audit passes.
+Continue map content production: terrain transition/edge variants, richer static object silhouettes, vegetation/roadside decoration, entrance readability and then source-backed Milles tile/object replacement as source calibration becomes available. Do not return to isolated navigation-audit work unless a runtime defect requires it.
