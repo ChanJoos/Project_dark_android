@@ -1,61 +1,32 @@
-# World handoff — PASS 27
+# World handoff — PASS 32
 
-- Branch: `agent/world/20260910-1455`
-- Base lineage: `main@3b58a8d08805cf9031466fe0c50d56e17aa1344d`
-- Master: M001 / current 92-CSV baseline; no canonical Master values changed.
-- Geometry status: original Milles geometry remains unverified. Current expanded village and all new spatial semantics are `[ADAPTED]/[B]` prototype data only.
+- Branch: `agent/world/20260910-1752`
+- Base: `main@6785efb6f7504e070ee0c0aa6924d1281e444469`
+- Geometry: current Milles expansion remains `[ADAPTED]/[B]`; original geometry still unverified.
 
-## World contracts now available
+## P0 defect fixed
+`WorldMoveTargetController` previously searched a 16-unit lattice but required the lattice node itself to enter the 6-unit default ground tolerance. Valid off-grid taps can be ~11.31 units from the nearest lattice node, so reachable taps could exhaust 4096 A* expansions and incorrectly become `BLOCKED`.
 
-### Tap movement — PASS 24
-- `WorldMoveTargetController`
-- separate generic ground move vs NPC approach APIs
-- four-neighbour A* + incremental WALK only; no teleport
-- explicit reach tolerance, blocked, replacement and cancellation semantics
+GROUND search now uses a lattice-entry tolerance of `max(requestTolerance, half-cell diagonal + epsilon)` only when the exact target is occupiable, then appends that exact target as the final waypoint. The final leg is still executed through `Walker.tryWalkStep`, so collision remains authoritative and there is no teleport. NPC approach semantics are unchanged.
 
-### Camera / expanded village — PASS 25
-- `WorldCameraTransform`
-- dead-zone follow, world→screen, screen→world, map clamp
-- expanded prototype village footprint with structures, NPC placements and south-gate route
+## Exploration route regression
+`WorldMoveTargetExplorationAudit` drives the real controller through:
+`spawn → north_cross → central_plaza → west_district → central_plaza → east_district → south_east_lane → south_gate → south_portal`.
+It also asserts that a tap inside a blocker returns `BLOCKED` without moving the walker.
 
-### Portal transition — PASS 26
-- `WorldPortalTransitionController`
-- readiness / target-pending / disabled distinction
-- one transition request per overlap, stale-completion protection
-- active move target is cancelled only after transition sink accepts the request
-- current south exit remains `PENDING_TARGET_MAP`; it must not teleport anywhere
-
-### Spatial exploration semantics — PASS 27
-- `WorldSpatialLayout`
-- `AdaptedMillesVillageLayout`
-- explicit `ROAD / PLAZA / GATE / OPEN_SPACE` regions
-- stable anchors for spawn, plaza, road junction, service approach, west/east lower lanes, south-gate approach and portal
-- all prototype entries remain `ADAPTED/B` and replaceable with verified Milles geometry
-- `WorldSpatialLayoutAudit` verifies unique IDs, meaningful traversal distance (>900 logical units), separated lower-lane route choice and gate/portal spatial containment
-
-## Director / UX integration request
-
-`GameView.java` remains untouched by the World agent. Do not duplicate these algorithms there.
-
-1. Construct one `WorldCameraTransform` using active map bounds and drawable world viewport.
-2. On boot/respawn/transition, snap camera to player; after logical movement, call camera follow.
-3. Render TILE/OBJECT/NPC/MONSTER/PORTAL and PASS 27 spatial regions in world-space through the camera transform. HUD remains screen-space.
-4. For world taps: first reject UI-owned touches, convert screen→world, then dispatch generic ground move. NPC hit-test retains priority and dispatches NPC approach instead.
-5. Consume `AdaptedMillesVillageLayout.create()` for prototype road/plaza/gate semantics rather than hard-coding those positions in view code. These areas can drive visible road/plaza presentation, minimap semantics and stable tap destinations.
-6. Observe portal overlap through `WorldPortalTransitionController`. `milles_south_exit_proto` must show unavailable/locked feedback while target map/spawn remains unverified.
-7. When a verified portal target is added, destination map owns arrival coordinates; world transition contract passes stable `targetMapId` + `targetSpawnId` only.
+Occupancy-safe approach anchors carried forward:
+- west district `(320,705)`
+- east district `(1350,715)`
+- south gate `(790,1000)`
+These avoid direct overlap with the west NPC, combat dummy and gate NPC respectively.
 
 ## Verification
+Equivalent A* model before fix exhausted 4096 expansions for several valid anchors. After fix representative searches converge in 12–49 expansions. Full Gradle/APK/runtime remains Director-owned and unverified in this World pass.
 
-- PASS 24 Android-free move-target audit: PASS (previous run).
-- PASS 25 deterministic camera contract source present; runtime wiring still pending.
-- PASS 26 Android-free portal compile/audit: PASS (previous run).
-- PASS 27 Android-free compile: PASS.
-- PASS 27 `WorldSpatialLayoutAudit`: PASS.
-- Full Gradle/APK/runtime screenshot: Director-owned and not verified in this World branch.
+## Director / UX integration request
+- Empty eligible map tap: UI ownership reject → `screenToWorld` → `requestGroundMove`.
+- NPC taps must continue using `requestNpcApproach`; do not collapse both semantics.
+- Integrate this controller/session rather than reimplementing path logic in `GameView.java`.
+- Keep south portal target pending/fail-closed until verified map + spawn identity exists.
 
-## Current blockers / remaining P0
-
-- Runtime integration is still required before camera scrolling, tap movement and spatial road/plaza presentation become visible in APK.
-- Original Milles TILE/OBJECT/COLLISION geometry is still blocked on verified visual identification/calibration; current prototype must not be promoted to original geometry.
-- South portal destination map + spawn ID remains evidence-blocked.
+No `GameView.java`, CharacterRenderer, Combat, RPG, HUD or quest files were modified.
