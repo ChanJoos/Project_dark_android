@@ -30,6 +30,20 @@ public final class CombatConcurrentActionAudit {
           CombatResolver.DefeatPublication.RESOLVER_OWNS,kind,CombatResolver.HitSemantic.DAMAGE);
     }
   }
+  private static final class AiPort implements MonsterAIController.Port {
+    final CombatActionOrchestrator actions;
+    int submissions;
+    AiPort(CombatActionOrchestrator actions){this.actions=actions;}
+    public boolean monsterAlive(String id){return true;}
+    public boolean targetAlive(String id){return true;}
+    public float distance(String monsterId,String targetId){return 10f;}
+    public boolean hasLineOfSight(String monsterId,String targetId){return true;}
+    public boolean tryMoveToward(String monsterId,String targetId,float maxDistance){return true;}
+    public boolean submitAttack(MonsterAIController.AttackRequest request){
+      submissions++;
+      return actions.submitMonsterAttack(request);
+    }
+  }
 
   public static void main(String[] args){run();System.out.println("CombatConcurrentActionAudit PASS");}
   public static void run(){
@@ -56,6 +70,18 @@ public final class CombatConcurrentActionAudit {
 
     require(actions.submitManual("player","monster_a","missing").outcome==CombatActionOrchestrator.Outcome.ACTION_UNRESOLVED,
         "unknown actionId must fail closed before resolver mutation");
+
+    // MonsterAI's private AttackRequest DTO must cross the orchestrator into the same resolver.
+    AiPort aiPort=new AiPort(actions);
+    MonsterAIController.Config config=new MonsterAIController.Config(30,20,40,20,.1f,.1f,.1f,.2f);
+    MonsterAIController ai=new MonsterAIController("monster_a","monster_attack",config,aiPort);
+    ai.acquireTarget("player");
+    ai.tick(.01f);
+    require(ai.tick(.1f).state==MonsterAIController.State.ATTACK,"AI windup must submit through orchestrator");
+    require(aiPort.submissions==1&&actions.actionActive("monster_a"),"AI request must own monster actor slot");
+    int before=port.effects;
+    actions.tick(.2f);
+    require(port.effects==before+1,"AI-orchestrated effect must resolve exactly once");
   }
 
   private static CombatResolver.Definition definition(String id,int damage,float hitTime){
