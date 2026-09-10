@@ -1,18 +1,15 @@
 # Visual Designer handoff
 
-## 2026-09-11 — P0 character rescue study 1
+## 2026-09-11 — P0 character rescue study 2
 
 Base main: `018eac36cfdef1cd95187164bdc1d4033fd926e8`
-Evidence: `[ADAPTED]`; this study is not claimed to be an original Nexon frame.
+Evidence: `[ADAPTED]`; not claimed as original Nexon art.
 
-Created:
-- `design/visual/studies/player_martial_idle_se_v1.png` — transparent 24×32 SE IDLE study.
-- `design/visual/previews/player_martial_idle_se_v1_preview_8x.png` — nearest-neighbor visual inspection preview.
-- `design/visual/asset_manifest.json` — dimensions, anchor, evidence and scored review.
-- `design/ART_DIRECTION.md` — first visual production contract.
+Delivered:
+- `design/visual/approved/player_martial_idle_se_v2.png` — transparent 24×32 SE/down-right martial-artist IDLE frame; unarmed, shield allowed.
+- `design/visual/previews/player_martial_idle_se_v2_preview_8x.png` — 8× nearest-neighbor inspection preview.
+- `design/visual/asset_manifest.json` — runtime scale 1.50, foot anchor `[12,29]`, alpha bbox `[3,1,21,30]`, evidence and review.
 
-Inspection: alpha bbox x=2..20 / y=3..29, foot baseline y=29, connected head→neck→torso silhouette, no filtered scaling.
+Visual result: full head→neck→torso silhouette is connected, limbs remain inside one 24×32 frame, SE reads down-right, no weapon is present. Art review **8.7/10 PASS**; `runtimeEligible:true`. This supersedes rejected v1 for Character consumption.
 
-Art review: **8.0/10 average — FAIL / NOT FOR CHARACTER CONSUMPTION.** It clears the prior floating-neck structural defect, but diagonal anatomy/material articulation and animation-continuity readiness are below the >=8.5 production gate. Character must therefore **not** wire this study into runtime. The existing crash-safe fallback remains until a PASS asset is delivered.
-
-Next visual task: rework the SE frame until the diagonal martial-artist pose, face/shoulders and cloth/material clusters clear the gate; only then produce NW/NE/SW IDLE from that accepted identity.
+Character consumer contract: preserve native 24×32 frame, render at 1.50× with nearest-neighbor and foot anchor `[12,29]`; do not mirror this SE frame into other directions. Next visual task: build NW/NE/SW IDLE from the accepted identity, then a coherent four-direction WALK cycle before ATTACK.

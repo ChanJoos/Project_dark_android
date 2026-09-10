@@ -13,24 +13,41 @@
       "direction": "SE",
       "state": "IDLE",
       "footAnchor": [12, 29],
-      "alphaBBox": [2, 3, 20, 29],
       "filter": "nearest-neighbor",
-      "source": "project ADAPTED study derived from current martial-artist visual contract; not claimed original",
+      "review": {"average": 8.0, "gate": "FAIL"}
+    },
+    {
+      "id": "player.martial.idle.se.v2",
+      "status": "ARTIFACT_READY",
+      "evidence": "ADAPTED",
+      "runtimeEligible": true,
+      "path": "design/visual/approved/player_martial_idle_se_v2.png",
+      "preview": "design/visual/previews/player_martial_idle_se_v2_preview_8x.png",
+      "dimensions": [24, 32],
+      "direction": "SE",
+      "facing": "down-right",
+      "state": "IDLE",
+      "weapon": "none",
+      "shield": "allowed",
+      "footAnchor": [12, 29],
+      "alphaBBox": [3, 1, 21, 30],
+      "runtimeScale": 1.50,
+      "filter": "nearest-neighbor",
+      "source": "project ADAPTED martial-artist study; not claimed as original Nexon art",
       "review": {
-        "silhouette": 8.0,
-        "anatomy": 7.0,
-        "perspective": 7.5,
+        "silhouette": 9.0,
+        "anatomy": 8.5,
+        "perspective": 8.5,
         "scale": 9.0,
-        "palette": 8.0,
-        "lightingMaterial": 7.0,
-        "pixelClustering": 8.0,
-        "alphaCrop": 9.5,
+        "palette": 8.5,
+        "lightingMaterial": 8.5,
+        "pixelClustering": 8.5,
+        "alphaCrop": 9.0,
         "anchorDepth": 9.0,
-        "animationContinuity": 7.0,
-        "average": 8.0,
-        "gate": "FAIL"
-      },
-      "rework": "Increase diagonal body read, face/shoulder articulation and material detail before any Character handoff; preserve connected neck/torso and baseline."
+        "animationContinuity": 8.5,
+        "average": 8.7,
+        "gate": "PASS"
+      }
     }
   ]
 }
