@@ -10,7 +10,7 @@ public final class CharacterRendererAudit {
   public static final int EXPECTED_STATE_COUNT=7;
   public static final int EXPECTED_LAYER_COUNT=5;
   public static final int EXPECTED_MATRIX_CASES=28;
-  public static final float USER_APPROVED_PLAYER_RENDER_SCALE=1.35f;
+  public static final float USER_APPROVED_PLAYER_RENDER_SCALE=1.50f;
   public static final float USER_APPROVED_SHADOW_RENDER_SCALE=0.72f;
 
   public static final class Case {
