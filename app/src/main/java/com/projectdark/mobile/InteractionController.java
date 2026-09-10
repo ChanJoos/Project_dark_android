@@ -61,6 +61,7 @@ public final class InteractionController {
       approachNpc = null;
       blockedClock = 0f;
       moveX = moveY = 0f;
+      feedback = "대화 시작 · " + dialogNpc.name;
       return TickResult.DIALOG_OPENED;
     }
 
@@ -82,10 +83,13 @@ public final class InteractionController {
     }
 
     if(blockedClock > BLOCK_TIMEOUT){
+      RuntimeState.Npc blockedNpc = approachNpc;
       approachNpc = null;
       blockedClock = 0f;
       moveX = moveY = 0f;
-      feedback = "접근 경로 없음 [B]";
+      feedback = blockedNpc == null
+          ? "NPC 접근 실패 [B]"
+          : blockedNpc.name + " 접근 실패 · 직접 이동 후 다시 탭 [B]";
       return TickResult.BLOCKED;
     }
     return TickResult.WALKING;
