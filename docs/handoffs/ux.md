@@ -1,49 +1,40 @@
 # UX / NPC / Quest handoff
 
-## 2026-09-10 17:02 KST — tap movement discoverability / landscape runtime pass
+## 2026-09-10 18:25 KST — direct-inventory reward feedback pass
 
-Branch: `agent/ux/auto-20260910-1702`
-Base lineage: current main `c149434fe152cd74f9e7b0418ccdc7aa33d92867` + prior latest-main tap-move implementation from PR #36.
+Branch: `agent/ux/manual-20260910-1825`
+Base: latest main `ef211e54ff71027477020f9347d2acf96ceb9561`.
 
-### Repository state
-- Current main still exposes the World camera/move-target contracts and camera-correct actor hit testing.
-- Generic blank-map tap movement remains implemented on the UX branch lineage, not merged to main yet.
-- `WorldMoveTargetController` remains the sole owner of movement target/path semantics; UX only consumes it.
-- No stable RPG action metadata DTO (`actionId/iconKey/resourceCost/cooldown/learned/state`) was found on main in this pass, so canonical HUD metadata binding remains blocked.
+### Canonical/design check
+- Re-read `design/DESIGN_CONSTITUTION.md`, `design/DATA_CONTRACT.md`, and `design/SOURCE_OF_TRUTH.md` before coding.
+- Tap-to-move remains USER CANON and is already present on main `GameView` v0.69; it was not reimplemented.
+- Monster rewards remain `MONSTER_DEFEATED -> reward resolution -> direct inventory mutation`; ground drop/pickup remains retired.
+- UX owns observability only and must not invent or mutate unresolved rewards.
 
-### User-visible delta completed this pass
-- Top-level runtime is now locked to `SCREEN_ORIENTATION_SENSOR_LANDSCAPE`, preserving either landscape direction while preventing the 960×540 HUD from collapsing into portrait.
-- Startup onboarding now explicitly teaches both major interaction paths: `이동: 빈 맵 터치 · 전투: 몬스터 선택 → ATK / SKILL / MAGIC`.
-- This makes the newly implemented tap-to-move flow discoverable on first launch without advertising unavailable AUTO behavior.
+### User-visible delta completed
+- `GameView` v0.70 now polls the existing read-only `RpgInventoryPresentation.latestRewardNotice(...)` projection after runtime state/ledger advancement.
+- A newly observed `combatSequence` produces a non-blocking ~2.4s reward banner without opening inventory.
+- Resolved item rewards show `자동루팅 · <canonical/runtime item name> x<quantity>` and summarize additional item kinds when present.
+- Resolved EXP-only rewards show `보상 처리 · EXP +<value>`.
+- Pending/unresolved reward resolution shows `보상 확인 필요`; UX does not fabricate an item, quantity, EXP, Gold, or probability.
+- The existing detailed reward view inside inventory remains intact.
 
-### Tap-move P0 carried forward on this branch
-- Empty map taps convert through `WorldCameraTransform.screenToWorld(...)` and call `WorldMoveTargetController.requestGroundMove(...)`.
-- Movement advances through `WorldMoveTargetController.tick(...)` → `RuntimeState.tryMove(...)`; no teleport path exists.
-- New taps replace previous movement targets.
-- Joystick cancels with direct-input semantics.
-- Combat/NPC/inventory/dialog inputs cancel or supersede movement.
-- HUD surfaces are rejected before world movement.
-- NPC/monster taps retain priority.
-- Accepted targets render a short-lived world-anchored marker; REACHED/BLOCKED/retarget feedback is surfaced.
+### Continuity / blockers
+- Stable player action presentation DTO for ATTACK/SKILL/MAGIC/AUTO is still not available on the inspected main surface.
+- `MonsterAutoCombatBridge` is combat-owned MonsterAI AUTO intent routing, not a player AUTO-button API; UX must not bind the player AUTO control to it.
+- Next UX pass should first check for a new player action/AUTO presentation-orchestration contract; otherwise continue mobile quick-slot press/disabled/selected presentation using only existing stable combat readiness surfaces.
 
-### Contract request still open
-- RPG should expose a stable read-only action presentation DTO for ATTACK/SKILL/MAGIC/AUTO containing at least `actionId`, `label`, `iconKey/visualRef`, `resourceCost`, `cooldownRemaining/cooldownTotal`, `learned/unlocked`, `enabled/disabledReason`, and selected/active state where applicable.
-- Once available on main, UX can remove prototype slot labels and render canonical press/cooldown/disabled/selected states without duplicating RPG/combat logic.
-
-### QA focus for Integrator / next pass
-1. Continuous retargeting while camera follows.
-2. HUD/inventory boundary taps: no accidental ground movement.
-3. Blocked tile/obstacle edge taps: BLOCKED without collision bypass.
-4. Joystick during tap movement: immediate cancellation.
-5. NPC/monster tap during movement: entity interaction wins.
-6. Combat input during movement: action wins.
-7. Camera clamp at all world edges and tap-marker anchoring.
-8. Device rotation: remain in sensor-landscape with HUD geometry unchanged.
+### QA focus
+1. Defeat event produces at most one visible reward banner per reward `combatSequence`.
+2. RESOLVED item reward name/quantity matches inventory mutation.
+3. PENDING reward displays no invented item/value.
+4. Reward banner is non-blocking and does not intercept world/HUD touch input.
+5. Existing tap-to-move, NPC priority, camera follow and direct-input cancellation do not regress.
 
 ### Boundaries preserved
-- No World pathfinding/collision/portal algorithms modified or copied.
+- No World/path/collision/portal implementation changed.
 - No CharacterRenderer internals changed.
-- No CombatResolver/MonsterAI/damage logic changed.
-- No inventory/reward/EXP/job/save internals changed.
+- No CombatResolver/MonsterAI/damage implementation changed.
+- No RPG inventory/reward/EXP/job/save mutation logic changed.
 - No canonical values changed.
 - No ground-drop/pickup UX introduced.

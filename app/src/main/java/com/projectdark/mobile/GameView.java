@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-/** PROJECT DARK v0.69 - camera-correct tap movement + integrated mobile RPG prototype. */
+/** PROJECT DARK v0.70 - tap movement + observable direct-inventory rewards. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -43,12 +43,12 @@ public final class GameView extends View {
   private final float jx=92,jy=444,jr=60;
   private float knobX=jx,knobY=jy;
   private boolean joy,running,inventoryOpen;
-  private long last,lastLedgerSequence=0,lastMoveRequestId=0;
+  private long last,lastLedgerSequence=0,lastMoveRequestId=0,lastRewardCombatSequence=0;
   private int dir=0;
-  private float walkClock=0,actionClock=0,tapMarkerClock=0,tapMarkerX=0,tapMarkerY=0;
+  private float walkClock=0,actionClock=0,tapMarkerClock=0,tapMarkerX=0,tapMarkerY=0,rewardBannerClock=0;
   private Action action=Action.IDLE;
   private WorldMoveTargetController.Status lastMoveStatus=WorldMoveTargetController.Status.IDLE;
-  private String feedback="";
+  private String feedback="",rewardBannerText="";
   private float feedbackClock=0;
 
   private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;update(dt);camera.follow(state.player().x,state.player().y);invalidate();postDelayed(this,16);}};
@@ -59,7 +59,7 @@ public final class GameView extends View {
   public void pause(){running=false;removeCallbacks(loop);}
 
   private void update(float dt){
-    feedbackClock=Math.max(0,feedbackClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);combat.tick(dt);state.tick(dt);consumeLedger();monsterAi.tick(state,dt);
+    feedbackClock=Math.max(0,feedbackClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);rewardBannerClock=Math.max(0,rewardBannerClock-dt);combat.tick(dt);state.tick(dt);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){action=Action.IDLE;interaction.cancel();combat.cancelApproach();moveTarget.cancel();joy=false;vx=vy=0;knobX=jx;knobY=jy;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
     if(joy&&(vx!=0||vy!=0)){action=Action.WALK;state.tryMove(vx*145*dt,vy*145*dt);walkClock+=dt;interaction.cancelApproach();combat.cancelApproach();return;}
@@ -87,6 +87,22 @@ public final class GameView extends View {
 
   private void consumeLedger(){List<CombatLedger.Event> events=state.ledger().snapshot();for(CombatLedger.Event e:events){if(e.sequence<=lastLedgerSequence)continue;lastLedgerSequence=e.sequence;switch(e.type){case MONSTER_DEFEATED:showFeedback("몬스터 격파 [B]");break;case PLAYER_HIT:showFeedback("-"+e.amount+" HP [B]");break;case PLAYER_DEFEATED:showFeedback("행동 불능 [B]");break;case PLAYER_REVIVED:showFeedback("부활 [B]");break;default:break;}}}
 
+  private void consumeRewardNotice(){
+    RpgInventoryPresentation.RewardNotice notice=rpgPresentation.latestRewardNotice(state.rpg());
+    if(notice==null||notice.combatSequence<=lastRewardCombatSequence)return;
+    lastRewardCombatSequence=notice.combatSequence;
+    if(notice.status!=RpgProgressionState.RewardStatus.RESOLVED){rewardBannerText="보상 확인 필요";rewardBannerClock=2.4f;return;}
+    if(!notice.autoLootedItems.isEmpty()){
+      java.util.Map.Entry<String,Integer> first=notice.autoLootedItems.entrySet().iterator().next();
+      RpgProgressionState.ItemDefinition def=state.rpg().itemDefinitions().get(first.getKey());
+      String name=def==null?first.getKey():def.name;
+      rewardBannerText="자동루팅 · "+name+" x"+first.getValue();
+      if(notice.autoLootedItems.size()>1)rewardBannerText+=" 외 "+(notice.autoLootedItems.size()-1)+"종";
+    }else if(notice.exp!=null)rewardBannerText="보상 처리 · EXP +"+notice.exp;
+    else rewardBannerText="보상 처리 완료";
+    rewardBannerClock=2.4f;
+  }
+
   private void updateNpcInteraction(float dt){InteractionController.TickResult result=interaction.tick(state,dt);vx=interaction.moveX();vy=interaction.moveY();if(vx!=0||vy!=0)setFacingDirection(vx,vy);if(result==InteractionController.TickResult.WALKING){action=Action.WALK;walkClock+=dt;return;}action=Action.IDLE;String message=interaction.consumeFeedback();if(message!=null)showFeedback(message);}
   private void updateCombatApproach(float dt){RuntimeState.Monster approach=combat.approachTarget();if(approach==null||!approach.alive){combat.cancelApproach();return;}float d=state.distanceTo(approach),range=combat.intentRange();if(d<=range){CombatController.Intent ready=combat.consumeReadyIntent();action=Action.IDLE;if(ready==CombatController.Intent.ATTACK)attack();else if(ready==CombatController.Intent.CAST)cast();else if(ready==CombatController.Intent.SKILL)skill();else if(ready==CombatController.Intent.KICK)kick();return;}float dx=approach.x-state.player().x,dy=approach.y-state.player().y;setAutoDirection(dx,dy);action=Action.WALK;boolean moved=state.tryMove(vx*105*dt,vy*105*dt);walkClock+=dt;if(!moved){combat.cancelApproach();action=Action.IDLE;showFeedback("사거리 접근 실패 [B]");}}
   private void beginCombatApproach(CombatController.Intent intent){moveTarget.cancelForAction();if(combat.beginApproach(intent))showFeedback("타깃 접근 [ADAPTED]");}
@@ -109,7 +125,7 @@ public final class GameView extends View {
   private void attack(){moveTarget.cancelForAction();if(isActing()||!combat.attackReady()||!state.player().alive||!requireTarget())return;AttackDef def=combat.attackDef();if(!inRange(def.range)){beginCombatApproach(CombatController.Intent.ATTACK);return;}faceTarget();combat.commitAttack();trigger(actionFor(def.kind));RuntimeState.Monster t=combat.target();if(t!=null&&t.alive)state.damage(t,def.damage);}
 
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);ox=(w-W*scale)/2;oy=(h-H*scale)/2;}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawWorld(c);drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();drawHud(c);drawInventory(c);drawDialogue(c);drawDeath(c);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawWorld(c);drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();drawHud(c);drawRewardBanner(c);drawInventory(c);drawDialogue(c);drawDeath(c);c.restore();}
 
   private void drawWorld(Canvas c){p.setColor(0xff090909);c.drawRect(WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,p);if(world==null)return;Rect s=new Rect(0,0,world.getWidth(),world.getHeight());c.drawBitmap(world,s,new RectF(WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y),pixel);p.setColor(0x26000000);c.drawRect(WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,p);}
   private void drawTapMarker(Canvas c){if(tapMarkerClock<=0)return;float q=Math.max(0f,Math.min(1f,tapMarkerClock/.7f));p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2f);p.setColor(0xCCFFD86B);c.drawCircle(tapMarkerX,tapMarkerY,8f+8f*(1f-q),p);p.setStyle(Paint.Style.FILL);}
@@ -122,6 +138,7 @@ public final class GameView extends View {
 
   private void panel(Canvas c,float l,float t,float r,float b){p.setColor(0x9a0b0b0b);p.setStyle(Paint.Style.FILL);c.drawRoundRect(new RectF(l,t,r,b),10,10,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xaaad9364);c.drawRoundRect(new RectF(l,t,r,b),10,10,p);p.setStyle(Paint.Style.FILL);}private void text(Canvas c,String s,float x,float y,float size){p.setTextSize(size);p.setColor(0xffeee4cf);c.drawText(s,x,y,p);}private void bar(Canvas c,float l,float t,float r,float b,int color,float ratio){ratio=Math.max(0,Math.min(1,ratio));p.setColor(0xb51a1714);c.drawRoundRect(new RectF(l,t,r,b),5,5,p);p.setColor(color);c.drawRoundRect(new RectF(l,t,l+(r-l)*ratio,b),5,5,p);}
   private void drawHud(Canvas c){RuntimeState.Monster selected=combat.target();RuntimeMetrics metrics=state.metrics();panel(c,12,12,165,116);text(c,"GROUP",24,31,12);String[] n={"조춘찬","수수료좀챙","이루","별빛영혼"};for(int i=0;i<4;i++){text(c,n[i],27,50+i*15,10);bar(c,91,42+i*15,154,48+i*15,0xffdf3342,1f);}panel(c,176,12,320,70);text(c,"퀘스트",190,32,13);text(c,"밀레스의 첫걸음 0/4",190,52,10);panel(c,372,12,604,55);if(selected!=null){text(c,selected.name,405,29,11);bar(c,392,36,584,44,0xffe21d2e,selected.hp/(float)selected.maxHp);}else{text(c,"타깃 없음",456,31,11);}panel(c,714,12,902,124);text(c,"밀레스",728,31,11);p.setColor(0xaa090909);c.drawRect(728,38,887,104,p);text(c,"X:"+(int)state.player().x+" Y:"+(int)state.player().y,800,117,9);String[] menu={"≡","▣","Q","G","W","⚙"};for(int i=0;i<6;i++){panel(c,912,20+i*50,948,58+i*50);text(c,menu[i],925,45+i*50,15);}panel(c,12,304,272,382);text(c,"[일반] 밀레스",23,326,9);text(c,"타깃/접근/대화/전투 프로토타입",23,342,9);text(c,"격파 "+metrics.monsterDefeats()+" · 피격 "+metrics.playerHits()+" · DMG "+metrics.damageDealt(),23,358,9);if(feedbackClock>0)text(c,feedback,23,374,10);p.setColor(0x33101010);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0x99d8c49b);c.drawCircle(jx,jy,jr,p);p.setStyle(Paint.Style.FILL);p.setColor(0x997e7057);c.drawCircle(knobX,knobY,24,p);panel(c,337,462,608,528);Integer level=state.rpg().normalLevel();text(c,"Lv "+(level==null?"?":level),351,486,12);bar(c,400,474,594,485,0xffe62c42,state.player().hp/(float)state.player().maxHp);bar(c,400,490,594,501,0xff2388df,state.player().mp/(float)state.player().maxMp);bar(c,400,507,594,518,0xff48b84d,.35f);String[] slots={"HP","MP","P","SK","K"};for(int i=0;i<5;i++)round(c,650+i*48,466,20,slots[i]);cooldown(c,698,466,20,combat.castCooldown(),SkillDef.CAST_PROTO.cooldown);cooldown(c,794,466,20,combat.skillCooldown(),SkillDef.SKILL_PROTO.cooldown);cooldown(c,842,466,20,combat.kickCooldown(),SkillDef.KICK_PROTO.cooldown);round(c,895,478,34,"ATK");cooldown(c,895,478,34,combat.attackCooldown(),combat.attackDef().cooldown);round(c,920,516,26,"AUTO");text(c,combat.attackDef().label,840,530,8);}
+  private void drawRewardBanner(Canvas c){if(rewardBannerClock<=0||rewardBannerText.length()==0)return;panel(c,350,400,610,444);text(c,rewardBannerText,370,427,12);}
   private void drawInventory(Canvas c){if(!inventoryOpen)return;panel(c,606,124,904,430);text(c,"인벤토리",622,148,14);Integer level=state.rpg().normalLevel();text(c,"평민 · Lv "+(level==null?"?":level),622,166,9);List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());String selectedId=rpgInteraction.selectedInventoryItemId();if(rows.isEmpty())text(c,"보유 아이템 없음",622,196,11);else{int limit=Math.min(6,rows.size());for(int i=0;i<limit;i++){RpgInventoryPresentation.ItemRow row=rows.get(i);float rowY=193+i*19;if(row.itemId.equals(selectedId)){p.setColor(0x445f4f31);c.drawRoundRect(new RectF(616,rowY-13,894,rowY+5),4,4,p);}String equipped=row.equipped?" [장착]":"";String req=row.requiredLevel==null?"":" · Lv"+row.requiredLevel;text(c,row.name+" x"+row.quantity+equipped,624,rowY,10);text(c,row.itemId+req,756,rowY,8);}if(rows.size()>limit)text(c,"외 "+(rows.size()-limit)+"개",624,193+limit*19,9);}RpgInventoryPresentation.ItemRow selectedRow=null;if(selectedId!=null)for(RpgInventoryPresentation.ItemRow row:rows)if(selectedId.equals(row.itemId)){selectedRow=row;break;}if(selectedRow!=null){text(c,"선택: "+selectedRow.name+" · "+selectedRow.equipSlot,622,326,10);text(c,"조건: "+rpgPresentation.requirementLabel(selectedRow),622,343,9);String jobs=selectedRow.jobRestrictionResolved?(selectedRow.allowedJobCodes.isEmpty()?"공통":selectedRow.allowedJobCodes.toString()):"PENDING";text(c,"직업: "+jobs,622,359,9);String element=rpgPresentation.elementLabel(selectedRow);text(c,element.isEmpty()?"속성: 없음":"속성: "+element,622,375,9);}else{text(c,"아이템을 선택하세요",622,343,9);}panel(c,808,338,892,372);text(c,"장착",836,360,11);RpgProgressionState.StatSnapshot stats=rpgInteraction.statSnapshot(state.rpg());text(c,"장비 보정 항목 "+stats.equipment.size()+"개",622,395,9);RpgProgressionState.EquipResult equipResult=rpgInteraction.lastEquipResult();if(equipResult!=null)text(c,equipResultLabel(equipResult),622,412,9);RpgInventoryPresentation.RewardNotice notice=rpgPresentation.latestRewardNotice(state.rpg());if(notice!=null){String rewardState=notice.status==RpgProgressionState.RewardStatus.RESOLVED?"처리됨":"PENDING";text(c,"최근 보상 "+rewardState,808,395,8);if(!notice.autoLootedItems.isEmpty())text(c,"자동루팅 "+notice.autoLootedItems.size()+"종",808,410,8);}}
   private String equipResultLabel(RpgProgressionState.EquipResult result){switch(result){case EQUIPPED:return "장착 완료";case REQUIREMENT_NOT_MET:return "장착 불가: 레벨/직업 조건 미충족";case REQUIREMENT_PENDING:return "장착 보류: 요구 조건 PENDING";case NOT_EQUIPPABLE:return "장착 불가: 장비 아이템 아님";case UNKNOWN_ITEM:return "장착 불가: 알 수 없는 아이템";case ITEM_NOT_OWNED:default:return "장착 불가: 보유 아이템 아님";}}
   private boolean handleInventoryTouch(float x,float y){if(!inventoryOpen)return false;List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());int limit=Math.min(6,rows.size());if(x>=616&&x<=894){for(int i=0;i<limit;i++){float rowY=193+i*19;if(y>=rowY-14&&y<=rowY+6){RpgInventoryPresentation.ItemRow row=rows.get(i);if(rpgInteraction.selectInventoryItem(state.rpg(),row.itemId))showFeedback(row.name+" 선택 · "+rpgPresentation.requirementLabel(row));return true;}}}if(x>=808&&x<=892&&y>=338&&y<=372){RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());showFeedback(equipResultLabel(result));return true;}return x>=606&&x<=904&&y>=124&&y<=430;}
