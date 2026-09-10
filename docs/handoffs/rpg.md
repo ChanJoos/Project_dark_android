@@ -1,135 +1,105 @@
 # RPG Agent Handoff
 
-Run: `20260910-1548`
+Run: `20260910-1554`
 Branch: `agent/rpg/20260910-1338`
 Draft PR: `#5`
 Role: RPG · Progression · Persistence
 
-## PASS 28 — visible direct-reward outcome feed
+## PASS 29 — live early EXP + level progression
 
-Direction: make reward results visible and machine-readable for the live UI without touching Integrator-owned `GameView.java`.
+Direction: make verified monster EXP affect the actual player progression state and become visible in play, while preserving evidence labels and RPG ownership boundaries.
 
-Ownership remains strict: no combat execution, map/camera/pathfinding, character renderer, NPC presentation, workflow, APK packaging, or main merge changes.
+### Source-of-Truth gate
 
-### Source-of-Truth / current branch gate
+Re-read the current Master and found the previously missed `master/data/Level_EXP_Curve.csv` runtime balance table.
 
-Re-read the current RPG branch reward state before editing. The branch had already gained detailed reward mutation contracts beyond the PASS 27 handoff:
-- `RewardGrantStatus`: `GRANTED / INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / UNRESOLVED_REWARD`;
-- `RewardGrantOutcome` attached to `RewardResolution`;
-- `consumeCombatWithOutcomes()` distinguishes processed defeat vs duplicate/stale vs non-defeat;
-- `grantResolvedRewardItem()` is the direct-inventory detailed grant endpoint;
-- `RpgInventoryPresentation.RewardNotice` already carries `grantOutcomes`.
+Early curve rows are explicit `[B]` project balance-model values:
+- Lv1→2: 10,000 EXP
+- Lv2→3: 12,800 EXP / cumulative 22,800
+- Lv3→4: 16,500 / cumulative 39,300
+- Lv4→5: 21,200 / cumulative 60,500
+- Lv5→6: 27,300 / cumulative 87,800
+- Lv6→7: 35,000 / cumulative 122,800
+- Lv7→8: 45,000 / cumulative 167,800
+- Lv8→9: 57,800 / cumulative 225,600
+- Lv9→10: 74,400 / cumulative 300,000
 
-The actual remaining gap was presentation: `RpgVisibleProgressionPresentation` only rendered successful aggregate auto-loot and discarded detailed grant failures.
+`Progression_Math_Audit.csv` also records the full Lv1→99 model as monotonic and totaling 150,000,000 cumulative EXP. These are project balance facts, not claimed original constants.
 
 ### Implemented this pass
 
-1. Expanded the visible reward feed with stable machine-readable `RewardLineKind`:
-   - `EXP`
-   - `ITEM_GRANTED`
-   - `INVENTORY_FULL`
-   - `INVALID_ITEM`
-   - `INVALID_QUANTITY`
-   - `UNRESOLVED`
-   - `INFO`
+1. Added `LevelExpCurveCatalog` as the RPG-owned runtime projection for the first playable vertical slice Lv1→10.
+   - cumulative EXP thresholds come directly from `Level_EXP_Curve.csv`;
+   - evidence remains `[B]`;
+   - no level threshold beyond Lv10 is guessed by this class;
+   - built-in audit verifies monotonic thresholds and the 10,000 / 300,000 anchors.
 
-2. Expanded `RewardLine` with structured fields:
-   - `kind`
-   - `text`
-   - `itemId`
-   - `quantity`
-   - `grantStatus`
-   - `evidence`
+2. Activated new-game cumulative EXP baseline at `0` under this `[B]` curve.
+   - legacy/restored snapshots that explicitly carry `normalExp=null` continue to preserve null;
+   - restore does not silently convert null EXP to zero.
 
-   UI consumers no longer need to parse Korean text to know whether a reward succeeded or failed.
+3. Added `applyNormalExp()` with typed outcomes:
+   - `APPLIED`
+   - `INVALID_AMOUNT`
+   - `UNINITIALIZED`
+   - `PROJECTED_LEVEL_LIMIT`
 
-3. `latestRewardLines()` now prefers explicit `RewardGrantOutcome` rows, preserving failed direct-grant attempts that `autoLootedItems` cannot represent.
+4. Monster reward resolution now applies verified monster EXP directly to `normalExp` and recalculates `normalLevel` within the projected Lv1→10 range.
+   - defeat/reward idempotency remains controlled by `lastCombatSequence`;
+   - duplicate/stale combat events therefore cannot re-grant EXP.
 
-4. Added `grantOutcomeLine()` presentation mapping:
-   - successful grant → `<item> xN 자동 획득`
-   - inventory limit → `<item> 획득 실패: 인벤토리 한도`
-   - invalid item → `획득 실패: 알 수 없는 아이템 ...`
-   - invalid quantity → `<item> 획득 실패: 잘못된 수량`
-   - unresolved canonical reward → `<item> 보상 수량/확률 확인 필요`
+5. Added `expToNextLevel()` for HUD progress display.
 
-5. Kept compatibility for older reward records that only expose successful `autoLootedItems` aggregates.
+6. Expanded reward presentation:
+   - `PlayerSummary.expToNextLevel`
+   - `RewardLineKind.LEVEL_UP`
+   - successful EXP reward line now reflects actual mutation outcome;
+   - level-up line can render `Lv1 → LvN`;
+   - old/legacy null EXP surfaces an evidence-safe pending message instead of inventing state;
+   - reaching the current runtime projection boundary surfaces a pending notice rather than guessing Lv11+ behavior.
 
-6. Added `RpgVisibleRewardFeedAudit` regression boundary. It verifies:
-   - a valid resolved grant mutates inventory and maps to `ITEM_GRANTED`;
-   - filling the canonical stack limit then granting one more maps to `INVENTORY_FULL` without mutation;
-   - unknown item ID maps to `INVALID_ITEM`;
-   - zero quantity maps to `INVALID_QUANTITY`;
-   - nullable unresolved quantity maps to `UNRESOLVED`;
-   - no unresolved value is silently treated as a successful grant.
+7. Added `RpgEarlyExpProgressionAudit`.
+   - new player starts Lv1 / cumulative EXP 0;
+   - 10,000 EXP reaches Lv2;
+   - next-level remainder becomes 12,800;
+   - cumulative 300,000 reaches Lv10;
+   - EXP beyond current Lv10 runtime projection fails closed;
+   - legacy null EXP restore remains null and cannot be silently mutated.
 
 ### Commits this pass
 
-- `4db800ac841e0a2c873b14e37bafa9b61d70d20e` — surface detailed reward grant outcomes to visible RPG feed
-- `e95ccd8298c5e64a029843100e9563f2aeba10a5` — audit visible direct-grant reward outcomes
+- `7c9d794f2912d8592e41f6ffacad4a6fe80e6b4b` — add early Level_EXP_Curve projection
+- `9513cd2c48526b43717f46043d453508fd60f732` — activate cumulative EXP and level mutation
+- `77bda023fbdd196cb8e4e90ad5c257484753c760` — expose EXP progress and level-up lines
+- `1bed72897c3ed533ee9e05c735bf4ad34e08670e` — carry EXP outcome through inventory/reward presentation
+- `0048212e721a98b4841364f47ec3b48a6c82f4c4` — add early progression regression audit
 
 ### Visible integration contract
 
-Integrator/UX should continue to consume:
+Integrator/UX should continue consuming:
 `new RpgVisibleProgressionPresentation().snapshot(state.rpg())`
 
-For reward toast/chat, render `snapshot.latestRewardLines` and style by `RewardLine.kind`, not by parsing `text`.
+Visible mapping:
+- level text: `snapshot.player.level`
+- accumulated EXP: `snapshot.player.exp`
+- remaining EXP: `snapshot.player.expToNextLevel`
+- reward toast/chat: `snapshot.latestRewardLines`
+- `RewardLineKind.LEVEL_UP` should produce level-up feedback distinct from plain EXP gain.
 
-Recommended behavior:
-- `ITEM_GRANTED`: immediate acquisition toast + inventory count refresh;
-- `INVENTORY_FULL`: visible warning, no item count increase;
-- `INVALID_*`: QA/error-visible diagnostic in prototype builds;
-- `UNRESOLVED`: evidence-safe pending message, never a fabricated reward;
-- `EXP`: display reward fact only; do not yet mutate player EXP until progression truth is resolved.
+### Important evidence boundary
 
-### Reward truth boundary
+The full Lv1→99 CSV exists, but PASS 29 intentionally activates only Lv1→10 for the early vertical slice. The values are `[B]` project balancing data. Do not relabel them as `[O]` or `[V]` original-game values.
 
-Authoritative flow remains:
-`MONSTER_DEFEATED -> reward resolution -> direct inventory grant -> EXP/Gold/quest progression`.
+The known POTE_SPIRIT reward fact (308,950 EXP `[V]`) can now drive early progression. Starting from a new Lv1 state it crosses the current early projection through Lv10. Item-drop probability/quantity is still unresolved and must remain non-emitting.
 
-Ground drop/pickup remains retired.
+### Ownership preserved
 
-Known major-drop relations still lack authoritative probability/quantity, so canonical live deterministic item emission remains forbidden. This pass improves visibility of the outcome contract; it does not invent missing drop values.
-
-### Progression/action state retained
-
-- Warrior canonical basic skill projection `SK_전사_001`~`015`;
-- skill book + learned/locked/other-job state;
-- learned active quick-slot candidates only;
-- nullable unknown cost/cooldown preserved as PENDING;
-- schema-v1 save/restore persists progression/job/level/nullable EXP/nullable Gold/reward sequence/inventory/equipment/learned action IDs;
-- reward sequence survives restart for duplicate defeat suppression.
+No `GameView.java`, combat effect execution, monster AI, map/camera/pathfinding, character renderer, NPC presentation, workflow, APK packaging, or main merge changes were made.
 
 ## Next RPG P0
 
-1. Locate/project the canonical Magic master contract and provide equivalent metadata/skill-book/quick-slot surfaces.
-2. Add evidence-safe job-selection/progression transition API only where canonical gate conditions are resolved; never invent the early job gate.
-3. Resolve normal EXP start/threshold semantics before enabling player EXP mutation from currently verified monster EXP reward facts.
-4. Director/Integrator should wire `RewardLine.kind` into the live toast/chat/inventory refresh path and run compile/APK/runtime validation.
-5. Keep `GameView.java` changes outside this RPG branch.
-
-
----
-
-## PASS 28 — typed direct-reward feed
-
-### Implemented
-- Every direct item grant now returns and preserves one of:
-  `GRANTED / INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / UNRESOLVED_REWARD`.
-- `RewardResolution.grantOutcomes` retains failed and evidence-pending attempts instead of exposing only successful inventory changes.
-- `consumeCombatWithOutcomes` exposes `PROCESSED_DEFEAT / DUPLICATE_OR_STALE / IGNORED_NON_DEFEAT`; the existing `consumeCombat` entry point remains compatible.
-- `RpgRewardFeedPresentation` converts reward history into timed semantic entries:
-  `ITEM_GRANTED / EXP_GAINED / INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / UNRESOLVED_REWARD / NO_CONFIRMED_REWARD`.
-- Feed entries deduplicate by combat sequence and expose `text / semantic / itemId / quantity / evidence / progress / alpha`.
-- Current unresolved POTE_SPIRIT major-drop data displays an unresolved line and never grants the ring.
-
-### Director / UX integration request
-1. Keep one `RpgRewardFeedPresentation` instance beside the live RPG state.
-2. After RPG consumes combat events, call `feed.sync(state.rpg())`; call `feed.tick(dt)` once per frame.
-3. Render `feed.snapshot()` as reward toast/chat lines. Use semantic styling, but do not display `PENDING` as success.
-4. `ITEM_GRANTED` is the only item-success semantic. Failure and unresolved lines must not play acquisition success feedback.
-5. Do not reconstruct outcomes from inventory deltas in GameView; consume the RPG DTO directly.
-
-### Verification
-- Isolated compile of the modified state contract and new feed: PASS.
-- `RpgRewardFeedAudit`: PASS, covering direct mutation outcomes, deduplication, fade/despawn and unresolved reward display.
-- Full Gradle/APK and Android runtime: pending Director integration.
+1. Extend `LevelExpCurveCatalog` from Lv10 through Lv99 directly from the existing CSV, retaining `[B]` provenance.
+2. Add progression percentage DTO (`current-level earned / required`) so the green EXP HUD bar can stop using a hard-coded ratio.
+3. Add evidence-safe job-selection transition at the Lv10/commoner gate only when gate conditions are explicit enough for mutation.
+4. Project Magic data after core level/job flow is visible.
+5. Director/Integrator should wire actual EXP bar + `LEVEL_UP` feedback into GameView and run compile/APK/runtime validation.
