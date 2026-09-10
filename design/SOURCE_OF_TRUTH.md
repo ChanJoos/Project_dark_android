@@ -1,6 +1,6 @@
 # PROJECT DARK Source of Truth
 
-Revision M001 / D001 · 2026-09-10
+Revision M001 / D002 · 2026-09-10
 
 현재 최신 사용자 지시와 실제 감사에 따라 이전 archive-verified 주장을 정정한다. `master/MASTER_MANIFEST.md`와 `master/RECONCILIATION.md`가 현재 확보/검증 상태다.
 
@@ -23,6 +23,8 @@ Revision M001 / D001 · 2026-09-10
 
 - 생성은 성별/머리/색/이름 → 평민 Lv1. 직업 선택은 이후.
 - 평민→5기본직업→Lv99→전직 OR 순수→Lv99→1차 승급. 이후 활성화 금지.
+- **최신 사용자 결정: 몬스터 아이템 보상은 자동 루팅이다. `MONSTER_DEFEATED → reward resolution → inventory mutation`을 사용하며 ground item entity / pickup / pickup pathfinding 경로는 폐기한다. AUTO와 수동 전투는 동일 보상 경로를 사용한다.**
+- 자동루팅 전환은 미확정 drop probability/quantity/item relation을 임의 확정할 권한을 주지 않는다. 값이 없으면 PENDING으로 유지한다.
 - P00의 Lv1 지하묘지 vs 실제 quest row Lv40~60 충돌은 미해결. 임의로 레벨을 바꾸지 않는다.
 - 속도부스터 제외, 잠긴 마을은 획득처에 쓰였다는 이유로 열지 않는다.
 - prototype dummy 보상과 원작 monster reward는 구분한다.
