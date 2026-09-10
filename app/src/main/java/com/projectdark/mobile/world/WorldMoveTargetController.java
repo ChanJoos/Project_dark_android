@@ -20,7 +20,7 @@ import java.util.Set;
 public final class WorldMoveTargetController {
   public enum RequestKind { GROUND, NPC_APPROACH }
   public enum Status { IDLE, MOVING, REACHED, BLOCKED, CANCELLED }
-  public enum CancelReason { NONE, REPLACED, DIRECT_INPUT, ACTION, EXPLICIT }
+  public enum CancelReason { NONE, REPLACED, DIRECT_INPUT, ACTION, PORTAL_TRANSITION, EXPLICIT }
 
   public interface NavigationWorld {
     float minX();
@@ -154,6 +154,7 @@ public final class WorldMoveTargetController {
 
   public Snapshot cancelForDirectInput(){return cancel(CancelReason.DIRECT_INPUT);}
   public Snapshot cancelForAction(){return cancel(CancelReason.ACTION);}
+  public Snapshot cancelForPortalTransition(){return cancel(CancelReason.PORTAL_TRANSITION);}
   public Snapshot cancel(){return cancel(CancelReason.EXPLICIT);}
 
   private Snapshot cancel(CancelReason reason){
