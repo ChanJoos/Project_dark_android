@@ -17,8 +17,9 @@ public final class CharacterRenderer {
   public static final String ASSET_STATUS="PENDING_CROP";
 
   /** [ADAPTED] Presentation-only scale. Logical/world coordinates are intentionally unchanged. */
-  public static final float PLAYER_RENDER_SCALE=1.35f;
-  public static final float SHADOW_RENDER_SCALE=0.72f;
+  public static final float PLAYER_RENDER_SCALE=0.92f;
+  public static final float SHADOW_RENDER_SCALE=0.58f;
+  public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
 
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
@@ -59,18 +60,29 @@ public final class CharacterRenderer {
     if(pose==null||pose.direction==null||pose.state==null)throw new IllegalArgumentException("Character pose requires direction and state");
     int frame=pose.state==State.WALK?((int)(pose.walkClock*8f)%4):0; // [B] prototype cadence
     float bob=(frame==1||frame==3)?-2f:0f;
+    boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
+    float facingX=left?-1f:1f;
+    float facingY=down?1f:-1f;
+    float recoilX=pose.state==State.HIT?-facingX*3.5f:0f;
+    float recoilY=pose.state==State.HIT?-facingY*1.5f:0f;
+    float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
 
     // Shadow and body scale are presentation-only. pose.x/pose.y remain world/screen anchor coordinates.
-    float shadowHalfWidth=13f*SHADOW_RENDER_SCALE;
-    float shadowHalfHeight=4f*SHADOW_RENDER_SCALE;
+    float shadowHalfWidth=13f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?1.35f:1f);
+    float shadowHalfHeight=4f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?0.72f:1f);
     p.setColor(pose.hitFlash?0x99ff7766:0x66000000);
-    c.drawOval(new RectF(pose.x-shadowHalfWidth,pose.y-shadowHalfHeight,
-        pose.x+shadowHalfWidth,pose.y+shadowHalfHeight),p);
+    c.drawOval(new RectF(pose.x-shadowHalfWidth,anchorY-shadowHalfHeight,
+        pose.x+shadowHalfWidth,anchorY+shadowHalfHeight),p);
 
     c.save();
-    c.translate(pose.x,pose.y-(28f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE);
+    c.translate(pose.x+recoilX,anchorY-(28f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE+recoilY);
     c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
     c.translate(-8,0);
+    if(pose.state==State.DEAD){
+      c.rotate(left?-76f:76f,8f,27f);
+      c.scale(1f,0.86f,8f,27f);
+    }
     for(Layer layer:DRAW_ORDER)drawLayer(c,pose,layer,frame);
     c.restore();
   }
@@ -87,16 +99,19 @@ public final class CharacterRenderer {
 
   private void drawBody(Canvas c,Pose pose,int frame){
     int outline=0xff171313,skin=pose.hitFlash?0xffffe0d0:0xffffc68f,pants=0xff393a3a,shoe=0xff6a4526;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
     int step=frame==1?1:frame==3?-1:0;
+    int depthStep=down?step:-step;
     int kick=pose.effectFamily==EffectFamily.KICK&&phase(pose)>.22f&&phase(pose)<.78f?5:0; // [B] presentation only
-    rect(c,outline,4+step-kick,19,7+step,26);rect(c,outline,10-step,19,13-step+kick,26);
-    rect(c,pants,5+step-kick,19,7+step,24);rect(c,pants,10-step,19,12-step+kick,24);
-    rect(c,shoe,4+step-kick,24,7+step,27);rect(c,shoe,10-step,24,13-step+kick,27);
-    int armLift=pose.state==State.CAST?-7:0;
-    rect(c,outline,1,11+armLift,4,19);rect(c,skin,2,12+armLift,3,18);
-    rect(c,outline,13,11+armLift,16,19);rect(c,skin,14,12+armLift,15,18);
+    rect(c,outline,4+step-kick,19+depthStep,7+step,26+depthStep);rect(c,outline,10-step,19-depthStep,13-step+kick,26-depthStep);
+    rect(c,pants,5+step-kick,19+depthStep,7+step,24+depthStep);rect(c,pants,10-step,19-depthStep,12-step+kick,24-depthStep);
+    rect(c,shoe,4+step-kick,24+depthStep,7+step,27+depthStep);rect(c,shoe,10-step,24-depthStep,13-step+kick,27-depthStep);
+    int armLift=pose.state==State.CAST?-7:pose.state==State.SKILL?-3:0;
+    int swing=pose.state==State.WALK?step*2:0;
+    rect(c,outline,1,11+armLift+swing,4,19+swing);rect(c,skin,2,12+armLift+swing,3,18+swing);
+    rect(c,outline,13,11+armLift-swing,16,19-swing);rect(c,skin,14,12+armLift-swing,15,18-swing);
     rect(c,outline,3,2,14,12);rect(c,skin,4,3,13,11);
-    if(pose.state==State.DEAD){p.setColor(0x66000000);c.drawRect(1,11,16,24,p);}
+    if(pose.state==State.DEAD){p.setColor(0x44000000);c.drawRect(1,11,16,24,p);}
   }
 
   private void drawHair(Canvas c,Pose pose){
@@ -115,8 +130,13 @@ public final class CharacterRenderer {
   private void drawWeapon(Canvas c,Pose pose){
     if(pose.state!=State.ATTACK||pose.effectFamily==EffectFamily.PUNCH)return;
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
+    float sx=left?-1f:1f,sy=down?1f:-1f;
+    float q=phase(pose);
+    float reach=7f+5f*(float)Math.sin(Math.PI*q);
     p.setColor(0xffd7d2c5);p.setStrokeWidth(2);
-    c.drawLine(left?2:15,14,left?-7:23,7,p); // [B] generic weapon placeholder
+    float handX=left?2f:15f,handY=down?15f:12f;
+    c.drawLine(handX,handY,handX+sx*reach,handY+sy*(5f+3f*q),p); // [B] directional generic weapon placeholder
   }
 
   /** Owns player-local prototype action effects. Combat semantics stay outside this renderer. */
@@ -125,14 +145,15 @@ public final class CharacterRenderer {
     if(family==EffectFamily.NONE)return;
     float q=phase(pose);
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
     float sx=left?-1f:1f;
-    float sy=(pose.direction==Direction.SW||pose.direction==Direction.SE)?1f:-1f;
+    float sy=down?1f:-1f;
     switch(family){
       case CAST:
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaa78b9ff);
         c.drawCircle(8,-7,5+9*q,p);c.drawCircle(8,-7,12-4*q,p);p.setStyle(Paint.Style.FILL);break;
       case MAGIC:
-        // [ADAPTED] Distinct presentation hook so MAGIC can be visually distinguished from generic CAST/SKILL.
+        // [ADAPTED] MAGIC uses a focused cross/rune burst rather than CAST's concentric charge rings.
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2f);p.setColor(0xaa9d7cff);
         c.drawCircle(8,-7,4+7*q,p);
         c.drawLine(8,-16-(5*q),8,-1+(3*q),p);
@@ -141,14 +162,23 @@ public final class CharacterRenderer {
       case THROW:
         p.setColor(0xffffd76b);c.drawCircle(8+sx*27.5f*q,13+sy*17.5f*q,2,p);break;
       case PUNCH:
+        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaaffefb0);
+        c.drawCircle(8+sx*(7f+8f*q),11+sy*(2f+3f*q),3f+3f*q,p);p.setStyle(Paint.Style.FILL);break;
       case KICK:
+        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.8f);p.setColor(0xaaffefb0);
+        c.drawArc(new RectF(8+sx*10-10,8,8+sx*10+10,28),15,145,false,p);p.setStyle(Paint.Style.FILL);break;
       case SKILL:
-        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(family==EffectFamily.SKILL?2.5f:1.5f);
-        p.setColor(family==EffectFamily.SKILL?0xaa7fffa8:0xaaffefb0);
-        c.drawArc(new RectF(8+sx*9-9,3,8+sx*9+9,21),20,130,false,p);p.setStyle(Paint.Style.FILL);break;
+        // [ADAPTED] SKILL gets a broader directional crescent so ATTACK/SKILL/MAGIC read differently at a glance.
+        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2.8f);p.setColor(0xaa7fffa8);
+        float cx=8+sx*(8f+4f*q),cy=10+sy*4f;
+        c.drawArc(new RectF(cx-12f,cy-10f,cx+12f,cy+10f),left?210f:-30f,150f,false,p);
+        c.drawLine(8,11,cx+sx*9f,cy+sy*5f,p);
+        p.setStyle(Paint.Style.FILL);break;
       case HIT:
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaaff7755);
-        c.drawCircle(8,8,5+7*q,p);p.setStyle(Paint.Style.FILL);break;
+        c.drawCircle(8,8,5+7*q,p);
+        c.drawLine(3,3,13,13,p);c.drawLine(13,3,3,13,p);
+        p.setStyle(Paint.Style.FILL);break;
       default:break;
     }
   }

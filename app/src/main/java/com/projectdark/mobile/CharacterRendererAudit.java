@@ -9,7 +9,7 @@ import java.util.List;
  *
  * This is intentionally asset-agnostic: authenticated original sprite frames remain PENDING_CROP.
  * The audit protects the structural contract only: four directions, seven common states,
- * five ordered visual layers, safe effect families, and unresolved visual refs.
+ * five ordered visual layers, safe effect families, unresolved visual refs and presentation-only scale.
  */
 public final class CharacterRendererAudit {
   public static final int EXPECTED_DIRECTION_COUNT=4;
@@ -54,6 +54,11 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.DRAW_ORDER.get(4)!=CharacterRenderer.Layer.EFFECT)return false;
     if(!CharacterRenderer.ASSET_STATUS.equals("PENDING_CROP"))return false;
 
+    // Presentation-scale guard: world coordinates stay untouched while the visual body remains below 1:1 prototype scale.
+    if(CharacterRenderer.PLAYER_RENDER_SCALE<=0f||CharacterRenderer.PLAYER_RENDER_SCALE>=1f)return false;
+    if(CharacterRenderer.SHADOW_RENDER_SCALE<=0f||CharacterRenderer.SHADOW_RENDER_SCALE>CharacterRenderer.PLAYER_RENDER_SCALE)return false;
+    if(CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f)return false;
+
     for(Case c:matrix()){
       if(c.direction==null||c.state==null||c.effectFamily==null)return false;
       if(c.state==CharacterRenderer.State.CAST&&c.effectFamily!=CharacterRenderer.EffectFamily.CAST)return false;
@@ -70,6 +75,8 @@ public final class CharacterRendererAudit {
         ",states="+CharacterRenderer.State.values().length+
         ",layers="+CharacterRenderer.DRAW_ORDER.size()+
         ",matrix="+matrix().size()+
+        ",playerScale="+CharacterRenderer.PLAYER_RENDER_SCALE+
+        ",shadowScale="+CharacterRenderer.SHADOW_RENDER_SCALE+
         ",assets="+CharacterRenderer.ASSET_STATUS;
   }
 
