@@ -47,6 +47,7 @@ public final class InteractionController {
     dialogNpc = null;
     approachNpc = npc;
     updateDirection(state);
+    feedback = "NPC 접근 · " + approachNpc.name;
     return TickResult.WALKING;
   }
 
