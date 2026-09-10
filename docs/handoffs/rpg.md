@@ -51,6 +51,13 @@ Direction: prioritize RPG state that becomes visible in play. Ownership remains 
    - verifies a learned canonical action becomes a quick-slot candidate;
    - rejects unknown learned action IDs.
 
+### Commits this pass
+
+- `c95aebacb8223738fc74ed263514a3579e2367f4` — expand canonical Warrior actions and quick-slot projection
+- `29bfaaa20c40713053112b69c9a640c619115eeb` — expose skill book and quick-slot candidates
+- `b643d4542c0a35c067072f4379e5e526c47310a6` — add RPG action presentation audit
+- `489db0736a638c05193604059b3460d3b0d93c27` — document PASS 27
+
 ### Existing live UI bridge on main
 
 `GameView` already draws an RPG inventory panel and `RuntimeState.tick()` already forwards combat ledger events to `rpg.consumeCombat()`. The remaining visible integration is therefore an Integrator/UX wiring task, not a second RPG state implementation.
