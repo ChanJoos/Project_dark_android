@@ -1,35 +1,22 @@
 # 디렉터 작업 지시
 
-Revision D002 · 2026-09-10 · 사용자 실기기 APK 피드백 반영
+Revision THREE-20260910 · 기존 D002 작업순서/역할을 대체한다.
+기준: 최신 사용자 요청(예약 3개, 세부 작업보다 구현 우선), PLAYTEST_CANON_20260910_2149.md, DIRECTOR_GUIDE.md.
 
-현재 전체 게임 상태: BUILD VERIFIED / device movement VERIFIED by user / full vertical slice PLANNED. 최신 사용자 검수에서 이동 자체는 양호하나 world camera, entity scale, action animation regression, combat test HUD가 핵심 blocker로 확인됐다. 기능 수평 확장보다 아래 P0 visual-playability pass를 먼저 닫는다.
+이번 갱신은 운영 지침 변경이다. 코드 전체 감사나 새 APK 실행을 수행한 것으로 간주하지 않는다. 아래 상태는 확인한 main/handoff/PR 기준이며 매 실행 실제 최신 코드와 대조한다.
 
-## 이번 회차 사용자 수락 기준
-1. 플레이어·NPC·몬스터 표시 크기를 현재보다 축소하여 원작 화면 밀도에 가깝게 조정한다. 임의 숫자를 원작 공식값으로 표기하지 말고 runtime visual tuning으로 기록한다.
-2. 플레이어 이동 시 플레이어를 화면의 안정적인 anchor/dead-zone에 두고 WORLD LAYERS가 반대 방향으로 scroll하는 camera-follow를 구현한다. HUD/joystick/action buttons는 screen-space 고정이다. NPC/몬스터/portal/drop은 world-space라 map과 함께 움직여야 한다.
-3. 기존에 동작했던 전투 모션 regression을 복구한다. 최소 IDLE/WALK/ATTACK/CAST/SKILL_KICK 상태를 실제 버튼 입력으로 관찰 가능하게 하고 action 후 WALK/IDLE로 복귀한다. attack effect/damage는 actionId당 한 번만 발생한다.
-4. 우측 하단을 실제 전투 QA가 가능한 HUD로 개편한다. 최소 ATTACK + SKILL + MAGIC + POTION을 동시에 직접 누를 수 있어야 한다. 버튼은 임시 사각형 텍스트 UI가 아니라 원작 어둠의전설 HUD/통합슬롯의 비례·테두리·아이콘 밀도를 공식/검증된 reference와 Visual Manifest를 기준으로 재구성한다. 원작 asset 근거가 없으면 AI/generic fantasy icon을 canon으로 넣지 말고 evidence-safe placeholder로 표시한다.
-5. SKILL/MAGIC/POTION 각각의 눌림 상태와 실제 runtime 반응을 눈으로 구분할 수 있어야 한다. MAGIC은 CAST, SKILL은 해당 skill action, POTION은 소비/회복 feedback을 연결한다. 미확정 원작 수치/skill을 발명하지 않는다.
-6. 실제 Android runtime screenshot을 artifact로 남긴다. 정적 mockup을 runtime 증거로 사용하지 않는다.
-
-| 우선순위/담당 | 다음 작업 | 의존성 | 수락 조건 |
+| 담당 | 다음 결과 1개 | 수락 조건 | 현재 근거/의존성 |
 |---|---|---|---|
-| P0 world | entity visual scale 축소 + camera-follow/world-space projection 구현 | WorldLayerContract | 이동 시 map/NPC/monster/drop/portal 동시 scroll, HUD 고정, collision logical coordinate 불변 |
-| P0 combat | 전투 animation regression 원인 추적 및 ATTACK/CAST/SKILL_KICK 복구 | action state contract | 각 action 버튼으로 상태 진입 확인, target facing, 종료 후 WALK/IDLE, 중복 damage 없음 |
-| P0 director | 우측 하단 combat QA HUD: ATTACK/SKILL/MAGIC/POTION 및 원작형 visual shell | combat+rpg contracts | 4 action 모두 한 화면에서 터치 가능, pressed feedback, UI touch world 관통 없음 |
-| P0 rpg | POTION 소비/회복과 skill/magic test projection을 evidence-safe data에 연결 | CSV adapter | inventory 차감/효과 1회, unknown 원작 수치 발명 금지, source trace 유지 |
-| P0 director | 위 변경 통합 후 assembleDebug + APK artifact + Android runtime screenshot gate | worker PRs | 동일 SHA build success, APK artifact, 실제 runtime screenshot 및 4버튼 QA 기록 |
-| P1 director | Master integrity 21,292 vs 16,222 차이 원인 확정 | source XLSX/manifest | 차이를 셀 유형별 설명하고 integrity 상태 갱신 |
-| P1 rpg | 평민 생성 데이터와 versioned save/restore | adapter/공통 계약 | 직업 선택 없는 생성, 재시작 후 identity/성장/가방/퀘스트 보존 |
-| P1 director | popup/back/cancel 및 전체 pointer ownership 강화 | UI contracts | 멀티터치 UI world 관통 없음 |
-| P1 world+rpg | Lv1 밀레스 퀘스트/몬스터/보상 근거 보완 제안 | RECONCILIATION R04 | Lv40 퀘스트를 Lv1로 몰래 변경하지 않음, ACCEPTED change 후 활성화 |
-| P2 director | 전체 vertical slice 검사 후 직업/마을 확장 지시 | P0/P1 통과 | 생성→밀레스→NPC→퀘스트→사냥→전투→loot→inventory→EXP→save/restart 전체 통과 |
+| 월드 | 최신 타일 이동 작업을 완료해 넘긴다 | tap/joystick 공용 tile-step API, 4방향 인접성·왕복·10-step drift=0·camera 일관성 검증 | 열린 PR #81, head b17c6c6d215f632530ea13f7b6b1dc3b0a8d2883의 구현 주장. BUILD/RUNTIME 미검증. 더 최신 head 여부 재확인 |
+| 캐릭터 | 승인 무도가 4방향 IDLE/WALK를 실제 적용 가능한 자산으로 끝낸다 | 24×32/1.50, SE 우하/좌측 깨짐 없음, foot anchor 고정, missing/decode/shape fallback | main handoff의 V5/1.60 지시는 21:49 canon이 대체. 최신 활성 작업선 확인 후 계속 |
+| 통합 | World 타일 이동을 GameView joystick/tap 및 Character facing에 연결한다 | free-pixel 우회 경로 없음, 두 입력 동일 이동, 방향 일치, compile/관련 회귀/assembleDebug, 가능한 Android 실행 | PR #81 본문이 GameView joystick의 state.tryMove 우회를 미연결로 명시. 이미 수정됐으면 재구현하지 말고 검증 |
 
-## Visual 구현 원칙
-- VR01: AI reinterpretation으로 원작 캐릭터/몬스터/UI를 대체하지 않는다.
-- VR02: 전체 gameplay screenshot을 final map texture로 사용하지 않는다.
-- 원작 HUD는 Nexon 공식 guide/screenshot 및 master Visual_Manifest/Gameplay_Screen_Master/Screen_To_Runtime_Mapping을 먼저 조사한다.
-- 화면상 크기/간격은 reference screenshot 대비 측정 가능한 비율로 조정하고 변경 근거를 handoff에 남긴다.
-- World coordinate와 Screen coordinate를 분리한다. camera offset은 rendering projection에만 적용하며 logical collision/AI coordinate를 camera에 종속시키지 않는다.
+## 이후 진행
 
-한 번에 담당별 가장 앞의 미완성 작업을 닫는다. 디렉터는 매 회차 결과에 따라 revision을 올린다. 사용자 실기기 피드백은 최상위 acceptance evidence이며, 이번 D002가 이전 D001의 visual/runtime 관련 우선순위를 대체한다.
+1. M1 통과 후 월드는 길+등각 건물 1개를 먼저 전달하고 한 화면 3–5개 건물/소품/출입구/충돌로 완성한다. 캐릭터는 맨손 ATTACK을 전달한다. 디렉터는 작은 정상 변경을 즉시 통합한다.
+2. M2 통과 후 디렉터가 기존 NPC/전투/보상 직접 지급/EXP·Gold/저장·재시작의 첫 끊긴 호출을 직접 수정한다. 중단한 Combat/RPG/UX 예약에 작업을 떠넘기지 않는다.
+3. 크래시/데이터 손실/중복 보상은 언제나 우선. 그 외 미세 개선은 현재 acceptance가 통과하면 뒤로 넘긴다.
+
+## 매 회차 디렉터 갱신
+
+위 3행의 다음 결과·owner·수락 조건·blocker·PR/SHA를 최신 결과로 교체한다. 전체 설계/과거 이력을 반복 복제하지 않는다. 오래된 stacked/draft PR은 최신 canon/코드와 대조하여 활성/보류/superseded를 기록하며 일괄 병합·삭제하지 않는다. 사용자에게 가치 있는 변화가 통합되면 해당 SHA APK와 한국시간 빌드 시각·검증 범위를 제공한다.
