@@ -32,11 +32,16 @@ public final class CharacterRendererAudit {
     if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>.0001f)return false;
     if(CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f)return false;
     if(CharacterRenderer.HEAD_WIDTH<=CharacterRenderer.SHOULDER_WIDTH)return false;
-    CharacterRenderer r=new CharacterRenderer(false);
-    if(!r.usesDefaultAtlasFor(CharacterRenderer.State.IDLE)||!r.usesDefaultAtlasFor(CharacterRenderer.State.WALK))return false;
-    if(r.usesDefaultAtlasFor(CharacterRenderer.State.ATTACK))return false;
+    if(!CharacterRenderer.isDefaultAtlasState(CharacterRenderer.State.IDLE))return false;
+    if(!CharacterRenderer.isDefaultAtlasState(CharacterRenderer.State.WALK))return false;
+    if(CharacterRenderer.isDefaultAtlasState(CharacterRenderer.State.ATTACK))return false;
     CharacterRenderer.DirectionalVisualSet unresolved=new CharacterRenderer.DirectionalVisualSet(null,null,null,null);if(!unresolved.unresolved())return false;
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())if(unresolved.forDirection(d)!=null)return false;
+    for(Case c:matrix()){
+      if(c.direction==null||c.state==null||c.effectFamily==null)return false;
+      if(c.state==CharacterRenderer.State.CAST&&c.effectFamily!=CharacterRenderer.EffectFamily.CAST)return false;
+      if(c.state==CharacterRenderer.State.HIT&&c.effectFamily!=CharacterRenderer.EffectFamily.HIT)return false;
+    }
     return true;
   }
   public static String summary(){return "profile="+CharacterRenderer.PRESENTATION_PROFILE+",atlas="+CharacterRenderer.DEFAULT_ATLAS_ENABLED+",frame="+CharacterRenderer.ATLAS_FRAME_WIDTH+"x"+CharacterRenderer.ATLAS_FRAME_HEIGHT+",directions="+CharacterRenderer.Direction.values().length+",states="+CharacterRenderer.State.values().length+",scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",anchorY="+CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y;}
