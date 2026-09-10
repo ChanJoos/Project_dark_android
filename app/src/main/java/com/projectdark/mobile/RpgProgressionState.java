@@ -23,6 +23,7 @@ public final class RpgProgressionState {
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
   public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
+  public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
 
   public enum ProgressionNode {
     COMMONER,
@@ -125,13 +126,18 @@ public final class RpgProgressionState {
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
 
-  /** Read-only requirement projection used by UI/audits without duplicating job logic. */
-  public Boolean currentJobMeetsRequirement(String itemId){
+  /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
+  public RequirementResult evaluateRequirements(String itemId,String jobCode,Integer level){
     ItemDefinition def=items.get(itemId);
-    if(def==null)return null;
-    if(!def.jobRestrictionResolved)return null;
-    return def.allowedJobCodes.isEmpty()||def.allowedJobCodes.contains(currentJobCode);
+    if(def==null)return RequirementResult.UNKNOWN_ITEM;
+    if(def.requiredLevel!=null&&level==null)return RequirementResult.PENDING;
+    if(def.requiredLevel!=null&&level<def.requiredLevel)return RequirementResult.LEVEL_NOT_MET;
+    if(!def.jobRestrictionResolved)return RequirementResult.PENDING;
+    if(!def.allowedJobCodes.isEmpty()&&(jobCode==null||!def.allowedJobCodes.contains(jobCode)))return RequirementResult.JOB_NOT_MET;
+    return RequirementResult.MET;
   }
+
+  public RequirementResult currentRequirements(String itemId){return evaluateRequirements(itemId,currentJobCode,normalLevel);}
 
   /**
    * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.
@@ -183,10 +189,9 @@ public final class RpgProgressionState {
     ItemDefinition def=items.get(itemId);
     if(def==null)return EquipResult.UNKNOWN_ITEM;
     if(!def.equippable())return EquipResult.NOT_EQUIPPABLE;
-    if(def.requiredLevel!=null&&normalLevel==null)return EquipResult.REQUIREMENT_PENDING;
-    if(def.requiredLevel!=null&&normalLevel<def.requiredLevel)return EquipResult.REQUIREMENT_NOT_MET;
-    if(!def.jobRestrictionResolved)return EquipResult.REQUIREMENT_PENDING;
-    if(!def.allowedJobCodes.isEmpty()&&!def.allowedJobCodes.contains(currentJobCode))return EquipResult.REQUIREMENT_NOT_MET;
+    RequirementResult requirements=currentRequirements(itemId);
+    if(requirements==RequirementResult.PENDING)return EquipResult.REQUIREMENT_PENDING;
+    if(requirements!=RequirementResult.MET)return EquipResult.REQUIREMENT_NOT_MET;
     equipmentBySlot.put(def.equipSlot,itemId);
     return EquipResult.EQUIPPED;
   }
