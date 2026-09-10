@@ -88,28 +88,3 @@ Added `UxTapAcceptanceAudit`:
 4. Confirm modal/control/NPC/monster taps never leak to world movement.
 5. Once RPG dummy fixture lands: kill -> reward mutation -> banner -> BAG row quantity increases exactly once.
 6. Character owner change remains required before playtest P0-1 can be called complete.
-
-## 2026-09-10 19:02 KST — inventory modal input-safety continuation
-
-Branch: `agent/ux/auto-20260910-1902`
-Parent UX head: `d24f20842d9c3be3c7aa07e70b39d832cbdbfefb` (PR #63)
-Latest main verified before work: `2b66df9780142e3d84606f4ac0250dcabfa2d2b7`
-
-### Canonical read-first result
-- Re-read `design/DESIGN_CONSTITUTION.md`, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, current UX handoff, and current DEV_HISTORY lineage before implementation.
-- No newer canonical rule supersedes the mobile shell, tap-to-move, diagonal character, or direct-inventory reward contracts.
-- Direct inventory auto-loot remains canonical. No ground-drop/pickup behavior was introduced.
-- PR #63 remains open/draft/mergeable and is the immediate UX continuity baseline; this run continues from its head rather than rebuilding the HUD from main.
-
-### User-visible delta completed
-`GameView` v0.72 fixes the inventory modal so it behaves like a real mobile-game overlay instead of a visual panel over still-active gameplay controls:
-- adds a visible circular `×` close affordance to the inventory header;
-- tapping the close affordance closes inventory and consumes the touch;
-- tapping outside the inventory card now closes inventory and consumes the touch;
-- while inventory is open, the same touch can no longer fall through to joystick, combat buttons, NPC/monster selection, or generic map tap-to-move;
-- existing row selection/equip interactions remain intact.
-
-### Remaining continuity
-1. Device/integrator QA of the full HUD touch geometry and readability.
-2. Stable player action/AUTO presentation/orchestration DTO remains the blocker for real player AUTO and canonical icon/learned/disabled-reason metadata.
-3. Do not invent AUTO behavior or canonical action metadata while the stable contract is absent.
