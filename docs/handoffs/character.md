@@ -1,39 +1,36 @@
 # Character / Animation Handoff
 
-## 2026-09-10 18:50 KST — agent/character/20260910-1850
+## 2026-09-10 19:05 KST — agent/character/20260910-1905
 
 ### Priority
-Continue exhaustive item-image recovery before further animation polish. Current goal is exact image-to-canonical-item pairing, then immediate renderer binding.
+Continue exhaustive item-image recovery before further animation polish, but stop repeating acquisition lanes that are demonstrably blocked. Current rule: one strong retry of a blocked archive path, then pivot to the next surviving evidence pool.
 
 ### Source/data state
-- Continued from `agent/character/20260910-1825`; prior Character visual work remains unmerged.
-- `https://minimob.tistory.com/99` remains the highest-value surviving visual archive. Its page parser exposes the original legacy Tistory/Daum image links by section.
-- This pass recovered and indexed **18 concrete legacy image URLs** from that page: 8 ring-section images, 4 glove-section images and 6 legging-section images.
-- Direct fetch of every tested legacy CDN URL still returns HTTP 403. The URLs survive, but their binaries cannot currently be inspected through the automated retrieval path.
-- A stronger current Nexon canonical text source was found at `https://cs.nexon.com/HelpBoard/popuphelpview/24025`. It independently lists reward rows including aqua glove, iron/silver/gold/planum shields, aqua leggings, aqua-leather glove, gold-aqua ring and magma boots.
-- Historical Nexon board sources continue to independently validate shield progression and low-level equipment families.
+- Continued from `agent/character/20260910-1850`; previous Character visual work remains unmerged.
+- Re-ran exact-hash searches for representative legacy Tistory/Daum CDN IDs (`1409EC385046382A0D`, `140CA4385046382B08`, `1243DD3C5055B3501F`, `2065923C505599F426`) and searched high-signal canonical names (`골드아쿠아링`, `마그마부츠`, `아쿠아글러브`, `은제방패`).
+- Exact hash searches again produced no usable mirrored binary.
+- `https://minimob.tistory.com/128` gives a useful positional clue: the article text discusses `골드아쿠아링` at level 81 and exposes an adjacent Tistory image link (`https://t1.daumcdn.net/cfile/tistory/13637C4250EA87772F`). Direct fetch of that exact image still returns HTTP 403, so even this stronger adjacency is not enough to claim the binary contents.
+- Historical Nexon reward pages remain strong canonical text anchors: `https://lod.nexon.com/community/game/7536?SearchBoard=1` ties 은제방패/금제방패/아쿠아각반/아쿠아레더글러브/골드아쿠아링/플라늄방패/마그마부츠 to specific reward levels; `https://lod.nexon.com/community/game/7539?SearchBoard=1` independently ties 아쿠아글러브/은제방패/금제방패/아쿠아각반/아쿠아레더글러브/골드아쿠아링/플라늄방패.
 
 ### Completed this run
-- Added `LegacyArchiveSectionImageCatalog` with the 18 recovered image URLs and deterministic section/ordinal metadata.
-- Explicitly models `URL_RECOVERED_BINARY_BLOCKED -> BINARY_RECOVERED -> ITEM_CONFIRMED`; URL survival alone cannot authorize pixels.
-- Strengthened `FanItemCrossValidationCatalog` with the current Nexon customer-support reward table as a primary canonical-name cross-check for high-signal equipment.
-- Added `IT_LEGGING_AQUA` to the visual-section backlog and retained `IT_GLOVE_AQUA`, `IT_GLOVE_SILVER`, `IT_GLOVE_AQUALEATHER`, and `IT_RING_GOLDAQUA` as `IMAGE_SECTION_MATCH` targets.
-- Exact image-hash searches were also attempted for the recovered CDN hashes; no cached/reposted binary match was returned in this pass.
+- Added `ItemVisualAcquisitionDecision` to prevent repeated Character passes from burning time on the same blocked legacy CDN hashes.
+- Marked `LEGACY_TISTORY_HASH_RECOVERY` as `EXHAUSTED_FOR_NOW` with the exact blocked hashes preserved for future retry only if a new mirror/cache source appears.
+- Activated `NEXT_SURVIVING_ARCHIVE_PASS` with canonical targets `IT_RING_GOLDAQUA`, `IT_BOOTS_MAGMA`, `IT_GLOVE_AQUA`, `IT_SHIELD_SILVER`, `IT_LEGGING_AQUA`.
+- Preserved the hard rule that unseen binaries cannot become `IMAGE_ITEM_CONFIRMED` and therefore cannot drive canonical equipped rendering.
 
 ### Concrete blocker
-The source page and exact legacy image URLs are now known, but the CDN refuses automated binary retrieval (HTTP 403) and exact hash searches did not surface a mirror. Therefore `IMAGE_ITEM_CONFIRMED` remains 0. Promoting any ring/glove/legging image by ordinal alone would be speculative because each section contains more images than the adjacent named table rows.
+The Tistory/Daum legacy path is now conclusively blocked for this toolchain: exact source URLs are known, direct fetch is HTTP 403, and exact-hash searches found no mirrors. `IMAGE_ITEM_CONFIRMED` remains 0 on this lane. Repeating the same hash search is no longer productive.
 
-### Next Character pass
-1. Search alternate mirrors/caches/reposts using the recovered 18 CDN hashes and source-page title.
-2. Search visual reposts for the highest-signal canonical names: `골드아쿠아링`, `아쿠아글러브`, `아쿠아레더글러브`, `은제방패`, `마그마부츠`.
-3. If one binary becomes visually inspectable and its label can be tied to a canonical item, promote immediately to `IMAGE_ITEM_CONFIRMED`, record crop/anchor metadata, then bind EQUIPMENT/OFF_HAND presentation.
-4. Do not infer image identity from source-page order alone.
+### Pivot / next Character pass
+1. Do **not** retry the exhausted hashes unless a newly discovered mirror/cache explicitly references them.
+2. Move immediately to other surviving fan archives, reposted screenshots, video frames, cafe/blog mirrors, and Nexon community screenshots for the five active high-signal targets.
+3. Prefer sources where the item name is visible in the same screenshot as the icon/equipped character, so exact identity can be established without relying on page order.
+4. The first visually labelled match should be promoted to `IMAGE_ITEM_CONFIRMED`, then cropped/anchored and bound to the appropriate `EQUIPMENT` or `OFF_HAND` presentation layer in the same run.
 
 ### Evidence discipline
-- Current Nexon support/reward pages: strong canonical item-name/reward evidence.
-- Historical Nexon boards: item-family/level lineage evidence.
-- Fan section page + recovered CDN URL: `[V] IMAGE_SECTION_MATCH` only.
-- Unseen binary: never `IMAGE_ITEM_CONFIRMED`.
+- Nexon historical/reward pages: canonical item-name/family/level evidence.
+- Fan image adjacent to matching text but binary unseen: `IMAGE_SECTION_MATCH`, not exact confirmation.
+- Exact item name visible in same inspectable image: eligible for `IMAGE_ITEM_CONFIRMED` after cross-check.
 - No visual-similarity-only binding.
 
 ### Boundaries preserved
