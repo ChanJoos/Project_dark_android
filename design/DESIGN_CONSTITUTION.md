@@ -78,7 +78,9 @@ World remains visually central. Approved mobile shell: compact party/quest infor
 
 ## 11. AUTO canon
 
-AUTO uses the same combat math as manual play; no AUTO damage bonus. Manual input overrides AUTO and may resume after ~1.2s `[ADAPTED]`. Repeated path failure must terminate/recover rather than loop forever. Loot is a ground-world interaction, not direct inventory teleportation.
+AUTO uses the same combat math as manual play; no AUTO damage bonus. Manual input overrides AUTO and may resume after ~1.2s `[ADAPTED]`. Repeated path failure must terminate/recover rather than loop forever.
+
+**Latest explicit product decision: monster item rewards use automatic looting. Ground item entities and manual pickup are not part of the target runtime loop.** When a monster reward is actually resolved from authoritative data, the item reward is applied directly to inventory through the RPG-owned inventory validation path. AUTO and manual combat share the same reward path. Unknown drop probability, quantity, item identity, inventory capacity policy, or reward relation remains `PENDING`; automatic looting must not fabricate a reward merely because ground pickup was removed.
 
 ## 12. Agent governance
 
