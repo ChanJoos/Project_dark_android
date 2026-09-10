@@ -3,6 +3,7 @@
 - Active branch / PR: `agent/world/playable-village` / `#82`
 - Base main: `e04b758745c41ecef4cdc2a810846af7bcda3762`
 - Current World code head before this handoff: `765c64e74f881cef85102c0d62a1e0823bddc44b`
+- Handoff commit: `7f5526da6985e0f8ec139467552abe6934358bbc`
 - Canon: `design/PLAYTEST_CANON_20260910_2149.md` plus latest user direction.
 - Evidence: all new village geometry/presentation remains `ADAPTED/B`; source art remains `PENDING_CROP`.
 
