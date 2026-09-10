@@ -20,15 +20,22 @@ public final class ItemVisualManifest {
     public final boolean characterVisibleCandidate;
     public final RenderLayer renderLayer;
     public final VisualStatus inventoryIconStatus,equippedSpriteStatus;
-    public final String sourceUrl,provenance;
+    /** Text/item-existence evidence is tracked separately and never upgrades image readiness by itself. */
+    public final String textEvidenceUrl,textEvidenceKind;
+    /** Only positively identified image evidence belongs here. */
+    public final String imageSourceUrl,imageProvenance;
 
     Entry(String itemId,String name,String equipSlot,boolean visible,RenderLayer layer,
-        VisualStatus iconStatus,VisualStatus equippedStatus,String sourceUrl,String provenance){
+        VisualStatus iconStatus,VisualStatus equippedStatus,String textEvidenceUrl,String textEvidenceKind,
+        String imageSourceUrl,String imageProvenance){
       this.itemId=itemId;this.name=name;this.equipSlot=equipSlot;
       this.characterVisibleCandidate=visible;this.renderLayer=layer;
       this.inventoryIconStatus=iconStatus;this.equippedSpriteStatus=equippedStatus;
-      this.sourceUrl=sourceUrl;this.provenance=provenance;
+      this.textEvidenceUrl=textEvidenceUrl;this.textEvidenceKind=textEvidenceKind;
+      this.imageSourceUrl=imageSourceUrl;this.imageProvenance=imageProvenance;
     }
+
+    public boolean readyForEquippedRender(){return equippedSpriteStatus==VisualStatus.READY_FOR_RENDER&&imageSourceUrl!=null;}
   }
 
   private final Map<String,Entry> byItemId;
@@ -40,6 +47,7 @@ public final class ItemVisualManifest {
   /**
    * Builds an exhaustive visual manifest from all canonical runtime item definitions.
    * No item is silently dropped: unresolved image evidence starts PENDING_SOURCE.
+   * Known textual evidence is seeded without falsely promoting image status.
    */
   public static ItemVisualManifest from(RpgProgressionState rpg){
     Map<String,Entry> out=new LinkedHashMap<>();
@@ -49,11 +57,17 @@ public final class ItemVisualManifest {
       String slot=def==null?null:def.equipSlot;
       RenderLayer layer=layerForSlot(slot);
       boolean visible=layer!=RenderLayer.NONE;
+      ShieldVisualEvidenceCatalog.Evidence shield=ShieldVisualEvidenceCatalog.get(row.getKey());
+      String textUrl=shield==null?null:shield.textEvidenceUrl;
+      String textKind=shield==null?null:shield.textEvidenceKind.name();
+      String imageUrl=shield==null?null:shield.imageSourceUrl;
+      String imageProv=shield==null?null:shield.imageProvenance;
+      VisualStatus iconStatus=imageUrl==null?VisualStatus.PENDING_SOURCE:VisualStatus.PENDING_CROP;
+      VisualStatus equippedStatus=!visible?VisualStatus.NO_SOURCE_FOUND:
+          (imageUrl==null?VisualStatus.PENDING_SOURCE:VisualStatus.PENDING_CROP);
       out.put(row.getKey(),new Entry(
           row.getKey(),def==null?row.getKey():def.name,slot,visible,layer,
-          VisualStatus.PENDING_SOURCE,
-          visible?VisualStatus.PENDING_SOURCE:VisualStatus.NO_SOURCE_FOUND,
-          null,"U"));
+          iconStatus,equippedStatus,textUrl,textKind,imageUrl,imageProv));
     }
     return new ItemVisualManifest(out);
   }
@@ -65,6 +79,20 @@ public final class ItemVisualManifest {
   public List<Entry> characterVisibleCandidates(){
     List<Entry> out=new ArrayList<>();
     for(Entry e:byItemId.values())if(e.characterVisibleCandidate)out.add(e);
+    return Collections.unmodifiableList(out);
+  }
+
+  public List<Entry> pendingImageAcquisition(){
+    List<Entry> out=new ArrayList<>();
+    for(Entry e:byItemId.values()){
+      if(e.characterVisibleCandidate&&e.equippedSpriteStatus==VisualStatus.PENDING_SOURCE)out.add(e);
+    }
+    return Collections.unmodifiableList(out);
+  }
+
+  public List<Entry> readyForEquippedRender(){
+    List<Entry> out=new ArrayList<>();
+    for(Entry e:byItemId.values())if(e.readyForEquippedRender())out.add(e);
     return Collections.unmodifiableList(out);
   }
 

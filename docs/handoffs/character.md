@@ -1,29 +1,41 @@
 # Character / Animation Handoff
 
-## 2026-09-10 16:35 KST — agent/character/20260910-1635
+## 2026-09-10 16:50 KST — agent/character/20260910-1650
 
-### Priority change
-Per user direction, stop spending Character passes on micro-animation polish. Build complete canonical item-image coverage first, then equip/render items family-by-family on the character.
+### Priority
+Per user direction, Character work remains focused on complete item-image coverage before additional micro-animation work. Current acquisition family: shields.
 
 ### Source/data state
-- Continued from `agent/character/20260910-1620`; previous Character visual work remains unmerged.
-- Re-read `master/data/Item_Master.csv`. Canonical rows expose Item ID, name, category/subcategory, job, circle, level, equip slot, Source_ID and confidence.
-- Confirmed examples across the equipment backlog include gloves, leggings, shoes, earrings, rings, shields, necklaces and belts. Shield family includes `IT_SHIELD_LEATHER`, `IT_SHIELD_COPPER`, `IT_SHIELD_IRON`, `IT_SHIELD_SILVER`, `IT_SHIELD_GOLD`, `IT_SHIELD_PLANUM`, `IT_SHIELD_PAPAYA`.
-- Official Nexon right-menu guide `https://lod.nexon.com/info/guide/82295` proves inventory equipment filtering and equipped-item display in character info, but does not positively map each visible pixel/icon to canonical Item IDs.
-- Official Nexon probability/manufacturing page `https://lod.nexon.com/cashshop/probability` gives text-level existence evidence for named items such as `가죽방패`; text existence is not image evidence.
+- Continued from `agent/character/20260910-1635`; prior Character work remains unmerged.
+- Canonical shield IDs remain: `IT_SHIELD_LEATHER`, `IT_SHIELD_COPPER`, `IT_SHIELD_IRON`, `IT_SHIELD_SILVER`, `IT_SHIELD_GOLD`, `IT_SHIELD_PLANUM`, `IT_SHIELD_PAPAYA`.
+- Official Nexon probability page `https://lod.nexon.com/cashshop/probability` explicitly names `가죽방패`.
+- Nexon-hosted game-board post `https://lod.nexon.com/community/game/7009?SearchBoard=1` explicitly enumerates the common shield family `가죽방패/구리방패/철방패/은제방패/금제방패/플라늄방패`; this is Nexon-hosted community evidence `[V]`, not automatically `[O]` official-art evidence.
+- Nexon-hosted Papaya quest guide `https://lod.nexon.com/community/game/791?SearchBoard=1` explicitly names `파파야방패` as the quest reward.
+- The current search pass did **not** produce a positively identifiable isolated inventory icon or equipped-world sprite for any of the seven shields. Therefore none is promoted to image `SOURCE_FOUND`, `PENDING_CROP`, or `READY_FOR_RENDER` yet.
 
 ### Completed this run
-- Added `ItemVisualManifest` as a Character-owned, read-only projection over **all** RPG runtime item definitions. New Item_Master rows therefore automatically enter the visual backlog instead of requiring a manually maintained hard-coded list.
-- Added independent visual status for inventory icon vs equipped-world sprite: `PENDING_SOURCE`, `SOURCE_FOUND`, `PENDING_IDENTIFICATION`, `PENDING_CROP`, `READY_FOR_RENDER`, `NO_SOURCE_FOUND`.
-- Added presentation-only render-layer mapping for weapon/shield/equipment/accessory candidates without redefining RPG equip semantics.
-- Added `data/design/ITEM_VISUAL_MANIFEST.md` as the canonical visual collection policy and evidence registry seed.
-- First collection order is now shields -> common gloves/leggings/shoes -> weapons by job -> armor/clothing -> accessories.
+- Added `ShieldVisualEvidenceCatalog` for the seven canonical shield IDs.
+- Separated text/item-existence evidence from image evidence in code. A textual source can prove an item name without falsely making that item render-ready.
+- `ItemVisualManifest.Entry` now exposes `textEvidenceUrl`, `textEvidenceKind`, `imageSourceUrl`, and `imageProvenance` independently.
+- Added `readyForEquippedRender()` gating: an equipped sprite is only renderable when status is `READY_FOR_RENDER` and a positively identified image source exists.
+- Added `pendingImageAcquisition()` and `readyForEquippedRender()` queries so subsequent Character passes can work the backlog deterministically.
+- Seeded all seven shield evidence rows. Current verified shield-image count is intentionally 0 rather than inventing procedural/original-looking shield art.
 
-### Important visual rule
-Inventory icon and equipped sprite are different evidence surfaces. Finding an item icon does not authorize using it as the world-character sprite. Accessories are only `characterVisibleCandidate` until visibility is positively proven.
+### User-visible / quality delta
+This pass prevents a major asset-integrity bug: item names or inventory evidence can no longer accidentally authorize an arbitrary world-character shield sprite. The renderer pipeline now has a hard gate requiring verified image evidence before a canonical shield is visually equipped.
+
+### Evidence discipline
+- `가죽방패` official probability-page name evidence: `[O]` text only.
+- Shield list and Papaya quest posts: Nexon-hosted community evidence `[V]` text only.
+- Isolated shield inventory icons: unresolved.
+- Equipped-world shield sprites: unresolved.
+- No unrelated web image or visually similar shield was accepted as Legend of Darkness evidence.
 
 ### Boundaries preserved
 No `GameView.java`, combat/AI/damage, world/pathfinding, RPG mutation/progression/save, HUD/input, dialogue/quest, APK packaging or Director integration changes.
 
 ### Next Character pass
-Start the shield family image collection. For each canonical shield, locate official/Nexon-hosted visual evidence, record provenance and image URL, identify inventory icon vs equipped sprite separately, crop/anchor only when positively identified, then promote one shield at a time to `READY_FOR_RENDER` and test it through the existing character equipment binding.
+1. Continue shield-image acquisition using Nexon-hosted guide/community attachments and old board captures; inspect attachments rather than relying only on page text search.
+2. Promote the first shield only after item identity can be visually tied to a canonical name/ID.
+3. Once one shield has a verified equipped-world source, crop it by direction, define foot/hand anchor offsets, set `READY_FOR_RENDER`, and wire the OFF_HAND renderer preview.
+4. Do not use generic shield drawings as canonical item art.
