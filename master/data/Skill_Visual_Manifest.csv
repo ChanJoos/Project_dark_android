@@ -1,4 +1,5 @@
 Visual_ID,Scope,Source_Page,Direct_Asset_URL,OID,Source_Status,Mapping_Status,Evidence,Notes
+SKILL_ICON_RENEWAL_2026,RENEWAL_EVENT,https://lod.nexon.com/news/notice/144365,,,SOURCE_FOUND,CURRENT_RENEWAL_CONFIRMED,O,Official notice confirms skill icons were renewed in the 2026-03-26 regular maintenance
 SKILL_ICON_SHEET_01,SKILL_ICON_SHEET,https://lod.nexon.com/news/notice/4044,https://file.nexon.com/NxFile/Notice/Download/ImagePreviewer.aspx?oidFile=6940049224801245658,6940049224801245658,SOURCE_FOUND,SHEET_ONLY,O,Official Nexon skill icon change notice image
 SKILL_ICON_SHEET_02,SKILL_ICON_SHEET,https://lod.nexon.com/news/notice/4044,https://file.nexon.com/NxFile/Notice/Download/ImagePreviewer.aspx?oidFile=6940049224801245659,6940049224801245659,SOURCE_FOUND,SHEET_ONLY,O,Official Nexon skill icon change notice image
 SKILL_ICON_SHEET_03,SKILL_ICON_SHEET,https://lod.nexon.com/news/notice/4044,https://file.nexon.com/NxFile/Notice/Download/ImagePreviewer.aspx?oidFile=6940049224801245660,6940049224801245660,SOURCE_FOUND,SHEET_ONLY,O,Official Nexon skill icon change notice image
