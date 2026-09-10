@@ -38,7 +38,7 @@ public final class WorldMoveTargetController {
   }
 
   public static final class Snapshot {
-    public final long requestId;
+    public final long requestId,replacedRequestId;
     public final RequestKind kind;
     public final String targetEntityId;
     public final float targetX,targetY,tolerance;
@@ -46,9 +46,10 @@ public final class WorldMoveTargetController {
     public final CancelReason cancelReason;
     public final int remainingWaypoints;
 
-    private Snapshot(long requestId,RequestKind kind,String targetEntityId,float targetX,float targetY,
+    private Snapshot(long requestId,long replacedRequestId,RequestKind kind,String targetEntityId,float targetX,float targetY,
         float tolerance,Status status,CancelReason cancelReason,int remainingWaypoints){
       this.requestId=requestId;
+      this.replacedRequestId=replacedRequestId;
       this.kind=kind;
       this.targetEntityId=targetEntityId;
       this.targetX=targetX;
@@ -78,6 +79,7 @@ public final class WorldMoveTargetController {
   private final Walker walker;
   private final float cellSize,walkSpeed;
   private long sequence=0;
+  private long replacedRequestId=0;
   private RequestKind kind;
   private String targetEntityId;
   private float targetX,targetY,tolerance;
@@ -111,7 +113,7 @@ public final class WorldMoveTargetController {
   }
 
   private Snapshot begin(RequestKind nextKind,String entityId,float x,float y,float requestedTolerance){
-    if(status==Status.MOVING)cancelReason=CancelReason.REPLACED;
+    replacedRequestId=status==Status.MOVING?sequence:0;
     sequence++;
     kind=nextKind;
     targetEntityId=entityId;
@@ -160,7 +162,7 @@ public final class WorldMoveTargetController {
   }
 
   public Snapshot snapshot(){
-    return new Snapshot(sequence,kind,targetEntityId,targetX,targetY,tolerance,status,cancelReason,
+    return new Snapshot(sequence,replacedRequestId,kind,targetEntityId,targetX,targetY,tolerance,status,cancelReason,
         Math.max(0,path.size()-waypointIndex));
   }
 
