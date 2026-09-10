@@ -16,6 +16,7 @@ public final class RpgProgressionState {
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
   public enum RewardGrantStatus { GRANTED, INVENTORY_FULL, INVALID_ITEM, INVALID_QUANTITY, UNRESOLVED_REWARD }
   public enum CombatConsumeStatus { PROCESSED_DEFEAT, DUPLICATE_OR_STALE, IGNORED_NON_DEFEAT }
+  public enum ExpApplyStatus { APPLIED, INVALID_AMOUNT, UNINITIALIZED, PROJECTED_LEVEL_LIMIT }
   public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
   public enum RestoreResult { RESTORED, UNSUPPORTED_SCHEMA, INVALID_STATE }
@@ -51,15 +52,30 @@ public final class RpgProgressionState {
     }
   }
 
+  public static final class ExpApplyOutcome {
+    public final Integer requestedExp;
+    public final Long beforeExp,afterExp;
+    public final Integer beforeLevel,afterLevel;
+    public final int levelsGained;
+    public final ExpApplyStatus status;
+    public final Evidence evidence;
+    ExpApplyOutcome(Integer requestedExp,Long beforeExp,Long afterExp,Integer beforeLevel,Integer afterLevel,
+        int levelsGained,ExpApplyStatus status,Evidence evidence){
+      this.requestedExp=requestedExp;this.beforeExp=beforeExp;this.afterExp=afterExp;this.beforeLevel=beforeLevel;
+      this.afterLevel=afterLevel;this.levelsGained=levelsGained;this.status=status;this.evidence=evidence;
+    }
+  }
+
   public static final class RewardResolution {
     public final long combatSequence;public final String monsterId;public final RewardStatus status;public final Integer exp;
     public final Map<String,Integer> autoLootedItems;
     public final List<RewardGrantOutcome> grantOutcomes;
+    public final ExpApplyOutcome expOutcome;
     RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,Map<String,Integer> autoLootedItems,
-        List<RewardGrantOutcome> grantOutcomes){
+        List<RewardGrantOutcome> grantOutcomes,ExpApplyOutcome expOutcome){
       this.combatSequence=combatSequence;this.monsterId=monsterId;this.status=status;this.exp=exp;
       this.autoLootedItems=Collections.unmodifiableMap(new LinkedHashMap<>(autoLootedItems));
-      this.grantOutcomes=Collections.unmodifiableList(new ArrayList<>(grantOutcomes));
+      this.grantOutcomes=Collections.unmodifiableList(new ArrayList<>(grantOutcomes));this.expOutcome=expOutcome;
     }
   }
 
@@ -89,10 +105,13 @@ public final class RpgProgressionState {
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
-  private Long normalExp=null;
+  // New-game cumulative EXP baseline is 0 under the active Level_EXP_Curve [B] projection.
+  // Legacy/restored snapshots may still explicitly carry null, which remains preserved by restoreSnapshot().
+  private Long normalExp=0L;
   private Long gold=null;
 
   public RpgProgressionState(){
+    if(!LevelExpCurveCatalog.audit())throw new IllegalStateException("Level EXP curve projection audit failed");
     Map<String,Integer> noStats=Collections.emptyMap();Set<String> anyJob=Collections.emptySet();
     Set<String> physicalJobs=jobSet("WARRIOR","ROGUE","MARTIAL_ARTIST"),magicJobs=jobSet("MAGE","CLERIC");
     registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,noStats,Evidence.O));
@@ -101,7 +120,7 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_GORU","고루반지","반지",11,magicJobs,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_GORU","고루반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_NECK_WATER_PEARL","바다의진주목걸이","목걸이",11,anyJob,true,"바다",null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_BELT_WATER_LEATHER","바다의가죽벨트","벨트",11,anyJob,true,null,"바다",noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_NECK_EARTH_PEARL","대지의진주목걸이","목걸이",11,anyJob,true,"대지",null,noStats,Evidence.O));
@@ -142,6 +161,28 @@ public final class RpgProgressionState {
   }
   public RequirementResult currentRequirements(String itemId){return evaluateRequirements(itemId,currentJobCode,normalLevel);}
 
+  public ExpApplyOutcome applyNormalExp(Integer amount,Evidence evidence){
+    Long beforeExp=normalExp;Integer beforeLevel=normalLevel;
+    if(amount==null||amount<=0)return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.INVALID_AMOUNT,evidence);
+    if(normalExp==null||normalLevel==null)return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.UNINITIALIZED,evidence);
+    if(normalLevel>=LevelExpCurveCatalog.MAX_PROJECTED_LEVEL){
+      return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.PROJECTED_LEVEL_LIMIT,evidence);
+    }
+    long after;
+    try{after=Math.addExact(normalExp,(long)amount);}catch(ArithmeticException overflow){
+      return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.INVALID_AMOUNT,evidence);
+    }
+    int projectedLevel=LevelExpCurveCatalog.levelForCumulativeExp(after);
+    normalExp=after;normalLevel=Math.max(normalLevel,projectedLevel);
+    return new ExpApplyOutcome(amount,beforeExp,normalExp,beforeLevel,normalLevel,normalLevel-beforeLevel,ExpApplyStatus.APPLIED,evidence);
+  }
+
+  public Long expToNextLevel(){
+    if(normalExp==null||normalLevel==null||normalLevel>=LevelExpCurveCatalog.MAX_PROJECTED_LEVEL)return null;
+    long next=LevelExpCurveCatalog.cumulativeRequiredForLevel(normalLevel+1);
+    return Math.max(0L,next-normalExp);
+  }
+
   public void consumeCombat(List<CombatLedger.Event> events,RuntimeState runtime){consumeCombatWithOutcomes(events,runtime);}
 
   public List<CombatConsumeOutcome> consumeCombatWithOutcomes(List<CombatLedger.Event> events,RuntimeState runtime){
@@ -159,7 +200,7 @@ public final class RpgProgressionState {
   private void resolveMonsterDefeat(CombatLedger.Event e){
     CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
     if(reward==null){rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,
-        null,Collections.emptyMap(),Collections.emptyList()));trimRewardHistory();return;}
+        null,Collections.emptyMap(),Collections.emptyList(),null));trimRewardHistory();return;}
     Map<String,Integer> looted=new LinkedHashMap<>();List<RewardGrantOutcome> outcomes=new ArrayList<>();
     for(CanonicalMonsterRewardCatalog.DropHint hint:reward.dropHints){
       RewardGrantOutcome outcome=hint.emissionResolved()
@@ -168,7 +209,8 @@ public final class RpgProgressionState {
       outcomes.add(outcome);
       if(outcome.status==RewardGrantStatus.GRANTED)looted.put(hint.itemId,value(looted,hint.itemId)+outcome.requestedQuantity);
     }
-    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes));trimRewardHistory();
+    ExpApplyOutcome expOutcome=reward.exp==null?null:applyNormalExp(reward.exp,reward.expEvidence);
+    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes,expOutcome));trimRewardHistory();
   }
 
   public RewardGrantOutcome grantResolvedRewardItem(String itemId,Integer quantity,Evidence evidence){
@@ -207,6 +249,9 @@ public final class RpgProgressionState {
   public RestoreResult restoreSnapshot(RpgSaveSnapshot s){
     if(s==null||s.schemaVersion!=RpgSaveSnapshot.CURRENT_SCHEMA_VERSION)return s==null?RestoreResult.INVALID_STATE:RestoreResult.UNSUPPORTED_SCHEMA;
     if(s.progressionNode==null||s.currentJobCode==null||s.normalLevel==null||s.normalLevel<1||s.normalLevel>99||(s.gold!=null&&s.gold<0)||s.lastCombatSequence<0)return RestoreResult.INVALID_STATE;
+    if(s.normalExp!=null&&s.normalExp<0)return RestoreResult.INVALID_STATE;
+    if(s.normalExp!=null&&s.normalLevel<=LevelExpCurveCatalog.MAX_PROJECTED_LEVEL&&
+        s.normalExp<LevelExpCurveCatalog.cumulativeRequiredForLevel(s.normalLevel))return RestoreResult.INVALID_STATE;
     for(Map.Entry<String,Integer> e:s.inventory.entrySet())if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return RestoreResult.INVALID_STATE;
     for(Map.Entry<String,String> e:s.equipmentBySlot.entrySet()){
       ItemDefinition def=items.get(e.getValue());Integer owned=s.inventory.get(e.getValue());
