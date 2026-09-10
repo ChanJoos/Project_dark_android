@@ -17,8 +17,9 @@ public final class CharacterRenderer {
   public static final String ASSET_STATUS="PENDING_CROP";
 
   /** [ADAPTED] Presentation-only scale. Logical/world coordinates are intentionally unchanged. */
-  public static final float PLAYER_RENDER_SCALE=1.35f;
-  public static final float SHADOW_RENDER_SCALE=0.72f;
+  public static final float PLAYER_RENDER_SCALE=0.92f;
+  public static final float SHADOW_RENDER_SCALE=0.58f;
+  public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
 
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
@@ -60,15 +61,16 @@ public final class CharacterRenderer {
     int frame=pose.state==State.WALK?((int)(pose.walkClock*8f)%4):0; // [B] prototype cadence
     float bob=(frame==1||frame==3)?-2f:0f;
 
-    // Shadow and body scale are presentation-only. pose.x/pose.y remain world/screen anchor coordinates.
+    // pose.x/pose.y are the logical foot anchor. Rendering scale never mutates gameplay/world coordinates.
+    float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
     float shadowHalfWidth=13f*SHADOW_RENDER_SCALE;
     float shadowHalfHeight=4f*SHADOW_RENDER_SCALE;
     p.setColor(pose.hitFlash?0x99ff7766:0x66000000);
-    c.drawOval(new RectF(pose.x-shadowHalfWidth,pose.y-shadowHalfHeight,
-        pose.x+shadowHalfWidth,pose.y+shadowHalfHeight),p);
+    c.drawOval(new RectF(pose.x-shadowHalfWidth,anchorY-shadowHalfHeight,
+        pose.x+shadowHalfWidth,anchorY+shadowHalfHeight),p);
 
     c.save();
-    c.translate(pose.x,pose.y-(28f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE);
+    c.translate(pose.x,anchorY-(28f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE);
     c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
     c.translate(-8,0);
     for(Layer layer:DRAW_ORDER)drawLayer(c,pose,layer,frame);
@@ -92,7 +94,7 @@ public final class CharacterRenderer {
     rect(c,outline,4+step-kick,19,7+step,26);rect(c,outline,10-step,19,13-step+kick,26);
     rect(c,pants,5+step-kick,19,7+step,24);rect(c,pants,10-step,19,12-step+kick,24);
     rect(c,shoe,4+step-kick,24,7+step,27);rect(c,shoe,10-step,24,13-step+kick,27);
-    int armLift=pose.state==State.CAST?-7:0;
+    int armLift=pose.state==State.CAST?-7:pose.state==State.SKILL?-3:0;
     rect(c,outline,1,11+armLift,4,19);rect(c,skin,2,12+armLift,3,18);
     rect(c,outline,13,11+armLift,16,19);rect(c,skin,14,12+armLift,15,18);
     rect(c,outline,3,2,14,12);rect(c,skin,4,3,13,11);
@@ -122,17 +124,27 @@ public final class CharacterRenderer {
   /** Owns player-local prototype action effects. Combat semantics stay outside this renderer. */
   private void drawEffect(Canvas c,Pose pose){
     EffectFamily family=pose.hitFlash?EffectFamily.HIT:pose.effectFamily;
-    if(family==EffectFamily.NONE)return;
     float q=phase(pose);
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
     float sx=left?-1f:1f;
     float sy=(pose.direction==Direction.SW||pose.direction==Direction.SE)?1f:-1f;
+
+    // [ADAPTED] Generic ATTACK receives a renderer-owned swing hook even when combat emits no subtype effect.
+    if(family==EffectFamily.NONE&&pose.state==State.ATTACK){
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.8f);p.setColor(0xaad7d2c5);
+      float lead=8+sx*(10+5*q);
+      c.drawArc(new RectF(lead-12,1,lead+12,24),left?35:15,120,false,p);
+      p.setStyle(Paint.Style.FILL);
+      return;
+    }
+    if(family==EffectFamily.NONE)return;
+
     switch(family){
       case CAST:
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaa78b9ff);
         c.drawCircle(8,-7,5+9*q,p);c.drawCircle(8,-7,12-4*q,p);p.setStyle(Paint.Style.FILL);break;
       case MAGIC:
-        // [ADAPTED] Distinct presentation hook so MAGIC can be visually distinguished from generic CAST/SKILL.
+        // [ADAPTED] Purple cross/ring presentation is distinct from generic CAST and SKILL.
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2f);p.setColor(0xaa9d7cff);
         c.drawCircle(8,-7,4+7*q,p);
         c.drawLine(8,-16-(5*q),8,-1+(3*q),p);
