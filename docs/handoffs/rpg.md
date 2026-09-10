@@ -103,3 +103,37 @@ No `GameView.java`, combat effect execution, monster AI, map/camera/pathfinding,
 3. Add evidence-safe job-selection transition at the Lv10/commoner gate only when gate conditions are explicit enough for mutation.
 4. Project Magic data after core level/job flow is visible.
 5. Director/Integrator should wire actual EXP bar + `LEVEL_UP` feedback into GameView and run compile/APK/runtime validation.
+
+
+---
+
+## PASS 29 — full Lv1–99 EXP progression
+
+### Implemented
+- `LevelExpCurveCatalog` now projects all 98 rows from `master/data/Level_EXP_Curve.csv`, not only Lv1–10.
+- Every threshold remains explicitly `Evidence.B`; source path and segment/hunting metadata remain available.
+- Verified monster EXP is applied after idempotent defeat consumption and can advance multiple levels.
+- Progression caps at Lv99 / cumulative EXP 150,000,000.
+- `ExpApplyOutcome` exposes before/after EXP and level, levels gained, reward evidence and separate curve evidence.
+- `expToNextLevel()` exposes the remaining cumulative amount without inventing a separate formula.
+- Fresh state is Lv1 / EXP 0 under the [B] curve. Restored null EXP remains `UNINITIALIZED` and is not silently migrated.
+- Save/restore validates that level and cumulative EXP occupy the same curve interval.
+- Both visible projections now provide a distinct LEVEL_UP event in addition to EXP gain.
+
+### Verified scenario
+`POTE_SPIRIT` reward EXP 308,950 from a fresh state:
+- before: Lv1 / 0
+- after: Lv10 / 308,950
+- remaining to Lv11: 69,050
+- replaying the same CombatLedger sequence: no additional EXP or history entry
+
+### Director / UX integration request
+- Render `PlayerSummary.level / exp / expToNextLevel` directly.
+- Render `RewardLineKind.LEVEL_UP` or `RpgRewardFeedPresentation.Semantic.LEVEL_UP` as a distinct level-up notification.
+- Preserve the `B` curve evidence in QA/debug details; do not label the curve as verified original balance.
+- Do not recalculate levels in GameView.
+
+### Verification
+- Full 98-row cumulative audit: PASS.
+- Reward application, multi-level gain, duplicate suppression, Lv99 cap and save/restore audit: PASS.
+- Full Gradle/APK and Android runtime: pending Director integration.
