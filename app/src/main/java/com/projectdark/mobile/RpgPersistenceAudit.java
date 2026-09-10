@@ -8,6 +8,7 @@ public final class RpgPersistenceAudit {
 
   public static boolean verify(){
     RpgProgressionState before=new RpgProgressionState();
+    if(before.gold()!=null)return false;
     if(before.autoLootResolvedItem("IT_GLOVE_LEATHER",2)!=RpgProgressionState.AutoLootResult.LOOTED)return false;
     if(!before.setLearnedAction("skill_proto",true))return false;
     RpgSaveSnapshot snapshot=before.saveSnapshot();
@@ -15,11 +16,12 @@ public final class RpgPersistenceAudit {
     RpgProgressionState after=new RpgProgressionState();
     if(after.restoreSnapshot(snapshot)!=RpgProgressionState.RestoreResult.RESTORED)return false;
     if(after.inventory().get("IT_GLOVE_LEATHER")==null||after.inventory().get("IT_GLOVE_LEATHER")!=2)return false;
+    if(after.gold()!=null)return false;
     if(!after.learnedActionIds().contains("skill_proto"))return false;
     if(after.lastCombatSequence()!=before.lastCombatSequence())return false;
 
     RpgSaveSnapshot invalid=new RpgSaveSnapshot(RpgSaveSnapshot.CURRENT_SCHEMA_VERSION,
-        RpgProgressionState.ProgressionNode.COMMONER,"COMMONER",1,null,0,0,
+        RpgProgressionState.ProgressionNode.COMMONER,"COMMONER",1,null,null,0L,
         Collections.singletonMap("UNKNOWN_ITEM",1),Collections.emptyMap(),Collections.emptySet());
     if(after.restoreSnapshot(invalid)!=RpgProgressionState.RestoreResult.INVALID_STATE)return false;
     return after.inventory().get("IT_GLOVE_LEATHER")==2;
