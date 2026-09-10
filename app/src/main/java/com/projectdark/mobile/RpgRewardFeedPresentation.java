@@ -11,7 +11,7 @@ import java.util.Set;
 /** RPG-owned transient reward feed. UI renders snapshots; this class does not draw or own layout. */
 public final class RpgRewardFeedPresentation {
   public enum Semantic {
-    ITEM_GRANTED, EXP_GAINED, INVENTORY_FULL, INVALID_ITEM, INVALID_QUANTITY,
+    ITEM_GRANTED, EXP_GAINED, LEVEL_UP, INVENTORY_FULL, INVALID_ITEM, INVALID_QUANTITY,
     UNRESOLVED_REWARD, NO_CONFIRMED_REWARD
   }
   public static final float DEFAULT_DURATION_SECONDS=2.4f; // [ADAPTED/B] presentation lifetime.
@@ -58,7 +58,13 @@ public final class RpgRewardFeedPresentation {
         add(reward,Semantic.UNRESOLVED_REWARD,null,"보상 데이터 확인 필요: "+reward.monsterId,null,RpgProgressionState.Evidence.PENDING);
         continue;
       }
-      if(reward.exp!=null)add(reward,Semantic.EXP_GAINED,null,"EXP +"+reward.exp,null,RpgProgressionState.Evidence.V);
+      if(reward.expOutcome!=null&&reward.expOutcome.status==RpgProgressionState.ExpApplyStatus.APPLIED){
+        add(reward,Semantic.EXP_GAINED,null,"EXP +"+reward.expOutcome.requestedExp,null,reward.expOutcome.evidence);
+        if(reward.expOutcome.levelsGained>0)add(reward,Semantic.LEVEL_UP,null,
+            "Lv"+reward.expOutcome.beforeLevel+" → Lv"+reward.expOutcome.afterLevel,null,reward.expOutcome.curveEvidence);
+      }else if(reward.expOutcome!=null&&reward.expOutcome.status==RpgProgressionState.ExpApplyStatus.LEVEL_CAP){
+        add(reward,Semantic.NO_CONFIRMED_REWARD,null,"Lv99 · EXP 최대",null,reward.expOutcome.curveEvidence);
+      }else if(reward.exp!=null)add(reward,Semantic.EXP_GAINED,null,"EXP +"+reward.exp,null,RpgProgressionState.Evidence.V);
       for(RpgProgressionState.RewardGrantOutcome outcome:reward.grantOutcomes){
         RpgProgressionState.ItemDefinition def=definitions.get(outcome.itemId);
         String name=def==null?(outcome.itemId==null?"알 수 없는 아이템":outcome.itemId):def.name;
