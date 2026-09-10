@@ -59,3 +59,40 @@ Added `world/WorldCameraTransformAudit.java`:
 - Real Android runtime screenshot/device verification that the player remains near the dead-zone while the expanded world scrolls beneath it.
 - Portal transition callback/DTO once an evidence-safe destination definition exists.
 - Source-backed Milles TILE/OBJECT/COLLISION reconstruction remains pending visual identification/calibration; this adapted village must be replaced incrementally as verified geometry becomes available.
+
+
+---
+
+# World handoff — PASS 26 portal transition lifecycle
+
+- Branch: `agent/world/20260910-1455`
+- Code commit: `55e0846ca19b1abd2fcfda6e777b0cb70d9f91e7`
+- Canonical safety: `milles_south_exit_proto` remains target-pending and must not change maps.
+
+## New world API
+
+`WorldPortalTransitionController` owns activation and transition request semantics:
+
+1. UX/runtime identifies the closest portal and calls `observe(portal, playerWorldX, playerWorldY)` once per world tick.
+2. `BLOCKED_TARGET_PENDING` and `BLOCKED_DISABLED` are terminal presentation outcomes for the current overlap; they emit no transition request.
+3. On `REQUESTED`, the injected `TransitionSink` owns map loading. The injected move-target canceller is called only after that sink accepts the request.
+4. Repeated ticks inside the same portal return `PENDING` or `LATCHED`; they never emit duplicate requests.
+5. The runtime calls `complete(requestId, success, detail)`. Unknown/late request IDs return `STALE_COMPLETION` and cannot mutate controller state.
+6. Call `observeOutside()` only when no portal is in activation range. Leaving and re-entering is required before a rejected/completed/blocked portal can retry.
+
+## Director / UX integration request
+
+- Adapt `WorldDef.PortalSpawn` to the new immutable `Portal` DTO without duplicating range/readiness logic in `GameView.java`.
+- Map current status `PROTOTYPE_DISABLED_TARGET_PENDING` to `PortalReadiness.TARGET_PENDING`.
+- Show brief locked/unavailable feedback for `BLOCKED_TARGET_PENDING`; do not teleport or silently choose another map.
+- When a verified destination exists, register both stable `targetMapId` and stable `targetSpawnId`. Arrival coordinates remain destination-map-owned.
+- Transition acceptance must cancel active tap/NPC approach movement through the supplied canceller, clear transient target selection as appropriate, load the destination, then complete the same request ID.
+- After map load, create/snap the destination camera transform before accepting new screen-to-world taps.
+
+## Validation and blocker
+
+- Android-free compile: PASS.
+- `WorldPortalTransitionAudit`: PASS.
+- Full Gradle/APK: not verified in this worker.
+- Android runtime: not verified.
+- Concrete content blocker: no verified target map + arrival spawn is available for the adapted Milles south gate, so the on-screen transition intentionally remains disabled.
