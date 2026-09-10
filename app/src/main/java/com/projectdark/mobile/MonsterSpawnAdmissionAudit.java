@@ -12,6 +12,7 @@ public final class MonsterSpawnAdmissionAudit {
     if(!PoteMonsterRosterAudit.verify())return false;
     if(!PoteSpawnManifestAudit.verify())return false;
     if(!MonsterSpawnReadinessAudit.verify())return false;
+    if(!PotePrototypeCombatProfileAudit.verify())return false;
     MonsterDefinitionRegistry definitions=new MonsterDefinitionRegistry();
     for(WorldDef.MonsterSpawn spawn:world.monsterSpawns()){
       MonsterDefinition def=definitions.resolve(spawn.id);
