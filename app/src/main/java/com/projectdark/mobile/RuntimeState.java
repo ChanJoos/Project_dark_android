@@ -54,6 +54,7 @@ public final class RuntimeState {
     if(!MonsterDefeatIdempotencyAudit.verify())throw new IllegalStateException("Monster defeat reward idempotency audit failed");
     if(!MonsterSpawnAdmissionAudit.verify(world))throw new IllegalStateException("Monster spawn admission audit failed");
     if(!RpgEquipmentInteractionAudit.verify())throw new IllegalStateException("RPG equipment interaction audit failed");
+    if(!CanonicalRewardReadinessAudit.verify())throw new IllegalStateException("Canonical reward readiness audit failed");
     for(RectF r:world.blockers())obstacles.add(new RectF(r));
     for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
     for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
