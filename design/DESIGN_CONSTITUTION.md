@@ -38,11 +38,35 @@ Do not use a whole gameplay screenshot as the final map texture. Final world arc
 
 Original asset redistribution for shipping is licensing-gated. Keep reference/prototype assets distinct from distributable shipping assets.
 
+### User-confirmed playtest presentation requirements — `[ADAPTED]`
+
+- Character/NPC/monster presentation must not dominate the mobile viewport. Logical world coordinates and collision dimensions must remain independent from renderer scale. The current reduced character presentation is user-approved and must not regress to the earlier oversized prototype without explicit user direction.
+- Player movement must be presented with a following camera/world scroll rather than a permanently fixed one-screen map. Camera behavior must preserve world↔screen coordinate correctness, map clamp, collision, portal and touch targeting.
+- The starting vertical slice must provide enough connected spatial extent to feel like **one explorable village**, rather than a tiny fixed test room. Original geometry must not be invented when unverified; source-backed reconstruction takes priority and authored gaps remain explicitly `[ADAPTED]`.
+- ATTACK / SKILL / MAGIC must expose visibly distinguishable presentation states/effect hooks so animation and motion can be judged on-device. Unverified original frames/timing remain `[B]`, `[ADAPTED]`, or `PENDING_CROP` rather than fabricated original facts.
+- Combat feedback, including damage presentation, must be legible and game-like rather than crude placeholder text/boxes; exact original styling remains evidence-gated.
+
 ## 5. Movement canon
 
 Original presentation uses four screen-diagonal directions `↖ ↗ ↙ ↘`. Logical movement can remain four-neighbor grid movement because isometric projection maps logical axes to those screen diagonals. Do not 'fix' this into 8-neighbor movement without evidence.
 
 Mobile joystick/tap movement must issue the same logical movement command. NPC tap may pathfind and approach before interaction.
+
+### Tap-to-move — USER CANON / `[ADAPTED]`
+
+In addition to joystick/directional control, tapping an eligible point on the world must set a movement target. The screen tap is converted using the current camera/world transform and the character **walks** toward the target; tap-to-move must never teleport the player or bypass collision, pathfinding, map bounds, or portal rules.
+
+Input semantics:
+- a new eligible world tap replaces the previous movement target;
+- direct joystick/directional input cancels or overrides the active tap target;
+- combat/action input may cancel or suspend tap movement as required by the shared action state;
+- tapping an NPC prioritizes NPC selection/approach/dialogue semantics over generic ground movement;
+- HUD, quick-slot, dialogue, utility and other UI touches must never leak through as world movement commands;
+- blocked/unreachable targets must terminate or report failure rather than causing infinite movement/path loops;
+- reaching the target uses an explicit tolerance appropriate to the movement model;
+- successful world taps should receive brief visible target feedback/marker so the player can confirm the command.
+
+World owns movement/path/collision semantics and exposes a stable move-target API. UX/input owns touch hit-testing, screen→world conversion/wiring and UI-vs-world input priority. These responsibilities must not be duplicated in `GameView.java`.
 
 ## 6. Character action states
 
@@ -87,6 +111,8 @@ First content objective is a coherent original-based starting-region/Milles vert
 
 World remains visually central. Approved mobile shell: compact party/quest information, target HP top-center, minimap top-right, utility rail, translucent/expandable chat, HP/MP/EXP bottom-center, circular joystick bottom-left, frequent quick slots + attack + AUTO bottom-right. Do not restore giant placeholder HUD boxes or a permanently expanded PC-sized slot grid.
 
+User-approved NPC conversation flow from the current playtest is the baseline and must not regress without a concrete reason. Placeholder rectangular/text-heavy controls should continue moving toward a mobile RPG HUD with adequate touch targets and clear pressed/cooldown/disabled/selected feedback.
+
 ## 11. AUTO canon
 
 AUTO uses the same combat math and reward path as manual play; no AUTO damage bonus. Manual input overrides AUTO and may resume after ~1.2s `[ADAPTED]`. Repeated path failure must terminate/recover rather than loop forever.
@@ -99,6 +125,8 @@ Before coding, every development agent must read this file, `design/DATA_CONTRAC
 
 Existing canonical IDs/values/relationships must not be rewritten for convenience. If source documents disagree or required data is absent, record `DESIGN_CONFLICT` or `PENDING`; do not silently decide canon.
 
-**Supersession rule:** if any older plan, Master prose, backlog, DEV_HISTORY, handoff, test, code comment, or implementation conflicts with §8, §8 wins. Agents must not restore the retired ground-drop/pickup design. Existing runtime code implementing it must be removed or disconnected from the target runtime path.
+**User-canon persistence rule:** when the user explicitly approves, rejects, replaces, or adds a gameplay/UX rule, the Director must persist that decision in canonical design documentation before relying on transient chat or agent prompts. Scheduled agents must treat the latest canonical design as authoritative on subsequent runs.
+
+**Supersession rule:** if any older plan, Master prose, backlog, DEV_HISTORY, handoff, test, code comment, or implementation conflicts with §8 monster reward delivery or §5 Tap-to-move user canon, the newer user-canon sections win. Agents must not restore retired ground-drop/pickup behavior or remove tap-to-move merely because an older document lacks it.
 
 The Integrator is the final Design Compliance Gate. A compiling implementation that violates this constitution is a failed integration.
