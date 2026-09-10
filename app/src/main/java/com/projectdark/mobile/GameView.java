@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-/** PROJECT DARK v0.61 - integrated world/action/NPC/combat runtime prototype. */
+/** PROJECT DARK v0.62 - integrated world/action/NPC/combat runtime prototype. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -19,6 +19,7 @@ public final class GameView extends View {
   private final CombatController combat=new CombatController();
   private final MonsterAIController monsterAi=new MonsterAIController();
   private final InteractionController interaction=new InteractionController();
+  private final CharacterRenderer characterRenderer=new CharacterRenderer();
   private Bitmap world;
   private float scale=1,ox,oy,vx,vy;
   private final float jx=92,jy=444,jr=60;
@@ -135,7 +136,15 @@ public final class GameView extends View {
 
   private void drawMonsters(Canvas c){RuntimeState.Monster selected=combat.target();for(RuntimeState.Monster m:state.monsters()){if(!m.alive)continue;p.setColor(0x66000000);c.drawOval(new RectF(m.x-15,m.y-4,m.x+15,m.y+5),p);p.setColor(m.hitFlash>0?0xffd9e8d7:0xff6a7c69);c.drawOval(new RectF(m.x-13,m.y-31,m.x+13,m.y-5),p);p.setColor(0xffd8c27b);c.drawCircle(m.x-5,m.y-20,2,p);c.drawCircle(m.x+5,m.y-20,2,p);if(m.attackPrimed){float q=1f-Math.min(1f,m.attackWindup/.24f);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2+2*q);p.setColor(0xaaff7755);c.drawCircle(m.x,m.y-19,18+8*q,p);p.setStyle(Paint.Style.FILL);}bar(c,m.x-18,m.y-42,m.x+18,m.y-37,0xffd63442,m.hp/(float)m.maxHp);if(m.damagePopupClock>0){p.setTextSize(12);p.setColor(0xffffdc72);String d="-"+m.lastDamage;float tw=p.measureText(d);c.drawText(d,m.x-tw/2,m.y-50-(.65f-m.damagePopupClock)*20,p);}if(selected==m){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xffffd86b);c.drawOval(new RectF(m.x-21,m.y-9,m.x+21,m.y+9),p);p.setStyle(Paint.Style.FILL);}}}
 
-  private void drawCharacter(Canvas c){float px=state.player().x,py=state.player().y,S=2f,x=px,y=py;int f=action==Action.WALK?((int)(walkClock*8f)%4):0;float bob=(f==1||f==3)?-1:0;p.setColor(state.player().hitFlash>0?0x99ff7766:0x66000000);c.drawOval(new RectF(x-13,y-4,x+13,y+4),p);c.save();c.translate(x,y-56+bob*S);c.scale(S,S);c.translate(-8,0);int skin=state.player().hitFlash>0?0xffffe0d0:0xffffc68f,hair=0xff3b251b,outline=0xff171313,shirt=state.player().hitFlash>0?0xffffd0ca:0xffeee5d3,blue=0xff3c6382,pants=0xff393a3a,shoe=0xff6a4526;int step=(f==1?1:f==3?-1:0);boolean left=(dir==0||dir==2),back=dir>=2;float phase=isActing()?Math.min(1f,actionClock/duration(action)):0;int armLift=action==Action.CAST?(phase<.25f?-5:-8):0;int kick=action==Action.KICK&&phase>.22f&&phase<.78f?5:0;rect(c,outline,4+step-kick,19,7+step,26);rect(c,outline,10-step,19,13-step+kick,26);rect(c,pants,5+step-kick,19,7+step,24);rect(c,pants,10-step,19,12-step+kick,24);rect(c,shoe,4+step-kick,24,7+step,27);rect(c,shoe,10-step,24,13-step+kick,27);rect(c,outline,3,10,14,21);rect(c,shirt,4,11,13,19);rect(c,blue,4,16,13,20);rect(c,0xffc9b070,7,11,9,20);int as=(f==1?1:f==3?-1:0);rect(c,outline,1,11+as+armLift,4,19+as);rect(c,skin,2,12+as+armLift,3,18+as);rect(c,outline,13,11-as+armLift,16,19-as);rect(c,skin,14,12-as+armLift,15,18-as);rect(c,outline,3,2,14,12);rect(c,skin,4,3,13,11);rect(c,hair,3,1,14,6);rect(c,hair,2,3,5,9);rect(c,hair,12,3,15,8);rect(c,hair,5,0,12,3);if(!back){int eye=0xff252020;if(left){rect(c,eye,5,7,6,8);rect(c,eye,9,7,10,8);}else{rect(c,eye,7,7,8,8);rect(c,eye,11,7,12,8);}}rect(c,0xff76503b,left?3:11,3,left?4:12,6);if(action==Action.SWING||action==Action.THRUST){p.setColor(0xffd7d2c5);p.setStrokeWidth(2);float ex=left?-7:23,ey=action==Action.THRUST?14:6;c.drawLine(left?2:15,14,ex,ey,p);}c.restore();}
+  private CharacterRenderer.Direction characterDirection(){switch(dir){case 1:return CharacterRenderer.Direction.SE;case 2:return CharacterRenderer.Direction.NW;case 3:return CharacterRenderer.Direction.NE;default:return CharacterRenderer.Direction.SW;}}
+  private CharacterRenderer.State characterState(){if(!state.player().alive)return CharacterRenderer.State.DEAD;if(state.player().hitFlash>0)return CharacterRenderer.State.HIT;switch(action){case WALK:return CharacterRenderer.State.WALK;case CAST:return CharacterRenderer.State.CAST;case SKILL:case KICK:return CharacterRenderer.State.SKILL;case SWING:case THRUST:case THROW:case PUNCH:return CharacterRenderer.State.ATTACK;default:return CharacterRenderer.State.IDLE;}}
+  private void drawCharacter(Canvas c){
+    CharacterRenderer.State presentation=characterState();
+    float stateDuration=isActing()?duration(action):1f;
+    characterRenderer.draw(c,new CharacterRenderer.Pose(
+        state.player().x,state.player().y,characterDirection(),presentation,walkClock,actionClock,stateDuration,
+        state.player().hitFlash>0,CharacterRenderer.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.ASSET_STATUS));
+  }
 
   private void drawActionFx(Canvas c){if(!isActing())return;float px=state.player().x,py=state.player().y,q=Math.min(1f,actionClock/duration(action));if(action==Action.CAST){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3);p.setColor(0xaa78b9ff);c.drawCircle(px,py-70,10+18*q,p);c.drawCircle(px,py-70,24-8*q,p);p.setStyle(Paint.Style.FILL);}else if(action==Action.THROW){p.setColor(0xffffd76b);float sx=(dir==0||dir==2)?-1:1,sy=(dir<2)?1:-1;c.drawCircle(px+sx*55*q,py-30+sy*35*q,4,p);}else if(action==Action.PUNCH||action==Action.KICK||action==Action.SKILL){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(action==Action.SKILL?5:3);p.setColor(action==Action.SKILL?0xaa7fffa8:0xaaffefb0);float sx=(dir==0||dir==2)?-1:1;c.drawArc(new RectF(px+sx*18-18,py-50,px+sx*18+18,py-14),20,130,false,p);p.setStyle(Paint.Style.FILL);}}
 
