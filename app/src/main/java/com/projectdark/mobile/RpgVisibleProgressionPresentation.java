@@ -5,10 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Single RPG-owned read-only snapshot for HUD/overlay rendering.
- * Integrator/GameView may consume this DTO without learning RPG mutation rules.
- */
+/** Single RPG-owned read-only snapshot for HUD/overlay rendering. */
 public final class RpgVisibleProgressionPresentation {
   public static final class PlayerSummary {
     public final String jobCode;
@@ -32,10 +29,13 @@ public final class RpgVisibleProgressionPresentation {
     public final PlayerSummary player;
     public final List<RpgInventoryPresentation.ItemRow> inventory;
     public final List<RpgActionMetadataCatalog.ActionMetadata> actions;
+    public final List<RpgActionMetadataCatalog.ActionMetadata> quickSlotCandidates;
     public final List<RewardLine> latestRewardLines;
     Snapshot(PlayerSummary player,List<RpgInventoryPresentation.ItemRow> inventory,
-        List<RpgActionMetadataCatalog.ActionMetadata> actions,List<RewardLine> latestRewardLines){
-      this.player=player;this.inventory=inventory;this.actions=actions;this.latestRewardLines=latestRewardLines;
+        List<RpgActionMetadataCatalog.ActionMetadata> actions,List<RpgActionMetadataCatalog.ActionMetadata> quickSlotCandidates,
+        List<RewardLine> latestRewardLines){
+      this.player=player;this.inventory=inventory;this.actions=actions;this.quickSlotCandidates=quickSlotCandidates;
+      this.latestRewardLines=latestRewardLines;
     }
   }
 
@@ -44,7 +44,13 @@ public final class RpgVisibleProgressionPresentation {
   public Snapshot snapshot(RpgProgressionState rpg){
     if(rpg==null)throw new IllegalArgumentException("rpg");
     return new Snapshot(new PlayerSummary(rpg),inventoryPresentation.inventoryRows(rpg),
-        RpgActionMetadataCatalog.visibleFor(rpg),latestRewardLines(rpg));
+        RpgActionMetadataCatalog.visibleFor(rpg),RpgActionMetadataCatalog.quickSlotCandidates(rpg),latestRewardLines(rpg));
+  }
+
+  /** Read-only skill-book preview; does not learn skills or change the player's job. */
+  public List<RpgActionMetadataCatalog.ActionMetadata> skillBook(RpgProgressionState rpg,String jobCode){
+    if(rpg==null)throw new IllegalArgumentException("rpg");
+    return RpgActionMetadataCatalog.forJob(rpg,jobCode);
   }
 
   public List<RewardLine> latestRewardLines(RpgProgressionState rpg){
@@ -61,10 +67,29 @@ public final class RpgVisibleProgressionPresentation {
       String name=def==null?grant.getKey():def.name;
       lines.add(new RewardLine(name+" x"+grant.getValue()+" 자동 획득",def==null?RpgProgressionState.Evidence.U:def.evidence));
     }
-    if(notice.autoLootedItems.isEmpty()&&notice.exp==null){
-      lines.add(new RewardLine("지급 가능한 확정 보상 없음",RpgProgressionState.Evidence.PENDING));
-    }
+    if(notice.autoLootedItems.isEmpty()&&notice.exp==null)lines.add(new RewardLine("지급 가능한 확정 보상 없음",RpgProgressionState.Evidence.PENDING));
     return Collections.unmodifiableList(lines);
+  }
+
+  public static String learnedLabel(RpgActionMetadataCatalog.ActionMetadata action){
+    if(action==null)return "";
+    switch(action.visibilityState){
+      case LEARNED:return "습득";
+      case CURRENT_JOB_LOCKED:return "미습득";
+      case OTHER_JOB:return "타직업";
+      case RUNTIME_PROTOTYPE:
+      default:return "PROTOTYPE";
+    }
+  }
+
+  public static String costLabel(RpgActionMetadataCatalog.ActionMetadata action){
+    if(action==null)return "";
+    if(action.resourceCostResolved())return action.resourceLabel+" "+action.resourceCost;
+    return action.resourceLabel==null?"소모 PENDING":action.resourceLabel;
+  }
+
+  public static String cooldownLabel(RpgActionMetadataCatalog.ActionMetadata action){
+    return action!=null&&action.cooldownResolved()?String.valueOf(action.cooldown):"PENDING";
   }
 
   /** UI helper that never converts unresolved numeric values into zero. */
