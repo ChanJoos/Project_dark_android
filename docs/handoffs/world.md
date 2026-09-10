@@ -69,6 +69,8 @@
 - Independent collision flood-fill against current `WorldDef` geometry: all eight required anchors are in one reachable component.
 - PASS 29 code and deterministic audit were committed before this handoff update.
 - Existing Draft PR #30 was updated with the PASS 29 runtime-session contract.
+- Isolated Java compilation passed via the JDK compiler module.
+- `WorldNavigationSessionAudit PASS`.
 - Full Gradle/APK/runtime screenshot: Director-owned and not verified in this World branch.
 
 ## Current blockers / remaining P0
