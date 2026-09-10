@@ -1,54 +1,41 @@
-# World handoff — PASS 38 BUILDING / ENTRANCE VISUALS
+# World handoff — PASS 40 LIVE TILE MAP INTEGRATION
 
-- Branch: `agent/world/20260910-1933`
-- Parent World lineage: PR #61 / `agent/world/20260910-1847@98a98d11a2a02f00c9a73d50b113aceb7a3e5b60`
-- Latest main checked before work: `2b66df9780142e3d84606f4ac0250dcabfa2d2b7`
-- Geometry/visual status: `ADAPTED/B`; exact original Milles geometry and art remain unverified/`PENDING_CROP`.
+- Branch: `agent/world/20260910-2006`
+- Base: `main@200edd0aa1a3fcbd3eacbe32c8056bc8357b2137`
+- Trigger: user explicitly prioritized actual APK map visibility over further hidden map production.
+- Latest authority: `design/PLAYTEST_CANON_20260910_1938.md`.
 
-## Canon response
-No newer World canon supersedes PASS 37. Continue expanding the connected village, preserve camera/tap/collision/portal behavior, keep source-backed reconstruction preferred, and keep authored gaps explicitly replaceable `[ADAPTED]/[B]`.
+## Canon delta addressed
+The latest device playtest marks live map presentation and empty-map tap as P0 runtime failures. The tested `GameView` still downloaded `WorldDef.VISUAL_SOURCE_URL` and stretched that screenshot over the whole expanded world, while broad HUD interception rectangles swallowed visible-world taps.
 
-## Visible map delta
+## Runtime-visible delta
+- `GameView` no longer downloads or draws the source screenshot as the live world texture.
+- `WorldLiveMapLayer` is instantiated in the actual runtime and `liveMap.draw(canvas)` executes before dynamic NPC/monster/player rendering.
+- Live map camera follows the same player and bounds as the existing dynamic-entity camera.
+- The existing TILE/OBJECT renderer is therefore on the actual frame path, not only present as unused World code.
+- Empty map/NPC/monster world hit conversion uses the live-map screen→world transform.
+- `isHudSurface()` now covers visible panels and actual utility icons instead of the previous large blanket rectangles. Existing joystick/combat control hit tests remain first-priority.
 
-### Structure visuals
-- All 20 collision-aligned structures now have renderer-facing visual profiles.
-- 14 HOUSE/HALL/SHOP structures render as actual layered silhouettes:
-  - pitched roof
-  - front facade
-  - side-volume/shadow
-  - eaves
-  - visible door
-  - exterior step
-- WALL and LANDMARK structures have dedicated non-box silhouettes.
-- Visual dimensions are prototype presentation only and do not change logical collision.
+## Preserved semantics
+- Tap movement still walks through `WorldMoveTargetController` → `RuntimeState.tryMove`; no teleport.
+- NPC and monster touch priority remains above generic empty-world movement.
+- Collision/world coordinates remain independent from render scale/camera.
+- Unverified Milles tile/object presentation remains `[ADAPTED]/[B]` / `PENDING_CROP`.
 
-### Entrance layer
-- Added 14 stable building entrance IDs (`entrance_<structureId>`).
-- Each entrance exposes building ID, foot coordinate, visual width and exterior approach coordinate.
-- Status is `VISUAL_ENTRANCE_ONLY_INTERIOR_PENDING`; no interior/portal is fabricated.
-- `WorldMapProjection.entrances()` exposes the layer for future NPC/interaction routing.
-
-### Vegetation / threshold readability
-- Decorations increased from 26 to 38.
-- Added entrance-adjacent BUSH objects around major hall/shop/house fronts.
-- Added two visible GATEPOST objects at the outer south-gate threshold.
-- South portal destination remains PENDING/fail-closed.
-
-## Director / UX integration request
-`GameView.java` remains World-non-owned.
-
-1. Keep `AdaptedMillesMapRenderer.draw(canvas, worldAdapter)` before dynamic entity rendering.
-2. The renderer now draws roof/wall/door/step building silhouettes automatically; do not overlay the old blocker/X-box presentation over these structures.
-3. Continue using the same WorldRuntimeAdapter camera for map + NPC + monster + portal projection.
-4. Entrances are visual/approach anchors only; do not trigger an interior transition unless a verified/accepted target map contract is added later.
-5. Capture Android screenshots in central village, east market and outer south gate after integration to confirm building readability and camera scrolling.
+## Integration exception
+The normal World ownership rule forbids direct `GameView.java` edits. In this pass the user explicitly instructed us to perform the missing live runtime integration after identifying that this ownership boundary had left the map invisible all day. The edit is intentionally minimal and limited to World presentation/touch plumbing; Combat/RPG/Character behavior was not redesigned.
 
 ## Verification
 - IMPLEMENTED: yes.
-- Static/source count: 20 structure visual profiles / 14 entrances / 38 decorations.
-- BUILD VERIFIED: not claimed by World agent.
-- RUNTIME VERIFIED: pending Director APK/device integration.
-- `GameView.java`, CharacterRenderer, Combat, RPG, HUD and quest code were not modified.
+- BUILD VERIFIED: pending CI/Gradle result.
+- RUNTIME VERIFIED: no.
 
-## Next World priority
-Continue visible map production rather than navigation-only audits: collision-aware vegetation/object clusters, district-specific roof/wall silhouette variation, then source-backed Milles replacements as visual identification/calibration becomes available.
+## Device acceptance required
+1. First frame shows renderer-built tile/object village, not stretched screenshot/black reachable gaps.
+2. Joystick movement keeps map/NPC/monster/player aligned while camera scrolls.
+3. 10 representative empty-world taps across safe screen regions show marker and WALK unless genuinely blocked.
+4. NPC/monster/control/modal touches retain priority.
+5. Capture actual Android screenshots from central village, east market and south gate.
+
+## Next World work
+Do not expand hidden map content until this pass is built and visually confirmed. If the runtime map is visible, continue source-backed/adapted district production from that visible baseline.
