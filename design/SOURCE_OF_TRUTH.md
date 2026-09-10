@@ -1,6 +1,6 @@
 # PROJECT DARK Source of Truth
 
-Revision M001 / D002 · 2026-09-10
+Revision M001 / D003 · 2026-09-10
 
 현재 최신 사용자 지시와 실제 감사에 따라 이전 archive-verified 주장을 정정한다. `master/MASTER_MANIFEST.md`와 `master/RECONCILIATION.md`가 현재 확보/검증 상태다.
 
@@ -29,5 +29,16 @@ Revision M001 / D002 · 2026-09-10
 - 속도부스터 제외, 잠긴 마을은 획득처에 쓰였다는 이유로 열지 않는다.
 - prototype dummy 보상과 원작 monster reward는 구분한다.
 - 원작 미확인 sprite는 PENDING_CROP. 전체 screenshot 최종 map texture 금지.
+
+## 시각 자료 수집·복원 정책 — USER CANON / 2026-09-10
+
+- 넥슨 어둠의전설 공식 홈페이지(`lod.nexon.com`)와 넥슨 파일 호스트에서 확보 가능한 과거/현재 게임 이미지는 적극적으로 수집하여 world/character reconstruction의 1차 시각 근거 풀로 사용한다.
+- 단, `lod.nexon.com` 커뮤니티에 사용자가 올린 스크린샷은 **Nexon-hosted provenance**는 확정되지만 자동으로 `[O]` official art가 되지 않는다. 별도 공식성 검증 전에는 `[V]`로 유지한다.
+- 확보 가능한 원본 시각 정보는 최대한 trace/reconstruct한다. 자료가 존재하는 영역을 임의 창작물로 대체하지 않는다.
+- 공식/검증 이미지로 덮이지 않는 genuinely missing 영역은 PROJECT DARK에서 직접 제작할 수 있다. 이때 제작 자산은 `[ADAPTED]` 또는 prototype 단계 `[B]`로 분리하고 원작 자산이라고 표기하지 않는다.
+- 신규 제작 부분은 인접한 검증 자료의 픽셀 비례, 팔레트, 타일 크기, 등각 투영 규칙, object silhouette vocabulary를 따라 연결하되, 확인되지 않은 원작 세부 구조나 랜드마크를 창작해 canon으로 승격하지 않는다.
+- source pixel / traced reconstruction / adapted fill은 provenance를 분리해 추적 가능해야 한다.
+- 전체 스크린샷을 최종 map texture로 사용하는 것은 계속 금지한다. 최종 월드는 `TILE / OBJECT / COLLISION / NPC / MONSTER_SPAWN / PORTAL` 레이어로 분해한다.
+- Milles 관련 Nexon-hosted source registry는 `data/design/NEXON_VISUAL_SOURCE_MANIFEST_MILLES.md`를 따른다. 구 마을맵 게시물의 9개 attachment 중 Milles 대응 이미지는 실제 시각 식별 전까지 `PENDING_VISUAL_IDENTIFICATION`; 좌표 transform calibration을 추측으로 확정하지 않는다.
 
 매 실행 `AGENTS.md`, DIRECTOR_GUIDE/BACKLOG, MASTER_MANIFEST/RECONCILIATION, constitution, DATA_CONTRACT, 이 registry, DEV_HISTORY와 담당 전체 테이블/의존 범위를 확인한다.
