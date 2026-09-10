@@ -21,6 +21,20 @@ public final class RpgProgressionState {
   public enum PickupResult { PICKED_UP, NOT_FOUND, TOO_FAR, INVALID_ITEM, INVENTORY_FULL }
   public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
 
+  /**
+   * Canonical runtime progression nodes only. No node beyond FIRST_ADVANCEMENT is permitted.
+   * This enum describes state identity; transition requirements remain Master/data driven.
+   */
+  public enum ProgressionNode {
+    COMMONER,
+    BASIC_JOB,
+    LV99_MASTER,
+    JOB_CHANGE,
+    PURE_JOB,
+    POST_CHOICE_LV99,
+    FIRST_ADVANCEMENT
+  }
+
   public static final class ItemDefinition {
     public final String itemId,name,equipSlot;
     public final Integer requiredLevel;
@@ -75,7 +89,13 @@ public final class RpgProgressionState {
   private final List<WorldDrop> worldDrops=new ArrayList<>();
   private final List<RewardResolution> rewardHistory=new ArrayList<>();
   private long nextDropId=1L,lastCombatSequence=0L;
-  private Integer normalLevel=null;
+
+  // Canonical creation/progression facts: character starts as COMMONER at normal Lv1.
+  // Exact starting EXP representation and base STR/CON/INT/DEX/WIS values are not evidenced here,
+  // so they remain null/empty instead of being invented.
+  private ProgressionNode progressionNode=ProgressionNode.COMMONER;
+  private String currentJobCode="COMMONER";
+  private Integer normalLevel=1;
   private Long normalExp=null;
 
   public RpgProgressionState(){
@@ -89,6 +109,8 @@ public final class RpgProgressionState {
   public Map<String,String> equipment(){return Collections.unmodifiableMap(equipmentBySlot);}
   public List<WorldDrop> worldDrops(){return Collections.unmodifiableList(worldDrops);}
   public List<RewardResolution> rewardHistory(){return Collections.unmodifiableList(rewardHistory);}
+  public ProgressionNode progressionNode(){return progressionNode;}
+  public String currentJobCode(){return currentJobCode;}
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
 
