@@ -1,27 +1,36 @@
-# World handoff — PASS 30
+# World handoff — PASS 31
 
-- Branch: `agent/world/20260910-1720`
-- Base: `main@405bd764dd38146304fb3939709cf0def17f6958`
+- Branch: `agent/world/20260910-1723`
+- Base lineage: PASS 30 head `aae160117dc391e33c82d89ec7d9a2eac8ad935a` → `main@405bd764dd38146304fb3939709cf0def17f6958`
 - Geometry: `[ADAPTED]/[B]`; original Milles geometry remains unverified and replaceable.
 
-## This pass
-Latest canonical constitution states the previous expanded prototype is still too small. `WorldDef` is therefore expanded again to 1600×1120 logical units with west/east districts, longer south traversal, additional structures, a fourth NPC placement and a farther pending south portal. `WorldExplorationContract` exposes stable world-space anchors and its audit prevents silent collapse back to a tiny test room.
+## PASS 31 delta
+PASS 30 expanded the village but three named exploration targets were placed directly on runtime entities and therefore were invalid generic ground-move targets under current occupancy rules. This pass moves them to nearby walkable approach points:
+- west district: `(285,705)` → `(320,705)` to clear `milles_west_proto`.
+- east district: `(1315,715)` → `(1350,715)` to clear `combat_dummy_01`.
+- south gate: `(790,1035)` → `(790,1000)` to clear `milles_gate_proto`.
+
+Added `WorldExplorationOccupancyAudit`:
+- consumes `WorldDef` blockers/NPC/monster fixtures,
+- uses `RuntimeState.PLAYER_RADIUS/NPC_RADIUS/MONSTER_RADIUS`,
+- flood-fills a 16-unit four-neighbour navigation lattice,
+- requires every `WorldExplorationContract` anchor to be occupiable and reachable from spawn within explicit tolerance.
+
+Independent run verification found 4,602 reachable lattice cells and all 9 anchors reachable/occupiable.
 
 ## Existing World contracts to integrate
-- `WorldMoveTargetController`: generic ground tap vs NPC approach, A*, incremental WALK, blocked/replaced/cancelled/tolerance semantics.
-- `WorldCameraTransform`: dead-zone follow, world↔screen conversion, clamp.
-- `WorldPortalTransitionController`: fail-closed pending destination and exactly-once transition request semantics.
-- Current World PR lineage also contains `WorldNavigationSession`, which should be preferred when integrating movement + camera + portal as one frame-level adapter.
+- `WorldMoveTargetController`: empty-ground move vs NPC approach, A*, WALK-only movement, blocked/replacement/cancel/tolerance semantics.
+- `WorldCameraTransform`: dead-zone follow, world↔screen, clamp.
+- `WorldPortalTransitionController`: fail-closed target-pending lifecycle.
+- `WorldNavigationSession`: preferred frame-level adapter for movement + camera + portal where available in integration lineage.
+- `WorldExplorationContract`: stable walkable exploration targets for the expanded prototype village.
 
 ## Director / UX request
-`GameView.java` remains World-non-owned. Director/UX should integrate the latest World contracts rather than copy algorithms into the view:
-1. Empty eligible map taps: reject UI touches → screenToWorld → generic ground move. NPC tap retains approach priority.
-2. Tick WALK first, then camera follow; render all world layers through camera projection while HUD remains screen-space.
-3. Use the expanded `WorldDef` bounds and `WorldExplorationContract` anchors. Camera must visibly scroll across the larger village rather than keeping a one-screen-room presentation.
-4. Keep `milles_south_exit_proto` blocked until a verified destination map/spawn exists.
+`GameView.java` remains untouched by World. When integrating debug destinations/minimap/navigation targets, use the updated approach anchors rather than NPC/monster positions. Empty eligible map taps still require UX wiring `screenToWorld → requestGroundMove`; NPC taps must remain `requestNpcApproach` and must not leak into generic ground movement.
 
 ## Verification state
-- IMPLEMENTED: PASS 30 code committed.
+- IMPLEMENTED: PASS 31.
+- STATIC/TRAVERSAL MODEL VERIFIED: all 9 anchors reachable in this run.
 - BUILD VERIFIED: pending Director Gradle/APK gate.
-- RUNTIME VERIFIED: pending Android device screenshot/playtest.
-- No `GameView.java`, CharacterRenderer, Combat, RPG, HUD or quest files modified.
+- RUNTIME VERIFIED: pending Android device playtest/screenshot.
+- South portal still `PENDING_TARGET_MAP`; no fabricated transition destination.
