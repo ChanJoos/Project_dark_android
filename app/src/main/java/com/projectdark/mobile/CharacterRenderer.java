@@ -2,24 +2,29 @@ package com.projectdark.mobile;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * [B]/[ADAPTED] Layered four-direction character renderer scaffold.
- * Authenticated original directional frames remain PENDING_CROP; procedural geometry exists only
- * to preserve the canonical NW/NE/SW/SE side-diagonal presentation contract until they are mapped.
+ * [ADAPTED] Four-direction player renderer rebuilt against the user-approved 2026-09-10
+ * character sprite concept. The concept is presentation authority for silhouette/proportion;
+ * it is not claimed as extracted original Nexon sprite pixels. Verified originals remain PENDING_CROP.
  */
 public final class CharacterRenderer {
-  public static final String EVIDENCE="B+ADAPTED";
+  public static final String EVIDENCE="USER_APPROVED_CONCEPT+ADAPTED";
   public static final String ASSET_STATUS="PENDING_CROP";
+  public static final String PRESENTATION_PROFILE="USER_CONCEPT_20260910_CHIBI_DIAGONAL";
 
-  /** User-approved fixed presentation scale; logical/world coordinates stay unchanged. */
+  /** User-approved fixed mobile presentation scale from latest main/user concept. */
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
+  /** Concept target: compact chibi body, large readable head, narrow torso and short legs. */
+  public static final float BASE_HEIGHT=32f;
+  public static final float HEAD_TO_BODY_RATIO=0.34f;
 
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
@@ -38,12 +43,8 @@ public final class CharacterRenderer {
 
   public static final class Pose {
     public final float x,y,walkClock,stateClock,stateDuration;
-    public final Direction direction;
-    public final State state;
-    public final boolean hitFlash;
-    public final String equipmentVisualRef,weaponVisualRef,effectVisualRef;
-    public final EffectFamily effectFamily;
-
+    public final Direction direction; public final State state; public final boolean hitFlash;
+    public final String equipmentVisualRef,weaponVisualRef,effectVisualRef; public final EffectFamily effectFamily;
     public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,
         float stateDuration,boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,
         String effectVisualRef,EffectFamily effectFamily){
@@ -61,75 +62,127 @@ public final class CharacterRenderer {
 
   public void draw(Canvas c,Pose pose){
     if(pose==null||pose.direction==null||pose.state==null)throw new IllegalArgumentException("Character pose requires direction and state");
-    int frame=pose.state==State.WALK?((int)(pose.walkClock*8f)%4):0;
-    float bob=(frame==1||frame==3)?-1.5f:0f;
+    int frame=pose.state==State.WALK?((int)(pose.walkClock*7f)&3):0;
     boolean left=isLeft(pose.direction),down=isDown(pose.direction);
-    float facingX=left?-1f:1f,facingY=down?1f:-1f;
-    float recoilX=pose.state==State.HIT?-facingX*3.5f:0f;
-    float recoilY=pose.state==State.HIT?-facingY*1.4f:0f;
+    float sx=left?-1f:1f,sy=down?1f:-1f,q=phase(pose);
+    float walkContact=(frame==1||frame==3)?1f:0f;
+    float bob=pose.state==State.WALK?-walkContact*.75f:pose.state==State.IDLE?(float)Math.sin(pose.stateClock*3.2f)*.22f:0f;
+    float weight=pose.state==State.WALK?(frame==1?-0.45f:frame==3?.45f:0f):0f;
+    float recoil=pose.state==State.HIT?-3.2f*sx:0f;
+    float actionLean=(pose.state==State.ATTACK||pose.state==State.SKILL)?(float)Math.sin(Math.PI*q)*1.2f*sx:0f;
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
 
-    float sw=13f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?1.32f:1f);
-    float sh=4f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?0.72f:1f);
-    p.setColor(pose.hitFlash?0x99ff7766:0x66000000);
+    float sw=12.5f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?1.42f:1f+walkContact*.035f);
+    float sh=3.4f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?.62f:1f-walkContact*.05f);
+    p.setStyle(Paint.Style.FILL);p.setColor(pose.hitFlash?0x88ff705f:0x52000000);
     c.drawOval(new RectF(pose.x-sw,anchorY-sh,pose.x+sw,anchorY+sh),p);
 
-    c.save();c.translate(pose.x+recoilX,anchorY-(30f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE+recoilY);
-    c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);c.translate(-8,0);
-    if(pose.state==State.DEAD){c.rotate(left?-72f:72f,8f,29f);c.scale(1f,0.84f,8f,29f);}
-    for(Layer layer:DRAW_ORDER)drawLayer(c,pose,layer,frame);c.restore();
+    c.save();
+    c.translate(pose.x+recoil+weight*sx+actionLean,anchorY-BASE_HEIGHT*PLAYER_RENDER_SCALE+bob*PLAYER_RENDER_SCALE);
+    c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);c.translate(-9f,0f);
+    if(pose.state==State.DEAD){c.rotate(left?-76f:76f,9f,29f);c.scale(1.04f,.82f,9f,29f);}
+    for(Layer layer:DRAW_ORDER)drawLayer(c,pose,layer,frame);
+    c.restore();
   }
 
-  private void drawLayer(Canvas c,Pose pose,Layer layer,int frame){switch(layer){case BODY:drawBody(c,pose,frame);break;case HAIR:drawHair(c,pose);break;case EQUIPMENT:drawEquipment(c,pose);break;case WEAPON:drawWeapon(c,pose);break;case EFFECT:drawEffect(c,pose);break;}}
+  private void drawLayer(Canvas c,Pose pose,Layer layer,int frame){switch(layer){
+    case BODY:drawBody(c,pose,frame);break; case HAIR:drawHair(c,pose);break;
+    case EQUIPMENT:drawEquipment(c,pose);break; case WEAPON:drawWeapon(c,pose);break;
+    case EFFECT:drawEffect(c,pose);break;}}
 
+  /** Compact chibi diagonal body: ~11px head, ~11px torso, short separated legs. */
   private void drawBody(Canvas c,Pose pose,int frame){
-    int outline=0xff171313,skin=pose.hitFlash?0xffffe0d0:0xffffc68f,pants=0xff393a3a,shoe=0xff6a4526;
     boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f;
-    int step=pose.state==State.WALK?(frame==1?1:frame==3?-1:0):0;int depth=down?step:-step;
-    float torsoShift=side*1.2f,headShift=side*1.8f;
-    float nearLegX=left?5f:11f,farLegX=left?10.5f:5.5f,nearArmX=left?3f:13f,farArmX=left?13f:3f;
-    float castLift=pose.state==State.CAST?-6f:0f,skillLift=pose.state==State.SKILL?-2.5f:0f;
-    float attackReach=pose.state==State.ATTACK?3f*side*phase(pose):0f;
-    float kick=pose.effectFamily==EffectFamily.KICK&&phase(pose)>.22f&&phase(pose)<.78f?5f*side:0f;
+    int step=pose.state==State.WALK?(frame==1?2:frame==3?-2:0):0;
+    float torsoX=side*1.15f,headX=side*1.65f;
+    int outline=0xff171311,skin=pose.hitFlash?0xffffded0:0xffe7aa78;
+    int pants=0xff26313b,boot=0xff5a3927,undershirt=0xffd8c7aa;
 
-    rect(c,outline,farLegX-step,20-depth,farLegX+2.2f-step,29-depth);rect(c,pants,farLegX+.4f-step,20-depth,farLegX+1.8f-step,27-depth);rect(c,shoe,farLegX-.5f-step,27-depth,farLegX+2.8f-step,30-depth);
-    rect(c,outline,nearLegX+step+kick,20+depth,nearLegX+2.4f+step+kick,29+depth);rect(c,pants,nearLegX+.4f+step+kick,20+depth,nearLegX+2f+step+kick,27+depth);rect(c,shoe,nearLegX-.5f+step+kick,27+depth,nearLegX+3f+step+kick,30+depth);
-    rect(c,outline,4.7f+torsoShift,9f,12.3f+torsoShift,22f);rect(c,skin,5.6f+torsoShift,10f,11.4f+torsoShift,16.5f);
-    float farSwing=pose.state==State.WALK?-step*1.7f:0f,nearSwing=-farSwing;
-    rect(c,outline,farArmX-1f,11f+farSwing,farArmX+1f,20f+farSwing);rect(c,skin,farArmX-.5f,12f+farSwing,farArmX+.5f,19f+farSwing);
-    rect(c,outline,nearArmX-1f+attackReach,11f+castLift+skillLift+nearSwing,nearArmX+1f+attackReach,20f+nearSwing);rect(c,skin,nearArmX-.5f+attackReach,12f+castLift+skillLift+nearSwing,nearArmX+.5f+attackReach,19f+nearSwing);
-    p.setColor(outline);c.drawOval(new RectF(4.2f+headShift,0f,13.0f+headShift,10f),p);p.setColor(skin);c.drawOval(new RectF(5.0f+headShift,1f,12.2f+headShift,9f),p);
-    if(pose.state==State.DEAD){p.setColor(0x44000000);c.drawRect(2,8,15,27,p);}
-  }
+    // far leg first, then near leg: this overlap is what makes each diagonal read as a side view.
+    float far=left?11f:5f,near=left?5f:11f;
+    rect(c,outline,far-step*.45f,22,far+3f-step*.45f,29);rect(c,pants,far+.6f-step*.45f,22.5f,far+2.4f-step*.45f,27.5f);rect(c,boot,far-.3f-step*.45f,27,far+3.5f-step*.45f,30);
+    rect(c,outline,near+step*.45f,21.5f,near+3.2f+step*.45f,29.5f);rect(c,pants,near+.6f+step*.45f,22,near+2.5f+step*.45f,27.5f);rect(c,boot,near-.4f+step*.45f,27,near+3.8f+step*.45f,30.3f);
 
-  private void drawHair(Canvas c,Pose pose){
-    int hair=0xff3b251b;boolean left=isLeft(pose.direction),back=!isDown(pose.direction);float shift=left?-1.5f:1.5f;
-    rect(c,hair,3f+shift,0,14f+shift,4);rect(c,hair,(left?2f:11f)+shift,2,(left?6f:15f)+shift,9);rect(c,hair,5f+shift,-1,12f+shift,2);
-    if(back)rect(c,hair,(left?10f:3f)+shift,3,(left?14f:7f)+shift,9);else{int eye=0xff252020;float eyeX=left?6f:11f;rect(c,eye,eyeX+shift,6,eyeX+1f+shift,7);}
-  }
+    // narrow armored torso, unlike the old rectangular mannequin.
+    Path torso=new Path();torso.moveTo(5f+torsoX,11f);torso.lineTo(12.8f+torsoX,11f);torso.lineTo(13.7f+torsoX,20.8f);torso.lineTo(10.7f+torsoX,23f);torso.lineTo(6f+torsoX,22.3f);torso.lineTo(4.3f+torsoX,15f);torso.close();
+    p.setColor(outline);c.drawPath(torso,p);p.setColor(undershirt);c.drawRect(5.6f+torsoX,12f,12.2f+torsoX,19.8f,p);
 
-  private void drawEquipment(Canvas c,Pose pose){if(ASSET_STATUS.equals(pose.equipmentVisualRef))return;boolean left=isLeft(pose.direction);float shift=(left?-1f:1f)*1.2f;int shirt=pose.hitFlash?0xffffd0ca:0xffeee5d3;rect(c,0xff171313,4.7f+shift,9,12.3f+shift,21);rect(c,shirt,5.5f+shift,10,11.5f+shift,18.5f);rect(c,0xff3c6382,5.2f+shift,16,11.8f+shift,21);}
+    // arms sit around the torso, not as long dangling sticks.
+    float swing=pose.state==State.WALK?step*.55f:0f;
+    float farArm=left?13f:4f,nearArm=left?3.8f:13.2f;
+    limb(c,farArm,13f-swing,farArm+side*1.4f,20f-swing,outline,skin);
+    float action=pose.state==State.ATTACK||pose.state==State.SKILL?3.5f*side*(float)Math.sin(Math.PI*phase(pose)):0f;
+    float cast=pose.state==State.CAST?-5.5f:0f;
+    limb(c,nearArm,13f+swing,nearArm+side*(1.5f+Math.abs(action)),20f+cast+swing,outline,skin);
 
-  private void drawWeapon(Canvas c,Pose pose){if(pose.state!=State.ATTACK||pose.effectFamily==EffectFamily.PUNCH)return;boolean left=isLeft(pose.direction),down=isDown(pose.direction);float sx=left?-1f:1f,sy=down?1f:-1f;float q=phase(pose),reach=5f+7f*(q<.5f?q*2f:(1f-q)*2f);float handX=left?3f:14f,handY=down?15f:12f;p.setColor(0xffd7d2c5);p.setStrokeWidth(2);c.drawLine(handX,handY,handX+sx*reach,handY+sy*reach*.72f,p);}
-
-  private void drawEffect(Canvas c,Pose pose){
-    EffectFamily family=pose.hitFlash?EffectFamily.HIT:pose.effectFamily;if(family==EffectFamily.NONE)return;float q=phase(pose);boolean left=isLeft(pose.direction),down=isDown(pose.direction);float sx=left?-1f:1f,sy=down?1f:-1f;
-    switch(family){
-      case CAST:p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaa78b9ff);c.drawCircle(8+sx*2,-7+sy*1.5f,5+9*q,p);c.drawCircle(8+sx*2,-7+sy*1.5f,12-4*q,p);p.setStyle(Paint.Style.FILL);break;
-      case MAGIC:p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2f);p.setColor(0xaa9d7cff);float mx=8+sx*5,my=6+sy*8;c.drawCircle(mx,my,4+7*q,p);c.drawLine(mx-sx*8,my-sy*8,mx+sx*8,my+sy*8,p);p.setStyle(Paint.Style.FILL);break;
-      case THROW:p.setColor(0xffffd76b);c.drawCircle(8+sx*28*q,13+sy*18*q,2,p);break;
-      case PUNCH:case KICK:p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.7f);p.setColor(0xaaffefb0);float cx=8+sx*11,cy=13+sy*5;c.drawArc(new RectF(cx-8,cy-8,cx+8,cy+8),left?55:205,105,false,p);p.setStyle(Paint.Style.FILL);break;
-      case SKILL:p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2.6f);p.setColor(0xaa7fffa8);float ax=8+sx*10,ay=12+sy*7;c.drawArc(new RectF(ax-12-q*4,ay-9-q*3,ax+12+q*4,ay+9+q*3),left?40:190,130,false,p);p.setStyle(Paint.Style.FILL);break;
-      case HIT:p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaaff7755);c.drawCircle(8-sx*4,9-sy*3,5+7*q,p);p.setStyle(Paint.Style.FILL);break;
-      default:break;
+    // large face ellipse, shifted toward facing direction.
+    p.setColor(outline);c.drawOval(new RectF(3.4f+headX,.2f,14.6f+headX,11.8f),p);
+    p.setColor(skin);c.drawOval(new RectF(4.3f+headX,1.1f,13.8f+headX,10.8f),p);
+    if(down){
+      float eyeNear=left?6.1f:11.6f,eyeFar=left?9.2f:8.5f;
+      rect(c,0xff2a211e,eyeNear+headX,6.2f,eyeNear+.9f+headX,7.2f);
+      rect(c,0xff4b352c,eyeFar+headX,6.4f,eyeFar+.65f+headX,7.05f);
     }
   }
 
+  private void drawHair(Canvas c,Pose pose){
+    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f,hs=side*1.65f;
+    int dark=0xff3a2419,mid=0xff69412b,light=0xff95613d;
+    // layered brown fringe/back volume matching the approved concept vocabulary.
+    p.setColor(dark);c.drawOval(new RectF(2.7f+hs,-.8f,15.2f+hs,6.2f),p);
+    rect(c,mid,3.4f+hs,.2f,14.4f+hs,3.5f);rect(c,light,5.1f+hs,.1f,10.4f+hs,1.4f);
+    float backX=left?11.5f:2.4f;rect(c,dark,backX+hs,2.2f,backX+3.4f+hs,9.5f);
+    if(down){float fringeX=left?4.2f:10.2f;rect(c,mid,fringeX+hs,2.5f,fringeX+2.4f+hs,6.3f);}
+  }
+
+  private void drawEquipment(Canvas c,Pose pose){
+    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f,tx=side*1.15f;
+    int navy=pose.hitFlash?0xffd99086:0xff263d57,blue=0xff365d80,gold=0xffb9863d,steel=0xff9da9ae;
+    // blue warrior tunic/pauldron profile from the approved concept.
+    rect(c,navy,5.1f+tx,12f,12.7f+tx,20.6f);rect(c,blue,6f+tx,12.8f,11.9f+tx,19.8f);
+    rect(c,gold,5.4f+tx,19.1f,12.4f+tx,20.4f);rect(c,steel,(left?3.7f:11.4f)+tx,11.5f,(left?6.2f:13.9f)+tx,14.4f);
+    // shield remains on the off-hand and swaps depth with facing.
+    float shieldX=left?11.2f:3.0f;if(!down)shieldX+=side*.8f;
+    p.setColor(0xff202a33);c.drawOval(new RectF(shieldX,14f,shieldX+5.2f,22.3f),p);
+    p.setColor(0xff35516d);c.drawOval(new RectF(shieldX+.6f,14.8f,shieldX+4.6f,21.4f),p);
+    p.setColor(gold);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);c.drawOval(new RectF(shieldX+.8f,15f,shieldX+4.4f,21.1f),p);p.setStyle(Paint.Style.FILL);
+  }
+
+  private void drawWeapon(Canvas c,Pose pose){
+    if(pose.effectFamily==EffectFamily.PUNCH||pose.effectFamily==EffectFamily.KICK)return;
+    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float sx=left?-1f:1f,sy=down?1f:-1f,q=phase(pose);
+    float handX=left?4.2f:13.8f,handY=down?16.8f:14.5f;
+    float attack=(pose.state==State.ATTACK||pose.state==State.SKILL)?(float)Math.sin(Math.PI*q):0f;
+    float reach=pose.state==State.IDLE||pose.state==State.WALK?8.2f:8.2f+5.5f*attack;
+    float ex=handX+sx*reach,ey=handY+sy*reach*.72f;
+    p.setStrokeWidth(2.1f);p.setColor(0xffdce2e1);c.drawLine(handX,handY,ex,ey,p);
+    p.setStrokeWidth(1f);p.setColor(0xffffffff);c.drawLine(handX+sx*1.2f,handY+sy*.8f,ex,ey,p);
+    p.setStrokeWidth(2.2f);p.setColor(0xff9b6a31);c.drawLine(handX-sx*2f,handY-sy*1.4f,handX+sx*1.3f,handY+sy*.9f,p);
+  }
+
+  private void drawEffect(Canvas c,Pose pose){
+    EffectFamily family=pose.hitFlash?EffectFamily.HIT:pose.effectFamily;if(family==EffectFamily.NONE)return;
+    float q=phase(pose);boolean left=isLeft(pose.direction),down=isDown(pose.direction);float sx=left?-1f:1f,sy=down?1f:-1f;
+    p.setStyle(Paint.Style.STROKE);
+    switch(family){
+      case CAST:case MAGIC:
+        p.setStrokeWidth(1.8f);p.setColor(0xcc78c8ff);c.drawCircle(9+sx*4f,5+sy*5f,4+8*q,p);c.drawCircle(9+sx*4f,5+sy*5f,10-3*q,p);break;
+      case SKILL:
+        p.setStrokeWidth(3.1f);p.setColor(0xd58bd8ff);float ax=9+sx*7f,ay=15+sy*4f;c.drawArc(new RectF(ax-14,ay-12,ax+14,ay+12),left?30:195,145,false,p);p.setStrokeWidth(1.2f);p.setColor(0xb8e5f8ff);c.drawArc(new RectF(ax-17,ay-14,ax+17,ay+14),left?25:190,150,false,p);break;
+      case HIT:
+        p.setStrokeWidth(1.8f);p.setColor(0xd9ff7b61);c.drawCircle(9-sx*3f,10-sy*2f,4+6*q,p);break;
+      case THROW:
+        p.setStyle(Paint.Style.FILL);p.setColor(0xffffd36a);c.drawCircle(9+sx*26*q,14+sy*17*q,2f,p);break;
+      default:break;
+    }
+    p.setStyle(Paint.Style.FILL);
+  }
+
+  private void limb(Canvas c,float x1,float y1,float x2,float y2,int outline,int skin){p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeWidth(3.4f);p.setColor(outline);c.drawLine(x1,y1,x2,y2,p);p.setStrokeWidth(1.7f);p.setColor(skin);c.drawLine(x1,y1+.5f,x2,y2,p);p.setStrokeCap(Paint.Cap.BUTT);}
   private boolean isLeft(Direction d){return d==Direction.NW||d==Direction.SW;}
   private boolean isDown(Direction d){return d==Direction.SW||d==Direction.SE;}
   private float phase(Pose pose){return pose.stateDuration<=0?0:Math.max(0,Math.min(1,pose.stateClock/pose.stateDuration));}
   private void rect(Canvas c,int color,float l,float t,float r,float b){p.setColor(color);c.drawRect(l,t,r,b,p);}
-
   public boolean hasRequiredStateContract(){return CharacterRendererAudit.passes();}
   public String contractAuditSummary(){return CharacterRendererAudit.summary();}
   public boolean ownsPlayerLocalEffects(){return true;}
