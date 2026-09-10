@@ -19,8 +19,10 @@ public final class CombatResolver {
   public enum EffectType { PHYSICAL_HIT, SKILL_HIT, MAGIC_HIT, KICK_HIT }
   public enum InputMode { MANUAL, AUTO }
   public enum RejectReason { ACTOR_DEAD, TARGET_DEAD, NOT_LEARNED, COOLDOWN, RESOURCE, RANGE, LOS, ACTION_BUSY }
-  public enum EventType { ACTION_STARTED, ACTION_REJECTED, EFFECT_APPLIED, HIT_FEEDBACK, MONSTER_DEFEATED }
+  public enum EventType { ACTION_STARTED, ACTION_REJECTED, ACTION_CANCELLED, EFFECT_APPLIED, HIT_FEEDBACK, MONSTER_DEFEATED }
   public enum DefeatPublication { RESOLVER_OWNS, PORT_ALREADY_PUBLISHED }
+  public enum DefeatedTargetKind { MONSTER, PLAYER, OTHER }
+  public enum HitSemantic { DAMAGE, CRIT, MISS, HEAL }
 
   public static final class Definition {
     public final String actionId;
@@ -43,12 +45,20 @@ public final class CombatResolver {
     public final int appliedAmount;
     public final boolean defeatedNow;
     public final DefeatPublication defeatPublication;
+    public final DefeatedTargetKind defeatedTargetKind;
+    public final HitSemantic hitSemantic;
     public EffectResult(int appliedAmount,boolean defeatedNow){
-      this(appliedAmount,defeatedNow,DefeatPublication.RESOLVER_OWNS);
+      this(appliedAmount,defeatedNow,DefeatPublication.RESOLVER_OWNS,DefeatedTargetKind.MONSTER,HitSemantic.DAMAGE);
     }
     public EffectResult(int appliedAmount,boolean defeatedNow,DefeatPublication defeatPublication){
+      this(appliedAmount,defeatedNow,defeatPublication,DefeatedTargetKind.MONSTER,HitSemantic.DAMAGE);
+    }
+    public EffectResult(int appliedAmount,boolean defeatedNow,DefeatPublication defeatPublication,
+        DefeatedTargetKind defeatedTargetKind,HitSemantic hitSemantic){
       this.appliedAmount=Math.max(0,appliedAmount);this.defeatedNow=defeatedNow;
       this.defeatPublication=defeatPublication==null?DefeatPublication.RESOLVER_OWNS:defeatPublication;
+      this.defeatedTargetKind=defeatedTargetKind==null?DefeatedTargetKind.OTHER:defeatedTargetKind;
+      this.hitSemantic=hitSemantic==null?HitSemantic.DAMAGE:hitSemantic;
     }
   }
 
@@ -74,11 +84,12 @@ public final class CombatResolver {
     public final EffectType effectType;
     public final InputMode inputMode;
     public final RejectReason rejectReason;
+    public final HitSemantic hitSemantic;
     public final int amount;
     private Event(long sequence,long actionSequence,EventType type,String actorId,String targetId,String actionId,
-        ActionState state,EffectType effectType,InputMode inputMode,RejectReason rejectReason,int amount){
+        ActionState state,EffectType effectType,InputMode inputMode,RejectReason rejectReason,HitSemantic hitSemantic,int amount){
       this.sequence=sequence;this.actionSequence=actionSequence;this.type=type;this.actorId=actorId;this.targetId=targetId;this.actionId=actionId;
-      this.state=state;this.effectType=effectType;this.inputMode=inputMode;this.rejectReason=rejectReason;this.amount=amount;
+      this.state=state;this.effectType=effectType;this.inputMode=inputMode;this.rejectReason=rejectReason;this.hitSemantic=hitSemantic;this.amount=amount;
     }
   }
 
@@ -115,12 +126,12 @@ public final class CombatResolver {
     InputMode mode=inputMode==null?InputMode.MANUAL:inputMode;
     RejectReason reason=validate(def,actorId,targetId,true);
     if(reason==null&&active!=null)reason=RejectReason.ACTION_BUSY;
-    if(reason!=null){emit(EventType.ACTION_REJECTED,0,actorId,targetId,def,mode,reason,0);return new BeginResult(false,0,reason);}
+    if(reason!=null){emit(EventType.ACTION_REJECTED,0,actorId,targetId,def,mode,reason,null,0);return new BeginResult(false,0,reason);}
     if(def.resourceCost>0)port.consumeResource(actorId,def.resourceCost);
     port.commitCooldown(actorId,def.actionId,def.cooldown);
     long seq=++actionSequence;
     active=new PendingAction(seq,def,actorId,targetId,mode);
-    emit(EventType.ACTION_STARTED,seq,actorId,targetId,def,mode,null,0);
+    emit(EventType.ACTION_STARTED,seq,actorId,targetId,def,mode,null,null,0);
     return new BeginResult(true,seq,null);
   }
 
@@ -131,13 +142,14 @@ public final class CombatResolver {
     a.elapsed+=dt;
     if(a.effectApplied||a.elapsed<a.def.hitTime)return;
     RejectReason effectGate=validate(a.def,a.actorId,a.targetId,false);
-    if(effectGate!=null){emit(EventType.ACTION_REJECTED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,effectGate,0);active=null;return;}
+    if(effectGate!=null){emit(EventType.ACTION_CANCELLED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,effectGate,null,0);active=null;return;}
     a.effectApplied=true;
     EffectResult result=port.applyDamage(a.actorId,a.targetId,a.def.actionId,a.def.damage);
-    emit(EventType.EFFECT_APPLIED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.appliedAmount);
-    emit(EventType.HIT_FEEDBACK,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.appliedAmount);
-    if(result.defeatedNow&&result.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeatPublishedForLife.add(a.targetId)){
-      emit(EventType.MONSTER_DEFEATED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,0);
+    emit(EventType.EFFECT_APPLIED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,result.appliedAmount);
+    emit(EventType.HIT_FEEDBACK,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,result.appliedAmount);
+    if(result.defeatedNow&&result.defeatedTargetKind==DefeatedTargetKind.MONSTER&&
+        result.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeatPublishedForLife.add(a.targetId)){
+      emit(EventType.MONSTER_DEFEATED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,0);
     }
     active=null;
   }
@@ -161,8 +173,9 @@ public final class CombatResolver {
     return null;
   }
 
-  private void emit(EventType type,long actionSeq,String actorId,String targetId,Definition def,InputMode mode,RejectReason reject,int amount){
-    events.addLast(new Event(++eventSequence,actionSeq,type,actorId,targetId,def.actionId,def.state,def.effectType,mode,reject,amount));
+  private void emit(EventType type,long actionSeq,String actorId,String targetId,Definition def,InputMode mode,
+      RejectReason reject,HitSemantic semantic,int amount){
+    events.addLast(new Event(++eventSequence,actionSeq,type,actorId,targetId,def.actionId,def.state,def.effectType,mode,reject,semantic,amount));
     while(events.size()>MAX_EVENTS)events.removeFirst();
   }
 
