@@ -37,7 +37,6 @@ No `GameView.java`, CharacterRenderer/MonsterPresentationRenderer, map/camera/co
 2. Add `MonsterAIController` state contract for detect/chase/windup/attack/cancel/death while delegating movement/collision steps to World.
 3. Add crit/miss/heal production policy only when canonical/runtime evidence exists; current model intentionally defines semantics without inventing probabilities.
 
-
 ---
 
 ## 2026-09-10 — PASS 28 defeat authority + Monster AI
@@ -63,3 +62,70 @@ No `GameView.java`, CharacterRenderer/MonsterPresentationRenderer, map/camera/co
 - `MonsterAIControllerAudit`: PASS.
 - `CombatDefeatAuthorityAudit`: PASS.
 - Full Gradle/APK and Android runtime: pending Director integration.
+
+---
+
+## 2026-09-10 15:57 KST — PASS 29 runtime adapter + feedback stream hardening
+
+### Source state
+- Latest `main` rechecked and still `3b58a8d08805cf9031466fe0c50d56e17aa1344d`.
+- Continued existing Draft PR #20 / `agent/combat/20260910-1500` rather than opening a parallel combat branch.
+- Ground item/pickup remains retired; no reward/inventory/progression mutation was added.
+
+### Critical correctness fix
+PASS 28 `EffectResult.defeatedNow` did not identify the defeated entity class. A monster AUTO action that killed the player could therefore satisfy the generic defeat gate and be mislabeled as `MONSTER_DEFEATED` if a port used resolver publication authority.
+
+PASS 29 adds `DefeatedTargetKind { MONSTER, PLAYER, OTHER }`. Resolver publication now requires all of:
+- `defeatedNow == true`
+- target kind is `MONSTER`
+- publication authority is `RESOLVER_OWNS`
+- target life has not published defeat before
+
+Player defeat can therefore never emit `MONSTER_DEFEATED` through the resolver.
+
+### Implemented
+- Added `RuntimeCombatPortAdapter` as the concrete combat-owned adapter over current `RuntimeState`.
+  - Reads player/monster alive and distance facts.
+  - Reads learned player actions from RPG state without mutating progression.
+  - Owns combat cooldown bookkeeping for resolver submissions.
+  - Mutates player MP only after resolver resource validation.
+  - Delegates LOS to an injected `LineOfSightPort`; Combat does not implement map/LOS algorithms.
+  - Player -> monster damage delegates to current `RuntimeState.damage()` and returns `PORT_ALREADY_PUBLISHED` because RuntimeState already writes the ledger defeat event.
+  - Monster -> player damage delegates to `RuntimeState.damagePlayer()` and returns target kind `PLAYER`.
+- Added `CombatResolver.HitSemantic { DAMAGE, CRIT, MISS, HEAL }` to effect results/events.
+  - No crit/miss/heal probability was invented; ports may only emit those semantics when an owning runtime rule resolves them.
+- Added effect-time `ACTION_CANCELLED` distinct from input-time `ACTION_REJECTED`.
+  - A valid action that loses target/range/LOS before hit time is now explicitly cancelled rather than reported as a fresh input rejection.
+- Added `CombatFeedbackStream`.
+  - Projects resolver events into renderer/UI-safe `ACTION_STARTED / ACTION_REJECTED / ACTION_CANCELLED / EFFECT_APPLIED / HIT / CRIT / MISS / HEAL / MONSTER_DEFEATED` events.
+  - Converts `HIT_FEEDBACK` into `DamageNumberModel` snapshots using an injected read-only anchor provider.
+  - Combat still draws nothing and owns no HUD coordinates.
+- Expanded `CombatDefeatAuthorityAudit` with the monster-kills-player misclassification regression case.
+- Expanded `MonsterAIControllerAudit` with target death during WINDUP, LOS loss during WINDUP and shared-resolver rejection recovery.
+- Added `CombatFeedbackStreamAudit` covering action-start -> delayed hit -> visible number projection, CRIT/MISS semantic separation and number despawn.
+
+### User-visible combat delta
+Once Director/renderer wiring consumes `CombatFeedbackStream`, the runtime can visibly distinguish:
+- attack start/windup before hit,
+- exact hit-time feedback,
+- ordinary damage vs CRIT vs MISS vs HEAL,
+- cancelled delayed attacks that lost range/LOS/target before the effect frame.
+
+This is a presentation contract only; no renderer/GameView file was modified.
+
+### Director integration request
+1. Instantiate one `RuntimeCombatPortAdapter`, one shared `CombatResolver`, and one `CombatFeedbackStream` for the runtime combat session.
+2. Tick adapter cooldowns and resolver from the runtime loop; submit both manual and MonsterAI actions to that resolver.
+3. Supply LOS through the World-owned LOS implementation. Do not replace the injected LOS contract with Combat-side geometry logic.
+4. Drain resolver events once, feed the same batch into `CombatFeedbackStream`, and route only the presentation snapshot/events to renderer/UI.
+5. While `RuntimeState.damage()` remains the monster-death ledger authority, keep adapter result `PORT_ALREADY_PUBLISHED`. RPG consumes that single ledger event as before.
+6. On respawn call `resolver.onTargetRespawned(monsterId)` and `MonsterAIController.onRespawn()`.
+
+### Remaining P0
+- Director integration is still required before these deltas are user-operable in the APK.
+- Current `RuntimeCombatPortAdapter` intentionally does not fabricate a LOS algorithm; World must provide it.
+- Crit/miss/heal semantics are transport-ready but production policy remains PENDING until evidence/runtime rules exist.
+- Existing legacy `CombatController` can be retired only after Director migrates HUD/runtime consumers to the resolver path; this Combat branch does not edit GameView.
+
+### Boundaries preserved
+No `GameView.java`, CharacterRenderer/MonsterPresentationRenderer, map/camera/collision/pathfinding/portal implementation, reward table, inventory mutation, EXP/Gold/progression/save, NPC dialogue/quest UI, APK packaging, main push or merge changes.
