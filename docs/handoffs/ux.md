@@ -1,5 +1,33 @@
 # UX / NPC / Quest handoff
 
+## 2026-09-10 21:02 KST — classic quick-slot icon polish continuation
+
+Branch: `agent/ux/20260910-2048`
+Draft PR: #78
+Base main: `f09e510918e42322a7ea7aad5698fec4a22c14f2`
+
+### Canonical read-first result
+- Re-read latest main `design/DESIGN_CONSTITUTION.md`, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, `design/PLAYTEST_CANON_20260910_1938.md`, current UX handoff and relevant World DEV_HISTORY before implementation.
+- Latest main already contains v0.74 original-inspired HUD, precise hit regions, `WorldRuntimeAdapter`/renderer wiring and the 10-point tap acceptance audit. Those completed deltas were not reimplemented.
+- P0 reward mutation remains RPG-owned; UX continues to consume the same RPG inventory projection and does not fabricate dummy rewards.
+
+### User-visible delta completed
+- Continued the user-approved lower-right 2x5 skill/action deck rather than changing layout again.
+- `ClassicHudIconAtlas` now renders the deck as a cohesive classic MMORPG surface: dark bronze outer plates, recessed icon faces, icon-family background accents, subtle top-edge sheen, clearer selected-state border, pressed-depth movement and explicit enabled/disabled bottom-edge cues.
+- Improved the dedicated ATTACK sword glyph and AUTO rotation-arrow glyph so the two high-frequency controls read clearly without text-heavy debug labels.
+- Existing GameView SKILL/MAGIC/KICK/ATTACK runtime bindings and exact touch regions remain unchanged.
+
+### Regression/ownership
+- Existing `UxTapAcceptanceAudit` remains required: 10/10 initial camera + 10/10 moved camera.
+- No broad invisible HUD interception rectangle was introduced.
+- No World algorithm, CharacterRenderer internals, Combat calculation, MonsterAI, RPG mutation/save internals or canonical data values changed.
+- AUTO remains presentation-only until a stable player AUTO orchestration contract is available.
+
+### Next continuity
+1. Device/Director visual check of the refined 2x5 deck and ATTACK/AUTO readability.
+2. If spacing is still judged dense, next UX pass should only tune slot spacing/scale and chat overlap; do not redesign the shell again.
+3. Preserve empty-world tap acceptance and modal/NPC/monster priority while making any visual adjustment.
+
 ## 2026-09-10 20:27 KST — original-inspired HUD/action-grid adaptation
 
 Branch: `agent/ux/auto-20260910-1958`
