@@ -17,6 +17,7 @@ public final class GameView extends View {
   private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG),pixel=new Paint();
   private final RuntimeState state=new RuntimeState();
   private final CombatController combat=new CombatController();
+  private final MonsterAIController monsterAi=new MonsterAIController();
   private final InteractionController interaction=new InteractionController();
   private Bitmap world;
   private float scale=1,ox,oy,vx,vy;
@@ -38,7 +39,7 @@ public final class GameView extends View {
   public void pause(){running=false;removeCallbacks(loop);}
 
   private void update(float dt){
-    feedbackClock=Math.max(0,feedbackClock-dt);combat.tick(dt);state.tick(dt);consumeLedger();updateMonsters(dt);
+    feedbackClock=Math.max(0,feedbackClock-dt);combat.tick(dt);state.tick(dt);consumeLedger();monsterAi.tick(state,dt);
     if(!state.player().alive){action=Action.IDLE;interaction.cancel();combat.cancelApproach();joy=false;vx=vy=0;knobX=jx;knobY=jy;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
     if(joy&&(vx!=0||vy!=0)){action=Action.WALK;state.tryMove(vx*145*dt,vy*145*dt);walkClock+=dt;interaction.cancelApproach();combat.cancelApproach();return;}
@@ -89,17 +90,6 @@ public final class GameView extends View {
     if(!moved){combat.cancelApproach();action=Action.IDLE;showFeedback("사거리 접근 실패 [B]");}
   }
   private void beginCombatApproach(CombatController.Intent intent){if(combat.beginApproach(intent))showFeedback("타깃 접근 [ADAPTED]");}
-
-  private void updateMonsters(float dt){
-    if(!state.player().alive)return;
-    for(RuntimeState.Monster m:state.monsters()){
-      if(!m.alive)continue;
-      float dx=state.player().x-m.x,dy=state.player().y-m.y,d=(float)Math.sqrt(dx*dx+dy*dy);
-      if(m.attackPrimed){if(d>48f){state.cancelMonsterAttack(m);continue;}if(state.monsterAttackReady(m)){state.resolveMonsterAttack(m,4,1.2f);}continue;}
-      if(d<180f&&d>42f){float step=28f*dt;state.tryMoveMonster(m,Math.signum(dx)*step,Math.signum(dy)*step);}
-      else if(d<=42f&&m.attackCooldown<=0f){state.beginMonsterAttack(m);}
-    }
-  }
 
   private void setFacingDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;if(sx<0&&sy>0)dir=0;else if(sx>0&&sy>0)dir=1;else if(sx<0)dir=2;else dir=3;}
   private void setAutoDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;vx=.707f*sx;vy=.707f*sy;setFacingDirection(dx,dy);}
