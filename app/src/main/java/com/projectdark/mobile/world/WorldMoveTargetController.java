@@ -23,16 +23,34 @@ public final class WorldMoveTargetController {
   }
   private static final class Node { final int x,y; final float g,f; final Node parent; Node(int x,int y,float g,float f,Node p){this.x=x;this.y=y;this.g=g;this.f=f;parent=p;} }
   public static final float DEFAULT_CELL_SIZE=16f,DEFAULT_WALK_SPEED=96f,DEFAULT_GROUND_TOLERANCE=6f,DEFAULT_NPC_APPROACH_TOLERANCE=28f;
-  private static final int MAX_EXPANSIONS=4096,MAX_REPLANS=2;
+  private static final int MAX_EXPANSIONS=4096,MAX_CONSECUTIVE_REPLANS=2;
   private final NavigationWorld world; private final Walker walker; private final float cellSize,walkSpeed;
-  private long sequence=0,replacedRequestId=0; private RequestKind kind; private String targetEntityId; private float targetX,targetY,tolerance; private Status status=Status.IDLE; private CancelReason cancelReason=CancelReason.NONE; private List<float[]> path=Collections.emptyList(); private int waypointIndex=0,replans=0;
+  private long sequence=0,replacedRequestId=0; private RequestKind kind; private String targetEntityId; private float targetX,targetY,tolerance; private Status status=Status.IDLE; private CancelReason cancelReason=CancelReason.NONE; private List<float[]> path=Collections.emptyList(); private int waypointIndex=0,consecutiveReplans=0;
 
   public WorldMoveTargetController(NavigationWorld world,Walker walker){this(world,walker,DEFAULT_CELL_SIZE,DEFAULT_WALK_SPEED);}
   public WorldMoveTargetController(NavigationWorld world,Walker walker,float cellSize,float walkSpeed){if(world==null||walker==null)throw new IllegalArgumentException("world and walker are required");if(cellSize<=0f||walkSpeed<=0f)throw new IllegalArgumentException("cellSize and walkSpeed must be positive");this.world=world;this.walker=walker;this.cellSize=cellSize;this.walkSpeed=walkSpeed;}
   public Snapshot requestGroundMove(float x,float y){return begin(RequestKind.GROUND,null,x,y,DEFAULT_GROUND_TOLERANCE);}
   public Snapshot requestNpcApproach(String id,float x,float y,float approachTolerance){if(id==null||id.trim().isEmpty())throw new IllegalArgumentException("npcId is required");return begin(RequestKind.NPC_APPROACH,id,x,y,approachTolerance);}
-  private Snapshot begin(RequestKind k,String e,float x,float y,float tol){replacedRequestId=status==Status.MOVING?sequence:0;sequence++;kind=k;targetEntityId=e;targetX=x;targetY=y;tolerance=Math.max(1f,tol);replans=0;cancelReason=CancelReason.NONE;if(!inside(x,y)||!rebuildPath()){status=Status.BLOCKED;path=Collections.emptyList();waypointIndex=0;}else status=distance(walker.worldX(),walker.worldY(),targetX,targetY)<=tolerance?Status.REACHED:Status.MOVING;return snapshot();}
-  public Snapshot tick(float dt){if(status!=Status.MOVING||dt<=0f)return snapshot();if(distance(walker.worldX(),walker.worldY(),targetX,targetY)<=tolerance){status=Status.REACHED;return snapshot();}if(waypointIndex>=path.size()&&!rebuildPath()){status=Status.BLOCKED;return snapshot();}float[] wp=path.get(waypointIndex);float dx=wp[0]-walker.worldX(),dy=wp[1]-walker.worldY();float d=(float)Math.sqrt(dx*dx+dy*dy);if(d<=Math.max(1f,cellSize*.2f)){waypointIndex++;return tick(dt);}float step=Math.min(walkSpeed*dt,d);if(!walker.tryWalkStep(dx/d*step,dy/d*step)){replans++;if(replans>MAX_REPLANS||!rebuildPath())status=Status.BLOCKED;}if(distance(walker.worldX(),walker.worldY(),targetX,targetY)<=tolerance)status=Status.REACHED;return snapshot();}
+  private Snapshot begin(RequestKind k,String e,float x,float y,float tol){replacedRequestId=status==Status.MOVING?sequence:0;sequence++;kind=k;targetEntityId=e;targetX=x;targetY=y;tolerance=Math.max(1f,tol);consecutiveReplans=0;cancelReason=CancelReason.NONE;if(!inside(x,y)||!rebuildPath()){status=Status.BLOCKED;path=Collections.emptyList();waypointIndex=0;}else status=distance(walker.worldX(),walker.worldY(),targetX,targetY)<=tolerance?Status.REACHED:Status.MOVING;return snapshot();}
+  public Snapshot tick(float dt){
+    if(status!=Status.MOVING||dt<=0f)return snapshot();
+    if(distance(walker.worldX(),walker.worldY(),targetX,targetY)<=tolerance){status=Status.REACHED;return snapshot();}
+    if(waypointIndex>=path.size()&&!rebuildPath()){status=Status.BLOCKED;return snapshot();}
+    float[] wp=path.get(waypointIndex);float dx=wp[0]-walker.worldX(),dy=wp[1]-walker.worldY();float d=(float)Math.sqrt(dx*dx+dy*dy);
+    if(d<=Math.max(1f,cellSize*.2f)){waypointIndex++;return tick(dt);}
+    float step=Math.min(walkSpeed*dt,d);
+    boolean moved=walker.tryWalkStep(dx/d*step,dy/d*step);
+    if(!moved){
+      consecutiveReplans++;
+      if(consecutiveReplans>MAX_CONSECUTIVE_REPLANS||!rebuildPath())status=Status.BLOCKED;
+    }else{
+      // Replan budget is intentionally consecutive-only. A successful WALK proves the runtime is
+      // making progress again, so an unrelated later transient entity collision gets a fresh budget.
+      consecutiveReplans=0;
+    }
+    if(distance(walker.worldX(),walker.worldY(),targetX,targetY)<=tolerance)status=Status.REACHED;
+    return snapshot();
+  }
   public Snapshot cancelForDirectInput(){return cancel(CancelReason.DIRECT_INPUT);} public Snapshot cancelForAction(){return cancel(CancelReason.ACTION);} public Snapshot cancel(){return cancel(CancelReason.EXPLICIT);}
   private Snapshot cancel(CancelReason r){if(status==Status.MOVING){status=Status.CANCELLED;cancelReason=r;path=Collections.emptyList();waypointIndex=0;}return snapshot();}
   public Snapshot snapshot(){return new Snapshot(sequence,replacedRequestId,kind,targetEntityId,targetX,targetY,tolerance,status,cancelReason,Math.max(0,path.size()-waypointIndex));}
@@ -41,10 +59,7 @@ public final class WorldMoveTargetController {
   private List<float[]> findPath(float startX,float startY,float goalX,float goalY,float goalTolerance){
     int sx=toCellX(startX),sy=toCellY(startY); PriorityQueue<Node> open=new PriorityQueue<>(Comparator.comparingDouble(n->n.f)); Map<Long,Float> best=new HashMap<>(); Set<Long> closed=new HashSet<>();
     open.add(new Node(sx,sy,0f,heuristic(cellX(sx),cellY(sy),goalX,goalY),null));best.put(key(sx,sy),0f);int expanded=0;final int[] ox={1,-1,0,0},oy={0,0,1,-1};
-    // Ground targets may lie between 16-unit lattice nodes. Search to within half a cell diagonal,
-    // then append the exact occupiable point; Walker collision remains authoritative for the final leg.
-    float searchTolerance=kind==RequestKind.GROUND&&world.canPlayerOccupy(goalX,goalY)
-        ?Math.max(goalTolerance,(float)(cellSize*Math.sqrt(2d)*0.5d)+0.01f):goalTolerance;
+    float searchTolerance=kind==RequestKind.GROUND&&world.canPlayerOccupy(goalX,goalY)?Math.max(goalTolerance,(float)(cellSize*Math.sqrt(2d)*0.5d)+0.01f):goalTolerance;
     while(!open.isEmpty()&&expanded++<MAX_EXPANSIONS){Node c=open.poll();long ck=key(c.x,c.y);if(!closed.add(ck))continue;float wx=cellX(c.x),wy=cellY(c.y);if(distance(wx,wy,goalX,goalY)<=searchTolerance)return reconstruct(c,goalX,goalY);for(int i=0;i<4;i++){int nx=c.x+ox[i],ny=c.y+oy[i];float nwx=cellX(nx),nwy=cellY(ny);long nk=key(nx,ny);if(closed.contains(nk)||!inside(nwx,nwy)||!world.canPlayerOccupy(nwx,nwy))continue;float ng=c.g+1f;Float old=best.get(nk);if(old!=null&&old<=ng)continue;best.put(nk,ng);open.add(new Node(nx,ny,ng,ng+heuristic(nwx,nwy,goalX,goalY),c));}}
     return Collections.emptyList();
   }
