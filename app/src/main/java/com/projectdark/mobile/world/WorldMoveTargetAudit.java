@@ -25,6 +25,7 @@ public final class WorldMoveTargetAudit {
     long firstId=first.requestId;
     WorldMoveTargetController.Snapshot npc=c.requestNpcApproach("milles_guide_proto",80f,80f,16f);
     if(npc.requestId<=firstId||npc.kind!=WorldMoveTargetController.RequestKind.NPC_APPROACH)return false;
+    if(npc.replacedRequestId!=firstId)return false;
     if(!"milles_guide_proto".equals(npc.targetEntityId))return false;
     for(int i=0;i<300&&c.snapshot().status==WorldMoveTargetController.Status.MOVING;i++)c.tick(.05f);
     if(c.snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
