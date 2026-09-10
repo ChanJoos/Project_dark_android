@@ -1,5 +1,56 @@
 # UX / NPC / Quest handoff
 
+## 2026-09-10 19:58 KST — playtest-canon tap/world/HUD integration
+
+Branch: `agent/ux/auto-20260910-1958`
+Base main: `d0fb8aa5a7d4093a18387c9ca8b242df651ca955`
+
+### Canonical read-first result
+- Re-read `design/DESIGN_CONSTITUTION.md`, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, `design/PLAYTEST_CANON_20260910_1938.md`, current UX handoff, and relevant World DEV_HISTORY (`PASS_36_WORLD`, `PASS_38_WORLD`) before coding.
+- The 19:38 device playtest amendment supersedes earlier completion claims for HUD polish, empty-map tap movement, live map presentation, character scale, and dummy reward verification.
+- UX-owned deltas were implemented first. Character scale/head proportion remains Character-owned; dummy reward mutation remains RPG-owned.
+
+### User-visible/runtime delta completed
+`GameView` v0.73:
+- removes the legacy captured-screenshot runtime map path entirely; no `VISUAL_SOURCE_URL` bitmap is loaded or stretched across world bounds;
+- creates and consumes the World-owned `WorldRuntimeAdapter` and `AdaptedMillesMapRenderer` directly;
+- draws renderer-built Milles TILE/decor/object content before dynamic NPC/monster/player entities while HUD remains screen-space;
+- routes empty-world taps through `WorldRuntimeAdapter.screenToWorld(...)` + `requestGroundScreenTap(...)` and advances movement via the adapter-owned `WorldMoveTargetController`;
+- replaces broad merged HUD interception rectangles with exact visible panel bounds and circular control hit regions;
+- keeps NPC/monster/modal/control priority above generic world taps;
+- aligns joystick/action visual geometry with touch geometry so invisible oversized rectangles no longer consume visible world;
+- polishes HUD hierarchy/negative space: lighter panel opacity, tighter party/quest/target/minimap cards, compact chat, aligned status module, consistent circular combat/utility controls;
+- keeps the reward banner read-only but now verifies the granted item is actually present in the same RPG inventory projection before showing an auto-loot success banner. Missing inventory state produces a warning instead of a false success message.
+
+### Tap regression audit
+Added `UxTapAcceptanceAudit`:
+- 10 representative screen anchors covering center/left/right/top/bottom and corner/intermediate safe-world areas;
+- rejects coordinates owned by precise HUD regions or NPC/monster hit regions;
+- requires `WorldRuntimeAdapter.requestGroundScreenTap(...)` to return `MOVING` or `REACHED` for an occupiable empty target;
+- runs the same 10-point acceptance once at initial camera and once after moving/snap-following the camera to a second safe world position;
+- pass condition: 10/10 initial + 10/10 moved-camera acceptance.
+
+### Cross-domain contract requests
+**Character owner:** playtest canon requests overall player presentation scale `1.60 [ADAPTED]` while reducing head/body visual ratio toward `0.28–0.30`; preserve NW/NE/SW/SE. UX did not modify `CharacterRenderer` internals.
+
+**RPG owner:** playtest canon authorizes a clearly labeled `[B]/[ADAPTED] TEST REWARD` for `combat_dummy_01`, preferably `IT_GLOVE_LEATHER x1`, solely for vertical-slice QA. UX does not fabricate/mutate this reward; once RPG emits/mutates it, v0.73 requires the same inventory row state before presenting auto-loot success.
+
+### Boundaries preserved
+- No map/camera/collision/pathfinding/portal algorithm modified.
+- No CharacterRenderer internals or asset binding modified.
+- No CombatResolver/MonsterAI/damage calculation modified.
+- No RPG inventory/reward/EXP/job/save mutation internals modified.
+- No canonical values rewritten in code.
+- No ground-drop/pickup UX introduced.
+
+### Integrator/device acceptance
+1. Run `UxTapAcceptanceAudit`: require 10/10 initial and 10/10 moved camera.
+2. Device-test representative empty world points after camera movement: marker + WALK unless genuinely blocked.
+3. Confirm renderer-built village content replaces the stretched screenshot and no reachable black canvas gaps appear from the removed screenshot path.
+4. Confirm modal/control/NPC/monster taps never leak to world movement.
+5. Once RPG dummy fixture lands: kill -> reward mutation -> banner -> BAG row quantity increases exactly once.
+6. Character owner change remains required before playtest P0-1 can be called complete.
+
 ## 2026-09-10 19:02 KST — inventory modal input-safety continuation
 
 Branch: `agent/ux/auto-20260910-1902`
@@ -20,28 +71,7 @@ Latest main verified before work: `2b66df9780142e3d84606f4ac0250dcabfa2d2b7`
 - while inventory is open, the same touch can no longer fall through to joystick, combat buttons, NPC/monster selection, or generic map tap-to-move;
 - existing row selection/equip interactions remain intact.
 
-This closes a concrete P0 input-routing violation in the v0.71 redesign: modal UI touches must never leak into world movement/action commands.
-
-### Runtime semantics preserved
-- camera-correct blank-map tap-to-move unchanged;
-- joystick/direct-input priority unchanged when no modal is open;
-- NPC/monster hit-test priority unchanged;
-- ATTACK/MAGIC/SKILL/KICK APIs unchanged;
-- CharacterRenderer usage unchanged;
-- direct-inventory reward banner/read-only RewardNotice consumption unchanged;
-- no World, Combat, MonsterAI, RPG mutation, save, or canonical data internals changed.
-
 ### Remaining continuity
-1. Device/integrator QA of the full v0.71/v0.72 HUD touch geometry and readability.
+1. Device/integrator QA of the full HUD touch geometry and readability.
 2. Stable player action/AUTO presentation/orchestration DTO remains the blocker for real player AUTO and canonical icon/learned/disabled-reason metadata.
-3. If that contract is still absent next run, continue UX polish using only existing stable surfaces; do not invent AUTO behavior or canonical action metadata.
-
-### QA focus
-- Open BAG, tap world: inventory should close, player must not move from that same tap.
-- Open BAG, tap joystick/ATK/SKILL/MAG: inventory should close, no action should fire from that same tap.
-- Explicit `×` closes BAG without movement/action side effects.
-- Item row selection and Equip remain interactive inside the modal.
-- After closing, the next independent world/control tap behaves normally.
-
-### Boundary note
-UX/presentation/input-routing only. No gameplay values or non-UX domain internals changed.
+3. Do not invent AUTO behavior or canonical action metadata while the stable contract is absent.
