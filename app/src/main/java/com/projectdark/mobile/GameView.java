@@ -6,11 +6,12 @@ import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import com.projectdark.mobile.world.WorldCameraTransform;
+import com.projectdark.mobile.world.WorldMoveTargetController;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-/** PROJECT DARK v0.68 - camera-correct integrated world/action/NPC/combat/RPG prototype. */
+/** PROJECT DARK v0.69 - camera-correct tap movement + integrated mobile RPG prototype. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -18,6 +19,19 @@ public final class GameView extends View {
   private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG),pixel=new Paint();
   private final RuntimeState state=new RuntimeState();
   private final WorldCameraTransform camera=new WorldCameraTransform(WorldDef.MIN_X,WorldDef.MAX_X,WorldDef.MIN_Y,WorldDef.MAX_Y,W,H);
+  private final WorldMoveTargetController moveTarget=new WorldMoveTargetController(
+      new WorldMoveTargetController.NavigationWorld(){
+        @Override public float minX(){return RuntimeState.WORLD_MIN_X;}
+        @Override public float maxX(){return RuntimeState.WORLD_MAX_X;}
+        @Override public float minY(){return RuntimeState.WORLD_MIN_Y;}
+        @Override public float maxY(){return RuntimeState.WORLD_MAX_Y;}
+        @Override public boolean canPlayerOccupy(float x,float y){return !state.blocked(x,y);}
+      },
+      new WorldMoveTargetController.Walker(){
+        @Override public float worldX(){return state.player().x;}
+        @Override public float worldY(){return state.player().y;}
+        @Override public boolean tryWalkStep(float dx,float dy){return state.tryMove(dx,dy);}
+      });
   private final CombatController combat=new CombatController();
   private final MonsterAIController monsterAi=new MonsterAIController();
   private final InteractionController interaction=new InteractionController();
@@ -29,10 +43,11 @@ public final class GameView extends View {
   private final float jx=92,jy=444,jr=60;
   private float knobX=jx,knobY=jy;
   private boolean joy,running,inventoryOpen;
-  private long last,lastLedgerSequence=0;
+  private long last,lastLedgerSequence=0,lastMoveRequestId=0;
   private int dir=0;
-  private float walkClock=0,actionClock=0;
+  private float walkClock=0,actionClock=0,tapMarkerClock=0,tapMarkerX=0,tapMarkerY=0;
   private Action action=Action.IDLE;
+  private WorldMoveTargetController.Status lastMoveStatus=WorldMoveTargetController.Status.IDLE;
   private String feedback="";
   private float feedbackClock=0;
 
@@ -44,42 +59,60 @@ public final class GameView extends View {
   public void pause(){running=false;removeCallbacks(loop);}
 
   private void update(float dt){
-    feedbackClock=Math.max(0,feedbackClock-dt);combat.tick(dt);state.tick(dt);consumeLedger();monsterAi.tick(state,dt);
-    if(!state.player().alive){action=Action.IDLE;interaction.cancel();combat.cancelApproach();joy=false;vx=vy=0;knobX=jx;knobY=jy;return;}
+    feedbackClock=Math.max(0,feedbackClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);combat.tick(dt);state.tick(dt);consumeLedger();monsterAi.tick(state,dt);
+    if(!state.player().alive){action=Action.IDLE;interaction.cancel();combat.cancelApproach();moveTarget.cancel();joy=false;vx=vy=0;knobX=jx;knobY=jy;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
     if(joy&&(vx!=0||vy!=0)){action=Action.WALK;state.tryMove(vx*145*dt,vy*145*dt);walkClock+=dt;interaction.cancelApproach();combat.cancelApproach();return;}
     if(interaction.approaching()){updateNpcInteraction(dt);return;}
     if(combat.approaching()){updateCombatApproach(dt);return;}
-    action=Action.IDLE;
+    WorldMoveTargetController.Snapshot move=moveTarget.snapshot();
+    if(move.status==WorldMoveTargetController.Status.MOVING){
+      float bx=state.player().x,by=state.player().y;
+      move=moveTarget.tick(dt);
+      float dx=state.player().x-bx,dy=state.player().y-by;
+      if(dx!=0||dy!=0){setFacingDirection(dx,dy);action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;
+      consumeMoveOutcome(move);return;
+    }
+    consumeMoveOutcome(move);action=Action.IDLE;
+  }
+
+  private void consumeMoveOutcome(WorldMoveTargetController.Snapshot move){
+    if(move==null)return;
+    if(move.requestId!=lastMoveRequestId){lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;}
+    if(move.status==lastMoveStatus)return;
+    lastMoveStatus=move.status;
+    if(move.status==WorldMoveTargetController.Status.REACHED)showFeedback("이동 완료");
+    else if(move.status==WorldMoveTargetController.Status.BLOCKED)showFeedback("이동 불가");
   }
 
   private void consumeLedger(){List<CombatLedger.Event> events=state.ledger().snapshot();for(CombatLedger.Event e:events){if(e.sequence<=lastLedgerSequence)continue;lastLedgerSequence=e.sequence;switch(e.type){case MONSTER_DEFEATED:showFeedback("몬스터 격파 [B]");break;case PLAYER_HIT:showFeedback("-"+e.amount+" HP [B]");break;case PLAYER_DEFEATED:showFeedback("행동 불능 [B]");break;case PLAYER_REVIVED:showFeedback("부활 [B]");break;default:break;}}}
 
   private void updateNpcInteraction(float dt){InteractionController.TickResult result=interaction.tick(state,dt);vx=interaction.moveX();vy=interaction.moveY();if(vx!=0||vy!=0)setFacingDirection(vx,vy);if(result==InteractionController.TickResult.WALKING){action=Action.WALK;walkClock+=dt;return;}action=Action.IDLE;String message=interaction.consumeFeedback();if(message!=null)showFeedback(message);}
   private void updateCombatApproach(float dt){RuntimeState.Monster approach=combat.approachTarget();if(approach==null||!approach.alive){combat.cancelApproach();return;}float d=state.distanceTo(approach),range=combat.intentRange();if(d<=range){CombatController.Intent ready=combat.consumeReadyIntent();action=Action.IDLE;if(ready==CombatController.Intent.ATTACK)attack();else if(ready==CombatController.Intent.CAST)cast();else if(ready==CombatController.Intent.SKILL)skill();else if(ready==CombatController.Intent.KICK)kick();return;}float dx=approach.x-state.player().x,dy=approach.y-state.player().y;setAutoDirection(dx,dy);action=Action.WALK;boolean moved=state.tryMove(vx*105*dt,vy*105*dt);walkClock+=dt;if(!moved){combat.cancelApproach();action=Action.IDLE;showFeedback("사거리 접근 실패 [B]");}}
-  private void beginCombatApproach(CombatController.Intent intent){if(combat.beginApproach(intent))showFeedback("타깃 접근 [ADAPTED]");}
+  private void beginCombatApproach(CombatController.Intent intent){moveTarget.cancelForAction();if(combat.beginApproach(intent))showFeedback("타깃 접근 [ADAPTED]");}
 
   private void setFacingDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;if(sx<0&&sy>0)dir=0;else if(sx>0&&sy>0)dir=1;else if(sx<0)dir=2;else dir=3;}
   private void setAutoDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;vx=.707f*sx;vy=.707f*sy;setFacingDirection(dx,dy);}
   private void faceTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive)setFacingDirection(t.x-state.player().x,t.y-state.player().y);}
   private boolean isActing(){return action!=Action.IDLE&&action!=Action.WALK;}
   private float duration(Action a){switch(a){case CAST:return .65f;case SWING:return .45f;case THRUST:return .38f;case THROW:return .52f;case PUNCH:return .32f;case SKILL:return .50f;case KICK:return .45f;default:return 0;}}
-  private void trigger(Action a){if(isActing()||!state.player().alive)return;interaction.cancel();combat.cancelApproach();action=a;actionClock=0;}
+  private void trigger(Action a){if(isActing()||!state.player().alive)return;moveTarget.cancelForAction();interaction.cancel();combat.cancelApproach();action=a;actionClock=0;}
   private void showFeedback(String s){feedback=s;feedbackClock=.8f;}
   private boolean consume(SkillDef def){if(state.player().mp<def.mpCost){showFeedback("MP 부족");return false;}state.player().mp-=def.mpCost;return true;}
   private boolean requireTarget(){if(combat.hasUsableTarget())return true;showFeedback("타깃 없음");return false;}
   private boolean inRange(float range){return combat.inRange(state,range);}
   private void applyToTarget(SkillDef def){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive&&inRange(def.range))state.damage(t,def.damage);}
-  private void cast(){if(isActing()||!combat.castReady()||!requireTarget())return;if(!inRange(SkillDef.CAST_PROTO.range)){beginCombatApproach(CombatController.Intent.CAST);return;}if(!consume(SkillDef.CAST_PROTO))return;faceTarget();combat.commitCast();trigger(Action.CAST);applyToTarget(SkillDef.CAST_PROTO);}
-  private void skill(){if(isActing()||!combat.skillReady()||!requireTarget())return;if(!inRange(SkillDef.SKILL_PROTO.range)){beginCombatApproach(CombatController.Intent.SKILL);return;}if(!consume(SkillDef.SKILL_PROTO))return;faceTarget();combat.commitSkill();trigger(Action.SKILL);applyToTarget(SkillDef.SKILL_PROTO);}
-  private void kick(){if(isActing()||!combat.kickReady()||!requireTarget())return;if(!inRange(SkillDef.KICK_PROTO.range)){beginCombatApproach(CombatController.Intent.KICK);return;}faceTarget();combat.commitKick();trigger(Action.KICK);applyToTarget(SkillDef.KICK_PROTO);}
+  private void cast(){moveTarget.cancelForAction();if(isActing()||!combat.castReady()||!requireTarget())return;if(!inRange(SkillDef.CAST_PROTO.range)){beginCombatApproach(CombatController.Intent.CAST);return;}if(!consume(SkillDef.CAST_PROTO))return;faceTarget();combat.commitCast();trigger(Action.CAST);applyToTarget(SkillDef.CAST_PROTO);}
+  private void skill(){moveTarget.cancelForAction();if(isActing()||!combat.skillReady()||!requireTarget())return;if(!inRange(SkillDef.SKILL_PROTO.range)){beginCombatApproach(CombatController.Intent.SKILL);return;}if(!consume(SkillDef.SKILL_PROTO))return;faceTarget();combat.commitSkill();trigger(Action.SKILL);applyToTarget(SkillDef.SKILL_PROTO);}
+  private void kick(){moveTarget.cancelForAction();if(isActing()||!combat.kickReady()||!requireTarget())return;if(!inRange(SkillDef.KICK_PROTO.range)){beginCombatApproach(CombatController.Intent.KICK);return;}faceTarget();combat.commitKick();trigger(Action.KICK);applyToTarget(SkillDef.KICK_PROTO);}
   private Action actionFor(AttackDef.Kind k){switch(k){case THRUST:return Action.THRUST;case THROW:return Action.THROW;case PUNCH:return Action.PUNCH;default:return Action.SWING;}}
-  private void attack(){if(isActing()||!combat.attackReady()||!state.player().alive||!requireTarget())return;AttackDef def=combat.attackDef();if(!inRange(def.range)){beginCombatApproach(CombatController.Intent.ATTACK);return;}faceTarget();combat.commitAttack();trigger(actionFor(def.kind));RuntimeState.Monster t=combat.target();if(t!=null&&t.alive)state.damage(t,def.damage);}
+  private void attack(){moveTarget.cancelForAction();if(isActing()||!combat.attackReady()||!state.player().alive||!requireTarget())return;AttackDef def=combat.attackDef();if(!inRange(def.range)){beginCombatApproach(CombatController.Intent.ATTACK);return;}faceTarget();combat.commitAttack();trigger(actionFor(def.kind));RuntimeState.Monster t=combat.target();if(t!=null&&t.alive)state.damage(t,def.damage);}
 
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);ox=(w-W*scale)/2;oy=(h-H*scale)/2;}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawWorld(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();drawHud(c);drawInventory(c);drawDialogue(c);drawDeath(c);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawWorld(c);drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();drawHud(c);drawInventory(c);drawDialogue(c);drawDeath(c);c.restore();}
 
   private void drawWorld(Canvas c){p.setColor(0xff090909);c.drawRect(WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,p);if(world==null)return;Rect s=new Rect(0,0,world.getWidth(),world.getHeight());c.drawBitmap(world,s,new RectF(WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y),pixel);p.setColor(0x26000000);c.drawRect(WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,p);}
+  private void drawTapMarker(Canvas c){if(tapMarkerClock<=0)return;float q=Math.max(0f,Math.min(1f,tapMarkerClock/.7f));p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2f);p.setColor(0xCCFFD86B);c.drawCircle(tapMarkerX,tapMarkerY,8f+8f*(1f-q),p);p.setStyle(Paint.Style.FILL);}
   private void drawNpcs(Canvas c){for(RuntimeState.Npc n:state.npcs()){p.setColor(0x66000000);c.drawOval(new RectF(n.x-11,n.y-3,n.x+11,n.y+4),p);p.setColor(0xffcab58b);c.drawCircle(n.x,n.y-39,7,p);p.setColor(0xff6c5946);c.drawRect(n.x-7,n.y-31,n.x+7,n.y-11,p);p.setColor(0xffb58f58);c.drawRect(n.x-5,n.y-12,n.x-1,n.y-3,p);c.drawRect(n.x+1,n.y-12,n.x+5,n.y-3,p);p.setTextSize(9);p.setColor(0xfff3e1ae);float tw=p.measureText(n.name);c.drawText(n.name,n.x-tw/2,n.y-52,p);if(interaction.approachNpc()==n){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xfff0d17a);c.drawCircle(n.x,n.y-24,19,p);p.setStyle(Paint.Style.FILL);}}}
   private void drawMonsters(Canvas c){RuntimeState.Monster selected=combat.target();for(RuntimeState.Monster m:state.monsters()){if(!m.alive)continue;p.setColor(0x66000000);c.drawOval(new RectF(m.x-15,m.y-4,m.x+15,m.y+5),p);p.setColor(m.hitFlash>0?0xffd9e8d7:0xff6a7c69);c.drawOval(new RectF(m.x-13,m.y-31,m.x+13,m.y-5),p);p.setColor(0xffd8c27b);c.drawCircle(m.x-5,m.y-20,2,p);c.drawCircle(m.x+5,m.y-20,2,p);if(m.attackPrimed){float q=1f-Math.min(1f,m.attackWindup/.24f);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2+2*q);p.setColor(0xaaff7755);c.drawCircle(m.x,m.y-19,18+8*q,p);p.setStyle(Paint.Style.FILL);}bar(c,m.x-18,m.y-42,m.x+18,m.y-37,0xffd63442,m.hp/(float)m.maxHp);if(m.damagePopupClock>0){p.setTextSize(12);p.setColor(0xffffdc72);String d="-"+m.lastDamage;float tw=p.measureText(d);c.drawText(d,m.x-tw/2,m.y-50-(.65f-m.damagePopupClock)*20,p);}if(selected==m){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xffffd86b);c.drawOval(new RectF(m.x-21,m.y-9,m.x+21,m.y+9),p);p.setStyle(Paint.Style.FILL);}}}
   private CharacterRenderer.Direction characterDirection(){switch(dir){case 1:return CharacterRenderer.Direction.SE;case 2:return CharacterRenderer.Direction.NW;case 3:return CharacterRenderer.Direction.NE;default:return CharacterRenderer.Direction.SW;}}
@@ -95,7 +128,10 @@ public final class GameView extends View {
   private void cooldown(Canvas c,float x,float y,float r,float remaining,float total){if(remaining<=0||total<=0)return;float ratio=Math.min(1f,remaining/total);p.setColor(0x99000000);c.drawArc(new RectF(x-r,y-r,x+r,y+r),-90,360*ratio,true,p);p.setTextSize(8);p.setColor(Color.WHITE);String s=String.format(java.util.Locale.US,"%.1f",remaining);float tw=p.measureText(s);c.drawText(s,x-tw/2,y+3,p);}
   private void drawDialogue(Canvas c){RuntimeState.Npc dialogNpc=interaction.dialogNpc();if(dialogNpc==null)return;panel(c,250,330,710,440);text(c,dialogNpc.name,270,355,13);drawWrappedText(c,dialogNpc.dialogue,270,380,420,12,18);text(c,"화면을 터치하면 닫기",555,425,9);}private void drawDeath(Canvas c){if(state.player().alive)return;p.setColor(0xaa000000);c.drawRect(0,0,W,H,p);panel(c,330,205,630,335);text(c,"행동 불능 [B]",421,240,18);text(c,"프로토타입 부활: 화면 중앙 터치",375,276,12);text(c,"원작 사망/패널티 규칙을 의미하지 않음",368,302,10);}private void drawWrappedText(Canvas c,String s,float x,float y,float maxWidth,float size,float lineHeight){p.setTextSize(size);p.setColor(0xffeee4cf);String[] words=s.split(" ");String line="";float yy=y;for(String word:words){String test=line.length()==0?word:line+" "+word;if(p.measureText(test)>maxWidth&&line.length()>0){c.drawText(line,x,yy,p);yy+=lineHeight;line=word;}else line=test;}if(line.length()>0)c.drawText(line,x,yy,p);}private void round(Canvas c,float x,float y,float r,String s){p.setColor(0xaa15120e);c.drawCircle(x,y,r,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xffc9a86c);c.drawCircle(x,y,r,p);p.setStyle(Paint.Style.FILL);p.setTextSize(s.length()>3?8:10);p.setColor(0xffffefd0);float tw=p.measureText(s);c.drawText(s,x-tw/2,y+3,p);}
 
-  public boolean onTouchEvent(MotionEvent e){float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;switch(e.getActionMasked()){case MotionEvent.ACTION_DOWN:if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();combat.clearTarget();interaction.cancel();action=Action.IDLE;}return true;}if(interaction.dialogOpen()){interaction.dismissDialog();return true;}if(x>=912&&x<=948&&y>=70&&y<=108){inventoryOpen=!inventoryOpen;return true;}if(handleInventoryTouch(x,y))return true;WorldCameraTransform.Point wp=camera.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){combat.cancelApproach();interaction.request(state,npc);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){combat.selectTarget(monster);interaction.cancelApproach();return true;}if(dist(x,y,jx,jy)<=jr*1.5f){joy=true;interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}if(dist(x,y,698,466)<=25){cast();return true;}if(dist(x,y,746,466)<=25){combat.cycleAttackMode();showFeedback(combat.attackDef().label+" [B]");return true;}if(dist(x,y,794,466)<=25){skill();return true;}if(dist(x,y,842,466)<=25){kick();return true;}if(dist(x,y,895,478)<=42){attack();return true;}return true;case MotionEvent.ACTION_MOVE:if(joy)stick(x,y);return true;case MotionEvent.ACTION_UP:case MotionEvent.ACTION_CANCEL:joy=false;knobX=jx;knobY=jy;vx=vy=0;return true;}return true;}
+  private boolean isHudSurface(float x,float y){return (x>=12&&x<=165&&y>=12&&y<=116)||(x>=176&&x<=320&&y>=12&&y<=70)||(x>=372&&x<=604&&y>=12&&y<=55)||(x>=714&&x<=902&&y>=12&&y<=124)||(x>=912&&x<=948&&y>=20&&y<=308)||(x>=12&&x<=272&&y>=304&&y<=382)||(x>=337&&x<=608&&y>=462&&y<=528)||(x>=630&&x<=948&&y>=430&&y<=540);}
+  private void requestGroundMove(float x,float y){WorldCameraTransform.Point wp=camera.screenToWorld(x,y);WorldMoveTargetController.Snapshot move=moveTarget.requestGroundMove(wp.x,wp.y);lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;if(move.status==WorldMoveTargetController.Status.MOVING||move.status==WorldMoveTargetController.Status.REACHED){tapMarkerX=wp.x;tapMarkerY=wp.y;tapMarkerClock=.7f;showFeedback(move.replacedRequestId>0?"이동 목표 변경":"이동 시작");}consumeMoveOutcome(move);}
+
+  public boolean onTouchEvent(MotionEvent e){float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;switch(e.getActionMasked()){case MotionEvent.ACTION_DOWN:if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();combat.clearTarget();interaction.cancel();moveTarget.cancel();camera.snapTo(state.player().x,state.player().y);action=Action.IDLE;}return true;}if(interaction.dialogOpen()){interaction.dismissDialog();moveTarget.cancelForAction();return true;}if(x>=912&&x<=948&&y>=70&&y<=108){inventoryOpen=!inventoryOpen;moveTarget.cancelForAction();return true;}if(handleInventoryTouch(x,y)){moveTarget.cancelForAction();return true;}if(dist(x,y,jx,jy)<=jr*1.5f){joy=true;moveTarget.cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}if(dist(x,y,698,466)<=25){cast();return true;}if(dist(x,y,746,466)<=25){moveTarget.cancelForAction();combat.cycleAttackMode();showFeedback(combat.attackDef().label+" [B]");return true;}if(dist(x,y,794,466)<=25){skill();return true;}if(dist(x,y,842,466)<=25){kick();return true;}if(dist(x,y,895,478)<=42){attack();return true;}if(isHudSurface(x,y))return true;WorldCameraTransform.Point wp=camera.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){moveTarget.cancelForAction();combat.cancelApproach();interaction.request(state,npc);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){moveTarget.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name);return true;}requestGroundMove(x,y);return true;case MotionEvent.ACTION_MOVE:if(joy)stick(x,y);return true;case MotionEvent.ACTION_UP:case MotionEvent.ACTION_CANCEL:joy=false;knobX=jx;knobY=jy;vx=vy=0;return true;}return true;}
   private void stick(float x,float y){if(isActing()||!state.player().alive)return;float dx=x-jx,dy=y-jy,len=(float)Math.sqrt(dx*dx+dy*dy);if(len>jr){dx=dx/len*jr;dy=dy/len*jr;len=jr;}knobX=jx+dx;knobY=jy+dy;if(len<8){vx=vy=0;return;}float nx=dx/len,ny=dy/len;if(Math.abs(nx)>Math.abs(ny)){if(nx>0){vx=.707f;vy=.707f;dir=1;}else{vx=-.707f;vy=-.707f;dir=2;}}else{if(ny>0){vx=-.707f;vy=.707f;dir=0;}else{vx=.707f;vy=-.707f;dir=3;}}}
   private float dist(float a,float b,float c,float d){float x=a-c,y=b-d;return(float)Math.sqrt(x*x+y*y);}
 }
