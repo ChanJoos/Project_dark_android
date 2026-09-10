@@ -39,11 +39,8 @@ Attachment endpoints exposed by the Nexon page:
 | 05 | 5053116125680767928 | `https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767928` | SOURCE_LOCATED / CONTENT_FETCH_PENDING |
 | 06 | 5053116125680767929 | `https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767929` | SOURCE_LOCATED / CONTENT_FETCH_PENDING |
 | 07 | 5053116125680767930 | `https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767930` | SOURCE_LOCATED / CONTENT_FETCH_PENDING |
-| 08 | 505311612568076792? | invalid-placeholder | RETIRED TYPO — do not use |
 | 08 | 5053116125680767931 | `https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767931` | SOURCE_LOCATED / CONTENT_FETCH_PENDING |
 | 09 | 5053116125680767934 | `https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767934` | SOURCE_LOCATED / CONTENT_FETCH_PENDING |
-
-The retired typo row above is retained only to make accidental use detectable; the valid attachment set is the nine numeric oidFile rows 7924/25/26/27/28/29/30/31/34.
 
 Important: the web retrieval environment resolves the attachment endpoints from the Nexon page, but direct binary fetch still returns cache misses. This does not justify guessing image order/content.
 
