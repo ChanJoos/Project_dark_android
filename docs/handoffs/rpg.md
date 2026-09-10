@@ -1,112 +1,103 @@
 # RPG Agent Handoff
 
-Run: `20260910-1601`
+Run: `20260910-1748`
 Branch: `agent/rpg/20260910-1338`
 Draft PR: `#5`
 Role: RPG · Progression · Persistence
 
-## PASS 30 — full Lv1→99 EXP HUD projection + Lv10 job gate
+## PASS 31 — Commoner → basic-job transition contract
 
-Direction: prioritize visible gameplay progression while preserving RPG ownership boundaries. No `GameView.java` edits in this branch.
+Direction: turn the Lv10 job gate into an actual RPG-owned mutation path without fabricating unresolved starter-skill acquisition rules.
 
 ### Source-of-Truth gate
 Re-read:
-- `master/data/Level_EXP_Curve.csv`
 - `master/data/Progression_Master.csv`
 - `master/data/Content_Gates.csv`
+- `master/data/Skill_Milestones.csv`
+- `master/data/Skill_Requirements.csv`
 
 Confirmed:
-- the full 98-row Lv1→99 cumulative curve is already projected in `LevelExpCurveCatalog`;
-- all curve rows retain `Evidence.B` project-balance provenance;
-- Lv99 cumulative endpoint is 150,000,000;
-- P00 defines the early exit as `Lv10 + 기본기 습득`;
-- G01 defines Commoner→basic-job as early job-selection conditions met;
-- the exact canonical learned action ID(s) required for the P00 basic-skill condition are still unresolved.
+- P00 exits at `Lv10 + 기본기 습득`;
+- G01 enforces Commoner → basic-job selection;
+- five basic jobs are represented: 전사 / 도적 / 마법사 / 성직자 / 무도가;
+- 1-circle milestone representatives are 전사=숏블레이드, 도적=찌르기/센스몬스터, 마법사=마레노, 성직자=쿠로, 무도가=정권;
+- corresponding IDs are `SK_전사_001`, `SK_도적_001`, `SK_도적_002`, `SK_마법사_001`, `SK_성직자_001`, `SK_무도가_001`;
+- `Skill_Requirements.csv` still leaves most exact acquisition requirements as `확인 필요`.
 
-### Implemented this pass
+### Implemented
 
-1. Added `RpgProgressionPresentation` for HUD/progression UI.
+1. Added `BasicJobSelectionService`.
 
-`LevelProgress` exposes:
-- current level;
-- cumulative EXP;
-- cumulative EXP at current-level start;
-- next-level cumulative target;
-- EXP earned inside current level;
-- EXP required for current level;
-- EXP remaining to next level;
-- normalized HUD `ratio` in `[0,1]`;
-- Lv99 cap state;
-- segment / primary hunting metadata;
-- evidence.
+Supported job codes:
+- `WARRIOR`
+- `ROGUE`
+- `MAGE`
+- `CLERIC`
+- `MARTIAL_ARTIST`
 
-2. Added explicit Commoner→basic-job gate projection.
+Each `JobOption` exposes display name plus the canonical 1-circle milestone action IDs for UI guidance. These IDs are informational milestones, not automatically learned skills.
 
-`JobSelectionGateStatus`:
-- `LEVEL_NOT_MET`
-- `SKILL_REQUIREMENT_PENDING`
-- `READY`
+2. Added typed selection outcomes:
+- `SELECTED`
+- `INVALID_JOB`
 - `NOT_COMMONER`
+- `LEVEL_NOT_MET`
+- `BASIC_SKILL_PROOF_REQUIRED`
+- `STATE_RESTORE_FAILED`
 
-Current correct runtime behavior:
-- Commoner below Lv10 → `LEVEL_NOT_MET`;
-- Commoner Lv10+ → `SKILL_REQUIREMENT_PENDING`;
-- the branch intentionally does not fabricate READY because exact required basic-skill IDs are not yet canonicalized.
+3. Added explicit `BasicSkillProof` boundary.
+- `PENDING`: no mutation;
+- `SATISFIED`: allows transition only after the owning quest/NPC/progression flow has independently verified the unresolved basic-skill gate.
 
-3. Expanded `RpgVisibleProgressionPresentation.Snapshot` with:
-- `levelProgress`
-- `jobSelectionGate`
+This prevents Lv10 alone from silently becoming enough while still providing a real mutation endpoint once external orchestration has evidence.
 
-Integrator can now obtain player summary, EXP-bar state, job gate, inventory, action metadata, quick-slot candidates and reward lines through one RPG snapshot.
+4. Successful selection mutates persisted RPG state through the existing validated snapshot/restore path:
+- `progressionNode: COMMONER -> BASIC_JOB`
+- `currentJobCode: COMMONER -> selected basic job`
+- level / cumulative EXP / Gold / inventory / equipment / combat sequence / learned action IDs are preserved.
 
-4. Added `RpgProgressionPresentationAudit` covering:
-- Lv1 / EXP 0 → required 10,000 / ratio 0;
-- EXP 5,000 → ratio 0.5 / 5,000 remaining;
-- cumulative EXP 300,000 → Lv10 / 78,000 required to Lv11;
-- Lv10 Commoner gate → `SKILL_REQUIREMENT_PENDING`;
-- cumulative EXP 150,000,000 → Lv99 / cap ratio 1;
-- further EXP at Lv99 → `LEVEL_CAP`;
-- visible snapshot contains both progression DTOs.
+5. No starter skill is auto-learned during job selection. Acquisition semantics remain unresolved in canonical requirements and must not be invented.
+
+6. Added `BasicJobSelectionAudit` covering:
+- Lv9 rejected even with satisfied proof;
+- Lv10 + pending proof rejected without mutation;
+- Lv10 + satisfied proof selects WARRIOR and moves node to BASIC_JOB;
+- transition survives save → restore;
+- learned-action set remains unchanged;
+- second basic-job selection after leaving COMMONER is rejected.
 
 ### Commits this pass
-- `013c057163d0371dfe402cf9f4fa5f321f93e7d0` — full level progress + job gate presentation
-- `08b96668613ae1e02b976fe01db05873f0baefff` — expose progression DTOs in visible snapshot
-- `cfccf03e551e6a4ec13c44708adc2afe963da8c2` — progression presentation audit
+- `8541443f2ffafb98f5b7515e9d629bdbed1ebc10` — evidence-safe basic job selection transition
+- `51b29c5bf3431022cd32b1c01aafefca1bd96913` — job selection persistence/regression audit
 
-### Existing progression state retained
-- all 98 Level_EXP_Curve rows are projected;
-- verified monster EXP mutates cumulative EXP and can advance multiple levels;
-- duplicate/stale combat sequence does not double-grant EXP;
-- progression caps at Lv99 / 150,000,000 cumulative EXP;
-- legacy save with `normalExp=null` remains unresolved and is not silently converted to zero;
-- save/restore validates level and cumulative EXP interval consistency.
+### Integration contract
+Quest/NPC/Integrator ownership should call:
+`BasicJobSelectionService.select(state.rpg(), jobCode, proof)`
 
-### Visible integration contract
-Integrator/UX should consume:
-`new RpgVisibleProgressionPresentation().snapshot(state.rpg())`
+Rules:
+- do not synthesize `SATISFIED` from Lv10 alone;
+- only the owning progression/NPC/quest flow should promote the proof after its own gate is resolved;
+- use `BasicJobSelectionService.options()` to render the five job choices and milestone hints;
+- after `SELECTED`, refresh `RpgVisibleProgressionPresentation.snapshot(state.rpg())` so job-aware skill visibility and equipment requirements update immediately.
 
-EXP HUD:
-- fill ratio: `snapshot.levelProgress.ratio`
-- level: `snapshot.levelProgress.level`
-- current-level earned: `snapshot.levelProgress.expIntoLevel`
-- level requirement: `snapshot.levelProgress.expRequiredThisLevel`
-- remaining: `snapshot.levelProgress.expToNextLevel`
-
-Job-selection UI/NPC flow:
-- read `snapshot.jobSelectionGate.status`;
-- below Lv10 show level requirement;
-- at Lv10+ show pending basic-skill requirement until canonical skill IDs are resolved;
-- do not infer readiness in GameView.
+### Existing progression retained
+- full Lv1→99 cumulative EXP curve with `[B]` provenance;
+- actual EXP mutation and Lv99 cap;
+- normalized EXP HUD progress;
+- direct-inventory reward outcome feed;
+- reward-sequence idempotency;
+- save/restore validation;
+- Warrior action metadata and learned quick-slot candidates.
 
 ### Evidence boundary
-The Lv1→99 curve is `[B]` project balancing data, not `[O]`/`[V]` original constants. Verified monster EXP rewards may flow through this curve while the curve itself remains `[B]`.
+Milestone starter actions are project milestone mappings; exact acquisition costs/requirements remain unresolved where `Skill_Requirements.csv` says `확인 필요`. Do not auto-grant them or reinterpret them as verified acquisition rules.
 
 ### Ownership preserved
-No `GameView.java`, combat execution, MonsterAI, map/world, renderer, NPC rendering, workflow, APK packaging, or main merge changes.
+No `GameView.java`, combat effect execution, MonsterAI, map/world, character renderer, NPC/dialog rendering, workflow, APK packaging, or main merge changes.
 
 ## Next RPG P0
-1. Resolve P00/G01 exact basic-skill requirement IDs from canonical skill/progression sources.
-2. Implement typed Commoner→basic-job mutation/result API once the requirement is evidence-safe.
-3. Persist/restore the first-job transition and learned starting actions.
-4. Project Magic metadata after first-job flow is stable.
-5. Integrator should wire real EXP bar + job gate into the live HUD/NPC flow and build the integrated APK.
+1. Project basic-job options into the single visible RPG snapshot so Integrator does not need a second service lookup.
+2. Resolve starter-skill acquisition semantics where stronger O/V evidence exists; add typed learn-action mutation without fabricating missing costs/items/stats.
+3. Expand action metadata beyond Warrior to Rogue/Mage/Cleric/Martial Artist 1-circle milestones.
+4. Connect successful first-job transition to job-aware skill-book/quick-slot surfaces.
+5. Director/Integrator should wire the five-choice job UI/NPC interaction and run compile/APK/runtime validation.
