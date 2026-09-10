@@ -43,7 +43,13 @@ A concurrent World agent commit followed this change on main, so the RPG commit 
 
 ## Validation
 
-GitHub Actions run #79 (`Validate PROJECT DARK Android`) was triggered for commit `0a7246e7e25203a6a278c45c3026afc1ca0628f3` using the compile-only Android validation workflow. Final conclusion must be checked before this pass is treated as compile-verified.
+GitHub Actions run #79 (`Validate PROJECT DARK Android`) for commit `0a7246e7e25203a6a278c45c3026afc1ca0628f3` completed the substantive validation/build steps successfully:
+- `Validate Master DB`: SUCCESS
+- `Compile debug sources`: SUCCESS
+- `Build debug APK`: SUCCESS
+- `Upload debug APK`: SUCCESS
+
+No compilation correction was required after the implementation commit.
 
 ## DESIGN_CONFLICT / PENDING
 
@@ -66,7 +72,7 @@ Where Monster_Master lists major drops, exact probability/quantity is not unifor
 
 ## Result
 
-One previously unresolved canonical progression dependency is now implemented: RPG runtime no longer starts with unknown level/job state. It starts as `COMMONER Lv1` and remains evidence-safe for unknown EXP/base stats.
+One previously unresolved canonical progression dependency is now implemented and compile-verified: RPG runtime no longer starts with unknown level/job state. It starts as `COMMONER Lv1` and remains evidence-safe for unknown EXP/base stats.
 
 ## Next RPG bottleneck
 
