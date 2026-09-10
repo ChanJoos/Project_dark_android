@@ -23,5 +23,31 @@ Latest main had `PLAYER_RENDER_SCALE=1.50` while `CharacterRendererAudit` still 
 ### Evidence / ownership
 The supplied board is USER_APPROVED_VISUAL_DIRECTION / ADAPTED_REFERENCE, not extracted Nexon sprite pixels. Verified originals remain `PENDING_CROP`. No `GameView.java`, map/camera/collision, combat semantics, RPG, HUD/input, dialogue/quest, or APK packaging files were modified.
 
+---
+
+## 2026-09-10 18:42 KST — agent/character/20260910-1842
+
+### Continuity gate
+Re-read latest main `ba018312ce6ca3fa68877cd60ff09606e3890273`, DESIGN_CONSTITUTION, DATA_CONTRACT, SOURCE_OF_TRUTH, relevant DEV_HISTORY and this handoff before coding. No newer canonical rule supersedes the user-approved sprite-board reference. PR #59 remains the active baseline, so this run continues directly from its head.
+
+### Precision refinement visual delta
+Refined the V1 concept fallback into `USER_CONCEPT_20260910_CHIBI_DIAGONAL_V2` with the user's board as the presentation target:
+- added an explicit neck bridge and shared pelvis block so head/torso/legs read as one continuous body;
+- replaced single straight arm strokes with shoulder→elbow→hand two-segment joint chains;
+- weapon grip now starts exactly at the near-hand endpoint and adds a guard/blade tip, eliminating the sword-floating-next-to-hand read;
+- shield center is now tied to the far-hand endpoint, so it follows the off-hand arm rather than hovering beside the torso;
+- rounded layered hair volume and stepped fringe better wrap the skull instead of reading as a rectangular cap;
+- added a small facial/nose cue for down-facing diagonals and strengthened front/back hair distinction;
+- narrowed torso/shoulder silhouette while keeping the head visibly wider, matching the compact 2.5–3-head concept;
+- reduced WALK bob/weight exaggeration so motion reads like sprite-frame transfer rather than whole-body sliding;
+- broadened the SKILL crescent into a denser blue-white arc mass closer to the approved board.
+
+### Contract / regression gate
+Kept `PLAYER_RENDER_SCALE=1.50`, `SHADOW_RENDER_SCALE=0.72`, `LOGICAL_FOOT_ANCHOR_Y=0`, all 4 directions, all 7 common states and all 5 layers. `CharacterRendererAudit` now gates V2 profile plus the approved large-head/narrow-shoulder relationship (`HEAD_WIDTH > SHOULDER_WIDTH`).
+
+### Evidence / ownership
+This remains `[ADAPTED]` user-approved concept reconstruction, not authenticated Nexon sprite extraction. Original directional assets remain `PENDING_CROP`. No `GameView.java`, map/camera/collision/pathfinding/portal, combat semantics, inventory/reward/EXP/save/progression, HUD/input, dialogue/quest or APK packaging file was modified.
+
 ### Next P0
-Device-playtest all four IDLE/WALK directions and at least one ATTACK/SKILL frame. If any limb still reads detached at runtime scale 1.50, continue this same visual task before unrelated Character work. After the fallback passes, replace layers with verified directional source sprites as they become available.
+1. Device-playtest all four IDLE/WALK directions and ATTACK/SKILL at 1.50; if any arm/shield/sword still looks detached, continue this exact visual task.
+2. Once silhouette is accepted, refine class-specific profiles and then replace individual layers with verified directional source sprites when available.
