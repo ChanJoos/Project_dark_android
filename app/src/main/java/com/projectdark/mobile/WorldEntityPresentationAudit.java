@@ -12,6 +12,7 @@ public final class WorldEntityPresentationAudit {
     if(WorldEntityPresentationRenderer.NPC_SHADOW_SCALE>=WorldEntityPresentationRenderer.NPC_RENDER_SCALE)return false;
     if(WorldEntityPresentationRenderer.MONSTER_SHADOW_SCALE>=WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE)return false;
     if(WorldEntityPresentationRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f)return false;
+    if(!CharacterVisualSourceRegistry.preservesEvidenceGate())return false;
 
     CharacterRenderer.Direction[] dirs=CharacterRenderer.Direction.values();
     if(dirs.length!=4)return false;
@@ -69,6 +70,6 @@ public final class WorldEntityPresentationAudit {
         ",monsterScale="+WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE+
         ",anchorY="+WorldEntityPresentationRenderer.LOGICAL_FOOT_ANCHOR_Y+
         ",assets="+WorldEntityPresentationRenderer.ASSET_STATUS+
-        ",directionalBinding=true,layeredBinding=true";
+        ",directionalBinding=true,layeredBinding=true,evidenceGate=true";
   }
 }
