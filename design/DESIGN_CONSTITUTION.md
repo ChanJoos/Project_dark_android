@@ -41,14 +41,19 @@ Original asset redistribution for shipping is licensing-gated. Keep reference/pr
 ### User-confirmed playtest presentation requirements — `[ADAPTED]`
 
 - Character/NPC/monster presentation must not dominate the mobile viewport. Logical world coordinates and collision dimensions must remain independent from renderer scale. The current reduced character presentation is user-approved and must not regress to the earlier oversized prototype without explicit user direction.
+- **The player character must never be presented as a front-facing avatar while idle/moving in normal field play.** PROJECT DARK uses the original isometric/diagonal presentation. Character appearance must be rendered from side-diagonal viewpoints aligned to the four screen-diagonal directions `NW / NE / SW / SE`.
+- Character animation/rendering must support distinct directional visual frames or image sets for those diagonal directions. Mirroring may be used only where visually valid and evidence-compatible; do not collapse all directions into one frontal sprite. `IDLE / WALK / CAST / ATTACK / SKILL / HIT / DEAD` presentation must preserve directional facing where applicable.
+- BODY / HAIR / EQUIPMENT / WEAPON / EFFECT layers must share the same directional anchor/facing contract so equipped visuals do not drift or face the wrong way. Unverified source frames remain `PENDING_CROP`; do not fabricate original-looking directional frames and call them canonical.
 - Player movement must be presented with a following camera/world scroll rather than a permanently fixed one-screen map. Camera behavior must preserve world↔screen coordinate correctness, map clamp, collision, portal and touch targeting.
-- The starting vertical slice must provide enough connected spatial extent to feel like **one explorable village**, rather than a tiny fixed test room. Original geometry must not be invented when unverified; source-backed reconstruction takes priority and authored gaps remain explicitly `[ADAPTED]`.
+- The starting vertical slice must provide enough connected spatial extent to feel like **one explorable village**, rather than a tiny fixed test room. The current expanded prototype is still considered too small for the target experience and must continue expanding. Original geometry must not be invented when unverified; source-backed reconstruction takes priority and authored gaps remain explicitly `[ADAPTED]`.
 - ATTACK / SKILL / MAGIC must expose visibly distinguishable presentation states/effect hooks so animation and motion can be judged on-device. Unverified original frames/timing remain `[B]`, `[ADAPTED]`, or `PENDING_CROP` rather than fabricated original facts.
 - Combat feedback, including damage presentation, must be legible and game-like rather than crude placeholder text/boxes; exact original styling remains evidence-gated.
 
 ## 5. Movement canon
 
 Original presentation uses four screen-diagonal directions `↖ ↗ ↙ ↘`. Logical movement can remain four-neighbor grid movement because isometric projection maps logical axes to those screen diagonals. Do not 'fix' this into 8-neighbor movement without evidence.
+
+The rendered character must face and animate in the matching side-diagonal direction while moving; movement direction and visible facing may not contradict each other. A persistent front-facing field pose is non-canonical.
 
 Mobile joystick/tap movement must issue the same logical movement command. NPC tap may pathfind and approach before interaction.
 
@@ -61,6 +66,7 @@ Input semantics:
 - direct joystick/directional input cancels or overrides the active tap target;
 - combat/action input may cancel or suspend tap movement as required by the shared action state;
 - tapping an NPC prioritizes NPC selection/approach/dialogue semantics over generic ground movement;
+- **tapping empty eligible map/world space must also move the player to that target; NPC tap-to-approach alone does not satisfy this requirement;**
 - HUD, quick-slot, dialogue, utility and other UI touches must never leak through as world movement commands;
 - blocked/unreachable targets must terminate or report failure rather than causing infinite movement/path loops;
 - reaching the target uses an explicit tolerance appropriate to the movement model;
@@ -68,9 +74,13 @@ Input semantics:
 
 World owns movement/path/collision semantics and exposes a stable move-target API. UX/input owns touch hit-testing, screen→world conversion/wiring and UI-vs-world input priority. These responsibilities must not be duplicated in `GameView.java`.
 
+**Current playtest gap (2026-09-10):** world-side move-target/camera contracts exist, but empty-map tap movement is not yet wired end-to-end in the mobile UX runtime. This is a P0 implementation gap, not an optional backlog item.
+
 ## 6. Character action states
 
 Minimum common states: `IDLE / WALK / CAST / ATTACK / SKILL / HIT / DEAD`.
+
+All field-capable states should retain the current `NW / NE / SW / SE` facing context where visually applicable. Directional sprite/image binding must be part of the renderer contract, not a one-frame frontal placeholder.
 
 CAST uses a generic raise-hand/hands casting body action unless verified original material says otherwise; spell identity should primarily come from effect/data.
 
@@ -101,17 +111,27 @@ The former design `monster death → ground item/drop entity → pickup → inve
 
 Unknown drop probability, quantity, item identity, monster→reward relation, or inventory-capacity policy remains PENDING. Removing pickup does not permit fabricated rewards. Inventory mutation and reward claim must be idempotent.
 
+**Current playtest gap (2026-09-10):** the tested main APK does not yet visibly grant monster item rewards into inventory after defeat. This is a P0 runtime-integration defect against this canon. Combat must emit the defeat event exactly once; RPG/Data must resolve an evidence-backed reward and mutate inventory exactly once; UX must make the resulting inventory change observable. A compiling reward pipeline that is not connected to the live play loop does not satisfy this requirement.
+
 ## 9. Quest/world canon
 
 Preserve original start conditions, NPC dialogue sequence, objective conditions, completion dialogue and rewards when evidenced. Quest state must distinguish undiscovered/available/in-progress/completable/rewarded/abandoned or equivalent explicit states. Do not invent lore, NPC relationships or town facts to fill gaps.
 
 First content objective is a coherent original-based starting-region/Milles vertical slice with connected NPC, quest and hunting loop, then expansion.
 
+### World expansion — USER CANON / `[ADAPTED]`
+
+The current camera-follow/world-scroll behavior is user-verified and accepted as the movement presentation baseline. However, the current prototype world extent is still insufficient. Continue expanding the connected Milles/start-region play area so traversal feels like a real village/field slice rather than a camera moving across a small test rectangle.
+
+Expansion must preserve collision continuity, reachable paths, NPC/monster visibility, portal semantics, camera clamp correctness and screen↔world touch conversion. Source-backed geometry is preferred; unverified connective geometry must remain explicitly `[ADAPTED]/[B]` and replaceable.
+
 ## 10. Mobile UX canon
 
 World remains visually central. Approved mobile shell: compact party/quest information, target HP top-center, minimap top-right, utility rail, translucent/expandable chat, HP/MP/EXP bottom-center, circular joystick bottom-left, frequent quick slots + attack + AUTO bottom-right. Do not restore giant placeholder HUD boxes or a permanently expanded PC-sized slot grid.
 
 User-approved NPC conversation flow from the current playtest is the baseline and must not regress without a concrete reason. Placeholder rectangular/text-heavy controls should continue moving toward a mobile RPG HUD with adequate touch targets and clear pressed/cooldown/disabled/selected feedback.
+
+Empty-map tap-to-move is a required peer input path to joystick movement. NPC tap-to-approach is a specialized interaction layered above it, not a replacement for generic world tapping.
 
 ## 11. AUTO canon
 
@@ -127,6 +147,15 @@ Existing canonical IDs/values/relationships must not be rewritten for convenienc
 
 **User-canon persistence rule:** when the user explicitly approves, rejects, replaces, or adds a gameplay/UX rule, the Director must persist that decision in canonical design documentation before relying on transient chat or agent prompts. Scheduled agents must treat the latest canonical design as authoritative on subsequent runs.
 
-**Supersession rule:** if any older plan, Master prose, backlog, DEV_HISTORY, handoff, test, code comment, or implementation conflicts with §8 monster reward delivery or §5 Tap-to-move user canon, the newer user-canon sections win. Agents must not restore retired ground-drop/pickup behavior or remove tap-to-move merely because an older document lacks it.
+**Supersession rule:** if any older plan, Master prose, backlog, DEV_HISTORY, handoff, test, code comment, or implementation conflicts with §8 monster reward delivery, §5 Tap-to-move user canon, §4 directional character presentation, or §9 world-expansion user canon, the newer user-canon sections win. Agents must not restore retired ground-drop/pickup behavior, remove empty-map tap-to-move, collapse character facing into a frontal sprite, or shrink the verified camera-follow world back into a one-screen test room merely because an older document lacks the newer rule.
+
+### Current Director P0 integration gates
+
+Until explicitly verified in a device playtest, the following are P0 integration gates:
+1. player/NPC/monster remain visible after world/camera changes;
+2. character field presentation faces `NW / NE / SW / SE` side-diagonal directions rather than front-facing;
+3. empty eligible map taps walk the character to the tapped world target with camera/collision correctness;
+4. monster defeat results in an observable, exactly-once direct inventory grant when an evidence-backed reward is resolved;
+5. Milles/start-region world extent continues expanding without breaking traversal, targeting, NPC interaction or combat.
 
 The Integrator is the final Design Compliance Gate. A compiling implementation that violates this constitution is a failed integration.
