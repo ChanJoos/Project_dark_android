@@ -68,13 +68,15 @@ Fields: `questId`, title/status, prerequisites, start NPC, state graph, objectiv
 
 Reward claim must be idempotent. Save/load must preserve branch and reward state.
 
-## Drop and inventory
+## Monster rewards and inventory
 
-Combat death emits a drop result → world drop entity → pickup validation → inventory mutation. AUTO follows the same world-drop path. Full inventory and invalid pickup must be explicit outcomes.
+Combat death emits a reward-resolution request. RPG·Progression resolves only evidence-backed EXP/Gold/item relationships. Resolved item rewards are **auto-looted directly into inventory** through one centralized inventory-mutation path; no ground item entity and no pickup-distance validation are used in the target runtime loop.
+
+AUTO and manual combat must call the same reward-resolution and inventory APIs. Full inventory, invalid item IDs, invalid quantity, unresolved probability/quantity, and unresolved monster→reward relationships must remain explicit outcomes. Removing ground pickup does not permit deterministic or invented rewards.
 
 ## AUTO
 
-AUTO is an orchestration layer over existing movement/target/combat/survival/loot APIs. It may not implement a second combat formula. Manual commands have priority over AUTO.
+AUTO is an orchestration layer over existing movement/target/combat/survival/reward APIs. It may not implement a second combat formula or a separate loot formula. Manual commands have priority over AUTO.
 
 ## Save contract
 
@@ -84,7 +86,7 @@ Persist IDs and mutable state, not duplicated canonical definitions. Save data m
 
 - World·Character owns map/entity presentation, character animation and world interaction plumbing.
 - Combat·Monster owns combat resolution/action execution and monster runtime AI.
-- RPG·Progression owns definitions/state for items, inventory, equipment, stats, EXP and progression.
+- RPG·Progression owns definitions/state for items, inventory, equipment, stats, EXP, reward resolution and progression.
 - Integrator·UX·QA owns mobile orchestration/UI, NPC/Quest/AUTO integration, cross-module contract enforcement and regression gates.
 
 Cross-domain access should occur through stable contracts/data definitions, not by duplicating logic in GameView.
