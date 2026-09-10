@@ -61,18 +61,30 @@ public final class CharacterRenderer {
     int frame=pose.state==State.WALK?((int)(pose.walkClock*8f)%4):0; // [B] prototype cadence
     float bob=(frame==1||frame==3)?-2f:0f;
 
-    // pose.x/pose.y are the logical foot anchor. Rendering scale never mutates gameplay/world coordinates.
+    boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
+    float facingX=left?-1f:1f;
+    float facingY=down?1f:-1f;
+    float recoilX=pose.state==State.HIT?-facingX*3.5f:0f; // [ADAPTED] presentation-only recoil.
+    float recoilY=pose.state==State.HIT?-facingY*1.5f:0f;
+
+    // pose.x/pose.y are the logical foot anchor. Rendering offsets never mutate gameplay/world coordinates.
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
-    float shadowHalfWidth=13f*SHADOW_RENDER_SCALE;
-    float shadowHalfHeight=4f*SHADOW_RENDER_SCALE;
+    float shadowHalfWidth=13f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?1.35f:1f);
+    float shadowHalfHeight=4f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?0.72f:1f);
     p.setColor(pose.hitFlash?0x99ff7766:0x66000000);
     c.drawOval(new RectF(pose.x-shadowHalfWidth,anchorY-shadowHalfHeight,
         pose.x+shadowHalfWidth,anchorY+shadowHalfHeight),p);
 
     c.save();
-    c.translate(pose.x,anchorY-(28f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE);
+    c.translate(pose.x+recoilX,anchorY-(28f*PLAYER_RENDER_SCALE)+bob*PLAYER_RENDER_SCALE+recoilY);
     c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
     c.translate(-8,0);
+    if(pose.state==State.DEAD){
+      // [ADAPTED] Static collapse pose until authenticated DEAD frames are positively identified.
+      c.rotate(left?-76f:76f,8f,27f);
+      c.scale(1f,0.86f,8f,27f);
+    }
     for(Layer layer:DRAW_ORDER)drawLayer(c,pose,layer,frame);
     c.restore();
   }
@@ -108,7 +120,7 @@ public final class CharacterRenderer {
     rect(c,outline,13,11+armLift+nearSwing*verticalBias,16,19+nearSwing*verticalBias);
     rect(c,skin,14,12+armLift+nearSwing*verticalBias,15,18+nearSwing*verticalBias);
     rect(c,outline,3,2,14,12);rect(c,skin,4,3,13,11);
-    if(pose.state==State.DEAD){p.setColor(0x66000000);c.drawRect(1,11,16,24,p);}
+    if(pose.state==State.DEAD){p.setColor(0x44000000);c.drawRect(1,11,16,24,p);}
   }
 
   private void drawHair(Canvas c,Pose pose){
@@ -180,7 +192,9 @@ public final class CharacterRenderer {
         p.setStyle(Paint.Style.FILL);break;
       case HIT:
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaaff7755);
-        c.drawCircle(8,8,5+7*q,p);p.setStyle(Paint.Style.FILL);break;
+        c.drawCircle(8,8,5+7*q,p);
+        c.drawLine(8-sx*2f,8-sy*2f,8+sx*8f,8+sy*8f,p); // [ADAPTED] directional hit streak.
+        p.setStyle(Paint.Style.FILL);break;
       default:break;
     }
   }
