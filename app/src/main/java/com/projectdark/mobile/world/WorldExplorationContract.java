@@ -20,11 +20,11 @@ public final class WorldExplorationContract {
       new Anchor("spawn",620f,560f,"SPAWN","ADAPTED/B","PROTOTYPE"),
       new Anchor("north_cross",790f,350f,"ROAD_JUNCTION","ADAPTED/B","PROTOTYPE"),
       new Anchor("central_plaza",790f,590f,"PLAZA","ADAPTED/B","PROTOTYPE"),
-      new Anchor("west_district",285f,705f,"DISTRICT","ADAPTED/B","PROTOTYPE"),
-      new Anchor("east_district",1315f,715f,"DISTRICT","ADAPTED/B","PROTOTYPE"),
+      new Anchor("west_district",320f,705f,"DISTRICT_APPROACH","ADAPTED/B","PROTOTYPE"),
+      new Anchor("east_district",1350f,715f,"DISTRICT_APPROACH","ADAPTED/B","PROTOTYPE"),
       new Anchor("south_west_lane",650f,900f,"ROAD","ADAPTED/B","PROTOTYPE"),
       new Anchor("south_east_lane",930f,900f,"ROAD","ADAPTED/B","PROTOTYPE"),
-      new Anchor("south_gate",790f,1035f,"GATE_APPROACH","ADAPTED/B","PROTOTYPE_TARGET_PENDING"),
+      new Anchor("south_gate",790f,1000f,"GATE_APPROACH","ADAPTED/B","PROTOTYPE_TARGET_PENDING"),
       new Anchor("south_portal",790f,1135f,"PORTAL","ADAPTED/B","PROTOTYPE_TARGET_PENDING")));
 
   private WorldExplorationContract(){}
