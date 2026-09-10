@@ -7,16 +7,17 @@ import java.util.Map;
 
 /** Single RPG-owned read-only snapshot for HUD/overlay rendering. */
 public final class RpgVisibleProgressionPresentation {
-  public enum RewardLineKind { EXP, ITEM_GRANTED, INVENTORY_FULL, INVALID_ITEM, INVALID_QUANTITY, UNRESOLVED, INFO }
+  public enum RewardLineKind { EXP, LEVEL_UP, ITEM_GRANTED, INVENTORY_FULL, INVALID_ITEM, INVALID_QUANTITY, UNRESOLVED, INFO }
 
   public static final class PlayerSummary {
     public final String jobCode;
     public final Integer level;
     public final Long exp;
+    public final Long expToNextLevel;
     public final Long gold;
     public final RpgProgressionState.ProgressionNode progressionNode;
     PlayerSummary(RpgProgressionState rpg){
-      this.jobCode=rpg.currentJobCode();this.level=rpg.normalLevel();this.exp=rpg.normalExp();this.gold=rpg.gold();
+      this.jobCode=rpg.currentJobCode();this.level=rpg.normalLevel();this.exp=rpg.normalExp();this.expToNextLevel=rpg.expToNextLevel();this.gold=rpg.gold();
       this.progressionNode=rpg.progressionNode();
     }
   }
@@ -72,12 +73,28 @@ public final class RpgVisibleProgressionPresentation {
           RpgProgressionState.RewardGrantStatus.UNRESOLVED_REWARD,RpgProgressionState.Evidence.PENDING));
       return Collections.unmodifiableList(lines);
     }
-    if(notice.exp!=null)lines.add(new RewardLine(RewardLineKind.EXP,"EXP +"+notice.exp,null,null,null,RpgProgressionState.Evidence.V));
 
-    // Prefer explicit grant outcomes. This retains failures that autoLootedItems alone cannot represent.
+    RpgProgressionState.ExpApplyOutcome expOutcome=notice.expOutcome;
+    if(expOutcome!=null){
+      if(expOutcome.status==RpgProgressionState.ExpApplyStatus.APPLIED){
+        lines.add(new RewardLine(RewardLineKind.EXP,"EXP +"+expOutcome.requestedExp,null,null,null,expOutcome.evidence));
+        if(expOutcome.levelsGained>0){
+          lines.add(new RewardLine(RewardLineKind.LEVEL_UP,"Lv"+expOutcome.beforeLevel+" → Lv"+expOutcome.afterLevel,null,null,null,RpgProgressionState.Evidence.B));
+        }
+      }else if(expOutcome.status==RpgProgressionState.ExpApplyStatus.PROJECTED_LEVEL_LIMIT){
+        lines.add(new RewardLine(RewardLineKind.UNRESOLVED,"EXP +"+expOutcome.requestedExp+" · Lv10 이후 곡선 런타임 projection 대기",null,null,null,RpgProgressionState.Evidence.PENDING));
+      }else if(expOutcome.status==RpgProgressionState.ExpApplyStatus.UNINITIALIZED){
+        lines.add(new RewardLine(RewardLineKind.UNRESOLVED,"EXP 지급 보류: 기존 저장 EXP 상태 미확정",null,null,null,RpgProgressionState.Evidence.PENDING));
+      }else{
+        lines.add(new RewardLine(RewardLineKind.INFO,"EXP 지급값 검증 실패",null,null,null,RpgProgressionState.Evidence.PENDING));
+      }
+    }else if(notice.exp!=null){
+      // Compatibility with old reward records created before progression mutation was enabled.
+      lines.add(new RewardLine(RewardLineKind.EXP,"EXP +"+notice.exp,null,null,null,RpgProgressionState.Evidence.V));
+    }
+
     for(RpgProgressionState.RewardGrantOutcome outcome:notice.grantOutcomes)lines.add(grantOutcomeLine(rpg,outcome));
 
-    // Compatibility for older resolved records that only expose the successful aggregate map.
     if(notice.grantOutcomes.isEmpty()){
       for(Map.Entry<String,Integer> grant:notice.autoLootedItems.entrySet()){
         RpgProgressionState.ItemDefinition def=rpg.itemDefinitions().get(grant.getKey());
