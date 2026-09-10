@@ -1,0 +1,36 @@
+{
+  "schema": "project-dark-visual-asset-manifest/v1",
+  "updated": "2026-09-11",
+  "assets": [
+    {
+      "id": "study.player.martial.idle.se.v1",
+      "status": "STUDY_REJECTED_FOR_HANDOFF",
+      "evidence": "ADAPTED",
+      "runtimeEligible": false,
+      "path": "design/visual/studies/player_martial_idle_se_v1.png",
+      "preview": "design/visual/previews/player_martial_idle_se_v1_preview_8x.png",
+      "dimensions": [24, 32],
+      "direction": "SE",
+      "state": "IDLE",
+      "footAnchor": [12, 29],
+      "alphaBBox": [2, 3, 20, 29],
+      "filter": "nearest-neighbor",
+      "source": "project ADAPTED study derived from current martial-artist visual contract; not claimed original",
+      "review": {
+        "silhouette": 8.0,
+        "anatomy": 7.0,
+        "perspective": 7.5,
+        "scale": 9.0,
+        "palette": 8.0,
+        "lightingMaterial": 7.0,
+        "pixelClustering": 8.0,
+        "alphaCrop": 9.5,
+        "anchorDepth": 9.0,
+        "animationContinuity": 7.0,
+        "average": 8.0,
+        "gate": "FAIL"
+      },
+      "rework": "Increase diagonal body read, face/shoulder articulation and material detail before any Character handoff; preserve connected neck/torso and baseline."
+    }
+  ]
+}
