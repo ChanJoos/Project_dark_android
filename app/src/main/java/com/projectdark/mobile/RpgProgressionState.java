@@ -16,7 +16,7 @@ public final class RpgProgressionState {
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
   public enum RewardGrantStatus { GRANTED, INVENTORY_FULL, INVALID_ITEM, INVALID_QUANTITY, UNRESOLVED_REWARD }
   public enum CombatConsumeStatus { PROCESSED_DEFEAT, DUPLICATE_OR_STALE, IGNORED_NON_DEFEAT }
-  public enum ExpApplyStatus { APPLIED, INVALID_AMOUNT, UNINITIALIZED, PROJECTED_LEVEL_LIMIT }
+  public enum ExpApplyStatus { APPLIED, INVALID_AMOUNT, UNINITIALIZED, PROJECTED_LEVEL_LIMIT, LEVEL_CAP }
   public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
   public enum RestoreResult { RESTORED, UNSUPPORTED_SCHEMA, INVALID_STATE }
@@ -58,11 +58,12 @@ public final class RpgProgressionState {
     public final Integer beforeLevel,afterLevel;
     public final int levelsGained;
     public final ExpApplyStatus status;
-    public final Evidence evidence;
+    public final Evidence evidence,curveEvidence;
     ExpApplyOutcome(Integer requestedExp,Long beforeExp,Long afterExp,Integer beforeLevel,Integer afterLevel,
         int levelsGained,ExpApplyStatus status,Evidence evidence){
       this.requestedExp=requestedExp;this.beforeExp=beforeExp;this.afterExp=afterExp;this.beforeLevel=beforeLevel;
       this.afterLevel=afterLevel;this.levelsGained=levelsGained;this.status=status;this.evidence=evidence;
+      this.curveEvidence=Evidence.B;
     }
   }
 
@@ -166,12 +167,13 @@ public final class RpgProgressionState {
     if(amount==null||amount<=0)return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.INVALID_AMOUNT,evidence);
     if(normalExp==null||normalLevel==null)return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.UNINITIALIZED,evidence);
     if(normalLevel>=LevelExpCurveCatalog.MAX_PROJECTED_LEVEL){
-      return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.PROJECTED_LEVEL_LIMIT,evidence);
+      return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.LEVEL_CAP,evidence);
     }
     long after;
     try{after=Math.addExact(normalExp,(long)amount);}catch(ArithmeticException overflow){
       return new ExpApplyOutcome(amount,beforeExp,beforeExp,beforeLevel,beforeLevel,0,ExpApplyStatus.INVALID_AMOUNT,evidence);
     }
+    after=Math.min(after,LevelExpCurveCatalog.LEVEL_99_CUMULATIVE_EXP);
     int projectedLevel=LevelExpCurveCatalog.levelForCumulativeExp(after);
     normalExp=after;normalLevel=Math.max(normalLevel,projectedLevel);
     return new ExpApplyOutcome(amount,beforeExp,normalExp,beforeLevel,normalLevel,normalLevel-beforeLevel,ExpApplyStatus.APPLIED,evidence);
@@ -250,8 +252,13 @@ public final class RpgProgressionState {
     if(s==null||s.schemaVersion!=RpgSaveSnapshot.CURRENT_SCHEMA_VERSION)return s==null?RestoreResult.INVALID_STATE:RestoreResult.UNSUPPORTED_SCHEMA;
     if(s.progressionNode==null||s.currentJobCode==null||s.normalLevel==null||s.normalLevel<1||s.normalLevel>99||(s.gold!=null&&s.gold<0)||s.lastCombatSequence<0)return RestoreResult.INVALID_STATE;
     if(s.normalExp!=null&&s.normalExp<0)return RestoreResult.INVALID_STATE;
-    if(s.normalExp!=null&&s.normalLevel<=LevelExpCurveCatalog.MAX_PROJECTED_LEVEL&&
-        s.normalExp<LevelExpCurveCatalog.cumulativeRequiredForLevel(s.normalLevel))return RestoreResult.INVALID_STATE;
+    if(s.normalExp!=null){
+      if(s.normalExp<LevelExpCurveCatalog.cumulativeRequiredForLevel(s.normalLevel))return RestoreResult.INVALID_STATE;
+      if(s.normalLevel<LevelExpCurveCatalog.MAX_PROJECTED_LEVEL&&
+          s.normalExp>=LevelExpCurveCatalog.cumulativeRequiredForLevel(s.normalLevel+1))return RestoreResult.INVALID_STATE;
+      if(s.normalLevel==LevelExpCurveCatalog.MAX_PROJECTED_LEVEL&&
+          s.normalExp!=LevelExpCurveCatalog.LEVEL_99_CUMULATIVE_EXP)return RestoreResult.INVALID_STATE;
+    }
     for(Map.Entry<String,Integer> e:s.inventory.entrySet())if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return RestoreResult.INVALID_STATE;
     for(Map.Entry<String,String> e:s.equipmentBySlot.entrySet()){
       ItemDefinition def=items.get(e.getValue());Integer owned=s.inventory.get(e.getValue());
