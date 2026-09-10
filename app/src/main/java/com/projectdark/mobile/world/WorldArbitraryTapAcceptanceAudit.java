@@ -53,8 +53,9 @@ public final class WorldArbitraryTapAcceptanceAudit {
       float[] target=TARGETS[i];if(!world.canPlayerOccupy(target[0],target[1]))return false;
       Walker walker=new Walker(world);
       WorldCameraTransform camera=new WorldCameraTransform(MIN_X,MAX_X,MIN_Y,MAX_Y,640f,360f);
-      camera.snapTo(i<5?620f:i<9?1840f:790f,i<5?560f:i<9?820f:1360f);
+      camera.snapTo(target[0],target[1]);
       WorldCameraTransform.Point screen=camera.worldToScreen(target[0],target[1]);
+      if(screen.x<0f||screen.x>640f||screen.y<0f||screen.y>360f)return false;
       WorldCameraTransform.Point roundTrip=camera.screenToWorld(screen.x,screen.y);
       if(distance(roundTrip.x,roundTrip.y,target[0],target[1])>.01f)return false;
       WorldMoveTargetController movement=new WorldMoveTargetController(world,walker);
