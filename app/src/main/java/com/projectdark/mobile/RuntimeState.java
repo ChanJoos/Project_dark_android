@@ -56,6 +56,7 @@ public final class RuntimeState {
   private final RpgProgressionState rpg=new RpgProgressionState();
 
   public RuntimeState(){
+    if(!RewardPipelineAudit.verify())throw new IllegalStateException("Direct auto-loot contract audit failed");
     for(RectF r:world.blockers())obstacles.add(new RectF(r));
     for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
     for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
