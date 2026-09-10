@@ -10,31 +10,27 @@ import java.util.Map;
 /**
  * Evidence-aware world manifest for the current PROJECT DARK runtime.
  *
- * [O] visualSourceUrl points to an official-hosted Nexon screenshot used only as the current visual reference/background.
- * [B] bounds, collision rectangles and entity fixture coordinates are reconstruction geometry for runtime validation.
+ * [O] visualSourceUrl points to an official-hosted Nexon screenshot used only as visual evidence.
+ * [ADAPTED] / [B] village bounds, collision geometry and fixture coordinates are prototype spatial
+ * structure so the starting slice can be explored for tens of seconds while original Milles geometry
+ * remains unverified.  They must stay data-driven and replaceable by traced source-backed layers.
  * PENDING_CROP means no authenticated redistributable tile/object/sprite mapping has been attached yet.
- *
- * The screenshot is reference/prototype presentation only. Runtime world structure is exposed as explicit
- * TILE / OBJECT / COLLISION / NPC / MONSTER_SPAWN / PORTAL layers so later Master-backed data can replace
- * fixtures without turning the screenshot into a monolithic final map texture.
  */
 public final class WorldDef {
   public static final String ID="milles_runtime_proto";
   public static final String EVIDENCE_VISUAL="O";
-  public static final String EVIDENCE_GEOMETRY="B";
+  public static final String EVIDENCE_GEOMETRY="ADAPTED/B";
+  public static final String GEOMETRY_STATUS="ADAPTED_PROTOTYPE_VILLAGE";
   public static final String ASSET_STATUS="PENDING_CROP";
   public static final String VISUAL_SOURCE_URL="https://storage.nexon.com/dsk03/13/NX_FILE/Board/196608/05/2/000/00/69/5557538701493472772.png";
 
-  public static final float MIN_X=180f,MAX_X=760f,MIN_Y=120f,MAX_Y=455f;
-  public static final float PLAYER_SPAWN_X=480f,PLAYER_SPAWN_Y=300f;
+  // [ADAPTED/B] Expanded prototype footprint. Logical coordinates are intentionally renderer-independent.
+  public static final float MIN_X=96f,MAX_X=1184f,MIN_Y=64f,MAX_Y=864f;
+  public static final float PLAYER_SPAWN_X=500f,PLAYER_SPAWN_Y=470f;
 
   /** Stable world-layer vocabulary required by DATA_CONTRACT. */
   public enum LayerKind { TILE, OBJECT, COLLISION, NPC, MONSTER_SPAWN, PORTAL }
 
-  /**
-   * Describes provenance/readiness for a world layer without fabricating missing canonical content.
-   * evidence uses the project evidence vocabulary; status remains PENDING/PENDING_CROP where source data is absent.
-   */
   public static final class LayerStatus {
     public final LayerKind kind;
     public final String evidence,status;
@@ -54,18 +50,22 @@ public final class WorldDef {
     MonsterSpawn(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.x=x;this.y=y;this.hp=hp;this.assetStatus=assetStatus;}
   }
 
-  /** Portal contract only; no canonical Milles portal is fabricated until Master-backed placement is wired. */
+  /** Portal geometry may exist as an adapted prototype without asserting an original destination. */
   public static final class PortalSpawn {
-    public final String portalId,targetMapId,evidence;
-    public final float x,y;
-    PortalSpawn(String portalId,String targetMapId,float x,float y,String evidence){this.portalId=portalId;this.targetMapId=targetMapId;this.x=x;this.y=y;this.evidence=evidence;}
+    public final String portalId,targetMapId,evidence,status;
+    public final float x,y,radius;
+    PortalSpawn(String portalId,String targetMapId,float x,float y,float radius,String evidence,String status){
+      this.portalId=portalId;this.targetMapId=targetMapId;this.x=x;this.y=y;this.radius=radius;this.evidence=evidence;this.status=status;
+    }
   }
 
-  /** Object contract only; authenticated object decomposition remains PENDING_CROP. */
+  /** Spatial landmark/object anchor. Visual decomposition remains PENDING_CROP. */
   public static final class WorldObject {
-    public final String objectId,visualAssetRef,evidence;
+    public final String objectId,visualAssetRef,evidence,status;
     public final float x,y;
-    WorldObject(String objectId,String visualAssetRef,float x,float y,String evidence){this.objectId=objectId;this.visualAssetRef=visualAssetRef;this.x=x;this.y=y;this.evidence=evidence;}
+    WorldObject(String objectId,String visualAssetRef,float x,float y,String evidence,String status){
+      this.objectId=objectId;this.visualAssetRef=visualAssetRef;this.x=x;this.y=y;this.evidence=evidence;this.status=status;
+    }
   }
 
   private final List<RectF> blockers;
@@ -79,32 +79,52 @@ public final class WorldDef {
 
   public WorldDef(){
     List<RectF> b=new ArrayList<>();
-    b.add(new RectF(272f,170f,342f,238f));
-    b.add(new RectF(600f,150f,684f,218f));
-    b.add(new RectF(312f,350f,374f,430f));
-    b.add(new RectF(620f,332f,700f,420f));
+    // [ADAPTED/B] North building row leaves a broad east-west road below it.
+    b.add(new RectF(180f,120f,360f,255f));
+    b.add(new RectF(455f,105f,640f,235f));
+    b.add(new RectF(780f,125f,1000f,270f));
+    // [ADAPTED/B] West/east structures frame the central plaza without sealing it.
+    b.add(new RectF(145f,365f,315f,545f));
+    b.add(new RectF(900f,350f,1080f,540f));
+    // [ADAPTED/B] South structures create two lower lanes and a central exit route.
+    b.add(new RectF(255f,665f,450f,815f));
+    b.add(new RectF(735f,670f,955f,820f));
+    // Small landmark blockers make the plaza navigational rather than an empty rectangle.
+    b.add(new RectF(565f,390f,625f,450f));
+    b.add(new RectF(650f,520f,710f,575f));
     blockers=Collections.unmodifiableList(b);
 
     List<NpcSpawn> n=new ArrayList<>();
-    n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",555f,248f,
-        "밀레스에 온 것을 환영합니다. 이 대화는 모바일 접근/대화 루프 검증용 프로토타입입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",525f,515f,
+        "밀레스 탐색/대화 루프 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_service_proto","마을 서비스 지점 [B]",830f,315f,
+        "서비스 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_gate_proto","남문 안내 지점 [B]",590f,760f,
+        "출입구 접근 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
     npcSpawns=Collections.unmodifiableList(n);
 
     List<MonsterSpawn> m=new ArrayList<>();
-    m.add(new MonsterSpawn("combat_dummy_01","훈련용 몬스터 [B]",430f,205f,60,ASSET_STATUS));
+    // Kept away from the central plaza so traversal can be judged independently from combat pressure.
+    m.add(new MonsterSpawn("combat_dummy_01","훈련용 몬스터 [B]",1040f,650f,60,ASSET_STATUS));
     monsterSpawns=Collections.unmodifiableList(m);
 
-    // Intentionally empty: no canonical portal/object placement is invented from the screenshot.
-    portalSpawns=Collections.emptyList();
-    objects=Collections.emptyList();
+    List<PortalSpawn> p=new ArrayList<>();
+    p.add(new PortalSpawn("milles_south_exit_proto","PENDING_TARGET_MAP",590f,842f,22f,EVIDENCE_GEOMETRY,"PROTOTYPE_DISABLED_TARGET_PENDING"));
+    portalSpawns=Collections.unmodifiableList(p);
+
+    List<WorldObject> o=new ArrayList<>();
+    o.add(new WorldObject("central_plaza_anchor",ASSET_STATUS,590f,485f,EVIDENCE_GEOMETRY,GEOMETRY_STATUS));
+    o.add(new WorldObject("north_road_anchor",ASSET_STATUS,590f,300f,EVIDENCE_GEOMETRY,GEOMETRY_STATUS));
+    o.add(new WorldObject("south_gate_anchor",ASSET_STATUS,590f,760f,EVIDENCE_GEOMETRY,GEOMETRY_STATUS));
+    objects=Collections.unmodifiableList(o);
 
     EnumMap<LayerKind,LayerStatus> ls=new EnumMap<>(LayerKind.class);
-    ls.put(LayerKind.TILE,new LayerStatus(LayerKind.TILE,"PENDING","PENDING_CROP"));
-    ls.put(LayerKind.OBJECT,new LayerStatus(LayerKind.OBJECT,"PENDING","PENDING_CROP"));
-    ls.put(LayerKind.COLLISION,new LayerStatus(LayerKind.COLLISION,EVIDENCE_GEOMETRY,"PROTOTYPE"));
+    ls.put(LayerKind.TILE,new LayerStatus(LayerKind.TILE,"PENDING","PENDING_CROP/ADAPTED_GEOMETRY_ONLY"));
+    ls.put(LayerKind.OBJECT,new LayerStatus(LayerKind.OBJECT,EVIDENCE_GEOMETRY,"PROTOTYPE_ANCHORS/PENDING_CROP"));
+    ls.put(LayerKind.COLLISION,new LayerStatus(LayerKind.COLLISION,EVIDENCE_GEOMETRY,GEOMETRY_STATUS));
     ls.put(LayerKind.NPC,new LayerStatus(LayerKind.NPC,EVIDENCE_GEOMETRY,"PROTOTYPE/PENDING_CROP"));
     ls.put(LayerKind.MONSTER_SPAWN,new LayerStatus(LayerKind.MONSTER_SPAWN,EVIDENCE_GEOMETRY,"PROTOTYPE/PENDING_CROP"));
-    ls.put(LayerKind.PORTAL,new LayerStatus(LayerKind.PORTAL,"PENDING","PENDING"));
+    ls.put(LayerKind.PORTAL,new LayerStatus(LayerKind.PORTAL,EVIDENCE_GEOMETRY,"PROTOTYPE_TARGET_PENDING"));
     layerStatuses=Collections.unmodifiableMap(ls);
   }
 
@@ -117,19 +137,11 @@ public final class WorldDef {
   public MillesMasterManifest masterManifest(){return masterManifest;}
   public MillesTraceContract traceContract(){return traceContract;}
 
-  /** Static/runtime audit hook: every required layer kind must remain explicitly represented. */
   public boolean hasCompleteLayerContract(){
     for(LayerKind kind:LayerKind.values())if(!layerStatuses.containsKey(kind))return false;
     return true;
   }
 
-  /**
-   * Confirms that canonical Milles identity/ID projection is present without claiming tile/collision readiness.
-   */
   public boolean hasMasterBackedMillesIdentity(){return masterManifest.hasCanonicalIdentity();}
-
-  /**
-   * Confirms that Master tile coordinates and prototype screen coordinates remain explicitly separated.
-   */
   public boolean hasSafeMillesTraceContract(){return traceContract.passesAudit();}
 }
