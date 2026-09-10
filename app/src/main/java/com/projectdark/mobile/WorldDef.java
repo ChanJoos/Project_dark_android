@@ -75,6 +75,7 @@ public final class WorldDef {
   private final List<WorldObject> objects;
   private final Map<LayerKind,LayerStatus> layerStatuses;
   private final MillesMasterManifest masterManifest=new MillesMasterManifest();
+  private final MillesTraceContract traceContract=new MillesTraceContract(masterManifest);
 
   public WorldDef(){
     List<RectF> b=new ArrayList<>();
@@ -114,6 +115,7 @@ public final class WorldDef {
   public List<WorldObject> objects(){return objects;}
   public Map<LayerKind,LayerStatus> layerStatuses(){return layerStatuses;}
   public MillesMasterManifest masterManifest(){return masterManifest;}
+  public MillesTraceContract traceContract(){return traceContract;}
 
   /** Static/runtime audit hook: every required layer kind must remain explicitly represented. */
   public boolean hasCompleteLayerContract(){
@@ -125,4 +127,9 @@ public final class WorldDef {
    * Confirms that canonical Milles identity/ID projection is present without claiming tile/collision readiness.
    */
   public boolean hasMasterBackedMillesIdentity(){return masterManifest.hasCanonicalIdentity();}
+
+  /**
+   * Confirms that Master tile coordinates and prototype screen coordinates remain explicitly separated.
+   */
+  public boolean hasSafeMillesTraceContract(){return traceContract.passesAudit();}
 }
