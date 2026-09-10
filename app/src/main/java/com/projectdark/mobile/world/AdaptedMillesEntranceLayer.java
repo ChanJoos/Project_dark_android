@@ -29,6 +29,8 @@ public final class AdaptedMillesEntranceLayer {
     List<Entrance> r=new ArrayList<>();
     for(AdaptedMillesMapLayer.Structure s:AdaptedMillesMapLayer.structures()){
       if(s.kind==AdaptedMillesMapLayer.StructureKind.WALL||s.kind==AdaptedMillesMapLayer.StructureKind.LANDMARK)continue;
+      AdaptedMillesIsoBuildingLayer.Building iso=AdaptedMillesIsoBuildingLayer.byStructureId(s.id);
+      if(iso!=null){r.add(new Entrance("entrance_"+s.id,s.id,iso.doorFootX,iso.doorFootY,28f,iso.approachX,iso.approachY));continue;}
       float cx=(s.left+s.right)*.5f;
       float doorWidth=Math.min(54f,Math.max(34f,(s.right-s.left)*.18f));
       r.add(new Entrance("entrance_"+s.id,s.id,cx,s.bottom,doorWidth,cx,s.bottom+34f));
