@@ -1,58 +1,54 @@
-# World handoff — PASS 37 MAP EXPANSION
+# World handoff — PASS 38 BUILDING / ENTRANCE VISUALS
 
-- Branch: `agent/world/20260910-1847`
-- Draft PR: #61
-- Code commit: `de9ea41994c0bdf5a81789f0481a4c1bcf36c649`
+- Branch: `agent/world/20260910-1933`
+- Parent World lineage: PR #61 / `agent/world/20260910-1847@98a98d11a2a02f00c9a73d50b113aceb7a3e5b60`
+- Latest main checked before work: `2b66df9780142e3d84606f4ac0250dcabfa2d2b7`
 - Geometry/visual status: `ADAPTED/B`; exact original Milles geometry and art remain unverified/`PENDING_CROP`.
 
-## Latest canonical response
+## Canon response
+No newer World canon supersedes PASS 37. Continue expanding the connected village, preserve camera/tap/collision/portal behavior, keep source-backed reconstruction preferred, and keep authored gaps explicitly replaceable `[ADAPTED]/[B]`.
 
-The Design Constitution now explicitly says the current expanded prototype is still too small. PASS
-37 therefore expands the physical world before continuing cosmetic-only work.
+## Visible map delta
 
-## Visible map state
+### Structure visuals
+- All 20 collision-aligned structures now have renderer-facing visual profiles.
+- 14 HOUSE/HALL/SHOP structures render as actual layered silhouettes:
+  - pitched roof
+  - front facade
+  - side-volume/shadow
+  - eaves
+  - visible door
+  - exterior step
+- WALL and LANDMARK structures have dedicated non-box silhouettes.
+- Visual dimensions are prototype presentation only and do not change logical collision.
 
-### Extent and districts
-- Bounds: 2240×1552 logical units, previously 1600×1120.
-- Existing central village is preserved.
-- New connected regions: east market square, east outer lane, south commons and outer south gate.
-- Target-pending south portal moved to the new outer boundary; destination remains unresolved and disabled.
-- New exploration anchors: `east_market`, `east_outer_lane`, `south_commons`.
+### Entrance layer
+- Added 14 stable building entrance IDs (`entrance_<structureId>`).
+- Each entrance exposes building ID, foot coordinate, visual width and exterior approach coordinate.
+- Status is `VISUAL_ENTRANCE_ONLY_INTERIOR_PENDING`; no interior/portal is fabricated.
+- `WorldMapProjection.entrances()` exposes the layer for future NPC/interaction routing.
 
-### TILE layer
-- 3,312 renderable 64×32 diamonds, previously 1,691.
-- 2,123 GROUND / 640 ROAD / 527 PLAZA / 22 GATE.
-- 710 tiles have transition-edge masks so roads, plazas and gates have readable borders.
-- Tile asset refs remain replaceable `PENDING_CROP` slots.
-
-### OBJECT and decoration layers
-- 20 collision-aligned structures, previously 11.
-- 26 non-collision visual decorations: trees, fences, signs, well, benches and lamps.
-- Decorations expose stable IDs, depth keys, evidence/status and asset refs.
-- `WorldMapProjection.decorations()` exposes the new layer.
-- `AdaptedMillesMapRenderer` draws tiles, transitions, decorations and static structures.
+### Vegetation / threshold readability
+- Decorations increased from 26 to 38.
+- Added entrance-adjacent BUSH objects around major hall/shop/house fronts.
+- Added two visible GATEPOST objects at the outer south-gate threshold.
+- South portal destination remains PENDING/fail-closed.
 
 ## Director / UX integration request
-
 `GameView.java` remains World-non-owned.
 
-1. Keep one `WorldRuntimeAdapter` and one `AdaptedMillesMapRenderer`.
-2. Draw `mapRenderer.draw(canvas, worldAdapter)` before dynamic player/NPC/monster rendering.
-3. Do not redraw the old empty background over the map.
-4. Continue routing eligible empty-map taps through `requestGroundScreenTap`; NPC taps remain separate.
-5. Use the same camera projection for all dynamic entities. The expanded bounds are consumed automatically.
-6. Capture an Android screenshot/playtest of traversal from the central plaza to east market and south gate.
+1. Keep `AdaptedMillesMapRenderer.draw(canvas, worldAdapter)` before dynamic entity rendering.
+2. The renderer now draws roof/wall/door/step building silhouettes automatically; do not overlay the old blocker/X-box presentation over these structures.
+3. Continue using the same WorldRuntimeAdapter camera for map + NPC + monster + portal projection.
+4. Entrances are visual/approach anchors only; do not trigger an interior transition unless a verified/accepted target map contract is added later.
+5. Capture Android screenshots in central village, east market and outer south gate after integration to confirm building readability and camera scrolling.
 
 ## Verification
-
-- Isolated Java compilation: PASS.
-- `MapExpansionAudit PASS`.
-- Draft PR #61 remains open, draft and mergeable.
-- Full Gradle/APK/runtime screenshot: not verified by the World agent.
+- IMPLEMENTED: yes.
+- Static/source count: 20 structure visual profiles / 14 entrances / 38 decorations.
+- BUILD VERIFIED: not claimed by World agent.
+- RUNTIME VERIFIED: pending Director APK/device integration.
+- `GameView.java`, CharacterRenderer, Combat, RPG, HUD and quest code were not modified.
 
 ## Next World priority
-
-Continue visible map production: replace rectangular structures with roof/wall/door silhouettes, add
-collision-aligned vegetation and entrance objects, then replace `PENDING_CROP` visual slots with
-source-backed Milles assets as calibration becomes available. Navigation-only audits are not the
-priority unless an actual runtime defect appears.
+Continue visible map production rather than navigation-only audits: collision-aware vegetation/object clusters, district-specific roof/wall silhouette variation, then source-backed Milles replacements as visual identification/calibration becomes available.
