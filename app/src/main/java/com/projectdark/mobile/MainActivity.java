@@ -17,7 +17,7 @@ public final class MainActivity extends Activity {
         hideSystemUi();
         game = new GameView(this);
         setContentView(game);
-        Toast.makeText(this, "이동: 빈 맵 터치 · 전투: 몬스터 선택 → ATK / SKILL / MAGIC", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "이동: 빈 맵 터치 · 새 위치 터치로 목표 변경 · 방향키로 취소 · 전투: 몬스터 선택 → ATK / SKILL / MAGIC", Toast.LENGTH_LONG).show();
     }
 
     private void hideSystemUi() {
