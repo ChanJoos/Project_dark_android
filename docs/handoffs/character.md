@@ -78,3 +78,33 @@ At handoff time GitHub had not yet reported a workflow run for the latest head, 
 
 ### Next P0
 Cut and bind the approved `ATTACK`, then `SKILL`, `HIT`, `DEAD`, and finally `CAST` frames using the same 24×32/nearest-neighbor/1.50 anchor contract. Do not regress IDLE/WALK back to procedural drawing.
+
+---
+
+## 2026-09-10 20:22 KST — agent/character/20260910-2022
+
+### Latest playtest supersession
+Re-read `DESIGN_CONSTITUTION`, `DATA_CONTRACT`, `SOURCE_OF_TRUTH`, `PLAYTEST_CANON_20260910_1938`, the visual-reference contract, Character history and this handoff before coding. The device-test canon supersedes the old 1.50 lock: next-test player scale is now `1.60 [ADAPTED]`, with a reduced head/body target `0.28–0.30`.
+
+### Implemented visual delta — atlas-backed V5
+- presentation profile: `USER_PLAYTEST_ATLAS_20260910_V5`;
+- `PLAYER_RENDER_SCALE` changed from `1.50` to **`1.60`** while logical foot anchor remains `0`;
+- rebuilt the 120×128 default atlas from the approved V4 lineage by reducing the visible head band one logical pixel per 24×32 frame; runtime target is `HEAD_TO_BODY_RATIO=0.29` rather than scaling the old head up together with the body;
+- preserved four physical rows `SW / SE / NW / NE` and the existing IDLE + 4-frame WALK sequence;
+- added `player_attack_atlas.png`, 96×128, 4 ATTACK frames × 4 directions;
+- `ATTACK` now advances through the directional image atlas from `stateClock/stateDuration` instead of constructing detached arm/weapon rectangles at runtime;
+- `CAST / SKILL / HIT / DEAD` retain the same V5 directional atlas body and anchor, with only state transform/effects until their dedicated frame atlases are cut. This intentionally eliminates the old procedural-body fallback from those states so limb cohesion cannot regress;
+- `CharacterRendererAudit` now gates scale 1.60, head ratio 0.28–0.30, 24×32 frames, four directional rows, IDLE/WALK default-atlas binding and ATTACK-atlas binding;
+- nearest-neighbor pixel presentation remains enforced; no anti-alias/dither/filtering was reintroduced.
+
+### Acceptance inspection
+Manual atlas preview inspection covered NW/NE/SW/SE IDLE, a WALK frame and ATTACK frame. The revised head is visibly smaller relative to the unchanged torso/leg region, all rows remain distinct, arms/legs are part of the image silhouette rather than separately rendered shapes, and ATTACK uses complete actor frames rather than floating limb components. Scale is handled only at draw time, so world/collision coordinates are unchanged.
+
+### Provenance / ownership
+The atlases remain user-approved generated `[ADAPTED]` assets and are not claimed as authenticated Nexon pixels; original source sprites remain `PENDING_CROP`. No `GameView.java`, world/camera/collision/pathfinding/portal, Combat, RPG/inventory/reward, HUD/input, NPC dialogue or quest-state file was modified.
+
+### PR
+Draft PR #77: `Character: V5 playtest scale and directional attack atlas`.
+
+### Next P0
+Continue the same atlas line in this order: dedicated `SKILL` body/effect frames → `HIT` → `DEAD` → `CAST`. Do not reduce scale below 1.60 or restore the former larger-head V4 atlas unless a newer explicit user playtest supersedes this canon.
