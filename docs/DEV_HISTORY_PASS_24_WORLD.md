@@ -16,7 +16,7 @@ Added a stable world-side move-target contract in `com.projectdark.mobile.world`
 
 - `WorldMoveTargetController`
   - distinct `requestGroundMove` and `requestNpcApproach` APIs;
-  - request IDs and replacement semantics;
+  - request IDs plus explicit `replacedRequestId` replacement semantics;
   - `MOVING / REACHED / BLOCKED / CANCELLED` outcomes;
   - explicit direct-input/action/explicit cancel reasons;
   - four-neighbour bounded A* with occupancy and map-bound gates;
