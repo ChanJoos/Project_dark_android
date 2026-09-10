@@ -16,8 +16,8 @@ public final class CharacterRenderer {
   public static final String EVIDENCE="B+ADAPTED";
   public static final String ASSET_STATUS="PENDING_CROP";
 
-  /** User runtime-approved baseline restored from c149434f; logical/world coordinates stay unchanged. */
-  public static final float PLAYER_RENDER_SCALE=1.35f;
+  /** User-approved fixed presentation scale; logical/world coordinates stay unchanged. */
+  public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
 
