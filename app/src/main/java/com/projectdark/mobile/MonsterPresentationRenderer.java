@@ -12,8 +12,8 @@ import android.graphics.RectF;
 public final class MonsterPresentationRenderer {
   public static final String EVIDENCE="B";
   public static final String ASSET_STATUS="PENDING_CROP";
-  public static final float MONSTER_RENDER_SCALE=0.86f; // [ADAPTED]
-  public static final float SHADOW_RENDER_SCALE=0.60f; // [ADAPTED]
+  public static final float MONSTER_RENDER_SCALE=0.76f; // [ADAPTED] reduced from 0.86
+  public static final float SHADOW_RENDER_SCALE=0.52f; // [ADAPTED]
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
 
   public enum Direction { NW, NE, SW, SE }
@@ -78,20 +78,20 @@ public final class MonsterPresentationRenderer {
 
   private void drawSelection(Canvas c,MonsterPose pose,float anchorY){
     if(!pose.selected)return;
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.6f);p.setColor(0xffffd86b);
-    c.drawOval(new RectF(pose.x-16f,anchorY-7f,pose.x+16f,anchorY+7f),p);p.setStyle(Paint.Style.FILL);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.4f);p.setColor(0xffffd86b);
+    c.drawOval(new RectF(pose.x-13f,anchorY-6f,pose.x+13f,anchorY+6f),p);p.setStyle(Paint.Style.FILL);
   }
 
   private void drawAttackTelegraph(Canvas c,MonsterPose pose,float anchorY){
     if(pose.attackTelegraphPhase<=0f||pose.state==State.DEAD)return;
     float q=pose.attackTelegraphPhase;
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f+2f*q);p.setColor(0xaaff7755);
-    c.drawCircle(pose.x,anchorY-17f,13f+7f*q,p);p.setStyle(Paint.Style.FILL);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.4f+1.8f*q);p.setColor(0xaaff7755);
+    c.drawCircle(pose.x,anchorY-14f,11f+6f*q,p);p.setStyle(Paint.Style.FILL);
   }
 
   private void drawHp(Canvas c,MonsterPose pose,float anchorY){
     if(pose.state==State.DEAD)return;
-    float l=pose.x-15f,r=pose.x+15f,t=anchorY-36f,b=anchorY-32f;
+    float l=pose.x-13f,r=pose.x+13f,t=anchorY-31f,b=anchorY-27.5f;
     p.setColor(0xb51a1714);c.drawRoundRect(new RectF(l,t,r,b),3f,3f,p);
     p.setColor(0xffd63442);c.drawRoundRect(new RectF(l,t,l+(r-l)*pose.hpRatio,b),3f,3f,p);
   }
@@ -99,8 +99,8 @@ public final class MonsterPresentationRenderer {
   private void drawDamage(Canvas c,MonsterPose pose,float anchorY){
     if(!pose.showDamage||pose.lastDamage<=0)return;
     float q=phase(pose);String text="-"+pose.lastDamage;
-    p.setTextSize(10f);p.setColor(0xffffdc72);float tw=p.measureText(text);
-    c.drawText(text,pose.x-tw/2f,anchorY-40f-(12f*q),p);
+    p.setTextSize(9f);p.setColor(0xffffdc72);float tw=p.measureText(text);
+    c.drawText(text,pose.x-tw/2f,anchorY-34f-(11f*q),p);
   }
 
   private float phase(MonsterPose pose){return pose.stateDuration<=0f?0f:Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));}

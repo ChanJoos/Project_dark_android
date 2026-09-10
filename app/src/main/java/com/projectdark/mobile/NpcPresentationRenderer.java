@@ -12,8 +12,8 @@ import android.graphics.RectF;
 public final class NpcPresentationRenderer {
   public static final String EVIDENCE="B";
   public static final String ASSET_STATUS="PENDING_CROP";
-  public static final float NPC_RENDER_SCALE=0.88f; // [ADAPTED]
-  public static final float SHADOW_RENDER_SCALE=0.56f; // [ADAPTED]
+  public static final float NPC_RENDER_SCALE=0.78f; // [ADAPTED] reduced from 0.88 to restore world readability
+  public static final float SHADOW_RENDER_SCALE=0.50f; // [ADAPTED]
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
 
   public enum Direction { NW, NE, SW, SE }
@@ -58,12 +58,12 @@ public final class NpcPresentationRenderer {
     c.restore();
 
     if(pose.selected){
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xfff0d17a);
-      c.drawCircle(pose.x,anchorY-20f,14f,p);p.setStyle(Paint.Style.FILL);
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.35f);p.setColor(0xfff0d17a);
+      c.drawCircle(pose.x,anchorY-16f,11f,p);p.setStyle(Paint.Style.FILL);
     }
     if(!pose.name.isEmpty()){
       p.setTextSize(8f);p.setColor(0xfff3e1ae);
-      float tw=p.measureText(pose.name);c.drawText(pose.name,pose.x-tw/2f,anchorY-42f,p);
+      float tw=p.measureText(pose.name);c.drawText(pose.name,pose.x-tw/2f,anchorY-35f,p);
     }
   }
 
