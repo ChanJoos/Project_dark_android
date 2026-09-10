@@ -1,56 +1,47 @@
 # UX / NPC / Quest handoff
 
-## 2026-09-10 18:38 KST — full mobile MMORPG HUD/UX redesign
+## 2026-09-10 19:02 KST — inventory modal input-safety continuation
 
-Branch: `agent/ux/manual-20260910-1838`
-Base main: `40d945d724c906189a630cbfc9d43342ffc6639c`
+Branch: `agent/ux/auto-20260910-1902`
+Parent UX head: `d24f20842d9c3be3c7aa07e70b39d832cbdbfefb` (PR #63)
+Latest main verified before work: `2b66df9780142e3d84606f4ac0250dcabfa2d2b7`
 
 ### Canonical read-first result
-- Re-read `DESIGN_CONSTITUTION`, `DATA_CONTRACT`, `SOURCE_OF_TRUTH`, latest UX handoff, and current main runtime before coding.
-- No newer canonical rule supersedes the current movement/reward/UX contract.
-- Tap-to-move remains implemented and is preserved.
-- Monster rewards remain direct inventory grant; no ground-drop/pickup UX exists or was added.
+- Re-read `design/DESIGN_CONSTITUTION.md`, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, current UX handoff, and current DEV_HISTORY lineage before implementation.
+- No newer canonical rule supersedes the mobile shell, tap-to-move, diagonal character, or direct-inventory reward contracts.
+- Direct inventory auto-loot remains canonical. No ground-drop/pickup behavior was introduced.
+- PR #63 remains open/draft/mergeable and is the immediate UX continuity baseline; this run continues from its head rather than rebuilding the HUD from main.
 
 ### User-visible delta completed
-`GameView` v0.71 replaces the prototype-looking shell with a cohesive mobile MMORPG HUD while preserving runtime semantics:
-- compact party card and quest tracker;
-- compact top-center target frame with HP bar;
-- framed minimap with player marker and de-emphasized coordinates;
-- circular utility rail with inventory active state;
-- translucent compact chat/activity panel;
-- two-layer floating joystick with active/pressed presentation;
-- consolidated player Lv/job + HP/MP/EXP status module;
-- radial combat cluster with large primary ATK plus SKILL/MAG/KICK/MODE/AUTO secondary controls;
-- pressed/selected/cooldown/disabled visual states using existing readiness surfaces;
-- player AUTO remains visibly locked because no stable player AUTO orchestration contract exists yet;
-- non-blocking centered feedback pills for movement/target/NPC/resource errors;
-- separate reward banner consuming `RpgInventoryPresentation.RewardNotice` read-only data;
-- inventory restyled as a dimmed modal/card list with selection and equipment action emphasis;
-- NPC dialogue restyled as a dimmed game dialogue modal with named header and close affordance;
-- death overlay restyled without changing revive semantics.
+`GameView` v0.72 fixes the inventory modal so it behaves like a real mobile-game overlay instead of a visual panel over still-active gameplay controls:
+- adds a visible circular `×` close affordance to the inventory header;
+- tapping the close affordance closes inventory and consumes the touch;
+- tapping outside the inventory card now closes inventory and consumes the touch;
+- while inventory is open, the same touch can no longer fall through to joystick, combat buttons, NPC/monster selection, or generic map tap-to-move;
+- existing row selection/equip interactions remain intact.
+
+This closes a concrete P0 input-routing violation in the v0.71 redesign: modal UI touches must never leak into world movement/action commands.
 
 ### Runtime semantics preserved
-- blank map tap still routes camera-correct screen→world→World move target;
-- joystick direct input still cancels tap movement;
-- NPC/monster hit testing still wins over generic ground movement;
-- HUD/modal touches remain consumed and do not leak into world movement;
-- ATTACK/MAGIC/SKILL/KICK still call the same existing combat methods;
-- no World pathfinding/collision/portal code copied or changed;
-- CharacterRenderer contract usage unchanged;
-- no CombatResolver/MonsterAI/damage changes;
-- no RPG inventory/reward mutation changes.
+- camera-correct blank-map tap-to-move unchanged;
+- joystick/direct-input priority unchanged when no modal is open;
+- NPC/monster hit-test priority unchanged;
+- ATTACK/MAGIC/SKILL/KICK APIs unchanged;
+- CharacterRenderer usage unchanged;
+- direct-inventory reward banner/read-only RewardNotice consumption unchanged;
+- no World, Combat, MonsterAI, RPG mutation, save, or canonical data internals changed.
 
-### Remaining contract blocker
-- Stable player action/AUTO presentation/orchestration DTO is still needed for canonical icon refs, learned/unlocked state, disabled reasons, selected state, and player AUTO execution. Current v0.71 deliberately derives only safe presentation state from existing combat readiness/cooldown/MP/target surfaces and leaves AUTO locked.
+### Remaining continuity
+1. Device/integrator QA of the full v0.71/v0.72 HUD touch geometry and readability.
+2. Stable player action/AUTO presentation/orchestration DTO remains the blocker for real player AUTO and canonical icon/learned/disabled-reason metadata.
+3. If that contract is still absent next run, continue UX polish using only existing stable surfaces; do not invent AUTO behavior or canonical action metadata.
 
-### Integrator QA focus
-1. Confirm all combat touch circles align with the new rendered cluster on 960×540 scaling.
-2. Confirm HUD/modal touches never issue ground-move commands.
-3. Verify joystick drag, map-tap movement, NPC approach, target selection, and combat input priority remain unchanged.
-4. Verify reward banners appear once per `RewardNotice.combatSequence` and do not mutate reward state.
-5. Verify inventory list selection/equip touch areas match restyled rows/buttons.
-6. Verify target/quest/minimap/party panels remain readable without obscuring central world play.
-7. Device test cooldown/pressed/disabled visual legibility.
+### QA focus
+- Open BAG, tap world: inventory should close, player must not move from that same tap.
+- Open BAG, tap joystick/ATK/SKILL/MAG: inventory should close, no action should fire from that same tap.
+- Explicit `×` closes BAG without movement/action side effects.
+- Item row selection and Equip remain interactive inside the modal.
+- After closing, the next independent world/control tap behaves normally.
 
 ### Boundary note
-This is a UX/presentation pass only. No canonical numeric/original-game data was changed.
+UX/presentation/input-routing only. No gameplay values or non-UX domain internals changed.
