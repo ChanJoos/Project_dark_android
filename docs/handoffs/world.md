@@ -1,32 +1,54 @@
-# World handoff — PASS 32
+# World handoff — PASS 38 BUILDING / ENTRANCE VISUALS
 
-- Branch: `agent/world/20260910-1752`
-- Base: `main@6785efb6f7504e070ee0c0aa6924d1281e444469`
-- Geometry: current Milles expansion remains `[ADAPTED]/[B]`; original geometry still unverified.
+- Branch: `agent/world/20260910-1933`
+- Parent World lineage: PR #61 / `agent/world/20260910-1847@98a98d11a2a02f00c9a73d50b113aceb7a3e5b60`
+- Latest main checked before work: `2b66df9780142e3d84606f4ac0250dcabfa2d2b7`
+- Geometry/visual status: `ADAPTED/B`; exact original Milles geometry and art remain unverified/`PENDING_CROP`.
 
-## P0 defect fixed
-`WorldMoveTargetController` previously searched a 16-unit lattice but required the lattice node itself to enter the 6-unit default ground tolerance. Valid off-grid taps can be ~11.31 units from the nearest lattice node, so reachable taps could exhaust 4096 A* expansions and incorrectly become `BLOCKED`.
+## Canon response
+No newer World canon supersedes PASS 37. Continue expanding the connected village, preserve camera/tap/collision/portal behavior, keep source-backed reconstruction preferred, and keep authored gaps explicitly replaceable `[ADAPTED]/[B]`.
 
-GROUND search now uses a lattice-entry tolerance of `max(requestTolerance, half-cell diagonal + epsilon)` only when the exact target is occupiable, then appends that exact target as the final waypoint. The final leg is still executed through `Walker.tryWalkStep`, so collision remains authoritative and there is no teleport. NPC approach semantics are unchanged.
+## Visible map delta
 
-## Exploration route regression
-`WorldMoveTargetExplorationAudit` drives the real controller through:
-`spawn → north_cross → central_plaza → west_district → central_plaza → east_district → south_east_lane → south_gate → south_portal`.
-It also asserts that a tap inside a blocker returns `BLOCKED` without moving the walker.
+### Structure visuals
+- All 20 collision-aligned structures now have renderer-facing visual profiles.
+- 14 HOUSE/HALL/SHOP structures render as actual layered silhouettes:
+  - pitched roof
+  - front facade
+  - side-volume/shadow
+  - eaves
+  - visible door
+  - exterior step
+- WALL and LANDMARK structures have dedicated non-box silhouettes.
+- Visual dimensions are prototype presentation only and do not change logical collision.
 
-Occupancy-safe approach anchors carried forward:
-- west district `(320,705)`
-- east district `(1350,715)`
-- south gate `(790,1000)`
-These avoid direct overlap with the west NPC, combat dummy and gate NPC respectively.
+### Entrance layer
+- Added 14 stable building entrance IDs (`entrance_<structureId>`).
+- Each entrance exposes building ID, foot coordinate, visual width and exterior approach coordinate.
+- Status is `VISUAL_ENTRANCE_ONLY_INTERIOR_PENDING`; no interior/portal is fabricated.
+- `WorldMapProjection.entrances()` exposes the layer for future NPC/interaction routing.
 
-## Verification
-Equivalent A* model before fix exhausted 4096 expansions for several valid anchors. After fix representative searches converge in 12–49 expansions. Full Gradle/APK/runtime remains Director-owned and unverified in this World pass.
+### Vegetation / threshold readability
+- Decorations increased from 26 to 38.
+- Added entrance-adjacent BUSH objects around major hall/shop/house fronts.
+- Added two visible GATEPOST objects at the outer south-gate threshold.
+- South portal destination remains PENDING/fail-closed.
 
 ## Director / UX integration request
-- Empty eligible map tap: UI ownership reject → `screenToWorld` → `requestGroundMove`.
-- NPC taps must continue using `requestNpcApproach`; do not collapse both semantics.
-- Integrate this controller/session rather than reimplementing path logic in `GameView.java`.
-- Keep south portal target pending/fail-closed until verified map + spawn identity exists.
+`GameView.java` remains World-non-owned.
 
-No `GameView.java`, CharacterRenderer, Combat, RPG, HUD or quest files were modified.
+1. Keep `AdaptedMillesMapRenderer.draw(canvas, worldAdapter)` before dynamic entity rendering.
+2. The renderer now draws roof/wall/door/step building silhouettes automatically; do not overlay the old blocker/X-box presentation over these structures.
+3. Continue using the same WorldRuntimeAdapter camera for map + NPC + monster + portal projection.
+4. Entrances are visual/approach anchors only; do not trigger an interior transition unless a verified/accepted target map contract is added later.
+5. Capture Android screenshots in central village, east market and outer south gate after integration to confirm building readability and camera scrolling.
+
+## Verification
+- IMPLEMENTED: yes.
+- Static/source count: 20 structure visual profiles / 14 entrances / 38 decorations.
+- BUILD VERIFIED: not claimed by World agent.
+- RUNTIME VERIFIED: pending Director APK/device integration.
+- `GameView.java`, CharacterRenderer, Combat, RPG, HUD and quest code were not modified.
+
+## Next World priority
+Continue visible map production rather than navigation-only audits: collision-aware vegetation/object clusters, district-specific roof/wall silhouette variation, then source-backed Milles replacements as visual identification/calibration becomes available.

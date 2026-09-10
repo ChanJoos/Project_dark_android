@@ -22,17 +22,20 @@ public final class WorldExplorationContract {
       new Anchor("central_plaza",790f,590f,"PLAZA","ADAPTED/B","PROTOTYPE"),
       new Anchor("west_district",320f,705f,"DISTRICT_APPROACH","ADAPTED/B","PROTOTYPE"),
       new Anchor("east_district",1350f,715f,"DISTRICT_APPROACH","ADAPTED/B","PROTOTYPE"),
+      new Anchor("east_market",1900f,760f,"MARKET_PLAZA","ADAPTED/B","PROTOTYPE"),
+      new Anchor("east_outer_lane",2070f,1320f,"OUTER_ROAD","ADAPTED/B","PROTOTYPE"),
       new Anchor("south_west_lane",650f,900f,"ROAD","ADAPTED/B","PROTOTYPE"),
       new Anchor("south_east_lane",930f,900f,"ROAD","ADAPTED/B","PROTOTYPE"),
-      new Anchor("south_gate",790f,1000f,"GATE_APPROACH","ADAPTED/B","PROTOTYPE_TARGET_PENDING"),
-      new Anchor("south_portal",790f,1135f,"PORTAL","ADAPTED/B","PROTOTYPE_TARGET_PENDING")));
+      new Anchor("south_commons",790f,1360f,"PLAZA","ADAPTED/B","PROTOTYPE"),
+      new Anchor("south_gate",790f,1510f,"GATE_APPROACH","ADAPTED/B","PROTOTYPE_TARGET_PENDING"),
+      new Anchor("south_portal",790f,1565f,"PORTAL","ADAPTED/B","PROTOTYPE_TARGET_PENDING")));
 
   private WorldExplorationContract(){}
   public static List<Anchor> millesPrototype(){return MILLES;}
   public static Anchor byId(String id){for(Anchor a:MILLES)if(a.id.equals(id))return a;return null;}
 
   public static float representativeRouteLength(){
-    String[] route={"spawn","north_cross","central_plaza","west_district","central_plaza","east_district","south_east_lane","south_gate","south_portal"};
+    String[] route={"spawn","north_cross","central_plaza","west_district","central_plaza","east_district","east_market","east_outer_lane","south_commons","south_gate","south_portal"};
     float total=0f;
     for(int i=1;i<route.length;i++){Anchor a=byId(route[i-1]),b=byId(route[i]);float dx=b.x-a.x,dy=b.y-a.y;total+=(float)Math.sqrt(dx*dx+dy*dy);}
     return total;
