@@ -57,6 +57,15 @@ public final class CharacterVisualSourceRegistry {
       DirectionStatus.UNKNOWN,CropStatus.PENDING_CROP,
       "Historical character reference page; image payload still requires positive pixel inspection.");
 
+  // [V] Directly inspected 640x480 Nexon-hosted 2004 screenshot with many distinct player silhouettes.
+  public static final Source NX_COMMUNITY_CHARACTERS_20040817=new Source(
+      "NX_COMMUNITY_CHARACTERS_20040817",
+      "https://lod.nexon.com/Community/screenshot/121691?Category2=2",
+      "https://storage.nexon.com/Data02/GnxFile/002/100/000/00/00/9008208572056215.jpg",
+      Subject.MULTI_ACTOR,Evidence.V,PixelStatus.PREVIEW_VERIFIED,
+      DirectionStatus.MULTIPLE_VISIBLE_UNCROPPED,CropStatus.REFERENCE_ONLY,
+      "Direct pixel inspection confirms dense legacy in-game character silhouettes and multiple diagonal facings. Screenshot is reference-only until a single actor/state/direction crop is isolated and approved.");
+
   // [V] Dense modern gameplay scene useful for proportion/direction vocabulary, not legacy crop authority.
   public static final Source NX_COMMUNITY_PLAZA_20251207=new Source(
       "NX_COMMUNITY_PLAZA_20251207",
@@ -66,17 +75,21 @@ public final class CharacterVisualSourceRegistry {
       "Modern multi-character scene; reference-only until individual directional pixels are isolated and approved.");
 
   private static final List<Source> SOURCES=Collections.unmodifiableList(Arrays.asList(
-      NX_COMMUNITY_DESERT_2022,NX_COMMUNITY_CHARACTERS_20040513,NX_COMMUNITY_PLAZA_20251207));
+      NX_COMMUNITY_DESERT_2022,NX_COMMUNITY_CHARACTERS_20040513,
+      NX_COMMUNITY_CHARACTERS_20040817,NX_COMMUNITY_PLAZA_20251207));
 
   private CharacterVisualSourceRegistry(){}
   public static List<Source> all(){return SOURCES;}
   public static int bindableCount(){int n=0;for(Source s:SOURCES)if(s.bindable())n++;return n;}
+  public static int pixelVerifiedReferenceCount(){
+    int n=0;for(Source s:SOURCES)if(s.pixelStatus==PixelStatus.PREVIEW_VERIFIED)n++;return n;
+  }
   public static boolean preservesEvidenceGate(){
     if(SOURCES.isEmpty())return false;
     for(Source s:SOURCES){
       if(s.id==null||s.pageUrl==null||s.evidence==null||s.pixelStatus==null||s.directionStatus==null||s.cropStatus==null)return false;
       if(s.cropStatus!=CropStatus.APPROVED&&s.bindable())return false;
     }
-    return bindableCount()==0;
+    return bindableCount()==0&&pixelVerifiedReferenceCount()>=2;
   }
 }
