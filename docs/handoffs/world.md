@@ -68,3 +68,40 @@ Therefore current main fails the new acceptance gate for one-step tile adjacency
 ## Next World priority
 
 P0 is no longer map expansion. First implement the corrected 4-diagonal, one-adjacent-isometric-tile movement contract. Only after it passes should work continue on a single coherent one-screen village slice with properly projected buildings and props.
+
+## 2026-09-11 PASS 41 — tile-locked runtime integration
+
+- Branch: `agent/world/20260911-0117`
+- Base: latest `main` `9639a7004c55cc5b5e2e770ee6cfa6fe16dae0c9`
+- Source of truth: `design/PLAYTEST_CANON_20260910_2149.md`
+- This is a clean implementation on current main; superseded Draft PR code was not used as the implementation base.
+
+### Runtime delta
+
+- `WorldMoveTargetController` now uses the authored `AdaptedMillesIsometricTileLayer` centers as its only navigation graph.
+- Legal logical edges are exactly NW `(-32,-16)`, NE `(+32,-16)`, SW `(-32,+16)`, SE `(+32,+16)`.
+- Arbitrary eligible ground taps snap to the nearest occupiable authored tile; the old exact-coordinate final leg is removed.
+- Logical walking commits complete adjacent tile steps at a fixed cadence and snaps to the exact destination center. No `walkSpeed*dt` coordinate accumulation remains.
+- `WorldRuntimeAdapter` normalizes the off-grid prototype spawn to the nearest traversable tile and rolls back any partial `RuntimeState.tryMove` diagonal.
+- `Snapshot.lastStepDirection` is the World-owned facing authority consumed directly by Character presentation.
+- Ground, NPC approach and monster approach remain distinct request kinds but share the same tile graph.
+
+### Actual GameView path
+
+- Joystick repeat now calls `worldAdapter.step(Direction)`; it no longer calls `state.tryMove(v*speed*dt)`.
+- Empty-map taps use the snapped `Snapshot.targetX/targetY` for both walking and the visible destination marker.
+- NPC taps route to `requestNpcApproach`; dialogue opens only after the tile path reaches interaction range.
+- Combat auto-approach routes to `requestMonsterApproach`; the deferred action resumes only after reaching its tile goal.
+- No player-owned free-pixel `state.tryMove(...)` call remains in `GameView`.
+
+### Verification
+
+- `IsometricTileMovementAudit`: PASS under the JDK compiler API/source runner.
+- Covers all four one-step deltas, NW↔SE and NE↔SW round trips, an exact 10-step zero-drift route, off-grid tap snap, camera world↔screen round trip, and left/right paths.
+- `git diff --check`: PASS.
+- Full Gradle/APK: not available in this runner; BUILD VERIFIED is not claimed.
+- Device runtime: pending Director build/playtest.
+
+### Next acceptance gate
+
+Director should build this branch and verify joystick and taps on device. Once tile locking is observed, World should move to the remaining P0 only: replace the rejected flat-front house composition with one coherent one-screen isometric village slice. Do not expand map bounds or object counts first.

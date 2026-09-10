@@ -2,6 +2,9 @@ package com.projectdark.mobile.world;
 
 import android.graphics.RectF;
 import com.projectdark.mobile.RuntimeState;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Thin World-owned integration surface for the mobile runtime.
@@ -21,12 +24,17 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final WorldMapProjection map;
   private final WorldCameraTransform camera;
   private final WorldMoveTargetController movement;
+  private final List<WorldMoveTargetController.TileCenter> navigationTiles;
 
   public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight){
     if(runtime==null)throw new IllegalArgumentException("runtime required");
     if(runtime.bootMode()!=RuntimeState.BootMode.MILLES)throw new IllegalArgumentException("Milles WorldRuntimeAdapter requires MILLES boot mode");
     this.runtime=runtime;
     map=WorldMapProjection.from(runtime.world());
+    List<WorldMoveTargetController.TileCenter> centers=new ArrayList<>();
+    for(AdaptedMillesIsometricTileLayer.Tile tile:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
+    navigationTiles=Collections.unmodifiableList(centers);
+    snapPlayerToNearestTraversableTile();
     camera=map.newCamera(viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
@@ -45,11 +53,21 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   public WorldMoveTargetController.Snapshot requestGroundWorld(float worldX,float worldY){return movement.requestGroundMove(worldX,worldY);}
 
+  /** Joystick/gamepad input: exactly one NW/NE/SW/SE logical tile. */
+  public WorldMoveTargetController.Snapshot step(WorldMoveTargetController.Direction direction){return movement.step(direction);}
+
   /** NPC tap path remains deliberately distinct from generic ground movement. */
   public WorldMoveTargetController.Snapshot requestNpcApproach(String npcId){
     RuntimeState.Npc npc=findNpc(npcId);
     if(npc==null)throw new IllegalArgumentException("unknown npcId: "+npcId);
     return movement.requestNpcApproach(npc.id,npc.x,npc.y,WorldMoveTargetController.DEFAULT_NPC_APPROACH_TOLERANCE);
+  }
+
+  /** Combat approach is separate from both empty-ground taps and NPC interaction. */
+  public WorldMoveTargetController.Snapshot requestMonsterApproach(String monsterId,float approachTolerance){
+    RuntimeState.Monster monster=findMonster(monsterId);
+    if(monster==null||!monster.alive)throw new IllegalArgumentException("unknown or defeated monsterId: "+monsterId);
+    return movement.requestMonsterApproach(monster.id,monster.x,monster.y,Math.max(1f,approachTolerance));
   }
 
   public WorldMoveTargetController.Snapshot cancelForDirectInput(){return movement.cancelForDirectInput();}
@@ -63,7 +81,8 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     return frame(move);
   }
 
-  public void snapCameraToPlayer(){camera.snapTo(runtime.player().x,runtime.player().y);}
+  /** Re-establishes the tile-center invariant after spawn/revive before snapping the camera. */
+  public void snapCameraToPlayer(){snapPlayerToNearestTraversableTile();camera.snapTo(runtime.player().x,runtime.player().y);}
   public WorldCameraTransform.Point worldToScreen(float worldX,float worldY){return camera.worldToScreen(worldX,worldY);}
   public WorldCameraTransform.Point screenToWorld(float screenX,float screenY){return camera.screenToWorld(screenX,screenY);}
   public FrameSnapshot snapshot(){return frame(movement.snapshot());}
@@ -77,15 +96,12 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc n:runtime.npcs())if(id.equals(n.id))return n;return null;}
 
-  @Override public float minX(){return map.bounds().minX;}
-  @Override public float maxX(){return map.bounds().maxX;}
-  @Override public float minY(){return map.bounds().minY;}
-  @Override public float maxY(){return map.bounds().maxY;}
+  @Override public List<WorldMoveTargetController.TileCenter> navigationTiles(){return navigationTiles;}
 
   /** Mirrors current RuntimeState player occupancy without making GameView know collision details. */
   @Override public boolean canPlayerOccupy(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
-    if(x-r<minX()||x+r>maxX()||y-r<minY()||y+r>maxY())return false;
+    if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
     for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
     for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
     for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&distance(x,y,m.x,m.y)<r+RuntimeState.MONSTER_RADIUS+3f)return false;
@@ -94,7 +110,31 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   @Override public float worldX(){return runtime.player().x;}
   @Override public float worldY(){return runtime.player().y;}
-  @Override public boolean tryWalkStep(float dx,float dy){return runtime.tryMove(dx,dy);}
+  @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
+    float startX=runtime.player().x,startY=runtime.player().y;
+    if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
+    // RuntimeState resolves X and Y separately. Preflight its intermediate point so a rejected
+    // diagonal can never leave the player on a half-step.
+    if(!canPlayerOccupy(destinationX,startY)||!canPlayerOccupy(destinationX,destinationY))return false;
+    if(!runtime.tryMove(direction.dx,direction.dy)||Math.abs(runtime.player().x-destinationX)>.01f||Math.abs(runtime.player().y-destinationY)>.01f){
+      runtime.player().x=startX;runtime.player().y=startY;return false;
+    }
+    runtime.player().x=destinationX;runtime.player().y=destinationY;
+    return true;
+  }
+
+  private void snapPlayerToNearestTraversableTile(){
+    WorldMoveTargetController.TileCenter best=null;float bestDistance=Float.MAX_VALUE;
+    for(WorldMoveTargetController.TileCenter tile:navigationTiles){
+      if(!canPlayerOccupy(tile.x,tile.y))continue;
+      float dx=tile.x-runtime.player().x,dy=tile.y-runtime.player().y,d=dx*dx+dy*dy;
+      if(d<bestDistance){bestDistance=d;best=tile;}
+    }
+    if(best==null)throw new IllegalStateException("no traversable spawn tile");
+    runtime.player().x=best.x;runtime.player().y=best.y;
+  }
+
+  private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id))return m;return null;}
 
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}
 }
