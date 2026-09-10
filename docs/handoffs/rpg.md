@@ -1,96 +1,108 @@
 # RPG Agent Handoff
 
-Run: `20260910-1501`
+Run: `20260910-1548`
 Branch: `agent/rpg/20260910-1338`
 Draft PR: `#5`
 Role: RPG · Progression · Persistence
 
-## PASS 27 — canonical skill-book + quick-slot projection
+## PASS 28 — visible direct-reward outcome feed
 
-Direction: prioritize RPG state that becomes visible in play. Ownership remains strict: no `GameView.java`, combat execution, map/camera/pathfinding, character rendering, NPC presentation, workflow, APK packaging, or main merge changes.
+Direction: make reward results visible and machine-readable for the live UI without touching Integrator-owned `GameView.java`.
+
+Ownership remains strict: no combat execution, map/camera/pathfinding, character renderer, NPC presentation, workflow, APK packaging, or main merge changes.
+
+### Source-of-Truth / current branch gate
+
+Re-read the current RPG branch reward state before editing. The branch had already gained detailed reward mutation contracts beyond the PASS 27 handoff:
+- `RewardGrantStatus`: `GRANTED / INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / UNRESOLVED_REWARD`;
+- `RewardGrantOutcome` attached to `RewardResolution`;
+- `consumeCombatWithOutcomes()` distinguishes processed defeat vs duplicate/stale vs non-defeat;
+- `grantResolvedRewardItem()` is the direct-inventory detailed grant endpoint;
+- `RpgInventoryPresentation.RewardNotice` already carries `grantOutcomes`.
+
+The actual remaining gap was presentation: `RpgVisibleProgressionPresentation` only rendered successful aggregate auto-loot and discarded detailed grant failures.
 
 ### Implemented this pass
 
-1. Expanded `RpgActionMetadataCatalog` from 5 canonical Warrior actions to the complete currently verified basic Warrior 1~5 circle slice `SK_전사_001`~`SK_전사_015` from `master/data/Skill_Master.csv`.
-   - 숏블레이드 / 더블어택 / 윈드블레이드 / 디바투 / 트리플어택
-   - 메가블레이드 / 바투 / 투핸드어택 / 드래곤모드 / 피닉스모드
-   - 적무기쳐내기 / 레스큐 / 매드소울 / 완전방어 / 크래셔
-   - Added target/range/effect summary/resource label while preserving canonical evidence.
-   - `resourceCost` and `cooldown` remain nullable where Master has no authoritative numeric value.
-   - Icons remain `PENDING_CROP:<actionId>` until real icon assets are cropped/verified.
+1. Expanded the visible reward feed with stable machine-readable `RewardLineKind`:
+   - `EXP`
+   - `ITEM_GRANTED`
+   - `INVENTORY_FULL`
+   - `INVALID_ITEM`
+   - `INVALID_QUANTITY`
+   - `UNRESOLVED`
+   - `INFO`
 
-2. Added explicit visible state for UI:
-   - `RUNTIME_PROTOTYPE`
-   - `LEARNED`
-   - `CURRENT_JOB_LOCKED`
-   - `OTHER_JOB`
+2. Expanded `RewardLine` with structured fields:
+   - `kind`
+   - `text`
+   - `itemId`
+   - `quantity`
+   - `grantStatus`
+   - `evidence`
 
-   This prevents the skill book from presenting a catalogued action as learned.
+   UI consumers no longer need to parse Korean text to know whether a reward succeeded or failed.
 
-3. Added `forJob(rpg, jobCode)` skill-book projection.
-   - Integrator can render the Warrior skill tree/list before and after job selection without mutating player state.
-   - Current Source of Truth still starts the player as `COMMONER` Lv1, so Warrior actions are not silently granted at boot.
+3. `latestRewardLines()` now prefers explicit `RewardGrantOutcome` rows, preserving failed direct-grant attempts that `autoLootedItems` cannot represent.
 
-4. Added `quickSlotCandidates(rpg)`.
-   - Passive actions never become active quick-slot candidates.
-   - Canonical actions enter candidates only when actually learned.
-   - Existing executable prototype actions remain explicit `[B]` runtime bindings until Combat-owned canonical execution wiring replaces them.
+4. Added `grantOutcomeLine()` presentation mapping:
+   - successful grant → `<item> xN 자동 획득`
+   - inventory limit → `<item> 획득 실패: 인벤토리 한도`
+   - invalid item → `획득 실패: 알 수 없는 아이템 ...`
+   - invalid quantity → `<item> 획득 실패: 잘못된 수량`
+   - unresolved canonical reward → `<item> 보상 수량/확률 확인 필요`
 
-5. Expanded `RpgVisibleProgressionPresentation.Snapshot` with `quickSlotCandidates` and added UI helpers:
-   - `skillBook(rpg, jobCode)`
-   - `learnedLabel(action)`
-   - `costLabel(action)`
-   - `cooldownLabel(action)`
-   - unresolved numerics stay `PENDING`, never `0`.
+5. Kept compatibility for older reward records that only expose successful `autoLootedItems` aggregates.
 
-6. Added `RpgActionPresentationAudit` regression boundary.
-   - requires 15 Warrior canonical actions;
-   - checks circle/passive/quick-slot semantics;
-   - verifies unresolved numeric cost/cooldown remain null;
-   - verifies unlearned canonical actions cannot leak into quick slots;
-   - verifies a learned canonical action becomes a quick-slot candidate;
-   - rejects unknown learned action IDs.
+6. Added `RpgVisibleRewardFeedAudit` regression boundary. It verifies:
+   - a valid resolved grant mutates inventory and maps to `ITEM_GRANTED`;
+   - filling the canonical stack limit then granting one more maps to `INVENTORY_FULL` without mutation;
+   - unknown item ID maps to `INVALID_ITEM`;
+   - zero quantity maps to `INVALID_QUANTITY`;
+   - nullable unresolved quantity maps to `UNRESOLVED`;
+   - no unresolved value is silently treated as a successful grant.
 
 ### Commits this pass
 
-- `c95aebacb8223738fc74ed263514a3579e2367f4` — expand canonical Warrior actions and quick-slot projection
-- `29bfaaa20c40713053112b69c9a640c619115eeb` — expose skill book and quick-slot candidates
-- `b643d4542c0a35c067072f4379e5e526c47310a6` — add RPG action presentation audit
-- `489db0736a638c05193604059b3460d3b0d93c27` — document PASS 27
+- `4db800ac841e0a2c873b14e37bafa9b61d70d20e` — surface detailed reward grant outcomes to visible RPG feed
+- `e95ccd8298c5e64a029843100e9563f2aeba10a5` — audit visible direct-grant reward outcomes
 
-### Existing live UI bridge on main
+### Visible integration contract
 
-`GameView` already draws an RPG inventory panel and `RuntimeState.tick()` already forwards combat ledger events to `rpg.consumeCombat()`. The remaining visible integration is therefore an Integrator/UX wiring task, not a second RPG state implementation.
-
-Integrator/UX should consume:
+Integrator/UX should continue to consume:
 `new RpgVisibleProgressionPresentation().snapshot(state.rpg())`
 
-Recommended next UI mapping:
-- SK panel: `skillBook(state.rpg(), selectedJobCode)`
-- quick slots: `snapshot.quickSlotCandidates`
-- skill detail: name / circle / actionClass / targetLabel / rangeLabel / effectSummary / learnedLabel / costLabel / cooldownLabel
-- reward toast/chat: `latestRewardLines`
+For reward toast/chat, render `snapshot.latestRewardLines` and style by `RewardLine.kind`, not by parsing `text`.
 
-Do not render `PENDING_CROP:*` as a real icon and do not display null cost/cooldown as zero.
+Recommended behavior:
+- `ITEM_GRANTED`: immediate acquisition toast + inventory count refresh;
+- `INVENTORY_FULL`: visible warning, no item count increase;
+- `INVALID_*`: QA/error-visible diagnostic in prototype builds;
+- `UNRESOLVED`: evidence-safe pending message, never a fabricated reward;
+- `EXP`: display reward fact only; do not yet mutate player EXP until progression truth is resolved.
 
 ### Reward truth boundary
 
 Authoritative flow remains:
 `MONSTER_DEFEATED -> reward resolution -> direct inventory grant -> EXP/Gold/quest progression`.
 
-Ground drop/pickup remains retired. Current verified major-drop relations still lack authoritative probability/quantity, therefore deterministic item emission remains forbidden until data resolves.
+Ground drop/pickup remains retired.
 
-### Persistence state retained
+Known major-drop relations still lack authoritative probability/quantity, so canonical live deterministic item emission remains forbidden. This pass improves visibility of the outcome contract; it does not invent missing drop values.
 
-- schema-v1 snapshot persists progression/job/level/nullable EXP/nullable Gold/reward sequence/inventory/equipment/learned action IDs;
-- SHA-256 deterministic codec;
-- crash-safe file save store + backup recovery;
-- `lastCombatSequence` survives restart for defeat/reward idempotency.
+### Progression/action state retained
+
+- Warrior canonical basic skill projection `SK_전사_001`~`015`;
+- skill book + learned/locked/other-job state;
+- learned active quick-slot candidates only;
+- nullable unknown cost/cooldown preserved as PENDING;
+- schema-v1 save/restore persists progression/job/level/nullable EXP/nullable Gold/reward sequence/inventory/equipment/learned action IDs;
+- reward sequence survives restart for duplicate defeat suppression.
 
 ## Next RPG P0
 
-1. Locate/project the canonical Magic master contract and provide the same stable metadata/skill-book/quick-slot surfaces for magic.
-2. Add explicit reward grant outcomes to the visible reward DTO: `INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / UNRESOLVED_REWARD`, not merely successful grants.
-3. Add evidence-safe job-selection/progression transition API only where canonical gate conditions are resolved; do not invent the early-job gate.
-4. Resolve normal EXP start/threshold truth before live EXP mutation.
-5. Director/Integrator must wire the new presentation into GameView and compile/build on integration; this RPG agent must not edit GameView itself.
+1. Locate/project the canonical Magic master contract and provide equivalent metadata/skill-book/quick-slot surfaces.
+2. Add evidence-safe job-selection/progression transition API only where canonical gate conditions are resolved; never invent the early job gate.
+3. Resolve normal EXP start/threshold semantics before enabling player EXP mutation from currently verified monster EXP reward facts.
+4. Director/Integrator should wire `RewardLine.kind` into the live toast/chat/inventory refresh path and run compile/APK/runtime validation.
+5. Keep `GameView.java` changes outside this RPG branch.
