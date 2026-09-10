@@ -40,15 +40,19 @@ public final class RpgVisibleProgressionPresentation {
     public final PlayerSummary player;
     public final RpgProgressionPresentation.LevelProgress levelProgress;
     public final RpgProgressionPresentation.JobSelectionGate jobSelectionGate;
+    public final List<BasicJobSelectionService.JobOption> basicJobOptions;
+    public final List<RpgActionMetadataCatalog.ActionMetadata> currentCircleOneActions;
     public final List<RpgInventoryPresentation.ItemRow> inventory;
     public final List<RpgActionMetadataCatalog.ActionMetadata> actions;
     public final List<RpgActionMetadataCatalog.ActionMetadata> quickSlotCandidates;
     public final List<RewardLine> latestRewardLines;
     Snapshot(PlayerSummary player,RpgProgressionPresentation.LevelProgress levelProgress,
-        RpgProgressionPresentation.JobSelectionGate jobSelectionGate,List<RpgInventoryPresentation.ItemRow> inventory,
+        RpgProgressionPresentation.JobSelectionGate jobSelectionGate,List<BasicJobSelectionService.JobOption> basicJobOptions,
+        List<RpgActionMetadataCatalog.ActionMetadata> currentCircleOneActions,List<RpgInventoryPresentation.ItemRow> inventory,
         List<RpgActionMetadataCatalog.ActionMetadata> actions,List<RpgActionMetadataCatalog.ActionMetadata> quickSlotCandidates,
         List<RewardLine> latestRewardLines){
-      this.player=player;this.levelProgress=levelProgress;this.jobSelectionGate=jobSelectionGate;this.inventory=inventory;
+      this.player=player;this.levelProgress=levelProgress;this.jobSelectionGate=jobSelectionGate;
+      this.basicJobOptions=basicJobOptions;this.currentCircleOneActions=currentCircleOneActions;this.inventory=inventory;
       this.actions=actions;this.quickSlotCandidates=quickSlotCandidates;this.latestRewardLines=latestRewardLines;
     }
   }
@@ -58,8 +62,11 @@ public final class RpgVisibleProgressionPresentation {
 
   public Snapshot snapshot(RpgProgressionState rpg){
     if(rpg==null)throw new IllegalArgumentException("rpg");
+    String currentJob=rpg.currentJobCode();
+    List<RpgActionMetadataCatalog.ActionMetadata> circleOne=BasicJobSelectionService.isBasicJob(currentJob)
+        ?RpgActionMetadataCatalog.forJobAndCircle(rpg,currentJob,1):Collections.emptyList();
     return new Snapshot(new PlayerSummary(rpg),progressionPresentation.levelProgress(rpg),progressionPresentation.basicJobSelectionGate(rpg),
-        inventoryPresentation.inventoryRows(rpg),RpgActionMetadataCatalog.visibleFor(rpg),
+        BasicJobSelectionService.options(),circleOne,inventoryPresentation.inventoryRows(rpg),RpgActionMetadataCatalog.visibleFor(rpg),
         RpgActionMetadataCatalog.quickSlotCandidates(rpg),latestRewardLines(rpg));
   }
 
