@@ -8,7 +8,7 @@ import java.util.List;
 
 /** Render-ready [ADAPTED]/[B] non-collision decoration layer for village readability. */
 public final class AdaptedMillesDecorationLayer {
-  public enum Kind { TREE, FENCE, SIGN, WELL, BENCH, LAMP }
+  public enum Kind { TREE, FENCE, SIGN, WELL, BENCH, LAMP, BUSH, GATEPOST }
   public static final class Decoration {
     public final String id,assetRef,evidence,status;
     public final Kind kind;
@@ -40,7 +40,17 @@ public final class AdaptedMillesDecorationLayer {
         d("tree_south_1",Kind.TREE,240,1370,72,112),d("tree_south_2",Kind.TREE,380,1410,72,112),
         d("tree_south_3",Kind.TREE,1240,1410,72,112),d("tree_south_4",Kind.TREE,1370,1370,72,112),
         d("fence_market_n",Kind.FENCE,1920,615,230,20),d("fence_market_s",Kind.FENCE,1900,990,250,20),
-        d("fence_south_w",Kind.FENCE,475,1430,210,20),d("fence_south_e",Kind.FENCE,1110,1430,210,20)
+        d("fence_south_w",Kind.FENCE,475,1430,210,20),d("fence_south_e",Kind.FENCE,1110,1430,210,20),
+
+        // Entrance-adjacent vegetation breaks up flat building fronts without changing collision.
+        d("bush_north_hall_w",Kind.BUSH,620,304,44,30),d("bush_north_hall_e",Kind.BUSH,720,304,44,30),
+        d("bush_east_shop_w",Kind.BUSH,1280,684,44,30),d("bush_east_shop_e",Kind.BUSH,1410,684,44,30),
+        d("bush_market_shop_w",Kind.BUSH,1715,604,44,30),d("bush_market_shop_e",Kind.BUSH,1845,604,44,30),
+        d("bush_south_house_w",Kind.BUSH,1095,1344,44,30),d("bush_south_house_e",Kind.BUSH,1235,1344,44,30),
+        d("bush_outer_w",Kind.BUSH,1510,1280,52,34),d("bush_outer_e",Kind.BUSH,1600,1288,52,34),
+
+        // Outer gate reads as an actual village threshold; portal destination remains PENDING.
+        d("south_gate_post_w",Kind.GATEPOST,700,1558,34,92),d("south_gate_post_e",Kind.GATEPOST,880,1558,34,92)
     ));
     result.sort(Comparator.comparingLong(Decoration::depthKey));
     return Collections.unmodifiableList(result);
