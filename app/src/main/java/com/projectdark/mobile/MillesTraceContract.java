@@ -49,6 +49,7 @@ public final class MillesTraceContract {
   private final List<MasterAnchor> masterAnchors;
   private final List<CalibrationAnchor> calibrationAnchors;
   private final MillesVisualEvidenceRegistry visualEvidence=new MillesVisualEvidenceRegistry();
+  private final MillesReconstructionCoverage reconstructionCoverage=new MillesReconstructionCoverage();
 
   public MillesTraceContract(MillesMasterManifest manifest){
     if(manifest==null||!manifest.hasCanonicalIdentity())throw new IllegalArgumentException("Milles Master manifest required");
@@ -64,6 +65,7 @@ public final class MillesTraceContract {
   public List<MasterAnchor> masterAnchors(){return masterAnchors;}
   public List<CalibrationAnchor> calibrationAnchors(){return calibrationAnchors;}
   public MillesVisualEvidenceRegistry visualEvidence(){return visualEvidence;}
+  public MillesReconstructionCoverage reconstructionCoverage(){return reconstructionCoverage;}
 
   public TransformStatus transformStatus(){return hasCalibrationEvidence()?TransformStatus.CALIBRATED:TransformStatus.PENDING_ANCHORS;}
 
@@ -86,12 +88,16 @@ public final class MillesTraceContract {
   }
 
   public boolean canProject(){return transformStatus()==TransformStatus.CALIBRATED;}
+  public boolean canAuthorAdaptedFill(MillesReconstructionCoverage.Scope scope){
+    return reconstructionCoverage.canAuthorAdaptedFill(scope);
+  }
   public boolean hasRequiredTraceLayers(){return TraceLayer.values().length==6;}
   public boolean preservesCoordinateSeparation(){return canonicalCoordinateSpace()!=prototypeCoordinateSpace()&&!canProject();}
 
   public boolean passesAudit(){
     return MAP_ID.equals("MAP_MILLES")&&SOURCE_STATUS.equals("SOURCE_FOUND")&&TRACE_STATUS.equals("READY_FOR_TRACE")
         &&masterAnchors.size()==6&&hasRequiredTraceLayers()&&calibrationAnchors.isEmpty()
-        &&visualEvidence.preservesEvidenceGate()&&preservesCoordinateSeparation();
+        &&visualEvidence.preservesEvidenceGate()&&reconstructionCoverage.preservesNexonFirstGate()
+        &&preservesCoordinateSeparation();
   }
 }
