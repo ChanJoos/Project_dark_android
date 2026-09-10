@@ -81,6 +81,8 @@ public final class RpgProgressionState {
 
   public RpgProgressionState(){
     registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,Collections.<String,Integer>emptyMap(),Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,Collections.<String,Integer>emptyMap(),Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,Collections.<String,Integer>emptyMap(),Evidence.O));
   }
 
   private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
