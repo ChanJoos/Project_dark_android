@@ -69,7 +69,7 @@ public final class RpgProgressionState {
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
   private Long normalExp=null;
-  private long gold=0L;
+  private Long gold=null;
 
   public RpgProgressionState(){
     Map<String,Integer> noStats=Collections.emptyMap();Set<String> anyJob=Collections.emptySet();
@@ -103,7 +103,7 @@ public final class RpgProgressionState {
   public String currentJobCode(){return currentJobCode;}
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
-  public long gold(){return gold;}
+  public Long gold(){return gold;}
   public long lastCombatSequence(){return lastCombatSequence;}
 
   public boolean setLearnedAction(String actionId,boolean learned){
@@ -153,7 +153,7 @@ public final class RpgProgressionState {
   /** Atomic fail-closed restore: validates all IDs/quantities before replacing mutable state. */
   public RestoreResult restoreSnapshot(RpgSaveSnapshot s){
     if(s==null||s.schemaVersion!=RpgSaveSnapshot.CURRENT_SCHEMA_VERSION)return s==null?RestoreResult.INVALID_STATE:RestoreResult.UNSUPPORTED_SCHEMA;
-    if(s.progressionNode==null||s.currentJobCode==null||s.normalLevel==null||s.normalLevel<1||s.normalLevel>99||s.gold<0||s.lastCombatSequence<0)return RestoreResult.INVALID_STATE;
+    if(s.progressionNode==null||s.currentJobCode==null||s.normalLevel==null||s.normalLevel<1||s.normalLevel>99||(s.gold!=null&&s.gold<0)||s.lastCombatSequence<0)return RestoreResult.INVALID_STATE;
     for(Map.Entry<String,Integer> e:s.inventory.entrySet())if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return RestoreResult.INVALID_STATE;
     for(Map.Entry<String,String> e:s.equipmentBySlot.entrySet()){
       ItemDefinition def=items.get(e.getValue());Integer owned=s.inventory.get(e.getValue());
