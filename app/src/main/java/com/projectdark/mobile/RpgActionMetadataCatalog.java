@@ -17,6 +17,7 @@ public final class RpgActionMetadataCatalog {
    */
   public static final class ActionMetadata {
     public final String actionId,name,iconKey,jobCode,actionClass,resourceLabel,targetLabel,rangeLabel,effectSummary;
+    public final String sourceEvidence;
     public final Integer circle;
     public final Integer resourceCost;
     public final Float cooldown;
@@ -28,12 +29,12 @@ public final class RpgActionMetadataCatalog {
     ActionMetadata(String actionId,String name,String iconKey,String jobCode,Integer circle,String actionClass,
         String resourceLabel,Integer resourceCost,Float cooldown,String targetLabel,String rangeLabel,String effectSummary,
         boolean runtimeBound,boolean quickSlotEligible,boolean passive,LearnedState state,VisibilityState visibilityState,
-        RpgProgressionState.Evidence evidence){
+        RpgProgressionState.Evidence evidence,String sourceEvidence){
       this.actionId=actionId;this.name=name;this.iconKey=iconKey;this.jobCode=jobCode;this.circle=circle;
       this.actionClass=actionClass;this.resourceLabel=resourceLabel;this.resourceCost=resourceCost;this.cooldown=cooldown;
       this.targetLabel=targetLabel;this.rangeLabel=rangeLabel;this.effectSummary=effectSummary;
       this.runtimeBound=runtimeBound;this.quickSlotEligible=quickSlotEligible;this.passive=passive;
-      this.state=state;this.visibilityState=visibilityState;this.evidence=evidence;
+      this.state=state;this.visibilityState=visibilityState;this.evidence=evidence;this.sourceEvidence=sourceEvidence;
     }
     public boolean learned(){return state==LearnedState.LEARNED;}
     public boolean resourceCostResolved(){return resourceCost!=null;}
@@ -41,7 +42,7 @@ public final class RpgActionMetadataCatalog {
   }
 
   private static final class Definition {
-    final String id,name,iconKey,jobCode,actionClass,resourceLabel,targetLabel,rangeLabel,effectSummary;
+    final String id,name,iconKey,jobCode,actionClass,resourceLabel,targetLabel,rangeLabel,effectSummary,sourceEvidence;
     final Integer circle,cost;
     final Float cooldown;
     final boolean runtimeBound,quickSlotEligible,passive;
@@ -49,10 +50,16 @@ public final class RpgActionMetadataCatalog {
     Definition(String id,String name,String iconKey,String jobCode,Integer circle,String actionClass,String resourceLabel,
         Integer cost,Float cooldown,String targetLabel,String rangeLabel,String effectSummary,boolean runtimeBound,
         boolean quickSlotEligible,boolean passive,RpgProgressionState.Evidence evidence){
+      this(id,name,iconKey,jobCode,circle,actionClass,resourceLabel,cost,cooldown,targetLabel,rangeLabel,effectSummary,
+          runtimeBound,quickSlotEligible,passive,evidence,evidence==null?null:evidence.name());
+    }
+    Definition(String id,String name,String iconKey,String jobCode,Integer circle,String actionClass,String resourceLabel,
+        Integer cost,Float cooldown,String targetLabel,String rangeLabel,String effectSummary,boolean runtimeBound,
+        boolean quickSlotEligible,boolean passive,RpgProgressionState.Evidence evidence,String sourceEvidence){
       this.id=id;this.name=name;this.iconKey=iconKey;this.jobCode=jobCode;this.circle=circle;this.actionClass=actionClass;
       this.resourceLabel=resourceLabel;this.cost=cost;this.cooldown=cooldown;this.targetLabel=targetLabel;
       this.rangeLabel=rangeLabel;this.effectSummary=effectSummary;this.runtimeBound=runtimeBound;
-      this.quickSlotEligible=quickSlotEligible;this.passive=passive;this.evidence=evidence;
+      this.quickSlotEligible=quickSlotEligible;this.passive=passive;this.evidence=evidence;this.sourceEvidence=sourceEvidence;
     }
   }
 
@@ -89,6 +96,23 @@ public final class RpgActionMetadataCatalog {
     warrior(out,"SK_전사_013","매드소울",5,"HP-Cost Burst","적","단일","현재 체력 희생량에 비례하는 강공격",true,false,RpgProgressionState.Evidence.V);
     warrior(out,"SK_전사_014","완전방어",5,"Defense","자신","자신","물리/기술 공격 방어; 마법 공격 제외",true,false,RpgProgressionState.Evidence.V);
     warrior(out,"SK_전사_015","크래셔",5,"HP-Threshold Burst","적","단일","HP 2% 이하 발동 초필살기",true,false,RpgProgressionState.Evidence.V);
+
+    // Circle-1 projections for all five basic jobs. Acquisition requirements remain unresolved, so none auto-learn.
+    canonical(out,"SK_도적_001","찌르기","ROGUE",1,"Attack","기본 MP 소모 없음","적","전방 1칸",
+        "도적 기본 근접 공격 기술",true,false,RpgProgressionState.Evidence.V,"V");
+    canonical(out,"SK_도적_002","센스몬스터","ROGUE",1,"Identify","기본 MP 소모 없음","몬스터","단일",
+        "숙련도에 따라 몬스터 이름/EXP/HP/공격속성/방어속성 정보 확인",true,false,RpgProgressionState.Evidence.V,"V");
+    canonical(out,"SK_마법사_001","마레노","MAGE",1,"Magic Attack","MP","적","단일",
+        "1단계 수속성 공격마법",true,false,RpgProgressionState.Evidence.V,"V");
+    canonical(out,"SK_성직자_001","쿠로","CLERIC",1,"Heal","MP","아군/자신","단일",
+        "초급 단일 회복",true,false,RpgProgressionState.Evidence.V,"O/V");
+    canonical(out,"SK_성직자_002","수혈","CLERIC",1,"HP Transfer / AoE Heal","MP","주변 아군","자신 주변",
+        "자신의 HP를 소모해 주변 인원의 HP를 회복",true,false,RpgProgressionState.Evidence.V,"O/V");
+    canonical(out,"SK_성직자_003","디렌토","CLERIC",1,"Dispel","MP","아군/자신","단일",
+        "렌토 해제",true,false,RpgProgressionState.Evidence.V,"O/V");
+    canonical(out,"SK_무도가_001","정권","MARTIAL_ARTIST",1,"Attack","HP/MP/조건부 - 개별 확인","적","전방 1칸",
+        "무도가 초기 공격기",true,false,RpgProgressionState.Evidence.V,"O/V");
+
     return Collections.unmodifiableMap(out);
   }
 
@@ -96,6 +120,13 @@ public final class RpgActionMetadataCatalog {
       String range,String effect,boolean quickSlotEligible,boolean passive,RpgProgressionState.Evidence evidence){
     add(out,new Definition(id,name,"PENDING_CROP:"+id,"WARRIOR",circle,actionClass,"기본 MP 소모 없음",
         null,null,target,range,effect,false,quickSlotEligible,passive,evidence));
+  }
+
+  private static void canonical(Map<String,Definition> out,String id,String name,String jobCode,int circle,String actionClass,
+      String resourceLabel,String target,String range,String effect,boolean quickSlotEligible,boolean passive,
+      RpgProgressionState.Evidence evidence,String sourceEvidence){
+    add(out,new Definition(id,name,"PENDING_CROP:"+id,jobCode,circle,actionClass,resourceLabel,null,null,target,range,effect,
+        false,quickSlotEligible,passive,evidence,sourceEvidence));
   }
 
   private static void add(Map<String,Definition> out,Definition def){out.put(def.id,def);}
@@ -111,7 +142,7 @@ public final class RpgActionMetadataCatalog {
     else visibility=VisibilityState.OTHER_JOB;
     return new ActionMetadata(def.id,def.name,def.iconKey,def.jobCode,def.circle,def.actionClass,def.resourceLabel,
         def.cost,def.cooldown,def.targetLabel,def.rangeLabel,def.effectSummary,def.runtimeBound,def.quickSlotEligible,
-        def.passive,learned?LearnedState.LEARNED:LearnedState.UNLEARNED,visibility,def.evidence);
+        def.passive,learned?LearnedState.LEARNED:LearnedState.UNLEARNED,visibility,def.evidence,def.sourceEvidence);
   }
 
   public static List<ActionMetadata> snapshot(RpgProgressionState rpg){
@@ -125,6 +156,13 @@ public final class RpgActionMetadataCatalog {
     List<ActionMetadata> out=new ArrayList<>();
     if(jobCode==null)return Collections.unmodifiableList(out);
     for(Definition def:DEFINITIONS.values())if(jobCode.equals(def.jobCode))out.add(project(def,rpg));
+    return Collections.unmodifiableList(out);
+  }
+
+  /** Circle-filtered skill-book projection; preserves locked/learned state without mutating acquisition. */
+  public static List<ActionMetadata> forJobAndCircle(RpgProgressionState rpg,String jobCode,int circle){
+    List<ActionMetadata> out=new ArrayList<>();
+    for(ActionMetadata m:forJob(rpg,jobCode))if(m.circle!=null&&m.circle==circle)out.add(m);
     return Collections.unmodifiableList(out);
   }
 
