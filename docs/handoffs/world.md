@@ -3,7 +3,7 @@
 - Base `main`: `3b58a8d08805cf9031466fe0c50d56e17aa1344d`
 - Master: M001 / current 92-CSV baseline (no Master values changed)
 - Branch: `agent/world/20260910-1415`
-- Draft PR: pending creation after this commit
+- Draft PR: https://github.com/ChanJoos/Project_dark_android/pull/11
 
 ## Implemented
 
