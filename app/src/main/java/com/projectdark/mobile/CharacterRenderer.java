@@ -19,6 +19,7 @@ public final class CharacterRenderer {
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
   public enum Layer { BODY, HAIR, EQUIPMENT, WEAPON, EFFECT }
+  public enum EffectFamily { NONE, CAST, THROW, PUNCH, KICK, SKILL, HIT }
 
   public static final List<Layer> DRAW_ORDER=Collections.unmodifiableList(Arrays.asList(
       Layer.BODY,Layer.HAIR,Layer.EQUIPMENT,Layer.WEAPON,Layer.EFFECT));
@@ -30,14 +31,16 @@ public final class CharacterRenderer {
     public final State state;
     public final boolean hitFlash;
     public final String equipmentVisualRef,weaponVisualRef,effectVisualRef;
+    public final EffectFamily effectFamily;
 
     public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,
         float stateDuration,boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,
-        String effectVisualRef){
+        String effectVisualRef,EffectFamily effectFamily){
       this.x=x;this.y=y;this.direction=direction;this.state=state;this.walkClock=walkClock;
       this.stateClock=stateClock;this.stateDuration=stateDuration;this.hitFlash=hitFlash;
       this.equipmentVisualRef=equipmentVisualRef;this.weaponVisualRef=weaponVisualRef;
       this.effectVisualRef=effectVisualRef;
+      this.effectFamily=effectFamily==null?EffectFamily.NONE:effectFamily;
     }
   }
 
@@ -69,7 +72,7 @@ public final class CharacterRenderer {
   private void drawBody(Canvas c,Pose pose,int frame){
     int outline=0xff171313,skin=pose.hitFlash?0xffffe0d0:0xffffc68f,pants=0xff393a3a,shoe=0xff6a4526;
     int step=frame==1?1:frame==3?-1:0;
-    int kick=pose.state==State.SKILL&&phase(pose)>.22f&&phase(pose)<.78f?5:0; // [B] presentation only
+    int kick=pose.effectFamily==EffectFamily.KICK&&phase(pose)>.22f&&phase(pose)<.78f?5:0; // [B] presentation only
     rect(c,outline,4+step-kick,19,7+step,26);rect(c,outline,10-step,19,13-step+kick,26);
     rect(c,pants,5+step-kick,19,7+step,24);rect(c,pants,10-step,19,12-step+kick,24);
     rect(c,shoe,4+step-kick,24,7+step,27);rect(c,shoe,10-step,24,13-step+kick,27);
@@ -94,23 +97,42 @@ public final class CharacterRenderer {
   }
 
   private void drawWeapon(Canvas c,Pose pose){
-    if(pose.state!=State.ATTACK)return;
+    if(pose.state!=State.ATTACK||pose.effectFamily==EffectFamily.PUNCH)return;
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
     p.setColor(0xffd7d2c5);p.setStrokeWidth(2);
     c.drawLine(left?2:15,14,left?-7:23,7,p); // [B] generic weapon placeholder
   }
 
+  /** Owns all player-local prototype action effects formerly drawn by GameView.drawActionFx(). */
   private void drawEffect(Canvas c,Pose pose){
-    if(pose.state!=State.CAST&&pose.state!=State.SKILL&&pose.state!=State.HIT)return;
-    float q=phase(pose);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);
-    p.setColor(pose.state==State.HIT?0xaaff7755:0xaa78b9ff);
-    c.drawCircle(8,8,5+7*q,p);p.setStyle(Paint.Style.FILL);
+    EffectFamily family=pose.hitFlash?EffectFamily.HIT:pose.effectFamily;
+    if(family==EffectFamily.NONE)return;
+    float q=phase(pose);
+    boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    float sx=left?-1f:1f;
+    float sy=(pose.direction==Direction.SW||pose.direction==Direction.SE)?1f:-1f;
+    switch(family){
+      case CAST:
+        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaa78b9ff);
+        c.drawCircle(8,-7,5+9*q,p);c.drawCircle(8,-7,12-4*q,p);p.setStyle(Paint.Style.FILL);break;
+      case THROW:
+        p.setColor(0xffffd76b);c.drawCircle(8+sx*27.5f*q,13+sy*17.5f*q,2,p);break;
+      case PUNCH:
+      case KICK:
+      case SKILL:
+        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(family==EffectFamily.SKILL?2.5f:1.5f);
+        p.setColor(family==EffectFamily.SKILL?0xaa7fffa8:0xaaffefb0);
+        c.drawArc(new RectF(8+sx*9-9,3,8+sx*9+9,21),20,130,false,p);p.setStyle(Paint.Style.FILL);break;
+      case HIT:
+        p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaaff7755);
+        c.drawCircle(8,8,5+7*q,p);p.setStyle(Paint.Style.FILL);break;
+      default:break;
+    }
   }
 
   private float phase(Pose pose){return pose.stateDuration<=0?0:Math.max(0,Math.min(1,pose.stateClock/pose.stateDuration));}
   private void rect(Canvas c,int color,float l,float t,float r,float b){p.setColor(color);c.drawRect(l,t,r,b,p);}
 
-  public boolean hasRequiredStateContract(){
-    return State.values().length==7&&DRAW_ORDER.size()==5;
-  }
+  public boolean hasRequiredStateContract(){return State.values().length==7&&DRAW_ORDER.size()==5;}
+  public boolean ownsPlayerLocalEffects(){return true;}
 }
