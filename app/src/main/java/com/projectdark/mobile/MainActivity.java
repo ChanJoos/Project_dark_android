@@ -1,19 +1,23 @@
 package com.projectdark.mobile;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 public final class MainActivity extends Activity {
     private GameView game;
 
     @Override public void onCreate(Bundle b) {
         super.onCreate(b);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         hideSystemUi();
         game = new GameView(this);
         setContentView(game);
+        Toast.makeText(this, "이동: 빈 맵 터치 · 전투: 몬스터 선택 → ATK / SKILL / MAGIC", Toast.LENGTH_LONG).show();
     }
 
     private void hideSystemUi() {
