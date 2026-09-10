@@ -1,6 +1,6 @@
 # Combat / Monster handoff
 
-## 2026-09-10 19:35 KST — PASS 34 / agent/combat/20260910-1835
+## 2026-09-10 19:35 KST — PASS 34 / agent/combat/20260910-1935
 
 ### Continued blocker resolved
 - Added `CombatRuntimeSession` to make the PASS 33 integration order executable instead of leaving it as handoff prose.
