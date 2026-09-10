@@ -1,7 +1,7 @@
 # DEV HISTORY — PASS 34 Combat Runtime Session
 
 Date: 2026-09-10
-Branch: `agent/combat/20260910-1835`
+Branch: `agent/combat/20260910-1935`
 
 ## Canonical/design review
 
