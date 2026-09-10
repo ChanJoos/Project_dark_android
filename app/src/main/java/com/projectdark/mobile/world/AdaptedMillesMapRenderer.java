@@ -63,6 +63,14 @@ public final class AdaptedMillesMapRenderer {
         case LAMP:
           fill.setColor(0xff3e3d39);canvas.drawRect(foot.x-3,t+12,foot.x+3,b,fill);
           fill.setColor(0xffffd88a);canvas.drawCircle(foot.x,t+10,8,fill);break;
+        case BUSH:
+          fill.setColor(0xff40533d);canvas.drawCircle(foot.x-d.width*.22f,foot.y-d.height*.42f,d.height*.42f,fill);
+          canvas.drawCircle(foot.x+d.width*.22f,foot.y-d.height*.40f,d.height*.44f,fill);
+          fill.setColor(0xff53654b);canvas.drawCircle(foot.x,foot.y-d.height*.55f,d.height*.38f,fill);break;
+        case GATEPOST:
+          fill.setColor(0xff5d584f);canvas.drawRect(foot.x-d.width*.34f,t+12f,foot.x+d.width*.34f,b,fill);
+          edge.setColor(0xff35322e);canvas.drawRect(foot.x-d.width*.34f,t+12f,foot.x+d.width*.34f,b,edge);
+          fill.setColor(0xff726a5d);path.reset();path.moveTo(l,t+14f);path.lineTo(foot.x,t);path.lineTo(r,t+14f);path.lineTo(r,t+24f);path.lineTo(l,t+24f);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);break;
       }
       edge.setColor(0x55312B24);
     }
@@ -96,7 +104,6 @@ public final class AdaptedMillesMapRenderer {
     float facadeTop=foot-wallH;
     float mid=(l+r)*.5f;
 
-    // Side shadow gives the footprint a readable volume instead of a flat collision box.
     fill.setColor(sideColor(object.kind));
     path.reset();path.moveTo(r,facadeTop);path.lineTo(r,foot);path.lineTo(r-24f,foot+12f);path.lineTo(r-24f,facadeTop+12f);path.close();
     canvas.drawPath(path,fill);canvas.drawPath(path,edge);
@@ -104,12 +111,10 @@ public final class AdaptedMillesMapRenderer {
     fill.setColor(wallColor(object.kind));
     canvas.drawRect(l,facadeTop,r,foot,fill);canvas.drawRect(l,facadeTop,r,foot,edge);
 
-    // Roof is a simple pitched silhouette; this is explicitly prototype geometry, not source art.
     fill.setColor(roofColor(object.kind));
     path.reset();path.moveTo(l-overhang,facadeTop);path.lineTo(mid,facadeTop-roofRise);path.lineTo(r+overhang,facadeTop);path.lineTo(r-overhang*.3f,facadeTop+18f);path.lineTo(l+overhang*.3f,facadeTop+18f);path.close();
     canvas.drawPath(path,fill);canvas.drawPath(path,edge);
 
-    // Small eaves line helps distinguish roof from facade at mobile scale.
     edge.setColor(0xaa302820);edge.setStrokeWidth(2f);canvas.drawLine(l-overhang,facadeTop,r+overhang,facadeTop,edge);edge.setStrokeWidth(1f);
 
     AdaptedMillesEntranceLayer.Entrance entrance=AdaptedMillesEntranceLayer.byStructureId(object.id);
@@ -120,7 +125,6 @@ public final class AdaptedMillesMapRenderer {
       fill.setColor(0xff33281f);canvas.drawRect(cx-doorW*.5f,foot-doorH,cx+doorW*.5f,foot,fill);
       edge.setColor(0xff211b17);canvas.drawRect(cx-doorW*.5f,foot-doorH,cx+doorW*.5f,foot,edge);
       fill.setColor(0xff81705a);canvas.drawCircle(cx+doorW*.27f,foot-doorH*.45f,2.5f,fill);
-      // Exterior step remains outside collision and visually communicates the stable approach point.
       fill.setColor(0xff71685b);path.reset();path.moveTo(cx-doorW*.65f,foot);path.lineTo(cx+doorW*.65f,foot);path.lineTo(cx+doorW*.9f,foot+10f);path.lineTo(cx-doorW*.9f,foot+10f);path.close();canvas.drawPath(path,fill);canvas.drawPath(path,edge);
     }
     edge.setColor(0x55312B24);
