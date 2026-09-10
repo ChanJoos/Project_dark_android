@@ -1,0 +1,9 @@
+Area,Canonical_Source,Runtime_Status,Evidence,Remaining_Gap,Resolution
+Skill definitions,Skill_Master.csv,FULL_CSV_PACKAGED_AND_LOADABLE,MIXED_PER_ROW,None for textual source fields,RpgCanonicalSkillRepository preserves all canonical columns and Runtime_Inclusion
+Skill effects,Skill_Master.csv,FULL_CSV_PACKAGED_AND_LOADABLE,MIXED_PER_ROW,Rows explicitly unresolved in Master remain unresolved,Preserve Runtime_Data_Status and Effect_Evidence without invention
+Acquisition overrides,Skill_Runtime_Overrides.csv,OFFICIAL_STARTER_RULES_APPLIED,O,자물쇠열기 canonical Skill_ID not present in current Skill_Master,Preserve official fact without inventing an ID
+Job selection,Progression_Master.csv + Content_Gates.csv,LV10_SELECTION_ENABLED,B+O,Starter acquisition follows job selection,Starter learning handled separately
+Skill icons current policy,Skill_Visual_Manifest.csv,CURRENT_RENEWAL_CONFIRMED,O,None for fact of renewal,2026-03-26 renewal confirmation preserved
+Skill icon source sheets,Skill_Visual_Manifest.csv,OFFICIAL_SOURCE_SHEETS_REGISTERED,O,Direct pixels not vendored,11 official source sheet OIDs preserved
+Per-skill icon mapping,Skill_Visual_Manifest.csv,PENDING_CROP,O source / mapping unresolved,No canonical per-skill crop coordinates or local icon files in repository,Do not invent mapping; use OFFICIAL_SHEET_PENDING_CROP:<Skill_ID>
+Runtime executable bindings,RpgActionMetadataCatalog.java,PARTIAL,Canonical metadata + B prototype bindings,Combat execution is not RPG ownership,Full skill-book definitions are available separately from executable action wiring
