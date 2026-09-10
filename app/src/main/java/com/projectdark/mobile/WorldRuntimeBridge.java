@@ -29,8 +29,6 @@ public final class WorldRuntimeBridge {
           @Override public float minY(){return RuntimeState.WORLD_MIN_Y;}
           @Override public float maxY(){return RuntimeState.WORLD_MAX_Y;}
           @Override public boolean canPlayerOccupy(float x,float y){
-            // Static world blockers are prefiltered here; RuntimeState.tryMove remains the final
-            // authority for NPC/monster occupancy and any other runtime collision rejection.
             return !WorldRuntimeBridge.this.state.blocked(x,y);
           }
         },
@@ -59,9 +57,11 @@ public final class WorldRuntimeBridge {
 
   public WorldMoveTargetController.Snapshot tick(float dt){
     WorldMoveTargetController.Snapshot snapshot=moveTarget.tick(dt);
-    camera.follow(state.player().x,state.player().y);
+    followCamera();
     return snapshot;
   }
+
+  public void followCamera(){camera.follow(state.player().x,state.player().y);}
 
   public WorldMoveTargetController.Snapshot cancelForDirectInput(){
     return moveTarget.cancelForDirectInput();
