@@ -80,9 +80,21 @@ public final class RpgProgressionState {
   private Long normalExp=null;
 
   public RpgProgressionState(){
-    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,Collections.<String,Integer>emptyMap(),Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,Collections.<String,Integer>emptyMap(),Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,Collections.<String,Integer>emptyMap(),Evidence.O));
+    Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
+    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_SHOES","신발","신발",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_WATER_PEARL","바다의진주목걸이","목걸이",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_WATER_LEATHER","바다의가죽벨트","벨트",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_EARTH_PEARL","대지의진주목걸이","목걸이",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_EARTH_LEATHER","대지의가죽벨트","벨트",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_WIND_PEARL","바람의진주목걸이","목걸이",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_WIND_LEATHER","바람의가죽벨트","벨트",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_FIRE_PEARL","화염의진주목걸이","목걸이",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_FIRE_LEATHER","화염의가죽벨트","벨트",11,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,noStats,Evidence.O));
   }
 
   private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
