@@ -44,9 +44,15 @@ public final class CharacterRenderer {
     }
   }
 
+  private static final boolean CONTRACT_VALID=CharacterRendererAudit.passes();
   private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
 
+  public CharacterRenderer(){
+    if(!CONTRACT_VALID)throw new IllegalStateException("CharacterRenderer contract audit failed: "+CharacterRendererAudit.summary());
+  }
+
   public void draw(Canvas c,Pose pose){
+    if(pose==null||pose.direction==null||pose.state==null)throw new IllegalArgumentException("Character pose requires direction and state");
     int frame=pose.state==State.WALK?((int)(pose.walkClock*8f)%4):0; // [B] prototype cadence
     float bob=(frame==1||frame==3)?-2f:0f;
     p.setColor(pose.hitFlash?0x99ff7766:0x66000000);
@@ -133,6 +139,7 @@ public final class CharacterRenderer {
   private float phase(Pose pose){return pose.stateDuration<=0?0:Math.max(0,Math.min(1,pose.stateClock/pose.stateDuration));}
   private void rect(Canvas c,int color,float l,float t,float r,float b){p.setColor(color);c.drawRect(l,t,r,b,p);}
 
-  public boolean hasRequiredStateContract(){return State.values().length==7&&DRAW_ORDER.size()==5;}
+  public boolean hasRequiredStateContract(){return CharacterRendererAudit.passes();}
+  public String contractAuditSummary(){return CharacterRendererAudit.summary();}
   public boolean ownsPlayerLocalEffects(){return true;}
 }
