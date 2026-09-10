@@ -16,26 +16,38 @@ public final class RpgInteractionController {
   }
 
   private String selectedInventoryItemId = null;
+  private RpgProgressionState.EquipResult lastEquipResult = null;
 
   public String selectedInventoryItemId(){ return selectedInventoryItemId; }
+  public RpgProgressionState.EquipResult lastEquipResult(){ return lastEquipResult; }
 
   /** Select an owned item by canonical ID. Display names are deliberately not used as identity. */
   public boolean selectInventoryItem(RpgProgressionState rpg,String itemId){
     Integer quantity=rpg.inventory().get(itemId);
-    if(quantity==null||quantity<=0){selectedInventoryItemId=null;return false;}
+    if(quantity==null||quantity<=0){selectedInventoryItemId=null;lastEquipResult=null;return false;}
     selectedInventoryItemId=itemId;
+    lastEquipResult=null;
     return true;
   }
 
-  /** Equip through RpgProgressionState so level/slot/evidence requirements stay centralized. */
+  /**
+   * Detailed equipment request. All ownership/definition/slot/requirement rules remain in
+   * RpgProgressionState; this controller only preserves selection and reports the canonical result.
+   */
+  public RpgProgressionState.EquipResult equipSelectedDetailed(RpgProgressionState rpg){
+    if(selectedInventoryItemId==null){lastEquipResult=RpgProgressionState.EquipResult.ITEM_NOT_OWNED;return lastEquipResult;}
+    lastEquipResult=rpg.equip(selectedInventoryItemId);
+    if(lastEquipResult==RpgProgressionState.EquipResult.ITEM_NOT_OWNED)selectedInventoryItemId=null;
+    return lastEquipResult;
+  }
+
+  /** Legacy coarse result retained for existing callers; delegates to the detailed result. */
   public InteractionResult equipSelected(RpgProgressionState rpg){
     if(selectedInventoryItemId==null)return InteractionResult.NO_ITEM;
-    RpgProgressionState.EquipResult result=rpg.equip(selectedInventoryItemId);
+    RpgProgressionState.EquipResult result=equipSelectedDetailed(rpg);
     switch(result){
       case EQUIPPED:return InteractionResult.EQUIPPED;
-      case ITEM_NOT_OWNED:
-        selectedInventoryItemId=null;
-        return InteractionResult.NO_ITEM;
+      case ITEM_NOT_OWNED:return InteractionResult.NO_ITEM;
       case UNKNOWN_ITEM:
       case NOT_EQUIPPABLE:
       case REQUIREMENT_PENDING:
