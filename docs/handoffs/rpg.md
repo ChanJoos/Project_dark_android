@@ -106,3 +106,30 @@ Known major-drop relations still lack authoritative probability/quantity, so can
 3. Resolve normal EXP start/threshold semantics before enabling player EXP mutation from currently verified monster EXP reward facts.
 4. Director/Integrator should wire `RewardLine.kind` into the live toast/chat/inventory refresh path and run compile/APK/runtime validation.
 5. Keep `GameView.java` changes outside this RPG branch.
+
+
+---
+
+## PASS 28 — typed direct-reward feed
+
+### Implemented
+- Every direct item grant now returns and preserves one of:
+  `GRANTED / INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / UNRESOLVED_REWARD`.
+- `RewardResolution.grantOutcomes` retains failed and evidence-pending attempts instead of exposing only successful inventory changes.
+- `consumeCombatWithOutcomes` exposes `PROCESSED_DEFEAT / DUPLICATE_OR_STALE / IGNORED_NON_DEFEAT`; the existing `consumeCombat` entry point remains compatible.
+- `RpgRewardFeedPresentation` converts reward history into timed semantic entries:
+  `ITEM_GRANTED / EXP_GAINED / INVENTORY_FULL / INVALID_ITEM / INVALID_QUANTITY / UNRESOLVED_REWARD / NO_CONFIRMED_REWARD`.
+- Feed entries deduplicate by combat sequence and expose `text / semantic / itemId / quantity / evidence / progress / alpha`.
+- Current unresolved POTE_SPIRIT major-drop data displays an unresolved line and never grants the ring.
+
+### Director / UX integration request
+1. Keep one `RpgRewardFeedPresentation` instance beside the live RPG state.
+2. After RPG consumes combat events, call `feed.sync(state.rpg())`; call `feed.tick(dt)` once per frame.
+3. Render `feed.snapshot()` as reward toast/chat lines. Use semantic styling, but do not display `PENDING` as success.
+4. `ITEM_GRANTED` is the only item-success semantic. Failure and unresolved lines must not play acquisition success feedback.
+5. Do not reconstruct outcomes from inventory deltas in GameView; consume the RPG DTO directly.
+
+### Verification
+- Isolated compile of the modified state contract and new feed: PASS.
+- `RpgRewardFeedAudit`: PASS, covering direct mutation outcomes, deduplication, fade/despawn and unresolved reward display.
+- Full Gradle/APK and Android runtime: pending Director integration.
