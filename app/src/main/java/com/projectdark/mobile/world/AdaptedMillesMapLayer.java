@@ -46,7 +46,7 @@ public final class AdaptedMillesMapLayer {
       new Structure("east_shop",StructureKind.SHOP,1210f,410f,1480f,660f,E,S,A),
       new Structure("southwest_house",StructureKind.HOUSE,330f,760f,570f,980f,E,S,A),
       new Structure("southeast_house",StructureKind.HOUSE,1000f,770f,1260f,995f,E,S,A),
-      new Structure("plaza_landmark_a",StructureKind.LANDMARK,700f,470f,765f,535f,E,S,A),
+      new Structure("plaza_landmark_a",StructureKind.SHOP,672f,480f,800f,544f,E,S,A),
       new Structure("plaza_landmark_b",StructureKind.LANDMARK,850f,625f,920f,690f,E,S,A),
       new Structure("west_perimeter",StructureKind.WALL,80f,820f,250f,1050f,E,S,A),
       new Structure("east_perimeter",StructureKind.WALL,1390f,790f,1580f,1040f,E,S,A),

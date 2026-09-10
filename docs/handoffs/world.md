@@ -69,6 +69,33 @@ Therefore current main fails the new acceptance gate for one-step tile adjacency
 
 P0 is no longer map expansion. First implement the corrected 4-diagonal, one-adjacent-isometric-tile movement contract. Only after it passes should work continue on a single coherent one-screen village slice with properly projected buildings and props.
 
+## M2 active line — first coherent isometric building
+
+- Active branch: `agent/world/playable-village` (reuse this branch/PR for the remaining one-screen village work).
+- Base main: `e04b758745c41ecef4cdc2a810846af7bcda3762`.
+- M1 disposition: tile-locked movement was integrated by Director at `b8f36e6787267faca86a66bfe863713afb6c4b9e`; main CI compile and assembleDebug passed. Do not reimplement it here.
+
+### Implemented M2 increment
+
+- Replaced the central-plaza `plaza_landmark_a` fallback with the first authored isometric SHOP footprint.
+- `AdaptedMillesIsoBuildingLayer` is the stable data surface for its 2:1 diamond footprint, wall/roof height, door foot, approach tile, evidence and asset status.
+- The live `AdaptedMillesMapRenderer.draw(...)` call already used by GameView now renders two sloped wall faces, four hip-roof faces, a face-aligned door/window, projected shadow and plaza threshold stones. It does not use a flat front-facing facade rectangle.
+- Map structure bounds and `WorldDef` collision bounds are both `(672,480)–(800,544)`; the visual footprint uses the same bounds.
+- The entrance approach point `(768,560)` is an authored PLAZA tile center, so tap/NPC movement remains tile-locked.
+- Geometry and art remain `ADAPTED/B`; unverified source art remains `PENDING_CROP`.
+
+### Integration and verification
+
+- No new GameView wiring is required: current main calls `AdaptedMillesMapRenderer.draw(canvas, worldAdapter)`.
+- `AdaptedMillesIsoBuildingAudit`: PASS (2:1 projection, structure/collision bounds, entrance and plaza tile connection).
+- Renderer compiled in isolation with minimal Android graphics stubs: PASS.
+- `git diff --check`: PASS.
+- Full Gradle/APK and device visual inspection are not run here; BUILD/RUNTIME VERIFIED are not claimed for this branch.
+
+### Next one result
+
+Extend the same isometric building data/render path to the next two structures visible in the opening camera, then add fence/tree grouping around their collision edges. Do not expand map bounds.
+
 ## 2026-09-11 PASS 41 — tile-locked runtime integration
 
 - Branch: `agent/world/20260911-0117`

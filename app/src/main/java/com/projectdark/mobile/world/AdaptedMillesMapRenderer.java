@@ -90,8 +90,61 @@ public final class AdaptedMillesMapRenderer {
       float roofRise=visual==null?20f:visual.roofRise;
       float overhang=visual==null?8f:visual.roofOverhang;
       if(br.x+overhang<0f||tl.x-overhang>canvas.getWidth()||br.y<0f||tl.y-wallHeight-roofRise>canvas.getHeight())continue;
-      drawStructure(canvas,object,visual,tl.x,tl.y,br.x,br.y);
+      AdaptedMillesIsoBuildingLayer.Building iso=AdaptedMillesIsoBuildingLayer.byStructureId(object.id);
+      if(iso!=null)drawIsometricBuilding(canvas,world,iso);
+      else drawStructure(canvas,object,visual,tl.x,tl.y,br.x,br.y);
     }
+  }
+
+  /**
+   * First M2 building: footprint, walls, roof, door, shadow and threshold all share the 64x32
+   * projected diamond. Unlike the older fallback this contains no screen-aligned facade rectangle.
+   */
+  private void drawIsometricBuilding(Canvas canvas,WorldRuntimeAdapter world,AdaptedMillesIsoBuildingLayer.Building b){
+    WorldCameraTransform.Point n=world.worldToScreen(b.centerX,b.centerY-b.halfDepth);
+    WorldCameraTransform.Point e=world.worldToScreen(b.centerX+b.halfWidth,b.centerY);
+    WorldCameraTransform.Point s=world.worldToScreen(b.centerX,b.centerY+b.halfDepth);
+    WorldCameraTransform.Point w=world.worldToScreen(b.centerX-b.halfWidth,b.centerY);
+
+    // Ground shadow and two diamond threshold stones visibly connect the southeast door to plaza.
+    fill.setColor(0x4d171a18);quad(canvas,n.x+8f,n.y+6f,e.x+10f,e.y+7f,s.x+10f,s.y+7f,w.x+8f,w.y+6f,fill);
+    WorldCameraTransform.Point approach=world.worldToScreen(b.approachX,b.approachY);
+    fill.setColor(0xff81745f);diamond(approach.x-8f,approach.y-8f,22f,9f);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+    diamond(approach.x-20f,approach.y-18f,18f,8f);canvas.drawPath(path,fill);canvas.drawPath(path,edge);
+
+    float h=b.wallHeight;
+    // Southwest wall.
+    fill.setColor(0xff8a715b);
+    quad(canvas,w.x,w.y-h,s.x,s.y-h,s.x,s.y,w.x,w.y,fill);
+    // Southeast wall.
+    fill.setColor(0xff665447);
+    quad(canvas,s.x,s.y-h,e.x,e.y-h,e.x,e.y,s.x,s.y,fill);
+
+    // Timber beams follow the wall edges instead of screen-horizontal rectangle borders.
+    edge.setColor(0xff42352c);edge.setStrokeWidth(3f);
+    canvas.drawLine(w.x,w.y-h,w.x,w.y,edge);canvas.drawLine(s.x,s.y-h,s.x,s.y,edge);canvas.drawLine(e.x,e.y-h,e.x,e.y,edge);
+    canvas.drawLine(w.x,w.y-h,s.x,s.y-h,edge);canvas.drawLine(s.x,s.y-h,e.x,e.y-h,edge);
+
+    // Door is a vertical parallelogram embedded in the southeast wall.
+    float db1x=lerp(s.x,e.x,.24f),db1y=lerp(s.y,e.y,.24f),db2x=lerp(s.x,e.x,.62f),db2y=lerp(s.y,e.y,.62f);
+    fill.setColor(0xff35271f);quad(canvas,db1x,db1y-34f,db2x,db2y-34f,db2x,db2y,db1x,db1y,fill);
+    edge.setColor(0xff211914);canvas.drawLine(db1x,db1y-34f,db2x,db2y-34f,edge);canvas.drawLine(db2x,db2y-34f,db2x,db2y,edge);
+    fill.setColor(0xffc5a05d);canvas.drawCircle(lerp(db1x,db2x,.76f),lerp(db1y,db2y,.76f)-15f,2.2f,fill);
+
+    // A window on the southwest wall uses the opposite face slope.
+    float wb1x=lerp(w.x,s.x,.22f),wb1y=lerp(w.y,s.y,.22f),wb2x=lerp(w.x,s.x,.48f),wb2y=lerp(w.y,s.y,.48f);
+    fill.setColor(0xff9dc0bd);quad(canvas,wb1x,wb1y-39f,wb2x,wb2y-39f,wb2x,wb2y-22f,wb1x,wb1y-22f,fill);
+
+    // Four hip-roof faces meet at one raised peak; back faces first, then visible front faces.
+    float o=b.roofOverhang;
+    float tnX=n.x,tnY=n.y-h-o*.5f,teX=e.x+o,teY=e.y-h,tsX=s.x,tsY=s.y-h+o*.5f,twX=w.x-o,twY=w.y-h;
+    float peakX=(n.x+s.x)*.5f,peakY=(n.y+s.y)*.5f-h-b.roofRise;
+    fill.setColor(0xff4b3c42);triangle(canvas,tnX,tnY,teX,teY,peakX,peakY,fill);
+    fill.setColor(0xff58444a);triangle(canvas,twX,twY,tnX,tnY,peakX,peakY,fill);
+    fill.setColor(0xff6b4d4a);triangle(canvas,twX,twY,tsX,tsY,peakX,peakY,fill);
+    fill.setColor(0xff593f40);triangle(canvas,tsX,tsY,teX,teY,peakX,peakY,fill);
+    edge.setColor(0xff34292b);edge.setStrokeWidth(2f);canvas.drawLine(twX,twY,peakX,peakY,edge);canvas.drawLine(peakX,peakY,teX,teY,edge);canvas.drawLine(twX,twY,tsX,tsY,edge);canvas.drawLine(tsX,tsY,teX,teY,edge);
+    edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
   }
 
   private void drawStructure(Canvas canvas,AdaptedMillesObjectLayer.ObjectInstance object,
@@ -145,6 +198,14 @@ public final class AdaptedMillesMapRenderer {
   private void diamond(float cx,float cy,float halfWidth,float halfHeight){
     path.reset();path.moveTo(cx,cy-halfHeight);path.lineTo(cx+halfWidth,cy);path.lineTo(cx,cy+halfHeight);path.lineTo(cx-halfWidth,cy);path.close();
   }
+
+  private void quad(Canvas canvas,float ax,float ay,float bx,float by,float cx,float cy,float dx,float dy,Paint paint){
+    path.reset();path.moveTo(ax,ay);path.lineTo(bx,by);path.lineTo(cx,cy);path.lineTo(dx,dy);path.close();canvas.drawPath(path,paint);canvas.drawPath(path,edge);
+  }
+  private void triangle(Canvas canvas,float ax,float ay,float bx,float by,float cx,float cy,Paint paint){
+    path.reset();path.moveTo(ax,ay);path.lineTo(bx,by);path.lineTo(cx,cy);path.close();canvas.drawPath(path,paint);canvas.drawPath(path,edge);
+  }
+  private static float lerp(float a,float b,float t){return a+(b-a)*t;}
 
   private void drawTransitionEdges(Canvas canvas,float cx,float cy,int mask){
     if(mask==0)return;

@@ -34,7 +34,7 @@ public final class WorldDef {
     b.add(new RectF(150f,105f,390f,300f)); b.add(new RectF(540f,90f,800f,280f)); b.add(new RectF(1040f,110f,1320f,315f));
     b.add(new RectF(120f,430f,350f,650f)); b.add(new RectF(1210f,410f,1480f,660f));
     b.add(new RectF(330f,760f,570f,980f)); b.add(new RectF(1000f,770f,1260f,995f));
-    b.add(new RectF(700f,470f,765f,535f)); b.add(new RectF(850f,625f,920f,690f));
+    b.add(new RectF(672f,480f,800f,544f)); b.add(new RectF(850f,625f,920f,690f));
     b.add(new RectF(80f,820f,250f,1050f)); b.add(new RectF(1390f,790f,1580f,1040f));
     b.add(new RectF(1660f,420f,1900f,580f)); b.add(new RectF(1960f,420f,2200f,600f));
     b.add(new RectF(2140f,700f,2260f,950f)); b.add(new RectF(1700f,1000f,1940f,1200f));

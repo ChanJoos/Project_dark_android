@@ -32,6 +32,7 @@ public final class WorldMapProjection {
   private final List<AdaptedMillesDecorationLayer.Decoration> decorations;
   private final List<AdaptedMillesStructureVisualLayer.Visual> structureVisuals;
   private final List<AdaptedMillesEntranceLayer.Entrance> entrances;
+  private final List<AdaptedMillesIsoBuildingLayer.Building> isoBuildings;
 
   private WorldMapProjection(WorldDef world){
     mapId=WorldDef.ID;evidence=WorldDef.EVIDENCE_GEOMETRY;status=WorldDef.GEOMETRY_STATUS;
@@ -50,6 +51,7 @@ public final class WorldMapProjection {
     decorations=AdaptedMillesDecorationLayer.decorations();
     structureVisuals=AdaptedMillesStructureVisualLayer.visuals();
     entrances=AdaptedMillesEntranceLayer.entrances();
+    isoBuildings=AdaptedMillesIsoBuildingLayer.buildings();
   }
 
   public static WorldMapProjection from(WorldDef world){if(world==null)throw new IllegalArgumentException("world required");return new WorldMapProjection(world);}
@@ -62,5 +64,6 @@ public final class WorldMapProjection {
   public List<AdaptedMillesDecorationLayer.Decoration> decorations(){return decorations;}
   public List<AdaptedMillesStructureVisualLayer.Visual> structureVisuals(){return structureVisuals;}
   public List<AdaptedMillesEntranceLayer.Entrance> entrances(){return entrances;}
+  public List<AdaptedMillesIsoBuildingLayer.Building> isoBuildings(){return isoBuildings;}
   public WorldCameraTransform newCamera(float viewportWidth,float viewportHeight){return new WorldCameraTransform(bounds.minX,bounds.maxX,bounds.minY,bounds.maxY,viewportWidth,viewportHeight);}
 }
