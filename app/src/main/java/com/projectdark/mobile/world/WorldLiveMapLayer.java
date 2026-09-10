@@ -35,6 +35,11 @@ public final class WorldLiveMapLayer {
   /** NPC approach is deliberately separate from generic empty-ground movement. */
   public WorldMoveTargetController.Snapshot requestNpcApproach(String npcId){return world.requestNpcApproach(npcId);}
 
+  public WorldMoveTargetController.Snapshot requestMonsterApproach(String monsterId,float approachTolerance){return world.requestMonsterApproach(monsterId,approachTolerance);}
+
+  /** A direct input pulse is one exact neighboring isometric tile. */
+  public WorldMoveTargetController.Snapshot step(WorldMoveTargetController.Direction direction){return world.step(direction);}
+
   public WorldMoveTargetController.Snapshot cancelForDirectInput(){return world.cancelForDirectInput();}
   public WorldMoveTargetController.Snapshot cancelForAction(){return world.cancelForAction();}
   public WorldMoveTargetController.Snapshot cancel(){return world.cancel();}

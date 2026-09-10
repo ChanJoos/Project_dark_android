@@ -7,9 +7,9 @@ Revision THREE-20260910 · 기존 D002 작업순서/역할을 대체한다.
 
 | 담당 | 다음 결과 1개 | 수락 조건 | 현재 근거/의존성 |
 |---|---|---|---|
-| 월드 | 최신 타일 이동 작업을 완료해 넘긴다 | tap/joystick 공용 tile-step API, 4방향 인접성·왕복·10-step drift=0·camera 일관성 검증 | 열린 PR #81, head b17c6c6d215f632530ea13f7b6b1dc3b0a8d2883의 구현 주장. BUILD/RUNTIME 미검증. 더 최신 head 여부 재확인 |
-| 캐릭터 | 승인 무도가 4방향 IDLE/WALK를 실제 적용 가능한 자산으로 끝낸다 | 24×32/1.50, SE 우하/좌측 깨짐 없음, foot anchor 고정, missing/decode/shape fallback | main handoff의 V5/1.60 지시는 21:49 canon이 대체. 최신 활성 작업선 확인 후 계속 |
-| 통합 | World 타일 이동을 GameView joystick/tap 및 Character facing에 연결한다 | free-pixel 우회 경로 없음, 두 입력 동일 이동, 방향 일치, compile/관련 회귀/assembleDebug, 가능한 Android 실행 | PR #81 본문이 GameView joystick의 state.tryMove 우회를 미연결로 명시. 이미 수정됐으면 재구현하지 말고 검증 |
+| 월드 | M2의 첫 조각으로 기존 투영 위에 길과 연결된 등각 건물 1개를 완성한다 | 지면·건물·출입구·그림자·collision이 같은 iso 투영을 사용하고 flat-front box가 아니며 실제 GameView에 표시 | PR #81의 후속 head `464f315`에서 M1 tile 이동 전달 완료. main 통합/CI 결과를 확인한 뒤 맵 bounds 확장 없이 진행 |
+| 캐릭터 | 승인 무도가 4방향 IDLE/WALK를 실제 적용 가능한 자산으로 끝낸다 | 24×32/1.50, SE 우하/좌측 깨짐 없음, foot anchor 고정, missing/decode/shape fallback | 새 최신 canon 대응 Character commit 없음. V5/1.60 및 startup-crash 계보는 superseded/보류 |
+| 통합 | 통합된 M1 이동 APK를 기기에서 검증하고 Character 결과가 오면 facing/anchor를 닫는다 | joystick/tap 4방향 한 칸, 왕복 drift=0, camera 일치, SE·좌측 방향, startup 안전성을 실제 Android에서 확인 | World `464f315`를 최신 main 위에 통합한 `7a7e234`; 로컬 runner에는 Gradle/JDK/Android runtime이 없어 GitHub CI와 기기 gate 필요 |
 
 ## 이후 진행
 

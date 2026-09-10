@@ -44,7 +44,7 @@ public final class GameView extends View {
   private boolean joy,running,inventoryOpen;
   private long last,lastLedgerSequence=0,lastMoveRequestId=0,lastRewardSequence=0;
   private int dir=0;
-  private float walkClock=0,actionClock=0,tapMarkerClock=0,tapMarkerX=0,tapMarkerY=0;
+  private float walkClock=0,actionClock=0,tapMarkerClock=0,tapMarkerX=0,tapMarkerY=0,directStepClock=0;
   private Action action=Action.IDLE;
   private WorldMoveTargetController.Status lastMoveStatus=WorldMoveTargetController.Status.IDLE;
   private String feedback="",pressedControl="",rewardBanner="";
@@ -62,25 +62,42 @@ public final class GameView extends View {
     combat.tick(dt);state.tick(dt);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){action=Action.IDLE;interaction.cancel();combat.cancelApproach();worldAdapter.cancel();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
-    if(joy&&(vx!=0||vy!=0)){action=Action.WALK;state.tryMove(vx*145*dt,vy*145*dt);walkClock+=dt;interaction.cancelApproach();combat.cancelApproach();return;}
-    if(interaction.approaching()){updateNpcInteraction(dt);return;}
-    if(combat.approaching()){updateCombatApproach(dt);return;}
+    if(joy&&(vx!=0||vy!=0)){
+      directStepClock-=dt;
+      if(directStepClock<=0f){WorldMoveTargetController.Snapshot step=worldAdapter.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;applyWorldFacing(step.lastStepDirection);consumeMoveOutcome(step);}
+      action=Action.WALK;walkClock+=dt;interaction.cancelApproach();combat.cancelApproach();return;
+    }
     WorldMoveTargetController.Snapshot move=moveTarget.snapshot();
-    if(move.status==WorldMoveTargetController.Status.MOVING){float bx=state.player().x,by=state.player().y;move=worldAdapter.tickNavigation(dt).movement;float dx=state.player().x-bx,dy=state.player().y-by;if(dx!=0||dy!=0){setFacingDirection(dx,dy);action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;consumeMoveOutcome(move);return;}
+    if(move.status==WorldMoveTargetController.Status.MOVING){move=worldAdapter.tickNavigation(dt).movement;if(move.lastStepDirection!=null){applyWorldFacing(move.lastStepDirection);action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;consumeMoveOutcome(move);return;}
     consumeMoveOutcome(move);action=Action.IDLE;
   }
 
-  private void consumeMoveOutcome(WorldMoveTargetController.Snapshot move){if(move==null)return;if(move.requestId!=lastMoveRequestId){lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;}if(move.status==lastMoveStatus)return;lastMoveStatus=move.status;if(move.status==WorldMoveTargetController.Status.REACHED)showFeedback("이동 완료",FeedbackTone.INFO);else if(move.status==WorldMoveTargetController.Status.BLOCKED)showFeedback("이동할 수 없는 위치입니다",FeedbackTone.WARN);}
+  private void consumeMoveOutcome(WorldMoveTargetController.Snapshot move){
+    if(move==null)return;
+    if(move.requestId!=lastMoveRequestId){lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;}
+    if(move.status==lastMoveStatus)return;
+    lastMoveStatus=move.status;
+    if(move.status==WorldMoveTargetController.Status.REACHED){
+      if(move.kind==WorldMoveTargetController.RequestKind.NPC_APPROACH){RuntimeState.Npc npc=findNpc(move.targetEntityId);if(npc!=null)interaction.request(state,npc);}
+      else if(move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH)executeReadyCombatIntent();
+      else if(move.kind==WorldMoveTargetController.RequestKind.GROUND)showFeedback("이동 완료",FeedbackTone.INFO);
+    }else if(move.status==WorldMoveTargetController.Status.BLOCKED){
+      if(move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH)combat.cancelApproach();
+      showFeedback("이동할 수 없는 위치입니다",FeedbackTone.WARN);
+    }
+  }
   private void consumeLedger(){List<CombatLedger.Event> events=state.ledger().snapshot();for(CombatLedger.Event e:events){if(e.sequence<=lastLedgerSequence)continue;lastLedgerSequence=e.sequence;switch(e.type){case MONSTER_DEFEATED:showFeedback("몬스터 격파",FeedbackTone.INFO);break;case PLAYER_HIT:showFeedback("-"+e.amount+" HP",FeedbackTone.WARN);break;case PLAYER_DEFEATED:showFeedback("행동 불능",FeedbackTone.WARN);break;case PLAYER_REVIVED:showFeedback("부활",FeedbackTone.INFO);break;default:break;}}}
   private void consumeRewardNotice(){RpgInventoryPresentation.RewardNotice notice=rpgPresentation.latestRewardNotice(state.rpg());if(notice==null||notice.combatSequence<=lastRewardSequence)return;lastRewardSequence=notice.combatSequence;if(notice.status!=RpgProgressionState.RewardStatus.RESOLVED){showFeedback("보상 확인 필요",FeedbackTone.WARN);return;}if(!notice.autoLootedItems.isEmpty()){Map.Entry<String,Integer> first=null;for(Map.Entry<String,Integer> e:notice.autoLootedItems.entrySet()){first=e;break;}if(first!=null){int visibleQty=inventoryQuantity(first.getKey());if(visibleQty<first.getValue()){showFeedback("보상 지급 상태를 확인할 수 없습니다",FeedbackTone.WARN);return;}String name=itemDisplayName(first.getKey());int extra=Math.max(0,notice.autoLootedItems.size()-1);showReward("자동루팅 · "+name+" x"+first.getValue()+(extra>0?" 외 "+extra+"종":""));return;}}if(notice.exp!=null){showReward("보상 처리 · EXP +"+notice.exp);return;}showReward("보상 처리 완료");}
   private int inventoryQuantity(String itemId){for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(itemId))return row.quantity;return 0;}
   private String itemDisplayName(String itemId){for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(itemId))return row.name;return itemId;}
+  private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc npc:state.npcs())if(id.equals(npc.id))return npc;return null;}
 
-  private void updateNpcInteraction(float dt){InteractionController.TickResult result=interaction.tick(state,dt);vx=interaction.moveX();vy=interaction.moveY();if(vx!=0||vy!=0)setFacingDirection(vx,vy);if(result==InteractionController.TickResult.WALKING){action=Action.WALK;walkClock+=dt;return;}action=Action.IDLE;String message=interaction.consumeFeedback();if(message!=null)showFeedback(message,FeedbackTone.INFO);}
-  private void updateCombatApproach(float dt){RuntimeState.Monster approach=combat.approachTarget();if(approach==null||!approach.alive){combat.cancelApproach();return;}float d=state.distanceTo(approach),range=combat.intentRange();if(d<=range){CombatController.Intent ready=combat.consumeReadyIntent();action=Action.IDLE;if(ready==CombatController.Intent.ATTACK)attack();else if(ready==CombatController.Intent.CAST)cast();else if(ready==CombatController.Intent.SKILL)skill();else if(ready==CombatController.Intent.KICK)kick();return;}float dx=approach.x-state.player().x,dy=approach.y-state.player().y;setAutoDirection(dx,dy);action=Action.WALK;boolean moved=state.tryMove(vx*105*dt,vy*105*dt);walkClock+=dt;if(!moved){combat.cancelApproach();action=Action.IDLE;showFeedback("사거리 접근 실패",FeedbackTone.WARN);}}
-  private void beginCombatApproach(CombatController.Intent intent){worldAdapter.cancelForAction();if(combat.beginApproach(intent))showFeedback("타깃으로 이동",FeedbackTone.INFO);}
+  private void executeReadyCombatIntent(){CombatController.Intent ready=combat.consumeReadyIntent();action=Action.IDLE;if(ready==CombatController.Intent.ATTACK)attack();else if(ready==CombatController.Intent.CAST)cast();else if(ready==CombatController.Intent.SKILL)skill();else if(ready==CombatController.Intent.KICK)kick();}
+  private void beginCombatApproach(CombatController.Intent intent){worldAdapter.cancelForAction();if(combat.beginApproach(intent)){RuntimeState.Monster target=combat.approachTarget();if(target!=null)worldAdapter.requestMonsterApproach(target.id,combat.intentRange());showFeedback("타깃으로 이동",FeedbackTone.INFO);}}
 
   private void setFacingDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;if(sx<0&&sy>0)dir=0;else if(sx>0&&sy>0)dir=1;else if(sx<0)dir=2;else dir=3;}
+  private void applyWorldFacing(WorldMoveTargetController.Direction direction){if(direction==null)return;switch(direction){case SW:dir=0;break;case SE:dir=1;break;case NW:dir=2;break;case NE:dir=3;break;}}
+  private WorldMoveTargetController.Direction joystickDirection(){switch(dir){case 1:return WorldMoveTargetController.Direction.SE;case 2:return WorldMoveTargetController.Direction.NW;case 3:return WorldMoveTargetController.Direction.NE;default:return WorldMoveTargetController.Direction.SW;}}
   private void setAutoDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;vx=.707f*sx;vy=.707f*sy;setFacingDirection(dx,dy);}
   private void faceTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive)setFacingDirection(t.x-state.player().x,t.y-state.player().y);}
   private boolean isActing(){return action!=Action.IDLE&&action!=Action.WALK;}
@@ -163,7 +180,7 @@ public final class GameView extends View {
   }
   private static RectF slotRectStatic(int index){int col=index%5,row=index/5;float l=SLOT_X0+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
   private boolean isHudSurface(float x,float y){return blocksWorldTapForHud(x,y,combat.target()!=null);}
-  private void requestGroundMove(float x,float y){WorldCameraTransform.Point wp=worldAdapter.screenToWorld(x,y);WorldMoveTargetController.Snapshot move=worldAdapter.requestGroundScreenTap(x,y);lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;if(move.status==WorldMoveTargetController.Status.MOVING||move.status==WorldMoveTargetController.Status.REACHED){tapMarkerX=wp.x;tapMarkerY=wp.y;tapMarkerClock=.7f;showFeedback(move.replacedRequestId>0?"이동 목표 변경":"이동 시작",FeedbackTone.INFO);}consumeMoveOutcome(move);}
+  private void requestGroundMove(float x,float y){WorldMoveTargetController.Snapshot move=worldAdapter.requestGroundScreenTap(x,y);lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;if(move.status==WorldMoveTargetController.Status.MOVING||move.status==WorldMoveTargetController.Status.REACHED){tapMarkerX=move.targetX;tapMarkerY=move.targetY;tapMarkerClock=.7f;showFeedback(move.replacedRequestId>0?"이동 목표 변경":"이동 시작",FeedbackTone.INFO);}consumeMoveOutcome(move);}
 
   public boolean onTouchEvent(MotionEvent e){float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;switch(e.getActionMasked()){
     case MotionEvent.ACTION_DOWN:
@@ -172,7 +189,7 @@ public final class GameView extends View {
       if(circleHit(x,y,UTILITY_X0,UTILITY_Y0,UTILITY_R+4)){inventoryOpen=!inventoryOpen;worldAdapter.cancelForAction();showFeedback(inventoryOpen?"인벤토리 열림":"인벤토리 닫힘",FeedbackTone.INFO);return true;}
       if(handleInventoryTouch(x,y)){worldAdapter.cancelForAction();return true;}
       if(inventoryOpen){inventoryOpen=false;worldAdapter.cancelForAction();showFeedback("인벤토리 닫힘",FeedbackTone.INFO);return true;}
-      if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){joy=true;pressedControl="JOY";worldAdapter.cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}
+      if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){joy=true;directStepClock=0f;pressedControl="JOY";worldAdapter.cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}
       if(slotRect(0).contains(x,y)){pressedControl="SKILL";skill();return true;}
       if(slotRect(1).contains(x,y)){pressedControl="MAG";cast();return true;}
       if(slotRect(2).contains(x,y)){pressedControl="KICK";kick();return true;}
@@ -181,9 +198,9 @@ public final class GameView extends View {
       if(circleHit(x,y,ATK_X,ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
       if(circleHit(x,y,AUTO_X,AUTO_Y,AUTO_R+3)){pressedControl="AUTO";showFeedback("AUTO 준비 중",FeedbackTone.WARN);return true;}
       if(isHudSurface(x,y))return true;
-      WorldCameraTransform.Point wp=worldAdapter.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){worldAdapter.cancelForAction();combat.cancelApproach();interaction.request(state,npc);showFeedback("NPC 접근 · "+npc.name,FeedbackTone.INFO);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){worldAdapter.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name,FeedbackTone.INFO);return true;}requestGroundMove(x,y);return true;
+      WorldCameraTransform.Point wp=worldAdapter.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){combat.cancelApproach();interaction.cancelApproach();worldAdapter.requestNpcApproach(npc.id);showFeedback("NPC 접근 · "+npc.name,FeedbackTone.INFO);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){worldAdapter.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name,FeedbackTone.INFO);return true;}requestGroundMove(x,y);return true;
     case MotionEvent.ACTION_MOVE:if(joy)stick(x,y);return true;
-    case MotionEvent.ACTION_UP:case MotionEvent.ACTION_CANCEL:joy=false;pressedControl="";knobX=JOY_X;knobY=JOY_Y;vx=vy=0;return true;
+    case MotionEvent.ACTION_UP:case MotionEvent.ACTION_CANCEL:joy=false;directStepClock=0f;pressedControl="";knobX=JOY_X;knobY=JOY_Y;vx=vy=0;return true;
   }return true;}
   private void stick(float x,float y){if(isActing()||!state.player().alive)return;float dx=x-JOY_X,dy=y-JOY_Y,len=(float)Math.sqrt(dx*dx+dy*dy);if(len>JOY_R){dx=dx/len*JOY_R;dy=dy/len*JOY_R;len=JOY_R;}knobX=JOY_X+dx;knobY=JOY_Y+dy;if(len<8){vx=vy=0;return;}float nx=dx/len,ny=dy/len;if(Math.abs(nx)>Math.abs(ny)){if(nx>0){vx=.707f;vy=.707f;dir=1;}else{vx=-.707f;vy=-.707f;dir=2;}}else{if(ny>0){vx=-.707f;vy=.707f;dir=0;}else{vx=.707f;vy=-.707f;dir=3;}}}
   private static boolean inside(float x,float y,float l,float t,float r,float b){return x>=l&&x<=r&&y>=t&&y<=b;}
