@@ -1,48 +1,49 @@
 # Character / Animation Handoff
 
-## 2026-09-10 16:05 KST — agent/character/20260910-1605
+## 2026-09-10 16:20 KST — agent/character/20260910-1620
 
 ### Source state
-- Continued from draft PR #15 / `agent/character/20260910-1548`; previous Character work remains unmerged.
-- Re-verified Nexon's official character-creation guide `https://lod.nexon.com/info/guide/82283` and its official storage image `https://storage.nexon.com/dsk03/13/NX_FILE/Board/65536/05/1/000/00/00/5557536463815442599.png`.
-- The screenshot directly shows a male base avatar, two gender buttons, eighteen populated hair cells and fourteen populated hair-colour cells. Exact underlying sprite sheets / palette RGB remain unavailable and are not invented.
+- Continued from draft PR #16 / `agent/character/20260910-1605`; previous Character visual work remains unmerged.
+- Re-verified Nexon's official character-creation guide `https://lod.nexon.com/info/guide/82283` and creation screenshot.
+- Added a second official source: right-menu / character-info guide `https://lod.nexon.com/info/guide/82295` and its Nexon-hosted character-info screenshot `https://storage.nexon.com/dsk00/03/NX_FILE/Board/65536/05/1/000/00/00/4836959960795447513.png`.
+- The character-info screenshot positively shows a rendered female in-game avatar at Lv1/commoner information view and a visible equipment-slot layout around the avatar.
 
 ### Priority
-Character visual identity remains ahead of micro-animation polish.
+Character identity / body-hair-equipment reconstruction remains ahead of micro-animation polish.
 
 ### Completed this run
-- Added `CharacterAppearance` as a stable renderer-owned creation appearance contract: `Gender`, `hairStyleIndex`, `hairColorIndex`.
-- Encoded the visible creation UI bounds as 18 hair-style choices and 14 hair-colour choices; indices clamp safely to those visible options.
-- Added an `[ADAPTED_FROM_O]` preview hair-colour palette approximated from the official guide swatches. These RGB values are explicitly not claimed canonical game palette data.
-- Extended `CharacterRenderer` with an appearance-aware overload `draw(Canvas, Pose, CharacterAppearance)` while preserving the existing `draw(Canvas, Pose)` API. Existing `GameView.java` therefore compiles against the same signature and automatically receives `defaultGuideMale()`.
-- Implemented eighteen distinct procedural hair silhouettes keyed by the official creation UI hair index so the renderer now has a real replaceable hair-style contract rather than one hard-coded placeholder.
-- Existing BODY/HAIR/EQUIPMENT/WEAPON/EFFECT layer ordering, four-direction presentation, scale/anchor contract and action states remain intact.
-- Gender selection is represented in the API, but the official capture only visibly proves the selected male base avatar. Female-specific body pixels remain `PENDING_CROP`; the renderer does not invent a female anatomy/sprite.
+- Extended `CharacterVisualSourceManifest` with official female-avatar and equipment-layout provenance.
+- Updated `CharacterAppearance` so `Gender.FEMALE` now has positive official silhouette evidence rather than only a UI-choice proof.
+- Added `officialInfoFemalePreview()` using the visibly green-haired official female capture as a renderer preview contract. The exact hair slot index remains adapted because the screenshot does not identify the creation-slot index.
+- Reworked `CharacterRenderer` female presentation using only visible cues from the official character-info capture: narrower torso/waist, light long lower silhouette and longer side/back hair fall. Exact base-vs-equipped pixels remain unresolved, so geometry is `[ADAPTED_FROM_O]`, not claimed as extracted original sprite data.
+- Added `CharacterEquipmentVisualContract` to expose semantic presentation regions for visible equipment layout (`HEAD`, `TORSO`, `MAIN_HAND`, `OFF_HAND`, `LOWER_BODY`, `FEET`, accessories, etc.) without inventing canonical RPG slot IDs or item sprites.
+- Existing male creation-screen appearance, 18 hair choices, 14 colour choices, BODY/HAIR/EQUIPMENT/WEAPON/EFFECT layering, 4 directions and action-state contracts remain intact.
 
 ### User-visible delta
-The currently wired player now uses a guide-backed default male appearance through the unchanged renderer entry point. Hair is no longer one fixed violet placeholder: the renderer supports the eighteen creation-screen hair slots and fourteen visible colour choices through a stable appearance contract, ready for character-creation UI wiring.
+The renderer can now visibly produce a female avatar presentation grounded in an official Nexon in-game capture instead of using the previous male body plus a decorative outline. Female presentation has a narrower body silhouette, light long lower garment cue and longer hair fall; the official green-haired female preview is exposed through `CharacterAppearance.officialInfoFemalePreview()`.
 
 ### Evidence discipline
-- Official guide page + Nexon-hosted screenshot: `[O]` source evidence.
-- Base proportions / procedural hair geometry: `[O+B]`.
-- Preview RGB palette: `[ADAPTED_FROM_O]`.
-- Exact game sprite crops, directional frames, exact palette values and female base-avatar pixels: `PENDING_CROP`.
-- Class-introduction key art remains reference-only and is not treated as runtime sprite evidence.
+- Character creation page/screenshot: `[O]` for creation choices and visible male base-avatar proportion.
+- Character-info page/screenshot: `[O]` for existence and visible silhouette of an in-game female avatar plus equipment-layout existence.
+- Female body/hair procedural reproduction: `[O+B] / [ADAPTED_FROM_O]`.
+- Exact female base unequipped sprite, exact hair slot identity, exact item sprite crops and exact equipment slot-to-RPG-slot mapping: `PENDING_CROP` / unresolved.
+- No class key art or arbitrary community screenshot was promoted to sprite truth.
 
 ### Integration request
 - `GameView.java` remains untouched.
-- When character-creation state is exposed by its owning layer, Integrator can call `CharacterRenderer.draw(canvas, pose, appearance)` directly; no renderer refactor should be required.
-- NPC/monster direct drawing still needs Integrator delegation to `NpcPresentationRenderer` / `MonsterPresentationRenderer` as previously handed off.
+- Integrator can later supply `CharacterAppearance` to `CharacterRenderer.draw(canvas, pose, appearance)` when character creation/profile state is exposed.
+- RPG/Integrator should map stable canonical equipment slots/item IDs to `CharacterEquipmentVisualContract.VisualRegion`; renderer must not infer or own equip rules.
+- NPC/monster direct drawing still needs Integrator delegation to the previously exposed presentation renderers.
 
 ### Validation
-- Character-owned changes only: `CharacterAppearance.java`, `CharacterRenderer.java`, `CharacterVisualSourceManifest.java`, this handoff.
-- Existing `CharacterRendererAudit` structural contract remains compatible: 4 directions, 7 states, 5 layers and `PENDING_CROP` asset status are unchanged.
+- Character-owned files only.
+- Structural renderer contract remains 4 directions / 7 states / 5 ordered visual layers.
 - No APK packaging or Director integration performed.
 
 ### Ownership boundary preserved
 No changes to `GameView.java`, world/map/camera/collision/pathfinding/portal, CombatResolver/MonsterAI/damage semantics, inventory/reward/EXP/save/progression, HUD/input, NPC dialogue or quest state.
 
 ### Next Character priority
-1. Find a Nexon-hosted capture where the female base avatar is actually selected, then implement female body geometry from evidence rather than inference.
-2. Search official Nexon-hosted gameplay/guide assets for real equipment/weapon sprites and map them to known item IDs.
-3. If direct sprite-sheet/crop evidence is found, replace procedural hair/body geometry incrementally while preserving the `CharacterAppearance` contract.
+1. Find official Nexon gameplay/guide captures with clearly identifiable weapon/equipment appearances and bind only positively identified visuals to canonical item IDs.
+2. Replace procedural body/hair pieces with authenticated crops incrementally when exact frame assets become available.
+3. Preserve the appearance/equipment contracts so asset replacement does not require gameplay-layer rewrites.

@@ -1,22 +1,23 @@
 package com.projectdark.mobile;
 
 /**
- * Character-creation appearance contract grounded in Nexon's official character creation guide.
- * The official screenshot visibly exposes two gender choices, eighteen populated hair choices and
- * fourteen populated hair-colour swatches. Exact sprite crops/palette RGB values are not embedded
- * here; procedural rendering remains [O+B]/[ADAPTED] until authenticated sprite extraction exists.
+ * Character-creation appearance contract grounded in Nexon's official Legend of Darkness guides.
+ * Creation UI proves two gender choices, eighteen populated hair choices and fourteen colour swatches.
+ * Character-info UI separately proves a rendered female in-game avatar. Exact sprite crops and exact
+ * palette values remain unresolved; procedural rendering is [O+B]/[ADAPTED_FROM_O].
  */
 public final class CharacterAppearance {
   public static final String EVIDENCE="O+B";
-  public static final String SOURCE_URL=CharacterVisualSourceManifest.CHARACTER_CREATION_SCREENSHOT_URL;
+  public static final String CREATION_SOURCE_URL=CharacterVisualSourceManifest.CHARACTER_CREATION_SCREENSHOT_URL;
+  public static final String FEMALE_SOURCE_URL=CharacterVisualSourceManifest.CHARACTER_INFO_EQUIPMENT_SCREENSHOT_URL;
   public static final int VISIBLE_HAIR_STYLE_COUNT=18;
   public static final int VISIBLE_HAIR_COLOR_COUNT=14;
 
   public enum Gender { MALE, FEMALE }
 
   /**
-   * [ADAPTED_FROM_O] RGB approximations sampled visually from the official guide UI swatches.
-   * These are presentation placeholders, not claimed canonical game palette values.
+   * [ADAPTED_FROM_O] Visual approximations of the official creation-screen swatches.
+   * They are intentionally not claimed as canonical client RGB values.
    */
   private static final int[] HAIR_COLOR_PREVIEW={
       0xff2c8f89,0xff16911e,0xffa4a946,0xffd1b20b,0xffb06b19,0xffb43b59,0xff813c9d,
@@ -34,8 +35,18 @@ public final class CharacterAppearance {
   }
 
   public static CharacterAppearance defaultGuideMale(){return new CharacterAppearance(Gender.MALE,0,7);}
+
+  /**
+   * Official character-info screenshot visibly shows a green-haired female avatar.
+   * Hair slot identity is not recoverable from that capture, so style index 5 remains adapted.
+   */
+  public static CharacterAppearance officialInfoFemalePreview(){return new CharacterAppearance(Gender.FEMALE,5,1);}
+
   public int previewHairColor(){return HAIR_COLOR_PREVIEW[hairColorIndex];}
-  public boolean isMaleSourceBacked(){return gender==Gender.MALE;}
+  public boolean hasOfficialGenderSilhouetteEvidence(){
+    return gender==Gender.MALE?CharacterVisualSourceManifest.MALE_BASE_AVATAR_VISIBLE:
+        CharacterVisualSourceManifest.FEMALE_AVATAR_VISIBLE_IN_CHARACTER_INFO;
+  }
   public boolean exactSpriteCropResolved(){return false;}
 
   private static int clamp(int value,int min,int max){return Math.max(min,Math.min(max,value));}
