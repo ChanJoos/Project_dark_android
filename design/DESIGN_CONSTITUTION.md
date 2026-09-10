@@ -66,6 +66,17 @@ STR/CON/INT/DEX/WIS, base stats, equipment modifiers, normal EXP/level, ability/
 
 Item/monster/skill/NPC/map IDs and relationships already present in Master DB or canonical extracted data take precedence over hard-coded Java values.
 
+### Monster reward delivery — USER CANON / `[ADAPTED]`
+
+Canonical runtime flow:
+`MONSTER_DEFEATED → reward resolution → direct inventory grant → EXP/Gold/quest progression`.
+
+Resolved monster item rewards are granted directly to inventory exactly once. **There is no ground-drop entity, loot-on-floor state, pickup-distance validation, manual pickup interaction, pickup animation, or AUTO pickup behavior in the target PROJECT DARK runtime.**
+
+The former design `monster death → ground item/drop entity → pickup → inventory` is **RETIRED / SUPERSEDED** as of 2026-09-10. It is no longer an alternative mode, backlog item, future feature, regression expectation, or implementation requirement. Historical references to that flow are archival only and have zero design authority.
+
+Unknown drop probability, quantity, item identity, monster→reward relation, or inventory-capacity policy remains PENDING. Removing pickup does not permit fabricated rewards. Inventory mutation and reward claim must be idempotent.
+
 ## 9. Quest/world canon
 
 Preserve original start conditions, NPC dialogue sequence, objective conditions, completion dialogue and rewards when evidenced. Quest state must distinguish undiscovered/available/in-progress/completable/rewarded/abandoned or equivalent explicit states. Do not invent lore, NPC relationships or town facts to fill gaps.
@@ -78,14 +89,16 @@ World remains visually central. Approved mobile shell: compact party/quest infor
 
 ## 11. AUTO canon
 
-AUTO uses the same combat math as manual play; no AUTO damage bonus. Manual input overrides AUTO and may resume after ~1.2s `[ADAPTED]`. Repeated path failure must terminate/recover rather than loop forever.
+AUTO uses the same combat math and reward path as manual play; no AUTO damage bonus. Manual input overrides AUTO and may resume after ~1.2s `[ADAPTED]`. Repeated path failure must terminate/recover rather than loop forever.
 
-**Latest explicit product decision: monster item rewards use automatic looting. Ground item entities and manual pickup are not part of the target runtime loop.** When a monster reward is actually resolved from authoritative data, the item reward is applied directly to inventory through the RPG-owned inventory validation path. AUTO and manual combat share the same reward path. Unknown drop probability, quantity, item identity, inventory capacity policy, or reward relation remains `PENDING`; automatic looting must not fabricate a reward merely because ground pickup was removed.
+Monster rewards use the §8 direct-inventory contract. AUTO contains no loot navigation or pickup subsystem.
 
 ## 12. Agent governance
 
 Before coding, every development agent must read this file, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, canonical data under `data/design/`, Visual Manifest material, and `docs/DEV_HISTORY*`.
 
 Existing canonical IDs/values/relationships must not be rewritten for convenience. If source documents disagree or required data is absent, record `DESIGN_CONFLICT` or `PENDING`; do not silently decide canon.
+
+**Supersession rule:** if any older plan, Master prose, backlog, DEV_HISTORY, handoff, test, code comment, or implementation conflicts with §8, §8 wins. Agents must not restore the retired ground-drop/pickup design. Existing runtime code implementing it must be removed or disconnected from the target runtime path.
 
 The Integrator is the final Design Compliance Gate. A compiling implementation that violates this constitution is a failed integration.
