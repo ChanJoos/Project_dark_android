@@ -49,3 +49,32 @@ No `GameView.java`, map/camera/collision/pathfinding/portal, combat semantics, R
 1. Device-playtest V3 directly beside the original screenshot reference. Continue this same task if the silhouette still reads too clean/geometric.
 2. Highest-value next delta is clean source-backed BODY sprite extraction or a manually traced per-pixel atlas from an unobstructed original character source; do not go back to smooth procedural anatomy.
 3. Preserve the fixed 1.50 user scale unless a newer explicit user instruction supersedes it.
+
+---
+
+## 2026-09-10 19:24 KST — agent/character/20260910-1906
+
+### Latest user decision
+The user approved the generated white-hair/dark-pants pixel character preview and explicitly asked to cut it into frames, apply each movement frame, and make it the default character in code. This supersedes further procedural-body refinement for normal field movement.
+
+### Implemented visual delta — atlas-backed V4
+- added `app/src/main/res/drawable-nodpi/player_default_atlas.png` as an `[ADAPTED]` 120×128 atlas;
+- atlas contract is 24×32 per frame, 5 columns × 4 rows;
+- row order is `SW / SE / NW / NE`;
+- `IDLE` binds column 0 per direction;
+- `WALK` cycles columns 1..4 from the existing `walkClock`, so movement direction now selects a distinct approved sprite sequence rather than procedurally redrawing the body;
+- `CharacterRenderer` now decodes and owns the default atlas internally, so the existing `new CharacterRenderer()` runtime wiring consumes it with no `GameView.java` modification;
+- pixel rendering remains nearest-neighbor: anti-alias, dither and bitmap filtering disabled;
+- player scale remains exactly `1.50`, shadow scale `0.72`, logical foot anchor `0`;
+- new presentation profile is `USER_APPROVED_ATLAS_20260910_V4`;
+- `CharacterRendererAudit` now gates atlas activation, dimensions, four directions, scale 1.50 and the IDLE/WALK atlas-state contract.
+
+### State/evidence boundary
+`IDLE` and `WALK` are now genuinely atlas-backed. `ATTACK / SKILL / CAST / HIT / DEAD` still use the connected hard-pixel directional fallback and must be replaced by separately cut approved atlas frames in the next Character pass. The active atlas is user-approved generated artwork, therefore `[ADAPTED]`; it is not claimed as original Nexon sprite pixels. Verified original frames remain `PENDING_CROP`.
+
+### PR / verification
+Draft PR #66: `Character: bind approved directional atlas to default movement`.
+At handoff time GitHub had not yet reported a workflow run for the latest head, so compile/APK success is not claimed here.
+
+### Next P0
+Cut and bind the approved `ATTACK`, then `SKILL`, `HIT`, `DEAD`, and finally `CAST` frames using the same 24×32/nearest-neighbor/1.50 anchor contract. Do not regress IDLE/WALK back to procedural drawing.
