@@ -99,29 +99,43 @@ No original sprite/frame/timing was fabricated. Layer refs remain evidence-gated
 Re-checked latest main, canonical design/data/source-of-truth, current World/Character DEV_HISTORY, PR #50 and this handoff before coding. PR #50 remained open/mergeable and no newer canonical character rule superseded the NW/NE/SW/SE presentation contract, so this pass continues directly from PR #50 head.
 
 ### Source acquisition result
-Performed a fresh Nexon-first visual sweep. Confirmed three useful Nexon-hosted community references without promoting community material to `[O]`:
-- `NX_COMMUNITY_DESERT_2022`: Nexon storage preview pixel visibly contains small isometric multi-actor gameplay silhouettes; `[V]`, `PREVIEW_VERIFIED`, `REFERENCE_ONLY`.
-- `NX_COMMUNITY_CHARACTERS_20040513`: historical Nexon community page titled around a gathering of game characters; `[V]`, image payload still fetch-pending, `PENDING_CROP`.
-- `NX_COMMUNITY_PLAZA_20251207`: dense modern multi-character gameplay scene; `[V]`, reference-only for proportion/direction vocabulary, not legacy sprite authority.
-
-Added `CharacterVisualSourceRegistry.java` to track subject, evidence grade, pixel inspection state, direction-identification state and crop readiness. `Source.bindable()` requires O/V evidence + verified pixels + positively identified direction + explicit crop approval + concrete asset URL. Current `bindableCount()` is intentionally zero.
-
-### Evidence admission gate
-`WorldEntityPresentationAudit` now requires `CharacterVisualSourceRegistry.preservesEvidenceGate()`. A visible screenshot cannot silently become a sprite asset: `REFERENCE_ONLY`, `PENDING_CROP`, unknown/multiple-uncropped direction sources remain non-bindable until positive identification.
+Performed a fresh Nexon-first visual sweep. Confirmed three useful Nexon-hosted community references without promoting community material to `[O]`. Added `CharacterVisualSourceRegistry.java` and kept current `bindableCount()` intentionally zero until a single actor/state/direction crop is positively isolated and approved.
 
 ### User-visible visual delta
-Updated the live player `CharacterRenderer` WALK presentation with renderer-only `[B]/[ADAPTED]` diagonal weight transfer:
-- subtle facing-axis lateral sway follows the walk phase;
-- the shadow slightly widens/compresses on foot-contact phase;
-- player scale remains `0.92`, logical foot anchor remains `0`, and world/collision coordinates are unchanged.
-
-This makes the existing procedural walk read less like a sliding frontal cutout while preserving the four-direction silhouette. It is not claimed as original LOD animation timing.
-
-### Ownership / evidence safety
-No source pixels were copied into the repository. No community screenshot was labeled official art. No unresolved direction was guessed. No `GameView.java`, map/camera/collision/pathfinding/portal, combat math/AI, inventory/reward/EXP/save/progression, HUD/input, NPC dialogue/quest-state or APK packaging change was made.
+Updated the live player `CharacterRenderer` WALK presentation with renderer-only `[B]/[ADAPTED]` diagonal weight transfer and foot-contact shadow compression while preserving scale `0.92` and logical foot anchor `0`.
 
 ### Remaining Character P0
 1. Acquire an individually isolatable actor crop with a positively identified NW/NE/SW/SE direction before admitting the first real BODY binding.
-2. Prefer Nexon-hosted/official evidence; fan material may guide search but remains `FAN` and cannot be silently promoted.
-3. Once the first crop is positively identified, create crop metadata/anchor measurements and bind only that proven state+direction+layer; keep other directions `PENDING_CROP`.
-4. Integrator/UX still owns `GameView` wiring for NPC/monster renderer presentation.
+2. Once the first crop is positively identified, create crop metadata/anchor measurements and bind only that proven state+direction+layer; keep other directions `PENDING_CROP`.
+3. Integrator/UX still owns `GameView` wiring for NPC/monster renderer presentation.
+
+---
+
+## 2026-09-10 18:24 KST — agent/character/20260910-1824
+
+### Source-of-Truth gate / continuity
+Re-read latest `main` canonical design/data/source-of-truth and current character history before coding. No newer canonical character rule supersedes the four-direction side-diagonal requirement. Continued directly from PR #54 head rather than opening an unrelated task.
+
+### Fresh source acquisition result
+A new historical source was directly opened and pixel-inspected:
+- page: `https://lod.nexon.com/Community/screenshot/121691?Category2=2`
+- Nexon asset: `https://storage.nexon.com/Data02/GnxFile/002/100/000/00/00/9008208572056215.jpg`
+- post title: `여러가지 개성을 가진 케릭터들..` (2004-08-17)
+- the actual 640x480 in-game screenshot visibly contains many distinct legacy player silhouettes with multiple diagonal facings.
+
+Recorded as `NX_COMMUNITY_CHARACTERS_20040817`, evidence `[V]`, `PREVIEW_VERIFIED`, `MULTIPLE_VISIBLE_UNCROPPED`, `REFERENCE_ONLY`. It is materially stronger than a fetch-pending page because the actual source pixels were inspected, but it is deliberately not admitted as a sprite crop yet: individual actor bounds/state/direction still need positive isolation. `bindableCount()` therefore remains zero.
+
+### User-visible visual delta
+Added renderer-only `[B]/[ADAPTED]` player IDLE weight shift:
+- subtle lateral sway follows the retained NW/NE/SW/SE facing axis;
+- a very small settle/breath bob prevents a frozen cutout look;
+- the player shadow subtly compresses/widens with the settle phase;
+- player scale stays `0.92`, logical foot anchor stays `0`, and no world/collision coordinates change.
+
+### Evidence / boundary
+No source pixels were copied into the repository, no community screenshot was promoted to `[O]`, and no unverified actor crop was bound. No `GameView.java`, map/camera/collision/pathfinding/portal, combat semantics, RPG/inventory/reward/save/progression, HUD/input, dialogue/quest-state or APK packaging changes were made.
+
+### Remaining Character P0
+1. Isolate one actor from `NX_COMMUNITY_CHARACTERS_20040817` with measured crop rectangle, foot anchor and positively identified diagonal direction/state before the first real BODY binding.
+2. Keep all unmeasured neighboring directions/layers `PENDING_CROP`; do not infer a sprite sheet from this screenshot.
+3. Integrator/UX still owns `GameView` wiring for NPC/monster renderer presentation.
