@@ -1,6 +1,6 @@
 # Character / Animation Handoff — CURRENT
 
-Updated: 2026-09-10 23:34 KST
+Updated: 2026-09-11 01:01 KST
 Branch: `agent/character/20260910-1942`
 
 ## Authority / supersession
@@ -9,7 +9,7 @@ This handoff intentionally collapses obsolete V2/V3/V4/V5 draft history into one
 
 Latest explicit Character canon: logical sprite **24x32**, runtime scale **1.50**, exact diagonal facing **NW / NE / SW / SE**. Martial artist is weaponless: no sword, axe, staff or other weapon drawing. Shield is allowed.
 
-## R1 accepted implementation baseline — IDLE / WALK
+## R1 baseline — IDLE / WALK
 
 - `app/src/main/res/drawable-nodpi/player_martial_idle_walk.png`
 - atlas size **120x128**, frame **24x32**, columns `0=IDLE`, `1..4=WALK`
@@ -21,18 +21,30 @@ Latest explicit Character canon: logical sprite **24x32**, runtime scale **1.50*
 
 The reciprocal `atlasRow(Direction)` / `visualFacingForRow(row)` contract specifically protects the device-reported wrong-SE and broken-left presentation defects.
 
-## R2 visible delta — weaponless directional ATTACK
+## R2 — weaponless directional ATTACK
 
-Commit `1d7a695f1fa6f78ce5ea455a61f64a459db30834` adds and binds `app/src/main/res/drawable-nodpi/player_martial_attack.png`.
-
+- `app/src/main/res/drawable-nodpi/player_martial_attack.png`
 - atlas size **96x128** = 4 ATTACK frames x 4 directional rows
 - frame size remains **24x32**
 - attack rows use the exact same mapping: `NW / NE / SW / SE`
 - ATTACK advances by `stateClock/stateDuration` across four complete body frames
 - attack is bare-hand martial-art motion; there is no sword/axe/staff render path
 - shield remains attached to the off-hand silhouette
-- body and feet keep the same draw destination and logical foot anchor used by IDLE/WALK, preventing foot-anchor jumps between states
+- body and feet keep the same draw destination and logical foot anchor used by IDLE/WALK
 - missing/corrupt/mismatched attack atlas falls back safely instead of throwing at startup
+
+## R3 visible delta — SE + left-facing reinforcement
+
+Commit `51bfeeeaceaf7d76759cc6f7a596b8ed332cfb34` replaces both active martial-artist atlases in-place. No new renderer architecture or feature was added; this is a direct runtime visual correction on the one active Character line.
+
+Changes:
+- **SE row is independently redrawn** so visible face, eye/nose bias, torso diagonal, near arm, near foot and shield placement all bias toward lower-right instead of reading as a generic front/mirrored frame.
+- **SW and NW rows are independently redrawn** with left-biased head/torso/near-limb overlap to address the device-reported broken leftward presentation.
+- NE remains an independent right/up row and is not reused for SE.
+- WALK uses the same row identity as IDLE; only near/far leg overlap changes per frame. The foot anchor remains at the same 24x32 frame bottom for all four frames, preventing visual vertical hopping.
+- ATTACK was regenerated from the same body proportions so shoulder -> arm -> fist remains connected and direction is preserved through all four punch frames.
+- Martial artist remains **weaponless**. No sword/axe/staff pixels were introduced; only the allowed off-hand shield remains.
+- Source style remains `[ADAPTED]`; verified original Nexon frame extraction is still `PENDING_CROP`.
 
 ## Crash-proof resource gate
 
@@ -44,12 +56,9 @@ Commit `1d7a695f1fa6f78ce5ea455a61f64a459db30834` adds and binds `app/src/main/r
 - missing resource, decode failure, shape mismatch or invalid direction never throws from `CharacterRenderer()`
 - fallback remains weaponless and preserves `24x32`, `1.50`, four-direction facing and foot anchor
 
-## Static audit correction in this run
+## Static verification
 
-Commit `91a70507bdee53f9d81dba0f075428c0ada0559c` updates `CharacterRendererAudit` to the active R2 contract. The prior audit still referenced R1 and removed constants (`ATLAS_COLUMNS`, `ATLAS_WIDTH`), which could break compile/static verification even though the renderer itself had already advanced to R2.
-
-The corrected audit now gates:
-- profile `MARTIAL_ARTIST_SOURCE_SHAPED_20260910_R2`
+Current `CharacterRendererAudit` still gates the active runtime contract:
 - frame `24x32`
 - IDLE/WALK atlas `120x128`
 - ATTACK atlas `96x128`
@@ -58,8 +67,10 @@ The corrected audit now gates:
 - exact reciprocal rows `NW=0 / NE=1 / SW=2 / SE=3`
 - logical foot anchor `0`
 
-## Acceptance status
+The replacement PNGs were locally dimension-checked before commit: IDLE/WALK=`120x128 RGBA`, ATTACK=`96x128 RGBA`.
 
-Static implementation now contains explicit 4-direction IDLE/WALK plus explicit 4-direction unarmed ATTACK under one anchor contract. This is not yet claimed as device-runtime verified; Director-owned APK/device testing must still prove the actual resource path and visual facing on target hardware.
+## Acceptance status / next gate
 
-Do **not** start SKILL/HIT/DIE until the IDLE/WALK/ATTACK line is accepted on device. If accepted, next Character visual delta is SKILL under the same 24x32, 1.50, weaponless, four-direction, crash-safe resource contract. No new draft PR should be opened; continue this branch/work line until Director integration.
+The current line now contains a stronger static visual correction for the exact two device failures: wrong-SE and broken left-facing travel. This still is not claimed as device-runtime accepted until the Director-owned APK is tested.
+
+Do **not** start SKILL/HIT/DIE until the refreshed IDLE/WALK/ATTACK resources are accepted on device. If accepted, continue this same branch with SKILL under the same 24x32, 1.50, weaponless, four-direction, crash-safe resource contract. No new draft PR should be opened.
