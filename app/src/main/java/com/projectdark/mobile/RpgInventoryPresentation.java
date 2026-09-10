@@ -36,7 +36,11 @@ public final class RpgInventoryPresentation {
     public final RpgProgressionState.RewardStatus status;
     public final Integer exp;
     public final Map<String,Integer> autoLootedItems;
-    RewardNotice(RpgProgressionState.RewardResolution reward){this.combatSequence=reward.combatSequence;this.monsterId=reward.monsterId;this.status=reward.status;this.exp=reward.exp;this.autoLootedItems=reward.autoLootedItems;}
+    public final List<RpgProgressionState.RewardGrantOutcome> grantOutcomes;
+    RewardNotice(RpgProgressionState.RewardResolution reward){
+      this.combatSequence=reward.combatSequence;this.monsterId=reward.monsterId;this.status=reward.status;
+      this.exp=reward.exp;this.autoLootedItems=reward.autoLootedItems;this.grantOutcomes=reward.grantOutcomes;
+    }
   }
 
   public List<ItemRow> inventoryRows(RpgProgressionState rpg){
