@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -117,7 +119,11 @@ public final class CombatResolver {
   private final Deque<Event> events=new ArrayDeque<>();
   private final Set<String> defeatPublishedForLife=new HashSet<>();
   private long eventSequence=0,actionSequence=0;
-  private PendingAction active;
+  /**
+   * One in-flight action per actor. Linked ordering makes simultaneous hit-frame event ordering
+   * deterministic while allowing the player and multiple monsters to act concurrently.
+   */
+  private final Map<String,PendingAction> activeByActor=new LinkedHashMap<>();
 
   public CombatResolver(Port port){if(port==null)throw new IllegalArgumentException("port");this.port=port;}
 
@@ -125,39 +131,52 @@ public final class CombatResolver {
     if(def==null||actorId==null||targetId==null)throw new IllegalArgumentException("action request");
     InputMode mode=inputMode==null?InputMode.MANUAL:inputMode;
     RejectReason reason=validate(def,actorId,targetId,true);
-    if(reason==null&&active!=null)reason=RejectReason.ACTION_BUSY;
+    if(reason==null&&activeByActor.containsKey(actorId))reason=RejectReason.ACTION_BUSY;
     if(reason!=null){emit(EventType.ACTION_REJECTED,0,actorId,targetId,def,mode,reason,null,0);return new BeginResult(false,0,reason);}
     if(def.resourceCost>0)port.consumeResource(actorId,def.resourceCost);
     port.commitCooldown(actorId,def.actionId,def.cooldown);
     long seq=++actionSequence;
-    active=new PendingAction(seq,def,actorId,targetId,mode);
+    activeByActor.put(actorId,new PendingAction(seq,def,actorId,targetId,mode));
     emit(EventType.ACTION_STARTED,seq,actorId,targetId,def,mode,null,null,0);
     return new BeginResult(true,seq,null);
   }
 
   /** Applies the accepted effect at most once, only when hitTime has elapsed. */
   public void tick(float dt){
-    if(active==null||dt<=0f)return;
-    PendingAction a=active;
-    a.elapsed+=dt;
-    if(a.effectApplied||a.elapsed<a.def.hitTime)return;
-    RejectReason effectGate=validate(a.def,a.actorId,a.targetId,false);
-    if(effectGate!=null){emit(EventType.ACTION_CANCELLED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,effectGate,null,0);active=null;return;}
-    a.effectApplied=true;
-    EffectResult result=port.applyDamage(a.actorId,a.targetId,a.def.actionId,a.def.damage);
-    emit(EventType.EFFECT_APPLIED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,result.appliedAmount);
-    emit(EventType.HIT_FEEDBACK,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,result.appliedAmount);
-    if(result.defeatedNow&&result.defeatedTargetKind==DefeatedTargetKind.MONSTER&&
-        result.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeatPublishedForLife.add(a.targetId)){
-      emit(EventType.MONSTER_DEFEATED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,0);
+    if(activeByActor.isEmpty()||dt<=0f)return;
+    List<PendingAction> pending=new ArrayList<>(activeByActor.values());
+    for(PendingAction a:pending){
+      a.elapsed+=dt;
+      if(a.effectApplied||a.elapsed<a.def.hitTime)continue;
+      RejectReason effectGate=validate(a.def,a.actorId,a.targetId,false);
+      if(effectGate!=null){
+        emit(EventType.ACTION_CANCELLED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,effectGate,null,0);
+        activeByActor.remove(a.actorId);
+        continue;
+      }
+      a.effectApplied=true;
+      EffectResult result=port.applyDamage(a.actorId,a.targetId,a.def.actionId,a.def.damage);
+      emit(EventType.EFFECT_APPLIED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,result.appliedAmount);
+      emit(EventType.HIT_FEEDBACK,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,result.appliedAmount);
+      if(result.defeatedNow&&result.defeatedTargetKind==DefeatedTargetKind.MONSTER&&
+          result.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeatPublishedForLife.add(a.targetId)){
+        emit(EventType.MONSTER_DEFEATED,a.sequence,a.actorId,a.targetId,a.def,a.inputMode,null,result.hitSemantic,0);
+      }
+      activeByActor.remove(a.actorId);
     }
-    active=null;
   }
 
   /** Call when the owning monster runtime respawns/reincarnates a target so a future death may publish once again. */
   public void onTargetRespawned(String targetId){if(targetId!=null)defeatPublishedForLife.remove(targetId);}
-  public boolean actionActive(){return active!=null;}
-  public long activeActionSequence(){return active==null?0:active.sequence;}
+  public boolean actionActive(){return !activeByActor.isEmpty();}
+  public boolean actionActive(String actorId){return actorId!=null&&activeByActor.containsKey(actorId);}
+  public int activeActionCount(){return activeByActor.size();}
+  /** Legacy aggregate accessor: returns the oldest active sequence, or zero when idle. */
+  public long activeActionSequence(){return activeByActor.isEmpty()?0:activeByActor.values().iterator().next().sequence;}
+  public long activeActionSequence(String actorId){
+    PendingAction action=actorId==null?null:activeByActor.get(actorId);
+    return action==null?0:action.sequence;
+  }
 
   public List<Event> events(){return Collections.unmodifiableList(new ArrayList<>(events));}
   public List<Event> drainEvents(){List<Event> out=new ArrayList<>(events);events.clear();return Collections.unmodifiableList(out);}
