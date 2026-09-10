@@ -42,7 +42,7 @@ public final class WorldNavigationSessionAudit {
     require(session.completeTransition(sink.lastId,true,"OK").status==WorldPortalTransitionController.Status.COMPLETED,"matching completion must finish transition");
 
     session.tick(0,null);
-    session.requestGroundMove(280,200);
+    session.requestGroundMove(288,208);
     WorldPortalTransitionController.Portal pending=new WorldPortalTransitionController.Portal(
         "pending_exit","map_a",null,null,f.x,f.y,20,WorldPortalTransitionController.PortalReadiness.TARGET_PENDING);
     s=session.tick(0,pending);
