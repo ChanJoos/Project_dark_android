@@ -16,15 +16,17 @@ import java.util.List;
 public final class CharacterRenderer {
   public static final String EVIDENCE="USER_APPROVED_CONCEPT+ADAPTED";
   public static final String ASSET_STATUS="PENDING_CROP";
-  public static final String PRESENTATION_PROFILE="USER_CONCEPT_20260910_CHIBI_DIAGONAL";
+  public static final String PRESENTATION_PROFILE="USER_CONCEPT_20260910_CHIBI_DIAGONAL_V2";
 
   /** User-approved fixed mobile presentation scale from latest main/user concept. */
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
-  /** Concept target: compact chibi body, large readable head, narrow torso and short legs. */
+  /** Concept target: compact 2.5-3 head chibi body with a readable diagonal silhouette. */
   public static final float BASE_HEIGHT=32f;
   public static final float HEAD_TO_BODY_RATIO=0.34f;
+  public static final float HEAD_WIDTH=11.2f;
+  public static final float SHOULDER_WIDTH=8.6f;
 
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
@@ -55,6 +57,11 @@ public final class CharacterRenderer {
     }
   }
 
+  private static final class ArmPose {
+    final float sx,sy,ex,ey,hx,hy;
+    ArmPose(float sx,float sy,float ex,float ey,float hx,float hy){this.sx=sx;this.sy=sy;this.ex=ex;this.ey=ey;this.hx=hx;this.hy=hy;}
+  }
+
   private static final boolean CONTRACT_VALID=CharacterRendererAudit.passes();
   private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -64,16 +71,16 @@ public final class CharacterRenderer {
     if(pose==null||pose.direction==null||pose.state==null)throw new IllegalArgumentException("Character pose requires direction and state");
     int frame=pose.state==State.WALK?((int)(pose.walkClock*7f)&3):0;
     boolean left=isLeft(pose.direction),down=isDown(pose.direction);
-    float sx=left?-1f:1f,sy=down?1f:-1f,q=phase(pose);
+    float sx=left?-1f:1f,q=phase(pose);
     float walkContact=(frame==1||frame==3)?1f:0f;
-    float bob=pose.state==State.WALK?-walkContact*.75f:pose.state==State.IDLE?(float)Math.sin(pose.stateClock*3.2f)*.22f:0f;
-    float weight=pose.state==State.WALK?(frame==1?-0.45f:frame==3?.45f:0f):0f;
+    float bob=pose.state==State.WALK?-walkContact*.72f:pose.state==State.IDLE?(float)Math.sin(pose.stateClock*3.2f)*.18f:0f;
+    float weight=pose.state==State.WALK?(frame==1?-.38f:frame==3?.38f:0f):0f;
     float recoil=pose.state==State.HIT?-3.2f*sx:0f;
-    float actionLean=(pose.state==State.ATTACK||pose.state==State.SKILL)?(float)Math.sin(Math.PI*q)*1.2f*sx:0f;
+    float actionLean=(pose.state==State.ATTACK||pose.state==State.SKILL)?(float)Math.sin(Math.PI*q)*1.0f*sx:0f;
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
 
-    float sw=12.5f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?1.42f:1f+walkContact*.035f);
-    float sh=3.4f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?.62f:1f-walkContact*.05f);
+    float sw=12.5f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?1.42f:1f+walkContact*.032f);
+    float sh=3.4f*SHADOW_RENDER_SCALE*(pose.state==State.DEAD?.62f:1f-walkContact*.045f);
     p.setStyle(Paint.Style.FILL);p.setColor(pose.hitFlash?0x88ff705f:0x52000000);
     c.drawOval(new RectF(pose.x-sw,anchorY-sh,pose.x+sw,anchorY+sh),p);
 
@@ -87,77 +94,138 @@ public final class CharacterRenderer {
 
   private void drawLayer(Canvas c,Pose pose,Layer layer,int frame){switch(layer){
     case BODY:drawBody(c,pose,frame);break; case HAIR:drawHair(c,pose);break;
-    case EQUIPMENT:drawEquipment(c,pose);break; case WEAPON:drawWeapon(c,pose);break;
+    case EQUIPMENT:drawEquipment(c,pose,frame);break; case WEAPON:drawWeapon(c,pose,frame);break;
     case EFFECT:drawEffect(c,pose);break;}}
 
-  /** Compact chibi diagonal body: ~11px head, ~11px torso, short separated legs. */
+  /** Cohesive compact body: head/neck/torso/pelvis and limbs share one continuous diagonal rig. */
   private void drawBody(Canvas c,Pose pose,int frame){
     boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f;
     int step=pose.state==State.WALK?(frame==1?2:frame==3?-2:0):0;
-    float torsoX=side*1.15f,headX=side*1.65f;
+    float torsoX=side*1.05f,headX=side*1.55f,depthY=down?.25f:-.2f;
     int outline=0xff171311,skin=pose.hitFlash?0xffffded0:0xffe7aa78;
     int pants=0xff26313b,boot=0xff5a3927,undershirt=0xffd8c7aa;
 
-    // far leg first, then near leg: this overlap is what makes each diagonal read as a side view.
-    float far=left?11f:5f,near=left?5f:11f;
-    rect(c,outline,far-step*.45f,22,far+3f-step*.45f,29);rect(c,pants,far+.6f-step*.45f,22.5f,far+2.4f-step*.45f,27.5f);rect(c,boot,far-.3f-step*.45f,27,far+3.5f-step*.45f,30);
-    rect(c,outline,near+step*.45f,21.5f,near+3.2f+step*.45f,29.5f);rect(c,pants,near+.6f+step*.45f,22,near+2.5f+step*.45f,27.5f);rect(c,boot,near-.4f+step*.45f,27,near+3.8f+step*.45f,30.3f);
+    // Neck bridge eliminates the detached-head read at runtime scale.
+    rect(c,outline,7.0f+torsoX,9.2f+depthY,11.3f+torsoX,13.0f+depthY);
+    rect(c,skin,7.7f+torsoX,9.4f+depthY,10.7f+torsoX,12.7f+depthY);
 
-    // narrow armored torso, unlike the old rectangular mannequin.
-    Path torso=new Path();torso.moveTo(5f+torsoX,11f);torso.lineTo(12.8f+torsoX,11f);torso.lineTo(13.7f+torsoX,20.8f);torso.lineTo(10.7f+torsoX,23f);torso.lineTo(6f+torsoX,22.3f);torso.lineTo(4.3f+torsoX,15f);torso.close();
-    p.setColor(outline);c.drawPath(torso,p);p.setColor(undershirt);c.drawRect(5.6f+torsoX,12f,12.2f+torsoX,19.8f,p);
+    // Far leg first; both legs originate from a shared pelvis block rather than floating below torso.
+    rect(c,outline,5.2f+torsoX,20.2f,12.8f+torsoX,24.0f);
+    rect(c,pants,5.9f+torsoX,20.4f,12.1f+torsoX,23.6f);
+    float far=left?10.4f:5.2f,near=left?5.2f:10.4f;
+    rect(c,outline,far-step*.42f,22.2f,far+3.1f-step*.42f,29.1f);rect(c,pants,far+.55f-step*.42f,22.4f,far+2.5f-step*.42f,27.5f);rect(c,boot,far-.35f-step*.42f,27.0f,far+3.6f-step*.42f,30.2f);
+    rect(c,outline,near+step*.42f,21.7f,near+3.3f+step*.42f,29.5f);rect(c,pants,near+.55f+step*.42f,22.0f,near+2.65f+step*.42f,27.6f);rect(c,boot,near-.45f+step*.42f,27.0f,near+3.9f+step*.42f,30.4f);
 
-    // arms sit around the torso, not as long dangling sticks.
-    float swing=pose.state==State.WALK?step*.55f:0f;
-    float farArm=left?13f:4f,nearArm=left?3.8f:13.2f;
-    limb(c,farArm,13f-swing,farArm+side*1.4f,20f-swing,outline,skin);
-    float action=pose.state==State.ATTACK||pose.state==State.SKILL?3.5f*side*(float)Math.sin(Math.PI*phase(pose)):0f;
-    float cast=pose.state==State.CAST?-5.5f:0f;
-    limb(c,nearArm,13f+swing,nearArm+side*(1.5f+Math.abs(action)),20f+cast+swing,outline,skin);
+    Path torso=new Path();
+    torso.moveTo(5.0f+torsoX,11.2f);torso.lineTo(12.9f+torsoX,11.2f);
+    torso.lineTo(13.7f+torsoX,19.7f);torso.lineTo(11.7f+torsoX,22.5f);
+    torso.lineTo(6.1f+torsoX,22.5f);torso.lineTo(4.2f+torsoX,19.2f);
+    torso.lineTo(4.4f+torsoX,14.0f);torso.close();
+    p.setColor(outline);c.drawPath(torso,p);
+    p.setColor(undershirt);c.drawRoundRect(new RectF(5.2f+torsoX,12.0f,12.4f+torsoX,20.7f),1.4f,1.4f,p);
 
-    // large face ellipse, shifted toward facing direction.
+    // Arms are true shoulder -> elbow -> hand chains. Weapon renderer reuses the same near-hand endpoint.
+    ArmPose farArm=farArmPose(pose,frame);
+    ArmPose nearArm=nearArmPose(pose,frame);
+    drawJointedArm(c,farArm,outline,skin,false);
+    drawJointedArm(c,nearArm,outline,skin,true);
+
+    // Head is deliberately wider than torso and overlaps the neck/shoulder line like the reference board.
     p.setColor(outline);c.drawOval(new RectF(3.4f+headX,.2f,14.6f+headX,11.8f),p);
-    p.setColor(skin);c.drawOval(new RectF(4.3f+headX,1.1f,13.8f+headX,10.8f),p);
+    p.setColor(skin);c.drawOval(new RectF(4.25f+headX,1.05f,13.75f+headX,10.85f),p);
     if(down){
-      float eyeNear=left?6.1f:11.6f,eyeFar=left?9.2f:8.5f;
-      rect(c,0xff2a211e,eyeNear+headX,6.2f,eyeNear+.9f+headX,7.2f);
-      rect(c,0xff4b352c,eyeFar+headX,6.4f,eyeFar+.65f+headX,7.05f);
+      float eyeNear=left?6.0f:11.45f,eyeFar=left?9.1f:8.55f;
+      rect(c,0xff241d1b,eyeNear+headX,6.0f,eyeNear+1.0f+headX,7.2f);
+      rect(c,0xff53372d,eyeFar+headX,6.25f,eyeFar+.65f+headX,7.0f);
+      rect(c,0xffb96f58,(left?7.1f:9.9f)+headX,8.0f,(left?7.8f:10.6f)+headX,8.45f);
     }
   }
 
+  private ArmPose nearArmPose(Pose pose,int frame){
+    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f;
+    int step=pose.state==State.WALK?(frame==1?2:frame==3?-2:0):0;
+    float swing=pose.state==State.WALK?step*.45f:0f;
+    float attack=(pose.state==State.ATTACK||pose.state==State.SKILL)?(float)Math.sin(Math.PI*phase(pose)):0f;
+    float cast=pose.state==State.CAST?1f:0f;
+    float shoulderX=left?5.0f:13.0f,shoulderY=13.0f+(down?.25f:-.1f);
+    float elbowX=shoulderX+side*(2.2f+2.4f*attack);
+    float elbowY=shoulderY+3.5f+swing-4.1f*cast-1.0f*attack;
+    float handX=elbowX+side*(1.9f+2.0f*attack);
+    float handY=elbowY+2.7f-2.0f*cast-1.5f*attack;
+    return new ArmPose(shoulderX,shoulderY,elbowX,elbowY,handX,handY);
+  }
+
+  private ArmPose farArmPose(Pose pose,int frame){
+    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f;
+    int step=pose.state==State.WALK?(frame==1?2:frame==3?-2:0):0;
+    float swing=pose.state==State.WALK?-step*.38f:0f;
+    float shoulderX=left?12.4f:5.6f,shoulderY=13.4f+(down?.15f:-.25f);
+    float elbowX=shoulderX-side*1.45f,elbowY=shoulderY+3.0f+swing;
+    float handX=elbowX-side*.85f,handY=elbowY+2.55f;
+    return new ArmPose(shoulderX,shoulderY,elbowX,elbowY,handX,handY);
+  }
+
+  private void drawJointedArm(Canvas c,ArmPose a,int outline,int skin,boolean near){
+    p.setStrokeCap(Paint.Cap.ROUND);
+    p.setColor(outline);p.setStrokeWidth(near?4.1f:3.6f);c.drawLine(a.sx,a.sy,a.ex,a.ey,p);c.drawLine(a.ex,a.ey,a.hx,a.hy,p);
+    p.setColor(skin);p.setStrokeWidth(near?2.05f:1.75f);c.drawLine(a.sx,a.sy+.15f,a.ex,a.ey,p);c.drawLine(a.ex,a.ey,a.hx,a.hy,p);
+    p.setColor(outline);c.drawCircle(a.ex,a.ey,near?1.8f:1.55f,p);p.setColor(skin);c.drawCircle(a.ex,a.ey,near?.9f:.72f,p);
+    p.setColor(outline);c.drawCircle(a.hx,a.hy,near?1.8f:1.55f,p);p.setColor(skin);c.drawCircle(a.hx,a.hy,near?1.0f:.8f,p);
+    p.setStrokeCap(Paint.Cap.BUTT);
+  }
+
   private void drawHair(Canvas c,Pose pose){
-    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f,hs=side*1.65f;
-    int dark=0xff3a2419,mid=0xff69412b,light=0xff95613d;
-    // layered brown fringe/back volume matching the approved concept vocabulary.
-    p.setColor(dark);c.drawOval(new RectF(2.7f+hs,-.8f,15.2f+hs,6.2f),p);
-    rect(c,mid,3.4f+hs,.2f,14.4f+hs,3.5f);rect(c,light,5.1f+hs,.1f,10.4f+hs,1.4f);
-    float backX=left?11.5f:2.4f;rect(c,dark,backX+hs,2.2f,backX+3.4f+hs,9.5f);
-    if(down){float fringeX=left?4.2f:10.2f;rect(c,mid,fringeX+hs,2.5f,fringeX+2.4f+hs,6.3f);}
+    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f,hs=side*1.55f;
+    int dark=0xff342017,mid=0xff674028,light=0xff9b653e;
+    // Rounded skull wrap plus stepped fringe replaces the previous rectangular-cap read.
+    p.setColor(dark);c.drawOval(new RectF(2.65f+hs,-1.0f,15.35f+hs,6.4f),p);
+    p.setColor(mid);c.drawOval(new RectF(3.45f+hs,-.25f,14.55f+hs,4.65f),p);
+    rect(c,light,5.0f+hs,.0f,10.2f+hs,1.25f);
+    float backX=left?11.25f:2.65f;rect(c,dark,backX+hs,2.3f,backX+3.6f+hs,9.55f);
+    if(down){
+      float fringe=left?4.05f:10.0f;rect(c,mid,fringe+hs,2.45f,fringe+2.3f+hs,6.25f);
+      rect(c,dark,(left?3.4f:12.25f)+hs,4.1f,(left?5.0f:13.65f)+hs,7.0f);
+    }else{
+      rect(c,dark,(left?10.1f:3.0f)+hs,4.0f,(left?14.0f:6.9f)+hs,9.8f);
+    }
   }
 
-  private void drawEquipment(Canvas c,Pose pose){
-    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f,tx=side*1.15f;
-    int navy=pose.hitFlash?0xffd99086:0xff263d57,blue=0xff365d80,gold=0xffb9863d,steel=0xff9da9ae;
-    // blue warrior tunic/pauldron profile from the approved concept.
-    rect(c,navy,5.1f+tx,12f,12.7f+tx,20.6f);rect(c,blue,6f+tx,12.8f,11.9f+tx,19.8f);
-    rect(c,gold,5.4f+tx,19.1f,12.4f+tx,20.4f);rect(c,steel,(left?3.7f:11.4f)+tx,11.5f,(left?6.2f:13.9f)+tx,14.4f);
-    // shield remains on the off-hand and swaps depth with facing.
-    float shieldX=left?11.2f:3.0f;if(!down)shieldX+=side*.8f;
-    p.setColor(0xff202a33);c.drawOval(new RectF(shieldX,14f,shieldX+5.2f,22.3f),p);
-    p.setColor(0xff35516d);c.drawOval(new RectF(shieldX+.6f,14.8f,shieldX+4.6f,21.4f),p);
-    p.setColor(gold);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);c.drawOval(new RectF(shieldX+.8f,15f,shieldX+4.4f,21.1f),p);p.setStyle(Paint.Style.FILL);
+  private void drawEquipment(Canvas c,Pose pose,int frame){
+    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f,tx=side*1.05f;
+    int navy=pose.hitFlash?0xffd99086:0xff243a53,blue=0xff365f86,gold=0xffc09045,steel=0xff9faeb5;
+    rect(c,navy,5.0f+tx,12.0f,12.8f+tx,20.7f);rect(c,blue,5.8f+tx,12.7f,12.0f+tx,19.8f);
+    rect(c,gold,5.25f+tx,18.9f,12.55f+tx,20.35f);
+    float shoulderX=left?4.05f:11.55f;
+    p.setColor(steel);c.drawOval(new RectF(shoulderX+tx,11.0f,shoulderX+3.0f+tx,14.5f),p);
+    p.setColor(gold);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.75f);c.drawOval(new RectF(shoulderX+.25f+tx,11.35f,shoulderX+2.75f+tx,14.15f),p);p.setStyle(Paint.Style.FILL);
+
+    // Shield center is tied to the far-hand endpoint, so it moves with the arm instead of floating beside the body.
+    ArmPose off=farArmPose(pose,frame);
+    float shieldCx=off.hx-side*.45f,shieldCy=off.hy+.75f+(down?.35f:-.15f);
+    p.setColor(0xff202a33);c.drawOval(new RectF(shieldCx-2.8f,shieldCy-4.3f,shieldCx+2.8f,shieldCy+4.3f),p);
+    p.setColor(0xff355777);c.drawOval(new RectF(shieldCx-2.2f,shieldCy-3.7f,shieldCx+2.2f,shieldCy+3.7f),p);
+    p.setColor(gold);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);c.drawOval(new RectF(shieldCx-1.9f,shieldCy-3.35f,shieldCx+1.9f,shieldCy+3.35f),p);p.setStyle(Paint.Style.FILL);
+    p.setColor(gold);c.drawCircle(shieldCx,shieldCy,1.0f,p);
   }
 
-  private void drawWeapon(Canvas c,Pose pose){
+  private void drawWeapon(Canvas c,Pose pose,int frame){
     if(pose.effectFamily==EffectFamily.PUNCH||pose.effectFamily==EffectFamily.KICK)return;
     boolean left=isLeft(pose.direction),down=isDown(pose.direction);float sx=left?-1f:1f,sy=down?1f:-1f,q=phase(pose);
-    float handX=left?4.2f:13.8f,handY=down?16.8f:14.5f;
+    ArmPose arm=nearArmPose(pose,frame);
     float attack=(pose.state==State.ATTACK||pose.state==State.SKILL)?(float)Math.sin(Math.PI*q):0f;
-    float reach=pose.state==State.IDLE||pose.state==State.WALK?8.2f:8.2f+5.5f*attack;
-    float ex=handX+sx*reach,ey=handY+sy*reach*.72f;
-    p.setStrokeWidth(2.1f);p.setColor(0xffdce2e1);c.drawLine(handX,handY,ex,ey,p);
-    p.setStrokeWidth(1f);p.setColor(0xffffffff);c.drawLine(handX+sx*1.2f,handY+sy*.8f,ex,ey,p);
-    p.setStrokeWidth(2.2f);p.setColor(0xff9b6a31);c.drawLine(handX-sx*2f,handY-sy*1.4f,handX+sx*1.3f,handY+sy*.9f,p);
+    float reach=8.5f+5.8f*attack;
+    float bladeAngleY=pose.state==State.IDLE||pose.state==State.WALK?(down?.76f:-.65f):(down?.45f:-.52f);
+    float ex=arm.hx+sx*reach,ey=arm.hy+sy*reach*Math.abs(bladeAngleY);
+
+    // Grip starts exactly at the near-hand endpoint; guard sits directly beyond the fist.
+    p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeWidth(2.5f);p.setColor(0xff8e5f2e);
+    c.drawLine(arm.hx-sx*1.7f,arm.hy-sy*1.0f,arm.hx+sx*1.25f,arm.hy+sy*.75f,p);
+    p.setStrokeCap(Paint.Cap.BUTT);p.setStrokeWidth(2.2f);p.setColor(0xffc9a24c);
+    c.drawLine(arm.hx-sy*1.8f,arm.hy+sx*1.8f,arm.hx+sy*1.8f,arm.hy-sx*1.8f,p);
+    p.setStrokeWidth(3.0f);p.setColor(0xffaebbc0);c.drawLine(arm.hx+sx*1.0f,arm.hy+sy*.65f,ex,ey,p);
+    p.setStrokeWidth(1.2f);p.setColor(0xfff4fbff);c.drawLine(arm.hx+sx*1.5f,arm.hy+sy*.9f,ex-sx*.3f,ey-sy*.2f,p);
+    // Small point makes the sword silhouette read as a blade rather than a stick.
+    Path tip=new Path();tip.moveTo(ex,ey);tip.lineTo(ex-sx*2.1f-sy*.7f,ey-sy*1.5f+sx*.7f);tip.lineTo(ex-sx*1.3f+sy*.7f,ey-sy*.9f-sx*.7f);tip.close();p.setColor(0xffdce6e9);c.drawPath(tip,p);
   }
 
   private void drawEffect(Canvas c,Pose pose){
@@ -168,7 +236,11 @@ public final class CharacterRenderer {
       case CAST:case MAGIC:
         p.setStrokeWidth(1.8f);p.setColor(0xcc78c8ff);c.drawCircle(9+sx*4f,5+sy*5f,4+8*q,p);c.drawCircle(9+sx*4f,5+sy*5f,10-3*q,p);break;
       case SKILL:
-        p.setStrokeWidth(3.1f);p.setColor(0xd58bd8ff);float ax=9+sx*7f,ay=15+sy*4f;c.drawArc(new RectF(ax-14,ay-12,ax+14,ay+12),left?30:195,145,false,p);p.setStrokeWidth(1.2f);p.setColor(0xb8e5f8ff);c.drawArc(new RectF(ax-17,ay-14,ax+17,ay+14),left?25:190,150,false,p);break;
+        // Broader crescent with an inner highlight, matching the board's readable blue slash mass.
+        p.setStrokeWidth(4.0f);p.setColor(0xcf70bff0);float ax=9+sx*8f,ay=15+sy*4f;
+        c.drawArc(new RectF(ax-16,ay-13,ax+16,ay+13),left?26:190,152,false,p);
+        p.setStrokeWidth(2.0f);p.setColor(0xe7c7efff);c.drawArc(new RectF(ax-13,ay-10.5f,ax+13,ay+10.5f),left?29:193,147,false,p);
+        p.setStrokeWidth(.9f);p.setColor(0xb6ffffff);c.drawArc(new RectF(ax-18,ay-14.5f,ax+18,ay+14.5f),left?24:188,156,false,p);break;
       case HIT:
         p.setStrokeWidth(1.8f);p.setColor(0xd9ff7b61);c.drawCircle(9-sx*3f,10-sy*2f,4+6*q,p);break;
       case THROW:
@@ -178,7 +250,6 @@ public final class CharacterRenderer {
     p.setStyle(Paint.Style.FILL);
   }
 
-  private void limb(Canvas c,float x1,float y1,float x2,float y2,int outline,int skin){p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeWidth(3.4f);p.setColor(outline);c.drawLine(x1,y1,x2,y2,p);p.setStrokeWidth(1.7f);p.setColor(skin);c.drawLine(x1,y1+.5f,x2,y2,p);p.setStrokeCap(Paint.Cap.BUTT);}
   private boolean isLeft(Direction d){return d==Direction.NW||d==Direction.SW;}
   private boolean isDown(Direction d){return d==Direction.SW||d==Direction.SE;}
   private float phase(Pose pose){return pose.stateDuration<=0?0:Math.max(0,Math.min(1,pose.stateClock/pose.stateDuration));}
