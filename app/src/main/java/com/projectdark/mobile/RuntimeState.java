@@ -11,15 +11,18 @@ import java.util.List;
  * [ADAPTED] Screen-space geometry validates mobile controls before verified tile collision exists.
  */
 public final class RuntimeState {
+  public enum BootMode { MILLES, POTE_01_PROTOTYPE }
+
   public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
   public static final float PLAYER_RADIUS=9f,MONSTER_RADIUS=11f,NPC_RADIUS=10f;
 
   public static final class Player {
-    public final float spawnX=WorldDef.PLAYER_SPAWN_X,spawnY=WorldDef.PLAYER_SPAWN_Y;
-    public float x=spawnX,y=spawnY;
+    public final float spawnX,spawnY;
+    public float x,y;
     public int hp=100,maxHp=100,mp=90,maxMp=100;
     public boolean alive=true;
     public float hitFlash=0f;
+    Player(float spawnX,float spawnY){this.spawnX=spawnX;this.spawnY=spawnY;this.x=spawnX;this.y=spawnY;}
   }
 
   public static final class Npc {
@@ -40,8 +43,9 @@ public final class RuntimeState {
     Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;state=State.IDLE;}
   }
 
+  private final BootMode bootMode;
   private final WorldDef world=new WorldDef();
-  private final Player player=new Player();
+  private final Player player;
   private final List<RectF> obstacles=new ArrayList<>();
   private final List<Npc> npcs=new ArrayList<>();
   private final List<Monster> monsters=new ArrayList<>();
@@ -49,18 +53,30 @@ public final class RuntimeState {
   private final RuntimeMetrics metrics=new RuntimeMetrics();
   private final RpgProgressionState rpg=new RpgProgressionState();
 
-  public RuntimeState(){
+  public RuntimeState(){this(BootMode.MILLES);}
+
+  public RuntimeState(BootMode bootMode){
+    this.bootMode=bootMode==null?BootMode.MILLES:bootMode;
     if(!RewardPipelineAudit.verify())throw new IllegalStateException("Direct auto-loot contract audit failed");
     if(!MonsterDefeatIdempotencyAudit.verify())throw new IllegalStateException("Monster defeat reward idempotency audit failed");
     if(!MonsterSpawnAdmissionAudit.verify(world))throw new IllegalStateException("Monster spawn admission audit failed");
     if(!RpgEquipmentInteractionAudit.verify())throw new IllegalStateException("RPG equipment interaction audit failed");
     if(!CanonicalRewardReadinessAudit.verify())throw new IllegalStateException("Canonical reward readiness audit failed");
     if(!PotePrototypeRewardBoundaryAudit.verify())throw new IllegalStateException("Pote prototype reward boundary audit failed");
-    for(RectF r:world.blockers())obstacles.add(new RectF(r));
-    for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
-    for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
+
+    if(this.bootMode==BootMode.POTE_01_PROTOTYPE){
+      player=new Player(PotePrototypeWorldDef.PLAYER_X_B,PotePrototypeWorldDef.PLAYER_Y_B);
+      monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
+    }else{
+      player=new Player(WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y);
+      for(RectF r:world.blockers())obstacles.add(new RectF(r));
+      for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
+      for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
+    }
   }
 
+  public BootMode bootMode(){return bootMode;}
+  public String currentMapId(){return bootMode==BootMode.POTE_01_PROTOTYPE?PotePrototypeWorldDef.MAP_ID:WorldDef.ID;}
   public WorldDef world(){return world;}
   public Player player(){return player;}
   public CombatLedger ledger(){return ledger;}
