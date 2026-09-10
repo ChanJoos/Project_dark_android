@@ -1,49 +1,56 @@
 # UX / NPC / Quest handoff
 
-## 2026-09-10 17:02 KST — tap movement discoverability / landscape runtime pass
+## 2026-09-10 18:38 KST — full mobile MMORPG HUD/UX redesign
 
-Branch: `agent/ux/auto-20260910-1702`
-Base lineage: current main `c149434fe152cd74f9e7b0418ccdc7aa33d92867` + prior latest-main tap-move implementation from PR #36.
+Branch: `agent/ux/manual-20260910-1838`
+Base main: `40d945d724c906189a630cbfc9d43342ffc6639c`
 
-### Repository state
-- Current main still exposes the World camera/move-target contracts and camera-correct actor hit testing.
-- Generic blank-map tap movement remains implemented on the UX branch lineage, not merged to main yet.
-- `WorldMoveTargetController` remains the sole owner of movement target/path semantics; UX only consumes it.
-- No stable RPG action metadata DTO (`actionId/iconKey/resourceCost/cooldown/learned/state`) was found on main in this pass, so canonical HUD metadata binding remains blocked.
+### Canonical read-first result
+- Re-read `DESIGN_CONSTITUTION`, `DATA_CONTRACT`, `SOURCE_OF_TRUTH`, latest UX handoff, and current main runtime before coding.
+- No newer canonical rule supersedes the current movement/reward/UX contract.
+- Tap-to-move remains implemented and is preserved.
+- Monster rewards remain direct inventory grant; no ground-drop/pickup UX exists or was added.
 
-### User-visible delta completed this pass
-- Top-level runtime is now locked to `SCREEN_ORIENTATION_SENSOR_LANDSCAPE`, preserving either landscape direction while preventing the 960×540 HUD from collapsing into portrait.
-- Startup onboarding now explicitly teaches both major interaction paths: `이동: 빈 맵 터치 · 전투: 몬스터 선택 → ATK / SKILL / MAGIC`.
-- This makes the newly implemented tap-to-move flow discoverable on first launch without advertising unavailable AUTO behavior.
+### User-visible delta completed
+`GameView` v0.71 replaces the prototype-looking shell with a cohesive mobile MMORPG HUD while preserving runtime semantics:
+- compact party card and quest tracker;
+- compact top-center target frame with HP bar;
+- framed minimap with player marker and de-emphasized coordinates;
+- circular utility rail with inventory active state;
+- translucent compact chat/activity panel;
+- two-layer floating joystick with active/pressed presentation;
+- consolidated player Lv/job + HP/MP/EXP status module;
+- radial combat cluster with large primary ATK plus SKILL/MAG/KICK/MODE/AUTO secondary controls;
+- pressed/selected/cooldown/disabled visual states using existing readiness surfaces;
+- player AUTO remains visibly locked because no stable player AUTO orchestration contract exists yet;
+- non-blocking centered feedback pills for movement/target/NPC/resource errors;
+- separate reward banner consuming `RpgInventoryPresentation.RewardNotice` read-only data;
+- inventory restyled as a dimmed modal/card list with selection and equipment action emphasis;
+- NPC dialogue restyled as a dimmed game dialogue modal with named header and close affordance;
+- death overlay restyled without changing revive semantics.
 
-### Tap-move P0 carried forward on this branch
-- Empty map taps convert through `WorldCameraTransform.screenToWorld(...)` and call `WorldMoveTargetController.requestGroundMove(...)`.
-- Movement advances through `WorldMoveTargetController.tick(...)` → `RuntimeState.tryMove(...)`; no teleport path exists.
-- New taps replace previous movement targets.
-- Joystick cancels with direct-input semantics.
-- Combat/NPC/inventory/dialog inputs cancel or supersede movement.
-- HUD surfaces are rejected before world movement.
-- NPC/monster taps retain priority.
-- Accepted targets render a short-lived world-anchored marker; REACHED/BLOCKED/retarget feedback is surfaced.
+### Runtime semantics preserved
+- blank map tap still routes camera-correct screen→world→World move target;
+- joystick direct input still cancels tap movement;
+- NPC/monster hit testing still wins over generic ground movement;
+- HUD/modal touches remain consumed and do not leak into world movement;
+- ATTACK/MAGIC/SKILL/KICK still call the same existing combat methods;
+- no World pathfinding/collision/portal code copied or changed;
+- CharacterRenderer contract usage unchanged;
+- no CombatResolver/MonsterAI/damage changes;
+- no RPG inventory/reward mutation changes.
 
-### Contract request still open
-- RPG should expose a stable read-only action presentation DTO for ATTACK/SKILL/MAGIC/AUTO containing at least `actionId`, `label`, `iconKey/visualRef`, `resourceCost`, `cooldownRemaining/cooldownTotal`, `learned/unlocked`, `enabled/disabledReason`, and selected/active state where applicable.
-- Once available on main, UX can remove prototype slot labels and render canonical press/cooldown/disabled/selected states without duplicating RPG/combat logic.
+### Remaining contract blocker
+- Stable player action/AUTO presentation/orchestration DTO is still needed for canonical icon refs, learned/unlocked state, disabled reasons, selected state, and player AUTO execution. Current v0.71 deliberately derives only safe presentation state from existing combat readiness/cooldown/MP/target surfaces and leaves AUTO locked.
 
-### QA focus for Integrator / next pass
-1. Continuous retargeting while camera follows.
-2. HUD/inventory boundary taps: no accidental ground movement.
-3. Blocked tile/obstacle edge taps: BLOCKED without collision bypass.
-4. Joystick during tap movement: immediate cancellation.
-5. NPC/monster tap during movement: entity interaction wins.
-6. Combat input during movement: action wins.
-7. Camera clamp at all world edges and tap-marker anchoring.
-8. Device rotation: remain in sensor-landscape with HUD geometry unchanged.
+### Integrator QA focus
+1. Confirm all combat touch circles align with the new rendered cluster on 960×540 scaling.
+2. Confirm HUD/modal touches never issue ground-move commands.
+3. Verify joystick drag, map-tap movement, NPC approach, target selection, and combat input priority remain unchanged.
+4. Verify reward banners appear once per `RewardNotice.combatSequence` and do not mutate reward state.
+5. Verify inventory list selection/equip touch areas match restyled rows/buttons.
+6. Verify target/quest/minimap/party panels remain readable without obscuring central world play.
+7. Device test cooldown/pressed/disabled visual legibility.
 
-### Boundaries preserved
-- No World pathfinding/collision/portal algorithms modified or copied.
-- No CharacterRenderer internals changed.
-- No CombatResolver/MonsterAI/damage logic changed.
-- No inventory/reward/EXP/job/save internals changed.
-- No canonical values changed.
-- No ground-drop/pickup UX introduced.
+### Boundary note
+This is a UX/presentation pass only. No canonical numeric/original-game data was changed.
