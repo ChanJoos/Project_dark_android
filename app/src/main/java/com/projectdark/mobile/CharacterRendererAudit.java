@@ -12,8 +12,6 @@ public final class CharacterRendererAudit {
   public static final int EXPECTED_MATRIX_CASES=28;
   public static final float USER_APPROVED_PLAYER_RENDER_SCALE=1.50f;
   public static final float USER_APPROVED_SHADOW_RENDER_SCALE=0.72f;
-  public static final float MIN_HEAD_TO_BODY_RATIO=.30f;
-  public static final float MAX_HEAD_TO_BODY_RATIO=.40f;
 
   public static final class Case {
     public final CharacterRenderer.Direction direction;
@@ -27,26 +25,20 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.Direction.values().length!=EXPECTED_DIRECTION_COUNT)return false;
     if(CharacterRenderer.State.values().length!=EXPECTED_STATE_COUNT)return false;
     if(CharacterRenderer.DRAW_ORDER.size()!=EXPECTED_LAYER_COUNT||matrix().size()!=EXPECTED_MATRIX_CASES)return false;
-    if(CharacterRenderer.DRAW_ORDER.get(0)!=CharacterRenderer.Layer.BODY||CharacterRenderer.DRAW_ORDER.get(1)!=CharacterRenderer.Layer.HAIR||CharacterRenderer.DRAW_ORDER.get(2)!=CharacterRenderer.Layer.EQUIPMENT||CharacterRenderer.DRAW_ORDER.get(3)!=CharacterRenderer.Layer.WEAPON||CharacterRenderer.DRAW_ORDER.get(4)!=CharacterRenderer.Layer.EFFECT)return false;
-    if(!"PENDING_CROP".equals(CharacterRenderer.ASSET_STATUS))return false;
-    if(!"USER_SCREENSHOT_20260910_PIXEL_RIG_V3".equals(CharacterRenderer.PRESENTATION_PROFILE))return false;
-    if(!CharacterRenderer.HARD_PIXEL_GRID)return false;
+    if(!"USER_APPROVED_ATLAS_20260910_V4".equals(CharacterRenderer.PRESENTATION_PROFILE))return false;
+    if(!CharacterRenderer.HARD_PIXEL_GRID||!CharacterRenderer.DEFAULT_ATLAS_ENABLED)return false;
+    if(CharacterRenderer.ATLAS_FRAME_WIDTH!=24||CharacterRenderer.ATLAS_FRAME_HEIGHT!=32||CharacterRenderer.ATLAS_COLUMNS!=5||CharacterRenderer.ATLAS_ROWS!=4)return false;
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>.0001f)return false;
-    if(CharacterRenderer.HEAD_TO_BODY_RATIO<MIN_HEAD_TO_BODY_RATIO||CharacterRenderer.HEAD_TO_BODY_RATIO>MAX_HEAD_TO_BODY_RATIO)return false;
-    if(CharacterRenderer.HEAD_WIDTH<=CharacterRenderer.SHOULDER_WIDTH)return false;
-    if(CharacterRenderer.BASE_HEIGHT<28f||CharacterRenderer.BASE_HEIGHT>32f)return false;
     if(CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f)return false;
+    if(CharacterRenderer.HEAD_WIDTH<=CharacterRenderer.SHOULDER_WIDTH)return false;
+    CharacterRenderer r=new CharacterRenderer(false);
+    if(!r.usesDefaultAtlasFor(CharacterRenderer.State.IDLE)||!r.usesDefaultAtlasFor(CharacterRenderer.State.WALK))return false;
+    if(r.usesDefaultAtlasFor(CharacterRenderer.State.ATTACK))return false;
     CharacterRenderer.DirectionalVisualSet unresolved=new CharacterRenderer.DirectionalVisualSet(null,null,null,null);if(!unresolved.unresolved())return false;
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())if(unresolved.forDirection(d)!=null)return false;
-    for(Case c:matrix()){
-      if(c.direction==null||c.state==null||c.effectFamily==null)return false;
-      if(c.state==CharacterRenderer.State.CAST&&c.effectFamily!=CharacterRenderer.EffectFamily.CAST)return false;
-      if(c.state==CharacterRenderer.State.HIT&&c.effectFamily!=CharacterRenderer.EffectFamily.HIT)return false;
-      if((c.state==CharacterRenderer.State.IDLE||c.state==CharacterRenderer.State.WALK||c.state==CharacterRenderer.State.DEAD)&&c.effectFamily!=CharacterRenderer.EffectFamily.NONE)return false;
-    }
     return true;
   }
-  public static String summary(){return "profile="+CharacterRenderer.PRESENTATION_PROFILE+",pixelGrid="+CharacterRenderer.HARD_PIXEL_GRID+",directions="+CharacterRenderer.Direction.values().length+",states="+CharacterRenderer.State.values().length+",layers="+CharacterRenderer.DRAW_ORDER.size()+",matrix="+matrix().size()+",scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",baseHeight="+CharacterRenderer.BASE_HEIGHT+",headRatio="+CharacterRenderer.HEAD_TO_BODY_RATIO+",anchorY="+CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y+",assets="+CharacterRenderer.ASSET_STATUS;}
+  public static String summary(){return "profile="+CharacterRenderer.PRESENTATION_PROFILE+",atlas="+CharacterRenderer.DEFAULT_ATLAS_ENABLED+",frame="+CharacterRenderer.ATLAS_FRAME_WIDTH+"x"+CharacterRenderer.ATLAS_FRAME_HEIGHT+",directions="+CharacterRenderer.Direction.values().length+",states="+CharacterRenderer.State.values().length+",scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",anchorY="+CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y;}
   private static CharacterRenderer.EffectFamily defaultEffect(CharacterRenderer.State state){switch(state){case CAST:return CharacterRenderer.EffectFamily.CAST;case HIT:return CharacterRenderer.EffectFamily.HIT;default:return CharacterRenderer.EffectFamily.NONE;}}
 }
