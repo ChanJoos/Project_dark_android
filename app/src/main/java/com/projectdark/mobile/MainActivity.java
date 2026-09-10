@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 public final class MainActivity extends Activity {
     private GameView game;
@@ -14,6 +15,7 @@ public final class MainActivity extends Activity {
         hideSystemUi();
         game = new GameView(this);
         setContentView(game);
+        Toast.makeText(this, "조이스틱 이동 · NPC/몬스터를 터치해 상호작용", Toast.LENGTH_SHORT).show();
     }
 
     private void hideSystemUi() {
