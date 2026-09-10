@@ -81,8 +81,10 @@ public final class RpgVisibleProgressionPresentation {
         if(expOutcome.levelsGained>0){
           lines.add(new RewardLine(RewardLineKind.LEVEL_UP,"Lv"+expOutcome.beforeLevel+" → Lv"+expOutcome.afterLevel,null,null,null,RpgProgressionState.Evidence.B));
         }
+      }else if(expOutcome.status==RpgProgressionState.ExpApplyStatus.LEVEL_CAP){
+        lines.add(new RewardLine(RewardLineKind.INFO,"Lv99 · EXP 최대",null,null,null,RpgProgressionState.Evidence.B));
       }else if(expOutcome.status==RpgProgressionState.ExpApplyStatus.PROJECTED_LEVEL_LIMIT){
-        lines.add(new RewardLine(RewardLineKind.UNRESOLVED,"EXP +"+expOutcome.requestedExp+" · Lv10 이후 곡선 런타임 projection 대기",null,null,null,RpgProgressionState.Evidence.PENDING));
+        lines.add(new RewardLine(RewardLineKind.UNRESOLVED,"EXP 곡선 projection 확인 필요",null,null,null,RpgProgressionState.Evidence.PENDING));
       }else if(expOutcome.status==RpgProgressionState.ExpApplyStatus.UNINITIALIZED){
         lines.add(new RewardLine(RewardLineKind.UNRESOLVED,"EXP 지급 보류: 기존 저장 EXP 상태 미확정",null,null,null,RpgProgressionState.Evidence.PENDING));
       }else{
