@@ -6,9 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Versioned RPG-owned persistence DTO. Stores mutable IDs/state only; canonical definitions stay in data catalogs.
- */
+/** Versioned RPG-owned persistence DTO. Mutable IDs/state only; canonical definitions stay outside saves. */
 public final class RpgSaveSnapshot {
   public static final int CURRENT_SCHEMA_VERSION=1;
 
@@ -17,7 +15,7 @@ public final class RpgSaveSnapshot {
   public final String currentJobCode;
   public final Integer normalLevel;
   public final Long normalExp;
-  public final long gold;
+  public final Long gold;
   public final long lastCombatSequence;
   public final Map<String,Integer> inventory;
   public final Map<String,String> equipmentBySlot;
@@ -25,7 +23,7 @@ public final class RpgSaveSnapshot {
 
   public RpgSaveSnapshot(int schemaVersion,
       RpgProgressionState.ProgressionNode progressionNode,
-      String currentJobCode,Integer normalLevel,Long normalExp,long gold,long lastCombatSequence,
+      String currentJobCode,Integer normalLevel,Long normalExp,Long gold,long lastCombatSequence,
       Map<String,Integer> inventory,Map<String,String> equipmentBySlot,Set<String> learnedActionIds){
     this.schemaVersion=schemaVersion;
     this.progressionNode=progressionNode;
