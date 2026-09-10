@@ -38,24 +38,29 @@ public final class RpgVisibleProgressionPresentation {
 
   public static final class Snapshot {
     public final PlayerSummary player;
+    public final RpgProgressionPresentation.LevelProgress levelProgress;
+    public final RpgProgressionPresentation.JobSelectionGate jobSelectionGate;
     public final List<RpgInventoryPresentation.ItemRow> inventory;
     public final List<RpgActionMetadataCatalog.ActionMetadata> actions;
     public final List<RpgActionMetadataCatalog.ActionMetadata> quickSlotCandidates;
     public final List<RewardLine> latestRewardLines;
-    Snapshot(PlayerSummary player,List<RpgInventoryPresentation.ItemRow> inventory,
+    Snapshot(PlayerSummary player,RpgProgressionPresentation.LevelProgress levelProgress,
+        RpgProgressionPresentation.JobSelectionGate jobSelectionGate,List<RpgInventoryPresentation.ItemRow> inventory,
         List<RpgActionMetadataCatalog.ActionMetadata> actions,List<RpgActionMetadataCatalog.ActionMetadata> quickSlotCandidates,
         List<RewardLine> latestRewardLines){
-      this.player=player;this.inventory=inventory;this.actions=actions;this.quickSlotCandidates=quickSlotCandidates;
-      this.latestRewardLines=latestRewardLines;
+      this.player=player;this.levelProgress=levelProgress;this.jobSelectionGate=jobSelectionGate;this.inventory=inventory;
+      this.actions=actions;this.quickSlotCandidates=quickSlotCandidates;this.latestRewardLines=latestRewardLines;
     }
   }
 
   private final RpgInventoryPresentation inventoryPresentation=new RpgInventoryPresentation();
+  private final RpgProgressionPresentation progressionPresentation=new RpgProgressionPresentation();
 
   public Snapshot snapshot(RpgProgressionState rpg){
     if(rpg==null)throw new IllegalArgumentException("rpg");
-    return new Snapshot(new PlayerSummary(rpg),inventoryPresentation.inventoryRows(rpg),
-        RpgActionMetadataCatalog.visibleFor(rpg),RpgActionMetadataCatalog.quickSlotCandidates(rpg),latestRewardLines(rpg));
+    return new Snapshot(new PlayerSummary(rpg),progressionPresentation.levelProgress(rpg),progressionPresentation.basicJobSelectionGate(rpg),
+        inventoryPresentation.inventoryRows(rpg),RpgActionMetadataCatalog.visibleFor(rpg),
+        RpgActionMetadataCatalog.quickSlotCandidates(rpg),latestRewardLines(rpg));
   }
 
   /** Read-only skill-book preview; does not learn skills or change the player's job. */
@@ -91,7 +96,6 @@ public final class RpgVisibleProgressionPresentation {
         lines.add(new RewardLine(RewardLineKind.INFO,"EXP 지급값 검증 실패",null,null,null,RpgProgressionState.Evidence.PENDING));
       }
     }else if(notice.exp!=null){
-      // Compatibility with old reward records created before progression mutation was enabled.
       lines.add(new RewardLine(RewardLineKind.EXP,"EXP +"+notice.exp,null,null,null,RpgProgressionState.Evidence.V));
     }
 
