@@ -1,54 +1,52 @@
-# World handoff — PASS 38 BUILDING / ENTRANCE VISUALS
+# World handoff — PASS 39 PLAYTEST CANON RESPONSE
 
-- Branch: `agent/world/20260910-1933`
-- Parent World lineage: PR #61 / `agent/world/20260910-1847@98a98d11a2a02f00c9a73d50b113aceb7a3e5b60`
-- Latest main checked before work: `2b66df9780142e3d84606f4ac0250dcabfa2d2b7`
-- Geometry/visual status: `ADAPTED/B`; exact original Milles geometry and art remain unverified/`PENDING_CROP`.
+- Branch: `agent/world/20260910-1956`
+- Base: latest `main@d0fb8aa5a7d4093a18387c9ca8b242df651ca955`
+- New authority: `design/PLAYTEST_CANON_20260910_1938.md` (USER-CONFIRMED / CANONICAL AMENDMENT)
+- Geometry/visual status remains `ADAPTED/B`; exact original Milles geometry/art remain unverified/`PENDING_CROP`.
 
-## Canon response
-No newer World canon supersedes PASS 37. Continue expanding the connected village, preserve camera/tap/collision/portal behavior, keep source-backed reconstruction preferred, and keep authored gaps explicitly replaceable `[ADAPTED]/[B]`.
+## Superseding World findings
+The latest device playtest overrides prior assumptions that the live map path was effectively complete:
+- live map is runtime FAILED because `GameView.drawWorld()` still stretches the screenshot referenced by `WorldDef.VISUAL_SOURCE_URL` across the expanded bounds;
+- the screenshot must be reference-only, not a live texture;
+- live village rendering must come from the World TILE/OBJECT renderer with no unexplained black reachable regions;
+- empty-map tap-to-move is runtime FAILED; current Director inspection identifies broad `GameView.isHudSurface(...)` rectangles as a major interception cause.
 
-## Visible map delta
+## World-owned implementation
+Added `WorldLiveMapLayer` as the canonical one-object integration surface.
 
-### Structure visuals
-- All 20 collision-aligned structures now have renderer-facing visual profiles.
-- 14 HOUSE/HALL/SHOP structures render as actual layered silhouettes:
-  - pitched roof
-  - front facade
-  - side-volume/shadow
-  - eaves
-  - visible door
-  - exterior step
-- WALL and LANDMARK structures have dedicated non-box silhouettes.
-- Visual dimensions are prototype presentation only and do not change logical collision.
+It owns:
+- `WorldRuntimeAdapter`
+- `AdaptedMillesMapRenderer`
 
-### Entrance layer
-- Added 14 stable building entrance IDs (`entrance_<structureId>`).
-- Each entrance exposes building ID, foot coordinate, visual width and exterior approach coordinate.
-- Status is `VISUAL_ENTRANCE_ONLY_INTERIOR_PENDING`; no interior/portal is fabricated.
-- `WorldMapProjection.entrances()` exposes the layer for future NPC/interaction routing.
+It exposes:
+- `draw(Canvas)` — draw TILE + decoration + collision-aligned OBJECT village content;
+- `tick(dt)` — WALK first, camera follow second;
+- `requestGroundTap(screenX,screenY)` — empty visible world tap path;
+- `requestNpcApproach(npcId)` — distinct NPC approach semantics;
+- direct/action cancel plus world↔screen transforms.
 
-### Vegetation / threshold readability
-- Decorations increased from 26 to 38.
-- Added entrance-adjacent BUSH objects around major hall/shop/house fronts.
-- Added two visible GATEPOST objects at the outer south-gate threshold.
-- South portal destination remains PENDING/fail-closed.
+The live-map surface intentionally has no screenshot-texture API.
 
-## Director / UX integration request
-`GameView.java` remains World-non-owned.
+## Director / UX REQUIRED integration
+`GameView.java` is not World-owned, so the following must be done by Director/UX rather than duplicated here:
+1. remove/disable stretched `WorldDef.VISUAL_SOURCE_URL` drawing from the live world path; keep the image only as reconstruction/reference evidence;
+2. instantiate one `WorldLiveMapLayer(runtime, viewportWidth, viewportHeight)` for MILLES;
+3. call `liveMap.draw(canvas)` before dynamic player/NPC/monster/portal rendering and do not overwrite it with the old screenshot/background path;
+4. per frame call `liveMap.tick(dt)` and use the same `liveMap.world()` transform for every dynamic world entity;
+5. eligible empty visible-world touch after precise UI/modal rejection → `liveMap.requestGroundTap(x,y)`;
+6. NPC touch remains higher priority and routes to `liveMap.requestNpcApproach(id)`;
+7. replace broad invisible HUD-blocking rectangles with actual visible control/modal hit regions;
+8. device acceptance: 10 representative empty-map taps across center/left/right/top/bottom safe world areas, plus screenshots/traversal through central village/east market/south gate with no stretched screenshot or black reachable gaps.
 
-1. Keep `AdaptedMillesMapRenderer.draw(canvas, worldAdapter)` before dynamic entity rendering.
-2. The renderer now draws roof/wall/door/step building silhouettes automatically; do not overlay the old blocker/X-box presentation over these structures.
-3. Continue using the same WorldRuntimeAdapter camera for map + NPC + monster + portal projection.
-4. Entrances are visual/approach anchors only; do not trigger an interior transition unless a verified/accepted target map contract is added later.
-5. Capture Android screenshots in central village, east market and outer south gate after integration to confirm building readability and camera scrolling.
+## Existing map content preserved
+The current World renderer already contains the expanded 2240×1552 `[ADAPTED]/[B]` village, 3,312 diamond tiles, roads/plazas/gate transitions, 20 structures, layered building silhouettes, 14 visual entrances and 38 decorations. This pass does not roll those back; it changes which path is authoritative for live presentation.
 
 ## Verification
-- IMPLEMENTED: yes.
-- Static/source count: 20 structure visual profiles / 14 entrances / 38 decorations.
-- BUILD VERIFIED: not claimed by World agent.
-- RUNTIME VERIFIED: pending Director APK/device integration.
-- `GameView.java`, CharacterRenderer, Combat, RPG, HUD and quest code were not modified.
+- IMPLEMENTED: yes — canonical live-map integration surface added.
+- BUILD VERIFIED: not claimed in this World pass.
+- RUNTIME VERIFIED: NO. Latest user device playtest explicitly marks map presentation and empty-map tap as failed until a new APK passes the acceptance checks above.
+- No `GameView.java`, CharacterRenderer, Combat, RPG, HUD or quest-owned file was modified.
 
-## Next World priority
-Continue visible map production rather than navigation-only audits: collision-aware vegetation/object clusters, district-specific roof/wall silhouette variation, then source-backed Milles replacements as visual identification/calibration becomes available.
+## Next World work after Director wiring
+Once the live renderer is actually visible on device, continue source-backed Milles reconstruction and authored-gap replacement. Do not spend another World pass polishing hidden renderer content before the live-path integration is confirmed.
