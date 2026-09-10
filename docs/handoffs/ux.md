@@ -14,7 +14,7 @@ Branch: `agent/ux/auto-20260910-1958`
 ### Icon implementation
 - Added `ClassicHudIconAtlas.java`.
 - It reconstructs the supplied reference vocabulary as crisp procedural/vector icons: slash, wave, claw, burst, aura, flame, palm, spiral, body, comet, mode, auto and attack/sword motifs.
-- No whole screenshot or cropped screenshot texture is shipped in the runtime. The references are used as visual source; the runtime assets are `[ADAPTED]` reproductions.
+- No whole screenshot or cropped screenshot texture is shipped in the runtime. The user screenshots are reference material; the runtime icons are `[ADAPTED]` reproductions so scaling/pressed/disabled states remain controllable in code.
 - Existing live actions are wired into the first three quick slots: SKILL, MAGIC and KICK. Remaining slots are visible quick-slot placeholders until stable learned-action metadata is available.
 - Large sword button invokes the existing ATTACK path. Existing combat calculation is not duplicated or modified.
 
