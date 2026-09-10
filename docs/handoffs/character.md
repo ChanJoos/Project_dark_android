@@ -1,40 +1,41 @@
 # Character / Animation Handoff
 
-## 2026-09-10 14:55 KST — agent/character/20260910-1455
+## 2026-09-10 15:25 KST — agent/character/20260910-1525
 
 ### Source state
 - Verified latest `main` remains `3b58a8d08805cf9031466fe0c50d56e17aa1344d`.
-- Previous unfinished character work remains unmerged in draft PR #8 and stacked draft PR #12.
-- This run continues from `agent/character/20260910-1427` rather than duplicating prior P0 changes.
-- Authenticated original sprite/frame/timing remains unverified. Procedural presentation stays `[B]` / `[ADAPTED]`; asset replacement status remains `PENDING_CROP`.
+- Re-read current `design/SOURCE_OF_TRUTH.md`; unverified original sprite/frame/timing must remain `PENDING_CROP` and procedural presentation must remain `[B]` / `[ADAPTED]`.
+- Previous Character P0 remains unmerged in PR #8, stacked PR #12, and PR #13.
+- This run continues from `agent/character/20260910-1455` rather than duplicating prior work.
 
 ### Completed this run
-- Added visible WALK arm swing tied to the existing prototype walk frame cadence.
-- Added directional depth bias to WALK legs so `NW/NE` versus `SW/SE` produces different near/far foot motion instead of a flat left/right-only stride.
-- WALK arm motion also uses facing direction to swap near/far arm emphasis across `NW/NE/SW/SE`.
-- Existing render-scale, logical foot anchor, ATTACK/SKILL/MAGIC hooks and previous four-direction attack refinements are preserved.
-- No combat action timing, damage, movement speed, collision, pathfinding or runtime semantics were changed.
+- Added presentation-only directional recoil for the already-wired `HIT` state. Recoil moves opposite the current logical facing without changing `pose.x/pose.y` or gameplay/world coordinates.
+- Added a directional hit streak to the existing HIT ring so impact direction reads more clearly across `NW/NE/SW/SE`.
+- Added a static `[ADAPTED]` `DEAD` collapse transform using renderer-local rotation/flattening only; left/right collapse direction follows facing while authenticated DEAD frames remain `PENDING_CROP`.
+- Expanded the DEAD shadow footprint to match the collapsed silhouette while preserving the same logical foot anchor.
+- Existing render scale, WALK gait, four-direction ATTACK, CAST/MAGIC/SKILL presentation hooks and layer ordering are preserved.
 
 ### User-visible delta
-The already-wired player WALK state now has a visibly more readable gait: arms counter-swing with the legs and the stride changes depth according to the four-direction facing contract. This is presentation-only `[B]` motion and is not claimed as original game timing or sprite animation.
+The player now visibly recoils when hit and visibly collapses when dead instead of relying primarily on tint/overlay feedback. Both changes are presentation-only and consume existing renderer state; combat timing, damage semantics, revive logic and world coordinates are unchanged.
 
 ### Existing unfinished integration request
-`GameView.java` still owns direct NPC/monster drawing. This agent does not modify it. Integrator/UX should delegate those draw paths to:
+`GameView.java` still owns direct NPC/monster drawing. This agent does not modify it. Integrator/UX should delegate those paths to:
 - `NpcPresentationRenderer.draw(Canvas, NpcPose)`
 - `MonsterPresentationRenderer.draw(Canvas, MonsterPose)`
 
-The caller supplies immutable runtime presentation DTOs only. NPC interaction, MonsterAI, combat/damage/reward, quest and HUD semantics remain outside renderer ownership.
+The caller supplies immutable presentation DTOs only. NPC interaction, MonsterAI, combat/damage/reward, quest and HUD semantics remain outside renderer ownership.
 
 ### Validation
-- Change is limited to `CharacterRenderer.java` plus this handoff.
-- Implementation uses only existing Java/Android Canvas presentation primitives and existing renderer state/direction contracts.
-- No APK packaging or Director integration performed.
-- Branch CI compile is not automatically available under the current workflow; Director/Integrator compile validation remains required before integration.
+- Modified only `CharacterRenderer.java` and this handoff in this run.
+- Implementation uses existing Android `Canvas` transforms (`translate`, `rotate`, `scale`) plus existing `Paint/RectF` primitives and renderer enums.
+- No `GameView.java` change, APK packaging, or Director integration performed.
+- Branch CI is not automatically available under the current workflow; Director/Integrator compile validation remains required before integration.
 
 ### Ownership boundary preserved
-No changes to `GameView.java`, map/camera/collision/pathfinding/portal, CombatResolver/MonsterAI/damage calculation, inventory/reward/EXP/save/progression, HUD/input, NPC dialogue logic or quest state.
+No changes to map geometry/camera/collision/pathfinding/portal, CombatResolver/MonsterAI/damage calculation, inventory/reward/EXP/save/progression, HUD/input, NPC dialogue logic, quest state, or `GameView.java`.
 
 ### Branch/PR lineage
 - PR #8: `agent/character/20260910-1405` → `main`
-- PR #12: `agent/character/20260910-1427` → previous character branch
-- Current run: `agent/character/20260910-1455`, stacked from `agent/character/20260910-1427` because latest main is unchanged and prior Character P0 remains unmerged.
+- PR #12: `agent/character/20260910-1427` → previous Character branch
+- PR #13: `agent/character/20260910-1455` → `agent/character/20260910-1427`
+- Current run: `agent/character/20260910-1525`, stacked from `agent/character/20260910-1455` because latest main remains unchanged and prior Character P0 is still unmerged.
