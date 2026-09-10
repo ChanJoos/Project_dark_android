@@ -1,106 +1,91 @@
 # RPG Agent Handoff
 
-Run: `20260910-1753`
+Run: `20260910-1822`
 Branch: `agent/rpg/20260910-1338`
 Draft PR: `#5`
 Role: RPG · Progression · Persistence
 
-## PASS 32 — five-job circle-1 skill book + post-selection visibility
+## PASS 33 — typed action learning + persistence/quick-slot promotion
 
-Direction: make the first-job choice immediately change the visible skill-book surface for all five basic jobs without fabricating unresolved acquisition rules.
-
-### Source-of-Truth gate
-Re-read:
-- `master/data/Skill_Master.csv`
-- `master/data/Skill_Milestones.csv`
-- `master/data/Skill_Requirements.csv`
-
-Confirmed all current canonical circle-1 rows:
-- WARRIOR: `SK_전사_001` 숏블레이드, `SK_전사_012` 레스큐
-- ROGUE: `SK_도적_001` 찌르기, `SK_도적_002` 센스몬스터
-- MAGE: `SK_마법사_001` 마레노
-- CLERIC: `SK_성직자_001` 쿠로, `SK_성직자_002` 수혈, `SK_성직자_003` 디렌토
-- MARTIAL_ARTIST: `SK_무도가_001` 정권
-
-`Skill_Requirements.csv` still leaves most exact acquisition requirements unresolved. Catalog presence therefore remains separate from learned state.
+Direction: replace the low-level boolean learned-action mutation as the integration contract with an evidence-safe typed acquisition service.
 
 ### Implemented
 
-1. Expanded `RpgActionMetadataCatalog` beyond Warrior with the remaining basic-job circle-1 canonical actions.
+1. Added `RpgActionLearningService`.
 
-2. Preserved unresolved runtime values:
-- `resourceCost = null` where Master does not resolve a number;
-- `cooldown = null`;
-- `iconKey = PENDING_CROP:<actionId>`.
+Typed requirement proof:
+- `PENDING`
+- `SATISFIED`
 
-3. Added `sourceEvidence` to `ActionMetadata` so composite canonical provenance such as `O/V` is retained instead of being collapsed into the single runtime `Evidence` enum.
+Typed learning outcomes:
+- `LEARNED`
+- `ALREADY_LEARNED`
+- `UNKNOWN_ACTION`
+- `RUNTIME_PROTOTYPE`
+- `WRONG_JOB`
+- `REQUIREMENT_PENDING`
+- `MUTATION_FAILED`
 
-4. Added `forJobAndCircle(rpg, jobCode, circle)` for stable skill-book filtering.
+2. Learning rules are fail-closed:
+- unknown action IDs do not mutate state;
+- prototype CAST/SKILL/KICK bindings are not learnable canonical actions;
+- other-job actions are rejected;
+- current-job actions with unresolved acquisition requirements return `REQUIREMENT_PENDING` unless the owning quest/NPC/progression flow supplies `RequirementProof.SATISFIED`;
+- no level/stat/item/Gold cost is fabricated from missing Master fields.
 
-5. Expanded `RpgVisibleProgressionPresentation.Snapshot` with:
-- `basicJobOptions`
-- `currentCircleOneActions`
+3. Successful `LEARNED` delegates to the existing persisted learned-action set.
+- learned state is therefore included in schema-v1 save/restore;
+- after learning an active `quickSlotEligible` action, `RpgActionMetadataCatalog.quickSlotCandidates(rpg)` immediately includes it;
+- a second request returns `ALREADY_LEARNED` without duplicate mutation.
 
-Before first-job selection, `currentCircleOneActions` is empty. After a successful `BasicJobSelectionService.select(...)`, refreshing the snapshot immediately returns the selected job's canonical circle-1 rows.
+4. `LearnOutcome` exposes integration metadata:
+- actionId / actionName
+- action job / player job
+- mutated flag
+- message
+- runtime evidence
+- original `sourceEvidence` provenance
 
-6. Acquisition remains evidence-safe:
-- newly visible current-job actions are `CURRENT_JOB_LOCKED`;
-- job selection never auto-learns them;
-- locked actions do not enter `quickSlotCandidates`;
-- after explicit successful `setLearnedAction(actionId, true)`, the action becomes `LEARNED` and an eligible active action can enter the quick-slot candidate list.
-
-7. Added `RpgBasicJobCircleOneAudit` covering:
-- circle-1 counts `WARRIOR=2 / ROGUE=2 / MAGE=1 / CLERIC=3 / MARTIAL_ARTIST=1`;
-- composite evidence preservation;
-- unresolved martial resource label preservation;
-- Commoner Lv10 → ROGUE selection;
-- post-selection circle-1 rows become current-job locked;
-- no implicit quick-slot unlock;
-- explicit learning promotes `SK_도적_001` to learned quick-slot candidate.
+5. Added `RpgActionLearningAudit` covering:
+- select ROGUE at Lv10 through the existing evidence-safe job gate;
+- WARRIOR skill on ROGUE → `WRONG_JOB`;
+- ROGUE skill with pending proof → `REQUIREMENT_PENDING` and no mutation;
+- satisfied proof → `LEARNED`;
+- learned active skill becomes a quick-slot candidate;
+- repeated learn → `ALREADY_LEARNED`;
+- learned state survives save → restore;
+- unknown action remains non-mutating.
 
 ### Commits this pass
-- `b8435cdf717f35ed000d4c7a2029d7fda1b49040` — five-job circle-1 canonical action projection
-- `76080b028454ecff29d681b57a90d1d7c35c0df8` — circle-1/post-selection regression audit
-- `afe49da15053df3a38ca73d65ae68761ff1ff89b` — expose job options and current circle-1 book in single visible snapshot
-- `38f45d120c6908eef017f7bd11ae78ea0de2ac8c` — PASS 32 development history
+- `a298ce397af1e3b6bf92367cfe31cbd0f58294c5` — typed evidence-safe action learning service
+- `bbc20d0811f1aae0426633516d134ac3d75b7143` — action learning / persistence / quick-slot audit
 
 ### Integration contract
-Integrator/UX should consume one object:
-`new RpgVisibleProgressionPresentation().snapshot(state.rpg())`
+Owning NPC/quest/progression flow should call:
+`RpgActionLearningService.learn(state.rpg(), actionId, proof)`
 
-Job UI:
-- five choices: `snapshot.basicJobOptions`
-- selected job: `snapshot.player.jobCode`
-- current starter/circle-1 panel: `snapshot.currentCircleOneActions`
-
-Skill rows:
-- name/icon: `action.name / action.iconKey`
-- class/target/range/effect: typed metadata fields
-- acquired state: `action.visibilityState` or `learnedLabel(action)`
-- unresolved cost/cooldown: render PENDING, never zero
-- provenance/debug: `action.sourceEvidence`
-
-Quick slots:
-- consume `snapshot.quickSlotCandidates` only;
-- never place `CURRENT_JOB_LOCKED` actions into an active slot.
+Rules:
+- do not call `setLearnedAction()` directly from UI integration;
+- do not synthesize `SATISFIED` from catalog presence, level alone, or a displayed button;
+- only provide `SATISFIED` after the relevant acquisition flow has actually resolved the requirement;
+- after `LEARNED`, refresh `RpgVisibleProgressionPresentation.snapshot(state.rpg())`;
+- render learned state from action metadata and active slots from `snapshot.quickSlotCandidates`.
 
 ### Existing progression retained
-- full Lv1→99 cumulative EXP curve with `[B]` provenance;
-- live EXP mutation and normalized HUD ratio;
-- Lv99 cap;
-- Commoner → five basic-job selection service with explicit external gate proof;
-- direct-inventory reward outcomes/feed;
-- reward-sequence idempotency;
-- schema-v1 save/restore including selected job and learned action IDs.
+- full Lv1→99 cumulative EXP model / Lv99 cap / HUD ratio;
+- evidence-safe Commoner → five basic-job selection;
+- five-job circle-1 skill book;
+- direct-inventory reward outcome feed and duplicate suppression;
+- schema-v1 save/restore for job, EXP, inventory/equipment and learned action IDs.
 
 ### Evidence boundary
-Circle/name/action-class/target/range/effect are projected from the canonical Skill Master. Exact acquisition requirements, numeric costs and cooldowns remain unresolved where the Master does not resolve them. No automatic starter-skill grant is permitted yet.
+`Skill_Requirements.csv` still leaves most exact acquisition costs/requirements unresolved. This service intentionally requires an external proof token rather than inventing missing rules.
 
 ### Ownership preserved
-No `GameView.java`, combat effect execution, MonsterAI, map/world, character renderer, NPC/dialog rendering, workflow, APK packaging, or main merge changes.
+No `GameView.java`, combat effect execution, MonsterAI, map/world, renderer, NPC/dialog rendering, workflow, APK packaging, or main merge changes.
 
 ## Next RPG P0
-1. Introduce a typed `learnAction` outcome contract (`LEARNED / ALREADY_LEARNED / WRONG_JOB / REQUIREMENT_PENDING / UNKNOWN_ACTION`) rather than relying on the low-level boolean setter.
-2. Resolve evidence-safe starter acquisition cases individually where official/verified rules support them; leave the rest pending.
-3. Expand 2-circle metadata for the selected-job vertical slice, prioritizing currently playable progression rather than projecting the entire catalog blindly.
-4. Integrator should wire `basicJobOptions` + `currentCircleOneActions` into the live NPC/job/skill UI and build the integrated APK.
+1. Resolve individual starter-skill acquisition cases where stronger O/V evidence is available and replace external proof with internal deterministic checks only for those cases.
+2. Project selected-job 2-circle metadata for the playable vertical slice, not the entire catalog blindly.
+3. Add typed action-forget/replacement handling only where canonical upgrade chains require replacement (e.g. verified skill supersession), preserving save migration.
+4. Integrator should wire the learning outcome + quick-slot refresh into the live NPC/skill UI and run compile/APK/runtime validation.
