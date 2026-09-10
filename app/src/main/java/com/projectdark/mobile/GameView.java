@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-/** PROJECT DARK v0.64 - integrated world/action/NPC/combat/RPG presentation prototype. */
+/** PROJECT DARK v0.65 - integrated world/action/NPC/combat/RPG presentation prototype. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -142,10 +142,11 @@ public final class GameView extends View {
   private CharacterRenderer.EffectFamily characterEffectFamily(){if(state.player().hitFlash>0)return CharacterRenderer.EffectFamily.HIT;switch(action){case CAST:return CharacterRenderer.EffectFamily.CAST;case THROW:return CharacterRenderer.EffectFamily.THROW;case PUNCH:return CharacterRenderer.EffectFamily.PUNCH;case KICK:return CharacterRenderer.EffectFamily.KICK;case SKILL:return CharacterRenderer.EffectFamily.SKILL;default:return CharacterRenderer.EffectFamily.NONE;}}
   private void drawCharacter(Canvas c){
     CharacterRenderer.State presentation=characterState();
+    CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());
     float stateDuration=isActing()?duration(action):1f;
     characterRenderer.draw(c,new CharacterRenderer.Pose(
         state.player().x,state.player().y,characterDirection(),presentation,walkClock,actionClock,stateDuration,
-        state.player().hitFlash>0,CharacterRenderer.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,
+        state.player().hitFlash>0,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,
         characterEffectFamily()));
   }
 
