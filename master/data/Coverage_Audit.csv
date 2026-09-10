@@ -1,0 +1,8 @@
+﻿영역,현재 복구,과거 기준/목표,상태,조치,,,,,,,,,,,,,,,,,,,,,
+Skill_Master,184,184,PRESENT,스킬명 기준 전량 복구. 개별 습득조건/정확 비용/효과 수치는 Skill_Requirements에서 근거 확보 시 채움.,,,,,,,,,,,,,,,,,,,,,
+Monster_Master,22,29,PARTIAL,확인된 22종 복구. 호러/승급길 등 미복구 몬스터는 원본 근거로만 추가.,,,,,,,,,,,,,,,,,,,,,
+Item_Master,222,기존 surviving DB,PRESENT,기존 시트 보존.,,,,,,,,,,,,,,,,,,,,,
+World_Master,5,런칭 5개 마을,PRESENT,밀레스/피에트/아벨/뤼케시온/마인.,,,,,,,,,,,,,,,,,,,,,
+Progression_Master,12,현재 scope spine,PRESENT,Lv1→1차승급 연결.,,,,,,,,,,,,,,,,,,,,,
+Quest_Placement,12,초기/중반/승급,PRESENT,원문/조건 세부는 Quest_Master로 확장 필요.,,,,,,,,,,,,,,,,,,,,,
+AUTO_Rules,9,SYS49,PRESENT,직업별 Skill_Auto_Policy 세분화 필요.,,,,,,,,,,,,,,,,,,,,,

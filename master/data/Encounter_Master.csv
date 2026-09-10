@@ -1,0 +1,7 @@
+﻿Encounter_ID,Zone,Encounter,Party_Size,Target_sec,Monster_Pool,Mechanic,AUTO_Behavior,Reward_Rate,Evidence,Status,
+ENC_POTE_BOSS,포테,포테의정령,1,60,포테의정령,랜덤4속성/보스,속성판별→생존→집중공격,퀘스트45만 포함,V+B,READY,
+ENC_ABEL_BOSS,아벨,킹아크퍼스,3,90,킹아크퍼스,저HP 도주/회복/마법,도주 추적→회복차단 우선,퀘스트 진행,V+B,READY,
+ENC_LYK_BOSS,뤼케,에리얼,5,120,에리얼,5직업 협업,법사저주→도적센스→격수→직자,파파야방패,V+B,READY,
+ENC_HOR_ROOM,호러,랜덤 테마방,5,41.86,남/여×5직업 10종,랜덤속성/랜덤조합/전멸조건,몰이→저주→센스→속성교체→딜→루팅,15.05m EXP/h,U+B,READY,
+ENC_DEATH_HOUSE,죽마 집털,집 1회,5,45,니크르 중심,몹몰이/고HP,선진입 몰이→CC/저주→광역/필살,24m EXP/h,U+V+B,READY,
+ENC_DEATH_UNDER,죽마 지하,층 전투,5,45,머미 등,고HP/MDEF,마법저항 고려→격수/저주 역할조정,24m EXP/h,U+V+B,READY,

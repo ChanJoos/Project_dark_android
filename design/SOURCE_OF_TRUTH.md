@@ -1,72 +1,31 @@
-# PROJECT DARK — SOURCE OF TRUTH REGISTRY
+# PROJECT DARK Source of Truth
 
-Updated: 2026-09-10
+Revision M001 / D001 · 2026-09-10
 
-## Precedence
+현재 최신 사용자 지시와 실제 감사에 따라 이전 archive-verified 주장을 정정한다. `master/MASTER_MANIFEST.md`와 `master/RECONCILIATION.md`가 현재 확보/검증 상태다.
 
-When implementation decisions conflict, use this order:
-1. Explicit latest user-approved PROJECT DARK canon / `design/DESIGN_CONSTITUTION.md`
-2. `master/PROJECT_DARK_MASTER_DB.tar.gz` + `master/MASTER_DB_INFO.txt` — verified repository snapshot converted from user-provided `PROJECT_DARK_Master_DB_v4.4_VISUAL_MANIFEST.xlsx` (92 sheets)
-3. `master/LOD_Mobile_Final_Progression_World_DB_v1.0.md` — earlier repository-readable integrated progression/world master; useful for readable lookup but subordinate to verified v4.4 snapshot when the two differ
-4. `master/PROJECT_DARK_V0.6_PLAN_KO.md` plus explicit later canonical deltas
-5. Official Nexon/original evidence linked by the design data
-6. Verified observation / user-confirmed recollection according to evidence tag
-7. `[B]` prototype/balance values only where canon is unknown
-8. `data/design/PROJECT_DARK_CANONICAL_SEED.md` as a convenience projection/fallback only
-9. Runtime implementation
+## 적용 우선순위
 
-**Runtime code is never allowed to override higher-level design truth merely because it already exists. The canonical seed never overrides any Master source.**
+명시적 최신 사용자 결정은 적용 범위와 모바일 적응을 정한다. 원작 사실은 실제 원본/검증된 official evidence > Master 원문 > 확정 constitution/data contract > canonical seed > runtime 임시값 순으로 판단한다. 서로 충돌하면 자동 덮어쓰기하지 말고 최신 확정 여부와 버전을 RECONCILIATION/changes에 기록한다. O/V/U/B/ADAPTED/FAN/PENDING_CROP 및 SOURCE/SOURCE+BALANCED/BALANCED를 보존한다.
 
-## Canonical repository files
+- 현재 DB baseline: `master/data/*.csv` 92개, 첨부 원본 ZIP `master/source/PROJECT_DARK_MASTER_CONVERTED.zip`.
+- 현재 직접 읽은 기획 원본: `master/source/PROJECT_DARK_V0.6_PLAN_KO.docx`; 전체 추출은 `master/design/PROJECT_DARK_V0.6_PLAN_KO.fulltext.txt`.
+- 첨부 Markdown: `master/design/PROJECT_DARK_V0.6_PLAN_KO.imported.md`. 기존 Markdown과 19-tab v1.0은 역사적 비교 자료로 보존.
+- v0.7 원본은 미확보. v0.6이 역사상 마지막 기획서라는 주장은 금지.
+- 손상된 `master/PROJECT_DARK_MASTER_DB.tar.gz`는 현재 데이터 입력으로 사용하지 않는다. compile 성공이 archive 보존 성공을 의미하지 않는다.
+- XLSX 원본은 미확보. 92 CSV 전체 해시는 검증했지만 XLSX null/type/empty/cache 무손실은 미검증.
 
-- `master/PROJECT_DARK_MASTER_DB.tar.gz` — canonical preserved v4.4 Master DB snapshot; 92 CSV worksheet exports plus conversion metadata inside the archive
-- `master/MASTER_DB_INFO.txt` — archive version, sheet count and SHA-256 identity
-- `master/verify_master_archive.py` — required checksum/sheet-count validator before consuming the archive
-- `master/LOD_Mobile_Final_Progression_World_DB_v1.0.md` — earlier readable integrated Item/Economy/World/Progression Master DB; not allowed to override v4.4
-- `master/PROJECT_DARK_V0.6_PLAN_KO.md` — currently available full planning-document master copy
-- `design/DESIGN_CONSTITUTION.md` — latest user-approved non-negotiable product/scope/visual/gameplay rules; takes precedence over conflicting older rows
-- `design/DATA_CONTRACT.md` — module/data boundaries
-- `design/SOURCE_OF_TRUTH.md` — this registry
-- `data/design/PROJECT_DARK_CANONICAL_SEED.md` — derived working projection only; not a master
-- `docs/DEV_HISTORY.md` and pass files — implementation history; NOT higher authority than design
+## 살아 있는 Master
 
-## Binary provenance
+원본 스냅샷은 보존하며 개선은 `master/changes/<id>.json`으로 제안/검토/수락한다. source sheet/cell/ID, before/after, 근거와 버전, 영향 코드, 테스트, status를 함께 기록한다. accepted 변경만 runtime projection에 연결한다. detailed procedure와 단일 integrator 권한은 `docs/DIRECTOR_GUIDE.md`를 따른다.
 
-The repository now contains a verified compressed canonical snapshot created from the user-provided `PROJECT_DARK_Master_DB_v4.4_VISUAL_MANIFEST.xlsx`. `master/PROJECT_DARK_MASTER_DB.tar.gz` preserves 92 worksheet CSVs and conversion metadata. Its expected SHA-256 and sheet count are recorded in `master/MASTER_DB_INFO.txt` and enforced by `master/verify_master_archive.py`.
+## 실행 범위와 주요 충돌
 
-`master/LOD_Mobile_Final_Progression_World_DB_v1.0.md` remains available as an earlier readable master representation, but it is no longer the highest database authority where v4.4 contains the same domain.
+- 생성은 성별/머리/색/이름 → 평민 Lv1. 직업 선택은 이후.
+- 평민→5기본직업→Lv99→전직 OR 순수→Lv99→1차 승급. 이후 활성화 금지.
+- P00의 Lv1 지하묘지 vs 실제 quest row Lv40~60 충돌은 미해결. 임의로 레벨을 바꾸지 않는다.
+- 속도부스터 제외, 잠긴 마을은 획득처에 쓰였다는 이유로 열지 않는다.
+- prototype dummy 보상과 원작 monster reward는 구분한다.
+- 원작 미확인 sprite는 PENDING_CROP. 전체 screenshot 최종 map texture 금지.
 
-`PROJECT_DARK_V0.6_PLAN_KO.md` is the repository-readable canonical copy of the currently available planning original. Historical project records mention later planning revisions, so v0.6 must not be misrepresented as proof that no later plan ever existed.
-
-## Known DESIGN_CONFLICT / precedence notes
-
-1. `Economy_Loop` in an earlier Master representation contains `속도부스터`, while the same workbook README and latest Constitution/no-go canon exclude it. **Do not implement speed booster.** Preserve stale source rows for provenance and treat as `DESIGN_CONFLICT: MASTER_ECONOMY_SPEEDBOOSTER_STALE` unless v4.4 explicitly resolves the row.
-2. Acquisition references to locked towns such as 수오미/루어스 do not authorize opening those towns. Initial runtime follows the active-world/redistribution rules from the highest applicable Master source.
-3. Character creation must start as 평민 without job selection. Any progression row mentioning `직업 선택` is not permission to move job selection into character creation.
-4. Latest runtime scope ends at 1차 승급. Any older/general design mention of 2차/3차 progression is data-model/background context only and must not be activated.
-5. Advancement-path detail that conflicts with a later explicit user no-go remains `PENDING/DESIGN_CONFLICT` until reconciled; do not expand endgame path content merely because a lower-precedence row mentions it.
-6. Runtime `combat_dummy_01` is a `[B]` fixture and has no canonical reward mapping. Do not attach canonical EXP/drop/Gold to it. Use `PENDING_NO_CANONICAL_MONSTER_REWARD` until a Master-backed monster mapping exists.
-
-## Design conflict protocol
-
-If two sources conflict:
-1. Do not choose the convenient value.
-2. Apply the precedence above.
-3. Record `DESIGN_CONFLICT` in DEV_HISTORY with source names/fields.
-4. Keep runtime on the highest-precedence verified rule or PENDING-safe behavior.
-5. Never promote `[B]`, FAN, prototype screenshots or generated art into `[O]`.
-
-## Agent read gate
-
-Every scheduled development run must read these exact repository authorities before modifying gameplay:
-- `master/MASTER_DB_INFO.txt`
-- `master/PROJECT_DARK_MASTER_DB.tar.gz` provenance/verification contract via `master/README.md` and `master/verify_master_archive.py`; when archive contents are needed, validate/extract the 92 CSVs rather than reconstructing them from memory
-- `master/LOD_Mobile_Final_Progression_World_DB_v1.0.md` as readable earlier reference
-- `master/PROJECT_DARK_V0.6_PLAN_KO.md`
-- `design/DESIGN_CONSTITUTION.md`
-- `design/DATA_CONTRACT.md`
-- `design/SOURCE_OF_TRUTH.md`
-- `data/design/PROJECT_DARK_CANONICAL_SEED.md` only as a derived convenience projection
-- `docs/DEV_HISTORY.md` and the newest relevant pass file
-
-The Integrator must reject or correct changes that bypass this gate.
+매 실행 `AGENTS.md`, DIRECTOR_GUIDE/BACKLOG, MASTER_MANIFEST/RECONCILIATION, constitution, DATA_CONTRACT, 이 registry, DEV_HISTORY와 담당 전체 테이블/의존 범위를 확인한다.

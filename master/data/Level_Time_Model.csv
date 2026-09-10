@@ -1,0 +1,7 @@
+﻿Segment,Lv_Band,EXP_Required,Target_Hours,Required_EXP_per_Hour,Typical_Mob_EXP,Kills_per_Hour,Seconds_per_Kill,Primary_Hunting,Evidence
+S1,1→10,300000,0.5,=C2/D2,2500,=E2/F2,=3600/G2,밀레스/초반,B
+S2,10→40,8700000,2,=C3/D3,18000,=E3/F3,=3600/G3,포테의숲,B
+S3,40→70,28500000,3,=C4/D4,45000,=E4/F4,=3600/G4,아벨해안던전,B
+S4,70→90,45000000,4.5,=C5/D5,100000,=E5/F5,=3600/G5,뤼케시온해안 전반,B
+S5,90→99,67500000,5,=C6/D6,100000,=E6/F6,=3600/G6,뤼케시온해안 후반,U+B
+TOTAL,1→99,150000000,15,=C7/D7,,,,전체,U+B

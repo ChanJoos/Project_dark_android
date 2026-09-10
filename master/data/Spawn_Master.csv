@@ -1,0 +1,6 @@
+﻿Spawn_ID,사냥터,거점마을,입구 좌표,몬스터 구성,리스폰,Evidence,Source_URL,,,,,,,,,,,,,,,,,,
+SPAWN_POTE,포테의숲,피에트,"0,50",실버팜팻/레드팜팻/그린팜팻/퍼플팜팻/은빛늑대/놀/앤트자이언트/울프라이더/자이언트맨티스/포테의정령,,V,https://lod.nexon.com/community/game/6227?SearchBoard=1,,,,,,,,,,,,,,,,,,
+SPAWN_ABEL,아벨해안던전,아벨,"56,7",터틀/그래브/퐁퐁이/크랩/해안의광폭자/킹아크퍼스,,V,https://lod.nexon.com/community/game/6227?SearchBoard=1,,,,,,,,,,,,,,,,,,
+SPAWN_RUC,뤼케시온해안던전,뤼케시온,"78,10",블루하콘/레드하콘/카카포/포이즌카카포/해안의폭군/에리얼,,V,https://lod.nexon.com/community/game/6227?SearchBoard=1,,,,,,,,,,,,,,,,,,
+SPAWN_HORROR_MINE,호러캐슬,마인,"7,6",상세 몬스터 목록 미복구,,B/TODO,,,,,,,,,,,,,,,,,,,
+SPAWN_HORROR_DEATH,호러캐슬,죽음의마을,"10,1",상세 몬스터 목록 미복구,,B/TODO,,,,,,,,,,,,,,,,,,,

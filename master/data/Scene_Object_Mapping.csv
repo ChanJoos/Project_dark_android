@@ -1,0 +1,8 @@
+﻿Runtime_Map,Object_Class,Canonical_Object,Visual_Mapping,Collision/Interaction,Evidence,Status
+MAP_MILLES,terrain,마을 바닥/건물/수변,구 마을맵+실제화면을 geometry/tile 기준으로 trace,원작 통행가능 영역 우선,V,READY_FOR_TRACE
+MAP_POTE_01,terrain,숲 바닥/나무,포테 실제화면 biome vocabulary,나무=blocking,V+B,READY_FOR_TRACE
+MAP_ABEL_COAST,terrain,아벨 수변/마을,town reference와 coast dungeon 분리,물/벽=blocking,V,REFERENCE_ONLY
+MAP_HORROR,room,호러 방,실제 호러 장면 + 10+ 랜덤방 canon,전멸→exit 활성,V+U,READY_FOR_TRACE
+MAP_DEATH_FIELD,terrain,죽음의마을 필드,실제 화면 2장,집/죽던 입구 interactable,V,READY_FOR_TRACE
+MAP_DEATH_HOUSE,portal,집 입구/집 내부,T맵 여러 집→개별 인스턴스,party state 유지,V,RULE_READY
+MAP_DEATH_UNDER,portal,죽던 입구/층계단,hub→다층 dungeon,계단 transition,V,RULE_READY

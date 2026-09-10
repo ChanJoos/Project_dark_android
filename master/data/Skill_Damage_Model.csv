@@ -1,0 +1,8 @@
+﻿Job,Skill,Reference_HP,Reference_MP,Damage_Coefficient,Expected_Raw_Damage,Target,Evidence,Source_URL,Runtime_Treatment,,
+전사,크래셔,17000,5000,3.38,57460,단일,V+B,https://lod.nexon.com/community/game/4460?SearchBoard=1,초기 런타임 계수. 2005 6x 자료는 별도 보존,,
+전사,매드소울,17000,5000,,,주변/근접,V,https://lod.nexon.com/community/game/7220?SearchBoard=1,"90% HP 소모 구조 확정, 정확 데미지 계수는 후속 검증",,
+도적,암살격(일반),13000,7000,0.6336,8236.800000000001,단일,V,https://lod.nexon.com/community/game/4644?SearchBoard=1,원본 실험계수 사용,,
+도적,암살격(크리),13000,7000,1.69,21970,단일,V,https://lod.nexon.com/community/game/4644?SearchBoard=1,원본 실험계수 사용,,
+마법사,라그나로크,12000,13000,,,광역,V,https://lod.nexon.com/community/game/6939?SearchBoard=1,대상 없으면 MP 미소모 확인. 정확 데미지 계수는 미확정,,
+성직자,홀리/지원 계열,13000,14000,,,지원/광역,B,,킬러 DPS보다 파티 생존/디버프 해제 기여로 평가,,
+무도가,다라밀공,16000,7000,3.38,72872.8,단일/필살,V,https://lod.nexon.com/community/game/4646?SearchBoard=1,"(HP+MP-1440)*3.38, PROJECT DARK classic anchor",,

@@ -1,0 +1,59 @@
+﻿Row,Skill,Job,Result_Status,핵심 보강,Primary_Source
+11,피닉스모드,전사,PARTIAL_VERIFIED,피닉스모드. 기본공격 대미지를 소폭 강화하는 상위 모드로 확인됨.,https://lod.nexon.com/community/game/3089?SearchBoard=1
+25,찌르기,도적,EFFECT_VERIFIED,도적 기본 근접 공격 기술. 이후 찔러휘비기→마구찌르기 업그레이드 체인.,https://lod.nexon.com/News/update/4933
+26,센스몬스터,도적,EFFECT_VERIFIED,몬스터 정보 확인. 숙련도가 오를수록 이름/EXP→HP→공격속성→방어속성까지 확인 가능.,https://lod.nexon.com/community/game/1712?SearchBoard=1
+27,표창날리기,도적,PARTIAL_VERIFIED,표창을 이용한 원거리 공격. 지존 구간에서 멀리 있는 몬스터 유인 용도로도 사용.,https://lod.nexon.com/Community/game/7536?Category2=1&Page=9&SearchBoard=1
+31,찔러휘비기,도적,EFFECT_VERIFIED,찌르기의 상위 근접 공격 기술. 승급 후 마구찌르기로 업그레이드.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+33,품뒤져보기,도적,EFFECT_VERIFIED,상대 플레이어의 소지 아이템을 확인하는 기술.,https://lod.nexon.com/community/game/1712?SearchBoard=1
+34,센스,도적,EFFECT_VERIFIED,유저의 HP/MP 등 정보를 확인. 센스몬스터의 플레이어 대상 버전.,https://lod.nexon.com/community/game/1712?SearchBoard=1
+36,함정찾기1,도적,EFFECT_VERIFIED,낮은 등급의 함정을 탐지/표시.,https://lod.nexon.com/community/game/1712?SearchBoard=1
+37,라이트닝무브,도적,EFFECT_VERIFIED,물리 공격 회피율을 높이는 버프.,https://lod.nexon.com/community/game/1712?SearchBoard=1
+41,함정찾기2,도적,EFFECT_VERIFIED,함정찾기1의 상위 탐지 마법. 승급자 사냥터급 함정 탐지에 사용.,https://lod.nexon.com/community/game/1712?SearchBoard=1
+45,마구찌르기,도적,EFFECT_VERIFIED,찔러휘비기 업그레이드 공격기. 스킬레벨 상승 시 대미지 증가.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+46,슬래쉬,도적,EFFECT_VERIFIED,두번찌르기 업그레이드 공격기. 인식 여부와 무관하게 사용 가능하다는 현자 자료.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+50,하이더,도적,PARTIAL_VERIFIED,상위 은신 마법. 하이드/하이더 계열 은신 상태를 형성.,https://lod.nexon.com/community/game/3087?SearchBoard=1
+54,백슬래쉬,도적,EFFECT_VERIFIED,전방·후방 각 1칸을 공격하는 순수도적 기술.,https://gamezone.live/board_vJGK77/813566?order_type=desc&sort_index=title
+55,설치형트랩,도적,EFFECT_VERIFIED,설치형 트랩을 습득하며 기본공격 추가타 1회를 부여하는 구조가 확인됨.,https://lod.nexon.com/community/game/6929?SearchBoard=1
+61,콘푸지오,마법사,EFFECT_VERIFIED,몬스터의 공격 타겟/인식을 혼란·초기화하는 마법. 아무네지아와 유사한 역할.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+62,수페라마레나,마법사,EFFECT_VERIFIED,1단계 사방 속성 공격마법. 같은 속성의 1단계 단일마법보다 약간 강한 계열.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+63,수페라테라미카,마법사,EFFECT_VERIFIED,1단계 사방 속성 공격마법. 같은 속성의 1단계 단일마법보다 약간 강한 계열.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+64,수페라아듀라,마법사,EFFECT_VERIFIED,1단계 사방 속성 공격마법. 같은 속성의 1단계 단일마법보다 약간 강한 계열.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+65,수페라플라미카,마법사,EFFECT_VERIFIED,1단계 사방 속성 공격마법. 같은 속성의 1단계 단일마법보다 약간 강한 계열.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+66,바르도,마법사,EFFECT_VERIFIED,"2단계 저주. AC +35, 마법방어 -10%.",https://lod.nexon.com/community/game/7799?SearchBoard=1
+68,마레누스,마법사,EFFECT_VERIFIED,2단계 단일 속성 공격마법.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+69,테라미쿠스,마법사,EFFECT_VERIFIED,2단계 단일 속성 공격마법.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+70,아듀로스,마법사,EFFECT_VERIFIED,2단계 단일 속성 공격마법.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+71,플라무스,마법사,EFFECT_VERIFIED,2단계 단일 속성 공격마법.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+73,엑스마레나,마법사,EFFECT_VERIFIED,2단계 사방 속성 공격마법. 타겟 지정형.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+74,엑스테라미카,마법사,EFFECT_VERIFIED,2단계 사방 속성 공격마법. 타겟 지정형.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+75,엑스아듀라,마법사,EFFECT_VERIFIED,2단계 사방 속성 공격마법. 타겟 지정형.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+76,엑스플라미카,마법사,EFFECT_VERIFIED,2단계 사방 속성 공격마법. 타겟 지정형.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+77,로카테오,마법사,EFFECT_VERIFIED,그룹원 위치로 순간이동. 로카메아의 반대 기능.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+93,데스,마법사,EFFECT_VERIFIED,상급 중독 계열. 시전 시 MP가 0이 되며 뮤레칸의눈물 시약을 요구하는 구 규칙이 확인됨. 해골 틱마다 대상 체력의 약 5% 소모 자료.,https://lod.nexon.com/community/game/5164?SearchBoard=1
+94,아이스블러스트,마법사,EFFECT_VERIFIED,4써클 3단계 단일 속성 공격마법의 승급 업그레이드.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+95,퀘이크,마법사,EFFECT_VERIFIED,4써클 3단계 단일 속성 공격마법의 승급 업그레이드.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+96,플레쉬스톰,마법사,EFFECT_VERIFIED,4써클 3단계 단일 속성 공격마법의 승급 업그레이드.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+97,플레어,마법사,EFFECT_VERIFIED,4써클 3단계 단일 속성 공격마법의 승급 업그레이드.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+102,렌티아,마법사,EFFECT_VERIFIED,"단일 저주. AC +20, 마법방어 0%. 지속시간은 일반 렌토 계열보다 짧은 순수승급 버전.",https://lod.nexon.com/community/game/7799?SearchBoard=1
+103,바르데아,마법사,EFFECT_VERIFIED,"단일 저주. AC +35, 마법방어 -10%.",https://lod.nexon.com/community/game/7799?SearchBoard=1
+104,데프레타,마법사,EFFECT_VERIFIED,"단일 저주. AC +50, 마법방어 -20%.",https://lod.nexon.com/community/game/7799?SearchBoard=1
+105,프라베라,마법사,EFFECT_VERIFIED,"단일 저주. AC +65, 마법방어 -30%.",https://lod.nexon.com/community/game/7799?SearchBoard=1
+109,수혈,성직자,USER_CONFIRM_NEEDED,성직자 초기 기술 '수혈'. 아군 회복을 위해 자신의 HP를 이전하는 계열로 알려져 있으나 정확 이전량/비율은 이번 조사에서 확정 근거 부족.,https://lod.nexon.com/Community/game/7538?Category2=1&SearchBoard=1
+117,베누스티,성직자,USER_CONFIRM_NEEDED,몬스터를 굴복/조종하는 계열 마법으로 팬·현자 서술이 존재하나 정확 지속·대상 조건은 불명확.,https://lod.nexon.com/Community/game/7538?Category2=1&SearchBoard=1
+118,쿠라노소,성직자,EFFECT_VERIFIED,"3단계 단일 힐링. 쿠라노 상위. 구 자료 기준 MP 440, 99/WIS109에서 약 +4500 회복.",https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+119,바르도,성직자,EFFECT_VERIFIED,"2단계 저주. AC +35, 마법방어 -10%.",https://lod.nexon.com/community/game/7799?SearchBoard=1
+120,홀리볼트,성직자,EFFECT_VERIFIED,성직자 범용 빛 속성 공격마법.,https://lod.nexon.com/News/update/4933
+121,디데프레카,성직자,EFFECT_VERIFIED,데프레코/데프레타 저주 해제.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+122,쿠라누스,성직자,EFFECT_VERIFIED,"2단계 그룹힐. 쿠러스 상위, 단일 쿠라노와 유사한 회복량. 구 자료 MP 450.",https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+127,홀리블로우,성직자,EFFECT_VERIFIED,"빛 속성 3단계 공격마법. 홀리볼트 상위, 지존 이전 성직자 최상위 공격계열.",https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+129,로카메아,성직자,EFFECT_VERIFIED,같은 그룹의 유저를 자신의 위치로 소환.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+130,디프라바,성직자,EFFECT_VERIFIED,프라보/프라베라 저주 해제.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+132,소모니아,성직자,EFFECT_VERIFIED,자신이 사냥한 하급 몬스터를 소환. 상급/특정 몬스터는 제한.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+133,디소루마,성직자,EFFECT_VERIFIED,소루마(동결) 해제.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+171,장풍,무도가,EFFECT_VERIFIED,원거리 공격 마법. 공격속성은 장착 목걸이를 따르는 자료가 있으며 속성 판별용으로도 활용.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+172,금강불괴,무도가,EFFECT_VERIFIED,"무적 마법. 구 팬자료 기준 약 9초 유지, 전딜/후딜 없음. 실패 가능성 및 MP200 자료 존재.",https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+173,쿠라노토,무도가,EFFECT_VERIFIED,쿠로토 상위 자기회복 마법. 구 자료 스킬100에서 HP 약500 회복.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+175,소수신공,무도가,EFFECT_VERIFIED,기본공격 강화. 구 테스트 자료에서 일정 확률로 기본공격 2배 대미지.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+179,달마신공,무도가,EFFECT_VERIFIED,필살기. 자신의 HP 60%를 소모하고 소비 HP의 약 50%에 해당하는 고정피해를 주는 구 자료. 방어/무적 일부를 무시하는 특성.,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95
+181,붕신선각,무도가,PARTIAL_VERIFIED,붕각의 승급 업그레이드 기술.,https://lod.nexon.com/community/game/7026?SearchBoard=1
+182,파천각,무도가,PARTIAL_VERIFIED,선풍각의 승급 업그레이드 기술. 집털 등 몹몰이 사냥에서 활용 자료 존재.,https://lod.nexon.com/community/game/7026?SearchBoard=1

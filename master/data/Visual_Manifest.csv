@@ -1,0 +1,9 @@
+﻿Visual_ID,Runtime_Target,Visual_Type,Nexon_Source,Verified_Content,Integration_Mode,Confidence,Status
+VIS_MILLES_OLD,MAP_MILLES,MAP_SCREEN_SET,https://lod.nexon.com/Community/screenshot/136184?Category2=2,밀레스 포함 구 마을맵 9장,TRACE_MAP_GEOMETRY,HIGH,SOURCE_LOCKED
+VIS_MILLES_2024,MAP_MILLES,GAMEPLAY_SCREEN,https://lod.nexon.com/community/screenshot/137555,밀레스 실제 플레이 화면,TILE_SCALE_PALETTE_REF,HIGH,SOURCE_LOCKED
+VIS_POTE,MAP_POTE_01,GAMEPLAY_SCREEN,https://lod.nexon.com/Community/screenshot/121538?Category2=2,본문이 포테의숲 명시,TILE_SCALE_BIOME_REF,HIGH,SOURCE_LOCKED
+VIS_ABEL,MAP_ABEL_COAST,GAMEPLAY_SCREEN_SET,https://lod.nexon.com/community/screenshot/128673,아벨 실제 마을 화면 3장,TOWN_VISUAL_REF_ONLY,HIGH,SOURCE_LOCKED
+VIS_HORROR,MAP_HORROR,GAMEPLAY_SCREEN,https://lod.nexon.com/Community/screenshot/134341?Category2=2,호러캐슬 실제 플레이 장면,ROOM_VISUAL_REF,HIGH,SOURCE_LOCKED
+VIS_DEATH,MAP_DEATH_FIELD,GAMEPLAY_SCREEN_SET,https://lod.nexon.com/News/notice/129289,죽음의마을 실제 화면 2장,FIELD_VISUAL_REF,HIGH,SOURCE_LOCKED
+VIS_DEATH_MON,MAP_DEATH_FIELD/HOUSE/UNDER,MONSTER_CONTEXT,https://lod.nexon.com/News/notice/119284,죽마1 좀비/4존집안 니크로/죽던6층 머미 명시,MONSTER_CONTEXT_REF,HIGH_TEXT,SOURCE_LOCKED
+VIS_UI_OLD,HUD,GAMEPLAY_SCREEN_SET,https://lod.nexon.com/Community/screenshot/135359?Category2=2&Page=1,추억 인터페이스 포함 실제 스크린샷 다수,HUD_ERA_REF,HIGH,SOURCE_LOCKED

@@ -1,0 +1,6 @@
+﻿Job,Primary_Resource,Growth_Priority_After_STAT_MAX,Ultimate/Key_Skill,Damage_Model_Status,Project_Runtime_Rule,Evidence,설명,,,,,,,,,,,,
+전사,HP,HP 우선,크래셔/매드소울 계열,RESOURCE_SCALING,최대 HP가 높을수록 HP 소모형 필살기의 기대 화력이 증가하도록 설계,U+V+B,정확 원본 계수는 Skill_Master 근거와 후속 전투 밸런스에서 확정,,,,,,,,,,,,
+도적,HP,HP 우선,암살격/기습 계열,PARTIAL,격수 체력 성장의 공격적 가치를 유지하되 스킬별 원본 계수 우선,U+B,도적 필살기별 HP 직접계수는 추가 검증,,,,,,,,,,,,
+마법사,MP,MP 최우선,MP 전량/대량 소모 필살기,RESOURCE_SCALING,최대 MP가 필살기 화력/지속 전투력의 핵심 성장축,U+V+B,STAT MAX 이후 MP 성장의 체감이 가장 커야 함,,,,,,,,,,,,
+성직자,MP,MP > HP,힐/보조/빛계열,SUPPORT_SCALING,WIS 상한 이후 MP와 생존 체마 성장으로 파티 효율 상승,U+V+B,순수 공격 필살기보다 지원 지속력 중심,,,,,,,,,,,,
+무도가,HP+MP,HP와 MP 균형,다라밀공,FORMULA_ANCHOR,HP+MP를 거의 전부 소진하고 1을 남기는 자원폭발형 필살기로 유지,U+V+B,classic 다라밀공 계수 3.38 후보를 별도 Skill_Master 근거와 연결,,,,,,,,,,,,

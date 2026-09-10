@@ -1,0 +1,6 @@
+﻿Job,Rotation_Window_sec,Setup_sec,Sustain_sec,Burst_sec,Recovery_sec,Expected_Damage_Share,Utility_Weight,Key_Burst,Known_Cooldown,Evidence,Design Rule
+전사,42,4,24,3,11,0.28,0.15,크래셔/매드,,V+B,burst는 평균 DPS 보조; HP 회복시간 포함
+도적,42,6,24,2,10,0.24,0.3,암살격,,V+B,센스/방어해체가 파티 전체 효율을 올림
+마법사,42,7,22,4,9,0.28,0.35,라그나로크/메테오,,V+B,저주 선행; 다수 대상에서 광역 효율
+성직자,42,4,27,0,11,0.05,0.9,지원,,V+B,직접딜보다 party uptime
+무도가,42,3,24,3,12,0.15,0.15,다라밀공,12,V+B,다라 12초 CD를 보존하되 자원회복이 실사용 빈도를 제한

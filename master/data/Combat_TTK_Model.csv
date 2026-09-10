@@ -1,0 +1,4 @@
+﻿Zone,Monster_HP,EXP,Target_Encounter_sec,Active_Combat_Share,Active_Combat_sec,Required_Solo_DPS,Required_Party_DPS_5p,Kills_per_Hour,EXP_per_Hour,Evidence,설명
+뤼케 후반,,100000,26.6667,0.7,=D2*E2,"=IF(B2="""","""",B2/F2)","=IF(G2="""","""",G2/5)",135,13500000,B,Lv90→99 5h 목표. HP는 몬스터 개별값 확정 후 연결
+호러캐슬,110000,175000,41.8605,0.55,=D3*E3,"=IF(B3="""","""",B3/F3)","=IF(G3="""","""",G3/5)",86,15050000,U+B,랜덤방/속성/이동 포함 encounter time
+죽음의마을,200000,300000,45,0.6,=D4*E4,"=IF(B4="""","""",B4/F4)","=IF(G4="""","""",G4/5)",80,24000000,U+B,파티 몰이/정리 포함 encounter time

@@ -1,0 +1,8 @@
+﻿NPC_ID,Name,Map,Coord,Function,Dialog/Action,Quest_Link,Evidence,Source_URL,Status,,
+NPC_AN,안,밀레스,"55,12",Quest,지하묘지 퀘스트 메뉴,"Q_MIL_01,Q_MIL_03",V,https://lod.nexon.com/community/game/4388?SearchBoard=1,READY,,
+NPC_BANE,베인,밀레스,"102,27",Quest,언데드 증거/소환석 판정,Q_MIL_01,V,https://lod.nexon.com/community/game/4388?SearchBoard=1,READY,,
+NPC_KANTANA,칸타나,밀레스,"105,86",QuestComplete,보물상자 체인 완료,Q_MIL_03,V,https://lod.nexon.com/community/game/4381?SearchBoard=1,READY,,
+NPC_MEMPHIS,멤피스,피에트,"83,42",Quest,정수 정화,Q_POT_02,V,https://lod.nexon.com/Community/game/4347?Category2=1&SearchBoard=1,READY,,
+NPC_MESARA,메사라,피에트,"14,27",Craft/Quest,정수 정제 대행,Q_POT_02,V,https://lod.nexon.com/Community/game/4347?Category2=1&SearchBoard=1,READY,,
+NPC_BAEK,백원만,마인,"7,6",Travel,호러/죽대 이동,Q_HOR_01,V+ADAPTED,https://lod.nexon.com/community/game/5544?SearchBoard=1,READY,,
+NPC_PROMOTE,승급 판정 NPC,마인,TBD,Promotion,조건 확인 후 즉시 승급,Q_PRO_01,ADAPTED,,READY,,

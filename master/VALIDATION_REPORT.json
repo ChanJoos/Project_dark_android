@@ -1,0 +1,2165 @@
+{
+  "status": "AVAILABLE_CSV_INTEGRITY_PASS",
+  "xlsx_fidelity": "UNVERIFIED_ORIGINAL_XLSX_NOT_AVAILABLE",
+  "source_xlsx_sha256_claim": "fa309f4994376b3461ae49987df44894ed0e284966082976f49bc9dcb2958bcd",
+  "empty_field_semantics": "CSV empty strings preserved. Original null vs empty-string/type/cache cannot be recovered.",
+  "sheet_count": 92,
+  "rows_including_headers": 1786,
+  "data_rows_excluding_one_header_per_sheet": 1694,
+  "csv_nonempty_fields": 16222,
+  "source_manifest_populated_cells": 21292,
+  "formula_string_count": 47,
+  "reference_checks": [
+    {
+      "from": "Skill_Requirements.Skill_ID",
+      "to": "Skill_Master.Skill_ID",
+      "values_checked": 184
+    },
+    {
+      "from": "NPC_Runtime_Master.Quest_Link",
+      "to": "Quest_Runtime_Master.Quest_ID",
+      "values_checked": 8
+    },
+    {
+      "from": "Quest_Runtime_Master.Prerequisite",
+      "to": "Quest_Runtime_Master.Quest_ID",
+      "values_checked": 3
+    },
+    {
+      "from": "Item_Master.Source_ID",
+      "to": "Sources.Source_ID",
+      "values_checked": 218
+    }
+  ],
+  "reference_scope": "Explicit joins above; free-text drops, coordinates, narrative and name-based relationships remain PENDING_ADAPTER.",
+  "errors": [],
+  "findings": [
+    {
+      "sheet": "Item_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 3800,
+      "csv_nonempty_fields": 3113,
+      "difference": 687
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_GEAR_GUIDE",
+      "rows": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        24,
+        25,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_ROGUE_REWARD",
+      "rows": [
+        18,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_WARRIOR_REWARD",
+      "rows": [
+        23,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        166,
+        167,
+        168,
+        169,
+        178,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_WIZARD_REWARD",
+      "rows": [
+        26,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        170,
+        171,
+        172,
+        173
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_ELEMENT_CRAFT",
+      "rows": [
+        76,
+        77,
+        78,
+        79,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_PRIEST_REWARD",
+      "rows": [
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_MONK_REWARD",
+      "rows": [
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_ADVANCE",
+      "rows": [
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_SEWER",
+      "rows": [
+        179,
+        180,
+        181,
+        182
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Item_Master",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Source_ID",
+      "value": "SRC_ADVANCE_OLD",
+      "rows": [
+        183,
+        200
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Monster_Drop",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 146,
+      "csv_nonempty_fields": 128,
+      "difference": 18
+    },
+    {
+      "sheet": "Economy_Loop",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 68,
+      "csv_nonempty_fields": 48,
+      "difference": 20
+    },
+    {
+      "sheet": "Element_Matrix",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 81,
+      "csv_nonempty_fields": 60,
+      "difference": 21
+    },
+    {
+      "sheet": "Element_Presets",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 56,
+      "csv_nonempty_fields": 35,
+      "difference": 21
+    },
+    {
+      "sheet": "Sources",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 74,
+      "csv_nonempty_fields": 52,
+      "difference": 22
+    },
+    {
+      "sheet": "README",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 44,
+      "csv_nonempty_fields": 43,
+      "difference": 1
+    },
+    {
+      "sheet": "World_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 66,
+      "csv_nonempty_fields": 48,
+      "difference": 18
+    },
+    {
+      "sheet": "Location_Points",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 233,
+      "csv_nonempty_fields": 203,
+      "difference": 30
+    },
+    {
+      "sheet": "NPC_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 173,
+      "csv_nonempty_fields": 138,
+      "difference": 35
+    },
+    {
+      "sheet": "Town_Services",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 117,
+      "csv_nonempty_fields": 98,
+      "difference": 19
+    },
+    {
+      "sheet": "Quest_Placement",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 134,
+      "csv_nonempty_fields": 111,
+      "difference": 23
+    },
+    {
+      "sheet": "World_Flow",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 61,
+      "csv_nonempty_fields": 42,
+      "difference": 19
+    },
+    {
+      "sheet": "World_Sources",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 62,
+      "csv_nonempty_fields": 40,
+      "difference": 22
+    },
+    {
+      "sheet": "Locked_Towns",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 61,
+      "csv_nonempty_fields": 40,
+      "difference": 21
+    },
+    {
+      "sheet": "Progression_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 182,
+      "csv_nonempty_fields": 168,
+      "difference": 14
+    },
+    {
+      "sheet": "Skill_Milestones",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 98,
+      "csv_nonempty_fields": 84,
+      "difference": 14
+    },
+    {
+      "sheet": "Continuity_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 86,
+      "csv_nonempty_fields": 64,
+      "difference": 22
+    },
+    {
+      "sheet": "Shop_Redistribution",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 46,
+      "csv_nonempty_fields": 24,
+      "difference": 22
+    },
+    {
+      "sheet": "MASTER_DB_README",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 64,
+      "csv_nonempty_fields": 26,
+      "difference": 38
+    },
+    {
+      "sheet": "DB_Sources",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 86,
+      "csv_nonempty_fields": 64,
+      "difference": 22
+    },
+    {
+      "sheet": "Skill_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 5180,
+      "csv_nonempty_fields": 3870,
+      "difference": 1310
+    },
+    {
+      "sheet": "Skill_Requirements",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 2602,
+      "csv_nonempty_fields": 777,
+      "difference": 1825
+    },
+    {
+      "sheet": "Spawn_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 66,
+      "csv_nonempty_fields": 41,
+      "difference": 25
+    },
+    {
+      "sheet": "AUTO_Rules",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 71,
+      "csv_nonempty_fields": 50,
+      "difference": 21
+    },
+    {
+      "sheet": "Coverage_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 61,
+      "csv_nonempty_fields": 40,
+      "difference": 21
+    },
+    {
+      "sheet": "Skill_Evidence",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 81,
+      "csv_nonempty_fields": 60,
+      "difference": 21
+    },
+    {
+      "sheet": "Skill_Research_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 57,
+      "csv_nonempty_fields": 33,
+      "difference": 24
+    },
+    {
+      "sheet": "User_Confirm_Queue",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 36,
+      "csv_nonempty_fields": 20,
+      "difference": 16
+    },
+    {
+      "sheet": "Monster_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 860,
+      "csv_nonempty_fields": 642,
+      "difference": 218
+    },
+    {
+      "sheet": "Monster_Sources",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 80,
+      "csv_nonempty_fields": 65,
+      "difference": 15
+    },
+    {
+      "sheet": "HuntingGround_Rules",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 56,
+      "csv_nonempty_fields": 41,
+      "difference": 15
+    },
+    {
+      "sheet": "Monster_Research_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 50,
+      "csv_nonempty_fields": 33,
+      "difference": 17
+    },
+    {
+      "sheet": "Monster_Open_Queue",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 50,
+      "csv_nonempty_fields": 30,
+      "difference": 20
+    },
+    {
+      "sheet": "Horror_Room_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 53,
+      "csv_nonempty_fields": 50,
+      "difference": 3
+    },
+    {
+      "sheet": "Death_Village_Structure",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 32,
+      "csv_nonempty_fields": 31,
+      "difference": 1
+    },
+    {
+      "sheet": "Monster_User_Facts",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 48,
+      "csv_nonempty_fields": 45,
+      "difference": 3
+    },
+    {
+      "sheet": "Progression_Parameters",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 98,
+      "csv_nonempty_fields": 92,
+      "difference": 6
+    },
+    {
+      "sheet": "Level_EXP_Curve",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 892,
+      "csv_nonempty_fields": 891,
+      "difference": 1
+    },
+    {
+      "sheet": "Hunting_EXP_Balance",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 122,
+      "csv_nonempty_fields": 94,
+      "difference": 28
+    },
+    {
+      "sheet": "Horror_EXP_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 136,
+      "csv_nonempty_fields": 99,
+      "difference": 37
+    },
+    {
+      "sheet": "HP_MP_Purchase_Curve",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 424,
+      "csv_nonempty_fields": 369,
+      "difference": 55
+    },
+    {
+      "sheet": "Promotion_Growth_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 62,
+      "csv_nonempty_fields": 48,
+      "difference": 14
+    },
+    {
+      "sheet": "Progression_Math_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 40,
+      "csv_nonempty_fields": 33,
+      "difference": 7
+    },
+    {
+      "sheet": "Time_Balance_Targets",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 95,
+      "csv_nonempty_fields": 90,
+      "difference": 5
+    },
+    {
+      "sheet": "Level_Time_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 70,
+      "csv_nonempty_fields": 67,
+      "difference": 3
+    },
+    {
+      "sheet": "Post99_Time_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 64,
+      "csv_nonempty_fields": 54,
+      "difference": 10
+    },
+    {
+      "sheet": "PostPromotion_Time_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 64,
+      "csv_nonempty_fields": 56,
+      "difference": 8
+    },
+    {
+      "sheet": "Progression_Time_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 55,
+      "csv_nonempty_fields": 48,
+      "difference": 7
+    },
+    {
+      "sheet": "Class_99_Profile",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 75,
+      "csv_nonempty_fields": 66,
+      "difference": 9
+    },
+    {
+      "sheet": "Class_STAT_Caps",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 65,
+      "csv_nonempty_fields": 54,
+      "difference": 11
+    },
+    {
+      "sheet": "Class_Promotion_Path",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 85,
+      "csv_nonempty_fields": 78,
+      "difference": 7
+    },
+    {
+      "sheet": "Ultimate_Resource_Scaling",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 60,
+      "csv_nonempty_fields": 48,
+      "difference": 12
+    },
+    {
+      "sheet": "Class_Balance_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 60,
+      "csv_nonempty_fields": 44,
+      "difference": 16
+    },
+    {
+      "sheet": "Combat_Parameters",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 132,
+      "csv_nonempty_fields": 114,
+      "difference": 18
+    },
+    {
+      "sheet": "Skill_Damage_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 82,
+      "csv_nonempty_fields": 73,
+      "difference": 9
+    },
+    {
+      "sheet": "Combat_TTK_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 48,
+      "csv_nonempty_fields": 47,
+      "difference": 1
+    },
+    {
+      "sheet": "Party_Hunting_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 60,
+      "csv_nonempty_fields": 53,
+      "difference": 7
+    },
+    {
+      "sheet": "Combat_Balance_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 60,
+      "csv_nonempty_fields": 52,
+      "difference": 8
+    },
+    {
+      "sheet": "Skill_Formula_Research",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 54,
+      "csv_nonempty_fields": 46,
+      "difference": 8
+    },
+    {
+      "sheet": "AUTO_Class_Policies",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 57,
+      "csv_nonempty_fields": 54,
+      "difference": 3
+    },
+    {
+      "sheet": "Class_Rotation_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 72,
+      "csv_nonempty_fields": 68,
+      "difference": 4
+    },
+    {
+      "sheet": "Party_Rotation_Timeline",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 82,
+      "csv_nonempty_fields": 77,
+      "difference": 5
+    },
+    {
+      "sheet": "Class_Parity_Model",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 62,
+      "csv_nonempty_fields": 60,
+      "difference": 2
+    },
+    {
+      "sheet": "AUTO_Combat_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 52,
+      "csv_nonempty_fields": 44,
+      "difference": 8
+    },
+    {
+      "sheet": "Content_Flow_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 132,
+      "csv_nonempty_fields": 126,
+      "difference": 6
+    },
+    {
+      "sheet": "Map_Instance_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 122,
+      "csv_nonempty_fields": 120,
+      "difference": 2
+    },
+    {
+      "sheet": "Quest_Runtime_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 120,
+      "csv_nonempty_fields": 116,
+      "difference": 4
+    },
+    {
+      "sheet": "Encounter_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 78,
+      "csv_nonempty_fields": 77,
+      "difference": 1
+    },
+    {
+      "sheet": "NPC_Runtime_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 82,
+      "csv_nonempty_fields": 79,
+      "difference": 3
+    },
+    {
+      "sheet": "Content_Gates",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 54,
+      "csv_nonempty_fields": 49,
+      "difference": 5
+    },
+    {
+      "sheet": "Vertical_Slice_Playthrough",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 117,
+      "csv_nonempty_fields": 112,
+      "difference": 5
+    },
+    {
+      "sheet": "Content_Completion_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 68,
+      "csv_nonempty_fields": 63,
+      "difference": 5
+    },
+    {
+      "sheet": "Asset_Master",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 110,
+      "csv_nonempty_fields": 105,
+      "difference": 5
+    },
+    {
+      "sheet": "Asset_Character_Mapping",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 51,
+      "csv_nonempty_fields": 48,
+      "difference": 3
+    },
+    {
+      "sheet": "Asset_Map_Mapping",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 91,
+      "csv_nonempty_fields": 82,
+      "difference": 9
+    },
+    {
+      "sheet": "Asset_Map_Mapping",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Asset_ID",
+      "value": "MAP_POTE_SCREEN",
+      "rows": [
+        3,
+        4
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Asset_Monster_Mapping",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 347,
+      "csv_nonempty_fields": 332,
+      "difference": 15
+    },
+    {
+      "sheet": "Asset_UI_Mapping",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 47,
+      "csv_nonempty_fields": 42,
+      "difference": 5
+    },
+    {
+      "sheet": "Asset_UI_Mapping",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Asset_ID",
+      "value": "UI_BASIC",
+      "rows": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Asset_Source_Catalog",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 60,
+      "csv_nonempty_fields": 56,
+      "difference": 4
+    },
+    {
+      "sheet": "Asset_Gap_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 74,
+      "csv_nonempty_fields": 70,
+      "difference": 4
+    },
+    {
+      "sheet": "Screen_To_Runtime_Mapping",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 73,
+      "csv_nonempty_fields": 70,
+      "difference": 3
+    },
+    {
+      "sheet": "Legacy_Image_Endpoints",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 94,
+      "csv_nonempty_fields": 91,
+      "difference": 3
+    },
+    {
+      "sheet": "Screen_Gap_Audit",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 66,
+      "csv_nonempty_fields": 63,
+      "difference": 3
+    },
+    {
+      "sheet": "Monster_Visual_Evidence",
+      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
+      "source_manifest_cells": 336,
+      "csv_nonempty_fields": 324,
+      "difference": 12
+    }
+  ],
+  "sheets": [
+    {
+      "sheet": "Item_Master",
+      "path": "master/data/Item_Master.csv",
+      "sha256": "6d0cf851ec848e0bbc28989062ca47b1069602b4e5936469a6f0733bb6af7807",
+      "rows_including_header": 223,
+      "data_rows": 222,
+      "columns": 26,
+      "csv_nonempty_fields": 3113,
+      "source_manifest_populated_cells": 3800,
+      "formulas": []
+    },
+    {
+      "sheet": "Monster_Drop",
+      "path": "master/data/Monster_Drop.csv",
+      "sha256": "4fb53fbca9828291806267e5441af690cb36066e9a703d8cb90be13e2655ca30",
+      "rows_including_header": 16,
+      "data_rows": 15,
+      "columns": 26,
+      "csv_nonempty_fields": 128,
+      "source_manifest_populated_cells": 146,
+      "formulas": []
+    },
+    {
+      "sheet": "Economy_Loop",
+      "path": "master/data/Economy_Loop.csv",
+      "sha256": "09008e2fdc1315a324866f3b5c1e2821d3f4465ba97e82f3335ffef97e495ebf",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 26,
+      "csv_nonempty_fields": 48,
+      "source_manifest_populated_cells": 68,
+      "formulas": []
+    },
+    {
+      "sheet": "Element_Matrix",
+      "path": "master/data/Element_Matrix.csv",
+      "sha256": "06d29a6648828f7f38dc2685beaab4c0356f757c8b7b1f8d95913bfb07760217",
+      "rows_including_header": 12,
+      "data_rows": 11,
+      "columns": 26,
+      "csv_nonempty_fields": 60,
+      "source_manifest_populated_cells": 81,
+      "formulas": []
+    },
+    {
+      "sheet": "Element_Presets",
+      "path": "master/data/Element_Presets.csv",
+      "sha256": "f38880145c9d4a37314bb7f9f175252b875a5163c33aead20205b15b2aa3db6c",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 26,
+      "csv_nonempty_fields": 35,
+      "source_manifest_populated_cells": 56,
+      "formulas": []
+    },
+    {
+      "sheet": "Sources",
+      "path": "master/data/Sources.csv",
+      "sha256": "6ce917e6a51e7f15d1d10849392ec01fae2e6e3887e340ba5249e01d72ddeb83",
+      "rows_including_header": 13,
+      "data_rows": 12,
+      "columns": 26,
+      "csv_nonempty_fields": 52,
+      "source_manifest_populated_cells": 74,
+      "formulas": []
+    },
+    {
+      "sheet": "README",
+      "path": "master/data/README.csv",
+      "sha256": "9e0987f91aa32c3ad46d66ac6d4c883020085edf102fbff0fb6b97c14cbdba54",
+      "rows_including_header": 22,
+      "data_rows": 21,
+      "columns": 2,
+      "csv_nonempty_fields": 43,
+      "source_manifest_populated_cells": 44,
+      "formulas": []
+    },
+    {
+      "sheet": "World_Master",
+      "path": "master/data/World_Master.csv",
+      "sha256": "ec894fb11543cd55aef9a1af7fba00c086bc92d0b9ff2419cc38289097f80c1d",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 26,
+      "csv_nonempty_fields": 48,
+      "source_manifest_populated_cells": 66,
+      "formulas": []
+    },
+    {
+      "sheet": "Location_Points",
+      "path": "master/data/Location_Points.csv",
+      "sha256": "32b98c988b887bdd8b34507a28b0bf65b5dd65d26e70ee64647ca14b32d0ec0d",
+      "rows_including_header": 24,
+      "data_rows": 23,
+      "columns": 26,
+      "csv_nonempty_fields": 203,
+      "source_manifest_populated_cells": 233,
+      "formulas": []
+    },
+    {
+      "sheet": "NPC_Master",
+      "path": "master/data/NPC_Master.csv",
+      "sha256": "64e2abbf72e9b982ce6e8fbd377c7179b644775c2db48bcef46bfa05298b5fef",
+      "rows_including_header": 22,
+      "data_rows": 21,
+      "columns": 26,
+      "csv_nonempty_fields": 138,
+      "source_manifest_populated_cells": 173,
+      "formulas": []
+    },
+    {
+      "sheet": "Town_Services",
+      "path": "master/data/Town_Services.csv",
+      "sha256": "521c37273a193e65c8ba5600d20b922d5e775ecbc1fcff19834cb0a2d337058a",
+      "rows_including_header": 14,
+      "data_rows": 13,
+      "columns": 26,
+      "csv_nonempty_fields": 98,
+      "source_manifest_populated_cells": 117,
+      "formulas": []
+    },
+    {
+      "sheet": "Quest_Placement",
+      "path": "master/data/Quest_Placement.csv",
+      "sha256": "4ac096934d040cebc4b49f9b362cd824bff7779e8e3b765ec5f4793566a6136e",
+      "rows_including_header": 13,
+      "data_rows": 12,
+      "columns": 26,
+      "csv_nonempty_fields": 111,
+      "source_manifest_populated_cells": 134,
+      "formulas": []
+    },
+    {
+      "sheet": "World_Flow",
+      "path": "master/data/World_Flow.csv",
+      "sha256": "98c826e5f72c26e49b8ffed778c348718003c97448ecaecdbf27a12119d98ffc",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 26,
+      "csv_nonempty_fields": 42,
+      "source_manifest_populated_cells": 61,
+      "formulas": []
+    },
+    {
+      "sheet": "World_Sources",
+      "path": "master/data/World_Sources.csv",
+      "sha256": "31e412b8534761dc5211e516a5eebef6c88280f4579c24afabbaee2712169dda",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 26,
+      "csv_nonempty_fields": 40,
+      "source_manifest_populated_cells": 62,
+      "formulas": []
+    },
+    {
+      "sheet": "Locked_Towns",
+      "path": "master/data/Locked_Towns.csv",
+      "sha256": "dae7b214adcae0705ba27040720258bc95d350c62f3b14c456a9535941c67bf6",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 26,
+      "csv_nonempty_fields": 40,
+      "source_manifest_populated_cells": 61,
+      "formulas": []
+    },
+    {
+      "sheet": "Progression_Master",
+      "path": "master/data/Progression_Master.csv",
+      "sha256": "36e1946833e2618160873b8da7a4367d0b7bcdfc288a22ef578d53bf5ea26eb1",
+      "rows_including_header": 14,
+      "data_rows": 13,
+      "columns": 26,
+      "csv_nonempty_fields": 168,
+      "source_manifest_populated_cells": 182,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_Milestones",
+      "path": "master/data/Skill_Milestones.csv",
+      "sha256": "c579b6ec7130da09921b5680833ecd4b788d6e086fb31863493e76b7420769e2",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 26,
+      "csv_nonempty_fields": 84,
+      "source_manifest_populated_cells": 98,
+      "formulas": []
+    },
+    {
+      "sheet": "Continuity_Audit",
+      "path": "master/data/Continuity_Audit.csv",
+      "sha256": "73877f6fc5043d62a4f3348d1739bc7e50354632c5f19693d5689ae025a98aef",
+      "rows_including_header": 16,
+      "data_rows": 15,
+      "columns": 26,
+      "csv_nonempty_fields": 64,
+      "source_manifest_populated_cells": 86,
+      "formulas": []
+    },
+    {
+      "sheet": "Shop_Redistribution",
+      "path": "master/data/Shop_Redistribution.csv",
+      "sha256": "986c473911b01088707cf376cf739136a5d84147a8e90aa57ec842e16740880c",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 26,
+      "csv_nonempty_fields": 24,
+      "source_manifest_populated_cells": 46,
+      "formulas": []
+    },
+    {
+      "sheet": "MASTER_DB_README",
+      "path": "master/data/MASTER_DB_README.csv",
+      "sha256": "fbfd0a1ff7df553ed71fff59fe6c24ffb3323edbbfa20a3c69291ef186875f84",
+      "rows_including_header": 20,
+      "data_rows": 19,
+      "columns": 26,
+      "csv_nonempty_fields": 26,
+      "source_manifest_populated_cells": 64,
+      "formulas": []
+    },
+    {
+      "sheet": "DB_Sources",
+      "path": "master/data/DB_Sources.csv",
+      "sha256": "ff564e858d0837c82f733dfc0532638b52905bd3bfa6faa3e6a80abfe60427e3",
+      "rows_including_header": 16,
+      "data_rows": 15,
+      "columns": 26,
+      "csv_nonempty_fields": 64,
+      "source_manifest_populated_cells": 86,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_Master",
+      "path": "master/data/Skill_Master.csv",
+      "sha256": "530679ec2a99c95cbe666d9641f1df87e73ca5febccf2ac6dabf5a8cae449936",
+      "rows_including_header": 185,
+      "data_rows": 184,
+      "columns": 28,
+      "csv_nonempty_fields": 3870,
+      "source_manifest_populated_cells": 5180,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_Requirements",
+      "path": "master/data/Skill_Requirements.csv",
+      "sha256": "2ddc2b4f92682755a321036ba1c20e663e47fdeb1b1269208a536363fc35ec02",
+      "rows_including_header": 185,
+      "data_rows": 184,
+      "columns": 26,
+      "csv_nonempty_fields": 777,
+      "source_manifest_populated_cells": 2602,
+      "formulas": []
+    },
+    {
+      "sheet": "Spawn_Master",
+      "path": "master/data/Spawn_Master.csv",
+      "sha256": "b68471e6b2477729f2ef5f34aff5ac1d1d76d13fbeced1257a4056f7f6560821",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 26,
+      "csv_nonempty_fields": 41,
+      "source_manifest_populated_cells": 66,
+      "formulas": []
+    },
+    {
+      "sheet": "AUTO_Rules",
+      "path": "master/data/AUTO_Rules.csv",
+      "sha256": "5ebcb3f8d850051ce100ce69e93f408dde9987571e91af43d1642bfeede3d9c1",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 26,
+      "csv_nonempty_fields": 50,
+      "source_manifest_populated_cells": 71,
+      "formulas": []
+    },
+    {
+      "sheet": "Coverage_Audit",
+      "path": "master/data/Coverage_Audit.csv",
+      "sha256": "43f96a5e6650c34462531734697ef265f72cf6846b25f2ffa82f520fa31e0659",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 26,
+      "csv_nonempty_fields": 40,
+      "source_manifest_populated_cells": 61,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_Evidence",
+      "path": "master/data/Skill_Evidence.csv",
+      "sha256": "31e5f0dde907d17fc1f5c094c805c33cbce89ea03616957678c9f0b872e9373b",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 27,
+      "csv_nonempty_fields": 60,
+      "source_manifest_populated_cells": 81,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_Research_Audit",
+      "path": "master/data/Skill_Research_Audit.csv",
+      "sha256": "b1fe59cb63e0fe197705a5ccd96f54ea94a09b2c7cb808d8397b512e6614b8e6",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 27,
+      "csv_nonempty_fields": 33,
+      "source_manifest_populated_cells": 57,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_58_Research_Pass",
+      "path": "master/data/Skill_58_Research_Pass.csv",
+      "sha256": "f83939ba3c720dc4e7f804fa88a022cf42edb7c0d06c092418ad5d7ddecb6bd4",
+      "rows_including_header": 59,
+      "data_rows": 58,
+      "columns": 6,
+      "csv_nonempty_fields": 354,
+      "source_manifest_populated_cells": 354,
+      "formulas": []
+    },
+    {
+      "sheet": "User_Confirm_Queue",
+      "path": "master/data/User_Confirm_Queue.csv",
+      "sha256": "9d60d38f569fddf9d9cac38246f54db3c209ae9ca080315dd8dc2e115a9fe61c",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 6,
+      "csv_nonempty_fields": 20,
+      "source_manifest_populated_cells": 36,
+      "formulas": []
+    },
+    {
+      "sheet": "User_Confirmed_Skill_Facts",
+      "path": "master/data/User_Confirmed_Skill_Facts.csv",
+      "sha256": "379d622a17456997812b42027798a46408a335576045d825c0dd7df8761db867",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 5,
+      "csv_nonempty_fields": 35,
+      "source_manifest_populated_cells": 35,
+      "formulas": []
+    },
+    {
+      "sheet": "Monster_Master",
+      "path": "master/data/Monster_Master.csv",
+      "sha256": "5754716c95a61626eb3af0e07f1eb89a8b6870ee16f99629ed3f6837c16570cb",
+      "rows_including_header": 43,
+      "data_rows": 42,
+      "columns": 20,
+      "csv_nonempty_fields": 642,
+      "source_manifest_populated_cells": 860,
+      "formulas": []
+    },
+    {
+      "sheet": "Monster_Sources",
+      "path": "master/data/Monster_Sources.csv",
+      "sha256": "0f12cd30fc5740473f89d1ab137957dc830ebb07d13786646b7a5a3c52cf3696",
+      "rows_including_header": 13,
+      "data_rows": 12,
+      "columns": 20,
+      "csv_nonempty_fields": 65,
+      "source_manifest_populated_cells": 80,
+      "formulas": []
+    },
+    {
+      "sheet": "HuntingGround_Rules",
+      "path": "master/data/HuntingGround_Rules.csv",
+      "sha256": "1b8b0eda250dd5b03a9e38a82745aad8147bb1e3ad56a97545ad25de238d54bc",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 20,
+      "csv_nonempty_fields": 41,
+      "source_manifest_populated_cells": 56,
+      "formulas": []
+    },
+    {
+      "sheet": "Monster_Research_Audit",
+      "path": "master/data/Monster_Research_Audit.csv",
+      "sha256": "81b15c43759db2ca7701959292f86516c58b515345f861666ab1c9bfe5b49e7b",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 20,
+      "csv_nonempty_fields": 33,
+      "source_manifest_populated_cells": 50,
+      "formulas": []
+    },
+    {
+      "sheet": "Monster_Open_Queue",
+      "path": "master/data/Monster_Open_Queue.csv",
+      "sha256": "e18ae380488ac17457940863111a9fea14539218e0d91bf42231bd202d37cd81",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 20,
+      "csv_nonempty_fields": 30,
+      "source_manifest_populated_cells": 50,
+      "formulas": []
+    },
+    {
+      "sheet": "Horror_Room_Master",
+      "path": "master/data/Horror_Room_Master.csv",
+      "sha256": "f26a2e39854049a27a632a9de0c71d6bf5f06f338293086cba1a95f9d8fd8048",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 8,
+      "csv_nonempty_fields": 50,
+      "source_manifest_populated_cells": 53,
+      "formulas": []
+    },
+    {
+      "sheet": "Death_Village_Structure",
+      "path": "master/data/Death_Village_Structure.csv",
+      "sha256": "b79fc186642d0d25cd28de4ebc8990c8faabd9bbbd6300293da2100ab1fbb141",
+      "rows_including_header": 4,
+      "data_rows": 3,
+      "columns": 8,
+      "csv_nonempty_fields": 31,
+      "source_manifest_populated_cells": 32,
+      "formulas": []
+    },
+    {
+      "sheet": "Monster_User_Facts",
+      "path": "master/data/Monster_User_Facts.csv",
+      "sha256": "c2d2ee3cf9267a5ee2eb48bf7302a59b0a18cc840a1f125b983f880acde012dd",
+      "rows_including_header": 9,
+      "data_rows": 8,
+      "columns": 8,
+      "csv_nonempty_fields": 45,
+      "source_manifest_populated_cells": 48,
+      "formulas": []
+    },
+    {
+      "sheet": "Progression_Parameters",
+      "path": "master/data/Progression_Parameters.csv",
+      "sha256": "060e6e555dd52c08f7fb1a8f30b71ae5e0b0c02fed7b2452b701b7feea94ebdf",
+      "rows_including_header": 23,
+      "data_rows": 22,
+      "columns": 10,
+      "csv_nonempty_fields": 92,
+      "source_manifest_populated_cells": 98,
+      "formulas": []
+    },
+    {
+      "sheet": "Level_EXP_Curve",
+      "path": "master/data/Level_EXP_Curve.csv",
+      "sha256": "ab8f696cb0f1ba03d2142765dbee037be24021a03865a509c2c579662bae5f49",
+      "rows_including_header": 99,
+      "data_rows": 98,
+      "columns": 10,
+      "csv_nonempty_fields": 891,
+      "source_manifest_populated_cells": 892,
+      "formulas": []
+    },
+    {
+      "sheet": "Hunting_EXP_Balance",
+      "path": "master/data/Hunting_EXP_Balance.csv",
+      "sha256": "260a151accfe318e74e9ec27629601ed83f53a3142a9987a2cc502c24f28068e",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 14,
+      "csv_nonempty_fields": 94,
+      "source_manifest_populated_cells": 122,
+      "formulas": []
+    },
+    {
+      "sheet": "Horror_EXP_Model",
+      "path": "master/data/Horror_EXP_Model.csv",
+      "sha256": "36b45f59017a72a2c0edf04252b89fec2e9d84d341490c3fb29ef5ad54e95149",
+      "rows_including_header": 20,
+      "data_rows": 19,
+      "columns": 10,
+      "csv_nonempty_fields": 99,
+      "source_manifest_populated_cells": 136,
+      "formulas": []
+    },
+    {
+      "sheet": "HP_MP_Purchase_Curve",
+      "path": "master/data/HP_MP_Purchase_Curve.csv",
+      "sha256": "a48b44745a64a5835a143a8d7ad01a06ce5ffe47c333ab77bcfe7d40cb660719",
+      "rows_including_header": 50,
+      "data_rows": 49,
+      "columns": 10,
+      "csv_nonempty_fields": 369,
+      "source_manifest_populated_cells": 424,
+      "formulas": []
+    },
+    {
+      "sheet": "Promotion_Growth_Model",
+      "path": "master/data/Promotion_Growth_Model.csv",
+      "sha256": "87ffdeea71d0d79ec54fa070ffcca96f4f046a7212e0fd18e567a8d0e2e158bd",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 10,
+      "csv_nonempty_fields": 48,
+      "source_manifest_populated_cells": 62,
+      "formulas": []
+    },
+    {
+      "sheet": "Progression_Math_Audit",
+      "path": "master/data/Progression_Math_Audit.csv",
+      "sha256": "89559ceb1fa552123ab0cfa67b107d308da991a03f47e16039980ca0b72fe51b",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 10,
+      "csv_nonempty_fields": 33,
+      "source_manifest_populated_cells": 40,
+      "formulas": []
+    },
+    {
+      "sheet": "Time_Balance_Targets",
+      "path": "master/data/Time_Balance_Targets.csv",
+      "sha256": "5285dbdd325a3bf635a225bc2b79e283b434c434dc0705e8d43a69b0bb65d8e4",
+      "rows_including_header": 18,
+      "data_rows": 17,
+      "columns": 10,
+      "csv_nonempty_fields": 90,
+      "source_manifest_populated_cells": 95,
+      "formulas": []
+    },
+    {
+      "sheet": "Level_Time_Model",
+      "path": "master/data/Level_Time_Model.csv",
+      "sha256": "409a581da6288597931cfc83c8444482733eda6116066046a55e05446625fc47",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 10,
+      "csv_nonempty_fields": 67,
+      "source_manifest_populated_cells": 70,
+      "formulas": [
+        {
+          "cell": "E2",
+          "formula": "=C2/D2"
+        },
+        {
+          "cell": "G2",
+          "formula": "=E2/F2"
+        },
+        {
+          "cell": "H2",
+          "formula": "=3600/G2"
+        },
+        {
+          "cell": "E3",
+          "formula": "=C3/D3"
+        },
+        {
+          "cell": "G3",
+          "formula": "=E3/F3"
+        },
+        {
+          "cell": "H3",
+          "formula": "=3600/G3"
+        },
+        {
+          "cell": "E4",
+          "formula": "=C4/D4"
+        },
+        {
+          "cell": "G4",
+          "formula": "=E4/F4"
+        },
+        {
+          "cell": "H4",
+          "formula": "=3600/G4"
+        },
+        {
+          "cell": "E5",
+          "formula": "=C5/D5"
+        },
+        {
+          "cell": "G5",
+          "formula": "=E5/F5"
+        },
+        {
+          "cell": "H5",
+          "formula": "=3600/G5"
+        },
+        {
+          "cell": "E6",
+          "formula": "=C6/D6"
+        },
+        {
+          "cell": "G6",
+          "formula": "=E6/F6"
+        },
+        {
+          "cell": "H6",
+          "formula": "=3600/G6"
+        },
+        {
+          "cell": "E7",
+          "formula": "=C7/D7"
+        }
+      ]
+    },
+    {
+      "sheet": "Post99_Time_Model",
+      "path": "master/data/Post99_Time_Model.csv",
+      "sha256": "c438dc5eab959a525202408771e1d4f3bf5da24f5de88f3998a9de4ee60f2c9c",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 10,
+      "csv_nonempty_fields": 54,
+      "source_manifest_populated_cells": 64,
+      "formulas": [
+        {
+          "cell": "B4",
+          "formula": "=B2*B3"
+        },
+        {
+          "cell": "B6",
+          "formula": "=B4*B5"
+        },
+        {
+          "cell": "B8",
+          "formula": "=B6-B7"
+        },
+        {
+          "cell": "B9",
+          "formula": "=B6/B2"
+        },
+        {
+          "cell": "B10",
+          "formula": "=3600/B3"
+        }
+      ]
+    },
+    {
+      "sheet": "PostPromotion_Time_Model",
+      "path": "master/data/PostPromotion_Time_Model.csv",
+      "sha256": "2275c48098bbeaf3d38196d2ebe9f6d5479494f7848b442fd88429ecdbd646ad",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 10,
+      "csv_nonempty_fields": 56,
+      "source_manifest_populated_cells": 64,
+      "formulas": [
+        {
+          "cell": "B4",
+          "formula": "=B2*B3"
+        },
+        {
+          "cell": "B6",
+          "formula": "=B4*B5"
+        },
+        {
+          "cell": "B7",
+          "formula": "=B6/B2"
+        },
+        {
+          "cell": "B8",
+          "formula": "=3600/B3"
+        }
+      ]
+    },
+    {
+      "sheet": "Progression_Time_Audit",
+      "path": "master/data/Progression_Time_Audit.csv",
+      "sha256": "9df80e7e5dc4e8761c6302912941d7a4f5c7a7a9bfd2fa389e03eab8758c41f3",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 10,
+      "csv_nonempty_fields": 48,
+      "source_manifest_populated_cells": 55,
+      "formulas": [
+        {
+          "cell": "C6",
+          "formula": "=Post99_Time_Model!B6"
+        },
+        {
+          "cell": "C7",
+          "formula": "=Post99_Time_Model!B8"
+        },
+        {
+          "cell": "C8",
+          "formula": "=PostPromotion_Time_Model!B6"
+        }
+      ]
+    },
+    {
+      "sheet": "Class_99_Profile",
+      "path": "master/data/Class_99_Profile.csv",
+      "sha256": "e24967a2ad5afd4162a1d1ae9e411dcc8b41d2094621e89df857de79a414f1ba",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 20,
+      "csv_nonempty_fields": 66,
+      "source_manifest_populated_cells": 75,
+      "formulas": []
+    },
+    {
+      "sheet": "Class_STAT_Caps",
+      "path": "master/data/Class_STAT_Caps.csv",
+      "sha256": "fde9518f040ec63d9dc883aecdafdb184b7863e73c9c2eaa7d9b01b4d2681dad",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 20,
+      "csv_nonempty_fields": 54,
+      "source_manifest_populated_cells": 65,
+      "formulas": []
+    },
+    {
+      "sheet": "Class_Promotion_Path",
+      "path": "master/data/Class_Promotion_Path.csv",
+      "sha256": "e8cc25eefa2b18091192e926f9adbed4caf79151ae6c1f71f234768b6962393b",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 20,
+      "csv_nonempty_fields": 78,
+      "source_manifest_populated_cells": 85,
+      "formulas": [
+        {
+          "cell": "J2",
+          "formula": "=H2+I2"
+        },
+        {
+          "cell": "K2",
+          "formula": "=J2/15050000"
+        },
+        {
+          "cell": "J3",
+          "formula": "=H3+I3"
+        },
+        {
+          "cell": "K3",
+          "formula": "=J3/15050000"
+        },
+        {
+          "cell": "J4",
+          "formula": "=H4+I4"
+        },
+        {
+          "cell": "K4",
+          "formula": "=J4/15050000"
+        },
+        {
+          "cell": "J5",
+          "formula": "=H5+I5"
+        },
+        {
+          "cell": "K5",
+          "formula": "=J5/15050000"
+        },
+        {
+          "cell": "J6",
+          "formula": "=H6+I6"
+        },
+        {
+          "cell": "K6",
+          "formula": "=J6/15050000"
+        }
+      ]
+    },
+    {
+      "sheet": "Class_STAT_Time_Model",
+      "path": "master/data/Class_STAT_Time_Model.csv",
+      "sha256": "64eaa98d5f723332cec4f490171afd2cb3054b882471565e5cf8d9082921670e",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 20,
+      "csv_nonempty_fields": 120,
+      "source_manifest_populated_cells": 120,
+      "formulas": []
+    },
+    {
+      "sheet": "Ultimate_Resource_Scaling",
+      "path": "master/data/Ultimate_Resource_Scaling.csv",
+      "sha256": "01d80c1d1deece5c3ecb226120ea130096adac1144a59960f622e80850097a8d",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 20,
+      "csv_nonempty_fields": 48,
+      "source_manifest_populated_cells": 60,
+      "formulas": []
+    },
+    {
+      "sheet": "Class_Balance_Audit",
+      "path": "master/data/Class_Balance_Audit.csv",
+      "sha256": "5b92ac3ccd471d0a9d985159234962fef648c71d9625ce1131e6ac0a626e32b6",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 20,
+      "csv_nonempty_fields": 44,
+      "source_manifest_populated_cells": 60,
+      "formulas": []
+    },
+    {
+      "sheet": "Combat_Parameters",
+      "path": "master/data/Combat_Parameters.csv",
+      "sha256": "0830ef7de13949323ad99065df8293ecb25c7c79e71928c6ecd011cf024b66d5",
+      "rows_including_header": 21,
+      "data_rows": 20,
+      "columns": 12,
+      "csv_nonempty_fields": 114,
+      "source_manifest_populated_cells": 132,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_Damage_Model",
+      "path": "master/data/Skill_Damage_Model.csv",
+      "sha256": "08d47862a927af5a38e3f14bbea66df7f41c2f56e3acf20a357c622a4174f1c1",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 12,
+      "csv_nonempty_fields": 73,
+      "source_manifest_populated_cells": 82,
+      "formulas": []
+    },
+    {
+      "sheet": "Combat_TTK_Model",
+      "path": "master/data/Combat_TTK_Model.csv",
+      "sha256": "54e08882031350f6271d01e3074192b94b57b7ab348cef7870c56f684cefcd15",
+      "rows_including_header": 4,
+      "data_rows": 3,
+      "columns": 12,
+      "csv_nonempty_fields": 47,
+      "source_manifest_populated_cells": 48,
+      "formulas": [
+        {
+          "cell": "F2",
+          "formula": "=D2*E2"
+        },
+        {
+          "cell": "G2",
+          "formula": "=IF(B2=\"\",\"\",B2/F2)"
+        },
+        {
+          "cell": "H2",
+          "formula": "=IF(G2=\"\",\"\",G2/5)"
+        },
+        {
+          "cell": "F3",
+          "formula": "=D3*E3"
+        },
+        {
+          "cell": "G3",
+          "formula": "=IF(B3=\"\",\"\",B3/F3)"
+        },
+        {
+          "cell": "H3",
+          "formula": "=IF(G3=\"\",\"\",G3/5)"
+        },
+        {
+          "cell": "F4",
+          "formula": "=D4*E4"
+        },
+        {
+          "cell": "G4",
+          "formula": "=IF(B4=\"\",\"\",B4/F4)"
+        },
+        {
+          "cell": "H4",
+          "formula": "=IF(G4=\"\",\"\",G4/5)"
+        }
+      ]
+    },
+    {
+      "sheet": "Party_Hunting_Model",
+      "path": "master/data/Party_Hunting_Model.csv",
+      "sha256": "b3eb7615bd61acd4ab5430462d5e78c1191c4b072eaa144df055f9b25c6322e6",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 12,
+      "csv_nonempty_fields": 53,
+      "source_manifest_populated_cells": 60,
+      "formulas": []
+    },
+    {
+      "sheet": "Combat_Balance_Audit",
+      "path": "master/data/Combat_Balance_Audit.csv",
+      "sha256": "0b6e630e96de2aa953bf7a17178cd26897dffa5b4071781e1e08e72aa699fd56",
+      "rows_including_header": 13,
+      "data_rows": 12,
+      "columns": 12,
+      "csv_nonempty_fields": 52,
+      "source_manifest_populated_cells": 60,
+      "formulas": []
+    },
+    {
+      "sheet": "Skill_Formula_Research",
+      "path": "master/data/Skill_Formula_Research.csv",
+      "sha256": "ab8caa22535d03fda2891596b3011b89cd4a39bd6a43f30303581984f75af7c8",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 12,
+      "csv_nonempty_fields": 46,
+      "source_manifest_populated_cells": 54,
+      "formulas": []
+    },
+    {
+      "sheet": "AUTO_Class_Policies",
+      "path": "master/data/AUTO_Class_Policies.csv",
+      "sha256": "b16bb4c46bfc5e6de263e8ba38ba6776d00d1065d94bc29af052d21b1ec84c6d",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 12,
+      "csv_nonempty_fields": 54,
+      "source_manifest_populated_cells": 57,
+      "formulas": []
+    },
+    {
+      "sheet": "Class_Rotation_Model",
+      "path": "master/data/Class_Rotation_Model.csv",
+      "sha256": "3eac5374621dc31b6296979a39df70c4500da39d3e5ad378faee5f52c8fafe37",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 12,
+      "csv_nonempty_fields": 68,
+      "source_manifest_populated_cells": 72,
+      "formulas": []
+    },
+    {
+      "sheet": "Party_Rotation_Timeline",
+      "path": "master/data/Party_Rotation_Timeline.csv",
+      "sha256": "2b8e38186b2a7f8e417c4a85a3c53e10d49dceef8b650450066db239ac2d60bf",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 12,
+      "csv_nonempty_fields": 77,
+      "source_manifest_populated_cells": 82,
+      "formulas": []
+    },
+    {
+      "sheet": "Class_Parity_Model",
+      "path": "master/data/Class_Parity_Model.csv",
+      "sha256": "a29e9303b4529238e34c5ab0c601f3e4154f85be66d3a3fa7348903721cf913d",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 12,
+      "csv_nonempty_fields": 60,
+      "source_manifest_populated_cells": 62,
+      "formulas": []
+    },
+    {
+      "sheet": "AUTO_Combat_Audit",
+      "path": "master/data/AUTO_Combat_Audit.csv",
+      "sha256": "3db511b7679d11274531b985b4d77312927101501d376b5f9c953a97b7bafb5b",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 12,
+      "csv_nonempty_fields": 44,
+      "source_manifest_populated_cells": 52,
+      "formulas": []
+    },
+    {
+      "sheet": "Content_Flow_Master",
+      "path": "master/data/Content_Flow_Master.csv",
+      "sha256": "7a66f905859af8fe05989948d1c827f19cea8ae2c5286164518682d62355bc2e",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 12,
+      "csv_nonempty_fields": 126,
+      "source_manifest_populated_cells": 132,
+      "formulas": []
+    },
+    {
+      "sheet": "Map_Instance_Master",
+      "path": "master/data/Map_Instance_Master.csv",
+      "sha256": "031f61b829d835ad24dd04dd6de686696bae07548d9650716ccd0bbfdc81dcf4",
+      "rows_including_header": 12,
+      "data_rows": 11,
+      "columns": 12,
+      "csv_nonempty_fields": 120,
+      "source_manifest_populated_cells": 122,
+      "formulas": []
+    },
+    {
+      "sheet": "Quest_Runtime_Master",
+      "path": "master/data/Quest_Runtime_Master.csv",
+      "sha256": "dc5ef29fbf9a2ca60426ac61f2c32123d2720a014ca9d3fe0f7a8607b3d4521d",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 12,
+      "csv_nonempty_fields": 116,
+      "source_manifest_populated_cells": 120,
+      "formulas": []
+    },
+    {
+      "sheet": "Encounter_Master",
+      "path": "master/data/Encounter_Master.csv",
+      "sha256": "f8e7247e7da97fa0725348ff84ef85b5ead37823059518ccacb1ac75caaffba0",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 12,
+      "csv_nonempty_fields": 77,
+      "source_manifest_populated_cells": 78,
+      "formulas": []
+    },
+    {
+      "sheet": "NPC_Runtime_Master",
+      "path": "master/data/NPC_Runtime_Master.csv",
+      "sha256": "b72c81058893ad2f14dc287a0b32ecc0446db4966c4084912ae7404c58479299",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 12,
+      "csv_nonempty_fields": 79,
+      "source_manifest_populated_cells": 82,
+      "formulas": []
+    },
+    {
+      "sheet": "Content_Gates",
+      "path": "master/data/Content_Gates.csv",
+      "sha256": "49f9a6b21092fd07a7e06369011782f471572e38895e8c407e1ca5819904d722",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 12,
+      "csv_nonempty_fields": 49,
+      "source_manifest_populated_cells": 54,
+      "formulas": []
+    },
+    {
+      "sheet": "Vertical_Slice_Playthrough",
+      "path": "master/data/Vertical_Slice_Playthrough.csv",
+      "sha256": "6556a612e7fc608625d44d77097832481fffcfc67ec07318d8e035f9244309b8",
+      "rows_including_header": 16,
+      "data_rows": 15,
+      "columns": 12,
+      "csv_nonempty_fields": 112,
+      "source_manifest_populated_cells": 117,
+      "formulas": []
+    },
+    {
+      "sheet": "Content_Completion_Audit",
+      "path": "master/data/Content_Completion_Audit.csv",
+      "sha256": "70349a0dec1c228a1e16cb00aa3832dd5c9d9ac45543d11c525a6842d6f6a8cf",
+      "rows_including_header": 9,
+      "data_rows": 8,
+      "columns": 12,
+      "csv_nonempty_fields": 63,
+      "source_manifest_populated_cells": 68,
+      "formulas": []
+    },
+    {
+      "sheet": "Asset_Master",
+      "path": "master/data/Asset_Master.csv",
+      "sha256": "91b6d3e99d65086d51fd44dceff50c5523692559390c202fd85adff47983d9c1",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 11,
+      "csv_nonempty_fields": 105,
+      "source_manifest_populated_cells": 110,
+      "formulas": []
+    },
+    {
+      "sheet": "Asset_Character_Mapping",
+      "path": "master/data/Asset_Character_Mapping.csv",
+      "sha256": "c3c99ed088fd9249317f839661a97f3666a66ac50b590767315682d454c8a3a1",
+      "rows_including_header": 6,
+      "data_rows": 5,
+      "columns": 11,
+      "csv_nonempty_fields": 48,
+      "source_manifest_populated_cells": 51,
+      "formulas": []
+    },
+    {
+      "sheet": "Asset_Map_Mapping",
+      "path": "master/data/Asset_Map_Mapping.csv",
+      "sha256": "e5746688429307ab2d33c62613d71049c46230c81ce94f39be59f29ca5f4faba",
+      "rows_including_header": 11,
+      "data_rows": 10,
+      "columns": 11,
+      "csv_nonempty_fields": 82,
+      "source_manifest_populated_cells": 91,
+      "formulas": []
+    },
+    {
+      "sheet": "Asset_Monster_Mapping",
+      "path": "master/data/Asset_Monster_Mapping.csv",
+      "sha256": "956c34a0cff9e35d07844dc6c04ca78631a4764b0ea8e3a6595203a67a57cf88",
+      "rows_including_header": 43,
+      "data_rows": 42,
+      "columns": 11,
+      "csv_nonempty_fields": 332,
+      "source_manifest_populated_cells": 347,
+      "formulas": []
+    },
+    {
+      "sheet": "Asset_UI_Mapping",
+      "path": "master/data/Asset_UI_Mapping.csv",
+      "sha256": "8a4c8133c8b3289680f273aa09b5dcb6767f47798e2aac4815f1beffa4c17f78",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 11,
+      "csv_nonempty_fields": 42,
+      "source_manifest_populated_cells": 47,
+      "formulas": []
+    },
+    {
+      "sheet": "Asset_Source_Catalog",
+      "path": "master/data/Asset_Source_Catalog.csv",
+      "sha256": "38298082ce043227576f53c30ec664ff1619124e560874827ac9b684ad3d4ff8",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 11,
+      "csv_nonempty_fields": 56,
+      "source_manifest_populated_cells": 60,
+      "formulas": []
+    },
+    {
+      "sheet": "Asset_Gap_Audit",
+      "path": "master/data/Asset_Gap_Audit.csv",
+      "sha256": "cc11b92d7d31bcbde208d97c26b42582d62c7f7a3486c8035af4ecc149f55404",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 11,
+      "csv_nonempty_fields": 70,
+      "source_manifest_populated_cells": 74,
+      "formulas": []
+    },
+    {
+      "sheet": "Gameplay_Screen_Master",
+      "path": "master/data/Gameplay_Screen_Master.csv",
+      "sha256": "ef807317d4fe7c54fb3a3840a9bf5ebb044e4fcde1e7098e6bb3e2597d308727",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 10,
+      "csv_nonempty_fields": 100,
+      "source_manifest_populated_cells": 100,
+      "formulas": []
+    },
+    {
+      "sheet": "Screen_To_Runtime_Mapping",
+      "path": "master/data/Screen_To_Runtime_Mapping.csv",
+      "sha256": "c3ad177dd3e097b8c71035c66876c6661c9e7e94c412a09ee8802622ec14b4df",
+      "rows_including_header": 10,
+      "data_rows": 9,
+      "columns": 10,
+      "csv_nonempty_fields": 70,
+      "source_manifest_populated_cells": 73,
+      "formulas": []
+    },
+    {
+      "sheet": "Legacy_Image_Endpoints",
+      "path": "master/data/Legacy_Image_Endpoints.csv",
+      "sha256": "bd738586f0b1ca3f52f61e3359caed609a88b76bc12a15d21924ee93d0e0ca04",
+      "rows_including_header": 13,
+      "data_rows": 12,
+      "columns": 10,
+      "csv_nonempty_fields": 91,
+      "source_manifest_populated_cells": 94,
+      "formulas": []
+    },
+    {
+      "sheet": "Screen_Gap_Audit",
+      "path": "master/data/Screen_Gap_Audit.csv",
+      "sha256": "df287cbdcf7cf30bbd2faafaec7224ce010645f9372895ce70fede05bb4cfcd2",
+      "rows_including_header": 9,
+      "data_rows": 8,
+      "columns": 10,
+      "csv_nonempty_fields": 63,
+      "source_manifest_populated_cells": 66,
+      "formulas": []
+    },
+    {
+      "sheet": "Visual_Manifest",
+      "path": "master/data/Visual_Manifest.csv",
+      "sha256": "03fdee431a505357ded47c691b9089184ef6548dbc88d8ac3098d9669c6aee51",
+      "rows_including_header": 9,
+      "data_rows": 8,
+      "columns": 8,
+      "csv_nonempty_fields": 72,
+      "source_manifest_populated_cells": 72,
+      "formulas": []
+    },
+    {
+      "sheet": "Scene_Object_Mapping",
+      "path": "master/data/Scene_Object_Mapping.csv",
+      "sha256": "f35a8deecb013550c5b306e381571aee8b4e0d3c5f6591f9acb9c2fe86928cca",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 7,
+      "csv_nonempty_fields": 56,
+      "source_manifest_populated_cells": 56,
+      "formulas": []
+    },
+    {
+      "sheet": "Monster_Visual_Evidence",
+      "path": "master/data/Monster_Visual_Evidence.csv",
+      "sha256": "489dfdcdb3e646d1eb43b53efb96e1ee91c88fc34427ad44ddab43eea57ad270",
+      "rows_including_header": 42,
+      "data_rows": 41,
+      "columns": 8,
+      "csv_nonempty_fields": 324,
+      "source_manifest_populated_cells": 336,
+      "formulas": []
+    },
+    {
+      "sheet": "Runtime_Visual_Rules",
+      "path": "master/data/Runtime_Visual_Rules.csv",
+      "sha256": "804f8b3f37b0ae153f77e4aca26b95b8b38775373c2b3c436aa6feb07a08ec10",
+      "rows_including_header": 7,
+      "data_rows": 6,
+      "columns": 4,
+      "csv_nonempty_fields": 28,
+      "source_manifest_populated_cells": 28,
+      "formulas": []
+    },
+    {
+      "sheet": "Visual_Implementation_Audit",
+      "path": "master/data/Visual_Implementation_Audit.csv",
+      "sha256": "b83c8a35d9b2b35972f0d3ac7888d119cf9983645aae2b93183da986792792aa",
+      "rows_including_header": 8,
+      "data_rows": 7,
+      "columns": 7,
+      "csv_nonempty_fields": 56,
+      "source_manifest_populated_cells": 56,
+      "formulas": []
+    }
+  ]
+}

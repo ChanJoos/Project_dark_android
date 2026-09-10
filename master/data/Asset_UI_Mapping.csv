@@ -1,0 +1,7 @@
+﻿UI_ID,Canonical_UI,Source,Asset_ID,Mobile Treatment,Status,,,,,
+HUD_HPMP,체력/마력바,공식 기본화면,UI_BASIC,"원본 정보구조 유지, 터치 방해 없게 상단 배치",MAPPED,,,,,
+HUD_EXP,경험치/어빌리티 경험치,공식 기본화면,UI_BASIC,EXP 반드시 유지,MAPPED,,,,,
+HUD_MINIMAP,미니맵,공식 기본화면,UI_BASIC,우상단 터치 확대,MAPPED,,,,,
+HUD_SLOTS,통합슬롯,공식 기본화면,UI_BASIC,혼합 아이템/스킬 슬롯 유지,MAPPED,,,,,
+WORLD_MAP,월드맵,공식 가이드,UI_WORLDMAP_1/UI_WORLDMAP_2,모바일 전체화면 overlay,MAPPED,,,,,
+PARTY_UI,그룹 UI,공식 가이드,UI_GROUP,파티 HP/상태 상시표시,MAPPED,,,,,

@@ -1,0 +1,8 @@
+﻿Source_ID,Title,URL,Asset_Count/Type,Authority,Fetch_Result,Notes,,,,
+SRC_MAP_OLD,구 마을맵 지도 동서북 밀레스 구아벨 구뤼케시온 구루어스 구마인,https://lod.nexon.com/Community/screenshot/136184?Category2=2,9 images,Nexon-hosted community,LINKS_EXTRACTED,oidFile IDs extracted; binary fetch endpoint cache-misses in current environment,,,,
+SRC_POTE,나무속에 캐릭터 얼굴이! (포테의숲),https://lod.nexon.com/Community/screenshot/121538?Category2=2,1 BMP,Nexon-hosted community,DIRECT_URL_EXTRACTED,storage.nexon.com direct BMP URL,,,,
+SRC_HORROR,호러타인방 강제침입방법,https://lod.nexon.com/Community/screenshot/134341?Category2=2,1 image,Nexon-hosted community,PAGE_FOUND,binary URL not yet extracted,,,,
+SRC_DEATH,차량통제 / 죽음의마을,https://lod.nexon.com/News/notice/129289,2+ images,Nexon-hosted,PAGE_FOUND,image links present; legacy download endpoint,,,,
+SRC_MIL_GRAVE,밀레스 마을 지하묘지 앞,https://lod.nexon.com/Community/screenshot/137461?Category2=2&Page=27,1 PNG,Nexon-hosted community,DIRECT_URL_EXTRACTED,storage redirect URL identified,,,,
+SRC_CHAR,게임 소개 - 5직업,https://lod.nexon.com/info/intro,5 JPG,Official,DIRECT_URLS_EXTRACTED,gi_c1.jpg ~ gi_c5.jpg,,,,
+SRC_UI,가이드 - 기본 화면,https://lod.nexon.com/info/guide/82285,4+ PNG,Official,DIRECT_URLS_EXTRACTED,basic/worldmap/group UI image URLs identified,,,,

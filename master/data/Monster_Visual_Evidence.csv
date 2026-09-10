@@ -1,0 +1,42 @@
+﻿Zone,Monster,Runtime_Asset_ID,Visual_Source,Textual_Identification,Visual_Identification,Allowed_Runtime_Use,Status
+죽마,좀비,mon_death_zombie,https://lod.nexon.com/News/notice/119284,죽음의마을 1존 좀비 10마리,NOT_INDIVIDUALLY_CROPPED,REFERENCE_ONLY,CONTEXT_VERIFIED
+죽마,니크르,mon_death_nikr,https://lod.nexon.com/News/notice/119284,4존집안 니크로 10마리,NOT_INDIVIDUALLY_CROPPED,REFERENCE_ONLY,CONTEXT_VERIFIED
+죽마,머미,mon_death_mummy,https://lod.nexon.com/News/notice/119284,죽던 6층 머미 10마리,NOT_INDIVIDUALLY_CROPPED,REFERENCE_ONLY,CONTEXT_VERIFIED
+포테,레드팜팻,mon_포테_레드팜팻,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,그린팜팻,mon_포테_그린팜팻,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,퍼플팜팻,mon_포테_퍼플팜팻,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,실버팜팻,mon_포테_실버팜팻,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,트렌트,mon_포테_트렌트,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,앤트라이온,mon_포테_앤트라이온,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,놀,mon_포테_놀,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,울프라이더,mon_포테_울프라이더,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,라이칸스로프,mon_포테_라이칸스로프,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,앤트자이언트,mon_포테_앤트자이언트,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,은빛늑대,mon_포테_은빛늑대,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,강력한놀,mon_포테_강력한놀,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,강력한울프라이더,mon_포테_강력한울프라이더,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,강력한트렌트,mon_포테_강력한트렌트,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,포테의정령,mon_포테_포테의정령,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+포테,자이언트맨티스,mon_포테_자이언트맨티스,https://lod.nexon.com/Community/screenshot/121538?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+아벨,터틀,mon_아벨_터틀,,canonical roster,PENDING,NONE,PENDING_CROP
+아벨,그래브,mon_아벨_그래브,,canonical roster,PENDING,NONE,PENDING_CROP
+아벨,퐁퐁이,mon_아벨_퐁퐁이,,canonical roster,PENDING,NONE,PENDING_CROP
+아벨,크랩,mon_아벨_크랩,,canonical roster,PENDING,NONE,PENDING_CROP
+아벨,해안의광폭자,mon_아벨_해안의광폭자,,canonical roster,PENDING,NONE,PENDING_CROP
+아벨,킹아크퍼스,mon_아벨_킹아크퍼스,,canonical roster,PENDING,NONE,PENDING_CROP
+뤼케,블루하콘,mon_뤼케_블루하콘,,canonical roster,PENDING,NONE,PENDING_CROP
+뤼케,레드하콘,mon_뤼케_레드하콘,,canonical roster,PENDING,NONE,PENDING_CROP
+뤼케,카카포,mon_뤼케_카카포,,canonical roster,PENDING,NONE,PENDING_CROP
+뤼케,포이즌카카포,mon_뤼케_포이즌카카포,,canonical roster,PENDING,NONE,PENDING_CROP
+뤼케,해안의폭군,mon_뤼케_해안의폭군,,canonical roster,PENDING,NONE,PENDING_CROP
+뤼케,에리얼,mon_뤼케_에리얼,,canonical roster,PENDING,NONE,PENDING_CROP
+호러,남자전사,mon_호러_남자전사,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,여자전사,mon_호러_여자전사,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,남자도적,mon_호러_남자도적,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,여자도적,mon_호러_여자도적,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,남자마법사,mon_호러_남자마법사,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,여자마법사,mon_호러_여자마법사,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,남자성직자,mon_호러_남자성직자,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,여자성직자,mon_호러_여자성직자,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,남자무도가,mon_호러_남자무도가,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP
+호러,여자무도가,mon_호러_여자무도가,https://lod.nexon.com/Community/screenshot/134341?Category2=2,canonical roster,PENDING,NONE,PENDING_CROP

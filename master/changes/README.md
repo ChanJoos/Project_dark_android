@@ -1,0 +1,1 @@
+Master는 지속 개선합니다. 각 제안 JSON에 change_id, status, source_sheet, source_cell_or_id, before, after, reason, evidence, source_url, source_version, affected_runtime, validation을 기록합니다. raw snapshot을 덮어쓰지 않고 director가 ACCEPTED로 통합합니다. 현재 accepted change 없음.

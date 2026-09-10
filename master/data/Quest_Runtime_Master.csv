@@ -1,0 +1,10 @@
+﻿Quest_ID,Quest_Name,Start_NPC,Start_Map,Level,Prerequisite,Steps_Runtime,Reward,Project_Adjustment,Evidence,Source_URL,Status
+Q_MIL_01,밀레스 지하묘지의 언데드,안,"밀레스 (55,12)",40-58,없음,"안→베인(102,27)→해골지네/언데드의증거→베인→암흑소환석 타격→베인",EXP 150만/금전30만/신망5,레벨곡선 충돌 시 EXP는 상한 처리,V,https://lod.nexon.com/community/game/4388?SearchBoard=1,READY
+Q_MIL_02,암흑 소환석 파괴,안/베인,밀레스,45-60,Q_MIL_01,지하묘지 소환석 후속 파괴 체인,레벨업 1 상당,v3.6 곡선의 해당 레벨 필요EXP로 환산,V+B,https://lod.nexon.com/community/game/6959?SearchBoard=1,READY
+Q_MIL_03,밀레스 지하묘지의 보물상자,안,"밀레스 (55,12)",45-60,Q_MIL_01,만능열쇠→10~12층 상자→역사서→정교한열쇠→13~17층 튼튼한상자→왕족→칸타나,EXP 181.5만/금전50만/신망5,상자 일반 보상은 원작 범위 내 테이블화,V,https://lod.nexon.com/community/game/4381?SearchBoard=1,READY
+Q_POT_01,팜팻의 변화,시약사/데포이/사리,그린혼→노비스→피에트,초반,식당 아줌마 부탁,팜팻정수10→서신→퍼플3+실버3→루레카→울프5+앤트자이언트5→포테의정령 뿔,EXP45만/엑스쿠라눔3,런칭 월드가 5도시이므로 그린혼/노비스 선행은 프롤로그 NPC 대화로 축약,V+ADAPTED,https://lod.nexon.com/community/game/4036?SearchBoard=1,READY
+Q_POT_02,피에트 정수 정화,멤피스,"피에트 (83,42)",30-40,없음,"강력몹→포테정수5→정제→피에트정수10→정제→제단(17,93)→귀환",레벨업1/25만/신망2,피에트던전 미런칭 구간 재료는 포테 강력몹으로 통합 드랍,V+ADAPTED,https://lod.nexon.com/Community/game/4347?Category2=1&SearchBoard=1,READY
+Q_ABE_01,아벨해안의 무법자 - 킹아크퍼스,아벨 퀘스트 NPC,아벨,3서클,없음,퐁퐁이조각2+터틀껍질2+게껍질2→대지의인장→킹아크퍼스,대지의인장/진행보상,"정확 NPC/세부보상은 OPEN, 전투루프는 구현",V+B,,READY_WITH_OPEN
+Q_LYK_01,뤼케시온 해안의 에리얼,뤼케 퀘스트 NPC,뤼케시온,4서클,5직업 파티,블루하콘무기2+레드하콘다리2+카카포껍질2+포이즌카카포껍질2→3-D→에리얼,파파야방패,킹아크 완료자는 재료 스킵,V+B,,READY
+Q_HOR_01,호러캐슬 승급 준비,승급 안내 NPC,마인,99,Lv99,호러 반복→직업별 체마 최소→필수스킬 마스터→EXP2.5억 보유,승급 자격,퀘스트라기보다 장기 성장 트래커,U+V+B,,READY
+Q_PRO_01,1차 승급,승급 판정 NPC,마인,99,Q_HOR_01,조건 자동검증→즉시 승급,1차 승급,승급길 삭제; traversal 없음,ADAPTED,,READY

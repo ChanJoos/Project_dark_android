@@ -1,0 +1,6 @@
+﻿Player_Job,Party_Mode,Horror_Target_EXP_h,Horror_Target_KPH,Promotion_Hours,Death_Target_EXP_h,STATMAX_Hours,Allowed_Deviation,Compensation Mechanism,Evidence,,
+전사,5직업 역할 완성 파티,15050000,86,35,24000000,120,±5%,개인 DPS 보정이 아니라 AI 동료 역할/세팅/uptime으로 parity 유지,B,,
+도적,5직업 역할 완성 파티,15050000,86,35,24000000,120,±5%,개인 DPS 보정이 아니라 AI 동료 역할/세팅/uptime으로 parity 유지,B,,
+마법사,5직업 역할 완성 파티,15050000,86,35,24000000,120,±5%,개인 DPS 보정이 아니라 AI 동료 역할/세팅/uptime으로 parity 유지,B,,
+성직자,5직업 역할 완성 파티,15050000,86,35,24000000,120,±5%,개인 DPS 보정이 아니라 AI 동료 역할/세팅/uptime으로 parity 유지,B,,
+무도가,5직업 역할 완성 파티,15050000,86,35,24000000,120,±5%,개인 DPS 보정이 아니라 AI 동료 역할/세팅/uptime으로 parity 유지,B,,

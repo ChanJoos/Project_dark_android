@@ -1,0 +1,43 @@
+﻿Monster_ID,몬스터명,지역,세부구역/등장,Tier,Lv,HP,EXP,공격속성,방어속성,선공여부,이동/공격특성,사용마법/특수행동,주요드롭/퀘스트재료,Boss/Event,Runtime_Inclusion,Evidence,Source_URL,검증상태,비고
+POTE_RED,레드팜팻,포테의숲,1~2존,2C,,,,,,비선공/혼재,굴러서 근접공격,렌토 계열 저주,팜팻 계열 퀘스트 정수,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_GREEN,그린팜팻,포테의숲,1~2존,2C,,,,,,비선공/혼재,굴러서 근접공격,렌토 계열 저주,팜팻 계열 퀘스트 정수,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_PURPLE,퍼플팜팻,포테의숲,1~2존,2C,,,,,,비선공/혼재,굴러서 근접공격,렌토 계열 저주,퍼플팜팻의정수,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_SILVER,실버팜팻,포테의숲,1~2존,2C,,,,,,선공,추적+근접,렌토/마레노 계열 자료,실버팜팻의정수,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_TREANT,트렌트,포테의숲,일반존,2C,,,,,,주로 비선공,느린 이동,일부 개체 선공 자료,,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_ANTLION,앤트라이온,포테의숲,일반존,2C,,,,,,혼재,빠른 이동/공격,마법 사용 자료,,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_GNOLL,놀,포테의숲,일반존,2C,,,,,,혼재,근접,,,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_WOLFRIDER,울프라이더,포테의숲,3~4존,2C,,,,,,혼재,근접,,퀘스트 처치대상,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_LYCAN,라이칸스로프,포테의숲,일반존,2C,,,,,,혼재,근접,,,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_ANTGIANT,앤트자이언트,포테의숲,3~4존,2C,,,,,,혼재,빠른 이동/공격,마법 사용 자료,앤트자이언트의 날개,N,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_SILVERWOLF,은빛늑대,포테의숲,일반존,2C,,,,,,혼재,근접,,은빛늑대의 갈기털,N,INCLUDE,O/V,https://lod.nexon.com/news/update/5095,BEHAVIOR_PARTIAL,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_STRONG_GNOLL,강력한놀,포테의숲,일반존,2C,,,,,,,,,,N,INCLUDE,O/V,https://lod.nexon.com/news/update/5095,ROSTER_VERIFIED,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_STRONG_WOLFRIDER,강력한울프라이더,포테의숲,일반존,2C,,,,,,,,,,N,INCLUDE,O/V,https://lod.nexon.com/news/update/5095,ROSTER_VERIFIED,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_STRONG_TREANT,강력한트렌트,포테의숲,일반존,2C,,,,,,,,,,N,INCLUDE,O/V,https://lod.nexon.com/news/update/5095,ROSTER_VERIFIED,정확 HP/EXP/속성은 추가 센스몬스터 원자료 필요.
+POTE_SPIRIT,포테의정령,포테의숲,마지막 존,2C,48,29201,308950,랜덤 4속성,랜덤 4속성,,사슴형 보스급,,세줄금반지/금전더미/강력한연필/포테정령의뿔,Y,INCLUDE,V,https://lod.nexon.com/community/game/3472?SearchBoard=1,STAT_VERIFIED,센스몬스터 실측 게시물. EXP는 그룹/레벨 조건에 따라 체감 획득량이 달라질 수 있음.
+POTE_MANTIS,자이언트맨티스,포테의숲,오솔길/결계 이후 보스,2C,,,,,,,"고HP 보스, 파티 포위 공략",3써클급 마법/베노미/코마(즉사·코마 계열) 자료,보스 보상/세줄금반지·Gold 이벤트,Y,INCLUDE,V/FAN,https://www.ilbe.com/view/1149305921,BEHAVIOR_VERIFIED,정확 HP/EXP/속성 수치는 추가 원자료 필요.
+ABEL_TURTLE,터틀,아벨해안던전,일반존,3C,,,,,,,,,터틀껍질,N,INCLUDE,V,https://lod.nexon.com/community/game/3452?SearchBoard=1,ROSTER_VERIFIED,킹아크퍼스 이벤트 재료 출처로 교차 확인. 정확 전투수치 추가 필요.
+ABEL_GRAB,그래브,아벨해안던전,일반존,3C,,,,,,,,,,N,INCLUDE,V,https://lod.nexon.com/community/game/3452?SearchBoard=1,ROSTER_VERIFIED,킹아크퍼스 이벤트 재료 출처로 교차 확인. 정확 전투수치 추가 필요.
+ABEL_PONG,퐁퐁이,아벨해안던전,일반존,3C,,,,,,,,,퐁퐁이조각,N,INCLUDE,V,https://lod.nexon.com/community/game/3452?SearchBoard=1,ROSTER_VERIFIED,킹아크퍼스 이벤트 재료 출처로 교차 확인. 정확 전투수치 추가 필요.
+ABEL_CRAB,크랩,아벨해안던전,일반존,3C,,,,,,,,,게껍질,N,INCLUDE,V,https://lod.nexon.com/community/game/3452?SearchBoard=1,ROSTER_VERIFIED,킹아크퍼스 이벤트 재료 출처로 교차 확인. 정확 전투수치 추가 필요.
+ABEL_BERSERKER,해안의광폭자,아벨해안던전,마지막 존,3C,88,61982,606252,랜덤 4속성,랜덤 4속성,,보스급,,실버아쿠아링,Y,INCLUDE,V,https://lod.nexon.com/community/game/3472?SearchBoard=1,STAT_VERIFIED,센스몬스터 실측 게시물.
+ABEL_KINGARK,킹아크퍼스,아벨해안던전,이벤트 보스방,3C,,,,生 공격 고정 자료,,,HP 일정 이하 시 도주/회복+마법공격 자료,마법공격,퀘스트 보상/대지의인장·해저의펜던트 연계,Y,INCLUDE,V,https://lod.nexon.com/board/1493172227/1987,BEHAVIOR_VERIFIED,속성 '생공' 구자료. 정확 HP/EXP는 추가 확인 필요.
+LYK_BLUE_HACON,블루하콘,뤼케시온해안던전,일반존,4C,,,,,,,,,블루하콘의 무기,N,INCLUDE,V,https://lod.nexon.com/board/1493172227/791,ROSTER_VERIFIED,에리얼 퀘스트 재료 몬스터. 정확 전투수치 추가 필요.
+LYK_RED_HACON,레드하콘,뤼케시온해안던전,일반존,4C,,,,,,,,,레드하콘의 다리,N,INCLUDE,V,https://lod.nexon.com/board/1493172227/791,ROSTER_VERIFIED,에리얼 퀘스트 재료 몬스터. 정확 전투수치 추가 필요.
+LYK_KAKAPO,카카포,뤼케시온해안던전,일반존,4C,,,,,,,,,카카포껍질,N,INCLUDE,V,https://lod.nexon.com/board/1493172227/791,ROSTER_VERIFIED,에리얼 퀘스트 재료 몬스터. 정확 전투수치 추가 필요.
+LYK_POISON_KAKAPO,포이즌카카포,뤼케시온해안던전,일반존,4C,,,,,,,,,포이즌카카포껍질,N,INCLUDE,V,https://lod.nexon.com/board/1493172227/791,ROSTER_VERIFIED,에리얼 퀘스트 재료 몬스터. 정확 전투수치 추가 필요.
+LYK_TYRANT,해안의폭군,뤼케시온해안던전,마지막 존,4C,98,123398,780575,랜덤 4속성,랜덤 4속성,,보스급,,,Y,INCLUDE,V,https://lod.nexon.com/community/game/3472?SearchBoard=1,STAT_VERIFIED,센스몬스터 실측 게시물.
+LYK_ARIEL,에리얼,뤼케시온해안던전,3-D 이후 비밀의방,4C,,,,,,,보스+소환몹 동반,소환몹 존재,파파야방패,Y,INCLUDE,V,https://lod.nexon.com/community/game/740?SearchBoard=1,BEHAVIOR_VERIFIED,5직업 그룹 이벤트. 킹아크 완료자는 재료 면제 자료.
+HORROR_WARRIOR_M,남자전사,호러캐슬,랜덤 테마방,5C,,120000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_WARRIOR_F,여자전사,호러캐슬,랜덤 테마방,5C,,125000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_ROGUE_M,남자도적,호러캐슬,랜덤 테마방,5C,,85000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_ROGUE_F,여자도적,호러캐슬,랜덤 테마방,5C,,90000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_WIZARD_M,남자마법사,호러캐슬,랜덤 테마방,5C,,100000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_WIZARD_F,여자마법사,호러캐슬,랜덤 테마방,5C,,105000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_PRIEST_M,남자성직자,호러캐슬,랜덤 테마방,5C,,110000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_PRIEST_F,여자성직자,호러캐슬,랜덤 테마방,5C,,115000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_MONK_M,남자무도가,호러캐슬,랜덤 테마방,5C,,80000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+HORROR_MONK_F,여자무도가,호러캐슬,랜덤 테마방,5C,,140000,,랜덤 4속성,랜덤 4속성,선공,방마다 10종 중 랜덤 스폰. 방 전멸 시 다음 랜덤 테마방으로 진행.,직업형 행동은 후속 AI 상세화,EXP/Gold/드롭 후속 수집,N,INCLUDE,U+B,,USER_CONFIRMED_BALANCED,"사용자 확인: 10종, HP 약8만~14만, 속성 랜덤. 개체별 HP는 범위 안에서 [B] 초기 분배."
+DEATH_FIELD_ZOMBIE,좀비,죽음의마을,필드,1차승급,,,,미확정,미확정,혼재,필드의 대표적인 약한 좀비형 몬스터.,기본 근접,몬스터를 퇴치하라1,N,INCLUDE,U+V,https://lod.nexon.com/community/game/4509?SearchBoard=1,ROSTER_VERIFIED,넥슨 현자 퀘스트에서 죽음의마을1의 정확한 이름 '좀비' 10마리 처치 확인.
+DEATH_UNDER_NIKR,니크르,죽음의마을,집안(집털),1차승급,,200000,,랜덤,랜덤,선공,단체 몰이 사냥 대상.,4방 공격 계열 자료 존재,몬스터를 퇴치하라2,N,INCLUDE,U+V+B,https://lod.nexon.com/community/game/4509?SearchBoard=1,USER_CONFIRMED_BALANCED,니크르는 공식호스팅 퀘스트로 확인. HP20만/랜덤속성은 사용자 기준 초기값.
+DEATH_UNDER_MUMMY,머미,죽음의마을,지하/죽음의던전,1차승급,,200000,,랜덤,랜덤,선공,단체 사냥 대상. 죽음의던전 5~10층 출현 자료.,고HP/고마방 세부 확인 필요,몬스터를 퇴치하라3,N,INCLUDE,U+V+B,https://lod.nexon.com/community/game/4509?SearchBoard=1,USER_CONFIRMED_BALANCED,머미는 공식호스팅 퀘스트로 확인. HP20만/랜덤속성은 사용자 기준 초기값.
+DEATH_UNDER_GENERIC,죽음의마을 지하 몬스터군,죽음의마을,집안/지하,1차승급,,200000,,랜덤,랜덤,선공,파티 몰이→저주/나르→광역/필살기 처리.,일부 4방공격/고마방,개별 드롭 후속 수집,N,INCLUDE,U+V+B,https://lod.nexon.com/community/game/5779?SearchBoard=1,GROUP_RULE_VERIFIED,사용자 기준 약20만. 구자료는 대부분15만/강한개체20~22만으로 시대차이. 프로젝트 초기값20만 [B].

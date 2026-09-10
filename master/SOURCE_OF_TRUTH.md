@@ -1,3 +1,5 @@
+CURRENT AUDIT M001: 기존 tar.gz는 손상되어 사용 금지. 최신 입력은 master/data의 CSV 92개와 master/source의 첨부 ZIP입니다. master/MASTER_MANIFEST.md 및 master/RECONCILIATION.md를 먼저 읽으세요. 아래는 이전 기록입니다.
+
 # Master Source of Truth
 
 Development agents must treat the repository Master archive as the canonical database snapshot for PROJECT DARK.

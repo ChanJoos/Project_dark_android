@@ -1,0 +1,10 @@
+﻿Screen_ID,Area,Scene,Source_Page,Image_Count,Image_Endpoint,What_Is_Verified,Runtime_Use,Status,Evidence
+SCR_TOWN_OLD_01,런칭 마을,구 마을맵 세트,https://lod.nexon.com/Community/screenshot/136184?Category2=2,9,oidFile 5053116125680767924~7931 + 7934,제목이 밀레스/구아벨/구뤼케시온/구루어스/구마인 명시; 실제 이미지 9장,마을 레이아웃/타일/색감 기준,MAPPED_SOURCE,V
+SCR_MILLES_2024,밀레스,밀레스 마을 실제 플레이 화면,https://lod.nexon.com/community/screenshot/137555,1,legacy image on post,게시물 제목과 본문이 밀레스마을에서 촬영했음을 명시,밀레스 현재/후대 실제 화면 비교 reference,MAPPED_SOURCE,V
+SCR_POTE_2004,포테,포테의숲 실제 플레이 화면,https://lod.nexon.com/Community/screenshot/121538?Category2=2,1,https://storage.nexon.com/Data01/GnxFile/004/100/000/00/07/18016979784834580.bmp,본문에 '저긴 포테의숲' 명시,포테 배경/나무/캐릭터 스케일 reference,DIRECT_URL,V
+SCR_HORROR_2015,호러,호러캐슬 실제 플레이 화면,https://lod.nexon.com/Community/screenshot/134341?Category2=2,1,legacy image on post,호러캐슬 게시물/실제 장면,호러 방/캐릭터/몬스터 화면 reference,MAPPED_SOURCE,V
+SCR_DEATH_2009,죽음의마을,죽음의마을 실제 플레이 화면 2장,https://lod.nexon.com/News/notice/129289,2,oidFile 3611966070283309013;3611966070283309014,"본문이 죽음의마을 구조, 호러/죽던/집 진입 본거지임을 설명",죽음의마을 필드/봉인/입구 화면 reference,MAPPED_SOURCE,V
+SCR_ABEL_2008,아벨,아벨 실제 마을 화면 3장,https://lod.nexon.com/community/screenshot/128673,3,legacy images on post,본문에 '여기 아벨 개인수영장' 명시,아벨 수변/마을 타일 reference,MAPPED_SOURCE,V
+SCR_LYK_ARIEL_LAYOUT,뤼케,에리얼방 원작 공략 레이아웃,https://lod.nexon.com/community/game/1495?SearchBoard=1,0,TEXT/ASCII,"에리얼방에서 직자 유인, 도적 하이드로 나무 틈 봉쇄, 팀원 대기 위치 설명",에리얼 boss room collision/AI layout rule,RULE_MAPPED,V
+SCR_LYK_ARIEL_ROUTE,뤼케,3-D→게밭→대기실→에리얼방,https://lod.nexon.com/community/game/28?SearchBoard=1,0,TEXT,"게는 옆으로 이동, 접촉 시 3-D로 튕김; 에리얼 7시 날리기+하콘 소환",뤼케 보스맵 route/mechanics,RULE_MAPPED,V
+SCR_DEATH_HOUSE_RULE,죽마 집털,죽음의마을 집 구조,https://lod.nexon.com/community/game/5779?SearchBoard=1,0,TEXT,"죽대→죽음의마을1, T맵에 여러 집, 집 내부 몬스터 사냥",집 인스턴스 진입/반복 구조,RULE_MAPPED,V

@@ -1,0 +1,7 @@
+﻿Gate_ID,From,To,Condition,Failure_Message,Evidence,Runtime,,,,,
+G01,평민,기본직업,초반 직업 선택 조건 충족,아직 직업을 선택할 수 없습니다.,O+B,ENFORCED,,,,,
+G02,뤼케 후반,Lv99,"누적EXP 150,000,000",경험치가 부족합니다.,U+B,ENFORCED,,,,,
+G03,마인,호러캐슬,Lv99 + 100 Gold,지존만 입장할 수 있습니다 / 금전이 부족합니다.,U+ADAPTED,ENFORCED,,,,,
+G04,호러,1차승급,직업별 최소 HP/MP + 필수스킬 + 보유EXP250m,승급 조건이 부족합니다.,V+B,ENFORCED,,,,,
+G05,승급판정,1차승급,G04 PASS,승급 조건을 모두 충족했습니다.,ADAPTED,ENFORCED,,,,,
+G06,승급,죽마 집털/지하,승급 권장; 콘텐츠 해금,승급 후 이용을 권장합니다.,B,ENFORCED,,,,,

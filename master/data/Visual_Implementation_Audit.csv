@@ -1,0 +1,8 @@
+﻿Area,Gameplay_Screen,Geometry/Rule,Monster_Context,Individual_Sprites,Ready_For_Runtime_Trace,Blocker
+밀레스,YES,YES,N/A,N/A,YES,binary/trace
+포테,YES,PARTIAL,YES zone,NO,YES_PARTIAL,개별 몬스터 crop
+아벨,YES town,PARTIAL coast,TEXT,NO,PARTIAL,해안 실제 화면
+뤼케,NO direct,YES boss route,TEXT,NO,RULE_ONLY,실제 해안/보스 화면
+호러,YES,YES [U],YES scene,NO,YES_PARTIAL,10종 crop/테마방 추가
+죽마,YES,YES,YES 좀비/니크르/머미,NO,YES_PARTIAL,개별 crop+집/지하 화면
+HUD,YES,YES,N/A,N/A,YES,모바일 재배치

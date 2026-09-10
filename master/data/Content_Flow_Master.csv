@@ -1,0 +1,11 @@
+﻿Content_ID,Phase,Level_Band,Hub,Field/Dungeon,Core_Loop,Primary_Objective,Expected_Time_h,Exit_Gate,Evidence,Source_URL,Runtime_Status
+C01,평민 도입,1-10,밀레스,밀레스 주변/초반,NPC→이동→기본전투→귀환,Lv10 및 직업 선택 준비,0.5,직업 선택 가능,B+O,https://lod.nexon.com/info/guide/82283,READY
+C02,1~2서클 성장,10-40,피에트,포테의숲 1~4존,퀘스트→정수 수집→강력몹→보스,포테의정령/정수 퀘스트 완료,2,Lv40권 진입,V+B,https://lod.nexon.com/community/game/4036?SearchBoard=1,READY
+C03,밀레스 묘지 체인,40-60,밀레스,지하묘지 10~17층,증거수집→소환석→보물상자,언데드/소환석/보물상자 체인,1,중반 퀘스트 보상,V,https://lod.nexon.com/community/game/4388?SearchBoard=1,READY
+C04,3서클 성장,40-70,아벨,아벨해안,재료수집→파티→킹아크퍼스,대지의인장/킹아크퍼스,3,Lv70권 진입,V+B,,READY
+C05,4서클 성장,70-90,뤼케시온,뤼케시온해안,재료수집→5직업 파티→에리얼,에리얼/파파야방패,4.5,Lv90,V+B,,READY
+C06,지존 진입,90-99,뤼케시온,해안 후반,고효율 반복사냥→스킬완성,Lv99,5,Lv99,U+B,,READY
+C07,지존 장기성장,99,마인/죽대,호러캐슬,랜덤방→몰이→속성→파티전투→다음방,승급 최소 체마 + 2.5억 EXP,35,1차 승급 조건 충족,U+V+B,https://lod.nexon.com/community/game/4259?SearchBoard=1,READY
+C08,1차 승급,99,마인,승급 판정,조건확인→즉시 승급,1차 승급,0.05,승급 완료,ADAPTED,,READY
+C09,승급 장기성장,승급,죽음의마을,집안/지하,몹몰이→저주/센스→광역/필살→체력구매→STAT,주력 STAT MAX,120,STAT MAX,U+V+B,https://lod.nexon.com/community/game/5779?SearchBoard=1,READY
+C10,엔드 성장,STAT MAX+,죽음의마을,집안/지하,EXP→HP/MP→필살기 강화,체마 무한성장,,없음,U+B,,READY

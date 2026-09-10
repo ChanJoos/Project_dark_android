@@ -1,0 +1,8 @@
+﻿Skill,Verified_Formula_or_Fact,Evidence,Source_URL,Runtime Decision,Notes,,,,,,
+크래셔,HP × 3.38 at AC0/속성공격,V,https://lod.nexon.com/community/game/4239?SearchBoard=1,3.38 initial,2009 formula experiment prioritized over older 6x tip,,,,,,
+메테오,"(MP - 12,960) × 1.815",V,https://lod.nexon.com/community/game/4239?SearchBoard=1,formula preserved,Only meaningful above threshold,,,,,,
+세멜리아,"(MP - 3,240) × 1.815",V,https://lod.nexon.com/community/game/4239?SearchBoard=1,formula preserved,,,,,,,
+라그나로크,MP × 0.454,V,https://lod.nexon.com/community/game/4239?SearchBoard=1,formula preserved,Key wizard ultimate anchor,,,,,,
+달마신공,HP × 0.30,V,https://lod.nexon.com/community/game/4239?SearchBoard=1,formula preserved,,,,,,,
+다라밀공,"12 sec cooldown; cast mana 1,450 in 2019 guide context",V,https://lod.nexon.com/community/game/7237?SearchBoard=1,12s cooldown initial,Damage formula remains classic anchor from prior sheet,,,,,,
+5직업 파티,법사 저주→도적 속성감별→격수 공격→직자 힐/보호,V,https://lod.nexon.com/community/game/5838?SearchBoard=1,party AUTO order locked,Original role division,,,,,,

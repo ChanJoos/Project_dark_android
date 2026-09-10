@@ -1,0 +1,6 @@
+﻿Character_ID,Job,Runtime_Asset_ID,Official_Image_URL,Source_Page,Status,Use_Mode,Notes,,,
+CHAR_MONK,무도가,char_monk_ref,https://lwi.nexon.com/lod/renewal/brand/sub/gi_c1.jpg,https://lod.nexon.com/info/intro,DIRECT_URL_FOUND,REFERENCE_ONLY,공식 캐릭터 소개 이미지. 인게임 스프라이트가 아니라 직업 외형 reference.,,,
+CHAR_PRIEST,성직자,char_priest_ref,https://lwi.nexon.com/lod/renewal/brand/sub/gi_c2.jpg,https://lod.nexon.com/info/intro,DIRECT_URL_FOUND,REFERENCE_ONLY,공식 캐릭터 소개 이미지. 인게임 스프라이트가 아니라 직업 외형 reference.,,,
+CHAR_WARRIOR,전사,char_warrior_ref,https://lwi.nexon.com/lod/renewal/brand/sub/gi_c3.jpg,https://lod.nexon.com/info/intro,DIRECT_URL_FOUND,REFERENCE_ONLY,공식 캐릭터 소개 이미지. 인게임 스프라이트가 아니라 직업 외형 reference.,,,
+CHAR_ROGUE,도적,char_rogue_ref,https://lwi.nexon.com/lod/renewal/brand/sub/gi_c4.jpg,https://lod.nexon.com/info/intro,DIRECT_URL_FOUND,REFERENCE_ONLY,공식 캐릭터 소개 이미지. 인게임 스프라이트가 아니라 직업 외형 reference.,,,
+CHAR_WIZARD,마법사,char_wizard_ref,https://lwi.nexon.com/lod/renewal/brand/sub/gi_c5.jpg,https://lod.nexon.com/info/intro,DIRECT_URL_FOUND,REFERENCE_ONLY,공식 캐릭터 소개 이미지. 인게임 스프라이트가 아니라 직업 외형 reference.,,,

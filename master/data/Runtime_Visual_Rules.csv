@@ -1,0 +1,7 @@
+﻿Rule_ID,Rule,Runtime_Implementation,Status
+VR01,AI 재해석 금지,원본 reference 또는 명시적 placeholder만 사용,LOCKED
+VR02,스크린샷 통째 맵텍스처 사용 금지,tile/geometry/색감/오브젝트 기준 trace,LOCKED
+VR03,개별 몬스터 시각 확인 전 sprite 확정 금지,PENDING_CROP 유지,LOCKED
+VR04,모바일 변경은 입력/UI 레이아웃 중심,월드/캐릭터 visual canon 유지,LOCKED
+VR05,logical 4-neighbor→screen diagonal 4-dir,기존 projection 유지,LOCKED
+VR06,원본 자산 APK 재배포는 라이선스 게이트,reference/prototype와 shipping asset 분리,LOCKED
