@@ -1,32 +1,35 @@
-# World handoff — PASS 32
+# World handoff — PASS 33
 
-- Branch: `agent/world/20260910-1752`
-- Base: `main@6785efb6f7504e070ee0c0aa6924d1281e444469`
+- Branch: `agent/world/20260910-1812`
+- Base lineage: stacked on PASS 32 PR #49 head `05da88dbbb673126a09b74954d30c09e67c0492e`; main was still `6785efb6f7504e070ee0c0aa6924d1281e444469` when this run began.
 - Geometry: current Milles expansion remains `[ADAPTED]/[B]`; original geometry still unverified.
 
-## P0 defect fixed
-`WorldMoveTargetController` previously searched a 16-unit lattice but required the lattice node itself to enter the 6-unit default ground tolerance. Valid off-grid taps can be ~11.31 units from the nearest lattice node, so reachable taps could exhaust 4096 A* expansions and incorrectly become `BLOCKED`.
+## P0 navigation fixes now in lineage
+1. PASS 32: off-grid ground taps no longer false-BLOCK because the 16-unit search lattice can enter the exact target leg from half-cell diagonal tolerance when the exact point is occupiable.
+2. PASS 33: dynamic replan budget is now consecutive-only. Successful WALK progress resets the budget, so unrelated transient NPC/monster collisions across a long route do not accumulate into a false terminal `BLOCKED`.
+3. Persistent rejection still fails closed after three consecutive WALK failures; no infinite loop or teleport fallback was added.
 
-GROUND search now uses a lattice-entry tolerance of `max(requestTolerance, half-cell diagonal + epsilon)` only when the exact target is occupiable, then appends that exact target as the final waypoint. The final leg is still executed through `Walker.tryWalkStep`, so collision remains authoritative and there is no teleport. NPC approach semantics are unchanged.
+## New regression gate
+`WorldMoveTargetDynamicReplanAudit` verifies:
+- three non-consecutive transient WALK rejections during one long ground move still end in `REACHED`;
+- persistent WALK rejection ends in `BLOCKED` after three attempts;
+- replacement and direct-input cancellation semantics remain intact.
 
-## Exploration route regression
-`WorldMoveTargetExplorationAudit` drives the real controller through:
-`spawn → north_cross → central_plaza → west_district → central_plaza → east_district → south_east_lane → south_gate → south_portal`.
-It also asserts that a tap inside a blocker returns `BLOCKED` without moving the walker.
-
-Occupancy-safe approach anchors carried forward:
-- west district `(320,705)`
-- east district `(1350,715)`
-- south gate `(790,1000)`
-These avoid direct overlap with the west NPC, combat dummy and gate NPC respectively.
+## Stable integration contract
+- Empty eligible world tap: UI ownership reject → `screenToWorld` → `requestGroundMove`.
+- NPC hit retains priority and uses `requestNpcApproach` separately.
+- `tick()` emits only incremental `Walker.tryWalkStep` movement. Runtime collision remains authoritative.
+- A failed runtime step triggers world-side replanning from the current world coordinate.
+- Director/UX must not duplicate this path/replan logic in `GameView.java`.
 
 ## Verification
-Equivalent A* model before fix exhausted 4096 expansions for several valid anchors. After fix representative searches converge in 12–49 expansions. Full Gradle/APK/runtime remains Director-owned and unverified in this World pass.
+- GitHub source commits: PASS.
+- Isolated javac/audit execution: blocked by container DNS while cloning GitHub (`Could not resolve host: github.com`), not claimed as PASS.
+- Gradle/APK/device runtime: pending Director integration.
 
-## Director / UX integration request
-- Empty eligible map tap: UI ownership reject → `screenToWorld` → `requestGroundMove`.
-- NPC taps must continue using `requestNpcApproach`; do not collapse both semantics.
-- Integrate this controller/session rather than reimplementing path logic in `GameView.java`.
-- Keep south portal target pending/fail-closed until verified map + spawn identity exists.
+## Remaining P0
+- End-to-end empty-map tap and camera/world projection still require Director/UX runtime wiring in the APK.
+- South portal remains `PENDING_TARGET_MAP` and must fail closed.
+- Original Milles geometry remains evidence-blocked.
 
-No `GameView.java`, CharacterRenderer, Combat, RPG, HUD or quest files were modified.
+No CharacterRenderer, Combat, RPG, HUD, quest or `GameView.java` file was modified.
