@@ -117,8 +117,12 @@ public final class CharacterRenderer {
   private void drawWeapon(Canvas c,Pose pose){
     if(pose.state!=State.ATTACK||pose.effectFamily==EffectFamily.PUNCH)return;
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
+    float sx=left?-1f:1f,sy=down?1f:-1f;
     p.setColor(0xffd7d2c5);p.setStrokeWidth(2);
-    c.drawLine(left?2:15,14,left?-7:23,7,p); // [B] generic weapon placeholder
+    float handX=left?2f:15f;
+    float handY=down?15f:12f;
+    c.drawLine(handX,handY,handX+sx*9f,handY+sy*7f,p); // [B] direction-aware generic weapon placeholder
   }
 
   /** Owns player-local prototype action effects. Combat semantics stay outside this renderer. */
@@ -129,11 +133,13 @@ public final class CharacterRenderer {
     float sx=left?-1f:1f;
     float sy=(pose.direction==Direction.SW||pose.direction==Direction.SE)?1f:-1f;
 
-    // [ADAPTED] Generic ATTACK receives a renderer-owned swing hook even when combat emits no subtype effect.
+    // [ADAPTED] Generic ATTACK receives a four-direction swing hook even when combat emits no subtype effect.
     if(family==EffectFamily.NONE&&pose.state==State.ATTACK){
       p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.8f);p.setColor(0xaad7d2c5);
-      float lead=8+sx*(10+5*q);
-      c.drawArc(new RectF(lead-12,1,lead+12,24),left?35:15,120,false,p);
+      float leadX=8+sx*(10+5*q);
+      float leadY=12+sy*(4+3*q);
+      float start=left?(sy>0?35f:205f):(sy>0?25f:215f);
+      c.drawArc(new RectF(leadX-12,leadY-11,leadX+12,leadY+11),start,115,false,p);
       p.setStyle(Paint.Style.FILL);
       return;
     }
@@ -157,7 +163,11 @@ public final class CharacterRenderer {
       case SKILL:
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(family==EffectFamily.SKILL?2.5f:1.5f);
         p.setColor(family==EffectFamily.SKILL?0xaa7fffa8:0xaaffefb0);
-        c.drawArc(new RectF(8+sx*9-9,3,8+sx*9+9,21),20,130,false,p);p.setStyle(Paint.Style.FILL);break;
+        float effectCenterX=8+sx*9f;
+        float effectCenterY=12+sy*3f;
+        c.drawArc(new RectF(effectCenterX-9,effectCenterY-9,effectCenterX+9,effectCenterY+9),
+            left?(sy>0?25f:205f):(sy>0?15f:215f),130,false,p);
+        p.setStyle(Paint.Style.FILL);break;
       case HIT:
         p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xaaff7755);
         c.drawCircle(8,8,5+7*q,p);p.setStyle(Paint.Style.FILL);break;
