@@ -1,6 +1,6 @@
 # PROJECT DARK Source of Truth
 
-Revision M001 / D003 · 2026-09-10
+Revision M001 / D004 · 2026-09-11
 
 현재 최신 사용자 지시와 실제 감사에 따라 이전 archive-verified 주장을 정정한다. `master/MASTER_MANIFEST.md`와 `master/RECONCILIATION.md`가 현재 확보/검증 상태다.
 
@@ -30,7 +30,19 @@ Revision M001 / D003 · 2026-09-10
 - prototype dummy 보상과 원작 monster reward는 구분한다.
 - 원작 미확인 sprite는 PENDING_CROP. 전체 screenshot 최종 map texture 금지.
 
-## 시각 자료 수집·복원 정책 — USER CANON / 2026-09-10
+## 플레이어 시각/런타임 canon — USER CANON / 2026-09-11
+
+- 시작 플레이어는 **평민 / PEASANT / pre-class**다. 무도가·전사·도적·마법사·성직자 등 이후 직업 외형을 시작 BODY에 하드코딩하지 않는다.
+- 캐릭터 생성 구조와 동일하게 BODY_BASE + HAIR_STYLE + HAIR_COLOR를 시작점으로 하고 장비는 `HEAD / TOP / BOTTOM / GLOVES / SHOES / WEAPON / OFFHAND` 레이어로 분리한다.
+- paper-doll 순서는 `BODY_BASE → HAIR_STYLE → HAIR_COLOR → HEAD → TOP → BOTTOM → GLOVES → SHOES → WEAPON → OFFHAND`를 기준으로 한다.
+- 기본 이동 frame contract는 24x32, runtime scale 1.50, NW/NE/SW/SE 네 개의 실제 대각 3/4 방향이다. front/back 대체 및 단순 mirror-only 방향 합성은 금지한다.
+- atlas physical row는 `NW=0 / NE=1 / SW=2 / SE=3`; IDLE 1열 + WALK 4열의 120x128 atlas를 우선 gate로 사용한다.
+- 논리 이동은 인접 tile당 0.80초이며 WALK 4 frame은 5 fps로 맞춰 1 cycle = 0.80초가 되도록 한다.
+- 공통 foot anchor는 `[12,30]` 목표로 고정하며 모든 IDLE/WALK frame에서 흔들리지 않아야 한다.
+- `player_martial_*` legacy 자산은 시작 캐릭터 fallback으로 재사용 금지. 이후 무도가 직업/장비 계층의 reference/history로만 취급한다.
+- reference-accurate `player_peasant_idle_walk`가 승인되기 전 runtime fallback은 crash-safe 임시 표현일 뿐 production art로 승격하지 않는다.
+
+## 시각 자료 수집·복원 정책 — USER CANON / 2026-09-11
 
 - 넥슨 어둠의전설 공식 홈페이지(`lod.nexon.com`)와 넥슨 파일 호스트에서 확보 가능한 과거/현재 게임 이미지는 적극적으로 수집하여 world/character reconstruction의 1차 시각 근거 풀로 사용한다.
 - 단, `lod.nexon.com` 커뮤니티에 사용자가 올린 스크린샷은 **Nexon-hosted provenance**는 확정되지만 자동으로 `[O]` official art가 되지 않는다. 별도 공식성 검증 전에는 `[V]`로 유지한다.
