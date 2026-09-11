@@ -13,20 +13,24 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/** [ADAPTED] Crash-safe 24x32 martial-artist presentation using explicit four-direction resources. */
+/** Crash-safe 24x32 old-Dark-Ages starter peasant renderer. */
 public final class CharacterRenderer {
-  public static final String EVIDENCE="USER_MARTIAL_ARTIST_REFERENCE+ADAPTED";
-  public static final String ASSET_STATUS="ADAPTED_RESOURCE_ATLAS_OR_SAFE_FALLBACK_ORIGINAL_PENDING_CROP";
-  public static final String PRESENTATION_PROFILE="MARTIAL_ARTIST_SOURCE_SHAPED_20260910_R2";
+  public static final String EVIDENCE="OLD_DARK_AGES_PEASANT_P0_P1+ADAPTED";
+  public static final String ASSET_STATUS="PEASANT_REFERENCE_ATLAS_PENDING_SAFE_FALLBACK_ACTIVE";
+  public static final String PRESENTATION_PROFILE="PEASANT_BASE_20260911_R1";
+  public static final String STARTER_ARCHETYPE="PEASANT";
+  public static final String STARTER_CLASS_STATE="PRE_CLASS";
 
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
   public static final float BASE_HEIGHT=32f;
   public static final float HEAD_TO_BODY_RATIO=0.28f;
+  public static final float WALK_FRAMES_PER_SECOND=5.0f; // 4 frames / 0.8 sec tile step
   public static final boolean HARD_PIXEL_GRID=true;
-  public static final boolean MARTIAL_ARTIST_WEAPONLESS=true;
-  public static final boolean SHIELD_ALLOWED=true;
+  public static final boolean STARTER_WEAPONLESS=true;
+  public static final boolean STARTER_OFFHAND_EMPTY=true;
+  public static final boolean LEGACY_MARTIAL_ASSET_ALLOWED=false;
 
   public static final int ATLAS_FRAME_WIDTH=24;
   public static final int ATLAS_FRAME_HEIGHT=32;
@@ -44,6 +48,8 @@ public final class CharacterRenderer {
 
   public static final List<Layer> DRAW_ORDER=Collections.unmodifiableList(Arrays.asList(
       Layer.BODY,Layer.HAIR,Layer.EQUIPMENT,Layer.WEAPON,Layer.EFFECT));
+  public static final List<String> PAPER_DOLL_ORDER=Collections.unmodifiableList(Arrays.asList(
+      "BODY_BASE","HAIR_STYLE","HAIR_COLOR","HEAD","TOP","BOTTOM","GLOVES","SHOES","WEAPON","OFFHAND"));
 
   public static final class DirectionalVisualSet {
     public final String nw,ne,sw,se;
@@ -75,9 +81,10 @@ public final class CharacterRenderer {
     pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);
     fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);
     Resources resources=findProcessResources();
-    idleWalkAtlas=tryLoad(resources,R.drawable.player_martial_idle_walk,IDLE_WALK_WIDTH,ATLAS_HEIGHT);
-    attackAtlas=tryLoad(resources,R.drawable.player_martial_attack,ACTION_WIDTH,ATLAS_HEIGHT);
-    // Never throw for visual resources. Missing/corrupt/mismatched atlases must not block app startup.
+    // Dynamic lookup deliberately avoids compile-time dependency while the reference-accurate peasant atlas is being produced.
+    idleWalkAtlas=tryLoadByName(resources,"player_peasant_idle_walk",IDLE_WALK_WIDTH,ATLAS_HEIGHT);
+    attackAtlas=tryLoadByName(resources,"player_peasant_attack",ACTION_WIDTH,ATLAS_HEIGHT);
+    // Never fall back to player_martial_* for the starter character.
   }
 
   /** Physical row contract. No mirror/reuse inference is allowed. */
@@ -102,7 +109,7 @@ public final class CharacterRenderer {
     if(pose.state==State.ATTACK&&attackAtlasActive()){
       drawAttack(canvas,pose,anchorY); return;
     }
-    drawSafeFallback(canvas,pose,anchorY);
+    drawSafePeasantFallback(canvas,pose,anchorY);
   }
 
   private void drawShadow(Canvas c,Pose pose,float anchorY){
@@ -113,13 +120,13 @@ public final class CharacterRenderer {
   }
 
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){
-    int row=atlasRow(pose.direction); if(row<0){drawSafeFallback(c,pose,anchorY);return;}
-    int col=pose.state==State.IDLE?0:1+(((int)(Math.max(0f,pose.walkClock)*7f))&3);
+    int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
+    int col=pose.state==State.IDLE?0:1+(((int)(Math.max(0f,pose.walkClock)*WALK_FRAMES_PER_SECOND))&3);
     drawAtlasCell(c,idleWalkAtlas,row,col,anchorY,pose.x);
   }
 
   private void drawAttack(Canvas c,Pose pose,float anchorY){
-    int row=atlasRow(pose.direction); if(row<0){drawSafeFallback(c,pose,anchorY);return;}
+    int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
     float q=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(0.9999f,pose.stateClock/pose.stateDuration));
     int col=Math.min(ATTACK_COLUMNS-1,(int)(q*ATTACK_COLUMNS));
     drawAtlasCell(c,attackAtlas,row,col,anchorY,pose.x);
@@ -133,9 +140,11 @@ public final class CharacterRenderer {
     c.drawBitmap(atlas,src,dst,pixelPaint);
   }
 
-  private Bitmap tryLoad(Resources resources,int resId,int expectedWidth,int expectedHeight){
-    if(resources==null)return null;
+  private Bitmap tryLoadByName(Resources resources,String name,int expectedWidth,int expectedHeight){
+    if(resources==null||name==null)return null;
     try{
+      int resId=resources.getIdentifier(name,"drawable","com.projectdark.mobile");
+      if(resId==0)return null;
       BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;
       Bitmap decoded=BitmapFactory.decodeResource(resources,resId,options);
       return validAtlas(decoded,expectedWidth,expectedHeight)?decoded:null;
@@ -155,28 +164,28 @@ public final class CharacterRenderer {
     return bitmap!=null&&bitmap.getWidth()==expectedWidth&&bitmap.getHeight()==expectedHeight;
   }
 
-  /** Crash-safe, weaponless fallback only. It preserves facing and the fixed foot anchor. */
-  private void drawSafeFallback(Canvas c,Pose pose,float anchorY){
+  /** Temporary starter-peasant safety fallback. It is deliberately neutral and must never reuse martial-artist markers. */
+  private void drawSafePeasantFallback(Canvas c,Pose pose,float anchorY){
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
     boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
-    int frame=pose.state==State.WALK?(((int)(Math.max(0f,pose.walkClock)*7f))&3):0;
+    int frame=pose.state==State.WALK?(((int)(Math.max(0f,pose.walkClock)*WALK_FRAMES_PER_SECOND))&3):0;
     int step=frame==1?-1:frame==3?1:0;
     float phase=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));
-    int reach=pose.state==State.ATTACK?Math.round(4f*(float)Math.sin(Math.PI*phase)):0;
     c.save(); c.translate(pose.x-12f*PLAYER_RENDER_SCALE,anchorY-32f*PLAYER_RENDER_SCALE); c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
-    int outline=0xff181619,skin=pose.hitFlash?0xffffd7ca:0xffca8458,skinHi=0xffe8ab75,pants=0xff212b43,pantsHi=0xff38445f,shoe=0xff292e42,red=0xffbd292c;
-    int hair=0xffcbc8cb,hairHi=0xfff1eee7,hairShadow=0xff85818a,shield=0xff293246,shieldHi=0xff505b70;
+    int outline=0xff1d1917;
+    int skin=pose.hitFlash?0xffffd7ca:0xffc98d67,skinHi=0xffe4b087;
+    int hair=0xff4b3426,hairHi=0xff72513a,hairShadow=0xff2c201a;
+    int cloth=0xff8b7656,clothHi=0xffad956d,clothShadow=0xff64543f;
+    int pants=0xff4b4540,pantsHi=0xff635c55,shoe=0xff332c28;
     int nearX=left?7:14,farX=left?13:8;
     px(c,outline,9,19,7,4);px(c,pants,10,19,5,3);
-    px(c,outline,farX+step,21,3,8);px(c,pants,farX+step+1,22,2,6);px(c,shoe,farX+step-1,28,5,3);px(c,red,farX+step,28,2,1);
-    px(c,outline,nearX-step,20,4,9);px(c,pantsHi,nearX-step+1,21,2,7);px(c,shoe,nearX-step-1,28,6,3);px(c,red,nearX-step,28,2,1);
-    int torsoX=left?7:9;px(c,outline,torsoX,9,9,12);px(c,skin,torsoX+1,10,7,9);px(c,skinHi,torsoX+2,10,2,2);
+    px(c,outline,farX+step,21,3,8);px(c,pants,farX+step+1,22,2,6);px(c,shoe,farX+step-1,28,5,3);
+    px(c,outline,nearX-step,20,4,9);px(c,pantsHi,nearX-step+1,21,2,7);px(c,shoe,nearX-step-1,28,6,3);
+    int torsoX=left?7:9;px(c,outline,torsoX,9,9,12);px(c,clothShadow,torsoX+1,10,7,10);px(c,cloth,torsoX+2,10,6,9);px(c,clothHi,torsoX+2,10,2,2);
     int farShoulder=left?15:8;px(c,outline,farShoulder,11,3,8);px(c,skin,farShoulder+(left?0:1),12,2,6);
-    int nearShoulder=left?6:17;
-    if(left){px(c,outline,nearShoulder-reach,11,4+reach,8);px(c,skin,nearShoulder-reach,12,3+reach,6);}else{px(c,outline,nearShoulder,11,4+reach,8);px(c,skin,nearShoulder+1,12,3+reach,6);}
-    int shieldX=left?16:4;px(c,shield,shieldX,13,5,9);px(c,shieldHi,shieldX+2,15,1,5);
-    int headX=left?8:7;px(c,outline,headX,0,10,9);px(c,hairShadow,headX,1,10,7);px(c,hair,headX+1,0,8,7);px(c,hairHi,headX+2,0,6,2);
-    if(down){px(c,skin,headX+1,3,8,5);px(c,red,headX+1,3,8,2);px(c,0xff221a18,left?headX+3:headX+6,6,1,1);}else px(c,red,left?headX:headX+8,4,2,2);
+    int nearShoulder=left?6:17;px(c,outline,nearShoulder,11,4,8);px(c,skin,nearShoulder+(left?0:1),12,3,6);
+    int headX=left?8:7;px(c,outline,headX,1,10,9);px(c,hairShadow,headX,1,10,5);px(c,hair,headX+1,1,8,5);px(c,hairHi,headX+2,1,4,1);
+    if(down){px(c,skin,headX+1,4,8,5);px(c,skinHi,headX+2,4,2,2);px(c,0xff281d19,left?headX+3:headX+6,6,1,1);}else{px(c,skin,headX+2,5,6,4);}
     if(pose.state==State.HIT){fxPaint.setStyle(Paint.Style.STROKE);fxPaint.setStrokeWidth(2f);fxPaint.setColor(0xddff765e);c.drawCircle(12+(left?3f:-3f),11,5,fxPaint);fxPaint.setStyle(Paint.Style.FILL);}
     else if(pose.state==State.CAST||pose.state==State.SKILL){fxPaint.setStyle(Paint.Style.STROKE);fxPaint.setStrokeWidth(2f);fxPaint.setColor(0xcc79cfff);c.drawCircle(12+(left?-5f:5f),8,4+phase*5f,fxPaint);fxPaint.setStyle(Paint.Style.FILL);}
     if(pose.state==State.DEAD)c.rotate(left?-72f:72f,12f,30f);

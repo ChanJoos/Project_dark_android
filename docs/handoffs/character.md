@@ -1,61 +1,84 @@
 # Character / Animation Handoff — CURRENT
 
-Updated: 2026-09-11 05:45 KST
-Branch: `agent/character/20260911-0545`
-Base main verified at sync: `77132528a29d073080e5966844d033dcefb62fef`
-Head after resync: `ce8f6c4aa9cb5f186b487375473ac860fff4f446`
+Updated: 2026-09-11 KST
+Canonical base: current `main`
 
 ## Current canon
 
-Latest explicit user direction is authoritative. Obsolete V2/V3/V4/V5/R3 redraw history is not a visual source. Current Character canon is: source sprite 24x32, runtime scale 1.50, exact diagonal facing NW / NE / SW / SE, martial artist weaponless except shield, and user-provided martial-artist sprite imagery used directly rather than re-authored interpretation.
+Latest explicit user direction is authoritative: the starter character is **평민 / PEASANT (pre-class)**, not 무도가.
 
-## Current implemented line — IDLE / WALK
+Core runtime contract remains:
+- source frame 24x32;
+- runtime scale 1.50;
+- exact diagonal facings NW / NE / SW / SE;
+- one logical world step remains 0.80 sec;
+- WALK animation uses 4 frames at 5 fps so one full walk cycle is 0.80 sec;
+- no direction may be synthesized only by mirroring another direction;
+- common frame-bottom foot anchor is mandatory.
 
-`app/src/main/res/drawable-nodpi/player_martial_idle_walk.png` is the direct source-cropped user martial-artist atlas from commit `223565b98bda7e561dfea9dee2f7a6b0fa993ae7`, now resynced onto the latest M2 main line.
+## Starter character architecture
 
-- source rows were explicitly interpreted as `SW / SE / NW / NE` and normalized to runtime physical rows `NW=0 / NE=1 / SW=2 / SE=3`;
-- frame size is 24x32, atlas is 120x128 = 5 columns x 4 rows;
-- column 0 is IDLE, columns 1..4 are WALK;
-- no runtime mirroring is used;
-- all frames share the same frame-bottom foot anchor;
-- runtime scale is exactly 1.50 with nearest-neighbor bitmap drawing.
+The starter renderer must never silently reuse `player_martial_*` assets. Martial artist is a later class/equipment appearance, not the base avatar.
 
-## World -> Character direction audit on current main
+Paper-doll composition order is fixed as:
+`BODY_BASE -> HAIR_STYLE -> HAIR_COLOR -> HEAD -> TOP -> BOTTOM -> GLOVES -> SHOES -> WEAPON -> OFFHAND`.
 
-Current main `GameView` consumes `WorldMoveTargetController.Direction` as:
-- SW -> dir 0 -> Character SW
-- SE -> dir 1 -> Character SE
-- NW -> dir 2 -> Character NW
-- NE -> dir 3 -> Character NE
+The base must remain class-neutral enough that later class/equipment layers can replace appearance without changing movement geometry, frame size, direction mapping, or foot anchor.
 
-The renderer independently maps Character direction to atlas rows:
-- NW -> row 0
-- NE -> row 1
-- SW -> row 2
-- SE -> row 3
+## Runtime resource policy
 
-`visualFacingForRow(row)` is reciprocal to `atlasRow(Direction)`. The current code therefore has no enum/index mismatch between the M1/M2 World step direction and Character atlas selection.
+`CharacterRenderer` now dynamically looks for:
+- `player_peasant_idle_walk` (120x128; 5 columns x 4 rows)
+- `player_peasant_attack` (96x128; optional/future)
 
-## Existing ATTACK line
+The lookup is dynamic so `main` compiles before the production peasant atlas lands. Missing/corrupt/shape-invalid peasant resources must not crash startup.
 
-`player_martial_attack.png` is present and runtime-bound as a four-direction, weaponless attack atlas. It remains the previous adapted attack asset, not yet rebuilt from the latest direct-source lineage. Per the user-ordered gate, do not advance ATTACK replacement or SKILL/HIT/DIE until IDLE/WALK is accepted on device.
+Legacy martial resources may remain in the repository for history/reference, but the starter renderer is forbidden from resolving or displaying them.
 
-## Crash-safe resource gate
+## Temporary safe fallback
 
-- IDLE/WALK expected shape: 120x128;
-- ATTACK expected shape: 96x128;
-- resource loading disables density scaling;
-- missing/decode-invalid/shape-invalid resources do not throw from `CharacterRenderer()`;
-- safe fallback preserves app startup;
-- no giant inline/base64 atlas.
+Until the reference-accurate peasant atlas passes the visual gate, runtime uses a neutral peasant safety fallback. It intentionally removes the previous martial-artist markers:
+- no silver/white martial hair contract;
+- no red headband;
+- no martial dark-navy costume contract;
+- no shield;
+- no martial weaponless-profile flag.
 
-## Verification status
+This fallback is **not production art**. It exists only so the APK stays playable while the P0/P1-based peasant sprite is being reconstructed.
 
-IMPLEMENTED: latest-main resync complete; direct-source IDLE/WALK, renderer, audit, and existing attack resource are all on `agent/character/20260911-0545`.
-STATIC CONTRACT REVIEW: PASS for explicit four-direction mapping, frame/atlas sizes, 1.50 scale, weaponless flag, no-mirror mapping, and crash-safe constructor path.
-BUILD VERIFIED: NOT CLAIMED in this run. The execution environment could not resolve github.com for a local clone, and the branch currently has no GitHub commit status checks.
-RUNTIME VERIFIED: NOT CLAIMED. Director/device test still must verify true SE down-right presentation and non-corrupt SW/NW left-facing travel.
+## Visual acceptance gate for the real peasant atlas
+
+Do not promote a generated/reference reconstruction just because it is technically 24x32. It must pass all of these:
+1. reads as old `어둠의전설` before generic retro MMORPG;
+2. reads as 평민/pre-class rather than 무도가 or another class;
+3. four rows are genuinely NW/NE/SW/SE 3/4 views;
+4. body silhouette stays connected in every IDLE/WALK frame;
+5. feet stay on the common anchor across all 20 cells;
+6. no modern chibi proportions;
+7. no Mir2/other-game visual vocabulary;
+8. at gameplay scale, the player remains small relative to the world as in the P0 screenshots.
+
+## Direction mapping
+
+Runtime physical atlas rows stay:
+- row 0 = NW
+- row 1 = NE
+- row 2 = SW
+- row 3 = SE
+
+`visualFacingForRow(row)` must remain reciprocal to `atlasRow(Direction)`.
+
+## Current implementation status
+
+- PEASANT/pre-class is now the canonical starter profile.
+- Martial assets are explicitly disabled as starter fallback.
+- Paper-doll order is encoded in runtime contract.
+- WALK frame cadence is synchronized to the 0.80 sec tile step.
+- Crash-safe dynamic peasant resource lookup is implemented.
+- Production peasant PNG atlas: **NOT YET ACCEPTED**.
+- ATTACK/SKILL/HIT/DIE replacement: **DEFERRED** until IDLE/WALK visual acceptance.
+- Runtime device acceptance of the future real peasant atlas: **NOT CLAIMED**.
 
 ## Next gate
 
-Do not start SKILL/HIT/DIE. First obtain device acceptance for the current direct-source IDLE/WALK on the integrated M2 village. If accepted, the next Character visual delta is one task only: replace ATTACK with the same direct-source lineage while preserving 24x32, 1.50, explicit four-row mapping, common foot anchor, weaponless martial-artist silhouette, and crash-safe fallback.
+Produce and validate one reference-accurate `player_peasant_idle_walk.png` at exactly 120x128 (24x32 x 5 columns x 4 rows). Only after side-by-side acceptance against P0/P1 Dark Ages references should it be wired as production art. Do not spend the next iteration on combat animations or class-specific equipment.
