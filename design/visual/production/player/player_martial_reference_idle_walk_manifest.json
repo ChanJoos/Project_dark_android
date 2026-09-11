@@ -1,0 +1,17 @@
+{
+  "assetSetId": "player.martial.reference.idle_walk.v1",
+  "evidence": "USER_PROVIDED_REFERENCE / ADAPTED_EXTRACTION",
+  "frameBox": [24, 32],
+  "runtimeScale": 1.5,
+  "filter": "nearest-neighbor",
+  "directionRows": ["SW", "SE", "NW", "NE"],
+  "directionMeaning": {"SW":"down-left","SE":"down-right","NW":"up-left","NE":"up-right"},
+  "states": {"IDLE":{"frames":4,"columns":[0,1,2,3]},"WALK":{"frames":4,"columns":[4,5,6,7]}},
+  "footAnchor": [12, 30],
+  "weapon": "NONE",
+  "source": "user-provided 2026-09-11 sprite reference board",
+  "notes": [
+    "Uses the user's white-hair/red-headband martial-artist reference rather than the superseded brown-hair/gray-gi design.",
+    "SE is sourced from the explicit down-right row; no direction row was synthesized by mirroring."
+  ]
+}
