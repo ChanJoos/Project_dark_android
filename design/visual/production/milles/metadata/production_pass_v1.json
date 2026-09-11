@@ -1,0 +1,35 @@
+{
+  "id": "dark-milles-production-pass-v1",
+  "status": "CANDIDATE_REJECTED_DO_NOT_WIRE",
+  "reference_basis": [
+    "user-provided old Dark Ages outdoor screenshot",
+    "user-provided old Dark Ages indoor screenshot",
+    "https://lod.nexon.com/Community/screenshot/136184?Category2=2"
+  ],
+  "attempted_assets": {
+    "terrain": ["grass", "dirt", "grass_dirt_transition", "vegetation", "wood_floor", "stone_wall"],
+    "character": {
+      "class": "martial_artist",
+      "frame": [24, 32],
+      "directions": ["NW", "NE", "SW", "SE"],
+      "states": ["IDLE", "WALK"],
+      "foot_anchor": [12, 31],
+      "step_seconds": 0.8
+    }
+  },
+  "qa": {
+    "mir_or_generic_mmorpg_contamination": "FAIL",
+    "old_dark_ages_texture_density": "PARTIAL",
+    "continuous_terrain_read": "PARTIAL",
+    "martial_artist_identity": "PARTIAL",
+    "true_diagonal_four_facing": "FAIL",
+    "runtime_ready": false
+  },
+  "decision": "Reject this generated candidate. Do not commit candidate PNGs or wire them into runtime. Continue reference extraction before next production render.",
+  "next_pass": [
+    "derive outdoor terrain from P0 screenshot composition rather than isolated showcase tiles",
+    "force all four martial-artist facings to true diagonal 3/4 silhouettes",
+    "remove generic fantasy prop language not evidenced by P0",
+    "retain small adult proportions and original rough low-resolution texture density"
+  ]
+}
