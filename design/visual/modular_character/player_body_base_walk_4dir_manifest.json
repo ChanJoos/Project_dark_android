@@ -1,0 +1,32 @@
+{
+  "assetSetId": "player.body.base.walk.v1",
+  "stage": "STAGE_1_BASE_BODY_FOUNDATION",
+  "evidence": "USER_PROVIDED_REFERENCE / ADAPTED",
+  "frameBox": {"w":24,"h":32},
+  "runtimeScale": 1.5,
+  "filter": "nearest-neighbor",
+  "state": "WALK",
+  "frameCountPerDirection": 3,
+  "directions": ["SW","SE","NW","NE"],
+  "atlas": {
+    "columns": ["f0_contact_A","f1_passing","f2_contact_B"],
+    "rows": ["SW","SE","NW","NE"]
+  },
+  "footAnchor": {"x":12,"y":30},
+  "bodyContract": {
+    "hairBaked": false,
+    "equipmentBaked": false,
+    "weaponBaked": false,
+    "shieldBaked": false,
+    "modestyBase": "neutral non-equipment underlayer"
+  },
+  "motionNotes": [
+    "f0/f2 are alternating contact poses",
+    "f1 is a passing pose with a 1px body bob",
+    "arms counter-swing relative to lead leg",
+    "maximum ground contact remains y=30"
+  ],
+  "runtimeAssetSha256": "bec8857250816f5695af7ee3581546a886eafc7c2fd98eb1deca2e6214ce3e20",
+  "previewSha256": "fccb3c03e8fd2be368d8decc36c5954d52002a5c9848834f83940aca22c4661f",
+  "next": "STAGE 2 HAIR_SYSTEM: create the first hairstyle layer matching the user-provided silver/white reference; red headband remains HEAD slot."
+}

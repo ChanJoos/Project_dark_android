@@ -1,27 +1,25 @@
 # Visual Designer handoff
 
-## 2026-09-11 — STAGE 1 modular BODY_BASE / 4-direction IDLE
+## 2026-09-11 — STAGE 1 modular BODY_BASE / 4-direction WALK
 
-Base main: `018eac36cfdef1cd95187164bdc1d4033fd926e8`
+Base visual head: `06bd66b198a0ff4385c7ee84321dd39c77ced075`
 Evidence: `USER_PROVIDED_REFERENCE / [ADAPTED]`.
 
 Completed stage:
-- STAGE 0 reference lock is active: the user's three martial-artist reference boards are the character proportion/direction/style reference; prior brown-hair/gray-gi baked sprite is superseded and must not be consumed.
-- STAGE 1 BODY_BASE IDLE foundation delivered as a modular body-only set with no hair, head gear, equipment, weapon or shield baked into the body.
+- STAGE 1 BODY_BASE now has 4-direction IDLE plus a new 4-direction WALK set.
+- WALK uses 3 frames per direction: contact A → passing → contact B.
+- Body, hair, equipment, weapon, shield remain separated; no equipment visual is baked into BODY_BASE.
 
 Assets:
-- `design/visual/modular_character/body/player_body_base_idle_4dir_24x32.png` — 4-direction IDLE atlas, direction order `SW / SE / NW / NE`, each frame 24×32 RGBA.
-- `design/visual/modular_character/body/player_body_base_idle_sw_24x32.png`
-- `design/visual/modular_character/body/player_body_base_idle_se_24x32.png`
-- `design/visual/modular_character/body/player_body_base_idle_nw_24x32.png`
-- `design/visual/modular_character/body/player_body_base_idle_ne_24x32.png`
-- `design/visual/modular_character/previews/player_body_base_idle_4dir_preview_8x.png` — nearest-neighbor inspection preview.
-- `design/visual/modular_character/player_body_base_idle_4dir_manifest.json` — hashes and body-layer contract.
+- `design/visual/modular_character/body/player_body_base_walk_4dir_3f_24x32.png` — 4 rows (`SW / SE / NW / NE`) × 3 frames, each frame 24×32 RGBA.
+- `design/visual/modular_character/previews/player_body_base_walk_4dir_3f_preview_8x.png` — nearest-neighbor inspection preview.
+- `design/visual/modular_character/player_body_base_walk_4dir_manifest.json` — frame/anchor/motion contract.
 
 Contract:
 - frame box `24×32`, runtime scale `1.50`, nearest-neighbor.
 - foot anchor `[12,30]` at the ground-contact row.
-- BODY includes only skin/body plus a neutral modesty underlayer; `HAIR / HEAD / TOP / BOTTOM / GLOVES / SHOES / WEAPON_MAIN / OFFHAND` are explicitly not baked.
-- Directions remain independent: `SE=우하`, `SW=좌하`, `NE=우상`, `NW=좌상`; do not substitute unsafe mirroring.
+- `SE=우하`, `SW=좌하`, `NE=우상`, `NW=좌상`; independent direction rows.
+- WALK frame 1 has a 1px body bob; arms counter-swing against the lead leg; contact frames retain y=30 ground contact.
+- `HAIR / HEAD / TOP / BOTTOM / GLOVES / SHOES / WEAPON_MAIN / OFFHAND` remain separate overlay layers.
 
-Next visual task: **STAGE 1 BODY_BASE WALK** — build four-direction WALK frames with the exact same frame box, anchor and body-volume contract. Do not start hair/equipment before the BODY walk poses are stable.
+Next visual task: **STAGE 2 HAIR SYSTEM** — produce the first silver/white hairstyle layer across the current IDLE/WALK body poses, with hair colors as palette variants. The red headband must remain a separate `HEAD` equipment layer.
