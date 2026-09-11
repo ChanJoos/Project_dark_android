@@ -2,8 +2,8 @@
 
 Status: CANONICAL / Source of Truth gate
 
-Current amendments: `design/PLAYTEST_CANON_20260910_2149.md` supersedes conflicting older scale/movement/world-expansion requirements below. Operational ownership and execution priorities follow `docs/DIRECTOR_GUIDE.md` (THREE-20260910, three active roles). One coherent village screen is the first production milestone; do not expand bounds before its acceptance.
-Updated: 2026-09-10
+Current amendments: `design/PLAYTEST_CANON_20260910_2149.md` supersedes conflicting older scale/movement/world-expansion requirements below. `design/LOD_SYSTEM_EVIDENCE_20260911.md` records the 2026-09-09 NamuWiki snapshot as `[FAN]` evidence and must not be silently promoted to official canon. Operational ownership and execution priorities follow `docs/DIRECTOR_GUIDE.md`. One coherent village screen remains the first production milestone; system discovery does not widen the current implementation sprint.
+Updated: 2026-09-11
 
 ## 1. Product canon
 
@@ -11,11 +11,13 @@ Core principle: **세계는 원작 그대로. 성장은 원작 그대로. 캐릭
 
 Development must preserve original proper nouns, job roles, acquisition conditions, currency meaning, quest structure, UI information architecture, and pixel-art proportions when supported by evidence. Mobile changes must be explicitly tagged `[ADAPTED]`.
 
+PROJECT DARK must preserve the original game's identity as more than a combat loop: party role differentiation, open-world social contact, diary/history, quests, PvE/PvP, gathering/social spaces and region identity are design inventory items. Discovery of these systems does not mean all are in the current runtime milestone.
+
 ## 2. Runtime scope — immutable unless user explicitly changes it
 
 `캐릭터 생성 → 평민 Lv1 → 밀레스/초반 성장 → 5개 기본직업(전사/도적/마법사/성직자/무도가) → Lv99 지존 → 전직 OR 순수직업 → 다시 Lv99 → 1차 승급`
 
-Out of scope: 2차 승급, 2차/3차 직업 and later progression. Do not silently expand scope.
+Out of current runtime scope: 2차/3차 승급 and later progression. They remain long-term source inventory when evidenced, but must not silently expand the first playable milestone.
 
 Character creation does not select a job. Preserve gender/hair/hair-color/name creation flow; job is selected after starting as 평민.
 
@@ -28,9 +30,11 @@ Every original-game claim/value should retain evidence status:
 - `[B]`: balanced reconstruction/prototype value, NOT an original fact
 - `[ADAPTED]`: deliberate mobile adaptation
 - `PENDING` / `PENDING_CROP`: insufficient evidence or asset identification
-- `FAN`: fan evidence; never silently promote to official
+- `[FAN]`: fan/community evidence; never silently promote to official
 
 If exact original HP, damage, timing, drop rate, formula, sprite frame count, map geometry, etc. is unknown, do not invent it as canon. Keep it null/PENDING or isolate a prototype `[B]` value.
+
+The NamuWiki snapshot dated 2026-09-09 is a broad discovery/index source, not an authority for exact formulas. It is especially valuable for identifying linked evidence domains that require follow-up: 직업, 기술마법, 사냥터, 용어, 공성전, 반혼의 결서, 문제점, historical interfaces and community guides.
 
 ## 4. Visual canon
 
@@ -40,65 +44,60 @@ Do not use a whole gameplay screenshot as the final map texture. Final world arc
 
 Original asset redistribution for shipping is licensing-gated. Keep reference/prototype assets distinct from distributable shipping assets.
 
+Historical interface evidence shows that visual identity and information density matter: modernization must not become a generic mobile-RPG skin. Preserve readable HP/MP/EXP, character status, inventory/skill access and the world-first presentation while adapting touch targets and layout for mobile.
+
 ### User-confirmed playtest presentation requirements — `[ADAPTED]`
 
-- Character/NPC/monster presentation must not dominate the mobile viewport. Logical world coordinates and collision dimensions must remain independent from renderer scale. The current reduced character presentation is user-approved and must not regress to the earlier oversized prototype without explicit user direction.
-- **The player character must never be presented as a front-facing avatar while idle/moving in normal field play.** PROJECT DARK uses the original isometric/diagonal presentation. Character appearance must be rendered from side-diagonal viewpoints aligned to the four screen-diagonal directions `NW / NE / SW / SE`.
-- Character animation/rendering must support distinct directional visual frames or image sets for those diagonal directions. Mirroring may be used only where visually valid and evidence-compatible; do not collapse all directions into one frontal sprite. `IDLE / WALK / CAST / ATTACK / SKILL / HIT / DEAD` presentation must preserve directional facing where applicable.
-- BODY / HAIR / EQUIPMENT / WEAPON / EFFECT layers must share the same directional anchor/facing contract so equipped visuals do not drift or face the wrong way. Unverified source frames remain `PENDING_CROP`; do not fabricate original-looking directional frames and call them canonical.
-- Player movement must be presented with a following camera/world scroll rather than a permanently fixed one-screen map. Camera behavior must preserve world↔screen coordinate correctness, map clamp, collision, portal and touch targeting.
-- The starting vertical slice must provide enough connected spatial extent to feel like **one explorable village**, rather than a tiny fixed test room. The current expanded prototype is still considered too small for the target experience and must continue expanding. Original geometry must not be invented when unverified; source-backed reconstruction takes priority and authored gaps remain explicitly `[ADAPTED]`.
-- ATTACK / SKILL / MAGIC must expose visibly distinguishable presentation states/effect hooks so animation and motion can be judged on-device. Unverified original frames/timing remain `[B]`, `[ADAPTED]`, or `PENDING_CROP` rather than fabricated original facts.
-- Combat feedback, including damage presentation, must be legible and game-like rather than crude placeholder text/boxes; exact original styling remains evidence-gated.
+- Character/NPC/monster presentation must not dominate the mobile viewport. Logical world coordinates and collision dimensions remain independent from renderer scale.
+- **The player character must never be presented as a front-facing avatar while idle/moving in normal field play.** PROJECT DARK uses the original isometric/diagonal presentation. Character appearance is rendered from `NW / NE / SW / SE`.
+- Character animation/rendering must support distinct directional visual frames or image sets. Mirroring may be used only where visually valid and evidence-compatible.
+- BODY / HAIR / EQUIPMENT / WEAPON / EFFECT layers share one directional anchor/facing contract.
+- Player movement uses following camera/world scroll while preserving world↔screen correctness, map clamp, collision, portal and touch targeting.
+- ATTACK / SKILL / MAGIC expose visibly distinguishable presentation states/effect hooks.
+- Combat feedback must be legible and game-like; exact original styling remains evidence-gated.
+- Current procedural/line-art buildings and props are fallback/debug material only. Production acceptance requires coherent sprite-based 2.5D art.
 
-## 5. Movement canon
+## 5. Movement and targeting canon
 
-Original presentation uses four screen-diagonal directions `↖ ↗ ↙ ↘`. Logical movement can remain four-neighbor grid movement because isometric projection maps logical axes to those screen diagonals. Do not 'fix' this into 8-neighbor movement without evidence.
+Original live-game presentation is four screen-diagonal directions `NW / NE / SW / SE`; historical 8-direction material is test/historical evidence and must not cause an 8-direction runtime regression. Logical four-neighbor movement maps to those screen diagonals.
 
-The rendered character must face and animate in the matching side-diagonal direction while moving; movement direction and visible facing may not contradict each other. A persistent front-facing field pose is non-canonical.
-
-Mobile joystick/tap movement must issue the same logical movement command. NPC tap may pathfind and approach before interaction.
+The rendered character must face and animate in the matching diagonal direction. Mobile joystick/tap movement must issue the same logical movement command.
 
 ### Tap-to-move — USER CANON / `[ADAPTED]`
 
-In addition to joystick/directional control, tapping an eligible point on the world must set a movement target. The screen tap is converted using the current camera/world transform and the character **walks** toward the target; tap-to-move must never teleport the player or bypass collision, pathfinding, map bounds, or portal rules.
+Tapping an eligible world point resolves to a traversable tile/node and the character **walks** there. It must never teleport or bypass collision/pathfinding/map bounds/portal rules. A new world tap replaces the previous target; direct movement overrides it; UI touches never leak into world movement; blocked targets terminate cleanly; successful taps receive brief target feedback.
 
-Input semantics:
-- a new eligible world tap replaces the previous movement target;
-- direct joystick/directional input cancels or overrides the active tap target;
-- combat/action input may cancel or suspend tap movement as required by the shared action state;
-- tapping an NPC prioritizes NPC selection/approach/dialogue semantics over generic ground movement;
-- **tapping empty eligible map/world space must also move the player to that target; NPC tap-to-approach alone does not satisfy this requirement;**
-- HUD, quick-slot, dialogue, utility and other UI touches must never leak through as world movement commands;
-- blocked/unreachable targets must terminate or report failure rather than causing infinite movement/path loops;
-- reaching the target uses an explicit tolerance appropriate to the movement model;
-- successful world taps should receive brief visible target feedback/marker so the player can confirm the command.
+NPC tap prioritizes selection/approach/dialogue. Empty eligible world space must also support tap-to-move.
 
-World owns movement/path/collision semantics and exposes a stable move-target API. UX/input owns touch hit-testing, screen→world conversion/wiring and UI-vs-world input priority. These responsibilities must not be duplicated in `GameView.java`.
+### Targeting model
 
-**Current playtest gap (2026-09-10):** world-side move-target/camera contracts exist, but empty-map tap movement is not yet wired end-to-end in the mobile UX runtime. This is a P0 implementation gap, not an optional backlog item.
+Source evidence distinguishes techniques from magic: techniques commonly resolve by facing/range, while targeted magic may require an explicit target. PROJECT DARK therefore keeps `action targeting mode` as data (`SELF / FACING_AREA / SELECTED_TARGET / GLOBAL` or equivalent) instead of forcing every action through one target model. Desktop pre-target/key-macro ergonomics are evidence of the original control burden, **not** a requirement to reproduce PC key macros on mobile. Mobile quick slots and target lock may adapt the interaction while preserving action semantics.
 
 ## 6. Character action states
 
 Minimum common states: `IDLE / WALK / CAST / ATTACK / SKILL / HIT / DEAD`.
 
-All field-capable states should retain the current `NW / NE / SW / SE` facing context where visually applicable. Directional sprite/image binding must be part of the renderer contract, not a one-frame frontal placeholder.
+All field-capable states retain `NW / NE / SW / SE` facing where applicable. CAST uses a generic raise-hand/hands action unless stronger evidence exists. Weapon attack families and martial-artist unarmed/kick actions remain evidence-gated where exact animation is unknown.
 
-CAST uses a generic raise-hand/hands casting body action unless verified original material says otherwise; spell identity should primarily come from effect/data.
+## 7. Core stats, attributes and combat rules
 
-Weapon attack families: `SWING / THRUST / SHOT(or THROW) / PUNCH`. Martial artist requires a dedicated `KICK` action. Prototype timings are `[B]` until measured.
+Source inventory now explicitly includes five base stats: `STR / INT / WIS / CON / DEX`. Preserve them as separate concepts. `[FAN]` evidence associates STR with basic attack/carry weight, INT with magic attack, WIS with healing/MP recovery and MP growth, CON with defense/HP recovery and HP growth, and DEX with evasion/basic-attack critical chance. Exact formulas and thresholds require stronger evidence before becoming numeric canon.
 
-## 7. Combat rules
+Level 1–99 stat allocation, skill/magic stat prerequisites, post-99 EXP-based stat purchase and per-job purchase caps are source-backed design inventory `[FAN]`; exact costs/caps remain PENDING until corroborated.
 
-Separate action data, animation, input, and effect resolution but connect them with a stable `actionId`.
+Attributes/elements are a first-class system, not a cosmetic damage type. Source inventory identifies nine: neutral, water, earth, wind, fire, wood/forest, metal/steel, dark and light/life. Monster attribute can vary even among the same monster in the described system, and thief `센스` is evidence of party information asymmetry. Exact multipliers/compatibility rules remain evidence-gated.
 
-Action validation order should preserve: alive/state control → target type → distance → line of sight → resource → acquisition/usage condition → cooldown. Apply cost/cooldown once and resolve damage/heal/status at the defined action event.
+Separate action data, animation, input, targeting and effect resolution with a stable `actionId`. Skills and magic are distinct. Do not apply one universal MP-cost/target/cooldown rule. Unknown official probability/defense/element formulas remain PENDING/B.
 
-Skills and magic are distinct. Do not apply one universal MP-cost rule to all skills. AC is not a generic 'higher is better' stat. Unknown official probability/defense/element formulas remain PENDING/B.
+## 8. Jobs and party identity
 
-## 8. RPG/data canon
+The five base jobs are not interchangeable combat skins. Preserve strong role differentiation and party interdependence as a core identity. Job advancement, pure-job paths and later advancement must be represented as progression relationships, not flattened into one linear class ladder.
 
-STR/CON/INT/DEX/WIS, base stats, equipment modifiers, normal EXP/level, ability/progression state, item/equipment identity, quest state and rewards must be separate data concepts. Do not collapse them for implementation convenience.
+The source also documents the historical downside of extreme party dependence. PROJECT DARK should preserve role synergy without deliberately reproducing hours-long party assembly or making solo onboarding impossible. Any accessibility mitigation is `[ADAPTED]` and must not erase class identity.
+
+## 9. RPG/data canon
+
+STR/CON/INT/DEX/WIS, equipment modifiers, normal EXP/level, HP/MP growth, ability/progression state, elements, item/equipment identity, quest state and rewards are separate data concepts.
 
 Item/monster/skill/NPC/map IDs and relationships already present in Master DB or canonical extracted data take precedence over hard-coded Java values.
 
@@ -107,57 +106,66 @@ Item/monster/skill/NPC/map IDs and relationships already present in Master DB or
 Canonical runtime flow:
 `MONSTER_DEFEATED → reward resolution → direct inventory grant → EXP/Gold/quest progression`.
 
-Resolved monster item rewards are granted directly to inventory exactly once. **There is no ground-drop entity, loot-on-floor state, pickup-distance validation, manual pickup interaction, pickup animation, or AUTO pickup behavior in the target PROJECT DARK runtime.**
+Resolved monster item rewards are granted directly to inventory exactly once. There is no ground-drop/pickup subsystem in target PROJECT DARK runtime. Unknown reward probabilities/quantities/relationships remain PENDING.
 
-The former design `monster death → ground item/drop entity → pickup → inventory` is **RETIRED / SUPERSEDED** as of 2026-09-10. It is no longer an alternative mode, backlog item, future feature, regression expectation, or implementation requirement. Historical references to that flow are archival only and have zero design authority.
+## 10. Progression and long-term growth
 
-Unknown drop probability, quantity, item identity, monster→reward relation, or inventory-capacity policy remains PENDING. Removing pickup does not permit fabricated rewards. Inventory mutation and reward claim must be idempotent.
+Experience is not only a conventional level bar in the long-term design inventory. Source evidence describes post-99 EXP expenditure for stat purchase and HP/MP growth at specific temples, with strength heavily tied to accumulated HP/MP. These relationships must be modeled explicitly rather than hard-coded as ordinary level-up-only growth. Exact costs/formulas remain PENDING.
 
-**Current playtest gap (2026-09-10):** the tested main APK does not yet visibly grant monster item rewards into inventory after defeat. This is a P0 runtime-integration defect against this canon. Combat must emit the defeat event exactly once; RPG/Data must resolve an evidence-backed reward and mutate inventory exactly once; UX must make the resulting inventory change observable. A compiling reward pipeline that is not connected to the live play loop does not satisfy this requirement.
+Current implementation scope still ends at first advancement unless user expands it. Later systems (2nd/3rd advancement, Ability, Ether/enhancement and high-tier regions) are recorded as future evidence inventory, not current acceptance gates.
 
-## 9. Quest/world canon
+## 11. Quest, diary and world canon
 
-Preserve original start conditions, NPC dialogue sequence, objective conditions, completion dialogue and rewards when evidenced. Quest state must distinguish undiscovered/available/in-progress/completable/rewarded/abandoned or equivalent explicit states. Do not invent lore, NPC relationships or town facts to fill gaps.
+Preserve original quest start conditions, NPC dialogue sequence, objectives, completion dialogue and rewards when evidenced. Do not invent lore/NPC relationships/town facts to fill gaps.
 
-First content objective is a coherent original-based starting-region/Milles vertical slice with connected NPC, quest and hunting loop, then expansion.
+The original-style **일기장** is now a required design-domain concept: completed quests/events can leave character-history records using the world's in-fiction chronology (e.g. seasonal `세오` dating) when exact evidence is available. It is not merely a generic mobile achievement log.
 
-### World expansion — USER CANON / `[ADAPTED]`
+World architecture must support regions, towns, hunting grounds/dungeons, social spaces and transitions. Source inventory explicitly includes eastern continent `마이소시아` and western continent `메데니아`; later regional progression must not be detached from world/lore relationships.
 
-The current camera-follow/world-scroll behavior is user-verified and accepted as the movement presentation baseline. However, the current prototype world extent is still insufficient. Continue expanding the connected Milles/start-region play area so traversal feels like a real village/field slice rather than a camera moving across a small test rectangle.
+First content objective remains a coherent original-based Milles/start-region vertical slice. Source-backed geometry is preferred; unverified connective geometry is `[ADAPTED]/[B]` and replaceable.
 
-Expansion must preserve collision continuity, reachable paths, NPC/monster visibility, portal semantics, camera clamp correctness and screen↔world touch conversion. Source-backed geometry is preferred; unverified connective geometry must remain explicitly `[ADAPTED]/[B]` and replaceable.
+## 12. Content taxonomy
 
-## 10. Mobile UX canon
+Maintain explicit data/content categories even when not yet implemented:
+- PvE: hunting grounds plus later quick dungeon, dimensional rift, Bekna Tower, Water Temple, Chaos Tower, boss raids.
+- PvP: guild battle and battle royale; historical/retired modes remain archival evidence unless deliberately restored.
+- Social/non-combat: amusement park/social spaces, gathering/fishing, museum/lore-style content where corroborated.
+- World/BGM association: region-specific BGM identity is part of content metadata, but audio files and exact rights are separately gated.
 
-World remains visually central. Approved mobile shell: compact party/quest information, target HP top-center, minimap top-right, utility rail, translucent/expandable chat, HP/MP/EXP bottom-center, circular joystick bottom-left, frequent quick slots + attack + AUTO bottom-right. Do not restore giant placeholder HUD boxes or a permanently expanded PC-sized slot grid.
+Do not implement every listed modern/retired system merely because it appears in a fan index. Each needs era/scope/evidence classification.
 
-User-approved NPC conversation flow from the current playtest is the baseline and must not regress without a concrete reason. Placeholder rectangular/text-heavy controls should continue moving toward a mobile RPG HUD with adequate touch targets and clear pressed/cooldown/disabled/selected feedback.
+## 13. Death, durability and economy
 
-Empty-map tap-to-move is a required peer input path to joystick movement. NPC tap-to-approach is a specialized interaction layered above it, not a replacement for generic world tapping.
+Historical death penalties and durability are evidence domains, not defaults to copy blindly. Source material records very punitive historical item loss/destruction and durability destruction that were later improved. PROJECT DARK must version these rules by era/evidence before selecting a mobile rule. Do not accidentally ship the harsh historical version from a stray reference.
 
-## 11. AUTO canon
+Likewise, later cash-shop inflation, paid growth accelerators and extreme economic barriers are historical lessons, not target product requirements. Monetization is not inferred from the original merely because it existed.
 
-AUTO uses the same combat math and reward path as manual play; no AUTO damage bonus. Manual input overrides AUTO and may resume after ~1.2s `[ADAPTED]`. Repeated path failure must terminate/recover rather than loop forever.
+## 14. Mobile UX canon
 
-Monster rewards use the §8 direct-inventory contract. AUTO contains no loot navigation or pickup subsystem.
+World remains visually central. Approved mobile shell: compact party/quest information, target HP, minimap, utility access, translucent/expandable chat, HP/MP/EXP, joystick/tap movement and quick action slots.
 
-## 12. Agent governance
+Preserve original information semantics while adapting interaction: techniques vs magic remain distinguishable; explicit target selection remains available where an action requires it; quick slots replace keyboard-number dependency; mobile target-lock/pre-target may reduce repeated taps. Do not reproduce PC-only keymap/macro complexity as mandatory gameplay.
 
-Before coding, every development agent must read this file, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, canonical data under `data/design/`, Visual Manifest material, and `docs/DEV_HISTORY*`.
+The 2022-style lesson in the supplied source is explicit: a more modern UI can still fail if it loses information visibility, control efficiency or design identity. PROJECT DARK modernization must therefore be usability-driven, not generic-RPG imitation.
 
-Existing canonical IDs/values/relationships must not be rewritten for convenience. If source documents disagree or required data is absent, record `DESIGN_CONFLICT` or `PENDING`; do not silently decide canon.
+## 15. AUTO canon
 
-**User-canon persistence rule:** when the user explicitly approves, rejects, replaces, or adds a gameplay/UX rule, the Director must persist that decision in canonical design documentation before relying on transient chat or agent prompts. Scheduled agents must treat the latest canonical design as authoritative on subsequent runs.
+AUTO uses the same combat math and reward path as manual play; no AUTO damage bonus. Manual input overrides AUTO. Monster rewards use the direct-inventory contract; AUTO contains no loot-navigation/pickup subsystem.
 
-**Supersession rule:** if any older plan, Master prose, backlog, DEV_HISTORY, handoff, test, code comment, or implementation conflicts with §8 monster reward delivery, §5 Tap-to-move user canon, §4 directional character presentation, or §9 world-expansion user canon, the newer user-canon sections win. Agents must not restore retired ground-drop/pickup behavior, remove empty-map tap-to-move, collapse character facing into a frontal sprite, or shrink the verified camera-follow world back into a one-screen test room merely because an older document lacks the newer rule.
+The source's history of automation/macros is not design authorization for unattended exploit-like behavior. PROJECT DARK AUTO is a first-party bounded convenience system with normal combat rules.
 
-### Current Director P0 integration gates
+## 16. Production priority and governance
 
-Until explicitly verified in a device playtest, the following are P0 integration gates:
-1. player/NPC/monster remain visible after world/camera changes;
-2. character field presentation faces `NW / NE / SW / SE` side-diagonal directions rather than front-facing;
-3. empty eligible map taps walk the character to the tapped world target with camera/collision correctness;
-4. monster defeat results in an observable, exactly-once direct inventory grant when an evidence-backed reward is resolved;
-5. Milles/start-region world extent continues expanding without breaking traversal, targeting, NPC interaction or combat.
+**Knowledge scope and implementation scope are different.** The source inventory can be broad while the active sprint remains narrow.
 
-The Integrator is the final Design Compliance Gate. A compiling implementation that violates this constitution is a failed integration.
+Current P0 remains:
+1. player character visibly correct on-device (`24×32`, scale `1.50`, `NW/NE/SW/SE`, martial artist reference);
+2. exact adjacent isometric movement at the latest user-approved timing;
+3. one coherent sprite-based Milles village screen with production-quality ground/buildings/props;
+4. stable startup/build/install path.
+
+Do not pause P0 to implement quick dungeons, PvP, macros, later advancement, economy, fishing, gathering or other newly catalogued systems.
+
+Before coding, agents read this file, `design/PLAYTEST_CANON_20260910_2149.md`, `design/LOD_SYSTEM_EVIDENCE_20260911.md`, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, canonical data and relevant DEV_HISTORY/handoffs.
+
+If source documents disagree or required data is absent, record `DESIGN_CONFLICT` or `PENDING`; do not silently decide canon. User-approved/rejected rules supersede fan evidence. The Integrator is the final Design Compliance Gate; compiling code that violates this constitution is failed integration.
