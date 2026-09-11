@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "status": "REFERENCE_DISCOVERED",
+  "source": "lod-dressup-2.web.app",
+  "evidence": "user-provided mobile screenshots 2026-09-11",
+  "observed": {
+    "sexes": ["male", "female"],
+    "character_entries": 2,
+    "hair_head_entries": 893,
+    "face_skin_entries": 48,
+    "armor_entries": 1059,
+    "example_armor_id": "mu0000001",
+    "example_armor_name": "셔츠",
+    "example_count_label": 24
+  },
+  "findings": [
+    "male base body is adult/slender rather than modern chibi",
+    "armor is visibly composited over the base character",
+    "asset identifiers are exposed in the UI",
+    "the meaning of the displayed count 24 is not yet proven"
+  ],
+  "canon": {
+    "starter": "PEASANT_PRE_CLASS",
+    "method": "reference reconstruction before generative art",
+    "generated_character_candidate_allowed_in_runtime": false
+  },
+  "next_gate": [
+    "inspect accessible static asset metadata",
+    "determine source frame dimensions and ordering from evidence",
+    "determine body hair face armor compositing offsets and z-order",
+    "revise atlas geometry only if direct evidence contradicts current assumptions"
+  ]
+}
