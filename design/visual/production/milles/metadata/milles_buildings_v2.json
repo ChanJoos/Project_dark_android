@@ -1,0 +1,11 @@
+{
+  "version": "2.0",
+  "projection": "2:1 isometric",
+  "light": "upper_left",
+  "pixel_filter": "nearest",
+  "assets": [
+    {"id":"milles_house_v2","png":"milles_house_v2.png","webp":"milles_house_v2.webp","size":[224,176],"foot_anchor":[112,151]},
+    {"id":"milles_shop_v2","png":"milles_shop_v2.png","webp":"milles_shop_v2.webp","size":[232,180],"foot_anchor":[116,154]},
+    {"id":"milles_inn_v2","png":"milles_inn_v2.png","webp":"milles_inn_v2.webp","size":[248,192],"foot_anchor":[124,163]}
+  ]
+}
