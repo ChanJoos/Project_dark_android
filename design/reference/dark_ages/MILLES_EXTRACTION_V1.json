@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "visual_source_of_truth": "old Dark Ages / 어둠의전설",
   "reference_priority": [
     "user P0 outdoor screenshot",
@@ -11,49 +11,29 @@
     "projection": "isometric diagonal",
     "logical_tile_px": [64, 32],
     "presentation": "continuous textured terrain; tile grid must not be visually exposed",
-    "outdoor_layers": [
-      "grass_base_dense",
-      "dirt_path_dense",
-      "grass_dirt_irregular_transition",
-      "vegetation_integrated_low",
-      "vegetation_integrated_tall"
-    ],
-    "indoor_layers": [
-      "wood_floor_continuous",
-      "wall_stone_wood",
-      "stairs",
-      "counter_furniture",
-      "outside_map_black_void"
-    ],
-    "forbidden": [
-      "Mir2 visual vocabulary",
-      "cute standalone showcase props",
-      "obvious repeated diamond tiles",
-      "modern high-detail isometric diorama buildings"
-    ]
+    "outdoor_layers": ["grass_base_dense", "dirt_path_dense", "grass_dirt_irregular_transition", "vegetation_integrated_low", "vegetation_integrated_tall"],
+    "indoor_layers": ["wood_floor_continuous", "wall_stone_wood", "stairs", "counter_furniture", "outside_map_black_void"],
+    "forbidden": ["Mir2 visual vocabulary", "cute standalone showcase props", "obvious repeated diamond tiles", "modern high-detail isometric diorama buildings"]
   },
   "player": {
-    "archetype": "martial_artist",
+    "archetype": "peasant",
+    "class_state": "pre_class / 평민",
     "native_frame_px": [24, 32],
     "runtime_scale": 1.5,
     "foot_anchor_px": [12, 30],
     "facings": ["NW", "NE", "SW", "SE"],
-    "facing_rule": "all frames are diagonal 3/4; SE is visibly down-right; no front-facing sprite and no mirror-only substitution",
-    "appearance": {
-      "hair": "silver_white",
-      "headband": "red",
-      "torso": "bare",
-      "lower": "dark_navy",
-      "gloves": "dark",
-      "shoes": "red_white"
+    "facing_rule": "all frames are diagonal 3/4; no front-facing sprite and no mirror-only substitution",
+    "appearance_rule": "reconstruct the old Dark Ages peasant starter appearance from P0/P1 references; do not reuse martial-artist clothing or silhouette",
+    "paper_doll": {
+      "base": "BODY_BASE",
+      "layers": ["HAIR_STYLE", "HAIR_COLOR", "HEAD", "TOP", "BOTTOM", "GLOVES", "SHOES", "WEAPON", "OFFHAND"],
+      "rule": "class/equipment visuals are layered over the peasant-compatible base; martial artist is not the base character"
     },
-    "required_states_v1": {
-      "IDLE": "4 directions",
-      "WALK": "4 directions"
-    },
+    "required_states_v1": {"IDLE": "4 directions", "WALK": "4 directions"},
     "movement_sync_seconds_per_tile": 0.8
   },
   "acceptance": [
+    "starter character reads as old Dark Ages peasant, not martial artist",
     "side-by-side reads as old Dark Ages before it reads as generic retro MMORPG",
     "character silhouette remains connected in every frame",
     "foot anchor does not drift across IDLE/WALK",
