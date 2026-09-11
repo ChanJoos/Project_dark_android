@@ -1,0 +1,147 @@
+{
+  "version": "1.0",
+  "projection": "2:1 isometric",
+  "tile_px": [
+    64,
+    32
+  ],
+  "light": "upper_left",
+  "filter": "nearest",
+  "terrain_atlas": {
+    "file": "milles_terrain_atlas_v1.png",
+    "frames": {
+      "milles_grass_64x32": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 32,
+        "anchor": [
+          32,
+          16
+        ]
+      },
+      "milles_stone_64x32": {
+        "x": 64,
+        "y": 0,
+        "w": 64,
+        "h": 32,
+        "anchor": [
+          32,
+          16
+        ]
+      },
+      "milles_path_64x32": {
+        "x": 128,
+        "y": 0,
+        "w": 64,
+        "h": 32,
+        "anchor": [
+          32,
+          16
+        ]
+      }
+    }
+  },
+  "props_atlas": {
+    "file": "milles_props_atlas_v1.png",
+    "frames": {
+      "milles_tree": {
+        "x": 12,
+        "y": 8,
+        "w": 56,
+        "h": 88
+      },
+      "milles_fence": {
+        "x": 84,
+        "y": 48,
+        "w": 72,
+        "h": 48
+      },
+      "milles_sign": {
+        "x": 178,
+        "y": 36,
+        "w": 44,
+        "h": 60
+      },
+      "milles_well": {
+        "x": 4,
+        "y": 120,
+        "w": 72,
+        "h": 72
+      },
+      "milles_bench": {
+        "x": 84,
+        "y": 142,
+        "w": 72,
+        "h": 50
+      },
+      "milles_lamp": {
+        "x": 180,
+        "y": 114,
+        "w": 40,
+        "h": 78
+      }
+    }
+  },
+  "buildings_atlas": {
+    "file": "milles_buildings_atlas_v1.png",
+    "frames": {
+      "milles_house": {
+        "x": 16,
+        "y": 16,
+        "w": 192,
+        "h": 160
+      },
+      "milles_shop": {
+        "x": 240,
+        "y": 16,
+        "w": 192,
+        "h": 160
+      },
+      "milles_inn": {
+        "x": 456,
+        "y": 8,
+        "w": 208,
+        "h": 168
+      }
+    }
+  },
+  "anchors": {
+    "tree": [
+      28,
+      78
+    ],
+    "fence": [
+      36,
+      42
+    ],
+    "sign": [
+      22,
+      54
+    ],
+    "well": [
+      36,
+      62
+    ],
+    "bench": [
+      36,
+      43
+    ],
+    "lamp": [
+      20,
+      69
+    ],
+    "house": [
+      96,
+      145
+    ],
+    "shop": [
+      96,
+      145
+    ],
+    "inn": [
+      104,
+      153
+    ]
+  }
+}
