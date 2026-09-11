@@ -1,0 +1,27 @@
+{
+  "assetSetId": "player.body.base.v1",
+  "stage": "STAGE_1_BASE_BODY_FOUNDATION",
+  "evidence": "USER_PROVIDED_REFERENCE / ADAPTED",
+  "frameBox": {"w": 24, "h": 32},
+  "runtimeScale": 1.5,
+  "filter": "nearest-neighbor",
+  "state": "IDLE",
+  "directions": ["SW", "SE", "NW", "NE"],
+  "footAnchor": {"x": 12, "y": 30},
+  "bodyContract": {
+    "hairBaked": false,
+    "equipmentBaked": false,
+    "weaponBaked": false,
+    "shieldBaked": false,
+    "modestyBase": "neutral non-equipment underlayer"
+  },
+  "files": {
+    "player_body_base_idle_nw_24x32.png": "f8cd42189f74194ec3d69ff90a441a1b18cdd3faf2521598d5f3e51b687e93f0",
+    "player_body_base_idle_se_24x32.png": "0b2c20fca74775e7f3c8b9fefb643e229c29ada6fcd201705ea3e251dd671ace",
+    "player_body_base_idle_4dir_preview_8x.png": "654f2fde14fe0b69b1aa4bc05162e86b6ef2548ae7ad1f7dcb352c9ab15416fa",
+    "player_body_base_idle_ne_24x32.png": "3b7ab999fbe6a421e81e3e42078aa667f340cab568f9f9a43241070d079eee99",
+    "player_body_base_idle_4dir_24x32.png": "92f6d2b88914a7a49f31b177bb3628a6cbb84872c522792553d13e3ce6a78e29",
+    "player_body_base_idle_sw_24x32.png": "315c889fdafc5afbb6ff76a5f5d7f1d5f1cec31b2db405bb77e5354de96b30c2"
+  },
+  "next": "Create BODY_BASE WALK for SW/SE/NW/NE with identical frame box and foot-anchor contract."
+}
