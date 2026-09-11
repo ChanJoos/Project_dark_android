@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "status": "REFERENCE_RECONSTRUCTION_CANDIDATE",
+  "resource": "player_peasant_idle_walk",
+  "frame_px": [24, 32],
+  "atlas_px": [120, 128],
+  "runtime_scale": 1.5,
+  "rows": ["NW", "NE", "SW", "SE"],
+  "columns": ["IDLE", "WALK_0", "WALK_1", "WALK_2", "WALK_3"],
+  "foot_anchor": [12, 30],
+  "source": {
+    "site": "lod-dressup-2.web.app",
+    "body": "mm001",
+    "idle_group": "02",
+    "walk_group": "01"
+  },
+  "constraints": {
+    "weapon": false,
+    "head_body_split": false,
+    "resampling": "nearest-neighbor"
+  },
+  "direction_mapping": {
+    "NW": "02_0/back canonical",
+    "NE": "02_1/back opposite",
+    "SW": "02_2/front canonical",
+    "SE": "02_3/front opposite"
+  },
+  "note": "Walk source exposes canonical front/back motion; opposite diagonal walk rows are mirrored pending a second-direction source capture. Exact four-direction IDLE is source-derived."
+}
