@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "purpose": "Reconstruct the old Dark Ages starter peasant from references; do not free-generate the production sprite.",
+  "production_policy": {
+    "primary_method": "reference extraction + manual pixel reconstruction",
+    "image_generation_role": "gap-fill candidate only; never authoritative",
+    "forbidden": [
+      "text-only prompt generation as production source",
+      "generic Korean MMORPG averaging",
+      "Mir2/Lineage-style architecture or character vocabulary",
+      "front/back cardinal substitution for diagonal facings",
+      "simple mirroring accepted as an independent facing",
+      "class-specific martial-artist markers in the starter sprite"
+    ]
+  },
+  "reference_order": [
+    {
+      "id": "USER-P0-CHAR",
+      "kind": "user supplied old-Dark-Ages screenshots",
+      "use": ["scale", "silhouette", "pixel density", "world-relative character size"]
+    },
+    {
+      "id": "DA-HIST-2004-001",
+      "url": "https://lod.nexon.com/Community/screenshot/121162?Category2=2",
+      "date": "2004-05-13",
+      "use": ["period character proportions", "crowd sprite vocabulary"]
+    },
+    {
+      "id": "DA-MILLES-2005-001",
+      "url": "https://lod.nexon.com/Community/screenshot/125266?Category2=2",
+      "date": "2005-11-26",
+      "use": ["period scale", "character/world relation", "Milles context"]
+    },
+    {
+      "id": "DA-OLDMAP-001",
+      "url": "https://lod.nexon.com/Community/screenshot/136184?Category2=2",
+      "date": "2021-06-01",
+      "use": ["old-map scale context", "continuous terrain composition"]
+    }
+  ],
+  "sprite_contract": {
+    "resource_name": "player_peasant_idle_walk.png",
+    "atlas_px": [120, 128],
+    "cell_px": [24, 32],
+    "rows": ["NW", "NE", "SW", "SE"],
+    "columns": ["IDLE", "WALK_1", "WALK_2", "WALK_3", "WALK_4"],
+    "runtime_scale": 1.5,
+    "foot_anchor_px": [12, 30],
+    "walk_cycle_seconds": 0.8,
+    "walk_fps": 5.0,
+    "alpha_background": true
+  },
+  "base_character": {
+    "state": "PEASANT / PRE_CLASS",
+    "body": "BODY_BASE",
+    "required_layers": ["HAIR_STYLE", "HAIR_COLOR"],
+    "equipment_layers": ["HEAD", "TOP", "BOTTOM", "GLOVES", "SHOES", "WEAPON", "OFFHAND"],
+    "default_weapon": null,
+    "default_offhand": null,
+    "rule": "base movement geometry and foot anchor must remain unchanged by later class/equipment layers"
+  },
+  "reconstruction_steps": [
+    "collect original/reference screenshots at native or highest available resolution",
+    "identify candidate starter/low-level silhouettes without assuming job from costume",
+    "measure head height, shoulder width, torso length, leg length, overall occupied bbox and foot baseline",
+    "normalize one neutral BODY_BASE pose into a 24x32 cell without resampling blur",
+    "construct NW/NE/SW/SE independently from reference evidence; do not approve mirror-only facings",
+    "build IDLE first and pass direction/silhouette gate",
+    "derive WALK_1..4 while keeping anchor [12,30] and a connected body silhouette",
+    "compose exact 120x128 atlas",
+    "run tools/audit_peasant_sprite.py",
+    "compare at 1.5x runtime scale against P0/P1 screenshots",
+    "only then copy into app/src/main/res/drawable-nodpi/player_peasant_idle_walk.png"
+  ],
+  "visual_gate": {
+    "must_pass": [
+      "reads as old Dark Ages before generic retro MMORPG",
+      "reads as starter peasant/pre-class rather than martial artist or another class",
+      "small adult proportion; not modern chibi",
+      "all four facings visibly diagonal 3/4",
+      "no disconnected neck/body/limb artifacts",
+      "feet share a stable baseline and common anchor",
+      "no anti-aliased blur at native size",
+      "world-relative scale remains small"
+    ],
+    "automatic_reject": [
+      "Mir2-like character silhouette",
+      "modern polished pixel-art proportions",
+      "invented logo/text/reference board used as source",
+      "wrong atlas dimensions",
+      "anchor documented as [12,31]",
+      "production PNG created directly from a broad generative prompt"
+    ]
+  },
+  "status": "REFERENCE_RECONSTRUCTION_ACTIVE; PRODUCTION_ATLAS_NOT_ACCEPTED"
+}
