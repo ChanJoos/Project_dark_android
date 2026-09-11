@@ -57,7 +57,7 @@ public final class WorldMoveTargetController {
     Node(TileCenter tile,float g,float f,Node parent){this.tile=tile;this.g=g;this.f=f;this.parent=parent;}
   }
 
-  public static final float TILE_STEP_SECONDS=.80f;
+  public static final float TILE_STEP_SECONDS=.60f;
   public static final float DEFAULT_GROUND_TOLERANCE=0f;
   public static final float DEFAULT_NPC_APPROACH_TOLERANCE=56f;
   public static final float DEFAULT_MONSTER_APPROACH_TOLERANCE=72f;
