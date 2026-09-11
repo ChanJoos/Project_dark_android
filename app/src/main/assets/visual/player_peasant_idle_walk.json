@@ -1,0 +1,16 @@
+{
+  "version": "1.1",
+  "status": "PRODUCTION_RUNTIME_ACTIVE",
+  "resource": "player_peasant_idle_walk",
+  "frame_px": [24, 32],
+  "atlas_px": [120, 128],
+  "runtime_scale": 1.5,
+  "rows": ["NW", "NE", "SW", "SE"],
+  "columns": ["IDLE", "WALK_0", "WALK_1", "WALK_2", "WALK_3"],
+  "foot_anchor": [12, 30],
+  "weapon": false,
+  "head_body_split": false,
+  "source": "lod-dressup-2.web.app HAR body/mm001; IDLE group 02; WALK group 01",
+  "runtime_drawable": "app/src/main/res/drawable-nodpi/player_peasant_idle_walk.png",
+  "renderer_contract": "CharacterRenderer 120x128, 5 columns x 4 rows"
+}
