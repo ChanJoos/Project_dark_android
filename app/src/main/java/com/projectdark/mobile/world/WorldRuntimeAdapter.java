@@ -1,6 +1,7 @@
 package com.projectdark.mobile.world;
 
 import android.graphics.RectF;
+import com.projectdark.mobile.CharacterRenderer;
 import com.projectdark.mobile.RuntimeState;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +43,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
     presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
+    CharacterRenderer.setPresentationWalkClock(0f);
   }
 
   public RuntimeState runtime(){return runtime;}
@@ -91,6 +93,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
         remaining=presentation.advance(remaining);
         float consumed=Math.max(0f,before-remaining);
         presentationWalkClock+=consumed;
+        CharacterRenderer.setPresentationWalkClock(presentationWalkClock);
         if(remaining>=before-.000001f)break;
         continue;
       }
@@ -103,7 +106,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   /** Re-establishes the tile-center invariant after spawn/revive before snapping the camera. */
-  public void snapCameraToPlayer(){snapPlayerToNearestTraversableTile();presentation.snap(runtime.player().x,runtime.player().y);presentationWalkClock=0f;camera.snapTo(runtime.player().x,runtime.player().y);}
+  public void snapCameraToPlayer(){snapPlayerToNearestTraversableTile();presentation.snap(runtime.player().x,runtime.player().y);presentationWalkClock=0f;CharacterRenderer.setPresentationWalkClock(0f);camera.snapTo(runtime.player().x,runtime.player().y);}
   public float presentationPlayerX(){return presentation.x();}
   public float presentationPlayerY(){return presentation.y();}
   public float presentationWalkClock(){return presentationWalkClock;}
@@ -164,7 +167,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     runtime.player().x=best.x;runtime.player().y=best.y;
   }
 
-  private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id)&&m.alive)return m;return null;}
+  private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id))return m;return null;}
 
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}
 }
