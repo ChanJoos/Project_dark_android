@@ -2,6 +2,7 @@ package com.projectdark.mobile;
 
 import android.graphics.RectF;
 import com.projectdark.mobile.world.MillesProductionCollision;
+import com.projectdark.mobile.world.MillesProductionCollisionAudit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -31,6 +32,7 @@ public final class WorldDef {
   private final MillesMasterManifest masterManifest=new MillesMasterManifest(); private final MillesTraceContract traceContract=new MillesTraceContract(masterManifest);
 
   public WorldDef(){
+    if(!MillesProductionCollisionAudit.verify())throw new IllegalStateException("Milles production collision audit failed");
     List<RectF> b=new ArrayList<>();
     for(MillesProductionCollision.Footprint f:MillesProductionCollision.blockers())b.add(new RectF(f.left,f.top,f.right,f.bottom));
     blockers=Collections.unmodifiableList(b);
