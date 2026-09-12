@@ -1,5 +1,33 @@
 # Combat / Monster handoff
 
+## 2026-09-10 19:35 KST — PASS 34 / agent/combat/20260910-1935
+
+### Continued blocker resolved
+- Added `CombatRuntimeSession` to make the PASS 33 integration order executable instead of leaving it as handoff prose.
+- Director supplies one strictly increasing `frameId` and a list of MANUAL/AUTO `ActionRequest`s per combat frame.
+- One `advance()` now owns cooldown advancement, respawn-ledger synchronization, shared resolver tick, single event drain, feedback projection, and damage-number lifecycle advancement.
+- Duplicate/stale frame calls return `STALE_FRAME_IGNORED` with no submissions/events/mutations.
+- New RuntimeState `MONSTER_RESPAWNED` sequences reset the resolver target-life gate exactly once before the next-life request is admitted.
+
+### Stable integration contract
+1. Call `RuntimeState.tick(dt)` first so runtime respawns and its `MONSTER_RESPAWNED` ledger event exist.
+2. Gather player MANUAL and MonsterAI AUTO intents as `CombatRuntimeSession.ActionRequest`s.
+3. Call `session.advance(frameId, dt, requests, anchorPort)` exactly once.
+4. Consume only the returned `FrameSnapshot.resolverEvents` / `feedbackEvents`; do not independently drain the resolver.
+5. Render `damageNumbers` and `activeActions.progress` from the same snapshot.
+6. While RuntimeState remains defeat-ledger authority, RPG continues consuming `CombatLedger`; do not synthesize a second defeat from feedback.
+
+### Verification
+- `CombatRuntimeSessionAudit`: PASS in isolated Java compile/run against the real RuntimeState surface.
+- First and second monster lives each publish exactly one `MONSTER_DEFEATED`, with one intervening respawn reset.
+- Replayed frame ID produces no duplicate hit or publication.
+- Full Gradle/APK and Android wiring remain Director-owned and unverified in this branch.
+
+### Next Combat P0
+1. Replace the temporary request-list handoff from MonsterAI with a narrow session-owned intent collector so Director does not need to translate AI submissions manually.
+2. Add action cancellation/reset semantics for map transition and session teardown without leaking an active cast into the next world.
+3. Keep crit/miss/heal production policy PENDING until canonical or explicitly approved runtime rules exist.
+
 ## 2026-09-10 18:35 KST — PASS 33 / agent/combat/20260910-1835
 
 ### Source state
