@@ -40,6 +40,8 @@ public final class CharacterRendererAudit {
     if(!"PEASANT_MM001_BASE_20260912_R1".equals(CharacterRenderer.PRESENTATION_PROFILE))return false;
     if(!"PEASANT".equals(CharacterRenderer.STARTER_ARCHETYPE)||!"PRE_CLASS".equals(CharacterRenderer.STARTER_CLASS_STATE))return false;
     if(!"player.peasant.mm001.idle_walk.production-2026-09-12".equals(CharacterRenderer.IDLE_WALK_ASSET_ID))return false;
+    if(!"player_armor_mu0000058_idle_walk".equals(CharacterRenderer.LUERS_ROBE_RESOURCE))return false;
+    if(!"mu0000058".equals(CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID))return false;
     if(!CharacterRenderer.HARD_PIXEL_GRID||!CharacterRenderer.STARTER_WEAPONLESS||!CharacterRenderer.STARTER_OFFHAND_EMPTY)return false;
     if(CharacterRenderer.LEGACY_MARTIAL_ASSET_ALLOWED)return false;
     if(CharacterRenderer.PAPER_DOLL_ORDER.size()!=EXPECTED_PAPER_DOLL_LAYER_COUNT)return false;

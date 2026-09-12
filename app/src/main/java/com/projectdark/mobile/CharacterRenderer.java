@@ -22,6 +22,7 @@ public final class CharacterRenderer {
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
   public static final String IDLE_WALK_RESOURCE="player_peasant_idle_walk";
+  public static final String LUERS_ROBE_RESOURCE="player_armor_mu0000058_idle_walk";
 
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
@@ -50,6 +51,8 @@ public final class CharacterRenderer {
   public static final int ATLAS_HEIGHT=ATLAS_FRAME_HEIGHT*ATLAS_ROWS;
   public static final int SOURCE_IDLE_WALK_WIDTH=SOURCE_FRAME_WIDTH*IDLE_WALK_COLUMNS;
   public static final int SOURCE_ATLAS_HEIGHT=SOURCE_FRAME_HEIGHT*ATLAS_ROWS;
+
+  private static volatile float presentationWalkClock;
 
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
@@ -86,6 +89,7 @@ public final class CharacterRenderer {
   private final Paint fxPaint=new Paint();
   private final Bitmap idleWalkAtlas;
   private final Bitmap attackAtlas;
+  private final Bitmap luersRobeAtlas;
 
   public CharacterRenderer(){
     pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);
@@ -93,6 +97,7 @@ public final class CharacterRenderer {
     Resources resources=findProcessResources();
     idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);
     attackAtlas=tryLoadByName(resources,"player_peasant_attack",ACTION_WIDTH,ATLAS_HEIGHT);
+    luersRobeAtlas=tryLoadByName(resources,LUERS_ROBE_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);
     // Missing/corrupt/shape-invalid resources remain startup-safe through the fallback below.
   }
 
@@ -105,6 +110,9 @@ public final class CharacterRenderer {
     switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}
   }
 
+  public static void setPresentationWalkClock(float clock){presentationWalkClock=Math.max(0f,clock);}
+  public static float presentationWalkClock(){return presentationWalkClock;}
+
   public boolean resourceAtlasActive(){return validAtlas(idleWalkAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);}
   public boolean attackAtlasActive(){return validAtlas(attackAtlas,ACTION_WIDTH,ATLAS_HEIGHT);}
 
@@ -113,7 +121,9 @@ public final class CharacterRenderer {
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
     drawShadow(canvas,pose,anchorY);
     if((pose.state==State.IDLE||pose.state==State.WALK)&&resourceAtlasActive()){
-      drawIdleWalk(canvas,pose,anchorY); return;
+      drawIdleWalk(canvas,pose,anchorY);
+      drawEquipment(canvas,pose,anchorY);
+      return;
     }
     if(pose.state==State.ATTACK&&attackAtlasActive()){
       drawAttack(canvas,pose,anchorY); return;
@@ -130,9 +140,26 @@ public final class CharacterRenderer {
 
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){
     int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
-    int col=pose.state==State.IDLE?0:1+walkFrameIndex(pose.walkClock);
+    int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
     drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
         SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,1f,anchorY,pose.x);
+  }
+
+  private void drawEquipment(Canvas c,Pose pose,float anchorY){
+    if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)
+        ||!validAtlas(luersRobeAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT))return;
+    int row=atlasRow(pose.direction); if(row<0)return;
+    int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
+    drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
+        SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,1f,anchorY,pose.x);
+  }
+
+  public boolean equipmentAtlasActive(){return validAtlas(luersRobeAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);}
+
+  private static boolean containsVisualRef(String refs,String expected){
+    if(refs==null||expected==null)return false;
+    for(String ref:refs.split(","))if(expected.equals(ref))return true;
+    return false;
   }
 
   private void drawAttack(Canvas c,Pose pose,float anchorY){
@@ -190,7 +217,7 @@ public final class CharacterRenderer {
   private void drawSafePeasantFallback(Canvas c,Pose pose,float anchorY){
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
     boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
-    int frame=pose.state==State.WALK?walkFrameIndex(pose.walkClock):0;
+    int frame=pose.state==State.WALK?walkFrameIndex(presentationWalkClock):0;
     int step=frame==1?-1:frame==3?1:0;
     float phase=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));
     c.save(); c.translate(pose.x-12f*PLAYER_RENDER_SCALE,anchorY-32f*PLAYER_RENDER_SCALE); c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);

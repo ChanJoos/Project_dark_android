@@ -47,6 +47,7 @@ public final class RpgInteractionController {
     RpgProgressionState.EquipResult result=equipSelectedDetailed(rpg);
     switch(result){
       case EQUIPPED:return InteractionResult.EQUIPPED;
+      case UNEQUIPPED:return InteractionResult.EQUIPPED;
       case ITEM_NOT_OWNED:return InteractionResult.NO_ITEM;
       case UNKNOWN_ITEM:
       case NOT_EQUIPPABLE:
