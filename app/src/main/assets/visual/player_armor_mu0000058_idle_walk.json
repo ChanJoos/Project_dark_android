@@ -1,0 +1,22 @@
+{
+  "asset_id": "mu0000058",
+  "source_name": "루어스레더로브",
+  "source_status": "HAR_VERIFIED",
+  "source_group": "01",
+  "source_frames": {
+    "NE": [0, 2, 3, 4, 5],
+    "SE": [1, 6, 7, 8, 9]
+  },
+  "derived_directions": {
+    "NW": "horizontal source-frame reflection of NE",
+    "SW": "horizontal source-frame reflection of SE"
+  },
+  "logical_frame_px": [24, 32],
+  "cell_px": [36, 48],
+  "sheet_px": [180, 192],
+  "directions": ["NW", "NE", "SW", "SE"],
+  "sequence": ["IDLE", "WALK_1", "WALK_2", "WALK_3", "WALK_4"],
+  "foot_anchor_in_cell": [18, 46],
+  "runtime_resource": "player_armor_mu0000058_idle_walk.webp",
+  "sha256": "82bcc9ae18aff19e5abc05eb0c6081de9a24f0fad24015046b7569c51b098a04"
+}
