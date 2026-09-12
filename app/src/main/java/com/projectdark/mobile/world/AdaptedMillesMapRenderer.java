@@ -1,8 +1,15 @@
 package com.projectdark.mobile.world;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import java.lang.reflect.Method;
 
 /**
  * [ADAPTED]/[B] evidence-safe renderer for the current Milles prototype map.
@@ -11,11 +18,31 @@ import android.graphics.Path;
 public final class AdaptedMillesMapRenderer {
   private final Paint fill=new Paint();
   private final Paint edge=new Paint();
+  private final Paint pixel=new Paint();
   private final Path path=new Path();
+  private final Bitmap terrainAtlas,propsAtlas,houseSprite,shopSprite,innSprite;
+
+  private static final class SpriteSpec {
+    final int x,y,w,h,anchorX,anchorY;
+    SpriteSpec(int x,int y,int w,int h,int anchorX,int anchorY){this.x=x;this.y=y;this.w=w;this.h=h;this.anchorX=anchorX;this.anchorY=anchorY;}
+  }
+  private static final SpriteSpec TREE=new SpriteSpec(16,0,64,96,32,86);
+  private static final SpriteSpec FENCE=new SpriteSpec(104,44,80,52,40,47);
+  private static final SpriteSpec SIGN=new SpriteSpec(214,28,52,68,26,61);
+  private static final SpriteSpec WELL=new SpriteSpec(8,112,80,80,40,68);
+  private static final SpriteSpec BENCH=new SpriteSpec(104,136,80,56,40,49);
+  private static final SpriteSpec LAMP=new SpriteSpec(216,104,48,88,24,79);
 
   public AdaptedMillesMapRenderer(){
     fill.setStyle(Paint.Style.FILL);fill.setAntiAlias(false);
     edge.setStyle(Paint.Style.STROKE);edge.setStrokeWidth(1f);edge.setAntiAlias(false);edge.setColor(0x55312B24);
+    pixel.setAntiAlias(false);pixel.setDither(false);pixel.setFilterBitmap(false);
+    Resources resources=findProcessResources();
+    terrainAtlas=tryLoad(resources,"milles_terrain_v3",192,96);
+    propsAtlas=tryLoad(resources,"milles_props_v3",288,192);
+    houseSprite=tryLoad(resources,"milles_house_v2",224,176);
+    shopSprite=tryLoad(resources,"milles_shop_v2",232,180);
+    innSprite=tryLoad(resources,"milles_inn_v2",248,192);
   }
 
   /** Draw TILE, 2.5D decoration, then collision-aligned static structures. */
@@ -31,11 +58,12 @@ public final class AdaptedMillesMapRenderer {
     for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles()){
       WorldCameraTransform.Point c=world.worldToScreen(tile.centerX,tile.centerY);
       if(c.x<-margin||c.x>canvas.getWidth()+margin||c.y<-margin||c.y>canvas.getHeight()+margin)continue;
-      fill.setColor(tileColor(tile.kind,tile.variant));
-      diamond(c.x,c.y,AdaptedMillesIsometricTileLayer.HALF_WIDTH,AdaptedMillesIsometricTileLayer.HALF_HEIGHT);
-      canvas.drawPath(path,fill);canvas.drawPath(path,edge);
-      drawTileDetail(canvas,c.x,c.y,tile);
-      drawTransitionEdges(canvas,c.x,c.y,tile.transitionMask);
+      if(terrainAtlas!=null){
+        int row=tile.kind==AdaptedMillesIsometricTileLayer.TileKind.GROUND?0:
+            tile.kind==AdaptedMillesIsometricTileLayer.TileKind.ROAD?2:1;
+        int col=Math.floorMod(tile.variant,3);
+        drawSprite(canvas,terrainAtlas,new SpriteSpec(col*64,row*32,64,32,32,16),c.x,c.y);
+      }
     }
   }
 
@@ -47,16 +75,8 @@ public final class AdaptedMillesMapRenderer {
     for(AdaptedMillesDecorationLayer.Decoration d:world.map().decorations()){
       WorldCameraTransform.Point foot=world.worldToScreen(d.footX,d.footY);
       if(foot.x+d.width<0||foot.x-d.width>canvas.getWidth()||foot.y+d.height*.25f<0||foot.y-d.height>canvas.getHeight())continue;
-      switch(d.kind){
-        case TREE:drawIsoTree(canvas,foot,d);break;
-        case FENCE:drawIsoFence(canvas,world,d);break;
-        case SIGN:drawIsoSign(canvas,world,d);break;
-        case WELL:drawIsoWell(canvas,foot,d);break;
-        case BENCH:drawIsoBench(canvas,world,d);break;
-        case LAMP:drawIsoLamp(canvas,foot,d);break;
-        case BUSH:drawIsoBush(canvas,foot,d);break;
-        case GATEPOST:drawIsoGatepost(canvas,foot,d);break;
-      }
+      SpriteSpec spec=propSpec(d.kind);
+      if(propsAtlas!=null&&spec!=null)drawSprite(canvas,propsAtlas,spec,foot.x,foot.y);
       edge.setStrokeWidth(1f);edge.setColor(0x55312B24);
     }
   }
@@ -206,9 +226,53 @@ public final class AdaptedMillesMapRenderer {
       float overhang=visual==null?8f:visual.roofOverhang;
       if(br.x+overhang<0f||tl.x-overhang>canvas.getWidth()||br.y<0f||tl.y-wallHeight-roofRise>canvas.getHeight())continue;
       AdaptedMillesIsoBuildingLayer.Building iso=AdaptedMillesIsoBuildingLayer.byStructureId(object.id);
-      if(iso!=null)drawIsometricBuilding(canvas,world,iso);
-      else drawStructure(canvas,object,visual,tl.x,tl.y,br.x,br.y);
+      if(iso!=null){
+        Bitmap sprite=buildingSprite(object.id);
+        if(sprite!=null){
+          WorldCameraTransform.Point foot=world.worldToScreen(iso.centerX,iso.centerY+iso.halfDepth);
+          int anchorX=sprite.getWidth()/2;
+          int anchorY="plaza_landmark_a".equals(object.id)?154:"plaza_landmark_b".equals(object.id)?163:151;
+          drawSprite(canvas,sprite,new SpriteSpec(0,0,sprite.getWidth(),sprite.getHeight(),anchorX,anchorY),foot.x,foot.y);
+        }
+      }
     }
+  }
+
+  private SpriteSpec propSpec(AdaptedMillesDecorationLayer.Kind kind){
+    switch(kind){case TREE:return TREE;case FENCE:return FENCE;case SIGN:return SIGN;case WELL:return WELL;case BENCH:return BENCH;case LAMP:return LAMP;default:return null;}
+  }
+
+  private Bitmap buildingSprite(String id){
+    if("west_house".equals(id))return houseSprite;
+    if("plaza_landmark_a".equals(id))return shopSprite;
+    if("plaza_landmark_b".equals(id))return innSprite;
+    return null;
+  }
+
+  private void drawSprite(Canvas canvas,Bitmap bitmap,SpriteSpec spec,float footX,float footY){
+    Rect src=new Rect(spec.x,spec.y,spec.x+spec.w,spec.y+spec.h);
+    float left=Math.round(footX-spec.anchorX),top=Math.round(footY-spec.anchorY);
+    canvas.drawBitmap(bitmap,src,new RectF(left,top,left+spec.w,top+spec.h),pixel);
+  }
+
+  private Bitmap tryLoad(Resources resources,String name,int width,int height){
+    if(resources==null)return null;
+    try{
+      int id=resources.getIdentifier(name,"drawable","com.projectdark.mobile");
+      if(id==0)return null;
+      BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;
+      Bitmap bitmap=BitmapFactory.decodeResource(resources,id,options);
+      return bitmap!=null&&bitmap.getWidth()==width&&bitmap.getHeight()==height?bitmap:null;
+    }catch(Throwable ignored){return null;}
+  }
+
+  private Resources findProcessResources(){
+    try{
+      Class<?> activityThread=Class.forName("android.app.ActivityThread");
+      Method currentApplication=activityThread.getDeclaredMethod("currentApplication");
+      Object application=currentApplication.invoke(null);
+      return application instanceof Context?((Context)application).getResources():null;
+    }catch(Throwable ignored){return null;}
   }
 
   private void drawIsometricBuilding(Canvas canvas,WorldRuntimeAdapter world,AdaptedMillesIsoBuildingLayer.Building b){
