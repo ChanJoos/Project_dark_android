@@ -53,6 +53,21 @@ public final class AdaptedMillesMapRenderer {
     drawObjects(canvas,world);
   }
 
+  /** Ground and static sprites whose feet are not in front of the player. */
+  public void drawBackground(Canvas canvas,WorldRuntimeAdapter world,float playerDepth){
+    if(canvas==null||world==null)return;
+    drawTiles(canvas,world);
+    drawDecorations(canvas,world,playerDepth,false);
+    drawObjects(canvas,world,playerDepth,false);
+  }
+
+  /** Static sprites with a lower screen foot than the player, drawn after dynamic entities. */
+  public void drawForeground(Canvas canvas,WorldRuntimeAdapter world,float playerDepth){
+    if(canvas==null||world==null)return;
+    drawDecorations(canvas,world,playerDepth,true);
+    drawObjects(canvas,world,playerDepth,true);
+  }
+
   public void drawTiles(Canvas canvas,WorldRuntimeAdapter world){
     float margin=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
     for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles()){
@@ -72,7 +87,12 @@ public final class AdaptedMillesMapRenderer {
    * No TREE/FENCE/BENCH/SIGN is rendered as a screen-aligned flat icon anymore.
    */
   public void drawDecorations(Canvas canvas,WorldRuntimeAdapter world){
+    drawDecorations(canvas,world,Float.POSITIVE_INFINITY,false);
+  }
+
+  private void drawDecorations(Canvas canvas,WorldRuntimeAdapter world,float playerDepth,boolean foreground){
     for(AdaptedMillesDecorationLayer.Decoration d:world.map().decorations()){
+      if((d.footY>playerDepth)!=foreground)continue;
       WorldCameraTransform.Point foot=world.worldToScreen(d.footX,d.footY);
       if(foot.x+d.width<0||foot.x-d.width>canvas.getWidth()||foot.y+d.height*.25f<0||foot.y-d.height>canvas.getHeight())continue;
       SpriteSpec spec=propSpec(d.kind);
@@ -217,6 +237,10 @@ public final class AdaptedMillesMapRenderer {
    * Footprints remain identical to WorldDef collision; only presentation extends upward.
    */
   public void drawObjects(Canvas canvas,WorldRuntimeAdapter world){
+    drawObjects(canvas,world,Float.POSITIVE_INFINITY,false);
+  }
+
+  private void drawObjects(Canvas canvas,WorldRuntimeAdapter world,float playerDepth,boolean foreground){
     for(AdaptedMillesObjectLayer.ObjectInstance object:world.map().renderObjects()){
       WorldCameraTransform.Point tl=world.worldToScreen(object.collisionLeft,object.collisionTop);
       WorldCameraTransform.Point br=world.worldToScreen(object.collisionRight,object.collisionBottom);
@@ -227,6 +251,8 @@ public final class AdaptedMillesMapRenderer {
       if(br.x+overhang<0f||tl.x-overhang>canvas.getWidth()||br.y<0f||tl.y-wallHeight-roofRise>canvas.getHeight())continue;
       AdaptedMillesIsoBuildingLayer.Building iso=AdaptedMillesIsoBuildingLayer.byStructureId(object.id);
       if(iso!=null){
+        float objectDepth=iso.centerY+iso.halfDepth;
+        if((objectDepth>playerDepth)!=foreground)continue;
         Bitmap sprite=buildingSprite(object.id);
         if(sprite!=null){
           WorldCameraTransform.Point foot=world.worldToScreen(iso.centerX,iso.centerY+iso.halfDepth);
