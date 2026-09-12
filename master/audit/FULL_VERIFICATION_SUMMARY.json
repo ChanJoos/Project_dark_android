@@ -1,0 +1,20 @@
+{
+  "catalog_rows_audited": 4142,
+  "source_named_total": 2070,
+  "har_named": 1620,
+  "appearance_color_named_from_skin_metadata": 450,
+  "source_unresolved_total": 2072,
+  "unresolved_with_candidate_name_not_promoted": 383,
+  "unresolved_numeric_after_all_available_crosschecks": 1689,
+  "image_backed_assets": 3692,
+  "image_qa_failures": 0,
+  "list_only_no_captured_atlas": 450,
+  "animation_frames_audited": 566,
+  "animation_qa_failures": 0,
+  "unique_pixel_name_candidates": 237,
+  "unique_alpha_mask_name_candidates": 272,
+  "structural_armor_candidates": 37,
+  "identity_ambiguity_name_groups": 99,
+  "blocking_source_gap": "captured app references /data/item-info/{typeKey}.json but those payloads are absent from HAR",
+  "completion_statement": "ALL 4,142 catalog rows audited; unresolved rows remain explicitly unresolved rather than fabricated."
+}

@@ -1,0 +1,10 @@
+{
+  "canonical_asset_rows": 4142,
+  "animation_frame_rows": 566,
+  "source_fact_rows": 9,
+  "webp_asset_files": 4258,
+  "png_files": 0,
+  "csv_files": 9,
+  "missing_referenced_assets": 0,
+  "package_rule": "existing historical 92 CSV baseline preserved; this package adds cleaned canonical generation"
+}
