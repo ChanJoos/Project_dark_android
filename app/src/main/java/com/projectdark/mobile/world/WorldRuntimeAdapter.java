@@ -24,6 +24,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final WorldMapProjection map;
   private final WorldCameraTransform camera;
   private final WorldMoveTargetController movement;
+  private final WorldStepInterpolator presentation;
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
 
   public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight){
@@ -38,6 +39,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     camera=map.newCamera(viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
+    presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
   }
 
   public RuntimeState runtime(){return runtime;}
@@ -54,7 +56,10 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   public WorldMoveTargetController.Snapshot requestGroundWorld(float worldX,float worldY){return movement.requestGroundMove(worldX,worldY);}
 
   /** Joystick/gamepad input: exactly one NW/NE/SW/SE logical tile. */
-  public WorldMoveTargetController.Snapshot step(WorldMoveTargetController.Direction direction){return movement.step(direction);}
+  public WorldMoveTargetController.Snapshot step(WorldMoveTargetController.Direction direction){
+    if(presentation.active())return movement.snapshot();
+    WorldMoveTargetController.Snapshot result=movement.step(direction);beginPresentationIfMoved();return result;
+  }
 
   /** NPC tap path remains deliberately distinct from generic ground movement. */
   public WorldMoveTargetController.Snapshot requestNpcApproach(String npcId){
@@ -71,25 +76,40 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   public WorldMoveTargetController.Snapshot cancelForDirectInput(){return movement.cancelForDirectInput();}
-  public WorldMoveTargetController.Snapshot cancelForAction(){return movement.cancelForAction();}
-  public WorldMoveTargetController.Snapshot cancel(){return movement.cancel();}
+  public WorldMoveTargetController.Snapshot cancelForAction(){WorldMoveTargetController.Snapshot result=movement.cancelForAction();presentation.snap(runtime.player().x,runtime.player().y);return result;}
+  public WorldMoveTargetController.Snapshot cancel(){WorldMoveTargetController.Snapshot result=movement.cancel();presentation.snap(runtime.player().x,runtime.player().y);return result;}
 
   /** WALK first, then camera follow. Runtime collision remains authoritative for every step. */
   public FrameSnapshot tickNavigation(float deltaSeconds){
-    WorldMoveTargetController.Snapshot move=movement.tick(deltaSeconds);
-    camera.follow(runtime.player().x,runtime.player().y);
+    float remaining=Math.max(0f,deltaSeconds);
+    WorldMoveTargetController.Snapshot move=movement.snapshot();
+    while(remaining>0f){
+      if(presentation.active()){float before=remaining;remaining=presentation.advance(remaining);if(remaining>=before-.000001f)break;continue;}
+      if(move.status!=WorldMoveTargetController.Status.MOVING)break;
+      move=movement.tick(WorldMoveTargetController.TILE_STEP_SECONDS);beginPresentationIfMoved();
+      if(!presentation.active())break;
+    }
+    camera.follow(presentation.x(),presentation.y());
     return frame(move);
   }
 
   /** Re-establishes the tile-center invariant after spawn/revive before snapping the camera. */
-  public void snapCameraToPlayer(){snapPlayerToNearestTraversableTile();camera.snapTo(runtime.player().x,runtime.player().y);}
+  public void snapCameraToPlayer(){snapPlayerToNearestTraversableTile();presentation.snap(runtime.player().x,runtime.player().y);camera.snapTo(runtime.player().x,runtime.player().y);}
+  public float presentationPlayerX(){return presentation.x();}
+  public float presentationPlayerY(){return presentation.y();}
+  public boolean presentationMoving(){return presentation.active();}
   public WorldCameraTransform.Point worldToScreen(float worldX,float worldY){return camera.worldToScreen(worldX,worldY);}
   public WorldCameraTransform.Point screenToWorld(float screenX,float screenY){return camera.screenToWorld(screenX,screenY);}
   public FrameSnapshot snapshot(){return frame(movement.snapshot());}
 
   private FrameSnapshot frame(WorldMoveTargetController.Snapshot move){
-    WorldCameraTransform.Point p=camera.worldToScreen(runtime.player().x,runtime.player().y);
-    return new FrameSnapshot(runtime.player().x,runtime.player().y,p.x,p.y,camera.cameraX(),camera.cameraY(),move,portalAt(runtime.player().x,runtime.player().y));
+    WorldCameraTransform.Point p=camera.worldToScreen(presentation.x(),presentation.y());
+    return new FrameSnapshot(presentation.x(),presentation.y(),p.x,p.y,camera.cameraX(),camera.cameraY(),move,portalAt(runtime.player().x,runtime.player().y));
+  }
+
+  private void beginPresentationIfMoved(){
+    if(Math.abs(presentation.x()-runtime.player().x)>.0001f||Math.abs(presentation.y()-runtime.player().y)>.0001f)
+      presentation.begin(runtime.player().x,runtime.player().y);
   }
 
   public WorldMapProjection.Portal portalAt(float worldX,float worldY){for(WorldMapProjection.Portal p:map.portals())if(p.contains(worldX,worldY))return p;return null;}

@@ -51,7 +51,7 @@ public final class GameView extends View {
   private float feedbackClock=0,rewardClock=0;
   private FeedbackTone feedbackTone=FeedbackTone.INFO;
 
-  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;update(dt);camera.follow(state.player().x,state.player().y);invalidate();postDelayed(this,16);}};
+  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;update(dt);camera.follow(worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY());invalidate();postDelayed(this,16);}};
 
   public GameView(Context c){super(c);setKeepScreenOn(true);worldAdapter.snapCameraToPlayer();}
   public void resume(){if(running)return;running=true;last=SystemClock.uptimeMillis();post(loop);}
@@ -62,13 +62,18 @@ public final class GameView extends View {
     combat.tick(dt);state.tick(dt);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){action=Action.IDLE;interaction.cancel();combat.cancelApproach();worldAdapter.cancel();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
+    WorldRuntimeAdapter.FrameSnapshot navigation=worldAdapter.tickNavigation(dt);
     if(joy&&(vx!=0||vy!=0)){
-      directStepClock-=dt;
-      if(directStepClock<=0f){WorldMoveTargetController.Snapshot step=worldAdapter.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;applyWorldFacing(step.lastStepDirection);consumeMoveOutcome(step);}
-      action=Action.WALK;walkClock+=dt;interaction.cancelApproach();combat.cancelApproach();return;
+      directStepClock=Math.max(0f,directStepClock-dt);
+      if(!worldAdapter.presentationMoving()&&directStepClock<=0f){WorldMoveTargetController.Snapshot step=worldAdapter.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;applyWorldFacing(step.lastStepDirection);consumeMoveOutcome(step);}
+      if(worldAdapter.presentationMoving()){action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;
+      interaction.cancelApproach();combat.cancelApproach();return;
     }
-    WorldMoveTargetController.Snapshot move=moveTarget.snapshot();
-    if(move.status==WorldMoveTargetController.Status.MOVING){move=worldAdapter.tickNavigation(dt).movement;if(move.lastStepDirection!=null){applyWorldFacing(move.lastStepDirection);action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;consumeMoveOutcome(move);return;}
+    WorldMoveTargetController.Snapshot move=navigation.movement;
+    if(move.status==WorldMoveTargetController.Status.MOVING||worldAdapter.presentationMoving()){
+      if(move.lastStepDirection!=null)applyWorldFacing(move.lastStepDirection);
+      action=Action.WALK;walkClock+=dt;return;
+    }
     consumeMoveOutcome(move);action=Action.IDLE;
   }
 
@@ -97,8 +102,8 @@ public final class GameView extends View {
 
   private void setFacingDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;if(sx<0&&sy>0)dir=0;else if(sx>0&&sy>0)dir=1;else if(sx<0)dir=2;else dir=3;}
   private void applyWorldFacing(WorldMoveTargetController.Direction direction){if(direction==null)return;switch(direction){case SW:dir=0;break;case SE:dir=1;break;case NW:dir=2;break;case NE:dir=3;break;}}
-  private WorldMoveTargetController.Direction joystickDirection(){switch(dir){case 1:return WorldMoveTargetController.Direction.SE;case 2:return WorldMoveTargetController.Direction.NW;case 3:return WorldMoveTargetController.Direction.NE;default:return WorldMoveTargetController.Direction.SW;}}
-  private void setAutoDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;vx=.707f*sx;vy=.707f*sy;setFacingDirection(dx,dy);}
+  private WorldMoveTargetController.Direction joystickDirection(){if(vx>0f&&vy>0f)return WorldMoveTargetController.Direction.SE;if(vx<0f&&vy<0f)return WorldMoveTargetController.Direction.NW;if(vx>0f)return WorldMoveTargetController.Direction.NE;return WorldMoveTargetController.Direction.SW;}
+  private void setAutoDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;vx=.707f*sx;vy=.707f*sy;}
   private void faceTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive)setFacingDirection(t.x-state.player().x,t.y-state.player().y);}
   private boolean isActing(){return action!=Action.IDLE&&action!=Action.WALK;}
   private boolean attacking(){return action==Action.SWING||action==Action.THRUST||action==Action.THROW||action==Action.PUNCH;}
@@ -125,7 +130,7 @@ public final class GameView extends View {
   private CharacterRenderer.Direction characterDirection(){switch(dir){case 1:return CharacterRenderer.Direction.SE;case 2:return CharacterRenderer.Direction.NW;case 3:return CharacterRenderer.Direction.NE;default:return CharacterRenderer.Direction.SW;}}
   private CharacterRenderer.State characterState(){if(!state.player().alive)return CharacterRenderer.State.DEAD;if(state.player().hitFlash>0)return CharacterRenderer.State.HIT;switch(action){case WALK:return CharacterRenderer.State.WALK;case CAST:return CharacterRenderer.State.CAST;case SKILL:case KICK:return CharacterRenderer.State.SKILL;case SWING:case THRUST:case THROW:case PUNCH:return CharacterRenderer.State.ATTACK;default:return CharacterRenderer.State.IDLE;}}
   private CharacterRenderer.EffectFamily characterEffectFamily(){if(state.player().hitFlash>0)return CharacterRenderer.EffectFamily.HIT;switch(action){case CAST:return CharacterRenderer.EffectFamily.CAST;case THROW:return CharacterRenderer.EffectFamily.THROW;case PUNCH:return CharacterRenderer.EffectFamily.PUNCH;case KICK:return CharacterRenderer.EffectFamily.KICK;case SKILL:return CharacterRenderer.EffectFamily.SKILL;default:return CharacterRenderer.EffectFamily.NONE;}}
-  private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;characterRenderer.draw(c,new CharacterRenderer.Pose(state.player().x,state.player().y,characterDirection(),presentation,walkClock,actionClock,stateDuration,state.player().hitFlash>0,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily()));}
+  private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;characterRenderer.draw(c,new CharacterRenderer.Pose(worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,state.player().hitFlash>0,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily()));}
 
   private void panel(Canvas c,float l,float t,float r,float b){p.setStyle(Paint.Style.FILL);p.setColor(0x8A17120E);c.drawRoundRect(new RectF(l,t,r,b),7,7,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xA0A86F3B);c.drawRoundRect(new RectF(l+.5f,t+.5f,r-.5f,b-.5f),7,7,p);p.setStyle(Paint.Style.FILL);}
   private void modalPanel(Canvas c,float l,float t,float r,float b){p.setStyle(Paint.Style.FILL);p.setColor(0xED11151A);c.drawRoundRect(new RectF(l,t,r,b),12,12,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.4f);p.setColor(0xAACFB171);c.drawRoundRect(new RectF(l+.5f,t+.5f,r-.5f,b-.5f),12,12,p);p.setStyle(Paint.Style.FILL);}
@@ -137,7 +142,7 @@ public final class GameView extends View {
   private void drawTopLeftStatus(Canvas c){panel(c,14,12,202,108);Integer level=state.rpg().normalLevel();text(c,"Lv. "+(level==null?"?":level),25,36,14);mutedText(c,"평민",26,55,8);bar(c,70,22,190,37,0xffd73d31,state.player().hp/(float)state.player().maxHp);bar(c,70,43,190,58,0xff347fcf,state.player().mp/(float)state.player().maxMp);mutedText(c,state.player().hp+" / "+state.player().maxHp,106,34,7);mutedText(c,state.player().mp+" / "+state.player().maxMp,106,55,7);for(int i=0;i<8;i++){float x=24+i*20;p.setColor(0xCC25211D);c.drawRect(x,70,x+15,85,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xff8f6a43);c.drawRect(x,70,x+15,85,p);p.setStyle(Paint.Style.FILL);p.setColor(i%2==0?0xff6d9a58:0xff755dc0);c.drawCircle(x+7.5f,77.5f,4,p);}mutedText(c,"BUFF",24,100,7);}
   private void drawQuest(Canvas c){panel(c,14,124,214,282);text(c,"퀘스트",28,146,11);mutedText(c,"[메인] 밀레스의 첫걸음",28,171,9);mutedText(c,"NPC와 대화하기  0/1",38,190,8);mutedText(c,"[반복] 수련의 길",28,219,9);mutedText(c,"주변 몬스터 처치  0/5",38,238,8);mutedText(c,"탭하여 접기",130,270,7);}
   private void drawTarget(Canvas c){RuntimeState.Monster selected=combat.target();if(selected==null)return;panel(c,380,12,580,55);text(c,selected.name,397,31,9.5f);bar(c,397,39,563,48,0xffd63e49,selected.hp/(float)selected.maxHp);}
-  private void drawMinimap(Canvas c){panel(c,810,12,946,112);text(c,"CH. 5-1",846,30,9);p.setColor(0xB7232B1F);c.drawRect(820,38,936,92,p);float nx=(state.player().x-WorldDef.MIN_X)/Math.max(1f,WorldDef.MAX_X-WorldDef.MIN_X),ny=(state.player().y-WorldDef.MIN_Y)/Math.max(1f,WorldDef.MAX_Y-WorldDef.MIN_Y);float px=823+Math.max(0,Math.min(1,nx))*110,py=41+Math.max(0,Math.min(1,ny))*48;p.setColor(0xffffd44f);c.drawCircle(px,py,3.5f,p);mutedText(c,"밀레스",861,105,8);}
+  private void drawMinimap(Canvas c){panel(c,810,12,946,112);text(c,"CH. 5-1",846,30,9);p.setColor(0xB7232B1F);c.drawRect(820,38,936,92,p);float nx=(worldAdapter.presentationPlayerX()-WorldDef.MIN_X)/Math.max(1f,WorldDef.MAX_X-WorldDef.MIN_X),ny=(worldAdapter.presentationPlayerY()-WorldDef.MIN_Y)/Math.max(1f,WorldDef.MAX_Y-WorldDef.MIN_Y);float px=823+Math.max(0,Math.min(1,nx))*110,py=41+Math.max(0,Math.min(1,ny))*48;p.setColor(0xffffd44f);c.drawCircle(px,py,3.5f,p);mutedText(c,"밀레스",861,105,8);}
   private void drawUtilityRail(Canvas c){String[] labels={"BAG","SHOP","EVENT","MAIL","≡","⚙"};for(int i=0;i<labels.length;i++){float cx=UTILITY_X0+(i%3)*UTILITY_STEP,cy=UTILITY_Y0+(i/3)*UTILITY_STEP;boolean active=i==0&&inventoryOpen;p.setColor(active?0xD75E3F24:0xA81C1815);c.drawCircle(cx,cy,UTILITY_R,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(active?2f:1f);p.setColor(active?0xffffd477:0x99bb8753);c.drawCircle(cx,cy,UTILITY_R,p);p.setStyle(Paint.Style.FILL);p.setTextSize(labels[i].length()>3?5.8f:7f);p.setColor(active?0xffffefc7:0xffe4d5bc);float tw=p.measureText(labels[i]);c.drawText(labels[i],cx-tw/2,cy+2.5f,p);}}
   private void drawChat(Canvas c){RuntimeMetrics metrics=state.metrics();p.setColor(0x76120f0e);c.drawRoundRect(new RectF(270,418,642,522),6,6,p);text(c,"전체    지역    파티    길드",286,438,8.5f);mutedText(c,"[지역] 밀레스에 오신 것을 환영합니다.",286,460,8);mutedText(c,"[전투] 격파 "+metrics.monsterDefeats()+" · 피격 "+metrics.playerHits()+" · DMG "+metrics.damageDealt(),286,479,8);mutedText(c,"[시스템] NPC · 전투 · 보상 알림",286,498,8);p.setColor(0x7F211B17);c.drawRoundRect(new RectF(282,505,630,518),5,5,p);mutedText(c,"메시지를 입력하세요.",292,516,7);}
   private void drawJoystick(Canvas c){p.setColor(joy?0x523D4652:0x2A2B3038);c.drawCircle(JOY_X,JOY_Y,JOY_R,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(joy?2.2f:1.2f);p.setColor(joy?0xC8DBC386:0x697F7562);c.drawCircle(JOY_X,JOY_Y,JOY_R,p);p.setStrokeWidth(1);p.setColor(0x447F7562);c.drawCircle(JOY_X,JOY_Y,36,p);p.setStyle(Paint.Style.FILL);p.setColor(joy?0xD7C7A86B:0x9A766951);c.drawCircle(knobX,knobY,joy?24:22,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xDCEAD9B0);c.drawCircle(knobX,knobY,joy?24:22,p);p.setStyle(Paint.Style.FILL);}
