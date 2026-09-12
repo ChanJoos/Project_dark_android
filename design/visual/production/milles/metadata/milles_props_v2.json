@@ -1,0 +1,67 @@
+{
+  "version": "2.0",
+  "projection": "2:1 isometric",
+  "light": "upper_left",
+  "frames": {
+    "tree": {
+      "x": 16,
+      "y": 0,
+      "w": 64,
+      "h": 96,
+      "foot_anchor": [
+        32,
+        86
+      ]
+    },
+    "fence": {
+      "x": 104,
+      "y": 44,
+      "w": 80,
+      "h": 52,
+      "foot_anchor": [
+        40,
+        47
+      ]
+    },
+    "sign": {
+      "x": 214,
+      "y": 28,
+      "w": 52,
+      "h": 68,
+      "foot_anchor": [
+        26,
+        61
+      ]
+    },
+    "well": {
+      "x": 8,
+      "y": 112,
+      "w": 80,
+      "h": 80,
+      "foot_anchor": [
+        40,
+        68
+      ]
+    },
+    "bench": {
+      "x": 104,
+      "y": 136,
+      "w": 80,
+      "h": 56,
+      "foot_anchor": [
+        40,
+        49
+      ]
+    },
+    "lamp": {
+      "x": 216,
+      "y": 104,
+      "w": 48,
+      "h": 88,
+      "foot_anchor": [
+        24,
+        79
+      ]
+    }
+  }
+}
