@@ -1,52 +1,40 @@
 # Combat / Monster handoff
 
-## 2026-09-10 18:35 KST — PASS 33 / agent/combat/20260910-1835
+## 2026-09-10 19:56 KST — D002 reprioritization / agent/combat/20260910-1956
 
 ### Source state
-- Latest main at run start: `ba018312ce6ca3fa68877cd60ff09606e3890273`.
-- Previous PASS 32 PR #48 was closed after Director manually integrated the MonsterAI shared-resolver bridge onto main.
-- Main already contains actor-scoped `CombatResolver`, `CombatActionOrchestrator`, `MonsterAutoCombatBridge`, and injected MonsterAI shared route.
-- `docs/handoffs/combat.md` was absent on latest main, so this branch restores the current Combat handoff.
-- Ground item/pickup remains retired. Combat never creates ground rewards; RPG owns reward/inventory/progression mutation.
+- Latest main at run start: `d0fb8aa5a7d4093a18387c9ca8b242df651ca955`.
+- Re-read `docs/DIRECTOR_BACKLOG.md` revision D002 and canonical `design/SOURCE_OF_TRUTH.md`.
+- D002 explicitly supersedes prior visual/runtime priorities based on user device playtest evidence.
+- Combat P0 is now animation/action-state playability before further runtime-session infrastructure work.
 
-### Implemented this run
-- Added `RuntimeCombatPortAdapter`, a concrete `CombatResolver.Port` over the current `RuntimeState` surface.
-- Actor/target alive and positions are resolved from `player` or stable monster IDs.
-- Player MP is the only currently exposed runtime resource pool. Resource-costing monster actions fail closed rather than inventing monster MP/resource semantics.
-- Per-actor/per-action cooldown clocks are owned by this combat adapter and exposed through `cooldownRemaining()`; Director must tick the adapter once per combat frame.
-- LOS truth is injected through `LineOfSightPort`; Combat does not implement map/geometry LOS.
-- Learned-action truth is injected through `LearnedActionPort`; Combat does not fabricate learned skills/magic from missing runtime state.
-- Player -> monster damage delegates to `RuntimeState.damage(monster, amount)`.
-- Monster -> player damage delegates to `RuntimeState.damagePlayer(amount)`.
-- Actual applied damage is calculated from before/after runtime HP so feedback reflects clamping at zero.
-- Because current RuntimeState already publishes `MONSTER_DEFEATED` / `PLAYER_DEFEATED` into `CombatLedger`, adapter results use `PORT_ALREADY_PUBLISHED`; Resolver therefore never mirrors a second defeat event.
-- Target kind remains explicit (`MONSTER / PLAYER / OTHER`) so player death cannot be misclassified as monster defeat.
+### New Combat acceptance contract
+- ATTACK / CAST / SKILL_KICK must be visibly observable from actual combat action state.
+- Action presentation must preserve actionId/action sequence identity and normalized progress from the shared Resolver.
+- Completed/cancelled actions must return to locomotion/IDLE rather than remain stuck in an action pose.
+- Damage/effect remains Resolver-owned and at most once per action. Animation projection must never mutate HP or apply a second effect.
+- Target-facing is still required by D002, but facing calculation/application remains Renderer/UX integration ownership; Combat exposes targetId/action identity only.
 
-### Verification contract
-Added `RuntimeCombatPortAdapterAudit` against the actual RuntimeState API surface. It covers:
-1. player MAGIC accepts only when learned/resource/range/LOS gates pass;
-2. MP is consumed once on accepted action start;
-3. monster HP is unchanged before hitTime and mutates only at the Resolver hit frame;
-4. action cooldown blocks immediate resubmission and expires only through adapter tick;
-5. monster AUTO attack mutates player HP only at the shared Resolver hit frame and keeps `InputMode.AUTO` on `EFFECT_APPLIED`;
-6. monster death publishes exactly one RuntimeState `CombatLedger.MONSTER_DEFEATED` and zero duplicate Resolver `MONSTER_DEFEATED` while legacy ledger authority remains;
-7. monster kill of player publishes exactly one `PLAYER_DEFEATED` and zero `MONSTER_DEFEATED`.
+### Implemented
+- Added `CombatAnimationStateModel`, a renderer-safe projection layer with `IDLE / WALK / ATTACK / CAST / SKILL_KICK / HIT / DEAD` visual states.
+- Maps Resolver `ATTACK` -> `ATTACK`, `MAGIC` -> `CAST`, `SKILL/KICK` -> `SKILL_KICK`.
+- Synchronizes normalized `ActionSnapshot.progress` so presentation timing comes from the same Resolver action that owns hit timing.
+- Consumes `ACTION_STARTED / ACTION_REJECTED / ACTION_CANCELLED / HIT_FEEDBACK / MONSTER_DEFEATED` without drawing or applying damage.
+- Exposes explicit locomotion/hit-clear/revive inputs for World/UX integration so action completion can transition to WALK/IDLE deterministically.
+- Added `CombatAnimationStateAudit` covering visible ATTACK, CAST and SKILL_KICK states, mid-action progress, one damage application per action, and return to WALK/IDLE.
 
-### User-visible combat delta
-After Director wires this adapter, MANUAL and AUTO actions no longer stop at an abstract resolver contract: the same delayed hit frame mutates the real RuntimeState HP/MP/cooldown surface. Renderer feedback can therefore line up with actual runtime HP changes instead of a parallel prototype formula.
+### Priority changes
+- Previous PASS 33 next item `CombatRuntimeSession` façade is deferred behind D002 Combat P0.
+- POTION is part of the new QA HUD acceptance, but inventory consumption/heal mutation remains RPG-owned. Combat must not fabricate a potion action or canonical potion values.
+- HUD layout, pressed-state visuals, touch ownership, CharacterRenderer drawing, target-facing application, APK build and runtime screenshot remain Director/UX/World-owned integration work.
 
 ### Director integration request
-- Construct one `RuntimeCombatPortAdapter(state, worldLosPort, learnedActionPort)` per combat session.
-- Construct one shared `CombatResolver(adapter)` and `CombatActionOrchestrator` using stable action definitions.
-- Inject `MonsterAIController.SharedResolverAttackRouter(new MonsterAutoCombatBridge(orchestrator, monsterActionId))`.
-- Each combat frame: tick adapter cooldowns, tick MonsterAI/input submission, tick orchestrator once, drain resolver events once, then project feedback.
-- While current `RuntimeState.damage()` / `damagePlayer()` keep ledger defeat publication, consume defeat only from `CombatLedger`; do not mirror Resolver defeat events.
-- A later ownership migration may move defeat publication fully into Resolver, but only after RuntimeState ledger emission is removed atomically by Director/Integrator.
+1. Route ATTACK/SKILL/MAGIC through the shared Resolver/Orchestrator.
+2. Feed Resolver events + `actionSnapshots()` into `CombatAnimationStateModel` once per frame.
+3. Bind CharacterRenderer presentation to the model snapshot instead of the detached GameView-local action timer.
+4. Use `targetId` from the snapshot for facing before/during action presentation.
+5. After an action disappears from Resolver snapshots, project current locomotion into WALK or IDLE.
+6. Do not call any legacy direct-damage path in parallel with Resolver effect resolution.
 
 ### Boundaries preserved
-No `GameView.java`, HUD/touch layout, renderer drawing, map/camera/collision/pathfinding/portal implementation, reward/inventory/EXP/Gold/progression/save, NPC/dialogue/quest, APK packaging, main push or merge changes.
-
-### Next Combat P0
-1. Provide a small combat-session façade that guarantees adapter cooldown tick + Resolver tick/event drain ordering so Director cannot accidentally double-tick or double-drain.
-2. Add explicit respawn synchronization: RuntimeState `MONSTER_RESPAWNED` must call `resolver.onTargetRespawned(monsterId)` exactly once before the next life can publish a defeat.
-3. Keep crit/miss/heal production policy PENDING until a canonical or explicitly approved runtime source exists; transport semantics only are already supported.
+No `GameView.java`, HUD/touch-coordinate, CharacterRenderer drawing, World/camera/collision/pathfinding/portal, RPG inventory/potion, reward/progression/save, NPC/quest, APK packaging or main merge changes.
