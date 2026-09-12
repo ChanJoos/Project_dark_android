@@ -135,7 +135,12 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public boolean canPlayerOccupy(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
-    for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+    for(RectF obstacle:runtime.obstacles()){
+      AdaptedMillesIsoBuildingLayer.Building building=AdaptedMillesIsoBuildingLayer.byCollisionBounds(obstacle.left,obstacle.top,obstacle.right,obstacle.bottom);
+      if(building!=null){
+        if(building.blocksPlayer(x,y,r))return false;
+      }else if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+    }
     for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
     for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&distance(x,y,m.x,m.y)<r+RuntimeState.MONSTER_RADIUS+3f)return false;
     return true;
@@ -145,12 +150,14 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public float worldY(){return runtime.player().y;}
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;
+    if(!runtime.player().alive)return false;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
-    // RuntimeState resolves X and Y separately. Preflight its intermediate point so a rejected
-    // diagonal can never leave the player on a half-step.
-    if(!canPlayerOccupy(destinationX,startY)||!canPlayerOccupy(destinationX,destinationY))return false;
-    if(!runtime.tryMove(direction.dx,direction.dy)||Math.abs(runtime.player().x-destinationX)>.01f||Math.abs(runtime.player().y-destinationY)>.01f){
-      runtime.player().x=startX;runtime.player().y=startY;return false;
+    // A logical isometric step is one diagonal segment, not two axis-aligned half-steps.
+    // Sample the whole segment so a clear diamond corner remains traversable without allowing
+    // the presentation path to cut through a building, actor, or other authoritative obstacle.
+    for(int sample=1;sample<=4;sample++){
+      float t=sample*.25f;
+      if(!canPlayerOccupy(startX+(destinationX-startX)*t,startY+(destinationY-startY)*t))return false;
     }
     runtime.player().x=destinationX;runtime.player().y=destinationY;
     return true;

@@ -23,6 +23,13 @@ public final class AdaptedMillesIsoBuildingAudit {
       if(approach==null||building.footprintContains(approach.centerX,approach.centerY))return false;
       if(!building.footprintContains(building.centerX,building.centerY)
           ||building.footprintContains(building.collisionRight,building.collisionBottom))return false;
+      if(!building.blocksPlayer(building.centerX,building.centerY,10f)
+          ||building.blocksPlayer(building.approachX,building.approachY,10f))return false;
+      // Inside the legacy AABB but clear of the visible diamond: this corner must be walkable.
+      if(building.blocksPlayer(building.centerX+building.halfWidth*.9f,
+          building.centerY+building.halfDepth*.9f,10f))return false;
+      if(AdaptedMillesIsoBuildingLayer.byCollisionBounds(building.collisionLeft,building.collisionTop,
+          building.collisionRight,building.collisionBottom)!=building)return false;
     }
     return true;
   }
