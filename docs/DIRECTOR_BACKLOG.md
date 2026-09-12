@@ -1,22 +1,40 @@
 # 디렉터 작업 지시
 
-Revision THREE-20260910 · 기존 D002 작업순서/역할을 대체한다.
-기준: 최신 사용자 요청(예약 3개, 세부 작업보다 구현 우선), PLAYTEST_CANON_20260910_2149.md, DIRECTOR_GUIDE.md.
+Revision LOOP-4-V1 · 사용자 승인 운영 개정.
+공동 목표: 밀레스 이동→NPC 대화→몬스터 1마리 전투→직접 보상→성장→저장→프로세스 재시작 복원.
+현재 네 작업은 ACTIVE이며 마을 전체 시각 PASS 재승인을 기다리지 않는다. 아래 상태는 할당이며 구현 완료 주장이 아니다.
 
-이번 갱신은 운영 지침 변경이다. 코드 전체 감사나 새 APK 실행을 수행한 것으로 간주하지 않는다. 아래 상태는 확인한 main/handoff/PR 기준이며 매 실행 실제 최신 코드와 대조한다.
+| Task | Owner | 다음 결과 하나 | 수락 조건 | 의존성/상태 | 반복 blocker |
+|---|---|---|---|---|---|
+| WORLD-01 | World | 기존 spawn→NPC→훈련 몬스터→복귀 경로 검수 및 실제 통행 장애 수정 | 인접 tile/왕복 drift=0, 주요 footprint/shoreline 차단, 대화·공격 거리 접근, touch/camera 일치 | ACTIVE; 2dbcd9c 지형 정리 보존. Android 미실행은 Director QA handoff | 새 할당, 0 |
+| VISUAL-01 | Visual | ATTACK/CAST 시 기본 캐릭터 외형 연속성 유지 | 승인 body/크기/방향/발 anchor 유지, resource 오류 crash 없음, HP mutation 없음 | ACTIVE; 원본 행동 frame 미확보는 명시하고 기존 BODY 보존. 실제 action contract는 Game/Director와 합의 | 새 할당, 0 |
+| GAME-01 | Game | 기존 Resolver 기반 단일 행동 실행 API/adapter와 실제 연결 handoff | action 구분·검증·effect 1회·생명당 defeat 1회·훈련 증표 직접 지급 유지 | ACTIVE; Director가 GameView/MainActivity wiring. 마을 visual QA 대기 없음 | 새 할당, 0 |
+| DIRECTOR-01 | Director | 실제 전투 입력/루프를 GAME-01과 연결·검증 | legacy direct damage 병행 제거, 관련 audit 실제 실행, 동일 SHA APK·실행 범위 명시 | ACTIVE; Game과 최소 API 합의. 결과 대기 중 다른 통합/검증 가능 | 새 할당, 0 |
 
-| 담당 | 다음 결과 1개 | 수락 조건 | 현재 근거/의존성 |
-|---|---|---|---|
-| 월드 | M2의 첫 조각으로 기존 투영 위에 길과 연결된 등각 건물 1개를 완성한다 | 지면·건물·출입구·그림자·collision이 같은 iso 투영을 사용하고 flat-front box가 아니며 실제 GameView에 표시 | PR #81의 후속 head `464f315`에서 M1 tile 이동 전달 완료. main 통합/CI 결과를 확인한 뒤 맵 bounds 확장 없이 진행 |
-| 캐릭터 | 승인 무도가 4방향 IDLE/WALK를 실제 적용 가능한 자산으로 끝낸다 | 24×32/1.50, SE 우하/좌측 깨짐 없음, foot anchor 고정, missing/decode/shape fallback | 새 최신 canon 대응 Character commit 없음. V5/1.60 및 startup-crash 계보는 superseded/보류 |
-| 통합 | 통합된 M1 이동 APK를 기기에서 검증하고 Character 결과가 오면 facing/anchor를 닫는다 | joystick/tap 4방향 한 칸, 왕복 drift=0, camera 일치, SE·좌측 방향, startup 안전성을 실제 Android에서 확인 | World `464f315`를 최신 main 위에 통합한 main commit `b8f36e6`; 로컬 runner에는 Gradle/JDK/Android runtime이 없어 GitHub CI와 기기 gate 필요 |
+## 다음 작업 대기열
 
-## 이후 진행
+Game/Director: GAME-01 뒤 실제 보상·EXP/Gold/level mutation 및 최소 save/restore에서 가장 큰 끊김 하나. 저장은 대규모 콘텐츠 이후로 미루지 않는다. GAME-01에 막히면 독립적인 저장 계약/구현을 작업 하나로 명시 전환할 수 있다.
+World: WORLD-01 통행 검수 후 READY_FOR_RUNTIME_QA handoff; 실제 장애 없으면 IDLE, 추가 맵/지형 튜닝 금지.
+Visual: VISUAL-01 뒤 현재 루프에서 실제 잘못 표시되는 부분이 없으면 IDLE; 새 장비 대량 제작 금지.
+Director: 결과→통합→판정→다음 할당을 매 회차 닫는다. 동일 blocker 두 회차면 해결 방법/배정 변경.
 
-1. M1 통과 후 월드는 길+등각 건물 1개를 먼저 전달하고 한 화면 3–5개 건물/소품/출입구/충돌로 완성한다. 캐릭터는 맨손 ATTACK을 전달한다. 디렉터는 작은 정상 변경을 즉시 통합한다.
-2. M2 통과 후 디렉터가 기존 NPC/전투/보상 직접 지급/EXP·Gold/저장·재시작의 첫 끊긴 호출을 직접 수정한다. 중단한 Combat/RPG/UX 예약에 작업을 떠넘기지 않는다.
-3. 크래시/데이터 손실/중복 보상은 언제나 우선. 그 외 미세 개선은 현재 acceptance가 통과하면 뒤로 넘긴다.
+## 초기 근거와 한계
 
-## 매 회차 디렉터 갱신
+감사 baseline 2dbcd9c945ee043ff36cb08f4f740ca1204ccad0.
+- 제작 마을·성당·호수·평민 IDLE/WALK·타일 이동/충돌 수정은 main에 존재. 2dbcd9c CI compile/APK 성공 및 artifact 확인.
+- GameView 공격은 state.damage 직접 경로, 훈련 증표 직접 보상은 연결, 퀘스트 HUD는 고정 문구, AUTO는 준비 중. 저장/프로세스 재시작 복원과 실제 성장은 미완성으로 감사됨.
+- 이전 예약 지시의 기기 PASS는 과거 검수 기록이며 최신 SHA 전체 실행 증거로 승격하지 않는다.
+- 운영 개정 자체로 게임 동작 또는 Android 검증이 완료된 것은 아니다.
 
-위 3행의 다음 결과·owner·수락 조건·blocker·PR/SHA를 최신 결과로 교체한다. 전체 설계/과거 이력을 반복 복제하지 않는다. 오래된 stacked/draft PR은 최신 canon/코드와 대조하여 활성/보류/superseded를 기록하며 일괄 병합·삭제하지 않는다. 사용자에게 가치 있는 변화가 통합되면 해당 SHA APK와 한국시간 빌드 시각·검증 범위를 제공한다.
+## 예약 상태 및 대기 관리
+
+기존 예약 ID:
+- Visual: 6aa57a764bac8191bb090fe300fb7b7a
+- World: 6aa57a8952648191bb96a2abcb510670
+- Game: 6aa57a9c1c648191a1999dbbec5809c4
+- Director: 6aa57ab0feac819196778cc4e3d2c7d1
+
+이 개정은 World 재개와 네 prompt 교체를 승인한다. 실제 설정 결과는 automation readback으로 확인한다.
+Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 쉴 때는 이유/마지막 SHA/재개 조건/후속 점검 담당을 기록한다. next_run_time=null이면 다음 실행 보장이라고 쓰지 않는다. 원인 불명 중단은 UNKNOWN으로 남긴다.
+
+각 task 완료 시 status/검증 범위/SHA·PR/다음 결과로 해당 행을 교체한다. 역사 전체를 복제하지 않는다.

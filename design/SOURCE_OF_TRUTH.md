@@ -4,6 +4,10 @@ Revision M001 / D004 · 2026-09-11
 
 현재 최신 사용자 지시와 실제 감사에 따라 이전 archive-verified 주장을 정정한다. `master/MASTER_MANIFEST.md`와 `master/RECONCILIATION.md`가 현재 확보/검증 상태다.
 
+## 현재 운영 개정 — LOOP-4-V1
+
+최신 사용자 승인 운영은 `docs/DIRECTOR_GUIDE.md`와 `docs/DIRECTOR_BACKLOG.md`의 4역할 공동 플레이 루프다. 이전 3역할/마을 전체 PASS 전 게임 시스템 대기 지시는 superseded. 이 문서의 역사적 프레임 크기·0.80초 기록은 최신 승인/active source를 되돌리는 지시가 아니다. 현재 구현 관측과 검증 범위는 backlog를 따른다. 원작 사실·증거 정책은 유지한다.
+
 ## 적용 우선순위
 
 명시적 최신 사용자 결정은 적용 범위와 모바일 적응을 정한다. 원작 사실은 실제 원본/검증된 official evidence > Master 원문 > 확정 constitution/data contract > canonical seed > runtime 임시값 순으로 판단한다. 서로 충돌하면 자동 덮어쓰기하지 말고 최신 확정 여부와 버전을 RECONCILIATION/changes에 기록한다. O/V/U/B/ADAPTED/FAN/PENDING_CROP 및 SOURCE/SOURCE+BALANCED/BALANCED를 보존한다.
