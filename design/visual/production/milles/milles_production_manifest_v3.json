@@ -1,0 +1,38 @@
+{
+  "version": "production-v3-2026-09-12",
+  "projection": "2:1 isometric",
+  "light": "upper_left",
+  "pixel_filter": "nearest",
+  "terrain": {
+    "file": "milles_terrain_64x32_v3.webp",
+    "tile_px": [64, 32],
+    "frames": {
+      "grass_0": {"x":0,"y":0,"w":64,"h":32,"anchor":[32,16]},
+      "grass_1": {"x":64,"y":0,"w":64,"h":32,"anchor":[32,16]},
+      "grass_2": {"x":128,"y":0,"w":64,"h":32,"anchor":[32,16]},
+      "stone_0": {"x":0,"y":32,"w":64,"h":32,"anchor":[32,16]},
+      "stone_1": {"x":64,"y":32,"w":64,"h":32,"anchor":[32,16]},
+      "stone_2": {"x":128,"y":32,"w":64,"h":32,"anchor":[32,16]},
+      "path_0": {"x":0,"y":64,"w":64,"h":32,"anchor":[32,16]},
+      "path_1": {"x":64,"y":64,"w":64,"h":32,"anchor":[32,16]},
+      "path_2": {"x":128,"y":64,"w":64,"h":32,"anchor":[32,16]}
+    }
+  },
+  "buildings": [
+    {"id":"milles_house_v2","webp":"milles_house_v2.webp","size":[224,176],"foot_anchor":[112,151]},
+    {"id":"milles_shop_v2","webp":"milles_shop_v2.webp","size":[232,180],"foot_anchor":[116,154]},
+    {"id":"milles_inn_v2","webp":"milles_inn_v2.webp","size":[248,192],"foot_anchor":[124,163]}
+  ],
+  "props": {
+    "file": "milles_props_v3.webp",
+    "frames": {
+      "tree": {"x":16,"y":0,"w":64,"h":96,"foot_anchor":[32,86]},
+      "fence": {"x":104,"y":44,"w":80,"h":52,"foot_anchor":[40,47]},
+      "sign": {"x":214,"y":28,"w":52,"h":68,"foot_anchor":[26,61]},
+      "well": {"x":8,"y":112,"w":80,"h":80,"foot_anchor":[40,68]},
+      "bench": {"x":104,"y":136,"w":80,"h":56,"foot_anchor":[40,49]},
+      "lamp": {"x":216,"y":104,"w":48,"h":88,"foot_anchor":[24,79]}
+    }
+  },
+  "preview": "milles_first_play_preview.webp"
+}

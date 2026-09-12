@@ -1,0 +1,44 @@
+{
+  "version": "production-2026-09-12",
+  "source": "captured HAR mm001 male base body frames; direction semantics visually assigned, not claimed as source labels",
+  "logical_frame_px": [24, 32],
+  "render_scale": 1.5,
+  "cell_px": [36, 48],
+  "sheet_px": [180, 192],
+  "directions": ["NW", "NE", "SW", "SE"],
+  "sequence": ["IDLE", "WALK_1", "WALK_2", "WALK_3", "WALK_4"],
+  "foot_anchor_in_cell": [18, 46],
+  "weapon": "none",
+  "head_body": "merged",
+  "se_direction": "front_a; visibly down-right",
+  "frames": {
+    "NW": [
+      {"index":0,"state":"IDLE","source_file":"back_a_mirror_00_src0.png","cell":[0,0,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":1,"state":"WALK","source_file":"back_a_mirror_01_src2.png","cell":[36,0,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":2,"state":"WALK","source_file":"back_a_mirror_02_src3.png","cell":[72,0,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":3,"state":"WALK","source_file":"back_a_mirror_03_src4.png","cell":[108,0,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":4,"state":"WALK","source_file":"back_a_mirror_04_src5.png","cell":[144,0,36,48],"foot_anchor_in_cell":[18,46]}
+    ],
+    "NE": [
+      {"index":0,"state":"IDLE","source_file":"back_a_00_src0.png","cell":[0,48,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":1,"state":"WALK","source_file":"back_a_01_src2.png","cell":[36,48,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":2,"state":"WALK","source_file":"back_a_02_src3.png","cell":[72,48,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":3,"state":"WALK","source_file":"back_a_03_src4.png","cell":[108,48,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":4,"state":"WALK","source_file":"back_a_04_src5.png","cell":[144,48,36,48],"foot_anchor_in_cell":[18,46]}
+    ],
+    "SW": [
+      {"index":0,"state":"IDLE","source_file":"front_a_mirror_00_src1.png","cell":[0,96,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":1,"state":"WALK","source_file":"front_a_mirror_01_src6.png","cell":[36,96,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":2,"state":"WALK","source_file":"front_a_mirror_02_src7.png","cell":[72,96,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":3,"state":"WALK","source_file":"front_a_mirror_03_src8.png","cell":[108,96,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":4,"state":"WALK","source_file":"front_a_mirror_04_src9.png","cell":[144,96,36,48],"foot_anchor_in_cell":[18,46]}
+    ],
+    "SE": [
+      {"index":0,"state":"IDLE","source_file":"front_a_00_src1.png","cell":[0,144,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":1,"state":"WALK","source_file":"front_a_01_src6.png","cell":[36,144,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":2,"state":"WALK","source_file":"front_a_02_src7.png","cell":[72,144,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":3,"state":"WALK","source_file":"front_a_03_src8.png","cell":[108,144,36,48],"foot_anchor_in_cell":[18,46]},
+      {"index":4,"state":"WALK","source_file":"front_a_04_src9.png","cell":[144,144,36,48],"foot_anchor_in_cell":[18,46]}
+    ]
+  }
+}
