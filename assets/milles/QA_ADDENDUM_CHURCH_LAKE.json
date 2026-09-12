@@ -1,0 +1,17 @@
+{
+  "added_assets": [
+    {
+      "file": "landmarks/BLD_011_church.png",
+      "edge_foreground_pixels": 0,
+      "sha256": "c06cd0dae498676ca5a28256bf1a2c2398d6f8ab952411c81696453d132fa4cb",
+      "visual_qa": "PASS"
+    },
+    {
+      "file": "water/lakes/OBJ_lake_main.png",
+      "edge_foreground_pixels": 0,
+      "sha256": "8db12979b029e1f95bf6451b56d0e8c367074098514153f00084a92c9c81047d",
+      "visual_qa": "PASS"
+    }
+  ],
+  "qa": "Both assets visually inspected on checkerboard; no clipping, neighbor contamination, filename/label contamination, or canvas-edge contact."
+}

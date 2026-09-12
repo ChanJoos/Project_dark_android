@@ -1,0 +1,824 @@
+{
+  "asset_count": 51,
+  "source": "a_crisp_clean_asset_sheet_style_image_on_a_transp.png",
+  "method": "source alpha connected-component isolation; original pixels preserved; 8px transparent safety margin; no resizing",
+  "qa": "visual contact sheets generated; edge-touch check required 0",
+  "assets": [
+    {
+      "file": "buildings/BLD_002_potion_shop.png",
+      "size": [
+        347,
+        265
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "b191f35822243715320a72e836e3eadf5f949620af4a4698793faf4d1021ecff",
+      "source_component_bbox": [
+        10,
+        9,
+        325,
+        244
+      ],
+      "source_component_area": 52586
+    },
+    {
+      "file": "buildings/BLD_003_weapon_shop.png",
+      "size": [
+        338,
+        266
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "44718f35fbd1ec8846ed31af2d97c49b5471a5b66cb3cbe080db02163de20030",
+      "source_component_bbox": [
+        336,
+        10,
+        314,
+        244
+      ],
+      "source_component_area": 50524
+    },
+    {
+      "file": "buildings/BLD_004_armor_shop.png",
+      "size": [
+        319,
+        264
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "4a0dfab0b409301f913d246851189614befebb3d9a6acf08714b3ab0280972d7",
+      "source_component_bbox": [
+        649,
+        11,
+        295,
+        242
+      ],
+      "source_component_area": 47537
+    },
+    {
+      "file": "buildings/BLD_005_general_shop.png",
+      "size": [
+        321,
+        263
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "d4bba7919610977dd2aff3c0ab6241a46ff9cc0f5fb3514cb170ec92f52f76b2",
+      "source_component_bbox": [
+        943,
+        10,
+        297,
+        241
+      ],
+      "source_component_area": 47977
+    },
+    {
+      "file": "buildings/BLD_006_inn.png",
+      "size": [
+        309,
+        264
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "1219f2deed53080382ad90f39f66ef48ae12dd822d73ae0dba95c35f7f456067",
+      "source_component_bbox": [
+        1239,
+        10,
+        291,
+        242
+      ],
+      "source_component_area": 47177
+    },
+    {
+      "file": "buildings/BLD_007_flower_shop.png",
+      "size": [
+        315,
+        269
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "ad88e57141acb573bb3488a9628d25e649eea332b732905d59af1c3e44a28377",
+      "source_component_bbox": [
+        10,
+        280,
+        293,
+        245
+      ],
+      "source_component_area": 48801
+    },
+    {
+      "file": "buildings/BLD_008_library.png",
+      "size": [
+        308,
+        266
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "1f9345790b08dafa2fd1dbfbb0a73cc96e253d9d073bbe52b7361fafd37d9e86",
+      "source_component_bbox": [
+        304,
+        282,
+        284,
+        243
+      ],
+      "source_component_area": 47469
+    },
+    {
+      "file": "buildings/BLD_009_guild.png",
+      "size": [
+        300,
+        274
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "d27f400236ba1cc170bc85f9be5c00a82a8306737221ca65cd7c78e40743b6e4",
+      "source_component_bbox": [
+        589,
+        280,
+        276,
+        251
+      ],
+      "source_component_area": 46878
+    },
+    {
+      "file": "buildings/BLD_010_healer.png",
+      "size": [
+        305,
+        269
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "add2eca89ffa9d822bb2a0e849cedf0b4a80be10531eb4122d751d8d9bf94a2f",
+      "source_component_bbox": [
+        869,
+        282,
+        281,
+        245
+      ],
+      "source_component_area": 47032
+    },
+    {
+      "file": "vegetation/trees/OBJ_tree_01.png",
+      "size": [
+        154,
+        264
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "cdc8da2c01b10e2e5d0867acc5823ca551c15c63000055f47d553a4d88ef4dda",
+      "source_component_bbox": [
+        1149,
+        283,
+        130,
+        240
+      ],
+      "source_component_area": 18874
+    },
+    {
+      "file": "vegetation/trees/OBJ_tree_02.png",
+      "size": [
+        142,
+        248
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "ba01f698d454659f7e8182d7f813e49cb8e49298fff8ff7cc1c37077166a18b8",
+      "source_component_bbox": [
+        1285,
+        295,
+        118,
+        224
+      ],
+      "source_component_area": 15639
+    },
+    {
+      "file": "vegetation/trees/OBJ_tree_03.png",
+      "size": [
+        133,
+        265
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "05b1c19af4c750db8f41542087d8c85d27ae370e297c7e3af8d624374b4cd29b",
+      "source_component_bbox": [
+        1407,
+        283,
+        111,
+        241
+      ],
+      "source_component_area": 13496
+    },
+    {
+      "file": "vegetation/trees/OBJ_tree_04.png",
+      "size": [
+        117,
+        117
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "80d59197244fb5cdfc093dc1025828173ce46b1c271b7a447264a65417cf8492",
+      "source_component_bbox": [
+        19,
+        584,
+        94,
+        93
+      ],
+      "source_component_area": 6023
+    },
+    {
+      "file": "vegetation/trees/OBJ_tree_05.png",
+      "size": [
+        135,
+        137
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "4e9b071d4ba1ec4f4eb7f2aea81f72f7f1c204ba72a8f39450baba426e8c99ae",
+      "source_component_bbox": [
+        136,
+        565,
+        111,
+        113
+      ],
+      "source_component_area": 8565
+    },
+    {
+      "file": "vegetation/flowers/OBJ_flower_01.png",
+      "size": [
+        115,
+        123
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "52ffa8e5de13ad81648925a881624d41c0495c3d861b37f9d357ab4ded914191",
+      "source_component_bbox": [
+        278,
+        581,
+        91,
+        100
+      ],
+      "source_component_area": 6260
+    },
+    {
+      "file": "vegetation/flowers/OBJ_flower_02.png",
+      "size": [
+        116,
+        114
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "0f932203563ef963d338cf3f29b50dcb50c24e570af4d75096bf4340f03c9bf9",
+      "source_component_bbox": [
+        401,
+        589,
+        93,
+        90
+      ],
+      "source_component_area": 5290
+    },
+    {
+      "file": "vegetation/flowers/OBJ_flower_03.png",
+      "size": [
+        125,
+        124
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "654d34efc19984e37247f2febfab9cd655ab28e6f9afca03947b81ae262cf3a7",
+      "source_component_bbox": [
+        527,
+        581,
+        101,
+        100
+      ],
+      "source_component_area": 6692
+    },
+    {
+      "file": "structures/fences/OBJ_fence_01.png",
+      "size": [
+        150,
+        127
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "f33d5d782f5850081d392eee6e629a7007b402e753ca6c2f8c676c45b5f4bed5",
+      "source_component_bbox": [
+        648,
+        574,
+        126,
+        104
+      ],
+      "source_component_area": 6223
+    },
+    {
+      "file": "structures/fences/OBJ_fence_02.png",
+      "size": [
+        137,
+        126
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "199df12ac4a6ce9147a148f8d9c73ada13aa3a68b6869fdbed8e25b8fe23c4ec",
+      "source_component_bbox": [
+        817,
+        576,
+        113,
+        103
+      ],
+      "source_component_area": 5911
+    },
+    {
+      "file": "structures/fences/OBJ_fence_03.png",
+      "size": [
+        125,
+        125
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "57875c3999e38d19cfe7c492e8cfba9f9270cac89e2dd5b5c48c4e8754689ccd",
+      "source_component_bbox": [
+        952,
+        576,
+        102,
+        103
+      ],
+      "source_component_area": 5148
+    },
+    {
+      "file": "structures/fences/OBJ_fence_04.png",
+      "size": [
+        168,
+        129
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "beac8bd7db3fa2444adeb5cca05971697bd703885bbdf6bc630d4dac6e162f8e",
+      "source_component_bbox": [
+        1073,
+        571,
+        145,
+        106
+      ],
+      "source_component_area": 8372
+    },
+    {
+      "file": "street/OBJ_lamp_01.png",
+      "size": [
+        56,
+        148
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "3d6928f2df5521542532a0d5f86eeab4e01899e08a0d09a51436d2463dc7497d",
+      "source_component_bbox": [
+        1260,
+        557,
+        36,
+        126
+      ],
+      "source_component_area": 2827
+    },
+    {
+      "file": "street/OBJ_lamp_02.png",
+      "size": [
+        60,
+        155
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "32170173d2e6941013ed2744b2193f6fa7f951876ba461ed6f5b71afb619d076",
+      "source_component_bbox": [
+        1357,
+        557,
+        36,
+        131
+      ],
+      "source_component_area": 2597
+    },
+    {
+      "file": "street/OBJ_lamp_03.png",
+      "size": [
+        75,
+        155
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "534db3910668a615c9845ad7fbd5587981e4bcd25825b22baf1167b2994dddea",
+      "source_component_bbox": [
+        1451,
+        556,
+        52,
+        133
+      ],
+      "source_component_area": 3612
+    },
+    {
+      "file": "street/OBJ_bench.png",
+      "size": [
+        127,
+        126
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "82ebb6015e4650f6b270426802dc9ba6877c86b3fe7bd46fd7e20dd2e2dcd9cf",
+      "source_component_bbox": [
+        19,
+        736,
+        103,
+        104
+      ],
+      "source_component_area": 5660
+    },
+    {
+      "file": "street/OBJ_well.png",
+      "size": [
+        137,
+        178
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "19b586ae02c270a79819416c860dcf7d5529aad8885845aef448c5bb0c71726f",
+      "source_component_bbox": [
+        139,
+        711,
+        113,
+        154
+      ],
+      "source_component_area": 12464
+    },
+    {
+      "file": "street/OBJ_signpost.png",
+      "size": [
+        128,
+        162
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "06cdef4465cb1baa0c11de677f73d374898841a2ccc5023af51370c4a656c21f",
+      "source_component_bbox": [
+        289,
+        725,
+        105,
+        138
+      ],
+      "source_component_area": 6866
+    },
+    {
+      "file": "street/OBJ_noticeboard.png",
+      "size": [
+        115,
+        154
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "13397fdf92ae0d04e0c99b2ceb23138570cfd38f245f386b214e12e6cfdefb18",
+      "source_component_bbox": [
+        435,
+        733,
+        92,
+        131
+      ],
+      "source_component_area": 7694
+    },
+    {
+      "file": "street/OBJ_statue.png",
+      "size": [
+        112,
+        163
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "51622e68274c9ed56fd56775a4a4487627bdaeffa214f80978b58b4059a7020b",
+      "source_component_bbox": [
+        566,
+        726,
+        89,
+        139
+      ],
+      "source_component_area": 8744
+    },
+    {
+      "file": "market/OBJ_cart.png",
+      "size": [
+        158,
+        144
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "73461e3347e07d88ba859c822769961a90ea61aa7853c357c8840bb3b49da1b1",
+      "source_component_bbox": [
+        679,
+        739,
+        135,
+        121
+      ],
+      "source_component_area": 10337
+    },
+    {
+      "file": "market/OBJ_stall_01.png",
+      "size": [
+        158,
+        170
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "5fd2edd18479a1cf9863334a84ebe17df696a69103baf0607065c2068db3a00a",
+      "source_component_bbox": [
+        843,
+        723,
+        134,
+        146
+      ],
+      "source_component_area": 14070
+    },
+    {
+      "file": "market/OBJ_tent_01.png",
+      "size": [
+        167,
+        159
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "3b8ab901f1f206f91658f63ee57b102c41725468c29abbfc00ca33ac8d49e70e",
+      "source_component_bbox": [
+        1002,
+        722,
+        143,
+        136
+      ],
+      "source_component_area": 10815
+    },
+    {
+      "file": "storage/OBJ_crate.png",
+      "size": [
+        130,
+        126
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "aca41137c53ffdb827c59ffedfe1b5aa8d5bddd28b23462c92aacf51e1bf8f67",
+      "source_component_bbox": [
+        1172,
+        744,
+        106,
+        102
+      ],
+      "source_component_area": 8283
+    },
+    {
+      "file": "storage/OBJ_barrel.png",
+      "size": [
+        100,
+        126
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "ce1e026885f0783dd24767371ed15b95029e36b84b791893d4701d969ec9d84e",
+      "source_component_bbox": [
+        1302,
+        746,
+        76,
+        103
+      ],
+      "source_component_area": 6665
+    },
+    {
+      "file": "storage/OBJ_sack.png",
+      "size": [
+        115,
+        117
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "795337af5c3a652c3cb8ee0af3110006461f998e608ed4132470d4c2e237ee99",
+      "source_component_bbox": [
+        1410,
+        753,
+        91,
+        95
+      ],
+      "source_component_area": 6166
+    },
+    {
+      "file": "terrain/OBJ_stone_01.png",
+      "size": [
+        113,
+        84
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "00d9e83f3f12b66b987cb0f22d35ed8c68452652ef495a2321ba967f2c591b01",
+      "source_component_bbox": [
+        18,
+        915,
+        89,
+        63
+      ],
+      "source_component_area": 3412
+    },
+    {
+      "file": "terrain/OBJ_stone_02.png",
+      "size": [
+        112,
+        85
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "8ae0e28b9959dd02a10725e8121a529143cf92cd867f6fbdb9b66ed52171b668",
+      "source_component_bbox": [
+        122,
+        916,
+        89,
+        62
+      ],
+      "source_component_area": 3384
+    },
+    {
+      "file": "terrain/OBJ_ground_01.png",
+      "size": [
+        112,
+        82
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "e416b68125166799020c36304593eb4b3d9c9fa4cdd1725b6677bb1e14963186",
+      "source_component_bbox": [
+        225,
+        919,
+        89,
+        58
+      ],
+      "source_component_area": 2971
+    },
+    {
+      "file": "terrain/OBJ_ground_02.png",
+      "size": [
+        118,
+        84
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "0805806eaf8318beb6ecea9c7f4acce30d7b67e8b2fad0ffba647d6a48cd81ab",
+      "source_component_bbox": [
+        328,
+        917,
+        94,
+        61
+      ],
+      "source_component_area": 3377
+    },
+    {
+      "file": "rocks/OBJ_rock_01.png",
+      "size": [
+        98,
+        94
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "6c2eee6c14ccfc60357e6b1970338d06b70c8e20b07ee6a26cd8352b884c3578",
+      "source_component_bbox": [
+        438,
+        909,
+        74,
+        71
+      ],
+      "source_component_area": 3832
+    },
+    {
+      "file": "rocks/OBJ_rock_02.png",
+      "size": [
+        81,
+        84
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "4b90e1c8f9d99048d8a0d6115c00d68609ed537a6ca6b05f84c10fbc24167cd4",
+      "source_component_bbox": [
+        536,
+        920,
+        57,
+        60
+      ],
+      "source_component_area": 2536
+    },
+    {
+      "file": "vegetation/bushes/OBJ_bush_01.png",
+      "size": [
+        81,
+        85
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "b80882d896ad5561254d384a7eb95d496def5bbcdbad60a23ab8d05a95f500e0",
+      "source_component_bbox": [
+        616,
+        922,
+        57,
+        61
+      ],
+      "source_component_area": 2519
+    },
+    {
+      "file": "vegetation/bushes/OBJ_bush_02.png",
+      "size": [
+        79,
+        90
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "00de7d0028c9e2b1818eb4ee551835a2e5555dc2efc55724e775ea1f42d8f73a",
+      "source_component_bbox": [
+        685,
+        912,
+        55,
+        67
+      ],
+      "source_component_area": 2629
+    },
+    {
+      "file": "vegetation/bushes/OBJ_bush_03.png",
+      "size": [
+        83,
+        100
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "3cf6680272d2d3f1a045112e4c12dd8e270b208a056d47335532df441dd92421",
+      "source_component_bbox": [
+        754,
+        905,
+        59,
+        76
+      ],
+      "source_component_area": 3032
+    },
+    {
+      "file": "materials/OBJ_log.png",
+      "size": [
+        105,
+        97
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "e30eddd03565a742812e69e14975c340839964aed06461927a684f1a4f11de1b",
+      "source_component_bbox": [
+        821,
+        911,
+        81,
+        74
+      ],
+      "source_component_area": 3891
+    },
+    {
+      "file": "materials/OBJ_hay.png",
+      "size": [
+        94,
+        97
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "6d99069aa8175949e4b615b33816f1039b733512458797103cc39b3c49315c98",
+      "source_component_bbox": [
+        925,
+        909,
+        70,
+        73
+      ],
+      "source_component_area": 3821
+    },
+    {
+      "file": "structures/walls/OBJ_wall_01.png",
+      "size": [
+        89,
+        102
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "19686a8a5f4db8b558af22c5d4ec5d392c0c1885e0293c29f802fdb270372c07",
+      "source_component_bbox": [
+        1015,
+        904,
+        65,
+        78
+      ],
+      "source_component_area": 3805
+    },
+    {
+      "file": "structures/walls/OBJ_wall_02.png",
+      "size": [
+        97,
+        104
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "4d88d44f32bbbaa24b85b0d20f5fe09fe1baed969ffd2ca38cd89fd05e082373",
+      "source_component_bbox": [
+        1110,
+        903,
+        75,
+        81
+      ],
+      "source_component_area": 4467
+    },
+    {
+      "file": "structures/walls/OBJ_wall_03.png",
+      "size": [
+        110,
+        102
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "289f26a7ceb3f987a0456cca8728dd81a4e8ca2c06440a918a5ac971406f7822",
+      "source_component_bbox": [
+        1216,
+        907,
+        87,
+        79
+      ],
+      "source_component_area": 4572
+    },
+    {
+      "file": "structures/arches_gates/OBJ_arch.png",
+      "size": [
+        114,
+        123
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "c76756b8570dcfd8b05f1cadd66e0c0d5cc344e11bb31356a1db0faf1e666723",
+      "source_component_bbox": [
+        1334,
+        889,
+        90,
+        99
+      ],
+      "source_component_area": 4999
+    },
+    {
+      "file": "structures/arches_gates/OBJ_gate.png",
+      "size": [
+        94,
+        112
+      ],
+      "edge_touch_pixels": 0,
+      "sha256": "545d99247cfd40cd3ce4bab82b127cedb3ebe2a7282a205d0268c8cc934fe9ae",
+      "source_component_bbox": [
+        1449,
+        898,
+        70,
+        90
+      ],
+      "source_component_area": 4126
+    }
+  ]
+}

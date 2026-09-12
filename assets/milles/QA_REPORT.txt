@@ -1,0 +1,18 @@
+PROJECT DARK MILLES OBJECTS — VISUAL QA REPORT
+
+Status: PASS
+Assets visually inspected: 51 / 51
+
+Checks performed:
+- no object clipping on any side
+- no adjacent-object contamination
+- no filename/label contamination
+- transparent RGBA background retained from source alpha
+- no resizing or resampling of object pixels
+- 8 px transparent safety padding around each isolated component
+- 0 non-transparent pixels touching output canvas edges for all 51 assets
+
+Note:
+The source sheet contains 51 distinct alpha-connected objects, not 49. Two additional distinct objects are preserved as OBJ_fence_04.png and OBJ_bush_03.png rather than discarded.
+
+Visual review sheets are included under _QA/contact_1.png through contact_5.png.
