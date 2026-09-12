@@ -7,6 +7,10 @@ import java.util.List;
 /**
  * Renderable [ADAPTED]/[B] Milles prototype map composition.
  * This is not claimed as verified original geometry; replace zone-by-zone as source evidence is calibrated.
+ *
+ * Gate C composition rule: broad grass is the default. Bright stone is reserved for a small readable
+ * village spine, shop/church frontage, plaza, market approach, lake approach, and south exit. This
+ * deliberately avoids the former overlapping road/plaza checker that made the production slice noisy.
  */
 public final class AdaptedMillesMapLayer {
   public enum SurfaceKind { GROUND, ROAD, PLAZA, GATE }
@@ -23,20 +27,35 @@ public final class AdaptedMillesMapLayer {
 
   private static final String E="ADAPTED/B", S="PROTOTYPE_REPLACE_WITH_VERIFIED_MILLES", A="PENDING_CROP";
 
+  /**
+   * World-owned authored surface composition for the first playable Milles slice.
+   *
+   * Landmarks in the current production placement cluster around spawn (620,560): potion shop west,
+   * weapon/general shops north, church north-east, inn east, well/plaza center, market south-west,
+   * lake south-east. Keep those destinations connected without paving the entire village.
+   */
   private static final List<Surface> SURFACES=Collections.unmodifiableList(Arrays.asList(
+      // Broad grass field: visual breathing room is the default everywhere.
       new Surface("milles_ground",SurfaceKind.GROUND,64f,48f,2304f,1600f,E,S),
-      new Surface("north_cross_road",SurfaceKind.ROAD,360f,315f,2110f,405f,E,S),
-      new Surface("west_road",SurfaceKind.ROAD,250f,405f,720f,760f,E,S),
-      new Surface("east_road",SurfaceKind.ROAD,860f,405f,1390f,770f,E,S),
-      new Surface("central_plaza",SurfaceKind.PLAZA,520f,390f,1060f,745f,E,S),
-      new Surface("east_market_road",SurfaceKind.ROAD,1390f,640f,2140f,790f,E,S),
-      new Surface("east_market_square",SurfaceKind.PLAZA,1680f,560f,2160f,960f,E,S),
-      new Surface("east_outer_lane",SurfaceKind.ROAD,1980f,900f,2160f,1400f,E,S),
-      new Surface("south_spine",SurfaceKind.ROAD,700f,690f,900f,1510f,E,S),
-      new Surface("south_west_lane",SurfaceKind.ROAD,570f,835f,720f,955f,E,S),
-      new Surface("south_east_lane",SurfaceKind.ROAD,900f,835f,1035f,955f,E,S),
-      new Surface("south_commons",SurfaceKind.PLAZA,500f,1240f,1120f,1480f,E,S),
-      new Surface("south_gate",SurfaceKind.GATE,715f,1450f,865f,1600f,E,"PROTOTYPE_TARGET_PENDING")));
+
+      // Single bright northern frontage connecting potion -> weapon -> general -> church -> inn.
+      new Surface("north_landmark_frontage",SurfaceKind.ROAD,300f,365f,1075f,485f,E,S),
+
+      // Compact center around spawn/well. Intentionally much smaller than the former 540x355 plaza.
+      new Surface("central_plaza",SurfaceKind.PLAZA,500f,500f,790f,690f,E,S),
+
+      // Main south spine from central plaza toward market/exit. One readable route, not parallel lanes.
+      new Surface("south_spine",SurfaceKind.ROAD,585f,650f,715f,1510f,E,S),
+
+      // Short west branch to the stall/cart district while preserving grass around props.
+      new Surface("west_market_branch",SurfaceKind.ROAD,355f,700f,585f,805f,E,S),
+
+      // Short east branch approaches the lake shoreline but does not pave beneath the lake landmark.
+      new Surface("lake_approach",SurfaceKind.ROAD,700f,675f,900f,755f,E,S),
+
+      // Small south commons landing before the exit rather than a second giant plaza.
+      new Surface("south_commons",SurfaceKind.PLAZA,525f,1260f,825f,1450f,E,S),
+      new Surface("south_gate",SurfaceKind.GATE,585f,1450f,715f,1600f,E,"PROTOTYPE_TARGET_PENDING")));
 
   private static final List<Structure> STRUCTURES=Collections.unmodifiableList(Arrays.asList(
       new Structure("northwest_house",StructureKind.HOUSE,150f,105f,390f,300f,E,S,A),
