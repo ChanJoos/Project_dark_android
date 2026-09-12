@@ -20,6 +20,8 @@ public final class MillesProductionCollision {
     Footprint(String id,Kind kind,float left,float top,float right,float bottom){
       this.id=id;this.kind=kind;this.left=left;this.top=top;this.right=right;this.bottom=bottom;
     }
+    public float centerX(){return (left+right)*.5f;}
+    public float centerY(){return (top+bottom)*.5f;}
     public boolean contains(float x,float y){return x>=left&&x<=right&&y>=top&&y<=bottom;}
     public boolean blocksCircle(float x,float y,float radius){
       return x+radius>left&&x-radius<right&&y+radius>top&&y-radius<bottom;
@@ -40,7 +42,7 @@ public final class MillesProductionCollision {
     List<Footprint> b=new ArrayList<>();
 
     // Production buildings: compact contact strips under the visible wall mass. The south-facing
-    // approach point is intentionally outside each strip so the player can reach interaction range.
+    // authored approach tile is intentionally outside each strip so interaction range is reachable.
     add(b,"church",Kind.CHURCH,SX+250f,SY-120f,92f,30f);
     add(b,"potion_shop",Kind.BUILDING,SX-285f,SY-105f,72f,24f);
     add(b,"weapon_shop",Kind.BUILDING,SX-90f,SY-165f,72f,24f);
@@ -60,20 +62,22 @@ public final class MillesProductionCollision {
       add(b,"fence_e_"+i,Kind.FENCE,SX+245f+i*72f,SY+300f,50f,10f);
     }
 
-    // The lake uses three shoreline-aware strips instead of one sprite-sized box. This keeps the
-    // water interior blocked without swallowing the surrounding land path.
+    // The lake uses shoreline-aware strips instead of one sprite-sized box. This keeps the water
+    // interior blocked without swallowing the surrounding land path.
     float lx=SX+325f,ly=SY+210f;
     rect(b,"lake_core",Kind.LAKE,lx-92f,ly-50f,lx+92f,ly+42f);
     rect(b,"lake_west_lobe",Kind.LAKE,lx-118f,ly-30f,lx-86f,ly+24f);
     rect(b,"lake_east_lobe",Kind.LAKE,lx+86f,ly-26f,lx+116f,ly+20f);
     BLOCKERS=Collections.unmodifiableList(b);
 
+    // These are actual authored 64x32 cell centers on the walk grid, one reachable step outside
+    // each building footprint on the visually open/south side.
     List<Approach> a=new ArrayList<>();
-    a.add(new Approach("church",SX+250f,SY-120f+46f));
-    a.add(new Approach("potion_shop",SX-285f,SY-105f+40f));
-    a.add(new Approach("weapon_shop",SX-90f,SY-165f+40f));
-    a.add(new Approach("general_shop",SX+105f,SY-170f+40f));
-    a.add(new Approach("inn",SX+390f,SY-70f+42f));
+    a.add(new Approach("church",864f,480f));
+    a.add(new Approach("potion_shop",352f,480f));
+    a.add(new Approach("weapon_shop",544f,416f));
+    a.add(new Approach("general_shop",736f,416f));
+    a.add(new Approach("inn",1024f,528f));
     ENTRANCES=Collections.unmodifiableList(a);
   }
 
