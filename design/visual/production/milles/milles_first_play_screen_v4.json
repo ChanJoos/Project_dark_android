@@ -1,0 +1,191 @@
+{
+  "version": "v4-2026-09-12",
+  "projection": "2:1 isometric",
+  "tile_px": [
+    64,
+    32
+  ],
+  "light": "upper_left",
+  "player": {
+    "logical_frame_px": [
+      24,
+      32
+    ],
+    "render_scale": 1.5,
+    "direction": "SE",
+    "state": "IDLE",
+    "foot_anchor": [
+      18,
+      46
+    ],
+    "weapon": "none",
+    "head_body": "merged"
+  },
+  "placements": [
+    {
+      "id": "milles_house_v2",
+      "foot_anchor": [
+        112,
+        151
+      ],
+      "world_px": [
+        205,
+        215
+      ]
+    },
+    {
+      "id": "milles_shop_v2",
+      "foot_anchor": [
+        116,
+        154
+      ],
+      "world_px": [
+        388,
+        185
+      ]
+    },
+    {
+      "id": "milles_inn_v2",
+      "foot_anchor": [
+        124,
+        163
+      ],
+      "world_px": [
+        555,
+        235
+      ]
+    },
+    {
+      "id": "tree",
+      "foot_anchor": [
+        32,
+        86
+      ],
+      "world_px": [
+        105,
+        238
+      ]
+    },
+    {
+      "id": "tree",
+      "foot_anchor": [
+        32,
+        86
+      ],
+      "world_px": [
+        650,
+        250
+      ]
+    },
+    {
+      "id": "tree",
+      "foot_anchor": [
+        32,
+        86
+      ],
+      "world_px": [
+        610,
+        125
+      ]
+    },
+    {
+      "id": "fence",
+      "foot_anchor": [
+        40,
+        47
+      ],
+      "world_px": [
+        184,
+        310
+      ]
+    },
+    {
+      "id": "fence",
+      "foot_anchor": [
+        40,
+        47
+      ],
+      "world_px": [
+        214,
+        326
+      ]
+    },
+    {
+      "id": "sign",
+      "foot_anchor": [
+        26,
+        61
+      ],
+      "world_px": [
+        318,
+        305
+      ]
+    },
+    {
+      "id": "well",
+      "foot_anchor": [
+        40,
+        68
+      ],
+      "world_px": [
+        426,
+        318
+      ]
+    },
+    {
+      "id": "bench",
+      "foot_anchor": [
+        40,
+        49
+      ],
+      "world_px": [
+        535,
+        330
+      ]
+    },
+    {
+      "id": "lamp",
+      "foot_anchor": [
+        24,
+        79
+      ],
+      "world_px": [
+        600,
+        305
+      ]
+    },
+    {
+      "id": "sign",
+      "foot_anchor": [
+        26,
+        61
+      ],
+      "world_px": [
+        467,
+        250
+      ]
+    },
+    {
+      "id": "bench",
+      "foot_anchor": [
+        40,
+        49
+      ],
+      "world_px": [
+        280,
+        255
+      ]
+    },
+    {
+      "id": "player_martial_mm001_se_idle",
+      "foot_anchor": [
+        18,
+        46
+      ],
+      "world_px": [
+        375,
+        306
+      ]
+    }
+  ]
+}
