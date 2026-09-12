@@ -1,0 +1,100 @@
+﻿name,visual_id_count,visual_ids,types,note
+@@미구현,9,mu0000360 | mu0000361 | mu0000362 | mu0000364 | wu0000360 | wu0000361 | wu0000362 | wu0000363 | wu0000364,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+가드아머,4,wu0000161 | wu0000162 | wu0000163 | wu0000164,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+가릉비가,2,wu0000176 | wu0000181,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+구리빛,50,mm001_skin5 | wm001_skin5 | mo001_skin5 | mo002_skin5 | mo003_skin5 | mo004_skin5 | mo005_skin5 | mo006_skin5 | mo007_skin5 | mo008_skin5 | mo009_skin5 | mo010_skin5 | mo011_skin5 | mo012_skin5 | mo013_skin5 | mo014_skin5 | mo015_skin5 | mo016_skin5 | mo017_skin5 | mo018_skin5 | mo019_skin5 | mo020_skin5 | mo021_skin5 | mo022_skin5 | mo023_skin5 | mo024_skin5 | wo001_skin5 | wo002_skin5 | wo003_skin5 | wo004_skin5 | wo005_skin5 | wo006_skin5 | wo007_skin5 | wo008_skin5 | wo009_skin5 | wo010_skin5 | wo011_skin5 | wo012_skin5 | wo013_skin5 | wo014_skin5 | wo015_skin5 | wo016_skin5 | wo017_skin5 | wo018_skin5 | wo019_skin5 | wo020_skin5 | wo021_skin5 | wo022_skin5 | wo023_skin5 | wo024_skin5,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+나모,2,mu0000265 | mu0000396,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+나이트아머(Lev1),2,mu0000363 | wu0000195,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+눈사람모자,3,WH267 | mh480 | mh481,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+눈사람의상,2,mu1000089 | mu1000090,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+다크로브,2,wu0000160 | wu0000352,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+다크클레릭의상,2,mu0000210 | wu0000210,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+다크후드,2,mu0000160 | mu0000352,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+더브릴,2,mw048 | ww048,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+데메테르,2,mu0000174 | mu0000179,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+라리타,2,mu0000269 | mu0000398,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+라피스라즐리,2,wu0000174 | wu0000179,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+레오파드,2,mu0000175 | mu0000180,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+레인저아머,2,wu0000159 | wu0000351,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+레인헌트아머,2,mu0000370 | wu0000370,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+레일라,2,wu0000177 | wu0000182,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+로코코풍드레스,2,wu1000086 | wu1000087,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+루비채찍,2,mw051 | ww051,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+루스코,2,mu0000267 | mu0000397,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+린드,2,mu0000266 | mu0000394,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+마르두크,2,mh166 | mh171,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+마법좀비의상,2,mu0000208 | wu0000208,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+마스터아머,3,mu0000157 | wu0000157 | wu0000349,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+마스터투구,2,mh178 | wh178,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+마아트,2,wh166 | wh171,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+매직코니칼,2,mh132 | wh132,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+명화당의,17,wu1000001 | wu1000002 | wu1000003 | wu1000004 | wu1000005 | wu1000006 | wu1000019 | wu1000020 | wu1000021 | wu1000022 | wu1000126 | wu1000127 | wu1000128 | wu1000129 | wu1000130 | wu1000131 | wu1000132,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+명화아얌,10,wh307 | wh308 | wh309 | wh310 | wh312 | wh352 | wh353 | wh354 | wh355 | wh381,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+명화아얌FX,6,wh552 | wh553 | wh554 | wh555 | wh556 | wh558,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+무상도복,2,mu0000158 | mu0000350,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+미스릴채찍,2,mw050 | ww050,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+발렌타인디어스토커,4,mh316 | mh317 | mh318 | mh319,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+발렌타인원피스,5,wu1000007 | wu1000008 | wu1000009 | wu1000010 | wu1000011,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+발렌타인케이프,5,mu1000007 | mu1000008 | mu1000009 | mu1000010 | mu1000011,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+발렌타인헤어핀,4,WH278 | wh101 | wh174 | wh373,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+붉은색,50,mm001_skin8 | wm001_skin8 | mo001_skin8 | mo002_skin8 | mo003_skin8 | mo004_skin8 | mo005_skin8 | mo006_skin8 | mo007_skin8 | mo008_skin8 | mo009_skin8 | mo010_skin8 | mo011_skin8 | mo012_skin8 | mo013_skin8 | mo014_skin8 | mo015_skin8 | mo016_skin8 | mo017_skin8 | mo018_skin8 | mo019_skin8 | mo020_skin8 | mo021_skin8 | mo022_skin8 | mo023_skin8 | mo024_skin8 | wo001_skin8 | wo002_skin8 | wo003_skin8 | wo004_skin8 | wo005_skin8 | wo006_skin8 | wo007_skin8 | wo008_skin8 | wo009_skin8 | wo010_skin8 | wo011_skin8 | wo012_skin8 | wo013_skin8 | wo014_skin8 | wo015_skin8 | wo016_skin8 | wo017_skin8 | wo018_skin8 | wo019_skin8 | wo020_skin8 | wo021_skin8 | wo022_skin8 | wo023_skin8 | wo024_skin8,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+브레스럭아머,2,mu0000371 | wu0000371,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+브릴윙아머,2,mu0000369 | wu0000369,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+비키니,3,wu0000032 | wu0000166 | wu0000167,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+쁘띠윙,2,mg090 | wg090,back,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+살렛,2,wh163 | wh168,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+새까만,50,mm001_skin2 | wm001_skin2 | mo001_skin2 | mo002_skin2 | mo003_skin2 | mo004_skin2 | mo005_skin2 | mo006_skin2 | mo007_skin2 | mo008_skin2 | mo009_skin2 | mo010_skin2 | mo011_skin2 | mo012_skin2 | mo013_skin2 | mo014_skin2 | mo015_skin2 | mo016_skin2 | mo017_skin2 | mo018_skin2 | mo019_skin2 | mo020_skin2 | mo021_skin2 | mo022_skin2 | mo023_skin2 | mo024_skin2 | wo001_skin2 | wo002_skin2 | wo003_skin2 | wo004_skin2 | wo005_skin2 | wo006_skin2 | wo007_skin2 | wo008_skin2 | wo009_skin2 | wo010_skin2 | wo011_skin2 | wo012_skin2 | wo013_skin2 | wo014_skin2 | wo015_skin2 | wo016_skin2 | wo017_skin2 | wo018_skin2 | wo019_skin2 | wo020_skin2 | wo021_skin2 | wo022_skin2 | wo023_skin2 | wo024_skin2,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+새하얀,50,mm001_skin1 | wm001_skin1 | mo001_skin1 | mo002_skin1 | mo003_skin1 | mo004_skin1 | mo005_skin1 | mo006_skin1 | mo007_skin1 | mo008_skin1 | mo009_skin1 | mo010_skin1 | mo011_skin1 | mo012_skin1 | mo013_skin1 | mo014_skin1 | mo015_skin1 | mo016_skin1 | mo017_skin1 | mo018_skin1 | mo019_skin1 | mo020_skin1 | mo021_skin1 | mo022_skin1 | mo023_skin1 | mo024_skin1 | wo001_skin1 | wo002_skin1 | wo003_skin1 | wo004_skin1 | wo005_skin1 | wo006_skin1 | wo007_skin1 | wo008_skin1 | wo009_skin1 | wo010_skin1 | wo011_skin1 | wo012_skin1 | wo013_skin1 | wo014_skin1 | wo015_skin1 | wo016_skin1 | wo017_skin1 | wo018_skin1 | wo019_skin1 | wo020_skin1 | wo021_skin1 | wo022_skin1 | wo023_skin1 | wo024_skin1,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+세르네티,2,wu0000178 | wu0000183,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+세인트로브,2,wu0000156 | wu0000348,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+세인트후드,2,mu0000156 | mu0000348,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+소울릭아머(Lev1),2,mu0000406 | wu0000406,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+솔라레스,2,mu0000178 | mu0000183,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+스카우트아머,2,mu0000159 | mu0000351,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+스켈톤갑옷,2,mu1000023 | wu1000023,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+스파이크클럽,2,mw035 | ww035,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+시미터,2,mw047 | ww047,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+실버시미터,2,mw056 | ww056,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+아가트,2,mh162 | mh167,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+아비스,2,mu0000177 | mu0000182,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+아이웬딜,2,wu0000266 | wu0000394,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+악마,50,mm001_skin9 | wm001_skin9 | mo001_skin9 | mo002_skin9 | mo003_skin9 | mo004_skin9 | mo005_skin9 | mo006_skin9 | mo007_skin9 | mo008_skin9 | mo009_skin9 | mo010_skin9 | mo011_skin9 | mo012_skin9 | mo013_skin9 | mo014_skin9 | mo015_skin9 | mo016_skin9 | mo017_skin9 | mo018_skin9 | mo019_skin9 | mo020_skin9 | mo021_skin9 | mo022_skin9 | mo023_skin9 | mo024_skin9 | wo001_skin9 | wo002_skin9 | wo003_skin9 | wo004_skin9 | wo005_skin9 | wo006_skin9 | wo007_skin9 | wo008_skin9 | wo009_skin9 | wo010_skin9 | wo011_skin9 | wo012_skin9 | wo013_skin9 | wo014_skin9 | wo015_skin9 | wo016_skin9 | wo017_skin9 | wo018_skin9 | wo019_skin9 | wo020_skin9 | wo021_skin9 | wo022_skin9 | wo023_skin9 | wo024_skin9,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+엘리멘탈아머(Lev1),2,mu0000408 | wu0000408,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+오리엔탈의상,2,mu1000037 | wu1000037,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+오크,50,mm001_skin3 | wm001_skin3 | mo001_skin3 | mo002_skin3 | mo003_skin3 | mo004_skin3 | mo005_skin3 | mo006_skin3 | mo007_skin3 | mo008_skin3 | mo009_skin3 | mo010_skin3 | mo011_skin3 | mo012_skin3 | mo013_skin3 | mo014_skin3 | mo015_skin3 | mo016_skin3 | mo017_skin3 | mo018_skin3 | mo019_skin3 | mo020_skin3 | mo021_skin3 | mo022_skin3 | mo023_skin3 | mo024_skin3 | wo001_skin3 | wo002_skin3 | wo003_skin3 | wo004_skin3 | wo005_skin3 | wo006_skin3 | wo007_skin3 | wo008_skin3 | wo009_skin3 | wo010_skin3 | wo011_skin3 | wo012_skin3 | wo013_skin3 | wo014_skin3 | wo015_skin3 | wo016_skin3 | wo017_skin3 | wo018_skin3 | wo019_skin3 | wo020_skin3 | wo021_skin3 | wo022_skin3 | wo023_skin3 | wo024_skin3,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+올로스,2,wu0000265 | wu0000396,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+용자의의복,2,mu1000033 | wu1000033,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+우든클럽,2,mw034 | ww034,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+워어렛의상,2,mu0000212 | wu0000212,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+위타천,2,mu0000176 | mu0000181,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+윌화이어아머,4,mu1000042 | wu0000373 | wu1000034 | wu1000042,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+인디언복장,2,mu1000025 | wu1000025,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+일렌타아리,2,wu0000269 | wu0000398,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+일본축구복,2,mu0000264 | wu0000264,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+전통장수갑옷,2,mu1000018 | wu1000018,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+전파펭귄옷,2,mu0000320 | wu0000320,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+전파펭귄옷(업그레이드),2,mu0000440 | wu0000440,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+창백한,50,mm001_skin7 | wm001_skin7 | mo001_skin7 | mo002_skin7 | mo003_skin7 | mo004_skin7 | mo005_skin7 | mo006_skin7 | mo007_skin7 | mo008_skin7 | mo009_skin7 | mo010_skin7 | mo011_skin7 | mo012_skin7 | mo013_skin7 | mo014_skin7 | mo015_skin7 | mo016_skin7 | mo017_skin7 | mo018_skin7 | mo019_skin7 | mo020_skin7 | mo021_skin7 | mo022_skin7 | mo023_skin7 | mo024_skin7 | wo001_skin7 | wo002_skin7 | wo003_skin7 | wo004_skin7 | wo005_skin7 | wo006_skin7 | wo007_skin7 | wo008_skin7 | wo009_skin7 | wo010_skin7 | wo011_skin7 | wo012_skin7 | wo013_skin7 | wo014_skin7 | wo015_skin7 | wo016_skin7 | wo017_skin7 | wo018_skin7 | wo019_skin7 | wo020_skin7 | wo021_skin7 | wo022_skin7 | wo023_skin7 | wo024_skin7,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+체인,2,mw052 | ww052,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+축구심판복,2,mu0000262 | wu0000262,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+카닐,2,wu0000268 | wu0000395,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+카리온,2,mu0000268 | mu0000395,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+큐이레스,2,wh209 | wh356,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+크리스마스의상,2,mu1000026 | wu1000026,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+클레릭아머(Lev1),2,mu0000404 | wu0000404,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+터틀,2,mu0000256 | wu0000256,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+토마호크,2,mw054 | ww054,weapon,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+페이로브아머,4,mu0000372 | mu1000035 | wu0000372 | wu1000035,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+펭귄옷,2,mu0000104 | wu0000104,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+펭귄옷(업그레이드),2,mu0000439 | wu0000439,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+플로팅블레이드,3,mg332 | mg333 | mg334,back,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+한국축구복,2,mu0000263 | wu0000263,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+해적모자,2,mh232 | wh401,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+해적옷,3,mu0000261 | wu0000260 | wu0000261,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+헬름,2,mh163 | mh168,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+화랑복건,9,mh124 | mh307 | mh308 | mh309 | mh312 | mh352 | mh353 | mh354 | mh355,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+화랑복건 ,7,mh310 | mh552 | mh553 | mh554 | mh555 | mh556 | mh558,hair,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+화랑전복,17,mu1000001 | mu1000002 | mu1000003 | mu1000004 | mu1000005 | mu1000006 | mu1000019 | mu1000020 | mu1000021 | mu1000022 | mu1000126 | mu1000127 | mu1000128 | mu1000129 | mu1000130 | mu1000131 | mu1000132,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+황금색,50,mm001_skin4 | wm001_skin4 | mo001_skin4 | mo002_skin4 | mo003_skin4 | mo004_skin4 | mo005_skin4 | mo006_skin4 | mo007_skin4 | mo008_skin4 | mo009_skin4 | mo010_skin4 | mo011_skin4 | mo012_skin4 | mo013_skin4 | mo014_skin4 | mo015_skin4 | mo016_skin4 | mo017_skin4 | mo018_skin4 | mo019_skin4 | mo020_skin4 | mo021_skin4 | mo022_skin4 | mo023_skin4 | mo024_skin4 | wo001_skin4 | wo002_skin4 | wo003_skin4 | wo004_skin4 | wo005_skin4 | wo006_skin4 | wo007_skin4 | wo008_skin4 | wo009_skin4 | wo010_skin4 | wo011_skin4 | wo012_skin4 | wo013_skin4 | wo014_skin4 | wo015_skin4 | wo016_skin4 | wo017_skin4 | wo018_skin4 | wo019_skin4 | wo020_skin4 | wo021_skin4 | wo022_skin4 | wo023_skin4 | wo024_skin4,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+회색,50,mm001_skin6 | wm001_skin6 | mo001_skin6 | mo002_skin6 | mo003_skin6 | mo004_skin6 | mo005_skin6 | mo006_skin6 | mo007_skin6 | mo008_skin6 | mo009_skin6 | mo010_skin6 | mo011_skin6 | mo012_skin6 | mo013_skin6 | mo014_skin6 | mo015_skin6 | mo016_skin6 | mo017_skin6 | mo018_skin6 | mo019_skin6 | mo020_skin6 | mo021_skin6 | mo022_skin6 | mo023_skin6 | mo024_skin6 | wo001_skin6 | wo002_skin6 | wo003_skin6 | wo004_skin6 | wo005_skin6 | wo006_skin6 | wo007_skin6 | wo008_skin6 | wo009_skin6 | wo010_skin6 | wo011_skin6 | wo012_skin6 | wo013_skin6 | wo014_skin6 | wo015_skin6 | wo016_skin6 | wo017_skin6 | wo018_skin6 | wo019_skin6 | wo020_skin6 | wo021_skin6 | wo022_skin6 | wo023_skin6 | wo024_skin6,bodyskin | facecolor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.
+회색튜브,2,mu0000319 | wu0000319,armor,동일 display name이 여러 visual ID에 존재. 이름만으로 exact item identity 확정 금지.

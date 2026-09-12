@@ -1,0 +1,567 @@
+﻿type,id,name,group,frame_index,sprite_name,b,w,h,px,py,sx,sy,webp
+armor,mu0000058,루어스레더로브,01,0,mu000005801_0,mu000,19,28,0.5789,-0.7143,155,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_000.webp
+armor,mu0000058,루어스레더로브,01,1,mu000005801_1,mu000,19,26,0.5263,-0.8077,376,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_001.webp
+armor,mu0000058,루어스레더로브,01,2,mu000005801_2,mu000,23,26,0.4783,-0.8462,396,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_002.webp
+armor,mu0000058,루어스레더로브,01,3,mu000005801_3,mu000,27,28,0.5185,-0.6786,175,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_003.webp
+armor,mu0000058,루어스레더로브,01,4,mu000005801_4,mu000,19,25,0.5263,-0.92,593,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_004.webp
+armor,mu0000058,루어스레더로브,01,5,mu000005801_5,mu000,19,26,0.5263,-0.8077,420,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_005.webp
+armor,mu0000058,루어스레더로브,01,6,mu000005801_6,mu000,25,27,0.52,-0.7407,322,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_006.webp
+armor,mu0000058,루어스레더로브,01,7,mu000005801_7,mu000,27,27,0.4815,-0.7037,348,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_007.webp
+armor,mu0000058,루어스레더로브,01,8,mu000005801_8,mu000,21,24,0.4762,-0.9583,613,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_008.webp
+armor,mu0000058,루어스레더로브,01,9,mu000005801_9,mu000,20,26,0.45,-0.7692,440,0,master/assets/animation_frames/armor/mu0000058/01/mu0000058_01_009.webp
+armor,mu0000058,루어스레더로브,02,0,mu000005802_0,mu000,14,33,0.5714,-0.6061,124,0,master/assets/animation_frames/armor/mu0000058/02/mu0000058_02_000.webp
+armor,mu0000058,루어스레더로브,02,1,mu000005802_1,mu000,19,22,0.1579,-1.2273,635,0,master/assets/animation_frames/armor/mu0000058/02/mu0000058_02_001.webp
+armor,mu0000058,루어스레더로브,02,2,mu000005802_2,mu000,15,30,0.4,-0.7667,139,0,master/assets/animation_frames/armor/mu0000058/02/mu0000058_02_002.webp
+armor,mu0000058,루어스레더로브,02,3,mu000005802_3,mu000,20,21,0.3,-1.0476,655,0,master/assets/animation_frames/armor/mu0000058/02/mu0000058_02_003.webp
+armor,mu0000058,루어스레더로브,03,0,mu000005803_0,mu000,19,38,0.5789,-0.5526,46,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_000.webp
+armor,mu0000058,루어스레더로브,03,1,mu000005803_1,mu000,20,39,0.45,-0.5641,25,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_001.webp
+armor,mu0000058,루어스레더로브,03,2,mu000005803_2,mu000,21,28,0.5238,-0.7143,203,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_002.webp
+armor,mu0000058,루어스레더로브,03,3,mu000005803_3,mu000,25,28,0.44,-0.7143,225,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_003.webp
+armor,mu0000058,루어스레더로브,03,4,mu000005803_4,mu000,20,26,0.5,-0.8077,461,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_004.webp
+armor,mu0000058,루어스레더로브,03,5,mu000005803_5,mu000,25,26,0.4,-0.8077,482,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_005.webp
+armor,mu0000058,루어스레더로브,03,6,mu000005803_6,mu000,24,28,0.4583,-0.7143,251,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_006.webp
+armor,mu0000058,루어스레더로브,03,7,mu000005803_7,mu000,26,28,0.4231,-0.7143,276,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_007.webp
+armor,mu0000058,루어스레더로브,03,8,mu000005803_8,mu000,16,26,0.4375,-0.8077,508,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_008.webp
+armor,mu0000058,루어스레더로브,03,9,mu000005803_9,mu000,17,26,0.4706,-0.8077,525,0,master/assets/animation_frames/armor/mu0000058/03/mu0000058_03_009.webp
+armor,mu0000058,루어스레더로브,b,0,mu0000058b_0,mu000,18,28,0.4444,-0.7143,303,0,master/assets/animation_frames/armor/mu0000058/b/mu0000058_b_000.webp
+armor,mu0000058,루어스레더로브,b,1,mu0000058b_1,mu000,24,42,0.5833,-0.4762,0,0,master/assets/animation_frames/armor/mu0000058/b/mu0000058_b_001.webp
+armor,mu0000058,루어스레더로브,b,2,mu0000058b_2,mu000,32,36,0.25,-0.5556,91,0,master/assets/animation_frames/armor/mu0000058/b/mu0000058_b_002.webp
+armor,mu0000058,루어스레더로브,b,3,mu0000058b_3,mu000,16,26,0.4375,-0.8077,543,0,master/assets/animation_frames/armor/mu0000058/b/mu0000058_b_003.webp
+armor,mu0000058,루어스레더로브,b,4,mu0000058b_4,mu000,24,38,0.5833,-0.5526,66,0,master/assets/animation_frames/armor/mu0000058/b/mu0000058_b_004.webp
+armor,mu0000058,루어스레더로브,b,5,mu0000058b_5,mu000,32,26,0.2188,-0.8077,560,0,master/assets/animation_frames/armor/mu0000058/b/mu0000058_b_005.webp
+body,mm001,남자,01,0,mm00101_0,mm000,18,51,0.5,-0.1569,163,66,master/assets/animation_frames/body/mm001/01/mm001_01_000.webp
+body,mm001,남자,01,1,mm00101_1,mm000,21,51,0.381,-0.1765,182,66,master/assets/animation_frames/body/mm001/01/mm001_01_001.webp
+body,mm001,남자,01,2,mm00101_2,mm000,21,51,0.4286,-0.1569,204,66,master/assets/animation_frames/body/mm001/01/mm001_01_002.webp
+body,mm001,남자,01,3,mm00101_3,mm000,27,52,0.4444,-0.1154,632,0,master/assets/animation_frames/body/mm001/01/mm001_01_003.webp
+body,mm001,남자,01,4,mm00101_4,mm000,17,50,0.5294,-0.18,916,66,master/assets/animation_frames/body/mm001/01/mm001_01_004.webp
+body,mm001,남자,01,5,mm00101_5,mm000,25,49,0.48,-0.1837,989,66,master/assets/animation_frames/body/mm001/01/mm001_01_005.webp
+body,mm001,남자,01,6,mm00101_6,mm000,24,48,0.4583,-0.25,184,119,master/assets/animation_frames/body/mm001/01/mm001_01_006.webp
+body,mm001,남자,01,7,mm00101_7,mm000,27,54,0.4444,-0.0926,187,0,master/assets/animation_frames/body/mm001/01/mm001_01_007.webp
+body,mm001,남자,01,8,mm00101_8,mm000,18,51,0.5,-0.1765,226,66,master/assets/animation_frames/body/mm001/01/mm001_01_008.webp
+body,mm001,남자,01,9,mm00101_9,mm000,26,51,0.4615,-0.1569,245,66,master/assets/animation_frames/body/mm001/01/mm001_01_009.webp
+body,mm001,남자,02,0,mm00102_0,mm000,17,51,0.4706,-0.1569,272,66,master/assets/animation_frames/body/mm001/02/mm001_02_000.webp
+body,mm001,남자,02,1,mm00102_1,mm000,18,52,0.1111,-0.1538,660,0,master/assets/animation_frames/body/mm001/02/mm001_02_001.webp
+body,mm001,남자,02,2,mm00102_2,mm000,19,51,0.3158,-0.1765,290,66,master/assets/animation_frames/body/mm001/02/mm001_02_002.webp
+body,mm001,남자,02,3,mm00102_3,mm000,21,49,0.1905,-0.0612,0,119,master/assets/animation_frames/body/mm001/02/mm001_02_003.webp
+body,mm001,남자,03,0,mm00103_0,mm000,18,53,0.5,-0.1509,613,0,master/assets/animation_frames/body/mm001/03/mm001_03_000.webp
+body,mm001,남자,03,1,mm00103_1,mm000,22,54,0.4091,-0.1667,215,0,master/assets/animation_frames/body/mm001/03/mm001_03_001.webp
+body,mm001,남자,03,2,mm00103_2,mm000,19,51,0.4737,-0.1569,310,66,master/assets/animation_frames/body/mm001/03/mm001_03_002.webp
+body,mm001,남자,03,3,mm00103_3,mm000,26,49,0.3462,-0.1633,22,119,master/assets/animation_frames/body/mm001/03/mm001_03_003.webp
+body,mm001,남자,03,4,mm00103_4,mm000,21,51,0.381,-0.1765,330,66,master/assets/animation_frames/body/mm001/03/mm001_03_004.webp
+body,mm001,남자,03,5,mm00103_5,mm000,24,50,0.3333,-0.18,934,66,master/assets/animation_frames/body/mm001/03/mm001_03_005.webp
+body,mm001,남자,03,6,mm00103_6,mm000,20,51,0.45,-0.1569,352,66,master/assets/animation_frames/body/mm001/03/mm001_03_006.webp
+body,mm001,남자,03,7,mm00103_7,mm000,23,51,0.3913,-0.1569,373,66,master/assets/animation_frames/body/mm001/03/mm001_03_007.webp
+body,mm001,남자,03,8,mm00103_8,mm000,19,51,0.3158,-0.1765,397,66,master/assets/animation_frames/body/mm001/03/mm001_03_008.webp
+body,mm001,남자,03,9,mm00103_9,mm000,21,51,0.381,-0.1765,417,66,master/assets/animation_frames/body/mm001/03/mm001_03_009.webp
+body,mm001,남자,b,0,mm001b_0,mm000,17,51,0.4706,-0.1569,439,66,master/assets/animation_frames/body/mm001/b/mm001_b_000.webp
+body,mm001,남자,b,1,mm001b_1,mm000,23,51,0.5652,-0.1569,457,66,master/assets/animation_frames/body/mm001/b/mm001_b_001.webp
+body,mm001,남자,b,2,mm001b_2,mm000,26,51,0.3077,-0.1569,481,66,master/assets/animation_frames/body/mm001/b/mm001_b_002.webp
+body,mm001,남자,b,3,mm001b_3,mm000,19,51,0.3158,-0.1765,508,66,master/assets/animation_frames/body/mm001/b/mm001_b_003.webp
+body,mm001,남자,b,4,mm001b_4,mm000,26,51,0.5,-0.1765,528,66,master/assets/animation_frames/body/mm001/b/mm001_b_004.webp
+body,mm001,남자,b,5,mm001b_5,mm000,26,51,0.2308,-0.1765,555,66,master/assets/animation_frames/body/mm001/b/mm001_b_005.webp
+body,mm001,남자,b,6,mm001b_6,mm000,17,52,0.4706,-0.1538,679,0,master/assets/animation_frames/body/mm001/b/mm001_b_006.webp
+body,mm001,남자,b,7,mm001b_7,mm000,17,51,0.4706,-0.1569,582,66,master/assets/animation_frames/body/mm001/b/mm001_b_007.webp
+body,mm001,남자,b,8,mm001b_8,mm000,17,51,0.4706,-0.1569,600,66,master/assets/animation_frames/body/mm001/b/mm001_b_008.webp
+body,mm001,남자,b,9,mm001b_9,mm000,22,52,0.4091,-0.1731,697,0,master/assets/animation_frames/body/mm001/b/mm001_b_009.webp
+body,mm001,남자,b,10,mm001b_10,mm000,22,51,0.4091,-0.1765,618,66,master/assets/animation_frames/body/mm001/b/mm001_b_010.webp
+body,mm001,남자,b,11,mm001b_11,mm000,22,51,0.4091,-0.1765,641,66,master/assets/animation_frames/body/mm001/b/mm001_b_011.webp
+body,mm001,남자,b,12,mm001b_12,mm000,17,54,0.4706,-0.1481,238,0,master/assets/animation_frames/body/mm001/b/mm001_b_012.webp
+body,mm001,남자,b,13,mm001b_13,mm000,20,52,0.3,-0.1731,720,0,master/assets/animation_frames/body/mm001/b/mm001_b_013.webp
+body,mm001,남자,c,0,mm001c_0,mm000,19,51,0.4211,-0.1569,664,66,master/assets/animation_frames/body/mm001/c/mm001_c_000.webp
+body,mm001,남자,c,1,mm001c_1,mm000,16,52,0.125,-0.1538,741,0,master/assets/animation_frames/body/mm001/c/mm001_c_001.webp
+body,mm001,남자,c,2,mm001c_2,mm000,16,52,0.125,-0.1538,758,0,master/assets/animation_frames/body/mm001/c/mm001_c_002.webp
+body,mm001,남자,c,3,mm001c_3,mm000,19,48,0.1053,-0.1667,209,119,master/assets/animation_frames/body/mm001/c/mm001_c_003.webp
+body,mm001,남자,c,4,mm001c_4,mm000,19,51,0.3158,-0.1765,684,66,master/assets/animation_frames/body/mm001/c/mm001_c_004.webp
+body,mm001,남자,c,5,mm001c_5,mm000,20,49,0.15,-0.0612,49,119,master/assets/animation_frames/body/mm001/c/mm001_c_005.webp
+body,mm001,남자,c,6,mm001c_6,mm000,23,49,0.1304,-0.0612,70,119,master/assets/animation_frames/body/mm001/c/mm001_c_006.webp
+body,mm001,남자,c,7,mm001c_7,mm000,24,48,0.125,-0.0625,229,119,master/assets/animation_frames/body/mm001/c/mm001_c_007.webp
+body,mm001,남자,c,8,mm001c_8,mm000,17,46,0.4706,-0.1739,366,119,master/assets/animation_frames/body/mm001/c/mm001_c_008.webp
+body,mm001,남자,c,9,mm001c_9,mm000,19,60,0.5789,-0.15,71,0,master/assets/animation_frames/body/mm001/c/mm001_c_009.webp
+body,mm001,남자,c,10,mm001c_10,mm000,16,48,0.5625,-0.1042,254,119,master/assets/animation_frames/body/mm001/c/mm001_c_010.webp
+body,mm001,남자,c,11,mm001c_11,mm000,21,46,0.381,-0.1957,384,119,master/assets/animation_frames/body/mm001/c/mm001_c_011.webp
+body,mm001,남자,c,12,mm001c_12,mm000,19,61,0.5263,-0.1803,51,0,master/assets/animation_frames/body/mm001/c/mm001_c_012.webp
+body,mm001,남자,c,13,mm001c_13,mm000,17,43,0.2941,-0.1395,618,119,master/assets/animation_frames/body/mm001/c/mm001_c_013.webp
+body,mm001,남자,c,14,mm001c_14,mm000,16,48,0.5625,-0.1042,271,119,master/assets/animation_frames/body/mm001/c/mm001_c_014.webp
+body,mm001,남자,c,15,mm001c_15,mm000,18,44,0.5,-0.1364,501,119,master/assets/animation_frames/body/mm001/c/mm001_c_015.webp
+body,mm001,남자,c,16,mm001c_16,mm000,32,40,0.4062,-0.325,795,119,master/assets/animation_frames/body/mm001/c/mm001_c_016.webp
+body,mm001,남자,c,17,mm001c_17,mm000,38,34,0.3684,-0.2353,901,119,master/assets/animation_frames/body/mm001/c/mm001_c_017.webp
+body,mm001,남자,c,18,mm001c_18,mm000,35,43,0.5429,-0.2093,636,119,master/assets/animation_frames/body/mm001/c/mm001_c_018.webp
+body,mm001,남자,c,19,mm001c_19,mm000,18,45,0.5,-0.1333,482,119,master/assets/animation_frames/body/mm001/c/mm001_c_019.webp
+body,mm001,남자,c,20,mm001c_20,mm000,18,44,0.5,-0.1364,520,119,master/assets/animation_frames/body/mm001/c/mm001_c_020.webp
+body,mm001,남자,c,21,mm001c_21,mm000,35,46,0.6286,-0.1957,406,119,master/assets/animation_frames/body/mm001/c/mm001_c_021.webp
+body,mm001,남자,c,22,mm001c_22,mm000,38,38,0.3684,-0.2105,828,119,master/assets/animation_frames/body/mm001/c/mm001_c_022.webp
+body,mm001,남자,c,23,mm001c_23,mm000,38,34,0.3684,-0.2353,940,119,master/assets/animation_frames/body/mm001/c/mm001_c_023.webp
+body,mm001,남자,c,24,mm001c_24,mm000,17,46,0.4706,-0.1739,442,119,master/assets/animation_frames/body/mm001/c/mm001_c_024.webp
+body,mm001,남자,c,25,mm001c_25,mm000,25,64,0.68,-0.1562,25,0,master/assets/animation_frames/body/mm001/c/mm001_c_025.webp
+body,mm001,남자,c,26,mm001c_26,mm000,26,34,0.5,-0.2353,979,119,master/assets/animation_frames/body/mm001/c/mm001_c_026.webp
+body,mm001,남자,c,27,mm001c_27,mm000,21,46,0.381,-0.1957,460,119,master/assets/animation_frames/body/mm001/c/mm001_c_027.webp
+body,mm001,남자,c,28,mm001c_28,mm000,24,65,0.4167,-0.1846,0,0,master/assets/animation_frames/body/mm001/c/mm001_c_028.webp
+body,mm001,남자,c,29,mm001c_29,mm000,33,35,0.4242,-0.2571,867,119,master/assets/animation_frames/body/mm001/c/mm001_c_029.webp
+body,mm001,남자,d,0,mm001d_0,mm000,16,52,0.875,-0.0192,775,0,master/assets/animation_frames/body/mm001/d/mm001_d_000.webp
+body,mm001,남자,d,1,mm001d_1,mm000,33,48,0.5455,-0.2292,288,119,master/assets/animation_frames/body/mm001/d/mm001_d_001.webp
+body,mm001,남자,d,2,mm001d_2,mm000,30,49,0.6,-0.2449,94,119,master/assets/animation_frames/body/mm001/d/mm001_d_002.webp
+body,mm001,남자,d,3,mm001d_3,mm000,17,54,0.8824,-0.1667,256,0,master/assets/animation_frames/body/mm001/d/mm001_d_003.webp
+body,mm001,남자,d,4,mm001d_4,mm000,29,50,0.5172,-0.18,959,66,master/assets/animation_frames/body/mm001/d/mm001_d_004.webp
+body,mm001,남자,d,5,mm001d_5,mm000,30,52,0.5,-0.1731,792,0,master/assets/animation_frames/body/mm001/d/mm001_d_005.webp
+body,mm001,남자,d,6,mm001d_6,mm000,27,52,0.0741,-0.1538,823,0,master/assets/animation_frames/body/mm001/d/mm001_d_006.webp
+body,mm001,남자,d,7,mm001d_7,mm000,22,52,0.0909,-0.1538,851,0,master/assets/animation_frames/body/mm001/d/mm001_d_007.webp
+body,mm001,남자,d,8,mm001d_8,mm000,31,49,0.129,-0.0612,125,119,master/assets/animation_frames/body/mm001/d/mm001_d_008.webp
+body,mm001,남자,d,9,mm001d_9,mm000,26,49,0.1154,-0.0612,157,119,master/assets/animation_frames/body/mm001/d/mm001_d_009.webp
+body,mm001,남자,d,10,mm001d_10,mm000,23,52,0.3478,-0.1538,874,0,master/assets/animation_frames/body/mm001/d/mm001_d_010.webp
+body,mm001,남자,d,11,mm001d_11,mm000,26,47,0.2308,-0.3617,339,119,master/assets/animation_frames/body/mm001/d/mm001_d_011.webp
+body,mm001,남자,d,12,mm001d_12,mm000,38,43,0.2895,-0.3953,672,119,master/assets/animation_frames/body/mm001/d/mm001_d_012.webp
+body,mm001,남자,d,13,mm001d_13,mm000,16,52,0.1875,-0.1538,898,0,master/assets/animation_frames/body/mm001/d/mm001_d_013.webp
+body,mm001,남자,d,14,mm001d_14,mm000,27,54,0.1852,-0.0741,274,0,master/assets/animation_frames/body/mm001/d/mm001_d_014.webp
+body,mm001,남자,d,15,mm001d_15,mm000,26,51,0.4231,-0.0784,704,66,master/assets/animation_frames/body/mm001/d/mm001_d_015.webp
+body,mm001,남자,d,16,mm001d_16,mm000,37,51,0.2703,-0.1176,731,66,master/assets/animation_frames/body/mm001/d/mm001_d_016.webp
+body,mm001,남자,d,17,mm001d_17,mm000,16,54,0.0,-0.0741,302,0,master/assets/animation_frames/body/mm001/d/mm001_d_017.webp
+body,mm001,남자,e,0,mm001e_0,mm000,14,51,0.3571,-0.1569,769,66,master/assets/animation_frames/body/mm001/e/mm001_e_000.webp
+body,mm001,남자,e,1,mm001e_1,mm000,28,44,0.1786,-0.1818,539,119,master/assets/animation_frames/body/mm001/e/mm001_e_001.webp
+body,mm001,남자,e,2,mm001e_2,mm000,16,48,0.375,-0.25,322,119,master/assets/animation_frames/body/mm001/e/mm001_e_002.webp
+body,mm001,남자,e,3,mm001e_3,mm000,29,43,0.069,-0.0233,711,119,master/assets/animation_frames/body/mm001/e/mm001_e_003.webp
+body,mm001,남자,e,4,mm001e_4,mm000,28,44,0.1786,-0.1818,568,119,master/assets/animation_frames/body/mm001/e/mm001_e_004.webp
+body,mm001,남자,e,5,mm001e_5,mm000,20,44,0.1,-0.1818,597,119,master/assets/animation_frames/body/mm001/e/mm001_e_005.webp
+body,mm001,남자,e,6,mm001e_6,mm000,29,43,0.069,-0.0233,741,119,master/assets/animation_frames/body/mm001/e/mm001_e_006.webp
+body,mm001,남자,e,7,mm001e_7,mm000,23,43,0.0,-0.0233,771,119,master/assets/animation_frames/body/mm001/e/mm001_e_007.webp
+body,mm001,남자,e,8,mm001e_8,mm000,16,52,0.6875,-0.1731,915,0,master/assets/animation_frames/body/mm001/e/mm001_e_008.webp
+body,mm001,남자,e,9,mm001e_9,mm000,16,52,0.6875,-0.1731,932,0,master/assets/animation_frames/body/mm001/e/mm001_e_009.webp
+body,mm001,남자,e,10,mm001e_10,mm000,16,52,0.6875,-0.1731,949,0,master/assets/animation_frames/body/mm001/e/mm001_e_010.webp
+body,mm001,남자,e,11,mm001e_11,mm000,16,52,0.6875,-0.1731,966,0,master/assets/animation_frames/body/mm001/e/mm001_e_011.webp
+body,mm001,남자,e,12,mm001e_12,mm000,20,54,0.35,-0.1296,319,0,master/assets/animation_frames/body/mm001/e/mm001_e_012.webp
+body,mm001,남자,e,13,mm001e_13,mm000,20,54,0.35,-0.1296,340,0,master/assets/animation_frames/body/mm001/e/mm001_e_013.webp
+body,mm001,남자,e,14,mm001e_14,mm000,20,54,0.35,-0.1296,361,0,master/assets/animation_frames/body/mm001/e/mm001_e_014.webp
+body,mm001,남자,e,15,mm001e_15,mm000,20,54,0.35,-0.1296,382,0,master/assets/animation_frames/body/mm001/e/mm001_e_015.webp
+body,mm001,남자,e,16,mm001e_16,mm000,16,52,0.6875,-0.1731,983,0,master/assets/animation_frames/body/mm001/e/mm001_e_016.webp
+body,mm001,남자,e,17,mm001e_17,mm000,16,52,0.6875,-0.1731,1000,0,master/assets/animation_frames/body/mm001/e/mm001_e_017.webp
+body,mm001,남자,e,18,mm001e_18,mm000,16,52,0.6875,-0.1731,0,66,master/assets/animation_frames/body/mm001/e/mm001_e_018.webp
+body,mm001,남자,e,19,mm001e_19,mm000,16,52,0.6875,-0.1731,17,66,master/assets/animation_frames/body/mm001/e/mm001_e_019.webp
+body,mm001,남자,e,20,mm001e_20,mm000,16,52,0.6875,-0.1731,34,66,master/assets/animation_frames/body/mm001/e/mm001_e_020.webp
+body,mm001,남자,e,21,mm001e_21,mm000,16,52,0.6875,-0.1731,51,66,master/assets/animation_frames/body/mm001/e/mm001_e_021.webp
+body,mm001,남자,e,22,mm001e_22,mm000,17,55,0.4118,-0.1091,133,0,master/assets/animation_frames/body/mm001/e/mm001_e_022.webp
+body,mm001,남자,e,23,mm001e_23,mm000,20,54,0.35,-0.1296,403,0,master/assets/animation_frames/body/mm001/e/mm001_e_023.webp
+body,mm001,남자,e,24,mm001e_24,mm000,20,54,0.35,-0.1296,424,0,master/assets/animation_frames/body/mm001/e/mm001_e_024.webp
+body,mm001,남자,e,25,mm001e_25,mm000,20,54,0.35,-0.1296,445,0,master/assets/animation_frames/body/mm001/e/mm001_e_025.webp
+body,mm001,남자,e,26,mm001e_26,mm000,20,54,0.35,-0.1296,466,0,master/assets/animation_frames/body/mm001/e/mm001_e_026.webp
+body,mm001,남자,e,27,mm001e_27,mm000,20,54,0.35,-0.1296,487,0,master/assets/animation_frames/body/mm001/e/mm001_e_027.webp
+body,mm001,남자,e,28,mm001e_28,mm000,16,52,0.6875,-0.1731,68,66,master/assets/animation_frames/body/mm001/e/mm001_e_028.webp
+body,mm001,남자,e,29,mm001e_29,mm000,16,52,0.6875,-0.1731,85,66,master/assets/animation_frames/body/mm001/e/mm001_e_029.webp
+body,mm001,남자,e,30,mm001e_30,mm000,16,52,0.6875,-0.1731,102,66,master/assets/animation_frames/body/mm001/e/mm001_e_030.webp
+body,mm001,남자,e,31,mm001e_31,mm000,16,52,0.6875,-0.1731,119,66,master/assets/animation_frames/body/mm001/e/mm001_e_031.webp
+body,mm001,남자,e,32,mm001e_32,mm000,18,54,0.3889,-0.1296,508,0,master/assets/animation_frames/body/mm001/e/mm001_e_032.webp
+body,mm001,남자,e,33,mm001e_33,mm000,18,54,0.3889,-0.1296,527,0,master/assets/animation_frames/body/mm001/e/mm001_e_033.webp
+body,mm001,남자,e,34,mm001e_34,mm000,18,54,0.3889,-0.1296,546,0,master/assets/animation_frames/body/mm001/e/mm001_e_034.webp
+body,mm001,남자,e,35,mm001e_35,mm000,18,54,0.3889,-0.1296,565,0,master/assets/animation_frames/body/mm001/e/mm001_e_035.webp
+body,mm001,남자,f,0,mm001f_0,mm000,26,51,0.5,-0.1569,784,66,master/assets/animation_frames/body/mm001/f/mm001_f_000.webp
+body,mm001,남자,f,1,mm001f_1,mm000,28,54,0.4643,-0.1481,584,0,master/assets/animation_frames/body/mm001/f/mm001_f_001.webp
+body,mm001,남자,f,2,mm001f_2,mm000,28,51,0.5,-0.1765,811,66,master/assets/animation_frames/body/mm001/f/mm001_f_002.webp
+body,mm001,남자,f,3,mm001f_3,mm000,26,52,0.5,-0.1731,136,66,master/assets/animation_frames/body/mm001/f/mm001_f_003.webp
+body,mm001,남자,f,4,mm001f_4,mm000,17,51,0.4706,-0.1569,840,66,master/assets/animation_frames/body/mm001/f/mm001_f_004.webp
+body,mm001,남자,f,5,mm001f_5,mm000,17,51,0.4706,-0.1569,858,66,master/assets/animation_frames/body/mm001/f/mm001_f_005.webp
+body,mm001,남자,f,6,mm001f_6,mm000,17,55,0.4706,-0.1455,151,0,master/assets/animation_frames/body/mm001/f/mm001_f_006.webp
+body,mm001,남자,f,7,mm001f_7,mm000,17,55,0.4706,-0.1455,169,0,master/assets/animation_frames/body/mm001/f/mm001_f_007.webp
+body,mm001,남자,f,8,mm001f_8,mm000,19,51,0.3158,-0.1765,876,66,master/assets/animation_frames/body/mm001/f/mm001_f_008.webp
+body,mm001,남자,f,9,mm001f_9,mm000,19,51,0.3158,-0.1765,896,66,master/assets/animation_frames/body/mm001/f/mm001_f_009.webp
+body,mm001,남자,f,10,mm001f_10,mm000,20,56,0.35,-0.1607,91,0,master/assets/animation_frames/body/mm001/f/mm001_f_010.webp
+body,mm001,남자,f,11,mm001f_11,mm000,20,56,0.35,-0.1607,112,0,master/assets/animation_frames/body/mm001/f/mm001_f_011.webp
+body,wm001,여자,01,0,wm00101_0,wm000,15,51,0.4667,-0.1569,1002,0,master/assets/animation_frames/body/wm001/01/wm001_01_000.webp
+body,wm001,여자,01,1,wm00101_1,wm000,17,51,0.3529,-0.1765,0,66,master/assets/animation_frames/body/wm001/01/wm001_01_001.webp
+body,wm001,여자,01,2,wm00101_2,wm000,17,51,0.4706,-0.1569,18,66,master/assets/animation_frames/body/wm001/01/wm001_01_002.webp
+body,wm001,여자,01,3,wm00101_3,wm000,23,52,0.4783,-0.1154,604,0,master/assets/animation_frames/body/wm001/01/wm001_01_003.webp
+body,wm001,여자,01,4,wm00101_4,wm000,16,50,0.5,-0.18,650,66,master/assets/animation_frames/body/wm001/01/wm001_01_004.webp
+body,wm001,여자,01,5,wm00101_5,wm000,24,49,0.4583,-0.1837,820,66,master/assets/animation_frames/body/wm001/01/wm001_01_005.webp
+body,wm001,여자,01,6,wm00101_6,wm000,20,48,0.5,-0.25,898,66,master/assets/animation_frames/body/wm001/01/wm001_01_006.webp
+body,wm001,여자,01,7,wm00101_7,wm000,22,54,0.4545,-0.0926,180,0,master/assets/animation_frames/body/wm001/01/wm001_01_007.webp
+body,wm001,여자,01,8,wm00101_8,wm000,18,51,0.5,-0.1765,36,66,master/assets/animation_frames/body/wm001/01/wm001_01_008.webp
+body,wm001,여자,01,9,wm00101_9,wm000,26,51,0.4615,-0.1569,55,66,master/assets/animation_frames/body/wm001/01/wm001_01_009.webp
+body,wm001,여자,02,0,wm00102_0,wm000,15,51,0.4667,-0.1569,82,66,master/assets/animation_frames/body/wm001/02/wm001_02_000.webp
+body,wm001,여자,02,1,wm00102_1,wm000,16,50,0.125,-0.16,667,66,master/assets/animation_frames/body/wm001/02/wm001_02_001.webp
+body,wm001,여자,02,2,wm00102_2,wm000,16,51,0.3125,-0.1765,98,66,master/assets/animation_frames/body/wm001/02/wm001_02_002.webp
+body,wm001,여자,02,3,wm00102_3,wm000,21,48,0.1429,-0.0625,919,66,master/assets/animation_frames/body/wm001/02/wm001_02_003.webp
+body,wm001,여자,03,0,wm00103_0,wm000,16,53,0.5,-0.1509,569,0,master/assets/animation_frames/body/wm001/03/wm001_03_000.webp
+body,wm001,여자,03,1,wm00103_1,wm000,17,53,0.3529,-0.1698,586,0,master/assets/animation_frames/body/wm001/03/wm001_03_001.webp
+body,wm001,여자,03,2,wm00103_2,wm000,16,51,0.4375,-0.1569,115,66,master/assets/animation_frames/body/wm001/03/wm001_03_002.webp
+body,wm001,여자,03,3,wm00103_3,wm000,21,49,0.3333,-0.1633,845,66,master/assets/animation_frames/body/wm001/03/wm001_03_003.webp
+body,wm001,여자,03,4,wm00103_4,wm000,17,51,0.3529,-0.1765,132,66,master/assets/animation_frames/body/wm001/03/wm001_03_004.webp
+body,wm001,여자,03,5,wm00103_5,wm000,21,50,0.2857,-0.18,684,66,master/assets/animation_frames/body/wm001/03/wm001_03_005.webp
+body,wm001,여자,03,6,wm00103_6,wm000,20,51,0.35,-0.1569,150,66,master/assets/animation_frames/body/wm001/03/wm001_03_006.webp
+body,wm001,여자,03,7,wm00103_7,wm000,16,51,0.4375,-0.1569,171,66,master/assets/animation_frames/body/wm001/03/wm001_03_007.webp
+body,wm001,여자,03,8,wm00103_8,wm000,16,51,0.3125,-0.1765,188,66,master/assets/animation_frames/body/wm001/03/wm001_03_008.webp
+body,wm001,여자,03,9,wm00103_9,wm000,18,51,0.3889,-0.1765,205,66,master/assets/animation_frames/body/wm001/03/wm001_03_009.webp
+body,wm001,여자,b,0,wm001b_0,wm000,16,51,0.4375,-0.1569,224,66,master/assets/animation_frames/body/wm001/b/wm001_b_000.webp
+body,wm001,여자,b,1,wm001b_1,wm000,22,51,0.5455,-0.1569,241,66,master/assets/animation_frames/body/wm001/b/wm001_b_001.webp
+body,wm001,여자,b,2,wm001b_2,wm000,24,51,0.2917,-0.1569,264,66,master/assets/animation_frames/body/wm001/b/wm001_b_002.webp
+body,wm001,여자,b,3,wm001b_3,wm000,16,51,0.3125,-0.1765,289,66,master/assets/animation_frames/body/wm001/b/wm001_b_003.webp
+body,wm001,여자,b,4,wm001b_4,wm000,23,51,0.5217,-0.1765,306,66,master/assets/animation_frames/body/wm001/b/wm001_b_004.webp
+body,wm001,여자,b,5,wm001b_5,wm000,21,51,0.2381,-0.1765,330,66,master/assets/animation_frames/body/wm001/b/wm001_b_005.webp
+body,wm001,여자,b,6,wm001b_6,wm000,15,52,0.4667,-0.1538,628,0,master/assets/animation_frames/body/wm001/b/wm001_b_006.webp
+body,wm001,여자,b,7,wm001b_7,wm000,15,51,0.4667,-0.1569,352,66,master/assets/animation_frames/body/wm001/b/wm001_b_007.webp
+body,wm001,여자,b,8,wm001b_8,wm000,15,51,0.4667,-0.1569,368,66,master/assets/animation_frames/body/wm001/b/wm001_b_008.webp
+body,wm001,여자,b,9,wm001b_9,wm000,18,52,0.3889,-0.1731,644,0,master/assets/animation_frames/body/wm001/b/wm001_b_009.webp
+body,wm001,여자,b,10,wm001b_10,wm000,18,51,0.3889,-0.1765,384,66,master/assets/animation_frames/body/wm001/b/wm001_b_010.webp
+body,wm001,여자,b,11,wm001b_11,wm000,18,51,0.3889,-0.1765,403,66,master/assets/animation_frames/body/wm001/b/wm001_b_011.webp
+body,wm001,여자,b,12,wm001b_12,wm000,15,54,0.4667,-0.1481,203,0,master/assets/animation_frames/body/wm001/b/wm001_b_012.webp
+body,wm001,여자,b,13,wm001b_13,wm000,17,52,0.2941,-0.1731,663,0,master/assets/animation_frames/body/wm001/b/wm001_b_013.webp
+body,wm001,여자,c,0,wm001c_0,wm000,17,51,0.4118,-0.1569,422,66,master/assets/animation_frames/body/wm001/c/wm001_c_000.webp
+body,wm001,여자,c,1,wm001c_1,wm000,16,50,0.125,-0.16,706,66,master/assets/animation_frames/body/wm001/c/wm001_c_001.webp
+body,wm001,여자,c,2,wm001c_2,wm000,16,50,0.125,-0.16,723,66,master/assets/animation_frames/body/wm001/c/wm001_c_002.webp
+body,wm001,여자,c,3,wm001c_3,wm000,16,45,0.0625,-0.1778,234,118,master/assets/animation_frames/body/wm001/c/wm001_c_003.webp
+body,wm001,여자,c,4,wm001c_4,wm000,17,51,0.3529,-0.1765,440,66,master/assets/animation_frames/body/wm001/c/wm001_c_004.webp
+body,wm001,여자,c,5,wm001c_5,wm000,21,48,0.1429,-0.0625,941,66,master/assets/animation_frames/body/wm001/c/wm001_c_005.webp
+body,wm001,여자,c,6,wm001c_6,wm000,24,48,0.125,-0.0625,963,66,master/assets/animation_frames/body/wm001/c/wm001_c_006.webp
+body,wm001,여자,c,7,wm001c_7,wm000,19,48,0.0526,-0.0625,988,66,master/assets/animation_frames/body/wm001/c/wm001_c_007.webp
+body,wm001,여자,c,8,wm001c_8,wm000,15,46,0.4667,-0.1739,162,118,master/assets/animation_frames/body/wm001/c/wm001_c_008.webp
+body,wm001,여자,c,9,wm001c_9,wm000,18,59,0.6111,-0.1695,68,0,master/assets/animation_frames/body/wm001/c/wm001_c_009.webp
+body,wm001,여자,c,10,wm001c_10,wm000,16,48,0.5625,-0.1042,0,118,master/assets/animation_frames/body/wm001/c/wm001_c_010.webp
+body,wm001,여자,c,11,wm001c_11,wm000,19,46,0.3158,-0.1957,178,118,master/assets/animation_frames/body/wm001/c/wm001_c_011.webp
+body,wm001,여자,c,12,wm001c_12,wm000,19,60,0.5263,-0.2,48,0,master/assets/animation_frames/body/wm001/c/wm001_c_012.webp
+body,wm001,여자,c,13,wm001c_13,wm000,17,43,0.2941,-0.1395,329,118,master/assets/animation_frames/body/wm001/c/wm001_c_013.webp
+body,wm001,여자,c,14,wm001c_14,wm000,16,48,0.5625,-0.1042,17,118,master/assets/animation_frames/body/wm001/c/wm001_c_014.webp
+body,wm001,여자,c,15,wm001c_15,wm000,20,43,0.45,-0.1163,347,118,master/assets/animation_frames/body/wm001/c/wm001_c_015.webp
+body,wm001,여자,c,16,wm001c_16,wm000,28,40,0.5,-0.275,548,118,master/assets/animation_frames/body/wm001/c/wm001_c_016.webp
+body,wm001,여자,c,17,wm001c_17,wm000,34,33,0.3529,-0.2727,677,118,master/assets/animation_frames/body/wm001/c/wm001_c_017.webp
+body,wm001,여자,c,18,wm001c_18,wm000,32,39,0.5,-0.2564,577,118,master/assets/animation_frames/body/wm001/c/wm001_c_018.webp
+body,wm001,여자,c,19,wm001c_19,wm000,20,43,0.45,-0.1163,368,118,master/assets/animation_frames/body/wm001/c/wm001_c_019.webp
+body,wm001,여자,c,20,wm001c_20,wm000,20,43,0.45,-0.1163,389,118,master/assets/animation_frames/body/wm001/c/wm001_c_020.webp
+body,wm001,여자,c,21,wm001c_21,wm000,30,43,0.6667,-0.2558,410,118,master/assets/animation_frames/body/wm001/c/wm001_c_021.webp
+body,wm001,여자,c,22,wm001c_22,wm000,32,37,0.375,-0.2432,610,118,master/assets/animation_frames/body/wm001/c/wm001_c_022.webp
+body,wm001,여자,c,23,wm001c_23,wm000,34,33,0.3529,-0.2727,712,118,master/assets/animation_frames/body/wm001/c/wm001_c_023.webp
+body,wm001,여자,c,24,wm001c_24,wm000,15,46,0.4667,-0.1739,198,118,master/assets/animation_frames/body/wm001/c/wm001_c_024.webp
+body,wm001,여자,c,25,wm001c_25,wm000,25,64,0.72,-0.1562,22,0,master/assets/animation_frames/body/wm001/c/wm001_c_025.webp
+body,wm001,여자,c,26,wm001c_26,wm000,25,33,0.48,-0.303,747,118,master/assets/animation_frames/body/wm001/c/wm001_c_026.webp
+body,wm001,여자,c,27,wm001c_27,wm000,19,46,0.3158,-0.1957,214,118,master/assets/animation_frames/body/wm001/c/wm001_c_027.webp
+body,wm001,여자,c,28,wm001c_28,wm000,21,65,0.4762,-0.1846,0,0,master/assets/animation_frames/body/wm001/c/wm001_c_028.webp
+body,wm001,여자,c,29,wm001c_29,wm000,33,35,0.4242,-0.2571,643,118,master/assets/animation_frames/body/wm001/c/wm001_c_029.webp
+body,wm001,여자,d,0,wm001d_0,wm000,16,52,0.875,-0.0192,681,0,master/assets/animation_frames/body/wm001/d/wm001_d_000.webp
+body,wm001,여자,d,1,wm001d_1,wm000,33,47,0.5455,-0.2553,101,118,master/assets/animation_frames/body/wm001/d/wm001_d_001.webp
+body,wm001,여자,d,2,wm001d_2,wm000,30,49,0.6,-0.2449,867,66,master/assets/animation_frames/body/wm001/d/wm001_d_002.webp
+body,wm001,여자,d,3,wm001d_3,wm000,16,54,0.9375,-0.1667,219,0,master/assets/animation_frames/body/wm001/d/wm001_d_003.webp
+body,wm001,여자,d,4,wm001d_4,wm000,29,50,0.5172,-0.18,740,66,master/assets/animation_frames/body/wm001/d/wm001_d_004.webp
+body,wm001,여자,d,5,wm001d_5,wm000,31,52,0.4839,-0.1731,698,0,master/assets/animation_frames/body/wm001/d/wm001_d_005.webp
+body,wm001,여자,d,6,wm001d_6,wm000,27,50,0.1111,-0.16,770,66,master/assets/animation_frames/body/wm001/d/wm001_d_006.webp
+body,wm001,여자,d,7,wm001d_7,wm000,21,50,0.0952,-0.16,798,66,master/assets/animation_frames/body/wm001/d/wm001_d_007.webp
+body,wm001,여자,d,8,wm001d_8,wm000,26,48,0.1154,-0.0625,34,118,master/assets/animation_frames/body/wm001/d/wm001_d_008.webp
+body,wm001,여자,d,9,wm001d_9,wm000,25,48,0.12,-0.0625,61,118,master/assets/animation_frames/body/wm001/d/wm001_d_009.webp
+body,wm001,여자,d,10,wm001d_10,wm000,16,52,0.1875,-0.1538,730,0,master/assets/animation_frames/body/wm001/d/wm001_d_010.webp
+body,wm001,여자,d,11,wm001d_11,wm000,26,47,0.2308,-0.3617,135,118,master/assets/animation_frames/body/wm001/d/wm001_d_011.webp
+body,wm001,여자,d,12,wm001d_12,wm000,38,43,0.2895,-0.3953,441,118,master/assets/animation_frames/body/wm001/d/wm001_d_012.webp
+body,wm001,여자,d,13,wm001d_13,wm000,16,52,0.1875,-0.1538,747,0,master/assets/animation_frames/body/wm001/d/wm001_d_013.webp
+body,wm001,여자,d,14,wm001d_14,wm000,21,54,0.0952,-0.0741,236,0,master/assets/animation_frames/body/wm001/d/wm001_d_014.webp
+body,wm001,여자,d,15,wm001d_15,wm000,26,51,0.3846,-0.0784,458,66,master/assets/animation_frames/body/wm001/d/wm001_d_015.webp
+body,wm001,여자,d,16,wm001d_16,wm000,36,51,0.25,-0.1176,485,66,master/assets/animation_frames/body/wm001/d/wm001_d_016.webp
+body,wm001,여자,d,17,wm001d_17,wm000,16,54,0.0,-0.0741,258,0,master/assets/animation_frames/body/wm001/d/wm001_d_017.webp
+body,wm001,여자,e,0,wm001e_0,wm000,13,51,0.3077,-0.1569,522,66,master/assets/animation_frames/body/wm001/e/wm001_e_000.webp
+body,wm001,여자,e,1,wm001e_1,wm000,28,44,0.1786,-0.1818,251,118,master/assets/animation_frames/body/wm001/e/wm001_e_001.webp
+body,wm001,여자,e,2,wm001e_2,wm000,13,48,0.4615,-0.25,87,118,master/assets/animation_frames/body/wm001/e/wm001_e_002.webp
+body,wm001,여자,e,3,wm001e_3,wm000,23,43,0.0,-0.0233,480,118,master/assets/animation_frames/body/wm001/e/wm001_e_003.webp
+body,wm001,여자,e,4,wm001e_4,wm000,28,44,0.1786,-0.1818,280,118,master/assets/animation_frames/body/wm001/e/wm001_e_004.webp
+body,wm001,여자,e,5,wm001e_5,wm000,19,44,0.0526,-0.1818,309,118,master/assets/animation_frames/body/wm001/e/wm001_e_005.webp
+body,wm001,여자,e,6,wm001e_6,wm000,23,43,0.0,-0.0233,504,118,master/assets/animation_frames/body/wm001/e/wm001_e_006.webp
+body,wm001,여자,e,7,wm001e_7,wm000,19,43,-0.1053,-0.0233,528,118,master/assets/animation_frames/body/wm001/e/wm001_e_007.webp
+body,wm001,여자,e,8,wm001e_8,wm000,16,52,0.6875,-0.1731,764,0,master/assets/animation_frames/body/wm001/e/wm001_e_008.webp
+body,wm001,여자,e,9,wm001e_9,wm000,16,52,0.6875,-0.1731,781,0,master/assets/animation_frames/body/wm001/e/wm001_e_009.webp
+body,wm001,여자,e,10,wm001e_10,wm000,16,52,0.6875,-0.1731,798,0,master/assets/animation_frames/body/wm001/e/wm001_e_010.webp
+body,wm001,여자,e,11,wm001e_11,wm000,16,52,0.6875,-0.1731,815,0,master/assets/animation_frames/body/wm001/e/wm001_e_011.webp
+body,wm001,여자,e,12,wm001e_12,wm000,19,54,0.3684,-0.1296,275,0,master/assets/animation_frames/body/wm001/e/wm001_e_012.webp
+body,wm001,여자,e,13,wm001e_13,wm000,19,54,0.3684,-0.1296,295,0,master/assets/animation_frames/body/wm001/e/wm001_e_013.webp
+body,wm001,여자,e,14,wm001e_14,wm000,19,54,0.3684,-0.1296,315,0,master/assets/animation_frames/body/wm001/e/wm001_e_014.webp
+body,wm001,여자,e,15,wm001e_15,wm000,19,54,0.3684,-0.1296,335,0,master/assets/animation_frames/body/wm001/e/wm001_e_015.webp
+body,wm001,여자,e,16,wm001e_16,wm000,16,52,0.6875,-0.1731,832,0,master/assets/animation_frames/body/wm001/e/wm001_e_016.webp
+body,wm001,여자,e,17,wm001e_17,wm000,16,52,0.6875,-0.1731,849,0,master/assets/animation_frames/body/wm001/e/wm001_e_017.webp
+body,wm001,여자,e,18,wm001e_18,wm000,16,52,0.6875,-0.1731,866,0,master/assets/animation_frames/body/wm001/e/wm001_e_018.webp
+body,wm001,여자,e,19,wm001e_19,wm000,16,52,0.6875,-0.1731,883,0,master/assets/animation_frames/body/wm001/e/wm001_e_019.webp
+body,wm001,여자,e,20,wm001e_20,wm000,16,52,0.6875,-0.1731,900,0,master/assets/animation_frames/body/wm001/e/wm001_e_020.webp
+body,wm001,여자,e,21,wm001e_21,wm000,16,52,0.6875,-0.1731,917,0,master/assets/animation_frames/body/wm001/e/wm001_e_021.webp
+body,wm001,여자,e,22,wm001e_22,wm000,16,54,0.4375,-0.1296,355,0,master/assets/animation_frames/body/wm001/e/wm001_e_022.webp
+body,wm001,여자,e,23,wm001e_23,wm000,19,54,0.3684,-0.1296,372,0,master/assets/animation_frames/body/wm001/e/wm001_e_023.webp
+body,wm001,여자,e,24,wm001e_24,wm000,19,54,0.3684,-0.1296,392,0,master/assets/animation_frames/body/wm001/e/wm001_e_024.webp
+body,wm001,여자,e,25,wm001e_25,wm000,19,54,0.3684,-0.1296,412,0,master/assets/animation_frames/body/wm001/e/wm001_e_025.webp
+body,wm001,여자,e,26,wm001e_26,wm000,19,54,0.3684,-0.1296,432,0,master/assets/animation_frames/body/wm001/e/wm001_e_026.webp
+body,wm001,여자,e,27,wm001e_27,wm000,19,54,0.3684,-0.1296,452,0,master/assets/animation_frames/body/wm001/e/wm001_e_027.webp
+body,wm001,여자,e,28,wm001e_28,wm000,16,52,0.6875,-0.1731,934,0,master/assets/animation_frames/body/wm001/e/wm001_e_028.webp
+body,wm001,여자,e,29,wm001e_29,wm000,16,52,0.6875,-0.1731,951,0,master/assets/animation_frames/body/wm001/e/wm001_e_029.webp
+body,wm001,여자,e,30,wm001e_30,wm000,16,52,0.6875,-0.1731,968,0,master/assets/animation_frames/body/wm001/e/wm001_e_030.webp
+body,wm001,여자,e,31,wm001e_31,wm000,16,52,0.6875,-0.1731,985,0,master/assets/animation_frames/body/wm001/e/wm001_e_031.webp
+body,wm001,여자,e,32,wm001e_32,wm000,17,54,0.4118,-0.1296,472,0,master/assets/animation_frames/body/wm001/e/wm001_e_032.webp
+body,wm001,여자,e,33,wm001e_33,wm000,17,54,0.4118,-0.1296,490,0,master/assets/animation_frames/body/wm001/e/wm001_e_033.webp
+body,wm001,여자,e,34,wm001e_34,wm000,17,54,0.4118,-0.1296,508,0,master/assets/animation_frames/body/wm001/e/wm001_e_034.webp
+body,wm001,여자,e,35,wm001e_35,wm000,17,54,0.4118,-0.1296,526,0,master/assets/animation_frames/body/wm001/e/wm001_e_035.webp
+body,wm001,여자,f,0,wm001f_0,wm000,21,51,0.4762,-0.1569,536,66,master/assets/animation_frames/body/wm001/f/wm001_f_000.webp
+body,wm001,여자,f,1,wm001f_1,wm000,24,54,0.5417,-0.1481,544,0,master/assets/animation_frames/body/wm001/f/wm001_f_001.webp
+body,wm001,여자,f,2,wm001f_2,wm000,25,51,0.52,-0.1765,558,66,master/assets/animation_frames/body/wm001/f/wm001_f_002.webp
+body,wm001,여자,f,3,wm001f_3,wm000,24,55,0.5417,-0.1636,87,0,master/assets/animation_frames/body/wm001/f/wm001_f_003.webp
+body,wm001,여자,f,4,wm001f_4,wm000,15,51,0.4667,-0.1569,584,66,master/assets/animation_frames/body/wm001/f/wm001_f_004.webp
+body,wm001,여자,f,5,wm001f_5,wm000,15,51,0.4667,-0.1569,600,66,master/assets/animation_frames/body/wm001/f/wm001_f_005.webp
+body,wm001,여자,f,6,wm001f_6,wm000,15,55,0.4667,-0.1455,112,0,master/assets/animation_frames/body/wm001/f/wm001_f_006.webp
+body,wm001,여자,f,7,wm001f_7,wm000,15,55,0.4667,-0.1455,128,0,master/assets/animation_frames/body/wm001/f/wm001_f_007.webp
+body,wm001,여자,f,8,wm001f_8,wm000,16,51,0.3125,-0.1765,616,66,master/assets/animation_frames/body/wm001/f/wm001_f_008.webp
+body,wm001,여자,f,9,wm001f_9,wm000,16,51,0.3125,-0.1765,633,66,master/assets/animation_frames/body/wm001/f/wm001_f_009.webp
+body,wm001,여자,f,10,wm001f_10,wm000,17,55,0.3529,-0.1636,144,0,master/assets/animation_frames/body/wm001/f/wm001_f_010.webp
+body,wm001,여자,f,11,wm001f_11,wm000,17,55,0.3529,-0.1636,162,0,master/assets/animation_frames/body/wm001/f/wm001_f_011.webp
+cape,wc112,,01,0,wc11201_0,wc000,14,18,0.7857,-1.6111,16,0,master/assets/animation_frames/cape/wc112/01/wc112_01_000.webp
+cape,wc112,,01,1,wc11201_1,wc000,13,12,0.3846,-2.9167,70,20,master/assets/animation_frames/cape/wc112/01/wc112_01_001.webp
+cape,wc112,,01,2,wc11201_2,wc000,16,18,0.75,-1.6111,31,0,master/assets/animation_frames/cape/wc112/01/wc112_01_002.webp
+cape,wc112,,01,3,wc11201_3,wc000,16,18,0.75,-1.6111,48,0,master/assets/animation_frames/cape/wc112/01/wc112_01_003.webp
+cape,wc112,,01,4,wc11201_4,wc000,16,18,0.75,-1.6111,65,0,master/assets/animation_frames/cape/wc112/01/wc112_01_004.webp
+cape,wc112,,01,5,wc11201_5,wc000,17,18,0.6471,-1.6111,82,0,master/assets/animation_frames/cape/wc112/01/wc112_01_005.webp
+cape,wc112,,01,6,wc11201_6,wc000,13,12,0.3846,-2.9167,84,20,master/assets/animation_frames/cape/wc112/01/wc112_01_006.webp
+cape,wc112,,01,7,wc11201_7,wc000,12,11,0.3333,-3.2727,489,20,master/assets/animation_frames/cape/wc112/01/wc112_01_007.webp
+cape,wc112,,01,8,wc11201_8,wc000,13,12,0.3846,-2.8333,98,20,master/assets/animation_frames/cape/wc112/01/wc112_01_008.webp
+cape,wc112,,01,9,wc11201_9,wc000,12,10,0.3333,-3.7,547,20,master/assets/animation_frames/cape/wc112/01/wc112_01_009.webp
+cape,wc112,,02,0,wc11202_0,wc000,17,18,0.7059,-1.7222,100,0,master/assets/animation_frames/cape/wc112/02/wc112_02_000.webp
+cape,wc112,,02,1,wc11202_1,wc000,16,18,0.3125,-1.6111,118,0,master/assets/animation_frames/cape/wc112/02/wc112_02_001.webp
+cape,wc112,,02,2,wc11202_2,wc000,7,12,0.4286,-2.9167,112,20,master/assets/animation_frames/cape/wc112/02/wc112_02_002.webp
+cape,wc112,,02,3,wc11202_3,wc000,8,10,-0.5,-3.2,560,20,master/assets/animation_frames/cape/wc112/02/wc112_02_003.webp
+cape,wc112,,03,0,wc11203_0,wc000,17,18,0.6471,-1.7778,135,0,master/assets/animation_frames/cape/wc112/03/wc112_03_000.webp
+cape,wc112,,03,1,wc11203_1,wc000,11,12,0.3636,-3.0833,120,20,master/assets/animation_frames/cape/wc112/03/wc112_03_001.webp
+cape,wc112,,03,2,wc11203_2,wc000,16,18,0.6875,-1.6667,153,0,master/assets/animation_frames/cape/wc112/03/wc112_03_002.webp
+cape,wc112,,03,3,wc11203_3,wc000,16,18,0.6875,-1.6667,170,0,master/assets/animation_frames/cape/wc112/03/wc112_03_003.webp
+cape,wc112,,03,4,wc11203_4,wc000,13,12,0.3846,-2.9167,132,20,master/assets/animation_frames/cape/wc112/03/wc112_03_004.webp
+cape,wc112,,03,5,wc11203_5,wc000,13,12,0.3846,-3.0,146,20,master/assets/animation_frames/cape/wc112/03/wc112_03_005.webp
+cape,wc112,,03,6,wc11203_6,wc000,16,18,0.6875,-1.6667,187,0,master/assets/animation_frames/cape/wc112/03/wc112_03_006.webp
+cape,wc112,,03,7,wc11203_7,wc000,16,18,0.6875,-1.6667,204,0,master/assets/animation_frames/cape/wc112/03/wc112_03_007.webp
+cape,wc112,,03,8,wc11203_8,wc000,11,13,0.3636,-2.6923,46,20,master/assets/animation_frames/cape/wc112/03/wc112_03_008.webp
+cape,wc112,,03,9,wc11203_9,wc000,11,12,0.3636,-2.9167,160,20,master/assets/animation_frames/cape/wc112/03/wc112_03_009.webp
+cape,wc112,,b,0,wc112b_0,wc000,16,18,0.625,-1.6111,221,0,master/assets/animation_frames/cape/wc112/b/wc112_b_000.webp
+cape,wc112,,b,1,wc112b_1,wc000,15,18,0.7333,-1.6667,238,0,master/assets/animation_frames/cape/wc112/b/wc112_b_001.webp
+cape,wc112,,b,2,wc112b_2,wc000,16,18,0.6875,-1.6667,254,0,master/assets/animation_frames/cape/wc112/b/wc112_b_002.webp
+cape,wc112,,b,3,wc112b_3,wc000,5,12,0.8,-3.0,172,20,master/assets/animation_frames/cape/wc112/b/wc112_b_003.webp
+cape,wc112,,b,4,wc112b_4,wc000,12,12,0.3333,-3.0,178,20,master/assets/animation_frames/cape/wc112/b/wc112_b_004.webp
+cape,wc112,,b,5,wc112b_5,wc000,5,12,0.8,-3.0,191,20,master/assets/animation_frames/cape/wc112/b/wc112_b_005.webp
+cape,wc112,,b,6,wc112b_6,wc000,14,18,0.7143,-1.6667,271,0,master/assets/animation_frames/cape/wc112/b/wc112_b_006.webp
+cape,wc112,,b,7,wc112b_7,wc000,14,18,0.7143,-1.6111,286,0,master/assets/animation_frames/cape/wc112/b/wc112_b_007.webp
+cape,wc112,,b,8,wc112b_8,wc000,14,18,0.7143,-1.6111,301,0,master/assets/animation_frames/cape/wc112/b/wc112_b_008.webp
+cape,wc112,,b,9,wc112b_9,wc000,11,12,0.2727,-3.0,197,20,master/assets/animation_frames/cape/wc112/b/wc112_b_009.webp
+cape,wc112,,b,10,wc112b_10,wc000,11,12,0.2727,-2.9167,209,20,master/assets/animation_frames/cape/wc112/b/wc112_b_010.webp
+cape,wc112,,b,11,wc112b_11,wc000,9,12,0.3333,-2.9167,221,20,master/assets/animation_frames/cape/wc112/b/wc112_b_011.webp
+cape,wc112,,b,12,wc112b_12,wc000,15,18,0.7333,-1.7222,316,0,master/assets/animation_frames/cape/wc112/b/wc112_b_012.webp
+cape,wc112,,b,13,wc112b_13,wc000,11,13,0.3636,-2.7692,58,20,master/assets/animation_frames/cape/wc112/b/wc112_b_013.webp
+cape,wc112,,c,0,wc112c_0,wc000,17,18,0.5882,-1.6667,332,0,master/assets/animation_frames/cape/wc112/c/wc112_c_000.webp
+cape,wc112,,c,1,wc112c_1,wc000,16,18,0.25,-1.6667,350,0,master/assets/animation_frames/cape/wc112/c/wc112_c_001.webp
+cape,wc112,,c,2,wc112c_2,wc000,16,18,0.25,-1.6667,367,0,master/assets/animation_frames/cape/wc112/c/wc112_c_002.webp
+cape,wc112,,c,3,wc112c_3,wc000,7,6,-0.2857,-6.0,734,20,master/assets/animation_frames/cape/wc112/c/wc112_c_003.webp
+cape,wc112,,c,4,wc112c_4,wc000,11,10,0.3636,-3.6,569,20,master/assets/animation_frames/cape/wc112/c/wc112_c_004.webp
+cape,wc112,,c,5,wc112c_5,wc000,9,9,-0.3333,-3.6667,689,20,master/assets/animation_frames/cape/wc112/c/wc112_c_005.webp
+cape,wc112,,c,6,wc112c_6,wc000,8,9,-0.375,-3.6667,699,20,master/assets/animation_frames/cape/wc112/c/wc112_c_006.webp
+cape,wc112,,c,7,wc112c_7,wc000,5,11,-1.0,-2.8182,502,20,master/assets/animation_frames/cape/wc112/c/wc112_c_007.webp
+cape,wc112,,c,8,wc112c_8,wc000,16,18,0.8125,-1.3889,384,0,master/assets/animation_frames/cape/wc112/c/wc112_c_008.webp
+cape,wc112,,c,9,wc112c_9,wc000,18,18,0.7222,-2.2778,401,0,master/assets/animation_frames/cape/wc112/c/wc112_c_009.webp
+cape,wc112,,c,10,wc112c_10,wc000,16,18,0.75,-1.3889,420,0,master/assets/animation_frames/cape/wc112/c/wc112_c_010.webp
+cape,wc112,,c,11,wc112c_11,wc000,10,10,0.2,-3.2,581,20,master/assets/animation_frames/cape/wc112/c/wc112_c_011.webp
+cape,wc112,,c,12,wc112c_12,wc000,12,12,0.4167,-4.0,231,20,master/assets/animation_frames/cape/wc112/c/wc112_c_012.webp
+cape,wc112,,c,13,wc112c_13,wc000,9,9,0.3333,-3.3333,708,20,master/assets/animation_frames/cape/wc112/c/wc112_c_013.webp
+cape,wc112,,c,14,wc112c_14,wc000,16,18,0.75,-1.3889,437,0,master/assets/animation_frames/cape/wc112/c/wc112_c_014.webp
+cape,wc112,,c,15,wc112c_15,wc000,16,18,0.4375,-1.1111,454,0,master/assets/animation_frames/cape/wc112/c/wc112_c_015.webp
+cape,wc112,,c,16,wc112c_16,wc000,10,10,0.2,-3.3,592,20,master/assets/animation_frames/cape/wc112/c/wc112_c_016.webp
+cape,wc112,,c,17,wc112c_17,wc000,10,10,-0.3,-2.6,603,20,master/assets/animation_frames/cape/wc112/c/wc112_c_017.webp
+cape,wc112,,c,18,wc112c_18,wc000,16,18,1.1875,-1.2222,471,0,master/assets/animation_frames/cape/wc112/c/wc112_c_018.webp
+cape,wc112,,c,19,wc112c_19,wc000,16,18,0.4375,-1.1667,488,0,master/assets/animation_frames/cape/wc112/c/wc112_c_019.webp
+cape,wc112,,c,20,wc112c_20,wc000,16,18,0.4375,-1.0556,505,0,master/assets/animation_frames/cape/wc112/c/wc112_c_020.webp
+cape,wc112,,c,21,wc112c_21,wc000,12,11,1.0833,-3.0,508,20,master/assets/animation_frames/cape/wc112/c/wc112_c_021.webp
+cape,wc112,,c,22,wc112c_22,wc000,10,10,-0.4,-2.8,614,20,master/assets/animation_frames/cape/wc112/c/wc112_c_022.webp
+cape,wc112,,c,23,wc112c_23,wc000,10,10,-0.3,-2.6,625,20,master/assets/animation_frames/cape/wc112/c/wc112_c_023.webp
+cape,wc112,,c,24,wc112c_24,wc000,13,18,0.9231,-1.3889,522,0,master/assets/animation_frames/cape/wc112/c/wc112_c_024.webp
+cape,wc112,,c,25,wc112c_25,wc000,18,18,0.7222,-2.5556,536,0,master/assets/animation_frames/cape/wc112/c/wc112_c_025.webp
+cape,wc112,,c,26,wc112c_26,wc000,15,19,0.4,-0.8947,0,0,master/assets/animation_frames/cape/wc112/c/wc112_c_026.webp
+cape,wc112,,c,27,wc112c_27,wc000,10,10,0.2,-3.2,636,20,master/assets/animation_frames/cape/wc112/c/wc112_c_027.webp
+cape,wc112,,c,28,wc112c_28,wc000,12,12,0.4167,-4.4167,244,20,master/assets/animation_frames/cape/wc112/c/wc112_c_028.webp
+cape,wc112,,c,29,wc112c_29,wc000,5,8,0.0,-3.375,728,20,master/assets/animation_frames/cape/wc112/c/wc112_c_029.webp
+cape,wc112,,d,0,wc112d_0,wc000,17,18,0.9412,-1.3333,555,0,master/assets/animation_frames/cape/wc112/d/wc112_d_000.webp
+cape,wc112,,d,1,wc112d_1,wc000,15,16,1.0,-1.875,823,0,master/assets/animation_frames/cape/wc112/d/wc112_d_001.webp
+cape,wc112,,d,2,wc112d_2,wc000,15,16,1.0,-2.0,839,0,master/assets/animation_frames/cape/wc112/d/wc112_d_002.webp
+cape,wc112,,d,3,wc112d_3,wc000,5,12,2.4,-3.1667,257,20,master/assets/animation_frames/cape/wc112/d/wc112_d_003.webp
+cape,wc112,,d,4,wc112d_4,wc000,15,12,0.4667,-2.8333,263,20,master/assets/animation_frames/cape/wc112/d/wc112_d_004.webp
+cape,wc112,,d,5,wc112d_5,wc000,15,12,0.4667,-3.0,279,20,master/assets/animation_frames/cape/wc112/d/wc112_d_005.webp
+cape,wc112,,d,6,wc112d_6,wc000,17,18,0.2353,-1.6111,573,0,master/assets/animation_frames/cape/wc112/d/wc112_d_006.webp
+cape,wc112,,d,7,wc112d_7,wc000,14,18,0.2143,-1.6667,591,0,master/assets/animation_frames/cape/wc112/d/wc112_d_007.webp
+cape,wc112,,d,8,wc112d_8,wc000,12,10,-0.25,-3.2,647,20,master/assets/animation_frames/cape/wc112/d/wc112_d_008.webp
+cape,wc112,,d,9,wc112d_9,wc000,9,9,-0.4444,-3.5556,718,20,master/assets/animation_frames/cape/wc112/d/wc112_d_009.webp
+cape,wc112,,d,10,wc112d_10,wc000,14,18,0.5,-1.7222,606,0,master/assets/animation_frames/cape/wc112/d/wc112_d_010.webp
+cape,wc112,,d,11,wc112d_11,wc000,15,16,0.2,-2.1875,855,0,master/assets/animation_frames/cape/wc112/d/wc112_d_011.webp
+cape,wc112,,d,12,wc112d_12,wc000,18,15,0.4444,-2.3333,0,20,master/assets/animation_frames/cape/wc112/d/wc112_d_012.webp
+cape,wc112,,d,13,wc112d_13,wc000,17,18,0.3529,-1.7222,621,0,master/assets/animation_frames/cape/wc112/d/wc112_d_013.webp
+cape,wc112,,d,14,wc112d_14,wc000,13,12,-0.1538,-2.75,295,20,master/assets/animation_frames/cape/wc112/d/wc112_d_014.webp
+cape,wc112,,d,15,wc112d_15,wc000,15,12,0.2667,-2.5,309,20,master/assets/animation_frames/cape/wc112/d/wc112_d_015.webp
+cape,wc112,,d,16,wc112d_16,wc000,5,12,1.4,-2.6667,325,20,master/assets/animation_frames/cape/wc112/d/wc112_d_016.webp
+cape,wc112,,d,17,wc112d_17,wc000,5,12,-0.8,-2.6667,331,20,master/assets/animation_frames/cape/wc112/d/wc112_d_017.webp
+cape,wc112,,e,0,wc112e_0,wc000,16,18,0.375,-1.6111,639,0,master/assets/animation_frames/cape/wc112/e/wc112_e_000.webp
+cape,wc112,,e,1,wc112e_1,wc000,16,18,0.25,-1.2778,656,0,master/assets/animation_frames/cape/wc112/e/wc112_e_001.webp
+cape,wc112,,e,2,wc112e_2,wc000,14,10,0.3571,-3.8,660,20,master/assets/animation_frames/cape/wc112/e/wc112_e_002.webp
+cape,wc112,,e,3,wc112e_3,wc000,15,14,-0.2,-1.5,19,20,master/assets/animation_frames/cape/wc112/e/wc112_e_003.webp
+cape,wc112,,e,4,wc112e_4,wc000,16,18,0.25,-1.2778,673,0,master/assets/animation_frames/cape/wc112/e/wc112_e_004.webp
+cape,wc112,,e,5,wc112e_5,wc000,15,18,0.1333,-1.3333,690,0,master/assets/animation_frames/cape/wc112/e/wc112_e_005.webp
+cape,wc112,,e,6,wc112e_6,wc000,13,10,-0.3846,-2.5,675,20,master/assets/animation_frames/cape/wc112/e/wc112_e_006.webp
+cape,wc112,,e,7,wc112e_7,wc000,14,18,-0.0714,-1.0556,706,0,master/assets/animation_frames/cape/wc112/e/wc112_e_007.webp
+cape,wc112,,e,8,wc112e_8,wc000,11,16,1.0909,-2.0625,871,0,master/assets/animation_frames/cape/wc112/e/wc112_e_008.webp
+cape,wc112,,e,9,wc112e_9,wc000,11,16,1.0909,-2.0625,883,0,master/assets/animation_frames/cape/wc112/e/wc112_e_009.webp
+cape,wc112,,e,10,wc112e_10,wc000,9,16,1.5556,-2.125,895,0,master/assets/animation_frames/cape/wc112/e/wc112_e_010.webp
+cape,wc112,,e,11,wc112e_11,wc000,9,16,1.5556,-2.125,905,0,master/assets/animation_frames/cape/wc112/e/wc112_e_011.webp
+cape,wc112,,e,12,wc112e_12,wc000,6,12,0.6667,-3.0833,337,20,master/assets/animation_frames/cape/wc112/e/wc112_e_012.webp
+cape,wc112,,e,13,wc112e_13,wc000,6,12,0.6667,-3.0833,344,20,master/assets/animation_frames/cape/wc112/e/wc112_e_013.webp
+cape,wc112,,e,14,wc112e_14,wc000,6,12,0.5,-3.0833,351,20,master/assets/animation_frames/cape/wc112/e/wc112_e_014.webp
+cape,wc112,,e,15,wc112e_15,wc000,6,12,0.5,-3.0833,358,20,master/assets/animation_frames/cape/wc112/e/wc112_e_015.webp
+cape,wc112,,e,16,wc112e_16,wc000,9,16,1.3333,-2.0625,915,0,master/assets/animation_frames/cape/wc112/e/wc112_e_016.webp
+cape,wc112,,e,17,wc112e_17,wc000,9,16,1.4444,-2.0625,925,0,master/assets/animation_frames/cape/wc112/e/wc112_e_017.webp
+cape,wc112,,e,18,wc112e_18,wc000,10,16,1.2,-2.0625,935,0,master/assets/animation_frames/cape/wc112/e/wc112_e_018.webp
+cape,wc112,,e,19,wc112e_19,wc000,10,16,1.2,-2.0625,946,0,master/assets/animation_frames/cape/wc112/e/wc112_e_019.webp
+cape,wc112,,e,20,wc112e_20,wc000,9,16,1.5556,-2.125,957,0,master/assets/animation_frames/cape/wc112/e/wc112_e_020.webp
+cape,wc112,,e,21,wc112e_21,wc000,9,16,1.5556,-2.125,967,0,master/assets/animation_frames/cape/wc112/e/wc112_e_021.webp
+cape,wc112,,e,22,wc112e_22,wc000,6,12,0.5,-3.0,365,20,master/assets/animation_frames/cape/wc112/e/wc112_e_022.webp
+cape,wc112,,e,23,wc112e_23,wc000,6,12,0.6667,-3.0833,372,20,master/assets/animation_frames/cape/wc112/e/wc112_e_023.webp
+cape,wc112,,e,24,wc112e_24,wc000,6,12,0.6667,-3.0833,379,20,master/assets/animation_frames/cape/wc112/e/wc112_e_024.webp
+cape,wc112,,e,25,wc112e_25,wc000,6,12,0.6667,-3.0833,386,20,master/assets/animation_frames/cape/wc112/e/wc112_e_025.webp
+cape,wc112,,e,26,wc112e_26,wc000,6,12,0.5,-3.0833,393,20,master/assets/animation_frames/cape/wc112/e/wc112_e_026.webp
+cape,wc112,,e,27,wc112e_27,wc000,6,12,0.5,-3.0833,400,20,master/assets/animation_frames/cape/wc112/e/wc112_e_027.webp
+cape,wc112,,e,28,wc112e_28,wc000,10,16,1.3,-2.0,977,0,master/assets/animation_frames/cape/wc112/e/wc112_e_028.webp
+cape,wc112,,e,29,wc112e_29,wc000,10,14,1.3,-2.3571,35,20,master/assets/animation_frames/cape/wc112/e/wc112_e_029.webp
+cape,wc112,,e,30,wc112e_30,wc000,9,16,1.5556,-2.125,988,0,master/assets/animation_frames/cape/wc112/e/wc112_e_030.webp
+cape,wc112,,e,31,wc112e_31,wc000,9,16,1.5556,-2.125,998,0,master/assets/animation_frames/cape/wc112/e/wc112_e_031.webp
+cape,wc112,,e,32,wc112e_32,wc000,7,12,0.5714,-3.0833,407,20,master/assets/animation_frames/cape/wc112/e/wc112_e_032.webp
+cape,wc112,,e,33,wc112e_33,wc000,7,12,0.5714,-3.0833,415,20,master/assets/animation_frames/cape/wc112/e/wc112_e_033.webp
+cape,wc112,,e,34,wc112e_34,wc000,7,12,0.4286,-3.1667,423,20,master/assets/animation_frames/cape/wc112/e/wc112_e_034.webp
+cape,wc112,,e,35,wc112e_35,wc000,7,12,0.5714,-3.0833,431,20,master/assets/animation_frames/cape/wc112/e/wc112_e_035.webp
+cape,wc112,,f,0,wc112f_0,wc000,15,18,0.6667,-1.6111,721,0,master/assets/animation_frames/cape/wc112/f/wc112_f_000.webp
+cape,wc112,,f,1,wc112f_1,wc000,17,18,0.6471,-1.7222,737,0,master/assets/animation_frames/cape/wc112/f/wc112_f_001.webp
+cape,wc112,,f,2,wc112f_2,wc000,12,12,0.3333,-2.9167,439,20,master/assets/animation_frames/cape/wc112/f/wc112_f_002.webp
+cape,wc112,,f,3,wc112f_3,wc000,12,12,0.3333,-3.0,452,20,master/assets/animation_frames/cape/wc112/f/wc112_f_003.webp
+cape,wc112,,f,4,wc112f_4,wc000,15,18,0.7333,-1.6667,755,0,master/assets/animation_frames/cape/wc112/f/wc112_f_004.webp
+cape,wc112,,f,5,wc112f_5,wc000,15,18,0.7333,-1.6667,771,0,master/assets/animation_frames/cape/wc112/f/wc112_f_005.webp
+cape,wc112,,f,6,wc112f_6,wc000,17,18,0.6471,-1.7222,787,0,master/assets/animation_frames/cape/wc112/f/wc112_f_006.webp
+cape,wc112,,f,7,wc112f_7,wc000,17,18,0.6471,-1.7778,805,0,master/assets/animation_frames/cape/wc112/f/wc112_f_007.webp
+cape,wc112,,f,8,wc112f_8,wc000,11,12,0.3636,-2.9167,465,20,master/assets/animation_frames/cape/wc112/f/wc112_f_008.webp
+cape,wc112,,f,9,wc112f_9,wc000,11,12,0.3636,-2.9167,477,20,master/assets/animation_frames/cape/wc112/f/wc112_f_009.webp
+cape,wc112,,f,10,wc112f_10,wc000,12,11,0.3333,-3.2727,521,20,master/assets/animation_frames/cape/wc112/f/wc112_f_010.webp
+cape,wc112,,f,11,wc112f_11,wc000,12,11,0.3333,-3.2727,534,20,master/assets/animation_frames/cape/wc112/f/wc112_f_011.webp
+hair,wh045,가발 W31,01,0,wh04501_0,wh000,15,21,0.5333,-2.2381,15,51,master/assets/animation_frames/hair/wh045/01/wh045_01_000.webp
+hair,wh045,가발 W31,01,1,wh04501_1,wh000,14,23,0.4286,-2.0435,63,0,master/assets/animation_frames/hair/wh045/01/wh045_01_001.webp
+hair,wh045,가발 W31,01,2,wh04501_2,wh000,15,21,0.5333,-2.2381,31,51,master/assets/animation_frames/hair/wh045/01/wh045_01_002.webp
+hair,wh045,가발 W31,01,3,wh04501_3,wh000,15,21,0.5333,-2.1905,47,51,master/assets/animation_frames/hair/wh045/01/wh045_01_003.webp
+hair,wh045,가발 W31,01,4,wh04501_4,wh000,15,21,0.5333,-2.2381,63,51,master/assets/animation_frames/hair/wh045/01/wh045_01_004.webp
+hair,wh045,가발 W31,01,5,wh04501_5,wh000,15,21,0.5333,-2.1905,79,51,master/assets/animation_frames/hair/wh045/01/wh045_01_005.webp
+hair,wh045,가발 W31,01,6,wh04501_6,wh000,14,23,0.4286,-2.0435,78,0,master/assets/animation_frames/hair/wh045/01/wh045_01_006.webp
+hair,wh045,가발 W31,01,7,wh04501_7,wh000,14,23,0.4286,-2.0,93,0,master/assets/animation_frames/hair/wh045/01/wh045_01_007.webp
+hair,wh045,가발 W31,01,8,wh04501_8,wh000,14,23,0.4286,-2.0435,108,0,master/assets/animation_frames/hair/wh045/01/wh045_01_008.webp
+hair,wh045,가발 W31,01,9,wh04501_9,wh000,14,23,0.4286,-2.0,123,0,master/assets/animation_frames/hair/wh045/01/wh045_01_009.webp
+hair,wh045,가발 W31,02,0,wh04502_0,wh000,15,21,0.5333,-2.2381,95,51,master/assets/animation_frames/hair/wh045/02/wh045_02_000.webp
+hair,wh045,가발 W31,02,1,wh04502_1,wh000,15,21,0.0,-2.1905,111,51,master/assets/animation_frames/hair/wh045/02/wh045_02_001.webp
+hair,wh045,가발 W31,02,2,wh04502_2,wh000,14,23,0.4286,-2.0435,138,0,master/assets/animation_frames/hair/wh045/02/wh045_02_002.webp
+hair,wh045,가발 W31,02,3,wh04502_3,wh000,14,23,-0.4286,-1.6522,153,0,master/assets/animation_frames/hair/wh045/02/wh045_02_003.webp
+hair,wh045,가발 W31,03,0,wh04503_0,wh000,15,21,0.5333,-2.2857,127,51,master/assets/animation_frames/hair/wh045/03/wh045_03_000.webp
+hair,wh045,가발 W31,03,1,wh04503_1,wh000,14,23,0.4286,-2.087,168,0,master/assets/animation_frames/hair/wh045/03/wh045_03_001.webp
+hair,wh045,가발 W31,03,2,wh04503_2,wh000,15,21,0.5333,-2.2381,143,51,master/assets/animation_frames/hair/wh045/03/wh045_03_002.webp
+hair,wh045,가발 W31,03,3,wh04503_3,wh000,15,21,0.4,-2.1429,159,51,master/assets/animation_frames/hair/wh045/03/wh045_03_003.webp
+hair,wh045,가발 W31,03,4,wh04503_4,wh000,14,23,0.4286,-2.0435,183,0,master/assets/animation_frames/hair/wh045/03/wh045_03_004.webp
+hair,wh045,가발 W31,03,5,wh04503_5,wh000,14,23,0.2143,-2.0,198,0,master/assets/animation_frames/hair/wh045/03/wh045_03_005.webp
+hair,wh045,가발 W31,03,6,wh04503_6,wh000,15,21,0.5333,-2.2381,175,51,master/assets/animation_frames/hair/wh045/03/wh045_03_006.webp
+hair,wh045,가발 W31,03,7,wh04503_7,wh000,15,21,0.5333,-2.2381,191,51,master/assets/animation_frames/hair/wh045/03/wh045_03_007.webp
+hair,wh045,가발 W31,03,8,wh04503_8,wh000,14,23,0.4286,-2.0435,213,0,master/assets/animation_frames/hair/wh045/03/wh045_03_008.webp
+hair,wh045,가발 W31,03,9,wh04503_9,wh000,14,23,0.4286,-2.0435,228,0,master/assets/animation_frames/hair/wh045/03/wh045_03_009.webp
+hair,wh045,가발 W31,b,0,wh045b_0,wh000,15,21,0.5333,-2.2381,207,51,master/assets/animation_frames/hair/wh045/b/wh045_b_000.webp
+hair,wh045,가발 W31,b,1,wh045b_1,wh000,15,21,0.5333,-2.2381,223,51,master/assets/animation_frames/hair/wh045/b/wh045_b_001.webp
+hair,wh045,가발 W31,b,2,wh045b_2,wh000,15,21,0.5333,-2.2381,239,51,master/assets/animation_frames/hair/wh045/b/wh045_b_002.webp
+hair,wh045,가발 W31,b,3,wh045b_3,wh000,14,23,0.4286,-2.0435,243,0,master/assets/animation_frames/hair/wh045/b/wh045_b_003.webp
+hair,wh045,가발 W31,b,4,wh045b_4,wh000,14,23,0.4286,-2.0435,258,0,master/assets/animation_frames/hair/wh045/b/wh045_b_004.webp
+hair,wh045,가발 W31,b,5,wh045b_5,wh000,14,23,0.4286,-2.0435,273,0,master/assets/animation_frames/hair/wh045/b/wh045_b_005.webp
+hair,wh045,가발 W31,b,6,wh045b_6,wh000,15,21,0.5333,-2.2857,255,51,master/assets/animation_frames/hair/wh045/b/wh045_b_006.webp
+hair,wh045,가발 W31,b,7,wh045b_7,wh000,15,21,0.5333,-2.2381,271,51,master/assets/animation_frames/hair/wh045/b/wh045_b_007.webp
+hair,wh045,가발 W31,b,8,wh045b_8,wh000,15,21,0.5333,-2.2381,287,51,master/assets/animation_frames/hair/wh045/b/wh045_b_008.webp
+hair,wh045,가발 W31,b,9,wh045b_9,wh000,14,23,0.4286,-2.087,288,0,master/assets/animation_frames/hair/wh045/b/wh045_b_009.webp
+hair,wh045,가발 W31,b,10,wh045b_10,wh000,14,29,0.4286,-1.4138,16,0,master/assets/animation_frames/hair/wh045/b/wh045_b_010.webp
+hair,wh045,가발 W31,b,11,wh045b_11,wh000,14,23,0.4286,-2.0435,303,0,master/assets/animation_frames/hair/wh045/b/wh045_b_011.webp
+hair,wh045,가발 W31,b,12,wh045b_12,wh000,15,21,0.5333,-2.2857,303,51,master/assets/animation_frames/hair/wh045/b/wh045_b_012.webp
+hair,wh045,가발 W31,b,13,wh045b_13,wh000,14,23,0.4286,-2.087,318,0,master/assets/animation_frames/hair/wh045/b/wh045_b_013.webp
+hair,wh045,가발 W31,c,0,wh045c_0,wh000,15,21,0.5333,-2.2381,319,51,master/assets/animation_frames/hair/wh045/c/wh045_c_000.webp
+hair,wh045,가발 W31,c,1,wh045c_1,wh000,15,21,0.0,-2.1905,335,51,master/assets/animation_frames/hair/wh045/c/wh045_c_001.webp
+hair,wh045,가발 W31,c,2,wh045c_2,wh000,15,21,0.0,-2.1905,351,51,master/assets/animation_frames/hair/wh045/c/wh045_c_002.webp
+hair,wh045,가발 W31,c,3,wh045c_3,wh000,15,50,-0.1333,-0.24,0,0,master/assets/animation_frames/hair/wh045/c/wh045_c_003.webp
+hair,wh045,가발 W31,c,4,wh045c_4,wh000,14,23,0.4286,-2.0435,333,0,master/assets/animation_frames/hair/wh045/c/wh045_c_004.webp
+hair,wh045,가발 W31,c,5,wh045c_5,wh000,14,23,-0.4286,-1.6522,348,0,master/assets/animation_frames/hair/wh045/c/wh045_c_005.webp
+hair,wh045,가발 W31,c,6,wh045c_6,wh000,14,23,-0.4286,-1.6522,363,0,master/assets/animation_frames/hair/wh045/c/wh045_c_006.webp
+hair,wh045,가발 W31,c,7,wh045c_7,wh000,14,23,-0.4286,-1.6522,378,0,master/assets/animation_frames/hair/wh045/c/wh045_c_007.webp
+hair,wh045,가발 W31,c,8,wh045c_8,wh000,15,21,0.5333,-2.0,367,51,master/assets/animation_frames/hair/wh045/c/wh045_c_008.webp
+hair,wh045,가발 W31,c,9,wh045c_9,wh000,15,21,0.6,-2.7143,383,51,master/assets/animation_frames/hair/wh045/c/wh045_c_009.webp
+hair,wh045,가발 W31,c,10,wh045c_10,wh000,15,21,0.4667,-1.9524,399,51,master/assets/animation_frames/hair/wh045/c/wh045_c_010.webp
+hair,wh045,가발 W31,c,11,wh045c_11,wh000,14,23,0.3571,-1.8261,393,0,master/assets/animation_frames/hair/wh045/c/wh045_c_011.webp
+hair,wh045,가발 W31,c,12,wh045c_12,wh000,14,23,0.4286,-2.5652,408,0,master/assets/animation_frames/hair/wh045/c/wh045_c_012.webp
+hair,wh045,가발 W31,c,13,wh045c_13,wh000,14,23,0.0,-1.5652,423,0,master/assets/animation_frames/hair/wh045/c/wh045_c_013.webp
+hair,wh045,가발 W31,c,14,wh045c_14,wh000,15,21,0.4667,-1.9524,415,51,master/assets/animation_frames/hair/wh045/c/wh045_c_014.webp
+hair,wh045,가발 W31,c,15,wh045c_15,wh000,15,26,0.1333,-1.1923,31,0,master/assets/animation_frames/hair/wh045/c/wh045_c_015.webp
+hair,wh045,가발 W31,c,16,wh045c_16,wh000,14,23,-0.0714,-1.6522,438,0,master/assets/animation_frames/hair/wh045/c/wh045_c_016.webp
+hair,wh045,가발 W31,c,17,wh045c_17,wh000,14,23,-0.7143,-1.2609,453,0,master/assets/animation_frames/hair/wh045/c/wh045_c_017.webp
+hair,wh045,가발 W31,c,18,wh045c_18,wh000,15,21,1.0667,-1.7619,431,51,master/assets/animation_frames/hair/wh045/c/wh045_c_018.webp
+hair,wh045,가발 W31,c,19,wh045c_19,wh000,15,21,0.1333,-1.7143,447,51,master/assets/animation_frames/hair/wh045/c/wh045_c_019.webp
+hair,wh045,가발 W31,c,20,wh045c_20,wh000,15,25,0.1333,-1.24,47,0,master/assets/animation_frames/hair/wh045/c/wh045_c_020.webp
+hair,wh045,가발 W31,c,21,wh045c_21,wh000,14,23,1.0,-1.7826,468,0,master/assets/animation_frames/hair/wh045/c/wh045_c_021.webp
+hair,wh045,가발 W31,c,22,wh045c_22,wh000,14,23,-0.5,-1.4348,483,0,master/assets/animation_frames/hair/wh045/c/wh045_c_022.webp
+hair,wh045,가발 W31,c,23,wh045c_23,wh000,14,23,-0.7143,-1.2609,498,0,master/assets/animation_frames/hair/wh045/c/wh045_c_023.webp
+hair,wh045,가발 W31,c,24,wh045c_24,wh000,15,21,0.5333,-2.0,463,51,master/assets/animation_frames/hair/wh045/c/wh045_c_024.webp
+hair,wh045,가발 W31,c,25,wh045c_25,wh000,15,21,0.6,-2.9524,479,51,master/assets/animation_frames/hair/wh045/c/wh045_c_025.webp
+hair,wh045,가발 W31,c,26,wh045c_26,wh000,15,21,0.0,-1.4762,495,51,master/assets/animation_frames/hair/wh045/c/wh045_c_026.webp
+hair,wh045,가발 W31,c,27,wh045c_27,wh000,14,23,0.3571,-1.8261,513,0,master/assets/animation_frames/hair/wh045/c/wh045_c_027.webp
+hair,wh045,가발 W31,c,28,wh045c_28,wh000,14,19,0.4286,-3.3684,16,75,master/assets/animation_frames/hair/wh045/c/wh045_c_028.webp
+hair,wh045,가발 W31,c,29,wh045c_29,wh000,14,23,0.0714,-1.3478,528,0,master/assets/animation_frames/hair/wh045/c/wh045_c_029.webp
+hair,wh045,가발 W31,d,0,wh045d_0,wh000,15,21,0.9333,-1.9524,511,51,master/assets/animation_frames/hair/wh045/d/wh045_d_000.webp
+hair,wh045,가발 W31,d,1,wh045d_1,wh000,15,21,0.8667,-2.2381,527,51,master/assets/animation_frames/hair/wh045/d/wh045_d_001.webp
+hair,wh045,가발 W31,d,2,wh045d_2,wh000,15,21,0.8667,-2.3333,543,51,master/assets/animation_frames/hair/wh045/d/wh045_d_002.webp
+hair,wh045,가발 W31,d,3,wh045d_3,wh000,14,23,1.0,-2.1739,543,0,master/assets/animation_frames/hair/wh045/d/wh045_d_003.webp
+hair,wh045,가발 W31,d,4,wh045d_4,wh000,14,23,0.4286,-2.0,558,0,master/assets/animation_frames/hair/wh045/d/wh045_d_004.webp
+hair,wh045,가발 W31,d,5,wh045d_5,wh000,14,23,0.4286,-2.087,573,0,master/assets/animation_frames/hair/wh045/d/wh045_d_005.webp
+hair,wh045,가발 W31,d,6,wh045d_6,wh000,15,21,0.0,-2.1905,559,51,master/assets/animation_frames/hair/wh045/d/wh045_d_006.webp
+hair,wh045,가발 W31,d,7,wh045d_7,wh000,15,21,0.0,-2.1905,575,51,master/assets/animation_frames/hair/wh045/d/wh045_d_007.webp
+hair,wh045,가발 W31,d,8,wh045d_8,wh000,14,23,-0.4286,-1.6522,588,0,master/assets/animation_frames/hair/wh045/d/wh045_d_008.webp
+hair,wh045,가발 W31,d,9,wh045d_9,wh000,14,23,-0.4286,-1.6522,603,0,master/assets/animation_frames/hair/wh045/d/wh045_d_009.webp
+hair,wh045,가발 W31,d,10,wh045d_10,wh000,15,21,0.2667,-2.2857,591,51,master/assets/animation_frames/hair/wh045/d/wh045_d_010.webp
+hair,wh045,가발 W31,d,11,wh045d_11,wh000,15,21,0.0667,-2.4762,607,51,master/assets/animation_frames/hair/wh045/d/wh045_d_011.webp
+hair,wh045,가발 W31,d,12,wh045d_12,wh000,15,21,0.8,-2.2857,623,51,master/assets/animation_frames/hair/wh045/d/wh045_d_012.webp
+hair,wh045,가발 W31,d,13,wh045d_13,wh000,15,21,0.2667,-2.2857,639,51,master/assets/animation_frames/hair/wh045/d/wh045_d_013.webp
+hair,wh045,가발 W31,d,14,wh045d_14,wh000,14,23,-0.0714,-1.9565,618,0,master/assets/animation_frames/hair/wh045/d/wh045_d_014.webp
+hair,wh045,가발 W31,d,15,wh045d_15,wh000,14,23,0.2143,-1.8261,633,0,master/assets/animation_frames/hair/wh045/d/wh045_d_015.webp
+hair,wh045,가발 W31,d,16,wh045d_16,wh000,14,23,0.6429,-1.913,648,0,master/assets/animation_frames/hair/wh045/d/wh045_d_016.webp
+hair,wh045,가발 W31,d,17,wh045d_17,wh000,14,23,-0.0714,-1.9565,663,0,master/assets/animation_frames/hair/wh045/d/wh045_d_017.webp
+hair,wh045,가발 W31,e,0,wh045e_0,wh000,15,21,0.3333,-2.2381,655,51,master/assets/animation_frames/hair/wh045/e/wh045_e_000.webp
+hair,wh045,가발 W31,e,1,wh045e_1,wh000,15,21,-0.0667,-1.9048,671,51,master/assets/animation_frames/hair/wh045/e/wh045_e_001.webp
+hair,wh045,가발 W31,e,2,wh045e_2,wh000,14,23,0.4286,-2.0435,678,0,master/assets/animation_frames/hair/wh045/e/wh045_e_002.webp
+hair,wh045,가발 W31,e,3,wh045e_3,wh000,14,23,-0.5714,-1.3478,693,0,master/assets/animation_frames/hair/wh045/e/wh045_e_003.webp
+hair,wh045,가발 W31,e,4,wh045e_4,wh000,15,21,-0.0667,-1.9048,687,51,master/assets/animation_frames/hair/wh045/e/wh045_e_004.webp
+hair,wh045,가발 W31,e,5,wh045e_5,wh000,15,21,-0.0667,-1.9048,703,51,master/assets/animation_frames/hair/wh045/e/wh045_e_005.webp
+hair,wh045,가발 W31,e,6,wh045e_6,wh000,14,23,-0.5714,-1.3478,708,0,master/assets/animation_frames/hair/wh045/e/wh045_e_006.webp
+hair,wh045,가발 W31,e,7,wh045e_7,wh000,14,23,-0.5714,-1.3478,723,0,master/assets/animation_frames/hair/wh045/e/wh045_e_007.webp
+hair,wh045,가발 W31,e,8,wh045e_8,wh000,15,21,0.7333,-2.3333,719,51,master/assets/animation_frames/hair/wh045/e/wh045_e_008.webp
+hair,wh045,가발 W31,e,9,wh045e_9,wh000,15,21,0.7333,-2.3333,735,51,master/assets/animation_frames/hair/wh045/e/wh045_e_009.webp
+hair,wh045,가발 W31,e,10,wh045e_10,wh000,15,21,0.7333,-2.3333,751,51,master/assets/animation_frames/hair/wh045/e/wh045_e_010.webp
+hair,wh045,가발 W31,e,11,wh045e_11,wh000,15,21,0.7333,-2.3333,767,51,master/assets/animation_frames/hair/wh045/e/wh045_e_011.webp
+hair,wh045,가발 W31,e,12,wh045e_12,wh000,14,23,0.4286,-2.087,738,0,master/assets/animation_frames/hair/wh045/e/wh045_e_012.webp
+hair,wh045,가발 W31,e,13,wh045e_13,wh000,14,23,0.4286,-2.087,753,0,master/assets/animation_frames/hair/wh045/e/wh045_e_013.webp
+hair,wh045,가발 W31,e,14,wh045e_14,wh000,14,23,0.4286,-2.087,768,0,master/assets/animation_frames/hair/wh045/e/wh045_e_014.webp
+hair,wh045,가발 W31,e,15,wh045e_15,wh000,14,23,0.4286,-2.087,783,0,master/assets/animation_frames/hair/wh045/e/wh045_e_015.webp
+hair,wh045,가발 W31,e,16,wh045e_16,wh000,15,21,0.7333,-2.3333,783,51,master/assets/animation_frames/hair/wh045/e/wh045_e_016.webp
+hair,wh045,가발 W31,e,17,wh045e_17,wh000,15,21,0.7333,-2.3333,799,51,master/assets/animation_frames/hair/wh045/e/wh045_e_017.webp
+hair,wh045,가발 W31,e,18,wh045e_18,wh000,15,21,0.7333,-2.3333,815,51,master/assets/animation_frames/hair/wh045/e/wh045_e_018.webp
+hair,wh045,가발 W31,e,19,wh045e_19,wh000,15,21,0.7333,-2.3333,831,51,master/assets/animation_frames/hair/wh045/e/wh045_e_019.webp
+hair,wh045,가발 W31,e,20,wh045e_20,wh000,15,21,0.7333,-2.3333,847,51,master/assets/animation_frames/hair/wh045/e/wh045_e_020.webp
+hair,wh045,가발 W31,e,21,wh045e_21,wh000,15,21,0.7333,-2.3333,863,51,master/assets/animation_frames/hair/wh045/e/wh045_e_021.webp
+hair,wh045,가발 W31,e,22,wh045e_22,wh000,14,23,0.4286,-2.087,798,0,master/assets/animation_frames/hair/wh045/e/wh045_e_022.webp
+hair,wh045,가발 W31,e,23,wh045e_23,wh000,14,23,0.4286,-2.087,813,0,master/assets/animation_frames/hair/wh045/e/wh045_e_023.webp
+hair,wh045,가발 W31,e,24,wh045e_24,wh000,14,23,0.4286,-2.087,828,0,master/assets/animation_frames/hair/wh045/e/wh045_e_024.webp
+hair,wh045,가발 W31,e,25,wh045e_25,wh000,14,23,0.4286,-2.087,843,0,master/assets/animation_frames/hair/wh045/e/wh045_e_025.webp
+hair,wh045,가발 W31,e,26,wh045e_26,wh000,14,23,0.4286,-2.087,858,0,master/assets/animation_frames/hair/wh045/e/wh045_e_026.webp
+hair,wh045,가발 W31,e,27,wh045e_27,wh000,14,23,0.4286,-2.087,873,0,master/assets/animation_frames/hair/wh045/e/wh045_e_027.webp
+hair,wh045,가발 W31,e,28,wh045e_28,wh000,15,21,0.7333,-2.3333,879,51,master/assets/animation_frames/hair/wh045/e/wh045_e_028.webp
+hair,wh045,가발 W31,e,29,wh045e_29,wh000,15,21,0.7333,-2.3333,895,51,master/assets/animation_frames/hair/wh045/e/wh045_e_029.webp
+hair,wh045,가발 W31,e,30,wh045e_30,wh000,15,21,0.7333,-2.3333,911,51,master/assets/animation_frames/hair/wh045/e/wh045_e_030.webp
+hair,wh045,가발 W31,e,31,wh045e_31,wh000,15,21,0.7333,-2.3333,927,51,master/assets/animation_frames/hair/wh045/e/wh045_e_031.webp
+hair,wh045,가발 W31,e,32,wh045e_32,wh000,14,23,0.4286,-2.087,888,0,master/assets/animation_frames/hair/wh045/e/wh045_e_032.webp
+hair,wh045,가발 W31,e,33,wh045e_33,wh000,14,23,0.4286,-2.087,903,0,master/assets/animation_frames/hair/wh045/e/wh045_e_033.webp
+hair,wh045,가발 W31,e,34,wh045e_34,wh000,14,23,0.4286,-2.087,918,0,master/assets/animation_frames/hair/wh045/e/wh045_e_034.webp
+hair,wh045,가발 W31,e,35,wh045e_35,wh000,14,23,0.4286,-2.087,933,0,master/assets/animation_frames/hair/wh045/e/wh045_e_035.webp
+hair,wh045,가발 W31,f,0,wh045f_0,wh000,15,21,0.5333,-2.2381,943,51,master/assets/animation_frames/hair/wh045/f/wh045_f_000.webp
+hair,wh045,가발 W31,f,1,wh045f_1,wh000,15,21,0.5333,-2.2857,959,51,master/assets/animation_frames/hair/wh045/f/wh045_f_001.webp
+hair,wh045,가발 W31,f,2,wh045f_2,wh000,14,23,0.4286,-2.0435,948,0,master/assets/animation_frames/hair/wh045/f/wh045_f_002.webp
+hair,wh045,가발 W31,f,3,wh045f_3,wh000,14,23,0.4286,-2.087,963,0,master/assets/animation_frames/hair/wh045/f/wh045_f_003.webp
+hair,wh045,가발 W31,f,4,wh045f_4,wh000,15,21,0.5333,-2.2381,975,51,master/assets/animation_frames/hair/wh045/f/wh045_f_004.webp
+hair,wh045,가발 W31,f,5,wh045f_5,wh000,15,21,0.5333,-2.2381,991,51,master/assets/animation_frames/hair/wh045/f/wh045_f_005.webp
+hair,wh045,가발 W31,f,6,wh045f_6,wh000,15,21,0.5333,-2.2381,1007,51,master/assets/animation_frames/hair/wh045/f/wh045_f_006.webp
+hair,wh045,가발 W31,f,7,wh045f_7,wh000,15,21,0.5333,-2.2381,0,75,master/assets/animation_frames/hair/wh045/f/wh045_f_007.webp
+hair,wh045,가발 W31,f,8,wh045f_8,wh000,14,23,0.4286,-2.0435,978,0,master/assets/animation_frames/hair/wh045/f/wh045_f_008.webp
+hair,wh045,가발 W31,f,9,wh045f_9,wh000,14,23,0.4286,-2.0435,993,0,master/assets/animation_frames/hair/wh045/f/wh045_f_009.webp
+hair,wh045,가발 W31,f,10,wh045f_10,wh000,14,23,0.4286,-2.087,1008,0,master/assets/animation_frames/hair/wh045/f/wh045_f_010.webp
+hair,wh045,가발 W31,f,11,wh045f_11,wh000,14,23,0.4286,-2.087,0,51,master/assets/animation_frames/hair/wh045/f/wh045_f_011.webp

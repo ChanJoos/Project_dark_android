@@ -255,7 +255,7 @@ public final class AdaptedMillesMapRenderer {
         if((objectDepth>playerDepth)!=foreground)continue;
         Bitmap sprite=buildingSprite(object.id);
         if(sprite!=null){
-          WorldCameraTransform.Point foot=world.worldToScreen(iso.centerX,iso.centerY+iso.halfDepth);
+          WorldCameraTransform.Point foot=world.worldToScreen(iso.doorFootX,iso.doorFootY);
           int anchorX=sprite.getWidth()/2;
           int anchorY="plaza_landmark_a".equals(object.id)?154:"plaza_landmark_b".equals(object.id)?163:151;
           drawSprite(canvas,sprite,new SpriteSpec(0,0,sprite.getWidth(),sprite.getHeight(),anchorX,anchorY),foot.x,foot.y);

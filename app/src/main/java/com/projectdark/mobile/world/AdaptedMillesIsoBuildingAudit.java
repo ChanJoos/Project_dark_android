@@ -15,6 +15,8 @@ public final class AdaptedMillesIsoBuildingAudit {
       AdaptedMillesEntranceLayer.Entrance entrance=AdaptedMillesEntranceLayer.byStructureId(building.structureId);
       if(entrance==null||!close(entrance.footX,building.doorFootX)||!close(entrance.footY,building.doorFootY)
           ||!close(entrance.approachX,building.approachX)||!close(entrance.approachY,building.approachY))return false;
+      if(!close(building.doorFootX,building.centerX)
+          ||!close(building.doorFootY,building.centerY+building.halfDepth))return false;
       AdaptedMillesIsometricTileLayer.Tile approach=null;
       for(AdaptedMillesIsometricTileLayer.Tile tile:AdaptedMillesIsometricTileLayer.tiles())
         if(close(tile.centerX,entrance.approachX)&&close(tile.centerY,entrance.approachY)){approach=tile;break;}

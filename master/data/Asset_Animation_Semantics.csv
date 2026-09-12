@@ -1,0 +1,7 @@
+﻿group,layout,direction,stop_frame,walk_frames,evidence,confidence
+01,DIR_10_FRAME,up/right-up,0,"2,3,4,5",captured app source DIR_FRAMES,SOURCE_CODE_VERIFIED
+01,DIR_10_FRAME,down/right-down,1,"6,7,8,9",captured app source DIR_FRAMES,SOURCE_CODE_VERIFIED
+03,DIR_10_FRAME,up/right-up,0,"2,3,4,5",captured app source DIR_FRAMES,SOURCE_CODE_VERIFIED
+03,DIR_10_FRAME,down/right-down,1,"6,7,8,9",captured app source DIR_FRAMES,SOURCE_CODE_VERIFIED
+02,UNRESOLVED,,,,no explicit semantic mapping captured,UNRESOLVED
+b/c/d/e/f,UNRESOLVED,,,,no explicit semantic mapping captured,UNRESOLVED

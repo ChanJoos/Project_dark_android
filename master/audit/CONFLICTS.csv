@@ -1,0 +1,3 @@
+﻿conflict_id,subject,value_a,source_a,value_b,source_b,resolution,action
+STAT_SKULL_SHIELD_DURABILITY,스컬나이트방패 내구도,33000,official-site community guide 2009-09-02,100000,official-site community report 2025-12-04,UNRESOLVED_VERSION_CHANGE_CANDIDATE,현재값으로 자동 승격하지 말고 실제 현행 클라이언트/공식 변경근거 확보
+ITEM_INFO_DATA_NOT_CAPTURED,lod-dressup per-type item-info,source code references /data/item-info/{typeKey}.json,captured homepage source,not present in supplied HAR,HAR entry inventory,SOURCE_MISSING,원본 static item-info JSON 확보 시 남은 item stats/name linkage 재감사

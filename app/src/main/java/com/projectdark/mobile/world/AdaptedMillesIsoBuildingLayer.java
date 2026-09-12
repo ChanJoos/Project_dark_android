@@ -16,7 +16,8 @@ public final class AdaptedMillesIsoBuildingLayer {
       this.structureId=structureId;this.centerX=centerX;this.centerY=centerY;this.halfWidth=halfWidth;this.halfDepth=halfDepth;
       this.wallHeight=wallHeight;this.roofRise=roofRise;this.roofOverhang=roofOverhang;
       collisionLeft=centerX-halfWidth;collisionTop=centerY-halfDepth;collisionRight=centerX+halfWidth;collisionBottom=centerY+halfDepth;
-      doorFootX=centerX+halfWidth*.5f;doorFootY=centerY+halfDepth*.5f;
+      // Production v2 house/shop/inn all place the visible door at the south/base vertex.
+      doorFootX=centerX;doorFootY=centerY+halfDepth;
       approachX=centerX+halfWidth*.5f;approachY=centerY+halfDepth*1.5f;
       evidence="ADAPTED/B";status="COHERENT_ISOMETRIC_VILLAGE_BUILDING";this.assetRef=assetRef;
     }

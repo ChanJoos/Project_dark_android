@@ -1,0 +1,9 @@
+﻿category,url,retrieved_fact,use,confidence
+armor,https://daoverlord.com/guides/armor-appearance-ids,"Armor appearance ID reference; 534 entries stated, page shows 500 at once",visual ID reference only; not gameplay identity,CURRENT_FAN_CLIENT_REFERENCE
+weapon,https://daoverlord.com/guides/weapon-appearance-ids,292 appearance entries; held-weapon appearance independent of gameplay record,visual ID reference only; classic 1-100 labels transcribed where directly retrieved,CURRENT_FAN_CLIENT_REFERENCE
+shield,https://daoverlord.com/guides/shield-appearance-ids,guide existence confirmed by knowledge index; detail page unavailable in retrieval cache,category-level reference only,REFERENCE_EXISTENCE_ONLY
+shoes,https://daoverlord.com/guides/boot-appearance-ids,guide existence confirmed by knowledge index; detail page unavailable in retrieval cache,category-level reference only,REFERENCE_EXISTENCE_ONLY
+hair,https://daoverlord.com/guides/helmet-appearance-ids,guide existence confirmed by knowledge index; detail page unavailable in retrieval cache,category-level reference only,REFERENCE_EXISTENCE_ONLY
+cape/back,https://daoverlord.com/guides/accessory-appearance-ids,guide existence confirmed by knowledge index; detail page unavailable in retrieval cache,category-level reference only,REFERENCE_EXISTENCE_ONLY
+skin,https://daoverlord.com/guides/skin-colors,10 client skin values documented; cross-check only,HAR Korean skin labels remain primary source,CURRENT_FAN_CLIENT_REFERENCE
+wardrobe,https://daoverlord.com/dress-up,"3,000+ styles; unnamed archive-only art deliberately remains numeric",supports unresolved-numeric policy,CURRENT_FAN_CLIENT_REFERENCE
