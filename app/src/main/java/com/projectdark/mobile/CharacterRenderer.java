@@ -13,15 +13,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/** Crash-safe renderer for the source-derived 24x32 martial base-body atlas. */
+/** Crash-safe renderer for the source-derived old-Dark-Ages peasant base-body atlas. */
 public final class CharacterRenderer {
-  public static final String EVIDENCE="HAR_MM001_MALE_BASE_BODY+ADAPTED";
+  public static final String EVIDENCE="LOD_DRESSUP_HAR_MM001_MALE_BASE_BODY+ADAPTED";
   public static final String ASSET_STATUS="PRODUCTION_WEBP_IDLE_WALK_ACTIVE";
-  public static final String PRESENTATION_PROFILE="MARTIAL_MM001_BASE_20260912_R1";
-  public static final String STARTER_ARCHETYPE="BASE_BODY";
+  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260912_R1";
+  public static final String STARTER_ARCHETYPE="PEASANT";
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
-  public static final String IDLE_WALK_ASSET_ID="player.martial.mm001.idle_walk.production-2026-09-12";
-  public static final String IDLE_WALK_RESOURCE="player_martial_mm001_idle_walk";
+  public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
+  public static final String IDLE_WALK_RESOURCE="player_peasant_idle_walk";
 
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;

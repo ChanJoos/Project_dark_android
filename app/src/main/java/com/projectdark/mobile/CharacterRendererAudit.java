@@ -37,9 +37,9 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.Direction.values().length!=EXPECTED_DIRECTION_COUNT)return false;
     if(CharacterRenderer.State.values().length!=EXPECTED_STATE_COUNT)return false;
     if(CharacterRenderer.DRAW_ORDER.size()!=EXPECTED_LAYER_COUNT||matrix().size()!=EXPECTED_MATRIX_CASES)return false;
-    if(!"MARTIAL_MM001_BASE_20260912_R1".equals(CharacterRenderer.PRESENTATION_PROFILE))return false;
-    if(!"BASE_BODY".equals(CharacterRenderer.STARTER_ARCHETYPE)||!"PRE_CLASS".equals(CharacterRenderer.STARTER_CLASS_STATE))return false;
-    if(!"player.martial.mm001.idle_walk.production-2026-09-12".equals(CharacterRenderer.IDLE_WALK_ASSET_ID))return false;
+    if(!"PEASANT_MM001_BASE_20260912_R1".equals(CharacterRenderer.PRESENTATION_PROFILE))return false;
+    if(!"PEASANT".equals(CharacterRenderer.STARTER_ARCHETYPE)||!"PRE_CLASS".equals(CharacterRenderer.STARTER_CLASS_STATE))return false;
+    if(!"player.peasant.mm001.idle_walk.production-2026-09-12".equals(CharacterRenderer.IDLE_WALK_ASSET_ID))return false;
     if(!CharacterRenderer.HARD_PIXEL_GRID||!CharacterRenderer.STARTER_WEAPONLESS||!CharacterRenderer.STARTER_OFFHAND_EMPTY)return false;
     if(CharacterRenderer.LEGACY_MARTIAL_ASSET_ALLOWED)return false;
     if(CharacterRenderer.PAPER_DOLL_ORDER.size()!=EXPECTED_PAPER_DOLL_LAYER_COUNT)return false;
