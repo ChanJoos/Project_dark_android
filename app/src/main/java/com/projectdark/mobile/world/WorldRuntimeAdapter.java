@@ -12,11 +12,12 @@ import java.util.List;
  */
 public final class WorldRuntimeAdapter implements WorldMoveTargetController.NavigationWorld, WorldMoveTargetController.Walker {
   public static final class FrameSnapshot {
-    public final float playerWorldX,playerWorldY,playerScreenX,playerScreenY,cameraX,cameraY;
+    public final float playerWorldX,playerWorldY,playerScreenX,playerScreenY,cameraX,cameraY,presentationWalkClock;
     public final WorldMoveTargetController.Snapshot movement;
     public final WorldMapProjection.Portal overlappingPortal;
-    FrameSnapshot(float wx,float wy,float sx,float sy,float cx,float cy,WorldMoveTargetController.Snapshot movement,WorldMapProjection.Portal portal){
-      playerWorldX=wx;playerWorldY=wy;playerScreenX=sx;playerScreenY=sy;cameraX=cx;cameraY=cy;this.movement=movement;overlappingPortal=portal;
+    FrameSnapshot(float wx,float wy,float sx,float sy,float cx,float cy,float walkClock,WorldMoveTargetController.Snapshot movement,WorldMapProjection.Portal portal){
+      playerWorldX=wx;playerWorldY=wy;playerScreenX=sx;playerScreenY=sy;cameraX=cx;cameraY=cy;
+      presentationWalkClock=walkClock;this.movement=movement;overlappingPortal=portal;
     }
   }
 
@@ -26,6 +27,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final WorldMoveTargetController movement;
   private final WorldStepInterpolator presentation;
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
+  private float presentationWalkClock;
 
   public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight){
     if(runtime==null)throw new IllegalArgumentException("runtime required");
@@ -84,7 +86,14 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     float remaining=Math.max(0f,deltaSeconds);
     WorldMoveTargetController.Snapshot move=movement.snapshot();
     while(remaining>0f){
-      if(presentation.active()){float before=remaining;remaining=presentation.advance(remaining);if(remaining>=before-.000001f)break;continue;}
+      if(presentation.active()){
+        float before=remaining;
+        remaining=presentation.advance(remaining);
+        float consumed=Math.max(0f,before-remaining);
+        presentationWalkClock+=consumed;
+        if(remaining>=before-.000001f)break;
+        continue;
+      }
       if(move.status!=WorldMoveTargetController.Status.MOVING)break;
       move=movement.tick(WorldMoveTargetController.TILE_STEP_SECONDS);beginPresentationIfMoved();
       if(!presentation.active())break;
@@ -94,9 +103,10 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   /** Re-establishes the tile-center invariant after spawn/revive before snapping the camera. */
-  public void snapCameraToPlayer(){snapPlayerToNearestTraversableTile();presentation.snap(runtime.player().x,runtime.player().y);camera.snapTo(runtime.player().x,runtime.player().y);}
+  public void snapCameraToPlayer(){snapPlayerToNearestTraversableTile();presentation.snap(runtime.player().x,runtime.player().y);presentationWalkClock=0f;camera.snapTo(runtime.player().x,runtime.player().y);}
   public float presentationPlayerX(){return presentation.x();}
   public float presentationPlayerY(){return presentation.y();}
+  public float presentationWalkClock(){return presentationWalkClock;}
   public boolean presentationMoving(){return presentation.active();}
   public WorldCameraTransform.Point worldToScreen(float worldX,float worldY){return camera.worldToScreen(worldX,worldY);}
   public WorldCameraTransform.Point screenToWorld(float screenX,float screenY){return camera.screenToWorld(screenX,screenY);}
@@ -104,7 +114,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   private FrameSnapshot frame(WorldMoveTargetController.Snapshot move){
     WorldCameraTransform.Point p=camera.worldToScreen(presentation.x(),presentation.y());
-    return new FrameSnapshot(presentation.x(),presentation.y(),p.x,p.y,camera.cameraX(),camera.cameraY(),move,portalAt(runtime.player().x,runtime.player().y));
+    return new FrameSnapshot(presentation.x(),presentation.y(),p.x,p.y,camera.cameraX(),camera.cameraY(),presentationWalkClock,move,portalAt(runtime.player().x,runtime.player().y));
   }
 
   private void beginPresentationIfMoved(){
@@ -154,7 +164,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     runtime.player().x=best.x;runtime.player().y=best.y;
   }
 
-  private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id))return m;return null;}
+  private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id)&&m.alive)return m;return null;}
 
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}
 }
