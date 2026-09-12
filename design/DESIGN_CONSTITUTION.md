@@ -2,8 +2,8 @@
 
 Status: CANONICAL / Source of Truth gate
 
-Current amendments: `design/PLAYTEST_CANON_20260910_2149.md` supersedes conflicting older scale/movement/world-expansion requirements below. `design/LOD_SYSTEM_EVIDENCE_20260911.md` records the 2026-09-09 NamuWiki snapshot as `[FAN]` evidence and must not be silently promoted to official canon. Operational ownership and execution priorities follow `docs/DIRECTOR_GUIDE.md`. One coherent village screen remains the first production milestone; system discovery does not widen the current implementation sprint.
-Updated: 2026-09-11
+Current amendments: `design/PLAYTEST_CANON_20260910_2149.md` supersedes conflicting older scale/movement/world-expansion requirements below. `design/LOD_SYSTEM_EVIDENCE_20260911.md` records the NamuWiki snapshot as `[FAN]` evidence and must not be silently promoted to official canon. Operational ownership and execution priorities follow `docs/DIRECTOR_GUIDE.md`. One coherent village screen remains the first production milestone; system discovery does not widen the current implementation sprint.
+Updated: 2026-09-12
 
 ## 1. Product canon
 
@@ -34,7 +34,7 @@ Every original-game claim/value should retain evidence status:
 
 If exact original HP, damage, timing, drop rate, formula, sprite frame count, map geometry, etc. is unknown, do not invent it as canon. Keep it null/PENDING or isolate a prototype `[B]` value.
 
-The NamuWiki snapshot dated 2026-09-09 is a broad discovery/index source, not an authority for exact formulas. It is especially valuable for identifying linked evidence domains that require follow-up: 직업, 기술마법, 사냥터, 용어, 공성전, 반혼의 결서, 문제점, historical interfaces and community guides.
+Reference authority order for visual production is fixed: **official Nexon/original source → actual in-game screenshot/capture → reliable fan/community material**. Lower-authority evidence may fill gaps but must never silently override stronger evidence.
 
 ## 4. Visual canon
 
@@ -46,7 +46,20 @@ Original asset redistribution for shipping is licensing-gated. Keep reference/pr
 
 Historical interface evidence shows that visual identity and information density matter: modernization must not become a generic mobile-RPG skin. Preserve readable HP/MP/EXP, character status, inventory/skill access and the world-first presentation while adapting touch targets and layout for mobile.
 
-### User-confirmed playtest presentation requirements — `[ADAPTED]`
+### 4.1 Production visual QA gate — USER CANON / MANDATORY
+
+This gate applies to **terrain, buildings, props, character sprites, equipment, NPCs, monsters, effects and other production visual assets**. It extends the existing original-screen comparison rule down to each asset-production stage.
+
+1. **Reference-first.** Asset production MUST NOT begin from imagination alone. Before producing a prop/asset, secure at least **three relevant visual references** using the authority order: `official Nexon → actual game screenshot/capture → reliable fan material`. When three independent high-authority references genuinely do not exist, record the shortage as `PENDING_REFERENCE`; do not pretend the requirement was met. Internet/reference research is therefore a prerequisite to production asset work unless the required references are already present in the repository/evidence set.
+2. **Side-by-side Visual QA is mandatory.** Compare the generated asset directly beside the references and inspect at minimum: `silhouette / projection / pixel density / palette / lighting / material detail / scale`. A production candidate without this comparison is `UNVERIFIED`, not PASS.
+3. **FAIL means discard and remake.** Do not rescue a fundamentally wrong asset by “slightly polishing” it. If it reads as draft geometry, generic AI art, procedural art, wrong projection, wrong density, wrong material language, or looks foreign when composited into the original-style screen, discard it and create a new candidate.
+4. **Forbidden production shortcuts.** Python/PIL primitive-shape assembly, procedural placeholders, Canvas geometry, or thick outlines used as a substitute for actual material/detail MUST NOT be promoted to production art. They may exist only as debug/prototype material and must be clearly separated from production assets.
+5. **Composited-screen QA is mandatory.** Do not judge sprites only in isolation. Composite candidate assets at actual gameplay scale with **Milles terrain + buildings + props + player/world context**. Compare that composite beside original gameplay references. PASS requires the asset set to read as if it belongs to the same game/world, not merely as individually attractive sprites.
+6. **Only PASS assets enter production.** Only Visual-QA PASS assets may enter the production asset directory and production commit/integration path. FAIL candidates must not accumulate in the persistent production workline. If retention is needed for diagnosis, keep them outside production in an explicitly disposable QA/debug location.
+7. **No self-certification by file existence.** PNG/WebP existence, correct dimensions, compile success or renderer wiring do not constitute visual PASS. Visual acceptance requires reference comparison and composited-screen comparison.
+8. **QA evidence must be auditable.** A production asset commit must identify its reference set and QA verdict, directly or through a compact manifest/preview artifact. The Integrator may reject an asset without merging it when the evidence is missing or the composite fails.
+
+### 4.2 User-confirmed playtest presentation requirements — `[ADAPTED]`
 
 - Character/NPC/monster presentation must not dominate the mobile viewport. Logical world coordinates and collision dimensions remain independent from renderer scale.
 - **The player character must never be presented as a front-facing avatar while idle/moving in normal field play.** PROJECT DARK uses the original isometric/diagonal presentation. Character appearance is rendered from `NW / NE / SW / SE`.
@@ -55,7 +68,7 @@ Historical interface evidence shows that visual identity and information density
 - Player movement uses following camera/world scroll while preserving world↔screen correctness, map clamp, collision, portal and touch targeting.
 - ATTACK / SKILL / MAGIC expose visibly distinguishable presentation states/effect hooks.
 - Combat feedback must be legible and game-like; exact original styling remains evidence-gated.
-- Current procedural/line-art buildings and props are fallback/debug material only. Production acceptance requires coherent sprite-based 2.5D art.
+- Current procedural/line-art buildings and props are fallback/debug material only. Production acceptance requires coherent sprite-based 2.5D art that has passed §4.1.
 
 ## 5. Movement and targeting canon
 
@@ -161,11 +174,11 @@ The source's history of automation/macros is not design authorization for unatte
 Current P0 remains:
 1. player character visibly correct on-device (`24×32`, scale `1.50`, `NW/NE/SW/SE`, martial artist reference);
 2. exact adjacent isometric movement at the latest user-approved timing;
-3. one coherent sprite-based Milles village screen with production-quality ground/buildings/props;
+3. one coherent sprite-based Milles village screen with production-quality ground/buildings/props that pass §4.1 Visual QA;
 4. stable startup/build/install path.
 
 Do not pause P0 to implement quick dungeons, PvP, macros, later advancement, economy, fishing, gathering or other newly catalogued systems.
 
 Before coding, agents read this file, `design/PLAYTEST_CANON_20260910_2149.md`, `design/LOD_SYSTEM_EVIDENCE_20260911.md`, `design/DATA_CONTRACT.md`, `design/SOURCE_OF_TRUTH.md`, canonical data and relevant DEV_HISTORY/handoffs.
 
-If source documents disagree or required data is absent, record `DESIGN_CONFLICT` or `PENDING`; do not silently decide canon. User-approved/rejected rules supersede fan evidence. The Integrator is the final Design Compliance Gate; compiling code that violates this constitution is failed integration.
+If source documents disagree or required data is absent, record `DESIGN_CONFLICT` or `PENDING`; do not silently decide canon. User-approved/rejected rules supersede fan evidence. **The Integrator is the final Design + Visual Compliance Gate; compiling code that violates this constitution or integrating a visual asset that has not passed §4.1 is failed integration.**
