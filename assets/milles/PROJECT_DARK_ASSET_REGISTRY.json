@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "visual_family": "MILLES_MASTER_01",
+  "policy": {
+    "approved_assets_are_immutable": true,
+    "no_grid_crop": true,
+    "no_mirror_count_filler": true,
+    "require_true_rgba_alpha": true,
+    "require_trim_and_anchor": true,
+    "require_duplicate_check": true,
+    "require_text_contamination_check": true,
+    "candidate_must_not_replace_approved": true
+  },
+  "status_flow": ["PLANNED", "GENERATED", "QA_PASS", "APPROVED"],
+  "categories": {
+    "buildings": 25,
+    "terrain_path": 20,
+    "water_lake": 20,
+    "vegetation": 20,
+    "fences_walls": 12,
+    "props": 25,
+    "structures_landmarks": 10
+  },
+  "target_asset_count": 132,
+  "assets": [
+    {
+      "asset_id": "BLD_001",
+      "name": "weapon_shop",
+      "category": "buildings",
+      "status": "REFERENCE_APPROVED",
+      "visual_family": "MILLES_MASTER_01",
+      "notes": "User-approved visual direction from conversation. Binary master PNG must be committed separately before status becomes APPROVED; do not substitute a regenerated image."
+    },
+    {"asset_id":"BLD_002","name":"potion_shop","category":"buildings","status":"PLANNED"},
+    {"asset_id":"BLD_003","name":"bank","category":"buildings","status":"PLANNED"},
+    {"asset_id":"BLD_004","name":"cathedral","category":"buildings","status":"PLANNED"},
+    {"asset_id":"BLD_005","name":"inn","category":"buildings","status":"PLANNED"}
+  ]
+}
