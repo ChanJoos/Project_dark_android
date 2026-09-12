@@ -19,7 +19,7 @@ import java.util.Map;
  * No generated replacement art is used here. Runtime scaling uses nearest-neighbour only.
  */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V2_LOGICAL_GROUND";
+  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V3_AUTHORED_GRID_CENTERS";
   public static final float LOGICAL_GROUND_WIDTH=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   public static final float LOGICAL_GROUND_HEIGHT=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private final Paint pixel=new Paint();
@@ -38,13 +38,10 @@ public final class AdaptedMillesMapRenderer {
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),backdrop);
     WorldMapProjection.Spawn s=world.map().spawn();
 
-    // Ground/road field around the current playable spawn. These are real production terrain sprites.
-    for(int gy=-4;gy<=4;gy++){
-      for(int gx=-7;gx<=7;gx++){
-        float wx=s.x+gx*64f, wy=s.y+gy*32f;
-        String terrain=(Math.abs(gx)<=1||Math.abs(gy)<=1)?"terrain/OBJ_stone_01.png":"terrain/OBJ_ground_01.png";
-        drawGround(canvas,world,terrain,wx,wy,1f);
-      }
+    // World-owned placement invariant: visual ground is drawn at the exact same authored centers
+    // consumed by navigation. Adjacent centers are therefore always +/-32 X and +/-16 Y.
+    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles()){
+      drawGround(canvas,world,terrainFor(tile.kind),tile.centerX,tile.centerY,1f);
     }
 
     // Back row: landmark + shops. Positions are authored around the existing playable spawn.
@@ -75,6 +72,15 @@ public final class AdaptedMillesMapRenderer {
     for(int i=0;i<4;i++){
       drawFoot(canvas,world,"structures/fences/OBJ_fence_01.png",s.x-390f+i*72f,s.y+245f,.82f);
       drawFoot(canvas,world,"structures/fences/OBJ_fence_02.png",s.x+245f+i*72f,s.y+300f,.82f);
+    }
+  }
+
+  private static String terrainFor(AdaptedMillesIsometricTileLayer.TileKind kind){
+    switch(kind){
+      case ROAD:
+      case PLAZA:
+      case GATE:return "terrain/OBJ_stone_01.png";
+      default:return "terrain/OBJ_ground_01.png";
     }
   }
 
