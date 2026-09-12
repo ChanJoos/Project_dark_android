@@ -1,4 +1,4 @@
-name: Visual payload decode
+name: Visual sprint production generator
 
 on:
   push:
@@ -11,25 +11,61 @@ permissions:
   contents: write
 
 jobs:
-  decode-and-commit:
+  generate-and-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: agent/visual/art-pipeline
           fetch-depth: 0
-      - name: Decode production visual payload
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pillow
+      - name: Generate Milles first-play screen v4 from production sprites
         shell: bash
         run: |
           set -euo pipefail
-          PAYLOAD="design/visual/production/_payload/visual_sprint_turn2_payload.b64"
-          if [ ! -f "$PAYLOAD" ]; then
-            echo "No payload present; nothing to decode."
-            exit 0
-          fi
-          base64 -d "$PAYLOAD" > /tmp/visual_payload.tar.gz
-          tar -xzf /tmp/visual_payload.tar.gz -C .
-          git rm "$PAYLOAD"
+          TRIGGER="design/visual/production/_payload/turn2.trigger"
+          [ -f "$TRIGGER" ] || exit 0
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import json
+          root=Path('design/visual/production')
+          m=root/'milles'; p=root/'player'
+          terrain=Image.open(m/'milles_terrain_64x32_v3.webp').convert('RGBA')
+          props=Image.open(m/'milles_props_v3.webp').convert('RGBA')
+          house=Image.open(m/'milles_house_v2.webp').convert('RGBA')
+          shop=Image.open(m/'milles_shop_v2.webp').convert('RGBA')
+          inn=Image.open(m/'milles_inn_v2.webp').convert('RGBA')
+          player=Image.open(p/'player_martial_mm001_idle_walk_4dir_24x32_1p5.webp').convert('RGBA')
+          manifest=json.loads((m/'milles_production_manifest_v3.json').read_text())
+          tf=manifest['terrain']['frames']; pf=manifest['props']['frames']
+          def crop(a,r): return a.crop((r['x'],r['y'],r['x']+r['w'],r['y']+r['h']))
+          tiles={k:crop(terrain,v) for k,v in tf.items()}; prop={k:crop(props,v) for k,v in pf.items()}
+          scene=Image.new('RGBA',(720,420),(28,34,31,255)); origin=(360,62); placements=[]
+          for gy in range(12):
+            for gx in range(14):
+              if gx in (6,7) or gy in (5,6): name=f"path_{(gx+gy)%3}"
+              elif (gx,gy) in {(2,2),(2,3),(3,2),(10,2),(11,2),(10,3),(3,8),(4,8),(3,9),(10,8),(11,8),(11,9)}: name=f"stone_{(gx+gy)%3}"
+              else: name=f"grass_{(gx*2+gy)%3}"
+              sx=origin[0]+(gx-gy)*32; sy=origin[1]+(gx+gy)*16
+              scene.alpha_composite(tiles[name],(sx-32,sy-16))
+          banchors={x['id']:x['foot_anchor'] for x in manifest['buildings']}
+          def place(im,a,x,y): scene.alpha_composite(im,(int(x-a[0]),int(y-a[1])))
+          for ident,im,pos in [('milles_house_v2',house,(205,215)),('milles_shop_v2',shop,(388,185)),('milles_inn_v2',inn,(555,235))]:
+            place(im,banchors[ident],*pos); placements.append({'id':ident,'foot_anchor':banchors[ident],'world_px':list(pos)})
+          for ident,pos in [('tree',(105,238)),('tree',(650,250)),('tree',(610,125)),('fence',(184,310)),('fence',(214,326)),('sign',(318,305)),('well',(426,318)),('bench',(535,330)),('lamp',(600,305)),('sign',(467,250)),('bench',(280,255))]:
+            r=pf[ident]; place(prop[ident],r['foot_anchor'],*pos); placements.append({'id':ident,'foot_anchor':r['foot_anchor'],'world_px':list(pos)})
+          se=player.crop((0,144,36,192)); place(se,[18,46],375,306)
+          placements.append({'id':'player_martial_mm001_se_idle','foot_anchor':[18,46],'world_px':[375,306]})
+          scene.save(m/'milles_first_play_screen_v4.webp','WEBP',lossless=True,quality=100,method=6)
+          scene.resize((1440,840),Image.Resampling.NEAREST).save(m/'milles_first_play_screen_v4_preview.webp','WEBP',quality=82,method=6)
+          meta={'version':'v4-2026-09-12','projection':'2:1 isometric','tile_px':[64,32],'light':'upper_left','player':{'logical_frame_px':[24,32],'render_scale':1.5,'direction':'SE','state':'IDLE','foot_anchor':[18,46],'weapon':'none','head_body':'merged'},'placements':placements}
+          (m/'milles_first_play_screen_v4.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2))
+          PY
+          git rm "$TRIGGER"
           git config user.name "PROJECT DARK Visual Bot"
           git config user.email "actions@users.noreply.github.com"
           git add design/visual/production/milles
