@@ -29,9 +29,37 @@
       "category": "buildings",
       "status": "REFERENCE_APPROVED",
       "visual_family": "MILLES_MASTER_01",
-      "notes": "User-approved visual direction from conversation. Binary master PNG must be committed separately before status becomes APPROVED; do not substitute a regenerated image."
+      "production": {
+        "normalized_size": [1454, 1027],
+        "anchor": {"type":"footprint_bottom_center","x":727,"y":1003},
+        "sha256": "3151cf17dc39123d77a0912830a34f6d51686d827e9e86d9be03878a42af230e",
+        "edge_touch": false,
+        "rgba_alpha": true
+      },
+      "notes": "User-approved visual master. Do not regenerate or replace. Exact/normalized binary is held as the master candidate until repository binary upload is completed."
     },
-    {"asset_id":"BLD_002","name":"potion_shop","category":"buildings","status":"PLANNED"},
+    {
+      "asset_id":"BLD_002",
+      "name":"potion_shop",
+      "category":"buildings",
+      "status":"QA_PASS",
+      "visual_family":"MILLES_MASTER_01",
+      "roof_variant":"weathered_green_gray_tile",
+      "production": {
+        "normalized_size": [1191, 1196],
+        "anchor": {"type":"footprint_bottom_center","x":595,"y":1172},
+        "sha256": "b2aad030bdfad1eca95273602e9b52097117d8a814f8d3b390ff6f7ff8911173",
+        "edge_touch": false,
+        "rgba_alpha": true,
+        "duplicate_check": {
+          "method":"average_hash_16x16",
+          "against":"BLD_001",
+          "hamming_distance":36,
+          "duplicate":false
+        }
+      },
+      "notes":"Generated as an independent single-object asset; alpha edge noise <=1 removed; trimmed and padded; no grid crop or mirrored filler. User approval still required before APPROVED."
+    },
     {"asset_id":"BLD_003","name":"bank","category":"buildings","status":"PLANNED"},
     {"asset_id":"BLD_004","name":"cathedral","category":"buildings","status":"PLANNED"},
     {"asset_id":"BLD_005","name":"inn","category":"buildings","status":"PLANNED"}
