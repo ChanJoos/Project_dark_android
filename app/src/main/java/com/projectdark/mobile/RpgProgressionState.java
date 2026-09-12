@@ -23,7 +23,7 @@ public final class RpgProgressionState {
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
   public enum RewardSource { CANONICAL, ADAPTED_TEST, UNRESOLVED }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
-  public enum EquipResult { EQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
+  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
 
   public enum ProgressionNode {
@@ -37,7 +37,7 @@ public final class RpgProgressionState {
   }
 
   public static final class ItemDefinition {
-    public final String itemId,name,equipSlot;
+    public final String itemId,name,equipSlot,appearanceId;
     public final Integer requiredLevel;
     public final Set<String> allowedJobCodes;
     public final boolean jobRestrictionResolved;
@@ -47,7 +47,13 @@ public final class RpgProgressionState {
 
     public ItemDefinition(String itemId,String name,String equipSlot,Integer requiredLevel,Set<String> allowedJobCodes,
         boolean jobRestrictionResolved,String attackElement,String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
+      this(itemId,name,equipSlot,null,requiredLevel,allowedJobCodes,jobRestrictionResolved,
+          attackElement,defenseElement,statModifiers,evidence);
+    }
+    public ItemDefinition(String itemId,String name,String equipSlot,String appearanceId,Integer requiredLevel,Set<String> allowedJobCodes,
+        boolean jobRestrictionResolved,String attackElement,String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
       this.itemId=itemId;this.name=name;this.equipSlot=equipSlot;this.requiredLevel=requiredLevel;
+      this.appearanceId=appearanceId;
       this.allowedJobCodes=Collections.unmodifiableSet(new LinkedHashSet<>(allowedJobCodes));
       this.jobRestrictionResolved=jobRestrictionResolved;
       this.attackElement=attackElement;this.defenseElement=defenseElement;
@@ -100,6 +106,9 @@ public final class RpgProgressionState {
   private final AdaptedPrototypeRewardCatalog prototypeRewards=new AdaptedPrototypeRewardCatalog();
   private long lastCombatSequence=0L;
 
+  public static final String PLAYTEST_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
+  public static final String PLAYTEST_ROBE_APPEARANCE_ID="mu0000058";
+
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
@@ -129,6 +138,10 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,
         "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
+    registerItem(new ItemDefinition(PLAYTEST_ROBE_ITEM_ID,"루어스레더로브","갑옷",
+        PLAYTEST_ROBE_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
+    inventory.put(PLAYTEST_ROBE_ITEM_ID,1);
   }
 
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
@@ -220,6 +233,10 @@ public final class RpgProgressionState {
     ItemDefinition def=items.get(itemId);
     if(def==null)return EquipResult.UNKNOWN_ITEM;
     if(!def.equippable())return EquipResult.NOT_EQUIPPABLE;
+    if(itemId.equals(equipmentBySlot.get(def.equipSlot))){
+      equipmentBySlot.remove(def.equipSlot);
+      return EquipResult.UNEQUIPPED;
+    }
     RequirementResult requirements=currentRequirements(itemId);
     if(requirements==RequirementResult.PENDING)return EquipResult.REQUIREMENT_PENDING;
     if(requirements!=RequirementResult.MET)return EquipResult.REQUIREMENT_NOT_MET;

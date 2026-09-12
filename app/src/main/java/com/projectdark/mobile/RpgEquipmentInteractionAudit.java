@@ -11,6 +11,17 @@ public final class RpgEquipmentInteractionAudit {
     RpgProgressionState rpg=new RpgProgressionState();
     RpgInteractionController controller=new RpgInteractionController();
 
+    if(!Integer.valueOf(1).equals(rpg.inventory().get(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID)))return false;
+    RpgProgressionState.ItemDefinition robe=rpg.itemDefinitions().get(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID);
+    if(robe==null||!RpgProgressionState.PLAYTEST_ROBE_APPEARANCE_ID.equals(robe.appearanceId))return false;
+    if(!controller.selectInventoryItem(rpg,RpgProgressionState.PLAYTEST_ROBE_ITEM_ID))return false;
+    if(controller.equipSelectedDetailed(rpg)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
+    CharacterVisualBinding equippedVisual=CharacterVisualBinding.from(rpg);
+    if(!equippedVisual.hasResolvedSpriteAssets())return false;
+    if(!CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID.equals(equippedVisual.equipmentVisualRef()))return false;
+    if(controller.equipSelectedDetailed(rpg)!=RpgProgressionState.EquipResult.UNEQUIPPED)return false;
+    if(!rpg.equipment().isEmpty()||CharacterVisualBinding.from(rpg).hasResolvedSpriteAssets())return false;
+
     if(rpg.normalLevel()==null||rpg.normalLevel()!=1)return false;
     if(controller.selectInventoryItem(rpg,"IT_GLOVE_LEATHER"))return false;
     if(controller.selectedInventoryItemId()!=null)return false;

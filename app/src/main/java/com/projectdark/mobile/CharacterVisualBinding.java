@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public final class CharacterVisualBinding {
   public static final String ASSET_STATUS="PENDING_CROP";
+  public static final String RESOLVED_ROBE_APPEARANCE_ID="mu0000058";
   public static final String WEAPON_SLOT="무기";
 
   private final Map<String,String> equippedBySlot;
@@ -21,14 +22,16 @@ public final class CharacterVisualBinding {
   private final String equipmentVisualRef;
   private final String weaponVisualRef;
   private final boolean valid;
+  private final boolean resolved;
 
   private CharacterVisualBinding(Map<String,String> equippedBySlot,String weaponItemId,
-      String equipmentVisualRef,String weaponVisualRef,boolean valid){
+      String equipmentVisualRef,String weaponVisualRef,boolean valid,boolean resolved){
     this.equippedBySlot=Collections.unmodifiableMap(new LinkedHashMap<>(equippedBySlot));
     this.weaponItemId=weaponItemId;
     this.equipmentVisualRef=equipmentVisualRef;
     this.weaponVisualRef=weaponVisualRef;
     this.valid=valid;
+    this.resolved=resolved;
   }
 
   /**
@@ -40,6 +43,7 @@ public final class CharacterVisualBinding {
     Map<String,String> equipped=new LinkedHashMap<>(rpg.equipment());
     Map<String,RpgProgressionState.ItemDefinition> defs=rpg.itemDefinitions();
     boolean ok=true;
+    boolean resolved=false;
     String weapon=null;
     List<String> equipmentTokens=new ArrayList<>();
 
@@ -48,18 +52,18 @@ public final class CharacterVisualBinding {
       RpgProgressionState.ItemDefinition def=defs.get(itemId);
       if(def==null||def.equipSlot==null||!slot.equals(def.equipSlot))ok=false;
       if(WEAPON_SLOT.equals(slot))weapon=itemId;
-      else equipmentTokens.add(slot+"="+itemId);
+      else if(def!=null&&def.appearanceId!=null){equipmentTokens.add(def.appearanceId);resolved=true;}
+      else equipmentTokens.add(ASSET_STATUS+":"+itemId);
     }
 
-    String equipmentRef=equipmentTokens.isEmpty()?ASSET_STATUS:
-        ASSET_STATUS+"|ITEM_IDS:"+join(equipmentTokens);
+    String equipmentRef=equipmentTokens.isEmpty()?ASSET_STATUS:join(equipmentTokens);
     String weaponRef=weapon==null?ASSET_STATUS:ASSET_STATUS+"|ITEM_ID:"+weapon;
-    return new CharacterVisualBinding(equipped,weapon,equipmentRef,weaponRef,ok);
+    return new CharacterVisualBinding(equipped,weapon,equipmentRef,weaponRef,ok,resolved);
   }
 
   public static CharacterVisualBinding empty(){
     return new CharacterVisualBinding(Collections.<String,String>emptyMap(),null,
-        ASSET_STATUS,ASSET_STATUS,true);
+        ASSET_STATUS,ASSET_STATUS,true,false);
   }
 
   public Map<String,String> equippedBySlot(){return equippedBySlot;}
@@ -67,7 +71,7 @@ public final class CharacterVisualBinding {
   public String equipmentVisualRef(){return equipmentVisualRef;}
   public String weaponVisualRef(){return weaponVisualRef;}
   public boolean isDefinitionConsistent(){return valid;}
-  public boolean hasResolvedSpriteAssets(){return false;}
+  public boolean hasResolvedSpriteAssets(){return resolved;}
 
   private static String join(List<String> values){
     StringBuilder b=new StringBuilder();
