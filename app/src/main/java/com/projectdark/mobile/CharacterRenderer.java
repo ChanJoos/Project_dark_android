@@ -51,6 +51,8 @@ public final class CharacterRenderer {
   public static final int SOURCE_IDLE_WALK_WIDTH=SOURCE_FRAME_WIDTH*IDLE_WALK_COLUMNS;
   public static final int SOURCE_ATLAS_HEIGHT=SOURCE_FRAME_HEIGHT*ATLAS_ROWS;
 
+  private static volatile float presentationWalkClock;
+
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
   public enum Layer { BODY, HAIR, EQUIPMENT, WEAPON, EFFECT }
@@ -105,6 +107,9 @@ public final class CharacterRenderer {
     switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}
   }
 
+  public static void setPresentationWalkClock(float clock){presentationWalkClock=Math.max(0f,clock);}
+  public static float presentationWalkClock(){return presentationWalkClock;}
+
   public boolean resourceAtlasActive(){return validAtlas(idleWalkAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);}
   public boolean attackAtlasActive(){return validAtlas(attackAtlas,ACTION_WIDTH,ATLAS_HEIGHT);}
 
@@ -130,7 +135,7 @@ public final class CharacterRenderer {
 
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){
     int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
-    int col=pose.state==State.IDLE?0:1+walkFrameIndex(pose.walkClock);
+    int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
     drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
         SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,1f,anchorY,pose.x);
   }
@@ -190,7 +195,7 @@ public final class CharacterRenderer {
   private void drawSafePeasantFallback(Canvas c,Pose pose,float anchorY){
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
     boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
-    int frame=pose.state==State.WALK?walkFrameIndex(pose.walkClock):0;
+    int frame=pose.state==State.WALK?walkFrameIndex(presentationWalkClock):0;
     int step=frame==1?-1:frame==3?1:0;
     float phase=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));
     c.save(); c.translate(pose.x-12f*PLAYER_RENDER_SCALE,anchorY-32f*PLAYER_RENDER_SCALE); c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
