@@ -1,0 +1,162 @@
+{
+  "version": "production-v5-2026-09-12",
+  "screen_px": [
+    1280,
+    720
+  ],
+  "projection": "2:1 isometric",
+  "tile_px": [
+    64,
+    32
+  ],
+  "player": {
+    "sheet": "player_martial_mm001_idle_walk_4dir_24x32_1p5.webp",
+    "direction": "SE",
+    "state": "IDLE",
+    "foot_anchor": [
+      18,
+      46
+    ],
+    "world_anchor": [
+      640,
+      505
+    ]
+  },
+  "buildings": [
+    {
+      "id": "milles_house_v2",
+      "anchor": [
+        300,
+        330
+      ]
+    },
+    {
+      "id": "milles_shop_v2",
+      "anchor": [
+        640,
+        285
+      ]
+    },
+    {
+      "id": "milles_inn_v2",
+      "anchor": [
+        980,
+        345
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "tree",
+      "anchor": [
+        145,
+        330
+      ]
+    },
+    {
+      "id": "tree",
+      "anchor": [
+        205,
+        380
+      ]
+    },
+    {
+      "id": "tree",
+      "anchor": [
+        1085,
+        390
+      ]
+    },
+    {
+      "id": "tree",
+      "anchor": [
+        1140,
+        345
+      ]
+    },
+    {
+      "id": "lamp",
+      "anchor": [
+        500,
+        380
+      ]
+    },
+    {
+      "id": "lamp",
+      "anchor": [
+        780,
+        385
+      ]
+    },
+    {
+      "id": "sign",
+      "anchor": [
+        560,
+        430
+      ]
+    },
+    {
+      "id": "well",
+      "anchor": [
+        695,
+        455
+      ]
+    },
+    {
+      "id": "fence",
+      "anchor": [
+        330,
+        475
+      ]
+    },
+    {
+      "id": "fence",
+      "anchor": [
+        420,
+        500
+      ]
+    },
+    {
+      "id": "bench",
+      "anchor": [
+        835,
+        500
+      ]
+    },
+    {
+      "id": "bench",
+      "anchor": [
+        920,
+        480
+      ]
+    },
+    {
+      "id": "tree",
+      "anchor": [
+        255,
+        540
+      ]
+    },
+    {
+      "id": "tree",
+      "anchor": [
+        1030,
+        545
+      ]
+    },
+    {
+      "id": "lamp",
+      "anchor": [
+        570,
+        560
+      ]
+    },
+    {
+      "id": "lamp",
+      "anchor": [
+        725,
+        555
+      ]
+    }
+  ]
+}
