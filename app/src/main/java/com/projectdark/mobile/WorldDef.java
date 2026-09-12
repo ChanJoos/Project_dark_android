@@ -1,6 +1,7 @@
 package com.projectdark.mobile;
 
 import android.graphics.RectF;
+import com.projectdark.mobile.world.MillesProductionCollision;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -12,7 +13,7 @@ public final class WorldDef {
   public static final String ID="milles_runtime_proto";
   public static final String EVIDENCE_VISUAL="O";
   public static final String EVIDENCE_GEOMETRY="ADAPTED/B";
-  public static final String GEOMETRY_STATUS="ADAPTED_PROTOTYPE_VILLAGE_EXPANDED_PASS37";
+  public static final String GEOMETRY_STATUS="PRODUCTION_GROUND_FOOTPRINT_COLLISION_V1";
   public static final String ASSET_STATUS="PENDING_CROP";
   public static final String VISUAL_SOURCE_URL="https://storage.nexon.com/dsk03/13/NX_FILE/Board/196608/05/2/000/00/69/5557538701493472772.png";
 
@@ -31,16 +32,7 @@ public final class WorldDef {
 
   public WorldDef(){
     List<RectF> b=new ArrayList<>();
-    b.add(new RectF(150f,105f,390f,300f)); b.add(new RectF(540f,90f,800f,280f)); b.add(new RectF(1040f,110f,1320f,315f));
-    b.add(new RectF(256f,528f,384f,592f)); b.add(new RectF(1210f,410f,1480f,660f));
-    b.add(new RectF(330f,760f,570f,980f)); b.add(new RectF(1000f,770f,1260f,995f));
-    b.add(new RectF(672f,480f,800f,544f)); b.add(new RectF(800f,608f,928f,672f));
-    b.add(new RectF(80f,820f,250f,1050f)); b.add(new RectF(1390f,790f,1580f,1040f));
-    b.add(new RectF(1660f,420f,1900f,580f)); b.add(new RectF(1960f,420f,2200f,600f));
-    b.add(new RectF(2140f,700f,2260f,950f)); b.add(new RectF(1700f,1000f,1940f,1200f));
-    b.add(new RectF(2020f,1120f,2220f,1330f)); b.add(new RectF(300f,1100f,560f,1300f));
-    b.add(new RectF(1040f,1120f,1300f,1320f));
-    b.add(new RectF(520f,1460f,700f,1580f)); b.add(new RectF(880f,1460f,1060f,1580f));
+    for(MillesProductionCollision.Footprint f:MillesProductionCollision.blockers())b.add(new RectF(f.left,f.top,f.right,f.bottom));
     blockers=Collections.unmodifiableList(b);
 
     List<NpcSpawn> n=new ArrayList<>();
