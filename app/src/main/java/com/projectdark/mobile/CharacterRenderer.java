@@ -175,7 +175,9 @@ public final class CharacterRenderer {
 
   public static int walkFrameIndex(float walkClock){
     float safeClock=Math.max(0f,walkClock);
-    return ((int)Math.floor((safeClock+.00001f)*(IDLE_WALK_COLUMNS-1)/WALK_CYCLE_SECONDS))&3;
+    float phase=safeClock%WALK_CYCLE_SECONDS;
+    float frameSeconds=WALK_CYCLE_SECONDS/(IDLE_WALK_COLUMNS-1);
+    return Math.min(IDLE_WALK_COLUMNS-2,(int)Math.floor((phase+.00001f)/frameSeconds));
   }
 
   private Resources findProcessResources(){
