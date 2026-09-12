@@ -13,20 +13,23 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/** Crash-safe 24x32 old-Dark-Ages starter peasant renderer. */
+/** Crash-safe renderer for the source-derived 24x32 martial base-body atlas. */
 public final class CharacterRenderer {
-  public static final String EVIDENCE="OLD_DARK_AGES_PEASANT_P0_P1+ADAPTED";
-  public static final String ASSET_STATUS="PEASANT_REFERENCE_ATLAS_PENDING_SAFE_FALLBACK_ACTIVE";
-  public static final String PRESENTATION_PROFILE="PEASANT_BASE_20260911_R1";
-  public static final String STARTER_ARCHETYPE="PEASANT";
+  public static final String EVIDENCE="HAR_MM001_MALE_BASE_BODY+ADAPTED";
+  public static final String ASSET_STATUS="PRODUCTION_WEBP_IDLE_WALK_ACTIVE";
+  public static final String PRESENTATION_PROFILE="MARTIAL_MM001_BASE_20260912_R1";
+  public static final String STARTER_ARCHETYPE="BASE_BODY";
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
+  public static final String IDLE_WALK_ASSET_ID="player.martial.mm001.idle_walk.production-2026-09-12";
+  public static final String IDLE_WALK_RESOURCE="player_martial_mm001_idle_walk";
 
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
   public static final float BASE_HEIGHT=32f;
   public static final float HEAD_TO_BODY_RATIO=0.28f;
-  public static final float WALK_FRAMES_PER_SECOND=5.0f; // 4 frames / 0.8 sec tile step
+  public static final float WALK_CYCLE_SECONDS=.60f;
+  public static final float WALK_FRAMES_PER_SECOND=4f/WALK_CYCLE_SECONDS;
   public static final boolean HARD_PIXEL_GRID=true;
   public static final boolean STARTER_WEAPONLESS=true;
   public static final boolean STARTER_OFFHAND_EMPTY=true;
@@ -34,12 +37,19 @@ public final class CharacterRenderer {
 
   public static final int ATLAS_FRAME_WIDTH=24;
   public static final int ATLAS_FRAME_HEIGHT=32;
+  // The production WebP bakes the approved 1.50 runtime scale into each source cell.
+  public static final int SOURCE_FRAME_WIDTH=36;
+  public static final int SOURCE_FRAME_HEIGHT=48;
+  public static final int SOURCE_FOOT_ANCHOR_X=18;
+  public static final int SOURCE_FOOT_ANCHOR_Y=46;
   public static final int IDLE_WALK_COLUMNS=5;
   public static final int ATTACK_COLUMNS=4;
   public static final int ATLAS_ROWS=4;
   public static final int IDLE_WALK_WIDTH=ATLAS_FRAME_WIDTH*IDLE_WALK_COLUMNS;
   public static final int ACTION_WIDTH=ATLAS_FRAME_WIDTH*ATTACK_COLUMNS;
   public static final int ATLAS_HEIGHT=ATLAS_FRAME_HEIGHT*ATLAS_ROWS;
+  public static final int SOURCE_IDLE_WALK_WIDTH=SOURCE_FRAME_WIDTH*IDLE_WALK_COLUMNS;
+  public static final int SOURCE_ATLAS_HEIGHT=SOURCE_FRAME_HEIGHT*ATLAS_ROWS;
 
   public enum Direction { NW, NE, SW, SE }
   public enum State { IDLE, WALK, CAST, ATTACK, SKILL, HIT, DEAD }
@@ -81,10 +91,9 @@ public final class CharacterRenderer {
     pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);
     fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);
     Resources resources=findProcessResources();
-    // Dynamic lookup deliberately avoids compile-time dependency while the reference-accurate peasant atlas is being produced.
-    idleWalkAtlas=tryLoadByName(resources,"player_peasant_idle_walk",IDLE_WALK_WIDTH,ATLAS_HEIGHT);
+    idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);
     attackAtlas=tryLoadByName(resources,"player_peasant_attack",ACTION_WIDTH,ATLAS_HEIGHT);
-    // Never fall back to player_martial_* for the starter character.
+    // Missing/corrupt/shape-invalid resources remain startup-safe through the fallback below.
   }
 
   /** Physical row contract. No mirror/reuse inference is allowed. */
@@ -96,7 +105,7 @@ public final class CharacterRenderer {
     switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}
   }
 
-  public boolean resourceAtlasActive(){return validAtlas(idleWalkAtlas,IDLE_WALK_WIDTH,ATLAS_HEIGHT);}
+  public boolean resourceAtlasActive(){return validAtlas(idleWalkAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);}
   public boolean attackAtlasActive(){return validAtlas(attackAtlas,ACTION_WIDTH,ATLAS_HEIGHT);}
 
   public void draw(Canvas canvas,Pose pose){
@@ -121,22 +130,30 @@ public final class CharacterRenderer {
 
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){
     int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
-    int col=pose.state==State.IDLE?0:1+(((int)(Math.max(0f,pose.walkClock)*WALK_FRAMES_PER_SECOND))&3);
-    drawAtlasCell(c,idleWalkAtlas,row,col,anchorY,pose.x);
+    int col=pose.state==State.IDLE?0:1+walkFrameIndex(pose.walkClock);
+    drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
+        SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,1f,anchorY,pose.x);
   }
 
   private void drawAttack(Canvas c,Pose pose,float anchorY){
     int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
     float q=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(0.9999f,pose.stateClock/pose.stateDuration));
     int col=Math.min(ATTACK_COLUMNS-1,(int)(q*ATTACK_COLUMNS));
-    drawAtlasCell(c,attackAtlas,row,col,anchorY,pose.x);
+    drawAtlasCell(c,attackAtlas,row,col,ATLAS_FRAME_WIDTH,ATLAS_FRAME_HEIGHT,
+        ATLAS_FRAME_WIDTH*.5f,ATLAS_FRAME_HEIGHT,PLAYER_RENDER_SCALE,anchorY,pose.x);
   }
 
-  private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,float anchorY,float x){
-    int left=col*ATLAS_FRAME_WIDTH,top=row*ATLAS_FRAME_HEIGHT;
-    Rect src=new Rect(left,top,left+ATLAS_FRAME_WIDTH,top+ATLAS_FRAME_HEIGHT);
-    float w=ATLAS_FRAME_WIDTH*PLAYER_RENDER_SCALE,h=ATLAS_FRAME_HEIGHT*PLAYER_RENDER_SCALE;
-    RectF dst=new RectF(Math.round(x-w*.5f),Math.round(anchorY-h),Math.round(x+w*.5f),Math.round(anchorY));
+  private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,int frameWidth,int frameHeight,
+      float footAnchorX,float footAnchorY,float drawScale,float anchorY,float x){
+    int left=col*frameWidth,top=row*frameHeight;
+    Rect src=new Rect(left,top,left+frameWidth,top+frameHeight);
+    float scaledWidth=frameWidth*drawScale,scaledHeight=frameHeight*drawScale;
+    float scaledAnchorX=footAnchorX*drawScale,scaledAnchorY=footAnchorY*drawScale;
+    RectF dst=new RectF(
+        Math.round(x-scaledAnchorX),
+        Math.round(anchorY-scaledAnchorY),
+        Math.round(x-scaledAnchorX+scaledWidth),
+        Math.round(anchorY-scaledAnchorY+scaledHeight));
     c.drawBitmap(atlas,src,dst,pixelPaint);
   }
 
@@ -149,6 +166,11 @@ public final class CharacterRenderer {
       Bitmap decoded=BitmapFactory.decodeResource(resources,resId,options);
       return validAtlas(decoded,expectedWidth,expectedHeight)?decoded:null;
     }catch(Throwable ignored){return null;}
+  }
+
+  public static int walkFrameIndex(float walkClock){
+    float safeClock=Math.max(0f,walkClock);
+    return ((int)Math.floor((safeClock+.00001f)*(IDLE_WALK_COLUMNS-1)/WALK_CYCLE_SECONDS))&3;
   }
 
   private Resources findProcessResources(){
@@ -168,7 +190,7 @@ public final class CharacterRenderer {
   private void drawSafePeasantFallback(Canvas c,Pose pose,float anchorY){
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
     boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
-    int frame=pose.state==State.WALK?(((int)(Math.max(0f,pose.walkClock)*WALK_FRAMES_PER_SECOND))&3):0;
+    int frame=pose.state==State.WALK?walkFrameIndex(pose.walkClock):0;
     int step=frame==1?-1:frame==3?1:0;
     float phase=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));
     c.save(); c.translate(pose.x-12f*PLAYER_RENDER_SCALE,anchorY-32f*PLAYER_RENDER_SCALE); c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
