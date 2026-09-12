@@ -28,8 +28,12 @@ public final class CharacterRenderer {
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
   public static final float BASE_HEIGHT=32f;
   public static final float HEAD_TO_BODY_RATIO=0.28f;
-  public static final float WALK_CYCLE_SECONDS=.60f;
-  public static final float WALK_FRAMES_PER_SECOND=4f/WALK_CYCLE_SECONDS;
+  // Five equal frame holds fit inside one 0.60 s tile step. With a four-frame source loop
+  // this advances the loop phase by one frame at every tile boundary instead of visually
+  // restarting on WALK_1 each tile, while movement speed remains authoritative elsewhere.
+  public static final float WALK_FRAME_SECONDS=.12f;
+  public static final float WALK_CYCLE_SECONDS=WALK_FRAME_SECONDS*4f;
+  public static final float WALK_FRAMES_PER_SECOND=1f/WALK_FRAME_SECONDS;
   public static final boolean HARD_PIXEL_GRID=true;
   public static final boolean STARTER_WEAPONLESS=true;
   public static final boolean STARTER_OFFHAND_EMPTY=true;
@@ -176,8 +180,7 @@ public final class CharacterRenderer {
   public static int walkFrameIndex(float walkClock){
     float safeClock=Math.max(0f,walkClock);
     float phase=safeClock%WALK_CYCLE_SECONDS;
-    float frameSeconds=WALK_CYCLE_SECONDS/(IDLE_WALK_COLUMNS-1);
-    return Math.min(IDLE_WALK_COLUMNS-2,(int)Math.floor((phase+.00001f)/frameSeconds));
+    return Math.min(IDLE_WALK_COLUMNS-2,(int)Math.floor((phase+.00001f)/WALK_FRAME_SECONDS));
   }
 
   private Resources findProcessResources(){
