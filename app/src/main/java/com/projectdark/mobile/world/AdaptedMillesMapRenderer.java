@@ -19,7 +19,9 @@ import java.util.Map;
  * No generated replacement art is used here. Runtime scaling uses nearest-neighbour only.
  */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V1";
+  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V2_LOGICAL_GROUND";
+  public static final float LOGICAL_GROUND_WIDTH=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
+  public static final float LOGICAL_GROUND_HEIGHT=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private final Paint pixel=new Paint();
   private final Paint backdrop=new Paint();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
@@ -76,10 +78,15 @@ public final class AdaptedMillesMapRenderer {
     }
   }
 
+  /**
+   * Terrain source crops keep their original extraction dimensions, but their runtime footprint is
+   * one logical isometric cell. Keeping those concerns separate makes the visible ground cadence
+   * agree with the 64x32 navigation grid instead of inheriting arbitrary source-crop dimensions.
+   */
   private void drawGround(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){
     Bitmap b=bitmap(path);if(b==null)return;
     WorldCameraTransform.Point p=world.worldToScreen(wx,wy);
-    float w=b.getWidth()*scale,h=b.getHeight()*scale;
+    float w=LOGICAL_GROUND_WIDTH*scale,h=LOGICAL_GROUND_HEIGHT*scale;
     RectF dst=new RectF(Math.round(p.x-w*.5f),Math.round(p.y-h*.5f),Math.round(p.x+w*.5f),Math.round(p.y+h*.5f));
     if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;
     c.drawBitmap(b,null,dst,pixel);
