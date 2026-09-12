@@ -1,0 +1,37 @@
+name: Visual payload decode
+
+on:
+  push:
+    branches:
+      - agent/visual/art-pipeline
+    paths:
+      - 'design/visual/production/_payload/**'
+
+permissions:
+  contents: write
+
+jobs:
+  decode-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/visual/art-pipeline
+          fetch-depth: 0
+      - name: Decode production visual payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          PAYLOAD="design/visual/production/_payload/visual_sprint_turn2_payload.b64"
+          if [ ! -f "$PAYLOAD" ]; then
+            echo "No payload present; nothing to decode."
+            exit 0
+          fi
+          base64 -d "$PAYLOAD" > /tmp/visual_payload.tar.gz
+          tar -xzf /tmp/visual_payload.tar.gz -C .
+          git rm "$PAYLOAD"
+          git config user.name "PROJECT DARK Visual Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add design/visual/production/milles
+          git commit -m "Visual sprint: Milles first-play screen v4" || exit 0
+          git push origin HEAD:agent/visual/art-pipeline
