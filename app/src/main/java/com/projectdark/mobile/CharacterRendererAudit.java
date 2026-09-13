@@ -51,10 +51,10 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.IDLE_WALK_COLUMNS!=5||CharacterRenderer.ATTACK_COLUMNS!=4||CharacterRenderer.ATLAS_ROWS!=4)return false;
     if(CharacterRenderer.IDLE_WALK_WIDTH!=120||CharacterRenderer.ACTION_WIDTH!=96||CharacterRenderer.ATLAS_HEIGHT!=128)return false;
     if(CharacterRenderer.SOURCE_IDLE_WALK_WIDTH!=180||CharacterRenderer.SOURCE_ATLAS_HEIGHT!=192)return false;
-    if(CharacterRenderer.SOURCE_ACTION_COUNT!=4||CharacterRenderer.ATTACK_TRAIL_GHOSTS!=2)return false;
+    if(CharacterRenderer.SOURCE_ACTION_COUNT!=4||CharacterRenderer.ATTACK_TRAIL_GHOSTS!=0)return false;
     if(!CharacterRenderer.ACTION_SOURCE_EVIDENCE.contains("ADAPTED PLAYTEST ACTION GROUP"))return false;
     if(!CharacterRenderer.WEAPON_SOURCE_EVIDENCE.contains("mw001"))return false;
-    if(!CharacterRenderer.ATTACK_TRAIL_EVIDENCE.contains("ADAPTED PLAYTEST MOTION TRAIL"))return false;
+    if(!CharacterRenderer.ATTACK_PRESENTATION_EVIDENCE.contains("no afterimage/trail"))return false;
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.SOURCE_PRESENTATION_SCALE-(1.60f/1.50f))>.0001f)return false;
     if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>.0001f)return false;
