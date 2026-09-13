@@ -26,7 +26,7 @@ public final class CharacterRenderer {
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; ADAPTED PLAYTEST HAND TRANSFORM";
-  public static final String ATTACK_TRAIL_EVIDENCE="mw001 source sprite alpha-reused only; ADAPTED PLAYTEST MOTION TRAIL";
+  public static final String ATTACK_PRESENTATION_EVIDENCE="single mw001 source sprite; no afterimage/trail; ADAPTED PLAYTEST SWING";
 
   public static final float SOURCE_BAKED_SCALE=1.50f;
   public static final float PLAYER_RENDER_SCALE=1.60f;
@@ -45,8 +45,6 @@ public final class CharacterRenderer {
 
   public static final int ATLAS_FRAME_WIDTH=24;
   public static final int ATLAS_FRAME_HEIGHT=32;
-  // Production IDLE/WALK WebP cells were baked at 1.50. Runtime presents them at 1.60 with
-  // nearest-neighbour scaling so source pixels remain authoritative.
   public static final int SOURCE_FRAME_WIDTH=36;
   public static final int SOURCE_FRAME_HEIGHT=48;
   public static final int SOURCE_FOOT_ANCHOR_X=18;
@@ -60,7 +58,8 @@ public final class CharacterRenderer {
   public static final int SOURCE_IDLE_WALK_WIDTH=SOURCE_FRAME_WIDTH*IDLE_WALK_COLUMNS;
   public static final int SOURCE_ATLAS_HEIGHT=SOURCE_FRAME_HEIGHT*ATLAS_ROWS;
   public static final int SOURCE_ACTION_COUNT=4;
-  public static final int ATTACK_TRAIL_GHOSTS=2;
+  public static final int ATTACK_TRAIL_GHOSTS=0;
+
   private static final int[] BODY_ACTION_WIDTH={17,18,19,21};
   private static final int[] BODY_ACTION_HEIGHT={51,52,51,49};
   private static final int[] BODY_ACTION_OFFSET_X={8,2,6,4};
@@ -69,7 +68,6 @@ public final class CharacterRenderer {
   private static final int[] ROBE_ACTION_HEIGHT={33,22,30,21};
   private static final int[] ROBE_ACTION_OFFSET_X={8,3,6,6};
   private static final int[] ROBE_ACTION_OFFSET_Y={20,27,23,22};
-
   private static volatile float presentationWalkClock;
 
   public enum Direction { NW, NE, SW, SE }
@@ -91,23 +89,24 @@ public final class CharacterRenderer {
 
   public static final class Pose {
     public final float x,y,walkClock,stateClock,stateDuration;
-    public final Direction direction; public final State state; public final boolean hitFlash;
-    public final String equipmentVisualRef,weaponVisualRef,effectVisualRef; public final EffectFamily effectFamily;
+    public final Direction direction;
+    public final State state;
+    public final boolean hitFlash;
+    public final String equipmentVisualRef,weaponVisualRef,effectVisualRef;
+    public final EffectFamily effectFamily;
     public final AnimationAction animationAction;
-    public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,
-        float stateDuration,boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,
-        String effectVisualRef,EffectFamily effectFamily){
-      this(x,y,direction,state,walkClock,stateClock,stateDuration,hitFlash,equipmentVisualRef,
-          weaponVisualRef,effectVisualRef,effectFamily,inferAnimationAction(state,effectFamily,weaponVisualRef));
+    public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,float stateDuration,
+        boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,String effectVisualRef,EffectFamily effectFamily){
+      this(x,y,direction,state,walkClock,stateClock,stateDuration,hitFlash,equipmentVisualRef,weaponVisualRef,
+          effectVisualRef,effectFamily,inferAnimationAction(state,effectFamily,weaponVisualRef));
     }
-    public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,
-        float stateDuration,boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,
-        String effectVisualRef,EffectFamily effectFamily,AnimationAction animationAction){
+    public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,float stateDuration,
+        boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,String effectVisualRef,EffectFamily effectFamily,
+        AnimationAction animationAction){
       this.x=x;this.y=y;this.direction=direction;this.state=state;this.walkClock=walkClock;
       this.stateClock=stateClock;this.stateDuration=stateDuration;this.hitFlash=hitFlash;
-      this.equipmentVisualRef=equipmentVisualRef;this.weaponVisualRef=weaponVisualRef;
-      this.effectVisualRef=effectVisualRef;this.effectFamily=effectFamily==null?EffectFamily.NONE:effectFamily;
-      this.animationAction=animationAction;
+      this.equipmentVisualRef=equipmentVisualRef;this.weaponVisualRef=weaponVisualRef;this.effectVisualRef=effectVisualRef;
+      this.effectFamily=effectFamily==null?EffectFamily.NONE:effectFamily;this.animationAction=animationAction;
     }
   }
 
@@ -127,20 +126,13 @@ public final class CharacterRenderer {
     luersRobeAtlas=tryLoadByName(resources,LUERS_ROBE_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);
     mokdoSprite=tryLoadByName(resources,MOKDO_RESOURCE,16,8);
     for(int i=0;i<SOURCE_ACTION_COUNT;i++){
-      bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,
-          BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);
-      robeActionFrames[i]=tryLoadByName(resources,"player_robe_mu0000058_action02_"+i,
-          ROBE_ACTION_WIDTH[i],ROBE_ACTION_HEIGHT[i]);
+      bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);
+      robeActionFrames[i]=tryLoadByName(resources,"player_robe_mu0000058_action02_"+i,ROBE_ACTION_WIDTH[i],ROBE_ACTION_HEIGHT[i]);
     }
   }
 
-  public static int atlasRow(Direction direction){
-    if(direction==null)return -1;
-    switch(direction){case NW:return 0;case NE:return 1;case SW:return 2;case SE:return 3;default:return -1;}
-  }
-  public static Direction visualFacingForRow(int row){
-    switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}
-  }
+  public static int atlasRow(Direction direction){if(direction==null)return -1;switch(direction){case NW:return 0;case NE:return 1;case SW:return 2;case SE:return 3;default:return -1;}}
+  public static Direction visualFacingForRow(int row){switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}}
   public static void setPresentationWalkClock(float clock){presentationWalkClock=Math.max(0f,clock);}
   public static float presentationWalkClock(){return presentationWalkClock;}
 
@@ -148,10 +140,7 @@ public final class CharacterRenderer {
   public boolean attackAtlasActive(){return sourceActionActive();}
   public boolean equipmentAtlasActive(){return validAtlas(luersRobeAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);}
   public boolean weaponSourceActive(){return validAtlas(mokdoSprite,16,8);}
-  public boolean sourceActionActive(){
-    for(int i=0;i<SOURCE_ACTION_COUNT;i++)if(!validAtlas(bodyActionFrames[i],BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]))return false;
-    return true;
-  }
+  public boolean sourceActionActive(){for(int i=0;i<SOURCE_ACTION_COUNT;i++)if(!validAtlas(bodyActionFrames[i],BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]))return false;return true;}
 
   public void draw(Canvas canvas,Pose pose){
     if(canvas==null||pose==null||pose.direction==null||pose.state==null)return;
@@ -171,7 +160,7 @@ public final class CharacterRenderer {
 
   private void drawShadow(Canvas c,Pose pose,float anchorY){
     float width=(pose.state==State.DEAD?13f:10.5f)*SHADOW_RENDER_SCALE;
-    float height=(pose.state==State.DEAD?2.0f:2.8f)*SHADOW_RENDER_SCALE;
+    float height=(pose.state==State.DEAD?2f:2.8f)*SHADOW_RENDER_SCALE;
     fxPaint.setStyle(Paint.Style.FILL);fxPaint.setColor(0x50000000);
     c.drawOval(new RectF(pose.x-width,anchorY-height,pose.x+width,anchorY+height),fxPaint);
   }
@@ -179,23 +168,19 @@ public final class CharacterRenderer {
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){
     int row=atlasRow(pose.direction);if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
     int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
-    drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
-        SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,anchorY,pose.x);
+    drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,
+        SOURCE_PRESENTATION_SCALE,anchorY,pose.x);
   }
 
   private void drawEquipment(Canvas c,Pose pose,float anchorY){
     if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)||!equipmentAtlasActive())return;
     int row=atlasRow(pose.direction);if(row<0)return;
     int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
-    drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
-        SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,anchorY,pose.x);
+    drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,
+        SOURCE_PRESENTATION_SCALE,anchorY,pose.x);
   }
 
-  private static boolean containsVisualRef(String refs,String expected){
-    if(refs==null||expected==null)return false;
-    for(String ref:refs.split(","))if(expected.equals(ref.trim()))return true;
-    return false;
-  }
+  private static boolean containsVisualRef(String refs,String expected){if(refs==null||expected==null)return false;for(String ref:refs.split(","))if(expected.equals(ref.trim()))return true;return false;}
 
   private void drawSourceAction(Canvas c,Pose pose,float anchorY){
     int source=actionSourceIndex(pose.direction);if(source<0)return;
@@ -203,13 +188,13 @@ public final class CharacterRenderer {
     Bitmap body=bodyActionFrames[source];
     float bodyW=BODY_ACTION_WIDTH[source]*scale,bodyH=BODY_ACTION_HEIGHT[source]*scale;
     float bodyLeft=Math.round(pose.x-bodyW*.5f),bodyTop=Math.round(anchorY-bodyH);
-    drawRawSourceScaled(c,body,bodyLeft,bodyTop,scale,255);
+    drawRawSourceScaled(c,body,bodyLeft,bodyTop,scale);
     if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)){
       Bitmap robe=robeActionFrames[source];
       if(validAtlas(robe,ROBE_ACTION_WIDTH[source],ROBE_ACTION_HEIGHT[source])){
         float robeLeft=bodyLeft+(ROBE_ACTION_OFFSET_X[source]-BODY_ACTION_OFFSET_X[source])*scale;
         float robeTop=bodyTop+(ROBE_ACTION_OFFSET_Y[source]-BODY_ACTION_OFFSET_Y[source])*scale;
-        drawRawSourceScaled(c,robe,robeLeft,robeTop,scale,255);
+        drawRawSourceScaled(c,robe,robeLeft,robeTop,scale);
       }
     }
     drawWeapon(c,pose,anchorY,true);
@@ -225,24 +210,12 @@ public final class CharacterRenderer {
     float angle=attacking?weaponAttackAngle(pose.direction,attackPhase(pose)):0f;
     c.save();
     if(left)c.scale(-1f,1f,centerX,centerY);
-    if(attacking){
-      drawWeaponAtAngle(c,centerX,centerY,angle-16f,scale,56);
-      drawWeaponAtAngle(c,centerX,centerY,angle-8f,scale,104);
-    }
-    drawWeaponAtAngle(c,centerX,centerY,angle,scale,255);
+    c.rotate(angle,centerX,centerY);
+    drawRawSourceScaled(c,mokdoSprite,centerX-2f*scale,centerY-4f*scale,scale);
     c.restore();
   }
 
-  private void drawWeaponAtAngle(Canvas c,float centerX,float centerY,float angle,float scale,int alpha){
-    c.save();c.rotate(angle,centerX,centerY);
-    drawRawSourceScaled(c,mokdoSprite,centerX-2f*scale,centerY-4f*scale,scale,alpha);
-    c.restore();
-  }
-
-  private static float attackPhase(Pose pose){
-    if(pose==null||pose.stateDuration<=0f)return 0f;
-    return Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));
-  }
+  private static float attackPhase(Pose pose){if(pose==null||pose.stateDuration<=0f)return 0f;return Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));}
 
   /** [ADAPTED PLAYTEST] Source mw001 hand transform. Direction semantics remain unresolved. */
   public static float weaponAttackAngle(Direction direction,float phase){
@@ -252,16 +225,14 @@ public final class CharacterRenderer {
     return down?6f+30f*envelope:-6f-32f*envelope;
   }
 
-  private void drawRawSourceScaled(Canvas c,Bitmap bitmap,float left,float top,float scale,int alpha){
+  private void drawRawSourceScaled(Canvas c,Bitmap bitmap,float left,float top,float scale){
     if(bitmap==null)return;
-    int oldAlpha=pixelPaint.getAlpha();pixelPaint.setAlpha(Math.max(0,Math.min(255,alpha)));
-    c.drawBitmap(bitmap,null,new RectF(Math.round(left),Math.round(top),
-        Math.round(left+bitmap.getWidth()*scale),Math.round(top+bitmap.getHeight()*scale)),pixelPaint);
-    pixelPaint.setAlpha(oldAlpha);
+    c.drawBitmap(bitmap,null,new RectF(Math.round(left),Math.round(top),Math.round(left+bitmap.getWidth()*scale),
+        Math.round(top+bitmap.getHeight()*scale)),pixelPaint);
   }
 
-  private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,int frameWidth,int frameHeight,
-      float footAnchorX,float footAnchorY,float drawScale,float anchorY,float x){
+  private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,int frameWidth,int frameHeight,float footAnchorX,float footAnchorY,
+      float drawScale,float anchorY,float x){
     int left=col*frameWidth,top=row*frameHeight;Rect src=new Rect(left,top,left+frameWidth,top+frameHeight);
     float scaledWidth=frameWidth*drawScale,scaledHeight=frameHeight*drawScale;
     float scaledAnchorX=footAnchorX*drawScale,scaledAnchorY=footAnchorY*drawScale;
@@ -280,10 +251,7 @@ public final class CharacterRenderer {
     }catch(Throwable ignored){return null;}
   }
 
-  public static int walkFrameIndex(float walkClock){
-    float safeClock=Math.max(0f,walkClock),phase=safeClock%WALK_CYCLE_SECONDS;
-    return Math.min(IDLE_WALK_COLUMNS-2,(int)Math.floor((phase+.00001f)/WALK_FRAME_SECONDS));
-  }
+  public static int walkFrameIndex(float walkClock){float safeClock=Math.max(0f,walkClock),phase=safeClock%WALK_CYCLE_SECONDS;return Math.min(IDLE_WALK_COLUMNS-2,(int)Math.floor((phase+.00001f)/WALK_FRAME_SECONDS));}
 
   private Resources findProcessResources(){
     try{
@@ -297,10 +265,7 @@ public final class CharacterRenderer {
   private static boolean validAtlas(Bitmap bitmap,int expectedWidth,int expectedHeight){return bitmap!=null&&bitmap.getWidth()==expectedWidth&&bitmap.getHeight()==expectedHeight;}
 
   /** [ADAPTED PLAYTEST] Four unresolved group-02 source poses mapped to the four runtime facings. */
-  public static int actionSourceIndex(Direction direction){
-    if(direction==null)return -1;
-    switch(direction){case NE:return 0;case SE:return 1;case NW:return 2;case SW:return 3;default:return -1;}
-  }
+  public static int actionSourceIndex(Direction direction){if(direction==null)return -1;switch(direction){case NE:return 0;case SE:return 1;case NW:return 2;case SW:return 3;default:return -1;}}
 
   private static AnimationAction inferAnimationAction(State state,EffectFamily effect,String weaponVisualRef){
     if(state==State.ATTACK&&containsVisualRef(weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID))return AnimationAction.SWING;
