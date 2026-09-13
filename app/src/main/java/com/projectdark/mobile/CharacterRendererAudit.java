@@ -57,10 +57,11 @@ public final class CharacterRendererAudit {
     if(!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("UNRESOLVED")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("no fabricated temporal sequence"))return false;
     if(!CharacterRenderer.WEAPON_SOURCE_EVIDENCE.contains("mw001"))return false;
     if(!CharacterRenderer.ATTACK_PRESENTATION_EVIDENCE.contains("no afterimage/trail"))return false;
-    if(!CharacterRenderer.ATTACK_DIRECTION_EVIDENCE.contains("runtime Pose.direction"))return false;
-    if(!CharacterRenderer.ATTACK_DIRECTION_EVIDENCE.contains("UNRESOLVED"))return false;
-    if(!CharacterRenderer.PAPER_DOLL_ATTACK_EVIDENCE.contains("current equipmentVisualRef"))return false;
-    if(!CharacterRenderer.PAPER_DOLL_ATTACK_EVIDENCE.contains("no baked equipment"))return false;
+    if(!CharacterRenderer.ATTACK_DIRECTION_EVIDENCE.contains("runtime Pose.direction")||!CharacterRenderer.ATTACK_DIRECTION_EVIDENCE.contains("UNRESOLVED"))return false;
+    if(!CharacterRenderer.PAPER_DOLL_ATTACK_EVIDENCE.contains("current equipmentVisualRef")||!CharacterRenderer.PAPER_DOLL_ATTACK_EVIDENCE.contains("no baked equipment"))return false;
+    if(!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("source IDLE paper doll")||!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("canonical weapon depth"))return false;
+    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("36x48")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("foot anchor")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
+    if(!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("mu0000058")||!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("whole attack falls back"))return false;
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.SOURCE_PRESENTATION_SCALE-(1.70f/1.50f))>.0001f)return false;
     if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>.0001f)return false;
@@ -82,11 +83,9 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
 
-    // Runtime composition, not a static source-index table, must differ for every facing.
     java.util.HashSet<String> facingSignatures=new java.util.HashSet<>();
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-      CharacterRenderer.AttackVisualComposition composition=
-          CharacterRenderer.attackVisualComposition(d,"mu0000058","mw001");
+      CharacterRenderer.AttackVisualComposition composition=CharacterRenderer.attackVisualComposition(d,"mu0000058","mw001");
       if(composition.direction!=d||composition.presentationScale!=1.70f)return false;
       if(!composition.robeVisible||!composition.weaponVisible)return false;
       if(!facingSignatures.add(composition.signature()))return false;
@@ -94,26 +93,32 @@ public final class CharacterRendererAudit {
       if(composition.mirrorBody!=left)return false;
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
       if(composition.weaponBehindBody!=north)return false;
-      float normalized=CharacterRenderer.normalizedActionScale(composition.sourceIndex);
-      if(Math.abs(normalized-CharacterRenderer.SOURCE_PRESENTATION_SCALE)>.0001f)return false;
-      float heightRatio=CharacterRenderer.actionHeightRatio(composition.sourceIndex);
-      if(heightRatio<1f||heightRatio>1.09f)return false;
+      if(Math.abs(CharacterRenderer.normalizedActionScale(composition.sourceIndex)-CharacterRenderer.SOURCE_PRESENTATION_SCALE)>.0001f)return false;
+      if(CharacterRenderer.actionVisibleHeightPixels(composition.sourceIndex)!=CharacterRenderer.SOURCE_FRAME_HEIGHT)return false;
+      if(Math.abs(CharacterRenderer.actionHeightRatio(composition.sourceIndex)-1f)>.0001f)return false;
     }
     if(facingSignatures.size()!=EXPECTED_DIRECTION_COUNT)return false;
+    if(CharacterRenderer.actionCanonicalVisibleHeightPixels()!=CharacterRenderer.SOURCE_FRAME_HEIGHT)return false;
+    if(CharacterRenderer.actionCanonicalFootAnchorPixels()!=CharacterRenderer.SOURCE_FOOT_ANCHOR_Y)return false;
 
-    // Current equipment state drives ATTACK paper-doll layers independently.
-    CharacterRenderer.AttackVisualComposition bare=
-        CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,null);
-    CharacterRenderer.AttackVisualComposition robeOnly=
-        CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058",null);
-    CharacterRenderer.AttackVisualComposition weaponOnly=
-        CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,"mw001");
-    CharacterRenderer.AttackVisualComposition equipped=
-        CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058","mw001");
+    CharacterRenderer.AttackVisualComposition bare=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,null);
+    CharacterRenderer.AttackVisualComposition robeOnly=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058",null);
+    CharacterRenderer.AttackVisualComposition weaponOnly=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,"mw001");
+    CharacterRenderer.AttackVisualComposition equipped=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058","mw001");
     if(bare.robeVisible||bare.weaponVisible)return false;
     if(!robeOnly.robeVisible||robeOnly.weaponVisible)return false;
     if(weaponOnly.robeVisible||!weaponOnly.weaponVisible)return false;
     if(!equipped.robeVisible||!equipped.weaponVisible)return false;
+
+    // Equipped attack layers are atomic: a missing equipped layer rejects source-action rendering.
+    if(!CharacterRenderer.sourceActionLayersReadyContract(null,null,true,false,false))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058",null,true,false,true))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract("mu0000058",null,true,true,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract(null,"mw001",true,true,false))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract(null,"mw001",true,true,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,false,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,true,false))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,true,true))return false;
 
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       float carry=CharacterRenderer.weaponCarryAngle(d);
@@ -141,7 +146,19 @@ public final class CharacterRendererAudit {
       if(anchors.size()<3)return false;
     }
 
-    // Clean reset: action presentation is stateless and selected only while ATTACK+SWING.
+    // BODY/ROBE/WEAPON share one direction/frame/anchor contract in IDLE/WALK/fallback.
+    if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.IDLE,.30f)!=0)return false;
+    if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.ATTACK,.30f)!=0)return false;
+    if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.CAST,.30f)!=0)return false;
+    if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,0f)!=1)return false;
+    if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,.12f)!=2)return false;
+    if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,.24f)!=3)return false;
+    if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,.36f)!=4)return false;
+    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+      boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
+      if(CharacterRenderer.weaponBehindBody(d)!=north)return false;
+    }
+
     if(!CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.ATTACK,AnimationAction.SWING))return false;
     if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.IDLE,AnimationAction.SWING))return false;
     if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.WALK,AnimationAction.SWING))return false;
@@ -170,14 +187,16 @@ public final class CharacterRendererAudit {
     return "profile="+CharacterRenderer.PRESENTATION_PROFILE+
         ",starter="+CharacterRenderer.STARTER_ARCHETYPE+
         ",frame="+CharacterRenderer.ATLAS_FRAME_WIDTH+"x"+CharacterRenderer.ATLAS_FRAME_HEIGHT+
-        ",idleWalk="+CharacterRenderer.IDLE_WALK_WIDTH+"x"+CharacterRenderer.ATLAS_HEIGHT+
+        ",idleWalk="+CharacterRenderer.IDLE_WALK_WIDTH+"x"+CharacterRenderer.ATLAS_FRAME_HEIGHT*CharacterRenderer.ATLAS_ROWS+
         ",sourceAtlas="+CharacterRenderer.SOURCE_IDLE_WALK_WIDTH+"x"+CharacterRenderer.SOURCE_ATLAS_HEIGHT+
         ",rows=NW,NE,SW,SE,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+
         ",sourcePresentationScale="+CharacterRenderer.SOURCE_PRESENTATION_SCALE+
         ",attackTrailGhosts="+CharacterRenderer.ATTACK_TRAIL_GHOSTS+
         ",temporalAction=UNRESOLVED"+
         ",runtimeFacingCompositions=4"+
-        ",attackPaperDoll=current-equipment"+
+        ",attackPaperDoll=current-equipment-atomic"+
+        ",attackViewport="+CharacterRenderer.actionCanonicalVisibleHeightPixels()+"px@foot"+CharacterRenderer.actionCanonicalFootAnchorPixels()+
+        ",attackFallback=shared-source-paperdoll"+
         ",cleanReset=ATTACK_SWING_ONLY"+
         ",walkFps="+CharacterRenderer.WALK_FRAMES_PER_SECOND+
         ",walkCycleSeconds="+CharacterRenderer.WALK_CYCLE_SECONDS+
