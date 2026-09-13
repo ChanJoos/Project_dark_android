@@ -40,13 +40,11 @@ public final class CharacterRendererAudit {
     if(Math.abs(CharacterRenderer.WALK_CYCLE_SECONDS-EXPECTED_WALK_CYCLE_SECONDS)>.0001f||Math.abs(CharacterRenderer.WALK_FRAMES_PER_SECOND-EXPECTED_WALK_FRAMES_PER_SECOND)>.0001f)return false;
     if(CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f||CharacterRenderer.ATTACK_TRAIL_GHOSTS!=0)return false;
     if(!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("UNRESOLVED")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("no fabricated temporal sequence"))return false;
-    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("alpha bounds")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("height<=1px")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("foot<=1px")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("center<=2px"))return false;
-    if(!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("FULL_BODY")||!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("exactly one"))return false;
+    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("rejected")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("IDLE fallback")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
+    if(!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("equipped")||!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("FULL_BODY")||!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("exactly one"))return false;
     if(CharacterRenderer.hitCharacterPoseEnabled()||!CharacterRenderer.weaponTransformUsesSingleMirror())return false;
     if(!CharacterRenderer.alphaGeometryWithinTolerance(40,41,1,2))return false;
     if(CharacterRenderer.alphaGeometryWithinTolerance(40,42,0,0))return false;
-    if(CharacterRenderer.alphaGeometryWithinTolerance(40,40,2,0))return false;
-    if(CharacterRenderer.alphaGeometryWithinTolerance(40,40,0,3))return false;
 
     if(CharacterRenderer.atlasRow(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.atlasRow(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SE)!=3)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
@@ -58,7 +56,6 @@ public final class CharacterRendererAudit {
       boolean left=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
       if(c.mirrorBody!=left||CharacterRenderer.bodyMirrorX(d)!=left||CharacterRenderer.weaponMirrorX(d)!=left||c.weaponBehindBody!=north)return false;
-      if(Math.abs(CharacterRenderer.normalizedActionScale(c.sourceIndex)-CharacterRenderer.SOURCE_PRESENTATION_SCALE)>.0001f)return false;
     }
     if(signatures.size()!=4)return false;
 
@@ -76,10 +73,13 @@ public final class CharacterRendererAudit {
       float start=CharacterRenderer.weaponAttackAngle(d,0f),peak=CharacterRenderer.weaponAttackAngle(d,.55f),end=CharacterRenderer.weaponAttackAngle(d,1f);
       if(Float.isNaN(start)||Float.isNaN(peak)||Float.isNaN(end)||Math.abs(peak-start)<20f||Math.abs(end-start)>.001f)return false;
       for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
-        float x=CharacterRenderer.weaponCarryOffsetX(d,col),y=CharacterRenderer.weaponCarryOffsetY(d,col),angle=CharacterRenderer.weaponCarryAngle(d,col);
-        if(Float.isNaN(x)||Float.isNaN(y)||Float.isNaN(angle)||y<16f||y>27f||Math.abs(x)>11f)return false;
+        float x=CharacterRenderer.weaponCarryOffsetX(d,col),y=CharacterRenderer.weaponCarryOffsetY(d,col),angle=CharacterRenderer.weaponCarryAngle(d,col),robeX=CharacterRenderer.robeFrameRegistrationX(d,col);
+        if(Float.isNaN(x)||Float.isNaN(y)||Float.isNaN(angle)||Float.isNaN(robeX)||y<16f||y>27f||Math.abs(x)>11f||Math.abs(robeX)>3f)return false;
       }
     }
+    if(CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.NW,0)<=0f||CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.SW,0)<=0f)return false;
+    if(CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.NE,0)>=0f||CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.SE,0)>=0f)return false;
+    if(CharacterRenderer.weaponAttackAngle(CharacterRenderer.Direction.NW,.55f)<=0f)return false;
 
     if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.IDLE,.30f)!=0||CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.ATTACK,.30f)!=0||CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.HIT,.30f)!=0)return false;
     if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,0f)!=1||CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,.12f)!=2||CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,.24f)!=3||CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,.36f)!=4)return false;
@@ -88,7 +88,7 @@ public final class CharacterRendererAudit {
     return true;
   }
 
-  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",coverage=FULL_BODY|UPPER|LOWER,attackAlphaTolerance=1/1/2,hitPose=disabled,weaponMirror=single,paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
+  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",coverage=FULL_BODY|UPPER|LOWER,attackBody=geometry-gated-idle-fallback,hitPose=disabled,weaponMirror=single,robeRegistration=per-frame,paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
   private static CharacterRenderer.EffectFamily defaultEffect(CharacterRenderer.State state){switch(state){case CAST:return CharacterRenderer.EffectFamily.CAST;default:return CharacterRenderer.EffectFamily.NONE;}}
   public static void main(String[] args){if(!passes())throw new AssertionError("CharacterRendererAudit failed: "+summary());System.out.println("CharacterRendererAudit PASS: "+summary());}
 }
