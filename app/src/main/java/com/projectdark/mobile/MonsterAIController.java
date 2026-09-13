@@ -57,9 +57,13 @@ public final class MonsterAIController {
     public AttackSubmissionSnapshot submit(RuntimeState state,RuntimeState.Monster monster,long sequence){
       if(state==null||monster==null||!state.monsterAttackReady(monster))
         return new AttackSubmissionSnapshot(sequence,monster==null?null:monster.id,"player",bridge.actionId(),route(),SubmissionOutcome.REJECTED,null);
+      CharacterRenderer.Direction lockedFacing=monster.visualFacing.presentation();
       state.cancelMonsterAttack(monster);
       MonsterAutoCombatBridge.Result result=bridge.submit(monster.id,"player");
-      if(monster.alive&&result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED)monster.state=RuntimeState.Monster.State.ATTACK;
+      if(monster.alive&&result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){
+        monster.visualFacing.setLocomotion(lockedFacing);monster.visualFacing.beginAttack();
+        monster.state=RuntimeState.Monster.State.ATTACK;
+      }
       SubmissionOutcome outcome;
       switch(result.outcome){
         case ACCEPTED: outcome=SubmissionOutcome.ACCEPTED; break;
