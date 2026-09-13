@@ -13,8 +13,8 @@ public final class CharacterRendererAudit {
   public static final int EXPECTED_PAPER_DOLL_LAYER_COUNT=10;
   public static final float USER_APPROVED_PLAYER_RENDER_SCALE=1.70f;
   public static final float USER_APPROVED_SHADOW_RENDER_SCALE=0.72f;
-  public static final float EXPECTED_WALK_FRAMES_PER_SECOND=6.6666665f;
-  public static final float EXPECTED_WALK_CYCLE_SECONDS=.60f;
+  public static final float EXPECTED_WALK_FRAMES_PER_SECOND=8.333333f;
+  public static final float EXPECTED_WALK_CYCLE_SECONDS=.48f;
 
   public static final class Case {
     public final CharacterRenderer.Direction direction;
