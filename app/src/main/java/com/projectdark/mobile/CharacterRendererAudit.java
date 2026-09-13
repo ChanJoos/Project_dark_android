@@ -60,6 +60,8 @@ public final class CharacterRendererAudit {
     if(!CharacterRenderer.ATTACK_DIRECTION_EVIDENCE.contains("runtime Pose.direction")||!CharacterRenderer.ATTACK_DIRECTION_EVIDENCE.contains("UNRESOLVED"))return false;
     if(!CharacterRenderer.PAPER_DOLL_ATTACK_EVIDENCE.contains("current equipmentVisualRef")||!CharacterRenderer.PAPER_DOLL_ATTACK_EVIDENCE.contains("no baked equipment"))return false;
     if(!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("source IDLE paper doll")||!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("canonical weapon depth"))return false;
+    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("36x48")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("foot anchor")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
+    if(!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("mu0000058")||!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("whole attack falls back"))return false;
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.SOURCE_PRESENTATION_SCALE-(1.70f/1.50f))>.0001f)return false;
     if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>.0001f)return false;
@@ -91,12 +93,13 @@ public final class CharacterRendererAudit {
       if(composition.mirrorBody!=left)return false;
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
       if(composition.weaponBehindBody!=north)return false;
-      float normalized=CharacterRenderer.normalizedActionScale(composition.sourceIndex);
-      if(Math.abs(normalized-CharacterRenderer.SOURCE_PRESENTATION_SCALE)>.0001f)return false;
-      float heightRatio=CharacterRenderer.actionHeightRatio(composition.sourceIndex);
-      if(heightRatio<1f||heightRatio>1.09f)return false;
+      if(Math.abs(CharacterRenderer.normalizedActionScale(composition.sourceIndex)-CharacterRenderer.SOURCE_PRESENTATION_SCALE)>.0001f)return false;
+      if(CharacterRenderer.actionVisibleHeightPixels(composition.sourceIndex)!=CharacterRenderer.SOURCE_FRAME_HEIGHT)return false;
+      if(Math.abs(CharacterRenderer.actionHeightRatio(composition.sourceIndex)-1f)>.0001f)return false;
     }
     if(facingSignatures.size()!=EXPECTED_DIRECTION_COUNT)return false;
+    if(CharacterRenderer.actionCanonicalVisibleHeightPixels()!=CharacterRenderer.SOURCE_FRAME_HEIGHT)return false;
+    if(CharacterRenderer.actionCanonicalFootAnchorPixels()!=CharacterRenderer.SOURCE_FOOT_ANCHOR_Y)return false;
 
     CharacterRenderer.AttackVisualComposition bare=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,null);
     CharacterRenderer.AttackVisualComposition robeOnly=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058",null);
@@ -106,6 +109,16 @@ public final class CharacterRendererAudit {
     if(!robeOnly.robeVisible||robeOnly.weaponVisible)return false;
     if(weaponOnly.robeVisible||!weaponOnly.weaponVisible)return false;
     if(!equipped.robeVisible||!equipped.weaponVisible)return false;
+
+    // Equipped attack layers are atomic: a missing equipped layer rejects source-action rendering.
+    if(!CharacterRenderer.sourceActionLayersReadyContract(null,null,true,false,false))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058",null,true,false,true))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract("mu0000058",null,true,true,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract(null,"mw001",true,true,false))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract(null,"mw001",true,true,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,false,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,true,false))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,true,true))return false;
 
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       float carry=CharacterRenderer.weaponCarryAngle(d);
@@ -133,7 +146,7 @@ public final class CharacterRendererAudit {
       if(anchors.size()<3)return false;
     }
 
-    // All source paper-doll layers must consume one shared atlas column contract.
+    // BODY/ROBE/WEAPON share one direction/frame/anchor contract in IDLE/WALK/fallback.
     if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.IDLE,.30f)!=0)return false;
     if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.ATTACK,.30f)!=0)return false;
     if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.CAST,.30f)!=0)return false;
@@ -181,7 +194,8 @@ public final class CharacterRendererAudit {
         ",attackTrailGhosts="+CharacterRenderer.ATTACK_TRAIL_GHOSTS+
         ",temporalAction=UNRESOLVED"+
         ",runtimeFacingCompositions=4"+
-        ",attackPaperDoll=current-equipment"+
+        ",attackPaperDoll=current-equipment-atomic"+
+        ",attackViewport="+CharacterRenderer.actionCanonicalVisibleHeightPixels()+"px@foot"+CharacterRenderer.actionCanonicalFootAnchorPixels()+
         ",attackFallback=shared-source-paperdoll"+
         ",cleanReset=ATTACK_SWING_ONLY"+
         ",walkFps="+CharacterRenderer.WALK_FRAMES_PER_SECOND+
