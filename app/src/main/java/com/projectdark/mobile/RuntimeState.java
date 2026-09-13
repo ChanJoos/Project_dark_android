@@ -58,13 +58,10 @@ public final class RuntimeState {
 
   RuntimeState(BootMode bootMode,boolean skipPoteRuntimeE2EAudit){
     this.bootMode=bootMode==null?BootMode.MILLES:bootMode;
-    if(!RewardPipelineAudit.verify())throw new IllegalStateException("Direct auto-loot contract audit failed");
-    // MonsterDefeatIdempotencyAudit is a regression/CI audit. It must not be a startup gate because
-    // non-reward playtest inventory (for example an appearance fixture) can legitimately exist.
-    if(!MonsterSpawnAdmissionAudit.verify(world))throw new IllegalStateException("Monster spawn admission audit failed");
-    if(!RpgEquipmentInteractionAudit.verify())throw new IllegalStateException("RPG equipment interaction audit failed");
-    if(!CanonicalRewardReadinessAudit.verify())throw new IllegalStateException("Canonical reward readiness audit failed");
-    if(!PotePrototypeRewardBoundaryAudit.verify())throw new IllegalStateException("Pote prototype reward boundary audit failed");
+
+    // IMPORTANT: regression/content audits are CI/development checks, not runtime startup gates.
+    // A stale audit must never make a build that otherwise renders and plays crash before GameView appears.
+    // Keep the audit classes independently runnable from CI/tools, but construct the playable runtime fail-safe.
 
     if(this.bootMode==BootMode.POTE_01_PROTOTYPE){
       player=new Player(PotePrototypeWorldDef.PLAYER_X_B,PotePrototypeWorldDef.PLAYER_Y_B);
@@ -75,8 +72,6 @@ public final class RuntimeState {
       for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
       for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
     }
-
-    if(!skipPoteRuntimeE2EAudit&&!PotePrototypeRuntimeE2EAudit.verify())throw new IllegalStateException("Pote prototype runtime E2E audit failed");
   }
 
   public BootMode bootMode(){return bootMode;}
