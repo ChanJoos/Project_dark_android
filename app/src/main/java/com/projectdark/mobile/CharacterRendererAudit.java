@@ -34,6 +34,7 @@ public final class CharacterRendererAudit {
   }
 
   public static boolean passes(){
+    if(!CanonicalActorFacingAudit.passes())return false;
     if(CharacterRenderer.Direction.values().length!=EXPECTED_DIRECTION_COUNT)return false;
     if(CharacterRenderer.State.values().length!=EXPECTED_STATE_COUNT)return false;
     if(CharacterRenderer.DRAW_ORDER.size()!=EXPECTED_LAYER_COUNT||matrix().size()!=EXPECTED_MATRIX_CASES)return false;
@@ -94,7 +95,9 @@ public final class CharacterRendererAudit {
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
       if(composition.weaponBehindBody!=north)return false;
       float normalized=CharacterRenderer.normalizedActionScale(composition.sourceIndex);
-      if(normalized<=0f||Float.isNaN(normalized))return false;
+      if(Math.abs(normalized-CharacterRenderer.SOURCE_PRESENTATION_SCALE)>.0001f)return false;
+      float heightRatio=CharacterRenderer.actionHeightRatio(composition.sourceIndex);
+      if(heightRatio<1f||heightRatio>1.09f)return false;
     }
     if(facingSignatures.size()!=EXPECTED_DIRECTION_COUNT)return false;
 
@@ -126,12 +129,24 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.SW)>=0f)return false;
     if(CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.NE)<=0f)return false;
     if(CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.SE)<=0f)return false;
+    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+      java.util.HashSet<String> anchors=new java.util.HashSet<>();
+      for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
+        float x=CharacterRenderer.weaponCarryOffsetX(d,col),y=CharacterRenderer.weaponCarryOffsetY(d,col);
+        float angle=CharacterRenderer.weaponCarryAngle(d,col);
+        if(Float.isNaN(x)||Float.isNaN(y)||Float.isNaN(angle))return false;
+        if(y<16f||y>27f||Math.abs(x)>11f||Math.abs(angle)<45f||Math.abs(angle)>80f)return false;
+        anchors.add(x+":"+y+":"+angle);
+      }
+      if(anchors.size()<3)return false;
+    }
 
     // Clean reset: action presentation is stateless and selected only while ATTACK+SWING.
     if(!CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.ATTACK,AnimationAction.SWING))return false;
     if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.IDLE,AnimationAction.SWING))return false;
     if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.WALK,AnimationAction.SWING))return false;
     if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.ATTACK,AnimationAction.PUNCH))return false;
+    if(CharacterRenderer.legacyProceduralAttackReachable())return false;
 
     if(CharacterRenderer.walkFrameIndex(0f)!=0||CharacterRenderer.walkFrameIndex(.119f)!=0)return false;
     if(CharacterRenderer.walkFrameIndex(.120f)!=1||CharacterRenderer.walkFrameIndex(.239f)!=1)return false;
@@ -177,5 +192,10 @@ public final class CharacterRendererAudit {
       case HIT:return CharacterRenderer.EffectFamily.HIT;
       default:return CharacterRenderer.EffectFamily.NONE;
     }
+  }
+
+  public static void main(String[] args){
+    if(!passes())throw new AssertionError("CharacterRendererAudit failed: "+summary());
+    System.out.println("CharacterRendererAudit PASS: "+summary());
   }
 }

@@ -37,6 +37,7 @@ public final class RuntimeState {
     public State state=State.SPAWN;
     public float attackCooldown=0f,attackWindup=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
     public boolean attackPrimed=false;
+    public final CanonicalActorFacing visualFacing=new CanonicalActorFacing(CharacterRenderer.Direction.SE);
     public int lastDamage=0;
     public int detourSign=1;
     public float detourClock=0f;
@@ -88,7 +89,7 @@ public final class RuntimeState {
   public boolean tryMove(float dx,float dy){if(!player.alive)return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(player.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
 
   public boolean tryMoveMonster(Monster m,float dx,float dy){
-    if(m==null||!m.alive)return false;if(m.state!=Monster.State.ATTACK)m.state=Monster.State.CHASE;float bx=m.x,by=m.y;moveMonsterAxes(m,dx,dy);if(m.x!=bx||m.y!=by){m.detourClock=Math.max(0f,m.detourClock-.05f);return true;}m.detourClock+=.05f;float px=-dy*m.detourSign,py=dx*m.detourSign;moveMonsterAxes(m,px,py);if(m.x!=bx||m.y!=by)return true;m.detourSign=-m.detourSign;px=-dy*m.detourSign;py=dx*m.detourSign;moveMonsterAxes(m,px,py);if(m.x!=bx||m.y!=by)return true;if(m.detourClock>.75f){m.detourSign=-m.detourSign;m.detourClock=0f;}return false;
+    if(m==null||!m.alive)return false;if(m.state!=Monster.State.ATTACK)m.state=Monster.State.CHASE;float bx=m.x,by=m.y;moveMonsterAxes(m,dx,dy);if(m.x!=bx||m.y!=by){m.visualFacing.updateLocomotion(m.x-bx,m.y-by);m.detourClock=Math.max(0f,m.detourClock-.05f);return true;}m.detourClock+=.05f;float px=-dy*m.detourSign,py=dx*m.detourSign;moveMonsterAxes(m,px,py);if(m.x!=bx||m.y!=by){m.visualFacing.updateLocomotion(m.x-bx,m.y-by);return true;}m.detourSign=-m.detourSign;px=-dy*m.detourSign;py=dx*m.detourSign;moveMonsterAxes(m,px,py);if(m.x!=bx||m.y!=by){m.visualFacing.updateLocomotion(m.x-bx,m.y-by);return true;}if(m.detourClock>.75f){m.detourSign=-m.detourSign;m.detourClock=0f;}return false;
   }
 
   private void moveMonsterAxes(Monster m,float dx,float dy){float nx=clamp(m.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(m.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);if(monsterCanOccupy(m,nx,m.y))m.x=nx;if(monsterCanOccupy(m,m.x,ny))m.y=ny;}
@@ -105,12 +106,12 @@ public final class RuntimeState {
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 
-  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;}}
+  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){m.visualFacing.beginAttack(player.x-m.x,player.y-m.y);m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;}}
   public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.state==Monster.State.ATTACK&&m.attackPrimed&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
-  public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);damagePlayer(damage);if(m.alive)m.state=Monster.State.IDLE;}
-  public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;if(m.alive)m.state=Monster.State.IDLE;}}
+  public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);damagePlayer(damage);m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}
+  public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}}
 
-  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
+  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
   public void damagePlayer(int amount){if(amount<=0||!player.alive)return;player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.state=Monster.State.IDLE;}}}
   public void revivePlayer(){player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;player.hitFlash=0f;ledger.add(CombatLedger.Type.PLAYER_REVIVED,"runtime","player",0);}
 
