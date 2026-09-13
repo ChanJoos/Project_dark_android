@@ -25,6 +25,7 @@ public final class CharacterRenderer {
   public static final String LUERS_ROBE_RESOURCE="player_armor_mu0000058_idle_walk";
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
+  public static final String ACTION_TEMPORAL_EVIDENCE="mm001 group 02 has four source crops only; direction/time semantics UNRESOLVED; no fabricated temporal sequence";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; ADAPTED PLAYTEST HAND TRANSFORM";
   public static final String ATTACK_PRESENTATION_EVIDENCE="single mw001 source sprite; no afterimage/trail; ADAPTED PLAYTEST SWING";
 
@@ -142,6 +143,10 @@ public final class CharacterRenderer {
   public boolean weaponSourceActive(){return validAtlas(mokdoSprite,16,8);}
   public boolean sourceActionActive(){for(int i=0;i<SOURCE_ACTION_COUNT;i++)if(!validAtlas(bodyActionFrames[i],BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]))return false;return true;}
 
+  public static boolean usesSourceActionPose(State state,AnimationAction action){
+    return state==State.ATTACK&&action==AnimationAction.SWING;
+  }
+
   public void draw(Canvas canvas,Pose pose){
     if(canvas==null||pose==null||pose.direction==null||pose.state==null)return;
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
@@ -149,7 +154,7 @@ public final class CharacterRenderer {
     if((pose.state==State.IDLE||pose.state==State.WALK)&&resourceAtlasActive()){
       drawIdleWalk(canvas,pose,anchorY);drawEquipment(canvas,pose,anchorY);drawWeapon(canvas,pose,anchorY,false);return;
     }
-    if(pose.state==State.ATTACK&&pose.animationAction==AnimationAction.SWING&&sourceActionActive()){
+    if(usesSourceActionPose(pose.state,pose.animationAction)&&sourceActionActive()){
       drawSourceAction(canvas,pose,anchorY);return;
     }
     if(pose.state==State.ATTACK&&resourceAtlasActive()){
@@ -167,7 +172,7 @@ public final class CharacterRenderer {
 
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){
     int row=atlasRow(pose.direction);if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
-    int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
+    int col=pose.state==State.WALK?1+walkFrameIndex(presentationWalkClock):0;
     drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,
         SOURCE_PRESENTATION_SCALE,anchorY,pose.x);
   }
@@ -175,7 +180,7 @@ public final class CharacterRenderer {
   private void drawEquipment(Canvas c,Pose pose,float anchorY){
     if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)||!equipmentAtlasActive())return;
     int row=atlasRow(pose.direction);if(row<0)return;
-    int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
+    int col=pose.state==State.WALK?1+walkFrameIndex(presentationWalkClock):0;
     drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,
         SOURCE_PRESENTATION_SCALE,anchorY,pose.x);
   }
@@ -202,20 +207,41 @@ public final class CharacterRenderer {
 
   private void drawWeapon(Canvas c,Pose pose,float anchorY,boolean attacking){
     if(!containsVisualRef(pose.weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)||!weaponSourceActive())return;
-    boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
-    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
     float scale=SOURCE_PRESENTATION_SCALE;
-    float centerX=pose.x+(left?-8f:8f)*scale;
-    float centerY=anchorY-(attacking?(down?17f:20f):(down?21f:24f))*scale;
-    float angle=attacking?weaponAttackAngle(pose.direction,attackPhase(pose)):0f;
+    float centerX=pose.x+(attacking?weaponAttackOffsetX(pose.direction):weaponCarryOffsetX(pose.direction))*scale;
+    float centerY=anchorY-(attacking?weaponAttackOffsetY(pose.direction):weaponCarryOffsetY(pose.direction))*scale;
+    float angle=attacking?weaponAttackAngle(pose.direction,attackPhase(pose)):weaponCarryAngle(pose.direction);
     c.save();
-    if(left)c.scale(-1f,1f,centerX,centerY);
+    if(pose.direction==Direction.NW||pose.direction==Direction.SW)c.scale(-1f,1f,centerX,centerY);
     c.rotate(angle,centerX,centerY);
     drawRawSourceScaled(c,mokdoSprite,centerX-2f*scale,centerY-4f*scale,scale);
     c.restore();
   }
 
   private static float attackPhase(Pose pose){if(pose==null||pose.stateDuration<=0f)return 0f;return Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));}
+
+  /** [ADAPTED PLAYTEST] Explicit four-facing carry transform for source mw001. */
+  public static float weaponCarryAngle(Direction direction){
+    if(direction==null)return 0f;
+    switch(direction){case NW:return -58f;case NE:return -58f;case SW:return -68f;case SE:return -68f;default:return 0f;}
+  }
+  public static float weaponCarryOffsetX(Direction direction){
+    if(direction==null)return 0f;
+    switch(direction){case NW:return -7f;case NE:return 7f;case SW:return -8f;case SE:return 8f;default:return 0f;}
+  }
+  public static float weaponCarryOffsetY(Direction direction){
+    if(direction==null)return 22f;
+    switch(direction){case NW:return 25f;case NE:return 25f;case SW:return 22f;case SE:return 22f;default:return 22f;}
+  }
+
+  public static float weaponAttackOffsetX(Direction direction){
+    if(direction==null)return 0f;
+    return direction==Direction.NW||direction==Direction.SW?-8f:8f;
+  }
+  public static float weaponAttackOffsetY(Direction direction){
+    if(direction==null)return 20f;
+    return direction==Direction.SW||direction==Direction.SE?17f:20f;
+  }
 
   /** [ADAPTED PLAYTEST] Source mw001 hand transform. Direction semantics remain unresolved. */
   public static float weaponAttackAngle(Direction direction,float phase){
