@@ -15,6 +15,7 @@ import java.util.Map;
 public final class CharacterVisualBinding {
   public static final String ASSET_STATUS="PENDING_CROP";
   public static final String RESOLVED_ROBE_APPEARANCE_ID="mu0000058";
+  public static final String RESOLVED_WEAPON_APPEARANCE_ID="mw001";
   public static final String WEAPON_SLOT="무기";
 
   private final Map<String,String> equippedBySlot;
@@ -51,13 +52,19 @@ public final class CharacterVisualBinding {
       String slot=e.getKey(),itemId=e.getValue();
       RpgProgressionState.ItemDefinition def=defs.get(itemId);
       if(def==null||def.equipSlot==null||!slot.equals(def.equipSlot))ok=false;
-      if(WEAPON_SLOT.equals(slot))weapon=itemId;
+      if(WEAPON_SLOT.equals(slot)){
+        weapon=itemId;
+        if(def!=null&&def.appearanceId!=null)resolved=true;
+      }
       else if(def!=null&&def.appearanceId!=null){equipmentTokens.add(def.appearanceId);resolved=true;}
       else equipmentTokens.add(ASSET_STATUS+":"+itemId);
     }
 
     String equipmentRef=equipmentTokens.isEmpty()?ASSET_STATUS:join(equipmentTokens);
-    String weaponRef=weapon==null?ASSET_STATUS:ASSET_STATUS+"|ITEM_ID:"+weapon;
+    RpgProgressionState.ItemDefinition weaponDef=weapon==null?null:defs.get(weapon);
+    String weaponRef=weaponDef!=null&&weaponDef.appearanceId!=null
+        ?weaponDef.appearanceId
+        :weapon==null?ASSET_STATUS:ASSET_STATUS+"|ITEM_ID:"+weapon;
     return new CharacterVisualBinding(equipped,weapon,equipmentRef,weaponRef,ok,resolved);
   }
 
