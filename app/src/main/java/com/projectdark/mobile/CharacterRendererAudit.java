@@ -54,6 +54,8 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.SOURCE_ACTION_COUNT!=4)return false;
     if(!CharacterRenderer.ACTION_SOURCE_EVIDENCE.contains("ADAPTED PLAYTEST ACTION GROUP"))return false;
     if(!CharacterRenderer.WEAPON_SOURCE_EVIDENCE.contains("mw001"))return false;
+    if(!CharacterRenderer.CAST_CONTINUITY_EVIDENCE.contains("mm001 idle source body"))return false;
+    if(CharacterRenderer.CAST_CONTINUITY_EVIDENCE.toLowerCase().contains("canonical cast"))return false;
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.WALK_CYCLE_SECONDS-EXPECTED_WALK_CYCLE_SECONDS)>.0001f)return false;
@@ -99,6 +101,7 @@ public final class CharacterRendererAudit {
         ",rows=NW,NE,SW,SE,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+
         ",walkFps="+CharacterRenderer.WALK_FRAMES_PER_SECOND+
         ",walkCycleSeconds="+CharacterRenderer.WALK_CYCLE_SECONDS+
+        ",castContinuity=MM001_IDLE_SOURCE"+
         ",paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size()+
         ",legacyMartialAllowed="+CharacterRenderer.LEGACY_MARTIAL_ASSET_ALLOWED+
         ",anchorY="+CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y;

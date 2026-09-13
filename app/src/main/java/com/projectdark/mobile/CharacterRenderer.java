@@ -26,6 +26,7 @@ public final class CharacterRenderer {
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; ADAPTED PLAYTEST HAND TRANSFORM";
+  public static final String CAST_CONTINUITY_EVIDENCE="CAST preserves accepted mm001 idle source body; no invented cast body";
 
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
@@ -165,6 +166,15 @@ public final class CharacterRenderer {
       drawWeapon(canvas,pose,anchorY,false);
       return;
     }
+    if(pose.state==State.CAST&&resourceAtlasActive()){
+      // No verified mm001 CAST action group exists yet. Preserve the user-accepted source body,
+      // robe and equipped weapon rather than replacing the character with a procedural body.
+      drawIdleWalk(canvas,pose,anchorY);
+      drawEquipment(canvas,pose,anchorY);
+      drawWeapon(canvas,pose,anchorY,false);
+      drawCastEffect(canvas,pose,anchorY);
+      return;
+    }
     if(pose.state==State.ATTACK&&pose.animationAction==AnimationAction.SWING&&sourceActionActive()){
       drawSourceAction(canvas,pose,anchorY); return;
     }
@@ -188,7 +198,7 @@ public final class CharacterRenderer {
 
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){
     int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
-    int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
+    int col=pose.state==State.WALK?1+walkFrameIndex(presentationWalkClock):0;
     drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
         SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,1f,anchorY,pose.x);
   }
@@ -197,9 +207,21 @@ public final class CharacterRenderer {
     if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)
         ||!equipmentAtlasActive())return;
     int row=atlasRow(pose.direction); if(row<0)return;
-    int col=pose.state==State.IDLE?0:1+walkFrameIndex(presentationWalkClock);
+    int col=pose.state==State.WALK?1+walkFrameIndex(presentationWalkClock):0;
     drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,
         SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,1f,anchorY,pose.x);
+  }
+
+  private void drawCastEffect(Canvas c,Pose pose,float anchorY){
+    boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    float phase=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));
+    c.save();
+    c.translate(pose.x-12f*PLAYER_RENDER_SCALE,anchorY-32f*PLAYER_RENDER_SCALE);
+    c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);
+    fxPaint.setStyle(Paint.Style.STROKE);fxPaint.setStrokeWidth(2f);fxPaint.setColor(0xcc79cfff);
+    c.drawCircle(12+(left?-5f:5f),8,4+phase*5f,fxPaint);
+    fxPaint.setStyle(Paint.Style.FILL);
+    c.restore();
   }
 
   private static boolean containsVisualRef(String refs,String expected){
@@ -338,5 +360,5 @@ public final class CharacterRenderer {
   public String contractAuditSummary(){return CharacterRendererAudit.summary();}
   public boolean ownsPlayerLocalEffects(){return true;}
   public float playerRenderScale(){return PLAYER_RENDER_SCALE;}
-  public boolean usesDefaultAtlasFor(State state){return (state==State.IDLE||state==State.WALK)?resourceAtlasActive():state==State.ATTACK&&sourceActionActive();}
+  public boolean usesDefaultAtlasFor(State state){return (state==State.IDLE||state==State.WALK||state==State.CAST)?resourceAtlasActive():state==State.ATTACK&&sourceActionActive();}
 }
