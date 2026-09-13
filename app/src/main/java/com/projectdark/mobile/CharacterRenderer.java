@@ -28,9 +28,11 @@ public final class CharacterRenderer {
   public static final String ACTION_TEMPORAL_EVIDENCE="mm001 group 02 has four source crops only; direction/time semantics UNRESOLVED; no fabricated temporal sequence";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; ADAPTED PLAYTEST HAND TRANSFORM";
   public static final String ATTACK_PRESENTATION_EVIDENCE="single mw001 source sprite; no afterimage/trail; ADAPTED PLAYTEST SWING";
+  public static final String ATTACK_DIRECTION_EVIDENCE="runtime Pose.direction selects source, mirror, depth, hand offset and angle; ADAPTED PLAYTEST / UNRESOLVED";
+  public static final String PAPER_DOLL_ATTACK_EVIDENCE="ATTACK consumes current equipmentVisualRef and weaponVisualRef; no baked equipment";
 
   public static final float SOURCE_BAKED_SCALE=1.50f;
-  public static final float PLAYER_RENDER_SCALE=1.60f;
+  public static final float PLAYER_RENDER_SCALE=1.70f;
   public static final float SOURCE_PRESENTATION_SCALE=PLAYER_RENDER_SCALE/SOURCE_BAKED_SCALE;
   public static final float SHADOW_RENDER_SCALE=0.72f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
@@ -111,6 +113,27 @@ public final class CharacterRenderer {
     }
   }
 
+  /** Runtime-facing visual composition consumed by drawing and focused audits. */
+  public static final class AttackVisualComposition {
+    public final Direction direction;
+    public final int sourceIndex;
+    public final boolean mirrorBody;
+    public final boolean weaponBehindBody;
+    public final boolean robeVisible;
+    public final boolean weaponVisible;
+    public final float presentationScale;
+    AttackVisualComposition(Direction direction,int sourceIndex,boolean mirrorBody,boolean weaponBehindBody,
+        boolean robeVisible,boolean weaponVisible,float presentationScale){
+      this.direction=direction;this.sourceIndex=sourceIndex;this.mirrorBody=mirrorBody;
+      this.weaponBehindBody=weaponBehindBody;this.robeVisible=robeVisible;this.weaponVisible=weaponVisible;
+      this.presentationScale=presentationScale;
+    }
+    public String signature(){
+      return direction+":"+sourceIndex+":"+mirrorBody+":"+weaponBehindBody+":"+robeVisible+":"+weaponVisible+
+          ":"+weaponAttackOffsetX(direction)+":"+weaponAttackOffsetY(direction)+":"+weaponAttackAngle(direction,.55f);
+    }
+  }
+
   private final Paint pixelPaint=new Paint();
   private final Paint fxPaint=new Paint();
   private final Bitmap idleWalkAtlas;
@@ -152,7 +175,11 @@ public final class CharacterRenderer {
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;
     drawShadow(canvas,pose,anchorY);
     if((pose.state==State.IDLE||pose.state==State.WALK)&&resourceAtlasActive()){
-      drawIdleWalk(canvas,pose,anchorY);drawEquipment(canvas,pose,anchorY);drawWeapon(canvas,pose,anchorY,false);return;
+      boolean weaponBehind=weaponBehindBody(pose.direction);
+      if(weaponBehind)drawWeapon(canvas,pose,anchorY,false);
+      drawIdleWalk(canvas,pose,anchorY);drawEquipment(canvas,pose,anchorY);
+      if(!weaponBehind)drawWeapon(canvas,pose,anchorY,false);
+      return;
     }
     if(usesSourceActionPose(pose.state,pose.animationAction)&&sourceActionActive()){
       drawSourceAction(canvas,pose,anchorY);return;
@@ -188,13 +215,17 @@ public final class CharacterRenderer {
   private static boolean containsVisualRef(String refs,String expected){if(refs==null||expected==null)return false;for(String ref:refs.split(","))if(expected.equals(ref.trim()))return true;return false;}
 
   private void drawSourceAction(Canvas c,Pose pose,float anchorY){
-    int source=actionSourceIndex(pose.direction);if(source<0)return;
-    float scale=SOURCE_PRESENTATION_SCALE;
+    AttackVisualComposition composition=attackVisualComposition(pose.direction,pose.equipmentVisualRef,pose.weaponVisualRef);
+    int source=composition.sourceIndex;if(source<0)return;
+    float scale=normalizedActionScale(source);
     Bitmap body=bodyActionFrames[source];
     float bodyW=BODY_ACTION_WIDTH[source]*scale,bodyH=BODY_ACTION_HEIGHT[source]*scale;
     float bodyLeft=Math.round(pose.x-bodyW*.5f),bodyTop=Math.round(anchorY-bodyH);
+    if(composition.weaponVisible&&composition.weaponBehindBody)drawWeapon(c,pose,anchorY,true);
+    c.save();
+    if(composition.mirrorBody)c.scale(-1f,1f,pose.x,anchorY);
     drawRawSourceScaled(c,body,bodyLeft,bodyTop,scale);
-    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)){
+    if(composition.robeVisible){
       Bitmap robe=robeActionFrames[source];
       if(validAtlas(robe,ROBE_ACTION_WIDTH[source],ROBE_ACTION_HEIGHT[source])){
         float robeLeft=bodyLeft+(ROBE_ACTION_OFFSET_X[source]-BODY_ACTION_OFFSET_X[source])*scale;
@@ -202,8 +233,24 @@ public final class CharacterRenderer {
         drawRawSourceScaled(c,robe,robeLeft,robeTop,scale);
       }
     }
-    drawWeapon(c,pose,anchorY,true);
+    c.restore();
+    if(composition.weaponVisible&&!composition.weaponBehindBody)drawWeapon(c,pose,anchorY,true);
   }
+
+  /** Bounds normalization happens inside the single 1.70 presentation contract. */
+  public static float normalizedActionScale(int source){
+    if(source<0||source>=SOURCE_ACTION_COUNT)return SOURCE_PRESENTATION_SCALE;
+    return SOURCE_PRESENTATION_SCALE*SOURCE_FRAME_HEIGHT/(float)BODY_ACTION_HEIGHT[source];
+  }
+
+  public static AttackVisualComposition attackVisualComposition(Direction direction,String equipmentVisualRef,String weaponVisualRef){
+    boolean left=direction==Direction.NW||direction==Direction.SW;
+    return new AttackVisualComposition(direction,actionSourceIndex(direction),left,weaponBehindBody(direction),
+        containsVisualRef(equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID),
+        containsVisualRef(weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID),PLAYER_RENDER_SCALE);
+  }
+
+  public static boolean weaponBehindBody(Direction direction){return direction==Direction.NW||direction==Direction.NE;}
 
   private void drawWeapon(Canvas c,Pose pose,float anchorY,boolean attacking){
     if(!containsVisualRef(pose.weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)||!weaponSourceActive())return;
@@ -223,32 +270,38 @@ public final class CharacterRenderer {
   /** [ADAPTED PLAYTEST] Explicit four-facing carry transform for source mw001. */
   public static float weaponCarryAngle(Direction direction){
     if(direction==null)return 0f;
-    switch(direction){case NW:return -58f;case NE:return -58f;case SW:return -68f;case SE:return -68f;default:return 0f;}
+    switch(direction){case NW:return -56f;case NE:return -64f;case SW:return -72f;case SE:return -62f;default:return 0f;}
   }
   public static float weaponCarryOffsetX(Direction direction){
     if(direction==null)return 0f;
-    switch(direction){case NW:return -7f;case NE:return 7f;case SW:return -8f;case SE:return 8f;default:return 0f;}
+    switch(direction){case NW:return -7f;case NE:return 6f;case SW:return -9f;case SE:return 8f;default:return 0f;}
   }
   public static float weaponCarryOffsetY(Direction direction){
     if(direction==null)return 22f;
-    switch(direction){case NW:return 25f;case NE:return 25f;case SW:return 22f;case SE:return 22f;default:return 22f;}
+    switch(direction){case NW:return 26f;case NE:return 24f;case SW:return 21f;case SE:return 23f;default:return 22f;}
   }
 
   public static float weaponAttackOffsetX(Direction direction){
     if(direction==null)return 0f;
-    return direction==Direction.NW||direction==Direction.SW?-8f:8f;
+    switch(direction){case NW:return -7f;case NE:return 6f;case SW:return -10f;case SE:return 9f;default:return 0f;}
   }
   public static float weaponAttackOffsetY(Direction direction){
     if(direction==null)return 20f;
-    return direction==Direction.SW||direction==Direction.SE?17f:20f;
+    switch(direction){case NW:return 22f;case NE:return 20f;case SW:return 16f;case SE:return 18f;default:return 20f;}
   }
 
   /** [ADAPTED PLAYTEST] Source mw001 hand transform. Direction semantics remain unresolved. */
   public static float weaponAttackAngle(Direction direction,float phase){
     float q=Math.max(0f,Math.min(1f,phase));
     float envelope=q<.55f?q/.55f:(1f-q)/.45f;
-    boolean down=direction==Direction.SW||direction==Direction.SE;
-    return down?6f+30f*envelope:-6f-32f*envelope;
+    if(direction==null)return 0f;
+    switch(direction){
+      case NW:return -12f-34f*envelope;
+      case NE:return -25f-30f*envelope;
+      case SW:return 10f+34f*envelope;
+      case SE:return 22f+28f*envelope;
+      default:return 0f;
+    }
   }
 
   private void drawRawSourceScaled(Canvas c,Bitmap bitmap,float left,float top,float scale){
