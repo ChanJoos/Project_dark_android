@@ -16,7 +16,7 @@ public final class CombatResolver {
   public enum ActionState { ATTACK, SKILL, MAGIC, KICK }
   public enum EffectType { PHYSICAL_HIT, SKILL_HIT, MAGIC_HIT, KICK_HIT }
   public enum InputMode { MANUAL, AUTO }
-  public enum RejectReason { ACTOR_DEAD, TARGET_DEAD, NOT_LEARNED, COOLDOWN, RESOURCE, RANGE, LOS, ACTION_BUSY }
+  public enum RejectReason { ACTOR_DEAD, TARGET_DEAD, CONTROL, NOT_LEARNED, COOLDOWN, RESOURCE, RANGE, LOS, ACTION_BUSY }
   public enum EventType { ACTION_STARTED, ACTION_REJECTED, ACTION_CANCELLED, EFFECT_APPLIED, HIT_FEEDBACK, MONSTER_DEFEATED }
   public enum DefeatPublication { RESOLVER_OWNS, PORT_ALREADY_PUBLISHED }
   public enum DefeatedTargetKind { MONSTER, PLAYER, OTHER }
@@ -36,7 +36,7 @@ public final class CombatResolver {
     public EffectResult(int a,boolean d,DefeatPublication p,DefeatedTargetKind k,HitSemantic h){appliedAmount=Math.max(0,a);defeatedNow=d;defeatPublication=p==null?DefeatPublication.RESOLVER_OWNS:p;defeatedTargetKind=k==null?DefeatedTargetKind.OTHER:k;hitSemantic=h==null?HitSemantic.DAMAGE:h;}
     public EffectResult(int a,boolean d){this(a,d,DefeatPublication.RESOLVER_OWNS,DefeatedTargetKind.MONSTER,HitSemantic.DAMAGE);}
   }
-  public interface Port { boolean actorAlive(String id); boolean targetAlive(String id); boolean learned(String a,String id); boolean cooldownReady(String a,String id); boolean hasResource(String a,int n); float distance(String a,String b); boolean hasLineOfSight(String a,String b); void consumeResource(String a,int n); void commitCooldown(String a,String id,float c); EffectResult applyDamage(String a,String b,String id,int n); }
+  public interface Port { boolean actorAlive(String id); boolean targetAlive(String id); default boolean canAct(String id){return true;} boolean learned(String a,String id); boolean cooldownReady(String a,String id); boolean hasResource(String a,int n); float distance(String a,String b); boolean hasLineOfSight(String a,String b); void consumeResource(String a,int n); void commitCooldown(String a,String id,float c); EffectResult applyDamage(String a,String b,String id,int n); }
   public static final class Event {
     public final long sequence,actionSequence; public final EventType type; public final String actorId,targetId,actionId; public final ActionState state; public final EffectType effectType; public final InputMode inputMode; public final RejectReason rejectReason; public final HitSemantic hitSemantic; public final int amount;
     Event(long s,long as,EventType t,String a,String target,Definition d,InputMode m,RejectReason r,HitSemantic h,int n){sequence=s;actionSequence=as;type=t;actorId=a;targetId=target;actionId=d.actionId;state=d.state;effectType=d.effectType;inputMode=m;rejectReason=r;hitSemantic=h;amount=n;}
@@ -96,7 +96,7 @@ public final class CombatResolver {
   public List<ActionSnapshot> actionSnapshots(){List<ActionSnapshot> out=new ArrayList<>();for(Pending p:activeByActor.values())out.add(new ActionSnapshot(p));return Collections.unmodifiableList(out);}
   public List<Event> drainEvents(){List<Event> x=new ArrayList<>(events);events.clear();return Collections.unmodifiableList(x);} public List<Event> events(){return Collections.unmodifiableList(new ArrayList<>(events));}
 
-  private RejectReason validate(Definition d,String a,String t,boolean commit){if(!port.actorAlive(a))return RejectReason.ACTOR_DEAD;if(!port.targetAlive(t))return RejectReason.TARGET_DEAD;if(d.requiresLearned&&!port.learned(a,d.actionId))return RejectReason.NOT_LEARNED;if(commit&&!port.cooldownReady(a,d.actionId))return RejectReason.COOLDOWN;if(commit&&d.resourceCost>0&&!port.hasResource(a,d.resourceCost))return RejectReason.RESOURCE;if(port.distance(a,t)>d.range)return RejectReason.RANGE;if(!port.hasLineOfSight(a,t))return RejectReason.LOS;return null;}
+  private RejectReason validate(Definition d,String a,String t,boolean commit){if(!port.actorAlive(a))return RejectReason.ACTOR_DEAD;if(!port.targetAlive(t))return RejectReason.TARGET_DEAD;if(!port.canAct(a))return RejectReason.CONTROL;if(d.requiresLearned&&!port.learned(a,d.actionId))return RejectReason.NOT_LEARNED;if(commit&&!port.cooldownReady(a,d.actionId))return RejectReason.COOLDOWN;if(commit&&d.resourceCost>0&&!port.hasResource(a,d.resourceCost))return RejectReason.RESOURCE;if(port.distance(a,t)>d.range)return RejectReason.RANGE;if(!port.hasLineOfSight(a,t))return RejectReason.LOS;return null;}
   private void emit(EventType t,long seq,String a,String target,Definition d,InputMode m,RejectReason r,HitSemantic h,int n){events.add(new Event(++es,seq,t,a,target,d,m==null?InputMode.MANUAL:m,r,h,n));while(events.size()>128)events.removeFirst();}
 
   public static Definition attackPrototype(AttackDef d,int i){return new Definition("attack_proto_"+i+"_"+d.kind.name().toLowerCase(),ActionKind.ATTACK,ActionState.ATTACK,EffectType.PHYSICAL_HIT,false,0,d.cooldown,d.range,Math.min(.18f,d.cooldown*.5f),d.damage);}

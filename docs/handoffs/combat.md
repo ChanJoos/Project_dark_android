@@ -1,5 +1,16 @@
 # Combat / Monster handoff
 
+## LOOP-4-V1 GAME-01 — RuntimeCombatSession
+
+- Producer: Game Systems owns `RuntimeCombatSession`, `CombatResolver`, and `RuntimeCombatPortAdapter`.
+- Contract: Director constructs one session with World LOS, learned-action truth, and current control truth; starting commoner policy is fail-closed via `startingCommonerLearnedActions()`.
+- Consumer replacement: `GameView` attack/cast/skill/kick must call `submitPlayer*`, call `RuntimeCombatSession.tick(dt)` exactly once per frame, and consume its returned events once.
+- Remove on integration: `CombatController.commitAttack/commitCast/commitSkill/commitKick`, `GameView.consume(...)`, `applyToTarget(...)`, and every direct `state.damage(...)` from player input. Animation starts from an accepted submission and never mutates HP.
+- Monster route: inject `new MonsterAIController.SharedResolverAttackRouter(session.monsterAutoBridge())`; do not retain the legacy monster damage router in parallel.
+- Defeat/reward authority remains `RuntimeState.damage -> CombatLedger.MONSTER_DEFEATED -> RpgProgressionState.consumeCombat`. Resolver does not publish a duplicate defeat while the runtime port reports `PORT_ALREADY_PUBLISHED`.
+- Stable player actions are four distinct `attack_proto_<mode>_<kind>` IDs plus `cast_proto`, `skill_proto`, and `kick_proto`; unlearned commoner skill/magic/kick submissions fail closed.
+- Verification: `RuntimeCombatSessionAudit` executes control/learned/resource/range/LOS/cooldown gates, hit timing, one effect, one defeat ledger event, and one direct-inventory training token.
+
 ## 2026-09-10 18:35 KST — PASS 33 / agent/combat/20260910-1835
 
 ### Source state
@@ -45,6 +56,14 @@ After Director wires this adapter, MANUAL and AUTO actions no longer stop at an 
 
 ### Boundaries preserved
 No `GameView.java`, HUD/touch layout, renderer drawing, map/camera/collision/pathfinding/portal implementation, reward/inventory/EXP/Gold/progression/save, NPC/dialogue/quest, APK packaging, main push or merge changes.
+
+## Game → Director/Visual weapon-action contract
+
+- Playtest item `IT_ADAPTED_PLAYTEST_MOKDO` uses the source-named male appearance `mw001` (`목도`) from `Asset_Master.csv`.
+- COMMONER eligibility and its `SWING` family are explicitly `ADAPTED PLAYTEST FIXTURE`; neither is asserted as an original rule.
+- `RuntimeCombatSession.submitPlayerBasicAttack(targetId)` resolves `equipped weapon → semantic action`, submits the matching shared Resolver action once, and returns `PlayerActionSubmission`.
+- Visual consumes only `weaponAppearanceId` + `AnimationAction`; it owns frame/group selection. Director replaces the current GameView attack-mode/direct-damage call with this API and must not execute both paths.
+- Resolution priority is explicit skill/spell action → equipped weapon family → unarmed `PUNCH`. Robe (`갑옷`) and weapon (`무기`) remain independent equipment slots.
 
 ### Next Combat P0
 1. Provide a small combat-session façade that guarantees adapter cooldown tick + Resolver tick/event drain ordering so Director cannot accidentally double-tick or double-drain.

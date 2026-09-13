@@ -36,8 +36,12 @@ public final class RpgProgressionState {
     FIRST_ADVANCEMENT
   }
 
+  public static final String ARMOR_SLOT="갑옷";
+  public static final String WEAPON_SLOT="무기";
+
   public static final class ItemDefinition {
     public final String itemId,name,equipSlot,appearanceId;
+    public final AnimationAction basicAttackAction;
     public final Integer requiredLevel;
     public final Set<String> allowedJobCodes;
     public final boolean jobRestrictionResolved;
@@ -47,13 +51,19 @@ public final class RpgProgressionState {
 
     public ItemDefinition(String itemId,String name,String equipSlot,Integer requiredLevel,Set<String> allowedJobCodes,
         boolean jobRestrictionResolved,String attackElement,String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
-      this(itemId,name,equipSlot,null,requiredLevel,allowedJobCodes,jobRestrictionResolved,
+      this(itemId,name,equipSlot,null,null,requiredLevel,allowedJobCodes,jobRestrictionResolved,
           attackElement,defenseElement,statModifiers,evidence);
     }
     public ItemDefinition(String itemId,String name,String equipSlot,String appearanceId,Integer requiredLevel,Set<String> allowedJobCodes,
         boolean jobRestrictionResolved,String attackElement,String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
+      this(itemId,name,equipSlot,appearanceId,null,requiredLevel,allowedJobCodes,jobRestrictionResolved,
+          attackElement,defenseElement,statModifiers,evidence);
+    }
+    public ItemDefinition(String itemId,String name,String equipSlot,String appearanceId,AnimationAction basicAttackAction,
+        Integer requiredLevel,Set<String> allowedJobCodes,boolean jobRestrictionResolved,String attackElement,
+        String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
       this.itemId=itemId;this.name=name;this.equipSlot=equipSlot;this.requiredLevel=requiredLevel;
-      this.appearanceId=appearanceId;
+      this.appearanceId=appearanceId;this.basicAttackAction=basicAttackAction;
       this.allowedJobCodes=Collections.unmodifiableSet(new LinkedHashSet<>(allowedJobCodes));
       this.jobRestrictionResolved=jobRestrictionResolved;
       this.attackElement=attackElement;this.defenseElement=defenseElement;
@@ -108,6 +118,9 @@ public final class RpgProgressionState {
 
   public static final String PLAYTEST_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
   public static final String PLAYTEST_ROBE_APPEARANCE_ID="mu0000058";
+  public static final String PLAYTEST_WEAPON_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
+  public static final String PLAYTEST_WEAPON_APPEARANCE_ID="mw001";
+  public static final String PLAYTEST_WEAPON_SOURCE_EVIDENCE="Asset_Master mw001 목도 SOURCE_NAMED; COMMONER equip and SWING are ADAPTED PLAYTEST FIXTURE";
 
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
@@ -138,10 +151,13 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,
         "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
-    registerItem(new ItemDefinition(PLAYTEST_ROBE_ITEM_ID,"루어스레더로브","갑옷",
+    registerItem(new ItemDefinition(PLAYTEST_ROBE_ITEM_ID,"루어스레더로브",ARMOR_SLOT,
         PLAYTEST_ROBE_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
+        PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(PLAYTEST_ROBE_ITEM_ID,1);
+    inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
   }
 
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
@@ -149,6 +165,9 @@ public final class RpgProgressionState {
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
   public Map<String,String> equipment(){return Collections.unmodifiableMap(equipmentBySlot);}
+  public ItemDefinition equippedDefinition(String slot){
+    String itemId=equipmentBySlot.get(slot);return itemId==null?null:items.get(itemId);
+  }
   public List<RewardResolution> rewardHistory(){return Collections.unmodifiableList(rewardHistory);}
   public ProgressionNode progressionNode(){return progressionNode;}
   public String currentJobCode(){return currentJobCode;}
