@@ -53,6 +53,7 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.SOURCE_IDLE_WALK_WIDTH!=180||CharacterRenderer.SOURCE_ATLAS_HEIGHT!=192)return false;
     if(CharacterRenderer.SOURCE_ACTION_COUNT!=4||CharacterRenderer.ATTACK_TRAIL_GHOSTS!=0)return false;
     if(!CharacterRenderer.ACTION_SOURCE_EVIDENCE.contains("ADAPTED PLAYTEST ACTION GROUP"))return false;
+    if(!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("UNRESOLVED")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("no fabricated temporal sequence"))return false;
     if(!CharacterRenderer.WEAPON_SOURCE_EVIDENCE.contains("mw001"))return false;
     if(!CharacterRenderer.ATTACK_PRESENTATION_EVIDENCE.contains("no afterimage/trail"))return false;
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
@@ -70,11 +71,15 @@ public final class CharacterRendererAudit {
       CharacterRenderer.Direction d=CharacterRenderer.visualFacingForRow(row);
       if(d==null||CharacterRenderer.atlasRow(d)!=row)return false;
     }
+
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
+
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+      float carry=CharacterRenderer.weaponCarryAngle(d);
+      if(Math.abs(carry)<45f||Math.abs(carry)>80f)return false;
       float start=CharacterRenderer.weaponAttackAngle(d,0f);
       float peak=CharacterRenderer.weaponAttackAngle(d,.55f);
       float end=CharacterRenderer.weaponAttackAngle(d,1f);
@@ -82,6 +87,17 @@ public final class CharacterRendererAudit {
       if(Math.abs(peak-start)<20f)return false;
       if(Math.abs(end-start)>.001f)return false;
     }
+    if(CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.NW)>=0f)return false;
+    if(CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.SW)>=0f)return false;
+    if(CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.NE)<=0f)return false;
+    if(CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.SE)<=0f)return false;
+
+    // Clean reset: action presentation is stateless and selected only while ATTACK+SWING.
+    if(!CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.ATTACK,AnimationAction.SWING))return false;
+    if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.IDLE,AnimationAction.SWING))return false;
+    if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.WALK,AnimationAction.SWING))return false;
+    if(CharacterRenderer.usesSourceActionPose(CharacterRenderer.State.ATTACK,AnimationAction.PUNCH))return false;
+
     if(CharacterRenderer.walkFrameIndex(0f)!=0||CharacterRenderer.walkFrameIndex(.149f)!=0)return false;
     if(CharacterRenderer.walkFrameIndex(.150f)!=1||CharacterRenderer.walkFrameIndex(.299f)!=1)return false;
     if(CharacterRenderer.walkFrameIndex(.300f)!=2||CharacterRenderer.walkFrameIndex(.449f)!=2)return false;
@@ -109,6 +125,8 @@ public final class CharacterRendererAudit {
         ",rows=NW,NE,SW,SE,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+
         ",sourcePresentationScale="+CharacterRenderer.SOURCE_PRESENTATION_SCALE+
         ",attackTrailGhosts="+CharacterRenderer.ATTACK_TRAIL_GHOSTS+
+        ",temporalAction=UNRESOLVED"+
+        ",cleanReset=ATTACK_SWING_ONLY"+
         ",walkFps="+CharacterRenderer.WALK_FRAMES_PER_SECOND+
         ",walkCycleSeconds="+CharacterRenderer.WALK_CYCLE_SECONDS+
         ",paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size()+
