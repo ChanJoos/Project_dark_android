@@ -51,6 +51,9 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.IDLE_WALK_COLUMNS!=5||CharacterRenderer.ATTACK_COLUMNS!=4||CharacterRenderer.ATLAS_ROWS!=4)return false;
     if(CharacterRenderer.IDLE_WALK_WIDTH!=120||CharacterRenderer.ACTION_WIDTH!=96||CharacterRenderer.ATLAS_HEIGHT!=128)return false;
     if(CharacterRenderer.SOURCE_IDLE_WALK_WIDTH!=180||CharacterRenderer.SOURCE_ATLAS_HEIGHT!=192)return false;
+    if(CharacterRenderer.SOURCE_ACTION_COUNT!=4)return false;
+    if(!CharacterRenderer.ACTION_SOURCE_EVIDENCE.contains("ADAPTED PLAYTEST ACTION GROUP"))return false;
+    if(!CharacterRenderer.WEAPON_SOURCE_EVIDENCE.contains("mw001"))return false;
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.SHADOW_RENDER_SCALE-USER_APPROVED_SHADOW_RENDER_SCALE)>.0001f)return false;
     if(Math.abs(CharacterRenderer.WALK_CYCLE_SECONDS-EXPECTED_WALK_CYCLE_SECONDS)>.0001f)return false;
@@ -65,6 +68,10 @@ public final class CharacterRendererAudit {
       CharacterRenderer.Direction d=CharacterRenderer.visualFacingForRow(row);
       if(d==null||CharacterRenderer.atlasRow(d)!=row)return false;
     }
+    if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0)return false;
+    if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1)return false;
+    if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2)return false;
+    if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
     if(CharacterRenderer.walkFrameIndex(0f)!=0||CharacterRenderer.walkFrameIndex(.149f)!=0)return false;
     if(CharacterRenderer.walkFrameIndex(.150f)!=1||CharacterRenderer.walkFrameIndex(.299f)!=1)return false;
     if(CharacterRenderer.walkFrameIndex(.300f)!=2||CharacterRenderer.walkFrameIndex(.449f)!=2)return false;
@@ -104,4 +111,5 @@ public final class CharacterRendererAudit {
       default:return CharacterRenderer.EffectFamily.NONE;
     }
   }
+
 }

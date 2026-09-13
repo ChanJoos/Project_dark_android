@@ -1,0 +1,24 @@
+{
+  "version": "adapted-playtest-2026-09-13",
+  "weapon_appearance_id": "mw001",
+  "source_name": "목도",
+  "source_status": "SOURCE_NAMED_HAR",
+  "weapon_resource": "player_weapon_mw001.webp",
+  "weapon_source": "master/assets/items/weapon/mw001_목도.webp",
+  "body_source": "master/assets/animation_frames/body/mm001/02",
+  "robe_source": "master/assets/animation_frames/armor/mu0000058/02",
+  "semantic_action": "SWING",
+  "semantic_status": "ADAPTED PLAYTEST",
+  "action_group": "02",
+  "action_group_status": "UNRESOLVED; ADAPTED PLAYTEST ACTION GROUP",
+  "direction_mapping": {
+    "NE": 0,
+    "SE": 1,
+    "NW": 2,
+    "SW": 3
+  },
+  "direction_mapping_status": "ADAPTED PLAYTEST",
+  "hand_transform_status": "ADAPTED PLAYTEST",
+  "pixel_policy": "Source WebP pixels only; no AI/procedural replacement",
+  "fallback": "Missing/corrupt action asset retains accepted source idle body and does not crash startup"
+}

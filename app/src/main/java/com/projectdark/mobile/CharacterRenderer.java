@@ -23,6 +23,9 @@ public final class CharacterRenderer {
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
   public static final String IDLE_WALK_RESOURCE="player_peasant_idle_walk";
   public static final String LUERS_ROBE_RESOURCE="player_armor_mu0000058_idle_walk";
+  public static final String MOKDO_RESOURCE="player_weapon_mw001";
+  public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
+  public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; ADAPTED PLAYTEST HAND TRANSFORM";
 
   public static final float PLAYER_RENDER_SCALE=1.50f;
   public static final float SHADOW_RENDER_SCALE=0.72f;
@@ -55,6 +58,15 @@ public final class CharacterRenderer {
   public static final int ATLAS_HEIGHT=ATLAS_FRAME_HEIGHT*ATLAS_ROWS;
   public static final int SOURCE_IDLE_WALK_WIDTH=SOURCE_FRAME_WIDTH*IDLE_WALK_COLUMNS;
   public static final int SOURCE_ATLAS_HEIGHT=SOURCE_FRAME_HEIGHT*ATLAS_ROWS;
+  public static final int SOURCE_ACTION_COUNT=4;
+  private static final int[] BODY_ACTION_WIDTH={17,18,19,21};
+  private static final int[] BODY_ACTION_HEIGHT={51,52,51,49};
+  private static final int[] BODY_ACTION_OFFSET_X={8,2,6,4};
+  private static final int[] BODY_ACTION_OFFSET_Y={8,8,9,3};
+  private static final int[] ROBE_ACTION_WIDTH={14,19,15,20};
+  private static final int[] ROBE_ACTION_HEIGHT={33,22,30,21};
+  private static final int[] ROBE_ACTION_OFFSET_X={8,3,6,6};
+  private static final int[] ROBE_ACTION_OFFSET_Y={20,27,23,22};
 
   private static volatile float presentationWalkClock;
 
@@ -79,29 +91,45 @@ public final class CharacterRenderer {
     public final float x,y,walkClock,stateClock,stateDuration;
     public final Direction direction; public final State state; public final boolean hitFlash;
     public final String equipmentVisualRef,weaponVisualRef,effectVisualRef; public final EffectFamily effectFamily;
+    public final AnimationAction animationAction;
     public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,
         float stateDuration,boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,
         String effectVisualRef,EffectFamily effectFamily){
+      this(x,y,direction,state,walkClock,stateClock,stateDuration,hitFlash,equipmentVisualRef,
+          weaponVisualRef,effectVisualRef,effectFamily,inferAnimationAction(state,effectFamily,weaponVisualRef));
+    }
+    public Pose(float x,float y,Direction direction,State state,float walkClock,float stateClock,
+        float stateDuration,boolean hitFlash,String equipmentVisualRef,String weaponVisualRef,
+        String effectVisualRef,EffectFamily effectFamily,AnimationAction animationAction){
       this.x=x;this.y=y;this.direction=direction;this.state=state;this.walkClock=walkClock;
       this.stateClock=stateClock;this.stateDuration=stateDuration;this.hitFlash=hitFlash;
       this.equipmentVisualRef=equipmentVisualRef;this.weaponVisualRef=weaponVisualRef;
       this.effectVisualRef=effectVisualRef;this.effectFamily=effectFamily==null?EffectFamily.NONE:effectFamily;
+      this.animationAction=animationAction;
     }
   }
 
   private final Paint pixelPaint=new Paint();
   private final Paint fxPaint=new Paint();
   private final Bitmap idleWalkAtlas;
-  private final Bitmap attackAtlas;
   private final Bitmap luersRobeAtlas;
+  private final Bitmap mokdoSprite;
+  private final Bitmap[] bodyActionFrames=new Bitmap[SOURCE_ACTION_COUNT];
+  private final Bitmap[] robeActionFrames=new Bitmap[SOURCE_ACTION_COUNT];
 
   public CharacterRenderer(){
     pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);
     fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);
     Resources resources=findProcessResources();
     idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);
-    attackAtlas=tryLoadByName(resources,"player_peasant_attack",ACTION_WIDTH,ATLAS_HEIGHT);
     luersRobeAtlas=tryLoadByName(resources,LUERS_ROBE_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);
+    mokdoSprite=tryLoadByName(resources,MOKDO_RESOURCE,16,8);
+    for(int i=0;i<SOURCE_ACTION_COUNT;i++){
+      bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,
+          BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);
+      robeActionFrames[i]=tryLoadByName(resources,"player_robe_mu0000058_action02_"+i,
+          ROBE_ACTION_WIDTH[i],ROBE_ACTION_HEIGHT[i]);
+    }
     // Missing/corrupt/shape-invalid resources remain startup-safe through the fallback below.
   }
 
@@ -118,8 +146,14 @@ public final class CharacterRenderer {
   public static float presentationWalkClock(){return presentationWalkClock;}
 
   public boolean resourceAtlasActive(){return validAtlas(idleWalkAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);}
-  public boolean attackAtlasActive(){return validAtlas(attackAtlas,ACTION_WIDTH,ATLAS_HEIGHT);}
+  public boolean attackAtlasActive(){return sourceActionActive();}
   public boolean equipmentAtlasActive(){return validAtlas(luersRobeAtlas,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);}
+  public boolean weaponSourceActive(){return validAtlas(mokdoSprite,16,8);}
+  public boolean sourceActionActive(){
+    for(int i=0;i<SOURCE_ACTION_COUNT;i++)
+      if(!validAtlas(bodyActionFrames[i],BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]))return false;
+    return true;
+  }
 
   public void draw(Canvas canvas,Pose pose){
     if(canvas==null||pose==null||pose.direction==null||pose.state==null)return;
@@ -128,10 +162,19 @@ public final class CharacterRenderer {
     if((pose.state==State.IDLE||pose.state==State.WALK)&&resourceAtlasActive()){
       drawIdleWalk(canvas,pose,anchorY);
       drawEquipment(canvas,pose,anchorY);
+      drawWeapon(canvas,pose,anchorY,false);
       return;
     }
-    if(pose.state==State.ATTACK&&attackAtlasActive()){
-      drawAttack(canvas,pose,anchorY); return;
+    if(pose.state==State.ATTACK&&pose.animationAction==AnimationAction.SWING&&sourceActionActive()){
+      drawSourceAction(canvas,pose,anchorY); return;
+    }
+    if(pose.state==State.ATTACK&&resourceAtlasActive()){
+      // Fail soft with the accepted source body. Never replace a missing attack resource with
+      // procedural attack pixels or crash the process.
+      drawIdleWalk(canvas,pose,anchorY);
+      drawEquipment(canvas,pose,anchorY);
+      drawWeapon(canvas,pose,anchorY,false);
+      return;
     }
     drawSafePeasantFallback(canvas,pose,anchorY);
   }
@@ -165,12 +208,41 @@ public final class CharacterRenderer {
     return false;
   }
 
-  private void drawAttack(Canvas c,Pose pose,float anchorY){
-    int row=atlasRow(pose.direction); if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}
-    float q=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(0.9999f,pose.stateClock/pose.stateDuration));
-    int col=Math.min(ATTACK_COLUMNS-1,(int)(q*ATTACK_COLUMNS));
-    drawAtlasCell(c,attackAtlas,row,col,ATLAS_FRAME_WIDTH,ATLAS_FRAME_HEIGHT,
-        ATLAS_FRAME_WIDTH*.5f,ATLAS_FRAME_HEIGHT,PLAYER_RENDER_SCALE,anchorY,pose.x);
+  private void drawSourceAction(Canvas c,Pose pose,float anchorY){
+    int source=actionSourceIndex(pose.direction); if(source<0)return;
+    Bitmap body=bodyActionFrames[source];
+    float bodyLeft=Math.round(pose.x-BODY_ACTION_WIDTH[source]*.5f);
+    float bodyTop=Math.round(anchorY-BODY_ACTION_HEIGHT[source]);
+    drawRawSource(c,body,bodyLeft,bodyTop);
+    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)){
+      Bitmap robe=robeActionFrames[source];
+      if(validAtlas(robe,ROBE_ACTION_WIDTH[source],ROBE_ACTION_HEIGHT[source])){
+        float robeLeft=bodyLeft+ROBE_ACTION_OFFSET_X[source]-BODY_ACTION_OFFSET_X[source];
+        float robeTop=bodyTop+ROBE_ACTION_OFFSET_Y[source]-BODY_ACTION_OFFSET_Y[source];
+        drawRawSource(c,robe,robeLeft,robeTop);
+      }
+    }
+    drawWeapon(c,pose,anchorY,true);
+  }
+
+  private void drawWeapon(Canvas c,Pose pose,float anchorY,boolean attacking){
+    if(!containsVisualRef(pose.weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)
+        ||!weaponSourceActive())return;
+    boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
+    boolean down=pose.direction==Direction.SW||pose.direction==Direction.SE;
+    float centerX=pose.x+(left?-8f:8f);
+    float centerY=anchorY-(attacking?(down?17f:20f):(down?21f:24f));
+    c.save();
+    if(left)c.scale(-1f,1f,centerX,centerY);
+    c.rotate(attacking?(down?18f:-12f):0f,centerX,centerY);
+    drawRawSource(c,mokdoSprite,centerX-2f,centerY-4f);
+    c.restore();
+  }
+
+  private void drawRawSource(Canvas c,Bitmap bitmap,float left,float top){
+    if(bitmap==null)return;
+    c.drawBitmap(bitmap,null,new RectF(Math.round(left),Math.round(top),
+        Math.round(left+bitmap.getWidth()),Math.round(top+bitmap.getHeight())),pixelPaint);
   }
 
   private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,int frameWidth,int frameHeight,
@@ -217,6 +289,22 @@ public final class CharacterRenderer {
     return bitmap!=null&&bitmap.getWidth()==expectedWidth&&bitmap.getHeight()==expectedHeight;
   }
 
+  /** [ADAPTED PLAYTEST] Four unresolved group-02 source poses mapped to the four runtime facings. */
+  public static int actionSourceIndex(Direction direction){
+    if(direction==null)return -1;
+    switch(direction){case NE:return 0;case SE:return 1;case NW:return 2;case SW:return 3;default:return -1;}
+  }
+
+  private static AnimationAction inferAnimationAction(State state,EffectFamily effect,String weaponVisualRef){
+    if(state==State.ATTACK&&containsVisualRef(weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID))
+      return AnimationAction.SWING;
+    if(effect==EffectFamily.THROW)return AnimationAction.THROW;
+    if(effect==EffectFamily.KICK)return AnimationAction.KICK;
+    if(effect==EffectFamily.CAST||effect==EffectFamily.MAGIC)return AnimationAction.CAST;
+    if(effect==EffectFamily.SKILL)return AnimationAction.SKILL;
+    return state==State.ATTACK?AnimationAction.PUNCH:null;
+  }
+
   /** Temporary starter-peasant safety fallback. It is deliberately neutral and must never reuse martial-artist markers. */
   private void drawSafePeasantFallback(Canvas c,Pose pose,float anchorY){
     boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;
@@ -250,5 +338,5 @@ public final class CharacterRenderer {
   public String contractAuditSummary(){return CharacterRendererAudit.summary();}
   public boolean ownsPlayerLocalEffects(){return true;}
   public float playerRenderScale(){return PLAYER_RENDER_SCALE;}
-  public boolean usesDefaultAtlasFor(State state){return (state==State.IDLE||state==State.WALK)?resourceAtlasActive():state==State.ATTACK&&attackAtlasActive();}
+  public boolean usesDefaultAtlasFor(State state){return (state==State.IDLE||state==State.WALK)?resourceAtlasActive():state==State.ATTACK&&sourceActionActive();}
 }
