@@ -11,11 +11,11 @@ package com.projectdark.mobile;
  */
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
-  private static final float ATTACK_BEGIN_RANGE_B = 42f;
+  static final float ATTACK_BEGIN_RANGE_B = 42f;
   private static final float ATTACK_CANCEL_RANGE_B = 48f;
   private static final float CHASE_SPEED_B = 28f;
-  private static final int ATTACK_DAMAGE_B = 4;
-  private static final float ATTACK_COOLDOWN_B = 1.2f;
+  static final int ATTACK_DAMAGE_B = 4;
+  static final float ATTACK_COOLDOWN_B = 1.2f;
 
   public enum AttackRoute { LEGACY_RUNTIME, SHARED_RESOLVER }
   public enum SubmissionOutcome { NONE, ACCEPTED, REJECTED, ACTION_UNRESOLVED }

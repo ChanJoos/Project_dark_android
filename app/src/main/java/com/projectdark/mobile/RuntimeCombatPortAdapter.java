@@ -19,16 +19,27 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     boolean learned(String actorId,String actionId);
   }
 
+  public interface ControlPort {
+    boolean canAct(String actorId);
+  }
+
   private final RuntimeState state;
   private final LineOfSightPort lineOfSight;
   private final LearnedActionPort learnedActions;
+  private final ControlPort control;
   private final Map<String,Float> cooldowns=new HashMap<>();
 
   public RuntimeCombatPortAdapter(RuntimeState state,LineOfSightPort lineOfSight,LearnedActionPort learnedActions){
-    if(state==null||lineOfSight==null||learnedActions==null)throw new IllegalArgumentException("runtime combat dependencies");
+    this(state,lineOfSight,learnedActions,actorId->true);
+  }
+
+  public RuntimeCombatPortAdapter(RuntimeState state,LineOfSightPort lineOfSight,
+      LearnedActionPort learnedActions,ControlPort control){
+    if(state==null||lineOfSight==null||learnedActions==null||control==null)throw new IllegalArgumentException("runtime combat dependencies");
     this.state=state;
     this.lineOfSight=lineOfSight;
     this.learnedActions=learnedActions;
+    this.control=control;
   }
 
   public void tick(float dt){
@@ -43,6 +54,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
 
   public boolean actorAlive(String actorId){return entityAlive(actorId);}
   public boolean targetAlive(String targetId){return entityAlive(targetId);}
+  public boolean canAct(String actorId){return control.canAct(actorId);}
   public boolean learned(String actorId,String actionId){return learnedActions.learned(actorId,actionId);}
   public boolean cooldownReady(String actorId,String actionId){return cooldownRemaining(actorId,actionId)<=0f;}
 
