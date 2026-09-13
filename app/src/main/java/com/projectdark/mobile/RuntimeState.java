@@ -88,11 +88,26 @@ public final class RuntimeState {
 
   public boolean tryMove(float dx,float dy){if(!player.alive)return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(player.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
 
-  public boolean tryMoveMonster(Monster m,float dx,float dy){
-    if(m==null||!m.alive)return false;if(m.state!=Monster.State.ATTACK)m.state=Monster.State.CHASE;float bx=m.x,by=m.y;moveMonsterAxes(m,dx,dy);if(m.x!=bx||m.y!=by){m.visualFacing.updateLocomotion(m.x-bx,m.y-by);m.detourClock=Math.max(0f,m.detourClock-.05f);return true;}m.detourClock+=.05f;float px=-dy*m.detourSign,py=dx*m.detourSign;moveMonsterAxes(m,px,py);if(m.x!=bx||m.y!=by){m.visualFacing.updateLocomotion(m.x-bx,m.y-by);return true;}m.detourSign=-m.detourSign;px=-dy*m.detourSign;py=dx*m.detourSign;moveMonsterAxes(m,px,py);if(m.x!=bx||m.y!=by){m.visualFacing.updateLocomotion(m.x-bx,m.y-by);return true;}if(m.detourClock>.75f){m.detourSign=-m.detourSign;m.detourClock=0f;}return false;
+  public boolean tryMoveMonster(Monster m,float desiredDx,float desiredDy,float distance){
+    if(m==null||!m.alive)return false;
+    MonsterDiagonalLocomotion.Step applied=MonsterDiagonalLocomotion.select(
+        m.x,m.y,desiredDx,desiredDy,distance,m.visualFacing.locomotion(),m.detourSign,
+        new MonsterDiagonalLocomotion.Occupancy(){
+          public boolean canOccupy(float x,float y){
+            return x>=WORLD_MIN_X&&x<=WORLD_MAX_X&&y>=WORLD_MIN_Y&&y<=WORLD_MAX_Y
+                &&monsterCanOccupy(m,x,y);
+          }
+        });
+    if(applied==null){
+      m.detourClock+=.05f;
+      if(m.detourClock>.75f){m.detourSign=-m.detourSign;m.detourClock=0f;}
+      return false;
+    }
+    if(m.state!=Monster.State.ATTACK)m.state=Monster.State.CHASE;
+    m.x+=applied.dx;m.y+=applied.dy;m.visualFacing.setLocomotion(applied.facing);
+    m.detourClock=Math.max(0f,m.detourClock-.05f);
+    return true;
   }
-
-  private void moveMonsterAxes(Monster m,float dx,float dy){float nx=clamp(m.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(m.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);if(monsterCanOccupy(m,nx,m.y))m.x=nx;if(monsterCanOccupy(m,m.x,ny))m.y=ny;}
   private boolean playerCanOccupy(float x,float y){return !blocked(x,y,PLAYER_RADIUS)&&!monsterOccupied(null,x,y,PLAYER_RADIUS)&&!npcOccupied(x,y,PLAYER_RADIUS);}
   private boolean monsterCanOccupy(Monster self,float x,float y){return !blocked(x,y,MONSTER_RADIUS)&&!playerOccupied(x,y,MONSTER_RADIUS)&&!monsterOccupied(self,x,y,MONSTER_RADIUS)&&!npcOccupied(x,y,MONSTER_RADIUS);}
   public boolean blocked(float x,float y){return blocked(x,y,PLAYER_RADIUS);}
