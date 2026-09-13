@@ -114,7 +114,8 @@ public final class MonsterAIController {
 
     if(d<CHASE_RADIUS_B&&d>ATTACK_BEGIN_RANGE_B){
       float step=CHASE_SPEED_B*dt;
-      state.tryMoveMonster(m,Math.signum(dx)*step,Math.signum(dy)*step);
+      // AI intent remains continuous; World applies one legal 2:1 isometric diagonal segment.
+      state.tryMoveMonster(m,dx,dy,step);
       return;
     }
 

@@ -1,7 +1,6 @@
 package com.projectdark.mobile;
 
 import android.graphics.RectF;
-import com.projectdark.mobile.world.MonsterIsometricMovementPolicy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -89,48 +88,26 @@ public final class RuntimeState {
 
   public boolean tryMove(float dx,float dy){if(!player.alive)return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(player.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
 
-  /**
-   * World-owned monster locomotion gate. Arbitrary pursuit requests are projected onto one of
-   * the four legal 64x32 isometric axes before any position mutation. Destination application
-   * is atomic so collision cannot collapse a legal diagonal into a horizontal/vertical step.
-   */
-  public boolean tryMoveMonster(Monster m,float dx,float dy){
+  public boolean tryMoveMonster(Monster m,float desiredDx,float desiredDy,float distance){
     if(m==null||!m.alive)return false;
+    MonsterDiagonalLocomotion.Step applied=MonsterDiagonalLocomotion.select(
+        m.x,m.y,desiredDx,desiredDy,distance,m.visualFacing.locomotion(),m.detourSign,
+        new MonsterDiagonalLocomotion.Occupancy(){
+          public boolean canOccupy(float x,float y){
+            return x>=WORLD_MIN_X&&x<=WORLD_MAX_X&&y>=WORLD_MIN_Y&&y<=WORLD_MAX_Y
+                &&monsterCanOccupy(m,x,y);
+          }
+        });
+    if(applied==null){
+      m.detourClock+=.05f;
+      if(m.detourClock>.75f){m.detourSign=-m.detourSign;m.detourClock=0f;}
+      return false;
+    }
     if(m.state!=Monster.State.ATTACK)m.state=Monster.State.CHASE;
-    float bx=m.x,by=m.y;
-    MonsterIsometricMovementPolicy.Step primary=MonsterIsometricMovementPolicy.project(dx,dy);
-    if(tryMoveMonsterDiagonal(m,primary)){onMonsterMoved(m,bx,by,true);return true;}
-    m.detourClock+=.05f;
-    MonsterIsometricMovementPolicy.Step first=m.detourSign>=0
-        ?MonsterIsometricMovementPolicy.detourX(primary):MonsterIsometricMovementPolicy.detourY(primary);
-    if(tryMoveMonsterDiagonal(m,first)){onMonsterMoved(m,bx,by,false);return true;}
-    m.detourSign=-m.detourSign;
-    MonsterIsometricMovementPolicy.Step second=m.detourSign>=0
-        ?MonsterIsometricMovementPolicy.detourX(primary):MonsterIsometricMovementPolicy.detourY(primary);
-    if(tryMoveMonsterDiagonal(m,second)){onMonsterMoved(m,bx,by,false);return true;}
-    if(m.detourClock>.75f){m.detourSign=-m.detourSign;m.detourClock=0f;}
-    return false;
-  }
-
-  private boolean tryMoveMonsterDiagonal(Monster m,MonsterIsometricMovementPolicy.Step step){
-    if(step==null||step.isZero())return false;
-    if(!MonsterIsometricMovementPolicy.isLegalDiagonal(step.dx,step.dy))return false;
-    float nx=m.x+step.dx,ny=m.y+step.dy;
-    // Reject boundary truncation rather than clamping one component and creating a cardinal move.
-    if(nx<WORLD_MIN_X||nx>WORLD_MAX_X||ny<WORLD_MIN_Y||ny>WORLD_MAX_Y)return false;
-    if(!monsterCanOccupy(m,nx,ny))return false;
-    m.x=nx;m.y=ny;
+    m.x+=applied.dx;m.y+=applied.dy;m.visualFacing.setLocomotion(applied.facing);
+    m.detourClock=Math.max(0f,m.detourClock-.05f);
     return true;
   }
-
-  private void onMonsterMoved(Monster m,float bx,float by,boolean primary){
-    float movedX=m.x-bx,movedY=m.y-by;
-    if(!MonsterIsometricMovementPolicy.isLegalDiagonal(movedX,movedY))
-      throw new IllegalStateException("Illegal monster locomotion vector: "+movedX+","+movedY);
-    m.visualFacing.updateLocomotion(movedX,movedY);
-    if(primary)m.detourClock=Math.max(0f,m.detourClock-.05f);
-  }
-
   private boolean playerCanOccupy(float x,float y){return !blocked(x,y,PLAYER_RADIUS)&&!monsterOccupied(null,x,y,PLAYER_RADIUS)&&!npcOccupied(x,y,PLAYER_RADIUS);}
   private boolean monsterCanOccupy(Monster self,float x,float y){return !blocked(x,y,MONSTER_RADIUS)&&!playerOccupied(x,y,MONSTER_RADIUS)&&!monsterOccupied(self,x,y,MONSTER_RADIUS)&&!npcOccupied(x,y,MONSTER_RADIUS);}
   public boolean blocked(float x,float y){return blocked(x,y,PLAYER_RADIUS);}
