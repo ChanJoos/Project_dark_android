@@ -71,6 +71,11 @@ public final class CharacterRenderer {
   private static final int[] ROBE_ACTION_HEIGHT={33,22,30,21};
   private static final int[] ROBE_ACTION_OFFSET_X={8,3,6,6};
   private static final int[] ROBE_ACTION_OFFSET_Y={20,27,23,22};
+  // [ADAPTED PLAYTEST] Source-backed mw001 is locked to the mm001 hand per atlas frame.
+  // Column 0 is IDLE; columns 1..4 correspond to the accepted WALK cadence.
+  private static final float[][] CARRY_FRAME_X={{-6,-10,10,-6,-1},{6,10,-10,6,1},{-7,-10,10,-7,9},{7,10,-10,7,-9}};
+  private static final float[][] CARRY_FRAME_Y={{21,21,23,18,26},{21,21,23,18,26},{19,19,24,17,21},{19,19,24,17,21}};
+  private static final float[][] CARRY_FRAME_ANGLE={{-56,-62,-48,-59,-52},{-64,-58,-72,-61,-68},{-72,-78,-62,-75,-68},{-62,-56,-72,-59,-66}};
   private static volatile float presentationWalkClock;
 
   public enum Direction { NW, NE, SW, SE }
@@ -184,8 +189,9 @@ public final class CharacterRenderer {
     if(usesSourceActionPose(pose.state,pose.animationAction)&&sourceActionActive()){
       drawSourceAction(canvas,pose,anchorY);return;
     }
-    if(pose.state==State.ATTACK&&resourceAtlasActive()){
-      drawIdleWalk(canvas,pose,anchorY);drawEquipment(canvas,pose,anchorY);drawWeapon(canvas,pose,anchorY,false);return;
+    if(pose.state==State.ATTACK){
+      if(resourceAtlasActive()){drawIdleWalk(canvas,pose,anchorY);drawEquipment(canvas,pose,anchorY);drawWeapon(canvas,pose,anchorY,false);}
+      return;
     }
     drawSafePeasantFallback(canvas,pose,anchorY);
   }
@@ -217,7 +223,7 @@ public final class CharacterRenderer {
   private void drawSourceAction(Canvas c,Pose pose,float anchorY){
     AttackVisualComposition composition=attackVisualComposition(pose.direction,pose.equipmentVisualRef,pose.weaponVisualRef);
     int source=composition.sourceIndex;if(source<0)return;
-    float scale=normalizedActionScale(source);
+    float scale=SOURCE_PRESENTATION_SCALE;
     Bitmap body=bodyActionFrames[source];
     float bodyW=BODY_ACTION_WIDTH[source]*scale,bodyH=BODY_ACTION_HEIGHT[source]*scale;
     float bodyLeft=Math.round(pose.x-bodyW*.5f),bodyTop=Math.round(anchorY-bodyH);
@@ -237,10 +243,9 @@ public final class CharacterRenderer {
     if(composition.weaponVisible&&!composition.weaponBehindBody)drawWeapon(c,pose,anchorY,true);
   }
 
-  /** Bounds normalization happens inside the single 1.70 presentation contract. */
+  /** Every source layer uses the same 1.70 presentation scale; there is no action-only scale. */
   public static float normalizedActionScale(int source){
-    if(source<0||source>=SOURCE_ACTION_COUNT)return SOURCE_PRESENTATION_SCALE;
-    return SOURCE_PRESENTATION_SCALE*SOURCE_FRAME_HEIGHT/(float)BODY_ACTION_HEIGHT[source];
+    return SOURCE_PRESENTATION_SCALE;
   }
 
   public static AttackVisualComposition attackVisualComposition(Direction direction,String equipmentVisualRef,String weaponVisualRef){
@@ -255,9 +260,10 @@ public final class CharacterRenderer {
   private void drawWeapon(Canvas c,Pose pose,float anchorY,boolean attacking){
     if(!containsVisualRef(pose.weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)||!weaponSourceActive())return;
     float scale=SOURCE_PRESENTATION_SCALE;
-    float centerX=pose.x+(attacking?weaponAttackOffsetX(pose.direction):weaponCarryOffsetX(pose.direction))*scale;
-    float centerY=anchorY-(attacking?weaponAttackOffsetY(pose.direction):weaponCarryOffsetY(pose.direction))*scale;
-    float angle=attacking?weaponAttackAngle(pose.direction,attackPhase(pose)):weaponCarryAngle(pose.direction);
+    int frame=pose.state==State.WALK?1+walkFrameIndex(presentationWalkClock):0;
+    float centerX=pose.x+(attacking?weaponAttackOffsetX(pose.direction):weaponCarryOffsetX(pose.direction,frame))*scale;
+    float centerY=anchorY-(attacking?weaponAttackOffsetY(pose.direction):weaponCarryOffsetY(pose.direction,frame))*scale;
+    float angle=attacking?weaponAttackAngle(pose.direction,attackPhase(pose)):weaponCarryAngle(pose.direction,frame);
     c.save();
     if(pose.direction==Direction.NW||pose.direction==Direction.SW)c.scale(-1f,1f,centerX,centerY);
     c.rotate(angle,centerX,centerY);
@@ -272,14 +278,30 @@ public final class CharacterRenderer {
     if(direction==null)return 0f;
     switch(direction){case NW:return -56f;case NE:return -64f;case SW:return -72f;case SE:return -62f;default:return 0f;}
   }
+  public static float weaponCarryAngle(Direction direction,int atlasColumn){
+    int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));
+    if(row<0)return 0f;return CARRY_FRAME_ANGLE[row][column];
+  }
   public static float weaponCarryOffsetX(Direction direction){
     if(direction==null)return 0f;
     switch(direction){case NW:return -7f;case NE:return 6f;case SW:return -9f;case SE:return 8f;default:return 0f;}
   }
+  public static float weaponCarryOffsetX(Direction direction,int atlasColumn){return carryFrameAnchor(direction,atlasColumn,true);}
   public static float weaponCarryOffsetY(Direction direction){
     if(direction==null)return 22f;
     switch(direction){case NW:return 26f;case NE:return 24f;case SW:return 21f;case SE:return 23f;default:return 22f;}
   }
+  public static float weaponCarryOffsetY(Direction direction,int atlasColumn){return carryFrameAnchor(direction,atlasColumn,false);}
+  private static float carryFrameAnchor(Direction direction,int atlasColumn,boolean x){
+    int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));
+    if(row<0)return 0f;return x?CARRY_FRAME_X[row][column]:CARRY_FRAME_Y[row][column];
+  }
+
+  public static float actionHeightRatio(int source){
+    if(source<0||source>=SOURCE_ACTION_COUNT)return 1f;
+    return BODY_ACTION_HEIGHT[source]/(float)SOURCE_FRAME_HEIGHT;
+  }
+  public static boolean legacyProceduralAttackReachable(){return false;}
 
   public static float weaponAttackOffsetX(Direction direction){
     if(direction==null)return 0f;
