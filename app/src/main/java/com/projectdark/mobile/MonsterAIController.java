@@ -5,17 +5,10 @@ import java.util.Map;
 
 /**
  * Combat·Monster-owned runtime orchestration for prototype monster combat.
- *
- * Canon/evidence guardrails:
- * - Existing monster IDs/stats/spawn relationships remain owned by canonical/runtime data.
- * - Thresholds/movement values below preserve the pre-existing [B] prototype behavior.
- * - Shared-resolver routing owns action submission only; World/RuntimeState still owns movement facts.
- * - Default construction preserves the current legacy runtime until Director injects the shared route.
+ * Basic melee legality is shared with player combat through MeleeTileContract.
  */
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
-  static final float ATTACK_BEGIN_RANGE_B = 42f;
-  private static final float ATTACK_CANCEL_RANGE_B = 48f;
   private static final float CHASE_SPEED_B = 28f;
   static final int ATTACK_DAMAGE_B = 4;
   static final float ATTACK_COOLDOWN_B = 1.2f;
@@ -106,37 +99,30 @@ public final class MonsterAIController {
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
+    boolean adjacent=MeleeTileContract.canAttack(m.x,m.y,state.player().x,state.player().y);
     MonsterCanonicalSegmentLock lock=locomotionLocks.computeIfAbsent(m,key->new MonsterCanonicalSegmentLock());
 
     if(m.attackPrimed){
+      // Attack-start facing is a stable snapshot for the full action; target movement never re-aims it.
       lock.reset();
-      if(d>ATTACK_CANCEL_RANGE_B){
-        state.cancelMonsterAttack(m);
-        return;
-      }
       if(state.monsterAttackReady(m))lastSubmission=attackRouter.submit(state,m,++submissionSequence);
       return;
     }
 
-    if(d<CHASE_RADIUS_B&&d>ATTACK_BEGIN_RANGE_B){
+    if(d<CHASE_RADIUS_B&&!adjacent){
       float frameDistance=CHASE_SPEED_B*dt;
       MonsterDiagonalLocomotion.Step intent=lock.intent(dx,dy,frameDistance,m.visualFacing.locomotion());
       if(intent==null)return;
       float lockedDistance=(float)Math.sqrt(intent.dx*intent.dx+intent.dy*intent.dy);
       boolean moved=state.tryMoveMonster(m,intent.dx,intent.dy,lockedDistance);
-      if(moved){
-        lock.onApplied(lockedDistance,m.visualFacing.locomotion());
-      }else{
-        // A fully blocked canonical endpoint must not keep a stale segment alive forever.
-        lock.reset();
-      }
+      if(moved)lock.onApplied(lockedDistance,m.visualFacing.locomotion());
+      else lock.reset();
       return;
     }
 
     lock.reset();
-    if(d<=ATTACK_BEGIN_RANGE_B&&m.attackCooldown<=0f){
-      // Attack direction is snapshotted once in RuntimeState.beginMonsterAttack() and remains locked.
-      state.beginMonsterAttack(m);
+    if(adjacent&&m.attackCooldown<=0f){
+      WorldAttackFacing.startMonsterAttack(state,m);
     }else if(m.state==RuntimeState.Monster.State.CHASE){
       m.state=RuntimeState.Monster.State.IDLE;
     }
