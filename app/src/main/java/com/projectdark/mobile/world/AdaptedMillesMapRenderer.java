@@ -10,30 +10,37 @@ import com.projectdark.mobile.WorldDef;
  * Milles floor-foundation renderer.
  *
  * The floor is world-space, grass-first and deliberately independent of the navigation-cell grid.
- * Visible village circulation is rendered from connected route polylines that converge on a central
- * civic square; this replaces the prior rectangular road strips that still read like a prototype
- * board when the camera moved.
+ * Visible village circulation, waterside terrain and crossings are stable world-space surfaces rather
+ * than repeated navigation cells or screen-fixed decoration.
  */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_FLOOR_FOUNDATION_V2_ROAD_HIERARCHY";
+  public static final String STATUS="MILLES_FLOOR_FOUNDATION_V3_WATER_BANK_CROSSING";
 
   private final Paint outsidePaint=new Paint();
   private final Paint grassPaint=new Paint();
+  private final Paint wetBankPaint=new Paint();
+  private final Paint waterPaint=new Paint();
   private final Paint primaryRoadPaint=new Paint();
   private final Paint secondaryRoadPaint=new Paint();
   private final Paint quietRoadPaint=new Paint();
   private final Paint plazaPaint=new Paint();
   private final Paint gatePaint=new Paint();
+  private final Paint crossingUnderPaint=new Paint();
+  private final Paint crossingPaint=new Paint();
 
   public AdaptedMillesMapRenderer(){
     configureFill(outsidePaint,0xff1f2a22);
     // [ADAPTED] presentation colors only; not claimed as original Milles palette.
     configureFill(grassPaint,0xff66884d);
+    configureFill(wetBankPaint,0xff536f49);
+    configureFill(waterPaint,0xff486f76);
     configureRoute(primaryRoadPaint,0xffb8a276);
     configureRoute(secondaryRoadPaint,0xffad9a72);
     configureRoute(quietRoadPaint,0xff9e9270);
     configureFill(plazaPaint,0xffc8b58b);
     configureFill(gatePaint,0xffae986f);
+    configureRoute(crossingUnderPaint,0xff5c4936);
+    configureRoute(crossingPaint,0xffa98c61);
   }
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
@@ -47,9 +54,14 @@ public final class AdaptedMillesMapRenderer {
     // same village instead of repainting a viewport-fixed backdrop.
     drawWorldRect(canvas,world,WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,grassPaint);
 
-    // Draw circulation first so every route visually terminates beneath the civic square rather than
-    // producing stacked rectangle seams. Logical ROAD rectangles remain in MapLayer for navigation
-    // classification, but they are not exposed as visible geometry.
+    // Water is a floor-layer feature, so bank/wet transition and water are drawn before routes and
+    // crossings. The wider bank polygon prevents a hard water-to-default-grass cut.
+    for(AdaptedMillesMapLayer.WaterBody water:AdaptedMillesMapLayer.waterBodies()){
+      drawWorldPolygon(canvas,world,water.bankPoints,wetBankPaint);
+      drawWorldPolygon(canvas,world,water.waterPoints,waterPaint);
+    }
+
+    // Draw circulation over ground/wet terrain. Logical ROAD rectangles remain classification-only.
     for(AdaptedMillesMapLayer.Route route:AdaptedMillesMapLayer.routes()){
       switch(route.kind){
         case PRIMARY:
@@ -65,8 +77,7 @@ public final class AdaptedMillesMapRenderer {
       }
     }
 
-    // Plaza/gate are the only rectangular semantic surfaces deliberately rendered in this pass.
-    // The square is a civic destination; the gate is a broad transition pad at the future field axis.
+    // Plaza/gate remain broad semantic surfaces within this floor pass.
     for(AdaptedMillesMapLayer.Surface surface:AdaptedMillesMapLayer.surfaces()){
       if(surface.kind==AdaptedMillesMapLayer.SurfaceKind.PLAZA){
         drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,plazaPaint);
@@ -74,17 +85,40 @@ public final class AdaptedMillesMapRenderer {
         drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,gatePaint);
       }
     }
+
+    // Crossing is intentionally floor-layer presentation only for now. A dark under-stroke makes
+    // the bridge/causeway edge readable while preserving the explicit phase-9 collision deferral.
+    for(AdaptedMillesMapLayer.Crossing crossing:AdaptedMillesMapLayer.crossings()){
+      drawWorldLine(canvas,world,crossing.points,crossing.width+14f,crossingUnderPaint);
+      drawWorldLine(canvas,world,crossing.points,crossing.width,crossingPaint);
+    }
   }
 
   private static void drawWorldRoute(Canvas canvas,WorldRuntimeAdapter world,
       AdaptedMillesMapLayer.Route route,Paint paint){
+    drawWorldLine(canvas,world,route.points,route.width,paint);
+  }
+
+  private static void drawWorldLine(Canvas canvas,WorldRuntimeAdapter world,
+      float[] points,float width,Paint paint){
     Path path=new Path();
     boolean started=false;
-    for(int i=0;i<route.points.length;i+=2){
-      WorldCameraTransform.Point p=world.worldToScreen(route.points[i],route.points[i+1]);
+    for(int i=0;i<points.length;i+=2){
+      WorldCameraTransform.Point p=world.worldToScreen(points[i],points[i+1]);
       if(!started){path.moveTo(p.x,p.y);started=true;}else path.lineTo(p.x,p.y);
     }
-    paint.setStrokeWidth(route.width);
+    paint.setStrokeWidth(width);
+    canvas.drawPath(path,paint);
+  }
+
+  private static void drawWorldPolygon(Canvas canvas,WorldRuntimeAdapter world,float[] points,Paint paint){
+    if(points==null||points.length<6)return;
+    Path path=new Path();
+    for(int i=0;i<points.length;i+=2){
+      WorldCameraTransform.Point p=world.worldToScreen(points[i],points[i+1]);
+      if(i==0)path.moveTo(p.x,p.y);else path.lineTo(p.x,p.y);
+    }
+    path.close();
     canvas.drawPath(path,paint);
   }
 
