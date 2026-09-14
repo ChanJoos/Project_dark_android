@@ -4,9 +4,10 @@ package com.projectdark.mobile;
  * Runtime combat intent/cooldown controller.
  *
  * Evidence policy:
- * - [B] Current approach ranges, cooldown values and prototype action requirements come from
+ * - [B] Current non-melee ranges, cooldown values and prototype action requirements come from
  *   AttackDef/SkillDef reconstruction fixtures.
  * - [ADAPTED] Auto-approach is a mobile usability behavior, not an original movement claim.
+ * - Melee reach is no longer Euclidean: SWING/THRUST/PUNCH use CanonicalMeleeTileContract.
  * - This controller contains no XP, loot or unverified original server rules.
  */
 public final class CombatController {
@@ -54,7 +55,7 @@ public final class CombatController {
   public RuntimeState.Monster approachTarget(){return approachTarget;}
   public boolean approaching(){return intent!=Intent.NONE&&approachTarget!=null;}
 
-  /** [ADAPTED] Stores a deferred action until the player reaches the prototype action range. */
+  /** [ADAPTED] Stores a deferred action until the player reaches the action's spatial contract. */
   public boolean beginApproach(Intent next){
     if(next==null||next==Intent.NONE||target==null||!target.alive)return false;
     intent=next;approachTarget=target;return true;
@@ -68,7 +69,7 @@ public final class CombatController {
 
   public float intentRange(){
     switch(intent){
-      case ATTACK:return attackDef().range;
+      case ATTACK:return CanonicalMeleeTileContract.isMelee(attackDef().kind)?CanonicalMeleeTileContract.REACH_DISTANCE:attackDef().range;
       case CAST:return SkillDef.CAST_PROTO.range;
       case SKILL:return SkillDef.SKILL_PROTO.range;
       case KICK:return SkillDef.KICK_PROTO.range;
@@ -76,8 +77,32 @@ public final class CombatController {
     }
   }
 
+  /**
+   * Legacy range entry point retained for non-melee actions. When the caller supplies the active
+   * basic-attack range, melee definitions are resolved by exact adjacent tile rather than radius.
+   */
   public boolean inRange(RuntimeState state,float range){
-    return state!=null&&target!=null&&target.alive&&state.distanceTo(target)<=range;
+    if(state==null||target==null||!target.alive)return false;
+    AttackDef attack=attackDef();
+    if(CanonicalMeleeTileContract.isMelee(attack.kind)&&Math.abs(range-attack.range)<.001f)
+      return CanonicalMeleeTileContract.reachable(state.player().x,state.player().y,target.x,target.y);
+    return state.distanceTo(target)<=range;
+  }
+
+  public boolean attackInRange(RuntimeState state){
+    if(state==null||target==null||!target.alive)return false;
+    AttackDef attack=attackDef();
+    if(CanonicalMeleeTileContract.isMelee(attack.kind))
+      return CanonicalMeleeTileContract.reachable(state.player().x,state.player().y,target.x,target.y);
+    return state.distanceTo(target)<=attack.range;
+  }
+
+  public CharacterRenderer.Direction attackFacing(RuntimeState state){
+    if(state==null||target==null||!target.alive)return null;
+    AttackDef attack=attackDef();
+    if(CanonicalMeleeTileContract.isMelee(attack.kind))
+      return CanonicalMeleeTileContract.facing(state.player().x,state.player().y,target.x,target.y);
+    return CanonicalActorFacing.quantize(target.x-state.player().x,target.y-state.player().y,CharacterRenderer.Direction.SE);
   }
 
   public boolean hasUsableTarget(){return target!=null&&target.alive;}
