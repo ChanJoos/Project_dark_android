@@ -15,7 +15,6 @@ public final class MonsterCanonicalRuntimeGateAudit {
     if(!IsometricTileMovementAudit.verify())return false;
     if(!MillesProductionCollisionAudit.verify())return false;
 
-    // Critical regression: a target exactly north must not produce per-frame NE/NW alternation.
     MonsterCanonicalSegmentLock lock=new MonsterCanonicalSegmentLock();
     float mx=0f,my=0f,targetX=0f,targetY=-200f,frameDistance=.5f;
     CharacterRenderer.Direction first=null;
@@ -33,7 +32,6 @@ public final class MonsterCanonicalRuntimeGateAudit {
     if(first!=CharacterRenderer.Direction.NE)return false;
     if(Math.abs(mx)>MonsterCanonicalSegmentLock.SEGMENT_X+EPS)return false;
 
-    // A legal collision detour becomes the new lock; no fifth/cardinal direction is emitted.
     lock.reset();
     MonsterDiagonalLocomotion.Step northIntent=lock.intent(0f,-100f,1f,CharacterRenderer.Direction.SE);
     if(northIntent==null||northIntent.facing!=CharacterRenderer.Direction.NE)return false;
@@ -42,7 +40,6 @@ public final class MonsterCanonicalRuntimeGateAudit {
     if(afterDetour==null||afterDetour.facing!=CharacterRenderer.Direction.NW||
         !MonsterDiagonalLocomotion.isCanonical(afterDetour.dx,afterDetour.dy))return false;
 
-    // Attack facing snapshots canonical target delta and remains locked despite locomotion change.
     CanonicalActorFacing facing=new CanonicalActorFacing(CharacterRenderer.Direction.SE);
     CharacterRenderer.Direction expected=CanonicalActorFacing.quantize(-4f,-2f,CharacterRenderer.Direction.SE);
     facing.beginAttack(-4f,-2f);
