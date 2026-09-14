@@ -58,6 +58,7 @@ public final class WorldMoveTargetController {
   }
 
   public static final float TILE_STEP_SECONDS=.60f;
+  public static final float ADJACENT_TILE_DISTANCE=(float)Math.sqrt(32f*32f+16f*16f);
   public static final float DEFAULT_GROUND_TOLERANCE=0f;
   public static final float DEFAULT_NPC_APPROACH_TOLERANCE=56f;
   public static final float DEFAULT_MONSTER_APPROACH_TOLERANCE=72f;
@@ -101,7 +102,11 @@ public final class WorldMoveTargetController {
     sequence++;kind=requestKind;targetEntityId=entityId;tolerance=approachTolerance;cancelReason=CancelReason.NONE;lastStepDirection=null;stepClock=0f;
     if(requestKind==RequestKind.GROUND&&!insideAuthoredPlane(requestedX,requestedY))return blocked(requestedX,requestedY);
     TileCenter start=currentTile();
-    TileCenter goal=requestKind==RequestKind.GROUND?nearestTraversable(requestedX,requestedY):nearestApproachTile(requestedX,requestedY,approachTolerance);
+    TileCenter goal;
+    if(requestKind==RequestKind.GROUND)goal=nearestTraversable(requestedX,requestedY);
+    else if(requestKind==RequestKind.MONSTER_APPROACH&&approachTolerance<=ADJACENT_TILE_DISTANCE+.01f)
+      goal=nearestAdjacentApproachTile(start,requestedX,requestedY);
+    else goal=nearestApproachTile(requestedX,requestedY,approachTolerance);
     if(start==null||goal==null)return blocked(requestedX,requestedY);
     targetX=goal.x;targetY=goal.y;path=findPath(start,goal);waypointIndex=0;
     if(same(start,goal)){status=Status.REACHED;path=Collections.emptyList();}
@@ -149,10 +154,7 @@ public final class WorldMoveTargetController {
   private Snapshot blocked(float x,float y){targetX=x;targetY=y;status=Status.BLOCKED;path=Collections.emptyList();waypointIndex=0;stepClock=0f;return snapshot();}
   public Snapshot snapshot(){return new Snapshot(sequence,replacedRequestId,kind,targetEntityId,targetX,targetY,tolerance,status,cancelReason,Math.max(0,path.size()-waypointIndex),lastStepDirection);}
 
-  private TileCenter currentTile(){
-    TileCenter exact=byCenter.get(key(walker.worldX(),walker.worldY()));
-    return exact;
-  }
+  private TileCenter currentTile(){return byCenter.get(key(walker.worldX(),walker.worldY()));}
   private TileCenter nearestTraversable(float x,float y){
     TileCenter best=null;float bestDistance=Float.MAX_VALUE;
     for(TileCenter tile:tiles){if(!world.canPlayerOccupy(tile.x,tile.y))continue;float d=distanceSquared(tile.x,tile.y,x,y);if(d<bestDistance){bestDistance=d;best=tile;}}
@@ -162,6 +164,16 @@ public final class WorldMoveTargetController {
   private TileCenter nearestApproachTile(float x,float y,float approachTolerance){
     TileCenter best=null;float bestToEntity=Float.MAX_VALUE;
     for(TileCenter tile:tiles){if(!world.canPlayerOccupy(tile.x,tile.y))continue;float d=distance(tile.x,tile.y,x,y);if(d<=approachTolerance&&d<bestToEntity){bestToEntity=d;best=tile;}}
+    return best;
+  }
+  private TileCenter nearestAdjacentApproachTile(TileCenter start,float entityX,float entityY){
+    TileCenter best=null;float bestPathEstimate=Float.MAX_VALUE;
+    for(Direction d:Direction.values()){
+      TileCenter candidate=byCenter.get(key(entityX-d.dx,entityY-d.dy));
+      if(candidate==null||!world.canPlayerOccupy(candidate.x,candidate.y))continue;
+      float estimate=start==null?distanceSquared(candidate.x,candidate.y,walker.worldX(),walker.worldY()):heuristic(start,candidate);
+      if(estimate<bestPathEstimate){bestPathEstimate=estimate;best=candidate;}
+    }
     return best;
   }
   private List<TileCenter> findPath(TileCenter start,TileCenter goal){
@@ -185,9 +197,7 @@ public final class WorldMoveTargetController {
     List<TileCenter> reversed=new ArrayList<>();for(Node n=goal;n!=null;n=n.parent)reversed.add(n.tile);
     Collections.reverse(reversed);if(!reversed.isEmpty())reversed.remove(0);return reversed;
   }
-  private static float heuristic(TileCenter a,TileCenter b){
-    float row=Math.abs(a.y-b.y)/16f,column=Math.abs(a.x-b.x)/32f;return Math.max(row,column);
-  }
+  private static float heuristic(TileCenter a,TileCenter b){float row=Math.abs(a.y-b.y)/16f,column=Math.abs(a.x-b.x)/32f;return Math.max(row,column);}
   private static boolean same(TileCenter a,TileCenter b){return close(a.x,b.x)&&close(a.y,b.y);}
   private static boolean close(float a,float b){return Math.abs(a-b)<.01f;}
   private static float distanceSquared(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return dx*dx+dy*dy;}
