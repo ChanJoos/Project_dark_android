@@ -14,8 +14,9 @@ import java.util.Map;
 
 /** Milles vertical slice reconstructed against the user-supplied reference video. */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_VIDEO_REFERENCE_V5_GRASS_PATH_PLAZA_GARDEN_WATER";
+  public static final String STATUS="MILLES_VIDEO_REFERENCE_V6_NATURAL_PATH_SPLIT";
   public static final String REFERENCE_COMPOSITION="grass-first village; branching diagonal paths; central fountain; fenced tree gardens; water-side landmark";
+  public static final String ROAD_SURFACE_STATUS="ADAPTED_SOURCE_GROUND_VARIANT_PENDING_TRUE_DIRT_SOURCE";
   public static final float LOGICAL_GROUND_WIDTH=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   public static final float LOGICAL_GROUND_HEIGHT=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private final Paint pixel=new Paint();private final Paint backdrop=new Paint();
@@ -68,7 +69,14 @@ public final class AdaptedMillesMapRenderer {
     drawFoot(canvas,world,"market/OBJ_cart.png",s.x-230f,s.y+302f,.86f);
   }
 
-  private static String terrainFor(AdaptedMillesIsometricTileLayer.TileKind kind){switch(kind){case ROAD:case PLAZA:case GATE:return "terrain/OBJ_stone_01.png";default:return "terrain/OBJ_ground_01.png";}}
+  private static String terrainFor(AdaptedMillesIsometricTileLayer.TileKind kind){
+    switch(kind){
+      case ROAD:return "terrain/OBJ_ground_02.png";
+      case PLAZA:
+      case GATE:return "terrain/OBJ_stone_01.png";
+      default:return "terrain/OBJ_ground_01.png";
+    }
+  }
   private void drawGround(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=world.worldToScreen(wx,wy);float w=LOGICAL_GROUND_WIDTH*scale,h=LOGICAL_GROUND_HEIGHT*scale;RectF dst=new RectF(Math.round(p.x-w*.5f),Math.round(p.y-h*.5f),Math.round(p.x+w*.5f),Math.round(p.y+h*.5f));if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,null,dst,pixel);}
   private void drawFoot(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=world.worldToScreen(wx,wy);float w=b.getWidth()*scale,h=b.getHeight()*scale;RectF dst=new RectF(Math.round(p.x-w*.5f),Math.round(p.y-h),Math.round(p.x+w*.5f),Math.round(p.y));if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,null,dst,pixel);}
   private Bitmap bitmap(String path){if(cache.containsKey(path))return cache.get(path);Bitmap b=null;if(assets!=null){try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}}cache.put(path,b);return b;}
