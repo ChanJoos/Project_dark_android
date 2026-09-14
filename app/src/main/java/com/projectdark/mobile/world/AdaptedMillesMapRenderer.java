@@ -10,14 +10,18 @@ import com.projectdark.mobile.WorldDef;
  * Milles floor-foundation renderer.
  *
  * The floor is world-space, grass-first and deliberately independent of the navigation-cell grid.
- * Visible village circulation, waterside terrain and crossings are stable world-space surfaces rather
- * than repeated navigation cells or screen-fixed decoration.
+ * Visible village circulation, waterside terrain, landmark footprints and crossings are stable
+ * world-space surfaces rather than repeated navigation cells or screen-fixed decoration.
  */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_FLOOR_FOUNDATION_V3_WATER_BANK_CROSSING";
+  public static final String STATUS="MILLES_FLOOR_FOUNDATION_V4_DISTRICT_LANDMARK_FOOTPRINTS";
 
   private final Paint outsidePaint=new Paint();
   private final Paint grassPaint=new Paint();
+  private final Paint serviceGardenPaint=new Paint();
+  private final Paint craftYardPaint=new Paint();
+  private final Paint churchQuietPaint=new Paint();
+  private final Paint marketCommonsPaint=new Paint();
   private final Paint wetBankPaint=new Paint();
   private final Paint waterPaint=new Paint();
   private final Paint primaryRoadPaint=new Paint();
@@ -32,6 +36,10 @@ public final class AdaptedMillesMapRenderer {
     configureFill(outsidePaint,0xff1f2a22);
     // [ADAPTED] presentation colors only; not claimed as original Milles palette.
     configureFill(grassPaint,0xff66884d);
+    configureFill(serviceGardenPaint,0xff718e57);
+    configureFill(craftYardPaint,0xff827b5b);
+    configureFill(churchQuietPaint,0xff9c9878);
+    configureFill(marketCommonsPaint,0xff7b8457);
     configureFill(wetBankPaint,0xff536f49);
     configureFill(waterPaint,0xff486f76);
     configureRoute(primaryRoadPaint,0xffb8a276);
@@ -54,6 +62,29 @@ public final class AdaptedMillesMapRenderer {
     // same village instead of repainting a viewport-fixed backdrop.
     drawWorldRect(canvas,world,WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,grassPaint);
 
+    // District pads reserve stable landmark breathing room before vertical assets are reintroduced.
+    // Their irregular polygons create readable district transitions without exposing navigation cells.
+    for(AdaptedMillesMapLayer.DistrictPad pad:AdaptedMillesMapLayer.districtPads()){
+      Paint paint;
+      switch(pad.kind){
+        case CHURCH_QUIET:
+        case CIVIC_STONE:
+          paint=churchQuietPaint;
+          break;
+        case CRAFT_YARD:
+          paint=craftYardPaint;
+          break;
+        case MARKET_COMMONS:
+          paint=marketCommonsPaint;
+          break;
+        case SERVICE_GARDEN:
+        default:
+          paint=serviceGardenPaint;
+          break;
+      }
+      drawWorldPolygon(canvas,world,pad.points,paint);
+    }
+
     // Water is a floor-layer feature, so bank/wet transition and water are drawn before routes and
     // crossings. The wider bank polygon prevents a hard water-to-default-grass cut.
     for(AdaptedMillesMapLayer.WaterBody water:AdaptedMillesMapLayer.waterBodies()){
@@ -61,7 +92,7 @@ public final class AdaptedMillesMapRenderer {
       drawWorldPolygon(canvas,world,water.waterPoints,waterPaint);
     }
 
-    // Draw circulation over ground/wet terrain. Logical ROAD rectangles remain classification-only.
+    // Draw circulation over district ground/wet terrain. Logical ROAD rectangles remain classification-only.
     for(AdaptedMillesMapLayer.Route route:AdaptedMillesMapLayer.routes()){
       switch(route.kind){
         case PRIMARY:
