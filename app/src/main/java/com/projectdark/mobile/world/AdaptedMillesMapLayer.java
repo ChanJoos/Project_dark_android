@@ -5,16 +5,17 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Renderable [ADAPTED]/[B] Milles prototype map composition.
- * This is not claimed as verified original geometry; replace zone-by-zone as source evidence is calibrated.
+ * World-space [ADAPTED]/[B] Milles composition.
  *
- * Gate C composition rule: broad grass is the default. Bright stone is reserved for a small readable
- * village spine, shop/church frontage, plaza, market approach, lake approach, and south exit. This
- * deliberately avoids the former overlapping road/plaza checker that made the production slice noisy.
+ * Verified full original geometry is unavailable, so unknown space is deliberately designed as a
+ * coherent quiet medieval village rather than left empty or filled with spawn-relative clutter.
+ * Logical surface rectangles remain available to navigation/classification code, while visual roads
+ * are authored as connected world-space routes converging on the civic square.
  */
 public final class AdaptedMillesMapLayer {
   public enum SurfaceKind { GROUND, ROAD, PLAZA, GATE }
   public enum StructureKind { HOUSE, HALL, SHOP, WALL, LANDMARK }
+  public enum RouteKind { PRIMARY, SECONDARY, QUIET }
 
   public static final class Surface {
     public final String id; public final SurfaceKind kind; public final float left,top,right,bottom; public final String evidence,status;
@@ -24,39 +25,58 @@ public final class AdaptedMillesMapLayer {
     public final String id; public final StructureKind kind; public final float left,top,right,bottom; public final String evidence,status,assetRef;
     Structure(String id,StructureKind kind,float l,float t,float r,float b,String evidence,String status,String assetRef){this.id=id;this.kind=kind;left=l;top=t;right=r;bottom=b;this.evidence=evidence;this.status=status;this.assetRef=assetRef;}
   }
+  public static final class Route {
+    public final String id; public final RouteKind kind; public final float width; public final float[] points; public final String evidence,status;
+    Route(String id,RouteKind kind,float width,String evidence,String status,float... points){
+      if(points==null||points.length<4||(points.length&1)!=0)throw new IllegalArgumentException("route needs x/y pairs");
+      this.id=id;this.kind=kind;this.width=width;this.evidence=evidence;this.status=status;this.points=points.clone();
+    }
+  }
 
-  private static final String E="ADAPTED/B", S="PROTOTYPE_REPLACE_WITH_VERIFIED_MILLES", A="PENDING_CROP";
+  private static final String E="ADAPTED/B";
+  private static final String S="ADAPTED_COHERENT_MEDIEVAL_VILLAGE_PENDING_SOURCE_CALIBRATION";
+  private static final String A="PENDING_ASSET_CLASSIFICATION";
 
   /**
-   * World-owned authored surface composition for the first playable Milles slice.
-   *
-   * Landmarks in the current production placement cluster around spawn (620,560): potion shop west,
-   * weapon/general shops north, church north-east, inn east, well/plaza center, market south-west,
-   * lake south-east. Keep those destinations connected without paving the entire village.
+   * Logical terrain coverage. These rectangles are intentionally broad semantic regions for existing
+   * navigation/tile classification, not the visible road geometry.
    */
   private static final List<Surface> SURFACES=Collections.unmodifiableList(Arrays.asList(
-      // Broad grass field: visual breathing room is the default everywhere.
       new Surface("milles_ground",SurfaceKind.GROUND,64f,48f,2304f,1600f,E,S),
+      new Surface("north_service_corridor",SurfaceKind.ROAD,550f,120f,760f,520f,E,S),
+      new Surface("west_craft_corridor",SurfaceKind.ROAD,150f,520f,540f,720f,E,S),
+      new Surface("east_church_corridor",SurfaceKind.ROAD,780f,430f,1380f,660f,E,S),
+      new Surface("central_civic_square",SurfaceKind.PLAZA,500f,480f,830f,730f,E,S),
+      new Surface("south_market_corridor",SurfaceKind.ROAD,540f,690f,760f,1510f,E,S),
+      new Surface("waterside_corridor",SurfaceKind.ROAD,760f,690f,1390f,1160f,E,S),
+      new Surface("south_gate",SurfaceKind.GATE,570f,1450f,730f,1600f,E,"ADAPTED_EXIT_AXIS_TARGET_PENDING")));
 
-      // Single bright northern frontage connecting potion -> weapon -> general -> church -> inn.
-      new Surface("north_landmark_frontage",SurfaceKind.ROAD,300f,365f,1075f,485f,E,S),
+  /**
+   * Visible road hierarchy. All routes are stable absolute world coordinates and converge on the
+   * civic square; none are derived from player spawn. Curves are represented as short connected
+   * segments so the renderer can produce continuous paths rather than rectangular test strips.
+   */
+  private static final List<Route> ROUTES=Collections.unmodifiableList(Arrays.asList(
+      // North: residential/service district. Slight bend avoids an artificial cross-shaped board.
+      new Route("north_service_route",RouteKind.PRIMARY,112f,E,S,
+          665f,535f, 650f,405f, 675f,285f, 735f,150f),
+      // West: equipment/craft district; narrower than the gate road.
+      new Route("west_craft_route",RouteKind.SECONDARY,92f,E,S,
+          530f,605f, 420f,620f, 315f,665f, 185f,725f),
+      // East: church/quiet landmark approach with more stone language at the destination.
+      new Route("east_church_route",RouteKind.PRIMARY,104f,E,S,
+          800f,585f, 955f,570f, 1120f,525f, 1325f,455f),
+      // South: widest civic/market/exit axis and future connection to outside fields.
+      new Route("south_market_gate_route",RouteKind.PRIMARY,126f,E,S,
+          665f,700f, 680f,860f, 645f,1040f, 625f,1240f, 650f,1515f),
+      // South-east: quieter waterside route; deliberately thin and meandering.
+      new Route("waterside_route",RouteKind.QUIET,76f,E,S,
+          790f,680f, 930f,735f, 1055f,820f, 1165f,940f, 1305f,1085f)));
 
-      // Compact center around spawn/well. Intentionally much smaller than the former 540x355 plaza.
-      new Surface("central_plaza",SurfaceKind.PLAZA,500f,500f,790f,690f,E,S),
-
-      // Main south spine from central plaza toward market/exit. One readable route, not parallel lanes.
-      new Surface("south_spine",SurfaceKind.ROAD,585f,650f,715f,1510f,E,S),
-
-      // Short west branch to the stall/cart district while preserving grass around props.
-      new Surface("west_market_branch",SurfaceKind.ROAD,355f,700f,585f,805f,E,S),
-
-      // Short east branch approaches the lake shoreline but does not pave beneath the lake landmark.
-      new Surface("lake_approach",SurfaceKind.ROAD,700f,675f,900f,755f,E,S),
-
-      // Small south commons landing before the exit rather than a second giant plaza.
-      new Surface("south_commons",SurfaceKind.PLAZA,525f,1260f,825f,1450f,E,S),
-      new Surface("south_gate",SurfaceKind.GATE,585f,1450f,715f,1600f,E,"PROTOTYPE_TARGET_PENDING")));
-
+  /*
+   * Structure footprints are retained as planning/collision candidates only. They are NOT rendered by
+   * the floor pass and must be reclassified REUSE/REWORK/REMAKE/NEW before vertical assets return.
+   */
   private static final List<Structure> STRUCTURES=Collections.unmodifiableList(Arrays.asList(
       new Structure("northwest_house",StructureKind.HOUSE,150f,105f,390f,300f,E,S,A),
       new Structure("north_hall",StructureKind.HALL,540f,90f,800f,280f,E,S,A),
@@ -81,5 +101,6 @@ public final class AdaptedMillesMapLayer {
 
   private AdaptedMillesMapLayer(){}
   public static List<Surface> surfaces(){return SURFACES;}
+  public static List<Route> routes(){return ROUTES;}
   public static List<Structure> structures(){return STRUCTURES;}
 }
