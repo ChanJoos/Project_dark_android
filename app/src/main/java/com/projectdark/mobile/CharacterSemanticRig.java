@@ -6,11 +6,13 @@ import android.graphics.Rect;
 /**
  * Source-derived semantic attachment rig for paper-doll layers.
  * Heuristic by design for detached action bitmaps. WALK BODY/robe atlases already share
- * one authored 36x48 cell coordinate system, so that authored registration wins over
- * alpha-derived re-centering.
+ * one authored 36x48 cell coordinate system, so authored registration wins over
+ * alpha-derived re-centering. The live idle/walk weapon grip also uses the audited
+ * per-direction/per-frame authored carry-anchor table instead of an alpha-edge guess.
  */
 public final class CharacterSemanticRig {
   public static final String EVIDENCE="ADAPTED_SOURCE_DERIVED_SEMANTIC_HEURISTIC";
+  public static final String IDLE_WALK_HAND_EVIDENCE="ADAPTED_AUTHORED_IDLE_WALK_HAND_TABLE_NOT_ALPHA_EDGE";
 
   public static final class Point {
     public final float x,y;
@@ -47,8 +49,31 @@ public final class CharacterSemanticRig {
     Point foot=bandCenter(bitmap,source,l,r,Math.max(t,b-2),b,true);
     Point pelvis=bandCenter(bitmap,source,l,r,t+Math.round(h*.58f),t+Math.round(h*.76f),false);
     Point shoulder=bandCenter(bitmap,source,l,r,t+Math.round(h*.24f),t+Math.round(h*.43f),false);
-    Point hand=outerCluster(bitmap,source,l,r,t+Math.round(h*.30f),t+Math.round(h*.72f),direction,shoulder);
+    Point hand=idleWalkAuthoredHand(bitmap,source,direction);
+    if(hand==null)hand=outerCluster(bitmap,source,l,r,t+Math.round(h*.30f),t+Math.round(h*.72f),direction,shoulder);
     return new Anchors(foot,pelvis,shoulder,hand,authored[0],authored[1]);
+  }
+
+  /**
+   * The packaged idle/walk BODY atlas already has an audited per-direction/per-frame hand
+   * attachment table in CharacterRenderer. Reusing that authored table for the live mw001
+   * pivot avoids treating an arbitrary outer alpha edge (hair/torso/elbow) as the hand.
+   * This remains [ADAPTED] until source metadata explicitly names the original hand pivot.
+   */
+  private static Point idleWalkAuthoredHand(Bitmap bitmap,Rect source,CharacterRenderer.Direction direction){
+    if(bitmap==null||source==null||direction==null)return null;
+    if(bitmap.getWidth()!=CharacterRenderer.SOURCE_IDLE_WALK_WIDTH||bitmap.getHeight()!=CharacterRenderer.SOURCE_ATLAS_HEIGHT)return null;
+    if(source.width()!=CharacterRenderer.SOURCE_FRAME_WIDTH||source.height()!=CharacterRenderer.SOURCE_FRAME_HEIGHT)return null;
+    if(source.left<0||source.left%CharacterRenderer.SOURCE_FRAME_WIDTH!=0)return null;
+    int column=source.left/CharacterRenderer.SOURCE_FRAME_WIDTH;
+    if(column<0||column>=CharacterRenderer.IDLE_WALK_COLUMNS)return null;
+    float x=CharacterRenderer.SOURCE_FOOT_ANCHOR_X+CharacterRenderer.weaponCarryOffsetX(direction,column);
+    float y=CharacterRenderer.weaponCarryOffsetY(direction,column);
+    return new Point(x,y);
+  }
+
+  public static boolean usesAuthoredIdleWalkHandAnchor(Bitmap bitmap,Rect source,CharacterRenderer.Direction direction){
+    return idleWalkAuthoredHand(bitmap,source,direction)!=null;
   }
 
   /**
