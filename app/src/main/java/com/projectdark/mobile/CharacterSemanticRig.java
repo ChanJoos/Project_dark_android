@@ -5,8 +5,9 @@ import android.graphics.Rect;
 
 /**
  * Source-derived semantic attachment rig for paper-doll layers.
- * Heuristic by design: anchors are derived from the packaged alpha pixels and are not
- * represented as canonical source metadata.
+ * Heuristic by design for detached action bitmaps. WALK BODY/robe atlases already share
+ * one authored 36x48 cell coordinate system, so that authored registration wins over
+ * alpha-derived re-centering.
  */
 public final class CharacterSemanticRig {
   public static final String EVIDENCE="ADAPTED_SOURCE_DERIVED_SEMANTIC_HEURISTIC";
@@ -51,13 +52,16 @@ public final class CharacterSemanticRig {
   }
 
   /**
-   * Align garment to BODY in the shared source coordinate system.
-   * WALK atlases have authoredOffset=(0,0); group-02 action bitmaps carry their authored
-   * BODY_ACTION_OFFSET / ROBE_ACTION_OFFSET here so local bitmap anchors are never compared
-   * as though both sprites started at the same source origin.
+   * WALK layers already occupy the same authored atlas-cell coordinates. Re-deriving their
+   * vertical placement from alpha pelvis/foot bands caused the robe to hang from the hips.
+   * For those shared-atlas layers (both authored offsets are exactly zero), preserve authored
+   * registration and apply no extra translation. Detached group-02 action bitmaps still need
+   * translation in their authored shared action coordinate system.
    */
   public static Translation garmentTranslation(Anchors body,Anchors garment){
     if(body==null||garment==null)return new Translation(0f,0f);
+    if(body.authoredOffsetX==0f&&body.authoredOffsetY==0f&&garment.authoredOffsetX==0f&&garment.authoredOffsetY==0f)
+      return new Translation(0f,0f);
     float dx=body.globalPelvisX()-garment.globalPelvisX();
     float footDy=body.globalFootY()-garment.globalFootY();
     float pelvisDy=body.globalPelvisY()-garment.globalPelvisY();
