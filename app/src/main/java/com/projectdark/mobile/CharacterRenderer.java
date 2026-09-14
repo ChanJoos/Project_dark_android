@@ -17,7 +17,7 @@ import java.util.List;
 public final class CharacterRenderer {
   public static final String EVIDENCE="LOD_DRESSUP_HAR_MM001_MALE_BASE_BODY+ADAPTED";
   public static final String ASSET_STATUS="PRODUCTION_WEBP_IDLE_WALK_ACTIVE";
-  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260914_R2";
+  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260914_R3";
   public static final String STARTER_ARCHETYPE="PEASANT";
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
@@ -25,15 +25,15 @@ public final class CharacterRenderer {
   public static final String LUERS_ROBE_RESOURCE="player_armor_mu0000058_idle_walk";
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
-  public static final String ACTION_TEMPORAL_EVIDENCE="mm001 group 02 has one verified source crop per canonical facing; temporal sequence semantics UNRESOLVED; runtime shows source action pose for the full ATTACK state without fabricated intermediate frames";
+  public static final String ACTION_TEMPORAL_EVIDENCE="group-02 temporal semantics remain UNRESOLVED; runtime stages source-backed IDLE wind-up -> group-02 BODY+robe+mw001 strike -> source-backed IDLE recovery without fabricated intermediate frames";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; ADAPTED PLAYTEST HAND TRANSFORM";
-  public static final String ATTACK_PRESENTATION_EVIDENCE="actual group-02 BODY + equipped FULL_BODY robe + single mw001 source sprite; no afterimage/trail; ADAPTED PLAYTEST SWING";
+  public static final String ATTACK_PRESENTATION_EVIDENCE="source-backed wind-up/strike/recovery with actual group-02 BODY + equipped FULL_BODY robe + single mw001 source sprite; no afterimage/trail; ADAPTED PLAYTEST SWING";
   public static final String ATTACK_DIRECTION_EVIDENCE="runtime Pose.direction selects source, independent body/weapon mirror, depth, hand offset and angle; previously DEVICE-PASS target-facing mapping preserved";
   public static final String PAPER_DOLL_ATTACK_EVIDENCE="ATTACK consumes current equipmentVisualRef and weaponVisualRef; no baked equipment";
-  public static final String ATTACK_FALLBACK_EVIDENCE="missing/unready group-02 ATTACK may show the complete equipped source IDLE paper doll only as a fail-safe, but weapon SWING is disabled on that fallback so weapon-only attack animation is unreachable";
-  public static final String ATTACK_GEOMETRY_EVIDENCE="actual group-02 BODY alpha is normalized by translation plus vertical source crop into the accepted IDLE height/foot/center viewport; common presentation scale remains exactly 1.70";
-  public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 uses the matching group-02 source atomically with BODY for every source attack pose; never BODY-only or static-IDLE-under-swing";
-  public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted measured X registration; SW/SE derive per-frame X+Y registration from actual runtime BODY/robe alpha center and foot-bottom deltas using the same direction/frame/walk clock";
+  public static final String ATTACK_FALLBACK_EVIDENCE="missing/unready group-02 ATTACK preserves the complete equipped source IDLE paper doll; weapon SWING is disabled on fallback so weapon-only attack animation is unreachable";
+  public static final String ATTACK_GEOMETRY_EVIDENCE="full group-02 BODY source pixels are preserved at common presentation scale 1.70 and aligned by semantic foot/center translation; no destructive action crop";
+  public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 uses the matching group-02 source atomically with BODY for every strike pose; never BODY-only or static-IDLE-under-swing";
+  public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE use stable per-frame semantic foot/pivot registration with no live alpha recentering, continuity <=2 source px, and the same direction/frame/walk clock";
   public static final String WEAPON_TRANSFORM_EVIDENCE="body mirror and weapon mirror are independent; mw001 receives exactly one local mirror and mirrored west-facing angle signs are source-corrected";
   public static final String HIT_POSE_EVIDENCE="HIT/HURT/FLINCH character pose is disabled; source paper doll remains visually stable while damage feedback is external";
 
@@ -47,6 +47,8 @@ public final class CharacterRenderer {
   public static final float WALK_FRAME_SECONDS=.12f;
   public static final float WALK_CYCLE_SECONDS=WALK_FRAME_SECONDS*4f;
   public static final float WALK_FRAMES_PER_SECOND=1f/WALK_FRAME_SECONDS;
+  public static final float ATTACK_ACTION_BEGIN=.18f;
+  public static final float ATTACK_ACTION_END=.78f;
   public static final boolean HARD_PIXEL_GRID=true;
   public static final boolean STARTER_WEAPONLESS=true;
   public static final boolean STARTER_OFFHAND_EMPTY=true;
@@ -83,8 +85,9 @@ public final class CharacterRenderer {
   private static final float[][] CARRY_FRAME_X={{-6,-10,10,-6,-1},{6,10,-10,6,1},{-7,-10,10,-7,9},{7,10,-10,7,-9}};
   private static final float[][] CARRY_FRAME_Y={{21,21,23,18,26},{21,21,23,18,26},{19,19,24,17,21},{19,19,24,17,21}};
   private static final float[][] CARRY_FRAME_ANGLE={{56,62,48,59,52},{-64,-58,-72,-61,-68},{72,78,62,75,68},{-62,-56,-72,-59,-66}};
-  /* Preserve the device-natural NW/NE registration exactly. SW/SE are re-registered from live alpha below. */
+  /* NW/NE are the accepted device baseline. SW/SE retain measured X but use the shared source-foot anchor for Y. */
   private static final float[][] ROBE_FRAME_X={{-1,-2,-1,0,1},{2,2,2,0,1},{-3,-2,0,2,1},{3,2,1,-1,-1}};
+  private static final float[][] ROBE_FRAME_Y={{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
   private static volatile float presentationWalkClock;
 
   public enum Direction { NW, NE, SW, SE }
@@ -188,6 +191,8 @@ public final class CharacterRenderer {
   public boolean sourceActionActive(){for(int i=0;i<SOURCE_ACTION_COUNT;i++)if(!validAtlas(bodyActionFrames[i],BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]))return false;return true;}
 
   public static boolean usesSourceActionPose(State state,AnimationAction action){return state==State.ATTACK&&action==AnimationAction.SWING;}
+  public static boolean attackUsesActionPose(float phase){float q=Math.max(0f,Math.min(1f,phase));return q>=ATTACK_ACTION_BEGIN&&q<ATTACK_ACTION_END;}
+  public static boolean attackUsesDestructiveCrop(){return false;}
   public static int paperDollAtlasColumn(State state,float walkClock){return state==State.WALK?1+walkFrameIndex(walkClock):0;}
   public static boolean sourceActionLayersReadyContract(String equipmentVisualRef,String weaponVisualRef,boolean bodyReady,boolean robeReady,boolean weaponReady){
     if(!bodyReady)return false;
@@ -205,7 +210,7 @@ public final class CharacterRenderer {
     boolean bodyReady=source>=0&&source<SOURCE_ACTION_COUNT&&validAtlas(bodyActionFrames[source],BODY_ACTION_WIDTH[source],BODY_ACTION_HEIGHT[source]);
     boolean robeReady=source>=0&&source<SOURCE_ACTION_COUNT&&validAtlas(robeActionFrames[source],ROBE_ACTION_WIDTH[source],ROBE_ACTION_HEIGHT[source]);
     if(!sourceActionLayersReadyContract(pose.equipmentVisualRef,pose.weaponVisualRef,bodyReady,robeReady,weaponSourceActive()))return false;
-    ActionGeometry geometry=actionGeometry(pose.direction,source);return geometry!=null&&geometry.compatible;
+    return actionGeometry(pose.direction,source)!=null;
   }
   private boolean sourcePaperDollReadyFor(Pose pose){
     if(pose==null||!resourceAtlasActive())return false;
@@ -218,7 +223,11 @@ public final class CharacterRenderer {
     if(canvas==null||pose==null||pose.direction==null||pose.state==null)return;
     float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;drawShadow(canvas,pose,anchorY);
     if((pose.state==State.IDLE||pose.state==State.WALK||pose.state==State.HIT)&&sourcePaperDollReadyFor(pose)){drawSourcePaperDoll(canvas,pose,anchorY,false);return;}
-    if(usesSourceActionPose(pose.state,pose.animationAction)&&sourceActionReadyFor(pose)){drawSourceAction(canvas,pose,anchorY);return;}
+    if(usesSourceActionPose(pose.state,pose.animationAction)&&sourceActionReadyFor(pose)){
+      if(attackUsesActionPose(attackPhase(pose)))drawSourceAction(canvas,pose,anchorY);
+      else if(sourcePaperDollReadyFor(pose))drawSourcePaperDoll(canvas,pose,anchorY,false);
+      return;
+    }
     /* Fail-safe may preserve the complete equipped actor, but never animate only the weapon. */
     if(pose.state==State.ATTACK){if(sourcePaperDollReadyFor(pose))drawSourcePaperDoll(canvas,pose,anchorY,false);return;}
     drawSafePeasantFallback(canvas,pose,anchorY);
@@ -246,36 +255,30 @@ public final class CharacterRenderer {
   private Registration robeRegistration(Direction direction,int atlasColumn){
     int row=atlasRow(direction),col=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));
     if(row<0)return new Registration(0f,0f);
-    /* Preserve accepted NW/NE exactly. */
-    if(direction==Direction.NW||direction==Direction.NE)return new Registration(ROBE_FRAME_X[row][col],0f);
-    AlphaBounds bodyIdle=alphaBoundsCell(idleWalkAtlas,row,0,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);
-    AlphaBounds robeIdle=alphaBoundsCell(luersRobeAtlas,row,0,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);
-    AlphaBounds body=alphaBoundsCell(idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);
-    AlphaBounds robe=alphaBoundsCell(luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);
-    if(bodyIdle.empty()||robeIdle.empty()||body.empty()||robe.empty())return new Registration(ROBE_FRAME_X[row][col],0f);
-    float baseX=ROBE_FRAME_X[row][0];
-    float targetCenterDelta=(robeIdle.centerX()+baseX)-bodyIdle.centerX();
-    float currentCenterDelta=robe.centerX()-body.centerX();
-    float x=Math.round(targetCenterDelta-currentCenterDelta);
-    float targetFootDelta=robeIdle.bottom-bodyIdle.bottom;
-    float currentFootDelta=robe.bottom-body.bottom;
-    float y=Math.round(targetFootDelta-currentFootDelta);
-    return new Registration(x,y);
+    return new Registration(ROBE_FRAME_X[row][col],ROBE_FRAME_Y[row][col]);
   }
   public static float robeFrameRegistrationX(Direction direction,int atlasColumn){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));return row<0?0f:ROBE_FRAME_X[row][column];}
-  public static boolean robeUsesRuntimeXYRegistration(Direction direction){return direction==Direction.SW||direction==Direction.SE;}
+  public static float robeFrameRegistrationY(Direction direction,int atlasColumn){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));return row<0?0f:ROBE_FRAME_Y[row][column];}
+  public static boolean robeUsesRuntimeXYRegistration(Direction direction){return false;}
+  public static boolean robeRegistrationContinuityWithin(float maxDelta){
+    if(maxDelta<0f)return false;
+    for(Direction d:Direction.values())for(int col=1;col<IDLE_WALK_COLUMNS;col++){
+      if(Math.abs(robeFrameRegistrationX(d,col)-robeFrameRegistrationX(d,col-1))>maxDelta)return false;
+      if(Math.abs(robeFrameRegistrationY(d,col)-robeFrameRegistrationY(d,col-1))>maxDelta)return false;
+    }
+    return true;
+  }
   private static boolean containsVisualRef(String refs,String expected){if(refs==null||expected==null)return false;for(String ref:refs.split(","))if(expected.equals(ref.trim()))return true;return false;}
 
   private void drawSourceAction(Canvas c,Pose pose,float anchorY){
     AttackVisualComposition composition=attackVisualComposition(pose.direction,pose.equipmentVisualRef,pose.weaponVisualRef);int source=composition.sourceIndex;if(source<0)return;
-    ActionGeometry geometry=actionGeometry(pose.direction,source);if(geometry==null||!geometry.compatible){drawSourcePaperDoll(c,pose,anchorY,false);return;}
+    ActionGeometry geometry=actionGeometry(pose.direction,source);if(geometry==null){drawSourcePaperDoll(c,pose,anchorY,false);return;}
     float scale=SOURCE_PRESENTATION_SCALE;float viewportLeft=Math.round(pose.x-SOURCE_FOOT_ANCHOR_X*scale),viewportTop=Math.round(anchorY-SOURCE_FOOT_ANCHOR_Y*scale);
-    float viewportRight=Math.round(viewportLeft+SOURCE_FRAME_WIDTH*scale),viewportBottom=Math.round(viewportTop+SOURCE_FRAME_HEIGHT*scale);
     float bodyLeft=Math.round(viewportLeft+(BODY_ACTION_OFFSET_X[source]+geometry.offsetX)*scale);
     float bodyTop=Math.round(viewportTop+(BODY_ACTION_OFFSET_Y[source]+geometry.offsetY)*scale);
     if(composition.weaponVisible&&composition.weaponBehindBody)drawWeapon(c,pose,anchorY,true);
-    c.save();c.clipRect(viewportLeft,viewportTop,viewportRight,viewportBottom);if(composition.mirrorBody)c.scale(-1f,1f,pose.x,anchorY);
-    drawRawSourceCroppedScaled(c,bodyActionFrames[source],0,geometry.cropTop,BODY_ACTION_WIDTH[source],geometry.cropBottomExclusive,bodyLeft,bodyTop+geometry.cropTop*scale,scale);
+    c.save();if(composition.mirrorBody)c.scale(-1f,1f,pose.x,anchorY);
+    drawRawSourceScaled(c,bodyActionFrames[source],bodyLeft,bodyTop,scale);
     if(composition.robeVisible){
       float robeLeft=Math.round(viewportLeft+(ROBE_ACTION_OFFSET_X[source]+geometry.offsetX)*scale);
       float robeTop=Math.round(viewportTop+(ROBE_ACTION_OFFSET_Y[source]+geometry.offsetY)*scale);
@@ -293,14 +296,10 @@ public final class CharacterRenderer {
     float actionGlobalCenter=BODY_ACTION_OFFSET_X[source]+action.centerX();
     int dy=idle.bottom-actionGlobalBottom;
     int dx=Math.round(idle.centerX()-actionGlobalCenter);
-    int cropTop=Math.max(action.top,action.bottom-idle.height()+1);
-    int cropBottomExclusive=action.bottom+1;
-    int normalizedHeight=Math.max(0,cropBottomExclusive-cropTop);
-    int hErr=Math.abs(idle.height()-normalizedHeight);
     int footErr=Math.abs(idle.bottom-(actionGlobalBottom+dy));
     int centerErr=Math.round(Math.abs(idle.centerX()-(actionGlobalCenter+dx)));
-    boolean compatible=alphaGeometryWithinTolerance(idle.height(),normalizedHeight,footErr,centerErr);
-    return new ActionGeometry(dx,dy,cropTop,cropBottomExclusive,hErr,footErr,centerErr,compatible);
+    int hErr=Math.abs(idle.height()-action.height());
+    return new ActionGeometry(dx,dy,0,BODY_ACTION_HEIGHT[source],hErr,footErr,centerErr,true);
   }
 
   private static AlphaBounds alphaBounds(Bitmap bitmap){
@@ -317,7 +316,7 @@ public final class CharacterRenderer {
   public static float normalizedActionScale(int source){return SOURCE_PRESENTATION_SCALE;}
   public static int actionCanonicalVisibleHeightPixels(){return SOURCE_FRAME_HEIGHT;}
   public static int actionCanonicalFootAnchorPixels(){return SOURCE_FOOT_ANCHOR_Y;}
-  public static int actionVisibleHeightPixels(int source){if(source<0||source>=SOURCE_ACTION_COUNT)return 0;return Math.min(BODY_ACTION_HEIGHT[source],SOURCE_FRAME_HEIGHT);}
+  public static int actionVisibleHeightPixels(int source){if(source<0||source>=SOURCE_ACTION_COUNT)return 0;return BODY_ACTION_HEIGHT[source];}
   public static boolean bodyMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;}
   public static boolean weaponMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;}
   public static AttackVisualComposition attackVisualComposition(Direction direction,String equipmentVisualRef,String weaponVisualRef){
