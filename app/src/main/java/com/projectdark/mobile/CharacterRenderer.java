@@ -17,7 +17,7 @@ import java.util.List;
 public final class CharacterRenderer {
   public static final String EVIDENCE="LOD_DRESSUP_HAR_MM001_MALE_BASE_BODY+ADAPTED";
   public static final String ASSET_STATUS="PRODUCTION_WEBP_IDLE_WALK_ACTIVE";
-  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260914_R6_STABLE_ATTACK";
+  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260914_R7_ATLAS_LOCK_3PHASE_ATTACK";
   public static final String STARTER_ARCHETYPE="PEASANT";
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
@@ -26,15 +26,15 @@ public final class CharacterRenderer {
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String ACTION_TEMPORAL_STATUS="SINGLE_POSE_PLACEHOLDER";
-  public static final String ACTION_TEMPORAL_EVIDENCE="SINGLE_POSE_PLACEHOLDER: group-02 temporal sequence remains UNRESOLVED; source is retained for inventory/evidence but runtime attack presentation does not pretend it is a temporal animation";
+  public static final String ACTION_TEMPORAL_EVIDENCE="SINGLE_POSE_PLACEHOLDER remains UNRESOLVED; runtime uses explicit wind-up, strike, and recovery without fabricated intermediate frames";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; source-derived BODY dominantHand attachment";
-  public static final String ATTACK_PRESENTATION_EVIDENCE="ADAPTED_RUNTIME: stable idle BODY+robe paper doll, foot-anchored lunge/recovery, and mw001 swing from idle dominantHand; unresolved group-02 single pose is not rendered as temporal animation";
+  public static final String ATTACK_PRESENTATION_EVIDENCE="ADAPTED_RUNTIME_3_PHASE: stable idle BODY+robe+weapon move atomically through wind-up, strike and recovery; unresolved group-02 single pose is never rendered as temporal animation";
   public static final String ATTACK_DIRECTION_EVIDENCE="runtime Pose.direction selects one locked 4-way attack direction; BODY+robe+weapon consume it unchanged";
   public static final String PAPER_DOLL_ATTACK_EVIDENCE="ATTACK consumes current equipmentVisualRef and weaponVisualRef; no baked equipment";
   public static final String ATTACK_FALLBACK_EVIDENCE="stable equipped source paper doll remains intact; weapon-only attack animation is unreachable";
   public static final String ATTACK_GEOMETRY_EVIDENCE="source BODY pixels remain preserved at common presentation scale 1.70; no destructive action crop";
-  public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 remains on the same idle paper-doll coordinate system during adapted attack";
-  public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE keep authored shared-atlas registration without alpha re-centering";
+  public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 stays atomically registered to the same idle paper-doll coordinate system during adapted attack";
+  public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE packaged alpha pixels remain untouched and use shared-atlas zero translation without runtime alpha re-centering";
   public static final String WEAPON_TRANSFORM_EVIDENCE="mw001 local handle (2,4) attaches to source-derived BODY dominantHand; attack uses the same idle-hand anchor rather than detached action-body geometry";
   public static final String HIT_POSE_EVIDENCE="HIT/HURT/FLINCH character pose is disabled; source paper doll remains visually stable while damage feedback is external";
 
@@ -90,8 +90,8 @@ public final class CharacterRenderer {
   private static final float[][] CARRY_FRAME_X={{-6,-10,10,-6,-1},{6,10,-10,6,1},{-7,-10,10,-7,9},{7,8,8,7,7}};
   private static final float[][] CARRY_FRAME_Y={{21,21,23,18,26},{21,21,23,18,26},{19,19,24,17,21},{19,20,21,20,19}};
   private static final float[][] CARRY_FRAME_ANGLE={{56,62,48,59,52},{-64,-58,-72,-61,-68},{72,78,62,75,68},{-62,-64,-66,-64,-62}};
-  private static final float[][] ROBE_FRAME_X={{-1,-2,-1,0,1},{2,2,2,0,1},{-3,-2,0,2,1},{3,2,1,-1,-1}};
-  private static final float[][] ROBE_FRAME_Y={{0,0,0,0,0},{0,0,0,0,0},{0,0,-1,-1,0},{0,0,-1,-1,0}};
+  private static final float[][] ROBE_FRAME_X={{-1,-2,-1,0,1},{2,2,2,0,1},{0,0,0,0,0},{0,0,0,0,0}};
+  private static final float[][] ROBE_FRAME_Y={{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
   private static volatile float presentationWalkClock;
 
   public enum Direction { NW, NE, SW, SE }
@@ -177,9 +177,13 @@ public final class CharacterRenderer {
   }
 
   private void drawAdaptedAttack(Canvas c,Pose pose,float anchorY){
-    float q=attackPhase(pose);float envelope=q<.42f?q/.42f:(1f-q)/.58f;envelope=Math.max(0f,Math.min(1f,envelope));
-    float sx=(pose.direction==Direction.NE||pose.direction==Direction.SE)?1f:-1f;float sy=(pose.direction==Direction.SW||pose.direction==Direction.SE)?1f:-1f;
-    c.save();c.translate(sx*5f*envelope,sy*2.5f*envelope);drawSourcePaperDoll(c,pose,anchorY,true);c.restore();
+    float q=attackPhase(pose);float motion;
+    if(q<.22f)motion=-2.5f*(q/.22f);
+    else if(q<.48f){float t=(q-.22f)/.26f;motion=-2.5f+9.5f*t;}
+    else {float t=(q-.48f)/.52f;motion=7f*(1f-Math.max(0f,Math.min(1f,t)));}
+    float sx=(pose.direction==Direction.NE||pose.direction==Direction.SE)?1f:-1f;
+    float sy=(pose.direction==Direction.SW||pose.direction==Direction.SE)?1f:-1f;
+    c.save();c.translate(sx*motion,sy*Math.max(-1.2f,Math.min(2.8f,motion*.38f)));drawSourcePaperDoll(c,pose,anchorY,true);c.restore();
   }
 
   private void drawSourcePaperDoll(Canvas c,Pose pose,float anchorY,boolean attackingWeapon){boolean weaponBehind=weaponBehindBody(pose.direction);if(weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);drawIdleWalk(c,pose,anchorY);drawEquipment(c,pose,anchorY);if(!weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);}
@@ -188,7 +192,6 @@ public final class CharacterRenderer {
   private void drawEquipment(Canvas c,Pose pose,float anchorY){
     if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)||!CharacterVisualBinding.isFullBodyAppearance(CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID)||!equipmentAtlasActive())return;
     int row=atlasRow(pose.direction);if(row<0)return;int col=paperDollAtlasColumn(pose.state,presentationWalkClock);Registration registration=robeRegistration(pose.direction,col);
-    if(pose.direction==Direction.SW||pose.direction==Direction.SE){Rect sourceCell=atlasCellRect(row,col);CharacterSemanticRig.Anchors body=CharacterSemanticRig.derive(idleWalkAtlas,sourceCell,pose.direction);CharacterSemanticRig.Anchors robe=CharacterSemanticRig.derive(luersRobeAtlas,sourceCell,pose.direction);CharacterSemanticRig.Translation semantic=CharacterSemanticRig.garmentTranslation(body,robe);registration=new Registration(semantic.x,semantic.y);}
     float registeredX=pose.x+registration.x*SOURCE_PRESENTATION_SCALE;float registeredAnchorY=anchorY+registration.y*SOURCE_PRESENTATION_SCALE;drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,registeredAnchorY,registeredX);
   }
   private Registration robeRegistration(Direction direction,int atlasColumn){int row=atlasRow(direction),col=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));if(row<0)return new Registration(0f,0f);return new Registration(ROBE_FRAME_X[row][col],ROBE_FRAME_Y[row][col]);}
@@ -249,7 +252,13 @@ public final class CharacterRenderer {
   public static boolean attackFallbackWeaponSwingReachable(){return false;}
   public static float weaponAttackOffsetX(Direction direction){if(direction==null)return 0f;switch(direction){case NW:return -7f;case NE:return 6f;case SW:return -10f;case SE:return 9f;default:return 0f;}}
   public static float weaponAttackOffsetY(Direction direction){if(direction==null)return 20f;switch(direction){case NW:return 22f;case NE:return 20f;case SW:return 16f;case SE:return 18f;default:return 20f;}}
-  public static float weaponAttackAngle(Direction direction,float phase){float q=Math.max(0f,Math.min(1f,phase)),envelope=q<.42f?q/.42f:(1f-q)/.58f;if(direction==null)return 0f;switch(direction){case NW:return 18f+46f*envelope;case NE:return -28f-42f*envelope;case SW:return 18f+46f*envelope;case SE:return -28f-42f*envelope;default:return 0f;}}
+  public static float weaponAttackAngle(Direction direction,float phase){
+    float q=Math.max(0f,Math.min(1f,phase));float amount;
+    if(q<.22f)amount=-18f*(q/.22f);
+    else if(q<.48f)amount=-18f+88f*((q-.22f)/.26f);
+    else amount=70f*(1f-Math.max(0f,Math.min(1f,(q-.48f)/.52f)));
+    if(direction==null)return 0f;switch(direction){case NW:return 20f+amount;case SW:return 20f+amount;case NE:return -28f-amount;case SE:return -28f-amount;default:return 0f;}
+  }
 
   private void drawRawSourceScaled(Canvas c,Bitmap bitmap,float left,float top,float scale){if(bitmap==null)return;c.drawBitmap(bitmap,null,new RectF(Math.round(left),Math.round(top),Math.round(left+bitmap.getWidth()*scale),Math.round(top+bitmap.getHeight()*scale)),pixelPaint);}
   private void drawRawSourceCroppedScaled(Canvas c,Bitmap bitmap,int srcLeft,int srcTop,int srcRight,int srcBottom,float left,float top,float scale){if(bitmap==null||srcRight<=srcLeft||srcBottom<=srcTop)return;Rect src=new Rect(srcLeft,srcTop,srcRight,srcBottom);RectF dst=new RectF(Math.round(left),Math.round(top),Math.round(left+(srcRight-srcLeft)*scale),Math.round(top+(srcBottom-srcTop)*scale));c.drawBitmap(bitmap,src,dst,pixelPaint);}
