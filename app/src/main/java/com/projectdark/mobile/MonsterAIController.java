@@ -1,22 +1,17 @@
 package com.projectdark.mobile;
 
+import com.projectdark.mobile.world.WorldMoveTargetController;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
 /**
  * Combat·Monster-owned runtime orchestration for prototype monster combat.
- *
- * Canon/evidence guardrails:
- * - Existing monster IDs/stats/spawn relationships remain owned by canonical/runtime data.
- * - Thresholds/movement values below preserve the pre-existing [B] prototype behavior.
- * - Shared-resolver routing owns action submission only; World/RuntimeState still owns movement facts.
- * - Default construction preserves the current legacy runtime until Director injects the shared route.
+ * World locomotion follows the same authored 64x32 tile-center contract as player navigation.
  */
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
   static final float ATTACK_BEGIN_RANGE_B = 42f;
   private static final float ATTACK_CANCEL_RANGE_B = 48f;
-  private static final float CHASE_SPEED_B = 28f;
   static final int ATTACK_DAMAGE_B = 4;
   static final float ATTACK_COOLDOWN_B = 1.2f;
 
@@ -77,9 +72,16 @@ public final class MonsterAIController {
     }
   }
 
+  private static final class TilePursuitState {
+    float stepClock;
+    boolean centered;
+    WorldMoveTargetController.Direction lastDirection=WorldMoveTargetController.Direction.SE;
+    void resetClock(){stepClock=0f;}
+  }
+
   private final MonsterDefinitionRegistry definitions=new MonsterDefinitionRegistry();
   private final AttackRouter attackRouter;
-  private final Map<RuntimeState.Monster,MonsterCanonicalSegmentLock> locomotionLocks=new IdentityHashMap<>();
+  private final Map<RuntimeState.Monster,TilePursuitState> tileStates=new IdentityHashMap<>();
   private long submissionSequence;
   private AttackSubmissionSnapshot lastSubmission=new AttackSubmissionSnapshot(0,null,null,null,AttackRoute.LEGACY_RUNTIME,SubmissionOutcome.NONE,null);
 
@@ -95,7 +97,7 @@ public final class MonsterAIController {
   public void tick(RuntimeState state,float dt){
     if(state==null||!state.player().alive)return;
     for(RuntimeState.Monster m:state.monsters()){
-      if(!m.alive){locomotionLocks.remove(m);continue;}
+      if(!m.alive){tileStates.remove(m);continue;}
       MonsterDefinition def=definitions.resolve(m.id);
       if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING)continue;
       tickPrototypeMonster(state,m,dt);
@@ -103,42 +105,65 @@ public final class MonsterAIController {
   }
 
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
+    TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
+    ensureCentered(m,tile);
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
-    MonsterCanonicalSegmentLock lock=locomotionLocks.computeIfAbsent(m,key->new MonsterCanonicalSegmentLock());
 
     if(m.attackPrimed){
-      lock.reset();
-      if(d>ATTACK_CANCEL_RANGE_B){
-        state.cancelMonsterAttack(m);
-        return;
-      }
+      tile.resetClock();
+      if(d>ATTACK_CANCEL_RANGE_B){state.cancelMonsterAttack(m);return;}
       if(state.monsterAttackReady(m))lastSubmission=attackRouter.submit(state,m,++submissionSequence);
       return;
     }
 
     if(d<CHASE_RADIUS_B&&d>ATTACK_BEGIN_RANGE_B){
-      float frameDistance=CHASE_SPEED_B*dt;
-      MonsterDiagonalLocomotion.Step intent=lock.intent(dx,dy,frameDistance,m.visualFacing.locomotion());
-      if(intent==null)return;
-      float lockedDistance=(float)Math.sqrt(intent.dx*intent.dx+intent.dy*intent.dy);
-      boolean moved=state.tryMoveMonster(m,intent.dx,intent.dy,lockedDistance);
+      tile.stepClock+=Math.max(0f,dt);
+      if(tile.stepClock+.00001f<WorldMoveTargetController.TILE_STEP_SECONDS)return;
+      tile.stepClock-=WorldMoveTargetController.TILE_STEP_SECONDS;
+
+      WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(dx,dy,tile.lastDirection);
+      float beforeX=m.x,beforeY=m.y;
+      boolean moved=state.tryMoveMonster(m,direction.dx,direction.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
       if(moved){
-        lock.onApplied(lockedDistance,m.visualFacing.locomotion());
+        if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,m.x,m.y)
+            ||!MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y)){
+          m.x=beforeX;m.y=beforeY;tile.resetClock();return;
+        }
+        tile.lastDirection=directionFromFacing(m.visualFacing.locomotion(),direction);
+        if(m.state!=RuntimeState.Monster.State.ATTACK)m.state=RuntimeState.Monster.State.CHASE;
       }else{
-        // A fully blocked canonical endpoint must not keep a stale segment alive forever.
-        lock.reset();
+        // Atomic collision rejection leaves the monster at the same valid center.
+        m.x=beforeX;m.y=beforeY;tile.resetClock();
       }
       return;
     }
 
-    lock.reset();
+    tile.resetClock();
     if(d<=ATTACK_BEGIN_RANGE_B&&m.attackCooldown<=0f){
-      // Attack direction is snapshotted once in RuntimeState.beginMonsterAttack() and remains locked.
+      // Same centered spatial delta is snapshotted into the canonical attack-facing contract.
       state.beginMonsterAttack(m);
     }else if(m.state==RuntimeState.Monster.State.CHASE){
       m.state=RuntimeState.Monster.State.IDLE;
+    }
+  }
+
+  private static void ensureCentered(RuntimeState.Monster m,TilePursuitState state){
+    if(state.centered&&MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y))return;
+    WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);
+    if(center!=null){m.x=center.x;m.y=center.y;}
+    state.centered=true;state.resetClock();
+  }
+
+  private static WorldMoveTargetController.Direction directionFromFacing(CharacterRenderer.Direction facing,
+      WorldMoveTargetController.Direction fallback){
+    if(facing==null)return fallback;
+    switch(facing){
+      case NW:return WorldMoveTargetController.Direction.NW;
+      case NE:return WorldMoveTargetController.Direction.NE;
+      case SW:return WorldMoveTargetController.Direction.SW;
+      default:return WorldMoveTargetController.Direction.SE;
     }
   }
 }
