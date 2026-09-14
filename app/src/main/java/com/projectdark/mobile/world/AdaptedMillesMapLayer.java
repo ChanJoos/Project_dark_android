@@ -94,7 +94,7 @@ public final class AdaptedMillesMapLayer {
           new float[]{
               1365f,985f, 1475f,925f, 1625f,895f, 1785f,915f, 1940f,985f,
               2015f,1085f, 1970f,1185f, 1860f,1270f, 1690f,1310f, 1530f,1270f,
-              1415f,1185f, 1345f,1090f}))));
+              1415f,1185f, 1345f,1090f})));
 
   /**
    * A single narrow timber/stone crossing continues the waterside route across the western bank.
