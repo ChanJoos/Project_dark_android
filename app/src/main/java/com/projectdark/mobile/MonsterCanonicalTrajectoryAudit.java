@@ -13,14 +13,14 @@ public final class MonsterCanonicalTrajectoryAudit {
 
   public static final class Metrics {
     public final String name;
-    public int ticks,moves,directionChanges,blocked;
+    public int ticks,moves,directionChanges,blocked,detours;
     public float maxLateralError,maxStepMagnitude;
     public float finalX,finalY;
     Metrics(String name){this.name=name;}
     public String summary(){
       return name+" ticks="+ticks+" moves="+moves+" dirChanges="+directionChanges+
-          " blocked="+blocked+" maxLateral="+maxLateralError+" maxStep="+maxStepMagnitude+
-          " final=("+finalX+","+finalY+")";
+          " blocked="+blocked+" detours="+detours+" maxLateral="+maxLateralError+
+          " maxStep="+maxStepMagnitude+" final=("+finalX+","+finalY+")";
     }
   }
 
@@ -44,7 +44,7 @@ public final class MonsterCanonicalTrajectoryAudit {
     if(north.moves!=LONG_TICKS||south.moves!=LONG_TICKS)return false;
     if(north.maxStepMagnitude>FRAME_DISTANCE+EPS||south.maxStepMagnitude>FRAME_DISTANCE+EPS)return false;
     if(moving.moves<3000||moving.maxStepMagnitude>FRAME_DISTANCE+EPS)return false;
-    if(collision.blocked<=0||collision.moves<=0||collision.maxStepMagnitude>FRAME_DISTANCE+EPS)return false;
+    if(collision.detours<=0||collision.moves<=0||collision.maxStepMagnitude>FRAME_DISTANCE+EPS)return false;
     if(arrival.moves!=0||Math.abs(arrival.finalX)>EPS||Math.abs(arrival.finalY)>EPS)return false;
     return true;
   }
@@ -71,6 +71,7 @@ public final class MonsterCanonicalTrajectoryAudit {
       if(applied==null){lock.reset();m.blocked++;m.ticks++;continue;}
       if(!MonsterDiagonalLocomotion.isCanonical(applied.dx,applied.dy))return fail(name);
       if(applied.facing!=CanonicalActorFacing.quantize(applied.dx,applied.dy,null))return fail(name);
+      if(applied.facing!=intent.facing)m.detours++;
       if(previous!=null&&previous!=applied.facing)m.directionChanges++;
       previous=applied.facing;
       x+=applied.dx;y+=applied.dy;
