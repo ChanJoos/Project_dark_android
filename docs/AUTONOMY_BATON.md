@@ -8,17 +8,18 @@ AGENT: D
 
 HEAD / WORK LINE:
 - `director/milles-grass-first` / PR #112
-- START_HEAD: `3eb355fbb797554191559de69a9f8c5e19a8773f`
-- RUNTIME_HEAD: `ce13533679aa5099dc1096a74c390c46e8b039e4`
-- STATE_HEAD before this baton: `25189037955c68bcc6dd4bf5c7e67fcae3d63d43`
+- START_HEAD: `36d53becdb771b45595d7b5166764a2e1f4b3c26`
+- RUNTIME_HEAD: `7ea7b1ec160607137825765f38e8b48d7e816820`
+- exact-head CI: run #379 PASS
 
 TASK / WORK PACKAGE:
 - `WORLD_MILLES_001`
-- one runtime delta: central civic square + connected primary/secondary road hierarchy.
+- one runtime delta: south-east continuous water body + wet bank transition + stable crossing.
 
 SOURCES USED / RESOLVED:
 - `docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md`
 - `docs/PROJECT_STATE.yaml`
+- `docs/AUTONOMY_BATON.md`
 - `docs/MILLES_WORLD_DIRECTION.md`
 - `master/MASTER_MANIFEST.md`
 - `master/data/Asset_Map_Mapping.csv`
@@ -27,51 +28,55 @@ SOURCES USED / RESOLVED:
 - `app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapLayer.java`
 - `app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java`
 - `app/src/main/java/com/projectdark/mobile/WorldDef.java`
-- old state pointed at `docs/REFERENCE_GROUND_TRUTH.md` and `docs/reference/MILLES_FRAME_ANALYSIS.md`, but both paths are absent from the repository; this is now explicitly UNRESOLVED in PROJECT_STATE rather than falsely counted as consumed evidence.
+- `docs/REFERENCE_GROUND_TRUTH.md` and `docs/reference/MILLES_FRAME_ANALYSIS.md` remain absent/UNRESOLVED; no contents were inferred.
 
 WHAT CHANGED / RUNTIME DELTA:
-- replaced visible rectangular ROAD strips with absolute world-space route polylines;
-- enlarged the central civic square as the route hub;
-- added connected north service/residential, west craft/equipment, east church, south market/gate and narrow south-east waterside routes;
-- retained logical ROAD rectangles only for existing navigation/tile classification, so navigation semantics no longer dictate visible road geometry;
-- all new route geometry is explicitly `[ADAPTED]`, not claimed original.
+- restored CI coverage for integration-branch pushes; removed the obsolete Android setup action path and use the hosted runner SDK manager directly;
+- preserved the existing continuous grass/plaza/road foundation;
+- added an explicitly `[ADAPTED]` south-east water body using stable absolute world coordinates;
+- separated wet-bank and water polygons so the shoreline is a continuous terrain transition instead of a hard tile/cell boundary;
+- continued the waterside route with a stable visual crossing drawn over the water edge;
+- crossing remains presentation-only until the later collision/interaction phase; no unsupported original geometry is claimed.
 
 WHY VS REFERENCE / CANON:
-- latest device evidence failed the brown/checker test-board world;
-- durable Milles direction requires ground -> plaza/roads -> water/terrain -> buildings, and prohibits spawn-offset asset clustering;
-- Map_Instance_Master confirms MAP_MILLES is a Town/original-coordinate hub but provides no recoverable road geometry;
-- Asset_Map_Mapping says old-town source exists but exact Milles image identity still needs visual resolution, therefore unsupported geometry remains UNRESOLVED and this coherent village layout is `[ADAPTED]`.
+- Milles direction requires build order ground -> routes -> water/banks/crossing -> landmarks/buildings;
+- `Asset_Map_Mapping.csv` confirms an old Milles source exists but exact image identity/geometry is unresolved;
+- `Map_Instance_Master.csv` confirms Milles town identity but contains no recoverable water geometry;
+- `Spawn_Master.csv` has no Milles town geometry; therefore this water/crossing placement is coherent `[ADAPTED]`, not claimed original.
 
 TESTS:
-- source-level/API compatibility inspection: PASS;
-- PR #112 remains mergeable after runtime commits;
-- no GitHub Actions run is currently attached to this branch/exact head, so BUILD_VERIFIED is NOT claimed.
+- CI infrastructure exact-head gate restored: PASS on `36d53bec...` before new runtime work;
+- first runtime CI found one deterministic Java syntax error in the new water list; fixed immediately on the same integration line;
+- exact runtime HEAD `7ea7b1ec160607137825765f38e8b48d7e816820`, Actions run #379: Android SDK prepare PASS, Master validation PASS, Java compile PASS, debug APK build PASS, artifact upload PASS.
 
 DONE:
-- continuous world-space grass floor foundation;
-- central square + first coherent road hierarchy integrated on shared line.
+- continuous world-space grass floor;
+- central civic square + connected road hierarchy;
+- south-east water body + wet bank terrain transition + crossing;
+- exact-head CI/build path operational for integration-line pushes.
 
 ACTIVE:
-- `WORLD_MILLES_001` remains READY/open; build validation and remaining floor layers are incomplete.
+- `WORLD_MILLES_001` remains open; floor hierarchy is materially stronger but major landmark footprints and district boundaries/vertical assets are not complete.
 
 NEXT:
-- exact-head Android build validation;
-- if build passes, implement water body/bank/bridge + wet/grass terrain transitions, still before vertical buildings/props.
+- preserve this BUILD_VERIFIED floor candidate;
+- next eligible Milles delta: major landmark footprints/district boundaries using stable coordinates, then audited REUSE/REWORK/REMAKE/NEW building reintroduction;
+- do not retune this water geometry as if reference-derived without new source/device evidence.
 
 LATER:
-- district footprints and audited REUSE/REWORK/REMAKE/NEW vertical asset reintroduction;
-- vegetation/props/collision/entrances/device acceptance.
+- vegetation/fences/props;
+- collision/entrances/NPC anchors and full traversal verification;
+- fresh APK device/visual acceptance.
 
 BLOCKED:
-- exact original Milles full geometry is unavailable;
-- repository reference pointer files named above are missing; do not fabricate their contents.
+- exact original Milles full geometry and exact old-town reference image identity remain unresolved.
 
 KNOWN RISK:
-- road geometry is coherent but `[ADAPTED]`; without fresh device footage it is not DEVICE_VERIFIED or VISUAL_ACCEPTED.
+- water shape, bank profile, crossing position and colors are `[ADAPTED]`; build correctness is verified but actual visual quality is not device-verified.
 
 ACCEPTANCE STATE:
 - IMPLEMENTED: YES
 - INTEGRATED: YES on PR #112 shared line
-- BUILD_VERIFIED: NO
+- BUILD_VERIFIED: YES for runtime HEAD `7ea7b1ec160607137825765f38e8b48d7e816820`
 - DEVICE_VERIFIED: NO for this exact build
 - VISUAL_ACCEPTED: NO
