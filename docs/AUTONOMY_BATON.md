@@ -4,43 +4,47 @@ This file carries only the immediate handoff between scheduled autonomous develo
 
 ## Current baton
 
-AGENT: DIRECTOR_BOOTSTRAP
+AGENT: DIRECTOR
 
 HEAD / WORK LINE:
-- Control-plane files were bootstrapped on `main`.
-- Each scheduled run must rediscover the current shared integration line before coding; do not assume `main` or any historical PR is the active development line.
+- `director/milles-grass-first`
+- current head includes the Milles floor-foundation reset after the initial checkerboard-only patch proved insufficient.
 
-TASK:
-- Bootstrap the autonomous development control plane and migrate scheduled agents to it.
+TASK / WORK PACKAGE:
+- `WORLD_MILLES_001`
+- rebuild from the floor upward instead of preserving the prior asset-cluster prototype.
 
 SOURCES USED:
-- `master/MASTER_MANIFEST.md`
-- `master/data/` inventory and known Master/Source/Audit tables
-- `design/DESIGN_CONSTITUTION.md`
-- `design/DATA_CONTRACT.md`
-- `design/SOURCE_OF_TRUTH.md`
-- existing DEV_HISTORY and runtime paths
-- known user reference/device evidence summarized in `docs/PROJECT_STATE.yaml`
+- latest device evidence registered in `docs/PROJECT_STATE.yaml`
+- `WorldDef` world bounds/camera contract
+- `AdaptedMillesMapLayer` authored surface regions
+- current Milles renderer/runtime call path
 
 RUNTIME DELTA:
-- None. This baton only establishes the new autonomous-development control plane. Subsequent scheduled runs must produce runtime deltas rather than continuing control-plane documentation work.
+- removed all building/lake/tree/fence/street-prop drawing from the Milles map renderer for this foundation pass;
+- removed all per-cell 64x32 ground/stone stamping from the visible floor;
+- replaced the screen-fixed grass backdrop with a bounded world-space ground slab tied to `WorldDef.MIN/MAX`;
+- roads/plaza/gate are now continuous world-space surfaces and scroll with the camera;
+- outside-map background is intentionally distinct so camera/bounds defects cannot be hidden.
 
 TESTS:
-- N/A for documentation bootstrap.
+- source-level contract inspected; exact-head CI pending.
 
 ACCEPTANCE STATE:
-- PROJECT control plane: IMPLEMENTED on main.
-- Runtime: unchanged by this bootstrap.
+- IMPLEMENTED: YES on branch
+- INTEGRATED: NO
+- BUILD_VERIFIED: NO
+- DEVICE_VERIFIED: NO
+- VISUAL_ACCEPTED: NO
 
 STATE UPDATED:
-- Added `docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md`.
-- Added `docs/PROJECT_STATE.yaml` with resource registry, scene integration targets, device/reference evidence, work packages, and claim/lease policy.
+- no completion claim; `WORLD_MILLES_001` remains open until a verified Milles layout is rebuilt above this floor foundation and device-tested.
 
 NEXT BEST ACTION:
-- First scheduled agent: sync repository, verify current integration line and current changes after the latest tested device build, then claim the highest-value eligible READY package in `PROJECT_STATE.yaml` and implement an actual end-to-end runtime delta.
+- verify exact-head build, then replace the old spawn-offset/content-cluster layout with a reference-grounded world-space Milles layout zone by zone. Reintroduce vertical assets only after floor/camera coverage is stable.
 
 BLOCKERS:
-- None for autonomous execution.
+- verified original Milles full geometry remains incomplete; do not fabricate it as canonical.
 
 ## Baton write format for future agents
 
