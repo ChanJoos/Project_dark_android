@@ -44,8 +44,8 @@ public final class CharacterRendererAudit {
     if(!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("weapon-only attack animation is unreachable"))return false;
     if(!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("FULL_BODY")||!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("atomically"))return false;
     if(!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("SW/SE")||!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("X+Y"))return false;
-    if(!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("exactly one"))return false;
-    if(CharacterRenderer.hitCharacterPoseEnabled()||!CharacterRenderer.weaponTransformUsesSingleMirror()||CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
+    if(!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("independent"))return false;
+    if(CharacterRenderer.hitCharacterPoseEnabled()||CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
 
     if(CharacterRenderer.atlasRow(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.atlasRow(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SE)!=3)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
@@ -56,9 +56,11 @@ public final class CharacterRendererAudit {
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       CharacterRenderer.AttackVisualComposition c=CharacterRenderer.attackVisualComposition(d,"mu0000058","mw001");
       if(c.direction!=d||c.presentationScale!=1.70f||!c.robeVisible||!c.weaponVisible||!signatures.add(c.signature()))return false;
-      boolean left=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;
+      boolean expectedBodyMirror=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;
+      boolean expectedWeaponMirror=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
-      if(c.mirrorBody!=left||CharacterRenderer.bodyMirrorX(d)!=left||CharacterRenderer.weaponMirrorX(d)!=left||c.weaponBehindBody!=north)return false;
+      if(c.mirrorBody!=CharacterRenderer.bodyMirrorX(d)||CharacterRenderer.bodyMirrorX(d)!=expectedBodyMirror)return false;
+      if(CharacterRenderer.weaponMirrorX(d)!=expectedWeaponMirror||c.weaponBehindBody!=north)return false;
       if(Math.abs(CharacterRenderer.normalizedActionScale(c.sourceIndex)-(1.70f/1.50f))>.0001f)return false;
     }
     if(signatures.size()!=4)return false;
@@ -92,7 +94,7 @@ public final class CharacterRendererAudit {
     return true;
   }
 
-  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",coverage=FULL_BODY|UPPER|LOWER,attackBody=source-group02-normalized,noWeaponOnlyFallback=true,hitPose=disabled,weaponMirror=single,robeSWSE=runtimeXY,paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
+  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",coverage=FULL_BODY|UPPER|LOWER,attackBody=source-group02-normalized,noWeaponOnlyFallback=true,hitPose=disabled,weaponMirror=independent-functions,robeSWSE=runtimeXY,paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
   private static CharacterRenderer.EffectFamily defaultEffect(CharacterRenderer.State state){switch(state){case CAST:return CharacterRenderer.EffectFamily.CAST;default:return CharacterRenderer.EffectFamily.NONE;}}
   public static void main(String[] args){if(!passes())throw new AssertionError("CharacterRendererAudit failed: "+summary());System.out.println("CharacterRendererAudit PASS: "+summary());}
 }
