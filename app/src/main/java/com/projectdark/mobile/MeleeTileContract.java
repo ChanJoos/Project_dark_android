@@ -8,6 +8,9 @@ import com.projectdark.mobile.world.WorldMoveTargetController;
  */
 public final class MeleeTileContract {
   private static final float EPSILON=.01f;
+  public static final float ADJACENT_CENTER_DISTANCE=(float)Math.sqrt(
+      WorldMoveTargetController.Direction.NE.dx*WorldMoveTargetController.Direction.NE.dx+
+      WorldMoveTargetController.Direction.NE.dy*WorldMoveTargetController.Direction.NE.dy);
 
   private MeleeTileContract(){}
 
