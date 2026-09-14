@@ -1,140 +1,85 @@
 package com.projectdark.mobile.world;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import java.io.InputStream;
-import java.lang.reflect.Method;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.projectdark.mobile.WorldDef;
 
 /**
- * Milles production vertical-slice renderer.
+ * Milles floor-foundation renderer.
  *
- * Production sprites come from assets/milles/production via the app assets sourceSet.
- * Runtime scaling uses nearest-neighbour only.
+ * This pass intentionally removes the old "asset cluster on a tiled test board" presentation.
+ * Buildings, lake, fences, trees and street props are not rendered here yet. The renderer now owns
+ * only the continuous world-space floor so camera movement can be validated before vertical content
+ * is reintroduced.
  *
- * The broad village ground is intentionally rendered as one grass-first field instead of stamping
- * OBJ_ground_01 into every 64x32 navigation cell. The latter produced the device-verified brown
- * diamond/checker test-board and incorrectly exposed logical navigation cells as visual tiles.
- * Until a verified source tile-set is available, the grass plane is an explicit [ADAPTED]
- * presentation layer; authored roads/plaza remain tied to the existing world surface definitions.
+ * Geometry remains [ADAPTED/B] until verified Milles source geometry is calibrated. The important
+ * invariant for this pass is that floor coverage follows the actual world bounds and moves with the
+ * camera; it must never be a screen-sized backdrop and must never expose logical 64x32 navigation
+ * cells as visible checker/diamond tiles.
  */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V4_GRASS_FIRST";
-  public static final float LOGICAL_GROUND_WIDTH=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
-  public static final float LOGICAL_GROUND_HEIGHT=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
-  private final Paint pixel=new Paint();
-  private final Paint backdrop=new Paint();
-  private final Map<String,Bitmap> cache=new LinkedHashMap<>();
-  private AssetManager assets;
+  public static final String STATUS="MILLES_FLOOR_FOUNDATION_V1_WORLD_SPACE";
+
+  private final Paint outsidePaint=new Paint();
+  private final Paint grassPaint=new Paint();
+  private final Paint roadPaint=new Paint();
+  private final Paint plazaPaint=new Paint();
+  private final Paint gatePaint=new Paint();
 
   public AdaptedMillesMapRenderer(){
-    pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
-    // [ADAPTED] Reference-grounded broad grass presentation. This is not claimed as an original
-    // Milles tile color; it prevents the navigation grid from becoming the visible ground texture.
-    backdrop.setAntiAlias(false);backdrop.setColor(0xff5f7d45);
-    assets=findAssets();
+    configure(outsidePaint,0xff1f2a22);
+    // [ADAPTED] presentation colors only; not claimed as original Milles palette.
+    configure(grassPaint,0xff66884d);
+    configure(roadPaint,0xffbca77b);
+    configure(plazaPaint,0xffc8b58b);
+    configure(gatePaint,0xffae986f);
   }
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
 
-    // Grass-first village plane. Logical GROUND cells remain available for navigation/collision but
-    // are deliberately not stamped as individual diamonds on screen.
-    canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),backdrop);
-    WorldMapProjection.Spawn s=world.map().spawn();
+    // Outside the playable map is deliberately distinct. This makes camera/bounds defects visible
+    // instead of hiding them behind a screen-sized grass fill.
+    canvas.drawRect(0f,0f,canvas.getWidth(),canvas.getHeight(),outsidePaint);
 
-    // Only authored non-ground surfaces are expressed as visible 64x32 cells. This keeps the
-    // existing road/plaza topology while eliminating the device-verified full-screen checkerboard.
-    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles()){
-      String terrain=terrainFor(tile);
-      if(terrain!=null)drawGround(canvas,world,terrain,tile.centerX,tile.centerY,1f);
-    }
+    // One continuous ground slab in WORLD SPACE. Camera scrolling therefore reveals different parts
+    // of the same map instead of repainting the viewport as if the world were attached to the screen.
+    drawWorldRect(canvas,world,WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,grassPaint);
 
-    // Back row: landmark + shops. Positions are authored around the existing playable spawn.
-    drawFoot(canvas,world,"landmarks/BLD_011_church.png",s.x+250f,s.y-120f,.72f);
-    drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",s.x-285f,s.y-105f,.62f);
-    drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",s.x-90f,s.y-165f,.60f);
-    drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",s.x+105f,s.y-170f,.60f);
-    drawFoot(canvas,world,"buildings/BLD_006_inn.png",s.x+390f,s.y-70f,.60f);
-
-    // Lake/nature zone gives this first slice a strong Milles landmark read.
-    drawFoot(canvas,world,"water/lakes/OBJ_lake_main.png",s.x+325f,s.y+210f,.72f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_01.png",s.x-330f,s.y+45f,.82f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_02.png",s.x-270f,s.y+125f,.82f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_03.png",s.x+455f,s.y+110f,.82f);
-    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_01.png",s.x+175f,s.y+145f,.90f);
-    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_02.png",s.x-175f,s.y+155f,.90f);
-
-    // Street-life props around the central road/plaza.
-    drawFoot(canvas,world,"street/OBJ_well.png",s.x+35f,s.y+70f,.88f);
-    drawFoot(canvas,world,"street/OBJ_noticeboard.png",s.x-145f,s.y+35f,.86f);
-    drawFoot(canvas,world,"street/OBJ_bench.png",s.x+145f,s.y+40f,.88f);
-    drawFoot(canvas,world,"market/OBJ_stall_01.png",s.x-225f,s.y+205f,.78f);
-    drawFoot(canvas,world,"market/OBJ_cart.png",s.x-80f,s.y+225f,.82f);
-    drawFoot(canvas,world,"street/OBJ_lamp_01.png",s.x+205f,s.y+25f,.88f);
-    drawFoot(canvas,world,"street/OBJ_signpost.png",s.x-35f,s.y-55f,.88f);
-
-    // Fences frame the slice without turning it into a corridor.
-    for(int i=0;i<4;i++){
-      drawFoot(canvas,world,"structures/fences/OBJ_fence_01.png",s.x-390f+i*72f,s.y+245f,.82f);
-      drawFoot(canvas,world,"structures/fences/OBJ_fence_02.png",s.x+245f+i*72f,s.y+300f,.82f);
+    // Surface composition is also world-space and continuous. No per-navigation-cell diamonds.
+    // GROUND is already covered by the base slab; only semantic road/plaza/gate surfaces overlay it.
+    for(AdaptedMillesMapLayer.Surface surface:AdaptedMillesMapLayer.surfaces()){
+      switch(surface.kind){
+        case ROAD:
+          drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,roadPaint);
+          break;
+        case PLAZA:
+          drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,plazaPaint);
+          break;
+        case GATE:
+          drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,gatePaint);
+          break;
+        case GROUND:
+        default:
+          break;
+      }
     }
   }
 
-  private static String terrainFor(AdaptedMillesIsometricTileLayer.Tile tile){
-    switch(tile.kind){
-      case ROAD:
-      case PLAZA:
-      case GATE:
-        return (tile.variant&1)==0?"terrain/OBJ_stone_01.png":"terrain/OBJ_stone_02.png";
-      case GROUND:
-      default:
-        return null;
-    }
+  private static void drawWorldRect(Canvas canvas,WorldRuntimeAdapter world,
+      float left,float top,float right,float bottom,Paint paint){
+    WorldCameraTransform.Point p0=world.worldToScreen(left,top);
+    WorldCameraTransform.Point p1=world.worldToScreen(right,bottom);
+    RectF dst=new RectF(Math.min(p0.x,p1.x),Math.min(p0.y,p1.y),Math.max(p0.x,p1.x),Math.max(p0.y,p1.y));
+    if(dst.right<0f||dst.left>canvas.getWidth()||dst.bottom<0f||dst.top>canvas.getHeight())return;
+    canvas.drawRect(dst,paint);
   }
 
-  /**
-   * Authored road/plaza source crops keep their original extraction dimensions, while their runtime
-   * footprint remains one logical isometric cell. Broad grass is not rendered through this path.
-   */
-  private void drawGround(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){
-    Bitmap b=bitmap(path);if(b==null)return;
-    WorldCameraTransform.Point p=world.worldToScreen(wx,wy);
-    float w=LOGICAL_GROUND_WIDTH*scale,h=LOGICAL_GROUND_HEIGHT*scale;
-    RectF dst=new RectF(Math.round(p.x-w*.5f),Math.round(p.y-h*.5f),Math.round(p.x+w*.5f),Math.round(p.y+h*.5f));
-    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;
-    c.drawBitmap(b,null,dst,pixel);
-  }
-
-  /** Anchor production sprites by their bottom-center ground contact. */
-  private void drawFoot(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){
-    Bitmap b=bitmap(path);if(b==null)return;
-    WorldCameraTransform.Point p=world.worldToScreen(wx,wy);
-    float w=b.getWidth()*scale,h=b.getHeight()*scale;
-    RectF dst=new RectF(Math.round(p.x-w*.5f),Math.round(p.y-h),Math.round(p.x+w*.5f),Math.round(p.y));
-    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;
-    c.drawBitmap(b,null,dst,pixel);
-  }
-
-  private Bitmap bitmap(String path){
-    if(cache.containsKey(path))return cache.get(path);
-    Bitmap b=null;
-    if(assets!=null){try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}}
-    cache.put(path,b);return b;
-  }
-
-  private AssetManager findAssets(){
-    try{
-      Class<?> at=Class.forName("android.app.ActivityThread");
-      Method m=at.getDeclaredMethod("currentApplication");
-      Object app=m.invoke(null);
-      return app instanceof Context?((Context)app).getAssets():null;
-    }catch(Throwable ignored){return null;}
+  private static void configure(Paint paint,int color){
+    paint.setAntiAlias(false);
+    paint.setDither(false);
+    paint.setColor(color);
+    paint.setStyle(Paint.Style.FILL);
   }
 }
