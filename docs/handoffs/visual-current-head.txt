@@ -1,0 +1,1 @@
+Current worker branch head after runtime/evidence changes is tracked by GitHub branch `agent/visual/20260914-0910`; consult PR head SHA rather than this file for final integration.

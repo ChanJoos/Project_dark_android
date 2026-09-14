@@ -1,0 +1,1 @@
+Do not merge solely from worker implementation. Director must review CI/build evidence and fresh device validation for attack body/robe motion and SW/SE robe continuity.
