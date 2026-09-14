@@ -41,7 +41,7 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f||CharacterRenderer.ATTACK_TRAIL_GHOSTS!=0)return false;
 
     if(!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("UNRESOLVED")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("wind-up")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("recovery")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("without fabricated intermediate frames"))return false;
-    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("full group-02 BODY source pixels")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("no destructive action crop")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
+    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("semantic foot/pivot")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("no destructive action crop")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
     if(CharacterRenderer.attackUsesDestructiveCrop())return false;
     if(CharacterRenderer.attackUsesActionPose(0f)||CharacterRenderer.attackUsesActionPose(.17f)||!CharacterRenderer.attackUsesActionPose(.18f)||!CharacterRenderer.attackUsesActionPose(.50f)||!CharacterRenderer.attackUsesActionPose(.77f)||CharacterRenderer.attackUsesActionPose(.78f)||CharacterRenderer.attackUsesActionPose(1f))return false;
     if(!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("weapon-only attack animation is unreachable"))return false;
@@ -55,6 +55,20 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())if(CharacterRenderer.robeUsesRuntimeXYRegistration(d))return false;
 
+    // P3: NW/NE are frozen. SW/SE must carry an explicit bounded vertical gait registration.
+    float[][] expectedNorthX={{-1,-2,-1,0,1},{2,2,2,0,1}};
+    CharacterRenderer.Direction[] northDirs={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE};
+    for(int r=0;r<2;r++)for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
+      if(CharacterRenderer.robeFrameRegistrationX(northDirs[r],col)!=expectedNorthX[r][col]||CharacterRenderer.robeFrameRegistrationY(northDirs[r],col)!=0f)return false;
+    }
+    boolean swHasVertical=false,seHasVertical=false;
+    for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
+      swHasVertical|=CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SW,col)!=0f;
+      seHasVertical|=CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SE,col)!=0f;
+      if(Math.abs(CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SW,col))>1f||Math.abs(CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SE,col))>1f)return false;
+    }
+    if(!swHasVertical||!seHasVertical)return false;
+
     java.util.HashSet<String> signatures=new java.util.HashSet<>();
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       CharacterRenderer.AttackVisualComposition c=CharacterRenderer.attackVisualComposition(d,"mu0000058","mw001");
@@ -65,13 +79,16 @@ public final class CharacterRendererAudit {
       if(c.mirrorBody!=CharacterRenderer.bodyMirrorX(d)||CharacterRenderer.bodyMirrorX(d)!=expectedBodyMirror)return false;
       if(CharacterRenderer.weaponMirrorX(d)!=expectedWeaponMirror||c.weaponBehindBody!=north)return false;
       if(Math.abs(CharacterRenderer.normalizedActionScale(c.sourceIndex)-(1.70f/1.50f))>.0001f)return false;
-      if(CharacterRenderer.actionVisibleHeightPixels(c.sourceIndex)<=CharacterRenderer.actionCanonicalVisibleHeightPixels()){
-        // At least one source is taller than the idle viewport; preserving full pixels means it must not
-        // be normalized down to 48 by a crop gate.
-        if(c.sourceIndex==0||c.sourceIndex==1||c.sourceIndex==2)return false;
-      }
+      if(Float.isNaN(CharacterRenderer.actionSemanticPivotX(c.sourceIndex))||Float.isNaN(CharacterRenderer.actionSemanticFootY(c.sourceIndex)))return false;
     }
     if(signatures.size()!=4)return false;
+
+    // P4: every action source is translated to the shared semantic pivot/foot contract without crop/scale changes.
+    for(int source=0;source<CharacterRenderer.SOURCE_ACTION_COUNT;source++){
+      float pivot=CharacterRenderer.actionSemanticPivotX(source),foot=CharacterRenderer.actionSemanticFootY(source);
+      if(pivot<10f||pivot>18f||foot<46f||foot>60f)return false;
+      if(CharacterRenderer.normalizedActionScale(source)!=(1.70f/1.50f))return false;
+    }
 
     CharacterRenderer.AttackVisualComposition bare=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,null);
     CharacterRenderer.AttackVisualComposition robe=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058",null);
@@ -91,6 +108,11 @@ public final class CharacterRendererAudit {
         if(Float.isNaN(x)||Float.isNaN(y)||Float.isNaN(angle)||Float.isNaN(robeX)||Float.isNaN(robeY)||y<16f||y>27f||Math.abs(x)>11f||Math.abs(robeX)>3f||Math.abs(robeY)>2f)return false;
       }
     }
+
+    // P5: SE mw001 must stay on a continuous dominant-hand path; no frame may jump across the body.
+    if(CharacterRenderer.weaponCarryMaxJumpX(CharacterRenderer.Direction.SE)>1f)return false;
+    if(CharacterRenderer.weaponCarryMaxJumpY(CharacterRenderer.Direction.SE)>1f)return false;
+    if(CharacterRenderer.weaponCarryMaxJumpAngle(CharacterRenderer.Direction.SE)>2f)return false;
     if(CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.NW,0)<=0f||CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.SW,0)<=0f)return false;
     if(CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.NE,0)>=0f||CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.SE,0)>=0f)return false;
     if(CharacterRenderer.weaponAttackAngle(CharacterRenderer.Direction.NW,.55f)<=0f)return false;
@@ -102,7 +124,7 @@ public final class CharacterRendererAudit {
     return true;
   }
 
-  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",coverage=FULL_BODY|UPPER|LOWER,attackTemporal=idle-strike-idle,attackBody=full-source-no-crop,noWeaponOnlyFallback=true,hitPose=disabled,weaponMirror=independent-functions,robeSWSE=stable-table,paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
+  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",P3=robe-semantic-xy,P4=attack-semantic-foot-pivot-no-crop,P5=SE-mw001-continuity,maxJump="+CharacterRenderer.weaponCarryMaxJumpX(CharacterRenderer.Direction.SE)+"/"+CharacterRenderer.weaponCarryMaxJumpY(CharacterRenderer.Direction.SE)+"/"+CharacterRenderer.weaponCarryMaxJumpAngle(CharacterRenderer.Direction.SE)+",paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
   private static CharacterRenderer.EffectFamily defaultEffect(CharacterRenderer.State state){switch(state){case CAST:return CharacterRenderer.EffectFamily.CAST;default:return CharacterRenderer.EffectFamily.NONE;}}
   public static void main(String[] args){if(!passes())throw new AssertionError("CharacterRendererAudit failed: "+summary());System.out.println("CharacterRendererAudit PASS: "+summary());}
 }
