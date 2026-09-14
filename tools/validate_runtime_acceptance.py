@@ -9,6 +9,7 @@ character=read("app/src/main/java/com/projectdark/mobile/CharacterRenderer.java"
 semantic_rig=read("app/src/main/java/com/projectdark/mobile/CharacterSemanticRig.java")
 game_view=read("app/src/main/java/com/projectdark/mobile/GameView.java")
 monster_ai=read("app/src/main/java/com/projectdark/mobile/MonsterAIController.java")
+runtime_state=read("app/src/main/java/com/projectdark/mobile/RuntimeState.java")
 world=read("app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java")
 monster_visual=read("app/src/main/java/com/projectdark/mobile/MonsterVisualRenderer.java")
 
@@ -34,8 +35,13 @@ require(game_view,"private final MonsterVisualRenderer monsterVisualRenderer=new
 require(game_view,"monsterVisualRenderer.draw(c,m,selected==m);","live monster renderer draw path")
 require(monster_visual,"public final class MonsterVisualRenderer","monster visual implementation")
 require(monster_visual,"ADAPTED_FOOT_LOCKED_MONSTER_ATTACK_POSE","foot-locked adapted monster attack evidence")
+require(monster_visual,"ADAPTED_WINDUP_CONTACT_RECOVERY_SINGLE_EVENT","monster contact/recovery evidence")
 require(monster_visual,"float x=m.x,y=m.y;","monster logical foot anchor lock")
 require(monster_visual,"float bodyLean=attack*1.25f*sx;","monster local silhouette attack delta")
+require(monster_visual,"m.attackRecoveryClock/RuntimeState.MONSTER_ATTACK_RECOVERY_SECONDS","monster recovery presentation clock")
+require(runtime_state,"MONSTER_ATTACK_RECOVERY_SECONDS=.14f","monster attack recovery duration")
+require(runtime_state,"m.attackRecoveryClock=MONSTER_ATTACK_RECOVERY_SECONDS;m.attackCooldown","contact starts recovery before cooldown continuation")
+require(runtime_state,"if(m.state==Monster.State.ATTACK&&!m.attackPrimed&&m.attackRecoveryClock<=0f){m.visualFacing.endAttack();m.state=Monster.State.IDLE;}","attack facing releases only after recovery")
 if "float lunge=" in monster_visual or "x=m.x+" in monster_visual or "y=m.y+" in monster_visual:
     raise SystemExit("RUNTIME ACCEPTANCE FAIL: monster attack can translate whole entity away from logical foot anchor")
 
@@ -50,4 +56,4 @@ require(world,"s.x+318f,s.y+252f,.82f","water-side landmark")
 require(world,"s.x-205f,s.y+76f,.88f","left tree garden")
 require(world,"s.x+206f,s.y+82f,.88f","right tree garden")
 
-print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, stationary pose/weapon 3-phase attack, authored idle/walk hand anchor, foot-locked monster attack, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
+print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, stationary pose/weapon 3-phase attack, authored idle/walk hand anchor, foot-locked monster windup-contact-recovery, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
