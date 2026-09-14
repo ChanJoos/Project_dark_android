@@ -14,10 +14,13 @@ monster_visual=read("app/src/main/java/com/projectdark/mobile/MonsterVisualRende
 start=character.index("private void drawEquipment");end=character.index("private Registration robeRegistration",start);equipment_block=character[start:end]
 if "CharacterSemanticRig" in equipment_block or "garmentTranslation" in equipment_block: raise SystemExit("RUNTIME ACCEPTANCE FAIL: live robe equipment path still uses semantic alpha re-centering")
 require(character,"{0,0,0,0,0},{0,0,0,0,0}}","SW/SE shared-atlas zero registration")
-require(character,"ADAPTED_RUNTIME_3_PHASE","three-phase attack profile")
-require(character,"if(q<.22f)motion","attack wind-up phase")
-require(character,"else if(q<.48f)","attack strike phase")
-require(character,"else {float t=(q-.48f)/.52f","attack recovery phase")
+require(character,"ADAPTED_STATIONARY_POSE_WEAPON_3_PHASE","stationary pose/weapon attack profile")
+attack_start=character.index("private void drawAdaptedAttack");attack_end=character.index("private void drawSourcePaperDoll",attack_start);attack_block=character[attack_start:attack_end]
+require(attack_block,"drawSourcePaperDoll(c,pose,anchorY,true);","stationary attack paper doll path")
+if "translate(" in attack_block or "motion" in attack_block: raise SystemExit("RUNTIME ACCEPTANCE FAIL: whole-paper-doll attack translation remains reachable")
+require(character,"if(q<.22f)amount","weapon startup phase")
+require(character,"else if(q<.48f)amount","weapon contact phase")
+require(character,"else amount=70f","weapon recovery phase")
 
 require(monster_ai,"MONSTER_TILE_STEP_SECONDS=.82f","monster pursuit cadence")
 require(monster_ai,"CanonicalMeleeTileContract.direction","canonical melee adjacency")
@@ -36,4 +39,4 @@ require(world,"s.x+318f,s.y+252f,.82f","water-side landmark")
 require(world,"s.x-205f,s.y+76f,.88f","left tree garden")
 require(world,"s.x+206f,s.y+82f,.88f","right tree garden")
 
-print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, 3-phase attack, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
+print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, stationary pose/weapon 3-phase attack, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
