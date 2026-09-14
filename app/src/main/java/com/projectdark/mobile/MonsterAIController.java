@@ -122,9 +122,10 @@ public final class MonsterAIController {
       float frameDistance=CHASE_SPEED_B*dt;
       MonsterDiagonalLocomotion.Step intent=lock.intent(dx,dy,frameDistance,m.visualFacing.locomotion());
       if(intent==null)return;
-      boolean moved=state.tryMoveMonster(m,intent.dx,intent.dy,frameDistance);
+      float lockedDistance=(float)Math.sqrt(intent.dx*intent.dx+intent.dy*intent.dy);
+      boolean moved=state.tryMoveMonster(m,intent.dx,intent.dy,lockedDistance);
       if(moved){
-        lock.onApplied(frameDistance,m.visualFacing.locomotion());
+        lock.onApplied(lockedDistance,m.visualFacing.locomotion());
       }else{
         // A fully blocked canonical endpoint must not keep a stale segment alive forever.
         lock.reset();
