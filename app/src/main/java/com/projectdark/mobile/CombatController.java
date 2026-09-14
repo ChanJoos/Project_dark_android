@@ -2,12 +2,7 @@ package com.projectdark.mobile;
 
 /**
  * Runtime combat intent/cooldown controller.
- *
- * Evidence policy:
- * - [B] Current approach ranges, cooldown values and prototype action requirements come from
- *   AttackDef/SkillDef reconstruction fixtures.
- * - [ADAPTED] Auto-approach is a mobile usability behavior, not an original movement claim.
- * - This controller contains no XP, loot or unverified original server rules.
+ * Basic melee legality is tile-structural; skill/magic/kick keep their existing prototype ranges.
  */
 public final class CombatController {
   public enum Intent { NONE, ATTACK, CAST, SKILL, KICK }
@@ -54,7 +49,6 @@ public final class CombatController {
   public RuntimeState.Monster approachTarget(){return approachTarget;}
   public boolean approaching(){return intent!=Intent.NONE&&approachTarget!=null;}
 
-  /** [ADAPTED] Stores a deferred action until the player reaches the prototype action range. */
   public boolean beginApproach(Intent next){
     if(next==null||next==Intent.NONE||target==null||!target.alive)return false;
     intent=next;approachTarget=target;return true;
@@ -68,7 +62,7 @@ public final class CombatController {
 
   public float intentRange(){
     switch(intent){
-      case ATTACK:return attackDef().range;
+      case ATTACK:return MeleeTileContract.ADJACENT_CENTER_DISTANCE+.01f;
       case CAST:return SkillDef.CAST_PROTO.range;
       case SKILL:return SkillDef.SKILL_PROTO.range;
       case KICK:return SkillDef.KICK_PROTO.range;
@@ -76,7 +70,20 @@ public final class CombatController {
     }
   }
 
+  public boolean basicAttackInRange(RuntimeState state){
+    return state!=null&&target!=null&&target.alive&&MeleeTileContract.canAttack(
+        state.player().x,state.player().y,target.x,target.y);
+  }
+
+  public CharacterRenderer.Direction basicAttackFacing(RuntimeState state){
+    if(state==null||target==null||!target.alive)return null;
+    return MeleeTileContract.visualDirection(MeleeTileContract.adjacentDirection(
+        state.player().x,state.player().y,target.x,target.y));
+  }
+
+  /** Compatibility surface used by GameView. Basic ATTACK is tile-gated, not radius-gated. */
   public boolean inRange(RuntimeState state,float range){
+    if(range==attackDef().range)return basicAttackInRange(state);
     return state!=null&&target!=null&&target.alive&&state.distanceTo(target)<=range;
   }
 
