@@ -25,11 +25,15 @@ require(game_view,"private final MonsterVisualRenderer monsterVisualRenderer=new
 require(game_view,"monsterVisualRenderer.draw(c,m,selected==m);","live monster renderer draw path")
 require(monster_visual,"public final class MonsterVisualRenderer","monster visual implementation")
 
-require(world,"MILLES_VIDEO_REFERENCE_V5_GRASS_PATH_PLAZA_GARDEN_WATER","video-reference Milles composition")
+require(world,"MILLES_VIDEO_REFERENCE_V6_NATURAL_PATH_SPLIT","video-reference Milles composition")
 require(world,"grass-first village; branching diagonal paths; central fountain; fenced tree gardens; water-side landmark","reference composition contract")
+require(world,"ADAPTED_SOURCE_GROUND_VARIANT_PENDING_TRUE_DIRT_SOURCE","truthful road-surface evidence")
+require(world,"case ROAD:return \"terrain/OBJ_ground_02.png\";","natural road surface mapping")
+require(world,"case PLAZA:","plaza surface split")
+require(world,"case GATE:return \"terrain/OBJ_stone_01.png\";","stone landmark surface mapping")
 require(world,"s.x+12f,s.y+34f,1.02f","central fountain anchor")
 require(world,"s.x+318f,s.y+252f,.82f","water-side landmark")
 require(world,"s.x-205f,s.y+76f,.88f","left tree garden")
 require(world,"s.x+206f,s.y+82f,.88f","right tree garden")
 
-print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, 3-phase attack, monster cadence/visual wiring, canonical melee, video-reference Milles composition")
+print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, 3-phase attack, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
