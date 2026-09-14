@@ -142,10 +142,10 @@ work_packages:
       - "docs/REFERENCE_GROUND_TRUTH.md is referenced by old state but absent from current repository."
       - "docs/reference/MILLES_FRAME_ANALYSIS.md is referenced by old state but absent from current repository."
     source_resolution:
-      - "Map_Instance_Master defines MAP_MILLES as Town / original-tile-coordinate hub / NPC-service centered; it does not provide recoverable road or water geometry."
+      - "Map_Instance_Master defines MAP_MILLES as Town / original-tile-coordinate hub / NPC-service centered; it does not provide recoverable road, water, or landmark-footprint geometry."
       - "Spawn_Master contains hunting-area spawns only and no MAP_MILLES town spawn geometry."
       - "Asset_Map_Mapping marks MAP_MILLES source as SOURCE_FOUND/REFERENCE but explicitly says the matching image among nine old-town images still requires visual identification."
-      - "Therefore exact unobserved road/water geometry is UNRESOLVED; coherent placement is explicitly [ADAPTED], not claimed original."
+      - "Therefore exact unobserved road/water/landmark geometry is UNRESOLVED; coherent placement is explicitly [ADAPTED], not claimed original."
     source_gate:
       - "Before coding, load every concrete available required source for the selected package."
       - "If a referenced source path is absent, record it as unavailable/UNRESOLVED and do not claim its evidence was consumed."
@@ -158,13 +158,13 @@ work_packages:
       - "Use stable world-space placement; prohibit spawn+arbitrary-offset landmark clustering."
     progress:
       last_agent: D
-      start_head: 36d53becdb771b45595d7b5166764a2e1f4b3c26
-      runtime_head: 7ea7b1ec160607137825765f38e8b48d7e816820
+      start_head: 9c69f67bb8f9ecdc7a7b8fbb7b666c0f6f9a4f08
+      runtime_head: 0e5deb2073b5196a46e022b2fd75163e9833e6ff
       state_head_pending: true
       implementation: BUILD_VERIFIED
       build_verified: true
-      build_run: 379
-      runtime_delta: "Added an explicitly [ADAPTED] south-east water body with separate wet-bank and water polygons plus a stable visual crossing that continues the waterside route. All geometry uses absolute world coordinates; crossing collision remains deferred to the later collision/interaction phase. Exact runtime HEAD passed Master validation, Java compile, debug APK build and artifact upload."
+      build_run: 383
+      runtime_delta: "Added stable [ADAPTED] district ground pads and a major east-church landmark footprint before vertical asset reintroduction: north service/residential breathing room, west craft yard, east church forecourt/landmark reserve, and south market commons. All are irregular world-space polygons independent of the navigation-cell grid; exact runtime HEAD passed Master validation, Java compile, debug APK build and artifact upload."
     acceptance:
       - "Entire traversable world has continuous intentional ground with no checkerboard, unexplained voids, or screen-fixed backdrop artifacts."
       - "Camera traversal in all directions preserves world continuity and exposes no un-authored empty side of the map."
@@ -174,7 +174,7 @@ work_packages:
       - "Needed object set has explicit REUSE/REWORK/REMAKE/NEW disposition; missing critical objects are produced before visual acceptance."
       - "Collision/camera/traversal remain functional."
       - "Exact build reaches BUILD_VERIFIED, then remains PENDING_DEVICE until fresh device evidence."
-    next_action: "Preserve the BUILD_VERIFIED floor candidate. Continue with stable major landmark footprints/district boundaries, then audited REUSE/REWORK/REMAKE/NEW vertical asset reintroduction. Do not retune adapted water geometry as source-derived without new evidence."
+    next_action: "Preserve the BUILD_VERIFIED floor/district candidate. Audit the candidate Milles production object set and assign REUSE/REWORK/REMAKE/NEW dispositions for church plus first district buildings; then reintroduce only approved vertical assets at the stable landmark footprints."
 
   COMBAT_PRESENTATION_001:
     title: "Connect authored/source-backed attack presentation into playable combat"
@@ -205,7 +205,7 @@ work_packages:
 agent_selection_policy:
   - "Re-sync before selection and verify baton/claims."
   - "Before coding, load every concrete available required source for the selected package; absent referenced paths must be explicitly recorded UNRESOLVED rather than silently treated as consumed."
-  - "If a new canonical direction/design document materially governs selected work, register it in PROJECT_STATE required_sources before implementation."
+  - "If a new canonical direction/design document materially governs selected work, register it in the work package required_sources before implementation."
   - "Prefer the highest-priority READY unclaimed package whose dependencies can be resolved."
   - "If a P0 item becomes PENDING_DEVICE, move to another READY package until new evidence arrives."
   - "Documentation/control-plane changes alone are not runtime progress when a runtime delta is technically possible."
