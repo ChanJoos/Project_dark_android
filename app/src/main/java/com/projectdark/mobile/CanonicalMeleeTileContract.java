@@ -5,11 +5,12 @@ import com.projectdark.mobile.world.WorldMoveTargetController;
 /**
  * Canonical melee spatial contract shared by player and monster combat.
  * A melee target is reachable iff it occupies exactly one authored adjacent 64x32 tile endpoint.
+ * Geometry is derived from WorldMoveTargetController so combat cannot fork its own tile constants.
  */
 public final class CanonicalMeleeTileContract {
-  public static final float STEP_X=32f;
-  public static final float STEP_Y=16f;
-  public static final float REACH_DISTANCE=(float)Math.sqrt(STEP_X*STEP_X+STEP_Y*STEP_Y);
+  public static final float STEP_X=Math.abs(WorldMoveTargetController.Direction.NE.dx);
+  public static final float STEP_Y=Math.abs(WorldMoveTargetController.Direction.NE.dy);
+  public static final float REACH_DISTANCE=WorldMoveTargetController.ADJACENT_TILE_DISTANCE;
 
   private CanonicalMeleeTileContract(){}
 
