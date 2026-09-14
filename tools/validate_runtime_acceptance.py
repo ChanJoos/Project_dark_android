@@ -33,6 +33,11 @@ require(monster_ai,"CanonicalMeleeTileContract.direction","canonical melee adjac
 require(game_view,"private final MonsterVisualRenderer monsterVisualRenderer=new MonsterVisualRenderer();","live monster renderer wiring")
 require(game_view,"monsterVisualRenderer.draw(c,m,selected==m);","live monster renderer draw path")
 require(monster_visual,"public final class MonsterVisualRenderer","monster visual implementation")
+require(monster_visual,"ADAPTED_FOOT_LOCKED_MONSTER_ATTACK_POSE","foot-locked adapted monster attack evidence")
+require(monster_visual,"float x=m.x,y=m.y;","monster logical foot anchor lock")
+require(monster_visual,"float bodyLean=attack*1.25f*sx;","monster local silhouette attack delta")
+if "float lunge=" in monster_visual or "x=m.x+" in monster_visual or "y=m.y+" in monster_visual:
+    raise SystemExit("RUNTIME ACCEPTANCE FAIL: monster attack can translate whole entity away from logical foot anchor")
 
 require(world,"MILLES_VIDEO_REFERENCE_V6_NATURAL_PATH_SPLIT","video-reference Milles composition")
 require(world,"grass-first village; branching diagonal paths; central fountain; fenced tree gardens; water-side landmark","reference composition contract")
@@ -45,4 +50,4 @@ require(world,"s.x+318f,s.y+252f,.82f","water-side landmark")
 require(world,"s.x-205f,s.y+76f,.88f","left tree garden")
 require(world,"s.x+206f,s.y+82f,.88f","right tree garden")
 
-print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, stationary pose/weapon 3-phase attack, authored idle/walk hand anchor, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
+print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, stationary pose/weapon 3-phase attack, authored idle/walk hand anchor, foot-locked monster attack, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
