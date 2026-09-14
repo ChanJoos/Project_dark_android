@@ -15,6 +15,7 @@ public final class RuntimeState {
 
   public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
   public static final float PLAYER_RADIUS=9f,MONSTER_RADIUS=11f,NPC_RADIUS=10f;
+  public static final float MONSTER_ATTACK_RECOVERY_SECONDS=.14f;
 
   public static final class Player {
     public final float spawnX,spawnY;
@@ -35,7 +36,7 @@ public final class RuntimeState {
     public final String id,name,assetStatus;public final float spawnX,spawnY;public float x,y;
     public int hp;public final int maxHp;public boolean alive=true;
     public State state=State.SPAWN;
-    public float attackCooldown=0f,attackWindup=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
+    public float attackCooldown=0f,attackWindup=0f,attackRecoveryClock=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
     public boolean attackPrimed=false;
     public final CanonicalActorFacing visualFacing=new CanonicalActorFacing(CharacterRenderer.Direction.SE);
     public int lastDamage=0;
@@ -121,16 +122,16 @@ public final class RuntimeState {
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 
-  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){m.visualFacing.beginAttack(player.x-m.x,player.y-m.y);m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;}}
-  public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.state==Monster.State.ATTACK&&m.attackPrimed&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
-  public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);damagePlayer(damage);m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}
-  public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}}
+  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackRecoveryClock<=0f&&m.attackCooldown<=0f){m.attackRecoveryClock=0f;m.visualFacing.beginAttack(player.x-m.x,player.y-m.y);m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;}}
+  public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.state==Monster.State.ATTACK&&m.attackPrimed&&m.attackRecoveryClock<=0f&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
+  public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackRecoveryClock=MONSTER_ATTACK_RECOVERY_SECONDS;m.attackCooldown=Math.max(0f,cooldown);damagePlayer(damage);}
+  public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;m.attackRecoveryClock=0f;m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}}
 
-  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
+  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackRecoveryClock=0f;m.attackPrimed=false;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=4f;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
   public void damagePlayer(int amount){if(amount<=0||!player.alive)return;player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.state=Monster.State.IDLE;}}}
   public void revivePlayer(){player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;player.hitFlash=0f;ledger.add(CombatLedger.Type.PLAYER_REVIVED,"runtime","player",0);}
 
-  public void tick(float dt){player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive)continue;if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){m.state=Monster.State.SPAWN;m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
+  public void tick(float dt){player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);m.attackRecoveryClock=Math.max(0f,m.attackRecoveryClock-dt);m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive){if(m.state==Monster.State.ATTACK&&!m.attackPrimed&&m.attackRecoveryClock<=0f){m.visualFacing.endAttack();m.state=Monster.State.IDLE;}continue;}if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){m.state=Monster.State.SPAWN;m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackRecoveryClock=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
 
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}
   private static float clamp(float v,float min,float max){return Math.max(min,Math.min(max,v));}
