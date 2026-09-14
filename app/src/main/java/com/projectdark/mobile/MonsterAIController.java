@@ -1,5 +1,8 @@
 package com.projectdark.mobile;
 
+import java.util.IdentityHashMap;
+import java.util.Map;
+
 /**
  * Combat·Monster-owned runtime orchestration for prototype monster combat.
  *
@@ -76,6 +79,7 @@ public final class MonsterAIController {
 
   private final MonsterDefinitionRegistry definitions=new MonsterDefinitionRegistry();
   private final AttackRouter attackRouter;
+  private final Map<RuntimeState.Monster,MonsterCanonicalSegmentLock> locomotionLocks=new IdentityHashMap<>();
   private long submissionSequence;
   private AttackSubmissionSnapshot lastSubmission=new AttackSubmissionSnapshot(0,null,null,null,AttackRoute.LEGACY_RUNTIME,SubmissionOutcome.NONE,null);
 
@@ -91,7 +95,7 @@ public final class MonsterAIController {
   public void tick(RuntimeState state,float dt){
     if(state==null||!state.player().alive)return;
     for(RuntimeState.Monster m:state.monsters()){
-      if(!m.alive)continue;
+      if(!m.alive){locomotionLocks.remove(m);continue;}
       MonsterDefinition def=definitions.resolve(m.id);
       if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING)continue;
       tickPrototypeMonster(state,m,dt);
@@ -102,8 +106,10 @@ public final class MonsterAIController {
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
+    MonsterCanonicalSegmentLock lock=locomotionLocks.computeIfAbsent(m,key->new MonsterCanonicalSegmentLock());
 
     if(m.attackPrimed){
+      lock.reset();
       if(d>ATTACK_CANCEL_RANGE_B){
         state.cancelMonsterAttack(m);
         return;
@@ -113,13 +119,22 @@ public final class MonsterAIController {
     }
 
     if(d<CHASE_RADIUS_B&&d>ATTACK_BEGIN_RANGE_B){
-      float step=CHASE_SPEED_B*dt;
-      // AI intent remains continuous; World applies one legal 2:1 isometric diagonal segment.
-      state.tryMoveMonster(m,dx,dy,step);
+      float frameDistance=CHASE_SPEED_B*dt;
+      MonsterDiagonalLocomotion.Step intent=lock.intent(dx,dy,frameDistance,m.visualFacing.locomotion());
+      if(intent==null)return;
+      boolean moved=state.tryMoveMonster(m,intent.dx,intent.dy,frameDistance);
+      if(moved){
+        lock.onApplied(frameDistance,m.visualFacing.locomotion());
+      }else{
+        // A fully blocked canonical endpoint must not keep a stale segment alive forever.
+        lock.reset();
+      }
       return;
     }
 
+    lock.reset();
     if(d<=ATTACK_BEGIN_RANGE_B&&m.attackCooldown<=0f){
+      // Attack direction is snapshotted once in RuntimeState.beginMonsterAttack() and remains locked.
       state.beginMonsterAttack(m);
     }else if(m.state==RuntimeState.Monster.State.CHASE){
       m.state=RuntimeState.Monster.State.IDLE;
