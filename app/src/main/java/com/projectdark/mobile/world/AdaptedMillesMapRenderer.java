@@ -15,11 +15,17 @@ import java.util.Map;
 /**
  * Milles production vertical-slice renderer.
  *
- * Source pixels come directly from assets/milles/production via the app assets sourceSet.
- * No generated replacement art is used here. Runtime scaling uses nearest-neighbour only.
+ * Production sprites come from assets/milles/production via the app assets sourceSet.
+ * Runtime scaling uses nearest-neighbour only.
+ *
+ * The broad village ground is intentionally rendered as one grass-first field instead of stamping
+ * OBJ_ground_01 into every 64x32 navigation cell. The latter produced the device-verified brown
+ * diamond/checker test-board and incorrectly exposed logical navigation cells as visual tiles.
+ * Until a verified source tile-set is available, the grass plane is an explicit [ADAPTED]
+ * presentation layer; authored roads/plaza remain tied to the existing world surface definitions.
  */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V3_AUTHORED_GRID_CENTERS";
+  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V4_GRASS_FIRST";
   public static final float LOGICAL_GROUND_WIDTH=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   public static final float LOGICAL_GROUND_HEIGHT=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private final Paint pixel=new Paint();
@@ -29,19 +35,25 @@ public final class AdaptedMillesMapRenderer {
 
   public AdaptedMillesMapRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
-    backdrop.setAntiAlias(false);backdrop.setColor(0xff26382b);
+    // [ADAPTED] Reference-grounded broad grass presentation. This is not claimed as an original
+    // Milles tile color; it prevents the navigation grid from becoming the visible ground texture.
+    backdrop.setAntiAlias(false);backdrop.setColor(0xff5f7d45);
     assets=findAssets();
   }
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
+
+    // Grass-first village plane. Logical GROUND cells remain available for navigation/collision but
+    // are deliberately not stamped as individual diamonds on screen.
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),backdrop);
     WorldMapProjection.Spawn s=world.map().spawn();
 
-    // World-owned placement invariant: visual ground is drawn at the exact same authored centers
-    // consumed by navigation. Adjacent centers are therefore always +/-32 X and +/-16 Y.
+    // Only authored non-ground surfaces are expressed as visible 64x32 cells. This keeps the
+    // existing road/plaza topology while eliminating the device-verified full-screen checkerboard.
     for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles()){
-      drawGround(canvas,world,terrainFor(tile.kind),tile.centerX,tile.centerY,1f);
+      String terrain=terrainFor(tile);
+      if(terrain!=null)drawGround(canvas,world,terrain,tile.centerX,tile.centerY,1f);
     }
 
     // Back row: landmark + shops. Positions are authored around the existing playable spawn.
@@ -75,19 +87,21 @@ public final class AdaptedMillesMapRenderer {
     }
   }
 
-  private static String terrainFor(AdaptedMillesIsometricTileLayer.TileKind kind){
-    switch(kind){
+  private static String terrainFor(AdaptedMillesIsometricTileLayer.Tile tile){
+    switch(tile.kind){
       case ROAD:
       case PLAZA:
-      case GATE:return "terrain/OBJ_stone_01.png";
-      default:return "terrain/OBJ_ground_01.png";
+      case GATE:
+        return (tile.variant&1)==0?"terrain/OBJ_stone_01.png":"terrain/OBJ_stone_02.png";
+      case GROUND:
+      default:
+        return null;
     }
   }
 
   /**
-   * Terrain source crops keep their original extraction dimensions, but their runtime footprint is
-   * one logical isometric cell. Keeping those concerns separate makes the visible ground cadence
-   * agree with the 64x32 navigation grid instead of inheriting arbitrary source-crop dimensions.
+   * Authored road/plaza source crops keep their original extraction dimensions, while their runtime
+   * footprint remains one logical isometric cell. Broad grass is not rendered through this path.
    */
   private void drawGround(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){
     Bitmap b=bitmap(path);if(b==null)return;
