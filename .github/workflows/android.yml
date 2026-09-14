@@ -26,6 +26,8 @@ jobs:
       - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
       - name: Validate Master DB
         run: python tools/validate_master.py
+      - name: Validate runtime acceptance contracts
+        run: python tools/validate_runtime_acceptance.py
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Build debug APK
