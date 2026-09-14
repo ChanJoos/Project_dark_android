@@ -2,38 +2,38 @@ package com.projectdark.mobile.world;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import com.projectdark.mobile.WorldDef;
 
 /**
  * Milles floor-foundation renderer.
  *
- * This pass intentionally removes the old "asset cluster on a tiled test board" presentation.
- * Buildings, lake, fences, trees and street props are not rendered here yet. The renderer now owns
- * only the continuous world-space floor so camera movement can be validated before vertical content
- * is reintroduced.
- *
- * Geometry remains [ADAPTED/B] until verified Milles source geometry is calibrated. The important
- * invariant for this pass is that floor coverage follows the actual world bounds and moves with the
- * camera; it must never be a screen-sized backdrop and must never expose logical 64x32 navigation
- * cells as visible checker/diamond tiles.
+ * The floor is world-space, grass-first and deliberately independent of the navigation-cell grid.
+ * Visible village circulation is rendered from connected route polylines that converge on a central
+ * civic square; this replaces the prior rectangular road strips that still read like a prototype
+ * board when the camera moved.
  */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_FLOOR_FOUNDATION_V1_WORLD_SPACE";
+  public static final String STATUS="MILLES_FLOOR_FOUNDATION_V2_ROAD_HIERARCHY";
 
   private final Paint outsidePaint=new Paint();
   private final Paint grassPaint=new Paint();
-  private final Paint roadPaint=new Paint();
+  private final Paint primaryRoadPaint=new Paint();
+  private final Paint secondaryRoadPaint=new Paint();
+  private final Paint quietRoadPaint=new Paint();
   private final Paint plazaPaint=new Paint();
   private final Paint gatePaint=new Paint();
 
   public AdaptedMillesMapRenderer(){
-    configure(outsidePaint,0xff1f2a22);
+    configureFill(outsidePaint,0xff1f2a22);
     // [ADAPTED] presentation colors only; not claimed as original Milles palette.
-    configure(grassPaint,0xff66884d);
-    configure(roadPaint,0xffbca77b);
-    configure(plazaPaint,0xffc8b58b);
-    configure(gatePaint,0xffae986f);
+    configureFill(grassPaint,0xff66884d);
+    configureRoute(primaryRoadPaint,0xffb8a276);
+    configureRoute(secondaryRoadPaint,0xffad9a72);
+    configureRoute(quietRoadPaint,0xff9e9270);
+    configureFill(plazaPaint,0xffc8b58b);
+    configureFill(gatePaint,0xffae986f);
   }
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
@@ -43,28 +43,49 @@ public final class AdaptedMillesMapRenderer {
     // instead of hiding them behind a screen-sized grass fill.
     canvas.drawRect(0f,0f,canvas.getWidth(),canvas.getHeight(),outsidePaint);
 
-    // One continuous ground slab in WORLD SPACE. Camera scrolling therefore reveals different parts
-    // of the same map instead of repainting the viewport as if the world were attached to the screen.
+    // One continuous ground slab in WORLD SPACE. Camera scrolling reveals different parts of the
+    // same village instead of repainting a viewport-fixed backdrop.
     drawWorldRect(canvas,world,WorldDef.MIN_X,WorldDef.MIN_Y,WorldDef.MAX_X,WorldDef.MAX_Y,grassPaint);
 
-    // Surface composition is also world-space and continuous. No per-navigation-cell diamonds.
-    // GROUND is already covered by the base slab; only semantic road/plaza/gate surfaces overlay it.
-    for(AdaptedMillesMapLayer.Surface surface:AdaptedMillesMapLayer.surfaces()){
-      switch(surface.kind){
-        case ROAD:
-          drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,roadPaint);
+    // Draw circulation first so every route visually terminates beneath the civic square rather than
+    // producing stacked rectangle seams. Logical ROAD rectangles remain in MapLayer for navigation
+    // classification, but they are not exposed as visible geometry.
+    for(AdaptedMillesMapLayer.Route route:AdaptedMillesMapLayer.routes()){
+      switch(route.kind){
+        case PRIMARY:
+          drawWorldRoute(canvas,world,route,primaryRoadPaint);
           break;
-        case PLAZA:
-          drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,plazaPaint);
+        case SECONDARY:
+          drawWorldRoute(canvas,world,route,secondaryRoadPaint);
           break;
-        case GATE:
-          drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,gatePaint);
-          break;
-        case GROUND:
+        case QUIET:
         default:
+          drawWorldRoute(canvas,world,route,quietRoadPaint);
           break;
       }
     }
+
+    // Plaza/gate are the only rectangular semantic surfaces deliberately rendered in this pass.
+    // The square is a civic destination; the gate is a broad transition pad at the future field axis.
+    for(AdaptedMillesMapLayer.Surface surface:AdaptedMillesMapLayer.surfaces()){
+      if(surface.kind==AdaptedMillesMapLayer.SurfaceKind.PLAZA){
+        drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,plazaPaint);
+      }else if(surface.kind==AdaptedMillesMapLayer.SurfaceKind.GATE){
+        drawWorldRect(canvas,world,surface.left,surface.top,surface.right,surface.bottom,gatePaint);
+      }
+    }
+  }
+
+  private static void drawWorldRoute(Canvas canvas,WorldRuntimeAdapter world,
+      AdaptedMillesMapLayer.Route route,Paint paint){
+    Path path=new Path();
+    boolean started=false;
+    for(int i=0;i<route.points.length;i+=2){
+      WorldCameraTransform.Point p=world.worldToScreen(route.points[i],route.points[i+1]);
+      if(!started){path.moveTo(p.x,p.y);started=true;}else path.lineTo(p.x,p.y);
+    }
+    paint.setStrokeWidth(route.width);
+    canvas.drawPath(path,paint);
   }
 
   private static void drawWorldRect(Canvas canvas,WorldRuntimeAdapter world,
@@ -76,10 +97,19 @@ public final class AdaptedMillesMapRenderer {
     canvas.drawRect(dst,paint);
   }
 
-  private static void configure(Paint paint,int color){
+  private static void configureFill(Paint paint,int color){
     paint.setAntiAlias(false);
     paint.setDither(false);
     paint.setColor(color);
     paint.setStyle(Paint.Style.FILL);
+  }
+
+  private static void configureRoute(Paint paint,int color){
+    paint.setAntiAlias(false);
+    paint.setDither(false);
+    paint.setColor(color);
+    paint.setStyle(Paint.Style.STROKE);
+    paint.setStrokeCap(Paint.Cap.ROUND);
+    paint.setStrokeJoin(Paint.Join.ROUND);
   }
 }
