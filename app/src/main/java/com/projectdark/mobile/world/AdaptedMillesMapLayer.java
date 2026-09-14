@@ -9,8 +9,8 @@ import java.util.List;
  *
  * Verified full original geometry is unavailable, so unknown space is deliberately designed as a
  * coherent quiet medieval village rather than left empty or filled with spawn-relative clutter.
- * Logical surface rectangles remain available to navigation/classification code, while visual roads
- * are authored as connected world-space routes converging on the civic square.
+ * Logical surface rectangles remain available to navigation/classification code, while visible roads,
+ * water and crossings are authored as stable world-space geometry.
  */
 public final class AdaptedMillesMapLayer {
   public enum SurfaceKind { GROUND, ROAD, PLAZA, GATE }
@@ -32,6 +32,21 @@ public final class AdaptedMillesMapLayer {
       this.id=id;this.kind=kind;this.width=width;this.evidence=evidence;this.status=status;this.points=points.clone();
     }
   }
+  public static final class WaterBody {
+    public final String id; public final float[] bankPoints,waterPoints; public final String evidence,status;
+    WaterBody(String id,String evidence,String status,float[] bankPoints,float[] waterPoints){
+      requirePolygon(bankPoints,"bank"); requirePolygon(waterPoints,"water");
+      this.id=id;this.evidence=evidence;this.status=status;
+      this.bankPoints=bankPoints.clone();this.waterPoints=waterPoints.clone();
+    }
+  }
+  public static final class Crossing {
+    public final String id; public final float width; public final float[] points; public final String evidence,status;
+    Crossing(String id,float width,String evidence,String status,float... points){
+      if(points==null||points.length<4||(points.length&1)!=0)throw new IllegalArgumentException("crossing needs x/y pairs");
+      this.id=id;this.width=width;this.evidence=evidence;this.status=status;this.points=points.clone();
+    }
+  }
 
   private static final String E="ADAPTED/B";
   private static final String S="ADAPTED_COHERENT_MEDIEVAL_VILLAGE_PENDING_SOURCE_CALIBRATION";
@@ -51,27 +66,43 @@ public final class AdaptedMillesMapLayer {
       new Surface("waterside_corridor",SurfaceKind.ROAD,760f,690f,1390f,1160f,E,S),
       new Surface("south_gate",SurfaceKind.GATE,570f,1450f,730f,1600f,E,"ADAPTED_EXIT_AXIS_TARGET_PENDING")));
 
-  /**
-   * Visible road hierarchy. All routes are stable absolute world coordinates and converge on the
-   * civic square; none are derived from player spawn. Curves are represented as short connected
-   * segments so the renderer can produce continuous paths rather than rectangular test strips.
-   */
+  /** Visible road hierarchy; all routes use stable absolute world coordinates. */
   private static final List<Route> ROUTES=Collections.unmodifiableList(Arrays.asList(
-      // North: residential/service district. Slight bend avoids an artificial cross-shaped board.
       new Route("north_service_route",RouteKind.PRIMARY,112f,E,S,
           665f,535f, 650f,405f, 675f,285f, 735f,150f),
-      // West: equipment/craft district; narrower than the gate road.
       new Route("west_craft_route",RouteKind.SECONDARY,92f,E,S,
           530f,605f, 420f,620f, 315f,665f, 185f,725f),
-      // East: church/quiet landmark approach with more stone language at the destination.
       new Route("east_church_route",RouteKind.PRIMARY,104f,E,S,
           800f,585f, 955f,570f, 1120f,525f, 1325f,455f),
-      // South: widest civic/market/exit axis and future connection to outside fields.
       new Route("south_market_gate_route",RouteKind.PRIMARY,126f,E,S,
           665f,700f, 680f,860f, 645f,1040f, 625f,1240f, 650f,1515f),
-      // South-east: quieter waterside route; deliberately thin and meandering.
       new Route("waterside_route",RouteKind.QUIET,76f,E,S,
           790f,680f, 930f,735f, 1055f,820f, 1165f,940f, 1305f,1085f)));
+
+  /**
+   * South-east water is deliberately [ADAPTED]. The source index confirms that an old Milles image
+   * exists but does not identify recoverable water geometry, so this stable world-space pond/stream
+   * edge supplies the required quiet waterside contrast without claiming original coordinates.
+   * Bank and water are separate polygons so the renderer can show a continuous wet-ground transition.
+   */
+  private static final List<WaterBody> WATER_BODIES=Collections.unmodifiableList(Arrays.asList(
+      new WaterBody("southeast_village_water",E,"ADAPTED_WATERSIDE_PENDING_SOURCE_IDENTIFICATION",
+          new float[]{
+              1320f,965f, 1450f,885f, 1620f,850f, 1810f,875f, 1990f,960f,
+              2070f,1080f, 2025f,1215f, 1890f,1320f, 1690f,1360f, 1500f,1315f,
+              1370f,1215f, 1290f,1090f},
+          new float[]{
+              1365f,985f, 1475f,925f, 1625f,895f, 1785f,915f, 1940f,985f,
+              2015f,1085f, 1970f,1185f, 1860f,1270f, 1690f,1310f, 1530f,1270f,
+              1415f,1185f, 1345f,1090f}))));
+
+  /**
+   * A single narrow timber/stone crossing continues the waterside route across the western bank.
+   * Geometry is [ADAPTED] and remains purely visual until collision/interaction phase 9.
+   */
+  private static final List<Crossing> CROSSINGS=Collections.unmodifiableList(Arrays.asList(
+      new Crossing("southeast_bank_crossing",58f,E,"ADAPTED_CROSSING_PENDING_ASSET_REWORK",
+          1275f,1070f, 1345f,1100f, 1420f,1135f)));
 
   /*
    * Structure footprints are retained as planning/collision candidates only. They are NOT rendered by
@@ -99,8 +130,14 @@ public final class AdaptedMillesMapLayer {
       new Structure("south_gate_west_wall",StructureKind.WALL,520f,1460f,700f,1580f,E,S,A),
       new Structure("south_gate_east_wall",StructureKind.WALL,880f,1460f,1060f,1580f,E,S,A)));
 
+  private static void requirePolygon(float[] points,String name){
+    if(points==null||points.length<6||(points.length&1)!=0)throw new IllegalArgumentException(name+" needs 3+ x/y pairs");
+  }
+
   private AdaptedMillesMapLayer(){}
   public static List<Surface> surfaces(){return SURFACES;}
   public static List<Route> routes(){return ROUTES;}
+  public static List<WaterBody> waterBodies(){return WATER_BODIES;}
+  public static List<Crossing> crossings(){return CROSSINGS;}
   public static List<Structure> structures(){return STRUCTURES;}
 }
