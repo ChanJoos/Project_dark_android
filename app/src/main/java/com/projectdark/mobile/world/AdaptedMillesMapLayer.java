@@ -10,12 +10,13 @@ import java.util.List;
  * Verified full original geometry is unavailable, so unknown space is deliberately designed as a
  * coherent quiet medieval village rather than left empty or filled with spawn-relative clutter.
  * Logical surface rectangles remain available to navigation/classification code, while visible roads,
- * water and crossings are authored as stable world-space geometry.
+ * water, crossings and landmark ground footprints are authored as stable world-space geometry.
  */
 public final class AdaptedMillesMapLayer {
   public enum SurfaceKind { GROUND, ROAD, PLAZA, GATE }
   public enum StructureKind { HOUSE, HALL, SHOP, WALL, LANDMARK }
   public enum RouteKind { PRIMARY, SECONDARY, QUIET }
+  public enum DistrictKind { CIVIC_STONE, CHURCH_QUIET, CRAFT_YARD, SERVICE_GARDEN, MARKET_COMMONS }
 
   public static final class Surface {
     public final String id; public final SurfaceKind kind; public final float left,top,right,bottom; public final String evidence,status;
@@ -45,6 +46,13 @@ public final class AdaptedMillesMapLayer {
     Crossing(String id,float width,String evidence,String status,float... points){
       if(points==null||points.length<4||(points.length&1)!=0)throw new IllegalArgumentException("crossing needs x/y pairs");
       this.id=id;this.width=width;this.evidence=evidence;this.status=status;this.points=points.clone();
+    }
+  }
+  public static final class DistrictPad {
+    public final String id; public final DistrictKind kind; public final float[] points; public final String evidence,status,landmarkRole;
+    DistrictPad(String id,DistrictKind kind,String landmarkRole,String evidence,String status,float... points){
+      requirePolygon(points,"district pad");
+      this.id=id;this.kind=kind;this.landmarkRole=landmarkRole;this.evidence=evidence;this.status=status;this.points=points.clone();
     }
   }
 
@@ -80,6 +88,25 @@ public final class AdaptedMillesMapLayer {
           790f,680f, 930f,735f, 1055f,820f, 1165f,940f, 1305f,1085f)));
 
   /**
+   * Stable landmark ground footprints and district pads. These are intentionally floor-layer only:
+   * they reserve breathing room and make district intent readable before any vertical asset is
+   * reintroduced. Exact original Milles footprint geometry is unavailable, so every pad is [ADAPTED].
+   */
+  private static final List<DistrictPad> DISTRICT_PADS=Collections.unmodifiableList(Arrays.asList(
+      new DistrictPad("east_church_forecourt",DistrictKind.CHURCH_QUIET,"church landmark footprint",E,
+          "ADAPTED_MAJOR_LANDMARK_FOOTPRINT_PENDING_ASSET_CLASSIFICATION",
+          1190f,330f, 1475f,300f, 1575f,455f, 1515f,665f, 1225f,690f, 1105f,535f),
+      new DistrictPad("west_craft_yard",DistrictKind.CRAFT_YARD,"equipment/craft landmark footprint",E,
+          "ADAPTED_DISTRICT_PAD_PENDING_VERTICAL_ASSETS",
+          120f,500f, 390f,470f, 535f,585f, 460f,785f, 180f,820f, 90f,680f),
+      new DistrictPad("north_service_green",DistrictKind.SERVICE_GARDEN,"service/residential breathing room",E,
+          "ADAPTED_DISTRICT_PAD_PENDING_VERTICAL_ASSETS",
+          470f,85f, 900f,70f, 980f,280f, 860f,440f, 500f,420f, 420f,250f),
+      new DistrictPad("south_market_commons",DistrictKind.MARKET_COMMONS,"market/stall footprint zone",E,
+          "ADAPTED_DISTRICT_PAD_PENDING_VERTICAL_ASSETS",
+          470f,820f, 865f,810f, 955f,1015f, 845f,1225f, 440f,1210f, 380f,1010f)));
+
+  /**
    * South-east water is deliberately [ADAPTED]. The source index confirms that an old Milles image
    * exists but does not identify recoverable water geometry, so this stable world-space pond/stream
    * edge supplies the required quiet waterside contrast without claiming original coordinates.
@@ -113,6 +140,8 @@ public final class AdaptedMillesMapLayer {
       new Structure("north_hall",StructureKind.HALL,540f,90f,800f,280f,E,S,A),
       new Structure("northeast_house",StructureKind.HOUSE,1040f,110f,1320f,315f,E,S,A),
       new Structure("west_house",StructureKind.HOUSE,256f,528f,384f,592f,E,S,A),
+      new Structure("east_church_landmark",StructureKind.LANDMARK,1225f,345f,1510f,610f,E,
+          "ADAPTED_MAJOR_LANDMARK_FOOTPRINT_PENDING_ASSET_CLASSIFICATION",A),
       new Structure("east_shop",StructureKind.SHOP,1210f,410f,1480f,660f,E,S,A),
       new Structure("southwest_house",StructureKind.HOUSE,330f,760f,570f,980f,E,S,A),
       new Structure("southeast_house",StructureKind.HOUSE,1000f,770f,1260f,995f,E,S,A),
@@ -137,6 +166,7 @@ public final class AdaptedMillesMapLayer {
   private AdaptedMillesMapLayer(){}
   public static List<Surface> surfaces(){return SURFACES;}
   public static List<Route> routes(){return ROUTES;}
+  public static List<DistrictPad> districtPads(){return DISTRICT_PADS;}
   public static List<WaterBody> waterBodies(){return WATER_BODIES;}
   public static List<Crossing> crossings(){return CROSSINGS;}
   public static List<Structure> structures(){return STRUCTURES;}
