@@ -8,7 +8,8 @@ public final class MonsterCanonicalTrajectoryAudit {
   private static final int LONG_TICKS=4096;
   private static final float FRAME_DISTANCE=.5f;
   private static final float EPS=.002f;
-  private static final float SETTLE_DISTANCE=MonsterAIController.ATTACK_BEGIN_RANGE_B;
+  // Mirrors the current [B] monster attack-begin/arrival threshold without depending on controller wiring.
+  private static final float SETTLE_DISTANCE=42f;
 
   public static final class Metrics {
     public final String name;
@@ -109,8 +110,7 @@ public final class MonsterCanonicalTrajectoryAudit {
   }
 
   private static Metrics runCollisionDetour(){
-    Metrics m=runFixed("collision-detour",0f,-100000f,LONG_TICKS,true);
-    return m;
+    return runFixed("collision-detour",0f,-100000f,LONG_TICKS,true);
   }
 
   private static Metrics runArrivalSettle(){
