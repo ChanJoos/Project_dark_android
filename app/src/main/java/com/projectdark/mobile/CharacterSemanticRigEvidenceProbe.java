@@ -9,16 +9,17 @@ import android.graphics.Rect;
 public final class CharacterSemanticRigEvidenceProbe {
   private static final int[] BODY_W={17,18,19,21},BODY_H={51,52,51,49};
   private static final int[] ROBE_W={14,19,15,20},ROBE_H={33,22,30,21};
+  private static final float MAX_ACTION_SEMANTIC_ERROR=2f;
 
   public static final class Result {
-    public final boolean resourcesReady,northFrozen,swseSemantic,weaponHandDerived,placeholderTruth;
-    public final float maxSwSeRobeShift,maxWalkHandStep;
-    Result(boolean ready,boolean north,boolean robe,boolean weapon,boolean placeholder,float robeShift,float handStep){
-      resourcesReady=ready;northFrozen=north;swseSemantic=robe;weaponHandDerived=weapon;placeholderTruth=placeholder;
-      maxSwSeRobeShift=robeShift;maxWalkHandStep=handStep;
+    public final boolean resourcesReady,northFrozen,swseSemantic,weaponHandDerived,placeholderTruth,actionGlobalAlignment;
+    public final float maxSwSeRobeShift,maxWalkHandStep,maxActionPelvisXError,maxActionPelvisYError,maxActionFootYError;
+    Result(boolean ready,boolean north,boolean robe,boolean weapon,boolean placeholder,boolean actionAligned,float robeShift,float handStep,float pelvisX,float pelvisY,float footY){
+      resourcesReady=ready;northFrozen=north;swseSemantic=robe;weaponHandDerived=weapon;placeholderTruth=placeholder;actionGlobalAlignment=actionAligned;
+      maxSwSeRobeShift=robeShift;maxWalkHandStep=handStep;maxActionPelvisXError=pelvisX;maxActionPelvisYError=pelvisY;maxActionFootYError=footY;
     }
-    public boolean passes(){return resourcesReady&&northFrozen&&swseSemantic&&weaponHandDerived&&placeholderTruth;}
-    public String summary(){return "resources="+resourcesReady+",northFrozen="+northFrozen+",swseSemantic="+swseSemantic+",weaponHandDerived="+weaponHandDerived+",placeholder="+placeholderTruth+",maxRobeShift="+maxSwSeRobeShift+",maxHandStep="+maxWalkHandStep;}
+    public boolean passes(){return resourcesReady&&northFrozen&&swseSemantic&&weaponHandDerived&&placeholderTruth&&actionGlobalAlignment;}
+    public String summary(){return "resources="+resourcesReady+",northFrozen="+northFrozen+",swseSemantic="+swseSemantic+",weaponHandDerived="+weaponHandDerived+",placeholder="+placeholderTruth+",actionGlobalAlignment="+actionGlobalAlignment+",maxRobeShift="+maxSwSeRobeShift+",maxHandStep="+maxWalkHandStep+",actionErr(pX/pY/fY)="+maxActionPelvisXError+"/"+maxActionPelvisYError+"/"+maxActionFootYError;}
   }
 
   private CharacterSemanticRigEvidenceProbe(){}
@@ -31,6 +32,7 @@ public final class CharacterSemanticRigEvidenceProbe {
     boolean north=!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NW)&&!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NE);
     boolean semantic=CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SW)&&CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SE);
     boolean weaponDerived=ready;float maxRobe=0f,maxHand=0f;
+    float maxPelvisX=0f,maxPelvisY=0f,maxFootY=0f;boolean actionAligned=true;
 
     if(ready){
       for(CharacterRenderer.Direction d:new CharacterRenderer.Direction[]{CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE}){
@@ -55,12 +57,18 @@ public final class CharacterSemanticRigEvidenceProbe {
           CharacterSemanticRig.Anchors ba=CharacterSemanticRig.derive(ab,new Rect(0,0,BODY_W[source],BODY_H[source]),d);
           CharacterSemanticRig.Anchors ra=CharacterSemanticRig.derive(ar,new Rect(0,0,ROBE_W[source],ROBE_H[source]),d);
           CharacterSemanticRig.Translation tr=CharacterSemanticRig.garmentTranslation(ba,ra);
-          semantic&=finite(tr.x)&&finite(tr.y);weaponDerived&=finite(ba.dominantHand.x)&&finite(ba.dominantHand.y);
-        }
+          float pelvisX=CharacterSemanticRig.postTranslationPelvisXError(ba,ra,tr);
+          float pelvisY=CharacterSemanticRig.postTranslationPelvisYError(ba,ra,tr);
+          float footY=CharacterSemanticRig.postTranslationFootYError(ba,ra,tr);
+          maxPelvisX=Math.max(maxPelvisX,pelvisX);maxPelvisY=Math.max(maxPelvisY,pelvisY);maxFootY=Math.max(maxFootY,footY);
+          boolean finiteAction=finite(tr.x)&&finite(tr.y)&&finite(pelvisX)&&finite(pelvisY)&&finite(footY);
+          actionAligned&=finiteAction&&pelvisX<=MAX_ACTION_SEMANTIC_ERROR&&pelvisY<=MAX_ACTION_SEMANTIC_ERROR&&footY<=MAX_ACTION_SEMANTIC_ERROR;
+          semantic&=finiteAction;weaponDerived&=finite(ba.dominantHand.x)&&finite(ba.dominantHand.y);
+        }else actionAligned=false;
       }
-    }
+    }else actionAligned=false;
     boolean placeholder=CharacterRenderer.attackUsesSinglePosePlaceholder()&&!CharacterRenderer.attackTemporalSourceResolved()&&!CharacterRenderer.attackUsesDestructiveCrop();
-    return new Result(ready,north,semantic,weaponDerived,placeholder,maxRobe,maxHand);
+    return new Result(ready,north,semantic,weaponDerived,placeholder,actionAligned,maxRobe,maxHand,maxPelvisX,maxPelvisY,maxFootY);
   }
 
   private static Rect cell(int row,int col){int left=col*CharacterRenderer.SOURCE_FRAME_WIDTH,top=row*CharacterRenderer.SOURCE_FRAME_HEIGHT;return new Rect(left,top,left+CharacterRenderer.SOURCE_FRAME_WIDTH,top+CharacterRenderer.SOURCE_FRAME_HEIGHT);}
