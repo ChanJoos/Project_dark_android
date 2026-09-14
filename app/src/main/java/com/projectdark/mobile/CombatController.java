@@ -77,8 +77,12 @@ public final class CombatController {
     }
   }
 
+  /** Compatibility entry point used by GameView; active basic melee is exact-tile gated. */
   public boolean inRange(RuntimeState state,float range){
     if(state==null||target==null||!target.alive)return false;
+    AttackDef attack=attackDef();
+    if(CanonicalMeleeTileContract.isMelee(attack.kind)&&Math.abs(range-attack.range)<.001f)
+      return attackInRange(state);
     return state.distanceTo(target)<=range;
   }
 
