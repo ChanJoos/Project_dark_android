@@ -6,12 +6,10 @@ import java.util.Map;
 
 /**
  * Combat·Monster-owned runtime orchestration for prototype monster combat.
- * World locomotion follows the same authored 64x32 tile-center contract as player navigation.
+ * World locomotion and melee legality share the authored 64x32 tile-center contract.
  */
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
-  static final float ATTACK_BEGIN_RANGE_B = 42f;
-  private static final float ATTACK_CANCEL_RANGE_B = 48f;
   static final int ATTACK_DAMAGE_B = 4;
   static final float ATTACK_COOLDOWN_B = 1.2f;
 
@@ -110,15 +108,16 @@ public final class MonsterAIController {
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
+    boolean adjacent=MeleeTileContract.canAttack(m.x,m.y,state.player().x,state.player().y);
 
     if(m.attackPrimed){
       tile.resetClock();
-      if(d>ATTACK_CANCEL_RANGE_B){state.cancelMonsterAttack(m);return;}
+      // attackFacing is snapshotted at start and is not recomputed from a moving target mid-action.
       if(state.monsterAttackReady(m))lastSubmission=attackRouter.submit(state,m,++submissionSequence);
       return;
     }
 
-    if(d<CHASE_RADIUS_B&&d>ATTACK_BEGIN_RANGE_B){
+    if(d<CHASE_RADIUS_B&&!adjacent){
       tile.stepClock+=Math.max(0f,dt);
       if(tile.stepClock+.00001f<WorldMoveTargetController.TILE_STEP_SECONDS)return;
       tile.stepClock-=WorldMoveTargetController.TILE_STEP_SECONDS;
@@ -134,15 +133,13 @@ public final class MonsterAIController {
         tile.lastDirection=directionFromFacing(m.visualFacing.locomotion(),direction);
         if(m.state!=RuntimeState.Monster.State.ATTACK)m.state=RuntimeState.Monster.State.CHASE;
       }else{
-        // Atomic collision rejection leaves the monster at the same valid center.
         m.x=beforeX;m.y=beforeY;tile.resetClock();
       }
       return;
     }
 
     tile.resetClock();
-    if(d<=ATTACK_BEGIN_RANGE_B&&m.attackCooldown<=0f){
-      // Same centered spatial delta is snapshotted into the canonical attack-facing contract.
+    if(adjacent&&m.attackCooldown<=0f){
       state.beginMonsterAttack(m);
     }else if(m.state==RuntimeState.Monster.State.CHASE){
       m.state=RuntimeState.Monster.State.IDLE;
