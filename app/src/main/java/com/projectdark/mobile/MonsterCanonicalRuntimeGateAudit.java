@@ -10,6 +10,7 @@ public final class MonsterCanonicalRuntimeGateAudit {
 
   public static boolean passes(){
     if(!MonsterDiagonalLocomotionAudit.passes())return false;
+    if(!MonsterCanonicalTrajectoryAudit.passes())return false;
     if(!CanonicalActorFacingAudit.passes())return false;
     if(!IsometricTileMovementAudit.verify())return false;
     if(!MillesProductionCollisionAudit.verify())return false;
@@ -18,30 +19,19 @@ public final class MonsterCanonicalRuntimeGateAudit {
     MonsterCanonicalSegmentLock lock=new MonsterCanonicalSegmentLock();
     float mx=0f,my=0f,targetX=0f,targetY=-200f,frameDistance=.5f;
     CharacterRenderer.Direction first=null;
-    int frames=0;
-    while(lock.remaining()+EPS<MonsterCanonicalSegmentLock.SEGMENT_DISTANCE||!lock.active()){
+    float travelled=0f;
+    while(travelled+EPS<MonsterCanonicalSegmentLock.SEGMENT_DISTANCE){
       float dx=targetX-mx,dy=targetY-my;
       MonsterDiagonalLocomotion.Step intent=lock.intent(dx,dy,frameDistance,CharacterRenderer.Direction.SE);
       if(intent==null||!MonsterDiagonalLocomotion.isCanonical(intent.dx,intent.dy))return false;
       if(first==null)first=intent.facing;
       if(intent.facing!=first)return false;
-      mx+=intent.dx;my+=intent.dy;
-      lock.onApplied(frameDistance,intent.facing);
-      if(++frames>4)break;
+      float applied=(float)Math.sqrt(intent.dx*intent.dx+intent.dy*intent.dy);
+      mx+=intent.dx;my+=intent.dy;travelled+=applied;
+      lock.onApplied(applied,intent.facing);
     }
     if(first!=CharacterRenderer.Direction.NE)return false;
-
-    // Hold the same facing for the full logical segment even after x-error flips sign.
-    lock.reset();mx=0f;my=0f;first=null;float travelled=0f;
-    while(travelled+frameDistance<MonsterCanonicalSegmentLock.SEGMENT_DISTANCE-EPS){
-      float dx=targetX-mx,dy=targetY-my;
-      MonsterDiagonalLocomotion.Step intent=lock.intent(dx,dy,frameDistance,CharacterRenderer.Direction.SE);
-      if(intent==null)return false;
-      if(first==null)first=intent.facing;
-      if(intent.facing!=first)return false;
-      mx+=intent.dx;my+=intent.dy;travelled+=frameDistance;
-      lock.onApplied(frameDistance,intent.facing);
-    }
+    if(Math.abs(mx)>MonsterCanonicalSegmentLock.SEGMENT_X+EPS)return false;
 
     // A legal collision detour becomes the new lock; no fifth/cardinal direction is emitted.
     lock.reset();
@@ -67,6 +57,6 @@ public final class MonsterCanonicalRuntimeGateAudit {
 
   public static void main(String[] args){
     if(!passes())throw new AssertionError("MonsterCanonicalRuntimeGateAudit failed");
-    System.out.println("MonsterCanonicalRuntimeGateAudit PASS: segment lock, four-diagonal motion, collision, facing, attack lock, player/world regressions");
+    System.out.println("MonsterCanonicalRuntimeGateAudit PASS: long-run trajectory, four-diagonal motion, collision, facing, attack lock, player/world regressions");
   }
 }
