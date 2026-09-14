@@ -41,33 +41,28 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f||CharacterRenderer.ATTACK_TRAIL_GHOSTS!=0)return false;
 
     if(!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("UNRESOLVED")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("wind-up")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("recovery")||!CharacterRenderer.ACTION_TEMPORAL_EVIDENCE.contains("without fabricated intermediate frames"))return false;
-    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("semantic foot/pivot")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("no destructive action crop")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
+    if(!CharacterRenderer.attackUsesSinglePosePlaceholder()||CharacterRenderer.attackTemporalSourceResolved())return false;
+    if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("no destructive action crop")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
     if(CharacterRenderer.attackUsesDestructiveCrop())return false;
     if(CharacterRenderer.attackUsesActionPose(0f)||CharacterRenderer.attackUsesActionPose(.17f)||!CharacterRenderer.attackUsesActionPose(.18f)||!CharacterRenderer.attackUsesActionPose(.50f)||!CharacterRenderer.attackUsesActionPose(.77f)||CharacterRenderer.attackUsesActionPose(.78f)||CharacterRenderer.attackUsesActionPose(1f))return false;
     if(!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("weapon-only attack animation is unreachable"))return false;
     if(!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("FULL_BODY")||!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("atomically"))return false;
-    if(!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("SW/SE")||!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("no live alpha recentering"))return false;
+    if(!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("SW/SE")||!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("packaged alpha pixels"))return false;
     if(!CharacterRenderer.robeRegistrationContinuityWithin(2f))return false;
-    if(!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("independent"))return false;
+    if(!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("dominantHand"))return false;
     if(CharacterRenderer.hitCharacterPoseEnabled()||CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
 
     if(CharacterRenderer.atlasRow(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.atlasRow(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SE)!=3)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
-    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())if(CharacterRenderer.robeUsesRuntimeXYRegistration(d))return false;
+    if(CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NW)||CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NE))return false;
+    if(!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SW)||!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SE))return false;
 
-    // P3: NW/NE are frozen. SW/SE must carry an explicit bounded vertical gait registration.
+    // P3: NW/NE frozen compatibility registration remains unchanged; SW/SE runtime path is semantic.
     float[][] expectedNorthX={{-1,-2,-1,0,1},{2,2,2,0,1}};
     CharacterRenderer.Direction[] northDirs={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE};
     for(int r=0;r<2;r++)for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
       if(CharacterRenderer.robeFrameRegistrationX(northDirs[r],col)!=expectedNorthX[r][col]||CharacterRenderer.robeFrameRegistrationY(northDirs[r],col)!=0f)return false;
     }
-    boolean swHasVertical=false,seHasVertical=false;
-    for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
-      swHasVertical|=CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SW,col)!=0f;
-      seHasVertical|=CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SE,col)!=0f;
-      if(Math.abs(CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SW,col))>1f||Math.abs(CharacterRenderer.robeFrameRegistrationY(CharacterRenderer.Direction.SE,col))>1f)return false;
-    }
-    if(!swHasVertical||!seHasVertical)return false;
 
     java.util.HashSet<String> signatures=new java.util.HashSet<>();
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
@@ -109,7 +104,7 @@ public final class CharacterRendererAudit {
       }
     }
 
-    // P5: SE mw001 must stay on a continuous dominant-hand path; no frame may jump across the body.
+    // Legacy tables remain bounded compatibility evidence; runtime weapon position is semantic hand attachment.
     if(CharacterRenderer.weaponCarryMaxJumpX(CharacterRenderer.Direction.SE)>1f)return false;
     if(CharacterRenderer.weaponCarryMaxJumpY(CharacterRenderer.Direction.SE)>1f)return false;
     if(CharacterRenderer.weaponCarryMaxJumpAngle(CharacterRenderer.Direction.SE)>2f)return false;
@@ -124,7 +119,7 @@ public final class CharacterRendererAudit {
     return true;
   }
 
-  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",P3=robe-semantic-xy,P4=attack-semantic-foot-pivot-no-crop,P5=SE-mw001-continuity,maxJump="+CharacterRenderer.weaponCarryMaxJumpX(CharacterRenderer.Direction.SE)+"/"+CharacterRenderer.weaponCarryMaxJumpY(CharacterRenderer.Direction.SE)+"/"+CharacterRenderer.weaponCarryMaxJumpAngle(CharacterRenderer.Direction.SE)+",paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
+  public static String summary(){return "directions=4,scale="+CharacterRenderer.PLAYER_RENDER_SCALE+",walkCycle="+CharacterRenderer.WALK_CYCLE_SECONDS+",P3=SWSE-semantic-rig,P4=attack-single-pose-placeholder-no-crop,P5=mw001-body-hand-attachment,paperDollLayers="+CharacterRenderer.PAPER_DOLL_ORDER.size();}
   private static CharacterRenderer.EffectFamily defaultEffect(CharacterRenderer.State state){switch(state){case CAST:return CharacterRenderer.EffectFamily.CAST;default:return CharacterRenderer.EffectFamily.NONE;}}
   public static void main(String[] args){if(!passes())throw new AssertionError("CharacterRendererAudit failed: "+summary());System.out.println("CharacterRendererAudit PASS: "+summary());}
 }
