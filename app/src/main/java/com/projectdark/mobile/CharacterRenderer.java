@@ -17,7 +17,7 @@ import java.util.List;
 public final class CharacterRenderer {
   public static final String EVIDENCE="LOD_DRESSUP_HAR_MM001_MALE_BASE_BODY+ADAPTED";
   public static final String ASSET_STATUS="PRODUCTION_WEBP_IDLE_WALK_ACTIVE";
-  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260914_R7_ATLAS_LOCK_3PHASE_ATTACK";
+  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260915_R8_STATIONARY_POSE_WEAPON_ATTACK";
   public static final String STARTER_ARCHETYPE="PEASANT";
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
@@ -26,16 +26,16 @@ public final class CharacterRenderer {
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String ACTION_TEMPORAL_STATUS="SINGLE_POSE_PLACEHOLDER";
-  public static final String ACTION_TEMPORAL_EVIDENCE="SINGLE_POSE_PLACEHOLDER remains UNRESOLVED; runtime uses explicit wind-up, strike, and recovery without fabricated intermediate frames";
+  public static final String ACTION_TEMPORAL_EVIDENCE="SINGLE_POSE_PLACEHOLDER remains UNRESOLVED; runtime uses startup, contact, and recovery weapon timing without fabricated intermediate BODY frames";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; source-derived BODY dominantHand attachment";
-  public static final String ATTACK_PRESENTATION_EVIDENCE="ADAPTED_RUNTIME_3_PHASE: stable idle BODY+robe+weapon move atomically through wind-up, strike and recovery; unresolved group-02 single pose is never rendered as temporal animation";
+  public static final String ATTACK_PRESENTATION_EVIDENCE="ADAPTED_STATIONARY_POSE_WEAPON_3_PHASE: BODY+robe remain foot-locked while mw001 carries startup/contact/recovery motion; unresolved group-02 single pose is never rendered as temporal animation";
   public static final String ATTACK_DIRECTION_EVIDENCE="runtime Pose.direction selects one locked 4-way attack direction; BODY+robe+weapon consume it unchanged";
   public static final String PAPER_DOLL_ATTACK_EVIDENCE="ATTACK consumes current equipmentVisualRef and weaponVisualRef; no baked equipment";
-  public static final String ATTACK_FALLBACK_EVIDENCE="stable equipped source paper doll remains intact; weapon-only attack animation is unreachable";
-  public static final String ATTACK_GEOMETRY_EVIDENCE="source BODY pixels remain preserved at common presentation scale 1.70; no destructive action crop";
-  public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 stays atomically registered to the same idle paper-doll coordinate system during adapted attack";
+  public static final String ATTACK_FALLBACK_EVIDENCE="stable equipped source paper doll remains intact; attack weapon motion remains attached to the same dominant-hand anchor";
+  public static final String ATTACK_GEOMETRY_EVIDENCE="source BODY pixels remain preserved at common presentation scale 1.70; no destructive action crop and no whole-paper-doll attack translation";
+  public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 stays registered to the same stationary idle paper-doll coordinate system during adapted attack";
   public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE packaged alpha pixels remain untouched and use shared-atlas zero translation without runtime alpha re-centering";
-  public static final String WEAPON_TRANSFORM_EVIDENCE="mw001 local handle (2,4) attaches to source-derived BODY dominantHand; attack uses the same idle-hand anchor rather than detached action-body geometry";
+  public static final String WEAPON_TRANSFORM_EVIDENCE="mw001 local handle (2,4) attaches to source-derived BODY dominantHand; attack uses the same idle-hand anchor and only weapon rotation changes by phase";
   public static final String HIT_POSE_EVIDENCE="HIT/HURT/FLINCH character pose is disabled; source paper doll remains visually stable while damage feedback is external";
 
   public static final float SOURCE_BAKED_SCALE=1.50f;
@@ -177,13 +177,7 @@ public final class CharacterRenderer {
   }
 
   private void drawAdaptedAttack(Canvas c,Pose pose,float anchorY){
-    float q=attackPhase(pose);float motion;
-    if(q<.22f)motion=-2.5f*(q/.22f);
-    else if(q<.48f){float t=(q-.22f)/.26f;motion=-2.5f+9.5f*t;}
-    else {float t=(q-.48f)/.52f;motion=7f*(1f-Math.max(0f,Math.min(1f,t)));}
-    float sx=(pose.direction==Direction.NE||pose.direction==Direction.SE)?1f:-1f;
-    float sy=(pose.direction==Direction.SW||pose.direction==Direction.SE)?1f:-1f;
-    c.save();c.translate(sx*motion,sy*Math.max(-1.2f,Math.min(2.8f,motion*.38f)));drawSourcePaperDoll(c,pose,anchorY,true);c.restore();
+    drawSourcePaperDoll(c,pose,anchorY,true);
   }
 
   private void drawSourcePaperDoll(Canvas c,Pose pose,float anchorY,boolean attackingWeapon){boolean weaponBehind=weaponBehindBody(pose.direction);if(weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);drawIdleWalk(c,pose,anchorY);drawEquipment(c,pose,anchorY);if(!weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);}
