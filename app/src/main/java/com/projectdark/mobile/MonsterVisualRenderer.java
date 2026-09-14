@@ -11,6 +11,7 @@ import android.graphics.RectF;
  */
 public final class MonsterVisualRenderer {
   public static final String EVIDENCE="ADAPTED_FOOT_LOCKED_MONSTER_ATTACK_POSE";
+  public static final String CONTACT_EVIDENCE="ADAPTED_WINDUP_CONTACT_RECOVERY_SINGLE_EVENT";
   public static final String SOURCE_STATUS="SOURCE_SPRITE_PENDING";
   private final Paint p=new Paint();
 
@@ -22,7 +23,8 @@ public final class MonsterVisualRenderer {
     boolean west=facing==CharacterRenderer.Direction.NW||facing==CharacterRenderer.Direction.SW;
     boolean north=facing==CharacterRenderer.Direction.NW||facing==CharacterRenderer.Direction.NE;
     float sx=west?-1f:1f;
-    float attack=m.attackPrimed?1f-Math.min(1f,m.attackWindup/.24f):0f;
+    float attack=m.attackPrimed?1f-Math.min(1f,m.attackWindup/.24f):m.attackRecoveryClock>0f?Math.min(1f,m.attackRecoveryClock/RuntimeState.MONSTER_ATTACK_RECOVERY_SECONDS):0f;
+    boolean attackVisible=m.attackPrimed||m.attackRecoveryClock>0f;
 
     // Combat reference: keep the logical foot/ground contact fixed. Attack readability must come
     // from silhouette/limb motion and contact feedback, not whole-creature world translation.
@@ -70,8 +72,9 @@ public final class MonsterVisualRenderer {
     p.setColor(eye);c.drawRect(eyeX-3,eyeY,eyeX-2,eyeY+1,p);c.drawRect(eyeX+3,eyeY,eyeX+4,eyeY+1,p);
     p.setColor(skin);c.drawRect(eyeX-1,eyeY+4,eyeX+2,eyeY+6,p);
 
-    // Attack telegraph stays attached to the pose; no detached movement or world-space shove.
-    if(m.attackPrimed){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f+attack*1.5f);p.setColor(0xc8ff7458);c.drawArc(new RectF(torsoX-17,y-42,torsoX+17,y-8),200,140,false,p);p.setStyle(Paint.Style.FILL);}
+    // Windup reaches the contact pose exactly when RuntimeState applies PLAYER_HIT; recovery keeps
+    // the same locked facing/foot anchor briefly after contact instead of snapping straight to idle.
+    if(attackVisible){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f+attack*1.5f);p.setColor(m.attackPrimed?0xc8ff7458:0x70ff9a70);c.drawArc(new RectF(torsoX-17,y-42,torsoX+17,y-8),200,140,false,p);p.setStyle(Paint.Style.FILL);}
 
     // HP and damage feedback remain locked to the logical entity anchor.
     drawBar(c,x-20,y-55,x+20,y-50,m.hp/(float)m.maxHp);
