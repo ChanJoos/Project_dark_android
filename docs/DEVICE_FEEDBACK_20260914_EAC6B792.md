@@ -42,3 +42,9 @@ No new features, CAST expansion, map work, combat reward changes, inventory chan
 
 ## Merge gate
 A corrective PR may be IMPLEMENTED and BUILD VERIFIED, but it must not be called DEVICE VERIFIED or VISUAL ACCEPTED until a fresh APK is recorded and passes the three device checks above.
+
+## 2026-09-14 corrective integration status
+- P1 World integrated from PR #105: monster locomotion now consumes the same authored 64x32 tile-center contract as player movement, using ±32/±16 adjacent endpoints and no 8x4/16x8 acceptance tuning.
+- P2 Game Systems integrated surgically from PR #106: `CanonicalActorFacing` and its audit now quantize attack direction in the World tile basis and enforce reciprocal NW<->SE / NE<->SW snapshots. An unrelated stale Visual probe revert from the worker branch was intentionally excluded.
+- P3/P4/P5 Visual integrated from PR #107: explicit SW/SE robe registration, semantic attack BODY foot/pivot registration at common 1.70 with no destructive crop, and continuous SE mw001 carry hand path.
+- Current integration branch remains PR #104 and must stay unmerged to main until exact-head CI passes and a fresh device recording is accepted.
