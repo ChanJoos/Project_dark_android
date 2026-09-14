@@ -17,7 +17,7 @@ import java.util.List;
 public final class CharacterRenderer {
   public static final String EVIDENCE="LOD_DRESSUP_HAR_MM001_MALE_BASE_BODY+ADAPTED";
   public static final String ASSET_STATUS="PRODUCTION_WEBP_IDLE_WALK_ACTIVE";
-  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260914_R3";
+  public static final String PRESENTATION_PROFILE="PEASANT_MM001_BASE_20260914_R4";
   public static final String STARTER_ARCHETYPE="PEASANT";
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
@@ -28,13 +28,13 @@ public final class CharacterRenderer {
   public static final String ACTION_TEMPORAL_EVIDENCE="group-02 temporal semantics remain UNRESOLVED; runtime stages source-backed IDLE wind-up -> group-02 BODY+robe+mw001 strike -> source-backed IDLE recovery without fabricated intermediate frames";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; ADAPTED PLAYTEST HAND TRANSFORM";
   public static final String ATTACK_PRESENTATION_EVIDENCE="source-backed wind-up/strike/recovery with actual group-02 BODY + equipped FULL_BODY robe + single mw001 source sprite; no afterimage/trail; ADAPTED PLAYTEST SWING";
-  public static final String ATTACK_DIRECTION_EVIDENCE="runtime Pose.direction selects source, independent body/weapon mirror, depth, hand offset and angle; previously DEVICE-PASS target-facing mapping preserved";
+  public static final String ATTACK_DIRECTION_EVIDENCE="runtime Pose.direction selects source, independent body/weapon mirror, depth, hand offset and angle; authoritative attackFacing is consumed unchanged";
   public static final String PAPER_DOLL_ATTACK_EVIDENCE="ATTACK consumes current equipmentVisualRef and weaponVisualRef; no baked equipment";
   public static final String ATTACK_FALLBACK_EVIDENCE="missing/unready group-02 ATTACK preserves the complete equipped source IDLE paper doll; weapon SWING is disabled on fallback so weapon-only attack animation is unreachable";
-  public static final String ATTACK_GEOMETRY_EVIDENCE="full group-02 BODY source pixels are preserved at common presentation scale 1.70 and aligned by semantic foot/center translation; no destructive action crop";
+  public static final String ATTACK_GEOMETRY_EVIDENCE="full group-02 BODY source pixels are preserved at common presentation scale 1.70 and aligned by explicit semantic foot/pivot translation; alpha centroid is evidence only and never the runtime anchor; no destructive action crop";
   public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 uses the matching group-02 source atomically with BODY for every strike pose; never BODY-only or static-IDLE-under-swing";
-  public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE use stable per-frame semantic foot/pivot registration with no live alpha recentering, continuity <=2 source px, and the same direction/frame/walk clock";
-  public static final String WEAPON_TRANSFORM_EVIDENCE="body mirror and weapon mirror are independent; mw001 receives exactly one local mirror and mirrored west-facing angle signs are source-corrected";
+  public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE use stable per-frame semantic foot/pelvis registration tables including vertical gait correction, no live alpha recentering, and the same direction/frame/walk clock";
+  public static final String WEAPON_TRANSFORM_EVIDENCE="body mirror and weapon mirror are independent; mw001 receives exactly one local mirror; SE carry uses a continuous dominant-hand anchor table with bounded X/Y/angle jump";
   public static final String HIT_POSE_EVIDENCE="HIT/HURT/FLINCH character pose is disabled; source paper doll remains visually stable while damage feedback is external";
 
   public static final float SOURCE_BAKED_SCALE=1.50f;
@@ -78,16 +78,18 @@ public final class CharacterRenderer {
   private static final int[] BODY_ACTION_HEIGHT={51,52,51,49};
   private static final int[] BODY_ACTION_OFFSET_X={8,2,6,4};
   private static final int[] BODY_ACTION_OFFSET_Y={8,8,9,3};
+  private static final float[] BODY_ACTION_PIVOT_X={8.5f,9f,9.5f,10.5f};
+  private static final float[] BODY_ACTION_FOOT_Y={50f,51f,50f,48f};
   private static final int[] ROBE_ACTION_WIDTH={14,19,15,20};
   private static final int[] ROBE_ACTION_HEIGHT={33,22,30,21};
   private static final int[] ROBE_ACTION_OFFSET_X={8,3,6,6};
   private static final int[] ROBE_ACTION_OFFSET_Y={20,27,23,22};
-  private static final float[][] CARRY_FRAME_X={{-6,-10,10,-6,-1},{6,10,-10,6,1},{-7,-10,10,-7,9},{7,10,-10,7,-9}};
-  private static final float[][] CARRY_FRAME_Y={{21,21,23,18,26},{21,21,23,18,26},{19,19,24,17,21},{19,19,24,17,21}};
-  private static final float[][] CARRY_FRAME_ANGLE={{56,62,48,59,52},{-64,-58,-72,-61,-68},{72,78,62,75,68},{-62,-56,-72,-59,-66}};
-  /* NW/NE are the accepted device baseline. SW/SE retain measured X but use the shared source-foot anchor for Y. */
+  private static final float[][] CARRY_FRAME_X={{-6,-10,10,-6,-1},{6,10,-10,6,1},{-7,-10,10,-7,9},{7,8,8,7,7}};
+  private static final float[][] CARRY_FRAME_Y={{21,21,23,18,26},{21,21,23,18,26},{19,19,24,17,21},{19,20,21,20,19}};
+  private static final float[][] CARRY_FRAME_ANGLE={{56,62,48,59,52},{-64,-58,-72,-61,-68},{72,78,62,75,68},{-62,-64,-66,-64,-62}};
+  /* NW/NE are frozen device baselines. SW/SE use explicit semantic gait registration; never live alpha recentering. */
   private static final float[][] ROBE_FRAME_X={{-1,-2,-1,0,1},{2,2,2,0,1},{-3,-2,0,2,1},{3,2,1,-1,-1}};
-  private static final float[][] ROBE_FRAME_Y={{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+  private static final float[][] ROBE_FRAME_Y={{0,0,0,0,0},{0,0,0,0,0},{0,0,-1,-1,0},{0,0,-1,-1,0}};
   private static volatile float presentationWalkClock;
 
   public enum Direction { NW, NE, SW, SE }
@@ -228,7 +230,6 @@ public final class CharacterRenderer {
       else if(sourcePaperDollReadyFor(pose))drawSourcePaperDoll(canvas,pose,anchorY,false);
       return;
     }
-    /* Fail-safe may preserve the complete equipped actor, but never animate only the weapon. */
     if(pose.state==State.ATTACK){if(sourcePaperDollReadyFor(pose))drawSourcePaperDoll(canvas,pose,anchorY,false);return;}
     drawSafePeasantFallback(canvas,pose,anchorY);
   }
@@ -252,22 +253,11 @@ public final class CharacterRenderer {
     float registeredAnchorY=anchorY+registration.y*SOURCE_PRESENTATION_SCALE;
     drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,registeredAnchorY,registeredX);
   }
-  private Registration robeRegistration(Direction direction,int atlasColumn){
-    int row=atlasRow(direction),col=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));
-    if(row<0)return new Registration(0f,0f);
-    return new Registration(ROBE_FRAME_X[row][col],ROBE_FRAME_Y[row][col]);
-  }
+  private Registration robeRegistration(Direction direction,int atlasColumn){int row=atlasRow(direction),col=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));if(row<0)return new Registration(0f,0f);return new Registration(ROBE_FRAME_X[row][col],ROBE_FRAME_Y[row][col]);}
   public static float robeFrameRegistrationX(Direction direction,int atlasColumn){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));return row<0?0f:ROBE_FRAME_X[row][column];}
   public static float robeFrameRegistrationY(Direction direction,int atlasColumn){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));return row<0?0f:ROBE_FRAME_Y[row][column];}
   public static boolean robeUsesRuntimeXYRegistration(Direction direction){return false;}
-  public static boolean robeRegistrationContinuityWithin(float maxDelta){
-    if(maxDelta<0f)return false;
-    for(Direction d:Direction.values())for(int col=1;col<IDLE_WALK_COLUMNS;col++){
-      if(Math.abs(robeFrameRegistrationX(d,col)-robeFrameRegistrationX(d,col-1))>maxDelta)return false;
-      if(Math.abs(robeFrameRegistrationY(d,col)-robeFrameRegistrationY(d,col-1))>maxDelta)return false;
-    }
-    return true;
-  }
+  public static boolean robeRegistrationContinuityWithin(float maxDelta){if(maxDelta<0f)return false;for(Direction d:Direction.values())for(int col=1;col<IDLE_WALK_COLUMNS;col++){if(Math.abs(robeFrameRegistrationX(d,col)-robeFrameRegistrationX(d,col-1))>maxDelta)return false;if(Math.abs(robeFrameRegistrationY(d,col)-robeFrameRegistrationY(d,col-1))>maxDelta)return false;}return true;}
   private static boolean containsVisualRef(String refs,String expected){if(refs==null||expected==null)return false;for(String ref:refs.split(","))if(expected.equals(ref.trim()))return true;return false;}
 
   private void drawSourceAction(Canvas c,Pose pose,float anchorY){
@@ -279,50 +269,35 @@ public final class CharacterRenderer {
     if(composition.weaponVisible&&composition.weaponBehindBody)drawWeapon(c,pose,anchorY,true);
     c.save();if(composition.mirrorBody)c.scale(-1f,1f,pose.x,anchorY);
     drawRawSourceScaled(c,bodyActionFrames[source],bodyLeft,bodyTop,scale);
-    if(composition.robeVisible){
-      float robeLeft=Math.round(viewportLeft+(ROBE_ACTION_OFFSET_X[source]+geometry.offsetX)*scale);
-      float robeTop=Math.round(viewportTop+(ROBE_ACTION_OFFSET_Y[source]+geometry.offsetY)*scale);
-      drawRawSourceScaled(c,robeActionFrames[source],robeLeft,robeTop,scale);
-    }
+    if(composition.robeVisible){float robeLeft=Math.round(viewportLeft+(ROBE_ACTION_OFFSET_X[source]+geometry.offsetX)*scale);float robeTop=Math.round(viewportTop+(ROBE_ACTION_OFFSET_Y[source]+geometry.offsetY)*scale);drawRawSourceScaled(c,robeActionFrames[source],robeLeft,robeTop,scale);}
     c.restore();if(composition.weaponVisible&&!composition.weaponBehindBody)drawWeapon(c,pose,anchorY,true);
   }
 
   private ActionGeometry actionGeometry(Direction direction,int source){
     if(direction==null||source<0||source>=SOURCE_ACTION_COUNT||!resourceAtlasActive())return null;
     int row=atlasRow(direction);if(row<0)return null;
-    AlphaBounds idle=alphaBoundsCell(idleWalkAtlas,row,0,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);
-    AlphaBounds action=alphaBounds(bodyActionFrames[source]);if(idle.empty()||action.empty())return null;
-    int actionGlobalBottom=BODY_ACTION_OFFSET_Y[source]+action.bottom;
-    float actionGlobalCenter=BODY_ACTION_OFFSET_X[source]+action.centerX();
-    int dy=idle.bottom-actionGlobalBottom;
-    int dx=Math.round(idle.centerX()-actionGlobalCenter);
-    int footErr=Math.abs(idle.bottom-(actionGlobalBottom+dy));
-    int centerErr=Math.round(Math.abs(idle.centerX()-(actionGlobalCenter+dx)));
-    int hErr=Math.abs(idle.height()-action.height());
+    AlphaBounds idle=alphaBoundsCell(idleWalkAtlas,row,0,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);AlphaBounds action=alphaBounds(bodyActionFrames[source]);if(idle.empty()||action.empty())return null;
+    float semanticGlobalPivotX=BODY_ACTION_OFFSET_X[source]+BODY_ACTION_PIVOT_X[source];
+    float semanticGlobalFootY=BODY_ACTION_OFFSET_Y[source]+BODY_ACTION_FOOT_Y[source];
+    int dx=Math.round(SOURCE_FOOT_ANCHOR_X-semanticGlobalPivotX);
+    int dy=Math.round(SOURCE_FOOT_ANCHOR_Y-semanticGlobalFootY);
+    int actionGlobalBottom=BODY_ACTION_OFFSET_Y[source]+action.bottom+dy;float actionGlobalCenter=BODY_ACTION_OFFSET_X[source]+action.centerX()+dx;
+    int footErr=Math.abs(SOURCE_FOOT_ANCHOR_Y-Math.round(semanticGlobalFootY+dy));int centerErr=Math.round(Math.abs(SOURCE_FOOT_ANCHOR_X-(semanticGlobalPivotX+dx)));int hErr=Math.abs(idle.height()-action.height());
     return new ActionGeometry(dx,dy,0,BODY_ACTION_HEIGHT[source],hErr,footErr,centerErr,true);
   }
 
-  private static AlphaBounds alphaBounds(Bitmap bitmap){
-    if(bitmap==null)return new AlphaBounds(0,0,-1,-1);int l=bitmap.getWidth(),t=bitmap.getHeight(),r=-1,b=-1;
-    for(int y=0;y<bitmap.getHeight();y++)for(int x=0;x<bitmap.getWidth();x++)if(((bitmap.getPixel(x,y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}
-    return new AlphaBounds(l,t,r,b);
-  }
-  private static AlphaBounds alphaBoundsCell(Bitmap atlas,int row,int col,int w,int h){
-    if(atlas==null)return new AlphaBounds(0,0,-1,-1);int ox=col*w,oy=row*h,l=w,t=h,r=-1,b=-1;
-    for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(((atlas.getPixel(ox+x,oy+y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}
-    return new AlphaBounds(l,t,r,b);
-  }
+  private static AlphaBounds alphaBounds(Bitmap bitmap){if(bitmap==null)return new AlphaBounds(0,0,-1,-1);int l=bitmap.getWidth(),t=bitmap.getHeight(),r=-1,b=-1;for(int y=0;y<bitmap.getHeight();y++)for(int x=0;x<bitmap.getWidth();x++)if(((bitmap.getPixel(x,y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}return new AlphaBounds(l,t,r,b);}
+  private static AlphaBounds alphaBoundsCell(Bitmap atlas,int row,int col,int w,int h){if(atlas==null)return new AlphaBounds(0,0,-1,-1);int ox=col*w,oy=row*h,l=w,t=h,r=-1,b=-1;for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(((atlas.getPixel(ox+x,oy+y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}return new AlphaBounds(l,t,r,b);}
 
   public static float normalizedActionScale(int source){return SOURCE_PRESENTATION_SCALE;}
   public static int actionCanonicalVisibleHeightPixels(){return SOURCE_FRAME_HEIGHT;}
   public static int actionCanonicalFootAnchorPixels(){return SOURCE_FOOT_ANCHOR_Y;}
   public static int actionVisibleHeightPixels(int source){if(source<0||source>=SOURCE_ACTION_COUNT)return 0;return BODY_ACTION_HEIGHT[source];}
+  public static float actionSemanticPivotX(int source){return source<0||source>=SOURCE_ACTION_COUNT?Float.NaN:BODY_ACTION_OFFSET_X[source]+BODY_ACTION_PIVOT_X[source];}
+  public static float actionSemanticFootY(int source){return source<0||source>=SOURCE_ACTION_COUNT?Float.NaN:BODY_ACTION_OFFSET_Y[source]+BODY_ACTION_FOOT_Y[source];}
   public static boolean bodyMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;}
   public static boolean weaponMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;}
-  public static AttackVisualComposition attackVisualComposition(Direction direction,String equipmentVisualRef,String weaponVisualRef){
-    return new AttackVisualComposition(direction,actionSourceIndex(direction),bodyMirrorX(direction),weaponBehindBody(direction),
-        containsVisualRef(equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID),containsVisualRef(weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID),PLAYER_RENDER_SCALE);
-  }
+  public static AttackVisualComposition attackVisualComposition(Direction direction,String equipmentVisualRef,String weaponVisualRef){return new AttackVisualComposition(direction,actionSourceIndex(direction),bodyMirrorX(direction),weaponBehindBody(direction),containsVisualRef(equipmentVisualRef,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID),containsVisualRef(weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID),PLAYER_RENDER_SCALE);}
   public static boolean weaponBehindBody(Direction direction){return direction==Direction.NW||direction==Direction.NE;}
 
   private void drawWeapon(Canvas c,Pose pose,float anchorY,boolean attacking){
@@ -331,8 +306,7 @@ public final class CharacterRenderer {
     float centerX=pose.x+(attacking?weaponAttackOffsetX(pose.direction):weaponCarryOffsetX(pose.direction,frame))*scale;
     float centerY=anchorY-(attacking?weaponAttackOffsetY(pose.direction):weaponCarryOffsetY(pose.direction,frame))*scale;
     float angle=attacking?weaponAttackAngle(pose.direction,attackPhase(pose)):weaponCarryAngle(pose.direction,frame);
-    c.save();c.rotate(angle,centerX,centerY);if(weaponMirrorX(pose.direction))c.scale(-1f,1f,centerX,centerY);
-    drawRawSourceScaled(c,mokdoSprite,centerX-2f*scale,centerY-4f*scale,scale);c.restore();
+    c.save();c.rotate(angle,centerX,centerY);if(weaponMirrorX(pose.direction))c.scale(-1f,1f,centerX,centerY);drawRawSourceScaled(c,mokdoSprite,centerX-2f*scale,centerY-4f*scale,scale);c.restore();
   }
   private static float attackPhase(Pose pose){if(pose==null||pose.stateDuration<=0f)return 0f;return Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));}
 
@@ -343,6 +317,10 @@ public final class CharacterRenderer {
   public static float weaponCarryOffsetY(Direction direction){if(direction==null)return 22f;switch(direction){case NW:return 26f;case NE:return 24f;case SW:return 21f;case SE:return 23f;default:return 22f;}}
   public static float weaponCarryOffsetY(Direction direction,int atlasColumn){return carryFrameAnchor(direction,atlasColumn,false);}
   private static float carryFrameAnchor(Direction direction,int atlasColumn,boolean x){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));if(row<0)return 0f;return x?CARRY_FRAME_X[row][column]:CARRY_FRAME_Y[row][column];}
+  public static float weaponCarryMaxJumpX(Direction direction){return maxCarryJump(direction,0);}
+  public static float weaponCarryMaxJumpY(Direction direction){return maxCarryJump(direction,1);}
+  public static float weaponCarryMaxJumpAngle(Direction direction){return maxCarryJump(direction,2);}
+  private static float maxCarryJump(Direction direction,int component){int row=atlasRow(direction);if(row<0)return Float.POSITIVE_INFINITY;float max=0f;for(int col=1;col<IDLE_WALK_COLUMNS;col++){float a=component==0?CARRY_FRAME_X[row][col-1]:component==1?CARRY_FRAME_Y[row][col-1]:CARRY_FRAME_ANGLE[row][col-1];float b=component==0?CARRY_FRAME_X[row][col]:component==1?CARRY_FRAME_Y[row][col]:CARRY_FRAME_ANGLE[row][col];max=Math.max(max,Math.abs(b-a));}return max;}
 
   public static float actionHeightRatio(int source){if(source<0||source>=SOURCE_ACTION_COUNT)return 1f;return actionVisibleHeightPixels(source)/(float)SOURCE_FRAME_HEIGHT;}
   public static boolean legacyProceduralAttackReachable(){return false;}
@@ -355,14 +333,8 @@ public final class CharacterRenderer {
   public static float weaponAttackAngle(Direction direction,float phase){float q=Math.max(0f,Math.min(1f,phase)),envelope=q<.55f?q/.55f:(1f-q)/.45f;if(direction==null)return 0f;switch(direction){case NW:return 12f+34f*envelope;case NE:return -25f-30f*envelope;case SW:return 10f+34f*envelope;case SE:return 22f+28f*envelope;default:return 0f;}}
 
   private void drawRawSourceScaled(Canvas c,Bitmap bitmap,float left,float top,float scale){if(bitmap==null)return;c.drawBitmap(bitmap,null,new RectF(Math.round(left),Math.round(top),Math.round(left+bitmap.getWidth()*scale),Math.round(top+bitmap.getHeight()*scale)),pixelPaint);}
-  private void drawRawSourceCroppedScaled(Canvas c,Bitmap bitmap,int srcLeft,int srcTop,int srcRight,int srcBottom,float left,float top,float scale){
-    if(bitmap==null||srcRight<=srcLeft||srcBottom<=srcTop)return;Rect src=new Rect(srcLeft,srcTop,srcRight,srcBottom);
-    RectF dst=new RectF(Math.round(left),Math.round(top),Math.round(left+(srcRight-srcLeft)*scale),Math.round(top+(srcBottom-srcTop)*scale));c.drawBitmap(bitmap,src,dst,pixelPaint);
-  }
-  private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,int frameWidth,int frameHeight,float footAnchorX,float footAnchorY,float drawScale,float anchorY,float x){
-    int left=col*frameWidth,top=row*frameHeight;Rect src=new Rect(left,top,left+frameWidth,top+frameHeight);float scaledWidth=frameWidth*drawScale,scaledHeight=frameHeight*drawScale;
-    float scaledAnchorX=footAnchorX*drawScale,scaledAnchorY=footAnchorY*drawScale;RectF dst=new RectF(Math.round(x-scaledAnchorX),Math.round(anchorY-scaledAnchorY),Math.round(x-scaledAnchorX+scaledWidth),Math.round(anchorY-scaledAnchorY+scaledHeight));c.drawBitmap(atlas,src,dst,pixelPaint);
-  }
+  private void drawRawSourceCroppedScaled(Canvas c,Bitmap bitmap,int srcLeft,int srcTop,int srcRight,int srcBottom,float left,float top,float scale){if(bitmap==null||srcRight<=srcLeft||srcBottom<=srcTop)return;Rect src=new Rect(srcLeft,srcTop,srcRight,srcBottom);RectF dst=new RectF(Math.round(left),Math.round(top),Math.round(left+(srcRight-srcLeft)*scale),Math.round(top+(srcBottom-srcTop)*scale));c.drawBitmap(bitmap,src,dst,pixelPaint);}
+  private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,int frameWidth,int frameHeight,float footAnchorX,float footAnchorY,float drawScale,float anchorY,float x){int left=col*frameWidth,top=row*frameHeight;Rect src=new Rect(left,top,left+frameWidth,top+frameHeight);float scaledWidth=frameWidth*drawScale,scaledHeight=frameHeight*drawScale;float scaledAnchorX=footAnchorX*drawScale,scaledAnchorY=footAnchorY*drawScale;RectF dst=new RectF(Math.round(x-scaledAnchorX),Math.round(anchorY-scaledAnchorY),Math.round(x-scaledAnchorX+scaledWidth),Math.round(anchorY-scaledAnchorY+scaledHeight));c.drawBitmap(atlas,src,dst,pixelPaint);}
   private Bitmap tryLoadByName(Resources resources,String name,int expectedWidth,int expectedHeight){if(resources==null||name==null)return null;try{int resId=resources.getIdentifier(name,"drawable","com.projectdark.mobile");if(resId==0)return null;BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;Bitmap decoded=BitmapFactory.decodeResource(resources,resId,options);return validAtlas(decoded,expectedWidth,expectedHeight)?decoded:null;}catch(Throwable ignored){return null;}}
   public static int walkFrameIndex(float walkClock){float safeClock=Math.max(0f,walkClock),phase=safeClock%WALK_CYCLE_SECONDS;return Math.min(IDLE_WALK_COLUMNS-2,(int)Math.floor((phase+.00001f)/WALK_FRAME_SECONDS));}
   private Resources findProcessResources(){try{Class<?> activityThread=Class.forName("android.app.ActivityThread");Method currentApplication=activityThread.getDeclaredMethod("currentApplication");Object application=currentApplication.invoke(null);return application instanceof Context?((Context)application).getResources():null;}catch(Throwable ignored){return null;}}
