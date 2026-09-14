@@ -7,7 +7,7 @@ project:
   state_policy: "This file is the single autonomous-development control plane for resources, scenes, evidence, work packages, claims, and acceptance. Update only facts supported by repository or user/device evidence."
   repository: ChanJoos/Project_dark_android
   default_branch: main
-  integration_line: DISCOVER_EACH_RUN
+  integration_line: director/milles-grass-first
 
 claim_policy:
   mode: lease
@@ -61,6 +61,7 @@ references:
     type: user_reference_video
     repository_pointer: docs/REFERENCE_GROUND_TRUTH.md
     detailed_analysis: docs/reference/MILLES_FRAME_ANALYSIS.md
+    repository_status: "UNRESOLVED: both pointer files are absent from the current repository; do not claim they were consumed. Current runtime adaptation uses durable user-approved world direction plus recorded device evidence and existing master/source indexes."
   REF_COMBAT_VIDEO:
     type: user_reference_video
     repository_pointer: docs/REFERENCE_GROUND_TRUTH.md
@@ -132,21 +133,37 @@ work_packages:
       - docs/MILLES_WORLD_DIRECTION.md
       - master/MASTER_MANIFEST.md
       - master/data/Asset_Map_Mapping.csv
-      - docs/REFERENCE_GROUND_TRUTH.md
-      - docs/reference/MILLES_FRAME_ANALYSIS.md
-      - "resolve and record exact relevant Map/Map_Instance/Spawn master files"
-      - "resolve and record exact world renderer/camera/collision files and candidate assets used"
+      - master/data/Map_Instance_Master.csv
+      - master/data/Spawn_Master.csv
+      - app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapLayer.java
+      - app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java
+      - app/src/main/java/com/projectdark/mobile/WorldDef.java
+    unavailable_reference_inputs:
+      - "docs/REFERENCE_GROUND_TRUTH.md is referenced by old state but absent from current repository."
+      - "docs/reference/MILLES_FRAME_ANALYSIS.md is referenced by old state but absent from current repository."
+    source_resolution:
+      - "Map_Instance_Master defines MAP_MILLES as Town / original-tile-coordinate hub / NPC-service centered; it does not provide recoverable road geometry."
+      - "Spawn_Master contains hunting-area spawns only and no MAP_MILLES town spawn geometry."
+      - "Asset_Map_Mapping marks MAP_MILLES source as SOURCE_FOUND/REFERENCE but explicitly says the matching image among nine old-town images still requires visual identification."
+      - "Therefore exact unobserved road geometry is UNRESOLVED; coherent road placement is explicitly [ADAPTED], not claimed original."
     source_gate:
-      - "Do not begin implementation until every concrete required source has been loaded."
-      - "Descriptive/wildcard source entries must be resolved to exact files actually consumed and recorded in the state/baton update."
-      - "A canonical direction/design document that materially governs the package must be added to required_sources before coding."
-      - "A document merely mentioned by AUTONOMY_BATON is not considered consumed."
+      - "Before coding, load every concrete available required source for the selected package."
+      - "If a referenced source path is absent, record it as unavailable/UNRESOLVED and do not claim its evidence was consumed."
+      - "Descriptive/wildcard source entries must be resolved to exact files actually consumed and recorded in state/baton."
     design_contract:
       - "Treat Milles as one quiet medieval settlement with spatial story and functional districts, not a collection of available objects."
       - "Author in order: continuous ground -> primary roads/plaza -> secondary paths -> water/terrain/boundaries -> buildings -> vegetation/props -> collision/interaction."
       - "Use verified reference features where available; fill unsupported geography coherently as [ADAPTED], never as claimed original geometry."
       - "Existing Milles production assets are candidates, not final truth: classify needed assets REUSE, REWORK, REMAKE, or NEW and create missing critical assets."
       - "Use stable world-space placement; prohibit spawn+arbitrary-offset landmark clustering."
+    progress:
+      last_agent: D
+      start_head: 3eb355fbb797554191559de69a9f8c5e19a8773f
+      runtime_head: ce13533679aa5099dc1096a74c390c46e8b039e4
+      state_head_pending: true
+      implementation: INTEGRATED
+      build_verified: false
+      runtime_delta: "Replaced visible rectangular ROAD strips with five connected absolute world-space route polylines converging on an enlarged central civic square: north service/residential, west craft/equipment, east church, south market/gate, and a narrower south-east waterside route. Navigation semantic rectangles remain internal and are no longer exposed as the visible road shape."
     acceptance:
       - "Entire traversable world has continuous intentional ground with no checkerboard, unexplained voids, or screen-fixed backdrop artifacts."
       - "Camera traversal in all directions preserves world continuity and exposes no un-authored empty side of the map."
@@ -156,7 +173,7 @@ work_packages:
       - "Needed object set has explicit REUSE/REWORK/REMAKE/NEW disposition; missing critical objects are produced before visual acceptance."
       - "Collision/camera/traversal remain functional."
       - "Exact build reaches BUILD_VERIFIED, then remains PENDING_DEVICE until fresh device evidence."
-    next_action: "Continue floor foundation by authoring the complete village spatial plan under MILLES_WORLD_DIRECTION, then implement road/plaza/water/boundary layers before reintroducing audited vertical assets."
+    next_action: "Run/obtain exact-head Android build validation. If it passes, continue floor build order with water body/bank/bridge plus terrain transitions before any vertical asset reintroduction."
 
   COMBAT_PRESENTATION_001:
     title: "Connect authored/source-backed attack presentation into playable combat"
@@ -186,7 +203,7 @@ work_packages:
 
 agent_selection_policy:
   - "Re-sync before selection and verify baton/claims."
-  - "Before coding, load every concrete required source for the selected package; baton mention alone does not satisfy this gate."
+  - "Before coding, load every concrete available required source for the selected package; absent referenced paths must be explicitly recorded UNRESOLVED rather than silently treated as consumed."
   - "If a new canonical direction/design document materially governs selected work, register it in PROJECT_STATE required_sources before implementation."
   - "Prefer the highest-priority READY unclaimed package whose dependencies can be resolved."
   - "If a P0 item becomes PENDING_DEVICE, move to another READY package until new evidence arrives."
@@ -195,4 +212,4 @@ agent_selection_policy:
 status_summary:
   visual_acceptance: FAIL
   known_device_evidence: DEVICE_20260915_054522
-  next_global_rule: "PROJECT_STATE points to mandatory implementation inputs. Runtime/evidence outrank stale status text, and implementation is invalid when governing required sources were not consumed."
+  next_global_rule: "PROJECT_STATE points to mandatory implementation inputs. Runtime/evidence outrank stale status text; unavailable referenced evidence must be recorded rather than invented."
