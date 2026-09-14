@@ -84,7 +84,7 @@ scenes:
     resources: [world_map, character_visual, ux_save_system]
     references: [REF_MILLES_VIDEO, DEVICE_20260915_054522]
     direction: docs/MILLES_WORLD_DIRECTION.md
-    implementation: PARTIAL
+    implementation: BUILD_VERIFIED
     observable: FAIL
     gaps: [WORLD_MILLES_001]
   SCENE_FIELD_COMBAT:
@@ -125,7 +125,7 @@ work_packages:
     system: world_map
     scenes: [SCENE_MILLES_VILLAGE]
     priority: P0
-    queue_state: READY
+    queue_state: PENDING_DEVICE
     claim: null
     evidence: [DEVICE_20260915_054522, REF_MILLES_VIDEO]
     gap: "The prior runtime was a spawn-centered asset cluster/test-board, not a coherent village. Full original geometry is unavailable, so unsupported spaces must be deliberately [ADAPTED] under the governing world direction."
@@ -138,6 +138,13 @@ work_packages:
       - app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapLayer.java
       - app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java
       - app/src/main/java/com/projectdark/mobile/WorldDef.java
+      - app/build.gradle
+      - assets/milles/PROJECT_DARK_ASSET_REGISTRY.json
+      - assets/milles/QA_REPORT.txt
+      - assets/milles/QA_ADDENDUM_CHURCH_LAKE.json
+      - assets/milles/production/buildings/
+      - assets/milles/production/landmarks/
+      - assets/milles/production/terrain/
     unavailable_reference_inputs:
       - "docs/REFERENCE_GROUND_TRUTH.md is referenced by old state but absent from current repository."
       - "docs/reference/MILLES_FRAME_ANALYSIS.md is referenced by old state but absent from current repository."
@@ -145,7 +152,9 @@ work_packages:
       - "Map_Instance_Master defines MAP_MILLES as Town / original-tile-coordinate hub / NPC-service centered; it does not provide recoverable road, water, or landmark-footprint geometry."
       - "Spawn_Master contains hunting-area spawns only and no MAP_MILLES town spawn geometry."
       - "Asset_Map_Mapping marks MAP_MILLES source as SOURCE_FOUND/REFERENCE but explicitly says the matching image among nine old-town images still requires visual identification."
-      - "Therefore exact unobserved road/water/landmark geometry is UNRESOLVED; coherent placement is explicitly [ADAPTED], not claimed original."
+      - "QA_REPORT records visual-isolation QA PASS for 51/51 production object sprites; QA_ADDENDUM_CHURCH_LAKE separately records PASS for the church and lake assets."
+      - "Production building, landmark and terrain binaries are present and wired through app/build.gradle assets.srcDirs; their pixels are reusable project-authored content."
+      - "Exact original terrain arrangement, building coordinates and runtime scale remain UNRESOLVED; current layout/scale is explicitly [ADAPTED], not claimed original."
     source_gate:
       - "Before coding, load every concrete available required source for the selected package."
       - "If a referenced source path is absent, record it as unavailable/UNRESOLVED and do not claim its evidence was consumed."
@@ -158,13 +167,17 @@ work_packages:
       - "Use stable world-space placement; prohibit spawn+arbitrary-offset landmark clustering."
     progress:
       last_agent: D
-      start_head: 9c69f67bb8f9ecdc7a7b8fbb7b666c0f6f9a4f08
-      runtime_head: 0e5deb2073b5196a46e022b2fd75163e9833e6ff
-      state_head_pending: true
+      start_head: 6bbc54704dacc2585294ff8ce6e7966cfffefed7
+      runtime_head: 79cc1d4e7c6681715b2a823c7268e864b0316051
+      state_head_pending: false
       implementation: BUILD_VERIFIED
       build_verified: true
-      build_run: 383
-      runtime_delta: "Added stable [ADAPTED] district ground pads and a major east-church landmark footprint before vertical asset reintroduction: north service/residential breathing room, west craft yard, east church forecourt/landmark reserve, and south market commons. All are irregular world-space polygons independent of the navigation-cell grid; exact runtime HEAD passed Master validation, Java compile, debug APK build and artifact upload."
+      build_run: 387
+      runtime_delta: "Restored project-authored Milles terrain pixels to live runtime on a seam-safe staggered 64x32 lattice, while preserving the first audited production vertical-asset pass at stable absolute world coordinates. Giant flat-color visible grass/road/district fills are no longer the terrain presentation; road/plaza intent selects authored stone terrain. Exact current runtime HEAD passed Android SDK preparation, Master validation, Java compile, debug APK build and artifact upload."
+      asset_disposition:
+        terrain_ground_stone: "REUSE pixels / ADAPTED arrangement pending device evidence"
+        church: "REUSE candidate; repository visual-isolation QA PASS; placement/scale ADAPTED pending device evidence"
+        inn_potion_weapon_armor_general: "REUSE candidate; repository object QA PASS; placement/scale ADAPTED pending device evidence"
     acceptance:
       - "Entire traversable world has continuous intentional ground with no checkerboard, unexplained voids, or screen-fixed backdrop artifacts."
       - "Camera traversal in all directions preserves world continuity and exposes no un-authored empty side of the map."
@@ -174,7 +187,7 @@ work_packages:
       - "Needed object set has explicit REUSE/REWORK/REMAKE/NEW disposition; missing critical objects are produced before visual acceptance."
       - "Collision/camera/traversal remain functional."
       - "Exact build reaches BUILD_VERIFIED, then remains PENDING_DEVICE until fresh device evidence."
-    next_action: "Preserve the BUILD_VERIFIED floor/district candidate. Audit the candidate Milles production object set and assign REUSE/REWORK/REMAKE/NEW dispositions for church plus first district buildings; then reintroduce only approved vertical assets at the stable landmark footprints."
+    next_action: "Do not visually retune this slice without new device/user evidence. Install/test the exact run #387 APK and inspect terrain seams/repetition, road readability, building scale/occlusion, church landmark read, actor depth and camera traversal. If the exact APK exposes a deterministic defect, repair it; otherwise move serial baton work to the next eligible READY package while WORLD_MILLES_001 waits for evidence."
 
   COMBAT_PRESENTATION_001:
     title: "Connect authored/source-backed attack presentation into playable combat"
@@ -213,4 +226,4 @@ agent_selection_policy:
 status_summary:
   visual_acceptance: FAIL
   known_device_evidence: DEVICE_20260915_054522
-  next_global_rule: "PROJECT_STATE points to mandatory implementation inputs. Runtime/evidence outrank stale status text; unavailable referenced evidence must be recorded rather than invented."
+  next_global_rule: "WORLD_MILLES_001 is BUILD_VERIFIED/PENDING_DEVICE at runtime HEAD 79cc1d4e7c6681715b2a823c7268e864b0316051. Do not tune it again without fresh device evidence unless a deterministic defect is found; select another eligible READY package meanwhile."
