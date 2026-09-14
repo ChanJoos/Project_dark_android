@@ -2,33 +2,44 @@ package com.projectdark.mobile;
 
 /**
  * Long-run executable evidence for the device-reported composite-cardinal monster trajectory bug.
- * This audit deliberately exercises 4096+ ticks rather than only validating individual vectors.
+ * This audit exercises 4096+ ticks and now gates visual-run commitment, not only per-step legality.
  */
 public final class MonsterCanonicalTrajectoryAudit {
   private static final int LONG_TICKS=4096;
   private static final float FRAME_DISTANCE=.5f;
   private static final float EPS=.002f;
-  // Mirrors the current [B] monster attack-begin/arrival threshold without depending on controller wiring.
   private static final float SETTLE_DISTANCE=42f;
 
   public static final class Metrics {
     public final String name;
     public int ticks,moves,directionChanges,blocked,detours;
-    public float maxLateralError,maxStepMagnitude;
+    public float maxLateralError,maxStepMagnitude,minCompletedRunDistance=Float.POSITIVE_INFINITY;
     public float finalX,finalY;
+    private float currentRunDistance;
+    private CharacterRenderer.Direction runFacing;
     Metrics(String name){this.name=name;}
+    void recordRun(CharacterRenderer.Direction facing,float distance){
+      if(runFacing!=null&&runFacing!=facing){
+        minCompletedRunDistance=Math.min(minCompletedRunDistance,currentRunDistance);
+        directionChanges++;
+        currentRunDistance=0f;
+      }
+      runFacing=facing;currentRunDistance+=distance;
+    }
+    void finish(){if(currentRunDistance>0f)minCompletedRunDistance=Math.min(minCompletedRunDistance,currentRunDistance);}
     public String summary(){
       return name+" ticks="+ticks+" moves="+moves+" dirChanges="+directionChanges+
-          " blocked="+blocked+" detours="+detours+" maxLateral="+maxLateralError+
-          " maxStep="+maxStepMagnitude+" final=("+finalX+","+finalY+")";
+          " minRun="+minCompletedRunDistance+" blocked="+blocked+" detours="+detours+
+          " maxLateral="+maxLateralError+" maxStep="+maxStepMagnitude+
+          " final=("+finalX+","+finalY+")";
     }
   }
 
   private MonsterCanonicalTrajectoryAudit(){}
 
   public static boolean passes(){
-    if(Math.abs(MonsterCanonicalSegmentLock.SEGMENT_X-8f)>EPS||
-        Math.abs(MonsterCanonicalSegmentLock.SEGMENT_Y-4f)>EPS)return false;
+    if(Math.abs(MonsterCanonicalSegmentLock.SEGMENT_X-16f)>EPS||
+        Math.abs(MonsterCanonicalSegmentLock.SEGMENT_Y-8f)>EPS)return false;
 
     Metrics north=runFixed("north",0f,-100000f,LONG_TICKS,false);
     Metrics south=runFixed("south",0f,100000f,LONG_TICKS,false);
@@ -43,6 +54,16 @@ public final class MonsterCanonicalTrajectoryAudit {
     if(nearNorth.maxLateralError>lateralLimit+1f||nearSouth.maxLateralError>lateralLimit+1f)return false;
     if(north.moves!=LONG_TICKS||south.moves!=LONG_TICKS)return false;
     if(north.maxStepMagnitude>FRAME_DISTANCE+EPS||south.maxStepMagnitude>FRAME_DISTANCE+EPS)return false;
+
+    // Device gate: a visible direction may not flip after only a few pixels. Completed runs must
+    // consume essentially the whole half-stride before re-quantization. The final partial run is
+    // excluded below by measuring only when a switch actually occurs.
+    float minimumCommittedRun=MonsterCanonicalSegmentLock.SEGMENT_DISTANCE-FRAME_DISTANCE-EPS;
+    if(north.minCompletedRunDistance<minimumCommittedRun||south.minCompletedRunDistance<minimumCommittedRun)return false;
+    if(nearNorth.minCompletedRunDistance<minimumCommittedRun||nearSouth.minCompletedRunDistance<minimumCommittedRun)return false;
+    int maxSwitches=(int)Math.ceil((LONG_TICKS*FRAME_DISTANCE)/MonsterCanonicalSegmentLock.SEGMENT_DISTANCE)+2;
+    if(north.directionChanges>maxSwitches||south.directionChanges>maxSwitches)return false;
+
     if(moving.moves<3000||moving.maxStepMagnitude>FRAME_DISTANCE+EPS)return false;
     if(collision.detours<=0||collision.moves<=0||collision.maxStepMagnitude>FRAME_DISTANCE+EPS)return false;
     if(arrival.moves!=0||Math.abs(arrival.finalX)>EPS||Math.abs(arrival.finalY)>EPS)return false;
@@ -72,14 +93,17 @@ public final class MonsterCanonicalTrajectoryAudit {
       if(!MonsterDiagonalLocomotion.isCanonical(applied.dx,applied.dy))return fail(name);
       if(applied.facing!=CanonicalActorFacing.quantize(applied.dx,applied.dy,null))return fail(name);
       if(applied.facing!=intent.facing)m.detours++;
-      if(previous!=null&&previous!=applied.facing)m.directionChanges++;
+      float appliedDistance=hypot(applied.dx,applied.dy);
+      m.recordRun(applied.facing,appliedDistance);
       previous=applied.facing;
       x+=applied.dx;y+=applied.dy;
-      lock.onApplied(hypot(applied.dx,applied.dy),applied.facing);
+      lock.onApplied(appliedDistance,applied.facing);
       m.moves++;m.ticks++;
-      m.maxStepMagnitude=Math.max(m.maxStepMagnitude,hypot(applied.dx,applied.dy));
+      m.maxStepMagnitude=Math.max(m.maxStepMagnitude,appliedDistance);
       m.maxLateralError=Math.max(m.maxLateralError,Math.abs(x-targetX));
     }
+    // Do not let a truncated final run weaken the minimum-completed-run gate.
+    if(m.directionChanges==0)m.minCompletedRunDistance=m.currentRunDistance;
     m.finalX=x;m.finalY=y;return m;
   }
 
@@ -101,18 +125,17 @@ public final class MonsterCanonicalTrajectoryAudit {
       MonsterDiagonalLocomotion.Step applied=MonsterDiagonalLocomotion.select(
           x,y,intent.dx,intent.dy,distance,intent.facing,1,(nx,ny)->true);
       if(applied==null||!MonsterDiagonalLocomotion.isCanonical(applied.dx,applied.dy))return fail("moving-target");
-      if(previous!=null&&previous!=applied.facing)m.directionChanges++;
+      float appliedDistance=hypot(applied.dx,applied.dy);
+      m.recordRun(applied.facing,appliedDistance);
       previous=applied.facing;x+=applied.dx;y+=applied.dy;
-      lock.onApplied(hypot(applied.dx,applied.dy),applied.facing);
-      m.moves++;m.ticks++;m.maxStepMagnitude=Math.max(m.maxStepMagnitude,hypot(applied.dx,applied.dy));
+      lock.onApplied(appliedDistance,applied.facing);
+      m.moves++;m.ticks++;m.maxStepMagnitude=Math.max(m.maxStepMagnitude,appliedDistance);
       m.maxLateralError=Math.max(m.maxLateralError,Math.abs(x-targetX));
     }
     m.finalX=x;m.finalY=y;return m;
   }
 
-  private static Metrics runCollisionDetour(){
-    return runFixed("collision-detour",0f,-100000f,LONG_TICKS,true);
-  }
+  private static Metrics runCollisionDetour(){return runFixed("collision-detour",0f,-100000f,LONG_TICKS,true);}
 
   private static Metrics runArrivalSettle(){
     MonsterCanonicalSegmentLock lock=new MonsterCanonicalSegmentLock();
@@ -123,12 +146,13 @@ public final class MonsterCanonicalTrajectoryAudit {
       if(hypot(dx,dy)<=SETTLE_DISTANCE){lock.reset();m.ticks++;continue;}
       MonsterDiagonalLocomotion.Step intent=lock.intent(dx,dy,FRAME_DISTANCE,CharacterRenderer.Direction.SE);
       if(intent==null)return fail("arrival-settle");
-      x+=intent.dx;y+=intent.dy;lock.onApplied(hypot(intent.dx,intent.dy),intent.facing);m.moves++;m.ticks++;
+      float step=hypot(intent.dx,intent.dy);
+      x+=intent.dx;y+=intent.dy;lock.onApplied(step,intent.facing);m.recordRun(intent.facing,step);m.moves++;m.ticks++;
     }
     m.finalX=x;m.finalY=y;return m;
   }
 
-  private static Metrics fail(String name){Metrics m=new Metrics(name);m.maxStepMagnitude=Float.POSITIVE_INFINITY;return m;}
+  private static Metrics fail(String name){Metrics m=new Metrics(name);m.maxStepMagnitude=Float.POSITIVE_INFINITY;m.minCompletedRunDistance=0f;return m;}
   private static float hypot(float x,float y){return(float)Math.sqrt(x*x+y*y);}
 
   public static void main(String[] args){
@@ -139,13 +163,8 @@ public final class MonsterCanonicalTrajectoryAudit {
     Metrics moving=runMovingTarget();
     Metrics collision=runCollisionDetour();
     Metrics arrival=runArrivalSettle();
-    System.out.println(north.summary());
-    System.out.println(south.summary());
-    System.out.println(nearNorth.summary());
-    System.out.println(nearSouth.summary());
-    System.out.println(moving.summary());
-    System.out.println(collision.summary());
-    System.out.println(arrival.summary());
+    System.out.println(north.summary());System.out.println(south.summary());System.out.println(nearNorth.summary());
+    System.out.println(nearSouth.summary());System.out.println(moving.summary());System.out.println(collision.summary());System.out.println(arrival.summary());
     if(!passes())throw new AssertionError("MonsterCanonicalTrajectoryAudit failed");
     System.out.println("MonsterCanonicalTrajectoryAudit PASS");
   }

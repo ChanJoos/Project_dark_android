@@ -2,6 +2,8 @@ name: Validate PROJECT DARK Android
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -11,6 +13,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -22,6 +26,8 @@ jobs:
       - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
       - name: Validate Master DB
         run: python tools/validate_master.py
+      - name: Validate runtime acceptance contracts
+        run: python tools/validate_runtime_acceptance.py
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Build debug APK
@@ -29,7 +35,7 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: PROJECT_DARK-debug-${{ github.sha }}
+          name: PROJECT_DARK-debug-${{ github.event.pull_request.head.sha || github.sha }}
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14

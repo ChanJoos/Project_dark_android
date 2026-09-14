@@ -2,13 +2,14 @@ package com.projectdark.mobile;
 
 /** Structural audit for renderer-owned NPC/monster visual presentation contracts. */
 public final class WorldEntityPresentationAudit {
+  private static final float USER_APPROVED_MONSTER_RENDER_SCALE=1.16f;
   private WorldEntityPresentationAudit(){}
 
   public static boolean passes(){
     if(WorldEntityPresentationRenderer.Kind.values().length!=2)return false;
     if(!"PENDING_CROP".equals(WorldEntityPresentationRenderer.ASSET_STATUS))return false;
     if(WorldEntityPresentationRenderer.NPC_RENDER_SCALE<=0f||WorldEntityPresentationRenderer.NPC_RENDER_SCALE>=1f)return false;
-    if(WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE<=0f||WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE>=1f)return false;
+    if(Math.abs(WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE-USER_APPROVED_MONSTER_RENDER_SCALE)>.0001f)return false;
     if(WorldEntityPresentationRenderer.NPC_SHADOW_SCALE>=WorldEntityPresentationRenderer.NPC_RENDER_SCALE)return false;
     if(WorldEntityPresentationRenderer.MONSTER_SHADOW_SCALE>=WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE)return false;
     if(WorldEntityPresentationRenderer.LOGICAL_FOOT_ANCHOR_Y!=0f)return false;
