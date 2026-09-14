@@ -6,6 +6,7 @@ def require(text, needle, label):
     if needle not in text: raise SystemExit(f"RUNTIME ACCEPTANCE FAIL: {label}: missing {needle!r}")
 
 character=read("app/src/main/java/com/projectdark/mobile/CharacterRenderer.java")
+semantic_rig=read("app/src/main/java/com/projectdark/mobile/CharacterSemanticRig.java")
 game_view=read("app/src/main/java/com/projectdark/mobile/GameView.java")
 monster_ai=read("app/src/main/java/com/projectdark/mobile/MonsterAIController.java")
 world=read("app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java")
@@ -21,6 +22,11 @@ if "translate(" in attack_block or "motion" in attack_block: raise SystemExit("R
 require(character,"if(q<.22f)amount","weapon startup phase")
 require(character,"else if(q<.48f)amount","weapon contact phase")
 require(character,"else amount=70f","weapon recovery phase")
+
+require(semantic_rig,"ADAPTED_AUTHORED_IDLE_WALK_HAND_TABLE_NOT_ALPHA_EDGE","authored idle/walk hand-anchor evidence")
+require(semantic_rig,"CharacterRenderer.weaponCarryOffsetX(direction,column)","authored per-frame weapon hand X")
+require(semantic_rig,"CharacterRenderer.weaponCarryOffsetY(direction,column)","authored per-frame weapon hand Y")
+require(semantic_rig,"if(hand==null)hand=outerCluster","alpha heuristic restricted to non-authored fallback")
 
 require(monster_ai,"MONSTER_TILE_STEP_SECONDS=.82f","monster pursuit cadence")
 require(monster_ai,"CanonicalMeleeTileContract.direction","canonical melee adjacency")
@@ -39,4 +45,4 @@ require(world,"s.x+318f,s.y+252f,.82f","water-side landmark")
 require(world,"s.x-205f,s.y+76f,.88f","left tree garden")
 require(world,"s.x+206f,s.y+82f,.88f","right tree garden")
 
-print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, stationary pose/weapon 3-phase attack, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
+print("RUNTIME ACCEPTANCE PASS: robe atlas-lock, stationary pose/weapon 3-phase attack, authored idle/walk hand anchor, monster cadence/visual wiring, canonical melee, Milles V6 natural-path split")
