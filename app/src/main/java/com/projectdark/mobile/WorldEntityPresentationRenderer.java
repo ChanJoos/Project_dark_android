@@ -13,9 +13,9 @@ public final class WorldEntityPresentationRenderer {
   public static final String EVIDENCE="B+ADAPTED";
   public static final String ASSET_STATUS="PENDING_CROP";
   public static final float NPC_RENDER_SCALE=0.84f;
-  public static final float MONSTER_RENDER_SCALE=0.88f;
+  public static final float MONSTER_RENDER_SCALE=1.16f;
   public static final float NPC_SHADOW_SCALE=0.54f;
-  public static final float MONSTER_SHADOW_SCALE=0.62f;
+  public static final float MONSTER_SHADOW_SCALE=0.78f;
   public static final float LOGICAL_FOOT_ANCHOR_Y=0f;
 
   public enum Kind { NPC, MONSTER }
