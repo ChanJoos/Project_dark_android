@@ -122,7 +122,8 @@ public final class MonsterAIController {
 
     lock.reset();
     if(adjacent&&m.attackCooldown<=0f){
-      WorldAttackFacing.startMonsterAttack(state,m);
+      // Exact adjacent tile delta feeds the same four-way attack snapshot contract.
+      state.beginMonsterAttack(m);
     }else if(m.state==RuntimeState.Monster.State.CHASE){
       m.state=RuntimeState.Monster.State.IDLE;
     }
