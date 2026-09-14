@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Runtime/source evidence for the 2026-09-14 Visual attack + robe registration repair. */
+/** Runtime/source evidence for P3 robe, P4 attack registration and P5 SE mw001 continuity. */
 public final class CharacterVisualEvidenceProbeV2 {
   private static final int W=CharacterRenderer.SOURCE_FRAME_WIDTH,H=CharacterRenderer.SOURCE_FRAME_HEIGHT;
-  private static final int[] BODY_W={17,18,19,21},BODY_H={51,52,51,49},BODY_X={8,2,6,4},BODY_Y={8,8,9,3};
+  private static final int[] BODY_W={17,18,19,21},BODY_H={51,52,51,49};
   private static final int[] ROBE_W={14,19,15,20},ROBE_H={33,22,30,21};
   private static final float PIVOT_X=2f,PIVOT_Y=4f;
 
@@ -33,17 +33,18 @@ public final class CharacterVisualEvidenceProbeV2 {
 
   public static final class AttackGeometry {
     public final CharacterRenderer.Direction direction;public final int sourceIndex;public final Bounds idleBody,rawAction;
-    public final int cropTop,cropBottomExclusive,normalizedHeight,offsetX,offsetY,heightError,footError,centerError;public final boolean pass;
+    public final float semanticPivotX,semanticFootY,presentationScale;public final int offsetX,offsetY,rawVisibleHeight;
+    public final boolean destructiveCrop,pass;
     AttackGeometry(CharacterRenderer.Direction d,int source,Bounds idle,Bounds raw){
       direction=d;sourceIndex=source;idleBody=idle;rawAction=raw;
-      if(idle.empty()||raw.empty()){cropTop=0;cropBottomExclusive=0;normalizedHeight=0;offsetX=offsetY=0;heightError=footError=centerError=999;pass=false;return;}
-      cropTop=Math.max(raw.top,raw.bottom-idle.height()+1);cropBottomExclusive=raw.bottom+1;normalizedHeight=cropBottomExclusive-cropTop;
-      int globalBottom=BODY_Y[source]+raw.bottom;float globalCenter=BODY_X[source]+raw.centerX();
-      offsetY=idle.bottom-globalBottom;offsetX=Math.round(idle.centerX()-globalCenter);
-      heightError=Math.abs(idle.height()-normalizedHeight);footError=Math.abs(idle.bottom-(globalBottom+offsetY));centerError=Math.round(Math.abs(idle.centerX()-(globalCenter+offsetX)));
-      pass=CharacterRenderer.alphaGeometryWithinTolerance(idle.height(),normalizedHeight,footError,centerError);
+      semanticPivotX=CharacterRenderer.actionSemanticPivotX(source);semanticFootY=CharacterRenderer.actionSemanticFootY(source);
+      presentationScale=CharacterRenderer.normalizedActionScale(source);destructiveCrop=CharacterRenderer.attackUsesDestructiveCrop();
+      offsetX=Math.round(CharacterRenderer.SOURCE_FOOT_ANCHOR_X-semanticPivotX);offsetY=Math.round(CharacterRenderer.SOURCE_FOOT_ANCHOR_Y-semanticFootY);
+      rawVisibleHeight=raw.empty()?0:raw.height();
+      pass=!idle.empty()&&!raw.empty()&&!destructiveCrop&&!Float.isNaN(semanticPivotX)&&!Float.isNaN(semanticFootY)&&
+          Math.abs(presentationScale-(1.70f/1.50f))<.0001f&&semanticPivotX>=10f&&semanticPivotX<=18f&&semanticFootY>=46f&&semanticFootY<=60f;
     }
-    @Override public String toString(){return direction+" src="+sourceIndex+" idle="+idleBody+" raw="+rawAction+" cropY="+cropTop+".."+(cropBottomExclusive-1)+" normH="+normalizedHeight+" shift=("+offsetX+","+offsetY+") err(h/f/c)="+heightError+"/"+footError+"/"+centerError+" pass="+pass;}
+    @Override public String toString(){return direction+" src="+sourceIndex+" idle="+idleBody+" raw="+rawAction+" rawH="+rawVisibleHeight+" semanticPivot="+semanticPivotX+" semanticFoot="+semanticFootY+" shift=("+offsetX+","+offsetY+") scale="+presentationScale+" crop="+destructiveCrop+" pass="+pass;}
   }
 
   public static final class AttackLayers {
@@ -52,18 +53,24 @@ public final class CharacterVisualEvidenceProbeV2 {
     @Override public String toString(){return direction+" BODY="+body+" ROBE="+robe+" MW001="+weapon+" atomic="+atomic+" noWeaponOnlyFallback="+noWeaponOnlyFallback;}
   }
 
+  public static final class WeaponWalk {
+    public final int column;public final float x,y,angle;
+    WeaponWalk(int c,float x,float y,float angle){column=c;this.x=x;this.y=y;this.angle=angle;}
+    @Override public String toString(){return "SE/c"+column+" hand=("+x+","+y+") angle="+angle;}
+  }
+
   public static final class WeaponAttack {
-    public final CharacterRenderer.Direction direction;public final boolean mirror;public final float handX,handY,tipX,tipY,angle,tipDistance;
-    WeaponAttack(CharacterRenderer.Direction d,boolean m,float hx,float hy,float tx,float ty,float a,float len){direction=d;mirror=m;handX=hx;handY=hy;tipX=tx;tipY=ty;angle=a;tipDistance=len;}
-    @Override public String toString(){return direction+" mirror="+mirror+" hand=("+handX+","+handY+") tip=("+tipX+","+tipY+") angle="+angle+" len="+tipDistance;}
+    public final CharacterRenderer.Direction direction;public final boolean bodyMirror,weaponMirror;public final float handX,handY,tipX,tipY,angle,tipDistance;
+    WeaponAttack(CharacterRenderer.Direction d,boolean bm,boolean wm,float hx,float hy,float tx,float ty,float a,float len){direction=d;bodyMirror=bm;weaponMirror=wm;handX=hx;handY=hy;tipX=tx;tipY=ty;angle=a;tipDistance=len;}
+    @Override public String toString(){return direction+" bodyMirror="+bodyMirror+" weaponMirror="+weaponMirror+" hand=("+handX+","+handY+") tip=("+tipX+","+tipY+") angle="+angle+" len="+tipDistance;}
   }
 
   public static final class Evidence {
-    public final boolean resourcesReady,swSeRegistrationPass,attackGeometryPass,attackAtomicPass,weaponTransformPass;
-    public final List<WalkRegistration> walk;public final List<AttackGeometry> attack;public final List<AttackLayers> layers;public final List<WeaponAttack> weapons;
-    Evidence(boolean rr,boolean wp,boolean ap,boolean lp,boolean mp,List<WalkRegistration>w,List<AttackGeometry>a,List<AttackLayers>l,List<WeaponAttack>m){resourcesReady=rr;swSeRegistrationPass=wp;attackGeometryPass=ap;attackAtomicPass=lp;weaponTransformPass=mp;walk=Collections.unmodifiableList(w);attack=Collections.unmodifiableList(a);layers=Collections.unmodifiableList(l);weapons=Collections.unmodifiableList(m);}
-    public boolean passes(){return resourcesReady&&swSeRegistrationPass&&attackGeometryPass&&attackAtomicPass&&weaponTransformPass;}
-    public String summary(){return "resources="+resourcesReady+",walk20="+walk.size()+",swSeXY="+swSeRegistrationPass+",attack4="+attackGeometryPass+",atomic4="+attackAtomicPass+",weapon4="+weaponTransformPass;}
+    public final boolean resourcesReady,robeRegistrationPass,attackGeometryPass,attackAtomicPass,seWeaponContinuityPass,attackWeaponTransformPass;
+    public final List<WalkRegistration> walk;public final List<AttackGeometry> attack;public final List<AttackLayers> layers;public final List<WeaponWalk> seWalk;public final List<WeaponAttack> weapons;
+    Evidence(boolean rr,boolean rp,boolean ap,boolean lp,boolean sp,boolean wp,List<WalkRegistration>w,List<AttackGeometry>a,List<AttackLayers>l,List<WeaponWalk>s,List<WeaponAttack>m){resourcesReady=rr;robeRegistrationPass=rp;attackGeometryPass=ap;attackAtomicPass=lp;seWeaponContinuityPass=sp;attackWeaponTransformPass=wp;walk=Collections.unmodifiableList(w);attack=Collections.unmodifiableList(a);layers=Collections.unmodifiableList(l);seWalk=Collections.unmodifiableList(s);weapons=Collections.unmodifiableList(m);}
+    public boolean passes(){return resourcesReady&&robeRegistrationPass&&attackGeometryPass&&attackAtomicPass&&seWeaponContinuityPass&&attackWeaponTransformPass;}
+    public String summary(){return "resources="+resourcesReady+",robe20="+robeRegistrationPass+",attack4="+attackGeometryPass+",atomic4="+attackAtomicPass+",seCarry5="+seWeaponContinuityPass+",weapon4="+attackWeaponTransformPass;}
   }
 
   private CharacterVisualEvidenceProbeV2(){}
@@ -75,18 +82,20 @@ public final class CharacterVisualEvidenceProbeV2 {
     Bitmap[] bodyAction=new Bitmap[4],robeAction=new Bitmap[4];boolean ready=body!=null&&robe!=null&&weapon!=null;
     for(int i=0;i<4;i++){bodyAction[i]=load(r,"player_body_mm001_action02_"+i,BODY_W[i],BODY_H[i]);robeAction[i]=load(r,"player_robe_mu0000058_action02_"+i,ROBE_W[i],ROBE_H[i]);ready&=bodyAction[i]!=null&&robeAction[i]!=null;}
 
-    List<WalkRegistration> walk=new ArrayList<>();boolean walkPass=true;
+    float[][] expectedNorthX={{-1,-2,-1,0,1},{2,2,2,0,1}};
+    List<WalkRegistration> walk=new ArrayList<>();boolean robePass=CharacterRenderer.robeRegistrationContinuityWithin(2f);boolean swVertical=false,seVertical=false;
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-      int row=CharacterRenderer.atlasRow(d);Bounds idleB=cellBounds(body,row,0),idleR=cellBounds(robe,row,0);float baseX=CharacterRenderer.robeFrameRegistrationX(d,0);
-      float targetCenter=(idleR.centerX()+baseX)-idleB.centerX();int targetFoot=idleR.bottom-idleB.bottom;
-      for(int col=0;col<5;col++){
-        Bounds b=cellBounds(body,row,col),rr=cellBounds(robe,row,col);float x,y;
-        if(CharacterRenderer.robeUsesRuntimeXYRegistration(d)){x=Math.round(targetCenter-(rr.centerX()-b.centerX()));y=Math.round(targetFoot-(rr.bottom-b.bottom));}
-        else{x=CharacterRenderer.robeFrameRegistrationX(d,col);y=0f;}
-        WalkRegistration sample=new WalkRegistration(d,col,b,rr,x,y);walk.add(sample);
-        if(CharacterRenderer.robeUsesRuntimeXYRegistration(d))walkPass&=!b.empty()&&!rr.empty()&&Math.abs(sample.centerDelta-targetCenter)<=.5f&&Math.abs(sample.footDelta-targetFoot)<=1;
+      int row=CharacterRenderer.atlasRow(d);
+      for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
+        Bounds b=cellBounds(body,row,col),rr=cellBounds(robe,row,col);float x=CharacterRenderer.robeFrameRegistrationX(d,col),y=CharacterRenderer.robeFrameRegistrationY(d,col);
+        WalkRegistration sample=new WalkRegistration(d,col,b,rr,x,y);walk.add(sample);robePass&=!b.empty()&&!rr.empty();
+        if(d==CharacterRenderer.Direction.NW){robePass&=x==expectedNorthX[0][col]&&y==0f;}
+        if(d==CharacterRenderer.Direction.NE){robePass&=x==expectedNorthX[1][col]&&y==0f;}
+        if(d==CharacterRenderer.Direction.SW){swVertical|=y!=0f;robePass&=Math.abs(y)<=1f;}
+        if(d==CharacterRenderer.Direction.SE){seVertical|=y!=0f;robePass&=Math.abs(y)<=1f;}
       }
     }
+    robePass&=swVertical&&seVertical;
 
     List<AttackGeometry> attacks=new ArrayList<>();boolean attackPass=true;
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
@@ -98,18 +107,22 @@ public final class CharacterVisualEvidenceProbeV2 {
       int src=CharacterRenderer.actionSourceIndex(d);AttackLayers l=new AttackLayers(d,bodyAction[src]!=null,robeAction[src]!=null,weapon!=null);layers.add(l);layerPass&=l.atomic&&l.noWeaponOnlyFallback;
     }
 
+    List<WeaponWalk> seWalk=new ArrayList<>();
+    for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++)seWalk.add(new WeaponWalk(col,CharacterRenderer.weaponCarryOffsetX(CharacterRenderer.Direction.SE,col),CharacterRenderer.weaponCarryOffsetY(CharacterRenderer.Direction.SE,col),CharacterRenderer.weaponCarryAngle(CharacterRenderer.Direction.SE,col)));
+    boolean sePass=CharacterRenderer.weaponCarryMaxJumpX(CharacterRenderer.Direction.SE)<=1f&&CharacterRenderer.weaponCarryMaxJumpY(CharacterRenderer.Direction.SE)<=1f&&CharacterRenderer.weaponCarryMaxJumpAngle(CharacterRenderer.Direction.SE)<=2f;
+
     Bounds wb=bounds(weapon);float tipXLocal=PIVOT_X,tipYLocal=PIVOT_Y,maxD2=-1f;
     if(weapon!=null&&!wb.empty())for(int y=wb.top;y<=wb.bottom;y++)for(int x=wb.left;x<=wb.right;x++)if(((weapon.getPixel(x,y)>>>24)&0xff)!=0){float dx=x-PIVOT_X,dy=y-PIVOT_Y,d2=dx*dx+dy*dy;if(d2>maxD2){maxD2=d2;tipXLocal=x;tipYLocal=y;}}
-    float expectedLen=(float)Math.sqrt(Math.max(0f,maxD2));List<WeaponAttack> weapons=new ArrayList<>();boolean weaponPass=weapon!=null&&!wb.empty()&&CharacterRenderer.weaponTransformUsesSingleMirror();
+    float expectedLen=(float)Math.sqrt(Math.max(0f,maxD2));List<WeaponAttack> weapons=new ArrayList<>();boolean weaponPass=weapon!=null&&!wb.empty();
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-      float hx=CharacterRenderer.weaponAttackOffsetX(d),hy=-CharacterRenderer.weaponAttackOffsetY(d),lx=tipXLocal-PIVOT_X,ly=tipYLocal-PIVOT_Y;if(CharacterRenderer.weaponMirrorX(d))lx=-lx;
-      float angle=CharacterRenderer.weaponAttackAngle(d,.55f),rad=(float)Math.toRadians(angle),rx=(float)(lx*Math.cos(rad)-ly*Math.sin(rad)),ry=(float)(lx*Math.sin(rad)+ly*Math.cos(rad));float len=(float)Math.sqrt(rx*rx+ry*ry);
-      WeaponAttack sample=new WeaponAttack(d,CharacterRenderer.weaponMirrorX(d),hx,hy,hx+rx,hy+ry,angle,len);weapons.add(sample);weaponPass&=len>=5f&&Math.abs(len-expectedLen)<.01f;
+      boolean bodyMirror=CharacterRenderer.bodyMirrorX(d),weaponMirror=CharacterRenderer.weaponMirrorX(d);float hx=CharacterRenderer.weaponAttackOffsetX(d),hy=-CharacterRenderer.weaponAttackOffsetY(d),lx=tipXLocal-PIVOT_X,ly=tipYLocal-PIVOT_Y;if(weaponMirror)lx=-lx;
+      float angle=CharacterRenderer.weaponAttackAngle(d,.55f),rad=(float)Math.toRadians(angle),rx=(float)(lx*Math.cos(rad)-ly*Math.sin(rad)),ry=(float)(lx*Math.sin(rad)+ly*Math.cos(rad)),len=(float)Math.sqrt(rx*rx+ry*ry);
+      WeaponAttack sample=new WeaponAttack(d,bodyMirror,weaponMirror,hx,hy,hx+rx,hy+ry,angle,len);weapons.add(sample);weaponPass&=len>=5f&&Math.abs(len-expectedLen)<.01f;
     }
-    return new Evidence(ready,walkPass,attackPass,layerPass,weaponPass,walk,attacks,layers,weapons);
+    return new Evidence(ready,robePass,attackPass,layerPass,sePass,weaponPass,walk,attacks,layers,seWalk,weapons);
   }
 
-  public static String report(Evidence e){StringBuilder s=new StringBuilder(e.summary()).append('\n');s.append("ROBE REGISTRATION 4x5\n");for(WalkRegistration x:e.walk)s.append(x).append('\n');s.append("ATTACK GEOMETRY 4\n");for(AttackGeometry x:e.attack)s.append(x).append('\n');s.append("ATTACK LAYERS 4\n");for(AttackLayers x:e.layers)s.append(x).append('\n');s.append("MW001 ATTACK TRANSFORM 4\n");for(WeaponAttack x:e.weapons)s.append(x).append('\n');return s.toString();}
+  public static String report(Evidence e){StringBuilder s=new StringBuilder(e.summary()).append('\n');s.append("P3 ROBE REGISTRATION 4x5\n");for(WalkRegistration x:e.walk)s.append(x).append('\n');s.append("P4 ATTACK RAW+SEMANTIC REGISTRATION 4\n");for(AttackGeometry x:e.attack)s.append(x).append('\n');s.append("ATTACK LAYERS 4\n");for(AttackLayers x:e.layers)s.append(x).append('\n');s.append("P5 SE MW001 CARRY 5 maxJump=").append(CharacterRenderer.weaponCarryMaxJumpX(CharacterRenderer.Direction.SE)).append('/').append(CharacterRenderer.weaponCarryMaxJumpY(CharacterRenderer.Direction.SE)).append('/').append(CharacterRenderer.weaponCarryMaxJumpAngle(CharacterRenderer.Direction.SE)).append('\n');for(WeaponWalk x:e.seWalk)s.append(x).append('\n');s.append("MW001 ATTACK TRANSFORM 4 (BODY/WEAPON INDEPENDENT)\n");for(WeaponAttack x:e.weapons)s.append(x).append('\n');return s.toString();}
 
   private static Bitmap load(Resources r,String name,int width,int height){if(r==null)return null;try{int id=r.getIdentifier(name,"drawable","com.projectdark.mobile");if(id==0)return null;BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;Bitmap b=BitmapFactory.decodeResource(r,id,o);return b!=null&&b.getWidth()==width&&b.getHeight()==height?b:null;}catch(Throwable ignored){return null;}}
   private static Bounds bounds(Bitmap b){if(b==null)return new Bounds(0,0,-1,-1);int l=b.getWidth(),t=b.getHeight(),rr=-1,bb=-1;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if(((b.getPixel(x,y)>>>24)&0xff)!=0){l=Math.min(l,x);rr=Math.max(rr,x);t=Math.min(t,y);bb=Math.max(bb,y);}return new Bounds(l,t,rr,bb);}
