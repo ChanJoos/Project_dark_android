@@ -7,6 +7,8 @@ import java.util.Map;
 /** Combat·Monster runtime orchestration using one tile-center spatial contract for movement and melee. */
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B=180f;
+  /** Monster pursuit is intentionally slower than player tile locomotion for readable disengage/reposition play. */
+  static final float MONSTER_TILE_STEP_SECONDS=.82f;
   /** Derived compatibility range for shared resolver; attack eligibility itself is exact tile adjacency. */
   static final float ATTACK_BEGIN_RANGE_B=CanonicalMeleeTileContract.REACH_DISTANCE;
   static final int ATTACK_DAMAGE_B=4;
@@ -48,7 +50,7 @@ public final class MonsterAIController {
     TilePursuitState tile=tileStates.computeIfAbsent(m,k->new TilePursuitState());ensureCentered(m,tile);float dx=state.player().x-m.x,dy=state.player().y-m.y,d=(float)Math.sqrt(dx*dx+dy*dy);
     WorldMoveTargetController.Direction melee=CanonicalMeleeTileContract.direction(m.x,m.y,state.player().x,state.player().y);boolean reachable=melee!=null;
     if(m.attackPrimed){tile.resetClock();if(!reachable){state.cancelMonsterAttack(m);return;}if(state.monsterAttackReady(m))lastSubmission=attackRouter.submit(state,m,++submissionSequence);return;}
-    if(d<CHASE_RADIUS_B&&!reachable){tile.stepClock+=Math.max(0f,dt);if(tile.stepClock+.00001f<WorldMoveTargetController.TILE_STEP_SECONDS)return;tile.stepClock-=WorldMoveTargetController.TILE_STEP_SECONDS;
+    if(d<CHASE_RADIUS_B&&!reachable){tile.stepClock+=Math.max(0f,dt);if(tile.stepClock+.00001f<MONSTER_TILE_STEP_SECONDS)return;tile.stepClock-=MONSTER_TILE_STEP_SECONDS;
       WorldMoveTargetController.Direction dir=MonsterTileCenterLocomotion.toward(dx,dy,tile.lastDirection);float bx=m.x,by=m.y;boolean moved=state.tryMoveMonster(m,dir.dx,dir.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
       if(moved){if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(bx,by,m.x,m.y)||!MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y)){m.x=bx;m.y=by;tile.resetClock();return;}tile.lastDirection=directionFromFacing(m.visualFacing.locomotion(),dir);if(m.state!=RuntimeState.Monster.State.ATTACK)m.state=RuntimeState.Monster.State.CHASE;}else{m.x=bx;m.y=by;tile.resetClock();}return;}
     tile.resetClock();if(reachable&&m.attackCooldown<=0f){m.visualFacing.setLocomotion(CanonicalMeleeTileContract.facing(melee));state.beginMonsterAttack(m);}else if(m.state==RuntimeState.Monster.State.CHASE)m.state=RuntimeState.Monster.State.IDLE;
