@@ -6,121 +6,63 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Milles production vertical-slice renderer.
- *
- * Source pixels come directly from assets/milles/production via the app assets sourceSet.
- * No generated replacement art is used here. Runtime scaling uses nearest-neighbour only.
- */
+/** Story-driven Milles pass: grass-dominant terrain, dirt roads, central well, and restrained landmarks. */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_PRODUCTION_VERTICAL_SLICE_V3_AUTHORED_GRID_CENTERS";
-  public static final float LOGICAL_GROUND_WIDTH=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
-  public static final float LOGICAL_GROUND_HEIGHT=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
-  private final Paint pixel=new Paint();
-  private final Paint backdrop=new Paint();
-  private final Map<String,Bitmap> cache=new LinkedHashMap<>();
-  private AssetManager assets;
-
-  public AdaptedMillesMapRenderer(){
-    pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
-    backdrop.setAntiAlias(false);backdrop.setColor(0xff26382b);
-    assets=findAssets();
-  }
+  public static final String STATUS="MILLES_V11_DEVICE_VERIFIED_GRASS_DIRT_MAPPING";
+  private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH,TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
+  private static final float SEAM_GUARD=1f;
+  // Device evidence 2026-09-15 proved the authored file semantics are opposite the old filename assumption:
+  // ground_02 is the green flower-grass tile; ground_01 is the brown dirt tile.
+  private static final String GRASS_TILE="terrain/OBJ_ground_02.png";
+  private static final String DIRT_TILE="terrain/OBJ_ground_01.png";
+  private static final String PLAZA_TILE="terrain/OBJ_stone_01.png";
+  private final Paint outsidePaint=new Paint(),pixelPaint=new Paint();
+  private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
+  private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
+  private final AssetManager assets;
+  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff1f2a22);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);assets=findAssets();}
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
-    canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),backdrop);
-    WorldMapProjection.Spawn s=world.map().spawn();
-
-    // World-owned placement invariant: visual ground is drawn at the exact same authored centers
-    // consumed by navigation. Adjacent centers are therefore always +/-32 X and +/-16 Y.
-    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles()){
-      drawGround(canvas,world,terrainFor(tile.kind),tile.centerX,tile.centerY,1f);
-    }
-
-    // Back row: landmark + shops. Positions are authored around the existing playable spawn.
-    drawFoot(canvas,world,"landmarks/BLD_011_church.png",s.x+250f,s.y-120f,.72f);
-    drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",s.x-285f,s.y-105f,.62f);
-    drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",s.x-90f,s.y-165f,.60f);
-    drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",s.x+105f,s.y-170f,.60f);
-    drawFoot(canvas,world,"buildings/BLD_006_inn.png",s.x+390f,s.y-70f,.60f);
-
-    // Lake/nature zone gives this first slice a strong Milles landmark read.
-    drawFoot(canvas,world,"water/lakes/OBJ_lake_main.png",s.x+325f,s.y+210f,.72f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_01.png",s.x-330f,s.y+45f,.82f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_02.png",s.x-270f,s.y+125f,.82f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_03.png",s.x+455f,s.y+110f,.82f);
-    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_01.png",s.x+175f,s.y+145f,.90f);
-    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_02.png",s.x-175f,s.y+155f,.90f);
-
-    // Street-life props around the central road/plaza.
-    drawFoot(canvas,world,"street/OBJ_well.png",s.x+35f,s.y+70f,.88f);
-    drawFoot(canvas,world,"street/OBJ_noticeboard.png",s.x-145f,s.y+35f,.86f);
-    drawFoot(canvas,world,"street/OBJ_bench.png",s.x+145f,s.y+40f,.88f);
-    drawFoot(canvas,world,"market/OBJ_stall_01.png",s.x-225f,s.y+205f,.78f);
-    drawFoot(canvas,world,"market/OBJ_cart.png",s.x-80f,s.y+225f,.82f);
-    drawFoot(canvas,world,"street/OBJ_lamp_01.png",s.x+205f,s.y+25f,.88f);
-    drawFoot(canvas,world,"street/OBJ_signpost.png",s.x-35f,s.y-55f,.88f);
-
-    // Fences frame the slice without turning it into a corridor.
-    for(int i=0;i<4;i++){
-      drawFoot(canvas,world,"structures/fences/OBJ_fence_01.png",s.x-390f+i*72f,s.y+245f,.82f);
-      drawFoot(canvas,world,"structures/fences/OBJ_fence_02.png",s.x+245f+i*72f,s.y+300f,.82f);
-    }
-  }
-
-  private static String terrainFor(AdaptedMillesIsometricTileLayer.TileKind kind){
-    switch(kind){
-      case ROAD:
-      case PLAZA:
-      case GATE:return "terrain/OBJ_stone_01.png";
-      default:return "terrain/OBJ_ground_01.png";
-    }
+    canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
+    for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles())drawTerrainTile(canvas,world,terrainFor(t),t.centerX,t.centerY);
+    drawFoot(canvas,world,"street/OBJ_well.png",AdaptedMillesIsometricTileLayer.PLAZA_CENTER_X,AdaptedMillesIsometricTileLayer.PLAZA_CENTER_Y,.50f);
+    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1320f,455f,.42f);
+    drawFoot(canvas,world,"street/OBJ_noticeboard.png",690f,720f,.38f);
+    drawFoot(canvas,world,"street/OBJ_bench.png",850f,650f,.38f);
+    drawFoot(canvas,world,"street/OBJ_lamp_01.png",720f,535f,.42f);
+    drawFoot(canvas,world,"street/OBJ_lamp_02.png",830f,535f,.42f);
   }
 
   /**
-   * Terrain source crops keep their original extraction dimensions, but their runtime footprint is
-   * one logical isometric cell. Keeping those concerns separate makes the visible ground cadence
-   * agree with the 64x32 navigation grid instead of inheriting arbitrary source-crop dimensions.
+   * Device-verified visual contract:
+   * GROUND -> OBJ_ground_02 (green flower grass)
+   * ROAD/GATE -> OBJ_ground_01 (brown dirt)
+   * PLAZA -> OBJ_stone_01
+   * Variants stay disabled so the checkerboard regression cannot return.
    */
-  private void drawGround(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){
-    Bitmap b=bitmap(path);if(b==null)return;
-    WorldCameraTransform.Point p=world.worldToScreen(wx,wy);
-    float w=LOGICAL_GROUND_WIDTH*scale,h=LOGICAL_GROUND_HEIGHT*scale;
-    RectF dst=new RectF(Math.round(p.x-w*.5f),Math.round(p.y-h*.5f),Math.round(p.x+w*.5f),Math.round(p.y+h*.5f));
-    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;
-    c.drawBitmap(b,null,dst,pixel);
+  private static String terrainFor(AdaptedMillesIsometricTileLayer.Tile t){
+    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.ROAD||t.kind==AdaptedMillesIsometricTileLayer.TileKind.GATE)return DIRT_TILE;
+    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)return PLAZA_TILE;
+    return GRASS_TILE;
   }
 
-  /** Anchor production sprites by their bottom-center ground contact. */
-  private void drawFoot(Canvas c,WorldRuntimeAdapter world,String path,float wx,float wy,float scale){
-    Bitmap b=bitmap(path);if(b==null)return;
-    WorldCameraTransform.Point p=world.worldToScreen(wx,wy);
-    float w=b.getWidth()*scale,h=b.getHeight()*scale;
-    RectF dst=new RectF(Math.round(p.x-w*.5f),Math.round(p.y-h),Math.round(p.x+w*.5f),Math.round(p.y));
-    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;
-    c.drawBitmap(b,null,dst,pixel);
+  private void drawTerrainTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){
+    Bitmap b=bitmap(path);if(b==null)return;Rect src=opaqueBounds(path,b);if(src==null)return;
+    WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float hw=TILE_W*.5f+SEAM_GUARD,hh=TILE_H*.5f+SEAM_GUARD;
+    RectF dst=new RectF((float)Math.floor(p.x-hw),(float)Math.floor(p.y-hh),(float)Math.ceil(p.x+hw),(float)Math.ceil(p.y+hh));
+    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,src,dst,pixelPaint);
   }
-
-  private Bitmap bitmap(String path){
-    if(cache.containsKey(path))return cache.get(path);
-    Bitmap b=null;
-    if(assets!=null){try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}}
-    cache.put(path,b);return b;
-  }
-
-  private AssetManager findAssets(){
-    try{
-      Class<?> at=Class.forName("android.app.ActivityThread");
-      Method m=at.getDeclaredMethod("currentApplication");
-      Object app=m.invoke(null);
-      return app instanceof Context?((Context)app).getAssets():null;
-    }catch(Throwable ignored){return null;}
-  }
+  private Rect opaqueBounds(String path,Bitmap b){if(opaqueBoundsCache.containsKey(path))return opaqueBoundsCache.get(path);int minX=b.getWidth(),minY=b.getHeight(),maxX=-1,maxY=-1;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if((b.getPixel(x,y)>>>24)!=0){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}Rect r=maxX>=minX?new Rect(minX,minY,maxX+1,maxY+1):null;opaqueBoundsCache.put(path,r);return r;}
+  private void drawFoot(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy,float scale){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float ww=b.getWidth()*scale,hh=b.getHeight()*scale;RectF d=new RectF(Math.round(p.x-ww*.5f),Math.round(p.y-hh),Math.round(p.x+ww*.5f),Math.round(p.y));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}
+  private Bitmap bitmap(String path){if(bitmapCache.containsKey(path))return bitmapCache.get(path);Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}bitmapCache.put(path,b);return b;}
+  private static AssetManager findAssets(){try{Class<?> c=Class.forName("android.app.ActivityThread");Method m=c.getDeclaredMethod("currentApplication");Object a=m.invoke(null);return a instanceof Context?((Context)a).getAssets():null;}catch(Throwable ignored){return null;}}
+  private static void configureFill(Paint p,int color){p.setAntiAlias(false);p.setDither(false);p.setColor(color);p.setStyle(Paint.Style.FILL);}
 }
