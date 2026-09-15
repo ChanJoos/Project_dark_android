@@ -3,14 +3,14 @@ project:
   name: PROJECT DARK
   product: "Legend of Darkness-inspired Android mobile game"
   phase: production_vertical_slice
-  state_policy: "Single autonomous-development control plane. Update only repository or user/device-supported facts."
+  state_policy: "Single autonomous-development control plane. Every active scheduled developer/verifier must read this state before selecting work. Device evidence findings must remain actionable until their own acceptance criteria are satisfied or explicitly superseded."
   repository: ChanJoos/Project_dark_android
   default_branch: main
 
 acceptance_states:
   implementation: [NOT_WIRED, PARTIAL, IMPLEMENTED, INTEGRATED, BUILD_VERIFIED]
   observable: [UNVERIFIED, DEVICE_VERIFIED, VISUAL_ACCEPTED, FAIL]
-  queue: [DISCOVERED, READY, IN_PROGRESS, VERIFICATION_PENDING, PENDING_DEVICE, ACCEPTED, BLOCKED]
+  queue: [DISCOVERED, READY, IN_DEVELOPMENT, IMPLEMENTED, VERIFICATION_PENDING, FAILED, BLOCKED, BUILD_VERIFIED, DEVICE_PENDING, DEVICE_VERIFIED, VISUAL_PENDING, ACCEPTED, SUPERSEDED]
 
 canonical_indexes:
   design: [design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, "design/PLAYTEST_CANON_*"]
@@ -34,6 +34,9 @@ resource_registry:
     runtime_roots: [app/src/main/java/com/projectdark/mobile/]
   monster:
     master_files: [master/data/Monster_Master.csv, master/data/Monster_Sources.csv, master/data/Monster_Research_Audit.csv, master/data/Asset_Monster_Mapping.csv]
+  ux:
+    master_files: [master/data/Asset_UI_Mapping.csv]
+    runtime_roots: [app/src/main/java/com/projectdark/mobile/]
 
 references:
   DEVICE_20260915_214834:
@@ -42,15 +45,89 @@ references:
     artifact_head: 4e24b94e96ab15f16170196518934ccf3b532d51
     device_verified: true
     visual_accepted: false
+    role: "Whole-APK device regression evidence, not attack-animation-only evidence."
+    observed_hp_sequence: [76, 48, 28]
     findings:
-      - "P0 COMBAT_RECIPROCITY: monster can damage player from relationships in which player cannot legally hit the monster; player and monster melee legality/facing are not one reciprocal canonical tile contract."
-      - "P0 ATTACK_BODY_ANIMATION: visible player attack does not present a temporal BODY attack sequence; character presentation remains effectively static while the weapon attacks."
-      - "P0 WEAPON_BODY_ATTACHMENT: mokdo visibly separates from the hand/body and attacks as a floating independent sprite."
-      - "P1 WALK_WEAPON_ATTACHMENT: major walk twisting is improved but residual hand/weapon alignment error remains."
-      - "P0 ATTACK_SCALE_CONTINUITY: previous attack-body implementation changed apparent character size/anchor; current removal of body attack does not prove that regression fixed. Must verify scale and foot anchor before acceptance."
-      - "P1 HIT_PRESENTATION: HP changes occur without sufficiently readable target contact/reaction presentation."
-      - "P1 MILLES_COMPOSITION: grass/dirt semantics improved, but paths remain overly regular and large areas read sparse relative to the intended coherent medieval village."
-      - "P1 MONSTER_VISUAL: monster presentation remains placeholder/adapted rather than accepted authored content."
+      - id: D214834_PLAYER_TO_MONSTER_ATTACK
+        area: "player -> monster attack"
+        status: FAIL
+        severity: P0
+        observation: "Player cannot reliably attack a monster from relationships where combat appears engaged; player melee legality is not aligned with the opponent relationship."
+      - id: D214834_MONSTER_TO_PLAYER_ATTACK
+        area: "monster -> player attack"
+        status: FAIL
+        severity: P0
+        observation: "Monster can damage the player while the player cannot legally reciprocate from the corresponding relationship."
+      - id: D214834_MONSTER_MOVEMENT
+        area: "monster movement"
+        status: PARTIAL
+        severity: P0
+        observation: "Monster movement is closer to four diagonal directions, but tile-center occupancy and attack position are not proven to be one canonical contract."
+      - id: D214834_ATTACK_BODY
+        area: "player attack BODY"
+        status: FAIL
+        severity: P0
+        observation: "No meaningful temporal player BODY attack is visible."
+      - id: D214834_ATTACK_WEAPON
+        area: "mokdo attack"
+        status: FAIL
+        severity: P0
+        observation: "Weapon separates from BODY/hand and attacks as a floating independent sprite."
+      - id: D214834_WALK_WEAPON
+        area: "walk mokdo attachment"
+        status: PARTIAL
+        severity: P1
+        observation: "Large twisting regression is mostly improved, but residual direction/frame hand-to-weapon misalignment remains."
+      - id: D214834_ATTACK_SCALE
+        area: "character scale continuity"
+        status: UNVERIFIED
+        severity: P0
+        observation: "Current build removed meaningful BODY attack, so the previous regression where attack BODY changed apparent character size/anchor cannot be considered fixed."
+      - id: D214834_HIT_PRESENTATION
+        area: "hit presentation"
+        status: FAIL
+        severity: P1
+        observation: "HP decreases, including observed 76 -> 48 -> 28, without sufficiently readable target contact/reaction."
+      - id: D214834_COMBAT_READABILITY
+        area: "combat readability"
+        status: FAIL
+        severity: P1
+        observation: "Character motion alone does not clearly communicate who attacked whom and when contact occurred."
+      - id: D214834_MOVE_COMBAT_LINK
+        area: "movement/combat linkage"
+        status: FAIL
+        severity: P0
+        observation: "Observed behavior is consistent with movement target/tile occupancy and combat adjacency/attack snapshot not sharing one authoritative logical-coordinate pipeline."
+      - id: D214834_MILLES_GROUND
+        area: "Milles ground semantics"
+        status: PARTIAL_PASS
+        severity: P2
+        observation: "Grass/dirt semantic mapping is now materially improved and must not regress."
+      - id: D214834_MILLES_PATHS
+        area: "Milles paths"
+        status: FAIL_INITIAL
+        severity: P1
+        observation: "Paths remain broad/regular diagonal bands and do not yet read as natural lived-in village circulation."
+      - id: D214834_MILLES_COMPOSITION
+        area: "Milles spatial composition"
+        status: FAIL_INITIAL
+        severity: P1
+        observation: "Well/church/bench/sign exist, but large flower-grass empty areas remain; plaza -> residential -> commerce -> church -> waterside -> gate spatial story is not yet mature."
+      - id: D214834_UI_WORLD_BALANCE
+        area: "HUD/world balance"
+        status: PARTIAL
+        severity: P2
+        observation: "Left quest, bottom chat and right skill controls occupy substantial screen area; HUD currently competes strongly with world readability."
+      - id: D214834_MONSTER_VISUAL
+        area: "monster visual"
+        status: FAIL
+        severity: P1
+        observation: "Monster remains a temporary/simple adapted presentation rather than accepted authored game content."
+    pipeline_diagnosis:
+      status: FAILED
+      severity: P0
+      contract: "logical coordinate -> target -> canonical tile occupancy/adjacency -> reciprocal legality/facing snapshot -> attack state/animation -> contact/hit -> target reaction"
+      rule: "Do not repair only the final animation symptom while upstream coordinate/adjacency/snapshot contracts remain inconsistent. Do not declare the pipeline fixed from static code presence alone."
 
 scenes:
   SCENE_FIELD_COMBAT:
@@ -59,42 +136,42 @@ scenes:
     references: [DEVICE_20260915_214834]
     implementation: PARTIAL
     observable: FAIL
-    gaps: [COMBAT_CONTRACT_002, ATTACK_PRESENTATION_002, MONSTER_RUNTIME_001]
+    gaps: [COMBAT_PIPELINE_003, ATTACK_PRESENTATION_002, WEAPON_RIG_001, HIT_READABILITY_001, MONSTER_RUNTIME_001]
   SCENE_MILLES_VILLAGE:
     title: Milles village traversal
-    resources: [world_map, character_visual]
+    resources: [world_map, character_visual, ux]
     references: [DEVICE_20260915_214834]
     implementation: BUILD_VERIFIED
     observable: FAIL
-    gaps: [WORLD_MILLES_001]
+    gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
-  COMBAT_CONTRACT_002:
-    title: "Make player and monster melee tile legality reciprocal"
-    system: combat
+  COMBAT_PIPELINE_003:
+    title: "Unify movement, target, reciprocal tile adjacency, attack snapshot and hit resolution"
+    system: combat_cross_runtime
     scenes: [SCENE_FIELD_COMBAT]
     priority: P0
     queue_state: READY
     claim: null
-    evidence: [DEVICE_20260915_214834]
-    required_sources:
-      - master/data/Asset_Animation_Semantics.csv
-      - app/src/main/java/com/projectdark/mobile/
-    gap: "Exact device evidence shows asymmetric melee reach/legality. Movement, target adjacency, facing, attack trigger and hit resolution must derive from the same canonical logical tile relationship for both actors."
+    evidence: [D214834_PLAYER_TO_MONSTER_ATTACK, D214834_MONSTER_TO_PLAYER_ATTACK, D214834_MONSTER_MOVEMENT, D214834_MOVE_COMBAT_LINK]
+    required_sources: [design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, master/MASTER_MANIFEST.md, app/src/main/java/com/projectdark/mobile/]
+    gap: "The device build proves a non-reciprocal combat relationship. Treat this as an upstream pipeline defect, not only an attack-button symptom."
     acceptance:
-      - "For every legal adjacent player/monster tile pair, player->monster and monster->player legality are reciprocal under the same 64x32 logical tile relation."
-      - "No Euclidean/radius or independent 8-direction attack rule bypasses canonical adjacency."
-      - "Facing snapshot and hit resolution consume the same relationship used for legality."
-      - "Static/runtime audits cover all four diagonal adjacent relations and reciprocal directions."
+      - "Player and monster positions used by combat come from the same canonical logical tile-center representation used by movement."
+      - "All four legal 64x32 diagonal adjacent relations are reciprocal: if A can melee B, B has the reciprocal relation to A under the same snapshot."
+      - "No radius/Euclidean/8-direction bypass can grant monster attack where player canonical adjacency denies the corresponding relationship."
+      - "Target selection, legality, facing, attack snapshot, animation direction and hit resolution consume the same immutable relationship for an attack."
+      - "Automated audit covers four diagonal relations, reciprocal directions, illegal non-adjacent relations and movement->attack transition."
+      - "Exact-head build verification is not device acceptance; fresh APK evidence is required before DEVICE_VERIFIED."
 
   ATTACK_PRESENTATION_002:
-    title: "Restore authored BODY+robe+weapon attack presentation without scale or anchor regression"
+    title: "Restore authored BODY+robe+weapon attack without scale/anchor regression"
     system: character_visual
     scenes: [SCENE_FIELD_COMBAT]
     priority: P0
     queue_state: READY
     claim: null
-    evidence: [DEVICE_20260915_214834]
+    evidence: [D214834_ATTACK_BODY, D214834_ATTACK_WEAPON, D214834_ATTACK_SCALE]
     required_sources:
       - master/data/Asset_Animation_Frame_Master.csv
       - master/data/Asset_Animation_Semantics.csv
@@ -103,49 +180,108 @@ work_packages:
       - app/src/main/java/com/projectdark/mobile/CharacterSemanticRig.java
       - app/src/main/java/com/projectdark/mobile/CharacterSemanticRigEvidenceProbe.java
       - app/src/main/java/com/projectdark/mobile/CharacterVisualEvidenceProbe.java
-    gap: "Two-day regression loop: authored player attack BODY was previously shown at mismatched apparent scale/anchor; subsequent fix removed visible BODY attack and left weapon-only motion. Current device evidence shows floating mokdo and no meaningful player BODY attack. Do not solve by deleting BODY attack or by moving weapon alone."
+    failure_history:
+      - "Attempt 1: BODY attack presentation was introduced but apparent attack-image scale/anchor did not match the normal character, producing an unnatural multi-pose transition."
+      - "Attempt 2: while correcting that regression, meaningful BODY attack was removed/suppressed and weapon-only motion remained."
+      - "Current device result: character remains effectively static while mokdo attacks/floats independently. This is not progress past the root problem."
     investigation_gate:
-      - "Before renderer changes, audit all authored attack BODY/robe/weapon resources and Master mappings actually present. Distinguish direction variants from temporal frames; do not infer action02_0..3 are temporal merely because four files exist."
-      - "Record source canvas size, opaque bounds, foot anchor, torso/hand semantic anchors and intended runtime scale for every consumed direction/frame."
-      - "Resolve whether a true authored temporal BODY attack sequence exists. If source sequence is incomplete, record UNRESOLVED_SOURCE_SEQUENCE rather than fabricate frames."
+      - "Before renderer edits, enumerate and audit every authored attack BODY/robe/weapon resource and Master mapping actually present."
+      - "Prove which files are direction variants and which are genuine temporal frames. Never count action02_0..3 as temporal merely because four resources exist."
+      - "For each consumed pose/frame record source canvas dimensions, opaque bounds, foot anchor, torso/dominant-hand semantic anchors and runtime scale."
+      - "Compare idle/walk and attack apparent body dimensions/foot placement before choosing scale/translation."
+      - "If genuine source temporal sequence is incomplete, record UNRESOLVED_SOURCE_SEQUENCE instead of fabricating frames or hiding BODY attack."
     acceptance:
-      - "Attack visibly changes the player's BODY pose; weapon-only animation is an automatic FAIL."
-      - "At least two genuinely distinct authored temporal BODY poses must be observed if such source frames exist; direction variants do not count as temporal poses."
-      - "Idle/walk->attack->idle preserves apparent character scale and world foot anchor with no pop, jump or size change."
-      - "Robe follows the same BODY attack state/anchor contract."
-      - "Mokdo handle remains attached to the dominant-hand semantic anchor throughout startup/contact/recovery; floating weapon is FAIL."
-      - "No workaround may satisfy acceptance by suppressing the authored BODY attack."
-      - "Evidence probe must validate the same runtime contract, not merely resource loadability."
+      - "Attack visibly changes player BODY pose; weapon-only attack is automatic FAIL."
+      - "If genuine authored temporal BODY frames exist, at least two distinct temporal poses must be observed in runtime; direction variants do not count."
+      - "Idle/walk -> attack -> idle preserves apparent body scale and world foot anchor with no size pop or position jump."
+      - "Robe consumes the same attack state and BODY anchor contract."
+      - "Mokdo handle remains attached to the dominant-hand semantic anchor throughout startup/contact/recovery."
+      - "Suppressing/removing BODY attack cannot satisfy acceptance."
+      - "Evidence probes must validate semantic/scale/anchor/runtime-state continuity, not only bitmap loadability."
+
+  WEAPON_RIG_001:
+    title: "Finish weapon-to-hand attachment across walk and attack"
+    system: character_visual
+    scenes: [SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: READY
+    claim: null
+    evidence: [D214834_ATTACK_WEAPON, D214834_WALK_WEAPON]
+    required_sources: [master/data/Asset_Animation_Semantics.csv, master/data/Asset_Animation_Frame_Master.csv, app/src/main/java/com/projectdark/mobile/CharacterSemanticRig.java, app/src/main/java/com/projectdark/mobile/CharacterRenderer.java]
+    acceptance:
+      - "No visible floating weapon during attack."
+      - "Walk direction/frame changes preserve handle-to-hand attachment without twisting/pop beyond source-authored motion."
+      - "Weapon rig consumes BODY semantic anchor rather than independent screen-space magic offsets as primary truth."
+
+  HIT_READABILITY_001:
+    title: "Make attack contact and target reaction readable"
+    system: combat_presentation
+    scenes: [SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: READY
+    claim: null
+    evidence: [D214834_HIT_PRESENTATION, D214834_COMBAT_READABILITY]
+    required_sources: [design/DESIGN_CONSTITUTION.md, master/data/Asset_Animation_Semantics.csv, app/src/main/java/com/projectdark/mobile/]
+    acceptance:
+      - "Damage/HP mutation occurs at the same contact phase communicated by attack presentation."
+      - "Target reaction/contact feedback makes attacker, target and contact timing readable without relying only on HP numbers."
+      - "Do not fabricate unsupported source animation; use existing authored events/assets first and mark adapted presentation when necessary."
 
   WORLD_MILLES_001:
-    title: "Continue coherent Milles village composition after current combat blockers"
+    title: "Advance Milles from correct terrain semantics to coherent lived-in village composition"
     system: world_map
     scenes: [SCENE_MILLES_VILLAGE]
     priority: P1
     queue_state: READY
     claim: null
-    evidence: [DEVICE_20260915_214834]
-    required_sources: [docs/MILLES_WORLD_DIRECTION.md, master/data/Asset_Map_Mapping.csv, master/data/Map_Instance_Master.csv]
-    gap: "Terrain semantics are improved, but current device video still reads as overly regular paths and sparse flower-grass expanses rather than a mature connected medieval village."
+    evidence: [D214834_MILLES_GROUND, D214834_MILLES_PATHS, D214834_MILLES_COMPOSITION]
+    required_sources: [docs/MILLES_WORLD_DIRECTION.md, master/data/Asset_Map_Mapping.csv, master/data/Map_Instance_Master.csv, assets/milles/production/terrain/, assets/milles/production/buildings/, assets/milles/production/landmarks/]
+    preserve:
+      - "Current grass/dirt semantic correction is PARTIAL PASS and must not regress."
+    acceptance:
+      - "Paths read as intentional village circulation rather than repeated broad diagonal bands."
+      - "Plaza, residential, commerce/equipment, church/quiet, waterside and gate/outskirts form one coherent spatial story with breathing room."
+      - "Large empty flower-grass expanses are reduced through purposeful district composition, vegetation/props or intentional open space, not random clutter."
+      - "World work must stop at a practical acceptance gate and advance to other game systems rather than endless Milles polish."
 
   MONSTER_RUNTIME_001:
-    title: "Advance authored monster runtime after combat contract is reciprocal"
+    title: "Replace temporary monster presentation through authored monster path"
     system: monster
     scenes: [SCENE_FIELD_COMBAT]
     priority: P1
     queue_state: READY
     claim: null
-    evidence: [DEVICE_20260915_214834]
-    required_sources: [master/data/Monster_Master.csv, master/data/Monster_Sources.csv, master/data/Monster_Research_Audit.csv, master/data/Asset_Monster_Mapping.csv]
+    evidence: [D214834_MONSTER_VISUAL]
+    required_sources: [master/data/Monster_Master.csv, master/data/Monster_Sources.csv, master/data/Monster_Research_Audit.csv, master/data/Asset_Monster_Mapping.csv, master/data/Spawn_Master.csv]
+    acceptance:
+      - "Audit existing authored/master monster mappings before creating substitute visuals."
+      - "Accepted monster presentation must no longer read as the temporary simple placeholder seen in DEVICE_20260915_214834."
+
+  HUD_WORLD_BALANCE_001:
+    title: "Reduce HUD competition with world while preserving controls"
+    system: ux
+    scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
+    priority: P2
+    queue_state: READY
+    claim: null
+    evidence: [D214834_UI_WORLD_BALANCE]
+    required_sources: [design/DESIGN_CONSTITUTION.md, master/data/Asset_UI_Mapping.csv, app/src/main/java/com/projectdark/mobile/GameView.java]
+    acceptance:
+      - "Quest/chat/skill/control presentation remains usable but no longer visually dominates the playable world."
+      - "Touch routing and existing functional controls must not regress while visual hierarchy/occupied area is improved."
 
 agent_selection_policy:
-  - "Re-sync before selection and read the latest device evidence and failure reasons."
-  - "P0 reciprocal combat legality and authored attack presentation are independent blockers; do not let micro-tuning of one starve the other."
-  - "For ATTACK_PRESENTATION_002 the investigation gate is mandatory before renderer changes."
-  - "Do not repeatedly polish a work item after its acceptance gate is satisfied; advance to the next dependency-valid READY package."
-  - "Build pass is not device or visual acceptance."
+  - "Every scheduled Dev/Verify run MUST load current PROJECT_STATE and DEVICE_20260915_214834 before selecting or verifying work."
+  - "Every finding in DEVICE_20260915_214834 is mapped to a work package or explicit preserve constraint; no finding may silently disappear because another P0 is being worked."
+  - "Select by severity and dependency. COMBAT_PIPELINE_003 is upstream P0; ATTACK_PRESENTATION_002 is a parallel P0 presentation blocker. Neither may be treated as the sole project task."
+  - "ATTACK_PRESENTATION_002 investigation_gate is mandatory before renderer modification to prevent repeating the two-day scale->BODY-removal failure loop."
+  - "After a package reaches its acceptance gate, update its status/evidence and advance to the next highest-value dependency-valid READY package. Do not micro-polish an accepted item."
+  - "Verifier must cross-check the package against its referenced device finding IDs; a code/test pass that does not satisfy the finding is FAILED/VERIFICATION_PENDING, not ACCEPTED."
+  - "Build pass != device pass != visual acceptance. Fresh exact-APK device evidence is required to close device-visible failures."
 
 status_summary:
   visual_acceptance: FAIL
-  known_device_evidence: DEVICE_20260915_214834
-  next_global_rule: "Consume the 21:48 device regression as current truth. Repair reciprocal melee contract and attack BODY/robe/weapon presentation under their explicit acceptance gates, then advance to Milles composition/monster content rather than remaining in attack micro-tuning."
+  latest_device_evidence: DEVICE_20260915_214834
+  unresolved_device_findings: [D214834_PLAYER_TO_MONSTER_ATTACK, D214834_MONSTER_TO_PLAYER_ATTACK, D214834_MONSTER_MOVEMENT, D214834_ATTACK_BODY, D214834_ATTACK_WEAPON, D214834_WALK_WEAPON, D214834_ATTACK_SCALE, D214834_HIT_PRESENTATION, D214834_COMBAT_READABILITY, D214834_MOVE_COMBAT_LINK, D214834_MILLES_PATHS, D214834_MILLES_COMPOSITION, D214834_UI_WORLD_BALANCE, D214834_MONSTER_VISUAL]
+  preserve_findings: [D214834_MILLES_GROUND]
+  next_global_rule: "Treat the full 21:48 device matrix as current project truth. Repair upstream combat reciprocity/pipeline and authored attack presentation under separate gates, then consume remaining P1/P2 findings without allowing any one defect to monopolize development. Preserve the corrected Milles grass/dirt semantics."
