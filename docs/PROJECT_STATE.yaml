@@ -3,29 +3,18 @@ project:
   name: PROJECT DARK
   product: "Legend of Darkness-inspired Android mobile game"
   phase: production_vertical_slice
-  state_quality: bootstrap_needs_incremental_enrichment
-  state_policy: "This file is the single autonomous-development control plane for resources, scenes, evidence, work packages, claims, and acceptance. Update only facts supported by repository or user/device evidence."
+  state_policy: "Single autonomous-development control plane. Update only repository or user/device-supported facts."
   repository: ChanJoos/Project_dark_android
   default_branch: main
-  integration_line: director/milles-grass-first
-
-claim_policy:
-  mode: lease
-  default_minutes: 75
-  rules:
-    - "Do not select a READY item with a valid unexpired claim held by another agent."
-    - "Before claiming, re-sync because another scheduled agent may have changed the state since this run started."
-    - "Release the claim when moving to PENDING_DEVICE, ACCEPTED, BLOCKED, or explicit handoff."
 
 acceptance_states:
   implementation: [NOT_WIRED, PARTIAL, IMPLEMENTED, INTEGRATED, BUILD_VERIFIED]
   observable: [UNVERIFIED, DEVICE_VERIFIED, VISUAL_ACCEPTED, FAIL]
-  queue: [DISCOVERED, READY, IN_PROGRESS, PENDING_DEVICE, ACCEPTED, BLOCKED]
+  queue: [DISCOVERED, READY, IN_PROGRESS, VERIFICATION_PENDING, PENDING_DEVICE, ACCEPTED, BLOCKED]
 
 canonical_indexes:
   design: [design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, "design/PLAYTEST_CANON_*"]
   master: [master/MASTER_MANIFEST.md, master/CONVERSION_MANIFEST.json, master/VALIDATION_REPORT.json]
-  reference: [docs/REFERENCE_GROUND_TRUTH.md, docs/reference/]
   direction: [docs/MILLES_WORLD_DIRECTION.md]
   autonomy:
     constitution: docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md
@@ -37,193 +26,126 @@ resource_registry:
     master_globs: [master/data/Map_*Master.csv, master/data/Map_Instance_Master.csv, master/data/Spawn_Master.csv, master/data/Asset_Map_Mapping.csv]
     direction_files: [docs/MILLES_WORLD_DIRECTION.md]
     runtime_roots: [app/src/main/java/com/projectdark/mobile/world/, app/src/main/java/com/projectdark/mobile/]
-    notes: "Existing Milles assets are candidate inputs, not automatically final assets. Audit each needed asset and REUSE/REWORK/REMAKE/NEW as the coherent village design requires."
   character_visual:
     master_files: [master/data/Asset_Character_Mapping.csv, master/data/Asset_Animation_Frame_Master.csv, master/data/Asset_Animation_Semantics.csv]
     runtime_roots: [app/src/main/java/com/projectdark/mobile/, app/src/main/assets/]
   combat:
+    master_files: [master/data/Asset_Animation_Frame_Master.csv, master/data/Asset_Animation_Semantics.csv, master/data/Asset_Character_Mapping.csv]
     runtime_roots: [app/src/main/java/com/projectdark/mobile/]
   monster:
     master_files: [master/data/Monster_Master.csv, master/data/Monster_Sources.csv, master/data/Monster_Research_Audit.csv, master/data/Asset_Monster_Mapping.csv]
-  item_equipment:
-    master_globs: [master/data/Item_Master.csv, master/data/*Equipment*csv, master/data/*Weapon*csv]
-  skill_magic:
-    master_globs: [master/data/Skill_*csv, master/data/*Magic*csv]
-  npc_quest:
-    master_globs: [master/data/*NPC*csv, master/data/*Quest*csv]
-  progression_reward:
-    master_files: [master/data/Progression_Master.csv, master/data/Monster_Master.csv, master/data/Item_Master.csv]
-  ux_save_system:
-    master_globs: [master/data/Asset_UI_Mapping.csv, master/data/AUTO_Rules.csv]
 
 references:
-  REF_MILLES_VIDEO:
-    type: user_reference_video
-    repository_pointer: docs/REFERENCE_GROUND_TRUTH.md
-    detailed_analysis: docs/reference/MILLES_FRAME_ANALYSIS.md
-    repository_status: "UNRESOLVED: both pointer files are absent from the current repository; do not claim they were consumed. Current runtime adaptation uses durable user-approved world direction plus recorded device evidence and existing master/source indexes."
-  REF_COMBAT_VIDEO:
-    type: user_reference_video
-    repository_pointer: docs/REFERENCE_GROUND_TRUTH.md
-    detailed_analysis: docs/reference/COMBAT_FRAME_ANALYSIS.md
-  DEVICE_20260915_054522:
+  DEVICE_20260915_214834:
     type: user_device_video
-    filename: Screen_Recording_20260915_054522.mp4
-    artifact_head: 063f7876846bb22b3726da66a551c6c67f4ebb36
+    filename: Screen_Recording_20260915_214834.mp4
+    artifact_head: 4e24b94e96ab15f16170196518934ccf3b532d51
     device_verified: true
     visual_accepted: false
     findings:
-      - "Milles/world view is dominated by a repetitive brown/orange diamond test-board surface and does not match the grass-first reference composition."
-      - "Player/monster combat runs, but combat presentation remains partial."
-      - "Monster presentation remains adapted/placeholder-like in this tested build."
+      - "P0 COMBAT_RECIPROCITY: monster can damage player from relationships in which player cannot legally hit the monster; player and monster melee legality/facing are not one reciprocal canonical tile contract."
+      - "P0 ATTACK_BODY_ANIMATION: visible player attack does not present a temporal BODY attack sequence; character presentation remains effectively static while the weapon attacks."
+      - "P0 WEAPON_BODY_ATTACHMENT: mokdo visibly separates from the hand/body and attacks as a floating independent sprite."
+      - "P1 WALK_WEAPON_ATTACHMENT: major walk twisting is improved but residual hand/weapon alignment error remains."
+      - "P0 ATTACK_SCALE_CONTINUITY: previous attack-body implementation changed apparent character size/anchor; current removal of body attack does not prove that regression fixed. Must verify scale and foot anchor before acceptance."
+      - "P1 HIT_PRESENTATION: HP changes occur without sufficiently readable target contact/reaction presentation."
+      - "P1 MILLES_COMPOSITION: grass/dirt semantics improved, but paths remain overly regular and large areas read sparse relative to the intended coherent medieval village."
+      - "P1 MONSTER_VISUAL: monster presentation remains placeholder/adapted rather than accepted authored content."
 
 scenes:
+  SCENE_FIELD_COMBAT:
+    title: Field combat loop
+    resources: [character_visual, combat, monster]
+    references: [DEVICE_20260915_214834]
+    implementation: PARTIAL
+    observable: FAIL
+    gaps: [COMBAT_CONTRACT_002, ATTACK_PRESENTATION_002, MONSTER_RUNTIME_001]
   SCENE_MILLES_VILLAGE:
     title: Milles village traversal
-    experience: "Traverse one coherent grass-first 2.5D medieval village; unsupported geography is deliberately [ADAPTED] into the same settlement rather than left blank or filled with arbitrary asset clusters."
-    resources: [world_map, character_visual, ux_save_system]
-    references: [REF_MILLES_VIDEO, DEVICE_20260915_054522]
-    direction: docs/MILLES_WORLD_DIRECTION.md
+    resources: [world_map, character_visual]
+    references: [DEVICE_20260915_214834]
     implementation: BUILD_VERIFIED
     observable: FAIL
     gaps: [WORLD_MILLES_001]
-  SCENE_FIELD_COMBAT:
-    title: Field combat loop
-    resources: [character_visual, combat, monster, progression_reward, ux_save_system]
-    references: [REF_COMBAT_VIDEO, DEVICE_20260915_054522]
-    implementation: PARTIAL
-    observable: FAIL
-    gaps: [COMBAT_PRESENTATION_001, MONSTER_RUNTIME_001]
-  SCENE_EQUIPMENT_CHANGE:
-    title: Equipment changes reflected in gameplay
-    resources: [item_equipment, character_visual, ux_save_system]
-    implementation: PARTIAL
-    observable: UNVERIFIED
-    gaps: [CONTENT_LINKAGE_001]
-  SCENE_SKILL_MAGIC:
-    title: Skill and magic use
-    resources: [skill_magic, combat, character_visual, ux_save_system]
-    implementation: PARTIAL
-    observable: UNVERIFIED
-    gaps: [CONTENT_LINKAGE_001]
-  SCENE_NPC_SHOP_QUEST:
-    title: NPC interaction, shop and quest loop
-    resources: [npc_quest, item_equipment, progression_reward, world_map, ux_save_system]
-    implementation: PARTIAL
-    observable: UNVERIFIED
-    gaps: [CONTENT_LINKAGE_001]
-  SCENE_PROGRESSION_SAVE:
-    title: Persistent progression loop
-    resources: [progression_reward, item_equipment, ux_save_system]
-    implementation: PARTIAL
-    observable: UNVERIFIED
-    gaps: [CONTENT_LINKAGE_001]
 
 work_packages:
-  WORLD_MILLES_001:
-    title: "Rebuild Milles as a coherent reference-informed medieval village from the ground up"
-    system: world_map
-    scenes: [SCENE_MILLES_VILLAGE]
-    priority: P0
-    queue_state: PENDING_DEVICE
-    claim: null
-    evidence: [DEVICE_20260915_054522, REF_MILLES_VIDEO]
-    gap: "The prior runtime was a spawn-centered asset cluster/test-board, not a coherent village. Full original geometry is unavailable, so unsupported spaces must be deliberately [ADAPTED] under the governing world direction."
-    required_sources:
-      - docs/MILLES_WORLD_DIRECTION.md
-      - master/MASTER_MANIFEST.md
-      - master/data/Asset_Map_Mapping.csv
-      - master/data/Map_Instance_Master.csv
-      - master/data/Spawn_Master.csv
-      - app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapLayer.java
-      - app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java
-      - app/src/main/java/com/projectdark/mobile/WorldDef.java
-      - app/build.gradle
-      - assets/milles/PROJECT_DARK_ASSET_REGISTRY.json
-      - assets/milles/QA_REPORT.txt
-      - assets/milles/QA_ADDENDUM_CHURCH_LAKE.json
-      - assets/milles/production/buildings/
-      - assets/milles/production/landmarks/
-      - assets/milles/production/terrain/
-    unavailable_reference_inputs:
-      - "docs/REFERENCE_GROUND_TRUTH.md is referenced by old state but absent from current repository."
-      - "docs/reference/MILLES_FRAME_ANALYSIS.md is referenced by old state but absent from current repository."
-    source_resolution:
-      - "Map_Instance_Master defines MAP_MILLES as Town / original-tile-coordinate hub / NPC-service centered; it does not provide recoverable road, water, or landmark-footprint geometry."
-      - "Spawn_Master contains hunting-area spawns only and no MAP_MILLES town spawn geometry."
-      - "Asset_Map_Mapping marks MAP_MILLES source as SOURCE_FOUND/REFERENCE but explicitly says the matching image among nine old-town images still requires visual identification."
-      - "QA_REPORT records visual-isolation QA PASS for 51/51 production object sprites; QA_ADDENDUM_CHURCH_LAKE separately records PASS for the church and lake assets."
-      - "Production building, landmark and terrain binaries are present and wired through app/build.gradle assets.srcDirs; their pixels are reusable project-authored content."
-      - "Exact original terrain arrangement, building coordinates and runtime scale remain UNRESOLVED; current layout/scale is explicitly [ADAPTED], not claimed original."
-    source_gate:
-      - "Before coding, load every concrete available required source for the selected package."
-      - "If a referenced source path is absent, record it as unavailable/UNRESOLVED and do not claim its evidence was consumed."
-      - "Descriptive/wildcard source entries must be resolved to exact files actually consumed and recorded in state/baton."
-    design_contract:
-      - "Treat Milles as one quiet medieval settlement with spatial story and functional districts, not a collection of available objects."
-      - "Author in order: continuous ground -> primary roads/plaza -> secondary paths -> water/terrain/boundaries -> buildings -> vegetation/props -> collision/interaction."
-      - "Use verified reference features where available; fill unsupported geography coherently as [ADAPTED], never as claimed original geometry."
-      - "Existing Milles production assets are candidates, not final truth: classify needed assets REUSE, REWORK, REMAKE, or NEW and create missing critical assets."
-      - "Use stable world-space placement; prohibit spawn+arbitrary-offset landmark clustering."
-    progress:
-      last_agent: D
-      start_head: 6bbc54704dacc2585294ff8ce6e7966cfffefed7
-      runtime_head: 79cc1d4e7c6681715b2a823c7268e864b0316051
-      state_head_pending: false
-      implementation: BUILD_VERIFIED
-      build_verified: true
-      build_run: 387
-      runtime_delta: "Restored project-authored Milles terrain pixels to live runtime on a seam-safe staggered 64x32 lattice, while preserving the first audited production vertical-asset pass at stable absolute world coordinates. Giant flat-color visible grass/road/district fills are no longer the terrain presentation; road/plaza intent selects authored stone terrain. Exact current runtime HEAD passed Android SDK preparation, Master validation, Java compile, debug APK build and artifact upload."
-      asset_disposition:
-        terrain_ground_stone: "REUSE pixels / ADAPTED arrangement pending device evidence"
-        church: "REUSE candidate; repository visual-isolation QA PASS; placement/scale ADAPTED pending device evidence"
-        inn_potion_weapon_armor_general: "REUSE candidate; repository object QA PASS; placement/scale ADAPTED pending device evidence"
-    acceptance:
-      - "Entire traversable world has continuous intentional ground with no checkerboard, unexplained voids, or screen-fixed backdrop artifacts."
-      - "Camera traversal in all directions preserves world continuity and exposes no un-authored empty side of the map."
-      - "Central plaza and functional districts read as one connected settlement with intentional road hierarchy and breathing room."
-      - "Water/pond/bridge/rest spaces and vegetation are integrated where the layout calls for them rather than decoration piles."
-      - "Buildings/props use stable world-space coordinates and do not read as a spawn-centered cluster."
-      - "Needed object set has explicit REUSE/REWORK/REMAKE/NEW disposition; missing critical objects are produced before visual acceptance."
-      - "Collision/camera/traversal remain functional."
-      - "Exact build reaches BUILD_VERIFIED, then remains PENDING_DEVICE until fresh device evidence."
-    next_action: "Do not visually retune this slice without new device/user evidence. Install/test the exact run #387 APK and inspect terrain seams/repetition, road readability, building scale/occlusion, church landmark read, actor depth and camera traversal. If the exact APK exposes a deterministic defect, repair it; otherwise move serial baton work to the next eligible READY package while WORLD_MILLES_001 waits for evidence."
-
-  COMBAT_PRESENTATION_001:
-    title: "Connect authored/source-backed attack presentation into playable combat"
+  COMBAT_CONTRACT_002:
+    title: "Make player and monster melee tile legality reciprocal"
     system: combat
     scenes: [SCENE_FIELD_COMBAT]
     priority: P0
     queue_state: READY
     claim: null
-    evidence: [DEVICE_20260915_054522, REF_COMBAT_VIDEO]
-    required_sources: [master/data/Asset_Animation_Frame_Master.csv, master/data/Asset_Animation_Semantics.csv, master/data/Asset_Character_Mapping.csv, docs/reference/COMBAT_FRAME_ANALYSIS.md]
+    evidence: [DEVICE_20260915_214834]
+    required_sources:
+      - master/data/Asset_Animation_Semantics.csv
+      - app/src/main/java/com/projectdark/mobile/
+    gap: "Exact device evidence shows asymmetric melee reach/legality. Movement, target adjacency, facing, attack trigger and hit resolution must derive from the same canonical logical tile relationship for both actors."
+    acceptance:
+      - "For every legal adjacent player/monster tile pair, player->monster and monster->player legality are reciprocal under the same 64x32 logical tile relation."
+      - "No Euclidean/radius or independent 8-direction attack rule bypasses canonical adjacency."
+      - "Facing snapshot and hit resolution consume the same relationship used for legality."
+      - "Static/runtime audits cover all four diagonal adjacent relations and reciprocal directions."
+
+  ATTACK_PRESENTATION_002:
+    title: "Restore authored BODY+robe+weapon attack presentation without scale or anchor regression"
+    system: character_visual
+    scenes: [SCENE_FIELD_COMBAT]
+    priority: P0
+    queue_state: READY
+    claim: null
+    evidence: [DEVICE_20260915_214834]
+    required_sources:
+      - master/data/Asset_Animation_Frame_Master.csv
+      - master/data/Asset_Animation_Semantics.csv
+      - master/data/Asset_Character_Mapping.csv
+      - app/src/main/java/com/projectdark/mobile/CharacterRenderer.java
+      - app/src/main/java/com/projectdark/mobile/CharacterSemanticRig.java
+      - app/src/main/java/com/projectdark/mobile/CharacterSemanticRigEvidenceProbe.java
+      - app/src/main/java/com/projectdark/mobile/CharacterVisualEvidenceProbe.java
+    gap: "Two-day regression loop: authored player attack BODY was previously shown at mismatched apparent scale/anchor; subsequent fix removed visible BODY attack and left weapon-only motion. Current device evidence shows floating mokdo and no meaningful player BODY attack. Do not solve by deleting BODY attack or by moving weapon alone."
+    investigation_gate:
+      - "Before renderer changes, audit all authored attack BODY/robe/weapon resources and Master mappings actually present. Distinguish direction variants from temporal frames; do not infer action02_0..3 are temporal merely because four files exist."
+      - "Record source canvas size, opaque bounds, foot anchor, torso/hand semantic anchors and intended runtime scale for every consumed direction/frame."
+      - "Resolve whether a true authored temporal BODY attack sequence exists. If source sequence is incomplete, record UNRESOLVED_SOURCE_SEQUENCE rather than fabricate frames."
+    acceptance:
+      - "Attack visibly changes the player's BODY pose; weapon-only animation is an automatic FAIL."
+      - "At least two genuinely distinct authored temporal BODY poses must be observed if such source frames exist; direction variants do not count as temporal poses."
+      - "Idle/walk->attack->idle preserves apparent character scale and world foot anchor with no pop, jump or size change."
+      - "Robe follows the same BODY attack state/anchor contract."
+      - "Mokdo handle remains attached to the dominant-hand semantic anchor throughout startup/contact/recovery; floating weapon is FAIL."
+      - "No workaround may satisfy acceptance by suppressing the authored BODY attack."
+      - "Evidence probe must validate the same runtime contract, not merely resource loadability."
+
+  WORLD_MILLES_001:
+    title: "Continue coherent Milles village composition after current combat blockers"
+    system: world_map
+    scenes: [SCENE_MILLES_VILLAGE]
+    priority: P1
+    queue_state: READY
+    claim: null
+    evidence: [DEVICE_20260915_214834]
+    required_sources: [docs/MILLES_WORLD_DIRECTION.md, master/data/Asset_Map_Mapping.csv, master/data/Map_Instance_Master.csv]
+    gap: "Terrain semantics are improved, but current device video still reads as overly regular paths and sparse flower-grass expanses rather than a mature connected medieval village."
+
   MONSTER_RUNTIME_001:
-    title: "Replace unsupported monster placeholder using authored monster path"
+    title: "Advance authored monster runtime after combat contract is reciprocal"
     system: monster
     scenes: [SCENE_FIELD_COMBAT]
     priority: P1
     queue_state: READY
     claim: null
-    required_sources: [master/data/Monster_Master.csv, master/data/Monster_Sources.csv, master/data/Monster_Research_Audit.csv, master/data/Asset_Monster_Mapping.csv, master/data/Spawn_Master.csv, master/data/Map_Instance_Master.csv]
-  CONTENT_LINKAGE_001:
-    title: "Expose existing authored content through complete playable loops"
-    system: cross_system
-    scenes: [SCENE_EQUIPMENT_CHANGE, SCENE_SKILL_MAGIC, SCENE_NPC_SHOP_QUEST, SCENE_PROGRESSION_SAVE]
-    priority: P1
-    queue_state: READY
-    claim: null
-    required_sources: [master/MASTER_MANIFEST.md, design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md]
+    evidence: [DEVICE_20260915_214834]
+    required_sources: [master/data/Monster_Master.csv, master/data/Monster_Sources.csv, master/data/Monster_Research_Audit.csv, master/data/Asset_Monster_Mapping.csv]
 
 agent_selection_policy:
-  - "Re-sync before selection and verify baton/claims."
-  - "Before coding, load every concrete available required source for the selected package; absent referenced paths must be explicitly recorded UNRESOLVED rather than silently treated as consumed."
-  - "If a new canonical direction/design document materially governs selected work, register it in the work package required_sources before implementation."
-  - "Prefer the highest-priority READY unclaimed package whose dependencies can be resolved."
-  - "If a P0 item becomes PENDING_DEVICE, move to another READY package until new evidence arrives."
-  - "Documentation/control-plane changes alone are not runtime progress when a runtime delta is technically possible."
+  - "Re-sync before selection and read the latest device evidence and failure reasons."
+  - "P0 reciprocal combat legality and authored attack presentation are independent blockers; do not let micro-tuning of one starve the other."
+  - "For ATTACK_PRESENTATION_002 the investigation gate is mandatory before renderer changes."
+  - "Do not repeatedly polish a work item after its acceptance gate is satisfied; advance to the next dependency-valid READY package."
+  - "Build pass is not device or visual acceptance."
 
 status_summary:
   visual_acceptance: FAIL
-  known_device_evidence: DEVICE_20260915_054522
-  next_global_rule: "WORLD_MILLES_001 is BUILD_VERIFIED/PENDING_DEVICE at runtime HEAD 79cc1d4e7c6681715b2a823c7268e864b0316051. Do not tune it again without fresh device evidence unless a deterministic defect is found; select another eligible READY package meanwhile."
+  known_device_evidence: DEVICE_20260915_214834
+  next_global_rule: "Consume the 21:48 device regression as current truth. Repair reciprocal melee contract and attack BODY/robe/weapon presentation under their explicit acceptance gates, then advance to Milles composition/monster content rather than remaining in attack micro-tuning."
