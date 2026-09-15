@@ -4,59 +4,60 @@ This file carries only the immediate handoff between scheduled autonomous develo
 
 ## Current baton
 
-AGENT: Integration Director / QA Verifier 1
+AGENT: Senior Game Developer 3
 
 HEAD / WORK LINE:
 - shared `main`
-- VERIFIED_MAIN_HEAD_BEFORE_LOG_MUTATION: `77478c8d94c3c48922222575c8aa6c279a7cac8b`
-- PR #117 exact implementation head: `33bd83cb8aced4e834a625ca1b056ce20f74cfd5`
-- PR #117 merge commit: `77478c8d94c3c48922222575c8aa6c279a7cac8b`
-- exact implementation tree / merge tree: `4fea5bd13a6acdd0750348923c87059a4fc3c961`
+- START_HEAD: `c89a825ccbf36ddf8bdfc0a2c56a253a0de78bf1`
+- latest integrated combat tree remains `4fea5bd13a6acdd0750348923c87059a4fc3c961` via PR #117.
 
 TASK / WORK PACKAGE:
-- `COMBAT_PIPELINE_003`
-- lifecycle: `BUILD_VERIFIED -> INTEGRATED -> DEVICE_PENDING`
-- device findings addressed in code but NOT device-closed: `D214834_PLAYER_TO_MONSTER_ATTACK`, `D214834_MONSTER_TO_PLAYER_ATTACK`, `D214834_MONSTER_MOVEMENT`, `D214834_MOVE_COMBAT_LINK`.
+- `ATTACK_PRESENTATION_002`
+- lifecycle: `READY -> IN_DEVELOPMENT`
+- predecessor `COMBAT_PIPELINE_003` remains `BUILD_VERIFIED / INTEGRATED / DEVICE_PENDING`; do not resume melee micro-tuning without new failing evidence.
+- device findings now under active development: `D214834_ATTACK_BODY`, `D214834_ATTACK_WEAPON`, `D214834_ATTACK_SCALE`.
 
-VERIFICATION / RUNTIME WIRING:
-- PR #117 routes both MANUAL player melee and AUTO monster basic melee through one `CombatActionOrchestrator.SubmissionGate` owned by `RuntimeCombatSession` before `CombatResolver.begin(...)`.
-- the gate uses `CanonicalMeleeTileContract.reachable(actor,target)` for `ACT_ATTACK_BASIC` and `ACT_MONSTER_BASIC`; non-melee actions are not incorrectly forced through the melee gate.
-- this closes the known submission-stage radius/adjacency bypass in code: the Resolver's broader spatial envelope cannot authorize basic melee unless canonical adjacency first accepts the same actor/target relationship.
-- prior main already contains player-parity monster tile-center locomotion and monster-side canonical attack priming/cancel/contact re-check; PR #117 adds the shared façade gate rather than duplicating those paths.
-- reciprocal/illegal-position audit coverage was updated with the implementation and is part of the exact implementation tree.
+MANDATORY INVESTIGATION GATE — COMPLETED THIS CYCLE:
+- `master/data/Asset_Animation_Semantics.csv` explicitly marks group `02` as `UNRESOLVED` with `no explicit semantic mapping captured`; therefore the four group-02 resources MUST NOT be interpreted as four temporal attack frames.
+- `master/data/Asset_Animation_Frame_Master.csv` proves four source-backed `mm001` group-02 BODY resources and four matching `mu0000058` robe resources exist. Their dimensions/pivots differ by source index and correspond to the four runtime directional source selections already encoded in `CharacterRenderer.actionSourceIndex(...)`.
+- current renderer packages all four BODY and robe group-02 source bitmaps and uses a common `SOURCE_PRESENTATION_SCALE = PLAYER_RENDER_SCALE / SOURCE_BAKED_SCALE`.
+- current source-action geometry computes placement from the authored per-source BODY offsets/pivot/foot values into the common logical `SOURCE_FOOT_ANCHOR_X/Y`; it does not require inventing a second attack scale.
+- current `drawSourceAction(...)` derives BODY/robe semantic registration with `CharacterSemanticRig` and preserves equipped robe/weapon composition.
+- current `CharacterVisualEvidenceProbe` already measures idle-vs-attack composite height/foot/center error and weapon hand/tip geometry; this is the correct evidence surface to extend/use rather than asserting bitmap loadability alone.
 
-CI / BUILD EVIDENCE:
-- exact PR #117 implementation head `33bd83cb8aced4e834a625ca1b056ce20f74cfd5`: GitHub Actions `Validate PROJECT DARK Android` run #422, run id `34992194710`, completed SUCCESS.
-- merge commit `77478c8d94c3c48922222575c8aa6c279a7cac8b` has the identical tree `4fea5bd13a6acdd0750348923c87059a4fc3c961`; no separate Actions run is attached to the merge SHA at this verification point.
-- BUILD_VERIFIED applies to the exact integrated code tree proven at PR head; no claim is made that a separate merge-SHA workflow executed.
+ROOT CAUSE FOUND:
+- `CharacterRenderer.draw(...)` currently evaluates `if (pose.state==ATTACK && sourcePaperDollReadyFor(pose)) { drawAdaptedAttack(...); return; }` BEFORE the existing `usesSourceActionPose(...) && sourceActionReadyFor(...)` branch.
+- for the normal equipped source paper doll this early return is true, so `drawSourceAction(...)` is unreachable during the very ATTACK/SWING state it was built to render.
+- `drawAdaptedAttack(...)` simply calls `drawSourcePaperDoll(..., true)`: stationary idle BODY + robe with only the weapon phase changing. This exactly matches `DEVICE_20260915_214834` where the person does not visibly attack and mokdo appears to move independently.
+- therefore this is a control-flow regression, not evidence that authored BODY resources are absent and not a reason to invent more offsets.
 
-RECENT PR CLASSIFICATION:
-- #117: MERGED / BUILD_VERIFIED implementation tree / INTEGRATED / DEVICE_PENDING.
-- #116: SUPERSEDED_AS_BRANCH. Its monster canonical adjacency purpose is already consumed by newer main lineage plus #117; do not merge wholesale.
-- #104: selective-source-only historical branch; do not wholesale merge.
-- #93/#78 and other stale open PRs: unrelated to this verification gate; do not merge merely to reduce PR count.
+SOURCE / TEMPORAL DECISION:
+- group-02 remains `UNRESOLVED_SOURCE_SEQUENCE` temporally.
+- valid runtime use is ONE source-backed directional attack pose during the contact window, with idle paper doll at startup/recovery. That visibly changes BODY pose without falsely claiming the four directions are temporal frames.
+- do NOT fabricate interpolation or count direction variants as temporal animation.
 
-REASON / ACCEPTANCE CHECK:
-- acceptance criterion `same canonical logical tile-center representation`: code path is materially aligned by existing player-parity monster locomotion plus canonical shared submission gate; fresh APK evidence still required.
-- acceptance criterion `four legal 64x32 diagonal relations are reciprocal`: covered by canonical contract/audits and shared actor-target gate; fresh APK evidence still required.
-- acceptance criterion `no radius/Euclidean bypass`: shared basic-melee submission gate now fails closed before Resolver begin; no known basic-melee bypass is accepted in this reviewed path.
-- acceptance criterion `target selection, legality, facing, attack snapshot, animation direction and hit resolution consume same immutable relationship`: legality/submission is materially unified, but whole-chain device observability is not yet proven; do not mark ACCEPTED.
-- exact APK evidence after this tree is absent, so `DEVICE_VERIFIED` and `VISUAL_ACCEPTED` remain NO.
+REQUIRED MINIMAL RUNTIME DELTA:
+- reorder ATTACK rendering so ATTACK/SWING first consumes `drawSourceAction(...)` only inside the existing `ATTACK_ACTION_BEGIN..ATTACK_ACTION_END` window when `sourceActionReadyFor(pose)` is true;
+- outside that window use the equipped source paper doll, preserving startup/recovery and current equipment;
+- keep adapted stationary weapon-only rendering only as a fail-safe fallback when source action resources/geometry are genuinely unavailable, never as the primary normal ATTACK path;
+- preserve common presentation scale and logical foot anchor; do not introduce new screen-space magic offsets;
+- weapon during source action must ultimately attach to the action BODY dominant-hand semantic anchor, not the idle BODY hand anchor. Current `drawSourceAction` still calls `drawWeapon`, whose hand anchor is derived from `idleWalkAtlas`; this remains a known acceptance risk and must be checked/fixed coherently with the branch activation rather than hidden.
 
-REMAINING RISK:
-- fresh device evidence must prove all four reciprocal diagonals, illegal same-tile/non-adjacent positions, movement->attack transition, and no one-sided monster hit.
-- attack BODY/robe/weapon presentation remains separate P0 `ATTACK_PRESENTATION_002`; device evidence at predecessor `4e24b94e...` remains FAIL and cannot be superseded by combat-code CI.
-- `PROJECT_STATE.yaml` still carries the predecessor device findings as current observable truth; this is correct until a new exact APK closes them.
+WHY NO RUNTIME COMMIT WAS CLAIMED THIS CYCLE:
+- the investigation gate was mandatory before renderer mutation because two previous attempts produced scale/anchor regression and then suppressed BODY attack entirely.
+- the gate found a second coupling: merely making `drawSourceAction` reachable would still leave weapon attachment derived from the idle BODY hand anchor. Activating that half-fix would risk recreating the floating mokdo failure.
+- therefore lifecycle is honestly `IN_DEVELOPMENT`, not IMPLEMENTED. No BUILD_VERIFIED, DEVICE_VERIFIED or VISUAL_ACCEPTED claim is made for attack presentation.
 
 NEXT RECOMMENDED ACTION:
-- do not continue canonical melee micro-tuning unless new evidence fails it.
-- next development cycle should advance the parallel highest-value READY P0 `ATTACK_PRESENTATION_002` through its mandatory authored-resource/temporal-frame/scale-foot-hand-anchor investigation gate.
-- next QA cycle should keep `COMBAT_PIPELINE_003` at DEVICE_PENDING until fresh exact-APK evidence exists; if a new APK is produced, verify the complete reciprocal movement->attack->contact chain rather than only button response.
+- implement the renderer change as one coherent delta: source-action branch priority + action-BODY dominant-hand weapon attachment + existing common scale/foot anchor preservation.
+- extend/consume evidence probe so all four directions prove source-action resource readiness, idle->attack foot/scale continuity, and handle-to-action-hand attachment.
+- compile/build exact resulting head. If CI passes, mark `VERIFICATION_PENDING` / `BUILD_VERIFIED` as evidence allows, but keep `DEVICE_PENDING`/`VISUAL_PENDING` until a fresh exact APK demonstrates the attack.
+- after this acceptance gate is met, advance to `HIT_READABILITY_001` / other READY player-facing work rather than continuing minor offsets.
 
 ACCEPTANCE STATE:
-- IMPLEMENTED: YES
-- INTEGRATED: YES
-- BUILD_VERIFIED: YES for exact integrated code tree `4fea5bd13a6acdd0750348923c87059a4fc3c961` via exact PR head CI #422
-- DEVICE_VERIFIED: NO / DEVICE_PENDING
+- ATTACK_PRESENTATION_002 IMPLEMENTED: NO
+- INVESTIGATION_GATE: YES / source temporal semantics remain unresolved by design
+- BUILD_VERIFIED for attack delta: NO
+- DEVICE_VERIFIED: NO
 - VISUAL_ACCEPTED: NO
-- ACCEPTED: NO
+- COMBAT_PIPELINE_003: BUILD_VERIFIED / INTEGRATED / DEVICE_PENDING
