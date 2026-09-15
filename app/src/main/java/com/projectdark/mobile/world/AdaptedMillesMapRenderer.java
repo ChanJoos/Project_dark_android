@@ -15,9 +15,12 @@ import java.util.Map;
 
 /** Story-driven Milles pass: grass-dominant terrain, dirt roads, central well, and restrained landmarks. */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_V9_STORY_GRASS_DIRT_DISTRICTS";
+  public static final String STATUS="MILLES_V10_LOCKED_GRASS_DIRT_MAPPING";
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH,TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
+  private static final String GRASS_TILE="terrain/OBJ_ground_01.png";
+  private static final String DIRT_TILE="terrain/OBJ_ground_02.png";
+  private static final String PLAZA_TILE="terrain/OBJ_stone_01.png";
   private final Paint outsidePaint=new Paint(),pixelPaint=new Paint();
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
@@ -28,9 +31,7 @@ public final class AdaptedMillesMapRenderer {
     if(canvas==null||world==null)return;
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
     for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles())drawTerrainTile(canvas,world,terrainFor(t),t.centerX,t.centerY);
-    // Central civic anchor. Fountain source is unavailable; existing well is the truthful placeholder.
     drawFoot(canvas,world,"street/OBJ_well.png",AdaptedMillesIsometricTileLayer.PLAZA_CENTER_X,AdaptedMillesIsometricTileLayer.PLAZA_CENTER_Y,.50f);
-    // Sparse, story-led landmarks only. These are existing authored production assets, not generated art.
     drawFoot(canvas,world,"landmarks/BLD_011_church.png",1320f,455f,.42f);
     drawFoot(canvas,world,"street/OBJ_noticeboard.png",690f,720f,.38f);
     drawFoot(canvas,world,"street/OBJ_bench.png",850f,650f,.38f);
@@ -38,13 +39,16 @@ public final class AdaptedMillesMapRenderer {
     drawFoot(canvas,world,"street/OBJ_lamp_02.png",830f,535f,.42f);
   }
 
+  /**
+   * Visual contract for the current Milles foundation:
+   * GROUND is always the authored green grass tile; ROAD/GATE is always the authored brown dirt tile;
+   * PLAZA is always stone. Variants are intentionally disabled so semantic tile kinds can never
+   * reintroduce the grass/dirt checkerboard regression.
+   */
   private static String terrainFor(AdaptedMillesIsometricTileLayer.Tile t){
-    boolean alt=(t.variant&1)==1;
-    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.ROAD||t.kind==AdaptedMillesIsometricTileLayer.TileKind.GATE)
-      return alt?"terrain/OBJ_ground_02.png":"terrain/OBJ_ground_01.png"; // brown/earth variant already present in current authored pair
-    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
-      return alt?"terrain/OBJ_stone_02.png":"terrain/OBJ_stone_01.png";
-    return alt?"terrain/OBJ_ground_02.png":"terrain/OBJ_ground_01.png";
+    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.ROAD||t.kind==AdaptedMillesIsometricTileLayer.TileKind.GATE)return DIRT_TILE;
+    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)return PLAZA_TILE;
+    return GRASS_TILE;
   }
 
   private void drawTerrainTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){
