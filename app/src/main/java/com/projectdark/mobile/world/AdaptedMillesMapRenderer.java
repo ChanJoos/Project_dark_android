@@ -15,11 +15,13 @@ import java.util.Map;
 
 /** Story-driven Milles pass: grass-dominant terrain, dirt roads, central well, and restrained landmarks. */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_V10_LOCKED_GRASS_DIRT_MAPPING";
+  public static final String STATUS="MILLES_V11_DEVICE_VERIFIED_GRASS_DIRT_MAPPING";
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH,TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
-  private static final String GRASS_TILE="terrain/OBJ_ground_01.png";
-  private static final String DIRT_TILE="terrain/OBJ_ground_02.png";
+  // Device evidence 2026-09-15 proved the authored file semantics are opposite the old filename assumption:
+  // ground_02 is the green flower-grass tile; ground_01 is the brown dirt tile.
+  private static final String GRASS_TILE="terrain/OBJ_ground_02.png";
+  private static final String DIRT_TILE="terrain/OBJ_ground_01.png";
   private static final String PLAZA_TILE="terrain/OBJ_stone_01.png";
   private final Paint outsidePaint=new Paint(),pixelPaint=new Paint();
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
@@ -40,10 +42,11 @@ public final class AdaptedMillesMapRenderer {
   }
 
   /**
-   * Visual contract for the current Milles foundation:
-   * GROUND is always the authored green grass tile; ROAD/GATE is always the authored brown dirt tile;
-   * PLAZA is always stone. Variants are intentionally disabled so semantic tile kinds can never
-   * reintroduce the grass/dirt checkerboard regression.
+   * Device-verified visual contract:
+   * GROUND -> OBJ_ground_02 (green flower grass)
+   * ROAD/GATE -> OBJ_ground_01 (brown dirt)
+   * PLAZA -> OBJ_stone_01
+   * Variants stay disabled so the checkerboard regression cannot return.
    */
   private static String terrainFor(AdaptedMillesIsometricTileLayer.Tile t){
     if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.ROAD||t.kind==AdaptedMillesIsometricTileLayer.TileKind.GATE)return DIRT_TILE;
