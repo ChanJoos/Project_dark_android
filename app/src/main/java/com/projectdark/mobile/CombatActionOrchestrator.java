@@ -8,15 +8,19 @@ import java.util.Map;
 /** Routes MANUAL and MonsterAI AUTO submissions into one CombatResolver without inventing action data. */
 public final class CombatActionOrchestrator {
   public enum Outcome { ACCEPTED, ACTION_UNRESOLVED, REJECTED }
+  public interface SubmissionGate {
+    CombatResolver.RejectReason reject(String actorId,String targetId,CombatResolver.Definition definition,CombatResolver.InputMode inputMode);
+  }
   public static final class Submission {
     public final Outcome outcome; public final String actorId,targetId,actionId; public final CombatResolver.InputMode inputMode;
     public final long actionSequence; public final CombatResolver.RejectReason rejectReason;
     Submission(Outcome o,String a,String t,String id,CombatResolver.InputMode m,long s,CombatResolver.RejectReason r){outcome=o;actorId=a;targetId=t;actionId=id;inputMode=m;actionSequence=s;rejectReason=r;}
     public boolean accepted(){return outcome==Outcome.ACCEPTED;}
   }
-  private final CombatResolver resolver; private final Map<String,CombatResolver.Definition> definitions;
-  public CombatActionOrchestrator(CombatResolver resolver,List<CombatResolver.Definition> defs){
-    if(resolver==null||defs==null)throw new IllegalArgumentException("resolver/definitions"); this.resolver=resolver;
+  private final CombatResolver resolver; private final Map<String,CombatResolver.Definition> definitions; private final SubmissionGate gate;
+  public CombatActionOrchestrator(CombatResolver resolver,List<CombatResolver.Definition> defs){this(resolver,defs,null);}
+  public CombatActionOrchestrator(CombatResolver resolver,List<CombatResolver.Definition> defs,SubmissionGate gate){
+    if(resolver==null||defs==null)throw new IllegalArgumentException("resolver/definitions"); this.resolver=resolver; this.gate=gate;
     Map<String,CombatResolver.Definition> index=new LinkedHashMap<>();
     for(CombatResolver.Definition d:defs){if(d==null||index.put(d.actionId,d)!=null)throw new IllegalArgumentException("duplicate/null action definition");}
     definitions=Collections.unmodifiableMap(index);
@@ -26,6 +30,8 @@ public final class CombatActionOrchestrator {
   public Submission submit(String actorId,String targetId,String actionId,CombatResolver.InputMode mode){
     CombatResolver.InputMode actual=mode==null?CombatResolver.InputMode.MANUAL:mode; CombatResolver.Definition d=definitions.get(actionId);
     if(d==null)return new Submission(Outcome.ACTION_UNRESOLVED,actorId,targetId,actionId,actual,0,null);
+    CombatResolver.RejectReason gated=gate==null?null:gate.reject(actorId,targetId,d,actual);
+    if(gated!=null)return new Submission(Outcome.REJECTED,actorId,targetId,actionId,actual,0,gated);
     CombatResolver.BeginResult r=resolver.begin(d,actorId,targetId,actual);
     return new Submission(r.accepted?Outcome.ACCEPTED:Outcome.REJECTED,actorId,targetId,actionId,actual,r.actionSequence,r.rejectReason);
   }
