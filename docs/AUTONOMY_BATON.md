@@ -4,60 +4,66 @@ This file carries only the immediate handoff between scheduled autonomous develo
 
 ## Current baton
 
-AGENT: Senior Game Developer 3
+AGENT: DARK Dev 1 -> DARK Verify 1 / DARK Verify 2
 
 HEAD / WORK LINE:
 - shared `main`
-- START_HEAD: `c89a825ccbf36ddf8bdfc0a2c56a253a0de78bf1`
-- latest integrated combat tree remains `4fea5bd13a6acdd0750348923c87059a4fc3c961` via PR #117.
+- DEVICE_TESTED_HEAD: `60721da4e002c21ad20e0aa82687e1f25c80e251`
+- PR #118 is merged and exact-main Android CI run #428 passed.
+- `ATTACK_PRESENTATION_002` is therefore BUILD_VERIFIED but DEVICE/VISUAL FAILED on fresh user recording `Screen_Recording_20260916_151528.mp4`.
 
 TASK / WORK PACKAGE:
-- `ATTACK_PRESENTATION_002`
+- `ATTACK_PRESENTATION_003_DEVICE_REPAIR`
 - lifecycle: `READY -> IN_DEVELOPMENT`
-- predecessor `COMBAT_PIPELINE_003` remains `BUILD_VERIFIED / INTEGRATED / DEVICE_PENDING`; do not resume melee micro-tuning without new failing evidence.
-- device findings now under active development: `D214834_ATTACK_BODY`, `D214834_ATTACK_WEAPON`, `D214834_ATTACK_SCALE`.
+- This is a focused repair of the already merged attack vertical slice. Do not expand equipment, add temporal frames, redesign combat, or invent source art.
 
-MANDATORY INVESTIGATION GATE — COMPLETED THIS CYCLE:
-- `master/data/Asset_Animation_Semantics.csv` explicitly marks group `02` as `UNRESOLVED` with `no explicit semantic mapping captured`; therefore the four group-02 resources MUST NOT be interpreted as four temporal attack frames.
-- `master/data/Asset_Animation_Frame_Master.csv` proves four source-backed `mm001` group-02 BODY resources and four matching `mu0000058` robe resources exist. Their dimensions/pivots differ by source index and correspond to the four runtime directional source selections already encoded in `CharacterRenderer.actionSourceIndex(...)`.
-- current renderer packages all four BODY and robe group-02 source bitmaps and uses a common `SOURCE_PRESENTATION_SCALE = PLAYER_RENDER_SCALE / SOURCE_BAKED_SCALE`.
-- current source-action geometry computes placement from the authored per-source BODY offsets/pivot/foot values into the common logical `SOURCE_FOOT_ANCHOR_X/Y`; it does not require inventing a second attack scale.
-- current `drawSourceAction(...)` derives BODY/robe semantic registration with `CharacterSemanticRig` and preserves equipped robe/weapon composition.
-- current `CharacterVisualEvidenceProbe` already measures idle-vs-attack composite height/foot/center error and weapon hand/tip geometry; this is the correct evidence surface to extend/use rather than asserting bitmap loadability alone.
+DEVICE EVIDENCE — 2026-09-16 USER ACCEPTANCE TEST:
+User explicitly identified these failures in the exact-main #118 APK:
+1. Mokdo position is slightly offset from the hand.
+2. A single attack pose / three-stage attack presentation is acceptable, but during the inserted attack pose the character becomes larger and the robe is absent; the attack pose is not composed with the equipped robe and mokdo correctly.
+3. Attack pose visual scale is larger than the normal character and creates a visible discontinuity.
+4. Do NOT treat the single inserted pose / three-stage timing itself as a defect. Preserve the current startup -> contact pose -> recovery structure; do not fabricate temporal frames.
+5. Attack animation facing can differ from the monster/target direction. This is a functional visual defect.
 
-ROOT CAUSE FOUND:
-- `CharacterRenderer.draw(...)` currently evaluates `if (pose.state==ATTACK && sourcePaperDollReadyFor(pose)) { drawAdaptedAttack(...); return; }` BEFORE the existing `usesSourceActionPose(...) && sourceActionReadyFor(...)` branch.
-- for the normal equipped source paper doll this early return is true, so `drawSourceAction(...)` is unreachable during the very ATTACK/SWING state it was built to render.
-- `drawAdaptedAttack(...)` simply calls `drawSourcePaperDoll(..., true)`: stationary idle BODY + robe with only the weapon phase changing. This exactly matches `DEVICE_20260915_214834` where the person does not visibly attack and mokdo appears to move independently.
-- therefore this is a control-flow regression, not evidence that authored BODY resources are absent and not a reason to invent more offsets.
-
-SOURCE / TEMPORAL DECISION:
-- group-02 remains `UNRESOLVED_SOURCE_SEQUENCE` temporally.
-- valid runtime use is ONE source-backed directional attack pose during the contact window, with idle paper doll at startup/recovery. That visibly changes BODY pose without falsely claiming the four directions are temporal frames.
-- do NOT fabricate interpolation or count direction variants as temporal animation.
+REQUIRED ROOT-CAUSE INVESTIGATION:
+- Trace final screen-space geometry for normal equipped IDLE versus source-action CONTACT. Compare BODY destination rect, logical foot anchor, source baked scale, SOURCE_PRESENTATION_SCALE, robe destination rect/registration, and weapon destination/handle anchor. Do not accept finite/loadability-only probes as proof.
+- Confirm whether group-02 robe source is actually selected/drawn in the CONTACT path for all four directions and whether BODY/robe use the same final source-action transform. If robe source is unavailable for any direction, keep that state explicit rather than silently dropping the robe.
+- Trace attack-facing at the combat submission/target-lock boundary through runtime pose creation into CharacterRenderer. ATTACK facing must come from the canonical adjacent target tile delta at accepted attack time, not stale movement facing or previous actor facing.
+- Trace mokdo handle attachment against the action BODY `dominantHand` anchor in final rendered coordinates, including any action-source offset, pivot, foot-anchor normalization, and presentation scale.
 
 REQUIRED MINIMAL RUNTIME DELTA:
-- reorder ATTACK rendering so ATTACK/SWING first consumes `drawSourceAction(...)` only inside the existing `ATTACK_ACTION_BEGIN..ATTACK_ACTION_END` window when `sourceActionReadyFor(pose)` is true;
-- outside that window use the equipped source paper doll, preserving startup/recovery and current equipment;
-- keep adapted stationary weapon-only rendering only as a fail-safe fallback when source action resources/geometry are genuinely unavailable, never as the primary normal ATTACK path;
-- preserve common presentation scale and logical foot anchor; do not introduce new screen-space magic offsets;
-- weapon during source action must ultimately attach to the action BODY dominant-hand semantic anchor, not the idle BODY hand anchor. Current `drawSourceAction` still calls `drawWeapon`, whose hand anchor is derived from `idleWalkAtlas`; this remains a known acceptance risk and must be checked/fixed coherently with the branch activation rather than hidden.
+- Preserve the accepted three-stage presentation: equipped IDLE/startup -> ONE source-backed directional CONTACT pose -> equipped IDLE/recovery.
+- At CONTACT render one coherent paper-doll composite: ATTACK BODY + equipped robe + equipped mokdo. BODY/robe/weapon must share the same facing and compatible action transform.
+- Normalize CONTACT to the same gameplay presentation scale and logical foot anchor as normal character rendering. Source bitmap dimensions must not directly cause a larger on-screen actor.
+- Correct mokdo handle-to-action-hand registration in final screen coordinates; avoid arbitrary screen-space offsets unless the source evidence requires an explicit per-direction authored transform and that transform is documented/tested.
+- Lock BODY/robe/weapon attack facing to the attacked monster's canonical adjacent tile delta (NW/NE/SW/SE) for the contact presentation.
+- Do not change canonical melee legality, reward flow, monster AI, or the accepted single-pose temporal policy.
 
-WHY NO RUNTIME COMMIT WAS CLAIMED THIS CYCLE:
-- the investigation gate was mandatory before renderer mutation because two previous attempts produced scale/anchor regression and then suppressed BODY attack entirely.
-- the gate found a second coupling: merely making `drawSourceAction` reachable would still leave weapon attachment derived from the idle BODY hand anchor. Activating that half-fix would risk recreating the floating mokdo failure.
-- therefore lifecycle is honestly `IN_DEVELOPMENT`, not IMPLEMENTED. No BUILD_VERIFIED, DEVICE_VERIFIED or VISUAL_ACCEPTED claim is made for attack presentation.
+MANDATORY REGRESSION / EVIDENCE GATE:
+For all four attack directions, evidence must prove:
+- target canonical tile delta -> expected ATTACK facing exactly;
+- CONTACT BODY facing == robe facing == weapon facing;
+- equipped robe remains visible/composited during CONTACT;
+- idle/startup and CONTACT logical foot positions remain aligned within a small explicit pixel tolerance;
+- CONTACT actor visual scale/height is consistent with equipped IDLE within an explicit tolerance justified by source pose silhouette, not raw bitmap dimensions;
+- mokdo handle aligns with action BODY dominantHand anchor within an explicit pixel tolerance;
+- recovery returns to the same equipped IDLE composition;
+- no new fabricated temporal frames or generated replacement art.
 
-NEXT RECOMMENDED ACTION:
-- implement the renderer change as one coherent delta: source-action branch priority + action-BODY dominant-hand weapon attachment + existing common scale/foot anchor preservation.
-- extend/consume evidence probe so all four directions prove source-action resource readiness, idle->attack foot/scale continuity, and handle-to-action-hand attachment.
-- compile/build exact resulting head. If CI passes, mark `VERIFICATION_PENDING` / `BUILD_VERIFIED` as evidence allows, but keep `DEVICE_PENDING`/`VISUAL_PENDING` until a fresh exact APK demonstrates the attack.
-- after this acceptance gate is met, advance to `HIT_READABILITY_001` / other READY player-facing work rather than continuing minor offsets.
+VERIFICATION POLICY:
+- Dev must implement one coherent runtime delta and run local/static evidence where available.
+- Verify 1/2 must resolve the exact PR HEAD SHA and inspect GitHub Actions for that exact SHA, including push-triggered runs. If normal PR/check lookup is empty, query repository Actions by head SHA and inspect jobs/steps directly.
+- BUILD_VERIFIED requires exact-head Android validation/build success.
+- After merge, exact-main CI must pass before APK release.
+- DEVICE_VERIFIED and VISUAL_ACCEPTED remain false until a fresh exact APK recording confirms all five user findings are resolved. CI or evidence probes alone cannot promote visual acceptance.
 
 ACCEPTANCE STATE:
-- ATTACK_PRESENTATION_002 IMPLEMENTED: NO
-- INVESTIGATION_GATE: YES / source temporal semantics remain unresolved by design
-- BUILD_VERIFIED for attack delta: NO
-- DEVICE_VERIFIED: NO
-- VISUAL_ACCEPTED: NO
-- COMBAT_PIPELINE_003: BUILD_VERIFIED / INTEGRATED / DEVICE_PENDING
+- PR #118 / `60721da4...`: BUILD_VERIFIED = YES
+- PR #118 DEVICE_VERIFIED = FAIL
+- PR #118 VISUAL_ACCEPTED = FAIL
+- `ATTACK_PRESENTATION_003_DEVICE_REPAIR`: READY / IN_DEVELOPMENT
+
+NEXT ACTION:
+- DARK Dev 1: inspect current main and implement the focused five-finding repair above, then open/update one clean PR with exact evidence.
+- DARK Verify 1 / 2: independently validate actual runtime wiring, exact-head CI and the five regression criteria; selectively merge only if coherent. After merge, build exact-main APK for fresh user device acceptance.
+- Once this gate passes, freeze further equipment/attack animation expansion and return to the approved first-five-minute gameplay loop.
