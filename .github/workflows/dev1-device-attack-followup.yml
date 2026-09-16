@@ -1,0 +1,43 @@
+name: Dev1 device attack followup
+on:
+  push:
+    branches: [dev1/attack-presentation-003-package]
+permissions:
+  contents: write
+jobs:
+  fix-device-findings:
+    if: ${{ !contains(github.event.head_commit.message, '[device-attack-followup-applied]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev1/attack-presentation-003-package
+          fetch-depth: 0
+      - name: Lock attack to visible target and keep equipped composite
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          s=p.read_text()
+          old='private void snapshotAttackFacingTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive){playerFacing.beginAttack(t.x-state.player().x,t.y-state.player().y);playerFacing.setLocomotion(playerFacing.attack());}}'
+          new='private void snapshotAttackFacingTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive){float visiblePlayerX=worldAdapter.presentationPlayerX(),visiblePlayerY=worldAdapter.presentationPlayerY();playerFacing.beginAttack(t.x-visiblePlayerX,t.y-visiblePlayerY);playerFacing.setLocomotion(playerFacing.attack());}}'
+          assert old in s, 'GameView attack-facing block changed'
+          s=s.replace(old,new)
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/projectdark/mobile/CharacterRenderer.java')
+          s=p.read_text()
+          old='if(composition.robeVisible){CharacterSemanticRig.Anchors robe=CharacterSemanticRig.derive(robeActionFrames[source],new Rect(0,0,ROBE_ACTION_WIDTH[source],ROBE_ACTION_HEIGHT[source]),pose.direction);CharacterSemanticRig.Translation semantic=CharacterSemanticRig.garmentTranslation(body,robe);float robeLeft=transform.layerLeft(ROBE_ACTION_OFFSET_X[source],BODY_ACTION_OFFSET_X[source],semantic.x),robeTop=transform.layerTop(ROBE_ACTION_OFFSET_Y[source],BODY_ACTION_OFFSET_Y[source],semantic.y);drawRawSourceScaled(c,robeActionFrames[source],robeLeft,robeTop,transform.scale);}'
+          new='if(composition.robeVisible){float robeLeft=transform.layerLeft(ROBE_ACTION_OFFSET_X[source],BODY_ACTION_OFFSET_X[source],0f),robeTop=transform.layerTop(ROBE_ACTION_OFFSET_Y[source],BODY_ACTION_OFFSET_Y[source],0f);drawRawSourceScaled(c,robeActionFrames[source],robeLeft,robeTop,transform.scale);}'
+          assert old in s, 'CharacterRenderer robe composite block changed'
+          s=s.replace(old,new)
+          p.write_text(s)
+          PY
+      - name: Commit device findings
+        run: |
+          git config user.name 'PROJECT DARK Dev1'
+          git config user.email 'actions@users.noreply.github.com'
+          git add app/src/main/java/com/projectdark/mobile/GameView.java app/src/main/java/com/projectdark/mobile/CharacterRenderer.java
+          git commit -m 'Dev1: lock moving attack and preserve robe composite [device-attack-followup-applied]'
+          git push origin HEAD:dev1/attack-presentation-003-package
