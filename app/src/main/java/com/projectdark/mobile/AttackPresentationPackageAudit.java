@@ -6,6 +6,8 @@ import com.projectdark.mobile.world.WorldMoveTargetController;
 public final class AttackPresentationPackageAudit {
   public static final float MAX_FOOT_ERROR_PX=1f;
   public static final float MAX_HANDLE_ERROR_PX=1f;
+  private static final int[] BODY_OFFSET_X={8,2,6,4},BODY_OFFSET_Y={8,8,9,3};
+  private static final int[] ROBE_OFFSET_X={8,3,6,6},ROBE_OFFSET_Y={20,27,23,22};
 
   private AttackPresentationPackageAudit(){}
 
@@ -14,6 +16,7 @@ public final class AttackPresentationPackageAudit {
         && coherentCompositionFourWays()
         && singlePosePolicyPreserved()
         && finalCompositeNormalizationContract()
+        && coherentLayerTransformFourWays()
         && singleMirrorWeaponContract();
   }
 
@@ -55,11 +58,10 @@ public final class AttackPresentationPackageAudit {
         && !CharacterRenderer.attackUsesActionPose(.95f);
   }
 
-  /** Proves the package transform removes action-silhouette size/foot drift in final screen space. */
+  /** Proves normalization removes action-silhouette size/foot drift in final screen space. */
   static boolean finalCompositeNormalizationContract(){
     float base=CharacterRenderer.SOURCE_PRESENTATION_SCALE;
-    int idleTop=8,idleBottom=45;
-    float idleCenter=18f;
+    int idleTop=8,idleBottom=45;float idleCenter=18f;
     float expectedHeight=(idleBottom-idleTop+1)*base;
     float expectedFoot=240f-CharacterRenderer.SOURCE_FOOT_ANCHOR_Y*base+idleBottom*base;
     float expectedCenter=320f+(idleCenter-CharacterRenderer.SOURCE_FOOT_ANCHOR_X)*base;
@@ -71,6 +73,24 @@ public final class AttackPresentationPackageAudit {
           idleTop,idleBottom,idleCenter,action[i][0],action[i][1],centers[i]);
       if(!AttackCompositeTransform.finalGeometryWithinTolerance(r,action[i][0],action[i][1],centers[i],
           expectedHeight,expectedFoot,expectedCenter))return false;
+    }
+    return true;
+  }
+
+  /** BODY, robe and action-hand/weapon must consume one scale/origin/mirror contract in all directions. */
+  static boolean coherentLayerTransformFourWays(){
+    int[][] action={{0,50},{1,51},{0,50},{0,48}};
+    float[] centers={8.5f,9f,9.5f,10.5f};
+    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+      int source=CharacterRenderer.actionSourceIndex(d);
+      if(source<0||source>=4)return false;
+      AttackCompositeTransform.Result r=AttackCompositeTransform.normalize(
+          320f,240f,CharacterRenderer.SOURCE_PRESENTATION_SCALE,
+          CharacterRenderer.SOURCE_FOOT_ANCHOR_Y,CharacterRenderer.SOURCE_FOOT_ANCHOR_X,
+          8,45,18f,action[source][0],action[source][1],centers[source]);
+      if(!AttackCompositeTransform.coherentLayerTransform(r,
+          BODY_OFFSET_X[source],BODY_OFFSET_Y[source],ROBE_OFFSET_X[source],ROBE_OFFSET_Y[source],
+          0f,0f,centers[source],action[source][1]-8f,CharacterRenderer.bodyMirrorX(d)))return false;
     }
     return true;
   }
