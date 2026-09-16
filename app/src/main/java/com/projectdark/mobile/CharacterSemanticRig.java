@@ -50,8 +50,23 @@ public final class CharacterSemanticRig {
     Point pelvis=bandCenter(bitmap,source,l,r,t+Math.round(h*.58f),t+Math.round(h*.76f),false);
     Point shoulder=bandCenter(bitmap,source,l,r,t+Math.round(h*.24f),t+Math.round(h*.43f),false);
     Point hand=idleWalkAuthoredHand(bitmap,source,direction);
-    if(hand==null)hand=outerCluster(bitmap,source,l,r,t+Math.round(h*.30f),t+Math.round(h*.72f),direction,shoulder);
+    CharacterRenderer.Direction sourceHandDirection=sourceHandDirection(bitmap,direction);
+    if(hand==null)hand=outerCluster(bitmap,source,l,r,t+Math.round(h*.30f),t+Math.round(h*.72f),sourceHandDirection,shoulder);
     return new Anchors(foot,pelvis,shoulder,hand,authored[0],authored[1]);
+  }
+
+  /**
+   * Detached group-02 BODY bitmaps are mirrored later by CharacterRenderer for NW/SW.
+   * Their dominant-hand semantic must therefore be derived in the unmirrored source
+   * orientation first; drawActionWeapon mirrors that final screen-space handle together
+   * with the BODY. Deriving the west edge before that mirror double-flips the hand side.
+   */
+  private static CharacterRenderer.Direction sourceHandDirection(Bitmap bitmap,CharacterRenderer.Direction direction){
+    if(bitmap==null||direction==null)return direction;
+    float[] authored=authoredActionOffset(bitmap);
+    boolean detachedAction=authored[0]!=0f||authored[1]!=0f;
+    if(!detachedAction||!CharacterRenderer.bodyMirrorX(direction))return direction;
+    return direction==CharacterRenderer.Direction.NW?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
   }
 
   /**
