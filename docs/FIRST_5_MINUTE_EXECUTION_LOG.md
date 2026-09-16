@@ -210,3 +210,31 @@ Product specification: `docs/FIRST_5_MINUTE_PLAYABLE_SPEC.md`
   - `POLISH` attack presentation remains frozen KNOWN_VISUAL_FAIL and non-blocking.
 - Next recommended F5M:
   - GAMEPLAY repair `F5M-007/008` on PR #121: real target binding + executable regression gate. After Integrator VERIFIED, advance to the smallest WORLD_UX quest-offer/tracker binding increment; in parallel F5M-002 remains dependency-ready.
+
+### 2026-09-17 02:42 KST — INTEGRATOR
+- F5M: `F5M-007/008 adapted prologue quest contract`
+- STATUS: `BLOCKED`
+- BASE: `ae5d3a11db0191a2e195ef09e9580f5bef3d57d9`
+- HEAD: `882f4366040b94e347ef6d839b8d0cba6a3971e8` (PR #121 inspected; not integrated)
+- PR: `#121`
+- Implemented / inspected:
+  - Re-resolved PR #121 exact HEAD after Gameplay repair. Target is now Director-approved `combat_dummy_01`; CI now invokes `F5mAdaptedPrologueQuestAudit` after compile.
+  - Verified the audit source and RuntimeState boot-mode wiring rather than relying on PR text or compilation alone.
+  - Attack presentation remains frozen KNOWN_VISUAL_FAIL; no attack code was modified or reopened.
+- Acceptance evidence:
+  - Exact-head push workflow `Validate PROJECT DARK Android` run `35126425014` / #481 completed FAILURE. Job `104896475159`: Master DB PASS, compile PASS, `Execute F5M gameplay contract audit` FAIL; build/upload steps skipped. No APK was assembled/downloaded/released by Integrator.
+  - Reproducible root cause from source: `realDefeatIdentityAndReplayAreIdempotent()` constructs `new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE, true)` and then searches for `combat_dummy_01`. `RuntimeState` POTE boot instantiates only `PotePrototypeWorldDef.primarySpawn()`, while `combat_dummy_01` belongs to the MILLES `WorldDef` spawn list. Therefore `target == null` and the audit returns false before defeat-ledger assertions can run.
+  - Director's identity dependency itself is resolved: `combat_dummy_01` is the approved ADAPTED/ADAPTED_BALANCE Milles opening target. The remaining failure is an audit/runtime-fixture mismatch, not unresolved provenance.
+- Contract/API/data changes:
+  - None integrated. #121 remains isolated until its executable acceptance audit passes against the correct Milles runtime.
+- Provenance decisions:
+  - PASS: `Q_ADAPTED_F5M_PROLOGUE_01` remains separate from `Q_MIL_01`; `combat_dummy_01` remains adapted and is not promoted into canonical Monster_Master.
+- Needs from next agent:
+  - GAMEPLAY owner handoff: change the real-defeat audit fixture to `RuntimeState.BootMode.MILLES` (or an equivalent explicit Milles runtime fixture), rerun the exact-head executable audit, and preserve identity/replay de-duplication assertions. Do not weaken the audit by injecting a fake monster directly.
+  - WORLD_UX: F5M-002 HUD baseline remains independently dependency-ready; quest dialogue/tracker binding remains MAJOR pending domain integration.
+- Known issues:
+  - `BLOCKER` Exact PR HEAD `882f436...` fails executable F5M contract audit because it boots POTE while asserting the Milles-only `combat_dummy_01`; run `35126425014`, job `104896475159`, step 8 FAIL.
+  - `MAJOR` F5M-008 UI/runtime agreement is still not wired/evidenced; domain merge must precede or coherently accompany the first dialogue/tracker integration.
+  - `POLISH` Attack presentation remains frozen KNOWN_VISUAL_FAIL and non-blocking.
+- Next recommended F5M:
+  - Do not merge #121. Gameplay should repair the audit boot fixture only, obtain exact-head executable PASS, then Integrator can re-verify F5M-007/008 for integration. In parallel, Director/WORLD_UX may continue dependency-valid F5M-002 work.
