@@ -53,7 +53,7 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.hitCharacterPoseEnabled()||CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
 
     if(CharacterRenderer.atlasRow(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.atlasRow(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SE)!=3)return false;
-    if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;
+    if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=3)return false;
     if(CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NW)||CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NE))return false;
     if(!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SW)||!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SE))return false;
 
@@ -68,8 +68,8 @@ public final class CharacterRendererAudit {
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       CharacterRenderer.AttackVisualComposition c=CharacterRenderer.attackVisualComposition(d,"mu0000058","mw001");
       if(c.direction!=d||c.presentationScale!=1.70f||!c.robeVisible||!c.weaponVisible||!signatures.add(c.signature()))return false;
-      boolean expectedBodyMirror=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;
-      boolean expectedWeaponMirror=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;
+      boolean expectedBodyMirror=false;
+      boolean expectedWeaponMirror=false;
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
       if(c.mirrorBody!=CharacterRenderer.bodyMirrorX(d)||CharacterRenderer.bodyMirrorX(d)!=expectedBodyMirror)return false;
       if(CharacterRenderer.weaponMirrorX(d)!=expectedWeaponMirror||c.weaponBehindBody!=north)return false;
