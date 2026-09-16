@@ -26,7 +26,10 @@ public final class CanonicalActorFacing {
   public void setLocomotion(CharacterRenderer.Direction facing){if(facing!=null)locomotionFacing=facing;}
   public CharacterRenderer.Direction locomotion(){return locomotionFacing;}
   public void beginAttack(){attackFacing=locomotionFacing;}
-  public void beginAttack(float targetDx,float targetDy){attackFacing=quantize(targetDx,targetDy,locomotionFacing);}
+  public void beginAttack(float targetDx,float targetDy){
+    CharacterRenderer.Direction canonical=CanonicalMeleeTileContract.facing(0f,0f,targetDx,targetDy);
+    attackFacing=canonical==null?quantize(targetDx,targetDy,locomotionFacing):canonical;
+  }
   public void endAttack(){attackFacing=null;}
   public boolean attackLocked(){return attackFacing!=null;}
   public CharacterRenderer.Direction attack(){return attackFacing;}

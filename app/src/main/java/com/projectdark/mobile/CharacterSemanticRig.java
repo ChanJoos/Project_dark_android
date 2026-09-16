@@ -55,12 +55,6 @@ public final class CharacterSemanticRig {
     return new Anchors(foot,pelvis,shoulder,hand,authored[0],authored[1]);
   }
 
-  /**
-   * Detached group-02 BODY bitmaps are mirrored later by CharacterRenderer for NW/SW.
-   * Their dominant-hand semantic must therefore be derived in the unmirrored source
-   * orientation first; drawActionWeapon mirrors that final screen-space handle together
-   * with the BODY. Deriving the west edge before that mirror double-flips the hand side.
-   */
   private static CharacterRenderer.Direction sourceHandDirection(Bitmap bitmap,CharacterRenderer.Direction direction){
     if(bitmap==null||direction==null)return direction;
     float[] authored=authoredActionOffset(bitmap);
@@ -69,12 +63,6 @@ public final class CharacterSemanticRig {
     return direction==CharacterRenderer.Direction.NW?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
   }
 
-  /**
-   * The packaged idle/walk BODY atlas already has an audited per-direction/per-frame hand
-   * attachment table in CharacterRenderer. Reusing that authored table for the live mw001
-   * pivot avoids treating an arbitrary outer alpha edge (hair/torso/elbow) as the hand.
-   * This remains [ADAPTED] until source metadata explicitly names the original hand pivot.
-   */
   private static Point idleWalkAuthoredHand(Bitmap bitmap,Rect source,CharacterRenderer.Direction direction){
     if(bitmap==null||source==null||direction==null)return null;
     if(bitmap.getWidth()!=CharacterRenderer.SOURCE_IDLE_WALK_WIDTH||bitmap.getHeight()!=CharacterRenderer.SOURCE_ATLAS_HEIGHT)return null;
@@ -92,22 +80,22 @@ public final class CharacterSemanticRig {
   }
 
   /**
-   * WALK layers already occupy the same authored atlas-cell coordinates. Re-deriving their
-   * vertical placement from alpha pelvis/foot bands caused the robe to hang from the hips.
-   * For those shared-atlas layers (both authored offsets are exactly zero), preserve authored
-   * registration and apply no extra translation. Detached group-02 action bitmaps still need
-   * translation in their authored shared action coordinate system.
+   * The renderer already places detached action BODY and robe using their independent authored
+   * source-global offsets. Therefore this method must return only the residual LOCAL semantic
+   * correction. Including authored offsets here as well double-counted them and could move the
+   * CONTACT robe away from the BODY. Shared idle/walk atlases remain zero-translation.
    */
   public static Translation garmentTranslation(Anchors body,Anchors garment){
     if(body==null||garment==null)return new Translation(0f,0f);
     if(body.authoredOffsetX==0f&&body.authoredOffsetY==0f&&garment.authoredOffsetX==0f&&garment.authoredOffsetY==0f)
       return new Translation(0f,0f);
-    float dx=body.globalPelvisX()-garment.globalPelvisX();
-    float footDy=body.globalFootY()-garment.globalFootY();
-    float pelvisDy=body.globalPelvisY()-garment.globalPelvisY();
+    float dx=body.pelvis.x-garment.pelvis.x;
+    float footDy=body.foot.y-garment.foot.y;
+    float pelvisDy=body.pelvis.y-garment.pelvis.y;
     return new Translation(Math.round(dx),Math.round((footDy+pelvisDy)*.5f));
   }
 
+  /** Errors after renderer placement: authored offsets plus residual local translation. */
   public static float postTranslationPelvisXError(Anchors body,Anchors garment,Translation tr){
     return Math.abs(body.globalPelvisX()-(garment.globalPelvisX()+tr.x));
   }
@@ -122,14 +110,14 @@ public final class CharacterSemanticRig {
   private static float[] authoredActionOffset(Bitmap bitmap){
     if(bitmap==null)return new float[]{0f,0f};
     int w=bitmap.getWidth(),h=bitmap.getHeight();
-    if(w==17&&h==51)return new float[]{8f,8f};   // BODY source 0
-    if(w==18&&h==52)return new float[]{2f,8f};   // BODY source 1
-    if(w==19&&h==51)return new float[]{6f,9f};   // BODY source 2
-    if(w==21&&h==49)return new float[]{4f,3f};   // BODY source 3
-    if(w==14&&h==33)return new float[]{8f,20f};  // ROBE source 0
-    if(w==19&&h==22)return new float[]{3f,27f};  // ROBE source 1
-    if(w==15&&h==30)return new float[]{6f,23f};  // ROBE source 2
-    if(w==20&&h==21)return new float[]{6f,22f};  // ROBE source 3
+    if(w==17&&h==51)return new float[]{8f,8f};
+    if(w==18&&h==52)return new float[]{2f,8f};
+    if(w==19&&h==51)return new float[]{6f,9f};
+    if(w==21&&h==49)return new float[]{4f,3f};
+    if(w==14&&h==33)return new float[]{8f,20f};
+    if(w==19&&h==22)return new float[]{3f,27f};
+    if(w==15&&h==30)return new float[]{6f,23f};
+    if(w==20&&h==21)return new float[]{6f,22f};
     return new float[]{0f,0f};
   }
 

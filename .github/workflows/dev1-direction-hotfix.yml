@@ -1,0 +1,9 @@
+name: Dev1 attack direction hotfix
+on:
+  workflow_dispatch:
+jobs:
+  archived:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'direction hotfix already applied'
