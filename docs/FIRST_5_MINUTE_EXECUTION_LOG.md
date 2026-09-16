@@ -238,3 +238,35 @@ Product specification: `docs/FIRST_5_MINUTE_PLAYABLE_SPEC.md`
   - `POLISH` Attack presentation remains frozen KNOWN_VISUAL_FAIL and non-blocking.
 - Next recommended F5M:
   - Do not merge #121. Gameplay should repair the audit boot fixture only, obtain exact-head executable PASS, then Integrator can re-verify F5M-007/008 for integration. In parallel, Director/WORLD_UX may continue dependency-valid F5M-002 work.
+
+### 2026-09-17 02:00 KST — DIRECTOR
+- F5M: `F5M-001 / F5M-012 opening target resolution`
+- STATUS: `READY`
+- BASE: `f6c5a92db7f9aafdaa6aeaf1f0de04797dbcdc54`
+- HEAD: `pending this log commit`
+- PR: `#121` (inspected; remains unmerged pending executable audit evidence)
+- Implemented / inspected:
+  - Read the F5M spec and shared log first; latest Integrator verdict is BLOCKED on executable quest-contract evidence plus unresolved real opening Monster_ID.
+  - Audited canonical `master/data/Monster_Master.csv` and `master/data/Spawn_Master.csv`: source-backed monsters are tied to non-Milles hunting regions; e.g. `POTE_SPIRIT` is Lv48 in 포테의숲 and cannot be silently transplanted into the fresh Milles opening.
+  - Audited current Milles runtime `WorldDef`: it already spawns one concrete combat entity `combat_dummy_01` / `훈련용 몬스터 [B]` at (1315,715), HP 60, asset `PENDING_CROP`; `RuntimeState` instantiates that exact ID into the authoritative combat/ledger path.
+- Acceptance evidence:
+  - F5M spec explicitly permits an ADAPTED prologue when no valid source-backed opening exists and forbids invented source facts.
+  - `combat_dummy_01` is therefore approved only as the F5M adapted opening target fixture, not as a source-backed original monster. This resolves the identity dependency without fabricating Milles canon and gives PR #121 a real spawned Monster_ID to bind.
+  - Source monster/spawn masters remain unchanged; no attack-visual work reopened.
+- Contract/API/data changes:
+  - Director target contract: `Q_ADAPTED_F5M_PROLOGUE_01.targetMonsterId = combat_dummy_01` for the adapted first-five-minute slice.
+  - Target provenance: identity/placement/stats = `ADAPTED` / `ADAPTED_BALANCE`; visual asset remains `UNRESOLVED/PENDING_CROP`. Do not project HP 60 or this ID into canonical Monster_Master.
+  - Opening NPC may use existing `milles_guide_proto` only as an `ADAPTED` tutorial provider until source art/identity is resolved; do not relabel `NPC_AN`/`NPC_BANE`.
+- Provenance decisions:
+  - Canonical Pote/Abel/etc. monsters remain source-region-bound and are not eligible substitutes for Milles merely to satisfy F5M.
+  - `combat_dummy_01` is explicitly an adapted runtime fixture; this is a product decision, not a claim of original-game identity.
+- Needs from next agent:
+  - GAMEPLAY: repair PR #121 by binding its target contract to `combat_dummy_01` and make `F5mAdaptedPrologueQuestAudit.passes()` actually execute in the repository validation/test path with reproducible PASS evidence. Preserve identity filtering/replay de-duplication and unresolved/source separation.
+  - WORLD_UX: continue independent F5M-002 HUD baseline. Do not wait for attack visuals; they remain frozen.
+  - INTEGRATOR: once PR #121 has executable PASS evidence, verify F5M-007/008 against the real spawned `combat_dummy_01`; BLOCKER returns precise repair, MAJOR/POLISH does not stall the next dependency-ready increment.
+- Known issues:
+  - `BLOCKER` PR #121 audit is compiled but not executed by CI yet; GAMEPLAY owns this repair.
+  - `MAJOR` adapted quest is not yet wired to dialogue/tracker UI, so F5M-008 UI/runtime agreement remains pending after domain verification.
+  - `POLISH` attack presentation remains frozen KNOWN_VISUAL_FAIL and non-blocking.
+- Next recommended F5M:
+  - GAMEPLAY repair `F5M-007/008` on PR #121: real target binding + executable regression gate. After Integrator VERIFIED, advance to the smallest WORLD_UX quest-offer/tracker binding increment; in parallel F5M-002 remains dependency-ready.
