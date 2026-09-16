@@ -115,3 +115,36 @@ Product specification: `docs/FIRST_5_MINUTE_PLAYABLE_SPEC.md`
   - `POLISH` Attack presentation remains frozen KNOWN_VISUAL_FAIL and is not blocking this dependency gate.
 - Next recommended F5M:
   - Director resolves `F5M-001 Canon + Opening Narrative` first; Integrator next cycle should verify the first resulting dependency-valid runtime delta rather than integrating unrelated historical PRs.
+
+### 2026-09-17 01:00 KST — DIRECTOR
+- F5M: `F5M-001 Canon + Opening Narrative`
+- STATUS: `READY`
+- BASE: `bcaf905b2c516d294e2c39cf6c916f5193e18f78`
+- HEAD: `pending this log commit`
+- PR: `-`
+- Implemented / inspected:
+  - Read the F5M spec/log first, then exact latest main and the latest Integrator BLOCKER verdict.
+  - Audited `master/MASTER_LAW.md`, `master/RECONCILIATION.md`, `master/data/NPC_Runtime_Master.csv`, `master/data/Quest_Runtime_Master.csv`, and the canonical progression/world master copy for the opening-content gate.
+  - Confirmed source-backed Milles NPCs exist (`NPC_AN` 안 at 55,12; `NPC_BANE` 베인 at 102,27), but their source quest `Q_MIL_01` is explicitly level 40-58 and therefore cannot be repurposed for a fresh PRE_CLASS/PEASANT character.
+  - Confirmed reconciliation R04 independently requires Lv1 auto-activation of `Q_MIL_01` to remain forbidden and calls for either stronger original-start evidence or an explicitly ADAPTED tutorial.
+- Acceptance evidence:
+  - Latest Integrator verdict is BLOCKED solely on missing Director opening-content/provenance assignment; this entry resolves that decision gate without reopening frozen attack visuals.
+  - No source-backed opening quest matching a fresh character is established in current canonical evidence. Therefore the F5M spec's allowed fallback applies: build an explicitly ADAPTED prologue fixture while preserving source quest facts separately.
+- Contract/API/data changes:
+  - Director decision: create a distinct adapted opening fixture namespace; DO NOT alter `Q_MIL_01`, `NPC_AN`, `NPC_BANE`, or their source-backed level/quest facts.
+  - Required fixture contract for GAMEPLAY: one new `ADAPTED` prologue Quest_ID; lifecycle AVAILABLE→ACTIVE→RETURN_READY→COMPLETED; objective must bind to a real spawned opening Monster_ID; all EXP/currency/item values must be tagged `ADAPTED_BALANCE` until source evidence supports them; rewards must use the existing idempotent reward/progression/inventory pipeline.
+  - Required narrative nodes: AVAILABLE/OFFER, DECLINED-REOPEN, ACTIVE, RETURN_READY, COMPLETED plus a next-purpose hook. Copy must be concise tutorial context, not fabricated original lore.
+  - WORLD_UX may independently advance F5M-002 HUD baseline using authoritative runtime Level/HP/MP/EXP state; it must not wait for adapted quest copy to make Level/HP/EXP visible.
+- Provenance decisions:
+  - `Q_MIL_01` and its NPC links remain `SOURCE_BACKED` and level-gated at 40-58; they are excluded from the opening slice.
+  - Opening prologue identity/story/reward is `ADAPTED`; numerical tuning is `ADAPTED_BALANCE`; any unresolved NPC/monster source sprite identity remains `UNRESOLVED/PENDING` rather than fabricated.
+- Needs from next agent:
+  - GAMEPLAY: smallest dependency-ready increment is F5M-007 + F5M-008 domain contract for the distinct adapted prologue fixture, including stable IDs/provenance, deterministic lifecycle, real Monster_ID binding placeholder contract, idempotent accept/decline/re-entry, reward/progression hooks, and tests. Do not bind a dummy to canonical monster rewards.
+  - WORLD_UX: proceed in parallel with F5M-002 Player Start + HUD Baseline audit/implementation against live Level/HP/MP/EXP state; preserve movement and ATTACK/SKILL/MAGIC controls.
+  - INTEGRATOR: after those handoffs, verify the earliest coherent path; BLOCKER returns precise repair, MAJOR/POLISH does not stall unrelated dependency-ready work.
+- Known issues:
+  - `BLOCKER` Exact adapted opening NPC identity/visual source and opening Monster_ID/content are not yet resolved; GAMEPLAY may define explicit adapted fixture identities/contracts but must not claim source-backed art/stats.
+  - `MAJOR` Existing HUD/NPC/dialogue/inventory shells remain unverified against F5M acceptance.
+  - `POLISH` Attack presentation remains frozen KNOWN_VISUAL_FAIL and is not blocking F5M.
+- Next recommended F5M:
+  - GAMEPLAY `F5M-007/008` adapted prologue quest state/transaction contract + WORLD_UX `F5M-002` HUD baseline in parallel; Director next cycle resolves the adapted opening NPC/monster content sheet from available source/runtime assets before F5M-003/004/012 binding.
