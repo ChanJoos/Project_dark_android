@@ -105,7 +105,7 @@ public final class GameView extends View {
   private WorldMoveTargetController.Direction joystickDirection(){if(vx>0f&&vy>0f)return WorldMoveTargetController.Direction.SE;if(vx<0f&&vy<0f)return WorldMoveTargetController.Direction.NW;if(vx>0f)return WorldMoveTargetController.Direction.NE;return WorldMoveTargetController.Direction.SW;}
   private void setAutoDirection(float dx,float dy){float sx=dx>=0?1f:-1f,sy=dy>=0?1f:-1f;vx=.707f*sx;vy=.707f*sy;}
   private void faceTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive)setFacingDirection(t.x-state.player().x,t.y-state.player().y);}
-  private void snapshotAttackFacingTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive){playerFacing.beginAttack(t.x-state.player().x,t.y-state.player().y);playerFacing.setLocomotion(playerFacing.attack());}}
+  private void snapshotAttackFacingTarget(){RuntimeState.Monster t=combat.target();if(t!=null&&t.alive){float visiblePlayerX=worldAdapter.presentationPlayerX(),visiblePlayerY=worldAdapter.presentationPlayerY();playerFacing.beginAttack(t.x-visiblePlayerX,t.y-visiblePlayerY);playerFacing.setLocomotion(playerFacing.attack());}}
   static CharacterRenderer.Direction canonicalAttackFacing(float dx,float dy,CharacterRenderer.Direction fallback){return CanonicalActorFacing.quantize(dx,dy,fallback);}
   static boolean inventoryOverlayCancelsMovement(){return false;}
   static boolean hitCharacterPoseEnabled(){return false;}
