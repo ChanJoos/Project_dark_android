@@ -2,10 +2,7 @@ package com.projectdark.mobile;
 
 import com.projectdark.mobile.world.WorldMoveTargetController;
 
-/**
- * Package-level static/runtime-contract audit for ATTACK_PRESENTATION_003_DEVICE_REPAIR.
- * Device/visual acceptance still requires a fresh exact-APK recording.
- */
+/** Package-level contract audit for ATTACK_PRESENTATION_003_DEVICE_REPAIR. */
 public final class AttackPresentationPackageAudit {
   public static final float MAX_FOOT_ERROR_PX=1f;
   public static final float MAX_HANDLE_ERROR_PX=1f;
@@ -16,7 +13,7 @@ public final class AttackPresentationPackageAudit {
     return canonicalFacingFourWays()
         && coherentCompositionFourWays()
         && singlePosePolicyPreserved()
-        && commonPresentationScale()
+        && finalCompositeNormalizationContract()
         && singleMirrorWeaponContract();
   }
 
@@ -58,17 +55,25 @@ public final class AttackPresentationPackageAudit {
         && !CharacterRenderer.attackUsesActionPose(.95f);
   }
 
-  static boolean commonPresentationScale(){
-    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-      int source=CharacterRenderer.actionSourceIndex(d);
-      if(Math.abs(CharacterRenderer.normalizedActionScale(source)-CharacterRenderer.SOURCE_PRESENTATION_SCALE)>.0001f)return false;
-      CharacterRenderer.AttackVisualComposition c=CharacterRenderer.attackVisualComposition(d,CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID);
-      if(Math.abs(c.presentationScale-CharacterRenderer.PLAYER_RENDER_SCALE)>.0001f)return false;
+  /** Proves the package transform removes action-silhouette size/foot drift in final screen space. */
+  static boolean finalCompositeNormalizationContract(){
+    float base=CharacterRenderer.SOURCE_PRESENTATION_SCALE;
+    int idleTop=8,idleBottom=45;
+    float idleCenter=18f;
+    float expectedHeight=(idleBottom-idleTop+1)*base;
+    float expectedFoot=240f-CharacterRenderer.SOURCE_FOOT_ANCHOR_Y*base+idleBottom*base;
+    float expectedCenter=320f+(idleCenter-CharacterRenderer.SOURCE_FOOT_ANCHOR_X)*base;
+    int[][] action={{0,50},{1,51},{0,50},{0,48}};
+    float[] centers={8.5f,9f,9.5f,10.5f};
+    for(int i=0;i<action.length;i++){
+      AttackCompositeTransform.Result r=AttackCompositeTransform.normalize(
+          320f,240f,base,CharacterRenderer.SOURCE_FOOT_ANCHOR_Y,CharacterRenderer.SOURCE_FOOT_ANCHOR_X,
+          idleTop,idleBottom,idleCenter,action[i][0],action[i][1],centers[i]);
+      if(!AttackCompositeTransform.finalGeometryWithinTolerance(r,action[i][0],action[i][1],centers[i],
+          expectedHeight,expectedFoot,expectedCenter))return false;
     }
     return true;
   }
 
-  static boolean singleMirrorWeaponContract(){
-    return CharacterRenderer.weaponTransformUsesSingleMirror();
-  }
+  static boolean singleMirrorWeaponContract(){return CharacterRenderer.weaponTransformUsesSingleMirror();}
 }
