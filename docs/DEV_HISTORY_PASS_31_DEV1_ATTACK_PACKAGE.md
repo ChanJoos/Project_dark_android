@@ -4,28 +4,28 @@
 - ID: `ATTACK_PRESENTATION_003_DEVICE_REPAIR`
 - Status: `IN_DEVELOPMENT`
 - Shared main re-fetched: `472a7184f9036f9deaa5fec655ad18c4014bcfce`
-- Package branch before writes: `94ef36bb1cff74443364445d6ca8a18accd1e822`
+- Package branch input HEAD: `94ef36bb1cff74443364445d6ca8a18accd1e822`
+- Composite contract commit: `4254a49fa8db200765c7e5a66d1102f782d20fbc`
+- Regression commit: `f40211d7bb8a8bbe98d43effedf36cd90b5ee828`
 
-## User/device acceptance set
-1. Mokdo ↔ action hand registration: `PASS_CODE / DEVICE_PENDING` — #119 is merged to main.
-2. Equipped robe remains visible and BODY+robe+Mokdo share one CONTACT pose/composite: `PASS_WIRING_PREVIOUS / FINAL_COMPOSITE_PENDING`.
-3. CONTACT character apparent-size growth: `IN_DEVELOPMENT`.
-4. Three-stage startup -> single authored CONTACT pose -> recovery: `PASS / PRESERVE`.
-5. Monster/target relation and visible attack pose direction: `PASS_CODE_CANONICAL_LOCK / DEVICE_PENDING`.
+## Inputs consumed
+Canonical package history through Pass 30, current `CharacterRenderer`, `CharacterSemanticRig`, `CanonicalActorFacing`, `CanonicalMeleeTileContract`, `AttackCompositeTransform`, and `AttackPresentationPackageAudit` on the package branch. Existing authored group-02 BODY/robe offsets and the accepted single-pose CONTACT policy remain authoritative.
 
-## This pass
-Root cause for criterion 3 is that `CharacterRenderer.drawSourceAction()` still uses the fixed `SOURCE_PRESENTATION_SCALE` even though the detached group-02 BODY silhouettes have different visible alpha heights from the accepted idle cell. Numeric scale equality therefore does not imply apparent-size continuity.
+## Root cause / change
+The remaining apparent-size defect cannot be closed by equal numeric scale alone because detached action BODY silhouettes have direction-dependent visible heights. `AttackCompositeTransform` now defines the single final screen-space CONTACT transform: normalize action visible height to the accepted idle visible height, align final visible foot and center, expose one mirror pivot, place detached robe from authored offset delta plus residual semantic correction, and derive the weapon handle from the same BODY-local transform. No crop or fabricated temporal frame is introduced.
 
-Added `AttackCompositeTransform` at checkpoint `f357974ddb4569db6845b878f05982b890f0c6f3`. It derives one CONTACT transform from accepted idle alpha geometry versus action alpha geometry: normalized scale matches visible height, visible foot is locked to the accepted idle foot in final screen space, and alpha center is aligned without cropping or fabricating frames. The returned transform is explicitly intended to be consumed identically by BODY, robe, and weapon attachment.
+`AttackPresentationPackageAudit` now exercises this final geometry and shared-layer transform contract in all four directions in addition to canonical target-facing, composition presence, single-pose policy, and single-mirror weapon policy.
 
-Updated `AttackPresentationPackageAudit` at checkpoint `9313e899303f3d4c134db7d23b1779e72d449c53`. The package audit no longer treats equal numeric idle/action scale as proof; it now asserts final screen-space apparent-height, foot, and center tolerances for four representative directional action silhouettes.
+## Atomic acceptance matrix
+1. Mokdo ↔ action hand registration: **PASS runtime wiring from #119 / DEVICE_PENDING**.
+2. Equipped robe remains in CONTACT and shares action pose: **PASS source/runtime registration logic; composite runtime wiring PENDING / DEVICE_PENDING**.
+3. CONTACT apparent size continuity: **PASS transform contract + regression; renderer runtime wiring PENDING**.
+4. Logical foot continuity: **PASS transform contract + regression; renderer runtime wiring PENDING**.
+5. Single 3-stage / one CONTACT pose: **PASS; unchanged**.
+6. Canonical adjacent target -> locked attack facing: **PASS / IMPLEMENTED; DEVICE_PENDING**.
+7. BODY + robe + weapon one final transform/mirror: **PASS transform contract + regression; renderer runtime wiring PENDING**.
+8. Exact-head build: **VERIFICATION_PENDING** until workflow evidence exists for final package SHA.
+9. Device/visual acceptance: **DEVICE_PENDING / VISUAL_PENDING**; requires fresh exact-APK four-direction recording after final renderer wiring.
 
-## Remaining implementation gate
-- `CharacterRenderer.drawSourceAction()` must consume `AttackCompositeTransform` using actual idle/action alpha bounds and apply its single scale/origin to BODY, robe and action-hand/weapon.
-- Robe placement must remain in the same normalized composite coordinate system; no independent layer scale or second authored-offset correction.
-- Weapon handle must be transformed from the action BODY local dominantHand through that same composite transform, then mirrored exactly once where required.
-- Compile/package audit must pass at exact branch HEAD.
-- No package PR/handoff until those runtime wiring criteria are implemented. Device/visual states remain pending until a fresh exact-APK four-direction recording.
-
-## Evidence discipline
-No temporal group-02 semantics were invented. The accepted three-stage/single-pose policy remains unchanged. This is a partial implementation checkpoint and does not complete the work package.
+## Remaining risk / mandatory next action
+This checkpoint deliberately does not claim package completion. `CharacterRenderer.drawSourceAction()` still uses `SOURCE_PRESENTATION_SCALE` directly and independently reconstructs BODY/robe/weapon screen coordinates. The next run MUST resume this package and wire `AttackCompositeTransform.Result` into `drawSourceAction()` and `drawActionWeapon()` so BODY, robe and weapon consume the same normalized scale/origin/mirror pivot. Then compile/test exact HEAD and only promote to `IMPLEMENTED / VERIFICATION_PENDING` if every implementable criterion passes. No unrelated work should be selected first.
