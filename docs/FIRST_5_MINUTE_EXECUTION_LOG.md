@@ -148,3 +148,33 @@ Product specification: `docs/FIRST_5_MINUTE_PLAYABLE_SPEC.md`
   - `POLISH` Attack presentation remains frozen KNOWN_VISUAL_FAIL and is not blocking F5M.
 - Next recommended F5M:
   - GAMEPLAY `F5M-007/008` adapted prologue quest state/transaction contract + WORLD_UX `F5M-002` HUD baseline in parallel; Director next cycle resolves the adapted opening NPC/monster content sheet from available source/runtime assets before F5M-003/004/012 binding.
+
+### 2026-09-17 01:41 KST — INTEGRATOR
+- F5M: `F5M-007/008 adapted prologue quest contract`
+- STATUS: `BLOCKED`
+- BASE: `cd2b2f47a6410049ee6382616b148a48b2a62dc1`
+- HEAD: `d535d70c6d06c19cbd825326300ab8ada49303aa` (PR #121 inspected; not integrated)
+- PR: `#121`
+- Implemented / inspected:
+  - Resolved exact PR #121 HEAD `d535d70c6d06c19cbd825326300ab8ada49303aa`, based directly on Director main `cd2b2f47a6410049ee6382616b148a48b2a62dc1`; PR is open and mergeable.
+  - Audited the two-file delta: isolated `Q_ADAPTED_F5M_PROLOGUE_01`, ADAPTED/ADAPTED_BALANCE provenance, deterministic AVAILABLE→ACTIVE→RETURN_READY contract, unresolved-target activation guard, decline/re-entry behavior, MONSTER_DEFEATED identity filtering/replay de-duplication, and deferred F5M-024 completion transaction ownership.
+  - Preserved attack presentation as frozen KNOWN_VISUAL_FAIL; no attack delta inspected or modified.
+- Acceptance evidence:
+  - Exact HEAD push workflow `Validate PROJECT DARK Android` run `35120121539` / #476 succeeded; job `104875477594` passed Master DB validation, compile, debug build and upload steps. Per overnight rule, Integrator did not assemble/download/release any APK and does not treat build success as device/F5M acceptance.
+  - The new `F5mAdaptedPrologueQuestAudit.passes()` contains useful deterministic cases, including real `RuntimeState` MONSTER_DEFEATED identity/replay coverage, but the observed workflow has no step that executes this audit. Therefore compile success proves the audit compiles, not that its acceptance cases run/pass.
+  - F5M-007/008 acceptance requires deterministic/idempotent transitions and runtime/UI agreement; the domain contract is not wired into the active runtime/UI path yet, and exact opening Monster_ID remains unresolved by Director. It cannot be VERIFIED or coherently integrated as an active acceptance-path increment yet.
+- Contract/API/data changes:
+  - Proposed only on PR #121; no main runtime integration mutation this cycle.
+- Provenance decisions:
+  - PASS: source-backed `Q_MIL_01` namespace is not reused; adapted fixture provenance is explicit. Opening monster identity remains unresolved rather than fabricated.
+- Needs from next agent:
+  - GAMEPLAY: make the deterministic audit executable in the repository's validator/test path (not merely compilable) and provide reproducible PASS evidence; retain unresolved-target guard.
+  - DIRECTOR: resolve the adapted opening Monster_ID/content identity so the quest can bind to an actual spawned target under F5M-012.
+  - WORLD_UX: continue independent F5M-002 HUD baseline; do not bind quest offer/tracker to PR #121 until authoritative target/runtime wiring exists.
+- Known issues:
+  - `BLOCKER` Repro: inspect workflow run `35120121539`, job `104875477594`; steps validate Master DB and compile/build only, with no execution of `F5mAdaptedPrologueQuestAudit.passes()`. The F5M-007/008 deterministic/idempotent acceptance path therefore lacks executed regression evidence.
+  - `BLOCKER` Runtime acceptance path cannot activate the adapted quest without a Director-resolved real opening Monster_ID; this is intentionally enforced by `BLOCKED_TARGET_UNRESOLVED` and remains an upstream F5M-001/012 handoff.
+  - `MAJOR` PR #121 is domain-isolated and not yet wired to dialogue/tracker/runtime UI, so F5M-008 immediate UI/runtime agreement is not evidenced.
+  - `POLISH` Attack presentation remains frozen KNOWN_VISUAL_FAIL and is non-blocking.
+- Next recommended F5M:
+  - Do not merge #121 yet. GAMEPLAY should add an actually executed contract regression gate while Director resolves opening Monster_ID; then Integrator can re-verify the coherent F5M-007/008→012 path and merge only when the acceptance evidence is executable and dependency-valid.
