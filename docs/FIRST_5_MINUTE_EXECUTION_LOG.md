@@ -86,3 +86,32 @@ Product specification: `docs/FIRST_5_MINUTE_PLAYABLE_SPEC.md`
   - `MAJOR` Existing HUD/world/UI code must be audited against F5M-002/013/019/020/021 after assignment; code presence alone is not acceptance evidence.
 - Next recommended F5M:
   - Resume from the newest Director + Gameplay handoff. If F5M-002 is assigned independently, make the HUD read authoritative level/HP/EXP state and prove no overlap/regression without touching frozen attack visuals.
+
+### 2026-09-17 00:41 KST — INTEGRATOR
+- F5M: `PROGRAM / active acceptance path`
+- STATUS: `BLOCKED`
+- BASE: `d2f2eb230e2835cbbf0506de10fed509121f8df6`
+- HEAD: `d2f2eb230e2835cbbf0506de10fed509121f8df6` (no runtime integration delta)
+- PR: `-`
+- Implemented / inspected:
+  - Read `FIRST_5_MINUTE_PLAYABLE_SPEC.md` first and then this shared log; resolved exact latest main and recent PR/developer lineage.
+  - Confirmed PR #120 attack presentation package is already merged before F5M bootstrap and remains frozen `KNOWN_VISUAL_FAIL`; no attack-polish reopening or stale PR integration performed.
+  - Reviewed recent open PR #116 and rejected it as an F5M integration candidate: it is stale/diverged (`base 25dc5b0`, `head 1e26e8a`) and its canonical melee intent is already represented by later merged combat work.
+  - No coherent post-bootstrap F5M runtime delta exists yet to integrate; latest main change is WORLD_UX's dependency-gate log only.
+- Acceptance evidence:
+  - Exact main `d2f2eb230e2835cbbf0506de10fed509121f8df6` has push-triggered `Validate PROJECT DARK Android` run `35115196174` / run #471 = SUCCESS. This is compile/CI evidence only, not device/visual or F5M end-to-end acceptance.
+  - Active path is blocked before F5M-001: shared log still contains no Director-resolved opening NPC/monster/quest/reward/progression provenance and no Gameplay authoritative quest/progression/reward handoff.
+  - Therefore F5M-029 cannot be meaningfully exercised without inventing upstream identities/contracts; no debug intervention or fabricated canonical values were introduced.
+- Contract/API/data changes:
+  - None.
+- Provenance decisions:
+  - All opening content remains UNRESOLVED until Director source/canon audit publishes it; existing prototype values are not promoted by inference.
+- Needs from next agent:
+  - DIRECTOR owner handoff: complete F5M-001 Content Sheet sufficiently to name opening NPC, monster, quest, objective/reward/progression facts with provenance and assign dependency-ready work.
+  - GAMEPLAY owner handoff after/alongside Director resolution: publish authoritative F5M-007/008/012/015/017/020/024/027 contracts needed by WORLD_UX and later integration.
+- Known issues:
+  - `BLOCKER` Repro: read current spec + log at exact main `d2f2eb2`; after bootstrap, no Director F5M-001 resolution/assignment and no Gameplay contract handoff exists, so the scripted spawn→NPC→quest→combat→reward→save acceptance path has no authoritative content/state contract to execute.
+  - `MAJOR` Existing HUD/NPC/dialogue/inventory/combat shells remain unverified against F5M acceptance; code presence and run #471 success do not promote them to VERIFIED.
+  - `POLISH` Attack presentation remains frozen KNOWN_VISUAL_FAIL and is not blocking this dependency gate.
+- Next recommended F5M:
+  - Director resolves `F5M-001 Canon + Opening Narrative` first; Integrator next cycle should verify the first resulting dependency-valid runtime delta rather than integrating unrelated historical PRs.
