@@ -1,50 +1,9 @@
 name: Dev1 attack direction hotfix
 on:
-  push:
-    branches: [dev1/attack-presentation-003-package]
-permissions:
-  contents: write
+  workflow_dispatch:
 jobs:
-  fix-direction:
-    if: ${{ !contains(github.event.head_commit.message, '[direction-hotfix-applied]') }}
+  archived:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: dev1/attack-presentation-003-package
-          fetch-depth: 0
-      - name: Correct authored group-02 direction mapping
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('app/src/main/java/com/projectdark/mobile/CharacterRenderer.java')
-          s=p.read_text()
-          old='public static boolean bodyMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;} public static boolean weaponMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;}'
-          new='public static boolean bodyMirrorX(Direction d){return false;} public static boolean weaponMirrorX(Direction d){return false;}'
-          assert old in s
-          s=s.replace(old,new)
-          old='public static int actionSourceIndex(Direction direction){if(direction==null)return -1;switch(direction){case NE:return 0;case SE:return 1;case NW:return 2;case SW:return 3;default:return -1;}}'
-          new='public static int actionSourceIndex(Direction direction){return atlasRow(direction);}'
-          assert old in s
-          s=s.replace(old,new)
-          p.write_text(s)
-
-          p=Path('app/src/main/java/com/projectdark/mobile/CharacterRendererAudit.java')
-          s=p.read_text()
-          old='if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=3)return false;'
-          new='if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=3)return false;'
-          assert old in s
-          s=s.replace(old,new)
-          old='boolean expectedBodyMirror=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;\n      boolean expectedWeaponMirror=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;'
-          new='boolean expectedBodyMirror=false;\n      boolean expectedWeaponMirror=false;'
-          assert old in s
-          s=s.replace(old,new)
-          p.write_text(s)
-          PY
-      - name: Commit exact direction fix
-        run: |
-          git config user.name 'PROJECT DARK Dev1'
-          git config user.email 'actions@users.noreply.github.com'
-          git add app/src/main/java/com/projectdark/mobile/CharacterRenderer.java app/src/main/java/com/projectdark/mobile/CharacterRendererAudit.java
-          git commit -m 'Dev1: align attack motion to target direction [direction-hotfix-applied]'
-          git push origin HEAD:dev1/attack-presentation-003-package
+      - run: echo 'direction hotfix already applied'
