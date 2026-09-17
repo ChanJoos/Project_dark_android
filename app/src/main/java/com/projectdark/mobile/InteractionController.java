@@ -50,10 +50,7 @@ public final class InteractionController {
     return TickResult.WALKING;
   }
 
-  /**
-   * Advances tap-to-approach using the canonical four screen-diagonal direction vocabulary.
-   * The controller never directly mutates player coordinates; RuntimeState owns collision checks.
-   */
+  /** Advances tap-to-approach without owning quest/reward mutations. */
   public TickResult tick(RuntimeState state, float dt){
     if(state == null || !state.player().alive){ cancel(); return TickResult.IDLE; }
     if(approachNpc == null) return TickResult.IDLE;
@@ -75,7 +72,6 @@ public final class InteractionController {
     }
 
     blockedClock += dt;
-    // [B] deterministic perpendicular detours, preserving four-direction diagonal movement.
     boolean moved = state.tryMove(dx, -dy);
     if(!moved) moved = state.tryMove(-dx, dy);
     if(moved){
@@ -97,25 +93,9 @@ public final class InteractionController {
   }
 
   public void dismissDialog(){ dialogNpc = null; }
-
-  /** Manual movement/combat input has priority over mobile auto-approach. */
-  public void cancelApproach(){
-    approachNpc = null;
-    blockedClock = 0f;
-    moveX = moveY = 0f;
-  }
-
-  public void cancel(){
-    cancelApproach();
-    dialogNpc = null;
-    feedback = null;
-  }
-
-  public String consumeFeedback(){
-    String out = feedback;
-    feedback = null;
-    return out;
-  }
+  public void cancelApproach(){ approachNpc = null; blockedClock = 0f; moveX = moveY = 0f; }
+  public void cancel(){ cancelApproach(); dialogNpc = null; feedback = null; }
+  public String consumeFeedback(){ String out = feedback; feedback = null; return out; }
 
   private void updateDirection(RuntimeState state){
     float dx = approachNpc.x - state.player().x;
