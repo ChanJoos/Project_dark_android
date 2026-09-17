@@ -17,7 +17,7 @@ public final class GameView extends View {
   private static final float W=960f,H=540f;
   private static final float JOY_X=92f,JOY_Y=454f,JOY_R=58f;
   private static final float SLOT=42f,SLOT_GAP=4f,SLOT_X0=696f,SLOT_Y0=374f;
-  private static final float ATK_X=914f,ATK_Y=493f,ATK_R=36f;
+  private static final float ATK_X=920f,ATK_Y=498f,ATK_R=38f;
   private static final float MODE_X=810f,MODE_Y=495f,MODE_R=22f;
   private static final float AUTO_X=862f,AUTO_Y=495f,AUTO_R=24f;
   private static final float UTILITY_X0=684f,UTILITY_Y0=30f,UTILITY_STEP=42f,UTILITY_R=16f;
@@ -54,13 +54,13 @@ public final class GameView extends View {
 
   private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;update(dt);camera.follow(worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY());invalidate();postDelayed(this,16);}};
 
-  public GameView(Context c){super(c);setKeepScreenOn(true);F5mSaveStore.restoreRewardsActive(state.rpg());worldAdapter.snapCameraToPlayer();}
+  public GameView(Context c){super(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());worldAdapter.snapCameraToPlayer();}
   public void resume(){if(running)return;running=true;last=SystemClock.uptimeMillis();post(loop);}
   public void pause(){F5mSaveStore.saveQuestActive(f5mQuest);F5mSaveStore.saveRewardsActive(state.rpg());running=false;removeCallbacks(loop);}
 
   private void update(float dt){
     feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);
-    combat.tick(dt);state.tick(dt);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
+    combat.tick(dt);state.tick(dt);int levelUps=ProgressionLeveling.normalize(state.rpg());if(levelUps>0)showReward("LEVEL UP · Lv."+state.rpg().normalLevel());consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){action=Action.IDLE;playerFacing.endAttack();interaction.cancel();combat.cancelApproach();worldAdapter.cancel();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
     WorldRuntimeAdapter.FrameSnapshot navigation=worldAdapter.tickNavigation(dt);
@@ -97,6 +97,8 @@ public final class GameView extends View {
   private int inventoryQuantity(String itemId){for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(itemId))return row.quantity;return 0;}
   private String itemDisplayName(String itemId){for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(itemId))return row.name;return itemId;}
   private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc npc:state.npcs())if(id.equals(npc.id))return npc;return null;}
+  private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)&&m.alive)return m;return null;}
+  private void autoNavigateQuest(){F5mAdaptedPrologueQuest.State qs=f5mQuest.state();worldAdapter.cancelForAction();interaction.cancelApproach();combat.cancelApproach();if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE||qs==F5mAdaptedPrologueQuest.State.RETURN_READY){RuntimeState.Npc npc=findNpc("milles_guide_proto");if(npc!=null){worldAdapter.requestNpcApproach(npc.id);showFeedback("퀘스트 자동이동 · "+npc.name,FeedbackTone.INFO);}return;}if(qs==F5mAdaptedPrologueQuest.State.ACTIVE){RuntimeState.Monster m=findMonster(f5mQuest.objectiveMonsterId());if(m!=null){combat.selectTarget(m);worldAdapter.requestMonsterApproach(m.id,48f);showFeedback("퀘스트 자동이동 · "+m.name,FeedbackTone.INFO);}else showFeedback("퀘스트 목표를 찾을 수 없습니다",FeedbackTone.WARN);}}
 
   private void executeReadyCombatIntent(){CombatController.Intent ready=combat.consumeReadyIntent();action=Action.IDLE;if(ready==CombatController.Intent.ATTACK)attack();else if(ready==CombatController.Intent.CAST)cast();else if(ready==CombatController.Intent.SKILL)skill();else if(ready==CombatController.Intent.KICK)kick();}
   private void beginCombatApproach(CombatController.Intent intent){worldAdapter.cancelForAction();if(combat.beginApproach(intent)){RuntimeState.Monster target=combat.approachTarget();if(target!=null)worldAdapter.requestMonsterApproach(target.id,combat.intentRange());showFeedback("타깃으로 이동",FeedbackTone.INFO);}}
@@ -202,6 +204,7 @@ public final class GameView extends View {
       if(interaction.dialogOpen()){if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY&&inside(x,y,500,408,606,442)){F5mTurnInCoordinator.Result tr=F5mQuestUiFlow.confirmTurnIn(f5mQuest,state.rpg());String msg=F5mQuestUiFlow.completionMessage(tr);if(tr==F5mTurnInCoordinator.Result.COMPLETED){showReward(msg);interaction.dismissDialog();worldAdapter.cancelForAction();}else showFeedback(msg,tr==F5mTurnInCoordinator.Result.ALREADY_COMPLETED?FeedbackTone.INFO:FeedbackTone.WARN);return true;}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,500,408,606,442)){F5mAdaptedPrologueQuest.AcceptResult r=f5mQuest.accept();showFeedback(r==F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED?"퀘스트 수락 · 첫 훈련":"퀘스트 상태 유지",FeedbackTone.INFO);return true;}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,620,408,726,442)){f5mQuest.decline();interaction.dismissDialog();worldAdapter.cancelForAction();showFeedback("퀘스트 거절 · 다시 대화할 수 있습니다",FeedbackTone.INFO);return true;}interaction.dismissDialog();worldAdapter.cancelForAction();showFeedback("대화 종료",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0,UTILITY_Y0,UTILITY_R+4)){inventoryOpen=!inventoryOpen;showFeedback(inventoryOpen?"인벤토리 열림":"인벤토리 닫힘",FeedbackTone.INFO);return true;}
       if(handleInventoryTouch(x,y))return true;
+      if(inside(x,y,14,124,214,224)&&F5mQuestUiFlow.showQuickQuest(f5mQuest)){autoNavigateQuest();return true;}
       if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){joy=true;directStepClock=0f;pressedControl="JOY";worldAdapter.cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}
       if(slotRect(0).contains(x,y)){pressedControl="SKILL";skill();return true;}
       if(slotRect(1).contains(x,y)){pressedControl="MAG";cast();return true;}
