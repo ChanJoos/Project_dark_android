@@ -1,1 +1,301 @@
-PLACEHOLDER
+package com.projectdark.mobile;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * RPG/Progression-owned runtime state for reward -> auto-loot -> inventory -> equipment -> stat recomputation.
+ *
+ * Design constraints:
+ * - Content IDs/values may only enter through canonical definitions.
+ * - Unknown EXP/drop/stat data stays PENDING; this class never fabricates rewards.
+ * - Monster item rewards never create ground entities; resolved rewards mutate inventory exactly once.
+ * - Equipment modifiers are additive projections over immutable base stats. They never mutate base stats.
+ */
+public final class RpgProgressionState {
+  public enum Evidence { O,V,U,B,ADAPTED,PENDING,FAN }
+  public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
+  public enum RewardSource { CANONICAL, ADAPTED_TEST, UNRESOLVED }
+  public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
+  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
+  public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
+
+  public enum ProgressionNode {
+    COMMONER,
+    BASIC_JOB,
+    LV99_MASTER,
+    JOB_CHANGE,
+    PURE_JOB,
+    POST_CHOICE_LV99,
+    FIRST_ADVANCEMENT
+  }
+
+  public static final String ARMOR_SLOT="갑옷";
+  public static final String WEAPON_SLOT="무기";
+
+  public static final class ItemDefinition {
+    public final String itemId,name,equipSlot,appearanceId;
+    public final AnimationAction basicAttackAction;
+    public final Integer requiredLevel;
+    public final Set<String> allowedJobCodes;
+    public final boolean jobRestrictionResolved;
+    public final String attackElement,defenseElement;
+    public final Map<String,Integer> statModifiers;
+    public final Evidence evidence;
+
+    public ItemDefinition(String itemId,String name,String equipSlot,Integer requiredLevel,Set<String> allowedJobCodes,
+        boolean jobRestrictionResolved,String attackElement,String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
+      this(itemId,name,equipSlot,null,null,requiredLevel,allowedJobCodes,jobRestrictionResolved,
+          attackElement,defenseElement,statModifiers,evidence);
+    }
+    public ItemDefinition(String itemId,String name,String equipSlot,String appearanceId,Integer requiredLevel,Set<String> allowedJobCodes,
+        boolean jobRestrictionResolved,String attackElement,String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
+      this(itemId,name,equipSlot,appearanceId,null,requiredLevel,allowedJobCodes,jobRestrictionResolved,
+          attackElement,defenseElement,statModifiers,evidence);
+    }
+    public ItemDefinition(String itemId,String name,String equipSlot,String appearanceId,AnimationAction basicAttackAction,
+        Integer requiredLevel,Set<String> allowedJobCodes,boolean jobRestrictionResolved,String attackElement,
+        String defenseElement,Map<String,Integer> statModifiers,Evidence evidence){
+      this.itemId=itemId;this.name=name;this.equipSlot=equipSlot;this.requiredLevel=requiredLevel;
+      this.appearanceId=appearanceId;this.basicAttackAction=basicAttackAction;
+      this.allowedJobCodes=Collections.unmodifiableSet(new LinkedHashSet<>(allowedJobCodes));
+      this.jobRestrictionResolved=jobRestrictionResolved;
+      this.attackElement=attackElement;this.defenseElement=defenseElement;
+      this.statModifiers=Collections.unmodifiableMap(new LinkedHashMap<>(statModifiers));this.evidence=evidence;
+    }
+    public boolean equippable(){return equipSlot!=null&&!equipSlot.isEmpty();}
+    public boolean unrestrictedJob(){return jobRestrictionResolved&&allowedJobCodes.isEmpty();}
+  }
+
+  public static final class RewardResolution {
+    public final long combatSequence;
+    public final String monsterId;
+    public final RewardStatus status;
+    public final Integer exp;
+    public final Map<String,Integer> autoLootedItems;
+    public final Map<String,AutoLootResult> itemOutcomes;
+    public final RewardSource source;
+    public final String policyId,evidence;
+    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,Map<String,Integer> autoLootedItems){
+      this(combatSequence,monsterId,status,exp,autoLootedItems,
+          Collections.<String,AutoLootResult>emptyMap(),
+          status==RewardStatus.RESOLVED?RewardSource.CANONICAL:RewardSource.UNRESOLVED,null,null);
+    }
+    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,
+        Map<String,Integer> autoLootedItems,Map<String,AutoLootResult> itemOutcomes,
+        RewardSource source,String policyId,String evidence){
+      this.combatSequence=combatSequence;this.monsterId=monsterId;this.status=status;this.exp=exp;
+      this.autoLootedItems=Collections.unmodifiableMap(new LinkedHashMap<>(autoLootedItems));
+      this.itemOutcomes=Collections.unmodifiableMap(new LinkedHashMap<>(itemOutcomes));
+      this.source=source==null?RewardSource.UNRESOLVED:source;this.policyId=policyId;this.evidence=evidence;
+    }
+  }
+
+  public static final class StatSnapshot {
+    public final Map<String,Integer> base,equipment,total;
+    StatSnapshot(Map<String,Integer> base,Map<String,Integer> equipment,Map<String,Integer> total){
+      this.base=Collections.unmodifiableMap(new LinkedHashMap<>(base));
+      this.equipment=Collections.unmodifiableMap(new LinkedHashMap<>(equipment));
+      this.total=Collections.unmodifiableMap(new LinkedHashMap<>(total));
+    }
+  }
+
+  private static final int INVENTORY_STACK_LIMIT=999999; // safety ceiling only; per-item canonical stack limits remain PENDING.
+  private final Map<String,ItemDefinition> items=new LinkedHashMap<>();
+  private final Map<String,Integer> inventory=new LinkedHashMap<>();
+  private final Map<String,String> equipmentBySlot=new LinkedHashMap<>();
+  private final Map<String,Integer> baseStats=new LinkedHashMap<>();
+  private final List<RewardResolution> rewardHistory=new ArrayList<>();
+  private final CanonicalMonsterRewardCatalog monsterRewards=new CanonicalMonsterRewardCatalog();
+  private final AdaptedPrototypeRewardCatalog prototypeRewards=new AdaptedPrototypeRewardCatalog();
+  private long lastCombatSequence=0L;
+
+  public static final String PLAYTEST_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
+  public static final String PLAYTEST_ROBE_APPEARANCE_ID="mu0000058";
+  public static final String PLAYTEST_WEAPON_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
+  public static final String PLAYTEST_WEAPON_APPEARANCE_ID="mw001";
+  public static final String PLAYTEST_WEAPON_SOURCE_EVIDENCE="Asset_Master mw001 목도 SOURCE_NAMED; COMMONER equip and SWING are ADAPTED PLAYTEST FIXTURE";
+
+  private ProgressionNode progressionNode=ProgressionNode.COMMONER;
+  private String currentJobCode="COMMONER";
+  private Integer normalLevel=1;
+  // EXP starts at zero and level-up uses only master/data/Level_EXP_Curve.csv thresholds.
+  private Long normalExp=0L;
+  private Long gold=0L;
+
+  public RpgProgressionState(){
+    Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
+    Set<String> anyJob=Collections.<String>emptySet();
+    Set<String> physicalJobs=jobSet("WARRIOR","ROGUE","MARTIAL_ARTIST");
+    Set<String> magicJobs=jobSet("MAGE","CLERIC");
+
+    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_SHOES","신발","신발",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_GORU","고루반지","반지",11,magicJobs,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_WATER_PEARL","바다의진주목걸이","목걸이",11,anyJob,true,"바다",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_WATER_LEATHER","바다의가죽벨트","벨트",11,anyJob,true,null,"바다",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_EARTH_PEARL","대지의진주목걸이","목걸이",11,anyJob,true,"대지",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_EARTH_LEATHER","대지의가죽벨트","벨트",11,anyJob,true,null,"대지",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_WIND_PEARL","바람의진주목걸이","목걸이",11,anyJob,true,"바람",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_WIND_LEATHER","바람의가죽벨트","벨트",11,anyJob,true,null,"바람",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_NECK_FIRE_PEARL","화염의진주목걸이","목걸이",11,anyJob,true,"화염",null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_BELT_FIRE_LEATHER","화염의가죽벨트","벨트",11,anyJob,true,null,"화염",noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,
+        "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
+    registerItem(new ItemDefinition(PLAYTEST_ROBE_ITEM_ID,"루어스레더로브",ARMOR_SLOT,
+        PLAYTEST_ROBE_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
+        PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
+    inventory.put(PLAYTEST_ROBE_ITEM_ID,1);
+    inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
+  }
+
+  private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
+  private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
+  public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
+  public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
+  public Map<String,String> equipment(){return Collections.unmodifiableMap(equipmentBySlot);}
+  public ItemDefinition equippedDefinition(String slot){
+    String itemId=equipmentBySlot.get(slot);return itemId==null?null:items.get(itemId);
+  }
+  public List<RewardResolution> rewardHistory(){return Collections.unmodifiableList(rewardHistory);}
+  public ProgressionNode progressionNode(){return progressionNode;}
+  public String currentJobCode(){return currentJobCode;}
+  public Integer normalLevel(){return normalLevel;}
+  public Long normalExp(){return normalExp;}
+  public Long gold(){return gold;}
+  public void restoreGold(long value){gold=Math.max(0L,value);}
+  public void grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;normalizeCanonicalLevel();}
+
+  /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */
+  public void restoreProgression(int level,long exp){
+    normalLevel=Math.max(1,Math.min(99,level));
+    normalExp=Math.max(0L,exp);
+    normalizeCanonicalLevel();
+  }
+
+  /** Applies only canonical level thresholds and carries overflow EXP to the next level. */
+  public int normalizeCanonicalLevel(){
+    int before=normalLevel==null?1:normalLevel;
+    int level=before;long exp=normalExp==null?0L:normalExp;
+    while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
+    normalLevel=level;normalExp=exp;return level-before;
+  }
+
+  /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
+  public RequirementResult evaluateRequirements(String itemId,String jobCode,Integer level){
+    ItemDefinition def=items.get(itemId);
+    if(def==null)return RequirementResult.UNKNOWN_ITEM;
+    if(def.requiredLevel!=null&&level==null)return RequirementResult.PENDING;
+    if(def.requiredLevel!=null&&level<def.requiredLevel)return RequirementResult.LEVEL_NOT_MET;
+    if(!def.jobRestrictionResolved)return RequirementResult.PENDING;
+    if(!def.allowedJobCodes.isEmpty()&&(jobCode==null||!def.allowedJobCodes.contains(jobCode)))return RequirementResult.JOB_NOT_MET;
+    return RequirementResult.MET;
+  }
+
+  public RequirementResult currentRequirements(String itemId){return evaluateRequirements(itemId,currentJobCode,normalLevel);}
+
+  /**
+   * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.
+   * Resolved item rewards are inserted directly into inventory; no world-drop entity or pickup phase exists.
+   */
+  public void consumeCombat(List<CombatLedger.Event> events,RuntimeState runtime){
+    for(CombatLedger.Event e:events){
+      if(e.sequence<=lastCombatSequence)continue;
+      lastCombatSequence=e.sequence;
+      if(e.type!=CombatLedger.Type.MONSTER_DEFEATED)continue;
+      resolveMonsterDefeat(e);
+    }
+  }
+
+  private void resolveMonsterDefeat(CombatLedger.Event e){
+    CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
+    if(reward==null){
+      AdaptedPrototypeRewardCatalog.Entry prototype=prototypeRewards.find(e.targetId);
+      if(prototype!=null){
+        Map<String,Integer> granted=new LinkedHashMap<>();
+        Map<String,AutoLootResult> outcomes=new LinkedHashMap<>();
+        AutoLootResult result=autoLootResolvedItem(prototype.itemId,prototype.quantity);
+        outcomes.put(prototype.itemId,result);
+        if(result==AutoLootResult.LOOTED)granted.put(prototype.itemId,prototype.quantity);
+        grantAdaptedReward(AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD);
+        rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,granted,outcomes,
+            RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence));
+        trimRewardHistory();
+        return;
+      }
+      rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,null,Collections.<String,Integer>emptyMap()));
+      trimRewardHistory();
+      return;
+    }
+
+    Map<String,Integer> looted=new LinkedHashMap<>();
+    Map<String,AutoLootResult> outcomes=new LinkedHashMap<>();
+    for(CanonicalMonsterRewardCatalog.DropHint hint:reward.dropHints){
+      if(!hint.emissionResolved())continue;
+      AutoLootResult result=autoLootResolvedItem(hint.itemId,hint.quantity);
+      outcomes.put(hint.itemId,result);
+      if(result==AutoLootResult.LOOTED)looted.put(hint.itemId,value(looted,hint.itemId)+hint.quantity);
+    }
+    if(reward.exp!=null)normalExp+=reward.exp.longValue();
+    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes,
+        RewardSource.CANONICAL,"CANONICAL_MONSTER_REWARD",reward.expEvidence==null?null:reward.expEvidence.name()));
+    trimRewardHistory();
+  }
+
+  /**
+   * Direct-inventory endpoint for a reward whose item identity and quantity were already resolved upstream.
+   * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
+   */
+  public AutoLootResult autoLootResolvedItem(String itemId,int quantity){
+    if(quantity<=0)return AutoLootResult.INVALID_QUANTITY;
+    if(!items.containsKey(itemId))return AutoLootResult.INVALID_ITEM;
+    int current=inventory.containsKey(itemId)?inventory.get(itemId):0;
+    if(current>INVENTORY_STACK_LIMIT-quantity)return AutoLootResult.INVENTORY_FULL;
+    inventory.put(itemId,current+quantity);
+    return AutoLootResult.LOOTED;
+  }
+
+  public EquipResult equip(String itemId){
+    Integer owned=inventory.get(itemId);
+    if(owned==null||owned<=0)return EquipResult.ITEM_NOT_OWNED;
+    ItemDefinition def=items.get(itemId);
+    if(def==null)return EquipResult.UNKNOWN_ITEM;
+    if(!def.equippable())return EquipResult.NOT_EQUIPPABLE;
+    if(itemId.equals(equipmentBySlot.get(def.equipSlot))){
+      equipmentBySlot.remove(def.equipSlot);
+      return EquipResult.UNEQUIPPED;
+    }
+    RequirementResult requirements=currentRequirements(itemId);
+    if(requirements==RequirementResult.PENDING)return EquipResult.REQUIREMENT_PENDING;
+    if(requirements!=RequirementResult.MET)return EquipResult.REQUIREMENT_NOT_MET;
+    equipmentBySlot.put(def.equipSlot,itemId);
+    return EquipResult.EQUIPPED;
+  }
+
+  public StatSnapshot recomputeStats(){
+    Map<String,Integer> equip=new LinkedHashMap<>();
+    for(String itemId:equipmentBySlot.values()){
+      ItemDefinition def=items.get(itemId);if(def==null)continue;
+      for(Map.Entry<String,Integer> m:def.statModifiers.entrySet())equip.put(m.getKey(),value(equip,m.getKey())+m.getValue());
+    }
+    Map<String,Integer> total=new LinkedHashMap<>(baseStats);
+    for(Map.Entry<String,Integer> m:equip.entrySet())total.put(m.getKey(),value(total,m.getKey())+m.getValue());
+    return new StatSnapshot(baseStats,equip,total);
+  }
+
+  private void trimRewardHistory(){while(rewardHistory.size()>48)rewardHistory.remove(0);}
+  private static int value(Map<String,Integer> map,String key){Integer v=map.get(key);return v==null?0:v;}
+}
