@@ -430,3 +430,16 @@ Product specification: `docs/FIRST_5_MINUTE_PLAYABLE_SPEC.md`
   - `POLISH` attack presentation remains frozen KNOWN_VISUAL_FAIL and non-blocking.
 - Next recommended F5M:
   - GAMEPLAY repair `F5M-007/008` on PR #121: real target binding + executable regression gate. After Integrator VERIFIED, advance to the smallest WORLD_UX quest-offer/tracker binding increment; in parallel F5M-002 remains dependency-ready.
+
+### 2026-09-17 20:00 KST — DIRECTOR ROUTING
+ROUTING_EPOCH=2026-09-17T11:00:00Z
+ROUTING_COMMIT=PENDING
+ACTIVE_OWNER=INTEGRATOR
+ACTIVE_F5M=F5M-024,F5M-025,F5M-027,F5M-028
+BASE_SHA=787fad5ec5f69067e09e3e630172dc57a0aa3fa9
+CANDIDATE_PR=123
+CANDIDATE_HEAD=67f0ef2de4f77779b2a2d8138beb54c31bf6854c
+REQUIRED_DELTA=Independently verify clean completion slice exact HEAD: explicit completion confirmation grants training token exactly once, persists COMPLETED/reward, removes Quick Quest immediately, and restart restores completion/reward without duplicate grant; integrate only if coherent.
+ACCEPTANCE=Exact-head Android CI must execute and pass; inspect GameView wiring and reward/save idempotency; compile/CI remains distinct from device evidence; merge PR #123 only after no BLOCKER.
+BLOCKED_BY=Exact candidate HEAD currently has no workflow run; integration acceptance pending.
+NEXT_OWNER=INTEGRATOR
