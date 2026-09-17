@@ -1,0 +1,41 @@
+name: Apply post-F5M runtime bundle
+on:
+  push:
+    branches: [director/post-f5m-next-purpose]
+    paths: ['.github/workflows/post-f5m-runtime-bundle.yml']
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+      - name: Patch runtime
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          s=p.read_text()
+          s=s.replace('private static final float ATK_X=914f,ATK_Y=493f,ATK_R=36f;','private static final float ATK_X=920f,ATK_Y=498f,ATK_R=38f;')
+          s=s.replace('public GameView(Context c){super(c);setKeepScreenOn(true);F5mSaveStore.restoreRewardsActive(state.rpg());worldAdapter.snapCameraToPlayer();}','public GameView(Context c){super(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());worldAdapter.snapCameraToPlayer();}')
+          s=s.replace('combat.tick(dt);state.tick(dt);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);','combat.tick(dt);state.tick(dt);int levelUps=ProgressionLeveling.normalize(state.rpg());if(levelUps>0)showReward("LEVEL UP · Lv."+state.rpg().normalLevel());consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);')
+          s=s.replace('private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc npc:state.npcs())if(id.equals(npc.id))return npc;return null;}','private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc npc:state.npcs())if(id.equals(npc.id))return npc;return null;}\n  private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)&&m.alive)return m;return null;}\n  private void autoNavigateQuest(){F5mAdaptedPrologueQuest.State qs=f5mQuest.state();worldAdapter.cancelForAction();interaction.cancelApproach();combat.cancelApproach();if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE||qs==F5mAdaptedPrologueQuest.State.RETURN_READY){RuntimeState.Npc npc=findNpc("milles_guide_proto");if(npc!=null){worldAdapter.requestNpcApproach(npc.id);showFeedback("퀘스트 자동이동 · "+npc.name,FeedbackTone.INFO);}return;}if(qs==F5mAdaptedPrologueQuest.State.ACTIVE){RuntimeState.Monster m=findMonster(f5mQuest.objectiveMonsterId());if(m!=null){combat.selectTarget(m);worldAdapter.requestMonsterApproach(m.id,48f);showFeedback("퀘스트 자동이동 · "+m.name,FeedbackTone.INFO);}else showFeedback("퀘스트 목표를 찾을 수 없습니다",FeedbackTone.WARN);}}')
+          needle='if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){joy=true;'
+          s=s.replace(needle,'if(inside(x,y,14,124,214,224)&&F5mQuestUiFlow.showQuickQuest(f5mQuest)){autoNavigateQuest();return true;}\n      '+needle)
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/projectdark/mobile/MonsterAIController.java')
+          s=p.read_text()
+          s=s.replace('static final float ATTACK_COOLDOWN_B = 1.2f;','static final float ATTACK_COOLDOWN_B = 1.2f;\n  static final float MONSTER_STEP_SECONDS_B = WorldMoveTargetController.TILE_STEP_SECONDS*1.6f;')
+          s=s.replace('tile.stepClock+.00001f<WorldMoveTargetController.TILE_STEP_SECONDS','tile.stepClock+.00001f<MONSTER_STEP_SECONDS_B')
+          s=s.replace('tile.stepClock-=WorldMoveTargetController.TILE_STEP_SECONDS;','tile.stepClock-=MONSTER_STEP_SECONDS_B;')
+          p.write_text(s)
+          PY
+          rm .github/workflows/post-f5m-runtime-bundle.yml
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m 'Post-F5M: runtime UX persistence leveling and slower monsters'
+          git push origin HEAD:director/post-f5m-next-purpose
