@@ -1,24 +1,26 @@
 # PROJECT DARK — F5M ACTIVE ROUTING
 
-Updated: 2026-09-17 16:00 KST — DIRECTOR
+Updated: 2026-09-17 17:00 KST — DIRECTOR
 
-ACTIVE_OWNER=WORLD_UX
-ACTIVE_F5M=F5M-006,F5M-008,F5M-009
-BASE_SHA=f1e7621cdde76501864441f2ed51b6a2b73f59e1
-REQUIRED_DELTA=milles_guide_proto interaction opens authoritative Q_ADAPTED_F5M_PROLOGUE_01 offer dialogue; explicit accept/decline; accept immediately exposes Quick Quest "훈련용 몬스터 0/1" from authoritative quest state; real combat_dummy_01 production defeat updates tracker to 1/1 / RETURN_READY and changes it to return-NPC instruction.
-ACCEPTANCE=production UI/runtime wiring uses authoritative quest state with no duplicate hard-coded quest state; accept/decline are idempotent; actual combat_dummy_01 RuntimeState.damage defeat drives 0/1->1/1; focused audit/test and exact-head compile pass; coherent commit/PR handed to Integrator. CI/compile is not DEVICE_VERIFIED.
+ACTIVE_OWNER=GAMEPLAY
+ACTIVE_F5M=F5M-024,F5M-025,F5M-009
+BASE_SHA=18c2b7302321eb03138cec0a018f1fe4c1a18a8e
+REQUIRED_DELTA=Complete the adapted prologue after RETURN_READY through an explicit milles_guide_proto turn-in transaction: grant completion reward exactly once through the existing authoritative reward/progression/inventory pipeline, transition Q_ADAPTED_F5M_PROLOGUE_01 RETURN_READY->COMPLETED, expose completion event/state so WORLD_UX removes/advances Quick Quest instead of leaving the completed quest visible, and prevent repeated NPC interaction from re-granting rewards.
+ACCEPTANCE=Focused executable regression proves RETURN_READY turn-in -> one atomic reward grant -> COMPLETED; repeated turn-in grants nothing; authoritative quest state is queryable by UI. Then WORLD_UX binds COMPLETED to completion presentation/tracker removal and Integrator verifies on exact lineage. User device evidence already proves dialogue/accept -> real combat_dummy_01 kill -> RETURN_READY -> NPC return works, but tracker remains after apparent completion; this is DEVICE evidence of the missing completion path, not full DEVICE_VERIFIED.
 BLOCKED_BY=none
-NEXT_OWNER=INTEGRATOR
+NEXT_OWNER=WORLD_UX
 
 ## Director evidence
-- PR #121 is MERGED. Replayed exact PR head was 91574358377628bc2b5bf66d826618b281149dc0; main integration commit is c6ee624f62ba3c632e6b147637d69cf5af6f7101.
-- Latest main at routing decision is f1e7621cdde76501864441f2ed51b6a2b73f59e1.
-- PR #121 carried exact-head CI run 35183170132 / job 105079520381 PASS for Master DB, production compile, F5M domain audit and production runtime-binding audit. This is CI evidence only.
-- Source-backed Q_MIL_01 / NPC_AN / NPC_BANE remain untouched. combat_dummy_01 and tutorial provider remain ADAPTED / ADAPTED_BALANCE where applicable.
-- Frozen attack presentation remains out of scope absent new blocking evidence.
+- Exact latest main before this routing decision: 18c2b7302321eb03138cec0a018f1fe4c1a18a8e.
+- PR #121 is merged and its production quest contract intentionally leaves markCompletedFromTurnInTransaction() package-private for F5M-024 ownership; no production caller was found on current main.
+- Current GameView owns a view-local F5mAdaptedPrologueQuest and renders COMPLETED as `첫 훈련 · 완료`; the F5M spec instead requires completion to remove/advance the tracker.
+- User device path on the integrated World UX APK: quest accepted, real target killed, returned to NPC successfully; after apparent completion the quest remained visible. Treat this as acceptance-blocking evidence for F5M-024/025/009, not as polish.
+- Main CI #499 on de2d5bf880ba57e4cbaa02e00676fbc5fa8aff71 passed Master DB, compile, F5M domain audit, production runtime binding, APK build/upload. This does not cover turn-in/completion and is not DEVICE_VERIFIED.
+- Source-backed Q_MIL_01 / NPC_AN / NPC_BANE remain untouched. Adapted tutorial provenance remains ADAPTED / ADAPTED_BALANCE.
+- Frozen attack presentation remains out of scope.
 
 ## Worker guard
-GAMEPLAY: NO_ACTION_NOT_ACTIVE_OWNER unless WORLD_UX exposes a concrete gameplay-contract blocker.
-WORLD_UX: implement the REQUIRED_DELTA now; player-visible code/commit/PR is required unless a concrete code-level blocker is demonstrated.
-INTEGRATOR: wait for the coherent WORLD_UX candidate, then independently verify exact lineage, runtime wiring, focused tests and compile; integrate only if no BLOCKER.
-DIRECTOR: on next cycle, re-read latest main, this routing file, execution log, PR/CI and Integrator evidence; recalculate ownership rather than repeating this assignment blindly.
+GAMEPLAY: active owner. Implement the smallest coherent F5M-024 completion transaction on current main, with exact-once reward/idempotency regression. Do not duplicate quest state in UI and do not invent source rewards; use existing adapted reward/progression/inventory services and ADAPTED_BALANCE values/contracts already present where possible.
+WORLD_UX: NO_ACTION_NOT_ACTIVE_OWNER until GAMEPLAY exposes the authoritative completion transaction/event. Then implement F5M-025/F5M-009 presentation: confirmed COMPLETED removes/advances Quick Quest, completion feedback reflects actual granted values, subsequent NPC dialogue is completed-state dialogue.
+INTEGRATOR: wait for coherent GAMEPLAY candidate; verify exact BASE/HEAD, executable turn-in idempotency, reward single-grant and no regression of accept->kill->RETURN_READY. After WORLD_UX follow-up, verify tracker removal/completion presentation.
+DIRECTOR: recalculate after GAMEPLAY evidence. If GAMEPLAY produces no coherent artifact across its due run, emit DIRECTOR_FALLBACK_REQUIRED for F5mAdaptedPrologueQuest + existing reward/progression/inventory transaction wiring and the milles_guide_proto RETURN_READY interaction path.
