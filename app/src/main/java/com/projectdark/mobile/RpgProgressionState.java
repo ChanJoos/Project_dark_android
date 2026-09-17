@@ -176,6 +176,13 @@ public final class RpgProgressionState {
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
   public Long gold(){return gold;}
+  private int str=5,intel=5,wis=5,con=5,dex=5,statPoints=0;
+  public int str(){return str;} public int intel(){return intel;} public int wis(){return wis;} public int con(){return con;} public int dex(){return dex;} public int statPoints(){return statPoints;}
+  public int physicalAttack(){int lv=normalLevel==null?1:normalLevel;return 8+lv*2+str*3+dex/2;}
+  public int maxHpGrowth(){int lv=normalLevel==null?1:normalLevel;return 100+(lv-1)*12+con*8;}
+  public int maxMpGrowth(){int lv=normalLevel==null?1:normalLevel;return 60+(lv-1)*6+wis*5+intel*3;}
+  public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
+  public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(0,s);intel=Math.max(0,i);wis=Math.max(0,w);con=Math.max(0,c);dex=Math.max(0,d);statPoints=Math.max(0,points);}
   public void restoreGold(long value){gold=Math.max(0L,value);}
   public void grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;normalizeCanonicalLevel();}
 
@@ -191,7 +198,7 @@ public final class RpgProgressionState {
     int before=normalLevel==null?1:normalLevel;
     int level=before;long exp=normalExp==null?0L:normalExp;
     while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
-    normalLevel=level;normalExp=exp;return level-before;
+    normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0)statPoints+=gained*5;return gained;
   }
 
   /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
