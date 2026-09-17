@@ -1,0 +1,45 @@
+name: World UX F5M Apply
+on:
+  push:
+    paths:
+      - '.github/workflows/worldux-f5m-apply.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply coherent WORLD_UX slice
+        shell: python
+        run: |
+          from pathlib import Path
+          gv=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          s=gv.read_text()
+          s=s.replace('private final ClassicHudIconAtlas hudIcons=new ClassicHudIconAtlas();','private final ClassicHudIconAtlas hudIcons=new ClassicHudIconAtlas();\n  private final F5mAdaptedPrologueQuest f5mQuest=F5mAdaptedPrologueQuest.openingFixture();')
+          s=s.replace('private void consumeLedger(){List<CombatLedger.Event> events=state.ledger().snapshot();for(CombatLedger.Event e:events){if(e.sequence<=lastLedgerSequence)continue;lastLedgerSequence=e.sequence;switch(e.type){case MONSTER_DEFEATED:showFeedback("몬스터 격파",FeedbackTone.INFO);break;', 'private void consumeLedger(){List<CombatLedger.Event> events=state.ledger().snapshot();for(CombatLedger.Event e:events){if(e.sequence<=lastLedgerSequence)continue;lastLedgerSequence=e.sequence;F5mAdaptedPrologueQuest.DefeatResult qr=f5mQuest.consume(e);if(qr==F5mAdaptedPrologueQuest.DefeatResult.RETURN_READY)showReward("퀘스트 목표 완료 · 안내인에게 돌아가세요");switch(e.type){case MONSTER_DEFEATED:showFeedback("몬스터 격파",FeedbackTone.INFO);break;')
+          old='private void drawQuest(Canvas c){panel(c,14,124,214,282);text(c,"퀘스트",28,146,11);mutedText(c,"[메인] 밀레스의 첫걸음",28,171,9);mutedText(c,"NPC와 대화하기  0/1",38,190,8);mutedText(c,"[반복] 수련의 길",28,219,9);mutedText(c,"주변 몬스터 처치  0/5",38,238,8);mutedText(c,"탭하여 접기",130,270,7);}'
+          new='private void drawQuest(Canvas c){panel(c,14,124,214,224);text(c,"Quick Quest",28,146,11);F5mAdaptedPrologueQuest.State qs=f5mQuest.state();if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE){mutedText(c,"밀레스 안내인의 부탁",28,171,9);mutedText(c,"안내인과 대화해 퀘스트 받기",38,192,8);}else if(qs==F5mAdaptedPrologueQuest.State.ACTIVE){mutedText(c,"첫 훈련",28,171,9);mutedText(c,"훈련용 몬스터  "+f5mQuest.currentCount()+"/"+f5mQuest.requiredCount(),38,192,8);}else if(qs==F5mAdaptedPrologueQuest.State.RETURN_READY){mutedText(c,"첫 훈련  1/1",28,171,9);mutedText(c,"밀레스 안내인에게 돌아가기",38,192,8);}else{mutedText(c,"첫 훈련 · 완료",28,171,9);}mutedText(c,"상태는 퀘스트 런타임에서 실시간 반영",28,214,6.5f);}'
+          if old not in s: raise SystemExit('drawQuest anchor missing')
+          s=s.replace(old,new)
+          old='private void drawDialogue(Canvas c){RuntimeState.Npc dialogNpc=interaction.dialogNpc();if(dialogNpc==null)return;p.setColor(0x74000000);c.drawRect(0,0,W,H,p);modalPanel(c,190,326,770,462);p.setColor(0xC95A472A);c.drawRoundRect(new RectF(210,342,338,371),8,8,p);text(c,dialogNpc.name,226,361,11.5f);drawWrappedText(c,dialogNpc.dialogue,218,394,510,11,18);mutedText(c,"화면을 터치하면 닫기",616,446,8);p.setColor(0xB024262A);c.drawCircle(744,347,14,p);text(c,"×",739,352,14);}'
+          new='private boolean f5mGuideDialogue(){RuntimeState.Npc n=interaction.dialogNpc();return n!=null&&"milles_guide_proto".equals(n.id);}\n  private void drawDialogue(Canvas c){RuntimeState.Npc dialogNpc=interaction.dialogNpc();if(dialogNpc==null)return;p.setColor(0x74000000);c.drawRect(0,0,W,H,p);modalPanel(c,190,300,770,462);p.setColor(0xC95A472A);c.drawRoundRect(new RectF(210,316,338,345),8,8,p);text(c,dialogNpc.name,226,335,11.5f);if(f5mGuideDialogue()){F5mAdaptedPrologueQuest.State qs=f5mQuest.state();String body=qs==F5mAdaptedPrologueQuest.State.AVAILABLE?"마을 동쪽의 훈련용 몬스터 한 마리를 상대해 보겠나?":qs==F5mAdaptedPrologueQuest.State.ACTIVE?"훈련용 몬스터를 처치하고 다시 찾아오게.":qs==F5mAdaptedPrologueQuest.State.RETURN_READY?"잘 해냈군. 훈련 목표를 달성했네.":"첫 훈련은 완료되었네.";drawWrappedText(c,body,218,372,510,11,18);if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"수락",538,430,10);p.setColor(0xA0343030);c.drawRoundRect(new RectF(620,408,726,442),9,9,p);text(c,"거절",658,430,10);}}else{drawWrappedText(c,dialogNpc.dialogue,218,372,510,11,18);mutedText(c,"화면을 터치하면 닫기",616,446,8);}p.setColor(0xB024262A);c.drawCircle(744,321,14,p);text(c,"×",739,326,14);}'
+          if old not in s: raise SystemExit('dialog anchor missing')
+          s=s.replace(old,new)
+          old='if(interaction.dialogOpen()){interaction.dismissDialog();worldAdapter.cancelForAction();showFeedback("대화 종료",FeedbackTone.INFO);return true;}'
+          new='if(interaction.dialogOpen()){if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,500,408,606,442)){F5mAdaptedPrologueQuest.AcceptResult r=f5mQuest.accept();showFeedback(r==F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED?"퀘스트 수락 · 첫 훈련":"퀘스트 상태 유지",FeedbackTone.INFO);return true;}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,620,408,726,442)){f5mQuest.decline();interaction.dismissDialog();worldAdapter.cancelForAction();showFeedback("퀘스트 거절 · 다시 대화할 수 있습니다",FeedbackTone.INFO);return true;}interaction.dismissDialog();worldAdapter.cancelForAction();showFeedback("대화 종료",FeedbackTone.INFO);return true;}'
+          if old not in s: raise SystemExit('touch anchor missing')
+          s=s.replace(old,new)
+          gv.write_text(s)
+          audit=Path('app/src/main/java/com/projectdark/mobile/F5mWorldUxQuestPresentationAudit.java')
+          audit.write_text('''package com.projectdark.mobile;\n\n/** Android-free focused audit for F5M-006/008/009 state-driven presentation contract. */\npublic final class F5mWorldUxQuestPresentationAudit {\n  private F5mWorldUxQuestPresentationAudit(){}\n  public static boolean verify(){\n    F5mAdaptedPrologueQuest q=F5mAdaptedPrologueQuest.openingFixture();\n    if(q.state()!=F5mAdaptedPrologueQuest.State.AVAILABLE)return false;\n    if(q.decline()!=F5mAdaptedPrologueQuest.DeclineResult.LEFT_AVAILABLE)return false;\n    if(q.accept()!=F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED)return false;\n    if(q.accept()!=F5mAdaptedPrologueQuest.AcceptResult.ALREADY_ACTIVE)return false;\n    return q.currentCount()==0&&q.requiredCount()==1&&\"combat_dummy_01\".equals(q.objectiveMonsterId());\n  }\n}\n''')
+          Path('.github/workflows/worldux-f5m-apply.yml').unlink()
+      - name: Commit runtime delta
+        run: |
+          git config user.name actions
+          git config user.email actions@users.noreply.github.com
+          git add -A
+          git commit -m "World UX: wire adapted prologue dialogue and Quick Quest"
+          git push
