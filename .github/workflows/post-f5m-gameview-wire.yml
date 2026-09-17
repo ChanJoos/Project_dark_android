@@ -1,0 +1,43 @@
+name: Post-F5M GameView Wire
+on:
+  push:
+    branches: [director/post-f5m-next-purpose]
+    paths: ['.github/workflows/post-f5m-gameview-wire.yml']
+permissions:
+  contents: write
+jobs:
+  wire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Patch GameView minimally
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          s=p.read_text()
+          old='private void drawHud(Canvas c){drawTopLeftStatus(c);if(F5mQuestUiFlow.showQuickQuest(f5mQuest))drawQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawExpStrip(c);drawCombatCluster(c);}'
+          new='private void drawHud(Canvas c){drawTopLeftStatus(c);if(F5mQuestUiFlow.showQuickQuest(f5mQuest))drawQuest(c);else if(PostF5mHudPresentation.showNextPurpose(f5mQuest.state()))drawNextPurpose(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawExpStrip(c);drawCombatCluster(c);}'
+          assert old in s
+          s=s.replace(old,new,1)
+          anchor='  private void drawTarget(Canvas c)'
+          method='  private void drawNextPurpose(Canvas c){panel(c,14,124,214,224);text(c,PostF5mHudPresentation.purposeTitle(f5mQuest.state()),28,146,11);mutedText(c,"첫 훈련 완료",28,171,9);drawWrappedText(c,PostF5mHudPresentation.purposeBody(f5mQuest.state()),38,192,160,8,13);}\n'
+          assert anchor in s
+          s=s.replace(anchor,method+anchor,1)
+          oldexp='private void drawExpStrip(Canvas c){p.setColor(0xB4101112);c.drawRect(0,531,W,540,p);p.setColor(0xff46ad45);c.drawRect(0,535,W*.35f,540,p);mutedText(c,"EXP",216,538,6.5f);}'
+          newexp='private void drawExpStrip(Canvas c){p.setColor(0xB4101112);c.drawRect(0,531,W,540,p);Float ratio=PostF5mHudPresentation.expRatio(state.rpg());if(ratio!=null){p.setColor(0xff46ad45);c.drawRect(0,535,W*Math.max(0f,Math.min(1f,ratio)),540,p);}mutedText(c,PostF5mHudPresentation.expLabel(state.rpg()),216,538,6.5f);}'
+          assert oldexp in s
+          s=s.replace(oldexp,newexp,1)
+          p.write_text(s)
+          PY
+          rm .github/workflows/post-f5m-gameview-wire.yml
+          git config user.name 'PROJECT DARK Director'
+          git config user.email 'actions@users.noreply.github.com'
+          git add app/src/main/java/com/projectdark/mobile/GameView.java .github/workflows/post-f5m-gameview-wire.yml
+          git commit -m 'Post-F5M: render next purpose and live EXP HUD'
+          git push origin HEAD:director/post-f5m-next-purpose
