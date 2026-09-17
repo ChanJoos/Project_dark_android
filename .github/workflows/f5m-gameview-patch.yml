@@ -1,0 +1,30 @@
+name: F5M GameView one-shot patch
+on:
+  push:
+    branches: [director/f5m-completion-clean]
+    paths: [.github/workflows/f5m-gameview-patch.yml]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/f5m-completion-clean
+      - name: Wire F5M completion into GameView
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/projectdark/mobile/GameView.java'); s=p.read_text()
+          reps=[('public GameView(Context c){super(c);setKeepScreenOn(true);worldAdapter.snapCameraToPlayer();}','public GameView(Context c){super(c);setKeepScreenOn(true);F5mSaveStore.restoreRewardsActive(state.rpg());worldAdapter.snapCameraToPlayer();}'),('public void pause(){running=false;removeCallbacks(loop);}','public void pause(){F5mSaveStore.saveQuestActive(f5mQuest);F5mSaveStore.saveRewardsActive(state.rpg());running=false;removeCallbacks(loop);}'),('private void drawHud(Canvas c){drawTopLeftStatus(c);drawQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawExpStrip(c);drawCombatCluster(c);}','private void drawHud(Canvas c){drawTopLeftStatus(c);if(F5mQuestUiFlow.showQuickQuest(f5mQuest))drawQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawExpStrip(c);drawCombatCluster(c);}'),('qs==F5mAdaptedPrologueQuest.State.RETURN_READY?"잘 해냈군. 훈련 목표를 달성했네.":"첫 훈련은 완료되었네."','qs==F5mAdaptedPrologueQuest.State.RETURN_READY?"잘 해냈군. 완료를 눌러 보상을 받게.":"첫 훈련은 완료되었네. 훈련 증표는 잘 챙겨두게."'),('if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"수락",538,430,10);p.setColor(0xA0343030);c.drawRoundRect(new RectF(620,408,726,442),9,9,p);text(c,"거절",658,430,10);}','if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"수락",538,430,10);p.setColor(0xA0343030);c.drawRoundRect(new RectF(620,408,726,442),9,9,p);text(c,"거절",658,430,10);}else if(qs==F5mAdaptedPrologueQuest.State.RETURN_READY){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"완료",538,430,10);}'),('if(interaction.dialogOpen()){if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,500,408,606,442)){','if(interaction.dialogOpen()){if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY&&inside(x,y,500,408,606,442)){F5mTurnInCoordinator.Result tr=F5mQuestUiFlow.confirmTurnIn(f5mQuest,state.rpg());String msg=F5mQuestUiFlow.completionMessage(tr);if(tr==F5mTurnInCoordinator.Result.COMPLETED){showReward(msg);interaction.dismissDialog();worldAdapter.cancelForAction();}else showFeedback(msg,tr==F5mTurnInCoordinator.Result.ALREADY_COMPLETED?FeedbackTone.INFO:FeedbackTone.WARN);return true;}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,500,408,606,442)){')]
+          for old,new in reps:
+            if old not in s: raise SystemExit('missing patch anchor: '+old[:100])
+            s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+          git config user.name ChanJoos
+          git config user.email challyju@gmail.com
+          git add app/src/main/java/com/projectdark/mobile/GameView.java
+          git commit -m 'F5M: wire completion reward save and tracker removal into GameView'
+          git push origin HEAD:director/f5m-completion-clean
