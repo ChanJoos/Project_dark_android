@@ -1,5 +1,7 @@
 package com.projectdark.mobile;
 
+import com.projectdark.mobile.world.WorldMoveTargetController;
+
 /**
  * The single presentation-facing domain for every runtime actor.
  * Continuous movement remains legal; only its visual projection is quantized.
@@ -14,7 +16,7 @@ public final class CanonicalActorFacing {
     locomotionFacing=initial==null?CharacterRenderer.Direction.SE:initial;
   }
 
-  /** Half-open quadrant policy: north owns y<0, west owns x<0; axes fall east/south. */
+  /** Half-open quadrant fallback for non-tile/ranged vectors only. */
   public static CharacterRenderer.Direction quantize(float dx,float dy,CharacterRenderer.Direction fallback){
     if(Math.abs(dx)<=ZERO_EPSILON&&Math.abs(dy)<=ZERO_EPSILON)
       return fallback==null?CharacterRenderer.Direction.SE:fallback;
@@ -23,12 +25,15 @@ public final class CanonicalActorFacing {
   }
 
   public void updateLocomotion(float dx,float dy){locomotionFacing=quantize(dx,dy,locomotionFacing);}
+  public void updateLocomotion(WorldMoveTargetController.Direction direction){CharacterRenderer.Direction facing=CanonicalMeleeTileContract.facing(direction);if(facing!=null)locomotionFacing=facing;}
   public void setLocomotion(CharacterRenderer.Direction facing){if(facing!=null)locomotionFacing=facing;}
   public CharacterRenderer.Direction locomotion(){return locomotionFacing;}
   public void beginAttack(){attackFacing=locomotionFacing;}
+  public void beginAttack(WorldMoveTargetController.Direction direction){CharacterRenderer.Direction facing=CanonicalMeleeTileContract.facing(direction);attackFacing=facing==null?locomotionFacing:facing;}
   public void beginAttack(float targetDx,float targetDy){
-    CharacterRenderer.Direction canonical=CanonicalMeleeTileContract.facing(0f,0f,targetDx,targetDy);
-    attackFacing=canonical==null?quantize(targetDx,targetDy,locomotionFacing):canonical;
+    WorldMoveTargetController.Direction direction=WorldMoveTargetController.Direction.between(0f,0f,targetDx,targetDy);
+    if(direction!=null){beginAttack(direction);return;}
+    attackFacing=quantize(targetDx,targetDy,locomotionFacing);
   }
   public void endAttack(){attackFacing=null;}
   public boolean attackLocked(){return attackFacing!=null;}
