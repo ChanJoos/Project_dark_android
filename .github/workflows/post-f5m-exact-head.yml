@@ -1,0 +1,22 @@
+name: Post-F5M exact-head trigger
+on:
+  push:
+    branches: [director/post-f5m-next-purpose]
+    paths: ['.github/workflows/post-f5m-exact-head.yml']
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+      - name: Remove trigger and publish final verification head
+        run: |
+          rm .github/workflows/post-f5m-exact-head.yml
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m 'CI: publish final post-F5M verification head'
+          git push origin HEAD:director/post-f5m-next-purpose
