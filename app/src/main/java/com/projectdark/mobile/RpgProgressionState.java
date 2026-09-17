@@ -125,7 +125,7 @@ public final class RpgProgressionState {
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
-  // EXP starts at zero because the runtime owns accumulation. Level-up thresholds remain unresolved until canonical data exists.
+  // EXP starts at zero and level-up uses only master/data/Level_EXP_Curve.csv thresholds.
   private Long normalExp=0L;
 
   public RpgProgressionState(){
@@ -174,6 +174,21 @@ public final class RpgProgressionState {
   public String currentJobCode(){return currentJobCode;}
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
+
+  /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */
+  public void restoreProgression(int level,long exp){
+    normalLevel=Math.max(1,Math.min(99,level));
+    normalExp=Math.max(0L,exp);
+    normalizeCanonicalLevel();
+  }
+
+  /** Applies only canonical level thresholds and carries overflow EXP to the next level. */
+  public int normalizeCanonicalLevel(){
+    int before=normalLevel==null?1:normalLevel;
+    int level=before;long exp=normalExp==null?0L:normalExp;
+    while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
+    normalLevel=level;normalExp=exp;return level-before;
+  }
 
   /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
   public RequirementResult evaluateRequirements(String itemId,String jobCode,Integer level){
