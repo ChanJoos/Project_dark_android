@@ -1,0 +1,26 @@
+name: Post-F5M exact verification
+on:
+  push:
+    branches: [director/post-f5m-next-purpose]
+    paths: ['.github/workflows/post-f5m-verify-once.yml']
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Remove one-shot workflow before verification
+        run: |
+          rm .github/workflows/post-f5m-verify-once.yml
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m 'CI: finalize post-F5M verification head'
+          git push origin HEAD:director/post-f5m-next-purpose
