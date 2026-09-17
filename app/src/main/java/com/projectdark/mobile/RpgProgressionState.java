@@ -125,7 +125,8 @@ public final class RpgProgressionState {
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
-  private Long normalExp=null;
+  // EXP starts at zero because the runtime owns accumulation. Level-up thresholds remain unresolved until canonical data exists.
+  private Long normalExp=0L;
 
   public RpgProgressionState(){
     Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
@@ -228,6 +229,7 @@ public final class RpgProgressionState {
       outcomes.put(hint.itemId,result);
       if(result==AutoLootResult.LOOTED)looted.put(hint.itemId,value(looted,hint.itemId)+hint.quantity);
     }
+    if(reward.exp!=null)normalExp+=reward.exp.longValue();
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes,
         RewardSource.CANONICAL,"CANONICAL_MONSTER_REWARD",reward.expEvidence==null?null:reward.expEvidence.name()));
     trimRewardHistory();
