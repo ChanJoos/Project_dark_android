@@ -1,0 +1,28 @@
+name: Finalize rewards
+on: push
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+          fetch-depth: 5
+      - name: Repair and finalize
+        run: |
+          git show 16356ea8b6507f730ec160d98ce632e354e5bf2a:app/src/main/java/com/projectdark/mobile/RpgProgressionState.java > app/src/main/java/com/projectdark/mobile/RpgProgressionState.java
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/projectdark/mobile/RpgProgressionState.java')
+          s=p.read_text()
+          a='public Long gold(){return gold;}'
+          s=s.replace(a,a+'\n  public void restoreGold(long value){gold=Math.max(0L,value);}')
+          p.write_text(s)
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add app/src/main/java/com/projectdark/mobile/RpgProgressionState.java
+          git commit -m 'Post-F5M: finalize durable gold restore'
+          git push origin HEAD:director/post-f5m-next-purpose
