@@ -127,6 +127,7 @@ public final class RpgProgressionState {
   private Integer normalLevel=1;
   // EXP starts at zero and level-up uses only master/data/Level_EXP_Curve.csv thresholds.
   private Long normalExp=0L;
+  private Long gold=0L;
 
   public RpgProgressionState(){
     Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
@@ -174,6 +175,8 @@ public final class RpgProgressionState {
   public String currentJobCode(){return currentJobCode;}
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
+  public Long gold(){return gold;}
+  public void grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;normalizeCanonicalLevel();}
 
   /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */
   public void restoreProgression(int level,long exp){
@@ -226,7 +229,8 @@ public final class RpgProgressionState {
         AutoLootResult result=autoLootResolvedItem(prototype.itemId,prototype.quantity);
         outcomes.put(prototype.itemId,result);
         if(result==AutoLootResult.LOOTED)granted.put(prototype.itemId,prototype.quantity);
-        rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,null,granted,outcomes,
+        grantAdaptedReward(AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD);
+        rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,granted,outcomes,
             RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence));
         trimRewardHistory();
         return;

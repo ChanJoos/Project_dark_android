@@ -17,7 +17,7 @@ public final class GameView extends View {
   private static final float W=960f,H=540f;
   private static final float JOY_X=92f,JOY_Y=454f,JOY_R=58f;
   private static final float SLOT=42f,SLOT_GAP=4f,SLOT_X0=696f,SLOT_Y0=374f;
-  private static final float ATK_X=920f,ATK_Y=498f,ATK_R=38f;
+  private static final float ATK_X=938f,ATK_Y=498f,ATK_R=38f;
   private static final float MODE_X=810f,MODE_Y=495f,MODE_R=22f;
   private static final float AUTO_X=862f,AUTO_Y=495f,AUTO_R=24f;
   private static final float UTILITY_X0=684f,UTILITY_Y0=30f,UTILITY_STEP=42f,UTILITY_R=16f;

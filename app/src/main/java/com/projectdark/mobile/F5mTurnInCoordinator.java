@@ -10,6 +10,7 @@ public final class F5mTurnInCoordinator{
   if(q.state()!=F5mAdaptedPrologueQuest.State.RETURN_READY)return Result.NOT_READY;
   RpgProgressionState.AutoLootResult reward=r.autoLootResolvedItem(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,1);
   if(reward!=RpgProgressionState.AutoLootResult.LOOTED)return Result.REWARD_FAILED;
+  r.grantAdaptedReward(AdaptedPrototypeRewardCatalog.TRAINING_QUEST_EXP,AdaptedPrototypeRewardCatalog.TRAINING_QUEST_GOLD);
   if(!F5mSaveStore.commitTurnInActive(q,r))return Result.SAVE_FAILED;
   return Result.COMPLETED;
  }
