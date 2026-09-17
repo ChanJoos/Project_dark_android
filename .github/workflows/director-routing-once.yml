@@ -1,7 +1,5 @@
 name: Director routing one-shot
-on:
-  push:
-    paths: ['.github/workflows/director-routing-once.yml']
+on: [push]
 permissions:
   contents: write
 jobs:
@@ -12,26 +10,12 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-      - name: Re-fetch main and append authoritative routing
+      - name: Publish routing
+        shell: bash
         run: |
           set -euo pipefail
           git pull --ff-only origin main
-          BASE=$(git rev-parse HEAD)
-          cat >> docs/FIRST_5_MINUTE_EXECUTION_LOG.md <<'EOF'
-
-### 2026-09-17 20:00 KST — DIRECTOR ROUTING
-ROUTING_EPOCH=2026-09-17T11:00:00Z
-ROUTING_COMMIT=PENDING
-ACTIVE_OWNER=INTEGRATOR
-ACTIVE_F5M=F5M-024,F5M-025,F5M-027,F5M-028
-BASE_SHA=787fad5ec5f69067e09e3e630172dc57a0aa3fa9
-CANDIDATE_PR=123
-CANDIDATE_HEAD=67f0ef2de4f77779b2a2d8138beb54c31bf6854c
-REQUIRED_DELTA=Independently verify clean completion slice exact HEAD: RETURN_READY NPC explicit completion confirmation grants training token exactly once, persists COMPLETED/reward, removes Quick Quest immediately, and restart restores completion/reward without duplicate grant; then integrate only if coherent.
-ACCEPTANCE=Exact-head Android CI must execute and pass; inspect GameView wiring and reward/save idempotency; classify compile/CI separately from device evidence; merge PR #123 only after exact-head acceptance has no BLOCKER. Prior run #520/#521 success is not exact-head evidence for 67f0ef2.
-BLOCKED_BY=Exact candidate HEAD currently has no workflow run; integration acceptance pending.
-NEXT_OWNER=INTEGRATOR
-EOF
+          printf '%s\n' '' '### 2026-09-17 20:00 KST — DIRECTOR ROUTING' 'ROUTING_EPOCH=2026-09-17T11:00:00Z' 'ROUTING_COMMIT=PENDING' 'ACTIVE_OWNER=INTEGRATOR' 'ACTIVE_F5M=F5M-024,F5M-025,F5M-027,F5M-028' 'BASE_SHA=787fad5ec5f69067e09e3e630172dc57a0aa3fa9' 'CANDIDATE_PR=123' 'CANDIDATE_HEAD=67f0ef2de4f77779b2a2d8138beb54c31bf6854c' 'REQUIRED_DELTA=Independently verify clean completion slice exact HEAD: explicit completion confirmation grants training token exactly once, persists COMPLETED/reward, removes Quick Quest immediately, and restart restores completion/reward without duplicate grant; integrate only if coherent.' 'ACCEPTANCE=Exact-head Android CI must execute and pass; inspect GameView wiring and reward/save idempotency; compile/CI remains distinct from device evidence; merge PR #123 only after no BLOCKER.' 'BLOCKED_BY=Exact candidate HEAD currently has no workflow run; integration acceptance pending.' 'NEXT_OWNER=INTEGRATOR' >> docs/FIRST_5_MINUTE_EXECUTION_LOG.md
           rm .github/workflows/director-routing-once.yml
           git config user.name 'PROJECT DARK Director'
           git config user.email 'actions@users.noreply.github.com'
