@@ -1,0 +1,46 @@
+name: Post-F5M final repair
+on:
+  push:
+    branches: [director/post-f5m-next-purpose]
+    paths: ['.github/workflows/post-f5m-final-repair.yml']
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: director/post-f5m-next-purpose}
+      - name: Apply minimal runtime repairs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/projectdark/mobile/RpgProgressionState.java')
+          s=p.read_text()
+          anchor='  public Long normalExp(){return normalExp;}\n'
+          add='''  public Long normalExp(){return normalExp;}\n\n  /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */\n  public void restoreProgression(int level,long exp){\n    normalLevel=Math.max(1,Math.min(99,level));\n    normalExp=Math.max(0L,exp);\n    normalizeCanonicalLevel();\n  }\n\n  /** Applies only canonical level thresholds and carries overflow EXP to the next level. */\n  public int normalizeCanonicalLevel(){\n    int before=normalLevel==null?1:normalLevel;\n    int level=before;long exp=normalExp==null?0L:normalExp;\n    while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}\n    normalLevel=level;normalExp=exp;return level-before;\n  }\n'''
+          if 'restoreProgression(int level,long exp)' not in s:
+              assert anchor in s
+              s=s.replace(anchor,add)
+          s=s.replace('// EXP starts at zero because the runtime owns accumulation. Level-up thresholds remain unresolved until canonical data exists.','// EXP starts at zero and level-up uses only master/data/Level_EXP_Curve.csv thresholds.')
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          s=p.read_text()
+          # Persist immediately after combat reward/EXP consumption, not only Activity pause.
+          old='private void consumeRewardNotice(){RpgInventoryPresentation.RewardNotice notice=rpgPresentation.latestRewardNotice(state.rpg());if(notice==null||notice.combatSequence<=lastRewardSequence)return;lastRewardSequence=notice.combatSequence;'
+          new='private void consumeRewardNotice(){RpgInventoryPresentation.RewardNotice notice=rpgPresentation.latestRewardNotice(state.rpg());if(notice==null||notice.combatSequence<=lastRewardSequence)return;lastRewardSequence=notice.combatSequence;F5mSaveStore.saveRewardsActive(state.rpg());'
+          assert old in s
+          s=s.replace(old,new)
+          # Save equipment immediately after successful equip/unequip interaction.
+          old='RpgProgressionState.EquipResult result=rpgInteraction.activate(state.rpg(),row.itemId);showFeedback(rpgInteraction.message(result),result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED?FeedbackTone.REWARD:FeedbackTone.WARN);'
+          new='RpgProgressionState.EquipResult result=rpgInteraction.activate(state.rpg(),row.itemId);if(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)F5mSaveStore.saveRewardsActive(state.rpg());showFeedback(rpgInteraction.message(result),result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED?FeedbackTone.REWARD:FeedbackTone.WARN);'
+          if old in s:s=s.replace(old,new)
+          p.write_text(s)
+          PY
+          rm .github/workflows/post-f5m-final-repair.yml
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m 'Post-F5M: harden progression and durable RPG persistence'
+          git push origin HEAD:director/post-f5m-next-purpose
