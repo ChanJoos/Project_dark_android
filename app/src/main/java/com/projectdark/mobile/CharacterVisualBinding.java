@@ -45,7 +45,7 @@ public final class CharacterVisualBinding {
   }
 
   public static GarmentCoverage garmentCoverageForAppearance(String appearanceId){
-    if(RESOLVED_SHIRT_APPEARANCE_ID.equals(appearanceId))return GarmentCoverage.UPPER;
+    if(RESOLVED_SHIRT_APPEARANCE_ID.equals(appearanceId))return null; // identity resolved; wearable frame family still PENDING
     return null;
   }
 
