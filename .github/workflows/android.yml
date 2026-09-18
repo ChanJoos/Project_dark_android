@@ -55,6 +55,18 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
       - name: Build merged Item Master
         run: python master/tools/build_merged_item_master.py
+      - name: Recover expanded equipment master from existing assets
+        run: python master/tools/build_equipment_master_from_assets.py
+      - name: Commit generated equipment catalog evidence
+        if: ${{ github.ref == 'refs/heads/data/equipment-asset-evidence-pipeline-20260918' }}
+        run: |
+          git add master/canonical/Equipment_Master_Expanded.csv master/canonical/Equipment_Stats_Missing.csv master/canonical/Item_Existing_Asset_Map.csv || true
+          if ! git diff --cached --quiet; then
+            git config user.name "project-dark-data-bot"
+            git config user.email "project-dark-data-bot@users.noreply.github.com"
+            git commit -m "Data: materialize expanded equipment master and asset mapping"
+            git push origin HEAD:data/equipment-asset-evidence-pipeline-20260918
+          fi
       - name: Map existing equipment image library
         run: python master/tools/map_existing_equipment_assets.py
       - name: Equipment asset evidence audit
