@@ -110,7 +110,7 @@ public final class CharacterVisualEvidenceProbe {
     Bitmap[] bodyAction=new Bitmap[4],robeAction=new Bitmap[4];
     for(int i=0;i<4;i++){
       bodyAction[i]=load(resources,"player_body_mm001_action02_"+i,BODY_W[i],BODY_H[i]);
-      robeAction[i]=load(resources,"player_robe_mu0000058_action02_"+i,ROBE_W[i],ROBE_H[i]);
+      robeAction[i]=load(resources,"player_shirt_mu0000001_action02_"+i,ROBE_W[i],ROBE_H[i]);
     }
     boolean resourcesReady=bodyAtlas!=null&&robeAtlas!=null&&weapon!=null;
     for(int i=0;i<4;i++)resourcesReady&=bodyAction[i]!=null&&robeAction[i]!=null;
