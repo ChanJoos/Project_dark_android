@@ -18,7 +18,7 @@ public final class RpgEquipmentInteractionAudit {
     if(controller.equipSelectedDetailed(rpg)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     CharacterVisualBinding equippedVisual=CharacterVisualBinding.from(rpg);
     if(!equippedVisual.hasResolvedSpriteAssets())return false;
-    if(!CharacterVisualBinding.RESOLVED_ROBE_APPEARANCE_ID.equals(equippedVisual.equipmentVisualRef()))return false;
+    if(!CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID.equals(equippedVisual.equipmentVisualRef()))return false;
     if(controller.equipSelectedDetailed(rpg)!=RpgProgressionState.EquipResult.UNEQUIPPED)return false;
     if(!rpg.equipment().isEmpty()||CharacterVisualBinding.from(rpg).hasResolvedSpriteAssets())return false;
 
