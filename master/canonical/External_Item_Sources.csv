@@ -9,3 +9,5 @@ SRC_NEXON_UPDATE_5022,Equipment AC adjustment,https://lod.nexon.com/News/update/
 "SRC_NEXON_UPDATE_5054","Equipment upgrade system","https://lod.nexon.com/news/update/5054","O","item identity/images","Official upgrade UI screenshot contains item icons"
 "SRC_NEXON_COMMUNITY_7188","Kingdom/Murekan equipment stats","https://lod.nexon.com/community/game/7188?SearchBoard=1","V","item stats","Nexon-hosted historical stat table"
 "SRC_NEXON_UPDATE_5036","3rd-job and Nageling equipment","https://lod.nexon.com/news/update/5036","O","item identity/images","Official 2023 equipment table with per-item PNG assets"
+"SRC_NEXON_UPDATE_141176","Nageling Tower expansion","https://lod.nexon.com/news/update/141176","O","equipment effects","Official Nageling Lev3 additional damage/mitigation effects"
+"SRC_NEXON_UPDATE_145393","Necklace elemental enhancement fix","https://lod.nexon.com/News/update/145393","O","equipment effects","Official 2026 necklace elemental enhancement values"
