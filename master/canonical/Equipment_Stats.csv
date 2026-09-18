@@ -1,11 +1,1 @@
 Item_ID,MinATK,MaxATK,AC,HIT,DAM,HP,MP,STR,INT,WIS,CON,DEX,MagicDefense,AttackElement,DefenseElement,Weight,Durability,Evidence,Source_ID,SourceItemKey,Era,Confidence,Notes
-IT_NECK_HORD_WATER,,,-1,5,10,1000,1000,,,,,,,,WATER,,10000,O,SRC_NEXON_UPDATE_4935,,2022,HIGH,Official Hord necklace option; water variant
-IT_NECK_HORD_EARTH,,,-1,5,10,1000,1000,,,,,,,,EARTH,,10000,O,SRC_NEXON_UPDATE_4935,,2022,HIGH,Official Hord necklace option; earth variant
-IT_NECK_HORD_WIND,,,-1,5,10,1000,1000,,,,,,,,WIND,,10000,O,SRC_NEXON_UPDATE_4935,,2022,HIGH,Official Hord necklace option; wind variant
-IT_NECK_HORD_FIRE,,,-1,5,10,1000,1000,,,,,,,,FIRE,,10000,O,SRC_NEXON_UPDATE_4935,,2022,HIGH,Official Hord necklace option; fire variant
-IT_DARKGRAY_GAUNTLET_P1,,,-3,,2,200,,, , ,1,,,,,0,12000,V,SRC_NEXON_COMMUNITY_4471,,2009,MEDIUM,Nexon-hosted historical guide; CON +1
-IT_DARKGRAY_RING_P1,,,-1,1,1,350,150,1,,,,,,,,,12000,V,SRC_NEXON_COMMUNITY_4471,,2009,MEDIUM,Nexon-hosted historical guide
-IT_DARKGRAY_LEGGINGS_P1,,,-6,3,1,200,200,,,,,,,10,,,0,3000,V,SRC_NEXON_COMMUNITY_4471,,2009,MEDIUM,Magic defense +10
-IT_DARKGRAY_EARRING_P1,,,-1,,,100,,,,,,,,,,,0,12000,V,SRC_NEXON_COMMUNITY_4471,,2009,MEDIUM,Nexon-hosted historical guide
-IT_DARKGRAY_BELT_P1,,,,,, ,50,,,1,1,,,,,, ,10000,V,SRC_NEXON_COMMUNITY_4471,,2009,MEDIUM,WIS +1 CON +1
-IT_DARKGRAY_NECKLACE_P1,,,-1,2,,,,,,,,,,,,,, ,10000,V,SRC_NEXON_COMMUNITY_4471,,2009,MEDIUM,Element varies by necklace color
