@@ -176,13 +176,19 @@ public final class RpgProgressionState {
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
   public Long gold(){return gold;}
-  private int str=5,intel=5,wis=5,con=5,dex=5,statPoints=0;
+  private int str=3,intel=3,wis=3,con=3,dex=3,statPoints=0;
+  private int baseMaxHp=100,baseMaxMp=100;
+  private final LevelGrowthPolicy growthPolicy=new LevelGrowthPolicy.BalancedV1();
   public int str(){return str;} public int intel(){return intel;} public int wis(){return wis;} public int con(){return con;} public int dex(){return dex;} public int statPoints(){return statPoints;}
-  public int physicalAttack(){int lv=normalLevel==null?1:normalLevel;return 8+lv*2+str*3+dex/2;}
-  public int maxHpGrowth(){int lv=normalLevel==null?1:normalLevel;return 100+(lv-1)*12+con*8;}
-  public int maxMpGrowth(){int lv=normalLevel==null?1:normalLevel;return 60+(lv-1)*6+wis*5+intel*3;}
+  public int physicalAttack(){return finalStats().prototypePhysicalAttack();}
+  public int baseMaxHp(){return baseMaxHp;} public int baseMaxMp(){return baseMaxMp;}
+  public int maxHpGrowth(){return finalStats().maxHp;} public int maxMpGrowth(){return finalStats().maxMp;}
+  public FinalStats finalStats(){return FinalStats.from(this);}
+  public String attackElement(){for(String id:equipmentBySlot.values()){ItemDefinition d=items.get(id);if(d!=null&&d.attackElement!=null)return d.attackElement;}return "NONE";}
+  public String defenseElement(){for(String id:equipmentBySlot.values()){ItemDefinition d=items.get(id);if(d!=null&&d.defenseElement!=null)return d.defenseElement;}return "NONE";}
+  public void restoreBaseResources(int hp,int mp){baseMaxHp=Math.max(1,hp);baseMaxMp=Math.max(0,mp);}
   public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
-  public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(0,s);intel=Math.max(0,i);wis=Math.max(0,w);con=Math.max(0,c);dex=Math.max(0,d);statPoints=Math.max(0,points);}
+  public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(3,s);intel=Math.max(3,i);wis=Math.max(3,w);con=Math.max(3,c);dex=Math.max(3,d);statPoints=Math.max(0,points);}
   public void restoreGold(long value){gold=Math.max(0L,value);}
   public int grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;return normalizeCanonicalLevel();}
 
@@ -198,7 +204,7 @@ public final class RpgProgressionState {
     int before=normalLevel==null?1:normalLevel;
     int level=before;long exp=normalExp==null?0L:normalExp;
     while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
-    normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0)statPoints+=gained*5;return gained;
+    normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0){for(int lv=before+1;lv<=level;lv++){baseMaxHp+=growthPolicy.hpGain(lv,currentJobCode,con);baseMaxMp+=growthPolicy.mpGain(lv,currentJobCode,wis);}statPoints+=gained*2;}return gained;
   }
 
   /** Pure requirement projection for UI/audits; it does not mutate player or item state. */

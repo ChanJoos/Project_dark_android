@@ -8,7 +8,7 @@ public final class GrowthV2CoherenceAudit {
     int s=r.str(),i=r.intel(),w=r.wis(),c=r.con(),d=r.dex(),hp=r.maxHpGrowth(),mp=r.maxMpGrowth();
     int gained=r.grantAdaptedReward(1000000,0); if(gained<=0)return false;
     if(r.str()!=s||r.intel()!=i||r.wis()!=w||r.con()!=c||r.dex()!=d)return false;
-    if(r.statPoints()!=gained*5||r.maxHpGrowth()<=hp||r.maxMpGrowth()<=mp)return false;
+    if(r.statPoints()!=gained*2||r.maxHpGrowth()<=hp||r.maxMpGrowth()<=mp)return false;
     int points=r.statPoints(),atk=r.physicalAttack();if(!r.spendStat("STR"))return false;
     if(r.str()!=s+1||r.intel()!=i||r.wis()!=w||r.con()!=c||r.dex()!=d||r.statPoints()!=points-1||r.physicalAttack()<=atk)return false;
     F5mAdaptedPrologueQuest q1=new F5mAdaptedPrologueQuest(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID);
