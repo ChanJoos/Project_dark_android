@@ -3,7 +3,7 @@ package com.projectdark.mobile;
 import static org.junit.Assert.*;
 
 import android.content.Context;
-import androidx.test.core.app.ApplicationProvider;
+import org.robolectric.RuntimeEnvironment;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ public final class F5mRestartPersistenceMatrixTest {
   private Context context;
 
   @Before public void resetStore(){
-    context=ApplicationProvider.getApplicationContext();
+    context=RuntimeEnvironment.getApplication();
     context.getSharedPreferences("project_dark_f5m_v1",Context.MODE_PRIVATE).edit().clear().commit();
     F5mSaveStore.install(context);
   }
