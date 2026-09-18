@@ -475,3 +475,17 @@ NEXT_OWNER=INTEGRATOR
   - `POLISH` attack presentation remains frozen KNOWN_VISUAL_FAIL and non-blocking.
 - Next recommended F5M:
   - GAMEPLAY repair `F5M-007/008` on PR #121: real target binding + executable regression gate. After Integrator VERIFIED, advance to the smallest WORLD_UX quest-offer/tracker binding increment; in parallel F5M-002 remains dependency-ready.
+
+
+### 2026-09-18 09:28 KST — DIRECTOR ROUTING
+ROUTING_EPOCH=2026-09-18T00:28:00Z
+ROUTING_COMMIT=PENDING
+ACTIVE_OWNER=INTEGRATOR
+ACTIVE_F5M=F5M-024,F5M-025,F5M-027,F5M-028,F5M-029
+BASE_SHA=28ad42cb3a0e12651a30636ac10bcac387d27e1d
+CANDIDATE_PR=126
+CANDIDATE_HEAD=6f57f0811827b5f069e9d2964cc4067f3623ad71
+REQUIRED_DELTA=Validate Growth v1-preserving candidate as one coherent F5M path: preserve quest/reward/save/HUD, verify diagonal movement/collision and canonical facing without reopening frozen attack visuals, prove reward-safe idempotent turn-in, completed tracker removal, and restart restoration without duplicate reward.
+ACCEPTANCE=Exact candidate HEAD Android validation run 35237626228 is SUCCESS including Master DB, compile, F5M gameplay audit, F5M production runtime binding audit and debug build; remaining gate is explicit F5M-028 restart matrix plus F5M-029 integration regression evidence before merge. Do not package/release APK as Director work.
+BLOCKED_BY=F5M-028 restart matrix is not covered by current CI audits; candidate is not VERIFIED until restart persistence/idempotency evidence exists.
+NEXT_OWNER=INTEGRATOR
