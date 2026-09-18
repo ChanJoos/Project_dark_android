@@ -87,7 +87,7 @@ public final class CharacterRendererAudit {
     }
 
     CharacterRenderer.AttackVisualComposition bare=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,null);
-    CharacterRenderer.AttackVisualComposition robe=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058",null);
+    CharacterRenderer.AttackVisualComposition robe=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000001",null);
     CharacterRenderer.AttackVisualComposition weapon=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,"mw001");
     CharacterRenderer.AttackVisualComposition both=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000058","mw001");
     if(bare.robeVisible||bare.weaponVisible||!robe.robeVisible||robe.weaponVisible||weapon.robeVisible||!weapon.weaponVisible||!both.robeVisible||!both.weaponVisible)return false;
