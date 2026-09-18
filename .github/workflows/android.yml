@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   compile:
     runs-on: ubuntu-latest
@@ -13,6 +13,24 @@ jobs:
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
     steps:
       - uses: actions/checkout@v4
+      - name: Fetch one official equipment image into repository
+        if: ${{ github.ref == 'refs/heads/data/equipment-asset-evidence-pipeline-20260918' }}
+        shell: bash
+        run: |
+          TARGET="assets/items/equipment/reference/ASSET_NX5054_HOLDIT_UPGRADE.png"
+          if [ ! -f "$TARGET" ]; then
+            mkdir -p "$(dirname "$TARGET")"
+            curl --fail --location --retry 3 --user-agent "Mozilla/5.0" \
+              "https://storage.nexon.com/dsk00/00/NX_FILE/Board/65536/05/1/000/00/00/4620787655423033475.png" \
+              -o "$TARGET"
+            file "$TARGET"
+            test "$(wc -c < "$TARGET")" -gt 10000
+            git config user.name "project-dark-asset-bot"
+            git config user.email "project-dark-asset-bot@users.noreply.github.com"
+            git add "$TARGET"
+            git commit -m "Assets: store official Holdit Ring equipment reference image"
+            git push origin HEAD:data/equipment-asset-evidence-pipeline-20260918
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
