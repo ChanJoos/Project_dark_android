@@ -6,7 +6,7 @@ public final class VisualWeaponLayerAudit {
 
   public static boolean verify(){
     RpgProgressionState rpg=new RpgProgressionState();
-    if(rpg.equip(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
+    if(rpg.equip(RpgProgressionState.STARTER_SHIRT_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     if(rpg.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     CharacterVisualBinding both=CharacterVisualBinding.from(rpg);
     if(!CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID.equals(both.equipmentVisualRef()))return false;
