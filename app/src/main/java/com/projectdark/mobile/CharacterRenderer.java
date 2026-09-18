@@ -22,7 +22,7 @@ public final class CharacterRenderer {
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
   public static final String IDLE_WALK_RESOURCE="player_peasant_idle_walk";
-  public static final String STARTER_SHIRT_RESOURCE="player_peasant_idle_walk"; // mu0000001 identity; base-body atlas is the verified frame fallback until source shirt action frames are recovered
+  public static final String STARTER_SHIRT_RESOURCE="PENDING_SOURCE_FRAMES_mu0000001";
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String ACTION_TEMPORAL_STATUS="SINGLE_POSE_PLACEHOLDER";
@@ -85,7 +85,7 @@ public final class CharacterRenderer {
   private final Paint pixelPaint=new Paint(),fxPaint=new Paint();
   private final Bitmap idleWalkAtlas,luersRobeAtlas,mokdoSprite; private final Bitmap[] bodyActionFrames=new Bitmap[SOURCE_ACTION_COUNT],robeActionFrames=new Bitmap[SOURCE_ACTION_COUNT];
 
-  public CharacterRenderer(){pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);Resources resources=findProcessResources();idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);luersRobeAtlas=tryLoadByName(resources,STARTER_SHIRT_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);mokdoSprite=tryLoadByName(resources,MOKDO_RESOURCE,16,8);for(int i=0;i<SOURCE_ACTION_COUNT;i++){bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);robeActionFrames[i]=bodyActionFrames[i];}}
+  public CharacterRenderer(){pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);Resources resources=findProcessResources();idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);luersRobeAtlas=null;mokdoSprite=tryLoadByName(resources,MOKDO_RESOURCE,16,8);for(int i=0;i<SOURCE_ACTION_COUNT;i++){bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);robeActionFrames[i]=null;}}
   public static int atlasRow(Direction direction){if(direction==null)return -1;switch(direction){case NW:return 0;case NE:return 1;case SW:return 2;case SE:return 3;default:return -1;}}
   public static Direction visualFacingForRow(int row){switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}}
   public static void setPresentationWalkClock(float clock){presentationWalkClock=Math.max(0f,clock);} public static float presentationWalkClock(){return presentationWalkClock;}
