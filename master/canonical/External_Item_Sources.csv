@@ -2,3 +2,7 @@ Source_ID,Name,URL,Evidence,Scope,Notes
 SRC_MILDDOK_ITEMS,Milddok Item Dictionary,https://milddok.cc/items/,FAN,item identity/stats,Client-driven 9484-item dictionary; bulk payload extraction pending
 SRC_MILDDOK_DRESSUP,Milddok Dress-up,https://milddok.cc/,FAN,equipped appearance,Milddok homepage exposes dress-up viewer; asset extraction pending
 SRC_NEXON_LOD,Official Legend of Darkness,https://lod.nexon.com/,O,official item/update imagery,Prefer original icon/equipped images where directly attributable to an item
+SRC_NEXON_UPDATE_4935,Hord and Endor necklaces,https://lod.nexon.com/News/update/4935,O,item stats,Official options and acquisition
+SRC_NEXON_COMMUNITY_4471,Dark Gray +1 set stats,https://lod.nexon.com/community/game/4471?SearchBoard=1,V,item stats,Nexon-hosted 2009 historical guide
+SRC_NEXON_COMMUNITY_3085,DAM equipment discussion,https://lod.nexon.com/community/game/3085?SearchBoard=1,V,item stats,Nexon-hosted 2007 historical equipment discussion
+SRC_NEXON_UPDATE_5022,Equipment AC adjustment,https://lod.nexon.com/News/update/5022,O,item stats,Official AC changes for named equipment
