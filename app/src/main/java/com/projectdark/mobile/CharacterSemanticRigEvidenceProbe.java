@@ -26,7 +26,7 @@ public final class CharacterSemanticRigEvidenceProbe {
 
   public static Result collect(Resources r){
     Bitmap body=load(r,CharacterRenderer.IDLE_WALK_RESOURCE,CharacterRenderer.SOURCE_IDLE_WALK_WIDTH,CharacterRenderer.SOURCE_ATLAS_HEIGHT);
-    Bitmap robe=load(r,CharacterRenderer.LUERS_ROBE_RESOURCE,CharacterRenderer.SOURCE_IDLE_WALK_WIDTH,CharacterRenderer.SOURCE_ATLAS_HEIGHT);
+    Bitmap robe=load(r,CharacterRenderer.STARTER_SHIRT_RESOURCE,CharacterRenderer.SOURCE_IDLE_WALK_WIDTH,CharacterRenderer.SOURCE_ATLAS_HEIGHT);
     Bitmap weapon=load(r,CharacterRenderer.MOKDO_RESOURCE,16,8);
     boolean ready=body!=null&&robe!=null&&weapon!=null;
     boolean north=!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NW)&&!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NE);
