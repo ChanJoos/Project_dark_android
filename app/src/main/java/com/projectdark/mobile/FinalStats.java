@@ -9,6 +9,7 @@ public final class FinalStats {
    return new FinalStats(r.str()+v(e,"STR"),r.intel()+v(e,"INT"),r.wis()+v(e,"WIS"),r.con()+v(e,"CON"),r.dex()+v(e,"DEX"),
     r.baseMaxHp()+v(e,"HP"),r.baseMaxMp()+v(e,"MP"),v(e,"AC"),v(e,"MAGIC_DEFENSE"),v(e,"HIT"),v(e,"DAM"),r.attackElement(),r.defenseElement(),v(e,"DAMAGE_REDUCTION_PCT"),v(e,"FLAT_MITIGATION"),v(e,"AC_IGNORE"));
  }
+ public static FinalStats neutral(int hp,int mp){return new FinalStats(0,0,0,0,0,hp,mp,0,0,0,0,"NONE","NONE",0,0,0);}
  public int prototypePhysicalAttack(){return Math.max(1,8+str*3+dam);}
  private static int v(Map<String,Integer> m,String k){Integer x=m.get(k);return x==null?0:x;}
 }
