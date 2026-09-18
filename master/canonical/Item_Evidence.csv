@@ -1,1 +1,8 @@
 Evidence_ID,Item_ID,Field,Value,Source_ID,SourceItemKey,SourceURL,Evidence,Era,ObservedAt,Status,Notes
+"EV_NX4935_HORD","","ALL_STATS","AC=-1;HIT=5;DAM=10;HP=1000;MP=1000;DUR=10000","SRC_NEXON_UPDATE_4935","","https://lod.nexon.com/News/update/4935","O","2022","2026-09-18","UNMAPPED","Four elemental Hord necklace variants; canonical IDs pending"
+"EV_NX4471_DGG","","ALL_STATS","AC=-3;DAM=2;HP=200;CON=1;DUR=12000","SRC_NEXON_COMMUNITY_4471","","https://lod.nexon.com/community/game/4471?SearchBoard=1","V","2009","2026-09-18","UNMAPPED","다크그레이건틀렛+1"
+"EV_NX4471_DGR","","ALL_STATS","AC=-1;HIT=1;DAM=1;HP=350;MP=150;STR=1;DUR=12000","SRC_NEXON_COMMUNITY_4471","","https://lod.nexon.com/community/game/4471?SearchBoard=1","V","2009","2026-09-18","UNMAPPED","다크그레이링+1"
+"EV_NX4471_DGL","","ALL_STATS","AC=-6;HIT=3;DAM=1;HP=200;MP=200;MDEF=10;DUR=3000","SRC_NEXON_COMMUNITY_4471","","https://lod.nexon.com/community/game/4471?SearchBoard=1","V","2009","2026-09-18","UNMAPPED","다크그레이각반+1"
+"EV_NX4471_DGE","","ALL_STATS","AC=-1;HP=100;DUR=12000","SRC_NEXON_COMMUNITY_4471","","https://lod.nexon.com/community/game/4471?SearchBoard=1","V","2009","2026-09-18","UNMAPPED","다크그레이이어링+1"
+"EV_NX4471_DGB","","ALL_STATS","MP=50;WIS=1;CON=1;DUR=10000","SRC_NEXON_COMMUNITY_4471","","https://lod.nexon.com/community/game/4471?SearchBoard=1","V","2009","2026-09-18","UNMAPPED","다크그레이벨트+1"
+"EV_NX4471_DGN","","ALL_STATS","AC=-1;HIT=2;DUR=10000","SRC_NEXON_COMMUNITY_4471","","https://lod.nexon.com/community/game/4471?SearchBoard=1","V","2009","2026-09-18","UNMAPPED","다크그레이스네클리스+1; element varies by color"
