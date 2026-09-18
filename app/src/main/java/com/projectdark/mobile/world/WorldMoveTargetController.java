@@ -101,9 +101,18 @@ public final class WorldMoveTargetController {
     sequence++;kind=requestKind;targetEntityId=entityId;tolerance=approachTolerance;cancelReason=CancelReason.NONE;lastStepDirection=null;stepClock=0f;
     if(requestKind==RequestKind.GROUND&&!insideAuthoredPlane(requestedX,requestedY))return blocked(requestedX,requestedY);
     TileCenter start=currentTile();
-    TileCenter goal=requestKind==RequestKind.GROUND?nearestTraversable(requestedX,requestedY):nearestApproachTile(requestedX,requestedY,approachTolerance);
+    TileCenter goal;
+    List<TileCenter> plannedPath;
+    if(requestKind==RequestKind.GROUND){
+      goal=nearestTraversable(requestedX,requestedY);
+      plannedPath=start==null||goal==null?Collections.emptyList():findPath(start,goal);
+    }else{
+      ApproachPlan plan=start==null?null:bestApproachPlan(start,requestedX,requestedY,approachTolerance);
+      goal=plan==null?null:plan.goal;
+      plannedPath=plan==null?Collections.emptyList():plan.path;
+    }
     if(start==null||goal==null)return blocked(requestedX,requestedY);
-    targetX=goal.x;targetY=goal.y;path=findPath(start,goal);waypointIndex=0;
+    targetX=goal.x;targetY=goal.y;path=plannedPath;waypointIndex=0;
     if(same(start,goal)){status=Status.REACHED;path=Collections.emptyList();}
     else if(path.isEmpty())status=Status.BLOCKED;
     else status=Status.MOVING;
@@ -159,10 +168,30 @@ public final class WorldMoveTargetController {
     return best;
   }
   private boolean insideAuthoredPlane(float x,float y){return x>=minTileX-32f&&x<=maxTileX+32f&&y>=minTileY-16f&&y<=maxTileY+16f;}
-  private TileCenter nearestApproachTile(float x,float y,float approachTolerance){
-    TileCenter best=null;float bestToEntity=Float.MAX_VALUE;
-    for(TileCenter tile:tiles){if(!world.canPlayerOccupy(tile.x,tile.y))continue;float d=distance(tile.x,tile.y,x,y);if(d<=approachTolerance&&d<bestToEntity){bestToEntity=d;best=tile;}}
-    return best;
+  private static final class ApproachPlan {
+    final TileCenter goal; final List<TileCenter> path; final float entityDistance;
+    ApproachPlan(TileCenter goal,List<TileCenter> path,float entityDistance){this.goal=goal;this.path=path;this.entityDistance=entityDistance;}
+  }
+  /**
+   * Entity approach is a multi-goal shortest-path problem. Choosing the tile physically closest
+   * to the entity first can force an unnecessary detour around collision. Evaluate every
+   * interaction-valid tile and prefer the reachable one with the fewest authored tile steps.
+   * Entity distance is only a tie-breaker, so interaction remains visually tight.
+   */
+  private ApproachPlan bestApproachPlan(TileCenter start,float x,float y,float approachTolerance){
+    ApproachPlan bestPlan=null;int bestSteps=Integer.MAX_VALUE;float bestEntityDistance=Float.MAX_VALUE;
+    for(TileCenter tile:tiles){
+      if(!world.canPlayerOccupy(tile.x,tile.y))continue;
+      float entityDistance=distance(tile.x,tile.y,x,y);
+      if(entityDistance>approachTolerance)continue;
+      List<TileCenter> candidate=same(start,tile)?Collections.emptyList():findPath(start,tile);
+      if(!same(start,tile)&&candidate.isEmpty())continue;
+      int steps=candidate.size();
+      if(steps<bestSteps||(steps==bestSteps&&entityDistance<bestEntityDistance)){
+        bestSteps=steps;bestEntityDistance=entityDistance;bestPlan=new ApproachPlan(tile,candidate,entityDistance);
+      }
+    }
+    return bestPlan;
   }
   private List<TileCenter> findPath(TileCenter start,TileCenter goal){
     PriorityQueue<Node> open=new PriorityQueue<>(Comparator.comparingDouble(n->n.f));
