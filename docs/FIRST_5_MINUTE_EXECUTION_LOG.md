@@ -503,3 +503,17 @@ REQUIRED_DELTA=Run post-merge integration regression on exact main after PR #126
 ACCEPTANCE=PR #126 exact HEAD bd95dd8d7538d821402682bbd550b8b87834394c passed Android validation run 35291669975 including Master DB, compile, gameplay contract audit, production runtime binding audit, explicit F5M-028 restart persistence matrix, debug build and artifact upload; PR #126 merged as 32bb6b364a125b70415ec6470a33a19663588566. Final F5M-029 VERIFIED requires post-merge exact-main CI/regression success; no APK release action.
 BLOCKED_BY=Post-merge exact-main validation is pending.
 NEXT_OWNER=INTEGRATOR
+
+
+### 2026-09-18 09:37 KST — DIRECTOR VERIFICATION / ROUTING
+ROUTING_EPOCH=2026-09-18T00:37:00Z
+ROUTING_COMMIT=PENDING
+ACTIVE_OWNER=DIRECTOR
+ACTIVE_F5M=F5M-024,F5M-025,F5M-027,F5M-028,F5M-029
+BASE_SHA=f473ef83982349284ea26e30405c670353d8e6f7
+CANDIDATE_PR=none
+CANDIDATE_HEAD=none
+REQUIRED_DELTA=Freeze the verified Growth v1 F5M baseline and admit no further F5M critical-path mutation without a reproduced blocker. Attack visual polish remains frozen and separate.
+ACCEPTANCE=PR #126 exact-head run 35291669975 passed the explicit restart matrix and all Android gates; merge commit 32bb6b364a125b70415ec6470a33a19663588566 integrated the candidate; exact current-main validation run 35291814952 passed after Director routing commit f473ef83982349284ea26e30405c670353d8e6f7. F5M-024 reward-safe turn-in, F5M-025 completed tracker/reward presentation, F5M-027 durable RPG/quest state, F5M-028 restart/idempotency matrix and F5M-029 integration regression are VERIFIED at CI/runtime-contract level. This is not DEVICE_VERIFIED and no APK release was performed.
+BLOCKED_BY=none
+NEXT_OWNER=DIRECTOR
