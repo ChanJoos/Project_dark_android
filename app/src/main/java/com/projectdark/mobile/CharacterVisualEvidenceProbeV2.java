@@ -49,7 +49,7 @@ public final class CharacterVisualEvidenceProbeV2 {
 
   public static final class AttackLayers {
     public final CharacterRenderer.Direction direction;public final boolean body,robe,weapon,atomic,noWeaponOnlyFallback;
-    AttackLayers(CharacterRenderer.Direction d,boolean b,boolean r,boolean w){direction=d;body=b;robe=r;weapon=w;atomic=CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",b,r,w);noWeaponOnlyFallback=!CharacterRenderer.attackFallbackWeaponSwingReachable();}
+    AttackLayers(CharacterRenderer.Direction d,boolean b,boolean r,boolean w){direction=d;body=b;robe=r;weapon=w;atomic=CharacterRenderer.sourceActionLayersReadyContract("mu0000001","mw001",b,r,w);noWeaponOnlyFallback=!CharacterRenderer.attackFallbackWeaponSwingReachable();}
     @Override public String toString(){return direction+" BODY="+body+" ROBE="+robe+" MW001="+weapon+" atomic="+atomic+" noWeaponOnlyFallback="+noWeaponOnlyFallback;}
   }
 
@@ -80,7 +80,7 @@ public final class CharacterVisualEvidenceProbeV2 {
     Bitmap robe=load(r,CharacterRenderer.STARTER_SHIRT_RESOURCE,CharacterRenderer.SOURCE_IDLE_WALK_WIDTH,CharacterRenderer.SOURCE_ATLAS_HEIGHT);
     Bitmap weapon=load(r,CharacterRenderer.MOKDO_RESOURCE,16,8);
     Bitmap[] bodyAction=new Bitmap[4],robeAction=new Bitmap[4];boolean ready=body!=null&&robe!=null&&weapon!=null;
-    for(int i=0;i<4;i++){bodyAction[i]=load(r,"player_body_mm001_action02_"+i,BODY_W[i],BODY_H[i]);robeAction[i]=load(r,"player_robe_mu0000058_action02_"+i,ROBE_W[i],ROBE_H[i]);ready&=bodyAction[i]!=null&&robeAction[i]!=null;}
+    for(int i=0;i<4;i++){bodyAction[i]=load(r,"player_body_mm001_action02_"+i,BODY_W[i],BODY_H[i]);robeAction[i]=load(r,"player_shirt_mu0000001_action02_"+i,ROBE_W[i],ROBE_H[i]);ready&=bodyAction[i]!=null&&robeAction[i]!=null;}
 
     float[][] expectedNorthX={{-1,-2,-1,0,1},{2,2,2,0,1}};
     List<WalkRegistration> walk=new ArrayList<>();boolean robePass=CharacterRenderer.robeRegistrationContinuityWithin(2f);boolean swVertical=false,seVertical=false;
