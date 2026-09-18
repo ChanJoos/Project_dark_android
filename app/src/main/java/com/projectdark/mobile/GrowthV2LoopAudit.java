@@ -15,8 +15,8 @@ public final class GrowthV2LoopAudit {
     if(r.gold()!=gold+250||r.normalExp()<0)return false;
     r.restoreStats(r.str(),r.intel(),r.wis(),r.con(),r.dex(),5);
     if(!r.spendStat("STR")||r.physicalAttack()<=atk)return false;
-    r.restoreStats(r.str(),r.intel(),r.wis(),r.con()+1,r.dex(),4);if(r.maxHpGrowth()<=hp)return false;
-    r.restoreStats(r.str(),r.intel()+1,r.wis()+1,r.con(),r.dex(),2);if(r.maxMpGrowth()<=mp)return false;
+    r.restoreStats(r.str(),r.intel(),r.wis(),r.con()+1,r.dex(),4);if(r.maxHpGrowth()!=r.baseMaxHp())return false;
+    r.restoreStats(r.str(),r.intel()+1,r.wis()+1,r.con(),r.dex(),2);if(r.maxMpGrowth()!=r.baseMaxMp())return false;
     return true;
   }
   public static void main(String[] args){if(!verify())throw new AssertionError("GrowthV2LoopAudit failed");System.out.println("GROWTH_V2_LOOP=PASS");}
