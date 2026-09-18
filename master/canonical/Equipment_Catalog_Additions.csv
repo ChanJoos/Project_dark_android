@@ -47,3 +47,17 @@ IT_LIGHT_NECKLACE,빛의목걸이,장비,목걸이,공통,ADV,,목걸이,HOLY,,�
 IT_LIGHT_BELT,빛의벨트,장비,벨트,공통,ADV,,벨트,,HOLY,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
 IT_DARK_NECKLACE,어둠의목걸이,장비,목걸이,공통,ADV,,목걸이,DARK,,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
 IT_DARK_BELT,어둠의벨트,장비,벨트,공통,ADV,,벨트,,DARK,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_COPPER_SHIELD,구리방패,장비,방패,공통,2,26,방패,,,2써클 방패,,,,SRC_GEAR_GUIDE,V,Lv26-40
+IT_SILVER_GLOVE,은장갑,장비,장갑,공통,4,71,장갑,,,4써클 장갑,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,Lv71-80
+IT_AQUA_LEATHER_GLOVE,아쿠아레더글러브,장비,장갑,공통,4,81,장갑,,,4써클 장갑,,,가능,SRC_GEAR_GUIDE,V,Lv81-98
+IT_SILVER_LEGGINGS,은각반,장비,각반,공통,4,71,각반,,,4써클 각반,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,Lv71-80
+IT_AQUA_LEGGINGS,아쿠아각반,장비,각반,공통,4,81,각반,,,4써클 각반,,,가능,SRC_GEAR_GUIDE,V,Lv81-98
+IT_GREEN_BOOTS,녹색부츠,장비,신발,공통,3,41,신발,,,3써클 신발,,,,SRC_GEAR_GUIDE,V,Lv41-55
+IT_LEATHER_BOOTS,레더부츠,장비,신발,공통,3,56,신발,,,3써클 신발,,,,SRC_GEAR_GUIDE,V,Lv56-70
+IT_VIOLET_T,바이올렛티,장비,신발,공통,4,71,신발,,,4써클 신발,,,,SRC_GEAR_GUIDE,V,Lv71-85
+IT_MAGMA_BOOTS,마그마부츠,장비,신발,공통,4,86,신발,,,4써클 신발,,,,SRC_GEAR_GUIDE,V,Lv86-98
+IT_GOLD_SHIELD,금제방패,장비,방패,공통,4,71,방패,,,4써클 방패,,,,SRC_GEAR_GUIDE,V,Lv71-85
+IT_PLANIUM_SHIELD,플라늄방패,장비,방패,공통,4,86,방패,,,4써클 방패,,,,SRC_GEAR_GUIDE,V,Lv86-98
+IT_PAPAYA_SHIELD,파파야방패,장비,방패,공통,4,71,방패,,,4써클 퀘스트 방패,4써클 퀘스트,,,SRC_GEAR_GUIDE,V,Lv71-98
+IT_SKULL_SHIELD,해골방패,장비,방패,공통,3,41,방패,,,이벤트 방패,이벤트,,,SRC_GEAR_GUIDE,V,Lv41-70
+IT_EXORCISM_SHIELD,퇴마방패,장비,방패,공통,3,41,방패,,,이벤트 방패,이벤트,,,SRC_GEAR_GUIDE,V,Lv41-70
