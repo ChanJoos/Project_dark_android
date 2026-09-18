@@ -77,7 +77,7 @@ public final class CharacterVisualEvidenceProbeV2 {
 
   public static Evidence collect(Resources r){
     Bitmap body=load(r,CharacterRenderer.IDLE_WALK_RESOURCE,CharacterRenderer.SOURCE_IDLE_WALK_WIDTH,CharacterRenderer.SOURCE_ATLAS_HEIGHT);
-    Bitmap robe=load(r,CharacterRenderer.LUERS_ROBE_RESOURCE,CharacterRenderer.SOURCE_IDLE_WALK_WIDTH,CharacterRenderer.SOURCE_ATLAS_HEIGHT);
+    Bitmap robe=load(r,CharacterRenderer.STARTER_SHIRT_RESOURCE,CharacterRenderer.SOURCE_IDLE_WALK_WIDTH,CharacterRenderer.SOURCE_ATLAS_HEIGHT);
     Bitmap weapon=load(r,CharacterRenderer.MOKDO_RESOURCE,16,8);
     Bitmap[] bodyAction=new Bitmap[4],robeAction=new Bitmap[4];boolean ready=body!=null&&robe!=null&&weapon!=null;
     for(int i=0;i<4;i++){bodyAction[i]=load(r,"player_body_mm001_action02_"+i,BODY_W[i],BODY_H[i]);robeAction[i]=load(r,"player_robe_mu0000058_action02_"+i,ROBE_W[i],ROBE_H[i]);ready&=bodyAction[i]!=null&&robeAction[i]!=null;}

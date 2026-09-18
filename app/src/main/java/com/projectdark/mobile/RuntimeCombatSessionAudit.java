@@ -83,7 +83,7 @@ public final class RuntimeCombatSessionAudit {
     if(!RuntimeCombatSession.playerAttackActionId(AnimationAction.PUNCH).equals(punch.combat.actionId))return false;
 
     RuntimeState armedState=new RuntimeState(RuntimeState.BootMode.MILLES,true);
-    if(armedState.rpg().equip(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
+    if(armedState.rpg().equip(RpgProgressionState.STARTER_SHIRT_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     if(armedState.rpg().equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     RuntimeState.Monster armedTarget=armedState.monsters().get(0);placePlayerAdjacent(armedState,armedTarget,WorldMoveTargetController.Direction.SE);
     RuntimeCombatSession armedSession=new RuntimeCombatSession(armedState,(actor,target)->true,(actor,action)->false,actor->true);
@@ -91,7 +91,7 @@ public final class RuntimeCombatSessionAudit {
     if(!swing.combat.accepted()||swing.animationAction!=AnimationAction.SWING)return false;
     if(!RpgProgressionState.PLAYTEST_WEAPON_APPEARANCE_ID.equals(swing.weaponAppearanceId))return false;
     if(!RuntimeCombatSession.playerAttackActionId(AnimationAction.SWING).equals(swing.combat.actionId))return false;
-    return RpgProgressionState.PLAYTEST_ROBE_ITEM_ID.equals(armedState.rpg().equipment().get(RpgProgressionState.ARMOR_SLOT));
+    return RpgProgressionState.STARTER_SHIRT_ITEM_ID.equals(armedState.rpg().equipment().get(RpgProgressionState.ARMOR_SLOT));
   }
 
   private static void placePlayerAdjacent(RuntimeState state,RuntimeState.Monster monster,WorldMoveTargetController.Direction direction){state.player().x=monster.x+direction.dx;state.player().y=monster.y+direction.dy;}

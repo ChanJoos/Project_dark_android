@@ -14,7 +14,7 @@ public final class PostF5mProgressionAudit {
 
   @Test public void existingInventoryAndEquipmentContractSurvivesProgressionChange(){
     RpgProgressionState rpg=new RpgProgressionState();
-    assertEquals(Integer.valueOf(1),rpg.inventory().get(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID));
+    assertEquals(Integer.valueOf(1),rpg.inventory().get(RpgProgressionState.STARTER_SHIRT_ITEM_ID));
     assertEquals(Integer.valueOf(1),rpg.inventory().get(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID));
     assertEquals(RpgProgressionState.EquipResult.EQUIPPED,rpg.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID));
     assertEquals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,rpg.equipment().get(RpgProgressionState.WEAPON_SLOT));

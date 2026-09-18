@@ -15,9 +15,9 @@ public final class EquipmentActionResolverAudit {
 
     EquipmentActionResolver.Result unarmed=resolver.resolveBasicAttack(rpg);
     if(unarmed.animationAction!=AnimationAction.PUNCH||unarmed.weaponAppearanceId!=null)return false;
-    if(rpg.equip(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
+    if(rpg.equip(RpgProgressionState.STARTER_SHIRT_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     if(rpg.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
-    if(!RpgProgressionState.PLAYTEST_ROBE_ITEM_ID.equals(rpg.equipment().get(RpgProgressionState.ARMOR_SLOT)))return false;
+    if(!RpgProgressionState.STARTER_SHIRT_ITEM_ID.equals(rpg.equipment().get(RpgProgressionState.ARMOR_SLOT)))return false;
     if(!RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID.equals(rpg.equipment().get(RpgProgressionState.WEAPON_SLOT)))return false;
 
     EquipmentActionResolver.Result armed=resolver.resolveBasicAttack(rpg);
@@ -30,7 +30,7 @@ public final class EquipmentActionResolverAudit {
     if(!EquipmentActionResolver.EXPLICIT_GAME_ACTION.equals(cast.actionEvidence))return false;
 
     if(rpg.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID)!=RpgProgressionState.EquipResult.UNEQUIPPED)return false;
-    if(!RpgProgressionState.PLAYTEST_ROBE_ITEM_ID.equals(rpg.equipment().get(RpgProgressionState.ARMOR_SLOT)))return false;
+    if(!RpgProgressionState.STARTER_SHIRT_ITEM_ID.equals(rpg.equipment().get(RpgProgressionState.ARMOR_SLOT)))return false;
     return resolver.resolveBasicAttack(rpg).animationAction==AnimationAction.PUNCH;
   }
 
