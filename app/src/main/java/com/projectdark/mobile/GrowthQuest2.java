@@ -1,0 +1,16 @@
+package com.projectdark.mobile;
+
+/** [ADAPTED] Second playable growth quest unlocked after the F5M prologue. */
+public final class GrowthQuest2 {
+  public static final String QUEST_ID="Q_ADAPTED_GROWTH_02";
+  public static final int REQUIRED=3;
+  public enum State{LOCKED,AVAILABLE,ACTIVE,RETURN_READY,COMPLETED}
+  private State state=State.LOCKED; private int defeated=0; private long lastSequence=0L;
+  public State state(){return state;} public int currentCount(){return defeated;} public int requiredCount(){return REQUIRED;}
+  public void unlockIfPrologueCompleted(F5mAdaptedPrologueQuest q){if(state==State.LOCKED&&q!=null&&q.state()==F5mAdaptedPrologueQuest.State.COMPLETED)state=State.AVAILABLE;}
+  public boolean accept(){if(state!=State.AVAILABLE)return false;state=State.ACTIVE;persist();return true;}
+  public boolean consume(CombatLedger.Event e){if(e==null||e.sequence<=lastSequence)return false;lastSequence=e.sequence;if(state!=State.ACTIVE||e.type!=CombatLedger.Type.MONSTER_DEFEATED||!"combat_dummy_01".equals(e.targetId))return false;defeated=Math.min(REQUIRED,defeated+1);if(defeated>=REQUIRED)state=State.RETURN_READY;persist();return true;}
+  public boolean turnIn(RpgProgressionState r){if(state!=State.RETURN_READY||r==null)return false;r.grantAdaptedReward(15000,250);state=State.COMPLETED;persist();F5mSaveStore.saveRewardsActive(r);return true;}
+  public void restore(State s,int count){state=s==null?State.LOCKED:s;defeated=Math.max(0,Math.min(REQUIRED,count));}
+  private void persist(){F5mSaveStore.saveQuest2Active(this);}
+}
