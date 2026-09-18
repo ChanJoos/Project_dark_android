@@ -35,6 +35,8 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
+      - name: Execute Growth Core v3 and FinalStats audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.GrowthCoreV3Audit
       - name: Execute Growth v2 coherence audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.GrowthV2CoherenceAudit
       - name: Execute Growth v2 Quest2 and stat progression audit
