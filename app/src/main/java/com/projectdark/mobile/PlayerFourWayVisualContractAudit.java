@@ -1,12 +1,12 @@
 package com.projectdark.mobile;
 
-/** Four-direction visual acceptance contract for BODY + Luers robe + mw001 across idle/walk/attack/recovery. */
+/** Four-direction visual acceptance contract for BODY + peasant shirt + mw001 across idle/walk/attack/recovery. */
 public final class PlayerFourWayVisualContractAudit {
   private PlayerFourWayVisualContractAudit(){}
   public static boolean verify(){
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       if(CharacterRenderer.atlasRow(d)<0)return false;
-      // IDLE + all four WALK frames must resolve the same body/robe column and bounded registrations.
+      // IDLE + all four WALK frames must resolve the same body/shirt column and bounded registrations.
       if(CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.IDLE,0f)!=0)return false;
       for(int frame=0;frame<4;frame++){
         float clock=frame*CharacterRenderer.WALK_FRAME_SECONDS;
@@ -16,8 +16,8 @@ public final class PlayerFourWayVisualContractAudit {
         if(Float.isNaN(CharacterRenderer.weaponCarryOffsetX(d,col))||Float.isNaN(CharacterRenderer.weaponCarryOffsetY(d,col))||Float.isNaN(CharacterRenderer.weaponCarryAngle(d,col)))return false;
         if(CharacterRenderer.weaponCarryOffsetY(d,col)<16f||CharacterRenderer.weaponCarryOffsetY(d,col)>27f)return false;
       }
-      // ATTACK is exactly: standing paper doll -> authored BODY+robe+mw001 contact -> standing recovery.
-      CharacterRenderer.AttackVisualComposition attack=CharacterRenderer.attackVisualComposition(d,"mu0000058","mw001");
+      // ATTACK is exactly: standing paper doll -> authored BODY+shirt+mw001 contact -> standing recovery.
+      CharacterRenderer.AttackVisualComposition attack=CharacterRenderer.attackVisualComposition(d,CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID,"mw001");
       if(!attack.robeVisible||!attack.weaponVisible||attack.sourceIndex!=CharacterRenderer.atlasRow(d))return false;
       if(CharacterRenderer.attackThreePose(0f)!=0||CharacterRenderer.attackThreePose(.4f)!=1||CharacterRenderer.attackThreePose(.9f)!=2)return false;
       if(CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
