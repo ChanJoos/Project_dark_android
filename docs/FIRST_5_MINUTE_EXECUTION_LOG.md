@@ -489,3 +489,17 @@ REQUIRED_DELTA=Validate Growth v1-preserving candidate as one coherent F5M path:
 ACCEPTANCE=Exact candidate HEAD Android validation run 35237626228 is SUCCESS including Master DB, compile, F5M gameplay audit, F5M production runtime binding audit and debug build; remaining gate is explicit F5M-028 restart matrix plus F5M-029 integration regression evidence before merge. Do not package/release APK as Director work.
 BLOCKED_BY=F5M-028 restart matrix is not covered by current CI audits; candidate is not VERIFIED until restart persistence/idempotency evidence exists.
 NEXT_OWNER=INTEGRATOR
+
+
+### 2026-09-18 09:35 KST — DIRECTOR ROUTING
+ROUTING_EPOCH=2026-09-18T00:35:00Z
+ROUTING_COMMIT=PENDING
+ACTIVE_OWNER=INTEGRATOR
+ACTIVE_F5M=F5M-024,F5M-025,F5M-027,F5M-028,F5M-029
+BASE_SHA=32bb6b364a125b70415ec6470a33a19663588566
+CANDIDATE_PR=none
+CANDIDATE_HEAD=none
+REQUIRED_DELTA=Run post-merge integration regression on exact main after PR #126 merge; preserve Growth v1 quest/reward/save/HUD and movement/facing contracts, and confirm no regression in reward-safe turn-in, completed tracker removal, persistence/restart or duplicate-reward protection.
+ACCEPTANCE=PR #126 exact HEAD bd95dd8d7538d821402682bbd550b8b87834394c passed Android validation run 35291669975 including Master DB, compile, gameplay contract audit, production runtime binding audit, explicit F5M-028 restart persistence matrix, debug build and artifact upload; PR #126 merged as 32bb6b364a125b70415ec6470a33a19663588566. Final F5M-029 VERIFIED requires post-merge exact-main CI/regression success; no APK release action.
+BLOCKED_BY=Post-merge exact-main validation is pending.
+NEXT_OWNER=INTEGRATOR
