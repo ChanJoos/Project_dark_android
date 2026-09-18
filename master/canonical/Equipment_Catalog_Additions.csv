@@ -37,3 +37,13 @@ IT_NAGELING_GLOVE,나겔링글러브,장비,장갑,공통,3C_ADV,,장갑,,,,나�
 "IT_NECK_JADE_BASE","벽옥","장비","목걸이","도적","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
 "IT_NECK_KANNA_BASE","칸나목걸이","장비","목걸이","도적/무도가","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
 "IT_NECK_MAGIA_BASE","마기아","장비","목걸이","무도가","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
+IT_BRONZE_GLOVE,동장갑,장비,장갑,공통,3,41,장갑,,,3써클 장갑,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_AQUA_GLOVE,아쿠아글러브,장비,장갑,공통,3,51,장갑,,,3써클 장갑,아벨 해안던전,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_BRONZE_LEGGINGS,동각반,장비,각반,공통,3,41,각반,,,3써클 각반,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_CORAL_LEGGINGS,산호각반,장비,각반,공통,3,51,각반,,,3써클 각반,아벨 해안던전,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_IRON_SHIELD,철방패,장비,방패,공통,3,41,방패,,,3써클 방패,,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_SILVER_SHIELD,은제방패,장비,방패,공통,3,56,방패,,,3써클 방패,,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_LIGHT_NECKLACE,빛의목걸이,장비,목걸이,공통,ADV,,목걸이,HOLY,,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_LIGHT_BELT,빛의벨트,장비,벨트,공통,ADV,,벨트,,HOLY,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_DARK_NECKLACE,어둠의목걸이,장비,목걸이,공통,ADV,,목걸이,DARK,,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_DARK_BELT,어둠의벨트,장비,벨트,공통,ADV,,벨트,,DARK,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
