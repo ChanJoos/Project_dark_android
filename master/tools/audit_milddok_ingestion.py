@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 src=ROOT/"tests/fixtures/milddok_normalized_sample.csv"
 subprocess.run([sys.executable,str(ROOT/"tools/ingest_milddok.py"),str(src)],check=True)
-p=ROOT/"data/generated/Milddok_Match_Audit.csv"
+p=ROOT/"canonical/generated/Milddok_Match_Audit.csv"
 rows=list(csv.DictReader(open(p,encoding="utf-8-sig")))
 assert len(rows)==3
 m={r["name"]:r for r in rows}
