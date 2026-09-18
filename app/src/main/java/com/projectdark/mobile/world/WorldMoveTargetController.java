@@ -16,7 +16,8 @@ public final class WorldMoveTargetController {
   public enum Status { IDLE, MOVING, REACHED, BLOCKED, CANCELLED }
   public enum CancelReason { NONE, REPLACED, DIRECT_INPUT, ACTION, EXPLICIT }
   public enum Direction {
-    NW(-32f,-16f), NE(32f,-16f), SW(-32f,16f), SE(32f,16f);
+    NW(-32f,-16f), NE(32f,-16f), SW(-32f,16f), SE(32f,16f),
+    W(-64f,0f), E(64f,0f);
     public final float dx,dy;
     Direction(float dx,float dy){this.dx=dx;this.dy=dy;}
     public static Direction between(float ax,float ay,float bx,float by){
@@ -202,7 +203,7 @@ public final class WorldMoveTargetController {
       if(same(current.tile,goal))return reconstruct(current);
       for(Direction direction:Direction.values()){
         TileCenter next=byCenter.get(key(current.tile.x+direction.dx,current.tile.y+direction.dy));
-        if(next==null||!world.canPlayerOccupy(next.x,next.y))continue;
+        if(next==null||!world.canPlayerOccupy(next.x,next.y)||!edgeTraversable(current.tile,next,direction))continue;
         String nextKey=key(next.x,next.y);if(closed.contains(nextKey))continue;
         float ng=current.g+1f;Float previous=best.get(nextKey);if(previous!=null&&previous<=ng)continue;
         best.put(nextKey,ng);open.add(new Node(next,ng,ng+heuristic(next,goal),current));
@@ -210,12 +211,24 @@ public final class WorldMoveTargetController {
     }
     return Collections.emptyList();
   }
+  private boolean edgeTraversable(TileCenter from,TileCenter to,Direction direction){
+    if(direction!=Direction.E&&direction!=Direction.W)return true;
+    // Horizontal traversal spans the shared vertex of two diamonds. Both flanking half-step
+    // centers must be traversable so a straight route cannot cut through authored collision.
+    float mx=(from.x+to.x)*.5f,my=from.y;
+    TileCenter upper=byCenter.get(key(mx,my-16f)),lower=byCenter.get(key(mx,my+16f));
+    return upper!=null&&lower!=null&&world.canPlayerOccupy(upper.x,upper.y)&&world.canPlayerOccupy(lower.x,lower.y);
+  }
   private static List<TileCenter> reconstruct(Node goal){
     List<TileCenter> reversed=new ArrayList<>();for(Node n=goal;n!=null;n=n.parent)reversed.add(n.tile);
     Collections.reverse(reversed);if(!reversed.isEmpty())reversed.remove(0);return reversed;
   }
   private static float heuristic(TileCenter a,TileCenter b){
-    float row=Math.abs(a.y-b.y)/16f,column=Math.abs(a.x-b.x)/32f;return Math.max(row,column);
+    float dx=Math.abs(a.x-b.x),dy=Math.abs(a.y-b.y);
+    // E/W can consume 64 world-X in one logical traversal; diagonals consume 32x16.
+    float verticalSteps=dy/16f;
+    float residualX=Math.max(0f,dx-verticalSteps*32f);
+    return verticalSteps+(float)Math.ceil(residualX/64f);
   }
   private static boolean same(TileCenter a,TileCenter b){return close(a.x,b.x)&&close(a.y,b.y);}
   private static boolean close(float a,float b){return Math.abs(a-b)<.01f;}
