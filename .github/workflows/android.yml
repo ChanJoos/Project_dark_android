@@ -35,6 +35,8 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
+      - name: Equipment asset evidence audit
+        run: python master/tools/audit_equipment_assets.py
       - name: Milddok ingestion identity audit
         run: python master/tools/audit_milddok_ingestion.py
       - name: Execute Combat v3 FinalStats pipeline audit
