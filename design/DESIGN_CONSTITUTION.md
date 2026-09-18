@@ -3,7 +3,9 @@
 Status: CANONICAL / Source of Truth gate
 
 Current amendments: `design/PLAYTEST_CANON_20260910_2149.md` supersedes conflicting older scale/movement/world-expansion requirements below. `design/LOD_SYSTEM_EVIDENCE_20260911.md` records the NamuWiki snapshot as `[FAN]` evidence and must not be silently promoted to official canon. Operational ownership and execution priorities follow `docs/DIRECTOR_GUIDE.md`. One coherent village screen remains the first production milestone; system discovery does not widen the current implementation sprint.
-Updated: 2026-09-12
+Updated: 2026-09-18
+
+Character-stat authority: `design/CHARACTER_STAT_SYSTEM_V1.md` is the canonical SSOT for Lv1–99 primary-stat allocation, HP/MP growth semantics, AC/Magic Defense/HIT/DAM/elements, equipment modifiers and stat-screen projection. Older prototype formulas conflicting with it are retired.
 
 ## 1. Product canon
 
