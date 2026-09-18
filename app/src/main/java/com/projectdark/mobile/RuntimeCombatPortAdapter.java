@@ -94,6 +94,10 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public CombatResolver.EffectResult applyDamage(String actorId,String targetId,String actionId,int amount){
+    CombatStatPipeline.Channel channel="cast_proto".equals(actionId)?CombatStatPipeline.Channel.MAGIC:CombatStatPipeline.Channel.PHYSICAL;
+    FinalStats attacker="player".equals(actorId)?state.rpg().finalStats():monsterStats();
+    FinalStats defender="player".equals(targetId)?state.rpg().finalStats():monsterStats();
+    amount=CombatStatPipeline.resolve(amount,channel,attacker,defender).applied;
     if(amount<=0||!entityAlive(actorId)||!entityAlive(targetId))
       return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,
           targetKind(targetId),CombatResolver.HitSemantic.DAMAGE);
@@ -121,6 +125,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
         CombatResolver.DefeatedTargetKind.OTHER,CombatResolver.HitSemantic.DAMAGE);
   }
 
+  private FinalStats monsterStats(){return FinalStats.neutral(100,0);}
   private boolean entityAlive(String id){
     if("player".equals(id))return state.player().alive;
     RuntimeState.Monster monster=findMonster(id);
