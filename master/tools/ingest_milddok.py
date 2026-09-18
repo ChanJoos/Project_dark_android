@@ -19,7 +19,7 @@ def main(src):
   if len(cand)==1:matched.append((r,cand[0]))
   elif len(cand)>1:ambiguous.append(r)
   else:missing.append(r)
- out=DATA/"generated";out.mkdir(exist_ok=True)
+ out=ROOT/"canonical/generated";out.mkdir(parents=True,exist_ok=True)
  with open(out/"Milddok_Match_Audit.csv","w",encoding="utf-8-sig",newline="") as f:
   w=csv.writer(f);w.writerow(["source_key","name","status","Item_ID"])
   for r,i in matched:w.writerow([r.get("source_key"),r.get("name"),"MATCHED",i["Item_ID"]])
