@@ -1,0 +1,31 @@
+name: Post-F5M HUD final
+on:
+  push:
+    paths: ['.github/workflows/post-f5m-hud-final.yml']
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+      - name: Patch HUD
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          s=p.read_text()
+          s=s.replace('ATK_X=938f,ATK_Y=498f,ATK_R=38f','ATK_X=958f,ATK_Y=498f,ATK_R=38f')
+          old='mutedText(c,"BUFF",24,100,7);}'
+          new='mutedText(c,"BUFF",24,100,7);Long gold=state.rpg().gold();text(c,"Gold "+(gold==null?0:gold),116,100,8);}'
+          if old not in s: raise SystemExit('status HUD anchor missing')
+          s=s.replace(old,new)
+          p.write_text(s)
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add app/src/main/java/com/projectdark/mobile/GameView.java
+          git commit -m 'Post-F5M: show gold and move attack to screen edge'
+          git push origin HEAD:director/post-f5m-next-purpose

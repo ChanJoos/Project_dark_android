@@ -125,7 +125,9 @@ public final class RpgProgressionState {
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
-  private Long normalExp=null;
+  // EXP starts at zero and level-up uses only master/data/Level_EXP_Curve.csv thresholds.
+  private Long normalExp=0L;
+  private Long gold=0L;
 
   public RpgProgressionState(){
     Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
@@ -173,6 +175,31 @@ public final class RpgProgressionState {
   public String currentJobCode(){return currentJobCode;}
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
+  public Long gold(){return gold;}
+  private int str=5,intel=5,wis=5,con=5,dex=5,statPoints=0;
+  public int str(){return str;} public int intel(){return intel;} public int wis(){return wis;} public int con(){return con;} public int dex(){return dex;} public int statPoints(){return statPoints;}
+  public int physicalAttack(){int lv=normalLevel==null?1:normalLevel;return 8+lv*2+str*3+dex/2;}
+  public int maxHpGrowth(){int lv=normalLevel==null?1:normalLevel;return 100+(lv-1)*12+con*8;}
+  public int maxMpGrowth(){int lv=normalLevel==null?1:normalLevel;return 60+(lv-1)*6+wis*5+intel*3;}
+  public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
+  public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(0,s);intel=Math.max(0,i);wis=Math.max(0,w);con=Math.max(0,c);dex=Math.max(0,d);statPoints=Math.max(0,points);}
+  public void restoreGold(long value){gold=Math.max(0L,value);}
+  public void grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;normalizeCanonicalLevel();}
+
+  /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */
+  public void restoreProgression(int level,long exp){
+    normalLevel=Math.max(1,Math.min(99,level));
+    normalExp=Math.max(0L,exp);
+    normalizeCanonicalLevel();
+  }
+
+  /** Applies only canonical level thresholds and carries overflow EXP to the next level. */
+  public int normalizeCanonicalLevel(){
+    int before=normalLevel==null?1:normalLevel;
+    int level=before;long exp=normalExp==null?0L:normalExp;
+    while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
+    normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0)statPoints+=gained*5;return gained;
+  }
 
   /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
   public RequirementResult evaluateRequirements(String itemId,String jobCode,Integer level){
@@ -210,7 +237,8 @@ public final class RpgProgressionState {
         AutoLootResult result=autoLootResolvedItem(prototype.itemId,prototype.quantity);
         outcomes.put(prototype.itemId,result);
         if(result==AutoLootResult.LOOTED)granted.put(prototype.itemId,prototype.quantity);
-        rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,null,granted,outcomes,
+        grantAdaptedReward(AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD);
+        rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,granted,outcomes,
             RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence));
         trimRewardHistory();
         return;
@@ -228,6 +256,7 @@ public final class RpgProgressionState {
       outcomes.put(hint.itemId,result);
       if(result==AutoLootResult.LOOTED)looted.put(hint.itemId,value(looted,hint.itemId)+hint.quantity);
     }
+    if(reward.exp!=null)normalExp+=reward.exp.longValue();
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes,
         RewardSource.CANONICAL,"CANONICAL_MONSTER_REWARD",reward.expEvidence==null?null:reward.expEvidence.name()));
     trimRewardHistory();

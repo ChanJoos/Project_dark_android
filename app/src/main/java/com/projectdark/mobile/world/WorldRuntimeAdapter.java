@@ -135,7 +135,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public boolean canPlayerOccupy(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
-    for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+    for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r>obstacle.bottom)return false;
     for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
     for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&distance(x,y,m.x,m.y)<r+RuntimeState.MONSTER_RADIUS+3f)return false;
     return true;
@@ -146,13 +146,11 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
-    // RuntimeState resolves X and Y separately. Preflight its intermediate point so a rejected
-    // diagonal can never leave the player on a half-step.
-    if(!canPlayerOccupy(destinationX,startY)||!canPlayerOccupy(destinationX,destinationY))return false;
-    if(!runtime.tryMove(direction.dx,direction.dy)||Math.abs(runtime.player().x-destinationX)>.01f||Math.abs(runtime.player().y-destinationY)>.01f){
-      runtime.player().x=startX;runtime.player().y=startY;return false;
-    }
-    runtime.player().x=destinationX;runtime.player().y=destinationY;
+    // A diagonal is one authored tile transition. Validate only its final tile occupancy;
+    // never reject it because of a synthetic X-only half-step that the player never occupies.
+    if(!canPlayerOccupy(destinationX,destinationY))return false;
+    runtime.player().x=destinationX;
+    runtime.player().y=destinationY;
     return true;
   }
 

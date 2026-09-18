@@ -1,0 +1,55 @@
+name: Post-F5M rewards fix
+on:
+  push:
+    paths: ['.github/workflows/post-f5m-rewards-fix.yml']
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+      - name: Patch reward runtime
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/projectdark/mobile/AdaptedPrototypeRewardCatalog.java')
+          s=p.read_text()
+          s=s.replace('public static final String TRAINING_POLICY_ID="ADAPTED_TRAINING_REWARD_V1";', 'public static final String TRAINING_POLICY_ID="ADAPTED_TRAINING_REWARD_V2";\n  public static final int TRAINING_MONSTER_EXP=2500;\n  public static final long TRAINING_MONSTER_GOLD=25L;\n  public static final int TRAINING_QUEST_EXP=7500;\n  public static final long TRAINING_QUEST_GOLD=100L;')
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/projectdark/mobile/RpgProgressionState.java')
+          s=p.read_text()
+          s=s.replace('private Long normalExp=0L;', 'private Long normalExp=0L;\n  private Long gold=0L;')
+          s=s.replace('public Long normalExp(){return normalExp;}', 'public Long normalExp(){return normalExp;}\n  public Long gold(){return gold;}\n  public void grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;normalizeCanonicalLevel();}')
+          old='rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,null,granted,outcomes,\n            RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence));'
+          new='grantAdaptedReward(AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD);\n        rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,granted,outcomes,\n            RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence));'
+          if old not in s: raise SystemExit('prototype reward anchor missing')
+          s=s.replace(old,new)
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/projectdark/mobile/F5mTurnInCoordinator.java')
+          s=p.read_text()
+          anchor='if(reward!=RpgProgressionState.AutoLootResult.LOOTED)return Result.REWARD_FAILED;'
+          s=s.replace(anchor,anchor+'\n  r.grantAdaptedReward(AdaptedPrototypeRewardCatalog.TRAINING_QUEST_EXP,AdaptedPrototypeRewardCatalog.TRAINING_QUEST_GOLD);')
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/projectdark/mobile/F5mQuestUiFlow.java')
+          s=p.read_text().replace('퀘스트 완료 · 훈련 증표 [B] x1','퀘스트 완료 · EXP +7,500 · Gold +100 · 훈련 증표 [B] x1')
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          s=p.read_text()
+          s=s.replace('ATK_X=920f','ATK_X=938f')
+          # Persist reward mutation immediately after combat normalization if existing save call is absent nearby.
+          # HUD: append gold to existing EXP line where normalExp is rendered.
+          s=s.replace('"EXP "+state.rpg().normalExp()+" / "+requiredExp', '"EXP "+state.rpg().normalExp()+" / "+requiredExp+"   Gold "+state.rpg().gold()')
+          p.write_text(s)
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add app/src/main/java/com/projectdark/mobile
+          git commit -m 'Post-F5M: wire adapted EXP gold and reward feedback'
+          git push origin HEAD:director/post-f5m-next-purpose

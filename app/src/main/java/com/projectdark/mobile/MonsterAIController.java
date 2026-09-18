@@ -12,6 +12,7 @@ public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
   static final int ATTACK_DAMAGE_B = 4;
   static final float ATTACK_COOLDOWN_B = 1.2f;
+  static final float MONSTER_STEP_SECONDS_B = WorldMoveTargetController.TILE_STEP_SECONDS*1.6f;
 
   public enum AttackRoute { LEGACY_RUNTIME, SHARED_RESOLVER }
   public enum SubmissionOutcome { NONE, ACCEPTED, REJECTED, ACTION_UNRESOLVED }
@@ -121,8 +122,8 @@ public final class MonsterAIController {
 
     if(d<CHASE_RADIUS_B&&!meleeAdjacent){
       tile.stepClock+=Math.max(0f,dt);
-      if(tile.stepClock+.00001f<WorldMoveTargetController.TILE_STEP_SECONDS)return;
-      tile.stepClock-=WorldMoveTargetController.TILE_STEP_SECONDS;
+      if(tile.stepClock+.00001f<MONSTER_STEP_SECONDS_B)return;
+      tile.stepClock-=MONSTER_STEP_SECONDS_B;
 
       WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(dx,dy,tile.lastDirection);
       float beforeX=m.x,beforeY=m.y;

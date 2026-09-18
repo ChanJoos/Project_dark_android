@@ -10,7 +10,11 @@ import java.util.Map;
  */
 public final class AdaptedPrototypeRewardCatalog {
   public static final String TRAINING_TOKEN_ITEM_ID="IT_B_TRAINING_TOKEN";
-  public static final String TRAINING_POLICY_ID="ADAPTED_TRAINING_REWARD_V1";
+  public static final String TRAINING_POLICY_ID="ADAPTED_TRAINING_REWARD_V2";
+  public static final int TRAINING_MONSTER_EXP=2500;
+  public static final long TRAINING_MONSTER_GOLD=25L;
+  public static final int TRAINING_QUEST_EXP=7500;
+  public static final long TRAINING_QUEST_GOLD=100L;
 
   public static final class Entry {
     public final String monsterId,itemId,policyId,evidence;

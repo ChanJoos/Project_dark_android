@@ -33,6 +33,8 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.F5mAdaptedPrologueQuestAudit
       - name: Execute F5M production runtime binding audit
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRuntimeBindingTest --stacktrace
+      - name: Execute F5M restart persistence matrix
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace
       - name: Upload debug APK

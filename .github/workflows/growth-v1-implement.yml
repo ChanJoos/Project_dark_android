@@ -1,0 +1,62 @@
+name: Growth v1 implement
+on:
+  push:
+    paths: ['.github/workflows/growth-v1-implement.yml']
+permissions:
+  contents: write
+jobs:
+  implement:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: director/post-f5m-next-purpose
+      - name: Implement growth v1
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          r=Path('app/src/main/java/com/projectdark/mobile/RpgProgressionState.java')
+          s=r.read_text()
+          anchor='public Long gold(){return gold;}\n  public void restoreGold(long value){gold=Math.max(0L,value);}'
+          repl='''public Long gold(){return gold;}\n  private int str=5,intel=5,wis=5,con=5,dex=5,statPoints=0;\n  public int str(){return str;} public int intel(){return intel;} public int wis(){return wis;} public int con(){return con;} public int dex(){return dex;} public int statPoints(){return statPoints;}\n  public int physicalAttack(){int lv=normalLevel==null?1:normalLevel;return 8+lv*2+str*3+dex/2;}\n  public int maxHpGrowth(){int lv=normalLevel==null?1:normalLevel;return 100+(lv-1)*12+con*8;}\n  public int maxMpGrowth(){int lv=normalLevel==null?1:normalLevel;return 60+(lv-1)*6+wis*5+intel*3;}\n  public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}\n  public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(0,s);intel=Math.max(0,i);wis=Math.max(0,w);con=Math.max(0,c);dex=Math.max(0,d);statPoints=Math.max(0,points);}\n  public void restoreGold(long value){gold=Math.max(0L,value);}'''
+          if anchor not in s: raise SystemExit('rpg anchor missing')
+          s=s.replace(anchor,repl)
+          old='normalLevel=level;normalExp=exp;return level-before;'
+          new='normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0)statPoints+=gained*5;return gained;'
+          if old not in s: raise SystemExit('level anchor missing')
+          s=s.replace(old,new)
+          r.write_text(s)
+
+          g=Path('app/src/main/java/com/projectdark/mobile/GameView.java')
+          x=g.read_text()
+          x=x.replace('private boolean joy,running,inventoryOpen;','private boolean joy,running,inventoryOpen,statsOpen;')
+          x=x.replace('drawInventory(c);drawDialogue(c);','drawInventory(c);drawStats(c);drawDialogue(c);')
+          x=x.replace('String[] labels={"BAG","SHOP","EVENT","MAIL","≡","⚙"};','String[] labels={"BAG","STAT","EVENT","MAIL","≡","⚙"};')
+          marker='  private void drawChat(Canvas c){'
+          stats='''  private void drawStats(Canvas c){if(!statsOpen)return;modalPanel(c,600,92,936,360);text(c,"CHARACTER STATUS",620,120,13);RpgProgressionState r=state.rpg();mutedText(c,"Lv. "+r.normalLevel()+"    Gold "+r.gold(),620,143,9);text(c,"STR  "+r.str()+"   +",624,174,11);text(c,"INT  "+r.intel()+"   +",624,204,11);text(c,"WIS  "+r.wis()+"   +",624,234,11);text(c,"CON  "+r.con()+"   +",624,264,11);text(c,"DEX  "+r.dex()+"   +",624,294,11);mutedText(c,"POINT  "+r.statPoints(),790,174,10);mutedText(c,"ATK  "+r.physicalAttack(),790,208,10);mutedText(c,"MAX HP  "+r.maxHpGrowth(),790,238,9);mutedText(c,"MAX MP  "+r.maxMpGrowth(),790,266,9);mutedText(c,"레벨업: 기본 성장 + STAT POINT +5",620,334,8);}\n'''
+          if marker not in x: raise SystemExit('draw marker missing')
+          x=x.replace(marker,stats+marker)
+          # stat utility button: second utility circle
+          touch='if(i==0){inventoryOpen=!inventoryOpen;pressedControl="BAG";return true;}'
+          if touch in x:x=x.replace(touch,'if(i==0){inventoryOpen=!inventoryOpen;pressedControl="BAG";return true;}if(i==1){statsOpen=!statsOpen;pressedControl="STAT";return true;}')
+          # fallback locate utility hit branch variant
+          # stat plus hitboxes while overlay is open
+          down='float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;'
+          if down in x:
+            x=x.replace(down,down+'if(statsOpen&&x>=620&&x<=760){String st=y>=154&&y<189?"STR":y<219?"INT":y<249?"WIS":y<279?"CON":y<309?"DEX":null;if(st!=null){if(state.rpg().spendStat(st)){F5mSaveStore.saveRewardsActive(state.rpg());showFeedback(st+" +1",FeedbackTone.REWARD);}else showFeedback("STAT POINT가 부족합니다",FeedbackTone.WARN);return true;}}',1)
+          # physical attack scales actual basic attack damage
+          x=x.replace('state.damage(t,def.damage);','state.damage(t,Math.max(def.damage,state.rpg().physicalAttack()));')
+          g.write_text(x)
+
+          f=Path('app/src/main/java/com/projectdark/mobile/F5mSaveStore.java')
+          z=f.read_text()
+          z=z.replace('K_GOLD="gold",K_EQUIP','K_GOLD="gold",K_STR="str",K_INT="int",K_WIS="wis",K_CON="con",K_DEX="dex",K_SP="stat_points",K_EQUIP')
+          z=z.replace('r.restoreGold(prefs.getLong(K_GOLD,0L));','r.restoreGold(prefs.getLong(K_GOLD,0L));r.restoreStats(prefs.getInt(K_STR,5),prefs.getInt(K_INT,5),prefs.getInt(K_WIS,5),prefs.getInt(K_CON,5),prefs.getInt(K_DEX,5),prefs.getInt(K_SP,0));')
+          z=z.replace('.putLong(K_GOLD,r.gold()==null?0L:r.gold()).putString(K_EQUIP', '.putLong(K_GOLD,r.gold()==null?0L:r.gold()).putInt(K_STR,r.str()).putInt(K_INT,r.intel()).putInt(K_WIS,r.wis()).putInt(K_CON,r.con()).putInt(K_DEX,r.dex()).putInt(K_SP,r.statPoints()).putString(K_EQUIP')
+          f.write_text(z)
+          PY
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add app/src/main/java/com/projectdark/mobile
+          git commit -m 'Growth v1: level stats status UI combat scaling persistence'
+          git push origin HEAD:director/post-f5m-next-purpose
