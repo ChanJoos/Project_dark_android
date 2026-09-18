@@ -1,0 +1,4 @@
+source_key,name,item_type,slot,jobs,required_level,min_atk,max_atk,ac,hit,dam,hp,mp,str,int,wis,con,dex,magic_defense,attack_element,defense_element,weight,durability,source_url,era
+fixture-1,바다의진주목걸이,장비,목걸이,공통,11,,,,,,,,,,,,,바다,,,,,https://milddok.cc/items/,UNKNOWN
+fixture-2,가죽방패,장비,방패,공통,11,,,,,,,,,,,,,,,,,,,https://milddok.cc/items/,UNKNOWN
+fixture-3,TEST_ONLY_MISSING,장비,무기,공통,1,,,,,,,,,,,,,,,,,,,https://milddok.cc/items/,UNKNOWN
