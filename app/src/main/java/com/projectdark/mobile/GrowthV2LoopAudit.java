@@ -8,7 +8,8 @@ public final class GrowthV2LoopAudit {
     F5mAdaptedPrologueQuest p=new F5mAdaptedPrologueQuest(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID);
     p.accept();p.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);
     GrowthQuest2 q=new GrowthQuest2();q.unlockIfPrologueCompleted(p);if(q.state()!=GrowthQuest2.State.AVAILABLE||!q.accept())return false;
-    for(int n=1;n<=3;n++){CombatLedger.Event e=new CombatLedger.Event(n,CombatLedger.Type.MONSTER_DEFEATED,"player","combat_dummy_01",0);if(!q.consume(e))return false;}
+    CombatLedger ledger=new CombatLedger();
+    for(int n=1;n<=3;n++){ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player","combat_dummy_01",0);if(!q.consume(ledger.latest()))return false;}
     if(q.state()!=GrowthQuest2.State.RETURN_READY||q.currentCount()!=3)return false;
     int atk=r.physicalAttack(),hp=r.maxHpGrowth(),mp=r.maxMpGrowth();long gold=r.gold();if(!q.turnIn(r))return false;
     if(r.gold()!=gold+250||r.normalExp()<0)return false;
