@@ -20,3 +20,9 @@ IT_NAGELING_LEGGINGS,나겔링각반,장비,각반,공통,3C_ADV,,각반,,,,나�
 IT_NAGELING_EARRING,나겔링이어링,장비,귀걸이,공통,3C_ADV,,귀걸이,,,,나겔링 보석상 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
 IT_NAGELING_RING,나겔링반지,장비,반지,공통,3C_ADV,,반지,,,,나겔링 보석상 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
 IT_NAGELING_GLOVE,나겔링글러브,장비,장갑,공통,3C_ADV,,장갑,,,,나겔링 보석상 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+"IT_DARKGRAY_GAUNTLET_P1","다크그레이건틀렛+1","장비","장갑","공통","5","99","장갑","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_RING_P1","다크그레이링+1","장비","반지","공통","5","99","반지","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_LEGGINGS_P1","다크그레이각반+1","장비","각반","공통","5","99","각반","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_EARRING_P1","다크그레이이어링+1","장비","귀걸이","공통","5","99","귀걸이","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_BELT_P1","다크그레이벨트+1","장비","벨트","공통","5","99","벨트","","VARIANT","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_NECKLACE_P1","다크그레이스네클리스+1","장비","목걸이","공통","5","99","목걸이","VARIANT","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
