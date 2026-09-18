@@ -184,7 +184,7 @@ public final class RpgProgressionState {
   public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
   public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(0,s);intel=Math.max(0,i);wis=Math.max(0,w);con=Math.max(0,c);dex=Math.max(0,d);statPoints=Math.max(0,points);}
   public void restoreGold(long value){gold=Math.max(0L,value);}
-  public void grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;normalizeCanonicalLevel();}
+  public int grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;return normalizeCanonicalLevel();}
 
   /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */
   public void restoreProgression(int level,long exp){
