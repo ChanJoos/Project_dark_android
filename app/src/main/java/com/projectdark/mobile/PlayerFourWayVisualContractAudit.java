@@ -14,12 +14,16 @@ public final class PlayerFourWayVisualContractAudit {
         if(col!=frame+1)return false;
         if(Float.isNaN(CharacterRenderer.robeFrameRegistrationX(d,col))||Float.isNaN(CharacterRenderer.robeFrameRegistrationY(d,col)))return false;
         if(Float.isNaN(CharacterRenderer.weaponCarryOffsetX(d,col))||Float.isNaN(CharacterRenderer.weaponCarryOffsetY(d,col))||Float.isNaN(CharacterRenderer.weaponCarryAngle(d,col)))return false;
+        if(CharacterRenderer.weaponCarryOffsetY(d,col)<16f||CharacterRenderer.weaponCarryOffsetY(d,col)>27f)return false;
       }
       // ATTACK is exactly: standing paper doll -> authored BODY+robe+mw001 contact -> standing recovery.
       CharacterRenderer.AttackVisualComposition attack=CharacterRenderer.attackVisualComposition(d,"mu0000058","mw001");
       if(!attack.robeVisible||!attack.weaponVisible||attack.sourceIndex!=CharacterRenderer.atlasRow(d))return false;
       if(CharacterRenderer.attackThreePose(0f)!=0||CharacterRenderer.attackThreePose(.4f)!=1||CharacterRenderer.attackThreePose(.9f)!=2)return false;
       if(CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
+    }
+    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+      if(CharacterRenderer.weaponCarryMaxJumpX(d)>20f||CharacterRenderer.weaponCarryMaxJumpY(d)>8f||CharacterRenderer.weaponCarryMaxJumpAngle(d)>20f)return false;
     }
     return CharacterRenderer.robeRegistrationContinuityWithin(2f);
   }
