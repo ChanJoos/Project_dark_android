@@ -1,0 +1,4 @@
+Source_ID,Name,URL,Evidence,Scope,Notes
+SRC_MILDDOK_ITEMS,Milddok Item Dictionary,https://milddok.cc/items/,FAN,item identity/stats,Client-driven 9484-item dictionary; bulk payload extraction pending
+SRC_MILDDOK_DRESSUP,Milddok Dress-up,https://milddok.cc/,FAN,equipped appearance,Milddok homepage exposes dress-up viewer; asset extraction pending
+SRC_NEXON_LOD,Official Legend of Darkness,https://lod.nexon.com/,O,official item/update imagery,Prefer original icon/equipped images where directly attributable to an item
