@@ -11,10 +11,10 @@ public final class RpgEquipmentInteractionAudit {
     RpgProgressionState rpg=new RpgProgressionState();
     RpgInteractionController controller=new RpgInteractionController();
 
-    if(!Integer.valueOf(1).equals(rpg.inventory().get(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID)))return false;
-    RpgProgressionState.ItemDefinition robe=rpg.itemDefinitions().get(RpgProgressionState.PLAYTEST_ROBE_ITEM_ID);
-    if(robe==null||!RpgProgressionState.PLAYTEST_ROBE_APPEARANCE_ID.equals(robe.appearanceId))return false;
-    if(!controller.selectInventoryItem(rpg,RpgProgressionState.PLAYTEST_ROBE_ITEM_ID))return false;
+    if(!Integer.valueOf(1).equals(rpg.inventory().get(RpgProgressionState.STARTER_SHIRT_ITEM_ID)))return false;
+    RpgProgressionState.ItemDefinition robe=rpg.itemDefinitions().get(RpgProgressionState.STARTER_SHIRT_ITEM_ID);
+    if(robe==null||!RpgProgressionState.STARTER_SHIRT_APPEARANCE_ID.equals(robe.appearanceId))return false;
+    if(!controller.selectInventoryItem(rpg,RpgProgressionState.STARTER_SHIRT_ITEM_ID))return false;
     if(controller.equipSelectedDetailed(rpg)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     CharacterVisualBinding equippedVisual=CharacterVisualBinding.from(rpg);
     if(!equippedVisual.hasResolvedSpriteAssets())return false;
