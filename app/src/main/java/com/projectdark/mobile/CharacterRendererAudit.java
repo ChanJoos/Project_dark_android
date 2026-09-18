@@ -44,7 +44,8 @@ public final class CharacterRendererAudit {
     if(!CharacterRenderer.attackUsesSinglePosePlaceholder()||CharacterRenderer.attackTemporalSourceResolved())return false;
     if(!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("no destructive action crop")||!CharacterRenderer.ATTACK_GEOMETRY_EVIDENCE.contains("1.70"))return false;
     if(CharacterRenderer.attackUsesDestructiveCrop())return false;
-    if(CharacterRenderer.attackUsesActionPose(0f)||CharacterRenderer.attackUsesActionPose(.17f)||!CharacterRenderer.attackUsesActionPose(.18f)||!CharacterRenderer.attackUsesActionPose(.50f)||!CharacterRenderer.attackUsesActionPose(.77f)||CharacterRenderer.attackUsesActionPose(.78f)||CharacterRenderer.attackUsesActionPose(1f))return false;
+    if(CharacterRenderer.attackUsesActionPose(0f)||CharacterRenderer.attackUsesActionPose(.17f)||!CharacterRenderer.attackUsesActionPose(.18f)||!CharacterRenderer.attackUsesActionPose(.50f)||CharacterRenderer.attackUsesActionPose(.62f)||CharacterRenderer.attackUsesActionPose(1f))return false;
+    if(CharacterRenderer.attackThreePose(0f)!=0||CharacterRenderer.attackThreePose(.17f)!=0||CharacterRenderer.attackThreePose(.18f)!=1||CharacterRenderer.attackThreePose(.61f)!=1||CharacterRenderer.attackThreePose(.62f)!=2||CharacterRenderer.attackThreePose(1f)!=2)return false;
     if(!CharacterRenderer.ATTACK_FALLBACK_EVIDENCE.contains("weapon-only attack animation is unreachable"))return false;
     if(!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("FULL_BODY")||!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("atomically"))return false;
     if(!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("SW/SE")||!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("packaged alpha pixels"))return false;
