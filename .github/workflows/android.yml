@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   compile:
     runs-on: ubuntu-latest
@@ -13,6 +13,24 @@ jobs:
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
     steps:
       - uses: actions/checkout@v4
+      - name: Fetch one official equipment image into repository
+        if: ${{ github.ref == 'refs/heads/data/equipment-asset-evidence-pipeline-20260918' }}
+        shell: bash
+        run: |
+          TARGET="assets/items/equipment/reference/ASSET_NX5054_HOLDIT_UPGRADE.png"
+          if [ ! -f "$TARGET" ]; then
+            mkdir -p "$(dirname "$TARGET")"
+            curl --fail --location --retry 3 --user-agent "Mozilla/5.0" \
+              "https://storage.nexon.com/dsk00/00/NX_FILE/Board/65536/05/1/000/00/00/4620787655423033475.png" \
+              -o "$TARGET"
+            file "$TARGET"
+            test "$(wc -c < "$TARGET")" -gt 10000
+            git config user.name "project-dark-asset-bot"
+            git config user.email "project-dark-asset-bot@users.noreply.github.com"
+            git add "$TARGET"
+            git commit -m "Assets: store official Holdit Ring equipment reference image"
+            git push origin HEAD:data/equipment-asset-evidence-pipeline-20260918
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -35,6 +53,42 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
+      - name: Recover named equipment identities from existing assets
+        run: python master/tools/build_asset_recovered_catalog.py
+      - name: Build merged Item Master
+        run: python master/tools/build_merged_item_master.py
+      - name: Recover expanded equipment master from existing assets
+        run: python master/tools/build_equipment_master_from_assets.py
+      - name: Canonical equipment merge audit
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          r=Path("master/canonical")
+          merged=list(csv.DictReader(open(r/"generated/Item_Master_Merged.csv",encoding="utf-8-sig")))
+          recovered=list(csv.DictReader(open(r/"Equipment_Asset_Recovered_Catalog.csv",encoding="utf-8-sig")))
+          inv=list(csv.DictReader(open(r/"Existing_Equipment_Asset_Inventory.csv",encoding="utf-8-sig")))
+          ids=[x["Item_ID"] for x in merged]
+          if len(ids)!=len(set(ids)): raise SystemExit("duplicate Item_ID in canonical merged master")
+          equip=[x for x in merged if x.get("대분류")=="장비"]
+          if not recovered: raise SystemExit("asset recovered catalog is empty")
+          if len(inv)!=3692: raise SystemExit(f"asset inventory drift: {len(inv)} != 3692")
+          print(f"CANONICAL_EQUIPMENT_MERGE=PASS canonical_items={len(merged)} canonical_equipment={len(equip)} recovered_from_assets={len(recovered)} asset_inventory={len(inv)}")
+          PY
+      - name: Commit generated equipment catalog evidence
+        if: ${{ github.ref == 'refs/heads/data/equipment-asset-evidence-pipeline-20260918' }}
+        run: |
+          git add master/canonical/Equipment_Asset_Recovered_Catalog.csv master/canonical/generated/Item_Master_Merged.csv master/canonical/Equipment_Master_Expanded.csv master/canonical/Equipment_Stats_Missing.csv master/canonical/Item_Existing_Asset_Map.csv || true
+          if ! git diff --cached --quiet; then
+            git config user.name "project-dark-data-bot"
+            git config user.email "project-dark-data-bot@users.noreply.github.com"
+            git commit -m "Data: materialize expanded equipment master and asset mapping"
+            git push origin HEAD:data/equipment-asset-evidence-pipeline-20260918
+          fi
+      - name: Map existing equipment image library
+        run: python master/tools/map_existing_equipment_assets.py
+      - name: Equipment asset evidence audit
+        run: python master/tools/audit_equipment_assets.py
       - name: Milddok ingestion identity audit
         run: python master/tools/audit_milddok_ingestion.py
       - name: Execute Combat v3 FinalStats pipeline audit

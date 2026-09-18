@@ -1,1 +1,7 @@
 Item_ID,MinATK,MaxATK,AC,HIT,DAM,HP,MP,STR,INT,WIS,CON,DEX,MagicDefense,AttackElement,DefenseElement,Weight,Durability,Evidence,Source_ID,SourceItemKey,Era,Confidence,Notes
+"IT_DARKGRAY_GAUNTLET_P1","","","-3","","2","200","","","","","1","","","","","0","12000","V","SRC_NEXON_COMMUNITY_4471","","2009","MEDIUM","recovered"
+"IT_DARKGRAY_RING_P1","","","-1","1","1","350","150","1","","","","","","","","","12000","V","SRC_NEXON_COMMUNITY_4471","","2009","MEDIUM","recovered"
+"IT_DARKGRAY_LEGGINGS_P1","","","-6","3","1","200","200","","","","","","10","","","0","3000","V","SRC_NEXON_COMMUNITY_4471","","2009","MEDIUM","recovered"
+"IT_DARKGRAY_EARRING_P1","","","-1","","","100","","","","","","","","","","0","12000","V","SRC_NEXON_COMMUNITY_4471","","2009","MEDIUM","recovered"
+"IT_DARKGRAY_BELT_P1","","","","","","","50","","","1","1","","","","","","10000","V","SRC_NEXON_COMMUNITY_4471","","2009","MEDIUM","recovered"
+"IT_DARKGRAY_NECKLACE_P1","","","-1","2","","","","","","","","","","VARIANT","","","10000","V","SRC_NEXON_COMMUNITY_4471","","2009","MEDIUM","element variant"

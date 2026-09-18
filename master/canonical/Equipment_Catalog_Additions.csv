@@ -1,0 +1,63 @@
+Item_ID,아이템명,대분류,세부분류,직업,써클,요구Lv,슬롯,공격속성,방어속성,효과/역할,획득처,NPC판매,유저거래,Source_ID,신뢰도,비고
+IT_3C_KNIGHT_HELM,나이트헬름,장비,투구,전사,3C_ADV,,투구,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,2023 3차직업 장비
+IT_3C_KNIGHT_ARMOR,나이트아머,장비,갑옷,전사,3C_ADV,,갑옷,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,남녀 외형 존재
+IT_3C_KNIGHT_SWORD,나이트소드,장비,무기,전사,3C_ADV,,무기,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_3C_ASSASSIN_HOOD,어쌔신후드,장비,투구,도적,3C_ADV,,투구,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_3C_ASSASSIN_ARMOR,어쌔신아머,장비,갑옷,도적,3C_ADV,,갑옷,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,남녀 외형 존재
+IT_3C_ASSASSIN_KNIFE,어쌔신나이프,장비,무기,도적,3C_ADV,,무기,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_3C_ELEMENTAL_HOOD,엘리멘탈후드,장비,투구,마법사,3C_ADV,,투구,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_3C_ELEMENTAL_ARMOR,엘리멘탈아머,장비,갑옷,마법사,3C_ADV,,갑옷,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,남녀 외형 존재
+IT_3C_ELEMENTAL_STAFF,엘리멘탈스태프,장비,무기,마법사,3C_ADV,,무기,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_3C_CLERIC_HOOD,클레릭후드,장비,투구,성직자,3C_ADV,,투구,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_3C_CLERIC_ARMOR,클레릭아머,장비,갑옷,성직자,3C_ADV,,갑옷,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,남녀 외형 존재
+IT_3C_CLERIC_STAFF,클레릭스태프,장비,무기,성직자,3C_ADV,,무기,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_3C_SOUL_MASK,소울릭마스크,장비,투구,무도가,3C_ADV,,투구,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,복수 외형 존재
+IT_3C_SOUL_ARMOR,소울릭아머,장비,갑옷,무도가,3C_ADV,,갑옷,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,남녀 외형 존재
+IT_3C_SOUL_GLOVE,소울릭글러브,장비,무기,무도가,3C_ADV,,무기,,,,나겔링 대장간 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_NAGELING_NECK,나겔링목걸이,장비,목걸이,공통,3C_ADV,,목걸이,VARIANT,,,나겔링 몬스터/보석상 속성부여,,,SRC_NEXON_UPDATE_5036,O,무속성 및 속성 variants
+IT_NAGELING_BELT,나겔링벨트,장비,벨트,공통,3C_ADV,,벨트,,VARIANT,,나겔링 몬스터/보석상 속성부여,,,SRC_NEXON_UPDATE_5036,O,무속성 및 속성 variants
+IT_NAGELING_LEGGINGS,나겔링각반,장비,각반,공통,3C_ADV,,각반,,,,나겔링 보석상 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_NAGELING_EARRING,나겔링이어링,장비,귀걸이,공통,3C_ADV,,귀걸이,,,,나겔링 보석상 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_NAGELING_RING,나겔링반지,장비,반지,공통,3C_ADV,,반지,,,,나겔링 보석상 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+IT_NAGELING_GLOVE,나겔링글러브,장비,장갑,공통,3C_ADV,,장갑,,,,나겔링 보석상 제조/강화,,,SRC_NEXON_UPDATE_5036,O,
+"IT_DARKGRAY_GAUNTLET_P1","다크그레이건틀렛+1","장비","장갑","공통","5","99","장갑","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_RING_P1","다크그레이링+1","장비","반지","공통","5","99","반지","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_LEGGINGS_P1","다크그레이각반+1","장비","각반","공통","5","99","각반","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_EARRING_P1","다크그레이이어링+1","장비","귀걸이","공통","5","99","귀걸이","","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_BELT_P1","다크그레이벨트+1","장비","벨트","공통","5","99","벨트","","VARIANT","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_DARKGRAY_NECKLACE_P1","다크그레이스네클리스+1","장비","목걸이","공통","5","99","목걸이","VARIANT","","","대평원던전","","","SRC_NEXON_COMMUNITY_4471","V","2009 historical"
+"IT_HOLY_PANA","홀리파나","장비","무기","성직자","2","11","무기","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","11~99 historical guide"
+"IT_MAGIC_PANA","매직파나","장비","무기","마법사","2","11","무기","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","11~99 historical guide"
+"IT_2H_EMERALD_SWORD","투핸드에메랄드소드","장비","무기","전사","4","71","무기","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","71~85 two-hand"
+"IT_2H_CLAYMORE","투핸드크레이모어","장비","무기","전사","4","71","무기","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","71~85 two-hand"
+"IT_2H_GAIADUS","투핸드가이아두스","장비","무기","전사","4","86","무기","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","86~98 two-hand"
+"IT_2H_GREATSWORD","투핸드그레이트소드","장비","무기","전사","4","86","무기","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","86~98 two-hand"
+"IT_NECK_AMETHYST_BASE","자수정목걸이","장비","목걸이","공통","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
+"IT_NECK_RUNESTONE_BASE","룬스톤목걸이","장비","목걸이","공통","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
+"IT_NECK_JADE_BASE","벽옥","장비","목걸이","도적","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
+"IT_NECK_KANNA_BASE","칸나목걸이","장비","목걸이","도적/무도가","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
+"IT_NECK_MAGIA_BASE","마기아","장비","목걸이","무도가","2","11","목걸이","","","","historical equipment guide","","","SRC_GEAR_GUIDE","V","element variants documented"
+IT_BRONZE_GLOVE,동장갑,장비,장갑,공통,3,41,장갑,,,3써클 장갑,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_AQUA_GLOVE,아쿠아글러브,장비,장갑,공통,3,51,장갑,,,3써클 장갑,아벨 해안던전,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_BRONZE_LEGGINGS,동각반,장비,각반,공통,3,41,각반,,,3써클 각반,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_CORAL_LEGGINGS,산호각반,장비,각반,공통,3,51,각반,,,3써클 각반,아벨 해안던전,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_IRON_SHIELD,철방패,장비,방패,공통,3,41,방패,,,3써클 방패,,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_SILVER_SHIELD,은제방패,장비,방패,공통,3,56,방패,,,3써클 방패,,,가능,SRC_GEAR_GUIDE,V,2010 guide
+IT_LIGHT_NECKLACE,빛의목걸이,장비,목걸이,공통,ADV,,목걸이,HOLY,,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_LIGHT_BELT,빛의벨트,장비,벨트,공통,ADV,,벨트,,HOLY,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_DARK_NECKLACE,어둠의목걸이,장비,목걸이,공통,ADV,,목걸이,DARK,,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_DARK_BELT,어둠의벨트,장비,벨트,공통,ADV,,벨트,,DARK,나겔링 상위 장비,나겔링탑 10층 대장장이 퍼시,,,SRC_NEXON_HADES_141199,O,official 2025
+IT_COPPER_SHIELD,구리방패,장비,방패,공통,2,26,방패,,,2써클 방패,,,,SRC_GEAR_GUIDE,V,Lv26-40
+IT_SILVER_GLOVE,은장갑,장비,장갑,공통,4,71,장갑,,,4써클 장갑,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,Lv71-80
+IT_AQUA_LEATHER_GLOVE,아쿠아레더글러브,장비,장갑,공통,4,81,장갑,,,4써클 장갑,,,가능,SRC_GEAR_GUIDE,V,Lv81-98
+IT_SILVER_LEGGINGS,은각반,장비,각반,공통,4,71,각반,,,4써클 각반,수오미 무기점,가능,가능,SRC_GEAR_GUIDE,V,Lv71-80
+IT_AQUA_LEGGINGS,아쿠아각반,장비,각반,공통,4,81,각반,,,4써클 각반,,,가능,SRC_GEAR_GUIDE,V,Lv81-98
+IT_GREEN_BOOTS,녹색부츠,장비,신발,공통,3,41,신발,,,3써클 신발,,,,SRC_GEAR_GUIDE,V,Lv41-55
+IT_LEATHER_BOOTS,레더부츠,장비,신발,공통,3,56,신발,,,3써클 신발,,,,SRC_GEAR_GUIDE,V,Lv56-70
+IT_VIOLET_T,바이올렛티,장비,신발,공통,4,71,신발,,,4써클 신발,,,,SRC_GEAR_GUIDE,V,Lv71-85
+IT_MAGMA_BOOTS,마그마부츠,장비,신발,공통,4,86,신발,,,4써클 신발,,,,SRC_GEAR_GUIDE,V,Lv86-98
+IT_GOLD_SHIELD,금제방패,장비,방패,공통,4,71,방패,,,4써클 방패,,,,SRC_GEAR_GUIDE,V,Lv71-85
+IT_PLANIUM_SHIELD,플라늄방패,장비,방패,공통,4,86,방패,,,4써클 방패,,,,SRC_GEAR_GUIDE,V,Lv86-98
+IT_PAPAYA_SHIELD,파파야방패,장비,방패,공통,4,71,방패,,,4써클 퀘스트 방패,4써클 퀘스트,,,SRC_GEAR_GUIDE,V,Lv71-98
+IT_SKULL_SHIELD,해골방패,장비,방패,공통,3,41,방패,,,이벤트 방패,이벤트,,,SRC_GEAR_GUIDE,V,Lv41-70
+IT_EXORCISM_SHIELD,퇴마방패,장비,방패,공통,3,41,방패,,,이벤트 방패,이벤트,,,SRC_GEAR_GUIDE,V,Lv41-70
