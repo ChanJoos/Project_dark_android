@@ -30,7 +30,7 @@ jobs:
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit
-        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.F5mProductionQuickQuestRouteAudit
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.F5mProductionQuickQuestRouteTest --stacktrace
       - name: Execute Quick Quest optimal approach audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Execute F5M gameplay contract audit
