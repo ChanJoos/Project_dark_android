@@ -30,8 +30,8 @@ public final class CharacterRendererAudit {
     if(CharacterRenderer.PAPER_DOLL_ORDER.size()!=EXPECTED_PAPER_DOLL_LAYER_COUNT)return false;
     if(!CharacterRenderer.PAPER_DOLL_ORDER.contains("FULL_BODY")||!CharacterRenderer.PAPER_DOLL_ORDER.contains("UPPER")||!CharacterRenderer.PAPER_DOLL_ORDER.contains("LOWER"))return false;
     if(!CharacterRenderer.PAPER_DOLL_ORDER.contains("HEAD")||!CharacterRenderer.PAPER_DOLL_ORDER.contains("HANDS")||!CharacterRenderer.PAPER_DOLL_ORDER.contains("FEET")||!CharacterRenderer.PAPER_DOLL_ORDER.contains("WEAPON")||!CharacterRenderer.PAPER_DOLL_ORDER.contains("SHIELD"))return false;
-    if(CharacterVisualBinding.garmentCoverageForAppearance(CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID)!=CharacterVisualBinding.GarmentCoverage.UPPER)return false;
-    if(CharacterVisualBinding.visualSlotForAppearance(CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID)!=CharacterVisualBinding.VisualSlot.UPPER)return false;
+    if(CharacterVisualBinding.garmentCoverageForAppearance(CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID)!=CharacterVisualBinding.GarmentCoverage.UPPER)return false;
+    if(CharacterVisualBinding.visualSlotForAppearance(CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID)!=CharacterVisualBinding.VisualSlot.UPPER)return false;
     if(CharacterVisualBinding.visualSlotForAppearance(CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)!=CharacterVisualBinding.VisualSlot.WEAPON)return false;
 
     if(Math.abs(CharacterRenderer.PLAYER_RENDER_SCALE-USER_APPROVED_PLAYER_RENDER_SCALE)>.0001f)return false;
