@@ -22,8 +22,7 @@ public final class CharacterRenderer {
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
   public static final String IDLE_WALK_RESOURCE="player_peasant_idle_walk";
-  public static final String STARTER_SHIRT_RESOURCE="player_armor_mu0000001_idle_walk";
-  public static final String LUERS_ROBE_RESOURCE="player_armor_mu0000058_idle_walk";
+    public static final String LUERS_ROBE_RESOURCE="player_armor_mu0000058_idle_walk";
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String ACTION_TEMPORAL_STATUS="SINGLE_POSE_PLACEHOLDER";
@@ -34,7 +33,7 @@ public final class CharacterRenderer {
   public static final String PAPER_DOLL_ATTACK_EVIDENCE="ATTACK consumes current equipmentVisualRef and weaponVisualRef; no baked equipment";
   public static final String ATTACK_FALLBACK_EVIDENCE="stable equipped source paper doll remains fallback when action resources/geometry are unavailable";
   public static final String ATTACK_GEOMETRY_EVIDENCE="CONTACT normalizes authored action alpha height to accepted idle alpha height and shares one final foot/center transform across BODY+robe+weapon; no destructive crop";
-  public static final String ROBE_ATTACK_EVIDENCE="equipped UPPER mu0000001 consumes adapted group-02 directional pose in the same normalized BODY transform during contact";
+  public static final String ROBE_ATTACK_EVIDENCE="equipped starter UPPER shirt consumes the verified classic Shirt appearance paper-doll layer through the same normalized BODY transform during contact";
   public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE packaged alpha pixels remain untouched and use shared-atlas zero translation without runtime alpha re-centering";
   public static final String WEAPON_TRANSFORM_EVIDENCE="mw001 local handle (2,4) attaches to action BODY dominantHand through the same normalized CONTACT transform";
   public static final String HIT_POSE_EVIDENCE="HIT/HURT/FLINCH character pose is disabled; source paper doll remains visually stable while damage feedback is external";
@@ -87,19 +86,6 @@ public final class CharacterRenderer {
   private final Bitmap idleWalkAtlas,luersRobeAtlas,mokdoSprite; private final Bitmap[] bodyActionFrames=new Bitmap[SOURCE_ACTION_COUNT],robeActionFrames=new Bitmap[SOURCE_ACTION_COUNT];
 
   public CharacterRenderer(){pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);Resources resources=findProcessResources();idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);luersRobeAtlas=tryLoadByName(resources,LUERS_ROBE_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);mokdoSprite=tryLoadByName(resources,MOKDO_RESOURCE,16,8);for(int i=0;i<SOURCE_ACTION_COUNT;i++){bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);robeActionFrames[i]=tryLoadByName(resources,"player_robe_mu0000058_action02_"+i,ROBE_ACTION_WIDTH[i],ROBE_ACTION_HEIGHT[i]);}}
-  private static Bitmap buildShirtOverlayAtlas(Bitmap body){
-    if(!validAtlas(body,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT))return null;
-    Bitmap out=Bitmap.createBitmap(body.getWidth(),body.getHeight(),Bitmap.Config.ARGB_8888);
-    for(int y=0;y<body.getHeight();y++){int localY=y%SOURCE_FRAME_HEIGHT;if(localY<13||localY>29)continue;for(int x=0;x<body.getWidth();x++){int p=body.getPixel(x,y),a=(p>>>24)&255;if(a==0)continue;out.setPixel(x,y,shirtPixel(p));}}
-    return out;
-  }
-  private static Bitmap buildShirtOverlayAction(Bitmap body){
-    if(body==null||body.isRecycled())return null;Bitmap out=Bitmap.createBitmap(body.getWidth(),body.getHeight(),Bitmap.Config.ARGB_8888);
-    int top=Math.max(0,Math.round(body.getHeight()*.25f)),bottom=Math.min(body.getHeight()-1,Math.round(body.getHeight()*.61f));
-    for(int y=top;y<=bottom;y++)for(int x=0;x<body.getWidth();x++){int p=body.getPixel(x,y),a=(p>>>24)&255;if(a==0)continue;out.setPixel(x,y,shirtPixel(p));}
-    return out;
-  }
-  private static int shirtPixel(int source){int a=(source>>>24)&255,r=(source>>>16)&255,g=(source>>>8)&255,b=source&255;int l=(r*3+g*4+b)/8;if(l<70)return (a<<24)|0x001b3d16;if(l<145)return (a<<24)|0x002f6f25;return (a<<24)|0x004da83b;}
   public static int atlasRow(Direction direction){if(direction==null)return -1;switch(direction){case NW:return 0;case NE:return 1;case SW:return 2;case SE:return 3;default:return -1;}}
   public static Direction visualFacingForRow(int row){switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}}
   public static void setPresentationWalkClock(float clock){presentationWalkClock=Math.max(0f,clock);} public static float presentationWalkClock(){return presentationWalkClock;}
@@ -118,7 +104,7 @@ public final class CharacterRenderer {
   private void drawSourcePaperDoll(Canvas c,Pose pose,float anchorY,boolean attackingWeapon){boolean weaponBehind=weaponBehindBody(pose.direction);if(weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);drawIdleWalk(c,pose,anchorY);drawEquipment(c,pose,anchorY);if(!weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);}
   private void drawShadow(Canvas c,Pose pose,float anchorY){float width=(pose.state==State.DEAD?13f:10.5f)*SHADOW_RENDER_SCALE,height=(pose.state==State.DEAD?2f:2.8f)*SHADOW_RENDER_SCALE;fxPaint.setStyle(Paint.Style.FILL);fxPaint.setColor(0x50000000);c.drawOval(new RectF(pose.x-width,anchorY-height,pose.x+width,anchorY+height),fxPaint);}
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){int row=atlasRow(pose.direction);if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}int col=paperDollAtlasColumn(pose.state,presentationWalkClock);drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,anchorY,pose.x);}
-  private void drawEquipment(Canvas c,Pose pose,float anchorY){if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID)||!equipmentAtlasActive())return;int row=atlasRow(pose.direction);if(row<0)return;int col=paperDollAtlasColumn(pose.state,presentationWalkClock);Registration registration=robeRegistration(pose.direction,col);float registeredX=pose.x+registration.x*SOURCE_PRESENTATION_SCALE,registeredAnchorY=anchorY+registration.y*SOURCE_PRESENTATION_SCALE;drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,registeredAnchorY,registeredX);}
+  private void drawEquipment(Canvas c,Pose pose,float anchorY){if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID)||!equipmentAtlasActive())return;int row=atlasRow(pose.direction);if(row<0)return;int col=paperDollAtlasColumn(pose.state,presentationWalkClock);Registration registration=robeRegistration(pose.direction,col);float registeredX=pose.x+registration.x*SOURCE_PRESENTATION_SCALE,registeredAnchorY=anchorY+registration.y*SOURCE_PRESENTATION_SCALE;drawAtlasCell(c,luersRobeAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,registeredAnchorY,registeredX);}
   private Registration robeRegistration(Direction direction,int atlasColumn){int row=atlasRow(direction),col=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));if(row<0)return new Registration(0f,0f);return new Registration(ROBE_FRAME_X[row][col],ROBE_FRAME_Y[row][col]);}
   public static float robeFrameRegistrationX(Direction direction,int atlasColumn){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));return row<0?0f:ROBE_FRAME_X[row][column];} public static float robeFrameRegistrationY(Direction direction,int atlasColumn){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));return row<0?0f:ROBE_FRAME_Y[row][column];} public static boolean robeUsesRuntimeXYRegistration(Direction direction){return direction==Direction.SW||direction==Direction.SE;}
   public static boolean robeRegistrationContinuityWithin(float maxDelta){if(maxDelta<0f)return false;for(Direction d:Direction.values())for(int col=1;col<IDLE_WALK_COLUMNS;col++){if(Math.abs(robeFrameRegistrationX(d,col)-robeFrameRegistrationX(d,col-1))>maxDelta)return false;if(Math.abs(robeFrameRegistrationY(d,col)-robeFrameRegistrationY(d,col-1))>maxDelta)return false;}return true;}
