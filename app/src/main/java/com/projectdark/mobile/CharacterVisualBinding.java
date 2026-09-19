@@ -10,6 +10,7 @@ import java.util.Map;
 public final class CharacterVisualBinding {
   public static final String ASSET_STATUS="PENDING_CROP";
   public static final String RESOLVED_SHIRT_APPEARANCE_ID="mu0000001";
+  public static final String RESOLVED_LUERS_ROBE_APPEARANCE_ID="mu0000058";
   public static final String RESOLVED_WEAPON_APPEARANCE_ID="mw001";
   public static final String WEAPON_SLOT="무기";
 
@@ -46,6 +47,7 @@ public final class CharacterVisualBinding {
 
   public static GarmentCoverage garmentCoverageForAppearance(String appearanceId){
     if(RESOLVED_SHIRT_APPEARANCE_ID.equals(appearanceId))return GarmentCoverage.UPPER;
+    if(RESOLVED_LUERS_ROBE_APPEARANCE_ID.equals(appearanceId))return GarmentCoverage.FULL_BODY;
     return null;
   }
 

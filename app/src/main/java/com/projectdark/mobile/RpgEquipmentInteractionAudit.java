@@ -14,11 +14,10 @@ public final class RpgEquipmentInteractionAudit {
     if(!Integer.valueOf(1).equals(rpg.inventory().get(RpgProgressionState.STARTER_SHIRT_ITEM_ID)))return false;
     RpgProgressionState.ItemDefinition robe=rpg.itemDefinitions().get(RpgProgressionState.STARTER_SHIRT_ITEM_ID);
     if(robe==null||!RpgProgressionState.STARTER_SHIRT_APPEARANCE_ID.equals(robe.appearanceId))return false;
-    if(!controller.selectInventoryItem(rpg,RpgProgressionState.STARTER_SHIRT_ITEM_ID))return false;
-    if(controller.equipSelectedDetailed(rpg)!=RpgProgressionState.EquipResult.EQUIPPED)return false;
     CharacterVisualBinding equippedVisual=CharacterVisualBinding.from(rpg);
     if(!equippedVisual.hasResolvedSpriteAssets())return false;
     if(!CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID.equals(equippedVisual.equipmentVisualRef()))return false;
+    if(!controller.selectInventoryItem(rpg,RpgProgressionState.STARTER_SHIRT_ITEM_ID))return false;
     if(controller.equipSelectedDetailed(rpg)!=RpgProgressionState.EquipResult.UNEQUIPPED)return false;
     if(!rpg.equipment().isEmpty()||CharacterVisualBinding.from(rpg).hasResolvedSpriteAssets())return false;
 

@@ -22,18 +22,19 @@ public final class CharacterRenderer {
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
   public static final String IDLE_WALK_RESOURCE="player_peasant_idle_walk";
-  public static final String STARTER_SHIRT_RESOURCE="player_peasant_idle_walk"; // mu0000001 identity; base-body atlas is the verified frame fallback until source shirt action frames are recovered
+    public static final String STARTER_SHIRT_RESOURCE="player_armor_mu0000058_idle_walk"; // classic Shirt appearance layer source
+  public static final String LUERS_ROBE_RESOURCE=STARTER_SHIRT_RESOURCE;
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String ACTION_TEMPORAL_STATUS="SINGLE_POSE_PLACEHOLDER";
-  public static final String ACTION_TEMPORAL_EVIDENCE="SINGLE_POSE_PLACEHOLDER remains UNRESOLVED; runtime uses one directional source action pose only during the contact window without fabricating temporal frames";
+  public static final String ACTION_TEMPORAL_EVIDENCE="SINGLE_POSE_PLACEHOLDER remains UNRESOLVED; runtime uses one directional source action pose as contact while wind-up and recovery use the standing equipped paper doll without fabricated intermediate frames";
   public static final String WEAPON_SOURCE_EVIDENCE="mw001 목도 HAR/source pixels; source-derived BODY dominantHand attachment";
   public static final String ATTACK_PRESENTATION_EVIDENCE="SOURCE_DIRECTIONAL_ACTION_CONTACT: startup/recovery use equipped idle paper doll; contact uses one normalized BODY+robe+mw001 composite transform";
   public static final String ATTACK_DIRECTION_EVIDENCE="runtime Pose.direction selects one locked 4-way attack direction; BODY+robe+weapon consume it unchanged";
   public static final String PAPER_DOLL_ATTACK_EVIDENCE="ATTACK consumes current equipmentVisualRef and weaponVisualRef; no baked equipment";
-  public static final String ATTACK_FALLBACK_EVIDENCE="stable equipped source paper doll remains fallback when action resources/geometry are unavailable";
-  public static final String ATTACK_GEOMETRY_EVIDENCE="CONTACT normalizes authored action alpha height to accepted idle alpha height and shares one final foot/center transform across BODY+robe+weapon; no destructive crop";
-  public static final String ROBE_ATTACK_EVIDENCE="equipped FULL_BODY mu0000058 consumes matching group-02 directional pose in the same normalized BODY transform during contact";
+  public static final String ATTACK_FALLBACK_EVIDENCE="stable equipped source paper doll remains fallback when action resources/geometry are unavailable; weapon-only attack animation is unreachable";
+  public static final String ATTACK_GEOMETRY_EVIDENCE="CONTACT uses 1.70 presentation scale and shares one final foot/center transform across BODY+garment+weapon; no destructive action crop";
+  public static final String ROBE_ATTACK_EVIDENCE="equipped starter UPPER shirt is composited atomically with BODY through the verified garment paper-doll transform during contact";
   public static final String ROBE_WALK_EVIDENCE="NW/NE retain accepted registration exactly; SW/SE packaged alpha pixels remain untouched and use shared-atlas zero translation without runtime alpha re-centering";
   public static final String WEAPON_TRANSFORM_EVIDENCE="mw001 local handle (2,4) attaches to action BODY dominantHand through the same normalized CONTACT transform";
   public static final String HIT_POSE_EVIDENCE="HIT/HURT/FLINCH character pose is disabled; source paper doll remains visually stable while damage feedback is external";
@@ -85,7 +86,7 @@ public final class CharacterRenderer {
   private final Paint pixelPaint=new Paint(),fxPaint=new Paint();
   private final Bitmap idleWalkAtlas,luersRobeAtlas,mokdoSprite; private final Bitmap[] bodyActionFrames=new Bitmap[SOURCE_ACTION_COUNT],robeActionFrames=new Bitmap[SOURCE_ACTION_COUNT];
 
-  public CharacterRenderer(){pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);Resources resources=findProcessResources();idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);luersRobeAtlas=tryLoadByName(resources,STARTER_SHIRT_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);mokdoSprite=tryLoadByName(resources,MOKDO_RESOURCE,16,8);for(int i=0;i<SOURCE_ACTION_COUNT;i++){bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);robeActionFrames[i]=bodyActionFrames[i];}}
+  public CharacterRenderer(){pixelPaint.setAntiAlias(false);pixelPaint.setDither(false);pixelPaint.setFilterBitmap(false);fxPaint.setAntiAlias(false);fxPaint.setDither(false);fxPaint.setFilterBitmap(false);Resources resources=findProcessResources();idleWalkAtlas=tryLoadByName(resources,IDLE_WALK_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);luersRobeAtlas=tryLoadByName(resources,LUERS_ROBE_RESOURCE,SOURCE_IDLE_WALK_WIDTH,SOURCE_ATLAS_HEIGHT);mokdoSprite=tryLoadByName(resources,MOKDO_RESOURCE,16,8);for(int i=0;i<SOURCE_ACTION_COUNT;i++){bodyActionFrames[i]=tryLoadByName(resources,"player_body_mm001_action02_"+i,BODY_ACTION_WIDTH[i],BODY_ACTION_HEIGHT[i]);robeActionFrames[i]=tryLoadByName(resources,"player_robe_mu0000058_action02_"+i,ROBE_ACTION_WIDTH[i],ROBE_ACTION_HEIGHT[i]);}}
   public static int atlasRow(Direction direction){if(direction==null)return -1;switch(direction){case NW:return 0;case NE:return 1;case SW:return 2;case SE:return 3;default:return -1;}}
   public static Direction visualFacingForRow(int row){switch(row){case 0:return Direction.NW;case 1:return Direction.NE;case 2:return Direction.SW;case 3:return Direction.SE;default:return null;}}
   public static void setPresentationWalkClock(float clock){presentationWalkClock=Math.max(0f,clock);} public static float presentationWalkClock(){return presentationWalkClock;}
