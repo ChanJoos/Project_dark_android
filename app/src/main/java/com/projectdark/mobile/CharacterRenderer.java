@@ -22,7 +22,8 @@ public final class CharacterRenderer {
   public static final String STARTER_CLASS_STATE="PRE_CLASS";
   public static final String IDLE_WALK_ASSET_ID="player.peasant.mm001.idle_walk.production-2026-09-12";
   public static final String IDLE_WALK_RESOURCE="player_peasant_idle_walk";
-    public static final String LUERS_ROBE_RESOURCE="player_armor_mu0000058_idle_walk";
+    public static final String STARTER_SHIRT_RESOURCE="player_armor_mu0000058_idle_walk"; // classic Shirt appearance layer source
+  public static final String LUERS_ROBE_RESOURCE=STARTER_SHIRT_RESOURCE;
   public static final String MOKDO_RESOURCE="player_weapon_mw001";
   public static final String ACTION_SOURCE_EVIDENCE="mm001 group 02 source pixels; ADAPTED PLAYTEST ACTION GROUP";
   public static final String ACTION_TEMPORAL_STATUS="SINGLE_POSE_PLACEHOLDER";
