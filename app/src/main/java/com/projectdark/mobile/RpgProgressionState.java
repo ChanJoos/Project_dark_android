@@ -164,8 +164,7 @@ public final class RpgProgressionState {
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(STARTER_SHIRT_ITEM_ID,1);
     inventory.put(VERIFIED_STARTER_ROBE_ITEM_ID,1);
-    // Until authentic mu0000001 wearable frames are recovered, start on the verified paper-doll garment.
-    equipmentBySlot.put(ARMOR_SLOT,VERIFIED_STARTER_ROBE_ITEM_ID);
+    // mu0000001 remains inventory-only until authentic wearable frames are recovered.
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
   }
 
