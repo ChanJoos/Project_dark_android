@@ -30,9 +30,9 @@ public final class RuntimeVisualStabilizationAudit {
     player.endAttack();
 
     if(CharacterVisualBinding.garmentCoverageForAppearance("mu0000058")!=CharacterVisualBinding.GarmentCoverage.FULL_BODY)return false;
-    if(!CharacterRenderer.sourceActionLayersReadyContract("mu0000001","mw001",true,true,true))return false;
-    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000001","mw001",true,false,true))return false;
-    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000001","mw001",true,true,false))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,true,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,false,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000058","mw001",true,true,false))return false;
     if(!CharacterRenderer.weaponTransformUsesSingleMirror())return false;
     if(!CharacterRenderer.alphaGeometryWithinTolerance(40,41,1,2))return false;
     if(CharacterRenderer.alphaGeometryWithinTolerance(40,42,0,0))return false;
