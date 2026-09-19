@@ -157,13 +157,11 @@ public final class RpgProgressionState {
         "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
     registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠 [PENDING WEARABLE FRAMES]",ARMOR_SLOT,
         STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.V));
-    registerItem(new ItemDefinition(VERIFIED_STARTER_ROBE_ITEM_ID,"루어스레더로브",ARMOR_SLOT,
-        VERIFIED_STARTER_ROBE_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.V));
+
     registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
         PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(STARTER_SHIRT_ITEM_ID,1);
-    inventory.put(VERIFIED_STARTER_ROBE_ITEM_ID,1);
     // mu0000001 remains inventory-only until authentic wearable frames are recovered.
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
   }
