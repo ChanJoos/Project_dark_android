@@ -162,7 +162,8 @@ public final class RpgProgressionState {
         PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(STARTER_SHIRT_ITEM_ID,1);
-    // mu0000001 remains inventory-only until authentic wearable frames are recovered.
+    // Starter armor uses the verified classic paper-doll garment frames while retaining the canonical shirt item identity.
+    equipmentBySlot.put(ARMOR_SLOT,STARTER_SHIRT_ITEM_ID);
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
   }
 
