@@ -146,6 +146,37 @@ Owner: GAMEPLAY for equipment/state; WORLD_UX for screen/paper-doll presentation
 Use canonical equipment slots supported by data. Equip/unequip atomically moves authoritative equipment state and recalculates derived stats. If a source appearance asset exists, renderer consumes it; missing appearance is not fabricated. Show equipment details and stat effect.
 Acceptance: inventory→equip→status change→combat change is coherent; equipped state persists.
 
+### F5M-021A Garment Coverage + Shared Attachment Contract
+Owner: GAMEPLAY for equip conflict rules; WORLD_UX for paper-doll attachment/rendering. Approver: DIRECTOR.
+
+Source-facing equipment slots remain the original game concepts (for example 갑옷 and 각반). Do **not** invent 상의/하의/상하의 as new gameplay inventory slots merely to solve rendering. Paper-doll coverage is an independent visual classification:
+- `UPPER`: upper-body garment. May coexist with a resolved `LOWER` garment.
+- `LOWER`: lower-body garment. May coexist with a resolved `UPPER` garment.
+- `FULL_BODY`: one garment visually occupies upper + lower coverage and is mutually exclusive with both.
+
+Equip transaction rules:
+- Equipping `FULL_BODY` automatically removes currently equipped resolved `UPPER` and `LOWER` coverage items before committing the new garment.
+- Equipping `UPPER` or `LOWER` automatically removes a currently equipped resolved `FULL_BODY` garment.
+- `UPPER + LOWER` is valid.
+- Unknown/unresolved appearance coverage must not be guessed from an item name; it remains unresolved until source/asset evidence exists.
+
+Rendering contract:
+- `UPPER` and `FULL_BODY` use the same BODY garment attachment coordinate system. Their different visual length does not create a different renderer or world anchor.
+- Each BODY direction/action/frame exposes a garment attachment anchor in BODY-local/source space (neck/shoulder/upper-torso registration region, derived from source geometry/evidence rather than arbitrary screen pixels).
+- Each garment frame exposes its own attachment anchor. Runtime translation is `BODY garment anchor - garment attachment anchor`, then the same presentation scale/flip transform is applied.
+- `LOWER` uses a lower-body/waist-pelvis attachment contract once a real lower-body paper-doll source is verified.
+- Coverage controls occlusion/equipment conflict, **not** a separate coordinate formula. A robe is therefore not positioned by a special 'robe foot formula' merely because it is long.
+- IDLE/WALK/ATTACK must use the same attachment model; action frames may have per-frame source anchors but not a second ad-hoc renderer.
+- Current resolved evidence: `mu0000001 셔츠 = UPPER`; `mu0000058 루어스레더로브 = FULL_BODY`. `각반` exists as an equipment slot in MASTER, but its visual `LOWER` classification remains UNRESOLVED until wearable sprite evidence is found.
+
+Acceptance:
+- Shirt and robe share one garment attachment model while retaining different coverage.
+- Shirt + verified lower garment can coexist.
+- Full-body garment cannot coexist with upper/lower coverage after an equip transaction.
+- Equip/unequip/re-equip updates renderer and stats from the same authoritative equipment state.
+- Four directions and IDLE/WALK/ATTACK preserve garment registration without BODY duplication or garment disappearance.
+- No unresolved armor is auto-classified from naming alone.
+
 ### F5M-022 Auto Loot + Reward Feedback
 Owner: GAMEPLAY. Collaborator: WORLD_UX.
 Existing direct inventory reward pipeline remains single source. Kill produces concise loot/EXP feedback based on actually granted values. Reward event idempotency is mandatory.
