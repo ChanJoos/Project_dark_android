@@ -34,4 +34,7 @@ public final class CombatLedger {
   public List<Event> snapshot(){return Collections.unmodifiableList(new ArrayList<>(events));}
   public Event latest(){return events.peekLast();}
   public void clear(){events.clear();}
+  public long sequence(){return sequence;}
+  /** A restarted runtime has no replay queue but must retain the durable event namespace. */
+  public void restoreSequence(long saved){events.clear();sequence=Math.max(0L,saved);}
 }

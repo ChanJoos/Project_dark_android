@@ -18,6 +18,8 @@ public final class F5mAdaptedPrologueQuest {
   public DefeatResult consume(CombatLedger.Event event){if(event==null||event.sequence<=lastCombatSequence)return DefeatResult.IGNORED;lastCombatSequence=event.sequence;if(state!=State.ACTIVE||event.type!=CombatLedger.Type.MONSTER_DEFEATED)return DefeatResult.IGNORED;if(!objectiveMonsterId.equals(event.targetId))return DefeatResult.IGNORED;defeated=1;state=State.RETURN_READY;persist();return DefeatResult.RETURN_READY;}
   public TurnInResult turnIn(){if(state==State.COMPLETED)return TurnInResult.ALREADY_COMPLETED;if(state!=State.RETURN_READY)return TurnInResult.NOT_READY;state=State.COMPLETED;persist();return TurnInResult.COMPLETED;}
   public void restore(State s,int count){if(s==null||s==State.AVAILABLE){state=State.AVAILABLE;defeated=0;}else if(s==State.ACTIVE){state=State.ACTIVE;defeated=0;}else{state=s;defeated=1;}}
+  public long consumedSequence(){return lastCombatSequence;}
+  public void restoreSequence(long value){lastCombatSequence=Math.max(0L,value);}
   void markCompletedFromTurnInTransaction(){turnIn();} private void persist(){F5mSaveStore.saveQuestActive(this);}
   private static String normalize(String value){if(value==null)return null;String v=value.trim();return v.isEmpty()?null:v;}
 }
