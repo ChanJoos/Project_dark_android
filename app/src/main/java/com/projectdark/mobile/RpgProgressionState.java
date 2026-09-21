@@ -282,6 +282,21 @@ public final class RpgProgressionState {
     return AutoLootResult.LOOTED;
   }
 
+  /** Replace saved ownership exactly, including an explicitly empty equipment set. */
+  public boolean restoreOwnedItems(Map<String,Integer> owned,Map<String,String> equipped){
+    for(Map.Entry<String,Integer> e:owned.entrySet())
+      if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return false;
+    for(Map.Entry<String,String> e:equipped.entrySet()){
+      ItemDefinition d=items.get(e.getValue());
+      if(d==null||!d.equippable()||!e.getKey().equals(d.equipSlot)||!owned.containsKey(d.itemId))return false;
+    }
+    inventory.clear();inventory.putAll(owned);
+    equipmentBySlot.clear();equipmentBySlot.putAll(equipped);
+    return true;
+  }
+  public long consumedCombatSequence(){return lastCombatSequence;}
+  public void restoreCombatSequence(long sequence){lastCombatSequence=Math.max(0L,sequence);rewardHistory.clear();}
+
   public EquipResult equip(String itemId){
     Integer owned=inventory.get(itemId);
     if(owned==null||owned<=0)return EquipResult.ITEM_NOT_OWNED;
