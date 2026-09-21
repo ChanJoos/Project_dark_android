@@ -51,6 +51,8 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRuntimeBindingTest --stacktrace
       - name: Execute F5M restart persistence matrix
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
+      - name: Execute runtime checkpoint and legacy migration regression
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest --stacktrace
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace
       - name: Upload debug APK
