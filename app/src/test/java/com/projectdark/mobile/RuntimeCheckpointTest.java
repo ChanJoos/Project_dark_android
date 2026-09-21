@@ -77,4 +77,27 @@ public class RuntimeCheckpointTest {
     prefs.edit().putInt("save_schema",99).commit();F5mSaveStore.install(context);
     GrowthQuest2 q=new GrowthQuest2();q.restore(GrowthQuest2.State.RETURN_READY,3);RpgProgressionState r=new RpgProgressionState();assertFalse(q.turnIn(r));assertEquals(Long.valueOf(0),r.gold());assertEquals(GrowthQuest2.State.RETURN_READY,q.state());
   }
+  @Test public void failedDiskCommitCanRetryWithoutDuplicatingReward(){
+    final boolean[] fail={true};
+    SharedPreferences failing=(SharedPreferences)java.lang.reflect.Proxy.newProxyInstance(SharedPreferences.class.getClassLoader(),new Class<?>[]{SharedPreferences.class},(proxy,method,args)->{
+      if(!method.getName().equals("edit"))return method.invoke(prefs,args);
+      SharedPreferences.Editor delegate=prefs.edit();
+      return java.lang.reflect.Proxy.newProxyInstance(SharedPreferences.Editor.class.getClassLoader(),new Class<?>[]{SharedPreferences.Editor.class},(editor,m,a)->{
+        if(m.getName().equals("commit")&&fail[0]){fail[0]=false;return false;}
+        Object result=m.invoke(delegate,a);return result==delegate?editor:result;
+      });
+    });
+    Context injected=new android.content.ContextWrapper(context){
+      @Override public Context getApplicationContext(){return this;}
+      @Override public SharedPreferences getSharedPreferences(String name,int mode){return failing;}
+    };
+    F5mSaveStore.install(injected);GrowthQuest2 q=new GrowthQuest2();q.restore(GrowthQuest2.State.RETURN_READY,3);RpgProgressionState r=new RpgProgressionState();
+    assertFalse(q.turnIn(r));assertEquals(Long.valueOf(0),r.gold());assertEquals(GrowthQuest2.State.RETURN_READY,q.state());
+    assertTrue(q.turnIn(r));assertEquals(Long.valueOf(250),r.gold());assertFalse(q.turnIn(r));assertEquals(Long.valueOf(250),restartRpg().gold());
+  }
+  @Test public void quest2WatermarkRejectsOldDefeatAfterRestart(){
+    GrowthQuest2 q=new GrowthQuest2();q.restore(GrowthQuest2.State.ACTIVE,0);CombatLedger ledger=new CombatLedger();ledger.restoreSequence(40);ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player","combat_dummy_01",0);CombatLedger.Event old=ledger.latest();assertTrue(q.consume(old));
+    F5mSaveStore.install(context);GrowthQuest2 restored=new GrowthQuest2();F5mSaveStore.restoreQuest2Active(restored);assertFalse(restored.consume(old));assertEquals(1,restored.currentCount());ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player","combat_dummy_01",0);assertTrue(restored.consume(ledger.latest()));assertEquals(2,restored.currentCount());
+  }
+
 }

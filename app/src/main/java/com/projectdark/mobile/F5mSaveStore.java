@@ -57,7 +57,7 @@ public final class F5mSaveStore {
   private void writeRuntime(SharedPreferences.Editor edit){
     RuntimeState.Player p=runtime.player();
     edit.putString("map_id",runtime.currentMapId()).putFloat("player_x",p.x).putFloat("player_y",p.y)
-        .putInt("player_hp",p.hp).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
+        .putInt("player_hp",p.alive?p.hp:0).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
   }
   public static void restoreRuntimeActive(RuntimeState r){
     r.applyDerivedGrowth();

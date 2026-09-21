@@ -62,7 +62,8 @@ public final class GameView extends View {
   public void resume(){if(running)return;running=true;last=SystemClock.uptimeMillis();post(loop);}
   public void pause(){running=false;removeCallbacks(loop);F5mSaveStore.beginFrame();try{state.tick(0f);state.applyDerivedGrowth();consumeLedger();}finally{F5mSaveStore.endFrame();}checkpoint();}
   private void checkpoint(){
-    if(F5mSaveStore.checkpointActive()){savedLedgerSequence=state.ledger().sequence();saveWarningShown=false;}
+    savedLedgerSequence=state.ledger().sequence();
+    if(F5mSaveStore.checkpointActive()){saveWarningShown=false;}
     else if(!saveWarningShown){showFeedback("저장하지 못했습니다 · 이전 저장 확인 필요",FeedbackTone.WARN);saveWarningShown=true;}
     checkpointClock=0f;
   }
