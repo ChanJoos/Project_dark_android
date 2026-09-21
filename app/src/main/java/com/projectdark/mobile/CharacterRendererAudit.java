@@ -67,7 +67,7 @@ public final class CharacterRendererAudit {
 
     java.util.HashSet<String> signatures=new java.util.HashSet<>();
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-      CharacterRenderer.AttackVisualComposition c=CharacterRenderer.attackVisualComposition(d,"mu0000001","mw001");
+      CharacterRenderer.AttackVisualComposition c=CharacterRenderer.attackVisualComposition(d,CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID,"mw001");
       if(c.direction!=d||c.presentationScale!=1.70f||!c.robeVisible||!c.weaponVisible||!signatures.add(c.signature()))return false;
       boolean expectedBodyMirror=false;
       boolean expectedWeaponMirror=false;
@@ -87,13 +87,13 @@ public final class CharacterRendererAudit {
     }
 
     CharacterRenderer.AttackVisualComposition bare=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,null);
-    CharacterRenderer.AttackVisualComposition robe=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000001",null);
+    CharacterRenderer.AttackVisualComposition robe=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID,null);
     CharacterRenderer.AttackVisualComposition weapon=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,null,"mw001");
-    CharacterRenderer.AttackVisualComposition both=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,"mu0000001","mw001");
+    CharacterRenderer.AttackVisualComposition both=CharacterRenderer.attackVisualComposition(CharacterRenderer.Direction.SE,CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID,"mw001");
     if(bare.robeVisible||bare.weaponVisible||!robe.robeVisible||robe.weaponVisible||weapon.robeVisible||!weapon.weaponVisible||!both.robeVisible||!both.weaponVisible)return false;
-    if(CharacterRenderer.sourceActionLayersReadyContract("mu0000001",null,true,false,true))return false;
+    if(CharacterRenderer.sourceActionLayersReadyContract(CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID,null,true,false,true))return false;
     if(CharacterRenderer.sourceActionLayersReadyContract(null,"mw001",true,true,false))return false;
-    if(!CharacterRenderer.sourceActionLayersReadyContract("mu0000001","mw001",true,true,true))return false;
+    if(!CharacterRenderer.sourceActionLayersReadyContract(CharacterVisualBinding.RESOLVED_LUERS_ROBE_APPEARANCE_ID,"mw001",true,true,true))return false;
 
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;if(CharacterRenderer.weaponBehindBody(d)!=north)return false;
