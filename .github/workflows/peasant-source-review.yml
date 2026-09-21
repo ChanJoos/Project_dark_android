@@ -1,0 +1,23 @@
+name: Collect exact peasant wearable sources
+on:
+  push:
+    branches: [fix/peasant-shirt-render-20260919]
+    paths: [tools/collect_peasant_sources.py, .github/workflows/peasant-source-review.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/collect_peasant_sources.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: peasant-source-review-${{ github.sha }}
+          path: qa/peasant-sources
+          if-no-files-found: error

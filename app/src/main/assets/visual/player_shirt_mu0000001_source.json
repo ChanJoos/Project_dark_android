@@ -1,0 +1,19 @@
+{
+  "asset_id": "mu0000001",
+  "source_status": "EXACT_WEARABLE_SOURCE_RECOVERED",
+  "source_atlas": "player_shirt_mu0000001_source.webp",
+  "source_atlas_sha256": "4cf9c3a1d5b28164fa5f666902e5e7946a755dc11987f06012fc0a2c930d9294",
+  "source_manifest_sha256": "51b3ea152722e03b17a4962c3c14df567aa388ab9649cb43fe5c18f37d91da7b",
+  "source_group_01": {
+    "NE": [0, 2, 3, 4, 5],
+    "SE": [1, 6, 7, 8, 9],
+    "NW": "horizontal reflection of NE",
+    "SW": "horizontal reflection of SE"
+  },
+  "source_group_02": [0, 1, 2, 3],
+  "source_frames": {
+    "01": [[0,10,17,0.6,-1.8235],[1,11,17,0.3636,-1.8235],[2,11,17,0.5455,-1.8235],[3,11,17,0.5455,-1.7647],[4,10,16,0.6,-2.0],[5,13,16,0.5385,-1.9375],[6,12,17,0.4167,-1.8235],[7,12,17,0.4167,-1.7647],[8,12,17,0.3333,-1.8235],[9,14,17,0.4286,-1.7647]],
+    "02": [[0,9,18,0.5556,-1.6667],[1,13,16,-0.0769,-1.9375],[2,10,16,0.4,-2.0],[3,13,16,0.0,-1.6875]]
+  },
+  "note": "Recovered by workflow run 35521689948 artifact 10609125787. This is the actual mu0000001 wearable atlas; do not substitute mm001 BODY or mu0000058 robe pixels."
+}

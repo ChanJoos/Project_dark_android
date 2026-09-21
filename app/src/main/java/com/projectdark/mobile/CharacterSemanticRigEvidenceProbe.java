@@ -51,7 +51,7 @@ public final class CharacterSemanticRigEvidenceProbe {
       for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
         int source=CharacterRenderer.actionSourceIndex(d);
         Bitmap ab=load(r,"player_body_mm001_action02_"+source,BODY_W[source],BODY_H[source]);
-        Bitmap ar=load(r,"player_robe_mu0000058_action02_"+source,ROBE_W[source],ROBE_H[source]);
+        Bitmap ar=load(r,"player_shirt_mu0000001_action02_"+source,ROBE_W[source],ROBE_H[source]);
         ready&=ab!=null&&ar!=null;
         if(ab!=null&&ar!=null){
           CharacterSemanticRig.Anchors ba=CharacterSemanticRig.derive(ab,new Rect(0,0,BODY_W[source],BODY_H[source]),d);

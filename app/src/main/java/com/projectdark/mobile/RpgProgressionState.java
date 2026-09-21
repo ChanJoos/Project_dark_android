@@ -118,6 +118,8 @@ public final class RpgProgressionState {
 
   public static final String STARTER_SHIRT_ITEM_ID="IT_APPEARANCE_PEASANT_SHIRT";
   public static final String STARTER_SHIRT_APPEARANCE_ID="mu0000001";
+  public static final String VERIFIED_STARTER_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
+  public static final String VERIFIED_STARTER_ROBE_APPEARANCE_ID="mu0000058";
   public static final String PLAYTEST_WEAPON_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
   public static final String PLAYTEST_WEAPON_APPEARANCE_ID="mw001";
   public static final String PLAYTEST_WEAPON_SOURCE_EVIDENCE="Asset_Master mw001 목도 SOURCE_NAMED; COMMONER equip and SWING are ADAPTED PLAYTEST FIXTURE";
@@ -153,12 +155,14 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,
         "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
-    registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠",ARMOR_SLOT,
+    registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠 [PENDING WEARABLE FRAMES]",ARMOR_SLOT,
         STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.V));
+
     registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
         PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(STARTER_SHIRT_ITEM_ID,1);
+    // Starter armor uses the verified classic paper-doll garment frames while retaining the canonical shirt item identity.
     equipmentBySlot.put(ARMOR_SLOT,STARTER_SHIRT_ITEM_ID);
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
   }

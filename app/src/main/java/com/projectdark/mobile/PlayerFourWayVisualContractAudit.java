@@ -1,6 +1,6 @@
 package com.projectdark.mobile;
 
-/** Four-direction visual acceptance contract for BODY + peasant shirt + mw001 across idle/walk/attack/recovery. */
+/** Four-direction geometry contract. Garment pixels are only accepted when their exact source frame family exists. */
 public final class PlayerFourWayVisualContractAudit {
   private PlayerFourWayVisualContractAudit(){}
   public static boolean verify(){
