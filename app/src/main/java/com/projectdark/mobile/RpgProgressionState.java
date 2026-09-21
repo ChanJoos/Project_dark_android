@@ -37,6 +37,7 @@ public final class RpgProgressionState {
   }
 
   public static final String ARMOR_SLOT="갑옷";
+  public static final String LOWER_GARMENT_SLOT="각반";
   public static final String WEAPON_SLOT="무기";
 
   public static final class ItemDefinition {
@@ -313,8 +314,30 @@ public final class RpgProgressionState {
     RequirementResult requirements=currentRequirements(itemId);
     if(requirements==RequirementResult.PENDING)return EquipResult.REQUIREMENT_PENDING;
     if(requirements!=RequirementResult.MET)return EquipResult.REQUIREMENT_NOT_MET;
+    // Equipment slots stay source-facing (갑옷/각반). Visual coverage is a separate paper-doll concern:
+    // FULL_BODY occupies both UPPER and LOWER coverage; UPPER + LOWER may coexist.
+    CharacterVisualBinding.GarmentCoverage incoming=
+        CharacterVisualBinding.garmentCoverageForAppearance(def.appearanceId);
+    if(incoming==CharacterVisualBinding.GarmentCoverage.FULL_BODY){
+      removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage.UPPER);
+      removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage.LOWER);
+    }else if(incoming==CharacterVisualBinding.GarmentCoverage.UPPER
+        ||incoming==CharacterVisualBinding.GarmentCoverage.LOWER){
+      removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage.FULL_BODY);
+    }
     equipmentBySlot.put(def.equipSlot,itemId);
     return EquipResult.EQUIPPED;
+  }
+
+  private void removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage coverage){
+    if(coverage==null)return;
+    List<String> slots=new ArrayList<>();
+    for(Map.Entry<String,String> e:equipmentBySlot.entrySet()){
+      ItemDefinition equipped=items.get(e.getValue());
+      if(equipped==null)continue;
+      if(CharacterVisualBinding.garmentCoverageForAppearance(equipped.appearanceId)==coverage)slots.add(e.getKey());
+    }
+    for(String slot:slots)equipmentBySlot.remove(slot);
   }
 
   public StatSnapshot recomputeStats(){
