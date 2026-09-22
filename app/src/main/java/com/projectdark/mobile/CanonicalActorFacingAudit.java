@@ -29,7 +29,10 @@ public final class CanonicalActorFacingAudit {
     actor.updateLocomotion(-5f,3f);
     if(!actor.attackLocked()||actor.presentation()!=snapshot)return false;
     actor.endAttack();
-    return actor.presentation()==CharacterRenderer.Direction.SW;
+    if(actor.presentation()!=CharacterRenderer.Direction.SW)return false;
+    CharacterRenderer.Direction[] dirs={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
+    for(CharacterRenderer.Direction previous:dirs)for(CharacterRenderer.Direction target:dirs){CanonicalActorFacing locked=new CanonicalActorFacing(previous);locked.beginAttack(target);if(locked.presentation()!=target||!locked.attackLocked())return false;locked.updateLocomotion(previous);if(locked.presentation()!=target)return false;locked.endAttack();if(locked.presentation()!=previous)return false;}
+    return true;
   }
 
   public static void main(String[] args){
