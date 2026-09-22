@@ -25,8 +25,8 @@ public final class AdaptedMillesIsoBuildingLayer {
     public boolean footprintContains(float x,float y){return Math.abs(x-centerX)/halfWidth+Math.abs(y-centerY)/halfDepth<=1f;}
   }
 
-  private static final Building WEST_HOUSE=new Building("west_house",320f,560f,48f,24f,54f,30f,8f,"PENDING_CROP/milles/building/west_house_iso");
-  private static final Building PLAZA_SHOP=new Building("plaza_landmark_a",1056f,400f,48f,24f,58f,34f,8f,"PENDING_CROP/milles/building/plaza_shop_iso");
+  private static final Building WEST_HOUSE=new Building("west_house",280f,560f,48f,24f,54f,30f,8f,"PENDING_CROP/milles/building/west_house_iso");
+  private static final Building PLAZA_SHOP=new Building("plaza_landmark_a",1184f,400f,48f,24f,58f,34f,8f,"PENDING_CROP/milles/building/plaza_shop_iso");
   private static final Building PLAZA_HOUSE=new Building("plaza_landmark_b",1088f,944f,48f,24f,50f,28f,7f,"PENDING_CROP/milles/building/plaza_house_iso");
   private static final List<Building> BUILDINGS=Collections.unmodifiableList(Arrays.asList(WEST_HOUSE,PLAZA_SHOP,PLAZA_HOUSE));
   private AdaptedMillesIsoBuildingLayer(){}
