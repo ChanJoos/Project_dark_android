@@ -23,7 +23,7 @@ public final class RpgProgressionState {
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
   public enum RewardSource { CANONICAL, ADAPTED_TEST, UNRESOLVED }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
-  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
+  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }\n  public enum UseResult { USED, ITEM_NOT_OWNED, NOT_CONSUMABLE, NO_EFFECT }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
 
   public enum ProgressionNode {
@@ -123,7 +123,7 @@ public final class RpgProgressionState {
   public static final String STARTER_SHIRT_APPEARANCE_ID="mu0000001";
   public static final String VERIFIED_STARTER_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
   public static final String VERIFIED_STARTER_ROBE_APPEARANCE_ID="mu0000058";
-  public static final String PLAYTEST_WEAPON_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
+  public static final String PLAYTEST_WEAPON_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";\n  public static final String B5_SMALL_HP_POTION_ITEM_ID="IT_B_SMALL_HP_POTION";\n  public static final int B5_SMALL_HP_POTION_HEAL=35;
   public static final String PLAYTEST_WEAPON_APPEARANCE_ID="mw001";
   public static final String PLAYTEST_WEAPON_SOURCE_EVIDENCE="Asset_Master mw001 목도 SOURCE_NAMED; COMMONER equip and SWING are ADAPTED PLAYTEST FIXTURE";
 
@@ -281,6 +281,16 @@ public final class RpgProgressionState {
    * Direct-inventory endpoint for a reward whose item identity and quantity were already resolved upstream.
    * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
    */
+  public boolean isConsumable(String itemId){return B5_SMALL_HP_POTION_ITEM_ID.equals(itemId);}
+  public UseResult useConsumable(String itemId,RuntimeState runtime){
+    Integer owned=inventory.get(itemId);if(owned==null||owned<=0)return UseResult.ITEM_NOT_OWNED;
+    if(!isConsumable(itemId)||runtime==null)return UseResult.NOT_CONSUMABLE;
+    if(runtime.player().hp>=runtime.player().maxHp)return UseResult.NO_EFFECT;
+    runtime.player().hp=Math.min(runtime.player().maxHp,runtime.player().hp+B5_SMALL_HP_POTION_HEAL);
+    if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);
+    return UseResult.USED;
+  }
+  public boolean grantB5SmallHpPotion(int quantity){return autoLootResolvedItem(B5_SMALL_HP_POTION_ITEM_ID,quantity)==AutoLootResult.LOOTED;}
   public AutoLootResult autoLootResolvedItem(String itemId,int quantity){
     if(quantity<=0)return AutoLootResult.INVALID_QUANTITY;
     if(!items.containsKey(itemId))return AutoLootResult.INVALID_ITEM;
