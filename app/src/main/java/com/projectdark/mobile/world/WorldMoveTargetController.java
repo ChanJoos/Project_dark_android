@@ -16,8 +16,7 @@ public final class WorldMoveTargetController {
   public enum Status { IDLE, MOVING, REACHED, BLOCKED, CANCELLED }
   public enum CancelReason { NONE, REPLACED, DIRECT_INPUT, ACTION, EXPLICIT }
   public enum Direction {
-    NW(-32f,-16f), NE(32f,-16f), SW(-32f,16f), SE(32f,16f),
-    W(-64f,0f), E(64f,0f);
+    NW(-32f,-16f), NE(32f,-16f), SW(-32f,16f), SE(32f,16f);
     public final float dx,dy;
     Direction(float dx,float dy){this.dx=dx;this.dy=dy;}
     public static Direction between(float ax,float ay,float bx,float by){
@@ -213,14 +212,7 @@ public final class WorldMoveTargetController {
     }
     return Collections.emptyList();
   }
-  private boolean edgeTraversable(TileCenter from,TileCenter to,Direction direction){
-    if(direction!=Direction.E&&direction!=Direction.W)return true;
-    // Horizontal traversal spans the shared vertex of two diamonds. Both flanking half-step
-    // centers must be traversable so a straight route cannot cut through authored collision.
-    float mx=(from.x+to.x)*.5f,my=from.y;
-    TileCenter upper=byCenter.get(key(mx,my-16f)),lower=byCenter.get(key(mx,my+16f));
-    return upper!=null&&lower!=null&&world.canPlayerOccupy(upper.x,upper.y)&&world.canPlayerOccupy(lower.x,lower.y);
-  }
+  private boolean edgeTraversable(TileCenter from,TileCenter to,Direction direction){return direction!=null;}
   private static List<TileCenter> reconstruct(Node goal){
     List<TileCenter> reversed=new ArrayList<>();for(Node n=goal;n!=null;n=n.parent)reversed.add(n.tile);
     Collections.reverse(reversed);if(!reversed.isEmpty())reversed.remove(0);return reversed;
