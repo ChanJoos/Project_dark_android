@@ -50,7 +50,7 @@ public final class CharacterRendererAudit {
     if(!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("FULL_BODY")||!CharacterRenderer.ROBE_ATTACK_EVIDENCE.contains("atomically"))return false;
     if(!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("SW/SE")||!CharacterRenderer.ROBE_WALK_EVIDENCE.contains("packaged alpha pixels"))return false;
     if(!CharacterRenderer.robeRegistrationContinuityWithin(2f))return false;
-    if(!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("dominantHand"))return false;
+    if(!CharacterRenderer.HIT_POSE_EVIDENCE.contains("disabled")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("dominantHand")||!CharacterRenderer.WEAPON_TRANSFORM_EVIDENCE.contains("no independent"))return false;
     if(CharacterRenderer.hitCharacterPoseEnabled()||CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
 
     if(CharacterRenderer.atlasRow(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.atlasRow(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SE)!=3)return false;
@@ -98,7 +98,7 @@ public final class CharacterRendererAudit {
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;if(CharacterRenderer.weaponBehindBody(d)!=north)return false;
       float start=CharacterRenderer.weaponAttackAngle(d,0f),peak=CharacterRenderer.weaponAttackAngle(d,.55f),end=CharacterRenderer.weaponAttackAngle(d,1f);
-      if(Float.isNaN(start)||Float.isNaN(peak)||Float.isNaN(end)||Math.abs(peak-start)<20f||Math.abs(end-start)>.001f)return false;
+      if(Float.isNaN(start)||Float.isNaN(peak)||Float.isNaN(end)||Math.abs(peak-start)>.001f||Math.abs(end-start)>.001f||CharacterRenderer.weaponAttackUsesIndependentSwing())return false;
       for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
         float x=CharacterRenderer.weaponCarryOffsetX(d,col),y=CharacterRenderer.weaponCarryOffsetY(d,col),angle=CharacterRenderer.weaponCarryAngle(d,col),robeX=CharacterRenderer.robeFrameRegistrationX(d,col),robeY=CharacterRenderer.robeFrameRegistrationY(d,col);
         if(Float.isNaN(x)||Float.isNaN(y)||Float.isNaN(angle)||Float.isNaN(robeX)||Float.isNaN(robeY)||y<16f||y>27f||Math.abs(x)>11f||Math.abs(robeX)>3f||Math.abs(robeY)>2f)return false;
