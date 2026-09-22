@@ -117,7 +117,7 @@ public final class RpgProgressionState {
   private final AdaptedPrototypeRewardCatalog prototypeRewards=new AdaptedPrototypeRewardCatalog();
   private long lastCombatSequence=0L;
 
-  public static final String STARTER_SHIRT_ITEM_ID="IT_APPEARANCE_PEASANT_SHIRT";
+  public static final String B_SMALL_POTION_ITEM_ID="IT_B_SMALL_POTION";\n  public static final long B_SMALL_POTION_PRICE=20L;\n  public static final String STARTER_SHIRT_ITEM_ID="IT_APPEARANCE_PEASANT_SHIRT";
   public static final String STARTER_SHIRT_APPEARANCE_ID="mu0000001";
   public static final String VERIFIED_STARTER_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
   public static final String VERIFIED_STARTER_ROBE_APPEARANCE_ID="mu0000058";
@@ -194,7 +194,7 @@ public final class RpgProgressionState {
   public void restoreBaseResources(int hp,int mp){baseMaxHp=Math.max(1,hp);baseMaxMp=Math.max(0,mp);}
   public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
   public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(3,s);intel=Math.max(3,i);wis=Math.max(3,w);con=Math.max(3,c);dex=Math.max(3,d);statPoints=Math.max(0,points);}
-  public void restoreGold(long value){gold=Math.max(0L,value);}
+  public void restoreGold(long value){gold=Math.max(0L,value);}\n  public boolean buySmallPotion(){if(gold<B_SMALL_POTION_PRICE)return false;AutoLootResult added=autoLootResolvedItem(B_SMALL_POTION_ITEM_ID,1);if(added!=AutoLootResult.LOOTED)return false;gold-=B_SMALL_POTION_PRICE;return true;}
   public int grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;return normalizeCanonicalLevel();}
 
   /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */
