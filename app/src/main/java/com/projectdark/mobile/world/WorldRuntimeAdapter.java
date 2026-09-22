@@ -163,11 +163,6 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     float startX=runtime.player().x,startY=runtime.player().y;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
     if(!canPlayerOccupy(destinationX,destinationY))return false;
-    if(direction==WorldMoveTargetController.Direction.E||direction==WorldMoveTargetController.Direction.W){
-      float mx=(startX+destinationX)*.5f;
-      // Match the planner's collision-safe horizontal edge contract.
-      if(!canPlayerOccupy(mx,startY-16f)||!canPlayerOccupy(mx,startY+16f))return false;
-    }
     runtime.player().x=destinationX;
     runtime.player().y=destinationY;
     return true;
