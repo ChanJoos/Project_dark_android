@@ -28,7 +28,7 @@ public final class CanonicalActorFacing {
   public void updateLocomotion(WorldMoveTargetController.Direction direction){CharacterRenderer.Direction facing=CanonicalMeleeTileContract.facing(direction);if(facing!=null)locomotionFacing=facing;}
   public void setLocomotion(CharacterRenderer.Direction facing){if(facing!=null)locomotionFacing=facing;}
   public CharacterRenderer.Direction locomotion(){return locomotionFacing;}
-  public void beginAttack(){attackFacing=locomotionFacing;}
+  public void beginAttack(){attackFacing=locomotionFacing;} public void beginAttack(CharacterRenderer.Direction facing){attackFacing=facing==null?locomotionFacing:facing;}
   public void beginAttack(WorldMoveTargetController.Direction direction){CharacterRenderer.Direction facing=CanonicalMeleeTileContract.facing(direction);attackFacing=facing==null?locomotionFacing:facing;}
   public void beginAttack(float targetDx,float targetDy){
     WorldMoveTargetController.Direction direction=WorldMoveTargetController.Direction.between(0f,0f,targetDx,targetDy);
