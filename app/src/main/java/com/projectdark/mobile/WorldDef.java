@@ -46,7 +46,10 @@ public final class WorldDef {
     npcSpawns=Collections.unmodifiableList(n);
 
     List<MonsterSpawn> m=new ArrayList<>();
-    m.add(new MonsterSpawn("combat_dummy_01","훈련 몬스터 A [B]",1315f,715f,60,ASSET_STATUS));\n    m.add(new MonsterSpawn("combat_dummy_02","훈련 몬스터 B [B]",1450f,790f,60,ASSET_STATUS));\n    m.add(new MonsterSpawn("combat_dummy_03","훈련 몬스터 C [B]",1575f,720f,60,ASSET_STATUS));\n    monsterSpawns=Collections.unmodifiableList(m);
+    m.add(new MonsterSpawn("combat_dummy_01","훈련 몬스터 A [B]",1315f,715f,60,ASSET_STATUS));
+    m.add(new MonsterSpawn("combat_dummy_02","훈련 몬스터 B [B]",1450f,790f,60,ASSET_STATUS));
+    m.add(new MonsterSpawn("combat_dummy_03","훈련 몬스터 C [B]",1575f,720f,60,ASSET_STATUS));
+    monsterSpawns=Collections.unmodifiableList(m);
 
     List<PortalSpawn> p=new ArrayList<>();
     p.add(new PortalSpawn("milles_south_exit_proto","PENDING_TARGET_MAP",790f,1565f,22f,EVIDENCE_GEOMETRY,"PROTOTYPE_DISABLED_TARGET_PENDING")); portalSpawns=Collections.unmodifiableList(p);
