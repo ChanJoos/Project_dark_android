@@ -12,7 +12,7 @@ public final class CanonicalMeleeTileContract {
 
   public static WorldMoveTargetController.Direction direction(float attackerX,float attackerY,float targetX,float targetY){
     WorldMoveTargetController.Direction d=WorldMoveTargetController.Direction.between(attackerX,attackerY,targetX,targetY);
-    return d==WorldMoveTargetController.Direction.E||d==WorldMoveTargetController.Direction.W?null:d;
+    return d;
   }
   public static boolean reachable(float attackerX,float attackerY,float targetX,float targetY){return direction(attackerX,attackerY,targetX,targetY)!=null;}
   public static CharacterRenderer.Direction facing(float attackerX,float attackerY,float targetX,float targetY){return facing(direction(attackerX,attackerY,targetX,targetY));}
