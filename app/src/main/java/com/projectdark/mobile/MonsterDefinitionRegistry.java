@@ -22,6 +22,12 @@ public final class MonsterDefinitionRegistry {
     definitions.put("combat_dummy_01",new MonsterDefinition(
         "combat_dummy_01","훈련용 몬스터 [B]","밀레스 runtime prototype",null,null,null,null,
         MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
+    definitions.put("combat_dummy_02",new MonsterDefinition(
+        "combat_dummy_02","훈련 몬스터 B [B]","밀레스 runtime prototype",null,null,null,null,
+        MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
+    definitions.put("combat_dummy_03",new MonsterDefinition(
+        "combat_dummy_03","훈련 몬스터 C [B]","밀레스 runtime prototype",null,null,null,null,
+        MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
   }
 
   public MonsterDefinition resolve(String monsterId){
