@@ -35,7 +35,7 @@ public final class CanonicalActorFacing {
     if(direction!=null){beginAttack(direction);return;}
     attackFacing=quantize(targetDx,targetDy,locomotionFacing);
   }
-  public void endAttack(){attackFacing=null;}
+  public void endAttack(){if(attackFacing!=null)locomotionFacing=attackFacing;attackFacing=null;}
   public boolean attackLocked(){return attackFacing!=null;}
   public CharacterRenderer.Direction attack(){return attackFacing;}
   public CharacterRenderer.Direction presentation(){return attackFacing==null?locomotionFacing:attackFacing;}
