@@ -6,6 +6,7 @@ import java.util.List;
 
 /** [ADAPTED]/[B] buildings authored directly in the live 64x32 isometric projection. */
 public final class AdaptedMillesIsoBuildingLayer {
+  public static final float B1_BUILDING_SCALE=4.0f;
   public static final class Building {
     public final String structureId;
     public final float centerX,centerY,halfWidth,halfDepth,wallHeight,roofRise,roofOverhang;
@@ -13,11 +14,12 @@ public final class AdaptedMillesIsoBuildingLayer {
     public final float doorFootX,doorFootY,approachX,approachY;
     public final String evidence,status,assetRef;
     Building(String structureId,float centerX,float centerY,float halfWidth,float halfDepth,float wallHeight,float roofRise,float roofOverhang,String assetRef){
-      this.structureId=structureId;this.centerX=centerX;this.centerY=centerY;this.halfWidth=halfWidth;this.halfDepth=halfDepth;
-      this.wallHeight=wallHeight;this.roofRise=roofRise;this.roofOverhang=roofOverhang;
-      collisionLeft=centerX-halfWidth;collisionTop=centerY-halfDepth;collisionRight=centerX+halfWidth;collisionBottom=centerY+halfDepth;
-      doorFootX=centerX+halfWidth*.5f;doorFootY=centerY+halfDepth*.5f;
-      approachX=centerX+halfWidth*.5f;approachY=centerY+halfDepth*1.5f;
+      float scale=B1_BUILDING_SCALE;
+      this.structureId=structureId;this.centerX=centerX;this.centerY=centerY;this.halfWidth=halfWidth*scale;this.halfDepth=halfDepth*scale;
+      this.wallHeight=wallHeight*scale;this.roofRise=roofRise*scale;this.roofOverhang=roofOverhang*scale;
+      collisionLeft=centerX-this.halfWidth;collisionTop=centerY-this.halfDepth;collisionRight=centerX+this.halfWidth;collisionBottom=centerY+this.halfDepth;
+      doorFootX=centerX+this.halfWidth*.5f;doorFootY=centerY+this.halfDepth*.5f;
+      approachX=centerX+this.halfWidth*.5f;approachY=centerY+this.halfDepth+32f;
       evidence="ADAPTED/B";status="COHERENT_ISOMETRIC_VILLAGE_BUILDING";this.assetRef=assetRef;
     }
     public boolean footprintContains(float x,float y){return Math.abs(x-centerX)/halfWidth+Math.abs(y-centerY)/halfDepth<=1f;}
