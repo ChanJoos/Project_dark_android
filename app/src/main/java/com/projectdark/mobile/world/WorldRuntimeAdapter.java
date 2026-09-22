@@ -135,10 +135,26 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public boolean canPlayerOccupy(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
-    for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r>obstacle.bottom)return false;
+    for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
     for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
     for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&distance(x,y,m.x,m.y)<r+RuntimeState.MONSTER_RADIUS+3f)return false;
     return true;
+  }
+
+  /** Obstacle-only sight test; actors do not occlude their own attack endpoints. */
+  public boolean hasCombatLineOfSight(String actorId,String targetId){
+    float[] a=combatPosition(actorId),b=combatPosition(targetId);if(a==null||b==null)return false;
+    int steps=Math.max(1,(int)Math.ceil(distance(a[0],a[1],b[0],b[1])/4f));
+    for(int i=0;i<=steps;i++){
+      float t=i/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
+      for(RectF obstacle:runtime.obstacles())if(obstacle.contains(x,y))return false;
+    }
+    return true;
+  }
+  private float[] combatPosition(String id){
+    if("player".equals(id))return new float[]{runtime.player().x,runtime.player().y};
+    for(RuntimeState.Monster m:runtime.monsters())if(m.id.equals(id))return new float[]{m.x,m.y};
+    return null;
   }
 
   @Override public float worldX(){return runtime.player().x;}

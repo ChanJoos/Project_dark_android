@@ -37,7 +37,7 @@ public final class RuntimeCombatSession {
     if(state==null)throw new IllegalArgumentException("runtime state");
     this.state=state;
     port=new RuntimeCombatPortAdapter(state,lineOfSight,learnedActions,control);
-    resolver=new CombatResolver(port);
+    resolver=new CombatResolver(port,(a,t,d)->canonicalMeleeRejectReason(a,t,d,CombatResolver.InputMode.MANUAL));
     actions=new CombatActionOrchestrator(resolver,definitions(),this::canonicalMeleeRejectReason);
   }
 

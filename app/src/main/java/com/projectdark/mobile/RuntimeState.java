@@ -71,7 +71,10 @@ public final class RuntimeState {
       player=new Player(WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y);
       for(RectF r:world.blockers())obstacles.add(new RectF(r));
       for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
-      for(WorldDef.MonsterSpawn m:world.monsterSpawns())monsters.add(new Monster(m.id,m.name,m.x,m.y,m.hp,m.assetStatus));
+      for(WorldDef.MonsterSpawn m:world.monsterSpawns()){
+        com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);
+        monsters.add(new Monster(m.id,m.name,center==null?m.x:center.x,center==null?m.y:center.y,m.hp,m.assetStatus));
+      }
     }
   }
 

@@ -9,6 +9,10 @@ import java.util.Set;
 
 /** Read-only presentation projection for inventory/equipment/auto-loot UI. */
 public final class RpgInventoryPresentation {
+  static String displayName(String name){
+    if(name==null)return "";
+    return name.replaceAll("\\s*\\[(?:PENDING WEARABLE FRAMES|ADAPTED PLAYTEST|B)\\]", "").trim();
+  }
   public static final class ItemRow {
     public final String itemId,name,equipSlot;
     public final int quantity;
@@ -21,7 +25,7 @@ public final class RpgInventoryPresentation {
     public final RpgProgressionState.Evidence evidence;
 
     ItemRow(RpgProgressionState.ItemDefinition def,int quantity,boolean equipped,RpgProgressionState.RequirementResult requirementResult){
-      this.itemId=def.itemId;this.name=def.name;this.equipSlot=def.equipSlot;this.quantity=quantity;
+      this.itemId=def.itemId;this.name=displayName(def.name);this.equipSlot=def.equipSlot;this.quantity=quantity;
       this.requiredLevel=def.requiredLevel;this.equipped=equipped;
       this.allowedJobCodes=Collections.unmodifiableSet(new LinkedHashSet<>(def.allowedJobCodes));
       this.jobRestrictionResolved=def.jobRestrictionResolved;
