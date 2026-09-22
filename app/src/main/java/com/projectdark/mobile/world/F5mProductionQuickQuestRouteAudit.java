@@ -23,6 +23,7 @@ public final class F5mProductionQuickQuestRouteAudit {
     int outSteps=outbound.remainingWaypoints, outTurns=countTurnsToEnd(world,outbound,300);
     if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
     if(outSteps>14||outTurns>4)return false;
+    if(!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(world.worldX(),world.worldY(),monster.x,monster.y))return false;
 
     // Simulate quest kill without waiting for respawn, then verify return to the guide.
     monster.alive=false;
