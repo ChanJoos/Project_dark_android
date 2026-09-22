@@ -73,10 +73,10 @@ public final class MillesProductionCollision {
     // Reachable south-side interaction anchors for the B1/B5 building placement.
     List<Approach> a=new ArrayList<>();
     a.add(new Approach("potion_shop",320f,496f));
-    a.add(new Approach("weapon_shop",760f,376f));
-    a.add(new Approach("general_shop",1120f,436f));
-    a.add(new Approach("church",1540f,560f));
-    a.add(new Approach("inn",1980f,730f));
+    a.add(new Approach("weapon_shop",768f,384f));
+    a.add(new Approach("general_shop",1120f,448f));
+    a.add(new Approach("church",1536f,560f));
+    a.add(new Approach("inn",1984f,736f));
     ENTRANCES=Collections.unmodifiableList(a);
   }
 
