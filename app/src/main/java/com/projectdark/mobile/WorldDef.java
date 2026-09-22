@@ -39,14 +39,14 @@ public final class WorldDef {
 
     List<NpcSpawn> n=new ArrayList<>();
     n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",665f,615f,"밀레스 탐색/대화 루프 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_service_proto","마을 서비스 지점 [B]",1120f,365f,"서비스 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_service_proto","물약상인 [B]",320f,496f,"초보자 보급 상점입니다. 소형 회복물약은 20 Gold입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_gate_proto","남문 안내 지점 [B]",790f,1450f,"확장 남문 접근 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",285f,705f,"확장 마을 서부 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1900f,820f,"확장 동부 시장 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
     npcSpawns=Collections.unmodifiableList(n);
 
     List<MonsterSpawn> m=new ArrayList<>();
-    m.add(new MonsterSpawn("combat_dummy_01","훈련용 몬스터 [B]",1315f,715f,60,ASSET_STATUS)); monsterSpawns=Collections.unmodifiableList(m);
+    m.add(new MonsterSpawn("combat_dummy_01","훈련 몬스터 A [B]",1315f,715f,60,ASSET_STATUS));\n    m.add(new MonsterSpawn("combat_dummy_02","훈련 몬스터 B [B]",1450f,790f,60,ASSET_STATUS));\n    m.add(new MonsterSpawn("combat_dummy_03","훈련 몬스터 C [B]",1575f,720f,60,ASSET_STATUS));\n    monsterSpawns=Collections.unmodifiableList(m);
 
     List<PortalSpawn> p=new ArrayList<>();
     p.add(new PortalSpawn("milles_south_exit_proto","PENDING_TARGET_MAP",790f,1565f,22f,EVIDENCE_GEOMETRY,"PROTOTYPE_DISABLED_TARGET_PENDING")); portalSpawns=Collections.unmodifiableList(p);
