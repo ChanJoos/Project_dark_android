@@ -31,7 +31,7 @@ public final class CanonicalActorFacingAudit {
     actor.endAttack();
     if(actor.presentation()!=CharacterRenderer.Direction.SW)return false;
     CharacterRenderer.Direction[] dirs={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
-    for(CharacterRenderer.Direction previous:dirs)for(CharacterRenderer.Direction target:dirs){CanonicalActorFacing locked=new CanonicalActorFacing(previous);locked.beginAttack(target);if(locked.presentation()!=target||!locked.attackLocked())return false;locked.updateLocomotion(previous);if(locked.presentation()!=target)return false;locked.endAttack();if(locked.presentation()!=previous)return false;}
+    for(CharacterRenderer.Direction previous:dirs)for(CharacterRenderer.Direction target:dirs){CanonicalActorFacing locked=new CanonicalActorFacing(previous);locked.beginAttack(target);if(locked.presentation()!=target||!locked.attackLocked())return false;locked.setLocomotion(previous);if(locked.presentation()!=target)return false;locked.endAttack();if(locked.presentation()!=previous)return false;}
     return true;
   }
 
