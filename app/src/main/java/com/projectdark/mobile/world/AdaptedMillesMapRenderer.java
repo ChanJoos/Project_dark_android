@@ -15,7 +15,8 @@ import java.util.Map;
 
 /** Story-driven Milles pass: grass-dominant terrain, dirt roads, central well, and restrained landmarks. */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_V11_DEVICE_VERIFIED_GRASS_DIRT_MAPPING";
+  public static final String STATUS="MILLES_B5_PLAYABLE_HUB_VISIBLE_BUILDINGS";
+  public static final float B1_VISIBLE_BUILDING_SCALE=1.75f; // ~4.17x the rejected 0.42 church render.
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH,TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
   // Device evidence 2026-09-15 proved the authored file semantics are opposite the old filename assumption:
@@ -34,7 +35,13 @@ public final class AdaptedMillesMapRenderer {
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
     for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles())drawTerrainTile(canvas,world,terrainFor(t),t.centerX,t.centerY);
     drawFoot(canvas,world,"street/OBJ_well.png",AdaptedMillesIsometricTileLayer.PLAZA_CENTER_X,AdaptedMillesIsometricTileLayer.PLAZA_CENTER_Y,.50f);
-    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1320f,455f,.42f);
+    // B1/B5: render the actual APK building assets at a character-readable village scale.
+    // The previous APK only drew the church at 0.42, so changing planning geometry had no visible effect.
+    drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
+    drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",760f,300f,B1_VISIBLE_BUILDING_SCALE);
+    drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",1120f,360f,B1_VISIBLE_BUILDING_SCALE);
+    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.90f);
+    drawFoot(canvas,world,"buildings/BLD_006_inn.png",1980f,650f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"street/OBJ_noticeboard.png",690f,720f,.38f);
     drawFoot(canvas,world,"street/OBJ_bench.png",850f,650f,.38f);
     drawFoot(canvas,world,"street/OBJ_lamp_01.png",720f,535f,.42f);
