@@ -32,7 +32,7 @@ public final class CanonicalActorFacingAudit {
     if(actor.presentation()!=CharacterRenderer.Direction.SW)return false;
     CharacterRenderer.Direction[] dirs={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
     for(CharacterRenderer.Direction previous:dirs)for(CharacterRenderer.Direction target:dirs){CanonicalActorFacing locked=new CanonicalActorFacing(previous);locked.beginAttack(target);if(locked.presentation()!=target||!locked.attackLocked())return false;locked.setLocomotion(previous);if(locked.presentation()!=target)return false;locked.endAttack();if(locked.presentation()!=previous)return false;}
-    return true;
+    for(CharacterRenderer.Direction locomotion:CharacterRenderer.Direction.values())for(CharacterRenderer.Direction attack:CharacterRenderer.Direction.values()){CanonicalActorFacing isolated=new CanonicalActorFacing(locomotion);isolated.beginAttack(attack);if(isolated.presentation()!=attack||isolated.locomotion()!=locomotion)return false;isolated.endAttack();if(isolated.presentation()!=locomotion)return false;} return true;
   }
 
   public static void main(String[] args){
