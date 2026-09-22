@@ -18,7 +18,7 @@ public final class PlayerFourWayVisualContractAudit {
       }
       // ATTACK is exactly: standing paper doll -> authored BODY+shirt+mw001 contact -> standing recovery.
       CharacterRenderer.AttackVisualComposition attack=CharacterRenderer.attackVisualComposition(d,CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID,"mw001");
-      if(!attack.robeVisible||!attack.weaponVisible||attack.sourceIndex!=CharacterRenderer.atlasRow(d))return false;
+      if(!attack.robeVisible||!attack.weaponVisible||attack.sourceIndex!=CharacterRenderer.actionSourceIndex(d))return false;
       if(CharacterRenderer.attackThreePose(0f)!=0||CharacterRenderer.attackThreePose(.4f)!=1||CharacterRenderer.attackThreePose(.9f)!=2)return false;
       if(CharacterRenderer.attackFallbackWeaponSwingReachable())return false;
     }
