@@ -99,7 +99,7 @@ public final class CharacterRendererAudit {
       boolean north=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;if(CharacterRenderer.weaponBehindBody(d)!=north)return false;
       float start=CharacterRenderer.weaponAttackAngle(d,0f),peak=CharacterRenderer.weaponAttackAngle(d,.55f),end=CharacterRenderer.weaponAttackAngle(d,1f);
       if(Float.isNaN(start)||Float.isNaN(peak)||Float.isNaN(end)||Math.abs(peak-start)>.001f||Math.abs(end-start)>.001f||CharacterRenderer.weaponAttackUsesIndependentSwing())return false;
-      if(Math.abs(CharacterRenderer.weaponAttackGripX(d))>.5f||Math.abs(CharacterRenderer.weaponAttackGripY(d))>.5f)return false;
+      if(Math.abs(CharacterRenderer.weaponAttackGripX(d))>.5f||Math.abs(CharacterRenderer.weaponAttackGripY(d))>.5f)return false; CharacterSemanticRig.Anchors fb=null; float hx=CharacterRenderer.actionWeaponHandX(d,fb),hy=CharacterRenderer.actionWeaponHandY(d,fb); if(hx<4f||hx>16f||hy<26f||hy>29f)return false;
       for(int col=0;col<CharacterRenderer.IDLE_WALK_COLUMNS;col++){
         float x=CharacterRenderer.weaponCarryOffsetX(d,col),y=CharacterRenderer.weaponCarryOffsetY(d,col),angle=CharacterRenderer.weaponCarryAngle(d,col),robeX=CharacterRenderer.robeFrameRegistrationX(d,col),robeY=CharacterRenderer.robeFrameRegistrationY(d,col);
         if(Float.isNaN(x)||Float.isNaN(y)||Float.isNaN(angle)||Float.isNaN(robeX)||Float.isNaN(robeY)||y<16f||y>27f||Math.abs(x)>11f||Math.abs(robeX)>3f||Math.abs(robeY)>2f)return false;
