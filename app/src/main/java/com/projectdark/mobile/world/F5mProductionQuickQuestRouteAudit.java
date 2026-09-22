@@ -22,7 +22,7 @@ public final class F5mProductionQuickQuestRouteAudit {
     if(outbound.status!=WorldMoveTargetController.Status.MOVING)return false;
     int outSteps=outbound.remainingWaypoints, outTurns=countTurnsToEnd(world,outbound,300);
     if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
-    if(outSteps>14||outTurns>4)return false;
+    if(outSteps>14||outTurns>4){System.err.println("F5M_ROUTE_FAIL outbound outSteps="+outSteps+" outTurns="+outTurns+" status="+world.movement().snapshot().status);return false;}
 
     // Simulate quest kill without waiting for respawn, then verify return to the guide.
     monster.alive=false;
@@ -30,7 +30,7 @@ public final class F5mProductionQuickQuestRouteAudit {
     if(back.status!=WorldMoveTargetController.Status.MOVING)return false;
     int backSteps=back.remainingWaypoints, backTurns=countTurnsToEnd(world,back,300);
     if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
-    if(backSteps>14||backTurns>4)return false;
+    if(backSteps>14||backTurns>4){System.err.println("F5M_ROUTE_FAIL return backSteps="+backSteps+" backTurns="+backTurns+" status="+world.movement().snapshot().status);return false;}
     System.out.println("F5M_PRODUCTION_QUICK_QUEST_ROUTE=PASS outSteps="+outSteps+" outTurns="+outTurns+" backSteps="+backSteps+" backTurns="+backTurns);
     return true;
   }
