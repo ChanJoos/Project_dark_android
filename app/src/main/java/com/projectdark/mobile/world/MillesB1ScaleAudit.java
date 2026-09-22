@@ -2,7 +2,7 @@ package com.projectdark.mobile.world;
 
 /** Bundle B1 acceptance gate for character-relative building scale and readable town circulation. */
 public final class MillesB1ScaleAudit {
-  private static final float MIN_SCALE=4f;
+  private static final float MIN_SCALE=4f; // B1 CI trigger: scale contract is intentional and device-visible.
   private MillesB1ScaleAudit(){}
 
   public static boolean verify(){
