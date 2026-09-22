@@ -32,7 +32,9 @@ public final class AdaptedPrototypeRewardCatalog {
     Map<String,Entry> entries=new LinkedHashMap<>();
     entries.put("combat_dummy_01",new Entry("combat_dummy_01",TRAINING_TOKEN_ITEM_ID,1,
         TRAINING_POLICY_ID,"B+ADAPTED"));
-    entries.put("combat_dummy_02",new Entry("combat_dummy_02",TRAINING_TOKEN_ITEM_ID,1,TRAINING_POLICY_ID,"B+ADAPTED"));\n    entries.put("combat_dummy_03",new Entry("combat_dummy_03",TRAINING_TOKEN_ITEM_ID,1,TRAINING_POLICY_ID,"B+ADAPTED"));\n    byMonsterId=Collections.unmodifiableMap(entries);
+    entries.put("combat_dummy_02",new Entry("combat_dummy_02",TRAINING_TOKEN_ITEM_ID,1,TRAINING_POLICY_ID,"B+ADAPTED"));
+    entries.put("combat_dummy_03",new Entry("combat_dummy_03",TRAINING_TOKEN_ITEM_ID,1,TRAINING_POLICY_ID,"B+ADAPTED"));
+    byMonsterId=Collections.unmodifiableMap(entries);
   }
 
   public Entry find(String monsterId){return byMonsterId.get(monsterId);}
