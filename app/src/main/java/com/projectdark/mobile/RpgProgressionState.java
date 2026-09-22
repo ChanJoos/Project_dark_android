@@ -158,6 +158,7 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_RING_SILVERAQUA","실버아쿠아링","반지",51,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,
         "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
+    registerItem(new ItemDefinition(B_SMALL_POTION_ITEM_ID,"소형 회복물약 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
     registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠 [PENDING WEARABLE FRAMES]",ARMOR_SLOT,
         STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.V));
     registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
