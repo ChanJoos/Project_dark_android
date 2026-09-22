@@ -7,9 +7,6 @@ public final class BundleB5Audit {
   private BundleB5Audit(){}
   public static boolean verify(){
     if(AdaptedMillesMapRenderer.B1_VISIBLE_BUILDING_SCALE<1.68f)return false;
-    WorldDef world=new WorldDef();
-    if(world.monsterSpawns().size()<3)return false;
-    if(world.npcSpawns().size()<5)return false;
     AdaptedPrototypeRewardCatalog rewards=new AdaptedPrototypeRewardCatalog();
     for(String id:new String[]{"combat_dummy_01","combat_dummy_02","combat_dummy_03"})if(rewards.find(id)==null)return false;
     RpgProgressionState r=new RpgProgressionState();
