@@ -11,13 +11,14 @@ public final class CanonicalMeleeTileContract {
   private CanonicalMeleeTileContract(){}
 
   public static WorldMoveTargetController.Direction direction(float attackerX,float attackerY,float targetX,float targetY){
-    return WorldMoveTargetController.Direction.between(attackerX,attackerY,targetX,targetY);
+    WorldMoveTargetController.Direction d=WorldMoveTargetController.Direction.between(attackerX,attackerY,targetX,targetY);
+    return d==WorldMoveTargetController.Direction.E||d==WorldMoveTargetController.Direction.W?null:d;
   }
   public static boolean reachable(float attackerX,float attackerY,float targetX,float targetY){return direction(attackerX,attackerY,targetX,targetY)!=null;}
   public static CharacterRenderer.Direction facing(float attackerX,float attackerY,float targetX,float targetY){return facing(direction(attackerX,attackerY,targetX,targetY));}
   public static CharacterRenderer.Direction facing(WorldMoveTargetController.Direction direction){
     if(direction==null)return null;
-    switch(direction){case NW:return CharacterRenderer.Direction.NW;case NE:return CharacterRenderer.Direction.NE;case SW:return CharacterRenderer.Direction.SW;default:return CharacterRenderer.Direction.SE;}
+    switch(direction){case NW:return CharacterRenderer.Direction.NW;case NE:return CharacterRenderer.Direction.NE;case SW:return CharacterRenderer.Direction.SW;case SE:return CharacterRenderer.Direction.SE;default:return null;}
   }
   public static boolean isMelee(AttackDef.Kind kind){return kind!=null&&kind!=AttackDef.Kind.THROW;}
 }

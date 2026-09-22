@@ -1,5 +1,6 @@
 name: Finalize rewards
-on: push
+on:
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:

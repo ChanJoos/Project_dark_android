@@ -53,6 +53,15 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
       - name: Execute runtime checkpoint and legacy migration regression
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest --stacktrace
+      - name: Execute device recording regressions with native source rendering
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceRecordingRegressionTest --tests com.projectdark.mobile.ShirtRenderingRegressionTest --stacktrace
+      - name: Upload device review rendering
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: device-review-${{ github.sha }}
+          path: app/build/reports/device-review/
+          if-no-files-found: ignore
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace
       - name: Upload debug APK

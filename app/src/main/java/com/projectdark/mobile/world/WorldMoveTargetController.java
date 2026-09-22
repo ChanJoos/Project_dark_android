@@ -185,6 +185,8 @@ public final class WorldMoveTargetController {
       if(!world.canPlayerOccupy(tile.x,tile.y))continue;
       float entityDistance=distance(tile.x,tile.y,x,y);
       if(entityDistance>approachTolerance)continue;
+      if(kind==RequestKind.MONSTER_APPROACH&&approachTolerance<=48f
+          &&!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(tile.x,tile.y,x,y))continue;
       List<TileCenter> candidate=same(start,tile)?Collections.emptyList():findPath(start,tile);
       if(!same(start,tile)&&candidate.isEmpty())continue;
       int steps=candidate.size();

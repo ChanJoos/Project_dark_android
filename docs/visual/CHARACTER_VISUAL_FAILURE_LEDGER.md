@@ -25,3 +25,7 @@ Permanent regression gate for PROJECT DARK character visuals. CI/build success n
 SOURCE_VERIFIED -> STATIC_COMPOSITE_VERIFIED -> CI/BUILD_VERIFIED -> exact-SHA APK -> DEVICE_VERIFIED -> VISUAL_ACCEPTED.
 
 Do not skip or infer a later state from an earlier state.
+
+## 2026-09-22 device recording: packed shirt registration and contact gate
+
+Video `Screen_Recording_20260922_104456.mp4` still fails clothing registration. Root causes: incorrect packed rectangles (padding and nonsequential frames), independently scaled raw garment, bottom-offset metadata interpreted as top offset, and legacy action bitmaps failing loader dimensions. Use `ShirtSourceRegistration` and the original 298×19 atlas for idle/walk/contact. Do not reintroduce the legacy shirt action files as runtime inputs. Preserve source bytes and the accepted BODY atlas. Native Canvas matrix + real contact-vs-idle pixel comparison are mandatory regressions; enum/constant audits alone missed this failure. Physical-device acceptance remains pending. See `docs/device-tests/20260922-recording-fixes.md`.

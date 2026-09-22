@@ -48,9 +48,12 @@ public final class CombatResolver {
   }
   private static final class Pending { final long seq; final Definition d; final String a,t; final InputMode m; float elapsed; Pending(long s,Definition d,String a,String t,InputMode m){seq=s;this.d=d;this.a=a;this.t=t;this.m=m;} }
 
+  public interface SpatialGate { RejectReason reject(String actor,String target,Definition definition); }
+  private final SpatialGate spatialGate;
   private final Port port; private final Deque<Event> events=new ArrayDeque<>(); private final Set<String> defeated=new HashSet<>();
   private final Map<String,Pending> activeByActor=new LinkedHashMap<>(); private long es,as;
-  public CombatResolver(Port p){if(p==null)throw new IllegalArgumentException("port");port=p;}
+  public CombatResolver(Port p){this(p,null);}
+  public CombatResolver(Port p,SpatialGate gate){if(p==null)throw new IllegalArgumentException("port");port=p;spatialGate=gate;}
 
   public BeginResult begin(Definition d,String a,String t,InputMode m){
     if(d==null||a==null||t==null)throw new IllegalArgumentException("action request");
@@ -96,7 +99,7 @@ public final class CombatResolver {
   public List<ActionSnapshot> actionSnapshots(){List<ActionSnapshot> out=new ArrayList<>();for(Pending p:activeByActor.values())out.add(new ActionSnapshot(p));return Collections.unmodifiableList(out);}
   public List<Event> drainEvents(){List<Event> x=new ArrayList<>(events);events.clear();return Collections.unmodifiableList(x);} public List<Event> events(){return Collections.unmodifiableList(new ArrayList<>(events));}
 
-  private RejectReason validate(Definition d,String a,String t,boolean commit){if(!port.actorAlive(a))return RejectReason.ACTOR_DEAD;if(!port.targetAlive(t))return RejectReason.TARGET_DEAD;if(!port.canAct(a))return RejectReason.CONTROL;if(d.requiresLearned&&!port.learned(a,d.actionId))return RejectReason.NOT_LEARNED;if(commit&&!port.cooldownReady(a,d.actionId))return RejectReason.COOLDOWN;if(commit&&d.resourceCost>0&&!port.hasResource(a,d.resourceCost))return RejectReason.RESOURCE;if(port.distance(a,t)>d.range)return RejectReason.RANGE;if(!port.hasLineOfSight(a,t))return RejectReason.LOS;return null;}
+  private RejectReason validate(Definition d,String a,String t,boolean commit){if(!port.actorAlive(a))return RejectReason.ACTOR_DEAD;if(!port.targetAlive(t))return RejectReason.TARGET_DEAD;if(!port.canAct(a))return RejectReason.CONTROL;if(d.requiresLearned&&!port.learned(a,d.actionId))return RejectReason.NOT_LEARNED;if(commit&&!port.cooldownReady(a,d.actionId))return RejectReason.COOLDOWN;if(commit&&d.resourceCost>0&&!port.hasResource(a,d.resourceCost))return RejectReason.RESOURCE;if(spatialGate!=null){RejectReason r=spatialGate.reject(a,t,d);if(r!=null)return r;}if(port.distance(a,t)>d.range)return RejectReason.RANGE;if(!port.hasLineOfSight(a,t))return RejectReason.LOS;return null;}
   private void emit(EventType t,long seq,String a,String target,Definition d,InputMode m,RejectReason r,HitSemantic h,int n){events.add(new Event(++es,seq,t,a,target,d,m==null?InputMode.MANUAL:m,r,h,n));while(events.size()>128)events.removeFirst();}
 
   public static Definition attackPrototype(AttackDef d,int i){return new Definition("attack_proto_"+i+"_"+d.kind.name().toLowerCase(),ActionKind.ATTACK,ActionState.ATTACK,EffectType.PHYSICAL_HIT,false,0,d.cooldown,d.range,Math.min(.18f,d.cooldown*.5f),d.damage);}
