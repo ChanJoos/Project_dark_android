@@ -55,6 +55,8 @@ public final class CharacterRendererAudit {
 
     if(CharacterRenderer.atlasRow(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.atlasRow(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.atlasRow(CharacterRenderer.Direction.SE)!=3)return false;
     if(CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NW)!=0||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.NE)!=1||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SW)!=2||CharacterRenderer.actionSourceIndex(CharacterRenderer.Direction.SE)!=3)return false;
+    if(!CharacterRenderer.bodyMirrorX(CharacterRenderer.Direction.NW)||!CharacterRenderer.bodyMirrorX(CharacterRenderer.Direction.SW)||CharacterRenderer.bodyMirrorX(CharacterRenderer.Direction.NE)||CharacterRenderer.bodyMirrorX(CharacterRenderer.Direction.SE))return false;
+    if(!CharacterRenderer.weaponMirrorX(CharacterRenderer.Direction.NW)||!CharacterRenderer.weaponMirrorX(CharacterRenderer.Direction.SW)||CharacterRenderer.weaponMirrorX(CharacterRenderer.Direction.NE)||CharacterRenderer.weaponMirrorX(CharacterRenderer.Direction.SE))return false;
     if(CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NW)||CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.NE))return false;
     if(!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SW)||!CharacterRenderer.robeUsesRuntimeXYRegistration(CharacterRenderer.Direction.SE))return false;
 
