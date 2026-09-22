@@ -37,23 +37,23 @@ Protected approved behavior:
 - inventory overlay remains non-pausing; UI touch interception remains in `GameView`.
 - auto-loot remains in `RpgProgressionState`; no ground-drop restoration.
 
-## A1 — IMPLEMENTED, CI verification pending
+## A1 — VERIFIED
 Existing implementation already provides one-way quest transitions and atomic one-time prologue/Quest2 turn-in. No runtime rewrite made.
 
-## A2 — IMPLEMENTED, CI verification pending
+## A2 — VERIFIED
 Existing tracker projects Quest1/Quest2 state to NPC/monster/NPC targets and production route audit exists. No navigation redesign made.
 
-## A3 — IMPLEMENTED with explicit PENDING boundary, CI verification pending
+## A3 — VERIFIED with explicit PENDING boundary
 Canonical SSOT is respected for +2 points/level and no automatic primary-stat growth. Exact original HP/MP formula is unresolved; current [B] replaceable policy remains rather than inventing original values.
 
-## A4 — IMPLEMENTED, CI verification pending
+## A4 — VERIFIED
 Existing schema-2 checkpoint and atomic turn-in transactions reused. Unsupported future schema/unknown saved items preserve the source save and disable writes rather than overwriting it.
 
-## A5 — CI verification pending
-Run existing Android workflow from this exact branch/SHA. Device-only screen/touch claims remain DEVICE_PENDING unless the user tests the produced APK.
+## A5 — BUILD VERIFIED
+CI run 35751695196 passed master validation, compilation, Quick Quest route/approach, 4-way BODY/robe/mokdo contract, combat/final-stats, Growth v2, F5M runtime binding, restart persistence, runtime checkpoint/legacy migration, device-recording source-render regressions, and debug APK build. Device-only screen/touch claims remain DEVICE_PENDING unless the user tests the produced APK.
 
-## A6 — pending CI artifact
-After exact-head CI passes, record final SHA, KST build time, artifact, SHA-256 if downloadable bytes are available, and device checklist (max 5).
+## A6 — BUILD VERIFIED / DEVICE_PENDING
+Validation build source SHA: `838aefdf8fb7e2ded1dea17cddba91df988f985a`; CI completed 2026-09-23 01:06:20 KST. APK bytes extracted from artifact 10705985874; APK SHA-256 `4794265147d62a1f0f190ddb646f63efb39bb4d391c7c0d269750bb9cff44502`. This status-file update creates a documentation-only successor commit; run CI once more on that exact final documentation SHA before calling A6 exact-head complete.
 
 ## Deferred
 B0 is the next ticket after Bundle A. B–D are not part of this execution.
