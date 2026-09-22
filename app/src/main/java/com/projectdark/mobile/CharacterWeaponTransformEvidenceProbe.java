@@ -24,7 +24,7 @@ public final class CharacterWeaponTransformEvidenceProbe {
       boolean expectedWeaponMirror=false;
       boolean expectedBehind=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE;
       return bodyMirror==expectedBodyMirror&&weaponMirror==expectedWeaponMirror&&weaponBehindBody==expectedBehind&&
-          handX==0f&&handY==0f&&!Float.isNaN(attackAngle)&&!CharacterRenderer.weaponAttackUsesIndependentSwing();
+          Math.abs(handX)<=.5f&&Math.abs(handY)<=.5f&&!Float.isNaN(attackAngle)&&!CharacterRenderer.weaponAttackUsesIndependentSwing();
     }
     @Override public String toString(){return direction+" bodyMirror="+bodyMirror+" weaponMirror="+weaponMirror+
         " behind="+weaponBehindBody+" hand=("+handX+","+handY+") angle="+attackAngle;}
