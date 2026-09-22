@@ -41,13 +41,13 @@ public final class MillesProductionCollision {
   static {
     List<Footprint> b=new ArrayList<>();
 
-    // Production buildings: compact contact strips under the visible wall mass. The south-facing
-    // authored approach tile is intentionally outside each strip so interaction range is reachable.
-    add(b,"church",Kind.CHURCH,SX+250f,SY-120f,92f,30f);
-    add(b,"potion_shop",Kind.BUILDING,SX-285f,SY-105f,72f,24f);
-    add(b,"weapon_shop",Kind.BUILDING,SX-90f,SY-165f,72f,24f);
-    add(b,"general_shop",Kind.BUILDING,SX+105f,SY-170f,72f,24f);
-    add(b,"inn",Kind.BUILDING,SX+390f,SY-70f,80f,26f);
+    // B1/B5 visible-building ground contact. These coordinates match the actual renderer anchors.
+    // Footprints are deliberately much shallower than sprite bounds: only the ground mass blocks.
+    add(b,"potion_shop",Kind.BUILDING,320f,420f,210f,78f);
+    add(b,"weapon_shop",Kind.BUILDING,760f,300f,205f,78f);
+    add(b,"general_shop",Kind.BUILDING,1120f,360f,205f,78f);
+    add(b,"church",Kind.CHURCH,1540f,455f,270f,105f);
+    add(b,"inn",Kind.BUILDING,1980f,650f,205f,80f);
 
     // Nature/street objects: only the trunk/base/ring/stall base blocks the walk plane.
     add(b,"tree_01",Kind.TREE,SX-330f,SY+45f,22f,18f);
@@ -70,14 +70,13 @@ public final class MillesProductionCollision {
     rect(b,"lake_east_lobe",Kind.LAKE,lx+86f,ly-26f,lx+116f,ly+20f);
     BLOCKERS=Collections.unmodifiableList(b);
 
-    // These are actual authored 64x32 cell centers on the walk grid, one reachable step outside
-    // each building footprint on the visually open/south side.
+    // Reachable south-side interaction anchors for the B1/B5 building placement.
     List<Approach> a=new ArrayList<>();
-    a.add(new Approach("church",864f,480f));
-    a.add(new Approach("potion_shop",352f,480f));
-    a.add(new Approach("weapon_shop",544f,416f));
-    a.add(new Approach("general_shop",736f,416f));
-    a.add(new Approach("inn",1024f,528f));
+    a.add(new Approach("potion_shop",320f,496f));
+    a.add(new Approach("weapon_shop",760f,376f));
+    a.add(new Approach("general_shop",1120f,436f));
+    a.add(new Approach("church",1540f,560f));
+    a.add(new Approach("inn",1980f,730f));
     ENTRANCES=Collections.unmodifiableList(a);
   }
 
