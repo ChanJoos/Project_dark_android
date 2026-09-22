@@ -19,8 +19,9 @@ public final class AdaptedMillesStructureVisualLayer {
     Visual(AdaptedMillesMapLayer.Structure s,float wallHeight,float roofRise,float roofOverhang,
         float doorWidth,float doorHeight,boolean hasDoor){
       structureId=s.id;kind=s.kind;
-      this.wallHeight=wallHeight;this.roofRise=roofRise;this.roofOverhang=roofOverhang;
-      this.doorWidth=doorWidth;this.doorHeight=doorHeight;this.hasDoor=hasDoor;
+      float scale=AdaptedMillesIsoBuildingLayer.B1_BUILDING_SCALE;
+      this.wallHeight=wallHeight*scale;this.roofRise=roofRise*scale;this.roofOverhang=roofOverhang*scale;
+      this.doorWidth=doorWidth*scale;this.doorHeight=doorHeight*scale;this.hasDoor=hasDoor;
       evidence="ADAPTED/B";
       status="PROTOTYPE_SILHOUETTE_REPLACE_WITH_VERIFIED_MILLES";
       assetRef="PENDING_CROP/milles/structure/"+s.id;
