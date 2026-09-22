@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Director gate: body and mw001 transforms are audited independently per facing. */
+/** Director gate: mw001 is registered atomically to the BODY dominant-hand anchor per facing. */
 public final class CharacterWeaponTransformEvidenceProbe {
   public static final class Sample {
     public final CharacterRenderer.Direction direction;
@@ -20,11 +20,11 @@ public final class CharacterWeaponTransformEvidenceProbe {
       attackAngle=CharacterRenderer.weaponAttackAngle(d,.55f);
     }
     public boolean sane(){
-      boolean expectedBodyMirror=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.SW;
-      boolean expectedWeaponMirror=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.SW;
+      boolean expectedBodyMirror=false;
+      boolean expectedWeaponMirror=false;
       boolean expectedBehind=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE;
       return bodyMirror==expectedBodyMirror&&weaponMirror==expectedWeaponMirror&&weaponBehindBody==expectedBehind&&
-          !Float.isNaN(handX)&&!Float.isNaN(handY)&&!Float.isNaN(attackAngle);
+          handX==0f&&handY==0f&&!Float.isNaN(attackAngle)&&!CharacterRenderer.weaponAttackUsesIndependentSwing();
     }
     @Override public String toString(){return direction+" bodyMirror="+bodyMirror+" weaponMirror="+weaponMirror+
         " behind="+weaponBehindBody+" hand=("+handX+","+handY+") angle="+attackAngle;}
@@ -45,7 +45,7 @@ public final class CharacterWeaponTransformEvidenceProbe {
   }
 
   public static String report(){
-    StringBuilder b=new StringBuilder("mw001 independent transform rows=4\n");
+    StringBuilder b=new StringBuilder("mw001 atomic BODY-hand registration rows=4\n");
     for(Sample s:samples())b.append(s).append('\n');
     return b.toString();
   }
