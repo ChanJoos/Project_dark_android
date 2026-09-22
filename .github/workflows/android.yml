@@ -38,6 +38,8 @@ jobs:
 
       - name: Execute Bundle B1 building scale audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.MillesB1ScaleAudit
+      - name: Execute Bundle B5 integrated loop audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.BundleB5Audit
       - name: Execute Quick Quest optimal approach audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Execute 4-way BODY robe mokdo visual contract audit
