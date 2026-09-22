@@ -15,21 +15,21 @@ public final class F5mProductionQuickQuestRouteAudit {
     if(guide==null||monster==null)return false;
 
     // Spawn -> NPC remains valid.
-    if(!run(world,world.requestNpcApproach(guide.id),300))return false;
+    WorldMoveTargetController.Snapshot toGuide=world.requestNpcApproach(guide.id); if(!run(world,toGuide,300)){System.err.println("F5M_ROUTE_FAIL spawn-guide initial="+toGuide.status+" remaining="+toGuide.remainingWaypoints+" final="+world.movement().snapshot().status);return false;}
 
     // NPC -> monster: long eastward leg must use straight E edges rather than NE/SE saw-tooth.
     WorldMoveTargetController.Snapshot outbound=world.requestMonsterApproach(monster.id,48f);
-    if(outbound.status!=WorldMoveTargetController.Status.MOVING)return false;
+    if(outbound.status!=WorldMoveTargetController.Status.MOVING){System.err.println("F5M_ROUTE_FAIL outbound-initial status="+outbound.status+" remaining="+outbound.remainingWaypoints+" target="+outbound.targetX+","+outbound.targetY);return false;}
     int outSteps=outbound.remainingWaypoints, outTurns=countTurnsToEnd(world,outbound,300);
-    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
+    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED){System.err.println("F5M_ROUTE_FAIL outbound-final status="+world.movement().snapshot().status+" steps="+outSteps+" turns="+outTurns);return false;}
     if(outSteps>14||outTurns>4){System.err.println("F5M_ROUTE_FAIL outbound outSteps="+outSteps+" outTurns="+outTurns+" status="+world.movement().snapshot().status);return false;}
 
     // Simulate quest kill without waiting for respawn, then verify return to the guide.
     monster.alive=false;
     WorldMoveTargetController.Snapshot back=world.requestNpcApproach(guide.id);
-    if(back.status!=WorldMoveTargetController.Status.MOVING)return false;
+    if(back.status!=WorldMoveTargetController.Status.MOVING){System.err.println("F5M_ROUTE_FAIL return-initial status="+back.status+" remaining="+back.remainingWaypoints+" target="+back.targetX+","+back.targetY);return false;}
     int backSteps=back.remainingWaypoints, backTurns=countTurnsToEnd(world,back,300);
-    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
+    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED){System.err.println("F5M_ROUTE_FAIL return-final status="+world.movement().snapshot().status+" steps="+backSteps+" turns="+backTurns);return false;}
     if(backSteps>14||backTurns>4){System.err.println("F5M_ROUTE_FAIL return backSteps="+backSteps+" backTurns="+backTurns+" status="+world.movement().snapshot().status);return false;}
     System.out.println("F5M_PRODUCTION_QUICK_QUEST_ROUTE=PASS outSteps="+outSteps+" outTurns="+outTurns+" backSteps="+backSteps+" backTurns="+backTurns);
     return true;
