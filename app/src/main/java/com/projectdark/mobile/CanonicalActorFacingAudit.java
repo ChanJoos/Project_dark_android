@@ -29,10 +29,10 @@ public final class CanonicalActorFacingAudit {
     actor.updateLocomotion(-5f,3f);
     if(!actor.attackLocked()||actor.presentation()!=snapshot)return false;
     actor.endAttack();
-    if(actor.presentation()!=CharacterRenderer.Direction.SW)return false;
+    if(actor.presentation()!=snapshot||actor.locomotion()!=snapshot)return false;
     CharacterRenderer.Direction[] dirs={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
-    for(CharacterRenderer.Direction previous:dirs)for(CharacterRenderer.Direction target:dirs){CanonicalActorFacing locked=new CanonicalActorFacing(previous);locked.beginAttack(target);if(locked.presentation()!=target||!locked.attackLocked())return false;locked.setLocomotion(previous);if(locked.presentation()!=target)return false;locked.endAttack();if(locked.presentation()!=previous)return false;}
-    for(CharacterRenderer.Direction locomotion:CharacterRenderer.Direction.values())for(CharacterRenderer.Direction attack:CharacterRenderer.Direction.values()){CanonicalActorFacing isolated=new CanonicalActorFacing(locomotion);isolated.beginAttack(attack);if(isolated.presentation()!=attack||isolated.locomotion()!=locomotion)return false;isolated.endAttack();if(isolated.presentation()!=locomotion)return false;} return true;
+    for(CharacterRenderer.Direction previous:dirs)for(CharacterRenderer.Direction target:dirs){CanonicalActorFacing locked=new CanonicalActorFacing(previous);locked.beginAttack(target);if(locked.presentation()!=target||!locked.attackLocked())return false;locked.setLocomotion(previous);if(locked.presentation()!=target)return false;locked.endAttack();if(locked.presentation()!=target||locked.locomotion()!=target)return false;}
+    for(CharacterRenderer.Direction locomotion:CharacterRenderer.Direction.values())for(CharacterRenderer.Direction attack:CharacterRenderer.Direction.values()){CanonicalActorFacing isolated=new CanonicalActorFacing(locomotion);isolated.beginAttack(attack);if(isolated.presentation()!=attack||isolated.locomotion()!=locomotion)return false;isolated.endAttack();if(isolated.presentation()!=attack||isolated.locomotion()!=attack)return false;} return true;
   }
 
   public static void main(String[] args){
