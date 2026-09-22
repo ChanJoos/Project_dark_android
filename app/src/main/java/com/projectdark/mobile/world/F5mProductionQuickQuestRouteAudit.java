@@ -15,23 +15,23 @@ public final class F5mProductionQuickQuestRouteAudit {
     if(guide==null||monster==null)return false;
 
     // Spawn -> NPC remains valid.
-    if(!run(world,world.requestNpcApproach(guide.id),300))return false;
+    if(!run(world,world.requestNpcApproach(guide.id),300))throw new AssertionError("route stage=spawn->guide status="+world.movement().snapshot().status);
 
     // NPC -> monster: long eastward leg must use straight E edges rather than NE/SE saw-tooth.
     WorldMoveTargetController.Snapshot outbound=world.requestMonsterApproach(monster.id,48f);
-    if(outbound.status!=WorldMoveTargetController.Status.MOVING)return false;
+    if(outbound.status!=WorldMoveTargetController.Status.MOVING)throw new AssertionError("route stage=outbound begin status="+outbound.status+" remaining="+outbound.remainingWaypoints);
     int outSteps=outbound.remainingWaypoints, outTurns=countTurnsToEnd(world,outbound,300);
-    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
-    if(outSteps>14||outTurns>4)return false;
-    if(!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(world.worldX(),world.worldY(),monster.x,monster.y))return false;
+    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)throw new AssertionError("route stage=outbound end status="+world.movement().snapshot().status);
+    if(outSteps>14||outTurns>4)throw new AssertionError("route stage=outbound metrics steps="+outSteps+" turns="+outTurns);
+    if(!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(world.worldX(),world.worldY(),monster.x,monster.y))throw new AssertionError("route stage=melee endpoint player="+world.worldX()+","+world.worldY()+" monster="+monster.x+","+monster.y);
 
     // Simulate quest kill without waiting for respawn, then verify return to the guide.
     monster.alive=false;
     WorldMoveTargetController.Snapshot back=world.requestNpcApproach(guide.id);
-    if(back.status!=WorldMoveTargetController.Status.MOVING)return false;
+    if(back.status!=WorldMoveTargetController.Status.MOVING)throw new AssertionError("route stage=return begin status="+back.status+" remaining="+back.remainingWaypoints);
     int backSteps=back.remainingWaypoints, backTurns=countTurnsToEnd(world,back,300);
-    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)return false;
-    if(backSteps>14||backTurns>4)return false;
+    if(world.movement().snapshot().status!=WorldMoveTargetController.Status.REACHED)throw new AssertionError("route stage=return end status="+world.movement().snapshot().status);
+    if(backSteps>14||backTurns>4)throw new AssertionError("route stage=return metrics steps="+backSteps+" turns="+backTurns);
     System.out.println("F5M_PRODUCTION_QUICK_QUEST_ROUTE=PASS outSteps="+outSteps+" outTurns="+outTurns+" backSteps="+backSteps+" backTurns="+backTurns);
     return true;
   }
