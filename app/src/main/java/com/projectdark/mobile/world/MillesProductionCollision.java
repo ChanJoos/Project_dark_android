@@ -49,26 +49,9 @@ public final class MillesProductionCollision {
     add(b,"church",Kind.CHURCH,1540f,455f,270f,105f);
     add(b,"inn",Kind.BUILDING,1980f,650f,205f,80f);
 
-    // B2 device correction: invisible/non-rendered scenery must never create dead navigation islands.\n    // Only currently visible gameplay geometry is collision-authoritative.\n    /* Legacy scenery footprints retained as visual-planning notes only; not runtime blockers.\n    // Nature/street objects: only the trunk/base/ring/stall base blocks the walk plane.
-    add(b,"tree_01",Kind.TREE,SX-330f,SY+45f,22f,18f);
-    add(b,"tree_02",Kind.TREE,SX-270f,SY+125f,22f,18f);
-    add(b,"tree_03",Kind.TREE,SX+455f,SY+110f,22f,18f);
-    add(b,"well",Kind.WELL,SX+35f,SY+70f,34f,20f);
-    add(b,"stall_01",Kind.STALL,SX-225f,SY+205f,58f,22f);
-
-    // Fences are narrow ground strips; surrounding logical cells remain navigable.
-    for(int i=0;i<4;i++){
-      add(b,"fence_w_"+i,Kind.FENCE,SX-390f+i*72f,SY+245f,50f,10f);
-      add(b,"fence_e_"+i,Kind.FENCE,SX+245f+i*72f,SY+300f,50f,10f);
-    }
-
-    // The lake uses shoreline-aware strips instead of one sprite-sized box. This keeps the water
-    // interior blocked without swallowing the surrounding land path.
-    float lx=SX+325f,ly=SY+210f;
-    rect(b,"lake_core",Kind.LAKE,lx-92f,ly-50f,lx+92f,ly+42f);
-    rect(b,"lake_west_lobe",Kind.LAKE,lx-118f,ly-30f,lx-86f,ly+24f);
-    rect(b,"lake_east_lobe",Kind.LAKE,lx+86f,ly-26f,lx+116f,ly+20f);
-    */\n    BLOCKERS=Collections.unmodifiableList(b);
+    // B2 device correction: only visible gameplay geometry is collision-authoritative.
+    // Invisible legacy scenery footprints are intentionally excluded from runtime blockers.
+    BLOCKERS=Collections.unmodifiableList(b);
 
     // Reachable south-side interaction anchors for the B1/B5 building placement.
     List<Approach> a=new ArrayList<>();
