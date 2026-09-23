@@ -167,10 +167,10 @@ public final class GameView extends View {
 
   private void enterReagentShop(){inReagentShop=true;reagentShopOpen=false;inventoryOpen=statsOpen=equipmentOpen=false;interaction.cancel();combat.cancelApproach();worldAdapter.cancelForAction();reagentShopWorld.resetAtEntry();showFeedback("밀레스 시약상점",FeedbackTone.INFO);}
   private void leaveReagentShop(){inReagentShop=false;reagentShopOpen=false;worldAdapter.cancel();state.player().x=320f;state.player().y=528f;worldAdapter.snapCameraToPlayer();showFeedback("밀레스",FeedbackTone.INFO);}
-  private float shopScreenX(float wx){return 480f+(wx-480f)*.72f;}
-  private float shopScreenY(float wy){return 270f+(wy-320f)*.58f;}
-  private float shopWorldX(float sx){return 480f+(sx-480f)/.72f;}
-  private float shopWorldY(float sy){return 320f+(sy-270f)/.58f;}
+  private float shopScreenX(float wx){return wx;}
+  private float shopScreenY(float wy){return wy;}
+  private float shopWorldX(float sx){return sx;}
+  private float shopWorldY(float sy){return sy;}
   private void updateReagentShop(float dt){
     state.tick(dt);state.applyDerivedGrowth();
     if(reagentShopOpen)return;
