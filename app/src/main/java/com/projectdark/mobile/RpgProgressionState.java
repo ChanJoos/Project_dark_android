@@ -156,8 +156,8 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_SHOES","신발",SHOES_SLOT,"ml228",1,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition(STARTER_HAT_ITEM_ID,"햇 [ADAPTED]",HEAD_SLOT,STARTER_HAT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
-    registerItem(new ItemDefinition(STARTER_SHIELD_ITEM_ID,"기본 방패 [ADAPTED]",SHIELD_SLOT,STARTER_SHIELD_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(STARTER_HAT_ITEM_ID,"햇",HEAD_SLOT,STARTER_HAT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(STARTER_SHIELD_ITEM_ID,"기본 방패",SHIELD_SLOT,STARTER_SHIELD_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
