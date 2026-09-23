@@ -2,7 +2,7 @@ package com.projectdark.mobile;
 
 import com.projectdark.mobile.world.AdaptedMillesMapRenderer;
 
-/** B5 integration gate for the playable Milles village -> hunt -> reward -> supply loop. */
+/** B5 integration gate for the playable Milles village -> hunt -> reward -> supply loop. Native-resolution building render contract. */
 public final class BundleB5Audit {
   private BundleB5Audit(){}
   public static boolean verify(){
