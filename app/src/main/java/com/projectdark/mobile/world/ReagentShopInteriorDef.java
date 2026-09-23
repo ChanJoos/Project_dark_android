@@ -28,5 +28,5 @@ public final class ReagentShopInteriorDef {
     return Collections.unmodifiableList(out);
   }
   public static boolean inside(float x,float y){return x>=MIN_X&&x<=MAX_X&&y>=MIN_Y&&y<=MAX_Y;}
-  public static boolean exitContains(float x,float y){float dx=x-EXIT_X,dy=y-EXIT_Y;return dx*dx+dy*dy<=24f*24f;}
+  public static boolean exitContains(float x,float y){float dx=x-EXIT_X,dy=y-EXIT_Y;return dx*dx+dy*dy<=36f*36f;}
 }
