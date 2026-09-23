@@ -10,9 +10,9 @@ public final class ReagentShopInteriorDef {
   public static final String ENTRY_SPAWN_ID="entry_from_milles";
   public static final String EXIT_PORTAL_ID="reagent_shop_exit";
   public static final float MIN_X=64f,MAX_X=896f,MIN_Y=48f,MAX_Y=512f;
-  public static final float SPAWN_X=480f,SPAWN_Y=432f;
+  public static final float SPAWN_X=448f,SPAWN_Y=432f;
   public static final float MERLIN_X=480f,MERLIN_Y=176f;
-  public static final float EXIT_X=480f,EXIT_Y=464f;
+  public static final float EXIT_X=448f,EXIT_Y=464f;
   private ReagentShopInteriorDef(){}
 
   public static List<WorldMoveTargetController.TileCenter> navigationTiles(){
