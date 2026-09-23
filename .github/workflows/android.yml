@@ -13,6 +13,19 @@ jobs:
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
     steps:
       - uses: actions/checkout@v4
+      - name: Recover starter gear source manifests
+        run: |
+          python3 tools/collect_peasant_sources.py
+          python3 - <<'PY'
+          import json, pathlib, sys
+          rows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())
+          need={'ml228','ms001','mh172'}
+          got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}
+          missing=need-got
+          if missing:
+              print('SOURCE_REGISTRATION_BLOCKED',sorted(missing))
+              sys.exit(23)
+          PY
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
