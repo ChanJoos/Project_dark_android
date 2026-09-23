@@ -22,8 +22,9 @@ jobs:
           need={'ml228','ms001','mh172'}
           got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}
           missing=need-got
+          print('SOURCE_REGISTRATION_FETCHED',sorted(got & need))
+          print('SOURCE_REGISTRATION_MISSING',sorted(missing))
           if missing:
-              print('SOURCE_REGISTRATION_BLOCKED',sorted(missing))
               sys.exit(23)
           PY
       - uses: actions/setup-java@v4
