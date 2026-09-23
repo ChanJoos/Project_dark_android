@@ -245,12 +245,12 @@ public final class GameView extends View {
       mutedText(c,rpgPresentation.requirementLabel(selectedRow),806,167,8);
       if(selectedRow.equipped)text(c,"장착 중",806,188,8);
       p.setColor(0xFF5B3C27);c.drawRect(734,204,900,205,p);
-      String mods=itemModifierLabel(d);mutedText(c,mods.isEmpty()?"능력치 효과 없음":mods,734,229,8.5f);
-      String elem=rpgPresentation.elementLabel(selectedRow);if(!elem.isEmpty())mutedText(c,elem,734,249,8);
-      if(d!=null&&d.equippable())drawWrappedText(c,equipmentCompareLabel(d),734,276,164,8,14);
-      p.setColor(0xD06A431E);c.drawRoundRect(new RectF(748,342,886,384),5,5,p);
+      drawItemStatPanel(c,d,734,216,166);
+      String elem=rpgPresentation.elementLabel(selectedRow);if(!elem.isEmpty())mutedText(c,elem,734,303,8);
+      if(d!=null&&d.equippable())drawWrappedText(c,equipmentCompareLabel(d),734,326,164,7.5f,12);
+      p.setColor(0xD06A431E);c.drawRoundRect(new RectF(748,354,886,392),5,5,p);
       p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFFE0AD62);c.drawRoundRect(new RectF(748,342,886,384),5,5,p);p.setStyle(Paint.Style.FILL);
-      text(c,state.rpg().isConsumable(selectedRow.itemId)?"사용":selectedRow.equipped?"해제":"장착",799,368,11);
+      text(c,state.rpg().isConsumable(selectedRow.itemId)?"사용":selectedRow.equipped?"해제":"장착",799,378,11);
     }
     if(inventoryPage>0)text(c,"‹",555,457,18);
     mutedText(c,(inventoryPage+1)+" / "+pages,616,456,9);
@@ -278,6 +278,19 @@ public final class GameView extends View {
     else {c.drawCircle(cx,cy,size*.24f,p);c.drawLine(cx,cy-size*.38f,cx,cy+size*.38f,p);}
     p.setStyle(Paint.Style.FILL);
   }
+  private void drawItemStatPanel(Canvas c,RpgProgressionState.ItemDefinition d,float x,float y,float width){
+    if(d==null){mutedText(c,"능력치 정보 없음",x,y+12,8);return;}
+    String[] keys={"DAM","HIT","AC","DEX","STR","INT","WIS","CON","MDEF"};
+    int shown=0;
+    for(String key:keys){
+      Integer v=d.statModifiers.get(key);if(v==null||v==0)continue;
+      float col=shown%2,row=shown/2, bx=x+col*(width/2),by=y+row*27;
+      p.setColor(0xCC2B2119);c.drawRoundRect(new RectF(bx,by,bx+width/2-5,by+22),4,4,p);
+      mutedText(c,key,bx+6,by+14,7);text(c,(v>0?"+":"")+v,bx+42,by+15,9);shown++;
+      if(shown>=6)break;
+    }
+    if(shown==0)mutedText(c,d.equippable()?"추가 능력치 없음":"소비/기타 아이템",x,y+14,8);
+  }
   private String itemModifierLabel(RpgProgressionState.ItemDefinition d){if(d==null||d.statModifiers.isEmpty())return "";StringBuilder s=new StringBuilder();for(Map.Entry<String,Integer> e:d.statModifiers.entrySet()){if(s.length()>0)s.append(" · ");s.append(e.getKey()).append(" ").append(e.getValue()>0?"+":"").append(e.getValue());}return s.toString();}
   private String equipmentCompareLabel(RpgProgressionState.ItemDefinition d){if(d==null||!d.equippable())return "";FinalStats now=state.rpg().finalStats();Map<String,String> eq=state.rpg().equipment();RpgProgressionState.ItemDefinition old=state.rpg().itemDefinitions().get(eq.get(d.equipSlot));int dam=now.dam-oldMod(old,"DAM")+mod(d,"DAM"),hit=now.hit-oldMod(old,"HIT")+mod(d,"HIT"),ac=now.ac-oldMod(old,"AC")+mod(d,"AC"),dex=now.dex-oldMod(old,"DEX")+mod(d,"DEX");if("무기".equals(d.equipSlot))return "장착 시 DAM "+now.dam+"→"+dam+" · HIT "+now.hit+"→"+hit;if("방패".equals(d.equipSlot)||"갑옷".equals(d.equipSlot)||"모자".equals(d.equipSlot)||"장갑".equals(d.equipSlot))return "장착 시 AC "+now.ac+"→"+ac;if("신발".equals(d.equipSlot))return "장착 시 DEX "+now.dex+"→"+dex;return "장착 시 최종 능력치에 즉시 반영";}
   private static int mod(RpgProgressionState.ItemDefinition d,String k){if(d==null)return 0;Integer v=d.statModifiers.get(k);return v==null?0:v;} private static int oldMod(RpgProgressionState.ItemDefinition d,String k){return mod(d,k);}
@@ -288,9 +301,9 @@ public final class GameView extends View {
     p.setColor(0xB02A1710);c.drawCircle(825,70,15,p);text(c,"×",820,75,14);
     Map<String,String> eq=state.rpg().equipment();
     // Presentation-only slot map. No equipment domain/state is changed.
-    String[] slots={"귀걸이","모자","목걸이","날개","방패","무기","장갑","각반","장갑","벨트","신발"};
-    float[][] pos={{160,105},{286,88},{412,105},{155,190},{155,270},{417,190},{155,350},{286,365},{417,350},{417,270},{417,365}};
-    for(int i=0;i<slots.length;i++)drawEquipSlot(c,eq,slots[i],pos[i][0],pos[i][1],74,66,i==6?"장갑(좌)":i==8?"장갑(우)":slots[i]);
+    String[] slots={"귀걸이","모자","목걸이","날개","방패","무기","장갑","장갑","벨트","각반","신발"};
+    float[][] pos={{155,105},{286,88},{417,105},{155,188},{155,270},{417,188},{125,350},{447,350},{417,270},{245,374},{326,374}};
+    for(int i=0;i<slots.length;i++)drawEquipSlot(c,eq,slots[i],pos[i][0],pos[i][1],74,66,i==6?"장갑(좌)":i==7?"장갑(우)":slots[i]);
     // Current paper-doll uses the exact runtime visual binding already used in world rendering.
     CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());
     characterRenderer.draw(c,new CharacterRenderer.Pose(324,310,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
