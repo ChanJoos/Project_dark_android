@@ -55,15 +55,13 @@ public final class CharacterVisualBinding {
   }
 
   public static VisualSlot visualSlotForAppearance(String appearanceId){
-    if(RESOLVED_WEAPON_APPEARANCE_ID.equals(appearanceId))return VisualSlot.WEAPON;
-    if(RESOLVED_SHOES_APPEARANCE_ID.equals(appearanceId))return VisualSlot.FEET;
-    if(RESOLVED_HAT_APPEARANCE_ID.equals(appearanceId))return VisualSlot.HEAD;
-    if(RESOLVED_SHIELD_APPEARANCE_ID.equals(appearanceId))return VisualSlot.SHIELD;
+    if(appearanceId==null)return null;String a=appearanceId.toLowerCase();
+    if(a.startsWith("mw")||a.startsWith("ww"))return VisualSlot.WEAPON;
+    if(a.startsWith("ml")||a.startsWith("wl"))return VisualSlot.FEET;
+    if(a.startsWith("mh")||a.startsWith("wh"))return VisualSlot.HEAD;
+    if(a.startsWith("ms")||a.startsWith("ws"))return VisualSlot.SHIELD;
     GarmentCoverage coverage=garmentCoverageForAppearance(appearanceId);
-    if(coverage==GarmentCoverage.FULL_BODY)return VisualSlot.FULL_BODY;
-    if(coverage==GarmentCoverage.UPPER)return VisualSlot.UPPER;
-    if(coverage==GarmentCoverage.LOWER)return VisualSlot.LOWER;
-    return null;
+    if(coverage==GarmentCoverage.FULL_BODY)return VisualSlot.FULL_BODY;if(coverage==GarmentCoverage.UPPER)return VisualSlot.UPPER;if(coverage==GarmentCoverage.LOWER)return VisualSlot.LOWER;return null;
   }
 
   public static boolean isFullBodyAppearance(String appearanceId){
