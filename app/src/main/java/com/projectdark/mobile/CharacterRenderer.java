@@ -112,13 +112,41 @@ public final class CharacterRenderer {
   public void draw(Canvas canvas,Pose pose){if(canvas==null||pose==null||pose.direction==null||pose.state==null)return;float anchorY=pose.y+LOGICAL_FOOT_ANCHOR_Y;drawShadow(canvas,pose,anchorY);if((pose.state==State.IDLE||pose.state==State.WALK||pose.state==State.HIT)&&sourcePaperDollReadyFor(pose)){drawSourcePaperDoll(canvas,pose,anchorY,false);return;}if(usesSourceActionPose(pose.state,pose.animationAction)&&sourceActionReadyFor(pose)){if(attackUsesActionPose(attackPhase(pose)))drawSourceAction(canvas,pose,anchorY);else if(sourcePaperDollReadyFor(pose))drawSourcePaperDoll(canvas,pose,anchorY,false);return;}if(pose.state==State.ATTACK){if(sourcePaperDollReadyFor(pose))drawSourcePaperDoll(canvas,pose,anchorY,false);return;}if(sourcePaperDollReadyFor(pose)){drawSourcePaperDoll(canvas,pose,anchorY,false);return;}drawSafePeasantFallback(canvas,pose,anchorY);}
   private void drawSourcePaperDoll(Canvas c,Pose pose,float anchorY,boolean attackingWeapon){boolean weaponBehind=weaponBehindBody(pose.direction),shieldBehind=shieldBehindBody(pose.direction);if(shieldBehind)drawShield(c,pose,anchorY);if(weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);drawIdleWalk(c,pose,anchorY);drawEquipment(c,pose,anchorY);drawAccessoryEquipment(c,pose,anchorY);if(!weaponBehind)drawWeapon(c,pose,anchorY,attackingWeapon);if(!shieldBehind)drawShield(c,pose,anchorY);}
   private void drawAccessoryEquipment(Canvas c,Pose pose,float anchorY){
-    float scale=SOURCE_PRESENTATION_SCALE;int col=paperDollAtlasColumn(pose.state,presentationWalkClock);boolean mirror=pose.direction==Direction.NW||pose.direction==Direction.SW;
-    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHOES_APPEARANCE_ID)&&shoesMl228!=null){float step=(pose.state==State.WALK?(col==2?-1f:col==4?1f:0f):0f)*scale;drawWearable(c,shoesMl228,pose.x-5.0f*scale+step,anchorY-4.2f*scale,scale,mirror);drawWearable(c,shoesMl228,pose.x+0.3f*scale-step,anchorY-4.0f*scale,scale,mirror);}
-    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_HAT_APPEARANCE_ID)&&hatMh108!=null)drawWearable(c,hatMh108,pose.x-7f*scale,anchorY-30.5f*scale,scale,mirror);
+    int row=atlasRow(pose.direction),col=paperDollAtlasColumn(pose.state,presentationWalkClock);if(row<0)return;
+    Rect cell=atlasCellRect(row,col);float scale=SOURCE_PRESENTATION_SCALE;
+    float bodyLeft=Math.round(pose.x-SOURCE_FOOT_ANCHOR_X*scale),bodyTop=Math.round(anchorY-SOURCE_FOOT_ANCHOR_Y*scale);
+    AlphaBounds bounds=alphaBoundsCell(idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);
+    CharacterSemanticRig.Anchors rig=CharacterSemanticRig.derive(idleWalkAtlas,cell,pose.direction);
+    drawRiggedAccessories(c,pose,bodyLeft,bodyTop,scale,bounds,rig);
   }
-  private void drawWearable(Canvas c,Bitmap bitmap,float left,float top,float scale,boolean mirror){if(bitmap==null)return;c.save();if(mirror)c.scale(-1f,1f,left+bitmap.getWidth()*scale*.5f,top);drawRawSourceScaled(c,bitmap,left,top,scale);c.restore();}
+  private void drawRiggedAccessories(Canvas c,Pose pose,float bodyLeft,float bodyTop,float scale,AlphaBounds bounds,CharacterSemanticRig.Anchors rig){
+    boolean mirror=bodyMirrorX(pose.direction);
+    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_HAT_APPEARANCE_ID)&&hatMh108!=null&&!bounds.empty()){
+      float cx=bodyLeft+bounds.centerX()*scale,top=bodyTop+(bounds.top+1)*scale;
+      drawAttachedBitmap(c,hatMh108,cx,top,hatMh108.getWidth()*.5f,hatMh108.getHeight()-1f,scale,mirror);
+    }
+    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHOES_APPEARANCE_ID)&&shoesMl228!=null&&rig!=null){
+      float fx=bodyLeft+rig.foot.x*scale,fy=bodyTop+rig.foot.y*scale;
+      drawAttachedBitmap(c,shoesMl228,fx,fy,shoesMl228.getWidth()*.5f,shoesMl228.getHeight()-1f,scale,mirror);
+    }
+  }
+  private void drawAttachedBitmap(Canvas c,Bitmap bitmap,float anchorX,float anchorY,float localAnchorX,float localAnchorY,float scale,boolean mirror){
+    if(bitmap==null)return;float left=Math.round(anchorX-localAnchorX*scale),top=Math.round(anchorY-localAnchorY*scale);
+    c.save();if(mirror)c.scale(-1f,1f,anchorX,anchorY);drawRawSourceScaled(c,bitmap,left,top,scale);c.restore();
+  }
   private static boolean shieldBehindBody(Direction d){return d==Direction.NW||d==Direction.NE;}
-  private void drawShield(Canvas c,Pose pose,float anchorY){if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHIELD_APPEARANCE_ID)||shieldMs001==null)return;float scale=SOURCE_PRESENTATION_SCALE;boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW;float x=pose.x+(left?-10.5f:1.5f)*scale,y=anchorY-19f*scale;c.save();if(left)c.scale(-1f,1f,pose.x,anchorY);drawRawSourceScaled(c,shieldMs001,x,y,scale);c.restore();}
+  private void drawShield(Canvas c,Pose pose,float anchorY){
+    if(!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHIELD_APPEARANCE_ID)||shieldMs001==null)return;
+    int row=atlasRow(pose.direction),col=paperDollAtlasColumn(pose.state,presentationWalkClock);if(row<0)return;
+    Rect cell=atlasCellRect(row,col);float scale=SOURCE_PRESENTATION_SCALE;
+    float bodyLeft=Math.round(pose.x-SOURCE_FOOT_ANCHOR_X*scale),bodyTop=Math.round(anchorY-SOURCE_FOOT_ANCHOR_Y*scale);
+    CharacterSemanticRig.Anchors rig=CharacterSemanticRig.derive(idleWalkAtlas,cell,pose.direction);if(rig==null)return;
+    float bodyCenter=bodyLeft+SOURCE_FOOT_ANCHOR_X*scale;
+    float dominant=bodyLeft+rig.dominantHand.x*scale;
+    float offhand=bodyCenter-(dominant-bodyCenter);
+    float handY=bodyTop+rig.dominantHand.y*scale;
+    drawAttachedBitmap(c,shieldMs001,offhand,handY,shieldMs001.getWidth()*.5f,shieldMs001.getHeight()*.5f,scale,bodyMirrorX(pose.direction));
+  }
   private void drawShadow(Canvas c,Pose pose,float anchorY){float width=(pose.state==State.DEAD?13f:10.5f)*SHADOW_RENDER_SCALE,height=(pose.state==State.DEAD?2f:2.8f)*SHADOW_RENDER_SCALE;fxPaint.setStyle(Paint.Style.FILL);fxPaint.setColor(0x50000000);c.drawOval(new RectF(pose.x-width,anchorY-height,pose.x+width,anchorY+height),fxPaint);}
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){int row=atlasRow(pose.direction);if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}int col=paperDollAtlasColumn(pose.state,presentationWalkClock);drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,anchorY,pose.x);}
   private void drawEquipment(Canvas c,Pose pose,float anchorY){
@@ -156,13 +184,31 @@ public final class CharacterRenderer {
     if(idle.empty()||action.empty()){drawSourcePaperDoll(c,pose,anchorY,false);return;}
     AttackCompositeTransform.Result transform=AttackCompositeTransform.normalize(pose.x,anchorY,SOURCE_PRESENTATION_SCALE,SOURCE_FOOT_ANCHOR_Y,SOURCE_FOOT_ANCHOR_X,idle.top,idle.bottom,idle.centerX(),action.top,action.bottom,action.centerX());
     CharacterSemanticRig.Anchors body=CharacterSemanticRig.derive(bodyActionFrames[source],new Rect(0,0,BODY_ACTION_WIDTH[source],BODY_ACTION_HEIGHT[source]),pose.direction);
-    if(shieldBehindBody(pose.direction))drawShield(c,pose,anchorY);if(composition.weaponVisible&&composition.weaponBehindBody)drawActionWeapon(c,pose,source,transform,body);
+    if(shieldBehindBody(pose.direction))drawActionShield(c,pose,transform,body);if(composition.weaponVisible&&composition.weaponBehindBody)drawActionWeapon(c,pose,source,transform,body);
     c.save();if(composition.mirrorBody)c.scale(-1f,1f,transform.mirrorPivotX,anchorY);
     drawRawSourceScaled(c,bodyActionFrames[source],transform.bodyLeft,transform.bodyTop,transform.scale);
     if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID)){drawRawSourceScaled(c,shirtActionFrames[source],transform.bodyLeft+ShirtSourceRegistration.actionX(source)*transform.scale,transform.bodyTop+ShirtSourceRegistration.actionY(source)*transform.scale,transform.scale);}else if(composition.robeVisible){float robeLeft=transform.layerLeft(ROBE_ACTION_OFFSET_X[source],BODY_ACTION_OFFSET_X[source],0f),robeTop=transform.layerTop(ROBE_ACTION_OFFSET_Y[source],BODY_ACTION_OFFSET_Y[source],0f);float robeAnchorX=(pose.x-robeLeft)/transform.scale,robeAnchorY=(anchorY-robeTop)/transform.scale;drawGarmentAttached(c,robeActionFrames[source],pose.x,anchorY,robeAnchorX,robeAnchorY,transform.scale);}
-    c.restore();drawActionAccessories(c,pose,anchorY);if(composition.weaponVisible&&!composition.weaponBehindBody)drawActionWeapon(c,pose,source,transform,body);if(!shieldBehindBody(pose.direction))drawShield(c,pose,anchorY);
+    c.restore();drawActionAccessories(c,pose,source,transform,body);if(composition.weaponVisible&&!composition.weaponBehindBody)drawActionWeapon(c,pose,source,transform,body);if(!shieldBehindBody(pose.direction))drawActionShield(c,pose,transform,body);
   }
-  private void drawActionAccessories(Canvas c,Pose pose,float anchorY){drawAccessoryEquipment(c,pose,anchorY);}
+  private void drawActionAccessories(Canvas c,Pose pose,int source,AttackCompositeTransform.Result transform,CharacterSemanticRig.Anchors rig){
+    if(transform==null||rig==null)return;float scale=transform.scale;boolean mirror=bodyMirrorX(pose.direction);
+    AlphaBounds bounds=alphaBounds(bodyActionFrames[source]);
+    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_HAT_APPEARANCE_ID)&&hatMh108!=null&&!bounds.empty()){
+      float cx=transform.bodyLeft+bounds.centerX()*scale,top=transform.bodyTop+(bounds.top+1)*scale;
+      drawAttachedBitmap(c,hatMh108,cx,top,hatMh108.getWidth()*.5f,hatMh108.getHeight()-1f,scale,mirror);
+    }
+    if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHOES_APPEARANCE_ID)&&shoesMl228!=null){
+      float fx=transform.bodyLeft+rig.foot.x*scale,fy=transform.bodyTop+rig.foot.y*scale;
+      drawAttachedBitmap(c,shoesMl228,fx,fy,shoesMl228.getWidth()*.5f,shoesMl228.getHeight()-1f,scale,mirror);
+    }
+  }
+  private void drawActionShield(Canvas c,Pose pose,AttackCompositeTransform.Result transform,CharacterSemanticRig.Anchors rig){
+    if(transform==null||rig==null||shieldMs001==null||!containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHIELD_APPEARANCE_ID))return;
+    float scale=transform.scale,bodyCenter=transform.mirrorPivotX;
+    float dominant=transform.handleX(actionWeaponHandX(pose.direction,rig),bodyMirrorX(pose.direction));
+    float offhand=bodyCenter-(dominant-bodyCenter),handY=transform.handleY(actionWeaponHandY(pose.direction,rig));
+    drawAttachedBitmap(c,shieldMs001,offhand,handY,shieldMs001.getWidth()*.5f,shieldMs001.getHeight()*.5f,scale,bodyMirrorX(pose.direction));
+  }
   private void drawActionWeapon(Canvas c,Pose pose,int source,AttackCompositeTransform.Result transform,CharacterSemanticRig.Anchors body){if(!containsVisualRef(pose.weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)||!weaponSourceActive()||source<0||source>=SOURCE_ACTION_COUNT||transform==null||body==null)return;float scale=transform.scale;float handleX=transform.handleX(actionWeaponHandX(pose.direction,body),bodyMirrorX(pose.direction)),handleY=transform.handleY(actionWeaponHandY(pose.direction,body)),angle=weaponAttackAngle(pose.direction,attackPhase(pose));c.save();c.rotate(angle,handleX,handleY);if(weaponMirrorX(pose.direction))c.scale(-1f,1f,handleX,handleY);drawRawSourceScaled(c,mokdoSprite,handleX-WEAPON_HANDLE_X*scale,handleY-WEAPON_HANDLE_Y*scale,scale);c.restore();}
   private ActionGeometry actionGeometry(Direction direction,int source){if(direction==null||source<0||source>=SOURCE_ACTION_COUNT||!resourceAtlasActive())return null;int row=atlasRow(direction);if(row<0)return null;AlphaBounds idle=alphaBoundsCell(idleWalkAtlas,row,0,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT),action=alphaBounds(bodyActionFrames[source]);if(idle.empty()||action.empty())return null;float semanticGlobalPivotX=BODY_ACTION_OFFSET_X[source]+BODY_ACTION_PIVOT_X[source],semanticGlobalFootY=BODY_ACTION_OFFSET_Y[source]+BODY_ACTION_FOOT_Y[source];int dx=Math.round(SOURCE_FOOT_ANCHOR_X-semanticGlobalPivotX),dy=Math.round(SOURCE_FOOT_ANCHOR_Y-semanticGlobalFootY),footErr=Math.abs(SOURCE_FOOT_ANCHOR_Y-Math.round(semanticGlobalFootY+dy)),centerErr=Math.round(Math.abs(SOURCE_FOOT_ANCHOR_X-(semanticGlobalPivotX+dx))),hErr=Math.abs(idle.height()-action.height());return new ActionGeometry(dx,dy,0,BODY_ACTION_HEIGHT[source],hErr,footErr,centerErr,true);}
   private static AlphaBounds alphaBounds(Bitmap bitmap){if(bitmap==null)return new AlphaBounds(0,0,-1,-1);int l=bitmap.getWidth(),t=bitmap.getHeight(),r=-1,b=-1;for(int y=0;y<bitmap.getHeight();y++)for(int x=0;x<bitmap.getWidth();x++)if(((bitmap.getPixel(x,y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}return new AlphaBounds(l,t,r,b);} private static AlphaBounds alphaBoundsCell(Bitmap atlas,int row,int col,int w,int h){if(atlas==null)return new AlphaBounds(0,0,-1,-1);int ox=col*w,oy=row*h,l=w,t=h,r=-1,b=-1;for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(((atlas.getPixel(ox+x,oy+y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}return new AlphaBounds(l,t,r,b);}
