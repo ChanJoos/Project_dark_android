@@ -184,7 +184,7 @@ public final class RpgProgressionState {
     equipmentBySlot.put(ARMOR_SLOT,STARTER_SHIRT_ITEM_ID);
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
     inventory.put("IT_SHOES",1);inventory.put(STARTER_HAT_ITEM_ID,1);inventory.put(STARTER_SHIELD_ITEM_ID,1);
-    equipmentBySlot.put(SHOES_SLOT,"IT_SHOES");equipmentBySlot.put(HEAD_SLOT,STARTER_HAT_ITEM_ID);equipmentBySlot.put(SHIELD_SLOT,STARTER_SHIELD_ITEM_ID);equipmentBySlot.put(WEAPON_SLOT,PLAYTEST_WEAPON_ITEM_ID);
+    equipmentBySlot.put(SHOES_SLOT,"IT_SHOES");equipmentBySlot.put(HEAD_SLOT,STARTER_HAT_ITEM_ID);equipmentBySlot.put(SHIELD_SLOT,STARTER_SHIELD_ITEM_ID);
   }
 
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
