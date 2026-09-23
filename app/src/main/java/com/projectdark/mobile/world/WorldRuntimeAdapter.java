@@ -162,9 +162,20 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
-    if(!canPlayerOccupy(destinationX,destinationY))return false;
+    if(!canPlayerOccupy(destinationX,destinationY)||!segmentTraversable(startX,startY,destinationX,destinationY))return false;
     runtime.player().x=destinationX;
     runtime.player().y=destinationY;
+    return true;
+  }
+
+  private boolean segmentTraversable(float ax,float ay,float bx,float by){
+    float r=RuntimeState.PLAYER_RADIUS;
+    int steps=Math.max(2,(int)Math.ceil(distance(ax,ay,bx,by)/4f));
+    for(int i=1;i<=steps;i++){
+      float t=i/(float)steps,x=ax+(bx-ax)*t,y=ay+(by-ay)*t;
+      if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
+      for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+    }
     return true;
   }
 
