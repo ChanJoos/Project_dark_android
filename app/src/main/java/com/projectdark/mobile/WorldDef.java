@@ -39,7 +39,7 @@ public final class WorldDef {
 
     List<NpcSpawn> n=new ArrayList<>();
     n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",665f,615f,"밀레스 탐색/대화 루프 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_service_proto","물약상인 [B]",320f,496f,"초보자 보급 상점입니다. 소형 회복물약은 20 Gold입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_service_proto","아이템 상인 [B]",320f,496f,"초보자 아이템 상점입니다. 회복물약과 초보 장비를 판매합니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_gate_proto","남문 안내 지점 [B]",790f,1450f,"확장 남문 접근 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",285f,705f,"확장 마을 서부 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1900f,820f,"확장 동부 시장 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
