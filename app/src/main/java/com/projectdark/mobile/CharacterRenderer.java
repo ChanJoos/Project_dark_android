@@ -117,9 +117,13 @@ public final class CharacterRenderer {
     float left=Math.round(pose.x-SOURCE_FOOT_ANCHOR_X*SOURCE_PRESENTATION_SCALE)+bounds.left*SOURCE_PRESENTATION_SCALE;
     float top=Math.round(anchorY-SOURCE_FOOT_ANCHOR_Y*SOURCE_PRESENTATION_SCALE)+bounds.top*SOURCE_PRESENTATION_SCALE;
     int bodyFrame=ShirtSourceRegistration.idleFrame(pose.direction,col);float scaleX=bounds.width()*SOURCE_PRESENTATION_SCALE/ShirtSourceRegistration.BODY_WIDTH[bodyFrame],scaleY=bounds.height()*SOURCE_PRESENTATION_SCALE/ShirtSourceRegistration.BODY_HEIGHT[bodyFrame];boolean mirror=pose.direction==Direction.NW||pose.direction==Direction.SW;
-    for(String appearance:visualTokens(pose.equipmentVisualRef)){String a=appearance.toLowerCase();if(!(a.startsWith("mh")||a.startsWith("wh")||a.startsWith("ml")||a.startsWith("wl")))continue;EquipmentVisualRegistry.Visual v=equipmentRegistry==null?null:equipmentRegistry.get(a);if(v!=null)drawRegisteredIdle(c,v.atlas,v.registration,pose.direction,col,left,top,scaleX,scaleY,mirror,bounds);}
+    for(String appearance:visualTokens(pose.equipmentVisualRef)){String a=appearance.toLowerCase();if(!(a.startsWith("mh")||a.startsWith("wh")||a.startsWith("ml")||a.startsWith("wl")))continue;EquipmentVisualRegistry.Visual v=equipmentRegistry==null?null:equipmentRegistry.get(a);if(v!=null){if(v.registration!=null)drawRegisteredIdle(c,v.atlas,v.registration,pose.direction,col,left,top,scaleX,scaleY,mirror,bounds);else drawTightMasterGear(c,v.atlas,pose.x,anchorY,a.startsWith("mh")||a.startsWith("wh"));}}
   }
   private static String[] visualTokens(String ref){return ref==null?new String[0]:ref.split(",");}
+  private void drawTightMasterGear(Canvas c,Bitmap b,float footX,float footY,boolean head){
+    if(b==null)return;float targetH=head?30f:56f,sc=targetH/Math.max(1f,b.getHeight()),w=b.getWidth()*sc,h=b.getHeight()*sc;
+    float top=head?footY-72f:footY-h;RectF dst=new RectF(Math.round(footX-w*.5f),Math.round(top),Math.round(footX+w*.5f),Math.round(top+h));c.drawBitmap(b,null,dst,pixelPaint);
+  }
   private void drawRegisteredIdle(Canvas c,Bitmap atlas,SourceEquipmentRegistration registration,Direction direction,int col,float left,float top,float scaleX,float scaleY,boolean mirror,AlphaBounds bounds){
     if(atlas==null||registration==null)return;SourceEquipmentRegistration.Frame f=registration.idle(direction,col);if(f==null)return;
     float x=left+f.dx*scaleX,y=top+f.dy*scaleY;RectF dst=new RectF(Math.round(x),Math.round(y),Math.round(x+f.src.width()*scaleX),Math.round(y+f.src.height()*scaleY));
@@ -150,6 +154,8 @@ public final class CharacterRenderer {
           float sy=bounds.height()*SOURCE_PRESENTATION_SCALE/ShirtSourceRegistration.BODY_HEIGHT[frame];
           drawRegisteredIdle(c,gv.atlas,gv.registration,pose.direction,col,left,top,sx,sy,pose.direction==Direction.NW||pose.direction==Direction.SW,bounds);
         }
+      }else if(gv!=null&&gv.atlas!=null){
+        drawTightMasterGear(c,gv.atlas,pose.x,anchorY,false);
       }else if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID)&&starterShirtSource!=null){
         int frame=ShirtSourceRegistration.idleFrame(pose.direction,col);
         AlphaBounds bounds=alphaBoundsCell(idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);
