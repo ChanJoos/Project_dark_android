@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 /** Asset-backed reagent-shop interior. The scene is one reviewed pixel-art asset, never Canvas placeholder geometry. */
 public final class ReagentShopInteriorRenderer {
-  public static final String SCENE_ASSET="interiors/reagent_shop/reagent_shop_classic.png";
+  public static final String SCENE_ASSET="interiors/reagent_shop/reagent_shop_classic.webp";
   private final Paint pixel=new Paint();
   private final Bitmap scene;
   public ReagentShopInteriorRenderer(Context context){
