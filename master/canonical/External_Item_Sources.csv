@@ -1,0 +1,15 @@
+Source_ID,Name,URL,Evidence,Scope,Notes
+SRC_MILDDOK_ITEMS,Milddok Item Dictionary,https://milddok.cc/items/,FAN,item identity/stats,Client-driven 9484-item dictionary; bulk payload extraction pending
+SRC_MILDDOK_DRESSUP,Milddok Dress-up,https://milddok.cc/,FAN,equipped appearance,Milddok homepage exposes dress-up viewer; asset extraction pending
+SRC_NEXON_LOD,Official Legend of Darkness,https://lod.nexon.com/,O,official item/update imagery,Prefer original icon/equipped images where directly attributable to an item
+SRC_NEXON_UPDATE_4935,Hord and Endor necklaces,https://lod.nexon.com/News/update/4935,O,item stats,Official options and acquisition
+SRC_NEXON_COMMUNITY_4471,Dark Gray +1 set stats,https://lod.nexon.com/community/game/4471?SearchBoard=1,V,item stats,Nexon-hosted 2009 historical guide
+SRC_NEXON_COMMUNITY_3085,DAM equipment discussion,https://lod.nexon.com/community/game/3085?SearchBoard=1,V,item stats,Nexon-hosted 2007 historical equipment discussion
+SRC_NEXON_UPDATE_5022,Equipment AC adjustment,https://lod.nexon.com/News/update/5022,O,item stats,Official AC changes for named equipment
+"SRC_NEXON_UPDATE_5054","Equipment upgrade system","https://lod.nexon.com/news/update/5054","O","item identity/images","Official upgrade UI screenshot contains item icons"
+"SRC_NEXON_COMMUNITY_7188","Kingdom/Murekan equipment stats","https://lod.nexon.com/community/game/7188?SearchBoard=1","V","item stats","Nexon-hosted historical stat table"
+"SRC_NEXON_UPDATE_5036","3rd-job and Nageling equipment","https://lod.nexon.com/news/update/5036","O","item identity/images","Official 2023 equipment table with per-item PNG assets"
+"SRC_NEXON_UPDATE_141176","Nageling Tower expansion","https://lod.nexon.com/news/update/141176","O","equipment effects","Official Nageling Lev3 additional damage/mitigation effects"
+"SRC_NEXON_UPDATE_145393","Necklace elemental enhancement fix","https://lod.nexon.com/News/update/145393","O","equipment effects","Official 2026 necklace elemental enhancement values"
+"SRC_NEXON_UPDATE_145393","Necklace element-strength correction","https://lod.nexon.com/News/update/145393","O","item stats","2026 official necklace element-strength values"
+"SRC_NEXON_HADES_141199","Nageling tower equipment","https://lod.nexon.com/News/hades/141199","O","item identity/images","Official light/dark necklace and belt equipment table"
