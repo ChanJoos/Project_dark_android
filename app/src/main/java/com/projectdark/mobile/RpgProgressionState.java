@@ -120,7 +120,7 @@ public final class RpgProgressionState {
 
   public static final String B_SMALL_POTION_ITEM_ID="IT_B_SMALL_POTION";
   public static final long B_SMALL_POTION_PRICE=20L;
-  public static final String SHOP_MOKDO_ITEM_ID=PLAYTEST_WEAPON_ITEM_ID;
+  public static final String SHOP_MOKDO_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
   public static final String SHOP_LEATHER_GLOVE_ITEM_ID="IT_GLOVE_LEATHER";
   public static final String SHOP_SHOES_ITEM_ID="IT_SHOES";
   public static final String STARTER_SHIRT_ITEM_ID="IT_APPEARANCE_PEASANT_SHIRT";
