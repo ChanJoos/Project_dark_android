@@ -11,8 +11,8 @@ import com.projectdark.mobile.world.WorldMoveTargetController;
 import com.projectdark.mobile.world.WorldRuntimeAdapter;
 import com.projectdark.mobile.world.ReagentShopInteriorDef;
 import com.projectdark.mobile.world.ReagentShopInteriorRenderer;
-import com.projectdark.mobile.world.ReagentShopInteriorRuntime;
 import java.util.List;
+import java.util.Collections;
 import java.util.Map;
 
 /** PROJECT DARK v0.74 - original-inspired mobile HUD adaptation + precise world tap routing. */
@@ -46,9 +46,10 @@ public final class GameView extends View {
   private final ClassicHudIconAtlas hudIcons=new ClassicHudIconAtlas();
   private final EquipmentVisualRegistry inventoryVisuals;
   private final ReagentItemVisualRegistry reagentVisuals;
-  private final ReagentShopInteriorRuntime reagentShopWorld=new ReagentShopInteriorRuntime();
   private final ReagentShopInteriorRenderer reagentShopRenderer;
+  private WorldRuntimeAdapter reagentShopAdapter;
   private boolean inReagentShop=false,reagentShopOpen=false;
+  private float millesReturnX,millesReturnY;
   private final F5mAdaptedPrologueQuest f5mQuest=F5mAdaptedPrologueQuest.openingFixture();
   private final GrowthQuest2 quest2=new GrowthQuest2();
 
@@ -68,7 +69,7 @@ public final class GameView extends View {
   private float feedbackClock=0,rewardClock=0;
   private FeedbackTone feedbackTone=FeedbackTone.INFO;
 
-  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(checkpointClock>=2f||savedLedgerSequence!=state.ledger().sequence()){checkpoint();}camera.follow(worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY());invalidate();postDelayed(this,16);}};
+  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(checkpointClock>=2f||savedLedgerSequence!=state.ledger().sequence()){checkpoint();}if(!inReagentShop)camera.follow(worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY());invalidate();postDelayed(this,16);}};
 
   public GameView(Context c){super(c);inventoryVisuals=new EquipmentVisualRegistry(c);reagentVisuals=new ReagentItemVisualRegistry(c);reagentShopRenderer=new ReagentShopInteriorRenderer(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);F5mSaveStore.restoreRuntimeActive(state);worldAdapter.snapCameraToPlayer();F5mSaveStore.bindRuntime(state,f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);}
   public void resume(){if(running)return;running=true;last=SystemClock.uptimeMillis();post(loop);}
@@ -81,6 +82,7 @@ public final class GameView extends View {
   }
 
   private void update(float dt){
+    if(inReagentShop){updateReagentShop(dt);return;}
     feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);
     combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);combatSession.tick(dt);state.tick(dt);state.applyDerivedGrowth();quest2.unlockIfPrologueCompleted(f5mQuest);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){action=Action.IDLE;playerFacing.endAttack();interaction.cancel();combat.cancelApproach();worldAdapter.cancel();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;return;}
@@ -165,25 +167,52 @@ public final class GameView extends View {
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);ox=(w-W*scale)/2;oy=(h-H*scale)/2;}
   protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawDialogue(c);drawDeath(c);}c.restore();}
 
-  private void enterReagentShop(){inReagentShop=true;reagentShopOpen=false;inventoryOpen=statsOpen=equipmentOpen=false;interaction.cancel();combat.cancelApproach();worldAdapter.cancelForAction();reagentShopWorld.resetAtEntry();showFeedback("밀레스 시약상점",FeedbackTone.INFO);}
-  private void leaveReagentShop(){inReagentShop=false;reagentShopOpen=false;worldAdapter.cancel();state.player().x=320f;state.player().y=528f;worldAdapter.snapCameraToPlayer();showFeedback("밀레스",FeedbackTone.INFO);}
-  private float shopScreenX(float wx){return wx;}
-  private float shopScreenY(float wy){return wy;}
-  private float shopWorldX(float sx){return sx;}
-  private float shopWorldY(float sy){return sy;}
+  private void enterReagentShop(){
+    millesReturnX=state.player().x;millesReturnY=state.player().y;
+    inReagentShop=true;reagentShopOpen=false;inventoryOpen=statsOpen=equipmentOpen=false;
+    interaction.cancel();combat.cancelApproach();worldAdapter.cancelForAction();
+    state.player().x=ReagentShopInteriorDef.SPAWN_X;state.player().y=ReagentShopInteriorDef.SPAWN_Y;
+    reagentShopAdapter=new WorldRuntimeAdapter(state,W,H,ReagentShopInteriorDef.MIN_X,ReagentShopInteriorDef.MAX_X,
+        ReagentShopInteriorDef.MIN_Y,ReagentShopInteriorDef.MAX_Y,ReagentShopInteriorDef.navigationTiles(),Collections.emptyList());
+    reagentShopAdapter.snapCameraToPlayer();action=Action.IDLE;joy=false;vx=vy=0;directStepClock=0f;
+    showFeedback("밀레스 시약상점",FeedbackTone.INFO);
+  }
+  private void leaveReagentShop(){
+    if(reagentShopAdapter!=null)reagentShopAdapter.cancel();
+    inReagentShop=false;reagentShopOpen=false;reagentShopAdapter=null;
+    // Return one canonical tile south of the door so re-entry requires deliberately stepping back onto the portal.
+    state.player().x=millesReturnX;state.player().y=millesReturnY+32f;
+    worldAdapter.snapCameraToPlayer();action=Action.IDLE;joy=false;vx=vy=0;
+    showFeedback("밀레스",FeedbackTone.INFO);
+  }
   private void updateReagentShop(float dt){
-    state.tick(dt);state.applyDerivedGrowth();
-    if(reagentShopOpen)return;
-    if(joy&&(vx!=0||vy!=0)){directStepClock=Math.max(0f,directStepClock-dt);if(directStepClock<=0f){reagentShopWorld.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;}}
-    else reagentShopWorld.tick(dt);
-    if(reagentShopWorld.atExit()&&!reagentShopWorld.atSpawn())leaveReagentShop();
+    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);
+    if(reagentShopAdapter==null)return;
+    if(reagentShopOpen){action=Action.IDLE;return;}
+    WorldRuntimeAdapter.FrameSnapshot nav=reagentShopAdapter.tickNavigation(dt);
+    if(joy&&(vx!=0||vy!=0)){
+      directStepClock=Math.max(0f,directStepClock-dt);
+      if(!reagentShopAdapter.presentationMoving()&&directStepClock<=0f){
+        WorldMoveTargetController.Snapshot step=reagentShopAdapter.step(joystickDirection());
+        directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;applyWorldFacing(step.lastStepDirection);
+      }
+    }
+    if(nav.movement.lastStepDirection!=null)applyWorldFacing(nav.movement.lastStepDirection);
+    if(reagentShopAdapter.presentationMoving()){action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;
+    if(Math.abs(state.player().x-ReagentShopInteriorDef.EXIT_X)<.01f&&Math.abs(state.player().y-ReagentShopInteriorDef.EXIT_Y)<.01f)leaveReagentShop();
   }
   private void drawReagentShopWorld(Canvas c){
-    p.setColor(0xff120d09);c.drawRect(0,0,W,H,p);reagentShopRenderer.draw(c);
-    float mx=shopScreenX(ReagentShopInteriorDef.MERLIN_X),my=shopScreenY(ReagentShopInteriorDef.MERLIN_Y);
-    characterRenderer.draw(c,new CharacterRenderer.Pose(mx,my,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,"mu0000118,mh259",CharacterVisualBinding.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
-    text(c,"멀린",mx-13,my-48,9);
-    characterRenderer.draw(c,new CharacterRenderer.Pose(shopScreenX(reagentShopWorld.x()),shopScreenY(reagentShopWorld.y()),characterDirection(),CharacterRenderer.State.IDLE,walkClock,0,1,false,CharacterVisualBinding.from(state.rpg()).equipmentVisualRef(),CharacterVisualBinding.from(state.rpg()).weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+    p.setColor(0xff120d09);c.drawRect(0,0,W,H,p);if(reagentShopAdapter==null)return;
+    reagentShopRenderer.draw(c,reagentShopAdapter);
+    WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(ReagentShopInteriorDef.MERLIN_X,ReagentShopInteriorDef.MERLIN_Y);
+    characterRenderer.draw(c,new CharacterRenderer.Pose(m.x,m.y,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,
+        "mu0000118,mh259",CharacterVisualBinding.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+    text(c,"멀린",m.x-13,m.y-48,9);
+    WorldCameraTransform.Point q=reagentShopAdapter.worldToScreen(reagentShopAdapter.presentationPlayerX(),reagentShopAdapter.presentationPlayerY());
+    characterRenderer.draw(c,new CharacterRenderer.Pose(q.x,q.y,characterDirection(),
+        reagentShopAdapter.presentationMoving()?CharacterRenderer.State.WALK:CharacterRenderer.State.IDLE,walkClock,0,1,false,
+        CharacterVisualBinding.from(state.rpg()).equipmentVisualRef(),CharacterVisualBinding.from(state.rpg()).weaponVisualRef(),
+        CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
   }
   private void drawReagentShop(Canvas c){
     if(!reagentShopOpen)return;p.setColor(0x5c000000);c.drawRect(0,0,W,H,p);classicWindow(c,430,74,918,454,"멀린의 시약상점");text(c,"×",887,102,14);
@@ -192,10 +221,11 @@ public final class GameView extends View {
   private boolean handleReagentShopTouch(MotionEvent e,float x,float y){
     if(e.getActionMasked()==MotionEvent.ACTION_DOWN){
       if(reagentShopOpen){if(dist(x,y,891,97)<=25){reagentShopOpen=false;return true;}return true;}
-      float mx=shopScreenX(ReagentShopInteriorDef.MERLIN_X),my=shopScreenY(ReagentShopInteriorDef.MERLIN_Y);
-      if(dist(x,y,mx,my-22)<=42){reagentShopOpen=true;joy=false;vx=vy=0;showFeedback("멀린 · 시약 판매",FeedbackTone.INFO);return true;}
+      if(reagentShopAdapter==null)return true;
+      WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(ReagentShopInteriorDef.MERLIN_X,ReagentShopInteriorDef.MERLIN_Y);
+      if(dist(x,y,m.x,m.y-22)<=42){reagentShopOpen=true;reagentShopAdapter.cancelForAction();joy=false;vx=vy=0;showFeedback("멀린 · 시약 판매",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){joy=true;directStepClock=0f;stick(x,y);return true;}
-      if(!isHudSurface(x,y))reagentShopWorld.requestGround(shopWorldX(x),shopWorldY(y));return true;
+      if(!isHudSurface(x,y)){WorldCameraTransform.Point w=reagentShopAdapter.screenToWorld(x,y);reagentShopAdapter.requestGroundWorld(w.x,w.y);}return true;
     }
     if(e.getActionMasked()==MotionEvent.ACTION_MOVE&&joy){stick(x,y);return true;}
     if(e.getActionMasked()==MotionEvent.ACTION_UP||e.getActionMasked()==MotionEvent.ACTION_CANCEL){joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;return true;}return true;
