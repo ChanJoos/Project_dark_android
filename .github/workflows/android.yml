@@ -35,6 +35,16 @@ jobs:
           cp qa/peasant-sources/atlas/shield/ms001.webp app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp
           cp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp
           python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for ident in ('mm001','mu0000001','ml228','ms001','mh172'):
+              p=Path('qa/peasant-sources/data/type')
+              found=list(p.glob('*/'+ident+'.json'))
+              if not found: continue
+              d=json.loads(found[0].read_text())
+              print('META',ident,{k:v for k,v in d.items() if k!='sprites'})
+          PY
+          python3 - <<'PY'
           import json, pathlib
           for ident in ('ml228','ms001','mh172'):
               p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')
