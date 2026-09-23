@@ -28,6 +28,9 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final WorldMoveTargetController movement;
   private final WorldStepInterpolator presentation;
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
+  private final float sceneMinX,sceneMaxX,sceneMinY,sceneMaxY;
+  private final List<RectF> sceneObstacles;
+  private final boolean millesActors;
   private float presentationWalkClock;
 
   public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight){
@@ -38,8 +41,27 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     List<WorldMoveTargetController.TileCenter> centers=new ArrayList<>();
     for(AdaptedMillesIsometricTileLayer.Tile tile:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
     navigationTiles=Collections.unmodifiableList(centers);
+    sceneMinX=map.bounds().minX;sceneMaxX=map.bounds().maxX;sceneMinY=map.bounds().minY;sceneMaxY=map.bounds().maxY;
+    sceneObstacles=runtime.obstacles();millesActors=true;
     snapPlayerToNearestTraversableTile();
     camera=map.newCamera(viewportWidth,viewportHeight);
+    camera.snapTo(runtime.player().x,runtime.player().y);
+    movement=new WorldMoveTargetController(this,this);
+    presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
+    CharacterRenderer.setPresentationWalkClock(0f);
+  }
+
+
+  /** Same canonical world movement/camera stack for non-Milles maps such as interiors. */
+  public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight,
+      float minX,float maxX,float minY,float maxY,List<WorldMoveTargetController.TileCenter> tiles,List<RectF> obstacles){
+    if(runtime==null||tiles==null||tiles.isEmpty())throw new IllegalArgumentException("runtime and authored tiles required");
+    this.runtime=runtime;this.map=null;
+    this.navigationTiles=Collections.unmodifiableList(new ArrayList<>(tiles));
+    sceneMinX=minX;sceneMaxX=maxX;sceneMinY=minY;sceneMaxY=maxY;
+    sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));millesActors=false;
+    snapPlayerToNearestTraversableTile();
+    camera=new WorldCameraTransform(minX,maxX,minY,maxY,viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
     presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
@@ -125,7 +147,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
       presentation.begin(runtime.player().x,runtime.player().y);
   }
 
-  public WorldMapProjection.Portal portalAt(float worldX,float worldY){for(WorldMapProjection.Portal p:map.portals())if(p.contains(worldX,worldY))return p;return null;}
+  public WorldMapProjection.Portal portalAt(float worldX,float worldY){if(map==null)return null;for(WorldMapProjection.Portal p:map.portals())if(p.contains(worldX,worldY))return p;return null;}
 
   private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc n:runtime.npcs())if(id.equals(n.id))return n;return null;}
 
@@ -134,10 +156,10 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   /** Mirrors current RuntimeState player occupancy without making GameView know collision details. */
   @Override public boolean canPlayerOccupy(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
-    if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
-    for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
-    for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
-    for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&distance(x,y,m.x,m.y)<r+RuntimeState.MONSTER_RADIUS+3f)return false;
+    if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
+    for(RectF obstacle:sceneObstacles)if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+    if(millesActors){for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
+    for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&distance(x,y,m.x,m.y)<r+RuntimeState.MONSTER_RADIUS+3f)return false;}
     return true;
   }
 
@@ -147,7 +169,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     int steps=Math.max(1,(int)Math.ceil(distance(a[0],a[1],b[0],b[1])/4f));
     for(int i=0;i<=steps;i++){
       float t=i/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
-      for(RectF obstacle:runtime.obstacles())if(obstacle.contains(x,y))return false;
+      for(RectF obstacle:sceneObstacles)if(obstacle.contains(x,y))return false;
     }
     return true;
   }
@@ -173,8 +195,8 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     int steps=Math.max(2,(int)Math.ceil(distance(ax,ay,bx,by)/4f));
     for(int i=1;i<=steps;i++){
       float t=i/(float)steps,x=ax+(bx-ax)*t,y=ay+(by-ay)*t;
-      if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
-      for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+      if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
+      for(RectF obstacle:sceneObstacles)if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
     }
     return true;
   }
