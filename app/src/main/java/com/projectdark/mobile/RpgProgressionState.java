@@ -146,9 +146,9 @@ public final class RpgProgressionState {
     Set<String> physicalJobs=jobSet("WARRIOR","ROGUE","MARTIAL_ARTIST");
     Set<String> magicJobs=jobSet("MAGE","CLERIC");
 
-    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑","equip_leather_glove",1,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_SHOES","신발","신발","equip_basic_shoes",1,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_SHOES","신발","신발","ml228",1,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
