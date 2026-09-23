@@ -207,30 +207,127 @@ public final class GameView extends View {
 
   private void drawFeedbackBanners(Canvas c){if(rewardClock>0){p.setColor(0xD02B2517);c.drawRoundRect(new RectF(346,74,614,106),16,16,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xBADBB768);c.drawRoundRect(new RectF(346,74,614,106),16,16,p);p.setStyle(Paint.Style.FILL);p.setTextSize(10);p.setColor(0xffffe5a3);float tw=p.measureText(rewardBanner);c.drawText(rewardBanner,480-tw/2,95,p);}if(feedbackClock>0){int fill=feedbackTone==FeedbackTone.WARN?0xD04A2226:feedbackTone==FeedbackTone.REWARD?0xD03C321E:0xCC161A20;p.setColor(fill);p.setTextSize(9.2f);float width=Math.min(340,Math.max(146,p.measureText(feedback)+38));c.drawRoundRect(new RectF(480-width/2,111,480+width/2,139),14,14,p);p.setColor(feedbackTone==FeedbackTone.WARN?0xffffb4ad:0xffeee5d3);float ft=p.measureText(feedback);c.drawText(feedback,480-ft/2,130,p);}}
 
-  private void drawInventory(Canvas c){if(!inventoryOpen)return;p.setColor(0x18000000);c.drawRect(0,0,W,H,p);modalPanel(c,540,72,920,462);text(c,"인벤토리",560,98,12.5f);Integer level=state.rpg().normalLevel();mutedText(c,"평민 · Lv "+(level==null?"?":level),560,115,8f);p.setColor(0xB024262A);c.drawCircle(895,92,15,p);text(c,"×",890,97,14);
-    List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());String selectedId=rpgInteraction.selectedInventoryItemId();int pageSize=7,pages=Math.max(1,(rows.size()+pageSize-1)/pageSize);inventoryPage=Math.max(0,Math.min(inventoryPage,pages-1));int start=inventoryPage*pageSize,limit=Math.min(pageSize,rows.size()-start);
-    if(rows.isEmpty())mutedText(c,"보유 아이템 없음",556,150,10);else for(int i=0;i<limit;i++){RpgInventoryPresentation.ItemRow row=rows.get(start+i);float y=145+i*28;boolean selected=row.itemId.equals(selectedId);p.setColor(selected?0x665D4A28:0x5517191D);c.drawRoundRect(new RectF(554,y-16,906,y+7),7,7,p);if(selected){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xBBD2AF67);c.drawRoundRect(new RectF(554,y-16,906,y+7),7,7,p);p.setStyle(Paint.Style.FILL);}fittedText(c,row.name,566,y,210,9.5f);mutedText(c,"x"+row.quantity+(row.equipped?"  장착 중":""),808,y,7.7f);}
-    RpgInventoryPresentation.ItemRow selectedRow=null;if(selectedId!=null)for(RpgInventoryPresentation.ItemRow row:rows)if(selectedId.equals(row.itemId)){selectedRow=row;break;}
-    mutedText(c,(inventoryPage+1)+" / "+pages,714,331,7.2f);if(inventoryPage>0)text(c,"‹",680,331,12);if(inventoryPage+1<pages)text(c,"›",758,331,12);p.setColor(0x5517191D);c.drawRoundRect(new RectF(554,338,906,447),8,8,p);
-    if(selectedRow!=null){RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(selectedRow.itemId);text(c,selectedRow.name,566,357,10);mutedText(c,rpgPresentation.requirementLabel(selectedRow),566,373,7.5f);String elem=rpgPresentation.elementLabel(selectedRow);if(!elem.isEmpty())mutedText(c,elem,566,387,7.2f);String mods=itemModifierLabel(d);mutedText(c,mods.isEmpty()?(d!=null&&d.equippable()?"능력치 효과 없음":"소비/기타 아이템"):mods,566,402,8);if(d!=null&&d.equippable())mutedText(c,equipmentCompareLabel(d),566,417,7.5f);mutedText(c,d!=null&&d.evidence==RpgProgressionState.Evidence.ADAPTED?"모바일 밸런스 v1 · 원작 수치 미확정":"등록 데이터",566,433,6.8f);}
-    else mutedText(c,"아이템을 선택하면 상세정보가 표시됩니다",566,385,8.5f);
-    p.setColor(0xD05B4727);c.drawRoundRect(new RectF(822,408,894,438),9,9,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.1f);p.setColor(0xCCD3B16D);c.drawRoundRect(new RectF(822,408,894,438),9,9,p);p.setStyle(Paint.Style.FILL);text(c,selectedRow!=null&&state.rpg().isConsumable(selectedRow.itemId)?"사용":selectedRow!=null&&selectedRow.equipped?"해제":"장착",844,428,9.2f);
+  private void drawInventory(Canvas c){
+    if(!inventoryOpen)return;
+    p.setColor(0x52000000);c.drawRect(0,0,W,H,p);
+    classicWindow(c,420,54,938,476,"인벤토리");
+    p.setColor(0xB02A1710);c.drawCircle(913,76,15,p);text(c,"×",908,81,14);
+    List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());
+    String selectedId=rpgInteraction.selectedInventoryItemId();
+    int pageSize=20,pages=Math.max(1,(rows.size()+pageSize-1)/pageSize);
+    inventoryPage=Math.max(0,Math.min(inventoryPage,pages-1));
+    int start=inventoryPage*pageSize,limit=Math.min(pageSize,Math.max(0,rows.size()-start));
+    // Item-only grid: names stay hidden until selection, matching the mobile reference.
+    float gx=440,gy=105,cell=62,gap=5;
+    for(int i=0;i<20;i++){
+      int col=i%4,row=i/4;float l=gx+col*(cell+gap),t=gy+row*(cell+gap);
+      p.setColor(0xD0191411);c.drawRect(l,t,l+cell,t+cell,p);
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFF765335);c.drawRect(l+.5f,t+.5f,l+cell-.5f,t+cell-.5f,p);p.setStyle(Paint.Style.FILL);
+      if(i<limit){
+        RpgInventoryPresentation.ItemRow item=rows.get(start+i);
+        boolean selected=item.itemId.equals(selectedId);
+        if(selected){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3);p.setColor(0xFFE2A84E);c.drawRect(l+2,t+2,l+cell-2,t+cell-2,p);p.setStyle(Paint.Style.FILL);}
+        drawInventoryItemIcon(c,item,l+7,t+7,cell-14);
+        if(item.quantity>1){p.setColor(0xCC080706);c.drawRoundRect(new RectF(l+37,t+43,l+59,t+59),5,5,p);text(c,String.valueOf(item.quantity),l+41,t+56,8);}
+        if(item.equipped){p.setColor(0xFF6DBD62);c.drawRect(l+3,t+3,l+14,t+14,p);text(c,"E",l+5,t+12,7);}
+      }
+    }
+    // Right-side detail card only appears after tapping an item.
+    p.setColor(0xE0161210);c.drawRect(716,105,918,401,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.4f);p.setColor(0xFF8B6039);c.drawRect(716.5f,105.5f,917.5f,400.5f,p);p.setStyle(Paint.Style.FILL);
+    RpgInventoryPresentation.ItemRow selectedRow=null;
+    if(selectedId!=null)for(RpgInventoryPresentation.ItemRow row:rows)if(selectedId.equals(row.itemId)){selectedRow=row;break;}
+    if(selectedRow==null){mutedText(c,"아이템을 선택하세요",752,250,10);}
+    else{
+      RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(selectedRow.itemId);
+      drawInventoryItemIcon(c,selectedRow,734,126,58);
+      text(c,selectedRow.name,806,147,12);
+      mutedText(c,rpgPresentation.requirementLabel(selectedRow),806,167,8);
+      if(selectedRow.equipped)text(c,"장착 중",806,188,8);
+      p.setColor(0xFF5B3C27);c.drawRect(734,204,900,205,p);
+      String mods=itemModifierLabel(d);mutedText(c,mods.isEmpty()?"능력치 효과 없음":mods,734,229,8.5f);
+      String elem=rpgPresentation.elementLabel(selectedRow);if(!elem.isEmpty())mutedText(c,elem,734,249,8);
+      if(d!=null&&d.equippable())drawWrappedText(c,equipmentCompareLabel(d),734,276,164,8,14);
+      p.setColor(0xD06A431E);c.drawRoundRect(new RectF(748,342,886,384),5,5,p);
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFFE0AD62);c.drawRoundRect(new RectF(748,342,886,384),5,5,p);p.setStyle(Paint.Style.FILL);
+      text(c,state.rpg().isConsumable(selectedRow.itemId)?"사용":selectedRow.equipped?"해제":"장착",799,368,11);
+    }
+    if(inventoryPage>0)text(c,"‹",555,457,18);
+    mutedText(c,(inventoryPage+1)+" / "+pages,616,456,9);
+    if(inventoryPage+1<pages)text(c,"›",682,457,18);
+  }
+
+  private void classicWindow(Canvas c,float l,float t,float r,float b,String title){
+    p.setColor(0xF02A1D16);c.drawRect(l,t,r,b,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(4);p.setColor(0xFF4B2D1D);c.drawRect(l+2,t+2,r-2,b-2,p);
+    p.setStrokeWidth(1.4f);p.setColor(0xFFD0A066);c.drawRect(l+7,t+7,r-7,b-7,p);p.setStyle(Paint.Style.FILL);
+    p.setColor(0xFF3B271B);c.drawRect(l+10,t+10,r-10,t+42,p);text(c,title,l+25,t+33,14);
+  }
+  private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
+    RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
+    String slot=d==null?"":d.equipSlot;
+    float cx=l+size/2,cy=t+size/2;
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(Math.max(2,size*.07f));p.setColor(0xFFE5D2A5);
+    if("무기".equals(slot)){c.drawLine(l+size*.25f,t+size*.78f,l+size*.73f,t+size*.22f,p);c.drawLine(l+size*.19f,t+size*.62f,l+size*.39f,t+size*.82f,p);}
+    else if("방패".equals(slot)){Path q=new Path();q.moveTo(cx,t+size*.15f);q.lineTo(l+size*.82f,t+size*.28f);q.lineTo(l+size*.72f,t+size*.72f);q.lineTo(cx,t+size*.88f);q.lineTo(l+size*.28f,t+size*.72f);q.lineTo(l+size*.18f,t+size*.28f);q.close();c.drawPath(q,p);}
+    else if("모자".equals(slot)){c.drawArc(new RectF(l+size*.2f,t+size*.28f,l+size*.8f,t+size*.78f),190,160,false,p);c.drawLine(l+size*.18f,t+size*.66f,l+size*.82f,t+size*.66f,p);}
+    else if("신발".equals(slot)||"각반".equals(slot)){c.drawLine(l+size*.38f,t+size*.2f,l+size*.38f,t+size*.7f,p);c.drawLine(l+size*.38f,t+size*.7f,l+size*.75f,t+size*.78f,p);}
+    else if("장갑".equals(slot)){c.drawCircle(cx,cy,size*.24f,p);for(int i=-2;i<=2;i++)c.drawLine(cx+i*size*.08f,cy-size*.18f,cx+i*size*.08f,t+size*.18f,p);}
+    else if("귀걸이".equals(slot)||"목걸이".equals(slot)){c.drawCircle(cx,cy,size*.25f,p);c.drawCircle(cx,cy+size*.25f,size*.07f,p);}
+    else if("벨트".equals(slot)){c.drawRect(l+size*.15f,cy-size*.1f,l+size*.85f,cy+size*.1f,p);c.drawRect(cx-size*.12f,cy-size*.16f,cx+size*.12f,cy+size*.16f,p);}
+    else {c.drawCircle(cx,cy,size*.24f,p);c.drawLine(cx,cy-size*.38f,cx,cy+size*.38f,p);}
+    p.setStyle(Paint.Style.FILL);
   }
   private String itemModifierLabel(RpgProgressionState.ItemDefinition d){if(d==null||d.statModifiers.isEmpty())return "";StringBuilder s=new StringBuilder();for(Map.Entry<String,Integer> e:d.statModifiers.entrySet()){if(s.length()>0)s.append(" · ");s.append(e.getKey()).append(" ").append(e.getValue()>0?"+":"").append(e.getValue());}return s.toString();}
   private String equipmentCompareLabel(RpgProgressionState.ItemDefinition d){if(d==null||!d.equippable())return "";FinalStats now=state.rpg().finalStats();Map<String,String> eq=state.rpg().equipment();RpgProgressionState.ItemDefinition old=state.rpg().itemDefinitions().get(eq.get(d.equipSlot));int dam=now.dam-oldMod(old,"DAM")+mod(d,"DAM"),hit=now.hit-oldMod(old,"HIT")+mod(d,"HIT"),ac=now.ac-oldMod(old,"AC")+mod(d,"AC"),dex=now.dex-oldMod(old,"DEX")+mod(d,"DEX");if("무기".equals(d.equipSlot))return "장착 시 DAM "+now.dam+"→"+dam+" · HIT "+now.hit+"→"+hit;if("방패".equals(d.equipSlot)||"갑옷".equals(d.equipSlot)||"모자".equals(d.equipSlot)||"장갑".equals(d.equipSlot))return "장착 시 AC "+now.ac+"→"+ac;if("신발".equals(d.equipSlot))return "장착 시 DEX "+now.dex+"→"+dex;return "장착 시 최종 능력치에 즉시 반영";}
   private static int mod(RpgProgressionState.ItemDefinition d,String k){if(d==null)return 0;Integer v=d.statModifiers.get(k);return v==null?0:v;} private static int oldMod(RpgProgressionState.ItemDefinition d,String k){return mod(d,k);}
-  private void drawEquipment(Canvas c){if(!equipmentOpen)return;modalPanel(c,548,72,936,444);text(c,"CHARACTER EQUIPMENT",570,99,13);p.setColor(0xB024262A);c.drawCircle(911,91,15,p);text(c,"×",906,96,14);Map<String,String> eq=state.rpg().equipment();String[] slots={"모자","무기","방패","갑옷","장갑","각반","신발","귀걸이","반지","목걸이","벨트"};int y=122;for(String slot:slots){String id=eq.get(slot);RpgProgressionState.ItemDefinition d=id==null?null:state.rpg().itemDefinitions().get(id);p.setColor(0x5517191D);c.drawRoundRect(new RectF(570,y-16,914,y+7),7,7,p);text(c,slot,584,y,9);fittedText(c,d==null?"-":d.name,660,y,238,9);y+=25;}mutedText(c,"장착/해제는 BAG에서 아이템을 선택하세요",570,422,8);}
+  private void drawEquipment(Canvas c){
+    if(!equipmentOpen)return;
+    p.setColor(0x52000000);c.drawRect(0,0,W,H,p);
+    classicWindow(c,110,48,850,478,"Equip");
+    p.setColor(0xB02A1710);c.drawCircle(825,70,15,p);text(c,"×",820,75,14);
+    Map<String,String> eq=state.rpg().equipment();
+    // Presentation-only slot map. No equipment domain/state is changed.
+    String[] slots={"귀걸이","모자","목걸이","날개","방패","무기","장갑","각반","장갑","벨트","신발"};
+    float[][] pos={{160,105},{286,88},{412,105},{155,190},{155,270},{417,190},{155,350},{286,365},{417,350},{417,270},{417,365}};
+    for(int i=0;i<slots.length;i++)drawEquipSlot(c,eq,slots[i],pos[i][0],pos[i][1],74,66,i==6?"장갑(좌)":i==8?"장갑(우)":slots[i]);
+    // Current paper-doll uses the exact runtime visual binding already used in world rendering.
+    CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());
+    characterRenderer.draw(c,new CharacterRenderer.Pose(324,310,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+    RpgProgressionState r=state.rpg();FinalStats fs=r.finalStats();
+    p.setColor(0xFF1B120E);c.drawRect(530,104,820,438,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xFF8A603B);c.drawRect(530.5f,104.5f,819.5f,437.5f,p);p.setStyle(Paint.Style.FILL);
+    text(c,"Presentation",548,130,12);mutedText(c,"Name",548,158,8);text(c,"주찬",620,158,9);mutedText(c,"Class",548,181,8);text(c,"평민",620,181,9);
+    p.setColor(0xFF5A3C28);c.drawRect(548,200,802,201,p);
+    text(c,"STR  "+r.str(),550,230,9);text(c,"WIS  "+r.wis(),650,230,9);text(c,"DEX  "+r.dex(),750,230,9);
+    text(c,"INT  "+r.intel(),550,255,9);text(c,"CON  "+r.con(),650,255,9);text(c,"AC  "+fs.ac,750,255,9);
+    mutedText(c,"HP  "+state.player().hp+" / "+fs.maxHp,550,294,9);mutedText(c,"MP  "+state.player().mp+" / "+fs.maxMp,550,317,9);
+    mutedText(c,"HIT  "+fs.hit+"   DAM  "+fs.dam,550,350,9);
+    mutedText(c,"장비창은 표시 전용 · 장착/해제는 인벤토리에서",550,416,7.5f);
+  }
+  private void drawEquipSlot(Canvas c,Map<String,String> eq,String slot,float l,float t,float w,float h,String label){
+    p.setColor(0xE018120F);c.drawRect(l,t,l+w,t+h,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFF765335);c.drawRect(l+.5f,t+.5f,l+w-.5f,t+h-.5f,p);p.setStyle(Paint.Style.FILL);
+    String id=eq.get(slot);RpgProgressionState.ItemDefinition d=id==null?null:state.rpg().itemDefinitions().get(id);
+    mutedText(c,label,l+4,t+11,6.5f);
+    if(d!=null){RpgInventoryPresentation.ItemRow found=null;for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(id)){found=row;break;}if(found!=null)drawInventoryItemIcon(c,found,l+16,t+16,Math.min(w-24,h-20));}
+  }
   private String equipResultLabel(RpgProgressionState.EquipResult result){switch(result){case EQUIPPED:return "장착 완료";case UNEQUIPPED:return "해제 완료";case REQUIREMENT_NOT_MET:return "장착 불가 · 조건 미충족";case REQUIREMENT_PENDING:return "장착 보류 · 조건 확인 필요";case NOT_EQUIPPABLE:return "장착할 수 없는 아이템";case UNKNOWN_ITEM:return "알 수 없는 아이템";case ITEM_NOT_OWNED:default:return "보유하지 않은 아이템";}}
   private boolean handleInventoryTouch(float x,float y){
     if(!inventoryOpen)return false;
-    if(dist(x,y,895,92)<=24){inventoryOpen=false;showFeedback("인벤토리 닫힘",FeedbackTone.INFO);return true;}
+    if(dist(x,y,913,76)<=24){inventoryOpen=false;showFeedback("인벤토리 닫힘",FeedbackTone.INFO);return true;}
     List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());
-    int pageSize=7,pages=Math.max(1,(rows.size()+pageSize-1)/pageSize);inventoryPage=Math.max(0,Math.min(inventoryPage,pages-1));
-    if(y>=306&&y<=340){if(x>=650&&x<720&&inventoryPage>0){inventoryPage--;return true;}if(x>=720&&x<=800&&inventoryPage+1<pages){inventoryPage++;return true;}}
-    int start=inventoryPage*pageSize,limit=Math.min(pageSize,Math.max(0,rows.size()-start));
-    if(x>=554&&x<=906){for(int i=0;i<limit;i++){float ry=145+i*28;if(y>=ry-18&&y<=ry+8){RpgInventoryPresentation.ItemRow row=rows.get(start+i);if(rpgInteraction.selectInventoryItem(state.rpg(),row.itemId))showFeedback(row.name+" 선택",FeedbackTone.INFO);return true;}}}
-    if(x>=822&&x<=894&&y>=408&&y<=438){String selected=rpgInteraction.selectedInventoryItemId();if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복물약 사용 · HP +"+RpgProgressionState.B5_SMALL_HP_POTION_HEAL:used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return true;}RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);return true;}
-    return inside(x,y,540,72,920,462);
+    int pageSize=20,pages=Math.max(1,(rows.size()+pageSize-1)/pageSize);inventoryPage=Math.max(0,Math.min(inventoryPage,pages-1));
+    if(y>=430&&y<=472){if(x>=530&&x<590&&inventoryPage>0){inventoryPage--;return true;}if(x>=660&&x<=710&&inventoryPage+1<pages){inventoryPage++;return true;}}
+    float gx=440,gy=105,cell=62,gap=5;
+    if(x>=gx&&x<=gx+4*cell+3*gap&&y>=gy&&y<=gy+5*cell+4*gap){
+      int col=(int)((x-gx)/(cell+gap)),row=(int)((y-gy)/(cell+gap));float lx=gx+col*(cell+gap),ty=gy+row*(cell+gap);
+      if(x<=lx+cell&&y<=ty+cell){int index=inventoryPage*pageSize+row*4+col;if(index<rows.size()){RpgInventoryPresentation.ItemRow item=rows.get(index);if(rpgInteraction.selectInventoryItem(state.rpg(),item.itemId))showFeedback(item.name+" 선택",FeedbackTone.INFO);}return true;}
+    }
+    if(x>=748&&x<=886&&y>=342&&y<=384){
+      String selected=rpgInteraction.selectedInventoryItemId();
+      if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복물약 사용 · HP +"+RpgProgressionState.B5_SMALL_HP_POTION_HEAL:used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return true;}
+      RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);return true;
+    }
+    return inside(x,y,420,54,938,476);
   }
 
   private boolean f5mGuideDialogue(){RuntimeState.Npc n=interaction.dialogNpc();return n!=null&&"milles_guide_proto".equals(n.id);}
