@@ -183,36 +183,51 @@ public final class GameView extends View {
   private void drawCharacter(Canvas c){drawCharacterAt(c,worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY());}
   private void drawCharacterAt(Canvas c,float x,float y){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;characterRenderer.draw(c,new CharacterRenderer.Pose(x,y,characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction));}
   private void drawReagentShopInterior(Canvas c){
-    // Classic-inspired, evidence-bounded interior: stone floor, timber walls, stocked reagent shelves,
-    // central merchant counter, Merlin, and a south exit. No modern fantasy UI chrome.
-    p.setColor(0xff080a08);c.drawRect(0,0,W,H,p);
-    p.setColor(0xff30291e);c.drawRect(228,102,732,468,p);
-    p.setColor(0xff171b15);c.drawRect(246,126,714,448,p);
-    // checker stone floor
-    for(int row=0;row<9;row++)for(int col=0;col<13;col++){float l=258+col*34,t=142+row*32;p.setColor(((row+col)&1)==0?0xff3b4438:0xff333b31);c.drawRect(l,t,l+32,t+30,p);}
-    // timber walls and posts
-    p.setColor(0xff5b3a22);c.drawRect(246,126,714,142,p);c.drawRect(246,126,260,448,p);c.drawRect(700,126,714,448,p);
-    for(int x=278;x<700;x+=70){p.setColor(0xff765033);c.drawRect(x,128,x+7,202,p);}
-    // left/right reagent shelving
-    for(int side=0;side<2;side++){float x=side==0?274:620;p.setColor(0xff4a2d1a);c.drawRect(x,164,x+66,306,p);for(int r=0;r<3;r++){float y=188+r*42;p.setColor(0xff8a6036);c.drawRect(x+4,y,x+62,y+6,p);for(int q=0;q<4;q++){float bx=x+10+q*13;p.setColor((q+r)%3==0?0xff7f9b55:(q+r)%3==1?0xff9b6657:0xff597a86);c.drawRect(bx,y-17,bx+8,y-3,p);p.setColor(0xffc9b074);c.drawRect(bx+1,y-20,bx+7,y-17,p);}}}
-    // counter with dark work surface
-    p.setColor(0xff2a1a12);c.drawRect(316,242,644,270,p);p.setColor(0xff765033);c.drawRect(326,270,634,302,p);p.setColor(0xff9a7042);c.drawRect(316,240,644,248,p);
-    // counter bottles / mortar
-    for(int i=0;i<7;i++){float bx=350+i*43;p.setColor(i%2==0?0xff6c8f70:0xff8f6659);c.drawRect(bx,222,bx+12,239,p);p.setColor(0xffd0b77b);c.drawRect(bx+2,218,bx+10,222,p);}
-    p.setColor(0xff8c8060);c.drawOval(new RectF(584,224,612,240),p);p.setColor(0xffb7a67b);c.drawRect(602,211,607,233,p);
-    // Merlin behind the counter
-    p.setColor(0x66000000);c.drawOval(new RectF(463,236,497,244),p);p.setColor(0xffd4b58d);c.drawCircle(MillesReagentShopInterior.NPC_X,MillesReagentShopInterior.NPC_Y-25,8,p);
-    p.setColor(0xff40566f);Path robe=new Path();robe.moveTo(468,195);robe.lineTo(492,195);robe.lineTo(500,237);robe.lineTo(460,237);robe.close();c.drawPath(robe,p);
-    p.setColor(0xff26384c);Path hat=new Path();hat.moveTo(464,188);hat.lineTo(480,166);hat.lineTo(495,188);hat.close();c.drawPath(hat,p);c.drawRect(460,187,500,193,p);
-    p.setColor(0xfff0dfb4);p.setTextSize(10);float nw=p.measureText(MillesReagentShopInterior.NPC_NAME);c.drawText(MillesReagentShopInterior.NPC_NAME,480-nw/2,158,p);
-    // south doorway/portal
-    p.setColor(0xff090b09);c.drawRect(430,424,530,468,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3);p.setColor(0xff87603a);c.drawRect(427,420,533,468,p);p.setStyle(Paint.Style.FILL);
-    mutedText(c,"밀레스 시약상점",262,119,8);mutedText(c,"멀린을 눌러 물품을 봅니다",382,494,9);
+    // Reference-led classic shop: broad timber room, diagonal plank grain, straight counter,
+    // stocked rear wall, Merlin behind the counter, open customer floor in front.
+    p.setColor(0xff070604);c.drawRect(0,0,W,H,p);
+    Path room=new Path();room.moveTo(185,150);room.lineTo(680,105);room.lineTo(790,215);room.lineTo(350,500);room.lineTo(185,390);room.close();
+    p.setColor(0xff56351f);c.drawPath(room,p);
+    // plank floor, following the original shop's isometric perspective
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xff2c1a10);
+    for(int i=-5;i<24;i++){float y=190+i*18;c.drawLine(190,y,705,y+145,p);}
+    p.setStrokeWidth(1);p.setColor(0xff805234);for(int i=0;i<22;i++){float x=195+i*28;c.drawLine(x,150,x+150,485,p);}p.setStyle(Paint.Style.FILL);
+    // rear timber wall and windows
+    Path wall=new Path();wall.moveTo(185,150);wall.lineTo(680,105);wall.lineTo(680,235);wall.lineTo(185,285);wall.close();p.setColor(0xff63371f);c.drawPath(wall,p);
+    p.setColor(0xff3a2115);for(int x=220;x<650;x+=38)c.drawRect(x,132,x+5,267,p);
+    for(int w=0;w<3;w++){float x=235+w*105;p.setColor(0xffc8c4a5);c.drawRect(x,172,x+47,218,p);p.setColor(0xff30261d);c.drawRect(x+21,172,x+26,218,p);c.drawRect(x,192,x+47,198,p);}
+    // rear reagent shelves: bottles, jars and hanging herb bundles replace weapon racks.
+    for(int rack=0;rack<3;rack++){float x=480+rack*82;p.setColor(0xff2d1a11);c.drawRect(x,136,x+68,235,p);p.setColor(0xff9a6338);c.drawRect(x-3,158,x+71,164,p);c.drawRect(x-3,197,x+71,203,p);
+      for(int q=0;q<4;q++){float bx=x+7+q*15;p.setColor((q+rack)%3==0?0xff6d8d68:(q+rack)%3==1?0xff75516f:0xff927049);c.drawOval(new RectF(bx,143,bx+10,158),p);c.drawOval(new RectF(bx,181,bx+10,197),p);p.setColor(0xffd0b982);c.drawRect(bx+2,140,bx+8,144,p);}
+    }
+    p.setColor(0xff49633d);for(int i=0;i<4;i++){float x=705+i*12;c.drawLine(x,165,x-10,205,p);c.drawCircle(x-12,208,6,p);}
+    // straight wooden sales counter, deliberately NOT L-shaped.
+    Path top=new Path();top.moveTo(300,276);top.lineTo(650,238);top.lineTo(705,276);top.lineTo(350,322);top.close();p.setColor(0xff9a6035);c.drawPath(top,p);
+    Path front=new Path();front.moveTo(350,322);front.lineTo(705,276);front.lineTo(705,315);front.lineTo(350,365);front.close();p.setColor(0xff684025);c.drawPath(front,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xff3a2418);for(int i=0;i<8;i++){float x=370+i*43;c.drawLine(x,320,x,357,p);}p.setStyle(Paint.Style.FILL);
+    // potion stock on counter
+    for(int i=0;i<6;i++){float bx=385+i*45,by=278-i*5;p.setColor(i%3==0?0xff7e9b71:i%3==1?0xff765778:0xff9a684d);c.drawOval(new RectF(bx,by-17,bx+12,by),p);p.setColor(0xffd0b982);c.drawRect(bx+3,by-21,bx+9,by-16,p);}
+    // Merlin: elderly archmage silhouette, behind the counter.
+    float mx=MillesReagentShopInterior.NPC_X,my=MillesReagentShopInterior.NPC_Y;
+    p.setColor(0x66000000);c.drawOval(new RectF(mx-18,my+22,mx+18,my+30),p);
+    p.setColor(0xff314867);Path robe=new Path();robe.moveTo(mx-13,my-7);robe.lineTo(mx+13,my-7);robe.lineTo(mx+21,my+28);robe.lineTo(mx-21,my+28);robe.close();c.drawPath(robe,p);
+    p.setColor(0xffd4b58d);c.drawCircle(mx,my-17,8,p);p.setColor(0xffd8d3c4);Path beard=new Path();beard.moveTo(mx-7,my-12);beard.lineTo(mx+7,my-12);beard.lineTo(mx,my+4);beard.close();c.drawPath(beard,p);
+    p.setColor(0xff263954);Path hat=new Path();hat.moveTo(mx-15,my-24);hat.lineTo(mx+2,my-50);hat.lineTo(mx+17,my-24);hat.close();c.drawPath(hat,p);c.drawRect(mx-19,my-25,mx+19,my-20,p);
+    p.setColor(0xffe9d7a7);p.setTextSize(10);float nw=p.measureText("멀린");c.drawText("멀린",mx-nw/2,my-57,p);
+    // south exit: dark doorway/portal opening with a small worn rug.
+    Path rug=new Path();rug.moveTo(420,410);rug.lineTo(515,398);rug.lineTo(552,425);rug.lineTo(455,442);rug.close();p.setColor(0xff594329);c.drawPath(rug,p);
+    p.setColor(0xff090705);Path exit=new Path();exit.moveTo(430,432);exit.lineTo(530,420);exit.lineTo(555,452);exit.lineTo(455,468);exit.close();c.drawPath(exit,p);
   }
   private void drawReagentShopWindow(Canvas c){
-    if(!reagentShop.open())return;p.setColor(0x8A000000);c.drawRect(0,0,W,H,p);classicWindow(c,250,105,710,430,"시약상점 · 멀린");
-    mutedText(c,"필요한 시약을 고르세요.",280,165,9);int i=0;for(ReagentShopController.Offer o:reagentShop.offers()){float y=190+i*62;p.setColor(0xD0271c14);c.drawRoundRect(new RectF(282,y,678,y+48),5,5,p);text(c,o.name,306,y+29,12);mutedText(c,o.price==null?"가격 고증 대기":"Gold "+o.price,520,y+29,8);i++;}
-    mutedText(c,"현재 고증되지 않은 가격은 구매 처리하지 않습니다.",280,394,7.5f);p.setColor(0xB024262A);c.drawCircle(684,128,15,p);text(c,"×",679,133,14);
+    if(!reagentShop.open())return;
+    // Compact legacy-brown merchant panel; the world remains visible behind it.
+    p.setColor(0x52000000);c.drawRect(0,0,W,H,p);
+    p.setColor(0xff3a2719);c.drawRect(270,118,690,410,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3);p.setColor(0xff9b7045);c.drawRect(270,118,690,410,p);p.setStrokeWidth(1);p.setColor(0xffd1ad70);c.drawRect(277,125,683,403,p);p.setStyle(Paint.Style.FILL);
+    p.setColor(0xff20160f);c.drawRect(282,134,678,169,p);text(c,"멀린의 시약상점",300,157,12);mutedText(c,"X",651,157,11);
+    int i=0;for(ReagentShopController.Offer o:reagentShop.offers()){float y=184+i*61;p.setColor(0xff241912);c.drawRect(292,y,668,y+49,p);p.setStyle(Paint.Style.STROKE);p.setColor(0xff765235);c.drawRect(292,y,668,y+49,p);p.setStyle(Paint.Style.FILL);
+      float ix=315,iy=y+24;p.setColor(i==0?0xff718a68:i==1?0xff76546e:0xff93684c);c.drawOval(new RectF(ix-9,iy-10,ix+9,iy+11),p);p.setColor(0xffd0b982);c.drawRect(ix-5,iy-15,ix+5,iy-9,p);
+      text(c,o.name,344,y+30,11);mutedText(c,o.price==null?"---":String.valueOf(o.price),580,y+29,9);i++;}
+    mutedText(c,"GOLD",300,388,8);text(c,String.valueOf(state.rpg().gold()==null?0:state.rpg().gold()),345,389,10);
   }
   private boolean nearPotionShopDoor(){return dist(state.player().x,state.player().y,320f,496f)<=46f;}
 
