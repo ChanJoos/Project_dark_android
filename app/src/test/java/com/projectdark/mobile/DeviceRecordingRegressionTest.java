@@ -23,7 +23,7 @@ public class DeviceRecordingRegressionTest {
   @Test public void productionAttackDelaysDamageAndUsesEquippedWeapon()throws Exception{
     GameView view=new GameView(context);RuntimeState s=(RuntimeState)field(view,"state");
     RuntimeState.Monster target=s.monsters().get(0);s.player().x=target.x-32;s.player().y=target.y-16;
-    s.rpg().equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID);
+    assertEquals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,s.rpg().equipment().get(RpgProgressionState.WEAPON_SLOT));
     ((WorldRuntimeAdapter)field(view,"worldAdapter")).snapCameraToPlayer();
     ((CombatController)field(view,"combat")).selectTarget(target);
     int hp=target.hp;attack(view);assertEquals("damage must wait for contact",hp,target.hp);assertEquals("SWING",field(view,"action").toString());
