@@ -43,11 +43,11 @@ public final class MillesProductionCollision {
 
     // B1/B5 visible-building ground contact. These coordinates match the actual renderer anchors.
     // Footprints are deliberately much shallower than sprite bounds: only the ground mass blocks.
-    add(b,"potion_shop",Kind.BUILDING,320f,420f,210f,78f);
-    add(b,"weapon_shop",Kind.BUILDING,760f,300f,205f,78f);
-    add(b,"general_shop",Kind.BUILDING,1120f,360f,205f,78f);
-    add(b,"church",Kind.CHURCH,1540f,455f,270f,105f);
-    add(b,"inn",Kind.BUILDING,1980f,650f,205f,80f);
+    add(b,"potion_shop",Kind.BUILDING,320f,420f,210f,156f);
+    add(b,"weapon_shop",Kind.BUILDING,760f,300f,205f,156f);
+    add(b,"general_shop",Kind.BUILDING,1120f,360f,205f,176f);
+    add(b,"church",Kind.CHURCH,1540f,455f,270f,210f);
+    add(b,"inn",Kind.BUILDING,1980f,650f,205f,172f);
 
     // B2 device correction: only visible gameplay geometry is collision-authoritative.
     // Invisible legacy scenery footprints are intentionally excluded from runtime blockers.
