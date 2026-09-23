@@ -19,7 +19,7 @@ jobs:
           python3 - <<'PY'
           import json, pathlib, sys
           rows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())
-          need={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mu0000001','mu0000002','mu0000003'}
+          need={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010','mu0000001','mu0000002','mu0000003'}
           got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}
           missing=need-got
           print('SOURCE_REGISTRATION_FETCHED',sorted(got & need))
@@ -38,7 +38,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import shutil
-          specs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003'],'armor':['mu0000001','mu0000002','mu0000003']}
+          specs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010'],'armor':['mu0000001','mu0000002','mu0000003']}
           assets=Path('app/src/main/assets/source-registration'); draw=Path('app/src/main/res/drawable-nodpi')
           for kind, ids in specs.items():
               for ident in ids:
