@@ -38,6 +38,8 @@ public final class AdaptedMillesMapRenderer {
     // B1/B5: render the actual APK building assets at a character-readable village scale.
     // The previous APK only drew the church at 0.42, so changing planning geometry had no visible effect.
     drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
+    // Visible walk-in target: same foot coordinate as WorldDef potion_shop_door trigger.
+    drawFoot(canvas,world,"assets/world/portal/portal_reagent_shop.webp",320f,496f,.72f);
     drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",760f,300f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",1120f,360f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.35f);
