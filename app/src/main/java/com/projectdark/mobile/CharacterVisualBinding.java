@@ -13,7 +13,7 @@ public final class CharacterVisualBinding {
   public static final String RESOLVED_LUERS_ROBE_APPEARANCE_ID="mu0000058";
   public static final String RESOLVED_WEAPON_APPEARANCE_ID="mw001";
   public static final String RESOLVED_SHOES_APPEARANCE_ID="ml228";
-  public static final String RESOLVED_HAT_APPEARANCE_ID="mh108";
+  public static final String RESOLVED_HAT_APPEARANCE_ID="mh172";
   public static final String RESOLVED_SHIELD_APPEARANCE_ID="ms001";
   public static final String WEAPON_SLOT="무기";
 
