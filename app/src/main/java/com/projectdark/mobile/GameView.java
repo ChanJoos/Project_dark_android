@@ -8,7 +8,10 @@ import android.view.View;
 import com.projectdark.mobile.world.AdaptedMillesMapRenderer;
 import com.projectdark.mobile.world.WorldCameraTransform;
 import com.projectdark.mobile.world.WorldMoveTargetController;
-import com.projectdark.mobile.world.WorldRuntimeAdapter;\nimport com.projectdark.mobile.world.ReagentShopInteriorDef;\nimport com.projectdark.mobile.world.ReagentShopInteriorRenderer;\nimport com.projectdark.mobile.world.ReagentShopInteriorRuntime;
+import com.projectdark.mobile.world.WorldRuntimeAdapter;
+import com.projectdark.mobile.world.ReagentShopInteriorDef;
+import com.projectdark.mobile.world.ReagentShopInteriorRenderer;
+import com.projectdark.mobile.world.ReagentShopInteriorRuntime;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +44,11 @@ public final class GameView extends View {
   private final RpgInventoryPresentation rpgPresentation=new RpgInventoryPresentation();
   private final RpgInteractionController rpgInteraction=new RpgInteractionController();
   private final ClassicHudIconAtlas hudIcons=new ClassicHudIconAtlas();
-  private final EquipmentVisualRegistry inventoryVisuals;\n  private final ReagentItemVisualRegistry reagentVisuals;\n  private final ReagentShopInteriorRuntime reagentShopWorld=new ReagentShopInteriorRuntime();\n  private final ReagentShopInteriorRenderer reagentShopRenderer;\n  private boolean inReagentShop=false,reagentShopOpen=false;
+  private final EquipmentVisualRegistry inventoryVisuals;
+  private final ReagentItemVisualRegistry reagentVisuals;
+  private final ReagentShopInteriorRuntime reagentShopWorld=new ReagentShopInteriorRuntime();
+  private final ReagentShopInteriorRenderer reagentShopRenderer;
+  private boolean inReagentShop=false,reagentShopOpen=false;
   private final F5mAdaptedPrologueQuest f5mQuest=F5mAdaptedPrologueQuest.openingFixture();
   private final GrowthQuest2 quest2=new GrowthQuest2();
 
