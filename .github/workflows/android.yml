@@ -28,6 +28,7 @@ jobs:
               sys.exit(23)
           PY
           mkdir -p app/src/main/assets/source-registration
+          cp qa/peasant-sources/data/type/body/mm001.json app/src/main/assets/source-registration/mm001.json
           cp qa/peasant-sources/data/type/shoes/ml228.json app/src/main/assets/source-registration/ml228.json
           cp qa/peasant-sources/data/type/shield/ms001.json app/src/main/assets/source-registration/ms001.json
           cp qa/peasant-sources/data/type/hair/mh172.json app/src/main/assets/source-registration/mh172.json
@@ -59,17 +60,6 @@ jobs:
               for k in list(sprites)[:12]:
                   print('REG',ident,k,sprites[k])
           PY
-      - name: Persist recovered starter gear source data
-        if: github.ref == 'refs/heads/director/source-registration-gear-20260923'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add app/src/main/assets/source-registration app/src/main/res/drawable-nodpi/player_*_source.webp
-          if ! git diff --cached --quiet; then
-            git commit -m "Persist exact starter gear source registration"
-            git push origin HEAD:director/source-registration-gear-20260923
-          fi
-
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
