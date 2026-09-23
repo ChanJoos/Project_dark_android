@@ -18,7 +18,8 @@ public final class WorldDef {
   public static final String ASSET_STATUS="PENDING_CROP";
   public static final String VISUAL_SOURCE_URL="https://storage.nexon.com/dsk03/13/NX_FILE/Board/196608/05/2/000/00/69/5557538701493472772.png";
 
-  public static final float MIN_X=64f,MAX_X=2304f,MIN_Y=48f,MAX_Y=1600f;
+  // B4 device correction: keep meaningful traversable space west of the reagent shop so the shop is not pinned to the map edge.
+  public static final float MIN_X=-512f,MAX_X=2304f,MIN_Y=48f,MAX_Y=1600f;
   public static final float PLAYER_SPAWN_X=620f,PLAYER_SPAWN_Y=560f;
 
   public enum LayerKind { TILE, OBJECT, COLLISION, NPC, MONSTER_SPAWN, PORTAL }
@@ -39,7 +40,6 @@ public final class WorldDef {
 
     List<NpcSpawn> n=new ArrayList<>();
     n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",665f,615f,"밀레스 탐색/대화 루프 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
-    n.add(new NpcSpawn("NPC_MERLIN_MILLES","멀린",320f,496f,"SHOP_MILLES_POTION","PAPER_DOLL:mm001|mu0000118|mh223"));
     n.add(new NpcSpawn("milles_gate_proto","남문 안내 지점 [B]",790f,1450f,"확장 남문 접근 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",285f,705f,"확장 마을 서부 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1900f,820f,"확장 동부 시장 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
@@ -53,7 +53,8 @@ public final class WorldDef {
 
     List<PortalSpawn> p=new ArrayList<>();
     // Building exteriors stay fully solid. Entry is exclusively through front-door portal triggers.
-    p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",320f,496f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    // Door threshold itself is the portal. Keep it wider than one player radius so diagonal tile stepping cannot skip the trigger.
+    p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",320f,496f,36f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));
     p.add(new PortalSpawn("weapon_shop_door","milles_interior_weapon_shop",736f,384f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("general_shop_door","milles_interior_general_shop",1120f,448f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("church_door","milles_interior_church",1536f,560f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
