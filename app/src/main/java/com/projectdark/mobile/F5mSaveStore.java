@@ -9,7 +9,7 @@ import org.json.JSONObject;
 /** Versioned, single-editor checkpoints over the existing app-private save slot. */
 public final class F5mSaveStore {
   private static final String PREF="project_dark_f5m_v1";
-  private static final int SCHEMA=2;
+  private static final int SCHEMA=3;
   private static F5mSaveStore active;
   private final SharedPreferences prefs;
   private RuntimeState runtime;
@@ -118,7 +118,7 @@ public final class F5mSaveStore {
           for(String id:raw.split("\\|")){if(id.isEmpty())continue;RpgProgressionState.ItemDefinition def=r.itemDefinitions().get(id);if(def==null)throw new IllegalArgumentException("Unknown saved item");equipped.put(def.equipSlot,id);}
         }
       }
-      RpgProgressionState staged=new RpgProgressionState();
+      int sourceSchema=prefs.getInt("save_schema",1);if(sourceSchema<3){owned.put(RpgProgressionState.STARTER_HAT_ITEM_ID,1);owned.put("IT_SHOES",1);owned.put(RpgProgressionState.STARTER_SHIELD_ITEM_ID,1);owned.put(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,1);owned.put(RpgProgressionState.STARTER_SHIRT_ITEM_ID,1);equipped.put(RpgProgressionState.HEAD_SLOT,RpgProgressionState.STARTER_HAT_ITEM_ID);equipped.put(RpgProgressionState.SHOES_SLOT,"IT_SHOES");equipped.put(RpgProgressionState.SHIELD_SLOT,RpgProgressionState.STARTER_SHIELD_ITEM_ID);equipped.put(RpgProgressionState.WEAPON_SLOT,RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID);equipped.put(RpgProgressionState.ARMOR_SLOT,RpgProgressionState.STARTER_SHIRT_ITEM_ID);}RpgProgressionState staged=new RpgProgressionState();
       if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid saved ownership");
       staged.restoreProgression(prefs.getInt("normal_level",1),prefs.getLong("normal_exp",0L));
       staged.restoreGold(prefs.getLong("gold",0L));

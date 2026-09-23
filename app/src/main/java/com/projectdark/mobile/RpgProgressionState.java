@@ -40,6 +40,9 @@ public final class RpgProgressionState {
   public static final String ARMOR_SLOT="갑옷";
   public static final String LOWER_GARMENT_SLOT="각반";
   public static final String WEAPON_SLOT="무기";
+  public static final String HEAD_SLOT="모자";
+  public static final String SHIELD_SLOT="방패";
+  public static final String SHOES_SLOT="신발";
 
   public static final class ItemDefinition {
     public final String itemId,name,equipSlot,appearanceId;
@@ -124,6 +127,10 @@ public final class RpgProgressionState {
   public static final String SHOP_LEATHER_GLOVE_ITEM_ID="IT_GLOVE_LEATHER";
   public static final String SHOP_SHOES_ITEM_ID="IT_SHOES";
   public static final String STARTER_SHIRT_ITEM_ID="IT_APPEARANCE_PEASANT_SHIRT";
+  public static final String STARTER_HAT_ITEM_ID="IT_ADAPTED_STARTER_HAT";
+  public static final String STARTER_HAT_APPEARANCE_ID="mh108";
+  public static final String STARTER_SHIELD_ITEM_ID="IT_ADAPTED_STARTER_SHIELD";
+  public static final String STARTER_SHIELD_APPEARANCE_ID="ms001";
   public static final String STARTER_SHIRT_APPEARANCE_ID="mu0000001";
   public static final String VERIFIED_STARTER_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
   public static final String VERIFIED_STARTER_ROBE_APPEARANCE_ID="mu0000058";
@@ -148,7 +155,9 @@ public final class RpgProgressionState {
 
     registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_SHOES","신발","신발","ml228",1,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_SHOES","신발",SHOES_SLOT,"ml228",1,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition(STARTER_HAT_ITEM_ID,"햇 [ADAPTED]",HEAD_SLOT,STARTER_HAT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(STARTER_SHIELD_ITEM_ID,"기본 방패 [ADAPTED]",SHIELD_SLOT,STARTER_SHIELD_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
@@ -174,6 +183,8 @@ public final class RpgProgressionState {
     // Starter armor uses the verified classic paper-doll garment frames while retaining the canonical shirt item identity.
     equipmentBySlot.put(ARMOR_SLOT,STARTER_SHIRT_ITEM_ID);
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
+    inventory.put("IT_SHOES",1);inventory.put(STARTER_HAT_ITEM_ID,1);inventory.put(STARTER_SHIELD_ITEM_ID,1);
+    equipmentBySlot.put(SHOES_SLOT,"IT_SHOES");equipmentBySlot.put(HEAD_SLOT,STARTER_HAT_ITEM_ID);equipmentBySlot.put(SHIELD_SLOT,STARTER_SHIELD_ITEM_ID);equipmentBySlot.put(WEAPON_SLOT,PLAYTEST_WEAPON_ITEM_ID);
   }
 
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}

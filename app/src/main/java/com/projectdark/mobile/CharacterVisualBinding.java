@@ -13,6 +13,8 @@ public final class CharacterVisualBinding {
   public static final String RESOLVED_LUERS_ROBE_APPEARANCE_ID="mu0000058";
   public static final String RESOLVED_WEAPON_APPEARANCE_ID="mw001";
   public static final String RESOLVED_SHOES_APPEARANCE_ID="ml228";
+  public static final String RESOLVED_HAT_APPEARANCE_ID="mh108";
+  public static final String RESOLVED_SHIELD_APPEARANCE_ID="ms001";
   public static final String WEAPON_SLOT="무기";
 
   public enum GarmentCoverage { FULL_BODY, UPPER, LOWER }
@@ -55,6 +57,8 @@ public final class CharacterVisualBinding {
   public static VisualSlot visualSlotForAppearance(String appearanceId){
     if(RESOLVED_WEAPON_APPEARANCE_ID.equals(appearanceId))return VisualSlot.WEAPON;
     if(RESOLVED_SHOES_APPEARANCE_ID.equals(appearanceId))return VisualSlot.FEET;
+    if(RESOLVED_HAT_APPEARANCE_ID.equals(appearanceId))return VisualSlot.HEAD;
+    if(RESOLVED_SHIELD_APPEARANCE_ID.equals(appearanceId))return VisualSlot.SHIELD;
     GarmentCoverage coverage=garmentCoverageForAppearance(appearanceId);
     if(coverage==GarmentCoverage.FULL_BODY)return VisualSlot.FULL_BODY;
     if(coverage==GarmentCoverage.UPPER)return VisualSlot.UPPER;
