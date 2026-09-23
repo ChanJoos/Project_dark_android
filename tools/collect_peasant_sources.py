@@ -8,7 +8,7 @@ ROOT = 'https://lod-dressup-2.web.app/'
 out = Path('qa/peasant-sources')
 out.mkdir(parents=True, exist_ok=True)
 report = []
-for kind, identity in [('body', 'mm001'), ('armor', 'mu0000001'), ('armor', 'mu0000058'), ('shoes', 'ml228'), ('shield', 'ms001'), ('hair', 'mh172')]:
+for kind, identity in [('body','mm001'),('armor','mu0000001'),('armor','mu0000002'),('armor','mu0000003'),('armor','mu0000058'),('shoes','ml228'),('shoes','ml229'),('shoes','ml230'),('shield','ms001'),('shield','ms002'),('shield','ms003'),('hair','mh172'),('hair','mh173'),('hair','mh174'),('weapon','mw001'),('weapon','mw002'),('weapon','mw003')]:
     for path in [f'data/type/{kind}/{identity}.json', f'atlas/{kind}/{identity}.webp']:
         row = {'url': ROOT + path, 'identity': identity}
         try:
