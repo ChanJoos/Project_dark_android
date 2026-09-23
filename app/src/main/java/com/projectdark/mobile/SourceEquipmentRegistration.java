@@ -27,7 +27,7 @@ final class SourceEquipmentRegistration {
     int frame=ShirtSourceRegistration.idleFrame(direction,column);
     return frame("01",frame);
   }
-  Frame action(int sourceIndex){return frame("02",sourceIndex);}
+  Frame action(int sourceIndex){return frame("02",sourceIndex);}\n  Frame idleByIndex(int index){return frame("01",index);}
   private Frame frame(String group,int index){
     try{
       JSONArray bs=body.getJSONObject("sprites").getJSONArray(group);
