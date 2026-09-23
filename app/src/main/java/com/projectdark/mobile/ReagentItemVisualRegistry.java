@@ -18,7 +18,7 @@ final class ReagentItemVisualRegistry {
     String file=null;
     if(RpgProgressionState.REAGENT_KOMADIUM_ITEM_ID.equals(itemId))file="it_reagent_komadium.webp";
     else if(RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID.equals(itemId))file="it_reagent_dibenomum.webp";
-    else if(RpgProgressionState.RECALL_MILLES_ITEM_ID.equals(itemId))file="it_recall_milles.webp";
+    else if(RpgProgressionState.REAGENT_CURANUM_ITEM_ID.equals(itemId))file="it_reagent_curanum.webp";\n    else if(RpgProgressionState.RECALL_MILLES_ITEM_ID.equals(itemId))file="it_recall_milles.webp";
     // Curanum deliberately has no fabricated visual mapping until its source icon is confirmed.
     Bitmap out=null;
     if(file!=null)try(InputStream in=context.getAssets().open("assets/items/consumable/"+file)){
