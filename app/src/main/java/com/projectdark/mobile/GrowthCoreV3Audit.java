@@ -8,6 +8,8 @@ public final class GrowthCoreV3Audit {
   for(int n=0;n<196;n++)if(!r.spendStat("STR"))return false;if(r.str()!=199||r.statPoints()!=0)return false;
   RpgProgressionState a=new RpgProgressionState(),b=new RpgProgressionState();a.restoreStats(3,3,3,20,20,0);b.restoreStats(3,3,20,3,3,0);a.grantAdaptedReward(1000000,0);b.grantAdaptedReward(1000000,0);if(a.baseMaxHp()<=b.baseMaxHp()||b.baseMaxMp()<=a.baseMaxMp())return false;
   FinalStats fa=a.finalStats();if(fa.maxHp!=a.baseMaxHp()||fa.ac!=-4||fa.magicDefense!=0)return false;
-  // Growth stays independent from equipment. Defense-formula neutrality uses an explicit neutral projection.\n  FinalStats def=FinalStats.neutral(a.baseMaxHp(),a.baseMaxMp());if(def.ac!=0)return false;int d0=CombatDefenseFormula.physical(100,null,def);if(d0!=100)return false;\n  return true;
+  FinalStats def=FinalStats.neutral(a.baseMaxHp(),a.baseMaxMp());if(def.ac!=0)return false;int d0=CombatDefenseFormula.physical(100,null,def);if(d0!=100)return false;
+  return true;
  }
- public static void main(String[] z){if(!verify())throw new AssertionError("GrowthCoreV3Audit failed");System.out.println("GROWTH_CORE_V3=PASS");}\n}\n
+ public static void main(String[] z){if(!verify())throw new AssertionError("GrowthCoreV3Audit failed");System.out.println("GROWTH_CORE_V3=PASS");}
+}
