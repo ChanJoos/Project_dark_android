@@ -42,12 +42,12 @@ public final class MillesProductionCollision {
     List<Footprint> b=new ArrayList<>();
 
     // B1/B5 visible-building ground contact. These coordinates match the actual renderer anchors.
-    // Footprints are deliberately much shallower than sprite bounds: only the ground mass blocks.
-    rect(b,"potion_shop",Kind.BUILDING,215f,342f,425f,459f);
-    rect(b,"weapon_shop",Kind.BUILDING,657.5f,222f,862.5f,339f);
-    rect(b,"general_shop",Kind.BUILDING,1017.5f,272f,1222.5f,399f);
-    rect(b,"church",Kind.CHURCH,1405f,350f,1675f,494f);
-    rect(b,"inn",Kind.BUILDING,1877.5f,564f,2082.5f,689f);
+    // Buildings are solid exterior objects. Their complete authored exterior footprint is blocked; entry happens only through a front-door portal.
+    rect(b,"potion_shop",Kind.BUILDING,200f,250f,440f,459f);
+    rect(b,"weapon_shop",Kind.BUILDING,640f,125f,880f,339f);
+    rect(b,"general_shop",Kind.BUILDING,1000f,165f,1240f,399f);
+    rect(b,"church",Kind.CHURCH,1370f,150f,1710f,494f);
+    rect(b,"inn",Kind.BUILDING,1860f,430f,2100f,689f);
 
     // B2 device correction: only visible gameplay geometry is collision-authoritative.
     // Invisible legacy scenery footprints are intentionally excluded from runtime blockers.
