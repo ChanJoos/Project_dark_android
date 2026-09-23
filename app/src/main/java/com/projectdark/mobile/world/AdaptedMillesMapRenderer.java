@@ -16,7 +16,7 @@ import java.util.Map;
 /** Story-driven Milles pass: grass-dominant terrain, dirt roads, central well, and restrained landmarks. */
 public final class AdaptedMillesMapRenderer {
   public static final String STATUS="MILLES_B5_PLAYABLE_HUB_VISIBLE_BUILDINGS";
-  public static final float B1_VISIBLE_BUILDING_SCALE=1.75f; // ~4.17x the rejected 0.42 church render.
+  public static final float B1_VISIBLE_BUILDING_SCALE=1.0f; // Production PNGs are already native large assets; do not raster-upscale.
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH,TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
   // Device evidence 2026-09-15 proved the authored file semantics are opposite the old filename assumption:
@@ -40,7 +40,7 @@ public final class AdaptedMillesMapRenderer {
     drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",760f,300f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",1120f,360f,B1_VISIBLE_BUILDING_SCALE);
-    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.90f);
+    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.10f);
     drawFoot(canvas,world,"buildings/BLD_006_inn.png",1980f,650f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"street/OBJ_noticeboard.png",690f,720f,.38f);
     drawFoot(canvas,world,"street/OBJ_bench.png",850f,650f,.38f);
