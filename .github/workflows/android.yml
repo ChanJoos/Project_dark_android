@@ -34,6 +34,16 @@ jobs:
           cp qa/peasant-sources/atlas/shoes/ml228.webp app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp
           cp qa/peasant-sources/atlas/shield/ms001.webp app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp
           cp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp
+          python3 - <<'PY'
+          import json, pathlib
+          for ident in ('ml228','ms001','mh172'):
+              p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')
+              d=json.loads(p.read_text())
+              sprites=d['sprites']
+              print('REG_MANIFEST',ident,'count',len(sprites))
+              for k in list(sprites)[:12]:
+                  print('REG',ident,k,sprites[k])
+          PY
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
