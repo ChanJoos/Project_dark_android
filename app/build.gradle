@@ -12,7 +12,7 @@ android {
     }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../master']
+            assets.srcDirs += ['../assets/milles/production']
         }
     }
     testOptions {
