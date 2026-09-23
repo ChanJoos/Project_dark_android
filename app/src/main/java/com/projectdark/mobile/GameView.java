@@ -6,7 +6,7 @@ import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import com.projectdark.mobile.world.AdaptedMillesMapRenderer;
-import com.projectdark.mobile.world.BuildingInteriorRuntime;
+import com.projectdark.mobile.world.MillesReagentShopInterior;
 import com.projectdark.mobile.world.WorldCameraTransform;
 import com.projectdark.mobile.world.WorldMoveTargetController;
 import com.projectdark.mobile.world.WorldRuntimeAdapter;
@@ -32,7 +32,8 @@ public final class GameView extends View {
   private final WorldCameraTransform camera=worldAdapter.camera();
   private final WorldMoveTargetController moveTarget=worldAdapter.movement();
   private final AdaptedMillesMapRenderer mapRenderer=new AdaptedMillesMapRenderer();
-  private final BuildingInteriorRuntime interior=new BuildingInteriorRuntime();
+  private final MillesReagentShopInterior interior=new MillesReagentShopInterior();
+  private final ReagentShopController reagentShop=new ReagentShopController();
   private final CombatController combat=new CombatController();
   private final EquipmentActionResolver equipmentActions=new EquipmentActionResolver();
   private final RuntimeCombatSession combatSession=new RuntimeCombatSession(state,
@@ -81,7 +82,7 @@ public final class GameView extends View {
     if(interior.active()){
       state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();
       if(joy&&(vx!=0||vy!=0)){interior.move(vx,vy,150f*dt);action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;
-      if(interior.atExit()){interior.exit();portalCooldown=1f;worldAdapter.snapCameraToPlayer();showFeedback("밀레스로 나왔습니다",FeedbackTone.INFO);}
+      if(interior.atExit()){reagentShop.close();interior.exit();portalCooldown=1f;worldAdapter.snapCameraToPlayer();showFeedback("밀레스로 나왔습니다",FeedbackTone.INFO);}
       return;
     }
     combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);combatSession.tick(dt);state.tick(dt);state.applyDerivedGrowth();quest2.unlockIfPrologueCompleted(f5mQuest);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
@@ -90,7 +91,7 @@ public final class GameView extends View {
     WorldRuntimeAdapter.FrameSnapshot navigation=worldAdapter.tickNavigation(dt);
     if(portalCooldown<=0f&&nearPotionShopDoor()){
       worldAdapter.cancel();interaction.cancel();combat.cancelApproach();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;
-      if(interior.enterPotionShop(state.player().x,state.player().y)){action=Action.IDLE;showFeedback("물약상점에 들어왔습니다",FeedbackTone.INFO);return;}
+      if(interior.enter(state.player().x,state.player().y)){action=Action.IDLE;showFeedback("밀레스 시약상점",FeedbackTone.INFO);return;}
     }
     if(joy&&(vx!=0||vy!=0)){
       directStepClock=Math.max(0f,directStepClock-dt);
@@ -168,7 +169,7 @@ public final class GameView extends View {
   }
 
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);ox=(w-W*scale)/2;oy=(h-H*scale)/2;}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(interior.active()){drawPotionShopInterior(c);drawCharacterAt(c,interior.x(),interior.y());}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawDialogue(c);drawDeath(c);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(interior.active()){drawReagentShopInterior(c);drawCharacterAt(c,interior.x(),interior.y());drawReagentShopWindow(c);}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawDialogue(c);drawDeath(c);c.restore();}
 
   private void drawWorld(Canvas c){p.setColor(0xff101511);c.drawRect(0,0,W,H,p);mapRenderer.draw(c,worldAdapter);}
   private void drawTapMarker(Canvas c){if(tapMarkerClock<=0)return;float q=Math.max(0f,Math.min(1f,tapMarkerClock/.7f));p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2.5f);p.setColor(0xD8FFD86B);c.drawCircle(tapMarkerX,tapMarkerY,8f+8f*(1f-q),p);p.setStyle(Paint.Style.FILL);p.setColor(0x66FFD86B);c.drawCircle(tapMarkerX,tapMarkerY,3.5f,p);}
@@ -181,12 +182,37 @@ public final class GameView extends View {
   private CharacterRenderer.EffectFamily characterEffectFamily(){switch(action){case CAST:return CharacterRenderer.EffectFamily.CAST;case THROW:return CharacterRenderer.EffectFamily.THROW;case PUNCH:return CharacterRenderer.EffectFamily.PUNCH;case KICK:return CharacterRenderer.EffectFamily.KICK;case SKILL:return CharacterRenderer.EffectFamily.SKILL;default:return CharacterRenderer.EffectFamily.NONE;}}
   private void drawCharacter(Canvas c){drawCharacterAt(c,worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY());}
   private void drawCharacterAt(Canvas c,float x,float y){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;characterRenderer.draw(c,new CharacterRenderer.Pose(x,y,characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction));}
-  private void drawPotionShopInterior(Canvas c){
-    p.setColor(0xff241b14);c.drawRect(0,0,W,H,p);p.setColor(0xff4a3523);c.drawRect(250,120,710,465,p);
-    p.setColor(0xff765537);c.drawRect(270,145,690,438,p);p.setColor(0xff2f241c);c.drawRect(430,430,530,465,p);
-    p.setColor(0xff9b7347);c.drawRect(300,185,660,220,p);c.drawRect(300,260,660,292,p);
-    p.setColor(0xff5d4029);for(int i=0;i<6;i++){float x=320+i*62;c.drawRect(x,174,x+34,204,p);c.drawRect(x,249,x+34,278,p);}
-    text(c,"밀레스 물약상점",390,150,15);mutedText(c,"남쪽 출구로 이동하면 밀레스로 돌아갑니다",354,486,10);
+  private void drawReagentShopInterior(Canvas c){
+    // Classic-inspired, evidence-bounded interior: stone floor, timber walls, stocked reagent shelves,
+    // central merchant counter, Merlin, and a south exit. No modern fantasy UI chrome.
+    p.setColor(0xff080a08);c.drawRect(0,0,W,H,p);
+    p.setColor(0xff30291e);c.drawRect(228,102,732,468,p);
+    p.setColor(0xff171b15);c.drawRect(246,126,714,448,p);
+    // checker stone floor
+    for(int row=0;row<9;row++)for(int col=0;col<13;col++){float l=258+col*34,t=142+row*32;p.setColor(((row+col)&1)==0?0xff3b4438:0xff333b31);c.drawRect(l,t,l+32,t+30,p);}
+    // timber walls and posts
+    p.setColor(0xff5b3a22);c.drawRect(246,126,714,142,p);c.drawRect(246,126,260,448,p);c.drawRect(700,126,714,448,p);
+    for(int x=278;x<700;x+=70){p.setColor(0xff765033);c.drawRect(x,128,x+7,202,p);}
+    // left/right reagent shelving
+    for(int side=0;side<2;side++){float x=side==0?274:620;p.setColor(0xff4a2d1a);c.drawRect(x,164,x+66,306,p);for(int r=0;r<3;r++){float y=188+r*42;p.setColor(0xff8a6036);c.drawRect(x+4,y,x+62,y+6,p);for(int q=0;q<4;q++){float bx=x+10+q*13;p.setColor((q+r)%3==0?0xff7f9b55:(q+r)%3==1?0xff9b6657:0xff597a86);c.drawRect(bx,y-17,bx+8,y-3,p);p.setColor(0xffc9b074);c.drawRect(bx+1,y-20,bx+7,y-17,p);}}}
+    // counter with dark work surface
+    p.setColor(0xff2a1a12);c.drawRect(316,242,644,270,p);p.setColor(0xff765033);c.drawRect(326,270,634,302,p);p.setColor(0xff9a7042);c.drawRect(316,240,644,248,p);
+    // counter bottles / mortar
+    for(int i=0;i<7;i++){float bx=350+i*43;p.setColor(i%2==0?0xff6c8f70:0xff8f6659);c.drawRect(bx,222,bx+12,239,p);p.setColor(0xffd0b77b);c.drawRect(bx+2,218,bx+10,222,p);}
+    p.setColor(0xff8c8060);c.drawOval(new RectF(584,224,612,240),p);p.setColor(0xffb7a67b);c.drawRect(602,211,607,233,p);
+    // Merlin behind the counter
+    p.setColor(0x66000000);c.drawOval(new RectF(463,236,497,244),p);p.setColor(0xffd4b58d);c.drawCircle(MillesReagentShopInterior.NPC_X,MillesReagentShopInterior.NPC_Y-25,8,p);
+    p.setColor(0xff40566f);Path robe=new Path();robe.moveTo(468,195);robe.lineTo(492,195);robe.lineTo(500,237);robe.lineTo(460,237);robe.close();c.drawPath(robe,p);
+    p.setColor(0xff26384c);Path hat=new Path();hat.moveTo(464,188);hat.lineTo(480,166);hat.lineTo(495,188);hat.close();c.drawPath(hat,p);c.drawRect(460,187,500,193,p);
+    p.setColor(0xfff0dfb4);p.setTextSize(10);float nw=p.measureText(MillesReagentShopInterior.NPC_NAME);c.drawText(MillesReagentShopInterior.NPC_NAME,480-nw/2,158,p);
+    // south doorway/portal
+    p.setColor(0xff090b09);c.drawRect(430,424,530,468,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3);p.setColor(0xff87603a);c.drawRect(427,420,533,468,p);p.setStyle(Paint.Style.FILL);
+    mutedText(c,"밀레스 시약상점",262,119,8);mutedText(c,"멀린을 눌러 물품을 봅니다",382,494,9);
+  }
+  private void drawReagentShopWindow(Canvas c){
+    if(!reagentShop.open())return;p.setColor(0x8A000000);c.drawRect(0,0,W,H,p);classicWindow(c,250,105,710,430,"시약상점 · 멀린");
+    mutedText(c,"필요한 시약을 고르세요.",280,165,9);int i=0;for(ReagentShopController.Offer o:reagentShop.offers()){float y=190+i*62;p.setColor(0xD0271c14);c.drawRoundRect(new RectF(282,y,678,y+48),5,5,p);text(c,o.name,306,y+29,12);mutedText(c,o.price==null?"가격 고증 대기":"Gold "+o.price,520,y+29,8);i++;}
+    mutedText(c,"현재 고증되지 않은 가격은 구매 처리하지 않습니다.",280,394,7.5f);p.setColor(0xB024262A);c.drawCircle(684,128,15,p);text(c,"×",679,133,14);
   }
   private boolean nearPotionShopDoor(){return dist(state.player().x,state.player().y,320f,496f)<=46f;}
 
@@ -437,6 +463,10 @@ public final class GameView extends View {
       if(circleHit(x,y,UTILITY_X0,UTILITY_Y0,UTILITY_R+4)){inventoryOpen=!inventoryOpen;if(inventoryOpen){statsOpen=false;equipmentOpen=false;}showFeedback(inventoryOpen?"인벤토리 열림":"인벤토리 닫힘",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP,UTILITY_Y0,UTILITY_R+4)){statsOpen=!statsOpen;if(statsOpen){inventoryOpen=false;equipmentOpen=false;}showFeedback(statsOpen?"스탯창 열림":"스탯창 닫힘",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP*2,UTILITY_Y0,UTILITY_R+4)){equipmentOpen=!equipmentOpen;if(equipmentOpen){inventoryOpen=false;statsOpen=false;}showFeedback(equipmentOpen?"장비창 열림":"장비창 닫힘",FeedbackTone.INFO);return true;}if(equipmentOpen){if(dist(x,y,911,91)<=24){equipmentOpen=false;return true;}return inside(x,y,548,72,936,444);}if(handleInventoryTouch(x,y))return true;
+      if(interior.active()){
+        if(reagentShop.open()){if(dist(x,y,684,128)<=24){reagentShop.close();return true;}int idx=y>=190&&y<238?0:y>=252&&y<300?1:y>=314&&y<362?2:-1;if(idx>=0){ReagentShopController.BuyResult br=reagentShop.buy(idx,state.rpg());showFeedback(br==ReagentShopController.BuyResult.PRICE_UNRESOLVED?"가격 고증 전이라 구매를 잠갔습니다":br==ReagentShopController.BuyResult.BOUGHT?"구매 완료":"구매할 수 없습니다",br==ReagentShopController.BuyResult.BOUGHT?FeedbackTone.REWARD:FeedbackTone.WARN);return true;}return true;}
+        if(interior.hitMerlin(x,y)){reagentShop.openDirect();showFeedback("멀린 · 시약상점",FeedbackTone.INFO);return true;}
+      }
       if(interior.active()){
         if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){joy=true;directStepClock=0f;pressedControl="JOY";stick(x,y);return true;}
         showFeedback("물약상점 내부 · 남쪽 출구로 이동하세요",FeedbackTone.INFO);return true;
