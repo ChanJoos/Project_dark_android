@@ -65,7 +65,8 @@ public final class AdaptedMillesMapLayer {
    * navigation/tile classification, not the visible road geometry.
    */
   private static final List<Surface> SURFACES=Collections.unmodifiableList(Arrays.asList(
-      new Surface("milles_ground",SurfaceKind.GROUND,64f,48f,2304f,1600f,E,S),
+      new Surface("milles_ground",SurfaceKind.GROUND,-512f,48f,2304f,1600f,E,S),
+      new Surface("west_reagent_shop_apron",SurfaceKind.ROAD,-448f,360f,520f,590f,E,"B4_DEVICE_ACCESS_EXTENSION"),
       new Surface("north_service_corridor",SurfaceKind.ROAD,550f,120f,760f,520f,E,S),
       new Surface("west_craft_corridor",SurfaceKind.ROAD,150f,520f,540f,720f,E,S),
       new Surface("east_church_corridor",SurfaceKind.ROAD,780f,430f,1380f,660f,E,S),
