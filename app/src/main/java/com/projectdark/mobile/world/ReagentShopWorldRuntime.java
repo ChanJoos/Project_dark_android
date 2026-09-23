@@ -13,6 +13,7 @@ public final class ReagentShopWorldRuntime implements WorldMoveTargetController.
   private final RuntimeState runtime;
   private final WorldMoveTargetController movement;
   private final WorldStepInterpolator presentation;
+  private final WorldCameraTransform camera;
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
 
   public ReagentShopWorldRuntime(RuntimeState runtime){
@@ -25,12 +26,18 @@ public final class ReagentShopWorldRuntime implements WorldMoveTargetController.
     runtime.player().y=ReagentShopMapDef.ENTRY_Y;
     movement=new WorldMoveTargetController(this,this);
     presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
+    camera=new WorldCameraTransform(ReagentShopMapDef.MIN_X,ReagentShopMapDef.MAX_X,ReagentShopMapDef.MIN_Y,ReagentShopMapDef.MAX_Y,960f,540f);
+    camera.snapTo(runtime.player().x,runtime.player().y);
   }
 
   public WorldMoveTargetController movement(){return movement;}
   public float presentationX(){return presentation.x();}
   public float presentationY(){return presentation.y();}
   public boolean presentationMoving(){return presentation.active();}
+  public WorldCameraTransform camera(){return camera;}
+  public WorldCameraTransform.Point worldToScreen(float x,float y){return camera.worldToScreen(x,y);}
+  public WorldCameraTransform.Point screenToWorld(float x,float y){return camera.screenToWorld(x,y);}
+  public WorldMoveTargetController.Snapshot requestGroundScreenTap(float x,float y){WorldCameraTransform.Point w=camera.screenToWorld(x,y);return movement.requestGroundMove(w.x,w.y);}
 
   public WorldMoveTargetController.Snapshot step(WorldMoveTargetController.Direction d){
     if(presentation.active())return movement.snapshot();
@@ -46,6 +53,7 @@ public final class ReagentShopWorldRuntime implements WorldMoveTargetController.
       if(s.status!=WorldMoveTargetController.Status.MOVING)break;
       s=movement.tick(WorldMoveTargetController.TILE_STEP_SECONDS);beginPresentationIfMoved();if(!presentation.active())break;
     }
+    camera.follow(presentation.x(),presentation.y());
     return s;
   }
 
