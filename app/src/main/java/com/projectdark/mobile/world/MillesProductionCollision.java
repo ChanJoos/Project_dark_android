@@ -49,7 +49,7 @@ public final class MillesProductionCollision {
     add(b,"church",Kind.CHURCH,1540f,455f,270f,105f);
     add(b,"inn",Kind.BUILDING,1980f,650f,205f,80f);
 
-    // Nature/street objects: only the trunk/base/ring/stall base blocks the walk plane.
+    // B2 device correction: invisible/non-rendered scenery must never create dead navigation islands.\n    // Only currently visible gameplay geometry is collision-authoritative.\n    /* Legacy scenery footprints retained as visual-planning notes only; not runtime blockers.\n    // Nature/street objects: only the trunk/base/ring/stall base blocks the walk plane.
     add(b,"tree_01",Kind.TREE,SX-330f,SY+45f,22f,18f);
     add(b,"tree_02",Kind.TREE,SX-270f,SY+125f,22f,18f);
     add(b,"tree_03",Kind.TREE,SX+455f,SY+110f,22f,18f);
@@ -68,7 +68,7 @@ public final class MillesProductionCollision {
     rect(b,"lake_core",Kind.LAKE,lx-92f,ly-50f,lx+92f,ly+42f);
     rect(b,"lake_west_lobe",Kind.LAKE,lx-118f,ly-30f,lx-86f,ly+24f);
     rect(b,"lake_east_lobe",Kind.LAKE,lx+86f,ly-26f,lx+116f,ly+20f);
-    BLOCKERS=Collections.unmodifiableList(b);
+    */\n    BLOCKERS=Collections.unmodifiableList(b);
 
     // Reachable south-side interaction anchors for the B1/B5 building placement.
     List<Approach> a=new ArrayList<>();
