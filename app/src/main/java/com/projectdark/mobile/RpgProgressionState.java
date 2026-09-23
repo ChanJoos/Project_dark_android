@@ -125,7 +125,7 @@ public final class RpgProgressionState {
   public static final String VERIFIED_STARTER_ROBE_ITEM_ID="IT_APPEARANCE_LUERS_LEATHER_ROBE";
   public static final String VERIFIED_STARTER_ROBE_APPEARANCE_ID="mu0000058";
   public static final String PLAYTEST_WEAPON_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
-  public static final String B5_SMALL_HP_POTION_ITEM_ID="IT_B_SMALL_HP_POTION";
+  public static final String B5_SMALL_HP_POTION_ITEM_ID=B_SMALL_POTION_ITEM_ID;
   public static final int B5_SMALL_HP_POTION_HEAL=35;
   public static final String PLAYTEST_WEAPON_APPEARANCE_ID="mw001";
   public static final String PLAYTEST_WEAPON_SOURCE_EVIDENCE="Asset_Master mw001 목도 SOURCE_NAMED; COMMONER equip and SWING are ADAPTED PLAYTEST FIXTURE";
