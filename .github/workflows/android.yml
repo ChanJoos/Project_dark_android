@@ -27,6 +27,13 @@ jobs:
           if missing:
               sys.exit(23)
           PY
+          mkdir -p app/src/main/assets/source-registration
+          cp qa/peasant-sources/data/type/shoes/ml228.json app/src/main/assets/source-registration/ml228.json
+          cp qa/peasant-sources/data/type/shield/ms001.json app/src/main/assets/source-registration/ms001.json
+          cp qa/peasant-sources/data/type/hair/mh172.json app/src/main/assets/source-registration/mh172.json
+          cp qa/peasant-sources/atlas/shoes/ml228.webp app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp
+          cp qa/peasant-sources/atlas/shield/ms001.webp app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp
+          cp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
