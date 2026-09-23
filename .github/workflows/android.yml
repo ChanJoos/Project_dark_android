@@ -43,6 +43,11 @@ jobs:
               if not found: continue
               d=json.loads(found[0].read_text())
               print('META',ident,{k:v for k,v in d.items() if k!='sprites'})
+          for ident in ('mm001','mu0000001'):
+              found=list(Path('qa/peasant-sources/data/type').glob('*/'+ident+'.json'))
+              d=json.loads(found[0].read_text())
+              for g in ('01','02','03','b','c','d','e','f'):
+                  if g in d['sprites']: print('BASE_REG',ident,g,d['sprites'][g][:12])
           PY
           python3 - <<'PY'
           import json, pathlib
