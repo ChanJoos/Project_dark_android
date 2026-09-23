@@ -240,16 +240,20 @@ public final class GameView extends View {
     if(selectedRow==null){mutedText(c,"아이템을 선택하세요",752,250,10);}
     else{
       RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(selectedRow.itemId);
-      drawInventoryItemIcon(c,selectedRow,734,126,58);
-      text(c,selectedRow.name,806,147,12);
-      mutedText(c,rpgPresentation.requirementLabel(selectedRow),806,167,8);
-      if(selectedRow.equipped)text(c,"장착 중",806,188,8);
-      p.setColor(0xFF5B3C27);c.drawRect(734,204,900,205,p);
-      drawItemStatPanel(c,d,734,216,166);
-      String elem=rpgPresentation.elementLabel(selectedRow);if(!elem.isEmpty())mutedText(c,elem,734,303,8);
-      if(d!=null&&d.equippable())drawWrappedText(c,equipmentCompareLabel(d),734,326,164,7.5f,12);
+      text(c,selectedRow.name,734,127,10.5f);
+      mutedText(c,rpgPresentation.requirementLabel(selectedRow),734,143,7.2f);
+      if(d!=null&&d.equippable()){
+        RpgProgressionState.ItemDefinition current=state.rpg().equippedDefinition(d.equipSlot);
+        drawCompareCard(c,"현재 장착",current,734,154,78,128);
+        drawCompareCard(c,"선택 장비",d,822,154,78,128);
+        drawStatDeltaPanel(c,current,d,734,289,166);
+      }else{
+        drawInventoryItemIcon(c,selectedRow,752,164,72);
+        drawItemStatPanel(c,d,734,252,166);
+      }
+      String elem=rpgPresentation.elementLabel(selectedRow);if(!elem.isEmpty())mutedText(c,elem,734,337,7.2f);
       p.setColor(0xD06A431E);c.drawRoundRect(new RectF(748,354,886,392),5,5,p);
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFFE0AD62);c.drawRoundRect(new RectF(748,342,886,384),5,5,p);p.setStyle(Paint.Style.FILL);
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFFE0AD62);c.drawRoundRect(new RectF(748,354,886,392),5,5,p);p.setStyle(Paint.Style.FILL);
       text(c,state.rpg().isConsumable(selectedRow.itemId)?"사용":selectedRow.equipped?"해제":"장착",799,378,11);
     }
     if(inventoryPage>0)text(c,"‹",555,457,18);
@@ -277,6 +281,22 @@ public final class GameView extends View {
     else if("벨트".equals(slot)){c.drawRect(l+size*.15f,cy-size*.1f,l+size*.85f,cy+size*.1f,p);c.drawRect(cx-size*.12f,cy-size*.16f,cx+size*.12f,cy+size*.16f,p);}
     else {c.drawCircle(cx,cy,size*.24f,p);c.drawLine(cx,cy-size*.38f,cx,cy+size*.38f,p);}
     p.setStyle(Paint.Style.FILL);
+  }
+  private void drawCompareCard(Canvas c,String title,RpgProgressionState.ItemDefinition d,float x,float y,float w,float h){
+    p.setColor(0xCC241A14);c.drawRoundRect(new RectF(x,y,x+w,y+h),5,5,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xFF6E4C31);c.drawRoundRect(new RectF(x+.5f,y+.5f,x+w-.5f,y+h-.5f),5,5,p);p.setStyle(Paint.Style.FILL);
+    mutedText(c,title,x+6,y+14,6.5f);
+    if(d==null){mutedText(c,"없음",x+25,y+70,8);return;}
+    RpgInventoryPresentation.ItemRow row=null;for(RpgInventoryPresentation.ItemRow r:rpgPresentation.inventoryRows(state.rpg()))if(r.itemId.equals(d.itemId)){row=r;break;}
+    if(row!=null)drawInventoryItemIcon(c,row,x+18,y+22,42);
+    fittedText(c,RpgInventoryPresentation.displayName(d.name),x+5,y+78,w-10,7.5f);
+    String mods=itemModifierLabel(d);drawWrappedText(c,mods.isEmpty()?"추가 능력치 없음":mods,x+5,y+94,w-10,6.5f,10);
+  }
+  private void drawStatDeltaPanel(Canvas c,RpgProgressionState.ItemDefinition current,RpgProgressionState.ItemDefinition next,float x,float y,float width){
+    String[] keys={"DAM","HIT","AC","DEX","STR","INT","WIS","CON","MDEF"};int shown=0;
+    for(String key:keys){int a=mod(current,key),b=mod(next,key);if(a==0&&b==0)continue;int delta=b-a;float yy=y+shown*16;
+      mutedText(c,key,x,yy+10,6.5f);mutedText(c,a+" → "+b,x+38,yy+10,7.2f);if(delta!=0)text(c,(delta>0?"+":"")+delta,x+112,yy+10,7.5f);shown++;if(shown>=3)break;}
+    if(shown==0)mutedText(c,"장비 능력치 변화 없음",x,y+11,7.2f);
   }
   private void drawItemStatPanel(Canvas c,RpgProgressionState.ItemDefinition d,float x,float y,float width){
     if(d==null){mutedText(c,"능력치 정보 없음",x,y+12,8);return;}
@@ -335,7 +355,7 @@ public final class GameView extends View {
       int col=(int)((x-gx)/(cell+gap)),row=(int)((y-gy)/(cell+gap));float lx=gx+col*(cell+gap),ty=gy+row*(cell+gap);
       if(x<=lx+cell&&y<=ty+cell){int index=inventoryPage*pageSize+row*4+col;if(index<rows.size()){RpgInventoryPresentation.ItemRow item=rows.get(index);if(rpgInteraction.selectInventoryItem(state.rpg(),item.itemId))showFeedback(item.name+" 선택",FeedbackTone.INFO);}return true;}
     }
-    if(x>=748&&x<=886&&y>=342&&y<=384){
+    if(x>=748&&x<=886&&y>=354&&y<=392){
       String selected=rpgInteraction.selectedInventoryItemId();
       if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복물약 사용 · HP +"+RpgProgressionState.B5_SMALL_HP_POTION_HEAL:used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return true;}
       RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);return true;
