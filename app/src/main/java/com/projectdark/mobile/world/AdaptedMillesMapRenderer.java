@@ -40,7 +40,7 @@ public final class AdaptedMillesMapRenderer {
     drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",760f,300f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",1120f,360f,B1_VISIBLE_BUILDING_SCALE);
-    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.10f);
+    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.35f);
     drawFoot(canvas,world,"buildings/BLD_006_inn.png",1980f,650f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"street/OBJ_noticeboard.png",690f,720f,.38f);
     drawFoot(canvas,world,"street/OBJ_bench.png",850f,650f,.38f);
