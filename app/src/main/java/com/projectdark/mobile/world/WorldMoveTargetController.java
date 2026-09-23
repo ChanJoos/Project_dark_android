@@ -212,7 +212,16 @@ public final class WorldMoveTargetController {
     }
     return Collections.emptyList();
   }
-  private boolean edgeTraversable(TileCenter from,TileCenter to,Direction direction){\n    if(direction==null)return false;\n    // Planning must use the same swept-edge collision rule as runtime movement. A destination\n    // tile can be clear while the diagonal segment crosses a shallow building footprint.\n    float dx=to.x-from.x,dy=to.y-from.y;\n    int samples=Math.max(2,(int)Math.ceil(Math.sqrt(dx*dx+dy*dy)/4f));\n    for(int i=1;i<=samples;i++){\n      float t=i/(float)samples;\n      if(!world.canPlayerOccupy(from.x+dx*t,from.y+dy*t))return false;\n    }\n    return true;\n  }
+  private boolean edgeTraversable(TileCenter from,TileCenter to,Direction direction){
+    if(direction==null)return false;
+    float dx=to.x-from.x,dy=to.y-from.y;
+    int samples=Math.max(2,(int)Math.ceil(Math.sqrt(dx*dx+dy*dy)/4f));
+    for(int i=1;i<=samples;i++){
+      float t=i/(float)samples;
+      if(!world.canPlayerOccupy(from.x+dx*t,from.y+dy*t))return false;
+    }
+    return true;
+  }
   private static List<TileCenter> reconstruct(Node goal){
     List<TileCenter> reversed=new ArrayList<>();for(Node n=goal;n!=null;n=n.parent)reversed.add(n.tile);
     Collections.reverse(reversed);if(!reversed.isEmpty())reversed.remove(0);return reversed;
