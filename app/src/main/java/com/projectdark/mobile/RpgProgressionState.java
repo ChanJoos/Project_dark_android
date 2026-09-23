@@ -181,6 +181,13 @@ public final class RpgProgressionState {
         PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,mokdoStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_WEAPON_MW002","에페",WEAPON_SLOT,"mw002",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",4,"HIT",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_WEAPON_MW003","커틀라스",WEAPON_SLOT,"mw003",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",5),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW004","세이버",WEAPON_SLOT,"mw004",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",6),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW005","그라디우스",WEAPON_SLOT,"mw005",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",7),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW006","무기 mw006",WEAPON_SLOT,"mw006",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",8),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW007","매직마르시아",WEAPON_SLOT,"mw007",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",9),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW008","홀리머큐리아",WEAPON_SLOT,"mw008",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",10),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW009","매직쥬피티아",WEAPON_SLOT,"mw009",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",11),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW010","매스커레이드",WEAPON_SLOT,"mw010",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",12),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHOES_ML229","신발 ml229",SHOES_SLOT,"ml229",1,anyJob,true,null,null,stats("DEX",2),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHOES_ML230","신발 ml230",SHOES_SLOT,"ml230",1,anyJob,true,null,null,stats("DEX",3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHIELD_MS002","방패 ms002",SHIELD_SLOT,"ms002",1,anyJob,true,null,null,stats("AC",-3),Evidence.ADAPTED));
@@ -196,7 +203,7 @@ public final class RpgProgressionState {
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
     equipmentBySlot.put(WEAPON_SLOT,PLAYTEST_WEAPON_ITEM_ID);
     inventory.put("IT_SHOES",1);inventory.put(STARTER_HAT_ITEM_ID,1);inventory.put(STARTER_SHIELD_ITEM_ID,1);
-    inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);
+    inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);inventory.put("IT_TEST_WEAPON_MW004",1);inventory.put("IT_TEST_WEAPON_MW005",1);inventory.put("IT_TEST_WEAPON_MW006",1);inventory.put("IT_TEST_WEAPON_MW007",1);inventory.put("IT_TEST_WEAPON_MW008",1);inventory.put("IT_TEST_WEAPON_MW009",1);inventory.put("IT_TEST_WEAPON_MW010",1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
     inventory.put("IT_TEST_SHIELD_MS002",1);inventory.put("IT_TEST_SHIELD_MS003",1);
     inventory.put("IT_TEST_HAT_MH173",1);inventory.put("IT_TEST_HAT_MH174",1);
