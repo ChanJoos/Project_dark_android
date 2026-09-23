@@ -46,7 +46,8 @@ public final class GameView extends View {
 
   private float scale=1,ox,oy,vx,vy;
   private float knobX=JOY_X,knobY=JOY_Y;
-  private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen;\n  private int inventoryPage=0;
+  private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen;
+  private int inventoryPage=0;
   private float checkpointClock;
   private boolean saveWarningShown;
   private long savedLedgerSequence;
