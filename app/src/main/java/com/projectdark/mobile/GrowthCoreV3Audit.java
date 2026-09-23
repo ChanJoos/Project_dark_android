@@ -13,5 +13,5 @@ public final class GrowthCoreV3Audit {
   FinalStats def=a.finalStats();if(def.ac!=0)return false;int d0=CombatDefenseFormula.physical(100,null,def);if(d0!=100)return false;
   return true;
  }
- public static void main(String[] z){if(!verify())throw new AssertionError("GrowthCoreV3Audit failed");System.out.println("GROWTH_CORE_V3=PASS");}
+ public static void main(String[] z){RpgProgressionState x=new RpgProgressionState();FinalStats f=x.finalStats();System.out.println("GROWTH_DEBUG ac="+f.ac+" dam="+f.dam+" hit="+f.hit+" dex="+f.dex+" hp="+f.maxHp+" baseHp="+x.baseMaxHp()+" eq="+x.equipment());if(!verify())throw new AssertionError("GrowthCoreV3Audit failed");System.out.println("GROWTH_CORE_V3=PASS");}
 }
