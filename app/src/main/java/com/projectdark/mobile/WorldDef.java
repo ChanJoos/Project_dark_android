@@ -52,7 +52,14 @@ public final class WorldDef {
     monsterSpawns=Collections.unmodifiableList(m);
 
     List<PortalSpawn> p=new ArrayList<>();
-    p.add(new PortalSpawn("milles_south_exit_proto","PENDING_TARGET_MAP",790f,1565f,22f,EVIDENCE_GEOMETRY,"PROTOTYPE_DISABLED_TARGET_PENDING")); portalSpawns=Collections.unmodifiableList(p);
+    // Building exteriors stay fully solid. Entry is exclusively through front-door portal triggers.
+    p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",320f,496f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("weapon_shop_door","milles_interior_weapon_shop",736f,384f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("general_shop_door","milles_interior_general_shop",1120f,448f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("church_door","milles_interior_church",1536f,560f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("inn_door","milles_interior_inn",2016f,736f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("milles_south_exit_proto","PENDING_TARGET_MAP",790f,1565f,22f,EVIDENCE_GEOMETRY,"PROTOTYPE_DISABLED_TARGET_PENDING"));
+    portalSpawns=Collections.unmodifiableList(p);
 
     List<WorldObject> o=new ArrayList<>();
     o.add(new WorldObject("central_plaza_anchor",ASSET_STATUS,790f,590f,EVIDENCE_GEOMETRY,GEOMETRY_STATUS));
