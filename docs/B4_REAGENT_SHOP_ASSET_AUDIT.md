@@ -40,3 +40,9 @@ Older Nexon records independently discuss 코마디움/디베노뭄/엑스쿠라
 - 리콜 (town-recall presentation; exact variant to be bound from canonical data)
 
 Historical spelling/naming must be normalized only after identity evidence is recorded.
+
+
+## 2026-09-24 portal reference lock
+- User-supplied original screenshots establish the portal as a small pink concentric double-ring floor effect on one isometric tile.
+- Runtime asset: `master/assets/world/portal/portal_reagent_shop.webp` (64x32 transparent WEBP).
+- Exterior and interior exit must render this same asset, and the visible center must equal the transition trigger center.
