@@ -2,3 +2,4 @@ Trigger Android v0.45 movement/rendering build.
 
 B4 equipment visual build 2026-09-23T12:11:10.906Z
 combat-render-fix 2026-09-23T17:18:55.469Z
+ci-after-asset-merge-fix
