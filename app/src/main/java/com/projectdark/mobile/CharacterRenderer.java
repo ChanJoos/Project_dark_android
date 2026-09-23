@@ -114,7 +114,7 @@ public final class CharacterRenderer {
     boolean shoes=containsVisualRef(pose.equipmentVisualRef,"equip_basic_shoes"),gloves=containsVisualRef(pose.equipmentVisualRef,"equip_leather_glove");
     if(shoes){pixelPaint.setColor(0xff3a2a20);float step=(col==2?-1:col==4?1:0)*SOURCE_PRESENTATION_SCALE;float y=top+43*SOURCE_PRESENTATION_SCALE;c.drawRect(left+(7+step)*SOURCE_PRESENTATION_SCALE,y,left+(14+step)*SOURCE_PRESENTATION_SCALE,y+4*SOURCE_PRESENTATION_SCALE,pixelPaint);c.drawRect(left+(20-step)*SOURCE_PRESENTATION_SCALE,y,left+(27-step)*SOURCE_PRESENTATION_SCALE,y+4*SOURCE_PRESENTATION_SCALE,pixelPaint);}
     if(gloves){pixelPaint.setColor(0xff6b4b32);float y=top+27*SOURCE_PRESENTATION_SCALE;c.drawRect(left+3*SOURCE_PRESENTATION_SCALE,y,left+7*SOURCE_PRESENTATION_SCALE,y+5*SOURCE_PRESENTATION_SCALE,pixelPaint);c.drawRect(left+29*SOURCE_PRESENTATION_SCALE,y,left+33*SOURCE_PRESENTATION_SCALE,y+5*SOURCE_PRESENTATION_SCALE,pixelPaint);}
-    pixelPaint.setColor(Color.WHITE);
+    pixelPaint.setColor(0xffffffff);
   }
   private void drawShadow(Canvas c,Pose pose,float anchorY){float width=(pose.state==State.DEAD?13f:10.5f)*SHADOW_RENDER_SCALE,height=(pose.state==State.DEAD?2f:2.8f)*SHADOW_RENDER_SCALE;fxPaint.setStyle(Paint.Style.FILL);fxPaint.setColor(0x50000000);c.drawOval(new RectF(pose.x-width,anchorY-height,pose.x+width,anchorY+height),fxPaint);}
   private void drawIdleWalk(Canvas c,Pose pose,float anchorY){int row=atlasRow(pose.direction);if(row<0){drawSafePeasantFallback(c,pose,anchorY);return;}int col=paperDollAtlasColumn(pose.state,presentationWalkClock);drawAtlasCell(c,idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT,SOURCE_FOOT_ANCHOR_X,SOURCE_FOOT_ANCHOR_Y,SOURCE_PRESENTATION_SCALE,anchorY,pose.x);}
