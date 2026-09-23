@@ -9,7 +9,7 @@ import org.json.JSONObject;
 /** Versioned, single-editor checkpoints over the existing app-private save slot. */
 public final class F5mSaveStore {
   private static final String PREF="project_dark_f5m_v1";
-  private static final int SCHEMA=2;
+  private static final int SCHEMA=3;
   private static F5mSaveStore active;
   private final SharedPreferences prefs;
   private RuntimeState runtime;
@@ -117,6 +117,13 @@ public final class F5mSaveStore {
           equipped.clear();String raw=prefs.getString("equipment_ids","");
           for(String id:raw.split("\\|")){if(id.isEmpty())continue;RpgProgressionState.ItemDefinition def=r.itemDefinitions().get(id);if(def==null)throw new IllegalArgumentException("Unknown saved item");equipped.put(def.equipSlot,id);}
         }
+      }
+      // Schema 2 -> 3 adds the visual starter test loadout once. Schema 1 legacy saves keep
+      // their explicit equipment semantics; schema 3 saves never recreate deliberately removed gear.
+      if(prefs.getInt("save_schema",1)==2){
+        if(!owned.containsKey("IT_SHOES")){owned.put("IT_SHOES",1);equipped.put("신발","IT_SHOES");}
+        if(!owned.containsKey(RpgProgressionState.STARTER_HAT_ITEM_ID)){owned.put(RpgProgressionState.STARTER_HAT_ITEM_ID,1);equipped.put("모자",RpgProgressionState.STARTER_HAT_ITEM_ID);}
+        if(!owned.containsKey(RpgProgressionState.STARTER_SHIELD_ITEM_ID)){owned.put(RpgProgressionState.STARTER_SHIELD_ITEM_ID,1);equipped.put("방패",RpgProgressionState.STARTER_SHIELD_ITEM_ID);}
       }
       RpgProgressionState staged=new RpgProgressionState();
       if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid saved ownership");

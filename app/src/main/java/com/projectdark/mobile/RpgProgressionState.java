@@ -334,17 +334,7 @@ public final class RpgProgressionState {
     }
     inventory.clear();inventory.putAll(owned);
     equipmentBySlot.clear();equipmentBySlot.putAll(equipped);
-    // One-time playtest migration: newly introduced starter visuals are granted/equipped only
-    // when absent from the saved inventory. Once owned, later user equip/unequip choices persist.
-    grantStarterIfMissing("IT_SHOES","신발");
-    grantStarterIfMissing(STARTER_HAT_ITEM_ID,"모자");
-    grantStarterIfMissing(STARTER_SHIELD_ITEM_ID,"방패");
     return true;
-  }
-  private void grantStarterIfMissing(String itemId,String slot){
-    if(inventory.containsKey(itemId))return;
-    inventory.put(itemId,1);
-    equipmentBySlot.put(slot,itemId);
   }
   public long consumedCombatSequence(){return lastCombatSequence;}
   public void restoreCombatSequence(long sequence){lastCombatSequence=Math.max(0L,sequence);rewardHistory.clear();}

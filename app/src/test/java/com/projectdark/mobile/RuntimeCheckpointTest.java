@@ -36,7 +36,7 @@ public class RuntimeCheckpointTest {
   @Test public void legacySaveMigratesWithoutReequippingEmptySlot(){
     prefs.edit().putInt("training_token_qty",7).putString("equipment_ids","").putLong("gold",45).commit();
     RpgProgressionState r=restartRpg();assertEquals(Integer.valueOf(7),r.inventory().get(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID));assertTrue(r.equipment().isEmpty());assertEquals(Long.valueOf(45),r.gold());
-    F5mSaveStore.saveRewardsActive(r);assertEquals(2,prefs.getInt("save_schema",0));assertEquals(r.inventory(),restartRpg().inventory());
+    F5mSaveStore.saveRewardsActive(r);assertEquals(3,prefs.getInt("save_schema",0));assertEquals(r.inventory(),restartRpg().inventory());
   }
   @Test public void unsupportedOrUnknownItemsCannotOverwriteSave(){
     prefs.edit().putInt("save_schema",99).putLong("gold",987).commit();restartRpg();F5mSaveStore.saveRewardsActive(new RpgProgressionState());assertEquals(99,prefs.getInt("save_schema",0));assertEquals(987,prefs.getLong("gold",0));
