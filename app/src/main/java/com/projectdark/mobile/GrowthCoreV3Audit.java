@@ -9,7 +9,7 @@ public final class GrowthCoreV3Audit {
   RpgProgressionState a=new RpgProgressionState(),b=new RpgProgressionState();a.restoreStats(3,3,3,20,20,0);b.restoreStats(3,3,20,3,3,0);a.grantAdaptedReward(1000000,0);b.grantAdaptedReward(1000000,0);if(a.baseMaxHp()<=b.baseMaxHp()||b.baseMaxMp()<=a.baseMaxMp())return false;
   FinalStats fa=a.finalStats();if(fa.maxHp!=a.baseMaxHp()||fa.ac!=-4||fa.magicDefense!=0)return false;
   // Growth stays independent from equipment; neutral-defense check explicitly removes starter defensive gear.
-  a.equip(RpgProgressionState.STARTER_SHIELD_ITEM_ID);a.equip(RpgProgressionState.STARTER_HAT_ITEM_ID);a.equip(RpgProgressionState.STARTER_SHIRT_ITEM_ID);
+  // Toggle all starter defensive pieces off; fresh profiles intentionally start fully equipped.\n  a.equip(RpgProgressionState.STARTER_SHIELD_ITEM_ID);a.equip(RpgProgressionState.STARTER_HAT_ITEM_ID);a.equip(RpgProgressionState.STARTER_SHIRT_ITEM_ID);
   FinalStats def=a.finalStats();if(def.ac!=0)return false;int d0=CombatDefenseFormula.physical(100,null,def);if(d0!=100)return false;
   return true;
  }
