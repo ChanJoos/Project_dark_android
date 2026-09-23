@@ -122,6 +122,10 @@ public final class RpgProgressionState {
   private long lastCombatSequence=0L;
 
   public static final String B_SMALL_POTION_ITEM_ID="IT_B_SMALL_POTION";
+  public static final String REAGENT_KOMADIUM_ITEM_ID="IT_REAGENT_KOMADIUM";
+  public static final String REAGENT_DIBENOMUM_ITEM_ID="IT_REAGENT_DIBENOMUM";
+  public static final String REAGENT_CURANUM_ITEM_ID="IT_REAGENT_CURANUM";
+  public static final String RECALL_MILLES_ITEM_ID="IT_RECALL_MILLES";
   public static final long B_SMALL_POTION_PRICE=20L;
   public static final String SHOP_MOKDO_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
   public static final String SHOP_LEATHER_GLOVE_ITEM_ID="IT_GLOVE_LEATHER";
@@ -175,6 +179,10 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,
         "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
     registerItem(new ItemDefinition(B_SMALL_POTION_ITEM_ID,"소형 회복물약 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
+    registerItem(new ItemDefinition(REAGENT_KOMADIUM_ITEM_ID,"코마디움",null,null,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition(REAGENT_DIBENOMUM_ITEM_ID,"디베노뭄",null,null,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition(REAGENT_CURANUM_ITEM_ID,"쿠라눔",null,null,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition(RECALL_MILLES_ITEM_ID,"밀레스리콜",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠 [PENDING WEARABLE FRAMES]",ARMOR_SLOT,
         STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,shirtStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
