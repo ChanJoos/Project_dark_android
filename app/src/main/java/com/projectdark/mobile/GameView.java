@@ -176,12 +176,12 @@ public final class GameView extends View {
     if(reagentShopOpen)return;
     if(joy&&(vx!=0||vy!=0)){directStepClock=Math.max(0f,directStepClock-dt);if(directStepClock<=0f){reagentShopWorld.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;}}
     else reagentShopWorld.tick(dt);
-    if(reagentShopWorld.atExit())leaveReagentShop();
+    if(reagentShopWorld.atExit()&&!reagentShopWorld.atSpawn())leaveReagentShop();
   }
   private void drawReagentShopWorld(Canvas c){
     p.setColor(0xff120d09);c.drawRect(0,0,W,H,p);reagentShopRenderer.draw(c);
     float mx=shopScreenX(ReagentShopInteriorDef.MERLIN_X),my=shopScreenY(ReagentShopInteriorDef.MERLIN_Y);
-    characterRenderer.draw(c,new CharacterRenderer.Pose(mx,my,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,"mu0000118,mh223",CharacterVisualBinding.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+    characterRenderer.draw(c,new CharacterRenderer.Pose(mx,my,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,"mu0000118,mh259",CharacterVisualBinding.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
     text(c,"멀린",mx-13,my-48,9);
     characterRenderer.draw(c,new CharacterRenderer.Pose(shopScreenX(reagentShopWorld.x()),shopScreenY(reagentShopWorld.y()),characterDirection(),CharacterRenderer.State.IDLE,walkClock,0,1,false,CharacterVisualBinding.from(state.rpg()).equipmentVisualRef(),CharacterVisualBinding.from(state.rpg()).weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
   }
