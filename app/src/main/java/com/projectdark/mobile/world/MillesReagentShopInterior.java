@@ -11,7 +11,7 @@ public final class MillesReagentShopInterior {
   public static final float MIN_X=248f,MAX_X=712f,MIN_Y=145f,MAX_Y=438f;
   public static final float SPAWN_X=480f,SPAWN_Y=410f;
   public static final float EXIT_L=430f,EXIT_R=530f,EXIT_Y=430f;
-  public static final float NPC_X=480f,NPC_Y=214f;
+  public static final float NPC_X=535f,NPC_Y=235f;
 
   public static final class Snapshot {
     public final boolean active; public final float x,y;
@@ -29,7 +29,7 @@ public final class MillesReagentShopInterior {
     if(!active||distance<=0)return false;float len=(float)Math.sqrt(dx*dx+dy*dy);if(len<.001f)return false;
     float nx=clamp(x+dx/len*distance,MIN_X,MAX_X),ny=clamp(y+dy/len*distance,MIN_Y,MAX_Y);
     // Counter occupies the north-center band; player can walk around its ends but not through it.
-    if(ny<276f&&ny>214f&&nx>320f&&nx<640f)ny=y;
+    if(ny<330f&&ny>250f&&nx>300f&&nx<710f)ny=y;
     boolean changed=Math.abs(nx-x)>.001f||Math.abs(ny-y)>.001f;x=nx;y=ny;return changed;
   }
   public boolean atExit(){return active&&y>=EXIT_Y&&x>=EXIT_L&&x<=EXIT_R;}
