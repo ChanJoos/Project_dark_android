@@ -128,7 +128,7 @@ public final class RpgProgressionState {
   public static final String SHOP_SHOES_ITEM_ID="IT_SHOES";
   public static final String STARTER_SHIRT_ITEM_ID="IT_APPEARANCE_PEASANT_SHIRT";
   public static final String STARTER_HAT_ITEM_ID="IT_ADAPTED_STARTER_HAT";
-  public static final String STARTER_HAT_APPEARANCE_ID="mh108";
+  public static final String STARTER_HAT_APPEARANCE_ID="mh172";
   public static final String STARTER_SHIELD_ITEM_ID="IT_ADAPTED_STARTER_SHIELD";
   public static final String STARTER_SHIELD_APPEARANCE_ID="ms001";
   public static final String STARTER_SHIRT_APPEARANCE_ID="mu0000001";
