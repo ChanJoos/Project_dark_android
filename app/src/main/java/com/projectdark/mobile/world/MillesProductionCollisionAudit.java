@@ -7,41 +7,21 @@ public final class MillesProductionCollisionAudit {
   private MillesProductionCollisionAudit(){}
 
   public static boolean verify(){
-    boolean building=false,church=false,tree=false,well=false,stall=false,fence=false,lake=false;
-
-    // Every declared ground footprint must reject player occupancy at its physical center.
+    boolean building=false,church=false;
     for(MillesProductionCollision.Footprint f:MillesProductionCollision.blockers()){
       if(!MillesProductionCollision.blocked(f.centerX(),f.centerY(),PLAYER_RADIUS))return false;
-      switch(f.kind){
-        case BUILDING:building=true;break;
-        case CHURCH:church=true;break;
-        case TREE:tree=true;break;
-        case WELL:well=true;break;
-        case STALL:stall=true;break;
-        case FENCE:fence=true;break;
-        case LAKE:lake=true;break;
-      }
-      // Small world objects must still leave at least one immediately adjacent logical cell free.
-      if(f.kind==MillesProductionCollision.Kind.TREE||f.kind==MillesProductionCollision.Kind.WELL||
-         f.kind==MillesProductionCollision.Kind.STALL||f.kind==MillesProductionCollision.Kind.FENCE){
-        AdaptedMillesIsometricTileLayer.Tile nearest=nearestTile(f.centerX(),f.centerY());
-        if(nearest==null||!hasFreeAdjacentCell(nearest))return false;
-      }
+      if(f.kind==MillesProductionCollision.Kind.BUILDING)building=true;
+      if(f.kind==MillesProductionCollision.Kind.CHURCH)church=true;
+      // B2 runtime contract: only currently rendered buildings are collision-authoritative.
+      // Any reintroduced scenery blocker must be explicitly restored here with matching visuals.
+      if(f.kind!=MillesProductionCollision.Kind.BUILDING&&f.kind!=MillesProductionCollision.Kind.CHURCH)return false;
     }
-    if(!(building&&church&&tree&&well&&stall&&fence&&lake))return false;
+    if(!(building&&church))return false;
 
-    // Building/church approach points are authored cell centers and remain occupiable.
-    for(MillesProductionCollision.Approach a:MillesProductionCollision.entrances()){
-      if(!isExactAuthoredCenter(a.x,a.y))return false;
-      if(MillesProductionCollision.blocked(a.x,a.y,PLAYER_RADIUS))return false;
+    for(MillesProductionCollision.Approach approach:MillesProductionCollision.entrances()){
+      if(!isExactAuthoredCenter(approach.x,approach.y))return false;
+      if(MillesProductionCollision.blocked(approach.x,approach.y,PLAYER_RADIUS))return false;
     }
-
-    // Shoreline contract: an authored water cell is blocked while adjacent authored land remains free.
-    if(!isExactAuthoredCenter(928f,768f)||!MillesProductionCollision.lakeWater(928f,768f)||
-       !MillesProductionCollision.blocked(928f,768f,PLAYER_RADIUS))return false;
-    if(!isExactAuthoredCenter(928f,704f)||MillesProductionCollision.lakeWater(928f,704f)||
-       MillesProductionCollision.blocked(928f,704f,PLAYER_RADIUS))return false;
-
     return true;
   }
 
