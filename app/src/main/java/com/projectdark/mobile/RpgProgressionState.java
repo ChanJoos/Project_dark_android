@@ -179,6 +179,16 @@ public final class RpgProgressionState {
         STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,shirtStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
         PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,mokdoStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW002","에페 [TEST]",WEAPON_SLOT,"mw002",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",4,"HIT",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_WEAPON_MW003","커틀라스 [TEST]",WEAPON_SLOT,"mw003",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",5),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_SHOES_ML229","신발 ml229 [TEST]",SHOES_SLOT,"ml229",1,anyJob,true,null,null,stats("DEX",2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_SHOES_ML230","신발 ml230 [TEST]",SHOES_SLOT,"ml230",1,anyJob,true,null,null,stats("DEX",3),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_SHIELD_MS002","방패 ms002 [TEST]",SHIELD_SLOT,"ms002",1,anyJob,true,null,null,stats("AC",-3),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_SHIELD_MS003","방패 ms003 [TEST]",SHIELD_SLOT,"ms003",1,anyJob,true,null,null,stats("AC",-4),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_HAT_MH173","모자 mh173 [TEST]",HEAD_SLOT,"mh173",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_HAT_MH174","모자 mh174 [TEST]",HEAD_SLOT,"mh174",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000002","레더튜닉 [TEST]",ARMOR_SLOT,"mu0000002",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000003","도복 [TEST]",ARMOR_SLOT,"mu0000003",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(STARTER_SHIRT_ITEM_ID,1);
     // Starter armor uses the verified classic paper-doll garment frames while retaining the canonical shirt item identity.
@@ -186,6 +196,11 @@ public final class RpgProgressionState {
     inventory.put(PLAYTEST_WEAPON_ITEM_ID,1);
     equipmentBySlot.put(WEAPON_SLOT,PLAYTEST_WEAPON_ITEM_ID);
     inventory.put("IT_SHOES",1);inventory.put(STARTER_HAT_ITEM_ID,1);inventory.put(STARTER_SHIELD_ITEM_ID,1);
+    inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);
+    inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
+    inventory.put("IT_TEST_SHIELD_MS002",1);inventory.put("IT_TEST_SHIELD_MS003",1);
+    inventory.put("IT_TEST_HAT_MH173",1);inventory.put("IT_TEST_HAT_MH174",1);
+    inventory.put("IT_TEST_ARMOR_MU0000002",1);inventory.put("IT_TEST_ARMOR_MU0000003",1);
     equipmentBySlot.put(SHOES_SLOT,"IT_SHOES");equipmentBySlot.put(HEAD_SLOT,STARTER_HAT_ITEM_ID);equipmentBySlot.put(SHIELD_SLOT,STARTER_SHIELD_ITEM_ID);
   }
 
