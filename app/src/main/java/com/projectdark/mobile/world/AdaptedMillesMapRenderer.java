@@ -39,7 +39,7 @@ public final class AdaptedMillesMapRenderer {
     // The previous APK only drew the church at 0.42, so changing planning geometry had no visible effect.
     drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
     // Visible walk-in target: same foot coordinate as WorldDef potion_shop_door trigger.
-    drawFoot(canvas,world,"assets/world/portal/portal_reagent_shop.webp",320f,496f,.72f);
+    drawPortalTile(canvas,world,"assets/world/portal/portal_reagent_shop.webp",320f,496f);
     drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",760f,300f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",1120f,360f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.35f);
@@ -70,7 +70,7 @@ public final class AdaptedMillesMapRenderer {
     if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,src,dst,pixelPaint);
   }
   private Rect opaqueBounds(String path,Bitmap b){if(opaqueBoundsCache.containsKey(path))return opaqueBoundsCache.get(path);int minX=b.getWidth(),minY=b.getHeight(),maxX=-1,maxY=-1;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if((b.getPixel(x,y)>>>24)!=0){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}Rect r=maxX>=minX?new Rect(minX,minY,maxX+1,maxY+1):null;opaqueBoundsCache.put(path,r);return r;}
-  private void drawFoot(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy,float scale){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float ww=b.getWidth()*scale,hh=b.getHeight()*scale;RectF d=new RectF(Math.round(p.x-ww*.5f),Math.round(p.y-hh),Math.round(p.x+ww*.5f),Math.round(p.y));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}
+  private void drawPortalTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);RectF d=new RectF(Math.round(p.x-TILE_W*.5f),Math.round(p.y-TILE_H*.5f),Math.round(p.x+TILE_W*.5f),Math.round(p.y+TILE_H*.5f));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}\n  private void drawFoot(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy,float scale){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float ww=b.getWidth()*scale,hh=b.getHeight()*scale;RectF d=new RectF(Math.round(p.x-ww*.5f),Math.round(p.y-hh),Math.round(p.x+ww*.5f),Math.round(p.y));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}
   private Bitmap bitmap(String path){if(bitmapCache.containsKey(path))return bitmapCache.get(path);Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}bitmapCache.put(path,b);return b;}
   private static AssetManager findAssets(){try{Class<?> c=Class.forName("android.app.ActivityThread");Method m=c.getDeclaredMethod("currentApplication");Object a=m.invoke(null);return a instanceof Context?((Context)a).getAssets():null;}catch(Throwable ignored){return null;}}
   private static void configureFill(Paint p,int color){p.setAntiAlias(false);p.setDither(false);p.setColor(color);p.setStyle(Paint.Style.FILL);}
