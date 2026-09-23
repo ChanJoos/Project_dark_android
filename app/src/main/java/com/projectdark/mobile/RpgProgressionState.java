@@ -149,15 +149,16 @@ public final class RpgProgressionState {
 
   public RpgProgressionState(){
     Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
+    Map<String,Integer> gloveStats=stats("AC",-1),shoeStats=stats("DEX",1),shirtStats=stats("AC",-1),hatStats=stats("AC",-1),shieldStats=stats("AC",-2),mokdoStats=stats("DAM",3,"HIT",1);
     Set<String> anyJob=Collections.<String>emptySet();
     Set<String> physicalJobs=jobSet("WARRIOR","ROGUE","MARTIAL_ARTIST");
     Set<String> magicJobs=jobSet("MAGE","CLERIC");
 
-    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,gloveStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_SHOES","신발",SHOES_SLOT,"ml228",1,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition(STARTER_HAT_ITEM_ID,"밀레스털모자",HEAD_SLOT,STARTER_HAT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
-    registerItem(new ItemDefinition(STARTER_SHIELD_ITEM_ID,"기본 방패",SHIELD_SLOT,STARTER_SHIELD_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_SHOES","신발",SHOES_SLOT,"ml228",1,anyJob,true,null,null,shoeStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(STARTER_HAT_ITEM_ID,"밀레스털모자",HEAD_SLOT,STARTER_HAT_APPEARANCE_ID,1,anyJob,true,null,null,hatStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(STARTER_SHIELD_ITEM_ID,"기본 방패",SHIELD_SLOT,STARTER_SHIELD_APPEARANCE_ID,1,anyJob,true,null,null,shieldStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
@@ -175,9 +176,9 @@ public final class RpgProgressionState {
         "훈련 증표 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
     registerItem(new ItemDefinition(B_SMALL_POTION_ITEM_ID,"소형 회복물약 [B]",null,null,anyJob,true,null,null,noStats,Evidence.B));
     registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠 [PENDING WEARABLE FRAMES]",ARMOR_SLOT,
-        STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,noStats,Evidence.V));
+        STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,shirtStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(PLAYTEST_WEAPON_ITEM_ID,"목도 [ADAPTED PLAYTEST]",WEAPON_SLOT,
-        PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+        PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,mokdoStats,Evidence.ADAPTED));
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(STARTER_SHIRT_ITEM_ID,1);
     // Starter armor uses the verified classic paper-doll garment frames while retaining the canonical shirt item identity.
@@ -189,6 +190,7 @@ public final class RpgProgressionState {
   }
 
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
+  private static Map<String,Integer> stats(Object... kv){Map<String,Integer> out=new LinkedHashMap<>();for(int i=0;i+1<kv.length;i+=2)out.put((String)kv[i],(Integer)kv[i+1]);return out;}
   private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
