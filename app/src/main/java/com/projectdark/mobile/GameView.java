@@ -8,7 +8,7 @@ import android.view.View;
 import com.projectdark.mobile.world.AdaptedMillesMapRenderer;
 import com.projectdark.mobile.world.WorldCameraTransform;
 import com.projectdark.mobile.world.WorldMoveTargetController;
-import com.projectdark.mobile.world.WorldRuntimeAdapter;
+import com.projectdark.mobile.world.WorldRuntimeAdapter;\nimport com.projectdark.mobile.world.ReagentShopInteriorDef;\nimport com.projectdark.mobile.world.ReagentShopInteriorRenderer;\nimport com.projectdark.mobile.world.ReagentShopInteriorRuntime;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +41,7 @@ public final class GameView extends View {
   private final RpgInventoryPresentation rpgPresentation=new RpgInventoryPresentation();
   private final RpgInteractionController rpgInteraction=new RpgInteractionController();
   private final ClassicHudIconAtlas hudIcons=new ClassicHudIconAtlas();
-  private final EquipmentVisualRegistry inventoryVisuals;
+  private final EquipmentVisualRegistry inventoryVisuals;\n  private final ReagentItemVisualRegistry reagentVisuals;\n  private final ReagentShopInteriorRuntime reagentShopWorld=new ReagentShopInteriorRuntime();\n  private final ReagentShopInteriorRenderer reagentShopRenderer;\n  private boolean inReagentShop=false,reagentShopOpen=false;
   private final F5mAdaptedPrologueQuest f5mQuest=F5mAdaptedPrologueQuest.openingFixture();
   private final GrowthQuest2 quest2=new GrowthQuest2();
 
@@ -63,7 +63,7 @@ public final class GameView extends View {
 
   private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(checkpointClock>=2f||savedLedgerSequence!=state.ledger().sequence()){checkpoint();}camera.follow(worldAdapter.presentationPlayerX(),worldAdapter.presentationPlayerY());invalidate();postDelayed(this,16);}};
 
-  public GameView(Context c){super(c);inventoryVisuals=new EquipmentVisualRegistry(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);F5mSaveStore.restoreRuntimeActive(state);worldAdapter.snapCameraToPlayer();F5mSaveStore.bindRuntime(state,f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);}
+  public GameView(Context c){super(c);inventoryVisuals=new EquipmentVisualRegistry(c);reagentVisuals=new ReagentItemVisualRegistry(c);reagentShopRenderer=new ReagentShopInteriorRenderer(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);F5mSaveStore.restoreRuntimeActive(state);worldAdapter.snapCameraToPlayer();F5mSaveStore.bindRuntime(state,f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);}
   public void resume(){if(running)return;running=true;last=SystemClock.uptimeMillis();post(loop);}
   public void pause(){running=false;removeCallbacks(loop);F5mSaveStore.beginFrame();try{state.tick(0f);state.applyDerivedGrowth();consumeLedger();}finally{F5mSaveStore.endFrame();}checkpoint();}
   private void checkpoint(){
@@ -79,6 +79,7 @@ public final class GameView extends View {
     if(!state.player().alive){action=Action.IDLE;playerFacing.endAttack();interaction.cancel();combat.cancelApproach();worldAdapter.cancel();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
     WorldRuntimeAdapter.FrameSnapshot navigation=worldAdapter.tickNavigation(dt);
+    if(navigation.overlappingPortal!=null&&"potion_shop_door".equals(navigation.overlappingPortal.id)){enterReagentShop();return;}
     if(joy&&(vx!=0||vy!=0)){
       directStepClock=Math.max(0f,directStepClock-dt);
       if(!worldAdapter.presentationMoving()&&directStepClock<=0f){WorldMoveTargetController.Snapshot step=worldAdapter.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;applyWorldFacing(step.lastStepDirection);consumeMoveOutcome(step);}
@@ -155,7 +156,43 @@ public final class GameView extends View {
   }
 
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);ox=(w-W*scale)/2;oy=(h-H*scale)/2;}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawDialogue(c);drawDeath(c);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawTapMarker(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);c.restore();drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawDialogue(c);drawDeath(c);}c.restore();}
+
+  private void enterReagentShop(){inReagentShop=true;reagentShopOpen=false;inventoryOpen=statsOpen=equipmentOpen=false;interaction.cancel();combat.cancelApproach();worldAdapter.cancelForAction();reagentShopWorld.resetAtEntry();showFeedback("밀레스 시약상점",FeedbackTone.INFO);}
+  private void leaveReagentShop(){inReagentShop=false;reagentShopOpen=false;worldAdapter.cancel();state.player().x=320f;state.player().y=528f;worldAdapter.snapCameraToPlayer();showFeedback("밀레스",FeedbackTone.INFO);}
+  private float shopScreenX(float wx){return 480f+(wx-480f)*.72f;}
+  private float shopScreenY(float wy){return 270f+(wy-320f)*.58f;}
+  private float shopWorldX(float sx){return 480f+(sx-480f)/.72f;}
+  private float shopWorldY(float sy){return 320f+(sy-270f)/.58f;}
+  private void updateReagentShop(float dt){
+    state.tick(dt);state.applyDerivedGrowth();
+    if(reagentShopOpen)return;
+    if(joy&&(vx!=0||vy!=0)){directStepClock=Math.max(0f,directStepClock-dt);if(directStepClock<=0f){reagentShopWorld.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;}}
+    else reagentShopWorld.tick(dt);
+    if(reagentShopWorld.atExit())leaveReagentShop();
+  }
+  private void drawReagentShopWorld(Canvas c){
+    p.setColor(0xff120d09);c.drawRect(0,0,W,H,p);reagentShopRenderer.draw(c);
+    float mx=shopScreenX(ReagentShopInteriorDef.MERLIN_X),my=shopScreenY(ReagentShopInteriorDef.MERLIN_Y);
+    characterRenderer.draw(c,new CharacterRenderer.Pose(mx,my,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,"mu0000118,mh223",CharacterVisualBinding.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+    text(c,"멀린",mx-13,my-48,9);
+    characterRenderer.draw(c,new CharacterRenderer.Pose(shopScreenX(reagentShopWorld.x()),shopScreenY(reagentShopWorld.y()),characterDirection(),CharacterRenderer.State.IDLE,walkClock,0,1,false,CharacterVisualBinding.from(state.rpg()).equipmentVisualRef(),CharacterVisualBinding.from(state.rpg()).weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+  }
+  private void drawReagentShop(Canvas c){
+    if(!reagentShopOpen)return;p.setColor(0x5c000000);c.drawRect(0,0,W,H,p);classicWindow(c,430,74,918,454,"멀린의 시약상점");text(c,"×",887,102,14);
+    int i=0;for(ReagentShopCatalog.Offer o:ReagentShopCatalog.offers()){float t=128+i*70;p.setColor(0xD0191411);c.drawRect(456,t,892,t+58,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xFF765335);c.drawRect(456.5f,t+.5f,891.5f,t+57.5f,p);p.setStyle(Paint.Style.FILL);Bitmap b=reagentVisuals.get(o.itemId);if(b!=null){p.setFilterBitmap(false);float sc=Math.min(42f/b.getWidth(),42f/b.getHeight()),dw=b.getWidth()*sc,dh=b.getHeight()*sc;c.drawBitmap(b,null,new RectF(466+(42-dw)/2,t+8+(42-dh)/2,466+(42+dw)/2,t+8+(42+dh)/2),p);}text(c,o.name,526,t+25,10);mutedText(c,o.price==null?"가격 원전 확인 중":o.price+" Gold",526,t+44,8);if(o.purchasable()){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(792,t+12,874,t+47),7,7,p);text(c,"구매",816,t+34,9);}i++;}
+  }
+  private boolean handleReagentShopTouch(MotionEvent e,float x,float y){
+    if(e.getActionMasked()==MotionEvent.ACTION_DOWN){
+      if(reagentShopOpen){if(dist(x,y,891,97)<=25){reagentShopOpen=false;return true;}return true;}
+      float mx=shopScreenX(ReagentShopInteriorDef.MERLIN_X),my=shopScreenY(ReagentShopInteriorDef.MERLIN_Y);
+      if(dist(x,y,mx,my-22)<=42){reagentShopOpen=true;joy=false;vx=vy=0;showFeedback("멀린 · 시약 판매",FeedbackTone.INFO);return true;}
+      if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){joy=true;directStepClock=0f;stick(x,y);return true;}
+      if(!isHudSurface(x,y))reagentShopWorld.requestGround(shopWorldX(x),shopWorldY(y));return true;
+    }
+    if(e.getActionMasked()==MotionEvent.ACTION_MOVE&&joy){stick(x,y);return true;}
+    if(e.getActionMasked()==MotionEvent.ACTION_UP||e.getActionMasked()==MotionEvent.ACTION_CANCEL){joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;return true;}return true;
+  }
 
   private void drawWorld(Canvas c){p.setColor(0xff101511);c.drawRect(0,0,W,H,p);mapRenderer.draw(c,worldAdapter);}
   private void drawTapMarker(Canvas c){if(tapMarkerClock<=0)return;float q=Math.max(0f,Math.min(1f,tapMarkerClock/.7f));p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2.5f);p.setColor(0xD8FFD86B);c.drawCircle(tapMarkerX,tapMarkerY,8f+8f*(1f-q),p);p.setStyle(Paint.Style.FILL);p.setColor(0x66FFD86B);c.drawCircle(tapMarkerX,tapMarkerY,3.5f,p);}
@@ -402,7 +439,7 @@ public final class GameView extends View {
   private void autoNavigateQuest2(){worldAdapter.cancelForAction();interaction.cancelApproach();combat.cancelApproach();if(quest2.state()==GrowthQuest2.State.AVAILABLE||quest2.state()==GrowthQuest2.State.RETURN_READY){RuntimeState.Npc npc=findNpc("milles_guide_proto");if(npc!=null)worldAdapter.requestNpcApproach(npc.id);return;}if(quest2.state()==GrowthQuest2.State.ACTIVE){RuntimeState.Monster m=findMonster("combat_dummy_01");if(m==null)m=findMonster("combat_dummy_02");if(m==null)m=findMonster("combat_dummy_03");if(m!=null){combat.selectTarget(m);worldAdapter.requestMonsterApproach(m.id,48f);}else showFeedback("훈련 목표를 모두 처치했습니다 · 안내인에게 돌아가세요",FeedbackTone.INFO);}}
   private void requestGroundMove(float x,float y){WorldMoveTargetController.Snapshot move=worldAdapter.requestGroundScreenTap(x,y);lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;if(move.status==WorldMoveTargetController.Status.MOVING||move.status==WorldMoveTargetController.Status.REACHED){tapMarkerX=move.targetX;tapMarkerY=move.targetY;tapMarkerClock=.7f;showFeedback(move.replacedRequestId>0?"이동 목표 변경":"이동 시작",FeedbackTone.INFO);}consumeMoveOutcome(move);}
 
-  public boolean onTouchEvent(MotionEvent e){float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;switch(e.getActionMasked()){
+  public boolean onTouchEvent(MotionEvent e){float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;if(inReagentShop)return handleReagentShopTouch(e,x,y);switch(e.getActionMasked()){
     case MotionEvent.ACTION_DOWN:
       if(statsOpen){
         if(circleHit(x,y,UTILITY_X0+UTILITY_STEP,UTILITY_Y0,UTILITY_R+4)||circleHit(x,y,911,91,18)){statsOpen=false;showFeedback("스탯창 닫힘",FeedbackTone.INFO);return true;}
