@@ -81,7 +81,7 @@ public final class GameView extends View {
     feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);portalCooldown=Math.max(0f,portalCooldown-dt);
     if(interior.active()){
       state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();
-      if(joy&&(vx!=0||vy!=0)){interior.move(vx,vy,150f*dt);action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;
+      if(reagentShop.open()){joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;action=Action.IDLE;}else if(joy&&(vx!=0||vy!=0)){interior.move(vx,vy,150f*dt);action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;
       if(interior.atExit()){reagentShop.close();interior.exit();portalCooldown=1f;worldAdapter.snapCameraToPlayer();showFeedback("밀레스로 나왔습니다",FeedbackTone.INFO);}
       return;
     }
