@@ -26,7 +26,7 @@ public final class ReagentShopInteriorRenderer {
     float w=scene.getWidth()*scale,h=scene.getHeight()*scale,l=(c.getWidth()-w)*.5f,t=(c.getHeight()-h)*.5f;
     c.drawBitmap(scene,null,new RectF(l,t,l+w,t+h),pixel);
     // Interior exit uses the exact same portal visual as the exterior doorway.
-    if(portal!=null){float pw=portal.getWidth()*.62f,ph=portal.getHeight()*.62f,px=c.getWidth()*.5f-pw*.5f,py=t+h-ph*.72f;c.drawBitmap(portal,null,new RectF(px,py,px+pw,py+ph),pixel);}
+    if(portal!=null){float pw=64f,ph=32f,px=c.getWidth()*.5f-pw*.5f,py=t+h-ph*.90f;c.drawBitmap(portal,null,new RectF(px,py,px+pw,py+ph),pixel);}
   }
   private static Bitmap load(AssetManager a,String path){
     if(a==null)return null;try(InputStream in=a.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;return BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){return null;}
