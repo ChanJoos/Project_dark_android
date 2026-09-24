@@ -146,7 +146,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   public WorldMapProjection.Portal portalAt(float worldX,float worldY){if(inReagentShop())return null;for(WorldMapProjection.Portal p:map.portals())if(p.contains(worldX,worldY))return p;return null;}
-  public boolean atReagentShopExit(){if(!inReagentShop())return false;WorldPortalTransitionController.Portal p=ReagentShopMapDef.exitPortal();float dx=runtime.player().x-p.centerX,dy=runtime.player().y-p.centerY;return dx*dx+dy*dy<=p.radius*p.radius;}
+  public boolean atReagentShopExit(){if(!inReagentShop())return false;WorldPortalTransitionController.Portal p=ReagentShopMapDef.exitPortal();float dx=runtime.player().x-p.worldX,dy=runtime.player().y-p.worldY;return dx*dx+dy*dy<=p.activationRadius*p.activationRadius;}
 
   private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc n:runtime.npcs())if(id.equals(n.id))return n;return null;}
 
