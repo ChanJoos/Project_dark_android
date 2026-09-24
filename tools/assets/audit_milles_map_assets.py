@@ -36,7 +36,7 @@ def main() -> None:
     assert "garden_route_scene" not in renderer
     assert "drawPath(" not in renderer and "BitmapShader" not in renderer
     tile_source = TILES.read_text(encoding="utf-8")
-    assert "PATH_HALF_WIDTH=20f" in tile_source
+    assert "traceRoadCells" in tile_source and "connectRoadCells" in tile_source
     assert "private static final float[][][] PATHS" in tile_source
     print(f"Milles asset layout PASS: {len(items)} independent placements, reusable terrain and props")
 

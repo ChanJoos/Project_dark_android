@@ -311,24 +311,6 @@
       ],
       "processing": "unscaled crop; green lawn chroma-keyed to transparency; small detached components removed",
       "use": "video-derived alternate bench sprite candidate"
-    },
-    {
-      "path": "terrain/dirt_path_fill_texture.png",
-      "source": "inn_exterior",
-      "frame_file": "inn-full.png",
-      "time_seconds": 2.0,
-      "crop_xyxy": [
-        826,
-        608,
-        874,
-        632
-      ],
-      "dimensions_px": [
-        48,
-        24
-      ],
-      "processing": "interior rectangle cropped from recorded dirt-path tile 01; no resampling or alpha fill",
-      "use": "reference-only source patch; runtime path uses 2:1 dirt tiles"
     }
   ]
 }
