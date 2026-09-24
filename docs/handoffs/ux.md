@@ -1,5 +1,16 @@
 # UX / NPC / Quest handoff
 
+## 2026-09-24 — right-edge combat and beveled status gauges
+
+- Shifted the basic attack control toward the right edge and reduced its radius to preserve a 5 px visual margin and an in-bounds hit region.
+- Moved the 2×5 quick-slot deck left of the attack control; shifted mode/AUTO controls to maintain spacing.
+- Moved the utility rail right and aligned the minimap with the same right-side HUD zone.
+- Replaced flat HP/MP fills with dark inset wells, layered bronze borders, shaded crimson/steel-blue fills, and a restrained highlight. Values remain centered and use the live HP/MP ratio.
+- Updated HUD touch acceptance to cover the new attack/utility positions and keep empty edge space available for world taps.
+- Buff slots remain hidden until the user provides the replacement design direction.
+
+Verification: `git diff --check` passes locally. CI must run the HUD touch test, `DeviceRecordingRegressionTest`, and debug APK build for this exact revision. Device runtime and visual acceptance remain separate checks.
+
 ## 2026-09-24 — dark bronze HUD asset integration and automatic attack
 
 Baseline requested by the user: `9e9ef5d41261586e3dbabd38d2c3b282e7c23dcc`.

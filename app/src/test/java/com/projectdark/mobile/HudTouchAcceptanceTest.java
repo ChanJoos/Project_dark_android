@@ -25,7 +25,13 @@ public final class HudTouchAcceptanceTest {
   @Test public void statusQuestAndUtilitySurfacesAreProtectedButQuestCardCanFold() throws Exception {
     assertTrue(GameView.blocksWorldTapForHud(140, 110, false));
     assertTrue(GameView.blocksWorldTapForHud(140, 190, false));
-    assertTrue(GameView.blocksWorldTapForHud(632, 28, false));
+    assertTrue(GameView.blocksWorldTapForHud(666, 28, false));
+    assertTrue("attack control is anchored at the right edge without clipping",
+        GameView.blocksWorldTapForHud(955, 498, true));
+    assertTrue("empty edge beyond the attack remains available to the world",
+        !GameView.blocksWorldTapForHud(960, 498, true));
+    assertTrue("utility rail shifted right while its former position returns to the world",
+        !GameView.blocksWorldTapForHud(632, 28, false));
     assertTrue("world outside the left cards and icon rail stays tappable",
         !GameView.blocksWorldTapForHud(310, 190, false));
 
