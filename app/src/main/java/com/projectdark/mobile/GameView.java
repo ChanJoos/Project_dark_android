@@ -56,7 +56,7 @@ public final class GameView extends View {
 
   private float scale=1,ox,oy,vx,vy;
   private float knobX=JOY_X,knobY=JOY_Y;
-  private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen,autoAttackEnabled,questCollapsed;
+  private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen,autoAttackEnabled,questCollapsed=true,chatExpanded;
   private float autoTargetHintClock;
   private int inventoryPage=0;
   private float checkpointClock;
@@ -262,38 +262,39 @@ public final class GameView extends View {
   private void mutedText(Canvas c,String s,float x,float y,float size){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);p.setColor(0xffb8aa91);c.drawText(s,x,y,p);}
   private void bar(Canvas c,float l,float t,float r,float b,int color,float ratio){ratio=Math.max(0,Math.min(1,ratio));p.setColor(0xCC171416);c.drawRoundRect(new RectF(l,t,r,b),(b-t)*.3f,(b-t)*.3f,p);p.setColor(color);c.drawRoundRect(new RectF(l,t,l+(r-l)*ratio,b),(b-t)*.3f,(b-t)*.3f,p);}
 
-  private void drawHud(Canvas c){drawTopLeftStatus(c);ActiveQuestTracker.Quest tracked=ActiveQuestTracker.current(f5mQuest,quest2);if(tracked==ActiveQuestTracker.Quest.PROLOGUE)drawQuest(c);else if(tracked==ActiveQuestTracker.Quest.GROWTH_2)drawQuest2(c);else if(PostF5mHudPresentation.showNextPurpose(f5mQuest.state()))drawNextPurpose(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawExpStrip(c);drawCombatCluster(c);}
+  private void drawHud(Canvas c){drawTopLeftStatus(c);ActiveQuestTracker.Quest tracked=ActiveQuestTracker.current(f5mQuest,quest2);if(tracked==ActiveQuestTracker.Quest.PROLOGUE)drawQuest(c);else if(tracked==ActiveQuestTracker.Quest.GROWTH_2)drawQuest2(c);else if(PostF5mHudPresentation.showNextPurpose(f5mQuest.state()))drawNextPurpose(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawCombatCluster(c);}
   private void drawTopLeftStatus(Canvas c){
-    panel(c,14,12,264,132);
-    hudSprites.draw(c,HudSpriteCatalog.Sprite.PORTRAIT,new RectF(20,16,72,72),255);
+    panel(c,14,12,264,148);
     Integer level=state.rpg().normalLevel();
-    p.setColor(0xD82A2119);c.drawRoundRect(new RectF(22,76,69,94),6,6,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xA8C49A64);c.drawRoundRect(new RectF(22.5f,76.5f,68.5f,93.5f),6,6,p);p.setStyle(Paint.Style.FILL);
-    text(c,"Lv. "+(level==null?"?":level),29,89,8.5f);mutedText(c,"평민",37,107,7);
-    mutedText(c,"HP",78,34,7.5f);drawResourceBar(c,HudSpriteCatalog.Sprite.HP_BAR,99,19,177,41,state.player().hp/(float)Math.max(1,state.player().maxHp));
-    rightAlignedText(c,state.player().hp+" / "+state.player().maxHp,257,34,7.5f);
-    mutedText(c,"MP",78,65,7.5f);drawResourceBar(c,HudSpriteCatalog.Sprite.MP_BAR,99,50,177,72,state.player().mp/(float)Math.max(1,state.player().maxMp));
-    rightAlignedText(c,state.player().mp+" / "+state.player().maxMp,257,65,7.5f);
-    mutedText(c,"버프",78,94,7f);for(int i=0;i<6;i++){float x=107+i*20;emptyMiniFrame(c,x,80,18,18);}
-    Long gold=state.rpg().gold();rightAlignedText(c,"Gold  "+(gold==null?0:gold),257,123,7.5f);
+    p.setColor(0xD8201B18);c.drawRect(20,20,70,102,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xB7A78966);c.drawRect(20.5f,20.5f,69.5f,101.5f,p);p.setStyle(Paint.Style.FILL);
+    mutedText(c,"LV",37,39,8);text(c,level==null?"?":String.valueOf(level),25,77,24);
+    drawReferenceResourceBar(c,78,25,258,57,0xffc9161d,"HP",state.player().hp,state.player().maxHp);
+    drawReferenceResourceBar(c,78,64,258,96,0xff0873c4,"MP",state.player().mp,state.player().maxMp);
+    Float ratio=PostF5mHudPresentation.expRatio(state.rpg());float q=ratio==null?0f:Math.max(0f,Math.min(1f,ratio));
+    p.setColor(0xD8201B18);c.drawRect(20,108,258,140,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0x967D7060);c.drawRect(20.5f,108.5f,257.5f,139.5f,p);p.setStyle(Paint.Style.FILL);
+    text(c,"EXP",31,128,8);
+    p.setColor(0xff101211);c.drawRect(80,116,251,132,p);p.setColor(0xff158143);c.drawRect(82,118,80+171*q,130,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xB9919A8C);c.drawRect(80.5f,116.5f,250.5f,131.5f,p);p.setStyle(Paint.Style.FILL);
+    String percent=Math.round(q*100f)+"%";p.setTextSize(7);text(c,percent,155-p.measureText(percent)/2f,127,7);
+  }
+  private void drawReferenceResourceBar(Canvas c,float l,float t,float r,float b,int color,String label,int value,int max){
+    p.setColor(0xff17191a);c.drawRect(l-2,t-2,r+2,b+2,p);p.setColor(color);c.drawRect(l,t,r,b,p);
+    float q=Math.max(0f,Math.min(1f,value/(float)Math.max(1,max)));p.setColor(0x55202020);c.drawRect(l,t,r-(r-l)*q,b,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xff6d6255);c.drawRect(l-.5f,t-.5f,r+.5f,b+.5f,p);p.setStyle(Paint.Style.FILL);
+    String valueText=label+"   "+value+" / "+max;p.setTextSize(10);float width=p.measureText(valueText);text(c,valueText,(l+r-width)/2f,(t+b)/2f+3.5f,10);
   }
   private void rightAlignedText(Canvas c,String value,float right,float baseline,float size){p.setTextSize(size);p.setTypeface(Typeface.DEFAULT);float width=p.measureText(value);text(c,value,right-width,baseline,size);}
-  private void drawResourceBar(Canvas c,HudSpriteCatalog.Sprite sprite,float l,float t,float r,float b,float ratio){
-    RectF box=new RectF(l,t,r,b);hudSprites.draw(c,sprite,box,255);
-    float q=Math.max(0f,Math.min(1f,ratio));float insetX=5f,insetY=4f;
-    c.save();c.clipRect(l+insetX+q*(r-l-2*insetX),t+insetY,r-insetX,b-insetY);
-    p.setColor(0xE20A0B0D);c.drawRect(l+insetX,t+insetY,r-insetX,b-insetY,p);c.restore();
-  }
-  private void emptyMiniFrame(Canvas c,float x,float y,float w,float h){p.setColor(0xE51A1720);c.drawRoundRect(new RectF(x,y,x+w,y+h),4,4,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.1f);p.setColor(0xD2C09A63);c.drawRoundRect(new RectF(x+.5f,y+.5f,x+w-.5f,y+h-.5f),4,4,p);p.setStyle(Paint.Style.FILL);}
   private void drawQuest(Canvas c){F5mAdaptedPrologueQuest.State q=f5mQuest.state();String task;String hint;int progress=f5mQuest.currentCount(),goal=f5mQuest.requiredCount();if(q==F5mAdaptedPrologueQuest.State.AVAILABLE){task="안내인에게 말을 걸어 의뢰 받기";hint="탭하면 안내인에게 이동";progress=0;}else if(q==F5mAdaptedPrologueQuest.State.ACTIVE){task="훈련용 몬스터 처치";hint="탭하면 퀘스트 목표로 이동";}else if(q==F5mAdaptedPrologueQuest.State.RETURN_READY){task="안내인에게 돌아가 보상 받기";hint="탭하면 안내인에게 이동";progress=goal;}else{task="첫 훈련 완료";hint="다음 이야기를 확인하세요";progress=goal;}drawQuestCard(c,"첫 훈련",task,progress,goal,hint,q==F5mAdaptedPrologueQuest.State.RETURN_READY||q==F5mAdaptedPrologueQuest.State.COMPLETED);}
   private void drawQuest2(Canvas c){GrowthQuest2.State q=quest2.state();String task;String hint;int progress=quest2.currentCount(),goal=quest2.requiredCount();if(q==GrowthQuest2.State.AVAILABLE){task="안내인에게 말을 걸어 의뢰 받기";hint="보상  EXP 15,000  ·  Gold 250";progress=0;}else if(q==GrowthQuest2.State.ACTIVE){task="훈련용 몬스터 처치";hint="보상  EXP 15,000  ·  Gold 250";}else{task="안내인에게 돌아가 보상 받기";hint="보상  EXP 15,000  ·  Gold 250";progress=goal;}drawQuestCard(c,"성장 훈련",task,progress,goal,hint,q==GrowthQuest2.State.RETURN_READY);}
   private void drawNextPurpose(Canvas c){drawQuestCard(c,PostF5mHudPresentation.purposeTitle(f5mQuest.state()),PostF5mHudPresentation.purposeBody(f5mQuest.state()),0,0,"탭하면 퀘스트 안내",false);}
   private void drawQuestCard(Canvas c,String title,String task,int progress,int goal,String hint,boolean ready){
-    float bottom=questCollapsed?182:246;panel(c,14,142,278,bottom);p.setColor(0xFFBD9356);c.drawRect(15,151,18,170,p);
-    if(questCollapsed){fittedText(c,"퀘스트  ·  "+title,28,166,178,9.5f);if(goal>0)rightAlignedText(c,progress+" / "+goal,241,166,8.5f);drawQuestChevron(c,258,161,true);return;}
-    text(c,"추적 퀘스트",28,160,8);fittedText(c,title,28,177,195,10.5f);drawQuestChevron(c,258,161,false);
-    fittedText(c,task,28,195,230,8.5f);if(goal>0){rightAlignedText(c,progress+" / "+goal,258,213,8);bar(c,28,204,235,211,ready?0xffd7aa56:0xff6fbd70,progress/(float)Math.max(1,goal));}
-    fittedText(c,hint,28,235,230,7.5f);
+    float top=158,bottom=questCollapsed?198:262;panel(c,14,top,278,bottom);p.setColor(0xFFBD9356);c.drawRect(15,167,18,186,p);
+    if(questCollapsed){fittedText(c,"퀘스트  ·  "+title,28,182,178,9.5f);if(goal>0)rightAlignedText(c,progress+" / "+goal,241,182,8.5f);drawQuestChevron(c,258,177,true);return;}
+    text(c,"추적 퀘스트",28,176,8);fittedText(c,title,28,193,195,10.5f);drawQuestChevron(c,258,177,false);
+    fittedText(c,task,28,211,230,8.5f);if(goal>0){rightAlignedText(c,progress+" / "+goal,258,229,8);bar(c,28,220,235,227,ready?0xffd7aa56:0xff6fbd70,progress/(float)Math.max(1,goal));}
+    fittedText(c,hint,28,251,230,7.5f);
   }
   private void drawQuestChevron(Canvas c,float cx,float cy,boolean collapsed){p.setColor(0xAA211912);c.drawRoundRect(new RectF(cx-12,cy-10,cx+12,cy+10),5,5,p);text(c,collapsed?"▾":"▴",cx-3.5f,cy+4,10);}
   private void drawTarget(Canvas c){RuntimeState.Monster selected=combat.target();if(selected==null)return;panel(c,380,12,580,55);text(c,selected.name,397,31,9.5f);bar(c,397,39,563,48,0xffd63e49,selected.hp/(float)selected.maxHp);}
@@ -302,15 +303,8 @@ public final class GameView extends View {
   private void drawStats(Canvas c){if(!statsOpen)return;modalPanel(c,570,72,936,390);text(c,"CHARACTER STATUS",590,99,13);p.setColor(0xB024262A);c.drawCircle(911,91,15,p);text(c,"×",906,96,14);RpgProgressionState r=state.rpg();FinalStats fs=r.finalStats();RpgProgressionState.StatSnapshot ss=r.recomputeStats();mutedText(c,"Lv. "+r.normalLevel()+"  Gold "+r.gold()+"  POINT "+r.statPoints(),590,121,9);
   String[] names={"STR","INT","WIS","CON","DEX"};int[] base={r.str(),r.intel(),r.wis(),r.con(),r.dex()};for(int n=0;n<5;n++){int y=150+n*30;Integer bonus=ss.equipment.get(names[n]);text(c,names[n]+"  "+base[n]+((bonus!=null&&bonus!=0)?" ("+(bonus>0?"+":"")+bonus+")":""),594,y,10);text(c,"+",720,y,12);}
   mutedText(c,"HP "+state.player().hp+" / "+fs.maxHp,770,150,9);mutedText(c,"MP "+state.player().mp+" / "+fs.maxMp,770,172,9);mutedText(c,"AC "+fs.ac+"   MDEF "+fs.magicDefense,770,204,9);mutedText(c,"HIT "+fs.hit+"   DAM "+fs.dam,770,226,9);mutedText(c,"ATK "+fs.prototypePhysicalAttack(),770,248,9);mutedText(c,"ATK ELEM "+fs.attackElement,770,278,8);mutedText(c,"DEF ELEM "+fs.defenseElement,770,298,8);mutedText(c,"DMG RED "+fs.damageReductionPct+"%  FLAT "+fs.flatMitigation,770,328,8);mutedText(c,"AC IGNORE "+fs.acIgnore,770,348,8);mutedText(c,"Lv1-99: STAT POINT +2 · CON/WIS는 다음 레벨 HP/MP 성장에 반영",590,374,7.5f);}
-  private void drawChat(Canvas c){RuntimeMetrics metrics=state.metrics();p.setColor(0xD612100E);c.drawRoundRect(new RectF(270,418,642,522),8,8,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0x997E613D);c.drawRoundRect(new RectF(270.5f,418.5f,641.5f,521.5f),8,8,p);p.setStyle(Paint.Style.FILL);text(c,"전체    지역    파티    길드",286,438,8.5f);p.setColor(0x805B4933);c.drawRect(284,444,628,445,p);mutedText(c,"[지역] 밀레스에 오신 것을 환영합니다.",286,462,8);mutedText(c,"[전투] 격파 "+metrics.monsterDefeats()+" · 피격 "+metrics.playerHits()+" · DMG "+metrics.damageDealt(),286,482,8);mutedText(c,"[시스템] NPC · 전투 · 보상 알림",286,501,8);p.setColor(0xE01C1916);c.drawRoundRect(new RectF(282,505,630,518),5,5,p);mutedText(c,"메시지를 입력하세요.",292,516,7.5f);}
+  private void drawChat(Canvas c){RuntimeMetrics metrics=state.metrics();float top=chatExpanded?418:454;p.setColor(0xBA12100E);c.drawRoundRect(new RectF(270,top,642,522),8,8,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0x997E613D);c.drawRoundRect(new RectF(270.5f,top+.5f,641.5f,521.5f),8,8,p);p.setStyle(Paint.Style.FILL);text(c,"전체    지역    파티    길드",286,top+20,8.5f);mutedText(c,chatExpanded?"▾":"⋯",619,top+20,10);p.setColor(0x805B4933);c.drawRect(284,top+26,628,top+27,p);if(chatExpanded){mutedText(c,"[지역] 밀레스에 오신 것을 환영합니다.",286,462,8);mutedText(c,"[전투] 격파 "+metrics.monsterDefeats()+" · 피격 "+metrics.playerHits()+" · DMG "+metrics.damageDealt(),286,482,8);mutedText(c,"[시스템] NPC · 전투 · 보상 알림",286,501,8);p.setColor(0xE01C1916);c.drawRoundRect(new RectF(282,505,630,518),5,5,p);mutedText(c,"메시지를 입력하세요.",292,516,7.5f);}else{mutedText(c,"[전투] 격파 "+metrics.monsterDefeats()+" · 피격 "+metrics.playerHits()+" · DMG "+metrics.damageDealt(),286,499,8);}}
   private void drawJoystick(Canvas c){p.setColor(joy?0x7A3D4652:0x70403B34);c.drawCircle(JOY_X,JOY_Y,JOY_R,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(joy?2.5f:1.6f);p.setColor(joy?0xE8E0C487:0xB9C6AF8E);c.drawCircle(JOY_X,JOY_Y,JOY_R,p);p.setStrokeWidth(1);p.setColor(0x657F7562);c.drawCircle(JOY_X,JOY_Y,36,p);p.setStyle(Paint.Style.FILL);p.setColor(joy?0xE4C7A86B:0xC28A775C);c.drawCircle(knobX,knobY,joy?24:22,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xEEEAD9B0);c.drawCircle(knobX,knobY,joy?24:22,p);p.setStyle(Paint.Style.FILL);}
-  private void drawExpStrip(Canvas c){
-    Float ratio=PostF5mHudPresentation.expRatio(state.rpg());float q=ratio==null?0f:Math.max(0f,Math.min(1f,ratio));
-    hudSprites.draw(c,HudSpriteCatalog.Sprite.EXP_BAR,new RectF(88,524,946,542),255);
-    c.save();c.clipRect(94+q*844,530,940,536);p.setColor(0xE20A0B0D);c.drawRect(94,530,940,536,p);c.restore();
-    p.setColor(0xD512100E);c.drawRoundRect(new RectF(16,524,86,541),5,5,p);fittedText(c,PostF5mHudPresentation.expLabel(state.rpg()),22,537,60,7.2f);
-  }
-
   private RectF slotRect(int index){int col=index%5,row=index/5;float l=SLOT_X0+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
   private void drawCombatCluster(Canvas c){
     panel(c,684,356,938,469);
@@ -515,7 +509,7 @@ public final class GameView extends View {
   private void drawWrappedText(Canvas c,String s,float x,float y,float maxWidth,float size,float lineHeight){p.setTextSize(size);p.setColor(0xffeee4cf);String[] words=s.split(" ");String line="";float yy=y;for(String word:words){String test=line.length()==0?word:line+" "+word;if(p.measureText(test)>maxWidth&&line.length()>0){c.drawText(line,x,yy,p);yy+=lineHeight;line=word;}else line=test;}if(line.length()>0)c.drawText(line,x,yy,p);}
 
   static boolean blocksWorldTapForHud(float x,float y,boolean targetVisible){
-    if(inside(x,y,14,12,264,132)||inside(x,y,14,142,278,246)||inside(x,y,604,7,766,117)||inside(x,y,810,12,946,112)||inside(x,y,270,418,642,522))return true;
+    if(inside(x,y,14,12,264,148)||inside(x,y,14,158,278,198)||inside(x,y,604,7,766,117)||inside(x,y,810,12,946,112)||inside(x,y,270,418,642,522))return true;
     if(targetVisible&&inside(x,y,380,12,580,55))return true;
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
     for(int i=0;i<6;i++){float cx=UTILITY_X0+(i%3)*UTILITY_STEP,cy=UTILITY_Y0+(i/3)*UTILITY_STEP;if(circleHit(x,y,cx,cy,UTILITY_R+2))return true;}
@@ -523,7 +517,7 @@ public final class GameView extends View {
     return circleHit(x,y,ATK_X,ATK_Y,ATK_R+4)||circleHit(x,y,MODE_X,MODE_Y,MODE_R+3)||circleHit(x,y,AUTO_X,AUTO_Y,AUTO_R+3);
   }
   private static RectF slotRectStatic(int index){int col=index%5,row=index/5;float l=SLOT_X0+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
-  private boolean isHudSurface(float x,float y){return blocksWorldTapForHud(x,y,combat.target()!=null);}
+  private boolean isHudSurface(float x,float y){return blocksWorldTapForHud(x,y,combat.target()!=null)||(!questCollapsed&&inside(x,y,14,158,278,262));}
   private void autoNavigateQuest2(){worldAdapter.cancelForAction();interaction.cancelApproach();combat.cancelApproach();if(quest2.state()==GrowthQuest2.State.AVAILABLE||quest2.state()==GrowthQuest2.State.RETURN_READY){RuntimeState.Npc npc=findNpc("milles_guide_proto");if(npc!=null)worldAdapter.requestNpcApproach(npc.id);return;}if(quest2.state()==GrowthQuest2.State.ACTIVE){RuntimeState.Monster m=findMonster("combat_dummy_01");if(m==null)m=findMonster("combat_dummy_02");if(m==null)m=findMonster("combat_dummy_03");if(m!=null){combat.selectTarget(m);worldAdapter.requestMonsterApproach(m.id,48f);}else showFeedback("훈련 목표를 모두 처치했습니다 · 안내인에게 돌아가세요",FeedbackTone.INFO);}}
   private void requestGroundMove(float x,float y){WorldMoveTargetController.Snapshot move=worldAdapter.requestGroundScreenTap(x,y);lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;if(move.status==WorldMoveTargetController.Status.MOVING||move.status==WorldMoveTargetController.Status.REACHED){tapMarkerX=move.targetX;tapMarkerY=move.targetY;tapMarkerClock=.7f;showFeedback(move.replacedRequestId>0?"이동 목표 변경":"이동 시작",FeedbackTone.INFO);}consumeMoveOutcome(move);}
 
@@ -542,7 +536,8 @@ public final class GameView extends View {
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP*2,UTILITY_Y0,UTILITY_R+4)){equipmentOpen=!equipmentOpen;if(equipmentOpen){inventoryOpen=false;statsOpen=false;}showFeedback(equipmentOpen?"장비창 열림":"장비창 닫힘",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0,UTILITY_Y0+UTILITY_STEP,UTILITY_R+4)){autoNavigateQuest();return true;}
       if(equipmentOpen){if(dist(x,y,911,91)<=24){equipmentOpen=false;return true;}return inside(x,y,548,72,936,444);}if(handleInventoryTouch(x,y))return true;
-      if(inside(x,y,14,142,278,246)){if(questCollapsed){questCollapsed=false;return true;}if(inside(x,y,246,149,272,173)){questCollapsed=true;return true;}ActiveQuestTracker.Quest tracked=ActiveQuestTracker.current(f5mQuest,quest2);if(tracked==ActiveQuestTracker.Quest.PROLOGUE){autoNavigateQuest();return true;}if(tracked==ActiveQuestTracker.Quest.GROWTH_2){autoNavigateQuest2();return true;}}
+      if(inside(x,y,270,418,642,522)){if(!chatExpanded||inside(x,y,606,418,642,448)){chatExpanded=!chatExpanded;return true;}return true;}
+      if(inside(x,y,14,158,278,questCollapsed?198:262)){if(questCollapsed){questCollapsed=false;return true;}if(inside(x,y,246,165,272,189)){questCollapsed=true;return true;}ActiveQuestTracker.Quest tracked=ActiveQuestTracker.current(f5mQuest,quest2);if(tracked==ActiveQuestTracker.Quest.PROLOGUE){autoNavigateQuest();return true;}if(tracked==ActiveQuestTracker.Quest.GROWTH_2){autoNavigateQuest2();return true;}}
       if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){autoAttackEnabled=false;joy=true;directStepClock=0f;pressedControl="JOY";worldAdapter.cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}
       for(int i=0;i<10;i++)if(slotRect(i).contains(x,y)){pressedControl="SLOT"+i;showFeedback(i>=8?"포션 슬롯 · 내용 확정 후 연결됩니다":"스킬 슬롯 · 내용 확정 후 연결됩니다",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,MODE_X,MODE_Y,MODE_R+3)){pressedControl="MODE";worldAdapter.cancelForAction();showFeedback("기본 공격은 장착한 무기에 따라 결정됩니다",FeedbackTone.INFO);return true;}

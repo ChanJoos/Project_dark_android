@@ -31,10 +31,18 @@ public final class HudTouchAcceptanceTest {
 
     GameView view = new GameView(RuntimeEnvironment.getApplication());
     view.layout(0, 0, 960, 540);
-    tap(view, 258, 161); // fold chevron on the expanded card
-    assertTrue(questCollapsed(view));
-    tap(view, 80, 160); // collapsed card opens without routing a move
+    assertTrue("quest starts folded to preserve map space", questCollapsed(view));
+    tap(view, 80, 176); // open the compact tracker
     assertTrue(!questCollapsed(view));
+    tap(view, 258, 177); // fold chevron on the expanded card
+    assertTrue(questCollapsed(view));
+    tap(view, 80, 176); // collapsed card opens without routing a move
+    assertTrue(!questCollapsed(view));
+    assertTrue(!chatExpanded(view));
+    tap(view, 420, 480); // compact chat opens
+    assertTrue(chatExpanded(view));
+    tap(view, 620, 432); // expanded chat folds
+    assertTrue(!chatExpanded(view));
   }
 
   private static void tap(GameView view, float x, float y) {
@@ -45,6 +53,12 @@ public final class HudTouchAcceptanceTest {
 
   private static boolean questCollapsed(GameView view) throws Exception {
     Field field = GameView.class.getDeclaredField("questCollapsed");
+    field.setAccessible(true);
+    return field.getBoolean(view);
+  }
+
+  private static boolean chatExpanded(GameView view) throws Exception {
+    Field field = GameView.class.getDeclaredField("chatExpanded");
     field.setAccessible(true);
     return field.getBoolean(view);
   }
