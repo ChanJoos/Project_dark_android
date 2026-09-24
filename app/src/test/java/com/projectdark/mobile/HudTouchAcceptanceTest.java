@@ -58,6 +58,12 @@ public final class HudTouchAcceptanceTest {
     assertTrue(GameView.nearestLivingMonster(java.util.Arrays.asList(far,dead,near),0,0)==near);
   }
 
+  @Test public void rightHudUsesWideScreenSideMargin() {
+    assertTrue(Math.abs(GameView.rightHudOffsetForView(1920,1080))<.01f);
+    assertTrue(Math.abs(GameView.rightHudOffsetForView(2400,1080)-120f)<.01f);
+    assertTrue(Math.abs(GameView.rightHudOffsetForView(1080,1920))<.01f);
+  }
+
   private static void tap(GameView view, float x, float y) {
     MotionEvent event = MotionEvent.obtain(0, 1, MotionEvent.ACTION_DOWN, x, y, 0);
     view.onTouchEvent(event);
