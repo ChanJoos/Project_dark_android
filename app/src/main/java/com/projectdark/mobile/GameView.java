@@ -24,6 +24,7 @@ public final class GameView extends View {
   private static final float ATK_X=930f,ATK_Y=498f,ATK_R=26f;
   private static final float MODE_X=778f,MODE_Y=495f,MODE_R=22f;
   private static final float AUTO_X=842f,AUTO_Y=495f,AUTO_R=24f;
+  static final float AUTO_TARGET_RADIUS=256f;
   private static final float UTILITY_X0=608f,UTILITY_Y0=28f,UTILITY_STEP=54f,UTILITY_R=16f;
 
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -174,8 +175,8 @@ public final class GameView extends View {
 
   static RuntimeState.Monster nearestLivingMonster(List<RuntimeState.Monster> monsters,float x,float y){
     if(monsters==null)return null;
-    RuntimeState.Monster nearest=null;float best=Float.POSITIVE_INFINITY;
-    for(RuntimeState.Monster monster:monsters){if(monster==null||!monster.alive)continue;float dx=monster.x-x,dy=monster.y-y,distance=dx*dx+dy*dy;if(distance<best){best=distance;nearest=monster;}}
+    RuntimeState.Monster nearest=null;float best=AUTO_TARGET_RADIUS*AUTO_TARGET_RADIUS;
+    for(RuntimeState.Monster monster:monsters){if(monster==null||!monster.alive)continue;float dx=monster.x-x,dy=monster.y-y,distance=dx*dx+dy*dy;if(distance<=best){if(nearest==null||distance<best){best=distance;nearest=monster;}}}
     return nearest;
   }
 

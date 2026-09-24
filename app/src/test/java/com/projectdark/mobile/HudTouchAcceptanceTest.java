@@ -53,9 +53,11 @@ public final class HudTouchAcceptanceTest {
 
   @Test public void autoTargetSelectionChoosesNearestLivingMonster() {
     RuntimeState.Monster far=new RuntimeState.Monster("far","Far",40,0,10,"test");
+    RuntimeState.Monster distant=new RuntimeState.Monster("distant","Distant",400,0,10,"test");
     RuntimeState.Monster dead=new RuntimeState.Monster("dead","Dead",1,0,10,"test");dead.alive=false;
     RuntimeState.Monster near=new RuntimeState.Monster("near","Near",-3,0,10,"test");
-    assertTrue(GameView.nearestLivingMonster(java.util.Arrays.asList(far,dead,near),0,0)==near);
+    assertTrue(GameView.nearestLivingMonster(java.util.Arrays.asList(distant,far,dead,near),0,0)==near);
+    assertTrue("auto target acquisition is limited to nearby monsters",GameView.nearestLivingMonster(java.util.Collections.singletonList(distant),0,0)==null);
   }
 
   @Test public void rightHudUsesWideScreenSideMargin() {
