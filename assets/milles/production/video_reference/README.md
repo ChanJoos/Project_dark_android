@@ -7,9 +7,11 @@ so these are faithful crops from the footage rather than lossless recovery of th
 ## Runtime terrain
 
 - `terrain/grass_tile_01..03.png`: three recorded outdoor grass samples masked to 2:1 isometric diamonds.
-- `terrain/dirt_path_tile_01..02.png`: two recorded 황토길 samples masked to 2:1 isometric diamonds.
-- `AdaptedMillesMapRenderer` draws these five recorded variants on the adapted Milles layout. It also
-  draws existing production PNG assets for buildings, trees, bushes, fence, lamps, noticeboard and well.
+- `terrain/dirt_path_tile_01..02.png`: two recorded dirt-path samples masked to 2:1 isometric diamonds.
+- `terrain/dirt_path_fill_texture.png`: a repeatable stroke texture derived from the first dirt sample.
+- `AdaptedMillesMapRenderer` tiles the recorded grass beneath the scene and draws dirt as rounded,
+  textured ribbons along authored paths. The gameplay/navigation grid remains 64×32. It also draws
+  existing production PNG assets for buildings, trees, bushes, fence, lamps, noticeboard and well.
   The layout is a creative reconstruction, not a restoration of the original map.
 
 ## Video-derived object sprites

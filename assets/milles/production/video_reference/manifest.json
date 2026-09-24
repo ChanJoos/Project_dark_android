@@ -311,6 +311,24 @@
       ],
       "processing": "unscaled crop; green lawn chroma-keyed to transparency; small detached components removed",
       "use": "video-derived alternate bench sprite candidate"
+    },
+    {
+      "path": "terrain/dirt_path_fill_texture.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        802,
+        596,
+        898,
+        644
+      ],
+      "dimensions_px": [
+        96,
+        48
+      ],
+      "processing": "derived from dirt_path_tile_01; transparent diamond corners filled with median recorded soil color to provide a seamless repeatable stroke texture",
+      "use": "runtime dirt ribbon fill texture"
     }
   ]
 }

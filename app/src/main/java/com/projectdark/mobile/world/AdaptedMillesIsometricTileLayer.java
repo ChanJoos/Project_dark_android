@@ -77,6 +77,13 @@ public final class AdaptedMillesIsometricTileLayer {
 
   private static final List<Tile> TILES=build();
 
+  /** World-coordinate road centerlines for the renderer's terrain overlay. */
+  public static float[][][] roadPaths(){
+    float[][][] copy=new float[PATHS.length][][];
+    for(int i=0;i<PATHS.length;i++){copy[i]=new float[PATHS[i].length][];for(int j=0;j<PATHS[i].length;j++)copy[i][j]=PATHS[i][j].clone();}
+    return copy;
+  }
+
   private static TileKind classify(float x,float y){
     float dx=x-PLAZA_CENTER_X,dy=y-PLAZA_CENTER_Y;
     float u=dx/64f-dy/32f, v=dx/64f+dy/32f;

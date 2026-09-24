@@ -5,9 +5,12 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.BitmapShader;
+import android.graphics.Path;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
@@ -20,20 +23,24 @@ public final class AdaptedMillesMapRenderer {
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH,TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
   private static final String[] GRASS_TILES={"video_reference/terrain/grass_tile_01.png","video_reference/terrain/grass_tile_02.png","video_reference/terrain/grass_tile_03.png"};
-  private static final String[] DIRT_TILES={"video_reference/terrain/dirt_path_tile_01.png","video_reference/terrain/dirt_path_tile_02.png"};
+  private static final String DIRT_TEXTURE="video_reference/terrain/dirt_path_fill_texture.png";
   private static final String PLAZA_TILE="terrain/OBJ_stone_01.png";
-  private final Paint outsidePaint=new Paint(),pixelPaint=new Paint();
+  private final Paint outsidePaint=new Paint(),pixelPaint=new Paint(),roadEdgePaint=new Paint(),roadPaint=new Paint();
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
-  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);assets=findAssets();}
+  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);configureStroke(roadEdgePaint,0xff79501f,110f);configureStroke(roadPaint,0xff895616,94f);assets=findAssets();}
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
     for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles()){
-      drawTerrainTile(canvas,world,terrainFor(t),t.centerX,t.centerY);
+      if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)continue;
+      drawTerrainTile(canvas,world,GRASS_TILES[Math.floorMod(t.variant,GRASS_TILES.length)],t.centerX,t.centerY);
+      drawGrassTuft(canvas,world,t);
     }
+    drawRoadRibbons(canvas,world);
+    for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles())if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)drawTerrainTile(canvas,world,PLAZA_TILE,t.centerX,t.centerY);
     // Existing candidate tree assets add scale and depth to the hub. Coordinates are adapted
     // composition markers; their placement still needs device playtest approval.
     drawFoot(canvas,world,"vegetation/trees/OBJ_tree_01.png",245f,520f,.46f);
@@ -76,10 +83,24 @@ public final class AdaptedMillesMapRenderer {
    * PLAZA -> OBJ_stone_01
    * Only a small set of recorded variants is selected; no colors are synthesized at runtime.
    */
-  private static String terrainFor(AdaptedMillesIsometricTileLayer.Tile t){
-    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.ROAD||t.kind==AdaptedMillesIsometricTileLayer.TileKind.GATE)return DIRT_TILES[Math.floorMod(t.variant,DIRT_TILES.length)];
-    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)return PLAZA_TILE;
-    return GRASS_TILES[Math.floorMod(t.variant,GRASS_TILES.length)];
+  private void drawGrassTuft(Canvas c,WorldRuntimeAdapter w,AdaptedMillesIsometricTileLayer.Tile t){
+    if(t.kind!=AdaptedMillesIsometricTileLayer.TileKind.GROUND)return;
+    int hash=t.row*73856093^t.column*19349663;
+    if(Math.floorMod(hash,6)==0)drawFoot(c,w,"terrain/OBJ_ground_02.png",t.centerX,t.centerY+5f,.12f);
+  }
+
+  /** Navigation remains tile-based; the visible dirt follows hand-authored curved paths. */
+  private void drawRoadRibbons(Canvas c,WorldRuntimeAdapter w){
+    Bitmap texture=bitmap(DIRT_TEXTURE);
+    if(texture!=null)roadPaint.setShader(new BitmapShader(texture,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT));
+    c.save();c.translate(-w.camera().cameraX(),-w.camera().cameraY());
+    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
+      Path path=new Path();path.moveTo(points[0][0],points[0][1]);
+      for(int i=1;i<points.length;i++)path.lineTo(points[i][0],points[i][1]);
+      c.drawPath(path,roadEdgePaint);c.drawPath(path,roadPaint);
+    }
+    c.restore();
+    roadPaint.setShader(null);
   }
 
   private void drawTerrainTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){
@@ -96,4 +117,5 @@ public final class AdaptedMillesMapRenderer {
   private Bitmap bitmap(String path){if(bitmapCache.containsKey(path))return bitmapCache.get(path);Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}bitmapCache.put(path,b);return b;}
   private static AssetManager findAssets(){try{Class<?> c=Class.forName("android.app.ActivityThread");Method m=c.getDeclaredMethod("currentApplication");Object a=m.invoke(null);return a instanceof Context?((Context)a).getAssets():null;}catch(Throwable ignored){return null;}}
   private static void configureFill(Paint p,int color){p.setAntiAlias(false);p.setDither(false);p.setColor(color);p.setStyle(Paint.Style.FILL);}
+  private static void configureStroke(Paint p,int color,float width){p.setAntiAlias(true);p.setDither(false);p.setColor(color);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(width);p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeJoin(Paint.Join.ROUND);}
 }
