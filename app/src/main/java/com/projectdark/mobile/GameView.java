@@ -205,9 +205,10 @@ public final class GameView extends View {
     p.setColor(0xff120d09);c.drawRect(0,0,W,H,p);if(reagentShopAdapter==null)return;
     reagentShopRenderer.draw(c,reagentShopAdapter);
     WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(ReagentShopInteriorDef.MERLIN_X,ReagentShopInteriorDef.MERLIN_Y);
-    characterRenderer.draw(c,new CharacterRenderer.Pose(m.x,m.y,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,
-        "mu0000118,mh259",CharacterVisualBinding.ASSET_STATUS,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
-    text(c,"멀린",m.x-13,m.y-48,9);
+    // Merlin must read at the same paper-doll scale as the player, not as an oversized prop.
+    c.save();c.translate(m.x,m.y);c.scale(.78f,.78f);characterRenderer.draw(c,new CharacterRenderer.Pose(0,0,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,
+        "mu0000118,mh259",null,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));c.restore();
+    text(c,"멀린",m.x-13,m.y-42,9);
     WorldCameraTransform.Point q=reagentShopAdapter.worldToScreen(reagentShopAdapter.presentationPlayerX(),reagentShopAdapter.presentationPlayerY());
     characterRenderer.draw(c,new CharacterRenderer.Pose(q.x,q.y,characterDirection(),
         reagentShopAdapter.presentationMoving()?CharacterRenderer.State.WALK:CharacterRenderer.State.IDLE,walkClock,0,1,false,
@@ -216,7 +217,7 @@ public final class GameView extends View {
   }
   private void drawReagentShop(Canvas c){
     if(!reagentShopOpen)return;p.setColor(0x5c000000);c.drawRect(0,0,W,H,p);classicWindow(c,430,74,918,454,"멀린의 시약상점");text(c,"×",887,102,14);
-    int i=0;for(ReagentShopCatalog.Offer o:ReagentShopCatalog.offers()){float t=128+i*70;p.setColor(0xD0191411);c.drawRect(456,t,892,t+58,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xFF765335);c.drawRect(456.5f,t+.5f,891.5f,t+57.5f,p);p.setStyle(Paint.Style.FILL);Bitmap b=reagentVisuals.get(o.itemId);if(b!=null){p.setFilterBitmap(false);float sc=Math.min(42f/b.getWidth(),42f/b.getHeight()),dw=b.getWidth()*sc,dh=b.getHeight()*sc;c.drawBitmap(b,null,new RectF(466+(42-dw)/2,t+8+(42-dh)/2,466+(42+dw)/2,t+8+(42+dh)/2),p);}text(c,o.name,526,t+25,10);mutedText(c,o.price==null?"가격 원전 확인 중":o.price+" Gold",526,t+44,8);if(o.purchasable()){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(792,t+12,874,t+47),7,7,p);text(c,"구매",816,t+34,9);}i++;}
+    int i=0;for(ReagentShopCatalog.Offer o:ReagentShopCatalog.offers()){float t=128+i*70;p.setColor(0xD0191411);c.drawRect(456,t,892,t+58,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xFF765335);c.drawRect(456.5f,t+.5f,891.5f,t+57.5f,p);p.setStyle(Paint.Style.FILL);Bitmap b=reagentVisuals.get(o.itemId);if(b!=null){p.setFilterBitmap(false);float sc=Math.min(28f/b.getWidth(),28f/b.getHeight()),dw=b.getWidth()*sc,dh=b.getHeight()*sc;c.drawBitmap(b,null,new RectF(473+(28-dw)/2,t+15+(28-dh)/2,473+(28+dw)/2,t+15+(28+dh)/2),p);}text(c,o.name,526,t+25,10);mutedText(c,o.price==null?"가격 원전 확인 중":o.price+" Gold",526,t+44,8);if(o.purchasable()){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(792,t+12,874,t+47),7,7,p);text(c,"구매",816,t+34,9);}i++;}
   }
   private boolean handleReagentShopTouch(MotionEvent e,float x,float y){
     if(e.getActionMasked()==MotionEvent.ACTION_DOWN){
