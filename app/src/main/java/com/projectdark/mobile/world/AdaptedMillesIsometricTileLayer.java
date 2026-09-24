@@ -107,11 +107,11 @@ public final class AdaptedMillesIsometricTileLayer {
     for(float[][] path:PATHS){
       Tile previous=null;
       for(int segment=1;segment<path.length;segment++){
-        float ax=path[segment-1][0],ay=path[segment-1][1],bx=path[segment][0],by=path[segment][1];
-        int steps=Math.max(1,(int)Math.ceil(Math.hypot(bx-ax,by-ay)/PATH_SAMPLE_STEP));
+        float ax=path[segment-1][0],ay=path[segment-1][1],bx=path[segment][0],endY=path[segment][1];
+        int steps=Math.max(1,(int)Math.ceil(Math.hypot(bx-ax,endY-ay)/PATH_SAMPLE_STEP));
         for(int step=segment==1?0:1;step<=steps;step++){
           float fraction=(float)step/steps;
-          Tile current=nearestTile(ax+(bx-ax)*fraction,ay+(by-ay)*fraction);
+          Tile current=nearestTile(ax+(bx-ax)*fraction,ay+(endY-ay)*fraction);
           if(current==null)continue;
           if(previous!=null)connectRoadCells(previous,current,by,selected);
           selected.add(key(current.centerX,current.centerY));previous=current;
