@@ -2,12 +2,16 @@ package com.projectdark.mobile;
 
 import static org.junit.Assert.assertTrue;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import android.view.MotionEvent;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.lang.reflect.Field;
 
 /** Keeps visible HUD bounds from consuming representative empty-world tap-to-move regions. */
@@ -26,10 +30,10 @@ public final class HudTouchAcceptanceTest {
     assertTrue(GameView.blocksWorldTapForHud(140, 110, false));
     assertTrue(GameView.blocksWorldTapForHud(140, 150, false));
     assertTrue(GameView.blocksWorldTapForHud(608, 28, false));
-    assertTrue("attack control is anchored at the right edge without clipping",
-        GameView.blocksWorldTapForHud(955, 498, true));
-    assertTrue("empty edge beyond the attack remains available to the world",
-        !GameView.blocksWorldTapForHud(960, 498, true));
+    assertTrue("enlarged basic attack touch area reaches its visible edge",
+        GameView.blocksWorldTapForHud(950, 498, true));
+    assertTrue("screen area outside the enlarged attack stays available to the world",
+        !GameView.blocksWorldTapForHud(953, 498, true));
     assertTrue("utility rail shifted right while its former position returns to the world",
         !GameView.blocksWorldTapForHud(640, 28, false));
     assertTrue("world outside the left cards and icon rail stays tappable",
@@ -68,9 +72,24 @@ public final class HudTouchAcceptanceTest {
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1080,1920))<.01f);
     assertTrue("chat hit region follows its centered wide-screen panel",GameView.blocksWorldTapForHud(700,480,false,210f));
     assertTrue("old center-left chat position remains available to the world",!GameView.blocksWorldTapForHud(300,480,false,210f));
+    assertTrue("larger attack button and its touch target stay inside a 2340px viewport",
+        914f+GameView.rightHudOffsetForView(2340,1080)+34f+4f<=GameView.logicalWidthForView(2340,1080));
     GameView view=new GameView(RuntimeEnvironment.getApplication());
     view.layout(0,0,2340,1080);
     assertTrue("wide camera expands to the full game viewport",Math.abs(viewCameraWidth(view)-1170f)<.01f);
+  }
+
+  @Test public void rendersTheUploadedWideAspectForReview() throws Exception {
+    int width=1536,height=704;
+    GameView view=new GameView(RuntimeEnvironment.getApplication());
+    view.layout(0,0,width,height);
+    Bitmap frame=Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
+    view.draw(new Canvas(frame));
+    File report=new File("build/reports/device-review/widescreen-hud.png");
+    File parent=report.getParentFile();if(parent!=null)parent.mkdirs();
+    try(FileOutputStream out=new FileOutputStream(report)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}
+    assertTrue("wide-screen HUD review image is written",report.isFile()&&report.length()>0);
+    frame.recycle();
   }
 
   private static float viewCameraWidth(GameView view) throws Exception {
