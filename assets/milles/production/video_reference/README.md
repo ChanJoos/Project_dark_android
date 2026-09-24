@@ -9,10 +9,19 @@ so these are faithful crops from the footage rather than lossless recovery of th
 - `terrain/grass_tile_01..03.png`: three recorded outdoor grass samples masked to 2:1 isometric diamonds.
 - `terrain/dirt_path_tile_01..02.png`: two recorded dirt-path samples masked to 2:1 isometric diamonds.
 - `terrain/dirt_path_fill_texture.png`: a repeatable stroke texture derived from the first dirt sample.
-- `AdaptedMillesMapRenderer` tiles the recorded grass beneath the scene and draws dirt as rounded,
-  textured ribbons along authored paths. The gameplay/navigation grid remains 64×32. It also draws
-  existing production PNG assets for buildings, trees, bushes, fence, lamps, noticeboard and well.
-  The layout is a creative reconstruction, not a restoration of the original map.
+- `AdaptedMillesMapRenderer` keeps the gameplay/navigation grid at 64×32 and uses the recorded garden
+  scene plate below as the visible map slice. The sampled tile grass remains as a fallback beneath
+  and outside that viewport.
+
+## Recorded garden route scene
+
+- `scenes/garden_route_scene.webp` is a 1536×768 viewport crop from the user-provided Milles
+  recording at 2.0 seconds. It keeps the recorded curved dirt road, fountain, scattered benches,
+  trees, lamps and irregular fence as one coherent scene plate; the side controls and bottom hotbar
+  are cropped away. The image is stored as high-quality WebP to limit APK size.
+- The runtime draws this plate over the navigation grid as a compact reference-faithful visual slice.
+  Movement and collision remain on the existing 64×32 world grid. The plate is a fixed recorded scene
+  and is not a set of individually animated object sprites.
 
 ## Video-derived object sprites
 
