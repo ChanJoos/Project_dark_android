@@ -30,9 +30,8 @@
     {"id":"boundary_tree_east","asset":"vegetation/trees/OBJ_tree_02.png","x":2200,"y":944,"scale":0.48,"district":"village_edge"},
     {"id":"waterside_tree","asset":"vegetation/trees/OBJ_tree_05.png","x":2040,"y":1280,"scale":0.48,"district":"waterside"},
 
-    {"id":"garden_fence_near","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1008,"y":584,"scale":0.65,"district":"garden","source":"Milles footage 00:10, AI-assisted transparent reconstruction"},
-    {"id":"garden_fence_far","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1144,"y":616,"scale":0.60,"district":"garden"},
-    {"id":"garden_fence_back","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1224,"y":760,"scale":0.62,"district":"garden"},
+    {"id":"garden_fence_near","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1056,"y":584,"scale":0.65,"district":"garden","source":"Milles footage 00:10, AI-assisted transparent reconstruction"},
+    {"id":"garden_fence_far","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1120,"y":616,"scale":0.60,"district":"garden"},
 
     {"id":"square_lamp_west","asset":"street/OBJ_lamp_03.png","x":600,"y":520,"scale":0.42,"district":"civic_square"},
     {"id":"square_lamp_east","asset":"street/OBJ_lamp_01.png","x":952,"y":488,"scale":0.42,"district":"civic_square"},
