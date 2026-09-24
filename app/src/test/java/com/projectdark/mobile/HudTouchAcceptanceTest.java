@@ -66,6 +66,8 @@ public final class HudTouchAcceptanceTest {
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1920,1080))<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(2400,1080)-240f)<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1080,1920))<.01f);
+    assertTrue("chat hit region follows its centered wide-screen panel",GameView.blocksWorldTapForHud(700,480,false,210f));
+    assertTrue("old center-left chat position remains available to the world",!GameView.blocksWorldTapForHud(300,480,false,210f));
     GameView view=new GameView(RuntimeEnvironment.getApplication());
     view.layout(0,0,2340,1080);
     assertTrue("wide camera expands to the full game viewport",Math.abs(viewCameraWidth(view)-1170f)<.01f);

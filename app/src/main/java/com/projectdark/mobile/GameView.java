@@ -536,9 +536,10 @@ public final class GameView extends View {
   static boolean blocksWorldTapForHud(float x,float y,boolean targetVisible){
     return blocksWorldTapForHud(x,y,targetVisible,0f);
   }
-  private static boolean blocksWorldTapForHud(float x,float y,boolean targetVisible,float d){
-    if(inside(x,y,14,12,264,124)||inside(x,y,14,132,264,172)||inside(x,y,824+d,12,958+d,112)||inside(x,y,270,418,642,522))return true;
-    if(targetVisible&&inside(x,y,380,12,580,55))return true;
+  static boolean blocksWorldTapForHud(float x,float y,boolean targetVisible,float d){
+    float center=d*.5f;
+    if(inside(x,y,14,12,264,124)||inside(x,y,14,132,264,172)||inside(x,y,824+d,12,958+d,112)||inside(x,y,270+center,418,642+center,522))return true;
+    if(targetVisible&&inside(x,y,380+center,12,580+center,55))return true;
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
     for(int i=0;i<4;i++){float cx=UTILITY_X0+i*UTILITY_STEP+d;if(circleHit(x,y,cx,UTILITY_Y0,UTILITY_R+2)||inside(x,y,cx-22,UTILITY_Y0+19,cx+22,UTILITY_Y0+30))return true;}
     for(int i=0;i<10;i++)if(slotRectStatic(i,d).contains(x,y))return true;
@@ -564,7 +565,7 @@ public final class GameView extends View {
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP*2+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){equipmentOpen=!equipmentOpen;if(equipmentOpen){inventoryOpen=false;statsOpen=false;}showFeedback(equipmentOpen?"장비창 열림":"장비창 닫힘",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP*3+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){autoNavigateQuest();return true;}
       if(equipmentOpen){if(dist(x,y,911,91)<=24){equipmentOpen=false;return true;}return inside(x,y,548,72,936,444);}if(handleInventoryTouch(x,y))return true;
-      if(inside(x,y,270,418,642,522)){if(!chatExpanded||inside(x,y,606,418,642,448)){chatExpanded=!chatExpanded;return true;}return true;}
+      if(inside(x,y,270+hudCenterOffset,418,642+hudCenterOffset,522)){if(!chatExpanded||inside(x,y,606+hudCenterOffset,418,642+hudCenterOffset,448)){chatExpanded=!chatExpanded;return true;}return true;}
       if(inside(x,y,14,132,264,questCollapsed?172:236)){if(questCollapsed){questCollapsed=false;return true;}if(inside(x,y,232,139,256,163)){questCollapsed=true;return true;}ActiveQuestTracker.Quest tracked=ActiveQuestTracker.current(f5mQuest,quest2);if(tracked==ActiveQuestTracker.Quest.PROLOGUE){autoNavigateQuest();return true;}if(tracked==ActiveQuestTracker.Quest.GROWTH_2){autoNavigateQuest2();return true;}}
       if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){autoAttackEnabled=false;joy=true;directStepClock=0f;pressedControl="JOY";worldAdapter.cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}
       for(int i=0;i<10;i++)if(slotRect(i).contains(x,y)){pressedControl="SLOT"+i;showFeedback(i>=8?"포션 슬롯 · 내용 확정 후 연결됩니다":"스킬 슬롯 · 내용 확정 후 연결됩니다",FeedbackTone.INFO);return true;}
