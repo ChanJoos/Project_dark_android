@@ -26,5 +26,13 @@ The 2-second fountain has a floating name label across the left basin. An AI-ass
 extraction reconstructs that obscured edge as `../street/OBJ_fountain_milles_reference.png`.
 This is an adapted asset based on the footage, not a lossless original-client sprite.
 
+The short uneven wooden palisade in the 10-second footage was reconstructed as the separate
+transparent sprite `../structures/fences/OBJ_palisade_milles_reference.png`. It is an AI-assisted
+interpretation of the visible stakes, not an exact extraction. Three independently anchored
+instances frame the garden; the map can move or remove each instance without changing the sprite.
+
+The 64×32 dirt/grass boundary still has hard diamond edges. These terrain tiles are provisional;
+placing more props must not be mistaken for solving the boundary artwork.
+
 `manifest.json` records source, frame, crop bounds, processing and intended use. Source pixels are
 not enlarged or resampled during extraction.

@@ -22,20 +22,17 @@
     {"id":"garden_bench","asset":"video_reference/objects/bench_video_cutout_04.png","x":1280,"y":944,"scale":0.50,"district":"garden"},
     {"id":"waterside_bench","asset":"video_reference/objects/bench_video_cutout_02.png","x":1840,"y":1264,"scale":0.50,"district":"waterside"},
 
-    {"id":"garden_tree_1","asset":"vegetation/trees/OBJ_tree_01.png","x":1192,"y":872,"scale":0.48,"district":"garden"},
-    {"id":"garden_tree_2","asset":"vegetation/trees/OBJ_tree_04.png","x":1320,"y":936,"scale":0.46,"district":"garden"},
+    {"id":"garden_tree_1","asset":"vegetation/trees/OBJ_tree_01.png","x":1080,"y":536,"scale":0.48,"district":"garden"},
+    {"id":"garden_tree_2","asset":"vegetation/trees/OBJ_tree_04.png","x":1224,"y":688,"scale":0.46,"district":"garden"},
+    {"id":"square_tree_west","asset":"vegetation/trees/OBJ_tree_02.png","x":476,"y":610,"scale":0.43,"district":"civic_square"},
     {"id":"boundary_tree_west","asset":"vegetation/trees/OBJ_tree_03.png","x":160,"y":1024,"scale":0.50,"district":"village_edge"},
     {"id":"boundary_tree_north","asset":"vegetation/trees/OBJ_tree_01.png","x":1040,"y":176,"scale":0.50,"district":"village_edge"},
     {"id":"boundary_tree_east","asset":"vegetation/trees/OBJ_tree_02.png","x":2200,"y":944,"scale":0.48,"district":"village_edge"},
     {"id":"waterside_tree","asset":"vegetation/trees/OBJ_tree_05.png","x":2040,"y":1280,"scale":0.48,"district":"waterside"},
 
-    {"id":"garden_fence_1","asset":"structures/fences/OBJ_fence_01.png","x":1080,"y":840,"scale":0.42,"district":"garden"},
-    {"id":"garden_fence_2","asset":"structures/fences/OBJ_fence_03.png","x":1160,"y":824,"scale":0.39,"district":"garden"},
-    {"id":"garden_fence_3","asset":"structures/fences/OBJ_fence_02.png","x":1248,"y":832,"scale":0.43,"district":"garden"},
-    {"id":"garden_fence_4","asset":"structures/fences/OBJ_fence_01.png","x":1320,"y":896,"scale":0.40,"district":"garden"},
-    {"id":"garden_fence_5","asset":"structures/fences/OBJ_fence_04.png","x":1280,"y":984,"scale":0.40,"district":"garden"},
-    {"id":"garden_fence_6","asset":"structures/fences/OBJ_fence_03.png","x":1176,"y":1000,"scale":0.38,"district":"garden"},
-    {"id":"garden_fence_7","asset":"structures/fences/OBJ_fence_02.png","x":1088,"y":952,"scale":0.41,"district":"garden"},
+    {"id":"garden_fence_near","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1008,"y":584,"scale":0.65,"district":"garden","source":"Milles footage 00:10, AI-assisted transparent reconstruction"},
+    {"id":"garden_fence_far","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1144,"y":616,"scale":0.60,"district":"garden"},
+    {"id":"garden_fence_back","asset":"structures/fences/OBJ_palisade_milles_reference.png","x":1224,"y":760,"scale":0.62,"district":"garden"},
 
     {"id":"square_lamp_west","asset":"street/OBJ_lamp_03.png","x":600,"y":520,"scale":0.42,"district":"civic_square"},
     {"id":"square_lamp_east","asset":"street/OBJ_lamp_01.png","x":952,"y":488,"scale":0.42,"district":"civic_square"},
@@ -47,6 +44,10 @@
     {"id":"market_cart","asset":"market/OBJ_cart.png","x":1240,"y":480,"scale":0.30,"district":"east_market"},
     {"id":"garden_flowerbed_1","asset":"vegetation/flowers/OBJ_flower_01.png","x":1032,"y":800,"scale":0.36,"district":"garden"},
     {"id":"garden_flowerbed_2","asset":"vegetation/flowers/OBJ_flower_03.png","x":1400,"y":1040,"scale":0.34,"district":"garden"},
+    {"id":"square_shrub_west","asset":"vegetation/bushes/OBJ_bush_01.png","x":648,"y":694,"scale":0.34,"district":"civic_square"},
+    {"id":"square_shrub_east","asset":"vegetation/bushes/OBJ_bush_03.png","x":856,"y":416,"scale":0.35,"district":"civic_square"},
+    {"id":"square_grass_1","asset":"vegetation/flowers/OBJ_flower_02.png","x":576,"y":392,"scale":0.18,"district":"civic_square"},
+    {"id":"square_grass_2","asset":"vegetation/flowers/OBJ_flower_01.png","x":984,"y":532,"scale":0.16,"district":"garden"},
     {"id":"waterside_bush","asset":"vegetation/bushes/OBJ_bush_02.png","x":1904,"y":1136,"scale":0.45,"district":"waterside"},
     {"id":"waterside_pond","asset":"water/lakes/OBJ_lake_main.png","x":1856,"y":1088,"scale":0.42,"district":"waterside"}
   ]

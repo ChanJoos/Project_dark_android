@@ -28,6 +28,7 @@ def main() -> None:
         "video_reference/terrain/dirt_path_tile_01.png",
         "video_reference/objects/bench_video_cutout_01.png",
         "street/OBJ_fountain_milles_reference.png",
+        "structures/fences/OBJ_palisade_milles_reference.png",
         "structures/fences/OBJ_fence_01.png",
         "vegetation/trees/OBJ_tree_01.png",
     ):
