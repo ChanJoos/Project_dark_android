@@ -43,7 +43,8 @@ public final class MillesProductionCollision {
 
     // B1/B5 visible-building ground contact. These coordinates match the actual renderer anchors.
     // Buildings are solid exterior objects. Their complete authored exterior footprint is blocked; entry happens only through a front-door portal.
-    rect(b,"potion_shop",Kind.BUILDING,200f,250f,440f,459f);
+    rect(b,"potion_shop_left",Kind.BUILDING,200f,250f,298f,459f);
+    rect(b,"potion_shop_right",Kind.BUILDING,342f,250f,440f,459f);
     rect(b,"weapon_shop",Kind.BUILDING,640f,125f,880f,339f);
     rect(b,"general_shop",Kind.BUILDING,1000f,165f,1240f,399f);
     rect(b,"church",Kind.CHURCH,1370f,150f,1710f,494f);
@@ -55,7 +56,7 @@ public final class MillesProductionCollision {
 
     // Reachable south-side interaction anchors for the B1/B5 building placement.
     List<Approach> a=new ArrayList<>();
-    a.add(new Approach("potion_shop",320f,496f));
+    a.add(new Approach("potion_shop",320f,459f));
     a.add(new Approach("weapon_shop",736f,384f));
     a.add(new Approach("general_shop",1120f,448f));
     a.add(new Approach("church",1536f,560f));
