@@ -95,6 +95,7 @@ public final class GameView extends View {
     consumeMoveOutcome(move);action=Action.IDLE;
   }
 
+  private boolean reagentShopEntranceReached(){com.projectdark.mobile.world.AdaptedMillesEntranceLayer.Entrance e=com.projectdark.mobile.world.AdaptedMillesEntranceLayer.byStructureId("potion_shop");if(e==null)return false;float dx=state.player().x-e.approachX,dy=state.player().y-e.approachY;return dx*dx+dy*dy<=18f*18f;}
   private void consumeMoveOutcome(WorldMoveTargetController.Snapshot move){
     if(move==null)return;
     if(move.requestId!=lastMoveRequestId){lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;}
