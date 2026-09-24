@@ -26,6 +26,9 @@ def main() -> None:
     for rel in (
         "video_reference/terrain/grass_tile_01.png",
         "video_reference/terrain/dirt_path_tile_01.png",
+        "video_reference/terrain/transitions/path_nw_se.png",
+        "video_reference/terrain/transitions/path_ne_sw.png",
+        "video_reference/terrain/transitions/path_junction.png",
         "video_reference/objects/bench_video_cutout_01.png",
         "street/OBJ_fountain_milles_reference.png",
         "structures/fences/OBJ_palisade_milles_reference.png",
