@@ -32,7 +32,6 @@ public final class AdaptedMillesIsometricTileLayer {
     public long depthKey(){return ((long)row<<32)|(column&0xffffffffL);}
   }
 
-  private static final List<Tile> TILES=build();
   private AdaptedMillesIsometricTileLayer(){}
   public static List<Tile> tiles(){return TILES;}
   public static Tile tileAt(float x,float y){Tile best=null;for(Tile t:TILES)if(t.contains(x,y)&&(best==null||t.depthKey()>best.depthKey()))best=t;return best;}
@@ -75,6 +74,8 @@ public final class AdaptedMillesIsometricTileLayer {
       // A looping garden walk gives the central grove a second entrance.
       {{875,545},{930,650},{1030,760},{1175,815},{1320,780},{1390,675},{1385,545}}
   };
+
+  private static final List<Tile> TILES=build();
 
   private static TileKind classify(float x,float y){
     float dx=x-PLAZA_CENTER_X,dy=y-PLAZA_CENTER_Y;
