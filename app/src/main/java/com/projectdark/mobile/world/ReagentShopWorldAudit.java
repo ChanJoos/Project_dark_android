@@ -14,12 +14,15 @@ public final class ReagentShopWorldAudit {
     if(exit.readiness!=WorldPortalTransitionController.PortalReadiness.READY)return false;
     if(!ReagentShopMapDef.MILLES_MAP_ID.equals(exit.targetMapId))return false;
     RuntimeState state=new RuntimeState();
-    ReagentShopWorldRuntime world=new ReagentShopWorldRuntime(state);
+    WorldRuntimeAdapter world=new WorldRuntimeAdapter(state,960f,540f);
+    Object rpg=state.rpg();
+    world.enterReagentShop();
+    if(!world.inReagentShop()||state.rpg()!=rpg)return false;
     if(world.navigationTiles().size()!=ReagentShopMapDef.tiles().size())return false;
     float x=state.player().x,y=state.player().y;
     WorldMoveTargetController.Snapshot s=world.step(WorldMoveTargetController.Direction.NW);
-    if(s==null)return false;
-    if(state.player().x==x&&state.player().y==y)return false;
-    return true;
+    if(s==null||state.player().x==x&&state.player().y==y)return false;
+    world.leaveReagentShop();
+    return !world.inReagentShop()&&state.rpg()==rpg;
   }
 }
