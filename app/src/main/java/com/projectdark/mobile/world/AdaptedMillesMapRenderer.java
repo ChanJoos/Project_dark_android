@@ -4,98 +4,161 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
-/** Story-driven Milles pass: grass-dominant terrain, dirt roads, central well, and restrained landmarks. */
+/** Draws the Milles world from reusable ground tiles and independently anchored object assets. */
 public final class AdaptedMillesMapRenderer {
-  public static final String STATUS="MILLES_B5_PLAYABLE_HUB_VISIBLE_BUILDINGS";
-  public static final float B1_VISIBLE_BUILDING_SCALE=1.0f; // Production PNGs are already native large assets; do not raster-upscale.
-  private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH,TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
+  public static final String STATUS="MILLE_MAP_ASSEMBLED_FROM_REUSABLE_ASSETS";
+  public static final float B1_VISIBLE_BUILDING_SCALE=1.0f;
+  private static final String MAP_LAYOUT="maps/milles_garden.json";
+  private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
+  private static final float TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
-  // Device evidence 2026-09-15 proved the authored file semantics are opposite the old filename assumption:
-  // ground_02 is the green flower-grass tile; ground_01 is the brown dirt tile.
-  private static final String GRASS_TILE="terrain/OBJ_ground_02.png";
-  private static final String DIRT_TILE="terrain/OBJ_ground_01.png";
-  private static final String PLAZA_TILE="terrain/OBJ_stone_01.png";
-  private final Paint outsidePaint=new Paint(),pixelPaint=new Paint();
+  private static final String GRASS_SURFACE="video_reference/terrain/grass_tile_01.png";
+  private static final String SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png";
+
+  private static final class SpritePlacement {
+    final String id,asset,drawMode,district;
+    final float x,y,scale;
+    SpritePlacement(JSONObject value){
+      id=value.optString("id","");asset=value.optString("asset","");
+      drawMode=value.optString("draw","foot");district=value.optString("district","");
+      x=(float)value.optDouble("x",0);y=(float)value.optDouble("y",0);scale=(float)value.optDouble("scale",1);
+    }
+  }
+
+  private final Paint outsidePaint=new Paint(),pixelPaint=new Paint(),soilPaint=new Paint(),soilEdgePaint=new Paint();
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
-  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);assets=findAssets();}
+  private final List<SpritePlacement> placements;
+
+  public AdaptedMillesMapRenderer(){
+    configureFill(outsidePaint,0xff355127);
+    pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);
+    configureRoadPaint(soilEdgePaint,0x996b522d,49f);
+    configureRoadPaint(soilPaint,0xff91602d,43f);
+    assets=findAssets();placements=loadPlacements();
+  }
+
+  public int placementCount(){return placements.size();}
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
-    if(canvas==null||world==null)return;
+    if(canvas==null||world==null||world.map()==null)return;
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
-    for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles()){
-      if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.GROUND){
-        // OBJ_ground_02 is a flower tuft on transparent pixels, not a seamless grass tile.
-        // Keep the authored green ground continuous and scatter small tufts deterministically.
-        if(Math.floorMod(t.row*31+t.column*17+11,7)==0)drawGroundTuft(canvas,world,t.centerX,t.centerY);
-      }else drawTerrainTile(canvas,world,terrainFor(t),t.centerX,t.centerY);
+    // Draw one grass material below the road: alternating full-diamond crops produced a
+    // visible checker grid at every grass/soil boundary.
+    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
+      if(tile.kind!=AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
+        drawTerrainTile(canvas,world,GRASS_SURFACE,tile.centerX,tile.centerY);
+    drawConnectedSoil(canvas,world);
+    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
+      if(tile.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
+        drawTerrainTile(canvas,world,tile.assetRef,tile.centerX,tile.centerY);
+    for(SpritePlacement placement:placements)drawPlacement(canvas,world,placement);
+  }
+
+  private List<SpritePlacement> loadPlacements(){
+    if(assets==null)return Collections.emptyList();
+    try(InputStream in=assets.open(MAP_LAYOUT);ByteArrayOutputStream out=new ByteArrayOutputStream()){
+      byte[] buffer=new byte[4096];int read;while((read=in.read(buffer))!=-1)out.write(buffer,0,read);
+      JSONObject root=new JSONObject(new String(out.toByteArray(),StandardCharsets.UTF_8));
+      JSONArray entries=root.getJSONArray("objects");List<SpritePlacement> result=new ArrayList<>();
+      for(int i=0;i<entries.length();i++){
+        JSONObject entry=entries.getJSONObject(i);
+        if(entry.optString("id").isEmpty()||entry.optString("asset").isEmpty()||entry.optDouble("scale",0)<=0)continue;
+        result.add(new SpritePlacement(entry));
+      }
+      result.sort(Comparator.comparingDouble((SpritePlacement value)->value.y).thenComparing(value->value.id));
+      return Collections.unmodifiableList(result);
+    }catch(Throwable ignored){return Collections.emptyList();}
+  }
+
+  private void drawPlacement(Canvas canvas,WorldRuntimeAdapter world,SpritePlacement placement){
+    Bitmap image=bitmap(placement.asset);if(image==null)return;
+    WorldCameraTransform.Point foot=world.worldToScreen(placement.x,placement.y);
+    if("tile".equals(placement.drawMode)){
+      RectF dst=new RectF(Math.round(foot.x-TILE_W*.5f),Math.round(foot.y-TILE_H*.5f),
+          Math.round(foot.x+TILE_W*.5f),Math.round(foot.y+TILE_H*.5f));
+      if(visible(dst,canvas))canvas.drawBitmap(image,null,dst,pixelPaint);
+      return;
     }
-    // Existing candidate tree assets add scale and depth to the hub. Coordinates are adapted
-    // composition markers; their placement still needs device playtest approval.
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_01.png",245f,520f,.46f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_03.png",470f,745f,.48f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_02.png",1010f,420f,.46f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_01.png",1360f,690f,.45f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_03.png",1810f,505f,.48f);
-    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_02.png",2230f,720f,.43f);
-    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_01.png",395f,470f,.52f);
-    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_03.png",910f,735f,.48f);
-    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_02.png",1735f,710f,.50f);
-    drawFoot(canvas,world,"street/OBJ_well.png",AdaptedMillesIsometricTileLayer.PLAZA_CENTER_X,AdaptedMillesIsometricTileLayer.PLAZA_CENTER_Y,.50f);
-    // B1/B5: render the actual APK building assets at a character-readable village scale.
-    // The previous APK only drew the church at 0.42, so changing planning geometry had no visible effect.
-    drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
-    // Visible walk-in target: same foot coordinate as WorldDef potion_shop_door trigger.
-    drawPortalTile(canvas,world,"assets/world/portal/portal_reagent_shop.webp",320f,459f);
-    drawFoot(canvas,world,"buildings/BLD_003_weapon_shop.png",760f,300f,B1_VISIBLE_BUILDING_SCALE);
-    drawFoot(canvas,world,"buildings/BLD_005_general_shop.png",1120f,360f,B1_VISIBLE_BUILDING_SCALE);
-    drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.35f);
-    drawFoot(canvas,world,"buildings/BLD_006_inn.png",1980f,650f,B1_VISIBLE_BUILDING_SCALE);
-    drawFoot(canvas,world,"street/OBJ_noticeboard.png",690f,720f,.38f);
-    drawFoot(canvas,world,"street/OBJ_bench.png",850f,650f,.38f);
-    drawFoot(canvas,world,"street/OBJ_lamp_01.png",720f,535f,.42f);
-    drawFoot(canvas,world,"street/OBJ_lamp_02.png",830f,535f,.42f);
+    float width=image.getWidth()*placement.scale,height=image.getHeight()*placement.scale;
+    RectF dst=new RectF(Math.round(foot.x-width*.5f),Math.round(foot.y-height),
+        Math.round(foot.x+width*.5f),Math.round(foot.y));
+    if(visible(dst,canvas))canvas.drawBitmap(image,null,dst,pixelPaint);
   }
 
-  /**
-   * Device-verified visual contract:
-   * GROUND -> OBJ_ground_02 (green flower grass)
-   * ROAD/GATE -> OBJ_ground_01 (brown dirt)
-   * PLAZA -> OBJ_stone_01
-   * Variants stay disabled so the checkerboard regression cannot return.
-   */
-  private static String terrainFor(AdaptedMillesIsometricTileLayer.Tile t){
-    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.ROAD||t.kind==AdaptedMillesIsometricTileLayer.TileKind.GATE)return DIRT_TILE;
-    if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)return PLAZA_TILE;
-    return GRASS_TILE;
+  /** The asset supplies the soil pixels; these authored centerlines only place the surface. */
+  private void drawConnectedSoil(Canvas canvas,WorldRuntimeAdapter world){
+    Bitmap soil=bitmap(SOIL_SURFACE);
+    if(soil==null)return;
+    soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));
+    canvas.save();
+    canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
+    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
+      if(points.length<2)continue;
+      Path centerline=new Path();centerline.moveTo(points[0][0],points[0][1]);
+      for(int i=1;i<points.length;i++)centerline.lineTo(points[i][0],points[i][1]);
+      canvas.drawPath(centerline,soilEdgePaint);
+      canvas.drawPath(centerline,soilPaint);
+    }
+    canvas.restore();
+    soilPaint.setShader(null);
   }
 
-  private void drawTerrainTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){
-    Bitmap b=bitmap(path);if(b==null)return;Rect src=opaqueBounds(path,b);if(src==null)return;
-    WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float hw=TILE_W*.5f+SEAM_GUARD,hh=TILE_H*.5f+SEAM_GUARD;
-    RectF dst=new RectF((float)Math.floor(p.x-hw),(float)Math.floor(p.y-hh),(float)Math.ceil(p.x+hw),(float)Math.ceil(p.y+hh));
-    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,src,dst,pixelPaint);
+  private void drawTerrainTile(Canvas canvas,WorldRuntimeAdapter world,String asset,float wx,float wy){
+    WorldCameraTransform.Point point=world.worldToScreen(wx,wy);
+    float halfW=TILE_W*.5f+SEAM_GUARD,halfH=TILE_H*.5f+SEAM_GUARD;
+    RectF dst=new RectF((float)Math.floor(point.x-halfW),(float)Math.floor(point.y-halfH),
+        (float)Math.ceil(point.x+halfW),(float)Math.ceil(point.y+halfH));
+    if(!visible(dst,canvas))return;
+    Bitmap image=bitmap(asset);if(image==null)return;Rect src=opaqueBounds(asset,image);
+    if(src!=null)canvas.drawBitmap(image,src,dst,pixelPaint);
   }
-  private void drawGroundTuft(Canvas c,WorldRuntimeAdapter w,float wx,float wy){
-    Bitmap b=bitmap(GRASS_TILE);if(b==null)return;Rect src=opaqueBounds(GRASS_TILE,b);if(src==null)return;
-    WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float hw=TILE_W*.31f,hh=TILE_H*.34f;
-    RectF dst=new RectF((float)Math.floor(p.x-hw),(float)Math.floor(p.y-hh),(float)Math.ceil(p.x+hw),(float)Math.ceil(p.y+hh));
-    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,src,dst,pixelPaint);
+
+  private static boolean visible(RectF rect,Canvas canvas){
+    return rect.right>=0&&rect.left<=canvas.getWidth()&&rect.bottom>=0&&rect.top<=canvas.getHeight();
   }
-  private Rect opaqueBounds(String path,Bitmap b){if(opaqueBoundsCache.containsKey(path))return opaqueBoundsCache.get(path);int minX=b.getWidth(),minY=b.getHeight(),maxX=-1,maxY=-1;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if((b.getPixel(x,y)>>>24)!=0){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;}Rect r=maxX>=minX?new Rect(minX,minY,maxX+1,maxY+1):null;opaqueBoundsCache.put(path,r);return r;}
-  private void drawPortalTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);RectF d=new RectF(Math.round(p.x-TILE_W*.5f),Math.round(p.y-TILE_H*.5f),Math.round(p.x+TILE_W*.5f),Math.round(p.y+TILE_H*.5f));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}
-  private void drawFoot(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy,float scale){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float ww=b.getWidth()*scale,hh=b.getHeight()*scale;RectF d=new RectF(Math.round(p.x-ww*.5f),Math.round(p.y-hh),Math.round(p.x+ww*.5f),Math.round(p.y));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}
-  private Bitmap bitmap(String path){if(bitmapCache.containsKey(path))return bitmapCache.get(path);Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}bitmapCache.put(path,b);return b;}
-  private static AssetManager findAssets(){try{Class<?> c=Class.forName("android.app.ActivityThread");Method m=c.getDeclaredMethod("currentApplication");Object a=m.invoke(null);return a instanceof Context?((Context)a).getAssets():null;}catch(Throwable ignored){return null;}}
-  private static void configureFill(Paint p,int color){p.setAntiAlias(false);p.setDither(false);p.setColor(color);p.setStyle(Paint.Style.FILL);}
+  private Rect opaqueBounds(String path,Bitmap image){
+    if(opaqueBoundsCache.containsKey(path))return opaqueBoundsCache.get(path);
+    int minX=image.getWidth(),minY=image.getHeight(),maxX=-1,maxY=-1;
+    for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++)
+      if((image.getPixel(x,y)>>>24)!=0){minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);}
+    Rect result=maxX>=minX?new Rect(minX,minY,maxX+1,maxY+1):null;
+    opaqueBoundsCache.put(path,result);return result;
+  }
+  private Bitmap bitmap(String path){
+    if(bitmapCache.containsKey(path))return bitmapCache.get(path);
+    Bitmap image=null;
+    if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
+    bitmapCache.put(path,image);return image;
+  }
+  private static AssetManager findAssets(){
+    try{Class<?> type=Class.forName("android.app.ActivityThread");Method method=type.getDeclaredMethod("currentApplication");Object app=method.invoke(null);return app instanceof Context?((Context)app).getAssets():null;}catch(Throwable ignored){return null;}
+  }
+  private static void configureFill(Paint paint,int color){paint.setAntiAlias(false);paint.setDither(false);paint.setColor(color);paint.setStyle(Paint.Style.FILL);}
+  private static void configureRoadPaint(Paint paint,int color,float width){
+    paint.setAntiAlias(true);paint.setDither(false);paint.setColor(color);
+    paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(width);
+    paint.setStrokeCap(Paint.Cap.ROUND);paint.setStrokeJoin(Paint.Join.ROUND);
+  }
 }

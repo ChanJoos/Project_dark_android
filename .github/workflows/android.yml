@@ -95,6 +95,8 @@ jobs:
 
       - name: Execute Bundle B1 building scale audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.MillesB1ScaleAudit
+      - name: Audit reusable Milles map assets and layout
+        run: python tools/assets/audit_milles_map_assets.py
       - name: Execute Bundle B5 integrated loop audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.BundleB5Audit
       - name: Execute Quick Quest optimal approach audit

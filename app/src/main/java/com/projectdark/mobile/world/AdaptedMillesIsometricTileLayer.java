@@ -2,10 +2,13 @@ package com.projectdark.mobile.world;
 
 import com.projectdark.mobile.WorldDef;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.List;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /** Canonical 64x32 Milles ground grid shared by rendering and navigation. */
 public final class AdaptedMillesIsometricTileLayer {
@@ -32,7 +35,6 @@ public final class AdaptedMillesIsometricTileLayer {
     public long depthKey(){return ((long)row<<32)|(column&0xffffffffL);}
   }
 
-  private static final List<Tile> TILES=build();
   private AdaptedMillesIsometricTileLayer(){}
   public static List<Tile> tiles(){return TILES;}
   public static Tile tileAt(float x,float y){Tile best=null;for(Tile t:TILES)if(t.contains(x,y)&&(best==null||t.depthKey()>best.depthKey()))best=t;return best;}
@@ -42,13 +44,20 @@ public final class AdaptedMillesIsometricTileLayer {
     for(float y=WorldDef.MIN_Y+HALF_HEIGHT;y<=WorldDef.MAX_Y-HALF_HEIGHT+.01f;y+=ROW_STEP,row++){
       float offset=(row&1)==0?0f:HALF_WIDTH; int col=0;
       for(float x=WorldDef.MIN_X+HALF_WIDTH+offset;x<=WorldDef.MAX_X-HALF_WIDTH+.01f;x+=TILE_WIDTH,col++){
-        TileKind kind=classify(x,y); int variant=Math.floorMod(row*31+col*17+kind.ordinal()*7,4);
-        raw.add(new Tile(row,col,x,y,kind,variant,0));
+        raw.add(new Tile(row,col,x,y,TileKind.GROUND,0,0));
       }
     }
     Map<String,Tile> by=new HashMap<>();for(Tile t:raw)by.put(key(t.centerX,t.centerY),t);
+    Set<String> roads=traceRoadCells(by);
+    List<Tile> classified=new ArrayList<>(raw.size());
+    for(Tile t:raw){
+      TileKind kind=classify(t.centerX,t.centerY,roads.contains(key(t.centerX,t.centerY)));
+      int variant=Math.floorMod(t.row*31+t.column*17+kind.ordinal()*7,4);
+      classified.add(new Tile(t.row,t.column,t.centerX,t.centerY,kind,variant,0));
+    }
+    by.clear();for(Tile t:classified)by.put(key(t.centerX,t.centerY),t);
     List<Tile> out=new ArrayList<>(raw.size());
-    for(Tile t:raw){int m=0;
+    for(Tile t:classified){int m=0;
       if(differs(t,by.get(key(t.centerX-HALF_WIDTH,t.centerY-HALF_HEIGHT))))m|=EDGE_NW;
       if(differs(t,by.get(key(t.centerX+HALF_WIDTH,t.centerY-HALF_HEIGHT))))m|=EDGE_NE;
       if(differs(t,by.get(key(t.centerX+HALF_WIDTH,t.centerY+HALF_HEIGHT))))m|=EDGE_SE;
@@ -59,34 +68,105 @@ public final class AdaptedMillesIsometricTileLayer {
   private static boolean differs(Tile a,Tile b){return b==null||b.kind!=a.kind;}
   private static String key(float x,float y){return Math.round(x*10f)+":"+Math.round(y*10f);}
 
-  /**
-   * Milles story layout. Grass is dominant. Dirt routes are deliberately finite and asymmetric:
-   * central village square -> east church, west craft/equipment quarter, north homes/service,
-   * south market/gate, plus a quieter south-east waterside spur. Unknown geometry is [ADAPTED].
-   * Width is two canonical tiles, but unlike the previous infinite axis test the routes stop at
-   * district destinations and leave large readable grass areas between them.
-   */
-  private static TileKind classify(float x,float y){
+  /** The authored routes are snapped to connected 64x32 tile edges before selecting terrain PNGs. */
+  private static final float PATH_SAMPLE_STEP=6f;
+  private static final float[][][] PATHS={
+      // Four distinct village arms. The plaza is the only shared junction.
+      {{768,592},{704,576},{640,544},{576,512},{512,480},{448,464},{384,448},{320,448}},
+      {{768,592},{768,544},{752,496},{752,448},{736,400},{736,368}},
+      {{768,592},{832,560},{896,528},{960,480},{1024,432},{1088,400},{1152,400},{1216,416},{1280,432},{1344,448},{1408,448},{1472,448},{1536,448}},
+      {{768,592},{832,640},{896,672},{960,704},{1056,720},{1184,736},{1312,752},{1440,768},{1568,784},{1696,784},{1824,752},{1920,704},{1984,656}},
+      {{768,592},{736,656},{720,720},{704,784},{704,848},{720,912},{736,976},{752,1040},{768,1104},{784,1168},{800,1232},{800,1328},{800,1456},{800,1568}}
+  };
+
+  private static final List<Tile> TILES=build();
+
+  /** World-coordinate road centerlines for the renderer's terrain overlay. */
+  public static float[][][] roadPaths(){
+    float[][][] copy=new float[PATHS.length][][];
+    for(int i=0;i<PATHS.length;i++){copy[i]=new float[PATHS[i].length][];for(int j=0;j<PATHS[i].length;j++)copy[i][j]=PATHS[i][j].clone();}
+    return copy;
+  }
+
+  private static TileKind classify(float x,float y,boolean isRoad){
     float dx=x-PLAZA_CENTER_X,dy=y-PLAZA_CENTER_Y;
     float u=dx/64f-dy/32f, v=dx/64f+dy/32f;
     int iu=Math.round(u),iv=Math.round(v);
     if(Math.abs(u-iu)>.01f||Math.abs(v-iv)>.01f)return TileKind.GROUND;
     if(Math.abs(iu)<=1&&Math.abs(iv)<=1)return TileKind.PLAZA;
 
-    // NW: north residential/service district. Two-tile lane, finite.
-    if((iv==0||iv==1)&&iu>=-13&&iu<=-2)return TileKind.ROAD;
-    // SE: south market and village gate; longest civic route.
-    if((iv==0||iv==1)&&iu>=2&&iu<=26)return iu>=23?TileKind.GATE:TileKind.ROAD;
-    // NE: church/quiet district.
-    if((iu==0||iu==1)&&iv>=-17&&iv<=-2)return TileKind.ROAD;
-    // SW: craft/equipment district.
-    if((iu==0||iu==1)&&iv>=2&&iv<=16)return TileKind.ROAD;
-    // Quiet waterside spur branching from the southern route toward the east bank.
-    if(iu>=8&&iu<=18&&(iv==-5||iv==-4))return TileKind.ROAD;
-    // Small bend/connector into the spur so it does not float as an isolated stripe.
-    if(iu>=7&&iu<=10&&(iv==-3||iv==-2||iv==-1))return TileKind.ROAD;
+    if(isRoad){
+      if(y>=1420f&&distanceToPath(x,y,PATHS[4])<=32f)return TileKind.GATE;
+      return TileKind.ROAD;
+    }
     return TileKind.GROUND;
   }
 
-  private static String assetRefFor(TileKind kind,int variant){return "PENDING_CROP/milles/tiles/"+kind.name().toLowerCase()+"_v"+variant;}
+  private static Set<String> traceRoadCells(Map<String,Tile> by){
+    Set<String> selected=new HashSet<>();
+    for(float[][] path:PATHS){
+      Tile previous=null;
+      for(int segment=1;segment<path.length;segment++){
+        float ax=path[segment-1][0],ay=path[segment-1][1],bx=path[segment][0],endY=path[segment][1];
+        int steps=Math.max(1,(int)Math.ceil(Math.hypot(bx-ax,endY-ay)/PATH_SAMPLE_STEP));
+        for(int step=segment==1?0:1;step<=steps;step++){
+          float fraction=(float)step/steps;
+          Tile current=nearestTile(ax+(bx-ax)*fraction,ay+(endY-ay)*fraction);
+          if(current==null)continue;
+          if(previous!=null)connectRoadCells(previous,current,by,selected);
+          selected.add(key(current.centerX,current.centerY));previous=current;
+        }
+      }
+    }
+    return selected;
+  }
+
+  private static Tile nearestTile(float x,float y){
+    // The closest tile can be on an adjacent staggered row. Keep the route on the real grid.
+    int centerRow=Math.round((y-WorldDef.MIN_Y-HALF_HEIGHT)/ROW_STEP);
+    Tile best=null;float bestDistance=Float.MAX_VALUE;
+    for(int row=centerRow-2;row<=centerRow+2;row++){
+      if(row<0)continue;
+      float cy=WorldDef.MIN_Y+HALF_HEIGHT+row*ROW_STEP;
+      float left=WorldDef.MIN_X+HALF_WIDTH+((row&1)==0?0f:HALF_WIDTH);
+      int centerColumn=Math.round((x-left)/TILE_WIDTH);
+      for(int column=centerColumn-1;column<=centerColumn+1;column++){
+        float cx=left+column*TILE_WIDTH;
+        if(cx<WorldDef.MIN_X+HALF_WIDTH||cx>WorldDef.MAX_X-HALF_WIDTH||cy>WorldDef.MAX_Y-HALF_HEIGHT)continue;
+        float distance=(cx-x)*(cx-x)+(cy-y)*(cy-y);
+        if(distance<bestDistance){bestDistance=distance;best=new Tile(row,column,cx,cy,TileKind.ROAD,0,0);}
+      }
+    }
+    return best;
+  }
+
+  private static void connectRoadCells(Tile from,Tile to,Map<String,Tile> by,Set<String> selected){
+    String start=key(from.centerX,from.centerY),goal=key(to.centerX,to.centerY);
+    if(start.equals(goal))return;
+    ArrayDeque<Tile> queue=new ArrayDeque<>();Map<String,String> parent=new HashMap<>();
+    queue.add(from);parent.put(start,start);
+    while(!queue.isEmpty()&&parent.size()<120){
+      Tile current=queue.removeFirst();String id=key(current.centerX,current.centerY);
+      if(id.equals(goal))break;
+      for(int dx:new int[]{-32,32})for(int dy:new int[]{-16,16}){
+        Tile next=by.get(key(current.centerX+dx,current.centerY+dy));
+        if(next==null)continue;
+        String nextId=key(next.centerX,next.centerY);
+        if(parent.containsKey(nextId))continue;
+        // A small local search bridges cases where nearest tiles meet only at a corner.
+        if(Math.abs(next.centerX-from.centerX)>96f||Math.abs(next.centerY-from.centerY)>64f)continue;
+        parent.put(nextId,id);queue.addLast(next);
+      }
+    }
+    if(!parent.containsKey(goal))throw new IllegalStateException("Disconnected Milles route at "+goal);
+    for(String cursor=goal;!cursor.equals(start);cursor=parent.get(cursor))selected.add(cursor);
+  }
+  private static float distanceToPath(float x,float y,float[][] path){float best=Float.MAX_VALUE;for(int i=1;i<path.length;i++)best=Math.min(best,distanceToSegment(x,y,path[i-1][0],path[i-1][1],path[i][0],path[i][1]));return best;}
+  private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){float dx=bx-ax,dy=by-ay,len=dx*dx+dy*dy;float t=len==0f?0f:((x-ax)*dx+(y-ay)*dy)/len;t=Math.max(0f,Math.min(1f,t));float ex=x-(ax+t*dx),ey=y-(ay+t*dy);return(float)Math.sqrt(ex*ex+ey*ey);}
+
+  private static String assetRefFor(TileKind kind,int variant){
+    if(kind==TileKind.GROUND)return "video_reference/terrain/grass_tile_0"+(Math.floorMod(variant,3)+1)+".png";
+    if(kind==TileKind.ROAD||kind==TileKind.GATE)return "video_reference/terrain/dirt_path_tile_0"+(Math.floorMod(variant,2)+1)+".png";
+    return "terrain/OBJ_stone_01.png";
+  }
 }

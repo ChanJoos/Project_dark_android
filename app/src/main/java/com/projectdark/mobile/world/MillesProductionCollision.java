@@ -49,7 +49,19 @@ public final class MillesProductionCollision {
     rect(b,"church",Kind.CHURCH,1370f,150f,1710f,494f);
     rect(b,"inn",Kind.BUILDING,1860f,430f,2100f,689f);
 
-    // B2 device correction: only visible gameplay geometry is collision-authoritative.
+    // Ground contact of the authored palisade enclosure. Keep the southwest opening walkable.
+    add(b,"garden_fence_nw_1",Kind.FENCE,996f,530f,38f,16f);
+    add(b,"garden_fence_nw_2",Kind.FENCE,1030f,510f,38f,16f);
+    add(b,"garden_fence_nw_3",Kind.FENCE,1064f,490f,38f,16f);
+    add(b,"garden_fence_ne_1",Kind.FENCE,1096f,490f,38f,16f);
+    add(b,"garden_fence_ne_2",Kind.FENCE,1130f,510f,38f,16f);
+    add(b,"garden_fence_ne_3",Kind.FENCE,1164f,530f,38f,16f);
+    add(b,"garden_fence_se_1",Kind.FENCE,1164f,550f,38f,16f);
+    add(b,"garden_fence_se_2",Kind.FENCE,1130f,570f,38f,16f);
+    add(b,"garden_fence_se_3",Kind.FENCE,1096f,590f,38f,16f);
+    add(b,"garden_fence_sw_3",Kind.FENCE,1064f,590f,38f,16f);
+
+    // Only currently visible buildings and the garden palisade are collision-authoritative.
     // Invisible legacy scenery footprints are intentionally excluded from runtime blockers.
     BLOCKERS=Collections.unmodifiableList(b);
 

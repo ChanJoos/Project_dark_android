@@ -1,0 +1,61 @@
+{
+  "schema": "project-dark-milles-map-v1",
+  "map_id": "milles_village_adapted",
+  "evidence": "ADAPTED; motifs and object families derived from user-provided Milles recordings",
+  "ground": {
+    "tile_size": [64, 32],
+    "source": "video_reference/terrain/",
+    "path_layout": "AdaptedMillesIsometricTileLayer.PATHS",
+    "path_width_tiles": 1
+  },
+  "objects": [
+    {"id":"potion_shop","asset":"buildings/BLD_002_potion_shop.png","x":320,"y":420,"scale":1.0,"district":"west_crafts"},
+    {"id":"potion_shop_portal","asset":"assets/world/portal/portal_reagent_shop.webp","x":320,"y":459,"scale":1.0,"draw":"tile","district":"west_crafts"},
+    {"id":"weapon_shop","asset":"buildings/BLD_003_weapon_shop.png","x":760,"y":300,"scale":1.0,"district":"north_services"},
+    {"id":"general_shop","asset":"buildings/BLD_005_general_shop.png","x":1120,"y":360,"scale":1.0,"district":"east_market"},
+    {"id":"church","asset":"landmarks/BLD_011_church.png","x":1540,"y":455,"scale":1.35,"district":"east_quiet"},
+    {"id":"inn","asset":"buildings/BLD_006_inn.png","x":1980,"y":650,"scale":1.0,"district":"waterside"},
+
+    {"id":"civic_fountain","asset":"street/OBJ_fountain_milles_reference.png","x":768,"y":592,"scale":0.72,"district":"civic_square","source":"Milles footage 00:02, AI-assisted transparent reconstruction"},
+    {"id":"square_bench_west","asset":"video_reference/objects/bench_video_cutout_01.png","x":624,"y":704,"scale":0.48,"district":"civic_square"},
+    {"id":"square_bench_east","asset":"video_reference/objects/bench_video_cutout_03.png","x":912,"y":448,"scale":0.48,"district":"civic_square"},
+    {"id":"garden_bench","asset":"video_reference/objects/bench_video_cutout_04.png","x":1280,"y":944,"scale":0.50,"district":"garden"},
+    {"id":"waterside_bench","asset":"video_reference/objects/bench_video_cutout_02.png","x":1840,"y":1264,"scale":0.50,"district":"waterside"},
+
+    {"id":"garden_tree_1","asset":"vegetation/trees/OBJ_tree_01.png","x":1080,"y":536,"scale":0.48,"district":"garden"},
+    {"id":"garden_tree_2","asset":"vegetation/trees/OBJ_tree_04.png","x":1136,"y":552,"scale":0.46,"district":"garden"},
+    {"id":"square_tree_west","asset":"vegetation/trees/OBJ_tree_01.png","x":476,"y":610,"scale":0.43,"district":"civic_square"},
+    {"id":"boundary_tree_west","asset":"vegetation/trees/OBJ_tree_03.png","x":160,"y":1024,"scale":0.50,"district":"village_edge"},
+    {"id":"boundary_tree_north","asset":"vegetation/trees/OBJ_tree_01.png","x":1040,"y":176,"scale":0.50,"district":"village_edge"},
+    {"id":"boundary_tree_east","asset":"vegetation/trees/OBJ_tree_02.png","x":2200,"y":944,"scale":0.48,"district":"village_edge"},
+    {"id":"waterside_tree","asset":"vegetation/trees/OBJ_tree_05.png","x":2040,"y":1280,"scale":0.48,"district":"waterside"},
+
+    {"id":"garden_fence_nw_1","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":996,"y":530,"scale":0.56,"district":"garden","source":"Milles footage 00:10, AI-assisted transparent reconstruction"},
+    {"id":"garden_fence_nw_2","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1030,"y":510,"scale":0.55,"district":"garden"},
+    {"id":"garden_fence_nw_3","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1064,"y":490,"scale":0.56,"district":"garden"},
+    {"id":"garden_fence_ne_1","asset":"structures/fences/OBJ_palisade_diagonal_down.png","x":1096,"y":490,"scale":0.56,"district":"garden"},
+    {"id":"garden_fence_ne_2","asset":"structures/fences/OBJ_palisade_diagonal_down.png","x":1130,"y":510,"scale":0.54,"district":"garden"},
+    {"id":"garden_fence_ne_3","asset":"structures/fences/OBJ_palisade_diagonal_down.png","x":1164,"y":530,"scale":0.56,"district":"garden"},
+    {"id":"garden_fence_se_1","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1164,"y":550,"scale":0.56,"district":"garden"},
+    {"id":"garden_fence_se_2","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1130,"y":570,"scale":0.55,"district":"garden"},
+    {"id":"garden_fence_se_3","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1096,"y":590,"scale":0.56,"district":"garden"},
+    {"id":"garden_fence_sw_3","asset":"structures/fences/OBJ_palisade_diagonal_down.png","x":1064,"y":590,"scale":0.56,"district":"garden"},
+
+    {"id":"square_lamp_west","asset":"street/OBJ_lamp_03.png","x":600,"y":520,"scale":0.42,"district":"civic_square"},
+    {"id":"square_lamp_east","asset":"street/OBJ_lamp_01.png","x":952,"y":488,"scale":0.42,"district":"civic_square"},
+    {"id":"south_gate_lamp","asset":"street/OBJ_lamp_02.png","x":784,"y":1224,"scale":0.40,"district":"south_gate"},
+    {"id":"village_noticeboard","asset":"street/OBJ_noticeboard.png","x":608,"y":744,"scale":0.38,"district":"civic_square"},
+
+    {"id":"market_barrel_1","asset":"storage/OBJ_barrel.png","x":248,"y":488,"scale":0.28,"district":"west_crafts"},
+    {"id":"market_crate_1","asset":"storage/OBJ_crate.png","x":384,"y":472,"scale":0.25,"district":"west_crafts"},
+    {"id":"market_cart","asset":"market/OBJ_cart.png","x":1240,"y":480,"scale":0.30,"district":"east_market"},
+    {"id":"garden_flowerbed_1","asset":"vegetation/flowers/OBJ_flower_01.png","x":1032,"y":800,"scale":0.36,"district":"garden"},
+    {"id":"garden_flowerbed_2","asset":"vegetation/flowers/OBJ_flower_03.png","x":1400,"y":1040,"scale":0.34,"district":"garden"},
+    {"id":"square_shrub_west","asset":"vegetation/bushes/OBJ_bush_01.png","x":648,"y":694,"scale":0.34,"district":"civic_square"},
+    {"id":"square_shrub_east","asset":"vegetation/bushes/OBJ_bush_03.png","x":856,"y":416,"scale":0.35,"district":"civic_square"},
+    {"id":"square_grass_1","asset":"vegetation/flowers/OBJ_flower_02.png","x":576,"y":392,"scale":0.18,"district":"civic_square"},
+    {"id":"square_grass_2","asset":"vegetation/flowers/OBJ_flower_01.png","x":984,"y":532,"scale":0.16,"district":"garden"},
+    {"id":"waterside_bush","asset":"vegetation/bushes/OBJ_bush_02.png","x":1904,"y":1136,"scale":0.45,"district":"waterside"},
+    {"id":"waterside_pond","asset":"water/lakes/OBJ_lake_main.png","x":1856,"y":1088,"scale":0.42,"district":"waterside"}
+  ]
+}
