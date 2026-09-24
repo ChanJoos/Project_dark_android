@@ -19,11 +19,11 @@ import java.util.Map;
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private static final float JOY_X=92f,JOY_Y=454f,JOY_R=58f;
-  private static final float SLOT=42f,SLOT_GAP=4f,SLOT_X0=696f,SLOT_Y0=374f;
-  private static final float ATK_X=916f,ATK_Y=498f,ATK_R=38f;
-  private static final float MODE_X=794f,MODE_Y=495f,MODE_R=22f;
-  private static final float AUTO_X=850f,AUTO_Y=495f,AUTO_R=24f;
-  private static final float UTILITY_X0=632f,UTILITY_Y0=28f,UTILITY_STEP=54f,UTILITY_R=16f;
+  private static final float SLOT=42f,SLOT_GAP=4f,SLOT_X0=650f,SLOT_Y0=374f;
+  private static final float ATK_X=926f,ATK_Y=498f,ATK_R=29f;
+  private static final float MODE_X=778f,MODE_Y=495f,MODE_R=22f;
+  private static final float AUTO_X=842f,AUTO_Y=495f,AUTO_R=24f;
+  private static final float UTILITY_X0=666f,UTILITY_Y0=28f,UTILITY_STEP=54f,UTILITY_R=16f;
 
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
   private enum FeedbackTone { INFO,WARN,REWARD }
@@ -269,8 +269,8 @@ public final class GameView extends View {
     p.setColor(0xD8201B18);c.drawRect(20,20,70,102,p);
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xB7A78966);c.drawRect(20.5f,20.5f,69.5f,101.5f,p);p.setStyle(Paint.Style.FILL);
     mutedText(c,"LV",37,39,8);text(c,level==null?"?":String.valueOf(level),25,77,24);
-    drawReferenceResourceBar(c,78,25,258,57,0xffc9161d,"HP",state.player().hp,state.player().maxHp);
-    drawReferenceResourceBar(c,78,64,258,96,0xff0873c4,"MP",state.player().mp,state.player().maxMp);
+    drawReferenceResourceBar(c,78,25,258,57,"HP",state.player().hp,state.player().maxHp);
+    drawReferenceResourceBar(c,78,64,258,96,"MP",state.player().mp,state.player().maxMp);
     Float ratio=PostF5mHudPresentation.expRatio(state.rpg());float q=ratio==null?0f:Math.max(0f,Math.min(1f,ratio));
     p.setColor(0xD8201B18);c.drawRect(20,108,258,140,p);
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0x967D7060);c.drawRect(20.5f,108.5f,257.5f,139.5f,p);p.setStyle(Paint.Style.FILL);
@@ -279,11 +279,19 @@ public final class GameView extends View {
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xB9919A8C);c.drawRect(80.5f,116.5f,250.5f,131.5f,p);p.setStyle(Paint.Style.FILL);
     String percent=Math.round(q*100f)+"%";p.setTextSize(7);text(c,percent,155-p.measureText(percent)/2f,127,7);
   }
-  private void drawReferenceResourceBar(Canvas c,float l,float t,float r,float b,int color,String label,int value,int max){
-    p.setColor(0xff17191a);c.drawRect(l-2,t-2,r+2,b+2,p);p.setColor(color);c.drawRect(l,t,r,b,p);
-    float q=Math.max(0f,Math.min(1f,value/(float)Math.max(1,max)));p.setColor(0x55202020);c.drawRect(l,t,r-(r-l)*q,b,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xff6d6255);c.drawRect(l-.5f,t-.5f,r+.5f,b+.5f,p);p.setStyle(Paint.Style.FILL);
-    String valueText=label+"   "+value+" / "+max;p.setTextSize(10);float width=p.measureText(valueText);text(c,valueText,(l+r-width)/2f,(t+b)/2f+3.5f,10);
+  private void drawReferenceResourceBar(Canvas c,float l,float t,float r,float b,String label,int value,int max){
+    float radius=4f;
+    RectF outer=new RectF(l-4,t-3,r+4,b+3),inner=new RectF(l,t,r,b);
+    p.setShadowLayer(2f,1f,2f,0xB9000000);p.setShader(new LinearGradient(l,t,l,b,new int[]{0xff66513b,0xff201b18,0xff493522},null,Shader.TileMode.CLAMP));c.drawRoundRect(outer,radius+1,radius+1,p);p.clearShadowLayer();p.setShader(null);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1f);p.setColor(0xffb49a72);c.drawRoundRect(outer,radius+1,radius+1,p);p.setStrokeWidth(1);p.setColor(0xff110f0d);c.drawRoundRect(new RectF(l-1,t-1,r+1,b+1),radius,radius,p);p.setStyle(Paint.Style.FILL);
+    float q=Math.max(0f,Math.min(1f,value/(float)Math.max(1,max)));
+    p.setShader(new LinearGradient(l,t,l,b,new int[]{0xff121416,0xff292a28,0xff111211},null,Shader.TileMode.CLAMP));c.drawRoundRect(inner,radius,radius,p);p.setShader(null);
+    int[] fill=label.equals("HP")?new int[]{0xff8b2526,0xffd2503f,0xffa42d2b}:new int[]{0xff19415e,0xff4d83a4,0xff28516f};
+    float filled=l+(r-l)*q;
+    if(filled>l){p.setShader(new LinearGradient(l,t,l,b,fill,null,Shader.TileMode.CLAMP));c.drawRoundRect(new RectF(l,t,filled,b),radius,radius,p);p.setShader(null);}
+    if(filled>l+4){p.setShader(new LinearGradient(l,t+1,l,t+7,new int[]{0x38ffffff,0x00ffffff},null,Shader.TileMode.CLAMP));c.drawRoundRect(new RectF(l+2,t+2,filled-2,t+7),2,2,p);p.setShader(null);}
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1f);p.setColor(0xA8090807);c.drawRoundRect(inner,radius,radius,p);p.setStyle(Paint.Style.FILL);
+    String valueText=label+"   "+value+" / "+max;p.setTextSize(10);float width=p.measureText(valueText);p.setShadowLayer(1.5f,0,1,0xff080706);text(c,valueText,(l+r-width)/2f,(t+b)/2f+3.5f,10);p.clearShadowLayer();
   }
   private void rightAlignedText(Canvas c,String value,float right,float baseline,float size){p.setTextSize(size);p.setTypeface(Typeface.DEFAULT);float width=p.measureText(value);text(c,value,right-width,baseline,size);}
   private void drawQuest(Canvas c){F5mAdaptedPrologueQuest.State q=f5mQuest.state();String task;String hint;int progress=f5mQuest.currentCount(),goal=f5mQuest.requiredCount();if(q==F5mAdaptedPrologueQuest.State.AVAILABLE){task="안내인에게 말을 걸어 의뢰 받기";hint="탭하면 안내인에게 이동";progress=0;}else if(q==F5mAdaptedPrologueQuest.State.ACTIVE){task="훈련용 몬스터 처치";hint="탭하면 퀘스트 목표로 이동";}else if(q==F5mAdaptedPrologueQuest.State.RETURN_READY){task="안내인에게 돌아가 보상 받기";hint="탭하면 안내인에게 이동";progress=goal;}else{task="첫 훈련 완료";hint="다음 이야기를 확인하세요";progress=goal;}drawQuestCard(c,"첫 훈련",task,progress,goal,hint,q==F5mAdaptedPrologueQuest.State.RETURN_READY||q==F5mAdaptedPrologueQuest.State.COMPLETED);}
@@ -298,8 +306,8 @@ public final class GameView extends View {
   }
   private void drawQuestChevron(Canvas c,float cx,float cy,boolean collapsed){p.setColor(0xAA211912);c.drawRoundRect(new RectF(cx-12,cy-10,cx+12,cy+10),5,5,p);text(c,collapsed?"▾":"▴",cx-3.5f,cy+4,10);}
   private void drawTarget(Canvas c){RuntimeState.Monster selected=combat.target();if(selected==null)return;panel(c,380,12,580,55);text(c,selected.name,397,31,9.5f);bar(c,397,39,563,48,0xffd63e49,selected.hp/(float)selected.maxHp);}
-  private void drawMinimap(Canvas c){panel(c,810,12,946,112);text(c,"CH. 5-1",846,30,9);p.setColor(0xB7232B1F);c.drawRect(820,38,936,92,p);float nx=(worldAdapter.presentationPlayerX()-WorldDef.MIN_X)/Math.max(1f,WorldDef.MAX_X-WorldDef.MIN_X),ny=(worldAdapter.presentationPlayerY()-WorldDef.MIN_Y)/Math.max(1f,WorldDef.MAX_Y-WorldDef.MIN_Y);float px=823+Math.max(0,Math.min(1,nx))*110,py=41+Math.max(0,Math.min(1,ny))*48;p.setColor(0xffffd44f);c.drawCircle(px,py,3.5f,p);mutedText(c,"밀레스",861,105,8);}
-  private void drawUtilityRail(Canvas c){panel(c,604,7,766,117);String[] labels={"가방","상태","장비","퀘스트","우편","메뉴"};HudSpriteCatalog.Sprite[] icons={HudSpriteCatalog.Sprite.INVENTORY,HudSpriteCatalog.Sprite.STATUS,HudSpriteCatalog.Sprite.EQUIPMENT,HudSpriteCatalog.Sprite.QUEST,null,null};for(int i=0;i<labels.length;i++){float cx=UTILITY_X0+(i%3)*UTILITY_STEP,cy=UTILITY_Y0+(i/3)*UTILITY_STEP;boolean active=i==0&&inventoryOpen||i==1&&statsOpen||i==2&&equipmentOpen;p.setColor(active?0xE35E3F24:0xD01C1815);c.drawCircle(cx,cy,UTILITY_R,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(active?2f:1f);p.setColor(active?0xffffd477:0xB6BB8753);c.drawCircle(cx,cy,UTILITY_R,p);p.setStyle(Paint.Style.FILL);if(icons[i]!=null){hudSprites.draw(c,icons[i],new RectF(cx-13,cy-13,cx+13,cy+13),255);}else{p.setTextSize(7);p.setColor(0xffe4d5bc);float tw=p.measureText(labels[i]);c.drawText(labels[i],cx-tw/2,cy+2.5f,p);}p.setTextSize(6.3f);p.setTypeface(Typeface.DEFAULT_BOLD);p.setColor(0xffeee0c6);float tw=p.measureText(labels[i]);c.drawText(labels[i],cx-tw/2,cy+25,p);p.setTypeface(Typeface.DEFAULT);}}
+  private void drawMinimap(Canvas c){panel(c,818,12,954,112);text(c,"CH. 5-1",854,30,9);p.setColor(0xB7232B1F);c.drawRect(828,38,944,92,p);float nx=(worldAdapter.presentationPlayerX()-WorldDef.MIN_X)/Math.max(1f,WorldDef.MAX_X-WorldDef.MIN_X),ny=(worldAdapter.presentationPlayerY()-WorldDef.MIN_Y)/Math.max(1f,WorldDef.MAX_Y-WorldDef.MIN_Y);float px=831+Math.max(0,Math.min(1,nx))*110,py=41+Math.max(0,Math.min(1,ny))*48;p.setColor(0xffffd44f);c.drawCircle(px,py,3.5f,p);mutedText(c,"밀레스",869,105,8);}
+  private void drawUtilityRail(Canvas c){panel(c,638,7,800,117);String[] labels={"가방","상태","장비","퀘스트","우편","메뉴"};HudSpriteCatalog.Sprite[] icons={HudSpriteCatalog.Sprite.INVENTORY,HudSpriteCatalog.Sprite.STATUS,HudSpriteCatalog.Sprite.EQUIPMENT,HudSpriteCatalog.Sprite.QUEST,null,null};for(int i=0;i<labels.length;i++){float cx=UTILITY_X0+(i%3)*UTILITY_STEP,cy=UTILITY_Y0+(i/3)*UTILITY_STEP;boolean active=i==0&&inventoryOpen||i==1&&statsOpen||i==2&&equipmentOpen;p.setColor(active?0xE35E3F24:0xD01C1815);c.drawCircle(cx,cy,UTILITY_R,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(active?2f:1f);p.setColor(active?0xffffd477:0xB6BB8753);c.drawCircle(cx,cy,UTILITY_R,p);p.setStyle(Paint.Style.FILL);if(icons[i]!=null){hudSprites.draw(c,icons[i],new RectF(cx-13,cy-13,cx+13,cy+13),255);}else{p.setTextSize(7);p.setColor(0xffe4d5bc);float tw=p.measureText(labels[i]);c.drawText(labels[i],cx-tw/2,cy+2.5f,p);}p.setTextSize(6.3f);p.setTypeface(Typeface.DEFAULT_BOLD);p.setColor(0xffeee0c6);float tw=p.measureText(labels[i]);c.drawText(labels[i],cx-tw/2,cy+25,p);p.setTypeface(Typeface.DEFAULT);}}
   private void drawStats(Canvas c){if(!statsOpen)return;modalPanel(c,570,72,936,390);text(c,"CHARACTER STATUS",590,99,13);p.setColor(0xB024262A);c.drawCircle(911,91,15,p);text(c,"×",906,96,14);RpgProgressionState r=state.rpg();FinalStats fs=r.finalStats();RpgProgressionState.StatSnapshot ss=r.recomputeStats();mutedText(c,"Lv. "+r.normalLevel()+"  Gold "+r.gold()+"  POINT "+r.statPoints(),590,121,9);
   String[] names={"STR","INT","WIS","CON","DEX"};int[] base={r.str(),r.intel(),r.wis(),r.con(),r.dex()};for(int n=0;n<5;n++){int y=150+n*30;Integer bonus=ss.equipment.get(names[n]);text(c,names[n]+"  "+base[n]+((bonus!=null&&bonus!=0)?" ("+(bonus>0?"+":"")+bonus+")":""),594,y,10);text(c,"+",720,y,12);}
   mutedText(c,"HP "+state.player().hp+" / "+fs.maxHp,770,150,9);mutedText(c,"MP "+state.player().mp+" / "+fs.maxMp,770,172,9);mutedText(c,"AC "+fs.ac+"   MDEF "+fs.magicDefense,770,204,9);mutedText(c,"HIT "+fs.hit+"   DAM "+fs.dam,770,226,9);mutedText(c,"ATK "+fs.prototypePhysicalAttack(),770,248,9);mutedText(c,"ATK ELEM "+fs.attackElement,770,278,8);mutedText(c,"DEF ELEM "+fs.defenseElement,770,298,8);mutedText(c,"DMG RED "+fs.damageReductionPct+"%  FLAT "+fs.flatMitigation,770,328,8);mutedText(c,"AC IGNORE "+fs.acIgnore,770,348,8);mutedText(c,"Lv1-99: STAT POINT +2 · CON/WIS는 다음 레벨 HP/MP 성장에 반영",590,374,7.5f);}
@@ -307,8 +315,8 @@ public final class GameView extends View {
   private void drawJoystick(Canvas c){p.setColor(joy?0x7A3D4652:0x70403B34);c.drawCircle(JOY_X,JOY_Y,JOY_R,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(joy?2.5f:1.6f);p.setColor(joy?0xE8E0C487:0xB9C6AF8E);c.drawCircle(JOY_X,JOY_Y,JOY_R,p);p.setStrokeWidth(1);p.setColor(0x657F7562);c.drawCircle(JOY_X,JOY_Y,36,p);p.setStyle(Paint.Style.FILL);p.setColor(joy?0xE4C7A86B:0xC28A775C);c.drawCircle(knobX,knobY,joy?24:22,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setColor(0xEEEAD9B0);c.drawCircle(knobX,knobY,joy?24:22,p);p.setStyle(Paint.Style.FILL);}
   private RectF slotRect(int index){int col=index%5,row=index/5;float l=SLOT_X0+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
   private void drawCombatCluster(Canvas c){
-    panel(c,684,356,938,469);
-    text(c,"SKILL  ·  8",SLOT_X0,369,7f);rightAlignedText(c,"POTION  ·  2",927,369,7f);
+    panel(c,628,356,890,469);
+    text(c,"SKILL  ·  8",SLOT_X0,369,7f);rightAlignedText(c,"POTION  ·  2",878,369,7f);
     for(int i=0;i<10;i++){
       RectF slot=slotRect(i);hudSprites.draw(c,HudSpriteCatalog.Sprite.EMPTY_SLOT,slot,255);
       if(i>=8){p.setColor(0x55F0C36A);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);c.drawCircle(slot.centerX(),slot.centerY(),13,p);p.setStyle(Paint.Style.FILL);}
@@ -319,7 +327,7 @@ public final class GameView extends View {
     drawModeControl(c);
     hudSprites.draw(c,HudSpriteCatalog.Sprite.AUTO,new RectF(AUTO_X-AUTO_R,AUTO_Y-AUTO_R,AUTO_X+AUTO_R,AUTO_Y+AUTO_R),autoAttackEnabled?255:180);
     if(autoAttackEnabled){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.8f);p.setColor(0xff74e6ed);c.drawCircle(AUTO_X,AUTO_Y,AUTO_R-1,p);p.setStyle(Paint.Style.FILL);}
-    mutedText(c,"AUTO",AUTO_X-12,529,6.5f);mutedText(c,"MODE",MODE_X-13,529,6.2f);mutedText(c,combat.attackDef().label,882,537,6.8f);
+    mutedText(c,"AUTO",AUTO_X-12,529,6.5f);mutedText(c,"MODE",MODE_X-13,529,6.2f);mutedText(c,combat.attackDef().label,899,537,6.8f);
   }
   private void drawModeControl(Canvas c){boolean pressed="MODE".equals(pressedControl);float r=pressed?MODE_R-2:MODE_R;p.setColor(pressed?0xDE46331F:0xD01B1713);c.drawCircle(MODE_X,MODE_Y,r,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.4f);p.setColor(pressed?0xFFE3BC6A:0xB78D714A);c.drawCircle(MODE_X,MODE_Y,r-1,p);p.setStyle(Paint.Style.FILL);p.setColor(0xFFE1D1B2);c.drawCircle(MODE_X-4,MODE_Y,2.4f,p);c.drawCircle(MODE_X+4,MODE_Y,2.4f,p);p.setStrokeWidth(1.6f);c.drawLine(MODE_X,MODE_Y-7,MODE_X,MODE_Y+7,p);}
   private void circleIcon(Canvas c,float cx,float cy,float r,ClassicHudIconAtlas.Icon icon,boolean enabled,boolean pressed){RectF b=new RectF(cx-r,cy-r,cx+r,cy+r);hudIcons.draw(c,p,icon,b,enabled,false,pressed);}
@@ -509,7 +517,7 @@ public final class GameView extends View {
   private void drawWrappedText(Canvas c,String s,float x,float y,float maxWidth,float size,float lineHeight){p.setTextSize(size);p.setColor(0xffeee4cf);String[] words=s.split(" ");String line="";float yy=y;for(String word:words){String test=line.length()==0?word:line+" "+word;if(p.measureText(test)>maxWidth&&line.length()>0){c.drawText(line,x,yy,p);yy+=lineHeight;line=word;}else line=test;}if(line.length()>0)c.drawText(line,x,yy,p);}
 
   static boolean blocksWorldTapForHud(float x,float y,boolean targetVisible){
-    if(inside(x,y,14,12,264,148)||inside(x,y,14,158,278,198)||inside(x,y,604,7,766,117)||inside(x,y,810,12,946,112)||inside(x,y,270,418,642,522))return true;
+    if(inside(x,y,14,12,264,148)||inside(x,y,14,158,278,198)||inside(x,y,638,7,800,117)||inside(x,y,818,12,954,112)||inside(x,y,270,418,642,522))return true;
     if(targetVisible&&inside(x,y,380,12,580,55))return true;
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
     for(int i=0;i<6;i++){float cx=UTILITY_X0+(i%3)*UTILITY_STEP,cy=UTILITY_Y0+(i/3)*UTILITY_STEP;if(circleHit(x,y,cx,cy,UTILITY_R+2))return true;}
