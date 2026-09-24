@@ -3,8 +3,7 @@
   "source_note": "Pixel-preserving crops and keyed object cutouts from user-provided compressed screen recordings. The recordings themselves are lossy screen captures, not original client assets. Rectangular reference crops are not transparent sprites.",
   "sources": {
     "inn_exterior": "Screen_Recording_20260924_163242_YouTube.mp4",
-    "milles_and_inn": "Screen_Recording_20260924_163501_YouTube.mp4",
-    "user_garden_route": "1000056802.mp4"
+    "milles_and_inn": "Screen_Recording_20260924_163501_YouTube.mp4"
   },
   "assets": [
     {
@@ -328,26 +327,8 @@
         48,
         24
       ],
-      "processing": "interior rectangle cropped from recorded dirt-path tile 01; no resampling or alpha fill; repeated as runtime stroke texture",
-      "use": "runtime dirt ribbon fill texture"
-    },
-    {
-      "path": "scenes/garden_route_scene.webp",
-      "source": "user_garden_route",
-      "frame_file": "1000056802.mp4 frame at 2.0s",
-      "time_seconds": 2.0,
-      "crop_xyxy": [
-        254,
-        0,
-        1790,
-        768
-      ],
-      "dimensions_px": [
-        1536,
-        768
-      ],
-      "processing": "one recorded frame cropped to the playable world viewport; side toolbars and bottom action bar excluded; no resize; WebP quality 95",
-      "use": "runtime reference-faithful garden route scene plate with fountain, curved dirt path, irregular fence, benches, trees and lamps"
+      "processing": "interior rectangle cropped from recorded dirt-path tile 01; no resampling or alpha fill",
+      "use": "reference-only source patch; runtime path uses 2:1 dirt tiles"
     }
   ]
 }

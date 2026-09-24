@@ -58,21 +58,15 @@ public final class AdaptedMillesIsometricTileLayer {
   private static boolean differs(Tile a,Tile b){return b==null||b.kind!=a.kind;}
   private static String key(float x,float y){return Math.round(x*10f)+":"+Math.round(y*10f);}
 
-  /** Authored, asymmetric Milles paths that connect the active building doors to the well square. */
-  private static final float PATH_HALF_WIDTH=34f;
+  /** Narrow, single-cell path spines. Each branch is authored once; joins occur only at the square. */
+  private static final float PATH_HALF_WIDTH=20f;
   private static final float[][][] PATHS={
-      // West potion shop: a short bend around the lawn edge.
-      {{768,592},{650,560},{520,515},{420,480},{320,459}},
-      // North-west weapon shop: a gentle curve into the north lane.
-      {{768,592},{770,530},{752,470},{736,384}},
-      // East general shop and church share a market walk.
-      {{768,592},{875,545},{990,505},{1120,448},{1240,505},{1385,545},{1536,560}},
-      // Long east garden walk to the inn.
-      {{768,592},{900,665},{1050,710},{1230,735},{1460,744},{1710,740},{2016,736}},
-      // South gate path.
-      {{768,592},{715,760},{710,940},{748,1150},{790,1370},{790,1565}},
-      // A looping garden walk gives the central grove a second entrance.
-      {{875,545},{930,650},{1030,760},{1175,815},{1320,780},{1390,675},{1385,545}}
+      // Four distinct village arms. The plaza is the only shared junction.
+      {{768,592},{704,576},{640,544},{576,512},{512,480},{448,464},{384,448},{320,448}},
+      {{768,592},{768,544},{752,496},{752,448},{736,400},{736,368}},
+      {{768,592},{832,560},{896,528},{960,480},{1024,432},{1088,400},{1152,400},{1216,416},{1280,432},{1344,448},{1408,448},{1472,448},{1536,448}},
+      {{768,592},{832,640},{896,672},{960,704},{1056,720},{1184,736},{1312,752},{1440,768},{1568,784},{1696,784},{1824,752},{1920,704},{1984,656}},
+      {{768,592},{736,656},{720,720},{704,784},{704,848},{720,912},{736,976},{752,1040},{768,1104},{784,1168},{800,1232},{800,1328},{800,1456},{800,1568}}
   };
 
   private static final List<Tile> TILES=build();

@@ -1,40 +1,30 @@
 # Milles video-derived assets
 
-The PNGs in this folder were extracted from the two user-provided recordings named in
-`manifest.json`. The recordings are compressed screen captures, not original client package files,
-so these are faithful crops from the footage rather than lossless recovery of the game's source art.
+The user recordings are compressed screen captures, not the original client package. These files
+are source-backed crops and keyed object candidates; they are not lossless original resources.
 
-## Runtime terrain
+## Reusable runtime assets
 
-- `terrain/grass_tile_01..03.png`: three recorded outdoor grass samples masked to 2:1 isometric diamonds.
-- `terrain/dirt_path_tile_01..02.png`: two recorded dirt-path samples masked to 2:1 isometric diamonds.
-- `terrain/dirt_path_fill_texture.png`: a repeatable stroke texture derived from the first dirt sample.
-- `AdaptedMillesMapRenderer` keeps the gameplay/navigation grid at 64×32 and uses the recorded garden
-  scene plate below as the visible map slice. The sampled tile grass remains as a fallback beneath
-  and outside that viewport.
+- `terrain/grass_tile_01..03.png`: recorded outdoor grass samples masked to 2:1 isometric tiles.
+- `terrain/dirt_path_tile_01..02.png`: recorded ochre path samples masked to matching tiles.
+- `objects/bench_video_cutout_01..04.png`: four individually keyed benches from the outdoor footage.
+- Trees, fences, lamps, well, buildings, flowers, crates and other street props are independent
+  transparent PNGs in their corresponding `assets/milles/production` category folders.
+- `../maps/milles_garden.json` assembles those files as anchored objects grouped by village district.
+  This is editable map data; adding or moving props does not require changing renderer code.
+- The 64×32 navigation grid paints a single narrow tile path for each authored branch. The path
+  branches share only the central plaza; runtime does not stroke several wide path ribbons over one
+  another.
 
-## Recorded garden route scene
+## Reference-only crops
 
-- `scenes/garden_route_scene.webp` is a 1536×768 viewport crop from the user-provided Milles
-  recording at 2.0 seconds. It keeps the recorded curved dirt road, fountain, scattered benches,
-  trees, lamps and irregular fence as one coherent scene plate; the side controls and bottom hotbar
-  are cropped away. The image is stored as high-quality WebP to limit APK size.
-- The runtime draws this plate over the navigation grid as a compact reference-faithful visual slice.
-  Movement and collision remain on the existing 64×32 world grid. The plate is a fixed recorded scene
-  and is not a set of individually animated object sprites.
+The remaining rectangular files under `objects/` and `terrain/` document source appearance and
+placement context. They retain neighboring pixels and are not runtime sprites. No full-frame video
+snapshot is loaded by the Milles renderer.
 
-## Video-derived object sprites
+The fountain in the 2-second recording is crossed by a floating object-name label, so it is not
+promoted to a runtime cutout. The assembled village uses its standalone well asset until a clean
+source frame can support an isolated fountain sprite.
 
-- `objects/bench_video_cutout_01..04.png`: four individual benches keyed from the recorded lawn. These
-  are transparent runtime sprites selected across the seating locations. They retain source video
-  compression and need device review for edge artifacts.
-
-## Reference crops
-
-The other files under `objects/` and the non-tile images under `terrain/` are labeled rectangular
-reference crops. They show fences, lamps, tree enclosure/well, buildings, inn interior, flooring and
-path context, but retain neighboring scene pixels and are not runtime sprites. This distinction avoids
-presenting a scene crop as a finished isolated asset.
-
-`manifest.json` gives each crop's recording, frame, approximate time, exact source rectangle, output
-size, processing and intended use. The source pixels were not enlarged or resampled.
+`manifest.json` records source, frame, crop bounds, processing and intended use. Source pixels are
+not enlarged or resampled during extraction.
