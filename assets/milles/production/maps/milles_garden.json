@@ -16,9 +16,9 @@
     {"id":"church","asset":"landmarks/BLD_011_church.png","x":1540,"y":455,"scale":1.35,"district":"east_quiet"},
     {"id":"inn","asset":"buildings/BLD_006_inn.png","x":1980,"y":650,"scale":1.0,"district":"waterside"},
 
-    {"id":"civic_well","asset":"street/OBJ_well.png","x":768,"y":592,"scale":0.72,"district":"civic_square"},
+    {"id":"civic_fountain","asset":"street/OBJ_fountain_milles_reference.png","x":768,"y":592,"scale":0.72,"district":"civic_square","source":"Milles footage 00:02, AI-assisted transparent reconstruction"},
     {"id":"square_bench_west","asset":"video_reference/objects/bench_video_cutout_01.png","x":560,"y":704,"scale":0.48,"district":"civic_square"},
-    {"id":"square_bench_east","asset":"video_reference/objects/bench_video_cutout_03.png","x":944,"y":704,"scale":0.48,"district":"civic_square"},
+    {"id":"square_bench_east","asset":"video_reference/objects/bench_video_cutout_03.png","x":912,"y":448,"scale":0.48,"district":"civic_square"},
     {"id":"garden_bench","asset":"video_reference/objects/bench_video_cutout_04.png","x":1280,"y":944,"scale":0.50,"district":"garden"},
     {"id":"waterside_bench","asset":"video_reference/objects/bench_video_cutout_02.png","x":1840,"y":1264,"scale":0.50,"district":"waterside"},
 

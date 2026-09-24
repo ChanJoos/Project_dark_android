@@ -22,9 +22,9 @@ The remaining rectangular files under `objects/` and `terrain/` document source 
 placement context. They retain neighboring pixels and are not runtime sprites. No full-frame video
 snapshot is loaded by the Milles renderer.
 
-The fountain in the 2-second recording is crossed by a floating object-name label, so it is not
-promoted to a runtime cutout. The assembled village uses its standalone well asset until a clean
-source frame can support an isolated fountain sprite.
+The 2-second fountain has a floating name label across the left basin. An AI-assisted background
+extraction reconstructs that obscured edge as `../street/OBJ_fountain_milles_reference.png`.
+This is an adapted asset based on the footage, not a lossless original-client sprite.
 
 `manifest.json` records source, frame, crop bounds, processing and intended use. Source pixels are
 not enlarged or resampled during extraction.
