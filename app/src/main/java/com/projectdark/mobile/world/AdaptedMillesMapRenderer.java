@@ -29,7 +29,7 @@ public final class AdaptedMillesMapRenderer {
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
-  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);configureStroke(roadEdgePaint,0xff79501f,68f);configureStroke(roadPaint,0xff895616,58f);assets=findAssets();}
+  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);configureStroke(roadEdgePaint,0xff79501f,58f);configureStroke(roadPaint,0xff895616,48f);assets=findAssets();}
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
@@ -59,12 +59,12 @@ public final class AdaptedMillesMapRenderer {
     drawFootMany(canvas,world,"terrain/OBJ_ground_02.png",.20f,new float[][]{{280,640},{530,360},{580,850},{420,1030},{900,920},{990,1110},{1430,910},{1580,1010},{1650,1250},{1930,960},{2100,580},{2310,1330}});
     drawFoot(canvas,world,"street/OBJ_well.png",AdaptedMillesIsometricTileLayer.PLAZA_CENTER_X,AdaptedMillesIsometricTileLayer.PLAZA_CENTER_Y,.50f);
     // Broken, varied fence runs read as a lived-in garden edge instead of a repeated stockade.
-    drawNaturalFenceRun(canvas,world,new String[]{"01","03","02","01","03","02","01","02"},.40f,
-        new float[][]{{1060,825},{1130,805},{1200,805},{1278,832},{1320,882},{1305,946},{1236,981},{1152,973},{1085,944},{1044,889}});
+    drawNaturalFenceRun(canvas,world,new String[]{"01","03","02","01","03","02","01","02","03","01"},.40f,
+        new float[][]{{1060,825},{1120,806},{1202,797},{1286,835},{1330,906},{1298,970},{1228,1002},{1145,984},{1074,943},{1037,883}});
     drawNaturalFenceRun(canvas,world,new String[]{"03","01","02","03","01","02"},.37f,
-        new float[][]{{420,1180},{488,1168},{564,1176},{642,1200},{714,1238},{787,1274}});
+        new float[][]{{420,1180},{486,1166},{574,1179},{652,1215},{736,1250},{820,1298}});
     drawNaturalFenceRun(canvas,world,new String[]{"02","01","03","01","02"},.39f,
-        new float[][]{{1540,1110},{1610,1095},{1685,1104},{1762,1134},{1830,1176}});
+        new float[][]{{1540,1110},{1600,1088},{1692,1105},{1780,1148},{1860,1200}});
     // B1/B5: render the actual APK building assets at a character-readable village scale.
     // The previous APK only drew the church at 0.42, so changing planning geometry had no visible effect.
     drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
@@ -75,6 +75,14 @@ public final class AdaptedMillesMapRenderer {
     drawFoot(canvas,world,"landmarks/BLD_011_church.png",1540f,455f,1.35f);
     drawFoot(canvas,world,"buildings/BLD_006_inn.png",1980f,650f,B1_VISIBLE_BUILDING_SCALE);
     drawFoot(canvas,world,"street/OBJ_noticeboard.png",690f,720f,.38f);
+    // Market deliveries and garden details make the adapted village feel inhabited.
+    drawFootMany(canvas,world,"storage/OBJ_barrel.png",.28f,new float[][]{{270,457},{1248,430},{2050,700},{2110,710}});
+    drawFootMany(canvas,world,"storage/OBJ_crate.png",.25f,new float[][]{{350,444},{1190,430},{2010,710}});
+    drawFoot(canvas,world,"storage/OBJ_sack.png",1190f,448f,.30f);
+    drawFoot(canvas,world,"market/OBJ_cart.png",1280f,494f,.30f);
+    drawFoot(canvas,world,"materials/OBJ_log.png",510f,1270f,.34f);
+    drawFoot(canvas,world,"materials/OBJ_hay.png",1830f,1220f,.32f);
+    drawFootMany(canvas,world,"vegetation/flowers/OBJ_flower_02.png",.34f,new float[][]{{1000,820},{1400,1030},{1880,1080}});
     drawVideoBenchSet(canvas,world,new float[][]{{850,650},{980,705},{1360,650},{1690,760},{780,950},{1230,1030}});
     drawFoot(canvas,world,"street/OBJ_lamp_01.png",720f,535f,.42f);
     drawFoot(canvas,world,"street/OBJ_lamp_02.png",830f,535f,.42f);
