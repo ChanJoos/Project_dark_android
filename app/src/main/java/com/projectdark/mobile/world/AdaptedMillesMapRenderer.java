@@ -28,12 +28,29 @@ public final class AdaptedMillesMapRenderer {
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
-  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff1f2a22);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);assets=findAssets();}
+  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);assets=findAssets();}
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
-    for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles())drawTerrainTile(canvas,world,terrainFor(t),t.centerX,t.centerY);
+    for(AdaptedMillesIsometricTileLayer.Tile t:world.map().tiles()){
+      if(t.kind==AdaptedMillesIsometricTileLayer.TileKind.GROUND){
+        // OBJ_ground_02 is a flower tuft on transparent pixels, not a seamless grass tile.
+        // Keep the authored green ground continuous and scatter small tufts deterministically.
+        if(Math.floorMod(t.row*31+t.column*17+11,7)==0)drawGroundTuft(canvas,world,t.centerX,t.centerY);
+      }else drawTerrainTile(canvas,world,terrainFor(t),t.centerX,t.centerY);
+    }
+    // Existing candidate tree assets add scale and depth to the hub. Coordinates are adapted
+    // composition markers; their placement still needs device playtest approval.
+    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_01.png",245f,520f,.46f);
+    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_03.png",470f,745f,.48f);
+    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_02.png",1010f,420f,.46f);
+    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_01.png",1360f,690f,.45f);
+    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_03.png",1810f,505f,.48f);
+    drawFoot(canvas,world,"vegetation/trees/OBJ_tree_02.png",2230f,720f,.43f);
+    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_01.png",395f,470f,.52f);
+    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_03.png",910f,735f,.48f);
+    drawFoot(canvas,world,"vegetation/bushes/OBJ_bush_02.png",1735f,710f,.50f);
     drawFoot(canvas,world,"street/OBJ_well.png",AdaptedMillesIsometricTileLayer.PLAZA_CENTER_X,AdaptedMillesIsometricTileLayer.PLAZA_CENTER_Y,.50f);
     // B1/B5: render the actual APK building assets at a character-readable village scale.
     // The previous APK only drew the church at 0.42, so changing planning geometry had no visible effect.
@@ -66,6 +83,12 @@ public final class AdaptedMillesMapRenderer {
   private void drawTerrainTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){
     Bitmap b=bitmap(path);if(b==null)return;Rect src=opaqueBounds(path,b);if(src==null)return;
     WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float hw=TILE_W*.5f+SEAM_GUARD,hh=TILE_H*.5f+SEAM_GUARD;
+    RectF dst=new RectF((float)Math.floor(p.x-hw),(float)Math.floor(p.y-hh),(float)Math.ceil(p.x+hw),(float)Math.ceil(p.y+hh));
+    if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,src,dst,pixelPaint);
+  }
+  private void drawGroundTuft(Canvas c,WorldRuntimeAdapter w,float wx,float wy){
+    Bitmap b=bitmap(GRASS_TILE);if(b==null)return;Rect src=opaqueBounds(GRASS_TILE,b);if(src==null)return;
+    WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float hw=TILE_W*.31f,hh=TILE_H*.34f;
     RectF dst=new RectF((float)Math.floor(p.x-hw),(float)Math.floor(p.y-hh),(float)Math.ceil(p.x+hw),(float)Math.ceil(p.y+hh));
     if(dst.right<0||dst.left>c.getWidth()||dst.bottom<0||dst.top>c.getHeight())return;c.drawBitmap(b,src,dst,pixelPaint);
   }

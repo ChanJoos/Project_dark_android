@@ -65,6 +65,8 @@ public final class WorldCameraTransform {
 
   public float cameraX(){return cameraX;}
   public float cameraY(){return cameraY;}
+  public float viewportWidth(){return viewportWidth;}
+  public float viewportHeight(){return viewportHeight;}
   public float anchorX(){return anchorX;}
   public float anchorY(){return anchorY;}
 

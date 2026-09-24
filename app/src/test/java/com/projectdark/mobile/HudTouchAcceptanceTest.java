@@ -53,15 +53,29 @@ public final class HudTouchAcceptanceTest {
 
   @Test public void autoTargetSelectionChoosesNearestLivingMonster() {
     RuntimeState.Monster far=new RuntimeState.Monster("far","Far",40,0,10,"test");
+    RuntimeState.Monster distant=new RuntimeState.Monster("distant","Distant",400,0,10,"test");
     RuntimeState.Monster dead=new RuntimeState.Monster("dead","Dead",1,0,10,"test");dead.alive=false;
     RuntimeState.Monster near=new RuntimeState.Monster("near","Near",-3,0,10,"test");
-    assertTrue(GameView.nearestLivingMonster(java.util.Arrays.asList(far,dead,near),0,0)==near);
+    assertTrue(GameView.nearestLivingMonster(java.util.Arrays.asList(distant,far,dead,near),0,0)==near);
+    assertTrue("auto target acquisition is limited to nearby monsters",GameView.nearestLivingMonster(java.util.Collections.singletonList(distant),0,0)==null);
   }
 
-  @Test public void rightHudUsesWideScreenSideMargin() {
+  @Test public void rightHudUsesWideScreenSideMargin() throws Exception {
+    assertTrue(Math.abs(GameView.logicalWidthForView(1920,1080)-960f)<.01f);
+    assertTrue(Math.abs(GameView.logicalWidthForView(2340,1080)-1170f)<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1920,1080))<.01f);
-    assertTrue(Math.abs(GameView.rightHudOffsetForView(2400,1080)-120f)<.01f);
+    assertTrue(Math.abs(GameView.rightHudOffsetForView(2400,1080)-240f)<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1080,1920))<.01f);
+    assertTrue("chat hit region follows its centered wide-screen panel",GameView.blocksWorldTapForHud(700,480,false,210f));
+    assertTrue("old center-left chat position remains available to the world",!GameView.blocksWorldTapForHud(300,480,false,210f));
+    GameView view=new GameView(RuntimeEnvironment.getApplication());
+    view.layout(0,0,2340,1080);
+    assertTrue("wide camera expands to the full game viewport",Math.abs(viewCameraWidth(view)-1170f)<.01f);
+  }
+
+  private static float viewCameraWidth(GameView view) throws Exception {
+    Field field=GameView.class.getDeclaredField("camera");field.setAccessible(true);
+    return ((com.projectdark.mobile.world.WorldCameraTransform)field.get(view)).viewportWidth();
   }
 
   private static void tap(GameView view, float x, float y) {
