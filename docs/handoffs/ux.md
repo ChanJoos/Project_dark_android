@@ -1,5 +1,17 @@
 # UX / NPC / Quest handoff
 
+## 2026-09-24 — dark bronze HUD asset integration and automatic attack
+
+Baseline requested by the user: `9e9ef5d41261586e3dbabd38d2c3b282e7c23dcc`.
+
+- Replaced the example skill glyphs with ten empty metal-framed quick slots. The last two are visually grouped as potion slots; all slot taps are inert until definitions are confirmed.
+- Added individual transparent PNG resources for HP/MP/EXP frames, empty slots, attack/AUTO controls, portrait frame and Quest/Inventory/Status/Equipment navigation icons. `HudSpriteCatalog` loads these resources independently; `docs/ui/HUD_ASSETS.md` records their roles.
+- Kept the tracked quest panel, minimap, target bar, chat, joystick, EXP, inventory, status and equipment panels in the existing 960×540 layout. Extended the status-panel HUD hit region to match its new width.
+- Quest icon routes to the currently tracked objective; Inventory, Status and Equipment icons open the existing panels.
+- AUTO now toggles repeated **basic attacks on the currently selected target only**, via the existing `attack()` → `RuntimeCombatSession.submitPlayerBasicAttack(...)` route. It approaches an out-of-range target using the existing combat intent/movement path, pauses for attacks/cooldown, and resumes when ready. It never chooses a target. Joystick input, player defeat and entering the reagent shop stop AUTO.
+
+Verification: source-level diff reviewed and `git diff --check` passes. This workspace has no Gradle executable/wrapper or Android SDK, so build, audits and runtime rendering remain pending on the project CI/device. Do not call this BUILD VERIFIED, RUNTIME VERIFIED or VISUAL ACCEPTED until those gates pass.
+
 ## 2026-09-10 20:27 KST — original-inspired HUD/action-grid adaptation
 
 Branch: `agent/ux/auto-20260910-1958`
@@ -29,7 +41,7 @@ Branch: `agent/ux/auto-20260910-1958`
 - No CharacterRenderer internals changed.
 - No Combat resolver/math/MonsterAI changes.
 - No RPG mutation/reward/save internals changed.
-- AUTO remains presentation-only/locked until a stable player AUTO orchestration contract exists.
+- Historical status: AUTO was previously presentation-only/locked. The 2026-09-24 user instruction supersedes that lock for selected-target basic attacks; the new implementation reuses the existing basic-attack resolver and does not add auto-targeting or skill automation.
 
 ### Device acceptance for this delta
 1. Visually confirm the lower-right 2x5 grid reads as one original-inspired skill deck, not isolated debug circles.
