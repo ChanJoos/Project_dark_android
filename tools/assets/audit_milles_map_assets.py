@@ -26,9 +26,12 @@ def main() -> None:
     for rel in (
         "video_reference/terrain/grass_tile_01.png",
         "video_reference/terrain/dirt_path_tile_01.png",
+        "video_reference/terrain/dirt_path_fill_texture.png",
         "video_reference/objects/bench_video_cutout_01.png",
         "street/OBJ_fountain_milles_reference.png",
         "structures/fences/OBJ_palisade_milles_reference.png",
+        "structures/fences/OBJ_palisade_diagonal_down.png",
+        "structures/fences/OBJ_palisade_diagonal_up.png",
         "structures/fences/OBJ_fence_01.png",
         "vegetation/trees/OBJ_tree_01.png",
     ):
@@ -36,10 +39,17 @@ def main() -> None:
     renderer = RENDERER.read_text(encoding="utf-8")
     assert "maps/milles_garden.json" in renderer
     assert "garden_route_scene" not in renderer
-    assert "drawPath(" not in renderer and "BitmapShader" not in renderer
+    assert "drawConnectedSoil(canvas,world)" in renderer
+    assert 'SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png"' in renderer
     tile_source = TILES.read_text(encoding="utf-8")
     assert "traceRoadCells" in tile_source and "connectRoadCells" in tile_source
     assert "private static final float[][][] PATHS" in tile_source
+    garden_fences = [item for item in items if item["id"].startswith("garden_fence_")]
+    assert len(garden_fences) >= 10, "garden must form a real enclosure, not loose fence props"
+    assert {item["asset"] for item in garden_fences} == {
+        "structures/fences/OBJ_palisade_diagonal_up.png",
+        "structures/fences/OBJ_palisade_diagonal_down.png",
+    }
     print(f"Milles asset layout PASS: {len(items)} independent placements, reusable terrain and props")
 
 

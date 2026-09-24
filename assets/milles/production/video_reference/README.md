@@ -26,17 +26,19 @@ The 2-second fountain has a floating name label across the left basin. An AI-ass
 extraction reconstructs that obscured edge as `../street/OBJ_fountain_milles_reference.png`.
 This is an adapted asset based on the footage, not a lossless original-client sprite.
 
-The short uneven wooden palisade in the 10-second footage was reconstructed as the separate
-transparent sprite `../structures/fences/OBJ_palisade_milles_reference.png`. It is an AI-assisted
-interpretation of the visible stakes, not an exact extraction. Three independently anchored
-instances frame the garden; the map can move or remove each instance without changing the sprite.
+The short uneven wooden palisade in the 10-second footage was reconstructed as separate
+transparent sprites `../structures/fences/OBJ_palisade_milles_reference.png` and
+`../structures/fences/OBJ_palisade_diagonal_{up,down}.png`. These are AI-assisted interpretations
+of the visible stakes, not exact extractions. Eleven independently anchored angled segments form
+four sides of a small garden enclosure, with a southwest entrance. Each remains editable in map data.
 
-The 64×32 dirt/grass boundary still has hard diamond edges. These terrain tiles are provisional;
-placing more props must not be mistaken for solving the boundary artwork.
+The 64×32 dirt and grass diamonds remain navigation cells. Runtime draws a consistent source-cropped
+grass tile below the continuous path, then repeats the existing `dirt_path_fill_texture.png` crop
+along the authored centerline with rounded, narrow margins. This restores the earlier connected
+soil silhouette while retaining independent image assets and tile-based collision.
 
 The first three AI-assisted transition candidates were rejected after the native render showed
-disconnected paths. They are excluded from the runtime. Each 64×32 road tile must instead have
-art for its actual connection pattern, including corners and junctions, before another rollout.
+disconnected paths. They remain excluded from the runtime.
 
 `manifest.json` records source, frame, crop bounds, processing and intended use. Source pixels are
 not enlarged or resampled during extraction.

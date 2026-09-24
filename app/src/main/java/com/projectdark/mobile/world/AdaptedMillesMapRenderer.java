@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
@@ -29,6 +32,8 @@ public final class AdaptedMillesMapRenderer {
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   private static final float TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
+  private static final String GRASS_SURFACE="video_reference/terrain/grass_tile_01.png";
+  private static final String SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png";
 
   private static final class SpritePlacement {
     final String id,asset,drawMode,district;
@@ -40,7 +45,7 @@ public final class AdaptedMillesMapRenderer {
     }
   }
 
-  private final Paint outsidePaint=new Paint(),pixelPaint=new Paint();
+  private final Paint outsidePaint=new Paint(),pixelPaint=new Paint(),soilPaint=new Paint(),soilEdgePaint=new Paint();
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
@@ -49,6 +54,8 @@ public final class AdaptedMillesMapRenderer {
   public AdaptedMillesMapRenderer(){
     configureFill(outsidePaint,0xff355127);
     pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);
+    configureRoadPaint(soilEdgePaint,0xff765025,63f);
+    configureRoadPaint(soilPaint,0xff91602d,55f);
     assets=findAssets();placements=loadPlacements();
   }
 
@@ -57,8 +64,15 @@ public final class AdaptedMillesMapRenderer {
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null||world.map()==null)return;
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
+    // Draw one grass material below the road: alternating full-diamond crops produced a
+    // visible checker grid at every grass/soil boundary.
     for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
-      drawTerrainTile(canvas,world,tile.assetRef,tile.centerX,tile.centerY);
+      if(tile.kind!=AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
+        drawTerrainTile(canvas,world,GRASS_SURFACE,tile.centerX,tile.centerY);
+    drawConnectedSoil(canvas,world);
+    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
+      if(tile.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
+        drawTerrainTile(canvas,world,tile.assetRef,tile.centerX,tile.centerY);
     for(SpritePlacement placement:placements)drawPlacement(canvas,world,placement);
   }
 
@@ -93,6 +107,24 @@ public final class AdaptedMillesMapRenderer {
     if(visible(dst,canvas))canvas.drawBitmap(image,null,dst,pixelPaint);
   }
 
+  /** The asset supplies the soil pixels; these authored centerlines only place the surface. */
+  private void drawConnectedSoil(Canvas canvas,WorldRuntimeAdapter world){
+    Bitmap soil=bitmap(SOIL_SURFACE);
+    if(soil==null)return;
+    soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT));
+    canvas.save();
+    canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
+    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
+      if(points.length<2)continue;
+      Path centerline=new Path();centerline.moveTo(points[0][0],points[0][1]);
+      for(int i=1;i<points.length;i++)centerline.lineTo(points[i][0],points[i][1]);
+      canvas.drawPath(centerline,soilEdgePaint);
+      canvas.drawPath(centerline,soilPaint);
+    }
+    canvas.restore();
+    soilPaint.setShader(null);
+  }
+
   private void drawTerrainTile(Canvas canvas,WorldRuntimeAdapter world,String asset,float wx,float wy){
     WorldCameraTransform.Point point=world.worldToScreen(wx,wy);
     float halfW=TILE_W*.5f+SEAM_GUARD,halfH=TILE_H*.5f+SEAM_GUARD;
@@ -124,4 +156,9 @@ public final class AdaptedMillesMapRenderer {
     try{Class<?> type=Class.forName("android.app.ActivityThread");Method method=type.getDeclaredMethod("currentApplication");Object app=method.invoke(null);return app instanceof Context?((Context)app).getAssets():null;}catch(Throwable ignored){return null;}
   }
   private static void configureFill(Paint paint,int color){paint.setAntiAlias(false);paint.setDither(false);paint.setColor(color);paint.setStyle(Paint.Style.FILL);}
+  private static void configureRoadPaint(Paint paint,int color,float width){
+    paint.setAntiAlias(true);paint.setDither(false);paint.setColor(color);
+    paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(width);
+    paint.setStrokeCap(Paint.Cap.ROUND);paint.setStrokeJoin(Paint.Join.ROUND);
+  }
 }
