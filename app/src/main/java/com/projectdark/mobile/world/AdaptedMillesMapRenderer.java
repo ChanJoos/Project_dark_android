@@ -54,8 +54,8 @@ public final class AdaptedMillesMapRenderer {
   public AdaptedMillesMapRenderer(){
     configureFill(outsidePaint,0xff355127);
     pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);
-    configureRoadPaint(soilEdgePaint,0xff765025,63f);
-    configureRoadPaint(soilPaint,0xff91602d,55f);
+    configureRoadPaint(soilEdgePaint,0x996b522d,49f);
+    configureRoadPaint(soilPaint,0xff91602d,43f);
     assets=findAssets();placements=loadPlacements();
   }
 
@@ -111,7 +111,7 @@ public final class AdaptedMillesMapRenderer {
   private void drawConnectedSoil(Canvas canvas,WorldRuntimeAdapter world){
     Bitmap soil=bitmap(SOIL_SURFACE);
     if(soil==null)return;
-    soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT));
+    soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));
     canvas.save();
     canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
     for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){

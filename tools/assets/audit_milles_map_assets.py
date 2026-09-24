@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Validate the reusable Milles map layout and the runtime asset contract."""
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -8,6 +9,7 @@ PRODUCTION = ROOT / "assets/milles/production"
 LAYOUT = PRODUCTION / "maps/milles_garden.json"
 RENDERER = ROOT / "app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java"
 TILES = ROOT / "app/src/main/java/com/projectdark/mobile/world/AdaptedMillesIsometricTileLayer.java"
+COLLISION = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesProductionCollision.java"
 
 
 def main() -> None:
@@ -50,6 +52,16 @@ def main() -> None:
         "structures/fences/OBJ_palisade_diagonal_up.png",
         "structures/fences/OBJ_palisade_diagonal_down.png",
     }
+    fence_contacts = {
+        identifier: (float(x), float(y))
+        for identifier, x, y in re.findall(
+            r'add\(b,"(garden_fence_[^"]+)",Kind\.FENCE,([\d.]+)f,([\d.]+)f,',
+            COLLISION.read_text(encoding="utf-8"),
+        )
+    }
+    assert fence_contacts == {
+        item["id"]: (float(item["x"]), float(item["y"])) for item in garden_fences
+    }, "fence art and blocking footprints must share anchors"
     print(f"Milles asset layout PASS: {len(items)} independent placements, reusable terrain and props")
 
 

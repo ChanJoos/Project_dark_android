@@ -31,10 +31,12 @@ transparent sprites `../structures/fences/OBJ_palisade_milles_reference.png` and
 `../structures/fences/OBJ_palisade_diagonal_{up,down}.png`. These are AI-assisted interpretations
 of the visible stakes, not exact extractions. Eleven independently anchored angled segments form
 four sides of a small garden enclosure, with a southwest entrance. Each remains editable in map data.
+The authored foot anchors also have matching narrow `MillesProductionCollision` footprints;
+the asset audit compares every fence placement against its blocker.
 
 The 64×32 dirt and grass diamonds remain navigation cells. Runtime draws a consistent source-cropped
 grass tile below the continuous path, then repeats the existing `dirt_path_fill_texture.png` crop
-along the authored centerline with rounded, narrow margins. This restores the earlier connected
+along the authored centerline with mirrored seams and rounded, narrow margins. This restores the earlier connected
 soil silhouette while retaining independent image assets and tile-based collision.
 
 The first three AI-assisted transition candidates were rejected after the native render showed
