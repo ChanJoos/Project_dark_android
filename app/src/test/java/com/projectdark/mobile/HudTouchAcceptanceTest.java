@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+import org.robolectric.annotation.GraphicsMode;
 import android.view.MotionEvent;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,6 +18,7 @@ import java.lang.reflect.Field;
 /** Keeps visible HUD bounds from consuming representative empty-world tap-to-move regions. */
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk=34,manifest=Config.NONE)
+@GraphicsMode(GraphicsMode.Mode.NATIVE)
 public final class HudTouchAcceptanceTest {
   @Test public void tenWorldTapRegionsRemainReachableBeforeAndAfterCameraMove() {
     UxTapAcceptanceAudit.Result result = UxTapAcceptanceAudit.run();
