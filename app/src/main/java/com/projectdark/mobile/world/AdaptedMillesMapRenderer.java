@@ -29,7 +29,7 @@ public final class AdaptedMillesMapRenderer {
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
-  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);configureStroke(roadEdgePaint,0xff79501f,96f);configureStroke(roadPaint,0xff895616,86f);assets=findAssets();}
+  public AdaptedMillesMapRenderer(){configureFill(outsidePaint,0xff4f6928);pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);configureStroke(roadEdgePaint,0xff79501f,68f);configureStroke(roadPaint,0xff895616,58f);assets=findAssets();}
 
   public void draw(Canvas canvas,WorldRuntimeAdapter world){
     if(canvas==null||world==null)return;
@@ -58,8 +58,13 @@ public final class AdaptedMillesMapRenderer {
     drawFootMany(canvas,world,"vegetation/bushes/OBJ_bush_02.png",.43f,new float[][]{{245,360},{360,1150},{610,1300},{1015,875},{1320,900},{1490,1130},{1840,1090},{2110,1160}});
     drawFootMany(canvas,world,"terrain/OBJ_ground_02.png",.20f,new float[][]{{280,640},{530,360},{580,850},{420,1030},{900,920},{990,1110},{1430,910},{1580,1010},{1650,1250},{1930,960},{2100,580},{2310,1330}});
     drawFoot(canvas,world,"street/OBJ_well.png",AdaptedMillesIsometricTileLayer.PLAZA_CENTER_X,AdaptedMillesIsometricTileLayer.PLAZA_CENTER_Y,.50f);
-    // Small lawn enclosure and resting places define a grove room off the market walk.
-    drawFootMany(canvas,world,"structures/fences/OBJ_fence_01.png",.43f,new float[][]{{1060,825},{1125,805},{1190,805},{1255,825},{1300,875},{1295,935},{1230,970},{1160,975},{1090,945},{1050,890}});
+    // Broken, varied fence runs read as a lived-in garden edge instead of a repeated stockade.
+    drawNaturalFenceRun(canvas,world,new String[]{"01","03","02","01","03","02","01","02"},.40f,
+        new float[][]{{1060,825},{1130,805},{1200,805},{1278,832},{1320,882},{1305,946},{1236,981},{1152,973},{1085,944},{1044,889}});
+    drawNaturalFenceRun(canvas,world,new String[]{"03","01","02","03","01","02"},.37f,
+        new float[][]{{420,1180},{488,1168},{564,1176},{642,1200},{714,1238},{787,1274}});
+    drawNaturalFenceRun(canvas,world,new String[]{"02","01","03","01","02"},.39f,
+        new float[][]{{1540,1110},{1610,1095},{1685,1104},{1762,1134},{1830,1176}});
     // B1/B5: render the actual APK building assets at a character-readable village scale.
     // The previous APK only drew the church at 0.42, so changing planning geometry had no visible effect.
     drawFoot(canvas,world,"buildings/BLD_002_potion_shop.png",320f,420f,B1_VISIBLE_BUILDING_SCALE);
@@ -113,6 +118,16 @@ public final class AdaptedMillesMapRenderer {
   private void drawPortalTile(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);RectF d=new RectF(Math.round(p.x-TILE_W*.5f),Math.round(p.y-TILE_H*.5f),Math.round(p.x+TILE_W*.5f),Math.round(p.y+TILE_H*.5f));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}
   private void drawFoot(Canvas c,WorldRuntimeAdapter w,String path,float wx,float wy,float scale){Bitmap b=bitmap(path);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);float ww=b.getWidth()*scale,hh=b.getHeight()*scale;RectF d=new RectF(Math.round(p.x-ww*.5f),Math.round(p.y-hh),Math.round(p.x+ww*.5f),Math.round(p.y));if(d.right<0||d.left>c.getWidth()||d.bottom<0||d.top>c.getHeight())return;c.drawBitmap(b,null,d,pixelPaint);}
   private void drawFootMany(Canvas c,WorldRuntimeAdapter w,String path,float scale,float[][] points){for(float[] point:points)drawFoot(c,w,path,point[0],point[1],scale);}
+  private void drawNaturalFenceRun(Canvas c,WorldRuntimeAdapter w,String[] variants,float scale,float[][] points){
+    int count=Math.min(variants.length,points.length);
+    for(int i=0;i<count;i++){
+      // Small spacing changes and occasional omitted posts keep the silhouette irregular.
+      if(i>0&&i%5==4)continue;
+      String path="structures/fences/OBJ_fence_"+variants[i]+".png";
+      float segmentScale=scale*((i%3)==1?.91f:((i%3)==2?1.05f:1f));
+      drawFoot(c,w,path,points[i][0],points[i][1],segmentScale);
+    }
+  }
   private void drawVideoBenchSet(Canvas c,WorldRuntimeAdapter w,float[][] points){for(int i=0;i<points.length;i++){String path="video_reference/objects/bench_video_cutout_"+String.format(java.util.Locale.ROOT,"%02d",(i%4)+1)+".png";drawFoot(c,w,path,points[i][0],points[i][1],.38f);}}
   private Bitmap bitmap(String path){if(bitmapCache.containsKey(path))return bitmapCache.get(path);Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);}catch(Throwable ignored){}bitmapCache.put(path,b);return b;}
   private static AssetManager findAssets(){try{Class<?> c=Class.forName("android.app.ActivityThread");Method m=c.getDeclaredMethod("currentApplication");Object a=m.invoke(null);return a instanceof Context?((Context)a).getAssets():null;}catch(Throwable ignored){return null;}}
