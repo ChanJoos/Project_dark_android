@@ -24,31 +24,38 @@ public final class HudTouchAcceptanceTest {
 
   @Test public void statusQuestAndUtilitySurfacesAreProtectedButQuestCardCanFold() throws Exception {
     assertTrue(GameView.blocksWorldTapForHud(140, 110, false));
-    assertTrue(GameView.blocksWorldTapForHud(140, 190, false));
-    assertTrue(GameView.blocksWorldTapForHud(666, 28, false));
+    assertTrue(GameView.blocksWorldTapForHud(140, 150, false));
+    assertTrue(GameView.blocksWorldTapForHud(608, 28, false));
     assertTrue("attack control is anchored at the right edge without clipping",
         GameView.blocksWorldTapForHud(955, 498, true));
     assertTrue("empty edge beyond the attack remains available to the world",
         !GameView.blocksWorldTapForHud(960, 498, true));
     assertTrue("utility rail shifted right while its former position returns to the world",
-        !GameView.blocksWorldTapForHud(632, 28, false));
+        !GameView.blocksWorldTapForHud(640, 28, false));
     assertTrue("world outside the left cards and icon rail stays tappable",
         !GameView.blocksWorldTapForHud(310, 190, false));
 
     GameView view = new GameView(RuntimeEnvironment.getApplication());
     view.layout(0, 0, 960, 540);
     assertTrue("quest starts folded to preserve map space", questCollapsed(view));
-    tap(view, 80, 176); // open the compact tracker
+    tap(view, 80, 150); // open the compact tracker
     assertTrue(!questCollapsed(view));
-    tap(view, 258, 177); // fold chevron on the expanded card
+    tap(view, 244, 151); // fold chevron on the expanded card
     assertTrue(questCollapsed(view));
-    tap(view, 80, 176); // collapsed card opens without routing a move
+    tap(view, 80, 150); // collapsed card opens without routing a move
     assertTrue(!questCollapsed(view));
     assertTrue(!chatExpanded(view));
     tap(view, 420, 480); // compact chat opens
     assertTrue(chatExpanded(view));
     tap(view, 620, 432); // expanded chat folds
     assertTrue(!chatExpanded(view));
+  }
+
+  @Test public void autoTargetSelectionChoosesNearestLivingMonster() {
+    RuntimeState.Monster far=new RuntimeState.Monster("far","Far",40,0,10,"test");
+    RuntimeState.Monster dead=new RuntimeState.Monster("dead","Dead",1,0,10,"test");dead.alive=false;
+    RuntimeState.Monster near=new RuntimeState.Monster("near","Near",-3,0,10,"test");
+    assertTrue(GameView.nearestLivingMonster(java.util.Arrays.asList(far,dead,near),0,0)==near);
   }
 
   private static void tap(GameView view, float x, float y) {
