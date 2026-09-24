@@ -527,10 +527,10 @@ public final class GameView extends View {
   private void drawWrappedText(Canvas c,String s,float x,float y,float maxWidth,float size,float lineHeight){p.setTextSize(size);p.setColor(0xffeee4cf);String[] words=s.split(" ");String line="";float yy=y;for(String word:words){String test=line.length()==0?word:line+" "+word;if(p.measureText(test)>maxWidth&&line.length()>0){c.drawText(line,x,yy,p);yy+=lineHeight;line=word;}else line=test;}if(line.length()>0)c.drawText(line,x,yy,p);}
 
   static boolean blocksWorldTapForHud(float x,float y,boolean targetVisible){
-    if(inside(x,y,14,12,264,124)||inside(x,y,14,132,264,172)||inside(x,y,824,12,958,112)||inside(x,y,270,418,642,522))return true;
+    if(inside(x,y,14,12,264,124)||inside(x,y,14,132,264,172)||inside(x,y,590,7,794,54)||inside(x,y,824,12,958,112)||inside(x,y,270,418,642,522))return true;
     if(targetVisible&&inside(x,y,380,12,580,55))return true;
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
-    for(int i=0;i<4;i++){float cx=UTILITY_X0+i*UTILITY_STEP;if(circleHit(x,y,cx,UTILITY_Y0,UTILITY_R+2)||inside(x,y,cx-22,UTILITY_Y0+19,cx+22,UTILITY_Y0+30))return true;}
+    for(int i=0;i<4;i++){float cx=UTILITY_X0+i*UTILITY_STEP;if(circleHit(x,y,cx,UTILITY_Y0,UTILITY_R+2))return true;}
     for(int i=0;i<10;i++)if(slotRectStatic(i).contains(x,y))return true;
     return circleHit(x,y,ATK_X,ATK_Y,ATK_R+3)||circleHit(x,y,MODE_X,MODE_Y,MODE_R+3)||circleHit(x,y,AUTO_X,AUTO_Y,AUTO_R+3);
   }
