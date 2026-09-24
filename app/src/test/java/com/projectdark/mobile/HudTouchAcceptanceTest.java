@@ -60,7 +60,7 @@ public final class HudTouchAcceptanceTest {
     assertTrue("auto target acquisition is limited to nearby monsters",GameView.nearestLivingMonster(java.util.Collections.singletonList(distant),0,0)==null);
   }
 
-  @Test public void rightHudUsesWideScreenSideMargin() {
+  @Test public void rightHudUsesWideScreenSideMargin() throws Exception {
     assertTrue(Math.abs(GameView.logicalWidthForView(1920,1080)-960f)<.01f);
     assertTrue(Math.abs(GameView.logicalWidthForView(2340,1080)-1170f)<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1920,1080))<.01f);
