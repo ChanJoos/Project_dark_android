@@ -59,9 +59,19 @@ public final class HudTouchAcceptanceTest {
   }
 
   @Test public void rightHudUsesWideScreenSideMargin() {
+    assertTrue(Math.abs(GameView.logicalWidthForView(1920,1080)-960f)<.01f);
+    assertTrue(Math.abs(GameView.logicalWidthForView(2340,1080)-1170f)<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1920,1080))<.01f);
-    assertTrue(Math.abs(GameView.rightHudOffsetForView(2400,1080)-120f)<.01f);
+    assertTrue(Math.abs(GameView.rightHudOffsetForView(2400,1080)-240f)<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1080,1920))<.01f);
+    GameView view=new GameView(RuntimeEnvironment.getApplication());
+    view.layout(0,0,2340,1080);
+    assertTrue("wide camera expands to the full game viewport",Math.abs(viewCameraWidth(view)-1170f)<.01f);
+  }
+
+  private static float viewCameraWidth(GameView view) throws Exception {
+    Field field=GameView.class.getDeclaredField("camera");field.setAccessible(true);
+    return ((com.projectdark.mobile.world.WorldCameraTransform)field.get(view)).viewportWidth();
   }
 
   private static void tap(GameView view, float x, float y) {

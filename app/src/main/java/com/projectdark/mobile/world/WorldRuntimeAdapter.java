@@ -24,7 +24,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   private final RuntimeState runtime;
   private final WorldMapProjection map;
-  private final WorldCameraTransform camera;
+  private WorldCameraTransform camera;
   private final WorldMoveTargetController movement;
   private final WorldStepInterpolator presentation;
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
@@ -71,6 +71,14 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   public RuntimeState runtime(){return runtime;}
   public WorldMapProjection map(){return map;}
   public WorldCameraTransform camera(){return camera;}
+  /** Resize only the presentation viewport; world coordinates and navigation remain unchanged. */
+  public void resizeViewport(float width,float height){
+    if(width<=0f||height<=0f)throw new IllegalArgumentException("viewport must be positive");
+    float x=presentation==null?runtime.player().x:presentation.x();
+    float y=presentation==null?runtime.player().y:presentation.y();
+    camera=map!=null?map.newCamera(width,height):new WorldCameraTransform(sceneMinX,sceneMaxX,sceneMinY,sceneMaxY,width,height);
+    camera.snapTo(x,y);
+  }
   public WorldMoveTargetController movement(){return movement;}
 
   /** Empty-world tap path. UX must filter HUD/dialogue touches before calling this. */
