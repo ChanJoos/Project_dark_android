@@ -29,7 +29,7 @@ This is an adapted asset based on the footage, not a lossless original-client sp
 The short uneven wooden palisade in the 10-second footage was reconstructed as separate
 transparent sprites `../structures/fences/OBJ_palisade_milles_reference.png` and
 `../structures/fences/OBJ_palisade_diagonal_{up,down}.png`. These are AI-assisted interpretations
-of the visible stakes, not exact extractions. Eleven independently anchored angled segments form
+of the visible stakes, not exact extractions. Ten independently anchored angled segments form
 four sides of a small garden enclosure, with a southwest entrance. Each remains editable in map data.
 The authored foot anchors also have matching narrow `MillesProductionCollision` footprints;
 the asset audit compares every fence placement against its blocker.

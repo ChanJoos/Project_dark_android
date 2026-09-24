@@ -39,7 +39,6 @@
     {"id":"garden_fence_se_1","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1164,"y":550,"scale":0.56,"district":"garden"},
     {"id":"garden_fence_se_2","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1130,"y":570,"scale":0.55,"district":"garden"},
     {"id":"garden_fence_se_3","asset":"structures/fences/OBJ_palisade_diagonal_up.png","x":1096,"y":590,"scale":0.56,"district":"garden"},
-    {"id":"garden_fence_sw_2","asset":"structures/fences/OBJ_palisade_diagonal_down.png","x":1030,"y":570,"scale":0.55,"district":"garden"},
     {"id":"garden_fence_sw_3","asset":"structures/fences/OBJ_palisade_diagonal_down.png","x":1064,"y":590,"scale":0.56,"district":"garden"},
 
     {"id":"square_lamp_west","asset":"street/OBJ_lamp_03.png","x":600,"y":520,"scale":0.42,"district":"civic_square"},

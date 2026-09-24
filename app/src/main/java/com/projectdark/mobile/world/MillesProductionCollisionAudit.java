@@ -16,7 +16,11 @@ public final class MillesProductionCollisionAudit {
       // Scenery blockers require matching visible map assets.
       if(f.kind!=MillesProductionCollision.Kind.BUILDING&&f.kind!=MillesProductionCollision.Kind.CHURCH&&f.kind!=MillesProductionCollision.Kind.FENCE)return false;
     }
-    if(!(building&&church&&fenceCount==11))return false;
+    if(!(building&&church&&fenceCount==10))return false;
+
+    // The southwest gap is an actual 64x32 diagonal approach, not only a painted opening.
+    for(float[] step:new float[][]{{992f,576f},{1024f,560f},{1056f,544f}})
+      if(!isExactAuthoredCenter(step[0],step[1])||MillesProductionCollision.blocked(step[0],step[1],PLAYER_RADIUS))return false;
 
     for(MillesProductionCollision.Approach approach:MillesProductionCollision.entrances()){
       if(!isExactAuthoredCenter(approach.x,approach.y))return false;
