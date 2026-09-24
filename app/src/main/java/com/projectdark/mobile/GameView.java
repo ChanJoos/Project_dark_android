@@ -532,7 +532,7 @@ public final class GameView extends View {
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
     for(int i=0;i<4;i++){float cx=UTILITY_X0+i*UTILITY_STEP;if(circleHit(x,y,cx,UTILITY_Y0,UTILITY_R+2))return true;}
     for(int i=0;i<10;i++)if(slotRectStatic(i).contains(x,y))return true;
-    return circleHit(x,y,ATK_X,ATK_Y,ATK_R+4)||circleHit(x,y,MODE_X,MODE_Y,MODE_R+3)||circleHit(x,y,AUTO_X,AUTO_Y,AUTO_R+3);
+    return circleHit(x,y,ATK_X,ATK_Y,ATK_R+3)||circleHit(x,y,MODE_X,MODE_Y,MODE_R+3)||circleHit(x,y,AUTO_X,AUTO_Y,AUTO_R+3);
   }
   private static RectF slotRectStatic(int index){int col=index%5,row=index/5;float l=SLOT_X0+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
   private boolean isHudSurface(float x,float y){return blocksWorldTapForHud(x,y,combat.target()!=null)||(!questCollapsed&&inside(x,y,14,132,264,236));}
