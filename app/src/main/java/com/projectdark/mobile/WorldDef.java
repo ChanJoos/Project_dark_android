@@ -54,7 +54,7 @@ public final class WorldDef {
     List<PortalSpawn> p=new ArrayList<>();
     // Building exteriors stay fully solid. Entry is exclusively through front-door portal triggers.
     // Door threshold itself is the portal. Keep it wider than one player radius so diagonal tile stepping cannot skip the trigger.
-    p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",320f,496f,12f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));
+    p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",320f,459f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));
     p.add(new PortalSpawn("weapon_shop_door","milles_interior_weapon_shop",736f,384f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("general_shop_door","milles_interior_general_shop",1120f,448f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("church_door","milles_interior_church",1536f,560f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
