@@ -44,7 +44,7 @@ public final class AdaptedMillesMapRenderer {
     float left=WorldDef.PLAYER_SPAWN_X-w.camera().anchorX();
     float top=WorldDef.PLAYER_SPAWN_Y-w.camera().anchorY();
     WorldCameraTransform.Point p=w.worldToScreen(left,top);
-    RectF dst=new RectF(p.x,p.y,p.x+c.getWidth(),p.y+c.getHeight());
+    RectF dst=new RectF(p.x,p.y,p.x+scene.getWidth(),p.y+scene.getHeight());
     c.drawBitmap(scene,null,dst,pixelPaint);
   }
 
