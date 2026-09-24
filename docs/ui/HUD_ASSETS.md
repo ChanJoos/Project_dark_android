@@ -9,7 +9,7 @@ Each raster component is a separate `drawable-nodpi` PNG so it can be replaced w
 | --- | --- | --- |
 | `hud_attack_button.png` | Large basic attack control | Active when a target is selected and attack is ready |
 | `hud_auto_button.png` | Toggle control for automatic basic attacks | Uses only the selected target and existing basic-attack resolver |
-| `hud_empty_slot.png` | Empty square skill/quick slot | Ten reserved slots; first eight are marked Skill |
+| `hud_empty_slot.png` | Empty square skill/quick slot | Ten reserved slots; eight Skills and two Potions remain visibly grouped and unbound |
 | `hud_quest_icon.png` | Quest navigation | Routes to the currently tracked quest target |
 | `hud_inventory_icon.png` | Inventory navigation | Opens the existing inventory panel |
 | `hud_status_icon.png` | Character status navigation | Opens the existing status panel |
@@ -18,6 +18,6 @@ Each raster component is a separate `drawable-nodpi` PNG so it can be replaced w
 | `hud_hp_bar.png`, `hud_mp_bar.png` | Red/blue resource bar frames | Filled from current runtime HP/MP |
 | `hud_exp_bar.png` | Green experience bar frame | Filled from current progression EXP ratio |
 
-Potion slots remain empty and visibly grouped in the last two quick-slot cells. Skill and potion artwork, effects, and item bindings are intentionally omitted until their gameplay definitions are confirmed. Buff cells are also empty frames. The minimap, tracked quest panel, target bar, chat, joystick, attack, and EXP strip remain part of the live HUD. Inventory, status, and equipment panels retain their existing data and touch behavior.
+Potion slots remain empty and visibly grouped in the last two quick-slot cells. Skill and potion artwork, effects, and item bindings are intentionally omitted until their gameplay definitions are confirmed. Buff cells are also empty frames. The top-left status card separates level/class, HP/MP labels, framed gauges, numeric values, buff placeholders, and Gold to prevent text-over-bar collisions. The tracked quest card presents the live objective and progress and can be folded; tapping its expanded body keeps the existing quick-navigation behavior. The utility rail labels Inventory, Status, Equipment, and Quest and sits on a shared bronze backing. Chat/joystick contrast and the lower action deck grouping are strengthened while their gameplay bindings remain unchanged.
 
 All image assets were cropped from the approved dark bronze HUD concept sheet into transparent PNGs; UI layout and labels remain code-drawn at runtime. Source image concepts are visual references only and are not shipped as a combined background.

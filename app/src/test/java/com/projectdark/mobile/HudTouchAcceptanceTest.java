@@ -5,7 +5,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+import android.view.MotionEvent;
+import java.lang.reflect.Field;
 
 /** Keeps visible HUD bounds from consuming representative empty-world tap-to-move regions. */
 @RunWith(RobolectricTestRunner.class)
@@ -17,5 +20,32 @@ public final class HudTouchAcceptanceTest {
         result.initialCameraAccepted == UxTapAcceptanceAudit.REQUIRED_POINTS);
     assertTrue("moved camera accepts " + result.movedCameraAccepted + "/10",
         result.movedCameraAccepted == UxTapAcceptanceAudit.REQUIRED_POINTS);
+  }
+
+  @Test public void statusQuestAndUtilitySurfacesAreProtectedButQuestCardCanFold() throws Exception {
+    assertTrue(GameView.blocksWorldTapForHud(140, 110, false));
+    assertTrue(GameView.blocksWorldTapForHud(140, 190, false));
+    assertTrue(GameView.blocksWorldTapForHud(632, 28, false));
+    assertTrue("world outside the left cards and icon rail stays tappable",
+        !GameView.blocksWorldTapForHud(310, 190, false));
+
+    GameView view = new GameView(RuntimeEnvironment.getApplication());
+    view.layout(0, 0, 960, 540);
+    tap(view, 258, 161); // fold chevron on the expanded card
+    assertTrue(questCollapsed(view));
+    tap(view, 80, 160); // collapsed card opens without routing a move
+    assertTrue(!questCollapsed(view));
+  }
+
+  private static void tap(GameView view, float x, float y) {
+    MotionEvent event = MotionEvent.obtain(0, 1, MotionEvent.ACTION_DOWN, x, y, 0);
+    view.onTouchEvent(event);
+    event.recycle();
+  }
+
+  private static boolean questCollapsed(GameView view) throws Exception {
+    Field field = GameView.class.getDeclaredField("questCollapsed");
+    field.setAccessible(true);
+    return field.getBoolean(view);
   }
 }
