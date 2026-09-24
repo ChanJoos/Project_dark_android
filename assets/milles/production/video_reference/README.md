@@ -34,10 +34,9 @@ instances frame the garden; the map can move or remove each instance without cha
 The 64×32 dirt/grass boundary still has hard diamond edges. These terrain tiles are provisional;
 placing more props must not be mistaken for solving the boundary artwork.
 
-`terrain/transitions/path_*.png` are three separately loadable AI-assisted candidate sprites
-based on the recording's ground palette. Straight connected path tiles and dense junctions use
-these; corners and endpoints retain the source-derived dirt tile. The three transition assets
-have not yet been visually accepted on a device, and further directions need their own art.
+The first three AI-assisted transition candidates were rejected after the native render showed
+disconnected paths. They are excluded from the runtime. Each 64×32 road tile must instead have
+art for its actual connection pattern, including corners and junctions, before another rollout.
 
 `manifest.json` records source, frame, crop bounds, processing and intended use. Source pixels are
 not enlarged or resampled during extraction.

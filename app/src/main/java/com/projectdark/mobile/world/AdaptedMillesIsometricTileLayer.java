@@ -29,7 +29,7 @@ public final class AdaptedMillesIsometricTileLayer {
       this.row=row;this.column=column;this.centerX=centerX;this.centerY=centerY;
       leftX=centerX-HALF_WIDTH;topY=centerY-HALF_HEIGHT;rightX=centerX+HALF_WIDTH;bottomY=centerY+HALF_HEIGHT;
       this.kind=kind;this.variant=variant;this.transitionMask=transitionMask;
-      evidence="ADAPTED/B";status="STORY_DRIVEN_MILLES_LAYOUT_PENDING_DEVICE";assetRef=assetRefFor(kind,variant,transitionMask);
+      evidence="ADAPTED/B";status="STORY_DRIVEN_MILLES_LAYOUT_PENDING_DEVICE";assetRef=assetRefFor(kind,variant);
     }
     public boolean contains(float x,float y){return Math.abs(x-centerX)/HALF_WIDTH+Math.abs(y-centerY)/HALF_HEIGHT<=1f;}
     public long depthKey(){return ((long)row<<32)|(column&0xffffffffL);}
@@ -164,14 +164,8 @@ public final class AdaptedMillesIsometricTileLayer {
   private static float distanceToPath(float x,float y,float[][] path){float best=Float.MAX_VALUE;for(int i=1;i<path.length;i++)best=Math.min(best,distanceToSegment(x,y,path[i-1][0],path[i-1][1],path[i][0],path[i][1]));return best;}
   private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){float dx=bx-ax,dy=by-ay,len=dx*dx+dy*dy;float t=len==0f?0f:((x-ax)*dx+(y-ay)*dy)/len;t=Math.max(0f,Math.min(1f,t));float ex=x-(ax+t*dx),ey=y-(ay+t*dy);return(float)Math.sqrt(ex*ex+ey*ey);}
 
-  private static String assetRefFor(TileKind kind,int variant,int transitionMask){
+  private static String assetRefFor(TileKind kind,int variant){
     if(kind==TileKind.GROUND)return "video_reference/terrain/grass_tile_0"+(Math.floorMod(variant,3)+1)+".png";
-    if(kind==TileKind.ROAD){
-      int sameEdges=(~transitionMask)&15;
-      if(Integer.bitCount(sameEdges)>=3)return "video_reference/terrain/transitions/path_junction.png";
-      if((sameEdges&(EDGE_NW|EDGE_SE))==(EDGE_NW|EDGE_SE))return "video_reference/terrain/transitions/path_nw_se.png";
-      if((sameEdges&(EDGE_NE|EDGE_SW))==(EDGE_NE|EDGE_SW))return "video_reference/terrain/transitions/path_ne_sw.png";
-    }
     if(kind==TileKind.ROAD||kind==TileKind.GATE)return "video_reference/terrain/dirt_path_tile_0"+(Math.floorMod(variant,2)+1)+".png";
     return "terrain/OBJ_stone_01.png";
   }
