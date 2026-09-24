@@ -318,16 +318,16 @@
       "frame_file": "inn-full.png",
       "time_seconds": 2.0,
       "crop_xyxy": [
-        802,
-        596,
-        898,
-        644
+        826,
+        608,
+        874,
+        632
       ],
       "dimensions_px": [
-        96,
-        48
+        48,
+        24
       ],
-      "processing": "derived from dirt_path_tile_01; transparent diamond corners filled with median recorded soil color to provide a seamless repeatable stroke texture",
+      "processing": "interior rectangle cropped from recorded dirt-path tile 01; no resampling or alpha fill; repeated as runtime stroke texture",
       "use": "runtime dirt ribbon fill texture"
     }
   ]
