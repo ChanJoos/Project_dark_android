@@ -59,13 +59,23 @@ public final class AdaptedMillesIsometricTileLayer {
   private static boolean differs(Tile a,Tile b){return b==null||b.kind!=a.kind;}
   private static String key(float x,float y){return Math.round(x*10f)+":"+Math.round(y*10f);}
 
-  /**
-   * Milles story layout. Grass is dominant. Dirt routes are deliberately finite and asymmetric:
-   * central village square -> east church, west craft/equipment quarter, north homes/service,
-   * south market/gate, plus a quieter south-east waterside spur. Unknown geometry is [ADAPTED].
-   * Width is two canonical tiles, but unlike the previous infinite axis test the routes stop at
-   * district destinations and leave large readable grass areas between them.
-   */
+  /** Authored, asymmetric Milles paths that connect the active building doors to the well square. */
+  private static final float PATH_HALF_WIDTH=34f;
+  private static final float[][][] PATHS={
+      // West potion shop: a short bend around the lawn edge.
+      {{768,592},{650,560},{520,515},{420,480},{320,459}},
+      // North-west weapon shop: a gentle curve into the north lane.
+      {{768,592},{770,530},{752,470},{736,384}},
+      // East general shop and church share a market walk.
+      {{768,592},{875,545},{990,505},{1120,448},{1240,505},{1385,545},{1536,560}},
+      // Long east garden walk to the inn.
+      {{768,592},{900,665},{1050,710},{1230,735},{1460,744},{1710,740},{2016,736}},
+      // South gate path.
+      {{768,592},{715,760},{710,940},{748,1150},{790,1370},{790,1565}},
+      // A looping garden walk gives the central grove a second entrance.
+      {{875,545},{930,650},{1030,760},{1175,815},{1320,780},{1390,675},{1385,545}}
+  };
+
   private static TileKind classify(float x,float y){
     float dx=x-PLAZA_CENTER_X,dy=y-PLAZA_CENTER_Y;
     float u=dx/64f-dy/32f, v=dx/64f+dy/32f;
@@ -73,20 +83,20 @@ public final class AdaptedMillesIsometricTileLayer {
     if(Math.abs(u-iu)>.01f||Math.abs(v-iv)>.01f)return TileKind.GROUND;
     if(Math.abs(iu)<=1&&Math.abs(iv)<=1)return TileKind.PLAZA;
 
-    // NW: north residential/service district. Two-tile lane, finite.
-    if((iv==0||iv==1)&&iu>=-13&&iu<=-2)return TileKind.ROAD;
-    // SE: south market and village gate; longest civic route.
-    if((iv==0||iv==1)&&iu>=2&&iu<=26)return iu>=23?TileKind.GATE:TileKind.ROAD;
-    // NE: church/quiet district.
-    if((iu==0||iu==1)&&iv>=-17&&iv<=-2)return TileKind.ROAD;
-    // SW: craft/equipment district.
-    if((iu==0||iu==1)&&iv>=2&&iv<=16)return TileKind.ROAD;
-    // Quiet waterside spur branching from the southern route toward the east bank.
-    if(iu>=8&&iu<=18&&(iv==-5||iv==-4))return TileKind.ROAD;
-    // Small bend/connector into the spur so it does not float as an isolated stripe.
-    if(iu>=7&&iu<=10&&(iv==-3||iv==-2||iv==-1))return TileKind.ROAD;
+    if(distanceToPaths(x,y)<=PATH_HALF_WIDTH){
+      if(y>=1420f&&distanceToPath(x,y,PATHS[4])<=PATH_HALF_WIDTH+24f)return TileKind.GATE;
+      return TileKind.ROAD;
+    }
     return TileKind.GROUND;
   }
 
-  private static String assetRefFor(TileKind kind,int variant){return "PENDING_CROP/milles/tiles/"+kind.name().toLowerCase()+"_v"+variant;}
+  private static float distanceToPaths(float x,float y){float best=Float.MAX_VALUE;for(float[][] path:PATHS)best=Math.min(best,distanceToPath(x,y,path));return best;}
+  private static float distanceToPath(float x,float y,float[][] path){float best=Float.MAX_VALUE;for(int i=1;i<path.length;i++)best=Math.min(best,distanceToSegment(x,y,path[i-1][0],path[i-1][1],path[i][0],path[i][1]));return best;}
+  private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){float dx=bx-ax,dy=by-ay,len=dx*dx+dy*dy;float t=len==0f?0f:((x-ax)*dx+(y-ay)*dy)/len;t=Math.max(0f,Math.min(1f,t));float ex=x-(ax+t*dx),ey=y-(ay+t*dy);return(float)Math.sqrt(ex*ex+ey*ey);}
+
+  private static String assetRefFor(TileKind kind,int variant){
+    if(kind==TileKind.GROUND)return "video_reference/terrain/grass_tile_0"+(Math.floorMod(variant,3)+1)+".png";
+    if(kind==TileKind.ROAD||kind==TileKind.GATE)return "video_reference/terrain/dirt_path_tile_0"+(Math.floorMod(variant,2)+1)+".png";
+    return "terrain/OBJ_stone_01.png";
+  }
 }

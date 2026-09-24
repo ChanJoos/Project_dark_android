@@ -1,0 +1,316 @@
+{
+  "schema": "project-dark-video-extract-v1",
+  "source_note": "Pixel-preserving crops and keyed object cutouts from user-provided compressed screen recordings. The recordings themselves are lossy screen captures, not original client assets. Rectangular reference crops are not transparent sprites.",
+  "sources": {
+    "inn_exterior": "Screen_Recording_20260924_163242_YouTube.mp4",
+    "milles_and_inn": "Screen_Recording_20260924_163501_YouTube.mp4"
+  },
+  "assets": [
+    {
+      "path": "terrain/grass_texture.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-frame-13.png",
+      "time_seconds": 13.0,
+      "crop_xyxy": [
+        600,
+        550,
+        728,
+        646
+      ],
+      "dimensions_px": [
+        128,
+        96
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "continuous grass texture; clean sample"
+    },
+    {
+      "path": "terrain/dirt_path_reference.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-frame-13.png",
+      "time_seconds": 13.0,
+      "crop_xyxy": [
+        330,
+        400,
+        458,
+        496
+      ],
+      "dimensions_px": [
+        128,
+        96
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "dirt path edge reference; not a seamless tile"
+    },
+    {
+      "path": "terrain/inn_plank_floor.png",
+      "source": "milles_and_inn",
+      "frame_file": "milles-frame-3.png",
+      "time_seconds": 3.0,
+      "crop_xyxy": [
+        900,
+        500,
+        1028,
+        596
+      ],
+      "dimensions_px": [
+        128,
+        96
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "inn interior plank floor reference"
+    },
+    {
+      "path": "objects/wood_fence_reference.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        225,
+        0,
+        555,
+        180
+      ],
+      "dimensions_px": [
+        330,
+        180
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "wood fence reference crop"
+    },
+    {
+      "path": "objects/bench_lantern_reference.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        1220,
+        430,
+        1550,
+        620
+      ],
+      "dimensions_px": [
+        330,
+        190
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "bench and lantern reference crop"
+    },
+    {
+      "path": "objects/well_tree_ring_reference.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-frame-13.png",
+      "time_seconds": 13.0,
+      "crop_xyxy": [
+        1110,
+        190,
+        1690,
+        590
+      ],
+      "dimensions_px": [
+        580,
+        400
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "tree enclosure and well reference crop"
+    },
+    {
+      "path": "objects/inn_room_reference.png",
+      "source": "milles_and_inn",
+      "frame_file": "milles-frame-3.png",
+      "time_seconds": 3.0,
+      "crop_xyxy": [
+        430,
+        210,
+        1150,
+        760
+      ],
+      "dimensions_px": [
+        720,
+        550
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "inn interior furniture and log wall reference crop"
+    },
+    {
+      "path": "objects/milles_buildings_reference.png",
+      "source": "milles_and_inn",
+      "frame_file": "milles-full.png",
+      "time_seconds": 0.5,
+      "crop_xyxy": [
+        480,
+        80,
+        1810,
+        800
+      ],
+      "dimensions_px": [
+        1330,
+        720
+      ],
+      "processing": "unscaled rectangular crop; original pixels retained",
+      "use": "Milles building and street reference crop"
+    },
+    {
+      "path": "terrain/grass_tile_01.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-frame-13.png",
+      "time_seconds": 13.0,
+      "crop_xyxy": [
+        1800,
+        250,
+        1896,
+        298
+      ],
+      "dimensions_px": [
+        96,
+        48
+      ],
+      "processing": "source crop masked to a 2:1 isometric diamond; no resampling",
+      "use": "grass surface variant 1"
+    },
+    {
+      "path": "terrain/grass_tile_02.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-frame-13.png",
+      "time_seconds": 13.0,
+      "crop_xyxy": [
+        600,
+        550,
+        696,
+        598
+      ],
+      "dimensions_px": [
+        96,
+        48
+      ],
+      "processing": "source crop masked to a 2:1 isometric diamond; no resampling",
+      "use": "grass surface variant 2"
+    },
+    {
+      "path": "terrain/grass_tile_03.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-frame-13.png",
+      "time_seconds": 13.0,
+      "crop_xyxy": [
+        1200,
+        250,
+        1296,
+        298
+      ],
+      "dimensions_px": [
+        96,
+        48
+      ],
+      "processing": "source crop masked to a 2:1 isometric diamond; no resampling",
+      "use": "grass surface variant 3"
+    },
+    {
+      "path": "terrain/dirt_path_tile_01.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        802,
+        596,
+        898,
+        644
+      ],
+      "dimensions_px": [
+        96,
+        48
+      ],
+      "processing": "source crop masked to a 2:1 isometric diamond; no resampling",
+      "use": "dirt path surface variant 1"
+    },
+    {
+      "path": "terrain/dirt_path_tile_02.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        852,
+        626,
+        948,
+        674
+      ],
+      "dimensions_px": [
+        96,
+        48
+      ],
+      "processing": "source crop masked to a 2:1 isometric diamond; no resampling",
+      "use": "dirt path surface variant 2"
+    },
+    {
+      "path": "objects/bench_video_cutout_01.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        920,
+        365,
+        1090,
+        505
+      ],
+      "dimensions_px": [
+        170,
+        140
+      ],
+      "processing": "unscaled crop; green lawn chroma-keyed to transparency; alpha edge requires in-game QA",
+      "use": "video-derived bench sprite candidate"
+    },
+    {
+      "path": "objects/bench_video_cutout_02.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        1440,
+        515,
+        1640,
+        650
+      ],
+      "dimensions_px": [
+        200,
+        135
+      ],
+      "processing": "unscaled crop; green lawn chroma-keyed; small detached top edge cleared; alpha edge requires in-game QA",
+      "use": "video-derived alternate bench sprite candidate"
+    },
+    {
+      "path": "objects/bench_video_cutout_03.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        1150,
+        460,
+        1355,
+        575
+      ],
+      "dimensions_px": [
+        205,
+        115
+      ],
+      "processing": "unscaled crop; green lawn chroma-keyed to transparency; neighboring compression fragments clipped by crop and small detached components removed",
+      "use": "video-derived alternate bench sprite candidate"
+    },
+    {
+      "path": "objects/bench_video_cutout_04.png",
+      "source": "inn_exterior",
+      "frame_file": "inn-full.png",
+      "time_seconds": 2.0,
+      "crop_xyxy": [
+        1680,
+        425,
+        1870,
+        525
+      ],
+      "dimensions_px": [
+        190,
+        100
+      ],
+      "processing": "unscaled crop; green lawn chroma-keyed to transparency; small detached components removed",
+      "use": "video-derived alternate bench sprite candidate"
+    }
+  ]
+}
