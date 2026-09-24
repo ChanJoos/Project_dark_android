@@ -24,16 +24,19 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   private final RuntimeState runtime;
   private final WorldMapProjection map;
-  private final WorldCameraTransform camera;
-  private final WorldMoveTargetController movement;
+  private WorldCameraTransform camera;
+  private WorldMoveTargetController movement;
   private final WorldStepInterpolator presentation;
-  private final List<WorldMoveTargetController.TileCenter> navigationTiles;
+  private List<WorldMoveTargetController.TileCenter> navigationTiles;
+  private final float viewportWidth,viewportHeight;
+  private String activeMapId=ReagentShopMapDef.MILLES_MAP_ID;
+  private float millesReturnX,millesReturnY;
   private float presentationWalkClock;
 
   public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight){
     if(runtime==null)throw new IllegalArgumentException("runtime required");
     if(runtime.bootMode()!=RuntimeState.BootMode.MILLES)throw new IllegalArgumentException("Milles WorldRuntimeAdapter requires MILLES boot mode");
-    this.runtime=runtime;
+    this.runtime=runtime;this.viewportWidth=viewportWidth;this.viewportHeight=viewportHeight;
     map=WorldMapProjection.from(runtime.world());
     List<WorldMoveTargetController.TileCenter> centers=new ArrayList<>();
     for(AdaptedMillesIsometricTileLayer.Tile tile:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
@@ -48,8 +51,25 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   public RuntimeState runtime(){return runtime;}
   public WorldMapProjection map(){return map;}
+  public String activeMapId(){return activeMapId;}
+  public boolean inReagentShop(){return ReagentShopMapDef.MAP_ID.equals(activeMapId);}
   public WorldCameraTransform camera(){return camera;}
   public WorldMoveTargetController movement(){return movement;}
+  public void enterReagentShop(){
+    if(inReagentShop())return;millesReturnX=runtime.player().x;millesReturnY=runtime.player().y;activeMapId=ReagentShopMapDef.MAP_ID;
+    runtime.player().x=ReagentShopMapDef.ENTRY_X;runtime.player().y=ReagentShopMapDef.ENTRY_Y;rebuildMapSession();
+  }
+  public void leaveReagentShop(){
+    if(!inReagentShop())return;activeMapId=ReagentShopMapDef.MILLES_MAP_ID;runtime.player().x=millesReturnX;runtime.player().y=millesReturnY;rebuildMapSession();
+  }
+  private void rebuildMapSession(){
+    ArrayList<WorldMoveTargetController.TileCenter> centers=new ArrayList<>();
+    if(inReagentShop())for(ReagentShopMapDef.Tile t:ReagentShopMapDef.tiles())centers.add(new WorldMoveTargetController.TileCenter(t.centerX,t.centerY));
+    else for(AdaptedMillesIsometricTileLayer.Tile t:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(t.centerX,t.centerY));
+    navigationTiles=Collections.unmodifiableList(centers);movement=new WorldMoveTargetController(this,this);
+    camera=inReagentShop()?new WorldCameraTransform(ReagentShopMapDef.MIN_X,ReagentShopMapDef.MAX_X,ReagentShopMapDef.MIN_Y,ReagentShopMapDef.MAX_Y,viewportWidth,viewportHeight):map.newCamera(viewportWidth,viewportHeight);
+    presentation.snap(runtime.player().x,runtime.player().y);presentationWalkClock=0f;CharacterRenderer.setPresentationWalkClock(0f);camera.snapTo(runtime.player().x,runtime.player().y);
+  }
 
   /** Empty-world tap path. UX must filter HUD/dialogue touches before calling this. */
   public WorldMoveTargetController.Snapshot requestGroundScreenTap(float screenX,float screenY){
@@ -125,7 +145,8 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
       presentation.begin(runtime.player().x,runtime.player().y);
   }
 
-  public WorldMapProjection.Portal portalAt(float worldX,float worldY){for(WorldMapProjection.Portal p:map.portals())if(p.contains(worldX,worldY))return p;return null;}
+  public WorldMapProjection.Portal portalAt(float worldX,float worldY){if(inReagentShop())return null;for(WorldMapProjection.Portal p:map.portals())if(p.contains(worldX,worldY))return p;return null;}
+  public boolean atReagentShopExit(){if(!inReagentShop())return false;WorldPortalTransitionController.Portal p=ReagentShopMapDef.exitPortal();return p.contains(runtime.player().x,runtime.player().y);}
 
   private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc n:runtime.npcs())if(id.equals(n.id))return n;return null;}
 
@@ -134,6 +155,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   /** Mirrors current RuntimeState player occupancy without making GameView know collision details. */
   @Override public boolean canPlayerOccupy(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
+    if(inReagentShop())return ReagentShopMapDef.canOccupy(x,y,r);
     if(x-r<map.bounds().minX||x+r>map.bounds().maxX||y-r<map.bounds().minY||y+r>map.bounds().maxY)return false;
     for(RectF obstacle:runtime.obstacles())if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
     for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
