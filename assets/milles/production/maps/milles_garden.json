@@ -656,6 +656,70 @@
       "district": "south_residences"
     },
     {
+      "id": "orchard_tree",
+      "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
+      "x": 360,
+      "y": 780,
+      "scale": 0.78,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_flower",
+      "asset": "vegetation/flowers/OBJ_flower_01.png",
+      "x": 400,
+      "y": 810,
+      "scale": 0.25,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_barrel",
+      "asset": "storage/OBJ_barrel.png",
+      "x": 484,
+      "y": 806,
+      "scale": 0.22,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_lantern",
+      "asset": "street/OBJ_lamp_milles_rope.png",
+      "x": 470,
+      "y": 724,
+      "scale": 0.68,
+      "district": "west_crafts"
+    },
+    {
+      "id": "south_garden_tree",
+      "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
+      "x": 920,
+      "y": 1230,
+      "scale": 0.78,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_garden_flower",
+      "asset": "vegetation/flowers/OBJ_flower_02.png",
+      "x": 972,
+      "y": 1250,
+      "scale": 0.26,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_garden_bench",
+      "asset": "video_reference/objects/bench_video_cutout_03.png",
+      "x": 1082,
+      "y": 1320,
+      "scale": 0.42,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_garden_lantern",
+      "asset": "street/OBJ_lamp_milles_rope.png",
+      "x": 1032,
+      "y": 1178,
+      "scale": 0.67,
+      "district": "south_residences"
+    },
+    {
       "id": "east_guild_notice",
       "asset": "street/OBJ_noticeboard.png",
       "x": 1710,
@@ -718,6 +782,166 @@
       "y": 620,
       "scale": 0.7,
       "district": "civic_square"
+    },
+    {
+      "id": "orchard_fence_nw_1",
+      "asset": "structures/fences/OBJ_palisade_milles_rail.png",
+      "x": 276,
+      "y": 770,
+      "scale": 0.56,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_nw_2",
+      "asset": "structures/fences/OBJ_palisade_milles_rail.png",
+      "x": 310,
+      "y": 750,
+      "scale": 0.55,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_nw_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
+      "x": 344,
+      "y": 730,
+      "scale": 0.56,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_ne_1",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 376,
+      "y": 730,
+      "scale": 0.56,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_ne_2",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 410,
+      "y": 750,
+      "scale": 0.54,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_ne_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 444,
+      "y": 770,
+      "scale": 0.56,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_se_1",
+      "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
+      "x": 444,
+      "y": 790,
+      "scale": 0.56,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_se_2",
+      "asset": "structures/fences/OBJ_palisade_milles_rail.png",
+      "x": 410,
+      "y": 810,
+      "scale": 0.55,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_se_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
+      "x": 376,
+      "y": 830,
+      "scale": 0.56,
+      "district": "west_crafts"
+    },
+    {
+      "id": "orchard_fence_sw_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 344,
+      "y": 830,
+      "scale": 0.56,
+      "district": "west_crafts"
+    },
+    {
+      "id": "south_fence_nw_1",
+      "asset": "structures/fences/OBJ_palisade_milles_rail.png",
+      "x": 846,
+      "y": 1220,
+      "scale": 0.56,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_nw_2",
+      "asset": "structures/fences/OBJ_palisade_milles_rail.png",
+      "x": 880,
+      "y": 1200,
+      "scale": 0.55,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_nw_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
+      "x": 914,
+      "y": 1180,
+      "scale": 0.56,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_ne_1",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 946,
+      "y": 1180,
+      "scale": 0.56,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_ne_2",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 980,
+      "y": 1200,
+      "scale": 0.54,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_ne_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 1014,
+      "y": 1220,
+      "scale": 0.56,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_se_1",
+      "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
+      "x": 1014,
+      "y": 1240,
+      "scale": 0.56,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_se_2",
+      "asset": "structures/fences/OBJ_palisade_milles_rail.png",
+      "x": 980,
+      "y": 1260,
+      "scale": 0.55,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_se_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
+      "x": 946,
+      "y": 1280,
+      "scale": 0.56,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_fence_sw_3",
+      "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
+      "x": 914,
+      "y": 1280,
+      "scale": 0.56,
+      "district": "south_residences"
     },
     {
       "id": "north_wood_tree_0",

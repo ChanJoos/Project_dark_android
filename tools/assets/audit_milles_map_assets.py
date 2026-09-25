@@ -11,6 +11,7 @@ LAYOUT = PRODUCTION / "maps/milles_garden.json"
 RENDERER = ROOT / "app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java"
 TILES = ROOT / "app/src/main/java/com/projectdark/mobile/world/AdaptedMillesIsometricTileLayer.java"
 COLLISION = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesProductionCollision.java"
+DISTRICT_FENCES = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesDistrictFenceFootprints.java"
 
 
 def main() -> None:
@@ -73,6 +74,18 @@ def main() -> None:
     assert fence_contacts == {
         item["id"]: (float(item["x"]), float(item["y"])) for item in garden_fences
     }, "fence art and blocking footprints must share anchors"
+    district_fences = [item for item in items if item["id"].startswith(("orchard_fence_", "south_fence_"))]
+    assert len(district_fences) == 20
+    district_contacts = {
+        identifier: ((float(left) + float(right)) / 2, (float(top) + float(bottom)) / 2)
+        for identifier, left, top, right, bottom in re.findall(
+            r'Footprint\("((?:orchard|south)_fence_[^"]+)", MillesProductionCollision.Kind.FENCE, ([-\d.]+)f, ([-\d.]+)f, ([-\d.]+)f, ([-\d.]+)f\)',
+            DISTRICT_FENCES.read_text(encoding="utf-8"),
+        )
+    }
+    assert district_contacts == {
+        item["id"]: (float(item["x"]), float(item["y"])) for item in district_fences
+    }, "the two complete garden enclosures must share art and collision anchors"
     for building in ("west_armorer", "south_flower_shop", "south_library", "east_guild", "north_healer"):
         assert f'"{building}",Kind.BUILDING,' in COLLISION.read_text(encoding="utf-8")
         assert building in ids

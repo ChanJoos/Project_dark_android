@@ -66,6 +66,7 @@ public final class MillesProductionCollision {
     add(b,"garden_fence_se_2",Kind.FENCE,1130f,570f,38f,16f);
     add(b,"garden_fence_se_3",Kind.FENCE,1096f,590f,38f,16f);
     add(b,"garden_fence_sw_3",Kind.FENCE,1064f,590f,38f,16f);
+    MillesDistrictFenceFootprints.addTo(b);
 
     // Only currently visible buildings and the garden palisade are collision-authoritative.
     // Invisible legacy scenery footprints are intentionally excluded from runtime blockers.
