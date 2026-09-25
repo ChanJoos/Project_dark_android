@@ -39,36 +39,36 @@ BUILDINGS = [
 # A pair of small gardens reuses the ten-piece open-gate footprint of the
 # original center garden. Their offset is authored; rails vary, gates stay open.
 FENCE_LOTS = [
-    ("orchard", -720, 240, "west_crafts"),
+    ("orchard", -540, 240, "west_crafts"),
     ("south", -150, 690, "south_residences"),
 ]
 
 # Each landmark is surrounded by a small, coherent set of props. The world and the
 # user's route remain clear; these coordinates are scene composition, not a random scatter.
 STORY_PROPS = [
-    ("craft_hay", "materials/OBJ_hay.png", 114, 508, .42, "west_crafts"),
+    ("craft_hay", "materials/OBJ_hay.png", 184, 760, .42, "west_crafts"),
     ("craft_logs", "materials/OBJ_log.png", 124, 768, .37, "west_crafts"),
-    ("craft_sack", "storage/OBJ_sack.png", 158, 484, .30, "west_crafts"),
-    ("craft_barrels", "storage/OBJ_barrel.png", 114, 462, .27, "west_crafts"),
+    ("craft_sack", "storage/OBJ_sack.png", 220, 712, .30, "west_crafts"),
+    ("craft_barrels", "storage/OBJ_barrel.png", 208, 675, .27, "west_crafts"),
     ("craft_rock", "rocks/OBJ_rock_02.png", -120, 626, .41, "west_crafts"),
     ("craft_cart", "market/OBJ_cart.png", 452, 388, .29, "west_crafts"),
     ("craft_notice", "street/OBJ_signpost.png", 168, 806, .45, "west_crafts"),
     ("market_stall", "market/OBJ_stall_01.png", 1240, 496, .54, "east_market"),
-    ("market_tent", "market/OBJ_tent_01.png", 1460, 516, .55, "east_market"),
+    ("market_tent", "market/OBJ_tent_01.png", 1320, 490, .55, "east_market"),
     ("market_crates", "storage/OBJ_crate.png", 1300, 520, .29, "east_market"),
     ("market_sacks", "storage/OBJ_sack.png", 1200, 526, .29, "east_market"),
-    ("market_barrel", "storage/OBJ_barrel.png", 1400, 538, .25, "east_market"),
-    ("market_hay", "materials/OBJ_hay.png", 1500, 548, .28, "east_market"),
+    ("market_barrel", "storage/OBJ_barrel.png", 1330, 558, .25, "east_market"),
+    ("market_hay", "materials/OBJ_hay.png", 1250, 570, .28, "east_market"),
     ("church_statue", "street/OBJ_statue.png", 1694, 528, .47, "east_quiet"),
-    ("church_arch", "structures/arches_gates/OBJ_arch.png", 1780, 472, .40, "east_quiet"),
-    ("church_bench", "street/OBJ_bench_forged_v2.png", 1830, 600, .060, "east_quiet"),
+    ("church_arch", "structures/arches_gates/OBJ_arch.png", 1720, 530, .40, "east_quiet"),
+    ("church_bench", "street/OBJ_bench_forged_v2.png", 1530, 548, .060, "east_quiet"),
     ("church_flower_a", "vegetation/flowers/OBJ_flower_01.png", 1680, 570, .28, "east_quiet"),
-    ("church_flower_b", "vegetation/flowers/OBJ_flower_03.png", 1870, 640, .30, "east_quiet"),
-    ("inn_cart", "market/OBJ_cart.png", 2160, 704, .25, "waterside"),
-    ("inn_crates", "storage/OBJ_crate.png", 2130, 660, .25, "waterside"),
-    ("inn_sacks", "storage/OBJ_sack.png", 2180, 626, .30, "waterside"),
-    ("inn_bench", "street/OBJ_bench_forged_v2.png", 2132, 810, .060, "waterside"),
-    ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2084, 810, .76, "waterside"),
+    ("church_flower_b", "vegetation/flowers/OBJ_flower_03.png", 1650, 550, .30, "east_quiet"),
+    ("inn_cart", "market/OBJ_cart.png", 2100, 748, .25, "waterside"),
+    ("inn_crates", "storage/OBJ_crate.png", 2090, 692, .25, "waterside"),
+    ("inn_sacks", "storage/OBJ_sack.png", 2090, 638, .30, "waterside"),
+    ("inn_bench", "street/OBJ_bench_forged_v2.png", 1960, 770, .060, "waterside"),
+    ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2040, 750, .76, "waterside"),
     ("pond_rocks", "rocks/OBJ_rock_01.png", 1700, 1090, .31, "waterside"),
     ("pond_reeds", "vegetation/grass/OBJ_grass_milles_dense.png", 1760, 1090, .70, "waterside"),
     ("pond_bench", "street/OBJ_bench_forged_v2.png", 1900, 976, .060, "waterside"),
@@ -78,11 +78,11 @@ STORY_PROPS = [
     ("south_crates", "storage/OBJ_crate.png", 1170, 1112, .29, "south_residences"),
     ("south_flowerbed_a", "vegetation/flowers/OBJ_flower_01.png", 452, 1200, .30, "south_residences"),
     ("south_flowerbed_b", "vegetation/flowers/OBJ_flower_02.png", 1240, 1144, .29, "south_residences"),
-    ("orchard_tree", "vegetation/trees/OBJ_tree_milles_willow.png", 360, 780, .78, "west_crafts"),
-    ("orchard_ring", "street/OBJ_tree_ring_milles_reference.png", 360, 780, .70, "west_crafts"),
-    ("orchard_flower", "vegetation/flowers/OBJ_flower_01.png", 400, 810, .25, "west_crafts"),
-    ("orchard_barrel", "storage/OBJ_barrel.png", 484, 806, .22, "west_crafts"),
-    ("orchard_lantern", "street/OBJ_lamp_milles_rope.png", 470, 724, .68, "west_crafts"),
+    ("orchard_tree", "vegetation/trees/OBJ_tree_milles_willow.png", 540, 780, .78, "west_crafts"),
+    ("orchard_ring", "street/OBJ_tree_ring_milles_reference.png", 540, 780, .70, "west_crafts"),
+    ("orchard_flower", "vegetation/flowers/OBJ_flower_01.png", 580, 810, .25, "west_crafts"),
+    ("orchard_barrel", "storage/OBJ_barrel.png", 664, 806, .22, "west_crafts"),
+    ("orchard_lantern", "street/OBJ_lamp_milles_rope.png", 650, 724, .68, "west_crafts"),
     ("south_garden_tree", "vegetation/trees/OBJ_tree_milles_willow.png", 920, 1230, .78, "south_residences"),
     ("south_garden_ring", "street/OBJ_tree_ring_milles_reference.png", 920, 1230, .70, "south_residences"),
     ("south_garden_flower", "vegetation/flowers/OBJ_flower_02.png", 972, 1250, .26, "south_residences"),
@@ -90,7 +90,7 @@ STORY_PROPS = [
     ("south_garden_lantern", "street/OBJ_lamp_milles_rope.png", 1032, 1178, .67, "south_residences"),
     ("east_guild_notice", "street/OBJ_noticeboard.png", 1710, 1120, .31, "east_residences"),
     ("east_guild_crate", "storage/OBJ_crate.png", 1680, 1220, .28, "east_residences"),
-    ("east_guild_log", "materials/OBJ_log.png", 1730, 1190, .26, "east_residences"),
+    ("east_guild_log", "materials/OBJ_log.png", 1690, 1190, .26, "east_residences"),
     ("garden_ring", "street/OBJ_tree_ring_milles_reference.png", 1080, 536, .70, "garden"),
 ]
 
@@ -128,6 +128,67 @@ def add(objects, id, asset, x, y, scale, district, group=None):
     entry=dict(id=id, asset=asset, x=round(x), y=round(y), scale=round(scale, 3), district=district)
     entry['group'] = group or district
     objects.append(entry)
+
+
+def relate(objects):
+    """Name the physical neighbour and the use that justifies every placement.
+
+    References establish *patterns*, while coordinates are authored for this new village.
+    A relationship may point to an object, a road arm, or a bounded district grove.
+    """
+    ids = {o['id'] for o in objects}
+    buildings = {o['id'] for o in objects if o['asset'].startswith(('buildings/', 'landmarks/'))}
+    for o in objects:
+        name, art = o['id'], o['asset']
+        if name.startswith('shoulder_'):
+            anchor, role = 'road_' + name.split('_')[1], 'irregular_grass_verge'
+        elif name == 'civic_fountain':
+            anchor, role = 'road_0', 'village_centre'
+        elif '_understory_' in name:
+            anchor, role = name.split('_understory_')[0] + '_tree_' + name.split('_understory_')[1].split('_')[0], 'tree_understory'
+        elif '_tree_' in name and any(name.startswith(zone + '_') for zone, _ in GROVES):
+            anchor, role = 'grove_' + next(zone for zone, _ in GROVES if name.startswith(zone + '_')), 'woodland_edge'
+        elif name == 'garden_flowerbed_2':
+            anchor, role = 'garden_bench', 'benchside_planting'
+        elif name.startswith(('garden_fence_', 'garden_flowerbed_', 'garden_ring')):
+            anchor, role = 'garden_tree_1', 'enclosed_garden_boundary' if 'fence' in name else 'garden_planting'
+        elif name.startswith('orchard_') and name != 'orchard_tree':
+            anchor, role = 'orchard_tree', 'enclosed_orchard_boundary' if 'fence' in name else 'orchard_use'
+        elif name.startswith('south_fence_') or name.startswith('south_garden_') and name != 'south_garden_tree':
+            anchor, role = 'south_garden_tree', 'residential_garden_boundary' if 'fence' in name else 'garden_rest'
+        elif name.startswith(('church_',)):
+            anchor, role = 'church', 'courtyard_use'
+        elif name.startswith('inn_'):
+            anchor, role = 'inn', 'inn_entrance_use'
+        elif name.startswith('pond_') or name in ('waterside_bush', 'waterside_tree'):
+            anchor, role = 'waterside_pond', 'shoreline_use'
+        elif name.startswith('east_guild_'):
+            anchor, role = 'east_guild', 'guild_frontage_use'
+        elif name.startswith(('south_',)) and name not in buildings:
+            anchor, role = ('road_4' if name in ('south_gate_lamp', 'south_garden_tree') else 'south_flower_shop' if o['x'] < 800 else 'south_library'), 'household_service'
+        elif name.startswith('craft_'):
+            anchor, role = ('potion_shop' if name in ('craft_cart',) else 'west_armorer'), 'workshop_storage'
+        elif name.startswith('market_'):
+            anchor, role = ('potion_shop' if name in ('market_barrel_1', 'market_crate_1') else 'general_shop' if name in ('market_cart', 'market_stall') else 'market_stall'), 'shop_frontage'
+        elif name in ('square_tree_west', 'square_shrub_west'):
+            anchor, role = 'square_bench_west', 'shaded_rest_area'
+        elif name in ('square_shrub_east', 'square_grass_2'):
+            anchor, role = 'garden_tree_1', 'garden_edge_planting'
+        elif name == 'square_grass_1':
+            anchor, role = 'road_0', 'roadside_grass'
+        elif name.startswith(('square_', 'civic_', 'village_noticeboard')):
+            anchor, role = 'civic_fountain', 'plaza_rest_or_wayfinding'
+        elif name == 'potion_shop_portal':
+            anchor, role = 'potion_shop', 'building_entrance'
+        elif name in buildings or name in ('civic_fountain', 'orchard_tree', 'south_garden_tree', 'garden_tree_1', 'garden_tree_2', 'waterside_pond'):
+            nearest = min(range(len(PATHS)), key=lambda i: min(distance_segment(o['x'], o['y'], *a, *b) for a, b in zip(PATHS[i], PATHS[i][1:])))
+            anchor, role = f'road_{nearest}', 'destination_or_park'
+        else:
+            anchor, role = 'road_' + str(min(range(len(PATHS)), key=lambda i: min(distance_segment(o['x'], o['y'], *a, *b) for a, b in zip(PATHS[i], PATHS[i][1:])))), 'roadside_or_district_edge'
+        o['anchor'], o['role'] = anchor, role
+        o['basis'] = 'observed_pattern' if role in ('enclosed_orchard_boundary', 'enclosed_garden_boundary', 'residential_garden_boundary', 'plaza_rest_or_wayfinding', 'tree_understory', 'woodland_edge', 'shop_frontage', 'irregular_grass_verge') else 'adapted_village_plan'
+        if not (anchor in ids or anchor.startswith('road_') and anchor[5:].isdigit() and int(anchor[5:]) < len(PATHS) or anchor.startswith('grove_') and anchor[6:] in dict(GROVES)):
+            raise ValueError(f'{name}: unknown spatial anchor {anchor}')
 
 
 def gardens(objects):
@@ -234,6 +295,7 @@ def main():
                     continue
                 add(objects, f"{zone}_understory_{i}_{k}", BUSH_ART[(i + k) % 3], bx, by, .27 + (i % 3) * .03, zone, f"{zone}_grove")
     path_margin(objects)
+    relate(objects)
     ids = [o["id"] for o in objects]
     assert len(ids) == len(set(ids)), "duplicate village placement"
     OUTPUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

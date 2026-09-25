@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Validate the reusable Milles map layout and the runtime asset contract."""
 import json
+import math
 import re
 import subprocess
 from pathlib import Path
@@ -27,10 +28,23 @@ def main() -> None:
     assert len(items) >= 200, "village districts lost their authored placements"
     assert len({item["district"] for item in items}) >= 8
     assert all(item.get("group") for item in items), "each object needs a spatial reason"
+    by_id = {item['id']: item for item in items}
+    for item in items:
+        anchor = item.get('anchor', '')
+        assert anchor and item.get('role') and item.get('basis') in ('observed_pattern', 'adapted_village_plan'), item['id']
+        assert anchor in by_id or re.fullmatch(r'road_[0-6]', anchor) or anchor.startswith('grove_'), item['id']
+        if anchor in by_id:
+            other = by_id[anchor]
+            assert item['id'] != anchor, f"self-anchored prop: {item['id']}"
+            assert math.dist((item['x'], item['y']), (other['x'], other['y'])) <= 200, (
+                f"orphaned prop {item['id']}: {anchor} too far away")
+    assert all(math.dist((by_id['orchard_tree']['x'], by_id['orchard_tree']['y']),
+                         (item['x'], item['y'])) < 115 for item in items if item['id'].startswith('orchard_fence_'))
+    assert all(math.dist((by_id['south_garden_tree']['x'], by_id['south_garden_tree']['y']),
+                         (item['x'], item['y'])) < 115 for item in items if item['id'].startswith('south_fence_'))
     benches = [item for item in items if "bench" in item["id"]]
     assert benches and all(item["asset"] == "street/OBJ_bench_forged_v2.png" for item in benches), "broken video bench cutouts returned"
-    verge_benches = [item for item in benches if item["id"] not in ("church_bench", "inn_bench")]
-    assert all(20 <= distance_road(item["x"], item["y"]) <= 85 for item in verge_benches), "verge bench must stand off a reachable path"
+    assert all(20 <= distance_road(item["x"], item["y"]) <= 105 for item in benches), "bench must serve an accessible path"
     assert {item["id"] for item in benches if item["group"] == "fountain_rest_area"} == {
         "square_bench_west"
     }, "plaza bench must serve the tree-side rest area without duplication"

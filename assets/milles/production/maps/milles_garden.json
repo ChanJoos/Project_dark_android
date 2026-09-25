@@ -19,7 +19,10 @@
       "y": 420,
       "scale": 1.0,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "road_0",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "potion_shop_portal",
@@ -29,7 +32,10 @@
       "scale": 1.0,
       "draw": "tile",
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "potion_shop",
+      "role": "building_entrance",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "weapon_shop",
@@ -38,7 +44,10 @@
       "y": 300,
       "scale": 1.0,
       "district": "north_services",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "road_1",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "general_shop",
@@ -47,7 +56,10 @@
       "y": 360,
       "scale": 1.0,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "road_2",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "church",
@@ -56,7 +68,10 @@
       "y": 455,
       "scale": 1.35,
       "district": "east_quiet",
-      "group": "east_quiet"
+      "group": "east_quiet",
+      "anchor": "road_2",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "inn",
@@ -65,7 +80,10 @@
       "y": 650,
       "scale": 1.0,
       "district": "waterside",
-      "group": "waterside"
+      "group": "waterside",
+      "anchor": "road_3",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "civic_fountain",
@@ -75,7 +93,10 @@
       "scale": 0.72,
       "district": "civic_square",
       "source": "Milles footage 00:02, AI-assisted transparent reconstruction",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "road_0",
+      "role": "village_centre",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "square_bench_west",
@@ -84,7 +105,10 @@
       "y": 606,
       "scale": 0.06,
       "district": "civic_square",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "civic_fountain",
+      "role": "plaza_rest_or_wayfinding",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_bench",
@@ -93,7 +117,10 @@
       "y": 702,
       "scale": 0.06,
       "district": "garden",
-      "group": "garden"
+      "group": "garden",
+      "anchor": "road_3",
+      "role": "roadside_or_district_edge",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "garden_tree_1",
@@ -102,7 +129,10 @@
       "y": 536,
       "scale": 0.48,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "road_2",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "garden_tree_2",
@@ -111,7 +141,10 @@
       "y": 552,
       "scale": 0.46,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "road_2",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "square_tree_west",
@@ -120,7 +153,10 @@
       "y": 610,
       "scale": 0.43,
       "district": "civic_square",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "square_bench_west",
+      "role": "shaded_rest_area",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "boundary_tree_west",
@@ -129,7 +165,10 @@
       "y": 1024,
       "scale": 0.5,
       "district": "village_edge",
-      "group": "village_edge"
+      "group": "village_edge",
+      "anchor": "road_4",
+      "role": "roadside_or_district_edge",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "boundary_tree_north",
@@ -138,7 +177,10 @@
       "y": 120,
       "scale": 0.5,
       "district": "village_edge",
-      "group": "village_edge"
+      "group": "village_edge",
+      "anchor": "road_2",
+      "role": "roadside_or_district_edge",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "boundary_tree_east",
@@ -147,16 +189,22 @@
       "y": 944,
       "scale": 0.48,
       "district": "village_edge",
-      "group": "village_edge"
+      "group": "village_edge",
+      "anchor": "road_5",
+      "role": "roadside_or_district_edge",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "waterside_tree",
       "asset": "vegetation/trees/OBJ_tree_05.png",
-      "x": 2040,
-      "y": 1280,
+      "x": 1950,
+      "y": 1240,
       "scale": 0.48,
       "district": "waterside",
-      "group": "pond_rest_area"
+      "group": "pond_rest_area",
+      "anchor": "waterside_pond",
+      "role": "shoreline_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "garden_fence_nw_1",
@@ -166,7 +214,10 @@
       "scale": 0.56,
       "district": "garden",
       "source": "Milles footage 00:10, AI-assisted transparent reconstruction",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_nw_2",
@@ -175,7 +226,10 @@
       "y": 510,
       "scale": 0.55,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_nw_3",
@@ -184,7 +238,10 @@
       "y": 490,
       "scale": 0.56,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_ne_1",
@@ -193,7 +250,10 @@
       "y": 490,
       "scale": 0.56,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_ne_2",
@@ -202,7 +262,10 @@
       "y": 510,
       "scale": 0.54,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_ne_3",
@@ -211,7 +274,10 @@
       "y": 530,
       "scale": 0.56,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_se_1",
@@ -220,7 +286,10 @@
       "y": 550,
       "scale": 0.56,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_se_2",
@@ -229,7 +298,10 @@
       "y": 570,
       "scale": 0.55,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_se_3",
@@ -238,7 +310,10 @@
       "y": 590,
       "scale": 0.56,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_fence_sw_3",
@@ -247,7 +322,10 @@
       "y": 590,
       "scale": 0.56,
       "district": "garden",
-      "group": "enclosed_garden"
+      "group": "enclosed_garden",
+      "anchor": "garden_tree_1",
+      "role": "enclosed_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "square_lamp_west",
@@ -256,7 +334,10 @@
       "y": 464,
       "scale": 0.42,
       "district": "civic_square",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "civic_fountain",
+      "role": "plaza_rest_or_wayfinding",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_gate_lamp",
@@ -265,7 +346,10 @@
       "y": 1240,
       "scale": 0.4,
       "district": "south_gate",
-      "group": "south_gate"
+      "group": "south_gate",
+      "anchor": "road_4",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "village_noticeboard",
@@ -274,7 +358,10 @@
       "y": 716,
       "scale": 0.38,
       "district": "civic_square",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "civic_fountain",
+      "role": "plaza_rest_or_wayfinding",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_barrel_1",
@@ -283,7 +370,10 @@
       "y": 488,
       "scale": 0.28,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "potion_shop",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_crate_1",
@@ -292,7 +382,10 @@
       "y": 472,
       "scale": 0.25,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "potion_shop",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_cart",
@@ -301,7 +394,10 @@
       "y": 476,
       "scale": 0.3,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "general_shop",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "garden_flowerbed_1",
@@ -310,7 +406,10 @@
       "y": 604,
       "scale": 0.36,
       "district": "garden",
-      "group": "garden"
+      "group": "garden",
+      "anchor": "garden_tree_1",
+      "role": "garden_planting",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "garden_flowerbed_2",
@@ -319,7 +418,10 @@
       "y": 636,
       "scale": 0.34,
       "district": "garden",
-      "group": "garden"
+      "group": "garden",
+      "anchor": "garden_bench",
+      "role": "benchside_planting",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "square_shrub_west",
@@ -328,7 +430,10 @@
       "y": 638,
       "scale": 0.34,
       "district": "civic_square",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "square_bench_west",
+      "role": "shaded_rest_area",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "square_shrub_east",
@@ -337,7 +442,10 @@
       "y": 584,
       "scale": 0.35,
       "district": "civic_square",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "garden_tree_1",
+      "role": "garden_edge_planting",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "square_grass_1",
@@ -346,7 +454,10 @@
       "y": 392,
       "scale": 0.18,
       "district": "civic_square",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "road_0",
+      "role": "roadside_grass",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "square_grass_2",
@@ -355,7 +466,10 @@
       "y": 532,
       "scale": 0.16,
       "district": "garden",
-      "group": "fountain_rest_area"
+      "group": "fountain_rest_area",
+      "anchor": "garden_tree_1",
+      "role": "garden_edge_planting",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "waterside_bush",
@@ -364,7 +478,10 @@
       "y": 1056,
       "scale": 0.45,
       "district": "waterside",
-      "group": "pond_rest_area"
+      "group": "pond_rest_area",
+      "anchor": "waterside_pond",
+      "role": "shoreline_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "waterside_pond",
@@ -373,7 +490,10 @@
       "y": 1088,
       "scale": 0.42,
       "district": "waterside",
-      "group": "pond_rest_area"
+      "group": "pond_rest_area",
+      "anchor": "road_5",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "west_armorer",
@@ -382,7 +502,10 @@
       "y": 700,
       "scale": 0.86,
       "district": "west_crafts",
-      "group": "west_crafts"
+      "group": "west_crafts",
+      "anchor": "road_0",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_flower_shop",
@@ -391,7 +514,10 @@
       "y": 1040,
       "scale": 0.92,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "road_4",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_library",
@@ -400,7 +526,10 @@
       "y": 1050,
       "scale": 0.92,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "road_6",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "east_guild",
@@ -409,7 +538,10 @@
       "y": 1170,
       "scale": 0.92,
       "district": "east_residences",
-      "group": "east_residences"
+      "group": "east_residences",
+      "anchor": "road_3",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "north_healer",
@@ -418,16 +550,22 @@
       "y": 320,
       "scale": 0.89,
       "district": "east_quiet",
-      "group": "east_quiet"
+      "group": "east_quiet",
+      "anchor": "road_3",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "craft_hay",
       "asset": "materials/OBJ_hay.png",
-      "x": 114,
-      "y": 508,
+      "x": 184,
+      "y": 760,
       "scale": 0.42,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "west_armorer",
+      "role": "workshop_storage",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "craft_logs",
@@ -436,25 +574,34 @@
       "y": 768,
       "scale": 0.37,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "west_armorer",
+      "role": "workshop_storage",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "craft_sack",
       "asset": "storage/OBJ_sack.png",
-      "x": 158,
-      "y": 484,
+      "x": 220,
+      "y": 712,
       "scale": 0.3,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "west_armorer",
+      "role": "workshop_storage",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "craft_barrels",
       "asset": "storage/OBJ_barrel.png",
-      "x": 114,
-      "y": 462,
+      "x": 208,
+      "y": 675,
       "scale": 0.27,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "west_armorer",
+      "role": "workshop_storage",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "craft_rock",
@@ -463,7 +610,10 @@
       "y": 626,
       "scale": 0.41,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "west_armorer",
+      "role": "workshop_storage",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "craft_cart",
@@ -472,7 +622,10 @@
       "y": 388,
       "scale": 0.29,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "potion_shop",
+      "role": "workshop_storage",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "craft_notice",
@@ -481,7 +634,10 @@
       "y": 806,
       "scale": 0.45,
       "district": "west_crafts",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "west_armorer",
+      "role": "workshop_storage",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "market_stall",
@@ -490,16 +646,22 @@
       "y": 496,
       "scale": 0.54,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "general_shop",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_tent",
       "asset": "market/OBJ_tent_01.png",
-      "x": 1460,
-      "y": 516,
+      "x": 1320,
+      "y": 490,
       "scale": 0.55,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "market_stall",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_crates",
@@ -508,7 +670,10 @@
       "y": 520,
       "scale": 0.29,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "market_stall",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_sacks",
@@ -517,25 +682,34 @@
       "y": 526,
       "scale": 0.29,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "market_stall",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_barrel",
       "asset": "storage/OBJ_barrel.png",
-      "x": 1400,
-      "y": 538,
+      "x": 1330,
+      "y": 558,
       "scale": 0.25,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "market_stall",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "market_hay",
       "asset": "materials/OBJ_hay.png",
-      "x": 1500,
-      "y": 548,
+      "x": 1250,
+      "y": 570,
       "scale": 0.28,
       "district": "east_market",
-      "group": "shop_fronts"
+      "group": "shop_fronts",
+      "anchor": "market_stall",
+      "role": "shop_frontage",
+      "basis": "observed_pattern"
     },
     {
       "id": "church_statue",
@@ -544,25 +718,34 @@
       "y": 528,
       "scale": 0.47,
       "district": "east_quiet",
-      "group": "church_courtyard"
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "church_arch",
       "asset": "structures/arches_gates/OBJ_arch.png",
-      "x": 1780,
-      "y": 472,
+      "x": 1720,
+      "y": 530,
       "scale": 0.4,
       "district": "east_quiet",
-      "group": "church_courtyard"
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "church_bench",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 1830,
-      "y": 600,
+      "x": 1530,
+      "y": 548,
       "scale": 0.06,
       "district": "east_quiet",
-      "group": "church_courtyard"
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "church_flower_a",
@@ -571,61 +754,82 @@
       "y": 570,
       "scale": 0.28,
       "district": "east_quiet",
-      "group": "church_courtyard"
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "church_flower_b",
       "asset": "vegetation/flowers/OBJ_flower_03.png",
-      "x": 1870,
-      "y": 640,
+      "x": 1650,
+      "y": 550,
       "scale": 0.3,
       "district": "east_quiet",
-      "group": "church_courtyard"
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "inn_cart",
       "asset": "market/OBJ_cart.png",
-      "x": 2160,
-      "y": 704,
+      "x": 2100,
+      "y": 748,
       "scale": 0.25,
       "district": "waterside",
-      "group": "inn_courtyard"
+      "group": "inn_courtyard",
+      "anchor": "inn",
+      "role": "inn_entrance_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "inn_crates",
       "asset": "storage/OBJ_crate.png",
-      "x": 2130,
-      "y": 660,
+      "x": 2090,
+      "y": 692,
       "scale": 0.25,
       "district": "waterside",
-      "group": "inn_courtyard"
+      "group": "inn_courtyard",
+      "anchor": "inn",
+      "role": "inn_entrance_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "inn_sacks",
       "asset": "storage/OBJ_sack.png",
-      "x": 2180,
-      "y": 626,
+      "x": 2090,
+      "y": 638,
       "scale": 0.3,
       "district": "waterside",
-      "group": "inn_courtyard"
+      "group": "inn_courtyard",
+      "anchor": "inn",
+      "role": "inn_entrance_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "inn_bench",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 2132,
-      "y": 810,
+      "x": 1960,
+      "y": 770,
       "scale": 0.06,
       "district": "waterside",
-      "group": "inn_courtyard"
+      "group": "inn_courtyard",
+      "anchor": "inn",
+      "role": "inn_entrance_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "inn_lantern",
       "asset": "street/OBJ_lamp_milles_rope.png",
-      "x": 2084,
-      "y": 810,
+      "x": 2040,
+      "y": 750,
       "scale": 0.76,
       "district": "waterside",
-      "group": "inn_courtyard"
+      "group": "inn_courtyard",
+      "anchor": "inn",
+      "role": "inn_entrance_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "pond_rocks",
@@ -634,7 +838,10 @@
       "y": 1090,
       "scale": 0.31,
       "district": "waterside",
-      "group": "pond_rest_area"
+      "group": "pond_rest_area",
+      "anchor": "waterside_pond",
+      "role": "shoreline_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "pond_reeds",
@@ -643,7 +850,10 @@
       "y": 1090,
       "scale": 0.7,
       "district": "waterside",
-      "group": "pond_rest_area"
+      "group": "pond_rest_area",
+      "anchor": "waterside_pond",
+      "role": "shoreline_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "pond_bench",
@@ -652,7 +862,10 @@
       "y": 976,
       "scale": 0.06,
       "district": "waterside",
-      "group": "pond_rest_area"
+      "group": "pond_rest_area",
+      "anchor": "waterside_pond",
+      "role": "shoreline_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_well",
@@ -661,7 +874,10 @@
       "y": 1160,
       "scale": 0.53,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "south_flower_shop",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_hay",
@@ -670,7 +886,10 @@
       "y": 1118,
       "scale": 0.32,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "south_flower_shop",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_logs",
@@ -679,7 +898,10 @@
       "y": 1090,
       "scale": 0.32,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "south_flower_shop",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_crates",
@@ -688,7 +910,10 @@
       "y": 1112,
       "scale": 0.29,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "south_library",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_flowerbed_a",
@@ -697,7 +922,10 @@
       "y": 1200,
       "scale": 0.3,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "south_flower_shop",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_flowerbed_b",
@@ -706,52 +934,70 @@
       "y": 1144,
       "scale": 0.29,
       "district": "south_residences",
-      "group": "south_residences"
+      "group": "south_residences",
+      "anchor": "south_library",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "orchard_tree",
       "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
-      "x": 360,
+      "x": 540,
       "y": 780,
       "scale": 0.78,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "road_4",
+      "role": "destination_or_park",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "orchard_ring",
       "asset": "street/OBJ_tree_ring_milles_reference.png",
-      "x": 360,
+      "x": 540,
       "y": 780,
       "scale": 0.7,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "orchard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "orchard_flower",
       "asset": "vegetation/flowers/OBJ_flower_01.png",
-      "x": 400,
+      "x": 580,
       "y": 810,
       "scale": 0.25,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "orchard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "orchard_barrel",
       "asset": "storage/OBJ_barrel.png",
-      "x": 484,
+      "x": 664,
       "y": 806,
       "scale": 0.22,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "orchard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "orchard_lantern",
       "asset": "street/OBJ_lamp_milles_rope.png",
-      "x": 470,
+      "x": 650,
       "y": 724,
       "scale": 0.68,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "orchard_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_garden_tree",
@@ -760,7 +1006,10 @@
       "y": 1230,
       "scale": 0.78,
       "district": "south_residences",
-      "group": "south_garden_enclosure"
+      "group": "south_garden_enclosure",
+      "anchor": "road_4",
+      "role": "household_service",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_garden_ring",
@@ -769,7 +1018,10 @@
       "y": 1230,
       "scale": 0.7,
       "district": "south_residences",
-      "group": "south_garden_enclosure"
+      "group": "south_garden_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "garden_rest",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_garden_flower",
@@ -778,7 +1030,10 @@
       "y": 1250,
       "scale": 0.26,
       "district": "south_residences",
-      "group": "south_garden_enclosure"
+      "group": "south_garden_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "garden_rest",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_garden_bench",
@@ -787,7 +1042,10 @@
       "y": 1308,
       "scale": 0.06,
       "district": "south_residences",
-      "group": "south_garden_enclosure"
+      "group": "south_garden_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "garden_rest",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "south_garden_lantern",
@@ -796,7 +1054,10 @@
       "y": 1178,
       "scale": 0.67,
       "district": "south_residences",
-      "group": "south_garden_enclosure"
+      "group": "south_garden_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "garden_rest",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "east_guild_notice",
@@ -805,7 +1066,10 @@
       "y": 1120,
       "scale": 0.31,
       "district": "east_residences",
-      "group": "east_residences"
+      "group": "east_residences",
+      "anchor": "east_guild",
+      "role": "guild_frontage_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "east_guild_crate",
@@ -814,16 +1078,22 @@
       "y": 1220,
       "scale": 0.28,
       "district": "east_residences",
-      "group": "east_residences"
+      "group": "east_residences",
+      "anchor": "east_guild",
+      "role": "guild_frontage_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "east_guild_log",
       "asset": "materials/OBJ_log.png",
-      "x": 1730,
+      "x": 1690,
       "y": 1190,
       "scale": 0.26,
       "district": "east_residences",
-      "group": "east_residences"
+      "group": "east_residences",
+      "anchor": "east_guild",
+      "role": "guild_frontage_use",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "garden_ring",
@@ -832,97 +1102,130 @@
       "y": 536,
       "scale": 0.7,
       "district": "garden",
-      "group": "garden"
+      "group": "garden",
+      "anchor": "garden_tree_1",
+      "role": "garden_planting",
+      "basis": "adapted_village_plan"
     },
     {
       "id": "orchard_fence_nw_1",
       "asset": "structures/fences/OBJ_palisade_milles_rail.png",
-      "x": 276,
+      "x": 456,
       "y": 770,
       "scale": 0.56,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_nw_2",
       "asset": "structures/fences/OBJ_palisade_milles_rail.png",
-      "x": 310,
+      "x": 490,
       "y": 750,
       "scale": 0.55,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_nw_3",
       "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
-      "x": 344,
+      "x": 524,
       "y": 730,
       "scale": 0.56,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_ne_1",
       "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
-      "x": 376,
+      "x": 556,
       "y": 730,
       "scale": 0.56,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_ne_2",
       "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
-      "x": 410,
+      "x": 590,
       "y": 750,
       "scale": 0.54,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_ne_3",
       "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
-      "x": 444,
+      "x": 624,
       "y": 770,
       "scale": 0.56,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_se_1",
       "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
-      "x": 444,
+      "x": 624,
       "y": 790,
       "scale": 0.56,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_se_2",
       "asset": "structures/fences/OBJ_palisade_milles_rail.png",
-      "x": 410,
+      "x": 590,
       "y": 810,
       "scale": 0.55,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_se_3",
       "asset": "structures/fences/OBJ_palisade_diagonal_up.png",
-      "x": 376,
+      "x": 556,
       "y": 830,
       "scale": 0.56,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "orchard_fence_sw_3",
       "asset": "structures/fences/OBJ_palisade_diagonal_down.png",
-      "x": 344,
+      "x": 524,
       "y": 830,
       "scale": 0.56,
       "district": "west_crafts",
-      "group": "orchard_enclosure"
+      "group": "orchard_enclosure",
+      "anchor": "orchard_tree",
+      "role": "enclosed_orchard_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_nw_1",
@@ -931,7 +1234,10 @@
       "y": 1220,
       "scale": 0.56,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_nw_2",
@@ -940,7 +1246,10 @@
       "y": 1200,
       "scale": 0.55,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_nw_3",
@@ -949,7 +1258,10 @@
       "y": 1180,
       "scale": 0.56,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_ne_1",
@@ -958,7 +1270,10 @@
       "y": 1180,
       "scale": 0.56,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_ne_2",
@@ -967,7 +1282,10 @@
       "y": 1200,
       "scale": 0.54,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_ne_3",
@@ -976,7 +1294,10 @@
       "y": 1220,
       "scale": 0.56,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_se_1",
@@ -985,7 +1306,10 @@
       "y": 1240,
       "scale": 0.56,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_se_2",
@@ -994,7 +1318,10 @@
       "y": 1260,
       "scale": 0.55,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_se_3",
@@ -1003,7 +1330,10 @@
       "y": 1280,
       "scale": 0.56,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_fence_sw_3",
@@ -1012,7 +1342,10 @@
       "y": 1280,
       "scale": 0.56,
       "district": "south_residences",
-      "group": "south_enclosure"
+      "group": "south_enclosure",
+      "anchor": "south_garden_tree",
+      "role": "residential_garden_boundary",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_tree_0",
@@ -1021,7 +1354,10 @@
       "y": 190,
       "scale": 0.45,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "grove_north_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_0_0",
@@ -1030,7 +1366,10 @@
       "y": 218,
       "scale": 0.27,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_0_1",
@@ -1039,7 +1378,10 @@
       "y": 213,
       "scale": 0.27,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_tree_1",
@@ -1048,7 +1390,10 @@
       "y": 182,
       "scale": 0.45,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "grove_north_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_1_0",
@@ -1057,7 +1402,10 @@
       "y": 210,
       "scale": 0.3,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_1_1",
@@ -1066,7 +1414,10 @@
       "y": 205,
       "scale": 0.3,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_tree_2",
@@ -1075,7 +1426,10 @@
       "y": 214,
       "scale": 0.83,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "grove_north_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_tree_3",
@@ -1084,7 +1438,10 @@
       "y": 154,
       "scale": 0.45,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "grove_north_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_3_0",
@@ -1093,7 +1450,10 @@
       "y": 182,
       "scale": 0.27,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_3_1",
@@ -1102,7 +1462,10 @@
       "y": 177,
       "scale": 0.27,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_tree_4",
@@ -1111,7 +1474,10 @@
       "y": 172,
       "scale": 0.45,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "grove_north_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_4_0",
@@ -1120,7 +1486,10 @@
       "y": 200,
       "scale": 0.3,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "north_wood_understory_4_1",
@@ -1129,7 +1498,10 @@
       "y": 195,
       "scale": 0.3,
       "district": "north_wood",
-      "group": "north_wood_grove"
+      "group": "north_wood_grove",
+      "anchor": "north_wood_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_tree_0",
@@ -1138,7 +1510,10 @@
       "y": 340,
       "scale": 0.45,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "grove_west_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_0_0",
@@ -1147,7 +1522,10 @@
       "y": 368,
       "scale": 0.27,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_0_1",
@@ -1156,7 +1534,10 @@
       "y": 363,
       "scale": 0.27,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_tree_1",
@@ -1165,7 +1546,10 @@
       "y": 278,
       "scale": 0.45,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "grove_west_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_1_0",
@@ -1174,7 +1558,10 @@
       "y": 306,
       "scale": 0.3,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_1_1",
@@ -1183,7 +1570,10 @@
       "y": 301,
       "scale": 0.3,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_tree_2",
@@ -1192,7 +1582,10 @@
       "y": 528,
       "scale": 0.45,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "grove_west_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_2_0",
@@ -1201,7 +1594,10 @@
       "y": 556,
       "scale": 0.33,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_2",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_2_1",
@@ -1210,7 +1606,10 @@
       "y": 551,
       "scale": 0.33,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_2",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_tree_3",
@@ -1219,7 +1618,10 @@
       "y": 1020,
       "scale": 0.83,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "grove_west_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_3_0",
@@ -1228,7 +1630,10 @@
       "y": 1048,
       "scale": 0.27,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_3_1",
@@ -1237,7 +1642,10 @@
       "y": 1043,
       "scale": 0.27,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_tree_4",
@@ -1246,7 +1654,10 @@
       "y": 1040,
       "scale": 0.45,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "grove_west_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_4_0",
@@ -1255,7 +1666,10 @@
       "y": 1068,
       "scale": 0.3,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_4_1",
@@ -1264,7 +1678,10 @@
       "y": 1063,
       "scale": 0.3,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_tree_5",
@@ -1273,7 +1690,10 @@
       "y": 1160,
       "scale": 0.45,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "grove_west_wood",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_5_0",
@@ -1282,7 +1702,10 @@
       "y": 1188,
       "scale": 0.33,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_5",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "west_wood_understory_5_1",
@@ -1291,7 +1714,10 @@
       "y": 1183,
       "scale": 0.33,
       "district": "west_wood",
-      "group": "west_wood_grove"
+      "group": "west_wood_grove",
+      "anchor": "west_wood_tree_5",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_tree_0",
@@ -1300,7 +1726,10 @@
       "y": 626,
       "scale": 0.45,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "grove_civic_park",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_understory_0_0",
@@ -1309,7 +1738,10 @@
       "y": 654,
       "scale": 0.27,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "civic_park_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_understory_0_1",
@@ -1318,7 +1750,10 @@
       "y": 649,
       "scale": 0.27,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "civic_park_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_tree_1",
@@ -1327,7 +1762,10 @@
       "y": 672,
       "scale": 0.45,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "grove_civic_park",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_understory_1_0",
@@ -1336,7 +1774,10 @@
       "y": 700,
       "scale": 0.3,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "civic_park_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_understory_1_1",
@@ -1345,7 +1786,10 @@
       "y": 695,
       "scale": 0.3,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "civic_park_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_tree_2",
@@ -1354,7 +1798,10 @@
       "y": 310,
       "scale": 0.83,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "grove_civic_park",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "civic_park_understory_2_0",
@@ -1363,7 +1810,10 @@
       "y": 338,
       "scale": 0.33,
       "district": "civic_park",
-      "group": "civic_park_grove"
+      "group": "civic_park_grove",
+      "anchor": "civic_park_tree_2",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_tree_0",
@@ -1372,7 +1822,10 @@
       "y": 230,
       "scale": 0.45,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "grove_east_garden",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_0_0",
@@ -1381,7 +1834,10 @@
       "y": 258,
       "scale": 0.27,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_0_1",
@@ -1390,7 +1846,10 @@
       "y": 253,
       "scale": 0.27,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_tree_1",
@@ -1399,7 +1858,10 @@
       "y": 324,
       "scale": 0.83,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "grove_east_garden",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_1_0",
@@ -1408,7 +1870,10 @@
       "y": 352,
       "scale": 0.3,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_tree_2",
@@ -1417,7 +1882,10 @@
       "y": 600,
       "scale": 0.45,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "grove_east_garden",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_2_0",
@@ -1426,7 +1894,10 @@
       "y": 628,
       "scale": 0.33,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_2",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_2_1",
@@ -1435,7 +1906,10 @@
       "y": 623,
       "scale": 0.33,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_2",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_tree_3",
@@ -1444,7 +1918,10 @@
       "y": 606,
       "scale": 0.45,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "grove_east_garden",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_3_0",
@@ -1453,7 +1930,10 @@
       "y": 634,
       "scale": 0.27,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_3_1",
@@ -1462,7 +1942,10 @@
       "y": 629,
       "scale": 0.27,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_tree_4",
@@ -1471,7 +1954,10 @@
       "y": 620,
       "scale": 0.45,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "grove_east_garden",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_4_0",
@@ -1480,7 +1966,10 @@
       "y": 648,
       "scale": 0.3,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "east_garden_understory_4_1",
@@ -1489,7 +1978,10 @@
       "y": 643,
       "scale": 0.3,
       "district": "east_garden",
-      "group": "east_garden_grove"
+      "group": "east_garden_grove",
+      "anchor": "east_garden_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_tree_0",
@@ -1498,7 +1990,10 @@
       "y": 1350,
       "scale": 0.45,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "grove_south_grove",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_0_0",
@@ -1507,7 +2002,10 @@
       "y": 1378,
       "scale": 0.27,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_0_1",
@@ -1516,7 +2014,10 @@
       "y": 1373,
       "scale": 0.27,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_tree_1",
@@ -1525,7 +2026,10 @@
       "y": 1360,
       "scale": 0.83,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "grove_south_grove",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_1_0",
@@ -1534,7 +2038,10 @@
       "y": 1388,
       "scale": 0.3,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_1_1",
@@ -1543,7 +2050,10 @@
       "y": 1383,
       "scale": 0.3,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_tree_3",
@@ -1552,7 +2062,10 @@
       "y": 1430,
       "scale": 0.45,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "grove_south_grove",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_3_0",
@@ -1561,7 +2074,10 @@
       "y": 1458,
       "scale": 0.27,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_3_1",
@@ -1570,7 +2086,10 @@
       "y": 1453,
       "scale": 0.27,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_tree_4",
@@ -1579,7 +2098,10 @@
       "y": 1320,
       "scale": 0.45,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "grove_south_grove",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_4_0",
@@ -1588,7 +2110,10 @@
       "y": 1348,
       "scale": 0.3,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_4_1",
@@ -1597,7 +2122,10 @@
       "y": 1343,
       "scale": 0.3,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_tree_5",
@@ -1606,7 +2134,10 @@
       "y": 1470,
       "scale": 0.83,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "grove_south_grove",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_5_0",
@@ -1615,7 +2146,10 @@
       "y": 1498,
       "scale": 0.33,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_5",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "south_grove_understory_5_1",
@@ -1624,7 +2158,10 @@
       "y": 1493,
       "scale": 0.33,
       "district": "south_grove",
-      "group": "south_grove_grove"
+      "group": "south_grove_grove",
+      "anchor": "south_grove_tree_5",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_tree_0",
@@ -1633,7 +2170,10 @@
       "y": 960,
       "scale": 0.45,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "grove_waterside",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_0_0",
@@ -1642,7 +2182,10 @@
       "y": 988,
       "scale": 0.27,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_0_1",
@@ -1651,7 +2194,10 @@
       "y": 983,
       "scale": 0.27,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_0",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_tree_1",
@@ -1660,7 +2206,10 @@
       "y": 1020,
       "scale": 0.45,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "grove_waterside",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_1_0",
@@ -1669,7 +2218,10 @@
       "y": 1048,
       "scale": 0.3,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_1_1",
@@ -1678,7 +2230,10 @@
       "y": 1043,
       "scale": 0.3,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_1",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_tree_2",
@@ -1687,7 +2242,10 @@
       "y": 1320,
       "scale": 0.45,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "grove_waterside",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_2_0",
@@ -1696,7 +2254,10 @@
       "y": 1348,
       "scale": 0.33,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_2",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_2_1",
@@ -1705,7 +2266,10 @@
       "y": 1343,
       "scale": 0.33,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_2",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_tree_3",
@@ -1714,7 +2278,10 @@
       "y": 1430,
       "scale": 0.83,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "grove_waterside",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_3_0",
@@ -1723,7 +2290,10 @@
       "y": 1458,
       "scale": 0.27,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_3_1",
@@ -1732,7 +2302,10 @@
       "y": 1453,
       "scale": 0.27,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_3",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_tree_4",
@@ -1741,7 +2314,10 @@
       "y": 1220,
       "scale": 0.45,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "grove_waterside",
+      "role": "woodland_edge",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_4_0",
@@ -1750,7 +2326,10 @@
       "y": 1248,
       "scale": 0.3,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "waterside_understory_4_1",
@@ -1759,7 +2338,10 @@
       "y": 1243,
       "scale": 0.3,
       "district": "waterside",
-      "group": "waterside_grove"
+      "group": "waterside_grove",
+      "anchor": "waterside_tree_4",
+      "role": "tree_understory",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_0_125_l",
@@ -1768,7 +2350,10 @@
       "y": 599,
       "scale": 0.356,
       "district": "west_crafts",
-      "group": "road_verge_0"
+      "group": "road_verge_0",
+      "anchor": "road_0",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_0_335_l",
@@ -1777,7 +2362,10 @@
       "y": 511,
       "scale": 0.394,
       "district": "west_crafts",
-      "group": "road_verge_0"
+      "group": "road_verge_0",
+      "anchor": "road_0",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_0_335_r",
@@ -1786,7 +2374,10 @@
       "y": 412,
       "scale": 0.394,
       "district": "west_crafts",
-      "group": "road_verge_0"
+      "group": "road_verge_0",
+      "anchor": "road_0",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_0_401_l",
@@ -1795,7 +2386,10 @@
       "y": 502,
       "scale": 0.28,
       "district": "west_crafts",
-      "group": "road_verge_0"
+      "group": "road_verge_0",
+      "anchor": "road_0",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_0_463_l",
@@ -1804,7 +2398,10 @@
       "y": 492,
       "scale": 0.318,
       "district": "west_crafts",
-      "group": "road_verge_0"
+      "group": "road_verge_0",
+      "anchor": "road_0",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_1_197_l",
@@ -1813,7 +2410,10 @@
       "y": 400,
       "scale": 0.394,
       "district": "north_services",
-      "group": "road_verge_1"
+      "group": "road_verge_1",
+      "anchor": "road_1",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_1_197_r",
@@ -1822,7 +2422,10 @@
       "y": 400,
       "scale": 0.394,
       "district": "north_services",
-      "group": "road_verge_1"
+      "group": "road_verge_1",
+      "anchor": "road_1",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_177_l",
@@ -1831,7 +2434,10 @@
       "y": 473,
       "scale": 0.28,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_177_r",
@@ -1840,7 +2446,10 @@
       "y": 550,
       "scale": 0.28,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_234_l",
@@ -1849,7 +2458,10 @@
       "y": 434,
       "scale": 0.318,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_234_r",
@@ -1858,7 +2470,10 @@
       "y": 508,
       "scale": 0.318,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_291_r",
@@ -1867,7 +2482,10 @@
       "y": 479,
       "scale": 0.356,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_471_r",
@@ -1876,7 +2494,10 @@
       "y": 459,
       "scale": 0.28,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_526_r",
@@ -1885,7 +2506,10 @@
       "y": 463,
       "scale": 0.28,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_581_l",
@@ -1894,7 +2518,10 @@
       "y": 382,
       "scale": 0.318,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_581_r",
@@ -1903,7 +2530,10 @@
       "y": 482,
       "scale": 0.318,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_636_l",
@@ -1912,7 +2542,10 @@
       "y": 404,
       "scale": 0.318,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_2_636_r",
@@ -1921,7 +2554,10 @@
       "y": 502,
       "scale": 0.318,
       "district": "east_market",
-      "group": "road_verge_2"
+      "group": "road_verge_2",
+      "anchor": "road_2",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_359_l",
@@ -1930,7 +2566,10 @@
       "y": 680,
       "scale": 0.356,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_359_r",
@@ -1939,7 +2578,10 @@
       "y": 779,
       "scale": 0.356,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_423_l",
@@ -1948,7 +2590,10 @@
       "y": 681,
       "scale": 0.432,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_423_r",
@@ -1957,7 +2602,10 @@
       "y": 779,
       "scale": 0.432,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_488_l",
@@ -1966,7 +2614,10 @@
       "y": 698,
       "scale": 0.28,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_488_r",
@@ -1975,7 +2626,10 @@
       "y": 793,
       "scale": 0.28,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_552_l",
@@ -1984,7 +2638,10 @@
       "y": 699,
       "scale": 0.356,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_552_r",
@@ -1993,7 +2650,10 @@
       "y": 793,
       "scale": 0.356,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_617_l",
@@ -2002,7 +2662,10 @@
       "y": 701,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_617_r",
@@ -2011,7 +2674,10 @@
       "y": 807,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_810_l",
@@ -2020,7 +2686,10 @@
       "y": 735,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_810_r",
@@ -2029,7 +2698,10 @@
       "y": 836,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_874_l",
@@ -2038,7 +2710,10 @@
       "y": 732,
       "scale": 0.432,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_874_r",
@@ -2047,7 +2722,10 @@
       "y": 831,
       "scale": 0.432,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_938_l",
@@ -2056,7 +2734,10 @@
       "y": 741,
       "scale": 0.28,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_938_r",
@@ -2065,7 +2746,10 @@
       "y": 837,
       "scale": 0.28,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_1000_l",
@@ -2074,7 +2758,10 @@
       "y": 727,
       "scale": 0.356,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_1000_r",
@@ -2083,7 +2770,10 @@
       "y": 819,
       "scale": 0.356,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_1060_l",
@@ -2092,7 +2782,10 @@
       "y": 706,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_3_1060_r",
@@ -2101,7 +2794,10 @@
       "y": 810,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_3"
+      "group": "road_verge_3",
+      "anchor": "road_3",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_203_l",
@@ -2110,7 +2806,10 @@
       "y": 784,
       "scale": 0.318,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_203_r",
@@ -2119,7 +2818,10 @@
       "y": 784,
       "scale": 0.318,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_267_l",
@@ -2128,7 +2830,10 @@
       "y": 836,
       "scale": 0.356,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_267_r",
@@ -2137,7 +2842,10 @@
       "y": 859,
       "scale": 0.356,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_333_l",
@@ -2146,7 +2854,10 @@
       "y": 898,
       "scale": 0.432,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_333_r",
@@ -2155,7 +2866,10 @@
       "y": 925,
       "scale": 0.432,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_399_l",
@@ -2164,7 +2878,10 @@
       "y": 964,
       "scale": 0.28,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_399_r",
@@ -2173,7 +2890,10 @@
       "y": 986,
       "scale": 0.28,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_663_l",
@@ -2182,7 +2902,10 @@
       "y": 1232,
       "scale": 0.356,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_663_r",
@@ -2191,7 +2914,10 @@
       "y": 1232,
       "scale": 0.356,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_723_l",
@@ -2200,7 +2926,10 @@
       "y": 1292,
       "scale": 0.394,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_723_r",
@@ -2209,7 +2938,10 @@
       "y": 1292,
       "scale": 0.394,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_784_r",
@@ -2218,7 +2950,10 @@
       "y": 1354,
       "scale": 0.432,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_848_l",
@@ -2227,7 +2962,10 @@
       "y": 1418,
       "scale": 0.28,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_848_r",
@@ -2236,7 +2974,10 @@
       "y": 1418,
       "scale": 0.28,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_912_l",
@@ -2245,7 +2986,10 @@
       "y": 1481,
       "scale": 0.356,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_4_912_r",
@@ -2254,7 +2998,10 @@
       "y": 1481,
       "scale": 0.356,
       "district": "south_gate",
-      "group": "road_verge_4"
+      "group": "road_verge_4",
+      "anchor": "road_4",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_68_l",
@@ -2263,7 +3010,10 @@
       "y": 794,
       "scale": 0.318,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_68_r",
@@ -2272,7 +3022,10 @@
       "y": 838,
       "scale": 0.318,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_131_l",
@@ -2281,7 +3034,10 @@
       "y": 847,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_131_r",
@@ -2290,7 +3046,10 @@
       "y": 890,
       "scale": 0.394,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_193_l",
@@ -2299,7 +3058,10 @@
       "y": 891,
       "scale": 0.432,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_193_r",
@@ -2308,7 +3070,10 @@
       "y": 953,
       "scale": 0.432,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_252_l",
@@ -2317,7 +3082,10 @@
       "y": 945,
       "scale": 0.28,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_5_252_r",
@@ -2326,7 +3094,10 @@
       "y": 997,
       "scale": 0.28,
       "district": "waterside",
-      "group": "road_verge_5"
+      "group": "road_verge_5",
+      "anchor": "road_5",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_6_63_l",
@@ -2335,7 +3106,10 @@
       "y": 1296,
       "scale": 0.28,
       "district": "south_residences",
-      "group": "road_verge_6"
+      "group": "road_verge_6",
+      "anchor": "road_6",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_6_63_r",
@@ -2344,7 +3118,10 @@
       "y": 1391,
       "scale": 0.28,
       "district": "south_residences",
-      "group": "road_verge_6"
+      "group": "road_verge_6",
+      "anchor": "road_6",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_6_126_l",
@@ -2353,7 +3130,10 @@
       "y": 1295,
       "scale": 0.318,
       "district": "south_residences",
-      "group": "road_verge_6"
+      "group": "road_verge_6",
+      "anchor": "road_6",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     },
     {
       "id": "shoulder_6_126_r",
@@ -2362,7 +3142,10 @@
       "y": 1387,
       "scale": 0.318,
       "district": "south_residences",
-      "group": "road_verge_6"
+      "group": "road_verge_6",
+      "anchor": "road_6",
+      "role": "irregular_grass_verge",
+      "basis": "observed_pattern"
     }
   ]
 }

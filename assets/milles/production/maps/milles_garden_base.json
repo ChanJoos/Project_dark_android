@@ -137,8 +137,8 @@
     {
       "id": "waterside_tree",
       "asset": "vegetation/trees/OBJ_tree_05.png",
-      "x": 2040,
-      "y": 1280,
+      "x": 1950,
+      "y": 1240,
       "scale": 0.48,
       "district": "waterside"
     },
