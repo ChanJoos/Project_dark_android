@@ -17,15 +17,17 @@
       "asset": "buildings/BLD_002_potion_shop.png",
       "x": 320,
       "y": 420,
-      "scale": 1.0,
-      "district": "west_crafts"
+      "scale": 1,
+      "district": "west_crafts",
+      "enterable": true,
+      "function": "reagent_shop"
     },
     {
       "id": "potion_shop_portal",
       "asset": "assets/world/portal/portal_reagent_shop.webp",
       "x": 320,
       "y": 459,
-      "scale": 1.0,
+      "scale": 1,
       "draw": "tile",
       "district": "west_crafts"
     },
@@ -34,16 +36,20 @@
       "asset": "buildings/BLD_003_weapon_shop.png",
       "x": 760,
       "y": 300,
-      "scale": 1.0,
-      "district": "north_services"
+      "scale": 1,
+      "district": "north_services",
+      "enterable": true,
+      "function": "equipment_shop"
     },
     {
-      "id": "general_shop",
+      "id": "bank",
       "asset": "buildings/BLD_005_general_shop.png",
       "x": 1120,
       "y": 360,
-      "scale": 1.0,
-      "district": "east_market"
+      "scale": 1,
+      "district": "east_market",
+      "enterable": true,
+      "function": "bank"
     },
     {
       "id": "church",
@@ -51,15 +57,19 @@
       "x": 1540,
       "y": 455,
       "scale": 1.35,
-      "district": "east_quiet"
+      "district": "east_quiet",
+      "enterable": true,
+      "function": "church"
     },
     {
-      "id": "inn",
+      "id": "waterside_house",
       "asset": "buildings/BLD_006_inn.png",
       "x": 1980,
       "y": 650,
-      "scale": 1.0,
-      "district": "waterside"
+      "scale": 1,
+      "district": "waterside",
+      "enterable": false,
+      "function": "residence"
     },
     {
       "id": "civic_fountain",
