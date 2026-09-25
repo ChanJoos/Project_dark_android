@@ -36,7 +36,7 @@ the asset audit compares every fence placement against its blocker.
 
 The 64×32 dirt and grass diamonds remain navigation cells. Runtime draws a consistent source-cropped
 grass tile below the continuous path, then repeats the existing `dirt_path_fill_texture.png` crop
-along the authored centerline with mirrored seams and rounded, narrow margins. This restores the earlier connected
+along the authored centerline with mirrored seams and a cached, slightly uneven narrow outline. This restores the earlier connected
 soil silhouette while retaining independent image assets and tile-based collision.
 
 The first three AI-assisted transition candidates were rejected after the native render showed
