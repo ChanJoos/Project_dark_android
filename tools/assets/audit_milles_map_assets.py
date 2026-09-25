@@ -46,6 +46,7 @@ def main() -> None:
         "vegetation/grass/OBJ_grass_milles_dense.png",
         "vegetation/trees/OBJ_tree_milles_willow.png",
         "street/OBJ_lamp_milles_rope.png",
+        "street/OBJ_tree_ring_milles_reference.png",
         "structures/fences/OBJ_palisade_milles_rail.png",
     ):
         assert (PRODUCTION / rel).is_file(), f"missing reusable family: {rel}"

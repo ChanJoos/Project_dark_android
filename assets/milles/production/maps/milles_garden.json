@@ -664,6 +664,14 @@
       "district": "west_crafts"
     },
     {
+      "id": "orchard_ring",
+      "asset": "street/OBJ_tree_ring_milles_reference.png",
+      "x": 360,
+      "y": 780,
+      "scale": 0.7,
+      "district": "west_crafts"
+    },
+    {
       "id": "orchard_flower",
       "asset": "vegetation/flowers/OBJ_flower_01.png",
       "x": 400,
@@ -693,6 +701,14 @@
       "x": 920,
       "y": 1230,
       "scale": 0.78,
+      "district": "south_residences"
+    },
+    {
+      "id": "south_garden_ring",
+      "asset": "street/OBJ_tree_ring_milles_reference.png",
+      "x": 920,
+      "y": 1230,
+      "scale": 0.7,
       "district": "south_residences"
     },
     {
@@ -782,6 +798,14 @@
       "y": 620,
       "scale": 0.7,
       "district": "civic_square"
+    },
+    {
+      "id": "garden_ring",
+      "asset": "street/OBJ_tree_ring_milles_reference.png",
+      "x": 1080,
+      "y": 536,
+      "scale": 0.7,
+      "district": "garden"
     },
     {
       "id": "orchard_fence_nw_1",

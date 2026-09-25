@@ -55,7 +55,7 @@ not enlarged or resampled during extraction.
 `../maps/milles_garden_base.json` owns landmarks, the portal and ten traversable garden-fence
 contacts. `tools/assets/build_milles_village_scene.py` adds five solid village buildings,
 hand-placed district props and groves, and staggered grass along both sides of the five existing
-routes. Its checked-in output `../maps/milles_garden.json` has 303 independently editable
+routes. Its checked-in output `../maps/milles_garden.json` has 306 independently editable
 placements, including three coherent gardens with open entries. A deterministic map audit
 checks that each family exists and that regenerated output is byte-for-byte stable;
 additional buildings and fences also have matching solid ground footprints.
@@ -67,5 +67,7 @@ sprites: `../street/OBJ_lamp_milles_rope.png`,
 `../structures/fences/OBJ_palisade_milles_rail.png`. They are stylistic reconstructions,
 not exact source-client image files. Existing independent trees, stalls, stone, storage,
 flowers, buildings, benches and fence pieces are also used across the new districts.
+The oval stone tree island in the same footage is interpreted as
+`../street/OBJ_tree_ring_milles_reference.png` and placed beneath three independent trees.
 The recordings show only portions of Milles; unseen buildings and placements in this scene
 are new village design, not claims that every original object was recovered.

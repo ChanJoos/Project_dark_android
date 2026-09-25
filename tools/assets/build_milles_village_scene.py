@@ -75,10 +75,12 @@ STORY_PROPS = [
     ("south_flowerbed_a", "vegetation/flowers/OBJ_flower_01.png", 568, 1130, .30, "south_residences"),
     ("south_flowerbed_b", "vegetation/flowers/OBJ_flower_02.png", 1240, 1144, .29, "south_residences"),
     ("orchard_tree", "vegetation/trees/OBJ_tree_milles_willow.png", 360, 780, .78, "west_crafts"),
+    ("orchard_ring", "street/OBJ_tree_ring_milles_reference.png", 360, 780, .70, "west_crafts"),
     ("orchard_flower", "vegetation/flowers/OBJ_flower_01.png", 400, 810, .25, "west_crafts"),
     ("orchard_barrel", "storage/OBJ_barrel.png", 484, 806, .22, "west_crafts"),
     ("orchard_lantern", "street/OBJ_lamp_milles_rope.png", 470, 724, .68, "west_crafts"),
     ("south_garden_tree", "vegetation/trees/OBJ_tree_milles_willow.png", 920, 1230, .78, "south_residences"),
+    ("south_garden_ring", "street/OBJ_tree_ring_milles_reference.png", 920, 1230, .70, "south_residences"),
     ("south_garden_flower", "vegetation/flowers/OBJ_flower_02.png", 972, 1250, .26, "south_residences"),
     ("south_garden_bench", "video_reference/objects/bench_video_cutout_03.png", 1082, 1320, .42, "south_residences"),
     ("south_garden_lantern", "street/OBJ_lamp_milles_rope.png", 1032, 1178, .67, "south_residences"),
@@ -90,6 +92,7 @@ STORY_PROPS = [
     ("civic_rope_light_west", "street/OBJ_lamp_milles_rope.png", 580, 478, .72, "civic_square"),
     ("civic_rope_light_east", "street/OBJ_lamp_milles_rope.png", 922, 458, .75, "civic_square"),
     ("civic_rope_light_south", "street/OBJ_lamp_milles_rope.png", 985, 620, .70, "civic_square"),
+    ("garden_ring", "street/OBJ_tree_ring_milles_reference.png", 1080, 536, .70, "garden"),
 ]
 
 # Clumps form readable groves, not a uniform noise carpet. Extra trees frame roads
