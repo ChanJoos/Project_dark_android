@@ -41,12 +41,12 @@ STORY_PROPS = [
     ("craft_rock", "rocks/OBJ_rock_02.png", -120, 626, .41, "west_crafts"),
     ("craft_cart", "market/OBJ_cart.png", 512, 356, .29, "west_crafts"),
     ("craft_notice", "street/OBJ_signpost.png", 168, 806, .45, "west_crafts"),
-    ("market_stall", "market/OBJ_stall_01.png", 1230, 382, .54, "east_market"),
-    ("market_tent", "market/OBJ_tent_01.png", 1240, 260, .55, "east_market"),
-    ("market_crates", "storage/OBJ_crate.png", 1300, 364, .29, "east_market"),
-    ("market_sacks", "storage/OBJ_sack.png", 1180, 348, .29, "east_market"),
-    ("market_barrel", "storage/OBJ_barrel.png", 1350, 348, .25, "east_market"),
-    ("market_hay", "materials/OBJ_hay.png", 1400, 382, .28, "east_market"),
+    ("market_stall", "market/OBJ_stall_01.png", 1240, 620, .54, "east_market"),
+    ("market_tent", "market/OBJ_tent_01.png", 1480, 630, .55, "east_market"),
+    ("market_crates", "storage/OBJ_crate.png", 1310, 660, .29, "east_market"),
+    ("market_sacks", "storage/OBJ_sack.png", 1210, 668, .29, "east_market"),
+    ("market_barrel", "storage/OBJ_barrel.png", 1410, 672, .25, "east_market"),
+    ("market_hay", "materials/OBJ_hay.png", 1540, 675, .28, "east_market"),
     ("church_statue", "street/OBJ_statue.png", 1694, 528, .47, "east_quiet"),
     ("church_arch", "structures/arches_gates/OBJ_arch.png", 1780, 472, .40, "east_quiet"),
     ("church_bench", "video_reference/objects/bench_video_cutout_02.png", 1760, 584, .42, "east_quiet"),
@@ -73,7 +73,7 @@ STORY_PROPS = [
     ("civic_bench_south", "video_reference/objects/bench_video_cutout_01.png", 882, 824, .42, "civic_square"),
     ("civic_rope_light_west", "street/OBJ_lamp_milles_rope.png", 580, 478, .72, "civic_square"),
     ("civic_rope_light_east", "street/OBJ_lamp_milles_rope.png", 922, 458, .75, "civic_square"),
-    ("civic_rope_light_south", "street/OBJ_lamp_milles_rope.png", 930, 690, .70, "civic_square"),
+    ("civic_rope_light_south", "street/OBJ_lamp_milles_rope.png", 985, 620, .70, "civic_square"),
 ]
 
 # Clumps form readable groves, not a uniform noise carpet. Extra trees frame roads
@@ -81,8 +81,8 @@ STORY_PROPS = [
 GROVES = [
     ("north_wood", [(120, 190), (232, 182), (330, 214), (410, 154), (526, 172), (1040, 180)]),
     ("west_wood", [(-270, 340), (-132, 278), (-310, 528), (-108, 1020), (98, 1040), (248, 1160)]),
-    ("civic_park", [(530, 340), (620, 352), (870, 344), (970, 298), (500, 646), (594, 794)]),
-    ("east_garden", [(1176, 260), (1304, 230), (1730, 324), (1250, 600), (1390, 606), (1650, 620)]),
+    ("civic_park", [(530, 340), (620, 352), (870, 344), (970, 298), (500, 646), (594, 794), (500, 368), (585, 690), (1010, 630)]),
+    ("east_garden", [(1176, 260), (1304, 230), (1730, 324), (1250, 600), (1390, 606), (1650, 620), (1245, 640)]),
     ("south_grove", [(246, 1350), (462, 1360), (1000, 1300), (1160, 1430), (1350, 1320), (1550, 1470)]),
     ("waterside", [(1730, 960), (2080, 1020), (2150, 1320), (1880, 1430), (2270, 1220)]),
 ]
@@ -120,7 +120,7 @@ def path_margin(objects):
             steps = max(1, math.ceil(length / 13))
             for step in range(steps):
                 d = walked + length * step / steps
-                if d - last < 70 + (arm * 13 + int(d / 80) * 17) % 28:
+                if d - last < 48 + (arm * 13 + int(d / 80) * 17) % 18:
                     continue
                 last = d
                 t = step / steps
@@ -138,7 +138,7 @@ def path_margin(objects):
                         continue
                     art = "vegetation/grass/OBJ_grass_milles_dense.png" if key % 3 == 0 else "vegetation/grass/OBJ_grass_edge_milles_reference.png"
                     district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate"][arm]
-                    add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .34 + key % 5 * .045, district)
+                    add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .28 + key % 5 * .038, district)
             walked += length
 
 

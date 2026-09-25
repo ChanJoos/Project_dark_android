@@ -137,8 +137,8 @@
     {
       "id": "boundary_tree_north",
       "asset": "vegetation/trees/OBJ_tree_01.png",
-      "x": 1040,
-      "y": 176,
+      "x": 960,
+      "y": 120,
       "scale": 0.5,
       "district": "village_edge"
     },
@@ -243,23 +243,23 @@
       "id": "square_lamp_west",
       "asset": "street/OBJ_lamp_03.png",
       "x": 600,
-      "y": 520,
+      "y": 472,
       "scale": 0.42,
       "district": "civic_square"
     },
     {
       "id": "square_lamp_east",
       "asset": "street/OBJ_lamp_01.png",
-      "x": 952,
-      "y": 488,
+      "x": 940,
+      "y": 436,
       "scale": 0.42,
       "district": "civic_square"
     },
     {
       "id": "south_gate_lamp",
       "asset": "street/OBJ_lamp_02.png",
-      "x": 784,
-      "y": 1224,
+      "x": 730,
+      "y": 1240,
       "scale": 0.4,
       "district": "south_gate"
     },
@@ -306,7 +306,7 @@
     {
       "id": "garden_flowerbed_2",
       "asset": "vegetation/flowers/OBJ_flower_03.png",
-      "x": 1400,
+      "x": 1320,
       "y": 1040,
       "scale": 0.34,
       "district": "garden"

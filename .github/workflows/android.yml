@@ -103,6 +103,8 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Verify HUD leaves empty-world tap regions available
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
+      - name: Render West, South and Waterside Milles districts
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesDistrictReviewTest --stacktrace
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
       - name: Milddok ingestion identity audit

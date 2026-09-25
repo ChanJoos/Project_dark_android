@@ -137,8 +137,8 @@
     {
       "id": "boundary_tree_north",
       "asset": "vegetation/trees/OBJ_tree_01.png",
-      "x": 1040,
-      "y": 176,
+      "x": 960,
+      "y": 120,
       "scale": 0.5,
       "district": "village_edge"
     },
@@ -243,23 +243,23 @@
       "id": "square_lamp_west",
       "asset": "street/OBJ_lamp_03.png",
       "x": 600,
-      "y": 520,
+      "y": 472,
       "scale": 0.42,
       "district": "civic_square"
     },
     {
       "id": "square_lamp_east",
       "asset": "street/OBJ_lamp_01.png",
-      "x": 952,
-      "y": 488,
+      "x": 940,
+      "y": 436,
       "scale": 0.42,
       "district": "civic_square"
     },
     {
       "id": "south_gate_lamp",
       "asset": "street/OBJ_lamp_02.png",
-      "x": 784,
-      "y": 1224,
+      "x": 730,
+      "y": 1240,
       "scale": 0.4,
       "district": "south_gate"
     },
@@ -306,7 +306,7 @@
     {
       "id": "garden_flowerbed_2",
       "asset": "vegetation/flowers/OBJ_flower_03.png",
-      "x": 1400,
+      "x": 1320,
       "y": 1040,
       "scale": 0.34,
       "district": "garden"
@@ -458,48 +458,48 @@
     {
       "id": "market_stall",
       "asset": "market/OBJ_stall_01.png",
-      "x": 1230,
-      "y": 382,
+      "x": 1240,
+      "y": 620,
       "scale": 0.54,
       "district": "east_market"
     },
     {
       "id": "market_tent",
       "asset": "market/OBJ_tent_01.png",
-      "x": 1240,
-      "y": 260,
+      "x": 1480,
+      "y": 630,
       "scale": 0.55,
       "district": "east_market"
     },
     {
       "id": "market_crates",
       "asset": "storage/OBJ_crate.png",
-      "x": 1300,
-      "y": 364,
+      "x": 1310,
+      "y": 660,
       "scale": 0.29,
       "district": "east_market"
     },
     {
       "id": "market_sacks",
       "asset": "storage/OBJ_sack.png",
-      "x": 1180,
-      "y": 348,
+      "x": 1210,
+      "y": 668,
       "scale": 0.29,
       "district": "east_market"
     },
     {
       "id": "market_barrel",
       "asset": "storage/OBJ_barrel.png",
-      "x": 1350,
-      "y": 348,
+      "x": 1410,
+      "y": 672,
       "scale": 0.25,
       "district": "east_market"
     },
     {
       "id": "market_hay",
       "asset": "materials/OBJ_hay.png",
-      "x": 1400,
-      "y": 382,
+      "x": 1540,
+      "y": 675,
       "scale": 0.28,
       "district": "east_market"
     },
@@ -714,8 +714,8 @@
     {
       "id": "civic_rope_light_south",
       "asset": "street/OBJ_lamp_milles_rope.png",
-      "x": 930,
-      "y": 690,
+      "x": 985,
+      "y": 620,
       "scale": 0.7,
       "district": "civic_square"
     },
@@ -1056,6 +1056,78 @@
       "district": "civic_park"
     },
     {
+      "id": "civic_park_tree_6",
+      "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
+      "x": 500,
+      "y": 368,
+      "scale": 0.83,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_understory_6_0",
+      "asset": "vegetation/bushes/OBJ_bush_01.png",
+      "x": 455,
+      "y": 396,
+      "scale": 0.27,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_understory_6_1",
+      "asset": "vegetation/bushes/OBJ_bush_02.png",
+      "x": 554,
+      "y": 391,
+      "scale": 0.27,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_tree_7",
+      "asset": "vegetation/trees/OBJ_tree_01.png",
+      "x": 585,
+      "y": 690,
+      "scale": 0.45,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_understory_7_0",
+      "asset": "vegetation/bushes/OBJ_bush_02.png",
+      "x": 540,
+      "y": 718,
+      "scale": 0.3,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_understory_7_1",
+      "asset": "vegetation/bushes/OBJ_bush_03.png",
+      "x": 639,
+      "y": 713,
+      "scale": 0.3,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_tree_8",
+      "asset": "vegetation/trees/OBJ_tree_03.png",
+      "x": 1010,
+      "y": 630,
+      "scale": 0.45,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_understory_8_0",
+      "asset": "vegetation/bushes/OBJ_bush_03.png",
+      "x": 965,
+      "y": 658,
+      "scale": 0.33,
+      "district": "civic_park"
+    },
+    {
+      "id": "civic_park_understory_8_1",
+      "asset": "vegetation/bushes/OBJ_bush_01.png",
+      "x": 1064,
+      "y": 653,
+      "scale": 0.33,
+      "district": "civic_park"
+    },
+    {
       "id": "east_garden_tree_1",
       "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
       "x": 1304,
@@ -1165,6 +1237,30 @@
       "x": 1704,
       "y": 643,
       "scale": 0.33,
+      "district": "east_garden"
+    },
+    {
+      "id": "east_garden_tree_6",
+      "asset": "vegetation/trees/OBJ_tree_01.png",
+      "x": 1245,
+      "y": 640,
+      "scale": 0.45,
+      "district": "east_garden"
+    },
+    {
+      "id": "east_garden_understory_6_0",
+      "asset": "vegetation/bushes/OBJ_bush_01.png",
+      "x": 1200,
+      "y": 668,
+      "scale": 0.27,
+      "district": "east_garden"
+    },
+    {
+      "id": "east_garden_understory_6_1",
+      "asset": "vegetation/bushes/OBJ_bush_02.png",
+      "x": 1299,
+      "y": 663,
+      "scale": 0.27,
       "district": "east_garden"
     },
     {
@@ -1432,67 +1528,99 @@
       "district": "waterside"
     },
     {
-      "id": "shoulder_0_161_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 599,
-      "y": 573,
-      "scale": 0.39,
-      "district": "west_crafts"
-    },
-    {
-      "id": "shoulder_0_161_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 643,
-      "y": 485,
-      "scale": 0.39,
-      "district": "west_crafts"
-    },
-    {
-      "id": "shoulder_0_256_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 510,
-      "y": 538,
-      "scale": 0.34,
-      "district": "west_crafts"
-    },
-    {
-      "id": "shoulder_0_256_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 555,
-      "y": 448,
-      "scale": 0.34,
-      "district": "west_crafts"
-    },
-    {
-      "id": "shoulder_0_346_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 437,
-      "y": 510,
-      "scale": 0.52,
-      "district": "west_crafts"
-    },
-    {
-      "id": "shoulder_0_425_l",
+      "id": "shoulder_0_125_l",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 371,
-      "y": 503,
+      "x": 626,
+      "y": 599,
+      "scale": 0.36,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_0_197_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 566,
+      "y": 559,
       "scale": 0.43,
       "district": "west_crafts"
     },
     {
-      "id": "shoulder_1_159_l",
+      "id": "shoulder_0_197_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 694,
-      "y": 454,
-      "scale": 0.52,
+      "x": 612,
+      "y": 466,
+      "scale": 0.43,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_0_268_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 499,
+      "y": 534,
+      "scale": 0.32,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_0_268_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 545,
+      "y": 442,
+      "scale": 0.32,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_0_335_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 448,
+      "y": 511,
+      "scale": 0.39,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_0_335_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 472,
+      "y": 412,
+      "scale": 0.39,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_0_401_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 382,
+      "y": 502,
+      "scale": 0.28,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_0_463_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 333,
+      "y": 492,
+      "scale": 0.32,
+      "district": "west_crafts"
+    },
+    {
+      "id": "shoulder_1_134_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 697,
+      "y": 460,
+      "scale": 0.36,
       "district": "north_services"
     },
     {
-      "id": "shoulder_1_159_r",
+      "id": "shoulder_1_197_l",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 797,
-      "y": 420,
-      "scale": 0.52,
+      "x": 690,
+      "y": 400,
+      "scale": 0.39,
+      "district": "north_services"
+    },
+    {
+      "id": "shoulder_1_197_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 792,
+      "y": 400,
+      "scale": 0.39,
       "district": "north_services"
     },
     {
@@ -1500,7 +1628,7 @@
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
       "x": 898,
       "y": 473,
-      "scale": 0.34,
+      "scale": 0.28,
       "district": "east_market"
     },
     {
@@ -1508,23 +1636,31 @@
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 955,
       "y": 550,
-      "scale": 0.34,
+      "scale": 0.28,
       "district": "east_market"
     },
     {
-      "id": "shoulder_2_268_l",
+      "id": "shoulder_2_234_l",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 965,
-      "y": 411,
-      "scale": 0.52,
+      "x": 940,
+      "y": 434,
+      "scale": 0.32,
       "district": "east_market"
     },
     {
-      "id": "shoulder_2_268_r",
+      "id": "shoulder_2_234_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1025,
-      "y": 490,
-      "scale": 0.52,
+      "x": 996,
+      "y": 508,
+      "scale": 0.32,
+      "district": "east_market"
+    },
+    {
+      "id": "shoulder_2_291_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1045,
+      "y": 479,
+      "scale": 0.36,
       "district": "east_market"
     },
     {
@@ -1532,135 +1668,191 @@
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 1092,
       "y": 461,
-      "scale": 0.48,
+      "scale": 0.39,
       "district": "east_market"
     },
     {
-      "id": "shoulder_2_449_r",
+      "id": "shoulder_2_413_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1151,
-      "y": 451,
+      "x": 1126,
+      "y": 447,
       "scale": 0.43,
       "district": "east_market"
     },
     {
-      "id": "shoulder_2_537_r",
+      "id": "shoulder_2_471_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1237,
-      "y": 467,
-      "scale": 0.39,
+      "x": 1171,
+      "y": 459,
+      "scale": 0.28,
       "district": "east_market"
     },
     {
-      "id": "shoulder_2_614_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1336,
-      "y": 387,
-      "scale": 0.52,
+      "id": "shoulder_2_526_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 1227,
+      "y": 463,
+      "scale": 0.28,
       "district": "east_market"
     },
     {
-      "id": "shoulder_2_614_r",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 1310,
-      "y": 493,
-      "scale": 0.52,
+      "id": "shoulder_2_581_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1304,
+      "y": 382,
+      "scale": 0.32,
       "district": "east_market"
     },
     {
-      "id": "shoulder_3_151_l",
+      "id": "shoulder_2_581_r",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 921,
-      "y": 623,
-      "scale": 0.43,
-      "district": "waterside"
+      "x": 1279,
+      "y": 482,
+      "scale": 0.32,
+      "district": "east_market"
     },
     {
-      "id": "shoulder_3_151_r",
+      "id": "shoulder_2_636_l",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 874,
-      "y": 717,
-      "scale": 0.43,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_247_l",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 992,
-      "y": 660,
-      "scale": 0.39,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_247_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 977,
-      "y": 751,
-      "scale": 0.39,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_346_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1087,
-      "y": 680,
-      "scale": 0.39,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_346_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1075,
-      "y": 777,
-      "scale": 0.39,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_436_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1178,
-      "y": 682,
-      "scale": 0.34,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_436_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1165,
-      "y": 782,
-      "scale": 0.34,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_513_l",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 1254,
-      "y": 698,
-      "scale": 0.48,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_513_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1241,
-      "y": 800,
-      "scale": 0.48,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_604_l",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
       "x": 1344,
-      "y": 701,
+      "y": 404,
+      "scale": 0.32,
+      "district": "east_market"
+    },
+    {
+      "id": "shoulder_2_636_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1344,
+      "y": 502,
+      "scale": 0.32,
+      "district": "east_market"
+    },
+    {
+      "id": "shoulder_3_175_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 943,
+      "y": 632,
       "scale": 0.43,
       "district": "waterside"
     },
     {
-      "id": "shoulder_3_604_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1331,
-      "y": 805,
+      "id": "shoulder_3_175_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 894,
+      "y": 729,
       "scale": 0.43,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_235_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 980,
+      "y": 659,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_235_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 965,
+      "y": 748,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_283_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1029,
+      "y": 662,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_283_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1012,
+      "y": 761,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_359_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1100,
+      "y": 680,
+      "scale": 0.36,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_359_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 1088,
+      "y": 779,
+      "scale": 0.36,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_423_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 1165,
+      "y": 681,
+      "scale": 0.43,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_423_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1153,
+      "y": 779,
+      "scale": 0.43,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_488_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 1228,
+      "y": 698,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_488_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1216,
+      "y": 793,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_552_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1293,
+      "y": 699,
+      "scale": 0.36,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_552_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1281,
+      "y": 793,
+      "scale": 0.36,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_617_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1357,
+      "y": 701,
+      "scale": 0.39,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_617_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1344,
+      "y": 807,
+      "scale": 0.39,
       "district": "waterside"
     },
     {
@@ -1668,7 +1860,7 @@
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 1420,
       "y": 717,
-      "scale": 0.34,
+      "scale": 0.28,
       "district": "waterside"
     },
     {
@@ -1676,23 +1868,39 @@
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
       "x": 1409,
       "y": 807,
-      "scale": 0.34,
+      "scale": 0.28,
       "district": "waterside"
     },
     {
-      "id": "shoulder_3_784_l",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 1522,
-      "y": 735,
-      "scale": 0.34,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_784_r",
+      "id": "shoulder_3_746_l",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1510,
-      "y": 830,
-      "scale": 0.34,
+      "x": 1485,
+      "y": 719,
+      "scale": 0.32,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_746_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 1472,
+      "y": 821,
+      "scale": 0.32,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_810_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 1548,
+      "y": 735,
+      "scale": 0.39,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_810_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1535,
+      "y": 836,
+      "scale": 0.39,
       "district": "waterside"
     },
     {
@@ -1700,7 +1908,7 @@
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
       "x": 1606,
       "y": 732,
-      "scale": 0.52,
+      "scale": 0.43,
       "district": "waterside"
     },
     {
@@ -1708,47 +1916,79 @@
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 1606,
       "y": 831,
-      "scale": 0.52,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_951_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1683,
-      "y": 739,
       "scale": 0.43,
       "district": "waterside"
     },
     {
-      "id": "shoulder_3_951_r",
+      "id": "shoulder_3_938_l",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 1683,
-      "y": 839,
+      "x": 1670,
+      "y": 741,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_938_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1670,
+      "y": 837,
+      "scale": 0.28,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_1000_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1719,
+      "y": 727,
+      "scale": 0.36,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_1000_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1742,
+      "y": 819,
+      "scale": 0.36,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_1060_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1776,
+      "y": 706,
+      "scale": 0.39,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_1060_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1801,
+      "y": 810,
+      "scale": 0.39,
+      "district": "waterside"
+    },
+    {
+      "id": "shoulder_3_1120_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1824,
+      "y": 699,
       "scale": 0.43,
       "district": "waterside"
     },
     {
-      "id": "shoulder_3_1048_l",
+      "id": "shoulder_3_1120_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1764,
-      "y": 711,
-      "scale": 0.39,
+      "x": 1871,
+      "y": 792,
+      "scale": 0.43,
       "district": "waterside"
     },
     {
-      "id": "shoulder_3_1048_r",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 1789,
-      "y": 811,
-      "scale": 0.39,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_1144_r",
+      "id": "shoulder_3_1179_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1886,
-      "y": 770,
-      "scale": 0.39,
+      "x": 1920,
+      "y": 757,
+      "scale": 0.43,
       "district": "waterside"
     },
     {
@@ -1756,23 +1996,31 @@
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 1979,
       "y": 726,
-      "scale": 0.34,
+      "scale": 0.28,
       "district": "waterside"
     },
     {
-      "id": "shoulder_4_170_l",
+      "id": "shoulder_4_137_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 766,
-      "y": 766,
-      "scale": 0.48,
+      "x": 674,
+      "y": 709,
+      "scale": 0.43,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_170_r",
+      "id": "shoulder_4_203_l",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 663,
-      "y": 740,
-      "scale": 0.48,
+      "x": 748,
+      "y": 784,
+      "scale": 0.32,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_203_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 650,
+      "y": 784,
+      "scale": 0.32,
       "district": "south_gate"
     },
     {
@@ -1780,7 +2028,7 @@
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 753,
       "y": 836,
-      "scale": 0.43,
+      "scale": 0.36,
       "district": "south_gate"
     },
     {
@@ -1788,135 +2036,183 @@
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 660,
       "y": 859,
+      "scale": 0.36,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_333_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 775,
+      "y": 898,
       "scale": 0.43,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_355_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 768,
-      "y": 923,
-      "scale": 0.39,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_355_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 673,
-      "y": 946,
-      "scale": 0.39,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_454_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 802,
-      "y": 1016,
-      "scale": 0.39,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_454_r",
+      "id": "shoulder_4_333_r",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 702,
-      "y": 1041,
-      "scale": 0.39,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_542_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 817,
-      "y": 1103,
-      "scale": 0.34,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_542_r",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 729,
-      "y": 1125,
-      "scale": 0.34,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_619_l",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 843,
-      "y": 1176,
+      "x": 670,
+      "y": 925,
       "scale": 0.43,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_619_r",
+      "id": "shoulder_4_399_l",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 741,
-      "y": 1201,
-      "scale": 0.43,
+      "x": 783,
+      "y": 964,
+      "scale": 0.28,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_711_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 850,
-      "y": 1280,
-      "scale": 0.43,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_711_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 755,
-      "y": 1280,
-      "scale": 0.43,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_797_l",
+      "id": "shoulder_4_399_r",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 843,
-      "y": 1366,
-      "scale": 0.34,
+      "x": 694,
+      "y": 986,
+      "scale": 0.28,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_797_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 747,
-      "y": 1366,
-      "scale": 0.34,
-      "district": "south_gate"
-    },
-    {
-      "id": "shoulder_4_887_l",
+      "id": "shoulder_4_465_l",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 852,
-      "y": 1456,
-      "scale": 0.52,
+      "x": 805,
+      "y": 1027,
+      "scale": 0.36,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_887_r",
+      "id": "shoulder_4_465_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 753,
-      "y": 1456,
-      "scale": 0.52,
+      "x": 703,
+      "y": 1052,
+      "scale": 0.36,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_961_l",
+      "id": "shoulder_4_531_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 814,
+      "y": 1093,
+      "scale": 0.43,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_531_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 713,
+      "y": 1118,
+      "scale": 0.43,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_597_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 835,
+      "y": 1155,
+      "scale": 0.28,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_597_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 737,
+      "y": 1180,
+      "scale": 0.28,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_663_l",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 845,
-      "y": 1531,
+      "y": 1232,
+      "scale": 0.36,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_663_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 745,
+      "y": 1232,
+      "scale": 0.36,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_723_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 851,
+      "y": 1292,
+      "scale": 0.39,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_723_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 754,
+      "y": 1292,
+      "scale": 0.39,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_784_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 857,
+      "y": 1354,
       "scale": 0.43,
       "district": "south_gate"
     },
     {
-      "id": "shoulder_4_961_r",
+      "id": "shoulder_4_784_r",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 745,
-      "y": 1531,
+      "x": 748,
+      "y": 1354,
       "scale": 0.43,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_848_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 848,
+      "y": 1418,
+      "scale": 0.28,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_848_r",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 757,
+      "y": 1418,
+      "scale": 0.28,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_912_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 855,
+      "y": 1481,
+      "scale": 0.36,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_912_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 750,
+      "y": 1481,
+      "scale": 0.36,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_974_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 846,
+      "y": 1543,
+      "scale": 0.39,
+      "district": "south_gate"
+    },
+    {
+      "id": "shoulder_4_974_r",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 744,
+      "y": 1543,
+      "scale": 0.39,
       "district": "south_gate"
     }
   ]
