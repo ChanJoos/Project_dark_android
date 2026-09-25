@@ -46,6 +46,8 @@ public final class AdaptedMillesMapRenderer {
   }
 
   private final Paint outsidePaint=new Paint(),pixelPaint=new Paint(),soilPaint=new Paint(),soilEdgePaint=new Paint();
+  private final List<Path> soilContours=buildRoadContours(21.5f);
+  private final List<Path> soilEdgeContours=buildRoadContours(24.5f);
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
@@ -56,6 +58,7 @@ public final class AdaptedMillesMapRenderer {
     pixelPaint.setAntiAlias(false);pixelPaint.setFilterBitmap(false);pixelPaint.setDither(false);
     configureRoadPaint(soilEdgePaint,0x996b522d,49f);
     configureRoadPaint(soilPaint,0xff91602d,43f);
+    soilPaint.setStyle(Paint.Style.FILL);soilEdgePaint.setStyle(Paint.Style.FILL);
     assets=findAssets();placements=loadPlacements();
   }
 
@@ -114,15 +117,49 @@ public final class AdaptedMillesMapRenderer {
     soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));
     canvas.save();
     canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
-    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
-      if(points.length<2)continue;
-      Path centerline=new Path();centerline.moveTo(points[0][0],points[0][1]);
-      for(int i=1;i<points.length;i++)centerline.lineTo(points[i][0],points[i][1]);
-      canvas.drawPath(centerline,soilEdgePaint);
-      canvas.drawPath(centerline,soilPaint);
-    }
+    // Draw every fringe before the soil surfaces, so intersections cannot leave
+    // dark seams. Geometry is built once; camera travel only translates it.
+    for(Path contour:soilEdgeContours)canvas.drawPath(contour,soilEdgePaint);
+    for(Path contour:soilContours)canvas.drawPath(contour,soilPaint);
     canvas.restore();
     soilPaint.setShader(null);
+  }
+
+  private static List<Path> buildRoadContours(float halfWidth){
+    List<Path> outlines=new ArrayList<>();int arm=0;
+    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
+      if(points.length<2)continue;
+      List<float[]> samples=new ArrayList<>();float walked=0;
+      for(int segment=1;segment<points.length;segment++){
+        float[] a=points[segment-1],b=points[segment];
+        float length=(float)Math.hypot(b[0]-a[0],b[1]-a[1]);
+        int steps=Math.max(1,(int)Math.ceil(length/8f));
+        for(int step=segment==1?0:1;step<=steps;step++){
+          float t=(float)step/steps;
+          samples.add(new float[]{a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,walked+length*t});
+        }
+        walked+=length;
+      }
+      List<float[]> left=new ArrayList<>(),right=new ArrayList<>();
+      for(int i=0;i<samples.size();i++){
+        float[] p=samples.get(i),prev=samples.get(Math.max(0,i-1)),next=samples.get(Math.min(samples.size()-1,i+1));
+        float tx=next[0]-prev[0],ty=next[1]-prev[1];
+        float length=(float)Math.hypot(tx,ty);if(length<.01f)continue;
+        float nx=-ty/length,ny=tx/length;
+        float d=p[2],drift=(float)(1.65*Math.sin(d*.067+arm*2.11)+.85*Math.sin(d*.183+arm*.77));
+        float l=halfWidth+drift,r=halfWidth+(float)(1.55*Math.sin(d*.074+arm*1.19+1.9)+.85*Math.sin(d*.217+arm));
+        left.add(new float[]{p[0]+nx*l,p[1]+ny*l});right.add(new float[]{p[0]-nx*r,p[1]-ny*r});
+      }
+      if(left.size()<2)continue;
+      Path outline=new Path();outline.moveTo(left.get(0)[0],left.get(0)[1]);
+      for(int i=1;i<left.size();i++)outline.lineTo(left.get(i)[0],left.get(i)[1]);
+      for(int i=right.size()-1;i>=0;i--)outline.lineTo(right.get(i)[0],right.get(i)[1]);
+      outline.close();
+      outline.addCircle(points[0][0],points[0][1],halfWidth,Path.Direction.CW);
+      float[] end=points[points.length-1];outline.addCircle(end[0],end[1],halfWidth,Path.Direction.CW);
+      outlines.add(outline);arm++;
+    }
+    return outlines;
   }
 
   private void drawTerrainTile(Canvas canvas,WorldRuntimeAdapter world,String asset,float wx,float wy){
