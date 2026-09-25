@@ -62,14 +62,14 @@
       "function": "church"
     },
     {
-      "id": "waterside_house",
+      "id": "inn",
       "asset": "buildings/BLD_006_inn.png",
       "x": 1980,
       "y": 650,
       "scale": 1,
       "district": "waterside",
-      "enterable": false,
-      "function": "residence"
+      "enterable": true,
+      "function": "inn"
     },
     {
       "id": "civic_fountain",
