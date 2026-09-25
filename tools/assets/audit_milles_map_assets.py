@@ -72,6 +72,7 @@ def main() -> None:
         "street/OBJ_lamp_milles_rope.png",
         "street/OBJ_tree_ring_milles_reference.png",
         "structures/fences/OBJ_palisade_milles_rail.png",
+        "buildings/BLD_001_house.webp",
     ):
         assert (PRODUCTION / rel).is_file(), f"missing reusable family: {rel}"
     renderer = RENDERER.read_text(encoding="utf-8")
@@ -84,7 +85,7 @@ def main() -> None:
     assert "traceRoadCells" in tile_source and "connectRoadCells" in tile_source
     assert "private static final float[][][] PATHS" in tile_source
     assert "private static final float[][][] APPROACH_PATHS" in tile_source
-    assert tile_source.count('// armorer front yard') == 1 and '// guild from south gardens' in tile_source
+    assert tile_source.count('// west residential frontage') == 1 and '// east homes from south gardens' in tile_source
     garden_fences = [item for item in items if item["id"].startswith("garden_fence_")]
     assert len(garden_fences) >= 10, "garden must form a real enclosure, not loose fence props"
     assert {item["asset"] for item in garden_fences} == {
@@ -114,9 +115,23 @@ def main() -> None:
     assert district_contacts == {
         item["id"]: (float(item["x"]), float(item["y"])) for item in district_fences
     }, "the two complete garden enclosures must share art and collision anchors"
-    for building in ("west_armorer", "south_flower_shop", "south_library", "east_guild", "north_healer"):
-        assert f'"{building}",Kind.BUILDING,' in COLLISION.read_text(encoding="utf-8")
-        assert building in ids
+    service_ids = {"potion_shop", "weapon_shop", "bank", "church", "inn"}
+    services = {item["id"] for item in items if item.get("enterable")}
+    assert services == service_ids, f"unexpected enterable buildings: {services}"
+    houses = [item for item in items if item["id"].startswith("house_")]
+    assert len(houses) == 5, "Milles needs five authored non-enterable house placements"
+    assert all(item["asset"] == "buildings/BLD_001_house.webp" for item in houses)
+    assert all(item.get("function") == "residence" and item.get("enterable") is False for item in houses)
+    forbidden_ids = {"west_armorer", "south_flower_shop", "south_library", "east_guild", "north_healer", "waterside_house"}
+    assert not forbidden_ids.intersection(ids), f"legacy special buildings returned: {forbidden_ids.intersection(ids)}"
+    forbidden_assets = {
+        "buildings/BLD_004_armor_shop.png", "buildings/BLD_007_flower_shop.png",
+        "buildings/BLD_008_library.png", "buildings/BLD_009_guild.png", "buildings/BLD_010_healer.png",
+    }
+    assert not any(item["asset"] in forbidden_assets for item in items), "removed special-building art returned"
+    collision_source = COLLISION.read_text(encoding="utf-8")
+    for building in (*sorted(service_ids), *(item["id"] for item in houses)):
+        assert f'"{building}",Kind.' in collision_source, f"missing collision footprint: {building}"
     # Scene generation is deterministic; a repeated run may not silently reflow a district.
     before = LAYOUT.read_bytes()
     subprocess.run(["python3", str(ROOT / "tools/assets/build_milles_village_scene.py")], check=True, capture_output=True)
