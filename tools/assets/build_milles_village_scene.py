@@ -24,6 +24,10 @@ PATHS = [
     [(768, 592), (736, 656), (720, 720), (704, 784), (704, 848), (720, 912), (736, 976), (752, 1040), (768, 1104), (784, 1168), (800, 1232), (800, 1328), (800, 1456), (800, 1568)],
     # The waterside is a destination: the inn road reaches the pond-side rest area.
     [(1824, 752), (1860, 824), (1900, 904), (1960, 992), (1980, 1060)],
+    # Walk-up branches give the church, inn and south garden their own approach.
+    [(1696, 784), (1756, 712), (1780, 648), (1780, 596)],
+    [(1920, 704), (1984, 752), (2040, 778), (2080, 778)],
+    [(800, 1328), (900, 1345), (1060, 1335)],
 ]
 
 BUILDINGS = [
@@ -59,14 +63,14 @@ STORY_PROPS = [
     ("market_hay", "materials/OBJ_hay.png", 1500, 548, .28, "east_market"),
     ("church_statue", "street/OBJ_statue.png", 1694, 528, .47, "east_quiet"),
     ("church_arch", "structures/arches_gates/OBJ_arch.png", 1780, 472, .40, "east_quiet"),
-    ("church_bench", "street/OBJ_bench_forged_v2.png", 1780, 596, .060, "east_quiet"),
+    ("church_bench", "street/OBJ_bench_forged_v2.png", 1830, 600, .060, "east_quiet"),
     ("church_flower_a", "vegetation/flowers/OBJ_flower_01.png", 1680, 570, .28, "east_quiet"),
-    ("church_flower_b", "vegetation/flowers/OBJ_flower_03.png", 1848, 430, .30, "east_quiet"),
+    ("church_flower_b", "vegetation/flowers/OBJ_flower_03.png", 1870, 640, .30, "east_quiet"),
     ("inn_cart", "market/OBJ_cart.png", 2160, 704, .25, "waterside"),
     ("inn_crates", "storage/OBJ_crate.png", 2130, 660, .25, "waterside"),
     ("inn_sacks", "storage/OBJ_sack.png", 2180, 626, .30, "waterside"),
-    ("inn_bench", "street/OBJ_bench_forged_v2.png", 2080, 778, .060, "waterside"),
-    ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2084, 800, .76, "waterside"),
+    ("inn_bench", "street/OBJ_bench_forged_v2.png", 2132, 810, .060, "waterside"),
+    ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2084, 810, .76, "waterside"),
     ("pond_rocks", "rocks/OBJ_rock_01.png", 1700, 1090, .31, "waterside"),
     ("pond_reeds", "vegetation/grass/OBJ_grass_milles_dense.png", 1760, 1090, .70, "waterside"),
     ("pond_bench", "street/OBJ_bench_forged_v2.png", 2020, 1080, .060, "waterside"),
@@ -187,7 +191,7 @@ def path_margin(objects):
                     if distance_road(x, y) < 32:
                         continue
                     art = "vegetation/grass/OBJ_grass_milles_dense.png" if key % 3 == 0 else "vegetation/grass/OBJ_grass_edge_milles_reference.png"
-                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate", "waterside"][arm]
+                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate", "waterside", "east_quiet", "waterside", "south_residences"][arm]
                     add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .28 + key % 5 * .038, district, f"road_verge_{arm}")
             walked += length
 

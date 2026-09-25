@@ -4,6 +4,7 @@ import json
 import re
 import subprocess
 from pathlib import Path
+from build_milles_village_scene import distance_road
 
 ROOT = Path(__file__).resolve().parents[2]
 PRODUCTION = ROOT / "assets/milles/production"
@@ -28,6 +29,7 @@ def main() -> None:
     assert all(item.get("group") for item in items), "each object needs a spatial reason"
     benches = [item for item in items if "bench" in item["id"]]
     assert benches and all(item["asset"] == "street/OBJ_bench_forged_v2.png" for item in benches), "broken video bench cutouts returned"
+    assert all(20 <= distance_road(item["x"], item["y"]) <= 85 for item in benches), "bench must be off the path, beside a reachable verge"
     assert {item["id"] for item in benches if item["group"] == "fountain_rest_area"} == {
         "square_bench_west", "square_bench_east"
     }, "the plaza should have two composed, tree-side resting places"
