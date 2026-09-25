@@ -48,6 +48,12 @@ public final class MillesProductionCollision {
     rect(b,"general_shop",Kind.BUILDING,1000f,165f,1240f,399f);
     rect(b,"church",Kind.CHURCH,1370f,150f,1710f,494f);
     rect(b,"inn",Kind.BUILDING,1860f,430f,2100f,689f);
+    // Five additional authored districts; each solid shop uses its visible foot anchor.
+    rect(b,"west_armorer",Kind.BUILDING,-60f,530f,180f,739f);
+    rect(b,"south_flower_shop",Kind.BUILDING,280f,870f,520f,1079f);
+    rect(b,"south_library",Kind.BUILDING,1000f,880f,1240f,1089f);
+    rect(b,"east_guild",Kind.BUILDING,1410f,1000f,1650f,1209f);
+    rect(b,"north_healer",Kind.BUILDING,1760f,150f,2000f,359f);
 
     // Ground contact of the authored palisade enclosure. Keep the southwest opening walkable.
     add(b,"garden_fence_nw_1",Kind.FENCE,996f,530f,38f,16f);

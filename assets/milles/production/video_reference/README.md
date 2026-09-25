@@ -49,3 +49,22 @@ their coordinates and scale are editable in `../maps/milles_garden.json`.
 
 `manifest.json` records source, frame, crop bounds, processing and intended use. Source pixels are
 not enlarged or resampled during extraction.
+
+## Village-wide scene system
+
+`../maps/milles_garden_base.json` owns landmarks, the portal and ten traversable garden-fence
+contacts. `tools/assets/build_milles_village_scene.py` adds five solid village buildings,
+hand-placed district props and groves, and staggered grass along both sides of the five existing
+routes. Its checked-in output `../maps/milles_garden.json` has 238 independently editable
+placements. A deterministic map audit checks that each family exists and that regenerated
+output is byte-for-byte stable; additional buildings also have solid ground footprints.
+
+Four *AI-assisted interpretations* based on the supplied footage are reusable transparent
+sprites: `../street/OBJ_lamp_milles_rope.png`,
+`../vegetation/grass/OBJ_grass_milles_dense.png`,
+`../vegetation/trees/OBJ_tree_milles_willow.png`, and
+`../structures/fences/OBJ_palisade_milles_rail.png`. They are stylistic reconstructions,
+not exact source-client image files. Existing independent trees, stalls, stone, storage,
+flowers, buildings, benches and fence pieces are also used across the new districts.
+The recordings show only portions of Milles; unseen buildings and placements in this scene
+are new village design, not claims that every original object was recovered.
