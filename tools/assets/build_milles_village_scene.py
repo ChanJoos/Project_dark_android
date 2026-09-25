@@ -29,13 +29,12 @@ PATHS = [
 ]
 
 BUILDINGS = [
-    # Secondary building art is retained only as temporary house silhouettes.
-    # These are explicitly non-enterable residences; only reagent/equipment/bank/church are services.
-    ("west_house", "buildings/BLD_004_armor_shop.png", 60, 700, .86, "west_crafts"),
-    ("southwest_house", "buildings/BLD_007_flower_shop.png", 400, 1040, .92, "south_residences"),
-    ("south_house", "buildings/BLD_008_library.png", 1120, 1050, .92, "south_residences"),
-    ("east_house", "buildings/BLD_009_guild.png", 1530, 1170, .92, "east_residences"),
-    ("northeast_house", "buildings/BLD_010_healer.png", 1880, 320, .89, "east_quiet"),
+    # Canonical non-enterable homes. One visual family, placed as coherent residential frontage.
+    ("house_west", "buildings/BLD_001_house.webp", 60, 700, .92, "west_residential"),
+    ("house_southwest", "buildings/BLD_001_house.webp", 400, 1040, .96, "south_residences"),
+    ("house_south", "buildings/BLD_001_house.webp", 1120, 1050, .94, "south_residences"),
+    ("house_east", "buildings/BLD_001_house.webp", 1530, 1170, .95, "east_residences"),
+    ("house_northeast", "buildings/BLD_001_house.webp", 1880, 320, .92, "east_quiet"),
 ]
 
 # A pair of small gardens reuses the ten-piece open-gate footprint of the
