@@ -26,11 +26,6 @@ PATHS = [
     [(1824, 752), (1860, 824), (1900, 904), (1960, 992), (1980, 1060)],
     # South residents can walk from the main lane to their enclosed garden.
     [(800, 1328), (900, 1345), (1060, 1335)],
-    # Footpaths connect existing businesses to the spine; they stop at the front
-    # edge of the building collision, leaving doors and garden gates unblocked.
-    [(320, 448), (280, 536), (230, 630), (220, 730), (180, 760), (60, 760)],
-    [(720, 912), (650, 960), (580, 1020), (520, 1100), (400, 1125)],
-    [(752, 1040), (870, 1100), (1000, 1140), (1120, 1140)],
 ]
 
 BUILDINGS = [
@@ -193,7 +188,7 @@ def path_margin(objects):
                     if distance_road(x, y) < 32:
                         continue
                     art = "vegetation/grass/OBJ_grass_milles_dense.png" if key % 3 == 0 else "vegetation/grass/OBJ_grass_edge_milles_reference.png"
-                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate", "waterside", "south_residences", "west_crafts", "south_residences", "south_residences"][arm]
+                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate", "waterside", "south_residences"][arm]
                     add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .28 + key % 5 * .038, district, f"road_verge_{arm}")
             walked += length
 
