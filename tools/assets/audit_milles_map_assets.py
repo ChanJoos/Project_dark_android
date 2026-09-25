@@ -36,6 +36,7 @@ def main() -> None:
         "structures/fences/OBJ_palisade_diagonal_up.png",
         "structures/fences/OBJ_fence_01.png",
         "vegetation/trees/OBJ_tree_01.png",
+        "vegetation/grass/OBJ_grass_edge_milles_reference.png",
     ):
         assert (PRODUCTION / rel).is_file(), f"missing reusable family: {rel}"
     renderer = RENDERER.read_text(encoding="utf-8")

@@ -42,5 +42,10 @@ soil silhouette while retaining independent image assets and tile-based collisio
 The first three AI-assisted transition candidates were rejected after the native render showed
 disconnected paths. They remain excluded from the runtime.
 
+`../vegetation/grass/OBJ_grass_edge_milles_reference.png` is an AI-assisted transparent
+grass clump interpreted from the reference frame. Small independent placements soften selected
+soil boundaries and garden corners. It is a decorative sprite, not a terrain or collision tile;
+their coordinates and scale are editable in `../maps/milles_garden.json`.
+
 `manifest.json` records source, frame, crop bounds, processing and intended use. Source pixels are
 not enlarged or resampled during extraction.
