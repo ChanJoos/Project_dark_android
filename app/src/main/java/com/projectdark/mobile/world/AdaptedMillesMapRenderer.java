@@ -120,9 +120,19 @@ public final class AdaptedMillesMapRenderer {
     // Draw every fringe before the soil surfaces, so intersections cannot leave
     // dark seams. Geometry is built once; camera travel only translates it.
     for(Path contour:soilEdgeContours)canvas.drawPath(contour,soilEdgePaint);
+    drawRoadCaps(canvas,soilEdgePaint,24.5f);
     for(Path contour:soilContours)canvas.drawPath(contour,soilPaint);
+    drawRoadCaps(canvas,soilPaint,21.5f);
     canvas.restore();
     soilPaint.setShader(null);
+  }
+
+  private static void drawRoadCaps(Canvas canvas,Paint paint,float radius){
+    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
+      float[] start=points[0],end=points[points.length-1];
+      canvas.drawCircle(start[0],start[1],radius,paint);
+      canvas.drawCircle(end[0],end[1],radius,paint);
+    }
   }
 
   private static List<Path> buildRoadContours(float halfWidth){
@@ -155,8 +165,6 @@ public final class AdaptedMillesMapRenderer {
       for(int i=1;i<left.size();i++)outline.lineTo(left.get(i)[0],left.get(i)[1]);
       for(int i=right.size()-1;i>=0;i--)outline.lineTo(right.get(i)[0],right.get(i)[1]);
       outline.close();
-      outline.addCircle(points[0][0],points[0][1],halfWidth,Path.Direction.CW);
-      float[] end=points[points.length-1];outline.addCircle(end[0],end[1],halfWidth,Path.Direction.CW);
       outlines.add(outline);arm++;
     }
     return outlines;
