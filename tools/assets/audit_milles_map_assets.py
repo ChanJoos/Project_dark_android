@@ -78,10 +78,13 @@ def main() -> None:
     assert "maps/milles_garden.json" in renderer
     assert "garden_route_scene" not in renderer
     assert "drawConnectedSoil(canvas,world)" in renderer
+    assert 'buildRoadContours(11.5f,AdaptedMillesIsometricTileLayer.approachPaths())' in renderer
     assert 'SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png"' in renderer
     tile_source = TILES.read_text(encoding="utf-8")
     assert "traceRoadCells" in tile_source and "connectRoadCells" in tile_source
     assert "private static final float[][][] PATHS" in tile_source
+    assert "private static final float[][][] APPROACH_PATHS" in tile_source
+    assert tile_source.count('// armorer front yard') == 1 and '// guild from south gardens' in tile_source
     garden_fences = [item for item in items if item["id"].startswith("garden_fence_")]
     assert len(garden_fences) >= 10, "garden must form a real enclosure, not loose fence props"
     assert {item["asset"] for item in garden_fences} == {

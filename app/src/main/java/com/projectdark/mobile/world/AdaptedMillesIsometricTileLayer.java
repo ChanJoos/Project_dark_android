@@ -82,12 +82,28 @@ public final class AdaptedMillesIsometricTileLayer {
       {{800,1328},{900,1345},{1060,1335}}
   };
 
+  // Smaller walked approaches connect work, worship and homes to the village lanes.
+  // They remain passable grass underfoot; the renderer adds a light soil trace.
+  private static final float[][][] APPROACH_PATHS={
+      {{472,472},{290,525},{215,585},{205,710},{195,755}}, // armorer front yard
+      {{720,912},{630,940},{560,995},{535,1090},{460,1110}}, // flower shop and well
+      {{784,1168},{880,1140},{985,1120},{1120,1115}}, // library
+      {{1060,1335},{1210,1310},{1360,1280},{1530,1240}}, // guild from south gardens
+      {{1824,752},{1785,680},{1770,575},{1775,480},{1820,390}} // healer beside church
+  };
+
   private static final List<Tile> TILES=build();
 
   /** World-coordinate road centerlines for the renderer's terrain overlay. */
   public static float[][][] roadPaths(){
     float[][][] copy=new float[PATHS.length][][];
     for(int i=0;i<PATHS.length;i++){copy[i]=new float[PATHS[i].length][];for(int j=0;j<PATHS[i].length;j++)copy[i][j]=PATHS[i][j].clone();}
+    return copy;
+  }
+
+  public static float[][][] approachPaths(){
+    float[][][] copy=new float[APPROACH_PATHS.length][][];
+    for(int i=0;i<APPROACH_PATHS.length;i++){copy[i]=new float[APPROACH_PATHS[i].length][];for(int j=0;j<APPROACH_PATHS[i].length;j++)copy[i][j]=APPROACH_PATHS[i][j].clone();}
     return copy;
   }
 
