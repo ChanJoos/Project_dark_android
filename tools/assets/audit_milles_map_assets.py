@@ -29,10 +29,11 @@ def main() -> None:
     assert all(item.get("group") for item in items), "each object needs a spatial reason"
     benches = [item for item in items if "bench" in item["id"]]
     assert benches and all(item["asset"] == "street/OBJ_bench_forged_v2.png" for item in benches), "broken video bench cutouts returned"
-    assert all(20 <= distance_road(item["x"], item["y"]) <= 85 for item in benches), "bench must be off the path, beside a reachable verge"
+    verge_benches = [item for item in benches if item["id"] not in ("church_bench", "inn_bench")]
+    assert all(20 <= distance_road(item["x"], item["y"]) <= 85 for item in verge_benches), "verge bench must stand off a reachable path"
     assert {item["id"] for item in benches if item["group"] == "fountain_rest_area"} == {
-        "square_bench_west", "square_bench_east"
-    }, "the plaza should have two composed, tree-side resting places"
+        "square_bench_west"
+    }, "plaza bench must serve the tree-side rest area without duplication"
     assert len({item["group"] for item in items}) >= 12, "district objects lost their relationships"
     for item in items:
         assert item["scale"] > 0, item

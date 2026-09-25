@@ -24,9 +24,7 @@ PATHS = [
     [(768, 592), (736, 656), (720, 720), (704, 784), (704, 848), (720, 912), (736, 976), (752, 1040), (768, 1104), (784, 1168), (800, 1232), (800, 1328), (800, 1456), (800, 1568)],
     # The waterside is a destination: the inn road reaches the pond-side rest area.
     [(1824, 752), (1860, 824), (1900, 904), (1960, 992), (1980, 1060)],
-    # Walk-up branches give the church, inn and south garden their own approach.
-    [(1696, 784), (1756, 712), (1780, 648), (1780, 596)],
-    [(1920, 704), (1984, 752), (2040, 778), (2080, 778)],
+    # South residents can walk from the main lane to their enclosed garden.
     [(800, 1328), (900, 1345), (1060, 1335)],
 ]
 
@@ -49,7 +47,7 @@ FENCE_LOTS = [
 # user's route remain clear; these coordinates are scene composition, not a random scatter.
 STORY_PROPS = [
     ("craft_hay", "materials/OBJ_hay.png", 114, 508, .42, "west_crafts"),
-    ("craft_logs", "materials/OBJ_log.png", -46, 780, .37, "west_crafts"),
+    ("craft_logs", "materials/OBJ_log.png", 124, 768, .37, "west_crafts"),
     ("craft_sack", "storage/OBJ_sack.png", 158, 484, .30, "west_crafts"),
     ("craft_barrels", "storage/OBJ_barrel.png", 114, 462, .27, "west_crafts"),
     ("craft_rock", "rocks/OBJ_rock_02.png", -120, 626, .41, "west_crafts"),
@@ -73,12 +71,12 @@ STORY_PROPS = [
     ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2084, 810, .76, "waterside"),
     ("pond_rocks", "rocks/OBJ_rock_01.png", 1700, 1090, .31, "waterside"),
     ("pond_reeds", "vegetation/grass/OBJ_grass_milles_dense.png", 1760, 1090, .70, "waterside"),
-    ("pond_bench", "street/OBJ_bench_forged_v2.png", 2020, 1080, .060, "waterside"),
-    ("south_well", "street/OBJ_well.png", 336, 1210, .53, "south_residences"),
-    ("south_hay", "materials/OBJ_hay.png", 560, 1100, .32, "south_residences"),
-    ("south_logs", "materials/OBJ_log.png", 560, 1040, .32, "south_residences"),
-    ("south_crates", "storage/OBJ_crate.png", 984, 1050, .29, "south_residences"),
-    ("south_flowerbed_a", "vegetation/flowers/OBJ_flower_01.png", 568, 1130, .30, "south_residences"),
+    ("pond_bench", "street/OBJ_bench_forged_v2.png", 1910, 1040, .060, "waterside"),
+    ("south_well", "street/OBJ_well.png", 400, 1160, .53, "south_residences"),
+    ("south_hay", "materials/OBJ_hay.png", 514, 1118, .32, "south_residences"),
+    ("south_logs", "materials/OBJ_log.png", 544, 1090, .32, "south_residences"),
+    ("south_crates", "storage/OBJ_crate.png", 1170, 1112, .29, "south_residences"),
+    ("south_flowerbed_a", "vegetation/flowers/OBJ_flower_01.png", 452, 1200, .30, "south_residences"),
     ("south_flowerbed_b", "vegetation/flowers/OBJ_flower_02.png", 1240, 1144, .29, "south_residences"),
     ("orchard_tree", "vegetation/trees/OBJ_tree_milles_willow.png", 360, 780, .78, "west_crafts"),
     ("orchard_ring", "street/OBJ_tree_ring_milles_reference.png", 360, 780, .70, "west_crafts"),
@@ -93,7 +91,6 @@ STORY_PROPS = [
     ("east_guild_notice", "street/OBJ_noticeboard.png", 1710, 1120, .31, "east_residences"),
     ("east_guild_crate", "storage/OBJ_crate.png", 1680, 1220, .28, "east_residences"),
     ("east_guild_log", "materials/OBJ_log.png", 1730, 1190, .26, "east_residences"),
-    ("civic_rope_light_south", "street/OBJ_lamp_milles_rope.png", 936, 664, .70, "civic_square"),
     ("garden_ring", "street/OBJ_tree_ring_milles_reference.png", 1080, 536, .70, "garden"),
 ]
 
@@ -191,7 +188,7 @@ def path_margin(objects):
                     if distance_road(x, y) < 32:
                         continue
                     art = "vegetation/grass/OBJ_grass_milles_dense.png" if key % 3 == 0 else "vegetation/grass/OBJ_grass_edge_milles_reference.png"
-                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate", "waterside", "east_quiet", "waterside", "south_residences"][arm]
+                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate", "waterside", "south_residences"][arm]
                     add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .28 + key % 5 * .038, district, f"road_verge_{arm}")
             walked += length
 

@@ -80,17 +80,8 @@
     {
       "id": "square_bench_west",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 552,
-      "y": 574,
-      "scale": 0.06,
-      "district": "civic_square",
-      "group": "fountain_rest_area"
-    },
-    {
-      "id": "square_bench_east",
-      "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 952,
-      "y": 640,
+      "x": 576,
+      "y": 606,
       "scale": 0.06,
       "district": "civic_square",
       "group": "fountain_rest_area"
@@ -103,15 +94,6 @@
       "scale": 0.06,
       "district": "garden",
       "group": "garden"
-    },
-    {
-      "id": "waterside_bench",
-      "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 1902,
-      "y": 990,
-      "scale": 0.06,
-      "district": "waterside",
-      "group": "pond_rest_area"
     },
     {
       "id": "garden_tree_1",
@@ -270,17 +252,8 @@
     {
       "id": "square_lamp_west",
       "asset": "street/OBJ_lamp_03.png",
-      "x": 576,
-      "y": 580,
-      "scale": 0.42,
-      "district": "civic_square",
-      "group": "fountain_rest_area"
-    },
-    {
-      "id": "square_lamp_east",
-      "asset": "street/OBJ_lamp_01.png",
-      "x": 982,
-      "y": 628,
+      "x": 632,
+      "y": 464,
       "scale": 0.42,
       "district": "civic_square",
       "group": "fountain_rest_area"
@@ -297,8 +270,8 @@
     {
       "id": "village_noticeboard",
       "asset": "street/OBJ_noticeboard.png",
-      "x": 626,
-      "y": 686,
+      "x": 676,
+      "y": 716,
       "scale": 0.38,
       "district": "civic_square",
       "group": "fountain_rest_area"
@@ -351,8 +324,8 @@
     {
       "id": "square_shrub_west",
       "asset": "vegetation/bushes/OBJ_bush_01.png",
-      "x": 498,
-      "y": 620,
+      "x": 480,
+      "y": 638,
       "scale": 0.34,
       "district": "civic_square",
       "group": "fountain_rest_area"
@@ -360,8 +333,8 @@
     {
       "id": "square_shrub_east",
       "asset": "vegetation/bushes/OBJ_bush_03.png",
-      "x": 1024,
-      "y": 664,
+      "x": 1176,
+      "y": 584,
       "scale": 0.35,
       "district": "civic_square",
       "group": "fountain_rest_area"
@@ -459,8 +432,8 @@
     {
       "id": "craft_logs",
       "asset": "materials/OBJ_log.png",
-      "x": -46,
-      "y": 780,
+      "x": 124,
+      "y": 768,
       "scale": 0.37,
       "district": "west_crafts",
       "group": "shop_fronts"
@@ -675,8 +648,8 @@
     {
       "id": "pond_bench",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 2020,
-      "y": 1080,
+      "x": 1910,
+      "y": 1040,
       "scale": 0.06,
       "district": "waterside",
       "group": "pond_rest_area"
@@ -684,8 +657,8 @@
     {
       "id": "south_well",
       "asset": "street/OBJ_well.png",
-      "x": 336,
-      "y": 1210,
+      "x": 400,
+      "y": 1160,
       "scale": 0.53,
       "district": "south_residences",
       "group": "south_residences"
@@ -693,8 +666,8 @@
     {
       "id": "south_hay",
       "asset": "materials/OBJ_hay.png",
-      "x": 560,
-      "y": 1100,
+      "x": 514,
+      "y": 1118,
       "scale": 0.32,
       "district": "south_residences",
       "group": "south_residences"
@@ -702,8 +675,8 @@
     {
       "id": "south_logs",
       "asset": "materials/OBJ_log.png",
-      "x": 560,
-      "y": 1040,
+      "x": 544,
+      "y": 1090,
       "scale": 0.32,
       "district": "south_residences",
       "group": "south_residences"
@@ -711,8 +684,8 @@
     {
       "id": "south_crates",
       "asset": "storage/OBJ_crate.png",
-      "x": 984,
-      "y": 1050,
+      "x": 1170,
+      "y": 1112,
       "scale": 0.29,
       "district": "south_residences",
       "group": "south_residences"
@@ -720,8 +693,8 @@
     {
       "id": "south_flowerbed_a",
       "asset": "vegetation/flowers/OBJ_flower_01.png",
-      "x": 568,
-      "y": 1130,
+      "x": 452,
+      "y": 1200,
       "scale": 0.3,
       "district": "south_residences",
       "group": "south_residences"
@@ -851,15 +824,6 @@
       "scale": 0.26,
       "district": "east_residences",
       "group": "east_residences"
-    },
-    {
-      "id": "civic_rope_light_south",
-      "asset": "street/OBJ_lamp_milles_rope.png",
-      "x": 936,
-      "y": 664,
-      "scale": 0.7,
-      "district": "civic_square",
-      "group": "fountain_rest_area"
     },
     {
       "id": "garden_ring",
@@ -2104,11 +2068,29 @@
       "group": "road_verge_3"
     },
     {
+      "id": "shoulder_3_1000_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1719,
+      "y": 727,
+      "scale": 0.356,
+      "district": "waterside",
+      "group": "road_verge_3"
+    },
+    {
       "id": "shoulder_3_1000_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 1742,
       "y": 819,
       "scale": 0.356,
+      "district": "waterside",
+      "group": "road_verge_3"
+    },
+    {
+      "id": "shoulder_3_1060_l",
+      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "x": 1776,
+      "y": 706,
+      "scale": 0.394,
       "district": "waterside",
       "group": "road_verge_3"
     },
@@ -2347,121 +2329,40 @@
       "group": "road_verge_5"
     },
     {
-      "id": "shoulder_6_0_l",
+      "id": "shoulder_6_63_l",
       "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 1656,
-      "y": 751,
-      "scale": 0.432,
-      "district": "east_quiet",
-      "group": "road_verge_6"
-    },
-    {
-      "id": "shoulder_6_0_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1732,
-      "y": 814,
-      "scale": 0.432,
-      "district": "east_quiet",
-      "group": "road_verge_6"
-    },
-    {
-      "id": "shoulder_6_58_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1690,
-      "y": 703,
-      "scale": 0.432,
-      "district": "east_quiet",
-      "group": "road_verge_6"
-    },
-    {
-      "id": "shoulder_6_116_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1719,
-      "y": 674,
+      "x": 870,
+      "y": 1296,
       "scale": 0.28,
-      "district": "east_quiet",
-      "group": "road_verge_6"
-    },
-    {
-      "id": "shoulder_6_116_r",
-      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
-      "x": 1804,
-      "y": 706,
-      "scale": 0.28,
-      "district": "east_quiet",
-      "group": "road_verge_6"
-    },
-    {
-      "id": "shoulder_8_63_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 872,
-      "y": 1283,
-      "scale": 0.394,
       "district": "south_residences",
-      "group": "road_verge_8"
+      "group": "road_verge_6"
     },
     {
-      "id": "shoulder_8_63_r",
+      "id": "shoulder_6_63_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
       "x": 854,
-      "y": 1389,
-      "scale": 0.394,
+      "y": 1391,
+      "scale": 0.28,
       "district": "south_residences",
-      "group": "road_verge_8"
+      "group": "road_verge_6"
     },
     {
-      "id": "shoulder_8_126_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
+      "id": "shoulder_6_126_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
       "x": 922,
-      "y": 1297,
-      "scale": 0.432,
-      "district": "south_residences",
-      "group": "road_verge_8"
-    },
-    {
-      "id": "shoulder_8_126_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 928,
-      "y": 1400,
-      "scale": 0.432,
-      "district": "south_residences",
-      "group": "road_verge_8"
-    },
-    {
-      "id": "shoulder_8_187_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 983,
-      "y": 1287,
-      "scale": 0.28,
-      "district": "south_residences",
-      "group": "road_verge_8"
-    },
-    {
-      "id": "shoulder_8_187_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 989,
-      "y": 1388,
-      "scale": 0.28,
-      "district": "south_residences",
-      "group": "road_verge_8"
-    },
-    {
-      "id": "shoulder_8_249_l",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1045,
-      "y": 1292,
+      "y": 1295,
       "scale": 0.318,
       "district": "south_residences",
-      "group": "road_verge_8"
+      "group": "road_verge_6"
     },
     {
-      "id": "shoulder_8_249_r",
+      "id": "shoulder_6_126_r",
       "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1051,
-      "y": 1390,
+      "x": 927,
+      "y": 1387,
       "scale": 0.318,
       "district": "south_residences",
-      "group": "road_verge_8"
+      "group": "road_verge_6"
     }
   ]
 }
