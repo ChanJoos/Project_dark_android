@@ -72,34 +72,34 @@
     },
     {
       "id": "square_bench_west",
-      "asset": "video_reference/objects/bench_video_cutout_01.png",
-      "x": 624,
-      "y": 704,
-      "scale": 0.48,
+      "asset": "street/OBJ_bench_forged_v2.png",
+      "x": 552,
+      "y": 574,
+      "scale": 0.06,
       "district": "civic_square"
     },
     {
       "id": "square_bench_east",
-      "asset": "video_reference/objects/bench_video_cutout_03.png",
-      "x": 912,
-      "y": 448,
-      "scale": 0.48,
+      "asset": "street/OBJ_bench_forged_v2.png",
+      "x": 952,
+      "y": 640,
+      "scale": 0.06,
       "district": "civic_square"
     },
     {
       "id": "garden_bench",
-      "asset": "video_reference/objects/bench_video_cutout_04.png",
-      "x": 1280,
-      "y": 944,
-      "scale": 0.5,
+      "asset": "street/OBJ_bench_forged_v2.png",
+      "x": 1308,
+      "y": 702,
+      "scale": 0.06,
       "district": "garden"
     },
     {
       "id": "waterside_bench",
-      "asset": "video_reference/objects/bench_video_cutout_02.png",
-      "x": 1840,
-      "y": 1264,
-      "scale": 0.5,
+      "asset": "street/OBJ_bench_forged_v2.png",
+      "x": 1902,
+      "y": 990,
+      "scale": 0.06,
       "district": "waterside"
     },
     {
@@ -242,16 +242,16 @@
     {
       "id": "square_lamp_west",
       "asset": "street/OBJ_lamp_03.png",
-      "x": 600,
-      "y": 472,
+      "x": 576,
+      "y": 580,
       "scale": 0.42,
       "district": "civic_square"
     },
     {
       "id": "square_lamp_east",
       "asset": "street/OBJ_lamp_01.png",
-      "x": 940,
-      "y": 436,
+      "x": 982,
+      "y": 628,
       "scale": 0.42,
       "district": "civic_square"
     },
@@ -266,8 +266,8 @@
     {
       "id": "village_noticeboard",
       "asset": "street/OBJ_noticeboard.png",
-      "x": 608,
-      "y": 744,
+      "x": 626,
+      "y": 686,
       "scale": 0.38,
       "district": "civic_square"
     },
@@ -290,40 +290,40 @@
     {
       "id": "market_cart",
       "asset": "market/OBJ_cart.png",
-      "x": 1240,
-      "y": 480,
+      "x": 1150,
+      "y": 476,
       "scale": 0.3,
       "district": "east_market"
     },
     {
       "id": "garden_flowerbed_1",
       "asset": "vegetation/flowers/OBJ_flower_01.png",
-      "x": 1032,
-      "y": 800,
+      "x": 1168,
+      "y": 604,
       "scale": 0.36,
       "district": "garden"
     },
     {
       "id": "garden_flowerbed_2",
       "asset": "vegetation/flowers/OBJ_flower_03.png",
-      "x": 1320,
-      "y": 1040,
+      "x": 1336,
+      "y": 636,
       "scale": 0.34,
       "district": "garden"
     },
     {
       "id": "square_shrub_west",
       "asset": "vegetation/bushes/OBJ_bush_01.png",
-      "x": 648,
-      "y": 694,
+      "x": 498,
+      "y": 620,
       "scale": 0.34,
       "district": "civic_square"
     },
     {
       "id": "square_shrub_east",
       "asset": "vegetation/bushes/OBJ_bush_03.png",
-      "x": 856,
-      "y": 416,
+      "x": 1024,
+      "y": 664,
       "scale": 0.35,
       "district": "civic_square"
     },
@@ -346,8 +346,8 @@
     {
       "id": "waterside_bush",
       "asset": "vegetation/bushes/OBJ_bush_02.png",
-      "x": 1904,
-      "y": 1136,
+      "x": 1886,
+      "y": 1056,
       "scale": 0.45,
       "district": "waterside"
     },

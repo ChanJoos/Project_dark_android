@@ -25,6 +25,13 @@ def main() -> None:
     assert len(ids) == len(set(ids)), "duplicate map object ID"
     assert len(items) >= 200, "village districts lost their authored placements"
     assert len({item["district"] for item in items}) >= 8
+    assert all(item.get("group") for item in items), "each object needs a spatial reason"
+    benches = [item for item in items if "bench" in item["id"]]
+    assert benches and all(item["asset"] == "street/OBJ_bench_forged_v2.png" for item in benches), "broken video bench cutouts returned"
+    assert {item["id"] for item in benches if item["group"] == "fountain_rest_area"} == {
+        "square_bench_west", "square_bench_east"
+    }, "the plaza should have two composed, tree-side resting places"
+    assert len({item["group"] for item in items}) >= 12, "district objects lost their relationships"
     for item in items:
         assert item["scale"] > 0, item
         path = PRODUCTION / item["asset"]
@@ -35,7 +42,7 @@ def main() -> None:
         "video_reference/terrain/grass_tile_01.png",
         "video_reference/terrain/dirt_path_tile_01.png",
         "video_reference/terrain/dirt_path_fill_texture.png",
-        "video_reference/objects/bench_video_cutout_01.png",
+        "street/OBJ_bench_forged_v2.png",
         "street/OBJ_fountain_milles_reference.png",
         "structures/fences/OBJ_palisade_milles_reference.png",
         "structures/fences/OBJ_palisade_diagonal_down.png",

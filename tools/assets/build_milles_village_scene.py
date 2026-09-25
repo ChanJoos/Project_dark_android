@@ -22,6 +22,8 @@ PATHS = [
     [(768, 592), (832, 560), (896, 528), (960, 480), (1024, 432), (1088, 400), (1152, 400), (1216, 416), (1280, 432), (1344, 448), (1408, 448), (1472, 448), (1536, 448)],
     [(768, 592), (832, 640), (896, 672), (960, 704), (1056, 720), (1184, 736), (1312, 752), (1440, 768), (1568, 784), (1696, 784), (1824, 752), (1920, 704), (1984, 656)],
     [(768, 592), (736, 656), (720, 720), (704, 784), (704, 848), (720, 912), (736, 976), (752, 1040), (768, 1104), (784, 1168), (800, 1232), (800, 1328), (800, 1456), (800, 1568)],
+    # The waterside is a destination: the inn road reaches the pond-side rest area.
+    [(1824, 752), (1860, 824), (1900, 904), (1960, 992), (1980, 1060)],
 ]
 
 BUILDINGS = [
@@ -47,27 +49,27 @@ STORY_PROPS = [
     ("craft_sack", "storage/OBJ_sack.png", 158, 484, .30, "west_crafts"),
     ("craft_barrels", "storage/OBJ_barrel.png", 114, 462, .27, "west_crafts"),
     ("craft_rock", "rocks/OBJ_rock_02.png", -120, 626, .41, "west_crafts"),
-    ("craft_cart", "market/OBJ_cart.png", 512, 356, .29, "west_crafts"),
+    ("craft_cart", "market/OBJ_cart.png", 452, 388, .29, "west_crafts"),
     ("craft_notice", "street/OBJ_signpost.png", 168, 806, .45, "west_crafts"),
-    ("market_stall", "market/OBJ_stall_01.png", 1240, 620, .54, "east_market"),
-    ("market_tent", "market/OBJ_tent_01.png", 1480, 630, .55, "east_market"),
-    ("market_crates", "storage/OBJ_crate.png", 1310, 660, .29, "east_market"),
-    ("market_sacks", "storage/OBJ_sack.png", 1210, 668, .29, "east_market"),
-    ("market_barrel", "storage/OBJ_barrel.png", 1410, 672, .25, "east_market"),
-    ("market_hay", "materials/OBJ_hay.png", 1540, 675, .28, "east_market"),
+    ("market_stall", "market/OBJ_stall_01.png", 1240, 496, .54, "east_market"),
+    ("market_tent", "market/OBJ_tent_01.png", 1460, 516, .55, "east_market"),
+    ("market_crates", "storage/OBJ_crate.png", 1300, 520, .29, "east_market"),
+    ("market_sacks", "storage/OBJ_sack.png", 1200, 526, .29, "east_market"),
+    ("market_barrel", "storage/OBJ_barrel.png", 1400, 538, .25, "east_market"),
+    ("market_hay", "materials/OBJ_hay.png", 1500, 548, .28, "east_market"),
     ("church_statue", "street/OBJ_statue.png", 1694, 528, .47, "east_quiet"),
     ("church_arch", "structures/arches_gates/OBJ_arch.png", 1780, 472, .40, "east_quiet"),
-    ("church_bench", "video_reference/objects/bench_video_cutout_02.png", 1760, 584, .42, "east_quiet"),
+    ("church_bench", "street/OBJ_bench_forged_v2.png", 1780, 596, .060, "east_quiet"),
     ("church_flower_a", "vegetation/flowers/OBJ_flower_01.png", 1680, 570, .28, "east_quiet"),
     ("church_flower_b", "vegetation/flowers/OBJ_flower_03.png", 1848, 430, .30, "east_quiet"),
     ("inn_cart", "market/OBJ_cart.png", 2160, 704, .25, "waterside"),
     ("inn_crates", "storage/OBJ_crate.png", 2130, 660, .25, "waterside"),
     ("inn_sacks", "storage/OBJ_sack.png", 2180, 626, .30, "waterside"),
-    ("inn_bench", "video_reference/objects/bench_video_cutout_03.png", 2130, 830, .43, "waterside"),
+    ("inn_bench", "street/OBJ_bench_forged_v2.png", 2080, 778, .060, "waterside"),
     ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2084, 800, .76, "waterside"),
     ("pond_rocks", "rocks/OBJ_rock_01.png", 1700, 1090, .31, "waterside"),
     ("pond_reeds", "vegetation/grass/OBJ_grass_milles_dense.png", 1760, 1090, .70, "waterside"),
-    ("pond_bench", "video_reference/objects/bench_video_cutout_04.png", 2050, 1120, .45, "waterside"),
+    ("pond_bench", "street/OBJ_bench_forged_v2.png", 2020, 1080, .060, "waterside"),
     ("south_well", "street/OBJ_well.png", 336, 1210, .53, "south_residences"),
     ("south_hay", "materials/OBJ_hay.png", 560, 1100, .32, "south_residences"),
     ("south_logs", "materials/OBJ_log.png", 560, 1040, .32, "south_residences"),
@@ -82,26 +84,22 @@ STORY_PROPS = [
     ("south_garden_tree", "vegetation/trees/OBJ_tree_milles_willow.png", 920, 1230, .78, "south_residences"),
     ("south_garden_ring", "street/OBJ_tree_ring_milles_reference.png", 920, 1230, .70, "south_residences"),
     ("south_garden_flower", "vegetation/flowers/OBJ_flower_02.png", 972, 1250, .26, "south_residences"),
-    ("south_garden_bench", "video_reference/objects/bench_video_cutout_03.png", 1082, 1320, .42, "south_residences"),
+    ("south_garden_bench", "street/OBJ_bench_forged_v2.png", 1060, 1308, .060, "south_residences"),
     ("south_garden_lantern", "street/OBJ_lamp_milles_rope.png", 1032, 1178, .67, "south_residences"),
     ("east_guild_notice", "street/OBJ_noticeboard.png", 1710, 1120, .31, "east_residences"),
     ("east_guild_crate", "storage/OBJ_crate.png", 1680, 1220, .28, "east_residences"),
     ("east_guild_log", "materials/OBJ_log.png", 1730, 1190, .26, "east_residences"),
-    ("civic_bench_north", "video_reference/objects/bench_video_cutout_02.png", 688, 424, .46, "civic_square"),
-    ("civic_bench_south", "video_reference/objects/bench_video_cutout_01.png", 882, 824, .42, "civic_square"),
-    ("civic_rope_light_west", "street/OBJ_lamp_milles_rope.png", 580, 478, .72, "civic_square"),
-    ("civic_rope_light_east", "street/OBJ_lamp_milles_rope.png", 922, 458, .75, "civic_square"),
-    ("civic_rope_light_south", "street/OBJ_lamp_milles_rope.png", 985, 620, .70, "civic_square"),
+    ("civic_rope_light_south", "street/OBJ_lamp_milles_rope.png", 936, 664, .70, "civic_square"),
     ("garden_ring", "street/OBJ_tree_ring_milles_reference.png", 1080, 536, .70, "garden"),
 ]
 
 # Clumps form readable groves, not a uniform noise carpet. Extra trees frame roads
 # without covering the fountain, doors or active route.
 GROVES = [
-    ("north_wood", [(120, 190), (232, 182), (330, 214), (410, 154), (526, 172), (1040, 180)]),
+    ("north_wood", [(120, 190), (232, 182), (330, 214), (410, 154), (526, 172)]),
     ("west_wood", [(-270, 340), (-132, 278), (-310, 528), (-108, 1020), (98, 1040), (248, 1160)]),
-    ("civic_park", [(530, 340), (620, 352), (870, 344), (970, 298), (500, 646), (594, 794), (500, 368), (585, 690), (1010, 630)]),
-    ("east_garden", [(1176, 260), (1304, 230), (1730, 324), (1250, 600), (1390, 606), (1650, 620), (1245, 640)]),
+    ("civic_park", [(506, 626), (568, 672), (944, 310), (1000, 326), (1030, 684)]),
+    ("east_garden", [(1304, 230), (1730, 324), (1250, 600), (1390, 606), (1650, 620)]),
     ("south_grove", [(246, 1350), (462, 1360), (1000, 1300), (1160, 1430), (1350, 1320), (1550, 1470)]),
     ("waterside", [(1730, 960), (2080, 1020), (2150, 1320), (1880, 1430), (2270, 1220)]),
 ]
@@ -125,8 +123,10 @@ def within_building(x, y, margin=0):
     return any(abs(x - bx) < 134 + margin and by - 188 - margin < y < by + 48 + margin for bx, by in bases)
 
 
-def add(objects, id, asset, x, y, scale, district):
-    objects.append(dict(id=id, asset=asset, x=round(x), y=round(y), scale=round(scale, 2), district=district))
+def add(objects, id, asset, x, y, scale, district, group=None):
+    entry=dict(id=id, asset=asset, x=round(x), y=round(y), scale=round(scale, 3), district=district)
+    entry['group'] = group or district
+    objects.append(entry)
 
 
 def gardens(objects):
@@ -139,6 +139,7 @@ def gardens(objects):
             copy["id"] = piece["id"].replace("garden_fence_", f"{name}_fence_")
             copy["x"], copy["y"] = piece["x"] + dx, piece["y"] + dy
             copy["district"] = district
+            copy["group"] = f"{name}_enclosure"
             copy.pop("source", None)
             if piece["id"].endswith(("nw_1", "se_2")):
                 copy["asset"] = "structures/fences/OBJ_palisade_milles_rail.png"
@@ -158,7 +159,7 @@ final class MillesDistrictFenceFootprints {
 
 
 def path_margin(objects):
-    """Repeat source-inspired grass along *both* shoulders, with deterministic gaps."""
+    """Place grass in uneven verge clusters; never make a uniform double border."""
     for arm, path in enumerate(PATHS):
         walked = 0
         last = -100
@@ -173,6 +174,8 @@ def path_margin(objects):
                 t = step / steps
                 px, py = a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t
                 nx, ny = -(b[1] - a[1]) / length, (b[0] - a[0]) / length
+                if (int(d / 155) + arm) % 3 == 1:
+                    continue
                 for side in (-1, 1):
                     key = int(d / 10) + arm * 29 + (side + 1) * 5
                     shoulder = 43 + key % 15
@@ -184,30 +187,51 @@ def path_margin(objects):
                     if distance_road(x, y) < 32:
                         continue
                     art = "vegetation/grass/OBJ_grass_milles_dense.png" if key % 3 == 0 else "vegetation/grass/OBJ_grass_edge_milles_reference.png"
-                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate"][arm]
-                    add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .28 + key % 5 * .038, district)
+                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate", "waterside"][arm]
+                    add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .28 + key % 5 * .038, district, f"road_verge_{arm}")
             walked += length
 
 
 def main():
     data = json.loads(BASE.read_text(encoding="utf-8"))
     objects = data["objects"]
+    for item in objects:
+        name = item["id"]
+        if name.startswith(("garden_fence_", "garden_tree_")):
+            item["group"] = "enclosed_garden"
+        elif name.startswith(("square_", "civic_", "village_noticeboard")):
+            item["group"] = "fountain_rest_area"
+        elif name.startswith(("market_", "potion_shop", "weapon_shop", "general_shop")):
+            item["group"] = "shop_fronts"
+        elif name.startswith("waterside_"):
+            item["group"] = "pond_rest_area"
+        else:
+            item["group"] = item["district"]
     for entry in BUILDINGS:
         add(objects, *entry)
     for entry in STORY_PROPS:
         add(objects, *entry)
+    group_prefixes = {"civic_": "fountain_rest_area", "church_": "church_courtyard",
+                      "inn_": "inn_courtyard", "orchard_": "orchard_enclosure",
+                      "south_garden_": "south_garden_enclosure", "pond_": "pond_rest_area",
+                      "craft_": "shop_fronts", "market_": "shop_fronts"}
+    for item in objects:
+        for prefix, group in group_prefixes.items():
+            if item["id"].startswith(prefix):
+                item["group"] = group
+                break
     gardens(objects)
     for zone, locations in GROVES:
         for i, (x, y) in enumerate(locations):
             if within_building(x, y, 8) or distance_road(x, y) < 66:
                 continue
             tree = TREE_ART[(i + len(zone)) % len(TREE_ART)]
-            add(objects, f"{zone}_tree_{i}", tree, x, y, .45 if "willow" not in tree else .83, zone)
+            add(objects, f"{zone}_tree_{i}", tree, x, y, .45 if "willow" not in tree else .83, zone, f"{zone}_grove")
             for k, (dx, dy) in enumerate(((-45, 28), (54, 23))):
                 bx, by = x + dx, y + dy
                 if within_building(bx, by) or distance_road(bx, by) < 43:
                     continue
-                add(objects, f"{zone}_understory_{i}_{k}", BUSH_ART[(i + k) % 3], bx, by, .27 + (i % 3) * .03, zone)
+                add(objects, f"{zone}_understory_{i}_{k}", BUSH_ART[(i + k) % 3], bx, by, .27 + (i % 3) * .03, zone, f"{zone}_grove")
     path_margin(objects)
     ids = [o["id"] for o in objects]
     assert len(ids) == len(set(ids)), "duplicate village placement"
