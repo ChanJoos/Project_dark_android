@@ -18,7 +18,7 @@ DISTRICT_FENCES = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesD
 
 def main() -> None:
     layout = json.loads(LAYOUT.read_text(encoding="utf-8"))
-    generated = subprocess.run(["python3", str(ROOT / "tools/assets/build_milles_village_scene.py")], capture_output=True, text=True, check=True)
+    generated = subprocess.run(["python3", str(ROOT / "tools/assets/build_milles_village_scene.py")], text=True, check=True)
     assert generated.returncode == 0
     assert layout["ground"]["tile_size"] == [64, 32]
     assert layout["ground"]["path_width_tiles"] <= 1
