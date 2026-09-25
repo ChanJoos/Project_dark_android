@@ -259,16 +259,17 @@ def path_margin(objects):
 def main():
     data = json.loads(BASE.read_text(encoding="utf-8"))
     objects = data["objects"]
-    # Service canon: reagent shop, equipment shop, bank and church only.
+    # Service canon: reagent shop, equipment shop, bank, church and inn.
     for item in objects:
-        if item["id"] == "general_shop": item["id"] = "bank"
-        if item["id"] == "inn": item["id"] = "waterside_house"
-        if item["id"] in ("potion_shop", "weapon_shop", "bank", "church"):
+        if item["id"] in ("potion_shop", "weapon_shop", "bank", "church", "inn"):
             item["enterable"] = True
-            item["function"] = {"potion_shop":"reagent_shop","weapon_shop":"equipment_shop","bank":"bank","church":"church"}[item["id"]]
-        elif item["id"] == "waterside_house":
-            item["enterable"] = False
-            item["function"] = "residence"
+            item["function"] = {
+                "potion_shop": "reagent_shop",
+                "weapon_shop": "equipment_shop",
+                "bank": "bank",
+                "church": "church",
+                "inn": "inn",
+            }[item["id"]]
     for item in objects:
         name = item["id"]
         if name.startswith(("garden_fence_", "garden_tree_")):
@@ -286,7 +287,7 @@ def main():
     for entry in BUILDINGS:
         add(objects, *entry)
     for item in objects:
-        if item["id"] in ("west_house","southwest_house","south_house","east_house","northeast_house"):
+        if item["id"].startswith("house_"):
             item["enterable"] = False
             item["function"] = "residence"
     for entry in STORY_PROPS:
