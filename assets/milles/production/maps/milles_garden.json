@@ -17,19 +17,21 @@
       "asset": "buildings/BLD_002_potion_shop.png",
       "x": 320,
       "y": 420,
-      "scale": 1.0,
+      "scale": 1,
       "district": "west_crafts",
       "group": "shop_fronts",
       "anchor": "road_0",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": true,
+      "function": "reagent_shop"
     },
     {
       "id": "potion_shop_portal",
       "asset": "assets/world/portal/portal_reagent_shop.webp",
       "x": 320,
       "y": 459,
-      "scale": 1.0,
+      "scale": 1,
       "draw": "tile",
       "district": "west_crafts",
       "group": "shop_fronts",
@@ -42,24 +44,28 @@
       "asset": "buildings/BLD_003_weapon_shop.png",
       "x": 760,
       "y": 300,
-      "scale": 1.0,
+      "scale": 1,
       "district": "north_services",
       "group": "shop_fronts",
       "anchor": "road_1",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": true,
+      "function": "equipment_shop"
     },
     {
-      "id": "general_shop",
+      "id": "bank",
       "asset": "buildings/BLD_005_general_shop.png",
       "x": 1120,
       "y": 360,
-      "scale": 1.0,
+      "scale": 1,
       "district": "east_market",
-      "group": "shop_fronts",
+      "group": "bank_frontage",
       "anchor": "road_2",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": true,
+      "function": "bank"
     },
     {
       "id": "church",
@@ -71,19 +77,23 @@
       "group": "east_quiet",
       "anchor": "road_2",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": true,
+      "function": "church"
     },
     {
-      "id": "inn",
+      "id": "waterside_house",
       "asset": "buildings/BLD_006_inn.png",
       "x": 1980,
       "y": 650,
-      "scale": 1.0,
+      "scale": 1,
       "district": "waterside",
-      "group": "waterside",
+      "group": "residential_frontage",
       "anchor": "road_3",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": false,
+      "function": "residence"
     },
     {
       "id": "civic_fountain",
@@ -395,8 +405,8 @@
       "scale": 0.3,
       "district": "east_market",
       "group": "shop_fronts",
-      "anchor": "general_shop",
-      "role": "shop_frontage",
+      "anchor": "bank",
+      "role": "bank_frontage",
       "basis": "observed_pattern"
     },
     {
@@ -496,64 +506,74 @@
       "basis": "adapted_village_plan"
     },
     {
-      "id": "west_armorer",
+      "id": "west_house",
       "asset": "buildings/BLD_004_armor_shop.png",
       "x": 60,
       "y": 700,
       "scale": 0.86,
       "district": "west_crafts",
-      "group": "west_crafts",
+      "group": "residential_frontage",
       "anchor": "road_0",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": false,
+      "function": "residence"
     },
     {
-      "id": "south_flower_shop",
+      "id": "southwest_house",
       "asset": "buildings/BLD_007_flower_shop.png",
       "x": 400,
       "y": 1040,
       "scale": 0.92,
       "district": "south_residences",
-      "group": "south_residences",
+      "group": "residential_frontage",
       "anchor": "road_4",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": false,
+      "function": "residence"
     },
     {
-      "id": "south_library",
+      "id": "south_house",
       "asset": "buildings/BLD_008_library.png",
       "x": 1120,
       "y": 1050,
       "scale": 0.92,
       "district": "south_residences",
-      "group": "south_residences",
+      "group": "residential_frontage",
       "anchor": "road_6",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": false,
+      "function": "residence"
     },
     {
-      "id": "east_guild",
+      "id": "east_house",
       "asset": "buildings/BLD_009_guild.png",
       "x": 1530,
       "y": 1170,
       "scale": 0.92,
       "district": "east_residences",
-      "group": "east_residences",
+      "group": "residential_frontage",
       "anchor": "road_3",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": false,
+      "function": "residence"
     },
     {
-      "id": "north_healer",
+      "id": "northeast_house",
       "asset": "buildings/BLD_010_healer.png",
       "x": 1880,
       "y": 320,
       "scale": 0.89,
       "district": "east_quiet",
-      "group": "east_quiet",
+      "group": "residential_frontage",
       "anchor": "road_3",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "enterable": false,
+      "function": "residence"
     },
     {
       "id": "craft_hay",
@@ -563,8 +583,8 @@
       "scale": 0.42,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_armorer",
-      "role": "workshop_storage",
+      "anchor": "west_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -575,8 +595,8 @@
       "scale": 0.37,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_armorer",
-      "role": "workshop_storage",
+      "anchor": "west_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -587,8 +607,8 @@
       "scale": 0.3,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_armorer",
-      "role": "workshop_storage",
+      "anchor": "west_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -599,8 +619,8 @@
       "scale": 0.27,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_armorer",
-      "role": "workshop_storage",
+      "anchor": "west_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -611,8 +631,8 @@
       "scale": 0.41,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_armorer",
-      "role": "workshop_storage",
+      "anchor": "west_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -635,8 +655,8 @@
       "scale": 0.45,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_armorer",
-      "role": "workshop_storage",
+      "anchor": "west_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -647,8 +667,8 @@
       "scale": 0.54,
       "district": "east_market",
       "group": "shop_fronts",
-      "anchor": "general_shop",
-      "role": "shop_frontage",
+      "anchor": "bank",
+      "role": "bank_frontage",
       "basis": "observed_pattern"
     },
     {
@@ -779,8 +799,8 @@
       "scale": 0.25,
       "district": "waterside",
       "group": "inn_courtyard",
-      "anchor": "inn",
-      "role": "inn_entrance_use",
+      "anchor": "waterside_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -791,8 +811,8 @@
       "scale": 0.25,
       "district": "waterside",
       "group": "inn_courtyard",
-      "anchor": "inn",
-      "role": "inn_entrance_use",
+      "anchor": "waterside_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -803,8 +823,8 @@
       "scale": 0.3,
       "district": "waterside",
       "group": "inn_courtyard",
-      "anchor": "inn",
-      "role": "inn_entrance_use",
+      "anchor": "waterside_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -815,8 +835,8 @@
       "scale": 0.06,
       "district": "waterside",
       "group": "inn_courtyard",
-      "anchor": "inn",
-      "role": "inn_entrance_use",
+      "anchor": "waterside_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -827,8 +847,8 @@
       "scale": 0.76,
       "district": "waterside",
       "group": "inn_courtyard",
-      "anchor": "inn",
-      "role": "inn_entrance_use",
+      "anchor": "waterside_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -875,8 +895,8 @@
       "scale": 0.53,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_flower_shop",
-      "role": "household_service",
+      "anchor": "southwest_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -887,8 +907,8 @@
       "scale": 0.32,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_flower_shop",
-      "role": "household_service",
+      "anchor": "southwest_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -899,8 +919,8 @@
       "scale": 0.32,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_flower_shop",
-      "role": "household_service",
+      "anchor": "southwest_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -911,8 +931,8 @@
       "scale": 0.29,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_library",
-      "role": "household_service",
+      "anchor": "south_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -923,8 +943,8 @@
       "scale": 0.3,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_flower_shop",
-      "role": "household_service",
+      "anchor": "southwest_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -935,8 +955,8 @@
       "scale": 0.29,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_library",
-      "role": "household_service",
+      "anchor": "south_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -1067,8 +1087,8 @@
       "scale": 0.31,
       "district": "east_residences",
       "group": "east_residences",
-      "anchor": "east_guild",
-      "role": "guild_frontage_use",
+      "anchor": "east_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -1079,8 +1099,8 @@
       "scale": 0.28,
       "district": "east_residences",
       "group": "east_residences",
-      "anchor": "east_guild",
-      "role": "guild_frontage_use",
+      "anchor": "east_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -1091,8 +1111,8 @@
       "scale": 0.26,
       "district": "east_residences",
       "group": "east_residences",
-      "anchor": "east_guild",
-      "role": "guild_frontage_use",
+      "anchor": "east_house",
+      "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
     {
