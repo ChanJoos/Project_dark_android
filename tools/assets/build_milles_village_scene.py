@@ -161,15 +161,15 @@ def relate(objects):
         elif name.startswith(('church_',)):
             anchor, role = 'church', 'courtyard_use'
         elif name.startswith('inn_'):
-            anchor, role = 'waterside_house', 'residential_frontage'
+            anchor, role = 'inn', 'inn_frontage'
         elif name.startswith('pond_') or name in ('waterside_bush', 'waterside_tree'):
             anchor, role = 'waterside_pond', 'shoreline_use'
         elif name.startswith('east_guild_'):
-            anchor, role = 'east_house', 'residential_frontage'
+            anchor, role = 'house_east', 'residential_frontage'
         elif name.startswith(('south_',)) and name not in buildings:
-            anchor, role = ('road_4' if name in ('south_gate_lamp', 'south_garden_tree') else 'southwest_house' if o['x'] < 800 else 'south_house'), 'residential_frontage'
+            anchor, role = ('road_4' if name in ('south_gate_lamp', 'south_garden_tree') else 'house_southwest' if o['x'] < 800 else 'house_south'), 'residential_frontage'
         elif name.startswith('craft_'):
-            anchor, role = ('potion_shop' if name in ('craft_cart',) else 'west_house'), 'residential_frontage'
+            anchor, role = ('potion_shop' if name in ('craft_cart',) else 'house_west'), 'residential_frontage'
         elif name.startswith('market_'):
             anchor, role = ('potion_shop' if name in ('market_barrel_1', 'market_crate_1') else 'bank' if name in ('market_cart', 'market_stall') else 'market_stall'), 'shop_frontage'
         elif name in ('square_tree_west', 'square_shrub_west'):
@@ -279,6 +279,8 @@ def main():
             item["group"] = "shop_fronts"
         elif name.startswith("waterside_"):
             item["group"] = "pond_rest_area"
+        elif name == "inn":
+            item["group"] = "inn_frontage"
         else:
             item["group"] = item["district"]
     for entry in BUILDINGS:
@@ -290,7 +292,7 @@ def main():
     for entry in STORY_PROPS:
         add(objects, *entry)
     group_prefixes = {"civic_": "fountain_rest_area", "church_": "church_courtyard",
-                      "inn_": "residential_frontage", "orchard_": "orchard_enclosure",
+                      "inn_": "inn_frontage", "orchard_": "orchard_enclosure",
                       "south_garden_": "south_garden_enclosure", "pond_": "pond_rest_area",
                       "craft_": "shop_fronts", "market_": "shop_fronts"}
     for item in objects:
