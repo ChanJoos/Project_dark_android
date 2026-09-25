@@ -648,8 +648,8 @@
     {
       "id": "pond_bench",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 1910,
-      "y": 1040,
+      "x": 1900,
+      "y": 976,
       "scale": 0.06,
       "district": "waterside",
       "group": "pond_rest_area"

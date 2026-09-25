@@ -71,7 +71,7 @@ STORY_PROPS = [
     ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2084, 810, .76, "waterside"),
     ("pond_rocks", "rocks/OBJ_rock_01.png", 1700, 1090, .31, "waterside"),
     ("pond_reeds", "vegetation/grass/OBJ_grass_milles_dense.png", 1760, 1090, .70, "waterside"),
-    ("pond_bench", "street/OBJ_bench_forged_v2.png", 1910, 1040, .060, "waterside"),
+    ("pond_bench", "street/OBJ_bench_forged_v2.png", 1900, 976, .060, "waterside"),
     ("south_well", "street/OBJ_well.png", 400, 1160, .53, "south_residences"),
     ("south_hay", "materials/OBJ_hay.png", 514, 1118, .32, "south_residences"),
     ("south_logs", "materials/OBJ_log.png", 544, 1090, .32, "south_residences"),
