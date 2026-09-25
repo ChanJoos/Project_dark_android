@@ -29,11 +29,13 @@ PATHS = [
 ]
 
 BUILDINGS = [
-    ("west_armorer", "buildings/BLD_004_armor_shop.png", 60, 700, .86, "west_crafts"),
-    ("south_flower_shop", "buildings/BLD_007_flower_shop.png", 400, 1040, .92, "south_residences"),
-    ("south_library", "buildings/BLD_008_library.png", 1120, 1050, .92, "south_residences"),
-    ("east_guild", "buildings/BLD_009_guild.png", 1530, 1170, .92, "east_residences"),
-    ("north_healer", "buildings/BLD_010_healer.png", 1880, 320, .89, "east_quiet"),
+    # Secondary building art is retained only as temporary house silhouettes.
+    # These are explicitly non-enterable residences; only reagent/equipment/bank/church are services.
+    ("west_house", "buildings/BLD_004_armor_shop.png", 60, 700, .86, "west_crafts"),
+    ("southwest_house", "buildings/BLD_007_flower_shop.png", 400, 1040, .92, "south_residences"),
+    ("south_house", "buildings/BLD_008_library.png", 1120, 1050, .92, "south_residences"),
+    ("east_house", "buildings/BLD_009_guild.png", 1530, 1170, .92, "east_residences"),
+    ("northeast_house", "buildings/BLD_010_healer.png", 1880, 320, .89, "east_quiet"),
 ]
 
 # A pair of small gardens reuses the ten-piece open-gate footprint of the
@@ -159,17 +161,17 @@ def relate(objects):
         elif name.startswith(('church_',)):
             anchor, role = 'church', 'courtyard_use'
         elif name.startswith('inn_'):
-            anchor, role = 'inn', 'inn_entrance_use'
+            anchor, role = 'waterside_house', 'residential_frontage'
         elif name.startswith('pond_') or name in ('waterside_bush', 'waterside_tree'):
             anchor, role = 'waterside_pond', 'shoreline_use'
         elif name.startswith('east_guild_'):
-            anchor, role = 'east_guild', 'guild_frontage_use'
+            anchor, role = 'east_house', 'residential_frontage'
         elif name.startswith(('south_',)) and name not in buildings:
-            anchor, role = ('road_4' if name in ('south_gate_lamp', 'south_garden_tree') else 'south_flower_shop' if o['x'] < 800 else 'south_library'), 'household_service'
+            anchor, role = ('road_4' if name in ('south_gate_lamp', 'south_garden_tree') else 'southwest_house' if o['x'] < 800 else 'south_house'), 'residential_frontage'
         elif name.startswith('craft_'):
-            anchor, role = ('potion_shop' if name in ('craft_cart',) else 'west_armorer'), 'workshop_storage'
+            anchor, role = ('potion_shop' if name in ('craft_cart',) else 'west_house'), 'residential_frontage'
         elif name.startswith('market_'):
-            anchor, role = ('potion_shop' if name in ('market_barrel_1', 'market_crate_1') else 'general_shop' if name in ('market_cart', 'market_stall') else 'market_stall'), 'shop_frontage'
+            anchor, role = ('potion_shop' if name in ('market_barrel_1', 'market_crate_1') else 'bank' if name in ('market_cart', 'market_stall') else 'market_stall'), 'shop_frontage'
         elif name in ('square_tree_west', 'square_shrub_west'):
             anchor, role = 'square_bench_west', 'shaded_rest_area'
         elif name in ('square_shrub_east', 'square_grass_2'):
@@ -257,13 +259,23 @@ def path_margin(objects):
 def main():
     data = json.loads(BASE.read_text(encoding="utf-8"))
     objects = data["objects"]
+    # Service canon: reagent shop, equipment shop, bank and church only.
+    for item in objects:
+        if item["id"] == "general_shop": item["id"] = "bank"
+        if item["id"] == "inn": item["id"] = "waterside_house"
+        if item["id"] in ("potion_shop", "weapon_shop", "bank", "church"):
+            item["enterable"] = True
+            item["function"] = {"potion_shop":"reagent_shop","weapon_shop":"equipment_shop","bank":"bank","church":"church"}[item["id"]]
+        elif item["id"] == "waterside_house":
+            item["enterable"] = False
+            item["function"] = "residence"
     for item in objects:
         name = item["id"]
         if name.startswith(("garden_fence_", "garden_tree_")):
             item["group"] = "enclosed_garden"
         elif name.startswith(("square_", "civic_", "village_noticeboard")):
             item["group"] = "fountain_rest_area"
-        elif name.startswith(("market_", "potion_shop", "weapon_shop", "general_shop")):
+        elif name.startswith(("market_", "potion_shop", "weapon_shop", "bank")):
             item["group"] = "shop_fronts"
         elif name.startswith("waterside_"):
             item["group"] = "pond_rest_area"
@@ -271,10 +283,14 @@ def main():
             item["group"] = item["district"]
     for entry in BUILDINGS:
         add(objects, *entry)
+    for item in objects:
+        if item["id"] in ("west_house","southwest_house","south_house","east_house","northeast_house"):
+            item["enterable"] = False
+            item["function"] = "residence"
     for entry in STORY_PROPS:
         add(objects, *entry)
     group_prefixes = {"civic_": "fountain_rest_area", "church_": "church_courtyard",
-                      "inn_": "inn_courtyard", "orchard_": "orchard_enclosure",
+                      "inn_": "residential_frontage", "orchard_": "orchard_enclosure",
                       "south_garden_": "south_garden_enclosure", "pond_": "pond_rest_area",
                       "craft_": "shop_fronts", "market_": "shop_fronts"}
     for item in objects:
