@@ -82,18 +82,18 @@
       "function": "church"
     },
     {
-      "id": "waterside_house",
+      "id": "inn",
       "asset": "buildings/BLD_006_inn.png",
       "x": 1980,
       "y": 650,
       "scale": 1,
       "district": "waterside",
-      "group": "residential_frontage",
+      "group": "inn_frontage",
       "anchor": "road_3",
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
-      "enterable": false,
-      "function": "residence"
+      "enterable": true,
+      "function": "inn"
     },
     {
       "id": "civic_fountain",
@@ -506,8 +506,8 @@
       "basis": "adapted_village_plan"
     },
     {
-      "id": "west_house",
-      "asset": "buildings/BLD_004_armor_shop.png",
+      "id": "house_west",
+      "asset": "buildings/BLD_001_house.webp",
       "x": 60,
       "y": 700,
       "scale": 0.86,
@@ -520,8 +520,8 @@
       "function": "residence"
     },
     {
-      "id": "southwest_house",
-      "asset": "buildings/BLD_007_flower_shop.png",
+      "id": "house_southwest",
+      "asset": "buildings/BLD_001_house.webp",
       "x": 400,
       "y": 1040,
       "scale": 0.92,
@@ -534,8 +534,8 @@
       "function": "residence"
     },
     {
-      "id": "south_house",
-      "asset": "buildings/BLD_008_library.png",
+      "id": "house_south",
+      "asset": "buildings/BLD_001_house.webp",
       "x": 1120,
       "y": 1050,
       "scale": 0.92,
@@ -548,8 +548,8 @@
       "function": "residence"
     },
     {
-      "id": "east_house",
-      "asset": "buildings/BLD_009_guild.png",
+      "id": "house_east",
+      "asset": "buildings/BLD_001_house.webp",
       "x": 1530,
       "y": 1170,
       "scale": 0.92,
@@ -562,8 +562,8 @@
       "function": "residence"
     },
     {
-      "id": "northeast_house",
-      "asset": "buildings/BLD_010_healer.png",
+      "id": "house_northeast",
+      "asset": "buildings/BLD_001_house.webp",
       "x": 1880,
       "y": 320,
       "scale": 0.89,
@@ -583,7 +583,7 @@
       "scale": 0.42,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_house",
+      "anchor": "house_west",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -595,7 +595,7 @@
       "scale": 0.37,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_house",
+      "anchor": "house_west",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -607,7 +607,7 @@
       "scale": 0.3,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_house",
+      "anchor": "house_west",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -619,7 +619,7 @@
       "scale": 0.27,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_house",
+      "anchor": "house_west",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -631,7 +631,7 @@
       "scale": 0.41,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_house",
+      "anchor": "house_west",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -655,7 +655,7 @@
       "scale": 0.45,
       "district": "west_crafts",
       "group": "shop_fronts",
-      "anchor": "west_house",
+      "anchor": "house_west",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -798,9 +798,9 @@
       "y": 748,
       "scale": 0.25,
       "district": "waterside",
-      "group": "inn_courtyard",
-      "anchor": "waterside_house",
-      "role": "residential_frontage",
+      "group": "inn_frontage",
+      "anchor": "inn",
+      "role": "inn_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -810,9 +810,9 @@
       "y": 692,
       "scale": 0.25,
       "district": "waterside",
-      "group": "inn_courtyard",
-      "anchor": "waterside_house",
-      "role": "residential_frontage",
+      "group": "inn_frontage",
+      "anchor": "inn",
+      "role": "inn_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -822,9 +822,9 @@
       "y": 638,
       "scale": 0.3,
       "district": "waterside",
-      "group": "inn_courtyard",
-      "anchor": "waterside_house",
-      "role": "residential_frontage",
+      "group": "inn_frontage",
+      "anchor": "inn",
+      "role": "inn_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -834,9 +834,9 @@
       "y": 770,
       "scale": 0.06,
       "district": "waterside",
-      "group": "inn_courtyard",
-      "anchor": "waterside_house",
-      "role": "residential_frontage",
+      "group": "inn_frontage",
+      "anchor": "inn",
+      "role": "inn_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -846,9 +846,9 @@
       "y": 750,
       "scale": 0.76,
       "district": "waterside",
-      "group": "inn_courtyard",
-      "anchor": "waterside_house",
-      "role": "residential_frontage",
+      "group": "inn_frontage",
+      "anchor": "inn",
+      "role": "inn_frontage",
       "basis": "adapted_village_plan"
     },
     {
@@ -895,7 +895,7 @@
       "scale": 0.53,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "southwest_house",
+      "anchor": "house_southwest",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -907,7 +907,7 @@
       "scale": 0.32,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "southwest_house",
+      "anchor": "house_southwest",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -919,7 +919,7 @@
       "scale": 0.32,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "southwest_house",
+      "anchor": "house_southwest",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -931,7 +931,7 @@
       "scale": 0.29,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_house",
+      "anchor": "house_south",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -943,7 +943,7 @@
       "scale": 0.3,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "southwest_house",
+      "anchor": "house_southwest",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -955,7 +955,7 @@
       "scale": 0.29,
       "district": "south_residences",
       "group": "south_residences",
-      "anchor": "south_house",
+      "anchor": "house_south",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -1087,7 +1087,7 @@
       "scale": 0.31,
       "district": "east_residences",
       "group": "east_residences",
-      "anchor": "east_house",
+      "anchor": "house_east",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -1099,7 +1099,7 @@
       "scale": 0.28,
       "district": "east_residences",
       "group": "east_residences",
-      "anchor": "east_house",
+      "anchor": "house_east",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
@@ -1111,7 +1111,7 @@
       "scale": 0.26,
       "district": "east_residences",
       "group": "east_residences",
-      "anchor": "east_house",
+      "anchor": "house_east",
       "role": "residential_frontage",
       "basis": "adapted_village_plan"
     },
