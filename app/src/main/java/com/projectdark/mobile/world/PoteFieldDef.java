@@ -50,7 +50,9 @@ public final class PoteFieldDef {
     return Collections.unmodifiableList(out);
   }
 
-  private static void trunk(List<RectF> out,float x,float y){out.add(new RectF(x-24f,y-18f,x+24f,y+18f));}\n\n  public static boolean atExit(float x,float y){
+  private static void trunk(List<RectF> out,float x,float y){out.add(new RectF(x-24f,y-18f,x+24f,y+18f));}
+
+  public static boolean atExit(float x,float y){
     float dx=x-EXIT_X,dy=y-EXIT_Y;return dx*dx+dy*dy<=EXIT_RADIUS*EXIT_RADIUS;
   }
   private static boolean blocked(float x,float y){
