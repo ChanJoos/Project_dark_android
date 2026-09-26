@@ -110,7 +110,7 @@ public final class PoteFieldRenderer {
     ba/=4;br/=4;bg/=4;bb/=4;if(ba<24)return src;
     boolean[] seen=new boolean[px.length];ArrayDeque<Integer> q=new ArrayDeque<>();
     for(int x=0;x<w;x++){q.add(x);q.add((h-1)*w+x);}for(int y=1;y<h-1;y++){q.add(y*w);q.add(y*w+w-1);}
-    final int threshold=72*72;
+    final int threshold=128*128;
     while(!q.isEmpty()){
       int i=q.removeFirst();if(i<0||i>=px.length||seen[i])continue;seen[i]=true;
       int c=px[i],a=(c>>>24)&255,r=(c>>>16)&255,g=(c>>>8)&255,b=c&255;
