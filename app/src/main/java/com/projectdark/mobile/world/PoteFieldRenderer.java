@@ -24,7 +24,6 @@ public final class PoteFieldRenderer {
   public static final String STATUS="POTE_ASSET_DRIVEN_FOREST_V1";
   private static final float TILE_W=64f,TILE_H=32f;
   private final Paint pixel=new Paint();
-  private final Paint fallback=new Paint();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
   private final List<Placement> placements=buildPlacements();
@@ -38,7 +37,6 @@ public final class PoteFieldRenderer {
 
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
-    fallback.setColor(0xff34271b);
   }
 
   public int placementCount(){return placements.size();}
@@ -67,7 +65,7 @@ public final class PoteFieldRenderer {
   private void drawTile(Canvas c,WorldRuntimeAdapter w,String asset,float x,float y){
     Bitmap b=bitmap(asset);WorldCameraTransform.Point q=w.worldToScreen(x,y);
     RectF dst=new RectF(q.x-TILE_W*.5f-1,q.y-TILE_H*.5f-1,q.x+TILE_W*.5f+1,q.y+TILE_H*.5f+1);
-    if(b!=null)c.drawBitmap(b,null,dst,pixel);else c.drawOval(dst,fallback);
+    if(b!=null)c.drawBitmap(b,null,dst,pixel);
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
