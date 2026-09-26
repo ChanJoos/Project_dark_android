@@ -119,6 +119,8 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.GrowthV2LoopAudit
       - name: Execute F5M gameplay contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.F5mAdaptedPrologueQuestAudit
+      - name: Audit Pote forest asset pack v1
+        run: python3 tools/assets/audit_pote_asset_pack.py
       - name: Execute Milles hunting-field round-trip audit
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
       - name: Execute F5M production runtime binding audit
