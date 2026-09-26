@@ -17,7 +17,7 @@ public final class RuntimeState {
   public static final float PLAYER_RADIUS=9f,MONSTER_RADIUS=11f,NPC_RADIUS=10f;
 
   public static final class Player {
-    public final float spawnX,spawnY;
+    public float spawnX,spawnY;
     public float x,y;
     public int hp=100,maxHp=100,mp=90,maxMp=100;
     public boolean alive=true;
@@ -45,6 +45,8 @@ public final class RuntimeState {
   }
 
   private final BootMode bootMode;
+  private String currentMapId;
+  private float currentMinX=WorldDef.MIN_X,currentMaxX=WorldDef.MAX_X,currentMinY=WorldDef.MIN_Y,currentMaxY=WorldDef.MAX_Y;
   private final WorldDef world=new WorldDef();
   private final Player player;
   private final List<RectF> obstacles=new ArrayList<>();
@@ -59,6 +61,7 @@ public final class RuntimeState {
 
   RuntimeState(BootMode bootMode,boolean skipPoteRuntimeE2EAudit){
     this.bootMode=bootMode==null?BootMode.MILLES:bootMode;
+    currentMapId=this.bootMode==BootMode.POTE_01_PROTOTYPE?PotePrototypeWorldDef.MAP_ID:WorldDef.ID;
 
     // IMPORTANT: regression/content audits are CI/development checks, not runtime startup gates.
     // A stale audit must never make a build that otherwise renders and plays crash before GameView appears.
@@ -79,7 +82,7 @@ public final class RuntimeState {
   }
 
   public BootMode bootMode(){return bootMode;}
-  public String currentMapId(){return bootMode==BootMode.POTE_01_PROTOTYPE?PotePrototypeWorldDef.MAP_ID:WorldDef.ID;}
+  public String currentMapId(){return currentMapId;}
   public WorldDef world(){return world;}
   public Player player(){return player;}
   public CombatLedger ledger(){return ledger;}
@@ -91,7 +94,22 @@ public final class RuntimeState {
   public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
   public List<Monster> monsters(){return Collections.unmodifiableList(monsters);}
 
-  public boolean tryMove(float dx,float dy){if(!player.alive)return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,WORLD_MIN_X,WORLD_MAX_X),ny=clamp(player.y+dy,WORLD_MIN_Y,WORLD_MAX_Y);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
+  /** Live map transition keeps RPG/combat ledger identity while replacing map-local actors/collision. */
+  public void enterPoteField(){
+    currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=96f;currentMaxX=864f;currentMinY=64f;currentMaxY=512f;
+    obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
+    npcs.clear();monsters.clear();monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
+    player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
+  }
+  public void enterMillesFromField(float x,float y){
+    currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;
+    obstacles.clear();for(RectF r:world.blockers())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
+    for(WorldDef.MonsterSpawn m:world.monsterSpawns()){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);monsters.add(new Monster(m.id,m.name,center==null?m.x:center.x,center==null?m.y:center.y,m.hp,m.assetStatus));}
+    player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;
+  }
+
+  public boolean tryMove(float dx,float dy){if(!player.alive)return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,currentMinX,currentMaxX),ny=clamp(player.y+dy,currentMinY,currentMaxY);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
 
   public boolean tryMoveMonster(Monster m,float desiredDx,float desiredDy,float distance){
     if(m==null||!m.alive)return false;
@@ -99,7 +117,7 @@ public final class RuntimeState {
         m.x,m.y,desiredDx,desiredDy,distance,m.visualFacing.locomotion(),m.detourSign,
         new MonsterDiagonalLocomotion.Occupancy(){
           public boolean canOccupy(float x,float y){
-            return x>=WORLD_MIN_X&&x<=WORLD_MAX_X&&y>=WORLD_MIN_Y&&y<=WORLD_MAX_Y
+            return x>=currentMinX&&x<=currentMaxX&&y>=currentMinY&&y<=currentMaxY
                 &&monsterCanOccupy(m,x,y);
           }
         });
