@@ -49,18 +49,12 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // Milles lesson: navigation grid is logical only. Visible terrain must read as one surface.
-    // Large, translucent, heavily-overlapped authored patches remove checker/diamond seams.
-    int row=0;
-    for(float y=45;y<=930;y+=78,row++){
-      int col=0;
-      for(float x=25;x<=1450;x+=108,col++){
-        float jx=((row*37+col*19)%31)-15f, jy=((row*17+col*29)%23)-11f;
-        float px=x+jx,py=y+jy;
-        boolean corridor=(px<720&&py>690)||(px>420&&px<1020&&py>360&&py<610)||(px>650&&py<330);
-        int id=corridor?5+((row+col)%3):1+((row*3+col*5)%4);
-        drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",id),px,py,1.55f,118);
-      }
+    // Continuous earth foundation first; authored GD art is atmosphere, never a visible tile lattice.
+    pixel.setColor(0xff563b24);pixel.setStyle(Paint.Style.FILL);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    float[][] patches={{90,120},{390,135},{720,120},{1040,140},{1320,150},{180,390},{520,400},{850,390},{1180,420},{220,700},{570,720},{900,700},{1250,735}};
+    for(int i=0;i<patches.length;i++){
+      float[] q=patches[i];int id=1+(i*5)%7;
+      drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",id),q[0],q[1],3.25f,58);
     }
   }
 
@@ -93,13 +87,11 @@ public final class PoteFieldRenderer {
 
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
-    // STREAM AXIS: water first, then bank rocks, moisture vegetation. It bends through the east side.
-    water(p,1090,190,1); water(p,1110,245,2); water(p,1090,300,3);
-    water(p,1055,355,4); water(p,1045,410,1); water(p,1070,465,2);
-    water(p,1110,520,3); water(p,1140,575,4); water(p,1130,630,5);
-    water(p,1160,685,6);
-    rock(p,1035,245,1);rock(p,1200,320,2);rock(p,1015,455,3);rock(p,1210,650,4);rock(p,1110,785,5);
-    bank(p,1010,275,1);bank(p,1215,370,2);bank(p,1000,520,3);bank(p,1230,705,4);bank(p,1100,825,5);ground(p,995,300,2);ground(p,1225,410,5);bush(p,980,350,4);bush(p,1240,520,6);detail(p,1020,600,1);
+    // WATER POCKETS: reference-like irregular pools/short runs, not repeated rectangular tiles.
+    water(p,1110,250,2); water(p,1080,385,4); water(p,1135,515,6); water(p,1160,650,3);
+    rock(p,1025,260,1);rock(p,1195,330,2);rock(p,1015,455,3);rock(p,1210,620,4);rock(p,1105,700,5);
+    bank(p,1010,290,1);bank(p,1205,370,2);bank(p,1000,500,3);bank(p,1220,660,4);
+    ground(p,995,315,2);ground(p,1225,410,5);bush(p,980,350,4);bush(p,1240,520,6);detail(p,1020,590,1);
 
     // NORTH/WEST FOREST WALL: large canopy -> small tree -> bush -> groundcover.
     tree(p,135,180,1,.78f);tree(p,245,150,2,.78f);tree(p,365,145,3,.78f);
@@ -157,7 +149,7 @@ public final class PoteFieldRenderer {
   private static void ground(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_GF_%02d.png",n),x,y,1f,"groundcover",false));}
   private static void stump(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_ST_%02d.png",n),x,y,1f,"stump",false));}
   private static void rock(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_RK_%02d.png",n),x,y,1f,"rock",false));}
-  private static void water(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_WT_%02d.png",n),x,y,1.22f,"stream",false));}
+  private static void water(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_WT_%02d.png",n),x,y,1.05f,"stream",false));}
   private static void bank(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BW_%02d.png",n),x,y,1f,"bank",false));}
   private static void detail(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_OT_%02d.png",n),x,y,1f,"detail",false));}
 
