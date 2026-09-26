@@ -93,7 +93,7 @@ def main() -> None:
     assert "private static final float[][][] PATHS" in tile_source
     assert "private static final float[][][] APPROACH_PATHS" in tile_source
     assert tile_source.count('// west residential frontage') == 1 and '// east homes from south gardens' in tile_source
-    assert '{{1536,448},{1600,420},{1680,400},{1750,392},{1820,390}}' in tile_source, 'northeast residential lane must branch from church road'
+    assert '{{1824,752},{1900,680},{1920,580},{1900,480},{1820,390}}' in tile_source, 'northeast residential lane must hug the east settlement edge'
     garden_fences = [item for item in items if item["id"].startswith("garden_fence_")]
     assert len(garden_fences) >= 10, "garden must form a real enclosure, not loose fence props"
     assert {item["asset"] for item in garden_fences} == {
