@@ -1,0 +1,9 @@
+{
+  "count_59": true,
+  "unique_ids": true,
+  "all_png_present": true,
+  "source_unscaled": true,
+  "all_visual_qa_pass": true,
+  "all_runtime_metadata": true,
+  "large_trees_larger_than_milles": true
+}

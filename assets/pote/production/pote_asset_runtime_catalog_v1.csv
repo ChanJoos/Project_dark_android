@@ -1,0 +1,60 @@
+﻿asset_id,category,file,source_pixel_size,source_pixels_resampled,render_scale,runtime_estimated_size,anchor,collision_footprint,blocking,depth_rule,relationship_tags,visual_qa,production_status
+POTE_GD_01,terrain,POTE_GD_01.png,"[145, 111]",False,1.0,"[145, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_02,terrain,POTE_GD_02.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_03,terrain,POTE_GD_03.png,"[150, 111]",False,1.0,"[150, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_04,terrain,POTE_GD_04.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_05,terrain,POTE_GD_05.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_06,terrain,POTE_GD_06.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_07,terrain,POTE_GD_07.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_08,terrain,POTE_GD_08.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_09,terrain,POTE_GD_09.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_GD_10,terrain,POTE_GD_10.png,"[148, 111]",False,1.0,"[148, 111]",tile_center,none,False,ground,"[""walk_corridor"", ""encounter_floor"", ""forest_floor""]",PASS_V6,APPROVED_V1
+POTE_TR_01,tree_large,POTE_TR_01.png,"[152, 175]",False,1.35,"[205, 236]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PASS_V6,APPROVED_V1
+POTE_TR_02,tree_large,POTE_TR_02.png,"[158, 175]",False,1.35,"[213, 236]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PASS_V6,APPROVED_V1
+POTE_TR_03,tree_large,POTE_TR_03.png,"[156, 175]",False,1.35,"[211, 236]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PASS_V6,APPROVED_V1
+POTE_TR_04,tree_large,POTE_TR_04.png,"[170, 175]",False,1.35,"[230, 236]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PASS_V6,APPROVED_V1
+POTE_TR_05,tree_large,POTE_TR_05.png,"[164, 175]",False,1.35,"[221, 236]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PASS_V6,APPROVED_V1
+POTE_TR_06,tree_large,POTE_TR_06.png,"[165, 175]",False,1.35,"[223, 236]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PASS_V6,APPROVED_V1
+POTE_TR_07,tree_large,POTE_TR_07.png,"[183, 175]",False,1.35,"[247, 236]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PASS_V6,APPROVED_V1
+POTE_TS_01,tree_small,POTE_TS_01.png,"[94, 175]",False,1.15,"[108, 201]",bottom_center,trunk_24x16,True,baseline_canopy_overdraw,"[""canopy_cluster"", ""transition_edge""]",PASS_V6,APPROVED_V1
+POTE_TS_02,tree_small,POTE_TS_02.png,"[128, 175]",False,1.15,"[147, 201]",bottom_center,trunk_24x16,True,baseline_canopy_overdraw,"[""canopy_cluster"", ""transition_edge""]",PASS_V6,APPROVED_V1
+POTE_TS_03,tree_small,POTE_TS_03.png,"[100, 175]",False,1.15,"[115, 201]",bottom_center,trunk_24x16,True,baseline_canopy_overdraw,"[""canopy_cluster"", ""transition_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_01,bush,POTE_BS_01.png,"[114, 110]",False,1.0,"[114, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_02,bush,POTE_BS_02.png,"[104, 110]",False,1.0,"[104, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_03,bush,POTE_BS_03.png,"[106, 110]",False,1.0,"[106, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_04,bush,POTE_BS_04.png,"[100, 110]",False,1.0,"[100, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_05,bush,POTE_BS_05.png,"[128, 110]",False,1.0,"[128, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_06,bush,POTE_BS_06.png,"[113, 110]",False,1.0,"[113, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_07,bush,POTE_BS_07.png,"[107, 110]",False,1.0,"[107, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_BS_08,bush,POTE_BS_08.png,"[103, 110]",False,1.0,"[103, 110]",bottom_center,none,False,baseline,"[""understory"", ""tree_cluster"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_GF_01,groundcover,POTE_GF_01.png,"[96, 110]",False,1.0,"[96, 110]",bottom_center,none,False,ground_detail,"[""understory"", ""open_edge"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_GF_02,groundcover,POTE_GF_02.png,"[95, 110]",False,1.0,"[95, 110]",bottom_center,none,False,ground_detail,"[""understory"", ""open_edge"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_GF_03,groundcover,POTE_GF_03.png,"[103, 110]",False,1.0,"[103, 110]",bottom_center,none,False,ground_detail,"[""understory"", ""open_edge"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_GF_04,groundcover,POTE_GF_04.png,"[88, 110]",False,1.0,"[88, 110]",bottom_center,none,False,ground_detail,"[""understory"", ""open_edge"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_GF_05,groundcover,POTE_GF_05.png,"[89, 110]",False,1.0,"[89, 110]",bottom_center,none,False,ground_detail,"[""understory"", ""open_edge"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_GF_06,groundcover,POTE_GF_06.png,"[96, 110]",False,1.0,"[96, 110]",bottom_center,none,False,ground_detail,"[""understory"", ""open_edge"", ""bank_edge""]",PASS_V6,APPROVED_V1
+POTE_ST_01,stump,POTE_ST_01.png,"[116, 112]",False,1.0,"[116, 112]",bottom_center,lower_28x18,True,baseline,"[""forest_floor"", ""encounter_edge""]",PASS_V6,APPROVED_V1
+POTE_ST_02,stump,POTE_ST_02.png,"[104, 112]",False,1.0,"[104, 112]",bottom_center,lower_28x18,True,baseline,"[""forest_floor"", ""encounter_edge""]",PASS_V6,APPROVED_V1
+POTE_ST_03,stump,POTE_ST_03.png,"[102, 112]",False,1.0,"[102, 112]",bottom_center,lower_28x18,True,baseline,"[""forest_floor"", ""encounter_edge""]",PASS_V6,APPROVED_V1
+POTE_ST_04,stump,POTE_ST_04.png,"[84, 112]",False,1.0,"[84, 112]",bottom_center,lower_28x18,True,baseline,"[""forest_floor"", ""encounter_edge""]",PASS_V6,APPROVED_V1
+POTE_RK_01,rock,POTE_RK_01.png,"[97, 112]",False,1.0,"[97, 112]",bottom_center,lower_32x20,True,baseline,"[""stream_edge"", ""forest_floor"", ""transition_landmark""]",PASS_V6,APPROVED_V1
+POTE_RK_02,rock,POTE_RK_02.png,"[95, 112]",False,1.0,"[95, 112]",bottom_center,lower_32x20,True,baseline,"[""stream_edge"", ""forest_floor"", ""transition_landmark""]",PASS_V6,APPROVED_V1
+POTE_RK_03,rock,POTE_RK_03.png,"[94, 112]",False,1.0,"[94, 112]",bottom_center,lower_32x20,True,baseline,"[""stream_edge"", ""forest_floor"", ""transition_landmark""]",PASS_V6,APPROVED_V1
+POTE_RK_04,rock,POTE_RK_04.png,"[101, 112]",False,1.0,"[101, 112]",bottom_center,lower_32x20,True,baseline,"[""stream_edge"", ""forest_floor"", ""transition_landmark""]",PASS_V6,APPROVED_V1
+POTE_RK_05,rock,POTE_RK_05.png,"[70, 112]",False,1.0,"[70, 112]",bottom_center,lower_32x20,True,baseline,"[""stream_edge"", ""forest_floor"", ""transition_landmark""]",PASS_V6,APPROVED_V1
+POTE_WT_01,water,POTE_WT_01.png,"[109, 112]",False,1.0,"[109, 112]",tile_center,water_mask,True,ground,"[""stream_axis"", ""water_connection""]",PASS_V6,APPROVED_V1
+POTE_WT_02,water,POTE_WT_02.png,"[107, 112]",False,1.0,"[107, 112]",tile_center,water_mask,True,ground,"[""stream_axis"", ""water_connection""]",PASS_V6,APPROVED_V1
+POTE_WT_03,water,POTE_WT_03.png,"[109, 112]",False,1.0,"[109, 112]",tile_center,water_mask,True,ground,"[""stream_axis"", ""water_connection""]",PASS_V6,APPROVED_V1
+POTE_WT_04,water,POTE_WT_04.png,"[104, 112]",False,1.0,"[104, 112]",tile_center,water_mask,True,ground,"[""stream_axis"", ""water_connection""]",PASS_V6,APPROVED_V1
+POTE_WT_05,water,POTE_WT_05.png,"[85, 112]",False,1.0,"[85, 112]",tile_center,water_mask,True,ground,"[""stream_axis"", ""water_connection""]",PASS_V6,APPROVED_V1
+POTE_WT_06,water,POTE_WT_06.png,"[98, 112]",False,1.0,"[98, 112]",tile_center,water_mask,True,ground,"[""stream_axis"", ""water_connection""]",PASS_V6,APPROVED_V1
+POTE_BW_01,bank,POTE_BW_01.png,"[86, 93]",False,1.0,"[86, 93]",bottom_center,none,False,ground_detail,"[""stream_edge"", ""moisture_vegetation""]",PASS_V6,APPROVED_V1
+POTE_BW_02,bank,POTE_BW_02.png,"[99, 93]",False,1.0,"[99, 93]",bottom_center,none,False,ground_detail,"[""stream_edge"", ""moisture_vegetation""]",PASS_V6,APPROVED_V1
+POTE_BW_03,bank,POTE_BW_03.png,"[113, 93]",False,1.0,"[113, 93]",bottom_center,none,False,ground_detail,"[""stream_edge"", ""moisture_vegetation""]",PASS_V6,APPROVED_V1
+POTE_BW_04,bank,POTE_BW_04.png,"[112, 93]",False,1.0,"[112, 93]",bottom_center,none,False,ground_detail,"[""stream_edge"", ""moisture_vegetation""]",PASS_V6,APPROVED_V1
+POTE_BW_05,bank,POTE_BW_05.png,"[91, 93]",False,1.0,"[91, 93]",bottom_center,none,False,ground_detail,"[""stream_edge"", ""moisture_vegetation""]",PASS_V6,APPROVED_V1
+POTE_OT_01,detail,POTE_OT_01.png,"[106, 93]",False,1.0,"[106, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
+POTE_OT_02,detail,POTE_OT_02.png,"[79, 93]",False,1.0,"[79, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
+POTE_OT_03,detail,POTE_OT_03.png,"[77, 93]",False,1.0,"[77, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
+POTE_OT_04,detail,POTE_OT_04.png,"[71, 93]",False,1.0,"[71, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
+POTE_OT_05,detail,POTE_OT_05.png,"[88, 93]",False,1.0,"[88, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1

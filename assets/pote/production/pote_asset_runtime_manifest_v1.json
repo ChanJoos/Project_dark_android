@@ -1,0 +1,1513 @@
+[
+  {
+    "asset_id": "POTE_GD_01",
+    "category": "terrain",
+    "file": "POTE_GD_01.png",
+    "source_pixel_size": [
+      145,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      145,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_02",
+    "category": "terrain",
+    "file": "POTE_GD_02.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_03",
+    "category": "terrain",
+    "file": "POTE_GD_03.png",
+    "source_pixel_size": [
+      150,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      150,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_04",
+    "category": "terrain",
+    "file": "POTE_GD_04.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_05",
+    "category": "terrain",
+    "file": "POTE_GD_05.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_06",
+    "category": "terrain",
+    "file": "POTE_GD_06.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_07",
+    "category": "terrain",
+    "file": "POTE_GD_07.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_08",
+    "category": "terrain",
+    "file": "POTE_GD_08.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_09",
+    "category": "terrain",
+    "file": "POTE_GD_09.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GD_10",
+    "category": "terrain",
+    "file": "POTE_GD_10.png",
+    "source_pixel_size": [
+      148,
+      111
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      148,
+      111
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "walk_corridor",
+      "encounter_floor",
+      "forest_floor"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TR_01",
+    "category": "tree_large",
+    "file": "POTE_TR_01.png",
+    "source_pixel_size": [
+      152,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.35,
+    "runtime_estimated_size": [
+      205,
+      236
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TR_02",
+    "category": "tree_large",
+    "file": "POTE_TR_02.png",
+    "source_pixel_size": [
+      158,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.35,
+    "runtime_estimated_size": [
+      213,
+      236
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TR_03",
+    "category": "tree_large",
+    "file": "POTE_TR_03.png",
+    "source_pixel_size": [
+      156,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.35,
+    "runtime_estimated_size": [
+      211,
+      236
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TR_04",
+    "category": "tree_large",
+    "file": "POTE_TR_04.png",
+    "source_pixel_size": [
+      170,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.35,
+    "runtime_estimated_size": [
+      230,
+      236
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TR_05",
+    "category": "tree_large",
+    "file": "POTE_TR_05.png",
+    "source_pixel_size": [
+      164,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.35,
+    "runtime_estimated_size": [
+      221,
+      236
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TR_06",
+    "category": "tree_large",
+    "file": "POTE_TR_06.png",
+    "source_pixel_size": [
+      165,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.35,
+    "runtime_estimated_size": [
+      223,
+      236
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TR_07",
+    "category": "tree_large",
+    "file": "POTE_TR_07.png",
+    "source_pixel_size": [
+      183,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.35,
+    "runtime_estimated_size": [
+      247,
+      236
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TS_01",
+    "category": "tree_small",
+    "file": "POTE_TS_01.png",
+    "source_pixel_size": [
+      94,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.15,
+    "runtime_estimated_size": [
+      108,
+      201
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_24x16",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "canopy_cluster",
+      "transition_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TS_02",
+    "category": "tree_small",
+    "file": "POTE_TS_02.png",
+    "source_pixel_size": [
+      128,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.15,
+    "runtime_estimated_size": [
+      147,
+      201
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_24x16",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "canopy_cluster",
+      "transition_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_TS_03",
+    "category": "tree_small",
+    "file": "POTE_TS_03.png",
+    "source_pixel_size": [
+      100,
+      175
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.15,
+    "runtime_estimated_size": [
+      115,
+      201
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_24x16",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "canopy_cluster",
+      "transition_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_01",
+    "category": "bush",
+    "file": "POTE_BS_01.png",
+    "source_pixel_size": [
+      114,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      114,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_02",
+    "category": "bush",
+    "file": "POTE_BS_02.png",
+    "source_pixel_size": [
+      104,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      104,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_03",
+    "category": "bush",
+    "file": "POTE_BS_03.png",
+    "source_pixel_size": [
+      106,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      106,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_04",
+    "category": "bush",
+    "file": "POTE_BS_04.png",
+    "source_pixel_size": [
+      100,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      100,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_05",
+    "category": "bush",
+    "file": "POTE_BS_05.png",
+    "source_pixel_size": [
+      128,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      128,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_06",
+    "category": "bush",
+    "file": "POTE_BS_06.png",
+    "source_pixel_size": [
+      113,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      113,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_07",
+    "category": "bush",
+    "file": "POTE_BS_07.png",
+    "source_pixel_size": [
+      107,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      107,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BS_08",
+    "category": "bush",
+    "file": "POTE_BS_08.png",
+    "source_pixel_size": [
+      103,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      103,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "understory",
+      "tree_cluster",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GF_01",
+    "category": "groundcover",
+    "file": "POTE_GF_01.png",
+    "source_pixel_size": [
+      96,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      96,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "understory",
+      "open_edge",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GF_02",
+    "category": "groundcover",
+    "file": "POTE_GF_02.png",
+    "source_pixel_size": [
+      95,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      95,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "understory",
+      "open_edge",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GF_03",
+    "category": "groundcover",
+    "file": "POTE_GF_03.png",
+    "source_pixel_size": [
+      103,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      103,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "understory",
+      "open_edge",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GF_04",
+    "category": "groundcover",
+    "file": "POTE_GF_04.png",
+    "source_pixel_size": [
+      88,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      88,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "understory",
+      "open_edge",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GF_05",
+    "category": "groundcover",
+    "file": "POTE_GF_05.png",
+    "source_pixel_size": [
+      89,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      89,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "understory",
+      "open_edge",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_GF_06",
+    "category": "groundcover",
+    "file": "POTE_GF_06.png",
+    "source_pixel_size": [
+      96,
+      110
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      96,
+      110
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "understory",
+      "open_edge",
+      "bank_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_ST_01",
+    "category": "stump",
+    "file": "POTE_ST_01.png",
+    "source_pixel_size": [
+      116,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      116,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_28x18",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "forest_floor",
+      "encounter_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_ST_02",
+    "category": "stump",
+    "file": "POTE_ST_02.png",
+    "source_pixel_size": [
+      104,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      104,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_28x18",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "forest_floor",
+      "encounter_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_ST_03",
+    "category": "stump",
+    "file": "POTE_ST_03.png",
+    "source_pixel_size": [
+      102,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      102,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_28x18",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "forest_floor",
+      "encounter_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_ST_04",
+    "category": "stump",
+    "file": "POTE_ST_04.png",
+    "source_pixel_size": [
+      84,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      84,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_28x18",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "forest_floor",
+      "encounter_edge"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_RK_01",
+    "category": "rock",
+    "file": "POTE_RK_01.png",
+    "source_pixel_size": [
+      97,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      97,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_32x20",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "stream_edge",
+      "forest_floor",
+      "transition_landmark"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_RK_02",
+    "category": "rock",
+    "file": "POTE_RK_02.png",
+    "source_pixel_size": [
+      95,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      95,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_32x20",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "stream_edge",
+      "forest_floor",
+      "transition_landmark"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_RK_03",
+    "category": "rock",
+    "file": "POTE_RK_03.png",
+    "source_pixel_size": [
+      94,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      94,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_32x20",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "stream_edge",
+      "forest_floor",
+      "transition_landmark"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_RK_04",
+    "category": "rock",
+    "file": "POTE_RK_04.png",
+    "source_pixel_size": [
+      101,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      101,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_32x20",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "stream_edge",
+      "forest_floor",
+      "transition_landmark"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_RK_05",
+    "category": "rock",
+    "file": "POTE_RK_05.png",
+    "source_pixel_size": [
+      70,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      70,
+      112
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "lower_32x20",
+    "blocking": true,
+    "depth_rule": "baseline",
+    "relationship_tags": [
+      "stream_edge",
+      "forest_floor",
+      "transition_landmark"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_WT_01",
+    "category": "water",
+    "file": "POTE_WT_01.png",
+    "source_pixel_size": [
+      109,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      109,
+      112
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "water_mask",
+    "blocking": true,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "stream_axis",
+      "water_connection"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_WT_02",
+    "category": "water",
+    "file": "POTE_WT_02.png",
+    "source_pixel_size": [
+      107,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      107,
+      112
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "water_mask",
+    "blocking": true,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "stream_axis",
+      "water_connection"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_WT_03",
+    "category": "water",
+    "file": "POTE_WT_03.png",
+    "source_pixel_size": [
+      109,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      109,
+      112
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "water_mask",
+    "blocking": true,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "stream_axis",
+      "water_connection"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_WT_04",
+    "category": "water",
+    "file": "POTE_WT_04.png",
+    "source_pixel_size": [
+      104,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      104,
+      112
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "water_mask",
+    "blocking": true,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "stream_axis",
+      "water_connection"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_WT_05",
+    "category": "water",
+    "file": "POTE_WT_05.png",
+    "source_pixel_size": [
+      85,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      85,
+      112
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "water_mask",
+    "blocking": true,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "stream_axis",
+      "water_connection"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_WT_06",
+    "category": "water",
+    "file": "POTE_WT_06.png",
+    "source_pixel_size": [
+      98,
+      112
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      98,
+      112
+    ],
+    "anchor": "tile_center",
+    "collision_footprint": "water_mask",
+    "blocking": true,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "stream_axis",
+      "water_connection"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BW_01",
+    "category": "bank",
+    "file": "POTE_BW_01.png",
+    "source_pixel_size": [
+      86,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      86,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "stream_edge",
+      "moisture_vegetation"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BW_02",
+    "category": "bank",
+    "file": "POTE_BW_02.png",
+    "source_pixel_size": [
+      99,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      99,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "stream_edge",
+      "moisture_vegetation"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BW_03",
+    "category": "bank",
+    "file": "POTE_BW_03.png",
+    "source_pixel_size": [
+      113,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      113,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "stream_edge",
+      "moisture_vegetation"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BW_04",
+    "category": "bank",
+    "file": "POTE_BW_04.png",
+    "source_pixel_size": [
+      112,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      112,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "stream_edge",
+      "moisture_vegetation"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BW_05",
+    "category": "bank",
+    "file": "POTE_BW_05.png",
+    "source_pixel_size": [
+      91,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      91,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "stream_edge",
+      "moisture_vegetation"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_OT_01",
+    "category": "detail",
+    "file": "POTE_OT_01.png",
+    "source_pixel_size": [
+      106,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      106,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "forest_floor",
+      "landmark_detail"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_OT_02",
+    "category": "detail",
+    "file": "POTE_OT_02.png",
+    "source_pixel_size": [
+      79,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      79,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "forest_floor",
+      "landmark_detail"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_OT_03",
+    "category": "detail",
+    "file": "POTE_OT_03.png",
+    "source_pixel_size": [
+      77,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      77,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "forest_floor",
+      "landmark_detail"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_OT_04",
+    "category": "detail",
+    "file": "POTE_OT_04.png",
+    "source_pixel_size": [
+      71,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      71,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "forest_floor",
+      "landmark_detail"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_OT_05",
+    "category": "detail",
+    "file": "POTE_OT_05.png",
+    "source_pixel_size": [
+      88,
+      93
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      88,
+      93
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_detail",
+    "relationship_tags": [
+      "forest_floor",
+      "landmark_detail"
+    ],
+    "visual_qa": "PASS_V6",
+    "production_status": "APPROVED_V1"
+  }
+]
