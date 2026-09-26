@@ -68,9 +68,6 @@ STORY_PROPS = [
     ("church_tree_west", "vegetation/trees/OBJ_tree_01.png", 1435, 590, .46, "east_quiet"),
     ("church_tree_east", "vegetation/trees/OBJ_tree_03.png", 1630, 585, .46, "east_quiet"),
     ("church_bench_east", "street/OBJ_bench_forged_v2.png", 1575, 550, .060, "east_quiet"),
-    ("church_tree_west", "vegetation/trees/OBJ_tree_01.png", 1435, 590, .46, "east_quiet"),
-    ("church_tree_east", "vegetation/trees/OBJ_tree_03.png", 1650, 610, .46, "east_quiet"),
-    ("church_bench_east", "street/OBJ_bench_forged_v2.png", 1595, 575, .060, "east_quiet"),
     ("inn_cart", "market/OBJ_cart.png", 2100, 748, .25, "waterside"),
     ("inn_crates", "storage/OBJ_crate.png", 2090, 692, .25, "waterside"),
     ("inn_sacks", "storage/OBJ_sack.png", 2090, 638, .30, "waterside"),
@@ -155,8 +152,6 @@ def relate(objects):
             anchor, role = name.split('_understory_')[0] + '_tree_' + name.split('_understory_')[1].split('_')[0], 'tree_understory'
         elif '_tree_' in name and any(name.startswith(zone + '_') for zone, _ in GROVES):
             anchor, role = 'grove_' + next(zone for zone, _ in GROVES if name.startswith(zone + '_')), 'woodland_edge'
-        elif name == 'garden_bench':
-            anchor, role = 'garden_tree_1', 'shaded_rest_area'
         elif name == 'garden_bench':
             anchor, role = 'garden_tree_1', 'shaded_rest_area'
         elif name == 'garden_flowerbed_2':
