@@ -116,6 +116,20 @@ public final class PoteFieldRenderer {
         int x=i%w,y=i/w;if(x>0)q.add(i-1);if(x+1<w)q.add(i+1);if(y>0)q.add(i-w);if(y+1<h)q.add(i+w);
       }
     }
+    // Remove scan/crop separator columns occasionally embedded inside source cutouts.
+    // A separator is a near-black column spanning most of the sprite height; ordinary bark/shadows
+    // do not satisfy this full-column criterion.
+    for(int x=0;x<w;x++){
+      int dark=0,solid=0;
+      for(int y=0;y<h;y++){
+        int c=px[y*w+x],aa=(c>>>24)&255;if(aa<24)continue;solid++;
+        int rr=(c>>>16)&255,gg=(c>>>8)&255,bl=c&255;
+        if((rr*3+gg*4+bl)/8<30)dark++;
+      }
+      if(solid>Math.max(12,(int)(h*.55f))&&dark>=solid*.82f){
+        for(int y=0;y<h;y++)px[y*w+x]&=0x00ffffff;
+      }
+    }
     Bitmap out=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);out.setPixels(px,0,w,0,0,w,h);return out;
   }
 
