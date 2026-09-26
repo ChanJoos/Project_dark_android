@@ -91,8 +91,8 @@
     {
       "id": "garden_bench",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 1308,
-      "y": 702,
+      "x": 1128,
+      "y": 650,
       "scale": 0.06,
       "district": "garden"
     },
@@ -292,8 +292,8 @@
     {
       "id": "garden_flowerbed_2",
       "asset": "vegetation/flowers/OBJ_flower_03.png",
-      "x": 1336,
-      "y": 636,
+      "x": 1160,
+      "y": 668,
       "scale": 0.34,
       "district": "garden"
     },
@@ -308,10 +308,10 @@
     {
       "id": "square_shrub_east",
       "asset": "vegetation/bushes/OBJ_bush_03.png",
-      "x": 1176,
-      "y": 584,
+      "x": 1120,
+      "y": 620,
       "scale": 0.35,
-      "district": "civic_square"
+      "district": "garden"
     },
     {
       "id": "square_grass_1",
@@ -324,8 +324,8 @@
     {
       "id": "square_grass_2",
       "asset": "vegetation/flowers/OBJ_flower_01.png",
-      "x": 984,
-      "y": 532,
+      "x": 1035,
+      "y": 600,
       "scale": 0.16,
       "district": "garden"
     },
