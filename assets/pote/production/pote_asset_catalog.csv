@@ -1,0 +1,18 @@
+asset_id,class,source,status,blocking,anchor_rule,notes
+TILE_ground_brown_01,terrain,user_reference_20260926,REFERENCE_DERIVED_V1,false,base_floor,first 64x32 diamond sample; palette/texture validation required
+TILE_ground_brown_02,terrain,user_reference_20260926,TODO,false,base_floor,variation
+TILE_ground_moss_01,terrain,user_reference_20260926,TODO,false,moist_edge,variation
+TILE_path_bare_01,terrain,user_reference_20260926,TODO,false,walk_corridor,bare traversed soil
+TREE_canopy_large_A,tree,user_reference_20260926,TODO,true,forest_boundary,dense broadleaf
+TREE_canopy_large_B,tree,user_reference_20260926,TODO,true,forest_boundary,dense broadleaf variant
+TREE_twisted_A,tree,user_reference_20260926,TODO,true,stream_or_encounter_edge,crooked exposed trunk
+TREE_dead_A,tree,user_reference_20260926,TODO,true,encounter_edge,hostile silhouette
+TREE_young_A,tree,user_reference_20260926,TODO,true,secondary_canopy,small vertical tree
+BUSH_dense_A,bush,user_reference_20260926,TODO,conditional,understory,dense shrub
+GROUND_foliage_A,groundcover,user_reference_20260926,TODO,false,tree_or_bank_edge,fern/grass
+GROUND_flower_A,groundcover,user_reference_20260926,TODO,false,moist_or_open_edge,flower clump
+STUMP_A,stump,user_reference_20260926,TODO,true,forest_floor,stump
+ROCK_stream_A,rock,user_reference_20260926,TODO,true,stream,stream rock
+ROCK_ground_A,rock,user_reference_20260926,TODO,true,open_edge,ground rock
+WATER_stream_A,water,user_reference_20260926,TODO,true,stream_axis,stream body
+WATER_edge_A,water_edge,user_reference_20260926,TODO,true,stream_bank,bank transition
