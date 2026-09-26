@@ -1,0 +1,404 @@
+{
+  "image": "POTE_FOREST_ATLAS_V1.png",
+  "cell_width": 48,
+  "cell_height": 48,
+  "columns": 8,
+  "assets": {
+    "TILE_ground_brown_01": {
+      "x": 0,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "terrain",
+      "blocking": false,
+      "anchor_rule": "base_floor"
+    },
+    "TILE_ground_brown_02": {
+      "x": 48,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "terrain",
+      "blocking": false,
+      "anchor_rule": "base_floor"
+    },
+    "TILE_ground_brown_03": {
+      "x": 96,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "terrain",
+      "blocking": false,
+      "anchor_rule": "base_floor"
+    },
+    "TILE_ground_moss_01": {
+      "x": 144,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "terrain",
+      "blocking": false,
+      "anchor_rule": "base_floor"
+    },
+    "TILE_ground_moss_02": {
+      "x": 192,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "terrain",
+      "blocking": false,
+      "anchor_rule": "base_floor"
+    },
+    "TILE_path_bare_01": {
+      "x": 240,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "terrain",
+      "blocking": false,
+      "anchor_rule": "walk_corridor"
+    },
+    "TILE_path_bare_02": {
+      "x": 288,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "terrain",
+      "blocking": false,
+      "anchor_rule": "walk_corridor"
+    },
+    "TREE_canopy_large_A": {
+      "x": 336,
+      "y": 0,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "forest_boundary"
+    },
+    "TREE_canopy_large_B": {
+      "x": 0,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "forest_boundary"
+    },
+    "TREE_canopy_large_C": {
+      "x": 48,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "forest_boundary"
+    },
+    "TREE_canopy_large_D": {
+      "x": 96,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "forest_boundary"
+    },
+    "TREE_twisted_A": {
+      "x": 144,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "encounter_or_stream_edge"
+    },
+    "TREE_twisted_B": {
+      "x": 192,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "encounter_or_stream_edge"
+    },
+    "TREE_twisted_C": {
+      "x": 240,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "encounter_or_stream_edge"
+    },
+    "TREE_dead_A": {
+      "x": 288,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "encounter_or_stream_edge"
+    },
+    "TREE_dead_B": {
+      "x": 336,
+      "y": 48,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "encounter_or_stream_edge"
+    },
+    "TREE_dead_C": {
+      "x": 0,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "encounter_or_stream_edge"
+    },
+    "TREE_young_A": {
+      "x": 48,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "secondary_canopy"
+    },
+    "TREE_young_B": {
+      "x": 96,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "tree",
+      "blocking": true,
+      "anchor_rule": "secondary_canopy"
+    },
+    "BUSH_dense_A": {
+      "x": 144,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "bush",
+      "blocking": false,
+      "anchor_rule": "understory"
+    },
+    "BUSH_dense_B": {
+      "x": 192,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "bush",
+      "blocking": false,
+      "anchor_rule": "understory"
+    },
+    "BUSH_dense_C": {
+      "x": 240,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "bush",
+      "blocking": false,
+      "anchor_rule": "understory"
+    },
+    "BUSH_dense_D": {
+      "x": 288,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "bush",
+      "blocking": false,
+      "anchor_rule": "understory"
+    },
+    "GROUND_foliage_A": {
+      "x": 336,
+      "y": 96,
+      "w": 48,
+      "h": 48,
+      "class": "groundcover",
+      "blocking": false,
+      "anchor_rule": "tree_bank_open_edge"
+    },
+    "GROUND_foliage_B": {
+      "x": 0,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "groundcover",
+      "blocking": false,
+      "anchor_rule": "tree_bank_open_edge"
+    },
+    "GROUND_flower_A": {
+      "x": 48,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "groundcover",
+      "blocking": false,
+      "anchor_rule": "tree_bank_open_edge"
+    },
+    "GROUND_flower_B": {
+      "x": 96,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "groundcover",
+      "blocking": false,
+      "anchor_rule": "tree_bank_open_edge"
+    },
+    "STUMP_A": {
+      "x": 144,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "forest_detail",
+      "blocking": true,
+      "anchor_rule": "forest_floor"
+    },
+    "STUMP_B": {
+      "x": 192,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "forest_detail",
+      "blocking": true,
+      "anchor_rule": "forest_floor"
+    },
+    "ROOT_A": {
+      "x": 240,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "forest_detail",
+      "blocking": true,
+      "anchor_rule": "forest_floor"
+    },
+    "ROOT_B": {
+      "x": 288,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "forest_detail",
+      "blocking": true,
+      "anchor_rule": "forest_floor"
+    },
+    "ROCK_stream_A": {
+      "x": 336,
+      "y": 144,
+      "w": 48,
+      "h": 48,
+      "class": "rock",
+      "blocking": true,
+      "anchor_rule": "stream"
+    },
+    "ROCK_stream_B": {
+      "x": 0,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "rock",
+      "blocking": true,
+      "anchor_rule": "stream"
+    },
+    "ROCK_stream_C": {
+      "x": 48,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "rock",
+      "blocking": true,
+      "anchor_rule": "stream"
+    },
+    "ROCK_ground_A": {
+      "x": 96,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "rock",
+      "blocking": true,
+      "anchor_rule": "open_edge"
+    },
+    "ROCK_ground_B": {
+      "x": 144,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "rock",
+      "blocking": true,
+      "anchor_rule": "open_edge"
+    },
+    "WATER_stream_A": {
+      "x": 192,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    },
+    "WATER_stream_B": {
+      "x": 240,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    },
+    "WATER_edge_N": {
+      "x": 288,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    },
+    "WATER_edge_E": {
+      "x": 336,
+      "y": 192,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    },
+    "WATER_edge_S": {
+      "x": 0,
+      "y": 240,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    },
+    "WATER_edge_W": {
+      "x": 48,
+      "y": 240,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    },
+    "WATER_corner_NE": {
+      "x": 96,
+      "y": 240,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    },
+    "WATER_corner_SW": {
+      "x": 144,
+      "y": 240,
+      "w": 48,
+      "h": 48,
+      "class": "water",
+      "blocking": true,
+      "anchor_rule": "stream_axis"
+    }
+  }
+}
