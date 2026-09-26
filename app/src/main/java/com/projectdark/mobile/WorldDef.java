@@ -59,7 +59,7 @@ public final class WorldDef {
     p.add(new PortalSpawn("general_shop_door","milles_interior_general_shop",1120f,448f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("church_door","milles_interior_church",1536f,560f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("inn_door","milles_interior_inn",2016f,736f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
-    p.add(new PortalSpawn("milles_south_exit_proto","PENDING_TARGET_MAP",790f,1565f,22f,EVIDENCE_GEOMETRY,"PROTOTYPE_DISABLED_TARGET_PENDING"));
+    p.add(new PortalSpawn("milles_south_exit_proto","MAP_POTE_01",790f,1565f,40f,EVIDENCE_GEOMETRY,"ADAPTED_FIELD_ENTRY_ACTIVE"));
     portalSpawns=Collections.unmodifiableList(p);
 
     List<WorldObject> o=new ArrayList<>();

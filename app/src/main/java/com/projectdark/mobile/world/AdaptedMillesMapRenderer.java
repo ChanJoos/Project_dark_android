@@ -46,8 +46,10 @@ public final class AdaptedMillesMapRenderer {
   }
 
   private final Paint outsidePaint=new Paint(),pixelPaint=new Paint(),soilPaint=new Paint(),soilEdgePaint=new Paint();
-  private final List<Path> soilContours=buildRoadContours(21.5f);
-  private final List<Path> soilEdgeContours=buildRoadContours(24.5f);
+  private final List<Path> soilContours=buildRoadContours(21.5f,AdaptedMillesIsometricTileLayer.roadPaths());
+  private final List<Path> soilEdgeContours=buildRoadContours(24.5f,AdaptedMillesIsometricTileLayer.roadPaths());
+  private final List<Path> footpathContours=buildRoadContours(11.5f,AdaptedMillesIsometricTileLayer.approachPaths());
+  private final List<Path> footpathEdgeContours=buildRoadContours(14.0f,AdaptedMillesIsometricTileLayer.approachPaths());
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
@@ -120,24 +122,28 @@ public final class AdaptedMillesMapRenderer {
     // Draw every fringe before the soil surfaces, so intersections cannot leave
     // dark seams. Geometry is built once; camera travel only translates it.
     for(Path contour:soilEdgeContours)canvas.drawPath(contour,soilEdgePaint);
-    drawRoadCaps(canvas,soilEdgePaint,24.5f);
+    for(Path contour:footpathEdgeContours)canvas.drawPath(contour,soilEdgePaint);
+    drawRoadCaps(canvas,soilEdgePaint,24.5f,AdaptedMillesIsometricTileLayer.roadPaths());
+    drawRoadCaps(canvas,soilEdgePaint,14.0f,AdaptedMillesIsometricTileLayer.approachPaths());
     for(Path contour:soilContours)canvas.drawPath(contour,soilPaint);
-    drawRoadCaps(canvas,soilPaint,21.5f);
+    for(Path contour:footpathContours)canvas.drawPath(contour,soilPaint);
+    drawRoadCaps(canvas,soilPaint,21.5f,AdaptedMillesIsometricTileLayer.roadPaths());
+    drawRoadCaps(canvas,soilPaint,11.5f,AdaptedMillesIsometricTileLayer.approachPaths());
     canvas.restore();
     soilPaint.setShader(null);
   }
 
-  private static void drawRoadCaps(Canvas canvas,Paint paint,float radius){
-    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
+  private static void drawRoadCaps(Canvas canvas,Paint paint,float radius,float[][][] paths){
+    for(float[][] points:paths){
       float[] start=points[0],end=points[points.length-1];
       canvas.drawCircle(start[0],start[1],radius,paint);
       canvas.drawCircle(end[0],end[1],radius,paint);
     }
   }
 
-  private static List<Path> buildRoadContours(float halfWidth){
+  private static List<Path> buildRoadContours(float halfWidth,float[][][] paths){
     List<Path> outlines=new ArrayList<>();int arm=0;
-    for(float[][] points:AdaptedMillesIsometricTileLayer.roadPaths()){
+    for(float[][] points:paths){
       if(points.length<2)continue;
       List<float[]> samples=new ArrayList<>();float walked=0;
       for(int segment=1;segment<points.length;segment++){

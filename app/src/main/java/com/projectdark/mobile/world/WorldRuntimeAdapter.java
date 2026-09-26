@@ -55,11 +55,16 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   /** Same canonical world movement/camera stack for non-Milles maps such as interiors. */
   public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight,
       float minX,float maxX,float minY,float maxY,List<WorldMoveTargetController.TileCenter> tiles,List<RectF> obstacles){
+    this(runtime,viewportWidth,viewportHeight,minX,maxX,minY,maxY,tiles,obstacles,false);
+  }
+
+  public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight,
+      float minX,float maxX,float minY,float maxY,List<WorldMoveTargetController.TileCenter> tiles,List<RectF> obstacles,boolean actorsBlockMovement){
     if(runtime==null||tiles==null||tiles.isEmpty())throw new IllegalArgumentException("runtime and authored tiles required");
     this.runtime=runtime;this.map=null;
     this.navigationTiles=Collections.unmodifiableList(new ArrayList<>(tiles));
     sceneMinX=minX;sceneMaxX=maxX;sceneMinY=minY;sceneMaxY=maxY;
-    sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));millesActors=false;
+    sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));millesActors=actorsBlockMovement;
     snapPlayerToNearestTraversableTile();
     camera=new WorldCameraTransform(minX,maxX,minY,maxY,viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
