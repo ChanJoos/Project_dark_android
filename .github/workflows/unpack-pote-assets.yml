@@ -1,0 +1,49 @@
+name: Unpack POTE production assets
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/unpack-pote-assets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack production pack
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf assets/pote/production
+          mkdir -p assets/pote/production
+          tmp="$(mktemp -d)"
+          unzip -q assets/POTE_production_pack_v1.zip -d "$tmp"
+          prod="$(find "$tmp" -type d -name production -print -quit)"
+          if [ -z "$prod" ]; then
+            echo "production directory not found in ZIP" >&2
+            exit 1
+          fi
+          cp -a "$prod"/. assets/pote/production/
+          png_count="$(find assets/pote/production -type f -iname '*.png' | wc -l | tr -d ' ')"
+          total_count="$(find assets/pote/production -type f | wc -l | tr -d ' ')"
+          echo "PNG=$png_count TOTAL=$total_count"
+          test "$png_count" = "59"
+          test "$total_count" = "62"
+      - name: Commit unpacked assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/pote/production
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "assets: unpack POTE production pack"
+          git push
