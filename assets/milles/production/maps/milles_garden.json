@@ -3444,8 +3444,8 @@
     {
       "id": "church_tree_east",
       "asset": "vegetation/trees/OBJ_tree_03.png",
-      "x": 1650,
-      "y": 610,
+      "x": 1630,
+      "y": 585,
       "scale": 0.46,
       "district": "east_quiet",
       "group": "church_courtyard",
@@ -3457,8 +3457,8 @@
     {
       "id": "church_bench_east",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 1595,
-      "y": 575,
+      "x": 1575,
+      "y": 550,
       "scale": 0.06,
       "district": "east_quiet",
       "group": "church_courtyard",
