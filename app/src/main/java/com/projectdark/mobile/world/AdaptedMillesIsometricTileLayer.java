@@ -89,7 +89,7 @@ public final class AdaptedMillesIsometricTileLayer {
       {{720,912},{630,940},{560,995},{535,1090},{460,1110}}, // southwest homes and well
       {{784,1168},{880,1140},{985,1120},{1120,1115}}, // south homes
       {{1060,1335},{1210,1310},{1360,1280},{1530,1240}}, // east homes from south gardens
-      {{1824,752},{1900,680},{1920,580},{1900,480},{1820,390}} // northeast residential lane hugs the east settlement edge
+      {{1824,752},{2140,752},{2140,390},{2020,390},{1820,390}} // northeast residential lane runs around the inn and east settlement edge
   };
 
   private static final List<Tile> TILES=build();
