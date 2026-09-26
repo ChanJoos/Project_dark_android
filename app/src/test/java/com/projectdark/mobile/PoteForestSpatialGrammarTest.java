@@ -9,7 +9,7 @@ public final class PoteForestSpatialGrammarTest {
   @Test public void forestUsesDenseAuthoredAssetPlacements(){
     PoteFieldRenderer renderer=new PoteFieldRenderer();
     assertEquals("POTE_ASSET_DRIVEN_FOREST_V1",PoteFieldRenderer.STATUS);
-    assertTrue("forest should be densely authored, not a sparse shell",renderer.placementCount()>=90);
+    assertTrue("forest should be densely authored, not a sparse shell",renderer.placementCount()>=105);
   }
 
   @Test public void navigationRetainsCorridorsAroundDenseGroves(){
