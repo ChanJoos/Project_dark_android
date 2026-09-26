@@ -23,7 +23,7 @@ public final class PoteVisualReviewTest {
   GameView view=new GameView(RuntimeEnvironment.getApplication()); view.layout(0,0,1536,704);
   Method enter=GameView.class.getDeclaredMethod("enterPoteField"); enter.setAccessible(true); enter.invoke(view);
   Field af=GameView.class.getDeclaredField("poteFieldAdapter"); af.setAccessible(true); com.projectdark.mobile.world.WorldRuntimeAdapter adapter=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view); WorldCameraTransform camera=adapter.camera();
-  float[][] spots={{480f,416f},{384f,256f},{640f,224f}};
+  float[][] spots={{240f,760f},{700f,500f},{1180f,520f}};
   String[] names={"pote-entry-clearing.png","pote-central-grove.png","pote-northeast-water.png"};
   for(int i=0;i<spots.length;i++){
    camera.snapTo(spots[i][0],spots[i][1]); Bitmap frame=Bitmap.createBitmap(1536,704,Bitmap.Config.ARGB_8888); view.draw(new Canvas(frame));
