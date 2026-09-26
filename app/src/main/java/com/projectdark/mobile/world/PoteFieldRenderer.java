@@ -9,7 +9,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
+import java.util.ArrayList;\nimport java.util.ArrayDeque;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -42,10 +42,20 @@ public final class PoteFieldRenderer {
   public int placementCount(){return placements.size();}
 
   public void draw(Canvas c,WorldRuntimeAdapter w){
+    if(c==null||w==null)return;drawBelow(c,w,Float.POSITIVE_INFINITY);
+  }
+
+  /** Draw terrain and objects whose ground anchors are behind the supplied actor depth. */
+  public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
-    c.drawColor(0xff241d15);
-    drawFloor(c,w);
-    for(Placement p:placements)drawPlacement(c,w,p);
+    c.drawColor(0xff241d15);drawFloor(c,w);
+    for(Placement p:placements)if(p.y<=actorY)drawPlacement(c,w,p);
+  }
+
+  /** Draw foreground canopies/props after the actor so Y-depth remains spatially believable. */
+  public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorY){
+    if(c==null||w==null)return;
+    for(Placement p:placements)if(p.y>actorY)drawPlacement(c,w,p);
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
@@ -81,8 +91,35 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
+      if(b!=null&&!name.startsWith("POTE_GD_"))b=stripEdgeMatte(b);
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
+  }
+
+  /**
+   * Production-pack lesson from Milles: cutout sprites may still carry a dark/brown source matte.
+   * Remove only edge-connected pixels similar to the corner matte; interior dark sprite pixels survive.
+   */
+  private static Bitmap stripEdgeMatte(Bitmap src){
+    if(src==null||src.getConfig()==null)return src;
+    int w=src.getWidth(),h=src.getHeight();if(w<3||h<3)return src;
+    int[] px=new int[w*h];src.getPixels(px,0,w,0,0,w,h);
+    int[] corners={px[0],px[w-1],px[(h-1)*w],px[h*w-1]};
+    int br=0,bg=0,bb=0,ba=0;for(int c:corners){ba+=(c>>>24)&255;br+=(c>>>16)&255;bg+=(c>>>8)&255;bb+=c&255;}
+    ba/=4;br/=4;bg/=4;bb/=4;if(ba<24)return src;
+    boolean[] seen=new boolean[px.length];ArrayDeque<Integer> q=new ArrayDeque<>();
+    for(int x=0;x<w;x++){q.add(x);q.add((h-1)*w+x);}for(int y=1;y<h-1;y++){q.add(y*w);q.add(y*w+w-1);}
+    final int threshold=72*72;
+    while(!q.isEmpty()){
+      int i=q.removeFirst();if(i<0||i>=px.length||seen[i])continue;seen[i]=true;
+      int c=px[i],a=(c>>>24)&255,r=(c>>>16)&255,g=(c>>>8)&255,b=c&255;
+      int dr=r-br,dg=g-bg,db=b-bb;
+      if(a<16||dr*dr+dg*dg+db*db<=threshold){
+        px[i]=c&0x00ffffff;
+        int x=i%w,y=i/w;if(x>0)q.add(i-1);if(x+1<w)q.add(i+1);if(y>0)q.add(i-w);if(y+1<h)q.add(i+w);
+      }
+    }
+    Bitmap out=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);out.setPixels(px,0,w,0,0,w,h);return out;
   }
 
   private static List<Placement> buildPlacements(){
