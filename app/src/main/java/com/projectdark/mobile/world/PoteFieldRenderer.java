@@ -91,20 +91,24 @@ public final class PoteFieldRenderer {
    * Remove only edge-connected pixels similar to the corner matte; interior dark sprite pixels survive.
    */
   private static Bitmap stripEdgeMatte(Bitmap src){
-    if(src==null||src.getConfig()==null)return src;
+    if(src==null)return src;
     int w=src.getWidth(),h=src.getHeight();if(w<3||h<3)return src;
     int[] px=new int[w*h];src.getPixels(px,0,w,0,0,w,h);
-    int[] corners={px[0],px[w-1],px[(h-1)*w],px[h*w-1]};
-    int br=0,bg=0,bb=0,ba=0;for(int c:corners){ba+=(c>>>24)&255;br+=(c>>>16)&255;bg+=(c>>>8)&255;bb+=c&255;}
-    ba/=4;br/=4;bg/=4;bb/=4;if(ba<24)return src;
+    // Many source cutouts have a transparent outer gutter and an opaque rectangular matte inside it.
+    // Find the dominant quantized opaque color instead of trusting transparent corner RGB.
+    int[] hist=new int[4096];int opaque=0;
+    for(int c:px){int aa=(c>>>24)&255;if(aa<24)continue;int rr=(c>>>20)&15,gg=(c>>>12)&15,bb=(c>>>4)&15;hist[(rr<<8)|(gg<<4)|bb]++;opaque++;}
+    int best=0,count=0;for(int i=0;i<hist.length;i++)if(hist[i]>count){count=hist[i];best=i;}
+    if(opaque==0||count<Math.max(12,opaque/80))return src;
+    int br=((best>>>8)&15)*17,bg=((best>>>4)&15)*17,bb=(best&15)*17;
     boolean[] seen=new boolean[px.length];ArrayDeque<Integer> q=new ArrayDeque<>();
     for(int x=0;x<w;x++){q.add(x);q.add((h-1)*w+x);}for(int y=1;y<h-1;y++){q.add(y*w);q.add(y*w+w-1);}
-    final int threshold=128*128;
+    final int threshold=92*92;
     while(!q.isEmpty()){
       int i=q.removeFirst();if(i<0||i>=px.length||seen[i])continue;seen[i]=true;
-      int c=px[i],a=(c>>>24)&255,r=(c>>>16)&255,g=(c>>>8)&255,b=c&255;
-      int dr=r-br,dg=g-bg,db=b-bb;
-      if(a<16||dr*dr+dg*dg+db*db<=threshold){
+      int c=px[i],aa=(c>>>24)&255,rr=(c>>>16)&255,gg=(c>>>8)&255,bl=c&255;
+      int dr=rr-br,dg=gg-bg,db=bl-bb;
+      if(aa<24||dr*dr+dg*dg+db*db<=threshold){
         px[i]=c&0x00ffffff;
         int x=i%w,y=i/w;if(x>0)q.add(i-1);if(x+1<w)q.add(i+1);if(y>0)q.add(i-w);if(y+1<h)q.add(i+w);
       }
