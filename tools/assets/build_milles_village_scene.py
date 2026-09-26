@@ -30,11 +30,11 @@ PATHS = [
 
 BUILDINGS = [
     # Canonical non-enterable homes. One visual family, placed as coherent residential frontage.
-    ("house_west", "buildings/BLD_001_house.webp", 60, 700, .92, "west_residential"),
-    ("house_southwest", "buildings/BLD_001_house.webp", 400, 1040, .96, "south_residences"),
-    ("house_south", "buildings/BLD_001_house.webp", 1120, 1050, .94, "south_residences"),
-    ("house_east", "buildings/BLD_001_house.webp", 1530, 1170, .95, "east_residences"),
-    ("house_northeast", "buildings/BLD_001_house.webp", 1880, 320, .92, "east_quiet"),
+    ("house_west", "buildings/BLD_001_house.png", 60, 700, .92, "west_residential"),
+    ("house_southwest", "buildings/BLD_001_house.png", 400, 1040, .96, "south_residences"),
+    ("house_south", "buildings/BLD_001_house.png", 1120, 1050, .94, "south_residences"),
+    ("house_east", "buildings/BLD_001_house.png", 1530, 1170, .95, "east_residences"),
+    ("house_northeast", "buildings/BLD_001_house.png", 1880, 320, .92, "east_quiet"),
 ]
 
 # A pair of small gardens reuses the ten-piece open-gate footprint of the
