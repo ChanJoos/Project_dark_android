@@ -31,5 +31,5 @@ public final class PoteFieldDef {
     return Collections.unmodifiableList(out);
   }
   public static boolean atExit(float x,float y){float dx=x-EXIT_X,dy=y-EXIT_Y;return dx*dx+dy*dy<=EXIT_RADIUS*EXIT_RADIUS;}
-  private static boolean blocked(float x,float y){for(RectF r:obstacles())if(r.contains(x,y))return true;return false;}
+  private static boolean blocked(float x,float y){for(RectF r:obstacles())if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom)return true;return false;}
 }
