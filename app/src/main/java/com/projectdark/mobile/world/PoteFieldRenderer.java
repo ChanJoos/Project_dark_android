@@ -81,9 +81,16 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!name.startsWith("POTE_GD_"))b=stripEdgeMatte(b);
+      if(b!=null&&!name.startsWith("POTE_GD_"))b=trimSourceEdge(stripEdgeMatte(b));
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
+  }
+
+  private static Bitmap trimSourceEdge(Bitmap src){
+    if(src==null||src.getWidth()<=8||src.getHeight()<=8)return src;
+    // Source extraction occasionally leaves a 1-2 px crop/separator rule on the outer edge.
+    // Trim two pixels symmetrically; anchor remains effectively unchanged at gameplay scale.
+    return Bitmap.createBitmap(src,2,2,src.getWidth()-4,src.getHeight()-4);
   }
 
   /**
