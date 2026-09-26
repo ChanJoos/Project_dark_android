@@ -22,7 +22,7 @@ public final class PoteVisualReviewTest {
  @Test public void renderPoteForestReferenceFrames() throws Exception {
   GameView view=new GameView(RuntimeEnvironment.getApplication()); view.layout(0,0,1536,704);
   Method enter=GameView.class.getDeclaredMethod("enterPoteField"); enter.setAccessible(true); enter.invoke(view);
-  Field cf=GameView.class.getDeclaredField("camera"); cf.setAccessible(true); WorldCameraTransform camera=(WorldCameraTransform)cf.get(view);
+  Field af=GameView.class.getDeclaredField("poteFieldAdapter"); af.setAccessible(true); com.projectdark.mobile.world.WorldRuntimeAdapter adapter=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view); WorldCameraTransform camera=adapter.camera();
   float[][] spots={{480f,416f},{384f,256f},{640f,224f}};
   String[] names={"pote-entry-clearing.png","pote-central-grove.png","pote-northeast-water.png"};
   for(int i=0;i<spots.length;i++){
