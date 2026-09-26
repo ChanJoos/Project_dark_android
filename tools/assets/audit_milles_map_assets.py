@@ -72,7 +72,7 @@ def main() -> None:
         "street/OBJ_lamp_milles_rope.png",
         "street/OBJ_tree_ring_milles_reference.png",
         "structures/fences/OBJ_palisade_milles_rail.png",
-        "buildings/BLD_001_house.webp",
+        "buildings/BLD_001_house.png",
     ):
         assert (PRODUCTION / rel).is_file(), f"missing reusable family: {rel}"
     renderer = RENDERER.read_text(encoding="utf-8")
@@ -120,7 +120,7 @@ def main() -> None:
     assert services == service_ids, f"unexpected enterable buildings: {services}"
     houses = [item for item in items if item["id"].startswith("house_")]
     assert len(houses) == 5, "Milles needs five authored non-enterable house placements"
-    assert all(item["asset"] == "buildings/BLD_001_house.webp" for item in houses)
+    assert all(item["asset"] == "buildings/BLD_001_house.png" for item in houses)
     assert all(item.get("function") == "residence" and item.get("enterable") is False for item in houses)
     forbidden_ids = {"west_armorer", "south_flower_shop", "south_library", "east_guild", "north_healer", "waterside_house"}
     assert not forbidden_ids.intersection(ids), f"legacy special buildings returned: {forbidden_ids.intersection(ids)}"
