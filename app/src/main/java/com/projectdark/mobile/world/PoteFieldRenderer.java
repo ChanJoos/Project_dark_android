@@ -108,7 +108,10 @@ public final class PoteFieldRenderer {
       int i=q.removeFirst();if(i<0||i>=px.length||seen[i])continue;seen[i]=true;
       int c=px[i],aa=(c>>>24)&255,rr=(c>>>16)&255,gg=(c>>>8)&255,bl=c&255;
       int dr=rr-br,dg=gg-bg,db=bl-bb;
-      if(aa<24||dr*dr+dg*dg+db*db<=threshold){
+      // Also remove edge-connected near-black scan/matte remnants. This is intentionally
+      // edge-connected only, so legitimate dark bark/shadow pixels inside the sprite survive.
+      int lum=(rr*3+gg*4+bl)/8;
+      if(aa<24||dr*dr+dg*dg+db*db<=threshold||lum<28){
         px[i]=c&0x00ffffff;
         int x=i%w,y=i/w;if(x>0)q.add(i-1);if(x+1<w)q.add(i+1);if(y>0)q.add(i-w);if(y+1<h)q.add(i+w);
       }
@@ -118,11 +121,16 @@ public final class PoteFieldRenderer {
 
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
-    // WATER POCKETS: reference-like irregular pools/short runs, not repeated rectangular tiles.
-    water(p,1110,250,2); water(p,1080,385,4); water(p,1135,515,6); water(p,1160,650,3);
-    rock(p,1025,260,1);rock(p,1195,330,2);rock(p,1015,455,3);rock(p,1210,620,4);rock(p,1105,700,5);
-    bank(p,1010,290,1);bank(p,1205,370,2);bank(p,1000,500,3);bank(p,1220,660,4);
-    ground(p,995,315,2);ground(p,1225,410,5);bush(p,980,350,4);bush(p,1240,520,6);detail(p,1020,590,1);
+    // EAST STREAM: overlapping, gently meandering sequence. The earlier isolated water pockets
+    // read as unrelated props; keep the water visually continuous and wrap it with bank/rock/moisture
+    // vegetation so every water asset has a spatial reason to be there.
+    water(p,1110,225,2); water(p,1125,305,4); water(p,1100,385,6); water(p,1115,465,3);
+    water(p,1140,545,5); water(p,1160,625,1); water(p,1170,705,4);
+    rock(p,1025,245,1);rock(p,1200,315,2);rock(p,1015,430,3);rock(p,1215,585,4);rock(p,1110,745,5);
+    bank(p,1010,270,1);bank(p,1205,350,2);bank(p,1000,485,3);bank(p,1220,645,4);bank(p,1125,760,5);
+    ground(p,990,305,2);ground(p,1230,400,5);ground(p,1030,555,4);ground(p,1225,720,6);
+    bush(p,970,345,4);bush(p,1240,500,6);bush(p,1035,640,2);bush(p,1240,700,8);
+    detail(p,1020,575,1);detail(p,1200,760,5);
 
     // NORTH/WEST FOREST WALL: large canopy -> small tree -> bush -> groundcover.
     tree(p,135,180,1,.78f);tree(p,245,150,2,.78f);tree(p,365,145,3,.78f);
@@ -159,9 +167,13 @@ public final class PoteFieldRenderer {
     stump(p,250,790,2);ground(p,285,820,6);detail(p,330,805,4);
     bush(p,165,735,8);bush(p,410,815,7);
 
-    // Forest-floor variation and small landmarks along corridors.
+    // Forest-floor variation and corridor-edge clusters. Keep the actual walking spine open,
+    // but avoid the "objects floating on a brown board" look by chaining low vegetation along it.
     detail(p,520,330,1);detail(p,690,300,3);detail(p,830,445,2);detail(p,650,760,4);
     ground(p,470,460,2);ground(p,620,445,1);ground(p,845,555,5);ground(p,730,675,6);
+    ground(p,560,470,3);ground(p,760,405,4);ground(p,790,620,2);ground(p,430,760,5);
+    bush(p,505,485,2);bush(p,705,420,5);bush(p,805,590,3);bush(p,455,720,1);
+    detail(p,600,475,5);detail(p,755,455,2);detail(p,785,665,4);detail(p,500,745,1);
     rock(p,545,280,1);rock(p,720,575,5);stump(p,800,585,1);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
