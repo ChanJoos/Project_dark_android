@@ -131,9 +131,9 @@ public final class PoteFieldRenderer {
       for(int y=0;y<h;y++){
         int c=px[y*w+x],aa=(c>>>24)&255;if(aa<24)continue;solid++;
         int rr=(c>>>16)&255,gg=(c>>>8)&255,bl=c&255;
-        if((rr*3+gg*4+bl)/8<30)dark++;
+        if((rr*3+gg*4+bl)/8<75)dark++;
       }
-      if(solid>Math.max(12,(int)(h*.55f))&&dark>=solid*.82f){
+      if(solid>Math.max(12,(int)(h*.45f))&&dark>=solid*.65f){
         for(int y=0;y<h;y++)px[y*w+x]&=0x00ffffff;
       }
     }
