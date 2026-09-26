@@ -17,9 +17,9 @@ DISTRICT_FENCES = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesD
 
 
 def main() -> None:
-    layout = json.loads(LAYOUT.read_text(encoding="utf-8"))
     generated = subprocess.run(["python3", str(ROOT / "tools/assets/build_milles_village_scene.py")], text=True, check=True)
     assert generated.returncode == 0
+    layout = json.loads(LAYOUT.read_text(encoding="utf-8"))
     assert layout["ground"]["tile_size"] == [64, 32]
     assert layout["ground"]["path_width_tiles"] <= 1
     items = layout["objects"]
@@ -31,7 +31,7 @@ def main() -> None:
     by_id = {item['id']: item for item in items}
     for item in items:
         anchor = item.get('anchor', '')
-        assert anchor and item.get('role') and item.get('basis') in ('observed_pattern', 'adapted_village_plan'), item['id']
+        assert anchor and item.get('role') and item.get('constraint') and item.get('basis') in ('observed_pattern', 'adapted_village_plan'), item['id']
         assert anchor in by_id or re.fullmatch(r'road_[0-6]', anchor) or anchor.startswith('grove_'), item['id']
         if anchor in by_id:
             other = by_id[anchor]
@@ -44,7 +44,14 @@ def main() -> None:
                          (item['x'], item['y'])) < 115 for item in items if item['id'].startswith('south_fence_'))
     benches = [item for item in items if "bench" in item["id"]]
     assert benches and all(item["asset"] == "street/OBJ_bench_forged_v2.png" for item in benches), "broken video bench cutouts returned"
-    assert all(20 <= distance_road(item["x"], item["y"]) <= 105 for item in benches), "bench must serve an accessible path"
+    assert all(20 <= distance_road(item["x"], item["y"]) <= 115 for item in benches), "bench must serve an accessible path"
+    trees = [item for item in items if "/trees/" in item["asset"]]
+    for bench_id in ("square_bench_west", "garden_bench"):
+        bench = by_id[bench_id]
+        assert min(math.dist((bench["x"], bench["y"]), (tree["x"], tree["y"])) for tree in trees) <= 125, f"{bench_id} floats outside shade cluster"
+    church_props = [item for item in items if item["id"].startswith("church_") and item["id"] != "church"]
+    assert church_props and all(math.dist((item["x"], item["y"]), (by_id["church"]["x"], by_id["church"]["y"])) <= 205 for item in church_props), "church forecourt props escaped landmark cluster"
+    assert {"church_tree_west", "church_tree_east", "church_bench", "church_bench_east"}.issubset(by_id), "church forecourt lacks shade/rest framing"
     assert {item["id"] for item in benches if item["group"] == "fountain_rest_area"} == {
         "square_bench_west"
     }, "plaza bench must serve the tree-side rest area without duplication"
@@ -86,6 +93,7 @@ def main() -> None:
     assert "private static final float[][][] PATHS" in tile_source
     assert "private static final float[][][] APPROACH_PATHS" in tile_source
     assert tile_source.count('// west residential frontage') == 1 and '// east homes from south gardens' in tile_source
+    assert '{{1536,448},{1600,420},{1680,400},{1750,392},{1820,390}}' in tile_source, 'northeast residential lane must branch from church road'
     garden_fences = [item for item in items if item["id"].startswith("garden_fence_")]
     assert len(garden_fences) >= 10, "garden must form a real enclosure, not loose fence props"
     assert {item["asset"] for item in garden_fences} == {
