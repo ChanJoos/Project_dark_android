@@ -63,9 +63,12 @@ public final class PoteFieldRenderer {
   }
 
   private void drawTile(Canvas c,WorldRuntimeAdapter w,String asset,float x,float y){
-    Bitmap b=bitmap(asset);WorldCameraTransform.Point q=w.worldToScreen(x,y);
-    RectF dst=new RectF(q.x-TILE_W*.5f-1,q.y-TILE_H*.5f-1,q.x+TILE_W*.5f+1,q.y+TILE_H*.5f+1);
-    if(b!=null)c.drawBitmap(b,null,dst,pixel);
+    Bitmap b=bitmap(asset);if(b==null)return;WorldCameraTransform.Point q=w.worldToScreen(x,y);
+    // Ground sprites are authored as overlapping forest-floor patches (~148x111).
+    // Keep that footprint so the floor reads as continuous soil rather than a diamond grid.
+    float ww=b.getWidth(),hh=b.getHeight();
+    RectF dst=new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh*.5f),Math.round(q.x+ww*.5f),Math.round(q.y+hh*.5f));
+    c.drawBitmap(b,null,dst,pixel);
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
