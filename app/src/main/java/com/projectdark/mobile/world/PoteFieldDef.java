@@ -10,7 +10,7 @@ public final class PoteFieldDef {
   public static final String MAP_ID="MAP_POTE_01";
   public static final float MIN_X=96f,MAX_X=864f,MIN_Y=64f,MAX_Y=512f;
   public static final float ENTRY_X=448f,ENTRY_Y=416f;
-  public static final float EXIT_X=512f,EXIT_Y=448f;
+  public static final float EXIT_X=480f,EXIT_Y=448f;
   public static final float EXIT_RADIUS=36f;
   private PoteFieldDef(){}
 
