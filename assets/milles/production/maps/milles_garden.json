@@ -507,7 +507,7 @@
     },
     {
       "id": "house_west",
-      "asset": "buildings/BLD_001_house.webp",
+      "asset": "buildings/BLD_001_house.png",
       "x": 60,
       "y": 700,
       "scale": 0.86,
@@ -521,7 +521,7 @@
     },
     {
       "id": "house_southwest",
-      "asset": "buildings/BLD_001_house.webp",
+      "asset": "buildings/BLD_001_house.png",
       "x": 400,
       "y": 1040,
       "scale": 0.92,
@@ -535,7 +535,7 @@
     },
     {
       "id": "house_south",
-      "asset": "buildings/BLD_001_house.webp",
+      "asset": "buildings/BLD_001_house.png",
       "x": 1120,
       "y": 1050,
       "scale": 0.92,
@@ -549,7 +549,7 @@
     },
     {
       "id": "house_east",
-      "asset": "buildings/BLD_001_house.webp",
+      "asset": "buildings/BLD_001_house.png",
       "x": 1530,
       "y": 1170,
       "scale": 0.92,
@@ -563,7 +563,7 @@
     },
     {
       "id": "house_northeast",
-      "asset": "buildings/BLD_001_house.webp",
+      "asset": "buildings/BLD_001_house.png",
       "x": 1880,
       "y": 320,
       "scale": 0.89,
