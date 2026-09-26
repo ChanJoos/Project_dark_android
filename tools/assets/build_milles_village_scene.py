@@ -65,6 +65,9 @@ STORY_PROPS = [
     ("church_bench", "street/OBJ_bench_forged_v2.png", 1530, 548, .060, "east_quiet"),
     ("church_flower_a", "vegetation/flowers/OBJ_flower_01.png", 1680, 570, .28, "east_quiet"),
     ("church_flower_b", "vegetation/flowers/OBJ_flower_03.png", 1650, 550, .30, "east_quiet"),
+    ("church_tree_west", "vegetation/trees/OBJ_tree_01.png", 1435, 590, .46, "east_quiet"),
+    ("church_tree_east", "vegetation/trees/OBJ_tree_03.png", 1650, 610, .46, "east_quiet"),
+    ("church_bench_east", "street/OBJ_bench_forged_v2.png", 1595, 575, .060, "east_quiet"),
     ("inn_cart", "market/OBJ_cart.png", 2100, 748, .25, "waterside"),
     ("inn_crates", "storage/OBJ_crate.png", 2090, 692, .25, "waterside"),
     ("inn_sacks", "storage/OBJ_sack.png", 2090, 638, .30, "waterside"),
@@ -149,6 +152,8 @@ def relate(objects):
             anchor, role = name.split('_understory_')[0] + '_tree_' + name.split('_understory_')[1].split('_')[0], 'tree_understory'
         elif '_tree_' in name and any(name.startswith(zone + '_') for zone, _ in GROVES):
             anchor, role = 'grove_' + next(zone for zone, _ in GROVES if name.startswith(zone + '_')), 'woodland_edge'
+        elif name == 'garden_bench':
+            anchor, role = 'garden_tree_1', 'shaded_rest_area'
         elif name == 'garden_flowerbed_2':
             anchor, role = 'garden_bench', 'benchside_planting'
         elif name.startswith(('garden_fence_', 'garden_flowerbed_', 'garden_ring')):
@@ -187,6 +192,19 @@ def relate(objects):
         else:
             anchor, role = 'road_' + str(min(range(len(PATHS)), key=lambda i: min(distance_segment(o['x'], o['y'], *a, *b) for a, b in zip(PATHS[i], PATHS[i][1:])))), 'roadside_or_district_edge'
         o['anchor'], o['role'] = anchor, role
+        # Spatial contract: metadata is not enough; each role declares the physical rule CI must enforce.
+        if role in ('shaded_rest_area', 'garden_rest'):
+            o['constraint'] = 'near_shade_and_path'
+        elif role in ('building_entrance', 'shop_frontage', 'inn_frontage', 'residential_frontage', 'destination_or_park'):
+            o['constraint'] = 'connected_to_walk_network'
+        elif role == 'courtyard_use':
+            o['constraint'] = 'inside_landmark_forecourt'
+        elif role in ('enclosed_orchard_boundary', 'enclosed_garden_boundary', 'residential_garden_boundary'):
+            o['constraint'] = 'clustered_boundary'
+        elif role in ('woodland_edge', 'tree_understory'):
+            o['constraint'] = 'clustered_greenery'
+        else:
+            o['constraint'] = 'district_context'
         o['basis'] = 'observed_pattern' if role in ('enclosed_orchard_boundary', 'enclosed_garden_boundary', 'residential_garden_boundary', 'plaza_rest_or_wayfinding', 'tree_understory', 'woodland_edge', 'shop_frontage', 'irregular_grass_verge') else 'adapted_village_plan'
         if not (anchor in ids or anchor.startswith('road_') and anchor[5:].isdigit() and int(anchor[5:]) < len(PATHS) or anchor.startswith('grove_') and anchor[6:] in dict(GROVES)):
             raise ValueError(f'{name}: unknown spatial anchor {anchor}')
