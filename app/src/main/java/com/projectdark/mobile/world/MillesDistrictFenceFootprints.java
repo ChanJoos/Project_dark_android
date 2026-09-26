@@ -6,16 +6,16 @@ import java.util.List;
 final class MillesDistrictFenceFootprints {
   private MillesDistrictFenceFootprints(){}
   static void addTo(List<MillesProductionCollision.Footprint> out){
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_nw_1", MillesProductionCollision.Kind.FENCE, 257f, 762f, 295f, 778f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_nw_2", MillesProductionCollision.Kind.FENCE, 291f, 742f, 329f, 758f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_nw_3", MillesProductionCollision.Kind.FENCE, 325f, 722f, 363f, 738f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_ne_1", MillesProductionCollision.Kind.FENCE, 357f, 722f, 395f, 738f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_ne_2", MillesProductionCollision.Kind.FENCE, 391f, 742f, 429f, 758f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_ne_3", MillesProductionCollision.Kind.FENCE, 425f, 762f, 463f, 778f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_se_1", MillesProductionCollision.Kind.FENCE, 425f, 782f, 463f, 798f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_se_2", MillesProductionCollision.Kind.FENCE, 391f, 802f, 429f, 818f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_se_3", MillesProductionCollision.Kind.FENCE, 357f, 822f, 395f, 838f));
-    out.add(new MillesProductionCollision.Footprint("orchard_fence_sw_3", MillesProductionCollision.Kind.FENCE, 325f, 822f, 363f, 838f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_nw_1", MillesProductionCollision.Kind.FENCE, 437f, 762f, 475f, 778f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_nw_2", MillesProductionCollision.Kind.FENCE, 471f, 742f, 509f, 758f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_nw_3", MillesProductionCollision.Kind.FENCE, 505f, 722f, 543f, 738f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_ne_1", MillesProductionCollision.Kind.FENCE, 537f, 722f, 575f, 738f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_ne_2", MillesProductionCollision.Kind.FENCE, 571f, 742f, 609f, 758f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_ne_3", MillesProductionCollision.Kind.FENCE, 605f, 762f, 643f, 778f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_se_1", MillesProductionCollision.Kind.FENCE, 605f, 782f, 643f, 798f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_se_2", MillesProductionCollision.Kind.FENCE, 571f, 802f, 609f, 818f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_se_3", MillesProductionCollision.Kind.FENCE, 537f, 822f, 575f, 838f));
+    out.add(new MillesProductionCollision.Footprint("orchard_fence_sw_3", MillesProductionCollision.Kind.FENCE, 505f, 822f, 543f, 838f));
     out.add(new MillesProductionCollision.Footprint("south_fence_nw_1", MillesProductionCollision.Kind.FENCE, 827f, 1212f, 865f, 1228f));
     out.add(new MillesProductionCollision.Footprint("south_fence_nw_2", MillesProductionCollision.Kind.FENCE, 861f, 1192f, 899f, 1208f));
     out.add(new MillesProductionCollision.Footprint("south_fence_nw_3", MillesProductionCollision.Kind.FENCE, 895f, 1172f, 933f, 1188f));
