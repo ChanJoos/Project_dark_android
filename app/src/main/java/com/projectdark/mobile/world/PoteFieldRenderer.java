@@ -60,20 +60,9 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // Continuous earth foundation first; authored GD art is atmosphere, never a visible tile lattice.
+    // Continuous authored-tone earth. Never stamp rectangular GD source patches into the live map:
+    // Milles QA proved visible terrain seams are worse than restrained base terrain.
     pixel.setColor(0xff563b24);pixel.setStyle(Paint.Style.FILL);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    float[][] patches={{90,120},{390,135},{720,120},{1040,140},{1320,150},{180,390},{520,400},{850,390},{1180,420},{220,700},{570,720},{900,700},{1250,735}};
-    for(int i=0;i<patches.length;i++){
-      float[] q=patches[i];int id=1+(i*5)%7;
-      drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",id),q[0],q[1],3.25f,58);
-    }
-  }
-
-  private void drawGroundPatch(Canvas c,WorldRuntimeAdapter w,String asset,float x,float y,float scale,int alpha){
-    Bitmap bmp=bitmap(asset);if(bmp==null)return;WorldCameraTransform.Point q=w.worldToScreen(x,y);
-    float ww=bmp.getWidth()*scale,hh=bmp.getHeight()*scale;
-    RectF dst=new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh*.5f),Math.round(q.x+ww*.5f),Math.round(q.y+hh*.5f));
-    int old=pixel.getAlpha();pixel.setAlpha(alpha);c.drawBitmap(bmp,null,dst,pixel);pixel.setAlpha(old);
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
