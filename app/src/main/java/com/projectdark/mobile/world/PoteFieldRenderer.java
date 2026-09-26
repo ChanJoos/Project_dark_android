@@ -94,7 +94,10 @@ public final class PoteFieldRenderer {
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
     // STREAM AXIS: water first, then bank rocks, moisture vegetation. It bends through the east side.
-    water(p,1090,190,1); water(p,1110,245,2); water(p,1090,300,3);\n    water(p,1055,355,4); water(p,1045,410,1); water(p,1070,465,2);\n    water(p,1110,520,3); water(p,1140,575,4); water(p,1130,630,5);\n    water(p,1160,685,6);
+    water(p,1090,190,1); water(p,1110,245,2); water(p,1090,300,3);
+    water(p,1055,355,4); water(p,1045,410,1); water(p,1070,465,2);
+    water(p,1110,520,3); water(p,1140,575,4); water(p,1130,630,5);
+    water(p,1160,685,6);
     rock(p,1035,245,1);rock(p,1200,320,2);rock(p,1015,455,3);rock(p,1210,650,4);rock(p,1110,785,5);
     bank(p,1010,275,1);bank(p,1215,370,2);bank(p,1000,520,3);bank(p,1230,705,4);bank(p,1100,825,5);ground(p,995,300,2);ground(p,1225,410,5);bush(p,980,350,4);bush(p,1240,520,6);detail(p,1020,600,1);
 
