@@ -24,7 +24,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": true,
-      "function": "reagent_shop"
+      "function": "reagent_shop",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "potion_shop_portal",
@@ -37,7 +38,8 @@
       "group": "shop_fronts",
       "anchor": "potion_shop",
       "role": "building_entrance",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "weapon_shop",
@@ -51,7 +53,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": true,
-      "function": "equipment_shop"
+      "function": "equipment_shop",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "bank",
@@ -65,7 +68,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": true,
-      "function": "bank"
+      "function": "bank",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "church",
@@ -79,7 +83,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": true,
-      "function": "church"
+      "function": "church",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "inn",
@@ -93,7 +98,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": true,
-      "function": "inn"
+      "function": "inn",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "civic_fountain",
@@ -106,7 +112,8 @@
       "group": "fountain_rest_area",
       "anchor": "road_0",
       "role": "village_centre",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "square_bench_west",
@@ -118,19 +125,21 @@
       "group": "fountain_rest_area",
       "anchor": "civic_fountain",
       "role": "plaza_rest_or_wayfinding",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "garden_bench",
       "asset": "street/OBJ_bench_forged_v2.png",
-      "x": 1308,
-      "y": 702,
+      "x": 1128,
+      "y": 650,
       "scale": 0.06,
       "district": "garden",
       "group": "garden",
-      "anchor": "road_3",
-      "role": "roadside_or_district_edge",
-      "basis": "adapted_village_plan"
+      "anchor": "garden_tree_1",
+      "role": "shaded_rest_area",
+      "basis": "adapted_village_plan",
+      "constraint": "near_shade_and_path"
     },
     {
       "id": "garden_tree_1",
@@ -142,7 +151,8 @@
       "group": "enclosed_garden",
       "anchor": "road_2",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "garden_tree_2",
@@ -154,7 +164,8 @@
       "group": "enclosed_garden",
       "anchor": "road_2",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "square_tree_west",
@@ -166,7 +177,8 @@
       "group": "fountain_rest_area",
       "anchor": "square_bench_west",
       "role": "shaded_rest_area",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "near_shade_and_path"
     },
     {
       "id": "boundary_tree_west",
@@ -178,7 +190,8 @@
       "group": "village_edge",
       "anchor": "road_4",
       "role": "roadside_or_district_edge",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "boundary_tree_north",
@@ -190,7 +203,8 @@
       "group": "village_edge",
       "anchor": "road_2",
       "role": "roadside_or_district_edge",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "boundary_tree_east",
@@ -202,7 +216,8 @@
       "group": "village_edge",
       "anchor": "road_5",
       "role": "roadside_or_district_edge",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "waterside_tree",
@@ -214,7 +229,8 @@
       "group": "pond_rest_area",
       "anchor": "waterside_pond",
       "role": "shoreline_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "garden_fence_nw_1",
@@ -227,7 +243,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_nw_2",
@@ -239,7 +256,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_nw_3",
@@ -251,7 +269,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_ne_1",
@@ -263,7 +282,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_ne_2",
@@ -275,7 +295,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_ne_3",
@@ -287,7 +308,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_se_1",
@@ -299,7 +321,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_se_2",
@@ -311,7 +334,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_se_3",
@@ -323,7 +347,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "garden_fence_sw_3",
@@ -335,7 +360,8 @@
       "group": "enclosed_garden",
       "anchor": "garden_tree_1",
       "role": "enclosed_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "square_lamp_west",
@@ -347,7 +373,8 @@
       "group": "fountain_rest_area",
       "anchor": "civic_fountain",
       "role": "plaza_rest_or_wayfinding",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "south_gate_lamp",
@@ -359,7 +386,8 @@
       "group": "south_gate",
       "anchor": "road_4",
       "role": "household_service",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "village_noticeboard",
@@ -371,7 +399,8 @@
       "group": "fountain_rest_area",
       "anchor": "civic_fountain",
       "role": "plaza_rest_or_wayfinding",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "market_barrel_1",
@@ -383,7 +412,8 @@
       "group": "shop_fronts",
       "anchor": "potion_shop",
       "role": "shop_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "market_crate_1",
@@ -395,7 +425,8 @@
       "group": "shop_fronts",
       "anchor": "potion_shop",
       "role": "shop_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "market_cart",
@@ -407,7 +438,8 @@
       "group": "shop_fronts",
       "anchor": "bank",
       "role": "bank_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "garden_flowerbed_1",
@@ -419,19 +451,21 @@
       "group": "garden",
       "anchor": "garden_tree_1",
       "role": "garden_planting",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "garden_flowerbed_2",
       "asset": "vegetation/flowers/OBJ_flower_03.png",
-      "x": 1336,
-      "y": 636,
+      "x": 1160,
+      "y": 668,
       "scale": 0.34,
       "district": "garden",
       "group": "garden",
       "anchor": "garden_bench",
       "role": "benchside_planting",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "square_shrub_west",
@@ -443,19 +477,21 @@
       "group": "fountain_rest_area",
       "anchor": "square_bench_west",
       "role": "shaded_rest_area",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "near_shade_and_path"
     },
     {
       "id": "square_shrub_east",
       "asset": "vegetation/bushes/OBJ_bush_03.png",
-      "x": 1176,
-      "y": 584,
+      "x": 1120,
+      "y": 620,
       "scale": 0.35,
-      "district": "civic_square",
+      "district": "garden",
       "group": "fountain_rest_area",
       "anchor": "garden_tree_1",
       "role": "garden_edge_planting",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "square_grass_1",
@@ -467,19 +503,21 @@
       "group": "fountain_rest_area",
       "anchor": "road_0",
       "role": "roadside_grass",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "square_grass_2",
       "asset": "vegetation/flowers/OBJ_flower_01.png",
-      "x": 984,
-      "y": 532,
+      "x": 1035,
+      "y": 600,
       "scale": 0.16,
       "district": "garden",
       "group": "fountain_rest_area",
       "anchor": "garden_tree_1",
       "role": "garden_edge_planting",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "waterside_bush",
@@ -491,7 +529,8 @@
       "group": "pond_rest_area",
       "anchor": "waterside_pond",
       "role": "shoreline_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "waterside_pond",
@@ -503,7 +542,8 @@
       "group": "pond_rest_area",
       "anchor": "road_5",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "house_west",
@@ -517,7 +557,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": false,
-      "function": "residence"
+      "function": "residence",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "house_southwest",
@@ -531,7 +572,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": false,
-      "function": "residence"
+      "function": "residence",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "house_south",
@@ -545,7 +587,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": false,
-      "function": "residence"
+      "function": "residence",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "house_east",
@@ -559,7 +602,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": false,
-      "function": "residence"
+      "function": "residence",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "house_northeast",
@@ -573,7 +617,8 @@
       "role": "destination_or_park",
       "basis": "adapted_village_plan",
       "enterable": false,
-      "function": "residence"
+      "function": "residence",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "craft_hay",
@@ -585,7 +630,8 @@
       "group": "shop_fronts",
       "anchor": "house_west",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "craft_logs",
@@ -597,7 +643,8 @@
       "group": "shop_fronts",
       "anchor": "house_west",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "craft_sack",
@@ -609,7 +656,8 @@
       "group": "shop_fronts",
       "anchor": "house_west",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "craft_barrels",
@@ -621,7 +669,8 @@
       "group": "shop_fronts",
       "anchor": "house_west",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "craft_rock",
@@ -633,7 +682,8 @@
       "group": "shop_fronts",
       "anchor": "house_west",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "craft_cart",
@@ -645,7 +695,8 @@
       "group": "shop_fronts",
       "anchor": "potion_shop",
       "role": "workshop_storage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "craft_notice",
@@ -657,7 +708,8 @@
       "group": "shop_fronts",
       "anchor": "house_west",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "market_stall",
@@ -669,7 +721,8 @@
       "group": "shop_fronts",
       "anchor": "bank",
       "role": "bank_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "market_tent",
@@ -681,7 +734,8 @@
       "group": "shop_fronts",
       "anchor": "market_stall",
       "role": "shop_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "market_crates",
@@ -693,7 +747,8 @@
       "group": "shop_fronts",
       "anchor": "market_stall",
       "role": "shop_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "market_sacks",
@@ -705,7 +760,8 @@
       "group": "shop_fronts",
       "anchor": "market_stall",
       "role": "shop_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "market_barrel",
@@ -717,7 +773,8 @@
       "group": "shop_fronts",
       "anchor": "market_stall",
       "role": "shop_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "market_hay",
@@ -729,7 +786,8 @@
       "group": "shop_fronts",
       "anchor": "market_stall",
       "role": "shop_frontage",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "church_statue",
@@ -741,7 +799,8 @@
       "group": "church_courtyard",
       "anchor": "church",
       "role": "courtyard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "inside_landmark_forecourt"
     },
     {
       "id": "church_arch",
@@ -753,7 +812,8 @@
       "group": "church_courtyard",
       "anchor": "church",
       "role": "courtyard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "inside_landmark_forecourt"
     },
     {
       "id": "church_bench",
@@ -765,7 +825,8 @@
       "group": "church_courtyard",
       "anchor": "church",
       "role": "courtyard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "inside_landmark_forecourt"
     },
     {
       "id": "church_flower_a",
@@ -777,7 +838,8 @@
       "group": "church_courtyard",
       "anchor": "church",
       "role": "courtyard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "inside_landmark_forecourt"
     },
     {
       "id": "church_flower_b",
@@ -789,7 +851,8 @@
       "group": "church_courtyard",
       "anchor": "church",
       "role": "courtyard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "inside_landmark_forecourt"
     },
     {
       "id": "inn_cart",
@@ -801,7 +864,8 @@
       "group": "inn_frontage",
       "anchor": "inn",
       "role": "inn_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "inn_crates",
@@ -813,7 +877,8 @@
       "group": "inn_frontage",
       "anchor": "inn",
       "role": "inn_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "inn_sacks",
@@ -825,7 +890,8 @@
       "group": "inn_frontage",
       "anchor": "inn",
       "role": "inn_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "inn_bench",
@@ -837,7 +903,8 @@
       "group": "inn_frontage",
       "anchor": "inn",
       "role": "inn_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "inn_lantern",
@@ -849,7 +916,8 @@
       "group": "inn_frontage",
       "anchor": "inn",
       "role": "inn_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "pond_rocks",
@@ -861,7 +929,8 @@
       "group": "pond_rest_area",
       "anchor": "waterside_pond",
       "role": "shoreline_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "pond_reeds",
@@ -873,7 +942,8 @@
       "group": "pond_rest_area",
       "anchor": "waterside_pond",
       "role": "shoreline_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "pond_bench",
@@ -885,7 +955,8 @@
       "group": "pond_rest_area",
       "anchor": "waterside_pond",
       "role": "shoreline_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "south_well",
@@ -897,7 +968,8 @@
       "group": "south_residences",
       "anchor": "house_southwest",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "south_hay",
@@ -909,7 +981,8 @@
       "group": "south_residences",
       "anchor": "house_southwest",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "south_logs",
@@ -921,7 +994,8 @@
       "group": "south_residences",
       "anchor": "house_southwest",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "south_crates",
@@ -933,7 +1007,8 @@
       "group": "south_residences",
       "anchor": "house_south",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "south_flowerbed_a",
@@ -945,7 +1020,8 @@
       "group": "south_residences",
       "anchor": "house_southwest",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "south_flowerbed_b",
@@ -957,7 +1033,8 @@
       "group": "south_residences",
       "anchor": "house_south",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "orchard_tree",
@@ -969,7 +1046,8 @@
       "group": "orchard_enclosure",
       "anchor": "road_4",
       "role": "destination_or_park",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "orchard_ring",
@@ -981,7 +1059,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "orchard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "orchard_flower",
@@ -993,7 +1072,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "orchard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "orchard_barrel",
@@ -1005,7 +1085,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "orchard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "orchard_lantern",
@@ -1017,7 +1098,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "orchard_use",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "south_garden_tree",
@@ -1029,7 +1111,8 @@
       "group": "south_garden_enclosure",
       "anchor": "road_4",
       "role": "household_service",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "south_garden_ring",
@@ -1041,7 +1124,8 @@
       "group": "south_garden_enclosure",
       "anchor": "south_garden_tree",
       "role": "garden_rest",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "near_shade_and_path"
     },
     {
       "id": "south_garden_flower",
@@ -1053,7 +1137,8 @@
       "group": "south_garden_enclosure",
       "anchor": "south_garden_tree",
       "role": "garden_rest",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "near_shade_and_path"
     },
     {
       "id": "south_garden_bench",
@@ -1065,7 +1150,8 @@
       "group": "south_garden_enclosure",
       "anchor": "south_garden_tree",
       "role": "garden_rest",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "near_shade_and_path"
     },
     {
       "id": "south_garden_lantern",
@@ -1077,7 +1163,8 @@
       "group": "south_garden_enclosure",
       "anchor": "south_garden_tree",
       "role": "garden_rest",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "near_shade_and_path"
     },
     {
       "id": "east_guild_notice",
@@ -1089,7 +1176,8 @@
       "group": "east_residences",
       "anchor": "house_east",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "east_guild_crate",
@@ -1101,7 +1189,8 @@
       "group": "east_residences",
       "anchor": "house_east",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "east_guild_log",
@@ -1113,7 +1202,8 @@
       "group": "east_residences",
       "anchor": "house_east",
       "role": "residential_frontage",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "connected_to_walk_network"
     },
     {
       "id": "garden_ring",
@@ -1125,7 +1215,8 @@
       "group": "garden",
       "anchor": "garden_tree_1",
       "role": "garden_planting",
-      "basis": "adapted_village_plan"
+      "basis": "adapted_village_plan",
+      "constraint": "district_context"
     },
     {
       "id": "orchard_fence_nw_1",
@@ -1137,7 +1228,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_nw_2",
@@ -1149,7 +1241,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_nw_3",
@@ -1161,7 +1254,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_ne_1",
@@ -1173,7 +1267,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_ne_2",
@@ -1185,7 +1280,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_ne_3",
@@ -1197,7 +1293,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_se_1",
@@ -1209,7 +1306,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_se_2",
@@ -1221,7 +1319,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_se_3",
@@ -1233,7 +1332,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "orchard_fence_sw_3",
@@ -1245,7 +1345,8 @@
       "group": "orchard_enclosure",
       "anchor": "orchard_tree",
       "role": "enclosed_orchard_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_nw_1",
@@ -1257,7 +1358,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_nw_2",
@@ -1269,7 +1371,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_nw_3",
@@ -1281,7 +1384,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_ne_1",
@@ -1293,7 +1397,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_ne_2",
@@ -1305,7 +1410,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_ne_3",
@@ -1317,7 +1423,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_se_1",
@@ -1329,7 +1436,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_se_2",
@@ -1341,7 +1449,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_se_3",
@@ -1353,7 +1462,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "south_fence_sw_3",
@@ -1365,7 +1475,8 @@
       "group": "south_enclosure",
       "anchor": "south_garden_tree",
       "role": "residential_garden_boundary",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_boundary"
     },
     {
       "id": "north_wood_tree_0",
@@ -1377,7 +1488,8 @@
       "group": "north_wood_grove",
       "anchor": "grove_north_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_0_0",
@@ -1389,7 +1501,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_0_1",
@@ -1401,7 +1514,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_tree_1",
@@ -1413,7 +1527,8 @@
       "group": "north_wood_grove",
       "anchor": "grove_north_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_1_0",
@@ -1425,7 +1540,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_1_1",
@@ -1437,7 +1553,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_tree_2",
@@ -1449,7 +1566,8 @@
       "group": "north_wood_grove",
       "anchor": "grove_north_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_tree_3",
@@ -1461,7 +1579,8 @@
       "group": "north_wood_grove",
       "anchor": "grove_north_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_3_0",
@@ -1473,7 +1592,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_3_1",
@@ -1485,7 +1605,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_tree_4",
@@ -1497,7 +1618,8 @@
       "group": "north_wood_grove",
       "anchor": "grove_north_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_4_0",
@@ -1509,7 +1631,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "north_wood_understory_4_1",
@@ -1521,7 +1644,8 @@
       "group": "north_wood_grove",
       "anchor": "north_wood_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_tree_0",
@@ -1533,7 +1657,8 @@
       "group": "west_wood_grove",
       "anchor": "grove_west_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_0_0",
@@ -1545,7 +1670,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_0_1",
@@ -1557,7 +1683,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_tree_1",
@@ -1569,7 +1696,8 @@
       "group": "west_wood_grove",
       "anchor": "grove_west_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_1_0",
@@ -1581,7 +1709,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_1_1",
@@ -1593,7 +1722,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_tree_2",
@@ -1605,7 +1735,8 @@
       "group": "west_wood_grove",
       "anchor": "grove_west_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_2_0",
@@ -1617,7 +1748,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_2",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_2_1",
@@ -1629,7 +1761,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_2",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_tree_3",
@@ -1641,7 +1774,8 @@
       "group": "west_wood_grove",
       "anchor": "grove_west_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_3_0",
@@ -1653,7 +1787,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_3_1",
@@ -1665,7 +1800,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_tree_4",
@@ -1677,7 +1813,8 @@
       "group": "west_wood_grove",
       "anchor": "grove_west_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_4_0",
@@ -1689,7 +1826,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_4_1",
@@ -1701,7 +1839,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_tree_5",
@@ -1713,7 +1852,8 @@
       "group": "west_wood_grove",
       "anchor": "grove_west_wood",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_5_0",
@@ -1725,7 +1865,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_5",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "west_wood_understory_5_1",
@@ -1737,7 +1878,8 @@
       "group": "west_wood_grove",
       "anchor": "west_wood_tree_5",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_tree_0",
@@ -1749,7 +1891,8 @@
       "group": "civic_park_grove",
       "anchor": "grove_civic_park",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_understory_0_0",
@@ -1761,7 +1904,8 @@
       "group": "civic_park_grove",
       "anchor": "civic_park_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_understory_0_1",
@@ -1773,7 +1917,8 @@
       "group": "civic_park_grove",
       "anchor": "civic_park_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_tree_1",
@@ -1785,7 +1930,8 @@
       "group": "civic_park_grove",
       "anchor": "grove_civic_park",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_understory_1_0",
@@ -1797,7 +1943,8 @@
       "group": "civic_park_grove",
       "anchor": "civic_park_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_understory_1_1",
@@ -1809,7 +1956,8 @@
       "group": "civic_park_grove",
       "anchor": "civic_park_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_tree_2",
@@ -1821,7 +1969,8 @@
       "group": "civic_park_grove",
       "anchor": "grove_civic_park",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "civic_park_understory_2_0",
@@ -1833,7 +1982,8 @@
       "group": "civic_park_grove",
       "anchor": "civic_park_tree_2",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_tree_0",
@@ -1845,7 +1995,8 @@
       "group": "east_garden_grove",
       "anchor": "grove_east_garden",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_0_0",
@@ -1857,7 +2008,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_0_1",
@@ -1869,7 +2021,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_tree_1",
@@ -1881,7 +2034,8 @@
       "group": "east_garden_grove",
       "anchor": "grove_east_garden",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_1_0",
@@ -1893,7 +2047,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_tree_2",
@@ -1905,7 +2060,8 @@
       "group": "east_garden_grove",
       "anchor": "grove_east_garden",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_2_0",
@@ -1917,7 +2073,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_2",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_2_1",
@@ -1929,7 +2086,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_2",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_tree_3",
@@ -1941,7 +2099,8 @@
       "group": "east_garden_grove",
       "anchor": "grove_east_garden",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_3_0",
@@ -1953,7 +2112,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_3_1",
@@ -1965,7 +2125,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_tree_4",
@@ -1977,7 +2138,8 @@
       "group": "east_garden_grove",
       "anchor": "grove_east_garden",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_4_0",
@@ -1989,7 +2151,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "east_garden_understory_4_1",
@@ -2001,7 +2164,8 @@
       "group": "east_garden_grove",
       "anchor": "east_garden_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_tree_0",
@@ -2013,7 +2177,8 @@
       "group": "south_grove_grove",
       "anchor": "grove_south_grove",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_0_0",
@@ -2025,7 +2190,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_0_1",
@@ -2037,7 +2203,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_tree_1",
@@ -2049,7 +2216,8 @@
       "group": "south_grove_grove",
       "anchor": "grove_south_grove",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_1_0",
@@ -2061,7 +2229,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_1_1",
@@ -2073,7 +2242,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_tree_3",
@@ -2085,7 +2255,8 @@
       "group": "south_grove_grove",
       "anchor": "grove_south_grove",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_3_0",
@@ -2097,7 +2268,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_3_1",
@@ -2109,7 +2281,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_tree_4",
@@ -2121,7 +2294,8 @@
       "group": "south_grove_grove",
       "anchor": "grove_south_grove",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_4_0",
@@ -2133,7 +2307,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_4_1",
@@ -2145,7 +2320,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_tree_5",
@@ -2157,7 +2333,8 @@
       "group": "south_grove_grove",
       "anchor": "grove_south_grove",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_5_0",
@@ -2169,7 +2346,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_5",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "south_grove_understory_5_1",
@@ -2181,7 +2359,8 @@
       "group": "south_grove_grove",
       "anchor": "south_grove_tree_5",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_tree_0",
@@ -2193,7 +2372,8 @@
       "group": "waterside_grove",
       "anchor": "grove_waterside",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_0_0",
@@ -2205,7 +2385,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_0_1",
@@ -2217,7 +2398,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_0",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_tree_1",
@@ -2229,7 +2411,8 @@
       "group": "waterside_grove",
       "anchor": "grove_waterside",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_1_0",
@@ -2241,7 +2424,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_1_1",
@@ -2253,7 +2437,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_1",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_tree_2",
@@ -2265,7 +2450,8 @@
       "group": "waterside_grove",
       "anchor": "grove_waterside",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_2_0",
@@ -2277,7 +2463,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_2",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_2_1",
@@ -2289,7 +2476,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_2",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_tree_3",
@@ -2301,7 +2489,8 @@
       "group": "waterside_grove",
       "anchor": "grove_waterside",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_3_0",
@@ -2313,7 +2502,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_3_1",
@@ -2325,7 +2515,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_3",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_tree_4",
@@ -2337,7 +2528,8 @@
       "group": "waterside_grove",
       "anchor": "grove_waterside",
       "role": "woodland_edge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_4_0",
@@ -2349,7 +2541,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "waterside_understory_4_1",
@@ -2361,7 +2554,8 @@
       "group": "waterside_grove",
       "anchor": "waterside_tree_4",
       "role": "tree_understory",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "clustered_greenery"
     },
     {
       "id": "shoulder_0_125_l",
@@ -2373,7 +2567,8 @@
       "group": "road_verge_0",
       "anchor": "road_0",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_0_335_l",
@@ -2385,7 +2580,8 @@
       "group": "road_verge_0",
       "anchor": "road_0",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_0_335_r",
@@ -2397,7 +2593,8 @@
       "group": "road_verge_0",
       "anchor": "road_0",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_0_401_l",
@@ -2409,7 +2606,8 @@
       "group": "road_verge_0",
       "anchor": "road_0",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_0_463_l",
@@ -2421,7 +2619,8 @@
       "group": "road_verge_0",
       "anchor": "road_0",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_1_197_l",
@@ -2433,7 +2632,8 @@
       "group": "road_verge_1",
       "anchor": "road_1",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_1_197_r",
@@ -2445,7 +2645,8 @@
       "group": "road_verge_1",
       "anchor": "road_1",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_177_l",
@@ -2457,7 +2658,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_177_r",
@@ -2469,7 +2671,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_234_l",
@@ -2481,7 +2684,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_234_r",
@@ -2493,7 +2697,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_291_r",
@@ -2505,7 +2710,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_471_r",
@@ -2517,7 +2723,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_526_r",
@@ -2529,7 +2736,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_581_l",
@@ -2541,7 +2749,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_581_r",
@@ -2553,7 +2762,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_636_l",
@@ -2565,7 +2775,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_2_636_r",
@@ -2577,7 +2788,8 @@
       "group": "road_verge_2",
       "anchor": "road_2",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_359_l",
@@ -2589,7 +2801,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_359_r",
@@ -2601,7 +2814,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_423_l",
@@ -2613,7 +2827,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_423_r",
@@ -2625,7 +2840,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_488_l",
@@ -2637,7 +2853,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_488_r",
@@ -2649,7 +2866,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_552_l",
@@ -2661,7 +2879,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_552_r",
@@ -2673,7 +2892,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_617_l",
@@ -2685,7 +2905,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_617_r",
@@ -2697,7 +2918,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_810_l",
@@ -2709,7 +2931,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_810_r",
@@ -2721,7 +2944,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_874_l",
@@ -2733,7 +2957,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_874_r",
@@ -2745,7 +2970,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_938_l",
@@ -2757,7 +2983,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_938_r",
@@ -2769,7 +2996,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_1000_l",
@@ -2781,7 +3009,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_1000_r",
@@ -2793,7 +3022,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_1060_l",
@@ -2805,7 +3035,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_3_1060_r",
@@ -2817,7 +3048,8 @@
       "group": "road_verge_3",
       "anchor": "road_3",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_203_l",
@@ -2829,7 +3061,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_203_r",
@@ -2841,7 +3074,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_267_l",
@@ -2853,7 +3087,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_267_r",
@@ -2865,7 +3100,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_333_l",
@@ -2877,7 +3113,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_333_r",
@@ -2889,7 +3126,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_399_l",
@@ -2901,7 +3139,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_399_r",
@@ -2913,7 +3152,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_663_l",
@@ -2925,7 +3165,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_663_r",
@@ -2937,7 +3178,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_723_l",
@@ -2949,7 +3191,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_723_r",
@@ -2961,7 +3204,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_784_r",
@@ -2973,7 +3217,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_848_l",
@@ -2985,7 +3230,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_848_r",
@@ -2997,7 +3243,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_912_l",
@@ -3009,7 +3256,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_4_912_r",
@@ -3021,7 +3269,8 @@
       "group": "road_verge_4",
       "anchor": "road_4",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_68_l",
@@ -3033,7 +3282,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_68_r",
@@ -3045,7 +3295,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_131_l",
@@ -3057,7 +3308,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_131_r",
@@ -3069,7 +3321,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_193_l",
@@ -3081,7 +3334,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_193_r",
@@ -3093,7 +3347,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_252_l",
@@ -3105,7 +3360,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_5_252_r",
@@ -3117,7 +3373,8 @@
       "group": "road_verge_5",
       "anchor": "road_5",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_6_63_l",
@@ -3129,7 +3386,8 @@
       "group": "road_verge_6",
       "anchor": "road_6",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_6_63_r",
@@ -3141,7 +3399,8 @@
       "group": "road_verge_6",
       "anchor": "road_6",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_6_126_l",
@@ -3153,7 +3412,8 @@
       "group": "road_verge_6",
       "anchor": "road_6",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
     },
     {
       "id": "shoulder_6_126_r",
@@ -3165,7 +3425,47 @@
       "group": "road_verge_6",
       "anchor": "road_6",
       "role": "irregular_grass_verge",
-      "basis": "observed_pattern"
+      "basis": "observed_pattern",
+      "constraint": "district_context"
+    },
+    {
+      "id": "church_tree_west",
+      "asset": "vegetation/trees/OBJ_tree_01.png",
+      "x": 1435,
+      "y": 590,
+      "scale": 0.46,
+      "district": "east_quiet",
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "constraint": "inside_landmark_forecourt",
+      "basis": "adapted_village_plan"
+    },
+    {
+      "id": "church_tree_east",
+      "asset": "vegetation/trees/OBJ_tree_03.png",
+      "x": 1650,
+      "y": 610,
+      "scale": 0.46,
+      "district": "east_quiet",
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "constraint": "inside_landmark_forecourt",
+      "basis": "adapted_village_plan"
+    },
+    {
+      "id": "church_bench_east",
+      "asset": "street/OBJ_bench_forged_v2.png",
+      "x": 1595,
+      "y": 575,
+      "scale": 0.06,
+      "district": "east_quiet",
+      "group": "church_courtyard",
+      "anchor": "church",
+      "role": "courtyard_use",
+      "constraint": "inside_landmark_forecourt",
+      "basis": "adapted_village_plan"
     }
   ]
 }
