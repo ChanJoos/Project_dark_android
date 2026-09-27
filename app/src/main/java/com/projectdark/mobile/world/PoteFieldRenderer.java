@@ -164,8 +164,8 @@ public final class PoteFieldRenderer {
     int i=0; for(float[] q:pts){
       int n=1+(seed+i*2)%7; float x=q[0],y=q[1];
       tree(p,x,y,n,1.10f+((seed+i)%3)*.07f);
-      tree(p,x-48+((seed+i)%3)*22,y-34,1+(seed+i+3)%7,.94f+((seed+i)%2)*.08f);
-      if((i&1)==0)small(p,x+58-((seed+i)%3)*20,y+26,1+(seed+i)%3);
+      tree(p,x-44+((seed+i)%3)*20,y-38,1+(seed+i+3)%7,1.02f+((seed+i)%2)*.10f);
+      if((i&1)==0)small(p,x+64-((seed+i)%3)*22,y+30,1+(seed+i)%3);
       bush(p,x-48-(i%2)*16,y+48,1+(seed+i)%8);
       bush(p,x+54+(i%3)*10,y+52,1+(seed+i+3)%8);
       ground(p,x-72,y+64,1+(seed+i)%6);
@@ -219,7 +219,7 @@ public final class PoteFieldRenderer {
   }
   private static void bushRing(List<Placement> p,float[][] xy,int seed){int i=0;for(float[] q:xy)bush(p,q[0],q[1],1+(seed+i++)%8);}
   private static void tree(List<Placement> p,float x,float y,int n,float s){p.add(new Placement(String.format("POTE_TR_%02d.png",n),x,y,s,"canopy",false));}
-  private static void small(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_TS_%02d.png",n),x,y,.88f,"secondary_canopy",false));}
+  private static void small(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_TS_%02d.png",n),x,y,.96f,"secondary_canopy",false));}
   private static void bush(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BS_%02d.png",n),x,y,.72f+(n%4)*.05f,"understory",false));}
   private static void ground(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_GF_%02d.png",n),x,y,.88f,"groundcover",false));}
   private static void stump(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_ST_%02d.png",n),x,y,1f,"stump",false));}
