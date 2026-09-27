@@ -24,4 +24,4 @@ The current pack has 59 cutout assets across ground patches, tree masses, smalle
 
 ## Acceptance status
 
-This is an implemented visual draft. Build, runtime, and visual acceptance remain unverified until the Android tests and device captures are run.
+This is an implemented visual draft. Build, runtime, and visual acceptance remain unverified until the Android tests and device captures are run. The GitHub Actions workflow builds the debug APK and uploads it with the device-review render captures.
