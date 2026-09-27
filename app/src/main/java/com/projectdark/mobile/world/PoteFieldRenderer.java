@@ -180,9 +180,9 @@ public final class PoteFieldRenderer {
   private static void stream(List<Placement> p,float[][] pts){
     int i=0;for(float[] q:pts){
       float x=q[0]+((i%3)-1)*22f,y=q[1];
-      p.add(new Placement(String.format("POTE_WT_%02d.png",1+i%6),x,y,.82f+(i%3)*.08f,"water",false));
-      bank(p,x-112,y+18,1+i%5); bank(p,x+116,y-14,1+(i+2)%5);
-      if(i%3==0)rock(p,x-135,y+30,1+i%5);
+      p.add(new Placement(String.format("POTE_WT_%02d.png",1+i%6),x,y,1.02f+(i%3)*.10f,"water",false));
+      bank(p,x-92,y+20,1+i%5); bank(p,x+96,y-16,1+(i+2)%5);
+      if(i%3==0)rock(p,x-118,y+34,1+i%5);
       else if(i%3==1)bush(p,x+138,y+25,1+i%8);
       if((i&1)==0)ground(p,x-145,y+52,1+i%6);
       i++;
