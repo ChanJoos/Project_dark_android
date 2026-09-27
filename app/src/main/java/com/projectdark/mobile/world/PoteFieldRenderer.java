@@ -64,10 +64,10 @@ public final class PoteFieldRenderer {
     // never as giant isolated ovals; damp ground follows the stream axis on the east.
     pixel.setStyle(Paint.Style.FILL);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
     pixel.setColor(0xff3f4b27);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainStroke(c,w,new float[][]{{190,810},{300,770},{390,700},{470,610},{575,520},{690,445},{805,390},{930,420}},112f,0xff5b513d);
+    terrainStroke(c,w,new float[][]{{190,810},{300,770},{390,700},{470,610},{575,520},{690,445},{805,390},{930,420}},112f,0xff53503b);
     terrainStroke(c,w,new float[][]{{1045,190},{1070,300},{1055,410},{1080,520},{1100,635},{1110,790}},145f,0xff465337);
     // Small clearing pads merge into the corridor rather than reading as separate painted islands.
-    terrainStroke(c,w,new float[][]{{500,520},{560,520},{620,520}},132f,0xff625642);
+    terrainStroke(c,w,new float[][]{{500,520},{560,520},{620,520}},132f,0xff5b543f);
     terrainStroke(c,w,new float[][]{{700,500},{760,500},{820,500}},128f,0xff625642);
     terrainStroke(c,w,new float[][]{{305,735},{360,735},{415,735}},126f,0xff625642);
   }
@@ -102,7 +102,7 @@ public final class PoteFieldRenderer {
     if(src==null||src.getWidth()<=8||src.getHeight()<=8)return src;
     // Source extraction occasionally leaves a 1-2 px crop/separator rule on the outer edge.
     // Trim two pixels symmetrically; anchor remains effectively unchanged at gameplay scale.
-    return Bitmap.createBitmap(src,4,3,src.getWidth()-8,src.getHeight()-6);
+    return Bitmap.createBitmap(src,5,4,src.getWidth()-10,src.getHeight()-8);
   }
 
   /**
@@ -159,22 +159,22 @@ public final class PoteFieldRenderer {
     cluster(p,150,190,1,1);cluster(p,280,165,2,3);cluster(p,420,155,3,5);cluster(p,570,150,4,7);
     cluster(p,730,145,5,2);cluster(p,890,155,6,4);cluster(p,1015,175,7,6);
     cluster(p,1250,220,2,8);cluster(p,1285,365,5,1);cluster(p,1290,520,3,3);cluster(p,1295,690,6,5);cluster(p,1260,825,1,7);
-    cluster(p,120,340,4,2);cluster(p,120,505,7,4);cluster(p,145,665,2,6);cluster(p,255,500,5,7);cluster(p,230,625,1,2);
+    cluster(p,120,340,4,2);cluster(p,120,505,7,4);cluster(p,145,665,2,6);cluster(p,220,455,5,7);cluster(p,205,590,1,2);
 
     // West grove: one continuous mass, with a deliberate east-facing opening.
     cluster(p,285,315,5,3);cluster(p,385,335,1,5);small(p,330,395,1);small(p,445,300,2);
     bush(p,250,375,6);ground(p,305,430,2);ground(p,420,415,5);detail(p,365,445,2);
 
     // Old-growth central grove / landmark mass.
-    cluster(p,475,590,6,6);cluster(p,675,640,3,1);small(p,475,690,3);stump(p,455,615,3);stump(p,690,655,4);
+    cluster(p,435,610,6,6);cluster(p,715,655,3,1);small(p,475,690,3);stump(p,455,615,3);stump(p,690,655,4);
     bush(p,575,690,5);ground(p,505,710,4);ground(p,690,700,1);detail(p,600,735,3);
 
     // North-east mass frames the path before the stream.
-    cluster(p,790,265,7,7);cluster(p,900,285,2,2);small(p,750,345,2);
+    cluster(p,770,245,7,7);cluster(p,925,275,2,2);small(p,750,345,2);
     bush(p,850,360,4);ground(p,930,380,6);rock(p,965,245,2);
 
     // South-east mass closes the encounter pocket.
-    cluster(p,920,680,4,4);cluster(p,1025,725,1,6);small(p,865,770,1);
+    cluster(p,895,700,4,4);cluster(p,1045,745,1,6);small(p,865,770,1);
     bush(p,985,790,2);stump(p,840,720,1);ground(p,865,815,3);detail(p,1040,820,5);
 
     // Readable S-curve: entrance -> central clearing -> north-east -> water.
@@ -182,9 +182,9 @@ public final class PoteFieldRenderer {
     pathEdge(p,575,500,4);pathEdge(p,700,430,5);pathEdge(p,820,385,6);pathEdge(p,930,420,7);
 
     // Connected stream corridor. Water pieces overlap; banks/rocks/low vegetation flank the axis.
-    streamNode(p,1115,220,1);streamNode(p,1120,270,2);streamNode(p,1112,320,3);streamNode(p,1110,370,4);
-    streamNode(p,1118,420,5);streamNode(p,1125,470,6);streamNode(p,1135,520,1);streamNode(p,1145,570,2);
-    streamNode(p,1150,620,3);streamNode(p,1158,670,4);streamNode(p,1165,720,5);streamNode(p,1170,770,6);
+    streamNode(p,1100,220,1);streamNode(p,1125,270,2);streamNode(p,1105,320,3);streamNode(p,1130,370,4);
+    streamNode(p,1110,420,5);streamNode(p,1140,470,6);streamNode(p,1120,520,1);streamNode(p,1150,570,2);
+    streamNode(p,1135,620,3);streamNode(p,1165,670,4);streamNode(p,1145,720,5);streamNode(p,1175,770,6);
 
     // Three readable encounter clearings: detail only on their perimeter.
     clearingEdge(p,560,520,1);clearingEdge(p,760,500,4);clearingEdge(p,360,735,6);
@@ -197,8 +197,8 @@ public final class PoteFieldRenderer {
 
   private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
     tree(p,x,y,treeSeed,.92f);
-    bush(p,x-62,y+20,1+underSeed%8);bush(p,x+64,y+28,1+(underSeed+2)%8);
-    ground(p,x-82,y+52,1+underSeed%6);ground(p,x+80,y+56,1+(underSeed+3)%6);
+    bush(p,x-62-(underSeed%3)*9,y+18+(underSeed%2)*7,1+underSeed%8);bush(p,x+58+(underSeed%4)*8,y+25-(underSeed%2)*6,1+(underSeed+2)%8);
+    ground(p,x-88-(underSeed%2)*12,y+48+(underSeed%3)*6,1+underSeed%6);ground(p,x+76+(underSeed%3)*11,y+54-(underSeed%2)*5,1+(underSeed+3)%6);
     if((underSeed&1)==0)detail(p,x+18,y+64,1+underSeed%5);
   }
   private static void pathEdge(List<Placement> p,float x,float y,int seed){
