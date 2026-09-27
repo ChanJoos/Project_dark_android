@@ -22,7 +22,7 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_CLUSTERED_FOREST_V2";
+  public static final String STATUS="POTE_FOREST_MASS_V3";
   private static final float TILE_W=64f,TILE_H=32f;
   private final Paint pixel=new Paint();
   private final AssetManager assets=findAssets();
@@ -60,21 +60,14 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // Forest floor is continuous. A worn S-corridor is drawn as overlapping short segments,
-    // never as giant isolated ovals; damp ground follows the stream axis on the east.
-    pixel.setStyle(Paint.Style.FILL);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
-    pixel.setColor(0xff3f4b27);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainStroke(c,w,new float[][]{{150,850},{245,805},{330,750},{405,685},{465,615},{545,550},{620,490},{700,445},{790,410},{875,420},{950,455}},78f,0xff4c4d39);
-    terrainStroke(c,w,new float[][]{{1030,175},{1060,250},{1040,330},{1075,405},{1050,485},{1090,565},{1070,650},{1110,735},{1095,825}},108f,0xff445239);
-    // Small clearing pads merge into the corridor rather than reading as separate painted islands.
-    terrainStroke(c,w,new float[][]{{500,520},{560,520},{620,520}},132f,0xff5b543f);
-    terrainStroke(c,w,new float[][]{{700,500},{760,500},{820,500}},128f,0xff625642);
-    terrainStroke(c,w,new float[][]{{305,735},{360,735},{415,735}},126f,0xff625642);
+    // V3: no painted road. The traversable path is negative space carved between forest masses.
+    // Only a subdued forest floor and a damp eastern watershed underlay are painted.
+    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff3d4829);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},118f,0xff3d5037);
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
-    if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStyle(Paint.Style.STROKE);
-    for(int i=1;i<pts.length;i++){WorldCameraTransform.Point a=w.worldToScreen(pts[i-1][0],pts[i-1][1]),b=w.worldToScreen(pts[i][0],pts[i][1]);c.drawLine(a.x,a.y,b.x,b.y,pixel);}
-    pixel.setStyle(Paint.Style.FILL);
+    if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);pixel.setStyle(Paint.Style.STROKE);
+    for(int i=1;i<pts.length;i++){WorldCameraTransform.Point a=w.worldToScreen(pts[i-1][0],pts[i-1][1]),b=w.worldToScreen(pts[i][0],pts[i][1]);c.drawLine(a.x,a.y,b.x,b.y,pixel);}pixel.setStyle(Paint.Style.FILL);
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
@@ -140,45 +133,59 @@ public final class PoteFieldRenderer {
 
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
-    // V2 is authored as masses, not independent props: each canopy parent receives understory,
-    // groundcover and detail children. Open centres are intentionally preserved for navigation.
-    cluster(p,130,185,1,1);cluster(p,245,155,2,3);cluster(p,365,145,3,5);cluster(p,490,140,4,7);cluster(p,615,145,6,2);
-    cluster(p,745,145,5,2);cluster(p,875,150,6,4);cluster(p,1000,170,7,6);cluster(p,1120,185,3,1);
-    cluster(p,1250,220,2,8);cluster(p,1285,365,5,1);cluster(p,1305,500,3,3);cluster(p,1310,660,6,5);cluster(p,1280,820,1,7);
-    cluster(p,105,320,4,2);cluster(p,100,475,7,4);cluster(p,120,640,2,6);cluster(p,135,790,3,8);cluster(p,220,455,5,7);cluster(p,205,590,1,2);
+    // V3 forest masses. Each mass is a continuous canopy wall with layered understory.
+    mass(p,new float[][]{{90,170},{185,150},{285,145},{390,150},{500,145},{610,150},{720,145},{835,150},{950,160},{1060,175}},1);
+    mass(p,new float[][]{{90,275},{105,385},{100,500},{115,615},{120,735},{135,845}},4);
+    mass(p,new float[][]{{1270,210},{1300,320},{1290,435},{1310,550},{1295,665},{1280,790}},2);
 
-    // West grove: one continuous mass, with a deliberate east-facing opening.
-    cluster(p,285,315,5,3);cluster(p,385,335,1,5);small(p,330,395,1);small(p,445,300,2);
-    bush(p,250,375,6);ground(p,305,430,2);ground(p,420,415,5);ground(p,365,445,3);
+    // Interior masses define the S-shaped route by absence, not by a painted stripe.
+    mass(p,new float[][]{{250,300},{340,325},{405,365}},5);
+    mass(p,new float[][]{{350,575},{420,625},{470,690}},2);
+    mass(p,new float[][]{{760,250},{845,270},{930,300}},6);
+    mass(p,new float[][]{{790,670},{890,710},{985,755}},3);
 
-    // Old-growth central grove / landmark mass.
-    cluster(p,400,635,6,6);cluster(p,750,680,3,1);small(p,455,720,3);stump(p,455,615,3);stump(p,690,655,4);
-    bush(p,555,705,5);ground(p,490,725,4);rock(p,705,715,3);
+    // Transitional shoulders: sparse and asymmetric.
+    shoulder(p,250,760,1); shoulder(p,365,690,3); shoulder(p,500,575,5);
+    shoulder(p,650,475,2); shoulder(p,790,405,6); shoulder(p,925,425,4);
 
-    // North-east mass frames the path before the stream.
-    cluster(p,770,245,7,7);cluster(p,925,275,2,2);small(p,750,345,2);
-    bush(p,845,355,4);rock(p,955,390,4);rock(p,980,250,2);
+    // Connected eastern stream with bank hierarchy.
+    stream(p,new float[][]{{1090,190},{1120,250},{1095,315},{1130,380},{1105,450},{1140,520},{1115,590},{1150,660},{1125,730},{1160,800}});
 
-    // South-east mass closes the encounter pocket.
-    cluster(p,895,700,4,4);cluster(p,1045,745,1,6);small(p,865,770,1);
-    bush(p,1000,800,2);stump(p,835,730,1);rock(p,880,820,5);
-
-    // Readable S-curve: entrance -> central clearing -> north-east -> water.
-    pathEdge(p,270,780,1);pathEdge(p,390,700,2);pathEdge(p,470,610,3);
-    pathEdge(p,575,500,4);rock(p,700,455,2);ground(p,735,430,5);pathEdge(p,835,380,6);pathEdge(p,930,420,7);
-
-    // Connected stream corridor. Water pieces overlap; banks/rocks/low vegetation flank the axis.
-    streamNode(p,1100,220,1);streamNode(p,1125,270,2);streamNode(p,1105,320,3);streamNode(p,1130,370,4);
-    streamNode(p,1110,420,5);streamNode(p,1140,470,6);streamNode(p,1120,520,1);streamNode(p,1150,570,2);
-    streamNode(p,1135,620,3);streamNode(p,1165,670,4);streamNode(p,1145,720,5);streamNode(p,1175,770,6);rock(p,1030,785,5);stump(p,1260,790,4);
-
-    // Three readable encounter clearings: detail only on their perimeter.
-    clearingEdge(p,560,520,1);clearingEdge(p,760,500,4);clearingEdge(p,360,735,6);
-    // Entrance landmark, kept open around ENTRY_X/ENTRY_Y.
-    stump(p,250,830,2);rock(p,365,825,1);
+    // Landmarks sit at decision spaces, never in the centre of the walking corridor.
+    stump(p,285,835,2); rock(p,390,815,4);
+    stump(p,505,705,3); rock(p,720,650,2);
+    rock(p,980,365,5); stump(p,1240,785,4);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
     return p;
+  }
+
+  private static void mass(List<Placement> p,float[][] pts,int seed){
+    int i=0; for(float[] q:pts){
+      int n=1+(seed+i*2)%7; float x=q[0],y=q[1];
+      tree(p,x,y,n,.90f+((seed+i)%3)*.06f);
+      if((i&1)==0)small(p,x+52-((seed+i)%3)*20,y+22,1+(seed+i)%3);
+      bush(p,x-58-(i%2)*18,y+42,1+(seed+i)%8);
+      bush(p,x+62+(i%3)*12,y+48,1+(seed+i+3)%8);
+      ground(p,x-82,y+60,1+(seed+i)%6);
+      if(i%3==0)ground(p,x+86,y+64,1+(seed+i+2)%6);
+      i++;
+    }
+  }
+  private static void shoulder(List<Placement> p,float x,float y,int seed){
+    bush(p,x-105,y+12,1+seed%8); ground(p,x-78,y+42,1+seed%6);
+    if((seed&1)==0)rock(p,x+110,y+24,1+seed%5); else stump(p,x+112,y+30,1+seed%4);
+  }
+  private static void stream(List<Placement> p,float[][] pts){
+    int i=0;for(float[] q:pts){
+      float x=q[0]+((i%3)-1)*22f,y=q[1];
+      p.add(new Placement(String.format("POTE_WT_%02d.png",1+i%6),x,y,.82f+(i%3)*.08f,"water",false));
+      bank(p,x-112,y+18,1+i%5); bank(p,x+116,y-14,1+(i+2)%5);
+      if(i%3==0)rock(p,x-135,y+30,1+i%5);
+      else if(i%3==1)bush(p,x+138,y+25,1+i%8);
+      if((i&1)==0)ground(p,x-145,y+52,1+i%6);
+      i++;
+    }
   }
 
   private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
@@ -215,7 +222,7 @@ public final class PoteFieldRenderer {
   private static void bush(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BS_%02d.png",n),x,y,.72f+(n%4)*.05f,"understory",false));}
   private static void ground(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_GF_%02d.png",n),x,y,.88f,"groundcover",false));}
   private static void stump(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_ST_%02d.png",n),x,y,1f,"stump",false));}
-  private static void rock(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_RK_%02d.png",n),x,y,1f,"rock",false));}
+  private static void rock(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_RK_%02d.png",n),x,y,.76f+(n%3)*.07f,"rock",false));}
   private static void water(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_WT_%02d.png",n),x,y,1.05f,"stream",false));}
   private static void bank(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BW_%02d.png",n),x,y,1f,"bank",false));}
   private static void detail(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_OT_%02d.png",n),x,y,1f,"detail",false));}
