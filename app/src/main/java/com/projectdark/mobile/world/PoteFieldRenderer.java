@@ -101,7 +101,8 @@ public final class PoteFieldRenderer {
       int row=Math.round((tile.y-PoteFieldDef.MIN_Y)/16f);
       int col=Math.round((tile.x-PoteFieldDef.MIN_X-((row&1)==0?0f:32f))/64f);
       int seed=tileSeed(col,row);
-      String name=String.format("POTE_GD_%02d.png",groundVariant(tile.x,tile.y,seed));
+      int variant=groundVariant(tile.x,tile.y,seed);
+      String name=String.format("POTE_GD_%02d.png",variant);
       Bitmap bitmap=bitmap(name);if(bitmap==null)continue;
       Rect src=groundBounds.get(name);
       if(src==null){src=opaqueBounds(bitmap);groundBounds.put(name,src);}
@@ -112,8 +113,12 @@ public final class PoteFieldRenderer {
       src=new Rect(src);src.inset(insetX,insetY);
       RectF dst=new RectF((float)Math.floor(point.x-33f),(float)Math.floor(point.y-17f),
           (float)Math.ceil(point.x+33f),(float)Math.ceil(point.y+17f));
+      // The continuous forest-soil substrate stays visible through the cutout diamonds,
+      // keeping the joined tile lattice from reading like a field of stone pavers.
+      pixel.setAlpha(variant>=5&&variant<=8?184:112);
       c.drawBitmap(bitmap,src,dst,pixel);
     }
+    pixel.setAlpha(255);
   }
   private static int groundVariant(float x,float y,int seed){
     int bandX=(int)Math.floor(x/192f),bandY=(int)Math.floor(y/96f);
@@ -192,7 +197,8 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name))b=trimSourceEdge(stripEdgeMatte(b));
+      if(b!=null&&!SOIL_TEXTURE.equals(name))
+        b=name.startsWith("POTE_BR_")?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
   }
