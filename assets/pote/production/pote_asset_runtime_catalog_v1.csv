@@ -58,3 +58,4 @@ POTE_OT_02,detail,POTE_OT_02.png,"[79, 93]",False,1.0,"[79, 93]",bottom_center,n
 POTE_OT_03,detail,POTE_OT_03.png,"[77, 93]",False,1.0,"[77, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
 POTE_OT_04,detail,POTE_OT_04.png,"[71, 93]",False,1.0,"[71, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
 POTE_OT_05,detail,POTE_OT_05.png,"[88, 93]",False,1.0,"[88, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
+POTE_BR_01,bridge,POTE_BR_01.png,"[1536, 1024]",False,0.13,"[200, 133]",center,walkable_deck_gap,False,actor_y_sorted,"[""stream_crossing"", ""east_bank_route"", ""adapted_forest_prop""]",PENDING,ADAPTED_B

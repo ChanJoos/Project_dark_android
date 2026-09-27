@@ -20,7 +20,7 @@ Nexon describes Pote Forest as a distinct monster hunting area and has issued ba
 
 ## Asset sufficiency
 
-The current pack has 59 cutout assets across ground patches, tree masses, smaller trees, shrubs, ground cover, stumps, rocks, water, banks, and small details. That is enough to compose an initial forest region. There is no seamless forest floor source in the POTE pack, so the existing captured dirt fill is used as its substrate. The current pack does not contain a verified guide NPC crop, bridge/ford, or canonical zone landmark; those remain pending source assets rather than being fabricated.
+The current pack has 59 cutout assets across ground patches, tree masses, smaller trees, shrubs, ground cover, stumps, rocks, water, banks, and small details. That is enough to compose an initial forest region. There is no seamless forest floor source in the POTE pack, so the captured dirt fill is used as its substrate. A purpose-made adapted wooden bridge sprite crosses the stream in one tested location; this is explicitly an adaptation, not a claim about exact original placement.
 
 ## Acceptance status
 
@@ -47,3 +47,11 @@ Visual iteration 3 removes the obsolete synthetic creek underlay; water now come
 Visual iteration 4 shifts the source creek into view between banks and fills two thin forest sectors while maintaining a clear connected trail.
 
 Visual iteration 5 tightens the trail and increases creek segment overlap while reducing bank clutter; obstacle footprints track those same creek sections.
+
+
+## Revision for playability and reference match
+
+- Extend the eastern field bounds beyond the creek and carry the open trail through one authored bridge crossing into a second bank clearing. The stream remains blocked at all other tested points.
+- Break the uniform canopy feel with three irregular dirt clearings; dense groves remain at the edge and between them.
+- Register POTE_PURPLE as a B/ADAPTED runtime actor so MonsterAIController processes it. Its movement and hit use the shared tile and combat resolvers; canonical reward values remain unset.
+- The QA pass checks navigation from entry over the bridge, a blocked creek outside the bridge, one-tile monster pursuit, and a shared-resolver monster hit.

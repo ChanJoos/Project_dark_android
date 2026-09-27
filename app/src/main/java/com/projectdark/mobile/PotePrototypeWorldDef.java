@@ -18,8 +18,9 @@ public final class PotePrototypeWorldDef {
   // Prototype screen-space placement only; not original tile coordinates.
   public static final float PLAYER_X_B=480f;
   public static final float PLAYER_Y_B=320f;
-  public static final float MONSTER_X_B=480f;
-  public static final float MONSTER_Y_B=220f;
+  // B/ADAPTED: placed in the main trail clearing so players meet it during ordinary exploration.
+  public static final float MONSTER_X_B=640f;
+  public static final float MONSTER_Y_B=480f;
   public static final int MONSTER_COUNT_B=1;
 
   public static final class Spawn {

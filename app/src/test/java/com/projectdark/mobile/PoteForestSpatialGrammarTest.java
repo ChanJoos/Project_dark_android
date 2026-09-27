@@ -10,7 +10,7 @@ import com.projectdark.mobile.world.WorldMoveTargetController;
 public final class PoteForestSpatialGrammarTest {
   @Test public void forestUsesDenseAuthoredAssetPlacements(){
     PoteFieldRenderer renderer=new PoteFieldRenderer();
-    assertEquals("POTE_FOREST_MASS_V4",PoteFieldRenderer.STATUS);
+    assertEquals("POTE_FOREST_MASS_V5",PoteFieldRenderer.STATUS);
     assertTrue("forest should read as connected canopy and understory around clearings",renderer.placementCount()>=180);
   }
 
@@ -58,7 +58,14 @@ public final class PoteForestSpatialGrammarTest {
   }
 
   @Test public void fieldIsMateriallyLargerThanOldPrototypeShell(){
-    assertTrue(PoteFieldDef.MAX_X-PoteFieldDef.MIN_X>=1200f);
+    assertTrue(PoteFieldDef.MAX_X-PoteFieldDef.MIN_X>=1600f);
     assertTrue(PoteFieldDef.MAX_Y-PoteFieldDef.MIN_Y>=760f);
+  }
+
+  @Test public void expandedEastBankIsReachableOnlyAcrossTheBridge(){
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    assertTrue("eastern clearing must be reachable from field entry",hasPath(tiles,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,1552f,480f));
+    assertTrue("bridge deck gap must be unblocked",tiles.stream().anyMatch(t->Math.abs(t.x-1324f)<=32f&&Math.abs(t.y-388f)<=16f));
+    assertTrue("creek away from bridge must remain blocked",PoteFieldDef.obstacles().stream().anyMatch(r->r.contains(1198f,466f)));
   }
 }

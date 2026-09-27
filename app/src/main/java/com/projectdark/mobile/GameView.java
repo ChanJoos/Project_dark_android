@@ -47,7 +47,8 @@ public final class GameView extends View {
   private final EquipmentActionResolver equipmentActions=new EquipmentActionResolver();
   private final RuntimeCombatSession combatSession=new RuntimeCombatSession(state,
       (actor,target)->activeWorld().hasCombatLineOfSight(actor,target),RuntimeCombatSession.startingCommonerLearnedActions(),actor->true);
-  private final MonsterAIController monsterAi=new MonsterAIController();
+  private final MonsterAIController monsterAi=new MonsterAIController(
+      new MonsterAIController.SharedResolverAttackRouter(combatSession.monsterAutoBridge()));
   private final InteractionController interaction=new InteractionController();
   private final CharacterRenderer characterRenderer=new CharacterRenderer();
   private final WorldEntityPresentationRenderer worldEntityRenderer=new WorldEntityPresentationRenderer();

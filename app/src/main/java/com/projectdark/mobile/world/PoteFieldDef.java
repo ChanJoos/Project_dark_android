@@ -12,7 +12,7 @@ import java.util.List;
  */
 public final class PoteFieldDef {
   public static final String MAP_ID="MAP_POTE_01";
-  public static final float MIN_X=64f,MAX_X=1408f,MIN_Y=64f,MAX_Y=896f;
+  public static final float MIN_X=64f,MAX_X=1792f,MIN_Y=64f,MAX_Y=896f;
   public static final float ENTRY_X=192f,ENTRY_Y=800f;
   public static final float EXIT_X=128f,EXIT_Y=832f;
   public static final float EXIT_RADIUS=34f;
@@ -56,12 +56,14 @@ public final class PoteFieldDef {
   private static List<RectF> buildObstacles(){
     List<RectF> out=new ArrayList<>();
     out.addAll(PoteFieldRenderer.blockingFootprints());
-    // The stream is an impassable winding barrier at the eastern/southern edge. Its visual ribbon
-    // and collision line share the same source points; the main trail stays to the west.
-    float[][] water={{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362}};
-    for(int i=1;i<water.length;i++)out.add(new RectF(
+    // Creek banks remain solid except at the wooden bridge crossing at node 12.
+    float[][] water={{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}};
+    for(int i=1;i<water.length;i++){
+      if(i==12||i==13)continue; // the bridge deck is the only legal stream crossing
+      out.add(new RectF(
         Math.min(water[i-1][0],water[i][0])-27f,Math.min(water[i-1][1],water[i][1])-22f,
         Math.max(water[i-1][0],water[i][0])+27f,Math.max(water[i-1][1],water[i][1])+22f));
+    }
     return Collections.unmodifiableList(out);
   }
 

@@ -98,7 +98,9 @@ public final class RuntimeState {
   public void enterPoteField(){
     currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=com.projectdark.mobile.world.PoteFieldDef.MIN_X;currentMaxX=com.projectdark.mobile.world.PoteFieldDef.MAX_X;currentMinY=com.projectdark.mobile.world.PoteFieldDef.MIN_Y;currentMaxY=com.projectdark.mobile.world.PoteFieldDef.MAX_Y;
     obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
-    npcs.clear();npcs.add(new Npc("pote_trail_guide","숲길 안내인",256f,752f,"북동쪽 흙길을 따라가면 숲 안쪽 공터와 물가로 이어집니다.","PENDING_CROP/pote/npc/trail_guide"));monsters.clear();monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
+    npcs.clear();npcs.add(new Npc("pote_trail_guide","숲길 안내인",256f,752f,
+        "북동쪽 흙길을 따라가면 숲 안쪽 공터와 물가로 이어집니다.","PENDING_CROP/pote/npc/trail_guide"));
+    monsters.clear();monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
     player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
   }
   public void enterMillesFromField(float x,float y){

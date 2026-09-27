@@ -1509,5 +1509,31 @@
     ],
     "visual_qa": "PASS_V6",
     "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BR_01",
+    "category": "bridge",
+    "file": "POTE_BR_01.png",
+    "source_pixel_size": [
+      1536,
+      1024
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 0.13,
+    "runtime_estimated_size": [
+      200,
+      133
+    ],
+    "anchor": "center",
+    "collision_footprint": "walkable_deck_gap",
+    "blocking": false,
+    "depth_rule": "actor_y_sorted",
+    "relationship_tags": [
+      "stream_crossing",
+      "east_bank_route",
+      "adapted_forest_prop"
+    ],
+    "visual_qa": "PENDING",
+    "production_status": "ADAPTED_B"
   }
 ]

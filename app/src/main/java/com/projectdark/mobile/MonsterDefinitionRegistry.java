@@ -18,6 +18,12 @@ public final class MonsterDefinitionRegistry {
         "세줄금반지/금전더미/강력한연필/포테정령의뿔",
         MonsterDefinition.Evidence.V,MonsterDefinition.Status.CANONICAL));
 
+    // Pote Forest prototype actor: known canonical identity, but this placement and combat baseline
+    // are adapted fixtures. Keep rewards unset until a canonical reward row is verified.
+    definitions.put("POTE_PURPLE",new MonsterDefinition(
+        "POTE_PURPLE","퍼플팜팻 [B]","포테의숲 runtime prototype",null,null,null,null,
+        MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
+
     // Current Milles runtime combat fixture. It is not a Master monster and receives no canonical reward.
     definitions.put("combat_dummy_01",new MonsterDefinition(
         "combat_dummy_01","훈련용 몬스터 [B]","밀레스 runtime prototype",null,null,null,null,

@@ -26,7 +26,7 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_FOREST_MASS_V4";
+  public static final String STATUS="POTE_FOREST_MASS_V5";
   private static final float TILE_W=64f,TILE_H=32f;
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
@@ -116,14 +116,23 @@ public final class PoteFieldRenderer {
     }
   }
   private static int groundVariant(float x,float y,int seed){
-    boolean trail=false;
     int bandX=(int)Math.floor(x/192f),bandY=(int)Math.floor(y/96f);
-    int[] palette=FOREST_GROUND_TILES;
+    // Three broad, irregular dirt clearings break up the canopy floor. Stable tile noise
+    // feathers their edges so open ground blends into the leaf-covered forest cells.
+    float clearing=Math.max(clearingWeight(x,y,610f,500f,190f,126f),
+        Math.max(clearingWeight(x,y,980f,670f,210f,138f),clearingWeight(x,y,1510f,445f,250f,176f)));
+    float noise=unit(seed^0x3f19a2d7);
+    boolean open=clearing>0.32f&&noise<Math.min(.94f,.63f+clearing*.34f);
+    int[] palette=open?CLEARING_GROUND_TILES:FOREST_GROUND_TILES;
     return palette[Math.floorMod(seed/7+bandX*3+bandY*5,palette.length)];
+  }
+  private static float clearingWeight(float x,float y,float cx,float cy,float rx,float ry){
+    float d=(float)Math.sqrt(((x-cx)/rx)*((x-cx)/rx)+((y-cy)/ry)*((y-cy)/ry));
+    return Math.max(0f,Math.min(1f,(1.22f-d)*1.55f));
   }
   /** Milles-style connected soil surface laid over the complete Pote floor lattice. */
   private void drawConnectedTrail(Canvas c,WorldRuntimeAdapter w){
-    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
+    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192},{1240,260},{1250,330},{1324,388},{1400,448},{1490,500},{1580,520},{1680,480}};
     android.graphics.Path path=new android.graphics.Path();
     WorldCameraTransform.Point first=w.worldToScreen(route[0][0],route[0][1]);path.moveTo(first.x,first.y);
     for(int i=1;i<route.length-1;i++){
@@ -138,7 +147,8 @@ public final class PoteFieldRenderer {
   private static boolean nearMainTrail(float x,float y){
     float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
     for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<48f)return true;
-    return Math.hypot(x-480f,y-220f)<86f||Math.hypot(x-700f,y-440f)<72f||Math.hypot(x-1050f,y-240f)<82f;
+    return Math.hypot(x-640f,y-480f)<88f||Math.hypot(x-700f,y-440f)<72f||Math.hypot(x-1050f,y-240f)<82f
+        ||Math.hypot(x-1520f,y-410f)<135f;
   }
   private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){
     float dx=bx-ax,dy=by-ay,den=dx*dx+dy*dy;
@@ -172,7 +182,7 @@ public final class PoteFieldRenderer {
       c.drawBitmap(b,null,dst,pixel);return;
     }
     float ww=b.getWidth()*p.scale,hh=b.getHeight()*p.scale;
-    boolean center="water".equals(p.role);
+    boolean center="water".equals(p.role)||"bridge".equals(p.role);
     RectF dst=center?new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh*.5f),Math.round(q.x+ww*.5f),Math.round(q.y+hh*.5f)):
         new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh),Math.round(q.x+ww*.5f),Math.round(q.y));
     if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight())c.drawBitmap(b,null,dst,pixel);
@@ -232,7 +242,7 @@ public final class PoteFieldRenderer {
     // Build an enclosing canopy first, then fill the flanks around one broad irregular trail.
     // Positions are staggered and jittered so the forest reads as connected growth, not rows.
     int n=0;
-    for(int x=34;x<=1430;x+=104){
+    for(int x=34;x<=1740;x+=104){
       float wobble=((n*37)%31)-15;
       tree(p,x+wobble,154+((n*19)%35),1+(n%7),.91f+(n%3)*.07f);
       if((n&1)==0)tree(p,x+47-wobble*.35f,223+((n*23)%37),1+((n+3)%7),.78f+(n%4)*.06f);
@@ -242,11 +252,11 @@ public final class PoteFieldRenderer {
     n=0;for(int y=260;y<=850;y+=92){
       float wobble=((n*29)%35)-17;
       if(y<748)tree(p,102+wobble,y,1+(n%7),.9f+(n%3)*.06f);
-      tree(p,1360-wobble,y+31,1+((n+4)%7),.89f+(n%4)*.05f);
-      if((n&1)==0){small(p,178+wobble,y+48,1+n%3);small(p,1290-wobble,y+66,1+(n+1)%3);}
+      tree(p,1700-wobble,y+31,1+((n+4)%7),.89f+(n%4)*.05f);
+      if((n&1)==0){small(p,178+wobble,y+48,1+n%3);small(p,1630-wobble,y+66,1+(n+1)%3);}
       n++;
     }
-    n=0;for(int x=220;x<=1300;x+=132){
+    n=0;for(int x=220;x<=1690;x+=132){
       if(x>=380)tree(p,x+((n*17)%29)-14,876-((n*11)%28),1+(n%7),.8f+(n%3)*.07f);n++;
     }
 
@@ -254,18 +264,22 @@ public final class PoteFieldRenderer {
     // small trees and understory; clear centers remain large enough for movement and combat.
     grove(p,178,365,2);grove(p,365,262,5);grove(p,650,205,1);grove(p,1198,294,4);
     grove(p,185,520,6);grove(p,438,812,3);grove(p,765,804,5);grove(p,1080,835,2);
-    grove(p,1350,700,7);grove(p,240,430,4);grove(p,810,560,6);grove(p,1320,810,1);
-    grove(p,170,370,3);grove(p,520,280,6);grove(p,600,690,5);grove(p,1120,380,2);
+    grove(p,1350,700,7);grove(p,240,430,4);grove(p,1320,810,1);grove(p,170,370,3);
+    grove(p,520,280,6);grove(p,1120,380,2);grove(p,1660,680,5);
 
     // One diagonal woodland creek, assembled from the production water/bank sprites.
-    stream(p,new float[][]{{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362}});
+    stream(p,new float[][]{{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}});
+
+    // One clear, playable footbridge crosses the creek and connects the eastern trail.
+    p.add(new Placement("POTE_BR_01.png",1324,388,.13f,"bridge",false));
+    ground(p,1490,500,3);ground(p,1580,540,6);bush(p,1455,565,4);rock(p,1648,558,2);
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
     stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);
     stump(p,400,430,3);rock(p,821,566,2);small(p,723,601,3);
     rock(p,1028,376,5);small(p,1070,346,1);stump(p,1225,706,4);
 
-    p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
+    p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparingInt(a->"bridge".equals(a.role)?1:0).thenComparing(a->a.asset));
     return p;
   }
 
