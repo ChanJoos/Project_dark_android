@@ -20,11 +20,12 @@ public final class PoteFieldDef {
 
   public static List<WorldMoveTargetController.TileCenter> navigationTiles(){
     List<WorldMoveTargetController.TileCenter> out=new ArrayList<>();
-    for(float y=96f;y<=864f;y+=32f){
-      int row=(int)((y-96f)/32f);
-      for(float x=96f;x<=1376f;x+=64f){
-        float px=x+((row&1)==0?0f:32f);
-        if(px<=1376f&&!blocked(px,y))out.add(new WorldMoveTargetController.TileCenter(px,y));
+    // Match WorldMoveTargetController's real isometric steps exactly: NW/NE/SW/SE =
+    // (-32,-16)/(32,-16)/(-32,16)/(32,16). The former 64x32 lattice had no legal edges.
+    for(float y=MIN_Y;y<=MAX_Y;y+=16f){
+      for(float x=MIN_X;x<=MAX_X;x+=32f){
+        int parity=(int)(x/32f+y/16f);
+        if((parity&1)==0&&!blocked(x,y))out.add(new WorldMoveTargetController.TileCenter(x,y));
       }
     }
     return Collections.unmodifiableList(out);
@@ -37,7 +38,7 @@ public final class PoteFieldDef {
     out.add(new RectF(64,64,210,690)); out.add(new RectF(210,64,510,205));
     out.add(new RectF(510,64,850,150)); out.add(new RectF(850,64,1408,190));
     // east forest wall
-    out.add(new RectF(1260,190,1408,896));
+    out.add(new RectF(1280,190,1408,896));
     // V3 visible forest masses / peninsulas. Collision follows trunks, not canopy silhouettes.
     out.add(new RectF(260,250,430,410));
     out.add(new RectF(470,360,625,485));
@@ -45,10 +46,10 @@ public final class PoteFieldDef {
     out.add(new RectF(485,730,610,820));
     out.add(new RectF(760,210,930,360));
     out.add(new RectF(900,610,1015,790));
-    // Continuous meandering stream channel. Keep west-side route readable.
-    out.add(new RectF(990,130,1125,350));
-    out.add(new RectF(1015,350,1160,590));
-    out.add(new RectF(1030,590,1185,865));
+    // Continuous meandering stream follows the eastern edge; the entry-to-clearing route stays west of it.
+    out.add(new RectF(1190,130,1260,350));
+    out.add(new RectF(1208,350,1280,590));
+    out.add(new RectF(1198,590,1270,865));
     return Collections.unmodifiableList(out);
   }
 
@@ -58,7 +59,9 @@ public final class PoteFieldDef {
     float dx=x-EXIT_X,dy=y-EXIT_Y;return dx*dx+dy*dy<=EXIT_RADIUS*EXIT_RADIUS;
   }
   private static boolean blocked(float x,float y){
-    for(RectF r:obstacles())if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom)return true;
+    float radius=14f;
+    if(x-radius<MIN_X||x+radius>MAX_X||y-radius<MIN_Y||y+radius>MAX_Y)return true;
+    for(RectF r:obstacles())if(x+radius>r.left&&x-radius<r.right&&y+radius>r.top&&y-radius<r.bottom)return true;
     return false;
   }
 }

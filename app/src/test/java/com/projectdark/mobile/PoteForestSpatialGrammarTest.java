@@ -39,7 +39,9 @@ public final class PoteForestSpatialGrammarTest {
     while(!q.isEmpty()){int i=q.remove(); if(i==goal)return true; WorldMoveTargetController.TileCenter a=tiles.get(i);
       for(int j=0;j<tiles.size();j++){if(seen[j])continue; WorldMoveTargetController.TileCenter b=tiles.get(j);
         float dx=Math.abs(a.x-b.x),dy=Math.abs(a.y-b.y);
-        if(dy<=32.1f&&dx<=64.1f&&(dx+dy)>1f){seen[j]=true;q.add(j);}
+        // Match the four runtime directions exactly; loose proximity made disconnected
+        // navigation lattices appear connected in the earlier prototype test.
+        if(Math.abs(dx-32f)<.1f&&Math.abs(dy-16f)<.1f){seen[j]=true;q.add(j);}
       }
     } return false;
   }

@@ -5,8 +5,10 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.BitmapShader;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -24,7 +26,11 @@ import java.util.Map;
 public final class PoteFieldRenderer {
   public static final String STATUS="POTE_FOREST_MASS_V3";
   private static final float TILE_W=64f,TILE_H=32f;
+  private static final String SOIL_TEXTURE="video_reference/terrain/dirt_path_fill_texture.png";
+  private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
+  private static final int[] CLEARING_GROUND_TILES={5,6,7,8};
   private final Paint pixel=new Paint();
+  private final Paint soilPaint=new Paint();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
   private final List<Placement> placements=buildPlacements();
@@ -38,6 +44,7 @@ public final class PoteFieldRenderer {
 
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
+    soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
   }
 
   public int placementCount(){return placements.size();}
@@ -60,11 +67,40 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // V3: no painted road. The traversable path is negative space carved between forest masses.
-    // Only a subdued forest floor and a damp eastern watershed underlay are painted.
-    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff394526);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainStroke(c,w,new float[][]{{1025,150},{1075,235},{1035,320},{1090,405},{1045,495},{1110,585},{1060,675},{1120,760},{1090,850}},104f,0xff416f6d);
-    terrainStroke(c,w,new float[][]{{1030,155},{1068,240},{1042,325},{1080,410},{1052,500},{1098,590},{1070,680},{1108,765},{1092,845}},26f,0xff60918c);
+    // The continuous underlay uses the captured LOD dirt texture. POTE_GD assets are raised,
+    // cutout ground clumps; carpeting them on a fixed lattice creates visible diamond seams.
+    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff4c3928);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    Bitmap soil=bitmap(SOIL_TEXTURE);
+    if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);}
+    drawGroundTiles(c,w);
+    // A shallow, asset-textured stream hugs the eastern boundary and leaves a direct trail
+    // from the south-west entry to the northern encounter clearing.
+    terrainStroke(c,w,new float[][]{{1230,145},{1260,225},{1225,305},{1268,385},{1232,465},{1272,545},{1237,625},{1278,705},{1244,785},{1280,850}},104f,0xff416f6d);
+    terrainStroke(c,w,new float[][]{{1234,150},{1253,230},{1232,310},{1260,390},{1240,470},{1264,550},{1245,630},{1270,710},{1250,790},{1275,850}},26f,0xff60918c);
+  }
+
+  /** Source-derived forest-floor cutouts add uneven leaf litter over the seamless soil substrate. */
+  private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
+    float stepX=128f,stepY=92f,cx=w.camera().cameraX(),cy=w.camera().cameraY();
+    int firstRow=(int)Math.floor((cy-120f)/stepY),lastRow=(int)Math.ceil((cy+c.getHeight()+120f)/stepY);
+    for(int row=firstRow;row<=lastRow;row++){
+      float y=row*stepY;float rowOffset=(Math.floorMod(row,2)==0?0f:stepX*.5f);
+      int firstCol=(int)Math.floor((cx-160f-rowOffset)/stepX),lastCol=(int)Math.ceil((cx+c.getWidth()+160f-rowOffset)/stepX);
+      for(int col=firstCol;col<=lastCol;col++){
+        int seed=tileSeed(col,row);float jitterX=(unit(seed)-.5f)*38f,jitterY=(unit(seed^0x45d9f3b)-.5f)*26f;
+        int choice=Math.floorMod(seed,10);int asset=choice<7?FOREST_GROUND_TILES[Math.floorMod(seed,FOREST_GROUND_TILES.length)]:CLEARING_GROUND_TILES[Math.floorMod(seed>>>3,CLEARING_GROUND_TILES.length)];
+        float scale=.62f+unit(seed^0x27d4eb2d)*.22f;
+        drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",asset),col*stepX+rowOffset+jitterX,y+jitterY,scale);
+      }
+    }
+  }
+  private static int tileSeed(int col,int row){return col*73856093^row*19349663;}
+  private static float unit(int n){int h=n^(n>>>16);h*=0x7feb352d;h^=h>>>15;h*=0x846ca68b;h^=h>>>16;return (h&0x7fffffff)/(float)Integer.MAX_VALUE;}
+  private void drawGroundPatch(Canvas c,WorldRuntimeAdapter w,String name,float wx,float wy,float scale){
+    Bitmap b=bitmap(name);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);
+    float width=b.getWidth()*scale,height=b.getHeight()*scale;
+    RectF dst=new RectF(Math.round(p.x-width*.5f),Math.round(p.y-height*.5f),Math.round(p.x+width*.5f),Math.round(p.y+height*.5f));
+    if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight())c.drawBitmap(b,null,dst,pixel);
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
     if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);pixel.setStyle(Paint.Style.STROKE);
@@ -87,7 +123,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!name.startsWith("POTE_GD_"))b=trimSourceEdge(stripEdgeMatte(b));
+      if(b!=null)b=trimSourceEdge(stripEdgeMatte(b));
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
   }
@@ -154,8 +190,8 @@ public final class PoteFieldRenderer {
     shoulder(p,285,785,1); shoulder(p,430,685,3);
     shoulder(p,600,520,2); shoulder(p,835,425,6);
 
-    // Connected eastern stream with bank hierarchy.
-    stream(p,new float[][]{{1090,190},{1120,250},{1095,315},{1130,380},{1105,450},{1140,520},{1115,590},{1150,660},{1125,730},{1160,800}});
+    // Connected eastern-edge stream with bank hierarchy. Keep the entry-to-clearing trail open.
+    stream(p,new float[][]{{1230,190},{1260,250},{1225,315},{1268,380},{1232,450},{1270,520},{1238,590},{1275,660},{1245,730},{1280,800}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
     stump(p,245,850,2); rock(p,430,825,4); small(p,335,875,2);
