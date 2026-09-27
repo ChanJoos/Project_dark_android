@@ -32,6 +32,8 @@ The movement regression now advances the Pote path and checks that the character
 
 The CI render exposed that the previous creek ran diagonally through the middle third of the map. The reference and this design call for the water to frame the eastern edge. The shared creek centerline now stays in the east-side band, reaches the north and south map boundaries, and leaves one authored PNG bridge crossing; the map collider and renderer read the same centerline and bridge coordinates. QA checks a connected east-bank route, a blocked off-bridge shore point, and a disconnected east bank when the bridge deck tiles are removed.
 
+The next rendered review showed the bridge deck extending into the eastern tree wall. Its runtime scale is reduced to match the channel width and keep both bank approaches visible.
+
 The next ground pass fills the woodland floor with overlapping production ground diamonds and uses a broad bare-earth route through the entry clearing.
 
 
