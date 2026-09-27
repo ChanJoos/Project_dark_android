@@ -163,10 +163,11 @@ public final class PoteFieldRenderer {
   private static void mass(List<Placement> p,float[][] pts,int seed){
     int i=0; for(float[] q:pts){
       int n=1+(seed+i*2)%7; float x=q[0],y=q[1];
-      tree(p,x,y,n,.90f+((seed+i)%3)*.06f);
-      if((i&1)==0)small(p,x+52-((seed+i)%3)*20,y+22,1+(seed+i)%3);
-      bush(p,x-58-(i%2)*18,y+42,1+(seed+i)%8);
-      bush(p,x+62+(i%3)*12,y+48,1+(seed+i+3)%8);
+      tree(p,x,y,n,1.10f+((seed+i)%3)*.07f);
+      tree(p,x-48+((seed+i)%3)*22,y-34,1+(seed+i+3)%7,.94f+((seed+i)%2)*.08f);
+      if((i&1)==0)small(p,x+58-((seed+i)%3)*20,y+26,1+(seed+i)%3);
+      bush(p,x-48-(i%2)*16,y+48,1+(seed+i)%8);
+      bush(p,x+54+(i%3)*10,y+52,1+(seed+i+3)%8);
       ground(p,x-82,y+60,1+(seed+i)%6);
       if(i%3==0)ground(p,x+86,y+64,1+(seed+i+2)%6);
       i++;
