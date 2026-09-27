@@ -98,6 +98,8 @@ public final class PoteFieldRenderer {
       Rect src=groundBounds.get(name);
       if(src==null){src=opaqueBounds(bitmap);groundBounds.put(name,src);}
       if(src==null)continue;
+      // Strip the source-sheet's dark baked outline while keeping the full tile footprint.
+      src=new Rect(src);src.inset(Math.max(2,src.width()/36),Math.max(2,src.height()/40));
       // Each move-lattice ground cell receives one complete 64x32 authored diamond.
       // Cell centers are spaced 32x16 diagonally, so all four edges join without gaps.
       RectF dst=new RectF((float)Math.floor(point.x-32f),(float)Math.floor(point.y-16f),
