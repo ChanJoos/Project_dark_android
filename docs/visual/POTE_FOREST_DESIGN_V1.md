@@ -34,6 +34,8 @@ The CI render exposed that the previous creek ran diagonally through the middle 
 
 The next rendered review showed the bridge deck extending into the eastern tree wall. Its runtime scale is reduced to match the channel width and keep both bank approaches visible.
 
+The same review showed an oversized bare center in the playable camera. Four offset groves now break up that clearing into a narrower, irregular earth lane; the entry-to-east-bank path test guards against crowding out movement.
+
 The next ground pass fills the woodland floor with overlapping production ground diamonds and uses a broad bare-earth route through the entry clearing.
 
 

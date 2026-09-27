@@ -234,6 +234,8 @@ public final class PoteFieldRenderer {
     grove(p,185,520,6);grove(p,438,812,3);grove(p,765,804,5);grove(p,1080,835,2);
     grove(p,1350,700,7);grove(p,240,430,4);grove(p,1320,810,1);grove(p,170,370,3);
     grove(p,520,280,6);grove(p,1120,380,2);grove(p,1660,680,5);
+    // Fill the oversized central bare patch with offset groves while preserving a broken earth lane.
+    grove(p,470,455,4);grove(p,855,350,2);grove(p,970,675,7);grove(p,690,735,3);
     // Video-reviewed broad-branch oaks add the separated rounded crowns seen in the reference.
     oak(p,365,320,.30f);oak(p,1080,330,.30f);oak(p,1640,700,.30f);
 
