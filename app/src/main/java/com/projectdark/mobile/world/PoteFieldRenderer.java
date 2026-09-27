@@ -63,8 +63,8 @@ public final class PoteFieldRenderer {
     // V3: no painted road. The traversable path is negative space carved between forest masses.
     // Only a subdued forest floor and a damp eastern watershed underlay are painted.
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff394526);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},92f,0xff467b78);
-    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},48f,0xff72aaa4);
+    terrainStroke(c,w,new float[][]{{1025,150},{1075,235},{1035,320},{1090,405},{1045,495},{1110,585},{1060,675},{1120,760},{1090,850}},104f,0xff416f6d);
+    terrainStroke(c,w,new float[][]{{1030,155},{1068,240},{1042,325},{1080,410},{1052,500},{1098,590},{1070,680},{1108,765},{1092,845}},26f,0xff60918c);
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
     if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);pixel.setStyle(Paint.Style.STROKE);
@@ -171,7 +171,7 @@ public final class PoteFieldRenderer {
       int n=1+(seed+i*2)%7; float x=q[0],y=q[1];
       tree(p,x,y,n,1.10f+((seed+i)%3)*.07f);
       tree(p,x-44+((seed+i)%3)*20,y-38,1+(seed+i+3)%7,1.02f+((seed+i)%2)*.10f);
-      if((i&1)==0)small(p,x+64-((seed+i)%3)*22,y+30,1+(seed+i)%3);
+      if(i%3==0)small(p,x+64-((seed+i)%3)*22,y+30,1+(seed+i)%3);
       bush(p,x-48-(i%2)*16,y+48,1+(seed+i)%8);
       bush(p,x+54+(i%3)*10,y+52,1+(seed+i+3)%8);
       ground(p,x-72,y+64,1+(seed+i)%6);
@@ -186,7 +186,7 @@ public final class PoteFieldRenderer {
   private static void stream(List<Placement> p,float[][] pts){
     // Water V2: sparse overlapping water surfaces, continuous banks. Avoid the old vertical PNG chain.
     int i=0; for(float[] q:pts){
-      float x=q[0]+((i%4)-1.5f)*18f,y=q[1];
+      float x=q[0]+((i%5)-2f)*15f,y=q[1];
       if((i&1)==0){
         int sprite=1+(i/2)%3;
         p.add(new Placement(String.format("POTE_WT_%02d.png",sprite),x,y,1.22f+(i%3)*.08f,"water",false));
