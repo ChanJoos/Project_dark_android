@@ -39,7 +39,7 @@ public final class PotePrototypeWorldDef {
 
     /** Produces the same runtime monster type used by the current combat engine. */
     public RuntimeState.Monster instantiateRuntimeMonster(){
-      return new RuntimeState.Monster(monsterId,name,x,y,hp,"PENDING_CROP");
+      return new RuntimeState.Monster(monsterId,name,x,y,hp,PamfetSpriteRenderer.ASSET_STATUS);
     }
   }
 
@@ -49,7 +49,7 @@ public final class PotePrototypeWorldDef {
     return new Spawn(
         MAP_ID,
         PotePrototypeCombatProfile.MONSTER_ID,
-        "퍼플팜팻 [B placement]",
+        "퍼플팜팻",
         MONSTER_X_B,
         MONSTER_Y_B,
         PotePrototypeCombatProfile.RUNTIME_HP_B,
