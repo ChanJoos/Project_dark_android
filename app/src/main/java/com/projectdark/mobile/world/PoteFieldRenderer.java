@@ -116,7 +116,7 @@ public final class PoteFieldRenderer {
           (float)Math.ceil(point.x+33f),(float)Math.ceil(point.y+17f));
       // The continuous forest-soil substrate stays visible through the cutout diamonds,
       // keeping the joined tile lattice from reading like a field of stone pavers.
-      pixel.setAlpha(variant>=5&&variant<=8?78:38);
+      pixel.setAlpha(variant>=5&&variant<=8?28:12);
       c.drawBitmap(bitmap,src,dst,pixel);
     }
     pixel.setAlpha(255);
@@ -190,21 +190,21 @@ public final class PoteFieldRenderer {
       if(sprite!=null)drawPlacement(c,w,p);
       c.save();c.rotate(45f,q.x,q.y);
       pixel.setAntiAlias(false);pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff392719);
-      c.drawRect(q.x-106f,q.y-31f,q.x+106f,q.y+31f,pixel);
-      pixel.setColor(0xff76502e);c.drawRect(q.x-101f,q.y-26f,q.x+101f,q.y+26f,pixel);
-      pixel.setColor(0xff9b7042);c.drawRect(q.x-96f,q.y-22f,q.x+96f,q.y+22f,pixel);
-      pixel.setColor(0xff4b321f);pixel.setStrokeWidth(3f);
-      for(float x=q.x-88f;x<=q.x+88f;x+=16f)c.drawLine(x,q.y-21f,x,q.y+21f,pixel);
+      c.drawRect(q.x-74f,q.y-20f,q.x+74f,q.y+20f,pixel);
+      pixel.setColor(0xff76502e);c.drawRect(q.x-71f,q.y-17f,q.x+71f,q.y+17f,pixel);
+      pixel.setColor(0xff9b7042);c.drawRect(q.x-67f,q.y-14f,q.x+67f,q.y+14f,pixel);
+      pixel.setColor(0xff4b321f);pixel.setStrokeWidth(2f);
+      for(float x=q.x-62f;x<=q.x+62f;x+=12f)c.drawLine(x,q.y-13f,x,q.y+13f,pixel);
       pixel.setStrokeWidth(0f);pixel.setColor(0xff59391f);
-      c.drawRect(q.x-105f,q.y-29f,q.x+105f,q.y-22f,pixel);
-      c.drawRect(q.x-105f,q.y+22f,q.x+105f,q.y+29f,pixel);
+      c.drawRect(q.x-73f,q.y-18f,q.x+73f,q.y-13f,pixel);
+      c.drawRect(q.x-73f,q.y+13f,q.x+73f,q.y+18f,pixel);
       pixel.setColor(0xffbd9258);
-      for(float x=q.x-96f;x<=q.x+96f;x+=48f){
-        c.drawRect(x-3f,q.y-37f,x+3f,q.y-16f,pixel);c.drawRect(x-3f,q.y+16f,x+3f,q.y+37f,pixel);
+      for(float x=q.x-64f;x<=q.x+64f;x+=32f){
+        c.drawRect(x-2f,q.y-22f,x+2f,q.y-9f,pixel);c.drawRect(x-2f,q.y+9f,x+2f,q.y+22f,pixel);
       }
-      pixel.setColor(0xff684323);pixel.setStrokeWidth(5f);
-      c.drawLine(q.x-103f,q.y-29f,q.x+103f,q.y-29f,pixel);
-      c.drawLine(q.x-103f,q.y+29f,q.x+103f,q.y+29f,pixel);
+      pixel.setColor(0xff684323);pixel.setStrokeWidth(3f);
+      c.drawLine(q.x-72f,q.y-18f,q.x+72f,q.y-18f,pixel);
+      c.drawLine(q.x-72f,q.y+18f,q.x+72f,q.y+18f,pixel);
       c.restore();pixel.setStrokeWidth(0f);pixel.setColor(0xff000000);
     }
   }
