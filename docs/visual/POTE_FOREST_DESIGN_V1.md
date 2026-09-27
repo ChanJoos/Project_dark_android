@@ -81,3 +81,6 @@ V10 visual acceptance is pending fresh rendered screenshots from the V10 APK; CI
 ## Central arrival and regional density correction
 
 The prior edge-creek layout did not match the supplied scenes: arrival was off to the side, the stream followed a nearly straight map edge, and the grove additions made the view too uniformly crowded. The current adapted layout moves arrival to the central trail, makes the trail visible through the arrival camera toward a crossing, and sends a bending creek across that route. A sampled creek collision blocks the banks except for a narrow bridge opening. Asymmetric groves, small plants along the trail shoulders, and open earth patches create denser and sparser regions instead of a continuous wall of vegetation. These coordinates remain an adaptation, not a claim about the original map data. Fresh rendered review and route tests are required before visual acceptance.
+
+
+Runtime fixture coordinates for the adapted layout: arrival (800,528), trail through (790,510) and (1060,474) to bridge (1200,440). All are adapted coordinates, not original-map facts; the renderer and spatial tests on this branch are authoritative for the full creek point list and crossing reachability.
