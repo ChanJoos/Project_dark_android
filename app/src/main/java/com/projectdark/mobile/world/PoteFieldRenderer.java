@@ -63,7 +63,8 @@ public final class PoteFieldRenderer {
     // V3: no painted road. The traversable path is negative space carved between forest masses.
     // Only a subdued forest floor and a damp eastern watershed underlay are painted.
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff394526);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},156f,0xff344d3d);
+    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},92f,0xff467b78);
+    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},48f,0xff72aaa4);
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
     if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);pixel.setStyle(Paint.Style.STROKE);
