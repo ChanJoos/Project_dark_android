@@ -38,15 +38,17 @@ public final class PoteFieldDef {
     out.add(new RectF(510,64,850,150)); out.add(new RectF(850,64,1408,190));
     // east forest wall
     out.add(new RectF(1260,190,1408,896));
-    // dense internal groves: leave readable corridors between them
+    // V3 visible forest masses / peninsulas. Collision follows trunks, not canopy silhouettes.
     out.add(new RectF(260,250,430,410));
-    out.add(new RectF(480,520,650,700));
+    out.add(new RectF(470,360,625,485));
+    out.add(new RectF(690,525,825,635));
+    out.add(new RectF(485,730,610,820));
     out.add(new RectF(760,210,930,360));
-    out.add(new RectF(900,610,1090,790));
-    // stream body on east/centre; bridge gaps remain walkable
-    out.add(new RectF(1040,190,1245,390));
-    out.add(new RectF(990,430,1180,575));
-    out.add(new RectF(1080,620,1260,815));
+    out.add(new RectF(900,610,1015,790));
+    // Continuous meandering stream channel. Keep west-side route readable.
+    out.add(new RectF(990,130,1125,350));
+    out.add(new RectF(1015,350,1160,590));
+    out.add(new RectF(1030,590,1185,865));
     return Collections.unmodifiableList(out);
   }
 
