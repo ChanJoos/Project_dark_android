@@ -37,3 +37,5 @@ The next ground pass fills the woodland floor with overlapping production ground
 - Keep the field guide beside the entry and check the entry-to-clearing-to-water route for collision reachability.
 
 The field map uses one shared terrain lattice for floor placement, direct-step input, and the walkable route test.
+
+Compile follow-up: the tile renderer keeps its atlas cache and uses precomputed alpha bounds for each ground variant.
