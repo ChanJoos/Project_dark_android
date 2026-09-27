@@ -28,7 +28,7 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_FOREST_REFERENCE_GROUND_V9";
+  public static final String STATUS="POTE_FOREST_REFERENCE_GROUND_V10";
   private static final float TILE_W=64f,TILE_H=32f;
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
   private final Paint pixel=new Paint();
@@ -90,7 +90,7 @@ public final class PoteFieldRenderer {
   /** Each navigation-ground diamond samples one shared, source-video texture in world space. */
   private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
     Bitmap soil=bitmap(SOIL_TEXTURE);if(soil==null)return;
-    BitmapShader shader=new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
+    BitmapShader shader=new BitmapShader(soil,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT);
     Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
     soilPaint.setShader(shader);soilPaint.setColor(0xffffffff);soilPaint.setStyle(Paint.Style.FILL);
     groundCells.reset();

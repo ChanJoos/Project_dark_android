@@ -1561,5 +1561,33 @@
     ],
     "visual_qa": "PENDING",
     "production_status": "ADAPTED_B"
+  },
+  {
+    "asset_id": "POTE_SOIL_REFERENCE_01",
+    "category": "terrain_texture",
+    "file": "video_reference/terrain/pote_forest_soil_v2.png",
+    "source_pixel_size": [
+      576,
+      448
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      576,
+      448
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_base",
+    "relationship_tags": [
+      "forest_floor",
+      "walk_corridor",
+      "encounter_clearing",
+      "movement_cell_lattice"
+    ],
+    "visual_qa": "PENDING_V10",
+    "production_status": "ADAPTED_SOURCE_VIDEO_COMPOSITE",
+    "source_note": "24 bare-soil crops blended from supplied recording frames at 8s, 14s, 22s and 28s; 32-color palette; no resampling."
   }
 ]
