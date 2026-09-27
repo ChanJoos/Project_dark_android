@@ -2,7 +2,7 @@
 
 ## Evidence and scope
 
-Nexon describes Pote Forest as a distinct monster hunting area and has issued balancing updates for its monster population. That supports the forest-combat role, but does not establish an exact canonical map layout. The supplied in-game captures are the visual reference for broad leaf-covered ground, dense tree masses, open combat lanes, and a stream along the right edge. This draft adapts those cues; its specific paths and landmarks are not asserted as original map facts.
+Nexon describes Pote Forest as a distinct monster hunting area and has issued balancing updates for its monster population. That supports the forest-combat role, but does not establish an exact canonical map layout. The supplied captures show broad earth lanes, separate denser vegetation patches, and a winding stream with a crossing. Vegetation density varies by patch; the whole map should not be filled uniformly. This draft adapts those cues; its specific paths and landmarks are not asserted as original map facts.
 
 ## Ground first
 
@@ -12,9 +12,9 @@ Nexon describes Pote Forest as a distinct monster hunting area and has issued ba
 
 ## Forest grammar
 
-- Build a connected south-west entry route to the north-east clearing through negative space between groves.
+- Place arrivals near the center on a broad visible trail; the first view should show the route and its nearby crossing.
 - Put canopy masses at the perimeter and understory trees/shrubs behind the walking lane; collision follows trunks and solids, not the full canopy silhouette.
-- Keep the stream meandering along the eastern edge with bank, water, and rock assets. It should enrich the edge without cutting the map in half.
+- Let the stream bend across the trail, with one visible bridge and traversable approaches on each bank.
 - Use stumps, rocks, and small ground details as sparse landmarks at decision spaces.
 - Keep the Milles travel guide one valid isometric movement step from the player spawn.
 
@@ -77,3 +77,7 @@ V6 adds a detailed repeatable leaf-litter soil texture, reduces ground cutouts t
 The former randomized GD diamond renderer produced a visible beveled checkerboard, even when its colors were blended. V10 uses the 32x16 Milles movement lattice as the ground-cell geometry, clips those adjoining diamond cells as one continuous surface, and samples a shared repeating bitmap in world coordinates. The runtime bitmap `video_reference/terrain/pote_forest_soil_v2.png` is a 576x448 composite of 24 clean 128x128 bare-ground crops from supplied recording frames at 8 s, 14 s, 22 s and 28 s. A 32-color palette preserves the captured reddish soil, fine ground noise and scattered moss without resampling. The seams between source crops are blended, and the final texture edges wrap for uninterrupted shader tiling. This terrain texture is registered in both the runtime manifest and catalog. It is a runtime texture, not a mock screenshot. POTE_GD cutouts remain available as localized ground details, and the tree, understory, stream, and bridge sprites remain independently anchored production objects. Movement, collision, and player presentation continue to use the same field adapter and navigation tile graph.
 
 V10 visual acceptance is pending fresh rendered screenshots from the V10 APK; CI green alone is not visual PASS.
+
+## Central arrival and regional density correction
+
+The prior edge-creek layout did not match the supplied scenes: arrival was off to the side, the stream followed a nearly straight map edge, and the grove additions made the view too uniformly crowded. The current adapted layout moves arrival to the central trail, makes the trail visible through the arrival camera toward a crossing, and sends a bending creek across that route. A sampled creek collision blocks the banks except for a narrow bridge opening. Asymmetric groves, small plants along the trail shoulders, and open earth patches create denser and sparser regions instead of a continuous wall of vegetation. These coordinates remain an adaptation, not a claim about the original map data. Fresh rendered review and route tests are required before visual acceptance.

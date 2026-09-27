@@ -67,16 +67,21 @@ public final class PoteForestSpatialGrammarTest {
     assertTrue(PoteFieldDef.MAX_Y-PoteFieldDef.MIN_Y>=760f);
   }
 
-  @Test public void expandedEastBankIsReachableOnlyAcrossTheBridge(){
+  @Test public void windingCreekCrossesTheArrivalTrailOnlyAtTheBridge(){
     List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
-    assertTrue("eastern clearing must be reachable from field entry",hasPath(tiles,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,1648f,480f));
+    assertEquals("arrival should sit near the map centre",896f,PoteFieldDef.ENTRY_X,160f);
+    assertEquals("arrival should sit near the map centre",480f,PoteFieldDef.ENTRY_Y,80f);
+    assertTrue("the trail should lead to the creek crossing",hasPath(tiles,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,PoteFieldDef.BRIDGE_X,PoteFieldDef.BRIDGE_Y));
+    assertTrue("the far bank should be reachable from field entry",hasPath(tiles,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,1648f,480f));
     assertTrue("bridge deck gap must be unblocked",tiles.stream().anyMatch(t->Math.abs(t.x-PoteFieldDef.BRIDGE_X)<=32f&&Math.abs(t.y-PoteFieldDef.BRIDGE_Y)<=16f));
-    assertTrue("creek away from bridge must remain blocked",PoteFieldDef.obstacles().stream().anyMatch(r->r.contains(1490f,770f)));
-    for(float[] p:PoteFieldDef.creekCenterline())assertTrue("creek must stay on the eastern side",p[0]>=1440f);
+    assertTrue("winding creek away from the bridge must remain blocked",PoteFieldDef.obstacles().stream().anyMatch(r->r.contains(900f,820f)));
+    float[][] creek=PoteFieldDef.creekCenterline();boolean turned=false;
+    for(int i=2;i<creek.length;i++)if((creek[i][0]-creek[i-1][0])*(creek[i-1][0]-creek[i-2][0])<0)turned=true;
+    assertTrue("the creek should change direction across the map",turned);
     List<WorldMoveTargetController.TileCenter> withoutDeck=new ArrayList<>();
     for(WorldMoveTargetController.TileCenter t:tiles)
       if(Math.abs(t.x-PoteFieldDef.BRIDGE_X)>80f||Math.abs(t.y-PoteFieldDef.BRIDGE_Y)>64f)withoutDeck.add(t);
-    assertFalse("the eastern bank must not be reachable by walking around the creek ends",
+    assertFalse("the far bank must not be reachable by walking around the creek ends",
         hasPath(withoutDeck,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,1648f,480f));
   }
 }

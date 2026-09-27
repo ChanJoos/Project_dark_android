@@ -31,6 +31,7 @@ public final class PoteFieldRenderer {
   public static final String STATUS="POTE_FOREST_REFERENCE_GROUND_V10";
   private static final float TILE_W=64f,TILE_H=32f;
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
+  private static final String TRAIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private final Paint pixel=new Paint();
   private final Paint soilPaint=new Paint();
   private final Path groundCells=new Path();
@@ -85,6 +86,22 @@ public final class PoteFieldRenderer {
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     drawGroundTiles(c,w);
+    drawTrail(c,w);
+  }
+
+  /** A broad, gently bending bare-earth lane leads from the arrival point to the footbridge. */
+  private void drawTrail(Canvas c,WorldRuntimeAdapter w){
+    Bitmap texture=bitmap(TRAIL_TEXTURE);if(texture==null)return;
+    BitmapShader shader=new BitmapShader(texture,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT);
+    Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
+    pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(142f);
+    pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
+    Path trail=new Path();float[][] points=PoteForestGeometry.trailCenterline();
+    for(int i=0;i<points.length;i++){
+      WorldCameraTransform.Point point=w.worldToScreen(points[i][0],points[i][1]);
+      if(i==0)trail.moveTo(point.x,point.y);else trail.lineTo(point.x,point.y);
+    }
+    c.drawPath(trail,pixel);pixel.setShader(null);pixel.setStyle(Paint.Style.FILL);
   }
 
   /** Each navigation-ground diamond samples one shared, source-video texture in world space. */
@@ -137,7 +154,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
@@ -207,49 +224,30 @@ public final class PoteFieldRenderer {
 
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
-    // Build an enclosing canopy first, then fill the flanks around one broad irregular trail.
-    // Positions are staggered and jittered so the forest reads as connected growth, not rows.
-    int n=0;
-    for(int x=34;x<=1740;x+=104){
-      float wobble=((n*37)%31)-15;
-      tree(p,x+wobble,154+((n*19)%35),1+(n%7),.91f+(n%3)*.07f);
-      if((n&1)==0)tree(p,x+47-wobble*.35f,223+((n*23)%37),1+((n+3)%7),.78f+(n%4)*.06f);
-      if(n%3!=1)small(p,x-27,248+((n*13)%34),1+n%3);
-      n++;
-    }
-    n=0;for(int y=260;y<=850;y+=92){
-      float wobble=((n*29)%35)-17;
-      if(y<748)tree(p,102+wobble,y,1+(n%7),.9f+(n%3)*.06f);
-      tree(p,1700-wobble,y+31,1+((n+4)%7),.89f+(n%4)*.05f);
-      if((n&1)==0){small(p,178+wobble,y+48,1+n%3);small(p,1630-wobble,y+66,1+(n+1)%3);}
-      n++;
-    }
-    n=0;for(int x=220;x<=1690;x+=132){
-      if(x>=380)tree(p,x+((n*17)%29)-14,876-((n*11)%28),1+(n%7),.8f+(n%3)*.07f);n++;
+    // Distinct patches keep some forest edges dense while the middle opens into a broad route.
+    grove(p,190,185,2);grove(p,415,290,5);grove(p,250,620,6);grove(p,430,770,3);
+    grove(p,700,190,1);grove(p,760,790,5);grove(p,1010,190,4);grove(p,1020,740,2);
+    grove(p,1510,180,7);grove(p,1605,665,4);grove(p,1730,390,1);
+    oak(p,330,460,.30f);oak(p,600,630,.28f);oak(p,1450,760,.30f);
+
+    // Low plants and groundcover mark both shoulders without closing the walking lane.
+    float[][] trail=PoteForestGeometry.trailCenterline();
+    for(int i=1;i<trail.length-1;i++){
+      float x=trail[i][0],y=trail[i][1];
+      ground(p,x-8,y+112,1+(i%6));ground(p,x+10,y-112,1+((i+2)%6));
+      if((i&1)==0){bush(p,x-32,y+145,1+(i%8));bush(p,x+24,y-145,1+((i+3)%8));}
     }
 
-    // Interior canopy islands wrap around the trail. Each mass combines overlapping crowns,
-    // small trees and understory; clear centers remain large enough for movement and combat.
-    grove(p,178,365,2);grove(p,365,262,5);grove(p,650,205,1);grove(p,1198,294,4);
-    grove(p,185,520,6);grove(p,438,812,3);grove(p,765,804,5);grove(p,1080,835,2);
-    grove(p,1350,700,7);grove(p,240,430,4);grove(p,1320,810,1);grove(p,170,370,3);
-    grove(p,520,280,6);grove(p,1120,380,2);grove(p,1660,680,5);
-    // Fill the oversized central bare patch with offset groves while preserving a broken earth lane.
-    grove(p,470,455,4);grove(p,855,350,2);grove(p,970,675,7);grove(p,690,735,3);
-    // Video-reviewed broad-branch oaks add the separated rounded crowns seen in the reference.
-    oak(p,365,320,.30f);oak(p,1080,330,.30f);oak(p,1640,700,.30f);
-
-    // An eastern-edge woodland creek, assembled from the production water/bank sprites.
+    // The creek bends across the route. Mixed water segments, gravel and bank plants make
+    // its path irregular; a single wooden deck marks the one walkable crossing.
     stream(p,PoteForestGeometry.creekCenterline());
-
-    // One clear, playable footbridge crosses the creek and connects the eastern trail.
     p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.BRIDGE_X,PoteForestGeometry.BRIDGE_Y,.085f,"bridge",false));
-    ground(p,1605,540,3);ground(p,1690,600,6);bush(p,1665,650,4);rock(p,1638,558,2);
+    grove(p,1450,330,3);grove(p,1370,565,6);
 
-    // Landmarks sit at decision spaces, never in the centre of the walking corridor.
-    stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);
-    stump(p,400,430,3);rock(p,821,566,2);small(p,723,601,3);
-    rock(p,1028,376,5);small(p,1070,346,1);stump(p,1225,706,4);
+    // Sparse landmarks vary by patch; the arrival clearing and bridge approach stay readable.
+    stump(p,365,535,2);rock(p,510,590,4);small(p,305,505,2);
+    stump(p,550,365,3);rock(p,910,670,2);small(p,870,690,3);
+    rock(p,1570,300,5);small(p,1660,320,1);stump(p,1690,760,4);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparingInt(a->"bridge".equals(a.role)?1:0).thenComparing(a->a.asset));
     return p;
@@ -285,10 +283,12 @@ public final class PoteFieldRenderer {
   }
   private static void stream(List<Placement> p,float[][] pts){
     int i=0;for(float[] q:pts){
-      p.add(new Placement("POTE_WT_01.png",q[0],q[1],.95f,"water",false));
-      if(i%2==0){bank(p,q[0]-22,q[1]+38,1+(i%5));bank(p,q[0]+27,q[1]-39,1+((i+2)%5));}
-      if(i%4==0)rock(p,q[0]-56,q[1]+50,1+(i%5));
-      if(i%4==2)bush(p,q[0]+60,q[1]-57,1+(i%8));
+      int waterId=1+(i%6);
+      p.add(new Placement(String.format("POTE_WT_%02d.png",waterId),q[0],q[1],.90f+(i%3)*.07f,"water",false));
+      if(i%2==0){bank(p,q[0]-28,q[1]+34,1+(i%5));bank(p,q[0]+31,q[1]-37,1+((i+2)%5));}
+      if(i%3==0)rock(p,q[0]-58,q[1]+48,1+(i%5));
+      if(i%3==1)bush(p,q[0]+63,q[1]-53,1+(i%8));
+      if(i%4==2)ground(p,q[0]+74,q[1]+28,1+(i%6));
       i++;
     }
   }
