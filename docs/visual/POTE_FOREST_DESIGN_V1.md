@@ -27,3 +27,5 @@ The current pack has 59 cutout assets across ground patches, tree masses, smalle
 The first render review exposed a coordinate binding error: the Pote camera followed the field player while the character sprite still used Milles coordinates. The route also read as isolated diamond patches between over-dense tree clumps. V2 fixes the active-world binding and rebuilds the ground accents and grove layout. CI validation covers Android tests, movement/render binding, three forest review frames, and debug APK assembly; visual acceptance remains pending review of the new captures.
 The source commit is checked for valid UTF-8 before Android compilation so local file encoding cannot silently damage the CI build.
 The movement regression now advances the Pote path and checks that the character renderer stays bound to the same field coordinates.
+
+The next ground pass fills the woodland floor with overlapping production ground diamonds and uses a broad bare-earth route through the entry clearing.
