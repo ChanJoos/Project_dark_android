@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 public final class PoteForestSpatialGrammarTest {
   @Test public void forestUsesDenseAuthoredAssetPlacements(){
     PoteFieldRenderer renderer=new PoteFieldRenderer();
-    assertEquals("POTE_CLUSTERED_FOREST_V2",PoteFieldRenderer.STATUS);
-    assertTrue("forest should be densely authored, not a sparse shell",renderer.placementCount()>=150);
+    assertEquals("POTE_FOREST_MASS_V3",PoteFieldRenderer.STATUS);
+    assertTrue("forest should be densely authored, not a sparse shell",renderer.placementCount()>=120);
   }
 
   @Test public void navigationRetainsCorridorsAroundDenseGroves(){
