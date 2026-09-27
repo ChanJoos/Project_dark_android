@@ -123,7 +123,7 @@ public final class PoteFieldRenderer {
   }
   /** Milles-style connected soil surface laid over the complete Pote floor lattice. */
   private void drawConnectedTrail(Canvas c,WorldRuntimeAdapter w){
-    float[][] route={{192,800},{230,735},{360,700},{310,625},{425,570},{520,600},{600,515},{715,500},{690,425},{820,380},{900,410},{980,330},{1100,325},{1180,250},{1320,220}};
+    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
     android.graphics.Path path=new android.graphics.Path();
     WorldCameraTransform.Point first=w.worldToScreen(route[0][0],route[0][1]);path.moveTo(first.x,first.y);
     for(int i=1;i<route.length-1;i++){
