@@ -135,20 +135,6 @@ public final class PoteFieldRenderer {
         int x=i%w,y=i/w;if(x>0)q.add(i-1);if(x+1<w)q.add(i+1);if(y>0)q.add(i-w);if(y+1<h)q.add(i+w);
       }
     }
-    // Remove scan/crop separator columns occasionally embedded inside source cutouts.
-    // A separator is a near-black column spanning most of the sprite height; ordinary bark/shadows
-    // do not satisfy this full-column criterion.
-    for(int x=0;x<w;x++){
-      int dark=0,solid=0;
-      for(int y=0;y<h;y++){
-        int c=px[y*w+x],aa=(c>>>24)&255;if(aa<24)continue;solid++;
-        int rr=(c>>>16)&255,gg=(c>>>8)&255,bl=c&255;
-        if((rr*3+gg*4+bl)/8<30)dark++;
-      }
-      if(solid>Math.max(12,(int)(h*.55f))&&dark>=solid*.82f){
-        for(int y=0;y<h;y++)px[y*w+x]&=0x00ffffff;
-      }
-    }
     Bitmap out=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);out.setPixels(px,0,w,0,0,w,h);return out;
   }
 
@@ -156,18 +142,18 @@ public final class PoteFieldRenderer {
     List<Placement> p=new ArrayList<>();
     // V2 is authored as masses, not independent props: each canopy parent receives understory,
     // groundcover and detail children. Open centres are intentionally preserved for navigation.
-    cluster(p,150,190,1,1);cluster(p,280,165,2,3);cluster(p,420,155,3,5);cluster(p,570,150,4,7);
-    cluster(p,730,145,5,2);cluster(p,890,155,6,4);cluster(p,1015,175,7,6);
+    cluster(p,130,185,1,1);cluster(p,245,155,2,3);cluster(p,365,145,3,5);cluster(p,490,140,4,7);cluster(p,615,145,6,2);
+    cluster(p,745,145,5,2);cluster(p,875,150,6,4);cluster(p,1000,170,7,6);cluster(p,1120,185,3,1);
     cluster(p,1250,220,2,8);cluster(p,1285,365,5,1);cluster(p,1290,520,3,3);cluster(p,1295,690,6,5);cluster(p,1260,825,1,7);
     cluster(p,120,340,4,2);cluster(p,120,505,7,4);cluster(p,145,665,2,6);cluster(p,220,455,5,7);cluster(p,205,590,1,2);
 
     // West grove: one continuous mass, with a deliberate east-facing opening.
     cluster(p,285,315,5,3);cluster(p,385,335,1,5);small(p,330,395,1);small(p,445,300,2);
-    bush(p,250,375,6);ground(p,305,430,2);ground(p,420,415,5);detail(p,365,445,2);
+    bush(p,250,375,6);ground(p,305,430,2);ground(p,420,415,5);ground(p,365,445,3);
 
     // Old-growth central grove / landmark mass.
     cluster(p,435,610,6,6);cluster(p,715,655,3,1);small(p,475,690,3);stump(p,455,615,3);stump(p,690,655,4);
-    bush(p,575,690,5);ground(p,505,710,4);ground(p,690,700,1);detail(p,600,735,3);
+    bush(p,575,690,5);ground(p,505,710,4);ground(p,690,700,1);ground(p,600,735,2);
 
     // North-east mass frames the path before the stream.
     cluster(p,770,245,7,7);cluster(p,925,275,2,2);small(p,750,345,2);
@@ -175,7 +161,7 @@ public final class PoteFieldRenderer {
 
     // South-east mass closes the encounter pocket.
     cluster(p,895,700,4,4);cluster(p,1045,745,1,6);small(p,865,770,1);
-    bush(p,985,790,2);stump(p,840,720,1);ground(p,865,815,3);detail(p,1040,820,5);
+    bush(p,985,790,2);stump(p,840,720,1);ground(p,865,815,3);ground(p,1040,820,4);
 
     // Readable S-curve: entrance -> central clearing -> north-east -> water.
     pathEdge(p,270,780,1);pathEdge(p,390,700,2);pathEdge(p,470,610,3);
@@ -189,33 +175,34 @@ public final class PoteFieldRenderer {
     // Three readable encounter clearings: detail only on their perimeter.
     clearingEdge(p,560,520,1);clearingEdge(p,760,500,4);clearingEdge(p,360,735,6);
     // Entrance landmark, kept open around ENTRY_X/ENTRY_Y.
-    stump(p,245,810,2);ground(p,300,825,6);detail(p,345,810,4);
+    stump(p,245,810,2);ground(p,300,825,6);ground(p,345,810,1);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
     return p;
   }
 
   private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
-    tree(p,x,y,treeSeed,.92f);
+    tree(p,x,y,treeSeed,.86f+(underSeed%3)*.05f);
     bush(p,x-62-(underSeed%3)*9,y+18+(underSeed%2)*7,1+underSeed%8);bush(p,x+58+(underSeed%4)*8,y+25-(underSeed%2)*6,1+(underSeed+2)%8);
     ground(p,x-88-(underSeed%2)*12,y+48+(underSeed%3)*6,1+underSeed%6);ground(p,x+76+(underSeed%3)*11,y+54-(underSeed%2)*5,1+(underSeed+3)%6);
-    if((underSeed&1)==0)detail(p,x+18,y+64,1+underSeed%5);
+    if(underSeed%4==0)stump(p,x+24,y+68,1+underSeed%4);
   }
   private static void pathEdge(List<Placement> p,float x,float y,int seed){
     ground(p,x-118,y+28,1+seed%6);ground(p,x+118,y-24,1+(seed+2)%6);
     bush(p,x-148,y+12,1+seed%8);bush(p,x+148,y-10,1+(seed+3)%8);
-    if(seed%3==0)detail(p,x-105,y+48,1+seed%5);
+    if(seed%4==0)rock(p,x-110,y+50,1+seed%5);
   }
   private static void streamNode(List<Placement> p,float x,float y,int seed){
     float wobble=((seed%3)-1)*18f; water(p,x+wobble,y,1+seed%6);
-    bank(p,x-88+wobble,y+14,1+seed%5);bank(p,x+92+wobble,y-10,1+(seed+2)%5);
+    bank(p,x-104+wobble,y+16,1+seed%5);bank(p,x+108+wobble,y-12,1+(seed+2)%5);
     if(seed%3==0)rock(p,x-112+wobble,y+28,1+seed%5);
     else if(seed%3==1)bush(p,x+118+wobble,y+20,1+seed%8);
-    ground(p,x-132+wobble,y+46,1+seed%6);
+    if((seed&1)==0)ground(p,x-148+wobble,y+50,1+seed%6);
   }
   private static void clearingEdge(List<Placement> p,float x,float y,int seed){
-    ground(p,x-105,y+65,1+seed%6);ground(p,x+105,y+62,1+(seed+3)%6);
-    bush(p,x-125,y+8,1+seed%8);bush(p,x+125,y-4,1+(seed+2)%8);rock(p,x+135,y+40,1+seed%5);
+    ground(p,x-118-seed*2,y+68,1+seed%6);ground(p,x+104+seed*3,y+58,1+(seed+3)%6);
+    bush(p,x-142,y+12+seed,1+seed%8);bush(p,x+132,y-8-seed,1+(seed+2)%8);
+    if((seed&1)==0)rock(p,x+148,y+44,1+seed%5);
   }
   private static void encounterEdge(List<Placement> p,float x,float y,int seed){
     bush(p,x-95,y-20,1+seed%8);bush(p,x+95,y+10,1+(seed+2)%8);
