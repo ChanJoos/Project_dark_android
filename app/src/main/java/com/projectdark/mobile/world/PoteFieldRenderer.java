@@ -106,6 +106,10 @@ public final class PoteFieldRenderer {
       Rect src=groundBounds.get(name);
       if(src==null){src=opaqueBounds(bitmap);groundBounds.put(name,src);}
       if(src==null)continue;
+      // Ground diamonds include a dark extraction fringe. Crop that fringe so adjacent
+      // cells meet as one soil surface instead of reading as raised square pavers.
+      int insetX=Math.max(2,src.width()/14),insetY=Math.max(2,src.height()/12);
+      src=new Rect(src);src.inset(insetX,insetY);
       RectF dst=new RectF((float)Math.floor(point.x-33f),(float)Math.floor(point.y-17f),
           (float)Math.ceil(point.x+33f),(float)Math.ceil(point.y+17f));
       c.drawBitmap(bitmap,src,dst,pixel);
@@ -119,8 +123,8 @@ public final class PoteFieldRenderer {
   }
   private static boolean nearMainTrail(float x,float y){
     float[][] route={{192,800},{272,720},{352,640},{448,576},{544,512},{640,448},{752,384},{864,320},{976,272},{1088,224},{1200,192}};
-    for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<86f)return true;
-    return Math.hypot(x-480f,y-220f)<108f||Math.hypot(x-700f,y-440f)<118f||Math.hypot(x-1050f,y-240f)<105f;
+    for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<59f)return true;
+    return Math.hypot(x-480f,y-220f)<86f||Math.hypot(x-700f,y-440f)<72f||Math.hypot(x-1050f,y-240f)<82f;
   }
   private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){
     float dx=bx-ax,dy=by-ay,den=dx*dx+dy*dy;
@@ -239,7 +243,7 @@ public final class PoteFieldRenderer {
     grove(p,1320,615,7);grove(p,240,430,4);grove(p,873,660,6);grove(p,1210,780,1);
 
     // One diagonal woodland creek, assembled from the production water/bank sprites.
-    stream(p,new float[][]{{690,816},{786,758},{882,700},{978,642},{1074,584},{1170,526},{1266,468},{1362,410}});
+    stream(p,new float[][]{{720,830},{790,788},{860,746},{930,704},{1000,662},{1070,620},{1140,578},{1210,536},{1280,494},{1350,452},{1420,410}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
     stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);
@@ -280,9 +284,8 @@ public final class PoteFieldRenderer {
   }
   private static void stream(List<Placement> p,float[][] pts){
     int i=0;for(float[] q:pts){
-      int sprite=1+(i%3);
-      p.add(new Placement(String.format("POTE_WT_%02d.png",sprite),q[0],q[1],.92f,"water",false));
-      bank(p,q[0]-30,q[1]+48,1+(i%5));bank(p,q[0]+36,q[1]-47,1+((i+2)%5));
+      p.add(new Placement("POTE_WT_01.png",q[0],q[1],.82f,"water",false));
+      bank(p,q[0]-22,q[1]+38,1+(i%5));bank(p,q[0]+27,q[1]-39,1+((i+2)%5));
       if(i%2==0)rock(p,q[0]-56,q[1]+50,1+(i%5));
       if(i%2==1)bush(p,q[0]+60,q[1]-57,1+(i%8));
       i++;
