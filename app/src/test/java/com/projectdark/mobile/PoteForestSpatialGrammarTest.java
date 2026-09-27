@@ -15,7 +15,7 @@ import org.robolectric.annotation.Config;
 public final class PoteForestSpatialGrammarTest {
   @Test public void forestUsesDenseAuthoredAssetPlacements(){
     PoteFieldRenderer renderer=new PoteFieldRenderer();
-    assertEquals("POTE_FOREST_MASS_V8",PoteFieldRenderer.STATUS);
+    assertEquals("POTE_FOREST_REFERENCE_GROUND_V9",PoteFieldRenderer.STATUS);
     assertTrue("forest should read as connected canopy and understory around clearings",renderer.placementCount()>=180);
   }
 
