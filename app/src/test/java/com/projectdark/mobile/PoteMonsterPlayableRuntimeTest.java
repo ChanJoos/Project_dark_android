@@ -33,7 +33,7 @@ public final class PoteMonsterPlayableRuntimeTest {
     WorldMoveTargetController.TileCenter target=null;
     for(WorldMoveTargetController.TileCenter goal:tiles){
       float dx=goal.x-start.x,dy=goal.y-start.y,d=(float)Math.hypot(dx,dy);
-      if(d<80f||d>=MonsterAIController.CHASE_RADIUS_B)continue;
+      if(d<80f||d>=180f)continue; // established Pote prototype chase radius [B]
       WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(dx,dy,WorldMoveTargetController.Direction.SE);
       float nx=start.x+direction.dx,ny=start.y+direction.dy;
       if(tiles.stream().anyMatch(t->Math.abs(t.x-nx)<.1f&&Math.abs(t.y-ny)<.1f)){target=goal;break;}
