@@ -1,6 +1,6 @@
 package com.projectdark.mobile;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import com.projectdark.mobile.world.WorldCameraTransform;
