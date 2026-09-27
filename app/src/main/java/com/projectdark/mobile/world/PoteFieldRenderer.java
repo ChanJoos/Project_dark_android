@@ -238,10 +238,10 @@ public final class PoteFieldRenderer {
     oak(p,365,320,.30f);oak(p,1080,330,.30f);oak(p,1640,700,.30f);
 
     // An eastern-edge woodland creek, assembled from the production water/bank sprites.
-    stream(p,PoteFieldDef.creekCenterline());
+    stream(p,PoteForestGeometry.creekCenterline());
 
     // One clear, playable footbridge crosses the creek and connects the eastern trail.
-    p.add(new Placement("POTE_BR_01.png",PoteFieldDef.BRIDGE_X,PoteFieldDef.BRIDGE_Y,.145f,"bridge",false));
+    p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.BRIDGE_X,PoteForestGeometry.BRIDGE_Y,.145f,"bridge",false));
     ground(p,1605,540,3);ground(p,1690,600,6);bush(p,1665,650,4);rock(p,1638,558,2);
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.

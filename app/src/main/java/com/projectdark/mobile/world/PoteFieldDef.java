@@ -16,11 +16,7 @@ public final class PoteFieldDef {
   public static final float ENTRY_X=192f,ENTRY_Y=800f;
   public static final float EXIT_X=128f,EXIT_Y=832f;
   public static final float EXIT_RADIUS=34f;
-  public static final float BRIDGE_X=1510f,BRIDGE_Y=516f;
-  private static final float[][] CREEK_CENTERLINE={
-    {1460,896},{1490,820},{1465,744},{1500,668},{1470,592},{1510,516},
-    {1475,440},{1515,364},{1485,288},{1525,212},{1495,136},{1510,64}
-  };
+  public static final float BRIDGE_X=PoteForestGeometry.BRIDGE_X,BRIDGE_Y=PoteForestGeometry.BRIDGE_Y;
   private static final List<RectF> OBSTACLES=buildObstacles();
   private static final List<WorldMoveTargetController.TileCenter> NAVIGATION_TILES=buildNavigationTiles();
   private PoteFieldDef(){}
@@ -71,9 +67,7 @@ public final class PoteFieldDef {
 
   /** Creek kept to the eastern side so it frames the route instead of dividing the forest. */
   public static float[][] creekCenterline(){
-    float[][] copy=new float[CREEK_CENTERLINE.length][2];
-    for(int i=0;i<CREEK_CENTERLINE.length;i++)copy[i]=CREEK_CENTERLINE[i].clone();
-    return copy;
+    return PoteForestGeometry.creekCenterline();
   }
 
   /** Isometric cardinal neighbours must share exactly the same coordinates as movement. */
@@ -90,7 +84,7 @@ public final class PoteFieldDef {
     List<RectF> out=new ArrayList<>();
     out.addAll(PoteFieldRenderer.blockingFootprints());
     // Creek banks remain solid except at the wooden bridge crossing at node 5.
-    float[][] water=creekCenterline();
+    float[][] water=PoteForestGeometry.creekCenterline();
     for(int i=1;i<water.length;i++){
       if(i>=4&&i<=6)continue; // one deck-length opening; approach is still banked on both sides
       out.add(new RectF(
