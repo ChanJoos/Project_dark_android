@@ -26,9 +26,9 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_FOREST_MASS_V5";
+  public static final String STATUS="POTE_FOREST_MASS_V6";
   private static final float TILE_W=64f,TILE_H=32f;
-  private static final String SOIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
+  private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
   private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
   private static final int[] CLEARING_GROUND_TILES={5,6,7,8};
   private final Paint pixel=new Paint();
@@ -86,7 +86,7 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // Match Milles: a continuous substrate under a true staggered 64x32 diamond tile field.
+    // Continuous reference-matched leaf-litter soil sits beneath sparse accents; movement keeps its full tile lattice.
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff67472f);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     Bitmap soil=bitmap(SOIL_TEXTURE);
     if(soil!=null){soilPaint.setColor(0xffffffff);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);soilPaint.setColor(0xff000000);}
@@ -112,11 +112,14 @@ public final class PoteFieldRenderer {
       // cells meet as one soil surface instead of reading as raised square pavers.
       int insetX=Math.max(2,src.width()/14),insetY=Math.max(2,src.height()/12);
       src=new Rect(src);src.inset(insetX,insetY);
-      RectF dst=new RectF((float)Math.floor(point.x-33f),(float)Math.floor(point.y-17f),
-          (float)Math.ceil(point.x+33f),(float)Math.ceil(point.y+17f));
-      // The continuous forest-soil substrate stays visible through the cutout diamonds,
-      // keeping the joined tile lattice from reading like a field of stone pavers.
-      pixel.setAlpha(variant>=5&&variant<=8?28:12);
+      RectF dst=new RectF((float)Math.floor(point.x-26f),(float)Math.floor(point.y-13f),
+          (float)Math.ceil(point.x+26f),(float)Math.ceil(point.y+13f));
+      // Ground cutouts are leaf/moss accents scattered over continuous dirt, not a diamond carpet.
+      float density=clearingWeight(tile.x,tile.y,610f,500f,190f,126f);
+      density=Math.max(density,Math.max(clearingWeight(tile.x,tile.y,980f,670f,210f,138f),clearingWeight(tile.x,tile.y,1510f,445f,250f,176f)));
+      float chance=density>.35f?.035f:.16f;
+      if(unit(seed^0x2c1b3c6d)>chance)continue;
+      pixel.setAlpha(210);
       c.drawBitmap(bitmap,src,dst,pixel);
     }
     pixel.setAlpha(255);
@@ -180,33 +183,9 @@ public final class PoteFieldRenderer {
     for(int i=1;i<pts.length;i++){WorldCameraTransform.Point a=w.worldToScreen(pts[i-1][0],pts[i-1][1]),b=w.worldToScreen(pts[i][0],pts[i][1]);c.drawLine(a.x,a.y,b.x,b.y,pixel);}pixel.setStyle(Paint.Style.FILL);
   }
 
-  /** The footbridge is layered after creek water and before the actor, at the crossing deck. */
+  /** Load the authored PNG bridge after stream water and before the actor. */
   private void drawBridge(Canvas c,WorldRuntimeAdapter w){
-    for(Placement p:placements)if("bridge".equals(p.role)){
-      // Keep the deck legible even when a source PNG decoder drops its alpha channel.
-      // Its long axis crosses the north-west/south-east creek diagonally.
-      WorldCameraTransform.Point q=w.worldToScreen(p.x,p.y);
-      Bitmap sprite=bitmap(p.asset);
-      if(sprite!=null)drawPlacement(c,w,p);
-      c.save();c.rotate(45f,q.x,q.y);
-      pixel.setAntiAlias(false);pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff392719);
-      c.drawRect(q.x-74f,q.y-20f,q.x+74f,q.y+20f,pixel);
-      pixel.setColor(0xff76502e);c.drawRect(q.x-71f,q.y-17f,q.x+71f,q.y+17f,pixel);
-      pixel.setColor(0xff9b7042);c.drawRect(q.x-67f,q.y-14f,q.x+67f,q.y+14f,pixel);
-      pixel.setColor(0xff4b321f);pixel.setStrokeWidth(2f);
-      for(float x=q.x-62f;x<=q.x+62f;x+=12f)c.drawLine(x,q.y-13f,x,q.y+13f,pixel);
-      pixel.setStrokeWidth(0f);pixel.setColor(0xff59391f);
-      c.drawRect(q.x-73f,q.y-18f,q.x+73f,q.y-13f,pixel);
-      c.drawRect(q.x-73f,q.y+13f,q.x+73f,q.y+18f,pixel);
-      pixel.setColor(0xffbd9258);
-      for(float x=q.x-64f;x<=q.x+64f;x+=32f){
-        c.drawRect(x-2f,q.y-22f,x+2f,q.y-9f,pixel);c.drawRect(x-2f,q.y+9f,x+2f,q.y+22f,pixel);
-      }
-      pixel.setColor(0xff684323);pixel.setStrokeWidth(3f);
-      c.drawLine(q.x-72f,q.y-18f,q.x+72f,q.y-18f,pixel);
-      c.drawLine(q.x-72f,q.y+18f,q.x+72f,q.y+18f,pixel);
-      c.restore();pixel.setStrokeWidth(0f);pixel.setColor(0xff000000);
-    }
+    for(Placement p:placements)if("bridge".equals(p.role))drawPlacement(c,w,p);
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
@@ -228,7 +207,8 @@ public final class PoteFieldRenderer {
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
       if(b!=null&&!SOIL_TEXTURE.equals(name))
-        b=trimSourceEdge(stripEdgeMatte(b));
+        b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
+            ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
   }
@@ -302,12 +282,14 @@ public final class PoteFieldRenderer {
     grove(p,185,520,6);grove(p,438,812,3);grove(p,765,804,5);grove(p,1080,835,2);
     grove(p,1350,700,7);grove(p,240,430,4);grove(p,1320,810,1);grove(p,170,370,3);
     grove(p,520,280,6);grove(p,1120,380,2);grove(p,1660,680,5);
+    // Video-reviewed broad-branch oaks add the separated rounded crowns seen in the reference.
+    oak(p,365,320,.30f);oak(p,1080,330,.30f);oak(p,1640,700,.30f);
 
     // One diagonal woodland creek, assembled from the production water/bank sprites.
     stream(p,new float[][]{{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}});
 
     // One clear, playable footbridge crosses the creek and connects the eastern trail.
-    p.add(new Placement("POTE_BR_01.png",1324,388,.20f,"bridge",false));
+    p.add(new Placement("POTE_BR_01.png",1324,388,.075f,"bridge",false));
     ground(p,1490,500,3);ground(p,1580,540,6);bush(p,1455,565,4);rock(p,1648,558,2);
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
@@ -387,6 +369,7 @@ public final class PoteFieldRenderer {
   }
   private static void bushRing(List<Placement> p,float[][] xy,int seed){int i=0;for(float[] q:xy)bush(p,q[0],q[1],1+(seed+i++)%8);}
   private static void tree(List<Placement> p,float x,float y,int n,float s){p.add(new Placement(String.format("POTE_TR_%02d.png",n),x,y,s,"canopy",false));}
+  private static void oak(List<Placement> p,float x,float y,float scale){p.add(new Placement("POTE_TR_08.png",x,y,scale,"canopy",false));}
   private static void small(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_TS_%02d.png",n),x,y,.96f,"secondary_canopy",false));}
   private static void bush(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BS_%02d.png",n),x,y,.72f+(n%4)*.05f,"understory",false));}
   private static void ground(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_GF_%02d.png",n),x,y,.88f,"groundcover",false));}

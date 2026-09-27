@@ -27,6 +27,16 @@ public final class PoteVisualReviewTest {
   String[] names={"pote-entry-clearing.png","pote-central-clearing.png","pote-bridge-crossing.png","pote-east-bank-clearing.png"};
   for(int i=0;i<spots.length;i++){
    camera.snapTo(spots[i][0],spots[i][1]); Bitmap frame=Bitmap.createBitmap(1536,704,Bitmap.Config.ARGB_8888); view.draw(new Canvas(frame));
+   if(i==2){
+    WorldCameraTransform.Point bridge=adapter.worldToScreen(1324f,388f);
+    Field sf=GameView.class.getDeclaredField("scale"),xf=GameView.class.getDeclaredField("ox"),yf=GameView.class.getDeclaredField("oy");
+    sf.setAccessible(true);xf.setAccessible(true);yf.setAccessible(true);
+    int px=Math.max(0,Math.min(1535,Math.round(bridge.x*sf.getFloat(view)+xf.getFloat(view))));
+    int py=Math.max(0,Math.min(703,Math.round(bridge.y*sf.getFloat(view)+yf.getFloat(view))));
+    int color=frame.getPixel(px,py);
+    assertTrue("the authored bridge PNG must render over the creek at its crossing",
+        android.graphics.Color.red(color)>android.graphics.Color.blue(color)+20 && android.graphics.Color.red(color)>android.graphics.Color.green(color));
+   }
    File file=new File("build/reports/device-review/"+names[i]); File parent=file.getParentFile(); if(parent!=null) parent.mkdirs();
    try(FileOutputStream out=new FileOutputStream(file)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}
    assertTrue(file.isFile()&&file.length()>0); frame.recycle();

@@ -55,3 +55,10 @@ Visual iteration 5 tightens the trail and increases creek segment overlap while 
 - Break the uniform canopy feel with three irregular dirt clearings; dense groves remain at the edge and between them.
 - Register POTE_PURPLE as a B/ADAPTED runtime actor so MonsterAIController processes it. Its movement and hit use the shared tile and combat resolvers; canonical reward values remain unset.
 - The QA pass checks navigation from entry over the bridge, a blocked creek outside the bridge, one-tile monster pursuit, and a shared-resolver monster hit.
+
+
+## Screen recording review and V6 art pass
+
+Reviewed representative map frames sampled every two seconds throughout the supplied 28-second Pote Forest recording. The source reads as mottled reddish-brown leaf litter with dark moss scattered over the floor, broad crooked deciduous trunks carrying separate round crown clusters, and open earth lanes dotted with low grass, small flowers, stones, and cut stumps. The former draft had a nearly uniform brown substrate, an overly regular diamond overlay, and a hand-drawn geometric crossing that did not sit in the sprite art.
+
+V6 adds a detailed repeatable leaf-litter soil texture, reduces ground cutouts to irregular accents, introduces a branching oak sprite at a few canopy anchors, and uses a transparent pixel-art footbridge PNG placed on top of the water layer. The bridge remains a 2D game sprite and is scaled to the stream width; it is not a primitive Canvas drawing. The QA capture must confirm the bridge PNG appears over the creek, then keep movement and combat tests green.

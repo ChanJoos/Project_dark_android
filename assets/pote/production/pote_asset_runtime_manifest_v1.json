@@ -1515,14 +1515,14 @@
     "category": "bridge",
     "file": "POTE_BR_01.png",
     "source_pixel_size": [
-      1536,
-      1024
+      2164,
+      727
     ],
     "source_pixels_resampled": false,
-    "render_scale": 0.13,
+    "render_scale": 0.075,
     "runtime_estimated_size": [
-      200,
-      133
+      162,
+      55
     ],
     "anchor": "center",
     "collision_footprint": "walkable_deck_gap",
@@ -1532,6 +1532,32 @@
       "stream_crossing",
       "east_bank_route",
       "adapted_forest_prop"
+    ],
+    "visual_qa": "PENDING",
+    "production_status": "ADAPTED_B"
+  },
+  {
+    "asset_id": "POTE_TR_08",
+    "category": "tree_large",
+    "file": "POTE_TR_08.png",
+    "source_pixel_size": [
+      1100,
+      1429
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 0.3,
+    "runtime_estimated_size": [
+      330,
+      429
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
     ],
     "visual_qa": "PENDING",
     "production_status": "ADAPTED_B"
