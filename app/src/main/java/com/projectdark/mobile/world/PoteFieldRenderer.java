@@ -6,7 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Rect;
 import android.graphics.Shader;
@@ -26,16 +28,14 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_FOREST_MASS_V8";
+  public static final String STATUS="POTE_FOREST_REFERENCE_GROUND_V9";
   private static final float TILE_W=64f,TILE_H=32f;
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
-  private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
-  private static final int[] CLEARING_GROUND_TILES={5,6,7,8};
   private final Paint pixel=new Paint();
   private final Paint soilPaint=new Paint();
+  private final Path groundCells=new Path();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
-  private final Map<String,Rect> groundBounds=new LinkedHashMap<>();
   private static final List<Placement> AUTHORED_PLACEMENTS=buildPlacements();
   private final List<Placement> placements=AUTHORED_PLACEMENTS;
 
@@ -83,76 +83,26 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // The low-contrast earth underlay only fills transparent joins between authored ground cells.
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    Bitmap soil=bitmap(SOIL_TEXTURE);
-    if(soil!=null){soilPaint.setColor(0x99ffffff);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);soilPaint.setColor(0xff000000);}
     drawGroundTiles(c,w);
   }
 
-  /** Every Pote floor cell occupies the same staggered diamond lattice used by Milles movement. */
+  /** Each navigation-ground diamond samples one shared, source-video texture in world space. */
   private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
+    Bitmap soil=bitmap(SOIL_TEXTURE);if(soil==null)return;
+    BitmapShader shader=new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
+    Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
+    soilPaint.setShader(shader);soilPaint.setColor(0xffffffff);soilPaint.setStyle(Paint.Style.FILL);
+    groundCells.reset();
     for(WorldMoveTargetController.TileCenter tile:PoteFieldDef.groundTiles()){
       WorldCameraTransform.Point point=w.worldToScreen(tile.x,tile.y);
       if(point.x<-40||point.x>c.getWidth()+40||point.y<-24||point.y>c.getHeight()+24)continue;
-      int row=Math.round((tile.y-PoteFieldDef.MIN_Y)/16f);
-      int col=Math.round((tile.x-PoteFieldDef.MIN_X-((row&1)==0?0f:32f))/64f);
-      int seed=tileSeed(col,row);
-      int variant=groundVariant(tile.x,tile.y,seed);
-      String name=String.format("POTE_GD_%02d.png",variant);
-      Bitmap bitmap=bitmap(name);if(bitmap==null)continue;
-      Rect src=groundBounds.get(name);
-      if(src==null){src=opaqueBounds(bitmap);groundBounds.put(name,src);}
-      if(src==null)continue;
-      // Each move-lattice ground cell receives one complete 64x32 authored diamond.
-      // Cell centers are spaced 32x16 diagonally, so all four edges join without gaps.
-      RectF dst=new RectF((float)Math.floor(point.x-32f),(float)Math.floor(point.y-16f),
-          (float)Math.ceil(point.x+32f),(float)Math.ceil(point.y+16f));
-      pixel.setAlpha(255);
-      c.drawBitmap(bitmap,src,dst,pixel);
+      groundCells.moveTo(point.x,point.y-16f);groundCells.lineTo(point.x+32f,point.y);
+      groundCells.lineTo(point.x,point.y+16f);groundCells.lineTo(point.x-32f,point.y);groundCells.close();
     }
-    pixel.setAlpha(255);
+    c.save();c.clipPath(groundCells);c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);c.restore();
+    soilPaint.setShader(null);
   }
-  private static int groundVariant(float x,float y,int seed){
-    int bandX=(int)Math.floor(x/192f),bandY=(int)Math.floor(y/96f);
-    // Broad mossy/woodland islands wrap the open earth lanes. Boundaries are spatially
-    // continuous, not per-cell random noise, and the palette variation stays within each material.
-    float forest=Math.max(edgeForestWeight(x,y),Math.max(
-        clearingWeight(x,y,365f,300f,156f,98f),Math.max(clearingWeight(x,y,185f,500f,118f,145f),
-        Math.max(clearingWeight(x,y,760f,806f,210f,100f),Math.max(clearingWeight(x,y,1120f,390f,150f,110f),
-        Math.max(clearingWeight(x,y,1350f,710f,180f,130f),clearingWeight(x,y,1650f,680f,230f,170f)))))));
-    float variation=unit(seed^0x3f19a2d7);
-    boolean forestCell=forest>.38f || (forest>.12f&&variation<forest*.48f);
-    int[] palette=forestCell?FOREST_GROUND_TILES:CLEARING_GROUND_TILES;
-    return palette[Math.floorMod(seed/7+bandX*3+bandY*5,palette.length)];
-  }
-  private static float edgeForestWeight(float x,float y){
-    float edge=Math.max(Math.max((300f-x)/130f,(x-1530f)/170f),Math.max((245f-y)/110f,(y-780f)/120f));
-    return Math.max(0f,Math.min(1f,edge));
-  }
-  private static float clearingWeight(float x,float y,float cx,float cy,float rx,float ry){
-    float d=(float)Math.sqrt(((x-cx)/rx)*((x-cx)/rx)+((y-cy)/ry)*((y-cy)/ry));
-    return Math.max(0f,Math.min(1f,(1.22f-d)*1.55f));
-  }
-  private static boolean nearMainTrail(float x,float y){
-    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
-    for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<48f)return true;
-    return Math.hypot(x-640f,y-480f)<88f||Math.hypot(x-700f,y-440f)<72f||Math.hypot(x-1050f,y-240f)<82f
-        ||Math.hypot(x-1520f,y-410f)<135f;
-  }
-  private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){
-    float dx=bx-ax,dy=by-ay,den=dx*dx+dy*dy;
-    float t=den==0?0:((x-ax)*dx+(y-ay)*dy)/den;t=Math.max(0,Math.min(1,t));
-    return(float)Math.hypot(x-(ax+t*dx),y-(ay+t*dy));
-  }
-  private static Rect opaqueBounds(Bitmap image){
-    int minX=image.getWidth(),minY=image.getHeight(),maxX=-1,maxY=-1;
-    for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++)
-      if((image.getPixel(x,y)>>>24)!=0){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}
-    return maxX>=minX?new Rect(minX,minY,maxX+1,maxY+1):null;
-  }
-  private static int tileSeed(int col,int row){return col*73856093^row*19349663;}
-  private static float unit(int n){int h=n^(n>>>16);h*=0x7feb352d;h^=h>>>15;h*=0x846ca68b;h^=h>>>16;return (h&0x7fffffff)/(float)Integer.MAX_VALUE;}
   private void drawGroundPatch(Canvas c,WorldRuntimeAdapter w,String name,float wx,float wy,float scale){
     Bitmap b=bitmap(name);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);
     float width=b.getWidth()*scale,height=b.getHeight()*scale;

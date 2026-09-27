@@ -62,3 +62,10 @@ Visual iteration 5 tightens the trail and increases creek segment overlap while 
 Reviewed representative map frames sampled every two seconds throughout the supplied 28-second Pote Forest recording. The source reads as mottled reddish-brown leaf litter with dark moss scattered over the floor, broad crooked deciduous trunks carrying separate round crown clusters, and open earth lanes dotted with low grass, small flowers, stones, and cut stumps. The former draft had a nearly uniform brown substrate, an overly regular diamond overlay, and a hand-drawn geometric crossing that did not sit in the sprite art.
 
 V6 adds a detailed repeatable leaf-litter soil texture, reduces ground cutouts to irregular accents, introduces a branching oak sprite at a few canopy anchors, and uses a transparent pixel-art footbridge PNG placed on top of the water layer. The bridge remains a 2D game sprite and is scaled to the stream width; it is not a primitive Canvas drawing. The QA capture must confirm the bridge PNG appears over the creek, then keep movement and combat tests green.
+
+
+## Continuous source-ground and tile pass V9
+
+The former randomized GD diamond renderer produced a visible beveled checkerboard, even when its colors were blended. V9 uses the 32x16 Milles movement lattice as the ground-cell geometry, clips those adjoining diamond cells as one continuous surface, and samples a shared repeating bitmap in world coordinates. The bitmap `video_reference/terrain/pote_forest_soil_v2.png` is a 128x64 clean-floor crop from the supplied source recording (frame at 22 s, screen pixels x=1380..1507, y=420..483); it retains the captured reddish earth and scattered moss. It is a runtime texture, not a mock screenshot. POTE_GD cutouts remain available as localized ground details, and the tree, understory, stream, and bridge sprites remain independently anchored production objects. Movement, collision, and player presentation continue to use the same field adapter and navigation tile graph.
+
+V9 visual acceptance is pending fresh rendered screenshots from the V9 APK; CI green alone is not visual PASS.
