@@ -87,10 +87,6 @@ public final class PoteFieldRenderer {
     Bitmap soil=bitmap(SOIL_TEXTURE);
     if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);}
     drawGroundTiles(c,w);
-    // A shallow, asset-textured stream hugs the eastern boundary and leaves a direct trail
-    // from the south-west entry to the northern encounter clearing.
-    terrainStroke(c,w,new float[][]{{1230,145},{1260,225},{1225,305},{1268,385},{1232,465},{1272,545},{1237,625},{1278,705},{1244,785},{1280,850}},104f,0xff416f6d);
-    terrainStroke(c,w,new float[][]{{1234,150},{1253,230},{1232,310},{1260,390},{1240,470},{1264,550},{1245,630},{1270,710},{1250,790},{1275,850}},26f,0xff60918c);
   }
 
   /** Every Pote floor cell occupies the same staggered diamond lattice used by Milles movement. */
@@ -122,7 +118,7 @@ public final class PoteFieldRenderer {
     return palette[Math.floorMod(seed/7+bandX*3+bandY*5,palette.length)];
   }
   private static boolean nearMainTrail(float x,float y){
-    float[][] route={{192,800},{272,720},{352,640},{448,576},{544,512},{640,448},{752,384},{864,320},{976,272},{1088,224},{1200,192}};
+    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
     for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<59f)return true;
     return Math.hypot(x-480f,y-220f)<86f||Math.hypot(x-700f,y-440f)<72f||Math.hypot(x-1050f,y-240f)<82f;
   }
@@ -243,7 +239,7 @@ public final class PoteFieldRenderer {
     grove(p,1320,615,7);grove(p,240,430,4);grove(p,873,660,6);grove(p,1210,780,1);
 
     // One diagonal woodland creek, assembled from the production water/bank sprites.
-    stream(p,new float[][]{{720,830},{790,788},{860,746},{930,704},{1000,662},{1070,620},{1140,578},{1210,536},{1280,494},{1350,452},{1420,410}});
+    stream(p,new float[][]{{720,830},{790,788},{856,750},{930,704},{994,670},{1070,620},{1135,584},{1210,536},{1272,502},{1350,452},{1420,410}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
     stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);
