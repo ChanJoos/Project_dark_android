@@ -182,7 +182,31 @@ public final class PoteFieldRenderer {
 
   /** The footbridge is layered after creek water and before the actor, at the crossing deck. */
   private void drawBridge(Canvas c,WorldRuntimeAdapter w){
-    for(Placement p:placements)if("bridge".equals(p.role))drawPlacement(c,w,p);
+    for(Placement p:placements)if("bridge".equals(p.role)){
+      // Keep the deck legible even when a source PNG decoder drops its alpha channel.
+      // Its long axis crosses the north-west/south-east creek diagonally.
+      WorldCameraTransform.Point q=w.worldToScreen(p.x,p.y);
+      Bitmap sprite=bitmap(p.asset);
+      if(sprite!=null)drawPlacement(c,w,p);
+      c.save();c.rotate(45f,q.x,q.y);
+      pixel.setAntiAlias(false);pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff392719);
+      c.drawRect(q.x-106f,q.y-31f,q.x+106f,q.y+31f,pixel);
+      pixel.setColor(0xff76502e);c.drawRect(q.x-101f,q.y-26f,q.x+101f,q.y+26f,pixel);
+      pixel.setColor(0xff9b7042);c.drawRect(q.x-96f,q.y-22f,q.x+96f,q.y+22f,pixel);
+      pixel.setColor(0xff4b321f);pixel.setStrokeWidth(3f);
+      for(float x=q.x-88f;x<=q.x+88f;x+=16f)c.drawLine(x,q.y-21f,x,q.y+21f,pixel);
+      pixel.setStrokeWidth(0f);pixel.setColor(0xff59391f);
+      c.drawRect(q.x-105f,q.y-29f,q.x+105f,q.y-22f,pixel);
+      c.drawRect(q.x-105f,q.y+22f,q.x+105f,q.y+29f,pixel);
+      pixel.setColor(0xffbd9258);
+      for(float x=q.x-96f;x<=q.x+96f;x+=48f){
+        c.drawRect(x-3f,q.y-37f,x+3f,q.y-16f,pixel);c.drawRect(x-3f,q.y+16f,x+3f,q.y+37f,pixel);
+      }
+      pixel.setColor(0xff684323);pixel.setStrokeWidth(5f);
+      c.drawLine(q.x-103f,q.y-29f,q.x+103f,q.y-29f,pixel);
+      c.drawLine(q.x-103f,q.y+29f,q.x+103f,q.y+29f,pixel);
+      c.restore();pixel.setStrokeWidth(0f);pixel.setColor(0xff000000);
+    }
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
