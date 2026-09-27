@@ -67,9 +67,9 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // The continuous underlay uses the captured LOD dirt texture. POTE_GD assets are raised,
-    // cutout ground clumps; carpeting them on a fixed lattice creates visible diamond seams.
-    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff4c3928);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    // Continuous soil underlay plus a tightly packed field of source-derived forest-floor
+    // diamonds. The former sparse scatter left most of the map looking like empty brown void.
+    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff40502d);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     Bitmap soil=bitmap(SOIL_TEXTURE);
     if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);}
     drawGroundTiles(c,w);
@@ -81,17 +81,20 @@ public final class PoteFieldRenderer {
 
   /** Source-derived forest-floor cutouts add uneven leaf litter over the seamless soil substrate. */
   private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
-    float stepX=128f,stepY=92f,cx=w.camera().cameraX(),cy=w.camera().cameraY();
-    int firstRow=(int)Math.floor((cy-120f)/stepY),lastRow=(int)Math.ceil((cy+c.getHeight()+120f)/stepY);
+    float stepX=58f,stepY=34f,cx=w.camera().cameraX(),cy=w.camera().cameraY();
+    int firstRow=(int)Math.floor((cy-64f)/stepY),lastRow=(int)Math.ceil((cy+c.getHeight()+64f)/stepY);
     for(int row=firstRow;row<=lastRow;row++){
       float y=row*stepY;float rowOffset=(Math.floorMod(row,2)==0?0f:stepX*.5f);
-      int firstCol=(int)Math.floor((cx-160f-rowOffset)/stepX),lastCol=(int)Math.ceil((cx+c.getWidth()+160f-rowOffset)/stepX);
+      int firstCol=(int)Math.floor((cx-64f-rowOffset)/stepX),lastCol=(int)Math.ceil((cx+c.getWidth()+64f-rowOffset)/stepX);
       for(int col=firstCol;col<=lastCol;col++){
-        int seed=tileSeed(col,row);if(Math.floorMod(seed,4)!=0)continue;
-        float jitterX=(unit(seed)-.5f)*38f,jitterY=(unit(seed^0x45d9f3b)-.5f)*26f;
-        int choice=Math.floorMod(seed,10);int asset=choice<7?FOREST_GROUND_TILES[Math.floorMod(seed,FOREST_GROUND_TILES.length)]:CLEARING_GROUND_TILES[Math.floorMod(seed>>>3,CLEARING_GROUND_TILES.length)];
-        float scale=.27f+unit(seed^0x27d4eb2d)*.16f;
-        drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",asset),col*stepX+rowOffset+jitterX,y+jitterY,scale);
+        int seed=tileSeed(col,row);
+        float jitterX=(unit(seed)-.5f)*5f,jitterY=(unit(seed^0x45d9f3b)-.5f)*4f;
+        float wx=col*stepX+rowOffset+jitterX,wy=y+jitterY;
+        boolean path=Math.abs(wy-(790f-(wx-190f)*.43f))<78f&&wx>150f&&wx<1120f;
+        int[] palette=path?CLEARING_GROUND_TILES:FOREST_GROUND_TILES;
+        int asset=palette[Math.floorMod(seed>>>4,palette.length)];
+        float scale=.49f+unit(seed^0x27d4eb2d)*.055f;
+        drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",asset),wx,wy,scale);
       }
     }
   }
