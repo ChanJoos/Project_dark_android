@@ -168,13 +168,13 @@ public final class PoteFieldRenderer {
       if((i&1)==0)small(p,x+58-((seed+i)%3)*20,y+26,1+(seed+i)%3);
       bush(p,x-48-(i%2)*16,y+48,1+(seed+i)%8);
       bush(p,x+54+(i%3)*10,y+52,1+(seed+i+3)%8);
-      ground(p,x-82,y+60,1+(seed+i)%6);
-      if(i%3==0)ground(p,x+86,y+64,1+(seed+i+2)%6);
+      ground(p,x-72,y+64,1+(seed+i)%6);
+      if(i%2==0)ground(p,x+74,y+68,1+(seed+i+2)%6);
       i++;
     }
   }
   private static void shoulder(List<Placement> p,float x,float y,int seed){
-    bush(p,x-105,y+12,1+seed%8); ground(p,x-78,y+42,1+seed%6);
+    bush(p,x-122,y+18,1+seed%8); ground(p,x-88,y+48,1+seed%6); ground(p,x+82,y+52,1+(seed+3)%6);
     if((seed&1)==0)rock(p,x+110,y+24,1+seed%5); else stump(p,x+112,y+30,1+seed%4);
   }
   private static void stream(List<Placement> p,float[][] pts){
