@@ -39,3 +39,5 @@ The next ground pass fills the woodland floor with overlapping production ground
 The field map uses one shared terrain lattice for floor placement, direct-step input, and the walkable route test.
 
 Compile follow-up: the tile renderer keeps its atlas cache and uses precomputed alpha bounds for each ground variant.
+
+Visual iteration 2 narrows the soil route, crops tile extraction fringes, and reuses one creek segment at overlapping intervals to prevent broken water patches.
