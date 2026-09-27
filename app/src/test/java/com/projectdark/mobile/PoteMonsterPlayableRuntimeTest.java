@@ -44,6 +44,12 @@ public final class PoteMonsterPlayableRuntimeTest {
     monster.x=start.x;monster.y=start.y;state.player().x=target.x;state.player().y=target.y;
     float beforeX=monster.x,beforeY=monster.y;
     ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+0.01f);
+    float ddx=target.x-beforeX,ddy=target.y-beforeY;
+    WorldMoveTargetController.Direction wanted=MonsterTileCenterLocomotion.toward(ddx,ddy,WorldMoveTargetController.Direction.SE);
+    System.out.println("POTE_AI_DIAG start="+beforeX+","+beforeY+" target="+target.x+","+target.y
+        +" after="+monster.x+","+monster.y+" state="+monster.state+" distance="+Math.hypot(ddx,ddy)
+        +" expected="+(beforeX+wanted.dx)+","+(beforeY+wanted.dy)+" blocked="+state.blocked(beforeX+wanted.dx,beforeY+wanted.dy)
+        +" attackRoute="+ai.attackRoute()+" status="+new MonsterDefinitionRegistry().resolve(monster.id).status);
     assertTrue("POTE_PURPLE moves on an authored clear tile",MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
     assertTrue(MonsterTileCenterLocomotion.isAuthoredCenter(monster.x,monster.y));
     assertEquals(MonsterAIController.AttackRoute.SHARED_RESOLVER,ai.attackRoute());
