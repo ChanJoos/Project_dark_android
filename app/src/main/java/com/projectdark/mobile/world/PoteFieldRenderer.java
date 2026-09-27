@@ -152,9 +152,9 @@ public final class PoteFieldRenderer {
     stream(p,new float[][]{{1090,190},{1120,250},{1095,315},{1130,380},{1105,450},{1140,520},{1115,590},{1150,660},{1125,730},{1160,800}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
-    stump(p,245,850,2); rock(p,430,825,4);
-    stump(p,470,735,3); rock(p,755,675,2);
-    rock(p,980,365,5); stump(p,1240,785,4);
+    stump(p,245,850,2); rock(p,430,825,4); small(p,335,875,2);
+    stump(p,470,735,3); rock(p,755,675,2); small(p,610,700,3);
+    rock(p,980,365,5); small(p,1005,330,1); stump(p,1240,785,4);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
     return p;
