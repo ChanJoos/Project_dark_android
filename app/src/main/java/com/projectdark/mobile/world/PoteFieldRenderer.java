@@ -212,8 +212,10 @@ public final class PoteFieldRenderer {
     for(int y=minY;y<=maxY;y++)for(int x=minX;x<=maxX;x++){
       int i=y*w+x,c=px[i],a=c>>>24;if(a==0)continue;
       float edge=Math.abs(x-cx)/rx+Math.abs(y-cy)/ry;
-      if(edge<.70f)continue;
-      float mix=Math.min(.94f,(edge-.70f)*3.1f);
+      if(edge<.54f)continue;
+      // The extracted tiles have an inset bevel well inside their silhouette; flatten that
+      // full rim to a common earth tone so the authored cells touch without paver seams.
+      float mix=Math.min(.98f,(edge-.54f)*6.2f);
       int r=(c>>>16)&255,g=(c>>>8)&255,b=c&255;
       r=Math.round(r*(1-mix)+105*mix);g=Math.round(g*(1-mix)+70*mix);b=Math.round(b*(1-mix)+46*mix);
       px[i]=(a<<24)|(r<<16)|(g<<8)|b;
