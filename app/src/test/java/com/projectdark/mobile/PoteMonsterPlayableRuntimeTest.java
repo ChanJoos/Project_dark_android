@@ -27,7 +27,8 @@ public final class PoteMonsterPlayableRuntimeTest {
     state.player().x=768f;state.player().y=480f;
     float beforeX=monster.x,beforeY=monster.y;
     ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+0.01f);
-    assertTrue("POTE_PURPLE must advance by exactly one 4-way isometric tile; before="+beforeX+","+beforeY+" after="+monster.x+","+monster.y+" state="+monster.state,
+    assertTrue("POTE_PURPLE must advance by exactly one 4-way isometric tile; before="+beforeX+","+beforeY+" after="+monster.x+","+monster.y+" state="+monster.state
+            +" blockSE="+state.blocked(beforeX+32f,beforeY+16f)+" blockNE="+state.blocked(beforeX+32f,beforeY-16f)+" blockSW="+state.blocked(beforeX-32f,beforeY+16f),
         MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
     assertTrue(MonsterTileCenterLocomotion.isAuthoredCenter(monster.x,monster.y));
     assertEquals(MonsterAIController.AttackRoute.SHARED_RESOLVER,ai.attackRoute());

@@ -59,7 +59,7 @@ public final class PoteFieldDef {
     // Creek banks remain solid except at the wooden bridge crossing at node 12.
     float[][] water={{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}};
     for(int i=1;i<water.length;i++){
-      if(i==12||i==13)continue; // the bridge deck is the only legal stream crossing
+      if(i>=11&&i<=14)continue; // widened to one deck-length opening; approach is still banked on both sides
       out.add(new RectF(
         Math.min(water[i-1][0],water[i][0])-27f,Math.min(water[i-1][1],water[i][1])-22f,
         Math.max(water[i-1][0],water[i][0])+27f,Math.max(water[i-1][1],water[i][1])+22f));
