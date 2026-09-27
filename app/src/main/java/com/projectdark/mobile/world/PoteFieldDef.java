@@ -58,7 +58,7 @@ public final class PoteFieldDef {
     out.addAll(PoteFieldRenderer.blockingFootprints());
     // The stream is an impassable winding barrier at the eastern/southern edge. Its visual ribbon
     // and collision line share the same source points; the main trail stays to the west.
-    float[][] water={{720,830},{790,788},{856,750},{930,704},{994,670},{1070,620},{1135,584},{1210,536},{1272,502},{1350,452},{1420,410}};
+    float[][] water={{820,700},{890,660},{960,620},{1030,580},{1100,540},{1170,500},{1240,460},{1310,420},{1380,380}};
     for(int i=1;i<water.length;i++)out.add(new RectF(
         Math.min(water[i-1][0],water[i][0])-27f,Math.min(water[i-1][1],water[i][1])-22f,
         Math.max(water[i-1][0],water[i][0])+27f,Math.max(water[i-1][1],water[i][1])+22f));

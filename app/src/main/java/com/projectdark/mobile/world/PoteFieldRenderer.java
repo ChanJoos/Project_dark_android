@@ -235,11 +235,12 @@ public final class PoteFieldRenderer {
     // Interior canopy islands wrap around the trail. Each mass combines overlapping crowns,
     // small trees and understory; clear centers remain large enough for movement and combat.
     grove(p,178,365,2);grove(p,365,262,5);grove(p,650,205,1);grove(p,1198,294,4);
-    grove(p,185,520,6);grove(p,438,812,3);grove(p,765,804,5);grove(p,1118,735,2);
-    grove(p,1320,615,7);grove(p,240,430,4);grove(p,873,660,6);grove(p,1210,780,1);
+    grove(p,185,520,6);grove(p,438,812,3);grove(p,765,804,5);grove(p,1080,835,2);
+    grove(p,1350,700,7);grove(p,240,430,4);grove(p,810,560,6);grove(p,1320,810,1);
+    grove(p,170,370,3);grove(p,520,280,6);grove(p,600,690,5);grove(p,1120,380,2);
 
     // One diagonal woodland creek, assembled from the production water/bank sprites.
-    stream(p,new float[][]{{720,830},{790,788},{856,750},{930,704},{994,670},{1070,620},{1135,584},{1210,536},{1272,502},{1350,452},{1420,410}});
+    stream(p,new float[][]{{820,700},{890,660},{960,620},{1030,580},{1100,540},{1170,500},{1240,460},{1310,420},{1380,380}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
     stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);
