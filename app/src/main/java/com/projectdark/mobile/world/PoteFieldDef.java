@@ -16,6 +16,7 @@ public final class PoteFieldDef {
   public static final float ENTRY_X=192f,ENTRY_Y=800f;
   public static final float EXIT_X=128f,EXIT_Y=832f;
   public static final float EXIT_RADIUS=34f;
+  private static final List<RectF> OBSTACLES=buildObstacles();
   private PoteFieldDef(){}
 
   public static List<WorldMoveTargetController.TileCenter> navigationTiles(){
@@ -31,25 +32,36 @@ public final class PoteFieldDef {
     return Collections.unmodifiableList(out);
   }
 
+  /** Full terrain coverage on the same staggered 64x32 diamond lattice as Milles. */
+  public static List<WorldMoveTargetController.TileCenter> groundTiles(){
+    List<WorldMoveTargetController.TileCenter> out=new ArrayList<>();
+    int row=0;
+    for(float y=MIN_Y;y<=MAX_Y;y+=16f,row++){
+      float firstX=MIN_X+((row&1)==0?0f:32f);
+      for(float x=firstX;x<=MAX_X;x+=64f)out.add(new WorldMoveTargetController.TileCenter(x,y));
+    }
+    return Collections.unmodifiableList(out);
+  }
+
+  /** Isometric cardinal neighbours must share exactly the same coordinates as movement. */
+  public static boolean areAdjacentGroundTiles(float ax,float ay,float bx,float by){
+    return Math.abs(Math.abs(ax-bx)-32f)<.01f&&Math.abs(Math.abs(ay-by)-16f)<.01f;
+  }
+
   /** Collision is intentionally the trunk/rock/stream footprint, never the canopy bitmap bounds. */
   public static List<RectF> obstacles(){
+    return OBSTACLES;
+  }
+
+  private static List<RectF> buildObstacles(){
     List<RectF> out=new ArrayList<>();
-    // west/north forest wall
-    out.add(new RectF(64,64,210,690)); out.add(new RectF(210,64,510,205));
-    out.add(new RectF(510,64,850,150)); out.add(new RectF(850,64,1408,190));
-    // east forest wall
-    out.add(new RectF(1280,190,1408,896));
-    // V3 visible forest masses / peninsulas. Collision follows trunks, not canopy silhouettes.
-    out.add(new RectF(260,250,430,410));
-    out.add(new RectF(470,360,625,485));
-    out.add(new RectF(690,525,825,635));
-    out.add(new RectF(485,730,610,820));
-    out.add(new RectF(760,210,930,360));
-    out.add(new RectF(900,610,1015,790));
-    // Continuous meandering stream follows the eastern edge; the entry-to-clearing route stays west of it.
-    out.add(new RectF(1190,130,1260,350));
-    out.add(new RectF(1208,350,1280,590));
-    out.add(new RectF(1198,590,1270,865));
+    out.addAll(PoteFieldRenderer.blockingFootprints());
+    // The stream is an impassable winding barrier at the eastern/southern edge. Its visual ribbon
+    // and collision line share the same source points; the main trail stays to the west.
+    float[][] water={{690,816},{786,758},{882,700},{978,642},{1074,584},{1170,526},{1266,468},{1362,410}};
+    for(int i=1;i<water.length;i++)out.add(new RectF(
+        Math.min(water[i-1][0],water[i][0])-27f,Math.min(water[i-1][1],water[i][1])-22f,
+        Math.max(water[i-1][0],water[i][0])+27f,Math.max(water[i-1][1],water[i][1])+22f));
     return Collections.unmodifiableList(out);
   }
 

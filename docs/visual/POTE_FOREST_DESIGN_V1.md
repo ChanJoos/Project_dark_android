@@ -29,3 +29,9 @@ The source commit is checked for valid UTF-8 before Android compilation so local
 The movement regression now advances the Pote path and checks that the character renderer stays bound to the same field coordinates.
 
 The next ground pass fills the woodland floor with overlapping production ground diamonds and uses a broad bare-earth route through the entry clearing.
+
+
+## Acceptance checks after tile and movement rebuild
+- Every floor cell uses the same 64x32 staggered diamond lattice as Milles; each direct input advances one adjacent tile in 0.60 s.
+- Compare full forest, central clearing, and creek screenshots with the attached Pote references. CI image capture alone is not visual acceptance; inspect all frames and revise until the terrain reads as continuous ground and the canopy as a connected forest.
+- Keep the field guide beside the entry and check the entry-to-clearing-to-water route for collision reachability.

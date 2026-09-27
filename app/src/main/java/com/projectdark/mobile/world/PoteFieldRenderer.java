@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.BitmapShader;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Rect;
 import android.graphics.Shader;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -24,7 +25,7 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_FOREST_MASS_V3";
+  public static final String STATUS="POTE_FOREST_MASS_V4";
   private static final float TILE_W=64f,TILE_H=32f;
   private static final String SOIL_TEXTURE="video_reference/terrain/dirt_path_fill_texture.png";
   private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
@@ -33,7 +34,9 @@ public final class PoteFieldRenderer {
   private final Paint soilPaint=new Paint();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
-  private final List<Placement> placements=buildPlacements();
+  private final Map<String,Rect> groundBounds=new LinkedHashMap<>();
+  private static final List<Placement> AUTHORED_PLACEMENTS=buildPlacements();
+  private final List<Placement> placements=AUTHORED_PLACEMENTS;
 
   private static final class Placement {
     final String asset,role; final float x,y,scale; final boolean tile;
@@ -48,6 +51,17 @@ public final class PoteFieldRenderer {
   }
 
   public int placementCount(){return placements.size();}
+
+  /** Ground-contact collision footprints are derived from the same visible object anchors. */
+  public static List<RectF> blockingFootprints(){
+    List<RectF> out=new ArrayList<>();
+    for(Placement p:AUTHORED_PLACEMENTS){
+      if("canopy".equals(p.role))out.add(new RectF(p.x-14f,p.y-10f,p.x+14f,p.y+10f));
+      else if("rock".equals(p.role))out.add(new RectF(p.x-19f,p.y-15f,p.x+19f,p.y+15f));
+      else if("stump".equals(p.role))out.add(new RectF(p.x-15f,p.y-10f,p.x+15f,p.y+10f));
+    }
+    return Collections.unmodifiableList(out);
+  }
 
   public void draw(Canvas c,WorldRuntimeAdapter w){
     if(c==null||w==null)return;drawBelow(c,w,Float.POSITIVE_INFINITY);
@@ -67,9 +81,8 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // Continuous soil underlay plus a tightly packed field of source-derived forest-floor
-    // diamonds. The former sparse scatter left most of the map looking like empty brown void.
-    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff40502d);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    // Match Milles: a continuous substrate under a true staggered 64x32 diamond tile field.
+    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff67472f);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     Bitmap soil=bitmap(SOIL_TEXTURE);
     if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);}
     drawGroundTiles(c,w);
@@ -79,24 +92,45 @@ public final class PoteFieldRenderer {
     terrainStroke(c,w,new float[][]{{1234,150},{1253,230},{1232,310},{1260,390},{1240,470},{1264,550},{1245,630},{1270,710},{1250,790},{1275,850}},26f,0xff60918c);
   }
 
-  /** Source-derived forest-floor cutouts add uneven leaf litter over the seamless soil substrate. */
+  /** Every Pote floor cell occupies the same staggered diamond lattice used by Milles movement. */
   private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
-    float stepX=58f,stepY=34f,cx=w.camera().cameraX(),cy=w.camera().cameraY();
-    int firstRow=(int)Math.floor((cy-64f)/stepY),lastRow=(int)Math.ceil((cy+c.getHeight()+64f)/stepY);
-    for(int row=firstRow;row<=lastRow;row++){
-      float y=row*stepY;float rowOffset=(Math.floorMod(row,2)==0?0f:stepX*.5f);
-      int firstCol=(int)Math.floor((cx-64f-rowOffset)/stepX),lastCol=(int)Math.ceil((cx+c.getWidth()+64f-rowOffset)/stepX);
-      for(int col=firstCol;col<=lastCol;col++){
-        int seed=tileSeed(col,row);
-        float jitterX=(unit(seed)-.5f)*5f,jitterY=(unit(seed^0x45d9f3b)-.5f)*4f;
-        float wx=col*stepX+rowOffset+jitterX,wy=y+jitterY;
-        boolean path=Math.abs(wy-(790f-(wx-190f)*.43f))<78f&&wx>150f&&wx<1120f;
-        int[] palette=path?CLEARING_GROUND_TILES:FOREST_GROUND_TILES;
-        int asset=palette[Math.floorMod(seed>>>4,palette.length)];
-        float scale=.49f+unit(seed^0x27d4eb2d)*.055f;
-        drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",asset),wx,wy,scale);
-      }
+    for(WorldMoveTargetController.TileCenter tile:PoteFieldDef.groundTiles()){
+      WorldCameraTransform.Point point=w.worldToScreen(tile.x,tile.y);
+      if(point.x<-40||point.x>c.getWidth()+40||point.y<-24||point.y>c.getHeight()+24)continue;
+      int row=Math.round((tile.y-PoteFieldDef.MIN_Y)/16f);
+      int col=Math.round((tile.x-PoteFieldDef.MIN_X-((row&1)==0?0f:32f))/64f);
+      int seed=tileSeed(col,row);
+      String name=String.format("POTE_GD_%02d.png",groundVariant(tile.x,tile.y,seed));
+      Bitmap bitmap=bitmap(name);if(bitmap==null)continue;
+      Rect src=groundBounds.get(name);
+      if(src==null){src=opaqueBounds(bitmap);groundBounds.put(name,src);}
+      if(src==null)continue;
+      RectF dst=new RectF((float)Math.floor(point.x-33f),(float)Math.floor(point.y-17f),
+          (float)Math.ceil(point.x+33f),(float)Math.ceil(point.y+17f));
+      c.drawBitmap(bitmap,src,dst,pixel);
     }
+  }
+  private static int groundVariant(float x,float y,int seed){
+    boolean trail=nearMainTrail(x,y);
+    int bandX=(int)Math.floor(x/192f),bandY=(int)Math.floor(y/96f);
+    int[] palette=trail?CLEARING_GROUND_TILES:FOREST_GROUND_TILES;
+    return palette[Math.floorMod(seed/7+bandX*3+bandY*5,palette.length)];
+  }
+  private static boolean nearMainTrail(float x,float y){
+    float[][] route={{192,800},{272,720},{352,640},{448,576},{544,512},{640,448},{752,384},{864,320},{976,272},{1088,224},{1200,192}};
+    for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<86f)return true;
+    return Math.hypot(x-480f,y-220f)<108f||Math.hypot(x-700f,y-440f)<118f||Math.hypot(x-1050f,y-240f)<105f;
+  }
+  private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){
+    float dx=bx-ax,dy=by-ay,den=dx*dx+dy*dy;
+    float t=den==0?0:((x-ax)*dx+(y-ay)*dy)/den;t=Math.max(0,Math.min(1,t));
+    return(float)Math.hypot(x-(ax+t*dx),y-(ay+t*dy));
+  }
+  private static Rect opaqueBounds(Bitmap image){
+    int minX=image.getWidth(),minY=image.getHeight(),maxX=-1,maxY=-1;
+    for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++)
+      if((image.getPixel(x,y)>>>24)!=0){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}
+    return maxX>=minX?new Rect(minX,minY,maxX+1,maxY+1):null;
   }
   private static int tileSeed(int col,int row){return col*73856093^row*19349663;}
   private static float unit(int n){int h=n^(n>>>16);h*=0x7feb352d;h^=h>>>15;h*=0x846ca68b;h^=h>>>16;return (h&0x7fffffff)/(float)Integer.MAX_VALUE;}
@@ -119,7 +153,9 @@ public final class PoteFieldRenderer {
       c.drawBitmap(b,null,dst,pixel);return;
     }
     float ww=b.getWidth()*p.scale,hh=b.getHeight()*p.scale;
-    RectF dst=new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh),Math.round(q.x+ww*.5f),Math.round(q.y));
+    boolean center="water".equals(p.role);
+    RectF dst=center?new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh*.5f),Math.round(q.x+ww*.5f),Math.round(q.y+hh*.5f)):
+        new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh),Math.round(q.x+ww*.5f),Math.round(q.y));
     if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight())c.drawBitmap(b,null,dst,pixel);
   }
 
@@ -174,26 +210,40 @@ public final class PoteFieldRenderer {
 
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
-    // Rebuilt from a readable route outward: continuous perimeter canopy, distinct groves,
-    // and an open south-west to north-east travel lane. Avoid the old evenly repeated masses.
+    // Build an enclosing canopy first, then fill the flanks around one broad irregular trail.
+    // Positions are staggered and jittered so the forest reads as connected growth, not rows.
     int n=0;
-    for(int x=40;x<=1390;x+=118){tree(p,x,138+(n%3)*13,1+(n%7),.86f+(n%3)*.08f);if(n%2==0)small(p,x+34,177+(n%2)*12,1+(n%3));n++;}
-    n=0;for(int y=260;y<=820;y+=112){tree(p,128+(n%2)*24,y,1+(n%7),.88f+(n%3)*.07f);tree(p,1350-(n%2)*20,y+24,1+((n+3)%7),.90f+(n%2)*.08f);n++;}
-    for(int x=255;x<=1240;x+=165)tree(p,x,876+(x%2)*6,1+(x/165)%7,.84f+(x%3)*.05f);
+    for(int x=34;x<=1430;x+=104){
+      float wobble=((n*37)%31)-15;
+      tree(p,x+wobble,154+((n*19)%35),1+(n%7),.91f+(n%3)*.07f);
+      if((n&1)==0)tree(p,x+47-wobble*.35f,223+((n*23)%37),1+((n+3)%7),.78f+(n%4)*.06f);
+      if(n%3!=1)small(p,x-27,248+((n*13)%34),1+n%3);
+      n++;
+    }
+    n=0;for(int y=260;y<=850;y+=92){
+      float wobble=((n*29)%35)-17;
+      if(y<748)tree(p,102+wobble,y,1+(n%7),.9f+(n%3)*.06f);
+      tree(p,1360-wobble,y+31,1+((n+4)%7),.89f+(n%4)*.05f);
+      if((n&1)==0){small(p,178+wobble,y+48,1+n%3);small(p,1290-wobble,y+66,1+(n+1)%3);}
+      n++;
+    }
+    n=0;for(int x=220;x<=1300;x+=132){
+      if(x>=380)tree(p,x+((n*17)%29)-14,876-((n*11)%28),1+(n%7),.8f+(n%3)*.07f);n++;
+    }
 
-    // Separate wooded pockets flank the playable lane instead of spilling across it.
-    grove(p,320,390,2);grove(p,430,650,4);grove(p,640,300,1);
-    grove(p,770,640,5);grove(p,930,430,3);grove(p,1085,690,6);
-    grove(p,1040,230,4);
-    shoulder(p,300,740,1);shoulder(p,570,505,3);shoulder(p,890,545,2);
+    // Interior canopy islands wrap around the trail. Each mass combines overlapping crowns,
+    // small trees and understory; clear centers remain large enough for movement and combat.
+    grove(p,178,365,2);grove(p,365,262,5);grove(p,650,205,1);grove(p,1198,294,4);
+    grove(p,185,520,6);grove(p,438,812,3);grove(p,765,804,5);grove(p,1118,735,2);
+    grove(p,1320,615,7);grove(p,240,430,4);grove(p,873,660,6);grove(p,1210,780,1);
 
-    // Connected eastern-edge stream with bank hierarchy. Keep the entry-to-clearing trail open.
-    stream(p,new float[][]{{1230,205},{1260,270},{1225,335},{1268,400},{1232,465},{1270,530},{1238,595},{1275,660},{1245,725},{1280,790}});
+    // One diagonal woodland creek, assembled from the production water/bank sprites.
+    stream(p,new float[][]{{690,816},{786,758},{882,700},{978,642},{1074,584},{1170,526},{1266,468},{1362,410}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
-    stump(p,240,815,2);rock(p,430,780,4);small(p,340,835,2);
-    stump(p,500,590,3);rock(p,820,725,2);small(p,695,680,3);
-    rock(p,970,360,5);small(p,1000,325,1);stump(p,1185,775,4);
+    stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);
+    stump(p,400,430,3);rock(p,821,566,2);small(p,723,601,3);
+    rock(p,1028,376,5);small(p,1070,346,1);stump(p,1225,706,4);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
     return p;
@@ -201,12 +251,13 @@ public final class PoteFieldRenderer {
 
   /** A compact asymmetric grove: canopy anchors grouped around understory and ground details. */
   private static void grove(List<Placement> p,float x,float y,int seed){
-    tree(p,x-48,y+8,1+Math.floorMod(seed,7),.88f);
-    tree(p,x+14,y-34,1+Math.floorMod(seed+2,7),1.02f);
-    tree(p,x+74,y+2,1+Math.floorMod(seed+4,7),.91f);
-    small(p,x-8,y-66,1+Math.floorMod(seed,3));
-    bush(p,x-62,y+55,1+seed%6);bush(p,x+60,y+61,1+(seed+3)%6);
-    ground(p,x-92,y+76,1+seed%6);ground(p,x+102,y+82,1+(seed+2)%6);
+    tree(p,x-78,y+18,1+Math.floorMod(seed,7),.82f);
+    tree(p,x-21,y-25,1+Math.floorMod(seed+2,7),.94f);
+    tree(p,x+52,y+8,1+Math.floorMod(seed+4,7),1.0f);
+    tree(p,x+111,y+44,1+Math.floorMod(seed+5,7),.78f);
+    small(p,x-102,y-29,1+Math.floorMod(seed,3));small(p,x+5,y-86,1+Math.floorMod(seed+1,3));
+    bush(p,x-99,y+69,1+seed%8);bush(p,x-8,y+61,1+(seed+3)%8);bush(p,x+92,y+84,1+(seed+5)%8);
+    ground(p,x-126,y+93,1+seed%6);ground(p,x+132,y+83,1+(seed+2)%6);
   }
 
   private static void mass(List<Placement> p,float[][] pts,int seed){
@@ -227,16 +278,12 @@ public final class PoteFieldRenderer {
     if((seed&1)==0)rock(p,x+110,y+24,1+seed%5); else stump(p,x+112,y+30,1+seed%4);
   }
   private static void stream(List<Placement> p,float[][] pts){
-    // Water V2: sparse overlapping water surfaces, continuous banks. Avoid the old vertical PNG chain.
-    int i=0; for(float[] q:pts){
-      float x=q[0]+((i%5)-2f)*15f,y=q[1];
-      if((i&1)==0){
-        int sprite=1+(i/2)%3;
-        p.add(new Placement(String.format("POTE_WT_%02d.png",sprite),x,y,1.22f+(i%3)*.08f,"water",false));
-      }
-      bank(p,x-86,y+18,1+i%5); bank(p,x+90,y-14,1+(i+2)%5);
-      if(i%3==0)rock(p,x-108,y+30,1+i%5);
-      if(i%3==1)ground(p,x+112,y+38,1+i%6);
+    int i=0;for(float[] q:pts){
+      int sprite=1+(i%3);
+      p.add(new Placement(String.format("POTE_WT_%02d.png",sprite),q[0],q[1],.92f,"water",false));
+      bank(p,q[0]-30,q[1]+48,1+(i%5));bank(p,q[0]+36,q[1]-47,1+((i+2)%5));
+      if(i%2==0)rock(p,q[0]-56,q[1]+50,1+(i%5));
+      if(i%2==1)bush(p,q[0]+60,q[1]-57,1+(i%8));
       i++;
     }
   }

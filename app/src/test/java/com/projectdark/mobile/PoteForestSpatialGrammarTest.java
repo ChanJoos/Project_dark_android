@@ -10,8 +10,8 @@ import com.projectdark.mobile.world.WorldMoveTargetController;
 public final class PoteForestSpatialGrammarTest {
   @Test public void forestUsesDenseAuthoredAssetPlacements(){
     PoteFieldRenderer renderer=new PoteFieldRenderer();
-    assertEquals("POTE_FOREST_MASS_V3",PoteFieldRenderer.STATUS);
-    assertTrue("forest should be grouped into authored groves, not rendered as scattered props",renderer.placementCount()>=70);
+    assertEquals("POTE_FOREST_MASS_V4",PoteFieldRenderer.STATUS);
+    assertTrue("forest should read as connected canopy and understory around clearings",renderer.placementCount()>=180);
   }
 
   @Test public void navigationRetainsCorridorsAroundDenseGroves(){
@@ -21,6 +21,17 @@ public final class PoteForestSpatialGrammarTest {
     assertTrue(PoteFieldDef.navigationTiles().stream().anyMatch(t -> Math.abs(t.x-PoteFieldDef.EXIT_X)<=64f && Math.abs(t.y-PoteFieldDef.EXIT_Y)<=32f));
     assertFalse(PoteFieldDef.atExit(PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y));
     assertTrue(PoteFieldDef.atExit(PoteFieldDef.EXIT_X,PoteFieldDef.EXIT_Y));
+  }
+
+  @Test public void forestGroundCellsUseTheMillesisometricTileLattice(){
+    List<WorldMoveTargetController.TileCenter> ground=PoteFieldDef.groundTiles();
+    assertTrue("the entire map floor must be tiled, not sprinkled",ground.size()>500);
+    WorldMoveTargetController.TileCenter center=ground.stream().filter(t->Math.abs(t.x-672f)<.1f&&Math.abs(t.y-496f)<.1f).findFirst().orElseThrow();
+    int adjacent=0;
+    for(WorldMoveTargetController.TileCenter t:ground)if(PoteFieldDef.areAdjacentGroundTiles(center.x,center.y,t.x,t.y))adjacent++;
+    assertEquals("a fully joined interior diamond has four walkable neighbours",4,adjacent);
+    for(WorldMoveTargetController.TileCenter t:ground)
+      assertTrue("floor cells must remain on the 32x16 movement lattice",(Math.round(t.x/32f)+Math.round(t.y/16f))%2==0);
   }
 
   @Test public void entryCanReachNortheastWithoutCrossingAuthoredCollision(){

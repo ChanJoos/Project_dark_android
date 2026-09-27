@@ -47,4 +47,21 @@ public final class PoteVisualReviewTest {
   assertEquals(field.presentationPlayerX(),view.renderedPlayerWorldX(),.01f);
   assertEquals(field.presentationPlayerY(),view.renderedPlayerWorldY(),.01f);
  }
+
+ @Test public void oneFourDirectionInputAdvancesExactlyOnePoteTile() throws Exception {
+  GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,1536,704);
+  Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);
+  Field af=GameView.class.getDeclaredField("poteFieldAdapter");af.setAccessible(true);
+  com.projectdark.mobile.world.WorldRuntimeAdapter field=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view);
+  float sx=field.runtime().player().x,sy=field.runtime().player().y;
+  com.projectdark.mobile.world.WorldMoveTargetController.Snapshot step=field.step(com.projectdark.mobile.world.WorldMoveTargetController.Direction.NE);
+  assertEquals(com.projectdark.mobile.world.WorldMoveTargetController.Status.REACHED,step.status);
+  assertEquals(sx+32f,field.runtime().player().x,.01f);assertEquals(sy-16f,field.runtime().player().y,.01f);
+  assertEquals("presentation starts on the old tile",sx,field.presentationPlayerX(),.01f);
+  field.tickNavigation(.30f);
+  assertEquals(sx+16f,field.presentationPlayerX(),.1f);
+  field.tickNavigation(.30f);
+  assertEquals(sx+32f,field.presentationPlayerX(),.01f);assertEquals(sy-16f,field.presentationPlayerY(),.01f);
+  assertTrue("entry guide remains close to spawn",field.runtime().npcs().stream().anyMatch(n->Math.hypot(n.x-sx,n.y-sy)<100f));
+ }
 }
