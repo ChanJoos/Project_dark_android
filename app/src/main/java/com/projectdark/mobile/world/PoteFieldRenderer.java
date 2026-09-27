@@ -88,7 +88,7 @@ public final class PoteFieldRenderer {
     // Match Milles: a continuous substrate under a true staggered 64x32 diamond tile field.
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff67472f);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     Bitmap soil=bitmap(SOIL_TEXTURE);
-    if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);}
+    if(soil!=null){soilPaint.setColor(0xffffffff);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);soilPaint.setColor(0xff000000);}
     drawGroundTiles(c,w);
     drawConnectedTrail(c,w);
   }
@@ -123,7 +123,7 @@ public final class PoteFieldRenderer {
   }
   /** Milles-style connected soil surface laid over the complete Pote floor lattice. */
   private void drawConnectedTrail(Canvas c,WorldRuntimeAdapter w){
-    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
+    float[][] route={{192,800},{230,735},{360,700},{310,625},{425,570},{520,600},{600,515},{715,500},{690,425},{820,380},{900,410},{980,330},{1100,325},{1180,250},{1320,220}};
     android.graphics.Path path=new android.graphics.Path();
     WorldCameraTransform.Point first=w.worldToScreen(route[0][0],route[0][1]);path.moveTo(first.x,first.y);
     for(int i=1;i<route.length-1;i++){
@@ -131,9 +131,9 @@ public final class PoteFieldRenderer {
       path.quadTo(a.x,a.y,(a.x+b.x)*.5f,(a.y+b.y)*.5f);
     }
     WorldCameraTransform.Point last=w.worldToScreen(route[route.length-1][0],route[route.length-1][1]);path.lineTo(last.x,last.y);
-    trailEdgePaint.setColor(0xff493220);trailEdgePaint.setStrokeWidth(78f);c.drawPath(path,trailEdgePaint);
+    trailEdgePaint.setColor(0x806b492e);trailEdgePaint.setStrokeWidth(64f);c.drawPath(path,trailEdgePaint);
     Bitmap soil=bitmap(SOIL_TEXTURE);
-    if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));soilPaint.setStyle(Paint.Style.STROKE);soilPaint.setStrokeCap(Paint.Cap.ROUND);soilPaint.setStrokeJoin(Paint.Join.ROUND);soilPaint.setStrokeWidth(68f);c.drawPath(path,soilPaint);soilPaint.setShader(null);soilPaint.setStyle(Paint.Style.FILL);}
+    if(soil!=null){soilPaint.setColor(0xffffffff);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));soilPaint.setStyle(Paint.Style.STROKE);soilPaint.setStrokeCap(Paint.Cap.ROUND);soilPaint.setStrokeJoin(Paint.Join.ROUND);soilPaint.setStrokeWidth(58f);c.drawPath(path,soilPaint);soilPaint.setShader(null);soilPaint.setColor(0xff000000);soilPaint.setStyle(Paint.Style.FILL);}
   }
   private static boolean nearMainTrail(float x,float y){
     float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
@@ -182,7 +182,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null)b=trimSourceEdge(stripEdgeMatte(b));
+      if(b!=null&&!SOIL_TEXTURE.equals(name))b=trimSourceEdge(stripEdgeMatte(b));
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
   }
