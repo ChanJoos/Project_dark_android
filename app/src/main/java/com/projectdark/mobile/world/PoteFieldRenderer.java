@@ -60,18 +60,21 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // V2 terrain is layered, not a flat brown board. Broad organic bands are deliberately larger
-    // than a tile so the player reads forest floor / worn corridor / damp stream edge as regions.
-    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff3f4b27);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainPatch(c,w,420,760,430,250,0xff665039); terrainPatch(c,w,610,610,500,250,0xff665039);
-    terrainPatch(c,w,700,430,520,230,0xff665039); terrainPatch(c,w,850,315,390,190,0xff665039);
-    terrainPatch(c,w,1060,455,260,560,0xff455633);
-    terrainPatch(c,w,560,520,220,150,0xff746049); terrainPatch(c,w,760,505,210,145,0xff746049);
-    terrainPatch(c,w,360,735,220,145,0xff746049);
+    // Forest floor is continuous. A worn S-corridor is drawn as overlapping short segments,
+    // never as giant isolated ovals; damp ground follows the stream axis on the east.
+    pixel.setStyle(Paint.Style.FILL);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
+    pixel.setColor(0xff3f4b27);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    terrainStroke(c,w,new float[][]{{190,810},{300,770},{390,700},{470,610},{575,520},{690,445},{805,390},{930,420}},150f,0xff665039);
+    terrainStroke(c,w,new float[][]{{1045,190},{1070,300},{1055,410},{1080,520},{1100,635},{1110,790}},190f,0xff455633);
+    // Small clearing pads merge into the corridor rather than reading as separate painted islands.
+    terrainStroke(c,w,new float[][]{{500,520},{560,520},{620,520}},175f,0xff705b43);
+    terrainStroke(c,w,new float[][]{{700,500},{760,500},{820,500}},170f,0xff705b43);
+    terrainStroke(c,w,new float[][]{{305,735},{360,735},{415,735}},165f,0xff705b43);
   }
-  private void terrainPatch(Canvas c,WorldRuntimeAdapter w,float x,float y,float ww,float hh,int color){
-    WorldCameraTransform.Point q=w.worldToScreen(x,y);pixel.setColor(color);
-    c.drawOval(new RectF(q.x-ww*.5f,q.y-hh*.5f,q.x+ww*.5f,q.y+hh*.5f),pixel);
+  private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
+    if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStyle(Paint.Style.STROKE);
+    for(int i=1;i<pts.length;i++){WorldCameraTransform.Point a=w.worldToScreen(pts[i-1][0],pts[i-1][1]),b=w.worldToScreen(pts[i][0],pts[i][1]);c.drawLine(a.x,a.y,b.x,b.y,pixel);}
+    pixel.setStyle(Paint.Style.FILL);
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
@@ -179,8 +182,9 @@ public final class PoteFieldRenderer {
     pathEdge(p,575,500,4);pathEdge(p,700,430,5);pathEdge(p,820,385,6);pathEdge(p,930,420,7);
 
     // Connected stream corridor. Water pieces overlap; banks/rocks/low vegetation flank the axis.
-    streamNode(p,1115,220,1);streamNode(p,1125,300,2);streamNode(p,1110,380,3);
-    streamNode(p,1120,460,4);streamNode(p,1140,540,5);streamNode(p,1155,620,6);streamNode(p,1165,700,1);streamNode(p,1170,780,2);
+    streamNode(p,1115,220,1);streamNode(p,1120,270,2);streamNode(p,1112,320,3);streamNode(p,1110,370,4);
+    streamNode(p,1118,420,5);streamNode(p,1125,470,6);streamNode(p,1135,520,1);streamNode(p,1145,570,2);
+    streamNode(p,1150,620,3);streamNode(p,1158,670,4);streamNode(p,1165,720,5);streamNode(p,1170,770,6);
 
     // Three readable encounter clearings: detail only on their perimeter.
     clearingEdge(p,560,520,1);clearingEdge(p,760,500,4);clearingEdge(p,360,735,6);
