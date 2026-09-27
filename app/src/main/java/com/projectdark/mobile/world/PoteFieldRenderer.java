@@ -22,7 +22,7 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_ASSET_DRIVEN_FOREST_V1";
+  public static final String STATUS="POTE_CLUSTERED_FOREST_V2";
   private static final float TILE_W=64f,TILE_H=32f;
   private final Paint pixel=new Paint();
   private final AssetManager assets=findAssets();
@@ -60,9 +60,18 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // Continuous authored-tone earth. Never stamp rectangular GD source patches into the live map:
-    // Milles QA proved visible terrain seams are worse than restrained base terrain.
-    pixel.setColor(0xff563b24);pixel.setStyle(Paint.Style.FILL);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    // V2 terrain is layered, not a flat brown board. Broad organic bands are deliberately larger
+    // than a tile so the player reads forest floor / worn corridor / damp stream edge as regions.
+    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff3f4b27);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    terrainPatch(c,w,420,760,430,250,0xff665039); terrainPatch(c,w,610,610,500,250,0xff665039);
+    terrainPatch(c,w,700,430,520,230,0xff665039); terrainPatch(c,w,850,315,390,190,0xff665039);
+    terrainPatch(c,w,1060,455,260,560,0xff455633);
+    terrainPatch(c,w,560,520,220,150,0xff746049); terrainPatch(c,w,760,505,210,145,0xff746049);
+    terrainPatch(c,w,360,735,220,145,0xff746049);
+  }
+  private void terrainPatch(Canvas c,WorldRuntimeAdapter w,float x,float y,float ww,float hh,int color){
+    WorldCameraTransform.Point q=w.worldToScreen(x,y);pixel.setColor(color);
+    c.drawOval(new RectF(q.x-ww*.5f,q.y-hh*.5f,q.x+ww*.5f,q.y+hh*.5f),pixel);
   }
 
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
@@ -142,65 +151,66 @@ public final class PoteFieldRenderer {
 
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
-    // EAST STREAM: overlapping, gently meandering sequence. The earlier isolated water pockets
-    // read as unrelated props; keep the water visually continuous and wrap it with bank/rock/moisture
-    // vegetation so every water asset has a spatial reason to be there.
-    water(p,1110,225,2); water(p,1125,305,4); water(p,1100,385,6); water(p,1115,465,3);
-    water(p,1140,545,5); water(p,1160,625,1); water(p,1170,705,4);
-    rock(p,1025,245,1);rock(p,1200,315,2);rock(p,1015,430,3);rock(p,1215,585,4);rock(p,1110,745,5);
-    bank(p,1010,270,1);bank(p,1205,350,2);bank(p,1000,485,3);bank(p,1220,645,4);bank(p,1125,760,5);
-    ground(p,990,305,2);ground(p,1230,400,5);ground(p,1030,555,4);ground(p,1225,720,6);
-    bush(p,970,345,4);bush(p,1240,500,6);bush(p,1035,640,2);bush(p,1240,700,8);
-    detail(p,1020,575,1);detail(p,1200,760,5);
+    // V2 is authored as masses, not independent props: each canopy parent receives understory,
+    // groundcover and detail children. Open centres are intentionally preserved for navigation.
+    cluster(p,150,190,1,1);cluster(p,280,165,2,3);cluster(p,420,155,3,5);cluster(p,570,150,4,7);
+    cluster(p,730,145,5,2);cluster(p,890,155,6,4);cluster(p,1015,175,7,6);
+    cluster(p,1250,220,2,8);cluster(p,1285,365,5,1);cluster(p,1290,520,3,3);cluster(p,1295,690,6,5);cluster(p,1260,825,1,7);
+    cluster(p,120,340,4,2);cluster(p,120,505,7,4);cluster(p,145,665,2,6);
 
-    // NORTH/WEST FOREST WALL: large canopy -> small tree -> bush -> groundcover.
-    tree(p,135,180,1,.78f);tree(p,245,150,2,.78f);tree(p,365,145,3,.78f);
-    tree(p,500,130,4,.78f);tree(p,650,125,5,.78f);tree(p,820,125,6,.78f);
-    tree(p,980,145,7,.78f);tree(p,1280,210,2,.78f);tree(p,1320,350,5,.78f);
-    tree(p,1310,520,3,.78f);tree(p,1325,690,6,.78f);tree(p,1300,825,1,.78f);
-    tree(p,110,330,4,.78f);tree(p,125,500,7,.78f);tree(p,145,650,2,.78f);
-    bushRing(p,new float[][]{{190,215},{300,205},{430,200},{575,190},{735,185},{900,195},{1240,250},{1240,430},{1240,590},{1240,770}},1);
+    // West grove: one continuous mass, with a deliberate east-facing opening.
+    cluster(p,285,315,5,3);cluster(p,385,335,1,5);small(p,330,395,1);small(p,445,300,2);
+    bush(p,250,375,6);ground(p,305,430,2);ground(p,420,415,5);detail(p,365,445,2);
 
-    // INTERNAL GROVE A: blocks direct sight, but leaves a south-east escape corridor.
-    tree(p,300,300,5,.78f);tree(p,380,330,1,.78f);small(p,335,385,1);small(p,415,285,2);small(p,245,395,3);
-    bushRing(p,new float[][]{{265,350},{330,420},{420,390},{455,335}},3);
-    ground(p,285,410,1);ground(p,440,405,3);ground(p,315,455,5);detail(p,365,430,2);detail(p,455,455,4);
+    // Old-growth central grove / landmark mass.
+    cluster(p,525,565,6,6);cluster(p,635,615,3,1);small(p,500,665,3);stump(p,455,615,3);stump(p,690,655,4);
+    bush(p,575,690,5);ground(p,505,710,4);ground(p,690,700,1);detail(p,600,735,3);
 
-    // INTERNAL GROVE B: old-growth landmark around the twisted trunk.
-    tree(p,540,560,6,.78f);tree(p,625,610,3,.78f);small(p,500,645,3);
-    stump(p,470,590,3);stump(p,680,650,4);
-    bushRing(p,new float[][]{{500,520},{590,520},{680,570},{620,690},{520,700}},5);
-    ground(p,455,675,4);ground(p,700,610,5);bush(p,445,635,6);bush(p,715,665,4);detail(p,585,735,3);
+    // North-east mass frames the path before the stream.
+    cluster(p,790,265,7,7);cluster(p,900,285,2,2);small(p,750,345,2);
+    bush(p,850,360,4);ground(p,930,380,6);rock(p,965,245,2);
 
-    // NORTH-EAST GROVE, framing the approach to the stream.
-    tree(p,785,245,7,.78f);tree(p,885,275,2,.78f);small(p,745,325,2);
-    bushRing(p,new float[][]{{735,225},{835,205},{930,250},{950,335},{820,365}},7);
-    ground(p,710,340,2);ground(p,940,370,6);ground(p,985,315,4);bush(p,990,255,5);rock(p,920,205,2);
+    // South-east mass closes the encounter pocket.
+    cluster(p,920,680,4,4);cluster(p,1025,725,1,6);small(p,865,770,1);
+    bush(p,985,790,2);stump(p,840,720,1);ground(p,865,815,3);detail(p,1040,820,5);
 
-    // SOUTH-EAST GROVE: dense wall behind the final encounter pocket.
-    tree(p,930,670,4,.78f);tree(p,1020,720,1,.78f);small(p,885,760,1);
-    bushRing(p,new float[][]{{875,650},{970,610},{1060,650},{1080,760},{950,805}},2);
-    stump(p,850,705,1);ground(p,860,805,3);detail(p,1040,815,5);
+    // Readable S-curve: entrance -> central clearing -> north-east -> water.
+    pathEdge(p,270,780,1);pathEdge(p,390,700,2);pathEdge(p,470,610,3);
+    pathEdge(p,575,500,4);pathEdge(p,700,430,5);pathEdge(p,820,385,6);pathEdge(p,930,420,7);
 
-    // ENCOUNTER POCKETS: deliberately open centres; peripheral detail gives visual enclosure.
-    encounterEdge(p,580,385,1);encounterEdge(p,760,505,4);encounterEdge(p,360,735,6);
-    // Entrance readability: sparse vegetation, landmark stump and flowers, no canopy over the spawn.
-    stump(p,250,790,2);ground(p,285,820,6);detail(p,330,805,4);
-    bush(p,165,735,8);bush(p,410,815,7);
+    // Connected stream corridor. Water pieces overlap; banks/rocks/low vegetation flank the axis.
+    streamNode(p,1115,220,1);streamNode(p,1125,300,2);streamNode(p,1110,380,3);
+    streamNode(p,1120,460,4);streamNode(p,1140,540,5);streamNode(p,1155,620,6);streamNode(p,1165,700,1);streamNode(p,1170,780,2);
 
-    // Forest-floor variation and corridor-edge clusters. Keep the actual walking spine open,
-    // but avoid the "objects floating on a brown board" look by chaining low vegetation along it.
-    detail(p,520,330,1);detail(p,690,300,3);detail(p,830,445,2);detail(p,650,760,4);
-    ground(p,470,460,2);ground(p,620,445,1);ground(p,845,555,5);ground(p,730,675,6);
-    ground(p,560,470,3);ground(p,760,405,4);ground(p,790,620,2);ground(p,430,760,5);
-    bush(p,505,485,2);bush(p,705,420,5);bush(p,805,590,3);bush(p,455,720,1);
-    detail(p,600,475,5);detail(p,755,455,2);detail(p,785,665,4);detail(p,500,745,1);
-    rock(p,545,280,1);rock(p,720,575,5);stump(p,800,585,1);
+    // Three readable encounter clearings: detail only on their perimeter.
+    clearingEdge(p,560,520,1);clearingEdge(p,760,500,4);clearingEdge(p,360,735,6);
+    // Entrance landmark, kept open around ENTRY_X/ENTRY_Y.
+    stump(p,245,810,2);ground(p,300,825,6);detail(p,345,810,4);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
     return p;
   }
 
+  private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
+    tree(p,x,y,treeSeed,.92f);
+    bush(p,x-54,y+18,1+underSeed%8);bush(p,x+52,y+25,1+(underSeed+2)%8);
+    ground(p,x-72,y+48,1+underSeed%6);ground(p,x+68,y+52,1+(underSeed+3)%6);
+    detail(p,x+8,y+58,1+underSeed%5);
+  }
+  private static void pathEdge(List<Placement> p,float x,float y,int seed){
+    ground(p,x-92,y+22,1+seed%6);ground(p,x+92,y-18,1+(seed+2)%6);
+    bush(p,x-118,y+10,1+seed%8);bush(p,x+118,y-8,1+(seed+3)%8);
+    detail(p,x-76,y+42,1+seed%5);
+  }
+  private static void streamNode(List<Placement> p,float x,float y,int seed){
+    water(p,x,y,1+seed%6);bank(p,x-78,y+12,1+seed%5);bank(p,x+78,y-8,1+(seed+2)%5);
+    if((seed&1)==0)rock(p,x-98,y+24,1+seed%5);else bush(p,x+104,y+18,1+seed%8);
+    ground(p,x-118,y+42,1+seed%6);
+  }
+  private static void clearingEdge(List<Placement> p,float x,float y,int seed){
+    ground(p,x-105,y+65,1+seed%6);ground(p,x+105,y+62,1+(seed+3)%6);
+    bush(p,x-125,y+8,1+seed%8);bush(p,x+125,y-4,1+(seed+2)%8);rock(p,x+135,y+40,1+seed%5);
+  }
   private static void encounterEdge(List<Placement> p,float x,float y,int seed){
     bush(p,x-95,y-20,1+seed%8);bush(p,x+95,y+10,1+(seed+2)%8);
     ground(p,x-70,y+65,1+seed%6);ground(p,x+75,y+70,1+(seed+3)%6);
