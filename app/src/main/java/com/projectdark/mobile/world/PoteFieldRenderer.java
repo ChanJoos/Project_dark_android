@@ -94,7 +94,7 @@ public final class PoteFieldRenderer {
     Bitmap texture=bitmap(TRAIL_TEXTURE);if(texture==null)return;
     BitmapShader shader=new BitmapShader(texture,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT);
     Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
-    pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(142f);
+    pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(72f);
     pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
     Path trail=new Path();float[][] points=PoteForestGeometry.trailCenterline();
     for(int i=0;i<points.length;i++){
