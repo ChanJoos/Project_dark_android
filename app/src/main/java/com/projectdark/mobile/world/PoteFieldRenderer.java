@@ -119,7 +119,7 @@ public final class PoteFieldRenderer {
   }
   private static boolean nearMainTrail(float x,float y){
     float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
-    for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<59f)return true;
+    for(int i=1;i<route.length;i++)if(distanceToSegment(x,y,route[i-1][0],route[i-1][1],route[i][0],route[i][1])<48f)return true;
     return Math.hypot(x-480f,y-220f)<86f||Math.hypot(x-700f,y-440f)<72f||Math.hypot(x-1050f,y-240f)<82f;
   }
   private static float distanceToSegment(float x,float y,float ax,float ay,float bx,float by){
@@ -240,7 +240,7 @@ public final class PoteFieldRenderer {
     grove(p,170,370,3);grove(p,520,280,6);grove(p,600,690,5);grove(p,1120,380,2);
 
     // One diagonal woodland creek, assembled from the production water/bank sprites.
-    stream(p,new float[][]{{820,700},{890,660},{960,620},{1030,580},{1100,540},{1170,500},{1240,460},{1310,420},{1380,380}});
+    stream(p,new float[][]{{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
     stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);
@@ -281,10 +281,10 @@ public final class PoteFieldRenderer {
   }
   private static void stream(List<Placement> p,float[][] pts){
     int i=0;for(float[] q:pts){
-      p.add(new Placement("POTE_WT_01.png",q[0],q[1],.82f,"water",false));
-      bank(p,q[0]-22,q[1]+38,1+(i%5));bank(p,q[0]+27,q[1]-39,1+((i+2)%5));
-      if(i%2==0)rock(p,q[0]-56,q[1]+50,1+(i%5));
-      if(i%2==1)bush(p,q[0]+60,q[1]-57,1+(i%8));
+      p.add(new Placement("POTE_WT_01.png",q[0],q[1],.95f,"water",false));
+      if(i%2==0){bank(p,q[0]-22,q[1]+38,1+(i%5));bank(p,q[0]+27,q[1]-39,1+((i+2)%5));}
+      if(i%4==0)rock(p,q[0]-56,q[1]+50,1+(i%5));
+      if(i%4==2)bush(p,q[0]+60,q[1]-57,1+(i%8));
       i++;
     }
   }
