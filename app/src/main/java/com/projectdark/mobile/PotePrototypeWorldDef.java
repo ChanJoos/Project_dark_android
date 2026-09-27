@@ -18,8 +18,9 @@ public final class PotePrototypeWorldDef {
   // Prototype screen-space placement only; not original tile coordinates.
   public static final float PLAYER_X_B=480f;
   public static final float PLAYER_Y_B=320f;
-  public static final float MONSTER_X_B=480f;
-  public static final float MONSTER_Y_B=220f;
+  // B/ADAPTED: placed in the main trail clearing so players meet it during ordinary exploration.
+  public static final float MONSTER_X_B=640f;
+  public static final float MONSTER_Y_B=480f;
   public static final int MONSTER_COUNT_B=1;
 
   public static final class Spawn {
@@ -39,7 +40,7 @@ public final class PotePrototypeWorldDef {
 
     /** Produces the same runtime monster type used by the current combat engine. */
     public RuntimeState.Monster instantiateRuntimeMonster(){
-      return new RuntimeState.Monster(monsterId,name,x,y,hp,PamfetSpriteRenderer.ASSET_STATUS);
+      return new RuntimeState.Monster(monsterId,name,x,y,hp,monsterId.equals(PotePrototypeCombatProfile.MONSTER_ID)?PamfetSpriteRenderer.ASSET_STATUS:"PENDING_CROP");
     }
   }
 
@@ -49,7 +50,7 @@ public final class PotePrototypeWorldDef {
     return new Spawn(
         MAP_ID,
         PotePrototypeCombatProfile.MONSTER_ID,
-        "퍼플팜팻",
+        "퍼플팜팻 · 외형 초안",
         MONSTER_X_B,
         MONSTER_Y_B,
         PotePrototypeCombatProfile.RUNTIME_HP_B,

@@ -107,7 +107,7 @@ public final class MonsterAIController {
 
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
-    ensureCentered(m,tile);
+    ensureCentered(state,m,tile);
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
@@ -130,7 +130,7 @@ public final class MonsterAIController {
       boolean moved=state.tryMoveMonster(m,direction.dx,direction.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
       if(moved){
         if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,m.x,m.y)
-            ||!MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y)){
+            ||!state.isMonsterTileCenter(m.x,m.y)){
           m.x=beforeX;m.y=beforeY;tile.resetClock();return;
         }
         tile.lastDirection=directionFromFacing(m.visualFacing.locomotion(),direction);
@@ -151,11 +151,11 @@ public final class MonsterAIController {
     }
   }
 
-  private static void ensureCentered(RuntimeState.Monster m,TilePursuitState state){
-    if(state.centered&&MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y))return;
-    WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);
+  private static void ensureCentered(RuntimeState runtime,RuntimeState.Monster m,TilePursuitState pursuit){
+    if(pursuit.centered&&runtime.isMonsterTileCenter(m.x,m.y))return;
+    WorldMoveTargetController.TileCenter center=runtime.nearestMonsterTileCenter(m.x,m.y);
     if(center!=null){m.x=center.x;m.y=center.y;}
-    state.centered=true;state.resetClock();
+    pursuit.centered=true;pursuit.resetClock();
   }
 
   private static WorldMoveTargetController.Direction directionFromFacing(CharacterRenderer.Direction facing,
