@@ -10,6 +10,7 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import com.projectdark.mobile.world.WorldCameraTransform;
 import com.projectdark.mobile.world.WorldRuntimeAdapter;
+import com.projectdark.mobile.world.WorldMoveTargetController;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk=34,manifest=Config.NONE)
