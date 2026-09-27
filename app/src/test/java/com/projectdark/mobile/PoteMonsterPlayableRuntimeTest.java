@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import com.projectdark.mobile.world.PoteFieldDef;
+import com.projectdark.mobile.world.WorldMoveTargetController;
+import java.util.List;
 
 /** Exercises the same AI and shared combat route wired into GameView for the Pote actor. */
 @RunWith(RobolectricTestRunner.class)
@@ -23,19 +26,40 @@ public final class PoteMonsterPlayableRuntimeTest {
         RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
     MonsterAIController ai=new MonsterAIController(
         new MonsterAIController.SharedResolverAttackRouter(combat.monsterAutoBridge()));
-    monster.x=PotePrototypeWorldDef.MONSTER_X_B;monster.y=PotePrototypeWorldDef.MONSTER_Y_B;
-    state.player().x=768f;state.player().y=480f;
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    WorldMoveTargetController.TileCenter start=tiles.stream().filter(t->Math.abs(t.x-PotePrototypeWorldDef.MONSTER_X_B)<.1f
+        &&Math.abs(t.y-PotePrototypeWorldDef.MONSTER_Y_B)<.1f).findFirst().orElse(null);
+    assertNotNull("prototype monster spawn must land on a clear authored tile",start);
+    WorldMoveTargetController.TileCenter target=null;
+    for(WorldMoveTargetController.TileCenter goal:tiles){
+      float dx=goal.x-start.x,dy=goal.y-start.y,d=(float)Math.hypot(dx,dy);
+      if(d<80f||d>=MonsterAIController.CHASE_RADIUS_B)continue;
+      WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(dx,dy,WorldMoveTargetController.Direction.SE);
+      float nx=start.x+direction.dx,ny=start.y+direction.dy;
+      if(tiles.stream().anyMatch(t->Math.abs(t.x-nx)<.1f&&Math.abs(t.y-ny)<.1f)){target=goal;break;}
+    }
+    assertNotNull("authored spawn pocket must have a walkable one-tile pursuit step",target);
+    assertNotNull(target);
+    monster.x=start.x;monster.y=start.y;state.player().x=target.x;state.player().y=target.y;
     float beforeX=monster.x,beforeY=monster.y;
     ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+0.01f);
-    assertTrue("POTE_PURPLE must advance by exactly one 4-way isometric tile; before="+beforeX+","+beforeY+" after="+monster.x+","+monster.y+" state="+monster.state
-            +" blockSE="+state.blocked(beforeX+32f,beforeY+16f)+" blockNE="+state.blocked(beforeX+32f,beforeY-16f)+" blockSW="+state.blocked(beforeX-32f,beforeY+16f),
-        MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
+    assertTrue("POTE_PURPLE moves on an authored clear tile",MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
     assertTrue(MonsterTileCenterLocomotion.isAuthoredCenter(monster.x,monster.y));
     assertEquals(MonsterAIController.AttackRoute.SHARED_RESOLVER,ai.attackRoute());
 
     // Put both actors on legal adjacent centers and drive the actual monster attack windup,
     // shared resolver submission and hit frame; no direct RuntimeState damage shortcut.
-    state.player().x=832f;state.player().y=480f;monster.x=800f;monster.y=464f;
+    WorldMoveTargetController.TileCenter attackMonster=null,attackPlayer=null;
+    for(WorldMoveTargetController.TileCenter candidate:tiles){
+      for(WorldMoveTargetController.TileCenter goal:tiles){
+        if(PoteFieldDef.areAdjacentGroundTiles(candidate.x,candidate.y,goal.x,goal.y)){
+          attackMonster=candidate;attackPlayer=goal;break;
+        }
+      }
+      if(attackMonster!=null)break;
+    }
+    assertNotNull(attackMonster);assertNotNull(attackPlayer);
+    monster.x=attackMonster.x;monster.y=attackMonster.y;state.player().x=attackPlayer.x;state.player().y=attackPlayer.y;
     int hp=state.player().hp;
     ai.tick(state,0f);
     assertTrue(monster.attackPrimed);
