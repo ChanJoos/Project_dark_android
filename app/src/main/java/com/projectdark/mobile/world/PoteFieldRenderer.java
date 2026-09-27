@@ -282,15 +282,20 @@ public final class PoteFieldRenderer {
     if((seed&1)==0)rock(p,x+110,y+24,1+seed%5); else stump(p,x+112,y+30,1+seed%4);
   }
   private static void stream(List<Placement> p,float[][] pts){
-    int i=0;for(float[] q:pts){
-      int waterId=1+(i%6);
-      p.add(new Placement(String.format("POTE_WT_%02d.png",waterId),q[0],q[1],.90f+(i%3)*.07f,"water",false));
-      if(i%2==0){bank(p,q[0]-28,q[1]+34,1+(i%5));bank(p,q[0]+31,q[1]-37,1+((i+2)%5));}
-      if(i%3==0)rock(p,q[0]-58,q[1]+48,1+(i%5));
-      if(i%3==1)bush(p,q[0]+63,q[1]-53,1+(i%8));
-      if(i%4==2)ground(p,q[0]+74,q[1]+28,1+(i%6));
-      i++;
+    int i=0;for(int segment=1;segment<pts.length;segment++){
+      float[] a=pts[segment-1],b=pts[segment];float length=(float)Math.hypot(b[0]-a[0],b[1]-a[1]);
+      int steps=Math.max(1,(int)Math.ceil(length/54f));
+      for(int step=0;step<steps;step++,i++){
+        float t=step/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
+        int waterId=1+(i%6);
+        p.add(new Placement(String.format("POTE_WT_%02d.png",waterId),x,y,.90f+(i%3)*.07f,"water",false));
+        if(i%3==0){bank(p,x-28,y+34,1+(i%5));bank(p,x+31,y-37,1+((i+2)%5));}
+        if(i%5==0)rock(p,x-58,y+48,1+(i%5));
+        if(i%5==2)bush(p,x+63,y-53,1+(i%8));
+        if(i%6==3)ground(p,x+74,y+28,1+(i%6));
+      }
     }
+    float[] end=pts[pts.length-1];p.add(new Placement("POTE_WT_03.png",end[0],end[1],.94f,"water",false));
   }
 
   private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
