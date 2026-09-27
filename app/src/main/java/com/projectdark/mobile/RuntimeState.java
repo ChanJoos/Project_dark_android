@@ -83,6 +83,16 @@ public final class RuntimeState {
 
   public BootMode bootMode(){return bootMode;}
   public String currentMapId(){return currentMapId;}
+  public com.projectdark.mobile.world.WorldMoveTargetController.TileCenter nearestMonsterTileCenter(float x,float y){
+    if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
+      return com.projectdark.mobile.world.PoteFieldDef.nearestNavigationCenter(x,y);
+    return MonsterTileCenterLocomotion.nearestAuthoredCenter(x,y);
+  }
+  public boolean isMonsterTileCenter(float x,float y){
+    if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
+      return com.projectdark.mobile.world.PoteFieldDef.isNavigationCenter(x,y);
+    return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
+  }
   public WorldDef world(){return world;}
   public Player player(){return player;}
   public CombatLedger ledger(){return ledger;}

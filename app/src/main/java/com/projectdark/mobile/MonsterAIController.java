@@ -130,7 +130,7 @@ public final class MonsterAIController {
       boolean moved=state.tryMoveMonster(m,direction.dx,direction.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
       if(moved){
         if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,m.x,m.y)
-            ||!MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y)){
+            ||!state.isMonsterTileCenter(m.x,m.y)){
           m.x=beforeX;m.y=beforeY;tile.resetClock();return;
         }
         tile.lastDirection=directionFromFacing(m.visualFacing.locomotion(),direction);
@@ -152,8 +152,8 @@ public final class MonsterAIController {
   }
 
   private static void ensureCentered(RuntimeState.Monster m,TilePursuitState state){
-    if(state.centered&&MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y))return;
-    WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);
+    if(state.centered&&state.isMonsterTileCenter(m.x,m.y))return;
+    WorldMoveTargetController.TileCenter center=state.nearestMonsterTileCenter(m.x,m.y);
     if(center!=null){m.x=center.x;m.y=center.y;}
     state.centered=true;state.resetClock();
   }

@@ -17,9 +17,14 @@ public final class PoteFieldDef {
   public static final float EXIT_X=128f,EXIT_Y=832f;
   public static final float EXIT_RADIUS=34f;
   private static final List<RectF> OBSTACLES=buildObstacles();
+  private static final List<WorldMoveTargetController.TileCenter> NAVIGATION_TILES=buildNavigationTiles();
   private PoteFieldDef(){}
 
   public static List<WorldMoveTargetController.TileCenter> navigationTiles(){
+    return NAVIGATION_TILES;
+  }
+
+  private static List<WorldMoveTargetController.TileCenter> buildNavigationTiles(){
     List<WorldMoveTargetController.TileCenter> out=new ArrayList<>();
     // Match WorldMoveTargetController's real isometric steps exactly: NW/NE/SW/SE =
     // (-32,-16)/(32,-16)/(-32,16)/(32,16). The former 64x32 lattice had no legal edges.
@@ -30,6 +35,22 @@ public final class PoteFieldDef {
       }
     }
     return Collections.unmodifiableList(out);
+  }
+
+  /** Pote's tile lattice is map-local; it shares 32x16 moves with Milles, not its absolute origin. */
+  public static boolean isNavigationCenter(float x,float y){
+    int col=Math.round(x/32f),row=Math.round(y/16f);
+    return Math.abs(x-col*32f)<.01f&&Math.abs(y-row*16f)<.01f
+        &&((col+row)&1)==0&&!blocked(x,y);
+  }
+
+  public static WorldMoveTargetController.TileCenter nearestNavigationCenter(float x,float y){
+    WorldMoveTargetController.TileCenter best=null;float bestDistance=Float.MAX_VALUE;
+    for(WorldMoveTargetController.TileCenter tile:NAVIGATION_TILES){
+      float dx=tile.x-x,dy=tile.y-y,d=dx*dx+dy*dy;
+      if(d<bestDistance){bestDistance=d;best=tile;}
+    }
+    return best;
   }
 
   /** Full terrain coverage on the same staggered 64x32 diamond lattice as Milles. */
