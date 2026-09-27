@@ -75,13 +75,14 @@ public final class PoteFieldRenderer {
   public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
     c.drawColor(0xff241d15);drawFloor(c,w);
-    for(Placement p:placements)if(p.y<=actorY)drawPlacement(c,w,p);
+    for(Placement p:placements)if(!"bridge".equals(p.role)&&p.y<=actorY)drawPlacement(c,w,p);
+    drawBridge(c,w);
   }
 
   /** Draw foreground canopies/props after the actor so Y-depth remains spatially believable. */
   public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
-    for(Placement p:placements)if(p.y>actorY)drawPlacement(c,w,p);
+    for(Placement p:placements)if(!"bridge".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
@@ -115,7 +116,7 @@ public final class PoteFieldRenderer {
           (float)Math.ceil(point.x+33f),(float)Math.ceil(point.y+17f));
       // The continuous forest-soil substrate stays visible through the cutout diamonds,
       // keeping the joined tile lattice from reading like a field of stone pavers.
-      pixel.setAlpha(variant>=5&&variant<=8?184:112);
+      pixel.setAlpha(variant>=5&&variant<=8?78:38);
       c.drawBitmap(bitmap,src,dst,pixel);
     }
     pixel.setAlpha(255);
@@ -179,6 +180,11 @@ public final class PoteFieldRenderer {
     for(int i=1;i<pts.length;i++){WorldCameraTransform.Point a=w.worldToScreen(pts[i-1][0],pts[i-1][1]),b=w.worldToScreen(pts[i][0],pts[i][1]);c.drawLine(a.x,a.y,b.x,b.y,pixel);}pixel.setStyle(Paint.Style.FILL);
   }
 
+  /** The footbridge is layered after creek water and before the actor, at the crossing deck. */
+  private void drawBridge(Canvas c,WorldRuntimeAdapter w){
+    for(Placement p:placements)if("bridge".equals(p.role))drawPlacement(c,w,p);
+  }
+
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
     Bitmap b=bitmap(p.asset);if(b==null)return;
     WorldCameraTransform.Point q=w.worldToScreen(p.x,p.y);
@@ -198,7 +204,7 @@ public final class PoteFieldRenderer {
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
       if(b!=null&&!SOIL_TEXTURE.equals(name))
-        b=name.startsWith("POTE_BR_")?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
+        b=trimSourceEdge(stripEdgeMatte(b));
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
   }
@@ -277,7 +283,7 @@ public final class PoteFieldRenderer {
     stream(p,new float[][]{{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}});
 
     // One clear, playable footbridge crosses the creek and connects the eastern trail.
-    p.add(new Placement("POTE_BR_01.png",1324,388,.13f,"bridge",false));
+    p.add(new Placement("POTE_BR_01.png",1324,388,.20f,"bridge",false));
     ground(p,1490,500,3);ground(p,1580,540,6);bush(p,1455,565,4);rock(p,1648,558,2);
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
