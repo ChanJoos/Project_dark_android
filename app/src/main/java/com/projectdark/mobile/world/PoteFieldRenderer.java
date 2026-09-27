@@ -62,7 +62,7 @@ public final class PoteFieldRenderer {
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
     // V3: no painted road. The traversable path is negative space carved between forest masses.
     // Only a subdued forest floor and a damp eastern watershed underlay are painted.
-    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff3d4829);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff394526);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},118f,0xff3d5037);
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
@@ -139,10 +139,10 @@ public final class PoteFieldRenderer {
     mass(p,new float[][]{{1315,195},{1325,285},{1310,375},{1328,465},{1312,555},{1325,645},{1310,735},{1295,825},{1310,915}},2);
 
     // Interior masses define the S-shaped route by absence, not by a painted stripe.
-    mass(p,new float[][]{{220,290},{300,315},{375,350}},5);
-    mass(p,new float[][]{{320,600},{385,650},{430,710}},2);
-    mass(p,new float[][]{{790,235},{875,255},{960,290}},6);
-    mass(p,new float[][]{{820,690},{915,730},{1010,770}},3);
+    mass(p,new float[][]{{195,275},{265,300},{335,325},{395,355}},5);
+    mass(p,new float[][]{{290,590},{350,630},{405,675},{445,725}},2);
+    mass(p,new float[][]{{785,225},{850,245},{915,265},{980,300}},6);
+    mass(p,new float[][]{{815,680},{880,705},{950,740},{1020,780}},3);
 
     // Transitional shoulders: sparse and asymmetric.
     shoulder(p,285,785,1); shoulder(p,430,685,3);
