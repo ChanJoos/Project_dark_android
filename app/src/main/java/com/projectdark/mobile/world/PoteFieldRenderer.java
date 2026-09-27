@@ -145,15 +145,15 @@ public final class PoteFieldRenderer {
     mass(p,new float[][]{{820,690},{915,730},{1010,770}},3);
 
     // Transitional shoulders: sparse and asymmetric.
-    shoulder(p,250,770,1); shoulder(p,390,675,3);
-    shoulder(p,625,500,2); shoulder(p,800,410,6);
+    shoulder(p,285,785,1); shoulder(p,430,685,3);
+    shoulder(p,600,520,2); shoulder(p,835,425,6);
 
     // Connected eastern stream with bank hierarchy.
     stream(p,new float[][]{{1090,190},{1120,250},{1095,315},{1130,380},{1105,450},{1140,520},{1115,590},{1150,660},{1125,730},{1160,800}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
-    stump(p,285,835,2); rock(p,390,815,4);
-    stump(p,505,705,3); rock(p,720,650,2);
+    stump(p,245,850,2); rock(p,430,825,4);
+    stump(p,470,735,3); rock(p,755,675,2);
     rock(p,980,365,5); stump(p,1240,785,4);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
