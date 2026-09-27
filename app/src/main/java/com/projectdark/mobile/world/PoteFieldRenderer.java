@@ -63,7 +63,7 @@ public final class PoteFieldRenderer {
     // V3: no painted road. The traversable path is negative space carved between forest masses.
     // Only a subdued forest floor and a damp eastern watershed underlay are painted.
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff394526);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},118f,0xff3d5037);
+    terrainStroke(c,w,new float[][]{{1030,160},{1060,260},{1040,365},{1080,470},{1060,575},{1100,680},{1080,840}},156f,0xff344d3d);
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
     if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);pixel.setStyle(Paint.Style.STROKE);
@@ -144,6 +144,11 @@ public final class PoteFieldRenderer {
     mass(p,new float[][]{{785,225},{850,245},{915,265},{980,300}},6);
     mass(p,new float[][]{{815,680},{880,705},{950,740},{1020,780}},3);
 
+    // Forest peninsulas intrude into the former central void and carve an actual S corridor.
+    mass(p,new float[][]{{500,390},{555,420},{600,455}},7);
+    mass(p,new float[][]{{700,555},{750,585},{805,610}},4);
+    mass(p,new float[][]{{515,790},{575,760}},6);
+
     // Transitional shoulders: sparse and asymmetric.
     shoulder(p,285,785,1); shoulder(p,430,685,3);
     shoulder(p,600,520,2); shoulder(p,835,425,6);
@@ -178,13 +183,16 @@ public final class PoteFieldRenderer {
     if((seed&1)==0)rock(p,x+110,y+24,1+seed%5); else stump(p,x+112,y+30,1+seed%4);
   }
   private static void stream(List<Placement> p,float[][] pts){
-    int i=0;for(float[] q:pts){
-      float x=q[0]+((i%3)-1)*22f,y=q[1];
-      p.add(new Placement(String.format("POTE_WT_%02d.png",1+i%6),x,y,1.02f+(i%3)*.10f,"water",false));
-      bank(p,x-92,y+20,1+i%5); bank(p,x+96,y-16,1+(i+2)%5);
-      if(i%3==0)rock(p,x-118,y+34,1+i%5);
-      else if(i%3==1)bush(p,x+138,y+25,1+i%8);
-      if((i&1)==0)ground(p,x-145,y+52,1+i%6);
+    // Water V2: sparse overlapping water surfaces, continuous banks. Avoid the old vertical PNG chain.
+    int i=0; for(float[] q:pts){
+      float x=q[0]+((i%4)-1.5f)*18f,y=q[1];
+      if((i&1)==0){
+        int sprite=1+(i/2)%3;
+        p.add(new Placement(String.format("POTE_WT_%02d.png",sprite),x,y,1.22f+(i%3)*.08f,"water",false));
+      }
+      bank(p,x-86,y+18,1+i%5); bank(p,x+90,y-14,1+(i+2)%5);
+      if(i%3==0)rock(p,x-108,y+30,1+i%5);
+      if(i%3==1)ground(p,x+112,y+38,1+i%6);
       i++;
     }
   }
