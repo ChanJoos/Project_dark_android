@@ -28,7 +28,7 @@ import java.util.Map;
 public final class PoteFieldRenderer {
   public static final String STATUS="POTE_FOREST_MASS_V4";
   private static final float TILE_W=64f,TILE_H=32f;
-  private static final String SOIL_TEXTURE="video_reference/terrain/dirt_path_fill_texture.png";
+  private static final String SOIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
   private static final int[] CLEARING_GROUND_TILES={5,6,7,8};
   private final Paint pixel=new Paint();
