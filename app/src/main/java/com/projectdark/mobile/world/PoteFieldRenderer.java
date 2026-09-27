@@ -131,9 +131,9 @@ public final class PoteFieldRenderer {
       path.quadTo(a.x,a.y,(a.x+b.x)*.5f,(a.y+b.y)*.5f);
     }
     WorldCameraTransform.Point last=w.worldToScreen(route[route.length-1][0],route[route.length-1][1]);path.lineTo(last.x,last.y);
-    trailEdgePaint.setColor(0x806b492e);trailEdgePaint.setStrokeWidth(64f);c.drawPath(path,trailEdgePaint);
+    trailEdgePaint.setColor(0x406b492e);trailEdgePaint.setStrokeWidth(48f);c.drawPath(path,trailEdgePaint);
     Bitmap soil=bitmap(SOIL_TEXTURE);
-    if(soil!=null){soilPaint.setColor(0xffffffff);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));soilPaint.setStyle(Paint.Style.STROKE);soilPaint.setStrokeCap(Paint.Cap.ROUND);soilPaint.setStrokeJoin(Paint.Join.ROUND);soilPaint.setStrokeWidth(58f);c.drawPath(path,soilPaint);soilPaint.setShader(null);soilPaint.setColor(0xff000000);soilPaint.setStyle(Paint.Style.FILL);}
+    if(soil!=null){soilPaint.setColor(0xffffffff);soilPaint.setAlpha(205);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));soilPaint.setStyle(Paint.Style.STROKE);soilPaint.setStrokeCap(Paint.Cap.ROUND);soilPaint.setStrokeJoin(Paint.Join.ROUND);soilPaint.setStrokeWidth(42f);c.drawPath(path,soilPaint);soilPaint.setShader(null);soilPaint.setAlpha(255);soilPaint.setColor(0xff000000);soilPaint.setStyle(Paint.Style.FILL);}
   }
   private static boolean nearMainTrail(float x,float y){
     float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
