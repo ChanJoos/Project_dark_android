@@ -151,7 +151,11 @@ public final class RuntimeState {
   private boolean monsterOccupied(Monster self,float x,float y,float radius){for(Monster m:monsters){if(m==self||!m.alive)continue;float min=radius+MONSTER_RADIUS+3f;if(distance(x,y,m.x,m.y)<min)return true;}return false;}
   private boolean npcOccupied(float x,float y,float radius){for(Npc n:npcs){float min=radius+NPC_RADIUS+2f;if(distance(x,y,n.x,n.y)<min)return true;}return false;}
 
-  public Npc hitNpc(float x,float y,float radius){for(Npc n:npcs){float dx=x-n.x,dy=y-n.y;if(dx*dx+dy*dy<=radius*radius)return n;}return null;}
+  /** Hit box follows the visible NPC sprite and nameplate, whose anchor sits above the foot position. */
+  public Npc hitNpc(float x,float y,float radius){
+    for(Npc n:npcs){float dx=x-n.x,dy=y-(n.y-22f);if(dx*dx+dy*dy<=radius*radius)return n;}
+    return null;
+  }
   public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;}return null;}
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}

@@ -50,6 +50,28 @@ public final class PoteVisualReviewTest {
   }
  }
 
+ @Test public void latestPoteFieldRendersTheEightFramePamfetOnItsActualSpawn() throws Exception {
+  GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,1536,704);
+  Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);
+  Field af=GameView.class.getDeclaredField("poteFieldAdapter");af.setAccessible(true);
+  com.projectdark.mobile.world.WorldRuntimeAdapter adapter=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view);
+  Field stateField=GameView.class.getDeclaredField("state");stateField.setAccessible(true);RuntimeState state=(RuntimeState)stateField.get(view);
+  RuntimeState.Monster monster=state.monsters().stream().filter(m->"POTE_PURPLE".equals(m.id)).findFirst().orElseThrow();
+  assertEquals(PamfetSpriteRenderer.ASSET_STATUS,monster.assetStatus);
+  assertTrue("spawn must occupy the latest field's authored movement lattice",PoteFieldDef.isNavigationCenter(monster.x,monster.y));
+  adapter.camera().snapTo(monster.x,monster.y);
+  Bitmap frame=Bitmap.createBitmap(1536,704,Bitmap.Config.ARGB_8888);view.draw(new Canvas(frame));
+  WorldCameraTransform.Point center=adapter.worldToScreen(monster.x,monster.y-20f);
+  Field sf=GameView.class.getDeclaredField("scale"),xf=GameView.class.getDeclaredField("ox"),yf=GameView.class.getDeclaredField("oy");
+  sf.setAccessible(true);xf.setAccessible(true);yf.setAccessible(true);
+  int px=Math.round(center.x*sf.getFloat(view)+xf.getFloat(view)),py=Math.round(center.y*sf.getFloat(view)+yf.getFloat(view));
+  int visible=0;for(int y=Math.max(0,py-25);y<Math.min(704,py+25);y++)for(int x=Math.max(0,px-25);x<Math.min(1536,px+25);x++)if(android.graphics.Color.alpha(frame.getPixel(x,y))>0)visible++;
+  assertTrue("Pamfet sprite must render into the playable forest scene",visible>200);
+  File file=new File("build/reports/device-review/pote-pamfet-latest-playable.png");file.getParentFile().mkdirs();
+  try(FileOutputStream out=new FileOutputStream(file)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}
+  assertTrue(file.isFile()&&file.length()>0);frame.recycle();
+ }
+
  @Test public void fieldMovementAndRenderedCharacterUseTheSameWorldAdapter() throws Exception {
   GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,1536,704);
   Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);
