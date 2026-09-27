@@ -97,9 +97,14 @@ public final class PoteFieldRenderer {
     pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(72f);
     pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
     Path trail=new Path();float[][] points=PoteForestGeometry.trailCenterline();
-    for(int i=0;i<points.length;i++){
-      WorldCameraTransform.Point point=w.worldToScreen(points[i][0],points[i][1]);
-      if(i==0)trail.moveTo(point.x,point.y);else trail.lineTo(point.x,point.y);
+    WorldCameraTransform.Point[] screen=new WorldCameraTransform.Point[points.length];
+    for(int i=0;i<points.length;i++)screen[i]=w.worldToScreen(points[i][0],points[i][1]);
+    trail.moveTo(screen[0].x,screen[0].y);
+    for(int i=0;i<screen.length-1;i++){
+      WorldCameraTransform.Point p0=screen[Math.max(0,i-1)],p1=screen[i],p2=screen[i+1],p3=screen[Math.min(screen.length-1,i+2)];
+      float c1x=p1.x+(p2.x-p0.x)/6f,c1y=p1.y+(p2.y-p0.y)/6f;
+      float c2x=p2.x-(p3.x-p1.x)/6f,c2y=p2.y-(p3.y-p1.y)/6f;
+      trail.cubicTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
     }
     c.drawPath(trail,pixel);pixel.setShader(null);pixel.setStyle(Paint.Style.FILL);
   }
