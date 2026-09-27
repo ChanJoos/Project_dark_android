@@ -117,9 +117,9 @@ public final class PoteFieldRenderer {
       // Ground cutouts are leaf/moss accents scattered over continuous dirt, not a diamond carpet.
       float density=clearingWeight(tile.x,tile.y,610f,500f,190f,126f);
       density=Math.max(density,Math.max(clearingWeight(tile.x,tile.y,980f,670f,210f,138f),clearingWeight(tile.x,tile.y,1510f,445f,250f,176f)));
-      float chance=density>.35f?.035f:.16f;
+      float chance=density>.35f?.010f:.055f;
       if(unit(seed^0x2c1b3c6d)>chance)continue;
-      pixel.setAlpha(210);
+      pixel.setAlpha(160);
       c.drawBitmap(bitmap,src,dst,pixel);
     }
     pixel.setAlpha(255);
