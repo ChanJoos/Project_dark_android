@@ -86,7 +86,7 @@ public final class PoteFieldDef {
     // Creek banks remain solid except at the wooden bridge crossing at node 5.
     float[][] water=PoteForestGeometry.creekCenterline();
     for(int i=1;i<water.length;i++){
-      if(i>=4&&i<=6)continue; // one deck-length opening; approach is still banked on both sides
+      if(i>=5&&i<=6)continue; // narrow deck-length opening; approach is still banked on both sides
       out.add(new RectF(
         Math.min(water[i-1][0],water[i][0])-27f,Math.min(water[i-1][1],water[i][1])-22f,
         Math.max(water[i-1][0],water[i][0])+27f,Math.max(water[i-1][1],water[i][1])+22f));
