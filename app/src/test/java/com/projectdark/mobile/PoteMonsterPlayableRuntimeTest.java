@@ -36,6 +36,7 @@ public final class PoteMonsterPlayableRuntimeTest {
       if(d<80f||d>=180f)continue; // established Pote prototype chase radius [B]
       WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(dx,dy,WorldMoveTargetController.Direction.SE);
       float nx=start.x+direction.dx,ny=start.y+direction.dy;
+      if(Math.hypot(nx-goal.x,ny-goal.y)<40f)continue;
       if(tiles.stream().anyMatch(t->Math.abs(t.x-nx)<.1f&&Math.abs(t.y-ny)<.1f)){target=goal;break;}
     }
     assertNotNull("authored spawn pocket must have a walkable one-tile pursuit step",target);
