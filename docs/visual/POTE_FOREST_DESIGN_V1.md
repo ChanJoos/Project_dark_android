@@ -43,3 +43,5 @@ Compile follow-up: the tile renderer keeps its atlas cache and uses precomputed 
 Visual iteration 2 narrows the soil route, crops tile extraction fringes, and reuses one creek segment at overlapping intervals to prevent broken water patches.
 
 Visual iteration 3 removes the obsolete synthetic creek underlay; water now comes exclusively from a curved chain of production POTE_WT sprites.
+
+Visual iteration 4 shifts the source creek into view between banks and fills two thin forest sectors while maintaining a clear connected trail.
