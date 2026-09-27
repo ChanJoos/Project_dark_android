@@ -16,6 +16,11 @@ public final class PoteFieldDef {
   public static final float ENTRY_X=192f,ENTRY_Y=800f;
   public static final float EXIT_X=128f,EXIT_Y=832f;
   public static final float EXIT_RADIUS=34f;
+  public static final float BRIDGE_X=1510f,BRIDGE_Y=516f;
+  private static final float[][] CREEK_CENTERLINE={
+    {1460,896},{1490,820},{1465,744},{1500,668},{1470,592},{1510,516},
+    {1475,440},{1515,364},{1485,288},{1525,212},{1495,136},{1510,64}
+  };
   private static final List<RectF> OBSTACLES=buildObstacles();
   private static final List<WorldMoveTargetController.TileCenter> NAVIGATION_TILES=buildNavigationTiles();
   private PoteFieldDef(){}
@@ -64,6 +69,13 @@ public final class PoteFieldDef {
     return Collections.unmodifiableList(out);
   }
 
+  /** Creek kept to the eastern side so it frames the route instead of dividing the forest. */
+  public static float[][] creekCenterline(){
+    float[][] copy=new float[CREEK_CENTERLINE.length][2];
+    for(int i=0;i<CREEK_CENTERLINE.length;i++)copy[i]=CREEK_CENTERLINE[i].clone();
+    return copy;
+  }
+
   /** Isometric cardinal neighbours must share exactly the same coordinates as movement. */
   public static boolean areAdjacentGroundTiles(float ax,float ay,float bx,float by){
     return Math.abs(Math.abs(ax-bx)-32f)<.01f&&Math.abs(Math.abs(ay-by)-16f)<.01f;
@@ -77,10 +89,10 @@ public final class PoteFieldDef {
   private static List<RectF> buildObstacles(){
     List<RectF> out=new ArrayList<>();
     out.addAll(PoteFieldRenderer.blockingFootprints());
-    // Creek banks remain solid except at the wooden bridge crossing at node 12.
-    float[][] water={{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}};
+    // Creek banks remain solid except at the wooden bridge crossing at node 5.
+    float[][] water=creekCenterline();
     for(int i=1;i<water.length;i++){
-      if(i>=11&&i<=14)continue; // widened to one deck-length opening; approach is still banked on both sides
+      if(i>=4&&i<=6)continue; // one deck-length opening; approach is still banked on both sides
       out.add(new RectF(
         Math.min(water[i-1][0],water[i][0])-27f,Math.min(water[i-1][1],water[i][1])-22f,
         Math.max(water[i-1][0],water[i][0])+27f,Math.max(water[i-1][1],water[i][1])+22f));

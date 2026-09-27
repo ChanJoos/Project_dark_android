@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import com.projectdark.mobile.world.WorldCameraTransform;
+import com.projectdark.mobile.world.PoteFieldDef;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.HashSet;
@@ -24,12 +25,12 @@ public final class PoteVisualReviewTest {
   GameView view=new GameView(RuntimeEnvironment.getApplication()); view.layout(0,0,1536,704);
   Method enter=GameView.class.getDeclaredMethod("enterPoteField"); enter.setAccessible(true); enter.invoke(view);
   Field af=GameView.class.getDeclaredField("poteFieldAdapter"); af.setAccessible(true); com.projectdark.mobile.world.WorldRuntimeAdapter adapter=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view); WorldCameraTransform camera=adapter.camera();
-  float[][] spots={{240f,760f},{640f,480f},{1324f,388f},{1550f,480f}};
+  float[][] spots={{240f,760f},{640f,480f},{PoteFieldDef.BRIDGE_X,PoteFieldDef.BRIDGE_Y},{1648f,480f}};
   String[] names={"pote-entry-clearing.png","pote-central-clearing.png","pote-bridge-crossing.png","pote-east-bank-clearing.png"};
   for(int i=0;i<spots.length;i++){
    camera.snapTo(spots[i][0],spots[i][1]); Bitmap frame=Bitmap.createBitmap(1536,704,Bitmap.Config.ARGB_8888); view.draw(new Canvas(frame));
    if(i==2){
-    WorldCameraTransform.Point bridge=adapter.worldToScreen(1324f,388f);
+    WorldCameraTransform.Point bridge=adapter.worldToScreen(PoteFieldDef.BRIDGE_X,PoteFieldDef.BRIDGE_Y);
     Field sf=GameView.class.getDeclaredField("scale"),xf=GameView.class.getDeclaredField("ox"),yf=GameView.class.getDeclaredField("oy");
     sf.setAccessible(true);xf.setAccessible(true);yf.setAccessible(true);
     int px=Math.max(0,Math.min(1535,Math.round(bridge.x*sf.getFloat(view)+xf.getFloat(view))));

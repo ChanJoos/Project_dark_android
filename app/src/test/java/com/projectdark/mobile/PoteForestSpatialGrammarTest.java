@@ -69,8 +69,14 @@ public final class PoteForestSpatialGrammarTest {
 
   @Test public void expandedEastBankIsReachableOnlyAcrossTheBridge(){
     List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
-    assertTrue("eastern clearing must be reachable from field entry",hasPath(tiles,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,1552f,480f));
-    assertTrue("bridge deck gap must be unblocked",tiles.stream().anyMatch(t->Math.abs(t.x-1324f)<=32f&&Math.abs(t.y-388f)<=16f));
-    assertTrue("creek away from bridge must remain blocked",PoteFieldDef.obstacles().stream().anyMatch(r->r.contains(1198f,466f)));
+    assertTrue("eastern clearing must be reachable from field entry",hasPath(tiles,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,1648f,480f));
+    assertTrue("bridge deck gap must be unblocked",tiles.stream().anyMatch(t->Math.abs(t.x-PoteFieldDef.BRIDGE_X)<=32f&&Math.abs(t.y-PoteFieldDef.BRIDGE_Y)<=16f));
+    assertTrue("creek away from bridge must remain blocked",PoteFieldDef.obstacles().stream().anyMatch(r->r.contains(1490f,770f)));
+    for(float[] p:PoteFieldDef.creekCenterline())assertTrue("creek must stay on the eastern side",p[0]>=1440f);
+    List<WorldMoveTargetController.TileCenter> withoutDeck=new ArrayList<>();
+    for(WorldMoveTargetController.TileCenter t:tiles)
+      if(Math.abs(t.x-PoteFieldDef.BRIDGE_X)>80f||Math.abs(t.y-PoteFieldDef.BRIDGE_Y)>64f)withoutDeck.add(t);
+    assertFalse("the eastern bank must not be reachable by walking around the creek ends",
+        hasPath(withoutDeck,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,1648f,480f));
   }
 }

@@ -237,12 +237,12 @@ public final class PoteFieldRenderer {
     // Video-reviewed broad-branch oaks add the separated rounded crowns seen in the reference.
     oak(p,365,320,.30f);oak(p,1080,330,.30f);oak(p,1640,700,.30f);
 
-    // One diagonal woodland creek, assembled from the production water/bank sprites.
-    stream(p,new float[][]{{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}});
+    // An eastern-edge woodland creek, assembled from the production water/bank sprites.
+    stream(p,PoteFieldDef.creekCenterline());
 
     // One clear, playable footbridge crosses the creek and connects the eastern trail.
-    p.add(new Placement("POTE_BR_01.png",1324,388,.145f,"bridge",false));
-    ground(p,1490,500,3);ground(p,1580,540,6);bush(p,1455,565,4);rock(p,1648,558,2);
+    p.add(new Placement("POTE_BR_01.png",PoteFieldDef.BRIDGE_X,PoteFieldDef.BRIDGE_Y,.145f,"bridge",false));
+    ground(p,1605,540,3);ground(p,1690,600,6);bush(p,1665,650,4);rock(p,1638,558,2);
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
     stump(p,350,780,2);rock(p,448,745,4);small(p,334,770,2);

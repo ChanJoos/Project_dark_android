@@ -28,6 +28,10 @@ The first render review exposed a coordinate binding error: the Pote camera foll
 The source commit is checked for valid UTF-8 before Android compilation so local file encoding cannot silently damage the CI build.
 The movement regression now advances the Pote path and checks that the character renderer stays bound to the same field coordinates.
 
+## V11 spatial correction from the source comparison
+
+The CI render exposed that the previous creek ran diagonally through the middle third of the map. The reference and this design call for the water to frame the eastern edge. The shared creek centerline now stays in the east-side band, reaches the north and south map boundaries, and leaves one authored PNG bridge crossing; the map collider and renderer read the same centerline and bridge coordinates. QA checks a connected east-bank route, a blocked off-bridge shore point, and a disconnected east bank when the bridge deck tiles are removed.
+
 The next ground pass fills the woodland floor with overlapping production ground diamonds and uses a broad bare-earth route through the entry clearing.
 
 
