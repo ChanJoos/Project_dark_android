@@ -6,7 +6,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
 import com.projectdark.mobile.world.WorldMoveTargetController;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
+@RunWith(RobolectricTestRunner.class)
+@Config(sdk=34,manifest=Config.NONE)
 public final class PoteForestSpatialGrammarTest {
   @Test public void forestUsesDenseAuthoredAssetPlacements(){
     PoteFieldRenderer renderer=new PoteFieldRenderer();

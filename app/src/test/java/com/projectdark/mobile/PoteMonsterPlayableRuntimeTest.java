@@ -2,8 +2,13 @@ package com.projectdark.mobile;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 /** Exercises the same AI and shared combat route wired into GameView for the Pote actor. */
+@RunWith(RobolectricTestRunner.class)
+@Config(sdk=34,manifest=Config.NONE)
 public final class PoteMonsterPlayableRuntimeTest {
   @Test public void poteMonsterMovesAndAttacksThroughSharedCombatSession(){
     RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
@@ -18,10 +23,12 @@ public final class PoteMonsterPlayableRuntimeTest {
         RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
     MonsterAIController ai=new MonsterAIController(
         new MonsterAIController.SharedResolverAttackRouter(combat.monsterAutoBridge()));
-    monster.x=704f;monster.y=480f;state.player().x=544f;state.player().y=480f;
+    monster.x=PotePrototypeWorldDef.MONSTER_X_B;monster.y=PotePrototypeWorldDef.MONSTER_Y_B;
+    state.player().x=768f;state.player().y=480f;
     float beforeX=monster.x,beforeY=monster.y;
     ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+0.01f);
-    assertTrue("POTE_PURPLE must advance by exactly one 4-way isometric tile",MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
+    assertTrue("POTE_PURPLE must advance by exactly one 4-way isometric tile; before="+beforeX+","+beforeY+" after="+monster.x+","+monster.y+" state="+monster.state,
+        MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
     assertTrue(MonsterTileCenterLocomotion.isAuthoredCenter(monster.x,monster.y));
     assertEquals(MonsterAIController.AttackRoute.SHARED_RESOLVER,ai.attackRoute());
 
