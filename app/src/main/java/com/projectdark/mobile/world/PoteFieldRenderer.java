@@ -5,11 +5,9 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.BitmapShader;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Rect;
-import android.graphics.Shader;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -26,14 +24,12 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_FOREST_MASS_V6";
+  public static final String STATUS="POTE_FOREST_MASS_V7";
   private static final float TILE_W=64f,TILE_H=32f;
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
   private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
   private static final int[] CLEARING_GROUND_TILES={5,6,7,8};
   private final Paint pixel=new Paint();
-  private final Paint soilPaint=new Paint();
-  private final Paint trailEdgePaint=new Paint();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
   private final Map<String,Rect> groundBounds=new LinkedHashMap<>();
@@ -49,9 +45,6 @@ public final class PoteFieldRenderer {
 
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
-    soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
-    trailEdgePaint.setAntiAlias(true);trailEdgePaint.setFilterBitmap(false);trailEdgePaint.setDither(false);
-    trailEdgePaint.setStyle(Paint.Style.STROKE);trailEdgePaint.setStrokeCap(Paint.Cap.ROUND);trailEdgePaint.setStrokeJoin(Paint.Join.ROUND);
   }
 
   public int placementCount(){return placements.size();}
@@ -86,12 +79,9 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // Continuous reference-matched leaf-litter soil sits beneath sparse accents; movement keeps its full tile lattice.
-    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff67472f);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    Bitmap soil=bitmap(SOIL_TEXTURE);
-    if(soil!=null){soilPaint.setColor(0xffffffff);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);soilPaint.setColor(0xff000000);}
+    // The authored ground diamond is the complete substrate: no screen-sized soil bitmap.
+    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     drawGroundTiles(c,w);
-    drawConnectedTrail(c,w);
   }
 
   /** Every Pote floor cell occupies the same staggered diamond lattice used by Milles movement. */
@@ -108,50 +98,35 @@ public final class PoteFieldRenderer {
       Rect src=groundBounds.get(name);
       if(src==null){src=opaqueBounds(bitmap);groundBounds.put(name,src);}
       if(src==null)continue;
-      // Ground diamonds include a dark extraction fringe. Crop that fringe so adjacent
-      // cells meet as one soil surface instead of reading as raised square pavers.
-      int insetX=Math.max(2,src.width()/14),insetY=Math.max(2,src.height()/12);
-      src=new Rect(src);src.inset(insetX,insetY);
-      RectF dst=new RectF((float)Math.floor(point.x-26f),(float)Math.floor(point.y-13f),
-          (float)Math.ceil(point.x+26f),(float)Math.ceil(point.y+13f));
-      // Ground cutouts are leaf/moss accents scattered over continuous dirt, not a diamond carpet.
-      float density=clearingWeight(tile.x,tile.y,610f,500f,190f,126f);
-      density=Math.max(density,Math.max(clearingWeight(tile.x,tile.y,980f,670f,210f,138f),clearingWeight(tile.x,tile.y,1510f,445f,250f,176f)));
-      float chance=density>.35f?.010f:.055f;
-      if(unit(seed^0x2c1b3c6d)>chance)continue;
-      pixel.setAlpha(160);
+      // Each move-lattice ground cell receives one complete 64x32 authored diamond.
+      // Cell centers are spaced 32x16 diagonally, so all four edges join without gaps.
+      RectF dst=new RectF((float)Math.floor(point.x-32f),(float)Math.floor(point.y-16f),
+          (float)Math.ceil(point.x+32f),(float)Math.ceil(point.y+16f));
+      pixel.setAlpha(255);
       c.drawBitmap(bitmap,src,dst,pixel);
     }
     pixel.setAlpha(255);
   }
   private static int groundVariant(float x,float y,int seed){
     int bandX=(int)Math.floor(x/192f),bandY=(int)Math.floor(y/96f);
-    // Three broad, irregular dirt clearings break up the canopy floor. Stable tile noise
-    // feathers their edges so open ground blends into the leaf-covered forest cells.
-    float clearing=Math.max(clearingWeight(x,y,610f,500f,190f,126f),
-        Math.max(clearingWeight(x,y,980f,670f,210f,138f),clearingWeight(x,y,1510f,445f,250f,176f)));
-    float noise=unit(seed^0x3f19a2d7);
-    boolean open=clearing>0.32f&&noise<Math.min(.94f,.63f+clearing*.34f);
-    int[] palette=open?CLEARING_GROUND_TILES:FOREST_GROUND_TILES;
+    // Broad mossy/woodland islands wrap the open earth lanes. Boundaries are spatially
+    // continuous, not per-cell random noise, and the palette variation stays within each material.
+    float forest=Math.max(edgeForestWeight(x,y),Math.max(
+        clearingWeight(x,y,365f,300f,156f,98f),Math.max(clearingWeight(x,y,185f,500f,118f,145f),
+        Math.max(clearingWeight(x,y,760f,806f,210f,100f),Math.max(clearingWeight(x,y,1120f,390f,150f,110f),
+        Math.max(clearingWeight(x,y,1350f,710f,180f,130f),clearingWeight(x,y,1650f,680f,230f,170f)))))));
+    float variation=unit(seed^0x3f19a2d7);
+    boolean forestCell=forest>.38f || (forest>.12f&&variation<forest*.48f);
+    int[] palette=forestCell?FOREST_GROUND_TILES:CLEARING_GROUND_TILES;
     return palette[Math.floorMod(seed/7+bandX*3+bandY*5,palette.length)];
+  }
+  private static float edgeForestWeight(float x,float y){
+    float edge=Math.max(Math.max((300f-x)/130f,(x-1530f)/170f),Math.max((245f-y)/110f,(y-780f)/120f));
+    return Math.max(0f,Math.min(1f,edge));
   }
   private static float clearingWeight(float x,float y,float cx,float cy,float rx,float ry){
     float d=(float)Math.sqrt(((x-cx)/rx)*((x-cx)/rx)+((y-cy)/ry)*((y-cy)/ry));
     return Math.max(0f,Math.min(1f,(1.22f-d)*1.55f));
-  }
-  /** Milles-style connected soil surface laid over the complete Pote floor lattice. */
-  private void drawConnectedTrail(Canvas c,WorldRuntimeAdapter w){
-    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192},{1240,260},{1250,330},{1324,388},{1400,448},{1490,500},{1580,520},{1680,480}};
-    android.graphics.Path path=new android.graphics.Path();
-    WorldCameraTransform.Point first=w.worldToScreen(route[0][0],route[0][1]);path.moveTo(first.x,first.y);
-    for(int i=1;i<route.length-1;i++){
-      WorldCameraTransform.Point a=w.worldToScreen(route[i][0],route[i][1]),b=w.worldToScreen(route[i+1][0],route[i+1][1]);
-      path.quadTo(a.x,a.y,(a.x+b.x)*.5f,(a.y+b.y)*.5f);
-    }
-    WorldCameraTransform.Point last=w.worldToScreen(route[route.length-1][0],route[route.length-1][1]);path.lineTo(last.x,last.y);
-    trailEdgePaint.setColor(0x406b492e);trailEdgePaint.setStrokeWidth(48f);c.drawPath(path,trailEdgePaint);
-    Bitmap soil=bitmap(SOIL_TEXTURE);
-    if(soil!=null){soilPaint.setColor(0xffffffff);soilPaint.setAlpha(205);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));soilPaint.setStyle(Paint.Style.STROKE);soilPaint.setStrokeCap(Paint.Cap.ROUND);soilPaint.setStrokeJoin(Paint.Join.ROUND);soilPaint.setStrokeWidth(42f);c.drawPath(path,soilPaint);soilPaint.setShader(null);soilPaint.setAlpha(255);soilPaint.setColor(0xff000000);soilPaint.setStyle(Paint.Style.FILL);}
   }
   private static boolean nearMainTrail(float x,float y){
     float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
@@ -289,7 +264,7 @@ public final class PoteFieldRenderer {
     stream(p,new float[][]{{820,700},{862,674},{904,648},{946,622},{988,596},{1030,570},{1072,544},{1114,518},{1156,492},{1198,466},{1240,440},{1282,414},{1324,388},{1366,362},{1408,336},{1450,310},{1492,284},{1534,258},{1576,232},{1618,206},{1660,180},{1702,154}});
 
     // One clear, playable footbridge crosses the creek and connects the eastern trail.
-    p.add(new Placement("POTE_BR_01.png",1324,388,.075f,"bridge",false));
+    p.add(new Placement("POTE_BR_01.png",1324,388,.145f,"bridge",false));
     ground(p,1490,500,3);ground(p,1580,540,6);bush(p,1455,565,4);rock(p,1648,558,2);
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
