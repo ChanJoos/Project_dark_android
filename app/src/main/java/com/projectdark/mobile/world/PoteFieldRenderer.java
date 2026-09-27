@@ -33,6 +33,7 @@ public final class PoteFieldRenderer {
   private static final int[] CLEARING_GROUND_TILES={5,6,7,8};
   private final Paint pixel=new Paint();
   private final Paint soilPaint=new Paint();
+  private final Paint trailEdgePaint=new Paint();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
   private final Map<String,Rect> groundBounds=new LinkedHashMap<>();
@@ -49,6 +50,8 @@ public final class PoteFieldRenderer {
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
     soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
+    trailEdgePaint.setAntiAlias(true);trailEdgePaint.setFilterBitmap(false);trailEdgePaint.setDither(false);
+    trailEdgePaint.setStyle(Paint.Style.STROKE);trailEdgePaint.setStrokeCap(Paint.Cap.ROUND);trailEdgePaint.setStrokeJoin(Paint.Join.ROUND);
   }
 
   public int placementCount(){return placements.size();}
@@ -87,6 +90,7 @@ public final class PoteFieldRenderer {
     Bitmap soil=bitmap(SOIL_TEXTURE);
     if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);}
     drawGroundTiles(c,w);
+    drawConnectedTrail(c,w);
   }
 
   /** Every Pote floor cell occupies the same staggered diamond lattice used by Milles movement. */
@@ -112,10 +116,24 @@ public final class PoteFieldRenderer {
     }
   }
   private static int groundVariant(float x,float y,int seed){
-    boolean trail=nearMainTrail(x,y);
+    boolean trail=false;
     int bandX=(int)Math.floor(x/192f),bandY=(int)Math.floor(y/96f);
-    int[] palette=trail?CLEARING_GROUND_TILES:FOREST_GROUND_TILES;
+    int[] palette=FOREST_GROUND_TILES;
     return palette[Math.floorMod(seed/7+bandX*3+bandY*5,palette.length)];
+  }
+  /** Milles-style connected soil surface laid over the complete Pote floor lattice. */
+  private void drawConnectedTrail(Canvas c,WorldRuntimeAdapter w){
+    float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
+    android.graphics.Path path=new android.graphics.Path();
+    WorldCameraTransform.Point first=w.worldToScreen(route[0][0],route[0][1]);path.moveTo(first.x,first.y);
+    for(int i=1;i<route.length-1;i++){
+      WorldCameraTransform.Point a=w.worldToScreen(route[i][0],route[i][1]),b=w.worldToScreen(route[i+1][0],route[i+1][1]);
+      path.quadTo(a.x,a.y,(a.x+b.x)*.5f,(a.y+b.y)*.5f);
+    }
+    WorldCameraTransform.Point last=w.worldToScreen(route[route.length-1][0],route[route.length-1][1]);path.lineTo(last.x,last.y);
+    trailEdgePaint.setColor(0xff493220);trailEdgePaint.setStrokeWidth(78f);c.drawPath(path,trailEdgePaint);
+    Bitmap soil=bitmap(SOIL_TEXTURE);
+    if(soil!=null){soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));soilPaint.setStyle(Paint.Style.STROKE);soilPaint.setStrokeCap(Paint.Cap.ROUND);soilPaint.setStrokeJoin(Paint.Join.ROUND);soilPaint.setStrokeWidth(68f);c.drawPath(path,soilPaint);soilPaint.setShader(null);soilPaint.setStyle(Paint.Style.FILL);}
   }
   private static boolean nearMainTrail(float x,float y){
     float[][] route={{192,800},{272,736},{368,656},{448,590},{552,538},{650,470},{765,418},{870,345},{985,306},{1085,240},{1200,192}};
