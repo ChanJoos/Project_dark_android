@@ -134,19 +134,19 @@ public final class PoteFieldRenderer {
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
     // V3 forest masses. Each mass is a continuous canopy wall with layered understory.
-    mass(p,new float[][]{{90,170},{185,150},{285,145},{390,150},{500,145},{610,150},{720,145},{835,150},{950,160},{1060,175}},1);
-    mass(p,new float[][]{{90,275},{105,385},{100,500},{115,615},{120,735},{135,845}},4);
-    mass(p,new float[][]{{1270,210},{1300,320},{1290,435},{1310,550},{1295,665},{1280,790}},2);
+    mass(p,new float[][]{{60,170},{145,155},{230,145},{315,150},{400,142},{485,148},{570,142},{655,150},{740,145},{825,152},{910,150},{995,160},{1080,175}},1);
+    mass(p,new float[][]{{65,255},{78,340},{70,425},{82,510},{75,595},{90,680},{95,765},{110,850}},4);
+    mass(p,new float[][]{{1315,195},{1325,285},{1310,375},{1328,465},{1312,555},{1325,645},{1310,735},{1295,825}},2);
 
     // Interior masses define the S-shaped route by absence, not by a painted stripe.
-    mass(p,new float[][]{{250,300},{340,325},{405,365}},5);
-    mass(p,new float[][]{{350,575},{420,625},{470,690}},2);
-    mass(p,new float[][]{{760,250},{845,270},{930,300}},6);
-    mass(p,new float[][]{{790,670},{890,710},{985,755}},3);
+    mass(p,new float[][]{{220,290},{300,315},{375,350}},5);
+    mass(p,new float[][]{{320,600},{385,650},{430,710}},2);
+    mass(p,new float[][]{{790,235},{875,255},{960,290}},6);
+    mass(p,new float[][]{{820,690},{915,730},{1010,770}},3);
 
     // Transitional shoulders: sparse and asymmetric.
-    shoulder(p,250,760,1); shoulder(p,365,690,3); shoulder(p,500,575,5);
-    shoulder(p,650,475,2); shoulder(p,790,405,6); shoulder(p,925,425,4);
+    shoulder(p,250,770,1); shoulder(p,390,675,3);
+    shoulder(p,625,500,2); shoulder(p,800,410,6);
 
     // Connected eastern stream with bank hierarchy.
     stream(p,new float[][]{{1090,190},{1120,250},{1095,315},{1130,380},{1105,450},{1140,520},{1115,590},{1150,660},{1125,730},{1160,800}});
