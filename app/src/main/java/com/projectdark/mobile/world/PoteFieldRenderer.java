@@ -64,8 +64,8 @@ public final class PoteFieldRenderer {
     // never as giant isolated ovals; damp ground follows the stream axis on the east.
     pixel.setStyle(Paint.Style.FILL);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
     pixel.setColor(0xff3f4b27);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    terrainStroke(c,w,new float[][]{{190,810},{300,770},{390,700},{470,610},{575,520},{690,445},{805,390},{930,420}},102f,0xff50503d);
-    terrainStroke(c,w,new float[][]{{1045,190},{1070,300},{1055,410},{1080,520},{1100,635},{1110,790}},132f,0xff465337);
+    terrainStroke(c,w,new float[][]{{150,850},{245,805},{330,750},{405,685},{465,615},{545,550},{620,490},{700,445},{790,410},{875,420},{950,455}},78f,0xff4c4d39);
+    terrainStroke(c,w,new float[][]{{1030,175},{1060,250},{1040,330},{1075,405},{1050,485},{1090,565},{1070,650},{1110,735},{1095,825}},108f,0xff445239);
     // Small clearing pads merge into the corridor rather than reading as separate painted islands.
     terrainStroke(c,w,new float[][]{{500,520},{560,520},{620,520}},132f,0xff5b543f);
     terrainStroke(c,w,new float[][]{{700,500},{760,500},{820,500}},128f,0xff625642);
@@ -152,7 +152,7 @@ public final class PoteFieldRenderer {
     bush(p,250,375,6);ground(p,305,430,2);ground(p,420,415,5);ground(p,365,445,3);
 
     // Old-growth central grove / landmark mass.
-    cluster(p,435,610,6,6);cluster(p,715,655,3,1);small(p,475,690,3);stump(p,455,615,3);stump(p,690,655,4);
+    cluster(p,400,635,6,6);cluster(p,750,680,3,1);small(p,455,720,3);stump(p,455,615,3);stump(p,690,655,4);
     bush(p,555,705,5);ground(p,490,725,4);rock(p,705,715,3);
 
     // North-east mass frames the path before the stream.
@@ -165,7 +165,7 @@ public final class PoteFieldRenderer {
 
     // Readable S-curve: entrance -> central clearing -> north-east -> water.
     pathEdge(p,270,780,1);pathEdge(p,390,700,2);pathEdge(p,470,610,3);
-    pathEdge(p,575,500,4);pathEdge(p,700,430,5);pathEdge(p,820,385,6);pathEdge(p,930,420,7);
+    pathEdge(p,575,500,4);rock(p,700,455,2);ground(p,735,430,5);pathEdge(p,835,380,6);pathEdge(p,930,420,7);
 
     // Connected stream corridor. Water pieces overlap; banks/rocks/low vegetation flank the axis.
     streamNode(p,1100,220,1);streamNode(p,1125,270,2);streamNode(p,1105,320,3);streamNode(p,1130,370,4);
@@ -183,7 +183,7 @@ public final class PoteFieldRenderer {
 
   private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
     tree(p,x,y,treeSeed,.86f+(underSeed%3)*.05f);
-    bush(p,x-62-(underSeed%3)*9,y+18+(underSeed%2)*7,1+underSeed%8);bush(p,x+58+(underSeed%4)*8,y+25-(underSeed%2)*6,1+(underSeed+2)%8);
+    bush(p,x-78-(underSeed%3)*10,y+30+(underSeed%2)*8,1+underSeed%8);bush(p,x+76+(underSeed%4)*9,y+34-(underSeed%2)*6,1+(underSeed+2)%8);
     ground(p,x-88-(underSeed%2)*12,y+48+(underSeed%3)*6,1+underSeed%6);ground(p,x+76+(underSeed%3)*11,y+54-(underSeed%2)*5,1+(underSeed+3)%6);
     if(underSeed%4==0)stump(p,x+24,y+68,1+underSeed%4);
   }
@@ -193,7 +193,7 @@ public final class PoteFieldRenderer {
     if(seed%4==0)rock(p,x-110,y+50,1+seed%5);
   }
   private static void streamNode(List<Placement> p,float x,float y,int seed){
-    float wobble=((seed%3)-1)*18f; water(p,x+wobble,y,1+seed%6);
+    float wobble=((seed%4)-1.5f)*26f; p.add(new Placement(String.format("POTE_WT_%02d.png",1+seed%6),x+wobble,y,.78f+(seed%3)*.09f,"water",false));
     bank(p,x-104+wobble,y+16,1+seed%5);bank(p,x+108+wobble,y-12,1+(seed+2)%5);
     if(seed%3==0)rock(p,x-112+wobble,y+28,1+seed%5);
     else if(seed%3==1)bush(p,x+118+wobble,y+20,1+seed%8);
@@ -212,7 +212,7 @@ public final class PoteFieldRenderer {
   private static void bushRing(List<Placement> p,float[][] xy,int seed){int i=0;for(float[] q:xy)bush(p,q[0],q[1],1+(seed+i++)%8);}
   private static void tree(List<Placement> p,float x,float y,int n,float s){p.add(new Placement(String.format("POTE_TR_%02d.png",n),x,y,s,"canopy",false));}
   private static void small(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_TS_%02d.png",n),x,y,.88f,"secondary_canopy",false));}
-  private static void bush(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BS_%02d.png",n),x,y,.84f,"understory",false));}
+  private static void bush(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BS_%02d.png",n),x,y,.72f+(n%4)*.05f,"understory",false));}
   private static void ground(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_GF_%02d.png",n),x,y,.88f,"groundcover",false));}
   private static void stump(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_ST_%02d.png",n),x,y,1f,"stump",false));}
   private static void rock(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_RK_%02d.png",n),x,y,1f,"rock",false));}
