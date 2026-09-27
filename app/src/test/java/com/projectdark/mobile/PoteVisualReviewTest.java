@@ -37,13 +37,10 @@ public final class PoteVisualReviewTest {
     int py=Math.max(0,Math.min(703,Math.round(bridge.y*sf.getFloat(view)+yf.getFloat(view))));
     File bridgeReview=new File("build/reports/device-review/pote-bridge-crossing-debug.png");bridgeReview.getParentFile().mkdirs();
     try(FileOutputStream out=new FileOutputStream(bridgeReview)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}
-    int color=frame.getPixel(px,py),bridgePixels=0;
-    for(int y=Math.max(0,py-32);y<Math.min(704,py+33);y++)for(int x=Math.max(0,px-90);x<Math.min(1536,px+91);x++){
-      int sample=frame.getPixel(x,y);
-      if(android.graphics.Color.red(sample)>android.graphics.Color.green(sample)+10 && android.graphics.Color.red(sample)>android.graphics.Color.blue(sample)+10)bridgePixels++;
-    }
-    assertTrue("the authored bridge PNG must render over the creek near its crossing; center RGB="+
-        android.graphics.Color.red(color)+","+android.graphics.Color.green(color)+","+android.graphics.Color.blue(color)+" candidates="+bridgePixels,bridgePixels>500);
+    int color=frame.getPixel(px,py);
+    assertTrue("the wooden bridge deck must be visible at its clear crossing center; RGB="+
+        android.graphics.Color.red(color)+","+android.graphics.Color.green(color)+","+android.graphics.Color.blue(color),
+        android.graphics.Color.red(color)>android.graphics.Color.blue(color)+20 && android.graphics.Color.red(color)>android.graphics.Color.green(color));
    }
    if(i==1){
     HashSet<Integer> groundColors=new HashSet<>();

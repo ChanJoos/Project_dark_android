@@ -240,14 +240,17 @@ public final class PoteFieldRenderer {
     for(int i=1;i<trail.length-1;i++){
       float x=trail[i][0],y=trail[i][1];
       ground(p,x-8,y+112,1+(i%6));ground(p,x+10,y-112,1+((i+2)%6));
-      if((i&1)==0){bush(p,x-32,y+145,1+(i%8));bush(p,x+24,y-145,1+((i+3)%8));}
+      // Leave the crossing shoulders clear so the deck reads and remains visible to the player.
+      if((i&1)==0&&Math.hypot(x-PoteForestGeometry.BRIDGE_X,y-PoteForestGeometry.BRIDGE_Y)>150f){
+        bush(p,x-32,y+145,1+(i%8));bush(p,x+24,y-145,1+((i+3)%8));
+      }
     }
 
     // The creek bends across the route. Mixed water segments, gravel and bank plants make
     // its path irregular; a single wooden deck marks the one walkable crossing.
     stream(p,PoteForestGeometry.creekCenterline());
     p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.BRIDGE_X,PoteForestGeometry.BRIDGE_Y,.085f,"bridge",false));
-    grove(p,1450,330,3);grove(p,1370,565,6);
+    grove(p,1450,330,3);
 
     // Sparse landmarks vary by patch; the arrival clearing and bridge approach stay readable.
     stump(p,365,535,2);rock(p,510,590,4);small(p,305,505,2);
