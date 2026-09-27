@@ -8,7 +8,7 @@ Nexon describes Pote Forest as a distinct monster hunting area and has issued ba
 
 - Fill the entire playfield with a continuous, source-derived dirt texture (`video_reference/terrain/dirt_path_fill_texture.png`).
 - Scatter the POTE_GD cutouts with deterministic spacing and jitter as leaf-litter clumps. They are accents, not seamless floor tiles; a regular diamond carpet exposes their cutout edges.
-- Reserve lighter/clearer GD variants for the start and encounter spaces so the playable route stays legible.
+- Use GD variants sparingly as small surface details; the continuous dirt fill remains the readable base.
 
 ## Forest grammar
 
@@ -24,4 +24,4 @@ The current pack has 59 cutout assets across ground patches, tree masses, smalle
 
 ## Acceptance status
 
-This is an implemented visual draft. Build, runtime, and visual acceptance remain unverified until the Android tests and device captures are run. The GitHub Actions workflow builds the debug APK and uploads it with the device-review render captures.
+The first render review exposed a coordinate binding error: the Pote camera followed the field player while the character sprite still used Milles coordinates. The route also read as isolated diamond patches between over-dense tree clumps. V2 fixes the active-world binding and rebuilds the ground accents and grove layout. Build, runtime, and visual acceptance remain pending until CI and the new device captures are checked.

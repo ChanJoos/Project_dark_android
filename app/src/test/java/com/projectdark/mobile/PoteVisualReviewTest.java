@@ -32,4 +32,19 @@ public final class PoteVisualReviewTest {
    assertTrue(file.isFile()&&file.length()>0); frame.recycle();
   }
  }
+
+ @Test public void fieldMovementAndRenderedCharacterUseTheSameWorldAdapter() throws Exception {
+  GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,1536,704);
+  Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);
+  Field af=GameView.class.getDeclaredField("poteFieldAdapter");af.setAccessible(true);
+  com.projectdark.mobile.world.WorldRuntimeAdapter field=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view);
+  float startX=field.runtime().player().x,startY=field.runtime().player().y;
+  assertEquals(startX,view.renderedPlayerWorldX(),.01f);
+  assertEquals(startY,view.renderedPlayerWorldY(),.01f);
+  assertEquals(com.projectdark.mobile.world.WorldMoveTargetController.Status.MOVING,field.requestGroundWorld(1120f,224f).status);
+  for(int i=0;i<240;i++)field.tickNavigation(.05f);
+  assertTrue("tap-to-move must change the field player's world position",Math.abs(field.runtime().player().x-startX)>100f||Math.abs(field.runtime().player().y-startY)>100f);
+  assertEquals(field.presentationPlayerX(),view.renderedPlayerWorldX(),.01f);
+  assertEquals(field.presentationPlayerY(),view.renderedPlayerWorldY(),.01f);
+ }
 }

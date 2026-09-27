@@ -87,9 +87,10 @@ public final class PoteFieldRenderer {
       float y=row*stepY;float rowOffset=(Math.floorMod(row,2)==0?0f:stepX*.5f);
       int firstCol=(int)Math.floor((cx-160f-rowOffset)/stepX),lastCol=(int)Math.ceil((cx+c.getWidth()+160f-rowOffset)/stepX);
       for(int col=firstCol;col<=lastCol;col++){
-        int seed=tileSeed(col,row);float jitterX=(unit(seed)-.5f)*38f,jitterY=(unit(seed^0x45d9f3b)-.5f)*26f;
+        int seed=tileSeed(col,row);if(Math.floorMod(seed,4)!=0)continue;
+        float jitterX=(unit(seed)-.5f)*38f,jitterY=(unit(seed^0x45d9f3b)-.5f)*26f;
         int choice=Math.floorMod(seed,10);int asset=choice<7?FOREST_GROUND_TILES[Math.floorMod(seed,FOREST_GROUND_TILES.length)]:CLEARING_GROUND_TILES[Math.floorMod(seed>>>3,CLEARING_GROUND_TILES.length)];
-        float scale=.62f+unit(seed^0x27d4eb2d)*.22f;
+        float scale=.27f+unit(seed^0x27d4eb2d)*.16f;
         drawGroundPatch(c,w,String.format("POTE_GD_%02d.png",asset),col*stepX+rowOffset+jitterX,y+jitterY,scale);
       }
     }
@@ -170,36 +171,39 @@ public final class PoteFieldRenderer {
 
   private static List<Placement> buildPlacements(){
     List<Placement> p=new ArrayList<>();
-    // V3 forest masses. Each mass is a continuous canopy wall with layered understory.
-    mass(p,new float[][]{{-40,185},{20,170},{60,170},{145,155},{230,145},{315,150},{400,142},{485,148},{570,142},{655,150},{740,145},{825,152},{910,150},{995,160},{1080,175},{1170,185},{1260,190},{1360,200}},1);
-    mass(p,new float[][]{{20,220},{45,250},{65,255},{78,340},{70,425},{82,510},{75,595},{90,680},{95,765},{110,850},{75,930}},4);
-    mass(p,new float[][]{{1315,195},{1325,285},{1310,375},{1328,465},{1312,555},{1325,645},{1310,735},{1295,825},{1310,915}},2);
+    // Rebuilt from a readable route outward: continuous perimeter canopy, distinct groves,
+    // and an open south-west to north-east travel lane. Avoid the old evenly repeated masses.
+    int n=0;
+    for(int x=40;x<=1390;x+=118){tree(p,x,138+(n%3)*13,1+(n%7),.86f+(n%3)*.08f);if(n%2==0)small(p,x+34,177+(n%2)*12,1+(n%3));n++;}
+    n=0;for(int y=260;y<=820;y+=112){tree(p,128+(n%2)*24,y,1+(n%7),.88f+(n%3)*.07f);tree(p,1350-(n%2)*20,y+24,1+((n+3)%7),.90f+(n%2)*.08f);n++;}
+    for(int x=255;x<=1240;x+=165)tree(p,x,876+(x%2)*6,1+(x/165)%7,.84f+(x%3)*.05f);
 
-    // Interior masses define the S-shaped route by absence, not by a painted stripe.
-    mass(p,new float[][]{{195,275},{265,300},{335,325},{395,355}},5);
-    mass(p,new float[][]{{290,590},{350,630},{405,675},{445,725}},2);
-    mass(p,new float[][]{{785,225},{850,245},{915,265},{980,300}},6);
-    mass(p,new float[][]{{815,680},{880,705},{950,740},{1020,780}},3);
-
-    // Forest peninsulas intrude into the former central void and carve an actual S corridor.
-    mass(p,new float[][]{{500,390},{555,420},{600,455}},7);
-    mass(p,new float[][]{{700,555},{750,585},{805,610}},4);
-    mass(p,new float[][]{{515,790},{575,760}},6);
-
-    // Transitional shoulders: sparse and asymmetric.
-    shoulder(p,285,785,1); shoulder(p,430,685,3);
-    shoulder(p,600,520,2); shoulder(p,835,425,6);
+    // Separate wooded pockets flank the playable lane instead of spilling across it.
+    grove(p,320,390,2);grove(p,430,650,4);grove(p,640,300,1);
+    grove(p,770,640,5);grove(p,930,430,3);grove(p,1085,690,6);
+    grove(p,1040,230,4);
+    shoulder(p,300,740,1);shoulder(p,570,505,3);shoulder(p,890,545,2);
 
     // Connected eastern-edge stream with bank hierarchy. Keep the entry-to-clearing trail open.
-    stream(p,new float[][]{{1230,190},{1260,250},{1225,315},{1268,380},{1232,450},{1270,520},{1238,590},{1275,660},{1245,730},{1280,800}});
+    stream(p,new float[][]{{1230,205},{1260,270},{1225,335},{1268,400},{1232,465},{1270,530},{1238,595},{1275,660},{1245,725},{1280,790}});
 
     // Landmarks sit at decision spaces, never in the centre of the walking corridor.
-    stump(p,245,850,2); rock(p,430,825,4); small(p,335,875,2);
-    stump(p,470,735,3); rock(p,755,675,2); small(p,610,700,3);
-    rock(p,980,365,5); small(p,1005,330,1); stump(p,1240,785,4);
+    stump(p,240,815,2);rock(p,430,780,4);small(p,340,835,2);
+    stump(p,500,590,3);rock(p,820,725,2);small(p,695,680,3);
+    rock(p,970,360,5);small(p,1000,325,1);stump(p,1185,775,4);
 
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));
     return p;
+  }
+
+  /** A compact asymmetric grove: canopy anchors grouped around understory and ground details. */
+  private static void grove(List<Placement> p,float x,float y,int seed){
+    tree(p,x-48,y+8,1+Math.floorMod(seed,7),.88f);
+    tree(p,x+14,y-34,1+Math.floorMod(seed+2,7),1.02f);
+    tree(p,x+74,y+2,1+Math.floorMod(seed+4,7),.91f);
+    small(p,x-8,y-66,1+Math.floorMod(seed,3));
+    bush(p,x-62,y+55,1+seed%6);bush(p,x+60,y+61,1+(seed+3)%6);
+    ground(p,x-92,y+76,1+seed%6);ground(p,x+102,y+82,1+(seed+2)%6);
   }
 
   private static void mass(List<Placement> p,float[][] pts,int seed){

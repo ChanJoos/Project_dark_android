@@ -11,7 +11,7 @@ public final class PoteForestSpatialGrammarTest {
   @Test public void forestUsesDenseAuthoredAssetPlacements(){
     PoteFieldRenderer renderer=new PoteFieldRenderer();
     assertEquals("POTE_FOREST_MASS_V3",PoteFieldRenderer.STATUS);
-    assertTrue("forest should be densely authored, not a sparse shell",renderer.placementCount()>=120);
+    assertTrue("forest should be grouped into authored groves, not rendered as scattered props",renderer.placementCount()>=70);
   }
 
   @Test public void navigationRetainsCorridorsAroundDenseGroves(){
