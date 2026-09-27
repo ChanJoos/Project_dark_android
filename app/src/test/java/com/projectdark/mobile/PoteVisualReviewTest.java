@@ -56,6 +56,9 @@ public final class PoteVisualReviewTest {
  @Test public void latestPoteFieldRendersTheEightFramePamfetOnItsActualSpawn() throws Exception {
   GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,1536,704);
   Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);
+  Field rendererField=GameView.class.getDeclaredField("poteFieldRenderer");rendererField.setAccessible(true);
+  Object renderer=rendererField.get(view);Method load=renderer.getClass().getDeclaredMethod("bitmap",String.class);load.setAccessible(true);
+  assertNotNull("POTE_BR_01 must be available through the packaged Android AssetManager",load.invoke(renderer,"POTE_BR_01.png"));
   Field af=GameView.class.getDeclaredField("poteFieldAdapter");af.setAccessible(true);
   com.projectdark.mobile.world.WorldRuntimeAdapter adapter=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view);
   Field stateField=GameView.class.getDeclaredField("state");stateField.setAccessible(true);RuntimeState state=(RuntimeState)stateField.get(view);

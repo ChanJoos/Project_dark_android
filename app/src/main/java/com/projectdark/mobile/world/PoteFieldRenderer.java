@@ -78,9 +78,12 @@ public final class PoteFieldRenderer {
   }
 
   /** Draw foreground canopies/props after the actor so Y-depth remains spatially believable. */
-  public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorY){
+  public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorX,float actorY){
     if(c==null||w==null)return;
     for(Placement p:placements)if(!"bridge".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
+    // The large transparent bridge cutout can otherwise disappear under the nearest canopy.
+    // Keep its deck legible while the actor is away, but let the actor render in front on the deck.
+    if(Math.hypot(actorX-PoteForestGeometry.BRIDGE_X,actorY-PoteForestGeometry.BRIDGE_Y)>96f)drawBridge(c,w);
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
