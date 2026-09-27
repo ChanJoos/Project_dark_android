@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import com.projectdark.mobile.world.WorldCameraTransform;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashSet;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import org.junit.Test;
@@ -36,6 +37,11 @@ public final class PoteVisualReviewTest {
     int color=frame.getPixel(px,py);
     assertTrue("the authored bridge PNG must render over the creek at its crossing",
         android.graphics.Color.red(color)>android.graphics.Color.blue(color)+20 && android.graphics.Color.red(color)>android.graphics.Color.green(color));
+   }
+   if(i==1){
+    HashSet<Integer> groundColors=new HashSet<>();
+    for(int y=205;y<265;y+=2)for(int x=650;x<870;x+=2)groundColors.add(frame.getPixel(x,y));
+    assertTrue("source-video soil texture must render in the open clearing, not fall back to a flat fill",groundColors.size()>12);
    }
    File file=new File("build/reports/device-review/"+names[i]); File parent=file.getParentFile(); if(parent!=null) parent.mkdirs();
    try(FileOutputStream out=new FileOutputStream(file)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}
