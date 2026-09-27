@@ -297,10 +297,12 @@ public final class PoteFieldRenderer {
         float t=step/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
         int waterId=1+(i%6);
         p.add(new Placement(String.format("POTE_WT_%02d.png",waterId),x,y,.90f+(i%3)*.07f,"water",false));
-        if(i%3==0){bank(p,x-28,y+34,1+(i%5));bank(p,x+31,y-37,1+((i+2)%5));}
-        if(i%5==0)rock(p,x-58,y+48,1+(i%5));
-        if(i%5==2)bush(p,x+63,y-53,1+(i%8));
-        if(i%6==3)ground(p,x+74,y+28,1+(i%6));
+        // Keep a visible, uncluttered deck opening at the one bank-to-bank crossing.
+        boolean crossingApproach=Math.hypot(x-PoteForestGeometry.BRIDGE_X,y-PoteForestGeometry.BRIDGE_Y)<125f;
+        if(!crossingApproach&&i%3==0){bank(p,x-28,y+34,1+(i%5));bank(p,x+31,y-37,1+((i+2)%5));}
+        if(!crossingApproach&&i%5==0)rock(p,x-58,y+48,1+(i%5));
+        if(!crossingApproach&&i%5==2)bush(p,x+63,y-53,1+(i%8));
+        if(!crossingApproach&&i%6==3)ground(p,x+74,y+28,1+(i%6));
       }
     }
     float[] end=pts[pts.length-1];p.add(new Placement("POTE_WT_03.png",end[0],end[1],.94f,"water",false));
