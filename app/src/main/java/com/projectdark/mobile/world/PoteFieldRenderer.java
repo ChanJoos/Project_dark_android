@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Rect;
+import android.graphics.Shader;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -24,12 +26,13 @@ import java.util.Map;
  * resolves to a POTE_* production sprite and is placed by the spatial relationship grammar.
  */
 public final class PoteFieldRenderer {
-  public static final String STATUS="POTE_FOREST_MASS_V7";
+  public static final String STATUS="POTE_FOREST_MASS_V8";
   private static final float TILE_W=64f,TILE_H=32f;
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
   private static final int[] FOREST_GROUND_TILES={1,2,3,4,9,10};
   private static final int[] CLEARING_GROUND_TILES={5,6,7,8};
   private final Paint pixel=new Paint();
+  private final Paint soilPaint=new Paint();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
   private final Map<String,Rect> groundBounds=new LinkedHashMap<>();
@@ -45,6 +48,7 @@ public final class PoteFieldRenderer {
 
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
+    soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
   }
 
   public int placementCount(){return placements.size();}
@@ -79,8 +83,10 @@ public final class PoteFieldRenderer {
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    // The authored ground diamond is the complete substrate: no screen-sized soil bitmap.
+    // The low-contrast earth underlay only fills transparent joins between authored ground cells.
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    Bitmap soil=bitmap(SOIL_TEXTURE);
+    if(soil!=null){soilPaint.setColor(0x99ffffff);soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);soilPaint.setShader(null);soilPaint.setColor(0xff000000);}
     drawGroundTiles(c,w);
   }
 
@@ -98,8 +104,6 @@ public final class PoteFieldRenderer {
       Rect src=groundBounds.get(name);
       if(src==null){src=opaqueBounds(bitmap);groundBounds.put(name,src);}
       if(src==null)continue;
-      // Strip the source-sheet's dark baked outline while keeping the full tile footprint.
-      src=new Rect(src);src.inset(Math.max(2,src.width()/36),Math.max(2,src.height()/40));
       // Each move-lattice ground cell receives one complete 64x32 authored diamond.
       // Cell centers are spaced 32x16 diagonally, so all four edges join without gaps.
       RectF dst=new RectF((float)Math.floor(point.x-32f),(float)Math.floor(point.y-16f),
@@ -186,6 +190,7 @@ public final class PoteFieldRenderer {
       if(b!=null&&!SOIL_TEXTURE.equals(name))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
+      if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
     }catch(Throwable ignored){}
     cache.put(name,b);return b;
   }
@@ -195,6 +200,25 @@ public final class PoteFieldRenderer {
     // Source extraction occasionally leaves a 1-2 px crop/separator rule on the outer edge.
     // Trim two pixels symmetrically; anchor remains effectively unchanged at gameplay scale.
     return Bitmap.createBitmap(src,5,4,src.getWidth()-10,src.getHeight()-8);
+  }
+
+  /** Replaces the extracted black beveled edge with shared earth color so adjacent diamonds read as one floor. */
+  private static Bitmap softenGroundTileRim(Bitmap src){
+    int w=src.getWidth(),h=src.getHeight(),minX=w,minY=h,maxX=-1,maxY=-1;
+    int[] px=new int[w*h];src.getPixels(px,0,w,0,0,w,h);
+    for(int y=0;y<h;y++)for(int x=0;x<w;x++)if((px[y*w+x]>>>24)>12){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}
+    if(maxX<=minX||maxY<=minY)return src;
+    float cx=(minX+maxX)*.5f,cy=(minY+maxY)*.5f,rx=(maxX-minX)*.5f,ry=(maxY-minY)*.5f;
+    for(int y=minY;y<=maxY;y++)for(int x=minX;x<=maxX;x++){
+      int i=y*w+x,c=px[i],a=c>>>24;if(a==0)continue;
+      float edge=Math.abs(x-cx)/rx+Math.abs(y-cy)/ry;
+      if(edge<.70f)continue;
+      float mix=Math.min(.94f,(edge-.70f)*3.1f);
+      int r=(c>>>16)&255,g=(c>>>8)&255,b=c&255;
+      r=Math.round(r*(1-mix)+105*mix);g=Math.round(g*(1-mix)+70*mix);b=Math.round(b*(1-mix)+46*mix);
+      px[i]=(a<<24)|(r<<16)|(g<<8)|b;
+    }
+    Bitmap out=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);out.setPixels(px,0,w,0,0,w,h);return out;
   }
 
   /**
