@@ -17,7 +17,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 | Task | Owner | 다음 결과 하나 | 수락 조건 | 상태 |
 |---|---|---|---|---|
 | DELIVERY-01 | Director + World | versionCode 48 Pote 후보를 실제 기기에서 검증하고 통합 여부를 기록 | 정확한 APK/SHA에서 시작 이동·안내인 숲 진입·숲 내부 이동을 확인. 실패하면 원인을 고치고 새 SHA에서 같은 시나리오 재검증 | BUILD_VERIFIED; DEVICE_PENDING; 브랜치 미병합 |
-| MONSTER-ART-01 | Visual + Director | 원작 참조를 고정한 포테 일반 몬스터 14종/색상형 × 12개 개별 포즈를 제작·검수 | 각 대상별 대기/걷기/공격 NW/NE/SW/SE 이미지가 각각 1장씩(총 168 PNG); 강력한 변형 미포함; 사용자 제공/확인된 원작 외형 참조 기록; 잘림·포즈 혼선·방향·일관성 QA; 수락 전 APK 미적용 | IN_PROGRESS; 라이칸스로프 12개 후보 제작 및 내부 QA 완료, 사용자 시각 수락 대기; 나머지 13개 미완료. Base `fdc9f5e`; GitHub candidate `b526969`; [`lycanthrope_review.md`](https://github.com/ChanJoos/Project_dark_android/blob/codex/lycanthrope-reference-grounded-assets/assets/pote/review/monster_rebuild_v1/lycanthrope_review.md) |
+| MONSTER-ART-01 | Visual + Director | 원작 참조를 고정한 포테 일반 몬스터 14종/색상형 × 12개 개별 포즈를 제작·검수 | 각 대상별 대기/걷기/공격 NW/NE/SW/SE 이미지가 각각 1장씩(총 168 PNG); 강력한 변형 미포함; 사용자 제공/확인된 원작 외형 참조 기록; 잘림·포즈 혼선·방향·일관성 QA; 수락 전 APK 미적용 | IN_PROGRESS; 라이칸스로프 12개 사용자가 시각 승인. 기술적 게임 배율/앵커/방향 검수는 미완료. 나머지 13종(156장) 미완료; 개별 원작 외형 참조를 수집·검증해야 함. 기존 v0.4는 시각 참조 금지. 원격 candidate `15ff870`; [`lycanthrope_review.md`](https://github.com/ChanJoos/Project_dark_android/blob/codex/lycanthrope-reference-grounded-assets/assets/pote/review/monster_rebuild_v1/lycanthrope_review.md) |
 
 근거: 기존 전달 APK는 main `0506929`, SHA-256 `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`이며 포테 격자 간격 결함을 포함했습니다. 활성 브랜치 `codex/pote-ground-tile-foundation`의 source candidate `16c6d9a`는 CI #36388750145 성공 및 Pote 경로/렌더 검사를 통과했습니다. APK artifact ID `10955795355`, APK SHA-256 `03f4ccae5fe0804fa78bbeaef974696c0064b3d2941bb190b8fc68d3e64e3e4f`. 실제 기기 검증은 아직 안 됐습니다. 기존 네 역할 할당을 완료/취소로 간주하지 않습니다.
 
