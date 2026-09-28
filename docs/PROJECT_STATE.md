@@ -30,7 +30,7 @@
 
 ## 다음 작업
 
-먼저 `POTE-TEST-01`의 새 APK를 기기에서 실행해 16종 타깃 선택 및 방향별 걷기/공격 포즈를 검증합니다. 이 결과 후 `DELIVERY-01`의 시작 이동·안내인 진입·숲 내부 이동 시나리오와 브랜치 통합 검토를 이어갑니다. 기기 검증 전에는 수락 완료로 부르지 않습니다.
+먼저 새 수정 후보 artifact `10957720462` (source `8ca5fda1c2483589b6f16fc9800bb9f87597ec23`, APK SHA-256 `263a502075f438048feb0191550cf59cee8f9a424b41ffdf02605146d337c359`)를 기기에서 실행해 크기·강력한 놀 외형·16종 조작 및 실제 접근/공격 시점을 검증합니다. 앞선 version 48 후보는 낡은 화면 피드백의 원 APK가 특정되지 않아 재사용하지 않습니다. 이후 `DELIVERY-01`의 시작 이동·안내인 숲 진입·숲 내부 이동 시나리오를 이어갑니다. 기기 검증 전에는 시각 수락 완료로 부르지 않습니다.
 
 ## Pote forest full roster pose test — current task
 
@@ -46,3 +46,19 @@
 ### Next result
 
 Run the exact candidate APK on an Android device: select each of the 16 displayed identities and record idle/walk/attack pose, facing changes, successful input and crashes. Then run `DELIVERY-01` start movement, forest-guide entry and in-forest route checks. Record device model/Android version if available, scenario results, and whether any per-monster visual mappings need revision; keep acceptance pending until evidence exists.
+
+## 2026-09-28 — 사용자 화면 피드백 / 크기·공격 포즈 수정
+
+- 사용자는 전달 APK를 예전 버전이라고 지적했고, 첨부 화면에서 몬스터가 플레이어보다 너무 크며 공격 포즈가 어색하고 접근 전에 공격하는 것처럼 보인다고 보고했습니다. 강력한 놀 그림도 깨져 보인다고 했습니다.
+- 해당 기기에 설치된 APK SHA는 사용자가 제공하지 않았으므로, 이 보고를 앞서 기록된 `cd88c676...` 후보 APK에 대한 확정 재현으로 연결하지 않습니다. 보고 자체는 사용자 화면의 시각 결함 증거로 보존합니다.
+- 소스 확인: `PoteFieldRenderer.drawMonsterTestPose()`는 384×384 원본 셀 전체를 112×112 논리 픽셀로 확대/표시하고, 공격 포즈에 추가 돌진·상하 이동·회전을 적용했습니다. `MonsterAIController`의 추적 시작 범위는 180이며 실제 근접 공격은 `CanonicalMeleeTileContract.reachable()` 경로에서만 시작합니다. 첨부 화면의 시각적 거리와 실제 전투 판정이 같은 사건인지는 재현되지 않았습니다.
+- 사용자 요청에 맞춰 수정한 코드: commit [`8ca5fda`](https://github.com/ChanJoos/Project_dark_android/commit/8ca5fda1c2483589b6f16fc9800bb9f87597ec23). 테스트용 PNG의 투명 여백을 제거하고 실루엣 높이를 44 논리 픽셀로 통일하며 비율을 유지합니다. 공격 표시에서 추가 돌진·회전을 제거하고 원본 대표 공격 포즈만 표시합니다. Pote 테스트 화면의 이름/HP 표시도 축소된 실루엣 위로 겹치지 않게 조정했습니다.
+- 새 회귀 테스트는 192개 ID/상태/방향 렌더 결과의 불투명 실루엣 높이가 48 논리 픽셀 이하인지, 추적 한 걸음 중 공격 windup이 시작되지 않는지 확인합니다. 로컬 Gradle wrapper가 없어 테스트는 여기서 실행하지 못했습니다.
+- 강력한 놀의 별도 원본 그림은 v0.4 pack에 없으며 현재 GNOLL 기본 concept 그림을 공유합니다. 이번 수정은 확대 표시를 줄였지만, 별도 강력한 놀 그림을 만들거나 정사 외형으로 취급하지 않았습니다. “깨짐” 개선과 전체 비율 수락은 새 APK의 기기 재검증 전까지 미확정입니다.
+- 상태: 수정 소스 **BUILD_VERIFIED** at `8ca5fda1c2483589b6f16fc9800bb9f87597ec23`; Android Actions [#36393396473](https://github.com/ChanJoos/Project_dark_android/actions/runs/36393396473) 성공. APK artifact ID `10957720462`, 이름 `PROJECT_DARK-debug-8ca5fda1c2483589b6f16fc9800bb9f87597ec23`, 내부 APK SHA-256 `263a502075f438048feb0191550cf59cee8f9a424b41ffdf02605146d337c359`; packaged monster concept PNG 168개 확인. 새 regression: roster/state/facing 192 렌더 실루엣 높이 ≤48 logical px 및 추적 시작 tick에서 공격 windup 미시작. 작업 브랜치는 미병합 후보입니다. **DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**이며, CI 렌더 캡처에는 전체 몬스터 장면이 없어 기기 화면 확인을 대체하지 않습니다.
+
+### 다음 결과
+
+1. 새 artifact `10957720462`를 전달하고, 같은 기기에서 크기·강력한 놀 선명도·네 방향 walk/attack·실제 접근/피격 시점을 다시 확인합니다.
+2. 재검증 후에도 공격 시작이 너무 이른지 실제 거리/인접 tile을 분리해 기록합니다. 추적 반경 조정은 현재 제안 상태이며 새 수치가 확정된 것으로 기록하지 않습니다.
+3. `DELIVERY-01`의 시작 이동·안내인 진입·숲 내부 경로를 검증하고 브랜치 통합 판정을 별도 기록합니다.

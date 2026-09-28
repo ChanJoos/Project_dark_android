@@ -15,6 +15,14 @@ The three `POTE_STRONG_*` identities reuse their base concept form because the s
 
 On the field, tap a visible monster to select it; move within reach and use the existing attack controls to see its directional walk and attack pose. Move around it to check all four facings. The walk and attack images change with action state; because each is one source pose, they do not cycle through a multi-frame loop. Device interaction and visual acceptance remain pending until verified on the exact built APK.
 
+## Renderer scale feedback (2026-09-28)
+
+A user review of a delivered APK reported that the monsters looked much larger than the player, attack poses looked unnatural, the monsters seemed to attack before the player approached, and the Strong Gnoll looked broken/pixelated. The tested APK SHA was not supplied, so do not attribute the screenshot to a specific build.
+
+The test renderer now removes transparent cell margins at runtime and draws each silhouette at 44 logical pixels high with its aspect ratio preserved. It does not add a synthetic lunge or rotation to the supplied attack still. A regression test bounds every roster/state/facing silhouette to 48 logical pixels high. This passed Android CI run #36393396473 at source `8ca5fda1c2483589b6f16fc9800bb9f87597ec23`; exact APK SHA and artifact are in `docs/PROJECT_STATE.md`. These values are adapted test-scene presentation only, not a canonical species scale or combat animation specification. The source images remain unchanged.
+
+The v0.4 source pack contains no separate Strong Gnoll concept; that test identity continues to share the GNOLL concept. The new scale should reduce magnification, but pixel-art clarity and overall device appearance are not accepted until the new exact-SHA APK is reviewed on-device. The chase radius remains the existing prototype value (180); the shared melee route still requires authored adjacent ground tiles. If the new screen still reads as an early attack, record monster/player tile positions and windup/hit timing before proposing a radius change.
+
 ## Pose path
 
 `monster_test_v04/sprites/<species>/<state>_<direction>.png`
