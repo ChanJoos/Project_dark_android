@@ -70,3 +70,10 @@ Run the exact candidate APK on an Android device: select each of the 16 displaye
 - 이번에 독립 PNG 3장을 생성했다: 팜팻 구르기 공격(보라색 변형), 기본 직립 늑대인간 대기, 갑옷·칼을 든 직립 늑대인간 대기. 입력 참조는 사용자가 마지막에 유지하라고 한 팜팻 외형(Library libfile_d213c79680108191b4f13b8bc89b68de) 및 사용자가 늑대인간/원작 장면으로 제공한 이미지 2장(Library libfile_1c5a4161d2b08191be701bf0f89b463f, libfile_f65c74247704819180f7e8bfa212fee3)이다. 기존 168장 콘셉트나 반려 시트는 사용하지 않았다.
 - 결과는 AI 생성 컨셉 초안일 뿐 원작 추출물/사용자 수락/게임 적용이 아니다. 팜팻 보라색은 이번 샘플 선택이며 색상 확정이 아니다. 늑대 이미지와 POTE 몬스터 ID 대응도 미정이다.
 - 현재 상태: **3 INDIVIDUAL DRAFTS GENERATED / VISUAL_ACCEPTANCE_PENDING / APP_UNCHANGED / APK_NOT_BUILT**. 나머지 종·방향·동작 이미지 제작과 방향/크기/원작 분위기 검수는 미완료다.
+
+
+### 이미지 자체 검수 추가
+
+- 첫 생성 이후 팜팻 외곽의 보라색 광휘와 갑옷 늑대의 칼 과장을 발견해 각 이미지를 다시 생성/수정했다. 무장 늑대 수정본은 칼을 줄였지만 AI 생성안이며 사용자 수락은 미정이다.
+- 최신 개별 검토 파일: Pamfet roll `exec-5195fb43-3077-4d9b-a10e-2863f40a446f.png` (SHA-256 `c0197daf5a7b7ddb8cb478a85284a20da547ce0e5cfd79ca28fc965a6d70b5b1`); basic werewolf idle `exec-06318ec5-970e-4f20-82c1-c9ad8744cbd9.png` (SHA-256 `6e0599e6b61dfcca8ed8253ffe0df20bd04990604ea35809aaced48562ffedc6`); armored sword werewolf idle `exec-b490a73d-8f3f-40b2-bc2f-c8cdde5d844c.png` (SHA-256 `13db8ab947647a49109bdde18e01aa837eeeac030d5a24aed89ad8ed15ce62ca`).
+- Pamfet 이미지에는 지시 후에도 보라색 후광이 남아 있어 이 부분은 미통과/수락 대기다. 기본·무장 늑대도 원작과의 크기·팔레트·장식 차이를 사용자 검토 전 확정하지 않는다. 어떤 이미지도 앱 리소스에 반영하지 않았다.
