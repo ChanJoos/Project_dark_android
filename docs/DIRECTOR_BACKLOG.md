@@ -51,3 +51,6 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 
 
 | POTE-ART-IMG-01 | Visual + Director | 개별 투명 PNG로 대상 몬스터의 12개 포즈를 제작하고 종·방향별 검수 | 시트 합성 없이 포즈별 독립 이미지; 13종 × 정지/공격/이동 × NW/NE/SW/SE; 168 콘셉트와 반려 시트 참조 금지; 팜팻 구르기, 늑대인간 직립/갑옷·칼 차이를 보존하고 이름 ID 추측 금지 | 개별 초안 3장 생성(Pamfet roll 1, basic werewolf idle 1, armored sword werewolf idle 1). AI 컨셉, 시각 수락 대기, 런타임 미적용. 첨부 원작 영상/PDF 표본으로 종/모션 증거는 추가 확정되지 않음. | 3_DRAFTS_CREATED; VISUAL_REVIEW_PENDING; APP_UNCHANGED; APK_NOT_BUILT |
+
+
+최신 후보는 별도 투명 PNG 3장(Pamfet rolling / basic upright werewolf / armored sword werewolf)이며 파일명·SHA는 PROJECT_STATE에 기록했다. 팜팻 외곽 후광이 남아 있어 초안 QA 불통과; 원작 분위기와 비율도 사용자 수락 전이다. 나머지 포즈 및 개체 제작은 미완료.
