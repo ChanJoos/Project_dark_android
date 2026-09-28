@@ -15,3 +15,9 @@ Director resolves repeated blockers after two runs, records handoff and pause/re
 Preserve approved peasant appearance and current movement unless evidence requires a fix. Official Nexon evidence and living Master updates remain Director responsibility. Preserve source bytes and provenance. No ground-drop/pickup; unresolved original facts remain unresolved or explicit B/ADAPTED fixtures.
 
 Report IMPLEMENTED / BUILD VERIFIED / RUNTIME VERIFIED / VISUAL ACCEPTED separately. APK delivery includes exact SHA, build time in Asia/Seoul, and tested scope. Operational guidance updates are not game implementation or runtime verification.
+
+## Cross-chat handoff maintenance
+- Start from the current `main` and read `docs/CHAT_HANDOFF.md`, `docs/PROJECT_STATE.md`, `docs/DECISION_LOG.md`, `docs/DIRECTOR_BACKLOG.md`, then the applicable design/source contract and handoff.
+- Before editing any existing file, fetch and read its current contents on the latest base; never fill unknowns by inference.
+- At the end of each completed task, update the project state, the affected backlog row and any changed decision or implementation contract with exact evidence (SHA, CI run, device scope). Keep approved decisions, implementation facts, proposals, and unresolved conflicts distinct.
+- Treat dated execution reports and automation batons as historical unless the current SHA and live evidence confirm them. Documentation maintenance alone is not runtime implementation or verification.
