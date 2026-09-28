@@ -83,6 +83,16 @@ public final class RuntimeState {
 
   public BootMode bootMode(){return bootMode;}
   public String currentMapId(){return currentMapId;}
+  public com.projectdark.mobile.world.WorldMoveTargetController.TileCenter nearestMonsterTileCenter(float x,float y){
+    if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
+      return com.projectdark.mobile.world.PoteFieldDef.nearestNavigationCenter(x,y);
+    return MonsterTileCenterLocomotion.nearestAuthoredCenter(x,y);
+  }
+  public boolean isMonsterTileCenter(float x,float y){
+    if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
+      return com.projectdark.mobile.world.PoteFieldDef.isNavigationCenter(x,y);
+    return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
+  }
   public WorldDef world(){return world;}
   public Player player(){return player;}
   public CombatLedger ledger(){return ledger;}
@@ -96,9 +106,11 @@ public final class RuntimeState {
 
   /** Live map transition keeps RPG/combat ledger identity while replacing map-local actors/collision. */
   public void enterPoteField(){
-    currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=96f;currentMaxX=864f;currentMinY=64f;currentMaxY=512f;
+    currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=com.projectdark.mobile.world.PoteFieldDef.MIN_X;currentMaxX=com.projectdark.mobile.world.PoteFieldDef.MAX_X;currentMinY=com.projectdark.mobile.world.PoteFieldDef.MIN_Y;currentMaxY=com.projectdark.mobile.world.PoteFieldDef.MAX_Y;
     obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
-    npcs.clear();monsters.clear();monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
+    npcs.clear();npcs.add(new Npc("pote_trail_guide","숲길 안내인",736f,496f,
+        "북동쪽 흙길을 따라가면 숲 안쪽 공터와 물가로 이어집니다.","PENDING_CROP/pote/npc/trail_guide"));
+    monsters.clear();monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
     player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
   }
   public void enterMillesFromField(float x,float y){
@@ -139,7 +151,11 @@ public final class RuntimeState {
   private boolean monsterOccupied(Monster self,float x,float y,float radius){for(Monster m:monsters){if(m==self||!m.alive)continue;float min=radius+MONSTER_RADIUS+3f;if(distance(x,y,m.x,m.y)<min)return true;}return false;}
   private boolean npcOccupied(float x,float y,float radius){for(Npc n:npcs){float min=radius+NPC_RADIUS+2f;if(distance(x,y,n.x,n.y)<min)return true;}return false;}
 
-  public Npc hitNpc(float x,float y,float radius){for(Npc n:npcs){float dx=x-n.x,dy=y-n.y;if(dx*dx+dy*dy<=radius*radius)return n;}return null;}
+  /** Hit box follows the visible NPC sprite and nameplate, whose anchor sits above the foot position. */
+  public Npc hitNpc(float x,float y,float radius){
+    for(Npc n:npcs){float dx=x-n.x,dy=y-(n.y-22f);if(dx*dx+dy*dy<=radius*radius)return n;}
+    return null;
+  }
   public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;}return null;}
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}

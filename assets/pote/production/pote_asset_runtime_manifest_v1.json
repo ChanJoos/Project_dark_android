@@ -1509,5 +1509,85 @@
     ],
     "visual_qa": "PASS_V6",
     "production_status": "APPROVED_V1"
+  },
+  {
+    "asset_id": "POTE_BR_01",
+    "category": "bridge",
+    "file": "POTE_BR_01.png",
+    "source_pixel_size": [
+      2164,
+      727
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 0.075,
+    "runtime_estimated_size": [
+      162,
+      55
+    ],
+    "anchor": "center",
+    "collision_footprint": "walkable_deck_gap",
+    "blocking": false,
+    "depth_rule": "actor_y_sorted",
+    "relationship_tags": [
+      "stream_crossing",
+      "east_bank_route",
+      "adapted_forest_prop"
+    ],
+    "visual_qa": "PENDING",
+    "production_status": "ADAPTED_B"
+  },
+  {
+    "asset_id": "POTE_TR_08",
+    "category": "tree_large",
+    "file": "POTE_TR_08.png",
+    "source_pixel_size": [
+      1100,
+      1429
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 0.3,
+    "runtime_estimated_size": [
+      330,
+      429
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk_32x20",
+    "blocking": true,
+    "depth_rule": "baseline_canopy_overdraw",
+    "relationship_tags": [
+      "forest_boundary",
+      "canopy_cluster",
+      "understory_parent"
+    ],
+    "visual_qa": "PENDING",
+    "production_status": "ADAPTED_B"
+  },
+  {
+    "asset_id": "POTE_SOIL_REFERENCE_01",
+    "category": "terrain_texture",
+    "file": "video_reference/terrain/pote_forest_soil_v2.png",
+    "source_pixel_size": [
+      576,
+      448
+    ],
+    "source_pixels_resampled": false,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      576,
+      448
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground_base",
+    "relationship_tags": [
+      "forest_floor",
+      "walk_corridor",
+      "encounter_clearing",
+      "movement_cell_lattice"
+    ],
+    "visual_qa": "PENDING_V10",
+    "production_status": "ADAPTED_SOURCE_VIDEO_COMPOSITE",
+    "source_note": "24 bare-soil crops blended from supplied recording frames at 8s, 14s, 22s and 28s; 32-color palette; no resampling."
   }
 ]
