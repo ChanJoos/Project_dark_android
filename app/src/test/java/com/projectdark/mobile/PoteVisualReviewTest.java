@@ -24,6 +24,8 @@ public final class PoteVisualReviewTest {
  @Test public void renderPoteForestReferenceFrames() throws Exception {
   GameView view=new GameView(RuntimeEnvironment.getApplication()); view.layout(0,0,1536,704);
   Method enter=GameView.class.getDeclaredMethod("enterPoteField"); enter.setAccessible(true); enter.invoke(view);
+  assertEquals("only the authored bridge may place an object in the creek corridor",0,
+      com.projectdark.mobile.world.PoteFieldRenderer.nonWaterCreekAnchorCount());
   Field af=GameView.class.getDeclaredField("poteFieldAdapter"); af.setAccessible(true); com.projectdark.mobile.world.WorldRuntimeAdapter adapter=(com.projectdark.mobile.world.WorldRuntimeAdapter)af.get(view); WorldCameraTransform camera=adapter.camera();
   float[][] spots={{PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y},{1040f,470f},{PoteFieldDef.BRIDGE_X,PoteFieldDef.BRIDGE_Y},{1648f,480f}};
   String[] names={"pote-entry-clearing.png","pote-central-clearing.png","pote-bridge-crossing.png","pote-east-bank-clearing.png"};
