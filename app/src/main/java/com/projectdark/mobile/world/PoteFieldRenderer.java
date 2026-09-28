@@ -174,7 +174,12 @@ public final class PoteFieldRenderer {
     Bitmap b=bitmap(name);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);
     float width=b.getWidth()*scale,height=b.getHeight()*scale;
     RectF dst=new RectF(Math.round(p.x-width*.5f),Math.round(p.y-height*.5f),Math.round(p.x+width*.5f),Math.round(p.y+height*.5f));
-    if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight())c.drawBitmap(b,null,dst,pixel);
+    if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight()){
+      if("water".equals(p.role)){
+        float angle=creekSegmentAngle(w,p.x,p.y);
+        c.save();c.rotate(angle,q.x,q.y);c.drawBitmap(b,null,dst,pixel);c.restore();
+      }else c.drawBitmap(b,null,dst,pixel);
+    }
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
     if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);pixel.setStyle(Paint.Style.STROKE);
@@ -198,6 +203,18 @@ public final class PoteFieldRenderer {
     RectF dst=center?new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh*.5f),Math.round(q.x+ww*.5f),Math.round(q.y+hh*.5f)):
         new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh),Math.round(q.x+ww*.5f),Math.round(q.y));
     if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight())c.drawBitmap(b,null,dst,pixel);
+  }
+
+  /** Align each source creek tile with the closest authored creek segment. */
+  private float creekSegmentAngle(WorldRuntimeAdapter w,float x,float y){
+    float[][] line=PoteForestGeometry.creekCenterline();float best=Float.MAX_VALUE,angle=0f;
+    for(int i=1;i<line.length;i++){
+      float ax=line[i-1][0],ay=line[i-1][1],dx=line[i][0]-ax,dy=line[i][1]-ay;
+      float q=dx*dx+dy*dy,t=q==0?0:Math.max(0,Math.min(1,((x-ax)*dx+(y-ay)*dy)/q));
+      float d=(float)Math.hypot(x-(ax+t*dx),y-(ay+t*dy));
+      if(d<best){best=d;WorldCameraTransform.Point a=w.worldToScreen(ax,ay),b=w.worldToScreen(line[i][0],line[i][1]);angle=(float)Math.toDegrees(Math.atan2(b.y-a.y,b.x-a.x));}
+    }
+    return angle;
   }
 
   private Bitmap bitmap(String name){
