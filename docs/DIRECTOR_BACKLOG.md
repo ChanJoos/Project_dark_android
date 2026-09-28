@@ -48,3 +48,6 @@ Director: POTE-TEST-01 CI is complete; perform its Android/device check before c
 Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 쉴 때는 이유/마지막 SHA/재개 조건/후속 점검 담당을 기록한다. next_run_time=null이면 다음 실행 보장이라고 쓰지 않는다. 원인 불명 중단은 UNKNOWN으로 남긴다.
 
 각 task 완료 시 status/검증 범위/SHA·PR/다음 결과로 해당 행을 교체한다. 역사 전체를 복제하지 않는다.
+
+
+| POTE-ART-IMG-01 | Visual + Director | 개별 투명 PNG로 대상 몬스터의 12개 포즈를 제작하고 종·방향별 검수 | 시트 합성 없이 포즈별 독립 이미지; 13종 × 정지/공격/이동 × NW/NE/SW/SE; 168 콘셉트와 반려 시트 참조 금지; 팜팻 구르기, 늑대인간 직립/갑옷·칼 차이를 보존하고 이름 ID 추측 금지 | 개별 초안 3장 생성(Pamfet roll 1, basic werewolf idle 1, armored sword werewolf idle 1). AI 컨셉, 시각 수락 대기, 런타임 미적용. 첨부 원작 영상/PDF 표본으로 종/모션 증거는 추가 확정되지 않음. | 3_DRAFTS_CREATED; VISUAL_REVIEW_PENDING; APP_UNCHANGED; APK_NOT_BUILT |
