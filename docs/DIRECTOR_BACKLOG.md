@@ -10,7 +10,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 | VISUAL-01 | Visual | ATTACK/CAST 시 기본 캐릭터 외형 연속성 유지 | 승인 body/크기/방향/발 anchor 유지, resource 오류 crash 없음, HP mutation 없음 | ACTIVE; 원본 행동 frame 미확보는 명시하고 기존 BODY 보존. 실제 action contract는 Game/Director와 합의 | 새 할당, 0 |
 | GAME-01 | Game | `RuntimeCombatSession` 단일 submit/tick/drain API와 Director 교체 handoff | action 구분·control/learned/resource/range/LOS/cooldown 검증·effect 1회·생명당 defeat 1회·훈련 증표 직접 지급 1회 audit PASS | IMPLEMENTED; Director가 GameView 직접 damage/legacy cooldown과 MonsterAI legacy route를 원자적으로 교체해야 함 | 없음, 0 |
 | DIRECTOR-01 | Director | 실제 전투 입력/루프를 GAME-01과 연결·검증 | legacy direct damage 병행 제거, 관련 audit 실제 실행, 동일 SHA APK·실행 범위 명시 | ACTIVE; Game과 최소 API 합의. 결과 대기 중 다른 통합/검증 가능 | 새 할당, 0 |
-| POTE-TEST-01 | Director/Integration | Pote Master roster 16종을 14종×12포즈 테스트 자산에 연결하고 현장 선택·방향·이동·공격 포즈 검증 | 16개 고유 test actor가 clear tile에 존재, 168 PNG가 APK에서 모두 로드, 기존 AI/combat 경로 연결, canonical spirit reward 격리, exact-SHA CI 및 기기 조작 결과 기록 | ACTIVE; 코드는 `codex/pote-ground-tile-foundation`에서 작업 중. 3 strong forms share base concepts; spirit uses isolated test ID; user APK failure prevents premature delivery | 신규, 0 |
+| POTE-TEST-01 | Director/Integration | Pote Master roster 16종을 14종×12포즈 테스트 자산에 연결하고 현장 선택·방향·이동·공격 포즈 검증 | 16개 고유 test actor가 clear tile에 존재, 168 PNG가 APK에서 모두 로드, 기존 AI/combat 경로 연결, canonical spirit reward 격리, exact-SHA CI 및 기기 조작 결과 기록 | ACTIVE; first CI #36390706722 failed compile on a stale package reference; fix pending CI rerun. 3 strong forms share base concepts; spirit uses isolated test ID; user APK failure prevents premature delivery | 신규, 0 |
 
 
 ## 즉시 인수인계 우선순위 (2026-09-28 확인)
