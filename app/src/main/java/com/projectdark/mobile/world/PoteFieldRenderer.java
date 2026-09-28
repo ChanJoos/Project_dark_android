@@ -276,7 +276,7 @@ public final class PoteFieldRenderer {
     List<Placement> p=new ArrayList<>();
     // Distinct patches keep some forest edges dense while the middle opens into a broad route.
     grove(p,190,185,2);grove(p,415,290,5);grove(p,250,620,6);grove(p,430,770,3);
-    grove(p,700,190,1);grove(p,760,790,5);grove(p,1010,190,4);grove(p,930,610,2);
+    grove(p,700,190,1);grove(p,650,790,5);grove(p,1010,190,4);grove(p,850,590,2);
     grove(p,1700,130,7);grove(p,1605,665,4);grove(p,1730,390,1);
 
     // Low plants and groundcover mark both shoulders without closing the walking lane.
