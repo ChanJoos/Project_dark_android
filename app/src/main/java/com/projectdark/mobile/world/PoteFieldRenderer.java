@@ -118,7 +118,7 @@ public final class PoteFieldRenderer {
   /** Draw terrain and objects whose ground anchors are behind the supplied actor depth. */
   public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
-    c.drawColor(0xff241d15);drawFloor(c,w);
+    c.drawColor(0xff241d15);drawFloor(c,w);drawCreekBed(c,w);
     for(Placement p:placements)if(!"bridge".equals(p.role)&&p.y<=actorY)drawPlacement(c,w,p);
     drawBridge(c,w);
   }
@@ -152,6 +152,25 @@ public final class PoteFieldRenderer {
       trail.cubicTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
     }
     c.drawPath(trail,pixel);pixel.setShader(null);pixel.setStyle(Paint.Style.FILL);
+  }
+
+  /** Continuous narrow creek bed fills the seams between the authored water sprites. */
+  private void drawCreekBed(Canvas c,WorldRuntimeAdapter w){
+    float[][] points=PoteForestGeometry.creekCenterline();
+    Path creek=new Path();WorldCameraTransform.Point[] screen=new WorldCameraTransform.Point[points.length];
+    for(int i=0;i<points.length;i++)screen[i]=w.worldToScreen(points[i][0],points[i][1]);
+    creek.moveTo(screen[0].x,screen[0].y);
+    for(int i=0;i<screen.length-1;i++){
+      WorldCameraTransform.Point p0=screen[Math.max(0,i-1)],p1=screen[i],p2=screen[i+1],p3=screen[Math.min(screen.length-1,i+2)];
+      float c1x=p1.x+(p2.x-p0.x)/6f,c1y=p1.y+(p2.y-p0.y)/6f;
+      float c2x=p2.x-(p3.x-p1.x)/6f,c2y=p2.y-(p3.y-p1.y)/6f;
+      creek.cubicTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
+    }
+    pixel.setShader(null);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
+    pixel.setColor(0xff55442e);pixel.setStrokeWidth(78f);c.drawPath(creek,pixel);
+    pixel.setColor(0xff72b5c4);pixel.setStrokeWidth(58f);c.drawPath(creek,pixel);
+    pixel.setColor(0x997de0ea);pixel.setStrokeWidth(3f);c.drawPath(creek,pixel);
+    pixel.setStyle(Paint.Style.FILL);
   }
 
   /** Each navigation-ground diamond samples one shared, source-video texture in world space. */
