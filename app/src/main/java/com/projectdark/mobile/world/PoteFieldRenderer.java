@@ -280,15 +280,18 @@ public final class PoteFieldRenderer {
     grove(p,1700,130,7);grove(p,1605,665,4);grove(p,1730,390,1);
 
     // Low plants and groundcover mark both shoulders without closing the walking lane.
-    float[][] trail=PoteForestGeometry.trailCenterline();
+    float[][] trail=PoteForestGeometry.trailCenterline(),creek=PoteForestGeometry.creekCenterline();
     for(int i=1;i<trail.length-1;i++){
       float x=trail[i][0],y=trail[i][1];
-      ground(p,x-8,y+112,1+(i%6));ground(p,x+10,y-112,1+((i+2)%6));
-      if((i&1)==0){bush(p,x-32,y+145,1+(i%8));bush(p,x+24,y-145,1+((i+3)%8));}
+      if(distanceToPolyline(x-8,y+112,creek)>=48f)ground(p,x-8,y+112,1+(i%6));
+      if(distanceToPolyline(x+10,y-112,creek)>=48f)ground(p,x+10,y-112,1+((i+2)%6));
+      if((i&1)==0){
+        if(distanceToPolyline(x-32,y+145,creek)>=48f)bush(p,x-32,y+145,1+(i%8));
+        if(distanceToPolyline(x+24,y-145,creek)>=48f)bush(p,x+24,y-145,1+((i+3)%8));
+      }
     }
 
-    // The creek bends across the route. Mixed water segments, gravel and bank plants make
-    // its path irregular; a single wooden deck marks the one walkable crossing.
+    // Water segments form the creek; the authored bridge is its only placed crossing.
     stream(p,PoteForestGeometry.creekCenterline());
     p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.BRIDGE_X,PoteForestGeometry.BRIDGE_Y,.085f,"bridge",false));
     grove(p,1650,300,3);grove(p,1370,565,6);
@@ -338,10 +341,6 @@ public final class PoteFieldRenderer {
         float t=step/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
         int waterId=1+(i%6);
         p.add(new Placement(String.format("POTE_WT_%02d.png",waterId),x,y,.90f+(i%3)*.07f,"water",false));
-        if(i%3==0){bank(p,x-28,y+34,1+(i%5));bank(p,x+31,y-37,1+((i+2)%5));}
-        if(i%5==0)rock(p,x-58,y+48,1+(i%5));
-        if(i%5==2)bush(p,x+63,y-53,1+(i%8));
-        if(i%6==3)ground(p,x+74,y+28,1+(i%6));
       }
     }
     float[] end=pts[pts.length-1];p.add(new Placement("POTE_WT_03.png",end[0],end[1],.94f,"water",false));
