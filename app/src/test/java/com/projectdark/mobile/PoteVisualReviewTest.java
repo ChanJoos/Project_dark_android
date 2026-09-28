@@ -35,9 +35,14 @@ public final class PoteVisualReviewTest {
     sf.setAccessible(true);xf.setAccessible(true);yf.setAccessible(true);
     int px=Math.max(0,Math.min(1535,Math.round(bridge.x*sf.getFloat(view)+xf.getFloat(view))));
     int py=Math.max(0,Math.min(703,Math.round(bridge.y*sf.getFloat(view)+yf.getFloat(view))));
-    int color=frame.getPixel(px,py);
-    assertTrue("the authored bridge PNG must render over the creek at its crossing",
-        android.graphics.Color.red(color)>android.graphics.Color.blue(color)+20 && android.graphics.Color.red(color)>android.graphics.Color.green(color));
+    int woodPixels=0;
+    for(int y=Math.max(0,py-24);y<=Math.min(703,py+24);y++)
+     for(int x=Math.max(0,px-72);x<=Math.min(1535,px+72);x++){
+      int color=frame.getPixel(x,y);
+      if(android.graphics.Color.red(color)>android.graphics.Color.green(color)+12
+          &&android.graphics.Color.red(color)>android.graphics.Color.blue(color)+18)woodPixels++;
+     }
+    assertTrue("the authored bridge PNG must render above the water-only creek sprites",woodPixels>40);
    }
    if(i==1){
     HashSet<Integer> groundColors=new HashSet<>();

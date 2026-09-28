@@ -167,8 +167,8 @@ public final class PoteFieldRenderer {
       creek.cubicTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
     }
     pixel.setShader(null);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
-    pixel.setColor(0xff55442e);pixel.setStrokeWidth(56f);c.drawPath(creek,pixel);
-    pixel.setColor(0xff72b5c4);pixel.setStrokeWidth(40f);c.drawPath(creek,pixel);
+    pixel.setColor(0xff55442e);pixel.setStrokeWidth(46f);c.drawPath(creek,pixel);
+    pixel.setColor(0xff72b5c4);pixel.setStrokeWidth(32f);c.drawPath(creek,pixel);
     pixel.setColor(0x997de0ea);pixel.setStrokeWidth(2f);c.drawPath(creek,pixel);
     pixel.setStyle(Paint.Style.FILL);
   }
@@ -376,10 +376,10 @@ public final class PoteFieldRenderer {
       for(int step=0;step<steps;step++,i++){
         float t=step/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
         int waterId=1+(i%6);
-        p.add(new Placement(String.format("POTE_WATER_%02d.png",waterId),x,y,.58f+(i%3)*.03f,"water",false));
+        p.add(new Placement(String.format("POTE_WATER_%02d.png",waterId),x,y,.76f+(i%3)*.03f,"water",false));
       }
     }
-    float[] end=pts[pts.length-1];p.add(new Placement("POTE_WATER_03.png",end[0],end[1],.61f,"water",false));
+    float[] end=pts[pts.length-1];p.add(new Placement("POTE_WATER_03.png",end[0],end[1],.78f,"water",false));
   }
 
   private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
