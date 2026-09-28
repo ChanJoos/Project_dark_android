@@ -174,12 +174,7 @@ public final class PoteFieldRenderer {
     Bitmap b=bitmap(name);if(b==null)return;WorldCameraTransform.Point p=w.worldToScreen(wx,wy);
     float width=b.getWidth()*scale,height=b.getHeight()*scale;
     RectF dst=new RectF(Math.round(p.x-width*.5f),Math.round(p.y-height*.5f),Math.round(p.x+width*.5f),Math.round(p.y+height*.5f));
-    if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight()){
-      if("water".equals(p.role)){
-        float angle=creekSegmentAngle(w,p.x,p.y);
-        c.save();c.rotate(angle,q.x,q.y);c.drawBitmap(b,null,dst,pixel);c.restore();
-      }else c.drawBitmap(b,null,dst,pixel);
-    }
+    if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight())c.drawBitmap(b,null,dst,pixel);
   }
   private void terrainStroke(Canvas c,WorldRuntimeAdapter w,float[][] pts,float width,int color){
     if(pts.length<2)return;pixel.setColor(color);pixel.setStrokeWidth(width);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);pixel.setStyle(Paint.Style.STROKE);
@@ -202,7 +197,12 @@ public final class PoteFieldRenderer {
     boolean center="water".equals(p.role)||"bridge".equals(p.role);
     RectF dst=center?new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh*.5f),Math.round(q.x+ww*.5f),Math.round(q.y+hh*.5f)):
         new RectF(Math.round(q.x-ww*.5f),Math.round(q.y-hh),Math.round(q.x+ww*.5f),Math.round(q.y));
-    if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight())c.drawBitmap(b,null,dst,pixel);
+    if(dst.right>=0&&dst.left<=c.getWidth()&&dst.bottom>=0&&dst.top<=c.getHeight()){
+      if("water".equals(p.role)){
+        float angle=creekSegmentAngle(w,p.x,p.y);
+        c.save();c.rotate(angle,q.x,q.y);c.drawBitmap(b,null,dst,pixel);c.restore();
+      }else c.drawBitmap(b,null,dst,pixel);
+    }
   }
 
   /** Align each source creek tile with the closest authored creek segment. */
