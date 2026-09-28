@@ -60,7 +60,8 @@ public final class PoteFieldRenderer {
     int count=0;float[][] line=PoteForestGeometry.creekCenterline();
     for(Placement p:AUTHORED_PLACEMENTS){
       if("water".equals(p.role)||"bridge".equals(p.role))continue;
-      if(distanceToPolyline(p.x,p.y,line)<48f)count++;
+      // Keep the complete visual footprint of plants and rocks outside the creek corridor.
+      if(distanceToPolyline(p.x,p.y,line)<150f)count++;
     }
     return count;
   }
@@ -337,6 +338,13 @@ public final class PoteFieldRenderer {
     stump(p,550,365,3);rock(p,910,670,2);small(p,870,690,3);
     rock(p,1570,300,5);small(p,1660,320,1);stump(p,1690,760,4);
 
+    // Suppress all non-crossing props near the creek, including oversized canopy footprints.
+    // Water PNGs are the only creek sprites; the authored bridge is the only crossing object.
+    for(int i=p.size()-1;i>=0;i--){
+      Placement item=p.get(i);
+      if(!"water".equals(item.role)&&!"bridge".equals(item.role)
+          &&distanceToPolyline(item.x,item.y,PoteForestGeometry.creekCenterline())<150f)p.remove(i);
+    }
     p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparingInt(a->"bridge".equals(a.role)?1:0).thenComparing(a->a.asset));
     return p;
   }
