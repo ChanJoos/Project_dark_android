@@ -86,7 +86,6 @@ public final class PoteFieldRenderer {
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     drawGroundTiles(c,w);
-    drawTrail(c,w);
   }
 
   /** A broad, gently bending bare-earth lane leads from the arrival point to the footbridge. */
@@ -233,7 +232,6 @@ public final class PoteFieldRenderer {
     grove(p,190,185,2);grove(p,415,290,5);grove(p,250,620,6);grove(p,430,770,3);
     grove(p,700,190,1);grove(p,760,790,5);grove(p,1010,190,4);grove(p,1020,740,2);
     grove(p,1510,180,7);grove(p,1605,665,4);grove(p,1730,390,1);
-    oak(p,330,460,.30f);oak(p,600,630,.28f);oak(p,1450,760,.30f);
 
     // Low plants and groundcover mark both shoulders without closing the walking lane.
     float[][] trail=PoteForestGeometry.trailCenterline();
