@@ -88,21 +88,13 @@ public final class PoteFieldRenderer {
     String pose=("walk".equals(state)||"attack".equals(state))?state:"idle";
     String name="monster_test_v04/sprites/"+species+"/"+pose+"_"+dir+".png";
     Bitmap b=bitmap(name);if(b==null)return;
-    boolean attacking="attack".equals(pose);
-    float phase=attacking?(float)Math.sin(Math.PI*Math.max(0f,Math.min(1f,actionProgress))):0f;
-    float dx=0f,dy=0f;
-    switch(direction){
-      case NW:dx=-.894f;dy=-.447f;break;
-      case NE:dx=.894f;dy=-.447f;break;
-      case SW:dx=-.894f;dy=.447f;break;
-      case SE:dx=.894f;dy=.447f;break;
-    }
-    float bob="idle".equals(pose)?(float)Math.sin(idleClock*5f)*1.2f:0f;
-    float cx=x+dx*phase*7f,cy=y+dy*phase*4f-bob;
-    float w=112f,h=112f;
+    // These are 384px atlas cells with species-dependent transparent margins. Trimmed sprite
+    // bounds are cached by bitmap(); use one modest visual height and preserve each pose ratio.
+    float h=44f,w=h*b.getWidth()/Math.max(1f,b.getHeight());
+    float bob="idle".equals(pose)?(float)Math.sin(idleClock*5f)*.45f:0f;
+    float cx=x,cy=y-bob;
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
-    c.save();if(attacking)c.rotate((direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.SE?-1f:1f)*phase*7f,cx,cy-20f);
-    c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);c.restore();
+    c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
     pixel.setAlpha(255);
   }
 
@@ -246,6 +238,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
+      if(b!=null&&name.startsWith("monster_test_v04/"))b=trimTransparentSprite(b);
       if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith("monster_test_v04/")&&!name.startsWith("POTE_WATER_"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
@@ -259,6 +252,18 @@ public final class PoteFieldRenderer {
     // Source extraction occasionally leaves a 1-2 px crop/separator rule on the outer edge.
     // Trim two pixels symmetrically; anchor remains effectively unchanged at gameplay scale.
     return Bitmap.createBitmap(src,5,4,src.getWidth()-10,src.getHeight()-8);
+  }
+
+  /** Remove transparent atlas-cell margins so each test pose scales by its visible silhouette. */
+  private static Bitmap trimTransparentSprite(Bitmap src){
+    int w=src.getWidth(),h=src.getHeight(),minX=w,minY=h,maxX=-1,maxY=-1;
+    int[] pixels=new int[w*h];src.getPixels(pixels,0,w,0,0,w,h);
+    for(int y=0;y<h;y++)for(int x=0;x<w;x++)if((pixels[y*w+x]>>>24)>8){
+      minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);
+    }
+    if(maxX<minX||maxY<minY)return src;
+    int cw=maxX-minX+1,ch=maxY-minY+1;
+    return cw==w&&ch==h?src:Bitmap.createBitmap(src,minX,minY,cw,ch);
   }
 
   /** Replaces the extracted black beveled edge with shared earth color so adjacent diamonds read as one floor. */

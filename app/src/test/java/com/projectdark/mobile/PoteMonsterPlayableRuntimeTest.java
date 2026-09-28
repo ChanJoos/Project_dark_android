@@ -45,6 +45,7 @@ public final class PoteMonsterPlayableRuntimeTest {
     float beforeX=monster.x,beforeY=monster.y;
     ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+0.01f);
     assertTrue("POTE_PURPLE moves on an authored clear tile",MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
+    assertFalse("monster must approach before beginning its adjacent-tile attack",monster.attackPrimed);
     assertTrue(state.isMonsterTileCenter(monster.x,monster.y));
     assertEquals(MonsterAIController.AttackRoute.SHARED_RESOLVER,ai.attackRoute());
 

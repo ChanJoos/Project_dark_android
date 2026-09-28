@@ -31,6 +31,8 @@ public final class PotePamfetPresentationTest {
       Bitmap cell=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
       renderer.drawMonsterTestPose(new Canvas(cell),id,state,direction,.5f,.4f,64f,112f);
       assertTrue("missing/blank concept sprite "+id+" "+state+" "+direction,countOpaque(cell,new Rect(0,0,128,128))>100);
+      Rect ink=opaqueBounds(cell,new Rect(0,0,128,128));
+      assertTrue("monster visual height must stay near the player scale: "+id+" "+state+" "+direction,ink.height()<=48);
       cell.recycle();
     }
   }
@@ -62,5 +64,11 @@ public final class PotePamfetPresentationTest {
     int count=0;for(int y=bounds.top;y<bounds.bottom;y++)for(int x=bounds.left;x<bounds.right;x++)
       if((bitmap.getPixel(x,y)>>>24)>0)count++;
     return count;
+  }
+  private static Rect opaqueBounds(Bitmap bitmap,Rect bounds){
+    Rect out=new Rect(bounds.right,bounds.bottom,bounds.left,bounds.top);
+    for(int y=bounds.top;y<bounds.bottom;y++)for(int x=bounds.left;x<bounds.right;x++)
+      if((bitmap.getPixel(x,y)>>>24)>0){out.left=Math.min(out.left,x);out.top=Math.min(out.top,y);out.right=Math.max(out.right,x+1);out.bottom=Math.max(out.bottom,y+1);}
+    return out;
   }
 }
