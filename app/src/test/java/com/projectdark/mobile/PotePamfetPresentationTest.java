@@ -7,6 +7,7 @@ import com.projectdark.mobile.world.PoteFieldDef;
 import com.projectdark.mobile.world.PoteFieldRenderer;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
