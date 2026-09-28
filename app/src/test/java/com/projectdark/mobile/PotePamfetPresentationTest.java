@@ -9,12 +9,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.runner.RunWith;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.GraphicsMode;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,30 +19,33 @@ import java.util.Set;
 @Config(sdk=34,manifest=Config.NONE)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public final class PotePamfetPresentationTest {
-  @Test public void fourDirectionsRenderDistinctIdleAndRollAttackAssets() throws Exception {
+  @Test public void everyShowcaseMonsterLoadsAllTwelveDirectionalPoseAssets() throws Exception {
     PoteFieldRenderer renderer=new PoteFieldRenderer();
     CharacterRenderer.Direction[] directions={
         CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,
         CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
-    Bitmap sheet=Bitmap.createBitmap(480,256,Bitmap.Config.ARGB_8888);
-    Canvas canvas=new Canvas(sheet);Set<Integer> frameCounts=new HashSet<>();
-    for(int i=0;i<directions.length;i++){
-      int x=60+i*120;
-      renderer.drawPamfet(canvas,directions[i],false,0f,i*.4f,x,96f);
-      renderer.drawPamfet(canvas,directions[i],true,.5f,0f,x,230f);
-      int idle=countOpaque(sheet,new Rect(x-42,24,x+42,101));
-      int roll=countOpaque(sheet,new Rect(x-42,152,x+42,235));
-      assertTrue("idle sprite must be visible for "+directions[i],idle>100);
-      assertTrue("directional roll attack sprite must be visible for "+directions[i],roll>100);
-      frameCounts.add(idle);frameCounts.add(roll);
+    String[] states={"idle","walk","attack"};
+    assertEquals(16,PoteForestMonsterShowcase.monsterIds().size());
+    for(String id:PoteForestMonsterShowcase.monsterIds())for(String state:states)for(CharacterRenderer.Direction direction:directions){
+      Bitmap cell=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
+      renderer.drawMonsterTestPose(new Canvas(cell),id,state,direction,.5f,.4f,64f,112f);
+      assertTrue("missing/blank concept sprite "+id+" "+state+" "+direction,countOpaque(cell,new Rect(0,0,128,128))>100);
+      cell.recycle();
     }
-    assertTrue("direction/action crops must not all collapse to the same placeholder",frameCounts.size()>=4);
-    File file=new File("build/reports/device-review/pote-pamfet-directions.png");
-    File parent=file.getParentFile();if(parent!=null)parent.mkdirs();
-    try(FileOutputStream out=new FileOutputStream(file)){
-      assertTrue(sheet.compress(Bitmap.CompressFormat.PNG,100,out));
+  }
+
+  @Test public void runtimePlacesEveryMasterRosterIdentityOnADistinctWalkableTile(){
+    RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+    assertEquals(16,state.monsters().size());
+    Set<String> ids=new HashSet<>();Set<String> locations=new HashSet<>();
+    for(RuntimeState.Monster monster:state.monsters()){
+      assertTrue(ids.add(monster.id));
+      assertTrue(PoteFieldDef.isNavigationCenter(monster.x,monster.y));
+      assertTrue(locations.add(monster.x+":"+monster.y));
+      assertSame("visible test sprite must be tappable above its ground anchor",monster,state.hitMonster(monster.x,monster.y-55f,1f));
     }
-    sheet.recycle();
+    assertEquals(PoteForestMonsterShowcase.monsterIds().size(),ids.size());
+    assertTrue("canonical spirit reward must not be farmable from the test fixture",ids.contains("POTE_SPIRIT_TEST_B"));
   }
 
   @Test public void purplePamfetIsPlacedOnTheEntryRouteWithoutChangingItsStats(){

@@ -69,7 +69,8 @@ public final class RuntimeState {
 
     if(this.bootMode==BootMode.POTE_01_PROTOTYPE){
       player=new Player(PotePrototypeWorldDef.PLAYER_X_B,PotePrototypeWorldDef.PLAYER_Y_B);
-      monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
+      monsters.addAll(PoteForestMonsterShowcase.instantiate(
+          new PoteMonsterRoster(),com.projectdark.mobile.world.PoteFieldDef.navigationTiles()));
     }else{
       player=new Player(WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y);
       for(RectF r:world.blockers())obstacles.add(new RectF(r));
@@ -110,7 +111,8 @@ public final class RuntimeState {
     obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
     npcs.clear();npcs.add(new Npc("pote_trail_guide","숲길 안내인",736f,496f,
         "북동쪽 흙길을 따라가면 숲 안쪽 공터와 물가로 이어집니다.","PENDING_CROP/pote/npc/trail_guide"));
-    monsters.clear();monsters.add(PotePrototypeWorldDef.primarySpawn().instantiateRuntimeMonster());
+    monsters.clear();monsters.addAll(PoteForestMonsterShowcase.instantiate(
+        new PoteMonsterRoster(),com.projectdark.mobile.world.PoteFieldDef.navigationTiles()));
     player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
   }
   public void enterMillesFromField(float x,float y){
@@ -152,7 +154,7 @@ public final class RuntimeState {
   private boolean npcOccupied(float x,float y,float radius){for(Npc n:npcs){float min=radius+NPC_RADIUS+2f;if(distance(x,y,n.x,n.y)<min)return true;}return false;}
 
   public Npc hitNpc(float x,float y,float radius){for(Npc n:npcs){float dx=x-n.x,dy=y-n.y;if(dx*dx+dy*dy<=radius*radius)return n;}return null;}
-  public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;}return null;}
+  public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId)&&PoteForestMonsterShowcase.containsMonster(m.id)&&Math.abs(dx)<=58f&&dy>=-116f&&dy<=8f)return m;}return null;}
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 

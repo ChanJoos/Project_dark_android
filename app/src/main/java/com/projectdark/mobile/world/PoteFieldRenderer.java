@@ -1,6 +1,7 @@
 package com.projectdark.mobile.world;
 
 import com.projectdark.mobile.CharacterRenderer;
+import com.projectdark.mobile.PoteForestMonsterShowcase;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -75,15 +76,19 @@ public final class PoteFieldRenderer {
     return best;
   }
 
-  /** Paint the source-derived directional Pamfet idle/roll frames using the monster's live facing. */
-  public void drawPamfet(Canvas c,CharacterRenderer.Direction direction,boolean attacking,
+  /** Paint one directional concept pose for any member of the v0.4 field test roster. */
+  public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
       float actionProgress,float idleClock,float x,float y){
     if(c==null)return;
     String dir=direction==CharacterRenderer.Direction.NW?"nw":
         direction==CharacterRenderer.Direction.NE?"ne":
         direction==CharacterRenderer.Direction.SW?"sw":"se";
-    String name="pote/monsters/pamfet_"+dir+(attacking?"_roll.png":"_idle.png");
+    String species=PoteForestMonsterShowcase.artKey(monsterId);
+    if(species==null)return;
+    String pose=("walk".equals(state)||"attack".equals(state))?state:"idle";
+    String name="monster_test_v04/sprites/"+species+"/"+pose+"_"+dir+".png";
     Bitmap b=bitmap(name);if(b==null)return;
+    boolean attacking="attack".equals(pose);
     float phase=attacking?(float)Math.sin(Math.PI*Math.max(0f,Math.min(1f,actionProgress))):0f;
     float dx=0f,dy=0f;
     switch(direction){
@@ -92,9 +97,9 @@ public final class PoteFieldRenderer {
       case SW:dx=-.894f;dy=.447f;break;
       case SE:dx=.894f;dy=.447f;break;
     }
-    float bob=attacking?0f:(float)Math.sin(idleClock*5f)*1.2f;
+    float bob="idle".equals(pose)?(float)Math.sin(idleClock*5f)*1.2f:0f;
     float cx=x+dx*phase*7f,cy=y+dy*phase*4f-bob;
-    float w=64f,h=64f;
+    float w=112f,h=112f;
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
     c.save();if(attacking)c.rotate((direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.SE?-1f:1f)*phase*7f,cx,cy-20f);
     c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);c.restore();
@@ -241,7 +246,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith("POTE_WATER_"))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith("monster_test_v04/")&&!name.startsWith("POTE_WATER_"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
