@@ -50,7 +50,7 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 각 task 완료 시 status/검증 범위/SHA·PR/다음 결과로 해당 행을 교체한다. 역사 전체를 복제하지 않는다.
 
 
-| POTE-ART-IMG-01 | Visual + Director | 개별 투명 PNG로 대상 몬스터의 12개 포즈를 제작하고 종·방향별 검수 | 시트 합성 없이 포즈별 독립 이미지; 13종 × 정지/공격/이동 × NW/NE/SW/SE; 168 콘셉트와 반려 시트 참조 금지; 팜팻 구르기, 늑대인간 직립/갑옷·칼 차이를 보존하고 이름 ID 추측 금지 | 개별 초안 3장 생성(Pamfet roll 1, basic werewolf idle 1, armored sword werewolf idle 1). AI 컨셉, 시각 수락 대기, 런타임 미적용. 첨부 원작 영상/PDF 표본으로 종/모션 증거는 추가 확정되지 않음. | 3_DRAFTS_CREATED; VISUAL_REVIEW_PENDING; APP_UNCHANGED; APK_NOT_BUILT |
+| POTE-ART-IMG-01 | Visual + Director | 원작 자료와 13종 대응을 확인하고 독립 PNG 156장을 제작·시각 검수 | 13종 × 정지/공격/이동 × NW/NE/SW/SE; 각 파일 직접 확인 가능, 전신·방향·팔레트·투명 가장자리 검사; 168 콘셉트/반려 시트 참조 금지 | 앞선 3장만의 전달은 범위 누락. 이번 팜팻 SE 대기 4색 초안 중 실버는 후광 QA 반려, 나머지 3색도 사용자 수락 전. 늑대 ID 대응 미정. 활성 GitHub 브랜치에서 원본 종별 스크린샷 묶음 경로 미확인. 앱 미적용/새 APK 없음. | 0/156 VISUAL_ACCEPTED; IN_PROGRESS; SOURCE_GAP |
 
 
-최신 후보는 별도 투명 PNG 3장(Pamfet rolling / basic upright werewolf / armored sword werewolf)이며 파일명·SHA는 PROJECT_STATE에 기록했다. 팜팻 외곽 후광이 남아 있어 초안 QA 불통과; 원작 분위기와 비율도 사용자 수락 전이다. 나머지 포즈 및 개체 제작은 미완료.
+최신 팜팻 SE 대기 이미지 파일명·QA 범위는 PROJECT_STATE의 2026-09-29 범위 정정에 기록. 앞선 팜팻 구르기와 실버 대기는 후광 때문에 반려; 레드·그린·퍼플 대기 초안도 사용자 수락 전이다. 13종의 나머지 방향·동작은 미완료.
