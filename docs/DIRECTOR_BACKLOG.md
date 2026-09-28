@@ -16,9 +16,9 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 
 | Task | Owner | 다음 결과 하나 | 수락 조건 | 상태 |
 |---|---|---|---|---|
-| DELIVERY-01 | Director + World | 전달된 APK에서 이동 및 포테 숲 진입 실패를 재현하고 원인을 특정한 검수 결과 | 정확한 APK/SHA 연결, 시작 후 이동·남쪽 출구 진입·숲 내부 이동을 각각 기기에서 확인. 실패 시 수정 후 새 정확 SHA 빌드에서 같은 시나리오 재검증 | BLOCKED / DEVICE_FAILED (user-reported); root cause UNKNOWN |
+| DELIVERY-01 | Director + World | versionCode 48 Pote 후보를 실제 기기에서 검증하고 통합 여부를 기록 | 정확한 APK/SHA에서 시작 이동·안내인 숲 진입·숲 내부 이동을 확인. 실패하면 원인을 고치고 새 SHA에서 같은 시나리오 재검증 | BUILD_VERIFIED; DEVICE_PENDING; 브랜치 미병합 |
 
-근거: APK SHA-256 `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`, artifact ID `10955136379`, build source `0506929`, Actions `36387002427`. 사용자는 숲을 확인할 수 없었고 플레이어 이동도 되지 않았다고 보고함. artifact 대조는 했지만 실패를 이 환경에서 재현하지 못했으며 원인을 추측하지 않음. 기존 역할 작업을 완료/취소하지 않으며, 이 blocker는 새 APK를 전달하기 전에 닫아야 함.
+근거: 기존 전달 APK는 main `0506929`, SHA-256 `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`이며 포테 격자 간격 결함을 포함했습니다. 활성 브랜치 `codex/pote-ground-tile-foundation`의 source candidate `16c6d9a`는 CI #36388750145 성공 및 Pote 경로/렌더 검사를 통과했습니다. APK artifact ID `10955795355`, APK SHA-256 `03f4ccae5fe0804fa78bbeaef974696c0064b3d2941bb190b8fc68d3e64e3e4f`. 실제 기기 검증은 아직 안 됐습니다. 기존 네 역할 할당을 완료/취소로 간주하지 않습니다.
 
 ## 다음 작업 대기열
 

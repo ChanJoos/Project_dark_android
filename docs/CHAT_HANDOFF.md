@@ -46,3 +46,7 @@
 - 사용자가 요구한 실행 시나리오로 기기에서 확인한 범위를 적습니다. CI 성공은 빌드 검증입니다. 기기 확인 없이 “작동한다”고 하지 않습니다.
 - 사용자가 실패를 보고하면 보고 문구, 전달 APK SHA/run, 재현 여부, 원인 상태를 기록합니다. 보고 자체는 실패 증거지만 원인을 증명하지는 않습니다.
 - 실패 원인이 해결되고 같은 시나리오를 검증하기 전에는 이전 APK를 새 버전처럼 다시 전달하지 않습니다. 기기 검증을 할 수 없으면 그 한계를 분명히 적습니다.
+
+## Active task branch and APK source
+
+Before building, inspect main and the branch that contains the requested work. Compare their heads and relevant diffs. Build the SHA with the requested work; identify branch, SHA, app version, Actions run, artifact, and APK SHA-256. If that branch is unmerged/diverged, call the APK a candidate. Build success and renderer screenshots do not prove device interaction; record requested on-device scenarios separately.

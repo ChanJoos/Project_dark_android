@@ -24,3 +24,5 @@ Report IMPLEMENTED / BUILD VERIFIED / RUNTIME VERIFIED / VISUAL ACCEPTED separat
 
 - Before delivering an APK, prove it came from the exact intended source SHA and identify the exact Actions run/artifact and APK SHA-256. A successful CI build proves build status only, not that the requested feature is reachable or works on device.
 - When a user reports a delivered APK failure, record the report as DEVICE_FAILED (user-reported), keep root cause UNKNOWN until reproduced, and make diagnosis/reproduction the immediate handoff task. Do not send a newly built APK as a fix unless the runtime change and requested device scenario have been verified; if device verification is unavailable, label it pending.
+
+- APK source selection follows the active task branch. Compare it with main before building; label an unmerged/diverged branch artifact as a candidate, never as the current main APK.
