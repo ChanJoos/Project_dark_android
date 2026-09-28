@@ -2,7 +2,7 @@
 
 Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 공동 목표: 밀레스 이동→NPC 대화→몬스터 1마리 전투→직접 보상→성장→저장→프로세스 재시작 복원.
-현재 네 작업은 ACTIVE이며 마을 전체 시각 PASS 재승인을 기다리지 않는다. 아래 상태는 할당이며 구현 완료 주장이 아니다.
+아래 네 역할 할당은 이전 개정의 기록이며, 최신 live 예약 상태·정확 SHA에서의 기능 상태를 각각 확인해야 한다. 2026-09-28 사용자 APK 실패 보고는 APK 전달/수락 전 최우선 Director blocker다. 이전 행은 완료나 취소로 간주하지 않는다.
 
 | Task | Owner | 다음 결과 하나 | 수락 조건 | 의존성/상태 | 반복 blocker |
 |---|---|---|---|---|---|
@@ -10,6 +10,15 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 | VISUAL-01 | Visual | ATTACK/CAST 시 기본 캐릭터 외형 연속성 유지 | 승인 body/크기/방향/발 anchor 유지, resource 오류 crash 없음, HP mutation 없음 | ACTIVE; 원본 행동 frame 미확보는 명시하고 기존 BODY 보존. 실제 action contract는 Game/Director와 합의 | 새 할당, 0 |
 | GAME-01 | Game | `RuntimeCombatSession` 단일 submit/tick/drain API와 Director 교체 handoff | action 구분·control/learned/resource/range/LOS/cooldown 검증·effect 1회·생명당 defeat 1회·훈련 증표 직접 지급 1회 audit PASS | IMPLEMENTED; Director가 GameView 직접 damage/legacy cooldown과 MonsterAI legacy route를 원자적으로 교체해야 함 | 없음, 0 |
 | DIRECTOR-01 | Director | 실제 전투 입력/루프를 GAME-01과 연결·검증 | legacy direct damage 병행 제거, 관련 audit 실제 실행, 동일 SHA APK·실행 범위 명시 | ACTIVE; Game과 최소 API 합의. 결과 대기 중 다른 통합/검증 가능 | 새 할당, 0 |
+
+
+## 즉시 인수인계 우선순위 (2026-09-28 확인)
+
+| Task | Owner | 다음 결과 하나 | 수락 조건 | 상태 |
+|---|---|---|---|---|
+| DELIVERY-01 | Director + World | 전달된 APK에서 이동 및 포테 숲 진입 실패를 재현하고 원인을 특정한 검수 결과 | 정확한 APK/SHA 연결, 시작 후 이동·남쪽 출구 진입·숲 내부 이동을 각각 기기에서 확인. 실패 시 수정 후 새 정확 SHA 빌드에서 같은 시나리오 재검증 | BLOCKED / DEVICE_FAILED (user-reported); root cause UNKNOWN |
+
+근거: APK SHA-256 `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`, artifact ID `10955136379`, build source `0506929`, Actions `36387002427`. 사용자는 숲을 확인할 수 없었고 플레이어 이동도 되지 않았다고 보고함. artifact 대조는 했지만 실패를 이 환경에서 재현하지 못했으며 원인을 추측하지 않음. 기존 역할 작업을 완료/취소하지 않으며, 이 blocker는 새 APK를 전달하기 전에 닫아야 함.
 
 ## 다음 작업 대기열
 

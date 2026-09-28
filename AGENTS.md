@@ -21,3 +21,6 @@ Report IMPLEMENTED / BUILD VERIFIED / RUNTIME VERIFIED / VISUAL ACCEPTED separat
 - Before editing any existing file, fetch and read its current contents on the latest base; never fill unknowns by inference.
 - At the end of each completed task, update the project state, the affected backlog row and any changed decision or implementation contract with exact evidence (SHA, CI run, device scope). Keep approved decisions, implementation facts, proposals, and unresolved conflicts distinct.
 - Treat dated execution reports and automation batons as historical unless the current SHA and live evidence confirm them. Documentation maintenance alone is not runtime implementation or verification.
+
+- Before delivering an APK, prove it came from the exact intended source SHA and identify the exact Actions run/artifact and APK SHA-256. A successful CI build proves build status only, not that the requested feature is reachable or works on device.
+- When a user reports a delivered APK failure, record the report as DEVICE_FAILED (user-reported), keep root cause UNKNOWN until reproduced, and make diagnosis/reproduction the immediate handoff task. Do not send a newly built APK as a fix unless the runtime change and requested device scenario have been verified; if device verification is unavailable, label it pending.
