@@ -1,9 +1,0 @@
-file,motion,direction,source,evidence,status
-idle_upper_left.png,idle,NW,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
-idle_upper_right.png,idle,NE,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
-idle_lower_left.png,idle,SW,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
-idle_lower_right.png,idle,SE,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
-attack_roll_upper_left.png,roll_attack,NW,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
-attack_roll_upper_right.png,roll_attack,NE,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
-attack_roll_lower_left.png,roll_attack,SW,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
-attack_roll_lower_right.png,roll_attack,SE,Pamfet_8_Direction_Draft_v3,ADAPTED,prototype_runtime
