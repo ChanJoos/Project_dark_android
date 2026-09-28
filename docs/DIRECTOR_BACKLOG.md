@@ -10,7 +10,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 | VISUAL-01 | Visual | ATTACK/CAST 시 기본 캐릭터 외형 연속성 유지 | 승인 body/크기/방향/발 anchor 유지, resource 오류 crash 없음, HP mutation 없음 | ACTIVE; 원본 행동 frame 미확보는 명시하고 기존 BODY 보존. 실제 action contract는 Game/Director와 합의 | 새 할당, 0 |
 | GAME-01 | Game | `RuntimeCombatSession` 단일 submit/tick/drain API와 Director 교체 handoff | action 구분·control/learned/resource/range/LOS/cooldown 검증·effect 1회·생명당 defeat 1회·훈련 증표 직접 지급 1회 audit PASS | IMPLEMENTED; Director가 GameView 직접 damage/legacy cooldown과 MonsterAI legacy route를 원자적으로 교체해야 함 | 없음, 0 |
 | DIRECTOR-01 | Director | 실제 전투 입력/루프를 GAME-01과 연결·검증 | legacy direct damage 병행 제거, 관련 audit 실제 실행, 동일 SHA APK·실행 범위 명시 | ACTIVE; Game과 최소 API 합의. 결과 대기 중 다른 통합/검증 가능 | 새 할당, 0 |
-| POTE-TEST-01 | Director/Integration | Pote Master roster 16종을 14종×12포즈 테스트 자산에 연결하고 현장 선택·방향·이동·공격 포즈 검증 | 16개 고유 test actor가 clear tile에 존재, 168 PNG가 APK에서 모두 로드, 기존 AI/combat 경로 연결, canonical spirit reward 격리, exact-SHA CI 및 기기 조작 결과 기록 | ACTIVE; CI #36390706722 failed app compile on stale package; #36391118057 passed app compile then failed focused test compilation on missing `assertSame` import; corrected, rerun pending. 3 strong forms share base concepts; spirit uses isolated test ID; user APK failure prevents premature delivery | 신규, 0 |
+| POTE-TEST-01 | Director/Integration | Pote Master roster 16종을 14종×12포즈 테스트 자산에 연결하고 현장 선택·방향·이동·공격 포즈 검증 | 16개 고유 test actor가 clear tile에 존재, 168 PNG가 APK에서 모두 로드, 기존 AI/combat 경로 연결, canonical spirit reward 격리, exact-SHA CI 및 기기 조작 결과 기록 | BUILD_VERIFIED at source `cd88c67657f2d249db490fc897b348ea940197f3` / Actions #36391291190. APK artifact ID `10956323696`, APK SHA-256 `52d64a81a890e1ee3ec54ad0aee910c55e9788eee32f3ad25a1ba40294c7fb74`; package has 168 PNGs; 16 walkable/tappable actors and 192 sprite loads pass CI. DEVICE_PENDING: test each actor's selection, facing, chase and attack on Android. 3 strong forms share base concepts; spirit uses isolated test ID; prior user APK report remains a delivery gate. | 신규, 0 |
 
 
 ## 즉시 인수인계 우선순위 (2026-09-28 확인)
@@ -26,7 +26,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 Game/Director: GAME-01 뒤 실제 보상·EXP/Gold/level mutation 및 최소 save/restore에서 가장 큰 끊김 하나. 저장은 대규모 콘텐츠 이후로 미루지 않는다. GAME-01에 막히면 독립적인 저장 계약/구현을 작업 하나로 명시 전환할 수 있다.
 World: WORLD-01 통행 검수 후 READY_FOR_RUNTIME_QA handoff; 실제 장애 없으면 IDLE, 추가 맵/지형 튜닝 금지.
 Visual: VISUAL-01 뒤 현재 루프에서 실제 잘못 표시되는 부분이 없으면 IDLE; 새 장비 대량 제작 금지.
-Director: POTE-TEST-01의 exact-SHA CI/기기 검증까지 닫은 다음 DELIVERY-01 후보를 검수한다. 결과→통합→판정→다음 할당을 매 회차 닫는다. 동일 blocker 두 회차면 해결 방법/배정 변경.
+Director: POTE-TEST-01 CI is complete; perform its Android/device check before closing the task, then continue DELIVERY-01 device scenarios. 결과→통합→판정→다음 할당을 매 회차 닫는다. 동일 blocker 두 회차면 해결 방법/배정 변경.
 
 ## 초기 근거와 한계
 

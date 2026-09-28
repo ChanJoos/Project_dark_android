@@ -30,16 +30,19 @@
 
 ## 다음 작업
 
-`docs/DIRECTOR_BACKLOG.md`의 `DELIVERY-01`을 진행합니다. 위 후보 APK의 정확한 SHA를 기준으로 세 시나리오를 기기 검증하고 결과를 기록합니다. 검증 전에는 포테 런타임을 기기 수락 완료로 부르지 않습니다. 브랜치 통합은 별도 변경 검토 후 결정합니다.
+먼저 `POTE-TEST-01`의 새 APK를 기기에서 실행해 16종 타깃 선택 및 방향별 걷기/공격 포즈를 검증합니다. 이 결과 후 `DELIVERY-01`의 시작 이동·안내인 진입·숲 내부 이동 시나리오와 브랜치 통합 검토를 이어갑니다. 기기 검증 전에는 수락 완료로 부르지 않습니다.
 
 ## Pote forest full roster pose test — current task
 
 - User request (2026-09-28): place every monster defined for Pote Forest so its directional look, movement, and attack pose can be tested.
 - Evidence baseline checked: main `fdc9f5e` review pack README/manifest documents 14 concept forms × 12 representative still poses = 168 PNGs; `master/data/Monster_Master.csv` via `PoteMonsterRoster.java` projects 16 Pote identities. This art is explicitly concept/review art, not original extracted animation.
 - Active source branch remains `codex/pote-ground-tile-foundation`, based on candidate v0.48 SHA `16c6d9a`; this task is not on main. Current work adds a 16-actor adapted field showcase, selects pose image by runtime AI state/facing, and copies all 168 PNGs from the reviewed pack into the packaged test asset location. Three strong forms share base concept art; the canonical spirit uses `POTE_SPIRIT_TEST_B` to keep the test HP/reward isolated. These are prototype fixture mappings, not canonical spawn/art claims.
-- Implementation attempt SHA `dfaf4f9f237c5001d5d5b6c7db17d3a5e89b3952` triggered Actions [#36390706722](https://github.com/ChanJoos/Project_dark_android/actions/runs/36390706722), which failed at `compileDebugJavaWithJavac`: `GameView` referenced the showcase class under a stale package path. No APK was built from this run. Fix commit `51f0c15086801041e2caa39a0d5f166089a25e8f` passed app-source compilation in Actions #36391118057, then failed test compilation because `assertSame` lacked a static import. That import is corrected in the current follow-up; a fresh CI run is pending. No APK was built by either run. Local Gradle/Android SDK are not available in the workspace; device checks remain pending.
-- Previous delivery remains DEVICE_FAILED (user-reported) at APK SHA `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`; do not label this candidate accepted. Delivery of a replacement requires exact source/artifact verification and the requested device scenario, or an explicit pending label if device verification cannot be done.
+- 소스 HEAD `cd88c67657f2d249db490fc897b348ea940197f3`에서 Actions [#36391291190](https://github.com/ChanJoos/Project_dark_android/actions/runs/36391291190) **성공**. 이 run의 workflow는 앱 compile, Pote forest review/render tests, `PoteForestSpatialGrammarTest`, `PoteMonsterPlayableRuntimeTest`, 확장된 `PotePamfetPresentationTest`, `PoteCreekWaterAssetTest`, 나머지 repo gate를 모두 통과하고 APK를 생성했습니다. 앞선 두 CI 실패는 stale package 참조와 테스트의 `assertSame` import 누락으로 재현·수정되었습니다.
+- 같은 SHA의 device-review artifact ID `10956695994`에는 포테 입구/중앙 공터/다리/동쪽 둔치 캡처가 있습니다. 캡처는 런타임 렌더 검토 자료이며 실제 Android 기기 실행이나 `VISUAL_ACCEPTED`는 아닙니다.
+- APK candidate: versionCode 48 / `0.48-pote-forest-candidate`, artifact ID `10956323696`, artifact `PROJECT_DARK-debug-cd88c67657f2d249db490fc897b348ea940197f3`, APK SHA-256 `52d64a81a890e1ee3ec54ad0aee910c55e9788eee32f3ad25a1ba40294c7fb74`. ZIP 내부 APK에 `monster_test_v04/manifest.csv`와 168 PNG가 확인되었습니다. CI의 새 테스트는 16개 서로 다른 walkable/tappable placement와 각 test ID의 12 state/facing 리소스(총 192 renderer loads)를 확인합니다. 공유 AI/combat 동작의 실행 회귀는 기존 `PoteMonsterPlayableRuntimeTest`에서 퍼플팜팻의 chase/4방향 공격을 확인합니다. 다른 15개별 개체의 이동/공격 동작은 실제 플레이어 조작으로 각각 확인한 상태가 아닙니다.
+- 상태: **IMPLEMENTED, BUILD_VERIFIED, DEVICE_PENDING, VISUAL_ACCEPTED_PENDING**. APK는 미병합 후보 브랜치에서 나온 명시적 테스트 후보이며 수락 완료/수정 완료 APK라고 부르지 않습니다. 실제 기기에서 종별 선택·이동·방향·공격 포즈를 확인하는 것이 다음 작업입니다.
+- Previous delivery remains DEVICE_FAILED (user-reported) at APK SHA `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`; it is distinct from this test candidate.
 
 ### Next result
 
-Complete and run `POTE-TEST-01`: prove 16 unique walkable placements and all 168 packaged state/facing resources on the exact branch SHA, build the candidate, and verify selection plus directional movement/attack poses on a device. Record the Actions run, artifact and APK hashes and actual test scope before delivery.
+Run the exact candidate APK on an Android device: select each of the 16 displayed identities and record idle/walk/attack pose, facing changes, successful input and crashes. Then run `DELIVERY-01` start movement, forest-guide entry and in-forest route checks. Record device model/Android version if available, scenario results, and whether any per-monster visual mappings need revision; keep acceptance pending until evidence exists.
