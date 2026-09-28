@@ -84,3 +84,9 @@ The prior edge-creek layout did not match the supplied scenes: arrival was off t
 
 
 Runtime fixture coordinates for the adapted layout: arrival (800,528), trail through (790,510) and (1060,474) to bridge (1200,440). All are adapted coordinates, not original-map facts; the renderer and spatial tests on this branch are authoritative for the full creek point list and crossing reachability.
+
+## Pamfet presentation and creek cleanup
+
+The user-supplied `1000056959.jpg` direction board is split into four NW/NE/SW/SE idle crops and four matching roll-attack crops under `app/src/main/assets/pote/monsters/`. The live POTE_PURPLE render uses the same logical facing as its AI: idle selects the matching idle crop; attack wind-up selects the same-direction roll crop with a short lunge/tilt. The existing prototype combat profile and unresolved canonical stats remain unchanged. The adapted Pamfet spawn is visible in the entry encounter pocket.
+
+Creek generation now places only water-segment sprites. Individually scattered bank, rock, bush, and groundcover props are removed from the channel; the authored bridge remains the sole crossing. CI captures all eight Pamfet presentations and asserts the creek channel has no separate non-water object anchors.

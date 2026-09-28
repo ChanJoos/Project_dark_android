@@ -19,6 +19,11 @@ public final class PoteForestSpatialGrammarTest {
     assertTrue("forest should read as connected canopy and understory around clearings",renderer.placementCount()>=180);
   }
 
+  @Test public void creekHasNoSeparatelyPlacedPropsBesidesWaterAndBridge(){
+    assertEquals("the creek bed must contain water segments and the bridge only",0,
+        PoteFieldRenderer.nonWaterCreekAnchorCount());
+  }
+
   @Test public void navigationRetainsCorridorsAroundDenseGroves(){
     assertTrue(PoteFieldDef.navigationTiles().size()>250);
     // Entry and exit must remain represented by nearby walkable navigation tiles after visual/collision redesign.

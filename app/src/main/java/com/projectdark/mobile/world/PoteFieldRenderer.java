@@ -1,5 +1,6 @@
 package com.projectdark.mobile.world;
 
+import com.projectdark.mobile.CharacterRenderer;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
