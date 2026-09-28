@@ -55,6 +55,51 @@ public final class PoteFieldRenderer {
 
   public int placementCount(){return placements.size();}
 
+  /** Creek channel contains water and its authored crossing only. */
+  public static int nonWaterCreekAnchorCount(){
+    int count=0;float[][] line=PoteForestGeometry.creekCenterline();
+    for(Placement p:AUTHORED_PLACEMENTS){
+      if("water".equals(p.role)||"bridge".equals(p.role))continue;
+      if(distanceToPolyline(p.x,p.y,line)<48f)count++;
+    }
+    return count;
+  }
+  private static float distanceToPolyline(float x,float y,float[][] line){
+    float best=Float.MAX_VALUE;
+    for(int i=1;i<line.length;i++){
+      float ax=line[i-1][0],ay=line[i-1][1],dx=line[i][0]-ax,dy=line[i][1]-ay;
+      float q=dx*dx+dy*dy,t=q==0?0:Math.max(0,Math.min(1,((x-ax)*dx+(y-ay)*dy)/q));
+      best=Math.min(best,(float)Math.hypot(x-(ax+t*dx),y-(ay+t*dy)));
+    }
+    return best;
+  }
+
+  /** Paint the source-derived directional Pamfet idle/roll frames using the monster's live facing. */
+  public void drawPamfet(Canvas c,CharacterRenderer.Direction direction,boolean attacking,
+      float actionProgress,float idleClock,float x,float y){
+    if(c==null)return;
+    String dir=direction==CharacterRenderer.Direction.NW?"nw":
+        direction==CharacterRenderer.Direction.NE?"ne":
+        direction==CharacterRenderer.Direction.SW?"sw":"se";
+    String name="pote/monsters/pamfet_"+dir+(attacking?"_roll.png":"_idle.png");
+    Bitmap b=bitmap(name);if(b==null)return;
+    float phase=attacking?(float)Math.sin(Math.PI*Math.max(0f,Math.min(1f,actionProgress))):0f;
+    float dx=0f,dy=0f;
+    switch(direction){
+      case NW:dx=-.894f;dy=-.447f;break;
+      case NE:dx=.894f;dy=-.447f;break;
+      case SW:dx=-.894f;dy=.447f;break;
+      case SE:dx=.894f;dy=.447f;break;
+    }
+    float bob=attacking?0f:(float)Math.sin(idleClock*5f)*1.2f;
+    float cx=x+dx*phase*7f,cy=y+dy*phase*4f-bob;
+    float w=64f,h=64f;
+    pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
+    c.save();if(attacking)c.rotate((direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.SE?-1f:1f)*phase*7f,cx,cy-20f);
+    c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);c.restore();
+    pixel.setAlpha(255);
+  }
+
   /** Ground-contact collision footprints are derived from the same visible object anchors. */
   public static List<RectF> blockingFootprints(){
     List<RectF> out=new ArrayList<>();
@@ -159,7 +204,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
@@ -246,7 +291,7 @@ public final class PoteFieldRenderer {
     // its path irregular; a single wooden deck marks the one walkable crossing.
     stream(p,PoteForestGeometry.creekCenterline());
     p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.BRIDGE_X,PoteForestGeometry.BRIDGE_Y,.085f,"bridge",false));
-    grove(p,1450,330,3);grove(p,1370,565,6);
+    grove(p,1650,300,3);grove(p,1370,565,6);
 
     // Sparse landmarks vary by patch; the arrival clearing and bridge approach stay readable.
     stump(p,365,535,2);rock(p,510,590,4);small(p,305,505,2);
