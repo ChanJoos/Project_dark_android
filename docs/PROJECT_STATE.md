@@ -77,3 +77,12 @@ Run the exact candidate APK on an Android device: select each of the 16 displaye
 - 첫 생성 이후 팜팻 외곽의 보라색 광휘와 갑옷 늑대의 칼 과장을 발견해 각 이미지를 다시 생성/수정했다. 무장 늑대 수정본은 칼을 줄였지만 AI 생성안이며 사용자 수락은 미정이다.
 - 최신 개별 검토 파일: Pamfet roll `exec-5195fb43-3077-4d9b-a10e-2863f40a446f.png` (SHA-256 `c0197daf5a7b7ddb8cb478a85284a20da547ce0e5cfd79ca28fc965a6d70b5b1`); basic werewolf idle `exec-06318ec5-970e-4f20-82c1-c9ad8744cbd9.png` (SHA-256 `6e0599e6b61dfcca8ed8253ffe0df20bd04990604ea35809aaced48562ffedc6`); armored sword werewolf idle `exec-b490a73d-8f3f-40b2-bc2f-c8cdde5d844c.png` (SHA-256 `13db8ab947647a49109bdde18e01aa837eeeac030d5a24aed89ad8ed15ce62ca`).
 - Pamfet 이미지에는 지시 후에도 보라색 후광이 남아 있어 이 부분은 미통과/수락 대기다. 기본·무장 늑대도 원작과의 크기·팔레트·장식 차이를 사용자 검토 전 확정하지 않는다. 어떤 이미지도 앱 리소스에 반영하지 않았다.
+
+
+## 2026-09-29 — 사용자 지적에 따른 제작 범위·확인 경로 정정
+
+- 활성 브랜치의 `PoteMonsterRoster.java`를 재조회해 강력한 3종을 제외한 13개 identity를 확인했다: 레드/그린/퍼플/실버팜팻, 트렌트, 앤트라이온, 놀, 울프라이더, 라이칸스로프, 앤트자이언트, 은빛늑대, 포테의정령, 자이언트맨티스. 요구량은 13 × 12 = 156개 **개별 이미지**다. 앞서 세 장만 전달한 것은 전체 범위를 임의로 좁힌 오류이며, 완료가 아니다. v0.4 폴더의 14개 concept form/168 PNG 또는 앱 테스트의 16 identity 숫자와 새 그림의 13종을 혼동하지 않는다.
+- 사용자 제공 `1000057373.png`만 참고해 팜팻 SE 대기 초안을 4색 각각 생성했다. 레드 `exec-a763baa2-fbcf-4d35-bf72-b6f69ab099e2.png`, 그린 `exec-93ef1015-2202-46f0-a95f-af60cb23d003.png`, 퍼플 `exec-733c2a16-f1ca-4a53-b5ea-46d1820e0be1.png`, 실버 `exec-c54d888a-24f3-4088-a286-e6f4db4b2c67.png`. 실버 후광 제거 재시도 `exec-c0352775-1235-4fec-923d-8dfa439e2dda.png`도 흐린 후광이 남아 **시각 QA 반려**. 레드·그린·퍼플은 개별 화면 표시/투명 PNG 기본 확인만 했으며 원작 유사성·사용자 수락·게임 적용은 미확정이다.
+- 앞서 만든 보라 팜팻 구르기도 후광으로 QA 반려. 늑대인간 2장은 사용자 스크린샷의 기본형/갑옷·칼 대비를 보려는 초안이며 정확한 `POTE_GNOLL/WOLFRIDER/LYCAN` 배정은 근거가 없어 미정이다. 검수되지 않은 그림을 종별 완료 수에 넣지 않는다.
+- GitHub 활성 브랜치의 `assets/pote/reference`에는 `PAMFET_8DIRECTION_DRAFT_V3.jpg`만 확인됐다. `master/data/Monster_Master.csv`의 출처 URL과 과거 검토용 168 PNG는 있으나, 이전에 언급된 `assets/pote/reference/original_web_2026-09-28/` 및 `docs/POTE_MONSTER_ORIGINAL_REFERENCES.md`는 이 브랜치에서 확인되지 않았다. 별도 원작 스크린샷·라벨 자료가 GitHub에 모두 보관됐다고 간주하지 않는다.
+- 이번 결과는 이 대화에서 이미지가 직접 표시됐으며 각 파일은 클릭 가능한 개별 PNG로 전달한다. **13종 전체 완료 0 / 156장 제작·검수 완료 0 / 앱 변경 없음 / 새 APK 없음**. 다음에는 원작 스크린샷의 종별 대응과 자료 보관 위치를 확보한 뒤, 각 identity의 네 방향 정지→이동→공격을 개별 PNG로 만들고 방향/팔레트/전신/투명 가장자리를 검사한다. 사용자 수락 전 `VISUAL_ACCEPTED`로 표기하지 않는다.
