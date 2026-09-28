@@ -70,4 +70,38 @@ public final class PoteMonsterPlayableRuntimeTest {
     combat.tick(0.24f);
     assertTrue("shared combat resolver applies the B damage on hit frame",state.player().hp<hp);
   }
+  @Test public void pamfetFacesAndHitsThePlayerFromAllFourDirections(){
+    for(CharacterRenderer.Direction facing:CharacterRenderer.Direction.values()){
+      RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+      state.enterPoteField();
+      RuntimeState.Monster monster=state.monsters().get(0);
+      RuntimeCombatSession combat=new RuntimeCombatSession(state,(a,t)->true,
+          RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
+      MonsterAIController ai=new MonsterAIController(
+          new MonsterAIController.SharedResolverAttackRouter(combat.monsterAutoBridge()));
+      WorldMoveTargetController.TileCenter attacker=null,target=null;
+      for(WorldMoveTargetController.TileCenter from:PoteFieldDef.navigationTiles()){
+        for(WorldMoveTargetController.TileCenter to:PoteFieldDef.navigationTiles()){
+          if(PoteFieldDef.areAdjacentGroundTiles(from.x,from.y,to.x,to.y)
+              &&facing==CanonicalMeleeTileContract.facing(from.x,from.y,to.x,to.y)){
+            attacker=from;target=to;break;
+          }
+        }
+        if(attacker!=null)break;
+      }
+      assertNotNull("a legal player target must exist in direction "+facing,attacker);
+      monster.x=attacker.x;monster.y=attacker.y;
+      state.player().x=target.x;state.player().y=target.y;
+      int hp=state.player().hp;
+      ai.tick(state,0f);
+      assertTrue("Pamfet must wind up against the player in "+facing,monster.attackPrimed);
+      assertEquals(facing,monster.visualFacing.presentation());
+      state.tick(.25f);ai.tick(state,0f);
+      assertEquals(MonsterAIController.SubmissionOutcome.ACCEPTED,ai.lastAttackSubmission().outcome);
+      assertEquals("player",ai.lastAttackSubmission().targetId);
+      combat.tick(.24f);
+      assertTrue("player must take hit-frame damage from "+facing,state.player().hp<hp);
+    }
+  }
+
 }

@@ -1,0 +1,8 @@
+{
+  "assetSet": "POTE_CREEK_WATER_ONLY_V1",
+  "sourceAssets": "POTE_WT_01.png through POTE_WT_06.png",
+  "runtimeAssets": "POTE_WATER_01.png through POTE_WATER_06.png",
+  "derivation": "Preserve bright blue, pale foam, and pale pink water pixels with source alpha; remove dark embedded rocks, green banks, and edge matte to transparent; tiny isolated fragments under 12 connected pixels removed.",
+  "runtimeRule": "Only water-only sprites form the creek. The authored wooden bridge is its sole placed creek object.",
+  "scope": "Presentation assets only; no monster or player statistics changed."
+}

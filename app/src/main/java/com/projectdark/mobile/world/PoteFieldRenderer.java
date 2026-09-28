@@ -240,7 +240,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_"))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith("POTE_WATER_"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
@@ -376,10 +376,10 @@ public final class PoteFieldRenderer {
       for(int step=0;step<steps;step++,i++){
         float t=step/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
         int waterId=1+(i%6);
-        p.add(new Placement(String.format("POTE_WT_%02d.png",waterId),x,y,.58f+(i%3)*.03f,"water",false));
+        p.add(new Placement(String.format("POTE_WATER_%02d.png",waterId),x,y,.58f+(i%3)*.03f,"water",false));
       }
     }
-    float[] end=pts[pts.length-1];p.add(new Placement("POTE_WT_03.png",end[0],end[1],.61f,"water",false));
+    float[] end=pts[pts.length-1];p.add(new Placement("POTE_WATER_03.png",end[0],end[1],.61f,"water",false));
   }
 
   private static void cluster(List<Placement> p,float x,float y,int treeSeed,int underSeed){
