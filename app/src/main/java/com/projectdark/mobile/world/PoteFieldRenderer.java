@@ -119,14 +119,14 @@ public final class PoteFieldRenderer {
   public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
     c.drawColor(0xff241d15);drawFloor(c,w);drawCreekBed(c,w);
-    for(Placement p:placements)if(!"bridge".equals(p.role)&&p.y<=actorY)drawPlacement(c,w,p);
+    for(Placement p:placements)if(!"bridge".equals(p.role)&&("water".equals(p.role)||p.y<=actorY))drawPlacement(c,w,p);
     drawBridge(c,w);
   }
 
   /** Draw foreground canopies/props after the actor so Y-depth remains spatially believable. */
   public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
-    for(Placement p:placements)if(!"bridge".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
+    for(Placement p:placements)if(!"bridge".equals(p.role)&&!"water".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
