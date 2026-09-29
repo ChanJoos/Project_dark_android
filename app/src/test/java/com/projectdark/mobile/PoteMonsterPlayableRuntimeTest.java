@@ -97,7 +97,8 @@ public final class PoteMonsterPlayableRuntimeTest {
           RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
       MonsterAIController movementAi=new MonsterAIController(
           new MonsterAIController.SharedResolverAttackRouter(movementCombat.monsterAutoBridge()));
-      movementAi.tick(movementState,MonsterAIController.MONSTER_STEP_SECONDS_B*.5f);
+      movementAi.tick(movementState,MonsterAIController.MONSTER_STEP_SECONDS_B);
+      movementState.tick(MonsterAIController.MONSTER_STEP_SECONDS_B*.5f);
       assertTrue("monster interpolation must be visible before reaching the next tile: "+id,moving.isMoving);
       assertEquals("walking artwork is active during interpolation", "walk",PoteForestMonsterShowcase.poseFor(moving));
       assertTrue("interpolated position changes continuously",Math.hypot(moving.x-beforeX,moving.y-beforeY)>0f);
