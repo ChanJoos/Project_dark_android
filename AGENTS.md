@@ -2,7 +2,7 @@
 
 Operational revision: LOOP-4-V1, approved by the user after the project/automation audit.
 Four roles: Visual Runtime, World Runtime, Game Systems, Director/Integration.
-Read docs/DIRECTOR_GUIDE.md and docs/DIRECTOR_BACKLOG.md plus current user canon and the relevant handoff/PR delta. Initially read constitution/data contract/source registry/Master manifest; do not repeat a full historical audit every run.
+Read docs/DIRECTOR_GUIDE.md and docs/DIRECTOR_BACKLOG.md plus current user canon and the relevant handoff/PR delta. Initially read constitution/data contract/source registry/Master manifest; do not repeat a full historical audit every run. For monster creation, asset replacement, or monster runtime behavior, also read docs/MONSTER_CREATION_MANUAL.md and update its acceptance record when the contract changes.
 
 The shared goal is one playable loop: Milles movement → NPC dialogue → one monster combat → direct inventory reward → progression → save → process restart and restore. Work on independent parts of this loop may proceed while village visual QA remains pending. The former THREE-20260910 role assignment and blanket M1/M2-before-gameplay rule are superseded.
 
