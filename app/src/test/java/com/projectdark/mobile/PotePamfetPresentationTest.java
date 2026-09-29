@@ -35,7 +35,8 @@ public final class PotePamfetPresentationTest {
       renderer.drawMonsterTestPose(new Canvas(cell),id,state,direction,.5f,.4f,64f,112f);
       assertTrue("missing/blank generated sprite "+id+" "+state+" "+direction,countOpaque(cell,new Rect(0,0,128,128))>100);
       Rect ink=opaqueBounds(cell,new Rect(0,0,128,128));
-      assertTrue("monster visual height must stay near the player scale: "+id+" "+state+" "+direction,ink.height()<=34);
+      if("POTE_LYCAN".equals(id))assertTrue("Lycan must approach player scale",ink.height()>=40&&ink.height()<=52);
+      else assertTrue("Pamfets retain their small scale",ink.height()<=34);
       File file=new File("build/reports/device-review/monster-candidates/"+id+"_"+state+"_"+direction.name().toLowerCase()+".png");
       File parent=file.getParentFile();if(parent!=null)parent.mkdirs();
       try(FileOutputStream out=new FileOutputStream(file)){assertTrue(cell.compress(Bitmap.CompressFormat.PNG,100,out));}

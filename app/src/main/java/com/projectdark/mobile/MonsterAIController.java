@@ -11,8 +11,8 @@ import java.util.Map;
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
   static final int ATTACK_DAMAGE_B = 4;
-  static final float ATTACK_COOLDOWN_B = 1.2f;
-  static final float MONSTER_STEP_SECONDS_B = WorldMoveTargetController.TILE_STEP_SECONDS*1.6f;
+  static final float ATTACK_COOLDOWN_B = 1.8f;
+  static final float MONSTER_STEP_SECONDS_B = WorldMoveTargetController.TILE_STEP_SECONDS;
 
   public enum AttackRoute { LEGACY_RUNTIME, SHARED_RESOLVER }
   public enum SubmissionOutcome { NONE, ACCEPTED, REJECTED, ACTION_UNRESOLVED }
@@ -110,6 +110,7 @@ public final class MonsterAIController {
 
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
+    if(m.isMoving){tile.resetClock();return;}
     ensureCentered(state,m,tile);
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
@@ -132,8 +133,8 @@ public final class MonsterAIController {
       float beforeX=m.x,beforeY=m.y;
       boolean moved=state.tryMoveMonster(m,direction.dx,direction.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
       if(moved){
-        if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,m.x,m.y)
-            ||!state.isMonsterTileCenter(m.x,m.y)){
+        if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,m.moveTargetX,m.moveTargetY)
+            ||!state.isMonsterTileCenter(m.moveTargetX,m.moveTargetY)){
           m.x=beforeX;m.y=beforeY;tile.resetClock();return;
         }
         tile.lastDirection=directionFromFacing(m.visualFacing.locomotion(),direction);

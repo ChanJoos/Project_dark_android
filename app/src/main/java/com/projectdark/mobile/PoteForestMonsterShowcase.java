@@ -32,8 +32,7 @@ public final class PoteForestMonsterShowcase {
   public static String poseFor(RuntimeState.Monster monster){
     if(monster==null)return "idle";
     if(monster.attackPrimed||monster.attackVisualRemaining>0f)return "attack";
-    return monster.state==RuntimeState.Monster.State.CHASE||monster.state==RuntimeState.Monster.State.WANDER
-        ?"walk":"idle";
+    return monster.isMoving?"walk":"idle";
   }
   public static float attackProgress(RuntimeState.Monster monster){
     if(monster==null)return 0f;

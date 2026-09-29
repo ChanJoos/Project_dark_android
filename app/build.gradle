@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 50
-        versionName '0.50-pote-monster-runtime-fix'
+        versionCode 51
+        versionName '0.51-pote-monster-motion'
     }
     sourceSets {
         main {

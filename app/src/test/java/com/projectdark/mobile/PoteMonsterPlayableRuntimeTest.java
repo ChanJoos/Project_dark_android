@@ -44,7 +44,10 @@ public final class PoteMonsterPlayableRuntimeTest {
     monster.x=start.x;monster.y=start.y;state.player().x=target.x;state.player().y=target.y;
     float beforeX=monster.x,beforeY=monster.y;
     ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+0.01f);
-    assertTrue("POTE_PURPLE moves on an authored clear tile",MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
+    assertTrue("monster starts a visible tile interpolation",monster.isMoving);
+    assertTrue("position moves smoothly between tiles",Math.hypot(monster.x-beforeX,monster.y-beforeY)>0f);
+    state.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
+    assertTrue("POTE_PURPLE completes one authored clear tile",MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
     assertFalse("monster must approach before beginning its adjacent-tile attack",monster.attackPrimed);
     assertTrue(state.isMonsterTileCenter(monster.x,monster.y));
     assertEquals(MonsterAIController.AttackRoute.SHARED_RESOLVER,ai.attackRoute());
@@ -94,7 +97,11 @@ public final class PoteMonsterPlayableRuntimeTest {
           RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
       MonsterAIController movementAi=new MonsterAIController(
           new MonsterAIController.SharedResolverAttackRouter(movementCombat.monsterAutoBridge()));
-      movementAi.tick(movementState,MonsterAIController.MONSTER_STEP_SECONDS_B+.01f);
+      movementAi.tick(movementState,MonsterAIController.MONSTER_STEP_SECONDS_B*.5f);
+      assertTrue("monster interpolation must be visible before reaching the next tile: "+id,moving.isMoving);
+      assertEquals("walking artwork is active during interpolation", "walk",PoteForestMonsterShowcase.poseFor(moving));
+      assertTrue("interpolated position changes continuously",Math.hypot(moving.x-beforeX,moving.y-beforeY)>0f);
+      movementState.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
       WorldMoveTargetController.Direction actual=WorldMoveTargetController.Direction.between(beforeX,beforeY,moving.x,moving.y);
       assertNotNull("candidate must move by one diagonal step: "+id,actual);
       assertEquals("walk image facing must match applied movement: "+id,

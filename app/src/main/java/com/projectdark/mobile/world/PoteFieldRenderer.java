@@ -84,24 +84,23 @@ public final class PoteFieldRenderer {
     String name=PoteForestMonsterShowcase.assetPath(monsterId,pose,direction);
     if(name==null)return;
     Bitmap b=bitmap(name);if(b==null)return;
-    // Runtime PNGs are normalized 48x48 frames; visible silhouettes occupy at most 30px height.
-    // Draw at frame size so the alpha-bounded artwork keeps that deliberately reduced scale.
-    float h=48f,w=h*b.getWidth()/Math.max(1f,b.getHeight());
+    // Pamfets keep their small authored scale; the Lycan uses the player-sized frame.
+    float h="POTE_LYCAN".equals(monsterId)?72f:48f,w=h*b.getWidth()/Math.max(1f,b.getHeight());
     float cx=x,cy=y;
     if("idle".equals(pose)){
       cy-=(float)Math.sin(idleClock*4.5f)*.55f;
     }else if("walk".equals(pose)){
       // The art supplies one walk pose per facing. Add a visible two-beat gait while preserving
       // its direction-specific source image and the shared ground anchor.
-      float gait=(float)Math.sin(idleClock*11f);
-      cy-=.7f+Math.abs(gait)*1.8f;
-      cx+=facingX(direction)*gait*.8f;
+      float gait=(float)Math.sin(idleClock*(2f*(float)Math.PI/CharacterRenderer.WALK_CYCLE_SECONDS));
+      cy-=.5f+Math.abs(gait)*1.5f;
+      cx+=facingX(direction)*gait*.65f;
     }else{
       // Keep the four authored diagonal attack facings; animate a short forward strike/recoil
       // without rotating into unsupported cardinal/eight-way directions.
       float impulse=(float)Math.sin(Math.max(0f,Math.min(1f,actionProgress))*(float)Math.PI);
-      cx+=facingX(direction)*3.2f*impulse;
-      cy+=facingY(direction)*3.2f*impulse;
+      cx+=facingX(direction)*1.6f*impulse;
+      cy+=facingY(direction)*1.6f*impulse;
     }
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
     c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
