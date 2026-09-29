@@ -346,3 +346,11 @@ Do NOT stop the current visual sprint to build these systems.
 After the first playable visual slice is accepted, the next combat/data architecture should be checked against this evidence before implementation. Minimum future schema requirements are now known: `actionKind`, `targetingMode`, tile-space `range/shape`, `castTime`, `cooldown`, HP/MP/item cost, element, status payload, dispel category, prerequisite/proficiency, equipment/context restrictions, animation/effect ID, era/evidence tag.
 
 For the current martial-artist sprite pipeline, preserve extensibility for at least: basic punch, front kick, side/spin kick, cast/ki pose, hit, dead, and the existing four diagonal directions. Exact frames remain visual-evidence gated.
+
+## 2026-09-30 source reconciliation
+
+- Reconciled the supplied skill/magic PDF and acquisition-table captures.
+- `Skill_Master.csv` adds the omitted common actions and PDF-listed class actions missing from the existing roster, plus the screenshot-listed mage entry 클리멘스; scope remains through first advancement. Second advancement and later actions remain excluded.
+- `Skill_Legacy_Requirements.csv` records legible legacy conditions for rogue, cleric, and the visible mage rows alongside existing common, warrior, and monk entries. These are historical pre-new-client values and must not populate runtime `Skill_Requirements.csv`.
+- `Skill_Requirements.csv` keeps current-runtime requirements unconfirmed where authoritative current values are unavailable. Do not infer current requirements from legacy captures.
+- Effect formulas and numeric claims remain source-qualified; fan-reported values are not official canon.
