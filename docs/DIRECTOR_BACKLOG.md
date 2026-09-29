@@ -72,3 +72,12 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 | POTE-MONSTER-SPACING-02 | Director (cross-cutting RuntimeState + GameView integration) | VersionCode 53 adds species-aware actor clearance, reserves other monsters' in-flight destinations and swept paths, and renders Pote walk facing from the committed tile-step vector | Source 7f6944e42888a1bd4c5a43e1b4e6261b0f9c2320; Actions #36565408459 succeeded; APK artifact 11030999456; extracted APK SHA-256 a1cccce1d52b172172355063ca0f653be648251f1210a6b0e20d758fce2a27bb. Unit/render checks cover simultaneous approaches, crossing paths, player-tile exclusion, and stale attack lock. **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**. | Install the exact v0.53 APK on the user's device; verify no player/monster overlap and correct facing through movement and attack recovery. Keep root cause UNKNOWN until reproduced or disproven on device. |
 
 The v0.52 issue is user-reported DEVICE_FAILED: character/monster overlap, monster/monster overlap, and occasional walk-facing mismatch. The fix has not yet been accepted on-device; CI checks do not close this work item.
+
+
+## POTE automatic-combat spacing follow-up (2026-09-29)
+
+| Task | Owner | Result | Verification / state | Next action |
+|---|---|---|---|---|
+| POTE-MONSTER-SPACING-03 | Director (World adapter + RuntimeState) | v0.54 rechecks species-aware occupancy and the entire player step against monsters' moving reserved destinations/swept paths when automatic combat advances | Source 5905e963de7898acec4b84644e78fcb98cec395e; Actions #36570339135 passed; APK artifact 11033662723; SHA-256 97b892b9afd8afb82c888db1ed13305f565e3072300900e26ffbf5ec848f2fb4. Regression automaticApproachCannotEnterAMonsterReservedTile passed. **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING**. | Install the exact v0.54 APK; repeat automatic combat around moving monsters and check player/monster spacing and movement-facing. Close only with device evidence. |
+
+The v0.53 overlap report remains user-reported and has not been independently reproduced on-device. Source risk was found and covered by v0.54, but root cause on the handset remains UNKNOWN until the exact APK is tried there. Future monster work must follow [MONSTER_CREATION_MANUAL.md](MONSTER_CREATION_MANUAL.md).
