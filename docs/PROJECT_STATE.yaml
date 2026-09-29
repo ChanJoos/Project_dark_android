@@ -256,6 +256,20 @@ work_packages:
     acceptance:
       - "Audit existing authored/master monster mappings before creating substitute visuals."
       - "Accepted monster presentation must no longer read as the temporary simple placeholder seen in DEVICE_20260915_214834."
+      - "Walk-facing asset direction matches the committed tile-step vector throughout interpolation, regardless of a stale attack-facing snapshot."
+      - "Player/monster and monster/monster occupancy checks include configured actor clearance, moving destinations, and crossing in-flight paths."
+    current_followup:
+      reported_apk_version: "0.52"
+      report_status: "DEVICE_FAILED (user-reported)"
+      report: "Player/monster and monster/monster overlap; occasional walking-facing mismatch."
+      root_cause: "UNKNOWN until the report is reproduced or disproven on the user's Android device."
+      implementation_source_sha: "7f6944e42888a1bd4c5a43e1b4e6261b0f9c2320"
+      implementation_state: "BUILD_VERIFIED"
+      observable_state: "DEVICE_PENDING"
+      actions_run: "36565408459"
+      apk_artifact: "11030999456"
+      apk_sha256: "a1cccce1d52b172172355063ca0f653be648251f1210a6b0e20d758fce2a27bb"
+      next_check: "Install exact versionCode 53 APK and verify spacing and movement-facing on device."
 
   HUD_WORLD_BALANCE_001:
     title: "Reduce HUD competition with world while preserving controls"
