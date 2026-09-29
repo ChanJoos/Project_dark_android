@@ -173,8 +173,18 @@ public final class PoteMonsterPlayableRuntimeTest {
       assertTrue("monster interpolation must be visible before reaching the next tile: "+id,moving.isMoving);
       assertEquals("walking artwork is active during interpolation", "walk",PoteForestMonsterShowcase.poseFor(moving));
       assertTrue("interpolated position changes continuously",Math.hypot(moving.x-beforeX,moving.y-beforeY)>0f);
+      CharacterRenderer.Direction committed=MonsterTileCenterLocomotion.facing(
+          WorldMoveTargetController.Direction.between(moving.moveStartX,moving.moveStartY,
+              moving.moveTargetX,moving.moveTargetY));
+      assertEquals("render direction follows the committed movement vector: "+id,committed,
+          PoteForestMonsterShowcase.presentationFacing(moving));
+      moving.visualFacing.beginAttack(opposite(committed));
+      assertEquals("a stale attack lock cannot turn a walking sprite: "+id,committed,
+          PoteForestMonsterShowcase.presentationFacing(moving));
+      assertEquals("walk pose wins during interpolation: "+id,"walk",PoteForestMonsterShowcase.poseFor(moving));
+      moving.visualFacing.endAttack();
       assertNotNull("walk art uses the current locomotion facing: "+id,
-          PoteForestMonsterShowcase.assetPath(id,"walk",moving.visualFacing.presentation()));
+          PoteForestMonsterShowcase.assetPath(id,"walk",PoteForestMonsterShowcase.presentationFacing(moving)));
       movementState.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
       assertFalse("movement completes at the target tile: "+id,moving.isMoving);
       WorldMoveTargetController.Direction actual=WorldMoveTargetController.Direction.between(beforeX,beforeY,moving.x,moving.y);
@@ -221,6 +231,75 @@ public final class PoteMonsterPlayableRuntimeTest {
       assertTrue("attack facing remains locked only during attack animation",monster.visualFacing.attackLocked());
       state.tick(.37f);
       assertFalse("movement facing is released after the attack pose",monster.visualFacing.attackLocked());
+    }
+  }
+
+  @Test public void monstersReserveDestinationsAndDoNotOverlapDuringConcurrentSteps(){
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+    state.enterPoteField();
+    RuntimeState.Monster first=find(state,"POTE_PURPLE");
+    RuntimeState.Monster second=find(state,"POTE_RED");
+    for(RuntimeState.Monster other:state.monsters())if(other!=first&&other!=second)other.alive=false;
+    WorldMoveTargetController.TileCenter a=null,b=null,c=null,playerTile=null;
+    outer:for(WorldMoveTargetController.TileCenter center:tiles){
+      for(WorldMoveTargetController.TileCenter shared:tiles){
+        if(!PoteFieldDef.areAdjacentGroundTiles(center.x,center.y,shared.x,shared.y))continue;
+        for(WorldMoveTargetController.TileCenter other:tiles){
+          if((Math.abs(other.x-center.x)>.1f||Math.abs(other.y-center.y)>.1f)
+              &&PoteFieldDef.areAdjacentGroundTiles(other.x,other.y,shared.x,shared.y)){
+            a=center;b=shared;c=other;break outer;
+          }
+        }
+      }
+    }
+    assertNotNull("find two approach tiles sharing one destination",a);
+    for(WorldMoveTargetController.TileCenter tile:tiles){
+      if(Math.hypot(tile.x-a.x,tile.y-a.y)>220f&&Math.hypot(tile.x-c.x,tile.y-c.y)>220f){playerTile=tile;break;}
+    }
+    assertNotNull("keep player outside the collision fixture",playerTile);
+    first.x=a.x;first.y=a.y;second.x=c.x;second.y=c.y;
+    state.player().x=playerTile.x;state.player().y=playerTile.y;
+    assertTrue(state.tryMoveMonster(first,b.x-a.x,b.y-a.y,MonsterTileCenterLocomotion.STEP_DISTANCE));
+    assertTrue("first monster reserves the shared destination",first.isMoving);
+    boolean secondStarted=state.tryMoveMonster(second,b.x-c.x,b.y-c.y,MonsterTileCenterLocomotion.STEP_DISTANCE);
+    if(secondStarted){
+      float required=RuntimeState.MONSTER_RADIUS*2f+5f;
+      assertTrue("second monster cannot reserve the same destination",
+          Math.hypot(second.moveTargetX-first.moveTargetX,second.moveTargetY-first.moveTargetY)>=required);
+      state.tick(MonsterAIController.MONSTER_STEP_SECONDS_B*.5f);
+      assertTrue("simultaneous paths retain collision clearance",
+          Math.hypot(second.x-first.x,second.y-first.y)>=required);
+    }
+  }
+
+  @Test public void monsterCannotMoveOntoPlayerTile(){
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+    state.enterPoteField();
+    RuntimeState.Monster monster=find(state,"POTE_PURPLE");
+    WorldMoveTargetController.TileCenter from=null,to=null;
+    outer:for(WorldMoveTargetController.TileCenter a:tiles){
+      for(WorldMoveTargetController.TileCenter b:tiles){
+        if(PoteFieldDef.areAdjacentGroundTiles(a.x,a.y,b.x,b.y)){from=a;to=b;break outer;}
+      }
+    }
+    assertNotNull(from);assertNotNull(to);
+    monster.x=from.x;monster.y=from.y;state.player().x=to.x;state.player().y=to.y;
+    state.tryMoveMonster(monster,to.x-from.x,to.y-from.y,MonsterTileCenterLocomotion.STEP_DISTANCE);
+    if(monster.isMoving){
+      assertTrue("monster route keeps the player collision radius",
+          Math.hypot(monster.moveTargetX-state.player().x,monster.moveTargetY-state.player().y)
+              >=RuntimeState.MONSTER_RADIUS+RuntimeState.PLAYER_RADIUS+5f);
+    }
+  }
+
+  private static CharacterRenderer.Direction opposite(CharacterRenderer.Direction direction){
+    switch(direction){
+      case NW:return CharacterRenderer.Direction.SE;
+      case NE:return CharacterRenderer.Direction.SW;
+      case SW:return CharacterRenderer.Direction.NE;
+      default:return CharacterRenderer.Direction.NW;
     }
   }
 
