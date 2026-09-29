@@ -81,3 +81,6 @@
 
 
 | 테스트 APK 검증 결과 | GitHub Actions run `36534954426` / source `1def7a92aeef68ce144ebaad8b94f02dee011a12` 성공. versionCode 49 artifact `11017989115`; APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. APK 안에서 신규 PNG 60개, 이전 v0.4 PNG 경로 0개를 확인. | CI artifact inventory 및 Pote pose/placement tests; 실제 기기 시각 QA는 별도 미완료. |
+
+## 2026-09-30 — 승인된 스킬창 구현
+사용자 “구현해”: 인벤토리 프레임 재사용, 기술/마법·전체/습득 목록, 상세·사용·퀵슬롯·저장. 평민 임의 습득 없음. 캡처 구 조건은 참고 표시, 습득 강제 적용 없음. 미구현 효과는 구현 예정. 4번째 utility 버튼을 스킬로 바꾸고 퀘스트는 기존 tracker를 통해 접근한다.

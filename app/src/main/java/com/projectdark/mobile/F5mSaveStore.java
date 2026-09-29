@@ -9,10 +9,11 @@ import org.json.JSONObject;
 /** Versioned, single-editor checkpoints over the existing app-private save slot. */
 public final class F5mSaveStore {
   private static final String PREF="project_dark_f5m_v1";
-  private static final int SCHEMA=2;
+  private static final int SCHEMA=3;
   private static F5mSaveStore active;
   private final SharedPreferences prefs;
   private RuntimeState runtime;
+  private SkillBook skillBook;
   private F5mAdaptedPrologueQuest quest;
   private GrowthQuest2 quest2;
   private boolean inFrame,writable=true;
@@ -63,6 +64,13 @@ public final class F5mSaveStore {
 
   /** Bind only after restore; frame consumers finish before any defeat checkpoint is written. */
   public static void bindRuntime(RuntimeState r,F5mAdaptedPrologueQuest q,GrowthQuest2 q2){if(active!=null){active.runtime=r;active.quest=q;active.quest2=q2;}}
+  public static void restoreAndBindSkillsActive(SkillBook book){
+    if(active==null)return;
+    active.skillBook=book;
+    if(!active.writable||!active.prefs.contains("skill_book_v1"))return;
+    try{if(!book.restore(new JSONObject(active.prefs.getString("skill_book_v1",""))))active.writable=false;}
+    catch(Exception e){active.writable=false;}
+  }
   public static void beginFrame(){if(active!=null)active.inFrame=true;}
   public static void endFrame(){if(active!=null)active.inFrame=false;}
   public static boolean checkpointActive(){return active==null||active.checkpoint();}
@@ -71,6 +79,7 @@ public final class F5mSaveStore {
     if(!writable||runtime==null)return false;
     SharedPreferences.Editor edit=writeRpg(prefs.edit(),runtime.rpg());
     writeQuest(edit,quest);writeQuest2(edit,quest2);writeRuntime(edit);
+    if(skillBook!=null)edit.putString("skill_book_v1",skillBook.snapshot().toString());
     return edit.commit();
   }
 
