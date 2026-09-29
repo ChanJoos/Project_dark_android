@@ -279,8 +279,8 @@ work_packages:
     system: persistence
     scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
     priority: P1
-    queue_state: IN_DEVELOPMENT
-    claim: "Director — Pote restart/death integration, branch codex/f5m-pote-restart-death-20260929"
+    queue_state: DEVICE_PENDING
+    claim: null
     required_sources:
       - app/src/main/java/com/projectdark/mobile/F5mSaveStore.java
       - app/src/main/java/com/projectdark/mobile/GameView.java
@@ -301,11 +301,17 @@ work_packages:
       - "Pote death and revive clear controls and reset the active Pote adapter/camera; joystick movement works after revive."
       - "Reward tests use only verified/explicitly adapted rewards; unresolved Pote monster drops are not silently granted."
     current_followup:
-      implementation_state: "IN_DEVELOPMENT (map-aware startup restore and Pote death control recovery implemented on branch; CI pending)"
-      observable_state: "UNVERIFIED"
+      implementation_state: "BUILD_VERIFIED"
+      observable_state: "DEVICE_PENDING"
       device_report: "User reports quitting from Pote returns to Milles; Pote death returns to center but movement fails. Fix is not yet device-verified."
       reward_boundary: "POTE_PURPLE/RED/GREEN/SILVER/LYCAN have no verified EXP/drop quantity/rates. POTE_SPIRIT EXP 308950 is verified, but its drop odds/quantities are unresolved. Test persistence using existing quest rewards/equipped gear; do not invent monster loot."
-      next_check: "Run CI and deliver v0.55 APK; cold-restart in Pote, die/revive and move, and verify existing quest reward/inventory/equipment/progression persistence on device."
+      implementation_source_sha: "0bbb6ee354af2e67e4513db7e5bb7e643c310052"
+      actions_run: "36579231684 (run 1490; initial run 1489 failed two new assertions, corrected tests passed)"
+      apk_artifact: "11038421617 (PROJECT_DARK-debug-0bbb6ee354af2e67e4513db7e5bb7e643c310052)"
+      apk_sha256: "b79e1c58742f006cecc167a6e66f16b6ba9501d8d4a70d506a790d149aeb603a"
+      artifact_zip_sha256: "046864636300cf00931b31843326eafae7bf59bdada89d4f09394d9b5eec8353"
+      verification_scope: "All workflow steps passed: compile, F5M restart persistence, runtime checkpoint/migration, regression suites, and debug APK build. No physical-device verification yet."
+      next_check: "Install exact v0.55 APK; cold-restart while in Pote, revive after Pote death and walk; use the existing quest reward and carried gear to validate inventory/equipment/progression save restoration."
 
   HUD_WORLD_BALANCE_001:
     title: "Reduce HUD competition with world while preserving controls"
