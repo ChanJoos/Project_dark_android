@@ -31,8 +31,20 @@ public final class PoteForestMonsterShowcase {
   public static String artKey(String id){return ART.get(id);}
   public static String poseFor(RuntimeState.Monster monster){
     if(monster==null)return "idle";
+    if(monster.isMoving)return "walk";
     if(monster.attackPrimed||monster.attackVisualRemaining>0f)return "attack";
-    return monster.isMoving?"walk":"idle";
+    return "idle";
+  }
+  /** While walking, render from the committed tile-step vector, never a stale attack lock. */
+  public static CharacterRenderer.Direction presentationFacing(RuntimeState.Monster monster){
+    if(monster==null)return CharacterRenderer.Direction.SE;
+    if(monster.isMoving){
+      WorldMoveTargetController.Direction step=MonsterTileCenterLocomotion.toward(
+          monster.moveTargetX-monster.moveStartX,monster.moveTargetY-monster.moveStartY,
+          WorldMoveTargetController.Direction.SE);
+      return MonsterTileCenterLocomotion.facing(step);
+    }
+    return monster.visualFacing.presentation();
   }
   public static float attackProgress(RuntimeState.Monster monster){
     if(monster==null)return 0f;
