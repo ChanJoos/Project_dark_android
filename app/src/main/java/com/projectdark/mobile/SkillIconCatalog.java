@@ -11,6 +11,7 @@ import org.json.*;
 final class SkillIconCatalog {
   private final Bitmap atlas;
   private final Map<String,Integer> index=new HashMap<>();
+  private final Map<String,Bitmap> presentation=new HashMap<>();
   private final Paint paint=new Paint();
   SkillIconCatalog(Context context){
     try(InputStream image=context.getAssets().open("skills/source_icons.png");InputStream meta=context.getAssets().open("skills/source_icons.json")){
@@ -20,12 +21,23 @@ final class SkillIconCatalog {
       JSONObject rows=new JSONObject(new String(bytes.toByteArray(),StandardCharsets.UTF_8)).getJSONObject("icons");
       Iterator<String> keys=rows.keys();while(keys.hasNext()){String id=keys.next();index.put(id,rows.getInt(id));}
       if(atlas==null)throw new IOException("Invalid skill atlas");
+      for(Map.Entry<String,Integer> row:index.entrySet()){
+        int i=row.getValue();Bitmap icon=Bitmap.createBitmap(atlas,(i%10)*40,(i/10)*40,40,40).copy(Bitmap.Config.ARGB_8888,true);
+        // Remove only capture-background cyan in the four corner regions; preserve original atlas bytes.
+        for(int y=0;y<40;y++)for(int x=0;x<40;x++){
+          int corner=Math.min(x,39-x)+Math.min(y,39-y),color=icon.getPixel(x,y);
+          if(corner<18&&Color.green(color)>Color.red(color)+8&&Color.blue(color)>Color.red(color)+8)icon.setPixel(x,y,Color.TRANSPARENT);
+        }
+        presentation.put(row.getKey(),icon);
+      }
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
   boolean has(String id){return index.containsKey(id);}
   boolean draw(Canvas canvas,String id,RectF dest){
     Integer i=index.get(id);if(i==null)return false;
     int x=(i%10)*40,y=(i/10)*40;paint.setFilterBitmap(false);
-    canvas.drawBitmap(atlas,new Rect(x,y,x+40,y+40),dest,paint);return true;
+    Path mask=new Path();mask.addRoundRect(dest,dest.width()*.20f,dest.height()*.20f,Path.Direction.CW);
+    canvas.save();canvas.clipPath(mask);
+    canvas.drawBitmap(presentation.get(id),new Rect(1,1,39,39),dest,paint);canvas.restore();return true;
   }
 }

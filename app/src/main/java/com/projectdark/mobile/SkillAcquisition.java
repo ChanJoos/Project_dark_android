@@ -1,35 +1,53 @@
 package com.projectdark.mobile;
 
 import java.util.*;
+import org.json.*;
 
-/** User-approved capture conditions. No automatic grant, no guessing unresolved prerequisites. */
+/** Project learning rules: stats + Gold/materials only. One explicit book action, one payment/save. */
 public final class SkillAcquisition {
+  public static final String[] STATS={"STR","INT","WIS","CON","DEX"};
+  public interface Durability {boolean checkpoint();}
+  public static final class Material {
+    public final String id,name;public final int required,owned;
+    Material(String id,String name,int required,int owned){this.id=id;this.name=name;this.required=required;this.owned=owned;}
+  }
+  public static final class Quote {
+    public final int[] required,current;public final long gold,ownedGold;
+    public final boolean learned,canLearn;public final List<Material> materials;public final List<String> blockers;
+    Quote(int[] req,int[] cur,long gold,long owned,boolean learned,List<Material> materials,List<String> blockers){
+      required=req;current=cur;this.gold=gold;ownedGold=owned;this.learned=learned;
+      this.materials=Collections.unmodifiableList(materials);this.blockers=Collections.unmodifiableList(blockers);canLearn=!learned&&blockers.isEmpty();
+    }
+  }
   private final SkillBook book;
   public SkillAcquisition(SkillBook book){this.book=book;}
-  private static String jobCode(String job){switch(job){case "전사":return "WARRIOR";case "도적":return "ROGUE";case "무도가":return "MARTIAL_ARTIST";case "마법사":return "MAGE";case "성직자":return "CLERIC";default:return "";}}
-  private Map<String,String> conditions(SkillBook.Entry e){Map<String,String> m=new LinkedHashMap<>();for(String part:book.captureConditions(e.id).split(" · ")){int space=part.indexOf(' ');if(space>0)m.put(part.substring(0,space),part.substring(space+1));}return m;}
-  public List<String> blockers(SkillBook.Entry e,RpgProgressionState r){
-    List<String> out=new ArrayList<>();if(e==null){out.add("기술을 선택하세요");return out;}if(book.learned(e.id))return out;
-    if(!"공통".equals(e.job)&&!jobCode(e.job).equals(r.currentJobCode()))out.add(e.job+" 직업 필요");
-    if(!"일반".equals(e.stage))out.add("승급 습득 경로 준비 중");
-    Map<String,String> q=conditions(e);
-    if(q.isEmpty())out.add("습득 조건 확인 중");
-    String[] keys={"STR","INT","WIS","CON","DEX"};int[] values={r.str(),r.intel(),r.wis(),r.con(),r.dex()};
-    for(int i=0;i<keys.length;i++){String v=q.get(keys[i]);if(v==null)continue;try{int n=Integer.parseInt(v);if(values[i]<n)out.add(keys[i]+" "+values[i]+" / "+n);}catch(NumberFormatException ex){out.add(keys[i]+" 조건 확인 중");}}
-    String prior=q.get("Prerequisite_Skill");if(prior!=null){String[] names=prior.split(";"),levels=q.getOrDefault("Required_Prerequisite_Level","").split(";");
-      for(int i=0;i<names.length;i++){SkillBook.Entry prerequisite=null;for(SkillBook.Entry x:book.entries())if(x.job.equals(e.job)&&x.name.equals(names[i])){if(prerequisite!=null){prerequisite=null;break;}prerequisite=x;}
-        if(prerequisite==null||i>=levels.length){out.add(names[i]+" 선행 조건 확인 중");continue;}try{int n=Integer.parseInt(levels[i]);if(!book.learned(prerequisite.id)||book.proficiency(prerequisite.id)<n)out.add(names[i]+" 숙련 "+book.proficiency(prerequisite.id)+" / "+n);}catch(NumberFormatException ex){out.add(names[i]+" 숙련 조건 확인 중");}}
+  public Quote quote(SkillBook.Entry e,RpgProgressionState r){
+    FinalStats f=r.finalStats();int[] current={f.str,f.intel,f.wis,f.con,f.dex},required=new int[5];
+    List<String> blocked=new ArrayList<>();List<Material> materials=new ArrayList<>();JSONObject policy=e==null?null:book.learningPolicy(e.id);long price=-1;
+    if(policy==null){blocked.add("습득 정보를 불러오지 못했습니다");}
+    else{
+      JSONObject stats=policy.optJSONObject("stats");price=policy.optLong("gold",-1);
+      if(stats==null||price<0)blocked.add("습득 정보 오류");
+      else for(int i=0;i<5;i++){required[i]=stats.optInt(STATS[i],-1);if(required[i]<0)blocked.add("스탯 정보 오류");else if(current[i]<required[i])blocked.add(STATS[i]+" "+required[i]+" 필요");}
+      if(r.gold()<price)blocked.add("골드 "+(price-r.gold())+" 부족");
+      JSONObject items=policy.optJSONObject("items");if(items==null)blocked.add("재료 정보 오류");
+      else{Iterator<String> it=items.keys();while(it.hasNext()){String id=it.next();int count=items.optInt(id,-1);RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(id);int owned=r.inventory().getOrDefault(id,0);
+        if(d==null||d.equippable()||count<=0){blocked.add("재료 정보 오류");continue;}
+        materials.add(new Material(id,d.name,count,owned));if(owned<count)blocked.add(d.name+" "+(count-owned)+"개 부족");
+      }}
     }
-    // Capture tables do not resolve event/item/gold costs for the final circle.
-    if("5".equals(e.circle))out.add("5서클 재료·이벤트 조건 확인 중");
-    return out;
+    return new Quote(required,current,price,r.gold(),e!=null&&book.learned(e.id),materials,blocked);
   }
-  public boolean learn(String id,RpgProgressionState r){SkillBook.Entry e=book.get(id);return e!=null&&!book.learned(id)&&blockers(e,r).isEmpty()&&book.learn(id,0);}
-  public String description(SkillBook.Entry e,RpgProgressionState r){
-    if(book.learned(e.id))return "습득 완료 · 숙련도 "+book.proficiency(e.id)+"%";
-    Map<String,String> q=conditions(e);List<String> lines=new ArrayList<>();lines.add("직업  "+e.job);
-    for(String k:new String[]{"STR","INT","WIS","CON","DEX"})if(q.containsKey(k))lines.add(k+"  "+q.get(k));
-    if(q.containsKey("Prerequisite_Skill"))lines.add("선행  "+q.get("Prerequisite_Skill").replace(';','·')+"\n숙련  "+q.getOrDefault("Required_Prerequisite_Level","확인 중").replace(';','·'));
-    List<String> blocked=blockers(e,r);lines.add(blocked.isEmpty()?"습득 가능":"미충족  "+String.join(" · ",blocked));return String.join("\n",lines);
+  public List<String> blockers(SkillBook.Entry e,RpgProgressionState r){return quote(e,r).blockers;}
+  public boolean learn(String id,RpgProgressionState r){return learn(id,r,()->true);}
+  public boolean learn(String id,RpgProgressionState r,Durability durability){
+    SkillBook.Entry e=book.get(id);Quote q=quote(e,r);if(!q.canLearn||durability==null)return false;
+    Map<String,Integer> costs=new LinkedHashMap<>();for(Material m:q.materials)costs.put(m.id,m.required);
+    JSONObject beforeBook=book.snapshot();long beforeGold=r.gold();Map<String,Integer> beforeItems=new LinkedHashMap<>(r.inventory());Map<String,String> beforeEquipment=new LinkedHashMap<>(r.equipment());
+    if(!r.paySkillLearningCost(q.gold,costs))return false;
+    boolean committed=false;
+    try{committed=book.learn(id,0)&&durability.checkpoint();return committed;}
+    finally{if(!committed){r.restoreGold(beforeGold);if(!r.restoreOwnedItems(beforeItems,beforeEquipment)||!book.restore(beforeBook))throw new IllegalStateException("learning rollback failed");}}
   }
+  public String description(SkillBook.Entry e,RpgProgressionState r){Quote q=quote(e,r);return q.learned?"습득 완료":q.canLearn?"스탯과 습득 비용을 충족했습니다":String.join(" · ",q.blockers);}
 }

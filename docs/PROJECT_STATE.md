@@ -1,9 +1,22 @@
 # PROJECT DARK 현재 상태
 
-## 최신 작업 기준 — v0.59
+## 최신 작업 기준 — v0.60
 
-통합 PR #170의 runtime source는 `30cb18baa2268c60067bd3f6d33e921b935154f8`; 정확한 CI/APK 및 검증 범위는 아래 SKILL-WINDOW-03 기록을 따른다. 이후 섹션의 오래된 main SHA는 해당 날짜의 감사 이력이며 현재 main으로 해석하지 않는다.
+통합 PR #171의 runtime source는 `e0f61bf1712e7b18ece4c9602e5dbf82da0bf6f3`; 정확한 CI/APK 및 검증 범위는 최신 SKILL-WINDOW-04 기록을 따른다. v59 캡처 숙련/직업/선행 조건은 최신 사용자 지시로 폐기됐다. 이후 섹션의 오래된 main SHA는 해당 날짜의 감사 이력이며 현재 main으로 해석하지 않는다.
 
+
+## 2026-09-30 — SKILL-WINDOW-04 실제 게임 스킬창 / v60
+
+- 사용자 보고: 이전 스킬창의 아이콘 아래 이름 정렬, 빈약한 설명, 애매한 조건과 파란 모서리를 거절했다. 이전 전달 v59 SHA-256 `4e47fc87e67321598dfe1b253f1b57b2597b0382fb765dbf78d23c9af5391bac`는 VISUAL_REJECTED / DEVICE_FAILED (user-reported); 실제 설치 APK identity는 독립 확인하지 않았다. 이전 CI 성공을 사용자 수락으로 유지하지 않는다.
+- 최신 사용자 확정: 원작 습득 규칙에서 벗어나 스탯과 돈/필요 아이템만으로 창에서 직접 습득한다. 숙련도와 선행 스킬을 제거하며 직업/승급/써클/레벨도 습득 제한으로 쓰지 않는다. 명시적 습득 버튼 한 번으로 검증→비용 차감→습득→저장한다. 창을 여는 것만으로 자동 소비하지 않는다.
+- 새 별도 project policy는 Master 219행/원본 캡처를 보존한다. Gold 등급 가격 50/150/500/1200/2500/5000, 기본공격·문열기 무료, 6개 재료 레시피는 PROJECT_ADAPTED_V60 설계다. 캡처 스탯을 재사용하며 미확정 수치는 프로젝트 tier fallback; 원작 가격/룰 확정이 아니다. 모든 학습 ID에 정확한 stats/Gold/items/요약이 있으며 CI 재생성 일치를 검사한다.
+- 네 열×세 행 카드, 아이콘/이름 중앙 정렬과 두 줄 이름, 기술/마법·분류·배운 스킬 필터, 고정 설명/습득 조건 탭, 실제 MP/위력/회복량/재사용/대상, 요구/현재 스탯 및 필요/보유 Gold·아이템, 하단 8슬롯으로 재구성했다. 본문은 탭해도 바뀌지 않으며 단어 경계에서 줄바꿈한다. 135 exact-ID 원본은 그대로 보존하고 native cache에서 cyan 캡처 배경 모서리만 마스크/clip한다.
+- 경제 및 저장: 전체 자원 확인 후 한 번 차감. 중복 습득 차감 없음. 학습 checkpoint 실패 시 Gold/items/equipment/book을 복원. 등록/해제 실패도 기존 슬롯을 복원하며 read-only 저장에서 비용/등록 변경을 거부한다. 기존 save 호환은 유지한다. 성공 액션의 숙련 값은 기존 save 호환 목적으로 남지만 조건/창에는 쓰지 않는다.
+- Runtime source **e0f61bf1712e7b18ece4c9602e5dbf82da0bf6f3**, base **1927ef9204a288ff35cd4fd440cc36204a77f0c2**, PR [#171](https://github.com/ChanJoos/Project_dark_android/pull/171). Actions [36636635716](https://github.com/ChanJoos/Project_dark_android/actions/runs/36636635716) **SUCCESS**, job **109638772772**. Actual checkout is synthetic PR merge **a9a3bdf2a89bfe7be7d84ef69e20afc5b2b9a978** (head e0f61bf1712e7b18ece4c9602e5dbf82da0bf6f3 into base 1927ef9). First run 36636038805 failed at boxed Gold JUnit assertion compile ambiguity; corrected before the final passing run. Earlier passing 36636243096 predates final word wrapping/read-only tests and is not the delivered APK.
+- All 13 SkillWindowTest cases and configured Master/catalog/policy reproducibility, movement/HUD/target/combat/growth/quest/save/restart/render regression checks and assembleDebug passed. Input evidence includes fresh COMMONER basic attack through real utility→common card→learn→slot→HUD and paid martial learning with injected stats/Gold but no profession injection. Self-heal/cooldown examples inject learned IDs for isolated timing review; not physical-device evidence.
+- APK versionCode **60**, versionName **0.60-game-skill-book**. Build completed **2026-09-30 07:00:03 KST**. APK artifact **11064287506**, render artifact **11064462402**; names carry checkout a9a3bdf rather than head source. APK **13,067,379 bytes**, SHA-256 **8a11132af58c2615ef5e2b00e4ae9ea33115c5799d62ecbaa3570bec1d91f073**. Packaged policy/icon atlas/icon mapping/capture bytes match authored assets. Packaged catalog Git blob **0e3a04beaa7bbda6f51e9de23eb5a81663210547** matches the exact repository projection; local materialized copy had only one extra final newline, not a source difference. Catalog 219 / policy 222 / source mappings 135.
+- Final native Canvas renders inspected: magic explanation, missing/ready requirements, learned slot assignment, duplicate-slot cooldown, empty state. Required/current values, prices/owned counts and labels fit their panels; card names align and no cyan corner triangles remain in inspected icons. Render tests explicitly check transparent corner pixels. These are native automated renders, not physical screenshots or user visual acceptance.
+- Status **IMPLEMENTED / BUILD_VERIFIED / AUTOMATED_INPUT_VERIFIED / NATIVE_RENDER_REVIEWED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. Pending: physical-device UI/save/slot/cooldown acceptance; unsupported special/AOE/utility/stealth/advanced effects; missing or unresolved source icon/name rows; four unknown descriptions; offline cooldown persistence. Existing 29 adapted attacks/self-heals + basic weapon attack are the combat scope. Job acquisition route remains a separate game task and no longer blocks skill learning.
 
 > 확인된 기준과 미완료 작업만 적습니다. 시작할 때 최신 `main`과 활성 작업 브랜치를 다시 조회합니다.
 

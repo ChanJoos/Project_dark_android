@@ -1,10 +1,7 @@
-# Skill reference icon atlas
+# Skill artwork and mobile learning policy — v60
 
-135 exact job/name mappings cropped from eleven user-provided Naver screenshots. This is referenced artwork (V), not proof of official provenance. `source_icons.json` records each original SHA-256, bounding crop rectangle, exact source name, matching Master ID, duplicate and unmapped decisions. The original screenshots remain unchanged in the supplied project sources.
+135 exact-ID crops from eleven user-provided screenshots are registered in source_icons.json with original hashes, rectangles and mapping decisions. The original screenshot/atlas bytes are preserved. Native SkillIconCatalog masks cyan capture-background corner pixels and clips the presentation to rounded icon bounds; unregistered IDs use a neutral placeholder.
 
-`source_icons.png` is an opaque 10-column atlas of 40px crop derivatives; these original icon backgrounds are part of the source icon, not a captured table background. Rectangles contain only icon pixels. `SkillIconCatalog` maps only registered IDs and never borrows another skill's artwork for missing entries.
+Rebuild the source atlas with tools/extract_skill_reference_icons.py --source-dir /path/to/project_sources. No unknown name borrows another skill image. Screenshot evidence is V, not proof of official provenance.
 
-Rebuild with `python tools/extract_skill_reference_icons.py --source-dir /path/to/project_sources` after generating `catalog.json`. Requires Pillow and NumPy. Unknown name variants remain unregistered. Atlas generation does not change Master IDs or combat effects. Acquisition policy is documented separately.
-
-
-Acquisition: `acquisition_captures.json` records twelve additional martial-artist condition rows one resolved warrior prerequisite pair, and the latest common staff INT/WIS correction from screenshots 12/13. The user explicitly chose capture-based stat and prerequisite rules on 2026-09-30. Runtime acquisition reads these additions and the preserved legacy table; it does not mutate the Master projection. Unknown names remain unmapped.
+catalog.json is the unchanged read-only 219-row Master projection. acquisition_captures.json remains source evidence, including historical prerequisites. Latest user direction supersedes those prerequisite/mastery/job/circle gates. tools/generate_mobile_skill_policy.py creates the separate mobile_learning.json: final stats plus explicit Gold/material costs, readable summaries and PROJECT_ADAPTED_V60 evidence. Captured stats are reused, unknown stats use project tiers. The Gold tier schedule and reagent recipes are project balance, not original-server data. See docs/SKILL_ACQUISITION_CONTRACT.md for atomic learning/save, eight slots and supported combat limits.
