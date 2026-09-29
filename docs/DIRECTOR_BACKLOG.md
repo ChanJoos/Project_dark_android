@@ -49,4 +49,4 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 
 각 task 완료 시 status/검증 범위/SHA·PR/다음 결과로 해당 행을 교체한다. 역사 전체를 복제하지 않는다.
 
-- MONSTER-ART-01 blocker update: image-generation service returned HTTP 429 usage limit (reset reported 2026-09-30 UTC). Existing generated candidates are tracked, but no remaining frame may be marked complete until created and checked.
+- MONSTER-ART-01 blocker update: image-generation service returned HTTP 429 usage limit (reset reported 2026-09-29 22:57:28 UTC). Existing generated candidates are tracked, but no remaining frame may be marked complete until created and checked.
