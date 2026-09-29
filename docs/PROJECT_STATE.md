@@ -153,3 +153,9 @@ Status: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDIN
 다음은 First RPG Loop의 cold-restart 복원 경로다. Main의 `F5mSaveStore`는 map id/좌표, HP/MP, 퀘스트, 인벤토리·장비, EXP/Gold·레벨·스탯·보상 sequence 저장/복원 코드를 갖고 있고 Robolectric persistence matrix가 일부 RPG/퀘스트 데이터를 검사한다. 그러나 `GameView`는 매번 Milles `RuntimeState`로 시작하며 저장된 `map_id`에 맞춰 활성 맵과 World adapter를 재구성하지 않는다. 따라서 Pote 진입 중 강제 종료 후 같은 맵·위치로 돌아오는 cold-start 경로는 현재 테스트에서 검증되지 않았다. 이는 소스 감사에서 확인한 통합 공백이며 기기 재현 보고는 아니다.
 
 다음 패키지 제안: `F5M_RESTART_RESTORE_001` — 저장된 Milles/Pote map id에 맞는 world/runtime/adapter를 초기화한 뒤 안전한 이동 타일 위치, HP/MP, 퀘스트/목표, 소지품·장비, 진행도와 reward sequence를 복원한다. Milles와 Pote에서 프로세스를 종료·재실행하는 테스트, 손상/구버전 저장 fallback, 중복 처치/퀘스트 보상 방지를 검증하고, 정확한 APK에서 실제 재실행까지 확인한다.
+
+### 사용자 보고: 포테 재시작·사망 및 보상 저장 확인 어려움 (2026-09-29)
+
+사용자는 포테에서 앱을 종료하고 다시 열면 밀레스로 돌아오며, 포테에서 사망 후 중앙에서 부활해도 움직이지 않고, 포테 몬스터가 EXP나 장비를 주지 않아 저장 여부를 확인하기 어렵다고 보고했다. 이는 기기 보고이며 v0.55 수정이 해당 기기에서 확인된 것은 아니다.
+
+Main 소스 감사에서 재시작 때 저장 `map_id`와 무관하게 Milles 런타임만 초기화하던 점, Pote 사망·부활 처리에서 Milles 어댑터에만 카메라/제어 정리를 하던 점을 찾았다. 수정은 저장된 Pote 맵으로 런타임·어댑터를 구성한 다음 안전한 위치를 복원하고, Pote 입장 전 Milles 복귀 위치를 저장한다. 사망/부활 때 현재 맵 어댑터, 카메라, 자동공격·조이스틱 상태를 초기화한다. Robolectric 테스트에서 Pote 콜드 재시작, 알 수 없는 맵 저장 보존, 부활 뒤 조이스틱 이동을 확인했다. 첫 Actions 실행에서 두 신규 assertion이 실패해 위치 캡처 및 이동 가능한 인접 타일 선택을 바로잡았고, 수정 SHA `0bbb6ee354af2e67e4513db7e5bb7e643c310052`의 전체 Actions run `36579231684` (#1490)가 모든 단계와 APK 빌드를 통과했다. APK artifact 11038421617의 내부 APK SHA-256은 `b79e1c58742f006cecc167a6e66f16b6ba9501d8d4a70d506a790d149aeb603a`다. 이는 BUILD VERIFIED이며 사용자 기기 확인은 아직 pending이다.

@@ -90,3 +90,11 @@ The v0.53 overlap report remains user-reported and has not been independently re
 | F5M-RESTART-RESTORE-01 | Game + Director | Restore the correct active map and safe player position after process death/relaunch | Milles and Pote cold-restart tests; preserve HP/MP, quest/objectives, inventory/equipment, EXP/Gold/level/stats and reward watermark; invalid/old save uses safe fallback without destructive overwrite; no duplicate combat or quest reward; exact APK process-restart check. |
 
 Weapon hand attachment and hit readability are explicitly deferred by the user. Existing progression/save components should be reused; do not reimplement them. Close the map restore gap first, then run the full NPC → hunt → reward → progression → restart/restore loop on device.
+
+## Pote restart, respawn and reward verification (2026-09-29)
+
+| Task | Owner | Result | Verification / state | Next action |
+|---|---|---|---|---|
+| F5M-RESTART-RESTORE-01 | Game + Director | v0.55 reconstructs the saved Pote runtime/adapter before applying its checkpoint, preserves the Milles return point, and revives through the active map adapter while clearing stale touch/joystick state. | Source SHA `0bbb6ee354af2e67e4513db7e5bb7e643c310052`; Actions #1490 (`36579231684`) passed all checks and APK build; artifact 11038421617, APK SHA-256 `b79e1c58742f006cecc167a6e66f16b6ba9501d8d4a70d506a790d149aeb603a`. **BUILD VERIFIED / DEVICE PENDING**. | Install exact v0.55 APK, cold restart in Pote, die/revive/walk, and verify saved quest reward, inventory, equipment and progression. |
+
+Pote showcase monsters have no source-backed EXP or drop rates/quantities in the available master data. `POTE_SPIRIT` has verified EXP 308950, but no resolvable gear/item odds or quantities; it is not one of the current five showcase actors. Keep these monsters' reward state pending. Persistence can be tested with the existing explicit quest reward and equipped gear; do not fabricate monster rewards to make the test convenient.

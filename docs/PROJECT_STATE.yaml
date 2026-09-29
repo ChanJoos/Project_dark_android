@@ -279,7 +279,7 @@ work_packages:
     system: persistence
     scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
     priority: P1
-    queue_state: READY
+    queue_state: DEVICE_PENDING
     claim: null
     required_sources:
       - app/src/main/java/com/projectdark/mobile/F5mSaveStore.java
@@ -289,18 +289,29 @@ work_packages:
       - app/src/main/java/com/projectdark/mobile/world/WorldRuntimeAdapter.java
       - app/src/main/java/com/projectdark/mobile/world/PoteFieldDef.java
       - app/src/test/java/com/projectdark/mobile/F5mRestartPersistenceMatrixTest.java
+      - app/src/test/java/com/projectdark/mobile/RuntimeCheckpointTest.java
       - docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md
-    gap: "Save data writes map_id and position, but cold startup constructs the Milles runtime and restoreRuntimeActive only restores coordinates when the saved map already matches. The active map/adapter is not reconstructed from the saved map id."
+    gap: "Device report: quitting in Pote restarts in Milles; dying in Pote respawns at the center but controls do not move. Source audit: startup ignored saved map_id, and Pote death/revive paths reset only the Milles adapter/input state. Pote showcase monsters also lack canonical EXP and drop quantities/rates, so they cannot safely provide invented reward fixtures."
     acceptance:
       - "Cold restart restores the saved Milles or Pote map and a valid walkable player tile before camera/adapter binding."
       - "HP/MP/alive, quest state and objective progress, inventory/equipment, level/EXP/Gold/stats, and combat reward watermark round-trip."
       - "A process kill after a monster defeat or quest turn-in does not duplicate rewards/objective counts."
       - "Invalid or older save data falls back safely and is not destructively overwritten."
       - "Automated process-boundary tests cover Milles and Pote; exact APK is cold-restarted on device through the First RPG Loop."
+      - "Pote death and revive clear controls and reset the active Pote adapter/camera; joystick movement works after revive."
+      - "Reward tests use only verified/explicitly adapted rewards; unresolved Pote monster drops are not silently granted."
     current_followup:
-      implementation_state: "PARTIAL (durable save components exist; active-map cold restore gap identified by source audit)"
-      observable_state: "UNVERIFIED"
-      next_check: "Implement and test map-aware startup restore; then verify the end-to-end NPC → hunt → reward → progression → restart loop on device."
+      implementation_state: "BUILD_VERIFIED"
+      observable_state: "DEVICE_PENDING"
+      device_report: "User reports quitting from Pote returns to Milles; Pote death returns to center but movement fails. Fix is not yet device-verified."
+      reward_boundary: "POTE_PURPLE/RED/GREEN/SILVER/LYCAN have no verified EXP/drop quantity/rates. POTE_SPIRIT EXP 308950 is verified, but its drop odds/quantities are unresolved. Test persistence using existing quest rewards/equipped gear; do not invent monster loot."
+      implementation_source_sha: "0bbb6ee354af2e67e4513db7e5bb7e643c310052"
+      actions_run: "36579231684 (run 1490; initial run 1489 failed two new assertions, corrected tests passed)"
+      apk_artifact: "11038421617 (PROJECT_DARK-debug-0bbb6ee354af2e67e4513db7e5bb7e643c310052)"
+      apk_sha256: "b79e1c58742f006cecc167a6e66f16b6ba9501d8d4a70d506a790d149aeb603a"
+      artifact_zip_sha256: "046864636300cf00931b31843326eafae7bf59bdada89d4f09394d9b5eec8353"
+      verification_scope: "All workflow steps passed: compile, F5M restart persistence, runtime checkpoint/migration, regression suites, and debug APK build. No physical-device verification yet."
+      next_check: "Install exact v0.55 APK; cold-restart while in Pote, revive after Pote death and walk; use the existing quest reward and carried gear to validate inventory/equipment/progression save restoration."
 
   HUD_WORLD_BALANCE_001:
     title: "Reduce HUD competition with world while preserving controls"
