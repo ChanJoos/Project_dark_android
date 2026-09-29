@@ -80,3 +80,13 @@ Before building, inspect main and the branch that contains the requested work. C
 - Artifact [11024127131](https://github.com/ChanJoos/Project_dark_android/actions/runs/36549350583) contains `app-debug.apk` (12,631,372 bytes), SHA-256 `807437bf4b5270a2701c2380e854eeb032018117952336f1b0e1f3bb516961d4`. APK inventory: 60 `pote_monsters_generated_v1/sprites/` PNGs and zero `monster_test_v04/` files.
 - Source patch clusters the five complete art candidates near the entrance, exposes walk/attack state changes with a four-diagonal facing contract, and tests applied movement/facing and pose rendering. User-reported v49 failures have not yet been verified on a physical device with v50. Status: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**.
 - Next: install this exact APK and verify all five candidates are visible, movement-facing matches actual step, attacks use only NW/NE/SW/SE, attack occurs at valid range, and the app remains stable. Do not mark visual acceptance until this check is recorded.
+
+
+## 2026-09-29 — Pamfet movement facing and auto-attack follow-up
+
+- User confirmed the Pote map remains active after exit/restart with v0.55. New report: some Pamfets occasionally use a movement pose/facing that disagrees with travel direction; auto-attack sometimes circles or selects a geometrically nearby but non-optimal target.
+- Active candidate branch: `codex/pamfet-facing-auto-target-r3-20260929`, based on latest Main `c2e60d6` (the base advanced while the change was being prepared).
+- Candidate changes: require exact canonical applied movement vector for walk pose; remove lateral sprite drift from one-frame walk art; target the moving monster's reserved next tile; choose reachable auto targets by shortest legal approach path then distance; keep target stable while alive/reachable; ignore unreachable targets.
+- Added regressions cover all four Pamfet pose directions despite stale attack lock, shortest reachable path preference, inaccessible targets, moving-target reservations, and legal adjacent approach path cost.
+- Current status before CI: source/tests/docs implemented, candidate SHA and Actions run not yet established. Device facing and auto-attack behavior remain pending; generated art direction labels need visual check on device.
+- Continue exact-SHA workflow verification, inspect any failed job logs, then update `PROJECT_STATE.md`, YAML, backlog, this handoff and manual with the measured run/artifact. Keep `DEVICE_PENDING` until user/device confirms the exact APK.

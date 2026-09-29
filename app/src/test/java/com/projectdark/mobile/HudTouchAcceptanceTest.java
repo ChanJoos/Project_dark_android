@@ -57,13 +57,16 @@ public final class HudTouchAcceptanceTest {
     assertTrue(!chatExpanded(view));
   }
 
-  @Test public void autoTargetSelectionChoosesNearestLivingMonster() {
+  @Test public void autoTargetSelectionChoosesNearestReachableLivingMonster() {
     RuntimeState.Monster far=new RuntimeState.Monster("far","Far",40,0,10,"test");
     RuntimeState.Monster distant=new RuntimeState.Monster("distant","Distant",400,0,10,"test");
     RuntimeState.Monster dead=new RuntimeState.Monster("dead","Dead",1,0,10,"test");dead.alive=false;
     RuntimeState.Monster near=new RuntimeState.Monster("near","Near",-3,0,10,"test");
-    assertTrue(GameView.nearestLivingMonster(java.util.Arrays.asList(distant,far,dead,near),0,0)==near);
-    assertTrue("auto target acquisition is limited to nearby monsters",GameView.nearestLivingMonster(java.util.Collections.singletonList(distant),0,0)==null);
+    AutoAttackTargetSelector.ApproachCost reachable=m->m==far?-1:0;
+    assertTrue(AutoAttackTargetSelector.select(java.util.Arrays.asList(distant,far,dead,near),0,0,
+        GameView.AUTO_TARGET_RADIUS,reachable)==near);
+    assertTrue("auto target acquisition is limited to nearby monsters",AutoAttackTargetSelector.select(
+        java.util.Collections.singletonList(distant),0,0,GameView.AUTO_TARGET_RADIUS,m->0)==null);
   }
 
   @Test public void rightHudUsesWideScreenSideMargin() throws Exception {

@@ -146,6 +146,28 @@ public final class PoteMonsterPlayableRuntimeTest {
     assertEquals(1f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
   }
 
+  @Test public void everyPamfetWalkPoseUsesTheExactCommittedStepEvenWithAnAttackFacingLock(){
+    for(String id:new String[]{"POTE_PURPLE","POTE_RED","POTE_GREEN","POTE_SILVER"}){
+      RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+      RuntimeState.Monster monster=find(state,id);
+      for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
+        MonsterDiagonalLocomotion.Step step=MonsterDiagonalLocomotion.forFacing(direction,
+            MonsterTileCenterLocomotion.STEP_DISTANCE);
+        monster.moveStartX=100f;monster.moveStartY=100f;
+        monster.moveTargetX=100f+step.dx;monster.moveTargetY=100f+step.dy;
+        monster.isMoving=true;
+        monster.visualFacing.beginAttack(opposite(direction));
+        assertEquals(id+" facing must follow the actual committed walk segment",direction,
+            PoteForestMonsterShowcase.presentationFacing(monster));
+        assertTrue(id+" selects the matching directional walk asset",
+            PoteForestMonsterShowcase.assetPath(id,"walk",
+                PoteForestMonsterShowcase.presentationFacing(monster)).endsWith(
+                    "walk_"+direction.name().toLowerCase()+".png"));
+        monster.visualFacing.endAttack();
+      }
+    }
+  }
+
   @Test public void everyCandidateMovesWithItsAppliedFacingAndAttacksOnlyInFourDiagonalDirections(){
     List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
     for(String id:PoteForestMonsterShowcase.monsterIds()){
@@ -334,6 +356,31 @@ public final class PoteMonsterPlayableRuntimeTest {
     assertEquals("the shared tile-step controller blocks entry",WorldMoveTargetController.Status.BLOCKED,attempted.status);
     assertEquals(playerStart.x,state.player().x,.001f);
     assertEquals(playerStart.y,state.player().y,.001f);
+  }
+
+  @Test public void autoApproachPathCostUsesLegalAdjacentTilesAndMovingTargetReservation(){
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+    state.enterPoteField();
+    RuntimeState.Monster monster=find(state,"POTE_PURPLE");
+    for(RuntimeState.Monster other:state.monsters())if(other!=monster)other.alive=false;
+    WorldMoveTargetController.TileCenter target=null,player=null;
+    outer:for(WorldMoveTargetController.TileCenter a:tiles)for(WorldMoveTargetController.TileCenter b:tiles){
+      if(PoteFieldDef.areAdjacentGroundTiles(a.x,a.y,b.x,b.y)){target=a;player=b;break outer;}
+    }
+    assertNotNull(target);assertNotNull(player);
+    monster.x=target.x;monster.y=target.y;state.player().x=player.x;state.player().y=player.y;
+    WorldRuntimeAdapter world=new WorldRuntimeAdapter(state,960f,540f,
+        PoteFieldDef.MIN_X,PoteFieldDef.MAX_X,PoteFieldDef.MIN_Y,PoteFieldDef.MAX_Y,
+        tiles,PoteFieldDef.obstacles(),true);
+    assertEquals("already legal adjacent tile is zero path steps",
+        0,world.monsterApproachPathSteps(monster.id,CanonicalMeleeTileContract.REACH_DISTANCE));
+    monster.isMoving=true;monster.moveStartX=target.x+32f;monster.moveStartY=target.y+16f;
+    monster.moveTargetX=target.x;monster.moveTargetY=target.y;
+    monster.x=(monster.moveStartX+monster.moveTargetX)*.5f;
+    monster.y=(monster.moveStartY+monster.moveTargetY)*.5f;
+    assertEquals("moving monster is planned against its reserved tile, not an interpolated point",
+        0,world.monsterApproachPathSteps(monster.id,CanonicalMeleeTileContract.REACH_DISTANCE));
   }
 
   private static CharacterRenderer.Direction opposite(CharacterRenderer.Direction direction){

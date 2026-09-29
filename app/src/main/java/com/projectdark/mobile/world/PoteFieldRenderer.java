@@ -94,7 +94,6 @@ public final class PoteFieldRenderer {
       // its direction-specific source image and the shared ground anchor.
       float gait=(float)Math.sin(idleClock*(2f*(float)Math.PI/CharacterRenderer.WALK_CYCLE_SECONDS));
       cy-=.5f+Math.abs(gait)*1.5f;
-      cx+=facingX(direction)*gait*.65f;
     }else{
       // Keep the four authored diagonal attack facings; animate a short forward strike/recoil
       // without rotating into unsupported cardinal/eight-way directions.
