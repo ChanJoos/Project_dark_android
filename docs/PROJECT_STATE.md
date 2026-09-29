@@ -18,9 +18,18 @@
 - 첫 Actions run `36586971014`는 몬스터 테스트 이전의 Master 감사에서 실패했습니다. 원인은 latest Main의 `Skill_Legacy_Requirements.csv` 미등록과 `Skill_Evidence.csv` 사용자 제공 SE10 추가분을 historical workbook hash로 계속 검사한 것이었습니다. 검증기에서 새 파일을 canonical addition으로 등록하고 amended evidence sheet를 기존 canonical override로 분류했습니다. 로컬 `python3 tools/validate_master.py`는 `AVAILABLE_CSV_INTEGRITY_PASS`로 통과했으며, 원본 XLSX fidelity는 여전히 미검증으로 표시됩니다. 수정 검증기의 Actions 재실행은 대기 중입니다.
 - 후보 상태: **IMPLEMENTED / MASTER_GATE_REPAIRED_LOCALLY / CI_PENDING / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. 이번 작업의 새 SHA/Actions/APK 기록은 CI 결과 확인 뒤 갱신합니다. 팜팻 원본 아트의 실제 시선이 파일 방향명과 맞는지 실기기 시각 확인도 별도 필요합니다.
 
+## 2026-09-30 — v0.56 기기 실패 보고 및 추적 경로 수정
+
+- v0.56은 PR #166으로 Main에 병합됐다. 코드 SHA `ddc39fde33f2d37e54df35d23d88c0757591ef80`, merge SHA `b6d1c4b87e730c16ec974797205b340a41eac593`; 최신 Main은 후속 Master 문서/데이터 커밋 `50c65cc457227f447356335ba89391489bab41b9`이다.
+- 사용자가 전달된 v0.56 APK에서 팜팻 이동 방향/포즈 불일치와 자동공격 중 회전·비효율 타깃 선택이 남았다고 보고했다. 기록: **DEVICE_FAILED (user-reported)**. 전달 APK SHA-256 `2fc04baed7c4d53942c129a91cd61a3864243cceb10cc55749361e1d112a2ec9`; 최초 CI run #1508 (`36588894898`) 성공, artifact `11043600170`.
+- v0.56의 타깃 비용 선택과 예약 endpoint는 소스에 구현돼 있었지만, 테스트는 selector 단위 비교에 그쳤다. 현재 소스 감사에서 몬스터 추적은 매 걸음마다 플레이어 방향으로 greedy하게 향하고, 막히면 `MonsterDiagonalLocomotion.select`가 좌/우 우회 방향을 임시 적용한 뒤 다음 걸음에 원래 목표 방향을 다시 계산하는 점을 확인했다. 또 player route planning은 actor point occupancy를 검사했지만 live commit은 actor crossing을 추가 거부했다. 두 차이가 반복 BLOCKED/replan을 만들 수 있는 source risk다.
+- 새 후보 r4는 몬스터를 authored tile graph에서 합법 melee 인접 타일까지의 BFS 최단 경로로 이동시키고, 매 타일 재계산 시 같은 최단 우회로를 유지한다. player path planner와 live commit도 동일한 full-edge traversal predicate를 사용한다. 직진 경로 차단/반복 재계산 회귀 테스트를 추가했다. 방향 아트의 실제 시선 정합은 이전 테스트가 검사하지 않았으므로 기기 원인은 여전히 **UNKNOWN**이며 별도 시각 검증 대상이다.
+- Latest Main에는 이후 skill master 업데이트로 canonical override 3개와 행 폭이 맞지 않는 evidence rows가 더해져 기존 Master gate가 다시 실패했다. 현재 후보는 `Skill_Master`, `Skill_Requirements`, `Skill_Research_Audit`를 schema/header 검증 override로 등록하고 `Skill_Evidence`의 빈 행을 제거하고 기존 6-field 값을 27-column 스키마에 빈 값으로 맞췄다. 값은 보존했다. 로컬 `python3 tools/validate_master.py`는 `AVAILABLE_CSV_INTEGRITY_PASS`; YAML parse와 diff whitespace 검사도 통과했다.
+- 후보 상태: **IMPLEMENTED / MASTER_AUDIT_PASS / LOCAL_BUILD_UNAVAILABLE (repository has no Gradle wrapper; system Gradle unavailable) / CI_PENDING / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. 새 APK를 검증된 해결본으로 전달하지 않는다. 다음 기준은 새 CI의 정확한 SHA 통과와, 사용자가 해당 후보를 기기에서 확인한 결과다.
+
 ## 최신 확인 대상
 
-v0.56 후보 설치 후 팜팻 네 방향으로 이동 및 충돌 우회 시 방향·걷기 포즈를 확인하고, 여러 몬스터가 보일 때 자동공격이 접근 가능한 최단 경로 타깃을 고르는지, 유효 타깃을 오가며 회전하지 않는지 확인합니다. v0.55 포테 재시작/사망 복귀 통과 결과와 보상 미확정 원칙은 유지합니다.
+v0.57 후보의 CI 통과 후 팜팻 네 방향 이동/충돌 우회, 몬스터 장애물 우회 최단 경로, 자동공격 대상 경로·회전 현상을 기기에서 확인합니다. v0.55 포테 재시작/사망 복귀 통과 결과와 보상 미확정 원칙은 유지합니다.
 
 ## 마지막 전달 APK와 확인된 결함
 

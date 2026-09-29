@@ -2,6 +2,9 @@ package com.projectdark.mobile;
 
 import com.projectdark.mobile.world.AdaptedMillesIsometricTileLayer;
 import com.projectdark.mobile.world.WorldMoveTargetController;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * World contract shared with player navigation: authoritative actor positions live on authored
@@ -39,6 +42,13 @@ public final class MonsterTileCenterLocomotion {
       if(d<bestDistance){bestDistance=d;best=tile;}
     }
     return best==null?null:new WorldMoveTargetController.TileCenter(best.centerX,best.centerY);
+  }
+
+  public static List<WorldMoveTargetController.TileCenter> authoredCenters(){
+    List<WorldMoveTargetController.TileCenter> out=new ArrayList<>();
+    for(AdaptedMillesIsometricTileLayer.Tile tile:AdaptedMillesIsometricTileLayer.tiles())
+      out.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
+    return Collections.unmodifiableList(out);
   }
 
   public static boolean isAuthoredCenter(float x,float y){

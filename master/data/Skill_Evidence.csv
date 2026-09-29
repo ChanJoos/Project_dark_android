@@ -1,4 +1,4 @@
-﻿Evidence_ID,범위,검증 사실,Evidence,Source_URL,프로젝트 적용,,,,,,,,,,,,,,,,,,,,,
+Evidence_ID,범위,검증 사실,Evidence,Source_URL,프로젝트 적용,,,,,,,,,,,,,,,,,,,,,
 SE01,전체,기술은 MP를 소모하지 않고 마법은 MP를 소모한다.,O,https://lod.nexon.com/info/guide/82293,resource model의 최상위 규칙,,,,,,,,,,,,,,,,,,,,,
 SE02,전체,스킬 습득은 레벨·특성치·필요 아이템/Gold 조건을 모두 만족해야 한다.,O,https://lod.nexon.com/info/guide/82293,Skill_Requirements 필수 검사,,,,,,,,,,,,,,,,,,,,,
 SE03,전체,1~5서클 직업 스킬이 존재하며 승급 후 승급스킬이 개방된다.,O,https://lod.nexon.com/info/guide/82293,단계/서클 모델,,,,,,,,,,,,,,,,,,,,,
@@ -9,6 +9,5 @@ SE07,전직복구,전직 후 일부 기술/마법을 Gold로 복구하는 구 �
 SE08,전사/도적/마법사/성직자/무도가,개별 기술의 역할·범위·일부 공식/조건은 팬 위키 문서와 공식호스팅 커뮤니티 자료를 교차 사용.,FAN/V,https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95,개별 Effect_Evidence가 FAN-VERIFIED인 값은 공식 수치보다 낮은 신뢰도로 관리,,,,,,,,,,,,,,,,,,,,,
 SE09,성직자,호르라마/콜라마/엑스벨라룸/수페라에나르마/리치마나/공격계열 설명 등 공식 사이트 공지/게시자료에서 기능 설명 확인.,V,https://lod.nexon.com/News/notice/102752,성직자 효과 교차 검증,,,,,,,,,,,,,,,,,,,,,
 SE10,공통/전사/무도가(구클라이언트),사용자 제공 캡처에서 공통 기술과 전사·무도가 1~5서클의 요구 능력치 및 선수과목 기준을 전사함. 신규 클라이언트 습득 규칙으로 사용하지 않음.,USER-SUPPLIED-IMAGE,1000057796.jpg; 1000057798.jpg; 1000057778.jpg,Skill_Legacy_Requirements.csv 별도 보존; runtime 및 현행 Skill_Requirements 기준값으로 자동 반영 금지,,,,,,,,,,,,,,,,,,,,,
-
-SE09,구클라이언트 조건 캡처,도적·성직자·마법사 캡처의 서클·특성치·선수과목을 역사 자료로 분리 기록.,V,user-provided Screenshot_20260929_233857_NAVER.jpg / Screenshot_20260929_233816_NAVER.jpg / Screenshot_20260929_233811_NAVER.jpg / Screenshot_20260929_233847_NAVER.jpg,현행 Skill_Requirements와 분리 보관
-SE10,마스터 범위,공통 행동 및 PDF에 빠진 직업 기술·마법을 마스터에 추가.,FAN,user-supplied PDF snapshot 어둠의 전설_기술마법,2차 승급 이후 제외
+SE09,구클라이언트 조건 캡처,도적·성직자·마법사 캡처의 서클·특성치·선수과목을 역사 자료로 분리 기록.,V,user-provided Screenshot_20260929_233857_NAVER.jpg / Screenshot_20260929_233816_NAVER.jpg / Screenshot_20260929_233811_NAVER.jpg / Screenshot_20260929_233847_NAVER.jpg,현행 Skill_Requirements와 분리 보관,,,,,,,,,,,,,,,,,,,,,
+SE10,마스터 범위,공통 행동 및 PDF에 빠진 직업 기술·마법을 마스터에 추가.,FAN,user-supplied PDF snapshot 어둠의 전설_기술마법,2차 승급 이후 제외,,,,,,,,,,,,,,,,,,,,,

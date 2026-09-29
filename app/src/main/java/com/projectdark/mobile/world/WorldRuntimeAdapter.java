@@ -208,12 +208,17 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
-    if(!canPlayerOccupy(destinationX,destinationY)
-        ||(actorsBlockMovement&&!runtime.canPlayerTraverseActors(startX,startY,destinationX,destinationY))
-        ||!segmentTraversable(startX,startY,destinationX,destinationY))return false;
+    if(!canPlayerTraverse(startX,startY,destinationX,destinationY))return false;
     runtime.player().x=destinationX;
     runtime.player().y=destinationY;
     return true;
+  }
+
+  /** The planner and live step share actor-path, destination and terrain revalidation. */
+  @Override public boolean canPlayerTraverse(float startX,float startY,float destinationX,float destinationY){
+    return canPlayerOccupy(destinationX,destinationY)
+        &&(!actorsBlockMovement||runtime.canPlayerTraverseActors(startX,startY,destinationX,destinationY))
+        &&segmentTraversable(startX,startY,destinationX,destinationY);
   }
 
   private boolean segmentTraversable(float ax,float ay,float bx,float by){

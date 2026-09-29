@@ -1,6 +1,7 @@
 package com.projectdark.mobile;
 
 import android.graphics.RectF;
+import com.projectdark.mobile.world.WorldMoveTargetController;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -98,6 +99,25 @@ public final class RuntimeState {
     if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
       return com.projectdark.mobile.world.PoteFieldDef.isNavigationCenter(x,y);
     return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
+  }
+  public List<com.projectdark.mobile.world.WorldMoveTargetController.TileCenter> monsterNavigationTiles(){
+    if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
+      return com.projectdark.mobile.world.PoteFieldDef.navigationTiles();
+    return MonsterTileCenterLocomotion.authoredCenters();
+  }
+  public WorldMoveTargetController.Direction nextMonsterChaseStep(Monster monster,float targetX,float targetY){
+    if(monster==null||!monster.alive)return null;
+    return MonsterChasePathfinder.nextStep(monsterNavigationTiles(),monster.x,monster.y,targetX,targetY,
+        (from,to)->monsterCanTraverse(monster,from.x,from.y,to.x,to.y));
+  }
+  private boolean monsterCanTraverse(Monster self,float fromX,float fromY,float toX,float toY){
+    int samples=Math.max(2,(int)Math.ceil(distance(fromX,fromY,toX,toY)/4f));
+    for(int i=1;i<=samples;i++){
+      float t=i/(float)samples,x=fromX+(toX-fromX)*t,y=fromY+(toY-fromY)*t;
+      if(x<currentMinX||x>currentMaxX||y<currentMinY||y>currentMaxY
+          ||!monsterCanOccupy(self,x,y))return false;
+    }
+    return true;
   }
   public WorldDef world(){return world;}
   public Player player(){return player;}

@@ -132,7 +132,8 @@ public final class MonsterAIController {
       if(tile.stepClock+.00001f<MONSTER_STEP_SECONDS_B)return;
       tile.stepClock-=MONSTER_STEP_SECONDS_B;
 
-      WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(dx,dy,tile.lastDirection);
+      WorldMoveTargetController.Direction direction=state.nextMonsterChaseStep(m,state.player().x,state.player().y);
+      if(direction==null){tile.resetClock();return;}
       float beforeX=m.x,beforeY=m.y;
       boolean moved=state.tryMoveMonster(m,direction.dx,direction.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
       if(moved){

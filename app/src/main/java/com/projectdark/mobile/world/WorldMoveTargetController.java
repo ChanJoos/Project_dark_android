@@ -32,6 +32,15 @@ public final class WorldMoveTargetController {
   public interface NavigationWorld {
     List<TileCenter> navigationTiles();
     boolean canPlayerOccupy(float worldX,float worldY);
+    default boolean canPlayerTraverse(float fromX,float fromY,float toX,float toY){
+      float dx=toX-fromX,dy=toY-fromY;
+      int samples=Math.max(2,(int)Math.ceil(Math.sqrt(dx*dx+dy*dy)/4f));
+      for(int i=1;i<=samples;i++){
+        float t=i/(float)samples;
+        if(!canPlayerOccupy(fromX+dx*t,fromY+dy*t))return false;
+      }
+      return true;
+    }
   }
   public interface Walker {
     float worldX();
@@ -229,13 +238,7 @@ public final class WorldMoveTargetController {
   }
   private boolean edgeTraversable(TileCenter from,TileCenter to,Direction direction){
     if(direction==null)return false;
-    float dx=to.x-from.x,dy=to.y-from.y;
-    int samples=Math.max(2,(int)Math.ceil(Math.sqrt(dx*dx+dy*dy)/4f));
-    for(int i=1;i<=samples;i++){
-      float t=i/(float)samples;
-      if(!world.canPlayerOccupy(from.x+dx*t,from.y+dy*t))return false;
-    }
-    return true;
+    return world.canPlayerTraverse(from.x,from.y,to.x,to.y);
   }
   private static List<TileCenter> reconstruct(Node goal){
     List<TileCenter> reversed=new ArrayList<>();for(Node n=goal;n!=null;n=n.parent)reversed.add(n.tile);
