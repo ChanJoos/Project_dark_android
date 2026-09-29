@@ -58,11 +58,11 @@ public class SkillWindowTest {
   @Test public void statsGoldOnlyLearningDoesNotRequireJobOrMasteryAndDescriptionIsStable() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");
     SkillAcquisition a=new SkillAcquisition(b);r.rpg().restoreGold(2000);
-    r.rpg().restoreStats(6,3,3,4,3,0);assertFalse(a.learn("SK_무도가_002",r.rpg()));assertEquals(2000,r.rpg().gold());
+    r.rpg().restoreStats(6,3,3,4,3,0);assertFalse(a.learn("SK_무도가_002",r.rpg()));assertEquals(2000,r.rpg().gold().longValue());
     r.rpg().restoreStats(23,3,3,19,3,0);w.open=true;w.job="무도가";w.selectedId="SK_무도가_007";
     assertFalse(b.learned("SK_무도가_002"));assertTrue(a.quote(b.get(w.selectedId),r.rpg()).canLearn);
-    tap(v,590,425);assertTrue("book learns with no job or prerequisite",b.learned("SK_무도가_007"));assertEquals(1500,r.rpg().gold());
-    tap(v,590,425);assertEquals("duplicate does not pay twice",1500,r.rpg().gold());
+    tap(v,590,425);assertTrue("book learns with no job or prerequisite",b.learned("SK_무도가_007"));assertEquals(1500,r.rpg().gold().longValue());
+    tap(v,590,425);assertEquals("duplicate does not pay twice",1500,r.rpg().gold().longValue());
     tap(v,760,425);tap(v,155,485);assertEquals("SK_무도가_007",b.slot(0));
     int page=w.detailPage,offset=w.detailOffset;tap(v,700,320);tap(v,700,320);assertEquals(page,w.detailPage);assertEquals(offset,w.detailOffset);render(v,"skill-window-learned-slots.png");
     tap(v,760,250);render(v,"skill-window-requirements-ready.png");
@@ -71,15 +71,15 @@ public class SkillWindowTest {
   @Test public void goldMaterialsAndSaveFailureAreTransactional() throws Exception {
     SkillBook b=SkillBook.load(context);RuntimeState r=new RuntimeState();SkillAcquisition a=new SkillAcquisition(b);
     r.rpg().restoreStats(99,99,99,99,99,0);r.rpg().restoreGold(149);
-    assertFalse(a.learn("SK_성직자_011",r.rpg()));assertEquals(149,r.rpg().gold());
-    r.rpg().restoreGold(1000);assertFalse(a.learn("SK_성직자_011",r.rpg()));assertEquals(1000,r.rpg().gold());
+    assertFalse(a.learn("SK_성직자_011",r.rpg()));assertEquals(149,r.rpg().gold().longValue());
+    r.rpg().restoreGold(1000);assertFalse(a.learn("SK_성직자_011",r.rpg()));assertEquals(1000,r.rpg().gold().longValue());
     r.rpg().autoLootResolvedItem("IT_REAGENT_CURANUM",2);
-    assertFalse(a.learn("SK_성직자_011",r.rpg(),()->false));assertFalse(b.learned("SK_성직자_011"));assertEquals(1000,r.rpg().gold());assertEquals(Integer.valueOf(2),r.rpg().inventory().get("IT_REAGENT_CURANUM"));
+    assertFalse(a.learn("SK_성직자_011",r.rpg(),()->false));assertFalse(b.learned("SK_성직자_011"));assertEquals(1000,r.rpg().gold().longValue());assertEquals(Integer.valueOf(2),r.rpg().inventory().get("IT_REAGENT_CURANUM"));
     F5mSaveStore.bindRuntime(r,F5mAdaptedPrologueQuest.openingFixture(),new GrowthQuest2());F5mSaveStore.restoreAndBindSkillsActive(b);
-    assertTrue(a.learn("SK_성직자_011",r.rpg(),()->F5mSaveStore.checkpointActive()));assertEquals(850,r.rpg().gold());assertEquals(Integer.valueOf(1),r.rpg().inventory().get("IT_REAGENT_CURANUM"));
-    assertFalse(a.learn("SK_성직자_011",r.rpg()));assertEquals(850,r.rpg().gold());
+    assertTrue(a.learn("SK_성직자_011",r.rpg(),()->F5mSaveStore.checkpointActive()));assertEquals(850,r.rpg().gold().longValue());assertEquals(Integer.valueOf(1),r.rpg().inventory().get("IT_REAGENT_CURANUM"));
+    assertFalse(a.learn("SK_성직자_011",r.rpg()));assertEquals(850,r.rpg().gold().longValue());
     F5mSaveStore.install(context);RuntimeState restored=new RuntimeState();F5mSaveStore.restoreRewardsActive(restored.rpg());F5mSaveStore.bindRuntime(restored,F5mAdaptedPrologueQuest.openingFixture(),new GrowthQuest2());SkillBook rb=SkillBook.load(context);F5mSaveStore.restoreAndBindSkillsActive(rb);
-    assertTrue(rb.learned("SK_성직자_011"));assertEquals(850,restored.rpg().gold());assertEquals(Integer.valueOf(1),restored.rpg().inventory().get("IT_REAGENT_CURANUM"));
+    assertTrue(rb.learned("SK_성직자_011"));assertEquals(850,restored.rpg().gold().longValue());assertEquals(Integer.valueOf(1),restored.rpg().inventory().get("IT_REAGENT_CURANUM"));
   }
   @Test public void policiesCoverEveryIdAndShowConcreteStatsCostsAndItems() throws Exception {
     SkillBook b=SkillBook.load(context);RuntimeState r=new RuntimeState();SkillAcquisition a=new SkillAcquisition(b);
