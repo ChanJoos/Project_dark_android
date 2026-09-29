@@ -36,8 +36,9 @@ public final class PoteForestMonsterShowcase {
   }
   public static float attackProgress(RuntimeState.Monster monster){
     if(monster==null)return 0f;
-    float progress=monster.attackPrimed?(0.24f-monster.attackWindup)/0.24f
-        :1f-monster.attackVisualRemaining/0.36f;
+    float progress=monster.attackPrimed
+        ?0.5f*(0.24f-monster.attackWindup)/0.24f
+        :0.5f+0.5f*(1f-monster.attackVisualRemaining/0.36f);
     return Math.max(0f,Math.min(1f,progress));
   }
   public static String assetPath(String monsterId,String state,CharacterRenderer.Direction direction){

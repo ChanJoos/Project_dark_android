@@ -111,6 +111,9 @@ public final class MonsterAIController {
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
     if(m.isMoving){tile.resetClock();return;}
+    // Keep the attack facing locked through visual recovery; beginning a walk pose before
+    // that lock expires makes the sprite appear to move while looking at its old target.
+    if(m.attackVisualRemaining>0f){tile.resetClock();return;}
     ensureCentered(state,m,tile);
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;

@@ -76,6 +76,75 @@ public final class PoteMonsterPlayableRuntimeTest {
     combat.tick(0.24f);
     assertTrue("shared combat resolver applies the B damage on hit frame",state.player().hp<hp);
   }
+  @Test public void monsterAttackCompletesBeforeItTurnsAndWalksTowardANewTarget(){
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+    state.enterPoteField();
+    RuntimeState.Monster monster=find(state,"POTE_PURPLE");
+    for(RuntimeState.Monster other:state.monsters())if(other!=monster)other.alive=false;
+    RuntimeCombatSession combat=new RuntimeCombatSession(state,(a,t)->true,
+        RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
+    MonsterAIController ai=new MonsterAIController(
+        new MonsterAIController.SharedResolverAttackRouter(combat.monsterAutoBridge()));
+    WorldMoveTargetController.TileCenter attacker=null,target=null;
+    for(WorldMoveTargetController.TileCenter from:tiles){
+      for(WorldMoveTargetController.TileCenter to:tiles){
+        if(PoteFieldDef.areAdjacentGroundTiles(from.x,from.y,to.x,to.y)){attacker=from;target=to;break;}
+      }
+      if(attacker!=null)break;
+    }
+    assertNotNull(attacker);assertNotNull(target);
+    monster.x=attacker.x;monster.y=attacker.y;state.player().x=target.x;state.player().y=target.y;
+    ai.tick(state,0f);assertTrue(monster.attackPrimed);
+    state.tick(.25f);ai.tick(state,0f);
+    assertEquals(MonsterAIController.SubmissionOutcome.ACCEPTED,ai.lastAttackSubmission().outcome);
+    assertTrue(monster.visualFacing.attackLocked());
+    assertEquals(.5f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
+
+    WorldMoveTargetController.TileCenter goal=null;
+    WorldMoveTargetController.Direction expected=null;
+    for(WorldMoveTargetController.TileCenter candidate:tiles){
+      float d=(float)Math.hypot(candidate.x-monster.x,candidate.y-monster.y);
+      if(d<80f||d>=180f)continue;
+      WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(
+          candidate.x-monster.x,candidate.y-monster.y,WorldMoveTargetController.Direction.SE);
+      float nx=monster.x+direction.dx,ny=monster.y+direction.dy;
+      boolean nextIsTile=tiles.stream().anyMatch(t->Math.abs(t.x-nx)<.1f&&Math.abs(t.y-ny)<.1f);
+      if(nextIsTile&&Math.hypot(nx-candidate.x,ny-candidate.y)>=40f){goal=candidate;expected=direction;break;}
+    }
+    assertNotNull("a clear new pursuit target must be available",goal);
+    state.player().x=goal.x;state.player().y=goal.y;
+    CharacterRenderer.Direction locked=monster.visualFacing.presentation();
+    ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+.01f);
+    assertFalse("pursuit waits while the attack recovery is visible",monster.isMoving);
+    assertEquals("attack-facing remains locked through recovery",locked,monster.visualFacing.presentation());
+
+    state.tick(.37f);
+    assertFalse(monster.visualFacing.attackLocked());
+    ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+.01f);
+    assertTrue("monster starts moving after attack recovery",monster.isMoving);
+    assertEquals("walk pose faces the newly applied step",
+        MonsterTileCenterLocomotion.facing(expected),monster.visualFacing.presentation());
+    assertEquals("walk",PoteForestMonsterShowcase.poseFor(monster));
+  }
+
+  @Test public void attackProgressIsContinuousAndPeaksOnceAtContact(){
+    RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+    RuntimeState.Monster monster=find(state,"POTE_PURPLE");
+    monster.attackPrimed=true;monster.attackWindup=.24f;
+    assertEquals(0f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
+    monster.attackWindup=.12f;
+    assertEquals(.25f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
+    monster.attackWindup=0f;
+    assertEquals(.5f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
+    monster.attackPrimed=false;monster.attackVisualRemaining=.36f;
+    assertEquals(.5f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
+    monster.attackVisualRemaining=.18f;
+    assertEquals(.75f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
+    monster.attackVisualRemaining=0f;
+    assertEquals(1f,PoteForestMonsterShowcase.attackProgress(monster),.001f);
+  }
+
   @Test public void everyCandidateMovesWithItsAppliedFacingAndAttacksOnlyInFourDiagonalDirections(){
     List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
     for(String id:PoteForestMonsterShowcase.monsterIds()){
