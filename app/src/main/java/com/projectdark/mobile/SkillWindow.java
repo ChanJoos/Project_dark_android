@@ -68,7 +68,7 @@ final class SkillWindow {
   }
   private void metric(Canvas c,float x,String name,String value){fill(c,x,350,x+122,396,0xff2c3528);label(c,name,x+9,367,12,MUTED,false);label(c,value,x+9,389,17,TEXT,true);}
   private void icon(Canvas c,SkillBook.Entry e,RectF r){
-    fill(c,r.left,r.top,r.right,r.bottom,0xff3d3627);outline(c,r,0xff88744d,1);RectF inner=new RectF(r.left+5,r.top+5,r.right-5,r.bottom-5);
+    fill(c,r.left,r.top,r.right,r.bottom,0xff3d3627);outline(c,r,0xff88744d,1);float art=Math.min(40,r.width()-8);RectF inner=new RectF(r.centerX()-art/2,r.centerY()-art/2,r.centerX()+art/2,r.centerY()+art/2);
     if(icons.draw(c,e.id,inner))return;
     // Original artwork is absent: use an explicit project vector emblem, never another skill's crop.
     c.save();c.translate(r.centerX(),r.centerY());float unit=r.width()/56;c.scale(unit,unit);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2.2f);p.setColor(GOLD);p.setStrokeCap(Paint.Cap.ROUND);
