@@ -77,7 +77,33 @@
     "SK_마법사_019": 71,
     "SK_마법사_020": 72,
     "SK_마법사_021": 73,
-    "SK_마법사_022": 74
+    "SK_마법사_022": 74,
+    "SK_무도가_032": 75,
+    "SK_무도가_030": 76,
+    "SK_무도가_031": 77,
+    "SK_무도가_008": 78,
+    "SK_무도가_011": 79,
+    "SK_무도가_012": 80,
+    "SK_무도가_013": 81,
+    "SK_무도가_015": 82,
+    "SK_무도가_017": 83,
+    "SK_무도가_016": 84,
+    "SK_무도가_021": 85,
+    "SK_무도가_020": 86,
+    "SK_도적_013": 87,
+    "SK_도적_011": 88,
+    "SK_무도가_002": 89,
+    "SK_무도가_003": 90,
+    "SK_무도가_005": 91,
+    "SK_무도가_006": 92,
+    "SK_무도가_007": 93,
+    "SK_무도가_009": 94,
+    "SK_무도가_010": 95,
+    "SK_무도가_014": 96,
+    "SK_무도가_018": 97,
+    "SK_무도가_019": 98,
+    "SK_무도가_023": 99,
+    "SK_무도가_022": 100
   },
   "audit": [
     {
@@ -1274,6 +1300,452 @@
       "skill_id": "SK_마법사_022",
       "status": "REGISTERED_SOURCE_CROP",
       "atlas_index": 74
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "쿠로토",
+      "crop": [
+        19,
+        856,
+        60,
+        896
+      ],
+      "skill_id": "SK_무도가_032",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 75
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "일루메나",
+      "crop": [
+        19,
+        906,
+        60,
+        945
+      ],
+      "skill_id": "SK_무도가_030",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 76
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "디베노모",
+      "crop": [
+        19,
+        960,
+        60,
+        1001
+      ],
+      "skill_id": "SK_무도가_031",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 77
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "경신공",
+      "crop": [
+        19,
+        1012,
+        60,
+        1059
+      ],
+      "skill_id": "SK_무도가_008",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 78
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "흡정신공",
+      "crop": [
+        19,
+        1067,
+        60,
+        1111
+      ],
+      "skill_id": "SK_무도가_011",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 79
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "쿠랄툼",
+      "crop": [
+        19,
+        1119,
+        60,
+        1160
+      ],
+      "skill_id": "SK_무도가_012",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 80
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "철포삼",
+      "crop": [
+        20,
+        1174,
+        59,
+        1214
+      ],
+      "skill_id": "SK_무도가_013",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 81
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "장풍",
+      "crop": [
+        19,
+        1226,
+        60,
+        1267
+      ],
+      "skill_id": "SK_무도가_015",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 82
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "쿠라노토",
+      "crop": [
+        19,
+        1280,
+        60,
+        1320
+      ],
+      "skill_id": "SK_무도가_017",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 83
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "금강불괴",
+      "crop": [
+        20,
+        1330,
+        60,
+        1370
+      ],
+      "skill_id": "SK_무도가_016",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 84
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "구양신공",
+      "crop": [
+        19,
+        1385,
+        61,
+        1426
+      ],
+      "skill_id": "SK_무도가_021",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 85
+    },
+    {
+      "source": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "source_sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "job": "무도가",
+      "source_name": "다라밀공",
+      "crop": [
+        19,
+        1440,
+        60,
+        1482
+      ],
+      "skill_id": "SK_무도가_020",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 86
+    },
+    {
+      "source": "11-Screenshot_20260929_233743_NAVER.jpg",
+      "source_sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e",
+      "job": "전사",
+      "source_name": "쿠로토",
+      "crop": [
+        21,
+        991,
+        61,
+        1030
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "11-Screenshot_20260929_233743_NAVER.jpg",
+      "source_sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e",
+      "job": "도적",
+      "source_name": "쿠로토",
+      "crop": [
+        21,
+        1133,
+        61,
+        1172
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "11-Screenshot_20260929_233743_NAVER.jpg",
+      "source_sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e",
+      "job": "도적",
+      "source_name": "수페라동엑스투",
+      "crop": [
+        21,
+        1184,
+        61,
+        1232
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "11-Screenshot_20260929_233743_NAVER.jpg",
+      "source_sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e",
+      "job": "도적",
+      "source_name": "라이트닝무브",
+      "crop": [
+        21,
+        1236,
+        61,
+        1274
+      ],
+      "skill_id": "SK_도적_013",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 87
+    },
+    {
+      "source": "11-Screenshot_20260929_233743_NAVER.jpg",
+      "source_sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e",
+      "job": "도적",
+      "source_name": "하이드",
+      "crop": [
+        21,
+        1287,
+        61,
+        1334
+      ],
+      "skill_id": "SK_도적_011",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 88
+    },
+    {
+      "source": "11-Screenshot_20260929_233743_NAVER.jpg",
+      "source_sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e",
+      "job": "도적",
+      "source_name": "센스",
+      "crop": [
+        21,
+        1340,
+        61,
+        1384
+      ],
+      "skill_id": "SK_도적_010",
+      "status": "DUPLICATE_NOT_REGISTERED"
+    },
+    {
+      "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+      "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+      "job": "무도가",
+      "source_name": "단각",
+      "crop": [
+        323,
+        215,
+        461,
+        358
+      ],
+      "skill_id": "SK_무도가_002",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 89
+    },
+    {
+      "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+      "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+      "job": "무도가",
+      "source_name": "이형환위",
+      "crop": [
+        323,
+        401,
+        461,
+        547
+      ],
+      "skill_id": "SK_무도가_003",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 90
+    },
+    {
+      "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+      "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+      "job": "무도가",
+      "source_name": "양의신권",
+      "crop": [
+        324,
+        592,
+        459,
+        724
+      ],
+      "skill_id": "SK_무도가_005",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 91
+    },
+    {
+      "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+      "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+      "job": "무도가",
+      "source_name": "통배권",
+      "crop": [
+        323,
+        760,
+        461,
+        896
+      ],
+      "skill_id": "SK_무도가_006",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 92
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "붕각",
+      "crop": [
+        340,
+        118,
+        480,
+        263
+      ],
+      "skill_id": "SK_무도가_007",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 93
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "백보신권",
+      "crop": [
+        342,
+        293,
+        478,
+        428
+      ],
+      "skill_id": "SK_무도가_009",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 94
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "일음지",
+      "crop": [
+        340,
+        492,
+        480,
+        629
+      ],
+      "skill_id": "SK_무도가_010",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 95
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "선풍각",
+      "crop": [
+        340,
+        672,
+        480,
+        818
+      ],
+      "skill_id": "SK_무도가_014",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 96
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "발경",
+      "crop": [
+        340,
+        859,
+        480,
+        997
+      ],
+      "skill_id": "SK_무도가_018",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 97
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "소수신공",
+      "crop": [
+        342,
+        1055,
+        478,
+        1196
+      ],
+      "skill_id": "SK_무도가_019",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 98
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "달마신공",
+      "crop": [
+        340,
+        1226,
+        480,
+        1371
+      ],
+      "skill_id": "SK_무도가_023",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 99
+    },
+    {
+      "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "job": "무도가",
+      "source_name": "반탄신공",
+      "crop": [
+        340,
+        1412,
+        480,
+        1551
+      ],
+      "skill_id": "SK_무도가_022",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 100
     }
   ]
 }

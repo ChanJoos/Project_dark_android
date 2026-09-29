@@ -72,7 +72,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     return (float)Math.sqrt(dx*dx+dy*dy);
   }
 
-  public boolean hasLineOfSight(String actorId,String targetId){return lineOfSight.hasLineOfSight(actorId,targetId);}
+  public boolean hasLineOfSight(String actorId,String targetId){return actorId.equals(targetId)||lineOfSight.hasLineOfSight(actorId,targetId);}
 
   public void consumeResource(String actorId,int amount){
     if(amount<=0)return;
@@ -94,7 +94,12 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public CombatResolver.EffectResult applyDamage(String actorId,String targetId,String actionId,int amount){
-    CombatStatPipeline.Channel channel="cast_proto".equals(actionId)?CombatStatPipeline.Channel.MAGIC:CombatStatPipeline.Channel.PHYSICAL;
+    if(SkillRuntimeCatalog.healing(actionId)){
+      if(!"player".equals(actorId)||!actorId.equals(targetId)||!state.player().alive)throw new IllegalArgumentException("self heal target");
+      int before=state.player().hp;state.player().hp=Math.min(state.player().maxHp,before+amount+state.rpg().wis());
+      return new CombatResolver.EffectResult(state.player().hp-before,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,CombatResolver.HitSemantic.HEAL);
+    }
+    CombatStatPipeline.Channel channel=SkillRuntimeCatalog.magic(actionId)?CombatStatPipeline.Channel.MAGIC:CombatStatPipeline.Channel.PHYSICAL;
     FinalStats attacker="player".equals(actorId)?state.rpg().finalStats():monsterStats();
     FinalStats defender="player".equals(targetId)?state.rpg().finalStats():monsterStats();
     amount=CombatStatPipeline.resolve(amount,channel,attacker,defender).applied;

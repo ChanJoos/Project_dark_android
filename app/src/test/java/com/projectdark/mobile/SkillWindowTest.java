@@ -21,7 +21,7 @@ public class SkillWindowTest {
   @Test public void catalogPreservesMasterAndCommonerCannotUseOrRegister(){
     SkillBook b=SkillBook.load(context);assertEquals(222,b.entries().size());assertEquals("숏블레이드",b.get("SK_전사_001").name);
     assertEquals(0,b.list(false,true).size());assertFalse(b.usable("cast_proto"));assertFalse(b.assign(0,"cast_proto"));
-    assertTrue(b.learn("SK_전사_001",0));assertFalse("effect description is not executable combat",b.usable("SK_전사_001"));assertFalse(b.assign(0,"SK_전사_001"));
+    assertTrue(b.learn("SK_전사_001",0));assertTrue(b.usable("SK_전사_001"));assertTrue(b.assign(0,"SK_전사_001"));
     assertFalse(b.learn("unknown",10));assertFalse(b.learn("cast_proto",101));
   }
   @Test public void checkpointRestoresLearnedActionsAndSlotsAtomically() throws Exception {
@@ -52,8 +52,34 @@ public class SkillWindowTest {
     tap(v,907,67);assertFalse(w.open);
   }
   @Test public void referenceIconsUseExactIdsAndUnknownDoesNotBorrowArt(){
-    SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertFalse(icons.has("SK_전사_001"));assertFalse(icons.has("missing"));
+    SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertFalse(icons.has("SK_전사_001"));assertTrue(icons.has("SK_무도가_002"));assertTrue(icons.has("SK_무도가_032"));assertFalse(icons.has("missing"));
     Bitmap bitmap=Bitmap.createBitmap(60,60,Bitmap.Config.ARGB_8888);assertTrue(icons.draw(new Canvas(bitmap),"SK_마법사_001",new RectF(4,4,44,44)));assertNotEquals(0,bitmap.getPixel(20,20));
+  }
+  @Test public void captureAcquisitionRequiresJobStatsAndPrerequisiteAndDoesNotCycleDescription() throws Exception {
+    GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");
+    SkillAcquisition a=new SkillAcquisition(b);assertFalse(a.learn("SK_무도가_002",r.rpg()));assertFalse(b.learned("SK_무도가_002"));
+    Field job=RpgProgressionState.class.getDeclaredField("currentJobCode");job.setAccessible(true);job.set(r.rpg(),"MARTIAL_ARTIST");
+    r.rpg().restoreStats(6,3,3,4,3,0);assertFalse(a.learn("SK_무도가_002",r.rpg()));
+    r.rpg().restoreStats(23,3,3,19,3,0);w.open=true;w.job="무도가";w.selectedId="SK_무도가_002";
+    tap(v,700,432);assertTrue("real learn button grants once",b.learned("SK_무도가_002"));assertEquals(0,b.proficiency("SK_무도가_002"));
+    tap(v,860,432);tap(v,324,485);assertEquals("SK_무도가_002",b.slot(0));
+    assertFalse("prerequisite proficiency gate",a.learn("SK_무도가_007",r.rpg()));for(int i=0;i<60;i++)b.practiced("SK_무도가_002");assertTrue(a.learn("SK_무도가_007",r.rpg()));
+    int page=w.detailPage,offset=w.detailOffset;tap(v,700,320);tap(v,700,320);assertEquals(page,w.detailPage);assertEquals(offset,w.detailOffset);render(v,"skill-window-acquired.png");
+    w.selectedId="SK_무도가_007";tap(v,860,432);tap(v,400,485);assertEquals("SK_무도가_007",b.slot(1));tap(v,860,432);tap(v,400,485);assertNull("register same skill explicitly clears",b.slot(1));
+  }
+  @Test public void realSkillCooldownSharedBetweenDuplicateSlotsAndExpiresWithoutDoubleCharge() throws Exception {
+    GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");RuntimeState r=field(v,"state");RuntimeCombatSession session=field(v,"combatSession");
+    b.learn("SK_무도가_032",0);b.assign(0,"SK_무도가_032");b.assign(1,"SK_무도가_032");r.player().hp=40;r.player().mp=50;
+    Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,0),duplicate=(RectF)rect.invoke(v,1);
+    tap(v,slot.centerX(),slot.centerY());assertEquals(44,r.player().mp);assertEquals(40,r.player().hp);assertTrue(session.cooldownRemaining("player","SK_무도가_032")>0);
+    session.tick(.3f);assertEquals(58,r.player().hp);int hp=r.player().hp;tap(v,duplicate.centerX(),duplicate.centerY());assertEquals(44,r.player().mp);assertEquals(hp,r.player().hp);
+    SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="무도가";w.selectedId="SK_무도가_032";render(v,"skill-window-cooldown.png");w.close();
+    session.tick(1.7f);assertEquals(0,session.cooldownRemaining("player","SK_무도가_032"),.0001f);assertTrue(session.submitPlayer("player","SK_무도가_032").accepted());assertEquals(38,r.player().mp);
+    session.tick(.3f);assertEquals(76,r.player().hp);
+  }
+  @Test public void learnedUnimplementedSkillRegistersAndRestoresWithoutPretendingCombatSupport() throws Exception {
+    SkillBook b=SkillBook.load(context);assertTrue(b.learn("SK_무도가_003",0));assertTrue(b.assign(2,"SK_무도가_003"));assertFalse(b.usable("SK_무도가_003"));SkillBook restored=SkillBook.load(context);assertTrue(restored.restore(b.snapshot()));assertEquals("SK_무도가_003",restored.slot(2));
+    for(SkillDef d:SkillRuntimeCatalog.definitions())assertNotNull("all adaptation IDs must be real Master IDs",b.get(d.id));
   }
   private static SkillBook.Entry bEntry(GameView v,String id)throws Exception{return ((SkillBook)field(v,"skillBook")).get(id);}
   private static void render(GameView v,String name)throws Exception{Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File dir=new File("build/reports/device-review");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,name))){image.compress(Bitmap.CompressFormat.PNG,100,out);}}
