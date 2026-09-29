@@ -1,0 +1,14 @@
+Skill_Name,Job,Legacy_Circle,STR,INT,WIS,CON,DEX,Prerequisite_Skill,Required_Prerequisite_Level,Source,Confidence,Ruleset
+레스큐,전사,1,10,3,3,6,3,,,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+더블어택,전사,2,16,3,3,10,3,,,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+윈드블레이드,전사,2,32,3,3,24,3,,,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+디바투,전사,2,41,3,3,35,3,레스큐,60,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+트리플어택,전사,3,46,3,3,40,3,더블어택,60,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+메가블레이드,전사,3,62,3,3,54,3,윈드블레이드,60,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+바투,전사,3,71,3,3,58,3,레스큐,100,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+투핸드어택,전사,4,76,3,3,60,3,트리플어택,75,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+드래곤모드,전사,4,71,3,3,67,3,트리플어택;메가블레이드,90,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+적무기쳐내기,전사,4,92,3,3,65,3,메가블레이드,75,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+완전방어,전사,5,74,3,3,69,3,적무기쳐내기,90,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+매드소울,전사,5,99,3,3,71,3,윈드블레이드;메가블레이드,100,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
+크래셔,전사,5,99,3,3,73,3,완전방어;매드소울,30,user-uploaded capture 1000057798.jpg,High visual,Legacy pre-new-client acquisition table
