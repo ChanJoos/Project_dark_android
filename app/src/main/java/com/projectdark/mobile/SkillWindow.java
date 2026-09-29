@@ -12,7 +12,7 @@ final class SkillWindow {
   private static final String[] JOBS={"전체","공통","전사","도적","무도가","마법사","성직자"};
   private static final int TEXT=0xfff1e9d8,MUTED=0xffb2aa97,GOLD=0xffedc884,GREEN=0xffb7dca0,RED=0xffefaa91;
   boolean open,magic,learnedOnly,availableOnly,choosingSlot,archive,jobMenu;
-  int page,detailPage,detailOffset,flashSlot=-1;String selectedId,job="전체",message="";
+  int page,detailPage,detailOffset,flashSlot=-1,messageColor=GREEN;String selectedId,job="전체",message="";
   private final SkillBook book;private final SkillIconCatalog icons;private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
   private final RectF bounds=new RectF(40,16,920,534);
   SkillWindow(SkillBook b,SkillIconCatalog i){book=b;icons=i;}
@@ -39,7 +39,7 @@ final class SkillWindow {
     boolean supported=e!=null&&e.runtime!=null&&!"검증용".equals(e.job);SkillAcquisition.Quote q=e==null?null:a.quote(e);
     String learn=e==null?"습득":!supported?"습득 불가":q.learned?"습득 완료":q.gold==0?"무료 습득":"습득 · "+number(q.gold)+" G";
     button(c,new RectF(482,438,682,474),learn,e!=null&&a.canLearn(e));button(c,new RectF(690,438,896,474),choosingSlot?"등록 취소":"퀵슬롯 등록",supported&&q.learned);
-    fitted(c,message.isEmpty()?choosingSlot?"등록할 슬롯을 선택하세요":"퀵슬롯 · 8칸":message,64,458,394,14,message.isEmpty()?MUTED:GREEN,false);
+    fitted(c,message.isEmpty()?choosingSlot?"등록할 슬롯을 선택하세요":"퀵슬롯 · 8칸":message,64,458,394,14,message.isEmpty()?MUTED:messageColor,false);
     for(int i=0;i<8;i++){RectF r=bookSlot(i);panel(c,r,0xff2b3025,choosingSlot||i==flashSlot?GOLD:0xff59624c);label(c,""+(i+1),r.left+6,r.top+17,12,MUTED,false);SkillBook.Entry sl=book.get(book.slot(i));if(sl==null)center(c,"+",r.centerX(),r.centerY()+6,19,0xff67715c);else{icon(c,sl,new RectF(r.left+31,r.top+4,r.left+69,r.top+42));float cd=a.cooldown(sl.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb5000000);center(c,String.format(Locale.ROOT,"%.1f",cd),r.centerX(),r.centerY()+6,17,TEXT);}}}
     if(jobMenu){panel(c,new RectF(64,168,458,448),0xff242b20,GOLD);for(int i=0;i<JOBS.length;i++)tab(c,new RectF(68,170+i*39,454,208+i*39),JOBS[i],job.equals(JOBS[i]));}
   }
@@ -61,9 +61,9 @@ final class SkillWindow {
       metric(c,502,"소모 MP",d==null?"—":""+d.mpCost);metric(c,628,"재사용",d==null?"—":basic?"무기 기준":String.format(Locale.ROOT,"%.1f초",d.cooldown));metric(c,754,d!=null&&d.targetPolicy==SkillDef.TargetPolicy.SELF?"회복량":"기본 위력",value);
       float cd=a.cooldown(e.id);if(d==null)label(c,"습득·결제는 제공하지 않습니다",502,415,13,MUTED,false);else{label(c,"대상  "+(d.targetPolicy==SkillDef.TargetPolicy.SELF?"자신":d.range<=48?"근접 적 1명":"원거리 적 1명"),502,415,13,MUTED,false);if(cd>0)right(c,String.format(Locale.ROOT,"%.1f초 후 사용 가능",cd),876,415,13,GOLD);}
     }else{
-      label(c,"요구 / 현재 스탯",502,290,12,MUTED,false);for(int i=0;i<5;i++){float x=502+(i%3)*126,y=300+(i/3)*33;fill(c,x,y,x+122,y+29,0xff2a3429);label(c,SkillAcquisition.STATS[i],x+7,y+20,12,MUTED,false);right(c,q.required[i]+" / "+q.current[i],x+115,y+20,14,q.current[i]>=q.required[i]?GREEN:RED);}
-      label(c,"습득 비용",502,389,14,TEXT,true);right(c,number(q.gold)+" G / 보유 "+number(q.ownedGold)+" G",876,389,14,q.ownedGold>=q.gold?GREEN:RED);
-      if(q.materials.isEmpty())label(c,"필요 아이템 없음",502,414,13,MUTED,false);else for(SkillAcquisition.Material m:q.materials){label(c,m.name+" "+m.required+"개",502,414,13,TEXT,false);right(c,"보유 "+m.owned+"개 · 멀린 상점",876,414,13,m.owned>=m.required?GREEN:RED);}
+      label(c,"요구 / 현재 스탯",502,290,12,MUTED,false);for(int i=0;i<5;i++){float x=502+(i%3)*126,y=300+(i/3)*33;fill(c,x,y,x+122,y+29,0xff2a3429);label(c,SkillAcquisition.STATS[i],x+7,y+20,12,MUTED,false);right(c,q.required[i]+" / "+q.current[i],x+115,y+20,14,q.learned?MUTED:q.current[i]>=q.required[i]?GREEN:RED);}
+      label(c,q.learned?"습득 완료":"습득 비용",502,389,14,TEXT,true);right(c,q.learned?"추가 결제 없음":number(q.gold)+" G / 보유 "+number(q.ownedGold)+" G",876,389,14,q.learned||q.ownedGold>=q.gold?GREEN:RED);
+      if(q.learned)label(c,"추가 아이템 필요 없음",502,414,13,MUTED,false);else if(q.materials.isEmpty())label(c,"필요 아이템 없음",502,414,13,MUTED,false);else for(SkillAcquisition.Material m:q.materials){label(c,m.name+" "+m.required+"개",502,414,13,TEXT,false);right(c,"보유 "+m.owned+"개 · 멀린 상점",876,414,13,m.owned>=m.required?GREEN:RED);}
     }
   }
   private void metric(Canvas c,float x,String name,String value){fill(c,x,350,x+122,396,0xff2c3528);label(c,name,x+9,367,12,MUTED,false);label(c,value,x+9,389,17,TEXT,true);}
@@ -74,7 +74,7 @@ final class SkillWindow {
     c.save();c.translate(r.centerX(),r.centerY());float unit=r.width()/56;c.scale(unit,unit);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2.2f);p.setColor(GOLD);p.setStrokeCap(Paint.Cap.ROUND);
     if("SK_무도가_001".equals(e.id)){c.drawRoundRect(new RectF(-12,-9,12,10),4,4,p);for(int i=0;i<4;i++)c.drawLine(-9+i*6,-9,-9+i*6,0,p);c.drawLine(-8,11,-6,18,p);c.drawLine(8,11,6,18,p);}
     else if(e.runtime!=null&&e.runtime.actionClass==SkillDef.ActionClass.TECHNIQUE){Path blade=new Path();blade.moveTo(-11,12);blade.lineTo(13,-16);blade.lineTo(17,-17);blade.lineTo(17,-12);blade.lineTo(-7,16);blade.close();c.drawPath(blade,p);c.drawLine(-15,9,-3,20,p);c.drawLine(-11,16,-16,22,p);if("SK_도적_007".equals(e.id))c.drawLine(-18,-10,-5,-18,p);}
-    else{c.drawCircle(0,0,13,p);c.drawLine(-7,-4,7,-4,p);c.drawLine(-7,3,7,3,p);c.drawLine(-7,10,3,10,p);}p.setStyle(Paint.Style.FILL);c.restore();
+    else if(e.runtime!=null&&e.runtime.targetPolicy==SkillDef.TargetPolicy.SELF){c.drawCircle(0,0,17,p);c.drawLine(-10,0,10,0,p);c.drawLine(0,-10,0,10,p);}else if(e.runtime!=null){Path bolt=new Path();bolt.moveTo(5,-18);bolt.lineTo(-9,2);bolt.lineTo(0,2);bolt.lineTo(-5,18);bolt.lineTo(12,-4);bolt.lineTo(3,-4);bolt.close();c.drawPath(bolt,p);c.drawCircle(0,0,21,p);}else{c.drawRoundRect(new RectF(-14,-16,14,16),3,3,p);c.drawLine(-8,-7,8,-7,p);c.drawLine(-8,0,8,0,p);c.drawLine(-8,7,4,7,p);}p.setStyle(Paint.Style.FILL);c.restore();
   }
   boolean touch(float x,float y,Actions a){
     if(!open)return false;if(new RectF(850,24,908,76).contains(x,y)){close();return true;}if(!bounds.contains(x,y))return true;
@@ -84,9 +84,9 @@ final class SkillWindow {
     if(y>=128&&y<=166){if(x>=64&&x<=254)jobMenu=true;else if(x>=264&&x<=306){page=Math.max(0,page-1);selectedId=null;}else if(x>=416&&x<=458){page=Math.min(page+1,Math.max(0,(rows(a).size()-1)/PAGE_SIZE));selectedId=null;}return true;}
     for(int i=0;i<PAGE_SIZE;i++)if(cell(i).contains(x,y)){List<SkillBook.Entry> list=rows(a);int n=page*PAGE_SIZE+i;if(n<list.size()){selectedId=list.get(n).id;detailPage=detailOffset=0;choosingSlot=false;message="";}return true;}
     if(y>=232&&y<=270&&x>=502&&x<=876){detailPage=x>=694?1:0;return true;}
-    if(y>=438&&y<=474){if(x>=482&&x<=682&&selected()!=null&&!book.learned(selectedId)){a.learn(selected());if(book.learned(selectedId))message=selected().name+" 습득 · 퀵슬롯에 등록하세요";else message=a.requirements(selected());}else if(x>=690&&x<=896&&selected()!=null){if(book.learned(selectedId)&&selected().runtime!=null){choosingSlot=!choosingSlot;message="";}else message="사용할 스킬을 먼저 습득하세요";}return true;}
+    if(y>=438&&y<=474){if(x>=482&&x<=682&&selected()!=null&&!book.learned(selectedId)){if(!a.canLearn(selected())){message=a.quote(selected()).canLearn?"저장 상태 확인 후 다시 시도하세요":a.requirements(selected());messageColor=RED;detailPage=1;return true;}a.learn(selected());if(book.learned(selectedId)){message=selected().name+" 습득 · 퀵슬롯에 등록하세요";messageColor=GREEN;}else{message="저장 실패 · 습득 비용을 돌려드렸습니다";messageColor=RED;}}else if(x>=690&&x<=896&&selected()!=null){if(book.learned(selectedId)&&selected().runtime!=null){choosingSlot=!choosingSlot;message="";}else message="사용할 스킬을 먼저 습득하세요";}return true;}
     for(int i=0;i<8;i++)if(bookSlot(i).contains(x,y)){
-      if(choosingSlot&&selected()!=null){org.json.JSONObject before=book.snapshot();if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;if(!a.save()){book.restore(before);message="저장 실패 · 등록 취소";a.notice(message);return true;}choosingSlot=false;flashSlot=i;message="슬롯 "+(i+1)+" · "+(book.slot(i)==null?"등록 해제":selected().name+" 등록");a.notice(message);}
+      if(choosingSlot&&selected()!=null){org.json.JSONObject before=book.snapshot();if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;if(!a.save()){book.restore(before);message="저장 실패 · 등록 취소";messageColor=RED;a.notice(message);return true;}choosingSlot=false;flashSlot=i;messageColor=GREEN;message="슬롯 "+(i+1)+" · "+(book.slot(i)==null?"등록 해제":selected().name+" 등록");a.notice(message);}
       else{SkillBook.Entry e=book.get(book.slot(i));if(e!=null){selectedId=e.id;detailPage=detailOffset=0;message=e.name+" · 슬롯 "+(i+1);}}return true;
     }return true;
   }
