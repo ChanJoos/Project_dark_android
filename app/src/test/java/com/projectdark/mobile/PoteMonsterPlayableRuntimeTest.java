@@ -7,6 +7,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import com.projectdark.mobile.world.PoteFieldDef;
 import com.projectdark.mobile.world.WorldMoveTargetController;
+import com.projectdark.mobile.world.WorldRuntimeAdapter;
 import java.util.List;
 
 /** Exercises the same AI and shared combat route wired into GameView for the Pote actor. */
@@ -293,6 +294,46 @@ public final class PoteMonsterPlayableRuntimeTest {
           Math.hypot(monster.moveTargetX-state.player().x,monster.moveTargetY-state.player().y)
               >=RuntimeState.MONSTER_RADIUS+RuntimeState.PLAYER_RADIUS+5f);
     }
+  }
+
+  @Test public void automaticApproachCannotEnterAMonsterReservedTile(){
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+    state.enterPoteField();
+    RuntimeState.Monster monster=find(state,"POTE_PURPLE");
+    for(RuntimeState.Monster other:state.monsters())if(other!=monster)other.alive=false;
+    WorldMoveTargetController.TileCenter monsterStart=null,reserved=null,playerStart=null;
+    outer:for(WorldMoveTargetController.TileCenter destination:tiles){
+      for(WorldMoveTargetController.TileCenter from:tiles){
+        if(!PoteFieldDef.areAdjacentGroundTiles(from.x,from.y,destination.x,destination.y))continue;
+        for(WorldMoveTargetController.TileCenter player:tiles){
+          if((Math.abs(player.x-from.x)>.1f||Math.abs(player.y-from.y)>.1f)
+              &&PoteFieldDef.areAdjacentGroundTiles(player.x,player.y,destination.x,destination.y)){
+            monsterStart=from;reserved=destination;playerStart=player;break outer;
+          }
+        }
+      }
+    }
+    assertNotNull("find two legal approaches to one tile",monsterStart);
+    monster.x=monsterStart.x;monster.y=monsterStart.y;
+    monster.moveStartX=monsterStart.x;monster.moveStartY=monsterStart.y;
+    monster.moveTargetX=reserved.x;monster.moveTargetY=reserved.y;
+    monster.moveDuration=WorldMoveTargetController.TILE_STEP_SECONDS;
+    monster.moveElapsed=.15f;monster.isMoving=true;
+    state.player().x=playerStart.x;state.player().y=playerStart.y;
+
+    WorldRuntimeAdapter world=new WorldRuntimeAdapter(state,960f,540f,
+        PoteFieldDef.MIN_X,PoteFieldDef.MAX_X,PoteFieldDef.MIN_Y,PoteFieldDef.MAX_Y,
+        tiles,PoteFieldDef.obstacles(),true);
+    assertFalse("approach planning rejects the moving monster's reserved endpoint",
+        world.canPlayerOccupy(reserved.x,reserved.y));
+    WorldMoveTargetController.Direction direction=WorldMoveTargetController.Direction.between(
+        playerStart.x,playerStart.y,reserved.x,reserved.y);
+    assertNotNull(direction);
+    WorldMoveTargetController.Snapshot attempted=world.movement().step(direction);
+    assertEquals("the shared tile-step controller blocks entry",WorldMoveTargetController.Status.BLOCKED,attempted.status);
+    assertEquals(playerStart.x,state.player().x,.001f);
+    assertEquals(playerStart.y,state.player().y,.001f);
   }
 
   private static CharacterRenderer.Direction opposite(CharacterRenderer.Direction direction){
