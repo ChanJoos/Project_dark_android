@@ -167,5 +167,18 @@
     ],
     "evidence": "USER_CAPTURE",
     "policy": "User-approved capture; both prerequisite levels visibly 90"
+  },
+  "SK_공통_014": {
+    "conditions": "STR 3 · INT 6 · WIS 3 · CON 3 · DEX 3",
+    "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+    "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+    "icon_crop": [
+      81,
+      167,
+      116,
+      202
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "Latest capture corrects the earlier transposed INT/WIS transcription"
   }
 }

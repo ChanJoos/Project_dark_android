@@ -89,6 +89,12 @@ public class SkillWindowTest {
     assertTrue(session.playerActionActive());assertTrue(session.cooldownRemaining("player",RuntimeCombatSession.playerAttackActionId(new EquipmentActionResolver().resolveBasicAttack(r.rpg()).animationAction))>0);
     int hp=m.hp;session.tick(.3f);assertTrue(m.hp<hp);assertEquals(90,r.player().mp);
   }
+  @Test public void latestCaptureCorrectsStaffIntWisAndWarriorPrerequisitePair() {
+    SkillBook b=SkillBook.load(context);RuntimeState r=new RuntimeState();SkillAcquisition a=new SkillAcquisition(b);
+    r.rpg().restoreStats(3,3,6,3,3,0);assertFalse(a.learn("SK_공통_014",r.rpg()));
+    r.rpg().restoreStats(3,6,3,3,3,0);assertTrue(a.learn("SK_공통_014",r.rpg()));
+    assertTrue(b.captureConditions("SK_전사_009").contains("Required_Prerequisite_Level 90;90"));
+  }
   private static SkillBook.Entry bEntry(GameView v,String id)throws Exception{return ((SkillBook)field(v,"skillBook")).get(id);}
   private static void render(GameView v,String name)throws Exception{Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File dir=new File("build/reports/device-review");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,name))){image.compress(Bitmap.CompressFormat.PNG,100,out);}}
   @SuppressWarnings("unchecked") private static <T>T field(Object o,String name)throws Exception{Field f=o.getClass().getDeclaredField(name);f.setAccessible(true);return(T)f.get(o);}

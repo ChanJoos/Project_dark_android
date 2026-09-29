@@ -4,7 +4,7 @@
 
 `source_icons.png` is an opaque 10-column atlas of 40px crop derivatives; these original icon backgrounds are part of the source icon, not a captured table background. Rectangles contain only icon pixels. `SkillIconCatalog` maps only registered IDs and never borrows another skill's artwork for missing entries.
 
-Rebuild with `python tools/extract_skill_reference_icons.py --source-dir /path/to/project_sources` after generating `catalog.json`. Requires Pillow and NumPy. Unknown name variants remain unregistered. No Master IDs, combat effects, conditions or acquisition defaults are changed.
+Rebuild with `python tools/extract_skill_reference_icons.py --source-dir /path/to/project_sources` after generating `catalog.json`. Requires Pillow and NumPy. Unknown name variants remain unregistered. Atlas generation does not change Master IDs or combat effects. Acquisition policy is documented separately.
 
 
-Acquisition: `acquisition_captures.json` records twelve additional martial-artist condition rows and one resolved warrior prerequisite pair from screenshots 12/13. The user explicitly chose capture-based stat and prerequisite rules on 2026-09-30. Runtime acquisition reads these additions and the preserved legacy table; it does not mutate the Master projection. Unknown names remain unmapped.
+Acquisition: `acquisition_captures.json` records twelve additional martial-artist condition rows one resolved warrior prerequisite pair, and the latest common staff INT/WIS correction from screenshots 12/13. The user explicitly chose capture-based stat and prerequisite rules on 2026-09-30. Runtime acquisition reads these additions and the preserved legacy table; it does not mutate the Master projection. Unknown names remain unmapped.
