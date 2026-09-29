@@ -1,0 +1,1279 @@
+{
+  "cell": 40,
+  "columns": 10,
+  "provenance": "User-provided Naver screenshots; V reference crops, not verified official originals",
+  "icons": {
+    "SK_도적_033": 0,
+    "SK_도적_006": 1,
+    "SK_도적_007": 2,
+    "SK_도적_008": 3,
+    "SK_도적_009": 4,
+    "SK_도적_018": 5,
+    "SK_도적_010": 6,
+    "SK_도적_014": 7,
+    "SK_도적_015": 8,
+    "SK_도적_034": 9,
+    "SK_도적_025": 10,
+    "SK_도적_019": 11,
+    "SK_도적_020": 12,
+    "SK_성직자_023": 13,
+    "SK_성직자_024": 14,
+    "SK_성직자_027": 15,
+    "SK_성직자_026": 16,
+    "SK_성직자_025": 17,
+    "SK_성직자_028": 18,
+    "SK_성직자_029": 19,
+    "SK_성직자_032": 20,
+    "SK_성직자_033": 21,
+    "SK_성직자_031": 22,
+    "SK_성직자_030": 23,
+    "SK_성직자_060": 24,
+    "SK_성직자_034": 25,
+    "SK_성직자_058": 26,
+    "SK_성직자_001": 27,
+    "SK_성직자_003": 28,
+    "SK_성직자_050": 29,
+    "SK_성직자_004": 30,
+    "SK_성직자_005": 31,
+    "SK_성직자_006": 32,
+    "SK_성직자_007": 33,
+    "SK_성직자_008": 34,
+    "SK_성직자_009": 35,
+    "SK_성직자_011": 36,
+    "SK_성직자_053": 37,
+    "SK_성직자_014": 38,
+    "SK_성직자_015": 39,
+    "SK_성직자_013": 40,
+    "SK_성직자_054": 41,
+    "SK_성직자_016": 42,
+    "SK_성직자_017": 43,
+    "SK_성직자_018": 44,
+    "SK_성직자_019": 45,
+    "SK_성직자_022": 46,
+    "SK_성직자_021": 47,
+    "SK_도적_032": 48,
+    "SK_도적_002": 49,
+    "SK_도적_003": 50,
+    "SK_마법사_001": 51,
+    "SK_마법사_055": 52,
+    "SK_마법사_002": 53,
+    "SK_마법사_056": 54,
+    "SK_마법사_003": 55,
+    "SK_마법사_004": 56,
+    "SK_마법사_005": 57,
+    "SK_마법사_006": 58,
+    "SK_마법사_007": 59,
+    "SK_마법사_008": 60,
+    "SK_마법사_009": 61,
+    "SK_마법사_010": 62,
+    "SK_마법사_012": 63,
+    "SK_마법사_011": 64,
+    "SK_마법사_013": 65,
+    "SK_마법사_014": 66,
+    "SK_마법사_015": 67,
+    "SK_마법사_016": 68,
+    "SK_마법사_017": 69,
+    "SK_마법사_018": 70,
+    "SK_마법사_019": 71,
+    "SK_마법사_020": 72,
+    "SK_마법사_021": 73,
+    "SK_마법사_022": 74
+  },
+  "audit": [
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "상자트랩해체",
+      "crop": [
+        295,
+        144,
+        437,
+        291
+      ],
+      "skill_id": "SK_도적_033",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 0
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "연막탄터뜨리기",
+      "crop": [
+        295,
+        333,
+        437,
+        474
+      ],
+      "skill_id": "SK_도적_006",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 1
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "찔러휘비기",
+      "crop": [
+        295,
+        503,
+        437,
+        650
+      ],
+      "skill_id": "SK_도적_007",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 2
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "더블어택",
+      "crop": [
+        296,
+        679,
+        437,
+        826
+      ],
+      "skill_id": "SK_도적_008",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 3
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "품뒤져보기",
+      "crop": [
+        295,
+        868,
+        437,
+        1008
+      ],
+      "skill_id": "SK_도적_009",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 4
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "함정해체",
+      "crop": [
+        296,
+        1058,
+        437,
+        1198
+      ],
+      "skill_id": "SK_도적_018",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 5
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "센스",
+      "crop": [
+        296,
+        1240,
+        437,
+        1388
+      ],
+      "skill_id": "SK_도적_010",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 6
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "두번찌르기",
+      "crop": [
+        296,
+        1430,
+        437,
+        1578
+      ],
+      "skill_id": "SK_도적_014",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 7
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "습격",
+      "crop": [
+        295,
+        1620,
+        437,
+        1760
+      ],
+      "skill_id": "SK_도적_015",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 8
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "소매치기",
+      "crop": [
+        295,
+        1808,
+        437,
+        1949
+      ],
+      "skill_id": "SK_도적_034",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 9
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "함정파기",
+      "crop": [
+        296,
+        1992,
+        437,
+        2139
+      ],
+      "skill_id": "SK_도적_025",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 10
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "적갑옷해체",
+      "crop": [
+        295,
+        2180,
+        437,
+        2321
+      ],
+      "skill_id": "SK_도적_019",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 11
+    },
+    {
+      "source": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "source_sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "job": "도적",
+      "source_name": "암살격",
+      "crop": [
+        295,
+        2370,
+        437,
+        2511
+      ],
+      "skill_id": "SK_도적_020",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 12
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "디프라바",
+      "crop": [
+        100,
+        136,
+        256,
+        296
+      ],
+      "skill_id": "SK_성직자_023",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 13
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "리치마나",
+      "crop": [
+        100,
+        332,
+        252,
+        487
+      ],
+      "skill_id": "SK_성직자_024",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 14
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "쿠라네라",
+      "crop": [
+        100,
+        535,
+        256,
+        688
+      ],
+      "skill_id": "SK_성직자_027",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 15
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "디소루마",
+      "crop": [
+        100,
+        736,
+        256,
+        909
+      ],
+      "skill_id": "SK_성직자_026",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 16
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "소모니아",
+      "crop": [
+        100,
+        943,
+        256,
+        1111
+      ],
+      "skill_id": "SK_성직자_025",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 17
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "호르라마",
+      "crop": [
+        100,
+        1152,
+        256,
+        1320
+      ],
+      "skill_id": "SK_성직자_028",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 18
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "이모탈",
+      "crop": [
+        100,
+        1355,
+        256,
+        1521
+      ],
+      "skill_id": "SK_성직자_029",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 19
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "엑스쿠라노",
+      "crop": [
+        99,
+        1565,
+        256,
+        1720
+      ],
+      "skill_id": "SK_성직자_032",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 20
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "디네츄라",
+      "crop": [
+        100,
+        1773,
+        251,
+        1924
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "엑스쿠라네라",
+      "crop": [
+        100,
+        1978,
+        254,
+        2130
+      ],
+      "skill_id": "SK_성직자_033",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 21
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "리베라토",
+      "crop": [
+        99,
+        2184,
+        256,
+        2344
+      ],
+      "skill_id": "SK_성직자_031",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 22
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "코마디아",
+      "crop": [
+        100,
+        2386,
+        256,
+        2550
+      ],
+      "skill_id": "SK_성직자_030",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 23
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "디노센스",
+      "crop": [
+        99,
+        2595,
+        256,
+        2759
+      ],
+      "skill_id": "SK_성직자_060",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 24
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "텔포라",
+      "crop": [
+        100,
+        2804,
+        256,
+        2962
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "리플렉토",
+      "crop": [
+        100,
+        3015,
+        256,
+        3170
+      ],
+      "skill_id": "SK_성직자_034",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 25
+    },
+    {
+      "source": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "source_sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "job": "성직자",
+      "source_name": "디네츄라",
+      "crop": [
+        100,
+        3215,
+        256,
+        3379
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "쿠로토",
+      "crop": [
+        41,
+        66,
+        80,
+        104
+      ],
+      "skill_id": "SK_성직자_058",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 26
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "쿠로",
+      "crop": [
+        41,
+        117,
+        80,
+        156
+      ],
+      "skill_id": "SK_성직자_001",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 27
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "디렌토",
+      "crop": [
+        41,
+        168,
+        80,
+        210
+      ],
+      "skill_id": "SK_성직자_003",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 28
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "아지토",
+      "crop": [
+        41,
+        219,
+        80,
+        256
+      ],
+      "skill_id": "SK_성직자_050",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 29
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "벨라르모",
+      "crop": [
+        42,
+        274,
+        79,
+        310
+      ],
+      "skill_id": "SK_성직자_004",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 30
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "쿠라노",
+      "crop": [
+        41,
+        326,
+        80,
+        361
+      ],
+      "skill_id": "SK_성직자_005",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 31
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "디바르도",
+      "crop": [
+        41,
+        373,
+        80,
+        413
+      ],
+      "skill_id": "SK_성직자_006",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 32
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "쿠러스",
+      "crop": [
+        41,
+        424,
+        80,
+        463
+      ],
+      "skill_id": "SK_성직자_007",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 33
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "디베노모",
+      "crop": [
+        41,
+        477,
+        80,
+        515
+      ],
+      "skill_id": "SK_성직자_008",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 34
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "에나르마",
+      "crop": [
+        41,
+        527,
+        80,
+        565
+      ],
+      "skill_id": "SK_성직자_009",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 35
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "베누스티",
+      "crop": [
+        41,
+        578,
+        80,
+        617
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "쿠라노소",
+      "crop": [
+        41,
+        630,
+        80,
+        668
+      ],
+      "skill_id": "SK_성직자_011",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 36
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "디나르콜리",
+      "crop": [
+        41,
+        680,
+        80,
+        720
+      ],
+      "skill_id": "SK_성직자_053",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 37
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "디데프레카",
+      "crop": [
+        41,
+        732,
+        80,
+        770
+      ],
+      "skill_id": "SK_성직자_014",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 38
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "쿠라누스",
+      "crop": [
+        41,
+        783,
+        80,
+        822
+      ],
+      "skill_id": "SK_성직자_015",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 39
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "홀리볼트",
+      "crop": [
+        41,
+        834,
+        80,
+        872
+      ],
+      "skill_id": "SK_성직자_013",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 40
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "일루메나",
+      "crop": [
+        41,
+        885,
+        80,
+        923
+      ],
+      "skill_id": "SK_성직자_054",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 41
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "쿠랄툼",
+      "crop": [
+        41,
+        937,
+        80,
+        974
+      ],
+      "skill_id": "SK_성직자_016",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 42
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "실드",
+      "crop": [
+        41,
+        987,
+        80,
+        1026
+      ],
+      "skill_id": "SK_성직자_017",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 43
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "콜라마",
+      "crop": [
+        41,
+        1039,
+        80,
+        1076
+      ],
+      "skill_id": "SK_성직자_018",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 44
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "수페라벨라르모",
+      "crop": [
+        42,
+        1086,
+        79,
+        1123
+      ],
+      "skill_id": "SK_성직자_019",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 45
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "로카메아",
+      "crop": [
+        41,
+        1140,
+        80,
+        1180
+      ],
+      "skill_id": "SK_성직자_022",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 46
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "리치멘스",
+      "crop": [
+        41,
+        1192,
+        80,
+        1232
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "source_sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "job": "성직자",
+      "source_name": "수페라쿠라노",
+      "crop": [
+        41,
+        1243,
+        80,
+        1277
+      ],
+      "skill_id": "SK_성직자_021",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 47
+    },
+    {
+      "source": "08-Screenshot_20260929_233847_NAVER.jpg",
+      "source_sha256": "3bdb7caddac36e77178e62e666aa4f3bc264576d574c640a54c67f8a41668e0d",
+      "job": "도적",
+      "source_name": "자물쇠열기",
+      "crop": [
+        326,
+        328,
+        467,
+        474
+      ],
+      "skill_id": "SK_도적_032",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 48
+    },
+    {
+      "source": "08-Screenshot_20260929_233847_NAVER.jpg",
+      "source_sha256": "3bdb7caddac36e77178e62e666aa4f3bc264576d574c640a54c67f8a41668e0d",
+      "job": "도적",
+      "source_name": "센스몬스터",
+      "crop": [
+        325,
+        516,
+        467,
+        655
+      ],
+      "skill_id": "SK_도적_002",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 49
+    },
+    {
+      "source": "08-Screenshot_20260929_233847_NAVER.jpg",
+      "source_sha256": "3bdb7caddac36e77178e62e666aa4f3bc264576d574c640a54c67f8a41668e0d",
+      "job": "도적",
+      "source_name": "표창날리기",
+      "crop": [
+        325,
+        705,
+        467,
+        845
+      ],
+      "skill_id": "SK_도적_003",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 50
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "마레노",
+      "crop": [
+        76,
+  64,
+        112,
+        98
+      ],
+      "skill_id": "SK_마법사_001",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 51
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "아지토",
+      "crop": [
+        76,
+        109,
+        112,
+        145
+      ],
+      "skill_id": "SK_마법사_055",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 52
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "렌토",
+      "crop": [
+        77,
+        159,
+        112,
+        191
+      ],
+      "skill_id": "SK_마법사_002",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 53
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "쿠로토",
+      "crop": [
+        76,
+        204,
+        112,
+        239
+      ],
+      "skill_id": "SK_마법사_056",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 54
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "테라미코",
+      "crop": [
+        76,
+        250,
+        112,
+        286
+      ],
+      "skill_id": "SK_마법사_003",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 55
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "아듀로",
+      "crop": [
+        76,
+        298,
+        112,
+        332
+      ],
+      "skill_id": "SK_마법사_004",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 56
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "플라모",
+      "crop": [
+        76,
+        345,
+        112,
+        379
+      ],
+      "skill_id": "SK_마법사_005",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 57
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "콘푸지오",
+      "crop": [
+        76,
+        391,
+        112,
+        426
+      ],
+      "skill_id": "SK_마법사_006",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 58
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "수페라마레나",
+      "crop": [
+        77,
+        439,
+        111,
+        472
+      ],
+      "skill_id": "SK_마법사_007",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 59
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "수페라테라미카",
+      "crop": [
+        76,
+        486,
+        112,
+        520
+      ],
+      "skill_id": "SK_마법사_008",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 60
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "수페라아듀라",
+      "crop": [
+        76,
+        533,
+        112,
+        567
+      ],
+      "skill_id": "SK_마법사_009",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 61
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "수페라플라미카",
+      "crop": [
+        76,
+        579,
+        112,
+        614
+      ],
+      "skill_id": "SK_마법사_010",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 62
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "베노미",
+      "crop": [
+        76,
+        626,
+        112,
+        660
+      ],
+      "skill_id": "SK_마법사_012",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 63
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "바르도",
+      "crop": [
+        76,
+        675,
+        112,
+        708
+      ],
+      "skill_id": "SK_마법사_011",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 64
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "마레누스",
+      "crop": [
+        76,
+        719,
+        112,
+        756
+      ],
+      "skill_id": "SK_마법사_013",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 65
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "테라미쿠스",
+      "crop": [
+        76,
+        767,
+        112,
+        801
+      ],
+      "skill_id": "SK_마법사_014",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 66
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "아듀로스",
+      "crop": [
+        76,
+        814,
+        112,
+        849
+      ],
+      "skill_id": "SK_마법사_015",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 67
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "플라무스",
+      "crop": [
+        76,
+        860,
+        112,
+        896
+      ],
+      "skill_id": "SK_마법사_016",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 68
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "나르콜리",
+      "crop": [
+        76,
+        908,
+        112,
+        941
+      ],
+      "skill_id": "SK_마법사_017",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 69
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "엑스마레나",
+      "crop": [
+        77,
+        950,
+        112,
+        984
+      ],
+      "skill_id": "SK_마법사_018",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 70
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "엑스테라미카",
+      "crop": [
+        76,
+        997,
+        112,
+        1031
+      ],
+      "skill_id": "SK_마법사_019",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 71
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "엑스아듀라",
+      "crop": [
+        76,
+        1043,
+        112,
+        1079
+      ],
+      "skill_id": "SK_마법사_020",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 72
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "엑스플라미카",
+      "crop": [
+        76,
+        1091,
+        112,
+        1126
+      ],
+      "skill_id": "SK_마법사_021",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 73
+    },
+    {
+      "source": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "source_sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "job": "마법사",
+      "source_name": "로카테오",
+      "crop": [
+        76,
+        1131,
+        112,
+        1164
+      ],
+      "skill_id": "SK_마법사_022",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 74
+    }
+  ]
+}
