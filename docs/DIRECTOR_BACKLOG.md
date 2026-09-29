@@ -63,3 +63,12 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 | POTE-MONSTER-RUNTIME-01 | Visual + Director | v49 user-reported display/motion/facing failures addressed in versionCode 50 candidate | `codex/pote-monster-sprites-runtime-20260929`, source SHA `3cd69850c16a61629e4c1c80a9683cb6f4fc46e3`; Actions #36549350583 succeeded; Pote spatial/runtime/presentation/water tests and assembleDebug passed. Artifact 11024127131; APK SHA-256 `807437bf4b5270a2701c2380e854eeb032018117952336f1b0e1f3bb516961d4`; inventory 60 new pose PNGs, 0 old `monster_test_v04` paths. Branch is 103 ahead / 5 behind main. **BUILD_VERIFIED; DEVICE_PENDING; VISUAL_ACCEPTED_PENDING**. | Install exact v50 APK and verify five candidates visible, movement-facing alignment, only four diagonal attacks, valid attack distance/timing, and stability. |
 
 현재 5종은 기존 생성 후보만 사용합니다. 트랜트 9장 부분 세트 및 그 밖의 미생성 종/강력형은 새 artwork가 완성될 때까지 미등록입니다. 12장은 방향/상태별 대표 still이며 multi-frame loop 미구현입니다.
+
+
+## POTE monster spacing and direction follow-up (2026-09-29)
+
+| Task | Owner | Result | Verification / state | Next action |
+|---|---|---|---|---|
+| POTE-MONSTER-SPACING-02 | Director (cross-cutting RuntimeState + GameView integration) | VersionCode 53 adds species-aware actor clearance, reserves other monsters' in-flight destinations and swept paths, and renders Pote walk facing from the committed tile-step vector | Source 7f6944e42888a1bd4c5a43e1b4e6261b0f9c2320; Actions #36565408459 succeeded; APK artifact 11030999456; extracted APK SHA-256 a1cccce1d52b172172355063ca0f653be648251f1210a6b0e20d758fce2a27bb. Unit/render checks cover simultaneous approaches, crossing paths, player-tile exclusion, and stale attack lock. **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**. | Install the exact v0.53 APK on the user's device; verify no player/monster overlap and correct facing through movement and attack recovery. Keep root cause UNKNOWN until reproduced or disproven on device. |
+
+The v0.52 issue is user-reported DEVICE_FAILED: character/monster overlap, monster/monster overlap, and occasional walk-facing mismatch. The fix has not yet been accepted on-device; CI checks do not close this work item.
