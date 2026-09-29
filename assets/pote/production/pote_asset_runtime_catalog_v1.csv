@@ -58,3 +58,6 @@ POTE_OT_02,detail,POTE_OT_02.png,"[79, 93]",False,1.0,"[79, 93]",bottom_center,n
 POTE_OT_03,detail,POTE_OT_03.png,"[77, 93]",False,1.0,"[77, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
 POTE_OT_04,detail,POTE_OT_04.png,"[71, 93]",False,1.0,"[71, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
 POTE_OT_05,detail,POTE_OT_05.png,"[88, 93]",False,1.0,"[88, 93]",bottom_center,none,False,ground_detail,"[""forest_floor"", ""landmark_detail""]",PASS_V6,APPROVED_V1
+POTE_BR_01,bridge,POTE_BR_01.png,"[2164, 727]",False,0.075,"[162, 55]",center,walkable_deck_gap,False,actor_y_sorted,"[""stream_crossing"", ""east_bank_route"", ""adapted_forest_prop""]",PENDING,ADAPTED_B
+POTE_TR_08,tree_large,POTE_TR_08.png,"[1100, 1429]",False,0.30,"[330, 429]",bottom_center,trunk_32x20,True,baseline_canopy_overdraw,"[""forest_boundary"", ""canopy_cluster"", ""understory_parent""]",PENDING,ADAPTED_B
+POTE_SOIL_REFERENCE_01,terrain_texture,video_reference/terrain/pote_forest_soil_v2.png,"[576, 448]",False,1.0,"[576, 448]",world_texture_origin,none,False,ground_base,"[""forest_floor"", ""walk_corridor"", ""encounter_clearing"", ""movement_cell_lattice""]",PENDING_V10,ADAPTED_SOURCE_VIDEO_COMPOSITE

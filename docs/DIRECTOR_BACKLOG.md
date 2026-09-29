@@ -10,6 +10,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 | VISUAL-01 | Visual | ATTACK/CAST 시 기본 캐릭터 외형 연속성 유지 | 승인 body/크기/방향/발 anchor 유지, resource 오류 crash 없음, HP mutation 없음 | ACTIVE; 원본 행동 frame 미확보는 명시하고 기존 BODY 보존. 실제 action contract는 Game/Director와 합의 | 새 할당, 0 |
 | GAME-01 | Game | `RuntimeCombatSession` 단일 submit/tick/drain API와 Director 교체 handoff | action 구분·control/learned/resource/range/LOS/cooldown 검증·effect 1회·생명당 defeat 1회·훈련 증표 직접 지급 1회 audit PASS | IMPLEMENTED; Director가 GameView 직접 damage/legacy cooldown과 MonsterAI legacy route를 원자적으로 교체해야 함 | 없음, 0 |
 | DIRECTOR-01 | Director | 실제 전투 입력/루프를 GAME-01과 연결·검증 | legacy direct damage 병행 제거, 관련 audit 실제 실행, 동일 SHA APK·실행 범위 명시 | ACTIVE; Game과 최소 API 합의. 결과 대기 중 다른 통합/검증 가능 | 새 할당, 0 |
+| POTE-TEST-01 | Director/Integration | 크기·공격 표시 수정 APK를 기기에서 검증해 시각 피드백 종료 | 16 actor 배치/보상격리/방향별 이미지 유지, 투명 여백 정리 후 실루엣 높이 48 논리 픽셀 이하, 공격 표시 임의 돌진·회전 제거, 실제 인접 타일 공격 확인, exact-SHA CI + 같은 기기 재검증 | 사용자 2026-09-28 피드백: 설치 APK SHA 미제공 상태에서 과대/공격 포즈/선공 인상/강력한 놀 그래픽 문제 보고. 수정 source `8ca5fda1c2483589b6f16fc9800bb9f87597ec23`, Actions #36393396473 **성공**, APK artifact `10957720462`, APK SHA-256 `263a502075f438048feb0191550cf59cee8f9a424b41ffdf02605146d337c359`; 168 packaged PNG. 새 높이 및 비인접 추적 회귀 테스트 통과. Strong 별도 artwork 없음(기본 GNOLL concept 공유). 추적 반경 180과 인접 melee 판정 유지. **DEVICE_PENDING / VISUAL_PENDING**. | BUILD_VERIFIED; 기기 확인 대기, 0 |
 
 
 ## 즉시 인수인계 우선순위 (2026-09-28 확인)
@@ -25,7 +26,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 Game/Director: GAME-01 뒤 실제 보상·EXP/Gold/level mutation 및 최소 save/restore에서 가장 큰 끊김 하나. 저장은 대규모 콘텐츠 이후로 미루지 않는다. GAME-01에 막히면 독립적인 저장 계약/구현을 작업 하나로 명시 전환할 수 있다.
 World: WORLD-01 통행 검수 후 READY_FOR_RUNTIME_QA handoff; 실제 장애 없으면 IDLE, 추가 맵/지형 튜닝 금지.
 Visual: VISUAL-01 뒤 현재 루프에서 실제 잘못 표시되는 부분이 없으면 IDLE; 새 장비 대량 제작 금지.
-Director: 결과→통합→판정→다음 할당을 매 회차 닫는다. 동일 blocker 두 회차면 해결 방법/배정 변경.
+Director: POTE-TEST-01 CI is complete; perform its Android/device check before closing the task, then continue DELIVERY-01 device scenarios. 결과→통합→판정→다음 할당을 매 회차 닫는다. 동일 blocker 두 회차면 해결 방법/배정 변경.
 
 ## 초기 근거와 한계
 
@@ -47,3 +48,18 @@ Director: 결과→통합→판정→다음 할당을 매 회차 닫는다. 동�
 Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 쉴 때는 이유/마지막 SHA/재개 조건/후속 점검 담당을 기록한다. next_run_time=null이면 다음 실행 보장이라고 쓰지 않는다. 원인 불명 중단은 UNKNOWN으로 남긴다.
 
 각 task 완료 시 status/검증 범위/SHA·PR/다음 결과로 해당 행을 교체한다. 역사 전체를 복제하지 않는다.
+
+
+| POTE-ART-IMG-01 | Visual + Director | 원작 자료와 13종 대응을 확인하고 독립 PNG 156장을 제작·시각 검수 | 13종 × 정지/공격/이동 × NW/NE/SW/SE; 각 파일 직접 확인 가능, 전신·방향·팔레트·투명 가장자리 검사; 168 콘셉트/반려 시트 참조 금지 | 앞선 3장만의 전달은 범위 누락. 이번 팜팻 SE 대기 4색 초안 중 실버는 후광 QA 반려, 나머지 3색도 사용자 수락 전. 늑대 ID 대응 미정. 활성 GitHub 브랜치에서 원본 종별 스크린샷 묶음 경로 미확인. 앱 미적용/새 APK 없음. | 0/156 VISUAL_ACCEPTED; IN_PROGRESS; SOURCE_GAP |
+
+
+최신 팜팻 SE 대기 이미지 파일명·QA 범위는 PROJECT_STATE의 2026-09-29 범위 정정에 기록. 앞선 팜팻 구르기와 실버 대기는 후광 때문에 반려; 레드·그린·퍼플 대기 초안도 사용자 수락 전이다. 13종의 나머지 방향·동작은 미완료.
+
+
+## Pote 몬스터 런타임 후보 교체 (2026-09-29)
+
+| Task | Owner | 결과 | 검증/상태 | 다음 작업 |
+|---|---|---|---|---|
+| POTE-MONSTER-RUNTIME-01 | Visual + Director | v49 user-reported display/motion/facing failures addressed in versionCode 50 candidate | `codex/pote-monster-sprites-runtime-20260929`, source SHA `3cd69850c16a61629e4c1c80a9683cb6f4fc46e3`; Actions #36549350583 succeeded; Pote spatial/runtime/presentation/water tests and assembleDebug passed. Artifact 11024127131; APK SHA-256 `807437bf4b5270a2701c2380e854eeb032018117952336f1b0e1f3bb516961d4`; inventory 60 new pose PNGs, 0 old `monster_test_v04` paths. Branch is 103 ahead / 5 behind main. **BUILD_VERIFIED; DEVICE_PENDING; VISUAL_ACCEPTED_PENDING**. | Install exact v50 APK and verify five candidates visible, movement-facing alignment, only four diagonal attacks, valid attack distance/timing, and stability. |
+
+현재 5종은 기존 생성 후보만 사용합니다. 트랜트 9장 부분 세트 및 그 밖의 미생성 종/강력형은 새 artwork가 완성될 때까지 미등록입니다. 12장은 방향/상태별 대표 still이며 multi-frame loop 미구현입니다.

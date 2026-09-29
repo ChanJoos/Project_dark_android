@@ -1,0 +1,26 @@
+{
+  "assetSet": "POTE_PAMFET_PURPLE_4DIR_V1",
+  "source": "User-provided 1000056959.jpg, PAMFET 8-DIRECTION DRAFT v3",
+  "extraction": "Four isometric directions; one idle and one roll-attack pose per direction; background and panel chrome removed; pixel dimensions preserved with nearest-neighbor reduction.",
+  "runtimeDirectory": "app/src/main/assets/pote/monsters/",
+  "directionContract": {
+    "NW": {
+      "idle": "pamfet_nw_idle.png",
+      "attack": "pamfet_nw_roll.png"
+    },
+    "NE": {
+      "idle": "pamfet_ne_idle.png",
+      "attack": "pamfet_ne_roll.png"
+    },
+    "SW": {
+      "idle": "pamfet_sw_idle.png",
+      "attack": "pamfet_sw_roll.png"
+    },
+    "SE": {
+      "idle": "pamfet_se_idle.png",
+      "attack": "pamfet_se_roll.png"
+    }
+  },
+  "runtimeMapping": "POTE_PURPLE in MAP_POTE_01; visualFacing NW/NE/SW/SE selects the matching crop; attackPrimed selects roll; no combat stats are supplied by this art set.",
+  "evidence": "User supplied image, adapted runtime presentation"
+}\n

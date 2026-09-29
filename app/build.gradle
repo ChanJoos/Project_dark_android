@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 47
-        versionName '0.47-device-recording-fixes'
+        versionCode 51
+        versionName '0.51-pote-monster-motion'
     }
     sourceSets {
         main {

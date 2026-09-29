@@ -11,8 +11,8 @@ import java.util.Map;
 public final class MonsterAIController {
   private static final float CHASE_RADIUS_B = 180f;
   static final int ATTACK_DAMAGE_B = 4;
-  static final float ATTACK_COOLDOWN_B = 1.2f;
-  static final float MONSTER_STEP_SECONDS_B = WorldMoveTargetController.TILE_STEP_SECONDS*1.6f;
+  static final float ATTACK_COOLDOWN_B = 1.8f;
+  static final float MONSTER_STEP_SECONDS_B = WorldMoveTargetController.TILE_STEP_SECONDS;
 
   public enum AttackRoute { LEGACY_RUNTIME, SHARED_RESOLVER }
   public enum SubmissionOutcome { NONE, ACCEPTED, REJECTED, ACTION_UNRESOLVED }
@@ -61,6 +61,7 @@ public final class MonsterAIController {
       MonsterAutoCombatBridge.Result result=bridge.submit(monster.id,"player");
       if(monster.alive&&result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){
         monster.visualFacing.setLocomotion(lockedFacing);monster.visualFacing.beginAttack();
+        monster.attackVisualRemaining=.36f;
         monster.state=RuntimeState.Monster.State.ATTACK;
       }
       SubmissionOutcome outcome;
@@ -100,14 +101,17 @@ public final class MonsterAIController {
     for(RuntimeState.Monster m:state.monsters()){
       if(!m.alive){tileStates.remove(m);continue;}
       MonsterDefinition def=definitions.resolve(m.id);
-      if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING)continue;
+      boolean poteShowcase=com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(state.currentMapId())
+          &&PoteForestMonsterShowcase.containsMonster(m.id);
+      if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING&&!poteShowcase)continue;
       tickPrototypeMonster(state,m,dt);
     }
   }
 
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
-    ensureCentered(m,tile);
+    if(m.isMoving){tile.resetClock();return;}
+    ensureCentered(state,m,tile);
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
@@ -129,8 +133,8 @@ public final class MonsterAIController {
       float beforeX=m.x,beforeY=m.y;
       boolean moved=state.tryMoveMonster(m,direction.dx,direction.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
       if(moved){
-        if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,m.x,m.y)
-            ||!MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y)){
+        if(!MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,m.moveTargetX,m.moveTargetY)
+            ||!state.isMonsterTileCenter(m.moveTargetX,m.moveTargetY)){
           m.x=beforeX;m.y=beforeY;tile.resetClock();return;
         }
         tile.lastDirection=directionFromFacing(m.visualFacing.locomotion(),direction);
@@ -151,11 +155,11 @@ public final class MonsterAIController {
     }
   }
 
-  private static void ensureCentered(RuntimeState.Monster m,TilePursuitState state){
-    if(state.centered&&MonsterTileCenterLocomotion.isAuthoredCenter(m.x,m.y))return;
-    WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);
+  private static void ensureCentered(RuntimeState runtime,RuntimeState.Monster m,TilePursuitState pursuit){
+    if(pursuit.centered&&runtime.isMonsterTileCenter(m.x,m.y))return;
+    WorldMoveTargetController.TileCenter center=runtime.nearestMonsterTileCenter(m.x,m.y);
     if(center!=null){m.x=center.x;m.y=center.y;}
-    state.centered=true;state.resetClock();
+    pursuit.centered=true;pursuit.resetClock();
   }
 
   private static WorldMoveTargetController.Direction directionFromFacing(CharacterRenderer.Direction facing,

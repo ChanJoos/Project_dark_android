@@ -27,3 +27,47 @@
 ## 이력
 
 새 결정/변경만 날짜와 근거를 붙입니다. 구현 상태는 `docs/PROJECT_STATE.md`, 작업 순서는 `docs/DIRECTOR_BACKLOG.md`에서 관리합니다.
+
+## 2026-09-28 — Pote forest monster visual test scope
+
+| 결정 | 범위와 의미 | 근거 |
+|---|---|---|
+| 사용자는 현재 Pote 숲에 정의된 모든 몬스터를 배치해 외형/상태별 포즈를 테스트하도록 요청했다. | Master roster의 16 identity를 검토용 v0.4 14-form pose pack에 연결하는 것은 B/ADAPTED test deployment다. 위치/개수/HP/미확보 개별형 외형은 원작 사실로 승격하지 않는다. | 사용자 요청(2026-09-28); `PoteMonsterRoster.java`; `assets/pote/review/monster_concepts_v0.4/README.md` 및 `manifest.csv` |
+| 시각 테스트용 `POTE_SPIRIT_TEST_B`는 canonical spirit 보상과 분리한다. | 40 HP 테스트 개체가 canonical reward를 발생시키지 않도록 isolated runtime ID를 쓴다. canonical Master 행/보상 데이터는 변경하지 않는다. | `PoteForestMonsterShowcase.java`; `master/data/Monster_Master.csv`의 `POTE_SPIRIT` row |
+| 단일 walk/attack pose를 루프 애니메이션으로 기록하지 않는다. | 방향/state 이미지 스왑과 실제 AI 이동, 공격 상태 표시를 테스트하며 여러 프레임 순환은 별도 자산 확보 전 미구현이다. | v0.4 review README/manifest; 구현 범위 |
+
+구현/CI/APK/device 상태는 `docs/PROJECT_STATE.md`의 작업 기록으로 추적한다. Strong 변종 외형 공유는 테스트 편의를 위한 비정사 mapping이며, 원작 외형 확정이 아니다.
+
+## 2026-09-28 — 사용자 화면 피드백에 따른 시각 수정안 (기기 미수락)
+
+| 구분 | 내용 | 근거 / 상태 |
+|---|---|---|
+| 사용자 요구 | 몬스터 크기를 플레이어에 맞게 줄이고, 어색한 공격 모션과 접근 전에 공격하는 듯한 인상을 바로잡으며, 강력한 놀의 깨져 보이는 그래픽을 확인한다. | 2026-09-28 사용자 화면 피드백. 보고된 설치 APK SHA는 미확인. |
+| 테스트 렌더링 수정 | 포즈 PNG의 투명 여백을 기준으로 실루엣 높이 44 논리 픽셀, 비율 유지; 공격 포즈에 인공 돌진/회전은 추가하지 않고 제공된 단일 대표 포즈를 표시한다. | 구현 commit `8ca5fda1c2483589b6f16fc9800bb9f87597ec23`; Actions #36393396473 성공, APK artifact `10957720462`. 기기 결과 대기. 이는 테스트 장면 렌더링 값이며 정사 몬스터 스케일/공격 애니메이션 결정이 아니다. |
+| 미확정 | 강력한 놀의 별도 그림 필요 여부와 추적 반경 변경 여부. | 현재 pack에는 별도 strong-GNOLL artwork가 없어 기본 GNOLL concept를 공유한다. 새 APK에서 크기/선명도를 보고한 뒤 결정한다. |
+
+
+## 2026-09-29 — 몬스터 이미지 개별 파일 형식
+
+| 구분 | 내용 | 근거 / 상태 |
+|---|---|---|
+| 확정된 출력 형식 | 몬스터 시트 대신 몬스터/포즈별 개별 이미지로 만든다. 전체 요구는 비강력형 13종 × 정지/공격/이동 각 4방향 = 종당 12개 이미지다. | 사용자 명시(2026-09-29), 앞서 확정한 12컷 규격. |
+| 이번 생성 | 팜팻 구르기 공격 1장, 기본 직립 늑대인간 대기 1장, 갑옷·칼 늑대인간 대기 1장. 모두 컨셉 초안이며 종 ID 배정·시각 수락·런타임 적용은 미정/미실시. | 생성 입력은 Library: 팜팻 승인 외형 libfile_d213c79680108191b4f13b8bc89b68de, 늑대 이미지 libfile_1c5a4161d2b08191be701bf0f89b463f 및 libfile_f65c74247704819180f7e8bfa212fee3. |
+| 참조 제외 | 이전 168장 콘셉트 PNG와 사용자 반려 생성 시트는 새 이미지 생성에 사용하지 않는다. | 사용자 명시. |
+
+
+| 생성물 QA 상태 | Pamfet의 원형 구르기·잎은 표현됐으나 보라색 후광이 제거되지 않아 미수락. 무장 늑대 재생성은 칼 길이를 줄였지만 여전히 컨셉 후보. | 최신 파일 이름과 SHA-256은 `docs/PROJECT_STATE.md`의 “이미지 자체 검수 추가”; 사용자 시각 수락 전. |
+
+
+## 2026-09-29 — Pote 생성 후보의 테스트 APK 등록 승인
+
+| 구분 | 확정 내용 | 근거/범위 |
+|---|---|---|
+| 이번 테스트 APK | 기존 16 identity의 이전 `monster_test_v04` runtime 이미지 연결을 해제하고, 현재 완성된 5개 생성 후보 세트만 idle/walk/attack 4방향 렌더 경로에 등록한다. | 사용자 요청(2026-09-29); 이번 테스트 APK 범위에 한한 승인. 신규 아트의 원작 정사/시각 수락 승인과 구분. |
+| 등록 종 | 퍼플/레드/그린/실버 팜팻 및 라이칸스로프, 각 12개 대표 포즈 = 60 PNG. | 현재 저장소의 각 파일 실재 확인. `monster_artwork_manifest.csv` runtime registration columns. |
+| 미등록 종 | 트랜트(9/12), 나머지 미완성 종 및 강력한 변형은 등록하지 않는다. 없는 방향·상태를 복사/추정하지 않는다. | 현재 소스 파일 확인; 사용자 이전 결정에서 강력한 변형 제외. |
+| 아트 상태 | 프레임 PNG는 생성 후보의 단일 still pose다. 상태/방향에 따라 교체하며 다중 프레임 루프는 구현하지 않았다. | 생성 원본 및 `PoteFieldRenderer` 구현 계약. |
+| 구버전 보존 | 기존 v0.4 자료는 review 이력으로 남지만, production source set과 APK에는 포함하지 않는다. | Android `app/build.gradle` production asset roots 및 삭제한 `assets/pote/production/monster_test_v04/`. |
+
+
+| 테스트 APK 검증 결과 | GitHub Actions run `36534954426` / source `1def7a92aeef68ce144ebaad8b94f02dee011a12` 성공. versionCode 49 artifact `11017989115`; APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. APK 안에서 신규 PNG 60개, 이전 v0.4 PNG 경로 0개를 확인. | CI artifact inventory 및 Pote pose/placement tests; 실제 기기 시각 QA는 별도 미완료. |

@@ -50,3 +50,33 @@
 ## Active task branch and APK source
 
 Before building, inspect main and the branch that contains the requested work. Compare their heads and relevant diffs. Build the SHA with the requested work; identify branch, SHA, app version, Actions run, artifact, and APK SHA-256. If that branch is unmerged/diverged, call the APK a candidate. Build success and renderer screenshots do not prove device interaction; record requested on-device scenarios separately.
+
+
+## Pote monster runtime candidate handoff (2026-09-29)
+
+- Source branch: `codex/pote-monster-sprites-runtime-20260929`, based on Pote runtime branch head `133f2388706b1948e63c7b931fb46c4a442c8ff2`; this is a candidate branch, not main.
+- User explicitly requested a test APK using the generated artwork currently available. Register only the five complete sets in `PoteForestMonsterShowcase`: `POTE_PURPLE`, `POTE_RED`, `POTE_GREEN`, `POTE_SILVER`, `POTE_LYCAN` (12 individual still-pose PNGs each). Only the Lycanthrope set was previously visually accepted; the other four remain generated candidates.
+- Remove the old `monster_test_v04` 16-identity runtime mappings and its production copy from packaged assets. Preserve its separate historical review source; do not load it in the app or use it as new-art reference.
+- Do not register Trant's partial 9-pose set (only NW attack exists), other missing species, or strong variants. Never fill missing directions with guessed/mirrored art.
+- PNGs are one representative image per state/direction, not looping animation sheets. Verify live AI state changes, four diagonal facings, all 60 asset loads, silhouette bounds, and APK contents. Record exact CI run, source SHA, artifact ID, APK SHA-256, device-pending status, and next task in `PROJECT_STATE.md`, `DIRECTOR_BACKLOG.md`, and the art README before ending.
+
+
+- Runtime candidate APK delivered: versionCode 49; source SHA `1def7a92aeef68ce144ebaad8b94f02dee011a12`; Actions run `36534954426` succeeded; artifact `11017989115`; APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. APK inventory: 60 generated pose PNGs, zero `monster_test_v04` paths. Automated device-review tests pass; physical/user-device visual QA remains pending.
+- Next action: install this exact APK on a device and inspect scale, four facings, walk/attack state changes, and attack timing; then update these files with observed results. Do not call the build visually accepted before that check.
+
+
+## 최신 사용자 검수: v49 런타임 미통과 (2026-09-29)
+
+- 사용자 관찰: 초기 장면에서 퍼플팜팻만 보임; walk/attack 동작 미표시; 이동 방향과 sprite facing 불일치; 공격이 8방향처럼 보임. v49 APK는 미통과.
+- 코드 원인: 다른 4종이 기존 farthest-point 배치로 입구/aggro 밖에 산개; walk는 단일 pose still; shared combat route에서 `attackPrimed=false`가 된 이후 렌더가 idle을 골랐음; 공격 방향 lock이 walk로 복귀할 때 풀리지 않을 수 있었음.
+- 수정: 입구 72~168px 범위로 전원 배치, 반복 walk gait와 공격 lunge, hit 이후 공격 포즈 유지/방향 lock 종료. 네 대각 방향만 사용.
+- 새 다섯 종 × 4 facing의 이동 방향/공격 방향과 배치·렌더 테스트를 추가했다. 새 CI/APK 검증 결과는 아래 PROJECT_STATE와 backlog에 기록되기 전까진 미완료다.
+
+
+## Latest candidate result — version 50 (2026-09-29, Asia/Seoul)
+
+- Source branch `codex/pote-monster-sprites-runtime-20260929`, code SHA `3cd69850c16a61629e4c1c80a9683cb6f4fc46e3` (versionCode 50, `0.50-pote-monster-runtime-fix`). The branch is not merged; comparison with `main` reports 103 commits ahead and 5 behind.
+- Actions run [#36549350583](https://github.com/ChanJoos/Project_dark_android/actions/runs/36549350583) succeeded at that exact SHA. Pote test batch passed: `PoteForestSpatialGrammarTest`, `PoteMonsterPlayableRuntimeTest`, `PotePamfetPresentationTest`, and `PoteCreekWaterAssetTest`; `assembleDebug` succeeded. Build time: 2026-09-29 18:29:57 KST.
+- Artifact [11024127131](https://github.com/ChanJoos/Project_dark_android/actions/runs/36549350583) contains `app-debug.apk` (12,631,372 bytes), SHA-256 `807437bf4b5270a2701c2380e854eeb032018117952336f1b0e1f3bb516961d4`. APK inventory: 60 `pote_monsters_generated_v1/sprites/` PNGs and zero `monster_test_v04/` files.
+- Source patch clusters the five complete art candidates near the entrance, exposes walk/attack state changes with a four-diagonal facing contract, and tests applied movement/facing and pose rendering. User-reported v49 failures have not yet been verified on a physical device with v50. Status: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**.
+- Next: install this exact APK and verify all five candidates are visible, movement-facing matches actual step, attacks use only NW/NE/SW/SE, attack occurs at valid range, and the app remains stable. Do not mark visual acceptance until this check is recorded.
