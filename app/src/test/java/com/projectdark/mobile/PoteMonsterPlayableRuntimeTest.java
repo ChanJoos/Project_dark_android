@@ -183,6 +183,7 @@ public final class PoteMonsterPlayableRuntimeTest {
           PoteForestMonsterShowcase.presentationFacing(moving));
       assertEquals("walk pose wins during interpolation: "+id,"walk",PoteForestMonsterShowcase.poseFor(moving));
       moving.visualFacing.endAttack();
+      moving.visualFacing.setLocomotion(committed);
       assertNotNull("walk art uses the current locomotion facing: "+id,
           PoteForestMonsterShowcase.assetPath(id,"walk",PoteForestMonsterShowcase.presentationFacing(moving)));
       movementState.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
