@@ -21,6 +21,7 @@ public class RuntimeCheckpointTest {
   private SharedPreferences prefs;
   @Before public void reset(){context=RuntimeEnvironment.getApplication();prefs=context.getSharedPreferences("project_dark_f5m_v1",0);prefs.edit().clear().commit();F5mSaveStore.install(context);}
   private RuntimeState stateOf(GameView view)throws Exception{Field f=GameView.class.getDeclaredField("state");f.setAccessible(true);return (RuntimeState)f.get(view);}
+  private boolean inPote(GameView view)throws Exception{Field f=GameView.class.getDeclaredField("inPoteField");f.setAccessible(true);return f.getBoolean(view);}
   private RpgProgressionState restartRpg(){F5mSaveStore.install(context);RpgProgressionState r=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(r);return r;}
 
   @Test public void allItemsAndExplicitUnequipSurviveRestart(){
@@ -51,6 +52,37 @@ public class RuntimeCheckpointTest {
     for(String id:new ArrayList<>(r.rpg().equipment().values()))r.rpg().equip(id);
     first.pause();F5mSaveStore.install(context);RuntimeState restored=stateOf(new GameView(context));
     assertEquals(x,restored.player().x,0.001f);assertEquals(y,restored.player().y,0.001f);assertEquals(31,restored.player().hp);assertEquals(17,restored.player().mp);assertEquals(r.rpg().inventory(),restored.rpg().inventory());assertTrue(restored.rpg().equipment().isEmpty());
+  }
+  @Test public void coldRestartRestoresPoteMapPositionAndReturnPoint()throws Exception{
+    GameView first=new GameView(context);RuntimeState state=stateOf(first);
+    java.lang.reflect.Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(first);
+    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter saved=null;
+    for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter tile:com.projectdark.mobile.world.PoteFieldDef.navigationTiles())
+      if(com.projectdark.mobile.world.PoteFieldDef.isNavigationCenter(tile.x,tile.y)&&Math.abs(tile.x-com.projectdark.mobile.world.PoteFieldDef.ENTRY_X)>100){saved=tile;break;}
+    assertNotNull(saved);state.player().x=saved.x;state.player().y=saved.y;state.player().hp=37;state.player().mp=19;
+    first.pause();F5mSaveStore.install(context);GameView restarted=new GameView(context);RuntimeState restored=stateOf(restarted);
+    assertTrue(inPote(restarted));assertEquals(com.projectdark.mobile.world.PoteFieldDef.MAP_ID,restored.currentMapId());
+    assertEquals(saved.x,restored.player().x,0.001f);assertEquals(saved.y,restored.player().y,0.001f);
+    assertEquals(37,restored.player().hp);assertEquals(19,restored.player().mp);
+    assertEquals(WorldDef.PLAYER_SPAWN_X,prefs.getFloat("field_return_x",0),0.001f);
+  }
+  @Test public void unknownSavedMapFallsBackWithoutOverwritingSource()throws Exception{
+    prefs.edit().putString("map_id","REMOVED_MAP").putFloat("player_x",1234f).putFloat("player_y",1400f).commit();
+    F5mSaveStore.install(context);GameView restarted=new GameView(context);
+    assertFalse(inPote(restarted));assertEquals("REMOVED_MAP",prefs.getString("map_id",null));assertFalse(F5mSaveStore.writable());
+  }
+  @Test public void poteDeathReviveResetsActiveAdapterAndJoystickCanMove()throws Exception{
+    GameView view=new GameView(context);java.lang.reflect.Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);
+    RuntimeState state=stateOf(view);state.damagePlayer(99999);assertFalse(state.player().alive);
+    android.view.MotionEvent revive=android.view.MotionEvent.obtain(0,1,android.view.MotionEvent.ACTION_DOWN,480,270,0);view.onTouchEvent(revive);revive.recycle();
+    assertTrue(state.player().alive);assertTrue(inPote(view));
+    Field active=GameView.class.getDeclaredField("poteFieldAdapter");active.setAccessible(true);java.lang.reflect.Method activeWorld=GameView.class.getDeclaredMethod("activeWorld");activeWorld.setAccessible(true);
+    assertSame(active.get(view),activeWorld.invoke(view));
+    android.view.MotionEvent down=android.view.MotionEvent.obtain(0,2,android.view.MotionEvent.ACTION_DOWN,92,454,0);view.onTouchEvent(down);down.recycle();
+    android.view.MotionEvent move=android.view.MotionEvent.obtain(0,3,android.view.MotionEvent.ACTION_MOVE,120,454,0);view.onTouchEvent(move);move.recycle();
+    java.lang.reflect.Method update=GameView.class.getDeclaredMethod("updatePoteField",float.class);update.setAccessible(true);
+    float x=state.player().x,y=state.player().y;for(int i=0;i<30;i++)update.invoke(view,.05f);
+    assertTrue("Pote joystick must move the player after revive",Math.abs(state.player().x-x)>0.01f||Math.abs(state.player().y-y)>0.01f);
   }
   @Test public void deadPlayerRestartsDeadUntilExplicitRevive()throws Exception{
     GameView view=new GameView(context);RuntimeState r=stateOf(view);r.damagePlayer(99999);view.pause();F5mSaveStore.install(context);RuntimeState restored=stateOf(new GameView(context));assertFalse(restored.player().alive);assertEquals(0,restored.player().hp);restored.revivePlayer();assertTrue(restored.player().alive);

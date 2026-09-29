@@ -90,3 +90,11 @@ The v0.53 overlap report remains user-reported and has not been independently re
 | F5M-RESTART-RESTORE-01 | Game + Director | Restore the correct active map and safe player position after process death/relaunch | Milles and Pote cold-restart tests; preserve HP/MP, quest/objectives, inventory/equipment, EXP/Gold/level/stats and reward watermark; invalid/old save uses safe fallback without destructive overwrite; no duplicate combat or quest reward; exact APK process-restart check. |
 
 Weapon hand attachment and hit readability are explicitly deferred by the user. Existing progression/save components should be reused; do not reimplement them. Close the map restore gap first, then run the full NPC → hunt → reward → progression → restart/restore loop on device.
+
+## Pote restart, respawn and reward verification (2026-09-29)
+
+| Task | Owner | Result | Verification / state | Next action |
+|---|---|---|---|---|
+| F5M-RESTART-RESTORE-01 | Game + Director | v0.55 reconstructs the saved Pote runtime/adapter before applying its checkpoint, preserves the Milles return point, and revives through the active map adapter while clearing stale touch/joystick state. | Added Robolectric cold restart coverage for Pote map/position/HP/MP and invalid-map preservation. CI pending; user-reported failure remains DEVICE_PENDING until this exact APK is tested. | Build v0.55, collect existing quest reward/equip test gear, cold restart in Pote, then die, revive and walk. |
+
+Pote showcase monsters have no source-backed EXP or drop rates/quantities in the available master data. `POTE_SPIRIT` has verified EXP 308950, but no resolvable gear/item odds or quantities; it is not one of the current five showcase actors. Keep these monsters' reward state pending. Persistence can be tested with the existing explicit quest reward and equipped gear; do not fabricate monster rewards to make the test convenient.

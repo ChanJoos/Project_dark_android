@@ -22,6 +22,26 @@ public final class F5mSaveStore {
   public static boolean installed(){return active!=null;}
   public static boolean writable(){return active==null||active.writable;}
   public static boolean rewardClaimedActive(){return active!=null&&active.prefs.getBoolean("quest_reward_claimed",false);}
+  /** Only maps with a complete runtime adapter may be restored at startup. */
+  public static String savedMapIdActive(){
+    if(active==null||!active.writable)return WorldDef.ID;
+    String map=active.prefs.getString("map_id",WorldDef.ID);
+    if(WorldDef.ID.equals(map)||com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(map))return map;
+    active.writable=false;
+    return WorldDef.ID;
+  }
+  public static float[] savedFieldReturnPointActive(){
+    if(active==null||!active.writable)return new float[]{WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y};
+    float x=active.prefs.getFloat("field_return_x",WorldDef.PLAYER_SPAWN_X);
+    float y=active.prefs.getFloat("field_return_y",WorldDef.PLAYER_SPAWN_Y);
+    if(!Float.isFinite(x)||!Float.isFinite(y)||x<WorldDef.MIN_X||x>WorldDef.MAX_X||y<WorldDef.MIN_Y||y>WorldDef.MAX_Y)
+      return new float[]{WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y};
+    return new float[]{x,y};
+  }
+  public static void saveFieldReturnPointActive(float x,float y){
+    if(active==null||!active.writable)return;
+    active.prefs.edit().putFloat("field_return_x",x).putFloat("field_return_y",y).commit();
+  }
   public static void restoreQuestActive(F5mAdaptedPrologueQuest q){if(active!=null&&active.writable)active.restoreQuest(q);}
   public static void restoreQuest2Active(GrowthQuest2 q){if(active!=null&&active.writable)active.restoreQuest2(q);}
   public static void restoreRewardsActive(RpgProgressionState r){if(active!=null&&active.writable)active.restoreRpg(r);}
