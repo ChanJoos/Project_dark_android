@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 48
-        versionName '0.48-pote-forest-candidate'
+        versionCode 49
+        versionName '0.49-pote-monster-art-candidate'
     }
     sourceSets {
         main {

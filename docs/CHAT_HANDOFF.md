@@ -50,3 +50,12 @@
 ## Active task branch and APK source
 
 Before building, inspect main and the branch that contains the requested work. Compare their heads and relevant diffs. Build the SHA with the requested work; identify branch, SHA, app version, Actions run, artifact, and APK SHA-256. If that branch is unmerged/diverged, call the APK a candidate. Build success and renderer screenshots do not prove device interaction; record requested on-device scenarios separately.
+
+
+## Pote monster runtime candidate handoff (2026-09-29)
+
+- Source branch: `codex/pote-monster-sprites-runtime-20260929`, based on Pote runtime branch head `133f2388706b1948e63c7b931fb46c4a442c8ff2`; this is a candidate branch, not main.
+- User explicitly requested a test APK using the generated artwork currently available. Register only the five complete sets in `PoteForestMonsterShowcase`: `POTE_PURPLE`, `POTE_RED`, `POTE_GREEN`, `POTE_SILVER`, `POTE_LYCAN` (12 individual still-pose PNGs each). Only the Lycanthrope set was previously visually accepted; the other four remain generated candidates.
+- Remove the old `monster_test_v04` 16-identity runtime mappings and its production copy from packaged assets. Preserve its separate historical review source; do not load it in the app or use it as new-art reference.
+- Do not register Trant's partial 9-pose set (only NW attack exists), other missing species, or strong variants. Never fill missing directions with guessed/mirrored art.
+- PNGs are one representative image per state/direction, not looping animation sheets. Verify live AI state changes, four diagonal facings, all 60 asset loads, silhouette bounds, and APK contents. Record exact CI run, source SHA, artifact ID, APK SHA-256, device-pending status, and next task in `PROJECT_STATE.md`, `DIRECTOR_BACKLOG.md`, and the art README before ending.

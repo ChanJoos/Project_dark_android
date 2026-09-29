@@ -54,3 +54,12 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 
 
 최신 팜팻 SE 대기 이미지 파일명·QA 범위는 PROJECT_STATE의 2026-09-29 범위 정정에 기록. 앞선 팜팻 구르기와 실버 대기는 후광 때문에 반려; 레드·그린·퍼플 대기 초안도 사용자 수락 전이다. 13종의 나머지 방향·동작은 미완료.
+
+
+## Pote 몬스터 런타임 후보 교체 (2026-09-29)
+
+| Task | Owner | 결과 | 검증/상태 | 다음 작업 |
+|---|---|---|---|---|
+| POTE-MONSTER-RUNTIME-01 | Visual + Director | 이전 16 identity의 `monster_test_v04` art runtime mapping 해제; 현재 5개 완전 세트(60 pose PNG) 등록 | Source edited on candidate branch `codex/pote-monster-sprites-runtime-20260929`; 48×48 transparent frame, visible height cap 30px, old production copy removed. CI/build and APK inventory pending; device QA pending. | Run `PotePamfetPresentationTest`; inspect exact-SHA APK for all 60 registered images and no `monster_test_v04/`; download and report candidate APK; record device check separately. |
+
+현재 5종은 기존 생성 후보만 사용합니다. 트랜트 9장 부분 세트 및 그 밖의 미생성 종/강력형은 새 artwork가 완성될 때까지 미등록입니다. 12장은 방향/상태별 대표 still이며 multi-frame loop 미구현입니다.

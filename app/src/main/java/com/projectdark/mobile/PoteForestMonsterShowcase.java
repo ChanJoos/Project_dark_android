@@ -8,36 +8,43 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/** Adapted test placements for every identity in the current Pote forest Monster_Master projection. */
+/** Adapted test placements for currently available generated 12-pose candidate sets. */
 public final class PoteForestMonsterShowcase {
+  public static final String ASSET_ROOT="pote_monsters_generated_v1/sprites/";
   private static final Map<String,String> ART;
   private static final List<String> IDS;
   static {
     Map<String,String> art=new LinkedHashMap<>();
+    // Only species with all 12 current generated candidates (idle/walk/attack × NW/NE/SW/SE).
+    // Historical monster_test_v04 mappings are intentionally not part of the runtime registry.
+    art.put("POTE_PURPLE","purple_pamfet");
     art.put("POTE_RED","red_pamfet"); art.put("POTE_GREEN","green_pamfet");
-    art.put("POTE_PURPLE","purple_pamfet"); art.put("POTE_SILVER","silver_pamfet");
-    art.put("POTE_TREANT","trant"); art.put("POTE_ANTLION","antlion");
-    art.put("POTE_GNOLL","gnoll"); art.put("POTE_WOLFRIDER","wolf_rider");
-    art.put("POTE_LYCAN","lycanthrope"); art.put("POTE_ANTGIANT","ant_giant");
-    art.put("POTE_SILVERWOLF","silver_wolf"); art.put("POTE_SPIRIT","brown_pote_spirit");
-    art.put("POTE_MANTIS","giant_mantis");
-    // No separate strong-variant concepts are present in the v0.4 art pack.
-    art.put("POTE_STRONG_GNOLL","gnoll"); art.put("POTE_STRONG_WOLFRIDER","wolf_rider");
-    art.put("POTE_STRONG_TREANT","trant");
+    art.put("POTE_SILVER","silver_pamfet");
+    art.put("POTE_LYCAN","lycanthrope");
     ART=Collections.unmodifiableMap(art);
     IDS=Collections.unmodifiableList(new ArrayList<>(art.keySet()));
   }
 
   private PoteForestMonsterShowcase(){}
   public static List<String> monsterIds(){return IDS;}
-  public static boolean containsMonster(String id){return ART.containsKey(id)||"POTE_SPIRIT_TEST_B".equals(id);}
-  public static String artKey(String id){return "POTE_SPIRIT_TEST_B".equals(id)?ART.get("POTE_SPIRIT"):ART.get(id);}
-  public static String runtimeId(String rosterId){
-    // The canonically rewarded spirit must use an isolated fixture identity in the test field.
-    return "POTE_SPIRIT".equals(rosterId)?"POTE_SPIRIT_TEST_B":rosterId;
+  public static boolean containsMonster(String id){return ART.containsKey(id);}
+  public static String artKey(String id){return ART.get(id);}
+  public static String assetPath(String monsterId,String state,CharacterRenderer.Direction direction){
+    String species=artKey(monsterId);
+    if(species==null||direction==null)return null;
+    String pose="walk".equals(state)||"attack".equals(state)?state:"idle";
+    String dir;
+    switch(direction){
+      case NW:dir="nw";break;
+      case NE:dir="ne";break;
+      case SW:dir="sw";break;
+      case SE:dir="se";break;
+      default:return null;
+    }
+    return ASSET_ROOT+species+"/"+pose+"_"+dir+".png";
   }
 
-  /** Keep the original adapted purple placement and spread remaining test actors across clear tiles. */
+  /** Spread only art-registered test actors across clear tiles; this does not declare canon spawns. */
   public static List<RuntimeState.Monster> instantiate(PoteMonsterRoster roster,List<WorldMoveTargetController.TileCenter> tiles){
     if(roster==null||tiles==null)throw new IllegalArgumentException("roster/tiles");
     List<WorldMoveTargetController.TileCenter> chosen=new ArrayList<>();
@@ -60,7 +67,7 @@ public final class PoteForestMonsterShowcase {
       String id=IDS.get(i);PoteMonsterRoster.Entry entry=roster.find(id);
       if(entry==null)throw new IllegalStateException("Roster is missing "+id);
       WorldMoveTargetController.TileCenter tile=chosen.get(i);
-      result.add(new RuntimeState.Monster(runtimeId(id),entry.name+" [테스트 배치]",tile.x,tile.y,40,"B/ADAPTED_TEST_CONCEPT"));
+      result.add(new RuntimeState.Monster(id,entry.name+" [테스트 배치]",tile.x,tile.y,40,"B/ADAPTED_GENERATED_CANDIDATE"));
     }
     return Collections.unmodifiableList(result);
   }

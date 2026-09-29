@@ -57,3 +57,14 @@
 
 
 | 생성물 QA 상태 | Pamfet의 원형 구르기·잎은 표현됐으나 보라색 후광이 제거되지 않아 미수락. 무장 늑대 재생성은 칼 길이를 줄였지만 여전히 컨셉 후보. | 최신 파일 이름과 SHA-256은 `docs/PROJECT_STATE.md`의 “이미지 자체 검수 추가”; 사용자 시각 수락 전. |
+
+
+## 2026-09-29 — Pote 생성 후보의 테스트 APK 등록 승인
+
+| 구분 | 확정 내용 | 근거/범위 |
+|---|---|---|
+| 이번 테스트 APK | 기존 16 identity의 이전 `monster_test_v04` runtime 이미지 연결을 해제하고, 현재 완성된 5개 생성 후보 세트만 idle/walk/attack 4방향 렌더 경로에 등록한다. | 사용자 요청(2026-09-29); 이번 테스트 APK 범위에 한한 승인. 신규 아트의 원작 정사/시각 수락 승인과 구분. |
+| 등록 종 | 퍼플/레드/그린/실버 팜팻 및 라이칸스로프, 각 12개 대표 포즈 = 60 PNG. | 현재 저장소의 각 파일 실재 확인. `monster_artwork_manifest.csv` runtime registration columns. |
+| 미등록 종 | 트랜트(9/12), 나머지 미완성 종 및 강력한 변형은 등록하지 않는다. 없는 방향·상태를 복사/추정하지 않는다. | 현재 소스 파일 확인; 사용자 이전 결정에서 강력한 변형 제외. |
+| 아트 상태 | 프레임 PNG는 생성 후보의 단일 still pose다. 상태/방향에 따라 교체하며 다중 프레임 루프는 구현하지 않았다. | 생성 원본 및 `PoteFieldRenderer` 구현 계약. |
+| 구버전 보존 | 기존 v0.4 자료는 review 이력으로 남지만, production source set과 APK에는 포함하지 않는다. | Android `app/build.gradle` production asset roots 및 삭제한 `assets/pote/production/monster_test_v04/`. |

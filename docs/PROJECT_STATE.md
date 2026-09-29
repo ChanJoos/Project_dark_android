@@ -86,3 +86,14 @@ Run the exact candidate APK on an Android device: select each of the 16 displaye
 - 앞서 만든 보라 팜팻 구르기도 후광으로 QA 반려. 늑대인간 2장은 사용자 스크린샷의 기본형/갑옷·칼 대비를 보려는 초안이며 정확한 `POTE_GNOLL/WOLFRIDER/LYCAN` 배정은 근거가 없어 미정이다. 검수되지 않은 그림을 종별 완료 수에 넣지 않는다.
 - GitHub 활성 브랜치의 `assets/pote/reference`에는 `PAMFET_8DIRECTION_DRAFT_V3.jpg`만 확인됐다. `master/data/Monster_Master.csv`의 출처 URL과 과거 검토용 168 PNG는 있으나, 이전에 언급된 `assets/pote/reference/original_web_2026-09-28/` 및 `docs/POTE_MONSTER_ORIGINAL_REFERENCES.md`는 이 브랜치에서 확인되지 않았다. 별도 원작 스크린샷·라벨 자료가 GitHub에 모두 보관됐다고 간주하지 않는다.
 - 이번 결과는 이 대화에서 이미지가 직접 표시됐으며 각 파일은 클릭 가능한 개별 PNG로 전달한다. **13종 전체 완료 0 / 156장 제작·검수 완료 0 / 앱 변경 없음 / 새 APK 없음**. 다음에는 원작 스크린샷의 종별 대응과 자료 보관 위치를 확보한 뒤, 각 identity의 네 방향 정지→이동→공격을 개별 PNG로 만들고 방향/팔레트/전신/투명 가장자리를 검사한다. 사용자 수락 전 `VISUAL_ACCEPTED`로 표기하지 않는다.
+
+
+## 2026-09-29 — 신규 생성 몬스터 후보 런타임 등록 (현재 작업)
+
+- **사용자 결정:** 기존 16 identity에 연결한 이전 `monster_test_v04` 이미지를 게임 런타임에서 해제하고, 현재 생성된 이미지로 idle/walk/attack 방향 포즈를 APK에 반영합니다. 이는 테스트 후보 적용 승인입니다. 신규 그림 전부의 시각 수락/원작 정사 승인은 아닙니다.
+- **확인한 기반:** 현재 Pote 숲 구현은 원격 `codex/pote-ground-tile-foundation` HEAD `133f2388706b1948e63c7b931fb46c4a442c8ff2`에 있습니다. 문서 전용 main 스냅샷은 APK 소스로 사용하지 않습니다. 새 작업 브랜치 `codex/pote-monster-sprites-runtime-20260929`에서 구현합니다.
+- **구현 대상:** 기존 생성 후보 중 완전한 12장 세트가 존재하는 퍼플/레드/그린/실버 팜팻과 라이칸스로프, 5종 × 12 = 60장입니다. 개별 48×48 RGBA 프레임으로 변환했고, 실루엣 높이는 최대 30px, 바닥 접점은 공통 하단 앵커로 정렬했습니다. AI가 idle/chase-walk/attack 상태와 NW/NE/SW/SE 방향을 골라 대표 포즈를 바꿉니다. 각 상태는 단일 still PNG로서 다중 프레임 루프는 아닙니다.
+- **미등록:** 트랜트는 공격 NW 한 장만 있는 9장 부분 세트라 제외했습니다. 나머지 미완성 종/방향과 강력한 변형도 제외하고 누락 방향을 추측해 만들지 않습니다. 기존 16 test mapping은 5종 완전 세트로 대체됩니다.
+- **기존 파일 처리:** 이전 v0.4 이미지는 Android production assets의 `monster_test_v04` 경로에서 제거합니다. 기존 review 자료는 보존하되 Android production asset source set에서 로드하지 않습니다. 신규 원본 후보 69장과 출처 해시는 `assets/pote/review/monster_rebuild_v1/`에 저장합니다.
+- **문서 상태:** 작업 소스 구현은 있으나 아직 commit/CI 전입니다. `versionCode 49`, `0.49-pote-monster-art-candidate`를 사용합니다. 다음은 60방향/상태 렌더 QA, APK 내부 기존 경로 제거 및 신규 PNG 수 확인, 정확한 SHA의 GitHub Actions 빌드입니다. 이후 APK SHA와 artifact를 기록합니다.
+- **수락 상태:** `IMPLEMENTED` 후보 코드 기준; `BUILD_VERIFIED=PENDING`, `DEVICE_VERIFIED=PENDING`, 신규 팜팻 `VISUAL_ACCEPTED=PENDING`. 라이칸스로프만 앞서 사용자가 시각 수락했고 이번 게임 내 크기/앵커 확인은 남았습니다.

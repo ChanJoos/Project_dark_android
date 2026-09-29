@@ -15,40 +15,47 @@ import org.robolectric.annotation.Config;
 import org.robolectric.annotation.GraphicsMode;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Arrays;
+import java.io.File;
+import java.io.FileOutputStream;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk=34,manifest=Config.NONE)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public final class PotePamfetPresentationTest {
-  @Test public void everyShowcaseMonsterLoadsAllTwelveDirectionalPoseAssets() throws Exception {
+  @Test public void everyCurrentCandidateLoadsAllTwelveDirectionalPoseAssets() throws Exception {
     PoteFieldRenderer renderer=new PoteFieldRenderer();
     CharacterRenderer.Direction[] directions={
         CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,
         CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
     String[] states={"idle","walk","attack"};
-    assertEquals(16,PoteForestMonsterShowcase.monsterIds().size());
+    assertEquals(Arrays.asList("POTE_PURPLE","POTE_RED","POTE_GREEN","POTE_SILVER","POTE_LYCAN"),PoteForestMonsterShowcase.monsterIds());
     for(String id:PoteForestMonsterShowcase.monsterIds())for(String state:states)for(CharacterRenderer.Direction direction:directions){
       Bitmap cell=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
       renderer.drawMonsterTestPose(new Canvas(cell),id,state,direction,.5f,.4f,64f,112f);
-      assertTrue("missing/blank concept sprite "+id+" "+state+" "+direction,countOpaque(cell,new Rect(0,0,128,128))>100);
+      assertTrue("missing/blank generated sprite "+id+" "+state+" "+direction,countOpaque(cell,new Rect(0,0,128,128))>100);
       Rect ink=opaqueBounds(cell,new Rect(0,0,128,128));
-      assertTrue("monster visual height must stay near the player scale: "+id+" "+state+" "+direction,ink.height()<=48);
+      assertTrue("monster visual height must stay near the player scale: "+id+" "+state+" "+direction,ink.height()<=34);
+      File file=new File("build/reports/device-review/monster-candidates/"+id+"_"+state+"_"+direction.name().toLowerCase()+".png");
+      File parent=file.getParentFile();if(parent!=null)parent.mkdirs();
+      try(FileOutputStream out=new FileOutputStream(file)){assertTrue(cell.compress(Bitmap.CompressFormat.PNG,100,out));}
       cell.recycle();
     }
+    assertEquals("incomplete species sets must not be registered",null,PoteForestMonsterShowcase.assetPath("POTE_TREANT","attack",CharacterRenderer.Direction.NE));
   }
 
   @Test public void runtimePlacesEveryMasterRosterIdentityOnADistinctWalkableTile(){
     RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
-    assertEquals(16,state.monsters().size());
+    assertEquals(5,state.monsters().size());
     Set<String> ids=new HashSet<>();Set<String> locations=new HashSet<>();
     for(RuntimeState.Monster monster:state.monsters()){
       assertTrue(ids.add(monster.id));
       assertTrue(PoteFieldDef.isNavigationCenter(monster.x,monster.y));
       assertTrue(locations.add(monster.x+":"+monster.y));
-      assertSame("visible test sprite must be tappable above its ground anchor",monster,state.hitMonster(monster.x,monster.y-55f,1f));
+      assertSame("visible test sprite must be tappable above its ground anchor",monster,state.hitMonster(monster.x,monster.y-24f,1f));
     }
     assertEquals(PoteForestMonsterShowcase.monsterIds().size(),ids.size());
-    assertTrue("canonical spirit reward must not be farmable from the test fixture",ids.contains("POTE_SPIRIT_TEST_B"));
+    assertTrue("strong variants stay outside this art candidate run",java.util.Collections.disjoint(ids,Arrays.asList("POTE_STRONG_GNOLL","POTE_STRONG_WOLFRIDER","POTE_STRONG_TREANT")));
   }
 
   @Test public void purplePamfetIsPlacedOnTheEntryRouteWithoutChangingItsStats(){
