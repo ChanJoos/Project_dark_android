@@ -159,6 +159,47 @@ public final class RuntimeState {
     float min=radius+PLAYER_RADIUS+ACTOR_CLEARANCE;
     return distance(x,y,player.x,player.y)<min;
   }
+  /** Shared World/Runtime actor rule for a player tile endpoint, including moving reservations. */
+  public boolean canPlayerOccupyActors(float x,float y){
+    return !monsterOccupied(null,x,y,PLAYER_RADIUS)&&!npcOccupied(x,y,PLAYER_RADIUS);
+  }
+
+  /** Revalidate the whole player tile segment against stationary actors and moving monster paths. */
+  public boolean canPlayerTraverseActors(float fromX,float fromY,float toX,float toY){
+    if(!canPlayerOccupyActors(toX,toY))return false;
+    float playerDx=toX-fromX,playerDy=toY-fromY;
+    for(Monster other:monsters){
+      if(!other.alive)continue;
+      float min=PLAYER_RADIUS+monsterCollisionRadius(other)+ACTOR_CLEARANCE;
+      float minSquared=min*min;
+      if(other.isMoving){
+        if(segmentDistanceSquared(fromX,fromY,toX,toY,other.x,other.y,
+            other.moveTargetX,other.moveTargetY)<minSquared){
+          float rx=fromX-other.x,ry=fromY-other.y;
+          float monsterDx=other.moveTargetX-other.x,monsterDy=other.moveTargetY-other.y;
+          boolean exitingExistingOverlap=distanceSquared(fromX,fromY,other.x,other.y)<minSquared
+              &&rx*(playerDx-monsterDx)+ry*(playerDy-monsterDy)>=0f;
+          if(!exitingExistingOverlap)return false;
+        }
+      }else if(pointSegmentDistanceSquared(other.x,other.y,fromX,fromY,toX,toY)<minSquared){
+        float rx=fromX-other.x,ry=fromY-other.y;
+        boolean exitingExistingOverlap=distanceSquared(fromX,fromY,other.x,other.y)<minSquared
+            &&rx*playerDx+ry*playerDy>=0f;
+        if(!exitingExistingOverlap)return false;
+      }
+    }
+    for(Npc npc:npcs){
+      float min=PLAYER_RADIUS+NPC_RADIUS+ACTOR_CLEARANCE;
+      if(pointSegmentDistanceSquared(npc.x,npc.y,fromX,fromY,toX,toY)<min*min){
+        float rx=fromX-npc.x,ry=fromY-npc.y;
+        boolean exitingExistingOverlap=distanceSquared(fromX,fromY,npc.x,npc.y)<min*min
+            &&rx*playerDx+ry*playerDy>=0f;
+        if(!exitingExistingOverlap)return false;
+      }
+    }
+    return true;
+  }
+
   private boolean monsterOccupied(Monster self,float x,float y,float radius){
     for(Monster other:monsters){
       if(other==self||!other.alive)continue;
