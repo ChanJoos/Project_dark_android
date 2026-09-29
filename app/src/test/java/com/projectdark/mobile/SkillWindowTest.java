@@ -53,7 +53,7 @@ public class SkillWindowTest {
   }
   @Test public void referenceIconsUseExactIdsAndUnknownDoesNotBorrowArt(){
     SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertFalse(icons.has("SK_전사_001"));assertTrue(icons.has("SK_전사_012"));assertTrue(icons.has("SK_공통_001"));assertTrue(icons.has("SK_무도가_002"));assertTrue(icons.has("SK_무도가_032"));assertFalse(icons.has("missing"));
-    Bitmap bitmap=Bitmap.createBitmap(60,60,Bitmap.Config.ARGB_8888);assertTrue(icons.draw(new Canvas(bitmap),"SK_마법사_001",new RectF(4,4,44,44)));assertNotEquals(0,bitmap.getPixel(20,20));
+    Bitmap bitmap=Bitmap.createBitmap(60,60,Bitmap.Config.ARGB_8888);assertTrue(icons.draw(new Canvas(bitmap),"SK_마법사_001",new RectF(4,4,44,44)));assertNotEquals(0,bitmap.getPixel(20,20));assertEquals("no cyan corner triangles",0,Color.alpha(bitmap.getPixel(4,4)));
   }
   @Test public void statsGoldOnlyLearningDoesNotRequireJobOrMasteryAndDescriptionIsStable() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");
@@ -114,6 +114,13 @@ public class SkillWindowTest {
     r.rpg().restoreStats(3,3,6,3,3,0);assertFalse(a.learn("SK_공통_014",r.rpg()));
     r.rpg().restoreStats(3,6,3,3,3,0);r.rpg().restoreGold(150);assertTrue(a.learn("SK_공통_014",r.rpg()));
     assertTrue(b.captureConditions("SK_전사_009").contains("Required_Prerequisite_Level 90;90"));
+  }
+  @Test public void readonlySaveCannotChargeLearningOrChangeSlots() throws Exception {
+    GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");
+    b.learn("SK_공통_001",0);b.assign(0,"SK_공통_001");r.rpg().restoreGold(500);r.rpg().restoreStats(23,3,3,19,3,0);
+    context.getSharedPreferences("project_dark_f5m_v1",0).edit().putInt("save_schema",999).commit();F5mSaveStore.install(context);assertFalse(F5mSaveStore.writable());
+    w.open=true;w.selectedId="SK_무도가_002";tap(v,590,425);assertFalse(b.learned("SK_무도가_002"));assertEquals(500L,r.rpg().gold().longValue());
+    w.selectedId="SK_공통_001";tap(v,760,425);tap(v,155,485);assertEquals("save failure restores cleared assignment","SK_공통_001",b.slot(0));
   }
   private static SkillBook.Entry bEntry(GameView v,String id)throws Exception{return ((SkillBook)field(v,"skillBook")).get(id);}
   private static void render(GameView v,String name)throws Exception{Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File dir=new File("build/reports/device-review");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,name))){image.compress(Bitmap.CompressFormat.PNG,100,out);}}

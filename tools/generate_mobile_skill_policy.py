@@ -222,10 +222,12 @@ for e in catalog:
  stats={k:3 for k in keys}
  for k,values in fallback.get(e['job'],{}).items():stats[k]=values[tier-1]
  source=captures.get(e['id'],{}).get('conditions',e['legacy'])
+ captured_stats=[]
  for k in keys:
   match=re.search(r'(?:^| · )'+k+r' (\d+)(?:$| · )',source)
-  if match:stats[k]=int(match.group(1))
- out[e['id']]={'stats':stats,'gold':0 if e['id'] in ['SK_공통_001','SK_공통_002'] else prices[tier],'items':materials.get(e['id'],{}),'summary':summary(e),'evidence':'PROJECT_ADAPTED_V60','stat_source':'USER_CAPTURE' if source else 'PROJECT_TIER_POLICY'}
+  if match:
+   stats[k]=int(match.group(1));captured_stats.append(k)
+ out[e['id']]={'stats':stats,'gold':0 if e['id'] in ['SK_공통_001','SK_공통_002'] else prices[tier],'items':materials.get(e['id'],{}),'summary':summary(e),'evidence':'PROJECT_ADAPTED_V60','stat_source':'USER_CAPTURE' if len(captured_stats)==5 else 'CAPTURE_WITH_PROJECT_DEFAULTS' if captured_stats else 'PROJECT_TIER_POLICY'}
 for id in ['skill_proto','kick_proto','cast_proto']:out[id]={'stats':{k:3 for k in keys},'gold':0,'items':{},'summary':'전투 검사에 사용하는 내부 스킬입니다.','evidence':'B_TEST_ONLY'}
 (assets/'mobile_learning.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 print('Mobile skill policies:',len(out))
