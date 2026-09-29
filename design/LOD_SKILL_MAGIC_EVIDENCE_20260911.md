@@ -324,14 +324,14 @@ These are recorded for future schema compatibility only. PROJECT DARK current im
 
 ## 14.1 Legacy acquisition requirements captured from user images
 
-A separate archive now records the legible Warrior 1st–5th circle requirements from the user-supplied legacy guide screenshot:
+A separate archive now records the legible common requirements plus Warrior and Martial Artist 1st–5th circle requirements from the user-supplied legacy guide screenshots:
 - [Skill_Legacy_Requirements.csv](../master/data/Skill_Legacy_Requirements.csv)
-- 13 entries: circle, STR/INT/WIS/CON/DEX thresholds, prerequisite skill, and required prerequisite level where shown.
+- 29 entries: circle, STR/INT/WIS/CON/DEX thresholds, prerequisite skill, and required prerequisite level where shown.
 - Evidence record: `SE10` in [Skill_Evidence.csv](../master/data/Skill_Evidence.csv).
 
 These are **legacy-client acquisition requirements**, not modern rules. Keep them outside the current `Skill_Requirements` values and never feed them to runtime progression without a separately verified legacy ruleset. The supplied skill/magic PDF explains that newer-client prerequisite rules changed and proficiency replaced the old skill-level gating model. Screenshot-derived values are preserved as historical evidence only.
 
-The remaining class pages in the supplied screenshots have not been transcribed into the archive yet; do not interpret their absence as skills or requirements being unavailable. The existing 184-row `Skill_Master` inventory and the class/effect index above remain the working 1st-advancement scope.
+Thief, Priest and Wizard acquisition rows in the supplied images have not yet been transcribed into this archive; do not interpret their absence as skills or requirements being unavailable. The skill/magic PDF and existing 184-row Skill_Master inventory still document their action names and effects. The existing 184-row `Skill_Master` inventory and the class/effect index above remain the working 1st-advancement scope.
 
 ## 14. Evidence cautions
 The source itself warns official-site information can be stale, and this community document mixes historical and current-client behavior. Several entries explicitly describe changed/removed/broken mechanics. Therefore:
