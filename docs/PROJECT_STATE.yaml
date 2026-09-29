@@ -260,18 +260,47 @@ work_packages:
       - "Player/monster and monster/monster occupancy checks include configured actor clearance, moving destinations, and crossing in-flight paths."
     current_followup:
       reported_apk_version: "0.53"
-      report_status: "DEVICE_FAILED (user-reported); not independently reproduced"
-      report: "Automatic combat sometimes overlaps the player and a monster. Earlier report also included monster-monster overlap and occasional walking-facing mismatch."
-      root_cause: "UNKNOWN on device. Source audit found live player-step validation omitted moving monster reserved destinations and swept paths; v0.54 adds shared RuntimeState checks and regression coverage."
+      report_status: "DEVICE_FAILED (initial user report); v0.54 user-reported device pass"
+      report: "Automatic combat sometimes overlapped the player and a monster; user now reports the v0.54 spacing scenario passed."
+      root_cause: "Source-level omission was fixed in v0.54. User reports pass; no device model/video was supplied in the status message."
       fix_version: "0.54"
       implementation_source_sha: "5905e963de7898acec4b84644e78fcb98cec395e"
       implementation_state: "BUILD_VERIFIED"
-      observable_state: "DEVICE_PENDING"
+      observable_state: "DEVICE_VERIFIED (user-reported)"
+      device_report_scope: "Spacing/approach, combat relation and BODY+robe+weapon attack presentation passed per user; weapon hand attachment and hit readability explicitly deferred."
       actions_run: "36570339135"
       apk_artifact: "11033662723"
       apk_sha256: "97b892b9afd8afb82c888db1ed13305f565e3072300900e26ffbf5ec848f2fb4"
       manual: "docs/MONSTER_CREATION_MANUAL.md"
-      next_check: "Install exact versionCode 54 APK and repeat automatic combat around moving monsters; verify actor spacing and direction on device."
+      next_check: "Complete First RPG Loop cold-restart restoration for Milles/Pote; test persisted map, valid position and duplicate-reward watermark."
+
+  F5M_RESTART_RESTORE_001:
+    title: "Restore the active map and complete First RPG Loop state after process restart"
+    system: persistence
+    scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: READY
+    claim: null
+    required_sources:
+      - app/src/main/java/com/projectdark/mobile/F5mSaveStore.java
+      - app/src/main/java/com/projectdark/mobile/GameView.java
+      - app/src/main/java/com/projectdark/mobile/MainActivity.java
+      - app/src/main/java/com/projectdark/mobile/RuntimeState.java
+      - app/src/main/java/com/projectdark/mobile/world/WorldRuntimeAdapter.java
+      - app/src/main/java/com/projectdark/mobile/world/PoteFieldDef.java
+      - app/src/test/java/com/projectdark/mobile/F5mRestartPersistenceMatrixTest.java
+      - docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md
+    gap: "Save data writes map_id and position, but cold startup constructs the Milles runtime and restoreRuntimeActive only restores coordinates when the saved map already matches. The active map/adapter is not reconstructed from the saved map id."
+    acceptance:
+      - "Cold restart restores the saved Milles or Pote map and a valid walkable player tile before camera/adapter binding."
+      - "HP/MP/alive, quest state and objective progress, inventory/equipment, level/EXP/Gold/stats, and combat reward watermark round-trip."
+      - "A process kill after a monster defeat or quest turn-in does not duplicate rewards/objective counts."
+      - "Invalid or older save data falls back safely and is not destructively overwritten."
+      - "Automated process-boundary tests cover Milles and Pote; exact APK is cold-restarted on device through the First RPG Loop."
+    current_followup:
+      implementation_state: "PARTIAL (durable save components exist; active-map cold restore gap identified by source audit)"
+      observable_state: "UNVERIFIED"
+      next_check: "Implement and test map-aware startup restore; then verify the end-to-end NPC → hunt → reward → progression → restart loop on device."
 
   HUD_WORLD_BALANCE_001:
     title: "Reduce HUD competition with world while preserving controls"
@@ -294,6 +323,7 @@ agent_selection_policy:
   - "After a package reaches its acceptance gate, update its status/evidence and advance to the next highest-value dependency-valid READY package. Do not micro-polish an accepted item."
   - "Verifier must cross-check the package against its referenced device finding IDs; a code/test pass that does not satisfy the finding is FAILED/VERIFICATION_PENDING, not ACCEPTED."
   - "Build pass != device pass != visual acceptance. Fresh exact-APK device evidence is required to close device-visible failures."
+  - "User-reported v0.54 device acceptance on 2026-09-29: automatic-combat spacing, combat relation and BODY+robe+weapon attack presentation passed; weapon hand attachment and hit readability remain deferred. Exact user device/build evidence was not included in the report."
 
 status_summary:
   visual_acceptance: FAIL
