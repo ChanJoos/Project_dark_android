@@ -47,14 +47,18 @@ public final class PotePamfetPresentationTest {
   @Test public void runtimePlacesEveryMasterRosterIdentityOnADistinctWalkableTile(){
     RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
     assertEquals(5,state.monsters().size());
+    state.enterPoteField();
     Set<String> ids=new HashSet<>();Set<String> locations=new HashSet<>();
     for(RuntimeState.Monster monster:state.monsters()){
       assertTrue(ids.add(monster.id));
       assertTrue(PoteFieldDef.isNavigationCenter(monster.x,monster.y));
+      double entryDistance=Math.hypot(monster.x-PoteFieldDef.ENTRY_X,monster.y-PoteFieldDef.ENTRY_Y);
+      assertTrue("all five test actors must be in the entrance view/aggro pocket",entryDistance>=72&&entryDistance<=168);
       assertTrue(locations.add(monster.x+":"+monster.y));
       assertSame("visible test sprite must be tappable above its ground anchor",monster,state.hitMonster(monster.x,monster.y-24f,1f));
     }
     assertEquals(PoteForestMonsterShowcase.monsterIds().size(),ids.size());
+    assertEquals("the playable art contract has four diagonal directions",4,CharacterRenderer.Direction.values().length);
     assertTrue("strong variants stay outside this art candidate run",java.util.Collections.disjoint(ids,Arrays.asList("POTE_STRONG_GNOLL","POTE_STRONG_WOLFRIDER","POTE_STRONG_TREANT")));
   }
 

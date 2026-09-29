@@ -87,11 +87,32 @@ public final class PoteFieldRenderer {
     // Runtime PNGs are normalized 48x48 frames; visible silhouettes occupy at most 30px height.
     // Draw at frame size so the alpha-bounded artwork keeps that deliberately reduced scale.
     float h=48f,w=h*b.getWidth()/Math.max(1f,b.getHeight());
-    float bob="idle".equals(pose)?(float)Math.sin(idleClock*5f)*.45f:0f;
-    float cx=x,cy=y-bob;
+    float cx=x,cy=y;
+    if("idle".equals(pose)){
+      cy-=(float)Math.sin(idleClock*4.5f)*.55f;
+    }else if("walk".equals(pose)){
+      // The art supplies one walk pose per facing. Add a visible two-beat gait while preserving
+      // its direction-specific source image and the shared ground anchor.
+      float gait=(float)Math.sin(idleClock*11f);
+      cy-=.7f+Math.abs(gait)*1.8f;
+      cx+=facingX(direction)*gait*.8f;
+    }else{
+      // Keep the four authored diagonal attack facings; animate a short forward strike/recoil
+      // without rotating into unsupported cardinal/eight-way directions.
+      float impulse=(float)Math.sin(Math.max(0f,Math.min(1f,actionProgress))*(float)Math.PI);
+      cx+=facingX(direction)*3.2f*impulse;
+      cy+=facingY(direction)*3.2f*impulse;
+    }
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
     c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
     pixel.setAlpha(255);
+  }
+
+  private static float facingX(CharacterRenderer.Direction d){
+    return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-0.8944f:0.8944f;
+  }
+  private static float facingY(CharacterRenderer.Direction d){
+    return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-0.4472f:0.4472f;
   }
 
   /** Ground-contact collision footprints are derived from the same visible object anchors. */

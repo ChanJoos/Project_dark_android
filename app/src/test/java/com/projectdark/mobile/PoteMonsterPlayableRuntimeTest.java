@@ -71,18 +71,51 @@ public final class PoteMonsterPlayableRuntimeTest {
     combat.tick(0.24f);
     assertTrue("shared combat resolver applies the B damage on hit frame",state.player().hp<hp);
   }
-  @Test public void pamfetFacesAndHitsThePlayerFromAllFourDirections(){
-    for(CharacterRenderer.Direction facing:CharacterRenderer.Direction.values()){
+  @Test public void everyCandidateMovesWithItsAppliedFacingAndAttacksOnlyInFourDiagonalDirections(){
+    List<WorldMoveTargetController.TileCenter> tiles=PoteFieldDef.navigationTiles();
+    for(String id:PoteForestMonsterShowcase.monsterIds()){
+      RuntimeState movementState=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
+      movementState.enterPoteField();
+      RuntimeState.Monster moving=find(movementState,id);
+      for(RuntimeState.Monster other:movementState.monsters())if(other!=moving)other.alive=false;
+      WorldMoveTargetController.TileCenter goal=null;
+      for(WorldMoveTargetController.TileCenter tile:tiles){
+        float dx=tile.x-moving.x,dy=tile.y-moving.y,d=(float)Math.hypot(dx,dy);
+        if(d<80f||d>=180f)continue;
+        WorldMoveTargetController.Direction direction=MonsterTileCenterLocomotion.toward(dx,dy,WorldMoveTargetController.Direction.SE);
+        float nextX=moving.x+direction.dx,nextY=moving.y+direction.dy;
+        boolean nextIsTile=tiles.stream().anyMatch(t->Math.abs(t.x-nextX)<.1f&&Math.abs(t.y-nextY)<.1f);
+        if(nextIsTile&&!movementState.blocked(nextX,nextY)&&Math.hypot(nextX-tile.x,nextY-tile.y)>=40f){goal=tile;break;}
+      }
+      assertNotNull("nearby pursuit goal for "+id,goal);
+      movementState.player().x=goal.x;movementState.player().y=goal.y;
+      float beforeX=moving.x,beforeY=moving.y;
+      RuntimeCombatSession movementCombat=new RuntimeCombatSession(movementState,(a,t)->true,
+          RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
+      MonsterAIController movementAi=new MonsterAIController(
+          new MonsterAIController.SharedResolverAttackRouter(movementCombat.monsterAutoBridge()));
+      movementAi.tick(movementState,MonsterAIController.MONSTER_STEP_SECONDS_B+.01f);
+      WorldMoveTargetController.Direction actual=WorldMoveTargetController.Direction.between(beforeX,beforeY,moving.x,moving.y);
+      assertNotNull("candidate must move by one diagonal step: "+id,actual);
+      assertEquals("walk image facing must match applied movement: "+id,
+          MonsterTileCenterLocomotion.facing(actual),moving.visualFacing.presentation());
+      assertEquals("movement must select the walking pose", "walk", PoteForestMonsterShowcase.poseFor(moving));
+      assertNotNull(PoteForestMonsterShowcase.assetPath(id,"walk",moving.visualFacing.presentation()));
+    }
+
+    assertEquals("no cardinal/eight-way facings are part of this contract",4,CharacterRenderer.Direction.values().length);
+    for(String id:PoteForestMonsterShowcase.monsterIds())for(CharacterRenderer.Direction facing:CharacterRenderer.Direction.values()){
       RuntimeState state=new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE,true);
       state.enterPoteField();
-      RuntimeState.Monster monster=state.monsters().get(0);
+      RuntimeState.Monster monster=find(state,id);
+      for(RuntimeState.Monster other:state.monsters())if(other!=monster)other.alive=false;
       RuntimeCombatSession combat=new RuntimeCombatSession(state,(a,t)->true,
           RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
       MonsterAIController ai=new MonsterAIController(
           new MonsterAIController.SharedResolverAttackRouter(combat.monsterAutoBridge()));
       WorldMoveTargetController.TileCenter attacker=null,target=null;
-      for(WorldMoveTargetController.TileCenter from:PoteFieldDef.navigationTiles()){
-        for(WorldMoveTargetController.TileCenter to:PoteFieldDef.navigationTiles()){
+      for(WorldMoveTargetController.TileCenter from:tiles){
+        for(WorldMoveTargetController.TileCenter to:tiles){
           if(PoteFieldDef.areAdjacentGroundTiles(from.x,from.y,to.x,to.y)
               &&facing==CanonicalMeleeTileContract.facing(from.x,from.y,to.x,to.y)){
             attacker=from;target=to;break;
@@ -90,19 +123,28 @@ public final class PoteMonsterPlayableRuntimeTest {
         }
         if(attacker!=null)break;
       }
-      assertNotNull("a legal player target must exist in direction "+facing,attacker);
+      assertNotNull("legal adjacent player tile "+facing,attacker);
       monster.x=attacker.x;monster.y=attacker.y;
       state.player().x=target.x;state.player().y=target.y;
       int hp=state.player().hp;
       ai.tick(state,0f);
-      assertTrue("Pamfet must wind up against the player in "+facing,monster.attackPrimed);
-      assertEquals(facing,monster.visualFacing.presentation());
+      assertTrue(id+" winds up in "+facing,monster.attackPrimed);
+      assertEquals(id+" locks the attack facing",facing,monster.visualFacing.presentation());
       state.tick(.25f);ai.tick(state,0f);
       assertEquals(MonsterAIController.SubmissionOutcome.ACCEPTED,ai.lastAttackSubmission().outcome);
-      assertEquals("player",ai.lastAttackSubmission().targetId);
+      assertTrue("shared resolver hit must expose an attack pose for "+id,monster.attackVisualRemaining>0f);
+      assertEquals("the actual hit frame must choose the attack art", "attack", PoteForestMonsterShowcase.poseFor(monster));
+      assertTrue(PoteForestMonsterShowcase.assetPath(id,"attack",facing).endsWith("attack_"+facing.name().toLowerCase()+".png"));
       combat.tick(.24f);
-      assertTrue("player must take hit-frame damage from "+facing,state.player().hp<hp);
+      assertTrue(id+" deals the hit-frame damage",state.player().hp<hp);
+      assertTrue("attack facing remains locked only during attack animation",monster.visualFacing.attackLocked());
+      state.tick(.37f);
+      assertFalse("movement facing is released after the attack pose",monster.visualFacing.attackLocked());
     }
   }
 
+  private static RuntimeState.Monster find(RuntimeState state,String id){
+    for(RuntimeState.Monster monster:state.monsters())if(id.equals(monster.id))return monster;
+    throw new AssertionError("missing candidate "+id);
+  }
 }

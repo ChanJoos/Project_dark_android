@@ -61,6 +61,7 @@ public final class MonsterAIController {
       MonsterAutoCombatBridge.Result result=bridge.submit(monster.id,"player");
       if(monster.alive&&result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){
         monster.visualFacing.setLocomotion(lockedFacing);monster.visualFacing.beginAttack();
+        monster.attackVisualRemaining=.36f;
         monster.state=RuntimeState.Monster.State.ATTACK;
       }
       SubmissionOutcome outcome;

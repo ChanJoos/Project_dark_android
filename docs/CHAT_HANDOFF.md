@@ -63,3 +63,11 @@ Before building, inspect main and the branch that contains the requested work. C
 
 - Runtime candidate APK delivered: versionCode 49; source SHA `1def7a92aeef68ce144ebaad8b94f02dee011a12`; Actions run `36534954426` succeeded; artifact `11017989115`; APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. APK inventory: 60 generated pose PNGs, zero `monster_test_v04` paths. Automated device-review tests pass; physical/user-device visual QA remains pending.
 - Next action: install this exact APK on a device and inspect scale, four facings, walk/attack state changes, and attack timing; then update these files with observed results. Do not call the build visually accepted before that check.
+
+
+## 최신 사용자 검수: v49 런타임 미통과 (2026-09-29)
+
+- 사용자 관찰: 초기 장면에서 퍼플팜팻만 보임; walk/attack 동작 미표시; 이동 방향과 sprite facing 불일치; 공격이 8방향처럼 보임. v49 APK는 미통과.
+- 코드 원인: 다른 4종이 기존 farthest-point 배치로 입구/aggro 밖에 산개; walk는 단일 pose still; shared combat route에서 `attackPrimed=false`가 된 이후 렌더가 idle을 골랐음; 공격 방향 lock이 walk로 복귀할 때 풀리지 않을 수 있었음.
+- 수정: 입구 72~168px 범위로 전원 배치, 반복 walk gait와 공격 lunge, hit 이후 공격 포즈 유지/방향 lock 종료. 네 대각 방향만 사용.
+- 새 다섯 종 × 4 facing의 이동 방향/공격 방향과 배치·렌더 테스트를 추가했다. 새 CI/APK 검증 결과는 아래 PROJECT_STATE와 backlog에 기록되기 전까진 미완료다.

@@ -106,3 +106,11 @@ Run the exact candidate APK on an Android device: select each of the 16 displaye
 - APK 내부 검사: 새 경로 포즈 PNG 60개 포함, `monster_test_v04` 경로 0개. CI에서 60개 포즈 렌더/불투명 픽셀/표시 높이, 5종 타일 배치·탭 테스트 통과.
 - 사용자 기기에서 직접 실행/시각 검수는 아직 안 됨. 테스트 빌드에는 다중 프레임 루프가 없고, 5종의 12개 방향/상태 still만 AI 상태 선택으로 전환한다. 13종 전체 이미지 완료는 아님.
 - 다음: APK를 기기에 설치해 크기·방향·이동·접근 후 공격 시점을 확인하고 결과를 기록한다. 눈으로 확인하지 않은 결과는 device-verified로 표기하지 않는다.
+
+
+## 2026-09-29 — 사용자 런타임 검수 피드백과 수정 중
+
+- 사용자가 version 49 APK에서 퍼플팜팻 한 마리만 보이고 걷기/공격 포즈가 나타나지 않으며, 이동 중 바라보는 방향이 맞지 않고 공격이 8방향처럼 보인다고 보고했다. 직전 APK는 전달 후 실사용 기준 **미통과**다.
+- 소스 재검토에서 5개 세트의 등록은 되어 있었지만 배치 알고리즘이 입구 근처 퍼플 외 4마리를 지도 전체로 분산해 초기 화면/180px 추적권 밖에 두었다. 걷기 이미지는 단일 still이라 반복 움직임이 없었고, shared combat hit 경로는 `attackPrimed`를 해제한 뒤 `GameView`가 공격 포즈 대신 idle을 선택했다. 공격 facing lock도 종료시점이 없어 이동 facing에 남을 수 있었다.
+- 수정 중: 다섯 후보를 입구 주변 72~168px ring에 배치, actor별 walk gait/공격 짧은 lunge 및 animation phase 추가, shared-hit 공격 포즈 표시/4방향 facing lock 해제. 캐릭터 방향 enum과 맵 이동/근접 계약은 네 대각 방향(NW/NE/SW/SE)으로 한정한다.
+- 새 테스트는 다섯 종 각각의 이동 실제 step과 facing 일치, idle/walk/attack 12 리소스, shared-hit 공격 포즈, 공격 lock 종료, 다섯 몬스터 입구 가시영역 배치를 검사한다. 다음은 CI 실행과 APK 패키지 검사이며, 기기 시각 검수 전 성공 처리하지 않는다.

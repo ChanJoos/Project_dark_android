@@ -29,6 +29,18 @@ public final class PoteForestMonsterShowcase {
   public static List<String> monsterIds(){return IDS;}
   public static boolean containsMonster(String id){return ART.containsKey(id);}
   public static String artKey(String id){return ART.get(id);}
+  public static String poseFor(RuntimeState.Monster monster){
+    if(monster==null)return "idle";
+    if(monster.attackPrimed||monster.attackVisualRemaining>0f)return "attack";
+    return monster.state==RuntimeState.Monster.State.CHASE||monster.state==RuntimeState.Monster.State.WANDER
+        ?"walk":"idle";
+  }
+  public static float attackProgress(RuntimeState.Monster monster){
+    if(monster==null)return 0f;
+    float progress=monster.attackPrimed?(0.24f-monster.attackWindup)/0.24f
+        :1f-monster.attackVisualRemaining/0.36f;
+    return Math.max(0f,Math.min(1f,progress));
+  }
   public static String assetPath(String monsterId,String state,CharacterRenderer.Direction direction){
     String species=artKey(monsterId);
     if(species==null||direction==null)return null;
@@ -50,16 +62,25 @@ public final class PoteForestMonsterShowcase {
     List<WorldMoveTargetController.TileCenter> chosen=new ArrayList<>();
     WorldMoveTargetController.TileCenter purple=nearest(tiles,704f,480f);
     if(purple!=null)chosen.add(purple);
+    // The former farthest-point sampler scattered four candidates across the entire forest.
+    // Keep the whole visual test roster near the entrance so all five are visible and can enter
+    // the same playable encounter on arrival.
+    List<WorldMoveTargetController.TileCenter> entryPocket=new ArrayList<>();
+    for(WorldMoveTargetController.TileCenter tile:tiles){
+      float d=(float)Math.hypot(tile.x-com.projectdark.mobile.world.PoteFieldDef.ENTRY_X,
+          tile.y-com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y);
+      if(d>=72f&&d<=168f)entryPocket.add(tile);
+    }
     while(chosen.size()<IDS.size()){
       WorldMoveTargetController.TileCenter best=null;float bestSpacing=-1f;
-      for(WorldMoveTargetController.TileCenter candidate:tiles){
+      for(WorldMoveTargetController.TileCenter candidate:entryPocket){
         if(contains(chosen,candidate))continue;
         float spacing=Float.MAX_VALUE;
         for(WorldMoveTargetController.TileCenter existing:chosen)
           spacing=Math.min(spacing,(float)Math.hypot(candidate.x-existing.x,candidate.y-existing.y));
         if(spacing>bestSpacing){best=candidate;bestSpacing=spacing;}
       }
-      if(best==null)throw new IllegalStateException("Not enough clear forest tiles for test roster");
+      if(best==null)throw new IllegalStateException("Not enough clear entrance tiles for visible monster test roster");
       chosen.add(best);
     }
     List<RuntimeState.Monster> result=new ArrayList<>();
