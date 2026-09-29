@@ -14,7 +14,8 @@ public final class RuntimeState {
   public enum BootMode { MILLES, POTE_01_PROTOTYPE }
 
   public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
-  public static final float PLAYER_RADIUS=9f,MONSTER_RADIUS=11f,NPC_RADIUS=10f;
+  public static final float PLAYER_RADIUS=10f,MONSTER_RADIUS=12f,NPC_RADIUS=10f;
+  private static final float ACTOR_CLEARANCE=5f;
 
   public static final class Player {
     public float spawnX,spawnY;
@@ -150,12 +151,62 @@ public final class RuntimeState {
     return true;
   }
   private boolean playerCanOccupy(float x,float y){return !blocked(x,y,PLAYER_RADIUS)&&!monsterOccupied(null,x,y,PLAYER_RADIUS)&&!npcOccupied(x,y,PLAYER_RADIUS);}
-  private boolean monsterCanOccupy(Monster self,float x,float y){return !blocked(x,y,MONSTER_RADIUS)&&!playerOccupied(x,y,MONSTER_RADIUS)&&!monsterOccupied(self,x,y,MONSTER_RADIUS)&&!npcOccupied(x,y,MONSTER_RADIUS);}
+  private boolean monsterCanOccupy(Monster self,float x,float y){float radius=monsterCollisionRadius(self);return !blocked(x,y,radius)&&!playerOccupied(x,y,radius)&&!monsterOccupied(self,x,y,radius)&&!npcOccupied(x,y,radius);}
   public boolean blocked(float x,float y){return blocked(x,y,PLAYER_RADIUS);}
   private boolean blocked(float x,float y,float radius){for(RectF r:obstacles)if(x+radius>r.left&&x-radius<r.right&&y+radius>r.top&&y-radius<r.bottom)return true;return false;}
-  private boolean playerOccupied(float x,float y,float radius){if(!player.alive)return false;float min=radius+PLAYER_RADIUS+3f;return distance(x,y,player.x,player.y)<min;}
-  private boolean monsterOccupied(Monster self,float x,float y,float radius){for(Monster m:monsters){if(m==self||!m.alive)continue;float min=radius+MONSTER_RADIUS+3f;if(distance(x,y,m.x,m.y)<min)return true;}return false;}
-  private boolean npcOccupied(float x,float y,float radius){for(Npc n:npcs){float min=radius+NPC_RADIUS+2f;if(distance(x,y,n.x,n.y)<min)return true;}return false;}
+  private boolean playerOccupied(float x,float y,float radius){
+    if(!player.alive)return false;
+    float min=radius+PLAYER_RADIUS+ACTOR_CLEARANCE;
+    return distance(x,y,player.x,player.y)<min;
+  }
+  private boolean monsterOccupied(Monster self,float x,float y,float radius){
+    for(Monster other:monsters){
+      if(other==self||!other.alive)continue;
+      float min=radius+monsterCollisionRadius(other)+ACTOR_CLEARANCE;
+      float minSquared=min*min;
+      if(distanceSquared(x,y,other.x,other.y)<minSquared)return true;
+      // An in-flight destination is reserved, so two AI updates cannot choose the same tile.
+      if(other.isMoving&&distanceSquared(x,y,other.moveTargetX,other.moveTargetY)<minSquared)return true;
+      // Reject crossing trajectories as well as colliding endpoints during simultaneous movement.
+      if(self!=null&&other.isMoving&&segmentDistanceSquared(self.x,self.y,x,y,
+          other.x,other.y,other.moveTargetX,other.moveTargetY)<minSquared)return true;
+    }
+    return false;
+  }
+  private float monsterCollisionRadius(Monster monster){
+    return "POTE_LYCAN".equals(monster.id)?16f:MONSTER_RADIUS;
+  }
+  private boolean npcOccupied(float x,float y,float radius){
+    for(Npc n:npcs){float min=radius+NPC_RADIUS+ACTOR_CLEARANCE;if(distance(x,y,n.x,n.y)<min)return true;}
+    return false;
+  }
+  private static float distanceSquared(float ax,float ay,float bx,float by){
+    float dx=ax-bx,dy=ay-by;return dx*dx+dy*dy;
+  }
+  private static float segmentDistanceSquared(float ax,float ay,float bx,float by,
+      float cx,float cy,float dx,float dy){
+    if(segmentsIntersect(ax,ay,bx,by,cx,cy,dx,dy))return 0f;
+    return Math.min(Math.min(pointSegmentDistanceSquared(ax,ay,cx,cy,dx,dy),
+        pointSegmentDistanceSquared(bx,by,cx,cy,dx,dy)),
+        Math.min(pointSegmentDistanceSquared(cx,cy,ax,ay,bx,by),
+            pointSegmentDistanceSquared(dx,dy,ax,ay,bx,by)));
+  }
+  private static float pointSegmentDistanceSquared(float px,float py,float ax,float ay,float bx,float by){
+    float vx=bx-ax,vy=by-ay,length=vx*vx+vy*vy;
+    if(length<=.0001f)return distanceSquared(px,py,ax,ay);
+    float t=Math.max(0f,Math.min(1f,((px-ax)*vx+(py-ay)*vy)/length));
+    return distanceSquared(px,py,ax+t*vx,ay+t*vy);
+  }
+  private static boolean segmentsIntersect(float ax,float ay,float bx,float by,
+      float cx,float cy,float dx,float dy){
+    float abC=cross(bx-ax,by-ay,cx-ax,cy-ay);
+    float abD=cross(bx-ax,by-ay,dx-ax,dy-ay);
+    float cdA=cross(dx-cx,dy-cy,ax-cx,ay-cy);
+    float cdB=cross(dx-cx,dy-cy,bx-cx,by-cy);
+    return ((abC<=0f&&abD>=0f)||(abC>=0f&&abD<=0f))
+        &&((cdA<=0f&&cdB>=0f)||(cdA>=0f&&cdB<=0f));
+  }
+  private static float cross(float ax,float ay,float bx,float by){return ax*by-ay*bx;}
 
   public Npc hitNpc(float x,float y,float radius){for(Npc n:npcs){float dx=x-n.x,dy=y-n.y;if(dx*dx+dy*dy<=radius*radius)return n;}return null;}
   public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId)&&PoteForestMonsterShowcase.containsMonster(m.id)&&Math.abs(dx)<=42f&&dy>=-42f&&dy<=8f)return m;}return null;}
