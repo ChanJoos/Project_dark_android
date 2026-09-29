@@ -146,6 +146,27 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  SKILL-WINDOW-01:
+    owner: Director/Game
+    status: BUILD_VERIFIED
+    requested_by: "User 2026-09-30: 구현해"
+    source_branch: codex/skill-window-20260930
+    required_sources:
+      - design/DATA_CONTRACT.md
+      - design/SOURCE_OF_TRUTH.md
+      - master/MASTER_MANIFEST.md
+      - master/data/Skill_Master.csv
+      - master/data/Skill_Requirements.csv
+      - master/data/Skill_Legacy_Requirements.csv
+      - app/src/main/java/com/projectdark/mobile/SkillDef.java
+      - app/src/main/java/com/projectdark/mobile/RuntimeCombatSession.java
+      - app/src/main/java/com/projectdark/mobile/F5mSaveStore.java
+    verification: "BUILD_VERIFIED / DEVICE_PENDING / VISUAL_PENDING"
+    runtime_source_sha: 74c3833e0010e7f0c78e01a70b0c8cafc0ade614
+    build_checkout_sha: 5560ccc69e990d08b44172a9aa538815e64a29f3
+    workflow_run: 36622542956
+    apk_artifact: 11059261609
+    apk_sha256: aa1eac489ac840e293a73619e821491288dc53d8e2a4b482cbbe2b0925400d92
   COMBAT_PIPELINE_003:
     title: "Unify movement, target, reciprocal tile adjacency, attack snapshot and hit resolution"
     system: combat_cross_runtime

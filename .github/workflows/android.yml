@@ -86,6 +86,12 @@ jobs:
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
       - name: Validate Master DB
         run: python tools/validate_master.py
+      - name: Verify generated skill catalog matches Master
+        run: |
+          python tools/generate_skill_catalog.py
+          git diff --exit-code -- app/src/main/assets/skills/catalog.json
+      - name: Verify skill window, shared combat and restart persistence
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --stacktrace
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit

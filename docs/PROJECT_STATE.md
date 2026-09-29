@@ -181,3 +181,21 @@ Status: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDIN
 사용자는 포테에서 앱을 종료하고 다시 열면 밀레스로 돌아오며, 포테에서 사망 후 중앙에서 부활해도 움직이지 않고, 포테 몬스터가 EXP나 장비를 주지 않아 저장 여부를 확인하기 어렵다고 보고했다. 이는 기기 보고이며 v0.55 수정이 해당 기기에서 확인된 것은 아니다.
 
 Main 소스 감사에서 재시작 때 저장 `map_id`와 무관하게 Milles 런타임만 초기화하던 점, Pote 사망·부활 처리에서 Milles 어댑터에만 카메라/제어 정리를 하던 점을 찾았다. 수정은 저장된 Pote 맵으로 런타임·어댑터를 구성한 다음 안전한 위치를 복원하고, Pote 입장 전 Milles 복귀 위치를 저장한다. 사망/부활 때 현재 맵 어댑터, 카메라, 자동공격·조이스틱 상태를 초기화한다. Robolectric 테스트에서 Pote 콜드 재시작, 알 수 없는 맵 저장 보존, 부활 뒤 조이스틱 이동을 확인했다. 첫 Actions 실행에서 두 신규 assertion이 실패해 위치 캡처 및 이동 가능한 인접 타일 선택을 바로잡았고, 수정 SHA `0bbb6ee354af2e67e4513db7e5bb7e643c310052`의 전체 Actions run `36579231684` (#1490)가 모든 단계와 APK 빌드를 통과했다. APK artifact 11038421617의 내부 APK SHA-256은 `b79e1c58742f006cecc167a6e66f16b6ba9501d8d4a70d506a790d149aeb603a`다. 이는 BUILD VERIFIED이며 사용자 기기 확인은 아직 pending이다.
+
+## 2026-09-30 — 스킬창 구현
+
+- Base `cd3dd871`: Master 투영(219 INCLUDE + 기존 B 시험 동작 3), 기술/마법·습득 필터, 16칸 페이지, 설명/조건/구 자료 상세, 슬롯 1~8 등록·해제. 원작 아이콘 미확보는 기술/마법 텍스트 타일로 표시.
+- GameView utility 4번째 버튼은 스킬창. 기존 퀘스트 카드 접근 유지. 모달은 입력만 소비하며 world tick을 정지하지 않는다.
+- 새 SkillBook의 습득/숙련도/슬롯은 schema 3 체크포인트에 저장. 평민은 미습득 상태; 임의 지급 없음. 기존 3 B 동작만 shared Resolver로 실행 가능; 원작 219개 효과는 구현 예정.
+- 자동 테스트: catalog identity, 미습득 차단, checkpoint/restart, invalid ID 원본 보존, shared combat repeat-input, modal/render. CI_PENDING / DEVICE_PENDING / VISUAL_PENDING.
+
+
+## 2026-09-30 — SKILL-WINDOW-01 build verification
+
+- PR #168 runtime source: `74c3833e0010e7f0c78e01a70b0c8cafc0ade614`; base `cd3dd871fc81dcc88053ffff5305fd6fdeddc065`, ahead 4 / behind 0 at verification.
+- Actions run [36622542956](https://github.com/ChanJoos/Project_dark_android/actions/runs/36622542956), job 109591297347: SUCCESS. Checkout actually built synthetic PR merge `5560ccc69e990d08b44172a9aa538815e64a29f3` (head 74c3833e into base cd3dd871). Do not identify this as a head-only checkout.
+- Passed: Master validation, regenerated catalog equality, SkillWindowTest (catalog / unlearned gates / skill checkpoint restore / invalid snapshot protection / shared Resolver repeated input / world tick behind modal), restart persistence matrix, RuntimeCheckpointTest legacy migration and all configured regression steps, assembleDebug.
+- APK artifact `11059261609`, 12,666,152 APK bytes, APK SHA-256 `aa1eac489ac840e293a73619e821491288dc53d8e2a4b482cbbe2b0925400d92`. Build completed 2026-09-30 04:56:45 KST. ZIP digest is distinct from APK hash.
+- Inspected packaged `assets/skills/catalog.json`: 219 Master records. SkillBook adds three B fixtures at runtime. Inspected `skill-window.png` from render artifact `11059746241`: frame, tabs, grid, details and disabled unlearned controls render within the viewport. This is automated native rendering, not physical-device acceptance.
+- Status: IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING. Starting commoner receives no implicit skills; acquisition NPC/service, original combat effects and source icons remain pending. Consequently normal fresh saves cannot yet use/register skills; those paths are exercised with explicitly learned B fixtures in automated tests.
+- Next: user/device acceptance for opening the fourth utility button, technique/magic and learned/all filters, pages/details, old-save preservation and restart; then the separately authorized acquisition/effects/artwork implementation.
