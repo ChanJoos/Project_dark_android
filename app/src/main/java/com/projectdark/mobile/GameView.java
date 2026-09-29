@@ -174,7 +174,7 @@ public final class GameView extends View {
     public void learn(SkillBook.Entry e){
       if(!F5mSaveStore.writable()){showFeedback("저장 데이터를 확인할 수 없어 습득할 수 없습니다",FeedbackTone.WARN);return;}
       SkillAcquisition service=new SkillAcquisition(skillBook);
-      if(service.learn(e.id,state.rpg(),()->F5mSaveStore.checkpointActive()))showFeedback(e.name+" 습득 완료",FeedbackTone.INFO);
+      if(service.learn(e.id,state.rpg(),()->F5mSaveStore.checkpointActive())){performHapticFeedback(android.view.HapticFeedbackConstants.VIRTUAL_KEY);showFeedback(e.name+" 습득 완료",FeedbackTone.INFO);}
       else{SkillAcquisition.Quote q=service.quote(e,state.rpg());showFeedback(q.learned?"이미 습득한 스킬입니다":q.blockers.isEmpty()?"저장 실패 · 습득 비용을 돌려드렸습니다":String.join(" · ",q.blockers),FeedbackTone.WARN);}
     }
     public boolean save(){return F5mSaveStore.writable()&&F5mSaveStore.checkpointActive();}
@@ -318,7 +318,7 @@ public final class GameView extends View {
   }
   private boolean handleReagentShopTouch(MotionEvent e,float x,float y){
     if(e.getActionMasked()==MotionEvent.ACTION_DOWN){
-      if(reagentShopOpen){if(dist(x,y,891,97)<=25){reagentShopOpen=false;return true;}return true;}
+      if(reagentShopOpen){if(dist(x,y,891,97)<=25){reagentShopOpen=false;return true;}int row=0;for(ReagentShopCatalog.Offer o:ReagentShopCatalog.offers()){float t=128+row++*70;if(o.purchasable()&&inside(x,y,792,t+12,874,t+47)){ReagentPurchase.Result result=ReagentPurchase.buy(o.itemId,state.rpg(),()->F5mSaveStore.writable()&&F5mSaveStore.checkpointActive());if(result==ReagentPurchase.Result.PURCHASED)showReward(o.name+" 구매 · Gold -"+o.price);else showFeedback(result==ReagentPurchase.Result.INSUFFICIENT_GOLD?"골드가 부족합니다":result==ReagentPurchase.Result.SAVE_FAILED?"저장 실패 · 구매를 취소했습니다":"구매할 수 없습니다",FeedbackTone.WARN);return true;}}return true;}
       if(reagentShopAdapter==null)return true;
       WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(ReagentShopInteriorDef.MERLIN_X,ReagentShopInteriorDef.MERLIN_Y);
       if(dist(x,y,m.x,m.y-22)<=42){reagentShopOpen=true;reagentShopAdapter.cancelForAction();joy=false;vx=vy=0;showFeedback("멀린 · 시약 판매",FeedbackTone.INFO);return true;}

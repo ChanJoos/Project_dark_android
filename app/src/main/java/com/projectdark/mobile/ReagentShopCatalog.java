@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/** Shop-domain projection for Merlin's classic Milles reagent counter. Prices remain unresolved until sourced. */
+/** Shop-domain projection for Merlin's classic Milles reagent counter. Curanum uses an explicit mobile learning-economy price (ADAPTED); other prices remain unresolved. */
 public final class ReagentShopCatalog {
   public static final class Offer {
     public final String itemId,name,iconAsset;
@@ -15,7 +15,7 @@ public final class ReagentShopCatalog {
   private static final List<Offer> OFFERS=Collections.unmodifiableList(Arrays.asList(
       new Offer(RpgProgressionState.REAGENT_KOMADIUM_ITEM_ID,"코마디움","assets/items/consumable/it_reagent_komadium.webp",null),
       new Offer(RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID,"디베노뭄","assets/items/consumable/it_reagent_dibenomum.webp",null),
-      new Offer(RpgProgressionState.REAGENT_CURANUM_ITEM_ID,"쿠라눔","assets/items/consumable/it_reagent_curanum.webp",null),
+      new Offer(RpgProgressionState.REAGENT_CURANUM_ITEM_ID,"쿠라눔","assets/items/consumable/it_reagent_curanum.webp",50L),
       new Offer(RpgProgressionState.RECALL_MILLES_ITEM_ID,"밀레스리콜","assets/items/consumable/it_recall_milles.webp",null)
   ));
   private ReagentShopCatalog(){}
