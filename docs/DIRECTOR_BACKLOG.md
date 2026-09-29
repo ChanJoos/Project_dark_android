@@ -17,7 +17,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 | Task | Owner | 다음 결과 하나 | 수락 조건 | 상태 |
 |---|---|---|---|---|
 | DELIVERY-01 | Director + World | versionCode 48 Pote 후보를 실제 기기에서 검증하고 통합 여부를 기록 | 정확한 APK/SHA에서 시작 이동·안내인 숲 진입·숲 내부 이동을 확인. 실패하면 원인을 고치고 새 SHA에서 같은 시나리오 재검증 | BUILD_VERIFIED; DEVICE_PENDING; 브랜치 미병합 |
-| MONSTER-ART-01 | Visual + Director | 원작 근거표와 함께 14종/색상형의 12개 개별 PNG 제작·시각 검수 | 총 168 PNG(대기/걷기/공격 × NW/NE/SW/SE); 강력한 변형 제외; 각 파일 존재·투명 배경·전신·포즈/방향 구분 QA; 종별 source/근거 등급 기록; 사용자 최종 시각 승인 전 APK 미적용 | IN_PROGRESS; 새 리빌드에서 추적되는 파일 12개(라이칸스로프, 사용자 시각 수락)뿐. 다른 13종/색상형 156개 미완료. 새 168행 `monster_artwork_manifest.csv`에서 각 파일과 근거 상태 추적. 추가 확인한 GitHub 보라 팜팻 prototype 8장은 미병합 별도 브랜치의 generated/adapted 결과이며 새 리빌드 완료 수에 불포함. Naver 포테 화면에서 나무형·보라 토끼형은 이름표 없는 후보로만 기록. 사용자 제공 PDF/영상은 종별 프레임을 추가하지 않음. v0.4 168장 참조 금지. |
+| MONSTER-ART-01 | Visual + Director | 원작 근거표와 함께 14종/색상형의 12개 개별 PNG 제작·시각 검수 | 총 168 PNG(대기/걷기/공격 × NW/NE/SW/SE); 강력한 변형 제외; 각 파일 존재·투명 배경·전신·포즈/방향 구분 QA; 종별 source/근거 등급 기록; 사용자 최종 시각 승인 전 APK 미적용 | IN_PROGRESS; 새 리빌드에 라이칸스로프 사용자 시각 수락 12장과 팜팻 빨강/보라/초록 생성 후보 36장이 추적됨. 팜팻 후보는 1254×1254 원본이며 64×64 변환·앵커·사용자 승인 전이라 완료 산출물로 계산하지 않음. 남은 11종/색상형의 132개 개별 PNG는 미생성. `monster_artwork_manifest.csv`에서 상태/근거 추적. 별도 브랜치 prototype 및 폐기된 v0.4는 새 입력·수량에서 제외. Naver 나무형·보라 토끼는 이름표 미확인 후보이며 PDF/영상은 종별 프레임 근거를 추가하지 않음. |
 
 근거: 기존 전달 APK는 main `0506929`, SHA-256 `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`이며 포테 격자 간격 결함을 포함했습니다. 활성 브랜치 `codex/pote-ground-tile-foundation`의 source candidate `16c6d9a`는 CI #36388750145 성공 및 Pote 경로/렌더 검사를 통과했습니다. APK artifact ID `10955795355`, APK SHA-256 `03f4ccae5fe0804fa78bbeaef974696c0064b3d2941bb190b8fc68d3e64e3e4f`. 실제 기기 검증은 아직 안 됐습니다. 기존 네 역할 할당을 완료/취소로 간주하지 않습니다.
 
