@@ -54,7 +54,7 @@ public class RuntimeCheckpointTest {
     assertEquals(x,restored.player().x,0.001f);assertEquals(y,restored.player().y,0.001f);assertEquals(31,restored.player().hp);assertEquals(17,restored.player().mp);assertEquals(r.rpg().inventory(),restored.rpg().inventory());assertTrue(restored.rpg().equipment().isEmpty());
   }
   @Test public void coldRestartRestoresPoteMapPositionAndReturnPoint()throws Exception{
-    GameView first=new GameView(context);RuntimeState state=stateOf(first);
+    GameView first=new GameView(context);RuntimeState state=stateOf(first);float expectedReturnX=state.player().x;
     java.lang.reflect.Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(first);
     com.projectdark.mobile.world.WorldMoveTargetController.TileCenter saved=null;
     for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter tile:com.projectdark.mobile.world.PoteFieldDef.navigationTiles())
@@ -64,7 +64,7 @@ public class RuntimeCheckpointTest {
     assertTrue(inPote(restarted));assertEquals(com.projectdark.mobile.world.PoteFieldDef.MAP_ID,restored.currentMapId());
     assertEquals(saved.x,restored.player().x,0.001f);assertEquals(saved.y,restored.player().y,0.001f);
     assertEquals(37,restored.player().hp);assertEquals(19,restored.player().mp);
-    assertEquals(WorldDef.PLAYER_SPAWN_X,prefs.getFloat("field_return_x",0),0.001f);
+    assertEquals(expectedReturnX,prefs.getFloat("field_return_x",0),0.001f);
   }
   @Test public void unknownSavedMapFallsBackWithoutOverwritingSource()throws Exception{
     prefs.edit().putString("map_id","REMOVED_MAP").putFloat("player_x",1234f).putFloat("player_y",1400f).commit();
@@ -78,8 +78,15 @@ public class RuntimeCheckpointTest {
     assertTrue(state.player().alive);assertTrue(inPote(view));
     Field active=GameView.class.getDeclaredField("poteFieldAdapter");active.setAccessible(true);java.lang.reflect.Method activeWorld=GameView.class.getDeclaredMethod("activeWorld");activeWorld.setAccessible(true);
     assertSame(active.get(view),activeWorld.invoke(view));
+    com.projectdark.mobile.world.WorldRuntimeAdapter adapter=(com.projectdark.mobile.world.WorldRuntimeAdapter)activeWorld.invoke(view);
+    com.projectdark.mobile.world.WorldMoveTargetController.Direction direction=null;
+    for(com.projectdark.mobile.world.WorldMoveTargetController.Direction d:com.projectdark.mobile.world.WorldMoveTargetController.Direction.values())
+      if(adapter.canPlayerOccupy(state.player().x+d.dx,state.player().y+d.dy)){direction=d;break;}
+    assertNotNull("Pote spawn has a free neighboring tile",direction);
     android.view.MotionEvent down=android.view.MotionEvent.obtain(0,2,android.view.MotionEvent.ACTION_DOWN,92,454,0);view.onTouchEvent(down);down.recycle();
-    android.view.MotionEvent move=android.view.MotionEvent.obtain(0,3,android.view.MotionEvent.ACTION_MOVE,120,454,0);view.onTouchEvent(move);move.recycle();
+    float tx=direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.NW||direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.SW?64:direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.NE?92:120;
+    float ty=direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.NE?426:direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.SW?482:454;
+    android.view.MotionEvent move=android.view.MotionEvent.obtain(0,3,android.view.MotionEvent.ACTION_MOVE,tx,ty,0);view.onTouchEvent(move);move.recycle();
     java.lang.reflect.Method update=GameView.class.getDeclaredMethod("updatePoteField",float.class);update.setAccessible(true);
     float x=state.player().x,y=state.player().y;for(int i=0;i<30;i++)update.invoke(view,.05f);
     assertTrue("Pote joystick must move the player after revive",Math.abs(state.player().x-x)>0.01f||Math.abs(state.player().y-y)>0.01f);
