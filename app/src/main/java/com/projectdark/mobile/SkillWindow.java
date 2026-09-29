@@ -5,7 +5,7 @@ import java.util.List;
 
 /** Modal input projection; never owns world ticking, combat rules or save writes. */
 final class SkillWindow {
-  interface Actions { void use(SkillBook.Entry entry); void save(); float cooldown(String id); void notice(String text); }
+  interface Actions { void use(SkillBook.Entry entry); void save(); float cooldown(String id); String requirements(SkillBook.Entry entry); void notice(String text); }
   boolean open,magic,learnedOnly,choosingSlot;
   int page,detailPage;
   String selectedId;
@@ -38,7 +38,7 @@ final class SkillWindow {
       String status=book.learned(e.id)?"습득 · 숙련도 "+book.proficiency(e.id)+"%":"미습득";
       label(c,status+(e.runtime==null?" · 구현 예정":" · B 시험 동작"),728,201,8,0xffcdb89b);
       String body=detailPage==0?e.effect+"\n대상: "+e.target+"\n범위: "+e.range+"\n소모: "+e.resource+"\n쿨타임: "+(e.runtime==null?"미확정":e.runtime.cooldown+"초 (B)")+"\n제한: "+e.limit:
-        detailPage==1?"습득 조건 · "+e.requirementStatus+"\n직업: "+e.job+"\n단계: "+e.stage+"\n"+e.requirements+"\n조건 판정/습득 NPC 연결 예정":
+        detailPage==1?"습득 조건 · "+e.requirementStatus+"\n직업: "+e.job+"\n단계: "+e.stage+"\n"+a.requirements(e):
         "구 클라이언트 참고 조건\n"+(e.legacy.isEmpty()?"기록 없음":e.legacy)+"\n현재 게임에 자동 적용되지 않습니다.\n효과 근거: "+e.evidence;
       wrapped(c,body,728,222,178,9,13,378);
       label(c,new String[]{"효과","습득 조건","구 자료"}[detailPage]+" · 눌러서 다음 ("+(detailPage+1)+"/3)",728,395,7,0xffe0ad62);

@@ -166,6 +166,7 @@ public final class GameView extends View {
     public void use(SkillBook.Entry e){useBookSkill(e);}
     public void save(){checkpoint();}
     public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,id);}
+    public String requirements(SkillBook.Entry e){return e.requirementsFor(state.rpg());}
     public void notice(String text){showFeedback(text,FeedbackTone.INFO);}
   };
   private void drawSkills(Canvas c){if(!skillWindow.open)return;classicWindow(c,428,54,936,512,"기술 · 마법");text(c,"×",904,82,19);skillWindow.draw(c,skillActions);}

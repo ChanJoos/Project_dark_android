@@ -13,8 +13,16 @@ public final class SkillBook {
   public static final class Entry {
     public final String id,name,job,stage,kind,circle,effect,target,range,resource,limit,requirements,requirementStatus,legacy,evidence;
     public final SkillDef runtime;
+    private final JSONObject requirementValues;
     Entry(JSONObject j,SkillDef runtime){
-      id=j.optString("id");name=j.optString("name");job=j.optString("job");stage=j.optString("stage");kind=j.optString("kind");circle=j.optString("circle");effect=j.optString("effect");target=j.optString("target");range=j.optString("range");resource=j.optString("resource");limit=j.optString("limit");requirements=j.optString("requirements");requirementStatus=j.optString("requirementStatus");legacy=j.optString("legacy");evidence=j.optString("evidence");this.runtime=runtime;
+      id=j.optString("id");name=j.optString("name");job=j.optString("job");stage=j.optString("stage");kind=j.optString("kind");circle=j.optString("circle");effect=j.optString("effect");target=j.optString("target");range=j.optString("range");resource=j.optString("resource");limit=j.optString("limit");requirements=j.optString("requirements");requirementStatus=j.optString("requirementStatus");legacy=j.optString("legacy");evidence=j.optString("evidence");this.runtime=runtime;requirementValues=j.optJSONObject("requirementValues");
+    }
+    public String requirementsFor(RpgProgressionState r){
+      Map<String,String> jobs=new HashMap<>();jobs.put("전사","WARRIOR");jobs.put("도적","ROGUE");jobs.put("마법사","MAGE");jobs.put("성직자","CLERIC");jobs.put("무도가","MARTIAL_ARTIST");
+      String jobState="공통".equals(job)?"공통 직업 조건 충족":jobs.containsKey(job)?(jobs.get(job).equals(r.currentJobCode())?"직업 조건 충족":"직업 미충족 · 현재 "+r.currentJobCode()):"검증용 조건";
+      StringBuilder out=new StringBuilder(jobState);String[] keys={"요구Lv","STR","INT","WIS","CON","DEX"};int[] values={r.normalLevel()==null?0:r.normalLevel(),r.str(),r.intel(),r.wis(),r.con(),r.dex()};
+      for(int i=0;i<keys.length;i++){String required=requirementValues==null?"":requirementValues.optString(keys[i]);if(required.isEmpty())continue;out.append("\n").append(keys[i]).append(" ").append(values[i]).append(" / ").append(required);try{out.append(values[i]>=Integer.parseInt(required)?" 충족":" 부족");}catch(NumberFormatException ex){out.append(" 판정 미확정");}}
+      return out+"\n자료: "+requirements+"\n승급/선행/재료의 전체 판정은 미확정";
     }
     public boolean magic(){return "마법".equals(kind);}
   }
