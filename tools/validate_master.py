@@ -18,7 +18,10 @@ ROOT = Path(__file__).resolve().parents[1]
 # Explicit canonical generation adopted on 2026-09-12. Asset_Master intentionally supersedes the
 # tiny historical baseline table; the other files are additive canonical tables. Keep this list
 # explicit so arbitrary unexpected CSVs still fail CI.
-CANONICAL_OVERRIDES = {'Asset_Master.csv', 'Skill_Evidence.csv'}
+CANONICAL_OVERRIDES = {
+    'Asset_Master.csv', 'Skill_Evidence.csv', 'Skill_Master.csv',
+    'Skill_Requirements.csv', 'Skill_Research_Audit.csv',
+}
 CANONICAL_ADDITIONS = {
     'Asset_Animation_Frame_Master.csv',
     'Asset_Animation_Semantics.csv',
@@ -87,7 +90,7 @@ def audit(root=ROOT):
                 errors.append({'sheet': s['sheet'], 'type': 'RAGGED_COLUMNS', 'widths': widths})
             if not rows[0] or not any(rows[0]):
                 errors.append({'sheet': s['sheet'], 'type': 'INVALID_CANONICAL_HEADER'})
-            elif s['file'] == 'Skill_Evidence.csv' and rows[0] != schemas[s['sheet']]['columns']:
+            elif s['file'] != 'Asset_Master.csv' and rows[0] != schemas[s['sheet']]['columns']:
                 errors.append({'sheet': s['sheet'], 'type': 'REQUIRED_COLUMNS_OR_ORDER_CHANGED'})
         else:
             for field, observed in [('sha256', sha(raw)), ('rows', len(rows)), ('cols', max(widths)), ('formulas', len(formulas))]:

@@ -1,14 +1,14 @@
 # PROJECT DARK Master manifest
 
-Revision M001 / D001 · 2026-09-10
+Revision M002 / D001 · 2026-09-30
 
-이 Master는 지속 개정하는 기준 데이터다. 변환 manifest는 원래 제공된 92개 sheet를 기록한다. 현재 `master/data`에는 여기에 6개 구조 검사 대상 canonical CSV가 추가됐고, `Asset_Master.csv`와 `Skill_Evidence.csv`는 명시적 canonical override다. `Skill_Evidence.csv`에는 사용자 제공 구클라이언트 캡처 사실(SE10)이 추가됐으며, 상세 전사 데이터는 `Skill_Legacy_Requirements.csv`에 별도 보존한다. 원본 XLSX 자체는 미확보이므로 이를 lossless XLSX 검증 완료라고 부르지 않는다.
+이 Master는 지속 개정하는 기준 데이터다. 변환 manifest는 원래 제공된 92개 sheet를 기록한다. 현재 `master/data`에는 여기에 6개 구조 검사 대상 canonical CSV가 추가됐고, `Asset_Master.csv`, `Skill_Evidence.csv`, `Skill_Master.csv`, `Skill_Requirements.csv`, `Skill_Research_Audit.csv`는 명시적 canonical override다. 기술·마법 캡처에서 전사한 구클라이언트 요구 조건은 `Skill_Evidence.csv` 및 `Skill_Legacy_Requirements.csv`에 보존한다. 원본 XLSX 자체는 미확보이므로 이를 lossless XLSX 검증 완료라고 부르지 않는다.
 
 ## 검증 결과
 
-- 마지막 CI에서 `python tools/validate_master.py` 통과: historical source sheet 92개, canonical addition 6개, 현재 rows 5920(header 포함), 비어 있지 않은 field 95166, 수식 47개.
-- `Asset_Master.csv`, `Skill_Evidence.csv`는 원본 XLSX와의 hash/행 검증 대상이 아니라 구조 검증 대상이다. 그 외 원본 sheet는 변환 manifest hash/행/열/수식 검증을 유지한다. `Skill_Evidence` 추가사항의 별도 사실 기록은 `Skill_Legacy_Requirements.csv`에 보존한다.
-- 명시 ID 참조 413개 검사 통과. 반복 Source_ID/Asset_ID는 외래키 반복이며 primary-key 중복으로 오판하지 않음.
+- 2026-09-30 local audit `python tools/validate_master.py` 통과: historical source sheet 92개, canonical addition 6개, rows 5994(header 포함), 비어 있지 않은 field 96080, 수식 47개. 이것은 CI 실행이나 원본 XLSX fidelity 검증이 아니다.
+- 위 5개 override는 원본 XLSX와의 hash/행 검증 대상이 아니라 schema/header 및 행 폭 구조 검증 대상이다. 그 외 원본 sheet는 변환 manifest hash/행/열/수식 검증을 유지한다. 원본 XLSX가 다시 확보되기 전까지 canonical override가 변환 원본과 lossless 동등하다고 주장하지 않는다.
+- 명시 ID 참조 449개 검사 통과. 반복 Source_ID/Asset_ID는 외래키 반복이며 primary-key 중복으로 오판하지 않음.
 - XLSX null/empty/type/style/merged-cell/formula-cache 정보는 원본 없으므로 미검증.
 - master/PROJECT_DARK_MASTER_DB.tar.gz는 손상된 이전 업로드이며 사용 금지. RECONCILIATION R01 참조.
 

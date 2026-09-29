@@ -65,6 +65,7 @@ Do not mirror a direction or silently substitute a missing pose. Do not register
 - Pote and Milles world adapters that contain actors must use actorsBlockMovement=true. WorldRuntimeAdapter must delegate point and whole-step collision to RuntimeState so movement planning, live step revalidation, and monster AI share the same clearance rules. Do not maintain a separate stale player/monster radius check in a renderer or UI class.
 - Automatic combat may stop at a legal adjacent tile and then attack. Never move the player onto the target monster's tile to make melee range succeed. Keep approach range, canonical melee adjacency, and attack-facing derived from the same tile-center contract.
 - Auto-targeting compares the shortest reachable path to a legal adjacent tile first, then straight-line distance for ties. Ignore unreachable targets and use a moving monster's reserved next tile for planning. Keep a selected living target stable while its path remains valid to prevent target/path oscillation.
+- Approach path planning and each live movement step must use the same full-edge rule, including terrain sweep and actor crossing/reservations. Point occupancy alone is insufficient: a planner must not repeatedly choose a shortest edge that runtime will reject.
 - Test overlapping spawn positions, two monsters reserving the same destination, crossing in-flight steps, the player entering a moving monster's destination, and revalidation when the target moves during automatic approach.
 
 ## 5. Attack pace and presentation
@@ -105,3 +106,12 @@ The 2026-09-29 versionCode 53 spacing/facing update passed GitHub Actions but wa
 ### 2026-09-29 follow-up status
 
 The user subsequently confirmed the v0.55 Pote restart/map persistence behavior. They then reported occasional Pamfet movement-art/facing mismatch and auto-attack circling or choosing a geometrically close but inefficient target. The v0.56 candidate changes are recorded in the current project state/backlog. Until its exact Actions artifact is installed and checked, do not call the changes device-verified or visually accepted.
+
+### 2026-09-30 user-reported v0.56 failure and r4 correction
+
+- The user reports the delivered v0.56 APK still shows occasional Pamfet movement pose/facing mismatch and auto-attack circling/poor route choice. Record this APK as `DEVICE_FAILED (user-reported)`; the user report does not independently identify the root cause.
+- Source audit found the monster AI still chose a greedy direction toward the player every tile. Collision handling could substitute a side step; the next AI decision then pointed toward the player again. Replace this with a shortest legal tile route to any melee-adjacent tile, so obstacle detours are planned and stable across replanning.
+- The player path planner previously sampled point occupancy along an edge, while live movement additionally rejected actor-crossing paths. Share the full `canPlayerTraverse` contract between route search and movement commit to prevent selecting a route the runtime cannot execute.
+- Existing facing tests assert enum/file-name agreement, not that the generated image's gaze actually matches its direction label. Visual gaze acceptance remains pending and must not be inferred from green CI.
+- r4 test requirement: construct a route where the direct tile is blocked, recalculate after each step, and prove the actor continues along a stable shortest detour without alternating directions. Retain four-direction pose tests and the real-device gaze/auto-target acceptance checks.
+- Do not label a new APK as the fix until the exact-source workflow succeeds and the requested device scenario is checked. Current r4 status and exact evidence live in `docs/PROJECT_STATE.md` and `docs/DIRECTOR_BACKLOG.md`.

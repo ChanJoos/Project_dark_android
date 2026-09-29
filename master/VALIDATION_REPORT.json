@@ -5,16 +5,16 @@
   "empty_field_semantics": "CSV empty strings preserved. Original null vs empty-string/type/cache cannot be recovered.",
   "historical_sheet_count_present": 92,
   "canonical_addition_count": 6,
-  "rows_including_headers": 5920,
-  "data_rows_excluding_one_header_per_sheet": 5828,
-  "csv_nonempty_fields": 95166,
-  "source_manifest_populated_cells_non_overridden": 21101,
+  "rows_including_headers": 5994,
+  "data_rows_excluding_one_header_per_sheet": 5902,
+  "csv_nonempty_fields": 96080,
+  "source_manifest_populated_cells_non_overridden": 13262,
   "formula_string_count": 47,
   "reference_checks": [
     {
       "from": "Skill_Requirements.Skill_ID",
       "to": "Skill_Master.Skill_ID",
-      "values_checked": 184
+      "values_checked": 220
     },
     {
       "from": "NPC_Runtime_Master.Quest_Link",
@@ -491,17 +491,15 @@
     },
     {
       "sheet": "Skill_Master",
-      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
-      "source_manifest_cells": 5180,
-      "csv_nonempty_fields": 3870,
-      "difference": 1310
+      "type": "CANONICAL_OVERRIDE_SOURCE_FIDELITY_NOT_APPLICABLE",
+      "file": "Skill_Master.csv",
+      "interpretation": "Canonical promoted table supersedes historical manifest shape/hash; current CSV is structurally validated instead."
     },
     {
       "sheet": "Skill_Requirements",
-      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
-      "source_manifest_cells": 2602,
-      "csv_nonempty_fields": 777,
-      "difference": 1825
+      "type": "CANONICAL_OVERRIDE_SOURCE_FIDELITY_NOT_APPLICABLE",
+      "file": "Skill_Requirements.csv",
+      "interpretation": "Canonical promoted table supersedes historical manifest shape/hash; current CSV is structurally validated instead."
     },
     {
       "sheet": "Spawn_Master",
@@ -531,11 +529,32 @@
       "interpretation": "Canonical promoted table supersedes historical manifest shape/hash; current CSV is structurally validated instead."
     },
     {
+      "sheet": "Skill_Evidence",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Evidence_ID",
+      "value": "SE09",
+      "rows": [
+        10,
+        12
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
+      "sheet": "Skill_Evidence",
+      "type": "REPEATED_ID_COLUMN",
+      "column": "Evidence_ID",
+      "value": "SE10",
+      "rows": [
+        11,
+        13
+      ],
+      "interpretation": "Primary key only if schema declares it; source IDs may repeat."
+    },
+    {
       "sheet": "Skill_Research_Audit",
-      "type": "SOURCE_POPULATED_COUNT_UNVERIFIABLE",
-      "source_manifest_cells": 57,
-      "csv_nonempty_fields": 33,
-      "difference": 24
+      "type": "CANONICAL_OVERRIDE_SOURCE_FIDELITY_NOT_APPLICABLE",
+      "file": "Skill_Research_Audit.csv",
+      "interpretation": "Canonical promoted table supersedes historical manifest shape/hash; current CSV is structurally validated instead."
     },
     {
       "sheet": "User_Confirm_Queue",
@@ -983,9 +1002,9 @@
     {
       "type": "CANONICAL_ADDITION_STRUCTURAL_PASS",
       "file": "Skill_Legacy_Requirements.csv",
-      "rows_including_header": 30,
+      "rows_including_header": 129,
       "columns": 13,
-      "sha256": "3dbac92396fc9bfd304df754a43bac923416718a4ecb740e50727ae1c8238353"
+      "sha256": "b35383ece2bccda3c01d61d03f54e0ef67a6e5646b0a9a8b3e042c8aeeeb5fd8"
     },
     {
       "type": "CANONICAL_ADDITION_STRUCTURAL_PASS",
@@ -1251,26 +1270,26 @@
     {
       "sheet": "Skill_Master",
       "path": "master/data/Skill_Master.csv",
-      "sha256": "530679ec2a99c95cbe666d9641f1df87e73ca5febccf2ac6dabf5a8cae449936",
-      "rows_including_header": 185,
-      "data_rows": 184,
+      "sha256": "9810a50ed7d72fa5dc40f2b0d5b500a1d9590f6bf934ad220a597392ed70a506",
+      "rows_including_header": 221,
+      "data_rows": 220,
       "columns": 28,
-      "csv_nonempty_fields": 3870,
-      "source_manifest_populated_cells": 5180,
+      "csv_nonempty_fields": 4628,
+      "source_manifest_populated_cells": null,
       "formulas": [],
-      "canonical_override": false
+      "canonical_override": true
     },
     {
       "sheet": "Skill_Requirements",
       "path": "master/data/Skill_Requirements.csv",
-      "sha256": "2ddc2b4f92682755a321036ba1c20e663e47fdeb1b1269208a536363fc35ec02",
-      "rows_including_header": 185,
-      "data_rows": 184,
+      "sha256": "fa11611e91a0590deff753085193063d7eb1155807ba422691d559e55009db46",
+      "rows_including_header": 221,
+      "data_rows": 220,
       "columns": 26,
-      "csv_nonempty_fields": 777,
-      "source_manifest_populated_cells": 2602,
+      "csv_nonempty_fields": 921,
+      "source_manifest_populated_cells": null,
       "formulas": [],
-      "canonical_override": false
+      "canonical_override": true
     },
     {
       "sheet": "Spawn_Master",
@@ -1311,11 +1330,11 @@
     {
       "sheet": "Skill_Evidence",
       "path": "master/data/Skill_Evidence.csv",
-      "sha256": "e5eed1e151b1e974a89bcf610e17c6849d46c5cc5e94605df32468b02cb472ad",
-      "rows_including_header": 11,
-      "data_rows": 10,
+      "sha256": "add2338e382bb1e727fe706f5805db25a8e1ba840ec2e2ba6154fdcd4d410b1d",
+      "rows_including_header": 13,
+      "data_rows": 12,
       "columns": 27,
-      "csv_nonempty_fields": 66,
+      "csv_nonempty_fields": 78,
       "source_manifest_populated_cells": null,
       "formulas": [],
       "canonical_override": true
@@ -1323,14 +1342,14 @@
     {
       "sheet": "Skill_Research_Audit",
       "path": "master/data/Skill_Research_Audit.csv",
-      "sha256": "b1fe59cb63e0fe197705a5ccd96f54ea94a09b2c7cb808d8397b512e6614b8e6",
+      "sha256": "d2d180eef38be49f70788da71f1b529cc594766694a26ec18eba845d9e3fc53d",
       "rows_including_header": 11,
       "data_rows": 10,
       "columns": 27,
       "csv_nonempty_fields": 33,
-      "source_manifest_populated_cells": 57,
+      "source_manifest_populated_cells": null,
       "formulas": [],
-      "canonical_override": false
+      "canonical_override": true
     },
     {
       "sheet": "Skill_58_Research_Pass",

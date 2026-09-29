@@ -90,3 +90,11 @@ Before building, inspect main and the branch that contains the requested work. C
 - Added regressions cover all four Pamfet pose directions despite stale attack lock, shortest reachable path preference, inaccessible targets, moving-target reservations, and legal adjacent approach path cost.
 - First run `36586971014` at source `83db88d...` stopped before compile in `Validate Master DB`, due the latest Main not registering its new `Skill_Legacy_Requirements.csv` addition and continuing to hash-check the amended `Skill_Evidence.csv` as unchanged workbook data. The audit registry was corrected: the former is an explicit canonical addition; the latter is a canonical override with schema-header validation. Local `python3 tools/validate_master.py` now passes and reports XLSX fidelity as unverified. The source fix must be committed to this PR and the exact-SHA workflow rerun.
 - Device facing and auto-attack behavior remain pending; generated art direction labels need visual check on device. Update `PROJECT_STATE.md`, YAML, backlog, this handoff and manual with final measured run/artifact. Keep `DEVICE_PENDING` until user/device confirms the exact APK.
+
+## 2026-09-30 — user reports v0.56 still fails; r4 underway
+
+- User clarified the active issue is the Pote Pamfet movement-facing mismatch and automatic combat path behavior; the later skill/PDF attachments were unrelated to this task.
+- Delivered v0.56 APK SHA-256 `2fc04baed7c4d53942c129a91cd61a3864243cceb10cc55749361e1d112a2ec9` is **DEVICE_FAILED (user-reported)**. Do not represent r3 CI success as proof the bug is fixed.
+- Latest Main at start of r4: `50c65cc457227f447356335ba89391489bab41b9`. r4 code replaces greedy monster chase detours with BFS over legal authored tile steps toward melee adjacency; regression test covers a blocked direct route and repeated replanning.
+- Current branch: `codex/pote-facing-autotarget-r4-20260930`; candidate app version 0.57. Local Gradle is unavailable in this checkout (no wrapper and no system `gradle`); run exact-SHA GitHub Actions. Device art-gaze QA and automatic target behavior still require user/device evidence.
+- Do not send a new APK as a verified fix until the requested device scenario passes. Report build/runtime/visual states separately.
