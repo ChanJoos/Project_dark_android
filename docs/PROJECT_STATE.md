@@ -97,3 +97,12 @@ Run the exact candidate APK on an Android device: select each of the 16 displaye
 - **기존 파일 처리:** 이전 v0.4 이미지는 Android production assets의 `monster_test_v04` 경로에서 제거합니다. 기존 review 자료는 보존하되 Android production asset source set에서 로드하지 않습니다. 신규 원본 후보 69장과 출처 해시는 `assets/pote/review/monster_rebuild_v1/`에 저장합니다.
 - **문서 상태:** 작업 소스 구현은 있으나 아직 commit/CI 전입니다. `versionCode 49`, `0.49-pote-monster-art-candidate`를 사용합니다. 다음은 60방향/상태 렌더 QA, APK 내부 기존 경로 제거 및 신규 PNG 수 확인, 정확한 SHA의 GitHub Actions 빌드입니다. 이후 APK SHA와 artifact를 기록합니다.
 - **수락 상태:** `IMPLEMENTED` 후보 코드 기준; `BUILD_VERIFIED=PENDING`, `DEVICE_VERIFIED=PENDING`, 신규 팜팻 `VISUAL_ACCEPTED=PENDING`. 라이칸스로프만 앞서 사용자가 시각 수락했고 이번 게임 내 크기/앵커 확인은 남았습니다.
+
+
+### 완료 결과 — 런타임 후보 APK (2026-09-29)
+
+- GitHub Actions run `36534954426` 성공, source SHA `1def7a92aeef68ce144ebaad8b94f02dee011a12`; `PotePamfetPresentationTest` 포함 전체 workflow 통과.
+- APK versionCode 49 / `0.49-pote-monster-art-candidate`, artifact `11017989115` (`PROJECT_DARK-debug-1def7a92aeef68ce144ebaad8b94f02dee011a12`), APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. 대화에 전달한 다운로드 파일은 이 APK다.
+- APK 내부 검사: 새 경로 포즈 PNG 60개 포함, `monster_test_v04` 경로 0개. CI에서 60개 포즈 렌더/불투명 픽셀/표시 높이, 5종 타일 배치·탭 테스트 통과.
+- 사용자 기기에서 직접 실행/시각 검수는 아직 안 됨. 테스트 빌드에는 다중 프레임 루프가 없고, 5종의 12개 방향/상태 still만 AI 상태 선택으로 전환한다. 13종 전체 이미지 완료는 아님.
+- 다음: APK를 기기에 설치해 크기·방향·이동·접근 후 공격 시점을 확인하고 결과를 기록한다. 눈으로 확인하지 않은 결과는 device-verified로 표기하지 않는다.

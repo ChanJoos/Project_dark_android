@@ -60,6 +60,6 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 
 | Task | Owner | 결과 | 검증/상태 | 다음 작업 |
 |---|---|---|---|---|
-| POTE-MONSTER-RUNTIME-01 | Visual + Director | 이전 16 identity의 `monster_test_v04` art runtime mapping 해제; 현재 5개 완전 세트(60 pose PNG) 등록 | Source edited on candidate branch `codex/pote-monster-sprites-runtime-20260929`; 48×48 transparent frame, visible height cap 30px, old production copy removed. CI/build and APK inventory pending; device QA pending. | Run `PotePamfetPresentationTest`; inspect exact-SHA APK for all 60 registered images and no `monster_test_v04/`; download and report candidate APK; record device check separately. |
+| POTE-MONSTER-RUNTIME-01 | Visual + Director | 이전 16 identity의 `monster_test_v04` art runtime mapping 해제; 현재 5개 완전 세트(60 pose PNG) 등록 | Source edited on candidate branch `codex/pote-monster-sprites-runtime-20260929`; 48×48 transparent frame, visible height cap 30px, old production copy removed. Actions run `36534954426` passed at source SHA `1def7a92aeef68ce144ebaad8b94f02dee011a12`; artifact `11017989115`, versionCode 49, APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. APK inventory: 60 new pose PNGs, zero old `monster_test_v04/` paths; automated pose and placement tests passed. Device QA remains pending. | Install the exact artifact and verify scale, four facings, walk/attack transitions, and attack timing; update QA status with observed evidence. |
 
 현재 5종은 기존 생성 후보만 사용합니다. 트랜트 9장 부분 세트 및 그 밖의 미생성 종/강력형은 새 artwork가 완성될 때까지 미등록입니다. 12장은 방향/상태별 대표 still이며 multi-frame loop 미구현입니다.

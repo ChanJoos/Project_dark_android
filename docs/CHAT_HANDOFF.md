@@ -59,3 +59,7 @@ Before building, inspect main and the branch that contains the requested work. C
 - Remove the old `monster_test_v04` 16-identity runtime mappings and its production copy from packaged assets. Preserve its separate historical review source; do not load it in the app or use it as new-art reference.
 - Do not register Trant's partial 9-pose set (only NW attack exists), other missing species, or strong variants. Never fill missing directions with guessed/mirrored art.
 - PNGs are one representative image per state/direction, not looping animation sheets. Verify live AI state changes, four diagonal facings, all 60 asset loads, silhouette bounds, and APK contents. Record exact CI run, source SHA, artifact ID, APK SHA-256, device-pending status, and next task in `PROJECT_STATE.md`, `DIRECTOR_BACKLOG.md`, and the art README before ending.
+
+
+- Runtime candidate APK delivered: versionCode 49; source SHA `1def7a92aeef68ce144ebaad8b94f02dee011a12`; Actions run `36534954426` succeeded; artifact `11017989115`; APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. APK inventory: 60 generated pose PNGs, zero `monster_test_v04` paths. Automated device-review tests pass; physical/user-device visual QA remains pending.
+- Next action: install this exact APK on a device and inspect scale, four facings, walk/attack state changes, and attack timing; then update these files with observed results. Do not call the build visually accepted before that check.

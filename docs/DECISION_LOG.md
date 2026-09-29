@@ -68,3 +68,6 @@
 | 미등록 종 | 트랜트(9/12), 나머지 미완성 종 및 강력한 변형은 등록하지 않는다. 없는 방향·상태를 복사/추정하지 않는다. | 현재 소스 파일 확인; 사용자 이전 결정에서 강력한 변형 제외. |
 | 아트 상태 | 프레임 PNG는 생성 후보의 단일 still pose다. 상태/방향에 따라 교체하며 다중 프레임 루프는 구현하지 않았다. | 생성 원본 및 `PoteFieldRenderer` 구현 계약. |
 | 구버전 보존 | 기존 v0.4 자료는 review 이력으로 남지만, production source set과 APK에는 포함하지 않는다. | Android `app/build.gradle` production asset roots 및 삭제한 `assets/pote/production/monster_test_v04/`. |
+
+
+| 테스트 APK 검증 결과 | GitHub Actions run `36534954426` / source `1def7a92aeef68ce144ebaad8b94f02dee011a12` 성공. versionCode 49 artifact `11017989115`; APK SHA-256 `9b8cb7e86c7b9c89b34667199711b1738f72aa9267b6edbb79743c934b18c799`. APK 안에서 신규 PNG 60개, 이전 v0.4 PNG 경로 0개를 확인. | CI artifact inventory 및 Pote pose/placement tests; 실제 기기 시각 QA는 별도 미완료. |
