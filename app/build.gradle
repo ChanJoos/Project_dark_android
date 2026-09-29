@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 53
-        versionName '0.53-pote-monster-separation-facing'
+        versionCode 54
+        versionName '0.54-pote-auto-approach-spacing'
     }
     sourceSets {
         main {
