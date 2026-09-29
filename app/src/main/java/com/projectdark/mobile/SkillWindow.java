@@ -9,7 +9,7 @@ final class SkillWindow {
   boolean open,magic,learnedOnly,choosingSlot;
   int page,detailPage,detailOffset;
   String selectedId,job="전체";
-  private static final String[] JOBS={"전체","전사","도적","무도가","마법사","성직자"};
+  private static final String[] JOBS={"전체","공통","전사","도적","무도가","마법사","성직자"};
   private final SkillBook book;
   private final SkillIconCatalog icons;
   private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -29,7 +29,7 @@ final class SkillWindow {
     button(c,894,51,923,80,"×",true);
     tab(c,312,95,463,124,"기술",!magic);tab(c,470,95,621,124,"마법",magic);
     tab(c,638,95,774,124,"전체 목록",!learnedOnly);tab(c,781,95,918,124,"습득 목록",learnedOnly);
-    for(int i=0;i<JOBS.length;i++){float x=312+i*102;tab(c,x,132,x+96,155,JOBS[i],job.equals(JOBS[i]));}
+    for(int i=0;i<JOBS.length;i++){float x=312+i*87;tab(c,x,132,x+81,155,JOBS[i],job.equals(JOBS[i]));}
     List<SkillBook.Entry> list=rows();int pages=Math.max(1,(list.size()+15)/16);page=Math.max(0,Math.min(page,pages-1));
     for(int i=0;i<16&&!list.isEmpty();i++){
       float x=312+(i%4)*78,y=164+(i/4)*62;int n=page*16+i;
@@ -70,7 +70,7 @@ final class SkillWindow {
     if(x>=889&&x<=936&&y>=40&&y<=88){close();return true;}
     if(!bounds.contains(x,y))return true;
     if(y>=95&&y<=124){if(x>=312&&x<=621){magic=x>=470;reset();}else if(x>=638&&x<=918){learnedOnly=x>=781;reset();}return true;}
-    if(y>=132&&y<=155&&x>=312&&x<924){int i=(int)((x-312)/102);if(i<JOBS.length){job=JOBS[i];reset();}return true;}
+    if(y>=132&&y<=155&&x>=312&&x<924){int i=(int)((x-312)/87);if(i<JOBS.length){job=JOBS[i];reset();}return true;}
     if(x>=312&&x<624&&y>=164&&y<412){int col=(int)((x-312)/78),row=(int)((y-164)/62);if((x-312)%78<=72&&(y-164)%62<=57){List<SkillBook.Entry> list=rows();int i=page*16+row*4+col;if(i<list.size()){selectedId=list.get(i).id;detailPage=detailOffset=0;choosingSlot=false;}}return true;}
     if(x>=648&&x<=910&&y>=249&&y<=274){detailPage=x>=778?1:0;detailOffset=0;return true;}
     if(x>=638&&x<=918&&y>=279&&y<=408){if(y>=381){if(x>=827&&x<=861)detailOffset=Math.max(0,detailOffset-1);else if(x>=872&&x<=906)detailOffset++;}return true;}

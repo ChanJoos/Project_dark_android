@@ -46,7 +46,7 @@ public class SkillWindowTest {
     RuntimeState r=field(v,"state");RuntimeState.Monster ticking=r.monsters().get(0);ticking.attackCooldown=1f;Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);update.invoke(v,.05f);assertTrue(w.open);assertTrue("world timers continue behind modal",ticking.attackCooldown<1f);
     tap(v,700,115);tap(v,340,180);Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File dir=new File("build/reports/device-review");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,"skill-window.png"))){image.compress(Bitmap.CompressFormat.PNG,100,out);}
     render(v,"skill-window-overview.png");
-    tap(v,560,144);assertEquals("도적",w.job);tap(v,340,180);assertNotNull(w.selectedId);assertEquals("도적",bEntry(v,w.selectedId).job);render(v,"skill-window-rogue.png");
+    tap(v,610,144);assertEquals("도적",w.job);tap(v,340,180);assertNotNull(w.selectedId);assertEquals("도적",bEntry(v,w.selectedId).job);render(v,"skill-window-rogue.png");
     tap(v,540,110);tap(v,870,144);tap(v,340,180);assertTrue(w.magic);assertEquals("성직자",w.job);assertEquals("성직자",bEntry(v,w.selectedId).job);render(v,"skill-window-cleric.png");
     tap(v,840,110);assertTrue(w.learnedOnly);assertNull(w.selectedId);render(v,"skill-window-empty.png");
     tap(v,907,67);assertFalse(w.open);
@@ -83,7 +83,7 @@ public class SkillWindowTest {
   }
   @Test public void commonerCanActuallyLearnRegisterAndUseBasicAttackThroughProductionInput() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");CombatController combat=field(v,"combat");RuntimeCombatSession session=field(v,"combatSession");
-    w.open=true;w.selectedId="SK_공통_001";tap(v,700,432);assertTrue(b.learned("SK_공통_001"));tap(v,860,432);tap(v,324,485);assertEquals("SK_공통_001",b.slot(0));render(v,"skill-window-commoner-learned.png");w.close();
+    tap(v,770,28);tap(v,430,144);assertEquals("공통",w.job);tap(v,340,180);assertEquals("SK_공통_001",w.selectedId);tap(v,700,432);assertTrue(b.learned("SK_공통_001"));tap(v,860,432);tap(v,324,485);assertEquals("SK_공통_001",b.slot(0));render(v,"skill-window-commoner-learned.png");w.close();
     RuntimeState.Monster m=r.monsters().get(0);r.player().x=m.x-CanonicalMeleeTileContract.STEP_X;r.player().y=m.y-CanonicalMeleeTileContract.STEP_Y;combat.selectTarget(m);
     Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,0);tap(v,slot.centerX(),slot.centerY());
     assertTrue(session.playerActionActive());assertTrue(session.cooldownRemaining("player",RuntimeCombatSession.playerAttackActionId(new EquipmentActionResolver().resolveBasicAttack(r.rpg()).animationAction))>0);
