@@ -203,8 +203,16 @@ public final class RuntimeState {
     float abD=cross(bx-ax,by-ay,dx-ax,dy-ay);
     float cdA=cross(dx-cx,dy-cy,ax-cx,ay-cy);
     float cdB=cross(dx-cx,dy-cy,bx-cx,by-cy);
-    return ((abC<=0f&&abD>=0f)||(abC>=0f&&abD<=0f))
-        &&((cdA<=0f&&cdB>=0f)||(cdA>=0f&&cdB<=0f));
+    if(((abC<0f&&abD>0f)||(abC>0f&&abD<0f))
+        &&((cdA<0f&&cdB>0f)||(cdA>0f&&cdB<0f)))return true;
+    return (Math.abs(abC)<.001f&&onSegment(ax,ay,bx,by,cx,cy))
+        ||(Math.abs(abD)<.001f&&onSegment(ax,ay,bx,by,dx,dy))
+        ||(Math.abs(cdA)<.001f&&onSegment(cx,cy,dx,dy,ax,ay))
+        ||(Math.abs(cdB)<.001f&&onSegment(cx,cy,dx,dy,bx,by));
+  }
+  private static boolean onSegment(float ax,float ay,float bx,float by,float px,float py){
+    return px>=Math.min(ax,bx)-.001f&&px<=Math.max(ax,bx)+.001f
+        &&py>=Math.min(ay,by)-.001f&&py<=Math.max(ay,by)+.001f;
   }
   private static float cross(float ax,float ay,float bx,float by){return ax*by-ay*bx;}
 
