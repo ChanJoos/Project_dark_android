@@ -15,7 +15,8 @@
 - 사용자는 팜팻 일부가 이동 방향과 다른 걷기 포즈를 보이고, 자동공격이 빙글돌거나 가까운 몬스터를 택해 효율적인 경로로 공격하지 않는다고 보고했습니다. 이 보고는 새 이슈의 기기 증거이며, 이번 수정 전후의 전체 원인은 기기 재현 전까지 UNKNOWN입니다.
 - Main 소스 감사에서 두 위험을 확인했습니다: 이동 렌더의 방향 정수화는 AI 의도와 충돌 우회로가 달라질 때 허용되지 않은 벡터도 방향으로 반올림할 수 있었고, 자동타깃은 도달 가능한 경로 수를 비교하지 않고 유클리드 거리만 사용했습니다. 움직이는 몬스터의 보간 중간점도 인접 타일 목표가 아니므로 접근 계획이 불안정할 수 있었습니다.
 - v0.56 후보는 렌더 방향을 정확한 적용 타일 벡터에서만 고르고, 자동타깃을 합법 인접 타일까지의 최단 경로 수 우선으로 선택하며, 이동 중 몬스터의 예약 목적지를 경로 계획 기준으로 사용하도록 변경합니다. 팜팻 네 방향/스테일 공격 방향 잠금, 접근 경로 우선순위, 비도달 타깃 제외 테스트를 추가했습니다.
-- 후보 상태: **IMPLEMENTED_PENDING_CI / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. 이번 작업의 branch/SHA/Actions/APK 기록은 CI 결과가 확인된 뒤 이 항목을 갱신합니다. 팜팻 원본 아트의 실제 시선이 파일 방향명과 맞는지 실기기 시각 확인도 별도 필요합니다.
+- 첫 Actions run `36586971014`는 몬스터 테스트 이전의 Master 감사에서 실패했습니다. 원인은 latest Main의 `Skill_Legacy_Requirements.csv` 미등록과 `Skill_Evidence.csv` 사용자 제공 SE10 추가분을 historical workbook hash로 계속 검사한 것이었습니다. 검증기에서 새 파일을 canonical addition으로 등록하고 amended evidence sheet를 기존 canonical override로 분류했습니다. 로컬 `python3 tools/validate_master.py`는 `AVAILABLE_CSV_INTEGRITY_PASS`로 통과했으며, 원본 XLSX fidelity는 여전히 미검증으로 표시됩니다. 수정 검증기의 Actions 재실행은 대기 중입니다.
+- 후보 상태: **IMPLEMENTED / MASTER_GATE_REPAIRED_LOCALLY / CI_PENDING / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. 이번 작업의 새 SHA/Actions/APK 기록은 CI 결과 확인 뒤 갱신합니다. 팜팻 원본 아트의 실제 시선이 파일 방향명과 맞는지 실기기 시각 확인도 별도 필요합니다.
 
 ## 최신 확인 대상
 

@@ -270,6 +270,7 @@ work_packages:
       fix_candidate_version: "0.56-pote-auto-target-facing"
       fix_candidate_scope: "Use exact committed movement vector; choose reachable auto-target by shortest legal approach path; plan moving target against reserved endpoint; retain target while path remains valid."
       fix_candidate_state: "IMPLEMENTED_PENDING_CI / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING"
+      ci_blocker: "First run 36586971014 stopped before compile because latest main's validator did not register Skill_Legacy_Requirements.csv and still compared amended Skill_Evidence.csv to historical workbook bytes. Validator now classifies these as structural canonical addition/override; local audit passes, Actions rerun pending."
       manual: "docs/MONSTER_CREATION_MANUAL.md"
       next_check: "Run exact-SHA GitHub Actions; then verify Pamfet direction assets, detour facing, shortest-path auto-target selection, no target oscillation, and the previously passed Pote restart behavior on-device."
       implementation_source_sha: "5905e963de7898acec4b84644e78fcb98cec395e"
