@@ -39,9 +39,11 @@ public final class PoteForestMonsterShowcase {
   public static CharacterRenderer.Direction presentationFacing(RuntimeState.Monster monster){
     if(monster==null)return CharacterRenderer.Direction.SE;
     if(monster.isMoving){
-      WorldMoveTargetController.Direction step=MonsterTileCenterLocomotion.toward(
-          monster.moveTargetX-monster.moveStartX,monster.moveTargetY-monster.moveStartY,
-          WorldMoveTargetController.Direction.SE);
+      // The applied segment may be a collision detour from the AI's original intent. Require
+      // its exact canonical vector here so a bad/stale segment cannot be rounded into a false
+      // direction; RuntimeState commits facing and endpoints atomically.
+      WorldMoveTargetController.Direction step=WorldMoveTargetController.Direction.between(
+          monster.moveStartX,monster.moveStartY,monster.moveTargetX,monster.moveTargetY);
       return MonsterTileCenterLocomotion.facing(step);
     }
     return monster.visualFacing.presentation();

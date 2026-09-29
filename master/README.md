@@ -1,4 +1,4 @@
-CURRENT AUDIT M001: 기존 tar.gz는 손상되어 사용 금지. 최신 입력은 master/data의 CSV 92개와 master/source의 첨부 ZIP입니다. master/MASTER_MANIFEST.md 및 master/RECONCILIATION.md를 먼저 읽으세요. 아래는 이전 기록입니다.
+CURRENT AUDIT M001: 기존 tar.gz는 손상되어 사용 금지. 변환 manifest는 역사적 source CSV 92개를 기록하며 `master/data`에는 canonical additions 6개와 canonical overrides 2개가 반영되어 있습니다. `Skill_Evidence.csv`에는 사용자 캡처 추가 사실이 포함되고 상세 전사는 `Skill_Legacy_Requirements.csv`에 보존됩니다. 최신 검증은 `python tools/validate_master.py`; master/MASTER_MANIFEST.md 및 master/RECONCILIATION.md를 먼저 읽으세요. 아래는 이전 기록입니다.
 
 # PROJECT DARK Master
 

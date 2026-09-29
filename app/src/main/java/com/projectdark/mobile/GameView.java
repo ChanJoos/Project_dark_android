@@ -172,10 +172,12 @@ public final class GameView extends View {
   private void tickAutoAttack(WorldMoveTargetController.Snapshot navigation){
     if(!autoAttackEnabled||isActing()||joy||!state.player().alive||activeWorld().presentationMoving())return;
     if(navigation!=null&&navigation.status==WorldMoveTargetController.Status.MOVING)return;
-    if(!combat.hasUsableTarget()){
-      RuntimeState.Monster nearest=nearestLivingMonster(state.monsters(),state.player().x,state.player().y);
-      if(nearest==null){if(autoTargetHintClock<=0f){showFeedback("주변에 공격할 몬스터가 없습니다",FeedbackTone.INFO);autoTargetHintClock=3f;}return;}
-      combat.selectTarget(nearest);
+    RuntimeState.Monster current=combat.target();
+    if(!combat.hasUsableTarget()||(current!=null
+        &&activeWorld().monsterApproachPathSteps(current.id,CanonicalMeleeTileContract.REACH_DISTANCE)<0)){
+      RuntimeState.Monster best=bestReachableAutoTarget();
+      if(best==null){combat.clearTarget();if(autoTargetHintClock<=0f){showFeedback("접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);autoTargetHintClock=3f;}return;}
+      combat.selectTarget(best);
       autoTargetHintClock=1f;
     }
     if(combat.attackReady())attack();
@@ -183,11 +185,10 @@ public final class GameView extends View {
 
   private static boolean isMonsterApproach(WorldMoveTargetController.Snapshot move){return move!=null&&move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH&&move.status==WorldMoveTargetController.Status.MOVING;}
 
-  static RuntimeState.Monster nearestLivingMonster(List<RuntimeState.Monster> monsters,float x,float y){
-    if(monsters==null)return null;
-    RuntimeState.Monster nearest=null;float best=AUTO_TARGET_RADIUS*AUTO_TARGET_RADIUS;
-    for(RuntimeState.Monster monster:monsters){if(monster==null||!monster.alive)continue;float dx=monster.x-x,dy=monster.y-y,distance=dx*dx+dy*dy;if(distance<=best){if(nearest==null||distance<best){best=distance;nearest=monster;}}}
-    return nearest;
+  private RuntimeState.Monster bestReachableAutoTarget(){
+    return AutoAttackTargetSelector.select(state.monsters(),state.player().x,state.player().y,
+        AUTO_TARGET_RADIUS,monster->activeWorld().monsterApproachPathSteps(
+            monster.id,CanonicalMeleeTileContract.REACH_DISTANCE));
   }
 
   private void attack(){
@@ -608,7 +609,7 @@ public final class GameView extends View {
       for(int i=0;i<10;i++)if(slotRect(i).contains(x,y)){pressedControl="SLOT"+i;showFeedback(i>=8?"포션 슬롯 · 내용 확정 후 연결됩니다":"스킬 슬롯 · 내용 확정 후 연결됩니다",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,MODE_X+hudRightOffset,MODE_Y,MODE_R+3)){pressedControl="MODE";activeWorld().cancelForAction();showFeedback("기본 공격은 장착한 무기에 따라 결정됩니다",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
-      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster nearest=nearestLivingMonster(state.monsters(),state.player().x,state.player().y);if(nearest!=null){combat.selectTarget(nearest);showFeedback("자동 공격 시작 · "+nearest.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 주변에 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
+      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
       if(isHudSurface(x,y))return true;
       WorldRuntimeAdapter active=activeWorld();WorldCameraTransform.Point wp=active.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){combat.cancelApproach();interaction.cancelApproach();active.requestNpcApproach(npc.id);showFeedback("NPC 접근 · "+npc.name,FeedbackTone.INFO);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){active.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name,FeedbackTone.INFO);return true;}requestGroundMove(x,y);return true;
     case MotionEvent.ACTION_MOVE:if(joy)stick(x,y);return true;

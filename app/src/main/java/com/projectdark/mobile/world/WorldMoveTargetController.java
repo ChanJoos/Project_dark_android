@@ -92,6 +92,21 @@ public final class WorldMoveTargetController {
   public Snapshot requestGroundMove(float x,float y){return begin(RequestKind.GROUND,null,x,y,DEFAULT_GROUND_TOLERANCE);}
   public Snapshot requestNpcApproach(String id,float x,float y,float approachTolerance){return beginEntity(RequestKind.NPC_APPROACH,id,x,y,approachTolerance);}
   public Snapshot requestMonsterApproach(String id,float x,float y,float approachTolerance){return beginEntity(RequestKind.MONSTER_APPROACH,id,x,y,approachTolerance);}
+
+  /** Shortest reachable legal melee approach measured in authored tile steps; -1 if unreachable. */
+  public int monsterApproachPathSteps(float worldX,float worldY,float approachTolerance){
+    TileCenter start=currentTile();
+    if(start==null||!Float.isFinite(worldX)||!Float.isFinite(worldY))return -1;
+    int best=Integer.MAX_VALUE;
+    for(TileCenter tile:tiles){
+      if(!world.canPlayerOccupy(tile.x,tile.y)
+          ||distance(tile.x,tile.y,worldX,worldY)>approachTolerance
+          ||!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(tile.x,tile.y,worldX,worldY))continue;
+      List<TileCenter> candidate=same(start,tile)?Collections.emptyList():findPath(start,tile);
+      if((same(start,tile)||!candidate.isEmpty())&&candidate.size()<best)best=candidate.size();
+    }
+    return best==Integer.MAX_VALUE?-1:best;
+  }
   private Snapshot beginEntity(RequestKind requestKind,String id,float x,float y,float approachTolerance){
     if(id==null||id.trim().isEmpty())throw new IllegalArgumentException("entity id is required");
     return begin(requestKind,id,x,y,Math.max(1f,approachTolerance));

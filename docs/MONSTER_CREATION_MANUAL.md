@@ -59,11 +59,12 @@ Do not mirror a direction or silently substitute a missing pose. Do not register
 ## 4. Movement, facing, spacing, and collision
 
 - World movement uses the existing 64×32 isometric tile centers and four legal diagonal directions. One logical step is NW (−32,−16), NE (+32,−16), SW (−32,+16), or SE (+32,+16). Do not introduce cardinal or eight-way attacks.
-- The walk image direction must come from the committed movement start-to-target vector after collision/detour selection. Rendering must not use an older attack-facing lock or only the original AI intent. While interpolating, show WALK and keep the sprite facing the actual step.
+- The walk image direction must come from the exact canonical committed movement start-to-target vector after collision/detour selection. Rendering must not use an older attack-facing lock or only the original AI intent. While interpolating, show WALK and keep the sprite facing the actual step. Check all four directions for each registered species; code wiring alone does not prove the generated art itself faces the labeled direction.
 - Actor spacing is measured between world ground anchors. Current prototype radii are player 10 px, Pamfet 12 px, Lycan 16 px, with 5 px clearance. This yields minimum center spacing of 27 px for player/Pamfet, 31 px for player/Lycan, 29 px for Pamfet/Pamfet, and 33 px for Lycan/Pamfet.
 - Check current positions and reserved in-flight destinations. Check the movement segment against other moving actors as well; an endpoint-only check is insufficient.
 - Pote and Milles world adapters that contain actors must use actorsBlockMovement=true. WorldRuntimeAdapter must delegate point and whole-step collision to RuntimeState so movement planning, live step revalidation, and monster AI share the same clearance rules. Do not maintain a separate stale player/monster radius check in a renderer or UI class.
 - Automatic combat may stop at a legal adjacent tile and then attack. Never move the player onto the target monster's tile to make melee range succeed. Keep approach range, canonical melee adjacency, and attack-facing derived from the same tile-center contract.
+- Auto-targeting compares the shortest reachable path to a legal adjacent tile first, then straight-line distance for ties. Ignore unreachable targets and use a moving monster's reserved next tile for planning. Keep a selected living target stable while its path remains valid to prevent target/path oscillation.
 - Test overlapping spawn positions, two monsters reserving the same destination, crossing in-flight steps, the player entering a moving monster's destination, and revalidation when the target moves during automatic approach.
 
 ## 5. Attack pace and presentation
@@ -89,6 +90,8 @@ Run the repository workflow and add or extend tests for the new ID. At minimum v
 - Exactly 12 packaged PNGs resolve for the monster; no stale or review-only asset path is used.
 - Idle, walk, and attack images load for all four directions, with shared ground anchoring and the intended per-species size.
 - A real AI step moves smoothly, and the walk renderer faces the applied step even if a deliberately stale attack-facing lock is present.
+- All four Pamfet direction assets are selected from each exact applied NW/NE/SW/SE step; inspect the art's actual gaze as well as the file name.
+- Auto-targeting picks the reachable target with the fewest legal approach steps, ignores blocked targets, uses moving target reservations, and does not switch a still-valid target every frame.
 - Player/monster and monster/monster minimum clearances hold at spawn, at destination, and during interpolation.
 - The player cannot enter a moving monster's reserved destination or cross its active movement path during automatic approach.
 - Monster attacks use only four diagonal facings, shared resolver damage, the wind-up/recovery timings, and the slower cooldown.
@@ -98,3 +101,7 @@ Run the repository workflow and add or extend tests for the new ID. At minimum v
 ## 7. Current acceptance status
 
 The 2026-09-29 versionCode 53 spacing/facing update passed GitHub Actions but was not physically verified on the user's handset. The user later reported that overlap still occurs during automatic combat. Treat the new report as DEVICE_FAILED (user-reported), keep the complete device root cause UNKNOWN until reproduced, and do not mark this manual's spacing rules DEVICE_VERIFIED merely because unit tests pass. See docs/PROJECT_STATE.md and docs/DIRECTOR_BACKLOG.md for the active follow-up. The versionCode 54 follow-up now delegates World point and whole-step actor collision to RuntimeState and blocks entry into a moving monster's reserved destination/path. Exact source HEAD 5905e963de7898acec4b84644e78fcb98cec395e passed Actions run 36570339135; APK artifact 11033662723 has SHA-256 97b892b9afd8afb82c888db1ed13305f565e3072300900e26ffbf5ec848f2fb4. This is BUILD_VERIFIED only; device verification remains pending.
+
+### 2026-09-29 follow-up status
+
+The user subsequently confirmed the v0.55 Pote restart/map persistence behavior. They then reported occasional Pamfet movement-art/facing mismatch and auto-attack circling or choosing a geometrically close but inefficient target. The v0.56 candidate changes are recorded in the current project state/backlog. Until its exact Actions artifact is installed and checked, do not call the changes device-verified or visually accepted.

@@ -28,6 +28,14 @@
 
 새 결정/변경만 날짜와 근거를 붙입니다. 구현 상태는 `docs/PROJECT_STATE.md`, 작업 순서는 `docs/DIRECTOR_BACKLOG.md`에서 관리합니다.
 
+## 2026-09-29 — Pote auto-target / walk presentation follow-up
+
+| 결정 | 범위와 의미 | 근거 |
+|---|---|---|
+| 몬스터 walk 방향은 AI의 원래 추적 의도가 아니라 충돌·detour를 거쳐 실제 적용된 canonical 타일 벡터로 선택한다. | 진행 중인 walk pose는 stale attack-facing을 무시하며, 네 방향 Pamfet 자산의 실제 시선은 기기 확인 전까지 수락하지 않는다. | 사용자 보고; `PoteForestMonsterShowcase`, `MonsterDiagonalLocomotion`, `RuntimeState`; `docs/MONSTER_CREATION_MANUAL.md` |
+| 자동공격 타깃은 도달 가능한 합법 인접 타일까지의 최단 경로 수로 고른다. | 같은 경로 수에서는 직선거리를 tie-break로 사용하고, 선택된 유효 생존 타깃은 쓰러지거나 경로가 끊길 때까지 유지한다. 이동 중 타깃은 예약 도착 타일을 계획점으로 사용한다. | 사용자 보고의 빙글돎/비효율 타깃; `WorldMoveTargetController`, `WorldRuntimeAdapter`, `GameView` |
+| 사용자 캡처에서 전사한 구클라이언트 요구 조건은 원본 92-sheet hash 검사 대상과 구분한다. | `Skill_Evidence.csv`의 SE10은 구조 검증 canonical override, 상세 표는 `Skill_Legacy_Requirements.csv` canonical addition으로 추적하며 원본 XLSX fidelity를 주장하지 않는다. | Main `c2e60d6`의 validator failure `36586971014`; `tools/validate_master.py`; 사용자가 제공한 캡처 전사 설명 |
+
 ## 2026-09-28 — Pote forest monster visual test scope
 
 | 결정 | 범위와 의미 | 근거 |

@@ -111,7 +111,19 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   public WorldMoveTargetController.Snapshot requestMonsterApproach(String monsterId,float approachTolerance){
     RuntimeState.Monster monster=findMonster(monsterId);
     if(monster==null||!monster.alive)throw new IllegalArgumentException("unknown or defeated monsterId: "+monsterId);
-    return movement.requestMonsterApproach(monster.id,monster.x,monster.y,Math.max(1f,approachTolerance));
+    // A moving monster already reserves its next legal tile. Plan to that stable endpoint rather
+    // than an interpolated point that is not part of the authored tile graph.
+    float targetX=monster.isMoving?monster.moveTargetX:monster.x;
+    float targetY=monster.isMoving?monster.moveTargetY:monster.y;
+    return movement.requestMonsterApproach(monster.id,targetX,targetY,Math.max(1f,approachTolerance));
+  }
+
+  public int monsterApproachPathSteps(String monsterId,float approachTolerance){
+    RuntimeState.Monster monster=findMonster(monsterId);
+    if(monster==null||!monster.alive)return -1;
+    float targetX=monster.isMoving?monster.moveTargetX:monster.x;
+    float targetY=monster.isMoving?monster.moveTargetY:monster.y;
+    return movement.monsterApproachPathSteps(targetX,targetY,Math.max(1f,approachTolerance));
   }
 
   public WorldMoveTargetController.Snapshot cancelForDirectInput(){return movement.cancelForDirectInput();}
