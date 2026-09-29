@@ -71,3 +71,12 @@ Before building, inspect main and the branch that contains the requested work. C
 - 코드 원인: 다른 4종이 기존 farthest-point 배치로 입구/aggro 밖에 산개; walk는 단일 pose still; shared combat route에서 `attackPrimed=false`가 된 이후 렌더가 idle을 골랐음; 공격 방향 lock이 walk로 복귀할 때 풀리지 않을 수 있었음.
 - 수정: 입구 72~168px 범위로 전원 배치, 반복 walk gait와 공격 lunge, hit 이후 공격 포즈 유지/방향 lock 종료. 네 대각 방향만 사용.
 - 새 다섯 종 × 4 facing의 이동 방향/공격 방향과 배치·렌더 테스트를 추가했다. 새 CI/APK 검증 결과는 아래 PROJECT_STATE와 backlog에 기록되기 전까진 미완료다.
+
+
+## Latest candidate result — version 50 (2026-09-29, Asia/Seoul)
+
+- Source branch `codex/pote-monster-sprites-runtime-20260929`, code SHA `3cd69850c16a61629e4c1c80a9683cb6f4fc46e3` (versionCode 50, `0.50-pote-monster-runtime-fix`). The branch is not merged; comparison with `main` reports 103 commits ahead and 5 behind.
+- Actions run [#36549350583](https://github.com/ChanJoos/Project_dark_android/actions/runs/36549350583) succeeded at that exact SHA. Pote test batch passed: `PoteForestSpatialGrammarTest`, `PoteMonsterPlayableRuntimeTest`, `PotePamfetPresentationTest`, and `PoteCreekWaterAssetTest`; `assembleDebug` succeeded. Build time: 2026-09-29 18:29:57 KST.
+- Artifact [11024127131](https://github.com/ChanJoos/Project_dark_android/actions/runs/36549350583) contains `app-debug.apk` (12,631,372 bytes), SHA-256 `807437bf4b5270a2701c2380e854eeb032018117952336f1b0e1f3bb516961d4`. APK inventory: 60 `pote_monsters_generated_v1/sprites/` PNGs and zero `monster_test_v04/` files.
+- Source patch clusters the five complete art candidates near the entrance, exposes walk/attack state changes with a four-diagonal facing contract, and tests applied movement/facing and pose rendering. User-reported v49 failures have not yet been verified on a physical device with v50. Status: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**.
+- Next: install this exact APK and verify all five candidates are visible, movement-facing matches actual step, attacks use only NW/NE/SW/SE, attack occurs at valid range, and the app remains stable. Do not mark visual acceptance until this check is recorded.

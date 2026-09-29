@@ -114,3 +114,12 @@ Run the exact candidate APK on an Android device: select each of the 16 displaye
 - 소스 재검토에서 5개 세트의 등록은 되어 있었지만 배치 알고리즘이 입구 근처 퍼플 외 4마리를 지도 전체로 분산해 초기 화면/180px 추적권 밖에 두었다. 걷기 이미지는 단일 still이라 반복 움직임이 없었고, shared combat hit 경로는 `attackPrimed`를 해제한 뒤 `GameView`가 공격 포즈 대신 idle을 선택했다. 공격 facing lock도 종료시점이 없어 이동 facing에 남을 수 있었다.
 - 수정 중: 다섯 후보를 입구 주변 72~168px ring에 배치, actor별 walk gait/공격 짧은 lunge 및 animation phase 추가, shared-hit 공격 포즈 표시/4방향 facing lock 해제. 캐릭터 방향 enum과 맵 이동/근접 계약은 네 대각 방향(NW/NE/SW/SE)으로 한정한다.
 - 새 테스트는 다섯 종 각각의 이동 실제 step과 facing 일치, idle/walk/attack 12 리소스, shared-hit 공격 포즈, 공격 lock 종료, 다섯 몬스터 입구 가시영역 배치를 검사한다. 다음은 CI 실행과 APK 패키지 검사이며, 기기 시각 검수 전 성공 처리하지 않는다.
+
+
+## 2026-09-29 — v50 Pote monster runtime follow-up
+
+User-reported v49 failures (only Purple visible, walk/attack absent, facing mismatch, attack appearing eight-directional) were addressed on the candidate branch. Exact source SHA `3cd69850c16a61629e4c1c80a9683cb6f4fc46e3`, versionCode 50 / `0.50-pote-monster-runtime-fix`; branch compare says 103 ahead and 5 behind `main`, so it remains an unmerged candidate.
+
+Actions run [#36549350583](https://github.com/ChanJoos/Project_dark_android/actions/runs/36549350583) succeeded at the source SHA: Pote spatial grammar, playable monster runtime, 60-pose presentation, creek assets, and `assembleDebug` passed. APK artifact [11024127131](https://github.com/ChanJoos/Project_dark_android/actions/runs/36549350583) contains `app-debug.apk`, 12,631,372 bytes, SHA-256 `807437bf4b5270a2701c2380e854eeb032018117952336f1b0e1f3bb516961d4`. Independent inventory found 60 new runtime PNGs and zero `monster_test_v04/` files. Build time was 2026-09-29 18:29:57 KST.
+
+Runtime code now positions the five complete candidates in the entrance pocket, couples the walk pose/facing to applied movement, shows walk and attack motion using the authored four diagonal directions, and keeps/ends attack facing through the visual hit window. This is **IMPLEMENTED and BUILD_VERIFIED**. The reported fixes have not been checked on the user's Android device: **DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**. Next action is to install this exact APK and check five-monster visibility, direction/facing, movement, attack timing/range, and stability. The generated poses remain single stills per state/direction, not multi-frame animation.
