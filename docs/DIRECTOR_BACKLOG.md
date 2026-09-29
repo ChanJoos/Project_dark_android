@@ -17,7 +17,7 @@ Revision LOOP-4-V1 · 사용자 승인 운영 개정.
 | Task | Owner | 다음 결과 하나 | 수락 조건 | 상태 |
 |---|---|---|---|---|
 | DELIVERY-01 | Director + World | versionCode 48 Pote 후보를 실제 기기에서 검증하고 통합 여부를 기록 | 정확한 APK/SHA에서 시작 이동·안내인 숲 진입·숲 내부 이동을 확인. 실패하면 원인을 고치고 새 SHA에서 같은 시나리오 재검증 | BUILD_VERIFIED; DEVICE_PENDING; 브랜치 미병합 |
-| MONSTER-ART-01 | Visual + Director | 원작 근거표와 함께 14종/색상형의 12개 개별 PNG 제작·시각 검수 | 총 168 PNG(대기/걷기/공격 × NW/NE/SW/SE); 강력한 변형 제외; 각 파일 존재·투명 배경·전신·포즈/방향 구분 QA; 종별 source/근거 등급 기록; 사용자 최종 시각 승인 전 APK 미적용 | IN_PROGRESS; 새 리빌드에 라이칸스로프 사용자 시각 수락 12장과 팜팻 빨강/보라/초록/실버 생성 후보 48장이 추적됨. 팜팻 후보는 1254×1254 원본이며 64×64 변환·앵커·사용자 승인 전이라 완료 산출물로 계산하지 않음. 추가로 트랜트 후보 9/12장을 생성했으며 공격 NE/SW/SE 3장과 다른 8개 종/색상형 96장은 미생성. 총 99개 파일 미생성. `monster_artwork_manifest.csv`에서 상태/근거 추적. 별도 브랜치 prototype 및 폐기된 v0.4는 새 입력·수량에서 제외. Naver 나무형·보라 토끼는 이름표 미확인 후보이며 PDF/영상은 종별 프레임 근거를 추가하지 않음. |
+| MONSTER-ART-01 | Visual + Director | 사용자 기본 시트의 외형을 보존한 4방향 이동·공격 결과 및 168개 개별 출력 QA | 총 168 개별 PNG(대기/걷기/공격 × NW/NE/SW/SE); 강력한 변형 제외; 기본 시트가 있는 종은 새 idle 디자인 금지, walk/attack만 추가; 종별 출처·매핑·프레임/투명/앵커 QA; 사용자 승인 전 APK 미적용 | IN_PROGRESS; 승인 라이칸스로프 12장 외에 선행 팜팻/트랜트 생성 이력 57장이 있으나 이번 기준 시트로 만든 결과가 아니므로 미승인. 트랜트 idle 4장은 사용자 시트가 대체. 잔여 raw 후보 53장. 현재 미완성 99 출력 경로 중 20 idle은 시트에서 분리/정렬할 대상이며 전부 신규 외형 생성 대상이 아님. 사용자 시트 3장을 `source_capture/user_idle_bases/`에 보존하고 `idle_base_reference_map.csv` 및 manifest 상태에 연결. 사슴형/흰 늑대형/나무형/초록 사마귀형은 잠정 종 연결, 벌레 두 줄은 앤트라이온/앤트자이언트 매핑 미확정. 셀-방향 순서와 개별 프레임 추출도 미검증. 생성 한도 reset 2026-09-29 22:57:28 UTC. v0.4 168장은 시각 입력에서 제외. |
 
 근거: 기존 전달 APK는 main `0506929`, SHA-256 `e10e94495a8cd5dba2f86753f28d617835d42ecc2f4f0baf331c9fe671b62ef2`이며 포테 격자 간격 결함을 포함했습니다. 활성 브랜치 `codex/pote-ground-tile-foundation`의 source candidate `16c6d9a`는 CI #36388750145 성공 및 Pote 경로/렌더 검사를 통과했습니다. APK artifact ID `10955795355`, APK SHA-256 `03f4ccae5fe0804fa78bbeaef974696c0064b3d2941bb190b8fc68d3e64e3e4f`. 실제 기기 검증은 아직 안 됐습니다. 기존 네 역할 할당을 완료/취소로 간주하지 않습니다.
 
@@ -50,3 +50,5 @@ Director는 매 실행 live 상태와 마지막 결과를 확인한다. IDLE로 
 각 task 완료 시 status/검증 범위/SHA·PR/다음 결과로 해당 행을 교체한다. 역사 전체를 복제하지 않는다.
 
 - MONSTER-ART-01 blocker update: image-generation service returned HTTP 429 usage limit (reset reported 2026-09-29 22:57:28 UTC). Existing generated candidates are tracked, but no remaining frame may be marked complete until created and checked.
+
+- MONSTER-ART-01 user-direction correction: use the newly committed base sheets as the visual source for matching species. Do not regenerate idle designs; add walk and attack only. Older 57 candidates were not made from these sheets and remain unapproved.
