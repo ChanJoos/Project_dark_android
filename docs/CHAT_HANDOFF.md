@@ -1,6 +1,10 @@
 # PROJECT DARK 채팅 간 인수인계
 
-## 현재 인계 — v60 (2026-09-30)
+## 현재 인계 — v61 (2026-09-30)
+
+최신 계약은 SKILL-WINDOW-05다. v60의 원본 전체 학습 허용보다 v61의 실제 효과30개 기본/미구현 자료 미리보기+무결제 규칙이 우선한다. 학습은 여전히 스탯+Gold/materials이고 직업/숙련 게이트 없음. 큰 6카드/상태/분류 dropdown/확정 및 오류 피드백, 현재계산 설명, project emblems와 실제 쿠라눔50G 구매가 연결됐다. source `89bad5a620324f9e5b0b3c8fbc7191fe59fb2a1f`, PR #172, successful run36644434203 / job109663993916, actual checkout e481a9010979967c1c404979cca69408ddf8feda. APK artifact11067706867, build2026-09-30 08:19:43 KST, SHA25632155516e6213d8804e8f5751563ea7fa34e5f1c43dfcad061c30a02ea4e2571. 16 input/economy/save/render tests와 regressions passed. 실제 phone/경제세션/원본고해상도아트 수락은 남는다. 전체게임 출시준비 완료로 쓰지 않는다.
+
+## Historical v60 handoff (superseded by v61)
 
 최신 계약은 SKILL-WINDOW-04 / SKILL_ACQUISITION_CONTRACT.md다. 아래 v59 섹션의 직업·선행 숙련 조건과 전직이 스킬 습득을 막는다는 문구는 역사 기록이다. 현재 사용자 규칙은 스탯+Gold/필요 아이템으로 창에서 즉시 습득, 단일 결제/저장 및 실패 복구다. Runtime source `e0f61bf1712e7b18ece4c9602e5dbf82da0bf6f3`, PR #171, successful run 36636635716, build 2026-09-30 07:00:03 KST, APK artifact 11064287506 / SHA256 `8a11132af58c2615ef5e2b00e4ae9ea33115c5799d62ecbaa3570bec1d91f073`. 정확한 checkout merge와 검증 한계는 PROJECT_STATE의 최신 기록을 읽는다. v59는 사용자 시각/기능 검수에서 거절됐고 실제 설치 SHA는 미확인이다. v60 native 렌더/입력/비용/저장/쿨타임 검증은 통과했으나 기기·사용자 수락은 미완료다. 다음은 v60 기기 검수와 독립적인 미구현 특수효과; 실제 전직 경로가 학습 전제는 아니다.
 
