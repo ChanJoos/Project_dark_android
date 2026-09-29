@@ -275,7 +275,7 @@ work_packages:
       failed_delivery_actions_run: "36588894898"
       failed_delivery_artifact_id: "11043600170"
       candidate_branch: "codex/pote-facing-autotarget-r4-20260930"
-      candidate_source_sha: "PENDING_COMMIT"
+      candidate_source_sha: "90e539660ce850217b00775c17536d5381e3e09d"
       manual: "docs/MONSTER_CREATION_MANUAL.md"
       next_check: "Run exact-SHA GitHub Actions; then verify Pamfet image gaze for four movement directions, blocked-tile detours, shortest-path auto-target selection, no circling, and the previously passed Pote restart behavior on-device. Do not deliver an unverified APK as a fix."
       implementation_source_sha: "5905e963de7898acec4b84644e78fcb98cec395e"
