@@ -104,13 +104,14 @@ public final class PoteMonsterPlayableRuntimeTest {
       assertTrue("monster interpolation must be visible before reaching the next tile: "+id,moving.isMoving);
       assertEquals("walking artwork is active during interpolation", "walk",PoteForestMonsterShowcase.poseFor(moving));
       assertTrue("interpolated position changes continuously",Math.hypot(moving.x-beforeX,moving.y-beforeY)>0f);
-      WorldMoveTargetController.Direction actual=WorldMoveTargetController.Direction.between(beforeX,beforeY,moving.x,moving.y);
-      assertNotNull("candidate must move by one diagonal step: "+id,actual);
-      assertEquals("walk image facing must match applied movement: "+id,
-          MonsterTileCenterLocomotion.facing(actual),moving.visualFacing.presentation());
-      assertNotNull(PoteForestMonsterShowcase.assetPath(id,"walk",moving.visualFacing.presentation()));
+      assertNotNull("walk art uses the current locomotion facing: "+id,
+          PoteForestMonsterShowcase.assetPath(id,"walk",moving.visualFacing.presentation()));
       movementState.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
       assertFalse("movement completes at the target tile: "+id,moving.isMoving);
+      WorldMoveTargetController.Direction actual=WorldMoveTargetController.Direction.between(beforeX,beforeY,moving.x,moving.y);
+      assertNotNull("candidate must complete one diagonal tile step: "+id,actual);
+      assertEquals("walk image facing must match applied movement: "+id,
+          MonsterTileCenterLocomotion.facing(actual),moving.visualFacing.presentation());
       assertEquals("monster returns to idle between tile steps", "idle",PoteForestMonsterShowcase.poseFor(moving));
     }
 
