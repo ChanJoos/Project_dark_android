@@ -133,3 +133,14 @@ Source audit found two concrete risks: actor collision checks considered other m
 Exact implementation source SHA: 7f6944e42888a1bd4c5a43e1b4e6261b0f9c2320. GitHub Actions run #36565408459 passed, including Pote spatial/runtime/presentation checks and APK build. Artifact 11030999456 contains app-debug.apk; extracted APK SHA-256: a1cccce1d52b172172355063ca0f653be648251f1210a6b0e20d758fce2a27bb. Build time: 2026-09-29 21:03 KST.
 
 Status: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**. The added regressions check concurrent destination reservation, crossing-path clearance, attempted entry onto the player's occupied tile, and walk facing despite a stale attack-facing lock. CI rendering is not physical-device verification. Next acceptance step: install this exact APK and verify actor spacing, movement-facing, and attack approach on the user's device.
+
+
+## 2026-09-29 — v0.53 자동전투 접근 중 겹침 후속
+
+사용자는 v0.53에서 자동전투로 몬스터를 공격할 때 플레이어와 몬스터가 가끔 겹친다고 보고했다. 기기에서 독립 재현은 아직 없어 최종 기기 원인은 계속 **UNKNOWN**이며, 이 보고는 **DEVICE_FAILED (user-reported)** 로 기록한다.
+
+소스 감사에서 자동 접근 계획 시점과 실제 한 타일 이동 시작 시점의 충돌 검사 차이를 확인했다. 실제 이동 시작 검사가 몬스터의 현재 좌표만 보고 이동 중 예약 목적지와 전체 이동 경로를 확인하지 않아, 몬스터가 접근 도중 플레이어의 예정 위치로 들어올 수 있었다. v0.54는 World 어댑터의 점/경로 검사를 RuntimeState의 종별 충돌 규칙으로 통일하고 이동 시작 시 예약 목적지 및 스윕 경로를 다시 검사한다. 회귀 테스트 automaticApproachCannotEnterAMonsterReservedTile에서 예약 타일 진입이 차단되는 것을 검증한다.
+
+구현 소스 SHA 5905e963de7898acec4b84644e78fcb98cec395e; GitHub Actions [#36570339135](https://github.com/ChanJoos/Project_dark_android/actions/runs/36570339135) 성공. APK artifact 11033662723, APK SHA-256 97b892b9afd8afb82c888db1ed13305f565e3072300900e26ffbf5ec848f2fb4. 몬스터 생성/등록/크기/방향/충돌/이동·공격 템포/검증 절차는 [docs/MONSTER_CREATION_MANUAL.md](MONSTER_CREATION_MANUAL.md)에 문서화했고 AGENTS.md와 docs/CHAT_HANDOFF.md에서 필독하도록 연결했다.
+
+상태: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**. 자동 접근 예약 목적지 회귀 및 전체 CI는 통과했지만 사용자의 기기에서 이 APK로 자동전투를 직접 재검증하기 전까지 기기 해결 완료로 간주하지 않는다.
