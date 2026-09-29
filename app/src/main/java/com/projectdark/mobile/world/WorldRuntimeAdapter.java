@@ -30,7 +30,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
   private final float sceneMinX,sceneMaxX,sceneMinY,sceneMaxY;
   private final List<RectF> sceneObstacles;
-  private final boolean millesActors;
+  private final boolean actorsBlockMovement;
   private float presentationWalkClock;
 
   public WorldRuntimeAdapter(RuntimeState runtime,float viewportWidth,float viewportHeight){
@@ -42,7 +42,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     for(AdaptedMillesIsometricTileLayer.Tile tile:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
     navigationTiles=Collections.unmodifiableList(centers);
     sceneMinX=map.bounds().minX;sceneMaxX=map.bounds().maxX;sceneMinY=map.bounds().minY;sceneMaxY=map.bounds().maxY;
-    sceneObstacles=runtime.obstacles();millesActors=true;
+    sceneObstacles=runtime.obstacles();actorsBlockMovement=true;
     snapPlayerToNearestTraversableTile();
     camera=map.newCamera(viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
@@ -64,7 +64,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     this.runtime=runtime;this.map=null;
     this.navigationTiles=Collections.unmodifiableList(new ArrayList<>(tiles));
     sceneMinX=minX;sceneMaxX=maxX;sceneMinY=minY;sceneMaxY=maxY;
-    sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));millesActors=actorsBlockMovement;
+    sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));this.actorsBlockMovement=actorsBlockMovement;
     snapPlayerToNearestTraversableTile();
     camera=new WorldCameraTransform(minX,maxX,minY,maxY,viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
@@ -171,8 +171,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
     for(RectF obstacle:sceneObstacles)if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
-    if(millesActors){for(RuntimeState.Npc n:runtime.npcs())if(distance(x,y,n.x,n.y)<r+RuntimeState.NPC_RADIUS+2f)return false;
-    for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&distance(x,y,m.x,m.y)<r+RuntimeState.MONSTER_RADIUS+3f)return false;}
+    if(actorsBlockMovement&&!runtime.canPlayerOccupyActors(x,y))return false;
     return true;
   }
 
@@ -197,7 +196,9 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
-    if(!canPlayerOccupy(destinationX,destinationY)||!segmentTraversable(startX,startY,destinationX,destinationY))return false;
+    if(!canPlayerOccupy(destinationX,destinationY)
+        ||(actorsBlockMovement&&!runtime.canPlayerTraverseActors(startX,startY,destinationX,destinationY))
+        ||!segmentTraversable(startX,startY,destinationX,destinationY))return false;
     runtime.player().x=destinationX;
     runtime.player().y=destinationY;
     return true;
