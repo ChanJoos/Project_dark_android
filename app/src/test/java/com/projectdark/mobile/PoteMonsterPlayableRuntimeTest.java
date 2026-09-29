@@ -375,7 +375,11 @@ public final class PoteMonsterPlayableRuntimeTest {
         tiles,PoteFieldDef.obstacles(),true);
     assertEquals("already legal adjacent tile is zero path steps",
         0,world.monsterApproachPathSteps(monster.id,CanonicalMeleeTileContract.REACH_DISTANCE));
-    monster.isMoving=true;monster.moveStartX=target.x+32f;monster.moveStartY=target.y+16f;
+    monster.isMoving=true;
+    // Approach from the tile opposite the player so the target's swept segment does not occupy
+    // the player's current adjacent tile during the fixture.
+    monster.moveStartX=target.x-(player.x-target.x);
+    monster.moveStartY=target.y-(player.y-target.y);
     monster.moveTargetX=target.x;monster.moveTargetY=target.y;
     monster.x=(monster.moveStartX+monster.moveTargetX)*.5f;
     monster.y=(monster.moveStartY+monster.moveTargetY)*.5f;
