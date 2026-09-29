@@ -144,3 +144,12 @@ Status: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDIN
 구현 소스 SHA 5905e963de7898acec4b84644e78fcb98cec395e; GitHub Actions [#36570339135](https://github.com/ChanJoos/Project_dark_android/actions/runs/36570339135) 성공. APK artifact 11033662723, APK SHA-256 97b892b9afd8afb82c888db1ed13305f565e3072300900e26ffbf5ec848f2fb4. 몬스터 생성/등록/크기/방향/충돌/이동·공격 템포/검증 절차는 [docs/MONSTER_CREATION_MANUAL.md](MONSTER_CREATION_MANUAL.md)에 문서화했고 AGENTS.md와 docs/CHAT_HANDOFF.md에서 필독하도록 연결했다.
 
 상태: **IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTED_PENDING**. 자동 접근 예약 목적지 회귀 및 전체 CI는 통과했지만 사용자의 기기에서 이 APK로 자동전투를 직접 재검증하기 전까지 기기 해결 완료로 간주하지 않는다.
+
+
+## 2026-09-29 — 사용자 기기 통과 보고 및 다음 세로 루프 작업
+
+사용자가 앞서 제안한 세 항목을 통과했다고 확인했다: (1) v0.54 자동전투 중 플레이어/몬스터 간격, (2) 전투 판정·이동 연계, (3) 플레이어 BODY+로브+무기 공격 표현. 이는 **사용자 보고 DEVICE PASS**로 기록한다. 이 보고에서 기기 모델·별도 녹화와 2·3번의 APK SHA는 제공되지 않았다. 무기 손 결합과 피격 가독성은 사용자가 후순위로 명시했다. 몬스터 아트 전체의 `VISUAL_ACCEPTED`를 뜻하지 않는다.
+
+다음은 First RPG Loop의 cold-restart 복원 경로다. Main의 `F5mSaveStore`는 map id/좌표, HP/MP, 퀘스트, 인벤토리·장비, EXP/Gold·레벨·스탯·보상 sequence 저장/복원 코드를 갖고 있고 Robolectric persistence matrix가 일부 RPG/퀘스트 데이터를 검사한다. 그러나 `GameView`는 매번 Milles `RuntimeState`로 시작하며 저장된 `map_id`에 맞춰 활성 맵과 World adapter를 재구성하지 않는다. 따라서 Pote 진입 중 강제 종료 후 같은 맵·위치로 돌아오는 cold-start 경로는 현재 테스트에서 검증되지 않았다. 이는 소스 감사에서 확인한 통합 공백이며 기기 재현 보고는 아니다.
+
+다음 패키지 제안: `F5M_RESTART_RESTORE_001` — 저장된 Milles/Pote map id에 맞는 world/runtime/adapter를 초기화한 뒤 안전한 이동 타일 위치, HP/MP, 퀘스트/목표, 소지품·장비, 진행도와 reward sequence를 복원한다. Milles와 Pote에서 프로세스를 종료·재실행하는 테스트, 손상/구버전 저장 fallback, 중복 처치/퀘스트 보상 방지를 검증하고, 정확한 APK에서 실제 재실행까지 확인한다.
