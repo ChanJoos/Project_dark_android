@@ -3,97 +3,120 @@ package com.projectdark.mobile;
 import android.graphics.*;
 import java.util.*;
 
-/** Source-backed skill browser; combat, acquisition and saving stay in their own services. */
+/** Game skill book: consistent icon/name cards, concrete learning quote and explicit slot editing. */
 final class SkillWindow {
-  interface Actions {void use(SkillBook.Entry entry);boolean canLearn(SkillBook.Entry entry);void learn(SkillBook.Entry entry);void save();float cooldown(String id);String requirements(SkillBook.Entry entry);void notice(String text);}
+  interface Actions {
+    void use(SkillBook.Entry entry);boolean canLearn(SkillBook.Entry entry);void learn(SkillBook.Entry entry);
+    SkillAcquisition.Quote quote(SkillBook.Entry entry);long gold();boolean save();float cooldown(String id);
+    String requirements(SkillBook.Entry entry);void notice(String text);
+  }
+  static final int PAGE_SIZE=12;
+  private static final String[] JOBS={"전체","공통","전사","도적","무도가","마법사","성직자"};
+  private static final int TEXT=0xffe9e0d0,MUTED=0xffa79e8c,GOLD=0xffe2bd76,GREEN=0xffa9c99b,RED=0xffdc9b87;
   boolean open,magic,learnedOnly,choosingSlot;
   int page,detailPage,detailOffset;
   String selectedId,job="전체";
-  private static final String[] JOBS={"전체","공통","전사","도적","무도가","마법사","성직자"};
-  private final SkillBook book;
-  private final SkillIconCatalog icons;
-  private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
-  private final RectF bounds=new RectF(296,40,936,512);
+  private final SkillBook book;private final SkillIconCatalog icons;private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
+  private final RectF bounds=new RectF(88,28,872,514);
   SkillWindow(SkillBook book,SkillIconCatalog icons){this.book=book;this.icons=icons;}
   void close(){open=false;choosingSlot=false;}
   private SkillBook.Entry selected(){return book.get(selectedId);}
   private List<SkillBook.Entry> rows(){List<SkillBook.Entry> out=new ArrayList<>();for(SkillBook.Entry e:book.list(magic,learnedOnly))if("전체".equals(job)||job.equals(e.job))out.add(e);return out;}
   private void reset(){page=0;selectedId=null;detailPage=detailOffset=0;choosingSlot=false;}
+  static RectF cell(int i){float x=112+(i%4)*98,y=154+(i/4)*78;return new RectF(x,y,x+92,y+76);}
+  private RectF bookSlot(int i){return new RectF(112+i*92,469,198+i*92,505);}
   void draw(Canvas c,Actions a){
     if(!open)return;
-    p.setColor(0x44000000);c.drawRect(0,0,960,540,p);
-    panel(c,296,40,936,512,0xff201810,0xff876c41);
-    gradient(c,304,48,928,87,0xff5e4728,0xff2c2318);
-    rule(c,310,86,922,86,0xffc5a36c);label(c,"기술과 마법",324,74,19,0xffffe6b1,true);
-    label(c,"SKILL BOOK",493,71,9,0xffbea681,false);
-    button(c,894,51,923,80,"×",true);
-    tab(c,312,95,463,124,"기술",!magic);tab(c,470,95,621,124,"마법",magic);
-    tab(c,638,95,774,124,"전체 목록",!learnedOnly);tab(c,781,95,918,124,"습득 목록",learnedOnly);
-    for(int i=0;i<JOBS.length;i++){float x=312+i*87;tab(c,x,132,x+81,155,JOBS[i],job.equals(JOBS[i]));}
-    List<SkillBook.Entry> list=rows();int pages=Math.max(1,(list.size()+15)/16);page=Math.max(0,Math.min(page,pages-1));
-    for(int i=0;i<16&&!list.isEmpty();i++){
-      float x=312+(i%4)*78,y=164+(i/4)*62;int n=page*16+i;
-      gradient(c,x,y,x+72,y+57,0xff382b1c,0xff251e16);outline(c,x,y,x+72,y+57,0xff645034,1);
-      if(n>=list.size())continue;SkillBook.Entry e=list.get(n);boolean active=e.id.equals(selectedId);
-      if(active){gradient(c,x+1,y+1,x+71,y+56,0xff68532f,0xff3d301e);outline(c,x,y,x+72,y+57,0xffffd588,2);}
-      boolean art=icons.draw(c,e.id,new RectF(x+19,y+3,x+53,y+37));
-      if(!art){List<String> name=wrap(e.name,64,11);for(int line=0;line<Math.min(2,name.size());line++)center(c,name.get(line),x+36,y+23+line*14,11,0xffead4ae);center(c,e.job,x+36,y+51,8,0xffaa936e);}else fitted(c,e.name,x+3,y+51,66,10,0xfff1dec0);
-      if(book.learned(e.id)){p.setColor(0xffb6ca85);c.drawCircle(x+64,y+8,2.5f,p);}
-      float cd=e.runtime==null?0:a.cooldown(e.id);if(cd>0){p.setColor(0xb0000000);c.drawRect(x+17,y+2,x+55,y+38,p);center(c,String.format(Locale.ROOT,"%.1f",cd),x+36,y+25,13,Color.WHITE);}
-    }
+    fill(c,0,0,960,540,0x92000000);panel(c,bounds,0xff201f1b,0xff8e7850);
+    gradient(c,96,36,864,70,0xff3f382b,0xff25241e);
+    label(c,"스킬",112,61,23,GOLD,true);label(c,"기술과 마법",176,59,12,MUTED,false);
+    right(c,"보유 골드  "+number(a.gold())+" G",814,58,12,TEXT);button(c,new RectF(834,37,859,64),"×",true);
+    tab(c,new RectF(112,80,298,109),"기술",!magic);tab(c,new RectF(306,80,498,109),"마법",magic);
+    tab(c,new RectF(520,80,677,109),"전체 스킬",!learnedOnly);tab(c,new RectF(685,80,848,109),"배운 스킬",learnedOnly);
+    for(int i=0;i<JOBS.length;i++)tab(c,new RectF(112+i*105,118,211+i*105,143),JOBS[i],job.equals(JOBS[i]));
+    List<SkillBook.Entry> list=rows();int pages=Math.max(1,(list.size()+PAGE_SIZE-1)/PAGE_SIZE);page=Math.max(0,Math.min(page,pages-1));
+    for(int i=0;i<PAGE_SIZE&&page*PAGE_SIZE+i<list.size();i++)drawCard(c,list.get(page*PAGE_SIZE+i),cell(i),a);
     if(list.isEmpty()){
-      panel(c,312,164,621,408,0xff211d15,0xff615038);
-      center(c,learnedOnly?"아직 배운 "+(magic?"마법":"기술")+"이 없습니다":"이 직업의 목록이 없습니다",462,258,15,0xffe4d2b1);
-      center(c,learnedOnly?"전체 목록에서 효과와 습득 조건을 확인하세요":"다른 직업 또는 기술·마법 탭을 선택하세요",462,284,10,0xffc0aa85);
+      center(c,learnedOnly?"아직 배운 스킬이 없습니다":"해당 분류의 스킬이 없습니다",305,252,15,TEXT);
+      center(c,learnedOnly?"전체 스킬에서 원하는 스킬을 선택하세요":"다른 분류를 선택하세요",305,277,11,MUTED);
     }
-    panel(c,638,164,918,408,0xff191711,0xff766040);
+    panel(c,new RectF(520,154,848,396),0xff191c19,0xff514b3d);
     SkillBook.Entry e=selected();
-    if(e==null){center(c,list.isEmpty()?"습득한 목록이 이곳에 표시됩니다":magic?"마법을 선택하세요":"기술을 선택하세요",778,258,list.isEmpty()?12:16,0xffedd9b4);center(c,"효과 · 쿨타임 · 습득 조건",778,284,11,0xffb7a080);}
-    else{
-      boolean sourceIcon=icons.draw(c,e.id,new RectF(650,176,699,225));float nameLeft=sourceIcon?711:651;
-      fitted(c,e.name,nameLeft,194,903-nameLeft,17,0xffffdf9f);
-      fitted(c,e.job+" · "+e.kind+(e.circle.isEmpty()?"":" · "+e.circle+"서클"),nameLeft,214,903-nameLeft,10,0xffcbb58f);
-      label(c,book.learned(e.id)?"습득 · 숙련도 "+book.proficiency(e.id)+"%":"미습득",651,240,10,book.learned(e.id)?0xffbcce87:0xffd0b486,false);
-      tab(c,648,249,770,274,"효과 · 쿨타임",detailPage==0);tab(c,778,249,908,274,"습득 조건",detailPage==1);
-      String body=detailPage==1?a.requirements(e):description(e,a);
-      List<String> lines=wrap(body,248,11);detailOffset=Math.max(0,Math.min(detailOffset,Math.max(0,lines.size()-6)));int shown=Math.min(lines.size()-detailOffset,6);
-      c.save();c.clipRect(648,279,908,376);for(int i=0;i<shown;i++)label(c,lines.get(detailOffset+i),650,293+i*15,11,0xffe0d0b1,false);c.restore();
-      if(lines.size()>6){label(c,(detailOffset+1)+"–"+(detailOffset+shown)+" / "+lines.size(),651,394,9,0xffddbd7f,false);button(c,827,381,861,402,"↑",detailOffset>0);button(c,872,381,906,402,"↓",detailOffset+6<lines.size());}
+    if(e==null){center(c,"스킬을 선택하세요",684,256,17,TEXT);center(c,"효과와 습득 비용을 확인할 수 있습니다",684,282,11,MUTED);}
+    else drawDetail(c,e,a);
+    button(c,new RectF(112,410,150,440),"‹",page>0);button(c,new RectF(460,410,498,440),"›",page+1<pages);
+    center(c,(page+1)+" / "+pages+"  ·  "+list.size()+"개",305,430,12,MUTED);
+    SkillAcquisition.Quote q=e==null?null:a.quote(e);
+    String learn=e==null?"습득":book.learned(e.id)?"습득 완료":q.gold==0?"습득 · 무료":"습득 · "+number(q.gold)+" G";
+    button(c,new RectF(520,410,677,440),learn,e!=null&&a.canLearn(e));
+    button(c,new RectF(685,410,848,440),choosingSlot?"등록 취소":"퀵슬롯 등록",e!=null&&book.learned(e.id));
+    label(c,choosingSlot?"등록할 슬롯을 선택하세요":"퀵슬롯",112,460,11,choosingSlot?GOLD:MUTED,false);
+    if(choosingSlot)right(c,"같은 스킬을 선택하면 등록 해제",848,460,10,MUTED);
+    for(int i=0;i<8;i++){
+      RectF r=bookSlot(i);panel(c,r,0xff282822,choosingSlot?0xffb69258:0xff514b3d);label(c,""+(i+1),r.left+5,r.top+12,9,MUTED,false);
+      SkillBook.Entry sl=book.get(book.slot(i));if(sl==null)center(c,"—",r.centerX(),r.centerY()+5,14,0xff5e6255);
+      else{icon(c,sl,new RectF(r.left+28,r.top+3,r.left+58,r.top+33));float cd=a.cooldown(sl.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb5000000);center(c,String.format(Locale.ROOT,"%.1f",cd),r.centerX(),r.centerY()+5,13,TEXT);}}
     }
-    button(c,312,418,351,447,"‹",page>0);center(c,(page+1)+" / "+pages+"    "+list.size()+"개",466,438,11,0xffe9d4ad);button(c,581,418,621,447,"›",page+1<pages);
-    button(c,638,418,772,447,e!=null&&book.learned(e.id)?"습득 완료":"습득",e!=null&&!book.learned(e.id)&&a.canLearn(e));button(c,780,418,918,447,choosingSlot?"등록 취소":"퀵슬롯 등록",e!=null&&book.learned(e.id));
-    label(c,choosingSlot?"등록할 슬롯을 선택하세요 · 같은 기술을 선택하면 해제":"퀵슬롯 · 배운 기술을 등록하고 전투 화면에서 사용하세요",313,463,9,0xffcdb386,false);
-    for(int i=0;i<8;i++){float x=312+i*76;gradient(c,x,469,x+70,503,0xff3b2d1e,0xff211b14);outline(c,x,469,x+70,503,choosingSlot?0xffe0bd79:0xff78603f,1);label(c,""+(i+1),x+4,481,8,0xffb39c76,false);SkillBook.Entry s=book.get(book.slot(i));if(s!=null){icons.draw(c,s.id,new RectF(x+24,472,x+46,494));fitted(c,s.name,x+13,501,53,7,0xffedd6ae);}else center(c,"—",x+38,493,12,0xff74644d);}
   }
+  private void drawCard(Canvas c,SkillBook.Entry e,RectF r,Actions a){
+    boolean active=e.id.equals(selectedId);panel(c,r,active?0xff423a2a:0xff282822,active?0xffd2b278:0xff45453b);
+    RectF art=new RectF(r.centerX()-20,r.top+6,r.centerX()+20,r.top+46);icon(c,e,art);
+    List<String> names=nameLines(e.name,r.width()-8,11);
+    for(int i=0;i<Math.min(2,names.size());i++)center(c,names.get(i),r.centerX(),r.top+60+i*13,11,TEXT);
+    if(book.learned(e.id)){label(c,"✓",r.right-13,r.top+14,11,GREEN,true);}
+    float remaining=a.cooldown(e.id);if(remaining>0){fill(c,art.left,art.top,art.right,art.bottom,0xb9000000);center(c,String.format(Locale.ROOT,"%.1f",remaining),art.centerX(),art.centerY()+4,12,TEXT);}
+  }
+  private void drawDetail(Canvas c,SkillBook.Entry e,Actions a){
+    SkillAcquisition.Quote q=a.quote(e);icon(c,e,new RectF(536,166,584,214));
+    fitted(c,e.name,598,186,236,18,GOLD,true);label(c,e.job+" · "+e.kind,598,207,11,MUTED,false);
+    String status=q.learned?"습득 완료" : q.canLearn?"습득 가능":q.blockers.isEmpty()?"습득 불가":q.blockers.get(0);
+    if(q.learned){List<String> slots=new ArrayList<>();for(int i=0;i<8;i++)if(e.id.equals(book.slot(i)))slots.add(""+(i+1));if(!slots.isEmpty())status+=" · 슬롯 "+String.join(", ",slots);}
+    fitted(c,status,536,228,296,11,q.learned||q.canLearn?GREEN:RED,false);
+    tab(c,new RectF(536,238,678,262),"설명",detailPage==0);tab(c,new RectF(686,238,832,262),"습득 조건",detailPage==1);
+    if(detailPage==0){
+      List<String> lines=wrap(book.summary(e.id),296,12);c.save();c.clipRect(536,270,832,330);for(int i=0;i<Math.min(4,lines.size());i++)label(c,lines.get(i),536,283+i*15,12,TEXT,false);c.restore();
+      SkillDef d=e.runtime;boolean basic="SK_공통_001".equals(e.id);String resource=d==null?"—":""+d.mpCost;
+      String cd=d==null?"—":basic?"무기 기준":String.format(Locale.ROOT,"%.1f초",d.cooldown);
+      String value=d==null?"—":basic?"무기 기준":d.targetPolicy==SkillDef.TargetPolicy.SELF?""+(d.damage+q.current[2]):""+d.damage;
+      metric(c,536,"소모 MP",resource);metric(c,636,"재사용",cd);metric(c,736,d!=null&&d.targetPolicy==SkillDef.TargetPolicy.SELF?"회복량":"기본 위력",value);
+      if(d==null)label(c,"전투 효과 준비 중",536,391,10,RED,false);
+      else{String target=d.targetPolicy==SkillDef.TargetPolicy.SELF?"자신":d.range<=48?"근접한 적":"원거리 적";float remaining=a.cooldown(e.id);label(c,"대상  "+target,536,391,10,MUTED,false);if(remaining>0)right(c,String.format(Locale.ROOT,"%.1f초 후 사용 가능",remaining),832,391,10,GOLD);}
+    }else{
+      label(c,"요구 스탯 / 현재 스탯",536,280,10,MUTED,false);
+      for(int i=0;i<5;i++){float x=536+(i%3)*100,y=286+(i/3)*27;fill(c,x,y,x+96,y+23,0xff262b24);label(c,SkillAcquisition.STATS[i],x+6,y+16,10,MUTED,false);right(c,q.required[i]+" / "+q.current[i],x+90,y+16,11,q.current[i]>=q.required[i]?GREEN:RED);}
+      label(c,"습득 비용",536,352,11,TEXT,true);right(c,number(q.gold)+" G · 보유 "+number(q.ownedGold)+" G",832,352,11,q.ownedGold>=q.gold?GREEN:RED);
+      if(q.materials.isEmpty())label(c,"필요 아이템 없음",536,377,11,MUTED,false);
+      else{int line=0;for(SkillAcquisition.Material m:q.materials){fitted(c,m.name+" "+m.required+"개",536,371+line*17,180,11,TEXT,false);right(c,"보유 "+m.owned+"개",832,371+line*17,11,m.owned>=m.required?GREEN:RED);line++;}}
+    }
+  }
+  private void metric(Canvas c,float x,String name,String value){fill(c,x,338,x+96,378,0xff282c25);label(c,name,x+8,352,9,MUTED,false);label(c,value,x+8,371,13,TEXT,true);}
+  private void icon(Canvas c,SkillBook.Entry e,RectF r){fill(c,r.left,r.top,r.right,r.bottom,0xff24231d);if(!icons.draw(c,e.id,r)){outline(c,r,0xff595749,1);center(c,"—",r.centerX(),r.centerY()+5,15,MUTED);}}
   boolean touch(float x,float y,Actions a){
-    if(!open)return false;
-    if(x>=889&&x<=936&&y>=40&&y<=88){close();return true;}
-    if(!bounds.contains(x,y))return true;
-    if(y>=95&&y<=124){if(x>=312&&x<=621){magic=x>=470;reset();}else if(x>=638&&x<=918){learnedOnly=x>=781;reset();}return true;}
-    if(y>=132&&y<=155&&x>=312&&x<924){int i=(int)((x-312)/87);if(i<JOBS.length){job=JOBS[i];reset();}return true;}
-    if(x>=312&&x<624&&y>=164&&y<412){int col=(int)((x-312)/78),row=(int)((y-164)/62);if((x-312)%78<=72&&(y-164)%62<=57){List<SkillBook.Entry> list=rows();int i=page*16+row*4+col;if(i<list.size()){selectedId=list.get(i).id;detailPage=detailOffset=0;choosingSlot=false;}}return true;}
-    if(x>=648&&x<=910&&y>=249&&y<=274){detailPage=x>=778?1:0;detailOffset=0;return true;}
-    if(x>=638&&x<=918&&y>=279&&y<=408){if(y>=381){if(x>=827&&x<=861)detailOffset=Math.max(0,detailOffset-1);else if(x>=872&&x<=906)detailOffset++;}return true;}
-    if(y>=418&&y<=447){if(x>=312&&x<=351){page=Math.max(0,page-1);selectedId=null;}else if(x>=581&&x<=621){page=Math.min(page+1,Math.max(0,(rows().size()-1)/16));selectedId=null;}else if(x>=638&&x<=772){if(selected()!=null&&!book.learned(selectedId))a.learn(selected());}else if(x>=780&&x<=918){if(selected()!=null&&book.learned(selectedId))choosingSlot=!choosingSlot;else a.notice("먼저 기술을 습득하세요");}return true;}
-    if(y>=469&&y<=503&&x>=312&&x<920){int i=(int)((x-312)/76);if(i<8){if(choosingSlot&&selected()!=null){if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;a.save();choosingSlot=false;a.notice(book.slot(i)==null?"퀵슬롯 해제":"퀵슬롯 "+(i+1)+" 등록");}else{SkillBook.Entry e=book.get(book.slot(i));if(e!=null){selectedId=e.id;detailOffset=detailPage=0;}}}return true;}return true;
+    if(!open)return false;if(new RectF(824,28,872,72).contains(x,y)){close();return true;}if(!bounds.contains(x,y))return true;
+    if(y>=80&&y<=109){if(x>=112&&x<=498){magic=x>=306;reset();}else if(x>=520&&x<=848){learnedOnly=x>=685;reset();}return true;}
+    if(y>=118&&y<=143&&x>=112&&x<848){int i=(int)((x-112)/105);if(i<JOBS.length){job=JOBS[i];reset();}return true;}
+    for(int i=0;i<PAGE_SIZE;i++)if(cell(i).contains(x,y)){List<SkillBook.Entry> list=rows();int n=page*PAGE_SIZE+i;if(n<list.size()){selectedId=list.get(n).id;detailPage=detailOffset=0;choosingSlot=false;}return true;}
+    if(y>=238&&y<=262&&x>=536&&x<=832){detailPage=x>=686?1:0;return true;}
+    if(y>=410&&y<=440){if(x>=112&&x<=150){page=Math.max(0,page-1);selectedId=null;choosingSlot=false;}else if(x>=460&&x<=498){page=Math.min(page+1,Math.max(0,(rows().size()-1)/PAGE_SIZE));selectedId=null;choosingSlot=false;}else if(x>=520&&x<=677){if(selected()!=null&&!book.learned(selectedId))a.learn(selected());}else if(x>=685&&x<=848){if(selected()!=null&&book.learned(selectedId))choosingSlot=!choosingSlot;else a.notice("먼저 스킬을 습득하세요");}return true;}
+    for(int i=0;i<8;i++)if(bookSlot(i).contains(x,y)){
+      if(choosingSlot&&selected()!=null){org.json.JSONObject before=book.snapshot();if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;if(!a.save()){book.restore(before);a.notice("저장 실패 · 등록을 취소했습니다");return true;}choosingSlot=false;a.notice(book.slot(i)==null?"퀵슬롯 해제":"퀵슬롯 "+(i+1)+" 등록");}
+      else{SkillBook.Entry e=book.get(book.slot(i));if(e!=null){selectedId=e.id;detailPage=detailOffset=0;}}return true;
+    }
+    return true;
   }
-  void drawSlot(Canvas c,RectF r,int index,Actions a){SkillBook.Entry e=book.get(book.slot(index));if(e==null)return;RectF art=new RectF(r.left+4,r.top+3,r.right-4,r.bottom-11);if(!icons.draw(c,e.id,art))fitted(c,e.name,r.left+3,r.centerY()+3,r.width()-6,8,0xffefd1a1);else fitted(c,e.name,r.left+2,r.bottom-2,r.width()-4,7,0xffefd1a1);float cd=a.cooldown(e.id);if(cd>0){p.setColor(0xb9000000);c.drawRect(r,p);center(c,String.format(Locale.ROOT,"%.1f",cd),r.centerX(),r.centerY()+4,11,Color.WHITE);}}
-  private String description(SkillBook.Entry e,Actions a){
-    if("SK_공통_001".equals(e.id))return "장착 무기로 기본공격\n소모  MP 0\n공격 주기  장착 무기 기준\n기본공격 버튼과 재사용 시간을 공유합니다";
-    if(e.runtime==null)return clean(e.effect)+"\n대상  "+e.target+"\n쿨타임  확인 중\n전투 효과 준비 중";
-    SkillDef d=e.runtime;String effect=d.targetPolicy==SkillDef.TargetPolicy.SELF?"자신의 HP를 "+d.damage+" + WIS만큼 회복":(e.magic()?"단일 마법 공격":"단일 근접 공격")+" · 기본 피해 "+d.damage;
-    float remaining=a.cooldown(e.id);
-    return effect+"\n소모  MP "+d.mpCost+"\n쿨타임  "+String.format(Locale.ROOT,"%.1f초",d.cooldown)+(remaining>0?" · 남은 "+String.format(Locale.ROOT,"%.1f초",remaining):"")+"\n수치는 현재 게임의 시험값입니다";
-  }
-  private String clean(String text){if(text.contains("미확정")||text.contains("확인 필요"))return "효과 확인 중";return text.split("[;；]")[0].replace("자료상 ","").replace("자료 존재","");}
-  private void label(Canvas c,String s,float x,float y,float size,int color,boolean bold){p.setStyle(Paint.Style.FILL);p.setTextSize(size);p.setTypeface(bold?Typeface.DEFAULT_BOLD:Typeface.DEFAULT);p.setColor(color);c.drawText(s,x,y,p);}
+  void drawSlot(Canvas c,RectF r,int index,Actions a){SkillBook.Entry e=book.get(book.slot(index));if(e==null)return;icon(c,e,new RectF(r.left+4,r.top+3,r.right-4,r.bottom-11));fittedCenter(c,e.name,r.centerX(),r.bottom-2,r.width()-4,8,TEXT);float cd=a.cooldown(e.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb9000000);center(c,String.format(Locale.ROOT,"%.1f",cd),r.centerX(),r.centerY()+4,12,TEXT);}}
+  private static String number(long n){return String.format(Locale.ROOT,"%,d",n);}
+  private void fill(Canvas c,float l,float t,float r,float b,int color){p.setStyle(Paint.Style.FILL);p.setShader(null);p.setColor(color);c.drawRect(l,t,r,b,p);}
+  private void label(Canvas c,String s,float x,float y,float size,int color,boolean bold){p.setStyle(Paint.Style.FILL);p.setTextAlign(Paint.Align.LEFT);p.setTextSize(size);p.setTypeface(bold?Typeface.DEFAULT_BOLD:Typeface.DEFAULT);p.setColor(color);c.drawText(s,x,y,p);}
   private void center(Canvas c,String s,float x,float y,float size,int color){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);label(c,s,x-p.measureText(s)/2,y,size,color,false);}
-  private void fitted(Canvas c,String s,float x,float y,float width,float size,int color){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);if(p.measureText(s)>width){int n=p.breakText(s,true,width-p.measureText("…"),null);s=s.substring(0,Math.max(0,n))+"…";}label(c,s,x,y,size,color,false);}
+  private void right(Canvas c,String s,float x,float y,float size,int color){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);label(c,s,x-p.measureText(s),y,size,color,false);}
+  private void fitted(Canvas c,String s,float x,float y,float width,float size,int color,boolean bold){p.setTypeface(bold?Typeface.DEFAULT_BOLD:Typeface.DEFAULT);p.setTextSize(size);if(p.measureText(s)>width){int n=p.breakText(s,true,width-p.measureText("…"),null);s=s.substring(0,Math.max(0,n))+"…";}label(c,s,x,y,size,color,bold);}
+  private void fittedCenter(Canvas c,String s,float x,float y,float width,float size,int color){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);if(p.measureText(s)>width){int n=p.breakText(s,true,width-p.measureText("…"),null);s=s.substring(0,Math.max(0,n))+"…";}center(c,s,x,y,size,color);}
   private void gradient(Canvas c,float l,float t,float r,float b,int top,int bottom){p.setShader(new LinearGradient(l,t,l,b,top,bottom,Shader.TileMode.CLAMP));c.drawRect(l,t,r,b,p);p.setShader(null);}
-  private void outline(Canvas c,float l,float t,float r,float b,int color,float width){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(width);p.setColor(color);c.drawRect(l,t,r,b,p);p.setStyle(Paint.Style.FILL);}
-  private void rule(Canvas c,float l,float t,float r,float b,int color){p.setColor(color);p.setStrokeWidth(1);c.drawLine(l,t,r,b,p);}
-  private void panel(Canvas c,float l,float t,float r,float b,int fill,int edge){p.setColor(0xff0d0c0a);c.drawRect(l-4,t-4,r+4,b+4,p);p.setColor(fill);c.drawRect(l,t,r,b,p);outline(c,l,t,r,b,edge,2);outline(c,l+4,t+4,r-4,b-4,0xff4e3d27,1);for(float x:new float[]{l+5,r-5})for(float y:new float[]{t+5,b-5}){p.setColor(0xffb09461);c.drawCircle(x,y,1.5f,p);}}
-  private void tab(Canvas c,float l,float t,float r,float b,String s,boolean active){gradient(c,l,t,r,b,active?0xff79603a:0xff332b1e,active?0xff473821:0xff231e16);outline(c,l,t,r,b,active?0xffd2b17b:0xff645236,1);center(c,s,(l+r)/2,(t+b)/2+4,11,active?0xffffe3ad:0xffc0ad8d);if(active)rule(c,l+8,b-2,r-8,b-2,0xffe9ca87);}
-  private void button(Canvas c,float l,float t,float r,float b,String s,boolean active){gradient(c,l,t,r,b,active?0xff735832:0xff302a20,active?0xff42321e:0xff242018);outline(c,l,t,r,b,active?0xffc7a168:0xff63533c,1);center(c,s,(l+r)/2,(t+b)/2+4,12,active?0xffffe4af:0xffaa977a);}
+  private void outline(Canvas c,RectF r,int color,float width){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(width);p.setColor(color);c.drawRect(r,p);p.setStyle(Paint.Style.FILL);}
+  private void panel(Canvas c,RectF r,int fill,int edge){fill(c,r.left,r.top,r.right,r.bottom,fill);outline(c,r,edge,1);}
+  private void tab(Canvas c,RectF r,String s,boolean active){panel(c,r,active?0xff4b422e:0xff282822,active?0xffb99b62:0xff48483d);center(c,s,r.centerX(),r.centerY()+4,12,active?GOLD:MUTED);}
+  private void button(Canvas c,RectF r,String s,boolean active){panel(c,r,active?0xff62502f:0xff292a24,active?0xffc6a565:0xff4c4c40);center(c,s,r.centerX(),r.centerY()+4,12,active?0xfff3ddb3:0xff7f8170);}
+  private List<String> nameLines(String s,float width,float size){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);if(p.measureText(s)<=width)return Collections.singletonList(s);int split=(s.length()+1)/2;return Arrays.asList(s.substring(0,split),s.substring(split));}
   private List<String> wrap(String s,float width,float size){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);List<String> out=new ArrayList<>();for(String paragraph:s.split("\n",-1)){String rest=paragraph;do{int n=p.breakText(rest,true,width,null);if(n==0&&!rest.isEmpty())n=1;out.add(rest.substring(0,n));rest=rest.substring(n);}while(!rest.isEmpty());}return out;}
 }

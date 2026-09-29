@@ -168,9 +168,16 @@ public final class GameView extends View {
   private boolean isSkillLearned(String id){return skillBook!=null&&skillBook.usable(id);}
   private final SkillWindow.Actions skillActions=new SkillWindow.Actions(){
     public void use(SkillBook.Entry e){useBookSkill(e);}
-    public boolean canLearn(SkillBook.Entry e){return new SkillAcquisition(skillBook).blockers(e,state.rpg()).isEmpty();}
-    public void learn(SkillBook.Entry e){SkillAcquisition service=new SkillAcquisition(skillBook);if(service.learn(e.id,state.rpg())){checkpoint();showFeedback(e.name+" 습득",FeedbackTone.INFO);}else showFeedback(String.join(" · ",service.blockers(e,state.rpg())),FeedbackTone.WARN);}
-    public void save(){checkpoint();}
+    public boolean canLearn(SkillBook.Entry e){return F5mSaveStore.writable()&&quote(e).canLearn;}
+    public SkillAcquisition.Quote quote(SkillBook.Entry e){return new SkillAcquisition(skillBook).quote(e,state.rpg());}
+    public long gold(){return state.rpg().gold();}
+    public void learn(SkillBook.Entry e){
+      if(!F5mSaveStore.writable()){showFeedback("저장 데이터를 확인할 수 없어 습득할 수 없습니다",FeedbackTone.WARN);return;}
+      SkillAcquisition service=new SkillAcquisition(skillBook);
+      if(service.learn(e.id,state.rpg(),()->F5mSaveStore.checkpointActive()))showFeedback(e.name+" 습득 완료",FeedbackTone.INFO);
+      else{SkillAcquisition.Quote q=service.quote(e,state.rpg());showFeedback(q.learned?"이미 습득한 스킬입니다":q.blockers.isEmpty()?"저장 실패 · 습득 비용을 돌려드렸습니다":String.join(" · ",q.blockers),FeedbackTone.WARN);}
+    }
+    public boolean save(){return F5mSaveStore.writable()&&F5mSaveStore.checkpointActive();}
     public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,"SK_공통_001".equals(id)?RuntimeCombatSession.playerAttackActionId(equipmentActions.resolveBasicAttack(state.rpg()).animationAction):id);}
     public String requirements(SkillBook.Entry e){return new SkillAcquisition(skillBook).description(e,state.rpg());}
     public void notice(String text){showFeedback(text,FeedbackTone.INFO);}

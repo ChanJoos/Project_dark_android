@@ -248,6 +248,17 @@ public final class RpgProgressionState {
     if(added!=AutoLootResult.LOOTED)return false;
     gold-=price;return true;
   }
+  /** Atomic project skill-acquisition payment: validate every cost before mutating any balance. */
+  public boolean paySkillLearningCost(long price,Map<String,Integer> materials){
+    if(price<0||gold<price||materials==null)return false;
+    for(Map.Entry<String,Integer> e:materials.entrySet()){
+      ItemDefinition d=items.get(e.getKey());Integer n=e.getValue();
+      if(d==null||d.equippable()||n==null||n<=0||value(inventory,e.getKey())<n)return false;
+    }
+    gold-=price;
+    for(Map.Entry<String,Integer> e:materials.entrySet()){int left=value(inventory,e.getKey())-e.getValue();if(left==0)inventory.remove(e.getKey());else inventory.put(e.getKey(),left);}
+    return true;
+  }
   public int grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;return normalizeCanonicalLevel();}
 
   /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */

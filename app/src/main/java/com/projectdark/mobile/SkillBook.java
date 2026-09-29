@@ -29,6 +29,9 @@ public final class SkillBook {
   private final LinkedHashMap<String,Entry> entries=new LinkedHashMap<>();
   private final LinkedHashMap<String,Integer> learned=new LinkedHashMap<>();
   private final Map<String,String> captureConditions=new LinkedHashMap<>();
+  private JSONObject learningPolicy;
+  JSONObject learningPolicy(String id){return learningPolicy==null?null:learningPolicy.optJSONObject(id);}
+  public String summary(String id){JSONObject row=learningPolicy(id);return row==null?"":row.optString("summary");}
   public String captureConditions(String id){String v=captureConditions.get(id);return v==null?get(id).legacy:v;}
   private final String[] slots=new String[SLOT_COUNT];
   public static SkillBook load(Context context){
@@ -40,6 +43,11 @@ public final class SkillBook {
       try(InputStream captures=context.getAssets().open("skills/acquisition_captures.json")){
         ByteArrayOutputStream raw=new ByteArrayOutputStream();while((n=captures.read(buffer))!=-1)raw.write(buffer,0,n);
         JSONObject data=new JSONObject(new String(raw.toByteArray(),StandardCharsets.UTF_8));Iterator<String> ids=data.keys();while(ids.hasNext()){String id=ids.next();if(!book.entries.containsKey(id))throw new IllegalStateException("unknown capture skill");book.captureConditions.put(id,data.getJSONObject(id).getString("conditions"));}
+      }
+      try(InputStream policy=context.getAssets().open("skills/mobile_learning.json")){
+        ByteArrayOutputStream raw=new ByteArrayOutputStream();while((n=policy.read(buffer))!=-1)raw.write(buffer,0,n);
+        book.learningPolicy=new JSONObject(new String(raw.toByteArray(),StandardCharsets.UTF_8));
+        for(String id:book.entries.keySet())if(book.learningPolicy.optJSONObject(id)==null)throw new IllegalStateException("missing mobile learning policy: "+id);
       }
       for(SkillDef d:new SkillDef[]{SkillDef.SKILL_PROTO,SkillDef.KICK_PROTO,SkillDef.CAST_PROTO}){
         JSONObject j=new JSONObject().put("id",d.id).put("name",d==SkillDef.CAST_PROTO?"시험 마법":d==SkillDef.KICK_PROTO?"시험 발차기":"시험 기술")
