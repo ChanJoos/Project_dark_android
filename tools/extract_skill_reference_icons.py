@@ -15,6 +15,14 @@ specs=[
 ('07-Screenshot_20260929_233811_NAVER.jpg','성직자','쿠로토 쿠로 디렌토 아지토 벨라르모 쿠라노 디바르도 쿠러스 디베노모 에나르마 베누스티 쿠라노소 디나르콜리 디데프레카 쿠라누스 홀리볼트 일루메나 쿠랄툼 실드 콜라마 수페라벨라르모 로카메아 리치멘스 수페라쿠라노'.split()),
 ('08-Screenshot_20260929_233847_NAVER.jpg','도적','자물쇠열기 센스몬스터 표창날리기'.split()),
 ('09-Screenshot_20260929_233801_NAVER.jpg','마법사','마레노 아지토 렌토 쿠로토 테라미코 아듀로 플라모 콘푸지오 수페라마레나 수페라테라미카 수페라아듀라 수페라플라미카 베노미 바르도 마레누스 테라미쿠스 아듀로스 플라무스 나르콜리 엑스마레나 엑스테라미카 엑스아듀라 엑스플라미카 로카테오'.split())]
+specs += [
+('10-Screenshot_20260929_233754_NAVER-1-.jpg','무도가','쿠로토 일루메나 디베노모 경신공 흡정신공 쿠랄툼 철포삼 장풍 쿠라노토 금강불괴 구양신공 다라밀공'.split()),
+('11-Screenshot_20260929_233743_NAVER.jpg',['전사']+['도적']*5,'쿠로토 쿠로토 수페라동엑스투 라이트닝무브 하이드 센스'.split()),
+('12-Screenshot_20260930_052204_NAVER.jpg','무도가','단각 이형환위 양의신권 통배권'.split()),
+('13-Screenshot_20260930_052212_NAVER.jpg','무도가','붕각 백보신권 일음지 선풍각 발경 소수신공 달마신공 반탄신공'.split())]
+specs += [
+('14-Screenshot_20260930_052143_NAVER.jpg',['공통']*4+['전사']*13,'기본공격 문열기 유즈스태프 아이템고치기 레스큐 더블어택 윈드블레이드 디바투 트리플어택 메가블레이드 바투 투핸드어택 드래곤모드 적무기쳐내기 완전방어 매드소울 크래셔'.split()),
+('15-Screenshot_20260929_235907_NAVER.jpg','마법사','딜루메니 클리멘스 데프레코 마레네라 테라미에라 아듀레나 플라메라 소루마 마네네로 테라미칼로 아듀랄로 플라미칼로 세멜리아 아마게돈 숨마스텔라 라그나로크 헬포라 프라보 데스'.split())]
 icons=[];audit=[];seen=set()
 for filename,job,names in specs:
  p=sources/filename;im=Image.open(p).convert('RGB');a=np.array(im);h,w=a.shape[:2]
@@ -25,9 +33,13 @@ for filename,job,names in specs:
   xs=np.where(mask[g[0]:g[-1]+1].sum(0)>len(g)*.5)[0]
   if len(xs)>5:boxes.append([int(xs[0]),int(g[0]),int(xs[-1])+1,int(g[-1])+1])
  if filename.startswith('06-'):boxes[4:6]=[[100,943,256,1111]]
+ if filename.startswith('12-'):boxes[1:3]=[[323,401,461,547]]
+ if filename.startswith('15-'):
+  boxes.insert(0,[43,28,82,68]);boxes.insert(4,[43,226,82,265])
  assert len(names)==len(boxes),(filename,len(names),len(boxes))
- for name,box in zip(names,boxes):
-  ident=records.get((job,name));row=dict(source=filename,source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),job=job,source_name=name,crop=box,skill_id=ident)
+ for row_index,(name,box) in enumerate(zip(names,boxes)):
+  row_job=job[row_index] if isinstance(job,list) else job
+  ident=records.get((row_job,name));row=dict(source=filename,source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),job=row_job,source_name=name,crop=box,skill_id=ident)
   if not ident:row['status']='UNMAPPED_EXACT_NAME_ONLY'
   elif ident in seen:row['status']='DUPLICATE_NOT_REGISTERED'
   else:

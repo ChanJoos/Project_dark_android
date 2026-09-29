@@ -100,7 +100,7 @@ public final class GameView extends View {
     if(inReagentShop){updateReagentShop(dt);return;}
     if(inPoteField){updatePoteField(dt);return;}
     feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);
-    combat.tick(dt);if(autoAttackEnabled&&combat.target()==null&&isMonsterApproach(moveTarget.snapshot()))worldAdapter.cancel();combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);combatSession.tick(dt);state.tick(dt);state.applyDerivedGrowth();quest2.unlockIfPrologueCompleted(f5mQuest);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
+    combat.tick(dt);if(autoAttackEnabled&&combat.target()==null&&isMonsterApproach(moveTarget.snapshot()))worldAdapter.cancel();combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();quest2.unlockIfPrologueCompleted(f5mQuest);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){autoAttackEnabled=false;action=Action.IDLE;playerFacing.endAttack();interaction.cancel();combat.clearTarget();combat.cancelApproach();activeWorld().cancelForAction();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
     WorldRuntimeAdapter.FrameSnapshot navigation=worldAdapter.tickNavigation(dt);
@@ -161,28 +161,38 @@ public final class GameView extends View {
   private void showFeedback(String s){showFeedback(s,FeedbackTone.INFO);}private void showFeedback(String s,FeedbackTone tone){feedback=s;feedbackTone=tone;feedbackClock=1.15f;}private void showReward(String s){rewardBanner=s;rewardClock=2.4f;}
   private boolean requireTarget(){if(combat.hasUsableTarget())return true;showFeedback("먼저 몬스터를 선택하세요",FeedbackTone.WARN);return false;}
   private boolean inRange(float range){return combat.inRange(state,range);}
+  private void tickSkillCombat(float dt){
+    RuntimeCombatSession.FrameResult result=combatSession.tick(dt);
+    for(CombatResolver.Event e:result.events)if(e.type==CombatResolver.EventType.EFFECT_APPLIED&&RuntimeCombatSession.PLAYER_ID.equals(e.actorId))skillBook.practiced(e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId);
+  }
   private boolean isSkillLearned(String id){return skillBook!=null&&skillBook.usable(id);}
   private final SkillWindow.Actions skillActions=new SkillWindow.Actions(){
     public void use(SkillBook.Entry e){useBookSkill(e);}
+    public boolean canLearn(SkillBook.Entry e){return new SkillAcquisition(skillBook).blockers(e,state.rpg()).isEmpty();}
+    public void learn(SkillBook.Entry e){SkillAcquisition service=new SkillAcquisition(skillBook);if(service.learn(e.id,state.rpg())){checkpoint();showFeedback(e.name+" 습득",FeedbackTone.INFO);}else showFeedback(String.join(" · ",service.blockers(e,state.rpg())),FeedbackTone.WARN);}
     public void save(){checkpoint();}
-    public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,id);}
-    public String requirements(SkillBook.Entry e){return e.requirementsFor(state.rpg());}
+    public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,"SK_공통_001".equals(id)?RuntimeCombatSession.playerAttackActionId(equipmentActions.resolveBasicAttack(state.rpg()).animationAction):id);}
+    public String requirements(SkillBook.Entry e){return new SkillAcquisition(skillBook).description(e,state.rpg());}
     public void notice(String text){showFeedback(text,FeedbackTone.INFO);}
   };
   private void drawSkills(Canvas c){if(!skillWindow.open)return;skillWindow.draw(c,skillActions);}
   private void useBookSkill(SkillBook.Entry entry){
-    if(!skillBook.usable(entry.id)){showFeedback("미습득 또는 구현 예정 스킬입니다",FeedbackTone.WARN);return;}
+    if(!skillBook.usable(entry.id)){showFeedback(skillBook.learned(entry.id)?"이 기술의 전투 효과는 준비 중입니다":"먼저 기술을 습득하세요",FeedbackTone.WARN);return;}
     autoAttackEnabled=false;
-    submitLearnedAction(entry.runtime,entry.magic()?Action.CAST:entry.runtime==SkillDef.KICK_PROTO?Action.KICK:Action.SKILL);
+    if("SK_공통_001".equals(entry.id)){float remaining=skillActions.cooldown(entry.id);if(remaining>0)showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",remaining),FeedbackTone.WARN);else attack();return;}
+    submitLearnedAction(entry.runtime,entry.magic()?Action.CAST:entry.runtime.effectType==SkillDef.EffectType.KICK_ARC?Action.KICK:Action.SKILL);
   }
   private void cast(){submitLearnedAction(SkillDef.CAST_PROTO,Action.CAST);}
   private void skill(){submitLearnedAction(SkillDef.SKILL_PROTO,Action.SKILL);}
   private void kick(){submitLearnedAction(SkillDef.KICK_PROTO,Action.KICK);}
   private void submitLearnedAction(SkillDef def,Action visual){
-    if(isActing()||!state.player().alive||!requireTarget())return;
-    CombatActionOrchestrator.Submission result=combatSession.submitPlayer(combat.target().id,def.id);
-    if(result.accepted()){snapshotAttackFacingTarget();trigger(visual);}
-    else showFeedback(result.rejectReason==CombatResolver.RejectReason.NOT_LEARNED?"아직 배우지 않은 기술입니다":result.rejectReason==CombatResolver.RejectReason.RESOURCE?"MP가 부족합니다":"지금 사용할 수 없습니다",FeedbackTone.WARN);
+    float cd=combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,def.id);
+    if(cd>0){showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",cd),FeedbackTone.WARN);return;}
+    if(isActing()||!state.player().alive)return;
+    boolean self=def.targetPolicy==SkillDef.TargetPolicy.SELF;if(!self&&!requireTarget())return;
+    CombatActionOrchestrator.Submission result=combatSession.submitPlayer(self?RuntimeCombatSession.PLAYER_ID:combat.target().id,def.id);
+    if(result.accepted()){if(!self)snapshotAttackFacingTarget();trigger(visual);}
+    else showFeedback(result.rejectReason==CombatResolver.RejectReason.NOT_LEARNED?"아직 배우지 않은 기술입니다":result.rejectReason==CombatResolver.RejectReason.RESOURCE?"MP가 부족합니다":result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":result.rejectReason==CombatResolver.RejectReason.RANGE?"대상이 사거리 밖에 있습니다":"지금 사용할 수 없습니다",FeedbackTone.WARN);
   }
   private Action actionFor(AttackDef.Kind k){switch(k){case THRUST:return Action.THRUST;case THROW:return Action.THROW;case PUNCH:return Action.PUNCH;default:return Action.SWING;}}
   private void tickAutoAttack(WorldMoveTargetController.Snapshot navigation){
@@ -236,7 +246,7 @@ public final class GameView extends View {
   }
   private void updatePoteField(float dt){
     feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);
-    combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);combatSession.tick(dt);state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
+    combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){autoAttackEnabled=false;action=Action.IDLE;playerFacing.endAttack();combat.clearTarget();combat.cancelApproach();poteFieldAdapter.cancelForAction();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
     WorldRuntimeAdapter.FrameSnapshot navigation=poteFieldAdapter.tickNavigation(dt);
@@ -638,4 +648,3 @@ public final class GameView extends View {
   private static boolean circleHit(float x,float y,float cx,float cy,float r){float dx=x-cx,dy=y-cy;return dx*dx+dy*dy<=r*r;}
   private float dist(float a,float b,float c,float d){float x=a-c,y=b-d;return(float)Math.sqrt(x*x+y*y);}
 }
-

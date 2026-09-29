@@ -28,13 +28,19 @@ public final class SkillBook {
   }
   private final LinkedHashMap<String,Entry> entries=new LinkedHashMap<>();
   private final LinkedHashMap<String,Integer> learned=new LinkedHashMap<>();
+  private final Map<String,String> captureConditions=new LinkedHashMap<>();
+  public String captureConditions(String id){String v=captureConditions.get(id);return v==null?get(id).legacy:v;}
   private final String[] slots=new String[SLOT_COUNT];
   public static SkillBook load(Context context){
     SkillBook book=new SkillBook();
     try(InputStream in=context.getAssets().open("skills/catalog.json")){
       ByteArrayOutputStream bytes=new ByteArrayOutputStream();byte[] buffer=new byte[4096];int n;while((n=in.read(buffer))!=-1)bytes.write(buffer,0,n);
       JSONArray list=new JSONArray(new String(bytes.toByteArray(),StandardCharsets.UTF_8));
-      for(int i=0;i<list.length();i++){Entry e=new Entry(list.getJSONObject(i),null);if(e.id.isEmpty()||book.entries.put(e.id,e)!=null)throw new IllegalStateException("duplicate skill ID");}
+      for(int i=0;i<list.length();i++){JSONObject j=list.getJSONObject(i);Entry e=new Entry(j,SkillRuntimeCatalog.get(j.optString("id")));if(e.id.isEmpty()||book.entries.put(e.id,e)!=null)throw new IllegalStateException("duplicate skill ID");}
+      try(InputStream captures=context.getAssets().open("skills/acquisition_captures.json")){
+        ByteArrayOutputStream raw=new ByteArrayOutputStream();while((n=captures.read(buffer))!=-1)raw.write(buffer,0,n);
+        JSONObject data=new JSONObject(new String(raw.toByteArray(),StandardCharsets.UTF_8));Iterator<String> ids=data.keys();while(ids.hasNext()){String id=ids.next();if(!book.entries.containsKey(id))throw new IllegalStateException("unknown capture skill");book.captureConditions.put(id,data.getJSONObject(id).getString("conditions"));}
+      }
       for(SkillDef d:new SkillDef[]{SkillDef.SKILL_PROTO,SkillDef.KICK_PROTO,SkillDef.CAST_PROTO}){
         JSONObject j=new JSONObject().put("id",d.id).put("name",d==SkillDef.CAST_PROTO?"시험 마법":d==SkillDef.KICK_PROTO?"시험 발차기":"시험 기술")
           .put("job","검증용").put("kind",d.actionClass==SkillDef.ActionClass.MAGIC?"마법":"기술").put("stage","B 테스트")
@@ -46,14 +52,16 @@ public final class SkillBook {
   }
   public Entry get(String id){return entries.get(id);}
   public Collection<Entry> entries(){return Collections.unmodifiableCollection(entries.values());}
-  public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(e.magic()==magic&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
+  public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(e.magic()==magic&&(!"검증용".equals(e.job)||learned(e.id))&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
   public boolean learned(String id){return learned.containsKey(id);}
   public int proficiency(String id){Integer v=learned.get(id);return v==null?0:v;}
   /** Called by a validated acquisition service. UI cannot grant skills. */
   public boolean learn(String id,int proficiency){if(!entries.containsKey(id)||proficiency<0||proficiency>100)return false;learned.put(id,proficiency);return true;}
   public boolean usable(String id){Entry e=get(id);return e!=null&&e.runtime!=null&&learned(id);}
   public String slot(int index){return index>=0&&index<SLOT_COUNT?slots[index]:null;}
-  public boolean assign(int index,String id){if(index<0||index>=SLOT_COUNT||!usable(id))return false;slots[index]=id;return true;}
+  public boolean assign(int index,String id){if(index<0||index>=SLOT_COUNT||!learned(id))return false;slots[index]=id;return true;}
+  /** Adapted progression: each resolved action advances proficiency once, capped at 100. */
+  public void practiced(String id){if(learned(id))learned.put(id,Math.min(100,proficiency(id)+1));}
   public void clearSlot(int index){if(index>=0&&index<SLOT_COUNT)slots[index]=null;}
   public JSONObject snapshot(){try{JSONArray s=new JSONArray();for(String id:slots)s.put(id==null?JSONObject.NULL:id);return new JSONObject().put("version",1).put("learned",new JSONObject(learned)).put("slots",s);}catch(JSONException e){throw new IllegalStateException(e);}}
   /** Transactional validation: malformed/newer snapshots preserve the original save. */
@@ -63,7 +71,7 @@ public final class SkillBook {
       JSONObject l=j.getJSONObject("learned");Map<String,Integer> next=new LinkedHashMap<>();
       Iterator<String> it=l.keys();while(it.hasNext()){String id=it.next();Object v=l.get(id);if(get(id)==null||!(v instanceof Integer)||((Integer)v)<0||((Integer)v)>100)return false;next.put(id,(Integer)v);}
       JSONArray s=j.getJSONArray("slots");if(s.length()!=SLOT_COUNT)return false;String[] nextSlots=new String[SLOT_COUNT];
-      for(int i=0;i<SLOT_COUNT;i++){if(s.isNull(i))continue;Object v=s.get(i);if(!(v instanceof String))return false;String id=(String)v;Entry e=get(id);if(e==null||e.runtime==null||!next.containsKey(id))return false;nextSlots[i]=id;}
+      for(int i=0;i<SLOT_COUNT;i++){if(s.isNull(i))continue;Object v=s.get(i);if(!(v instanceof String))return false;String id=(String)v;Entry e=get(id);if(e==null||!next.containsKey(id))return false;nextSlots[i]=id;}
       learned.clear();learned.putAll(next);System.arraycopy(nextSlots,0,slots,0,SLOT_COUNT);return true;
     }catch(JSONException e){return false;}
   }

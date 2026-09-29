@@ -1,0 +1,184 @@
+{
+  "SK_무도가_002": {
+    "conditions": "STR 7 · INT 3 · WIS 3 · CON 4 · DEX 3",
+    "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+    "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+    "icon_crop": [
+      323,
+      215,
+      461,
+      358
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_003": {
+    "conditions": "STR 11 · INT 3 · WIS 3 · CON 8 · DEX 3",
+    "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+    "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+    "icon_crop": [
+      323,
+      401,
+      461,
+      547
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_005": {
+    "conditions": "STR 20 · INT 3 · WIS 3 · CON 17 · DEX 3",
+    "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+    "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+    "icon_crop": [
+      324,
+      592,
+      459,
+      724
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_006": {
+    "conditions": "STR 16 · INT 3 · WIS 3 · CON 14 · DEX 3",
+    "source": "12-Screenshot_20260930_052204_NAVER.jpg",
+    "source_sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+    "icon_crop": [
+      323,
+      760,
+      461,
+      896
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_007": {
+    "conditions": "STR 23 · INT 3 · WIS 3 · CON 19 · DEX 3 · Prerequisite_Skill 단각 · Required_Prerequisite_Level 60",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      340,
+      118,
+      480,
+      263
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_009": {
+    "conditions": "STR 25 · INT 3 · WIS 3 · CON 22 · DEX 3 · Prerequisite_Skill 단각;통배권 · Required_Prerequisite_Level 75;45",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      342,
+      293,
+      478,
+      428
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_010": {
+    "conditions": "STR 27 · INT 3 · WIS 3 · CON 24 · DEX 3 · Prerequisite_Skill 통배권 · Required_Prerequisite_Level 60",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      340,
+      492,
+      480,
+      629
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_014": {
+    "conditions": "STR 39 · INT 3 · WIS 3 · CON 28 · DEX 3 · Prerequisite_Skill 붕각 · Required_Prerequisite_Level 75",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      340,
+      672,
+      480,
+      818
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_018": {
+    "conditions": "STR 47 · INT 3 · WIS 3 · CON 32 · DEX 3 · Prerequisite_Skill 통배권 · Required_Prerequisite_Level 100",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      340,
+      859,
+      480,
+      997
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_019": {
+    "conditions": "STR 50 · INT 3 · WIS 3 · CON 34 · DEX 3 · Prerequisite_Skill 백보신권 · Required_Prerequisite_Level 75",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      342,
+      1055,
+      478,
+      1196
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_023": {
+    "conditions": "STR 53 · INT 3 · WIS 3 · CON 35 · DEX 3 · Prerequisite_Skill 선풍각;발경 · Required_Prerequisite_Level 90;75",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      340,
+      1226,
+      480,
+      1371
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_무도가_022": {
+    "conditions": "STR 48 · INT 3 · WIS 3 · CON 39 · DEX 3 · Prerequisite_Skill 선풍각;발경 · Required_Prerequisite_Level 75;90",
+    "source": "13-Screenshot_20260930_052212_NAVER.jpg",
+    "source_sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+    "icon_crop": [
+      340,
+      1412,
+      480,
+      1551
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_전사_009": {
+    "conditions": "STR 71 · INT 3 · WIS 3 · CON 67 · DEX 3 · Prerequisite_Skill 트리플어택;메가블레이드 · Required_Prerequisite_Level 90;90",
+    "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+    "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+    "icon_crop": [
+      82,
+      724,
+      116,
+      756
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved capture; both prerequisite levels visibly 90"
+  },
+  "SK_공통_014": {
+    "conditions": "STR 3 · INT 6 · WIS 3 · CON 3 · DEX 3",
+    "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+    "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+    "icon_crop": [
+      81,
+      167,
+      116,
+      202
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "Latest capture corrects the earlier transposed INT/WIS transcription"
+  }
+}

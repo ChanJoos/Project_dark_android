@@ -1,8 +1,13 @@
 # PROJECT DARK 현재 상태
 
+## 최신 작업 기준 — v0.59
+
+통합 PR #170의 runtime source는 `30cb18baa2268c60067bd3f6d33e921b935154f8`; 정확한 CI/APK 및 검증 범위는 아래 SKILL-WINDOW-03 기록을 따른다. 이후 섹션의 오래된 main SHA는 해당 날짜의 감사 이력이며 현재 main으로 해석하지 않는다.
+
+
 > 확인된 기준과 미완료 작업만 적습니다. 시작할 때 최신 `main`과 활성 작업 브랜치를 다시 조회합니다.
 
-## 저장소와 코드 기준
+## 저장소와 코드 기준 (이전 감사 기록)
 
 - 저장소: [ChanJoos/Project_dark_android](https://github.com/ChanJoos/Project_dark_android)
 - 이번 검토의 main 코드/에셋 기준: [`0506929143996c31e38ea07918bea83377ff50a3`](https://github.com/ChanJoos/Project_dark_android/commit/0506929143996c31e38ea07918bea83377ff50a3). 이후 main의 `2eca004`, `edf6a62`는 인수인계 문서 변경입니다.
@@ -219,3 +224,16 @@ Verification pending: exact-SHA Actions, direct fourth-utility reachability, sou
 - Passed all configured CI checks, including direct utility reachability, exact source icon loading, job selection, explicit detail tabs, learned/empty state, shared Resolver quick-slot use/repeated-input gates, world tick behind modal, checkpoint restore, malformed-save protection and legacy migration; assembleDebug passed.
 - Render artifact `11060203281`: inspected overview, rogue, cleric and empty-state renders. Final source removes repeated missing-art placeholders, renders missing-art entries as name/job cards, uses a full-width missing-icon detail title, and removes dummy grids under empty-state text. No text/panel overlaps observed in inspected 960x540 native renders. Physical Android device interaction and user visual acceptance remain PENDING.
 - Status: IMPLEMENTED / BUILD_VERIFIED / NATIVE_RENDER_REVIEWED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING. Previous PR #168 remains visually rejected by the user; do not erase that report. This repairs the window presentation only; original acquisition NPC/service and combat effects remain unimplemented, and most original icons still require source material. No original skills are silently granted to commoners.
+
+## 2026-09-30 — SKILL-WINDOW-03 습득·퀵슬롯·쿨타임
+
+- 사용자 검수: v58에서 습득 경로/원작 효과/퀵슬롯 연결이 빠졌고 설명 본문을 누르면 바뀐다는 지적. 전달된 v58 검수의 기능 미수락으로 기록한다. 실제 설치된 APK SHA는 독립 확인하지 않았으므로 기기 원인/판정 범위를 추정하지 않는다. 소스 감사에서는 Master 219행의 runtime=null, 습득 호출 부재, runtime 있는 B fixture만 등록 허용, 본문 탭의 detailOffset 증가를 확인했다.
+- 사용자 선택 **스크린샷 조건 적용**에 따라 직업·능력치·선행 숙련도를 확인하는 SkillAcquisition을 연결했다. 새 캡처 무도가 조건 12행, 전사 드래곤모드의 두 선행 90/90, 공통 유즈스태프 INT6/WIS3 전사 오류를 source hash와 함께 별도 acquisition_captures.json에 보존했다. Master의 219행/원본 출처는 그대로 유지한다. 조건 미확정/승급/5서클 재료·이벤트는 차단한다.
+- 11개 사용자 캡처에서 정확히 매칭한 아이콘 135개 (이전 75개). 10개 캡처 행은 명칭 불일치로 미등록이며 유사 아이콘을 빌리지 않는다. 모든 원본 hash와 crop bounds를 검사했다.
+- 실제 흐름: 공통 필터→스킬 선택→습득→8개 퀵슬롯 등록/동일 항목 해제→전투 HUD 사용→체크포인트/복원. 창 안 슬롯 선택은 설명 선택만 한다. 등록할 때 스킬이 실행되지 않는다. 설명 본문 tap으로 페이지/내용이 바뀌지 않는다; 명시적 효과/조건 탭 및 bounded up/down 버튼만 반응한다.
+- starting COMMONER의 기본공격은 캡처 3/3/3/3/3 조건으로 직접 습득 가능하며, 슬롯에서 기존 장착 무기 기본공격 경로를 호출한다. 기존 공격 버튼과 action-ID 쿨타임을 공유해 별도 피해/재사용 우회를 만들지 않는다. 실제 utility/common-filter/cell/learn/register/HUD touch 경로를 automated test로 검증했다.
+- 29개 단일 공격/자기회복 액션을 real ID 아래 명시적인 B/ADAPTED 시험 수치로 shared Resolver에 연결했다. 기술 MP0, 마법 MP차감, 자기회복/maxHP cap, 액션 ID별 쿨타임, 중복 슬롯 재사용 차단/만료, 거부 입력 MP 무차감. 성공한 플레이어 액션마다 숙련 1 증가/100 cap은 ADAPTED. 원작 속성/특수/광역/그룹/은신/승급 효과와 모든 219개 효과를 구현했다고 하지 않는다.
+- Runtime source **30cb18baa2268c60067bd3f6d33e921b935154f8**, based on main **7329840e7f0458cd315409f2e43b0a8bec375a27**. PR [#170](https://github.com/ChanJoos/Project_dark_android/pull/170). Actions [36631412453](https://github.com/ChanJoos/Project_dark_android/actions/runs/36631412453) SUCCESS; job 109621294136; checkout is PR merge **8f8491fb1e5387dd3f4484849f42861df90601a2**. All configured checks and assembleDebug passed.
+- v0.59 / versionCode59, APK artifact **11061669352**, render artifact **11061664240**. Build completed **2026-09-30 06:11:53 KST**. APK 13,057,259 bytes, SHA-256 **4e47fc87e67321598dfe1b253f1b57b2597b0382fb765dbf78d23c9af5391bac**. Packaged atlas/icon/acquisition bytes exactly match authored files; packaged catalog Git blob **0e3a04beaa7bbda6f51e9de23eb5a81663210547** matches current Master projection, 219 rows; 135 icon mappings.
+- Native 960x540 commoner-learned and cooldown frames inspected: seven filters/common route, learned/register controls, icon rail, visible total/remaining timer, no text/panel overlaps observed. This is automated native rendering, not physical-device acceptance. Martial-artist/class acquisition tests inject job state; a fresh normal save cannot yet enter those jobs because the profession route is incomplete.
+- Status: **IMPLEMENTED / BUILD_VERIFIED / AUTOMATED_INPUT_VERIFIED / NATIVE_RENDER_REVIEWED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. Remaining: real profession route; missing material/event/circle conditions and source-name resolutions; unsupported effects and original balance; persisted offline cooldown policy; physical-device/UI acceptance. Do not label this APK as the completed original-skills game.

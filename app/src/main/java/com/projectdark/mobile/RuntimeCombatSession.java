@@ -127,6 +127,14 @@ public final class RuntimeCombatSession {
     List<CombatResolver.Definition> out=new ArrayList<>();
     for(int i=0;i<AttackDef.PROTOTYPES.length;i++)out.add(CombatResolver.attackPrototype(AttackDef.at(i),i));
     out.add(CombatResolver.magicPrototype()); out.add(CombatResolver.skillPrototype()); out.add(CombatResolver.kickPrototype());
+    for(SkillDef d:SkillRuntimeCatalog.definitions()){
+      if("SK_공통_001".equals(d.id))continue;
+      boolean magic=d.actionClass==SkillDef.ActionClass.MAGIC,kick=d.effectType==SkillDef.EffectType.KICK_ARC;
+      out.add(new CombatResolver.Definition(d.id,magic?CombatResolver.ActionKind.MAGIC:kick?CombatResolver.ActionKind.KICK:CombatResolver.ActionKind.SKILL,
+          magic?CombatResolver.ActionState.MAGIC:kick?CombatResolver.ActionState.KICK:CombatResolver.ActionState.SKILL,
+          magic?CombatResolver.EffectType.MAGIC_HIT:kick?CombatResolver.EffectType.KICK_HIT:CombatResolver.EffectType.SKILL_HIT,
+          true,d.mpCost,d.cooldown,d.range,magic?.24f:.14f,d.damage));
+    }
     out.add(new CombatResolver.Definition(MONSTER_BASIC_ACTION_ID,CombatResolver.ActionKind.ATTACK,CombatResolver.ActionState.ATTACK,
         CombatResolver.EffectType.PHYSICAL_HIT,false,0,MonsterAIController.ATTACK_COOLDOWN_B,48f,.24f,MonsterAIController.ATTACK_DAMAGE_B));
     Map<String,CombatResolver.Definition> unique=new LinkedHashMap<>();
