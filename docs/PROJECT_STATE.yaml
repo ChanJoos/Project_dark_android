@@ -146,6 +146,19 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  SKILL-WINDOW-02:
+    owner: Director/Visual
+    status: BUILD_VERIFIED
+    source_branch: codex/skill-window-source-art-20260930
+    runtime_source_sha: 9fb4e3d77f144ef30a4fd342e544b955a369a8c1
+    build_checkout_sha: 29bf3cee1fba673aee0be77225ce16089b14fde7
+    workflow_run: 36626946163
+    apk_artifact: 11060023417
+    apk_sha256: a7e2e666db282f34218a86f34a72faf606799544d4df5ccae000e676e6c072c2
+    prior_user_verdict: VISUAL_REJECTED_PR168
+    source_icons_registered: 75
+    verification: "BUILD_VERIFIED / NATIVE_RENDER_REVIEWED / DEVICE_PENDING / VISUAL_PENDING"
+    remaining: "Original skill acquisition, combat effects and missing source artwork"
   SKILL-WINDOW-01:
     owner: Director/Game
     status: BUILD_VERIFIED

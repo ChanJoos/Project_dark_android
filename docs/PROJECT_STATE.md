@@ -199,3 +199,23 @@ Main 소스 감사에서 재시작 때 저장 `map_id`와 무관하게 Milles �
 - Inspected packaged `assets/skills/catalog.json`: 219 Master records. SkillBook adds three B fixtures at runtime. Inspected `skill-window.png` from render artifact `11059746241`: frame, tabs, grid, details and disabled unlearned controls render within the viewport. This is automated native rendering, not physical-device acceptance.
 - Status: IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING. Starting commoner receives no implicit skills; acquisition NPC/service, original combat effects and source icons remain pending. Consequently normal fresh saves cannot yet use/register skills; those paths are exercised with explicitly learned B fixtures in automated tests.
 - Next: user/device acceptance for opening the fourth utility button, technique/magic and learned/all filters, pages/details, old-save preservation and restart; then the separately authorized acquisition/effects/artwork implementation.
+
+
+## 2026-09-30 — SKILL-WINDOW-02 source art and presentation repair
+
+User rejected PR #168 APK (`aa1eac489ac840e293a73619e821491288dc53d8e2a4b482cbbe2b0925400d92`) as mockup-like and visually poor. Record VISUAL_REJECTED (user-reported); prior build success is not visual acceptance. Functional/device root cause is not claimed from this report.
+
+Candidate `codex/skill-window-source-art-20260930`, based on main `1d8b2118a357483803f8b98668f5000d53aee0d5`, v0.58. Replaces Chinese type tiles with 75 exact job/name icon crops from the five user-provided screenshots; crop coordinates, original SHA-256 and unmatched names are recorded in `skills/source_icons.json`. Unmatched and duplicate source rows are not assigned by resemblance. Source images are V reference artwork, not verified official originals. No other skill borrows a pictured icon.
+
+Reworks the frame, typography and opaque panels; adds six job filters and separate effect/requirements/reference tabs, paged long descriptions, selected highlight and a visible eight-slot rail. Keeps original acquisition/learned checks and shared Resolver; fresh commoners still cannot acquire or use original skills because acquisition/effects are outside this visual repair. Do not call this a playable original-skills release.
+
+Verification pending: exact-SHA Actions, direct fourth-utility reachability, source-ID rendering, job-filter/modal/slot interactions, save/restart regressions, native screenshots for overview/rogue/cleric/empty states. Physical device and user visual acceptance remain pending.
+
+
+### SKILL-WINDOW-02 final build evidence
+
+- Runtime head `9fb4e3d77f144ef30a4fd342e544b955a369a8c1`; Actions run [36626946163](https://github.com/ChanJoos/Project_dark_android/actions/runs/36626946163) SUCCESS, job `109606255393`. Actual checkout is PR merge `29bf3cee1fba673aee0be77225ce16089b14fde7` into base `1d8b2118a357483803f8b98668f5000d53aee0d5`.
+- v0.58 / versionCode 58, APK artifact `11060023417`, build finished 2026-09-30 05:33:12 KST. Extracted APK 12,880,982 bytes; SHA-256 `a7e2e666db282f34218a86f34a72faf606799544d4df5ccae000e676e6c072c2`. Packaged catalog is 219 records, source icon mappings are 75; packaged atlas bytes match authored atlas exactly.
+- Passed all configured CI checks, including direct utility reachability, exact source icon loading, job selection, explicit detail tabs, learned/empty state, shared Resolver quick-slot use/repeated-input gates, world tick behind modal, checkpoint restore, malformed-save protection and legacy migration; assembleDebug passed.
+- Render artifact `11060203281`: inspected overview, rogue, cleric and empty-state renders. Final source removes repeated missing-art placeholders, renders missing-art entries as name/job cards, uses a full-width missing-icon detail title, and removes dummy grids under empty-state text. No text/panel overlaps observed in inspected 960x540 native renders. Physical Android device interaction and user visual acceptance remain PENDING.
+- Status: IMPLEMENTED / BUILD_VERIFIED / NATIVE_RENDER_REVIEWED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING. Previous PR #168 remains visually rejected by the user; do not erase that report. This repairs the window presentation only; original acquisition NPC/service and combat effects remain unimplemented, and most original icons still require source material. No original skills are silently granted to commoners.
