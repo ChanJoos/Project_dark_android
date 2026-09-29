@@ -31,28 +31,28 @@ final class SkillWindow {
     tab(c,638,95,774,124,"전체 목록",!learnedOnly);tab(c,781,95,918,124,"습득 목록",learnedOnly);
     for(int i=0;i<JOBS.length;i++){float x=312+i*102;tab(c,x,132,x+96,155,JOBS[i],job.equals(JOBS[i]));}
     List<SkillBook.Entry> list=rows();int pages=Math.max(1,(list.size()+15)/16);page=Math.max(0,Math.min(page,pages-1));
-    for(int i=0;i<16;i++){
+    for(int i=0;i<16&&!list.isEmpty();i++){
       float x=312+(i%4)*78,y=164+(i/4)*62;int n=page*16+i;
       gradient(c,x,y,x+72,y+57,0xff382b1c,0xff251e16);outline(c,x,y,x+72,y+57,0xff645034,1);
       if(n>=list.size())continue;SkillBook.Entry e=list.get(n);boolean active=e.id.equals(selectedId);
       if(active){gradient(c,x+1,y+1,x+71,y+56,0xff68532f,0xff3d301e);outline(c,x,y,x+72,y+57,0xffffd588,2);}
       boolean art=icons.draw(c,e.id,new RectF(x+19,y+3,x+53,y+37));
-      if(!art){outline(c,x+20,y+4,x+52,y+35,0xff756043,1);center(c,"자료",x+36,y+18,8,0xffbca787);center(c,"준비중",x+36,y+29,7,0xffbca787);}
-      fitted(c,e.name,x+3,y+51,66,10,0xfff1dec0);
+      if(!art){List<String> name=wrap(e.name,64,11);for(int line=0;line<Math.min(2,name.size());line++)center(c,name.get(line),x+36,y+23+line*14,11,0xffead4ae);center(c,e.job,x+36,y+51,8,0xffaa936e);}else fitted(c,e.name,x+3,y+51,66,10,0xfff1dec0);
       if(book.learned(e.id)){p.setColor(0xffb6ca85);c.drawCircle(x+64,y+8,2.5f,p);}
       float cd=e.runtime==null?0:a.cooldown(e.id);if(cd>0){p.setColor(0xb0000000);c.drawRect(x+17,y+2,x+55,y+38,p);center(c,String.format(Locale.ROOT,"%.1f",cd),x+36,y+25,13,Color.WHITE);}
     }
     if(list.isEmpty()){
+      panel(c,312,164,621,408,0xff211d15,0xff615038);
       center(c,learnedOnly?"아직 배운 "+(magic?"마법":"기술")+"이 없습니다":"이 직업의 목록이 없습니다",462,258,15,0xffe4d2b1);
       center(c,learnedOnly?"전체 목록에서 효과와 습득 조건을 확인하세요":"다른 직업 또는 기술·마법 탭을 선택하세요",462,284,10,0xffc0aa85);
     }
     panel(c,638,164,918,408,0xff191711,0xff766040);
     SkillBook.Entry e=selected();
-    if(e==null){center(c,"기술을 선택하세요",778,258,16,0xffedd9b4);center(c,"효과 · 습득 조건 · 참고 자료",778,284,11,0xffb7a080);}
+    if(e==null){center(c,list.isEmpty()?"습득한 목록이 이곳에 표시됩니다":magic?"마법을 선택하세요":"기술을 선택하세요",778,258,list.isEmpty()?12:16,0xffedd9b4);center(c,"효과 · 습득 조건 · 참고 자료",778,284,11,0xffb7a080);}
     else{
-      icons.draw(c,e.id,new RectF(650,176,699,225));
-      fitted(c,e.name,711,194,192,17,0xffffdf9f);
-      fitted(c,e.job+" · "+e.kind+(e.circle.isEmpty()?"":" · "+e.circle+"서클"),711,214,192,10,0xffcbb58f);
+      boolean sourceIcon=icons.draw(c,e.id,new RectF(650,176,699,225));float nameLeft=sourceIcon?711:651;
+      fitted(c,e.name,nameLeft,194,903-nameLeft,17,0xffffdf9f);
+      fitted(c,e.job+" · "+e.kind+(e.circle.isEmpty()?"":" · "+e.circle+"서클"),nameLeft,214,903-nameLeft,10,0xffcbb58f);
       label(c,book.learned(e.id)?"습득 · 숙련도 "+book.proficiency(e.id)+"%":"미습득",651,240,10,book.learned(e.id)?0xffbcce87:0xffd0b486,false);
       for(int i=0;i<3;i++)tab(c,648+i*87,249,730+i*87,274,new String[]{"효과","습득 조건","참고 자료"}[i],detailPage==i);
       String body=detailPage==0?e.effect+"\n대상  "+e.target+"\n범위  "+e.range+"\n소모  "+e.resource+"\n"+(e.limit.equals("미확정")?"":"제한  "+e.limit):detailPage==1?a.requirements(e):"구 클라이언트 참고 자료\n"+(e.legacy.isEmpty()?"확인된 조건이 없습니다.":e.legacy)+"\n현재 습득 규칙과 다를 수 있습니다.";
