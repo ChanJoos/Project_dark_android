@@ -45,7 +45,9 @@ public final class PoteMonsterPlayableRuntimeTest {
     float beforeX=monster.x,beforeY=monster.y;
     ai.tick(state,MonsterAIController.MONSTER_STEP_SECONDS_B+0.01f);
     assertTrue("monster starts a visible tile interpolation",monster.isMoving);
+    state.tick(MonsterAIController.MONSTER_STEP_SECONDS_B*.5f);
     assertTrue("position moves smoothly between tiles",Math.hypot(monster.x-beforeX,monster.y-beforeY)>0f);
+    assertTrue("monster is still interpolating halfway",monster.isMoving);
     state.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
     assertTrue("POTE_PURPLE completes one authored clear tile",MonsterTileCenterLocomotion.isAdjacentEndpoint(beforeX,beforeY,monster.x,monster.y));
     assertFalse("monster must approach before beginning its adjacent-tile attack",monster.attackPrimed);
@@ -102,13 +104,14 @@ public final class PoteMonsterPlayableRuntimeTest {
       assertTrue("monster interpolation must be visible before reaching the next tile: "+id,moving.isMoving);
       assertEquals("walking artwork is active during interpolation", "walk",PoteForestMonsterShowcase.poseFor(moving));
       assertTrue("interpolated position changes continuously",Math.hypot(moving.x-beforeX,moving.y-beforeY)>0f);
-      movementState.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
       WorldMoveTargetController.Direction actual=WorldMoveTargetController.Direction.between(beforeX,beforeY,moving.x,moving.y);
       assertNotNull("candidate must move by one diagonal step: "+id,actual);
       assertEquals("walk image facing must match applied movement: "+id,
           MonsterTileCenterLocomotion.facing(actual),moving.visualFacing.presentation());
-      assertEquals("movement must select the walking pose", "walk", PoteForestMonsterShowcase.poseFor(moving));
       assertNotNull(PoteForestMonsterShowcase.assetPath(id,"walk",moving.visualFacing.presentation()));
+      movementState.tick(MonsterAIController.MONSTER_STEP_SECONDS_B);
+      assertFalse("movement completes at the target tile: "+id,moving.isMoving);
+      assertEquals("monster returns to idle between tile steps", "idle",PoteForestMonsterShowcase.poseFor(moving));
     }
 
     assertEquals("no cardinal/eight-way facings are part of this contract",4,CharacterRenderer.Direction.values().length);
