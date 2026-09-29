@@ -103,7 +103,41 @@
     "SK_무도가_018": 97,
     "SK_무도가_019": 98,
     "SK_무도가_023": 99,
-    "SK_무도가_022": 100
+    "SK_무도가_022": 100,
+    "SK_공통_001": 101,
+    "SK_공통_002": 102,
+    "SK_공통_014": 103,
+    "SK_공통_012": 104,
+    "SK_전사_012": 105,
+    "SK_전사_002": 106,
+    "SK_전사_003": 107,
+    "SK_전사_004": 108,
+    "SK_전사_005": 109,
+    "SK_전사_006": 110,
+    "SK_전사_007": 111,
+    "SK_전사_008": 112,
+    "SK_전사_009": 113,
+    "SK_전사_011": 114,
+    "SK_전사_014": 115,
+    "SK_전사_013": 116,
+    "SK_전사_015": 117,
+    "SK_마법사_023": 118,
+    "SK_마법사_054": 119,
+    "SK_마법사_024": 120,
+    "SK_마법사_026": 121,
+    "SK_마법사_027": 122,
+    "SK_마법사_028": 123,
+    "SK_마법사_029": 124,
+    "SK_마법사_025": 125,
+    "SK_마법사_031": 126,
+    "SK_마법사_032": 127,
+    "SK_마법사_033": 128,
+    "SK_마법사_034": 129,
+    "SK_마법사_035": 130,
+    "SK_마법사_036": 131,
+    "SK_마법사_037": 132,
+    "SK_마법사_053": 133,
+    "SK_마법사_038": 134
   },
   "audit": [
     {
@@ -1746,6 +1780,544 @@
       "skill_id": "SK_무도가_022",
       "status": "REGISTERED_SOURCE_CROP",
       "atlas_index": 100
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "공통",
+      "source_name": "기본공격",
+      "crop": [
+        81,
+        74,
+        116,
+        108
+      ],
+      "skill_id": "SK_공통_001",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 101
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "공통",
+      "source_name": "문열기",
+      "crop": [
+        81,
+        121,
+        116,
+        155
+      ],
+      "skill_id": "SK_공통_002",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 102
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "공통",
+      "source_name": "유즈스태프",
+      "crop": [
+        81,
+        167,
+        116,
+        202
+      ],
+      "skill_id": "SK_공통_014",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 103
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "공통",
+      "source_name": "아이템고치기",
+      "crop": [
+        81,
+        214,
+        116,
+        248
+      ],
+      "skill_id": "SK_공통_012",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 104
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "레스큐",
+      "crop": [
+        81,
+        351,
+        116,
+        386
+      ],
+      "skill_id": "SK_전사_012",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 105
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "더블어택",
+      "crop": [
+        81,
+        398,
+        116,
+        432
+      ],
+      "skill_id": "SK_전사_002",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 106
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "윈드블레이드",
+      "crop": [
+        81,
+        446,
+        116,
+        480
+      ],
+      "skill_id": "SK_전사_003",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 107
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "디바투",
+      "crop": [
+        82,
+        495,
+        116,
+        528
+      ],
+      "skill_id": "SK_전사_004",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 108
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "트리플어택",
+      "crop": [
+        81,
+        539,
+        116,
+        573
+      ],
+      "skill_id": "SK_전사_005",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 109
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "메가블레이드",
+      "crop": [
+        81,
+        584,
+        116,
+        620
+      ],
+      "skill_id": "SK_전사_006",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 110
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "바투",
+      "crop": [
+        82,
+        632,
+        116,
+        665
+      ],
+      "skill_id": "SK_전사_007",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 111
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "투핸드어택",
+      "crop": [
+        82,
+        677,
+        116,
+        713
+      ],
+      "skill_id": "SK_전사_008",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 112
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "드래곤모드",
+      "crop": [
+        82,
+        724,
+        116,
+        756
+      ],
+      "skill_id": "SK_전사_009",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 113
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "적무기쳐내기",
+      "crop": [
+        81,
+        772,
+        116,
+        806
+      ],
+      "skill_id": "SK_전사_011",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 114
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "완전방어",
+      "crop": [
+        81,
+        817,
+        116,
+        853
+      ],
+      "skill_id": "SK_전사_014",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 115
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "매드소울",
+      "crop": [
+        81,
+        864,
+        116,
+        899
+      ],
+      "skill_id": "SK_전사_013",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 116
+    },
+    {
+      "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+      "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+      "job": "전사",
+      "source_name": "크래셔",
+      "crop": [
+        81,
+        912,
+        116,
+        946
+      ],
+      "skill_id": "SK_전사_015",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 117
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "딜루메니",
+      "crop": [
+        43,
+        28,
+        82,
+        68
+      ],
+      "skill_id": "SK_마법사_023",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 118
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "클리멘스",
+      "crop": [
+        43,
+        75,
+        82,
+        117
+      ],
+      "skill_id": "SK_마법사_054",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 119
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "데프레코",
+      "crop": [
+        43,
+        127,
+        82,
+        163
+      ],
+      "skill_id": "SK_마법사_024",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 120
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "마레네라",
+      "crop": [
+        43,
+        175,
+        82,
+        214
+      ],
+      "skill_id": "SK_마법사_026",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 121
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "테라미에라",
+      "crop": [
+        43,
+        226,
+        82,
+        265
+      ],
+      "skill_id": "SK_마법사_027",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 122
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "아듀레나",
+      "crop": [
+        43,
+        277,
+        82,
+        318
+      ],
+      "skill_id": "SK_마법사_028",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 123
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "플라메라",
+      "crop": [
+        43,
+        329,
+        82,
+        367
+      ],
+      "skill_id": "SK_마법사_029",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 124
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "소루마",
+      "crop": [
+        43,
+        378,
+        82,
+        417
+      ],
+      "skill_id": "SK_마법사_025",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 125
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "마네네로",
+      "crop": [
+        43,
+        430,
+        82,
+        468
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "테라미칼로",
+      "crop": [
+        43,
+        481,
+        82,
+        518
+      ],
+      "skill_id": "SK_마법사_031",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 126
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "아듀랄로",
+      "crop": [
+        43,
+        530,
+        82,
+        569
+      ],
+      "skill_id": "SK_마법사_032",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 127
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "플라미칼로",
+      "crop": [
+        43,
+        581,
+        82,
+        619
+      ],
+      "skill_id": "SK_마법사_033",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 128
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "세멜리아",
+      "crop": [
+        43,
+        632,
+        82,
+        669
+      ],
+      "skill_id": "SK_마법사_034",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 129
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "아마게돈",
+      "crop": [
+        43,
+        682,
+        82,
+        720
+      ],
+      "skill_id": "SK_마법사_035",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 130
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "숨마스텔라",
+      "crop": [
+        43,
+        733,
+        82,
+        770
+      ],
+      "skill_id": "SK_마법사_036",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 131
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "라그나로크",
+      "crop": [
+        43,
+        784,
+        82,
+        821
+      ],
+      "skill_id": "SK_마법사_037",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 132
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "헬포라",
+      "crop": [
+        43,
+        833,
+        82,
+        873
+      ],
+      "skill_id": null,
+      "status": "UNMAPPED_EXACT_NAME_ONLY"
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "프라보",
+      "crop": [
+        44,
+        885,
+        81,
+        924
+      ],
+      "skill_id": "SK_마법사_053",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 133
+    },
+    {
+      "source": "15-Screenshot_20260929_235907_NAVER.jpg",
+      "source_sha256": "734ce9fba6d622442886a1dc24b0deb6cf78e3d2d97993cdc0ef21a86a8fd8cd",
+      "job": "마법사",
+      "source_name": "데스",
+      "crop": [
+        43,
+        936,
+        82,
+        973
+      ],
+      "skill_id": "SK_마법사_038",
+      "status": "REGISTERED_SOURCE_CROP",
+      "atlas_index": 134
     }
   ]
 }

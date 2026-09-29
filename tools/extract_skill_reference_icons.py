@@ -20,6 +20,9 @@ specs += [
 ('11-Screenshot_20260929_233743_NAVER.jpg',['전사']+['도적']*5,'쿠로토 쿠로토 수페라동엑스투 라이트닝무브 하이드 센스'.split()),
 ('12-Screenshot_20260930_052204_NAVER.jpg','무도가','단각 이형환위 양의신권 통배권'.split()),
 ('13-Screenshot_20260930_052212_NAVER.jpg','무도가','붕각 백보신권 일음지 선풍각 발경 소수신공 달마신공 반탄신공'.split())]
+specs += [
+('14-Screenshot_20260930_052143_NAVER.jpg',['공통']*4+['전사']*13,'기본공격 문열기 유즈스태프 아이템고치기 레스큐 더블어택 윈드블레이드 디바투 트리플어택 메가블레이드 바투 투핸드어택 드래곤모드 적무기쳐내기 완전방어 매드소울 크래셔'.split()),
+('15-Screenshot_20260929_235907_NAVER.jpg','마법사','딜루메니 클리멘스 데프레코 마레네라 테라미에라 아듀레나 플라메라 소루마 마네네로 테라미칼로 아듀랄로 플라미칼로 세멜리아 아마게돈 숨마스텔라 라그나로크 헬포라 프라보 데스'.split())]
 icons=[];audit=[];seen=set()
 for filename,job,names in specs:
  p=sources/filename;im=Image.open(p).convert('RGB');a=np.array(im);h,w=a.shape[:2]
@@ -31,6 +34,8 @@ for filename,job,names in specs:
   if len(xs)>5:boxes.append([int(xs[0]),int(g[0]),int(xs[-1])+1,int(g[-1])+1])
  if filename.startswith('06-'):boxes[4:6]=[[100,943,256,1111]]
  if filename.startswith('12-'):boxes[1:3]=[[323,401,461,547]]
+ if filename.startswith('15-'):
+  boxes.insert(0,[43,28,82,68]);boxes.insert(4,[43,226,82,265])
  assert len(names)==len(boxes),(filename,len(names),len(boxes))
  for row_index,(name,box) in enumerate(zip(names,boxes)):
   row_job=job[row_index] if isinstance(job,list) else job

@@ -163,7 +163,7 @@ public final class GameView extends View {
   private boolean inRange(float range){return combat.inRange(state,range);}
   private void tickSkillCombat(float dt){
     RuntimeCombatSession.FrameResult result=combatSession.tick(dt);
-    for(CombatResolver.Event e:result.events)if(e.type==CombatResolver.EventType.EFFECT_APPLIED&&RuntimeCombatSession.PLAYER_ID.equals(e.actorId))skillBook.practiced(e.actionId);
+    for(CombatResolver.Event e:result.events)if(e.type==CombatResolver.EventType.EFFECT_APPLIED&&RuntimeCombatSession.PLAYER_ID.equals(e.actorId))skillBook.practiced(e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId);
   }
   private boolean isSkillLearned(String id){return skillBook!=null&&skillBook.usable(id);}
   private final SkillWindow.Actions skillActions=new SkillWindow.Actions(){
@@ -171,7 +171,7 @@ public final class GameView extends View {
     public boolean canLearn(SkillBook.Entry e){return new SkillAcquisition(skillBook).blockers(e,state.rpg()).isEmpty();}
     public void learn(SkillBook.Entry e){SkillAcquisition service=new SkillAcquisition(skillBook);if(service.learn(e.id,state.rpg())){checkpoint();showFeedback(e.name+" 습득",FeedbackTone.INFO);}else showFeedback(String.join(" · ",service.blockers(e,state.rpg())),FeedbackTone.WARN);}
     public void save(){checkpoint();}
-    public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,id);}
+    public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,"SK_공통_001".equals(id)?RuntimeCombatSession.playerAttackActionId(equipmentActions.resolveBasicAttack(state.rpg()).animationAction):id);}
     public String requirements(SkillBook.Entry e){return new SkillAcquisition(skillBook).description(e,state.rpg());}
     public void notice(String text){showFeedback(text,FeedbackTone.INFO);}
   };
@@ -179,6 +179,7 @@ public final class GameView extends View {
   private void useBookSkill(SkillBook.Entry entry){
     if(!skillBook.usable(entry.id)){showFeedback(skillBook.learned(entry.id)?"이 기술의 전투 효과는 준비 중입니다":"먼저 기술을 습득하세요",FeedbackTone.WARN);return;}
     autoAttackEnabled=false;
+    if("SK_공통_001".equals(entry.id)){float remaining=skillActions.cooldown(entry.id);if(remaining>0)showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",remaining),FeedbackTone.WARN);else attack();return;}
     submitLearnedAction(entry.runtime,entry.magic()?Action.CAST:entry.runtime.effectType==SkillDef.EffectType.KICK_ARC?Action.KICK:Action.SKILL);
   }
   private void cast(){submitLearnedAction(SkillDef.CAST_PROTO,Action.CAST);}

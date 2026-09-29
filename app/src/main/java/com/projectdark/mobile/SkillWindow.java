@@ -79,6 +79,7 @@ final class SkillWindow {
   }
   void drawSlot(Canvas c,RectF r,int index,Actions a){SkillBook.Entry e=book.get(book.slot(index));if(e==null)return;RectF art=new RectF(r.left+4,r.top+3,r.right-4,r.bottom-11);if(!icons.draw(c,e.id,art))fitted(c,e.name,r.left+3,r.centerY()+3,r.width()-6,8,0xffefd1a1);else fitted(c,e.name,r.left+2,r.bottom-2,r.width()-4,7,0xffefd1a1);float cd=a.cooldown(e.id);if(cd>0){p.setColor(0xb9000000);c.drawRect(r,p);center(c,String.format(Locale.ROOT,"%.1f",cd),r.centerX(),r.centerY()+4,11,Color.WHITE);}}
   private String description(SkillBook.Entry e,Actions a){
+    if("SK_공통_001".equals(e.id))return "장착 무기로 기본공격\n소모  MP 0\n공격 주기  장착 무기 기준\n기본공격 버튼과 재사용 시간을 공유합니다";
     if(e.runtime==null)return clean(e.effect)+"\n대상  "+e.target+"\n쿨타임  확인 중\n전투 효과 준비 중";
     SkillDef d=e.runtime;String effect=d.targetPolicy==SkillDef.TargetPolicy.SELF?"자신의 HP를 "+d.damage+" + WIS만큼 회복":(e.magic()?"단일 마법 공격":"단일 근접 공격")+" · 기본 피해 "+d.damage;
     float remaining=a.cooldown(e.id);

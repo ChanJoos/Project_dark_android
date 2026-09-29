@@ -154,5 +154,18 @@
     ],
     "evidence": "USER_CAPTURE",
     "policy": "User-approved 2026-09-30 capture conditions; Master remains unchanged"
+  },
+  "SK_전사_009": {
+    "conditions": "STR 71 · INT 3 · WIS 3 · CON 67 · DEX 3 · Prerequisite_Skill 트리플어택;메가블레이드 · Required_Prerequisite_Level 90;90",
+    "source": "14-Screenshot_20260930_052143_NAVER.jpg",
+    "source_sha256": "ef550946b0e417428255b3abb6c49b3d8a11037e959f87474019a40fb4f6e89d",
+    "icon_crop": [
+      82,
+      724,
+      116,
+      756
+    ],
+    "evidence": "USER_CAPTURE",
+    "policy": "User-approved capture; both prerequisite levels visibly 90"
   }
 }

@@ -9,6 +9,8 @@ import java.util.*;
 public final class SkillRuntimeCatalog {
   private static final Map<String,SkillDef> DEFINITIONS=new LinkedHashMap<>();
   static {
+    // Basic-attack slot delegates to the existing equipped-weapon action; never a second damage route.
+    physical("SK_공통_001","기본공격",12,1f,48f,false);
     physical("SK_전사_001","숏블레이드",16,2f,48f,false);
     physical("SK_도적_001","찌르기",14,1.5f,48f,false);
     physical("SK_도적_007","찔러휘비기",20,3f,48f,false);

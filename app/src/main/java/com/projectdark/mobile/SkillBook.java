@@ -52,7 +52,7 @@ public final class SkillBook {
   }
   public Entry get(String id){return entries.get(id);}
   public Collection<Entry> entries(){return Collections.unmodifiableCollection(entries.values());}
-  public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(e.magic()==magic&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
+  public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(e.magic()==magic&&(!"검증용".equals(e.job)||learned(e.id))&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
   public boolean learned(String id){return learned.containsKey(id);}
   public int proficiency(String id){Integer v=learned.get(id);return v==null?0:v;}
   /** Called by a validated acquisition service. UI cannot grant skills. */

@@ -52,7 +52,7 @@ public class SkillWindowTest {
     tap(v,907,67);assertFalse(w.open);
   }
   @Test public void referenceIconsUseExactIdsAndUnknownDoesNotBorrowArt(){
-    SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertFalse(icons.has("SK_전사_001"));assertTrue(icons.has("SK_무도가_002"));assertTrue(icons.has("SK_무도가_032"));assertFalse(icons.has("missing"));
+    SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertFalse(icons.has("SK_전사_001"));assertTrue(icons.has("SK_전사_012"));assertTrue(icons.has("SK_공통_001"));assertTrue(icons.has("SK_무도가_002"));assertTrue(icons.has("SK_무도가_032"));assertFalse(icons.has("missing"));
     Bitmap bitmap=Bitmap.createBitmap(60,60,Bitmap.Config.ARGB_8888);assertTrue(icons.draw(new Canvas(bitmap),"SK_마법사_001",new RectF(4,4,44,44)));assertNotEquals(0,bitmap.getPixel(20,20));
   }
   @Test public void captureAcquisitionRequiresJobStatsAndPrerequisiteAndDoesNotCycleDescription() throws Exception {
@@ -80,6 +80,14 @@ public class SkillWindowTest {
   @Test public void learnedUnimplementedSkillRegistersAndRestoresWithoutPretendingCombatSupport() throws Exception {
     SkillBook b=SkillBook.load(context);assertTrue(b.learn("SK_무도가_003",0));assertTrue(b.assign(2,"SK_무도가_003"));assertFalse(b.usable("SK_무도가_003"));SkillBook restored=SkillBook.load(context);assertTrue(restored.restore(b.snapshot()));assertEquals("SK_무도가_003",restored.slot(2));
     for(SkillDef d:SkillRuntimeCatalog.definitions())assertNotNull("all adaptation IDs must be real Master IDs",b.get(d.id));
+  }
+  @Test public void commonerCanActuallyLearnRegisterAndUseBasicAttackThroughProductionInput() throws Exception {
+    GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");CombatController combat=field(v,"combat");RuntimeCombatSession session=field(v,"combatSession");
+    w.open=true;w.selectedId="SK_공통_001";tap(v,700,432);assertTrue(b.learned("SK_공통_001"));tap(v,860,432);tap(v,324,485);assertEquals("SK_공통_001",b.slot(0));render(v,"skill-window-commoner-learned.png");w.close();
+    RuntimeState.Monster m=r.monsters().get(0);r.player().x=m.x-CanonicalMeleeTileContract.STEP_X;r.player().y=m.y-CanonicalMeleeTileContract.STEP_Y;combat.selectTarget(m);
+    Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,0);tap(v,slot.centerX(),slot.centerY());
+    assertTrue(session.playerActionActive());assertTrue(session.cooldownRemaining("player",RuntimeCombatSession.playerAttackActionId(new EquipmentActionResolver().resolveBasicAttack(r.rpg()).animationAction))>0);
+    int hp=m.hp;session.tick(.3f);assertTrue(m.hp<hp);assertEquals(90,r.player().mp);
   }
   private static SkillBook.Entry bEntry(GameView v,String id)throws Exception{return ((SkillBook)field(v,"skillBook")).get(id);}
   private static void render(GameView v,String name)throws Exception{Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File dir=new File("build/reports/device-review");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,name))){image.compress(Bitmap.CompressFormat.PNG,100,out);}}
