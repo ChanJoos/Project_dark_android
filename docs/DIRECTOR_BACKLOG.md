@@ -108,4 +108,15 @@ Pote showcase monsters have no source-backed EXP or drop rates/quantities in the
 
 The user reported the v0.55 Pote restart map behavior now passes. The new facing/auto-target report is user-reported; device root cause remains UNKNOWN until the exact updated APK is run. Follow [MONSTER_CREATION_MANUAL.md](MONSTER_CREATION_MANUAL.md). Do not mark generated Pamfet gaze as visually accepted from file-name/unit-test checks alone.
 
-| SKILL-WINDOW-01 | Director/Game | 기술·마법 창/상세/퀵슬롯/저장 | shared Resolver·미습득 차단·재시작 복원·world tick 유지 | IMPLEMENTED; CI_PENDING; DEVICE_PENDING | 원작 효과/아이콘은 후속 |
+| SKILL-WINDOW-01 | Director/Game | 기술·마법 창/상세/퀵슬롯/저장 | shared Resolver·미습득 차단·재시작 복원·world tick 유지 | IMPLEMENTED; BUILD_VERIFIED; DEVICE_PENDING | 원작 효과/아이콘은 후속 |
+
+
+## 2026-09-30 — SKILL-WINDOW-01 build verification
+
+- PR #168 runtime source: `74c3833e0010e7f0c78e01a70b0c8cafc0ade614`; base `cd3dd871fc81dcc88053ffff5305fd6fdeddc065`, ahead 4 / behind 0 at verification.
+- Actions run [36622542956](https://github.com/ChanJoos/Project_dark_android/actions/runs/36622542956), job 109591297347: SUCCESS. Checkout actually built synthetic PR merge `5560ccc69e990d08b44172a9aa538815e64a29f3` (head 74c3833e into base cd3dd871). Do not identify this as a head-only checkout.
+- Passed: Master validation, regenerated catalog equality, SkillWindowTest (catalog / unlearned gates / skill checkpoint restore / invalid snapshot protection / shared Resolver repeated input / world tick behind modal), restart persistence matrix, RuntimeCheckpointTest legacy migration and all configured regression steps, assembleDebug.
+- APK artifact `11059261609`, 12,666,152 APK bytes, APK SHA-256 `aa1eac489ac840e293a73619e821491288dc53d8e2a4b482cbbe2b0925400d92`. Build completed 2026-09-30 04:56:45 KST. ZIP digest is distinct from APK hash.
+- Inspected packaged `assets/skills/catalog.json`: 219 Master records. SkillBook adds three B fixtures at runtime. Inspected `skill-window.png` from render artifact `11059746241`: frame, tabs, grid, details and disabled unlearned controls render within the viewport. This is automated native rendering, not physical-device acceptance.
+- Status: IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING. Starting commoner receives no implicit skills; acquisition NPC/service, original combat effects and source icons remain pending. Consequently normal fresh saves cannot yet use/register skills; those paths are exercised with explicitly learned B fixtures in automated tests.
+- Next: user/device acceptance for opening the fourth utility button, technique/magic and learned/all filters, pages/details, old-save preservation and restart; then the separately authorized acquisition/effects/artwork implementation.

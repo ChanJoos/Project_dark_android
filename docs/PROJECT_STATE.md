@@ -188,3 +188,14 @@ Main 소스 감사에서 재시작 때 저장 `map_id`와 무관하게 Milles �
 - GameView utility 4번째 버튼은 스킬창. 기존 퀘스트 카드 접근 유지. 모달은 입력만 소비하며 world tick을 정지하지 않는다.
 - 새 SkillBook의 습득/숙련도/슬롯은 schema 3 체크포인트에 저장. 평민은 미습득 상태; 임의 지급 없음. 기존 3 B 동작만 shared Resolver로 실행 가능; 원작 219개 효과는 구현 예정.
 - 자동 테스트: catalog identity, 미습득 차단, checkpoint/restart, invalid ID 원본 보존, shared combat repeat-input, modal/render. CI_PENDING / DEVICE_PENDING / VISUAL_PENDING.
+
+
+## 2026-09-30 — SKILL-WINDOW-01 build verification
+
+- PR #168 runtime source: `74c3833e0010e7f0c78e01a70b0c8cafc0ade614`; base `cd3dd871fc81dcc88053ffff5305fd6fdeddc065`, ahead 4 / behind 0 at verification.
+- Actions run [36622542956](https://github.com/ChanJoos/Project_dark_android/actions/runs/36622542956), job 109591297347: SUCCESS. Checkout actually built synthetic PR merge `5560ccc69e990d08b44172a9aa538815e64a29f3` (head 74c3833e into base cd3dd871). Do not identify this as a head-only checkout.
+- Passed: Master validation, regenerated catalog equality, SkillWindowTest (catalog / unlearned gates / skill checkpoint restore / invalid snapshot protection / shared Resolver repeated input / world tick behind modal), restart persistence matrix, RuntimeCheckpointTest legacy migration and all configured regression steps, assembleDebug.
+- APK artifact `11059261609`, 12,666,152 APK bytes, APK SHA-256 `aa1eac489ac840e293a73619e821491288dc53d8e2a4b482cbbe2b0925400d92`. Build completed 2026-09-30 04:56:45 KST. ZIP digest is distinct from APK hash.
+- Inspected packaged `assets/skills/catalog.json`: 219 Master records. SkillBook adds three B fixtures at runtime. Inspected `skill-window.png` from render artifact `11059746241`: frame, tabs, grid, details and disabled unlearned controls render within the viewport. This is automated native rendering, not physical-device acceptance.
+- Status: IMPLEMENTED / BUILD_VERIFIED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING. Starting commoner receives no implicit skills; acquisition NPC/service, original combat effects and source icons remain pending. Consequently normal fresh saves cannot yet use/register skills; those paths are exercised with explicitly learned B fixtures in automated tests.
+- Next: user/device acceptance for opening the fourth utility button, technique/magic and learned/all filters, pages/details, old-save preservation and restart; then the separately authorized acquisition/effects/artwork implementation.
