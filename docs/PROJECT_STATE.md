@@ -1,8 +1,8 @@
 # PROJECT DARK 현재 상태
 
-## 최신 작업 기준 — v0.60
+## 최신 작업 기준 — v0.61
 
-통합 PR #171의 runtime source는 `e0f61bf1712e7b18ece4c9602e5dbf82da0bf6f3`; 정확한 CI/APK 및 검증 범위는 최신 SKILL-WINDOW-04 기록을 따른다. v59 캡처 숙련/직업/선행 조건은 최신 사용자 지시로 폐기됐다. 이후 섹션의 오래된 main SHA는 해당 날짜의 감사 이력이며 현재 main으로 해석하지 않는다.
+통합 PR #172의 runtime source는 `89bad5a620324f9e5b0b3c8fbc7191fe59fb2a1f`; 정확한 CI/APK 및 검증 범위는 최신 SKILL-WINDOW-05 기록을 따른다. v60의 모든 미구현 항목 결제는 폐기됐으며 기본 목록은 실제 효과 있는30개다. v59 캡처 숙련/직업/선행 조건은 최신 사용자 지시로 폐기됐다. 이후 섹션의 오래된 main SHA는 해당 날짜의 감사 이력이며 현재 main으로 해석하지 않는다.
 
 
 ## 2026-09-30 — SKILL-WINDOW-04 실제 게임 스킬창 / v60
@@ -17,6 +17,20 @@
 - APK versionCode **60**, versionName **0.60-game-skill-book**. Build completed **2026-09-30 07:00:03 KST**. APK artifact **11064287506**, render artifact **11064462402**; names carry checkout a9a3bdf rather than head source. APK **13,067,379 bytes**, SHA-256 **8a11132af58c2615ef5e2b00e4ae9ea33115c5799d62ecbaa3570bec1d91f073**. Packaged policy/icon atlas/icon mapping/capture bytes match authored assets. Packaged catalog Git blob **0e3a04beaa7bbda6f51e9de23eb5a81663210547** matches the exact repository projection; local materialized copy had only one extra final newline, not a source difference. Catalog 219 / policy 222 / source mappings 135.
 - Final native Canvas renders inspected: magic explanation, missing/ready requirements, learned slot assignment, duplicate-slot cooldown, empty state. Required/current values, prices/owned counts and labels fit their panels; card names align and no cyan corner triangles remain in inspected icons. Render tests explicitly check transparent corner pixels. These are native automated renders, not physical screenshots or user visual acceptance.
 - Status **IMPLEMENTED / BUILD_VERIFIED / AUTOMATED_INPUT_VERIFIED / NATIVE_RENDER_REVIEWED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. Pending: physical-device UI/save/slot/cooldown acceptance; unsupported special/AOE/utility/stealth/advanced effects; missing or unresolved source icon/name rows; four unknown descriptions; offline cooldown persistence. Existing 29 adapted attacks/self-heals + basic weapon attack are the combat scope. Job acquisition route remains a separate game task and no longer blocks skill learning.
+
+## 2026-09-30 — SKILL-WINDOW-05 모바일 스킬 흐름 / v61
+
+- 사용자 “한번에 처리”는 앞선 출시 품질 검토의 아이콘/가독성/상태/설명/반응/미구현 결제/경제 경로 문제를 한 작업으로 수리하도록 승인했다. v60의 출시 품질 부족은 이번 검토 판단이며, v60에 대한 새 physical-device 실패 보고나 설치 SHA 확인으로 기록하지 않는다. 이전 v59 사용자 거절 이력은 보존한다.
+- 기본 목록은 실제 효과가 있는 real-ID 30개(29 adapted 공격/자기회복 + 무기 기본공격). 219개 Master/135 source icon/222 policy와 기존 learned/slot save는 보존한다. 전체 자료 보기로 미구현 항목을 볼 수 있지만 습득/결제하지 못한다. 내부 fixture는 기본 목록에 없다. 직업·숙련·선행·승급/써클/레벨은 여전히 습득 조건이 아니다.
+- 여섯 큰 카드, 기술/마법, 전체/습득 가능/배운 스킬, 분류 dropdown으로 조작을 줄였다. 카드 이름 14px/제목22px/설명14px, 36–40 logical px 버튼/46px 슬롯. 카드에 조건 부족·습득 가능·완료·등록 슬롯, 창 안 습득/등록/오류 피드백과 등록 슬롯 강조, 필드 사용 안내를 표시한다. 모바일 dp/손가락 수락은 기기 확인 전이다.
+- 원본 source bytes를 유지하고 작은 source art는 40 logical px 이하로 표시한다. 공통 프레임과 cyan-corner mask, 원본 없는 supported ID의 project Canvas sword/fist/heal/attack emblems를 쓴다. 다른 스킬 이미지를 빌리지 않으며 이 emblems는 원작 아트가 아니다. 캡처의 낮은 해상도 자체를 복원했다고 주장하지 않는다.
+- 효과/조건 설명은 실제 MP·쿨타임·대상·기본 위력/회복량 및 공격력/방어/속성 또는 회복량=base+FinalStats WIS 식을 안내한다. Heal adapter도 FinalStats WIS를 사용하도록 맞췄다. 습득 완료 후에는 소비한 재료/Gold를 부족 조건처럼 표시하지 않고 추가 결제/아이템이 없음을 표시한다.
+- 도메인 ReagentPurchase를 새로 연결: 기존 멀린 counter의 쿠라눔에 ADAPTED **50G** 가격. 구매 버튼→Gold/items→checkpoint; 실패 시 전부 복원. 기존 다른 reagent/recall 가격은 unresolved이며 구매하지 않는다. Gold/보유량/구매 확인도 상점 안에 표시한다. 첫 기술50G=기존 훈련 보상25G 두 번; supported 쿠라눔 recipe는 학비150G+재료50G=200G(훈련8회 Gold 상당). 실제 플레이 시간/전체 경제 수락이 아닌 source-economy 기준 검사다.
+- Runtime source **89bad5a620324f9e5b0b3c8fbc7191fe59fb2a1f**, PR [#172](https://github.com/ChanJoos/Project_dark_android/pull/172), base **fae835dee6d5475efb9db67f07da45e90b666be3**. Actions [36644434203](https://github.com/ChanJoos/Project_dark_android/actions/runs/36644434203) **SUCCESS**, job **109663993916**. Actual synthetic checkout **e481a9010979967c1c404979cca69408ddf8feda** merges source89bad5a into basefae835d. Earlier passing runs precede final feedback/calculation/material/use proof and are not the delivered artifact.
+- All **16 SkillWindowTest** cases and configured Master/catalog/policy equality, HUD/world/target/combat/growth/quest/save/restart/render checks plus assembleDebug passed. Paid flow uses an explicit shop-context/stat/Gold fixture, then actual counter button→book learn→register→field HUD use→MP50→32 once/repeated input blocked→heal5→87→checkpoint/restart Gold/material/skill/slot restoration. This does not claim independent physical walking to the shop; the existing door route was not rewritten. Fresh COMMONER basic attack UI and the two-training-reward technique benchmark also pass. Unsupported/archive no-charge, save failures and old-ID preservation pass.
+- versionCode **61**, versionName **0.61-mobile-skill-flow**, build **2026-09-30 08:19:43 KST**. APK artifact **11067706867**, native review **11067821705**; artifact names carry synthetic checkout e481a90. APK **13,070,503 bytes**, SHA-256 **32155516e6213d8804e8f5751563ea7fa34e5f1c43dfcad061c30a02ea4e2571**. Packaged policy/source atlas/mapping/captures match authored bytes; catalog Git blob **0e3a04beaa7bbda6f51e9de23eb5a81663210547** matches authoritative source.
+- Native final overview, ready requirements, completed/registered conditions, actual shop purchase confirmation, shared cooldown reviewed: names/fields fit panels, completed costs no longer falsely demand resources, slot feedback visible. No subjective user/device visual acceptance is inferred.
+- Status **IMPLEMENTED / BUILD_VERIFIED / AUTOMATED_INPUT_VERIFIED / NATIVE_RENDER_REVIEWED / DEVICE_PENDING / VISUAL_ACCEPTANCE_PENDING**. Remaining gates: real phone touch/text/readability and shop walk/restart acceptance, play-session economy tuning, higher-resolution/exact missing original art. Special/AOE/utility/stealth/advanced effects remain unimplemented and are safely archived, not sold. This is the improved skill-flow build, not certification that the entire game is launch-ready.
 
 > 확인된 기준과 미완료 작업만 적습니다. 시작할 때 최신 `main`과 활성 작업 브랜치를 다시 조회합니다.
 

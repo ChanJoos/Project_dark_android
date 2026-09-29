@@ -174,7 +174,7 @@ public final class GameView extends View {
     public void learn(SkillBook.Entry e){
       if(!F5mSaveStore.writable()){showFeedback("저장 데이터를 확인할 수 없어 습득할 수 없습니다",FeedbackTone.WARN);return;}
       SkillAcquisition service=new SkillAcquisition(skillBook);
-      if(service.learn(e.id,state.rpg(),()->F5mSaveStore.checkpointActive()))showFeedback(e.name+" 습득 완료",FeedbackTone.INFO);
+      if(service.learn(e.id,state.rpg(),()->F5mSaveStore.checkpointActive())){performHapticFeedback(android.view.HapticFeedbackConstants.VIRTUAL_KEY);showFeedback(e.name+" 습득 완료",FeedbackTone.INFO);}
       else{SkillAcquisition.Quote q=service.quote(e,state.rpg());showFeedback(q.learned?"이미 습득한 스킬입니다":q.blockers.isEmpty()?"저장 실패 · 습득 비용을 돌려드렸습니다":String.join(" · ",q.blockers),FeedbackTone.WARN);}
     }
     public boolean save(){return F5mSaveStore.writable()&&F5mSaveStore.checkpointActive();}
@@ -313,12 +313,12 @@ public final class GameView extends View {
         CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
   }
   private void drawReagentShop(Canvas c){
-    if(!reagentShopOpen)return;p.setColor(0x5c000000);c.drawRect(0,0,W,H,p);classicWindow(c,430,74,918,454,"멀린의 시약상점");text(c,"×",887,102,14);
-    int i=0;for(ReagentShopCatalog.Offer o:ReagentShopCatalog.offers()){float t=128+i*70;p.setColor(0xD0191411);c.drawRect(456,t,892,t+58,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xFF765335);c.drawRect(456.5f,t+.5f,891.5f,t+57.5f,p);p.setStyle(Paint.Style.FILL);Bitmap b=reagentVisuals.get(o.itemId);if(b!=null){p.setFilterBitmap(false);float sc=Math.min(28f/b.getWidth(),28f/b.getHeight()),dw=b.getWidth()*sc,dh=b.getHeight()*sc;c.drawBitmap(b,null,new RectF(473+(28-dw)/2,t+15+(28-dh)/2,473+(28+dw)/2,t+15+(28+dh)/2),p);}text(c,o.name,526,t+25,10);mutedText(c,o.price==null?"가격 원전 확인 중":o.price+" Gold",526,t+44,8);if(o.purchasable()){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(792,t+12,874,t+47),7,7,p);text(c,"구매",816,t+34,9);}i++;}
+    if(!reagentShopOpen)return;p.setColor(0x5c000000);c.drawRect(0,0,W,H,p);classicWindow(c,430,74,918,454,"멀린의 시약상점");text(c,"×",887,102,14);text(c,"보유 "+state.rpg().gold()+" G",710,119,12);if(rewardClock>0)text(c,rewardBanner,456,432,12);
+    int i=0;for(ReagentShopCatalog.Offer o:ReagentShopCatalog.offers()){float t=128+i*70;p.setColor(0xD0191411);c.drawRect(456,t,892,t+58,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xFF765335);c.drawRect(456.5f,t+.5f,891.5f,t+57.5f,p);p.setStyle(Paint.Style.FILL);Bitmap b=reagentVisuals.get(o.itemId);if(b!=null){p.setFilterBitmap(false);float sc=Math.min(28f/b.getWidth(),28f/b.getHeight()),dw=b.getWidth()*sc,dh=b.getHeight()*sc;c.drawBitmap(b,null,new RectF(473+(28-dw)/2,t+15+(28-dh)/2,473+(28+dw)/2,t+15+(28+dh)/2),p);}text(c,o.name,526,t+25,12);mutedText(c,"보유 "+state.rpg().inventory().getOrDefault(o.itemId,0)+"개",696,t+25,11);mutedText(c,o.price==null?"가격 원전 확인 중":o.price+" Gold",526,t+44,8);if(o.purchasable()){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(792,t+12,874,t+47),7,7,p);text(c,"구매",816,t+34,9);}i++;}
   }
   private boolean handleReagentShopTouch(MotionEvent e,float x,float y){
     if(e.getActionMasked()==MotionEvent.ACTION_DOWN){
-      if(reagentShopOpen){if(dist(x,y,891,97)<=25){reagentShopOpen=false;return true;}return true;}
+      if(reagentShopOpen){if(dist(x,y,891,97)<=25){reagentShopOpen=false;return true;}int row=0;for(ReagentShopCatalog.Offer o:ReagentShopCatalog.offers()){float t=128+row++*70;if(o.purchasable()&&inside(x,y,792,t+12,874,t+47)){ReagentPurchase.Result result=ReagentPurchase.buy(o.itemId,state.rpg(),()->F5mSaveStore.writable()&&F5mSaveStore.checkpointActive());if(result==ReagentPurchase.Result.PURCHASED)showReward(o.name+" 구매 · Gold -"+o.price);else showFeedback(result==ReagentPurchase.Result.INSUFFICIENT_GOLD?"골드가 부족합니다":result==ReagentPurchase.Result.SAVE_FAILED?"저장 실패 · 구매를 취소했습니다":"구매할 수 없습니다",FeedbackTone.WARN);return true;}}return true;}
       if(reagentShopAdapter==null)return true;
       WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(ReagentShopInteriorDef.MERLIN_X,ReagentShopInteriorDef.MERLIN_Y);
       if(dist(x,y,m.x,m.y-22)<=42){reagentShopOpen=true;reagentShopAdapter.cancelForAction();joy=false;vx=vy=0;showFeedback("멀린 · 시약 판매",FeedbackTone.INFO);return true;}

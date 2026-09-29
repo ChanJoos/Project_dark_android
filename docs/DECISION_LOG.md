@@ -95,3 +95,10 @@
 사용자는 숙련도 조건을 제거하고 원작 습득 규칙 대신 스탯과 돈/필요 아이템으로 스킬창에서 직접 배우도록 확정했다. 기존 캡처 직업·승급·서클·레벨·선행 숙련 조건은 프로젝트 학습 제한으로 더 이상 적용하지 않는다. 직업은 목록 분류일 뿐이다. 스탯은 FinalStats, 재료는 현재 inventory, 돈은 Gold로 판정한다. 습득 버튼에서 한 번 검증·결제·학습·저장하며 NPC/추가 확인을 요구하지 않는다. 창 열기만으로 자동 결제/학습하지 않는다.
 
 Gold 등급 가격, 6개 재료 recipe 및 미확정 스탯 tier fallback은 이번 구현의 PROJECT_ADAPTED_V60 밸런스 선택이며 사용자 확정한 원작 수치로 기록하지 않는다. 별도 mobile_learning.json으로 원본 Master/캡처를 보존한다. 명시적 설명/습득 조건 탭, 통일된 중앙 정렬, cyan source corner presentation mask가 현재 UI다. 모든 효과를 구현했다고 주장하지 않고 미구현 효과는 표시한다. 구현/검증은 source `e0f61bf1712e7b18ece4c9602e5dbf82da0bf6f3`, PR #171, SKILL_ACQUISITION_CONTRACT.md 및 PROJECT_STATE의 SKILL-WINDOW-04를 따른다.
+
+
+## 2026-09-30 — v61 일괄 모바일 스킬창 품질 수리
+
+사용자가 출시 품질 검토의 문제들을 한 번에 처리하도록 승인했다. 실제 효과 있는 30개를 기본 목록으로 제공하고 미구현은 명시적 자료 보기로 보존하되 결제/습득을 막는다. 기존 ID/배운 기록은 삭제하지 않는다. 스탯+돈/필요 아이템 학습과 직업/숙련 제한 제거는 유지한다. 원본 없는 아이콘은 project Canvas emblems로 명시적으로 표현하며 다른 스킬 아트를 빌리지 않는다. 큰 카드/상태 필터/분류 dropdown/창 안 결과와 오류 안내/슬롯 강조가 현재 UI다.
+
+기존 재료 경로가 가격null/구매 입력부재로 막혀 있던 supported recipe를 위해 쿠라눔에 프로젝트 ADAPTED 50G 가격과 atomic purchase를 연결했다. 원작 가격 확정이나 다른 미확정 재료 가격 승인으로 해석하지 않는다. 훈련25G 보상 기준 첫 기술2회, 쿠라눔+학비8회 Gold 상당을 검사했으며 실제 플레이 세션 경제 수락은 남는다. 회복은 FinalStats WIS와 표시값을 맞춘다. source `89bad5a620324f9e5b0b3c8fbc7191fe59fb2a1f`, PR #172, SKILL_ACQUISITION_CONTRACT.md / PROJECT_STATE SKILL-WINDOW-05를 따른다.

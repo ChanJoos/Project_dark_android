@@ -24,6 +24,7 @@ public final class SkillAcquisition {
   public Quote quote(SkillBook.Entry e,RpgProgressionState r){
     FinalStats f=r.finalStats();int[] current={f.str,f.intel,f.wis,f.con,f.dex},required=new int[5];
     List<String> blocked=new ArrayList<>();List<Material> materials=new ArrayList<>();JSONObject policy=e==null?null:book.learningPolicy(e.id);long price=-1;
+    if(e!=null&&(e.runtime==null||"검증용".equals(e.job)))blocked.add("현재 배울 수 없는 스킬입니다");
     if(policy==null){blocked.add("습득 정보를 불러오지 못했습니다");}
     else{
       JSONObject stats=policy.optJSONObject("stats");price=policy.optLong("gold",-1);

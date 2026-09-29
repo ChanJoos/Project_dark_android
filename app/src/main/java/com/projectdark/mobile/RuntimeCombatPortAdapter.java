@@ -96,7 +96,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   public CombatResolver.EffectResult applyDamage(String actorId,String targetId,String actionId,int amount){
     if(SkillRuntimeCatalog.healing(actionId)){
       if(!"player".equals(actorId)||!actorId.equals(targetId)||!state.player().alive)throw new IllegalArgumentException("self heal target");
-      int before=state.player().hp;state.player().hp=Math.min(state.player().maxHp,before+amount+state.rpg().wis());
+      int before=state.player().hp;state.player().hp=Math.min(state.player().maxHp,before+amount+state.rpg().finalStats().wis);
       return new CombatResolver.EffectResult(state.player().hp-before,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,CombatResolver.HitSemantic.HEAL);
     }
     CombatStatPipeline.Channel channel=SkillRuntimeCatalog.magic(actionId)?CombatStatPipeline.Channel.MAGIC:CombatStatPipeline.Channel.PHYSICAL;
@@ -157,3 +157,4 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private static String key(String actorId,String actionId){return String.valueOf(actorId)+'\u0000'+String.valueOf(actionId);}
   private static final class Position { final float x,y; Position(float x,float y){this.x=x;this.y=y;} }
 }
+
