@@ -94,8 +94,12 @@ jobs:
         run: |
           python tools/generate_mobile_skill_policy.py
           git diff --exit-code -- app/src/main/assets/skills/mobile_learning.json
+      - name: Verify skill presentation mapping is reproducible
+        run: |
+          python tools/generate_skill_presentation.py
+          git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv
       - name: Verify skill window, shared combat and restart persistence
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --stacktrace
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit

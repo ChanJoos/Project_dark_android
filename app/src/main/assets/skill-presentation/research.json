@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-30",
+  "sources": [
+    {
+      "url": "https://rockerse.tistory.com/8",
+      "status": "READ_TEXT_NO_ISOLATED_FX"
+    },
+    {
+      "url": "https://infantry0.tistory.com/1735",
+      "status": "READ_TEXT_GIF_403"
+    },
+    {
+      "url": "https://gamezone.live/board_vJGK77/813545",
+      "status": "SEARCH_SNIPPET_PAGE_502"
+    }
+  ],
+  "searchedDomains": [
+    "blog.naver.com",
+    "tistory.com",
+    "lod.nexon.com",
+    "gamezone.live"
+  ],
+  "originalEffectMappedCount": 0,
+  "referenceStatus": "PENDING_REFERENCE",
+  "art": "ADAPTED_NEW_ART"
+}
