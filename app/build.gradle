@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 62
-        versionName '0.62-restored-skill-grid'
+        versionCode 63
+        versionName '0.63-skill-motion-vfx'
     }
     sourceSets {
         main {
