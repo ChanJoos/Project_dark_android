@@ -103,5 +103,18 @@
     "No exact original FX sprite match. New procedural finisher art is reconstructed; existing element/status atlases remain adapted.",
     "Original skill-specific finisher poses, gender equipment registration, exact timings except Dara, and exact damage/cost remain unresolved/adapted.",
     "Dashing, jumping over, teleport, summons, recognition reset and persistent statuses are not implemented by playing misleading generic impacts."
-  ]
+  ],
+  "generatedFinisherArt": {
+    "tool": "built-in image_gen imagegen skill",
+    "asset": "finisher-v65.png",
+    "sha256": "d761f245573b7b8fb8fb1590c73dc1b00d06995148ff8b8c46ae122137fac827",
+    "w": 1086,
+    "h": 1448,
+    "columns": 6,
+    "rows": 8,
+    "alpha": "RGBA preserved unchanged",
+    "promptSummary": "6-column8-row retro transparent sprite atlas: green/white/red blade arcs, blue/red twisting Crasher stems, meteor, dark dragon, golden Dara; progressive emergence/impact/dissipation; no characters/text/background",
+    "originalMatch": false,
+    "runtimeWhiteBlade": "grayscale luminance filter keeps the white-blade row source-described white instead of generated blue"
+  }
 }

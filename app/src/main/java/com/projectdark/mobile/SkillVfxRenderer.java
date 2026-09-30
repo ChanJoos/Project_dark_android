@@ -13,7 +13,7 @@ final class SkillVfxRenderer {
   }
   private final SkillPresentationCatalog catalog;private final Map<String,Bitmap> sheets=new HashMap<>();
   final List<Pulse> pulses=new ArrayList<>();private final Set<String> seen=new HashSet<>();private final Deque<String> history=new ArrayDeque<>();private final Paint p=new Paint();
-  SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
+  SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
   void clear(){pulses.clear();}
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
@@ -26,14 +26,15 @@ final class SkillVfxRenderer {
     if(!caster&&!target)continue;String key=e.actionSequence+":"+(caster?"caster":"target:"+e.targetId);if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
     int row=caster?casterRow(v.caster):v.targetRow;if(caster&&row<0||!caster&&v.target.equals("NONE"))continue;String anchor=caster?e.actorId:e.targetId;
     String sheet=caster?"caster":v.targetSheet;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
-    pulses.add(new Pulse(e.actionSequence,id,sheet,row,anchor,caster,caster?.30f:row<0?.75f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);
+    pulses.add(new Pulse(e.actionSequence,id,sheet,row,anchor,caster,caster?.30f:row<0||sheet.equals("finisher-v65")?.75f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);
   }}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
   void draw(Canvas c,Anchors a){for(Pulse f:pulses){
     if(!f.caster&&f.row<0){SkillPresentationCatalog.Entry v=catalog.get(f.id);if(v!=null){float x=a.x(f.anchor),y=a.y(f.anchor);SkillEffectShapes.draw(c,p,v.target,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y,f.age/f.duration);}continue;}
     Bitmap b=sheets.get(f.sheet);if(b==null)continue;int rows=f.sheet.equals("caster")?4:8,cw=b.getWidth()/6,ch=b.getHeight()/rows;int col=Math.min(5,(int)(f.age/f.duration*6));
     float x=a.x(f.anchor),y=a.y(f.anchor);if(!Float.isFinite(x)||!Float.isFinite(y)){x=f.x;y=f.y;}
-    float size=f.caster?58:68,height=size*ch/(float)cw;float centerY=y-(f.caster?23:25);p.setAlpha(Math.round(255*Math.min(1,(f.duration-f.age)/.10f)));
-    c.drawBitmap(b,new Rect(col*cw,f.row*ch,(col+1)*cw,(f.row+1)*ch),new RectF(x-size/2,centerY-height/2,x+size/2,centerY+height/2),p);
+    float size=f.caster?58:f.sheet.equals("finisher-v65")?82:68,height=size*ch/(float)cw;float centerY=y-(f.caster?23:25);p.setAlpha(Math.round(255*Math.min(1,(f.duration-f.age)/.10f)));
+    if(f.sheet.equals("finisher-v65")&&f.row==1){ColorMatrix white=new ColorMatrix();white.setSaturation(0);p.setColorFilter(new ColorMatrixColorFilter(white));}
+    c.drawBitmap(b,new Rect(col*b.getWidth()/6,f.row*b.getHeight()/rows,(col+1)*b.getWidth()/6,(f.row+1)*b.getHeight()/rows),new RectF(x-size/2,centerY-height/2,x+size/2,centerY+height/2),p);p.setColorFilter(null);
   }p.setAlpha(255);}
 }
