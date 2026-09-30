@@ -31,13 +31,26 @@
       "group": "e",
       "back": [
         8,
-        12,
+        10,
         8
       ],
       "front": [
-        9,
-        15,
-        9
+        12,
+        14,
+        12
+      ]
+    },
+    "THROW": {
+      "group": "d",
+      "back": [
+        0,
+        1,
+        2
+      ],
+      "front": [
+        3,
+        4,
+        5
       ]
     },
     "FRONT_KICK": {
@@ -57,13 +70,13 @@
       "group": "c",
       "back": [
         14,
-        16,
-        17
+        18,
+        14
       ],
       "front": [
         19,
         21,
-        23
+        19
       ]
     },
     "JUMP_KICK": {
@@ -2014,7 +2027,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_002",
@@ -2031,7 +2044,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_003",
@@ -2048,24 +2061,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_004",
       "name": "디바투",
       "job": "전사",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "RAISE",
+      "caster": "ARCANE",
+      "target": "DISPEL",
       "targetSheet": "status",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "targetRow": 5,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_005",
@@ -2082,7 +2095,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_006",
@@ -2099,24 +2112,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_007",
       "name": "바투",
       "job": "전사",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "motion": "RAISE",
+      "caster": "ARCANE",
+      "target": "CURSE",
+      "targetSheet": "status",
+      "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_008",
@@ -2128,12 +2141,12 @@
       "target": "CUT",
       "targetSheet": "target",
       "targetRow": 0,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_009",
@@ -2150,7 +2163,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_010",
@@ -2167,7 +2180,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_011",
@@ -2184,24 +2197,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_012",
       "name": "레스큐",
       "job": "전사",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "motion": "RAISE",
+      "caster": "MARTIAL",
+      "target": "CURSE",
+      "targetSheet": "status",
+      "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_013",
@@ -2218,7 +2231,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_014",
@@ -2235,7 +2248,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_015",
@@ -2252,7 +2265,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_016",
@@ -2269,7 +2282,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_017",
@@ -2286,7 +2299,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_018",
@@ -2294,16 +2307,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "caster": "MARTIAL",
+      "target": "PROTECT",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_019",
@@ -2311,16 +2324,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "caster": "MARTIAL",
+      "target": "CURSE",
+      "targetSheet": "status",
+      "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_020",
@@ -2337,24 +2350,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_021",
       "name": "돌진",
       "job": "전사",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "status",
-      "targetRow": -1,
-      "targetAnchor": "RECIPIENT",
+      "motion": "THRUST",
+      "caster": "SLASH",
+      "target": "CUT",
+      "targetSheet": "target",
+      "targetRow": 0,
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_022",
@@ -2371,7 +2384,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_전사_023",
@@ -2388,7 +2401,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_001",
@@ -2405,7 +2418,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_002",
@@ -2422,75 +2435,75 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_003",
       "name": "표창날리기",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "THROW",
+      "caster": "SLASH",
+      "target": "CUT",
       "targetSheet": "target",
-      "targetRow": -1,
+      "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_004",
       "name": "밀기",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "PUNCH",
+      "caster": "MARTIAL",
+      "target": "BLUNT",
       "targetSheet": "target",
-      "targetRow": -1,
+      "targetRow": 1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_005",
       "name": "아무네지아",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "motion": "THROW",
+      "caster": "ARCANE",
+      "target": "CURSE",
+      "targetSheet": "status",
+      "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_006",
       "name": "연막탄터뜨리기",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "motion": "THROW",
+      "caster": "ARCANE",
+      "target": "BLIND",
+      "targetSheet": "status",
+      "targetRow": 3,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_007",
@@ -2507,7 +2520,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_008",
@@ -2524,7 +2537,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_009",
@@ -2541,7 +2554,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_도적_010",
@@ -2558,7 +2571,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_011",
@@ -2575,7 +2588,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_012",
@@ -2592,24 +2605,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_도적_013",
       "name": "라이트닝무브",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "RAISE",
+      "caster": "MARTIAL",
+      "target": "PROTECT",
       "targetSheet": "status",
-      "targetRow": -1,
+      "targetRow": 4,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_014",
@@ -2626,41 +2639,41 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_015",
       "name": "습격",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "status",
-      "targetRow": -1,
-      "targetAnchor": "RECIPIENT",
+      "motion": "THRUST",
+      "caster": "SLASH",
+      "target": "CUT",
+      "targetSheet": "target",
+      "targetRow": 0,
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_016",
       "name": "센서스",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "motion": "RAISE",
+      "caster": "ARCANE",
+      "target": "DISPEL",
+      "targetSheet": "status",
+      "targetRow": 5,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_017",
@@ -2677,7 +2690,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_도적_018",
@@ -2694,24 +2707,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_도적_019",
       "name": "적갑옷해체",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "motion": "THRUST",
+      "caster": "SLASH",
+      "target": "DISPEL",
+      "targetSheet": "status",
+      "targetRow": 5,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_020",
@@ -2728,7 +2741,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_021",
@@ -2745,7 +2758,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_022",
@@ -2762,24 +2775,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_023",
       "name": "기습",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "status",
-      "targetRow": -1,
-      "targetAnchor": "RECIPIENT",
+      "motion": "THRUST",
+      "caster": "SLASH",
+      "target": "CUT",
+      "targetSheet": "target",
+      "targetRow": 0,
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_024",
@@ -2796,7 +2809,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_025",
@@ -2813,24 +2826,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_도적_026",
       "name": "하이더",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "CAST",
+      "caster": "ARCANE",
+      "target": "TELEPORT",
       "targetSheet": "status",
-      "targetRow": -1,
+      "targetRow": 6,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_027",
@@ -2847,24 +2860,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_028",
       "name": "습격진",
       "job": "도적",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "status",
-      "targetRow": -1,
-      "targetAnchor": "RECIPIENT",
+      "motion": "THRUST",
+      "caster": "SLASH",
+      "target": "CUT",
+      "targetSheet": "target",
+      "targetRow": 0,
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_029",
@@ -2881,7 +2894,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_030",
@@ -2898,7 +2911,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_031",
@@ -2915,7 +2928,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_마법사_001",
@@ -2932,7 +2945,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_002",
@@ -2949,7 +2962,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_003",
@@ -2966,7 +2979,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_004",
@@ -2983,7 +2996,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_005",
@@ -3000,7 +3013,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_006",
@@ -3017,7 +3030,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_007",
@@ -3034,7 +3047,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_008",
@@ -3051,7 +3064,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_009",
@@ -3068,7 +3081,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_010",
@@ -3085,7 +3098,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_011",
@@ -3102,7 +3115,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_012",
@@ -3119,7 +3132,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_013",
@@ -3136,7 +3149,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_014",
@@ -3153,7 +3166,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_015",
@@ -3170,7 +3183,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_016",
@@ -3187,7 +3200,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_017",
@@ -3204,7 +3217,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_018",
@@ -3221,7 +3234,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_019",
@@ -3238,7 +3251,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_020",
@@ -3255,7 +3268,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_021",
@@ -3272,7 +3285,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_022",
@@ -3284,12 +3297,12 @@
       "target": "TELEPORT",
       "targetSheet": "status",
       "targetRow": 6,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_023",
@@ -3306,7 +3319,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_024",
@@ -3323,7 +3336,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_025",
@@ -3340,7 +3353,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_026",
@@ -3357,7 +3370,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_027",
@@ -3374,7 +3387,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_028",
@@ -3391,7 +3404,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_029",
@@ -3408,7 +3421,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_030",
@@ -3425,7 +3438,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_031",
@@ -3442,7 +3455,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_032",
@@ -3459,7 +3472,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_033",
@@ -3476,7 +3489,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_034",
@@ -3485,15 +3498,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
+      "target": "CURSE",
+      "targetSheet": "status",
+      "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_035",
@@ -3510,7 +3523,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_036",
@@ -3527,7 +3540,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_037",
@@ -3544,7 +3557,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_038",
@@ -3561,7 +3574,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_039",
@@ -3578,7 +3591,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_040",
@@ -3595,7 +3608,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_041",
@@ -3612,7 +3625,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_042",
@@ -3629,7 +3642,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_043",
@@ -3646,7 +3659,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_044",
@@ -3663,7 +3676,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_045",
@@ -3672,15 +3685,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "PROTECT",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_046",
@@ -3697,7 +3710,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_047",
@@ -3714,7 +3727,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_048",
@@ -3731,7 +3744,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_049",
@@ -3748,7 +3761,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_050",
@@ -3765,7 +3778,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_051",
@@ -3777,12 +3790,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_052",
@@ -3799,7 +3812,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_001",
@@ -3816,7 +3829,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_002",
@@ -3828,12 +3841,12 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_003",
@@ -3845,12 +3858,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_004",
@@ -3867,7 +3880,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_005",
@@ -3884,7 +3897,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_006",
@@ -3896,12 +3909,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_007",
@@ -3909,16 +3922,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "NONE",
+      "caster": "HEAL",
+      "target": "HEAL",
       "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "targetRow": 7,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_008",
@@ -3930,12 +3943,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_009",
@@ -3952,7 +3965,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_011",
@@ -3969,7 +3982,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_012",
@@ -3986,7 +3999,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_013",
@@ -4003,7 +4016,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_014",
@@ -4015,12 +4028,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_015",
@@ -4037,7 +4050,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_016",
@@ -4054,7 +4067,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_017",
@@ -4071,7 +4084,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_018",
@@ -4080,15 +4093,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "PROTECT",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_019",
@@ -4105,7 +4118,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_020",
@@ -4122,7 +4135,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_021",
@@ -4139,7 +4152,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_022",
@@ -4151,12 +4164,12 @@
       "target": "TELEPORT",
       "targetSheet": "status",
       "targetRow": 6,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_023",
@@ -4168,12 +4181,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_024",
@@ -4182,15 +4195,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "PROTECT",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_025",
@@ -4207,7 +4220,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_026",
@@ -4219,12 +4232,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_027",
@@ -4241,7 +4254,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_028",
@@ -4250,15 +4263,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "PROTECT",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_029",
@@ -4275,7 +4288,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_030",
@@ -4283,16 +4296,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "NONE",
+      "caster": "HEAL",
+      "target": "HEAL",
       "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "targetRow": 7,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_031",
@@ -4309,7 +4322,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_032",
@@ -4326,7 +4339,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_033",
@@ -4343,7 +4356,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_034",
@@ -4360,7 +4373,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_035",
@@ -4377,7 +4390,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_036",
@@ -4394,7 +4407,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_037",
@@ -4411,7 +4424,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_038",
@@ -4428,7 +4441,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_039",
@@ -4437,15 +4450,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "DISPEL",
+      "targetSheet": "status",
+      "targetRow": 5,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_040",
@@ -4462,7 +4475,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_041",
@@ -4474,12 +4487,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_042",
@@ -4491,12 +4504,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_043",
@@ -4508,12 +4521,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_044",
@@ -4525,12 +4538,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_045",
@@ -4539,15 +4552,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "DISPEL",
+      "targetSheet": "status",
+      "targetRow": 5,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_046",
@@ -4559,12 +4572,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_047",
@@ -4576,12 +4589,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_048",
@@ -4593,12 +4606,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_049",
@@ -4610,12 +4623,12 @@
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_001",
@@ -4632,7 +4645,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_002",
@@ -4649,41 +4662,41 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_003",
       "name": "이형환위",
       "job": "무도가",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "JUMP_KICK",
+      "caster": "MARTIAL",
+      "target": "TELEPORT",
       "targetSheet": "status",
-      "targetRow": -1,
-      "targetAnchor": "RECIPIENT",
+      "targetRow": 6,
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_004",
       "name": "미종보법",
       "job": "무도가",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "RAISE",
+      "caster": "MARTIAL",
+      "target": "PROTECT",
       "targetSheet": "status",
-      "targetRow": -1,
+      "targetRow": 4,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_005",
@@ -4700,7 +4713,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_006",
@@ -4717,7 +4730,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_007",
@@ -4734,24 +4747,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_008",
       "name": "경신공",
       "job": "무도가",
       "kind": "기술",
-      "motion": "PUNCH",
+      "motion": "RAISE",
       "caster": "MARTIAL",
-      "target": "TELEPORT",
+      "target": "PROTECT",
       "targetSheet": "status",
-      "targetRow": 6,
+      "targetRow": 4,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_009",
@@ -4768,7 +4781,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_010",
@@ -4785,7 +4798,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_011",
@@ -4802,7 +4815,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_012",
@@ -4819,24 +4832,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_013",
       "name": "철포삼",
       "job": "무도가",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "RAISE",
+      "caster": "MARTIAL",
+      "target": "PROTECT",
       "targetSheet": "status",
-      "targetRow": -1,
+      "targetRow": 4,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_014",
@@ -4853,7 +4866,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_015",
@@ -4870,24 +4883,24 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_016",
       "name": "금강불괴",
       "job": "무도가",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
+      "motion": "RAISE",
+      "caster": "MARTIAL",
+      "target": "PROTECT",
       "targetSheet": "status",
-      "targetRow": -1,
+      "targetRow": 4,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_017",
@@ -4904,7 +4917,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_018",
@@ -4921,11 +4934,28 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_019",
       "name": "소수신공",
+      "job": "무도가",
+      "kind": "기술",
+      "motion": "PUNCH",
+      "caster": "MARTIAL",
+      "target": "BLUNT",
+      "targetSheet": "target",
+      "targetRow": 1,
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
+      "effectEvidence": "ADAPTED_NEW_ART",
+      "originalEffectVerified": false,
+      "combatStatus": "EXISTING_RUNTIME_ONLY",
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+    },
+    {
+      "id": "SK_무도가_020",
+      "name": "다라밀공",
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
@@ -4938,24 +4968,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
-    },
-    {
-      "id": "SK_무도가_020",
-      "name": "다라밀공",
-      "job": "무도가",
-      "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
-      "originalEffectVerified": false,
-      "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_021",
@@ -4972,14 +4985,14 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_022",
       "name": "반탄신공",
       "job": "무도가",
       "kind": "기술",
-      "motion": "PUNCH",
+      "motion": "RAISE",
       "caster": "MARTIAL",
       "target": "PROTECT",
       "targetSheet": "status",
@@ -4989,7 +5002,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_023",
@@ -5006,7 +5019,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_024",
@@ -5023,7 +5036,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_025",
@@ -5040,7 +5053,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_026",
@@ -5057,7 +5070,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_027",
@@ -5074,7 +5087,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_028",
@@ -5083,15 +5096,15 @@
       "kind": "기술",
       "motion": "PUNCH",
       "caster": "MARTIAL",
-      "target": "TELEPORT",
-      "targetSheet": "status",
-      "targetRow": 6,
-      "targetAnchor": "RECIPIENT",
+      "target": "WIND",
+      "targetSheet": "target",
+      "targetRow": 4,
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_029",
@@ -5108,7 +5121,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_공통_001",
@@ -5125,7 +5138,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_공통_002",
@@ -5142,7 +5155,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_003",
@@ -5159,7 +5172,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_004",
@@ -5171,12 +5184,12 @@
       "target": "TELEPORT",
       "targetSheet": "status",
       "targetRow": 6,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_공통_005",
@@ -5193,7 +5206,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_006",
@@ -5210,7 +5223,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_007",
@@ -5227,7 +5240,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_008",
@@ -5244,7 +5257,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_009",
@@ -5261,7 +5274,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_010",
@@ -5278,7 +5291,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_공통_011",
@@ -5295,7 +5308,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_012",
@@ -5312,7 +5325,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_공통_013",
@@ -5321,15 +5334,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "PROTECT",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_032",
@@ -5346,7 +5359,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_성직자_050",
@@ -5355,15 +5368,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "TELEPORT",
+      "targetSheet": "status",
+      "targetRow": 6,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_051",
@@ -5375,12 +5388,12 @@
       "target": "PROTECT",
       "targetSheet": "status",
       "targetRow": 4,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_052",
@@ -5397,7 +5410,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_053",
@@ -5414,7 +5427,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_054",
@@ -5431,7 +5444,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_055",
@@ -5448,7 +5461,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_056",
@@ -5465,7 +5478,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_057",
@@ -5477,12 +5490,12 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_053",
@@ -5499,7 +5512,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_030",
@@ -5516,7 +5529,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_무도가_031",
@@ -5533,7 +5546,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_054",
@@ -5545,20 +5558,20 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_공통_014",
       "name": "유즈스태프",
       "job": "공통",
       "kind": "기술",
-      "motion": "IDLE",
-      "caster": "NONE",
+      "motion": "RAISE",
+      "caster": "ARCANE",
       "target": "NONE",
       "targetSheet": "target",
       "targetRow": -1,
@@ -5567,7 +5580,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_도적_033",
@@ -5584,7 +5597,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_도적_034",
@@ -5601,7 +5614,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Non-combat skills intentionally retain idle/no target effect."
+      "note": "Utility interaction: idle/no recipient combat effect."
     },
     {
       "id": "SK_무도가_032",
@@ -5618,7 +5631,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_058",
@@ -5630,12 +5643,12 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_059",
@@ -5647,12 +5660,12 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "RECIPIENT",
+      "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_성직자_060",
@@ -5669,7 +5682,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_055",
@@ -5678,15 +5691,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
+      "target": "TELEPORT",
+      "targetSheet": "status",
+      "targetRow": 6,
+      "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_056",
@@ -5703,7 +5716,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     },
     {
       "id": "SK_마법사_057",
@@ -5720,7 +5733,7 @@
       "effectEvidence": "ADAPTED_NEW_ART",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose selection is a project adaptation; original per-skill animation was not independently verified."
+      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
     }
   ]
 }

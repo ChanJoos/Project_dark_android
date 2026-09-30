@@ -10,9 +10,10 @@ catalog=json.loads((ROOT/'app/src/main/assets/skills/catalog.json').read_text())
 profiles={
  'CAST':{'group':'b','back':[0,1,2],'front':[3,4,5]},
  'PUNCH':{'group':'e','back':[0,1,0],'front':[2,3,2]},
- 'THRUST':{'group':'e','back':[8,12,8],'front':[9,15,9]},
+ 'THRUST':{'group':'e','back':[8,10,8],'front':[12,14,12]},
+ 'THROW':{'group':'d','back':[0,1,2],'front':[3,4,5]},
  'FRONT_KICK':{'group':'c','back':[0,1,3],'front':[4,5,7]},
- 'SIDE_KICK':{'group':'c','back':[14,16,17],'front':[19,21,23]},
+ 'SIDE_KICK':{'group':'c','back':[14,18,14],'front':[19,21,19]},
  'JUMP_KICK':{'group':'c','back':[24,25,26],'front':[27,28,29]},
  'SWING':{'group':'02','back':[0],'front':[2]},
  'RAISE':{'group':'f','back':[0,1,0],'front':[2,3,2]},
@@ -55,7 +56,49 @@ def choose(r):
  elif any(k in n for k in ['로카','아들레스','이형환위','경신','라이트닝','돌진','습격','기습','미종','하이드','하이더','무영']):
   target='TELEPORT';sheet='status';row=6;anchor='RECIPIENT'
  elif n=='소모니아':target='SUMMON';sheet='status';row=7
+ # Reviewed exceptions use the catalog's effect/recipient description, not name substrings.
+ exceptions={
+  '디바투':('RAISE','ARCANE','DISPEL','status',5),
+  '바투':('RAISE','ARCANE','CURSE','status',0),
+  '레스큐':('RAISE','MARTIAL','CURSE','status',0),
+  '집중':('RAISE','MARTIAL','PROTECT','status',4),
+  '포효':('RAISE','MARTIAL','CURSE','status',0),
+  '돌진':('THRUST','SLASH','CUT','target',0),
+  '표창날리기':('THROW','SLASH','CUT','target',0),
+  '밀기':('PUNCH','MARTIAL','BLUNT','target',1),
+  '아무네지아':('THROW','ARCANE','CURSE','status',0),
+  '연막탄터뜨리기':('THROW','ARCANE','BLIND','status',3),
+  '라이트닝무브':('RAISE','MARTIAL','PROTECT','status',4),
+  '습격':('THRUST','SLASH','CUT','target',0),
+  '습격진':('THRUST','SLASH','CUT','target',0),
+  '기습':('THRUST','SLASH','CUT','target',0),
+  '센서스':('RAISE','ARCANE','DISPEL','status',5),
+  '적갑옷해체':('THRUST','SLASH','DISPEL','status',5),
+  '하이더':('CAST','ARCANE','TELEPORT','status',6),
+  '이형환위':('JUMP_KICK','MARTIAL','TELEPORT','status',6),
+  '미종보법':('RAISE','MARTIAL','PROTECT','status',4),
+  '경신공':('RAISE','MARTIAL','PROTECT','status',4),
+  '철포삼':('RAISE','MARTIAL','PROTECT','status',4),
+  '금강불괴':('RAISE','MARTIAL','PROTECT','status',4),
+  '반탄신공':('RAISE','MARTIAL','PROTECT','status',4),
+  '다라밀공':('PUNCH','MARTIAL','BLUNT','target',1),
+  '무영신공':('PUNCH','MARTIAL','WIND','target',4),
+  '쿠러스':('CAST','HEAL','HEAL','target',7),
+  '콜라마':('CAST','ARCANE','PROTECT','status',4),
+  '호르라마':('CAST','ARCANE','PROTECT','status',4),
+  '코마디아':('CAST','HEAL','HEAL','target',7),
+  '홀리큐어':('CAST','ARCANE','DISPEL','status',5),
+  '홀리큐레스':('CAST','ARCANE','DISPEL','status',5),
+  '매직프로텍션':('CAST','ARCANE','PROTECT','status',4),
+  '세멜리아':('CAST','ARCANE','CURSE','status',0),
+  '리치마나':('CAST','ARCANE','PROTECT','status',4),
+  '아지토':('CAST','ARCANE','TELEPORT','status',6),
+  '마나스페라':('CAST','ARCANE','PROTECT','status',4),
+  '유즈스태프':('RAISE','ARCANE','NONE','target',-1),
+ }
+ if n in exceptions:motion,caster,target,sheet,row=exceptions[n]
  if motion=='IDLE' and kind=='기술':caster='NONE';target='NONE';row=-1
+ if target!='NONE':anchor='RECIPIENT' if r.get('target') in ['자신','아군','아군/자신'] else 'TARGET'
  return motion,caster,target,sheet,row,anchor
 
 entries=[]
@@ -66,7 +109,7 @@ for r in catalog:
   caster=caster,target=target,targetSheet=sheet,targetRow=row,targetAnchor=anchor,
   poseEvidence='SOURCE_PIXELS + PROJECT_SELECTED_POSE',effectEvidence='ADAPTED_NEW_ART',
   originalEffectVerified=False,combatStatus='EXISTING_RUNTIME_ONLY',
-  note='Non-combat skills intentionally retain idle/no target effect.' if motion=='IDLE' else 'Pose selection is a project adaptation; original per-skill animation was not independently verified.'))
+  note='Utility interaction: idle/no recipient combat effect.' if motion=='IDLE' else 'Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified.'))
 frames=list(csv.DictReader((ROOT/'master/data/Asset_Animation_Frame_Master.csv').open(encoding='utf-8-sig')))
 manifest={}
 for sex in ['mm001','wm001']:
