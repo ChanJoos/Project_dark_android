@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 61
-        versionName '0.61-mobile-skill-flow'
+        versionCode 62
+        versionName '0.62-restored-skill-grid'
     }
     sourceSets {
         main {
