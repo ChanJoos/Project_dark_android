@@ -97,9 +97,9 @@ jobs:
       - name: Verify skill presentation mapping is reproducible
         run: |
           python tools/generate_skill_presentation.py
-          git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv
+          git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
       - name: Verify skill window, shared combat and restart persistence
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --stacktrace
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit

@@ -1,26 +1,107 @@
 {
-  "date": "2026-09-30",
+  "revision": "SOURCE_REVIEWED_V65",
+  "reviewDate": "2026-09-30",
+  "scope": "219 catalog IDs, all five jobs and common skills",
+  "originalEffectPixelsAuthenticated": 0,
   "sources": [
     {
-      "url": "https://rockerse.tistory.com/8",
-      "status": "READ_TEXT_NO_ISOLATED_FX"
+      "id": "USER_SKILLS_PDF",
+      "type": "USER_ATTACHMENT_FAN_REFERENCE",
+      "file": "02-_-.PDF",
+      "sha256": "ed00844bb3c4c2de58c2dd36bbce2712bf4a40d553c8f3007ba8dc04de9d5c51",
+      "result": "READ_ALL_JOB_SECTIONS",
+      "limitations": "classic and newer balance descriptions coexist; Master scope stays 219 IDs"
     },
     {
-      "url": "https://infantry0.tistory.com/1735",
-      "status": "READ_TEXT_GIF_403"
+      "id": "USER_YOUTUBE_03",
+      "file": "03-Screen_Recording_20260915_003701_YouTube.mp4",
+      "type": "VIDEO_INSPECTED",
+      "result": "sampled 0,6,12,18,24,30,36s",
+      "limitations": "Milles travel, not individual combat effect proof"
+    },
+    {
+      "id": "USER_YOUTUBE_04",
+      "file": "04-Screen_Recording_20260915_003420_YouTube.mp4",
+      "type": "VIDEO_INSPECTED",
+      "result": "sampled 0,6,12,18,24,30,36,42s",
+      "limitations": "travel/world/brief effects without identified skill; no per-skill inference"
+    },
+    {
+      "url": "https://rockerse.tistory.com/4?category=907422",
+      "type": "FAN_TEXT",
+      "result": "warrior progression/context"
+    },
+    {
+      "url": "https://rockerse.tistory.com/5",
+      "type": "FAN_TEXT",
+      "result": "rogue reconnaissance and combat context"
+    },
+    {
+      "url": "https://rockerse.tistory.com/6?category=907422",
+      "type": "FAN_TEXT",
+      "result": "Fravera screen-wide curse independently supports correcting Master single-target label"
+    },
+    {
+      "url": "https://rockerse.tistory.com/8",
+      "type": "FAN_TEXT",
+      "result": "martial ranged Dara, 3-tile Baekbo; timing/cost conflicts retained, not official"
+    },
+    {
+      "url": "https://lod.nexon.com/community/game/395118?SearchBoard=2",
+      "type": "NEXON_HOSTED_FAN_TEXT",
+      "result": "ambush recognition condition distinct from ranged reset distance"
+    },
+    {
+      "url": "https://lod.nexon.com/Community/game/389489?Category2=1&SearchBoard=2",
+      "type": "NEXON_HOSTED_FAN_TEXT",
+      "result": "Amnesia fails adjacent; step back one tile before recognition reset"
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/1407",
+      "type": "NEXON_HOSTED_FAN_EXPERIMENT",
+      "result": "HolyDragon dark-element evidence; not a holy bolt alias"
+    },
+    {
+      "url": "https://lod.nexon.com/news/hades/5167",
+      "type": "OFFICIAL_NEWER_VERSION",
+      "result": "read to distinguish modern ki skills; never substitute ki-bungak3 for classic bungak1"
+    },
+    {
+      "url": "https://www.gamezone.live/board_vJGK77/813566",
+      "type": "FAN_GIF_INDEX",
+      "result": "SEARCH_INDEX_READ_ORIGIN_HTTP502",
+      "limitations": "motion GIF labels found; GIF bytes inaccessible, cannot count as viewed animation"
     },
     {
       "url": "https://gamezone.live/board_vJGK77/813545",
-      "status": "SEARCH_SNIPPET_PAGE_502"
+      "type": "FAN_MAGE_EFFECT_INDEX",
+      "result": "SEARCH_INDEX_READ_ORIGIN_HTTP502"
+    },
+    {
+      "url": "https://jin3260.tistory.com/55?category=649241",
+      "type": "EMULATOR_CLIENT_SCREENSHOTS",
+      "result": "HTML_READ_IMAGE_HTTP403",
+      "limitations": "emulator post not original server authority; images not visually inspected"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=aVfFpNbcV-c",
+      "type": "YOUTUBE",
+      "result": "FOUND_FETCH_THROTTLED",
+      "limitations": "do not claim a full video review"
+    },
+    {
+      "domain": "blog.naver.com",
+      "type": "NAVER",
+      "result": "SEARCH_ATTEMPT_ROBOTS_BLOCKED",
+      "limitations": "cannot report Naver visual review complete"
     }
   ],
-  "searchedDomains": [
-    "blog.naver.com",
-    "tistory.com",
-    "lod.nexon.com",
-    "gamezone.live"
-  ],
-  "originalEffectMappedCount": 0,
-  "referenceStatus": "PENDING_REFERENCE",
-  "art": "ADAPTED_NEW_ART"
+  "contractNotes": [
+    "Tile masks and boundaries apply to damage and status presentations on shared Resolver at start and contact.",
+    "Reach0 means original maximum unresolved; runtime permits visible same-map targets only, an adaptation.",
+    "Positive min/max shuriken reach uses an adapted Chebyshev tile metric; only max4 and non-adjacent are source backed.",
+    "No exact original FX sprite match. New procedural finisher art is reconstructed; existing element/status atlases remain adapted.",
+    "Original skill-specific finisher poses, gender equipment registration, exact timings except Dara, and exact damage/cost remain unresolved/adapted.",
+    "Dashing, jumping over, teleport, summons, recognition reset and persistent statuses are not implemented by playing misleading generic impacts."
+  ]
 }

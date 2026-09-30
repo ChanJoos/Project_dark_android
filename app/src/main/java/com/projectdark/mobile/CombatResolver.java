@@ -36,7 +36,9 @@ public final class CombatResolver {
     public EffectResult(int a,boolean d,DefeatPublication p,DefeatedTargetKind k,HitSemantic h){appliedAmount=Math.max(0,a);defeatedNow=d;defeatPublication=p==null?DefeatPublication.RESOLVER_OWNS:p;defeatedTargetKind=k==null?DefeatedTargetKind.OTHER:k;hitSemantic=h==null?HitSemantic.DAMAGE:h;}
     public EffectResult(int a,boolean d){this(a,d,DefeatPublication.RESOLVER_OWNS,DefeatedTargetKind.MONSTER,HitSemantic.DAMAGE);}
   }
-  public interface Port { boolean actorAlive(String id); boolean targetAlive(String id); default boolean canAct(String id){return true;} boolean learned(String a,String id); boolean cooldownReady(String a,String id); boolean hasResource(String a,int n); float distance(String a,String b); boolean hasLineOfSight(String a,String b); void consumeResource(String a,int n); void commitCooldown(String a,String id,float c); EffectResult applyDamage(String a,String b,String id,int n); }
+  public interface Port { boolean actorAlive(String id); boolean targetAlive(String id); default boolean canAct(String id){return true;} boolean learned(String a,String id); boolean cooldownReady(String a,String id); boolean hasResource(String a,int n); float distance(String a,String b); boolean hasLineOfSight(String a,String b); void consumeResource(String a,int n); void commitCooldown(String a,String id,float c); EffectResult applyDamage(String a,String b,String id,int n);
+    default List<String> recipients(String actor,String target,String action){return Collections.singletonList(target);}
+  }
   public static final class Event {
     public final long sequence,actionSequence; public final EventType type; public final String actorId,targetId,actionId; public final ActionState state; public final EffectType effectType; public final InputMode inputMode; public final RejectReason rejectReason; public final HitSemantic hitSemantic; public final int amount;
     Event(long s,long as,EventType t,String a,String target,Definition d,InputMode m,RejectReason r,HitSemantic h,int n){sequence=s;actionSequence=as;type=t;actorId=a;targetId=target;actionId=d.actionId;state=d.state;effectType=d.effectType;inputMode=m;rejectReason=r;hitSemantic=h;amount=n;}
@@ -72,14 +74,18 @@ public final class CombatResolver {
       p.elapsed+=dt; if(p.elapsed<p.d.hitTime)continue;
       RejectReason r=validate(p.d,p.a,p.t,false);
       if(r!=null){cancel(p,r);continue;}
-      EffectResult x=port.applyDamage(p.a,p.t,p.d.actionId,p.d.damage);
-      emit(EventType.EFFECT_APPLIED,p.seq,p.a,p.t,p.d,p.m,null,x.hitSemantic,x.appliedAmount);
-      emit(EventType.HIT_FEEDBACK,p.seq,p.a,p.t,p.d,p.m,null,x.hitSemantic,x.appliedAmount);
+      List<String> recipients=new ArrayList<>(new java.util.LinkedHashSet<>(port.recipients(p.a,p.t,p.d.actionId)));
       activeByActor.remove(p.a);
+      for(String target:recipients){
+      if(!port.targetAlive(target)||!port.hasLineOfSight(p.a,target))continue;
+      EffectResult x=port.applyDamage(p.a,target,p.d.actionId,p.d.damage);
+      emit(EventType.EFFECT_APPLIED,p.seq,p.a,target,p.d,p.m,null,x.hitSemantic,x.appliedAmount);
+      emit(EventType.HIT_FEEDBACK,p.seq,p.a,target,p.d,p.m,null,x.hitSemantic,x.appliedAmount);
       if(x.defeatedNow){
-        interruptDeath(p.t,p.a);
-        if(x.defeatedTargetKind==DefeatedTargetKind.MONSTER&&x.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeated.add(p.t))
-          emit(EventType.MONSTER_DEFEATED,p.seq,p.a,p.t,p.d,p.m,null,x.hitSemantic,0);
+        interruptDeath(target,p.a);
+        if(x.defeatedTargetKind==DefeatedTargetKind.MONSTER&&x.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeated.add(target))
+          emit(EventType.MONSTER_DEFEATED,p.seq,p.a,target,p.d,p.m,null,x.hitSemantic,0);
+      }
       }
     }
   }

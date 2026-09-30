@@ -77,6 +77,7 @@ public final class SkillBook {
   /** Called by a validated acquisition service. UI cannot grant skills. */
   public boolean learn(String id,int proficiency){if(!entries.containsKey(id)||proficiency<0||proficiency>100)return false;learned.put(id,proficiency);return true;}
   public boolean usable(String id){Entry e=get(id);return e!=null&&learned(id)&&jobAllowed(id)&&(e.runtime!=null||testAccess&&previewable(id));}
+  public int basicHits(){int hits=1;for(SkillActionContract.Rule r:SkillActionContract.all())if(r.mode.equals("LINKED")&&learned(r.id)&&jobAllowed(r.id))hits=Math.max(hits,r.hits);if(learned("SK_도적_031")&&jobAllowed("SK_도적_031"))hits++;return hits;}
   public String slot(int index){return index>=0&&index<SLOT_COUNT?(testAccess?testSlots:slots)[index]:null;}
   public boolean assign(int index,String id){if(index<0||index>=SLOT_COUNT||!learned(id))return false;(testAccess?testSlots:slots)[index]=id;return true;}
   /** Adapted progression: each resolved action advances proficiency once, capped at 100. */

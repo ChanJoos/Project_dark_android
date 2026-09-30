@@ -25,15 +25,15 @@ public class SkillTestModeTest {
     v.setSkillTestMode(true);assertTrue(b.usable("SK_무도가_002"));b.assign(0,"SK_마법사_043");b.practiced("SK_마법사_043");assertEquals(before,b.snapshot().toString());v.setSkillTestMode(false);assertEquals(before,b.snapshot().toString());assertEquals("SK_무도가_002",b.slot(0));assertFalse(b.learned("SK_마법사_043"));
   }
   @Test public void lowMpActualMagicAndAllUnsupportedMageClericVisualsAreReachable()throws Exception{
-    GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillBook b=field(v,"skillBook");RuntimeState s=field(v,"state");CombatController combat=field(v,"combat");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-20;s.player().y=m.y;s.player().mp=0;combat.selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
+    GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillBook b=field(v,"skillBook");RuntimeState s=field(v,"state");CombatController combat=field(v,"combat");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;s.player().mp=0;combat.selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
     use(v,b.get("SK_마법사_005"));assertEquals(0,s.player().mp);tick(v,.27f);assertTrue(((SkillVfxRenderer)field(v,"skillVfx")).pulses.stream().anyMatch(p->!p.caster));assertFalse(((RuntimeCombatSession)field(v,"combatSession")).playerActionActive());
     Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);update.invoke(v,.7f);int tested=0;SkillPresentationCatalog catalog=field(v,"skillPresentation");
-    for(SkillBook.Entry e:b.entries())if((e.job.equals("마법사")||e.job.equals("성직자"))&&e.runtime==null){
-      int hp=m.hp,playerHp=s.player().hp,mp=s.player().mp;use(v,e);assertEquals(e.id,field(v,"activeSkillVisualId"));assertFalse(((RuntimeCombatSession)field(v,"combatSession")).playerActionActive());tick(v,.11f);
+    for(SkillBook.Entry e:b.entries())if((e.job.equals("마법사")||e.job.equals("성직자"))&&e.runtime==null&&SkillActionContract.get(e.id).presentationAllowed()){
+      int hp=m.hp,playerHp=s.player().hp,mp=s.player().mp;use(v,e);assertEquals(e.id,field(v,"activeSkillVisualId"));assertTrue(((RuntimeCombatSession)field(v,"combatSession")).playerActionActive());tick(v,.11f);
       if(e.id.equals("SK_마법사_012")){time(v,.11f);render(v,"skill-test-poison-caster.png");}tick(v,.15f);
       assertEquals(hp,m.hp);assertEquals(playerHp,s.player().hp);assertEquals(mp,s.player().mp);assertEquals("CAST",catalog.get(e.id).motion);
       if(e.id.equals("SK_마법사_012")){time(v,.26f);render(v,"skill-test-poison-target.png");}tick(v,.8f);idle(v);tested++;
-    }assertTrue(tested>80);assertEquals("f",catalog.profiles.getJSONObject("CAST").getString("group"));
+    }assertTrue(tested>50);assertEquals("f",catalog.profiles.getJSONObject("CAST").getString("group"));
     SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="성직자";w.selectedId="SK_성직자_029";render(v,"skill-test-cleric-all.png");
   }
   @Test public void productionSlotRegistrationPersistsOutsideNormalSaveAndToggleRestoresNormal()throws Exception{

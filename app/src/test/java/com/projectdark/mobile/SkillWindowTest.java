@@ -34,7 +34,7 @@ public class SkillWindowTest {
   }
   @Test public void selectedSkillAndQuickSlotUseTheSharedCombatGate() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");CombatController combat=field(v,"combat");RuntimeCombatSession session=field(v,"combatSession");
-    RuntimeState.Monster m=r.monsters().get(0);r.player().x=m.x-20;r.player().y=m.y;r.player().mp=20;combat.selectTarget(m);
+    RuntimeState.Monster m=r.monsters().get(0);r.player().x=m.x-32;r.player().y=m.y-16;r.player().mp=20;combat.selectTarget(m);
     job(r,"MAGE");assertTrue(b.learn("SK_마법사_001",0));w.open=true;w.magic=true;w.selectedId="SK_마법사_001";
     tap(v,760,425);tap(v,155,485);assertEquals("SK_마법사_001",b.slot(0));w.close();
     Method slotRect=GameView.class.getDeclaredMethod("slotRect",int.class);slotRect.setAccessible(true);RectF slot=(RectF)slotRect.invoke(v,0);tap(v,slot.centerX(),slot.centerY());

@@ -61,6 +61,8 @@ final class SkillWindow {
       else{icon(c,sl,new RectF(r.left+28,r.top+3,r.left+58,r.top+33));float cd=a.cooldown(sl.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb5000000);center(c,String.format(Locale.ROOT,"%.1f",cd),r.centerX(),r.centerY()+5,13,TEXT);}}
     }
   }
+  private static String spatialLabel(String id){SkillActionContract.Rule r=SkillActionContract.get(id);if(r==null)return "기존 시험 범위";switch(r.pattern){
+    case FRONT:return "전방 "+r.reach+"칸";case CROSS:return "자신 중심 사방 "+r.reach+"칸";case AROUND:return "자신 주변 8칸";case TARGET_CROSS:return "대상 중심 사방 "+r.reach+"칸";case SCREEN:return "화면 안 전체 대상";case FRONT_BACK:return "전후 각 1칸";case SELF:return "자신";case ALLY:return "아군 단일";case GROUP:return "그룹 전체";case SINGLE:return r.reach>0?"거리 "+r.minReach+"~"+r.reach+"칸":"원거리 단일 · 최장 거리 미확정";case PASSIVE:return "장착 허용 패시브";case UTILITY:return "상호작용 전용 · 공격 효과 없음";default:return "원작 대상/범위 확인 중";}}
   private void drawCard(Canvas c,SkillBook.Entry e,RectF r,Actions a){
     boolean active=e.id.equals(selectedId);panel(c,r,active?0xff423a2a:0xff282822,active?0xffd2b278:0xff45453b);
     RectF art=new RectF(r.centerX()-20,r.top+6,r.centerX()+20,r.top+46);icon(c,e,art);
@@ -72,7 +74,7 @@ final class SkillWindow {
   private void drawDetail(Canvas c,SkillBook.Entry e,Actions a){
     SkillAcquisition.Quote q=a.quote(e);icon(c,e,new RectF(536,166,584,214));
     fitted(c,e.name,598,186,236,18,GOLD,true);label(c,e.job+" · "+e.kind,598,207,11,MUTED,false);
-    String status=book.testAccess()?e.runtime==null?"테스트 습득 · 모션/이펙트 시험":"테스트 습득 · 전투 지원":!book.jobAllowed(e.id)?"직업 미충족 · "+e.job+" 전용":e.runtime==null?"자료 미리보기 · 현재 습득 불가":q.learned?"습득 완료" : q.canLearn?"습득 가능":q.blockers.isEmpty()?"습득 불가":q.blockers.get(0);
+    String status=book.testAccess()?e.runtime==null?"테스트 습득 · 범위/연출 시험":"테스트 습득 · 전투 지원":!book.jobAllowed(e.id)?"직업 미충족 · "+e.job+" 전용":e.runtime==null?"자료 미리보기 · 현재 습득 불가":q.learned?"습득 완료" : q.canLearn?"습득 가능":q.blockers.isEmpty()?"습득 불가":q.blockers.get(0);
     if(q.learned){List<String> slots=new ArrayList<>();for(int i=0;i<8;i++)if(e.id.equals(book.slot(i)))slots.add(""+(i+1));if(!slots.isEmpty())status+=" · 슬롯 "+String.join(", ",slots);}
     fitted(c,status,536,228,296,11,q.learned||q.canLearn?GREEN:RED,false);
     tab(c,new RectF(536,238,678,262),"설명",detailPage==0);tab(c,new RectF(686,238,832,262),"습득 조건",detailPage==1);
@@ -80,10 +82,10 @@ final class SkillWindow {
       List<String> lines=wrap(book.summary(e.id),296,12);c.save();c.clipRect(536,270,832,330);for(int i=0;i<Math.min(4,lines.size());i++)label(c,lines.get(i),536,283+i*15,12,TEXT,false);c.restore();
       SkillDef d=e.runtime;boolean basic="SK_공통_001".equals(e.id);String resource=d==null?"—":""+d.mpCost;
       String cd=d==null?"—":basic?"무기 기준":String.format(Locale.ROOT,"%.1f초",d.cooldown);
-      String value=d==null?"—":basic?"무기 기준":d.targetPolicy==SkillDef.TargetPolicy.SELF?""+(d.damage+q.current[2]):""+d.damage;
-      metric(c,536,"소모 MP",resource);metric(c,636,"재사용",cd);metric(c,736,d!=null&&d.targetPolicy==SkillDef.TargetPolicy.SELF?"회복량":"기본 위력",value);
-      if(d==null)label(c,book.testAccess()?"시각 효과 시험 · 실제 전투 판정 준비 중":"습득·결제는 제공하지 않습니다",536,391,10,MUTED,false);
-      else{String target=d.targetPolicy==SkillDef.TargetPolicy.SELF?"자신":d.range<=48?"근접한 적":"원거리 적";float remaining=a.cooldown(e.id);label(c,"대상  "+target,536,391,10,MUTED,false);if(remaining>0)right(c,String.format(Locale.ROOT,"%.1f초 후 사용 가능",remaining),832,391,10,GOLD);}
+      String value=d==null?"—":basic?"무기 기준":SkillRuntimeCatalog.healing(e.id)?""+(d.damage+q.current[2]):""+d.damage;
+      metric(c,536,"소모 MP",resource);metric(c,636,"재사용",cd);metric(c,736,d!=null&&SkillRuntimeCatalog.healing(e.id)?"회복량":"기본 위력",value);
+      if(d==null)fitted(c,book.testAccess()?spatialLabel(e.id):"습득·결제는 제공하지 않습니다",536,391,296,10,MUTED,false);
+      else{String target=spatialLabel(e.id);float remaining=a.cooldown(e.id);fitted(c,target,536,391,296,10,MUTED,false);if(remaining>0)right(c,String.format(Locale.ROOT,"%.1f초 후 사용 가능",remaining),832,391,10,GOLD);}
     }else{
       label(c,"요구 스탯 / 현재 스탯",536,280,10,MUTED,false);
       for(int i=0;i<5;i++){float x=536+(i%3)*100,y=286+(i/3)*27;fill(c,x,y,x+96,y+23,0xff262b24);label(c,SkillAcquisition.STATS[i],x+6,y+16,10,MUTED,false);right(c,q.required[i]+" / "+q.current[i],x+90,y+16,11,q.learned?MUTED:q.current[i]>=q.required[i]?GREEN:RED);}

@@ -4,7 +4,7 @@ import java.util.*;
 
 /** Explicit mobile combat adaptations, independent from read-only Master descriptions.
  * Numeric values are B/ADAPTED balance fixtures, not original server values.
- * Only single-target damage and self healing are implemented here. Never alias utility/AOE skills.
+ * Spatial membership uses the reviewed per-ID contract; balance remains ADAPTED.
  */
 public final class SkillRuntimeCatalog {
   private static final Map<String,SkillDef> DEFINITIONS=new LinkedHashMap<>();
@@ -26,12 +26,19 @@ public final class SkillRuntimeCatalog {
     for(String id:new String[]{"SK_성직자_058","SK_마법사_056","SK_무도가_032","SK_공통_010"})heal(id,6,2f,15);
     heal("SK_성직자_001",8,2f,22);heal("SK_성직자_005",12,3f,35);
     heal("SK_성직자_011",18,4f,50);heal("SK_무도가_017",14,4f,40);
+    for(SkillActionContract.Rule r:SkillActionContract.all()){
+      if(DEFINITIONS.containsKey(r.id)||!r.presentationAllowed()||!r.damage()&&!r.heal())continue;
+      boolean magic="마법".equals(r.kind);
+      DEFINITIONS.put(r.id,new SkillDef(r.id,r.name,magic?SkillDef.ActionClass.MAGIC:SkillDef.ActionClass.TECHNIQUE,
+          r.selfAnchored()?SkillDef.TargetPolicy.SELF:SkillDef.TargetPolicy.ENEMY,magic?12:0,2f,Float.MAX_VALUE,r.heal()?35:24,
+          magic?SkillDef.EffectType.CAST_RING:SkillDef.EffectType.MELEE_ARC,SkillDef.Evidence.ADAPTED));
+    }
   }
   private static void physical(String id,String name,int damage,float cd,float range,boolean kick){DEFINITIONS.put(id,new SkillDef(id,name,SkillDef.ActionClass.TECHNIQUE,SkillDef.TargetPolicy.ENEMY,0,cd,range,damage,kick?SkillDef.EffectType.KICK_ARC:SkillDef.EffectType.MELEE_ARC,SkillDef.Evidence.ADAPTED));}
   private static void magic(String id,int cost,float cd,int damage){DEFINITIONS.put(id,new SkillDef(id,id,SkillDef.ActionClass.MAGIC,SkillDef.TargetPolicy.ENEMY,cost,cd,150f,damage,SkillDef.EffectType.CAST_RING,SkillDef.Evidence.ADAPTED));}
   private static void heal(String id,int cost,float cd,int amount){DEFINITIONS.put(id,new SkillDef(id,id,SkillDef.ActionClass.MAGIC,SkillDef.TargetPolicy.SELF,cost,cd,0f,amount,SkillDef.EffectType.CAST_RING,SkillDef.Evidence.ADAPTED));}
   public static SkillDef get(String id){return DEFINITIONS.get(id);}
   public static Collection<SkillDef> definitions(){return Collections.unmodifiableCollection(DEFINITIONS.values());}
-  public static boolean healing(String id){SkillDef d=get(id);return d!=null&&d.targetPolicy==SkillDef.TargetPolicy.SELF;}
+  public static boolean healing(String id){SkillActionContract.Rule r=SkillActionContract.get(id);return r!=null&&r.heal();}
   public static boolean magic(String id){SkillDef d=get(id);return "cast_proto".equals(id)||d!=null&&d.actionClass==SkillDef.ActionClass.MAGIC;}
 }

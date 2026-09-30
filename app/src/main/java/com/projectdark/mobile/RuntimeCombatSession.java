@@ -72,6 +72,8 @@ public final class RuntimeCombatSession {
   }
 
   public float cooldownRemaining(String actorId,String actionId){return port.cooldownRemaining(actorId,actionId);}
+  public void setSkillVisibility(java.util.function.Predicate<String> visible){port.setVisible(visible);}
+  public void setBasicHits(java.util.function.IntSupplier hits){port.setBasicHits(hits);}
   public Map<String,CombatResolver.Definition> actionDefinitions(){return actions.definitions();}
   public boolean playerActionActive(){return resolver.actionActive(PLAYER_ID);}
 
@@ -89,6 +91,13 @@ public final class RuntimeCombatSession {
 
   /** One shared legality gate prevents Resolver broad-phase distance from becoming a second melee contract. */
   private CombatResolver.RejectReason canonicalMeleeRejectReason(String actorId,String targetId,CombatResolver.Definition definition,CombatResolver.InputMode mode){
+    SkillActionContract.Rule rule=SkillActionContract.get(definition.actionId);
+    if(rule!=null&&PLAYER_ID.equals(actorId)){
+      RuntimeState.Monster target=findMonster(targetId);
+      float tx=PLAYER_ID.equals(targetId)?state.player().x:target==null?Float.NaN:target.x;
+      float ty=PLAYER_ID.equals(targetId)?state.player().y:target==null?Float.NaN:target.y;
+      return SkillActionContract.canStart(rule,state.player().x,state.player().y,tx,ty,PLAYER_ID.equals(targetId)||port.visible(targetId))?null:CombatResolver.RejectReason.RANGE;
+    }
     if(!isCanonicalMeleeAction(definition.actionId))return null;
     float ax,ay,tx,ty;
     if(PLAYER_ID.equals(actorId)){
@@ -133,7 +142,11 @@ public final class RuntimeCombatSession {
       out.add(new CombatResolver.Definition(d.id,magic?CombatResolver.ActionKind.MAGIC:kick?CombatResolver.ActionKind.KICK:CombatResolver.ActionKind.SKILL,
           magic?CombatResolver.ActionState.MAGIC:kick?CombatResolver.ActionState.KICK:CombatResolver.ActionState.SKILL,
           magic?CombatResolver.EffectType.MAGIC_HIT:kick?CombatResolver.EffectType.KICK_HIT:CombatResolver.EffectType.SKILL_HIT,
-          true,d.mpCost,d.cooldown,d.range,magic?.24f:.14f,d.damage));
+          true,d.mpCost,d.cooldown,SkillActionContract.get(d.id)==null?d.range:Float.MAX_VALUE,SkillActionContract.get(d.id)==null?(magic?.24f:.14f):SkillActionContract.get(d.id).contact,d.damage));
+    }
+    for(SkillActionContract.Rule r:SkillActionContract.all())if(r.presentationAllowed()&&SkillRuntimeCatalog.get(r.id)==null){
+      boolean magic="마법".equals(r.kind);
+      out.add(new CombatResolver.Definition(r.id,magic?CombatResolver.ActionKind.MAGIC:CombatResolver.ActionKind.SKILL,magic?CombatResolver.ActionState.MAGIC:CombatResolver.ActionState.SKILL,magic?CombatResolver.EffectType.MAGIC_HIT:CombatResolver.EffectType.SKILL_HIT,true,0,1f,Float.MAX_VALUE,r.contact,0));
     }
     out.add(new CombatResolver.Definition(MONSTER_BASIC_ACTION_ID,CombatResolver.ActionKind.ATTACK,CombatResolver.ActionState.ATTACK,
         CombatResolver.EffectType.PHYSICAL_HIT,false,0,MonsterAIController.ATTACK_COOLDOWN_B,48f,.24f,MonsterAIController.ATTACK_DAMAGE_B));

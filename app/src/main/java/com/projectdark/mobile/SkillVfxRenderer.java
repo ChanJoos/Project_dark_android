@@ -23,13 +23,15 @@ final class SkillVfxRenderer {
     String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null)continue;
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
     boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.hitSemantic!=CombatResolver.HitSemantic.MISS;
-    if(!caster&&!target)continue;String key=e.actionSequence+":"+(caster?"caster":"target");if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
-    int row=caster?casterRow(v.caster):v.targetRow;if(row<0)continue;String anchor=caster?e.actorId:e.targetId;
+    if(!caster&&!target)continue;String key=e.actionSequence+":"+(caster?"caster":"target:"+e.targetId);if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
+    int row=caster?casterRow(v.caster):v.targetRow;if(caster&&row<0||!caster&&v.target.equals("NONE"))continue;String anchor=caster?e.actorId:e.targetId;
     String sheet=caster?"caster":v.targetSheet;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
-    pulses.add(new Pulse(e.actionSequence,id,sheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);
+    pulses.add(new Pulse(e.actionSequence,id,sheet,row,anchor,caster,caster?.30f:row<0?.75f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);
   }}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
-  void draw(Canvas c,Anchors a){for(Pulse f:pulses){Bitmap b=sheets.get(f.sheet);if(b==null)continue;int rows=f.sheet.equals("caster")?4:8,cw=b.getWidth()/6,ch=b.getHeight()/rows;int col=Math.min(5,(int)(f.age/f.duration*6));
+  void draw(Canvas c,Anchors a){for(Pulse f:pulses){
+    if(!f.caster&&f.row<0){SkillPresentationCatalog.Entry v=catalog.get(f.id);if(v!=null){float x=a.x(f.anchor),y=a.y(f.anchor);SkillEffectShapes.draw(c,p,v.target,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y,f.age/f.duration);}continue;}
+    Bitmap b=sheets.get(f.sheet);if(b==null)continue;int rows=f.sheet.equals("caster")?4:8,cw=b.getWidth()/6,ch=b.getHeight()/rows;int col=Math.min(5,(int)(f.age/f.duration*6));
     float x=a.x(f.anchor),y=a.y(f.anchor);if(!Float.isFinite(x)||!Float.isFinite(y)){x=f.x;y=f.y;}
     float size=f.caster?58:68,height=size*ch/(float)cw;float centerY=y-(f.caster?23:25);p.setAlpha(Math.round(255*Math.min(1,(f.duration-f.age)/.10f)));
     c.drawBitmap(b,new Rect(col*cw,f.row*ch,(col+1)*cw,(f.row+1)*ch),new RectF(x-size/2,centerY-height/2,x+size/2,centerY+height/2),p);

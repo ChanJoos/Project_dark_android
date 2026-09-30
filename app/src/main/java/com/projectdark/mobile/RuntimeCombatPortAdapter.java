@@ -28,6 +28,21 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private final LearnedActionPort learnedActions;
   private final ControlPort control;
   private final Map<String,Float> cooldowns=new HashMap<>();
+  private java.util.function.Predicate<String> visible=id->true;
+  private java.util.function.IntSupplier basicHits=()->1;
+  public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
+  public void setVisible(java.util.function.Predicate<String> visible){this.visible=visible;}
+  public boolean visible(String id){return visible.test(id);}
+  public java.util.List<String> recipients(String actor,String target,String action){
+    SkillActionContract.Rule r=SkillActionContract.get(action);
+    if(r==null||!"player".equals(actor))return java.util.Collections.singletonList(target);
+    Position a=position(actor),t=position(target);java.util.List<String> out=new java.util.ArrayList<>();
+    if(a==null||t==null)return out;
+    if(r.pattern==SkillActionContract.Pattern.SINGLE)return visible(target)&&SkillActionContract.canStart(r,a.x,a.y,t.x,t.y,true)?java.util.Collections.singletonList(target):out;
+    if(r.pattern==SkillActionContract.Pattern.SELF||r.pattern==SkillActionContract.Pattern.ALLY||r.pattern==SkillActionContract.Pattern.GROUP){out.add(actor);return out;}
+    for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,t.x,t.y,m.x,m.y,true)&&hasLineOfSight(actor,m.id))out.add(m.id);
+    return out;
+  }
 
   public RuntimeCombatPortAdapter(RuntimeState state,LineOfSightPort lineOfSight,LearnedActionPort learnedActions){
     this(state,lineOfSight,learnedActions,actorId->true);
@@ -94,6 +109,8 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public CombatResolver.EffectResult applyDamage(String actorId,String targetId,String actionId,int amount){
+    SkillActionContract.Rule rule=SkillActionContract.get(actionId);
+    if(rule!=null&&!rule.damage()&&!rule.heal())return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,targetKind(targetId),CombatResolver.HitSemantic.DAMAGE);
     if(SkillRuntimeCatalog.healing(actionId)){
       if(!"player".equals(actorId)||!actorId.equals(targetId)||!state.player().alive)throw new IllegalArgumentException("self heal target");
       int before=state.player().hp;state.player().hp=Math.min(state.player().maxHp,before+amount+state.rpg().finalStats().wis);
@@ -103,6 +120,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     FinalStats attacker="player".equals(actorId)?state.rpg().finalStats():monsterStats();
     FinalStats defender="player".equals(targetId)?state.rpg().finalStats():monsterStats();
     amount=CombatStatPipeline.resolve(amount,channel,attacker,defender).applied;
+    if("player".equals(actorId)&&actionId.startsWith("attack_proto_"))amount*=Math.max(1,Math.min(5,basicHits.getAsInt()));
     if(amount<=0||!entityAlive(actorId)||!entityAlive(targetId))
       return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,
           targetKind(targetId),CombatResolver.HitSemantic.DAMAGE);
@@ -157,4 +175,3 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private static String key(String actorId,String actionId){return String.valueOf(actorId)+'\u0000'+String.valueOf(actionId);}
   private static final class Position { final float x,y; Position(float x,float y){this.x=x;this.y=y;} }
 }
-
