@@ -258,3 +258,8 @@ Capture anchoring: source GIFs show the effect around the caster, so captured co
 ## 2026-09-30 — v68 classic martial/cleric source candidate
 
 Continue PR176/codex/original-skill-contract-v65 from308bc751. Fully read61 labelled classic rows (27 martial/34 cleric); retained132 source media/56 GIFs. Adds missing martial IDs033/034; catalog221, Benusti stays excluded.55 captured effect IDs /85 caster/contact channels,60 source icon bindings, corrected source descriptions/stats/kinds and ally/group/self rules. Original BODY268 bytes preserved. See CLASSIC_MARTIAL_CLERIC_V68.md and source provenance. IMPLEMENTED_CANDIDATE; exact-source build/native review/device/visual acceptance PENDING. Persistent status, travel, summon, party and finisher formulas remain unimplemented; this is not61 complete mechanics. v67 prior run36715127755 SUCCESS but its legacy-graphics captured screenshots were black; corrected native-render test now required.
+# 2026-09-30 — USER-SKILL-SOURCE-01 Naver class sources and icon completion
+
+| Task | Owner | Status/evidence | Next result | Acceptance |
+|---|---|---|---|---|
+| USER-SKILL-SOURCE-01 | Director/Integration | PARTIAL: shared `SK_공통_010` icon added from exact screenshot rows; source hash/crop verified; 136 icon IDs total. Cafe article bodies NOT_READ because no browser target was attached and web tools blocked Cafe access. Android CI PENDING. | Reopen the 11 supplied articles from an active authenticated browser session; extract and cross-check exact skill rows, art/motion/effect mappings, and update the existing PR #176 and program. | Every claimed field cites an article/page row or supplied image; no guessed icons; exact-SHA CI and source/icon audit pass; device/visual status reported separately. |

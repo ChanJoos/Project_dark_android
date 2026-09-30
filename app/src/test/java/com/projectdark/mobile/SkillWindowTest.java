@@ -48,8 +48,8 @@ public class SkillWindowTest {
     tap(v,400,95);chooseJob(v,6);tap(v,158,200);assertTrue(w.magic);assertEquals("성직자",w.job);render(v,"skill-window-cleric.png");tap(v,760,95);assertNull(w.selectedId);render(v,"skill-window-empty.png");tap(v,848,50);assertFalse(w.open);
   }
   @Test public void referenceIconsUseExactIdsAndUnknownDoesNotBorrowArt(){
-    SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertFalse(icons.has("SK_전사_001"));assertTrue(icons.has("SK_전사_012"));assertTrue(icons.has("SK_공통_001"));assertTrue(icons.has("SK_무도가_002"));assertTrue(icons.has("SK_무도가_032"));assertFalse(icons.has("missing"));
-    Bitmap bitmap=Bitmap.createBitmap(60,60,Bitmap.Config.ARGB_8888);assertTrue(icons.draw(new Canvas(bitmap),"SK_마법사_001",new RectF(4,4,44,44)));assertNotEquals(0,bitmap.getPixel(20,20));assertEquals("no cyan corner triangles",0,Color.alpha(bitmap.getPixel(4,4)));
+    SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertFalse(icons.has("SK_전사_001"));assertTrue(icons.has("SK_전사_012"));assertTrue(icons.has("SK_공통_001"));assertTrue(icons.has("SK_공통_010"));assertTrue(icons.has("SK_무도가_002"));assertTrue(icons.has("SK_무도가_032"));assertFalse(icons.has("missing"));
+    Bitmap bitmap=Bitmap.createBitmap(60,60,Bitmap.Config.ARGB_8888);assertTrue(icons.draw(new Canvas(bitmap),"SK_마법사_001",new RectF(4,4,44,44)));assertNotEquals(0,bitmap.getPixel(20,20));bitmap.eraseColor(Color.TRANSPARENT);assertTrue(icons.draw(new Canvas(bitmap),"SK_공통_010",new RectF(4,4,44,44)));assertNotEquals(0,bitmap.getPixel(20,20));assertEquals("no cyan corner triangles",0,Color.alpha(bitmap.getPixel(4,4)));
   }
   @Test public void normalLearningRequiresMatchingJobAndRetainsAtomicCosts() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");
@@ -141,4 +141,3 @@ public class SkillWindowTest {
   @SuppressWarnings("unchecked") private static <T>T field(Object o,String name)throws Exception{Field f=o.getClass().getDeclaredField(name);f.setAccessible(true);return(T)f.get(o);}
   private static void tap(GameView v,float x,float y){MotionEvent e=MotionEvent.obtain(0,0,MotionEvent.ACTION_DOWN,x,y,0);v.onTouchEvent(e);e.recycle();}
 }
-
