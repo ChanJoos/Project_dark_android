@@ -190,6 +190,10 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   /** Obstacle-only sight test; actors do not occlude their own attack endpoints. */
   public boolean hasCombatLineOfSight(String actorId,String targetId){
     float[] a=combatPosition(actorId),b=combatPosition(targetId);if(a==null||b==null)return false;
+    return hasLineOfSight(a[0],a[1],b[0],b[1]);
+  }
+  public boolean hasLineOfSight(float ax,float ay,float bx,float by){
+    float[] a={ax,ay},b={bx,by};
     int steps=Math.max(1,(int)Math.ceil(distance(a[0],a[1],b[0],b[1])/4f));
     for(int i=0;i<=steps;i++){
       float t=i/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;

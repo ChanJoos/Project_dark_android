@@ -12,7 +12,7 @@ import java.util.Set;
 
 /** Tile-locked isometric navigation for the playable village. */
 public final class WorldMoveTargetController {
-  public enum RequestKind { GROUND, NPC_APPROACH, MONSTER_APPROACH, DIRECT_STEP }
+  public enum RequestKind { GROUND, NPC_APPROACH, MONSTER_APPROACH, SKILL_APPROACH, DIRECT_STEP }
   public enum Status { IDLE, MOVING, REACHED, BLOCKED, CANCELLED }
   public enum CancelReason { NONE, REPLACED, DIRECT_INPUT, ACTION, EXPLICIT }
   public enum Direction {
@@ -101,6 +101,28 @@ public final class WorldMoveTargetController {
   public Snapshot requestGroundMove(float x,float y){return begin(RequestKind.GROUND,null,x,y,DEFAULT_GROUND_TOLERANCE);}
   public Snapshot requestNpcApproach(String id,float x,float y,float approachTolerance){return beginEntity(RequestKind.NPC_APPROACH,id,x,y,approachTolerance);}
   public Snapshot requestMonsterApproach(String id,float x,float y,float approachTolerance){return beginEntity(RequestKind.MONSTER_APPROACH,id,x,y,approachTolerance);}
+
+  /** One BFS to the nearest reachable skill-valid tile, rather than a pixel-radius melee proxy. */
+  public List<TileCenter> skillApproachPath(java.util.function.Predicate<TileCenter> legal){
+    TileCenter start=currentTile();if(start==null)return null;
+    java.util.ArrayDeque<Node> queue=new java.util.ArrayDeque<>();Set<String> visited=new HashSet<>();
+    queue.add(new Node(start,0,0,null));visited.add(key(start.x,start.y));
+    while(!queue.isEmpty()){
+      Node n=queue.remove();if(legal.test(n.tile))return reconstruct(n);
+      for(Direction d:Direction.values()){
+        TileCenter next=byCenter.get(key(n.tile.x+d.dx,n.tile.y+d.dy));
+        if(next==null||visited.contains(key(next.x,next.y))||!world.canPlayerOccupy(next.x,next.y)||!edgeTraversable(n.tile,next,d))continue;
+        visited.add(key(next.x,next.y));queue.add(new Node(next,n.g+1,0,n));
+      }
+    }return null;
+  }
+  public Snapshot requestSkillApproach(String id,List<TileCenter> planned){
+    replacedRequestId=status==Status.MOVING?sequence:0;sequence++;kind=RequestKind.SKILL_APPROACH;targetEntityId=id;
+    tolerance=0;cancelReason=CancelReason.NONE;lastStepDirection=null;stepClock=0;waypointIndex=0;
+    if(planned==null)return blocked(walker.worldX(),walker.worldY());
+    path=new ArrayList<>(planned);TileCenter goal=path.isEmpty()?currentTile():path.get(path.size()-1);
+    targetX=goal.x;targetY=goal.y;status=path.isEmpty()?Status.REACHED:Status.MOVING;return snapshot();
+  }
 
   /** Shortest reachable legal melee approach measured in authored tile steps; -1 if unreachable. */
   public int monsterApproachPathSteps(float worldX,float worldY,float approachTolerance){
