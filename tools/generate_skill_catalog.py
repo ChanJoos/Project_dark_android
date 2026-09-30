@@ -1,5 +1,5 @@
 """Deterministic read-only UI projection; no combat formulas or acquisition defaults."""
-import csv, json
+import csv, json, hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 def rows(name):
@@ -21,6 +21,9 @@ rogue=json.loads((root/'master/changes/ROGUE-2015-SOURCE-REVIEW.json').read_text
 assert rogue['status']=='ACCEPTED'
 for correction in rogue['changes']:
     assert correction['field']=='종류'
+    assert hashlib.sha256((root/correction['sourceSnapshot']).read_bytes()).hexdigest()==correction['sourceSnapshotSha256']
+    evidence=json.loads((root/'master/source/skill_fx/naver_cafe_archive_20261001/rogue_evidence.json').read_text())['rows']
+    assert any(row['articleId']==245456 and correction['sourceId'] in row['candidateSkillIds'] and row['sourceKind']==correction['after'] for row in evidence)
     entry=next(e for e in entries if e['id']==correction['sourceId'])
     assert entry['kind']==correction['before']
     entry['kind']=correction['after']
