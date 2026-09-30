@@ -116,5 +116,12 @@
     "promptSummary": "6-column8-row retro transparent sprite atlas: green/white/red blade arcs, blue/red twisting Crasher stems, meteor, dark dragon, golden Dara; progressive emergence/impact/dissipation; no characters/text/background",
     "originalMatch": false,
     "runtimeWhiteBlade": "grayscale luminance filter keeps the white-blade row source-described white instead of generated blue"
+  },
+  "v66Research": {
+    "originalEffectPixelsAuthenticated": 0,
+    "completeDefense": "Supplied combat recording sheet01 frames13-15 reviewed: blue spherical shell; Canvas reconstruction remains ADAPTED",
+    "crasher": "Visually inspected retained dark-crasher3.png from jin3260.tistory.com/55 emulator demonstration; three hooked cyan strokes around NPC. Static reference is not full original-server animation proof. Shared blue/red curves are ADAPTED.",
+    "clientRetrieval": "Current official GameDownload uses signed-in Nexon platform startGame(forceInstall). Historical official-hosted forum links ftp://download.nexon.co.kr/lod/LegendofDarkness.zip. No original effect archive retrieved yet.",
+    "remaining": "All219 source-authenticated effect frames/timing remain pending; current elemental/status/other finisher atlases remain adaptations."
   }
 }

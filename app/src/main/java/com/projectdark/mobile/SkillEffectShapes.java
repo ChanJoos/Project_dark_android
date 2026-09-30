@@ -21,19 +21,19 @@ final class SkillEffectShapes {
       c.drawArc(new RectF(-r+1,-r*1.16f+1,r-1,r*1.16f-1),205,42,false,p);
       p.setStyle(Paint.Style.FILL);
     }else if(name.startsWith("CRASHER_")){
-      // Shared compact radial/vortex silhouette, two palettes. No generic flame-column atlas.
-      int color=name.endsWith("RED")?0xfffa3967:0xff4689ff;
-      float r=(float)Math.sin(Math.min(1,t*1.6f)*Math.PI/2)*27;
-      for(int ring=0;ring<3;ring++){
-        float radius=r*(1-ring*.18f);Path path=new Path();
-        for(int i=0;i<=32;i++){
-          float a=i*(float)Math.PI/16+t*2.3f+ring*.15f;
-          float wave=(i%4==0?1.12f:i%4==1?.92f:.83f),xx=(float)Math.cos(a)*radius*wave,yy=(float)Math.sin(a)*radius*wave;
-          if(i==0)path.moveTo(xx,yy);else path.lineTo(xx,yy);
-        }path.close();p.setColor(color);p.setAlpha(alpha/(ring+1));p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3-ring*.7f);c.drawPath(path,p);
+      // Three hooked cyan/red strokes around recipient; screenshot-backed adapted animation.
+      int color=name.endsWith("RED")?0xfffa3967:0xff35caff;
+      float growth=Math.min(1,t*4),r=29*growth;
+      c.save();c.rotate(t*115);
+      for(int arm=0;arm<3;arm++){
+        c.save();c.rotate(arm*120);Path path=new Path();
+        path.moveTo(-r*.38f,-r*.88f);path.cubicTo(r*.45f,-r*1.14f,r*.95f,-r*.12f,r*.55f,r*.55f);
+        path.cubicTo(r*.25f,r*.94f,-r*.12f,r*.7f,-r*.1f,r*.43f);
+        p.setStyle(Paint.Style.STROKE);p.setStrokeCap(Paint.Cap.ROUND);p.setColor(color);p.setAlpha(alpha/3);p.setStrokeWidth(7);c.drawPath(path,p);
+        p.setAlpha(alpha);p.setStrokeWidth(3);c.drawPath(path,p);
+        p.setColor(0xffedfbff);p.setStrokeWidth(1);c.drawPath(path,p);c.restore();
       }
-      p.setStyle(Paint.Style.FILL);
-      for(int i=0;i<8;i++){float a=i*(float)Math.PI/4+t*2.3f;pixel(c,p,(float)Math.cos(a)*r,(float)Math.sin(a)*r,2,0xffeee8ff,alpha);}
+      c.restore();p.setStrokeCap(Paint.Cap.BUTT);p.setStyle(Paint.Style.FILL);
     }else if(name.equals("METEOR")){
       float f=Math.min(1,t*2),mx=-36*(1-f),my=-75*(1-f);
       for(int i=0;i<8;i++)pixel(c,p,mx-i*3,my-i*6,6-i*.5f,0xffed8132,alpha);
