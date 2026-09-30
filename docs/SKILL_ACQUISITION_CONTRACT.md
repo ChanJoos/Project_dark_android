@@ -1,3 +1,7 @@
+# Latest presentation override — v62
+
+User prefers the v60 4×3 icon grid and seven direct job tabs. This overrides the v61 six-card/dropdown layout only. Learning, material purchase, supported-only default/no-charge archive, atomic saves, actual healing and shared cooldown rules below remain authoritative. Description/conditions use fixed tabs; restored input coordinates are covered by the existing end-to-end tests. Device/visual acceptance pending.
+
 # Current mobile skill flow contract — v61
 
 Latest user instruction accepts the full launch-quality skill-window repair scope. v60 is retained below as history; this section overrides conflicting consumer behavior.
@@ -30,3 +34,5 @@ Existing 29 B/ADAPTED attack/self-heal definitions and basic weapon attack remai
 
 SkillWindowTest covers UI learn/register/clear, stat/Gold/material rejection, no job/prerequisite gate, duplicate payment, save-failure rollback, persisted Gold/items/skills restart, all policy IDs, stable descriptions, exact-ID rendering and cooldown blocking/expiry. Native Canvas evidence is not physical-device acceptance. Closure records exact SHA/CI/artifact/hash and v59 user rejection in PROJECT_STATE/handoff.
 
+
+Final verification: Actions 36667530858 / job109735322078 SUCCESS, source af63d7d24e3734700cfd414ddac65f96b543ac2c; actual synthetic merge checkout cf46ea11259232588035483637872f0a7d6501bd into main48037b694b5a034e5851c1a240b61cd05dc81682. All 16 SkillWindowTest cases and configured regressions/assembleDebug passed. APK artifact11076641254, versionCode62, built2026-09-30 13:10:54 KST, 13,069,271 bytes, SHA25626e5da74bc6e743fd3decfd9719cde101983f3ae2573ef0201dc32a362a49229. Packaged learning policy/icons/captures match retained source bytes. Render artifact11077080799 overview/shop-learned/cooldown reviewed: centered grid labels, direct tabs, completed costs, slot feedback and shared cooldown visible. Physical-device and user visual acceptance remain pending. Closure commit changes documentation only.

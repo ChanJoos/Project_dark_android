@@ -141,3 +141,10 @@ Verification pending: exact-SHA Actions, direct fourth-utility reachability, sou
 ## v59 습득/퀵슬롯 후속 인계 — 2026-09-30
 
 Source `30cb18baa2268c60067bd3f6d33e921b935154f8`, PR #170, successful run `36631412453`, APK artifact `11061669352`. `SKILL_ACQUISITION_CONTRACT.md`와 PROJECT_STATE의 SKILL-WINDOW-03이 현재 구현 계약이다. 사용자는 캡처 조건을 실제 습득 검사로 적용하도록 선택했다. 기본공격은 starting COMMONER에서 UI 습득/등록/전투 입력이 검증됐다; 직업별 테스트는 job fixture이며 정식 전직 경로를 완료로 판단하지 않는다. 135 source icons, 29 B/ADAPTED combat/heal actions + existing basic attack. 다음 작업은 실제 전직 경로와 사용자 기기 검수, 그 뒤 미구현 특수효과/미확정 조건이다. 빌드/테스트/캡처 성공을 기기 수락으로 승격하지 않는다.
+
+
+## 2026-09-30 — SKILL-WINDOW-06 v62 preferred grid restoration
+
+User prefers v60's 4×3 grid over v61's six-card layout. Restore centered icon/name cells, seven direct job tabs and compact description/requirements frame. Preserve v61's 30 supported actions, unsupported no-charge archive, stat/Gold/material atomic learning, Curanum purchase, FinalStats healing, slot checkpoint rollback and shared cooldown. Production-input tests follow the restored coordinates. Source af63d7d24e3734700cfd414ddac65f96b543ac2c; PR #173; Actions 36667530858 SUCCESS. Physical device and user visual acceptance pending. Previous v61 layout is user-rejected, not a new combat failure report.
+
+Final verification: Actions 36667530858 / job109735322078 SUCCESS, source af63d7d24e3734700cfd414ddac65f96b543ac2c; actual synthetic merge checkout cf46ea11259232588035483637872f0a7d6501bd into main48037b694b5a034e5851c1a240b61cd05dc81682. All 16 SkillWindowTest cases and configured regressions/assembleDebug passed. APK artifact11076641254, versionCode62, built2026-09-30 13:10:54 KST, 13,069,271 bytes, SHA25626e5da74bc6e743fd3decfd9719cde101983f3ae2573ef0201dc32a362a49229. Packaged learning policy/icons/captures match retained source bytes. Render artifact11077080799 overview/shop-learned/cooldown reviewed: centered grid labels, direct tabs, completed costs, slot feedback and shared cooldown visible. Physical-device and user visual acceptance remain pending. Closure commit changes documentation only.
