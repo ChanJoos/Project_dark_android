@@ -2243,10 +2243,10 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_전사_014",
@@ -2277,10 +2277,10 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "USER_CONFIRMED_SHARED_SHAPE_BLUE_RED_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_전사_016",
@@ -2396,10 +2396,10 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_전사_023",
@@ -2413,10 +2413,10 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "USER_CONFIRMED_SHARED_SHAPE_BLUE_RED_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_도적_001",
@@ -2753,10 +2753,10 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "전방 인접 한 타일"
+      "note": "전방 인접 한 타일; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_도적_021",
@@ -2872,10 +2872,10 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "전방 인접 한 타일"
+      "note": "전방 인접 한 타일; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_도적_028",
@@ -4980,10 +4980,10 @@
       "targetRow": 7,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "SOURCE_FORM_WHERE_AVAILABLE + IMAGEGEN_RECONSTRUCTION_NOT_ORIGINAL",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "원거리 단일, 캐스팅3초; 원작 최장 거리 미확정, 화면 내 제한."
+      "note": "원거리 단일, 캐스팅3초; 원작 최장 거리 미확정, 화면 내 제한.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_무도가_021",
@@ -4991,16 +4991,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
+      "caster": "NONE",
       "target": "QI_BLAST",
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "원작 사방 필살기 확인. 반경 한 타일은 프로젝트 적용."
+      "note": "원작 사방 필살기 확인. 반경 한 타일은 프로젝트 적용.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_무도가_022",
@@ -5025,16 +5025,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
+      "caster": "NONE",
       "target": "QI_BLAST",
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_무도가_024",

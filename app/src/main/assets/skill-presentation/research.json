@@ -123,5 +123,14 @@
     "crasher": "Visually inspected retained dark-crasher3.png from jin3260.tistory.com/55 emulator demonstration; three hooked cyan strokes around NPC. Static reference is not full original-server animation proof. Shared blue/red curves are ADAPTED.",
     "clientRetrieval": "Current official GameDownload uses signed-in Nexon platform startGame(forceInstall). Historical official-hosted forum links ftp://download.nexon.co.kr/lod/LegendofDarkness.zip. No original effect archive retrieved yet.",
     "remaining": "All219 source-authenticated effect frames/timing remain pending; current elemental/status/other finisher atlases remain adaptations."
+  },
+  "v67Research": {
+    "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/401229",
+    "scrapSource": "https://m.blog.naver.com/180921/221777831873",
+    "result": "NINE_GIF_BYTES_RETAINED_AND_VISUALLY_INSPECTED",
+    "revision": "FAN_CAPTURE_MATTED_V67",
+    "frames": 112,
+    "nativeArchivePixels": false,
+    "scope": "Nine finisher effects use captured motion at contact, anchored to the caster shown in the source GIF. Occluded pixels and clipped edges remain missing; alpha/pivot/scale are approximate. Other210 IDs remain unresolved/adapted."
   }
 }
