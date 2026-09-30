@@ -1,0 +1,117 @@
+{
+  "revision": "CAFE_OFFLINE_ARCHIVE_PARTIAL_20261001",
+  "collectedAt": "2026-09-30T20:39:47.341508+00:00",
+  "evidence": "FAN_HISTORICAL_ARTICLE",
+  "bodySnapshots": 5,
+  "mediaBinaryCollectionComplete": false,
+  "complete": false,
+  "collectionBlocker": "Automatic browser approval review interpreted the request to avoid future revisits as a current no-visit restriction. Further Cafe browsing stopped pending clarification.",
+  "existingRetainedMediaArchives": [
+    "master/source/skill_fx/naver_401229/provenance.json",
+    "master/source/skill_fx/naver_classic_2020/provenance.json",
+    "master/source/skill_fx/user_20260930"
+  ],
+  "articles": [
+    {
+      "articleId": 191105,
+      "label": "전사 1서클",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191105?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "BODY_RETAINED_MEDIA_PENDING",
+      "snapshotPath": "master/source/skill_fx/naver_cafe_archive_20261001/191105.json",
+      "snapshotSha256": "9bb0cfb3117b8f313d01b59f894be34fd83cf8141e277d2f35b59098aff11bc8",
+      "observedTitle": "[전사] - 1써클 기술 : 네이버 카페",
+      "textCharacters": 1271,
+      "imageReferences": 5,
+      "htmlRetained": false,
+      "resolvedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191105?fromList=true&menuId=132&tc=cafe_article_list"
+    },
+    {
+      "articleId": 191110,
+      "label": "전사 2서클",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191110?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "BODY_RETAINED_MEDIA_PENDING",
+      "snapshotPath": "master/source/skill_fx/naver_cafe_archive_20261001/191110.json",
+      "snapshotSha256": "dda1e5dd83cc74a89b0022bd9d6e43e12e993690a52efd60ff276ad94fa5f96e",
+      "observedTitle": "[전사] - 2써클 기술 : 네이버 카페",
+      "textCharacters": 1808,
+      "imageReferences": 10,
+      "htmlRetained": true,
+      "resolvedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191110?fromList=true&menuId=132&tc=cafe_article_list"
+    },
+    {
+      "articleId": 191114,
+      "label": "전사 3서클",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191114?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "BODY_RETAINED_MEDIA_PENDING",
+      "snapshotPath": "master/source/skill_fx/naver_cafe_archive_20261001/191114.json",
+      "snapshotSha256": "a602ca38acfb1f40944f274e1bc44c220606b403feabd5135704416368ad5026",
+      "observedTitle": "[전사] - 3써클 기술 : 네이버 카페",
+      "textCharacters": 1625,
+      "imageReferences": 8,
+      "htmlRetained": true,
+      "resolvedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191114?fromList=true&menuId=132&tc=cafe_article_list"
+    },
+    {
+      "articleId": 191241,
+      "label": "전사 4서클",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191241?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "BODY_RETAINED_MEDIA_PENDING",
+      "snapshotPath": "master/source/skill_fx/naver_cafe_archive_20261001/191241.json",
+      "snapshotSha256": "c5ced964d90f2df51583d11e9af24bb68af9c9bdea60307e7422649265f638ee",
+      "observedTitle": "[전사] - 4써클 기술 : 네이버 카페",
+      "textCharacters": 3004,
+      "imageReferences": 19,
+      "htmlRetained": true,
+      "resolvedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191241?fromList=true&menuId=132&tc=cafe_article_list"
+    },
+    {
+      "articleId": 191445,
+      "label": "전사 5서클",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191445?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "NOT_COLLECTED_THIS_EXECUTION"
+    },
+    {
+      "articleId": 191777,
+      "label": "전사 승급",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191777?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "BODY_RETAINED_MEDIA_PENDING",
+      "snapshotPath": "master/source/skill_fx/naver_cafe_archive_20261001/191777.json",
+      "snapshotSha256": "211c54587ac8665fefa2d2c13b148414c2510c7c41f7b2274ff75fcd401455c3",
+      "observedTitle": "[전사] - 승급 기술 : 네이버 카페",
+      "textCharacters": 4685,
+      "imageReferences": 23,
+      "htmlRetained": true,
+      "resolvedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/191777?fromList=true&menuId=132&tc=cafe_article_list"
+    },
+    {
+      "articleId": 401229,
+      "label": "필살기",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/401229?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "NOT_COLLECTED_THIS_EXECUTION"
+    },
+    {
+      "articleId": 415456,
+      "label": "무도가 기술·마법",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415456?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "NOT_COLLECTED_THIS_EXECUTION"
+    },
+    {
+      "articleId": 416044,
+      "label": "성직자 마법",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416044?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "NOT_COLLECTED_THIS_EXECUTION"
+    },
+    {
+      "articleId": 245450,
+      "label": "도적 기술",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "NOT_COLLECTED_THIS_EXECUTION"
+    },
+    {
+      "articleId": 245456,
+      "label": "도적 마법",
+      "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?fromList=true&menuId=132&tc=cafe_article_list",
+      "status": "NOT_COLLECTED_THIS_EXECUTION"
+    }
+  ]
+}
