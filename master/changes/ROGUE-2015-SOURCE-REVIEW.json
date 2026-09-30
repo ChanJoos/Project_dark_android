@@ -1,0 +1,91 @@
+{
+  "id": "ROGUE-2015-SOURCE-REVIEW",
+  "status": "PROPOSED",
+  "changes": [
+    {
+      "sourceSheet": "Skill_Master",
+      "sourceId": "SK_도적_013",
+      "field": "종류",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245456.json",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "sourceSnapshotSha256": "b7c592861f0291b852a6fd1b26d99d50600f9548dc54bc6cbedf311e0e0a819f",
+      "reason": "Article explicitly categorizes this heading as Rogue magic; source job semantics are preserved.",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015"
+    },
+    {
+      "sourceSheet": "Skill_Master",
+      "sourceId": "SK_도적_011",
+      "field": "종류",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245456.json",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "sourceSnapshotSha256": "b7c592861f0291b852a6fd1b26d99d50600f9548dc54bc6cbedf311e0e0a819f",
+      "reason": "Article explicitly categorizes this heading as Rogue magic; source job semantics are preserved.",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015"
+    },
+    {
+      "sourceSheet": "Skill_Master",
+      "sourceId": "SK_도적_012",
+      "field": "종류",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245456.json",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "sourceSnapshotSha256": "b7c592861f0291b852a6fd1b26d99d50600f9548dc54bc6cbedf311e0e0a819f",
+      "reason": "Article explicitly categorizes this heading as Rogue magic; source job semantics are preserved.",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015"
+    },
+    {
+      "sourceSheet": "Skill_Master",
+      "sourceId": "SK_도적_016",
+      "field": "종류",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245456.json",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "sourceSnapshotSha256": "b7c592861f0291b852a6fd1b26d99d50600f9548dc54bc6cbedf311e0e0a819f",
+      "reason": "Article explicitly categorizes this heading as Rogue magic; source job semantics are preserved.",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015"
+    },
+    {
+      "sourceSheet": "Skill_Master",
+      "sourceId": "SK_도적_017",
+      "field": "종류",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245456.json",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "sourceSnapshotSha256": "b7c592861f0291b852a6fd1b26d99d50600f9548dc54bc6cbedf311e0e0a819f",
+      "reason": "Article explicitly categorizes this heading as Rogue magic; source job semantics are preserved.",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015"
+    },
+    {
+      "sourceSheet": "Skill_Master",
+      "sourceId": "SK_도적_026",
+      "field": "종류",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245456.json",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "sourceSnapshotSha256": "b7c592861f0291b852a6fd1b26d99d50600f9548dc54bc6cbedf311e0e0a819f",
+      "reason": "Article explicitly categorizes this heading as Rogue magic; source job semantics are preserved.",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015"
+    }
+  ],
+  "impact": [
+    "tools/generate_skill_catalog.py",
+    "docs/SKILL_ACTION_DECISIONS.csv",
+    "tools/generate_skill_presentation.py",
+    "normal/test skill window filters and overhead magic BODY selection"
+  ],
+  "validationRequired": [
+    "Accept exact kind source changes through existing supplemental projection",
+    "Regenerate catalog and presentation with no hand-edited derived files",
+    "Verify all six IDs, both sexes and four facings in native runtime tests",
+    "Do not imply original status/stealth mechanics from a kind correction"
+  ],
+  "runtimeChangeApplied": false
+}

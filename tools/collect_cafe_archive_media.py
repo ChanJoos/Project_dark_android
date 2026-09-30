@@ -37,6 +37,7 @@ def verify():
     return complete == len(index['media'])
 
 def fetch():
+    cached = {r['sourceUrl']: r for r in json.loads(INDEX.read_text())['media']} if INDEX.exists() else {}
     references = {}
     for snapshot in sorted(ARCHIVE.glob('*.json')):
         if not snapshot.stem.isdigit():
@@ -55,6 +56,11 @@ def fetch():
 
     def retain(item):
         url, refs = item
+        old = cached.get(url)
+        if old and old.get('status') == 'RETAINED':
+            path = ROOT / old['path']
+            if path.exists() and sha(path.read_bytes()) == old['sha256']:
+                return dict(old, references=refs)
         row = {'sourceUrl': url, 'references': refs}
         try:
             with urllib.request.urlopen(url, timeout=30) as response:

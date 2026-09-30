@@ -1,5 +1,9 @@
 # Offline skill source analysis checkpoint
 
+## 2026-10-01 completed collection update
+
+All11 requested bodies and all288 observed media URLs are now retained (276 unique files,96 GIFs). Source indexing contains133 labelled sections/table rows and8 conflict records. The Rogue pages opened in the existing authenticated user session; no login-origin interaction or bypass occurred. The prior collection blocker below is historical. See ROGUE_ANALYSIS.md for source-to-catalog differences, exact section/GIF candidates and implementation boundaries; index.html is the local-only visual reader. Runtime/source-icon coverage remains unchanged by this source collection batch.
+
 ## Coverage
 
 Nine requested article bodies are retained: six Warrior circle/promotion posts, the finisher measurement post, Martial Artist and Cleric tables. Rogue technique article 245450 and magic article 245456 redirect this browser to Naver sign-in; their bodies are not retained in this checkpoint. Automatic approval review rejected authentication-origin access. Neither a title nor a redirect is treated as evidence of the missing skill information.

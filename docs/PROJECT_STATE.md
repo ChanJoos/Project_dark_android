@@ -345,3 +345,14 @@ IMPLEMENTED / SOURCE_RETAINED: archive, offline media verifier and evidence inde
 BUILD_VERIFIED: complete Actions run36776004466 SUCCESS on exact runtime/test source4f8bec32c2d8d8c54d87c919c2a884317c39c0b5. Corrections align caster assertions with frame event drain and Kurus with CLASSIC_CAPTURE. DEVICE_PENDING / VISUAL_ACCEPTED_PENDING remain. Source checkpoint makes no new APK delivery claim.
 
 BLOCKED: Rogue245450/245456 redirect to nid.naver.com login. Automatic approval review denied authentication-origin access despite authorized Cafe collection. Do not route around the denial. Next: request explicit Naver login procedure authorization, use secure authentication handoff, retain both bodies/media, then close remaining source icon mappings and accepted Master/BODY/VFX/UI changes through project generators and exact-source verification. PR176 remains unmerged on codex/original-skill-contract-v65; main unchanged.
+
+
+## 2026-10-01 — Cafe archive collection complete / source analysis resumed
+
+Continuation from PR176 head b3e7f5dd0795b1fb53e1c068596c70c772553803 on codex/original-skill-contract-v65; compared against main bfd668d4e178fa82625d634b5a54be0e27ce30a3. Existing authenticated browser session now exposes both Rogue245450/245456; prior authentication blocker is resolved without login-origin interaction or bypass.
+
+SOURCE_RETAINED: all11 requested bodies,350 image references/288 distinct URLs/276 unique exact-byte files/96 GIFs. OFFLINE_MEDIA_INTEGRITY_PASS288/288; source index133 sections/table rows and8 conflicts. Added a sanitized local-only11-article HTML reader, original Rogue text/HTML snapshots, DOM-ordered GIF candidates, and six proposed Rogue magic-kind corrections. Raw commenter/account/profile data are not retained; all comment pages are not claimed complete. Offline collection/index/viewer and Master integrity checks pass.
+
+This batch does not modify runtime/assets, accept the proposed kind changes, replace the81 missing icons or implement persistent status/travel/summon/user services. Previous runtime CI36776004466 at4f8bec32 still governs the prior implementation; it does not verify new source tooling. No new APK delivery/device/original visual acceptance claim.
+
+NEXT: accept/test six source-backed Rogue magic classifications through catalog/presentation generators; visually disambiguate the31 GIF candidates (especially 습격 vs 기습 and combined basic/double/triple demonstration); bind verified caster/recipient channels and source icons; then implement persistent mechanics through existing domain modules. Requesting another Cafe login is no longer the immediate task. Evidence: master/source/skill_fx/naver_cafe_archive_20261001/{manifest.json,rogue_evidence.json,ROGUE_ANALYSIS.md,index.html}; master/changes/ROGUE-2015-SOURCE-REVIEW.json(PROPOSED).

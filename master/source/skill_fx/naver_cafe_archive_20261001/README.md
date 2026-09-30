@@ -1,4 +1,16 @@
-# Naver Cafe offline source archive — 9 of 11 articles
+# Naver Cafe offline source archive — 11 of 11 articles
+
+## Completed collection — 2026-10-01
+
+Both Rogue bodies 245450/245456 were read from the user's existing authenticated browser session, without interacting with authentication origins. All 11 requested article bodies are retained. The complete page-observed media inventory has 350 image references, 288 distinct URLs, 276 unique byte files and 96 GIFs. Offline SHA-256/byte-size verification passes 288/288 URLs. Original response bytes are not reencoded.
+
+Open `index.html` for an offline review of all 11 articles with locally linked images/GIFs. Original text/HTML snapshots remain in article JSON; the Warrior 1-circle snapshot has text/images but no original HTML. `skill_evidence.json` has 133 sections/table rows and eight explicit conflicts. `rogue_evidence.json`/`ROGUE_ANALYSIS.md` retain detailed per-section bindings and ambiguity boundaries. Comment-account/profile data are not retained; all comment pages are not part of the collection-complete claim.
+
+The authentication blocker in the historical checkpoint below is resolved for this session. Runtime icon coverage and unfinished mechanics remain unchanged. Six Rogue magic-kind corrections are recorded in `master/changes/ROGUE-2015-SOURCE-REVIEW.json` as PROPOSED; they are not yet runtime changes.
+
+Reproduce with `python tools/collect_cafe_archive_media.py`, `python tools/index_cafe_skill_evidence.py` and `python tools/build_cafe_archive_viewer.py`. The explicit media `--fetch` now reuses verified URL records and downloads only missing/corrupt retained observations.
+
+## Historical 9-of-11 checkpoint (superseded collection status)
 
 Cafe access remains authorized during collection; future revisits are allowed when necessary. The user requested sufficiently complete retention for offline analysis.
 

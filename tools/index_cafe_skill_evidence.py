@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+from index_rogue_skill_evidence import generate as generate_rogue
 
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / 'master/source/skill_fx/naver_cafe_archive_20261001'
@@ -65,7 +66,9 @@ for row in classic:
                      'retainedDefinition': row,
                      'runtimeChangeAppliedInThisCheckpoint': False})
 
-result = {'revision': 'CAFE_OFFLINE_SKILL_EVIDENCE_V1', 'rows': rows,
+rogue = generate_rogue() if (ARCHIVE / '245450.json').exists() and (ARCHIVE / '245456.json').exists() else {'rows': [], 'conflicts': []}
+rows.extend(rogue['rows'])
+result = {'revision': 'CAFE_OFFLINE_SKILL_EVIDENCE_V2', 'rows': rows,
           'conflicts': [
               {'articleIds': [191445, 191777, 401229], 'field': 'finisherCoefficientAndCooldown',
                'status': 'KEEP_SOURCE_SPECIFIC',
@@ -75,5 +78,6 @@ result = {'revision': 'CAFE_OFFLINE_SKILL_EVIDENCE_V1', 'rows': rows,
                'existingDefinitionValue': next(r['stats']['INT'] for r in classic if r['name'] == '다라밀공')}
           ],
           'applicationPolicy': 'Historical class/trainer/prerequisite information is source evidence. Keep the user-approved project acquisition policy; changes require accepted Master records and runtime verification.'}
+result['conflicts'].extend(rogue['conflicts'])
 (ARCHIVE / 'skill_evidence.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
 print('OFFLINE_SKILL_EVIDENCE_INDEX', len(rows), 'sections/table rows', len(result['conflicts']), 'explicit conflict records')

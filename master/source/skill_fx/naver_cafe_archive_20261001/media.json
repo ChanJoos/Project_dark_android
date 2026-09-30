@@ -2077,6 +2077,1708 @@
       "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
     },
     {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_268/kyusiki7_1426926080827kYROi_PNG/lod181.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 0,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_268/kyusiki7_1426926080827kYROi_PNG/lod181.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_268/kyusiki7_1426926080827kYROi_PNG/lod181.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/b033ce1825cd6442f3b41301f55bc1f7d3cc52e0934763e5ebb0292323cb51c9.png",
+      "sha256": "b033ce1825cd6442f3b41301f55bc1f7d3cc52e0934763e5ebb0292323cb51c9",
+      "bytes": 3473,
+      "format": "PNG",
+      "width": 103,
+      "height": 40,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_38/kyusiki7_1426926081035RChrl_PNG/lod182_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 1,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_38/kyusiki7_1426926081035RChrl_PNG/lod182_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_38/kyusiki7_1426926081035RChrl_PNG/lod182_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f.png",
+      "sha256": "47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f",
+      "bytes": 5221,
+      "format": "PNG",
+      "width": 132,
+      "height": 46,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_179/kyusiki7_1426926081108xjKyj_PNG/lod182_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 2,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_179/kyusiki7_1426926081108xjKyj_PNG/lod182_-_%BA%B9%BB%E7%BA%BB.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_179/kyusiki7_1426926081108xjKyj_PNG/lod182_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21.png",
+      "sha256": "225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21",
+      "bytes": 5748,
+      "format": "PNG",
+      "width": 132,
+      "height": 48,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_68/kyusiki7_1426926503266TGJLM_PNG/2%BD%E1%B1%E2%BC%FA%BC%BE%BD%BA%B8%F3%BD%BA%C5%CD.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 3,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_68/kyusiki7_1426926503266TGJLM_PNG/2%BD%E1%B1%E2%BC%FA%BC%BE%BD%BA%B8%F3%BD%BA%C5%CD.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_68/kyusiki7_1426926503266TGJLM_PNG/2%BD%E1%B1%E2%BC%FA%BC%BE%BD%BA%B8%F3%BD%BA%C5%CD.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/04bb28cb5ce65015a4ec57851ace18d451911947ce6214a6dccb1eab9023886a.png",
+      "sha256": "04bb28cb5ce65015a4ec57851ace18d451911947ce6214a6dccb1eab9023886a",
+      "bytes": 47475,
+      "format": "PNG",
+      "width": 372,
+      "height": 194,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_192/kyusiki7_14269260812000o4G0_PNG/lod182.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 4,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_192/kyusiki7_14269260812000o4G0_PNG/lod182.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_192/kyusiki7_14269260812000o4G0_PNG/lod182.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/f82fe9cd738d302bda3f22fc6671e5859474823713a6f1c08079be2627850420.png",
+      "sha256": "f82fe9cd738d302bda3f22fc6671e5859474823713a6f1c08079be2627850420",
+      "bytes": 5585,
+      "format": "PNG",
+      "width": 132,
+      "height": 47,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_122/kyusiki7_1426926855756VwMmx_GIF/2%BD%E1%B1%E2%BC%FA%C7%A5%C3%A2%B3%AF%B8%AE%B1%E2.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 5,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_122/kyusiki7_1426926855756VwMmx_GIF/2%BD%E1%B1%E2%BC%FA%C7%A5%C3%A2%B3%AF%B8%AE%B1%E2.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_122/kyusiki7_1426926855756VwMmx_GIF/2%BD%E1%B1%E2%BC%FA%C7%A5%C3%A2%B3%AF%B8%AE%B1%E2.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830.gif",
+      "sha256": "4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830",
+      "bytes": 112074,
+      "format": "GIF",
+      "width": 250,
+      "height": 200,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_186/kyusiki7_14269260813024wLiM_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 6,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_186/kyusiki7_14269260813024wLiM_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_186/kyusiki7_14269260813024wLiM_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/fac6a8e01bff0673c919587418a68bc648197496734496d5f5a6620161669205.png",
+      "sha256": "fac6a8e01bff0673c919587418a68bc648197496734496d5f5a6620161669205",
+      "bytes": 5469,
+      "format": "PNG",
+      "width": 132,
+      "height": 47,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_285/kyusiki7_1426927017110FpN7W_GIF/2%BD%E1%B1%E2%BC%FA%B9%D0%B1%E2.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 7,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_285/kyusiki7_1426927017110FpN7W_GIF/2%BD%E1%B1%E2%BC%FA%B9%D0%B1%E2.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_285/kyusiki7_1426927017110FpN7W_GIF/2%BD%E1%B1%E2%BC%FA%B9%D0%B1%E2.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/5a2ccba1af68a02e791ad513f6d3f045a7151d4b6b48e6374424e47aa2fc15e6.gif",
+      "sha256": "5a2ccba1af68a02e791ad513f6d3f045a7151d4b6b48e6374424e47aa2fc15e6",
+      "bytes": 59731,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_174/kyusiki7_14269260813835nG7a_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 8,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_174/kyusiki7_14269260813835nG7a_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_174/kyusiki7_14269260813835nG7a_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2e34ea87d8c29f1b80115785917589bcd277f5bb3ceadb38a9fb5605335e2bd.png",
+      "sha256": "b2e34ea87d8c29f1b80115785917589bcd277f5bb3ceadb38a9fb5605335e2bd",
+      "bytes": 5654,
+      "format": "PNG",
+      "width": 132,
+      "height": 48,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_33/kyusiki7_1426927094234RCpM7_GIF/2%BD%E1%B1%E2%BC%FA%BE%C6%B9%AB%B3%D7%C1%F6%BE%C6.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 9,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_33/kyusiki7_1426927094234RCpM7_GIF/2%BD%E1%B1%E2%BC%FA%BE%C6%B9%AB%B3%D7%C1%F6%BE%C6.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_33/kyusiki7_1426927094234RCpM7_GIF/2%BD%E1%B1%E2%BC%FA%BE%C6%B9%AB%B3%D7%C1%F6%BE%C6.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/68cf124c18a9db0997670d3589a788c9786aec6c7fca726bb8dcb660a7cc8872.gif",
+      "sha256": "68cf124c18a9db0997670d3589a788c9786aec6c7fca726bb8dcb660a7cc8872",
+      "bytes": 41080,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_114/kyusiki7_1426926081473OoMQv_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 10,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_114/kyusiki7_1426926081473OoMQv_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_114/kyusiki7_1426926081473OoMQv_PNG/lod183_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/681c44fcff8e88a68b0c77c36f96f0cd9be5093f8240609815a8c6e5bd78ef5d.png",
+      "sha256": "681c44fcff8e88a68b0c77c36f96f0cd9be5093f8240609815a8c6e5bd78ef5d",
+      "bytes": 4977,
+      "format": "PNG",
+      "width": 132,
+      "height": 44,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_176/kyusiki7_1426927401700Xrq2c_GIF/2%BD%E1%B1%E2%BC%FA%BF%AC%B8%B7%C5%BA%C5%CD%B6%DF%B8%AE%B1%E2.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 11,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_176/kyusiki7_1426927401700Xrq2c_GIF/2%BD%E1%B1%E2%BC%FA%BF%AC%B8%B7%C5%BA%C5%CD%B6%DF%B8%AE%B1%E2.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_176/kyusiki7_1426927401700Xrq2c_GIF/2%BD%E1%B1%E2%BC%FA%BF%AC%B8%B7%C5%BA%C5%CD%B6%DF%B8%AE%B1%E2.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/63a38209cbb4469caaaca786d16faaf50c459b1199299bf44e01528289d358dd.gif",
+      "sha256": "63a38209cbb4469caaaca786d16faaf50c459b1199299bf44e01528289d358dd",
+      "bytes": 135244,
+      "format": "GIF",
+      "width": 250,
+      "height": 250,
+      "frames": 5,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_99/kyusiki7_1426926081546uB6pA_PNG/lod183_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 12,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_99/kyusiki7_1426926081546uB6pA_PNG/lod183_-_%BA%B9%BB%E7%BA%BB.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_99/kyusiki7_1426926081546uB6pA_PNG/lod183_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/68f0477a33a3168fa44eb1ea7b19d17b86b9a7d4da6aceefe7031289b0162494.png",
+      "sha256": "68f0477a33a3168fa44eb1ea7b19d17b86b9a7d4da6aceefe7031289b0162494",
+      "bytes": 5067,
+      "format": "PNG",
+      "width": 132,
+      "height": 45,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_15/kyusiki7_1426927702498CGuIu_GIF/2%BD%E1%B1%E2%BC%FA%C2%F1%B7%AF%C8%D6%BA%F1%B1%E2.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 13,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_15/kyusiki7_1426927702498CGuIu_GIF/2%BD%E1%B1%E2%BC%FA%C2%F1%B7%AF%C8%D6%BA%F1%B1%E2.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_15/kyusiki7_1426927702498CGuIu_GIF/2%BD%E1%B1%E2%BC%FA%C2%F1%B7%AF%C8%D6%BA%F1%B1%E2.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
+      "sha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
+      "bytes": 42290,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_57/kyusiki7_1426926081666GO0g8_PNG/lod183.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 14,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_57/kyusiki7_1426926081666GO0g8_PNG/lod183.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_57/kyusiki7_1426926081666GO0g8_PNG/lod183.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/6c25a3ce7fc1eef4ae485cb1aa5329f4596efec3d17bbd17befea44a8b7a4284.png",
+      "sha256": "6c25a3ce7fc1eef4ae485cb1aa5329f4596efec3d17bbd17befea44a8b7a4284",
+      "bytes": 5298,
+      "format": "PNG",
+      "width": 132,
+      "height": 46,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_227/kyusiki7_1426926081725Xv7dP_PNG/lod184_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 15,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_227/kyusiki7_1426926081725Xv7dP_PNG/lod184_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_227/kyusiki7_1426926081725Xv7dP_PNG/lod184_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/82a3cc6732a34e0bc155a7b1f2d27fcc89eb36413ec1606218743d97742bd64d.png",
+      "sha256": "82a3cc6732a34e0bc155a7b1f2d27fcc89eb36413ec1606218743d97742bd64d",
+      "bytes": 5379,
+      "format": "PNG",
+      "width": 132,
+      "height": 45,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_133/kyusiki7_1426927939907w4IuX_PNG/3%BD%E1%B1%E2%BC%FA%C7%B0%B5%DA%C1%AE%BA%B8%B1%E2.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 16,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_133/kyusiki7_1426927939907w4IuX_PNG/3%BD%E1%B1%E2%BC%FA%C7%B0%B5%DA%C1%AE%BA%B8%B1%E2.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_133/kyusiki7_1426927939907w4IuX_PNG/3%BD%E1%B1%E2%BC%FA%C7%B0%B5%DA%C1%AE%BA%B8%B1%E2.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/b1b1e2452253dfe3125c8faddddb38729b9a057fc064ae3dc5cbaaddb3c1babe.png",
+      "sha256": "b1b1e2452253dfe3125c8faddddb38729b9a057fc064ae3dc5cbaaddb3c1babe",
+      "bytes": 50241,
+      "format": "PNG",
+      "width": 376,
+      "height": 196,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_4/kyusiki7_14269279400622lJrh_GIF/3%BD%E1%B1%E2%BC%FA%C7%B0%B5%DA%C1%AE%BA%B8%B1%E2.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 17,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_4/kyusiki7_14269279400622lJrh_GIF/3%BD%E1%B1%E2%BC%FA%C7%B0%B5%DA%C1%AE%BA%B8%B1%E2.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_4/kyusiki7_14269279400622lJrh_GIF/3%BD%E1%B1%E2%BC%FA%C7%B0%B5%DA%C1%AE%BA%B8%B1%E2.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/3c3ca7b04a5ddbd1fd7c00fd3c1ff77ffde839ba8d83f99c72cb407c602def32.gif",
+      "sha256": "3c3ca7b04a5ddbd1fd7c00fd3c1ff77ffde839ba8d83f99c72cb407c602def32",
+      "bytes": 64087,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_23/kyusiki7_1426926081891PQM1n_PNG/lod184_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 18,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_23/kyusiki7_1426926081891PQM1n_PNG/lod184_-_%BA%B9%BB%E7%BA%BB.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_23/kyusiki7_1426926081891PQM1n_PNG/lod184_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/e367a29a9cf223515ba189e7099054d6be9e0e697e3a0683c2c6a615622207f5.png",
+      "sha256": "e367a29a9cf223515ba189e7099054d6be9e0e697e3a0683c2c6a615622207f5",
+      "bytes": 5698,
+      "format": "PNG",
+      "width": 132,
+      "height": 48,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_210/kyusiki7_14269282876094WLuS_PNG/lod004.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 19,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_210/kyusiki7_14269282876094WLuS_PNG/lod004.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_210/kyusiki7_14269282876094WLuS_PNG/lod004.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/76663d725d6983dd17a9c027cf5475bb5317aec3b40d2285445ebfdde24b7fd1.png",
+      "sha256": "76663d725d6983dd17a9c027cf5475bb5317aec3b40d2285445ebfdde24b7fd1",
+      "bytes": 51421,
+      "format": "PNG",
+      "width": 375,
+      "height": 198,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_164/kyusiki7_1426926082089C4Kf1_PNG/lod184.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 20,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_164/kyusiki7_1426926082089C4Kf1_PNG/lod184.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_164/kyusiki7_1426926082089C4Kf1_PNG/lod184.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/ace82bcde01280e1e917593aca3e1e0cd54fc63d79e795ee0d5d244f38006c4b.png",
+      "sha256": "ace82bcde01280e1e917593aca3e1e0cd54fc63d79e795ee0d5d244f38006c4b",
+      "bytes": 5243,
+      "format": "PNG",
+      "width": 132,
+      "height": 45,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_178/kyusiki7_14269279401557nhLJ_GIF/4%BD%E1%B1%E2%BC%FA%B5%CE%B9%F8%C2%EE%B8%A3%B1%E2.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 21,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_178/kyusiki7_14269279401557nhLJ_GIF/4%BD%E1%B1%E2%BC%FA%B5%CE%B9%F8%C2%EE%B8%A3%B1%E2.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_178/kyusiki7_14269279401557nhLJ_GIF/4%BD%E1%B1%E2%BC%FA%B5%CE%B9%F8%C2%EE%B8%A3%B1%E2.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f.gif",
+      "sha256": "9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f",
+      "bytes": 40676,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_158/kyusiki7_1426926081807kpTjV_PNG/lod184_-_%BA%B9%BB%E7%BA%BB_%288%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 22,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_158/kyusiki7_1426926081807kpTjV_PNG/lod184_-_%BA%B9%BB%E7%BA%BB_%288%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_158/kyusiki7_1426926081807kpTjV_PNG/lod184_-_%BA%B9%BB%E7%BA%BB_%288%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/62a8dfc6ce3d824ddd6d2846432340e01585f1766ccfe5a0c9b654c4cdc86a90.png",
+      "sha256": "62a8dfc6ce3d824ddd6d2846432340e01585f1766ccfe5a0c9b654c4cdc86a90",
+      "bytes": 5060,
+      "format": "PNG",
+      "width": 132,
+      "height": 46,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_4/kyusiki7_1426927940281Em07i_GIF/4%BD%E1%B1%E2%BC%FA%BD%C0%B0%DD.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 23,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_4/kyusiki7_1426927940281Em07i_GIF/4%BD%E1%B1%E2%BC%FA%BD%C0%B0%DD.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_4/kyusiki7_1426927940281Em07i_GIF/4%BD%E1%B1%E2%BC%FA%BD%C0%B0%DD.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d.gif",
+      "sha256": "64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d",
+      "bytes": 40906,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_112/kyusiki7_1426926082382wgmYY_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 24,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_112/kyusiki7_1426926082382wgmYY_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_112/kyusiki7_1426926082382wgmYY_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/ecf867c9c7a401e0c3192e30fb71779ce127e6e045be36942da9df6413eb1c71.png",
+      "sha256": "ecf867c9c7a401e0c3192e30fb71779ce127e6e045be36942da9df6413eb1c71",
+      "bytes": 5445,
+      "format": "PNG",
+      "width": 132,
+      "height": 45,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_44/kyusiki7_1426927940355V5eUu_GIF/4%BD%E1%B1%E2%BC%FA%C7%D4%C1%A4%C7%D8%C1%A6.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 25,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_44/kyusiki7_1426927940355V5eUu_GIF/4%BD%E1%B1%E2%BC%FA%C7%D4%C1%A4%C7%D8%C1%A6.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_44/kyusiki7_1426927940355V5eUu_GIF/4%BD%E1%B1%E2%BC%FA%C7%D4%C1%A4%C7%D8%C1%A6.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a.gif",
+      "sha256": "c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a",
+      "bytes": 25766,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 2,
+      "durationsMs": [
+        300,
+        300
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_101/kyusiki7_1426926082492tDVnY_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 26,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_101/kyusiki7_1426926082492tDVnY_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_101/kyusiki7_1426926082492tDVnY_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/c969191eafdc1796c76dc874b2eafc14252dfdc739fe44cc6f7160a3ec76b3fe.png",
+      "sha256": "c969191eafdc1796c76dc874b2eafc14252dfdc739fe44cc6f7160a3ec76b3fe",
+      "bytes": 5965,
+      "format": "PNG",
+      "width": 132,
+      "height": 50,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_132/kyusiki7_1426927940558hA0FU_GIF/5%BD%E1%B1%E2%BC%FA%C0%FB%B0%A9%BF%CA%C7%D8%C3%BC.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 27,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_132/kyusiki7_1426927940558hA0FU_GIF/5%BD%E1%B1%E2%BC%FA%C0%FB%B0%A9%BF%CA%C7%D8%C3%BC.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_132/kyusiki7_1426927940558hA0FU_GIF/5%BD%E1%B1%E2%BC%FA%C0%FB%B0%A9%BF%CA%C7%D8%C3%BC.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd.gif",
+      "sha256": "68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd",
+      "bytes": 83451,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 7,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_262/kyusiki7_1426926082621AWaIn_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 28,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_262/kyusiki7_1426926082621AWaIn_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800"
+        },
+        {
+          "articleId": 245450,
+          "imageIndex": 44,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_262/kyusiki7_1426926082621AWaIn_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_262/kyusiki7_1426926082621AWaIn_PNG/lod186_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d.png",
+      "sha256": "273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d",
+      "bytes": 5839,
+      "format": "PNG",
+      "width": 132,
+      "height": 50,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_56/kyusiki7_1426927940446qzWav_GIF/5%BD%E1%B1%E2%BC%FA%BE%CF%BB%EC%B0%DD.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 29,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_56/kyusiki7_1426927940446qzWav_GIF/5%BD%E1%B1%E2%BC%FA%BE%CF%BB%EC%B0%DD.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_56/kyusiki7_1426927940446qzWav_GIF/5%BD%E1%B1%E2%BC%FA%BE%CF%BB%EC%B0%DD.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/47b14b65d53c7ff831e21a6ba533830e4b24a6aae84b7476203670aea7c1b429.gif",
+      "sha256": "47b14b65d53c7ff831e21a6ba533830e4b24a6aae84b7476203670aea7c1b429",
+      "bytes": 111753,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 10,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_155/kyusiki7_1426926082703JMb7J_PNG/lod186_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 30,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_155/kyusiki7_1426926082703JMb7J_PNG/lod186_-_%BA%B9%BB%E7%BA%BB.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_155/kyusiki7_1426926082703JMb7J_PNG/lod186_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/ada8d98ef5d754339c77657b049cc365e22b980ef686e252a3a0a1bfc93d3aa7.png",
+      "sha256": "ada8d98ef5d754339c77657b049cc365e22b980ef686e252a3a0a1bfc93d3aa7",
+      "bytes": 5829,
+      "format": "PNG",
+      "width": 132,
+      "height": 49,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_1/kyusiki7_14269279408271apd2_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%B1%E2%BD%C0.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 31,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_1/kyusiki7_14269279408271apd2_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%B1%E2%BD%C0.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_1/kyusiki7_14269279408271apd2_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%B1%E2%BD%C0.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa.gif",
+      "sha256": "25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa",
+      "bytes": 40323,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_260/kyusiki7_14269260828466SpMS_PNG/lod186.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 32,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_260/kyusiki7_14269260828466SpMS_PNG/lod186.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_260/kyusiki7_14269260828466SpMS_PNG/lod186.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/aaa188d36c6bc8cbb274dd973ce9e815554a59c9e033fb751b4cd8fa099a8063.png",
+      "sha256": "aaa188d36c6bc8cbb274dd973ce9e815554a59c9e033fb751b4cd8fa099a8063",
+      "bytes": 5541,
+      "format": "PNG",
+      "width": 132,
+      "height": 47,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_244/kyusiki7_14269296268647tbXN_GIF/1%2C3%2C%BD%C2%B1%DE%B1%E2%BC%FA%B1%E2%BA%BB%B0%F8%B0%DD%B4%F5%BA%ED%C6%AE%B8%AE%C7%C3%BE%EE%C5%C3.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 33,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_244/kyusiki7_14269296268647tbXN_GIF/1%2C3%2C%BD%C2%B1%DE%B1%E2%BC%FA%B1%E2%BA%BB%B0%F8%B0%DD%B4%F5%BA%ED%C6%AE%B8%AE%C7%C3%BE%EE%C5%C3.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_244/kyusiki7_14269296268647tbXN_GIF/1%2C3%2C%BD%C2%B1%DE%B1%E2%BC%FA%B1%E2%BA%BB%B0%F8%B0%DD%B4%F5%BA%ED%C6%AE%B8%AE%C7%C3%BE%EE%C5%C3.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/eb1a39c44895d3305c85221001bcf5706dd0412f6ee2ca40a3b83bfbb513e40b.gif",
+      "sha256": "eb1a39c44895d3305c85221001bcf5706dd0412f6ee2ca40a3b83bfbb513e40b",
+      "bytes": 40828,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_201/kyusiki7_1426926082997itgQ5_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 34,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_201/kyusiki7_1426926082997itgQ5_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_201/kyusiki7_1426926082997itgQ5_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%282%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/882e7b91e81cb0bf7db7240ceb9dd11bbbfa87d5062e218785b8f684399f293a.png",
+      "sha256": "882e7b91e81cb0bf7db7240ceb9dd11bbbfa87d5062e218785b8f684399f293a",
+      "bytes": 5250,
+      "format": "PNG",
+      "width": 132,
+      "height": 47,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_27/kyusiki7_1426926083453TWGjo_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 35,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_27/kyusiki7_1426926083453TWGjo_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_27/kyusiki7_1426926083453TWGjo_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%284%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/9614313f07717cb9643a328d5c2001b8d33d0aa9aec2ab58032ee09a39f20b32.png",
+      "sha256": "9614313f07717cb9643a328d5c2001b8d33d0aa9aec2ab58032ee09a39f20b32",
+      "bytes": 9320,
+      "format": "PNG",
+      "width": 132,
+      "height": 94,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_224/kyusiki7_14305723204569ln1C_GIF/1.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 36,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_224/kyusiki7_14305723204569ln1C_GIF/1.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_224/kyusiki7_14305723204569ln1C_GIF/1.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b.gif",
+      "sha256": "b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b",
+      "bytes": 49877,
+      "format": "GIF",
+      "width": 160,
+      "height": 160,
+      "frames": 4,
+      "durationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_239/kyusiki7_1430572551357QrLla_GIF/3.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 37,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_239/kyusiki7_1430572551357QrLla_GIF/3.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_239/kyusiki7_1430572551357QrLla_GIF/3.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8.gif",
+      "sha256": "332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8",
+      "bytes": 50522,
+      "format": "GIF",
+      "width": 160,
+      "height": 160,
+      "frames": 4,
+      "durationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_118/kyusiki7_1426926083345fHVa9_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 38,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_118/kyusiki7_1426926083345fHVa9_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_118/kyusiki7_1426926083345fHVa9_PNG/lod187_-_%BA%B9%BB%E7%BA%BB_%283%29.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/d99d7ccc37bc91c9b4a3d69a76c0f36e68c34d83debc1a09bfd85ded5e45d436.png",
+      "sha256": "d99d7ccc37bc91c9b4a3d69a76c0f36e68c34d83debc1a09bfd85ded5e45d436",
+      "bytes": 5800,
+      "format": "PNG",
+      "width": 132,
+      "height": 49,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_27/kyusiki7_1426927941071r7jdg_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%BD%C0%B0%DD%C1%F8.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 39,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_27/kyusiki7_1426927941071r7jdg_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%BD%C0%B0%DD%C1%F8.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_27/kyusiki7_1426927941071r7jdg_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%BD%C0%B0%DD%C1%F8.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983.gif",
+      "sha256": "116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983",
+      "bytes": 42560,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_120/kyusiki7_1430573413539snB61_PNG/lod073.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 40,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_120/kyusiki7_1430573413539snB61_PNG/lod073.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_120/kyusiki7_1430573413539snB61_PNG/lod073.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/9747e2fc786cd949f1fe32fb9fa255a3c46c2f0696b31858c3652b2de161f7ce.png",
+      "sha256": "9747e2fc786cd949f1fe32fb9fa255a3c46c2f0696b31858c3652b2de161f7ce",
+      "bytes": 1927,
+      "format": "PNG",
+      "width": 41,
+      "height": 41,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_9/kyusiki7_1430572475748EpTXf_GIF/2.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 41,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_9/kyusiki7_1430572475748EpTXf_GIF/2.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_9/kyusiki7_1430572475748EpTXf_GIF/2.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/87e8ba3b3eecbc50e7ad7212d0ebbee30cc664de39640d0a0aec0b30692ee1a1.gif",
+      "sha256": "87e8ba3b3eecbc50e7ad7212d0ebbee30cc664de39640d0a0aec0b30692ee1a1",
+      "bytes": 50651,
+      "format": "GIF",
+      "width": 160,
+      "height": 160,
+      "frames": 4,
+      "durationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_130/kyusiki7_1426931506503oRSVT_PNG/lod007.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 42,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_130/kyusiki7_1426931506503oRSVT_PNG/lod007.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_130/kyusiki7_1426931506503oRSVT_PNG/lod007.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/0fda2e7895c1fd720bac75eda57c6e1a85bf4d10560da7dea319c0cebec8b043.png",
+      "sha256": "0fda2e7895c1fd720bac75eda57c6e1a85bf4d10560da7dea319c0cebec8b043",
+      "bytes": 2021,
+      "format": "PNG",
+      "width": 37,
+      "height": 41,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_42/kyusiki7_1426927940936ACshW_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%B9%E9%BD%BA%C5%C7.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 43,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_42/kyusiki7_1426927940936ACshW_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%B9%E9%BD%BA%C5%C7.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_42/kyusiki7_1426927940936ACshW_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%B9%E9%BD%BA%C5%C7.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70.gif",
+      "sha256": "8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70",
+      "bytes": 53367,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 5,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_141/kyusiki7_1426927941227MCx2A_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%BE%CF%BB%EC%B0%DD%C1%F8.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 45,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_141/kyusiki7_1426927941227MCx2A_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%BE%CF%BB%EC%B0%DD%C1%F8.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_141/kyusiki7_1426927941227MCx2A_GIF/%BD%C2%B1%DE%B1%E2%BC%FA%BE%CF%BB%EC%B0%DD%C1%F8.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/93a29acbc82a032537c74fe23fcf2c8f5528c32a0e3c66d0cd76bb5884a872a5.gif",
+      "sha256": "93a29acbc82a032537c74fe23fcf2c8f5528c32a0e3c66d0cd76bb5884a872a5",
+      "bytes": 114397,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 11,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_46/kyusiki7_1426926083551keYgp_PNG/lod187_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 46,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_46/kyusiki7_1426926083551keYgp_PNG/lod187_-_%BA%B9%BB%E7%BA%BB.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_46/kyusiki7_1426926083551keYgp_PNG/lod187_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/6e48f1da12e5747758a1f986dce0833eb18dd75742971522eac64ffbbb394fb7.png",
+      "sha256": "6e48f1da12e5747758a1f986dce0833eb18dd75742971522eac64ffbbb394fb7",
+      "bytes": 5410,
+      "format": "PNG",
+      "width": 132,
+      "height": 48,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_224/kyusiki7_1426926083809mD03U_PNG/lod188.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 47,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_224/kyusiki7_1426926083809mD03U_PNG/lod188.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_224/kyusiki7_1426926083809mD03U_PNG/lod188.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/c5b0bd2a6aa8335fc6f78d324a723bdb0c0d6ea01b2aec56a4c111971976bd3c.png",
+      "sha256": "c5b0bd2a6aa8335fc6f78d324a723bdb0c0d6ea01b2aec56a4c111971976bd3c",
+      "bytes": 5638,
+      "format": "PNG",
+      "width": 132,
+      "height": 48,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_196/kyusiki7_1426926084306ntIEE_PNG/lod189_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 48,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_196/kyusiki7_1426926084306ntIEE_PNG/lod189_-_%BA%B9%BB%E7%BA%BB.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_196/kyusiki7_1426926084306ntIEE_PNG/lod189_-_%BA%B9%BB%E7%BA%BB.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/de67b12538f30a49a3dceedd87261be16f09f19990d67c5f07406a028eb5e5de.png",
+      "sha256": "de67b12538f30a49a3dceedd87261be16f09f19990d67c5f07406a028eb5e5de",
+      "bytes": 5194,
+      "format": "PNG",
+      "width": 132,
+      "height": 46,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_242/kyusiki7_1426926084383q7FO7_PNG/lod189.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 49,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_242/kyusiki7_1426926084383q7FO7_PNG/lod189.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_242/kyusiki7_1426926084383q7FO7_PNG/lod189.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/ac68f3d9866038ab36fbf25a8474d07143b9c8fa767a80c43aae60150fb5c1ff.png",
+      "sha256": "ac68f3d9866038ab36fbf25a8474d07143b9c8fa767a80c43aae60150fb5c1ff",
+      "bytes": 5518,
+      "format": "PNG",
+      "width": 132,
+      "height": 48,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_17/kyusiki7_1426930694366nYat3_PNG/2%C2%F7%C1%F7%BE%F7%B1%E2%BC%FA%B6%F3%C0%CC%C6%AE%B4%D7%C6%AE%B7%A612.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 50,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_17/kyusiki7_1426930694366nYat3_PNG/2%C2%F7%C1%F7%BE%F7%B1%E2%BC%FA%B6%F3%C0%CC%C6%AE%B4%D7%C6%AE%B7%A612.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_17/kyusiki7_1426930694366nYat3_PNG/2%C2%F7%C1%F7%BE%F7%B1%E2%BC%FA%B6%F3%C0%CC%C6%AE%B4%D7%C6%AE%B7%A612.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/18524d6f5a1762f5a1cee4c28025b9130ac67d34c4db06a3268c2cc7b8529b54.png",
+      "sha256": "18524d6f5a1762f5a1cee4c28025b9130ac67d34c4db06a3268c2cc7b8529b54",
+      "bytes": 62649,
+      "format": "PNG",
+      "width": 196,
+      "height": 160,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_94/kyusiki7_1426927940733bYtI8_GIF/%BD%C2%B1%DE2%C2%F7%C1%F7%BE%F7%B1%E2%BC%FA%B6%F3%C0%CC%C6%AE%B4%D7%C6%AE%B7%A6.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 51,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_94/kyusiki7_1426927940733bYtI8_GIF/%BD%C2%B1%DE2%C2%F7%C1%F7%BE%F7%B1%E2%BC%FA%B6%F3%C0%CC%C6%AE%B4%D7%C6%AE%B7%A6.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_94/kyusiki7_1426927940733bYtI8_GIF/%BD%C2%B1%DE2%C2%F7%C1%F7%BE%F7%B1%E2%BC%FA%B6%F3%C0%CC%C6%AE%B4%D7%C6%AE%B7%A6.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/47c8abeb9496ddcc4d6d671d556d4c4578b9c2475716e8a109012f92dae36c54.gif",
+      "sha256": "47c8abeb9496ddcc4d6d671d556d4c4578b9c2475716e8a109012f92dae36c54",
+      "bytes": 131173,
+      "format": "GIF",
+      "width": 160,
+      "height": 160,
+      "frames": 9,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_41/kyusiki7_1426926084516NP9nN_PNG/lod190.png?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 52,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_41/kyusiki7_1426926084516NP9nN_PNG/lod190.png?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_41/kyusiki7_1426926084516NP9nN_PNG/lod190.png?type=w800",
+      "contentType": "image/png",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/21affe5b90446a3f3e2bf52d76af8f519e8bcb984cc06aef04866a0689fc7fce.png",
+      "sha256": "21affe5b90446a3f3e2bf52d76af8f519e8bcb984cc06aef04866a0689fc7fce",
+      "bytes": 5473,
+      "format": "PNG",
+      "width": 132,
+      "height": 48,
+      "frames": 1,
+      "durationsMs": [
+        0
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_117/kyusiki7_1430572877978LIHIO_GIF/444444444444.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245450,
+          "imageIndex": 53,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_117/kyusiki7_1430572877978LIHIO_GIF/444444444444.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_117/kyusiki7_1430572877978LIHIO_GIF/444444444444.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/860b71929cf54e5bb508e1ae3fa57ea79f3820e9e5fdc2450e82aaa78524f4fb.gif",
+      "sha256": "860b71929cf54e5bb508e1ae3fa57ea79f3820e9e5fdc2450e82aaa78524f4fb",
+      "bytes": 68715,
+      "format": "GIF",
+      "width": 160,
+      "height": 160,
+      "frames": 5,
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_163/kyusiki7_1426937772062RCtvo_GIF/2%BD%E1%B8%B6%B9%FD%C4%ED%B7%CE%C5%E4.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 0,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_163/kyusiki7_1426937772062RCtvo_GIF/2%BD%E1%B8%B6%B9%FD%C4%ED%B7%CE%C5%E4.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_163/kyusiki7_1426937772062RCtvo_GIF/2%BD%E1%B8%B6%B9%FD%C4%ED%B7%CE%C5%E4.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/f4de75015085218e7d0c2c857b03214730236c2a7a0b5edc1a98f65cee359740.gif",
+      "sha256": "f4de75015085218e7d0c2c857b03214730236c2a7a0b5edc1a98f65cee359740",
+      "bytes": 48831,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_294/kyusiki7_1426937772308yzLCt_GIF/3%BD%E1%B8%B6%B9%FD%B6%F3%C0%CC%C6%AE%B4%D7%B9%AB%BA%EA.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 1,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_294/kyusiki7_1426937772308yzLCt_GIF/3%BD%E1%B8%B6%B9%FD%B6%F3%C0%CC%C6%AE%B4%D7%B9%AB%BA%EA.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_294/kyusiki7_1426937772308yzLCt_GIF/3%BD%E1%B8%B6%B9%FD%B6%F3%C0%CC%C6%AE%B4%D7%B9%AB%BA%EA.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50.gif",
+      "sha256": "e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50",
+      "bytes": 34122,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_174/kyusiki7_1426937772388HVfba_GIF/3%BD%E1%B8%B6%B9%FD%C7%CF%C0%CC%B5%E5.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 2,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_174/kyusiki7_1426937772388HVfba_GIF/3%BD%E1%B8%B6%B9%FD%C7%CF%C0%CC%B5%E5.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_174/kyusiki7_1426937772388HVfba_GIF/3%BD%E1%B8%B6%B9%FD%C7%CF%C0%CC%B5%E5.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286.gif",
+      "sha256": "0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286",
+      "bytes": 26499,
+      "format": "GIF",
+      "width": 120,
+      "height": 120,
+      "frames": 3,
+      "durationsMs": [
+        300,
+        300,
+        300
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_5/kyusiki7_1426938231217YDvP3_GIF/3%BD%E1%B8%B6%B9%FD%C7%D4%C1%A4%C3%A3%B1%E21.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 3,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_5/kyusiki7_1426938231217YDvP3_GIF/3%BD%E1%B8%B6%B9%FD%C7%D4%C1%A4%C3%A3%B1%E21.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_5/kyusiki7_1426938231217YDvP3_GIF/3%BD%E1%B8%B6%B9%FD%C7%D4%C1%A4%C3%A3%B1%E21.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2.gif",
+      "sha256": "6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2",
+      "bytes": 24444,
+      "format": "GIF",
+      "width": 140,
+      "height": 140,
+      "frames": 2,
+      "durationsMs": [
+        1000,
+        1000
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_112/kyusiki7_1426937772543vUoTy_GIF/4%BD%E1%B8%B6%B9%FD%BC%BE%BC%AD%BD%BA.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 4,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_112/kyusiki7_1426937772543vUoTy_GIF/4%BD%E1%B8%B6%B9%FD%BC%BE%BC%AD%BD%BA.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_112/kyusiki7_1426937772543vUoTy_GIF/4%BD%E1%B8%B6%B9%FD%BC%BE%BC%AD%BD%BA.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f.gif",
+      "sha256": "d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f",
+      "bytes": 38520,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 4,
+      "durationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_124/kyusiki7_1426937772645gWgBh_GIF/4%BD%E1%B8%B6%B9%FD%BC%BE%BC%AD%BD%BA1.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 5,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_124/kyusiki7_1426937772645gWgBh_GIF/4%BD%E1%B8%B6%B9%FD%BC%BE%BC%AD%BD%BA1.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_124/kyusiki7_1426937772645gWgBh_GIF/4%BD%E1%B8%B6%B9%FD%BC%BE%BC%AD%BD%BA1.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/5d690c06930ad0b6c5217a469fd23b0de6202be4d63cf6ad9f27d2672f53658e.gif",
+      "sha256": "5d690c06930ad0b6c5217a469fd23b0de6202be4d63cf6ad9f27d2672f53658e",
+      "bytes": 34993,
+      "format": "GIF",
+      "width": 120,
+      "height": 120,
+      "frames": 4,
+      "durationsMs": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_281/kyusiki7_1426938487247fBf5F_GIF/4%BD%E1%B8%B6%B9%FD%C7%D4%C1%A4%C3%A3%B1%E22.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 6,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_281/kyusiki7_1426938487247fBf5F_GIF/4%BD%E1%B8%B6%B9%FD%C7%D4%C1%A4%C3%A3%B1%E22.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_281/kyusiki7_1426938487247fBf5F_GIF/4%BD%E1%B8%B6%B9%FD%C7%D4%C1%A4%C3%A3%B1%E22.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d.gif",
+      "sha256": "07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d",
+      "bytes": 310976,
+      "format": "GIF",
+      "width": 263,
+      "height": 263,
+      "frames": 5,
+      "durationsMs": [
+        500,
+        500,
+        500,
+        500,
+        500
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_98/kyusiki7_1430573309735PNd4c_GIF/5.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 7,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_98/kyusiki7_1430573309735PNd4c_GIF/5.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_98/kyusiki7_1430573309735PNd4c_GIF/5.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d.gif",
+      "sha256": "4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d",
+      "bytes": 19908,
+      "format": "GIF",
+      "width": 160,
+      "height": 160,
+      "frames": 2,
+      "durationsMs": [
+        400,
+        400
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_57/kyusiki7_1430573328133HxIj0_GIF/11.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 8,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_57/kyusiki7_1430573328133HxIj0_GIF/11.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150502_57/kyusiki7_1430573328133HxIj0_GIF/11.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/6a1a10d2bd66153ea2ec43644a5825733d2a5978bed93e2aa79df90c9a79544a.gif",
+      "sha256": "6a1a10d2bd66153ea2ec43644a5825733d2a5978bed93e2aa79df90c9a79544a",
+      "bytes": 118498,
+      "format": "GIF",
+      "width": 209,
+      "height": 177,
+      "frames": 6,
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
+      "sourceUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_172/kyusiki7_1426937772841fkGYO_GIF/%BD%C2%B1%DE2%C2%F7%C1%F7%BE%F7%B8%B6%B9%FD%C8%B8%BD%C9%C0%C7%C0%FA%B0%DD.gif?type=w800",
+      "references": [
+        {
+          "articleId": 245456,
+          "imageIndex": 9,
+          "observedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_172/kyusiki7_1426937772841fkGYO_GIF/%BD%C2%B1%DE2%C2%F7%C1%F7%BE%F7%B8%B6%B9%FD%C8%B8%BD%C9%C0%C7%C0%FA%B0%DD.gif?type=w800"
+        }
+      ],
+      "resolvedUrl": "https://cafeptthumb-phinf.pstatic.net/20150321_172/kyusiki7_1426937772841fkGYO_GIF/%BD%C2%B1%DE2%C2%F7%C1%F7%BE%F7%B8%B6%B9%FD%C8%B8%BD%C9%C0%C7%C0%FA%B0%DD.gif?type=w800",
+      "contentType": "image/gif",
+      "status": "RETAINED",
+      "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/b0366dbb0bb29026790d867eaaa422c37f6af4019658f3401ac631f3a888351d.gif",
+      "sha256": "b0366dbb0bb29026790d867eaaa422c37f6af4019658f3401ac631f3a888351d",
+      "bytes": 131552,
+      "format": "GIF",
+      "width": 130,
+      "height": 130,
+      "frames": 13,
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "bytePolicy": "EXACT_HTTP_RESPONSE_NO_REENCODING",
+      "sourceResolution": "PAGE_OBSERVED_CDN_VARIANT"
+    },
+    {
       "sourceUrl": "https://dthumb-phinf.pstatic.net/?src=%22http%3A%2F%2Fpostfiles12.naver.net%2FMjAyMDAxMTlfMjM5%2FMDAxNTc5NDIyOTkyNTc5.ASxbO1gZRIL9sYvwk4EhRyrmIBqFmU_I_Odj_RQ6h4Ag.c_DE086_vvCxvcYrRHvUNxe4-JKKEvR9aCfAGIG_JPAg.GIF.180921%2F%ED%81%AC%EB%9E%98%EC%85%94.gif%3Ftype%3Dw2%22&type=cafe_wa420",
       "references": [
         {

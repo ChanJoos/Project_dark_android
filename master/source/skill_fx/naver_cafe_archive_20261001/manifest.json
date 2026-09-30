@@ -1,11 +1,11 @@
 {
-  "revision": "CAFE_OFFLINE_ARCHIVE_9_OF_11_20261001",
+  "revision": "CAFE_OFFLINE_ARCHIVE_11_OF_11_20261001",
   "collectedAt": "2026-09-30T20:39:47.341508+00:00",
   "evidence": "FAN_HISTORICAL_ARTICLE",
-  "bodySnapshots": 9,
-  "mediaBinaryCollectionComplete": false,
-  "complete": false,
-  "collectionBlocker": "Rogue articles 245450 and 245456 redirect to nid.naver.com login. Automatic approval review denied authentication-origin access; explicit authorization for the Naver login procedure is needed. Cafe collection itself is authorized.",
+  "bodySnapshots": 11,
+  "mediaBinaryCollectionComplete": true,
+  "complete": true,
+  "collectionBlocker": null,
   "existingRetainedMediaArchives": [
     "master/source/skill_fx/naver_401229/provenance.json",
     "master/source/skill_fx/naver_classic_2020/provenance.json",
@@ -133,22 +133,39 @@
       "articleId": 245450,
       "label": "도적 기술",
       "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
-      "status": "AUTHENTICATION_REQUIRED_AUTO_REVIEW_BLOCKED"
+      "status": "BODY_AND_OBSERVED_MEDIA_RETAINED",
+      "snapshotPath": "master/source/skill_fx/naver_cafe_archive_20261001/245450.json",
+      "snapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "observedTitle": "[도적 기술] (수정1) : 네이버 카페",
+      "textCharacters": 7419,
+      "imageReferences": 54,
+      "htmlRetained": true,
+      "resolvedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "accessEvidence": "Existing authenticated user browser session; no authentication-origin interaction performed"
     },
     {
       "articleId": 245456,
       "label": "도적 마법",
       "requestedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?fromList=true&menuId=132&tc=cafe_article_list",
-      "status": "AUTHENTICATION_REQUIRED_AUTO_REVIEW_BLOCKED"
+      "status": "BODY_AND_OBSERVED_MEDIA_RETAINED",
+      "snapshotPath": "master/source/skill_fx/naver_cafe_archive_20261001/245456.json",
+      "snapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "observedTitle": "[도적 마법](수정1) : 네이버 카페",
+      "textCharacters": 1624,
+      "imageReferences": 10,
+      "htmlRetained": true,
+      "resolvedUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "accessEvidence": "Existing authenticated user browser session; no authentication-origin interaction performed"
     }
   ],
   "requestedArticleCount": 11,
   "mediaForCapturedBodiesComplete": true,
   "mediaStatistics": {
-    "retainedUrls": 225,
-    "uniqueFiles": 213,
-    "gifUrls": 65,
-    "uniqueGifs": 65,
-    "newFiles": 86
-  }
+    "retainedUrls": 288,
+    "uniqueFiles": 276,
+    "gifUrls": 96,
+    "uniqueGifs": 96
+  },
+  "completedAt": "2026-09-30T22:16:28.262000+00:00",
+  "completionScope": "11 requested article bodies and all page-observed image URLs; all comment pages and native game archives are not claimed complete"
 }
