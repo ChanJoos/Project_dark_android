@@ -1,0 +1,594 @@
+{
+  "revision": "ROGUE_REVIEWED_CHANNELS_V1",
+  "nativeArchivePixels": false,
+  "limitations": [
+    "Temporal-minimum SCREEN extraction and manually selected masks are approximate.",
+    "Occluded/dark pixels are absent, source facing is not a four-way visual acceptance.",
+    "BODY registration and event timing are project choices; no original mechanic is inferred."
+  ],
+  "skills": {
+    "SK_도적_007": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/74240a02e5a3ab10.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 82,
+          "pivotY": 100,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
+          "sourceSha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
+          "atlasSha256": "c0e41c176195bf05e062293eded8ba81d5e02b280b315a9e122e375305536663",
+          "opaquePixelCounts": [
+            948,
+            994,
+            675,
+            0
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 13,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              82,
+              100
+            ],
+            "region": [
+              77,
+              47,
+              115,
+              104
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": true,
+            "yellowOnly": false
+          }
+        }
+      }
+    },
+    "SK_도적_014": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/d3e88d3b9c127da5.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 82,
+          "pivotY": 100,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f.gif",
+          "sourceSha256": "9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f",
+          "atlasSha256": "bbfb32e12454a9c6fe9c4e3fd5731016e797a39e41262f1332751e11cd1005f3",
+          "opaquePixelCounts": [
+            0,
+            940,
+            207,
+            0
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 21,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              82,
+              100
+            ],
+            "region": [
+              78,
+              45,
+              118,
+              103
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": true,
+            "yellowOnly": false
+          }
+        }
+      }
+    },
+    "SK_도적_018": {
+      "channels": {},
+      "review": {
+        "articleId": 245450,
+        "imageIndex": 25,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
+      "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a.gif",
+      "sourceSha256": "c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a"
+    },
+    "SK_도적_019": {
+      "channels": {},
+      "review": {
+        "articleId": 245450,
+        "imageIndex": 27,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
+      "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd.gif",
+      "sourceSha256": "68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd"
+    },
+    "SK_도적_021": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/5599ff0303eba4ae.png",
+          "width": 160,
+          "height": 160,
+          "columns": 4,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 86,
+          "pivotY": 108,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b.gif",
+          "sourceSha256": "b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b",
+          "atlasSha256": "1aeb4b209309d7f7b3a769ab0e12f5d727d0a25d7c0fa615b005d311a5447112",
+          "opaquePixelCounts": [
+            964,
+            1206,
+            10,
+            10
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 36,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              86,
+              108
+            ],
+            "region": [
+              79,
+              42,
+              119,
+              125
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": true,
+            "yellowOnly": false
+          }
+        }
+      }
+    },
+    "SK_도적_022": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/b20a0224a0fd0a38.png",
+          "width": 160,
+          "height": 160,
+          "columns": 4,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 86,
+          "pivotY": 108,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8.gif",
+          "sourceSha256": "332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8",
+          "atlasSha256": "57996ee2ad9360ac7ae53e08a7b467f18cc582dae5c5e89d6a8d1291d5a0b36a",
+          "opaquePixelCounts": [
+            1122,
+            2000,
+            2,
+            12
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 37,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              86,
+              108
+            ],
+            "region": [
+              79,
+              42,
+              119,
+              125
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": true,
+            "yellowOnly": false
+          }
+        }
+      }
+    },
+    "SK_도적_023": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/4459f9eb02d24cbe.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 85,
+          "pivotY": 104,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa.gif",
+          "sourceSha256": "25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa",
+          "atlasSha256": "0789169ea5276e667ad236418dfea0a65fecb9c68362edf0b0bb939d3b687c79",
+          "opaquePixelCounts": [
+            3,
+            511,
+            660,
+            3
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 31,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              85,
+              104
+            ],
+            "region": [
+              80,
+              47,
+              120,
+              105
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": false,
+            "yellowOnly": false
+          }
+        }
+      }
+    },
+    "SK_도적_028": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/b84e64bb25d05ea8.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 84,
+          "pivotY": 106,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983.gif",
+          "sourceSha256": "116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983",
+          "atlasSha256": "fd0fcb513893d3ac73bae5766d1221a8a4e9ac96b5fedafde42270e51c8594fb",
+          "opaquePixelCounts": [
+            141,
+            228,
+            0,
+            0
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 39,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              84,
+              106
+            ],
+            "region": [
+              79,
+              44,
+              115,
+              109
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": true,
+            "yellowOnly": false
+          }
+        }
+      }
+    },
+    "SK_도적_029": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/b397a45e949ffa87.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "pivotX": 83,
+          "pivotY": 103,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70.gif",
+          "sourceSha256": "8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70",
+          "atlasSha256": "c074edea67f30c6505ec828ec5bf9be1ff61f0fd7aaed247352a3908a2950962",
+          "opaquePixelCounts": [
+            0,
+            374,
+            393,
+            65,
+            0
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 43,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              83,
+              103
+            ],
+            "region": [
+              79,
+              45,
+              118,
+              104
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": false,
+            "yellowOnly": false
+          }
+        }
+      }
+    },
+    "SK_도적_013": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/7290e6f0c6448723.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 55,
+          "pivotY": 98,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50.gif",
+          "sourceSha256": "e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50",
+          "atlasSha256": "d6362c1f42943e1ffc13ba4c204b581288376a21a99a27fba0fcf6f772e6c38a",
+          "opaquePixelCounts": [
+            26,
+            115,
+            291,
+            248
+          ],
+          "review": {
+            "articleId": 245456,
+            "imageIndex": 1,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "CASTER",
+            "pivot": [
+              55,
+              98
+            ],
+            "region": [
+              20,
+              36,
+              105,
+              110
+            ],
+            "blocked": [
+              [
+                39,
+                43,
+                77,
+                94
+              ]
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Caster body masked; one source facing, project-selected BODY registration.",
+            "rejectWarmActorPixels": false,
+            "yellowOnly": true
+          }
+        }
+      }
+    },
+    "SK_도적_016": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/d6f80c667eaee807.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 55,
+          "pivotY": 98,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f.gif",
+          "sourceSha256": "d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f",
+          "atlasSha256": "464c53df0cc61e25a2a61bfc94d208fea45e43259cdbb8d492b06c69f71a4dd6",
+          "opaquePixelCounts": [
+            0,
+            1,
+            564,
+            510
+          ],
+          "review": {
+            "articleId": 245456,
+            "imageIndex": 4,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "CASTER",
+            "pivot": [
+              55,
+              98
+            ],
+            "region": [
+              20,
+              36,
+              105,
+              110
+            ],
+            "blocked": [
+              [
+                39,
+                43,
+                77,
+                94
+              ]
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Caster body masked; one source facing, project-selected BODY registration.",
+            "rejectWarmActorPixels": false,
+            "yellowOnly": true
+          }
+        }
+      }
+    },
+    "SK_도적_011": {
+      "channels": {},
+      "review": {
+        "articleId": 245456,
+        "imageIndex": 2,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
+      "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286.gif",
+      "sourceSha256": "0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286"
+    },
+    "SK_도적_012": {
+      "channels": {},
+      "review": {
+        "articleId": 245456,
+        "imageIndex": 3,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
+      "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2.gif",
+      "sourceSha256": "6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2"
+    },
+    "SK_도적_017": {
+      "channels": {},
+      "review": {
+        "articleId": 245456,
+        "imageIndex": 6,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
+      "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d.gif",
+      "sourceSha256": "07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d"
+    },
+    "SK_도적_026": {
+      "channels": {},
+      "review": {
+        "articleId": 245456,
+        "imageIndex": 7,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
+      "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d.gif",
+      "sourceSha256": "4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d"
+    }
+  }
+}

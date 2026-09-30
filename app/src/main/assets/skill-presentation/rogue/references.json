@@ -1,0 +1,467 @@
+{
+  "revision": "ROGUE_REVIEWED_CHANNELS_V1",
+  "rows": [
+    {
+      "id": "SK_도적_001",
+      "iconAssetPath": "icons/762df98c60926ad3.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/b033ce1825cd6442f3b41301f55bc1f7d3cc52e0934763e5ebb0292323cb51c9.png",
+      "sourceSha256": "b033ce1825cd6442f3b41301f55bc1f7d3cc52e0934763e5ebb0292323cb51c9",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 0,
+        "crop": [
+          0,
+          0,
+          38,
+          38
+        ]
+      },
+      "crop": [
+        0,
+        0,
+        38,
+        38
+      ]
+    },
+    {
+      "id": "SK_도적_002",
+      "iconAssetPath": "icons/b82a7bff31b97df4.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f.png",
+      "sourceSha256": "47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 1,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_003",
+      "iconAssetPath": "icons/28439989d9d3276c.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/f82fe9cd738d302bda3f22fc6671e5859474823713a6f1c08079be2627850420.png",
+      "sourceSha256": "f82fe9cd738d302bda3f22fc6671e5859474823713a6f1c08079be2627850420",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 4,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_004",
+      "iconAssetPath": "icons/b6cf9236ee905a00.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/fac6a8e01bff0673c919587418a68bc648197496734496d5f5a6620161669205.png",
+      "sourceSha256": "fac6a8e01bff0673c919587418a68bc648197496734496d5f5a6620161669205",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 6,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_005",
+      "iconAssetPath": "icons/99b28299cb50fe9e.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2e34ea87d8c29f1b80115785917589bcd277f5bb3ceadb38a9fb5605335e2bd.png",
+      "sourceSha256": "b2e34ea87d8c29f1b80115785917589bcd277f5bb3ceadb38a9fb5605335e2bd",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 8,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_006",
+      "iconAssetPath": "icons/c8fb0d55800aadbf.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/681c44fcff8e88a68b0c77c36f96f0cd9be5093f8240609815a8c6e5bd78ef5d.png",
+      "sourceSha256": "681c44fcff8e88a68b0c77c36f96f0cd9be5093f8240609815a8c6e5bd78ef5d",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 10,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_007",
+      "iconAssetPath": "icons/74240a02e5a3ab10.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/68f0477a33a3168fa44eb1ea7b19d17b86b9a7d4da6aceefe7031289b0162494.png",
+      "sourceSha256": "68f0477a33a3168fa44eb1ea7b19d17b86b9a7d4da6aceefe7031289b0162494",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 12,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_008",
+      "iconAssetPath": "icons/838a603eb3efae84.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/6c25a3ce7fc1eef4ae485cb1aa5329f4596efec3d17bbd17befea44a8b7a4284.png",
+      "sourceSha256": "6c25a3ce7fc1eef4ae485cb1aa5329f4596efec3d17bbd17befea44a8b7a4284",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 14,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_009",
+      "iconAssetPath": "icons/0d72533832f48620.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/82a3cc6732a34e0bc155a7b1f2d27fcc89eb36413ec1606218743d97742bd64d.png",
+      "sourceSha256": "82a3cc6732a34e0bc155a7b1f2d27fcc89eb36413ec1606218743d97742bd64d",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 15,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_010",
+      "iconAssetPath": "icons/48107e7afb60aaba.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21.png",
+      "sourceSha256": "225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 2,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_014",
+      "iconAssetPath": "icons/d3e88d3b9c127da5.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/ace82bcde01280e1e917593aca3e1e0cd54fc63d79e795ee0d5d244f38006c4b.png",
+      "sourceSha256": "ace82bcde01280e1e917593aca3e1e0cd54fc63d79e795ee0d5d244f38006c4b",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 20,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_015",
+      "iconAssetPath": "icons/cfcd39e6a1fb7ca3.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/62a8dfc6ce3d824ddd6d2846432340e01585f1766ccfe5a0c9b654c4cdc86a90.png",
+      "sourceSha256": "62a8dfc6ce3d824ddd6d2846432340e01585f1766ccfe5a0c9b654c4cdc86a90",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 22,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_018",
+      "iconAssetPath": "icons/9411a6d99ab34490.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/ecf867c9c7a401e0c3192e30fb71779ce127e6e045be36942da9df6413eb1c71.png",
+      "sourceSha256": "ecf867c9c7a401e0c3192e30fb71779ce127e6e045be36942da9df6413eb1c71",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 24,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_019",
+      "iconAssetPath": "icons/707653df2250b26f.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/c969191eafdc1796c76dc874b2eafc14252dfdc739fe44cc6f7160a3ec76b3fe.png",
+      "sourceSha256": "c969191eafdc1796c76dc874b2eafc14252dfdc739fe44cc6f7160a3ec76b3fe",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 26,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_020",
+      "iconAssetPath": "icons/8b4f22023ba534ef.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d.png",
+      "sourceSha256": "273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 28,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_021",
+      "iconAssetPath": "icons/5599ff0303eba4ae.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/9614313f07717cb9643a328d5c2001b8d33d0aa9aec2ab58032ee09a39f20b32.png",
+      "sourceSha256": "9614313f07717cb9643a328d5c2001b8d33d0aa9aec2ab58032ee09a39f20b32",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 35,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_022",
+      "iconAssetPath": "icons/b20a0224a0fd0a38.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/9614313f07717cb9643a328d5c2001b8d33d0aa9aec2ab58032ee09a39f20b32.png",
+      "sourceSha256": "9614313f07717cb9643a328d5c2001b8d33d0aa9aec2ab58032ee09a39f20b32",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 35,
+        "crop": [
+          2,
+          50,
+          42,
+          90
+        ]
+      },
+      "crop": [
+        2,
+        50,
+        42,
+        90
+      ]
+    },
+    {
+      "id": "SK_도적_023",
+      "iconAssetPath": "icons/4459f9eb02d24cbe.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/ada8d98ef5d754339c77657b049cc365e22b980ef686e252a3a0a1bfc93d3aa7.png",
+      "sourceSha256": "ada8d98ef5d754339c77657b049cc365e22b980ef686e252a3a0a1bfc93d3aa7",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 30,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_024",
+      "iconAssetPath": "icons/13e7aa57af4153ae.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/aaa188d36c6bc8cbb274dd973ce9e815554a59c9e033fb751b4cd8fa099a8063.png",
+      "sourceSha256": "aaa188d36c6bc8cbb274dd973ce9e815554a59c9e033fb751b4cd8fa099a8063",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 32,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_025",
+      "iconAssetPath": "icons/ff61f1898349d45c.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/882e7b91e81cb0bf7db7240ceb9dd11bbbfa87d5062e218785b8f684399f293a.png",
+      "sourceSha256": "882e7b91e81cb0bf7db7240ceb9dd11bbbfa87d5062e218785b8f684399f293a",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 34,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_028",
+      "iconAssetPath": "icons/b84e64bb25d05ea8.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/d99d7ccc37bc91c9b4a3d69a76c0f36e68c34d83debc1a09bfd85ded5e45d436.png",
+      "sourceSha256": "d99d7ccc37bc91c9b4a3d69a76c0f36e68c34d83debc1a09bfd85ded5e45d436",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 38,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    }
+  ]
+}

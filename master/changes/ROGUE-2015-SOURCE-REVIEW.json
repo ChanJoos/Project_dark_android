@@ -1,6 +1,6 @@
 {
   "id": "ROGUE-2015-SOURCE-REVIEW",
-  "status": "PROPOSED",
+  "status": "ACCEPTED",
   "changes": [
     {
       "sourceSheet": "Skill_Master",
@@ -87,5 +87,6 @@
     "Verify all six IDs, both sexes and four facings in native runtime tests",
     "Do not imply original status/stealth mechanics from a kind correction"
   ],
-  "runtimeChangeApplied": false
+  "runtimeChangeApplied": true,
+  "acceptanceScope": "Six source-backed kinds; overhead BODY is project-selected, persistent mechanics remain separate."
 }

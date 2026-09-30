@@ -17,6 +17,13 @@ change=json.loads((root/'master/changes/CLASSIC-MARTIAL-CLERIC-V68.json').read_t
 assert change['status']=='ACCEPTED'
 for entry in entries:entry.update(change['overrides'].get(entry['id'],{}))
 entries.extend(change['addedCatalogEntries'])
+rogue=json.loads((root/'master/changes/ROGUE-2015-SOURCE-REVIEW.json').read_text())
+assert rogue['status']=='ACCEPTED'
+for correction in rogue['changes']:
+    assert correction['field']=='종류'
+    entry=next(e for e in entries if e['id']==correction['sourceId'])
+    assert entry['kind']==correction['before']
+    entry['kind']=correction['after']
 assert len({e['id'] for e in entries})==len(entries)
 p=root/'app/src/main/assets/skills/catalog.json' ;p.parent.mkdir(parents=True,exist_ok=True)
 p.write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

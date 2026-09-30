@@ -102,9 +102,11 @@ jobs:
         run: |
           pip install numpy Pillow
           python tools/import_classic_skill_references.py
+          python tools/import_rogue_skill_references.py
+          git diff --exit-code -- app/src/main/assets/skill-presentation/rogue
           git diff --exit-code -- app/src/main/assets/skill-presentation/classic
       - name: Verify skill window, shared combat and restart persistence
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest --stacktrace
       - name: Print unit test failure details
         if: failure()
         run: |

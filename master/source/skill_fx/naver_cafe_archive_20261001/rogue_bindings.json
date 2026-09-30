@@ -1,0 +1,533 @@
+{
+  "revision": "ROGUE_REVIEWED_CHANNELS_V1",
+  "rows": [
+    {
+      "id": "SK_도적_001",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 0,
+        "crop": [
+          0,
+          0,
+          38,
+          38
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_002",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 1,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_003",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 4,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_004",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 6,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_005",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 8,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_006",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 10,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_007",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 12,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 13,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          82,
+          100
+        ],
+        "region": [
+          77,
+          47,
+          115,
+          104
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+        "rejectWarmActorPixels": true,
+        "yellowOnly": false
+      }
+    },
+    {
+      "id": "SK_도적_008",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 14,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_009",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 15,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_010",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 2,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_014",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 20,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 21,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          82,
+          100
+        ],
+        "region": [
+          78,
+          45,
+          118,
+          103
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+        "rejectWarmActorPixels": true,
+        "yellowOnly": false
+      }
+    },
+    {
+      "id": "SK_도적_015",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 22,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_018",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 24,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "noEffect": {
+        "articleId": 245450,
+        "imageIndex": 25,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      }
+    },
+    {
+      "id": "SK_도적_019",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 26,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "noEffect": {
+        "articleId": 245450,
+        "imageIndex": 27,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      }
+    },
+    {
+      "id": "SK_도적_020",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 28,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_021",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 35,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 36,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          86,
+          108
+        ],
+        "region": [
+          79,
+          42,
+          119,
+          125
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+        "rejectWarmActorPixels": true,
+        "yellowOnly": false
+      }
+    },
+    {
+      "id": "SK_도적_022",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 35,
+        "crop": [
+          2,
+          50,
+          42,
+          90
+        ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 37,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          86,
+          108
+        ],
+        "region": [
+          79,
+          42,
+          119,
+          125
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+        "rejectWarmActorPixels": true,
+        "yellowOnly": false
+      }
+    },
+    {
+      "id": "SK_도적_023",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 30,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 31,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          85,
+          104
+        ],
+        "region": [
+          80,
+          47,
+          120,
+          105
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+        "rejectWarmActorPixels": false,
+        "yellowOnly": false
+      }
+    },
+    {
+      "id": "SK_도적_024",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 32,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_025",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 34,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      }
+    },
+    {
+      "id": "SK_도적_028",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 38,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 39,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          84,
+          106
+        ],
+        "region": [
+          79,
+          44,
+          115,
+          109
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+        "rejectWarmActorPixels": true,
+        "yellowOnly": false
+      }
+    },
+    {
+      "id": "SK_도적_029",
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 43,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          83,
+          103
+        ],
+        "region": [
+          79,
+          45,
+          118,
+          104
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+        "rejectWarmActorPixels": false,
+        "yellowOnly": false
+      }
+    },
+    {
+      "id": "SK_도적_013",
+      "effect": {
+        "articleId": 245456,
+        "imageIndex": 1,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "CASTER",
+        "pivot": [
+          55,
+          98
+        ],
+        "region": [
+          20,
+          36,
+          105,
+          110
+        ],
+        "blocked": [
+          [
+            39,
+            43,
+            77,
+            94
+          ]
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Caster body masked; one source facing, project-selected BODY registration.",
+        "rejectWarmActorPixels": false,
+        "yellowOnly": true
+      }
+    },
+    {
+      "id": "SK_도적_016",
+      "effect": {
+        "articleId": 245456,
+        "imageIndex": 4,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "CASTER",
+        "pivot": [
+          55,
+          98
+        ],
+        "region": [
+          20,
+          36,
+          105,
+          110
+        ],
+        "blocked": [
+          [
+            39,
+            43,
+            77,
+            94
+          ]
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "limitations": "Caster body masked; one source facing, project-selected BODY registration.",
+        "rejectWarmActorPixels": false,
+        "yellowOnly": true
+      }
+    },
+    {
+      "id": "SK_도적_011",
+      "noEffect": {
+        "articleId": 245456,
+        "imageIndex": 2,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      }
+    },
+    {
+      "id": "SK_도적_012",
+      "noEffect": {
+        "articleId": 245456,
+        "imageIndex": 3,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      }
+    },
+    {
+      "id": "SK_도적_017",
+      "noEffect": {
+        "articleId": 245456,
+        "imageIndex": 6,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      }
+    },
+    {
+      "id": "SK_도적_026",
+      "noEffect": {
+        "articleId": 245456,
+        "imageIndex": 7,
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      }
+    }
+  ],
+  "unbound": [
+    "245450:23 label conflict 습격/기습",
+    "245450:33 combined basic/double/triple",
+    "245450:40,42 icon identity uncertain",
+    "245450:44 repeated 암살격 label cannot prove 암살격진 icon",
+    "245450:46-53 and 245456:8-9 second advancement archery outside current scope",
+    "245450:5,9,11,17,29,41,45 and 245456:0,5 require separate masks or already use retained finisher sources"
+  ]
+}

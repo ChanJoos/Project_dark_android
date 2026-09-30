@@ -74,7 +74,7 @@ final class SkillWindow {
   private void drawDetail(Canvas c,SkillBook.Entry e,Actions a){
     SkillAcquisition.Quote q=a.quote(e);icon(c,e,new RectF(536,166,584,214));
     fitted(c,e.name,598,186,236,18,GOLD,true);label(c,e.job+" · "+e.kind,598,207,11,MUTED,false);
-    String status=book.testAccess()?e.runtime==null?"테스트 습득 · 범위/연출 시험":"테스트 습득 · 전투 지원":!book.jobAllowed(e.id)?"직업 미충족 · "+e.job+" 전용":e.runtime==null?"자료 미리보기 · 현재 습득 불가":q.learned?"습득 완료" : q.canLearn?"습득 가능":q.blockers.isEmpty()?"습득 불가":q.blockers.get(0);
+    String status=book.testAccess()?e.runtime==null?SkillActionContract.get(e.id)!=null&&!SkillActionContract.get(e.id).presentationAllowed()?"테스트 자료 · 기능 준비 중":"테스트 습득 · 범위/연출 시험":"테스트 습득 · 전투 지원":!book.jobAllowed(e.id)?"직업 미충족 · "+e.job+" 전용":e.runtime==null?"자료 미리보기 · 현재 습득 불가":q.learned?"습득 완료" : q.canLearn?"습득 가능":q.blockers.isEmpty()?"습득 불가":q.blockers.get(0);
     if(q.learned){List<String> slots=new ArrayList<>();for(int i=0;i<8;i++)if(e.id.equals(book.slot(i)))slots.add(""+(i+1));if(!slots.isEmpty())status+=" · 슬롯 "+String.join(", ",slots);}
     fitted(c,status,536,228,296,11,q.learned||q.canLearn?GREEN:RED,false);
     tab(c,new RectF(536,238,678,262),"설명",detailPage==0);tab(c,new RectF(686,238,832,262),"습득 조건",detailPage==1);

@@ -681,7 +681,7 @@
     },
     "gold": 5000,
     "items": {},
-    "summary": "하이드보다 강력한 은신 효과로 모습을 감춥니다.",
+    "summary": "다른 유저에게 은신을 부여합니다. 대상 유저와 지속 상태 기능은 구현 준비 중입니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "PROJECT_TIER_POLICY"
   },
