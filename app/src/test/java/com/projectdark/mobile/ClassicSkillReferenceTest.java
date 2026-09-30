@@ -41,9 +41,11 @@ public class ClassicSkillReferenceTest {
    F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;s.player().hp=5;s.player().mp=0;int before=m.hp;
    ((CombatController)field(v,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(v,((SkillBook)field(v,"skillBook")).get(id));assertEquals(id,field(v,"activeSkillVisualId"));
+   // Production drains queued ACTION_STARTED events in its frame tick, not in submitPlayer.
+   Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(v,0f);
    SkillVfxRenderer renderer=field(v,"skillVfx");ClassicSkillReference.Channel start=reference.channel(id,true);assertEquals(id,start==null?0:1,renderer.pulses.size());
    for(SkillVfxRenderer.Pulse pulse:renderer.pulses){assertTrue(pulse.caster);assertEquals("classic",pulse.sheet);assertEquals("player",pulse.anchor);}
-   Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(v,rule.contact+.001f);
+   tick.invoke(v,rule.contact+.001f);
    ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster)targets.add(pulse);
    assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals("classic",pulse.sheet);assertEquals(id,contact.casterAnchor||rule.selfAnchored()?"player":m.id,pulse.anchor);pulse.age=Math.min(.16f,pulse.duration/2);}
    if(rule.heal())assertEquals(id,before,m.hp);
