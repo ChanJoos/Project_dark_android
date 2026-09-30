@@ -69,6 +69,27 @@ public class SkillQuickslotApproachTest {
     for(int n=0;n<300&&intent.skillId!=null;n++){world.tickNavigation(.1f);tickPending(view,.1f);}
     assertNull(intent.skillId);assertEquals("SK_전사_001",field(view,"activeSkillVisualId"));
   }
+  @Test public void productionFrameLoopApproachesAndCastsInBothMaps()throws Exception{
+    for(boolean forest:new boolean[]{false,true}){
+      GameView view=new GameView(c);view.layout(0,0,960,540);view.setSkillTestMode(true);
+      if(forest){Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);}
+      RuntimeState state=field(view,"state");WorldRuntimeAdapter world=field(view,forest?"poteFieldAdapter":"worldAdapter");
+      RuntimeState.Monster target=state.monsters().get(0);SkillActionContract.Rule rule=SkillActionContract.get("SK_전사_001");
+      boolean placed=false;for(WorldMoveTargetController.TileCenter tile:world.navigationTiles()){
+        if(!world.canPlayerOccupy(tile.x,tile.y)||SkillApproachController.legal(rule,tile.x,tile.y,target.x,target.y))continue;
+        state.player().x=tile.x;state.player().y=tile.y;
+        List<WorldMoveTargetController.TileCenter> route=SkillApproachController.path(world,rule,target,960,540);
+        if(route!=null&&route.size()>=2&&route.size()<5){placed=true;break;}
+      }
+      assertTrue("reachable scene "+forest,placed);world.snapCameraToPlayer();((CombatController)field(view,"combat")).selectTarget(target);
+      SkillBook book=field(view,"skillBook");book.assign(0,rule.id);tap(view,671,395);
+      SkillApproachController pending=field(view,"skillApproach");assertNotNull(pending.skillId);
+      Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);
+      for(int frame=0;frame<600&&pending.skillId!=null;frame++)update.invoke(view,.05f);
+      assertNull(pending.skillId);assertEquals("actual frame loop cast "+forest,rule.id,field(view,"activeSkillVisualId"));
+      assertTrue(((RuntimeCombatSession)field(view,"combatSession")).playerActionActive());
+    }
+  }
   private static void tickPending(GameView v,float dt)throws Exception{Method m=GameView.class.getDeclaredMethod("tickSkillApproach",float.class);m.setAccessible(true);m.invoke(v,dt);}
   private static void use(GameView v,SkillBook.Entry e)throws Exception{Method m=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);m.setAccessible(true);m.invoke(v,e);}
   private static void tap(GameView v,float x,float y){MotionEvent e=MotionEvent.obtain(0,0,MotionEvent.ACTION_DOWN,x,y,0);v.onTouchEvent(e);e.recycle();}
