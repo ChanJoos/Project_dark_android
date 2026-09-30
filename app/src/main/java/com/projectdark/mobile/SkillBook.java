@@ -25,6 +25,7 @@ public final class SkillBook {
       return out+"\n자료: "+requirements+"\n승급/선행/재료의 전체 판정은 미확정";
     }
     public boolean magic(){return "마법".equals(kind);}
+    public boolean jobMatches(String code){if("공통".equals(job)||"검증용".equals(job))return true;String expected="전사".equals(job)?"WARRIOR":"도적".equals(job)?"ROGUE":"무도가".equals(job)?"MARTIAL_ARTIST":"마법사".equals(job)?"MAGE":"성직자".equals(job)?"CLERIC":"";return expected.equals(code);}
   }
   private final LinkedHashMap<String,Entry> entries=new LinkedHashMap<>();
   private final LinkedHashMap<String,Integer> learned=new LinkedHashMap<>();
@@ -34,6 +35,16 @@ public final class SkillBook {
   public String summary(String id){JSONObject row=learningPolicy(id);return row==null?"":row.optString("summary");}
   public String captureConditions(String id){String v=captureConditions.get(id);return v==null?get(id).legacy:v;}
   private final String[] slots=new String[SLOT_COUNT];
+  private final String[] testSlots=new String[SLOT_COUNT];
+  private boolean testAccess;
+  private java.util.function.Supplier<String> jobSource;
+  public void bindJob(java.util.function.Supplier<String> source){jobSource=source;}
+  public boolean jobAllowed(String id){Entry e=get(id);return e!=null&&(testAccess||jobSource==null||e.jobMatches(jobSource.get()));}
+  public boolean testAccess(){return testAccess;}
+  public void setTestAccess(boolean value){testAccess=value;}
+  public boolean previewable(String id){Entry e=get(id);return e!=null&&!"검증용".equals(e.job);}
+  public String[] testSlots(){return testSlots.clone();}
+  public void restoreTestSlots(String[] values){for(int i=0;i<SLOT_COUNT;i++)testSlots[i]=values!=null&&i<values.length&&previewable(values[i])?values[i]:null;}
   public static SkillBook load(Context context){
     SkillBook book=new SkillBook();
     try(InputStream in=context.getAssets().open("skills/catalog.json")){
@@ -61,16 +72,16 @@ public final class SkillBook {
   public Entry get(String id){return entries.get(id);}
   public Collection<Entry> entries(){return Collections.unmodifiableCollection(entries.values());}
   public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(e.magic()==magic&&(!"검증용".equals(e.job)||learned(e.id))&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
-  public boolean learned(String id){return learned.containsKey(id);}
+  public boolean learned(String id){return testAccess&&previewable(id)||learned.containsKey(id);}
   public int proficiency(String id){Integer v=learned.get(id);return v==null?0:v;}
   /** Called by a validated acquisition service. UI cannot grant skills. */
   public boolean learn(String id,int proficiency){if(!entries.containsKey(id)||proficiency<0||proficiency>100)return false;learned.put(id,proficiency);return true;}
-  public boolean usable(String id){Entry e=get(id);return e!=null&&e.runtime!=null&&learned(id);}
-  public String slot(int index){return index>=0&&index<SLOT_COUNT?slots[index]:null;}
-  public boolean assign(int index,String id){if(index<0||index>=SLOT_COUNT||!learned(id))return false;slots[index]=id;return true;}
+  public boolean usable(String id){Entry e=get(id);return e!=null&&learned(id)&&jobAllowed(id)&&(e.runtime!=null||testAccess&&previewable(id));}
+  public String slot(int index){return index>=0&&index<SLOT_COUNT?(testAccess?testSlots:slots)[index]:null;}
+  public boolean assign(int index,String id){if(index<0||index>=SLOT_COUNT||!learned(id))return false;(testAccess?testSlots:slots)[index]=id;return true;}
   /** Adapted progression: each resolved action advances proficiency once, capped at 100. */
-  public void practiced(String id){if(learned(id))learned.put(id,Math.min(100,proficiency(id)+1));}
-  public void clearSlot(int index){if(index>=0&&index<SLOT_COUNT)slots[index]=null;}
+  public void practiced(String id){if(!testAccess&&learned.containsKey(id))learned.put(id,Math.min(100,proficiency(id)+1));}
+  public void clearSlot(int index){if(index>=0&&index<SLOT_COUNT)(testAccess?testSlots:slots)[index]=null;}
   public JSONObject snapshot(){try{JSONArray s=new JSONArray();for(String id:slots)s.put(id==null?JSONObject.NULL:id);return new JSONObject().put("version",1).put("learned",new JSONObject(learned)).put("slots",s);}catch(JSONException e){throw new IllegalStateException(e);}}
   /** Transactional validation: malformed/newer snapshots preserve the original save. */
   public boolean restore(JSONObject j){

@@ -2,16 +2,16 @@
   "revision": "PROJECT_ADAPTED_SKILL_PRESENTATION_V1",
   "profiles": {
     "CAST": {
-      "group": "b",
+      "group": "f",
       "back": [
-        0,
         1,
-        2
+        1,
+        0
       ],
       "front": [
         3,
-        4,
-        5
+        3,
+        2
       ]
     },
     "PUNCH": {

@@ -9,6 +9,7 @@ final class SkillWindow {
     void use(SkillBook.Entry entry);boolean canLearn(SkillBook.Entry entry);void learn(SkillBook.Entry entry);
     SkillAcquisition.Quote quote(SkillBook.Entry entry);long gold();boolean save();float cooldown(String id);
     String requirements(SkillBook.Entry entry);void notice(String text);
+    default void testMode(boolean enabled){}
   }
   static final int PAGE_SIZE=12;
   private static final String[] JOBS={"전체","공통","전사","도적","무도가","마법사","성직자"};
@@ -22,7 +23,7 @@ final class SkillWindow {
   SkillWindow(SkillBook book,SkillIconCatalog icons){this.book=book;this.icons=icons;}
   void close(){open=false;choosingSlot=false;}
   private SkillBook.Entry selected(){return book.get(selectedId);}
-  private List<SkillBook.Entry> rows(){List<SkillBook.Entry> out=new ArrayList<>();for(SkillBook.Entry e:book.list(magic,learnedOnly))if(!"검증용".equals(e.job)&&(archive||e.runtime!=null)&&("전체".equals(job)||job.equals(e.job)))out.add(e);return out;}
+  private List<SkillBook.Entry> rows(){List<SkillBook.Entry> out=new ArrayList<>();for(SkillBook.Entry e:book.list(magic,learnedOnly))if(!"검증용".equals(e.job)&&(book.testAccess()||archive||e.runtime!=null&&book.jobAllowed(e.id))&&("전체".equals(job)||job.equals(e.job)))out.add(e);return out;}
   private void reset(){page=0;selectedId=null;detailPage=detailOffset=0;choosingSlot=false;message="";}
   static RectF cell(int i){float x=112+(i%4)*98,y=154+(i/4)*78;return new RectF(x,y,x+92,y+76);}
   private RectF bookSlot(int i){return new RectF(112+i*92,469,198+i*92,505);}
@@ -30,7 +31,8 @@ final class SkillWindow {
     if(!open)return;
     fill(c,0,0,960,540,0x92000000);panel(c,bounds,0xff201f1b,0xff8e7850);
     gradient(c,96,36,864,70,0xff3f382b,0xff25241e);
-    label(c,"스킬",112,61,23,GOLD,true);button(c,new RectF(232,37,354,64),archive?"사용 가능 목록":"전체 자료 보기",true);
+    label(c,"스킬",112,61,23,GOLD,true);button(c,new RectF(232,37,354,64),book.testAccess()?"219개 시험 목록":archive?"사용 가능 목록":"전체 자료 보기",true);
+    button(c,new RectF(366,37,504,64),book.testAccess()?"테스트 ON":"테스트 OFF",true);
     right(c,"보유 골드  "+number(a.gold())+" G",814,58,12,TEXT);button(c,new RectF(834,37,859,64),"×",true);
     tab(c,new RectF(112,80,298,109),"기술",!magic);tab(c,new RectF(306,80,498,109),"마법",magic);
     tab(c,new RectF(520,80,677,109),"전체 스킬",!learnedOnly);tab(c,new RectF(685,80,848,109),"배운 스킬",learnedOnly);
@@ -48,7 +50,7 @@ final class SkillWindow {
     button(c,new RectF(112,410,150,440),"‹",page>0);button(c,new RectF(460,410,498,440),"›",page+1<pages);
     center(c,(page+1)+" / "+pages+"  ·  "+list.size()+"개",305,430,12,MUTED);
     SkillAcquisition.Quote q=e==null?null:a.quote(e);
-    boolean supported=e!=null&&e.runtime!=null;
+    boolean supported=e!=null&&(e.runtime!=null||book.testAccess());
     String learn=e==null?"습득":!supported?"습득 불가":book.learned(e.id)?"습득 완료":q.gold==0?"습득 · 무료":"습득 · "+number(q.gold)+" G";
     button(c,new RectF(520,410,677,440),learn,e!=null&&a.canLearn(e));
     button(c,new RectF(685,410,848,440),choosingSlot?"등록 취소":"퀵슬롯 등록",supported&&book.learned(e.id));
@@ -70,7 +72,7 @@ final class SkillWindow {
   private void drawDetail(Canvas c,SkillBook.Entry e,Actions a){
     SkillAcquisition.Quote q=a.quote(e);icon(c,e,new RectF(536,166,584,214));
     fitted(c,e.name,598,186,236,18,GOLD,true);label(c,e.job+" · "+e.kind,598,207,11,MUTED,false);
-    String status=e.runtime==null?"자료 미리보기 · 현재 습득 불가":q.learned?"습득 완료" : q.canLearn?"습득 가능":q.blockers.isEmpty()?"습득 불가":q.blockers.get(0);
+    String status=book.testAccess()?e.runtime==null?"테스트 습득 · 모션/이펙트 시험":"테스트 습득 · 전투 지원":!book.jobAllowed(e.id)?"직업 미충족 · "+e.job+" 전용":e.runtime==null?"자료 미리보기 · 현재 습득 불가":q.learned?"습득 완료" : q.canLearn?"습득 가능":q.blockers.isEmpty()?"습득 불가":q.blockers.get(0);
     if(q.learned){List<String> slots=new ArrayList<>();for(int i=0;i<8;i++)if(e.id.equals(book.slot(i)))slots.add(""+(i+1));if(!slots.isEmpty())status+=" · 슬롯 "+String.join(", ",slots);}
     fitted(c,status,536,228,296,11,q.learned||q.canLearn?GREEN:RED,false);
     tab(c,new RectF(536,238,678,262),"설명",detailPage==0);tab(c,new RectF(686,238,832,262),"습득 조건",detailPage==1);
@@ -80,7 +82,7 @@ final class SkillWindow {
       String cd=d==null?"—":basic?"무기 기준":String.format(Locale.ROOT,"%.1f초",d.cooldown);
       String value=d==null?"—":basic?"무기 기준":d.targetPolicy==SkillDef.TargetPolicy.SELF?""+(d.damage+q.current[2]):""+d.damage;
       metric(c,536,"소모 MP",resource);metric(c,636,"재사용",cd);metric(c,736,d!=null&&d.targetPolicy==SkillDef.TargetPolicy.SELF?"회복량":"기본 위력",value);
-      if(d==null)label(c,"습득·결제는 제공하지 않습니다",536,391,10,MUTED,false);
+      if(d==null)label(c,book.testAccess()?"시각 효과 시험 · 실제 전투 판정 준비 중":"습득·결제는 제공하지 않습니다",536,391,10,MUTED,false);
       else{String target=d.targetPolicy==SkillDef.TargetPolicy.SELF?"자신":d.range<=48?"근접한 적":"원거리 적";float remaining=a.cooldown(e.id);label(c,"대상  "+target,536,391,10,MUTED,false);if(remaining>0)right(c,String.format(Locale.ROOT,"%.1f초 후 사용 가능",remaining),832,391,10,GOLD);}
     }else{
       label(c,"요구 스탯 / 현재 스탯",536,280,10,MUTED,false);
@@ -95,14 +97,15 @@ final class SkillWindow {
   private void icon(Canvas c,SkillBook.Entry e,RectF r){fill(c,r.left,r.top,r.right,r.bottom,0xff24231d);if(!icons.draw(c,e.id,r)){outline(c,r,0xff595749,1);center(c,"—",r.centerX(),r.centerY()+5,15,MUTED);}}
   boolean touch(float x,float y,Actions a){
     if(!open)return false;if(new RectF(824,28,872,72).contains(x,y)){close();return true;}if(!bounds.contains(x,y))return true;
+    if(new RectF(366,37,504,64).contains(x,y)){a.testMode(!book.testAccess());reset();return true;}
     if(new RectF(232,37,354,64).contains(x,y)){archive=!archive;reset();return true;}
     if(y>=80&&y<=109){if(x>=112&&x<=498){magic=x>=306;reset();}else if(x>=520&&x<=848){learnedOnly=x>=685;reset();}return true;}
     if(y>=118&&y<=143&&x>=112&&x<848){int i=(int)((x-112)/105);if(i<JOBS.length){job=JOBS[i];reset();}return true;}
     for(int i=0;i<PAGE_SIZE;i++)if(cell(i).contains(x,y)){List<SkillBook.Entry> list=rows();int n=page*PAGE_SIZE+i;if(n<list.size()){selectedId=list.get(n).id;detailPage=detailOffset=0;choosingSlot=false;message="";}return true;}
     if(y>=238&&y<=262&&x>=536&&x<=832){detailPage=x>=686?1:0;return true;}
-    if(y>=410&&y<=440){if(x>=112&&x<=150){page=Math.max(0,page-1);selectedId=null;choosingSlot=false;}else if(x>=460&&x<=498){page=Math.min(page+1,Math.max(0,(rows().size()-1)/PAGE_SIZE));selectedId=null;choosingSlot=false;}else if(x>=520&&x<=677){if(selected()!=null&&!book.learned(selectedId)){if(!a.canLearn(selected())){message=a.requirements(selected());messageColor=RED;detailPage=1;return true;}a.learn(selected());messageColor=book.learned(selectedId)?GREEN:RED;message=book.learned(selectedId)?selected().name+" 습득 · 퀵슬롯에 등록하세요":"저장 실패 · 습득 비용을 돌려드렸습니다";}}else if(x>=685&&x<=848){if(selected()!=null&&selected().runtime!=null&&book.learned(selectedId)){choosingSlot=!choosingSlot;message="";}else a.notice("먼저 사용 가능한 스킬을 습득하세요");}return true;}
+    if(y>=410&&y<=440){if(x>=112&&x<=150){page=Math.max(0,page-1);selectedId=null;choosingSlot=false;}else if(x>=460&&x<=498){page=Math.min(page+1,Math.max(0,(rows().size()-1)/PAGE_SIZE));selectedId=null;choosingSlot=false;}else if(x>=520&&x<=677){if(selected()!=null&&!book.learned(selectedId)){if(!a.canLearn(selected())){message=a.requirements(selected());messageColor=RED;detailPage=1;return true;}a.learn(selected());messageColor=book.learned(selectedId)?GREEN:RED;message=book.learned(selectedId)?selected().name+" 습득 · 퀵슬롯에 등록하세요":"저장 실패 · 습득 비용을 돌려드렸습니다";}}else if(x>=685&&x<=848){if(selected()!=null&&(selected().runtime!=null||book.testAccess())&&book.learned(selectedId)){choosingSlot=!choosingSlot;message="";}else a.notice("먼저 사용 가능한 스킬을 습득하세요");}return true;}
     for(int i=0;i<8;i++)if(bookSlot(i).contains(x,y)){
-      if(choosingSlot&&selected()!=null){org.json.JSONObject before=book.snapshot();if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;if(!a.save()){book.restore(before);message="저장 실패 · 등록 취소";messageColor=RED;a.notice(message);return true;}choosingSlot=false;flashSlot=i;messageColor=GREEN;message="슬롯 "+(i+1)+" · "+(book.slot(i)==null?"등록 해제":"등록 완료 · 창을 닫고 사용하세요");a.notice(message);}
+      if(choosingSlot&&selected()!=null){org.json.JSONObject before=book.snapshot();String[] beforeTest=book.testSlots();if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;if(!a.save()){book.restore(before);book.restoreTestSlots(beforeTest);message="저장 실패 · 등록 취소";messageColor=RED;a.notice(message);return true;}choosingSlot=false;flashSlot=i;messageColor=GREEN;message="슬롯 "+(i+1)+" · "+(book.slot(i)==null?"등록 해제":"등록 완료 · 창을 닫고 사용하세요");a.notice(message);}
       else{SkillBook.Entry e=book.get(book.slot(i));if(e!=null){selectedId=e.id;detailPage=detailOffset=0;}}return true;
     }
     return true;
