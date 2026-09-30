@@ -2,7 +2,7 @@
   "revision": "ROGUE_REVIEWED_CHANNELS_V1",
   "rows": [
     {
-      "id": "SK_도적_001",
+      "id": "SK_공통_001",
       "icon": {
         "articleId": 245450,
         "imageIndex": 0,
@@ -11,20 +11,22 @@
           0,
           38,
           38
-        ]
+        ],
+        "labelName": "기본공격"
       }
     },
     {
       "id": "SK_도적_002",
       "icon": {
         "articleId": 245450,
-        "imageIndex": 1,
+        "imageIndex": 2,
         "crop": [
           2,
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "센스몬스터"
       }
     },
     {
@@ -37,7 +39,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "표창날리기"
       }
     },
     {
@@ -50,7 +53,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "밀기"
       }
     },
     {
@@ -63,7 +67,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "아무네지아"
       },
       "effect": {
         "articleId": 245450,
@@ -95,7 +100,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "연막탄터뜨리기"
       },
       "effect": {
         "articleId": 245450,
@@ -127,7 +133,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "찔러휘비기"
       },
       "effect": {
         "articleId": 245450,
@@ -160,7 +167,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "더블어택"
       }
     },
     {
@@ -173,20 +181,22 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "품뒤져보기"
       }
     },
     {
       "id": "SK_도적_010",
       "icon": {
         "articleId": 245450,
-        "imageIndex": 2,
+        "imageIndex": 18,
         "crop": [
           2,
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "센스"
       }
     },
     {
@@ -199,7 +209,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "두번찌르기"
       },
       "effect": {
         "articleId": 245450,
@@ -232,7 +243,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "습격"
       }
     },
     {
@@ -245,7 +257,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "함정해체"
       },
       "noEffect": {
         "articleId": 245450,
@@ -263,7 +276,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "적갑옷해체"
       },
       "noEffect": {
         "articleId": 245450,
@@ -281,7 +295,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "암살격"
       }
     },
     {
@@ -294,7 +309,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "마구찌르기"
       },
       "effect": {
         "articleId": 245450,
@@ -327,7 +343,8 @@
           50,
           42,
           90
-        ]
+        ],
+        "labelName": "슬래쉬"
       },
       "effect": {
         "articleId": 245450,
@@ -360,7 +377,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "기습"
       },
       "effect": {
         "articleId": 245450,
@@ -393,7 +411,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "트리플어택"
       }
     },
     {
@@ -406,7 +425,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "함정파기"
       }
     },
     {
@@ -419,7 +439,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "습격진"
       },
       "effect": {
         "articleId": 245450,
@@ -579,6 +600,20 @@
         "baseline": "TEMPORAL_MIN",
         "whiteOnly": true,
         "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
+      }
+    },
+    {
+      "id": "SK_도적_032",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 1,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ],
+        "labelName": "자물쇠열기"
       }
     }
   ],

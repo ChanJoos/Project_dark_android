@@ -2,8 +2,8 @@
   "revision": "ROGUE_REVIEWED_CHANNELS_V1",
   "rows": [
     {
-      "id": "SK_도적_001",
-      "iconAssetPath": "icons/762df98c60926ad3.png",
+      "id": "SK_공통_001",
+      "iconAssetPath": "icons/165251fab5d94235.png",
       "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/b033ce1825cd6442f3b41301f55bc1f7d3cc52e0934763e5ebb0292323cb51c9.png",
       "sourceSha256": "b033ce1825cd6442f3b41301f55bc1f7d3cc52e0934763e5ebb0292323cb51c9",
       "sourceOrdinal": {
@@ -14,7 +14,8 @@
           0,
           38,
           38
-        ]
+        ],
+        "labelName": "기본공격"
       },
       "crop": [
         0,
@@ -26,17 +27,18 @@
     {
       "id": "SK_도적_002",
       "iconAssetPath": "icons/b82a7bff31b97df4.png",
-      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f.png",
-      "sourceSha256": "47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21.png",
+      "sourceSha256": "225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21",
       "sourceOrdinal": {
         "articleId": 245450,
-        "imageIndex": 1,
+        "imageIndex": 2,
         "crop": [
           2,
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "센스몬스터"
       },
       "crop": [
         2,
@@ -58,7 +60,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "표창날리기"
       },
       "crop": [
         2,
@@ -80,7 +83,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "밀기"
       },
       "crop": [
         2,
@@ -102,7 +106,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "아무네지아"
       },
       "crop": [
         2,
@@ -124,7 +129,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "연막탄터뜨리기"
       },
       "crop": [
         2,
@@ -146,7 +152,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "찔러휘비기"
       },
       "crop": [
         2,
@@ -168,7 +175,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "더블어택"
       },
       "crop": [
         2,
@@ -190,7 +198,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "품뒤져보기"
       },
       "crop": [
         2,
@@ -202,17 +211,18 @@
     {
       "id": "SK_도적_010",
       "iconAssetPath": "icons/48107e7afb60aaba.png",
-      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21.png",
-      "sourceSha256": "225439c873ec7b16c2b81ec6db3bced1b42dacd912185a916f458add56324b21",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/e367a29a9cf223515ba189e7099054d6be9e0e697e3a0683c2c6a615622207f5.png",
+      "sourceSha256": "e367a29a9cf223515ba189e7099054d6be9e0e697e3a0683c2c6a615622207f5",
       "sourceOrdinal": {
         "articleId": 245450,
-        "imageIndex": 2,
+        "imageIndex": 18,
         "crop": [
           2,
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "센스"
       },
       "crop": [
         2,
@@ -234,7 +244,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "두번찌르기"
       },
       "crop": [
         2,
@@ -256,7 +267,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "습격"
       },
       "crop": [
         2,
@@ -278,7 +290,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "함정해체"
       },
       "crop": [
         2,
@@ -300,7 +313,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "적갑옷해체"
       },
       "crop": [
         2,
@@ -322,7 +336,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "암살격"
       },
       "crop": [
         2,
@@ -344,7 +359,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "마구찌르기"
       },
       "crop": [
         2,
@@ -366,7 +382,8 @@
           50,
           42,
           90
-        ]
+        ],
+        "labelName": "슬래쉬"
       },
       "crop": [
         2,
@@ -388,7 +405,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "기습"
       },
       "crop": [
         2,
@@ -410,7 +428,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "트리플어택"
       },
       "crop": [
         2,
@@ -432,7 +451,8 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "함정파기"
       },
       "crop": [
         2,
@@ -454,7 +474,31 @@
           3,
           42,
           43
-        ]
+        ],
+        "labelName": "습격진"
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_032",
+      "iconAssetPath": "icons/f93e2ab2c9e2a2f0.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f.png",
+      "sourceSha256": "47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 1,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ],
+        "labelName": "자물쇠열기"
       },
       "crop": [
         2,

@@ -19,6 +19,7 @@ public class RogueSkillReferenceTest {
  @Test public void correctedMagicUsesOverheadBodyForBothSexesAndEveryFacing()throws Exception{
   SkillBook book=SkillBook.load(c);SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);
   for(String id:new String[]{"SK_도적_011","SK_도적_012","SK_도적_013","SK_도적_016","SK_도적_017","SK_도적_026"}){
+   assertTrue(id,book.list(true,false).contains(book.get(id)));assertFalse(id,book.list(false,false).contains(book.get(id)));
    assertEquals(id,"마법",book.get(id).kind);assertEquals(id,"CAST",catalog.get(id).motion);
    for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
     String key=catalog.frameKey(body,"CAST",direction,.4f);assertTrue(key,key.contains("/f/"));assertTrue(key,catalog.frames.has(key));
@@ -28,6 +29,20 @@ public class RogueSkillReferenceTest {
   assertFalse(SkillActionContract.get("SK_도적_012").presentationAllowed());
   for(String id:new String[]{"SK_도적_004","SK_도적_019","SK_도적_026"})assertFalse(id,SkillActionContract.get(id).presentationAllowed());
   assertEquals(SkillActionContract.Pattern.SCREEN,SkillActionContract.get("SK_도적_006").pattern);
+ }
+ @Test public void labelledIconsNeverBorrowBasicAttackOrSwapSenseTables()throws Exception{
+  ClassicSkillReference reference=new ClassicSkillReference(c,"rogue");assertEquals(22,reference.references.size());
+  assertFalse(reference.references.containsKey("SK_도적_001"));
+  assertEquals(0,reference.references.get("SK_공통_001").getJSONObject("sourceOrdinal").getInt("imageIndex"));
+  assertEquals(1,reference.references.get("SK_도적_032").getJSONObject("sourceOrdinal").getInt("imageIndex"));
+  assertEquals(2,reference.references.get("SK_도적_002").getJSONObject("sourceOrdinal").getInt("imageIndex"));
+  assertEquals(18,reference.references.get("SK_도적_010").getJSONObject("sourceOrdinal").getInt("imageIndex"));
+  for(JSONObject row:reference.references.values()){
+   Bitmap original=BitmapFactory.decodeFile("../"+row.getString("sourcePath"));JSONArray crop=row.getJSONArray("crop");
+   Bitmap derived=BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/rogue/"+row.getString("iconAssetPath")));
+   assertEquals(crop.getInt(2)-crop.getInt(0),derived.getWidth());
+   for(int y=0;y<derived.getHeight();y++)for(int x=0;x<derived.getWidth();x++)assertEquals(row.getString("id"),original.getPixel(x+crop.getInt(0),y+crop.getInt(1)),derived.getPixel(x,y));
+  }
  }
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
   ClassicSkillReference fx=new ClassicSkillReference(c,"rogue");assertEquals(18,fx.effects.size());

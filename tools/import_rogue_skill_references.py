@@ -8,18 +8,20 @@ ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'master/source/skill_fx/naver_cafe_archive_20261001'
 OUT=ROOT/'app/src/main/assets/skill-presentation/rogue';OUT.mkdir(exist_ok=True)
 (OUT/'icons').mkdir(exist_ok=True)
+for stale in (OUT/'icons').glob('*.png'):stale.unlink()
 media={(r['articleId'],r['imageIndex']):m for m in json.loads((SOURCE/'media.json').read_text())['media'] for r in m['references']}
 def source(ref):
  m=media[(ref['articleId'],ref['imageIndex'])]
  assert hashlib.sha256((ROOT/m['path']).read_bytes()).hexdigest()==m['sha256']
  return m
+names={r['id']:r['name'] for r in json.loads((ROOT/'app/src/main/assets/skills/catalog.json').read_text())}
 bindings=json.loads((SOURCE/'rogue_bindings.json').read_text())
 manifest={'revision':bindings['revision'],'nativeArchivePixels':False,'limitations':['Temporal-minimum SCREEN extraction and manually selected masks are approximate.','Occluded/dark pixels are absent, source facing is not a four-way visual acceptance.','BODY registration and event timing are project choices; no original mechanic is inferred.'],'skills':{}}
 references=[]
 for binding in bindings['rows']:
  sid=binding['id'];slug=hashlib.sha256(sid.encode()).hexdigest()[:16]
  if 'icon' in binding:
-  ref=binding['icon'];m=source(ref);im=Image.open(ROOT/m['path']);crop=ref['crop'];assert crop[2]<=im.width and crop[3]<=im.height
+  ref=binding['icon'];assert ref['labelName']==names[sid],(sid,'Source label mismatch');m=source(ref);im=Image.open(ROOT/m['path']);crop=ref['crop'];assert crop[2]<=im.width and crop[3]<=im.height
   path='icons/'+slug+'.png';im.crop(crop).save(OUT/path)
   references.append(dict(id=sid,iconAssetPath=path,sourcePath=m['path'],sourceSha256=m['sha256'],sourceOrdinal=ref,crop=crop))
  if 'noEffect' in binding:

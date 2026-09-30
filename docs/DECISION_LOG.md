@@ -172,4 +172,4 @@ Continue PR176/codex/original-skill-contract-v65 from308bc751. Fully read61 labe
 
 ROGUE-2015-SOURCE-REVIEW accepted for six magic kinds, project-selected overhead BODY, labelled icon crops and reviewed source-pixel channels. Source245450 explicitly says 밀기/적갑옷해체 are player-only; source245456 says 하이더 targets another user. Until user-target services exist, these three are gated as utility actions instead of previewing on a monster/self. Smoke uses observed screen membership in test presentation; map-wide behavior remains unresolved and the circa-three-second blind status is not claimed implemented. Backslash uses one isolated source glint on each resolved front/rear recipient, not a fabricated four-direction original capture.
 
-Coverage is per ID in SKILL_SOURCE_COVERAGE.csv:148/221 source icons; native BODY pixels are project-selected semantic poses; missing bindings/status services/device and original visual approval remain explicit.
+Coverage is per ID in SKILL_SOURCE_COVERAGE.csv:147/221 source icons; native BODY pixels are project-selected semantic poses; missing bindings/status services/device and original visual approval remain explicit.
