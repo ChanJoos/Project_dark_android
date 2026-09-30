@@ -209,6 +209,7 @@ public final class GameView extends View {
     if(entry==null||isActing()||!state.player().alive)return;
     if(!skillBook.jobAllowed(entry.id)||!skillBook.usable(entry.id)){useBookSkillNow(entry);return;}
     cancelSkillApproach();autoAttackEnabled=false;
+    if("SK_공통_001".equals(entry.id)){useBookSkillNow(entry);return;}
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
     boolean offensive=rule!=null&&rule.presentationAllowed()&&(!rule.selfAnchored()||rule.damage());
     if(!offensive){useBookSkillNow(entry);return;}
