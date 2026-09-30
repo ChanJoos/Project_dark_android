@@ -88,5 +88,15 @@
     "Do not imply original status/stealth mechanics from a kind correction"
   ],
   "runtimeChangeApplied": true,
-  "acceptanceScope": "Six source-backed kinds; overhead BODY is project-selected, persistent mechanics remain separate."
+  "acceptanceScope": "Six source-backed kinds; overhead BODY is project-selected, persistent mechanics remain separate.",
+  "acceptedRuntimeConstraints": {
+    "source": "245450/245456 retained text",
+    "userOnlyGatedUntilService": [
+      "SK_도적_004",
+      "SK_도적_019",
+      "SK_도적_026"
+    ],
+    "visibleScreenPresentationOnly": "SK_도적_006",
+    "mapWideSmoke": "UNRESOLVED"
+  }
 }

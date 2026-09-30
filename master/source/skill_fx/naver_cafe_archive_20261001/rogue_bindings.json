@@ -64,6 +64,25 @@
           42,
           43
         ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 9,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          112,
+          95
+        ],
+        "region": [
+          98,
+          58,
+          129,
+          102
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "whiteOnly": false,
+        "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
       }
     },
     {
@@ -77,6 +96,25 @@
           42,
           43
         ]
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 11,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          60,
+          132
+        ],
+        "region": [
+          37,
+          61,
+          84,
+          133
+        ],
+        "baseline": "DIRECT_BRIGHT_DESAT",
+        "whiteOnly": false,
+        "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
       }
     },
     {
@@ -520,6 +558,28 @@
         "imageIndex": 7,
         "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
       }
+    },
+    {
+      "id": "SK_도적_030",
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 41,
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "pivot": [
+          111,
+          115
+        ],
+        "region": [
+          97,
+          87,
+          136,
+          116
+        ],
+        "baseline": "TEMPORAL_MIN",
+        "whiteOnly": true,
+        "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
+      }
     }
   ],
   "unbound": [
@@ -528,6 +588,6 @@
     "245450:40,42 icon identity uncertain",
     "245450:44 repeated 암살격 label cannot prove 암살격진 icon",
     "245450:46-53 and 245456:8-9 second advancement archery outside current scope",
-    "245450:5,9,11,17,29,41,45 and 245456:0,5 require separate masks or already use retained finisher sources"
+    "245450:5,17,29,45 and 245456:0,5 require separate masks or already use retained finisher sources"
   ]
 }

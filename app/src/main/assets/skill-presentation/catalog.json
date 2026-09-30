@@ -2484,7 +2484,7 @@
       "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단."
     },
     {
       "id": "SK_도적_005",
@@ -2518,7 +2518,7 @@
       "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문에서 화면 내 모든 몬스터 확인, 맵 전체 여부는 미확정. 시험 모드 화면 범위만 적용."
     },
     {
       "id": "SK_도적_007",
@@ -2739,7 +2739,7 @@
       "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단."
     },
     {
       "id": "SK_도적_020",
@@ -2858,7 +2858,7 @@
       "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "자기 대상; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도."
+      "note": "자기 대상; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단."
     },
     {
       "id": "SK_도적_027",

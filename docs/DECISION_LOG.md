@@ -166,3 +166,10 @@ Capture anchoring: source GIFs show the effect around the caster, so captured co
 ## 2026-09-30 — v68 classic martial/cleric source candidate
 
 Continue PR176/codex/original-skill-contract-v65 from308bc751. Fully read61 labelled classic rows (27 martial/34 cleric); retained132 source media/56 GIFs. Adds missing martial IDs033/034; catalog221, Benusti stays excluded.55 captured effect IDs /85 caster/contact channels,60 source icon bindings, corrected source descriptions/stats/kinds and ally/group/self rules. Original BODY268 bytes preserved. See CLASSIC_MARTIAL_CLERIC_V68.md and source provenance. IMPLEMENTED_CANDIDATE; exact-source build/native review/device/visual acceptance PENDING. Persistent status, travel, summon, party and finisher formulas remain unimplemented; this is not61 complete mechanics. v67 prior run36715127755 SUCCESS but its legacy-graphics captured screenshots were black; corrected native-render test now required.
+
+
+## 2026-10-01 — retained Rogue source constraints
+
+ROGUE-2015-SOURCE-REVIEW accepted for six magic kinds, project-selected overhead BODY, labelled icon crops and reviewed source-pixel channels. Source245450 explicitly says 밀기/적갑옷해체 are player-only; source245456 says 하이더 targets another user. Until user-target services exist, these three are gated as utility actions instead of previewing on a monster/self. Smoke uses observed screen membership in test presentation; map-wide behavior remains unresolved and the circa-three-second blind status is not claimed implemented. Backslash uses one isolated source glint on each resolved front/rear recipient, not a fabricated four-direction original capture.
+
+Coverage is per ID in SKILL_SOURCE_COVERAGE.csv:148/221 source icons; native BODY pixels are project-selected semantic poses; missing bindings/status services/device and original visual approval remain explicit.

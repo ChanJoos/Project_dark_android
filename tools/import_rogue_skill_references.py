@@ -34,6 +34,9 @@ for binding in bindings['rows']:
  for frame in rgb:
   diff=np.maximum(frame-base,0);emission=np.clip(diff/np.maximum(255-base,1),0,1);alpha=np.max(emission,axis=2)
   mask=valid&(np.max(diff,axis=2)>23)&((np.max(frame,axis=2)-np.min(frame,axis=2)>35)|(np.min(frame,axis=2)>150))
+  if ref['baseline']=='DIRECT_BRIGHT_DESAT':
+   mask=valid&(np.min(frame,axis=2)>110)&(np.max(frame,axis=2)-np.min(frame,axis=2)<25);emission=frame/255;alpha=np.ones((h,w))
+  if ref.get('whiteOnly'):mask&=(np.min(frame,axis=2)>150)&(np.max(frame,axis=2)-np.min(frame,axis=2)<60)
   if ref.get('rejectWarmActorPixels'):mask&=~((frame[:,:,0]>frame[:,:,1]*1.4)&(frame[:,:,2]<frame[:,:,1]))
   if ref.get('yellowOnly'):mask&=(frame[:,:,0]>frame[:,:,2]*1.2)
   alpha[~mask]=0;fg=np.clip(emission/np.maximum(alpha[:,:,None],.001)*255,0,255);tile=np.dstack((fg,np.round(alpha*255))).astype(np.uint8);tile[~mask]=0;tiles.append(tile);counts.append(int(np.count_nonzero(tile[:,:,3])))

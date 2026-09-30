@@ -7,6 +7,119 @@
     "BODY registration and event timing are project choices; no original mechanic is inferred."
   ],
   "skills": {
+    "SK_도적_005": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/99b28299cb50fe9e.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 112,
+          "pivotY": 95,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/68cf124c18a9db0997670d3589a788c9786aec6c7fca726bb8dcb660a7cc8872.gif",
+          "sourceSha256": "68cf124c18a9db0997670d3589a788c9786aec6c7fca726bb8dcb660a7cc8872",
+          "atlasSha256": "59b2849d5d285a61582db24735df4f020306ce639d20e7bc431cb770d4fdbfc0",
+          "opaquePixelCounts": [
+            30,
+            138,
+            29,
+            0
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 9,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              112,
+              95
+            ],
+            "region": [
+              98,
+              58,
+              129,
+              102
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "whiteOnly": false,
+            "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
+          }
+        }
+      }
+    },
+    "SK_도적_006": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/c8fb0d55800aadbf.png",
+          "width": 250,
+          "height": 250,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "pivotX": 60,
+          "pivotY": 132,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/63a38209cbb4469caaaca786d16faaf50c459b1199299bf44e01528289d358dd.gif",
+          "sourceSha256": "63a38209cbb4469caaaca786d16faaf50c459b1199299bf44e01528289d358dd",
+          "atlasSha256": "64abb5aad123e49091f5ecd4f1f261569869d7eb4d7c38d03d2755fe46d8fa11",
+          "opaquePixelCounts": [
+            1718,
+            1765,
+            1609,
+            1488,
+            1072
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 11,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              60,
+              132
+            ],
+            "region": [
+              37,
+              61,
+              84,
+              133
+            ],
+            "baseline": "DIRECT_BRIGHT_DESAT",
+            "whiteOnly": false,
+            "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
+          }
+        }
+      }
+    },
     "SK_도적_007": {
       "channels": {
         "RECIPIENT_CONTACT": {
@@ -589,6 +702,61 @@
       },
       "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d.gif",
       "sourceSha256": "4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d"
+    },
+    "SK_도적_030": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/6f289fb7ff6429fc.png",
+          "width": 160,
+          "height": 160,
+          "columns": 4,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 111,
+          "pivotY": 115,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/87e8ba3b3eecbc50e7ad7212d0ebbee30cc664de39640d0a0aec0b30692ee1a1.gif",
+          "sourceSha256": "87e8ba3b3eecbc50e7ad7212d0ebbee30cc664de39640d0a0aec0b30692ee1a1",
+          "atlasSha256": "38f1b0c15a68afd93446d35e896654461f3d9c31ca94ac40f994a92301d7907d",
+          "opaquePixelCounts": [
+            148,
+            131,
+            1,
+            0
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 41,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              111,
+              115
+            ],
+            "region": [
+              97,
+              87,
+              136,
+              116
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "whiteOnly": true,
+            "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
+          }
+        }
+      }
     }
   }
 }
