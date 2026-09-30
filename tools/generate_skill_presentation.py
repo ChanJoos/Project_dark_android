@@ -23,7 +23,7 @@ profiles={
 }
 decisions=list(csv.DictReader((ROOT/'docs/SKILL_ACTION_DECISIONS.csv').open()))
 decisions_by_id={r['id']:r for r in decisions}
-assert len(decisions_by_id)==len(catalog)==219
+assert len(decisions_by_id)==len(catalog)==221
 assert set(decisions_by_id)=={r['id'] for r in catalog}
 entries=[]
 for r in catalog:

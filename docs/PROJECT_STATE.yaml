@@ -146,6 +146,17 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  CLASSIC_MARTIAL_CLERIC_068:
+    title: "Import labelled classic martial and cleric references into source and presentation"
+    system: combat_presentation
+    scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: VERIFICATION_PENDING
+    claim: Director/Integration
+    required_sources: [docs/CLASSIC_MARTIAL_CLERIC_V68.md, master/source/skill_fx/naver_classic_2020/provenance.json, master/source/skill_fx/naver_classic_2020/definitions.json, docs/SKILL_SPATIAL_CONTRACT.md, docs/SKILL_ACTION_DECISIONS.csv, master/changes/CLASSIC-MARTIAL-CLERIC-V68.json, app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java, app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java]
+    acceptance: ["61 source rows and byte hashes retained", "55 labelled effect IDs emit separate caster/contact channels", "Source descriptions/stats/icons visible", "Shared legality and no-enemy-heal regressions pass", "Native composited captures reviewed; device gate separately pending"]
+    remaining: "Persistent status, travel, party, summon and finisher mechanics; original alpha/occlusion and every-facing pose fidelity"
+
   SKILL-WINDOW-02:
     owner: Director/Visual
     status: BUILD_VERIFIED

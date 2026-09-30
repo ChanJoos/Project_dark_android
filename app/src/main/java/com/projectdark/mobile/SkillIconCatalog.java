@@ -30,6 +30,8 @@ final class SkillIconCatalog {
         }
         presentation.put(row.getKey(),icon);
       }
+      JSONObject refs=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/classic/references.json"),StandardCharsets.UTF_8));JSONArray list=refs.getJSONArray("rows");
+      for(int n=0;n<list.length();n++){JSONObject row=list.getJSONObject(n);if(row.isNull("id"))continue;String id=row.getString("id");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/classic/icons/"+id+".png"));if(icon==null)throw new IOException("Invalid classic icon");presentation.put(id,icon);index.putIfAbsent(id,-1);}
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
   boolean has(String id){return index.containsKey(id);}
@@ -38,6 +40,6 @@ final class SkillIconCatalog {
     int x=(i%10)*40,y=(i/10)*40;paint.setFilterBitmap(false);
     Path mask=new Path();mask.addRoundRect(dest,dest.width()*.20f,dest.height()*.20f,Path.Direction.CW);
     canvas.save();canvas.clipPath(mask);
-    canvas.drawBitmap(presentation.get(id),new Rect(1,1,39,39),dest,paint);canvas.restore();return true;
+    Bitmap image=presentation.get(id);canvas.drawBitmap(image,new Rect(1,1,image.getWidth()-1,image.getHeight()-1),dest,paint);canvas.restore();return true;
   }
 }

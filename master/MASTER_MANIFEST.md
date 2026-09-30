@@ -127,3 +127,8 @@ DOCX 원문은 source에 보존했고 전체 332 paragraph(표 내부 포함)를
 ## 개정과 검증
 
 `python tools/validate_master.py --write-report`로 재현. 기계 판독 결과와 각 수식의 셀 주소는 VALIDATION_REPORT.json. 스키마의 빈 헤더도 위치를 그대로 보존한다. 개발 개선은 changes/에 before/after/evidence/impact/validation을 적고 director가 통합한다. SOURCE 파일과 baseline을 수정하여 과거 증거를 잃지 않는다.
+
+
+## CLASSIC-MARTIAL-CLERIC-V68 accepted supplemental projection
+
+Retain historical CSVs. master/changes/CLASSIC-MARTIAL-CLERIC-V68.json adds two martial IDs and source-kind corrections through generate_skill_catalog.py. Source tables/media/provenance under master/source/skill_fx/naver_classic_2020; FAN_SEO_CLASSIC_2020. Source snapshot counts do not imply official/current-server fidelity. Catalog221 excludes historical Benusti.

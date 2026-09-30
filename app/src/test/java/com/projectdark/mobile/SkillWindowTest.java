@@ -19,7 +19,7 @@ public class SkillWindowTest {
   Context context;
   @Before public void setup(){context=RuntimeEnvironment.getApplication();context.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(context);}
   @Test public void catalogPreservesMasterAndCommonerCannotUseOrRegister(){
-    SkillBook b=SkillBook.load(context);assertEquals(222,b.entries().size());assertEquals("숏블레이드",b.get("SK_전사_001").name);
+    SkillBook b=SkillBook.load(context);assertEquals(224,b.entries().size());assertEquals("숏블레이드",b.get("SK_전사_001").name);
     assertEquals(0,b.list(false,true).size());assertFalse(b.usable("cast_proto"));assertFalse(b.assign(0,"cast_proto"));
     assertTrue(b.learn("SK_전사_001",0));assertTrue(b.usable("SK_전사_001"));assertTrue(b.assign(0,"SK_전사_001"));
     assertFalse(b.learn("unknown",10));assertFalse(b.learn("cast_proto",101));

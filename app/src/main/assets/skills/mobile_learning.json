@@ -1486,16 +1486,16 @@
   "SK_성직자_001": {
     "stats": {
       "STR": 3,
-      "INT": 8,
-      "WIS": 4,
+      "INT": 3,
+      "WIS": 3,
       "CON": 3,
       "DEX": 3
     },
     "gold": 50,
     "items": {},
-    "summary": "자신의 체력을 회복합니다. 쿠로토보다 회복량이 높은 회복 마법입니다.",
+    "summary": "체력 회복 1단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_002": {
     "stats": {
@@ -1514,72 +1514,72 @@
   "SK_성직자_003": {
     "stats": {
       "STR": 3,
-      "INT": 9,
-      "WIS": 5,
+      "INT": 5,
+      "WIS": 9,
       "CON": 3,
       "DEX": 3
     },
     "gold": 50,
     "items": {},
-    "summary": "대상에게 걸린 렌토 저주를 해제합니다.",
+    "summary": "저주 1단계 렌토 마법 해제",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_004": {
     "stats": {
       "STR": 3,
-      "INT": 13,
-      "WIS": 9,
+      "INT": 8,
+      "WIS": 13,
       "CON": 3,
       "DEX": 3
     },
     "gold": 150,
     "items": {},
-    "summary": "축복으로 대상의 명중 능력을 높입니다.",
+    "summary": "초급축복마법 - 집중력을 높힌다. (HIT+10)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_005": {
     "stats": {
       "STR": 3,
-      "INT": 17,
+      "INT": 15,
       "WIS": 12,
       "CON": 3,
       "DEX": 3
     },
     "gold": 150,
     "items": {},
-    "summary": "자신의 체력을 회복합니다. 쿠로보다 회복량과 마나 소모가 높습니다.",
+    "summary": "체력회복 2단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_006": {
     "stats": {
       "STR": 3,
-      "INT": 23,
-      "WIS": 16,
+      "INT": 15,
+      "WIS": 19,
       "CON": 3,
       "DEX": 3
     },
     "gold": 150,
     "items": {},
-    "summary": "대상에게 걸린 바르도 저주를 해제합니다.",
+    "summary": "저주 2단계 바르도 마법해제",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_007": {
     "stats": {
       "STR": 3,
-      "INT": 28,
-      "WIS": 20,
+      "INT": 25,
+      "WIS": 23,
       "CON": 3,
       "DEX": 3
     },
     "gold": 150,
     "items": {},
-    "summary": "적은 마나로 대상 하나의 체력을 회복합니다.",
+    "summary": "그룹 체력회복 1단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_008": {
     "stats": {
@@ -1593,9 +1593,9 @@
     "items": {
       "IT_REAGENT_DIBENOMUM": 1
     },
-    "summary": "대상에게 걸린 중독 상태를 해제합니다.",
+    "summary": "중독 해제 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_009": {
     "stats": {
@@ -1607,9 +1607,9 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "축복으로 대상의 공격 위력을 높입니다.",
+    "summary": "초급 축복 마법 - 공격력 상승 (DMG+2)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_011": {
     "stats": {
@@ -1623,9 +1623,9 @@
     "items": {
       "IT_REAGENT_CURANUM": 1
     },
-    "summary": "자신의 체력을 크게 회복합니다. 지혜가 높을수록 회복량이 증가합니다.",
+    "summary": "체력 회복 3단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_012": {
     "stats": {
@@ -1651,9 +1651,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "멀리 있는 적 하나에게 마법 피해를 줍니다. 근접하지 않고 적을 공격할 수 있습니다.",
+    "summary": "성스러운 번개로 공격하는 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_014": {
     "stats": {
@@ -1665,9 +1665,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상에게 걸린 데프레코와 데프레타 저주를 해제합니다.",
+    "summary": "저주 3단계 데프레코 마법 해제",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_015": {
     "stats": {
@@ -1679,9 +1679,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "같은 그룹에 속한 아군들의 체력을 회복합니다.",
+    "summary": "그룹 체력 회복 2단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_016": {
     "stats": {
@@ -1693,9 +1693,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상의 체력 재생 능력을 높입니다.",
+    "summary": "자기재생력 향상 (재생력+20)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_017": {
     "stats": {
@@ -1707,9 +1707,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "보호막으로 대상을 보호하는 방어 마법입니다.",
+    "summary": "자신의 사방에 보호막 설치 (몬스터접근x)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_018": {
     "stats": {
@@ -1721,9 +1721,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상의 갑옷 방어 효과를 강화합니다.",
+    "summary": "중급마법 - 갑옷을 단단하게 한다 (AC-10)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_019": {
     "stats": {
@@ -1735,9 +1735,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "벨라르모보다 강력한 축복으로 명중 능력을 높입니다.",
+    "summary": "중급마법 - 집중력을 더욱 높게한다. (HIT+20)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_020": {
     "stats": {
@@ -1763,9 +1763,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상 하나의 체력을 크게 회복합니다.",
+    "summary": "체력 회복 4단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_022": {
     "stats": {
@@ -1777,9 +1777,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "같은 그룹의 아군을 자신의 위치로 불러옵니다.",
+    "summary": "그룹원을 자신의 앞으로 소환한다.조건 1. 같은 국적 및 마을서버조건 2. 자신의 캐릭터보다 낮은 서열(하단 이미지 참고)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_023": {
     "stats": {
@@ -1791,9 +1791,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "프라보와 프라베라 저주를 해제합니다.",
+    "summary": "저주 4단계 프라보 마법 해제",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_024": {
     "stats": {
@@ -1805,9 +1805,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "같은 그룹의 아군으로부터 남은 마나를 가져옵니다.",
+    "summary": "그룹원의 마나를 빼앗는다(회복).",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_025": {
     "stats": {
@@ -1819,9 +1819,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "자신이 사냥한 하급 몬스터를 소환합니다.",
+    "summary": "하급 몬스터 소환마법조건 1. 무속성의 몬스터조건 2. 몬스터 Lv. 98 이하의 몬스터조건 3. 마법을 쓰지 않는 몬스터",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_026": {
     "stats": {
@@ -1833,9 +1833,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "대상에게 걸린 동결 상태를 해제합니다.",
+    "summary": "소루마 해제 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_027": {
     "stats": {
@@ -1847,9 +1847,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "같은 그룹의 아군 전체를 회복합니다.",
+    "summary": "그룹 체력회복 3단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_028": {
     "stats": {
@@ -1861,9 +1861,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "대상이 받는 피해를 줄이는 보호 마법입니다.",
+    "summary": "상급축복마법 - 보호마법 (타격 50%감소)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_029": {
     "stats": {
@@ -1875,9 +1875,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "대상을 피해로부터 보호하는 무적 마법입니다.",
+    "summary": "무적 토글 마법(기술,마법 공격 보호)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_030": {
     "stats": {
@@ -1891,9 +1891,9 @@
     "items": {
       "IT_REAGENT_KOMADIUM": 1
     },
-    "summary": "코마 상태에 빠진 아군을 회복시킵니다.",
+    "summary": "코마상태 해제",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_031": {
     "stats": {
@@ -1905,9 +1905,9 @@
     },
     "gold": 2500,
     "items": {},
-    "summary": "대상에게 걸린 여러 마법 효과를 해제합니다.",
+    "summary": "모든 상태이상 마법 해제",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_032": {
     "stats": {
@@ -1921,9 +1921,9 @@
     "items": {
       "IT_REAGENT_CURANUM": 2
     },
-    "summary": "대상 하나의 체력을 크게 회복하는 상위 회복 마법입니다.",
+    "summary": "체력회복 5단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_033": {
     "stats": {
@@ -1935,23 +1935,23 @@
     },
     "gold": 2500,
     "items": {},
-    "summary": "그룹 전체의 체력을 크게 회복하는 상위 회복 마법입니다.",
+    "summary": "그룹 체력회복 4단계 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_034": {
     "stats": {
       "STR": 3,
-      "INT": 85,
-      "WIS": 65,
+      "INT": 99,
+      "WIS": 80,
       "CON": 3,
       "DEX": 3
     },
     "gold": 2500,
     "items": {},
-    "summary": "대상에게 날아오는 마법 공격을 반사합니다.",
+    "summary": "마법공격 반사 토글 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "PROJECT_TIER_POLICY"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_035": {
     "stats": {
@@ -2179,7 +2179,7 @@
   },
   "SK_무도가_002": {
     "stats": {
-      "STR": 7,
+      "STR": 5,
       "INT": 3,
       "WIS": 3,
       "CON": 4,
@@ -2187,13 +2187,13 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "발차기로 가까운 적에게 물리 피해를 줍니다. 마나를 소모하지 않습니다.",
+    "summary": "﻿전방대상 앞차기",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_003": {
     "stats": {
-      "STR": 11,
+      "STR": 7,
       "INT": 3,
       "WIS": 3,
       "CON": 8,
@@ -2201,23 +2201,23 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "대상을 뛰어넘어 반대편으로 이동합니다.",
+    "summary": "전방 3칸 대상을 뛰어넘는다.",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_004": {
     "stats": {
-      "STR": 8,
-      "INT": 3,
-      "WIS": 3,
-      "CON": 8,
+      "STR": 3,
+      "INT": 9,
+      "WIS": 7,
+      "CON": 3,
       "DEX": 3
     },
     "gold": 150,
     "items": {},
-    "summary": "날렵한 움직임으로 공격 회피율을 높입니다.",
+    "summary": "몸을 가볍게하여 공격을 피한다.",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "PROJECT_TIER_POLICY"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_005": {
     "stats": {
@@ -2229,9 +2229,9 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "기본공격에 추가 타격을 더해 두 번 공격합니다.",
+    "summary": "(일반 기본 공격 모션)기본 공격 시 2회 타격",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_006": {
     "stats": {
@@ -2243,9 +2243,9 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "적을 공격하고 중독으로 지속 피해를 줍니다.",
+    "summary": "몬스터를 독에 걸리게 한다.",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_007": {
     "stats": {
@@ -2257,9 +2257,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "강한 발차기로 가까운 적을 공격합니다. 단각보다 위력이 높고 재사용 시간이 깁니다.",
+    "summary": "전방 대상 돌려차기",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_008": {
     "stats": {
@@ -2271,9 +2271,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "몸을 가볍게 해 이동 속도를 높이는 마법입니다.",
+    "summary": "이동속도를 높힌다. (Speed+1)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_009": {
     "stats": {
@@ -2285,9 +2285,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "전방의 세 칸에 있는 적을 직선으로 공격합니다.",
+    "summary": "전방 1~3칸 적 공격",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_010": {
     "stats": {
@@ -2299,9 +2299,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상에게 실명 효과를 걸어 시야를 줄입니다.",
+    "summary": "몬스터의 이동을 제한시킨다",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_011": {
     "stats": {
@@ -2313,9 +2313,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "체력이 매우 낮아진 적에게서 체력을 흡수합니다.",
+    "summary": "몬스터의 체력을 흡수한다.",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_012": {
     "stats": {
@@ -2327,9 +2327,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상의 체력 재생 능력을 높입니다.",
+    "summary": "자기 재생력 향상",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_013": {
     "stats": {
@@ -2341,9 +2341,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "몸을 단단하게 해 방어 능력을 높입니다.",
+    "summary": "방어력 상승 마법 (AC-10)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_014": {
     "stats": {
@@ -2355,9 +2355,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "몸을 회전해 주변의 적을 발차기로 공격합니다.",
+    "summary": "자기 주변 사방 돌려차기",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_015": {
     "stats": {
@@ -2369,9 +2369,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "멀리 있는 적에게 기를 날려 공격합니다.",
+    "summary": "내공으로 적 원거리 공격",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_016": {
     "stats": {
@@ -2383,9 +2383,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "일정 시간 동안 피해를 막는 보호 마법입니다.",
+    "summary": "무적상태 (토글마법)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_017": {
     "stats": {
@@ -2397,9 +2397,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "자신의 체력을 크게 회복합니다. 쿠로토보다 회복량이 높은 회복 마법입니다.",
+    "summary": "자기 체력 회복 2단계 (HP + 500)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_018": {
     "stats": {
@@ -2411,9 +2411,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "적을 공격하고 행동하지 못하게 만듭니다.",
+    "summary": "몬스터 대상을 얼린다.",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_019": {
     "stats": {
@@ -2425,9 +2425,9 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "기본공격을 강화해 추가 피해를 노리는 기술입니다.",
+    "summary": "기본공격 관련 기술 데미지 상승ex) 백보신권",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_020": {
     "stats": {
@@ -2439,25 +2439,11 @@
     },
     "gold": 2500,
     "items": {},
-    "summary": "체력과 마나를 사용해 적에게 강력한 피해를 줍니다.",
+    "summary": "내공을 모두 모아 쏘는 필살기데미지 : (체력+마력-1440)*2",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_021": {
-    "stats": {
-      "STR": 3,
-      "INT": 49,
-      "WIS": 34,
-      "CON": 3,
-      "DEX": 3
-    },
-    "gold": 2500,
-    "items": {},
-    "summary": "체력을 바탕으로 강력한 일격을 가하는 필살 기술입니다.",
-    "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
-  },
-  "SK_무도가_022": {
     "stats": {
       "STR": 48,
       "INT": 3,
@@ -2467,9 +2453,23 @@
     },
     "gold": 2500,
     "items": {},
-    "summary": "적의 공격을 받아쳐 반격합니다.",
+    "summary": "사방의 적을 대상으로 하는 체력 소모 필살기",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
+  },
+  "SK_무도가_022": {
+    "stats": {
+      "STR": 3,
+      "INT": 49,
+      "WIS": 34,
+      "CON": 3,
+      "DEX": 3
+    },
+    "gold": 2500,
+    "items": {},
+    "summary": "기술반사 (토글마법)",
+    "evidence": "PROJECT_ADAPTED_V60",
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_023": {
     "stats": {
@@ -2481,9 +2481,9 @@
     },
     "gold": 2500,
     "items": {},
-    "summary": "힘을 모아 강력한 피해를 주는 필살 기술입니다.",
+    "summary": "전방의 적을 대상으로 하는 체력 소모 필살기(체력 30%를 상대방에게 데미지로 전달)- 이모탈, 버프등 영향 받지 않는 스킬",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_024": {
     "stats": {
@@ -2817,9 +2817,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상에게 걸린 행동 제한 상태를 해제합니다.",
+    "summary": "나르콜리 해제 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_054": {
     "stats": {
@@ -2831,9 +2831,9 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "대상에게 걸린 실명 상태를 해제합니다.",
+    "summary": "딜루메니or연막(눈뽕) 시력회복 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_055": {
     "stats": {
@@ -2845,9 +2845,9 @@
     },
     "gold": 2500,
     "items": {},
-    "summary": "몬스터의 속성을 바꿉니다.",
+    "summary": "몬스터의 속성을 바꾸는 마법",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_056": {
     "stats": {
@@ -2903,9 +2903,9 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "대상에게 걸린 실명 상태를 해제합니다.",
+    "summary": "시력 회복",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_무도가_031": {
     "stats": {
@@ -2919,9 +2919,9 @@
     "items": {
       "IT_REAGENT_DIBENOMUM": 1
     },
-    "summary": "대상에게 걸린 중독 상태를 해제합니다.",
+    "summary": "중독 회복",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_마법사_054": {
     "stats": {
@@ -2982,16 +2982,16 @@
   "SK_무도가_032": {
     "stats": {
       "STR": 3,
-      "INT": 9,
-      "WIS": 6,
+      "INT": 3,
+      "WIS": 3,
       "CON": 3,
       "DEX": 3
     },
     "gold": 150,
     "items": {},
-    "summary": "자신의 체력을 회복합니다. 지혜가 높을수록 회복량이 증가합니다.",
+    "summary": "자기 체력 회복 마법 1단계 (HP+100)",
     "evidence": "PROJECT_ADAPTED_V60",
-    "stat_source": "USER_CAPTURE"
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "SK_성직자_058": {
     "stats": {
@@ -3076,6 +3076,34 @@
     "summary": "상세 효과가 아직 등록되지 않은 이동 마법입니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
+  },
+  "SK_무도가_033": {
+    "stats": {
+      "STR": 3,
+      "INT": 3,
+      "WIS": 3,
+      "CON": 3,
+      "DEX": 3
+    },
+    "gold": 500,
+    "items": {},
+    "summary": "이동속도를 높힌다. (Speed+20%)",
+    "evidence": "PROJECT_ADAPTED_V60",
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
+  },
+  "SK_무도가_034": {
+    "stats": {
+      "STR": 3,
+      "INT": 10,
+      "WIS": 6,
+      "CON": 3,
+      "DEX": 3
+    },
+    "gold": 1200,
+    "items": {},
+    "summary": "소속된 국적의여관으로 순간이동",
+    "evidence": "PROJECT_ADAPTED_V60",
+    "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
   "skill_proto": {
     "stats": {

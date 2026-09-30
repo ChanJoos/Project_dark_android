@@ -1,0 +1,1773 @@
+{
+  "evidence": "FAN_CLASSIC_SERVER_CAPTURE_2020",
+  "nativeArchivePixels": false,
+  "articles": [
+    {
+      "id": "415456",
+      "subject": "　[스킬] 무도가 (Lv.11 ~ 99)",
+      "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415456",
+      "writeDate": 1599750535100,
+      "correctionHtml": "<div style=\"text-align: center;\"><span style=\"font-size: 9pt;\">[수정] 다라밀공 INT 33 &rarr; INT 53</span></div><div style=\"text-align: center;\"><span style=\"font-size: 9pt;\"><br /></span></div><div style=\"text-align: center;\"><span style=\"font-size: 9pt;\">즐거운 어둠의전설 되세요 :)</span></div>",
+      "scrapSource": {
+        "sourceType": 1,
+        "sourceForm": 1,
+        "titleHtml": "<a href='https://m.blog.naver.com/alsea01'  >블로그>Je T&rsquo;aime.</a> | <a href='https://m.blog.naver.com/alsea01'  >앨시</a>",
+        "linkHtml": "<a href='https://m.blog.naver.com/alsea01/222080978801'  >https://m.blog.naver.com/alsea01/222080978801</a>"
+      },
+      "elements": [
+        {
+          "index": 0,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMjM4/MDAxNTk5NzA5MzAxODQx.L-qUOgf6RMO4gHDi59DubvIWW3nTlT8y33BrBoCayLcg.AW6xES3AQpf-PppiamRKrPfQ2DcBxsfG_H7QiuwgEEMg.PNG.alsea01/%EB%AC%B4%EB%8F%84%EA%B0%80%EB%B0%B0%EB%84%88.png",
+          "filename": "무도가배너.png",
+          "path": "master/source/skill_fx/naver_classic_2020/2328441b96c03472.png",
+          "sha256": "f312cf16ad7c82a6ee3beb6bdd995393eb9b74e529d09a41a380121c9350e323",
+          "size": 6050,
+          "status": "FETCHED"
+        },
+        {
+          "index": 1,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMTQ1/MDAxNTk5NzA5NjE1NzIz.814to5lQJvy2f1KJhvDHD12E2PXkjeN94bmNZil1CXUg.DB7as1aK5N805PaIuV_VhIgB4tbOC657SSTsQ2_6KnQg.PNG.alsea01/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95npc_%EC%9C%84%EC%B9%98.png",
+          "filename": "기술마법npc_위치.png",
+          "path": "master/source/skill_fx/naver_classic_2020/02b409c58fd1867d.png",
+          "sha256": "46aab2e5df451a14f384a3d56fe7fa730ff56167823999c2341a8260f06ee726",
+          "size": 270585,
+          "status": "FETCHED"
+        },
+        {
+          "index": 2,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMjU4/MDAxNTk5NzM0Njk3MzMx.E_RY_yWOIB8aer6lD-4l6aGM11TmWJy_J2kwMbFYu7Yg.HwtitKPjwFNn_pImTwox05zzd2tVFeM80jQQkhYBfQ0g.PNG.alsea01/%EC%8A%A4%ED%82%AC%EB%B0%B0%EB%84%88_%EB%AA%A8%EB%8D%B8.png",
+          "filename": "스킬배너_모델.png",
+          "path": "master/source/skill_fx/naver_classic_2020/33147743a61b7656.png",
+          "sha256": "13f9ed0788ca5e079b4d734c24e7245c045b76a198b725d55a4cc095e530400b",
+          "size": 5038,
+          "status": "FETCHED"
+        },
+        {
+          "index": 3,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTkx/MDAxNTk5Mzg3NzE1MTEx.G78FSp7zTQ31smIXLswfI1A-zCvBsfKIADbWgqhwLeMg.BOqn13XnZQWYq5ypeouDXUn3dO4vrunzM_FvWs_ofaMg.PNG.alsea01/2.png",
+          "filename": "2.png",
+          "path": "master/source/skill_fx/naver_classic_2020/eebe17bf5d9cd47e.png",
+          "sha256": "57d46fcdce6011778fdf297633a02c406ae831e8617fcffe0747062ccf463b9c",
+          "size": 3665,
+          "status": "FETCHED"
+        },
+        {
+          "index": 4,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMTg3/MDAxNTk5Mjc4MzA0NDU3.wOHmmb6f14UknAt71QhMyHPaSf2IuWsPX1LraHcZGv0g.s4o5jn6EtAGal_1XgBmUVElX4CEEtU8KxEzjWnr-NRAg.PNG.alsea01/skill001_2.png",
+          "filename": "skill001_2.png",
+          "path": "master/source/skill_fx/naver_classic_2020/6d2159cdfabc5a9e.png",
+          "sha256": "286dc88dd70bf695f4e83536e5ce6b60d607d470d891abe3d359bcddc07b8daf",
+          "size": 1105,
+          "status": "FETCHED"
+        },
+        {
+          "index": 5,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 6,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMjcy/MDAxNTk5NzIxNzk2MTcy.nOncLAxJjWnFzNzaHI7ZO-D3gi1VpeGxmMTTDE3Ywesg.-9DukJ0dSV_AO4j1HFwXq4Q34n95CInpFL-8mhyzCRwg.GIF.alsea01/%EB%8B%A8%EA%B0%81.gif",
+          "filename": "단각.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/8ec5d74c18de3f14.gif",
+          "sha256": "c8feef5ebaff80a710a281f86d4695ce4fd7a37288aa74e20f09a17b7bfe47ed",
+          "size": 36549,
+          "status": "FETCHED"
+        },
+        {
+          "index": 7,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfNjIg/MDAxNTk5MzgwNTE1MjQ5._IEXCtWDYxPcgRsqgVgEbiE_i5WqMsHnJfYaCoCOsgcg.tmNrsTtyRZVQOELr8uTKFkJJNLO3XJHP3SdaawCXlb0g.PNG.alsea01/skill001_42.png",
+          "filename": "skill001_42.png",
+          "path": "master/source/skill_fx/naver_classic_2020/c51c043be744421d.png",
+          "sha256": "9032f77c29f459793ac0db55f93a621e51e8a7d841aab5332a768c873b0f74a1",
+          "size": 908,
+          "status": "FETCHED"
+        },
+        {
+          "index": 8,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjQx/MDAxNTk5MzgwNjc0OTk5.uVGBaU8L7mFglbZNgmY-HY02aErbHc0AlElqNsYLLYIg.z6c0H9x2V1WH8_C2RrakTYT5uwDkRzWE35wcLDSw6N4g.PNG.alsea01/%ED%8E%98%EC%9D%B4.png",
+          "filename": "페이.png",
+          "path": "master/source/skill_fx/naver_classic_2020/403669a00e15792e.png",
+          "sha256": "7950f7b9360445e617fc9e84ac1ca450dc2f414235f2c9a635aebc89f363a395",
+          "size": 5248,
+          "status": "FETCHED"
+        },
+        {
+          "index": 9,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTUx/MDAxNTk5MzgwNTgyNjE1.tsOQ65TEbmA_PtcDvgxGYIGMhVRqzjZMYa0Mn_olPtMg.R48Pm1wSqe_z0_DXThdco63usKAB7r_1gakPS28q9e8g.GIF.alsea01/%EC%9D%B4%ED%98%95%ED%99%98%EC%9C%84.gif",
+          "filename": "이형환위.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/7078c82d58446234.gif",
+          "sha256": "5440871cf5801c8d0d2056636430460cb2be5c535aa1923501ea4d7d481e1b13",
+          "size": 26204,
+          "status": "FETCHED"
+        },
+        {
+          "index": 10,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjA3/MDAxNTk5MzgwNTE0OTE4.x2KcKQuz3-FBYB0pnOrf7Qc4awKFWVrL7z6--_GtIT0g.-YBGPC9kI_pdtFs53QQbywTYa0V8hKvOCXTHCQ3Iy7Yg.PNG.alsea01/skill001_4.png",
+          "filename": "skill001_4.png",
+          "path": "master/source/skill_fx/naver_classic_2020/fa352ae5624376fc.png",
+          "sha256": "84e4342f297ad4c2d95f1b444665a3e009dbc6264039ed698913f9a51f9786ba",
+          "size": 1098,
+          "status": "FETCHED"
+        },
+        {
+          "index": 11,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 12,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjA3/MDAxNTk5MzgwNTE0OTE4.x2KcKQuz3-FBYB0pnOrf7Qc4awKFWVrL7z6--_GtIT0g.-YBGPC9kI_pdtFs53QQbywTYa0V8hKvOCXTHCQ3Iy7Yg.PNG.alsea01/skill001_4.png",
+          "filename": "skill001_4.png",
+          "path": "master/source/skill_fx/naver_classic_2020/fa352ae5624376fc.png",
+          "sha256": "84e4342f297ad4c2d95f1b444665a3e009dbc6264039ed698913f9a51f9786ba",
+          "size": 1098,
+          "status": "FETCHED"
+        },
+        {
+          "index": 13,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 14,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMjMy/MDAxNTk5NzM0MjY4OTQ5.EyoCmribjGgsU2H15ZeVbvhJqXAIbpfQQ-NbFmyPP2Ug.KuFVOaotb5dtNwr0FrnF4EaW-e-aOT34Z-VBR2XEXF4g.GIF.alsea01/%ED%86%B5%EB%B0%B0%EA%B6%8C.gif",
+          "filename": "통배권.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/f93889842c0b7dc7.gif",
+          "sha256": "93aa2c416bf336fecfa5c1ba7cff44d0446092402c6a7dcbe6b13cf0b42a4b72",
+          "size": 26957,
+          "status": "FETCHED"
+        },
+        {
+          "index": 15,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTAw/MDAxNTk5MzgxNDA0NjE2.HBAL7sh_1wU6jEVJ-hVqzPe_3nxFYSscOv5gpWqKqOIg.1ggkn-igx7nsi4shw_xZOHqfcA7TyojBqUyYMq9Snbsg.PNG.alsea01/spell001_21.png",
+          "filename": "spell001_21.png",
+          "path": "master/source/skill_fx/naver_classic_2020/e4c534b1bada0193.png",
+          "sha256": "9c2cbcd71a0446579a97d1b13f2f6d92be6e7a2ed3038bf4421125780cfe834d",
+          "size": 1206,
+          "status": "FETCHED"
+        },
+        {
+          "index": 16,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 17,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfODMg/MDAxNTk5MzgxNDIzNzcy._aUJCqFaNqgN-ozoZ90wjYYoqTB15df-yn6w7FMDYgQg.QYYNW1JUN6wrP4Kvz8Ik2SYwlMpYHCoXPPErjYa-vHcg.GIF.alsea01/%EC%BF%A0%EB%A1%9C%ED%86%A0.gif",
+          "filename": "쿠로토.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/c0e1ce449ecbc30d.gif",
+          "sha256": "87101a727e174a8b7e875daf9282ef28fc8021abcd69afb61b153d2dc63726af",
+          "size": 29850,
+          "status": "FETCHED"
+        },
+        {
+          "index": 18,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfOTYg/MDAxNTk5MzgyNzU1MTQw.1ubYPzoNaxmNjr8CNfZ0mFqYzwXZekrcPdQ5LBPAbJQg.N8vPyOf8chmjTakxqlbSLkV3yrGWCPvLrLT73l7Bp1wg.PNG.alsea01/spell001_55.png",
+          "filename": "spell001_55.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1a628f3dcb16980a.png",
+          "sha256": "5c5ae2e781cc82587c5da2f71842900eea3141030b26435c6aab084b339a3496",
+          "size": 1293,
+          "status": "FETCHED"
+        },
+        {
+          "index": 19,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 20,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzAg/MDAxNTk5MzgxNTA5MTI4.kcg_8bJEVKAvi7PhfUJjHoJqOIzH5G_3Qn6Fmq3Mzv4g.zRL8L5VyQfTcV9r9LY3fwgWptEVG1mo9UnAQwZM2lrAg.GIF.alsea01/%EB%AF%B8%EC%A2%85%EB%B3%B4%EB%B2%95.gif",
+          "filename": "미종보법.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/7736bcf1b5ecd887.gif",
+          "sha256": "f33ded5e0bee3e5ad2de678f5465ccb012a74ab449b71fdd36c01d2757060d19",
+          "size": 27668,
+          "status": "FETCHED"
+        },
+        {
+          "index": 21,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjI5/MDAxNTk5MzgxNzQ1MDI4.FUsw15MKkKYFXUMtl7Z4ZolecxdaDyYsQ05vzuNj9lYg.ohoMLOQL8xCBxWJ8IV3muLh4sSQ3yeSKcuxOXX5jOiQg.PNG.alsea01/spell001_25.png",
+          "filename": "spell001_25.png",
+          "path": "master/source/skill_fx/naver_classic_2020/fc62d2201396cf40.png",
+          "sha256": "5e9f2abef3461cfe1cb0c4a3385eb21b09ae2314aaa0d977e336a62b869439cc",
+          "size": 1282,
+          "status": "FETCHED"
+        },
+        {
+          "index": 22,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 23,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTc0/MDAxNTk5MzgxODM3ODc1.AzKRABQzQ3uRtxlE_eBWipAvxIooNMsJAttR_AZKymkg.io09u_vGqrNRvHvwLGQvW0w59xAUtxmbv5r5WgXR1Qsg.GIF.alsea01/%EC%9D%BC%EB%A3%A8%EB%A9%94%EB%82%98.gif",
+          "filename": "일루메나.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/27a55d0df8e74ca6.gif",
+          "sha256": "e4452bbf8d6e8e46dbd50e2eebc1c9f345fba884540a7a2234838b2ecd09783c",
+          "size": 36401,
+          "status": "FETCHED"
+        },
+        {
+          "index": 24,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfNDkg/MDAxNTk5MzgxNzQ1Mzcz.vzY_ft9wUQEoYsyxihnVbU4no-rD2lKhp2R2p-3_hWUg.JtFN95JPwetpxSUYOmioYbP8HajDiRuHmhNZG09elv0g.PNG.alsea01/spell001_24.png",
+          "filename": "spell001_24.png",
+          "path": "master/source/skill_fx/naver_classic_2020/094340333f37d9eb.png",
+          "sha256": "5e82895cb3193f475e6b132e9014510ef0e6ff39a1301d21fa0c74b26805f6f4",
+          "size": 1230,
+          "status": "FETCHED"
+        },
+        {
+          "index": 25,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 26,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjQ4/MDAxNTk5MzgxODM4MTU4.WOnoWxz393pWT4ybf9StGfmyG4ADbIpm1AYq2hO7C0Ig.GuXucoZC6mhdP6iX93gs7-4wly30_seGCdgAfWh-Pxwg.GIF.alsea01/%EB%94%94%EB%B2%A0.gif",
+          "filename": "디베.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/e306f8c3a0045947.gif",
+          "sha256": "76d91d55b2622293d166446cbe13fa678d201262808f3e5fe874221f41e5dca9",
+          "size": 46066,
+          "status": "FETCHED"
+        },
+        {
+          "index": 27,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfNTcg/MDAxNTk5Mzg3NzM1NDQw.3pABDxHscsOj037gP-XL7LCTcT1ngQUqWIHRQUDePs0g.lRX0MKP95KGsgRcz2DaSS2mzlebZAKCWd8dxrodk0L0g.PNG.alsea01/3.png",
+          "filename": "3.png",
+          "path": "master/source/skill_fx/naver_classic_2020/6a5a4eacca9550b8.png",
+          "sha256": "cb7cfe0ff79abc68aa77ec3c52a19162f47e53a7c0e83c34da86df95052185ae",
+          "size": 3616,
+          "status": "FETCHED"
+        },
+        {
+          "index": 28,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjA0/MDAxNTk5MzgxMTgwMTM2.Z-TdEmY6zhEKfTzWw_Mduzf1X_bqSTtUq0ZSOSSKlvwg.TKNh3ld6KHGEgMcnvf6Kc0mvGtQwYbGIjTRXFKDEtiMg.PNG.alsea01/skill001_3.png",
+          "filename": "skill001_3.png",
+          "path": "master/source/skill_fx/naver_classic_2020/329ef4994c8a4e24.png",
+          "sha256": "29fe2a97f0b83c958405838442e78f65d8298148ca100971e482e70cf7eb09dc",
+          "size": 1090,
+          "status": "FETCHED"
+        },
+        {
+          "index": 29,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 30,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMjQ3/MDAxNTk5NzIxODk0ODE0.B9bEm1cEvQRUPpOHwlyw1vD99xNDDpetTzrOPNFd4kog.RmNWjST6Gh7FWBP8bCKhQZpYvIWH_BPM4gMEYwWUmv4g.GIF.alsea01/%EB%B6%95%EA%B0%81.gif",
+          "filename": "붕각.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/1c0b975a9a213465.gif",
+          "sha256": "c909b89bcff0c8d3219a066a2e8e95823fc7a1c245ef74af008c81dbcf6b2107",
+          "size": 36086,
+          "status": "FETCHED"
+        },
+        {
+          "index": 31,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjA3/MDAxNTk5MzgwNTE0OTE4.x2KcKQuz3-FBYB0pnOrf7Qc4awKFWVrL7z6--_GtIT0g.-YBGPC9kI_pdtFs53QQbywTYa0V8hKvOCXTHCQ3Iy7Yg.PNG.alsea01/skill001_4.png",
+          "filename": "skill001_4.png",
+          "path": "master/source/skill_fx/naver_classic_2020/fa352ae5624376fc.png",
+          "sha256": "84e4342f297ad4c2d95f1b444665a3e009dbc6264039ed698913f9a51f9786ba",
+          "size": 1098,
+          "status": "FETCHED"
+        },
+        {
+          "index": 32,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 33,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfOTMg/MDAxNTk5MzgyMTkwNzkz.dd2A1ap_gKPStKWZecPP83ywihNC-EKZFLwvzw3WvKog.nXEWvkMl-CI1EGuDlaeyJi9wt5cQDTiktcE-kAoSKOEg.GIF.alsea01/%EB%B0%B1%EB%B3%B4%EC%8B%A0%EA%B6%8C.gif",
+          "filename": "백보신권.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/a0ba43bbbcb53f55.gif",
+          "sha256": "07ef16f849a383c47d6264565a964469b07ad81a3bda09390c45ce9e0b5783cc",
+          "size": 49062,
+          "status": "FETCHED"
+        },
+        {
+          "index": 34,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTQ4/MDAxNTk5MzgyMjc5Mjc3.qEvec3r0x76h3YEFxh4bLKrD2-7gJYAHdQv40fu6Zikg.-1lPE5Vh3_HPl4DiHFZgodDVysv9E84PWhIoms3aJxQg.PNG.alsea01/skill001_33.png",
+          "filename": "skill001_33.png",
+          "path": "master/source/skill_fx/naver_classic_2020/4fd68a46f5d1090d.png",
+          "sha256": "d4a6b4ba22b32b460adee24d0eef60a010e022ce3e0081aaef9e22c6646ecaca",
+          "size": 1047,
+          "status": "FETCHED"
+        },
+        {
+          "index": 35,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 36,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMTA4/MDAxNTk5NzMzNjg5NzMy.IKCGEXkYanXPblUrLM6YnZku1j6RQ34ERE29NNjAzSEg.dcJypDer6kFeHOjMkrfcKJCjstLpp6L8DWk2OFM-Wpsg.GIF.alsea01/%EC%9D%BC%EC%9D%8C%EC%A7%80d.gif",
+          "filename": "일음지d.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/ccade808dd0d73cf.gif",
+          "sha256": "f36a56c8a5f8461f3737ecb6d98d494be0c8ee4628dca95a6022cb8448a1dad6",
+          "size": 27296,
+          "status": "FETCHED"
+        },
+        {
+          "index": 37,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfOCAg/MDAxNTk5MzgyNzU1ODU0._qdvbU8DU6nvS_vKoTjHXwPUvC2DWoJIVXUGj0BQBTog.kZgtFKXIzeHKfVhkz9_qMkxd8jemhL89D5-5NaOI04wg.PNG.alsea01/spell001_92.png",
+          "filename": "spell001_92.png",
+          "path": "master/source/skill_fx/naver_classic_2020/96cc0196a2f25ce2.png",
+          "sha256": "86e093ddd43bad0b171f30c5fb1dea3ca95fd9357a469e12c01775806c7e9712",
+          "size": 1264,
+          "status": "FETCHED"
+        },
+        {
+          "index": 38,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 39,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjk0/MDAxNTk5MzgyNTY1OTg2.iImjb4Ll1_M2VS0x6K147jKGxh9dPyJ9nivTzbhtHzkg.ek_R-RDLwqpUcIjBWcFPdUS6PW9QKtq5IeMTsXCBdZkg.GIF.alsea01/%EA%B2%BD%EC%8B%A0%EA%B3%B5%2C%EA%B2%BD%EC%8B%A0%EA%B3%B5%EB%B2%95.gif",
+          "filename": "경신공,경신공법.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/abd051fb77a4a4de.gif",
+          "sha256": "59c9858d1933c86cd40c8e0a2fabf1079cc0f9c2601f3d74770b6a62c0e0ad1c",
+          "size": 27709,
+          "status": "FETCHED"
+        },
+        {
+          "index": 40,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjcx/MDAxNTk5MzgyNzU0ODM1.HPuKLkoYqVHZ5DDw3Dqx9dV_KfyvQh-LPt4w6PJbAqQg.-93KuhZndQoPqKcsDR5yI-PvU6lAFG1twwT9olhY0AMg.PNG.alsea01/spell001_9.png",
+          "filename": "spell001_9.png",
+          "path": "master/source/skill_fx/naver_classic_2020/c60aeee3fd88b233.png",
+          "sha256": "3b50e7b0a8a24145c8e7092c03a35373322312a5f6a04579ded0dd3d232e7caa",
+          "size": 1324,
+          "status": "FETCHED"
+        },
+        {
+          "index": 41,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTc0/MDAxNTk5MzgzMTYzNDUy.sWYY-CJvwSO_REKobzAHL9nz7chYBzo9RpdiWSz2muwg.zVD4aOI50HDXMiKbIPdGlEesSQ8nzhoM3Wfiv6sioXIg.PNG.alsea01/%EB%A9%94%EC%84%B8%EB%9D%BC.png",
+          "filename": "메세라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/a6000181d3a563af.png",
+          "sha256": "dfc3d12044474616faeded66ef516e49d492d267accd932dc94969de840e2382",
+          "size": 2682,
+          "status": "FETCHED"
+        },
+        {
+          "index": 42,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTg0/MDAxNTk5MzgzMTg5NDkx.ZF4v8ohqmtxDPaKLdmZdZdlYdZY6uhC0W5Hk7iim4wsg.V2onxohQB87ZPgL8gMxTPv48z3qdZglimzeCXGNFGVAg.GIF.alsea01/%ED%9D%A1%EC%A0%95%EC%8B%A0%EA%B3%B5.gif",
+          "filename": "흡정신공.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/7bfaca24b30cf83f.gif",
+          "sha256": "84f9fa7d5c5c21356830136d377e869238c3ccd5d31d3f3c4abe8e6f131b34d2",
+          "size": 32477,
+          "status": "FETCHED"
+        },
+        {
+          "index": 43,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjc5/MDAxNTk5MzgzMzEwNzU2.gzvsqu0LMbBUy70_GnYpf8dnk7nerGEpbc7_3fG0eZQg.MzdCnw4YzbrxXaFhrLNrrPmQpXrAguF8fgJktseHsjMg.PNG.alsea01/spell001_26.png",
+          "filename": "spell001_26.png",
+          "path": "master/source/skill_fx/naver_classic_2020/02595b2cd8e37c0b.png",
+          "sha256": "0a427a4697d805f28a62e02253d32db02f8be4cadf62e4c1559773672687ed40",
+          "size": 1286,
+          "status": "FETCHED"
+        },
+        {
+          "index": 44,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 45,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfOTEg/MDAxNTk5MzgzMzA1MTI3.ypZccDadVwHpScZ9W9PljLcnTXgXnZ-fr-W8SHzd5bcg.2ZctNCKnAS18nTEMAUdARaa12dWravGrgPbWivh8FE8g.GIF.alsea01/%EC%BF%A0%EB%9E%84%ED%88%BC.gif",
+          "filename": "쿠랄툼.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/436faedb7f22885f.gif",
+          "sha256": "43d3e3468c9561e5d4322635d311d23e9b123bd2e43a369a177596b92c676af6",
+          "size": 68457,
+          "status": "FETCHED"
+        },
+        {
+          "index": 46,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfNzQg/MDAxNTk5MzgzMzExMTQy.PZZcvehXlWwJ9r7LWCop7pZDj4XUnoQH-nknL1-eNQEg.hPoca4iOtbNTU3Ewt-DjzLlSK14NT1D2UjGavfScUIEg.PNG.alsea01/spell001_94.png",
+          "filename": "spell001_94.png",
+          "path": "master/source/skill_fx/naver_classic_2020/d8626e3692f4ed9c.png",
+          "sha256": "2a197dc371e61ee0cca2f89365bac9e5fc0e2587ccbe1ecf3a72c221c76c7fee",
+          "size": 1234,
+          "status": "FETCHED"
+        },
+        {
+          "index": 47,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 48,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTg0/MDAxNTk5MzgzMzExNTM5.6IsGTlcqS9TtBKVCChTiJJRi-SMyCQLxISXUm0oStW4g.QeJ-U8kXqirvopnzbUVdFYPQgHQq82WaYii41IlMahIg.GIF.alsea01/%EC%B2%A0%ED%8F%AC%EC%82%BC.gif",
+          "filename": "철포삼.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/a83035e569e94e13.gif",
+          "sha256": "abdce87a2c94f18d99586d4228a6877a3ea089f166ad66414cd0e659281337ad",
+          "size": 64753,
+          "status": "FETCHED"
+        },
+        {
+          "index": 49,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfOCAg/MDAxNTk5MzgyNzU1ODU0._qdvbU8DU6nvS_vKoTjHXwPUvC2DWoJIVXUGj0BQBTog.kZgtFKXIzeHKfVhkz9_qMkxd8jemhL89D5-5NaOI04wg.PNG.alsea01/spell001_92.png",
+          "filename": "spell001_92.png",
+          "path": "master/source/skill_fx/naver_classic_2020/96cc0196a2f25ce2.png",
+          "sha256": "86e093ddd43bad0b171f30c5fb1dea3ca95fd9357a469e12c01775806c7e9712",
+          "size": 1264,
+          "status": "FETCHED"
+        },
+        {
+          "index": 50,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 51,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjk0/MDAxNTk5MzgyNTY1OTg2.iImjb4Ll1_M2VS0x6K147jKGxh9dPyJ9nivTzbhtHzkg.ek_R-RDLwqpUcIjBWcFPdUS6PW9QKtq5IeMTsXCBdZkg.GIF.alsea01/%EA%B2%BD%EC%8B%A0%EA%B3%B5%2C%EA%B2%BD%EC%8B%A0%EA%B3%B5%EB%B2%95.gif",
+          "filename": "경신공,경신공법.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/abd051fb77a4a4de.gif",
+          "sha256": "59c9858d1933c86cd40c8e0a2fabf1079cc0f9c2601f3d74770b6a62c0e0ad1c",
+          "size": 27709,
+          "status": "FETCHED"
+        },
+        {
+          "index": 52,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTU1/MDAxNTk5Mzg3NzYxNjcx.CnX4nuRoHfwL1O7i3oXJDB9lwj5QUsTW81VULGvkijAg.NOLQTL_ZYh0_6XDcAoPdl2z1xpNqJLn_lz3-5gVAMZYg.PNG.alsea01/4.png",
+          "filename": "4.png",
+          "path": "master/source/skill_fx/naver_classic_2020/75c291675d123439.png",
+          "sha256": "ec20faa1eefb856a0a384043636eaf0bbc509c173cd07e02064d1c5f337f6d2b",
+          "size": 3592,
+          "status": "FETCHED"
+        },
+        {
+          "index": 53,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTA2/MDAxNTk5MzgzOTM4NDc5.ejwsv_5HA3v4obieYeaE4h24aUhn3mEhtFnvl_N37fIg.6nqrFOjzhbVX4PGMbcuylwWigWd-5lJ28DvWtnOSM1sg.PNG.alsea01/skill001_34.png",
+          "filename": "skill001_34.png",
+          "path": "master/source/skill_fx/naver_classic_2020/429a3d68b8476182.png",
+          "sha256": "b8918ea09e9eabd5ec290d53538cb42523eb35db334375268ee68a8eee9d22fb",
+          "size": 1086,
+          "status": "FETCHED"
+        },
+        {
+          "index": 54,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 55,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMjE2/MDAxNTk5NzIxOTY1Njcx.1vOYzJHAZsSud8YE_7L9Qa4_ph-9EpCewywAU9aLA8Ug.KSW1GMG0zE7lPOcErMJNtVIKwMuiwepLaoGXYPrHSRwg.GIF.alsea01/%EC%84%A0%ED%92%8D%EA%B0%81.gif",
+          "filename": "선풍각.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/e81d9ac269e3aa35.gif",
+          "sha256": "c436eba1dd47cf6eb6da2e7e7b0790df165c70402d7a25170eb9ec1669b98f6c",
+          "size": 40671,
+          "status": "FETCHED"
+        },
+        {
+          "index": 56,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjgg/MDAxNTk5MzgzOTM4ODg5.6bup3p6aNNN96dyBOBKp_KJIXen20dYm4CI_2Vyfjswg.MY7FcvVCEkLe4s1y1cwyp11wQDoBwRmisT_Fn3n1D0Ug.PNG.alsea01/skill001_35.png",
+          "filename": "skill001_35.png",
+          "path": "master/source/skill_fx/naver_classic_2020/ef622e9d558f7e85.png",
+          "sha256": "79be24a5b7561fe9d247241cbc6df0bc705f6911b1b7892c3cc251a7f126db89",
+          "size": 1155,
+          "status": "FETCHED"
+        },
+        {
+          "index": 57,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 58,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjk0/MDAxNTk5MzgzOTM5NTkz.Iw28lhgjQN4A9RpiNMDaARB6wfubp4grlYUo0_5yF6Mg.V-f4FIiijxyD-oAslHrqycg5NRZXGfg5e01hZ90fSj0g.GIF.alsea01/%EB%B0%9C%EA%B2%BD.gif",
+          "filename": "발경.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/f3a465894268e9d5.gif",
+          "sha256": "f58dcf72ed9de388c7127c4f61978b935cd3406cb387b9047da3d7338a9d88fe",
+          "size": 33720,
+          "status": "FETCHED"
+        },
+        {
+          "index": 59,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTQy/MDAxNTk5MzgzOTM5MjIy.lyZRspYwajQqBZYGSjZYeMKo0ln5MWIHtw1a8JJm-b0g.pH5xdku5fFUgTMMUrUhLLt0c3yliu_5q9FDodn3bEFcg.PNG.alsea01/skill001_43.png",
+          "filename": "skill001_43.png",
+          "path": "master/source/skill_fx/naver_classic_2020/8afd4b2b93021357.png",
+          "sha256": "47b5525c645524e0e2a4901bca2db21771ba7b7e26df4bf5689fec66e3958963",
+          "size": 907,
+          "status": "FETCHED"
+        },
+        {
+          "index": 60,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 61,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjA5/MDAxNTk5MzgzOTQwMzg3.UJ0mfKmmmPm6k8LwdgwAk7hABRaWeXf73fB2lrPuneIg.NvaxfX2U7MwdHy1GIECamdMmk3wrORnNIUX_aNUkqzQg.GIF.alsea01/%EC%86%8C%EC%88%98%EC%8B%A0%EA%B3%B5.gif",
+          "filename": "소수신공.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/9afc4a9d71c79034.gif",
+          "sha256": "cd694076bd1401336787e846dca6573d18a5a842c172267cfcf3e0d7b861ac0d",
+          "size": 40251,
+          "status": "FETCHED"
+        },
+        {
+          "index": 62,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTcw/MDAxNTk5Mzg0NjczMTcw.W-lcGX9-ZMqcVH3IN55T1IahYTomH8Pq3tPrZEmQ3gYg.LXYuC0B-zgKncH9KHYIuC89NUAjoyyziU936ld_4nrQg.PNG.alsea01/spell001_27.png",
+          "filename": "spell001_27.png",
+          "path": "master/source/skill_fx/naver_classic_2020/201f3d94e13fa411.png",
+          "sha256": "61a7f5db745d4a308b7b64beabd1a15a5d0e32704515fa5aa12cf1b10741b280",
+          "size": 1314,
+          "status": "FETCHED"
+        },
+        {
+          "index": 63,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTc0/MDAxNTk5MzgzMTYzNDUy.sWYY-CJvwSO_REKobzAHL9nz7chYBzo9RpdiWSz2muwg.zVD4aOI50HDXMiKbIPdGlEesSQ8nzhoM3Wfiv6sioXIg.PNG.alsea01/%EB%A9%94%EC%84%B8%EB%9D%BC.png",
+          "filename": "메세라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/a6000181d3a563af.png",
+          "sha256": "dfc3d12044474616faeded66ef516e49d492d267accd932dc94969de840e2382",
+          "size": 2682,
+          "status": "FETCHED"
+        },
+        {
+          "index": 64,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjcz/MDAxNTk5Mzg0NjcyNjk5.P6WniADuGa-OarrPg2_T_Hoj4DiLJsNOe5R9EB0URvQg.JcLq9OVJO18fsQGHUTpQsqDarYTj6WgpKFxEu8SiEjAg.GIF.alsea01/%EC%9E%A5%ED%92%8D.gif",
+          "filename": "장풍.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/09ace150572661f0.gif",
+          "sha256": "ba718b5d75dc128b18e52ed01e9736604bde8ee510fa27be3651ae53f8869f07",
+          "size": 35597,
+          "status": "FETCHED"
+        },
+        {
+          "index": 65,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjg5/MDAxNTk5Mzg0ODIxODMz.EVIyoKde6OlfrGRyhfbKutyPNDgpAU6Oi8_412chgRYg.JHGB2gXPcxD-a2lpGuHfXNABj2d-Fb0wusalh_E5TKEg.PNG.alsea01/spell001_53.png",
+          "filename": "spell001_53.png",
+          "path": "master/source/skill_fx/naver_classic_2020/a0791553d1572e67.png",
+          "sha256": "286a63c1f23cff242132c6a07f6df2ee2b4f1bcbd7acc7b3112ab9046caaa85a",
+          "size": 1187,
+          "status": "FETCHED"
+        },
+        {
+          "index": 66,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTc0/MDAxNTk5MzgzMTYzNDUy.sWYY-CJvwSO_REKobzAHL9nz7chYBzo9RpdiWSz2muwg.zVD4aOI50HDXMiKbIPdGlEesSQ8nzhoM3Wfiv6sioXIg.PNG.alsea01/%EB%A9%94%EC%84%B8%EB%9D%BC.png",
+          "filename": "메세라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/a6000181d3a563af.png",
+          "sha256": "dfc3d12044474616faeded66ef516e49d492d267accd932dc94969de840e2382",
+          "size": 2682,
+          "status": "FETCHED"
+        },
+        {
+          "index": 67,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTc4/MDAxNTk5Mzg0ODIyNDU1.Ld0zcFTQ2OQ-it08lvcZDckiNZPXXqlcWK2STgdjU78g.oHbfu4DYNgkPoGiC1xoM-dRk6FtT5om1v0U1H3VwzPUg.GIF.alsea01/%EA%B8%88%EA%B0%95%EB%B6%88%EA%B4%B4.gif",
+          "filename": "금강불괴.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/ed30f281223d1228.gif",
+          "sha256": "d0059734748c4a90cebc3f76583515f24ce7ad813edb2faf1debd4a8ff23e726",
+          "size": 28439,
+          "status": "FETCHED"
+        },
+        {
+          "index": 68,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTU2/MDAxNTk5Mzg0OTkzNjk2.jpa0YoLIiGYaF6lFjQtpp4A2hryQLFundAUFrupWx_Mg.50p45WRP9VIoIrvku3emQ4GdntzgRqZAVyFhY9CDDisg.PNG.alsea01/spell001_22.png",
+          "filename": "spell001_22.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1782a86cf71e8d58.png",
+          "sha256": "95a4c933fd1a5589e1d4415d3383954f74025b2ee0c38902b999020952216222",
+          "size": 1197,
+          "status": "FETCHED"
+        },
+        {
+          "index": 69,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 70,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjIx/MDAxNTk5Mzg0OTkzMjYz.khuNgfJ_UXWmbUNzYWkk4ahlq-yZ_ElITqq-E4SSjMIg.ele7-Gq2O-XsocKHEI9yBdSeZeywaB8dmsKclqTsPcYg.GIF.alsea01/%EC%BF%A0%EB%9D%BC%EB%85%B8%ED%86%A0.gif",
+          "filename": "쿠라노토.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/f0eac3610f61ec3c.gif",
+          "sha256": "dace598a77a642b13d46e22f87daee27409e21f062b3bfc7a04665e6a9f6d2f5",
+          "size": 32798,
+          "status": "FETCHED"
+        },
+        {
+          "index": 71,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzAg/MDAxNTk5Mzg1MDk4NjQ1.7hMhrfVyUC2iFyBYbaf5sKIKptUQ176n0x_ztYW6bocg.sA9hEy4buUhUiIzb9MPfI0z48V3SeTd8rl__KZ0LOo4g.PNG.alsea01/spell001_15.png",
+          "filename": "spell001_15.png",
+          "path": "master/source/skill_fx/naver_classic_2020/d9938c1bfe85e74a.png",
+          "sha256": "4daf2f1e3488440528be576374184c17b2e18ae09b41bc4508680612bf74ff79",
+          "size": 1333,
+          "status": "FETCHED"
+        },
+        {
+          "index": 72,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/99637a5b9a871803.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 73,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjAg/MDAxNTk5Mzg3NzgxNTE2.EKX9_0Nh6XcNLK61YefC6DmvRgkt_J3YoZZq260s5dkg.t2Ll-ArUjR7DtwHkOHH1WknMgfYsvMua2ZqQ7ClOW08g.PNG.alsea01/5.png",
+          "filename": "5.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1bf3af836dcfe4a5.png",
+          "sha256": "e4a2100ab5bd787564d9909c7f3b557561906d4383bef9bf3e231d627708e14c",
+          "size": 3525,
+          "status": "FETCHED"
+        },
+        {
+          "index": 74,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjk2/MDAxNTk5Mzg1Nzg5MDA0.ZkwT0MbKhQqXbGKpIhRi6maWdTwd4m2KXbdLSE3DEj8g.BSbmFIMZylaZbQ2avVsMqR_nPQR-U42nBhT70oT4vREg.PNG.alsea01/skill001_36.png",
+          "filename": "skill001_36.png",
+          "path": "master/source/skill_fx/naver_classic_2020/72229ee4c907c28f.png",
+          "sha256": "fa1ffdf58d41687e712723f7bca49c394a08454faf1000195e203f6fc522a591",
+          "size": 1038,
+          "status": "FETCHED"
+        },
+        {
+          "index": 75,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 76,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTA2/MDAxNTk5Mzg1Nzg5ODY3.myHMjT9v4vtNe7s_yckC9SsnykE_a_UstzLilly85Sog.fSn859gJs2L7gceknQabBJUcb_bT-UvSRDlkkQXJ2L0g.GIF.alsea01/%EB%8B%AC%EB%A7%88%EC%8B%A0%EA%B3%B5.gif",
+          "filename": "달마신공.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/f245c19e048a26cd.gif",
+          "sha256": "a81628f14b686b4b18b5eea9b951a7bde34e04139c69446b06d89908377df01c",
+          "size": 31363,
+          "status": "FETCHED"
+        },
+        {
+          "index": 77,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfNzgg/MDAxNTk5Mzg1Nzg5NDUz.lIk-QBSAWKmwGb8rxHivDjRE2AvwGKpCWUGEu_ef5KIg.xa2P_nC3liWFtibl5TjdzYBX0bCxy75l7KboiHPE1igg.PNG.alsea01/skill001_37.png",
+          "filename": "skill001_37.png",
+          "path": "master/source/skill_fx/naver_classic_2020/f92e847024ad3a2a.png",
+          "sha256": "9bb6a7deefe5752594c265bed494ff71a7bbe7908cc0ab4ca10530071e397893",
+          "size": 1141,
+          "status": "FETCHED"
+        },
+        {
+          "index": 78,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 79,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTBfMTgz/MDAxNTk5NzMwMTg3OTQz.rYvI67oxktlN2ivaW1ebxMXm4_TFOP_x80k4GcCzPkog.bNqxHu8oFGSGYn5itHVTzf59pqA8kzFMe16d3Evx_isg.GIF.alsea01/%EA%B5%AC%EC%96%91.gif",
+          "filename": "구양.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/8ee6600e8d3b5250.gif",
+          "sha256": "18ec21f86d843b299eee82fe32de0749bdcb85a0e7f4ec3c9866e28b4826e6e1",
+          "size": 37556,
+          "status": "FETCHED"
+        },
+        {
+          "index": 80,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjkw/MDAxNTk5Mzg2MDg2MjI4.Yzhy4XX6_t_79WVUocuGQh3xML4C8JrcGxxI4Fq0bh4g.14COLenCmzaAT4fOyYcy4mAaF8V1YWu0xkOHIn96RaYg.PNG.alsea01/spell001_54.png",
+          "filename": "spell001_54.png",
+          "path": "master/source/skill_fx/naver_classic_2020/e027a5bed1d05fbd.png",
+          "sha256": "8da03cba45712b0f3945fb1542e0d2d8f22fe91751988f67e1f849b1325525d2",
+          "size": 1332,
+          "status": "FETCHED"
+        },
+        {
+          "index": 81,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 82,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjE5/MDAxNTk5Mzg2MjE0MjY0.FrnPE5G-slMaonwXNrlxNA_XeHFXeP8meP6Pvc9BKCsg.8ZLGsY0O0G7-jYtj-ca9BJp3iyZ1Tx0RcUs8pGT0YE4g.GIF.alsea01/%EB%B0%A9%ED%83%84%EC%8B%A0%EA%B3%B5.gif",
+          "filename": "방탄신공.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/975c8b238f5b5aaa.gif",
+          "sha256": "8acb599fb9adaf0c33304251a011f4695dd90e116e7dca24ec9cf9720fe6f13a",
+          "size": 30303,
+          "status": "FETCHED"
+        },
+        {
+          "index": 83,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjYg/MDAxNTk5Mzg2MDg2ODQw.B3S7iTrRh4IW2JRm7op-3P_defJ9M1o_O2yef-Saxwkg.1hbQNVkDJfQH4MiTQ5lEpNl_t38hG9z7WnpVdxzNUPQg.PNG.alsea01/spell001_39.png",
+          "filename": "spell001_39.png",
+          "path": "master/source/skill_fx/naver_classic_2020/2fcb2d2cd0d65701.png",
+          "sha256": "aad63327a81bf1e86738736d2739cb2cda7fca0b283a568d64fab85c1ad3c919",
+          "size": 1360,
+          "status": "FETCHED"
+        },
+        {
+          "index": 84,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDVfMjk0/MDAxNTk5Mjc5ODk3OTQw.V0ggLXyjXCkeIgOn3_ApHlkZ2JOVALOKJAhGdlozF-Ag.vT4KyqHDXifosYUsMoLlgjkZo8OI3feb3NYN9ndvkgAg.PNG.alsea01/%EC%A0%84%ED%88%AC%EA%B8%B0%EC%88%A0%EC%82%AC%EB%B2%94.png",
+          "filename": "전투기술사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/895b1883e377bd7d.png",
+          "sha256": "3e0e5f9b971c1ff4245bdd69846882a7e0f5dd0361bb6d4e80fd3029a2cadbd6",
+          "size": 5179,
+          "status": "FETCHED"
+        },
+        {
+          "index": 85,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfOTUg/MDAxNTk5Mzg2MTMyODUw.3Uk04l9oaZMN8L_egyUMgrusu17AQj0E32sOdibc1agg.Wl4xAa7DYdPbFKhND5X_NzmyPcL9ZjiewT_yNdp_9zsg.GIF.alsea01/%EB%8B%A4%EB%9D%BC%EB%B0%80%EA%B3%B5.gif",
+          "filename": "다라밀공.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/57ea601283e249bb.gif",
+          "sha256": "3078b4253060e5dbe9f2822f8adce9446c76c6f7f419a625bb35383cd32511a9",
+          "size": 103208,
+          "status": "FETCHED"
+        }
+      ]
+    },
+    {
+      "id": "416044",
+      "subject": "　[스킬] 성직자 (Lv. 1~99)",
+      "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416044",
+      "writeDate": 1600657697533,
+      "correctionHtml": "",
+      "scrapSource": {
+        "sourceType": 1,
+        "sourceForm": 1,
+        "titleHtml": "<a href='https://m.blog.naver.com/alsea01'  >블로그>Je T&rsquo;aime.</a> | <a href='https://m.blog.naver.com/alsea01'  >앨시</a>",
+        "linkHtml": "<a href='https://m.blog.naver.com/alsea01/222090013052'  >https://m.blog.naver.com/alsea01/222090013052</a>"
+      },
+      "elements": [
+        {
+          "index": 0,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjEw/MDAxNjAwMTU1ODQ3MTc2.pgx9TZVig0IIjiSZQIFqM4Ap1G2e2Kwbg1HUKFbTnr4g.gcPfcGx0wlgmqKkSJjlqFB2NPo_G3CjOLD09mb9MM1wg.PNG.alsea01/%EC%84%B1%EC%A7%81%EC%9E%90%EC%8A%A4%ED%82%AC.png",
+          "filename": "성직자스킬.png",
+          "path": "master/source/skill_fx/naver_classic_2020/ff1fdbdae2648881.png",
+          "sha256": "a37c3edfbf87e9494613dfb34687dcb5ce86ec2f9f6f5e9f0a949a48ebf77746",
+          "size": 6920,
+          "status": "FETCHED"
+        },
+        {
+          "index": 1,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MThfMjU4/MDAxNjAwNDM1OTk4NjIx.M3m_wqkkXhst12H6Y82oislgYcWV58RZx-7eqV_ZI9Yg.YuMiA4-f3tsjOj9AGAI2vmndzr5W7JWMFic_B71weicg.PNG.alsea01/%EC%A0%9C%EB%AA%A9_%EC%97%86%EC%9D%8C-1.png",
+          "filename": "제목_없음-1.png",
+          "path": "master/source/skill_fx/naver_classic_2020/6ed69acfe766ff98.png",
+          "sha256": "5bc72467db2968182d8081e380ae1e47b8ac84377fcb109fabd538c36b1ae0c5",
+          "size": 14100,
+          "status": "FETCHED"
+        },
+        {
+          "index": 2,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNTIg/MDAxNjAwMTQzMzQwNTcz.h13230eOfz5YR5PiFE7U5PliW0tOQXD9DWSDGRaXO9Ig.nv9neOGfxRpgVEtAGTIwjIlcKtDcypw5NZatoCUCXhcg.PNG.alsea01/spell001_28_%EC%BF%A0%EB%A1%9C.png",
+          "filename": "spell001_28_쿠로.png",
+          "path": "master/source/skill_fx/naver_classic_2020/e2e1e846a45bae4e.png",
+          "sha256": "c48fb17e7527cd198b47ce6a3234aa55246d19b7ea1a158331fbfca1a60e3a95",
+          "size": 1240,
+          "status": "FETCHED"
+        },
+        {
+          "index": 3,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNDgg/MDAxNjAwMTQzMzQwMjc4.jISPsJDJN7tlR8wPBHp9kEfisFQgzhVLnlj86fYK7qQg.-SggrByaaU8uHneexs3GNCij3ktZL76Cj71blqYn62Eg.GIF.alsea01/1%EC%8D%A8%ED%81%B4.gif",
+          "filename": "1써클.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/8da609c164d1c803.gif",
+          "sha256": "7e5c48355cb39febaa3c134ec91bb842724eb5856b621e18197c8646c98243d8",
+          "size": 54636,
+          "status": "FETCHED"
+        },
+        {
+          "index": 4,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjYy/MDAxNjAwMTQzNDQyMzE4.ihkFOGiPvJCq6xUaDQQkx-7ySphLmVYLJ-VJvoKQmu8g.9ihr_lUsvJMiZhjcX1Un0b9yZb_8JVIz4Bfpi3gCQFcg.PNG.alsea01/spell001_23_%EB%94%94%EB%A0%8C%ED%86%A0.png",
+          "filename": "spell001_23_디렌토.png",
+          "path": "master/source/skill_fx/naver_classic_2020/d204f703fb791c9c.png",
+          "sha256": "0be32eee3e745187b73d7128afcdb4ce55fe72a3552aca68cee53258a32cb673",
+          "size": 1302,
+          "status": "FETCHED"
+        },
+        {
+          "index": 5,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 6,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTEz/MDAxNjAwMTQzNDQyMDM0.oF2Wps_2NxbN6X964gBGgCJjoa97dPiroDljqKs0N7Yg.WLFDGGEbR90reQWyi8w44mzn0MrSQ7hmSHCInus_j4wg.GIF.alsea01/1%EC%8D%A8%ED%81%B4_%EB%94%94%EB%A0%8C%ED%86%A0.gif",
+          "filename": "1써클_디렌토.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/60d16fc8ea7ba4ae.gif",
+          "sha256": "c72dce83b3fa826ca699dbce2d6cb2a27efa77ffa487e43c408a8ed2571ccff8",
+          "size": 97215,
+          "status": "FETCHED"
+        },
+        {
+          "index": 7,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTkx/MDAxNTk5Mzg3NzE1MTEx.G78FSp7zTQ31smIXLswfI1A-zCvBsfKIADbWgqhwLeMg.BOqn13XnZQWYq5ypeouDXUn3dO4vrunzM_FvWs_ofaMg.PNG.alsea01/2.png?type=w1",
+          "filename": "2.png",
+          "path": "master/source/skill_fx/naver_classic_2020/235f3dfb5619b2b2.png",
+          "sha256": "57d46fcdce6011778fdf297633a02c406ae831e8617fcffe0747062ccf463b9c",
+          "size": 3665,
+          "status": "FETCHED"
+        },
+        {
+          "index": 8,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNDkg/MDAxNjAwMTQzODgwNjU1.E4Mhm1j1x8PKxc9wvGxQkfZg6EJqR1_d81bC87koraIg.qM8TreKKUN-vadA5u1av8QD-HEgRVFDgcjO_cRLVD6Ag.PNG.alsea01/spell001_16_%EB%B2%A8%EB%9D%BC%EB%A5%B4%EB%AA%A8.png",
+          "filename": "spell001_16_벨라르모.png",
+          "path": "master/source/skill_fx/naver_classic_2020/d0ae6644f1cbabc5.png",
+          "sha256": "a9097d91c285e00d760a4781f2a5a575696f6a33f1f73e3e7a0a83f19bfff968",
+          "size": 1224,
+          "status": "FETCHED"
+        },
+        {
+          "index": 9,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 10,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTAy/MDAxNjAwMTU0MTg0MzY0.W9HN1m_5bTJ9q9m2N2pOltA0KGUvahsqj5uaxFWLjMgg.2kQBSwK_Vlp9eXco5K-AdcWbKs3lNa87T3-BVtO8VZUg.GIF.alsea01/%EB%B2%A8%EB%9D%BC%EB%A5%B4%EB%AA%A8.gif",
+          "filename": "벨라르모.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/a63596cddcf442c7.gif",
+          "sha256": "48d5cb6cbcf350c13bab8b501e5acb9563f3ec4ff5d0cda4ccf00b79c4706126",
+          "size": 93597,
+          "status": "FETCHED"
+        },
+        {
+          "index": 11,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMzkg/MDAxNjAwMTQzOTQ2Mjgw.k-Esbc7LEMEi6VeG-IfwS_rQCCJG4ijK9m13a5m1G1og.Jm4lqfJpdmKHysdlV4RTz3PsAvUT5bSPlhGFBzyCCe8g.PNG.alsea01/spell001_29_%EC%BF%A0%EB%9D%BC%EB%85%B8.png",
+          "filename": "spell001_29_쿠라노.png",
+          "path": "master/source/skill_fx/naver_classic_2020/660d7d1f53b41f35.png",
+          "sha256": "9e934105a07893a17832c3e8799edec731b6f40f946b1b900eec5c799dcacb07",
+          "size": 1236,
+          "status": "FETCHED"
+        },
+        {
+          "index": 12,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 13,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNDcg/MDAxNjAwMTQzOTQ2NjEw.WzQ8ilhE2r16wDncDHhb1mia92RhG2ZHbnXy-aFtGZUg.2hKeh2wCLFpjMWO4TJY1h-5FUegnfeWje_a2BsbJZqsg.GIF.alsea01/2%EC%8D%A8%ED%81%B4_%ED%9E%90.gif",
+          "filename": "2써클_힐.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/23418be3563909ee.gif",
+          "sha256": "f410f1270fef1bac56a1330c984352caca21537aca0293c8dce85c5bfc33b247",
+          "size": 54673,
+          "status": "FETCHED"
+        },
+        {
+          "index": 14,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjk0/MDAxNjAwMTQ0MTYyMTMy.YITcJVMx2ENNpi4iS875O-F4O2NXmJtbOwQQMmZ3tCYg.JOKJRFjckIvDdxHIzAfDx2FHB5C92mscreYcqcuQVDog.PNG.alsea01/spell001_79_%EB%94%94%EB%B0%94%EB%A5%B4%EB%8F%84.png",
+          "filename": "spell001_79_디바르도.png",
+          "path": "master/source/skill_fx/naver_classic_2020/b0c754490f152a53.png",
+          "sha256": "dfce627d8543c88a2c4d7ada0265fef527de21801ea97b4cb8fce05d60e27667",
+          "size": 1321,
+          "status": "FETCHED"
+        },
+        {
+          "index": 15,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 16,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTQ2/MDAxNjAwMTQ0MTYyNTM2.Ga51Y7k6v9W-hBvSyRBnv0G2GdxltNxyEMu0jvhrYN4g.zwbh2uLAdiAhQi_L2FavO0eaEBMLG_tZMgecdCc9yV0g.GIF.alsea01/2%EC%8D%A8%ED%81%B4%EB%94%94%EB%B0%94%EB%A5%B4%EB%8F%84.gif",
+          "filename": "2써클디바르도.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/a3028bfdd0b7fc57.gif",
+          "sha256": "9831f6ca32f9966cc14f55d1689400147ad8f7786f8681b21fcefae83d21f11b",
+          "size": 102909,
+          "status": "FETCHED"
+        },
+        {
+          "index": 17,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTk4/MDAxNjAwMTQ0MjQ1MTE3.f24jAtrCzEnZd5RyUvP1YLSZqvvB-4wA2TwbmcfEE8Ug.ZvKWxTmYyWkmXSQ40fzke8y0yAn1W9xh2uq2zuEnGVYg.PNG.alsea01/spell001_32_%EC%BF%A0%EB%9F%AC%EC%8A%A4.png",
+          "filename": "spell001_32_쿠러스.png",
+          "path": "master/source/skill_fx/naver_classic_2020/62e82944d99e61f3.png",
+          "sha256": "8e7372e45b8185d82e1e96651bc19a48d3cf325db78bf73e0bda0226894d90d3",
+          "size": 1168,
+          "status": "FETCHED"
+        },
+        {
+          "index": 18,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 19,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjUg/MDAxNjAwMTQ0MjQ0NzY5.wb7AQ91YaB54fIBek3_BtjFuQnjkMZgUTmUdnWOAx3cg.V720_w_SPOfQnvIpkUzZBVtcqRWf_QCFgmd4urEPHbEg.GIF.alsea01/2%EC%8D%A8%ED%81%B4_%EC%A0%84%EC%B2%B4.gif",
+          "filename": "2써클_전체.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/c0a8957fc991b55f.gif",
+          "sha256": "049c91c1dc6040d260bddceaf3184f533d1a8c2c0251aa656603e16add38778f",
+          "size": 122415,
+          "status": "FETCHED"
+        },
+        {
+          "index": 20,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjAg/MDAxNjAwMTQ0MzMyNjM0.ZfuP1Jme3JdT4iuXnUuvtbbHOySIJOL8aueRv9CNA4Eg.OCQudZ26LrL6rOb4f2fTMEtup7a0yFEyZDZAYjVdEWQg.PNG.alsea01/spell001_24_%EB%B2%A0%EB%85%B8%EB%AF%B8.png",
+          "filename": "spell001_24_베노미.png",
+          "path": "master/source/skill_fx/naver_classic_2020/177ae0726a47d744.png",
+          "sha256": "5e82895cb3193f475e6b132e9014510ef0e6ff39a1301d21fa0c74b26805f6f4",
+          "size": 1230,
+          "status": "FETCHED"
+        },
+        {
+          "index": 21,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 22,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjIg/MDAxNjAwMTQ0MzMyOTU2._RfyuR1zV8xUgmH5AQO3ivEueHOJMuIZ_11ftUNDnjYg.K2BgyFfmySNOj1c62RjO4Aku4fgiQjLLAl25hU-hx-0g.GIF.alsea01/2%EC%8D%A8%ED%81%B4_%EB%94%94%EB%B2%A0%EB%85%B8%EB%AA%A8.gif",
+          "filename": "2써클_디베노모.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/4d4a36aa2cef38c3.gif",
+          "sha256": "c9ddfc9a11f445a098150afbb7f00d6746617484f133aef86ec5385061608abc",
+          "size": 47973,
+          "status": "FETCHED"
+        },
+        {
+          "index": 23,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTIy/MDAxNjAwMTQ0NDM2OTg3.KDtuH41jT-bCgfscLQkmv0klJVUGziaoX3erdTA-ywEg.ThohEDHBZqT0Ani_vaZGDlfbsg_hcAV9td5HuH09VA8g.PNG.alsea01/spell001_52_%EC%97%90%EB%82%98%EB%A5%B4%EB%A7%88.png",
+          "filename": "spell001_52_에나르마.png",
+          "path": "master/source/skill_fx/naver_classic_2020/ac065544fc771d0f.png",
+          "sha256": "8db5daf6e781ee55087c08300562ed3daa55a0dcf8a5e03aa598b74ab7746051",
+          "size": 1340,
+          "status": "FETCHED"
+        },
+        {
+          "index": 24,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 25,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTcx/MDAxNjAwMTQ0NDM2NzQw.Yghb1aiDMq_WRuZ_57n1txFkYStY8zEnvYdAdvis-PQg.fYIS94DCH30Zw9inKNwratC6mmR5NepwiCVJqSVgc8Ag.GIF.alsea01/2%EC%8D%A8%ED%81%B4%EC%97%90%EB%82%98%EB%A5%B4%EB%A7%88.gif",
+          "filename": "2써클에나르마.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/36ca48d03a38a4fe.gif",
+          "sha256": "615f1388bd7226d0e660ec8c6283b4690577b179d2a5dc6937e43aa92c72306d",
+          "size": 66924,
+          "status": "FETCHED"
+        },
+        {
+          "index": 26,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTQ5/MDAxNjAwMTQ0NTM3NTgx.SbZi8iJX4Yb3Xuxdyt3B9aav97Ed-Avb3-gSn_FHBWcg.rO4QyAoZHqCh1czYTRq_I7CHKpkSETtUGJUzFsGCot8g.PNG.alsea01/spell001_88_%EB%B2%A0%EB%88%84%EC%8A%A4%ED%8B%B0.png",
+          "filename": "spell001_88_베누스티.png",
+          "path": "master/source/skill_fx/naver_classic_2020/91cf316dba553f65.png",
+          "sha256": "2044dd64c1ff1f063e8c56119c31e0646e5d9b54855683bf3e3990d39b6f4309",
+          "size": 1292,
+          "status": "FETCHED"
+        },
+        {
+          "index": 27,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 28,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjEz/MDAxNjAwMTQ5OTU5NjMy.aRkYxtTC2x0myHCym1YHMrjVMTGx5EJTVQNN9ErTW7Eg.AGdMuWskqFt2qkWDQ1tEqlV3KXtv1pxtJUP-6byuGl8g.GIF.alsea01/2%EC%8D%A8%ED%81%B4-%EB%B2%A0%EB%88%84%EC%8A%BD.gif",
+          "filename": "2써클-베누슽.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/9cc966953e442d76.gif",
+          "sha256": "74d601f53376e845b72269060cce531594e911c11da886bd17b75b1d8ac439ab",
+          "size": 25792,
+          "status": "FETCHED"
+        },
+        {
+          "index": 29,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfNTcg/MDAxNTk5Mzg3NzM1NDQw.3pABDxHscsOj037gP-XL7LCTcT1ngQUqWIHRQUDePs0g.lRX0MKP95KGsgRcz2DaSS2mzlebZAKCWd8dxrodk0L0g.PNG.alsea01/3.png?type=w1",
+          "filename": "3.png",
+          "path": "master/source/skill_fx/naver_classic_2020/6c1665e8d4577241.png",
+          "sha256": "cb7cfe0ff79abc68aa77ec3c52a19162f47e53a7c0e83c34da86df95052185ae",
+          "size": 3616,
+          "status": "FETCHED"
+        },
+        {
+          "index": 30,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjM4/MDAxNjAwMTQ0Nzk3MDM2.I6B5eHCHDJLiHkrgbxFWkMyCxXk-X-Q0FF2NIN5yr1wg.PQvy_qYSoL4lT-cC4xbUKmADB-7_vgLhhq1B1XTMDaYg.PNG.alsea01/spell001_30_%EC%BF%A0%EB%9D%BC%EB%85%B8%EC%86%8C.png",
+          "filename": "spell001_30_쿠라노소.png",
+          "path": "master/source/skill_fx/naver_classic_2020/94648b5028595d2a.png",
+          "sha256": "89612a73b90c1cecd19653cff0a514262ce21aaaf543d79506d8645ab897a855",
+          "size": 1223,
+          "status": "FETCHED"
+        },
+        {
+          "index": 31,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 32,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNjUg/MDAxNjAwMTQ0Nzk3Mzkz.EFzXKZl62g7aNehA6CGrqeGb-suwxbUy6lPLXA8tPMMg.BI5q5yv8ueQVYGdP7KeHVTPVSCrpzGYzW3B9PFRkl5sg.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%ED%9E%90.gif",
+          "filename": "3써클_힐.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/7efbda6719e6de57.gif",
+          "sha256": "a43953a3ac4fc0613456796602df296db9ed39d3f83e9d3cd274b9874217ec35",
+          "size": 52115,
+          "status": "FETCHED"
+        },
+        {
+          "index": 33,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTgz/MDAxNjAwMTQ1MDUzMDIz.ARNkKX4wXSShlFJZxv2r7TBcGMZHwejW5H83xAe1QwYg.dGYy324hUOtVJqw0js_xm-n_6unLgtDLPv8u1vNmG_sg.PNG.alsea01/spell001_85_%EB%94%94%EB%82%98%EB%A5%B4%EC%BD%9C%EB%A6%AC.png",
+          "filename": "spell001_85_디나르콜리.png",
+          "path": "master/source/skill_fx/naver_classic_2020/f8d95325952ceda0.png",
+          "sha256": "359f204f2f903aca75cc40e963a426f8dc9dbb2d7702d9ac76fcafcae8592c2a",
+          "size": 1204,
+          "status": "FETCHED"
+        },
+        {
+          "index": 34,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 35,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMSAg/MDAxNjAwMTQ1MDUyNTk3.rNJGs2V3NvactRKXYvlbV7tWLbqOc6n1K_fbVfwHxUYg.CsdWnR3V7jPt5wJiL-G2i1XS7gwSI8ryMB9sINylUlIg.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%EB%94%94%EB%82%98%EB%A5%B4%EC%BD%9C%EB%A6%AC.gif",
+          "filename": "3써클_디나르콜리.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/f33ac80290721b55.gif",
+          "sha256": "5b4f74d42cec818d539935150e1336db3d5bc70eb1c68bf406f75aedd9e383d5",
+          "size": 45707,
+          "status": "FETCHED"
+        },
+        {
+          "index": 36,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTc5/MDAxNjAwMTQ1MTMyMzU3.kyOqp6MrYJzaPy95qhMDeASJ_xcRjbSg0t7yFRDcc5Eg.N3YgMTvyjjUAOMO8LjqwBuPJHLSESo7f9Qy16VDXSvsg.PNG.alsea01/spell001_80_%EB%94%94%EB%8D%B0%ED%94%84%EB%A0%88%EC%B9%B4.png",
+          "filename": "spell001_80_디데프레카.png",
+          "path": "master/source/skill_fx/naver_classic_2020/eb93d813e1f8efc9.png",
+          "sha256": "b9ba282589090d32715079aef916ec5036fd861c00c66d6cf7c867f47e7dedef",
+          "size": 1245,
+          "status": "FETCHED"
+        },
+        {
+          "index": 37,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 38,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTA4/MDAxNjAwMTQ1MTMxOTU5.gsQ77GChb19tMg2ncAkHwtkWN88e9te71N2FMbZJUQMg.ljz2UrAMARxYYHEy1jItDtnXTmJnMXQPIKBObmfnkvsg.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%EB%94%94%EB%8D%B0%ED%94%84%EB%A0%88%EC%B9%B4.gif",
+          "filename": "3써클_디데프레카.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/b7e02e88a8b09efb.gif",
+          "sha256": "dbfea97e0ceb756cd009b473a02283dacda0244cb3eb4ccfb9f3c1579b744a31",
+          "size": 94238,
+          "status": "FETCHED"
+        },
+        {
+          "index": 39,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjQz/MDAxNjAwMTQ1MjIwMzUy.RYu2VCj6nCmDHsziFgHZPB3m_YISasEh_l3VRDO7HYsg.wHUQ55KzZ7BOPyHK5BtZ5YSyR2DuH5qQYT5U4M1J-GQg.PNG.alsea01/spell001_33_%EC%BF%A0%EB%9D%BC%EB%88%84%EC%8A%A4.png",
+          "filename": "spell001_33_쿠라누스.png",
+          "path": "master/source/skill_fx/naver_classic_2020/396b62a41893aed1.png",
+          "sha256": "9a49e3632e6133c6b3580255d1102450a0f81d76cc95b9900e274ce1ce8cca5f",
+          "size": 1232,
+          "status": "FETCHED"
+        },
+        {
+          "index": 40,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 41,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTkx/MDAxNjAwMTQ1MjM0MDY2.D8I3LVrGW81gGHTVwQ3UbqQ69TNK7CX7G_EaxnYNhMAg.50t9tW0SbUvy4ucoDgujqcWRECY8zou-Ex8HBxoPmd4g.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%EC%A0%84%EC%B2%B4%ED%9E%90.gif",
+          "filename": "3써클_전체힐.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/df616279227444e6.gif",
+          "sha256": "7de116de85f08447d56117fe93ab54a7f6b8d3f353b78922832b32cc1c9e8c56",
+          "size": 133120,
+          "status": "FETCHED"
+        },
+        {
+          "index": 42,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjg2/MDAxNjAwMTQ1MzkyNjUz.wvmdzAVC4KNHTK9hhIye1cw5ZBc5OmjAHrtr30R-UXcg.OZcGjMHkQni3jejfUrE1mXBhhZlCM0Iy6yks1n05oyQg.PNG.alsea01/spell001_71_%ED%99%80%EB%A6%AC%EB%B3%BC%ED%8A%B8.png",
+          "filename": "spell001_71_홀리볼트.png",
+          "path": "master/source/skill_fx/naver_classic_2020/3e33c399d40ea791.png",
+          "sha256": "f24296c636ba6ebaadfc05513fa3a720b15a7eede02dfc0ab222a205b71bf4f1",
+          "size": 1307,
+          "status": "FETCHED"
+        },
+        {
+          "index": 43,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTc0/MDAxNTk5MzgzMTYzNDUy.sWYY-CJvwSO_REKobzAHL9nz7chYBzo9RpdiWSz2muwg.zVD4aOI50HDXMiKbIPdGlEesSQ8nzhoM3Wfiv6sioXIg.PNG.alsea01/%EB%A9%94%EC%84%B8%EB%9D%BC.png?type=w1",
+          "filename": "메세라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/c38cdce2c805dffc.png",
+          "sha256": "dfc3d12044474616faeded66ef516e49d492d267accd932dc94969de840e2382",
+          "size": 2682,
+          "status": "FETCHED"
+        },
+        {
+          "index": 44,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTE5/MDAxNjAwMTQ1MzkyMTgy.oN04-52la5vIbheWWYyA2ZscvBlnwidUhHMYRthZdMQg.l1hKwGqf5CSKWFBmsJypR22mKlGvnW-FULfa3aLxX6Yg.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%ED%99%80%EB%A6%AC%EB%B3%BC%ED%8A%B8.gif",
+          "filename": "3써클_홀리볼트.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/b7cc2aaf132d653a.gif",
+          "sha256": "ed7b73a08c909360e2fc3a312500756c2c26f8c0f0092b2beb22c0c3cad3deae",
+          "size": 154260,
+          "status": "FETCHED"
+        },
+        {
+          "index": 45,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMzkg/MDAxNjAwMTQ1NTQ5ODM1.LE2MZtxOnk0N-GJAUAf6LAa3yBgSl1WJbsbZBS8Ouywg.B31nWQM_7sPlhaiaXTcC8CR0wWqRDDWpdgUEwNP5ne4g.PNG.alsea01/spell001_25_%EB%94%9C%EB%A3%A8%EB%A9%94%EB%8B%88.png",
+          "filename": "spell001_25_딜루메니.png",
+          "path": "master/source/skill_fx/naver_classic_2020/13e511213ad98edb.png",
+          "sha256": "5e9f2abef3461cfe1cb0c4a3385eb21b09ae2314aaa0d977e336a62b869439cc",
+          "size": 1282,
+          "status": "FETCHED"
+        },
+        {
+          "index": 46,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 47,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfODMg/MDAxNjAwMTQ1NTUwMjAz.v1gEwox9s45QO9OOxyqNCezcz8Njt-F8GBkOAkCCg9Ig.X5pxa6qt_QJuksnspaiZcwEPJo3jn0qrxofa1dsY_b0g.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%EC%9D%BC%EB%A3%A8%EB%A9%94%EB%82%98.gif",
+          "filename": "3써클_일루메나.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/744cffe6dddf81a7.gif",
+          "sha256": "ab88de89f47ac2c484c7bda75be8fd3a2b991bb04877f742df18021e90d8209f",
+          "size": 41341,
+          "status": "FETCHED"
+        },
+        {
+          "index": 48,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTIx/MDAxNjAwMTQ1NjU2ODg0.1VPHt8qyeBfs2PREHB4hOQ0aCehd5e4ZaH3cW-Tzwoog.hfp_At3pQpGPSMTksqExwgjggSWrTPN39sT4HwsfKPcg.PNG.alsea01/spell001_26_%EC%BF%A0%EB%9E%84%ED%88%BC.png",
+          "filename": "spell001_26_쿠랄툼.png",
+          "path": "master/source/skill_fx/naver_classic_2020/a95c15e2792a35fb.png",
+          "sha256": "0a427a4697d805f28a62e02253d32db02f8be4cadf62e4c1559773672687ed40",
+          "size": 1286,
+          "status": "FETCHED"
+        },
+        {
+          "index": 49,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 50,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTcx/MDAxNjAwMTQ0NDM2NzQw.Yghb1aiDMq_WRuZ_57n1txFkYStY8zEnvYdAdvis-PQg.fYIS94DCH30Zw9inKNwratC6mmR5NepwiCVJqSVgc8Ag.GIF.alsea01/2%EC%8D%A8%ED%81%B4%EC%97%90%EB%82%98%EB%A5%B4%EB%A7%88.gif",
+          "filename": "2써클에나르마.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/36ca48d03a38a4fe.gif",
+          "sha256": "615f1388bd7226d0e660ec8c6283b4690577b179d2a5dc6937e43aa92c72306d",
+          "size": 66924,
+          "status": "FETCHED"
+        },
+        {
+          "index": 51,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNzMg/MDAxNjAwMTQ1NzM5NDIz.EK8VjwrrTd8y06-j5YvO4mR0jMhqmHt4J52DAdCBrX0g.beTRkyU3czYyKqoDaJqNLgo4S2hP1iCHSYOE02jAj0sg.PNG.alsea01/spell001_91_%EC%8B%A4%EB%93%9C.png",
+          "filename": "spell001_91_실드.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1207dbf66c97829e.png",
+          "sha256": "63a5ecd0c06d2f169b5d03172562d47ce7e77b3742f9097b806e7bb11c04cc56",
+          "size": 1301,
+          "status": "FETCHED"
+        },
+        {
+          "index": 52,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 53,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTA3/MDAxNjAwMTQ1NzM5MDI2.C4FW0A29vaTdQZXtnjhS8hlC76wPYJkDKpJCEnyK5s0g.ETJi41BMu3vArb69vi8bSVeXmgEKJcGz8gbGnY1IWWkg.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%EC%8B%A4%EB%93%9C.gif",
+          "filename": "3써클_실드.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/3727561e6482e6da.gif",
+          "sha256": "d2e2afd09f1f18076fcf06fd0904a89cbe87c6ef555d1d220357d5b16c352a63",
+          "size": 27507,
+          "status": "FETCHED"
+        },
+        {
+          "index": 54,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNjMg/MDAxNjAwMTQ1ODQ2Njg3.wEPQVhMrZLnRB--oWG53FbKhUDn7d665mviqjcNwXXAg.UeWO2fA2OiExuzImmHbiU8QeKU2DkcD_NnDOvVrFB44g.PNG.alsea01/spell001_94-%EC%BD%9C%EB%9D%BC%EB%A7%88.png",
+          "filename": "spell001_94-콜라마.png",
+          "path": "master/source/skill_fx/naver_classic_2020/c6b51c0a9e34d919.png",
+          "sha256": "2a197dc371e61ee0cca2f89365bac9e5fc0e2587ccbe1ecf3a72c221c76c7fee",
+          "size": 1234,
+          "status": "FETCHED"
+        },
+        {
+          "index": 55,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 56,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjI4/MDAxNjAwMTQ1ODQ3MTUx.h9R7UIh1mIDctV_KZUj9jf41OlRSQy7pkulXHcM6osMg.rAyb3ERB64DllslQ-mUOzIBLhmBm6pewcBqJikdxCdIg.GIF.alsea01/3%EC%8D%A8%ED%81%B4_%EC%BD%9C%EB%9D%BC%EB%A7%88.gif",
+          "filename": "3써클_콜라마.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/e01fea659202098d.gif",
+          "sha256": "077abe8f934254bcc75d43b2949fe60bd3b07d6ce22ef8a81f8fcb6da7420f3c",
+          "size": 64397,
+          "status": "FETCHED"
+        },
+        {
+          "index": 57,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNDkg/MDAxNjAwMTQzODgwNjU1.E4Mhm1j1x8PKxc9wvGxQkfZg6EJqR1_d81bC87koraIg.qM8TreKKUN-vadA5u1av8QD-HEgRVFDgcjO_cRLVD6Ag.PNG.alsea01/spell001_16_%EB%B2%A8%EB%9D%BC%EB%A5%B4%EB%AA%A8.png",
+          "filename": "spell001_16_벨라르모.png",
+          "path": "master/source/skill_fx/naver_classic_2020/d0ae6644f1cbabc5.png",
+          "sha256": "a9097d91c285e00d760a4781f2a5a575696f6a33f1f73e3e7a0a83f19bfff968",
+          "size": 1224,
+          "status": "FETCHED"
+        },
+        {
+          "index": 58,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 59,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTAy/MDAxNjAwMTU0MTg0MzY0.W9HN1m_5bTJ9q9m2N2pOltA0KGUvahsqj5uaxFWLjMgg.2kQBSwK_Vlp9eXco5K-AdcWbKs3lNa87T3-BVtO8VZUg.GIF.alsea01/%EB%B2%A8%EB%9D%BC%EB%A5%B4%EB%AA%A8.gif",
+          "filename": "벨라르모.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/a63596cddcf442c7.gif",
+          "sha256": "48d5cb6cbcf350c13bab8b501e5acb9563f3ec4ff5d0cda4ccf00b79c4706126",
+          "size": 93597,
+          "status": "FETCHED"
+        },
+        {
+          "index": 60,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTU1/MDAxNTk5Mzg3NzYxNjcx.CnX4nuRoHfwL1O7i3oXJDB9lwj5QUsTW81VULGvkijAg.NOLQTL_ZYh0_6XDcAoPdl2z1xpNqJLn_lz3-5gVAMZYg.PNG.alsea01/4.png?type=w1",
+          "filename": "4.png",
+          "path": "master/source/skill_fx/naver_classic_2020/4ddd59ded7168450.png",
+          "sha256": "ec20faa1eefb856a0a384043636eaf0bbc509c173cd07e02064d1c5f337f6d2b",
+          "size": 3592,
+          "status": "FETCHED"
+        },
+        {
+          "index": 61,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTg2/MDAxNjAwMTQ2MTcwNjY2.m_Z3SJkfRgsMZOeBlTb69X8sMrfvGIz_eIT8-ub44qQg.sXEmPbkHjK8UnwtaARoF68mdXwifxQi0f4FGu7okX-sg.PNG.alsea01/spell001_14_%EB%A1%9C%EC%B9%B4%EB%A9%94%EC%95%84.png",
+          "filename": "spell001_14_로카메아.png",
+          "path": "master/source/skill_fx/naver_classic_2020/92af37a40557f504.png",
+          "sha256": "075d7da1bf0cb04d2b689dff5d032afeb1cfd35687cbf26c0813207aadb775e6",
+          "size": 1213,
+          "status": "FETCHED"
+        },
+        {
+          "index": 62,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 63,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTg4/MDAxNjAwMTQ2MTcwMTM5.7FDVQNGFdjSGKjTXFtsOlgU-vEXxiy61GBUzeWxSiF8g.oOTvqB4ErPynEqd6HnXrcVhU0miOHwNUjIw28keK4vog.GIF.alsea01/%EB%A1%9C%EC%B9%B4%EB%A9%94%EC%95%84.gif",
+          "filename": "로카메아.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/1a417368fa23e673.gif",
+          "sha256": "857997b448a3d0a9ed0425942f75ea9c60e481bafe5be5b210f485109d541a60",
+          "size": 70987,
+          "status": "FETCHED"
+        },
+        {
+          "index": 64,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjgg/MDAxNjAwMTQ2NDA4MjAx.-i8eavWupEJ_LTmF8tSW8t92aP9l8M3tp0JWNWRnkK0g.LlYoujZ12eWT5wIhVLXOCXve4UuaQcMwJi0exSfGqbgg.PNG.alsea01/spell001_31_%EC%88%98%ED%8E%98%EB%9D%BC%EC%BF%A0%EB%9D%BC%EB%85%B8.png",
+          "filename": "spell001_31_수페라쿠라노.png",
+          "path": "master/source/skill_fx/naver_classic_2020/5912fa2439030d56.png",
+          "sha256": "202f53ed634cab973d27b6122e3c31ed9d6c0991cfc1e5408c4814e6f15361b5",
+          "size": 1245,
+          "status": "FETCHED"
+        },
+        {
+          "index": 65,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 66,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNDYg/MDAxNjAwMTQ2NDA4NzU1.5nWgdW--WOBygYaM4srLXAKJgSo1RAqtoqKxW7iz-Aog.VSTv8QIJagZX0XRdJVsOosbfOQJpyFV_-hNdrYgCFvMg.GIF.alsea01/4%EC%8D%A8%ED%9E%90.gif",
+          "filename": "4써힐.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/240b08761acb8f52.gif",
+          "sha256": "1825b55cf848acd9e21809d1f4e66f765b28140b232ae1ebb971138856eaec57",
+          "size": 53593,
+          "status": "FETCHED"
+        },
+        {
+          "index": 67,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTQx/MDAxNjAwMTQ2NTMxODIx.WDqCOwqJOUMw4--CHKKPObUbdvgx6U449EX2_DbBqwAg.XPj9kMfVWA_tmR3s4CLlo420hGRwydtZv64p0iZ1_Ocg.PNG.alsea01/spell001_81_%EB%94%94%ED%94%84%EB%9D%BC%EB%B3%B4.png",
+          "filename": "spell001_81_디프라보.png",
+          "path": "master/source/skill_fx/naver_classic_2020/683ccbf054f85f51.png",
+          "sha256": "02e26507564157c809b7761577161cc91edef95f68bcc4c5d11dcd86e8b6e1ae",
+          "size": 1332,
+          "status": "FETCHED"
+        },
+        {
+          "index": 68,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 69,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTAw/MDAxNjAwMTU0MjIyMjg2.cMXUB2mJBzRAc6UnhBD7PSx-nUZltVeorcQ8AxEiwQQg.uOfQ8lyqUBclFx_WEihW-wkN6zLH5MTz_Fk_CC29Shsg.GIF.alsea01/%EB%94%94%ED%94%84%EB%9D%BC%EB%B0%94.gif",
+          "filename": "디프라바.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/ce9f2bfeb1e374d3.gif",
+          "sha256": "bfeedadf091328566d4c38213b7a8fce5dbfda5f6fa1af6bc7119af20e1b8d93",
+          "size": 105151,
+          "status": "FETCHED"
+        },
+        {
+          "index": 70,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjAw/MDAxNjAwMTU0MjUxMDQ2.G3bnYrXtllGzR-uceYWfIkE73Kmqjn4uqBISGTdMpzgg.KHYOwPsoihTVEsiZBwmibmJY1OnLYdz7RmtBw_dvss0g.PNG.alsea01/spell001_102_%EB%A6%AC%EC%B9%98%EB%A7%88%EB%82%98.png",
+          "filename": "spell001_102_리치마나.png",
+          "path": "master/source/skill_fx/naver_classic_2020/cf8a4a76c14b83bc.png",
+          "sha256": "95e01f2980893f9034aad35aec75e8236dc1d964a6e08d33ac57048c0e3de99e",
+          "size": 1273,
+          "status": "FETCHED"
+        },
+        {
+          "index": 71,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTc0/MDAxNTk5MzgzMTYzNDUy.sWYY-CJvwSO_REKobzAHL9nz7chYBzo9RpdiWSz2muwg.zVD4aOI50HDXMiKbIPdGlEesSQ8nzhoM3Wfiv6sioXIg.PNG.alsea01/%EB%A9%94%EC%84%B8%EB%9D%BC.png?type=w1",
+          "filename": "메세라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/c38cdce2c805dffc.png",
+          "sha256": "dfc3d12044474616faeded66ef516e49d492d267accd932dc94969de840e2382",
+          "size": 2682,
+          "status": "FETCHED"
+        },
+        {
+          "index": 72,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNjMg/MDAxNjAwMTU0MjIzMDYz.TmdK8BNGjEhMQE7B_geIqkUqlHTFzdP6C8g-wHDIPTUg.3plBDK2fSAhHk1lRjDCBdPUrWdtAkdOBrZFqLoB5QvYg.GIF.alsea01/%EB%A6%AC%EC%B9%98%EB%A7%88%EB%82%98.gif",
+          "filename": "리치마나.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/ab45615c997042d8.gif",
+          "sha256": "aef04d44c912a4358d0398cbc407e9030af17307f25c2a2a667047c787b44bce",
+          "size": 38907,
+          "status": "FETCHED"
+        },
+        {
+          "index": 73,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTAx/MDAxNjAwMTQ3MDI4NzY3.qmUulPDtCJbkiXzxzn0qxylCIg3GlCRKmi6iLcc4Iagg.tUJjEAgh4ZrDqrm5MjtyjriWUIzyqFpp076gzo7NYFgg.PNG.alsea01/spell001_51_%EB%94%94%EC%86%8C%EB%A3%A8%EB%A7%88.png",
+          "filename": "spell001_51_디소루마.png",
+          "path": "master/source/skill_fx/naver_classic_2020/587a0467f5a892e5.png",
+          "sha256": "5a6b29628b786fdf52359629e875ec5bfa086f54eee9398cbaf0fe5fdac31c05",
+          "size": 1270,
+          "status": "FETCHED"
+        },
+        {
+          "index": 74,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 75,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MThfOTQg/MDAxNjAwNDMxOTI2Njk3.Pp6e3w9j-64VQ_zk3kyZNmL8gliHPSnB4U_oG_NCd6Mg.htGzlqJDK-ES644uDN-e94JU5TQTzb9uThotus6xMc0g.GIF.alsea01/%EB%94%94%EC%86%8C%EB%A3%A8%EB%A7%88.gif",
+          "filename": "디소루마.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/3198fbf9755f5b60.gif",
+          "sha256": "a0629f08aa583032a56762f991d17454e877a735630d434ed8b697269413cf94",
+          "size": 55824,
+          "status": "FETCHED"
+        },
+        {
+          "index": 76,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTQx/MDAxNjAwMTQ3MDkxNjE0.J2WQGwRKSdtGAm4gUFHvnUPnvAjtXgQJxtIcr4S_Hhgg.mCx3GT53mwIP2SefDKJq2bkvlzP-ktBAVBwvzfb6MPQg.PNG.alsea01/spell001_34_%EC%BF%A0%EB%9D%BC%EB%84%A4%EB%9D%BC.png",
+          "filename": "spell001_34_쿠라네라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/4d803ae5db56ee4e.png",
+          "sha256": "0f6159772051f5dcf152778dc4e249264b3c9e8f16f4632c20baecbb97be75fa",
+          "size": 1177,
+          "status": "FETCHED"
+        },
+        {
+          "index": 77,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 78,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjIz/MDAxNjAwMTQ3MDkyMTE3.X11hkSxaT8nRMe-dOt55kzg1JL60v3w6GI2J_OyRAMYg.qcT410cRSxUcOT_fUS0mA5p5nSe1yQf_MLZk0IZJ8Rgg.GIF.alsea01/4%EC%8D%A8%ED%81%B4_%EC%A0%84%EC%B2%B4%ED%9E%90.gif",
+          "filename": "4써클_전체힐.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/9887bde332fc5d4a.gif",
+          "sha256": "75870305aac6010be9e7cba87da18f06a9dc0a508ad617c1bdc63630633490a8",
+          "size": 131148,
+          "status": "FETCHED"
+        },
+        {
+          "index": 79,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTY4/MDAxNjAwMTQ3MTg3NDg5.zbibiBNPdALvpsv0EaHKs5yufdm85ofXJPk08PmUtfMg.NAiZaQ95fH_ct_9HZOnhknlmt4GKDtQH_VvQ2npCkGwg.PNG.alsea01/spell001_49_%EC%86%8C%EB%AA%A8%EB%8B%88%EC%95%84.png",
+          "filename": "spell001_49_소모니아.png",
+          "path": "master/source/skill_fx/naver_classic_2020/344f881842b75b48.png",
+          "sha256": "383a42f0ca2e90737e5b7d039a693e5103049882a843e0fbf3a956e824feb36b",
+          "size": 1270,
+          "status": "FETCHED"
+        },
+        {
+          "index": 80,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 81,
+          "url": "https://postfiles.pstatic.net/MjAxNzA2MjlfMTAy/MDAxNDk4NjY1NDk2Mzk3.9nmApJRqXq3HNK7MS71Gdl8_yNowCVTV6nVIN5U-5gAg.zfKTvGKXW35RnIuq8OdBaB_y87Flw1mfYAAlGqg7_C4g.GIF.alsea01/1.gif?type=w1",
+          "filename": "1.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/3524d6dbf5de3830.gif",
+          "sha256": "e49ca28c42e1cb093307fed02b99b52c1bcaa29c07eb71266bcd78c60141dd5c",
+          "size": 1683694,
+          "status": "FETCHED"
+        },
+        {
+          "index": 82,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNjgg/MDAxNjAwMTQ3NDQzMDQx.SwIKa8YjWCkVlodnF38Cum05K-IdBny2bOtUn8V5ULIg.hhAhkAiR7iZjr7U9xE5PPmHGZA_yagITx-IddAW7MV4g.PNG.alsea01/spell001_11_%ED%98%B8%EB%A5%B4%EB%9D%BC%EB%A7%88.png",
+          "filename": "spell001_11_호르라마.png",
+          "path": "master/source/skill_fx/naver_classic_2020/f2f2240c64c8c24e.png",
+          "sha256": "5958941bdaad78c36592a6d338b22504a423833da11677fa53504ef4bf214c8d",
+          "size": 1319,
+          "status": "FETCHED"
+        },
+        {
+          "index": 83,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 84,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTg1/MDAxNjAwMTQ3NDQyNTQ5.akIZdTQ5D0HtZImc9LByLa7XxHoz-phdSFC3jLCrhGcg.S0jvp3bShhX4uQ1t4pIv6ZERN4gtrq4EZ0W221XAufQg.GIF.alsea01/4%EC%8D%A8_%ED%98%B8%EB%A5%B4%EB%9D%BC%EB%A7%88.gif",
+          "filename": "4써_호르라마.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/ecde0bed4d779b55.gif",
+          "sha256": "f43f6a2f2ddbce90ffad0e86a878dbf12ba933154af9b4e16c28cdca68588f3f",
+          "size": 60337,
+          "status": "FETCHED"
+        },
+        {
+          "index": 85,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNTkg/MDAxNjAwMTQ3NTQ0NjE5.xoWP1ugqKRwZ2jFBkHxB3-QU6GchWGlaFdttWGk44cwg.GuOqRqwElho6X_6_VUSnZ02CxkE6MQnRdloQjPAtERYg.PNG.alsea01/spell001_53_%EC%9D%B4%EB%AA%A8%ED%83%88.png",
+          "filename": "spell001_53_이모탈.png",
+          "path": "master/source/skill_fx/naver_classic_2020/64ca0f9791bb9cee.png",
+          "sha256": "286a63c1f23cff242132c6a07f6df2ee2b4f1bcbd7acc7b3112ab9046caaa85a",
+          "size": 1187,
+          "status": "FETCHED"
+        },
+        {
+          "index": 86,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 87,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTMw/MDAxNjAwMTQ3NTQ1MDg0.Q-wJfbRRJk9PuiPyTQt7UL9au_O8FWN5bV-8QxDnuSMg._NfVl8lheYz6hlbieYXD9LRoQXhvPGbd7H6F12zIPO8g.GIF.alsea01/4%EC%8D%A8%ED%81%B4_%EC%9D%B4%EB%AA%A8%ED%83%88.gif",
+          "filename": "4써클_이모탈.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/653fb26464a8037c.gif",
+          "sha256": "4aab41a3a84e2a5cf00a696c31d4ee71a45c291a78515fd0571f214cd820e9aa",
+          "size": 27632,
+          "status": "FETCHED"
+        },
+        {
+          "index": 88,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMjAg/MDAxNTk5Mzg3NzgxNTE2.EKX9_0Nh6XcNLK61YefC6DmvRgkt_J3YoZZq260s5dkg.t2Ll-ArUjR7DtwHkOHH1WknMgfYsvMua2ZqQ7ClOW08g.PNG.alsea01/5.png?type=w1",
+          "filename": "5.png",
+          "path": "master/source/skill_fx/naver_classic_2020/6ea58ccfd6cc4f9a.png",
+          "sha256": "e4a2100ab5bd787564d9909c7f3b557561906d4383bef9bf3e231d627708e14c",
+          "size": 3525,
+          "status": "FETCHED"
+        },
+        {
+          "index": 89,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTMw/MDAxNjAwMTQ3ODEzNzU5.FTxlG9Sg9w7LE8l_6ViJRsEOXCLHsOWpwSvzNsWoNAYg.jzoOYYu7EXVmMQL6R803ErpiKhewqqwT2PEhoZcDXrMg.PNG.alsea01/spell001_54_%EB%A6%AC%ED%94%8C%EB%A0%89%ED%86%A0.png",
+          "filename": "spell001_54_리플렉토.png",
+          "path": "master/source/skill_fx/naver_classic_2020/a919747a6ad4c3b6.png",
+          "sha256": "8da03cba45712b0f3945fb1542e0d2d8f22fe91751988f67e1f849b1325525d2",
+          "size": 1332,
+          "status": "FETCHED"
+        },
+        {
+          "index": 90,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 91,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjY4/MDAxNjAwMTQ3ODEzMjY3.eGYKwWucL60jEj8iffAW8bLyWdQwBdeX2wom4rBQU7sg.2YtoDuIFIWRNVtX30H_Wca94eE3PPjWxwcZNie8ucMUg.GIF.alsea01/5%EC%8D%A8%ED%81%B4_%EB%A6%AC%ED%94%8C%EB%A0%89%ED%86%A0.gif",
+          "filename": "5써클_리플렉토.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/25be115b45e601fa.gif",
+          "sha256": "5317c8ed6cb2d8010701825227bb6ba5ac2a60f6ccb849edd9485c0330b061f9",
+          "size": 27131,
+          "status": "FETCHED"
+        },
+        {
+          "index": 92,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjM0/MDAxNjAwMTQ3ODY5ODgz.bln2ugv-TsaXLFZW7ZlAArZ8xS-3e1QQz6NqcvjJg9Eg.FpngX5gDq46sL9lwidWPR8sYndbT6AA996Fl0NjzxWcg.PNG.alsea01/spell001_93_%EB%9D%A0%EB%82%B4%EC%B6%94%EB%9D%BC.png",
+          "filename": "spell001_93_띠내추라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/452dfe76b8538caf.png",
+          "sha256": "f28b4d5ecd10aa4189f29204e616e5c97c2dd0c10c1b211824c9277fd64fa127",
+          "size": 1185,
+          "status": "FETCHED"
+        },
+        {
+          "index": 93,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 94,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfODYg/MDAxNjAwMTUxMDc4MTk3.C5M3CleL-wucluZHKcBGehw9RlMgUhqI5RmYykAVYwUg.duhetxGbZqkSt4PwNcDASrkndPmovyWiPMWuD1F8znog.GIF.alsea01/5%EC%8D%A8-%EB%94%94%EB%82%B4%EC%B6%94%EB%9D%BC.gif",
+          "filename": "5써-디내추라.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/64384bbe1c61ad07.gif",
+          "sha256": "c7f3a25150136ddc6e880078dd4ed69714a15bb53a95ecdef8dd7138ff555195",
+          "size": 26639,
+          "status": "FETCHED"
+        },
+        {
+          "index": 95,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNjcg/MDAxNjAwMTQ3OTkxMDkx.lqtt0XWRZ_drTSWj097-fH_p0WO2j6yMa12FvbZffMsg.MCMKL0yt8Y4sPkzjbHm2QC2QC0_dl6hjXh_eWRkKevEg.PNG.alsea01/spell001_77_%EC%97%91%EC%8A%A4%EC%BF%A0%EB%9D%BC%EB%85%B8.png",
+          "filename": "spell001_77_엑스쿠라노.png",
+          "path": "master/source/skill_fx/naver_classic_2020/c828742b9dd6a5ec.png",
+          "sha256": "59517b6df903ecdeef06e8cd775ea44dd08d49f63f69f8bf100b452daacb8f56",
+          "size": 1122,
+          "status": "FETCHED"
+        },
+        {
+          "index": 96,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 97,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjY1/MDAxNjAwMTQ3OTkxNTk0.KS9AeELuXfhOvjaQnBEWuiICSJOUYBkcSmrfKeuo018g.fQF0ntP4J6NWCG31WT3ckyUe2nRRwVl6DvHOBYRJ_-kg.GIF.alsea01/5%EC%8D%A8_%ED%9E%90.gif",
+          "filename": "5써_힐.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/2afbb8208d14eb76.gif",
+          "sha256": "2c7b3b2fbc044975bd9bdb4f6a626a057603274ac0435ede932aa0b63a265fee",
+          "size": 53214,
+          "status": "FETCHED"
+        },
+        {
+          "index": 98,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjI2/MDAxNjAwMTQ3OTkwNTgz.tiRXrANqhcv6dXyHsBVf79TBeoQy5MBU5yjJB-SKvl0g.xaAhrNzZALDAYOJeKFCxC05HA9bVYTw4qNA-wOg4ka0g.PNG.alsea01/spell001_78_%EC%97%91%EC%8A%A4%EC%BF%A0%EB%9D%BC%EB%84%A4%EB%9D%BC.png",
+          "filename": "spell001_78_엑스쿠라네라.png",
+          "path": "master/source/skill_fx/naver_classic_2020/9fecf117f77f3d3b.png",
+          "sha256": "3c85435b4d0ad5d5d6639dc4b4e62725ef226e6f7e0412061c3ceae7706387f5",
+          "size": 1385,
+          "status": "FETCHED"
+        },
+        {
+          "index": 99,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 100,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTk4/MDAxNjAwMTQ3OTkyMDk4.4nRzOuyhDHdoIn44onrDTL4o4l09J3BMh0nQwNva9DQg.kZJz2p0ReZkEKWt1DcjzuHSLXkD5ggkTN8dswURLgVcg.GIF.alsea01/5%EC%8D%A8%ED%81%B4_%EC%A0%84%EC%B2%B4%ED%9E%90.gif",
+          "filename": "5써클_전체힐.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/432c5a40d8b0270d.gif",
+          "sha256": "6ac1fa86c846928eea681b0270af44634353aa7fe7c802ee5fb75fcd050edee1",
+          "size": 115107,
+          "status": "FETCHED"
+        },
+        {
+          "index": 101,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfNDEg/MDAxNjAwMTQ4MTcwODA2.QruAYB-9oY-4ayBU1XK67lOfnhsj00LtU2QN6hNCFHIg.r4CLXmbdiHN9aaXXA7T4kraTNXRpuqwv_l56BaPSSxIg.PNG.alsea01/spell001_8_%EB%A6%AC%EB%B2%A0%EB%9D%BC%ED%86%A0.png",
+          "filename": "spell001_8_리베라토.png",
+          "path": "master/source/skill_fx/naver_classic_2020/73ae4674c180426b.png",
+          "sha256": "a1860e5500d696d4de9c31cb5f1b768914b111d4f0a1fa71acf8c7046d6cd0dc",
+          "size": 1331,
+          "status": "FETCHED"
+        },
+        {
+          "index": 102,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 103,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjU3/MDAxNjAwMTQ4MTcwMjU0.7_cHgJMeNAUgwLOxcM5L7P1CH74FUNyW8AjWSvRwBxAg._aBdsKWFsC7mNMw0ufcuPisfm7CwjPTWG0_DJfrDX8Qg.GIF.alsea01/5%EC%8D%A8%ED%81%B4_%EB%A6%AC%EB%B2%A0.gif",
+          "filename": "5써클_리베.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/86aec367b841560c.gif",
+          "sha256": "cab4a3d08d0169ed506d9bb48065a184181d54498a2349ead375fdffef51da99",
+          "size": 52718,
+          "status": "FETCHED"
+        },
+        {
+          "index": 104,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMjA0/MDAxNjAwMTQ4MjkzNTQ4.WgvTZJsN7KvKyoYz5ls1_P16RG7tAlhDaofm0D-rCWYg.-KnyYwpZd5RGtrxQDVPBHV6PtSI5O3TeEtlMOfYaE7gg.PNG.alsea01/spell001_86_%EC%BD%94%EB%A7%88%EB%94%94%EC%95%84.png",
+          "filename": "spell001_86_코마디아.png",
+          "path": "master/source/skill_fx/naver_classic_2020/0d0637488ab7713b.png",
+          "sha256": "0137723978314da82b0b0b40f2c1b60f6d53d6aa8215ae960eb69fe7b2de6107",
+          "size": 1301,
+          "status": "FETCHED"
+        },
+        {
+          "index": 105,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzEg/MDAxNTk5MzgxMzY4ODI2.784-f05pyt9JbwZk2MxrfLCln3ASqM5cfj6ehKqMvpYg.Sdpdm5r3yq1fFgVUMss_GRHMYa-wAq-RZCQO--bVqkgg.PNG.alsea01/%EB%B0%B1%EB%A7%88%EB%B2%95%EC%82%AC%EB%B2%94.png?type=w1",
+          "filename": "백마법사범.png",
+          "path": "master/source/skill_fx/naver_classic_2020/1860e55fc19aa0ff.png",
+          "sha256": "0b67b6219306c40c8944bf01edde55ae48b234c9dc6bd3b12ffc48b3a2c5532f",
+          "size": 6258,
+          "status": "FETCHED"
+        },
+        {
+          "index": 106,
+          "url": "https://blogfiles.pstatic.net/MjAyMDA5MTVfMTQ2/MDAxNjAwMTQ4MjkyOTk2.V1tMeBj4mhpWUdAk0Btqvu6q6Z6zqlLXdm3ntjV9EFIg.qrAehYb5QiYvYSnAWEiMB2Q8N4WZOY-jPQeQaP9q-wIg.GIF.alsea01/5%EC%8D%A8%ED%81%B4_%EC%BD%94%EB%A7%88.gif",
+          "filename": "5써클_코마.gif",
+          "path": "master/source/skill_fx/naver_classic_2020/4f5b0b1c2e521e5f.gif",
+          "sha256": "50824a1f297c2b200e4ff81efa0ba3d1bcec71e5307fb51b2940933eaa2fd7d1",
+          "size": 27417,
+          "status": "FETCHED"
+        }
+      ]
+    }
+  ]
+}

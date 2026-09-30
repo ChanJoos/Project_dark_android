@@ -16,7 +16,7 @@ public class SkillSpatialContractTest {
   Context c;
   @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
   @Test public void originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId(){
-    assertEquals(219,SkillActionContract.all().size());
+    assertEquals(221,SkillActionContract.all().size());
     for(float[] direction:new float[][]{{32,16},{32,-16},{-32,16},{-32,-16}}){
       SkillActionContract.Rule line=SkillActionContract.get("SK_전사_003");
       for(int n=1;n<=3;n++)assertTrue(SkillActionContract.canStart(line,0,0,direction[0]*n,direction[1]*n,true));

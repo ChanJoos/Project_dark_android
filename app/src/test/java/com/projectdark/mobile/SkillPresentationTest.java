@@ -16,7 +16,7 @@ public class SkillPresentationTest {
   Context c;
   @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
   @Test public void allCatalogIdsAndBothBodiesHaveBoundedDirectionalFrames()throws Exception{
-    SkillPresentationCatalog s=new SkillPresentationCatalog(c);assertEquals(219,s.entries.size());assertEquals(268,s.frames.length());SkillBook b=SkillBook.load(c);
+    SkillPresentationCatalog s=new SkillPresentationCatalog(c);assertEquals(221,s.entries.size());assertEquals(268,s.frames.length());SkillBook b=SkillBook.load(c);
     for(SkillPresentationCatalog.Entry e:s.entries.values()){assertNotNull(b.get(e.id));for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(float phase:new float[]{0,.4f,.9f})assertNotNull(e.id+" "+body+" "+d,s.frames.optJSONObject(s.frameKey(body,e.motion,d,phase)));}
     assertEquals("FRONT_KICK",s.get("SK_무도가_002").motion);assertEquals("SIDE_KICK",s.get("SK_무도가_007").motion);assertEquals("WATER",s.get("SK_마법사_001").target);assertEquals("FIRE",s.get("SK_마법사_005").target);
     assertEquals("THROW",s.get("SK_도적_003").motion);assertEquals("IDLE",s.get("SK_전사_021").motion);assertEquals("PROTECT",s.get("SK_무도가_016").target);assertEquals("QI_BLAST",s.get("SK_무도가_028").target);assertEquals("HEAL",s.get("SK_성직자_007").target);

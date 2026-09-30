@@ -12,7 +12,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.robolectric.*;
 import org.robolectric.annotation.*;
-@RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE)
+@RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE) @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public class CapturedSkillFxTest {
   private Context c;
   private static final String[] IDS={"SK_전사_015","SK_전사_013","SK_전사_023","SK_전사_022","SK_도적_020","SK_도적_027","SK_무도가_020","SK_무도가_021","SK_무도가_023"};
@@ -30,8 +30,8 @@ public class CapturedSkillFxTest {
     }
     assertEquals(8,fx.get("SK_전사_015").durations.length);assertEquals(31,fx.get("SK_도적_020").durations.length);
   }
-  @Test public void actualGameSubmissionUsesCaptureOnlyAtContactForAllNine()throws Exception{
-    for(String id:IDS){F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);
+  @Test public void actualGameSubmissionUsesCaptureOnlyAtContactForLegacyWarriorAndRogue()throws Exception{
+    for(String id:Arrays.copyOf(IDS,6)){F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);
       RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;s.player().mp=0;
       ((CombatController)field(v,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
       Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(v,((SkillBook)field(v,"skillBook")).get(id));

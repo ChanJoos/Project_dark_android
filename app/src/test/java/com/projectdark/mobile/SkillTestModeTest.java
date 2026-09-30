@@ -16,7 +16,7 @@ public class SkillTestModeTest {
   Context c;
   @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();c.getSharedPreferences("project_dark_skill_test_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
   @Test public void realActivityDefaultsToAllLearnedAndPreferenceSurvivesRestart()throws Exception{
-    org.robolectric.android.controller.ActivityController<MainActivity> a=Robolectric.buildActivity(MainActivity.class).create();GameView v=field(a.get(),"game");SkillBook b=field(v,"skillBook");assertTrue(b.testAccess());int count=0;for(SkillBook.Entry e:b.entries())if(b.previewable(e.id)){count++;assertTrue(e.id,b.learned(e.id));assertTrue(e.id,b.usable(e.id));}assertEquals(219,count);
+    org.robolectric.android.controller.ActivityController<MainActivity> a=Robolectric.buildActivity(MainActivity.class).create();GameView v=field(a.get(),"game");SkillBook b=field(v,"skillBook");assertTrue(b.testAccess());int count=0;for(SkillBook.Entry e:b.entries())if(b.previewable(e.id)){count++;assertTrue(e.id,b.learned(e.id));assertTrue(e.id,b.usable(e.id));}assertEquals(221,count);
     assertEquals(0,b.snapshot().getJSONObject("learned").length());v.setSkillTestMode(false);a.destroy();org.robolectric.android.controller.ActivityController<MainActivity> restarted=Robolectric.buildActivity(MainActivity.class).create();SkillBook restored=field(field(restarted.get(),"game"),"skillBook");assertFalse(restored.testAccess());restarted.destroy();
   }
   @Test public void normalCommonerCannotLearnOrUseMartialAndOverlayPreservesNormalBook()throws Exception{
