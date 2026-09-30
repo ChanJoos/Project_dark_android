@@ -8,7 +8,7 @@ OUT=ROOT/'app/src/main/assets/skill-presentation'
 OUT.mkdir(parents=True,exist_ok=True)
 catalog=json.loads((ROOT/'app/src/main/assets/skills/catalog.json').read_text())
 profiles={
- 'CAST':{'group':'b','back':[0,1,2],'front':[3,4,5]},
+ 'CAST':{'group':'f','back':[1,1,0],'front':[3,3,2]},
  'PUNCH':{'group':'e','back':[0,1,0],'front':[2,3,2]},
  'THRUST':{'group':'e','back':[8,10,8],'front':[12,14,12]},
  'THROW':{'group':'d','back':[0,1,2],'front':[3,4,5]},
@@ -99,6 +99,7 @@ def choose(r):
  if n in exceptions:motion,caster,target,sheet,row=exceptions[n]
  if motion=='IDLE' and kind=='기술':caster='NONE';target='NONE';row=-1
  if target!='NONE':anchor='RECIPIENT' if r.get('target') in ['자신','아군','아군/자신'] else 'TARGET'
+ if kind=='마법':motion='CAST'
  return motion,caster,target,sheet,row,anchor
 
 entries=[]

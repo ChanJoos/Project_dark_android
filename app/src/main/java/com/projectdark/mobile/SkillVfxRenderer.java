@@ -16,6 +16,8 @@ final class SkillVfxRenderer {
   SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
   void clear(){pulses.clear();}
+  /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
+  void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null)return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);}
   void consume(List<CombatResolver.Event> events,Anchors a){for(CombatResolver.Event e:events){
     if(!RuntimeCombatSession.PLAYER_ID.equals(e.actorId))continue;
     String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null)continue;
