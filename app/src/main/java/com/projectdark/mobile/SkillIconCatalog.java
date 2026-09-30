@@ -31,7 +31,7 @@ final class SkillIconCatalog {
         presentation.put(row.getKey(),icon);
       }
       JSONObject refs=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/classic/references.json"),StandardCharsets.UTF_8));JSONArray list=refs.getJSONArray("rows");
-      for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/classic/icons/"+id+".png"));if(icon==null)throw new IOException("Invalid classic icon");presentation.put(id,icon);index.putIfAbsent(id,-1);}
+      for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id"),path=row.getString("iconAssetPath");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/classic/"+path));if(icon==null)throw new IOException("Invalid classic icon: "+path);presentation.put(id,icon);index.putIfAbsent(id,-1);}
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
   boolean has(String id){return index.containsKey(id);}

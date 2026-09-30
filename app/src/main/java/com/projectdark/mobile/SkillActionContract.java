@@ -10,7 +10,7 @@ public final class SkillActionContract {
     public final int reach,minReach,hits;public final float contact;
     Rule(String[] r){id=r[0];name=r[1];mode=r[2];pattern=Pattern.valueOf(r[3]);reach=Integer.parseInt(r[4]);minReach=Integer.parseInt(r[5]);mechanic=r[6];hits=Integer.parseInt(r[7]);contact=Float.parseFloat(r[8]);evidence=r[9];note=r[10];kind=r[11];}
     public boolean selfAnchored(){return pattern==Pattern.SELF||pattern==Pattern.ALLY||pattern==Pattern.GROUP||pattern==Pattern.CROSS||pattern==Pattern.AROUND||pattern==Pattern.SCREEN;}
-    public boolean presentationAllowed(){return !mode.equals("LINKED")&&pattern!=Pattern.PASSIVE&&pattern!=Pattern.UTILITY&&pattern!=Pattern.UNRESOLVED;}
+    public boolean presentationAllowed(){return !mode.equals("LINKED")&&!mode.equals("UTILITY")&&pattern!=Pattern.PASSIVE&&pattern!=Pattern.UTILITY&&pattern!=Pattern.UNRESOLVED;}
     public boolean damage(){return mechanic.equals("DAMAGE_ADAPTED_BALANCE");}
     public boolean heal(){return mechanic.equals("HEAL_ADAPTED_BALANCE");}
     public boolean needsSelection(){return !selfAnchored();}

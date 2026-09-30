@@ -5,6 +5,11 @@ from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw
 ROOT=Path(__file__).resolve().parents[1];SOURCE=ROOT/'master/source/skill_fx/naver_classic_2020';OUT=ROOT/'app/src/main/assets/skill-presentation';OUT.mkdir(exist_ok=True)
+CLASSIC=OUT/'classic';ICONS=CLASSIC/'icons';CLASSIC.mkdir(exist_ok=True);ICONS.mkdir(exist_ok=True)
+# Android/Robolectric asset lookup does not reliably resolve Hangul paths.
+# Generated paths are stable ASCII hashes; source IDs/names remain in JSON.
+for old in CLASSIC.glob('*.png'):old.unlink()
+for old in ICONS.glob('*.png'):old.unlink()
 rows=json.loads((SOURCE/'definitions.json').read_text());manifest={'evidence':'FAN_CLASSIC_SEO_CAPTURE_2020','nativeArchivePixels':False,'limitations':['Capture-derived inverse matting is approximate.','Captured actors, HP bars and state icons are masked; hidden effect pixels remain absent.','Black/dark effect pixels cannot be recovered by SCREEN matting.','Sources show one facing; other facings use the retained BODY rig with project-selected registration.'],'skills':{}}
 # Every capture is bound by its labelled table, never by a guessed GIF filename.
 for row in rows:
@@ -58,14 +63,15 @@ for row in rows:
   if not nonzero:continue
   start,end=nonzero[0],nonzero[-1]+1;frames=selection[start:end];durations=times[start:end];atlas=Image.new('RGBA',(w*4,h*math.ceil(len(frames)/4)))
   for i,t in enumerate(frames):atlas.paste(Image.fromarray(t),((i%4)*w,(i//4)*h))
-  slug=sid.replace('SK_','')+'_'+channel.lower();path='classic/'+slug+'.png';target=OUT/path;target.parent.mkdir(exist_ok=True);atlas.save(target)
+  slug=hashlib.sha256(sid.encode('utf-8')).hexdigest()[:16]+'_'+channel.lower();path='classic/'+slug+'.png';target=OUT/path;target.parent.mkdir(exist_ok=True);atlas.save(target)
   channels[channel]={'path':path,'width':w,'height':h,'columns':4,'durationsMs':durations,'frameIndices':list(range(start,end)),'pivotX':anchor[0],'pivotY':anchor[1],'scale':1.0,'blend':'SCREEN','anchor':'CASTER' if selfEffect or channel=='CASTER_START' else 'RECIPIENT','sourceGif':demo['path'],'sourceSha256':demo['sha256'],'atlasSha256':hashlib.sha256(target.read_bytes()).hexdigest(),'opaquePixelCounts':counts[start:end]}
  if channels:manifest['skills'][sid]={'channels':channels,'name':row['name'],'article':row['article']}
 (OUT/'classic/manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
-# Preserve full 61-source table rows, including explicitly excluded and missing-ID references.
-(OUT/'classic/references.json').write_text(json.dumps({'revision':'CLASSIC_TABLES_V68','rows':rows},ensure_ascii=False,indent=2)+'\n')
 print('reference rows',len(rows),'runtime captured IDs',len(manifest['skills']),'channels',sum(len(v['channels']) for v in manifest['skills'].values()))
 
-icons=OUT/'classic/icons';icons.mkdir(exist_ok=True)
 for row in rows:
- if row['id']: (icons/(row['id']+'.png')).write_bytes((ROOT/row['icon']['path']).read_bytes())
+ if row['id']:
+  filename=hashlib.sha256(row['id'].encode('utf-8')).hexdigest()[:16]+'.png';row['iconAssetPath']='icons/'+filename
+  (ICONS/filename).write_bytes((ROOT/row['icon']['path']).read_bytes())
+# Preserve full 61-source table rows, including explicitly excluded and missing-ID references.
+(OUT/'classic/references.json').write_text(json.dumps({'revision':'CLASSIC_TABLES_V68','rows':rows},ensure_ascii=False,indent=2)+'\n')

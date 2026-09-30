@@ -11,7 +11,7 @@
     "SK_무도가_002": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/무도가_002_caster_start.png",
+          "path": "classic/b049d439de86916b_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -40,7 +40,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_002_recipient_contact.png",
+          "path": "classic/b049d439de86916b_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -72,7 +72,7 @@
     "SK_무도가_006": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_006_recipient_contact.png",
+          "path": "classic/da190c2d3d0c74f0_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -104,7 +104,7 @@
     "SK_무도가_032": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_032_recipient_contact.png",
+          "path": "classic/58ef84a2c0e9a98e_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -151,7 +151,7 @@
     "SK_무도가_004": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_004_recipient_contact.png",
+          "path": "classic/e1af9635d53db2a9_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -198,7 +198,7 @@
     "SK_무도가_030": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_030_recipient_contact.png",
+          "path": "classic/855d63ac553aa57c_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -236,7 +236,7 @@
     "SK_무도가_031": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_031_recipient_contact.png",
+          "path": "classic/787b8aac8f25d9ff_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -277,7 +277,7 @@
     "SK_무도가_007": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/무도가_007_caster_start.png",
+          "path": "classic/ec3cc7df3bd43a96_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -303,7 +303,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_007_recipient_contact.png",
+          "path": "classic/ec3cc7df3bd43a96_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -335,7 +335,7 @@
     "SK_무도가_009": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/무도가_009_caster_start.png",
+          "path": "classic/aeea58ca54aa6a3f_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -379,7 +379,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_009_recipient_contact.png",
+          "path": "classic/aeea58ca54aa6a3f_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -432,7 +432,7 @@
     "SK_무도가_010": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_010_recipient_contact.png",
+          "path": "classic/e01569483af6e4c6_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -467,7 +467,7 @@
     "SK_무도가_008": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_008_recipient_contact.png",
+          "path": "classic/6842133f43d83d72_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -505,7 +505,7 @@
     "SK_무도가_011": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/무도가_011_caster_start.png",
+          "path": "classic/8590e1fef012c969_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -552,7 +552,7 @@
     "SK_무도가_012": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_012_recipient_contact.png",
+          "path": "classic/05a92dd160260aaa_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -608,7 +608,7 @@
     "SK_무도가_013": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_013_recipient_contact.png",
+          "path": "classic/c7a855d680a91b95_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -661,7 +661,7 @@
     "SK_무도가_033": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_033_recipient_contact.png",
+          "path": "classic/2f02bfac883ab38f_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -699,7 +699,7 @@
     "SK_무도가_014": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_014_recipient_contact.png",
+          "path": "classic/60cb66f3b623c6ff_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -743,7 +743,7 @@
     "SK_무도가_018": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/무도가_018_caster_start.png",
+          "path": "classic/e5bc88028a5d0924_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -802,7 +802,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_018_recipient_contact.png",
+          "path": "classic/e5bc88028a5d0924_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -867,7 +867,7 @@
     "SK_무도가_019": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_019_recipient_contact.png",
+          "path": "classic/38ba623db10491a5_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -908,7 +908,7 @@
     "SK_무도가_015": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/무도가_015_caster_start.png",
+          "path": "classic/88f6e7fdee5044f9_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -940,7 +940,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_015_recipient_contact.png",
+          "path": "classic/88f6e7fdee5044f9_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -978,7 +978,7 @@
     "SK_무도가_016": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_016_recipient_contact.png",
+          "path": "classic/4c0afefbec830a23_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1025,7 +1025,7 @@
     "SK_무도가_017": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_017_recipient_contact.png",
+          "path": "classic/6f8499ce3d7d8fd3_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1075,7 +1075,7 @@
     "SK_무도가_023": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_023_recipient_contact.png",
+          "path": "classic/d80b03f0396761d7_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1107,7 +1107,7 @@
     "SK_무도가_021": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_021_recipient_contact.png",
+          "path": "classic/26f1f77a0a6a208d_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1145,7 +1145,7 @@
     "SK_무도가_022": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_022_recipient_contact.png",
+          "path": "classic/50d68ab2acea8666_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1186,7 +1186,7 @@
     "SK_무도가_020": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/무도가_020_recipient_contact.png",
+          "path": "classic/466909ddde4fb1a6_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1230,7 +1230,7 @@
     "SK_성직자_001": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_001_caster_start.png",
+          "path": "classic/c0bbc9a49ced3159_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1268,7 +1268,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_001_recipient_contact.png",
+          "path": "classic/c0bbc9a49ced3159_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1315,7 +1315,7 @@
     "SK_성직자_003": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_003_caster_start.png",
+          "path": "classic/8d2e618487ae530c_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1356,7 +1356,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_003_recipient_contact.png",
+          "path": "classic/8d2e618487ae530c_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1412,7 +1412,7 @@
     "SK_성직자_004": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_004_caster_start.png",
+          "path": "classic/582c8e9423d4b3da_caster_start.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -1450,7 +1450,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_004_recipient_contact.png",
+          "path": "classic/582c8e9423d4b3da_recipient_contact.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -1491,7 +1491,7 @@
     "SK_성직자_005": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_005_caster_start.png",
+          "path": "classic/3497078d5b797348_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1529,7 +1529,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_005_recipient_contact.png",
+          "path": "classic/3497078d5b797348_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1573,7 +1573,7 @@
     "SK_성직자_006": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_006_caster_start.png",
+          "path": "classic/c86bdc16fad70a78_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1617,7 +1617,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_006_recipient_contact.png",
+          "path": "classic/c86bdc16fad70a78_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1676,7 +1676,7 @@
     "SK_성직자_007": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_007_caster_start.png",
+          "path": "classic/ea137484c7dafefc_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1732,7 +1732,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_007_recipient_contact.png",
+          "path": "classic/ea137484c7dafefc_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1797,7 +1797,7 @@
     "SK_성직자_008": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_008_caster_start.png",
+          "path": "classic/46d11fdf36a228ad_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1829,7 +1829,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_008_recipient_contact.png",
+          "path": "classic/46d11fdf36a228ad_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1870,7 +1870,7 @@
     "SK_성직자_009": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_009_recipient_contact.png",
+          "path": "classic/38c349a7fcadc789_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1923,7 +1923,7 @@
     "SK_성직자_011": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_011_caster_start.png",
+          "path": "classic/06358b1ad4651d77_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -1961,7 +1961,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_011_recipient_contact.png",
+          "path": "classic/06358b1ad4651d77_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2005,7 +2005,7 @@
     "SK_성직자_053": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_053_caster_start.png",
+          "path": "classic/6461026a7deed9ab_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2037,7 +2037,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_053_recipient_contact.png",
+          "path": "classic/6461026a7deed9ab_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2078,7 +2078,7 @@
     "SK_성직자_014": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_014_caster_start.png",
+          "path": "classic/989209428b71de38_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2119,7 +2119,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_014_recipient_contact.png",
+          "path": "classic/989209428b71de38_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2178,7 +2178,7 @@
     "SK_성직자_015": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_015_caster_start.png",
+          "path": "classic/c2b2619bd736016a_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2240,7 +2240,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_015_recipient_contact.png",
+          "path": "classic/c2b2619bd736016a_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2302,7 +2302,7 @@
     "SK_성직자_013": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_013_caster_start.png",
+          "path": "classic/d64775222ff1f77c_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2373,7 +2373,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_013_recipient_contact.png",
+          "path": "classic/d64775222ff1f77c_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2462,7 +2462,7 @@
     "SK_성직자_054": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_054_caster_start.png",
+          "path": "classic/eada039a0c748dca_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2485,7 +2485,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_054_recipient_contact.png",
+          "path": "classic/eada039a0c748dca_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2523,7 +2523,7 @@
     "SK_성직자_016": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_016_recipient_contact.png",
+          "path": "classic/e36ec618df677a45_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2576,7 +2576,7 @@
     "SK_성직자_017": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_017_recipient_contact.png",
+          "path": "classic/6c7499c1f59ce804_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2626,7 +2626,7 @@
     "SK_성직자_018": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_018_caster_start.png",
+          "path": "classic/88310dd4b7c8901d_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2652,7 +2652,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_018_recipient_contact.png",
+          "path": "classic/88310dd4b7c8901d_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2705,7 +2705,7 @@
     "SK_성직자_019": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_019_caster_start.png",
+          "path": "classic/145800f3252dee02_caster_start.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -2743,7 +2743,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_019_recipient_contact.png",
+          "path": "classic/145800f3252dee02_recipient_contact.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -2784,7 +2784,7 @@
     "SK_성직자_021": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_021_caster_start.png",
+          "path": "classic/fe07c7e72a8dc1b5_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2819,7 +2819,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_021_recipient_contact.png",
+          "path": "classic/fe07c7e72a8dc1b5_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -2863,7 +2863,7 @@
     "SK_성직자_023": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_023_caster_start.png",
+          "path": "classic/b5a0e5294dbbd369_caster_start.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -2913,7 +2913,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_023_recipient_contact.png",
+          "path": "classic/b5a0e5294dbbd369_recipient_contact.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -2972,7 +2972,7 @@
     "SK_성직자_024": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_024_caster_start.png",
+          "path": "classic/62a8b77462971d54_caster_start.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -2995,7 +2995,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_024_recipient_contact.png",
+          "path": "classic/62a8b77462971d54_recipient_contact.png",
           "width": 224,
           "height": 137,
           "columns": 4,
@@ -3048,7 +3048,7 @@
     "SK_성직자_026": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_026_caster_start.png",
+          "path": "classic/2fe3227b3ebab62f_caster_start.png",
           "width": 234,
           "height": 139,
           "columns": 4,
@@ -3089,7 +3089,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_026_recipient_contact.png",
+          "path": "classic/2fe3227b3ebab62f_recipient_contact.png",
           "width": 234,
           "height": 139,
           "columns": 4,
@@ -3181,7 +3181,7 @@
     "SK_성직자_027": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_027_caster_start.png",
+          "path": "classic/9ac70d2cf42a38ab_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3234,7 +3234,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_027_recipient_contact.png",
+          "path": "classic/9ac70d2cf42a38ab_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3308,7 +3308,7 @@
     "SK_성직자_028": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_028_caster_start.png",
+          "path": "classic/f14488aacf13d01b_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3337,7 +3337,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_028_recipient_contact.png",
+          "path": "classic/f14488aacf13d01b_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3384,7 +3384,7 @@
     "SK_성직자_029": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_029_recipient_contact.png",
+          "path": "classic/96e94c07c20af1ef_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3434,7 +3434,7 @@
     "SK_성직자_034": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_034_recipient_contact.png",
+          "path": "classic/173b03ed01ed991a_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3484,7 +3484,7 @@
     "SK_성직자_055": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_055_caster_start.png",
+          "path": "classic/acffe8efe7250e52_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3510,7 +3510,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_055_recipient_contact.png",
+          "path": "classic/acffe8efe7250e52_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3545,7 +3545,7 @@
     "SK_성직자_032": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_032_caster_start.png",
+          "path": "classic/cf348abcd44e8a12_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3580,7 +3580,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_032_recipient_contact.png",
+          "path": "classic/cf348abcd44e8a12_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3624,7 +3624,7 @@
     "SK_성직자_033": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_033_caster_start.png",
+          "path": "classic/8a678e758cc344c4_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3680,7 +3680,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_033_recipient_contact.png",
+          "path": "classic/8a678e758cc344c4_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3742,7 +3742,7 @@
     "SK_성직자_031": {
       "channels": {
         "CASTER_START": {
-          "path": "classic/성직자_031_caster_start.png",
+          "path": "classic/f410a13f97038ae6_caster_start.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3768,7 +3768,7 @@
           ]
         },
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_031_recipient_contact.png",
+          "path": "classic/f410a13f97038ae6_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -3818,7 +3818,7 @@
     "SK_성직자_030": {
       "channels": {
         "RECIPIENT_CONTACT": {
-          "path": "classic/성직자_030_recipient_contact.png",
+          "path": "classic/9c2bb7fa5f6108b8_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
