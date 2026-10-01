@@ -1,0 +1,60 @@
+{
+  "versionCode": 74,
+  "versionName": "0.74-reference-item-windows",
+  "branch": "codex/original-skill-contract-v65",
+  "pr": 176,
+  "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "runtimeAndTestHead": "e23a559286f16f5bea3058053981756e53199997",
+  "actualPrCheckout": "9cf6745a7dd1dfc313d41d2a14e3650f83d952b8",
+  "equalTree": "c215bf24b84d2a7c21878b8b1f8909f28e3283eb",
+  "runId": 36817322833,
+  "jobId": 110225117388,
+  "conclusion": "SUCCESS",
+  "builtAsiaSeoul": "2026-10-01T13:59:46+09:00",
+  "apkArtifactId": 11142395977,
+  "reviewArtifactId": 11142346061,
+  "verification": {
+    "apkSha256": "ae464a19ffb8a7c32705485e47e6600047a02e8fde1360fb516cd3f7bb111c47",
+    "apkBytes": 25588331,
+    "preservedV73Assets": 818,
+    "newSkinAssets": 14,
+    "artifactHashes": {
+      "v74-delivery-apk.zip": "098fcd5661f73faac2287b9d8f445a0aae4c34227eb83e597ef632467c7d6b7e",
+      "v74-delivery-review.zip": "19ec09f653ac72abc0afa4920f2f40bbe459deb2aa2f48db154dfcfc43edb15d"
+    },
+    "nativeReviewHashes": {
+      "equipment-v74-overview.png": "b658a96ccce7b25c1aa4067a324510dd6ca0feb5d6da664ed1ff47c40ff9c738",
+      "inventory-v74-compare.png": "d028412f04b3e53f151352455aaf2ac753196f660b6f655161a929dcc63d9ab1",
+      "equipment-v74-selected.png": "b1528699f53ac85637b25ea5db030bbad9b28e36549873b3f6d6d68f9425bf4d",
+      "inventory-v74-grid.png": "f8005b613861722c2a846ccb15316e4f0534109b42c7bbadc219717810eab4b9",
+      "equipment-v74-unequipped.png": "54ade40f6aab89f6510a66d3bf4ff5be11d6cb99ddc54f11631f263055a2ba53"
+    }
+  },
+  "scope": [
+    "Real GameView input: grid selection, all/equipment/consumable filtering and owned-item reachability",
+    "Current/chosen gear cards; actual equipment/options/requirements; lower AC improves",
+    "Equip/unequip causes immediate FinalStats changes and persists into a newly restored GameView",
+    "All eleven supported equipment slots; armor included; no duplicate domain glove",
+    "Actual close hitbox/details routing, modal taps cannot move world",
+    "EquipmentStatsAndDetailsTest and full configured skill/world/BODY/VFX/combat/growth/restart tests",
+    "All818 V73 asset bytes preserved; all14 new packaged skin files match tracked projection"
+  ],
+  "visualReview": "NATIVE_REVIEWED: five actual Canvas frames; physical-device/user visual acceptance PENDING",
+  "sourceContract": "docs/ITEM_WINDOW_CONTRACT.md",
+  "firstRun": {
+    "runId": 36817236551,
+    "status": "FAILED_TEST_HARNESS",
+    "cause": "Restart scenario incorrectly continued on discarded old view after rebinding save authority; resumed input on restored view, runtime unchanged."
+  },
+  "pending": [
+    "Original durability, capacity expansion and character-grade services are not implemented by this UI change",
+    "Screenshot-owned luxury items and original inventory icon data are not fabricated",
+    "Previous61 skill icon/9 inference acceptance/133 skill-service gaps unchanged",
+    "Physical-device/user visual acceptance"
+  ],
+  "libraryDeliverables": {
+    "apk": "libfile_d58ac5ee24208191a5bd099a39ce412e",
+    "inventory": "libfile_9b6f5ea6ec148191a8ef5b4a44c98acf",
+    "equipment": "libfile_3e73b64bf8fc8191aff01c9a88a8fa71"
+  }
+}
