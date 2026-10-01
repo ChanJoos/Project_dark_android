@@ -31,7 +31,7 @@ final class SkillWindow {
     if(!open)return;
     fill(c,0,0,960,540,0x92000000);panel(c,bounds,0xff201f1b,0xff8e7850);
     gradient(c,96,36,864,70,0xff3f382b,0xff25241e);
-    label(c,"스킬",112,61,23,GOLD,true);button(c,new RectF(232,37,354,64),book.testAccess()?"219개 시험 목록":archive?"사용 가능 목록":"전체 자료 보기",true);
+    label(c,"스킬",112,61,23,GOLD,true);button(c,new RectF(232,37,354,64),book.testAccess()?book.catalogSize()+"개 시험 목록":archive?"사용 가능 목록":"전체 자료 보기",true);
     button(c,new RectF(366,37,504,64),book.testAccess()?"테스트 ON":"테스트 OFF",true);
     right(c,"보유 골드  "+number(a.gold())+" G",814,58,12,TEXT);button(c,new RectF(834,37,859,64),"×",true);
     tab(c,new RectF(112,80,298,109),"기술",!magic);tab(c,new RectF(306,80,498,109),"마법",magic);

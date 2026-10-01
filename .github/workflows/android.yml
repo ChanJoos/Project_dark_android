@@ -154,7 +154,7 @@ jobs:
       - name: Render POTE production forest review frames
         run: |
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteVisualReviewTest --stacktrace
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
       - name: Milddok ingestion identity audit

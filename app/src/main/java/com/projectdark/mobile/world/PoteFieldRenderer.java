@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.LightingColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -35,6 +36,7 @@ public final class PoteFieldRenderer {
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
   private static final String TRAIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private final Paint pixel=new Paint();
+  private final Paint hitPixel=new Paint();
   private final Paint soilPaint=new Paint();
   private final Path groundCells=new Path();
   private final AssetManager assets=findAssets();
@@ -51,6 +53,7 @@ public final class PoteFieldRenderer {
 
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
+    hitPixel.set(pixel);hitPixel.setColorFilter(new LightingColorFilter(0xffffffff,0x00604040));
     soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
   }
 
@@ -79,6 +82,12 @@ public final class PoteFieldRenderer {
   /** Paint the registered generated candidate pose selected by the live test actor state and facing. */
   public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
       float actionProgress,float idleClock,float x,float y){
+    drawMonsterTestPose(c,monsterId,state,direction,actionProgress,idleClock,x,y,false);
+  }
+
+  /** Resolved damage uses the existing actor hit timer, retaining pose, alpha and foot anchor. */
+  public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
+      float actionProgress,float idleClock,float x,float y,boolean hitFlash){
     if(c==null)return;
     String pose=("walk".equals(state)||"attack".equals(state))?state:"idle";
     String name=PoteForestMonsterShowcase.assetPath(monsterId,pose,direction);
@@ -102,7 +111,7 @@ public final class PoteFieldRenderer {
       cy+=facingY(direction)*1.6f*impulse;
     }
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
-    c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
+    c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),hitFlash?hitPixel:pixel);
     pixel.setAlpha(255);
   }
 

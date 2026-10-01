@@ -178,3 +178,8 @@ Coverage is per ID in SKILL_SOURCE_COVERAGE.csv:147/221 source icons; native BOD
 ## 2026-10-01 — all-job presentation and resolved damage channels
 
 V70 extends retained-source bindings beyond Rogue to every labelled Warrior icon, reviewed Warrior shapes, existing Martial/Cleric sources and same-name common/Mage heals. Different-name spells never borrow another original ID merely to fill coverage. Static source shapes use explicitly authored hold/fade timing. The universal recipient impact is an adapted reuse of retained Charge burst pixels, emitted only by a resolved positive DAMAGE/CRIT contact; it is not a claimed original universal impact. Spell/caster channels and recipient damage feedback are independent. BODY uses original male/female front/back groups with the established horizontal transform for four directions.
+
+
+## 2026-10-01 — restore continuation and complete Pote hit timer wiring
+
+V70 is already retained and verified at PR176. Scratch restoration must reuse its remote checkpoint rather than reconstruct source assets. Pote's separate sprite renderer must consume the same resolved positive-damage timer as the existing Milles presentation, using a dedicated tint paint that preserves alpha/pose/anchor and does not leak to other draws. This is ADAPTED presentation; no new original hurt sprites, timing facts or source mappings are inferred. UI catalog counts derive from current previewable entries and exclude the three internal validation fixtures.

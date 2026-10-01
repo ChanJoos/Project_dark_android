@@ -115,3 +115,8 @@ The user subsequently confirmed the v0.55 Pote restart/map persistence behavior.
 - Existing facing tests assert enum/file-name agreement, not that the generated image's gaze actually matches its direction label. Visual gaze acceptance remains pending and must not be inferred from green CI.
 - r4 test requirement: construct a route where the direct tile is blocked, recalculate after each step, and prove the actor continues along a stable shortest detour without alternating directions. Retain four-direction pose tests and the real-device gaze/auto-target acceptance checks.
 - Do not label a new APK as the fix until the exact-source workflow succeeds and the requested device scenario is checked. Current r4 status and exact evidence live in `docs/PROJECT_STATE.md` and `docs/DIRECTOR_BACKLOG.md`.
+
+
+### 2026-10-01 V71 recipient hit feedback contract (verification pending)
+
+GameView forwards the shared RuntimeState.Monster.hitFlash timer to the Pote sprite renderer. A separate tint paint changes only occupied sprite colors on a resolved positive-damage hit; it preserves source alpha, pose/facing, dimensions and ground anchor, and never recolors a later actor or terrain draw. All five species and idle/walk/attack poses follow the same rule. The existing0.14-second timer remains authoritative; MISS, HEAL and zero-damage presentation do not start it. Existing lethal removal is unchanged; no original hurt/corpse animation is claimed. Nonlethal native HP fixtures test rendering without changing production monster stats. Exact-source CI, packaged source pixel identity and native review are required; device/visual acceptance remains pending.
