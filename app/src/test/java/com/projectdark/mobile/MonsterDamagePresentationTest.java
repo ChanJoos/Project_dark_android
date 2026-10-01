@@ -60,7 +60,8 @@ public class MonsterDamagePresentationTest {
         float contact="SK_공통_001".equals(skill)?.2f:SkillActionContract.get(skill).contact+.001f;
         invoke(view,"tickSkillCombat",new Class<?>[]{float.class},contact);
         assertTrue(skill+" "+monster.id+" real damage",monster.hp<hp);assertTrue("keep this fixture alive to inspect the hit frame",monster.alive);assertTrue(monster.hitFlash>0);
-        SkillVfxRenderer fx=field(view,"skillVfx");assertEquals("one recipient impact",1,fx.pulses.stream().filter(p->p.sheet.equals("impact")&&p.anchor.equals(monster.id)).count());
+        SkillVfxRenderer fx=field(view,"skillVfx");assertEquals("skill impact; user-approved basic BODY-only",skill.equals("SK_공통_001")?0:1,fx.pulses.stream().filter(p->p.sheet.equals("impact")&&p.anchor.equals(monster.id)).count());
+        if(skill.equals("SK_공통_001"))assertTrue("Basic swing has no particle in the forest",fx.pulses.isEmpty());
         Bitmap hit=liveMonster(view,monster);float flash=monster.hitFlash;monster.hitFlash=0;Bitmap normal=liveMonster(view,monster);monster.hitFlash=flash;
         assertFalse(skill+" "+monster.id+" live renderer must consume hitFlash",hit.sameAs(normal));
         if(skill.equals(skills[0])||monster.id.equals("POTE_PURPLE")){
