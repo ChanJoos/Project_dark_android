@@ -68,7 +68,7 @@ public class MartialDefenseStarRegressionTest {
    boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
    int contactFrame=id.endsWith("002")?(back?2:5):(back?12:16);
    float clock=(Float)field(view,"actionClock");Method duration=GameView.class.getDeclaredMethod("duration",field(view,"action").getClass());duration.setAccessible(true);
-   float total=(Float)duration.invoke(view,field(view,"action"));
+   Object currentAction=field(view,"action");float total=(Float)duration.invoke(view,new Object[]{currentAction});
    assertEquals(body+"/d/"+contactFrame,catalog.frameKey(body,motion,d,GameView.skillPosePhase(clock,total,rule.contact)));
    save82(view,id+"-"+body+"-"+d+"-contact");
    if(id.endsWith("014")){
