@@ -9,13 +9,13 @@ import org.json.*;
 /** Actual capture frames with source timing. Matting/occlusion remain explicit approximations. */
 final class CapturedSkillFx {
   static final class Sequence {
-    final boolean directional,normalBlend,visualCenter,filterBitmap,contactMidpoint;final float directionPivotLift,sourceForwardDistance;final Bitmap atlas;final int width,height,columns;final int[] durations;final float duration,pivotX,pivotY,scale;
+    final boolean directional,normalBlend,visualCenter,filterBitmap,contactMidpoint;final float directionPivotLift,sourceForwardDistance,footOffsetY;final Bitmap atlas;final int width,height,columns;final int[] durations;final float duration,pivotX,pivotY,scale;
     Sequence(Context c,JSONObject j)throws Exception{
       atlas=PresentationAssetBytes.bitmap(c,"skill-presentation/"+j.getString("path"),j.getString("atlasSha256"));
       if(atlas==null)throw new IllegalStateException("missing capture atlas");width=j.getInt("width");height=j.getInt("height");columns=j.getInt("columns");
       JSONArray times=j.getJSONArray("durationsMs");durations=new int[times.length()];int total=0;
       for(int i=0;i<durations.length;i++){durations[i]=times.getInt(i);if(durations[i]<=0)throw new IllegalStateException("capture timing");total+=durations[i];}
-      contactMidpoint="CONTACT_MIDPOINT".equals(j.optString("registration"));filterBitmap=j.optBoolean("filterBitmap",false);visualCenter="VISUAL_CENTER".equals(j.optString("registration"));directional=j.optBoolean("directional",false);normalBlend="NORMAL".equals(j.optString("blend"));directionPivotLift=(float)j.optDouble("directionPivotLift",0);sourceForwardDistance=(float)j.optDouble("sourceForwardDistance",1);
+      footOffsetY=(float)j.optDouble("footOffsetY",Double.NaN);contactMidpoint="CONTACT_MIDPOINT".equals(j.optString("registration"));filterBitmap=j.optBoolean("filterBitmap",false);visualCenter="VISUAL_CENTER".equals(j.optString("registration"));directional=j.optBoolean("directional",false);normalBlend="NORMAL".equals(j.optString("blend"));directionPivotLift=(float)j.optDouble("directionPivotLift",0);sourceForwardDistance=(float)j.optDouble("sourceForwardDistance",1);
       duration=total/1000f;pivotX=(float)j.getDouble("pivotX");pivotY=(float)j.getDouble("pivotY");scale=(float)j.getDouble("scale");
     }
     int frame(float age){int elapsed=Math.max(0,(int)(age*1000));for(int i=0;i<durations.length;i++){if(elapsed<durations[i])return i;elapsed-=durations[i];}return durations.length-1;}

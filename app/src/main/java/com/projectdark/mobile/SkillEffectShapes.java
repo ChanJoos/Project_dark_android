@@ -34,6 +34,20 @@ final class SkillEffectShapes {
         p.setColor(0xffedfbff);p.setStrokeWidth(1);c.drawPath(path,p);c.restore();
       }
       c.restore();p.setStrokeCap(Paint.Cap.BUTT);p.setStyle(Paint.Style.FILL);
+    }else if(name.equals("DARK_STAR")){
+      // User confirms the original star motif; geometry is reconstructed, not recovered pixels.
+      // Visible at contact (t=0), centered on each damage recipient, without a late buildup.
+      float radius=27+5*(float)Math.sin(Math.min(1,t)*Math.PI);
+      Path star=new Path();
+      for(int i=0;i<10;i++){
+        double angle=-Math.PI/2+i*Math.PI/5;float r=i%2==0?radius:radius*.42f;
+        float sx=(float)Math.cos(angle)*r,sy=(float)Math.sin(angle)*r;
+        if(i==0)star.moveTo(sx,sy);else star.lineTo(sx,sy);
+      }
+      star.close();p.setColor(0xffb787ef);p.setAlpha(alpha/4);c.drawPath(star,p);
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(5);p.setAlpha(alpha/3);c.drawPath(star,p);
+      p.setColor(0xffe6d5ff);p.setStrokeWidth(2);p.setAlpha(alpha);c.drawPath(star,p);
+      p.setStyle(Paint.Style.FILL);
     }else if(name.equals("METEOR")){
       float f=Math.min(1,t*2),mx=-36*(1-f),my=-75*(1-f);
       for(int i=0;i<8;i++)pixel(c,p,mx-i*3,my-i*6,6-i*.5f,0xffed8132,alpha);

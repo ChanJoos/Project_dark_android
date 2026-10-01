@@ -4,7 +4,7 @@ import csv, hashlib, json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 read=lambda p:json.loads((R/p).read_text())
-audit=read('docs/verification/SKILL_FX_V79_AUDIT.json')
+audit=read('docs/verification/SKILL_FX_V80_AUDIT.json')
 previous=read('docs/verification/SKILL_FX_V77_AUDIT.json')
 before={r['id']:r for r in previous['rows'] if r['runtimeBranch']=='ADAPTED'}
 current={r['id']:r for r in audit['rows']}
@@ -41,14 +41,14 @@ for row in attachment['files']:
   unlabelled.append(dict(file=row['file'],sha256=row['sha256'],reason='No skill label. Motif resemblance to dragon/fire does not identify a skill or original era.'))
 outside=[dict(name=r['name'],source=r['article'],reason='No current catalog ID; no automatic later-job content expansion.')
          for r in read('master/source/skill_fx/naver_magic_recovered_20261001/definitions.json') if not r['id']]
-out=dict(revision='PROVIDED_SOURCE_RECHECK_V79',base='d57e480c1342f8f9ad7936b3c3f25d4630d9345c',
+out=dict(revision='PROVIDED_SOURCE_RECHECK_V80',base='d57e480c1342f8f9ad7936b3c3f25d4630d9345c',
  catalogCount=len(current),initialFallbackCount=len(before),resolved=resolved,
  remainingOriginalEffectCount=len(remaining),remaining=remaining,
  verifiedRetainedMediaReferences=len(sourceChecks),unlabelledUserGIFs=unlabelled,
  outsideCurrentCatalog=outside,
  sharedRouteBoundary='All four shared routes are project reuse, not per-job original footage proof.',
  device='PENDING',visualAcceptance='PENDING')
-(R/'docs/verification/PROVIDED_SOURCE_RECHECK_V79.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+(R/'docs/verification/PROVIDED_SOURCE_RECHECK_V80.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 with (R/'docs/REMAINING_ORIGINAL_SKILL_FX.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=list(remaining[0]),lineterminator='\n');w.writeheader();w.writerows(remaining)
 print('Rechecked',len(before),'fallback IDs;',len(resolved),'resolved routes;',len(remaining),'actual particle gaps;',len(unlabelled),'unlabelled GIFs;',len(outside),'outside catalog')

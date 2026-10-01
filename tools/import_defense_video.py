@@ -113,7 +113,7 @@ def project(root, output):
     return dict(path='warrior/defense_video.png',width=w,height=h,columns=6,
         durationsMs=[round((i+1)*1000/30)-round(i*1000/30) for i in range(n)],
         frameIndices=list(range(n)),pivotX=120,pivotY=185,scale=meta['scale'],
-        anchor='CASTER',registration='VISUAL_CENTER',blend='SCREEN',filterBitmap=True,
+        anchor='CASTER',registration='FOOT_OFFSET',footOffsetY=-33,registrationEvidence='USER_20261002_HEAD_OUTSIDE_SPHERE; SOURCE_SPHERE_FOOT_AND_BODY_ENVELOPE',blend='SCREEN',filterBitmap=True,
         sourceTiming='USER_VIDEO_SAMPLED_30FPS',reconstruction='SOURCE_2D_SURFACE_WITH_MIRRORED_ARC_AND_HARMONIC_OCCLUSION_FILL',sourceGif=str(path.relative_to(root)),
         sourceSha256=meta['sourceFrameSha256'],atlasSha256=hashlib.sha256(target.read_bytes()).hexdigest(),
         opaquePixelCounts=counts,review=meta)

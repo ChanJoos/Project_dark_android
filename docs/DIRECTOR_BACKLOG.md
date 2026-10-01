@@ -1,3 +1,9 @@
+## 2026-10-02 — V80 martial motion, Defense envelope and fifth-circle stars
+
+V79 DEVICE_FAILED (user-reported): Complete Defense head outside sphere, martial skill motion mismatches, Mage fifth-circle missing original star motif. Exact installed APK SHA unconfirmed. Reproduced metadata defects: Defense was centered at feet minus23, leaving only55px above feet; kicks selected their partial preparation frame at damage contact and full extension later; finishers034–037 used generic12-ray burst. V80 retains Defense66 frames/scale .27 and raises sphere10 logical pixels using explicit foot offset -33. Kick profiles reach full source extension at normalized contact1/3. Martial34 entries reviewed against labelled sources; Changpung uses punch, Guyang uses raised arms, Heupjeong keeps standing, Dara holds charge then releases, Triple Punch cycles three source punches. Unlabelled/occluded caster motions and exact original cadence remain open in verification/MARTIAL_MOTION_V80_AUDIT.json.
+
+Mage Semellia/Armageddon/Summa Stella/Ragnarok now use a visible-at-contact five-point star on every actual hit recipient. Star motif is user-confirmed; geometry/color/cadence are PROJECT_RECONSTRUCTION, not recovered original pixels. Original finisher particle source gaps remain open. Damage/reach/cost rules, basic BODY-only swing, original body/source bytes and approved movement unchanged. New native tests exercise live kick input/clock/contact, both source bodies/four directions for all34 entries, Defense envelope and four real finisher contact events. BUILD/NATIVE/PHONE/VISUAL PENDING until exact-SHA evidence. PR176 task candidate; main unchanged; delivery ZIP with APK.
+
 # 디렉터 작업 지시
 
 ## 2026-10-02 — V79 verified contact-FX candidate

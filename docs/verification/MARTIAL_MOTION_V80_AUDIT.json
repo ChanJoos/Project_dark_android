@@ -1,0 +1,282 @@
+{
+  "count": 34,
+  "rows": [
+    {
+      "id": "SK_무도가_001",
+      "name": "정권",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "PROJECT_SELECTION_ORIGINAL_CAST_NOT_DEMONSTRATED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_002",
+      "name": "단각",
+      "before": "FRONT_KICK",
+      "after": "FRONT_KICK",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_003",
+      "name": "이형환위",
+      "before": "IDLE",
+      "after": "IDLE",
+      "status": "SOURCE_REVIEWED",
+      "mode": "UTILITY"
+    },
+    {
+      "id": "SK_무도가_004",
+      "name": "미종보법",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_005",
+      "name": "양의신권",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "SOURCE_REVIEWED",
+      "mode": "LINKED"
+    },
+    {
+      "id": "SK_무도가_006",
+      "name": "통배권",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_007",
+      "name": "붕각",
+      "before": "SIDE_KICK",
+      "after": "SIDE_KICK",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_008",
+      "name": "경신공",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_009",
+      "name": "백보신권",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_010",
+      "name": "일음지",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_011",
+      "name": "흡정신공",
+      "before": "CAST",
+      "after": "IDLE",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_012",
+      "name": "쿠랄툼",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_CASTER_OCCLUDED_PROJECT_SELECTION",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_013",
+      "name": "철포삼",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_CASTER_OCCLUDED_PROJECT_SELECTION",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_014",
+      "name": "선풍각",
+      "before": "SPIN_KICK",
+      "after": "SPIN_KICK",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_015",
+      "name": "장풍",
+      "before": "CAST",
+      "after": "PUNCH",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_016",
+      "name": "금강불괴",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_017",
+      "name": "쿠라노토",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_018",
+      "name": "발경",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "SOURCE_CASTER_OCCLUDED_PROJECT_SELECTION",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_019",
+      "name": "소수신공",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_020",
+      "name": "다라밀공",
+      "before": "CAST",
+      "after": "CHARGE_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_021",
+      "name": "구양신공",
+      "before": "PUNCH",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_022",
+      "name": "반탄신공",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_023",
+      "name": "달마신공",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_024",
+      "name": "연천단각",
+      "before": "FRONT_KICK",
+      "after": "FRONT_KICK",
+      "status": "PROJECT_SELECTION_ORIGINAL_CAST_NOT_DEMONSTRATED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_025",
+      "name": "붕신선각",
+      "before": "SPIN_KICK",
+      "after": "SPIN_KICK",
+      "status": "PROJECT_SELECTION_ORIGINAL_CAST_NOT_DEMONSTRATED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_026",
+      "name": "파천각",
+      "before": "IDLE",
+      "after": "IDLE",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_027",
+      "name": "트리플펀치",
+      "before": "PUNCH",
+      "after": "TRIPLE_PUNCH",
+      "status": "PROJECT_SELECTION_ORIGINAL_CAST_NOT_DEMONSTRATED",
+      "mode": "LINKED"
+    },
+    {
+      "id": "SK_무도가_028",
+      "name": "무영신공",
+      "before": "PUNCH",
+      "after": "PUNCH",
+      "status": "PROJECT_SELECTION_ORIGINAL_CAST_NOT_DEMONSTRATED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_029",
+      "name": "자기보호",
+      "before": "RAISE",
+      "after": "RAISE",
+      "status": "PROJECT_SELECTION_ORIGINAL_CAST_NOT_DEMONSTRATED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_030",
+      "name": "일루메나",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_031",
+      "name": "디베노모",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_032",
+      "name": "쿠로토",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_033",
+      "name": "경신공법",
+      "before": "CAST",
+      "after": "MARTIAL_CAST",
+      "status": "SOURCE_REVIEWED",
+      "mode": "ACTIVE"
+    },
+    {
+      "id": "SK_무도가_034",
+      "name": "아지토",
+      "before": "IDLE",
+      "after": "IDLE",
+      "status": "SOURCE_REVIEWED",
+      "mode": "UTILITY"
+    }
+  ],
+  "limitations": [
+    "Exact original newer/master per-skill poses remain unproven when no labelled footage exists.",
+    "Source profile changes affect martial kick families; existing basic swing and locomotion remain unchanged."
+  ],
+  "boundary": "All 34 catalog entries reviewed. Source body pixels retained. Original cadence and source-occluded/unlabelled caster motions remain unverified. Both bodies/four directions are runtime rendering scope, not recovered original directional footage."
+}
