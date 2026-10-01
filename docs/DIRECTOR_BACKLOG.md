@@ -443,3 +443,9 @@ User explicitly approved the scoped public-repository code and derived-effect up
 ### V78 exact-SHA CI correction — 2026-10-01
 
 Published a044091131dedb071d3883029975f656d5de09f8 through the authorized GitHub connector; tree exactly equals local reviewed tree c65227a18c69a34d628c46e3ab320241e011811b. Actions 36867772666 passed source regeneration/audits and production route/input tests, but one classic corner-alpha test failed for Pravo. Source inspection found a captured mouse cursor; removed it with a recorded UI mask. Further pixel audit found Dark Mark floor contamination: registered six panned captures against exposed floor, excluded brown/blue floor hues and retained only supported dark/red ink. Timing, pivots and original source bytes are preserved; occluded/unrecoverable pixels remain absent. Added regression for cursor area and observed floor corner. Rebuild/native review pending; physical-device acceptance pending.
+
+### V78 build verified, peak-frame review — 2026-10-01
+
+Actions 36869178431 SUCCESS for source head 47cf5e6480054c291755c3b7da40e69f3b73d84d. PR merge ref 80d1cdcd2cb0759ee12ce4aed919a02d344fbd94 has exactly the same tree 525fb4eee23c842cbb888ea80772a0c79e801c91. All validation and native input suites passed. APK artifact 11166581927 SHA-256 f341abe5203356d6414e3e91982df5a33cf756f0798c9c39c503aa70b7ddcf7e, build upload 2026-10-01 22:34:45 Asia/Seoul. All 591 packaged skill-presentation files match source. Native review artifact 11166362041 contains 243 frames. New-route input/anchors and Defense cadence pass; physical device pending.
+
+Review found Holy Dragon screenshots sampled its original 1000ms blank lead-in. Preserve source cadence; change existing review captures to the verified source peak frame using the existing sourcePeakAge helper, so native visual evidence actually shows the effect. Game implementation/assets unchanged. Peak-frame review and final candidate delivery remain pending.

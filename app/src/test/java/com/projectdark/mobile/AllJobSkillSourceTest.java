@@ -77,7 +77,7 @@ public class AllJobSkillSourceTest {
     assertTrue(id+" must use connected source through production input",fx.pulses.stream().anyMatch(p->p.sheet.equals(wanted)&&!p.caster));
     for(SkillVfxRenderer.Pulse pulse:fx.pulses)if(pulse.sheet.equals(wanted)){if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(state.monsters().stream().anyMatch(m->m.id.equals(pulse.anchor)));else assertEquals(id,id.equals("SK_전사_009")?"player":monster.id,pulse.anchor);}
    }
-   if(rule.heal())assertFalse(id,fx.pulses.stream().anyMatch(p->p.sheet.equals("impact")));for(SkillVfxRenderer.Pulse pulse:fx.pulses)pulse.age=Math.min(.10f,pulse.duration/2);
+   if(rule.heal())assertFalse(id,fx.pulses.stream().anyMatch(p->p.sheet.equals("impact")));for(SkillVfxRenderer.Pulse pulse:fx.pulses)pulse.age=SkillFxAuditTest.sourcePeakAge(fx,pulse);
    Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(image));save(image,"alljob-live-"+id+".png");fx.tick(30);assertTrue(fx.pulses.isEmpty());
   }
  }
