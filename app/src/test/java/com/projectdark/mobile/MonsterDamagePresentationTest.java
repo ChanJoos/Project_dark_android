@@ -77,7 +77,7 @@ public class MonsterDamagePresentationTest {
     for(RuntimeState.Monster m:state.monsters())assertEquals(0,m.hitFlash,0);
     assertFalse(((SkillVfxRenderer)field(view,"skillVfx")).pulses.stream().anyMatch(p->p.sheet.equals("impact")));
     invoke(view,"tickSkillCombat",new Class<?>[]{float.class},120f);idle(view);RuntimeState.Monster m=state.monsters().get(0);state.player().x=m.x-32;state.player().y=m.y-16;((WorldRuntimeAdapter)field(view,"poteFieldAdapter")).snapCameraToPlayer();((CombatController)field(view,"combat")).selectTarget(m);
-    int hp=m.hp;invoke(view,"useBookSkill",new Class<?>[]{SkillBook.Entry.class},book.get("SK_도적_034"));assertEquals("SK_도적_034",field(view,"activeSkillVisualId"));invoke(view,"tickSkillCombat",new Class<?>[]{float.class},.3f);assertEquals(hp,m.hp);assertEquals(0,m.hitFlash,0);
+    int hp=m.hp;invoke(view,"useBookSkill",new Class<?>[]{SkillBook.Entry.class},book.get("SK_도적_002"));assertEquals("SK_도적_002",field(view,"activeSkillVisualId"));invoke(view,"tickSkillCombat",new Class<?>[]{float.class},.3f);assertEquals(hp,m.hp);assertEquals(0,m.hitFlash,0);
     assertFalse(((SkillVfxRenderer)field(view,"skillVfx")).pulses.stream().anyMatch(p->p.sheet.equals("impact")));
   }
 

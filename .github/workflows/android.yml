@@ -110,26 +110,6 @@ jobs:
           git diff --exit-code -- app/src/main/assets/skill-presentation/classic
       - name: Verify skill window, shared combat and restart persistence
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest --tests com.projectdark.mobile.AllJobSkillSourceTest --stacktrace
-      - name: Print unit test failure details
-        if: failure()
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          from xml.etree import ElementTree as ET
-          files=list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
-          found=0
-          for file in files:
-              root=ET.parse(file).getroot()
-              for case in root.iter('testcase'):
-                  failure=case.find('failure')
-                  if failure is None: failure=case.find('error')
-                  if failure is not None:
-                      found+=1
-                      print(f'FAILED {case.get("classname")}.{case.get("name")}')
-                      print(failure.get('message',''))
-                      print((failure.text or '')[-5000:])
-          if not found: print('No JUnit failure detail XML found.')
-          PY
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit
@@ -177,6 +157,26 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest --stacktrace
       - name: Execute device recording regressions with native source rendering
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceRecordingRegressionTest --tests com.projectdark.mobile.ShirtRenderingRegressionTest --stacktrace
+      - name: Print unit test failure details
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          files=list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
+          found=0
+          for file in files:
+              root=ET.parse(file).getroot()
+              for case in root.iter('testcase'):
+                  failure=case.find('failure')
+                  if failure is None: failure=case.find('error')
+                  if failure is not None:
+                      found+=1
+                      print(f'FAILED {case.get("classname")}.{case.get("name")}')
+                      print(failure.get('message',''))
+                      print((failure.text or '')[-5000:])
+          if not found: print('No JUnit failure detail XML found.')
+          PY
       - name: Upload device review rendering
         if: always()
         uses: actions/upload-artifact@v4

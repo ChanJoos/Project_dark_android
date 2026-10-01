@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
-import android.graphics.LightingColorFilter;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -53,7 +53,7 @@ public final class PoteFieldRenderer {
 
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
-    hitPixel.set(pixel);hitPixel.setColorFilter(new LightingColorFilter(0xffffffff,0x00604040));
+    hitPixel.set(pixel);hitPixel.setColorFilter(new ColorMatrixColorFilter(new float[]{1,0,0,0,96, 0,1,0,0,64, 0,0,1,0,64, 0,0,0,1,0}));
     soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
   }
 
