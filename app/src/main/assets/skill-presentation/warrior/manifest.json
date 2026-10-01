@@ -347,6 +347,131 @@
         }
       }
     },
+    "SK_전사_011": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "warrior/affa2fbaec40801a.png",
+          "width": 110,
+          "height": 110,
+          "columns": 4,
+          "durationsMs": [
+            70,
+            110,
+            100,
+            80
+          ],
+          "frameIndices": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "sourceTiming": "PROJECT_STATIC_HOLD_FADE",
+          "pivotX": 33,
+          "pivotY": 74,
+          "scale": 1.0,
+          "anchor": "RECIPIENT",
+          "blend": "SCREEN",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/182bffcb1028fd9fa08a9fe70d102f9486cdd7b67ee9555a46e81a1b5f5dcdd7.jpg",
+          "sourceSha256": "182bffcb1028fd9fa08a9fe70d102f9486cdd7b67ee9555a46e81a1b5f5dcdd7",
+          "atlasSha256": "a01b2605c2e98547e68a0c101f3bff98d51cd52e21e67fdbe0fe37d608032582",
+          "opaquePixelCounts": [
+            313,
+            313,
+            313,
+            313
+          ],
+          "review": {
+            "articleId": 191241,
+            "imageIndex": 15,
+            "region": [
+              6,
+              40,
+              64,
+              109
+            ],
+            "blocked": [
+              [
+                22,
+                40,
+                43,
+                83
+              ]
+            ],
+            "pivot": [
+              33,
+              74
+            ],
+            "scale": 1.0,
+            "anchor": "RECIPIENT",
+            "channel": "RECIPIENT_CONTACT",
+            "whiteOnly": true,
+            "evidence": "EXACT_LABELLED_DISARM_SECTION_STATIC_CAPTURE",
+            "registration": "VISUAL_CENTER"
+          },
+          "registration": "VISUAL_CENTER"
+        }
+      }
+    },
+    "SK_전사_009": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "warrior/e6e3c43066b8ad00.png",
+          "width": 94,
+          "height": 105,
+          "columns": 4,
+          "durationsMs": [
+            70,
+            110,
+            100,
+            80
+          ],
+          "frameIndices": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "sourceTiming": "PROJECT_STATIC_HOLD_FADE",
+          "pivotX": 47,
+          "pivotY": 71,
+          "scale": 1.0,
+          "anchor": "CASTER",
+          "blend": "SCREEN",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/ce72d300fc1a4f8cbdc60fdf8bf6947b30cde09615da97961b3fbf6dcaf93251.jpg",
+          "sourceSha256": "ce72d300fc1a4f8cbdc60fdf8bf6947b30cde09615da97961b3fbf6dcaf93251",
+          "atlasSha256": "10f4222d68c0e6d6631314a56e68aa228145f11a45f5bcafbe5a4c31ba626622",
+          "opaquePixelCounts": [
+            3627,
+            3627,
+            3627,
+            3627
+          ],
+          "review": {
+            "articleId": 191241,
+            "imageIndex": 18,
+            "region": [
+              1,
+              28,
+              93,
+              104
+            ],
+            "blocked": [],
+            "pivot": [
+              47,
+              71
+            ],
+            "scale": 1.0,
+            "anchor": "CASTER",
+            "channel": "RECIPIENT_CONTACT",
+            "dragonColors": true,
+            "evidence": "EXACT_LABELLED_DRAGON_MODE_SECTION_STATIC_CAPTURE",
+            "registration": "VISUAL_CENTER"
+          },
+          "registration": "VISUAL_CENTER"
+        }
+      }
+    },
     "SK_전사_010": {
       "channels": {
         "RECIPIENT_CONTACT": {

@@ -146,6 +146,16 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  SKILL_FX_SOURCE_RECHECK_078:
+    title: "Recheck all supplied originals and connect omitted labelled source routes"
+    system: combat_presentation
+    priority: P1
+    queue_state: VERIFICATION_PENDING
+    claim: Director/Integration
+    source_branch: codex/original-skill-contract-v65
+    required_sources: [docs/SKILL_FX_AUDIT_CONTRACT.md, docs/verification/SKILL_FX_V77_AUDIT.json, master/source/skill_fx/naver_cafe_archive_20261001/warrior_bindings.json, master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json, master/source/skill_fx/naver_magic_recovered_20261001/definitions.json, master/source/skill_fx/naver_magic_recovered_20261001/media.json, master/source/skill_fx/user_20260930/provenance.json, docs/verification/PROVIDED_SOURCE_RECHECK_V78_ATTACHMENTS.json, app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java, app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java]
+    acceptance: ["All 40 previous fallback IDs have explicit evidence outcomes", "Four omitted original channels reachable through production input", "Same-name reuse remains explicitly adapted registration", "34 missing originals and 2 unlabelled GIFs remain honest gaps", "Exact SHA native render and APK checks"]
+    remaining: "Mage22 original particle sources; total34 particle gaps; phone and original visual acceptance"
   CLASSIC_MARTIAL_CLERIC_068:
     title: "Import labelled classic martial and cleric references into source and presentation"
     system: combat_presentation

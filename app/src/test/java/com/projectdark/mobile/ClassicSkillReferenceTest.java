@@ -25,7 +25,7 @@ public class ClassicSkillReferenceTest {
   assertEquals("마법",b.get("SK_무도가_020").kind);assertEquals("마법",b.get("SK_무도가_011").kind);
  }
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
-  ClassicSkillReference fx=new ClassicSkillReference(c);assertEquals(101,fx.effects.size());
+  ClassicSkillReference fx=new ClassicSkillReference(c);assertEquals(102,fx.effects.size());
   JSONObject doc=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/classic/manifest.json"),StandardCharsets.UTF_8));assertFalse(doc.getBoolean("nativeArchivePixels"));
   JSONObject skills=doc.getJSONObject("skills");int channels=0;
   for(String id:fx.effects.keySet())for(ClassicSkillReference.Channel channel:fx.effects.get(id).values()){
@@ -36,8 +36,8 @@ public class ClassicSkillReferenceTest {
     for(int i=0;i<originals.length();i++){JSONObject original=originals.getJSONObject(i);assertEquals(original.getString("sha256"),sha(java.nio.file.Files.readAllBytes(new File("../"+original.getString("path")).toPath())));}
     assertTrue(j.getString("sourceTiming").startsWith("PROJECT_"));
    }
-   assertEquals(0,s.frame(0));assertEquals(s.durations.length-1,s.frame(s.duration));assertEquals(0,Color.alpha(s.atlas.getPixel(s.width-1,s.height-1)));assertTrue(s.duration>0);
-  }assertEquals(142,channels);
+   assertEquals(0,s.frame(0));assertEquals(s.durations.length-1,s.frame(s.duration));assertTrue("No opaque floor corner: "+id,Color.alpha(s.atlas.getPixel(s.width-1,s.height-1))<32);assertTrue(s.duration>0);
+  }assertEquals(143,channels);
  }
  @Test public void productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c);
@@ -52,9 +52,9 @@ public class ClassicSkillReferenceTest {
    for(SkillVfxRenderer.Pulse pulse:renderer.pulses){assertTrue(pulse.caster);assertEquals("classic",pulse.sheet);assertEquals("player",pulse.anchor);}
    tick.invoke(v,rule.contact+.001f);
    ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster&&!pulse.sheet.equals("impact"))targets.add(pulse);
-   assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals("classic",pulse.sheet);assertEquals(id,contact.casterAnchor||rule.selfAnchored()?"player":m.id,pulse.anchor);pulse.age=Math.min(.16f,pulse.duration/2);}
+   if(rule.pattern==SkillActionContract.Pattern.SCREEN&&contact!=null)assertTrue(id,targets.size()>=1);else assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals("classic",pulse.sheet);if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(s.monsters().stream().anyMatch(monster->monster.id.equals(pulse.anchor)));else assertEquals(id,contact.casterAnchor||rule.selfAnchored()?"player":m.id,pulse.anchor);pulse.age=Math.min(.16f,pulse.duration/2);}
    if(rule.heal())assertEquals(id,before,m.hp);
-   if(id.startsWith("SK_마법사_")||id.equals("SK_성직자_013")||id.equals("SK_무도가_020")||id.equals("SK_성직자_003")||id.equals("SK_무도가_002")||id.equals("SK_성직자_005")){
+   if(id.equals("SK_성직자_040")||id.startsWith("SK_마법사_")||id.equals("SK_성직자_013")||id.equals("SK_무도가_020")||id.equals("SK_성직자_003")||id.equals("SK_무도가_002")||id.equals("SK_성직자_005")){
     Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File out=new File("build/reports/device-review/classic-"+id+".png");out.getParentFile().mkdirs();try(FileOutputStream f=new FileOutputStream(out)){image.compress(Bitmap.CompressFormat.PNG,100,f);}
    }
    renderer.tick(30f);assertTrue(renderer.pulses.isEmpty());

@@ -7916,6 +7916,76 @@
           }
         }
       }
+    },
+    "SK_성직자_040": {
+      "name": "홀리드래곤",
+      "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "mapping": "LABELLED_LARGE_SCENE_SINGLE_RECIPIENT_SOURCE",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "classic/holy_dragon_recipient.png",
+          "width": 98,
+          "height": 102,
+          "columns": 4,
+          "durationsMs": [
+            1000,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "pivotX": 54,
+          "pivotY": 65,
+          "scale": 1.0,
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "blend": "SCREEN",
+          "sourceGif": "master/source/skill_fx/naver_magic_recovered_20261001/cc65bc6160429dc7.gif",
+          "sourceSha256": "3890b7b482ccf4369500368fee2f4c7096d9b15ace0c8d2b1b48f586d374b95f",
+          "atlasSha256": "4166978ab97c05b71d09ac89c8e8b112b180e4e1b19eeab6e8196960d771ea98",
+          "opaquePixelCounts": [
+            0,
+            1679,
+            2932,
+            3881,
+            4275,
+            4842,
+            3249,
+            1569
+          ],
+          "review": {
+            "region": [
+              215,
+              22,
+              313,
+              124
+            ],
+            "baselineFrame": 0,
+            "recipientCenter": [
+              269,
+              87
+            ],
+            "reason": "LABELLED_HOLY_DRAGON_TABLE_AND_GIF; SINGLE_RECIPIENT_FROM_EIGHT_DUMMY_SCENE",
+            "limitations": [
+              "Actor-occluded pixels remain absent.",
+              "One recipient crop is repeated by the existing screen-target resolver; original multi-target staggering is not proven."
+            ]
+          }
+        }
+      }
     }
   }
 }

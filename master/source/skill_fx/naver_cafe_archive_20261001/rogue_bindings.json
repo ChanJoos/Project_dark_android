@@ -41,6 +41,34 @@
           43
         ],
         "labelName": "표창날리기"
+      },
+      "effect": {
+        "articleId": 245450,
+        "imageIndex": 5,
+        "region": [
+          110,
+          116,
+          230,
+          190
+        ],
+        "blocked": [
+          [
+            136,
+            112,
+            207,
+            136
+          ]
+        ],
+        "pivot": [
+          179,
+          158
+        ],
+        "anchor": "RECIPIENT",
+        "channel": "RECIPIENT_CONTACT",
+        "baseline": "SOURCE_DIRECT_COLD",
+        "directColdSource": true,
+        "reason": "LABELLED_SHURIKEN_THROW_TARGET_CONTACT; NOT_A_PROJECTILE_MOTION_CAPTURE",
+        "registration": "VISUAL_CENTER"
       }
     },
     {
@@ -55,6 +83,11 @@
           43
         ],
         "labelName": "밀기"
+      },
+      "noEffect": {
+        "articleId": 245450,
+        "imageIndex": 7,
+        "reason": "REVIEWED_LABELLED_FOUR_FRAME_PUSH_DEMONSTRATION: BODY/DISPLACEMENT_VISIBLE; NO_SEPARATELY_RECOVERABLE_PARTICLE. NOT_PROOF_OF_ZERO_ORIGINAL_VFX."
       }
     },
     {

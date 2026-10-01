@@ -18,7 +18,7 @@ public class AllJobSkillSourceTest {
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
  @Test public void warriorAndSharedAssetsRetainExactIdsBytesAndHonestTiming()throws Exception{
   SkillBook book=SkillBook.load(c);assertEquals("마법",book.get("SK_전사_018").kind);assertEquals("CAST",new SkillPresentationCatalog(c).get("SK_전사_018").motion);
-  ClassicSkillReference warrior=new ClassicSkillReference(c,"warrior");assertEquals(23,warrior.references.size());assertEquals(13,warrior.effects.size());
+  ClassicSkillReference warrior=new ClassicSkillReference(c,"warrior");assertEquals(23,warrior.references.size());assertEquals(15,warrior.effects.size());
   SkillIconCatalog icons=new SkillIconCatalog(c);for(JSONObject row:warrior.references.values()){
    assertTrue(row.getString("id"),icons.has(row.getString("id")));assertEquals(row.getString("sourceSha256"),sha(java.nio.file.Files.readAllBytes(new File("../"+row.getString("sourcePath")).toPath())));
    Bitmap original=BitmapFactory.decodeFile("../"+row.getString("sourcePath"));Bitmap imported=BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/warrior/"+row.getString("iconAssetPath")));assertEquals(original.getWidth(),imported.getWidth());assertEquals(original.getHeight(),imported.getHeight());
@@ -29,6 +29,13 @@ public class AllJobSkillSourceTest {
    ClassicSkillReference reference=new ClassicSkillReference(c,directory);
    for(Map<String,ClassicSkillReference.Channel> map:reference.effects.values())for(ClassicSkillReference.Channel channel:map.values())assertTrue(channel.sequence.duration>0);
   }
+ }
+ @Test public void repeatedViewsShareImmutableSourceAtlasDecodes(){
+  ClassicSkillReference first=new ClassicSkillReference(c),second=new ClassicSkillReference(c);
+  for(String id:first.effects.keySet())for(String key:first.effects.get(id).keySet())
+   assertSame(id,first.effects.get(id).get(key).sequence.atlas,second.effects.get(id).get(key).sequence.atlas);
+  ClassicSkillReference shared=new ClassicSkillReference(c,"shared");
+  assertSame(first.channel("SK_마법사_011",false).sequence.atlas,shared.channel("SK_성직자_012",false).sequence.atlas);
  }
  @Test public void everyCatalogPoseRendersForBothBodiesAndEveryDirection()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);
@@ -59,12 +66,18 @@ public class AllJobSkillSourceTest {
   }
  }
  @Test public void allJobsUseProductionInputAndRenderSkillAndActualRecipientTogether()throws Exception{
-  String[] ids={"SK_전사_001","SK_전사_014","SK_전사_018","SK_전사_023","SK_도적_007","SK_마법사_001","SK_마법사_005","SK_마법사_056","SK_무도가_007","SK_무도가_020","SK_성직자_013","SK_성직자_005","SK_공통_001"};
+  String[] ids={"SK_전사_009","SK_전사_011","SK_도적_003","SK_성직자_040","SK_성직자_012","SK_전사_001","SK_전사_014","SK_전사_018","SK_전사_023","SK_도적_007","SK_마법사_001","SK_마법사_005","SK_마법사_056","SK_무도가_007","SK_무도가_020","SK_성직자_013","SK_성직자_005","SK_공통_001"};
   for(String id:ids){
    F5mSaveStore.install(c);GameView view=new GameView(c);view.layout(0,0,960,540);view.setSkillTestMode(true);RuntimeState state=field(view,"state");SkillActionContract.Rule rule=SkillActionContract.get(id);RuntimeState.Monster monster=state.monsters().get(0);state.player().x=monster.x-32*Math.max(1,rule.minReach);state.player().y=monster.y-16*Math.max(1,rule.minReach);state.player().hp=5;state.player().mp=0;
    ((CombatController)field(view,"combat")).selectTarget(monster);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(view,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(view,((SkillBook)field(view,"skillBook")).get(id));Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(view,rule.contact+.001f);
-   SkillVfxRenderer fx=field(view,"skillVfx");if(rule.heal())assertFalse(id,fx.pulses.stream().anyMatch(p->p.sheet.equals("impact")));for(SkillVfxRenderer.Pulse pulse:fx.pulses)pulse.age=Math.min(.10f,pulse.duration/2);
+   SkillVfxRenderer fx=field(view,"skillVfx");
+   if(Arrays.asList("SK_전사_009","SK_전사_011","SK_도적_003","SK_성직자_040","SK_성직자_012").contains(id)){
+    String wanted=id.startsWith("SK_전사_")?"warrior":id.startsWith("SK_도적_")?"rogue":id.equals("SK_성직자_040")?"classic":"shared";
+    assertTrue(id+" must use connected source through production input",fx.pulses.stream().anyMatch(p->p.sheet.equals(wanted)&&!p.caster));
+    for(SkillVfxRenderer.Pulse pulse:fx.pulses)if(pulse.sheet.equals(wanted)){if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(state.monsters().stream().anyMatch(m->m.id.equals(pulse.anchor)));else assertEquals(id,id.equals("SK_전사_009")?"player":monster.id,pulse.anchor);}
+   }
+   if(rule.heal())assertFalse(id,fx.pulses.stream().anyMatch(p->p.sheet.equals("impact")));for(SkillVfxRenderer.Pulse pulse:fx.pulses)pulse.age=Math.min(.10f,pulse.duration/2);
    Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(image));save(image,"alljob-live-"+id+".png");fx.tick(30);assertTrue(fx.pulses.isEmpty());
   }
  }

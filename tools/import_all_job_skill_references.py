@@ -26,6 +26,7 @@ def channel(sid,ref):
   elif ref.get('orangeOnly'):mask&=(r>150)&(r>g*1.15)&(g>40)&(g>b*1.1)
   elif ref.get('purpleOnly'):mask&=(b>g*1.15)&(r>g*1.1)&(b>70)
   elif ref.get('redOnly'):mask&=(r>150)&(r>g*1.35)&(r>b*1.2)
+  elif ref.get('dragonColors'):mask&=((r>g*1.2)&(r>75))|((b>g*1.2)&(b>65))
   else:mask&=(np.min(rgb,axis=2)>175)&(np.max(rgb,axis=2)-np.min(rgb,axis=2)<60)
  if ref.get('blueOnly'):mask&=(b>r*1.25)&(b>g*1.05)
  alpha=np.max(emission,axis=2);alpha[~mask]=0;fg=np.clip(emission/np.maximum(alpha[:,:,None],.001)*255,0,255)
@@ -36,7 +37,9 @@ def channel(sid,ref):
  for i,fade in enumerate([.35,1,.75,.25]):
   tile=np.dstack((fg,np.round(alpha*255*fade))).astype(np.uint8);tile[~mask]=0;atlas.paste(Image.fromarray(tile),(i*w,0));counts.append(int(np.count_nonzero(tile[:,:,3])))
  slug=hashlib.sha256(sid.encode()).hexdigest()[:16];path=slug+'.png';atlas.save(OUT/path)
- return dict(path='warrior/'+path,width=w,height=h,columns=4,durationsMs=[70,110,100,80],frameIndices=[0,0,0,0],sourceTiming='PROJECT_STATIC_HOLD_FADE',pivotX=ref['pivot'][0],pivotY=ref['pivot'][1],scale=ref['scale'],anchor=ref['anchor'],blend='NORMAL' if ref.get('preserveSourceRgb') else 'SCREEN',sourceGif=m['path'],sourceSha256=m['sha256'],atlasSha256=hashlib.sha256((OUT/path).read_bytes()).hexdigest(),opaquePixelCounts=counts,review=ref)
+ result=dict(path='warrior/'+path,width=w,height=h,columns=4,durationsMs=[70,110,100,80],frameIndices=[0,0,0,0],sourceTiming='PROJECT_STATIC_HOLD_FADE',pivotX=ref['pivot'][0],pivotY=ref['pivot'][1],scale=ref['scale'],anchor=ref['anchor'],blend='NORMAL' if ref.get('preserveSourceRgb') else 'SCREEN',sourceGif=m['path'],sourceSha256=m['sha256'],atlasSha256=hashlib.sha256((OUT/path).read_bytes()).hexdigest(),opaquePixelCounts=counts,review=ref)
+ if ref.get('registration'):result['registration']=ref['registration']
+ return result
 for row in bindings['rows']:
  sid=row['id'];assert cat[sid]['name']==row['name'];m=source(row['icon']);im=Image.open(ROOT/m['path']);path='icons/'+hashlib.sha256(sid.encode()).hexdigest()[:16]+'.png';im.save(OUT/path)
  references.append(dict(id=sid,name=row['name'],iconAssetPath=path,sourcePath=m['path'],sourceSha256=m['sha256'],sourceOrdinal=row['icon']))
@@ -62,5 +65,11 @@ for sid,e in cat.items():
  srefs.append(dict(id=sid,name=e['name'],donorId=donorId,iconAssetPath=path,mapping='EXACT_NAME_PROJECT_SOURCE_FORM_REUSE',sourceIcon=donor['icon']))
  if donorId in classic['skills']:
   shared['skills'][sid]=dict(channels=classic['skills'][donorId]['channels'],name=e['name'],donorId=donorId,mapping='EXACT_NAME_PROJECT_SOURCE_FORM_REUSE')
+# Explicit same-name project reuse; this is not Cleric-specific original footage.
+donor=next(sid for sid,e in cat.items() if e['job']=='마법사' and e['name']=='바르도')
+recipient=next(sid for sid,e in cat.items() if e['job']=='성직자' and e['name']=='바르도')
+assert donor in classic['skills'] and classic['skills'][donor]['name']=='바르도'
+shared['skills'][recipient]=dict(channels=classic['skills'][donor]['channels'],name='바르도',donorId=donor,
+    mapping='EXACT_NAME_PROJECT_SOURCE_FORM_REUSE',limitation='Labelled Mage Bardo source reused by name; Cleric-specific original footage is not verified.')
 (SHARED/'manifest.json').write_text(json.dumps(shared,ensure_ascii=False,indent=2)+'\n');(SHARED/'references.json').write_text(json.dumps(dict(revision=shared['revision'],rows=srefs),ensure_ascii=False,indent=2)+'\n')
 print('Warrior:',len(references),'icons,',len(manifest['skills']),'source shapes; shared:',len(srefs),'icons,',len(shared['skills']),'source forms')

@@ -196,6 +196,34 @@
       "icon": {
         "articleId": 191241,
         "imageIndex": 14
+      },
+      "effect": {
+        "articleId": 191241,
+        "imageIndex": 15,
+        "region": [
+          6,
+          40,
+          64,
+          109
+        ],
+        "blocked": [
+          [
+            22,
+            40,
+            43,
+            83
+          ]
+        ],
+        "pivot": [
+          33,
+          74
+        ],
+        "scale": 1.0,
+        "anchor": "RECIPIENT",
+        "channel": "RECIPIENT_CONTACT",
+        "whiteOnly": true,
+        "evidence": "EXACT_LABELLED_DISARM_SECTION_STATIC_CAPTURE",
+        "registration": "VISUAL_CENTER"
       }
     },
     {
@@ -204,6 +232,27 @@
       "icon": {
         "articleId": 191241,
         "imageIndex": 17
+      },
+      "effect": {
+        "articleId": 191241,
+        "imageIndex": 18,
+        "region": [
+          1,
+          28,
+          93,
+          104
+        ],
+        "blocked": [],
+        "pivot": [
+          47,
+          71
+        ],
+        "scale": 1.0,
+        "anchor": "CASTER",
+        "channel": "RECIPIENT_CONTACT",
+        "dragonColors": true,
+        "evidence": "EXACT_LABELLED_DRAGON_MODE_SECTION_STATIC_CAPTURE",
+        "registration": "VISUAL_CENTER"
       }
     },
     {

@@ -11,7 +11,7 @@ final class CapturedSkillFx {
   static final class Sequence {
     final boolean directional,normalBlend,visualCenter,filterBitmap;final float directionPivotLift,sourceForwardDistance;final Bitmap atlas;final int width,height,columns;final int[] durations;final float duration,pivotX,pivotY,scale;
     Sequence(Context c,JSONObject j)throws Exception{
-      atlas=BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+j.getString("path")));
+      atlas=PresentationAssetBytes.bitmap(c,"skill-presentation/"+j.getString("path"),j.getString("atlasSha256"));
       if(atlas==null)throw new IllegalStateException("missing capture atlas");width=j.getInt("width");height=j.getInt("height");columns=j.getInt("columns");
       JSONArray times=j.getJSONArray("durationsMs");durations=new int[times.length()];int total=0;
       for(int i=0;i<durations.length;i++){durations[i]=times.getInt(i);if(durations[i]<=0)throw new IllegalStateException("capture timing");total+=durations[i];}

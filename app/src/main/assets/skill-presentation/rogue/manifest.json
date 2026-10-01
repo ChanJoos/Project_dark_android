@@ -7,6 +7,81 @@
     "BODY registration and event timing are project choices; no original mechanic is inferred."
   ],
   "skills": {
+    "SK_도적_003": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/28439989d9d3276c.png",
+          "width": 250,
+          "height": 200,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 179,
+          "pivotY": 158,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830.gif",
+          "sourceSha256": "4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830",
+          "atlasSha256": "54ef74bb4d7832909fca36abee31c51a4f3c02ae18e33a74f4191a4b8db63088",
+          "opaquePixelCounts": [
+            409,
+            330,
+            323,
+            460
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 5,
+            "region": [
+              110,
+              116,
+              230,
+              190
+            ],
+            "blocked": [
+              [
+                136,
+                112,
+                207,
+                136
+              ]
+            ],
+            "pivot": [
+              179,
+              158
+            ],
+            "anchor": "RECIPIENT",
+            "channel": "RECIPIENT_CONTACT",
+            "baseline": "SOURCE_DIRECT_COLD",
+            "directColdSource": true,
+            "reason": "LABELLED_SHURIKEN_THROW_TARGET_CONTACT; NOT_A_PROJECTILE_MOTION_CAPTURE",
+            "registration": "VISUAL_CENTER"
+          },
+          "registration": "VISUAL_CENTER"
+        }
+      }
+    },
+    "SK_도적_004": {
+      "channels": {},
+      "review": {
+        "articleId": 245450,
+        "imageIndex": 7,
+        "reason": "REVIEWED_LABELLED_FOUR_FRAME_PUSH_DEMONSTRATION: BODY/DISPLACEMENT_VISIBLE; NO_SEPARATELY_RECOVERABLE_PARTICLE. NOT_PROOF_OF_ZERO_ORIGINAL_VFX."
+      },
+      "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/5a2ccba1af68a02e791ad513f6d3f045a7151d4b6b48e6374424e47aa2fc15e6.gif",
+      "sourceSha256": "5a2ccba1af68a02e791ad513f6d3f045a7151d4b6b48e6374424e47aa2fc15e6"
+    },
     "SK_도적_005": {
       "channels": {
         "RECIPIENT_CONTACT": {

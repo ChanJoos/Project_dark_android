@@ -115,7 +115,9 @@ jobs:
       - name: Audit every skill FX source and runtime precedence
         run: |
           python3 tools/audit_runtime_skill_fx.py
-          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V77_AUDIT.json
+          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V78_AUDIT.json
+          python3 tools/audit_provided_skill_sources.py
+          git diff --exit-code -- docs/REMAINING_ORIGINAL_SKILL_FX.csv docs/verification/PROVIDED_SOURCE_RECHECK_V78.json
       - name: Verify item window source crops and input
         run: |
           python3 tools/extract_item_window_reference.py

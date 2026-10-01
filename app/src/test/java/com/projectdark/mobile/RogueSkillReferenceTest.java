@@ -45,14 +45,14 @@ public class RogueSkillReferenceTest {
   }
  }
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
-  ClassicSkillReference fx=new ClassicSkillReference(c,"rogue");assertEquals(18,fx.effects.size());
+  ClassicSkillReference fx=new ClassicSkillReference(c,"rogue");assertEquals(20,fx.effects.size());
   JSONObject doc=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/rogue/manifest.json"),StandardCharsets.UTF_8));assertFalse(doc.getBoolean("nativeArchivePixels"));
   JSONObject skills=doc.getJSONObject("skills");int channels=0;
   for(String id:fx.effects.keySet())for(ClassicSkillReference.Channel channel:fx.effects.get(id).values()){
    channels++;JSONObject j=skills.getJSONObject(id).getJSONObject("channels").getJSONObject(channel.key);CapturedSkillFx.Sequence s=channel.sequence;assertTrue(j.getString("path"),j.getString("path").matches("[A-Za-z0-9_./-]+"));
    assertEquals(j.getString("sourceSha256"),sha(java.nio.file.Files.readAllBytes(new File("../"+j.getString("sourceGif")).toPath())));assertEquals(j.getString("atlasSha256"),sha(PresentationAssetBytes.read(c,"skill-presentation/"+j.getString("path"))));
    assertEquals(0,s.frame(0));assertEquals(s.durations.length-1,s.frame(s.duration));assertEquals(0,Color.alpha(s.atlas.getPixel(s.width-1,s.height-1)));assertTrue(s.duration>0);
-  }assertEquals(12,channels);
+  }assertEquals(13,channels);
  }
  @Test public void productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c,"rogue");

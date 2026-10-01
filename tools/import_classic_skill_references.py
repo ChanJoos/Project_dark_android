@@ -78,6 +78,8 @@ for row in rows:
  if channels:manifest['skills'][sid]={'channels':channels,'name':row['name'],'article':row['article']}
 from import_mage_skill_references import project as project_mage
 project_mage(ROOT,CLASSIC,manifest)
+from import_remaining_skill_references import project as project_remaining
+project_remaining(ROOT,CLASSIC,manifest)
 (OUT/'classic/manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 print('reference rows',len(rows),'runtime captured IDs',len(manifest['skills']),'channels',sum(len(v['channels']) for v in manifest['skills'].values()))
 

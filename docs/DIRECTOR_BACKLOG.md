@@ -425,3 +425,17 @@ User accepts the V76 Defense shape and asks for improved quality, Mage connectio
 Mage: 30 exact-name routes now use retained 2014/2015 source capture pixels, with source-frame and matting-plate hashes, actor/UI masking, visual-center registration and explicit project hold/fade or capture-order timing. Original animation cadence is not known from still captures. Classic runtime IDs101/channels142; source table rows85; all221 IDs audited. Mage57 =30 capture routes +1 shared route +4 no-particle +22 unresolved original effects. No similar-spell rebinding or icon-as-effect substitution. Existing Cleric16 recovered GIF routes and recipient-center/directional corrections are retained. Source CSV/Master rules, BODY, movement and gameplay balance are unchanged.
 
 VERIFIED LOCALLY:228 retained media-reference hashes, all source-frame/plate/atlas hashes, CSV integrity and deterministic projection regeneration. Native Android tests and build are delegated to the exact GitHub Actions SHA; not yet certified. Continue PR176 without merging or force pushing. Evidence: verification/SKILL_FX_V77_AUDIT.json, MAGIC_SOURCE_V77_AUDIT.json and defense_v77_quality.mp4. Remaining22 Mage originals, occlusion, cadence and physical-device checks stay open.
+
+## V78 supplied-source closure
+
+| Task | Owner | Result | Evidence/state | Next |
+|---|---|---|---|---|
+| SKILL-FX-SOURCE-RECHECK-78 | Director/Visual | 40 fallback IDs reviewed; 4 new original particle routes, 1 same-name project reuse and 1 linked no-separable-particle demonstration; 34 source gaps remain | V78 full route and attachment audits; implementation/local source integrity verified; exact-SHA CI pending | Review native frames, provide exact candidate APK; preserve Mage22/2 unlabelled GIF/7 out-of-catalog limitations |
+
+### V78 publication gate — 2026-10-01
+
+Local implementation commit `a97fc44108acb6ad053a5b873c5a907a31b37fce` exists. `git push` rejected by automatic approval review: explicit permission to publish source-derived assets/project changes to the public destination was deemed insufficient. No retry, alternate API, branch update or CI trigger attempted. New four particle atlases derive solely from labelled source bytes already present in public base `d57e480c`; no new private-video raw bytes were included, but this does not override the rejection. Proof in `verification/V78_PUBLICATION_GATE.json`. Local source/hash/regeneration checks passed; Android SDK/Gradle unavailable locally, so BUILD/NATIVE/APK remain PENDING. Next requires explicit user approval for publication to `ChanJoos/Project_dark_android`.
+
+### V78 publication approval — 2026-10-01
+
+User explicitly approved the scoped public-repository code and derived-effect update with “응 반영해”. Earlier automatic rejection is historical; publication is authorized. Proceed with non-force PR176 branch push and exact-SHA CI/native artifact verification. Physical-device acceptance remains pending.

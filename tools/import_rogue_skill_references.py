@@ -41,12 +41,18 @@ for binding in bindings['rows']:
   if ref.get('whiteOnly'):mask&=(np.min(frame,axis=2)>150)&(np.max(frame,axis=2)-np.min(frame,axis=2)<60)
   if ref.get('rejectWarmActorPixels'):mask&=~((frame[:,:,0]>frame[:,:,1]*1.4)&(frame[:,:,2]<frame[:,:,1]))
   if ref.get('yellowOnly'):mask&=(frame[:,:,0]>frame[:,:,2]*1.2)
+  if ref.get('directColdSource'):
+   # The labelled throw GIF starts with contact already visible. Temporal minimum
+   # would erase its sustained blue emission; exclude the warm dog and HP text.
+   mask=valid&(frame[:,:,2]>frame[:,:,0]+20)&(frame[:,:,1]>frame[:,:,0]+10)&(frame[:,:,2]>140)
+   emission=frame/255;alpha=np.max(emission,axis=2)
   alpha[~mask]=0;fg=np.clip(emission/np.maximum(alpha[:,:,None],.001)*255,0,255);tile=np.dstack((fg,np.round(alpha*255))).astype(np.uint8);tile[~mask]=0;tiles.append(tile);counts.append(int(np.count_nonzero(tile[:,:,3])))
  assert max(counts)>=3,(sid,'No recoverable source pixels')
  atlas=Image.new('RGBA',(w*4,h*math.ceil(len(tiles)/4)))
  for i,t in enumerate(tiles):atlas.paste(Image.fromarray(t),((i%4)*w,(i//4)*h))
  path=slug+'.png';atlas.save(OUT/path)
  channel=dict(path='rogue/'+path,width=w,height=h,columns=4,durationsMs=times,frameIndices=list(range(len(times))),pivotX=ref['pivot'][0],pivotY=ref['pivot'][1],scale=1.0,blend='SCREEN',anchor=ref['anchor'],sourceGif=m['path'],sourceSha256=m['sha256'],atlasSha256=hashlib.sha256((OUT/path).read_bytes()).hexdigest(),opaquePixelCounts=counts,review=ref)
+ if ref.get('registration'):channel['registration']=ref['registration']
  manifest['skills'][sid]={'channels':{ref['channel']:channel}}
 (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 (OUT/'references.json').write_text(json.dumps({'revision':bindings['revision'],'rows':references},ensure_ascii=False,indent=2)+'\n')
