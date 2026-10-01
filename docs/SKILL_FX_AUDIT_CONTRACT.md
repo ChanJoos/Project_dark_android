@@ -1,3 +1,7 @@
+## V80 current presentation boundary
+
+User report supersedes prior Defense scale/center selection: retain all66 captured frames and source provenance scale.27, but render at explicit project scale.31 with foot offset-35 to keep the full body inside the sphere. Native body-pixel ellipse bounds and enlarged scene review are required. Martial contact phase reaches full extension at1/3; per-ID motions and remaining source limitations are recorded in MARTIAL_MOTION_V80_AUDIT.json. Fifth-circle IDs034–037 use the user-confirmed star motif as explicit project reconstruction on actual hit recipients; no recovered-original-pixels claim. Original BODY/source bytes, movement, basic BODY-only swing and combat balance unchanged. Exact build proof: verification/SKILL_FX_V80_BUILD.json. Phone and user visual acceptance pending.
+
 # V75 full skill FX source/runtime audit
 
 ## 2026-10-01 — V78 provided-source recheck (implementation; build pending)
