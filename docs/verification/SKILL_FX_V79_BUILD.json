@@ -1,0 +1,42 @@
+{
+  "sourceSha": "9aa7dbeedeebd9f93c92ed88fb2dc9bf22322edf",
+  "treeSha": "b687575e3f4b9e642dec11bbf343e72f16994fb7",
+  "ciCheckoutSha": "637899226031486b01a111b0a21f36efe8a15499",
+  "ciRun": 36887739073,
+  "ciJob": 110455250429,
+  "ciConclusion": "success",
+  "apkArtifactId": 11175715710,
+  "nativeArtifactId": 11175845458,
+  "nativePngCount": 295,
+  "nativeContactRegressionImages": 52,
+  "buildTimeAsiaSeoul": "2026-10-02 00:58:42 KST",
+  "branch": "codex/original-skill-contract-v65",
+  "pullRequest": 176,
+  "merged": false,
+  "mainSha": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "testedScope": [
+    "221 source/render routes",
+    "production input before/contact/40/80/160/320/600/1100ms",
+    "lethal Holy Dragon immediate source onset",
+    "both Crasher energy midpoints in four directions",
+    "four complete curse crowns",
+    "body-only basic attack damage/forest hit tint",
+    "all configured workflow gates"
+  ],
+  "apkSha256": "8b2a32837e4b56bf61a5925920f3d0f74ee7bb11b003de16f9b325f491baad31",
+  "apkBytes": 28680090,
+  "artifactZipSha256": "0f9303461d8e21e255d12e4bc64f79eee8ee3fc4150ce8843eba85748adf5e3f",
+  "packagedLocalAssetMatches": 661,
+  "artifactEntryTimestamp": [
+    2026,
+    10,
+    1,
+    15,
+    58,
+    42
+  ],
+  "versionCode": 79,
+  "versionName": "0.79-contact-fx-corrections",
+  "physicalDevice": "PENDING",
+  "userVisualAcceptance": "PENDING"
+}

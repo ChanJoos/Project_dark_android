@@ -1,5 +1,13 @@
 # PROJECT DARK 결정 및 제안 기록
 
+## 2026-10-02 — V79 verified contact-FX candidate
+
+IMPLEMENTED / BUILD_VERIFIED / NATIVE_INPUT_VERIFIED. Source `9aa7dbeedeebd9f93c92ed88fb2dc9bf22322edf`, tree `b687575e3f4b9e642dec11bbf343e72f16994fb7`; actual CI checkout `637899226031486b01a111b0a21f36efe8a15499` has identical tree. Actions 36887739073 / job 110455250429 SUCCESS, build 2026-10-02 00:58:42 KST; APK artifact 11175715710, SHA256 `8b2a32837e4b56bf61a5925920f3d0f74ee7bb11b003de16f9b325f491baad31`, 28680090 bytes. Native artifact 11175845458 contains 295 PNGs. The 52 contact/crown/midpoint regression images match the reviewed same-runtime run byte-for-byte. All 661 locally available packaged asset files match tracked source bytes (ZIP Unicode filenames normalized for comparison).
+
+Dara recipient contact, Holy Dragon immediate visible onset including lethal contact, four shared full-skull hue variants, both Crasher midpoint projections, BODY-only basic attack pass the production-input/native regressions. Full configured world/combat/growth/restart gates pass. Two initial contact-test assumptions used catalog basic timing and arbitrary captured phase; corrected to equipped action contact and actual alpha-energy peak. Forest test formerly required a basic impact; updated to user-approved no-particle rule while retaining real damage/hit-tint checks. Runtime and assets did not change after those test corrections.
+
+V78 DEVICE_FAILED (user-reported) remains historical evidence; exact installed SHA unconfirmed. V79 physical-device and user VISUAL_ACCEPTED remain PENDING. PR176 unmerged, main unchanged `bfd668d4e178fa82625d634b5a54be0e27ce30a3`; this APK is a task-branch candidate. Delivery ZIP contains PROJECT_DARK_v79.apk and BUILD_INFO.txt. Next: install this exact APK and confirm the five reported scenes on phone; original particle evidence gaps33 remain open. Full proof: verification/SKILL_FX_V79_BUILD.json.
+
 ## 2026-10-02 — V79 contact FX correction (implementation; verification pending)
 
 V78 DEVICE_FAILED (user-reported): Dara recipient location, Holy Dragon delayed onset after lethal damage, cropped curse skulls, Crasher midpoint placement, unwanted basic-attack particles. Installed APK SHA remains unconfirmed. Diagnosis reproduced in source metadata/render path: Dara was caster-anchored; Holy Dragon included a 1000ms blank recording lead-in; curse crop/masks discarded the crown; Crasher used recipient registration; generic impact included basic attacks. Prior peak-only review did not validate effect onset.
