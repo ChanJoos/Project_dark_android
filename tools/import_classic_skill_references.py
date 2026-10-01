@@ -45,16 +45,22 @@ for row in rows:
   alpha=np.max(emission,axis=2);changed=np.max(np.abs(diff),axis=2)>23
   saturation=np.max(c,axis=2)-np.min(c,axis=2);bright=np.min(c,axis=2)>150
   mask=changed&((saturation>35)|bright)&~blocked
+  if row['name'] in ['단각','붕각']:
+   # Cyan/white contact particles may overlap actors. Keep source-colour deltas,
+   # not the moving actor's black/red/pink pixels. Only the top UI stays excluded.
+   cr,cg,cb=c[:,:,0],c[:,:,1],c[:,:,2]
+   mask=changed&(((cg-cr>15)&(cb-cr>15))|((np.min(c,axis=2)>205)&(np.min(diff,axis=2)>35)))
+   mask[:45,:]=False
   alpha[~mask]=0;fg=np.clip(emission/np.maximum(alpha[:,:,None],.001)*255,0,255)
   tile=np.dstack((fg,np.round(alpha*255))).astype(np.uint8);tile[~mask]=0;emitted.append(tile)
  # Two independent channels: captured caster sparks and recipient effect.
  channels={}
  for channel,anchor in [('CASTER_START',caster),('RECIPIENT_CONTACT',recipient)]:
-  if selfEffect and channel=='CASTER_START':continue
+  if (selfEffect or row['name'] in ['단각','붕각']) and channel=='CASTER_START':continue
   selection=[];counts=[]
   for tile in emitted:
    t=tile.copy()
-   if not selfEffect:
+   if not selfEffect and row['name'] not in ['단각','붕각']:
     boundary=92 if not martial else 133
     if channel=='CASTER_START':t[:,boundary:]=0
     else:t[:,:boundary]=0

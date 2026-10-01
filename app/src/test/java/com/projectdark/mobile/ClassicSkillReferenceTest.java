@@ -32,7 +32,7 @@ public class ClassicSkillReferenceTest {
    channels++;JSONObject j=skills.getJSONObject(id).getJSONObject("channels").getJSONObject(channel.key);CapturedSkillFx.Sequence s=channel.sequence;assertTrue(j.getString("path"),j.getString("path").matches("[A-Za-z0-9_./-]+"));
    assertEquals(j.getString("sourceSha256"),sha(java.nio.file.Files.readAllBytes(new File("../"+j.getString("sourceGif")).toPath())));assertEquals(j.getString("atlasSha256"),sha(PresentationAssetBytes.read(c,"skill-presentation/"+j.getString("path"))));
    assertEquals(0,s.frame(0));assertEquals(s.durations.length-1,s.frame(s.duration));assertEquals(0,Color.alpha(s.atlas.getPixel(s.width-1,s.height-1)));assertTrue(s.duration>0);
-  }assertEquals(85,channels);
+  }assertEquals(83,channels);
  }
  @Test public void productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c);

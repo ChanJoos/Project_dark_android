@@ -10,8 +10,8 @@
   "skills": {
     "SK_무도가_002": {
       "channels": {
-        "CASTER_START": {
-          "path": "classic/b049d439de86916b_caster_start.png",
+        "RECIPIENT_CONTACT": {
+          "path": "classic/b049d439de86916b_recipient_contact.png",
           "width": 217,
           "height": 134,
           "columns": 4,
@@ -25,33 +25,6 @@
             2,
             3
           ],
-          "pivotX": 118,
-          "pivotY": 113,
-          "scale": 1.0,
-          "blend": "SCREEN",
-          "anchor": "CASTER",
-          "sourceGif": "master/source/skill_fx/naver_classic_2020/8ec5d74c18de3f14.gif",
-          "sourceSha256": "c8feef5ebaff80a710a281f86d4695ce4fd7a37288aa74e20f09a17b7bfe47ed",
-          "atlasSha256": "d8f6665ec4f2feed4bcc9942914a40c85e6be77f1816f2fa054a68317dd1dd46",
-          "opaquePixelCounts": [
-            15,
-            14,
-            8
-          ]
-        },
-        "RECIPIENT_CONTACT": {
-          "path": "classic/b049d439de86916b_recipient_contact.png",
-          "width": 217,
-          "height": 134,
-          "columns": 4,
-          "durationsMs": [
-            100,
-            100
-          ],
-          "frameIndices": [
-            1,
-            2
-          ],
           "pivotX": 145,
           "pivotY": 122,
           "scale": 1.0,
@@ -59,10 +32,11 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_classic_2020/8ec5d74c18de3f14.gif",
           "sourceSha256": "c8feef5ebaff80a710a281f86d4695ce4fd7a37288aa74e20f09a17b7bfe47ed",
-          "atlasSha256": "1f2144dca68611d615a4b9dab0e6e29b6206e728e480ecc190a154cb8059e2fc",
+          "atlasSha256": "a4102745fe94ad22d33049013d3a4ee76b309082b13e52f464f0c0c612c84088",
           "opaquePixelCounts": [
-            393,
-            186
+            1063,
+            454,
+            40
           ]
         }
       },
@@ -276,32 +250,6 @@
     },
     "SK_무도가_007": {
       "channels": {
-        "CASTER_START": {
-          "path": "classic/ec3cc7df3bd43a96_caster_start.png",
-          "width": 217,
-          "height": 134,
-          "columns": 4,
-          "durationsMs": [
-            100,
-            100
-          ],
-          "frameIndices": [
-            1,
-            2
-          ],
-          "pivotX": 118,
-          "pivotY": 113,
-          "scale": 1.0,
-          "blend": "SCREEN",
-          "anchor": "CASTER",
-          "sourceGif": "master/source/skill_fx/naver_classic_2020/1c0b975a9a213465.gif",
-          "sourceSha256": "c909b89bcff0c8d3219a066a2e8e95823fc7a1c245ef74af008c81dbcf6b2107",
-          "atlasSha256": "bd2e9408cff027113e9307b1b1b209a9e28fd3e0bc1b2c9cb8c420c0265782c0",
-          "opaquePixelCounts": [
-            10,
-            22
-          ]
-        },
         "RECIPIENT_CONTACT": {
           "path": "classic/ec3cc7df3bd43a96_recipient_contact.png",
           "width": 217,
@@ -309,11 +257,17 @@
           "columns": 4,
           "durationsMs": [
             100,
-            100
+            100,
+            200,
+            200,
+            500
           ],
           "frameIndices": [
             1,
-            2
+            2,
+            3,
+            4,
+            5
           ],
           "pivotX": 145,
           "pivotY": 122,
@@ -322,10 +276,13 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_classic_2020/1c0b975a9a213465.gif",
           "sourceSha256": "c909b89bcff0c8d3219a066a2e8e95823fc7a1c245ef74af008c81dbcf6b2107",
-          "atlasSha256": "a843a14c8044bc89ff9285d394d1bdfb8abe3b10dc36acaf06f8beac97796a7e",
+          "atlasSha256": "92d42f1fb0a1a4aca9299c1c2c5919ca21d4920194356474228181bf1d7d86ff",
           "opaquePixelCounts": [
-            386,
-            606
+            993,
+            1243,
+            9,
+            0,
+            9
           ]
         }
       },

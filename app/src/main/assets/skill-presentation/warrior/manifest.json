@@ -422,15 +422,15 @@
           "pivotY": 107,
           "scale": 1,
           "anchor": "CASTER",
-          "blend": "SCREEN",
+          "blend": "NORMAL",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/7d4df4380bd57a68d907c4932bf3c3f0fba289312a2632006a01a540c983e1e7.jpg",
           "sourceSha256": "7d4df4380bd57a68d907c4932bf3c3f0fba289312a2632006a01a540c983e1e7",
-          "atlasSha256": "1682d9a2b2e2c0ad7b0089c41a9bb816ff2a52b5cd16410ebe5d1ff85bfb582a",
+          "atlasSha256": "fa54d2091b931b39fa419aa52ab15c1baff5ef75558308dcfda0a9a06c9c588f",
           "opaquePixelCounts": [
-            1460,
-            1460,
-            1460,
-            1460
+            1741,
+            1741,
+            1741,
+            1741
           ],
           "review": {
             "channel": "RECIPIENT_CONTACT",
@@ -443,8 +443,20 @@
               70,
               107
             ],
-            "blueOnly": true,
-            "maskReason": "Remove the white actor silhouette inside the retained blue shell; no actor pixels are emitted."
+            "maskReason": "Mask only the two white actor-marker circles; retain the original pale/white ring rim RGB instead of blue-only emission.",
+            "preserveSourceRgb": true,
+            "blockedCircles": [
+              [
+                79,
+                65,
+                9
+              ],
+              [
+                84,
+                81,
+                5
+              ]
+            ]
           }
         }
       }

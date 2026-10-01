@@ -246,8 +246,20 @@
           70,
           107
         ],
-        "blueOnly": true,
-        "maskReason": "Remove the white actor silhouette inside the retained blue shell; no actor pixels are emitted."
+        "maskReason": "Mask only the two white actor-marker circles; retain the original pale/white ring rim RGB instead of blue-only emission.",
+        "preserveSourceRgb": true,
+        "blockedCircles": [
+          [
+            79,
+            65,
+            9
+          ],
+          [
+            84,
+            81,
+            5
+          ]
+        ]
       }
     },
     {

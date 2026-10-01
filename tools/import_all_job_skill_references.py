@@ -15,6 +15,8 @@ def channel(sid,ref):
  m=source(ref);im=Image.open(ROOT/m['path']).convert('RGB');rgb=np.array(im,dtype=np.float32);h,w=rgb.shape[:2];valid=np.zeros((h,w),dtype=bool)
  x0,y0,x1,y1=ref.get('region',[0,0,w,h]);valid[y0:y1,x0:x1]=True
  for a,b,c,d in ref.get('blocked',[]):valid[b:d,a:c]=False
+ for cx,cy,radius in ref.get('blockedCircles',[]):
+  yy,xx=np.ogrid[:h,:w];valid&=(xx-cx)**2+(yy-cy)**2>radius**2
  r,g,b=rgb[:,:,0],rgb[:,:,1],rgb[:,:,2]
  if ref.get('backdrop')=='FLAT_GRAY':
   edges=np.concatenate((rgb[:3].reshape(-1,3),rgb[-3:].reshape(-1,3)));bg=np.median(edges,axis=0);emission=np.maximum(rgb-bg,0)/np.maximum(255-bg,1);mask=valid&(np.max(np.abs(rgb-bg),axis=2)>20)
@@ -27,12 +29,14 @@ def channel(sid,ref):
   else:mask&=(np.min(rgb,axis=2)>175)&(np.max(rgb,axis=2)-np.min(rgb,axis=2)<60)
  if ref.get('blueOnly'):mask&=(b>r*1.25)&(b>g*1.05)
  alpha=np.max(emission,axis=2);alpha[~mask]=0;fg=np.clip(emission/np.maximum(alpha[:,:,None],.001)*255,0,255)
+ if ref.get('preserveSourceRgb'):
+  alpha=mask.astype(np.float32);fg=rgb.copy()
  assert np.count_nonzero(alpha)>3,(sid,'Empty mask')
  atlas=Image.new('RGBA',(w*4,h));counts=[]
  for i,fade in enumerate([.35,1,.75,.25]):
   tile=np.dstack((fg,np.round(alpha*255*fade))).astype(np.uint8);tile[~mask]=0;atlas.paste(Image.fromarray(tile),(i*w,0));counts.append(int(np.count_nonzero(tile[:,:,3])))
  slug=hashlib.sha256(sid.encode()).hexdigest()[:16];path=slug+'.png';atlas.save(OUT/path)
- return dict(path='warrior/'+path,width=w,height=h,columns=4,durationsMs=[70,110,100,80],frameIndices=[0,0,0,0],sourceTiming='PROJECT_STATIC_HOLD_FADE',pivotX=ref['pivot'][0],pivotY=ref['pivot'][1],scale=ref['scale'],anchor=ref['anchor'],blend='SCREEN',sourceGif=m['path'],sourceSha256=m['sha256'],atlasSha256=hashlib.sha256((OUT/path).read_bytes()).hexdigest(),opaquePixelCounts=counts,review=ref)
+ return dict(path='warrior/'+path,width=w,height=h,columns=4,durationsMs=[70,110,100,80],frameIndices=[0,0,0,0],sourceTiming='PROJECT_STATIC_HOLD_FADE',pivotX=ref['pivot'][0],pivotY=ref['pivot'][1],scale=ref['scale'],anchor=ref['anchor'],blend='NORMAL' if ref.get('preserveSourceRgb') else 'SCREEN',sourceGif=m['path'],sourceSha256=m['sha256'],atlasSha256=hashlib.sha256((OUT/path).read_bytes()).hexdigest(),opaquePixelCounts=counts,review=ref)
 for row in bindings['rows']:
  sid=row['id'];assert cat[sid]['name']==row['name'];m=source(row['icon']);im=Image.open(ROOT/m['path']);path='icons/'+hashlib.sha256(sid.encode()).hexdigest()[:16]+'.png';im.save(OUT/path)
  references.append(dict(id=sid,name=row['name'],iconAssetPath=path,sourcePath=m['path'],sourceSha256=m['sha256'],sourceOrdinal=row['icon']))
