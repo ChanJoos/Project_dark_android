@@ -430,7 +430,7 @@ VERIFIED LOCALLY:228 retained media-reference hashes, all source-frame/plate/atl
 
 | Task | Owner | Result | Evidence/state | Next |
 |---|---|---|---|---|
-| SKILL-FX-SOURCE-RECHECK-78 | Director/Visual | 40 fallback IDs reviewed; 4 new original particle routes, 1 same-name project reuse and 1 linked no-separable-particle demonstration; 34 source gaps remain | V78 full route and attachment audits; implementation/local source integrity verified; exact-SHA CI pending | Review native frames, provide exact candidate APK; preserve Mage22/2 unlabelled GIF/7 out-of-catalog limitations |
+| SKILL-FX-SOURCE-RECHECK-78 | Director/Visual | 40 fallback IDs reviewed; 4 new original particle routes, 1 same-name project reuse and 1 linked no-separable-particle demonstration; 34 source gaps remain | V78 audit + Actions36880039516 SUCCESS, native peak review and exact candidate APK verified; phone acceptance pending | Candidate APK delivered from4a887579; await physical-device review; preserve Mage22/2 unlabelled GIF/7 out-of-catalog limitations |
 
 ### V78 publication gate — 2026-10-01
 
@@ -449,3 +449,9 @@ Published a044091131dedb071d3883029975f656d5de09f8 through the authorized GitHub
 Actions 36869178431 SUCCESS for source head 47cf5e6480054c291755c3b7da40e69f3b73d84d. PR merge ref 80d1cdcd2cb0759ee12ce4aed919a02d344fbd94 has exactly the same tree 525fb4eee23c842cbb888ea80772a0c79e801c91. All validation and native input suites passed. APK artifact 11166581927 SHA-256 f341abe5203356d6414e3e91982df5a33cf756f0798c9c39c503aa70b7ddcf7e, build upload 2026-10-01 22:34:45 Asia/Seoul. All 591 packaged skill-presentation files match source. Native review artifact 11166362041 contains 243 frames. New-route input/anchors and Defense cadence pass; physical device pending.
 
 Review found Holy Dragon screenshots sampled its original 1000ms blank lead-in. Preserve source cadence; change existing review captures to the verified source peak frame using the existing sourcePeakAge helper, so native visual evidence actually shows the effect. Game implementation/assets unchanged. Peak-frame review and final candidate delivery remain pending.
+
+### V78 candidate delivery verified — 2026-10-02 Asia/Seoul
+
+IMPLEMENTED / BUILD VERIFIED / NATIVE INPUT AND RENDER VERIFIED: source 4a8875796e6c14d8404f5c816276d05231585dcf, Actions 36880039516 SUCCESS. PR checkout 8be116d4decb267e3a6f8ff8cefb74ace8bbddcf and source head have identical tree a11e0860aaf9c148a7ba415e2ba297696d8f7d6a. Build completed 2026-10-01 23:59:41.934897 Asia/Seoul. APK artifact11170802690 SHA256 bd3cfe584b5131316a639cc7ea0613a81d1b802410d82a85eb9a727704c83b17; version78; all591 packaged skill-presentation assets match source. Native artifact11171027453 has243 frames. Reviewed source peak renders for four newly connected originals, Cleric Bardo reuse, Defense and Pravo. Holy Dragon visibly reaches three actual recipients; original1000ms lead-in is retained.
+
+User candidate APK prepared. PR176 remains unmerged; this is not current-main delivery. Physical-device and user visual acceptance remain PENDING. Source audit leaves34 particle gaps (Mage22),2 unlabelled GIFs and7 outside-catalog abilities. Sparse/occluded/cropped source recovery and project-authored still timing remain explicit limitations. Detailed machine-readable evidence: verification/V78_DELIVERY.json. Earlier pending/publication-blocked notes are historical and superseded by this exact evidence.

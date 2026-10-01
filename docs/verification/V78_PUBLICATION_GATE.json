@@ -1,5 +1,5 @@
 {
-  "status": "PUBLISHED_CI_CORRECTION_PENDING",
+  "status": "PUBLISHED_BUILD_AND_NATIVE_VERIFIED",
   "localCommit": "a97fc44108acb6ad053a5b873c5a907a31b37fce",
   "action": "git push origin HEAD:refs/heads/codex/original-skill-contract-v65",
   "reason": "Automatic approval review says explicit permission to publish supplied/private materials to this public destination is insufficient.",
@@ -33,10 +33,11 @@
       "newDerivedAtlas": "classic/holy_dragon_recipient.png"
     }
   ],
-  "boundary": "User-authorized connector publication completed. Initial CI identified source cursor contamination; source mask correction and rebuild underway. Physical-device acceptance pending.",
-  "next": "Publish correction and verify build/native captures.",
+  "boundary": "Authorized publication and exact-source candidate build/native review complete. Previous rejection and failed run remain historical evidence. Physical-device and user visual acceptance pending.",
+  "next": "User physical-device review; source gaps remain explicit.",
   "userApproval": "2026-10-01: User replied 응 반영해 to explicit request to publish these source-derived assets and code to ChanJoos/Project_dark_android.",
-  "publishedSourceSha": "a044091131dedb071d3883029975f656d5de09f8",
-  "publishedTreeSha": "c65227a18c69a34d628c46e3ab320241e011811b",
-  "initialRun": 36867772666
+  "publishedSourceSha": "4a8875796e6c14d8404f5c816276d05231585dcf",
+  "publishedTreeSha": "a11e0860aaf9c148a7ba415e2ba297696d8f7d6a",
+  "initialRun": 36867772666,
+  "verifiedRun": 36880039516
 }
