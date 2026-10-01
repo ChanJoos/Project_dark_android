@@ -59,7 +59,7 @@ public class MartialDefenseStarRegressionTest {
  }
  @Test public void v82EquippedKickInputUsesMartialLegSpritesAndSpinTurns()throws Exception{
   for(String id:new String[]{"SK_무도가_002","SK_무도가_007","SK_무도가_014"})for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-   GameView view=directed(body,d);use(view,id);assertEquals(id,field(view,"activeSkillVisualId"));
+   GameView view=directed(body,d);use(view,id);assertEquals(id,field(view,"activeSkillVisualId"));assertEquals(d,((CanonicalActorFacing)field(view,"playerFacing")).presentation());
    SkillActionContract.Rule rule=SkillActionContract.get(id);Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);
    save82(view,id+"-"+body+"-"+d+"-startup");update.invoke(view,rule.contact+.001f);
    RuntimeState state=field(view,"state");assertTrue(state.monsters().get(0).hp<20000);
@@ -102,7 +102,7 @@ public class MartialDefenseStarRegressionTest {
   }
  }
  private GameView directed(String body,CharacterRenderer.Direction d)throws Exception{
-  GameView v=fresh();Field identity=GameView.class.getDeclaredField("characterBodyIdentity");identity.setAccessible(true);identity.set(v,body);
+  GameView v=fresh();((CanonicalActorFacing)field(v,"playerFacing")).setLocomotion(d);Field identity=GameView.class.getDeclaredField("characterBodyIdentity");identity.setAccessible(true);identity.set(v,body);
   RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);m.hp=20000;s.player().hp=20000;for(RuntimeState.Monster other:s.monsters())other.attackCooldown=100f;
   float dx=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-32:32,dy=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-16:16;
   s.player().x=m.x-dx;s.player().y=m.y-dy;((CombatController)field(v,"combat")).selectTarget(m);
