@@ -37,7 +37,9 @@ final class SkillWindow {
   }
   private static int groupOrder(String group){switch(group){case "1서클":return 1;case "2서클":return 2;case "3서클":return 3;case "4서클":return 4;case "5서클":return 5;case "승급":return 6;case "순수승급":return 7;default:return 8;}}
   static final class Item {final SkillBook.Entry entry;final RectF rect;Item(SkillBook.Entry e,RectF r){entry=e;rect=r;}}
-  List<Item> layout(){List<SkillBook.Entry> sorted=rows();sorted.sort(Comparator.comparingInt(e->groupOrder(group(e))));List<Item> out=new ArrayList<>();float y=132;String previous="";int column=0;
+  List<Item> layout(){List<SkillBook.Entry> sorted=rows();sorted.sort(Comparator.comparingInt(e->groupOrder(group(e))));
+    List<Integer> positions=new ArrayList<>();List<SkillBook.Entry> promotion=new ArrayList<>();for(int i=0;i<sorted.size();i++)if("도적".equals(sorted.get(i).job)&&"승급".equals(group(sorted.get(i)))){positions.add(i);promotion.add(sorted.get(i));}promotion.sort(Comparator.comparingInt(e->skin.promotionOrder(e.id)));for(int i=0;i<positions.size();i++)sorted.set(positions.get(i),promotion.get(i));
+    List<Item> out=new ArrayList<>();float y=132;String previous="";int column=0;
     for(SkillBook.Entry e:sorted){String group=group(e);if(!group.equals(previous)){if(!previous.isEmpty())y+=94;previous=group;column=0;}else if(column==8){column=0;y+=67;}
       float x=50+column*55;out.add(new Item(e,new RectF(x,y,x+49,y+57)));column++;
     }return out;
@@ -80,12 +82,13 @@ final class SkillWindow {
     float cd=a.cooldown(e.id);if(cd>0){fill(c,art.left,art.top,art.right,art.bottom,0xb9000000);center(c,seconds(cd),art.centerX(),art.centerY()+4,12,TEXT);}
   }
   private void drawDetail(Canvas c,SkillBook.Entry e,Actions a){icon(c,e,new RectF(647,87,687,123));fitted(c,e.name,695,109,213,14,TEXT,true);
-    SkillDef d=e.runtime;String cd=d==null?"—":"SK_공통_001".equals(e.id)?"무기 기준":seconds(d.cooldown)+" 초";
-    label(c,"대기시간",646,141,13,TEXT,false);right(c,cd,773,141,13,TEXT);label(c,"시전시간",783,141,13,TEXT,false);right(c,"—",911,141,13,TEXT);
+    SkillDef d=e.runtime;org.json.JSONObject captured=skin.capturedDetails(e.id);String cd=d==null?(captured==null?"—":captured.optInt("cooldownSeconds")+" 초"):"SK_공통_001".equals(e.id)?"무기 기준":seconds(d.cooldown)+" 초";
+    label(c,"대기시간",646,141,13,TEXT,false);right(c,cd,773,141,13,TEXT);label(c,"시전시간",783,141,13,TEXT,false);right(c,captured==null?"—":captured.optInt("castSeconds")+" 초",911,141,13,TEXT);
     label(c,"숙련도",646,156,13,TEXT,false);right(c,book.proficiency(e.id)+"/100",773,156,13,TEXT);label(c,"소모MP",783,156,13,TEXT,false);right(c,d==null?"—":""+d.mpCost,911,156,13,TEXT);
-    if(detailPage==0){String summary=book.summary(e.id);List<String> lines=wrap(summary.isEmpty()?e.effect:summary,265,11);c.save();c.clipRect(646,164,912,219);for(int i=0;i<Math.min(4,lines.size());i++)label(c,lines.get(i),646,175+i*13,11,TEXT,false);c.restore();
-      skin.draw(c,"command-box",new RectF(646,225,912,254));center(c,"퀵슬롯에 등록해 주세요.",779,244,12,MUTED);
+    if(detailPage==0){String summary=captured==null?book.summary(e.id):captured.optString("description");List<String> lines=wrap(summary.isEmpty()?e.effect:summary,265,11);c.save();c.clipRect(646,164,912,219);for(int i=0;i<Math.min(4,lines.size());i++)label(c,lines.get(i),646,175+i*13,11,TEXT,false);c.restore();
+      fill(c,646,225,912,254,0xff1e1d19);skin.draw(c,"command-box",new RectF(646,225,912,254));center(c,"퀵슬롯에 등록해 주세요.",779,244,12,MUTED);
       String status=book.learned(e.id)?"보유하고 있는 스킬입니다.":a.canLearn(e)?"습득할 수 있는 스킬입니다.":e.runtime==null&&!book.testAccess()?"현재 습득할 수 없는 스킬입니다.":"습득 조건을 확인해 주세요.";
+      if(d==null&&captured!=null)label(c,"자료 정보 · 전투 효과 준비 중",646,280,9,MUTED,false);
       fittedCenter(c,status,779,303,270,12,book.learned(e.id)||a.canLearn(e)?GOLD:RED);
     }else{
       SkillAcquisition.Quote q=a.quote(e);label(c,"요구 스탯 / 현재 스탯",646,175,10,MUTED,false);for(int i=0;i<5;i++){float x=646+(i%3)*88,y=193+(i/3)*19;label(c,SkillAcquisition.STATS[i]+" "+q.required[i]+" / "+q.current[i],x,y,10,q.current[i]>=q.required[i]?GREEN:RED,false);}

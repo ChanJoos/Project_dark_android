@@ -21,22 +21,25 @@ crops={
  'SK_도적_014':[86,280,151,345], 'SK_도적_015':[174,280,239,345],
  'SK_도적_016':[262,280,327,345], 'SK_도적_017':[350,280,415,345],
  'SK_도적_018':[438,280,503,345], 'SK_도적_019':[86,444,151,509],
- 'SK_도적_020':[174,444,239,509], 'SK_도적_025':[263,606,328,671],
+ 'SK_도적_020':[174,444,239,509], 'SK_도적_022':[87,606,152,671],
+ 'SK_도적_026':[175,606,240,671], 'SK_도적_025':[263,606,328,671],
 }
 # Frames exclude their sample icon, counter and scrollbar knob. Keep only genuine border strips.
-manifest={'source':'master/source/skill_window/user_reference_20261001.jpg','sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'size':list(im.size),'crops':{},'iconBindings':{},'limitations':['Only the selected trap is labelled directly in this screenshot. Circle-four/five order is cross-checked against the preserved catalog; keep this inference explicit.','Second-job rank counts are not an implemented progression system.','Window skin is extracted from this single user-selected reference, not certified as shipping licensed art.']}
+manifest={'source':'master/source/skill_window/user_reference_20261001.jpg','sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'size':list(im.size),'crops':{},'iconBindings':{},'limitations':['Only the selected trap is labelled directly in this screenshot. Circle-four/five ordering and two promotion visual motifs are cross-checked against the preserved catalog; keep these nine icon/name inferences explicit.','Second-job rank counts are not an implemented progression system.','Window skin is extracted from this single user-selected reference, not certified as shipping licensed art.']}
 for name,box in crops.items():
  image=im.crop(box)
- if name in ('icon-frame','selected-frame'):
+ if name in ('icon-frame','selected-frame','command-box'):
   # Preserve border only; transparent interior is painted with the genuine paper texture at runtime.
   image=image.convert('RGBA')
   for y in range(image.height):
    for x in range(image.width):
-    if 4<=x<image.width-4 and 5<=y<image.height-5:image.putpixel((x,y),(0,0,0,0))
+    if 6<=x<image.width-6 and 6<=y<image.height-6:image.putpixel((x,y),(0,0,0,0))
  if name=='scroll-track':image=im.crop((982,214,998,472))
  filename='rogue_'+name.rsplit('_',1)[1] if name.startswith('SK_') else name
  path=out/(filename+'.png');image.save(path)
  manifest['crops'][name]={'box':box,'path':'skill-window/'+path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
  if name.startswith('SK_'):manifest['iconBindings'][name]='skill-window/'+path.name
+manifest['capturedDetails']={'SK_도적_025':{'name':'함정파기','cooldownSeconds':23,'castSeconds':0,'description':'체력을 소모시키는 함정을 판다.','status':'SOURCE_PREVIEW_ONLY'}}
+manifest['roguePromotionOrder']=['SK_도적_022','SK_도적_026','SK_도적_025','SK_도적_021','SK_도적_023','SK_도적_024']
 (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 print('Extracted',len(crops),'source crops')

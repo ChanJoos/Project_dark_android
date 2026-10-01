@@ -114,7 +114,7 @@
         537
       ],
       "path": "skill-window/icon-frame.png",
-      "sha256": "87501cafd661a72323d707daa25034096c03e70691e435b5b8e5eaf9d4a427c3"
+      "sha256": "f1755d44f982b35ac08ab42d21400a31c80a88143dccf223c2d964e7d719f86b"
     },
     "selected-frame": {
       "box": [
@@ -124,7 +124,7 @@
         699
       ],
       "path": "skill-window/selected-frame.png",
-      "sha256": "04bf9477d2a91d807302332d7831b8502538a63273075e7bd8aad2a2d1617f26"
+      "sha256": "a1a01986f2215dfa16477db7c7db57c8f5cc1e5e18300e9ef4cdf9f6ebe9d675"
     },
     "scroll-track": {
       "box": [
@@ -174,7 +174,7 @@
         445
       ],
       "path": "skill-window/command-box.png",
-      "sha256": "2bce8609ee8314ec275f0802fe1659b96ce0957d8b0adce1eb71f6bca7241e5f"
+      "sha256": "d9579a27239ed6fed7cc8f4d2303db705aeb23b0b683370d5e4c4e037f0f43ad"
     },
     "SK_도적_014": {
       "box": [
@@ -246,6 +246,26 @@
       "path": "skill-window/rogue_020.png",
       "sha256": "901a1dcaa0bebf5b5d4b92bf2a92584b99f97914c1c00927bcfd326e95d2c7ec"
     },
+    "SK_도적_022": {
+      "box": [
+        87,
+        606,
+        152,
+        671
+      ],
+      "path": "skill-window/rogue_022.png",
+      "sha256": "24d6108c113148b47b036babc197fc395cef44fb4a5745a5ade026748ad4b44c"
+    },
+    "SK_도적_026": {
+      "box": [
+        175,
+        606,
+        240,
+        671
+      ],
+      "path": "skill-window/rogue_026.png",
+      "sha256": "f728fc07867bd454698487c8c24636f846ae82f6877fbe11c80313bca3c38256"
+    },
     "SK_도적_025": {
       "box": [
         263,
@@ -265,11 +285,30 @@
     "SK_도적_018": "skill-window/rogue_018.png",
     "SK_도적_019": "skill-window/rogue_019.png",
     "SK_도적_020": "skill-window/rogue_020.png",
+    "SK_도적_022": "skill-window/rogue_022.png",
+    "SK_도적_026": "skill-window/rogue_026.png",
     "SK_도적_025": "skill-window/rogue_025.png"
   },
   "limitations": [
-    "Only the selected trap is labelled directly in this screenshot. Circle-four/five order is cross-checked against the preserved catalog; keep this inference explicit.",
+    "Only the selected trap is labelled directly in this screenshot. Circle-four/five ordering and two promotion visual motifs are cross-checked against the preserved catalog; keep these nine icon/name inferences explicit.",
     "Second-job rank counts are not an implemented progression system.",
     "Window skin is extracted from this single user-selected reference, not certified as shipping licensed art."
+  ],
+  "capturedDetails": {
+    "SK_도적_025": {
+      "name": "함정파기",
+      "cooldownSeconds": 23,
+      "castSeconds": 0,
+      "description": "체력을 소모시키는 함정을 판다.",
+      "status": "SOURCE_PREVIEW_ONLY"
+    }
+  },
+  "roguePromotionOrder": [
+    "SK_도적_022",
+    "SK_도적_026",
+    "SK_도적_025",
+    "SK_도적_021",
+    "SK_도적_023",
+    "SK_도적_024"
   ]
 }
