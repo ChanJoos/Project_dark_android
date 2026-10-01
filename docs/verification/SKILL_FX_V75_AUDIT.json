@@ -10,6 +10,8 @@
     "classic": 55,
     "shared": 3
   },
+  "sourceProjectedSkillCount": 89,
+  "reviewedWithoutChannelCount": 6,
   "sourceChannelCount": 116,
   "lowPixelChannels": 11,
   "rows": [
@@ -40,6 +42,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -55,6 +58,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -90,6 +94,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -124,6 +129,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -139,6 +145,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -174,6 +181,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -208,6 +216,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -223,6 +232,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -239,6 +249,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -273,6 +284,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -288,6 +300,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -320,6 +333,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -352,6 +366,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -386,6 +401,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -418,6 +434,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -452,6 +469,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -486,6 +504,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -520,6 +539,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -554,6 +574,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -569,6 +590,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -604,6 +626,7 @@
           ]
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -637,6 +660,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -669,6 +693,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -684,6 +709,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -699,6 +725,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE"
       ],
@@ -714,6 +741,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -729,6 +757,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -762,6 +791,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -794,6 +824,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -826,6 +857,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -841,6 +873,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -857,6 +890,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -873,6 +907,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -891,6 +926,11 @@
         "rogue"
       ],
       "channels": [],
+      "reviewedSourceWithoutChannel": {
+        "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286.gif",
+        "sourceSha256": "0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286",
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
       "warnings": [
         "REVIEWED_NO_PARTICLE_CHANNEL"
       ],
@@ -908,6 +948,11 @@
         "rogue"
       ],
       "channels": [],
+      "reviewedSourceWithoutChannel": {
+        "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2.gif",
+        "sourceSha256": "6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2",
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
       "warnings": [
         "REVIEWED_NO_PARTICLE_CHANNEL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -941,6 +986,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -973,6 +1019,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -988,6 +1035,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1020,6 +1068,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1038,6 +1087,11 @@
         "rogue"
       ],
       "channels": [],
+      "reviewedSourceWithoutChannel": {
+        "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d.gif",
+        "sourceSha256": "07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d",
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
       "warnings": [
         "REVIEWED_NO_PARTICLE_CHANNEL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1056,6 +1110,11 @@
         "rogue"
       ],
       "channels": [],
+      "reviewedSourceWithoutChannel": {
+        "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a.gif",
+        "sourceSha256": "c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a",
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
       "warnings": [
         "REVIEWED_NO_PARTICLE_CHANNEL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1074,6 +1133,11 @@
         "rogue"
       ],
       "channels": [],
+      "reviewedSourceWithoutChannel": {
+        "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd.gif",
+        "sourceSha256": "68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd",
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
       "warnings": [
         "REVIEWED_NO_PARTICLE_CHANNEL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1107,6 +1171,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1139,6 +1204,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1171,6 +1237,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1203,6 +1270,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1218,6 +1286,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1234,6 +1303,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1252,6 +1322,11 @@
         "rogue"
       ],
       "channels": [],
+      "reviewedSourceWithoutChannel": {
+        "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d.gif",
+        "sourceSha256": "4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d",
+        "reason": "Actor/status/utility demonstration without a separately recoverable particle channel; required mechanics are not inferred."
+      },
       "warnings": [
         "REVIEWED_NO_PARTICLE_CHANNEL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1285,6 +1360,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1317,6 +1393,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1349,6 +1426,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1381,6 +1459,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -1396,6 +1475,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1412,6 +1492,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1427,6 +1508,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1442,6 +1524,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1457,6 +1540,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1472,6 +1556,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1487,6 +1572,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1502,6 +1588,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1517,6 +1604,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1532,6 +1620,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1547,6 +1636,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1562,6 +1652,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1577,6 +1668,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1592,6 +1684,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1607,6 +1700,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1622,6 +1716,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1637,6 +1732,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1652,6 +1748,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1667,6 +1764,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1682,6 +1780,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1697,6 +1796,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1712,6 +1812,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1727,6 +1828,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -1743,6 +1845,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1758,6 +1861,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1773,6 +1877,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1788,6 +1893,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1803,6 +1909,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1818,6 +1925,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1833,6 +1941,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1848,6 +1957,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1863,6 +1973,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1878,6 +1989,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1893,6 +2005,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1908,6 +2021,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1923,6 +2037,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1938,6 +2053,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1953,6 +2069,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1968,6 +2085,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1983,6 +2101,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -1998,6 +2117,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2013,6 +2133,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2028,6 +2149,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2043,6 +2165,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2058,6 +2181,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2073,6 +2197,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2088,6 +2213,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2103,6 +2229,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2118,6 +2245,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2133,6 +2261,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2148,6 +2277,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2163,6 +2293,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2178,6 +2309,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2226,6 +2358,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2241,6 +2374,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2289,6 +2423,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2335,6 +2470,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2383,6 +2519,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2431,6 +2568,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2477,6 +2615,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2525,6 +2664,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2557,6 +2697,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2605,6 +2746,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2620,6 +2762,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2666,6 +2809,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2714,6 +2858,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2760,6 +2905,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2792,6 +2938,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2824,6 +2971,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2870,6 +3018,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2916,6 +3065,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2931,6 +3081,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -2979,6 +3130,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -2994,6 +3146,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -3041,6 +3194,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3087,6 +3241,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -3103,6 +3258,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -3150,6 +3306,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3196,6 +3353,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3242,6 +3400,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3274,6 +3433,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3306,6 +3466,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3352,6 +3513,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3400,6 +3562,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3446,6 +3609,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3478,6 +3642,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3493,6 +3658,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3508,6 +3674,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3523,6 +3690,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3538,6 +3706,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3553,6 +3722,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3568,6 +3738,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3583,6 +3754,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3598,6 +3770,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3613,6 +3786,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3628,6 +3802,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3643,6 +3818,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3658,6 +3834,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3673,6 +3850,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3688,6 +3866,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3703,6 +3882,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3718,6 +3898,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -3750,6 +3931,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3765,6 +3947,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -3798,6 +3981,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3813,6 +3997,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -3846,6 +4031,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3878,6 +4064,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3910,6 +4097,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3956,6 +4144,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -3988,6 +4177,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4020,6 +4210,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4052,6 +4243,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4084,6 +4276,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4116,6 +4309,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4162,6 +4356,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4194,6 +4389,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4226,6 +4422,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4258,6 +4455,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4290,6 +4488,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4323,6 +4522,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
         "SHADOWED_SOURCE_VARIANT_REVIEW"
@@ -4357,6 +4557,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
         "SHADOWED_SOURCE_VARIANT_REVIEW"
@@ -4390,6 +4591,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4423,6 +4625,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
         "SHADOWED_SOURCE_VARIANT_REVIEW"
@@ -4439,6 +4642,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4454,6 +4658,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4469,6 +4674,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4485,6 +4691,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4501,6 +4708,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4516,6 +4724,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4531,6 +4740,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4546,6 +4756,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4562,6 +4773,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4578,6 +4790,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4594,6 +4807,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4610,6 +4824,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4626,6 +4841,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4642,6 +4858,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4658,6 +4875,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4691,6 +4909,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4706,6 +4925,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4722,6 +4942,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4738,6 +4959,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4754,6 +4976,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4770,6 +4993,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -4786,6 +5010,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4801,6 +5026,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4849,6 +5075,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4895,6 +5122,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4943,6 +5171,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -4958,6 +5187,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4973,6 +5203,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -4988,6 +5219,7 @@
       "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
@@ -5020,6 +5252,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -5052,6 +5285,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -5067,6 +5301,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5083,6 +5318,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5099,6 +5335,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5115,6 +5352,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5148,6 +5386,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -5180,6 +5419,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -5195,6 +5435,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5211,6 +5452,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5227,6 +5469,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5260,6 +5503,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -5275,6 +5519,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
@@ -5308,6 +5553,7 @@
           "flags": []
         }
       ],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
@@ -5323,6 +5569,7 @@
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
+      "reviewedSourceWithoutChannel": null,
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
