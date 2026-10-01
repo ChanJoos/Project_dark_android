@@ -183,7 +183,7 @@
         151,
         345
       ],
-      "path": "skill-window/SK_도적_014.png",
+      "path": "skill-window/rogue_014.png",
       "sha256": "cd8f1bbea55c217b9a5272da5065a3c8a08fd76a043bfb74157a6d710a24b57d"
     },
     "SK_도적_015": {
@@ -193,7 +193,7 @@
         239,
         345
       ],
-      "path": "skill-window/SK_도적_015.png",
+      "path": "skill-window/rogue_015.png",
       "sha256": "2f102919afb24e4a0521b8365a0cd11161a1133020b675e0da52ec7f70c31fb8"
     },
     "SK_도적_016": {
@@ -203,7 +203,7 @@
         327,
         345
       ],
-      "path": "skill-window/SK_도적_016.png",
+      "path": "skill-window/rogue_016.png",
       "sha256": "df66fbe7e75fbba7aa30aedb76281894b9f9e07d5ba4f961325d5fa5084d996e"
     },
     "SK_도적_017": {
@@ -213,7 +213,7 @@
         415,
         345
       ],
-      "path": "skill-window/SK_도적_017.png",
+      "path": "skill-window/rogue_017.png",
       "sha256": "428718dfa870c6d5926d1b52bf418472fba202c44ac448afd15bc30681578154"
     },
     "SK_도적_018": {
@@ -223,7 +223,7 @@
         503,
         345
       ],
-      "path": "skill-window/SK_도적_018.png",
+      "path": "skill-window/rogue_018.png",
       "sha256": "9d2bab4b771ddcd7bbbc0aeb228fc15fe979127ecbc099ca034273bd5c9e0afb"
     },
     "SK_도적_019": {
@@ -233,7 +233,7 @@
         151,
         509
       ],
-      "path": "skill-window/SK_도적_019.png",
+      "path": "skill-window/rogue_019.png",
       "sha256": "c5827f837683ba714d8ac300f8f9a4ef925975219b19030189ebf02ba8c44dec"
     },
     "SK_도적_020": {
@@ -243,7 +243,7 @@
         239,
         509
       ],
-      "path": "skill-window/SK_도적_020.png",
+      "path": "skill-window/rogue_020.png",
       "sha256": "901a1dcaa0bebf5b5d4b92bf2a92584b99f97914c1c00927bcfd326e95d2c7ec"
     },
     "SK_도적_025": {
@@ -253,19 +253,19 @@
         328,
         671
       ],
-      "path": "skill-window/SK_도적_025.png",
+      "path": "skill-window/rogue_025.png",
       "sha256": "bddc122433211690ff3956e26417adb41a7c3649c670e81f8aa20dc17c71cbfd"
     }
   },
   "iconBindings": {
-    "SK_도적_014": "skill-window/SK_도적_014.png",
-    "SK_도적_015": "skill-window/SK_도적_015.png",
-    "SK_도적_016": "skill-window/SK_도적_016.png",
-    "SK_도적_017": "skill-window/SK_도적_017.png",
-    "SK_도적_018": "skill-window/SK_도적_018.png",
-    "SK_도적_019": "skill-window/SK_도적_019.png",
-    "SK_도적_020": "skill-window/SK_도적_020.png",
-    "SK_도적_025": "skill-window/SK_도적_025.png"
+    "SK_도적_014": "skill-window/rogue_014.png",
+    "SK_도적_015": "skill-window/rogue_015.png",
+    "SK_도적_016": "skill-window/rogue_016.png",
+    "SK_도적_017": "skill-window/rogue_017.png",
+    "SK_도적_018": "skill-window/rogue_018.png",
+    "SK_도적_019": "skill-window/rogue_019.png",
+    "SK_도적_020": "skill-window/rogue_020.png",
+    "SK_도적_025": "skill-window/rogue_025.png"
   },
   "limitations": [
     "Only the selected trap is labelled directly in this screenshot. Circle-four/five order is cross-checked against the preserved catalog; keep this inference explicit.",

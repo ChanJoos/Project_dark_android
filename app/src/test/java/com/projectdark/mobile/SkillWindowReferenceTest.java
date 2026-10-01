@@ -37,7 +37,7 @@ public class SkillWindowReferenceTest {
   }
   @Test public void latestSquareIconUsesExactReferenceCropPixels()throws Exception{
     SkillIconCatalog icons=new SkillIconCatalog(c);Bitmap actual=Bitmap.createBitmap(65,65,Bitmap.Config.ARGB_8888);assertTrue(icons.drawSquare(new Canvas(actual),"SK_도적_025",new RectF(0,0,65,65)));
-    Bitmap source=BitmapFactory.decodeStream(c.getAssets().open("skill-window/SK_도적_025.png"));for(int y=0;y<65;y++)for(int x=0;x<65;x++)assertEquals(source.getPixel(x,y),actual.getPixel(x,y));
+    Bitmap source=BitmapFactory.decodeStream(c.getAssets().open("skill-window/rogue_025.png"));for(int y=0;y<65;y++)for(int x=0;x<65;x++)assertEquals(source.getPixel(x,y),actual.getPixel(x,y));
     actual.eraseColor(0);assertFalse(icons.drawSquare(new Canvas(actual),"missing-id",new RectF(0,0,65,65)));assertEquals(0,actual.getPixel(32,32));
   }
   private static void event(GameView v,int action,float x,float y){MotionEvent e=MotionEvent.obtain(0,0,action,x,y,0);v.onTouchEvent(e);e.recycle();}

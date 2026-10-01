@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 source=ROOT/'master/source/skill_window/user_reference_20261001.jpg'
 out=ROOT/'app/src/main/assets/skill-window';out.mkdir(exist_ok=True)
 im=Image.open(source).convert('RGB')
+for stale in out.glob('SK_*.png'):stale.unlink()
 crops={
  'paper':[535,375,971,485], 'detail-paper':[1040,312,1440,387],
  'list-header':[57,80,1001,134], 'detail-header':[1011,79,1482,133],
@@ -33,7 +34,8 @@ for name,box in crops.items():
    for x in range(image.width):
     if 4<=x<image.width-4 and 5<=y<image.height-5:image.putpixel((x,y),(0,0,0,0))
  if name=='scroll-track':image=im.crop((982,214,998,472))
- path=out/(name+'.png');image.save(path)
+ filename='rogue_'+name.rsplit('_',1)[1] if name.startswith('SK_') else name
+ path=out/(filename+'.png');image.save(path)
  manifest['crops'][name]={'box':box,'path':'skill-window/'+path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
  if name.startswith('SK_'):manifest['iconBindings'][name]='skill-window/'+path.name
 (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
