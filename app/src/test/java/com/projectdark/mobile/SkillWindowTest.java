@@ -136,8 +136,7 @@ public class SkillWindowTest {
   }
   private static void job(RuntimeState r,String value){try{Field f=RpgProgressionState.class.getDeclaredField("currentJobCode");f.setAccessible(true);f.set(r.rpg(),value);}catch(Exception e){throw new AssertionError(e);}}
   private static void chooseJob(GameView v,int i)throws Exception{
-    String wanted=new String[]{"전체","공통","전사","도적","무도가","마법사","성직자"}[i];String[] order={"공통","마법사","도적","전사","무도가","성직자","전체"};int target=java.util.Arrays.asList(order).indexOf(wanted);SkillWindow w=field(v,"skillWindow");
-    while(w.tabFirst>target)tap(v,47,90);while(w.tabFirst+2<target)tap(v,615,90);tap(v,133+(target-w.tabFirst)*191,90);
+    String wanted=new String[]{"전체","공통","전사","도적","무도가","마법사","성직자"}[i];String[] order={"공통","전사","도적","무도가","마법사","성직자","전체"};int target=java.util.Arrays.asList(order).indexOf(wanted);tap(v,85+target*82,90);
   }
   private static void selectFirst(GameView v)throws Exception{SkillWindow w=field(v,"skillWindow");assertFalse(w.layout().isEmpty());SkillWindow.Item item=w.layout().get(0);RectF r=w.rectFor(item.entry.id);tap(v,r.centerX(),r.centerY());}
   private static SkillBook.Entry bEntry(GameView v,String id)throws Exception{return ((SkillBook)field(v,"skillBook")).get(id);}

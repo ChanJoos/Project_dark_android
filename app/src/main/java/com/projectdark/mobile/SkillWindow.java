@@ -11,14 +11,14 @@ final class SkillWindow {
     SkillAcquisition.Quote quote(SkillBook.Entry entry);long gold();boolean save();float cooldown(String id);
     String requirements(SkillBook.Entry entry);void notice(String text);default void testMode(boolean enabled){}
   }
-  private static final String[] JOBS={"공통","마법사","도적","전사","무도가","성직자","전체"};
+  private static final String[] JOBS={"공통","전사","도적","무도가","마법사","성직자","전체"};
   private static final int TEXT=0xffdbdbce,MUTED=0xff999789,GOLD=0xffc2a85b,GREEN=0xffa9c99b,RED=0xffdc9b87;
   static final RectF LIST=new RectF(35,45,627,532),DETAIL=new RectF(631,45,928,320),VIEWPORT=new RectF(44,104,610,505);
   static final RectF LEARN=new RectF(646,386,774,414),REGISTER=new RectF(784,386,912,414);
   static final RectF CONDITIONS=new RectF(646,289,912,313),ARCHIVE=new RectF(45,505,179,528),TEST=new RectF(185,505,289,528),OWNED=new RectF(441,505,560,528);
   static final RectF KIND=new RectF(646,348,774,376),DETAIL_TAB=new RectF(784,348,912,376);
   boolean open,magic,learnedOnly,choosingSlot,archive,allKinds=true;
-  int flashSlot=-1,messageColor=GREEN,page,detailPage,detailOffset,tabFirst;
+  int flashSlot=-1,messageColor=GREEN,page,detailPage,detailOffset;
   String message="",selectedId,job="전체";
   float scroll;
   private float downY,startScroll;private boolean dragging,scrollGesture;
@@ -48,14 +48,13 @@ final class SkillWindow {
   RectF rectFor(String id){for(Item i:layout())if(i.entry.id.equals(id)){RectF r=new RectF(i.rect);r.offset(0,-scroll);return r;}return null;}
   void reveal(String id){for(Item i:layout())if(i.entry.id.equals(id)){scroll=Math.max(0,Math.min(maxScroll(),i.rect.top-155));return;}}
   static RectF bookSlot(int i){float x=646+(i%4)*68,y=441+(i/4)*43;return new RectF(x,y,x+62,y+39);}
-  private int activeTab(){for(int i=0;i<JOBS.length;i++)if(job.equals(JOBS[i]))return i;return 0;}
-  void showJob(String value){job=value;int i=activeTab();tabFirst=Math.min(4,Math.max(0,i-2));reset();}
+  static RectF jobTab(int i){return new RectF(44+i*82,77,126+i*82,104);}
+  void showJob(String value){job=value;reset();}
   void draw(Canvas c,Actions a){if(!open)return;
     skin.panel(c,LIST,false);skin.panel(c,DETAIL,true);
-    // Three original-width job tabs; arrows expose every other job without reducing touch width.
+    // Every job is directly visible and tappable; no hidden tab pages.
     fill(c,40,77,620,103,0x22000000);
-    for(int i=0;i<3;i++){String value=JOBS[tabFirst+i];float left=50+i*191;boolean active=job.equals(value);center(c,value,left+83,94,14,active?TEXT:MUTED);if(active)gradient(c,left,101,left+168,103,0x0073632e,0xffc1a257);}
-    center(c,"‹",47,94,17,GOLD);center(c,"›",615,94,17,GOLD);
+    for(int i=0;i<JOBS.length;i++){RectF r=jobTab(i);boolean active=job.equals(JOBS[i]);center(c,JOBS[i],r.centerX(),94,13,active?TEXT:MUTED);if(active)gradient(c,r.left+5,101,r.right-5,103,0x0073632e,0xffc1a257);}
     scroll=Math.max(0,Math.min(scroll,maxScroll()));List<Item> items=layout();c.save();c.clipRect(VIEWPORT);
     String previous="";for(Item i:items){RectF r=new RectF(i.rect);r.offset(0,-scroll);String g=group(i.entry);if(!g.equals(previous)){label(c,g,45,r.top-16,13,TEXT,false);previous=g;}
       if(r.bottom>=VIEWPORT.top&&r.top<=VIEWPORT.bottom)drawCard(c,i.entry,r,a);
@@ -105,7 +104,7 @@ final class SkillWindow {
   }
   boolean touch(float x,float y,Actions a){if(!open)return false;
     if(new RectF(593,45,627,77).contains(x,y)||new RectF(900,45,928,77).contains(x,y)){close();return true;}
-    if(y>=77&&y<104){if(x<60){tabFirst=Math.max(0,tabFirst-1);return true;}if(x>601&&x<627){tabFirst=Math.min(4,tabFirst+1);return true;}if(x>=60&&x<=601){int i=Math.min(2,(int)((x-50)/191));job=JOBS[tabFirst+i];reset();return true;}}
+    if(y>=77&&y<104&&x>=44&&x<618){job=JOBS[(int)((x-44)/82)];reset();return true;}
     if(ARCHIVE.contains(x,y)){archive=!archive;reset();return true;}if(TEST.contains(x,y)){a.testMode(!book.testAccess());reset();return true;}if(OWNED.contains(x,y)){learnedOnly=!learnedOnly;reset();return true;}
     if(KIND.contains(x,y)){if(allKinds){allKinds=false;magic=false;}else if(!magic)magic=true;else allKinds=true;reset();return true;}
     if(DETAIL_TAB.contains(x,y)||CONDITIONS.contains(x,y)){detailPage=1-detailPage;return true;}
