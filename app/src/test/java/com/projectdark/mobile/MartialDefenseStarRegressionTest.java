@@ -76,8 +76,8 @@ public class MartialDefenseStarRegressionTest {
    write(review,"v80-defense-"+body+"-"+d+".png");actor.recycle();shell.recycle();review.recycle();
   }
  }
- @Test public void fourFifthCircleStarsAppearOnEachRecipientAtRealDamageContact()throws Exception{
-  for(String id:new String[]{"SK_마법사_034","SK_마법사_035","SK_마법사_036","SK_마법사_037"}){
+ @Test public void remainingFifthCircleStarsAppearOnEachRecipientAtRealDamageContact()throws Exception{
+  for(String id:new String[]{"SK_마법사_034","SK_마법사_035","SK_마법사_036"}){
    GameView view=fresh();RuntimeState state=field(view,"state");RuntimeState.Monster m=state.monsters().get(0);m.hp=200;
    state.player().x=m.x-32;state.player().y=m.y-16;((CombatController)field(view,"combat")).selectTarget(m);use(view,id);
    Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);int hp=m.hp;

@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 80
-        versionName '0.80-martial-defense-star'
+        versionCode 81
+        versionName '0.81-ragnarok-source'
     }
     sourceSets {
         main {

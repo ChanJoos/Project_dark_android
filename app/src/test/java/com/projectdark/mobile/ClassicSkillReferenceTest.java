@@ -25,7 +25,7 @@ public class ClassicSkillReferenceTest {
   assertEquals("마법",b.get("SK_무도가_020").kind);assertEquals("마법",b.get("SK_무도가_011").kind);
  }
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
-  ClassicSkillReference fx=new ClassicSkillReference(c);assertEquals(102,fx.effects.size());
+  ClassicSkillReference fx=new ClassicSkillReference(c);assertEquals(103,fx.effects.size());
   JSONObject doc=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/classic/manifest.json"),StandardCharsets.UTF_8));assertFalse(doc.getBoolean("nativeArchivePixels"));
   JSONObject skills=doc.getJSONObject("skills");int channels=0;
   for(String id:fx.effects.keySet())for(ClassicSkillReference.Channel channel:fx.effects.get(id).values()){
@@ -37,7 +37,7 @@ public class ClassicSkillReferenceTest {
     assertTrue(j.getString("sourceTiming").startsWith("PROJECT_"));
    }
    assertEquals(0,s.frame(0));assertEquals(s.durations.length-1,s.frame(s.duration));assertTrue("No opaque floor corner: "+id,Color.alpha(s.atlas.getPixel(s.width-1,s.height-1))<32);assertTrue(s.duration>0);
-  }assertEquals(143,channels);
+  }assertEquals(144,channels);
  }
  @Test public void mageSourceMasksExcludeObservedCursorAndUnchangedFloor()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c);

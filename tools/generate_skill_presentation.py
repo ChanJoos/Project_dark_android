@@ -48,7 +48,7 @@ for sex in ['mm001','wm001']:
   dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/path,dest)
   key=f"{sex}/{r['group']}/{int(r['frame_index'])}"
   manifest[key]={'path':'body/'+sex+'/'+r['group']+'/'+path.name,'w':int(r['w']),'h':int(r['h']),'pivotX':float(r['px'])*int(r['w']),'offsetY':-float(r['py'])*int(r['h'])}
-data={'revision':'SOURCE_REVIEWED_SKILL_CONTRACT_V80','profiles':profiles,'frames':manifest,'skills':entries}
+data={'revision':'SOURCE_REVIEWED_SKILL_CONTRACT_V81','profiles':profiles,'frames':manifest,'skills':entries}
 (OUT/'catalog.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
 with (ROOT/'docs/SKILL_PRESENTATION_MAPPING.csv').open('w',encoding='utf-8',newline='') as f:
  w=csv.DictWriter(f,fieldnames=list(entries[0]),lineterminator="\n");w.writeheader();w.writerows(entries)

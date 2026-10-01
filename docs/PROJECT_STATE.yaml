@@ -146,6 +146,17 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  SKILL_PRESENTATION_081:
+    title: "User-labelled Ragnarok still extraction and recipient animation"
+    system: combat_presentation
+    priority: P1
+    claim: Director/Integration
+    queue_state: VERIFICATION_PENDING
+    source_branch: codex/original-skill-contract-v65
+    required_sources: [master/source/skill_fx/user_ragnarok_20261002/provenance.json, docs/verification/SKILL_FX_V81_AUDIT.json]
+    acceptance: ["Four originals retained with hashes", "Six-point sigil extraction with declared reconstruction", "Source animation starts at actual recipient contact", "GIF plus exact-source APK delivered"]
+    remaining: "Original timing and occluded pixels; 32 independent effect sources; phone and user visual acceptance"
+    delivery_policy: "GIF and ZIP containing APK"
   SKILL_PRESENTATION_080:
     title: "Martial motion review, Defense envelope and fifth-circle star contact"
     system: combat_presentation

@@ -1,5 +1,5 @@
 {
-  "revision": "SOURCE_REVIEWED_SKILL_CONTRACT_V80",
+  "revision": "SOURCE_REVIEWED_SKILL_CONTRACT_V81",
   "profiles": {
     "CAST": {
       "group": "f",
@@ -3661,15 +3661,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "NONE",
-      "target": "DARK_STAR",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "USER_CONFIRMED_STAR_SHAPE_PROJECT_RECONSTRUCTION_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "USER_LABELLED_RAGNAROK_STILL_CAPTURE_DECLARED_REPAIR_PROJECT_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "현재 화면 안의 적 전체; 화면 밖 제외; 사용자 확인 별 모양으로 재구성. 원본 픽셀/색/프레임 미확인."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외; 사용자 라그나로크 원작 캡처 4장 추출. 육각별/룬/금색 원/흰 섬광. 가림 복원과 보간/시간은 프로젝트 처리로 기록."
     },
     {
       "id": "SK_마법사_038",
