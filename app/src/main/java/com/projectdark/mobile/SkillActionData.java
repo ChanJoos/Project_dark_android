@@ -186,7 +186,7 @@ final class SkillActionData {
     {"SK_무도가_027", "트리플펀치", "LINKED", "FRONT", "1", "1", "PRESENTATION", "3", "0.14", "V", "독립 시전이 아닌 기본공격 연동 추가 타격", "기술"},
     {"SK_무도가_028", "무영신공", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "같은 방향의 연속 세 타일", "기술"},
     {"SK_무도가_029", "자기보호", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "자기 대상", "기술"},
-    {"SK_공통_001", "기본공격", "ACTIVE", "SINGLE", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.", "기술"},
+    {"SK_공통_001", "기본공격", "ACTIVE", "SINGLE", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; USER_CONFIRMED_BASIC_SWING_WITHOUT_PARTICLE", "기술"},
     {"SK_공통_002", "문열기", "UTILITY", "UTILITY", "0", "0", "PRESENTATION", "1", "0.14", "UNRESOLVED_RUNTIME", "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지", "기술"},
     {"SK_공통_003", "탐색", "UTILITY", "UTILITY", "1", "1", "PRESENTATION", "1", "0.14", "UNRESOLVED_RUNTIME", "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지", "기술"},
     {"SK_공통_004", "아들레스투", "UTILITY", "UTILITY", "0", "0", "PRESENTATION", "1", "0.24", "UNRESOLVED_RUNTIME", "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지", "마법"},

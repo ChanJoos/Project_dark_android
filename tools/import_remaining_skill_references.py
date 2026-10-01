@@ -30,15 +30,20 @@ def project(root, output, manifest):
         tile=np.dstack((fg,np.round(alpha*255))).astype(np.uint8);tile[~mask]=0
         tile=tile[y0:y1,x0:x1];tiles.append(tile);counts.append(int(np.count_nonzero(tile[:,:,3])))
     assert counts[0]==0 and max(counts)>100, counts
+    # Recording idle wait is not a contact effect: start at the first visible frame.
+    first=next(i for i,count in enumerate(counts) if count>0)
+    recording_lead_in=sum(times[:first])
+    original_indices=list(range(first,len(tiles)))
+    tiles=tiles[first:];times=times[first:];counts=counts[first:]
     w=x1-x0;h=y1-y0;atlas=Image.new('RGBA',(w*4,h*math.ceil(len(tiles)/4)))
     for i,tile in enumerate(tiles):atlas.paste(Image.fromarray(tile),(i%4*w,i//4*h))
     target=output/'holy_dragon_recipient.png';atlas.save(target)
     channel=dict(path='classic/'+target.name,width=w,height=h,columns=4,durationsMs=times,
-                 frameIndices=list(range(len(tiles))),pivotX=269-x0,pivotY=87-y0,scale=1.,
+                 frameIndices=original_indices,sourceTiming='SOURCE_VISIBLE_FRAMES_CONTACT_ALIGNED',pivotX=269-x0,pivotY=87-y0,scale=1.,
                  anchor='RECIPIENT',registration='VISUAL_CENTER',blend='SCREEN',
                  sourceGif=demo['path'],sourceSha256=demo['sha256'],
                  atlasSha256=hashlib.sha256(target.read_bytes()).hexdigest(),opaquePixelCounts=counts,
-                 review=dict(region=list(region),baselineFrame=0,recipientCenter=[269,87],
+                 review=dict(region=list(region),baselineFrame=0,discardedRecordingLeadInMs=recording_lead_in,recipientCenter=[269,87],
                              reason='LABELLED_HOLY_DRAGON_TABLE_AND_GIF; SINGLE_RECIPIENT_FROM_EIGHT_DUMMY_SCENE',
                              limitations=['Actor-occluded pixels remain absent.','One recipient crop is repeated by the existing screen-target resolver; original multi-target staggering is not proven.']))
     manifest['skills'][row['id']]=dict(name=row['name'],article=row['article'],

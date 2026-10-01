@@ -5144,16 +5144,16 @@
       "job": "공통",
       "kind": "기술",
       "motion": "EQUIPPED_BASIC",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "USER_20261002_BASIC_BODY_ONLY",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; USER_CONFIRMED_BASIC_SWING_WITHOUT_PARTICLE"
     },
     {
       "id": "SK_공통_002",

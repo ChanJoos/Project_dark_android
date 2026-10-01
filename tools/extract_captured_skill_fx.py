@@ -57,5 +57,14 @@ for slug,(sid,start,end,kind) in SPECS.items():
   tile=Image.fromarray(rgba,'RGBA');atlas.paste(tile,((out_index%4)*w,(out_index//4)*h));counts.append(int(np.count_nonzero(rgba[:,:,3])))
  target=OUT/(slug+'.png');atlas.save(target)
  result['skills'][sid]={'slug':slug,'path':'captured/'+slug+'.png','width':w,'height':h,'columns':4,'frameIndices':list(range(start,end)),'durationsMs':durations[start:end],'pivotX':100 if slug in ('devil_crasher','mad_soul_jin','assassination_jin') else 85,'pivotY':185 if slug in ('devil_crasher','mad_soul_jin','assassination_jin') else 165,'scale':.32,'directional':slug in ('mad_soul','mad_soul_jin'),'directionPivotLift':55,'sourceForwardDistance':125,'registrationEvidence':'PROJECT_REGISTRATION:116px source actor vs37px runtime actor; source forward burst on positive X; directional projection uses contact target vector.','channel':'CASTER_AT_CONTACT','blend':'SCREEN','sourceGif':'master/source/skill_fx/naver_401229/'+slug+'.gif','sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'atlasSha256':hashlib.sha256(target.read_bytes()).hexdigest(),'opaquePixelCounts':counts,'evidence':'FAN_CAPTURE_DERIVED_ALPHA_APPROXIMATE'}
+# User confirms both crasher cores appear between caster and recipient.
+# Register the retained core itself, instead of its captured actor's feet.
+for sid in ('SK_전사_015','SK_전사_023'):
+ entry=result['skills'][sid];atlas=np.asarray(Image.open(OUT/Path(entry['path']).name))
+ energies=[]
+ for i in range(len(entry['durationsMs'])):
+  a=atlas[i//entry['columns']*entry['height']:(i//entry['columns']+1)*entry['height'],i%entry['columns']*entry['width']:(i%entry['columns']+1)*entry['width'],3].astype(float)
+  yy,xx=np.indices(a.shape);energies.append((a.sum(),float((a*xx).sum()/a.sum()),float((a*yy).sum()/a.sum())))
+ _,px,py=max(energies);entry.update(pivotX=px,pivotY=py,directionPivotLift=0,registration='CONTACT_MIDPOINT',channel='BETWEEN_CASTER_AND_RECIPIENT_AT_CONTACT',registrationEvidence='USER_20261002_MIDPOINT; SOURCE_PEAK_ALPHA_CENTROID')
 (OUT/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
 print('capture sequences',len(result['skills']),'frames',sum(len(v['durationsMs']) for v in result['skills'].values()))

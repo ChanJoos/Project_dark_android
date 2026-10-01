@@ -115,16 +115,16 @@ jobs:
       - name: Audit every skill FX source and runtime precedence
         run: |
           python3 tools/audit_runtime_skill_fx.py
-          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V78_AUDIT.json
+          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V79_AUDIT.json
           python3 tools/audit_provided_skill_sources.py
-          git diff --exit-code -- docs/REMAINING_ORIGINAL_SKILL_FX.csv docs/verification/PROVIDED_SOURCE_RECHECK_V78.json
+          git diff --exit-code -- docs/REMAINING_ORIGINAL_SKILL_FX.csv docs/verification/PROVIDED_SOURCE_RECHECK_V79.json
       - name: Verify item window source crops and input
         run: |
           python3 tools/extract_item_window_reference.py
           git diff --exit-code -- app/src/main/assets/item-window
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ItemWindowReferenceTest --tests com.projectdark.mobile.EquipmentStatsAndDetailsTest --stacktrace
       - name: Verify skill window, shared combat and restart persistence
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillFxAuditTest --tests com.projectdark.mobile.SkillWindowReferenceTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest --tests com.projectdark.mobile.AllJobSkillSourceTest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillFxAuditTest --tests com.projectdark.mobile.SkillWindowReferenceTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest --tests com.projectdark.mobile.AllJobSkillSourceTest --tests com.projectdark.mobile.SkillContactRegressionTest --stacktrace
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit

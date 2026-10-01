@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Labelled Mage capture pixels with explicitly authored still-frame timing."""
-import hashlib, json, math
+import hashlib, json, math, colorsys
 import numpy as np
 from PIL import Image
 
@@ -18,7 +18,7 @@ def project(root, output, manifest):
     for color,indices,names in groups:
         for i,name in zip(indices,names):bind(name,221564,[i],[0,33,100,96],[50,58],color,[[41,46,62,83]])
     for i,name,color in zip([4,5,6,7],['렌토','바르도','데프레코','프라보'],['PURPLE','YELLOW','PURPLE','RED']):
-        bind(name,221555,[i],[8,32,94,96],[50,59],color,[[42,47,62,84]])
+        bind(name,221555,[i],[5,8,95,96],[50,59],color,[[42,47,62,84]])
     bind('메테오',254766,[0,1,2],[30,102,103,224],[67,184],'WARM',[[55,140,88,153],[56,156,79,215]])
     bind('매직프로텍션',254766,range(3,9),[142,80,242,143],[190,105],'ROCK',[[177,61,204,126]])
     bind('속성강화',254766,range(9,13),[2,52,110,142],[48,88],'BRIGHT',[[33,72,64,116]])
@@ -40,6 +40,14 @@ def project(root, output, manifest):
     room_base=np.median(np.stack([read(lookup[254766,i]) for i in range(13,29)]),axis=0)
     for row in rows:
         originals=[lookup[row['articleId'],i] for i in row['indices']];frames=[read(m) for m in originals]
+        if row['articleId']==221555:
+            # User confirms this curse family is one skull with colour variants.
+            # The unobstructed Depreco crown supplies the same captured shape;
+            # variant hues are an explicit project projection, not recovered footage.
+            declared=originals[0];template=lookup[221555,6];frames=[read(template)]
+            originals=[template] if declared==template else [template,declared]
+            row['familyShapeSource']=dict(path=template['path'],sha256=template['sha256'])
+            row['projectHueShiftDegrees']={'렌토':-60,'바르도':110,'데프레코':0,'프라보':60}[row['name']]
         base=circle_base if row['articleId'] in [221564,221555] else room_base if row['name']=='퀘이크' else np.minimum.reduce(frames) if len(frames)>1 else curse_base
         if row['articleId'] in [221564,221555] and row['name']!='플라모':
             floor=np.zeros((100,100),dtype=bool);floor[45:94,4:20]=True;floor[45:94,82:96]=True
@@ -65,7 +73,7 @@ def project(root, output, manifest):
         x0,y0,x1,y1=row['region'];w=x1-x0;h=y1-y0;tiles=[];counts=[]
         for rgb in frames:
             r,g,b=rgb[:,:,0],rgb[:,:,1],rgb[:,:,2];lo=np.min(rgb,axis=2);hi=np.max(rgb,axis=2)
-            diff=rgb-base;changed=np.max(np.abs(diff),axis=2)>18;white=(lo>150)&(hi-lo<100);color=row['color']
+            diff=rgb-base;changed=np.max(np.abs(diff),axis=2)>18;white=(lo>150)&(hi-lo<100);color='PURPLE' if row['articleId']==221555 else row['color']
             if color=='COLD':mask=((b>r+12)&(g>r+5)&(b>115)&(g>95))|((lo>140)&(hi-lo<55))
             elif color=='NEUTRAL':mask=(hi>95)&(hi-lo<95)&(np.max(diff,axis=2)>25)
             elif color=='WARM':mask=((r>205)&(g>80)&(r>=g)&(g>b+20))|white
@@ -86,7 +94,11 @@ def project(root, output, manifest):
                 allowed=((lo>150)&(np.max(diff,axis=2)>25))|(np.min(diff,axis=2)>25)|((lo>110)&(np.max(diff,axis=2)>50))
                 mask[by0:by1,bx0:bx1]&=allowed[by0:by1,bx0:bx1]
             for bx0,by0,bx1,by1 in row.get('uiMasks',[]):mask[by0:by1,bx0:bx1]=False
-            if row['articleId'] in [221564,221555]:mask[:41,:]=False
+            if row['articleId']==221564:mask[:41,:]=False
+            elif row['articleId']==221555:
+                # Full skull crown starts above the old y=41 UI cutoff.
+                # Only the actor inside its hollow forehead is masked.
+                mask[:8,:]=False
             if color in ['DIFFERENCE','DARK_DIFFERENCE','ROCK']:fg=rgb;alpha=mask.astype(np.float32)
             else:
                 # Colour-gated source emission keeps the captured pillar/core.
@@ -94,6 +106,10 @@ def project(root, output, manifest):
                 emission=np.clip(np.maximum(diff,0)/np.maximum(255-base,1),0,1) if row.get('mattingPlate') else rgb/255
                 alpha=np.max(emission,axis=2);alpha[~mask]=0;fg=np.clip(emission/np.maximum(alpha[:,:,None],.001)*255,0,255)
             tile=np.dstack((fg,np.round(alpha*255))).astype(np.uint8);tile[~mask]=0;tile=tile[y0:y1,x0:x1]
+            if row['articleId']==221555 and row['projectHueShiftDegrees']:
+                for yy,xx in zip(*np.nonzero(tile[:,:,3])):
+                    hh,ss,vv=colorsys.rgb_to_hsv(*(tile[yy,xx,:3]/255))
+                    tile[yy,xx,:3]=np.round(np.array(colorsys.hsv_to_rgb((hh+row['projectHueShiftDegrees']/360)%1,ss,vv))*255)
             tiles.append(tile);counts.append(int(np.count_nonzero(tile[:,:,3])))
         assert max(counts)>3,(row['name'],'No recoverable particle')
         if len(tiles)==1:
@@ -113,7 +129,7 @@ def project(root, output, manifest):
                      sourceFrames=[dict(path=m['path'],sha256=m['sha256'],index=m['index']) for m in originals],
                      atlasSha256=hashlib.sha256(target.read_bytes()).hexdigest(),opaquePixelCounts=counts,review=row)
         manifest['skills'][row['id']]=dict(name=row['name'],article=f"https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/{row['articleId']}",
-                                         mapping='LABELLED_MAGE_SOURCE_CAPTURE_PROJECT_TIMING',channels={'RECIPIENT_CONTACT':channel})
+                                         mapping='USER_APPROVED_CURSE_FAMILY_SOURCE_SHAPE_PROJECT_COLOR_VARIANT' if row['articleId']==221555 else 'LABELLED_MAGE_SOURCE_CAPTURE_PROJECT_TIMING',channels={'RECIPIENT_CONTACT':channel})
     (source/'mage_bindings.json').write_text(json.dumps(dict(revision='MAGE_SOURCE_V77',rows=rows,
         limitations=['Still captures have project timing; original animation cadence is not known.','Occluded effect pixels remain absent.',
                      'No different spell receives a similar-looking source or invented icon.']),ensure_ascii=False,indent=2)+'\n')

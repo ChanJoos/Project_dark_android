@@ -34,14 +34,14 @@
         60,
         60
       ],
-      "pivotX": 85,
-      "pivotY": 165,
+      "pivotX": 109.50075935696988,
+      "pivotY": 111.92597344975032,
       "scale": 0.32,
       "directional": false,
-      "directionPivotLift": 55,
+      "directionPivotLift": 0,
       "sourceForwardDistance": 125,
-      "registrationEvidence": "PROJECT_REGISTRATION:116px source actor vs37px runtime actor; source forward burst on positive X; directional projection uses contact target vector.",
-      "channel": "CASTER_AT_CONTACT",
+      "registrationEvidence": "USER_20261002_MIDPOINT; SOURCE_PEAK_ALPHA_CENTROID",
+      "channel": "BETWEEN_CASTER_AND_RECIPIENT_AT_CONTACT",
       "blend": "SCREEN",
       "sourceGif": "master/source/skill_fx/naver_401229/crasher.gif",
       "sourceSha256": "42e0ac503f65989ac27935815c7b367db4b9a79e60649ff293335d88ac6f5d84",
@@ -56,7 +56,8 @@
         3134,
         807
       ],
-      "evidence": "FAN_CAPTURE_DERIVED_ALPHA_APPROXIMATE"
+      "evidence": "FAN_CAPTURE_DERIVED_ALPHA_APPROXIMATE",
+      "registration": "CONTACT_MIDPOINT"
     },
     "SK_전사_013": {
       "slug": "mad_soul",
@@ -158,14 +159,14 @@
         30,
         60
       ],
-      "pivotX": 100,
-      "pivotY": 185,
+      "pivotX": 123.45607648671864,
+      "pivotY": 143.7480730040659,
       "scale": 0.32,
       "directional": false,
-      "directionPivotLift": 55,
+      "directionPivotLift": 0,
       "sourceForwardDistance": 125,
-      "registrationEvidence": "PROJECT_REGISTRATION:116px source actor vs37px runtime actor; source forward burst on positive X; directional projection uses contact target vector.",
-      "channel": "CASTER_AT_CONTACT",
+      "registrationEvidence": "USER_20261002_MIDPOINT; SOURCE_PEAK_ALPHA_CENTROID",
+      "channel": "BETWEEN_CASTER_AND_RECIPIENT_AT_CONTACT",
       "blend": "SCREEN",
       "sourceGif": "master/source/skill_fx/naver_401229/devil_crasher.gif",
       "sourceSha256": "041a1d3141d10c4e742df4254373d5fd8f46f4609d4a26f76cc108b73e70171f",
@@ -183,7 +184,8 @@
         1046,
         101
       ],
-      "evidence": "FAN_CAPTURE_DERIVED_ALPHA_APPROXIMATE"
+      "evidence": "FAN_CAPTURE_DERIVED_ALPHA_APPROXIMATE",
+      "registration": "CONTACT_MIDPOINT"
     },
     "SK_전사_022": {
       "slug": "mad_soul_jin",

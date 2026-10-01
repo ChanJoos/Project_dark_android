@@ -423,9 +423,9 @@
         4
       ],
       "region": [
+        5,
         8,
-        32,
-        94,
+        95,
         96
       ],
       "pivot": [
@@ -443,10 +443,15 @@
       ],
       "anchor": "RECIPIENT",
       "scale": 1.0,
+      "familyShapeSource": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/73a071faf3fb7836.jpg",
+        "sha256": "c7d8928cfe30e597cc451e6f59a9ca305ab4019b154bcf1005c76f567560a0d6"
+      },
+      "projectHueShiftDegrees": -60,
       "mattingPlate": {
         "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
         "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
-        "dx": -1,
+        "dx": -4,
         "dy": -4
       }
     },
@@ -458,9 +463,9 @@
         5
       ],
       "region": [
+        5,
         8,
-        32,
-        94,
+        95,
         96
       ],
       "pivot": [
@@ -478,11 +483,16 @@
       ],
       "anchor": "RECIPIENT",
       "scale": 1.0,
+      "familyShapeSource": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/73a071faf3fb7836.jpg",
+        "sha256": "c7d8928cfe30e597cc451e6f59a9ca305ab4019b154bcf1005c76f567560a0d6"
+      },
+      "projectHueShiftDegrees": 110,
       "mattingPlate": {
         "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
         "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
-        "dx": 0,
-        "dy": 4
+        "dx": -4,
+        "dy": -4
       }
     },
     {
@@ -493,9 +503,9 @@
         6
       ],
       "region": [
+        5,
         8,
-        32,
-        94,
+        95,
         96
       ],
       "pivot": [
@@ -513,6 +523,11 @@
       ],
       "anchor": "RECIPIENT",
       "scale": 1.0,
+      "familyShapeSource": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/73a071faf3fb7836.jpg",
+        "sha256": "c7d8928cfe30e597cc451e6f59a9ca305ab4019b154bcf1005c76f567560a0d6"
+      },
+      "projectHueShiftDegrees": 0,
       "mattingPlate": {
         "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
         "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
@@ -528,9 +543,9 @@
         7
       ],
       "region": [
+        5,
         8,
-        32,
-        94,
+        95,
         96
       ],
       "pivot": [
@@ -556,11 +571,16 @@
           100
         ]
       ],
+      "familyShapeSource": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/73a071faf3fb7836.jpg",
+        "sha256": "c7d8928cfe30e597cc451e6f59a9ca305ab4019b154bcf1005c76f567560a0d6"
+      },
+      "projectHueShiftDegrees": 60,
       "mattingPlate": {
         "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
         "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
-        "dx": 1,
-        "dy": 0
+        "dx": -4,
+        "dy": -4
       }
     },
     {

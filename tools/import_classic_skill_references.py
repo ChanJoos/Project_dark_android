@@ -24,9 +24,10 @@ for row in rows:
  h,w=rgb[0].shape[:2];base=np.median(rgb,axis=0)
  # Initial frame is an idle floor/actor reference in these demonstrations.
  base=rgb[0]
- martial=row['job']=='무도가';selfEffect=martial and row['name'] not in ['단각','통배권','붕각','백보신권','일음지','장풍','흡정신공'] or row['name'] in ['실드','이모탈','리플렉토','연주','카운터']
+ martial=row['job']=='무도가';selfEffect=martial and row['name'] not in ['단각','통배권','붕각','백보신권','일음지','장풍','흡정신공','다라밀공'] or row['name'] in ['실드','이모탈','리플렉토','연주','카운터']
  caster=(118,113) if martial and not selfEffect else (108,116) if martial else (56,94)
  recipient=caster if selfEffect else (145,122) if martial else (141,107)
+ if row['name']=='다라밀공':recipient=(128,83)
  body=Image.new('1',(w,h));d=ImageDraw.Draw(body)
  if martial:
   if selfEffect:d.polygon([(99,56),(117,56),(124,78),(127,107),(119,119),(99,119),(94,94),(97,77)],fill=1)
@@ -49,7 +50,7 @@ for row in rows:
   alpha=np.max(emission,axis=2);changed=np.max(np.abs(diff),axis=2)>23
   saturation=np.max(c,axis=2)-np.min(c,axis=2);bright=np.min(c,axis=2)>150
   mask=changed&((saturation>35)|bright)&~blocked
-  if row['name'] in ['단각','붕각','발경']:
+  if row['name'] in ['단각','붕각','발경','다라밀공']:
    # Cyan/white contact particles may overlap actors. Keep source-colour deltas,
    # not the moving actor's black/red/pink pixels. Only the top UI stays excluded.
    cr,cg,cb=c[:,:,0],c[:,:,1],c[:,:,2]
@@ -60,11 +61,11 @@ for row in rows:
  # Two independent channels: captured caster sparks and recipient effect.
  channels={}
  for channel,anchor in [('CASTER_START',caster),('RECIPIENT_CONTACT',recipient)]:
-  if (selfEffect or row['name'] in ['단각','붕각']) and channel=='CASTER_START':continue
+  if (selfEffect or row['name'] in ['단각','붕각','다라밀공']) and channel=='CASTER_START':continue
   selection=[];counts=[]
   for tile in emitted:
    t=tile.copy()
-   if not selfEffect and row['name'] not in ['단각','붕각']:
+   if not selfEffect and row['name'] not in ['단각','붕각','다라밀공']:
     boundary=92 if not martial else 133
     if channel=='CASTER_START':t[:,boundary:]=0
     else:t[:,:boundary]=0
@@ -75,6 +76,8 @@ for row in rows:
   for i,t in enumerate(frames):atlas.paste(Image.fromarray(t),((i%4)*w,(i//4)*h))
   slug=hashlib.sha256(sid.encode('utf-8')).hexdigest()[:16]+'_'+channel.lower();path='classic/'+slug+'.png';target=OUT/path;target.parent.mkdir(exist_ok=True);atlas.save(target)
   channels[channel]={'path':path,'width':w,'height':h,'columns':4,'durationsMs':durations,'frameIndices':list(range(start,end)),'pivotX':anchor[0],'pivotY':anchor[1],'scale':1.0,'blend':'SCREEN','anchor':'CASTER' if selfEffect or channel=='CASTER_START' else 'RECIPIENT','sourceGif':demo['path'],'sourceSha256':demo['sha256'],'atlasSha256':hashlib.sha256(target.read_bytes()).hexdigest(),'opaquePixelCounts':counts[start:end]}
+ if row['name']=='다라밀공' and channels:
+  channels['RECIPIENT_CONTACT'].update(registration='VISUAL_CENTER',registrationEvidence='USER_20261002_RECIPIENT_BURST_SOURCE_CENTER_128_83')
  if channels:manifest['skills'][sid]={'channels':channels,'name':row['name'],'article':row['article']}
 from import_mage_skill_references import project as project_mage
 project_mage(ROOT,CLASSIC,manifest)

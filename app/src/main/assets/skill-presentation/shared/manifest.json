@@ -153,8 +153,8 @@
       "channels": {
         "RECIPIENT_CONTACT": {
           "path": "classic/mage_559506aca57edab6.png",
-          "width": 86,
-          "height": 64,
+          "width": 90,
+          "height": 88,
           "columns": 4,
           "durationsMs": [
             80,
@@ -165,28 +165,33 @@
           "frameIndices": [
             5
           ],
-          "pivotX": 42,
-          "pivotY": 27,
+          "pivotX": 45,
+          "pivotY": 51,
           "scale": 1.0,
           "blend": "SCREEN",
           "anchor": "RECIPIENT",
           "registration": "VISUAL_CENTER",
           "sourceTiming": "PROJECT_STATIC_HOLD_FADE",
-          "sourceGif": "master/source/skill_fx/naver_magic_recovered_20261001/598c04193efb021f.jpg",
-          "sourceSha256": "799b2e5720ba15e79b781e13e4d6770a7cf9aa1d24a388083250d3b38d676db6",
+          "sourceGif": "master/source/skill_fx/naver_magic_recovered_20261001/73a071faf3fb7836.jpg",
+          "sourceSha256": "c7d8928cfe30e597cc451e6f59a9ca305ab4019b154bcf1005c76f567560a0d6",
           "sourceFrames": [
+            {
+              "path": "master/source/skill_fx/naver_magic_recovered_20261001/73a071faf3fb7836.jpg",
+              "sha256": "c7d8928cfe30e597cc451e6f59a9ca305ab4019b154bcf1005c76f567560a0d6",
+              "index": 6
+            },
             {
               "path": "master/source/skill_fx/naver_magic_recovered_20261001/598c04193efb021f.jpg",
               "sha256": "799b2e5720ba15e79b781e13e4d6770a7cf9aa1d24a388083250d3b38d676db6",
               "index": 5
             }
           ],
-          "atlasSha256": "f6cb2f4e795485d75d0dd24519a9874954bb19427012934295a0f7cb1a9d0655",
+          "atlasSha256": "6307e603690f1d4b7095acc990a50fa918c976c0c9106a8d64a39020da8b5c13",
           "opaquePixelCounts": [
-            2030,
-            2030,
-            2030,
-            2030
+            2992,
+            2992,
+            2992,
+            2992
           ],
           "review": {
             "id": "SK_마법사_011",
@@ -196,9 +201,9 @@
               5
             ],
             "region": [
+              5,
               8,
-              32,
-              94,
+              95,
               96
             ],
             "pivot": [
@@ -216,11 +221,16 @@
             ],
             "anchor": "RECIPIENT",
             "scale": 1.0,
+            "familyShapeSource": {
+              "path": "master/source/skill_fx/naver_magic_recovered_20261001/73a071faf3fb7836.jpg",
+              "sha256": "c7d8928cfe30e597cc451e6f59a9ca305ab4019b154bcf1005c76f567560a0d6"
+            },
+            "projectHueShiftDegrees": 110,
             "mattingPlate": {
               "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
               "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
-              "dx": 0,
-              "dy": 4
+              "dx": -4,
+              "dy": -4
             }
           }
         }

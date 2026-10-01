@@ -59,7 +59,7 @@ public class AllJobSkillSourceTest {
    CombatResolver.Definition def=new CombatResolver.Definition(id,CombatResolver.ActionKind.MAGIC,CombatResolver.ActionState.MAGIC,CombatResolver.EffectType.MAGIC_HIT,true,0,1,150,.24f,12);
    for(CombatResolver.HitSemantic semantic:CombatResolver.HitSemantic.values()){
     renderer.clear();CombatResolver.Event event=new CombatResolver.Event(++sequence,sequence,CombatResolver.EventType.HIT_FEEDBACK,"player","monster",def,CombatResolver.InputMode.MANUAL,null,semantic,semantic==CombatResolver.HitSemantic.MISS?0:12);
-    renderer.consume(Arrays.asList(event,event),anchors);long impacts=renderer.pulses.stream().filter(p->p.sheet.equals("impact")).count();assertEquals(id+" "+semantic,semantic==CombatResolver.HitSemantic.DAMAGE||semantic==CombatResolver.HitSemantic.CRIT?1:0,impacts);
+    renderer.consume(Arrays.asList(event,event),anchors);long impacts=renderer.pulses.stream().filter(p->p.sheet.equals("impact")).count();assertEquals(id+" "+semantic,!id.equals("SK_공통_001")&&(semantic==CombatResolver.HitSemantic.DAMAGE||semantic==CombatResolver.HitSemantic.CRIT)?1:0,impacts);
     for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(pulse.sheet.equals("impact")){assertEquals("monster",pulse.anchor);assertFalse(pulse.caster);assertEquals(300,pulse.x,0);}
    }
    renderer.clear();renderer.consume(Collections.singletonList(new CombatResolver.Event(++sequence,sequence,CombatResolver.EventType.HIT_FEEDBACK,"player","monster",def,CombatResolver.InputMode.MANUAL,null,CombatResolver.HitSemantic.DAMAGE,0)),anchors);assertFalse(renderer.pulses.stream().anyMatch(p->p.sheet.equals("impact")));
