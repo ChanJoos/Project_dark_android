@@ -23,7 +23,8 @@ public class SkillContactRegressionTest {
    ((CombatController)field(view,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(view,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(view,((SkillBook)field(view,"skillBook")).get(id));
    Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);
-   tick.invoke(view,Math.max(0,rule.contact-.01f));assertEquals(id+" must not damage before contact",before,m.hp);
+   float contact=id.equals("SK_공통_001")?CombatResolver.attackPrototype(((CombatController)field(view,"combat")).attackDef(),0).hitTime:rule.contact;
+   tick.invoke(view,Math.max(0,contact-.01f));assertEquals(id+" must not damage before contact",before,m.hp);
    SkillVfxRenderer fx=field(view,"skillVfx");assertFalse(id+" no recipient before hit",fx.pulses.stream().anyMatch(p->!p.caster));save(view,id,"before");
    tick.invoke(view,.011f);assertTrue(id+" resolves damage at contact",m.hp<before);
    if(id.equals("SK_공통_001"))assertTrue("Basic is BODY-only",fx.pulses.isEmpty());
@@ -46,7 +47,7 @@ public class SkillContactRegressionTest {
    SkillVfxRenderer.Anchors a=new SkillVfxRenderer.Anchors(){public float x(String actor){return actor.equals("player")?240:240+offset[0];}public float y(String actor){return actor.equals("player")?200:200+offset[1];}};
    CombatResolver.Definition d=new CombatResolver.Definition(id,CombatResolver.ActionKind.MAGIC,CombatResolver.ActionState.MAGIC,CombatResolver.EffectType.MAGIC_HIT,true,0,1,150,.24f,12);
    fx.consume(Collections.singletonList(new CombatResolver.Event(++n,n,CombatResolver.EventType.HIT_FEEDBACK,"player","monster",d,CombatResolver.InputMode.MANUAL,null,CombatResolver.HitSemantic.DAMAGE,0)),a);
-   assertEquals(1,fx.pulses.size());SkillVfxRenderer.Pulse pulse=fx.pulses.get(0);pulse.age=SkillFxAuditTest.sourcePeakAge(fx,pulse);
+   assertEquals(1,fx.pulses.size());SkillVfxRenderer.Pulse pulse=fx.pulses.get(0);pulse.age=peakAge(captured.get(id));
    Bitmap image=Bitmap.createBitmap(640,400,Bitmap.Config.ARGB_8888);fx.draw(new Canvas(image),a);double weight=0,x=0,y=0;
    for(int iy=0;iy<image.getHeight();iy++)for(int ix=0;ix<image.getWidth();ix++){int alpha=Color.alpha(image.getPixel(ix,iy));weight+=alpha;x+=ix*alpha;y+=iy*alpha;}
    assertTrue(weight>100);assertEquals((a.centerX("player")+a.centerX("monster"))/2,x/weight,2);assertEquals((a.centerY("player")+a.centerY("monster"))/2,y/weight,2);
@@ -61,6 +62,7 @@ public class SkillContactRegressionTest {
    Bitmap image=Bitmap.createBitmap(240,200,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(image);canvas.drawColor(0xff19231e);r.draw(canvas,ch,.081f,120,100);write(image,"v79-curse-"+id+".png");
   }
  }
+ private static float peakAge(CapturedSkillFx.Sequence s){long best=-1;int elapsed=0,start=0,hold=0;for(int frame=0;frame<s.durations.length;frame++){long energy=0;for(int y=0;y<s.height;y++)for(int x=0;x<s.width;x++)energy+=Color.alpha(s.atlas.getPixel(frame%s.columns*s.width+x,frame/s.columns*s.height+y));if(energy>best){best=energy;start=elapsed;hold=s.durations[frame];}elapsed+=s.durations[frame];}return (start+hold*.5f)/1000f;}
  private static int alphaPixels(CapturedSkillFx.Sequence s,int frame){int count=0;for(int y=0;y<s.height;y++)for(int x=0;x<s.width;x++)if(Color.alpha(s.atlas.getPixel(frame%s.columns*s.width+x,frame/s.columns*s.height+y))>0)count++;return count;}
  private static void save(GameView view,String id,String moment)throws Exception{Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(b));write(b,"v79-contact-"+id+"-"+moment+".png");}
  private static void write(Bitmap b,String name)throws Exception{File f=new File("build/reports/device-review/"+name);f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){b.compress(Bitmap.CompressFormat.PNG,100,out);}}
