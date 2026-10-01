@@ -20,7 +20,7 @@ final class SkillActionData {
     {"SK_전사_015", "크래셔", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "ADAPTED_MELEE_REACH_ORIGINAL_UNRESOLVED", "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음.", "기술"},
     {"SK_전사_016", "스톰블레이드", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "같은 방향의 연속 세 타일", "기술"},
     {"SK_전사_017", "룬블레이드", "ACTIVE", "CROSS", "1", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "시전자 사방 한 타일; 대각선 제외", "기술"},
-    {"SK_전사_018", "집중", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "자기 대상", "기술"},
+    {"SK_전사_018", "집중", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.24", "V", "자기 대상; 2013 원문 집중은 승급 마법으로 명시.", "마법"},
     {"SK_전사_019", "포효", "ACTIVE", "SCREEN", "0", "0", "PRESENTATION", "1", "0.14", "V", "현재 화면 안의 적 전체; 화면 밖 제외", "기술"},
     {"SK_전사_020", "메가어택", "LINKED", "FRONT", "1", "1", "PRESENTATION", "4", "0.14", "V", "독립 시전이 아닌 기본공격 연동 추가 타격", "기술"},
     {"SK_전사_021", "돌진", "UTILITY", "FRONT", "5", "1", "PRESENTATION", "1", "0.14", "V_RANGE_TRAVEL_UNRESOLVED_RUNTIME", "원작 전방5칸 돌진 확인. 충돌/착지 규칙 확인 및 이동 서비스 구현 전에는 제자리 가짜 공격을 출력하지 않음.", "기술"},

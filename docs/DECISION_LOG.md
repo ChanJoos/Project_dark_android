@@ -173,3 +173,8 @@ Continue PR176/codex/original-skill-contract-v65 from308bc751. Fully read61 labe
 ROGUE-2015-SOURCE-REVIEW accepted for six magic kinds, project-selected overhead BODY, labelled icon crops and reviewed source-pixel channels. Source245450 explicitly says 밀기/적갑옷해체 are player-only; source245456 says 하이더 targets another user. Until user-target services exist, these three are gated as utility actions instead of previewing on a monster/self. Smoke uses observed screen membership in test presentation; map-wide behavior remains unresolved and the circa-three-second blind status is not claimed implemented. Backslash uses one isolated source glint on each resolved front/rear recipient, not a fabricated four-direction original capture.
 
 Coverage is per ID in SKILL_SOURCE_COVERAGE.csv:147/221 source icons; native BODY pixels are project-selected semantic poses; missing bindings/status services/device and original visual approval remain explicit.
+
+
+## 2026-10-01 — all-job presentation and resolved damage channels
+
+V70 extends retained-source bindings beyond Rogue to every labelled Warrior icon, reviewed Warrior shapes, existing Martial/Cleric sources and same-name common/Mage heals. Different-name spells never borrow another original ID merely to fill coverage. Static source shapes use explicitly authored hold/fade timing. The universal recipient impact is an adapted reuse of retained Charge burst pixels, emitted only by a resolved positive DAMAGE/CRIT contact; it is not a claimed original universal impact. Spell/caster channels and recipient damage feedback are independent. BODY uses original male/female front/back groups with the established horizontal transform for four directions.

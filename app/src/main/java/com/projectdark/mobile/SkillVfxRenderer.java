@@ -11,9 +11,9 @@ final class SkillVfxRenderer {
     final long actionSequence;final String id,sheet,anchor;final int row;final boolean caster;final float duration,x,y;float age;
     Pulse(long seq,String id,String sheet,int row,String anchor,boolean caster,float duration,float x,float y){actionSequence=seq;this.id=id;this.sheet=sheet;this.row=row;this.anchor=anchor;this.caster=caster;this.duration=duration;this.x=x;this.y=y;}
   }
-  private final CapturedSkillFx captured;private final ClassicSkillReference classic,rogue;private final SkillPresentationCatalog catalog;private final Map<String,Bitmap> sheets=new HashMap<>();
+  private final CapturedSkillFx captured;private final ClassicSkillReference classic,rogue,warrior,shared;private final SkillPresentationCatalog catalog;private final Map<String,Bitmap> sheets=new HashMap<>();
   final List<Pulse> pulses=new ArrayList<>();private final Set<String> seen=new HashSet<>();private final Deque<String> history=new ArrayDeque<>();private final Paint p=new Paint();
-  SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);rogue=new ClassicSkillReference(c,"rogue");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
+  SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);rogue=new ClassicSkillReference(c,"rogue");warrior=new ClassicSkillReference(c,"warrior");shared=new ClassicSkillReference(c,"shared");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
   void clear(){pulses.clear();}
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
@@ -24,8 +24,14 @@ final class SkillVfxRenderer {
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
     boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.hitSemantic!=CombatResolver.HitSemantic.MISS;
     if(!caster&&!target)continue;
-    if(rogue.has(id)||classic.has(id)){
-      ClassicSkillReference reference=rogue.has(id)?rogue:classic;String sourceSheet=rogue.has(id)?"rogue":"classic";
+    // A real resolved damaging contact has its own recipient-only visual channel.
+    // Preview (amount zero), misses and healing never pretend the monster took damage.
+    if(target&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)&&!e.actorId.equals(e.targetId)){
+      String impactKey=e.actionSequence+":recipient-damage:"+e.targetId;float ix=a.x(e.targetId),iy=a.y(e.targetId);
+      if(Float.isFinite(ix)&&Float.isFinite(iy)&&seen.add(impactKey)){history.add(impactKey);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,ix,iy));if(pulses.size()>64)pulses.remove(0);}
+    }
+    if(rogue.has(id)||classic.has(id)||warrior.has(id)||shared.has(id)){
+      ClassicSkillReference reference=rogue.has(id)?rogue:classic.has(id)?classic:warrior.has(id)?warrior:shared;String sourceSheet=rogue.has(id)?"rogue":classic.has(id)?"classic":warrior.has(id)?"warrior":"shared";
       ClassicSkillReference.Channel channel=reference.channel(id,caster);if(channel==null)continue;
       String anchor=channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor;
       if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
@@ -39,7 +45,8 @@ boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequenc
   }}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
   void draw(Canvas c,Anchors a){for(Pulse f:pulses){
-    if(f.sheet.equals("classic")||f.sheet.equals("rogue")){ClassicSkillReference reference=f.sheet.equals("rogue")?rogue:classic;float x=a.x(f.anchor),y=a.y(f.anchor);reference.draw(c,reference.channel(f.id,f.caster),f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y);continue;}
+    if(f.sheet.equals("classic")||f.sheet.equals("rogue")||f.sheet.equals("warrior")||f.sheet.equals("shared")){ClassicSkillReference reference=f.sheet.equals("rogue")?rogue:f.sheet.equals("warrior")?warrior:f.sheet.equals("shared")?shared:classic;float x=a.x(f.anchor),y=a.y(f.anchor);reference.draw(c,reference.channel(f.id,f.caster),f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y);continue;}
+    if(f.sheet.equals("impact")){float x=a.x(f.anchor),y=a.y(f.anchor);warrior.draw(c,warrior.damageImpact,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y);continue;}
     if(f.sheet.equals("capture")){float x=a.x(f.anchor),y=a.y(f.anchor);captured.draw(c,p,f.id,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y);continue;}
     if(!f.caster&&f.row<0){SkillPresentationCatalog.Entry v=catalog.get(f.id);if(v!=null){float x=a.x(f.anchor),y=a.y(f.anchor);SkillEffectShapes.draw(c,p,v.target,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y,f.age/f.duration);}continue;}
     Bitmap b=sheets.get(f.sheet);if(b==null)continue;int rows=f.sheet.equals("caster")?4:8,cw=b.getWidth()/6,ch=b.getHeight()/rows;int col=Math.min(5,(int)(f.age/f.duration*6));

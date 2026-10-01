@@ -12,6 +12,7 @@ final class ClassicSkillReference {
     final String key;final boolean casterAnchor;final CapturedSkillFx.Sequence sequence;
     Channel(Context c,String key,JSONObject j)throws Exception{this.key=key;casterAnchor="CASTER".equals(j.getString("anchor"));sequence=new CapturedSkillFx.Sequence(c,j);}
   }
+  Channel damageImpact;
   final Map<String,Map<String,Channel>> effects=new LinkedHashMap<>();
   final Map<String,JSONObject> references=new LinkedHashMap<>();
   private final Paint paint=new Paint();
@@ -19,6 +20,7 @@ final class ClassicSkillReference {
   ClassicSkillReference(Context c){this(c,"classic");}
   ClassicSkillReference(Context c,String directory){try{
     JSONObject doc=read(c,directory+"/manifest.json"),entries=doc.getJSONObject("skills");
+    if(doc.has("damageImpact"))damageImpact=new Channel(c,"RECIPIENT_DAMAGE",doc.getJSONObject("damageImpact"));
     Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=entries.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=new LinkedHashMap<>();Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}effects.put(id,result);}
     JSONArray rows=read(c,directory+"/references.json").getJSONArray("rows");for(int i=0;i<rows.length();i++){JSONObject row=rows.getJSONObject(i);if(!row.isNull("id"))references.put(row.getString("id"),row);}
   }catch(Exception e){throw new IllegalStateException("Classic skill reference",e);}}

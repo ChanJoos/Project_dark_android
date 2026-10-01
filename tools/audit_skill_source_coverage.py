@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];ASSETS=ROOT/'app/src/main/assets'
 catalog=json.loads((ASSETS/'skills/catalog.json').read_text());decisions={r['id']:r for r in csv.DictReader((ROOT/'docs/SKILL_ACTION_DECISIONS.csv').open())}
 icons=set(json.loads((ASSETS/'skills/source_icons.json').read_text())['icons']);effects={};noFx=set()
-for directory in ['classic','rogue']:
+for directory in ['classic','rogue','warrior','shared']:
  icons.update(r['id'] for r in json.loads((ASSETS/f'skill-presentation/{directory}/references.json').read_text())['rows'] if r.get('id'))
  for sid,row in json.loads((ASSETS/f'skill-presentation/{directory}/manifest.json').read_text())['skills'].items():
   if row['channels']:effects[sid]=directory+':'+','.join(row['channels'])

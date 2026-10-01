@@ -30,7 +30,7 @@ final class SkillIconCatalog {
         }
         presentation.put(row.getKey(),icon);
       }
-      for(String directory:new String[]{"classic","rogue"}){
+      for(String directory:new String[]{"classic","rogue","warrior","shared"}){
       JSONObject refs=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/"+directory+"/references.json"),StandardCharsets.UTF_8));JSONArray list=refs.getJSONArray("rows");
       for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id"),path=row.getString("iconAssetPath");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/"+directory+"/"+path));if(icon==null)throw new IOException("Invalid classic icon: "+path);presentation.put(id,icon);index.putIfAbsent(id,-1);}
       }

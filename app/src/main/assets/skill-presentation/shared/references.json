@@ -1,0 +1,85 @@
+{
+  "revision": "EXACT_NAME_SHARED_FORM_V70",
+  "rows": [
+    {
+      "id": "SK_공통_010",
+      "name": "쿠로토",
+      "donorId": "SK_무도가_032",
+      "iconAssetPath": "icons/510ac3ddc88fbf98.png",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE",
+      "sourceIcon": {
+        "index": 15,
+        "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTAw/MDAxNTk5MzgxNDA0NjE2.HBAL7sh_1wU6jEVJ-hVqzPe_3nxFYSscOv5gpWqKqOIg.1ggkn-igx7nsi4shw_xZOHqfcA7TyojBqUyYMq9Snbsg.PNG.alsea01/spell001_21.png",
+        "filename": "spell001_21.png",
+        "path": "master/source/skill_fx/naver_classic_2020/e4c534b1bada0193.png",
+        "sha256": "9c2cbcd71a0446579a97d1b13f2f6d92be6e7a2ed3038bf4421125780cfe834d",
+        "size": 1206,
+        "status": "FETCHED"
+      }
+    },
+    {
+      "id": "SK_성직자_050",
+      "name": "아지토",
+      "donorId": "SK_무도가_034",
+      "iconAssetPath": "icons/60c84dfa7330ad9d.png",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE",
+      "sourceIcon": {
+        "index": 71,
+        "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzAg/MDAxNTk5Mzg1MDk4NjQ1.7hMhrfVyUC2iFyBYbaf5sKIKptUQ176n0x_ztYW6bocg.sA9hEy4buUhUiIzb9MPfI0z48V3SeTd8rl__KZ0LOo4g.PNG.alsea01/spell001_15.png",
+        "filename": "spell001_15.png",
+        "path": "master/source/skill_fx/naver_classic_2020/d9938c1bfe85e74a.png",
+        "sha256": "4daf2f1e3488440528be576374184c17b2e18ae09b41bc4508680612bf74ff79",
+        "size": 1333,
+        "status": "FETCHED"
+      }
+    },
+    {
+      "id": "SK_성직자_058",
+      "name": "쿠로토",
+      "donorId": "SK_무도가_032",
+      "iconAssetPath": "icons/ab3e9f5bfd080d25.png",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE",
+      "sourceIcon": {
+        "index": 15,
+        "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTAw/MDAxNTk5MzgxNDA0NjE2.HBAL7sh_1wU6jEVJ-hVqzPe_3nxFYSscOv5gpWqKqOIg.1ggkn-igx7nsi4shw_xZOHqfcA7TyojBqUyYMq9Snbsg.PNG.alsea01/spell001_21.png",
+        "filename": "spell001_21.png",
+        "path": "master/source/skill_fx/naver_classic_2020/e4c534b1bada0193.png",
+        "sha256": "9c2cbcd71a0446579a97d1b13f2f6d92be6e7a2ed3038bf4421125780cfe834d",
+        "size": 1206,
+        "status": "FETCHED"
+      }
+    },
+    {
+      "id": "SK_마법사_055",
+      "name": "아지토",
+      "donorId": "SK_무도가_034",
+      "iconAssetPath": "icons/535e1cc4aa746277.png",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE",
+      "sourceIcon": {
+        "index": 71,
+        "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMzAg/MDAxNTk5Mzg1MDk4NjQ1.7hMhrfVyUC2iFyBYbaf5sKIKptUQ176n0x_ztYW6bocg.sA9hEy4buUhUiIzb9MPfI0z48V3SeTd8rl__KZ0LOo4g.PNG.alsea01/spell001_15.png",
+        "filename": "spell001_15.png",
+        "path": "master/source/skill_fx/naver_classic_2020/d9938c1bfe85e74a.png",
+        "sha256": "4daf2f1e3488440528be576374184c17b2e18ae09b41bc4508680612bf74ff79",
+        "size": 1333,
+        "status": "FETCHED"
+      }
+    },
+    {
+      "id": "SK_마법사_056",
+      "name": "쿠로토",
+      "donorId": "SK_무도가_032",
+      "iconAssetPath": "icons/4a655c8759a7c78f.png",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE",
+      "sourceIcon": {
+        "index": 15,
+        "url": "https://blogfiles.pstatic.net/MjAyMDA5MDZfMTAw/MDAxNTk5MzgxNDA0NjE2.HBAL7sh_1wU6jEVJ-hVqzPe_3nxFYSscOv5gpWqKqOIg.1ggkn-igx7nsi4shw_xZOHqfcA7TyojBqUyYMq9Snbsg.PNG.alsea01/spell001_21.png",
+        "filename": "spell001_21.png",
+        "path": "master/source/skill_fx/naver_classic_2020/e4c534b1bada0193.png",
+        "sha256": "9c2cbcd71a0446579a97d1b13f2f6d92be6e7a2ed3038bf4421125780cfe834d",
+        "size": 1206,
+        "status": "FETCHED"
+      }
+    }
+  ]
+}

@@ -66,7 +66,7 @@ public class RogueSkillReferenceTest {
    SkillVfxRenderer renderer=field(v,"skillVfx");ClassicSkillReference.Channel start=reference.channel(id,true);assertEquals(id,start==null?0:1,renderer.pulses.size());
    for(SkillVfxRenderer.Pulse pulse:renderer.pulses){assertTrue(pulse.caster);assertEquals("rogue",pulse.sheet);assertEquals("player",pulse.anchor);}
    tick.invoke(v,rule.contact+.001f);
-   ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster)targets.add(pulse);
+   ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster&&!pulse.sheet.equals("impact"))targets.add(pulse);
    if(rule.pattern==SkillActionContract.Pattern.SCREEN&&contact!=null)assertTrue(id,targets.size()>=1);else assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals("rogue",pulse.sheet);if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(s.monsters().stream().anyMatch(monster->monster.id.equals(pulse.anchor)));else assertEquals(id,contact.casterAnchor||rule.selfAnchored()?"player":m.id,pulse.anchor);pulse.age=Math.min(.16f,pulse.duration/2);}
    if(rule.heal())assertEquals(id,before,m.hp);
    if(contact!=null){

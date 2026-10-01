@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 69
-        versionName '0.69-rogue-source-channels'
+        versionCode 70
+        versionName '0.70-all-job-source-presentation'
     }
     sourceSets {
         main {

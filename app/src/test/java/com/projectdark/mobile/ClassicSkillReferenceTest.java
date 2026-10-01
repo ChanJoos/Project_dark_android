@@ -46,7 +46,7 @@ public class ClassicSkillReferenceTest {
    SkillVfxRenderer renderer=field(v,"skillVfx");ClassicSkillReference.Channel start=reference.channel(id,true);assertEquals(id,start==null?0:1,renderer.pulses.size());
    for(SkillVfxRenderer.Pulse pulse:renderer.pulses){assertTrue(pulse.caster);assertEquals("classic",pulse.sheet);assertEquals("player",pulse.anchor);}
    tick.invoke(v,rule.contact+.001f);
-   ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster)targets.add(pulse);
+   ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster&&!pulse.sheet.equals("impact"))targets.add(pulse);
    assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals("classic",pulse.sheet);assertEquals(id,contact.casterAnchor||rule.selfAnchored()?"player":m.id,pulse.anchor);pulse.age=Math.min(.16f,pulse.duration/2);}
    if(rule.heal())assertEquals(id,before,m.hp);
    if(id.equals("SK_성직자_013")||id.equals("SK_무도가_020")||id.equals("SK_성직자_003")||id.equals("SK_무도가_002")||id.equals("SK_성직자_005")){

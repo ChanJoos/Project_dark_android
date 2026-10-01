@@ -2039,7 +2039,7 @@
       "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "전방 인접 한 타일"
@@ -2073,7 +2073,7 @@
       "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "SOURCE_FORM_WHERE_AVAILABLE + IMAGEGEN_RECONSTRUCTION_NOT_ORIGINAL",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "같은 방향의 연속 세 타일"
@@ -2090,7 +2090,7 @@
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "자기 대상"
@@ -2124,7 +2124,7 @@
       "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "SOURCE_FORM_WHERE_AVAILABLE + IMAGEGEN_RECONSTRUCTION_NOT_ORIGINAL",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "시전자 사방 한 타일; 대각선 제외"
@@ -2141,7 +2141,7 @@
       "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
@@ -2192,7 +2192,7 @@
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "자기 대상"
@@ -2226,7 +2226,7 @@
       "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
@@ -2260,7 +2260,7 @@
       "targetRow": -1,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "USER_VIDEO_SHAPE_COLOR_TRACE_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "자기 대상; 20260930 영상: 캐릭터를 감싸는 얇은 파란 구형 보호막, 적 피격 없음."
@@ -2294,7 +2294,7 @@
       "targetRow": 1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "SOURCE_FORM_WHERE_AVAILABLE + IMAGEGEN_RECONSTRUCTION_NOT_ORIGINAL",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "같은 방향의 연속 세 타일"
@@ -2311,7 +2311,7 @@
       "targetRow": 2,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "SOURCE_FORM_WHERE_AVAILABLE + IMAGEGEN_RECONSTRUCTION_NOT_ORIGINAL",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "시전자 사방 한 타일; 대각선 제외"
@@ -2320,18 +2320,18 @@
       "id": "SK_전사_018",
       "name": "집중",
       "job": "전사",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
+      "kind": "마법",
+      "motion": "CAST",
+      "caster": "NONE",
       "target": "PROTECT",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "자기 대상"
+      "note": "자기 대상; 2013 원문 집중은 승급 마법으로 명시."
     },
     {
       "id": "SK_전사_019",
@@ -2345,7 +2345,7 @@
       "targetRow": 0,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "현재 화면 안의 적 전체; 화면 밖 제외"
@@ -2379,7 +2379,7 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "원작 전방5칸 돌진 확인. 충돌/착지 규칙 확인 및 이동 서비스 구현 전에는 제자리 가짜 공격을 출력하지 않음."

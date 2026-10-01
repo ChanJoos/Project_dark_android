@@ -1,0 +1,414 @@
+{
+  "revision": "ALL_JOB_WARRIOR_SOURCE_V70",
+  "rows": [
+    {
+      "id": "SK_전사_001",
+      "name": "숏블레이드",
+      "icon": {
+        "articleId": 191105,
+        "imageIndex": 1
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "articleId": 191105,
+        "imageIndex": 2,
+        "region": [
+          27,
+          1,
+          37,
+          77
+        ],
+        "whiteOnly": true,
+        "pivot": [
+          32,
+          74
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_012",
+      "name": "레스큐",
+      "icon": {
+        "articleId": 191105,
+        "imageIndex": 3
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "articleId": 191105,
+        "imageIndex": 4,
+        "region": [
+          30,
+          8,
+          75,
+          44
+        ],
+        "brightOnly": true,
+        "pivot": [
+          52,
+          56
+        ],
+        "sharedRogueId": "SK_도적_005"
+      }
+    },
+    {
+      "id": "SK_전사_002",
+      "name": "더블어택",
+      "icon": {
+        "articleId": 191110,
+        "imageIndex": 3
+      }
+    },
+    {
+      "id": "SK_전사_003",
+      "name": "윈드블레이드",
+      "icon": {
+        "articleId": 191110,
+        "imageIndex": 5
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "articleId": 191110,
+        "imageIndex": 7,
+        "region": [
+          50,
+          30,
+          86,
+          72
+        ],
+        "greenOnly": true,
+        "pivot": [
+          65,
+          82
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_004",
+      "name": "디바투",
+      "icon": {
+        "articleId": 191110,
+        "imageIndex": 8
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "CASTER",
+        "scale": 1,
+        "articleId": 191110,
+        "imageIndex": 9,
+        "region": [
+          8,
+          18,
+          66,
+          69
+        ],
+        "purpleOnly": true,
+        "blocked": [
+          [
+            22,
+            10,
+            52,
+            55
+          ]
+        ],
+        "pivot": [
+          35,
+          64
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_005",
+      "name": "트리플어택",
+      "icon": {
+        "articleId": 191114,
+        "imageIndex": 1
+      }
+    },
+    {
+      "id": "SK_전사_006",
+      "name": "메가블레이드",
+      "icon": {
+        "articleId": 191114,
+        "imageIndex": 3
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "articleId": 191114,
+        "imageIndex": 5,
+        "region": [
+          6,
+          20,
+          47,
+          65
+        ],
+        "greenOnly": true,
+        "pivot": [
+          33,
+          85
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_007",
+      "name": "바투",
+      "icon": {
+        "articleId": 191114,
+        "imageIndex": 6
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "articleId": 191114,
+        "imageIndex": 7,
+        "region": [
+          8,
+          29,
+          33,
+          56
+        ],
+        "orangeOnly": true,
+        "pivot": [
+          20,
+          74
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_008",
+      "name": "투핸드어택",
+      "icon": {
+        "articleId": 191241,
+        "imageIndex": 3
+      }
+    },
+    {
+      "id": "SK_전사_011",
+      "name": "적무기쳐내기",
+      "icon": {
+        "articleId": 191241,
+        "imageIndex": 14
+      }
+    },
+    {
+      "id": "SK_전사_009",
+      "name": "드래곤모드",
+      "icon": {
+        "articleId": 191241,
+        "imageIndex": 17
+      }
+    },
+    {
+      "id": "SK_전사_010",
+      "name": "피닉스모드",
+      "icon": {
+        "articleId": 191445,
+        "imageIndex": 1
+      },
+      "effect": {
+        "articleId": 191445,
+        "imageIndex": 2,
+        "backdrop": "FLAT_GRAY",
+        "pivot": [
+          81,
+          123
+        ],
+        "anchor": "CASTER",
+        "scale": 0.65,
+        "channel": "RECIPIENT_CONTACT",
+        "variant": "SOURCE_EXPLICIT_OLD_CLASSIC_BLUE_ART",
+        "currentCaptureLimit": "Current fire capture includes actor/UI; use retained isolated classic shape without inventing occluded pixels."
+      }
+    },
+    {
+      "id": "SK_전사_014",
+      "name": "완전방어",
+      "icon": {
+        "articleId": 191445,
+        "imageIndex": 4
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "CASTER",
+        "scale": 1,
+        "articleId": 191445,
+        "imageIndex": 5,
+        "backdrop": "FLAT_GRAY",
+        "pivot": [
+          70,
+          107
+        ],
+        "blueOnly": true,
+        "maskReason": "Remove the white actor silhouette inside the retained blue shell; no actor pixels are emitted."
+      }
+    },
+    {
+      "id": "SK_전사_013",
+      "name": "매드소울",
+      "icon": {
+        "articleId": 191445,
+        "imageIndex": 9
+      }
+    },
+    {
+      "id": "SK_전사_015",
+      "name": "크래셔",
+      "icon": {
+        "articleId": 191445,
+        "imageIndex": 12
+      }
+    },
+    {
+      "id": "SK_전사_020",
+      "name": "메가어택",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 1
+      }
+    },
+    {
+      "id": "SK_전사_021",
+      "name": "돌진",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 3
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 0.65,
+        "articleId": 191777,
+        "imageIndex": 4,
+        "backdrop": "FLAT_GRAY",
+        "pivot": [
+          65,
+          81
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_018",
+      "name": "집중",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 7
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "CASTER",
+        "scale": 1,
+        "articleId": 191777,
+        "imageIndex": 8,
+        "backdrop": "FLAT_GRAY",
+        "pivot": [
+          48,
+          85
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_019",
+      "name": "포효",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 10
+      },
+      "effect": {
+        "articleId": 191114,
+        "imageIndex": 7,
+        "region": [
+          8,
+          29,
+          33,
+          56
+        ],
+        "orangeOnly": true,
+        "pivot": [
+          20,
+          74
+        ],
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "channel": "RECIPIENT_CONTACT",
+        "mapping": "Explicit source describes roar as wide Batu; apply retained Batu marker per resolved recipient."
+      }
+    },
+    {
+      "id": "SK_전사_016",
+      "name": "스톰블레이드",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 12
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "articleId": 191777,
+        "imageIndex": 13,
+        "backdrop": "FLAT_GRAY",
+        "pivot": [
+          43,
+          78
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_017",
+      "name": "룬블레이드",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 15
+      },
+      "effect": {
+        "channel": "RECIPIENT_CONTACT",
+        "anchor": "RECIPIENT",
+        "scale": 1,
+        "articleId": 191777,
+        "imageIndex": 16,
+        "backdrop": "FLAT_GRAY",
+        "pivot": [
+          52,
+          81
+        ]
+      }
+    },
+    {
+      "id": "SK_전사_022",
+      "name": "매드소울진",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 18
+      }
+    },
+    {
+      "id": "SK_전사_023",
+      "name": "데빌크래셔",
+      "icon": {
+        "articleId": 191777,
+        "imageIndex": 20
+      }
+    }
+  ],
+  "damageImpact": {
+    "articleId": 191777,
+    "imageIndex": 4,
+    "backdrop": "FLAT_GRAY",
+    "pivot": [
+      65,
+      81
+    ],
+    "scale": 0.28,
+    "channel": "RECIPIENT_DAMAGE",
+    "anchor": "RECIPIENT"
+  },
+  "policy": "Static 2013 capture shapes use project hold/fade timing. Current labelled battle screenshots are preferred over explicitly old isolated art. Shared damage marker is an adapted reuse of the labelled charge burst, not an original universal impact."
+}

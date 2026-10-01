@@ -1,0 +1,153 @@
+{
+  "revision": "EXACT_NAME_SHARED_FORM_V70",
+  "nativeArchivePixels": false,
+  "limitations": [
+    "Exact name cross-job form reuse is a project choice, not per-job original animation proof."
+  ],
+  "skills": {
+    "SK_공통_010": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "classic/58ef84a2c0e9a98e_recipient_contact.png",
+          "width": 217,
+          "height": 134,
+          "columns": 4,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            200
+          ],
+          "frameIndices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "pivotX": 108,
+          "pivotY": 116,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "sourceGif": "master/source/skill_fx/naver_classic_2020/c0e1ce449ecbc30d.gif",
+          "sourceSha256": "87101a727e174a8b7e875daf9282ef28fc8021abcd69afb61b153d2dc63726af",
+          "atlasSha256": "445577b4b0a019c44e12ad784b6eb5fd304f6de3802003fdd0b9b44c3b3cdcf7",
+          "opaquePixelCounts": [
+            474,
+            116,
+            204,
+            382,
+            672,
+            213,
+            89
+          ]
+        }
+      },
+      "name": "쿠로토",
+      "donorId": "SK_무도가_032",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE"
+    },
+    "SK_성직자_058": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "classic/58ef84a2c0e9a98e_recipient_contact.png",
+          "width": 217,
+          "height": 134,
+          "columns": 4,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            200
+          ],
+          "frameIndices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "pivotX": 108,
+          "pivotY": 116,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "sourceGif": "master/source/skill_fx/naver_classic_2020/c0e1ce449ecbc30d.gif",
+          "sourceSha256": "87101a727e174a8b7e875daf9282ef28fc8021abcd69afb61b153d2dc63726af",
+          "atlasSha256": "445577b4b0a019c44e12ad784b6eb5fd304f6de3802003fdd0b9b44c3b3cdcf7",
+          "opaquePixelCounts": [
+            474,
+            116,
+            204,
+            382,
+            672,
+            213,
+            89
+          ]
+        }
+      },
+      "name": "쿠로토",
+      "donorId": "SK_무도가_032",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE"
+    },
+    "SK_마법사_056": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "classic/58ef84a2c0e9a98e_recipient_contact.png",
+          "width": 217,
+          "height": 134,
+          "columns": 4,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            200
+          ],
+          "frameIndices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "pivotX": 108,
+          "pivotY": 116,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "sourceGif": "master/source/skill_fx/naver_classic_2020/c0e1ce449ecbc30d.gif",
+          "sourceSha256": "87101a727e174a8b7e875daf9282ef28fc8021abcd69afb61b153d2dc63726af",
+          "atlasSha256": "445577b4b0a019c44e12ad784b6eb5fd304f6de3802003fdd0b9b44c3b3cdcf7",
+          "opaquePixelCounts": [
+            474,
+            116,
+            204,
+            382,
+            672,
+            213,
+            89
+          ]
+        }
+      },
+      "name": "쿠로토",
+      "donorId": "SK_무도가_032",
+      "mapping": "EXACT_NAME_PROJECT_SOURCE_FORM_REUSE"
+    }
+  }
+}

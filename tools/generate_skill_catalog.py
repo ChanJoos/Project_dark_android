@@ -27,6 +27,11 @@ for correction in rogue['changes']:
     entry=next(e for e in entries if e['id']==correction['sourceId'])
     assert entry['kind']==correction['before']
     entry['kind']=correction['after']
+all_jobs=json.loads((root/'master/changes/ALL-JOB-SOURCE-V70.json').read_text())
+assert all_jobs['status']=='ACCEPTED'
+assert hashlib.sha256((root/all_jobs['sourceSnapshot']).read_bytes()).hexdigest()==all_jobs['sourceSnapshotSha256']
+assert all_jobs['evidenceQuote'] in json.loads((root/all_jobs['sourceSnapshot']).read_text())['text']
+for entry in entries:entry.update(all_jobs['overrides'].get(entry['id'],{}))
 assert len({e['id'] for e in entries})==len(entries)
 p=root/'app/src/main/assets/skills/catalog.json' ;p.parent.mkdir(parents=True,exist_ok=True)
 p.write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
