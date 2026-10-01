@@ -49,7 +49,11 @@ public class SkillSpatialContractTest {
       for(CombatResolver.Event e:events)if(e.type==CombatResolver.EventType.HIT_FEEDBACK){assertTrue(e.amount>0);affected.add(e.targetId);}
       Set<String> want=new HashSet<>();for(int n:expected[k])want.add("m"+n);assertEquals(ids[k],want,affected);
       for(RuntimeState.Monster m:s.monsters())assertEquals(ids[k]+" "+m.id,want.contains(m.id),m.hp<100);
-      SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));fx.consume(events,anchors(s));fx.consume(events,anchors(s));assertEquals(ids[k],want.size(),fx.pulses.stream().filter(p->!p.caster).count());
+      SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));fx.consume(events,anchors(s));fx.consume(events,anchors(s));
+      assertEquals(ids[k]+" skill recipients",want.size(),fx.pulses.stream().filter(p->!p.caster&&!p.sheet.equals("impact")).count());
+      assertEquals(ids[k]+" damage impacts",want.size(),fx.pulses.stream().filter(p->p.sheet.equals("impact")).count());
+      Set<String> impactAnchors=new HashSet<>();for(SkillVfxRenderer.Pulse p:fx.pulses)if(p.sheet.equals("impact")){assertFalse(p.caster);impactAnchors.add(p.anchor);}
+      assertEquals(ids[k]+" impact anchors",want,impactAnchors);
     }
   }
   @Test public void targetMovesWallsAndViewportAreRecheckedAtContact(){
