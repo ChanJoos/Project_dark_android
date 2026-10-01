@@ -206,7 +206,7 @@
       "name": "파천각",
       "before": "IDLE",
       "after": "IDLE",
-      "status": "SOURCE_REVIEWED",
+      "status": "UNRESOLVED_ORIGINAL_SCOPE_CAST_BLOCKED",
       "mode": "ACTIVE"
     },
     {

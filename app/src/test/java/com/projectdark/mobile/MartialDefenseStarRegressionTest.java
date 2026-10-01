@@ -60,12 +60,16 @@ public class MartialDefenseStarRegressionTest {
  @Test public void retainedDefenseSphereContainsHeadAndFeetForBothBodies()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);
   ClassicSkillReference reference=new ClassicSkillReference(c,"warrior");ClassicSkillReference.Channel channel=reference.channel("SK_전사_014",false);assertNotNull(channel);
-  assertEquals(-33,channel.sequence.footOffsetY,0);assertEquals(.27f,channel.sequence.scale,0);
+  assertEquals(-35,channel.sequence.footOffsetY,0);assertEquals(.31f,channel.sequence.scale,0);
   for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
    Bitmap actor=Bitmap.createBitmap(240,220,Bitmap.Config.ARGB_8888);Canvas actorCanvas=new Canvas(actor);
    CharacterRenderer.Pose pose=new CharacterRenderer.Pose(120,150,d,CharacterRenderer.State.SKILL,0,.2f,.5f,false,body.equals("mm001")?"mu0000001,mh172,ml228":null,null,null,CharacterRenderer.EffectFamily.SKILL);
    assertTrue(renderer.draw(actorCanvas,pose,body,"RAISE",.4f));
    Bitmap shell=Bitmap.createBitmap(240,220,Bitmap.Config.ARGB_8888);reference.draw(new Canvas(shell),channel,.2f,120,150+channel.sequence.footOffsetY);
+   for(int y=0;y<actor.getHeight();y++)for(int x=0;x<actor.getWidth();x++)if(Color.alpha(actor.getPixel(x,y))>12){
+    float dx=(x-120)/(110*.31f),dy=(y-(150-35))/(118*.31f);
+    assertTrue("Inside source ellipse "+body+" "+d+" pixel="+x+","+y,dx*dx+dy*dy<=1.04f);
+   }
    int[] a=bounds(actor),s=bounds(shell);assertTrue("head "+body+" "+d+" actor="+Arrays.toString(a)+" sphere="+Arrays.toString(s),a[1]>=s[1]);
    assertTrue("feet "+body+" "+d,a[3]<=s[3]+2);
    Bitmap review=Bitmap.createBitmap(240,220,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(review);canvas.drawColor(0xff20291f);canvas.drawBitmap(actor,0,0,null);canvas.drawBitmap(shell,0,0,null);

@@ -38,7 +38,7 @@ public class SkillFxAuditTest {
  }
  @Test public void defenseUsesActualVideoFramesAndTimingInsteadOfStaticHold()throws Exception{
   ClassicSkillReference warrior=new ClassicSkillReference(c,"warrior");CapturedSkillFx.Sequence s=warrior.channel("SK_전사_014",false).sequence;
-  assertEquals(-33,s.footOffsetY,0);assertTrue(s.filterBitmap);assertFalse(s.normalBlend);assertEquals(66,s.durations.length);assertEquals(2.2f,s.duration,.001f);
+  assertEquals(-35,s.footOffsetY,0);assertTrue(s.filterBitmap);assertFalse(s.normalBlend);assertEquals(66,s.durations.length);assertEquals(2.2f,s.duration,.001f);
   assertNotEquals(s.frame(.20f),s.frame(.90f));long first=0,later=0;
   for(int y=0;y<s.height;y++)for(int x=0;x<s.width;x++){first+=Color.alpha(s.atlas.getPixel(x,y+2*s.height));later+=Color.alpha(s.atlas.getPixel(x,y+8*s.height));}
   assertTrue(first>0);assertTrue(later>0);java.util.Set<Integer> frameHashes=new java.util.HashSet<>();for(int i=0;i<66;i++){int hash=1;for(int y=0;y<s.height;y+=3)for(int x=0;x<s.width;x+=3)hash=31*hash+s.atlas.getPixel(i%6*s.width+x,i/6*s.height+y);frameHashes.add(hash);}assertTrue("actual highlight changes",frameHashes.size()>5);
