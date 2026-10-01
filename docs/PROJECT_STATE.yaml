@@ -146,6 +146,19 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  SKILL_PRESENTATION_080:
+    title: "Martial motion review, Defense envelope and fifth-circle star contact"
+    system: combat_presentation
+    priority: P1
+    claim: Director/Integration
+    queue_state: VERIFICATION_PENDING
+    source_branch: codex/original-skill-contract-v65
+    source_sha: 5659cd4981f4cf81faacc9f8cdda29f8abcffdcc
+    failed_predecessor: "V79 DEVICE_FAILED (user-reported); installed SHA unconfirmed"
+    required_sources: [docs/verification/MARTIAL_MOTION_V80_AUDIT.json, docs/verification/SKILL_FX_V80_AUDIT.json, docs/SKILL_ACTION_DECISIONS.csv]
+    acceptance: ["Kick full extension at real contact", "Both bodies and four directions for all34 martial selections", "Retained Defense sphere contains head/feet", "Four finisher stars visible at each actual recipient contact", "Exact source SHA CI/APK evidence"]
+    remaining: "Original caster cadence/occluded poses, original finisher pixels/color/cadence and33 particle sources; physical phone and user visual acceptance"
+    delivery_policy: "ZIP containing APK because APK-only links were not clickable on phone"
   SKILL_FX_SOURCE_RECHECK_078:
     title: "Recheck all supplied originals and connect omitted labelled source routes"
     system: combat_presentation

@@ -59,7 +59,7 @@ public class MartialDefenseStarRegressionTest {
  }
  @Test public void retainedDefenseSphereContainsHeadAndFeetForBothBodies()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);
-  ClassicSkillReference reference=new ClassicSkillReference(c,"warrior");ClassicSkillReference.Channel channel=reference.channel("SK_전사_014",true);assertNotNull(channel);
+  ClassicSkillReference reference=new ClassicSkillReference(c,"warrior");ClassicSkillReference.Channel channel=reference.channel("SK_전사_014",false);assertNotNull(channel);
   assertEquals(-33,channel.sequence.footOffsetY,0);assertEquals(.27f,channel.sequence.scale,0);
   for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
    Bitmap actor=Bitmap.createBitmap(240,220,Bitmap.Config.ARGB_8888);Canvas actorCanvas=new Canvas(actor);
@@ -91,7 +91,7 @@ public class MartialDefenseStarRegressionTest {
  }
  private GameView fresh(){c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);return v;}
  private static int[] bounds(Bitmap b){int[] r={b.getWidth(),b.getHeight(),-1,-1};for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if(Color.alpha(b.getPixel(x,y))>12){r[0]=Math.min(r[0],x);r[1]=Math.min(r[1],y);r[2]=Math.max(r[2],x);r[3]=Math.max(r[3],y);}assertTrue(r[2]>=0);return r;}
- private static void use(GameView v,String id)throws Exception{Method m=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);m.setAccessible(true);m.invoke(v,((SkillBook)field(v,"skillBook")).get(id));((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();}
+ private static void use(GameView v,String id)throws Exception{Method m=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);m.setAccessible(true);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();m.invoke(v,((SkillBook)field(v,"skillBook")).get(id));}
  private static void save(GameView v,String name)throws Exception{Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));write(b,"v80-live-"+name+".png");b.recycle();}
  private static void write(Bitmap b,String name)throws Exception{File f=new File("build/reports/device-review/"+name);f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){b.compress(Bitmap.CompressFormat.PNG,100,out);}}
  @SuppressWarnings("unchecked")private static <T>T field(Object o,String n)throws Exception{Field f=o.getClass().getDeclaredField(n);f.setAccessible(true);return(T)f.get(o);}
