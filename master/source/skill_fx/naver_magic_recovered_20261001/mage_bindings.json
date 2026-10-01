@@ -1,0 +1,1003 @@
+{
+  "revision": "MAGE_SOURCE_V77",
+  "rows": [
+    {
+      "id": "SK_마법사_001",
+      "name": "마레노",
+      "articleId": 221564,
+      "indices": [
+        3
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 2,
+        "dy": 0
+      }
+    },
+    {
+      "id": "SK_마법사_013",
+      "name": "마레누스",
+      "articleId": 221564,
+      "indices": [
+        4
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 3,
+        "dy": 2
+      }
+    },
+    {
+      "id": "SK_마법사_026",
+      "name": "마레네라",
+      "articleId": 221564,
+      "indices": [
+        5
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 3,
+        "dy": 4
+      }
+    },
+    {
+      "id": "SK_마법사_003",
+      "name": "테라미코",
+      "articleId": 221564,
+      "indices": [
+        9
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "NEUTRAL",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 3,
+        "dy": -2
+      }
+    },
+    {
+      "id": "SK_마법사_014",
+      "name": "테라미쿠스",
+      "articleId": 221564,
+      "indices": [
+        10
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "NEUTRAL",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 1,
+        "dy": 4
+      }
+    },
+    {
+      "id": "SK_마법사_027",
+      "name": "테라미에라",
+      "articleId": 221564,
+      "indices": [
+        11
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "NEUTRAL",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 4,
+        "dy": -1
+      }
+    },
+    {
+      "id": "SK_마법사_004",
+      "name": "아듀로",
+      "articleId": 221564,
+      "indices": [
+        15
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 0,
+        "dy": 0
+      }
+    },
+    {
+      "id": "SK_마법사_015",
+      "name": "아듀로스",
+      "articleId": 221564,
+      "indices": [
+        16
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 0,
+        "dy": 0
+      }
+    },
+    {
+      "id": "SK_마법사_028",
+      "name": "아듀레나",
+      "articleId": 221564,
+      "indices": [
+        17
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 1,
+        "dy": 3
+      }
+    },
+    {
+      "id": "SK_마법사_005",
+      "name": "플라모",
+      "articleId": 221564,
+      "indices": [
+        21
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "WARM",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_016",
+      "name": "플라무스",
+      "articleId": 221564,
+      "indices": [
+        22
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "WARM",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 0,
+        "dy": 4
+      }
+    },
+    {
+      "id": "SK_마법사_029",
+      "name": "플라메라",
+      "articleId": 221564,
+      "indices": [
+        23
+      ],
+      "region": [
+        0,
+        33,
+        100,
+        96
+      ],
+      "pivot": [
+        50,
+        58
+      ],
+      "color": "WARM",
+      "blocked": [
+        [
+          41,
+          46,
+          62,
+          83
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 4,
+        "dy": 4
+      }
+    },
+    {
+      "id": "SK_마법사_002",
+      "name": "렌토",
+      "articleId": 221555,
+      "indices": [
+        4
+      ],
+      "region": [
+        8,
+        32,
+        94,
+        96
+      ],
+      "pivot": [
+        50,
+        59
+      ],
+      "color": "PURPLE",
+      "blocked": [
+        [
+          42,
+          47,
+          62,
+          84
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": -1,
+        "dy": -4
+      }
+    },
+    {
+      "id": "SK_마법사_011",
+      "name": "바르도",
+      "articleId": 221555,
+      "indices": [
+        5
+      ],
+      "region": [
+        8,
+        32,
+        94,
+        96
+      ],
+      "pivot": [
+        50,
+        59
+      ],
+      "color": "YELLOW",
+      "blocked": [
+        [
+          42,
+          47,
+          62,
+          84
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 0,
+        "dy": 4
+      }
+    },
+    {
+      "id": "SK_마법사_024",
+      "name": "데프레코",
+      "articleId": 221555,
+      "indices": [
+        6
+      ],
+      "region": [
+        8,
+        32,
+        94,
+        96
+      ],
+      "pivot": [
+        50,
+        59
+      ],
+      "color": "PURPLE",
+      "blocked": [
+        [
+          42,
+          47,
+          62,
+          84
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": -4,
+        "dy": -4
+      }
+    },
+    {
+      "id": "SK_마법사_053",
+      "name": "프라보",
+      "articleId": 221555,
+      "indices": [
+        7
+      ],
+      "region": [
+        8,
+        32,
+        94,
+        96
+      ],
+      "pivot": [
+        50,
+        59
+      ],
+      "color": "RED",
+      "blocked": [
+        [
+          42,
+          47,
+          62,
+          84
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0,
+      "mattingPlate": {
+        "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
+        "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
+        "dx": 1,
+        "dy": 0
+      }
+    },
+    {
+      "id": "SK_마법사_043",
+      "name": "메테오",
+      "articleId": 254766,
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "region": [
+        30,
+        102,
+        103,
+        224
+      ],
+      "pivot": [
+        67,
+        184
+      ],
+      "color": "WARM",
+      "blocked": [
+        [
+          55,
+          140,
+          88,
+          153
+        ],
+        [
+          56,
+          156,
+          79,
+          215
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_045",
+      "name": "매직프로텍션",
+      "articleId": 254766,
+      "indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "region": [
+        142,
+        80,
+        242,
+        143
+      ],
+      "pivot": [
+        190,
+        105
+      ],
+      "color": "ROCK",
+      "blocked": [
+        [
+          177,
+          61,
+          204,
+          126
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_044",
+      "name": "속성강화",
+      "articleId": 254766,
+      "indices": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "region": [
+        2,
+        52,
+        110,
+        142
+      ],
+      "pivot": [
+        48,
+        88
+      ],
+      "color": "BRIGHT",
+      "blocked": [
+        [
+          33,
+          72,
+          64,
+          116
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_039",
+      "name": "아이스블러스트",
+      "articleId": 254766,
+      "indices": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "region": [
+        76,
+        75,
+        191,
+        198
+      ],
+      "pivot": [
+        134,
+        153
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          125,
+          139,
+          149,
+          190
+        ],
+        [
+          124,
+          129,
+          155,
+          138
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_040",
+      "name": "퀘이크",
+      "articleId": 254766,
+      "indices": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "region": [
+        76,
+        75,
+        191,
+        198
+      ],
+      "pivot": [
+        134,
+        153
+      ],
+      "color": "DIFFERENCE",
+      "blocked": [
+        [
+          125,
+          139,
+          149,
+          190
+        ],
+        [
+          124,
+          129,
+          155,
+          138
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_041",
+      "name": "플레쉬스톰",
+      "articleId": 254766,
+      "indices": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "region": [
+        76,
+        75,
+        191,
+        198
+      ],
+      "pivot": [
+        134,
+        153
+      ],
+      "color": "GREEN",
+      "blocked": [
+        [
+          125,
+          139,
+          149,
+          190
+        ],
+        [
+          124,
+          129,
+          155,
+          138
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_042",
+      "name": "플레어",
+      "articleId": 254766,
+      "indices": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "region": [
+        76,
+        75,
+        191,
+        198
+      ],
+      "pivot": [
+        134,
+        153
+      ],
+      "color": "WARM",
+      "blocked": [
+        [
+          125,
+          139,
+          149,
+          190
+        ],
+        [
+          124,
+          129,
+          155,
+          138
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_046",
+      "name": "어둠의각인",
+      "articleId": 254766,
+      "indices": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "region": [
+        70,
+        64,
+        173,
+        147
+      ],
+      "pivot": [
+        125,
+        107
+      ],
+      "color": "DARK_DIFFERENCE",
+      "blocked": [
+        [
+          55,
+          47,
+          77,
+          126
+        ]
+      ],
+      "anchor": "RECIPIENT",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_047",
+      "name": "렌티아",
+      "articleId": 254766,
+      "indices": [
+        35
+      ],
+      "region": [
+        10,
+        99,
+        90,
+        246
+      ],
+      "pivot": [
+        56,
+        174
+      ],
+      "color": "PURPLE",
+      "blocked": [],
+      "anchor": "RECIPIENT",
+      "scale": 0.8
+    },
+    {
+      "id": "SK_마법사_048",
+      "name": "바르데아",
+      "articleId": 254766,
+      "indices": [
+        36
+      ],
+      "region": [
+        10,
+        99,
+        90,
+        246
+      ],
+      "pivot": [
+        56,
+        174
+      ],
+      "color": "YELLOW",
+      "blocked": [],
+      "anchor": "RECIPIENT",
+      "scale": 0.8
+    },
+    {
+      "id": "SK_마법사_049",
+      "name": "데프레타",
+      "articleId": 254766,
+      "indices": [
+        37
+      ],
+      "region": [
+        10,
+        99,
+        90,
+        246
+      ],
+      "pivot": [
+        56,
+        174
+      ],
+      "color": "PURPLE",
+      "blocked": [],
+      "anchor": "RECIPIENT",
+      "scale": 0.8
+    },
+    {
+      "id": "SK_마법사_050",
+      "name": "프라베라",
+      "articleId": 254766,
+      "indices": [
+        38
+      ],
+      "region": [
+        10,
+        99,
+        90,
+        246
+      ],
+      "pivot": [
+        56,
+        174
+      ],
+      "color": "RED",
+      "blocked": [],
+      "anchor": "RECIPIENT",
+      "scale": 0.8
+    },
+    {
+      "id": "SK_마법사_051",
+      "name": "델리스펠라스",
+      "articleId": 254766,
+      "indices": [
+        39,
+        40,
+        41
+      ],
+      "region": [
+        7,
+        34,
+        107,
+        135
+      ],
+      "pivot": [
+        55,
+        89
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          38,
+          62,
+          69,
+          113
+        ]
+      ],
+      "anchor": "CASTER",
+      "scale": 1.0
+    },
+    {
+      "id": "SK_마법사_052",
+      "name": "포트리스",
+      "articleId": 254766,
+      "indices": [
+        42,
+        43,
+        44
+      ],
+      "region": [
+        7,
+        34,
+        107,
+        135
+      ],
+      "pivot": [
+        55,
+        89
+      ],
+      "color": "COLD",
+      "blocked": [
+        [
+          38,
+          62,
+          69,
+          113
+        ]
+      ],
+      "anchor": "CASTER",
+      "scale": 1.0
+    }
+  ],
+  "limitations": [
+    "Still captures have project timing; original animation cadence is not known.",
+    "Occluded effect pixels remain absent.",
+    "No different spell receives a similar-looking source or invented icon."
+  ]
+}

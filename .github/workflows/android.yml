@@ -100,7 +100,7 @@ jobs:
           git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
       - name: Verify classic capture sources and projections
         run: |
-          pip install numpy Pillow
+          pip install numpy Pillow scipy
           python tools/import_classic_skill_references.py
           python tools/import_rogue_skill_references.py
           python tools/import_all_job_skill_references.py
@@ -115,7 +115,7 @@ jobs:
       - name: Audit every skill FX source and runtime precedence
         run: |
           python3 tools/audit_runtime_skill_fx.py
-          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V75_AUDIT.json
+          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V77_AUDIT.json
       - name: Verify item window source crops and input
         run: |
           python3 tools/extract_item_window_reference.py

@@ -1,0 +1,107 @@
+{
+  "revision": "MAGIC_SOURCE_V77",
+  "verifiedMediaReferences": 228,
+  "mageCatalog": 57,
+  "mageSourceCaptureRoutes": 30,
+  "mageSharedRoutes": 1,
+  "mageNoParticle": 4,
+  "mageUnresolvedOriginalCount": 22,
+  "unresolvedMage": [
+    {
+      "id": "SK_마법사_006",
+      "name": "콘푸지오"
+    },
+    {
+      "id": "SK_마법사_007",
+      "name": "수페라마레나"
+    },
+    {
+      "id": "SK_마법사_008",
+      "name": "수페라테라미카"
+    },
+    {
+      "id": "SK_마법사_009",
+      "name": "수페라아듀라"
+    },
+    {
+      "id": "SK_마법사_010",
+      "name": "수페라플라미카"
+    },
+    {
+      "id": "SK_마법사_012",
+      "name": "베노미"
+    },
+    {
+      "id": "SK_마법사_017",
+      "name": "나르콜리"
+    },
+    {
+      "id": "SK_마법사_018",
+      "name": "엑스마레나"
+    },
+    {
+      "id": "SK_마법사_019",
+      "name": "엑스테라미카"
+    },
+    {
+      "id": "SK_마법사_020",
+      "name": "엑스아듀라"
+    },
+    {
+      "id": "SK_마법사_021",
+      "name": "엑스플라미카"
+    },
+    {
+      "id": "SK_마법사_023",
+      "name": "딜루메니"
+    },
+    {
+      "id": "SK_마법사_025",
+      "name": "소루마"
+    },
+    {
+      "id": "SK_마법사_030",
+      "name": "마네나로"
+    },
+    {
+      "id": "SK_마법사_031",
+      "name": "테라미칼로"
+    },
+    {
+      "id": "SK_마법사_032",
+      "name": "아듀랄로"
+    },
+    {
+      "id": "SK_마법사_033",
+      "name": "플라미칼로"
+    },
+    {
+      "id": "SK_마법사_034",
+      "name": "세멜리아"
+    },
+    {
+      "id": "SK_마법사_035",
+      "name": "아마게돈"
+    },
+    {
+      "id": "SK_마법사_036",
+      "name": "숨마스텔라"
+    },
+    {
+      "id": "SK_마법사_037",
+      "name": "라그나로크"
+    },
+    {
+      "id": "SK_마법사_038",
+      "name": "데스"
+    }
+  ],
+  "classicRuntimeIds": 101,
+  "classicChannels": 142,
+  "originalCadence": "NOT_KNOWN_FOR_MAGE_STILLS",
+  "device": "PENDING",
+  "limits": [
+    "Occluded pixels and one-facing captures remain approximate.",
+    "Still-source runtime timing is explicitly project-authored."
+  ]
+}

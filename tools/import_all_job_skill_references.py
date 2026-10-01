@@ -48,6 +48,8 @@ for row in bindings['rows']:
    manifest['skills'][sid]=dict(channels=borrowed['channels'],mapping='SOURCE_EXPLICIT_SHARED_EFFECT_REUSE',donorId=ref['sharedRogueId'])
   else:manifest['skills'][sid]={'channels':{ref['channel']:channel(sid,ref)}}
 manifest['damageImpact']=channel('PROJECT_RECIPIENT_DAMAGE_SOURCE_REUSE',bindings['damageImpact'])
+from import_defense_video import project
+manifest['skills']['SK_전사_014']={'channels':{'RECIPIENT_CONTACT':project(ROOT,OUT)},'mapping':'USER_VIDEO_COMPLETE_DEFENSE_V76'}
 (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n');(OUT/'references.json').write_text(json.dumps(dict(revision=bindings['revision'],rows=references),ensure_ascii=False,indent=2)+'\n')
 # Exact same spell names may reuse a retained form only with an explicit project-reuse record.
 SHARED=BASE/'shared';SHARED.mkdir(exist_ok=True);(SHARED/'icons').mkdir(exist_ok=True)

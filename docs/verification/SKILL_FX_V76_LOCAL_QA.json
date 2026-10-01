@@ -1,0 +1,16 @@
+{
+  "status": "SOURCE_ROUTE_HASH_VERIFIED_VISUAL_PENDING",
+  "checks": [
+    "228 recovered media references match retained bytes",
+    "All221 selected runtime source/atlas hashes",
+    "Available CSV integrity validation passes",
+    "Classic source IDs 55 -> 71; channels 82 -> 112",
+    "66 video samples, 2200ms sampled cadence"
+  ],
+  "defense": "2D source interior retained; reflected and harmonic-filled actor occlusion is reconstructed and not visually accepted.",
+  "mage": "52 adapted animations still unresolved; recovered still images are retained but not passed off as original animation.",
+  "build": "NOT_RUN: local Android SDK/Gradle unavailable; no new CI or APK",
+  "runtime": "NOT_RUN_ON_ANDROID",
+  "publication": "NOT_PUSHED: earlier automatic approval review rejected public publication of private-video derivatives",
+  "legacyArchiveCheck": "Existing master/verify_master_archive.py hardcoded tar checksum mismatch; preserved archive unchanged by this task"
+}

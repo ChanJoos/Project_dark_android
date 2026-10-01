@@ -1,0 +1,27 @@
+{
+  "sourceName": "Screen_Recording_20260930_201141_YouTube.mp4",
+  "sourceRecordingSha256": "2f2a39dec31930975badbed92752ad6e4bdb73eb1d5d35e50784abc1e2bcb910",
+  "crop": [
+    790,
+    175,
+    250,
+    320
+  ],
+  "startSeconds": 1.9,
+  "sampleFps": 30,
+  "frameCount": 66,
+  "columns": 6,
+  "width": 250,
+  "height": 320,
+  "pivot": [
+    120,
+    185
+  ],
+  "scale": 0.27,
+  "sourceFrameSha256": "54f61f4ab7bbc2571646d3dfc7f0ce87219b12355389a1ed14acf41f98e89871",
+  "evidence": "USER_SUPPLIED_VIDEO_DECODED_CROP",
+  "limits": [
+    "Decoded source crop retained without matting. Original video is the user attachment identified by SHA256.",
+    "Hidden particles behind actors cannot be recovered. Other facing pixels not demonstrated."
+  ]
+}

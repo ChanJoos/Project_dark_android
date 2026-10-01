@@ -387,18 +387,16 @@
         {
           "phase": "RECIPIENT_CONTACT",
           "anchor": "CASTER",
-          "path": "warrior/e0c42bec201a678c.png",
-          "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/7d4df4380bd57a68d907c4932bf3c3f0fba289312a2632006a01a540c983e1e7.jpg",
-          "sourceSha256": "7d4df4380bd57a68d907c4932bf3c3f0fba289312a2632006a01a540c983e1e7",
-          "atlasSha256": "fa54d2091b931b39fa419aa52ab15c1baff5ef75558308dcfda0a9a06c9c588f",
-          "frames": 4,
-          "durationMs": 360,
-          "peakPixels": 1741,
-          "blend": "NORMAL",
+          "path": "warrior/defense_video.png",
+          "source": "master/source/skill_fx/user_defense_20261001/source_frames.png",
+          "sourceSha256": "54f61f4ab7bbc2571646d3dfc7f0ce87219b12355389a1ed14acf41f98e89871",
+          "atlasSha256": "ec812a5b6e9f1766a5d8c2e80c7ceac52da08302d086534ce244ab01ac6c93db",
+          "frames": 66,
+          "durationMs": 2200,
+          "peakPixels": 47194,
+          "blend": "SCREEN",
           "directional": false,
-          "flags": [
-            "STATIC_SOURCE_PROJECT_TIMING"
-          ]
+          "flags": []
         }
       ],
       "reviewedSourceWithoutChannel": null,

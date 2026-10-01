@@ -34,10 +34,26 @@ public class SkillFxAuditTest {
    Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(v,SkillActionContract.get(id).contact+.001f);SkillVfxRenderer fx=field(v,"skillVfx");assertFalse(id,fx.pulses.isEmpty());for(SkillVfxRenderer.Pulse q:fx.pulses){q.age=q.sheet.equals("capture")?(id.equals("SK_전사_015")?.22f:Math.min(.5f,q.duration*.75f)):sourcePeakAge(fx,q);if(id.equals("SK_전사_013")&&q.sheet.equals("capture")){assertEquals(dx,q.directionX,.01f);assertEquals(dy,q.directionY,.01f);}}
    Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));save(b,"fx-live-v75-"+id+"-"+(face++%4)+".png");b.recycle();
   }
-  ClassicSkillReference classic=new ClassicSkillReference(c);assertNull(classic.channel("SK_무도가_002",true));assertTrue(classic.channel("SK_무도가_002",false).sequence.atlas.getWidth()>0);ClassicSkillReference warrior=new ClassicSkillReference(c,"warrior");assertTrue(warrior.channel("SK_전사_014",false).sequence.normalBlend);
+  ClassicSkillReference classic=new ClassicSkillReference(c);assertNull(classic.channel("SK_무도가_002",true));assertTrue(classic.channel("SK_무도가_002",false).sequence.atlas.getWidth()>0);ClassicSkillReference warrior=new ClassicSkillReference(c,"warrior");assertFalse(warrior.channel("SK_전사_014",false).sequence.normalBlend);
  }
- @Test public void defenseRingKeepsBrightSourceRimAndNormalColourPixels()throws Exception{
-  ClassicSkillReference warrior=new ClassicSkillReference(c,"warrior");ClassicSkillReference.Channel channel=warrior.channel("SK_전사_014",false);CapturedSkillFx.Sequence s=channel.sequence;assertTrue(s.normalBlend);Bitmap b=Bitmap.createBitmap(s.width,s.height,Bitmap.Config.ARGB_8888);warrior.draw(new Canvas(b),channel,.08f,s.pivotX,s.pivotY);int bright=0;for(int y=0;y<s.height;y++)for(int x=0;x<s.width;x++){int expected=s.atlas.getPixel(x+s.width,y);assertEquals(expected,b.getPixel(x,y));if(Color.alpha(expected)>200&&Color.red(expected)>170&&Color.green(expected)>170&&Color.blue(expected)>170)bright++;}assertTrue("source white rim was not removed",bright>20);b.recycle();
+ @Test public void defenseUsesActualVideoFramesAndTimingInsteadOfStaticHold()throws Exception{
+  ClassicSkillReference warrior=new ClassicSkillReference(c,"warrior");CapturedSkillFx.Sequence s=warrior.channel("SK_전사_014",false).sequence;
+  assertTrue(s.visualCenter);assertTrue(s.filterBitmap);assertFalse(s.normalBlend);assertEquals(66,s.durations.length);assertEquals(2.2f,s.duration,.001f);
+  assertNotEquals(s.frame(.20f),s.frame(.90f));long first=0,later=0;
+  for(int y=0;y<s.height;y++)for(int x=0;x<s.width;x++){first+=Color.alpha(s.atlas.getPixel(x,y+2*s.height));later+=Color.alpha(s.atlas.getPixel(x,y+8*s.height));}
+  assertTrue(first>0);assertTrue(later>0);java.util.Set<Integer> frameHashes=new java.util.HashSet<>();for(int i=0;i<66;i++){int hash=1;for(int y=0;y<s.height;y+=3)for(int x=0;x<s.width;x+=3)hash=31*hash+s.atlas.getPixel(i%6*s.width+x,i/6*s.height+y);frameHashes.add(hash);}assertTrue("actual highlight changes",frameHashes.size()>5);
+ }
+ @Test public void recipientFxUsesVisualCenterAndCapturedStrikeUsesRecipient()throws Exception{
+  SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));
+  SkillVfxRenderer.Anchors a=new SkillVfxRenderer.Anchors(){public float x(String id){return "player".equals(id)?100:200;}public float y(String id){return 200;}public float centerY(String id){return "player".equals(id)?177:165;}};
+  CombatResolver.Definition def=new CombatResolver.Definition("SK_전사_015",CombatResolver.ActionKind.MAGIC,CombatResolver.ActionState.MAGIC,CombatResolver.EffectType.MAGIC_HIT,true,0,1,150,.24f,12);
+  fx.consume(Collections.singletonList(new CombatResolver.Event(991,991,CombatResolver.EventType.HIT_FEEDBACK,"player","monster",def,CombatResolver.InputMode.MANUAL,null,CombatResolver.HitSemantic.DAMAGE,12)),a);
+  assertEquals("monster",fx.pulses.stream().filter(p->p.sheet.equals("capture")).findFirst().get().anchor);
+  // The same floor coordinates with a different sprite height translate recipient particles.
+  SkillVfxRenderer.Anchors b=new SkillVfxRenderer.Anchors(){public float x(String id){return a.x(id);}public float y(String id){return a.y(id);}public float centerY(String id){return a.centerY(id)+12;}};
+  fx.pulses.removeIf(p->!p.sheet.equals("impact"));fx.pulses.get(0).age=.1f;
+  Bitmap before=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888),after=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888);fx.draw(new Canvas(before),a);fx.draw(new Canvas(after),b);
+  int pixels=0;for(int y=0;y<388;y++)for(int x=0;x<400;x++){assertEquals(before.getPixel(x,y),after.getPixel(x,y+12));if(Color.alpha(before.getPixel(x,y))>0)pixels++;}assertTrue(pixels>0);
  }
  static float sourcePeakAge(SkillVfxRenderer fx,SkillVfxRenderer.Pulse q)throws Exception{
   ClassicSkillReference ref=Arrays.asList("classic","warrior","rogue","shared").contains(q.sheet)?field(fx,q.sheet):null;

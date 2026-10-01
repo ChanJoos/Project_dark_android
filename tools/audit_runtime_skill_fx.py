@@ -13,6 +13,10 @@ for e in cat:
    source=R/entry['sourceGif'];sourcehash=hashlib.sha256(source.read_bytes()).hexdigest();assert sourcehash==entry['sourceSha256'];reviewedSource={'source':entry['sourceGif'],'sourceSha256':sourcehash,'reason':entry.get('review',{}).get('reason','No separately recoverable particle')} 
   for phase,v in ch.items():
    source=R/v['sourceGif'];atlas=B/v['path'];sourcehash=hashlib.sha256(source.read_bytes()).hexdigest();atlashash=hashlib.sha256(atlas.read_bytes()).hexdigest();assert sourcehash==v['sourceSha256'];assert atlashash==v['atlasSha256']
+   for item in v.get('sourceFrames',[]):
+    assert hashlib.sha256((R/item['path']).read_bytes()).hexdigest()==item['sha256']
+   plate=v.get('review',{}).get('mattingPlate')
+   if plate:assert hashlib.sha256((R/plate['path']).read_bytes()).hexdigest()==plate['sha256']
    peak=max(v.get('opaquePixelCounts',[0]));flags=[]
    if peak<30:flags.append('LOW_PIXEL_CHANNEL_REVIEW')
    if v.get('sourceTiming')=='PROJECT_STATIC_HOLD_FADE':flags.append('STATIC_SOURCE_PROJECT_TIMING')
@@ -22,9 +26,9 @@ for e in cat:
  if len(candidates)>1:warnings.append('SHADOWED_SOURCE_VARIANT_REVIEW')
  rule=rules[sid];allowed=rule['mode'] not in ['LINKED','UTILITY'] and rule['pattern'] not in ['PASSIVE','UTILITY','UNRESOLVED']
  if not allowed:warnings.append('SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST')
- rows.append({'id':sid,'name':e['name'],'job':e['job'],'standalonePresentationAllowed':allowed,'runtimeBranch':selected,'sourceCandidates':candidates,'channels':channels,'reviewedSourceWithoutChannel':reviewedSource,'warnings':warnings,'originalFourFacingPixels':'NOT_PROVEN','device':'USER_REPORTED_FAILURE' if e['name'] in ['크래셔','완전방어','매드소울','단각','붕각'] else 'PENDING','visualAcceptance':'PENDING'})
-counts=dict(collections.Counter(r['runtimeBranch'] for r in rows));out={'revision':'V75_FULL_RUNTIME_FX_AUDIT','catalogCount':len(rows),'branchCounts':counts,'sourceProjectedSkillCount':sum(bool(r['channels']) for r in rows),'reviewedWithoutChannelCount':sum(r['reviewedSourceWithoutChannel'] is not None for r in rows),'sourceChannelCount':sum(len(r['channels']) for r in rows),'lowPixelChannels':sum('LOW_PIXEL_CHANNEL_REVIEW' in c['flags'] for r in rows for c in r['channels']),'rows':rows,'boundary':'File/route checks are not visual/device acceptance. Captured pixels remain approximate; generic damage impact is a separate project reuse channel. No missing original effect is certified.'}
-(R/'docs/verification/SKILL_FX_V75_AUDIT.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+ rows.append({'id':sid,'name':e['name'],'job':e['job'],'standalonePresentationAllowed':allowed,'runtimeBranch':selected,'sourceCandidates':candidates,'channels':channels,'reviewedSourceWithoutChannel':reviewedSource,'warnings':warnings,'originalFourFacingPixels':'NOT_PROVEN','device':'USER_REPORTED_FAILURE' if e['name'] in ['크래셔','완전방어','매드소울','단각','붕각'] else 'PENDING','visualAcceptance':'SHAPE_USER_ACCEPTED_QUALITY_PENDING' if e['name']=='완전방어' else 'PENDING'})
+counts=dict(collections.Counter(r['runtimeBranch'] for r in rows));out={'revision':'V77_FULL_RUNTIME_FX_AUDIT','catalogCount':len(rows),'branchCounts':counts,'sourceProjectedSkillCount':sum(bool(r['channels']) for r in rows),'reviewedWithoutChannelCount':sum(r['reviewedSourceWithoutChannel'] is not None for r in rows),'sourceChannelCount':sum(len(r['channels']) for r in rows),'lowPixelChannels':sum('LOW_PIXEL_CHANNEL_REVIEW' in c['flags'] for r in rows for c in r['channels']),'rows':rows,'boundary':'File/route checks are not visual/device acceptance. Captured pixels remain approximate; generic damage impact is a separate project reuse channel. No missing original effect is certified.'}
+(R/'docs/verification/SKILL_FX_V77_AUDIT.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 with (R/'docs/SKILL_FX_RUNTIME_AUDIT.csv').open('w',newline='') as f:
  cols=['id','name','job','standalonePresentationAllowed','runtimeBranch','sourceCandidates','channels','reviewedSourceWithoutChannel','warnings','originalFourFacingPixels','device','visualAcceptance'];w=csv.DictWriter(f,fieldnames=cols,lineterminator='\n');w.writeheader()
  for r in rows:w.writerow({k:json.dumps(r[k],ensure_ascii=False) if isinstance(r[k],(list,dict)) else r[k] for k in cols})
