@@ -36,16 +36,16 @@ public class SkillWindowTest {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");CombatController combat=field(v,"combat");RuntimeCombatSession session=field(v,"combatSession");
     RuntimeState.Monster m=r.monsters().get(0);r.player().x=m.x-32;r.player().y=m.y-16;r.player().mp=20;combat.selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
     job(r,"MAGE");assertTrue(b.learn("SK_마법사_001",0));w.open=true;w.magic=true;w.selectedId="SK_마법사_001";
-    tap(v,760,425);tap(v,155,485);assertEquals("SK_마법사_001",b.slot(0));w.close();
+    tap(v,850,400);tap(v,677,460);assertEquals("SK_마법사_001",b.slot(0));w.close();
     Method slotRect=GameView.class.getDeclaredMethod("slotRect",int.class);slotRect.setAccessible(true);RectF slot=(RectF)slotRect.invoke(v,0);tap(v,slot.centerX(),slot.centerY());
     assertTrue("one shared Resolver action",session.playerActionActive());int mp=r.player().mp;tap(v,slot.centerX(),slot.centerY());assertEquals("repeated input does not charge twice",mp,r.player().mp);
   }
   @Test public void modalSelectionLeavesMovementAndTickActiveAndRenders() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillWindow w=field(v,"skillWindow");tap(v,770,28);assertTrue(w.open);
-    tap(v,158,200);assertNotNull(w.selectedId);assertEquals(0,w.detailPage);tap(v,780,250);assertEquals(1,w.detailPage);tap(v,760,95);assertTrue(w.learnedOnly);assertNull(w.selectedId);
+    selectFirst(v);assertNotNull(w.selectedId);assertEquals(0,w.detailPage);tap(v,850,362);assertEquals(1,w.detailPage);tap(v,500,517);assertTrue(w.learnedOnly);assertNull(w.selectedId);
     RuntimeState r=field(v,"state");RuntimeState.Monster ticking=r.monsters().get(0);ticking.attackCooldown=1f;Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);update.invoke(v,.05f);assertTrue(w.open);assertTrue(ticking.attackCooldown<1f);
-    w.archive=true;tap(v,600,95);tap(v,158,200);render(v,"skill-window-overview.png");chooseJob(v,3);assertEquals("도적",w.job);tap(v,158,200);assertEquals("도적",bEntry(v,w.selectedId).job);render(v,"skill-window-rogue.png");
-    tap(v,400,95);chooseJob(v,6);tap(v,158,200);assertTrue(w.magic);assertEquals("성직자",w.job);render(v,"skill-window-cleric.png");tap(v,760,95);assertNull(w.selectedId);render(v,"skill-window-empty.png");tap(v,848,50);assertFalse(w.open);
+    w.archive=true;tap(v,500,517);selectFirst(v);render(v,"skill-window-overview.png");chooseJob(v,3);assertEquals("도적",w.job);selectFirst(v);assertEquals("도적",bEntry(v,w.selectedId).job);render(v,"skill-window-rogue.png");
+    tap(v,700,362);tap(v,700,362);chooseJob(v,6);selectFirst(v);assertTrue(w.magic);assertEquals("성직자",w.job);render(v,"skill-window-cleric.png");tap(v,500,517);assertNull(w.selectedId);render(v,"skill-window-empty.png");tap(v,611,59);assertFalse(w.open);
   }
   @Test public void referenceIconsUseExactIdsAndUnknownDoesNotBorrowArt(){
     SkillIconCatalog icons=new SkillIconCatalog(context);assertTrue(icons.has("SK_마법사_001"));assertTrue(icons.has("SK_도적_003"));assertTrue(icons.has("SK_전사_001"));assertTrue(icons.has("SK_전사_012"));assertTrue(icons.has("SK_공통_001"));assertTrue(icons.has("SK_공통_010"));assertTrue(icons.has("SK_무도가_002"));assertTrue(icons.has("SK_무도가_032"));assertFalse(icons.has("missing"));
@@ -57,12 +57,12 @@ public class SkillWindowTest {
     r.rpg().restoreStats(6,3,3,4,3,0);assertFalse(a.learn("SK_무도가_002",r.rpg()));assertEquals(2000,r.rpg().gold().longValue());
     r.rpg().restoreStats(23,3,3,19,3,0);w.open=true;w.job="무도가";w.selectedId="SK_무도가_007";
     assertFalse(b.learned("SK_무도가_002"));assertFalse(a.quote(b.get(w.selectedId),r.rpg()).canLearn);job(r,"MARTIAL_ARTIST");assertTrue(a.quote(b.get(w.selectedId),r.rpg()).canLearn);
-    tap(v,590,425);assertTrue("matching job learns without prerequisite mastery",b.learned("SK_무도가_007"));assertEquals(1500,r.rpg().gold().longValue());
-    tap(v,590,425);assertEquals("duplicate does not pay twice",1500,r.rpg().gold().longValue());
-    tap(v,760,425);tap(v,155,485);assertEquals("SK_무도가_007",b.slot(0));
+    tap(v,700,400);assertTrue("matching job learns without prerequisite mastery",b.learned("SK_무도가_007"));assertEquals(1500,r.rpg().gold().longValue());
+    tap(v,700,400);assertEquals("duplicate does not pay twice",1500,r.rpg().gold().longValue());
+    tap(v,850,400);tap(v,677,460);assertEquals("SK_무도가_007",b.slot(0));
     int page=w.detailPage,offset=w.detailOffset;tap(v,700,320);tap(v,700,320);assertEquals(page,w.detailPage);assertEquals(offset,w.detailOffset);render(v,"skill-window-learned-slots.png");
-    tap(v,760,250);render(v,"skill-window-requirements-ready.png");
-    tap(v,760,425);tap(v,247,485);assertEquals("SK_무도가_007",b.slot(1));tap(v,760,425);tap(v,247,485);assertNull("same registration explicitly clears",b.slot(1));
+    tap(v,850,362);render(v,"skill-window-requirements-ready.png");
+    tap(v,850,400);tap(v,745,460);assertEquals("SK_무도가_007",b.slot(1));tap(v,850,400);tap(v,745,460);assertNull("same registration explicitly clears",b.slot(1));
   }
   @Test public void goldMaterialsAndSaveFailureAreTransactional() throws Exception {
     SkillBook b=SkillBook.load(context);RuntimeState r=new RuntimeState();SkillAcquisition a=new SkillAcquisition(b);
@@ -99,7 +99,7 @@ public class SkillWindowTest {
   }
   @Test public void commonerCanActuallyLearnRegisterAndUseBasicAttackThroughProductionInput() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");CombatController combat=field(v,"combat");RuntimeCombatSession session=field(v,"combatSession");
-    tap(v,770,28);chooseJob(v,1);assertEquals("공통",w.job);tap(v,158,180);assertEquals("SK_공통_001",w.selectedId);tap(v,590,425);assertTrue(b.learned("SK_공통_001"));tap(v,760,425);tap(v,155,485);assertEquals("SK_공통_001",b.slot(0));render(v,"skill-window-commoner-learned.png");w.close();
+    tap(v,770,28);chooseJob(v,1);assertEquals("공통",w.job);selectFirst(v);assertEquals("SK_공통_001",w.selectedId);tap(v,700,400);assertTrue(b.learned("SK_공통_001"));tap(v,850,400);tap(v,677,460);assertEquals("SK_공통_001",b.slot(0));render(v,"skill-window-commoner-learned.png");w.close();
     RuntimeState.Monster m=r.monsters().get(0);r.player().x=m.x-CanonicalMeleeTileContract.STEP_X;r.player().y=m.y-CanonicalMeleeTileContract.STEP_Y;combat.selectTarget(m);
     Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,0);tap(v,slot.centerX(),slot.centerY());
     assertTrue(session.playerActionActive());assertTrue(session.cooldownRemaining("player",RuntimeCombatSession.playerAttackActionId(new EquipmentActionResolver().resolveBasicAttack(r.rpg()).animationAction))>0);
@@ -115,19 +115,19 @@ public class SkillWindowTest {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");
     b.learn("SK_공통_001",0);b.assign(0,"SK_공통_001");r.rpg().restoreGold(500);r.rpg().restoreStats(23,3,3,19,3,0);
     context.getSharedPreferences("project_dark_f5m_v1",0).edit().putInt("save_schema",999).commit();F5mSaveStore.install(context);assertFalse(F5mSaveStore.writable());
-    w.open=true;w.selectedId="SK_무도가_002";tap(v,590,425);assertFalse(b.learned("SK_무도가_002"));assertEquals(500L,r.rpg().gold().longValue());
-    w.selectedId="SK_공통_001";tap(v,760,425);tap(v,155,485);assertEquals("save failure restores cleared assignment","SK_공통_001",b.slot(0));
+    w.open=true;w.selectedId="SK_무도가_002";tap(v,700,400);assertFalse(b.learned("SK_무도가_002"));assertEquals(500L,r.rpg().gold().longValue());
+    w.selectedId="SK_공통_001";tap(v,850,400);tap(v,677,460);assertEquals("save failure restores cleared assignment","SK_공통_001",b.slot(0));
   }
   @Test public void unsupportedArchiveNeverChargesAndDefaultListIsPlayable() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");SkillWindow w=field(v,"skillWindow");RuntimeState r=field(v,"state");r.rpg().restoreGold(10000);r.rpg().restoreStats(99,99,99,99,99,0);
     SkillAcquisition a=new SkillAcquisition(b);assertFalse(a.learn("SK_전사_012",r.rpg()));assertEquals(10000L,r.rpg().gold().longValue());
-    w.open=true;tap(v,158,200);assertNotNull(b.get(w.selectedId).runtime);tap(v,290,50);assertTrue(w.archive);w.selectedId="SK_전사_012";tap(v,590,425);assertFalse(b.learned(w.selectedId));assertEquals(10000L,r.rpg().gold().longValue());render(v,"skill-window-archive.png");
+    w.open=true;selectFirst(v);assertNotNull(b.get(w.selectedId).runtime);tap(v,110,517);assertTrue(w.archive);w.selectedId="SK_전사_012";tap(v,700,400);assertFalse(b.learned(w.selectedId));assertEquals(10000L,r.rpg().gold().longValue());render(v,"skill-window-archive.png");
   }
   @Test public void curanumPurchaseToLearningUsesRealShopInputAndPersists() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);RuntimeState r=field(v,"state");job(r,"CLERIC");r.rpg().restoreStats(3,45,32,3,3,0);r.rpg().restoreGold(200);
     Method enter=GameView.class.getDeclaredMethod("enterReagentShop");enter.setAccessible(true);enter.invoke(v);Field open=GameView.class.getDeclaredField("reagentShopOpen");open.setAccessible(true);open.setBoolean(v,true);tap(v,833,297);assertEquals(150L,r.rpg().gold().longValue());assertEquals(Integer.valueOf(1),r.rpg().inventory().get("IT_REAGENT_CURANUM"));render(v,"skill-window-material-purchased.png");
-    Method leave=GameView.class.getDeclaredMethod("leaveReagentShop");leave.setAccessible(true);leave.invoke(v);SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="성직자";w.selectedId="SK_성직자_011";w.detailPage=1;render(v,"skill-window-purchase-ready.png");tap(v,590,425);SkillBook b=field(v,"skillBook");assertTrue(b.learned(w.selectedId));assertEquals(0L,r.rpg().gold().longValue());assertFalse(r.rpg().inventory().containsKey("IT_REAGENT_CURANUM"));
-    tap(v,760,425);tap(v,247,485);assertEquals(w.selectedId,b.slot(1));assertEquals(1,w.flashSlot);assertTrue(w.message.contains("등록"));render(v,"skill-window-shop-learned.png");w.close();r.player().hp=5;r.player().mp=50;Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,1);tap(v,slot.centerX(),slot.centerY());assertEquals(32,r.player().mp);tap(v,slot.centerX(),slot.centerY());assertEquals(32,r.player().mp);RuntimeCombatSession session=field(v,"combatSession");session.tick(.3f);assertEquals(Math.min(r.player().maxHp,87),r.player().hp);assertTrue(F5mSaveStore.checkpointActive());
+    Method leave=GameView.class.getDeclaredMethod("leaveReagentShop");leave.setAccessible(true);leave.invoke(v);SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="성직자";w.selectedId="SK_성직자_011";w.detailPage=1;render(v,"skill-window-purchase-ready.png");tap(v,700,400);SkillBook b=field(v,"skillBook");assertTrue(b.learned(w.selectedId));assertEquals(0L,r.rpg().gold().longValue());assertFalse(r.rpg().inventory().containsKey("IT_REAGENT_CURANUM"));
+    tap(v,850,400);tap(v,745,460);assertEquals(w.selectedId,b.slot(1));assertEquals(1,w.flashSlot);assertTrue(w.message.contains("등록"));render(v,"skill-window-shop-learned.png");w.close();r.player().hp=5;r.player().mp=50;Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,1);tap(v,slot.centerX(),slot.centerY());assertEquals(32,r.player().mp);tap(v,slot.centerX(),slot.centerY());assertEquals(32,r.player().mp);RuntimeCombatSession session=field(v,"combatSession");session.tick(.3f);assertEquals(Math.min(r.player().maxHp,87),r.player().hp);assertTrue(F5mSaveStore.checkpointActive());
     F5mSaveStore.install(context);RuntimeState restored=new RuntimeState();F5mSaveStore.restoreRewardsActive(restored.rpg());SkillBook rb=SkillBook.load(context);F5mSaveStore.restoreAndBindSkillsActive(rb);assertEquals(0L,restored.rpg().gold().longValue());assertTrue(rb.learned("SK_성직자_011"));assertEquals("SK_성직자_011",rb.slot(1));
   }
   @Test public void shopFailureAndEarlyEconomyHaveNoPartialPayment(){
@@ -135,7 +135,11 @@ public class SkillWindowTest {
     SkillBook b=SkillBook.load(context);SkillAcquisition a=new SkillAcquisition(b);r.rpg().restoreStats(3,3,3,3,3,0);r.rpg().restoreGold(0);assertTrue(a.learn("SK_공통_001",r.rpg()));assertFalse(a.learn("SK_전사_001",r.rpg()));r.rpg().grantAdaptedReward(0,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD*2);assertFalse(a.learn("SK_전사_001",r.rpg()));job(r,"WARRIOR");assertTrue(a.learn("SK_전사_001",r.rpg()));assertEquals(0L,r.rpg().gold().longValue());
   }
   private static void job(RuntimeState r,String value){try{Field f=RpgProgressionState.class.getDeclaredField("currentJobCode");f.setAccessible(true);f.set(r.rpg(),value);}catch(Exception e){throw new AssertionError(e);}}
-  private static void chooseJob(GameView v,int i){tap(v,161+i*105,130);}
+  private static void chooseJob(GameView v,int i)throws Exception{
+    String wanted=new String[]{"전체","공통","전사","도적","무도가","마법사","성직자"}[i];String[] order={"공통","마법사","도적","전사","무도가","성직자","전체"};int target=java.util.Arrays.asList(order).indexOf(wanted);SkillWindow w=field(v,"skillWindow");
+    while(w.tabFirst>target)tap(v,47,90);while(w.tabFirst+2<target)tap(v,615,90);tap(v,133+(target-w.tabFirst)*191,90);
+  }
+  private static void selectFirst(GameView v)throws Exception{SkillWindow w=field(v,"skillWindow");assertFalse(w.layout().isEmpty());SkillWindow.Item item=w.layout().get(0);RectF r=w.rectFor(item.entry.id);tap(v,r.centerX(),r.centerY());}
   private static SkillBook.Entry bEntry(GameView v,String id)throws Exception{return ((SkillBook)field(v,"skillBook")).get(id);}
   private static void render(GameView v,String name)throws Exception{Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File dir=new File("build/reports/device-review");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,name))){image.compress(Bitmap.CompressFormat.PNG,100,out);}}
   @SuppressWarnings("unchecked") private static <T>T field(Object o,String name)throws Exception{Field f=o.getClass().getDeclaredField(name);f.setAccessible(true);return(T)f.get(o);}

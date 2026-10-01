@@ -13,7 +13,9 @@ final class SkillIconCatalog {
   private final Map<String,Integer> index=new HashMap<>();
   private final Map<String,Bitmap> presentation=new HashMap<>();
   private final Paint paint=new Paint();
+  private final SkillWindowSkin windowSkin;
   SkillIconCatalog(Context context){
+    windowSkin=new SkillWindowSkin(context);
     try(InputStream image=context.getAssets().open("skills/source_icons.png");InputStream meta=context.getAssets().open("skills/source_icons.json")){
       BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;
       atlas=BitmapFactory.decodeStream(image,null,options);
@@ -35,6 +37,11 @@ final class SkillIconCatalog {
       for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id"),path=row.getString("iconAssetPath");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/"+directory+"/"+path));if(icon==null)throw new IOException("Invalid classic icon: "+path);presentation.put(id,icon);index.putIfAbsent(id,-1);}
       }
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
+  }
+  SkillWindowSkin windowSkin(){return windowSkin;}
+  boolean drawSquare(Canvas c,String id,RectF dest){
+    if(windowSkin.draw(c,id,dest))return true;
+    Bitmap image=presentation.get(id);if(image==null)return false;paint.setFilterBitmap(true);c.drawBitmap(image,null,dest,paint);return true;
   }
   boolean has(String id){return index.containsKey(id);}
   boolean draw(Canvas canvas,String id,RectF dest){

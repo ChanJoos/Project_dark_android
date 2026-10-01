@@ -37,8 +37,8 @@ public class SkillTestModeTest {
     SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="성직자";w.selectedId="SK_성직자_029";render(v,"skill-test-cleric-all.png");
   }
   @Test public void productionSlotRegistrationPersistsOutsideNormalSaveAndToggleRestoresNormal()throws Exception{
-    GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillWindow w=field(v,"skillWindow");SkillBook b=field(v,"skillBook");w.open=true;w.magic=true;w.selectedId="SK_마법사_043";tap(v,760,425);tap(v,155,485);assertEquals("SK_마법사_043",b.slot(0));assertEquals(0,b.snapshot().getJSONObject("learned").length());
-    GameView restarted=new GameView(c);restarted.setSkillTestMode(true);SkillBook rb=field(restarted,"skillBook");assertEquals("SK_마법사_043",rb.slot(0));tap(v,420,50);assertFalse(b.testAccess());assertNull(b.slot(0));assertFalse(c.getSharedPreferences("project_dark_skill_test_v1",0).getBoolean("enabled",true));
+    GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillWindow w=field(v,"skillWindow");SkillBook b=field(v,"skillBook");w.open=true;w.magic=true;w.selectedId="SK_마법사_043";tap(v,850,400);tap(v,677,460);assertEquals("SK_마법사_043",b.slot(0));assertEquals(0,b.snapshot().getJSONObject("learned").length());
+    GameView restarted=new GameView(c);restarted.setSkillTestMode(true);SkillBook rb=field(restarted,"skillBook");assertEquals("SK_마법사_043",rb.slot(0));tap(v,235,517);assertFalse(b.testAccess());assertNull(b.slot(0));assertFalse(c.getSharedPreferences("project_dark_skill_test_v1",0).getBoolean("enabled",true));
   }
   private static void time(GameView v,float t)throws Exception{Field f=GameView.class.getDeclaredField("actionClock");f.setAccessible(true);f.setFloat(v,t);}
   @SuppressWarnings({"unchecked","rawtypes"}) private static void idle(GameView v)throws Exception{Field f=GameView.class.getDeclaredField("action");f.setAccessible(true);f.set(v,Enum.valueOf((Class)f.getType(),"IDLE"));time(v,0);}
