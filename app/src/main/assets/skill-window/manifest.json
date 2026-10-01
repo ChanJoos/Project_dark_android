@@ -299,6 +299,7 @@
       "name": "함정파기",
       "cooldownSeconds": 23,
       "castSeconds": 0,
+      "mpCost": 0,
       "description": "체력을 소모시키는 함정을 판다.",
       "status": "SOURCE_PREVIEW_ONLY"
     }

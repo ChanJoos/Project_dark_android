@@ -39,7 +39,7 @@ for name,box in crops.items():
  path=out/(filename+'.png');image.save(path)
  manifest['crops'][name]={'box':box,'path':'skill-window/'+path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
  if name.startswith('SK_'):manifest['iconBindings'][name]='skill-window/'+path.name
-manifest['capturedDetails']={'SK_도적_025':{'name':'함정파기','cooldownSeconds':23,'castSeconds':0,'description':'체력을 소모시키는 함정을 판다.','status':'SOURCE_PREVIEW_ONLY'}}
+manifest['capturedDetails']={'SK_도적_025':{'name':'함정파기','cooldownSeconds':23,'castSeconds':0,'mpCost':0,'description':'체력을 소모시키는 함정을 판다.','status':'SOURCE_PREVIEW_ONLY'}}
 manifest['roguePromotionOrder']=['SK_도적_022','SK_도적_026','SK_도적_025','SK_도적_021','SK_도적_023','SK_도적_024']
 (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 print('Extracted',len(crops),'source crops')
