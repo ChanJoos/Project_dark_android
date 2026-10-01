@@ -20,7 +20,7 @@ public class ItemWindowReferenceTest {
   List<RpgInventoryPresentation.ItemRow> rows=w.rows(state.rpg());int selected=-1;for(int i=0;i<rows.size();i++)if(rows.get(i).itemId.equals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID))selected=i;assertTrue(selected>=0);
   RectF b=ItemWindow.cell(selected);tap(v,b.centerX(),b.centerY());assertTrue(w.details);render(v,"inventory-v74-compare.png");int dam=state.rpg().finalStats().dam;tap(v,805,490);assertNull(state.rpg().equipment().get("무기"));assertEquals(dam-3,state.rpg().finalStats().dam);
   GameView restarted=new GameView(c);RuntimeState restored=field(restarted,"state");assertNull(restored.rpg().equipment().get("무기"));
-  tap(v,805,490);assertEquals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,state.rpg().equipment().get("무기"));v.pause();GameView again=new GameView(c);assertEquals(state.rpg().equipment(),((RuntimeState)field(again,"state")).rpg().equipment());
+  v=restarted;state=restored;v.layout(0,0,960,540);tap(v,608,28);tap(v,b.centerX(),b.centerY());tap(v,805,490);assertEquals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,state.rpg().equipment().get("무기"));v.pause();GameView again=new GameView(c);assertEquals(state.rpg().equipment(),((RuntimeState)field(again,"state")).rpg().equipment());
   float x=state.player().x,y=state.player().y;tap(v,100,180);assertEquals(x,state.player().x,0);assertEquals(y,state.player().y,0);tap(v,914,60);assertFalse((Boolean)field(v,"inventoryOpen"));
  }
  @Test public void equipmentShowsEverySupportedSlotAndClosesAtDrawnPosition()throws Exception{
