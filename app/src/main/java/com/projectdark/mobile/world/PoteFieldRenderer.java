@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
-import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -36,11 +35,11 @@ public final class PoteFieldRenderer {
   private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
   private static final String TRAIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private final Paint pixel=new Paint();
-  private final Paint hitPixel=new Paint();
   private final Paint soilPaint=new Paint();
   private final Path groundCells=new Path();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
+  private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
   private static final List<Placement> AUTHORED_PLACEMENTS=buildPlacements();
   private final List<Placement> placements=AUTHORED_PLACEMENTS;
 
@@ -53,7 +52,6 @@ public final class PoteFieldRenderer {
 
   public PoteFieldRenderer(){
     pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
-    hitPixel.set(pixel);hitPixel.setColorFilter(new ColorMatrixColorFilter(new float[]{1,0,0,0,96, 0,1,0,0,64, 0,0,1,0,64, 0,0,0,1,0}));
     soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
   }
 
@@ -111,8 +109,21 @@ public final class PoteFieldRenderer {
       cy+=facingY(direction)*1.6f*impulse;
     }
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
-    c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),hitFlash?hitPixel:pixel);
+    c.drawBitmap(hitFlash?hitBitmap(name,b):b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
     pixel.setAlpha(255);
+  }
+
+  /** Cache a color-only variant: GPU color filters can bleed into transparent scaled edges. */
+  private Bitmap hitBitmap(String name,Bitmap source){
+    Bitmap hit=hitCache.get(name);if(hit!=null)return hit;
+    int width=source.getWidth(),height=source.getHeight();int[] colors=new int[width*height];
+    source.getPixels(colors,0,width,0,0,width,height);
+    for(int i=0;i<colors.length;i++){
+      int color=colors[i];if((color>>>24)==0)continue;
+      int r=Math.min(255,((color>>>16)&255)+96),g=Math.min(255,((color>>>8)&255)+64),b=Math.min(255,(color&255)+64);
+      colors[i]=(color&0xff000000)|(r<<16)|(g<<8)|b;
+    }
+    hit=source.copy(Bitmap.Config.ARGB_8888,true);hit.setPixels(colors,0,width,0,0,width,height);hitCache.put(name,hit);return hit;
   }
 
   private static float facingX(CharacterRenderer.Direction d){
