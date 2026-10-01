@@ -40,7 +40,7 @@ public class MartialDefenseStarRegressionTest {
   assertEquals("TRIPLE_PUNCH",catalog.get("SK_무도가_027").motion);
  }
  @Test public void realKickClockReachesFullExtensionWhenDamageResolves()throws Exception{
-  for(String id:new String[]{"SK_무도가_002","SK_무도가_007"}){
+  for(String id:new String[]{"SK_무도가_002","SK_무도가_007","SK_무도가_014"}){
    GameView view=fresh();RuntimeState state=field(view,"state");RuntimeState.Monster m=state.monsters().get(0);m.hp=200;
    state.player().x=m.x-32;state.player().y=m.y-16;((CombatController)field(view,"combat")).selectTarget(m);
    use(view,id);SkillActionContract.Rule rule=SkillActionContract.get(id);int hp=m.hp;
@@ -51,11 +51,70 @@ public class MartialDefenseStarRegressionTest {
    SkillPresentationCatalog catalog=field(view,"skillPresentation");String motion=catalog.get(id).motion;
    for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
     boolean back=d==CharacterRenderer.Direction.NE||d==CharacterRenderer.Direction.NW;
-    int expected=id.endsWith("002")?(back?18:23):(back?17:22);
-    assertEquals(body+"/c/"+expected,catalog.frameKey(body,motion,d,phase));
+    int expected=id.endsWith("002")?(back?2:5):(back?12:16);
+    assertEquals(body+"/d/"+expected,catalog.frameKey(body,motion,d,phase));
    }
    save(view,id+"-contact");update.invoke(view,.22f);save(view,id+"-recovery");
   }
+ }
+ @Test public void v82EquippedKickInputUsesMartialLegSpritesAndSpinTurns()throws Exception{
+  for(String id:new String[]{"SK_무도가_002","SK_무도가_007","SK_무도가_014"})for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+   GameView view=directed(body,d);use(view,id);assertEquals(id,field(view,"activeSkillVisualId"));
+   SkillActionContract.Rule rule=SkillActionContract.get(id);Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);
+   save82(view,id+"-"+body+"-"+d+"-startup");update.invoke(view,rule.contact+.001f);
+   RuntimeState state=field(view,"state");assertTrue(state.monsters().get(0).hp<20000);
+   SkillPresentationCatalog catalog=field(view,"skillPresentation");String motion=catalog.get(id).motion;
+   assertEquals("d",catalog.profiles.getJSONObject(motion).getString("group"));
+   boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
+   int contactFrame=id.endsWith("002")?(back?2:5):(back?12:16);
+   float clock=(Float)field(view,"actionClock");Method duration=GameView.class.getDeclaredMethod("duration",field(view,"action").getClass());duration.setAccessible(true);
+   float total=(Float)duration.invoke(view,field(view,"action"));
+   assertEquals(body+"/d/"+contactFrame,catalog.frameKey(body,motion,d,GameView.skillPosePhase(clock,total,rule.contact)));
+   save82(view,id+"-"+body+"-"+d+"-contact");
+   if(id.endsWith("014")){
+    Set<String> seen=new LinkedHashSet<>();for(float q:new float[]{.34f,.44f,.53f,.61f,.69f,.77f})seen.add(catalog.frameKey(body,motion,d,q));
+    assertTrue("Full turn has multiple facing source poses",seen.size()>=6);
+    update.invoke(view,.16f);save82(view,id+"-"+body+"-"+d+"-turn");
+   }
+   update.invoke(view,.3f);save82(view,id+"-"+body+"-"+d+"-recovery");
+  }
+ }
+ @Test public void v82DaraRemainsStandingUntilDamageReleaseThenRaisesArms()throws Exception{
+  for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+   GameView view=directed(body,d);use(view,"SK_무도가_020");assertEquals("SK_무도가_020",field(view,"activeSkillVisualId"));
+   RuntimeState state=field(view,"state");RuntimeState.Monster m=state.monsters().get(0);int hp=m.hp;
+   Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);
+   Bitmap idle=actor82(view);save82(view,"dara-"+body+"-"+d+"-0000ms");float previous=0;
+   for(float time:new float[]{.30f,1.50f,2.99f}){
+    float advance=time-previous;while(advance>.05f){update.invoke(view,.05f);advance-=.05f;}update.invoke(view,advance);previous=time;
+    assertEquals("No damage during preparation",hp,m.hp);
+    assertFalse(((SkillVfxRenderer)field(view,"skillVfx")).pulses.stream().anyMatch(p->p.id.equals("SK_무도가_020")&&!p.caster));
+    Bitmap waiting=actor82(view);assertTrue("Equipped idle remains pixel-identical until release "+body+" "+d+" "+time,idle.sameAs(waiting));waiting.recycle();
+    save82(view,"dara-"+body+"-"+d+"-"+Math.round(time*1000)+"ms");
+   }
+   update.invoke(view,.012f);assertTrue("Damage at release",m.hp<hp);assertEquals("SK_무도가_020",field(view,"activeSkillVisualId"));
+   assertTrue(((SkillVfxRenderer)field(view,"skillVfx")).pulses.stream().anyMatch(p->p.id.equals("SK_무도가_020")&&!p.caster&&p.anchor.equals(m.id)));
+   Bitmap raised=actor82(view);assertFalse("Arms change only after release",idle.sameAs(raised));raised.recycle();
+   SkillPresentationCatalog catalog=field(view,"skillPresentation");boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
+   float clock=(Float)field(view,"actionClock");assertEquals(body+"/f/"+(back?1:3),catalog.frameKey(body,"CHARGE_CAST",d,GameView.skillPosePhase(clock,3.35f,3f)));
+   save82(view,"dara-"+body+"-"+d+"-release");update.invoke(view,.27f);save82(view,"dara-"+body+"-"+d+"-lower-arms");
+   update.invoke(view,.1f);assertNull(field(view,"activeSkillVisualId"));save82(view,"dara-"+body+"-"+d+"-end");idle.recycle();
+  }
+ }
+ private GameView directed(String body,CharacterRenderer.Direction d)throws Exception{
+  GameView v=fresh();Field identity=GameView.class.getDeclaredField("characterBodyIdentity");identity.setAccessible(true);identity.set(v,body);
+  RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);m.hp=20000;s.player().hp=20000;for(RuntimeState.Monster other:s.monsters())other.attackCooldown=100f;
+  float dx=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-32:32,dy=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-16:16;
+  s.player().x=m.x-dx;s.player().y=m.y-dy;((CombatController)field(v,"combat")).selectTarget(m);
+  ((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();return v;
+ }
+ private static Bitmap actor82(GameView view)throws Exception{
+  Bitmap b=Bitmap.createBitmap(240,200,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(b);canvas.translate(120-view.renderedPlayerWorldX(),150-view.renderedPlayerWorldY());
+  Method draw=GameView.class.getDeclaredMethod("drawCharacter",Canvas.class);draw.setAccessible(true);draw.invoke(view,canvas);return b;
+ }
+ private static void save82(GameView view,String name)throws Exception{
+  Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(b));write(b,"v82-live-"+name+".png");b.recycle();
+  Bitmap actor=actor82(view);write(actor,"v82-actor-"+name+".png");actor.recycle();
  }
  @Test public void retainedDefenseSphereContainsHeadAndFeetForBothBodies()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);

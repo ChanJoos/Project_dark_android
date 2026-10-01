@@ -1,6 +1,6 @@
 # PROJECT DARK Master manifest
 
-Revision M002 / D001 · 2026-09-30
+Revision M003 / D001 · 2026-09-30
 
 이 Master는 지속 개정하는 기준 데이터다. 변환 manifest는 원래 제공된 92개 sheet를 기록한다. 현재 `master/data`에는 여기에 6개 구조 검사 대상 canonical CSV가 추가됐고, `Asset_Master.csv`, `Skill_Evidence.csv`, `Skill_Master.csv`, `Skill_Requirements.csv`, `Skill_Research_Audit.csv`는 명시적 canonical override다. 기술·마법 캡처에서 전사한 구클라이언트 요구 조건은 `Skill_Evidence.csv` 및 `Skill_Legacy_Requirements.csv`에 보존한다. 원본 XLSX 자체는 미확보이므로 이를 lossless XLSX 검증 완료라고 부르지 않는다.
 
@@ -140,3 +140,6 @@ Six historical Rogue magic kinds are applied by generate_skill_catalog.py withou
 ## ALL-JOB-SOURCE-V70 accepted presentation projection
 
 Preserve baseline. Source191777 explicitly categorizes Concentration as Warrior promotion magic. Accepted change updates kind through generate_skill_catalog.py; per-ID pose/type projections regenerate from reviewed decisions. Source shapes/atlas anchors under warrior_bindings.json and import_all_job_skill_references.py; original snapshot/GIF bytes remain untouched. Static-source timing and cross-job exact-name form reuse are project adaptations.
+
+## M003 — user martial presentation correction
+Accepted USER-MARTIAL-KICK-RELEASE-V82.json corrects runtime pose projections; historical sheets/source bytes retained. Generator consumes reviewed decision CSV and corrected source-group profiles. No gameplay numeric changes.

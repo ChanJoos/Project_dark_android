@@ -146,6 +146,17 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  SKILL_PRESENTATION_082:
+    title: "User-reported martial kick mapping and Dara release timing repair"
+    system: combat_presentation
+    priority: P0
+    claim: Director/Integration
+    queue_state: IN_DEVELOPMENT
+    source_branch: codex/original-skill-contract-v65
+    failed_predecessor: "V81 DEVICE_FAILED (user-reported) for Dankak/Bungkak/Spin and early Dara arms; installed SHA unconfirmed"
+    required_sources: [docs/SKILL_ACTION_DECISIONS.csv, tools/generate_skill_presentation.py, master/data/Asset_Animation_Frame_Master.csv, master/data/Asset_Animation_Semantics.csv, master/source/skill_fx/naver_classic_2020/definitions.json, app/src/main/java/com/projectdark/mobile/SkillBodyRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java, docs/SKILL_PRESENTATION_CONTRACT.md]
+    acceptance: ["Dankak front kick", "Bungkak side kick", "Spin kick rotates using original kick BODY", "Dara stays idle until actual release contact", "Both bodies and four facings with actual equipped GameView captures", "Ragnarok and Defense approval retained"]
+    remaining: "Exact source CI/native review/APK; phone visual revalidation"
   SKILL_PRESENTATION_081:
     title: "User-labelled Ragnarok still extraction and recipient animation"
     system: combat_presentation
@@ -159,7 +170,8 @@ work_packages:
     source_branch: codex/original-skill-contract-v65
     required_sources: [master/source/skill_fx/user_ragnarok_20261002/provenance.json, docs/verification/SKILL_FX_V81_AUDIT.json]
     acceptance: ["Four originals retained with hashes", "Six-point sigil extraction with declared reconstruction", "Source animation starts at actual recipient contact", "GIF plus exact-source APK delivered"]
-    remaining: "Original timing and occluded pixels; 32 independent effect sources; phone and user visual acceptance"
+    user_visual_acceptance: "2026-10-02 user accepts Ragnarok on delivered V81; no installed hash supplied"
+    remaining: "Original timing and occluded pixels; 32 independent effect sources"
     delivery_policy: "GIF and ZIP containing APK"
   SKILL_PRESENTATION_080:
     title: "Martial motion review, Defense envelope and fifth-circle star contact"

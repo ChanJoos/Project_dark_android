@@ -438,8 +438,17 @@ public final class GameView extends View {
   private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
     SkillPresentationCatalog.Entry selected=skillPresentation.get(activeSkillVisualId);
     if(selected!=null&&isActing()){
+      SkillActionContract.Rule poseRule=SkillActionContract.get(activeSkillVisualId);
+      float contact=poseRule==null?(action==Action.CAST?.24f:.14f):poseRule.contact;
+      // Dara's preparation is standing. Raised arms belong only to the accepted release,
+      // on the same contact clock as damage/recipient FX; never to button-down.
+      if("CHARGE_CAST".equals(selected.motion)&&actionClock<contact){
+        if("mm001".equals(characterBodyIdentity))characterRenderer.draw(c,new CharacterRenderer.Pose(pose.x,pose.y,pose.direction,CharacterRenderer.State.IDLE,walkClock,0,1,false,pose.equipmentVisualRef,pose.weaponVisualRef,pose.effectVisualRef,CharacterRenderer.EffectFamily.NONE));
+        else skillBodyRenderer.draw(c,pose,characterBodyIdentity,"IDLE",0);
+        return;
+      }
       if("SWING".equals(selected.motion)&&"mm001".equals(characterBodyIdentity)){characterRenderer.draw(c,new CharacterRenderer.Pose(pose.x,pose.y,pose.direction,CharacterRenderer.State.ATTACK,walkClock,actionClock,stateDuration,false,pose.equipmentVisualRef,pose.weaponVisualRef,pose.effectVisualRef,pose.effectFamily,AnimationAction.SWING));return;}
-      if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,selected.motion,skillPosePhase(actionClock,stateDuration,SkillActionContract.get(activeSkillVisualId)==null?(action==Action.CAST?.24f:.14f):SkillActionContract.get(activeSkillVisualId).contact)))return;
+      if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,selected.motion,skillPosePhase(actionClock,stateDuration,contact)))return;
     }
     characterRenderer.draw(c,pose);}
 

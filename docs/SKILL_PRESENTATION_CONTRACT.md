@@ -1,3 +1,11 @@
+## 2026-10-02 — V82 user-reported kick BODY and Dara release repair
+
+V81 Ragnarok and Complete Defense are USER VISUAL ACCEPTED per current phone report; exact installed hash was not supplied. V81 Dankak/Bungkak/Spin and early Dara raised arms are DEVICE_FAILED (user-reported). Root cause reproduced in the source: V80 selected c14–23 grounded warrior lunge/thrust frames for kicks, while original group d contains the actual lifted-knee/extended-foot martial sprites. Previous test merely confirmed the erroneous c selection; that assertion is superseded.
+
+Accepted mappings: Dankak front kick d0/1/2 rear, d3/4/5 front; Bungkak side kick d10/11/12/13 rear, d14/15/16/17 front. Spin cycles these source side-kick orientations through a turn. Source frames are byte-identical; selected project timing still reaches contact at1/3. Dara keeps fully equipped male IDLE (female source IDLE) throughout the existing3sec preparation, raises f1/f3 only at actual release/contact, then lowers during recovery. Damage/contact/resources/reach unchanged. No source redraw. Related upgraded kick profiles inherit their corrected base family.
+
+Consumed inputs: user report; original mm001/wm001 group c/d/f frames; labelled four classic GIFs and definitions; Asset_Animation_Frame_Master/Asset_Animation_Semantics; SKILL_ACTION_DECISIONS; generator/catalog; SkillBodyRenderer/GameView and current contracts. Governing Master correction: changes/USER-MARTIAL-KICK-RELEASE-V82.json. New tests use actual GameView input/clock for both bodies/four facings with equipped actor/whole-scene captures, standing-pixel equality during Dara wait, real damage/recipient effect at release, and lower/recovery frames. Exact-SHA CI/native/render/APK verification pending. PR176 remains unmerged task candidate; main bfd668d4 unchanged. Next: review these exact live images and deliver candidate ZIP only after checks, with physical-phone revalidation pending.
+
 # Skill motion and two-channel VFX contract — v64
 
 Current v64: all magic uses overhead group f; Activity defaults to all219 test access. Normal play enforces job. The v63 facts below are preserved as history and are superseded where the v64 entry differs.
