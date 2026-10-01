@@ -6615,12 +6615,12 @@
               "index": 7
             }
           ],
-          "atlasSha256": "8023cdf0e557cabfe4d3059f3513201bb20857292e0fb51f43f6570dc46b050d",
+          "atlasSha256": "b2cfa870aa768bd3beb53f4198f47da50826c6c90575a9aee3f917dad023100e",
           "opaquePixelCounts": [
-            1773,
-            1773,
-            1773,
-            1773
+            1683,
+            1683,
+            1683,
+            1683
           ],
           "review": {
             "id": "SK_마법사_053",
@@ -6650,6 +6650,14 @@
             ],
             "anchor": "RECIPIENT",
             "scale": 1.0,
+            "uiMasks": [
+              [
+                82,
+                73,
+                100,
+                100
+              ]
+            ],
             "mattingPlate": {
               "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
               "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
@@ -7431,14 +7439,14 @@
               "index": 34
             }
           ],
-          "atlasSha256": "b4aa29b6ec3dca39ebd0e09fd53a700bd4c41edcccca27f0fe2a95c3fe288e7e",
+          "atlasSha256": "e294b884fe5e923c76e8ec0423302f0d6eec485598e853e0f638490069ff3af4",
           "opaquePixelCounts": [
-            1940,
-            1671,
-            1050,
-            688,
-            1006,
-            1161
+            103,
+            156,
+            312,
+            1591,
+            87,
+            128
           ],
           "review": {
             "id": "SK_마법사_046",
@@ -7472,7 +7480,34 @@
               ]
             ],
             "anchor": "RECIPIENT",
-            "scale": 1.0
+            "scale": 1.0,
+            "frameRegistration": [
+              {
+                "dx": 0,
+                "dy": 0
+              },
+              {
+                "dx": -6,
+                "dy": 8
+              },
+              {
+                "dx": -8,
+                "dy": 6
+              },
+              {
+                "dx": 5,
+                "dy": 8
+              },
+              {
+                "dx": 11,
+                "dy": -9
+              },
+              {
+                "dx": 9,
+                "dy": -6
+              }
+            ],
+            "mattingMethod": "REGISTERED_CAPTURE_MAX_REVEALED_FLOOR"
           }
         }
       }

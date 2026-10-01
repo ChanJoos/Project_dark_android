@@ -12,6 +12,7 @@ def project(root, output, manifest):
     def bind(name,article,indices,region,pivot,color,blocked=None,anchor='RECIPIENT',scale=1.):
         rows.append(dict(id=cat[name],name=name,articleId=article,indices=list(indices),region=region,pivot=pivot,
                          color=color,blocked=blocked or [],anchor=anchor,scale=scale))
+        if name=='프라보':rows[-1]['uiMasks']=[[82,73,100,100]]
     groups=[('COLD',[3,4,5],['마레노','마레누스','마레네라']),('NEUTRAL',[9,10,11],['테라미코','테라미쿠스','테라미에라']),
             ('COLD',[15,16,17],['아듀로','아듀로스','아듀레나']),('WARM',[21,22,23],['플라모','플라무스','플라메라'])]
     for color,indices,names in groups:
@@ -46,6 +47,21 @@ def project(root, output, manifest):
                         for dy in range(-4,5) for dx in range(-4,5)]
             _,dx,dy=min(candidates);base=np.roll(circle_base,(dy,dx),(0,1))
             row['mattingPlate']=dict(path=lookup[221564,21]['path'],sha256=lookup[221564,21]['sha256'],dx=dx,dy=dy)
+        if row['color']=='DARK_DIFFERENCE':
+            # These six captures pan the camera. Register on exposed floor,
+            # outside the sigil and actors, before recovering its background.
+            floor=np.zeros(frames[0].shape[:2],dtype=bool)
+            floor[155:185,30:100]=True;floor[30:60,80:105]=True
+            registered=[];offsets=[]
+            for frame in frames:
+                fits=[(float(np.median(np.abs(frame[floor]-np.roll(frames[0],(dy,dx),(0,1))[floor]))),dx,dy)
+                      for dy in range(-12,13) for dx in range(-12,13)]
+                _,dx,dy=min(fits);registered.append(np.roll(frame,(-dy,-dx),(0,1)))
+                offsets.append(dict(dx=-dx,dy=-dy))
+            frames=registered;base=np.maximum.reduce(frames)
+            row['frameRegistration']=offsets
+            row['mattingMethod']='REGISTERED_CAPTURE_MAX_REVEALED_FLOOR'
+
         x0,y0,x1,y1=row['region'];w=x1-x0;h=y1-y0;tiles=[];counts=[]
         for rgb in frames:
             r,g,b=rgb[:,:,0],rgb[:,:,1],rgb[:,:,2];lo=np.min(rgb,axis=2);hi=np.max(rgb,axis=2)
@@ -59,13 +75,17 @@ def project(root, output, manifest):
             elif color=='RED':mask=((r>175)&(r>g*1.35)&(r>b*1.2))|white
             elif color=='BRIGHT':mask=(hi>190)&((hi-lo>35)|white)
             elif color=='ROCK':mask=changed&(r>g*.9)&(r>b*1.25)&(g>25)
-            elif color=='DARK_DIFFERENCE':mask=(hi<90)&(hi-lo<18)
+            elif color=='DARK_DIFFERENCE':
+                # Only observed darkening against the revealed floor is ink.
+                # Unchanged dark floor diamonds are not spell pixels.
+                mask=((hi<90)&(hi-lo<6)&(np.max(base-rgb,axis=2)>20))|((r>g*2)&(r>b*1.8)&(r>100)&(g<60)&(b<80)&changed)
             else:mask=changed
             if color=='DIFFERENCE':mask&=(np.max(np.abs(diff),axis=2)>40)
             valid=np.zeros_like(mask);valid[y0:y1,x0:x1]=True;mask&=valid
             for bx0,by0,bx1,by1 in row['blocked']:
                 allowed=((lo>150)&(np.max(diff,axis=2)>25))|(np.min(diff,axis=2)>25)|((lo>110)&(np.max(diff,axis=2)>50))
                 mask[by0:by1,bx0:bx1]&=allowed[by0:by1,bx0:bx1]
+            for bx0,by0,bx1,by1 in row.get('uiMasks',[]):mask[by0:by1,bx0:bx1]=False
             if row['articleId'] in [221564,221555]:mask[:41,:]=False
             if color in ['DIFFERENCE','DARK_DIFFERENCE','ROCK']:fg=rgb;alpha=mask.astype(np.float32)
             else:

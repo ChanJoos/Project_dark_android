@@ -39,6 +39,14 @@ public class ClassicSkillReferenceTest {
    assertEquals(0,s.frame(0));assertEquals(s.durations.length-1,s.frame(s.duration));assertTrue("No opaque floor corner: "+id,Color.alpha(s.atlas.getPixel(s.width-1,s.height-1))<32);assertTrue(s.duration>0);
   }assertEquals(143,channels);
  }
+ @Test public void mageSourceMasksExcludeObservedCursorAndUnchangedFloor()throws Exception{
+  ClassicSkillReference reference=new ClassicSkillReference(c);
+  CapturedSkillFx.Sequence pravo=reference.channel("SK_마법사_053",false).sequence;
+  for(int frame=0;frame<pravo.durations.length;frame++)for(int y=41;y<64;y++)for(int x=74;x<86;x++)
+   assertEquals("Observed cursor must not enter any held frame",0,Color.alpha(pravo.atlas.getPixel(frame*pravo.width+x,y)));
+  CapturedSkillFx.Sequence mark=reference.channel("SK_마법사_046",false).sequence;
+  assertEquals("Brown floor corner is not dark sigil ink",0,Color.alpha(mark.atlas.getPixel(mark.width-1,mark.height-1)));
+ }
  @Test public void productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c);
   for(String id:reference.effects.keySet()){

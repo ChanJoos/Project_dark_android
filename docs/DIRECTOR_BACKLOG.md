@@ -439,3 +439,7 @@ Local implementation commit `a97fc44108acb6ad053a5b873c5a907a31b37fce` exists. `
 ### V78 publication approval — 2026-10-01
 
 User explicitly approved the scoped public-repository code and derived-effect update with “응 반영해”. Earlier automatic rejection is historical; publication is authorized. Proceed with non-force PR176 branch push and exact-SHA CI/native artifact verification. Physical-device acceptance remains pending.
+
+### V78 exact-SHA CI correction — 2026-10-01
+
+Published a044091131dedb071d3883029975f656d5de09f8 through the authorized GitHub connector; tree exactly equals local reviewed tree c65227a18c69a34d628c46e3ab320241e011811b. Actions 36867772666 passed source regeneration/audits and production route/input tests, but one classic corner-alpha test failed for Pravo. Source inspection found a captured mouse cursor; removed it with a recorded UI mask. Further pixel audit found Dark Mark floor contamination: registered six panned captures against exposed floor, excluded brown/blue floor hues and retained only supported dark/red ink. Timing, pivots and original source bytes are preserved; occluded/unrecoverable pixels remain absent. Added regression for cursor area and observed floor corner. Rebuild/native review pending; physical-device acceptance pending.

@@ -548,6 +548,14 @@
       ],
       "anchor": "RECIPIENT",
       "scale": 1.0,
+      "uiMasks": [
+        [
+          82,
+          73,
+          100,
+          100
+        ]
+      ],
       "mattingPlate": {
         "path": "master/source/skill_fx/naver_magic_recovered_20261001/0fc8ed66bf2d233d.jpg",
         "sha256": "a5dfd3bc48ea16746e82090f3ce5fd9dc5241fdde4e59ae153116d50dd6237d9",
@@ -842,7 +850,34 @@
         ]
       ],
       "anchor": "RECIPIENT",
-      "scale": 1.0
+      "scale": 1.0,
+      "frameRegistration": [
+        {
+          "dx": 0,
+          "dy": 0
+        },
+        {
+          "dx": -6,
+          "dy": 8
+        },
+        {
+          "dx": -8,
+          "dy": 6
+        },
+        {
+          "dx": 5,
+          "dy": 8
+        },
+        {
+          "dx": 11,
+          "dy": -9
+        },
+        {
+          "dx": 9,
+          "dy": -6
+        }
+      ],
+      "mattingMethod": "REGISTERED_CAPTURE_MAX_REVEALED_FLOOR"
     },
     {
       "id": "SK_마법사_047",
