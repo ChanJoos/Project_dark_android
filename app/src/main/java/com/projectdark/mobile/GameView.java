@@ -80,7 +80,7 @@ public final class GameView extends View {
   private float knobX=JOY_X,knobY=JOY_Y;
   private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen,autoAttackEnabled,questCollapsed=true,chatExpanded;
   private float autoTargetHintClock;
-  private int inventoryPage=0;
+  private final ItemWindow itemWindow;
   private float checkpointClock;
   private boolean saveWarningShown;
   private long savedLedgerSequence;
@@ -95,7 +95,7 @@ public final class GameView extends View {
 
   private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(checkpointClock>=2f||savedLedgerSequence!=state.ledger().sequence()){checkpoint();}if(!inReagentShop){WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postDelayed(this,16);}};
 
-  public GameView(Context c){super(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);skillBook.bindJob(()->state.rpg().currentJobCode());skillWindow=new SkillWindow(skillBook,new SkillIconCatalog(c));F5mSaveStore.restoreAndBindSkillsActive(skillBook);hudSprites=new HudSpriteCatalog(c);inventoryVisuals=new EquipmentVisualRegistry(c);reagentVisuals=new ReagentItemVisualRegistry(c);reagentShopRenderer=new ReagentShopInteriorRenderer(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);float[] returnPoint=F5mSaveStore.savedFieldReturnPointActive();fieldReturnX=returnPoint[0];fieldReturnY=returnPoint[1];if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(F5mSaveStore.savedMapIdActive())){state.enterPoteField();inPoteField=true;}F5mSaveStore.restoreRuntimeActive(state);worldAdapter.snapCameraToPlayer();if(inPoteField){poteFieldAdapter=new WorldRuntimeAdapter(state,logicalViewportWidth,H,PoteFieldDef.MIN_X,PoteFieldDef.MAX_X,PoteFieldDef.MIN_Y,PoteFieldDef.MAX_Y,PoteFieldDef.navigationTiles(),PoteFieldDef.obstacles(),true);poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();}F5mSaveStore.bindRuntime(state,f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);}
+  public GameView(Context c){super(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);skillBook.bindJob(()->state.rpg().currentJobCode());skillWindow=new SkillWindow(skillBook,new SkillIconCatalog(c));F5mSaveStore.restoreAndBindSkillsActive(skillBook);hudSprites=new HudSpriteCatalog(c);inventoryVisuals=new EquipmentVisualRegistry(c);reagentVisuals=new ReagentItemVisualRegistry(c);reagentShopRenderer=new ReagentShopInteriorRenderer(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);float[] returnPoint=F5mSaveStore.savedFieldReturnPointActive();fieldReturnX=returnPoint[0];fieldReturnY=returnPoint[1];if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(F5mSaveStore.savedMapIdActive())){state.enterPoteField();inPoteField=true;}F5mSaveStore.restoreRuntimeActive(state);worldAdapter.snapCameraToPlayer();if(inPoteField){poteFieldAdapter=new WorldRuntimeAdapter(state,logicalViewportWidth,H,PoteFieldDef.MIN_X,PoteFieldDef.MAX_X,PoteFieldDef.MIN_Y,PoteFieldDef.MAX_Y,PoteFieldDef.navigationTiles(),PoteFieldDef.obstacles(),true);poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();}F5mSaveStore.bindRuntime(state,f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);}
   void setSkillTestMode(boolean enabled){
     cancelSkillApproach();skillVfx.clear();activeSkillVisualId=null;skillBook.setTestAccess(enabled);
     getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().putBoolean("enabled",enabled).apply();
@@ -522,59 +522,11 @@ public final class GameView extends View {
 
   private void drawFeedbackBanners(Canvas c){c.save();c.translate(hudCenterOffset,0);if(rewardClock>0){p.setColor(0xD02B2517);c.drawRoundRect(new RectF(346,74,614,106),16,16,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xBADBB768);c.drawRoundRect(new RectF(346,74,614,106),16,16,p);p.setStyle(Paint.Style.FILL);p.setTextSize(10);p.setTypeface(Typeface.create("sans-serif-medium",Typeface.NORMAL));p.setColor(0xffffe5a3);float tw=p.measureText(rewardBanner);c.drawText(rewardBanner,480-tw/2,95,p);}else if(feedbackClock>0){int fill=feedbackTone==FeedbackTone.WARN?0xD04A2226:feedbackTone==FeedbackTone.REWARD?0xD03C321E:0xCC161A20;p.setColor(fill);p.setTextSize(9.2f);float width=Math.min(340,Math.max(146,p.measureText(feedback)+38));c.drawRoundRect(new RectF(480-width/2,111,480+width/2,139),14,14,p);p.setColor(feedbackTone==FeedbackTone.WARN?0xffffb4ad:0xffeee5d3);float ft=p.measureText(feedback);c.drawText(feedback,480-ft/2,130,p);}c.restore();}
 
-  private void drawInventory(Canvas c){
-    if(!inventoryOpen)return;
-    p.setColor(0x52000000);c.drawRect(0,0,W,H,p);
-    classicWindow(c,420,54,938,476,"인벤토리");
-    p.setColor(0xB02A1710);c.drawCircle(913,76,15,p);text(c,"×",908,81,14);
-    List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());
-    String selectedId=rpgInteraction.selectedInventoryItemId();
-    int pageSize=20,pages=Math.max(1,(rows.size()+pageSize-1)/pageSize);
-    inventoryPage=Math.max(0,Math.min(inventoryPage,pages-1));
-    int start=inventoryPage*pageSize,limit=Math.min(pageSize,Math.max(0,rows.size()-start));
-    // Item-only grid: names stay hidden until selection, matching the mobile reference.
-    float gx=440,gy=105,cell=62,gap=5;
-    for(int i=0;i<20;i++){
-      int col=i%4,row=i/4;float l=gx+col*(cell+gap),t=gy+row*(cell+gap);
-      p.setColor(0xD0191411);c.drawRect(l,t,l+cell,t+cell,p);
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFF765335);c.drawRect(l+.5f,t+.5f,l+cell-.5f,t+cell-.5f,p);p.setStyle(Paint.Style.FILL);
-      if(i<limit){
-        RpgInventoryPresentation.ItemRow item=rows.get(start+i);
-        boolean selected=item.itemId.equals(selectedId);
-        if(selected){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3);p.setColor(0xFFE2A84E);c.drawRect(l+2,t+2,l+cell-2,t+cell-2,p);p.setStyle(Paint.Style.FILL);}
-        drawInventoryItemIcon(c,item,l+7,t+7,cell-14);
-        if(item.quantity>1){p.setColor(0xCC080706);c.drawRoundRect(new RectF(l+37,t+43,l+59,t+59),5,5,p);text(c,String.valueOf(item.quantity),l+41,t+56,8);}
-        if(item.equipped){p.setColor(0xFF6DBD62);c.drawRect(l+3,t+3,l+14,t+14,p);text(c,"E",l+5,t+12,7);}
-      }
-    }
-    // Right-side detail card only appears after tapping an item.
-    p.setColor(0xE0161210);c.drawRect(716,105,918,401,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.4f);p.setColor(0xFF8B6039);c.drawRect(716.5f,105.5f,917.5f,400.5f,p);p.setStyle(Paint.Style.FILL);
-    RpgInventoryPresentation.ItemRow selectedRow=null;
-    if(selectedId!=null)for(RpgInventoryPresentation.ItemRow row:rows)if(selectedId.equals(row.itemId)){selectedRow=row;break;}
-    if(selectedRow==null){mutedText(c,"아이템을 선택하세요",752,250,10);}
-    else{
-      RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(selectedRow.itemId);
-      text(c,selectedRow.name,734,127,10.5f);
-      mutedText(c,rpgPresentation.requirementLabel(selectedRow),734,143,7.2f);
-      if(d!=null&&d.equippable()){
-        RpgProgressionState.ItemDefinition current=state.rpg().equippedDefinition(d.equipSlot);
-        drawCompareCard(c,"현재 장착",current,734,154,78,128);
-        drawCompareCard(c,"선택 장비",d,822,154,78,128);
-        drawStatDeltaPanel(c,current,d,734,289,166);
-      }else{
-        drawInventoryItemIcon(c,selectedRow,752,164,72);
-        drawItemStatPanel(c,d,734,252,166);
-      }
-      String elem=rpgPresentation.elementLabel(selectedRow);if(!elem.isEmpty())mutedText(c,elem,734,337,7.2f);
-      p.setColor(0xD06A431E);c.drawRoundRect(new RectF(748,354,886,392),5,5,p);
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFFE0AD62);c.drawRoundRect(new RectF(748,354,886,392),5,5,p);p.setStyle(Paint.Style.FILL);
-      text(c,state.rpg().isConsumable(selectedRow.itemId)?"사용":selectedRow.equipped?"해제":"장착",799,378,11);
-    }
-    if(inventoryPage>0)text(c,"‹",555,457,18);
-    mutedText(c,(inventoryPage+1)+" / "+pages,616,456,9);
-    if(inventoryPage+1<pages)text(c,"›",682,457,18);
-  }
+  private final ItemWindow.Visuals itemWindowVisuals=new ItemWindow.Visuals(){
+    public void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size){drawInventoryItemIcon(c,row,x,y,size);}
+    public void actor(Canvas c,float x,float y){CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());c.save();c.translate(x,y);c.scale(2f,2f);characterRenderer.draw(c,new CharacterRenderer.Pose(0,0,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));c.restore();}
+  };
+  private void drawInventory(Canvas c){if(inventoryOpen)itemWindow.inventory(c,state.rpg(),rpgInteraction.selectedInventoryItemId(),itemWindowVisuals);}
 
   private void classicWindow(Canvas c,float l,float t,float r,float b,String title){
     p.setColor(0xF02A1D16);c.drawRect(l,t,r,b,p);
@@ -584,6 +536,7 @@ public final class GameView extends View {
   }
   private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
     RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
+    Bitmap reagent=reagentVisuals.get(row.itemId);if(reagent!=null){float sc=Math.min(size/reagent.getWidth(),size/reagent.getHeight()),w=reagent.getWidth()*sc,h=reagent.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(reagent,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     if(d!=null&&drawSourceItemIcon(c,d,l,t,size))return;
     drawFallbackItemIcon(c,d,l,t,size);
   }
@@ -643,53 +596,28 @@ public final class GameView extends View {
   private String itemModifierLabel(RpgProgressionState.ItemDefinition d){if(d==null||d.statModifiers.isEmpty())return "";StringBuilder s=new StringBuilder();for(Map.Entry<String,Integer> e:d.statModifiers.entrySet()){if(s.length()>0)s.append(" · ");s.append(e.getKey()).append(" ").append(e.getValue()>0?"+":"").append(e.getValue());}return s.toString();}
   private String equipmentCompareLabel(RpgProgressionState.ItemDefinition d){if(d==null||!d.equippable())return "";FinalStats now=state.rpg().finalStats();Map<String,String> eq=state.rpg().equipment();RpgProgressionState.ItemDefinition old=state.rpg().itemDefinitions().get(eq.get(d.equipSlot));int dam=now.dam-oldMod(old,"DAM")+mod(d,"DAM"),hit=now.hit-oldMod(old,"HIT")+mod(d,"HIT"),ac=now.ac-oldMod(old,"AC")+mod(d,"AC"),dex=now.dex-oldMod(old,"DEX")+mod(d,"DEX");if("무기".equals(d.equipSlot))return "장착 시 DAM "+now.dam+"→"+dam+" · HIT "+now.hit+"→"+hit;if("방패".equals(d.equipSlot)||"갑옷".equals(d.equipSlot)||"모자".equals(d.equipSlot)||"장갑".equals(d.equipSlot))return "장착 시 AC "+now.ac+"→"+ac;if("신발".equals(d.equipSlot))return "장착 시 DEX "+now.dex+"→"+dex;return "장착 시 최종 능력치에 즉시 반영";}
   private static int mod(RpgProgressionState.ItemDefinition d,String k){if(d==null)return 0;Integer v=d.statModifiers.get(k);return v==null?0:v;} private static int oldMod(RpgProgressionState.ItemDefinition d,String k){return mod(d,k);}
-  private void drawEquipment(Canvas c){
-    if(!equipmentOpen)return;
-    p.setColor(0x52000000);c.drawRect(0,0,W,H,p);
-    classicWindow(c,110,48,850,478,"Equip");
-    p.setColor(0xB02A1710);c.drawCircle(825,70,15,p);text(c,"×",820,75,14);
-    Map<String,String> eq=state.rpg().equipment();
-    // Presentation-only slot map. No equipment domain/state is changed.
-    String[] slots={"귀걸이","모자","목걸이","날개","방패","무기","장갑","장갑","벨트","각반","신발"};
-    float[][] pos={{155,105},{286,88},{417,105},{155,188},{155,270},{417,188},{125,350},{447,350},{417,270},{245,374},{326,374}};
-    for(int i=0;i<slots.length;i++)drawEquipSlot(c,eq,slots[i],pos[i][0],pos[i][1],74,66,i==6?"장갑(좌)":i==7?"장갑(우)":slots[i]);
-    // Current paper-doll uses the exact runtime visual binding already used in world rendering.
-    CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());
-    characterRenderer.draw(c,new CharacterRenderer.Pose(324,310,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
-    RpgProgressionState r=state.rpg();FinalStats fs=r.finalStats();
-    p.setColor(0xFF1B120E);c.drawRect(530,104,820,438,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xFF8A603B);c.drawRect(530.5f,104.5f,819.5f,437.5f,p);p.setStyle(Paint.Style.FILL);
-    text(c,"Presentation",548,130,12);mutedText(c,"Name",548,158,8);text(c,"주찬",620,158,9);mutedText(c,"Class",548,181,8);text(c,"평민",620,181,9);
-    p.setColor(0xFF5A3C28);c.drawRect(548,200,802,201,p);
-    text(c,"STR  "+r.str(),550,230,9);text(c,"WIS  "+r.wis(),650,230,9);text(c,"DEX  "+r.dex(),750,230,9);
-    text(c,"INT  "+r.intel(),550,255,9);text(c,"CON  "+r.con(),650,255,9);text(c,"AC  "+fs.ac,750,255,9);
-    mutedText(c,"HP  "+state.player().hp+" / "+fs.maxHp,550,294,9);mutedText(c,"MP  "+state.player().mp+" / "+fs.maxMp,550,317,9);
-    mutedText(c,"HIT  "+fs.hit+"   DAM  "+fs.dam,550,350,9);
-    mutedText(c,"장비창은 표시 전용 · 장착/해제는 인벤토리에서",550,416,7.5f);
-  }
-  private void drawEquipSlot(Canvas c,Map<String,String> eq,String slot,float l,float t,float w,float h,String label){
-    p.setColor(0xE018120F);c.drawRect(l,t,l+w,t+h,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xFF765335);c.drawRect(l+.5f,t+.5f,l+w-.5f,t+h-.5f,p);p.setStyle(Paint.Style.FILL);
-    String id=eq.get(slot);RpgProgressionState.ItemDefinition d=id==null?null:state.rpg().itemDefinitions().get(id);
-    mutedText(c,label,l+4,t+11,6.5f);
-    if(d!=null){RpgInventoryPresentation.ItemRow found=null;for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(id)){found=row;break;}if(found!=null)drawInventoryItemIcon(c,found,l+16,t+16,Math.min(w-24,h-20));}
+  private void drawEquipment(Canvas c){if(equipmentOpen)itemWindow.equipment(c,state.rpg(),rpgInteraction.selectedInventoryItemId(),itemWindowVisuals);}
+  private boolean handleEquipmentTouch(float x,float y){
+    ItemWindow.Hit hit=itemWindow.equipmentTouch(x,y,state.rpg());
+    if(hit==ItemWindow.Hit.CLOSE){equipmentOpen=false;return true;}
+    if(hit==ItemWindow.Hit.DETAILS){equipmentOpen=false;statsOpen=true;return true;}
+    if(hit==ItemWindow.Hit.SELECT||hit==ItemWindow.Hit.ACTION)rpgInteraction.selectInventoryItem(state.rpg(),itemWindow.hitItem);
+    if(hit==ItemWindow.Hit.ACTION)activateInventoryItem();
+    return true;
   }
   private String equipResultLabel(RpgProgressionState.EquipResult result){switch(result){case EQUIPPED:return "장착 완료";case UNEQUIPPED:return "해제 완료";case REQUIREMENT_NOT_MET:return "장착 불가 · 조건 미충족";case REQUIREMENT_PENDING:return "장착 보류 · 조건 확인 필요";case NOT_EQUIPPABLE:return "장착할 수 없는 아이템";case UNKNOWN_ITEM:return "알 수 없는 아이템";case ITEM_NOT_OWNED:default:return "보유하지 않은 아이템";}}
   private boolean handleInventoryTouch(float x,float y){
     if(!inventoryOpen)return false;
-    if(dist(x,y,913,76)<=24){inventoryOpen=false;showFeedback("인벤토리 닫힘",FeedbackTone.INFO);return true;}
-    List<RpgInventoryPresentation.ItemRow> rows=rpgPresentation.inventoryRows(state.rpg());
-    int pageSize=20,pages=Math.max(1,(rows.size()+pageSize-1)/pageSize);inventoryPage=Math.max(0,Math.min(inventoryPage,pages-1));
-    if(y>=430&&y<=472){if(x>=530&&x<590&&inventoryPage>0){inventoryPage--;return true;}if(x>=660&&x<=710&&inventoryPage+1<pages){inventoryPage++;return true;}}
-    float gx=440,gy=105,cell=62,gap=5;
-    if(x>=gx&&x<=gx+4*cell+3*gap&&y>=gy&&y<=gy+5*cell+4*gap){
-      int col=(int)((x-gx)/(cell+gap)),row=(int)((y-gy)/(cell+gap));float lx=gx+col*(cell+gap),ty=gy+row*(cell+gap);
-      if(x<=lx+cell&&y<=ty+cell){int index=inventoryPage*pageSize+row*4+col;if(index<rows.size()){RpgInventoryPresentation.ItemRow item=rows.get(index);if(rpgInteraction.selectInventoryItem(state.rpg(),item.itemId))showFeedback(item.name+" 선택",FeedbackTone.INFO);}return true;}
-    }
-    if(x>=748&&x<=886&&y>=354&&y<=392){
-      String selected=rpgInteraction.selectedInventoryItemId();
-      if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복물약 사용 · HP +"+RpgProgressionState.B5_SMALL_HP_POTION_HEAL:used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return true;}
-      RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);return true;
-    }
-    return inside(x,y,420,54,938,476);
+    ItemWindow.Hit hit=itemWindow.inventoryTouch(x,y,state.rpg());
+    if(hit==ItemWindow.Hit.CLOSE){inventoryOpen=false;itemWindow.details=false;return true;}
+    if(hit==ItemWindow.Hit.SELECT)rpgInteraction.selectInventoryItem(state.rpg(),itemWindow.hitItem);
+    if(hit==ItemWindow.Hit.ACTION)activateInventoryItem();
+    return true;
+  }
+  private void activateInventoryItem(){
+    String selected=rpgInteraction.selectedInventoryItemId();
+    if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복물약 사용 · HP +"+RpgProgressionState.B5_SMALL_HP_POTION_HEAL:used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return;}
+    RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);
   }
 
   private boolean poteTravelDialogue(){RuntimeState.Npc n=interaction.dialogNpc();return n!=null&&"pote_travel_guide".equals(n.id);}
@@ -733,11 +661,11 @@ public final class GameView extends View {
       }
       if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();autoAttackEnabled=false;combat.clearTarget();interaction.cancel();activeWorld().cancelForAction();activeWorld().snapCameraToPlayer();camera=activeWorld().camera();action=Action.IDLE;actionClock=0f;playerFacing.endAttack();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;checkpoint();}return true;}
       if(interaction.dialogOpen()){if(poteTravelDialogue()&&inside(x,y,500,408,606,442)){interaction.dismissDialog();worldAdapter.cancelForAction();enterPoteField();showFeedback("포테의 숲으로 이동",FeedbackTone.INFO);return true;}if(supplyDialogue()&&y>=408&&y<=442){String item=null,name=null;long price=0;if(x>=218&&x<=330){item=RpgProgressionState.B_SMALL_POTION_ITEM_ID;name="소형 회복물약";price=20;}else if(x>=346&&x<=458){item=RpgProgressionState.SHOP_MOKDO_ITEM_ID;name="목도";price=120;}else if(x>=474&&x<=586){item=RpgProgressionState.SHOP_LEATHER_GLOVE_ITEM_ID;name="가죽장갑";price=80;}else if(x>=602&&x<=714){item=RpgProgressionState.SHOP_SHOES_ITEM_ID;name="신발";price=60;}if(item!=null){if(state.rpg().buyItem(item,price)){checkpoint();showReward(name+" 구매 · Gold -"+price);}else showFeedback("구매 불가 · Gold/아이템 상태 확인",FeedbackTone.WARN);return true;}}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED&&quest2.state()==GrowthQuest2.State.AVAILABLE&&inside(x,y,500,408,606,442)){if(quest2.accept()){showFeedback("퀘스트 수락 · 성장 훈련",FeedbackTone.INFO);interaction.dismissDialog();}return true;}if(f5mGuideDialogue()&&quest2.state()==GrowthQuest2.State.RETURN_READY&&inside(x,y,500,408,606,442)){if(quest2.turnIn(state.rpg())){state.applyDerivedGrowth();F5mSaveStore.saveRewardsActive(state.rpg());showReward("성장 훈련 완료 · EXP +15000 · Gold +250");interaction.dismissDialog();}return true;}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY&&inside(x,y,500,408,606,442)){F5mTurnInCoordinator.Result tr=F5mQuestUiFlow.confirmTurnIn(f5mQuest,state.rpg());String msg=F5mQuestUiFlow.completionMessage(tr);if(tr==F5mTurnInCoordinator.Result.COMPLETED){state.applyDerivedGrowth();checkpoint();showReward(msg);interaction.dismissDialog();worldAdapter.cancelForAction();}else showFeedback(msg,tr==F5mTurnInCoordinator.Result.ALREADY_COMPLETED?FeedbackTone.INFO:FeedbackTone.WARN);return true;}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,500,408,606,442)){F5mAdaptedPrologueQuest.AcceptResult r=f5mQuest.accept();if(r==F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED){interaction.dismissDialog();checkpoint();}showFeedback(r==F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED?"퀘스트 수락 · 첫 훈련":"퀘스트 상태 유지",FeedbackTone.INFO);return true;}if(f5mGuideDialogue()&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.AVAILABLE&&inside(x,y,620,408,726,442)){f5mQuest.decline();interaction.dismissDialog();worldAdapter.cancelForAction();showFeedback("퀘스트 거절 · 다시 대화할 수 있습니다",FeedbackTone.INFO);return true;}interaction.dismissDialog();worldAdapter.cancelForAction();showFeedback("대화 종료",FeedbackTone.INFO);return true;}
-      if(circleHit(x,y,UTILITY_X0+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){inventoryOpen=!inventoryOpen;if(inventoryOpen){statsOpen=false;equipmentOpen=false;skillWindow.close();}showFeedback(inventoryOpen?"인벤토리 열림":"인벤토리 닫힘",FeedbackTone.INFO);return true;}
+      if(circleHit(x,y,UTILITY_X0+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){inventoryOpen=!inventoryOpen;if(inventoryOpen){itemWindow.details=false;statsOpen=false;equipmentOpen=false;skillWindow.close();}showFeedback(inventoryOpen?"인벤토리 열림":"인벤토리 닫힘",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){statsOpen=!statsOpen;if(statsOpen){inventoryOpen=false;equipmentOpen=false;skillWindow.close();}showFeedback(statsOpen?"스탯창 열림":"스탯창 닫힘",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP*2+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){equipmentOpen=!equipmentOpen;if(equipmentOpen){inventoryOpen=false;statsOpen=false;skillWindow.close();}showFeedback(equipmentOpen?"장비창 열림":"장비창 닫힘",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,UTILITY_X0+UTILITY_STEP*3+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){skillWindow.open=true;inventoryOpen=statsOpen=equipmentOpen=false;return true;}
-      if(equipmentOpen){if(dist(x,y,911,91)<=24){equipmentOpen=false;return true;}return inside(x,y,548,72,936,444);}if(handleInventoryTouch(x,y))return true;
+      if(equipmentOpen)return handleEquipmentTouch(x,y);if(handleInventoryTouch(x,y))return true;
       if(inside(x,y,CHAT_LEFT+hudCenterOffset,418,CHAT_RIGHT+hudCenterOffset,522)){if(!chatExpanded||inside(x,y,CHAT_RIGHT-42+hudCenterOffset,418,CHAT_RIGHT+hudCenterOffset,448)){chatExpanded=!chatExpanded;return true;}return true;}
       if(inside(x,y,14,132,264,questCollapsed?172:236)){if(questCollapsed){questCollapsed=false;return true;}if(inside(x,y,232,139,256,163)){questCollapsed=true;return true;}ActiveQuestTracker.Quest tracked=ActiveQuestTracker.current(f5mQuest,quest2);if(tracked==ActiveQuestTracker.Quest.PROLOGUE){autoNavigateQuest();return true;}if(tracked==ActiveQuestTracker.Quest.GROWTH_2){autoNavigateQuest2();return true;}}
       if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){cancelSkillApproach();autoAttackEnabled=false;joy=true;directStepClock=0f;pressedControl="JOY";activeWorld().cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}

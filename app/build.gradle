@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 73
-        versionName '0.73-all-job-visible-tabs'
+        versionCode 74
+        versionName '0.74-reference-item-windows'
     }
     sourceSets {
         main {
