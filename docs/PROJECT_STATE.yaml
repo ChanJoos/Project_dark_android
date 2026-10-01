@@ -151,7 +151,11 @@ work_packages:
     system: combat_presentation
     priority: P1
     claim: Director/Integration
-    queue_state: VERIFICATION_PENDING
+    queue_state: DEVICE_PENDING
+    source_sha: b35a69b09f163da91140a466adba5b971e0bb8e4
+    build_verified: "Actions36914678590 SUCCESS; version81 APK11188683570"
+    native_verified: "404 native PNGs; Ragnarok14 isolated phases and8 live frames inspected"
+    delivery_evidence: docs/verification/SKILL_FX_V81_BUILD.json
     source_branch: codex/original-skill-contract-v65
     required_sources: [master/source/skill_fx/user_ragnarok_20261002/provenance.json, docs/verification/SKILL_FX_V81_AUDIT.json]
     acceptance: ["Four originals retained with hashes", "Six-point sigil extraction with declared reconstruction", "Source animation starts at actual recipient contact", "GIF plus exact-source APK delivered"]
