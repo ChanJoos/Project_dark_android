@@ -26,8 +26,8 @@ public class SkillFxAuditTest {
    Bitmap b=Bitmap.createBitmap(320,320,Bitmap.Config.ARGB_8888);fx.drawDirected(new Canvas(b),new Paint(),"SK_전사_013",.5f,160,160,dx,dy);double sum=0,x=0,y=0;for(int py=0;py<320;py++)for(int px=0;px<320;px++){int a=Color.alpha(b.getPixel(px,py));sum+=a;x+=a*px;y+=a*py;}assertTrue(sum>0);double cx=x/sum-160,cy=y/sum-(160-s.directionPivotLift*s.scale);assertTrue("forward energy "+dx+","+dy,cx*dx+cy*dy>0);b.recycle();
   }
  }
- @Test public void fiveReportedSkillsUseActualQuickslotInputInAllFourDirections()throws Exception{
-  String[] ids={"SK_전사_015","SK_전사_014","SK_전사_013","SK_무도가_002","SK_무도가_007"};int face=0;
+ @Test public void sixReviewedSkillsUseActualQuickslotInputInAllFourDirections()throws Exception{
+  String[] ids={"SK_전사_015","SK_전사_014","SK_전사_013","SK_무도가_002","SK_무도가_007","SK_무도가_018"};int face=0;
   for(String id:ids)for(float dx:new float[]{32,-32})for(float dy:new float[]{16,-16}){
    F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-dx;s.player().y=m.y-dy;s.player().mp=0;m.hp=200;
    ((CombatController)field(v,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();((SkillBook)field(v,"skillBook")).restoreTestSlots(new String[]{id,null,null,null,null,null,null,null});MotionEvent ev=MotionEvent.obtain(0,0,MotionEvent.ACTION_DOWN,671,395,0);v.onTouchEvent(ev);ev.recycle();assertEquals(id,field(v,"activeSkillVisualId"));
