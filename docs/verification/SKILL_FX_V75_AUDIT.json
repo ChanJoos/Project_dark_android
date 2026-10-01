@@ -10,8 +10,8 @@
     "classic": 55,
     "shared": 3
   },
-  "sourceChannelCount": 117,
-  "lowPixelChannels": 12,
+  "sourceChannelCount": 116,
+  "lowPixelChannels": 11,
   "rows": [
     {
       "id": "SK_전사_001",
@@ -4244,34 +4244,18 @@
       ],
       "channels": [
         {
-          "phase": "CASTER_START",
-          "anchor": "CASTER",
-          "path": "classic/e5bc88028a5d0924_caster_start.png",
-          "source": "master/source/skill_fx/naver_classic_2020/f3a465894268e9d5.gif",
-          "sourceSha256": "f58dcf72ed9de388c7127c4f61978b935cd3406cb387b9047da3d7338a9d88fe",
-          "atlasSha256": "de305f31b969d4ac3b73685ad93c6f26ddb69339443de6bae54bbe9fc4de9787",
-          "frames": 13,
-          "durationMs": 1300,
-          "peakPixels": 203,
-          "blend": "SCREEN",
-          "directional": false,
-          "flags": []
-        },
-        {
           "phase": "RECIPIENT_CONTACT",
-          "anchor": "RECIPIENT",
+          "anchor": "CASTER",
           "path": "classic/e5bc88028a5d0924_recipient_contact.png",
           "source": "master/source/skill_fx/naver_classic_2020/f3a465894268e9d5.gif",
           "sourceSha256": "f58dcf72ed9de388c7127c4f61978b935cd3406cb387b9047da3d7338a9d88fe",
-          "atlasSha256": "22cc3aa5923e5cd6746f2a9d239f23361faccb006fe9c0a5aa545726ca25338e",
+          "atlasSha256": "c751d4f32c35f817cf9c281a3fb58b733fb097bee7908d3d47b60efd0a923666",
           "frames": 13,
           "durationMs": 1300,
-          "peakPixels": 25,
+          "peakPixels": 1180,
           "blend": "SCREEN",
           "directional": false,
-          "flags": [
-            "LOW_PIXEL_CHANNEL_REVIEW"
-          ]
+          "flags": []
         }
       ],
       "warnings": [

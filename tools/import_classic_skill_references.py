@@ -20,7 +20,7 @@ for row in rows:
  h,w=rgb[0].shape[:2];base=np.median(rgb,axis=0)
  # Initial frame is an idle floor/actor reference in these demonstrations.
  base=rgb[0]
- martial=row['job']=='무도가';selfEffect=martial and row['name'] not in ['단각','통배권','붕각','백보신권','일음지','장풍','흡정신공','발경'] or row['name'] in ['실드','이모탈','리플렉토']
+ martial=row['job']=='무도가';selfEffect=martial and row['name'] not in ['단각','통배권','붕각','백보신권','일음지','장풍','흡정신공'] or row['name'] in ['실드','이모탈','리플렉토']
  caster=(118,113) if martial and not selfEffect else (108,116) if martial else (56,94)
  recipient=caster if selfEffect else (145,122) if martial else (141,107)
  body=Image.new('1',(w,h));d=ImageDraw.Draw(body)
@@ -45,7 +45,7 @@ for row in rows:
   alpha=np.max(emission,axis=2);changed=np.max(np.abs(diff),axis=2)>23
   saturation=np.max(c,axis=2)-np.min(c,axis=2);bright=np.min(c,axis=2)>150
   mask=changed&((saturation>35)|bright)&~blocked
-  if row['name'] in ['단각','붕각']:
+  if row['name'] in ['단각','붕각','발경']:
    # Cyan/white contact particles may overlap actors. Keep source-colour deltas,
    # not the moving actor's black/red/pink pixels. Only the top UI stays excluded.
    cr,cg,cb=c[:,:,0],c[:,:,1],c[:,:,2]
