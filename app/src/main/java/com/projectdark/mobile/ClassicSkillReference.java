@@ -28,11 +28,11 @@ final class ClassicSkillReference {
   boolean has(String id){return effects.containsKey(id);}
   Channel channel(String id,boolean start){Map<String,Channel> channels=effects.get(id);return channels==null?null:channels.get(start?"CASTER_START":"RECIPIENT_CONTACT");}
   void drawDirected(Canvas canvas,Channel channel,float age,float x,float y,float dx,float dy){
-    // Original martial capture faces SE (source actor-to-target vector 27,9).
-    // Rotate the particle layer only; source BODY poses retain their four-direction frames.
-    if(Math.abs(dx)+Math.abs(dy)<.001f){draw(canvas,channel,age,x,y);return;}
-    float angle=(float)Math.toDegrees(Math.atan2(dy,dx)-Math.atan2(9,27));
-    canvas.save();canvas.rotate(angle,x,y);draw(canvas,channel,age,x,y);canvas.restore();
+    // Keep captured upright auras/impacts above their foot pivot. A full rotation
+    // around the feet would put NW impacts below the target or turn freeze cages sideways.
+    // The captured SE layer is reflected only for west-facing presentation.
+    if(dx>=0){draw(canvas,channel,age,x,y);return;}
+    canvas.save();canvas.scale(-1,1,x,y);draw(canvas,channel,age,x,y);canvas.restore();
   }
   void draw(Canvas canvas,Channel channel,float age,float x,float y){CapturedSkillFx.Sequence s=channel.sequence;int frame=s.frame(age),col=frame%s.columns,row=frame/s.columns;paint.setFilterBitmap(s.filterBitmap);paint.setXfermode(s.normalBlend?null:screen);canvas.drawBitmap(s.atlas,new Rect(col*s.width,row*s.height,(col+1)*s.width,(row+1)*s.height),new RectF(x-s.pivotX*s.scale,y-s.pivotY*s.scale,x+(s.width-s.pivotX)*s.scale,y+(s.height-s.pivotY)*s.scale),paint);paint.setXfermode(null);}
 }

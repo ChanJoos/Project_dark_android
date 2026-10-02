@@ -26,7 +26,7 @@ public class MartialHudAutoRegressionTest {
   for(SkillPresentationCatalog.Entry entry:catalog.entries.values())if(entry.id.startsWith("SK_무도가_")){
    reviewed++;SkillActionContract.Rule rule=SkillActionContract.get(entry.id);assertNotNull(rule);
    if(!rule.presentationAllowed())continue;active++;
-   Bitmap sheet=Bitmap.createBitmap(960,420,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(sheet);Paint label=new Paint();label.setColor(Color.WHITE);label.setTextSize(11);
+   Bitmap sheet=Bitmap.createBitmap(960,630,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(sheet);Paint label=new Paint();label.setColor(Color.WHITE);label.setTextSize(11);
    int column=0;
    for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
     GameView v=directed(direction);RuntimeState s=field(v,"state");RuntimeState.Monster target=s.monsters().get(0);int hp=target.hp;
@@ -38,9 +38,9 @@ public class MartialHudAutoRegressionTest {
     if(rule.damage())assertTrue(entry.id+" actual target contact",target.hp<hp);
     for(SkillVfxRenderer.Pulse pulse:fx.pulses){
      if(pulse.sheet.equals("impact"))assertEquals("actual damage recipient",target.id,pulse.anchor);
-     if(pulse.sheet.equals("classic")){ClassicSkillReference.Channel channel=new ClassicSkillReference(c).channel(entry.id,pulse.caster);assertEquals(entry.id+" declared channel anchor",channel.casterAnchor?"player":rule.selfAnchored()?"player":target.id,pulse.anchor);}
+     if(pulse.sheet.equals("classic")){ClassicSkillReference.Channel channel=new ClassicSkillReference(c).channel(entry.id,pulse.caster);assertEquals(entry.id+" declared channel anchor",pulse.caster||rule.selfAnchored()?"player":target.id,pulse.anchor);}
     }
-    crop(v,out,column*240,20);advance(v,.12f);crop(v,out,column*240,220);out.drawText(direction+" contact / +120ms",column*240+8,14,label);column++;
+    crop(v,out,column*240,20);advance(v,.12f);crop(v,out,column*240,220);for(SkillVfxRenderer.Pulse pulse:fx.pulses)pulse.age=SkillFxAuditTest.sourcePeakAge(fx,pulse);crop(v,out,column*240,420);out.drawText(direction+" contact / +120ms / FX peak",column*240+8,14,label);column++;
    }
    save(sheet,"v89-martial-"+entry.id+".png");sheet.recycle();
   }
@@ -89,6 +89,17 @@ public class MartialHudAutoRegressionTest {
    RuntimeCombatSession session=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);session.setSkillTestMode(true);assertTrue(rule.id,session.submitPlayer(target,rule.id).accepted());
    Set<String> actual=new HashSet<>();for(CombatResolver.Event e:session.tick(rule.contact+.001f).events)if(e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.amount>0)actual.add(e.targetId);
    assertEquals(rule.id+" declared tile membership",expected,actual);
+  }
+ }
+
+ @Test public void martialImpactsStayUprightAboveTheFootPivotWhenFacingNorthOrWest()throws Exception{
+  ClassicSkillReference reference=new ClassicSkillReference(c);
+  for(String id:reference.effects.keySet())if(id.startsWith("SK_무도가_")&&!SkillActionContract.get(id).selfAnchored()){
+   ClassicSkillReference.Channel channel=reference.channel(id,false);if(channel==null||channel.sequence.visualCenter)continue;
+   Bitmap east=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888),north=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888),west=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888);
+   float age=channel.sequence.duration/2;reference.drawDirected(new Canvas(east),channel,age,200,200,32,16);reference.drawDirected(new Canvas(north),channel,age,200,200,32,-16);reference.drawDirected(new Canvas(west),channel,age,200,200,-32,-16);
+   int[] pixels=new int[160000],n=new int[160000],w=new int[160000];east.getPixels(pixels,0,400,0,0,400,400);north.getPixels(n,0,400,0,0,400,400);west.getPixels(w,0,400,0,0,400,400);
+   assertArrayEquals(id+" upright north impact",pixels,n);for(int y=0;y<400;y++)for(int x=0;x<400;x++)assertEquals(id+" west preserves vertical foot registration",pixels[y*400+x],w[y*400+399-x]);east.recycle();north.recycle();west.recycle();
   }
  }
  static void save(Bitmap b,String name)throws Exception{File f=new File("build/reports/device-review/"+name);f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}}

@@ -33,7 +33,10 @@ final class SkillVfxRenderer {
     if(rogue.has(id)||classic.has(id)||warrior.has(id)||shared.has(id)){
       ClassicSkillReference reference=rogue.has(id)?rogue:classic.has(id)?classic:warrior.has(id)?warrior:shared;String sourceSheet=rogue.has(id)?"rogue":classic.has(id)?"classic":warrior.has(id)?"warrior":"shared";
       ClassicSkillReference.Channel channel=reference.channel(id,caster);if(channel==null)continue;
-      String anchor=channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor;
+      // Capture anchor records the example's pivot, not who receives a live attack.
+      SkillActionContract.Rule liveRule=SkillActionContract.get(id);
+      boolean martialRecipient=sourceSheet.equals("classic")&&id.startsWith("SK_무도가_")&&!caster&&liveRule!=null&&!liveRule.selfAnchored();
+      String anchor=martialRecipient?e.targetId:channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor;
       if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
       float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
       Pulse sourcePulse=new Pulse(e.actionSequence,id,sourceSheet,0,anchor,caster,channel.sequence.duration,x,y);sourcePulse.directionX=a.x(e.targetId)-a.x(e.actorId);sourcePulse.directionY=a.y(e.targetId)-a.y(e.actorId);pulses.add(sourcePulse);if(pulses.size()>64)pulses.remove(0);continue;
