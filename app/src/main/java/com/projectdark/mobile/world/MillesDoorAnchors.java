@@ -10,6 +10,6 @@ public final class MillesDoorAnchors {
   new Door("general_shop","general_shop_door",1120,360,321,263,1,91,216,1056,320),
   new Door("church","church_door",1540,455,284,305,1.35f,85,281,1472,432)));
  public static Door forId(String id){for(Door d:ALL)if(d.id.equals(id))return d;return null;}
- public static boolean inDoorApproach(String building,float x,float y,float radius){for(Door d:ALL)if(d.building.equals(building))return Math.abs(x-d.x)+radius<=26&&y-radius>=d.y-28&&y+radius<=d.y+100;return false;}
+ public static boolean inDoorApproach(String building,float x,float y,float radius){for(Door d:ALL)if(d.building.equals(building))return Math.abs(x-d.x)+radius<=40&&y-radius>=d.y-28&&y+radius<=d.y+100;return false;}
  private MillesDoorAnchors(){}
 }

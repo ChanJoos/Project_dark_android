@@ -31,7 +31,7 @@ public final class TownShopWindow {
  private static boolean hit(float x,float y,float l,float t,float r,float b){return x>=l&&x<=r&&y>=t&&y<=b;}
  private void fill(Canvas c,float l,float t,float r,float b,int color){p.setStyle(Paint.Style.FILL);p.setColor(color);c.drawRect(l,t,r,b,p);}
  private void wood(Canvas c,float l,float t,float r,float b){
-  p.setStyle(Paint.Style.FILL);p.setShader(new LinearGradient(l,t,r,b,new int[]{0xff755130,0xff322319,0xff654527},null,Shader.TileMode.CLAMP));c.drawRoundRect(new RectF(l,t,r,b),7,7,p);p.setShader(null);
+  p.setStyle(Paint.Style.FILL);p.setColor(0xffffffff);p.setShader(new LinearGradient(l,t,r,b,new int[]{0xff755130,0xff322319,0xff654527},null,Shader.TileMode.CLAMP));c.drawRoundRect(new RectF(l,t,r,b),7,7,p);p.setShader(null);
   for(int y=(int)t+8;y<b-7;y+=4){p.setColor(y%8==0?0x188f7146:0x1421140a);c.drawLine(l+7,y,r-7,y,p);}
   p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xff21160f);c.drawRoundRect(new RectF(l,t,r,b),7,7,p);p.setColor(0xffb49460);c.drawRoundRect(new RectF(l+3,t+3,r-3,b-3),5,5,p);p.setColor(0xff3a2719);c.drawRoundRect(new RectF(l+6,t+6,r-6,b-6),3,3,p);p.setStyle(Paint.Style.FILL);
   if(r-l>150&&b-t>60)for(float x:new float[]{l+9,r-9})for(float y:new float[]{t+9,b-9}){p.setColor(0xff21150d);c.drawCircle(x,y,4,p);p.setColor(0xffbd9562);c.drawCircle(x-1,y-1,2,p);}

@@ -30,6 +30,10 @@
     {
       "file": "icons.webp",
       "sha256": "c078adf0c4012c100315d92bd76fa32875c0e14fd086250289bc8f449e6946b0"
+    },
+    {
+      "file": "materials.webp",
+      "sha256": "6049499fe0918379c65b7f5397f150131ad77e1e6a294a9bb23cdbbe45c06ed1"
     }
   ],
   "catalog_sources": [
@@ -62,6 +66,7 @@
     "mode": "built-in imagegen",
     "portrait_prompt": "Four waist-up late-1990s Korean fantasy RPG dialogue portraits, 2x2 transparent sheet: brown-haired teal-cap blue-robed apothecary; orange leather weaponsmith; navy-vest banker; ivory burgundy-stole priest. Consistent ink outlines and muted hand-painted palette.",
     "icon_prompt": "4x2 transparent pixel RPG inventory icons: green Curum vial, pale cyan holy water, leather gloves, leather leggings, silver earrings, ruby ring, violet Goru ring, medicine pouch. Crisp silhouette, no text or frames.",
-    "processing": "Only WebP encoding optimization; same image dimensions and alpha; region selection at runtime. Source wearable registration and original sprite bytes retained."
+    "processing": "Only WebP encoding optimization; same image dimensions and alpha; region selection at runtime. Source wearable registration and original sprite bytes retained.",
+    "material_prompt": "Four equal seamless 2x2 material cells: dark walnut planks, muted burgundy carpet weave, aged grey-beige plaster, pale limestone. Classic hand-painted pixel RPG textures, no objects/perspective/text."
   }
 }
