@@ -396,7 +396,7 @@ public final class GameView extends View {
   }
   private void drawReagentShop(Canvas c){townWindow.draw(c,hudCenterOffset);}
   private boolean handleReagentShopTouch(MotionEvent e,float x,float y){if(e.getActionMasked()==MotionEvent.ACTION_DOWN){if(townWindow.isOpen()){townWindow.touch(x,y,hudCenterOffset,()->F5mSaveStore.writable()&&F5mSaveStore.checkpointActive());reagentShopOpen=townWindow.isOpen();return true;}if(reagentShopAdapter==null)return true;
-    WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());if(dist(x,y,m.x,m.y-24)<=36){merchantApproach=true;joy=false;vx=vy=0;reagentShopAdapter.requestGroundWorld(townInterior.customerX(),townInterior.customerY());showFeedback(townInterior.npcName+"에게 이동",FeedbackTone.INFO);return true;}
+    WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());if(dist(x,y,m.x,m.y-24)<=36){merchantApproach=false;joy=false;vx=vy=0;reagentShopAdapter.cancelForAction();townWindow.open(townInterior,state);reagentShopOpen=true;action=Action.IDLE;return true;}
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){merchantApproach=false;reagentShopAdapter.cancelForDirectInput();joy=true;directStepClock=0;stick(x,y);return true;}
     if(!isHudSurface(x,y)){merchantApproach=false;WorldCameraTransform.Point w=reagentShopAdapter.screenToWorld(x,y);reagentShopAdapter.requestGroundWorld(w.x,w.y);}return true;}
     if(e.getActionMasked()==MotionEvent.ACTION_MOVE&&joy){stick(x,y);return true;}if(e.getActionMasked()==MotionEvent.ACTION_UP||e.getActionMasked()==MotionEvent.ACTION_CANCEL){joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;}return true;
@@ -526,6 +526,7 @@ public final class GameView extends View {
   private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
     RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
     Bitmap reagent=reagentVisuals.get(row.itemId);if(reagent!=null){float sc=Math.min(size/reagent.getWidth(),size/reagent.getHeight()),w=reagent.getWidth()*sc,h=reagent.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(reagent,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
+    Bitmap catalog=ItemIconCatalog.reagent(row.itemId);if(catalog==null)catalog=ItemIconCatalog.get(row.itemId,d);if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     if(d!=null&&drawSourceItemIcon(c,d,l,t,size))return;
     drawFallbackItemIcon(c,d,l,t,size);
   }
@@ -564,25 +565,25 @@ public final class GameView extends View {
     String mods=itemModifierLabel(d);drawWrappedText(c,mods.isEmpty()?"추가 능력치 없음":mods,x+5,y+94,w-10,6.5f,10);
   }
   private void drawStatDeltaPanel(Canvas c,RpgProgressionState.ItemDefinition current,RpgProgressionState.ItemDefinition next,float x,float y,float width){
-    String[] keys={"DAM","HIT","AC","DEX","STR","INT","WIS","CON","MDEF"};int shown=0;
+    String[] keys={"AC","MAGIC_DEFENSE","HP","MP","DAM","HIT","STR","INT","WIS","CON","DEX"};int shown=0;
     for(String key:keys){int a=mod(current,key),b=mod(next,key);if(a==0&&b==0)continue;int delta=b-a;float yy=y+shown*16;
-      mutedText(c,key,x,yy+10,6.5f);mutedText(c,a+" → "+b,x+38,yy+10,7.2f);if(delta!=0)text(c,(delta>0?"+":"")+delta,x+112,yy+10,7.5f);shown++;if(shown>=3)break;}
+      mutedText(c,key.equals("MAGIC_DEFENSE")?"MDEF":key,x,yy+10,6.5f);mutedText(c,a+" → "+b,x+38,yy+10,7.2f);if(delta!=0)text(c,(delta>0?"+":"")+delta,x+112,yy+10,7.5f);shown++;if(shown>=3)break;}
     if(shown==0)mutedText(c,"장비 능력치 변화 없음",x,y+11,7.2f);
   }
   private void drawItemStatPanel(Canvas c,RpgProgressionState.ItemDefinition d,float x,float y,float width){
     if(d==null){mutedText(c,"능력치 정보 없음",x,y+12,8);return;}
-    String[] keys={"DAM","HIT","AC","DEX","STR","INT","WIS","CON","MDEF"};
+    String[] keys={"AC","MAGIC_DEFENSE","HP","MP","DAM","HIT","STR","INT","WIS","CON","DEX"};
     int shown=0;
     for(String key:keys){
       Integer v=d.statModifiers.get(key);if(v==null||v==0)continue;
       float col=shown%2,row=shown/2, bx=x+col*(width/2),by=y+row*27;
       p.setColor(0xCC2B2119);c.drawRoundRect(new RectF(bx,by,bx+width/2-5,by+22),4,4,p);
-      mutedText(c,key,bx+6,by+14,7);text(c,(v>0?"+":"")+v,bx+42,by+15,9);shown++;
+      mutedText(c,key.equals("MAGIC_DEFENSE")?"MDEF":key,bx+6,by+14,7);text(c,(v>0?"+":"")+v,bx+42,by+15,9);shown++;
       if(shown>=6)break;
     }
     if(shown==0)mutedText(c,d.equippable()?"추가 능력치 없음":"소비/기타 아이템",x,y+14,8);
   }
-  private String itemModifierLabel(RpgProgressionState.ItemDefinition d){if(d==null||d.statModifiers.isEmpty())return "";StringBuilder s=new StringBuilder();for(Map.Entry<String,Integer> e:d.statModifiers.entrySet()){if(s.length()>0)s.append(" · ");s.append(e.getKey()).append(" ").append(e.getValue()>0?"+":"").append(e.getValue());}return s.toString();}
+  private String itemModifierLabel(RpgProgressionState.ItemDefinition d){if(d==null||d.statModifiers.isEmpty())return "";StringBuilder s=new StringBuilder();for(Map.Entry<String,Integer> e:d.statModifiers.entrySet()){if(s.length()>0)s.append(" · ");s.append("MAGIC_DEFENSE".equals(e.getKey())?"MDEF":e.getKey()).append(" ").append(e.getValue()>0?"+":"").append(e.getValue());}return s.toString();}
   private String equipmentCompareLabel(RpgProgressionState.ItemDefinition d){if(d==null||!d.equippable())return "";FinalStats now=state.rpg().finalStats();Map<String,String> eq=state.rpg().equipment();RpgProgressionState.ItemDefinition old=state.rpg().itemDefinitions().get(eq.get(d.equipSlot));int dam=now.dam-oldMod(old,"DAM")+mod(d,"DAM"),hit=now.hit-oldMod(old,"HIT")+mod(d,"HIT"),ac=now.ac-oldMod(old,"AC")+mod(d,"AC"),dex=now.dex-oldMod(old,"DEX")+mod(d,"DEX");if("무기".equals(d.equipSlot))return "장착 시 DAM "+now.dam+"→"+dam+" · HIT "+now.hit+"→"+hit;if("방패".equals(d.equipSlot)||"갑옷".equals(d.equipSlot)||"모자".equals(d.equipSlot)||"장갑".equals(d.equipSlot))return "장착 시 AC "+now.ac+"→"+ac;if("신발".equals(d.equipSlot))return "장착 시 DEX "+now.dex+"→"+dex;return "장착 시 최종 능력치에 즉시 반영";}
   private static int mod(RpgProgressionState.ItemDefinition d,String k){if(d==null)return 0;Integer v=d.statModifiers.get(k);return v==null?0:v;} private static int oldMod(RpgProgressionState.ItemDefinition d,String k){return mod(d,k);}
   private void drawEquipment(Canvas c){if(equipmentOpen)itemWindow.equipment(c,state.rpg(),rpgInteraction.selectedInventoryItemId(),itemWindowVisuals);}

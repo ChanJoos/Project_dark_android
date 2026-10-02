@@ -391,6 +391,46 @@
       "evidence": "Source-image threshold; MillesDoorAnchors transform"
     },
     {
+      "id": "potion_shop_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 276.5,
+      "y": 387,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
+    },
+    {
+      "id": "weapon_shop_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 720,
+      "y": 266,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
+    },
+    {
+      "id": "general_shop_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1082.5,
+      "y": 329,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
+    },
+    {
+      "id": "church_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1495.05,
+      "y": 438.6,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
+    },
+    {
       "id": "west_armorer",
       "asset": "buildings/BLD_004_armor_shop.png",
       "x": 60,

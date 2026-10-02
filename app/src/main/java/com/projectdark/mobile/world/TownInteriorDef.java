@@ -12,8 +12,8 @@ public final class TownInteriorDef {
  private TownInteriorDef(Kind k,String id,String title,String npc,String outfit,String door){
   kind=k;mapId=id;this.title=title;npcName=npc;this.outfit=outfit;doorId=door;
   columns=k==Kind.EQUIPMENT?14:k==Kind.BANK?10:12;rows=k==Kind.EQUIPMENT?10:12;
-  npcU=k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:7;npcV=k==Kind.BANK?4:k==Kind.EQUIPMENT?2:3;
-  counterV=npcV+1;customerU=npcU;customerV=npcV+2;
+  npcU=k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:7;npcV=k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
+  counterV=npcV+2;customerU=npcU;customerV=counterV+1;
   counterStart=k==Kind.BANK?4:3;counterEnd=k==Kind.EQUIPMENT?11:k==Kind.BANK?8:10;
   List<Prop> p=new ArrayList<>();
   if(k!=Kind.CHURCH)for(int u=counterStart;u<=counterEnd;u++)p.add(new Prop("joined_counter",u,counterV,64));
@@ -29,7 +29,7 @@ public final class TownInteriorDef {
   new TownInteriorDef(Kind.BANK,"milles_interior_bank","밀레스 은행","은행원","mu0000026,mh004,ml230","general_shop_door"),
   new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000015,mh003,ml230","church_door")));
  public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;return null;}
- public static TownInteriorDef forDoor(String id){for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
+ public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
  private int entryU(){return kind==Kind.BANK?5:6;}
  public float spawnX(){return x(entryU(),rows-2);}public float spawnY(){return y(entryU(),rows-2);}public float exitX(){return x(entryU(),rows-1);}public float exitY(){return y(entryU(),rows-1);}

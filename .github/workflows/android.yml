@@ -100,7 +100,7 @@ jobs:
           git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
       - name: Audit reusable Milles map assets and layout
         run: python tools/assets/audit_milles_map_assets.py
-      - name: Verify V85 town interiors, door markers, merchant input, atomic trade and bank restart
+      - name: Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V83 per-skill abilities and runtime formulas
         run: |

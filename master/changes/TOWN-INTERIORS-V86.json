@@ -1,0 +1,25 @@
+{
+  "change_id": "TOWN-INTERIORS-V86",
+  "status": "ACCEPTED_USER_SCOPE",
+  "source_sheet": "master/data/Item_Master.csv",
+  "source_cell_or_id": ["IT_GLOVE_LEATHER", "IT_LEGGING_LEATHER", "IT_EARRING_DOUBLE_SILVER", "IT_RING_REDJADE", "IT_RING_THREELINEGOLD", "IT_RING_GORU"],
+  "before": "These canonical item identities were registered, but several had empty stat maps and the shop drew five missing icons from AI-generated atlas cells. Direct NPC taps started a walk; one portal trigger represented each two-tile door.",
+  "after": "Wire source-documented modifiers into FinalStats; route equipment shop and inventory icons through a shared non-AI pixel catalog where original item crops are absent; preserve captured Excuranum alpha; open shop on NPC tap; author two traversable portals per two-tile door; add native quantity entry.",
+  "reason": "User-reported unnatural shop scenes and AI-looking equipment/Excuranum icons; user requested immediate merchant taps, two door tiles, quantities entered from keyboard, and complete accessory function/image wiring.",
+  "evidence": [
+    "Nexon-hosted veteran guide: leather glove AC -1; leather legging more defensive than novice AC -1: https://lod.nexon.com/board/1493172227/5975",
+    "Nexon-hosted ring stat table: Redjade HP+100/MP+50; Goru MP+150; three-line gold ring AC-1/HP+300/MP+150/MDEF+1: https://lod.nexon.com/board/1493172227/1664",
+    "Nexon-hosted earring stat table: Double Silver STR+1: https://lod.nexon.com/board/1493172227/1669",
+    "Japanese community table cross-checks leather legging AC -2, level 11: https://w.atwiki.jp/takesi100/pages/155.html"
+  ],
+  "source_version": "Original item names and slot/level/job rules from Item_Master.csv; numerical facts from the listed 2006/2010 archived community records.",
+  "affected_runtime": ["RpgProgressionState", "FinalStats", "ItemIconCatalog", "GameView", "TownShopWindow", "TownInteriorRenderer", "WorldDef", "TownInteriorDef", "TownQuantityDialog"],
+  "validation": [
+    "TownInteriorTest: four interiors, immediate click opening without player movement, trade/bank/heal/restart, two traversable markers per door, accessory FinalStats, quantity bounds and original Excuranum pixel-alpha checks",
+    "Native visual captures for all four interiors and shop states",
+    "Master validation and reproducible generated Milles-map asset audit",
+    "Android CI unit tests and debug APK build against exact source SHA"
+  ],
+  "visual_asset_limit": "Asset_Master has no verified flat inventory crops for glove, legging, ring or earring identities. Their AI-generated cells were removed from shop/inventory rendering and replaced by one shared authored pixel-symbol catalog. These symbols are an explicit runtime stand-in; original named item image acquisition remains open.",
+  "preserve": ["Raw Master snapshot", "existing original BODY/skill approval", "original captured Excuranum RGBA bytes", "atomic durable trade semantics"]
+}

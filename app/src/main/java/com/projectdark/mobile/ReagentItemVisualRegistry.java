@@ -25,10 +25,17 @@ final class ReagentItemVisualRegistry {
     Bitmap out=null;
     if(file!=null)try(InputStream in=context.getAssets().open("assets/items/consumable/"+file)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;
-      out=cleanCapturedBackground(BitmapFactory.decodeStream(in,null,o));
+      // These five originals already have alpha. Flood-filling by their corner RGB
+      // erased the black Excuranum stopper and dark glass outline on transparent pixels.
+      out=preserveCapturedAlpha(BitmapFactory.decodeStream(in,null,o));
     }catch(Throwable ignored){}
-    if(out==null&&("IT_REAGENT_CURUM".equals(itemId)||"IT_REAGENT_HOLYWATER".equals(itemId)))try(InputStream in=context.getAssets().open("interiors/v85/icons.webp")){Bitmap atlas=BitmapFactory.decodeStream(in);int w=atlas.getWidth()/4,h=atlas.getHeight()/2;out=trimTransparent(Bitmap.createBitmap(atlas,"IT_REAGENT_CURUM".equals(itemId)?0:w,0,w,h));}catch(Exception ignored){}
+
     cache.put(itemId,out);return out;
+  }
+  private static Bitmap preserveCapturedAlpha(Bitmap src){
+    if(src==null)return null;
+    for(int y=0;y<src.getHeight();y++)for(int x=0;x<src.getWidth();x++)if((src.getPixel(x,y)>>>24)!=0)return src;
+    return cleanCapturedBackground(src);
   }
   private static Bitmap cleanCapturedBackground(Bitmap src){
     if(src==null||src.getWidth()<2||src.getHeight()<2)return src;

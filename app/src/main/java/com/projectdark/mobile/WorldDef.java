@@ -38,7 +38,7 @@ public final class WorldDef {
     for(MillesProductionCollision.Footprint f:MillesProductionCollision.blockers()){
       com.projectdark.mobile.world.MillesDoorAnchors.Door door=null;for(com.projectdark.mobile.world.MillesDoorAnchors.Door d:com.projectdark.mobile.world.MillesDoorAnchors.ALL)if(d.building.equals(f.id))door=d;
       if(door==null)b.add(new RectF(f.left,f.top,f.right,f.bottom));
-      else{float half=40,top=door.y-28;b.add(new RectF(f.left,f.top,f.right,top));b.add(new RectF(f.left,top,door.x-half,f.bottom));b.add(new RectF(door.x+half,top,f.right,f.bottom));}
+      else{float half=40,top=door.y-28;b.add(new RectF(f.left,f.top,f.right,top));b.add(new RectF(f.left,top,door.x-half,f.bottom));b.add(new RectF(door.x+half+32,top,f.right,f.bottom));}
     }
     blockers=Collections.unmodifiableList(b);
 
@@ -62,10 +62,13 @@ public final class WorldDef {
     List<PortalSpawn> p=new ArrayList<>();
     // Building exteriors stay fully solid. Entry is exclusively through front-door portal triggers.
     // Door threshold itself is the portal. Keep it wider than one player radius so diagonal tile stepping cannot skip the trigger.
-    p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").y,24f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));
-    p.add(new PortalSpawn("weapon_shop_door","milles_interior_weapon_shop",com.projectdark.mobile.world.MillesDoorAnchors.forId("weapon_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("weapon_shop_door").y,24f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
-    p.add(new PortalSpawn("general_shop_door","milles_interior_bank",com.projectdark.mobile.world.MillesDoorAnchors.forId("general_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("general_shop_door").y,24f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
-    p.add(new PortalSpawn("church_door","milles_interior_church",com.projectdark.mobile.world.MillesDoorAnchors.forId("church_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("church_door").y,24f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").y,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));
+    p.add(new PortalSpawn("weapon_shop_door","milles_interior_weapon_shop",com.projectdark.mobile.world.MillesDoorAnchors.forId("weapon_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("weapon_shop_door").y,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("general_shop_door","milles_interior_bank",com.projectdark.mobile.world.MillesDoorAnchors.forId("general_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("general_shop_door").y,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("church_door","milles_interior_church",com.projectdark.mobile.world.MillesDoorAnchors.forId("church_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("church_door").y,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    for(com.projectdark.mobile.world.MillesDoorAnchors.Door door:com.projectdark.mobile.world.MillesDoorAnchors.ALL){
+      p.add(new PortalSpawn(door.id+"_2",com.projectdark.mobile.world.TownInteriorDef.forDoor(door.id).mapId,door.x+32,door.y+16,18f,EVIDENCE_GEOMETRY,"ADAPTED_TWO_TILE_DOOR"));
+    }
     p.add(new PortalSpawn("inn_door","milles_interior_inn",2016f,736f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("milles_south_exit_proto","MAP_POTE_01",790f,1565f,40f,EVIDENCE_GEOMETRY,"ADAPTED_FIELD_ENTRY_ACTIVE"));
     portalSpawns=Collections.unmodifiableList(p);

@@ -153,20 +153,20 @@ public final class RpgProgressionState {
 
   public RpgProgressionState(){
     Map<String,Integer> noStats=Collections.<String,Integer>emptyMap();
-    Map<String,Integer> gloveStats=stats("AC",-1),shoeStats=stats("DEX",1),shirtStats=stats("AC",-1),hatStats=stats("AC",-1),shieldStats=stats("AC",-2),mokdoStats=stats("DAM",3,"HIT",1);
+    Map<String,Integer> gloveStats=stats("AC",-1),leggingStats=stats("AC",-2),shoeStats=stats("DEX",1),shirtStats=stats("AC",-1),hatStats=stats("AC",-1),shieldStats=stats("AC",-2),mokdoStats=stats("DAM",3,"HIT",1);
     Set<String> anyJob=Collections.<String>emptySet();
     Set<String> physicalJobs=jobSet("WARRIOR","ROGUE","MARTIAL_ARTIST");
     Set<String> magicJobs=jobSet("MAGE","CLERIC");
 
     registerItem(new ItemDefinition("IT_GLOVE_LEATHER","가죽장갑","장갑",11,anyJob,true,null,null,gloveStats,Evidence.ADAPTED));
-    registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_LEGGING_LEATHER","가죽각반","각반",11,anyJob,true,null,null,leggingStats,Evidence.O));
     registerItem(new ItemDefinition("IT_SHOES","신발",SHOES_SLOT,"ml228",1,anyJob,true,null,null,shoeStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(STARTER_HAT_ITEM_ID,"밀레스털모자",HEAD_SLOT,STARTER_HAT_APPEARANCE_ID,1,anyJob,true,null,null,hatStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(STARTER_SHIELD_ITEM_ID,"기본 방패",SHIELD_SLOT,STARTER_SHIELD_APPEARANCE_ID,1,anyJob,true,null,null,shieldStats,Evidence.ADAPTED));
-    registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,noStats,Evidence.O));
-    registerItem(new ItemDefinition("IT_RING_GORU","고루반지","반지",11,magicJobs,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","귀걸이",11,physicalJobs,true,null,null,stats("STR",1),Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_REDJADE","홍옥반지","반지",11,anyJob,true,null,null,stats("HP",100,"MP",50),Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_THREELINEGOLD","세줄금반지","반지",11,anyJob,true,null,null,stats("AC",-1,"HP",300,"MP",150,"MAGIC_DEFENSE",1),Evidence.O));
+    registerItem(new ItemDefinition("IT_RING_GORU","고루반지","반지",11,magicJobs,true,null,null,stats("MP",150),Evidence.O));
     registerItem(new ItemDefinition("IT_NECK_WATER_PEARL","바다의진주목걸이","목걸이",11,anyJob,true,"바다",null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_BELT_WATER_LEATHER","바다의가죽벨트","벨트",11,anyJob,true,null,"바다",noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_NECK_EARTH_PEARL","대지의진주목걸이","목걸이",11,anyJob,true,"대지",null,noStats,Evidence.O));

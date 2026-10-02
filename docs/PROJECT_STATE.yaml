@@ -156,6 +156,19 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  TOWN_INTERIORS_086:
+    title: "Fix source gaps and mobile interactions after V85 interior visual rejection"
+    system: town_interiors_and_commerce
+    priority: P0
+    claim: Director/Integration
+    queue_state: VERIFICATION_PENDING
+    failed_predecessor: "V85 interiors/items user reports still unnatural; installed APK SHA unconfirmed"
+    required_sources: [master/data/Item_Master.csv, master/data/Asset_Master.csv, master/changes/TOWN-INTERIORS-V86.json, docs/verification/TOWN_INTERIORS_V86_SOURCES.json, app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java]
+    acceptance: ["merchant tap opens immediately without moving player", "NPC stands one tile farther from connected counter", "two independently activating portals on each measured double-tile door", "keyboard numeric quantity editing with range validation", "source-backed glove/legging/earring/ring FinalStats and visible details", "AI accessory crops no longer used; one consistent shop/inventory pixel symbol where original item crop is unavailable", "captured Excuranum stopper/alpha preserved", "four native room/shop captures plus exact-source CI APK"]
+    source_sha: "in progress"
+    build_verified: "pending CI"
+    native_verified: "pending CI and user visual acceptance"
+    remaining: "Exact original accessory inventory crop files absent from Asset_Master; physical phone keyboard and visual review pending"
   SKILL_PRESENTATION_082:
     title: "User-reported martial kick mapping and Dara release timing repair"
     system: combat_presentation
