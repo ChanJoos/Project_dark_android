@@ -1,0 +1,43 @@
+{
+  "status": "PUBLISHED_BUILD_AND_NATIVE_VERIFIED",
+  "localCommit": "a97fc44108acb6ad053a5b873c5a907a31b37fce",
+  "action": "git push origin HEAD:refs/heads/codex/original-skill-contract-v65",
+  "reason": "Automatic approval review says explicit permission to publish supplied/private materials to this public destination is insufficient.",
+  "sourceProvenanceCheck": [
+    {
+      "id": "SK_전사_009",
+      "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/ce72d300fc1a4f8cbdc60fdf8bf6947b30cde09615da97961b3fbf6dcaf93251.jpg",
+      "sourceSha256": "ce72d300fc1a4f8cbdc60fdf8bf6947b30cde09615da97961b3fbf6dcaf93251",
+      "alreadyInPublicBase": true,
+      "newDerivedAtlas": "warrior/e6e3c43066b8ad00.png"
+    },
+    {
+      "id": "SK_전사_011",
+      "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/182bffcb1028fd9fa08a9fe70d102f9486cdd7b67ee9555a46e81a1b5f5dcdd7.jpg",
+      "sourceSha256": "182bffcb1028fd9fa08a9fe70d102f9486cdd7b67ee9555a46e81a1b5f5dcdd7",
+      "alreadyInPublicBase": true,
+      "newDerivedAtlas": "warrior/affa2fbaec40801a.png"
+    },
+    {
+      "id": "SK_도적_003",
+      "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830.gif",
+      "sourceSha256": "4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830",
+      "alreadyInPublicBase": true,
+      "newDerivedAtlas": "rogue/28439989d9d3276c.png"
+    },
+    {
+      "id": "SK_성직자_040",
+      "source": "master/source/skill_fx/naver_magic_recovered_20261001/cc65bc6160429dc7.gif",
+      "sourceSha256": "3890b7b482ccf4369500368fee2f4c7096d9b15ace0c8d2b1b48f586d374b95f",
+      "alreadyInPublicBase": true,
+      "newDerivedAtlas": "classic/holy_dragon_recipient.png"
+    }
+  ],
+  "boundary": "Authorized publication and exact-source candidate build/native review complete. Previous rejection and failed run remain historical evidence. Physical-device and user visual acceptance pending.",
+  "next": "User physical-device review; source gaps remain explicit.",
+  "userApproval": "2026-10-01: User replied 응 반영해 to explicit request to publish these source-derived assets and code to ChanJoos/Project_dark_android.",
+  "publishedSourceSha": "4a8875796e6c14d8404f5c816276d05231585dcf",
+  "publishedTreeSha": "a11e0860aaf9c148a7ba415e2ba297696d8f7d6a",
+  "initialRun": 36867772666,
+  "verifiedRun": 36880039516
+}

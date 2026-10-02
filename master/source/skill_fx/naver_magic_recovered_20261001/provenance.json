@@ -1,0 +1,42 @@
+{
+  "retrieved": "2026-10-01",
+  "access": "PUBLIC_UNAUTHENTICATED_FIRST_PARTY_GATEWAY",
+  "gateway": "https://article.cafe.naver.com/gw/v4/cafes/13434008/articles/{articleId}?useCafeId=true",
+  "gatewayEvidence": "Public mobile app JavaScript app.2dd3b3f070bc.js declares this ARTICLE route and base URL.",
+  "articles": [
+    {
+      "articleId": 221564,
+      "path": "221564.json",
+      "sha256": "c9f7454dffa08aed9015bd5c161dc20fb9cf8e85b55a07673b40f1cf302f0b13"
+    },
+    {
+      "articleId": 221555,
+      "path": "221555.json",
+      "sha256": "742619882328dc1933f64e2e7e3cfc9c56c58685a151bc2d71af479a0cd772c9"
+    },
+    {
+      "articleId": 254766,
+      "path": "254766.json",
+      "sha256": "b102c775720e3e6e38a4f03aa47f0ed9c95a0b94607036c052d0a9eb9dec1208"
+    },
+    {
+      "articleId": 255589,
+      "path": "255589.json",
+      "sha256": "705b07e41a1a85ac788292774a72ccf6a9acd73097499566b3a689615f1aeaf2"
+    },
+    {
+      "articleId": 416054,
+      "path": "416054.json",
+      "sha256": "ad4e09f347f604142777c9f069488fe1a2a5b9511341c5dc38107633fe7905f5"
+    }
+  ],
+  "mediaReferences": 228,
+  "animations": 24,
+  "addedRuntimeClericIDs": 16,
+  "limitations": [
+    "Mage articles contain still captures, not measured animation cadence; retained without claiming original animated spell coverage.",
+    "Cleric Holydragon has a different large capture layout and is retained without connecting an unreviewed pivot.",
+    "Seven advanced abilities in the source table are absent from the current skill catalog and are not invented.",
+    "Captured original GIF pixels are source evidence; inverse-matted runtime projections remain approximate."
+  ]
+}

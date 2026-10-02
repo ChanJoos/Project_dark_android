@@ -1,0 +1,156 @@
+{
+  "sources": {
+    "equipment": {
+      "path": "master/source/item_windows/equipment_reference_20261001.jpg",
+      "sha256": "7a71fdb6c6852a401c469618590afb106bf0a3c4aa0735c8c4f26789d0d75f56",
+      "size": [
+        965,
+        1536
+      ]
+    },
+    "inventory": {
+      "path": "master/source/item_windows/inventory_reference_20261001.jpg",
+      "sha256": "db9778ab0841b785076de8c387f347001ce6b0fe45a5b04aa3c92fc1746af732",
+      "size": [
+        1536,
+        1206
+      ]
+    }
+  },
+  "crops": {
+    "paper": {
+      "path": "item-window/paper.png",
+      "box": [
+        400,
+        1330,
+        600,
+        1380
+      ],
+      "sha256": "f5b098ae5c1bd676064478f9c1ff6082b27f490bc92fd320e81d45da89f39304"
+    },
+    "header": {
+      "path": "item-window/header.png",
+      "box": [
+        28,
+        30,
+        320,
+        126
+      ],
+      "sha256": "0625ce51150ed5f8addec0fcd93c81dc153eaa4ac733ae94d02f0c38742bd0bb"
+    },
+    "edge": {
+      "path": "item-window/edge.png",
+      "box": [
+        2,
+        205,
+        10,
+        1470
+      ],
+      "sha256": "e31219602f11b5124b8a5f4f43e5e30a14233c4b931d9730937f6b7bcd685821"
+    },
+    "bottom": {
+      "path": "item-window/bottom.png",
+      "box": [
+        20,
+        1505,
+        940,
+        1518
+      ],
+      "sha256": "a27712d654d1ed9d19e17cc9b9868200cde83496439e6ad9d609c2daf036d8c8"
+    },
+    "slot": {
+      "path": "item-window/slot.png",
+      "box": [
+        201,
+        464,
+        314,
+        579
+      ],
+      "sha256": "1fea7cb24b038f81e31ecd65c1f4955271f50a183ea43f84a013569d8b0403e6"
+    },
+    "detail": {
+      "path": "item-window/detail.png",
+      "box": [
+        225,
+        756,
+        500,
+        787
+      ],
+      "sha256": "a29bac3727289c62de5a791af039ca4851d927a873abc65e22af22f5ef055381"
+    },
+    "top": {
+      "path": "item-window/top.png",
+      "box": [
+        602,
+        148,
+        930,
+        213
+      ],
+      "sha256": "88c15ac2cfa786e1e3031f67bb746ca54d7b26562cdd5d00d4fa113b26905edc"
+    },
+    "left": {
+      "path": "item-window/left.png",
+      "box": [
+        75,
+        610,
+        84,
+        1120
+      ],
+      "sha256": "95301df18c9a4572ebc8bb2984f5740df77f7cf3ec13c0e465cb45c3a29282d4"
+    },
+    "bottom-detail": {
+      "path": "item-window/bottom-detail.png",
+      "box": [
+        90,
+        1136,
+        725,
+        1148
+      ],
+      "sha256": "0a233b164fad2b01698d6486e7654542c2f7a3d62f639faf317c1256235806a7"
+    },
+    "cell": {
+      "path": "item-window/cell.png",
+      "box": [
+        954,
+        289,
+        1039,
+        369
+      ],
+      "sha256": "fd01c289c4cdc1fb6fb35911c9531f45a7b38715a8cc82a65c72da77feb0952d"
+    },
+    "all": {
+      "path": "item-window/all.png",
+      "box": [
+        640,
+        220,
+        691,
+        268
+      ],
+      "sha256": "56f2304ef922969329bd09ad1d2ded22e95b53bb1bc407906ac212523742de3c"
+    },
+    "gear": {
+      "path": "item-window/gear.png",
+      "box": [
+        723,
+        220,
+        776,
+        268
+      ],
+      "sha256": "2d7a4f6ef758e5b44c1153a1d9cdbbde0ad45731d55f77dae1ffa5d020179857"
+    },
+    "use": {
+      "path": "item-window/use.png",
+      "box": [
+        807,
+        219,
+        860,
+        268
+      ],
+      "sha256": "b40b85de696d6ecc0e223512b3c0066d070fe5f29e50b1d5a36e882d02d16ca5"
+    }
+  },
+  "limitations": [
+    "User-selected window pixels only; screenshot equipment/items/stats are not inserted as owned game items.",
+    "Mobile panel geometry is adapted to landscape. Item capacity/expansion, original durability and character grade are not fabricated."
+  ]
+}

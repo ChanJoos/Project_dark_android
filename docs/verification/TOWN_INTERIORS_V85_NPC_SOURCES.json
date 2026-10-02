@@ -1,0 +1,52 @@
+[
+  {
+    "url": "https://lod-dressup-2.web.app/data/type/hair/mh001.json",
+    "path": "app/src/main/assets/source-registration/mh001.json",
+    "sha256": "ce423475e1ec5dbce67a2941b7b08b4628e1b4a034005363c845a8ab1935adc9"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/atlas/hair/mh001.webp",
+    "path": "app/src/main/res/drawable-nodpi/equip_mh001_source.webp",
+    "sha256": "d48f10f8c4730f01ae3035e2cb8830b6f983641a8be841de1496a75ec6754446"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/data/type/hair/mh003.json",
+    "path": "app/src/main/assets/source-registration/mh003.json",
+    "sha256": "3689348693e997c588af3bdb81833b741cd0d0879387080cd6fa8ecefbbf2920"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/atlas/hair/mh003.webp",
+    "path": "app/src/main/res/drawable-nodpi/equip_mh003_source.webp",
+    "sha256": "b8de1ff4259f03063de21a078603597738b432988b56ddfb2c0bfb4feebf3c30"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/data/type/hair/mh004.json",
+    "path": "app/src/main/assets/source-registration/mh004.json",
+    "sha256": "69152e05e57a41f58541b03318ac87fd07c30e1ea0085a337cfbcdad448e357b"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/atlas/hair/mh004.webp",
+    "path": "app/src/main/res/drawable-nodpi/equip_mh004_source.webp",
+    "sha256": "b7cdf05457bbf289b3c9fb654ad9b114ea61e9345331892a8af40c9b7b294885"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000015.json",
+    "path": "app/src/main/assets/source-registration/mu0000015.json",
+    "sha256": "17c616ece037ebb991341a72f988536e7b974ef4ae47f3ed9649cde48715033e"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000015.webp",
+    "path": "app/src/main/res/drawable-nodpi/equip_mu0000015_source.webp",
+    "sha256": "8b8d5656170a7e8349981c2c0071cf67b1998eef2765b1134dad9b716d2f2c41"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000007.json",
+    "path": "app/src/main/assets/source-registration/mu0000007.json",
+    "sha256": "73b81ee89f6057a3bbc2e0ed9e3526c29043e6b577e09f8ef828853254738ccc"
+  },
+  {
+    "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000007.webp",
+    "path": "app/src/main/res/drawable-nodpi/equip_mu0000007_source.webp",
+    "sha256": "6b32805b125ae61e0cdb1b551a23c23df25ea20401585ebf5f599da1079d02d0"
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "versionName": "0.80-martial-defense-star",
+  "sourceSha": "d10e729f87253867efdb1d123122fb710ebe235a",
+  "sourceTree": "d3b97f27a50ad415b0b03240fe836ae21c3f2df6",
+  "ciCheckout": "315f70d95b8f07c6e0318e70e60fd945b991162b",
+  "ciRun": 36905998670,
+  "branch": "codex/original-skill-contract-v65",
+  "pullRequest": 176,
+  "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "merged": false,
+  "status": {
+    "implemented": true,
+    "build": "VERIFIED",
+    "native": "VERIFIED",
+    "phone": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "scope": [
+    "All34 martial source selections, both BODY identities, four directions, five evolving phases",
+    "Live kick input clock before/contact/recovery",
+    "Complete Defense retained66 source frames, project scale0.31/footOffset-35; complete-body ellipse envelope",
+    "All four fifth-circle actual damage contacts; each recipient star visible at age0; screen Ragnarok multiple recipients",
+    "V79 contact/curses/crasher/basic no-particle regression and full configured world/combat/growth/restart gates"
+  ],
+  "limits": [
+    "Star is user-described shape reconstructed in code; original pixels/color/cadence remain unknown",
+    "Six martial unlabelled selections, three occluded caster poses and unresolved Pachungak scope/cast remain open",
+    "Only native Android/Robolectric rendering checked; no physical-phone or user visual acceptance claim"
+  ],
+  "priorAttempts": [
+    {
+      "source": "5659cd4981f4cf81faacc9f8cdda29f8abcffdcc",
+      "run": 36903942008,
+      "status": "FAILED_TEST_FIXTURE_CAMERA_AND_CHANNEL",
+      "runtimeChanged": false
+    },
+    {
+      "source": "5baa894b1c0c146a3775724fc9dbaf1b167d3a16",
+      "run": 36904644965,
+      "status": "SUCCESS_SUPERSEDED_FOR_DEFENSE_HEAD_CLEARANCE"
+    }
+  ],
+  "apkSha256": "f6f52fa0d23ba2629062feb30936901b74435677b85bfa89c1775b4cd4dd7d52",
+  "apkBytes": 28681206,
+  "matchedPackagedAssetFiles": 661,
+  "nativeFiles": 382,
+  "apkArtifactId": 11183672728,
+  "nativeArtifactId": 11183587827,
+  "ciJob": 110516571548,
+  "ciConclusion": "SUCCESS",
+  "buildTimeUTC": "2026-10-01T18:25:22+00:00",
+  "buildTimeKST": "2026-10-02T03:25:22+09:00",
+  "nativeReview": "All34 martial selection contact sheets reviewed in prior same-runtime native artifact11184010226; final enlarged Defense8 views, real kick6 frames and four finisher contacts reviewed from11183587827; 382 native PNGs.",
+  "deliveryZipSha256": "da46d64d235a38ea43f7339a050fca148b17592f556bfe2d8374712c8151c139"
+}

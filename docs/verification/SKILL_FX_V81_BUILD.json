@@ -1,0 +1,46 @@
+{
+  "versionCode": 81,
+  "versionName": "0.81-ragnarok-source",
+  "sourceSha": "b35a69b09f163da91140a466adba5b971e0bb8e4",
+  "sourceTree": "44ed3f78857e0c5b0c3f973316f4170998b6d160",
+  "ciCheckout": "041606d21d771ebd4ea6eddb67a7382dce337757",
+  "ciRun": 36914678590,
+  "ciJob": 110545625507,
+  "ciConclusion": "SUCCESS",
+  "branch": "codex/original-skill-contract-v65",
+  "pullRequest": 176,
+  "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "merged": false,
+  "apkArtifactId": 11188683570,
+  "nativeArtifactId": 11188543667,
+  "apkSha256": "52087b80cd86baae551d3312207fd500117bdf96e9ecf3553dcf4779ffadfd3c",
+  "apkBytes": 29124235,
+  "matchedPackagedAssetFiles": 662,
+  "nativeFiles": 404,
+  "ragnarokNativeFiles": 22,
+  "buildTimeUTC": "2026-10-01T19:34:23+00:00",
+  "buildTimeKST": "2026-10-02T04:34:23+09:00",
+  "gifSha256": "ba99e4526c67193da150b8c80dd15cc705a0430ac5a63994015369b63e2ccf35",
+  "status": {
+    "implemented": true,
+    "build": "VERIFIED",
+    "native": "VERIFIED",
+    "phone": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "scope": [
+    "Four retained screenshot source hashes and deterministic generated asset parity",
+    "Dedicated Ragnarok six-point sigil route, no generic five-point substitution",
+    "Transparent background, no baked green HP bars, visible source onset at age zero and stronger white flash",
+    "Production skill-book input: no pre-contact damage/effect; source pulse starts at real damage contact on each actual recipient; lifetime expires at810ms",
+    "Existing martial/Defense/contact/curses/crasher/basic swing and configured world/combat/growth/restart regressions"
+  ],
+  "limits": [
+    "Source capture order is a project inference; stills do not prove original cadence.",
+    "Inner core symmetry repair, ring-only radial tracing and violet field reconstruction are declared; outer rune fidelity limited by source overlap/JPEG.",
+    "Other three fifth-circle spells remain V80 project reconstructions;32 independent particle-source gaps remain.",
+    "Native Android/Robolectric evidence only; physical phone and user visual acceptance pending."
+  ],
+  "nativeReview": "404 native PNGs; all14 isolated Ragnarok phases and8 live recipient/contact/expiry captures inspected. Source rings, six-point rune sigil, white flash and violet afterglow remain centred on3 visible recipients.",
+  "deliveryZipSha256": "556c6d9e72c1b4773f6f7070dcf41a92f5c4929e6fa66398a914ee0aba749aab"
+}

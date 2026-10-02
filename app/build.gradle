@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 64
-        versionName '0.64-skill-test-mode'
+        versionCode 85
+        versionName '0.85-town-polish'
     }
     sourceSets {
         main {

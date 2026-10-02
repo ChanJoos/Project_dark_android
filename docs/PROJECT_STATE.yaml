@@ -1,3 +1,13 @@
+# V83 active user request: skill formulas and real effects, continuing V82 candidate.
+# required_sources consumed: AGENTS.md, DIRECTOR_GUIDE, CHAT_HANDOFF, PROJECT_STATE,
+# DECISION_LOG, DIRECTOR_BACKLOG, development constitution, DATA_CONTRACT,
+# MASTER_MANIFEST, SOURCE_OF_TRUTH, Skill_Master, Skill_Damage_Model,
+# Skill_Formula_Research, Ultimate_Resource_Scaling, User_Confirmed_Skill_Facts,
+# supplied skills PDF, action decisions/catalog/learning policy,
+# SkillBook, GameView, CombatResolver, RuntimeCombatSession/PortAdapter,
+# RuntimeState, FinalStats, CombatStatPipeline, Defense/Element formula, F5mSaveStore.
+# Acceptance: source anchor equations, stat/gear scaling, 4-way spin quickslot,
+# resources once at release, statuses/effects/expiry/restore, exact CI and APK.
 schema_version: 1
 project:
   name: PROJECT DARK
@@ -146,6 +156,77 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  SKILL_PRESENTATION_082:
+    title: "User-reported martial kick mapping and Dara release timing repair"
+    system: combat_presentation
+    priority: P0
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    source_branch: codex/original-skill-contract-v65
+    failed_predecessor: "V81 DEVICE_FAILED (user-reported) for Dankak/Bungkak/Spin and early Dara arms; installed SHA unconfirmed"
+    required_sources: [docs/SKILL_ACTION_DECISIONS.csv, tools/generate_skill_presentation.py, master/data/Asset_Animation_Frame_Master.csv, master/data/Asset_Animation_Semantics.csv, master/source/skill_fx/naver_classic_2020/definitions.json, app/src/main/java/com/projectdark/mobile/SkillBodyRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java, docs/SKILL_PRESENTATION_CONTRACT.md]
+    acceptance: ["Dankak front kick", "Bungkak side kick", "Spin kick rotates using original kick BODY", "Dara stays idle until actual release contact", "Both bodies and four facings with actual equipped GameView captures", "Ragnarok and Defense approval retained"]
+    remaining: "Kicks/Dara physical phone revalidation; original cadence remains project-authored"
+    source_sha: 4bf789dc952403163fbc0aab6bc805186f75a28c
+    build_verified: "Actions36942749572 SUCCESS; version82 APK11201490465"
+    native_verified: "679 PNGs;272 V82 captures;actual starting facings/standing wait/release reviewed"
+    delivery_evidence: docs/verification/SKILL_FX_V82_BUILD.json
+  SKILL_PRESENTATION_081:
+    title: "User-labelled Ragnarok still extraction and recipient animation"
+    system: combat_presentation
+    priority: P1
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    source_sha: b35a69b09f163da91140a466adba5b971e0bb8e4
+    build_verified: "Actions36914678590 SUCCESS; version81 APK11188683570"
+    native_verified: "404 native PNGs; Ragnarok14 isolated phases and8 live frames inspected"
+    delivery_evidence: docs/verification/SKILL_FX_V81_BUILD.json
+    source_branch: codex/original-skill-contract-v65
+    required_sources: [master/source/skill_fx/user_ragnarok_20261002/provenance.json, docs/verification/SKILL_FX_V81_AUDIT.json]
+    acceptance: ["Four originals retained with hashes", "Six-point sigil extraction with declared reconstruction", "Source animation starts at actual recipient contact", "GIF plus exact-source APK delivered"]
+    user_visual_acceptance: "2026-10-02 user accepts Ragnarok on delivered V81; no installed hash supplied"
+    remaining: "Original timing and occluded pixels; 32 independent effect sources"
+    delivery_policy: "GIF and ZIP containing APK"
+  SKILL_PRESENTATION_080:
+    title: "Martial motion review, Defense envelope and fifth-circle star contact"
+    system: combat_presentation
+    priority: P1
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    source_branch: codex/original-skill-contract-v65
+    source_sha: d10e729f87253867efdb1d123122fb710ebe235a
+    failed_predecessor: "V79 DEVICE_FAILED (user-reported); installed SHA unconfirmed"
+    required_sources: [docs/verification/MARTIAL_MOTION_V80_AUDIT.json, docs/verification/SKILL_FX_V80_AUDIT.json, docs/SKILL_ACTION_DECISIONS.csv]
+    acceptance: ["Kick full extension at real contact", "Both bodies and four directions for all34 martial selections", "Retained Defense sphere contains head/feet", "Four finisher stars visible at each actual recipient contact", "Exact source SHA CI/APK evidence"]
+    remaining: "Original caster cadence/occluded poses, original finisher pixels/color/cadence and33 particle sources; physical phone and user visual acceptance"
+    delivery_policy: "ZIP containing APK because APK-only links were not clickable on phone"
+    build_verified: "Actions36905998670 SUCCESS; APK11183672728; sha256 f6f52fa0d23ba2629062feb30936901b74435677b85bfa89c1775b4cd4dd7d52"
+    native_verified: "382 PNGs; full ellipse envelope; live contact clocks; four finisher contacts"
+    delivery_evidence: docs/verification/SKILL_FX_V80_BUILD.json
+  SKILL_FX_SOURCE_RECHECK_078:
+    title: "Recheck all supplied originals and connect omitted labelled source routes"
+    system: combat_presentation
+    priority: P1
+    queue_state: DEVICE_VERIFICATION_PENDING
+    claim: Director/Integration
+    source_branch: codex/original-skill-contract-v65
+    required_sources: [docs/SKILL_FX_AUDIT_CONTRACT.md, docs/verification/SKILL_FX_V77_AUDIT.json, master/source/skill_fx/naver_cafe_archive_20261001/warrior_bindings.json, master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json, master/source/skill_fx/naver_magic_recovered_20261001/definitions.json, master/source/skill_fx/naver_magic_recovered_20261001/media.json, master/source/skill_fx/user_20260930/provenance.json, docs/verification/PROVIDED_SOURCE_RECHECK_V78_ATTACHMENTS.json, app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java, app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java]
+    acceptance: ["All 40 previous fallback IDs have explicit evidence outcomes", "Four omitted original channels reachable through production input", "Same-name reuse remains explicitly adapted registration", "34 missing originals and 2 unlabelled GIFs remain honest gaps", "Exact SHA native render and APK checks"]
+    remaining: "Mage22 original particle sources; total34 particle gaps; phone and original visual acceptance"
+    build_verified: "4a887579; Actions36880039516 SUCCESS; APK11170802690"
+    native_verified: "221 route audit, production input, peak-frame renderer review; native artifact11171027453"
+    delivery_evidence: docs/verification/V78_DELIVERY.json
+  CLASSIC_MARTIAL_CLERIC_068:
+    title: "Import labelled classic martial and cleric references into source and presentation"
+    system: combat_presentation
+    scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: VERIFICATION_PENDING
+    claim: Director/Integration
+    required_sources: [docs/CLASSIC_MARTIAL_CLERIC_V68.md, master/source/skill_fx/naver_classic_2020/provenance.json, master/source/skill_fx/naver_classic_2020/definitions.json, docs/SKILL_SPATIAL_CONTRACT.md, docs/SKILL_ACTION_DECISIONS.csv, master/changes/CLASSIC-MARTIAL-CLERIC-V68.json, app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java, app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java]
+    acceptance: ["61 source rows and byte hashes retained", "55 labelled effect IDs emit separate caster/contact channels", "Source descriptions/stats/icons visible", "Shared legality and no-enemy-heal regressions pass", "Native composited captures reviewed; device gate separately pending"]
+    remaining: "Persistent status, travel, party, summon and finisher mechanics; original alpha/occlusion and every-facing pose fidelity"
+
   SKILL-WINDOW-02:
     owner: Director/Visual
     status: BUILD_VERIFIED

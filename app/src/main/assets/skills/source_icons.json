@@ -137,7 +137,8 @@
     "SK_마법사_036": 131,
     "SK_마법사_037": 132,
     "SK_마법사_053": 133,
-    "SK_마법사_038": 134
+    "SK_마법사_038": 134,
+    "SK_공통_010": 135
   },
   "audit": [
     {
@@ -1526,8 +1527,10 @@
         61,
         1030
       ],
-      "skill_id": null,
-      "status": "UNMAPPED_EXACT_NAME_ONLY"
+      "skill_id": "SK_공통_010",
+      "status": "REGISTERED_SOURCE_CROP",
+      "mapping_basis": "Exact name and description in two class sections; shared visible artwork maps to the existing common catalog skill SK_공통_010.",
+      "atlas_index": 135
     },
     {
       "source": "11-Screenshot_20260929_233743_NAVER.jpg",
@@ -1540,8 +1543,9 @@
         61,
         1172
       ],
-      "skill_id": null,
-      "status": "UNMAPPED_EXACT_NAME_ONLY"
+      "skill_id": "SK_공통_010",
+      "status": "DUPLICATE_NOT_REGISTERED",
+      "mapping_basis": "Exact name and description in two class sections; shared visible artwork maps to the existing common catalog skill SK_공통_010."
     },
     {
       "source": "11-Screenshot_20260929_233743_NAVER.jpg",

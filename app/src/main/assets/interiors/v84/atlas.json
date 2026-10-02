@@ -1,0 +1,140 @@
+{
+  "evidence": "PROJECT_RECONSTRUCTION from supplied shop references; bank/church inferred",
+  "props": {
+    "counter_se": {
+      "x": 2,
+      "y": 10,
+      "width": 124,
+      "height": 118,
+      "footX": 62.0,
+      "footY": 118
+    },
+    "counter_sw": {
+      "x": 130,
+      "y": 10,
+      "width": 124,
+      "height": 118,
+      "footX": 62.0,
+      "footY": 118
+    },
+    "counter_corner": {
+      "x": 258,
+      "y": 7,
+      "width": 124,
+      "height": 121,
+      "footX": 62.0,
+      "footY": 121
+    },
+    "potion_cabinet": {
+      "x": 392,
+      "y": 4,
+      "width": 111,
+      "height": 124,
+      "footX": 55.5,
+      "footY": 124
+    },
+    "potion_table": {
+      "x": 5,
+      "y": 132,
+      "width": 117,
+      "height": 124,
+      "footX": 58.5,
+      "footY": 124
+    },
+    "sword_barrel": {
+      "x": 138,
+      "y": 132,
+      "width": 107,
+      "height": 124,
+      "footX": 53.5,
+      "footY": 124
+    },
+    "weapon_rack": {
+      "x": 261,
+      "y": 132,
+      "width": 117,
+      "height": 124,
+      "footX": 58.5,
+      "footY": 124
+    },
+    "shield_rack": {
+      "x": 386,
+      "y": 132,
+      "width": 124,
+      "height": 124,
+      "footX": 62.0,
+      "footY": 124
+    },
+    "safe": {
+      "x": 5,
+      "y": 260,
+      "width": 117,
+      "height": 124,
+      "footX": 58.5,
+      "footY": 124
+    },
+    "ledger": {
+      "x": 130,
+      "y": 270,
+      "width": 124,
+      "height": 114,
+      "footX": 62.0,
+      "footY": 114
+    },
+    "pew": {
+      "x": 258,
+      "y": 261,
+      "width": 124,
+      "height": 123,
+      "footX": 62.0,
+      "footY": 123
+    },
+    "altar": {
+      "x": 388,
+      "y": 260,
+      "width": 119,
+      "height": 124,
+      "footX": 59.5,
+      "footY": 124
+    },
+    "wall_se": {
+      "x": 3,
+      "y": 388,
+      "width": 122,
+      "height": 124,
+      "footX": 61.0,
+      "footY": 124
+    },
+    "wall_sw": {
+      "x": 130,
+      "y": 388,
+      "width": 123,
+      "height": 124,
+      "footX": 61.5,
+      "footY": 124
+    },
+    "wood_wall_se": {
+      "x": 265,
+      "y": 388,
+      "width": 109,
+      "height": 124,
+      "footX": 54.5,
+      "footY": 124
+    },
+    "church_wall_sw": {
+      "x": 390,
+      "y": 388,
+      "width": 115,
+      "height": 124,
+      "footX": 57.5,
+      "footY": 124
+    }
+  },
+  "tiles": {
+    "wood": 0,
+    "reagent_carpet": 1,
+    "stone": 2,
+    "church_runner": 3
+  },
+  "generatedSourceSha256": "4cfeeaf704e84e550a6d4d028bf14e3ebc79731bbcd2015af4bf3227481052d2"
+}

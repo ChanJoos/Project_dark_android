@@ -1,0 +1,68 @@
+{
+  "versionCode": 70,
+  "versionName": "0.70-all-job-source-presentation",
+  "branch": "codex/original-skill-contract-v65",
+  "pullRequest": 176,
+  "headSha": "ccdca4e7b4bf36a11d07115233c4e0f49583efaa",
+  "checkoutSha": "fa778ccb7328b18f145dc6706ea6ea108e4113df",
+  "sourceTree": "068406d51b658466ba5d0b08e7edf8b01239937d",
+  "headAndCheckoutTreesEqual": true,
+  "workflowRun": 36797561403,
+  "workflowJob": 110164389272,
+  "buildStatus": "SUCCESS",
+  "builtAtAsiaSeoul": "2026-10-01T09:47:36+09:00",
+  "artifactCreatedAtAsiaSeoul": "2026-10-01T09:47:38+09:00",
+  "apkArtifactId": 11134616504,
+  "apkArtifactSha256": "55c4a847a5beef50686a3b2071d79cdfc828475ef4d42ab3cf8d6a8d20e8b66e",
+  "apkSha256": "aa6aa9a4fce8148755bc8ca9688a992b6b99819930a214725afe70e16ff87ba1",
+  "apkBytes": 25346402,
+  "nativeReviewArtifactId": 11134242112,
+  "nativeReviewArtifactSha256": "29eb8bc78dd4bed0ac2d18c2519aa986e7ea8febb566d83c5ee3407183cc6846",
+  "nativeBodyGridCount": 12,
+  "nativeProductionSkillRenderCount": 13,
+  "nativeImagesEqualPriorReviewedRuntime": true,
+  "packagedSourcePresentationFilesCompared": 228,
+  "packagedSourcePresentationBytesEqual": true,
+  "runtimeVerification": "ROBOLECTRIC_NATIVE_PRODUCTION_INPUT_PASS",
+  "deviceVerification": "PENDING",
+  "originalVisualAcceptance": "PENDING",
+  "catalogEntries": 221,
+  "sourceIcons": 157,
+  "unverifiedIconBindings": 64,
+  "perJob": {
+    "공통": {
+      "catalog": 14,
+      "sourceIcons": 5
+    },
+    "도적": {
+      "catalog": 34,
+      "sourceIcons": 25
+    },
+    "마법사": {
+      "catalog": 57,
+      "sourceIcons": 41
+    },
+    "무도가": {
+      "catalog": 34,
+      "sourceIcons": 27
+    },
+    "성직자": {
+      "catalog": 59,
+      "sourceIcons": 36
+    },
+    "전사": {
+      "catalog": 23,
+      "sourceIcons": 23
+    }
+  },
+  "warriorSourceIcons": 23,
+  "warriorSourceChannels": 13,
+  "sharedExactNameIcons": 5,
+  "sharedChannels": 3,
+  "adaptedDamageHealEntries": 88,
+  "presentationOrServicePendingEntries": 133,
+  "unmergedCandidate": true,
+  "sourceTiming": "STATIC_WARRIOR_CAPTURES_USE_PROJECT_HOLD_FADE; RETAINED_GIFS_KEEP_REVIEWED_TIMING",
+  "unlabelledUserGifs": "RETAINED_PENDING_EXACT_SKILL_ID",
+  "closureCommitScope": "DOCUMENTATION_ONLY; app/runtime/assets identical to headSha"
+}

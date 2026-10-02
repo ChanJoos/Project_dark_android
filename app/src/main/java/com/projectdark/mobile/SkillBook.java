@@ -71,12 +71,14 @@ public final class SkillBook {
   }
   public Entry get(String id){return entries.get(id);}
   public Collection<Entry> entries(){return Collections.unmodifiableCollection(entries.values());}
+  public int catalogSize(){int count=0;for(Entry e:entries.values())if(previewable(e.id))count++;return count;}
   public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(e.magic()==magic&&(!"검증용".equals(e.job)||learned(e.id))&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
   public boolean learned(String id){return testAccess&&previewable(id)||learned.containsKey(id);}
   public int proficiency(String id){Integer v=learned.get(id);return v==null?0:v;}
   /** Called by a validated acquisition service. UI cannot grant skills. */
-  public boolean learn(String id,int proficiency){if(!entries.containsKey(id)||proficiency<0||proficiency>100)return false;learned.put(id,proficiency);return true;}
+  public boolean learn(String id,int proficiency){if(!entries.containsKey(id)||proficiency<0||proficiency>100)return false;learned.put(id,proficiency);if("SK_전사_010".equals(id)){learned.remove("SK_전사_009");for(int i=0;i<SLOT_COUNT;i++)if("SK_전사_009".equals(slots[i]))slots[i]="SK_전사_010";}return true;}
   public boolean usable(String id){Entry e=get(id);return e!=null&&learned(id)&&jobAllowed(id)&&(e.runtime!=null||testAccess&&previewable(id));}
+  public int basicHits(){int hits=1;for(SkillActionContract.Rule r:SkillActionContract.all())if(r.mode.equals("LINKED")&&learned(r.id)&&jobAllowed(r.id))hits=Math.max(hits,r.hits);if(learned("SK_도적_031")&&jobAllowed("SK_도적_031"))hits++;return hits;}
   public String slot(int index){return index>=0&&index<SLOT_COUNT?(testAccess?testSlots:slots)[index]:null;}
   public boolean assign(int index,String id){if(index<0||index>=SLOT_COUNT||!learned(id))return false;(testAccess?testSlots:slots)[index]=id;return true;}
   /** Adapted progression: each resolved action advances proficiency once, capped at 100. */
