@@ -6,12 +6,35 @@ public final class TownCommerce {
  public enum Result { OK,INVALID,INSUFFICIENT_GOLD,NOT_OWNED,EQUIPPED,FULL,SAVE_FAILED }
  public static final class Offer {public final String id,name,category,description;public final long price;public Offer(String id,String n,String cat,long p,String desc){this.id=id;name=n;category=cat;price=p;description=desc;}}
  private static final List<Offer> REAGENTS=Collections.unmodifiableList(Arrays.asList(
-  new Offer("IT_REAGENT_KOMADIUM","코마디움","시약류",100,"회복 보조 시약"),new Offer("IT_REAGENT_DIBENOMUM","디베노뭄","시약류",100,"해독 시약"),new Offer("IT_REAGENT_CURANUM","쿠라눔","시약류",50,"회복 시약"),new Offer("IT_RECALL_MILLES","밀레스리콜","리콜류",1000,"밀레스 귀환 스크롤"),new Offer(RpgProgressionState.B_SMALL_POTION_ITEM_ID,"소형 회복물약","시약류",50,"HP 회복 · 시험용 물약")));
+  new Offer("IT_REAGENT_KOMADIUM","코마디움","시약류",100,"기술 수련에 사용하는 기본 시약"),
+  new Offer("IT_REAGENT_DIBENOMUM","디베노뭄","시약류",100,"기술 수련에 사용하는 해독 계열 시약"),
+  new Offer("IT_REAGENT_CURANUM","쿠라눔","시약류",50,"성직자 기술 수련에 사용하는 시약"),
+  new Offer("IT_REAGENT_CURUM","쿠룸","시약류",100,"생명력 100 회복 · 한 병씩 사용"),
+  new Offer("IT_REAGENT_EXCURANUM","엑스쿠라눔","시약류",50000,"생명력 10,000 회복 · 되팔기 불가"),
+  new Offer("IT_REAGENT_HOLYWATER","성수","시약류",300,"성직자 수련과 의식용 성수"),
+  new Offer("IT_RECALL_MILLES","밀레스리콜","리콜류",1000,"밀레스마을 귀환 스크롤")));
  private static final List<Offer> EQUIPMENT=Collections.unmodifiableList(Arrays.asList(
-  new Offer("IT_TEST_WEAPON_MW002","에페","무기",300,"DAM 4 / HIT 1"),new Offer("IT_TEST_WEAPON_MW003","커틀라스","무기",500,"DAM 5"),new Offer("IT_TEST_ARMOR_MU0000002","레더튜닉","방어구",200,"AC -2"),new Offer("IT_TEST_ARMOR_MU0000003","도복","방어구",300,"AC -2 / DEX 1"),new Offer("IT_TEST_SHIELD_MS002","방패","방어구",200,"AC -3"),new Offer("IT_TEST_SHOES_ML229","가죽 신발","방어구",150,"DEX 2"),new Offer("IT_TEST_HAT_MH173","털모자","방어구",150,"AC -2")));
+  new Offer("IT_TEST_WEAPON_MW002","에페","무기",300,"세검 · DAM 4 / HIT 1"),
+  new Offer("IT_TEST_WEAPON_MW003","커틀라스","무기",500,"곡도 · DAM 5"),
+  new Offer(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,"목도","무기",100,"모험을 시작하는 기본 목검"),
+  new Offer("IT_SHOP_WEAPON_MW004","세이버","무기",900,"장검 · DAM 7 / HIT 2"),
+  new Offer("IT_SHOP_WEAPON_MW005","그라디우스","무기",1400,"중검 · DAM 9 / HIT 1"),
+  new Offer("IT_TEST_ARMOR_MU0000002","레더튜닉","방어구",200,"가죽 상의 · AC -2"),
+  new Offer("IT_TEST_ARMOR_MU0000003","도복","방어구",300,"무도가 의복 · AC -2 / DEX 1"),
+  new Offer("IT_SHOP_ARMOR_JIPON","지폰","방어구",500,"레벨 11 · 전사 의복 / AC -3"),
+  new Offer("IT_TEST_SHIELD_MS002","방패","방어구",200,"기본 방패 · AC -3"),
+  new Offer("IT_TEST_SHIELD_MS003","강화 방패","방어구",450,"보강 방패 · AC -4"),
+  new Offer("IT_SHOES","신발","방어구",100,"기본 신발 · 모험가용"),
+  new Offer("IT_TEST_SHOES_ML229","가죽 신발","방어구",150,"가벼운 신발 · DEX 2"),
+  new Offer(RpgProgressionState.STARTER_HAT_ITEM_ID,"밀레스털모자","방어구",150,"밀레스의 기본 털모자"),
+  new Offer("IT_GLOVE_LEATHER","가죽장갑","장신구",200,"레벨 11 · 공통 장갑"),
+  new Offer("IT_LEGGING_LEATHER","가죽각반","장신구",200,"레벨 11 · 공통 각반"),
+  new Offer("IT_EARRING_DOUBLE_SILVER","쌍은귀걸이","장신구",300,"레벨 11 · 전사 / 도적 / 무도가"),
+  new Offer("IT_RING_REDJADE","홍옥반지","장신구",350,"레벨 11 · 공통 반지"),
+  new Offer("IT_RING_GORU","고루반지","장신구",350,"레벨 11 · 마법사 / 성직자")));
  public static List<Offer> offers(TownInteriorDef.Kind k){return k==TownInteriorDef.Kind.REAGENT?REAGENTS:k==TownInteriorDef.Kind.EQUIPMENT?EQUIPMENT:Collections.emptyList();}
  public static Offer find(TownInteriorDef.Kind k,String id){for(Offer o:offers(k))if(o.id.equals(id))return o;return null;}
- public static long sellPrice(String id){for(TownInteriorDef.Kind k:TownInteriorDef.Kind.values()){Offer o=find(k,id);if(o!=null)return o.price/2;}return -1;}
+ public static long sellPrice(String id){for(TownInteriorDef.Kind k:TownInteriorDef.Kind.values()){Offer o=find(k,id);if(o!=null)return "IT_REAGENT_EXCURANUM".equals(id)?0:o.price/2;}return -1;}
  public interface Durability {boolean save();}
  public static Result transact(RuntimeState state,TownInteriorDef.Kind kind,Operation op,String id,int quantity,Durability durability){
   if(state==null||kind==null||op==null||durability==null||quantity<=0||quantity>999999)return Result.INVALID;

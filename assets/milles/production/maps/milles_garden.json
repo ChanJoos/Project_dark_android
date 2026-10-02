@@ -21,15 +21,6 @@
       "district": "west_crafts"
     },
     {
-      "id": "potion_shop_portal",
-      "asset": "assets/world/portal/portal_reagent_shop.webp",
-      "x": 320,
-      "y": 459,
-      "scale": 1.0,
-      "draw": "tile",
-      "district": "west_crafts"
-    },
-    {
       "id": "weapon_shop",
       "asset": "buildings/BLD_003_weapon_shop.png",
       "x": 760,
@@ -2462,6 +2453,46 @@
       "y": 1543,
       "scale": 0.39,
       "district": "south_gate"
+    },
+    {
+      "id": "potion_shop_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 244.5,
+      "y": 371,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
+    },
+    {
+      "id": "weapon_shop_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 688,
+      "y": 250,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
+    },
+    {
+      "id": "general_shop_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1050.5,
+      "y": 313,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
+    },
+    {
+      "id": "church_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1463.05,
+      "y": 422.6,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform"
     }
   ]
 }

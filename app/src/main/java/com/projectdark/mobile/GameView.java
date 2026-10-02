@@ -78,6 +78,7 @@ public final class GameView extends View {
   private float millesReturnX,millesReturnY;
   private TownInteriorDef townInterior;
   private final TownInteriorRenderer townRenderer;
+  private final TownNpcRenderer townNpcRenderer=new TownNpcRenderer();
   private final TownShopWindow townWindow;
   private boolean merchantApproach;
   private final F5mAdaptedPrologueQuest f5mQuest=F5mAdaptedPrologueQuest.openingFixture();
@@ -389,7 +390,7 @@ public final class GameView extends View {
   }
   private void drawReagentShopWorld(Canvas c){if(reagentShopAdapter==null)return;townRenderer.ground(c,reagentShopAdapter,townInterior);java.util.List<Runnable> draws=new java.util.ArrayList<>();java.util.List<Float> depths=new java.util.ArrayList<>();
     for(TownInteriorDef.Prop o:townInterior.props){draws.add(()->townRenderer.prop(c,reagentShopAdapter,o));depths.add(o.y());}
-    draws.add(()->{WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());characterRenderer.draw(c,new CharacterRenderer.Pose(m.x,m.y,CharacterRenderer.Direction.SE,CharacterRenderer.State.IDLE,0,0,1,false,townInterior.outfit,null,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));text(c,townInterior.npcName,m.x-19,m.y-52,10);});depths.add(townInterior.npcY());
+    draws.add(()->{WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());townNpcRenderer.draw(c,townInterior,m.x,m.y);text(c,townInterior.npcName,m.x-19,m.y-52,10);});depths.add(townInterior.npcY());
     draws.add(()->{WorldCameraTransform.Point q=reagentShopAdapter.worldToScreen(reagentShopAdapter.presentationPlayerX(),reagentShopAdapter.presentationPlayerY());CharacterVisualBinding v=CharacterVisualBinding.from(state.rpg());characterRenderer.draw(c,new CharacterRenderer.Pose(q.x,q.y,characterDirection(),reagentShopAdapter.presentationMoving()?CharacterRenderer.State.WALK:CharacterRenderer.State.IDLE,walkClock,0,1,false,v.equipmentVisualRef(),v.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));});depths.add(reagentShopAdapter.presentationPlayerY());
     java.util.List<Integer> order=new java.util.ArrayList<>();for(int i=0;i<draws.size();i++)order.add(i);java.util.Collections.sort(order,(a,b)->Float.compare(depths.get(a),depths.get(b)));for(int i:order)draws.get(i).run();
   }
@@ -604,7 +605,8 @@ public final class GameView extends View {
   }
   private void activateInventoryItem(){
     String selected=rpgInteraction.selectedInventoryItemId();
-    if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복물약 사용 · HP +"+RpgProgressionState.B5_SMALL_HP_POTION_HEAL:used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return;}
+    if(state.rpg().isRecall(selected)){if(state.rpg().useMillesRecall(state)==RpgProgressionState.UseResult.USED){if(inReagentShop)leaveReagentShop();if(inPoteField)leavePoteField();state.player().x=WorldDef.PLAYER_SPAWN_X;state.player().y=WorldDef.PLAYER_SPAWN_Y;worldAdapter.cancelForAction();worldAdapter.snapCameraToPlayer();inventoryOpen=false;checkpoint();showFeedback("밀레스마을로 귀환했습니다",FeedbackTone.INFO);}return;}
+    if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복 시약을 사용했습니다":used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return;}
     RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);
   }
 

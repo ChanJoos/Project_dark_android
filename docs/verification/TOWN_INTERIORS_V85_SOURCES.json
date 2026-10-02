@@ -1,0 +1,61 @@
+{
+  "classification": "PROJECT_RECONSTRUCTION: authored architecture/role palettes; built-in imagegen dialogue portraits and seven missing icons. Source sprite bytes unchanged.",
+  "references": [
+    {
+      "file": "1000056711(1).jpg",
+      "sha256": "7d8f8c51f00b05e6b3b5846b29f475398ef669e90fa667a4611fd1489a4435c1"
+    },
+    {
+      "file": "1000056705(2).jpg",
+      "sha256": "79b533750aef5e6d1ba83eef3b4f7863e8ae78a1ead264c9bce8efd4d1d66370"
+    },
+    {
+      "file": "1000056946.jpg",
+      "sha256": "3af73435dad32f59dc139144ff6c7b7d232279a0813819202fc501d6f77be411"
+    },
+    {
+      "file": "1000056713.jpg",
+      "sha256": "525de35c76a3009ad6e07fc4d5aaf98ad17e3c3f56e7e8fd32aaed38179db1db"
+    },
+    {
+      "file": "1000056707.jpg",
+      "sha256": "6f0a5d85ea509ae5b40cde4c8b171bb9b708bdccc0a143830e2096b8b31f568d"
+    }
+  ],
+  "generated": [
+    {
+      "file": "portraits.webp",
+      "sha256": "ffe9fd687934950bff10ed08dec3cf72e754a234d68cfa11ffd9a0101f154379"
+    },
+    {
+      "file": "icons.webp",
+      "sha256": "c078adf0c4012c100315d92bd76fa32875c0e14fd086250289bc8f449e6946b0"
+    }
+  ],
+  "catalog_sources": [
+    {
+      "url": "https://lod.nexon.com/board/1493172227/6925",
+      "type": "Official-hosted community report 2019-01-20; not developer inventory specification",
+      "supports": "Milles Merlin and Excuranum 50000"
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/6184",
+      "type": "Official-hosted community tip 2010-08-02",
+      "supports": "Milles smith sells Jipon, second-circle male warrior garment"
+    },
+    {
+      "url": "https://lod.nexon.com/community/game/393824?SearchBoard=2",
+      "type": "Official-hosted player report 2025-06-25",
+      "supports": "Excuranum HP10000 and price50000"
+    },
+    {
+      "file": "master/data/Item_Master.csv",
+      "supports": "Milles leather gloves/leggings and original registered accessory identities"
+    },
+    {
+      "file": "master/data/Asset_Master.csv",
+      "supports": "Named wearable appearance IDs"
+    }
+  ],
+  "limits": "Bank/church architecture and portraits/palettes are creative interpretation; most prices/stats/shop distribution and Curum heal100 adapted; Excuranum50000/HP10000 source reported. No claim of complete current original inventory. Other-city recalls omitted until their destinations exist."
+}

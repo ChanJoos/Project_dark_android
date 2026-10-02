@@ -21,12 +21,13 @@ final class ReagentItemVisualRegistry {
     else if(RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID.equals(itemId))file="it_reagent_dibenomum.webp";
     else if(RpgProgressionState.REAGENT_CURANUM_ITEM_ID.equals(itemId))file="it_reagent_curanum.webp";
     else if(RpgProgressionState.RECALL_MILLES_ITEM_ID.equals(itemId))file="it_recall_milles.webp";
-    // Curanum deliberately has no fabricated visual mapping until its source icon is confirmed.
+    else if("IT_REAGENT_EXCURANUM".equals(itemId))file="it_reagent_excuranum.webp";
     Bitmap out=null;
     if(file!=null)try(InputStream in=context.getAssets().open("assets/items/consumable/"+file)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;
       out=cleanCapturedBackground(BitmapFactory.decodeStream(in,null,o));
     }catch(Throwable ignored){}
+    if(out==null&&("IT_REAGENT_CURUM".equals(itemId)||"IT_REAGENT_HOLYWATER".equals(itemId)))try(InputStream in=context.getAssets().open("interiors/v85/icons.webp")){Bitmap atlas=BitmapFactory.decodeStream(in);int w=atlas.getWidth()/4,h=atlas.getHeight()/2;out=trimTransparent(Bitmap.createBitmap(atlas,"IT_REAGENT_CURUM".equals(itemId)?0:w,0,w,h));}catch(Exception ignored){}
     cache.put(itemId,out);return out;
   }
   private static Bitmap cleanCapturedBackground(Bitmap src){

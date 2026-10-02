@@ -43,10 +43,10 @@ public final class MillesProductionCollision {
 
     // B1/B5 visible-building ground contact. These coordinates match the actual renderer anchors.
     // Buildings are solid exterior objects. Their complete authored exterior footprint is blocked; entry happens only through a front-door portal.
-    rect(b,"potion_shop",Kind.BUILDING,200f,250f,440f,459f);
-    rect(b,"weapon_shop",Kind.BUILDING,640f,125f,880f,339f);
-    rect(b,"general_shop",Kind.BUILDING,1000f,165f,1240f,399f);
-    rect(b,"church",Kind.CHURCH,1370f,150f,1710f,494f);
+    rect(b,"potion_shop",Kind.BUILDING,200f,250f,440f,395f);
+    rect(b,"weapon_shop",Kind.BUILDING,640f,125f,880f,275f);
+    rect(b,"general_shop",Kind.BUILDING,1000f,165f,1240f,335f);
+    rect(b,"church",Kind.CHURCH,1370f,150f,1710f,460f);
     rect(b,"inn",Kind.BUILDING,1860f,430f,2100f,689f);
     // Five additional authored districts; each solid shop uses its visible foot anchor.
     rect(b,"west_armorer",Kind.BUILDING,-60f,530f,180f,739f);
@@ -74,10 +74,11 @@ public final class MillesProductionCollision {
 
     // Reachable south-side interaction anchors for the B1/B5 building placement.
     List<Approach> a=new ArrayList<>();
-    a.add(new Approach("potion_shop",320f,496f));
-    a.add(new Approach("weapon_shop",736f,384f));
-    a.add(new Approach("general_shop",1120f,448f));
-    a.add(new Approach("church",1536f,560f));
+
+
+
+
+    for(MillesDoorAnchors.Door d:MillesDoorAnchors.ALL)a.add(new Approach(d.building,d.approachX,d.approachY));
     a.add(new Approach("inn",2016f,736f));
     ENTRANCES=Collections.unmodifiableList(a);
   }
@@ -87,7 +88,7 @@ public final class MillesProductionCollision {
   public static List<Approach> entrances(){return ENTRANCES;}
 
   public static boolean blocked(float x,float y,float radius){
-    for(Footprint f:BLOCKERS)if(f.blocksCircle(x,y,radius))return true;
+    for(Footprint f:BLOCKERS)if(f.blocksCircle(x,y,radius)&&!MillesDoorAnchors.inDoorApproach(f.id,x,y,radius))return true;
     return false;
   }
 
