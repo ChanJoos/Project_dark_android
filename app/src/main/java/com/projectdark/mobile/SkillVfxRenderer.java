@@ -69,7 +69,8 @@ boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequenc
     float size=f.caster?58:f.sheet.equals("finisher-v65")?82:68,height=size*ch/(float)cw;float centerY=f.caster?y-23:(Float.isFinite(a.centerY(f.anchor))?a.centerY(f.anchor):y-25);p.setAlpha(Math.round(255*Math.min(1,(f.duration-f.age)/.10f)));
     if(f.sheet.equals("finisher-v65")&&f.row==1){ColorMatrix white=new ColorMatrix();white.setSaturation(0);p.setColorFilter(new ColorMatrixColorFilter(white));}
     boolean martialCast=f.caster&&f.id.startsWith("SK_무도가_")&&Math.abs(f.directionX)+Math.abs(f.directionY)>.001f;
-    if(martialCast){c.save();c.rotate((float)Math.toDegrees(Math.atan2(f.directionY,f.directionX)-Math.atan2(16,32)),x,centerY);}
+    // The retained MARTIAL crescent opens SW; rotate from that observed source facing.
+    if(martialCast){c.save();c.rotate((float)Math.toDegrees(Math.atan2(f.directionY,f.directionX)-Math.atan2(16,-32)),x,centerY);}
     c.drawBitmap(b,new Rect(col*b.getWidth()/6,f.row*b.getHeight()/rows,(col+1)*b.getWidth()/6,(f.row+1)*b.getHeight()/rows),new RectF(x-size/2,centerY-height/2,x+size/2,centerY+height/2),p);
     if(martialCast)c.restore();p.setColorFilter(null);
   }p.setAlpha(255);}
