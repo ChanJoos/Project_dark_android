@@ -60,7 +60,7 @@ public final class WorldDef {
     // Door threshold itself is the portal. Keep it wider than one player radius so diagonal tile stepping cannot skip the trigger.
     p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",320f,459f,40f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));
     p.add(new PortalSpawn("weapon_shop_door","milles_interior_weapon_shop",736f,384f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
-    p.add(new PortalSpawn("general_shop_door","milles_interior_general_shop",1120f,448f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
+    p.add(new PortalSpawn("general_shop_door","milles_interior_bank",1120f,448f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("church_door","milles_interior_church",1536f,560f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("inn_door","milles_interior_inn",2016f,736f,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL"));
     p.add(new PortalSpawn("milles_south_exit_proto","MAP_POTE_01",790f,1565f,40f,EVIDENCE_GEOMETRY,"ADAPTED_FIELD_ENTRY_ACTIVE"));

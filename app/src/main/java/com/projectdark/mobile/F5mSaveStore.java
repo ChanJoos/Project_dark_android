@@ -27,7 +27,7 @@ public final class F5mSaveStore {
   public static String savedMapIdActive(){
     if(active==null||!active.writable)return WorldDef.ID;
     String map=active.prefs.getString("map_id",WorldDef.ID);
-    if(WorldDef.ID.equals(map)||com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(map))return map;
+    if(com.projectdark.mobile.world.TownInteriorDef.forMap(map)!=null||WorldDef.ID.equals(map)||com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(map))return map;
     active.writable=false;
     return WorldDef.ID;
   }
@@ -127,6 +127,7 @@ public final class F5mSaveStore {
     return edit.putInt("save_schema",SCHEMA)
         .putString("inventory_v2",new JSONObject(r.inventory()).toString())
         .putString("equipment_v2",new JSONObject(r.equipment()).toString())
+        .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
         .putInt("training_token_qty",quantity(r)).putInt("normal_level",r.normalLevel()).putLong("normal_exp",r.normalExp()).putLong("gold",r.gold())
         .putInt("str",r.str()).putInt("int",r.intel()).putInt("wis",r.wis()).putInt("con",r.con()).putInt("dex",r.dex()).putInt("stat_points",r.statPoints())
         .putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence());
@@ -151,6 +152,9 @@ public final class F5mSaveStore {
       }
       RpgProgressionState staged=new RpgProgressionState();
       if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid saved ownership");
+      Map<String,Integer> bank=new LinkedHashMap<>();JSONObject bankJson=new JSONObject(prefs.getString("bank_inventory_v84","{}"));
+      for(java.util.Iterator<String> it=bankJson.keys();it.hasNext();){String id=it.next();bank.put(id,bankJson.getInt(id));}
+      if(!staged.restoreBank(prefs.getLong("bank_gold_v84",0),bank))throw new IllegalArgumentException("Invalid bank");
       staged.restoreProgression(prefs.getInt("normal_level",1),prefs.getLong("normal_exp",0L));
       staged.restoreGold(prefs.getLong("gold",0L));
       staged.restoreStats(prefs.getInt("str",3),prefs.getInt("int",3),prefs.getInt("wis",3),prefs.getInt("con",3),prefs.getInt("dex",3),prefs.getInt("stat_points",0));
@@ -164,6 +168,7 @@ public final class F5mSaveStore {
     dest.restoreStats(source.str(),source.intel(),source.wis(),source.con(),source.dex(),source.statPoints());
     dest.restoreBaseResources(source.baseMaxHp(),source.baseMaxMp());
     if(!dest.restoreOwnedItems(source.inventory(),source.equipment()))throw new IllegalArgumentException("Invalid ownership");
+    dest.restoreBank(source.bankGold(),source.bankInventory());
     dest.restoreCombatSequence(source.consumedCombatSequence());
   }
   private static int quantity(RpgProgressionState r){Integer q=r.inventory().get(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID);return q==null?0:q;}

@@ -98,6 +98,8 @@ jobs:
         run: |
           python tools/generate_skill_presentation.py
           git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
+      - name: Verify V84 tile interiors, merchant input, atomic trade and bank restart
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V83 per-skill abilities and runtime formulas
         run: |
           python3 tools/generate_skill_abilities.py

@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 83
-        versionName '0.83-skill-abilities'
+        versionCode 84
+        versionName '0.84-town-interiors'
     }
     sourceSets {
         main {

@@ -1,0 +1,30 @@
+{
+  "references": [
+    {
+      "file": "01-1000056946.jpg",
+      "sha256": "3af73435dad32f59dc139144ff6c7b7d232279a0813819202fc501d6f77be411"
+    },
+    {
+      "file": "02-1000056713.jpg",
+      "sha256": "525de35c76a3009ad6e07fc4d5aaf98ad17e3c3f56e7e8fd32aaed38179db1db"
+    },
+    {
+      "file": "03-1000056711.jpg",
+      "sha256": "7d8f8c51f00b05e6b3b5846b29f475398ef669e90fa667a4611fd1489a4435c1"
+    },
+    {
+      "file": "04-1000056707.jpg",
+      "sha256": "6f0a5d85ea509ae5b40cde4c8b171bb9b708bdccc0a143830e2096b8b31f568d"
+    },
+    {
+      "file": "05-1000056705.jpg",
+      "sha256": "79b533750aef5e6d1ba83eef3b4f7863e8ae78a1ead264c9bce8efd4d1d66370"
+    }
+  ],
+  "evidence": "PROJECT_RECONSTRUCTION",
+  "bank_church": "No supplied internal reference; inferred shared architecture",
+  "npc": "approved mm001 BODY plus source registered garments; approximate costume, no original portrait claim",
+  "prices": "Project balance; supplied recall screenshot 1000 Gold; curanum prior50 retained",
+  "atlas": "interiors/v84/atlas.json",
+  "root_cause": "previous potion renderer used screen-fixed single plate and did not save map identity"
+}

@@ -240,6 +240,15 @@ public final class RpgProgressionState {
   public void restoreBaseResources(int hp,int mp){baseMaxHp=Math.max(1,hp);baseMaxMp=Math.max(0,mp);}
   public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
   public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(3,s);intel=Math.max(3,i);wis=Math.max(3,w);con=Math.max(3,c);dex=Math.max(3,d);statPoints=Math.max(0,points);}
+  private long bankGold;
+  private final Map<String,Integer> bankInventory=new LinkedHashMap<>();
+  public long bankGold(){return bankGold;}
+  public Map<String,Integer> bankInventory(){return Collections.unmodifiableMap(bankInventory);}
+  public boolean restoreBank(long balance,Map<String,Integer> deposited){
+    if(balance<0||deposited==null)return false;
+    for(Map.Entry<String,Integer> e:deposited.entrySet())if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return false;
+    bankGold=balance;bankInventory.clear();bankInventory.putAll(deposited);return true;
+  }
   public void restoreGold(long value){gold=Math.max(0L,value);}
   public boolean buySmallPotion(){return buyItem(B_SMALL_POTION_ITEM_ID,B_SMALL_POTION_PRICE);}
   public boolean buyItem(String itemId,long price){
