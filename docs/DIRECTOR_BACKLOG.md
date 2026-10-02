@@ -1,3 +1,6 @@
+## Active — TOWN_WALLS_087
+V86 flat wall/window user rejection. Preserved resumed code adds independent wall texture axes, timber/stone structure, recessed windows/sills/corner thickness and oak panel counter. Local Master/map checks PASS; exact-source CI, four-room native PNG review and APK pending. Preserve approved BODY/skills/navigation/service mechanics.
+
 ## 2026-10-02 — V86 interior, item and merchant-input correction
 
 User reported V85 town interiors still look unnatural, the accessory shop icons look AI-made, NPC taps should open without walking, double-tile building doors need two triggers, and purchase quantity needs the native numeric keyboard. V86 corrects counter joins/wall material projection and room props, moves NPCs one tile away, opens the shop on tap, creates two individually targetable portal centers per measured doorway, gives the quantity button an Android numeric edit dialog, replaces the generated accessory/reagent symbol atlas routes with a shared pixel catalog, preserves already-transparent Excuranum RGBA, and puts source-documented glove/legging/ring/earring modifiers through FinalStats.
