@@ -32,16 +32,6 @@ public final class TownInteriorDetails {
   poly(c,0xffc3712c,x,y-height-7,x+2,y-height-3,x,y-height,x-2,y-height-3);
   rect(c,0xffffe0a0,x,y-height-5,x+1,y-height-2);
  }
- private void plant(Canvas c){
-  slab(c,0xff98704b,0xff705138,0xff493b2c,0,-1,12,17);
-  oval(c,0xff352d20,-11,-23,12,-13);oval(c,0xffb38a5b,-12,-25,12,-18);oval(c,0xff302b1e,-10,-23,10,-18);
-  for(int i=0;i<9;i++){
-   float x=(i%3-1)*7,y=-31-(i*7%20),lean=(i%2==0?-1:1)*7;
-   line(c,0xff41603c,2,0,-21,x,y);
-   poly(c,i%2==0?0xff385b3e:0xff547247,x,y,x+lean,y-6,x+lean*1.6f,y-4,x+lean*.6f,y+2);
-   line(c,0xff779067,1,x,y,x+lean,y-4);
-  }
- }
  private void scale(Canvas c){
   slab(c,0xffc2a56a,0xff79633d,0xff58492e,0,-1,12,4);
   rect(c,0xff57482d,-2,-32,3,-7);rect(c,0xffc7ad71,-1,-31,1,-8);
@@ -51,22 +41,11 @@ public final class TownInteriorDetails {
    poly(c,0xffc2a263,x-8,y+14,x+8,y+14,x+4,y+18,x-4,y+18);line(c,0xffe1c78a,1,x-8,y+14,x+8,y+14);
   }
  }
- private void armor(Canvas c){
-  slab(c,0xff7b5a36,0xff493522,0xff34291c,0,-1,12,5);rect(c,0xff67523b,-2,-15,3,-5);
-  poly(c,0xff252e32,-10,-47,11,-47,16,-36,10,-19,0,-14,-11,-21,-16,-36);
-  poly(c,0xff858e8a,-9,-45,1,-43,1,-17,-9,-23,-13,-36);
-  poly(c,0xff4c5c60,1,-43,10,-45,13,-34,8,-21,1,-17);
-  line(c,0xffc1c7b6,1,-10,-41,0,-37);line(c,0xff99aaa5,1,1,-34,8,-40);line(c,0xff2e3738,2,-8,-25,9,-25);
-  poly(c,0xff5e6c6b,-14,-48,-20,-40,-13,-33,-9,-43);poly(c,0xff758581,12,-48,20,-40,13,-33,8,-43);
-  oval(c,0xff283236,-8,-61,9,-44);oval(c,0xff929b90,-7,-60,7,-48);rect(c,0xff273438,-6,-52,8,-48);rect(c,0xffbfc6b4,-1,-59,1,-47);
- }
  public static boolean supports(String kind){return ArraysHolder.TYPES.contains(kind);}
  public boolean draw(Canvas c,String kind,float x,float y,float width){
   if(!ArraysHolder.TYPES.contains(kind))return false;
   c.save();c.translate(x,y);c.scale(width/48,width/48);
   switch(kind){
-   case "herb_planter":plant(c);break;
-   case "armor_stand":armor(c);break;
    case "open_book":book(c,0,-3);break;
    case "brass_scale":scale(c);break;
    case "bottle_tray":
@@ -78,21 +57,9 @@ public final class TownInteriorDetails {
    case "coin_tray":
     slab(c,0xff655036,0xff3c2d1c,0xff48341e,0,-1,20,3);
     for(int i=0;i<12;i++){float xx=-12+(i%4)*7,yy=-3-(i/4)*4;oval(c,0xff5a4420,xx-3,yy-2,xx+4,yy+3);oval(c,0xffbea153,xx-3,yy-3,xx+3,yy+1);line(c,0xffe2c882,1,xx-2,yy-2,xx+1,yy-2);}break;
-   case "votive_stand":
-    slab(c,0xff928877,0xff70675c,0xff494941,0,-1,18,5);slab(c,0xffb5aa92,0xff887d69,0xff686354,0,-7,12,23);slab(c,0xffbcb094,0xff81745d,0xff625b4b,0,-30,21,5);
-    candle(c,-12,-31,18);candle(c,0,-28,22);candle(c,12,-32,17);break;
-   case "holy_font":
-    slab(c,0xff8f897c,0xff746e63,0xff4f5048,0,-1,15,5);slab(c,0xffb2a994,0xff897f6e,0xff696454,0,-6,8,20);
-    oval(c,0xff625d51,-22,-40,22,-24);oval(c,0xffb3ac94,-22,-43,22,-28);oval(c,0xff464e4c,-17,-40,17,-30);oval(c,0xff567d80,-15,-38,15,-30);line(c,0xffa7bbb0,1,-8,-35,8,-35);break;
-   case "archive_shelf":
-    slab(c,0xff785737,0xff513b27,0xff362d21,0,-1,21,65);
-    for(int row=0;row<3;row++){
-     poly(c,0xff231d16,-17,-11-row*18,-2,-4-row*18,-2,-18-row*18,-17,-25-row*18);
-     for(int col=0;col<4;col++){float xx=-15+col*3,yy=-12-row*18+col*1.4f;rect(c,col%2==0?0xff766341:0xff6a4738,xx,yy-10,xx+2,yy);line(c,0xffb19a66,1,xx,yy-7,xx+2,yy-7);}
-     line(c,0xffb4915d,2,-19,-9-row*18,0,-1-row*18);
-    }break;
+
   }
   c.restore();return true;
  }
- private static final class ArraysHolder {static final java.util.Set<String>TYPES=new java.util.HashSet<>(java.util.Arrays.asList("herb_planter","armor_stand","open_book","brass_scale","bottle_tray","weapon_tray","coin_tray","votive_stand","holy_font","archive_shelf"));}
+ private static final class ArraysHolder {static final java.util.Set<String>TYPES=new java.util.HashSet<>(java.util.Arrays.asList("open_book","brass_scale","bottle_tray","weapon_tray","coin_tray"));}
 }

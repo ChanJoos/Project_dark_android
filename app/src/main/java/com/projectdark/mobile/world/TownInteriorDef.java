@@ -34,20 +34,20 @@ public final class TownInteriorDef {
   if(k==Kind.EQUIPMENT){
    p.add(new Prop("weapon_rack",3,1,76));p.add(new Prop("weapon_rack",6,1,76));p.add(new Prop("weapon_rack",11,1,76));
    p.add(new Prop("shield_rack",1,3,72));p.add(new Prop("shield_rack",1,6,64));p.add(new Prop("sword_barrel",12,2,42));p.add(new Prop("sword_barrel",4,2,38));
-   p.add(new Prop("armor_stand",2,8,42));p.add(new Prop("storage_crate",12,6,38));p.add(new Prop("storage_barrel",12,7,30));
+   p.add(new Prop("shield_rack",2,8,48));p.add(new Prop("storage_crate",12,6,38));p.add(new Prop("storage_barrel",12,7,30));
    p.add(new Prop("weapon_tray",4,counterV,32,42,false));p.add(new Prop("weapon_tray",10,counterV,32,42,false));
    p.add(new Prop("open_book",7,counterV,23,42,false));
   }
   if(k==Kind.BANK){
    p.add(new Prop("safe",2,1,76));p.add(new Prop("safe",5,1,76));p.add(new Prop("safe",8,1,70));
-   p.add(new Prop("ledger",8,2,48));p.add(new Prop("ledger",1,7,50));p.add(new Prop("archive_shelf",1,3,52));
+   p.add(new Prop("ledger",8,2,48));p.add(new Prop("ledger",1,7,50));p.add(new Prop("safe",1,3,52));
    p.add(new Prop("storage_crate",8,8,34));p.add(new Prop("herb_planter",1,9,38));
    p.add(new Prop("coin_tray",5,counterV,27,42,false));p.add(new Prop("open_book",7,counterV,25,42,false));
    p.add(new Prop("brass_scale",8,counterV,24,42,false));
   }
   if(k==Kind.CHURCH){
    p.add(new Prop("altar",6,1,96));for(int v=6;v<=10;v+=2){p.add(new Prop("pew",3,v,72));p.add(new Prop("pew",9,v,72));}
-   p.add(new Prop("votive_stand",2,3,42));p.add(new Prop("votive_stand",10,3,42));
+   p.add(new Prop("altar",2,3,42));p.add(new Prop("altar",10,3,42));
    p.add(new Prop("holy_font",1,9,40));p.add(new Prop("herb_planter",1,5,36));p.add(new Prop("herb_planter",10,5,36));
    p.add(new Prop("open_book",6,1,20,45,false));
   }

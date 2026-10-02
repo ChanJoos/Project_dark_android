@@ -1,6 +1,6 @@
 {
   "work_package": "TOWN_DETAIL_088",
-  "classification": "Original-inspired layout using existing atlas/storage source bytes; ten small pixel-scale props are explicit authored stand-ins, not recovered original client assets.",
+  "classification": "Original-inspired layout using unchanged existing project atlas/storage/foliage pixels; five small countertop details are authored stand-ins. Does not claim recovered original client art.",
   "references": {
     "1000056705(2).jpg": "79b533750aef5e6d1ba83eef3b4f7863e8ae78a1ead264c9bce8efd4d1d66370",
     "1000056711(1).jpg": "7d8f8c51f00b05e6b3b5846b29f475398ef669e90fa667a4611fd1489a4435c1",
@@ -8,28 +8,24 @@
   },
   "relationships": {
     "reagent": "three rear cabinets, two work tables, packaged storage at left edge, herb planter at front side; bottle trays/book/scale on counter",
-    "equipment": "three rear weapon racks plus side shields, armor fitting display and delivery storage; weapons and order book on counter",
-    "bank": "rear safes and document shelf, ledger desk and bundled storage; counting tray/book/scale on service counter",
-    "church": "paired votive plinths, side plants and entrance font; paired pews and preserved central runner/altar"
+    "equipment": "three rear weapon racks plus side shields, front shield display and delivery storage; weapons and order book on counter",
+    "bank": "rear safes and side document safe, ledger desk and bundled storage; counting tray/book/scale on service counter",
+    "church": "paired detailed side shrines, side plants and entrance font; paired pews and preserved central runner/altar"
   },
   "existing_pixels": [
     "interiors/v84/props.png",
     "storage/OBJ_barrel.png",
     "storage/OBJ_crate.png",
     "storage/OBJ_sack.png",
-    "interiors/v85/materials.webp"
+    "interiors/v85/materials.webp",
+    "vegetation/bushes/OBJ_bush_02.png"
   ],
   "new_stand_ins": [
-    "herb_planter",
-    "armor_stand",
     "open_book",
     "brass_scale",
     "bottle_tray",
     "weapon_tray",
-    "coin_tray",
-    "votive_stand",
-    "holy_font",
-    "archive_shelf"
+    "coin_tray"
   ],
   "navigation": "Only solid floor furniture blocks its occupied tile; tabletop props are elevated and non-blocking. BFS customer/exit route, unique anchors, registered rendering, surface support checks added to actual native TownInteriorTest.",
   "fine_details": [
@@ -39,5 +35,6 @@
     "wall mounted bracket candles",
     "source pixel oak counter fronts"
   ],
-  "verification": "Local Master/map/diff checks PASS; exact-source CI/native/APK pending."
+  "verification": "Local Master/map/diff checks PASS; exact-source CI/native/APK pending.",
+  "refinement": "First exact native render rejected flat armor/archive/votive/plant stand-ins. Replace with detailed shield rack/safe/altar pixels; planter layers transparent existing foliage and barrel. Font reuses altar masonry crop with authored water inset. Final CI/native/APK pending."
 }

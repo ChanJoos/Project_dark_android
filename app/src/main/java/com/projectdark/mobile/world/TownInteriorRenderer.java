@@ -1,8 +1,8 @@
 package com.projectdark.mobile.world;
 import android.content.Context;import android.graphics.*;import org.json.*;import java.io.*;import java.util.*;
 public final class TownInteriorRenderer {
- private final TownInteriorDetails details=new TownInteriorDetails();private final Map<String,Bitmap> storage=new HashMap<>();private final Bitmap props,tiles;private final BitmapShader[] materials=new BitmapShader[4];private TownInteriorDef.Kind activeKind;private final Paint p=new Paint();private final Map<String,Rect> regions=new HashMap<>();
- public TownInteriorRenderer(Context c){Bitmap a=null,b=null;try(InputStream in=c.getAssets().open("interiors/v84/props.png")){a=BitmapFactory.decodeStream(in);}catch(IOException e){}try(InputStream in=c.getAssets().open("interiors/v84/tiles.png")){b=BitmapFactory.decodeStream(in);}catch(IOException e){}props=a;tiles=b;p.setFilterBitmap(false);for(String n:new String[]{"barrel","crate","sack"})try(InputStream in=c.getAssets().open("storage/OBJ_"+n+".png")){storage.put("storage_"+n,BitmapFactory.decodeStream(in));}catch(IOException e){throw new IllegalStateException("Storage prop "+n,e);}try(InputStream in=c.getAssets().open("interiors/v85/materials.webp")){Bitmap atlas=BitmapFactory.decodeStream(in);int mw=atlas.getWidth()/2,mh=atlas.getHeight()/2;for(int i=0;i<4;i++)materials[i]=new BitmapShader(Bitmap.createBitmap(atlas,i%2*mw,i/2*mh,mw,mh),Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);}catch(IOException e){throw new IllegalStateException("Interior materials",e);}try(InputStream in=c.getAssets().open("interiors/v84/atlas.json")){JSONObject o=new JSONObject(readText(in)).getJSONObject("props");for(Iterator<String> it=o.keys();it.hasNext();){String k=it.next();JSONObject r=o.getJSONObject(k);regions.put(k,new Rect(r.getInt("x"),r.getInt("y"),r.getInt("x")+r.getInt("width"),r.getInt("y")+r.getInt("height")));}Rect s=regions.get("church_wall_sw");regions.put("church_wall_se",s);}catch(Exception e){throw new IllegalStateException("Interior atlas",e);}}
+ private final TownInteriorDetails details=new TownInteriorDetails();private final Map<String,Bitmap> storage=new HashMap<>();private final Bitmap props,tiles;private Bitmap foliage;private final BitmapShader[] materials=new BitmapShader[4];private TownInteriorDef.Kind activeKind;private final Paint p=new Paint();private final Map<String,Rect> regions=new HashMap<>();
+ public TownInteriorRenderer(Context c){Bitmap a=null,b=null;try(InputStream in=c.getAssets().open("interiors/v84/props.png")){a=BitmapFactory.decodeStream(in);}catch(IOException e){}try(InputStream in=c.getAssets().open("interiors/v84/tiles.png")){b=BitmapFactory.decodeStream(in);}catch(IOException e){}props=a;tiles=b;p.setFilterBitmap(false);try(InputStream in=c.getAssets().open("vegetation/bushes/OBJ_bush_02.png")){foliage=BitmapFactory.decodeStream(in);}catch(IOException e){throw new IllegalStateException("Interior foliage",e);}for(String n:new String[]{"barrel","crate","sack"})try(InputStream in=c.getAssets().open("storage/OBJ_"+n+".png")){storage.put("storage_"+n,BitmapFactory.decodeStream(in));}catch(IOException e){throw new IllegalStateException("Storage prop "+n,e);}try(InputStream in=c.getAssets().open("interiors/v85/materials.webp")){Bitmap atlas=BitmapFactory.decodeStream(in);int mw=atlas.getWidth()/2,mh=atlas.getHeight()/2;for(int i=0;i<4;i++)materials[i]=new BitmapShader(Bitmap.createBitmap(atlas,i%2*mw,i/2*mh,mw,mh),Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);}catch(IOException e){throw new IllegalStateException("Interior materials",e);}try(InputStream in=c.getAssets().open("interiors/v84/atlas.json")){JSONObject o=new JSONObject(readText(in)).getJSONObject("props");for(Iterator<String> it=o.keys();it.hasNext();){String k=it.next();JSONObject r=o.getJSONObject(k);regions.put(k,new Rect(r.getInt("x"),r.getInt("y"),r.getInt("x")+r.getInt("width"),r.getInt("y")+r.getInt("height")));}Rect s=regions.get("church_wall_sw");regions.put("church_wall_se",s);}catch(Exception e){throw new IllegalStateException("Interior atlas",e);}}
  private static String readText(InputStream in)throws IOException{ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] b=new byte[4096];for(int n;(n=in.read(b))!=-1;)out.write(b,0,n);return out.toString("UTF-8");}
  public boolean ready(){return props!=null&&tiles!=null&&regions.size()>=16;}
  public void ground(Canvas c,WorldRuntimeAdapter w,TownInteriorDef d){
@@ -165,11 +165,28 @@ public final class TownInteriorRenderer {
    }
   }
  }
- public boolean hasProp(String name){return "joined_counter".equals(name)||regions.containsKey(name)||storage.containsKey(name)||TownInteriorDetails.supports(name);}
+ public boolean hasProp(String name){return "herb_planter".equals(name)||"holy_font".equals(name)||"joined_counter".equals(name)||regions.containsKey(name)||storage.containsKey(name)||TownInteriorDetails.supports(name);}
  public void prop(Canvas c,WorldRuntimeAdapter w,TownInteriorDef.Prop o){
   if("joined_counter".equals(o.asset)){counter(c,w,o);return;}
   WorldCameraTransform.Point q=w.worldToScreen(o.x(),o.y());float y=q.y-o.lift;
   if(o.blocking){p.setColor(0x480b0805);c.drawOval(new RectF(q.x-o.width*.35f,q.y-4,q.x+o.width*.35f,q.y+7),p);}
+  if("herb_planter".equals(o.asset)){
+   // Layer unchanged transparent foliage and detailed barrel pixels into a planter.
+   Bitmap pot=storage.get("storage_barrel");float pw=o.width*.56f,ph=pw*pot.getHeight()/pot.getWidth();p.setColor(Color.WHITE);
+   c.drawBitmap(pot,null,new RectF(q.x-pw/2,y-ph,q.x+pw/2,y),p);
+   float fh=o.width*foliage.getHeight()/foliage.getWidth();
+   c.drawBitmap(foliage,null,new RectF(q.x-o.width/2,y-ph*.7f-fh,q.x+o.width/2,y-ph*.7f),p);return;
+  }
+  if("holy_font".equals(o.asset)){
+   // Detailed stone plinth from the altar sprite, topped by an inset water basin.
+   Rect a=regions.get("altar"),base=new Rect(a.left,a.top+a.height()/3,a.right,a.bottom);
+   float h=o.width*base.height()/base.width();p.setColor(Color.WHITE);
+   c.drawBitmap(props,base,new RectF(q.x-o.width/2,y-h,q.x+o.width/2,y),p);
+   float top=y-h+3;p.setColor(0xff393c35);c.drawOval(new RectF(q.x-14,top-4,q.x+14,top+7),p);
+   p.setColor(0xffa89e86);c.drawOval(new RectF(q.x-14,top-6,q.x+14,top+4),p);
+   p.setColor(0xff3a504c);c.drawOval(new RectF(q.x-11,top-4,q.x+11,top+2),p);
+   line(c,0xffa6b8a4,1,q.x-6,top-2,q.x+5,top-2);return;
+  }
   if(details.draw(c,o.asset,q.x,y,o.width))return;
   Bitmap extra=storage.get(o.asset);if(extra!=null){float h=o.width*extra.getHeight()/extra.getWidth();p.setColor(Color.WHITE);c.drawBitmap(extra,null,new RectF(q.x-o.width/2,y-h,q.x+o.width/2,y),p);return;}
   Rect src=regions.get(o.asset);if(src==null||props==null)return;float h=o.width*src.height()/src.width();p.setColor(Color.WHITE);
