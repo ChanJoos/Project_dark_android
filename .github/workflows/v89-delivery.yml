@@ -59,7 +59,7 @@ jobs:
                           attrs[strings[name]]=strings[data] if typ==3 else data
               offset+=size
           assert attrs['versionCode']==89 and attrs['versionName']=='0.89-martial-auto-hud',attrs
-          files=subprocess.check_output(['git','ls-files','app/src/main/assets'],text=True).splitlines();missing=[];different=[]
+          files=subprocess.check_output(['git','ls-files','-z','app/src/main/assets'],text=True).split('\0')[:-1];missing=[];different=[]
           for p in files:
               key=p.removeprefix('app/src/main/')
               if key not in z.namelist():missing.append(p)
@@ -68,9 +68,7 @@ jobs:
           captures=sorted(Path('delivery-captures').glob('v89-*.png'))
           assert len(captures)==37,len(captures)
           assert len([p for p in captures if 'martial-' in p.name])==30
-          report={'sourceCommit':source,'sourceTree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),'sourceBranch':'codex/town-interiors-mobile-v86','mainAtComparison':'bfd668d4e178fa82625d634b5a54be0e27ce30a3','candidate':True,'buildRun':37022876847,'buildJob':110890155900,'buildCompletedSeoul':'2026-10-02T23:57:40+09:00','apkArtifactId':11233149249,'nativeArtifactId':11233174312,'apkSha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'apkBytes':apk.stat().st_size,'manifest':attrs,'trackedPackagedAssetsByteMatched':len(files),'missingAssets':missing,'mismatchedAssets':different,'generatedNativeCaptures':53,'includedV89Captures':len(captures),'captureHashes':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in captures},'verification':'Exact source full Android CI SUCCESS, nine new martial/HUD/AUTO native regressions plus all configured existing gates. 34 martial IDs reviewed:30 ACTIVE four directions,2 LINKED basic attack,2 UTILITY not independent combat casts. Native camera ratio1536x709. Source capture matting remains approximate, original quality and physical phone/user acceptance pending.','localDelivery':'Execution environment went offline after exact CI success. Immutable CI artifacts verified and packaged on Actions runner.'}
-          # Preserve the original build job from the Actions API in the final handoff; no fabricated id.
-          report.pop('buildJob')
+          report={'sourceCommit':source,'sourceTree':subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip(),'sourceBranch':'codex/town-interiors-mobile-v86','mainAtComparison':'bfd668d4e178fa82625d634b5a54be0e27ce30a3','candidate':True,'buildRun':37022876847,'buildJob':110890093716,'buildCompletedSeoul':'2026-10-02T23:57:38+09:00','apkArtifactId':11233149249,'nativeArtifactId':11233174312,'apkSha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'apkBytes':apk.stat().st_size,'manifest':attrs,'trackedPackagedAssetsByteMatched':len(files),'missingAssets':missing,'mismatchedAssets':different,'generatedNativeCaptures':53,'includedV89Captures':len(captures),'captureHashes':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in captures},'verification':'Exact source full Android CI SUCCESS, nine new martial/HUD/AUTO native regressions plus all configured existing gates. 34 martial IDs reviewed:30 ACTIVE four directions,2 LINKED basic attack,2 UTILITY not independent combat casts. Native camera ratio1536x709. Source capture matting remains approximate, original quality and physical phone/user acceptance pending.','localDelivery':'Execution environment went offline after exact CI success. Immutable CI artifacts verified and packaged on Actions runner.'}
           out=Path('delivery-output');out.mkdir()
           (out/'BUILD_INFO.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
           zipname=out/'PROJECT_DARK_v89_install.zip'
