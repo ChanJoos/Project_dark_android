@@ -160,12 +160,18 @@ work_packages:
     title: "User-reported martial contact/facing/FX and NPC/AUTO/quickslot correction"
     priority: P0
     claim: Director/Integration
-    queue_state: IN_VALIDATION
+    queue_state: VISUAL_PENDING
     implementation: IMPLEMENTED
-    native_runtime: PENDING_EXACT_CI
+    native_runtime: VERIFIED_SOURCE_a4dcc108
     phone_acceptance: PENDING
     user_visual_acceptance: PENDING
     scope: "34 martial IDs, front intent, particle registration, NPC labels/placement, registered-slot AUTO, square insets, gold utility glyph"
+    build_source: a4dcc1086f283fd49b7673c8fa5c4ddf8c140f97
+    build_run: 37022876847
+    verified_delivery_run: 37025471193
+    delivery_artifact: 11235087055
+    apk_sha256: 2577f83ba1bd5d4e4f913e0b45a32021dd3fd8d42b3934c1a3972124bc5be086
+    local_attachment: BLOCKED_ENVIRONMENT_OFFLINE
     proof: docs/verification/MARTIAL_HUD_V89_BUILD.json
   TOWN_DETAIL_088:
     title: "Original-inspired prop density and small-scale interior detail"
