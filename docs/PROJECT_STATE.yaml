@@ -161,11 +161,15 @@ work_packages:
     system: town_interior_visual
     priority: P0
     claim: Director/Integration
-    queue_state: IN_DEVELOPMENT
+    queue_state: VISUAL_PENDING
     failed_predecessor: "V86 wall/window visual FAIL, user-reported 2026-10-02; installed SHA unknown"
     required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md, master/data/Asset_Source_Catalog.csv, master/data/Runtime_Visual_Rules.csv, docs/verification/TOWN_INTERIORS_V85_SOURCES.json, docs/verification/TOWN_INTERIORS_V86_SOURCES.json, app/src/main/assets/interiors/v84/atlas.json, app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java, app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java, app/src/test/java/com/projectdark/mobile/TownInteriorTest.java]
     external_reference: "user 1000057986.jpg, four-room isometric architecture comparison, inspected in this session"
     acceptance: ["non-singular wall material projection", "timber structural framing and distinct stone church", "recessed windows with visible reveal, projecting sill and frame depth", "native four-room screenshots reviewed at full resolution", "exact-source build with phone/user visual acceptance explicitly pending"]
+    exact_source: "5890ba9d9ed861601ca9e6b55229ad2dfba8025d"
+    ci_run: 37000854573
+    evidence: docs/verification/TOWN_WALLS_V87_BUILD.json
+    verification: "BUILD/NATIVE VERIFIED; 16 PNGs reviewed; user/phone acceptance pending"
   TOWN_INTERIORS_086:
     title: "Fix source gaps and mobile interactions after V85 interior visual rejection"
     system: town_interiors_and_commerce

@@ -1,0 +1,114 @@
+{
+  "version": 87,
+  "source_sha": "5890ba9d9ed861601ca9e6b55229ad2dfba8025d",
+  "tree": "fd1ffc99c1d8ab0db69d42952ea0c52eb56c04bc",
+  "run_id": 37000854573,
+  "consumed_sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "4c5aedddf2d6d7a7049357ff08d39370e5f16c9920ea47e517017782903e0c8d"
+    },
+    {
+      "path": "docs/DIRECTOR_GUIDE.md",
+      "sha256": "b47446e4ebe477bafb0063464c06f31c4f339d56c2264f2c22454eb4d4e0111f"
+    },
+    {
+      "path": "docs/CHAT_HANDOFF.md",
+      "sha256": "e3c128896376d9b4ceb142bf6e9fb60a2d3c214413df695b949c8fdb32e73162"
+    },
+    {
+      "path": "docs/PROJECT_STATE.md",
+      "sha256": "97de5a30f0426b48cad1f7b79c6b0987d84af6a7624e6965b5c2031c3ed3c79d"
+    },
+    {
+      "path": "docs/PROJECT_STATE.yaml",
+      "sha256": "386cdfc3693ed8401a030f82791980d5c959b67111914390f642e503a9048b39"
+    },
+    {
+      "path": "docs/DECISION_LOG.md",
+      "sha256": "113c7f494ae22e7f197c8a04cda5ccd6c74f748a86b5d62ff00316790636d925"
+    },
+    {
+      "path": "docs/DIRECTOR_BACKLOG.md",
+      "sha256": "de6e3a7a8c789d504e50bdefae1d338537d60e5c9523b497b1a0dc5e1a5fa567"
+    },
+    {
+      "path": "docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md",
+      "sha256": "152f206448188cdae4216ee06c47456ef93dc7b42bad654d19545a71b4bb88da"
+    },
+    {
+      "path": "master/MASTER_MANIFEST.md",
+      "sha256": "6ffac4c7f4bfc14f1e0f792420d7f80543cb113cd9071fb0cf9cada7b69f343b"
+    },
+    {
+      "path": "master/DATA_CONSUMPTION_CONTRACT.md",
+      "sha256": "7504feca5a4a3a8e39e290d52b8aeb2024a3e3482c7c8b4ea009e4cf4da287e5"
+    },
+    {
+      "path": "master/data/Asset_Source_Catalog.csv",
+      "sha256": "38298082ce043227576f53c30ec664ff1619124e560874827ac9b684ad3d4ff8"
+    },
+    {
+      "path": "master/data/Runtime_Visual_Rules.csv",
+      "sha256": "804f8b3f37b0ae153f77e4aca26b95b8b38775373c2b3c436aa6feb07a08ec10"
+    },
+    {
+      "path": "docs/verification/TOWN_INTERIORS_V85_SOURCES.json",
+      "sha256": "a474de9783ceb61403d5d1ce6f36521fb8fa4169a327242634baf789bc2e1a75"
+    },
+    {
+      "path": "docs/verification/TOWN_INTERIORS_V86_SOURCES.json",
+      "sha256": "05fe70805382d548bb01718e33d85c3d8ff84e37ba5f6f57b8134b8ae77c28d1"
+    },
+    {
+      "path": "app/src/main/assets/interiors/v84/atlas.json",
+      "sha256": "7bb8a268bbd6c157267513b97c27faad4a34b9cdc55c9165231976be822cbf76"
+    },
+    {
+      "path": "app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java",
+      "sha256": "4f5d34d49c8a0f5eefd30d8dd5c7e25794de1d10458bb8ce5def67331034458b"
+    },
+    {
+      "path": "app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java",
+      "sha256": "9166d06ebde01955d4289bb490e4483e97b3aece16a59cfe57d6eae933ea2486"
+    },
+    {
+      "path": "app/src/test/java/com/projectdark/mobile/TownInteriorTest.java",
+      "sha256": "659f947c381433216180ca810a23a6dc0e8fe04bf2b1fc759fe2fb7ec2475902"
+    }
+  ],
+  "local_checks": [
+    "Master integrity PASS",
+    "Milles assets PASS:313 placements",
+    "git diff --check PASS"
+  ],
+  "phone_acceptance": "PENDING",
+  "visual_review": "IMPROVED, USER_ACCEPTANCE_PENDING",
+  "architecture_reference": {
+    "filename": "1000057986.jpg",
+    "role": "User-supplied four-room desired architectural direction; not native runtime evidence"
+  },
+  "changes": [
+    "Independent isometric and vertical wall texture axes",
+    "Continuous timber framing and church stone courses",
+    "Recessed window glazing, projecting sill and solid wall end/cap",
+    "Textured oak counters with inset front panels",
+    "Lossless native PNG captures"
+  ],
+  "ci": "SUCCESS",
+  "job_id": 110817971466,
+  "artifact_ids": {
+    "apk": 11223552724,
+    "native": 11223457739
+  },
+  "apk_sha256": "1edd33d76f6385e48cdec866dc77f5eed7508820cdf7e3385b40e33e68d8c1bc",
+  "apk_bytes": 30583437,
+  "binary_manifest": {
+    "versionCode": 87,
+    "versionName": "0.87-wall-depth"
+  },
+  "tracked_packaged_assets_byte_matched": 903,
+  "native_captures": 16,
+  "native_review": "All four map, UI, confirmation and exterior images inspected. Structural walls/window frames/counter panels improved; dense props, fine pixel art and portrait style coherence remain limited. User visual acceptance pending.",
+  "build_artifact_time_kst": "2026-10-02T20:31:45+09:00"
+}
