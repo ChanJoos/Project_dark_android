@@ -1,0 +1,43 @@
+{
+  "work_package": "TOWN_DETAIL_088",
+  "classification": "Original-inspired layout using existing atlas/storage source bytes; ten small pixel-scale props are explicit authored stand-ins, not recovered original client assets.",
+  "references": {
+    "1000056705(2).jpg": "79b533750aef5e6d1ba83eef3b4f7863e8ae78a1ead264c9bce8efd4d1d66370",
+    "1000056711(1).jpg": "7d8f8c51f00b05e6b3b5846b29f475398ef669e90fa667a4611fd1489a4435c1",
+    "1000056707.jpg": "6f0a5d85ea509ae5b40cde4c8b171bb9b708bdccc0a143830e2096b8b31f568d"
+  },
+  "relationships": {
+    "reagent": "three rear cabinets, two work tables, packaged storage at left edge, herb planter at front side; bottle trays/book/scale on counter",
+    "equipment": "three rear weapon racks plus side shields, armor fitting display and delivery storage; weapons and order book on counter",
+    "bank": "rear safes and document shelf, ledger desk and bundled storage; counting tray/book/scale on service counter",
+    "church": "paired votive plinths, side plants and entrance font; paired pews and preserved central runner/altar"
+  },
+  "existing_pixels": [
+    "interiors/v84/props.png",
+    "storage/OBJ_barrel.png",
+    "storage/OBJ_crate.png",
+    "storage/OBJ_sack.png",
+    "interiors/v85/materials.webp"
+  ],
+  "new_stand_ins": [
+    "herb_planter",
+    "armor_stand",
+    "open_book",
+    "brass_scale",
+    "bottle_tray",
+    "weapon_tray",
+    "coin_tray",
+    "votive_stand",
+    "holy_font",
+    "archive_shelf"
+  ],
+  "navigation": "Only solid floor furniture blocks its occupied tile; tabletop props are elevated and non-blocking. BFS customer/exit route, unique anchors, registered rendering, surface support checks added to actual native TownInteriorTest.",
+  "fine_details": [
+    "reduced floor material scale",
+    "bordered entrance mats",
+    "carpet woven diamond motif",
+    "wall mounted bracket candles",
+    "source pixel oak counter fronts"
+  ],
+  "verification": "Local Master/map/diff checks PASS; exact-source CI/native/APK pending."
+}

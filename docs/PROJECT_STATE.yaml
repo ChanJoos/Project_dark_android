@@ -156,6 +156,16 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  TOWN_DETAIL_088:
+    title: "Original-inspired prop density and small-scale interior detail"
+    system: town_interior_visual
+    priority: P0
+    claim: Director/Integration
+    queue_state: IN_DEVELOPMENT
+    required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/PROJECT_STATE.yaml, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md, master/data/Asset_Source_Catalog.csv, master/data/Runtime_Visual_Rules.csv, master/data/Asset_Map_Mapping.csv, docs/verification/TOWN_INTERIORS_V85_SOURCES.json, docs/verification/TOWN_INTERIORS_V86_SOURCES.json, docs/verification/TOWN_WALLS_V87_BUILD.json, app/src/main/assets/interiors/v84/atlas.json, app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java, app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java, app/src/test/java/com/projectdark/mobile/TownInteriorTest.java]
+    external_references: ["1000056705(2).jpg dense weapon display", "1000056711(1).jpg reagent countertop/material detail", "1000056707.jpg Milles service area/clear customer floor", "1000057986.jpg user four-room architecture direction"]
+    acceptance: ["role-specific counter display and storage groups", "smaller-scale floor materials and carpet weave", "existing detailed prop atlas reused with explicit stand-ins for unsupported new props", "central customer aisle, merchant clearance and exits reachable", "decorations do not add floor collision", "native four-room map/UI/exterior review and exact-source APK"]
+
   TOWN_WALLS_087:
     title: "Repair flat walls and pasted-on windows after repeated user rejection"
     system: town_interior_visual

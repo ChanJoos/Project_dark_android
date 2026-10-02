@@ -5,7 +5,13 @@ import java.util.*;
 public final class TownInteriorDef {
  public enum Kind { REAGENT,EQUIPMENT,BANK,CHURCH }
  public static final float MIN_X=64,MAX_X=896,MIN_Y=0,MAX_Y=540;
- public static final class Prop {public final String asset;public final int u,v;public final float width;public Prop(String a,int u,int v,float w){asset=a;this.u=u;this.v=v;width=w;}public float x(){return TownInteriorDef.x(u,v);}public float y(){return TownInteriorDef.y(u,v);}}
+ public static final class Prop {
+  public final String asset;public final int u,v;public final float width,lift;public final boolean blocking;
+  public Prop(String a,int u,int v,float w){this(a,u,v,w,0,true);}
+  public Prop(String a,int u,int v,float w,float lift,boolean blocking){asset=a;this.u=u;this.v=v;width=w;this.lift=lift;this.blocking=blocking;}
+  public float x(){return TownInteriorDef.x(u,v);}public float y(){return TownInteriorDef.y(u,v);}
+ }
+
  public final Kind kind;public final String mapId,title,npcName,outfit,doorId;
  public final List<Prop> props;
  public final int columns,rows,npcU,npcV,customerU,customerV,counterV,counterStart,counterEnd;
@@ -17,10 +23,34 @@ public final class TownInteriorDef {
   counterStart=k==Kind.BANK?4:3;counterEnd=k==Kind.EQUIPMENT?11:k==Kind.BANK?8:10;
   List<Prop> p=new ArrayList<>();
   if(k!=Kind.CHURCH)for(int u=counterStart;u<=counterEnd;u++)p.add(new Prop("joined_counter",u,counterV,64));
-  if(k==Kind.REAGENT){p.add(new Prop("potion_cabinet",3,1,80));p.add(new Prop("potion_cabinet",9,1,80));p.add(new Prop("potion_table",2,3,56));p.add(new Prop("potion_table",10,2,52));p.add(new Prop("potion_table",1,8,56));}
-  if(k==Kind.EQUIPMENT){p.add(new Prop("weapon_rack",3,1,84));p.add(new Prop("weapon_rack",11,1,84));p.add(new Prop("shield_rack",1,5,80));p.add(new Prop("shield_rack",1,8,64));p.add(new Prop("sword_barrel",12,2,44));p.add(new Prop("sword_barrel",3,2,38));}
-  if(k==Kind.BANK){p.add(new Prop("safe",2,1,80));p.add(new Prop("safe",5,1,80));p.add(new Prop("ledger",8,2,50));p.add(new Prop("ledger",1,7,52));}
-  if(k==Kind.CHURCH){p.add(new Prop("altar",6,1,96));for(int v=6;v<=10;v+=2){p.add(new Prop("pew",3,v,72));p.add(new Prop("pew",9,v,72));}}
+  if(k==Kind.REAGENT){
+   p.add(new Prop("potion_cabinet",2,1,76));p.add(new Prop("potion_cabinet",5,1,76));p.add(new Prop("potion_cabinet",10,1,76));
+   p.add(new Prop("potion_table",2,3,54));p.add(new Prop("potion_table",10,2,50));p.add(new Prop("potion_table",1,8,54));
+   p.add(new Prop("storage_crate",1,5,36));p.add(new Prop("storage_sack",1,6,30));p.add(new Prop("storage_barrel",10,3,30));
+   p.add(new Prop("herb_planter",10,8,38));
+   p.add(new Prop("bottle_tray",4,counterV,32,42,false));p.add(new Prop("bottle_tray",9,counterV,32,42,false));
+   p.add(new Prop("open_book",6,counterV,23,42,false));p.add(new Prop("brass_scale",8,counterV,24,42,false));
+  }
+  if(k==Kind.EQUIPMENT){
+   p.add(new Prop("weapon_rack",3,1,76));p.add(new Prop("weapon_rack",6,1,76));p.add(new Prop("weapon_rack",11,1,76));
+   p.add(new Prop("shield_rack",1,3,72));p.add(new Prop("shield_rack",1,6,64));p.add(new Prop("sword_barrel",12,2,42));p.add(new Prop("sword_barrel",4,2,38));
+   p.add(new Prop("armor_stand",2,8,42));p.add(new Prop("storage_crate",12,6,38));p.add(new Prop("storage_barrel",12,7,30));
+   p.add(new Prop("weapon_tray",4,counterV,32,42,false));p.add(new Prop("weapon_tray",10,counterV,32,42,false));
+   p.add(new Prop("open_book",7,counterV,23,42,false));
+  }
+  if(k==Kind.BANK){
+   p.add(new Prop("safe",2,1,76));p.add(new Prop("safe",5,1,76));p.add(new Prop("safe",8,1,70));
+   p.add(new Prop("ledger",8,2,48));p.add(new Prop("ledger",1,7,50));p.add(new Prop("archive_shelf",1,3,52));
+   p.add(new Prop("storage_crate",8,8,34));p.add(new Prop("herb_planter",1,9,38));
+   p.add(new Prop("coin_tray",5,counterV,27,42,false));p.add(new Prop("open_book",7,counterV,25,42,false));
+   p.add(new Prop("brass_scale",8,counterV,24,42,false));
+  }
+  if(k==Kind.CHURCH){
+   p.add(new Prop("altar",6,1,96));for(int v=6;v<=10;v+=2){p.add(new Prop("pew",3,v,72));p.add(new Prop("pew",9,v,72));}
+   p.add(new Prop("votive_stand",2,3,42));p.add(new Prop("votive_stand",10,3,42));
+   p.add(new Prop("holy_font",1,9,40));p.add(new Prop("herb_planter",1,5,36));p.add(new Prop("herb_planter",10,5,36));
+   p.add(new Prop("open_book",6,1,20,45,false));
+  }
   props=Collections.unmodifiableList(p);
  }
  public static final List<TownInteriorDef> ALL=Collections.unmodifiableList(Arrays.asList(
@@ -34,7 +64,7 @@ public final class TownInteriorDef {
  private int entryU(){return kind==Kind.BANK?5:6;}
  public float spawnX(){return x(entryU(),rows-2);}public float spawnY(){return y(entryU(),rows-2);}public float exitX(){return x(entryU(),rows-1);}public float exitY(){return y(entryU(),rows-1);}
  public float npcX(){return x(npcU,npcV);}public float npcY(){return y(npcU,npcV);}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
- public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if(kind!=Kind.CHURCH&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.u==u&&p.v==v)return true;return false;}
+ public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if(kind!=Kind.CHURCH&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.blocking&&p.u==u&&p.v==v)return true;return false;}
  public List<WorldMoveTargetController.TileCenter> navigationTiles(){List<WorldMoveTargetController.TileCenter> t=new ArrayList<>();for(int u=1;u<columns;u++)for(int v=1;v<rows;v++)if(!blocked(u,v))t.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(t);}
  public List<RectF> obstacles(){List<RectF> a=new ArrayList<>();for(int u=0;u<columns;u++)for(int v=0;v<rows;v++)if(blocked(u,v))a.add(new RectF(x(u,v)-3,y(u,v)-3,x(u,v)+3,y(u,v)+3));return a;}
  public int floor(int u,int v){return kind==Kind.REAGENT?1:kind==Kind.CHURCH?(u>=5&&u<=7?3:2):0;}

@@ -204,7 +204,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: device-review-${{ github.sha }}
-          path: app/build/reports/device-review/v87-*.png
+          path: app/build/reports/device-review/v88-*.png
           if-no-files-found: error
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace
