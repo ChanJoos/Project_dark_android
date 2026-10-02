@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Source-backed classic reagent/recall icons. No placeholder drawing is permitted here. */
+/** Captured original core icons; Curum/holy-water icons are documented project reconstruction. */
 final class ReagentItemVisualRegistry {
   private final Context context;
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
@@ -39,5 +39,5 @@ final class ReagentItemVisualRegistry {
     return trimTransparent(out);
   }
   private static Bitmap trimTransparent(Bitmap b){int l=b.getWidth(),t=b.getHeight(),r=-1,bt=-1;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if((b.getPixel(x,y)>>>24)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>bt)bt=y;}return r>=l?Bitmap.createBitmap(b,l,t,r-l+1,bt-t+1):b;}
-  boolean sourceBacked(String itemId){return get(itemId)!=null;}
+  boolean sourceBacked(String itemId){return !"IT_REAGENT_CURUM".equals(itemId)&&!"IT_REAGENT_HOLYWATER".equals(itemId)&&get(itemId)!=null;}
 }

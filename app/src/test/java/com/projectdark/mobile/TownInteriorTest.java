@@ -22,6 +22,10 @@ public class TownInteriorTest {
    s.player().x=anchor.approachX;s.player().y=anchor.approachY+96;for(AdaptedMillesIsometricTileLayer.Tile t:AdaptedMillesIsometricTileLayer.tiles())if(Math.abs(t.centerX-anchor.approachX)<1&&Math.abs(t.centerY-(anchor.approachY+96))<1&&world.canPlayerOccupy(t.centerX,t.centerY)){s.player().x=t.centerX;s.player().y=t.centerY;break;}
    world.snapCameraToPlayer();capture(v,d.kind.toString().toLowerCase()+"-exterior-door");world.requestGroundWorld(anchor.approachX,anchor.approachY);tick(v,400);assertEquals("walk through image threshold "+d.kind,d.mapId,s.currentMapId());}
  }
+ @Test public void portalMarkersMatchMeasuredBuildingImageThresholds()throws Exception{
+  String json;try(InputStream in=c.getAssets().open("maps/milles_garden.json")){json=new String(in.readAllBytes(),java.nio.charset.StandardCharsets.UTF_8);}org.json.JSONArray objects=new org.json.JSONObject(json).getJSONArray("objects");
+  for(MillesDoorAnchors.Door d:MillesDoorAnchors.ALL){org.json.JSONObject marker=null;for(int i=0;i<objects.length();i++){org.json.JSONObject o=objects.getJSONObject(i);if((d.building+"_portal").equals(o.getString("id")))marker=o;}assertNotNull(d.id,marker);assertEquals(d.x,marker.getDouble("x"),.001);assertEquals(d.y,marker.getDouble("y"),.001);assertEquals("door",marker.getString("draw"));}
+ }
  @Test public void catalogsHaveRegisteredTradableItemsAndExcuranumHeals(){
   RuntimeState s=new RuntimeState();s.rpg().restoreGold(1000000);for(TownInteriorDef.Kind k:new TownInteriorDef.Kind[]{TownInteriorDef.Kind.REAGENT,TownInteriorDef.Kind.EQUIPMENT})for(TownCommerce.Offer o:TownCommerce.offers(k)){assertNotNull(o.id,s.rpg().itemDefinitions().get(o.id));assertEquals(o.id,TownCommerce.Result.OK,TownCommerce.transact(s,k,TownCommerce.Operation.BUY,o.id,1,()->true));}
   assertTrue(TownCommerce.offers(TownInteriorDef.Kind.EQUIPMENT).size()>=17);assertEquals(0,TownCommerce.sellPrice("IT_REAGENT_EXCURANUM"));s.player().hp=1;assertEquals(RpgProgressionState.UseResult.USED,s.rpg().useConsumable("IT_REAGENT_EXCURANUM",s));assertEquals(s.player().maxHp,s.player().hp);
