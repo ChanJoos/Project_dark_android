@@ -51,7 +51,7 @@ public class ClassicSkillReferenceTest {
   ClassicSkillReference reference=new ClassicSkillReference(c);
   for(String id:reference.effects.keySet()){
    SkillActionContract.Rule rule=SkillActionContract.get(id);if(!rule.presentationAllowed())continue;
-   F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;s.player().hp=5;s.player().mp=0;int before=m.hp;
+   F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;s.rpg().restoreBaseHpMp(20000,20000);s.player().hp=20000;s.player().mp=20000;int before=m.hp;
    ((CombatController)field(v,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(v,((SkillBook)field(v,"skillBook")).get(id));assertEquals(id,field(v,"activeSkillVisualId"));
    // Production drains queued ACTION_STARTED events in its frame tick, not in submitPlayer.

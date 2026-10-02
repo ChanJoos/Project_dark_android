@@ -108,7 +108,7 @@ public class SkillWindowTest {
   @Test public void latestCaptureCorrectsStaffIntWisAndWarriorPrerequisitePair() {
     SkillBook b=SkillBook.load(context);RuntimeState r=new RuntimeState();SkillAcquisition a=new SkillAcquisition(b);
     r.rpg().restoreStats(3,3,6,3,3,0);assertFalse(a.learn("SK_공통_014",r.rpg()));
-    r.rpg().restoreStats(3,6,3,3,3,0);r.rpg().restoreGold(150);assertEquals(6,a.quote(b.get("SK_공통_014"),r.rpg()).required[1]);assertEquals(3,a.quote(b.get("SK_공통_014"),r.rpg()).required[2]);assertFalse(a.learn("SK_공통_014",r.rpg()));
+    r.rpg().restoreStats(3,6,3,3,3,0);r.rpg().restoreGold(150);assertEquals(6,a.quote(b.get("SK_공통_014"),r.rpg()).required[1]);assertEquals(3,a.quote(b.get("SK_공통_014"),r.rpg()).required[2]);assertTrue(a.learn("SK_공통_014",r.rpg()));assertEquals(0L,r.rpg().gold().longValue());assertTrue(b.learned("SK_공통_014"));
     assertTrue(b.captureConditions("SK_전사_009").contains("Required_Prerequisite_Level 90;90"));
   }
   @Test public void readonlySaveCannotChargeLearningOrChangeSlots() throws Exception {
