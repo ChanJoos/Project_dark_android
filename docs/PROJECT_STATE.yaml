@@ -165,10 +165,10 @@ work_packages:
     failed_predecessor: "V85 interiors/items user reports still unnatural; installed APK SHA unconfirmed"
     required_sources: [master/data/Item_Master.csv, master/data/Asset_Master.csv, master/changes/TOWN-INTERIORS-V86.json, docs/verification/TOWN_INTERIORS_V86_SOURCES.json, app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java]
     acceptance: ["merchant tap opens immediately without moving player", "NPC stands one tile farther from connected counter", "two independently activating portals on each measured double-tile door", "keyboard numeric quantity editing with range validation", "source-backed glove/legging/earring/ring FinalStats and visible details", "AI accessory crops no longer used; one consistent shop/inventory pixel symbol where original item crop is unavailable", "captured Excuranum stopper/alpha preserved", "four native room/shop captures plus exact-source CI APK"]
-    source_sha: "in progress"
-    build_verified: "pending CI"
-    native_verified: "pending CI and user visual acceptance"
-    remaining: "Exact original accessory inventory crop files absent from Asset_Master; physical phone keyboard and visual review pending"
+    source_sha: "20dadb73c65261b30820c205200f26baad854f07 (Actions 36990064690 SUCCESS; 45/45 stages)"
+    build_verified: "V86 debug APK generated; SHA-256 897447c42d47eaf6b18f95b2a7190be88208dc64f1aedc0b76885d49bd07034b"
+    native_verified: "Interaction and regression tests PASS; 16 native captures reviewed; VISUAL_ACCEPTED=NO"
+    remaining: "Master equipment slot audit: 23 rows, 7 runtime definitions, 6 sourced effects, 5 shop offers; original named accessory icons absent. Interiors need art/layout rework. Physical phone keyboard/touch acceptance pending. Naver screenshots are skill tables, not gear stat proof."
   SKILL_PRESENTATION_082:
     title: "User-reported martial kick mapping and Dara release timing repair"
     system: combat_presentation
