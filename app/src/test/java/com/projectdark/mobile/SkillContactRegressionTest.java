@@ -19,7 +19,7 @@ public class SkillContactRegressionTest {
    F5mSaveStore.install(c);GameView view=new GameView(c);view.layout(0,0,960,540);view.setSkillTestMode(true);
    RuntimeState state=field(view,"state");RuntimeState.Monster m=state.monsters().get(0);SkillActionContract.Rule rule=SkillActionContract.get(id);
    state.player().x=m.x-32*Math.max(1,rule.minReach);state.player().y=m.y-16*Math.max(1,rule.minReach);
-   if(id.equals("SK_성직자_040"))m.hp=1;int before=m.hp;
+   if(id.equals("SK_성직자_040"))m.hp=1;state.player().mp=20000;int before=m.hp;
    ((CombatController)field(view,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(view,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(view,((SkillBook)field(view,"skillBook")).get(id));
    Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);

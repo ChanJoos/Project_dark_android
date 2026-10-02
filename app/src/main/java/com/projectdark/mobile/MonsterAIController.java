@@ -110,6 +110,8 @@ public final class MonsterAIController {
 
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
+    if(state.skillEffects().disabled(m.id)){state.cancelMonsterAttack(m);tile.resetClock();return;}
+    if(state.skillEffects().hidden()||state.skillEffects().has(m.id,"AGGRO_RESET")){state.cancelMonsterAttack(m);tile.resetClock();return;}
     if(m.isMoving){tile.resetClock();return;}
     ensureCentered(state,m,tile);
     float dx=state.player().x-m.x;
@@ -127,7 +129,7 @@ public final class MonsterAIController {
     // Let the hit frame submit first; only pause pursuit while the attack recovery is still visible.
     if(m.attackVisualRemaining>0f){tile.resetClock();return;}
 
-    if(d<CHASE_RADIUS_B&&!meleeAdjacent){
+    if(d<CHASE_RADIUS_B&&!meleeAdjacent&&!state.skillEffects().rooted(m.id)){
       tile.stepClock+=Math.max(0f,dt);
       if(tile.stepClock+.00001f<MONSTER_STEP_SECONDS_B)return;
       tile.stepClock-=MONSTER_STEP_SECONDS_B;

@@ -86,7 +86,7 @@ public final class F5mSaveStore {
   private void writeRuntime(SharedPreferences.Editor edit){
     RuntimeState.Player p=runtime.player();
     edit.putString("map_id",runtime.currentMapId()).putFloat("player_x",p.x).putFloat("player_y",p.y)
-        .putInt("player_hp",p.alive?p.hp:0).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
+        .putString("skill_effects_v1",runtime.skillEffects().snapshot().toString()).putInt("player_hp",p.alive?p.hp:0).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
   }
   public static void restoreRuntimeActive(RuntimeState r){
     r.applyDerivedGrowth();
@@ -99,6 +99,8 @@ public final class F5mSaveStore {
     r.player().hp=Math.max(0,Math.min(r.player().maxHp,p.getInt("player_hp",r.player().hp)));
     r.player().mp=Math.max(0,Math.min(r.player().maxMp,p.getInt("player_mp",r.player().mp)));
     r.player().alive=r.player().hp>0;
+    String effectJson=p.getString("skill_effects_v1",null);if(effectJson!=null)try{if(!r.skillEffects().restore(new org.json.JSONObject(effectJson)))active.writable=false;}catch(Exception ex){active.writable=false;}
+
     long watermark=Math.max(p.getLong("ledger_sequence",0),r.rpg().consumedCombatSequence());
     watermark=Math.max(watermark,Math.max(p.getLong("quest_sequence",0),p.getLong("quest2_sequence",0)));
     r.ledger().restoreSequence(watermark);

@@ -33,7 +33,7 @@ public class SkillTestModeTest {
       if(e.id.equals("SK_마법사_012")){time(v,.11f);render(v,"skill-test-poison-caster.png");}tick(v,.15f);
       assertEquals(hp,m.hp);assertEquals(playerHp,s.player().hp);assertEquals(mp,s.player().mp);assertEquals("CAST",catalog.get(e.id).motion);
       if(e.id.equals("SK_마법사_012")){time(v,.26f);render(v,"skill-test-poison-target.png");}tick(v,.8f);idle(v);tested++;
-    }assertTrue(tested>50);assertEquals("f",catalog.profiles.getJSONObject("CAST").getString("group"));
+    }assertEquals("former preview-only active statuses now have runtime abilities",0,tested);assertEquals("f",catalog.profiles.getJSONObject("CAST").getString("group"));
     SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="성직자";w.selectedId="SK_성직자_029";render(v,"skill-test-cleric-all.png");
   }
   @Test public void productionSlotRegistrationPersistsOutsideNormalSaveAndToggleRestoresNormal()throws Exception{

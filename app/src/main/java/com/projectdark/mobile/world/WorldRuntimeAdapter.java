@@ -180,6 +180,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   /** Mirrors current RuntimeState player occupancy without making GameView know collision details. */
   @Override public boolean canPlayerOccupy(float x,float y){
+    if(runtime.skillEffects().rooted("player"))return false;
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
     for(RectF obstacle:sceneObstacles)if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;

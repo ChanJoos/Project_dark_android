@@ -103,7 +103,7 @@ public class MartialDefenseStarRegressionTest {
  }
  private GameView directed(String body,CharacterRenderer.Direction d)throws Exception{
   GameView v=fresh();((CanonicalActorFacing)field(v,"playerFacing")).setLocomotion(d);Field identity=GameView.class.getDeclaredField("characterBodyIdentity");identity.setAccessible(true);identity.set(v,body);
-  RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);m.hp=20000;s.player().hp=20000;for(RuntimeState.Monster other:s.monsters())other.attackCooldown=100f;
+  RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);m.hp=20000;s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=20000;s.player().mp=20000;for(RuntimeState.Monster other:s.monsters())other.attackCooldown=100f;
   float dx=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-32:32,dy=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-16:16;
   s.player().x=m.x-dx;s.player().y=m.y-dy;((CombatController)field(v,"combat")).selectTarget(m);
   ((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();return v;
@@ -152,7 +152,7 @@ public class MartialDefenseStarRegressionTest {
   int[] box=bounds(b);assertTrue(box[2]-box[0]>45);assertTrue(box[3]-box[1]>45);assertEquals(120,(box[0]+box[2])/2,2);
   write(b,"v80-star-visible-at-zero.png");
  }
- private GameView fresh(){c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);return v;}
+ private GameView fresh(){c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);try{((RuntimeState)field(v,"state")).player().mp=20000;}catch(Exception e){throw new AssertionError(e);}return v;}
  private static int[] bounds(Bitmap b){int[] r={b.getWidth(),b.getHeight(),-1,-1};for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if(Color.alpha(b.getPixel(x,y))>12){r[0]=Math.min(r[0],x);r[1]=Math.min(r[1],y);r[2]=Math.max(r[2],x);r[3]=Math.max(r[3],y);}assertTrue(r[2]>=0);return r;}
  private static void use(GameView v,String id)throws Exception{Method m=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);m.setAccessible(true);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();m.invoke(v,((SkillBook)field(v,"skillBook")).get(id));}
  private static void save(GameView v,String name)throws Exception{Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));write(b,"v80-live-"+name+".png");b.recycle();}

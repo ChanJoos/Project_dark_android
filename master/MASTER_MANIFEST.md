@@ -143,3 +143,6 @@ Preserve baseline. Source191777 explicitly categorizes Concentration as Warrior 
 
 ## M003 — user martial presentation correction
 Accepted USER-MARTIAL-KICK-RELEASE-V82.json corrects runtime pose projections; historical sheets/source bytes retained. Generator consumes reviewed decision CSV and corrected source-group profiles. No gameplay numeric changes.
+
+## V83 accepted project ability policy
+SKILL-ABILITIES-V83.json authorizes new per-ID formulas/status balance beside preserved source sheets. Consumer chain in docs/SKILL_ABILITY_CONTRACT.md. Original art and numerical/source snapshots remain unchanged;16 absent services are explicitly unresolved.

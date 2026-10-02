@@ -5194,7 +5194,7 @@
       "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "원작 대상/범위 미확정: 잘못된 타격과 이펙트를 출력하지 않음"
+      "note": "사용자 전체스킬 구현 요청: 선풍각 승급, 사방2칸 프로젝트 규칙; 원작 최대범위 미확정"
     },
     {
       "id": "SK_무도가_027",

@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 82
-        versionName '0.82-martial-kick-release'
+        versionCode 83
+        versionName '0.83-skill-abilities'
     }
     sourceSets {
         main {

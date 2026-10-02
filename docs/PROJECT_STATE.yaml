@@ -1,3 +1,13 @@
+# V83 active user request: skill formulas and real effects, continuing V82 candidate.
+# required_sources consumed: AGENTS.md, DIRECTOR_GUIDE, CHAT_HANDOFF, PROJECT_STATE,
+# DECISION_LOG, DIRECTOR_BACKLOG, development constitution, DATA_CONTRACT,
+# MASTER_MANIFEST, SOURCE_OF_TRUTH, Skill_Master, Skill_Damage_Model,
+# Skill_Formula_Research, Ultimate_Resource_Scaling, User_Confirmed_Skill_Facts,
+# supplied skills PDF, action decisions/catalog/learning policy,
+# SkillBook, GameView, CombatResolver, RuntimeCombatSession/PortAdapter,
+# RuntimeState, FinalStats, CombatStatPipeline, Defense/Element formula, F5mSaveStore.
+# Acceptance: source anchor equations, stat/gear scaling, 4-way spin quickslot,
+# resources once at release, statuses/effects/expiry/restore, exact CI and APK.
 schema_version: 1
 project:
   name: PROJECT DARK

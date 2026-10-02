@@ -182,7 +182,7 @@ final class SkillActionData {
     {"SK_무도가_023", "달마신공", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V_FRONT_MAX_UNRESOLVED_ADAPTED1", "전방의 적을 대상으로 하는 체력 소모 필살기(체력 30%를 상대방에게 데미지로 전달)- 이모탈, 버프등 영향 받지 않는 스킬 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음.", "기술"},
     {"SK_무도가_024", "연천단각", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "전방 인접 한 타일", "기술"},
     {"SK_무도가_025", "붕신선각", "ACTIVE", "AROUND", "1", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "시전자 둘레 여덟 타일; 자신 제외", "기술"},
-    {"SK_무도가_026", "파천각", "ACTIVE", "UNRESOLVED", "0", "0", "PRESENTATION", "1", "0.14", "UNRESOLVED", "원작 대상/범위 미확정: 잘못된 타격과 이펙트를 출력하지 않음", "기술"},
+    {"SK_무도가_026", "파천각", "ACTIVE", "CROSS", "2", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "PROJECT_ADAPTED_V83", "사용자 전체스킬 구현 요청: 선풍각 승급, 사방2칸 프로젝트 규칙; 원작 최대범위 미확정", "기술"},
     {"SK_무도가_027", "트리플펀치", "LINKED", "FRONT", "1", "1", "PRESENTATION", "3", "0.14", "V", "독립 시전이 아닌 기본공격 연동 추가 타격", "기술"},
     {"SK_무도가_028", "무영신공", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "같은 방향의 연속 세 타일", "기술"},
     {"SK_무도가_029", "자기보호", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "자기 대상", "기술"},
