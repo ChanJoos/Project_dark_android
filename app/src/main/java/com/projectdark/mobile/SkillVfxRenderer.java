@@ -35,7 +35,7 @@ final class SkillVfxRenderer {
       ClassicSkillReference.Channel channel=reference.channel(id,caster);if(channel==null)continue;
       // Capture anchor records the example's pivot, not who receives a live attack.
       SkillActionContract.Rule liveRule=SkillActionContract.get(id);
-      boolean martialRecipient=sourceSheet.equals("classic")&&id.startsWith("SK_무도가_")&&!caster&&liveRule!=null&&!liveRule.selfAnchored();
+      boolean martialRecipient=sourceSheet.equals("classic")&&id.startsWith("SK_무도가_")&&!caster&&liveRule!=null&&MartialCaptureRegistration.recipient(id,caster);
       String anchor=martialRecipient?e.targetId:channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor;
       if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
       float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
@@ -48,9 +48,19 @@ boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequenc
   }}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
   void draw(Canvas c,Anchors a){for(Pulse f:pulses){
-    if(f.sheet.equals("classic")||f.sheet.equals("rogue")||f.sheet.equals("warrior")||f.sheet.equals("shared")){ClassicSkillReference reference=f.sheet.equals("rogue")?rogue:f.sheet.equals("warrior")?warrior:f.sheet.equals("shared")?shared:classic;float x=a.x(f.anchor),y=a.y(f.anchor);ClassicSkillReference.Channel channel=reference.channel(f.id,f.caster);float cy=a.centerY(f.anchor),cx=a.centerX(f.anchor);if(Float.isFinite(channel.sequence.footOffsetY)){x=Float.isFinite(cx)?cx:f.x;y=(Float.isFinite(y)?y:f.y)+channel.sequence.footOffsetY;}else if(channel.sequence.visualCenter){x=Float.isFinite(cx)?cx:f.x;y=Float.isFinite(cy)?cy:f.y-25f;}else if(f.sheet.equals("classic")&&f.id.startsWith("SK_무도가_")){x=Float.isFinite(cx)?cx:f.x;y=Float.isFinite(y)?y:f.y;}else if(!channel.casterAnchor){float sourceLift=f.sheet.equals("classic")?16f:25f;y=(Float.isFinite(cy)?cy:f.y-25f)+sourceLift*channel.sequence.scale;x=Float.isFinite(cx)?cx:f.x;}SkillActionContract.Rule rule=SkillActionContract.get(f.id);
-      boolean directional=f.sheet.equals("classic")&&f.id.startsWith("SK_무도가_")&&!channel.sequence.visualCenter&&rule!=null&&!rule.selfAnchored();
-      if(directional)reference.drawDirected(c,channel,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y,f.directionX,f.directionY);else reference.draw(c,channel,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y);continue;}
+    if(f.sheet.equals("classic")||f.sheet.equals("rogue")||f.sheet.equals("warrior")||f.sheet.equals("shared")){ClassicSkillReference reference=f.sheet.equals("rogue")?rogue:f.sheet.equals("warrior")?warrior:f.sheet.equals("shared")?shared:classic;float x=a.x(f.anchor),y=a.y(f.anchor);ClassicSkillReference.Channel channel=reference.channel(f.id,f.caster);float cy=a.centerY(f.anchor),cx=a.centerX(f.anchor);
+      if(f.sheet.equals("classic")&&f.id.startsWith("SK_무도가_")&&!channel.sequence.visualCenter){
+        float[] foot=MartialCaptureRegistration.foot(f.id,f.caster);float px=foot[0],py=foot[1];
+        x=Float.isFinite(cx)?cx:f.x;y=Float.isFinite(y)?y:f.y;
+        boolean recipient=MartialCaptureRegistration.recipient(f.id,f.caster);
+        if(recipient&&!f.id.equals("SK_무도가_018")){py-=26f;y=Float.isFinite(cy)?cy:y-23f;}
+        if(f.id.equals("SK_무도가_010")){py=foot[1]-48f;float floor=a.y(f.anchor);y=Float.isFinite(cy)&&Float.isFinite(floor)?2*cy-floor:y-20f;}
+        // The yellow horizontal HP cursor in these two captures is UI, above the observed head.
+        int crop=f.id.equals("SK_무도가_015")||f.id.equals("SK_무도가_023")?63:0;
+        reference.drawRegistered(c,channel,f.age,x,y,px,py,recipient?f.directionX:0,recipient?f.directionY:0,MartialCaptureRegistration.projectile(f.id,f.caster),crop);continue;
+      }
+      if(Float.isFinite(channel.sequence.footOffsetY)){x=Float.isFinite(cx)?cx:f.x;y=(Float.isFinite(y)?y:f.y)+channel.sequence.footOffsetY;}else if(channel.sequence.visualCenter){x=Float.isFinite(cx)?cx:f.x;y=Float.isFinite(cy)?cy:f.y-25f;}else if(!channel.casterAnchor){float sourceLift=f.sheet.equals("classic")?16f:25f;y=(Float.isFinite(cy)?cy:f.y-25f)+sourceLift*channel.sequence.scale;x=Float.isFinite(cx)?cx:f.x;}
+      reference.draw(c,channel,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y);continue;}
     if(f.sheet.equals("impact")){float x=a.x(f.anchor),y=a.y(f.anchor);float cy=a.centerY(f.anchor);warrior.draw(c,warrior.damageImpact,f.age,Float.isFinite(x)?x:f.x,(Float.isFinite(cy)?cy:f.y-25f)+25f*warrior.damageImpact.sequence.scale);continue;}
     if(f.sheet.equals("capture")){float x=a.x(f.anchor),y=a.y(f.anchor);CapturedSkillFx.Sequence sequence=captured.get(f.id);if(sequence.contactMidpoint){float px=a.centerX("player"),py=a.centerY("player"),tx=a.centerX(f.anchor),ty=a.centerY(f.anchor);x=Float.isFinite(px)&&Float.isFinite(tx)?(px+tx)/2:f.x;y=Float.isFinite(py)&&Float.isFinite(ty)?(py+ty)/2:f.y;}else if(!sequence.directional){float cy=a.centerY(f.anchor);y=(Float.isFinite(cy)?cy:f.y-25f)+sequence.directionPivotLift*sequence.scale;}captured.drawDirected(c,p,f.id,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y,f.directionX,f.directionY);continue;}
     if(!f.caster&&f.row<0){SkillPresentationCatalog.Entry v=catalog.get(f.id);if(v!=null){float x=a.x(f.anchor),y=a.y(f.anchor);SkillEffectShapes.draw(c,p,v.target,Float.isFinite(x)?x:f.x,(Float.isFinite(a.centerY(f.anchor))?a.centerY(f.anchor):f.y-25f)+24f,f.age/f.duration);}continue;}
@@ -58,6 +68,9 @@ boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequenc
     float x=a.x(f.anchor),y=a.y(f.anchor);if(!Float.isFinite(x)||!Float.isFinite(y)){x=f.x;y=f.y;}
     float size=f.caster?58:f.sheet.equals("finisher-v65")?82:68,height=size*ch/(float)cw;float centerY=f.caster?y-23:(Float.isFinite(a.centerY(f.anchor))?a.centerY(f.anchor):y-25);p.setAlpha(Math.round(255*Math.min(1,(f.duration-f.age)/.10f)));
     if(f.sheet.equals("finisher-v65")&&f.row==1){ColorMatrix white=new ColorMatrix();white.setSaturation(0);p.setColorFilter(new ColorMatrixColorFilter(white));}
-    c.drawBitmap(b,new Rect(col*b.getWidth()/6,f.row*b.getHeight()/rows,(col+1)*b.getWidth()/6,(f.row+1)*b.getHeight()/rows),new RectF(x-size/2,centerY-height/2,x+size/2,centerY+height/2),p);p.setColorFilter(null);
+    boolean martialCast=f.caster&&f.id.startsWith("SK_무도가_")&&Math.abs(f.directionX)+Math.abs(f.directionY)>.001f;
+    if(martialCast){c.save();c.rotate((float)Math.toDegrees(Math.atan2(f.directionY,f.directionX)-Math.atan2(16,32)),x,centerY);}
+    c.drawBitmap(b,new Rect(col*b.getWidth()/6,f.row*b.getHeight()/rows,(col+1)*b.getWidth()/6,(f.row+1)*b.getHeight()/rows),new RectF(x-size/2,centerY-height/2,x+size/2,centerY+height/2),p);
+    if(martialCast)c.restore();p.setColorFilter(null);
   }p.setAlpha(255);}
 }

@@ -38,7 +38,7 @@ public class MartialHudAutoRegressionTest {
     if(rule.damage())assertTrue(entry.id+" actual target contact",target.hp<hp);
     for(SkillVfxRenderer.Pulse pulse:fx.pulses){
      if(pulse.sheet.equals("impact"))assertEquals("actual damage recipient",target.id,pulse.anchor);
-     if(pulse.sheet.equals("classic")){ClassicSkillReference.Channel channel=new ClassicSkillReference(c).channel(entry.id,pulse.caster);assertEquals(entry.id+" declared channel anchor",pulse.caster||rule.selfAnchored()?"player":target.id,pulse.anchor);}
+     if(pulse.sheet.equals("classic")){ClassicSkillReference.Channel channel=new ClassicSkillReference(c).channel(entry.id,pulse.caster);assertEquals(entry.id+" declared channel anchor",!MartialCaptureRegistration.recipient(entry.id,pulse.caster)?"player":target.id,pulse.anchor);}
     }
     crop(v,out,column*240,20);advance(v,.12f);crop(v,out,column*240,220);for(SkillVfxRenderer.Pulse pulse:fx.pulses)pulse.age=SkillFxAuditTest.sourcePeakAge(fx,pulse);crop(v,out,column*240,420);out.drawText(direction+" contact / +120ms / FX peak",column*240+8,14,label);column++;
    }
@@ -95,11 +95,34 @@ public class MartialHudAutoRegressionTest {
  @Test public void martialImpactsStayUprightAboveTheFootPivotWhenFacingNorthOrWest()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c);
   for(String id:reference.effects.keySet())if(id.startsWith("SK_무도가_")&&!SkillActionContract.get(id).selfAnchored()){
-   ClassicSkillReference.Channel channel=reference.channel(id,false);if(channel==null||channel.sequence.visualCenter)continue;
+   ClassicSkillReference.Channel channel=reference.channel(id,false);if(channel==null||channel.sequence.visualCenter||MartialCaptureRegistration.projectile(id,false))continue;
    Bitmap east=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888),north=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888),west=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888);
-   float age=channel.sequence.duration/2;reference.drawDirected(new Canvas(east),channel,age,200,200,32,16);reference.drawDirected(new Canvas(north),channel,age,200,200,32,-16);reference.drawDirected(new Canvas(west),channel,age,200,200,-32,-16);
+   float age=channel.sequence.duration/2;float[] foot=MartialCaptureRegistration.foot(id,false);reference.drawRegistered(new Canvas(east),channel,age,200,200,foot[0],foot[1],32,16,false,0);reference.drawRegistered(new Canvas(north),channel,age,200,200,foot[0],foot[1],32,-16,false,0);reference.drawRegistered(new Canvas(west),channel,age,200,200,foot[0],foot[1],-32,-16,false,0);
    int[] pixels=new int[160000],n=new int[160000],w=new int[160000];east.getPixels(pixels,0,400,0,0,400,400);north.getPixels(n,0,400,0,0,400,400);west.getPixels(w,0,400,0,0,400,400);
    assertArrayEquals(id+" upright north impact",pixels,n);for(int y=0;y<400;y++)for(int x=0;x<400;x++)assertEquals(id+" west preserves vertical foot registration",pixels[y*400+x],w[y*400+399-x]);east.recycle();north.recycle();west.recycle();
+  }
+ }
+
+ @Test public void genericMartialStartLayerPointsTowardTheAcceptedAttackInsteadOfAlwaysSoutheast()throws Exception{
+  for(float[] direction:new float[][]{{32,16},{-32,16},{32,-16},{-32,-16}}){
+   SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));SkillVfxRenderer.Anchors anchors=new SkillVfxRenderer.Anchors(){public float x(String id){return 200+(id.equals("player")?0:direction[0]);}public float y(String id){return 200+(id.equals("player")?0:direction[1]);}public float centerY(String id){return y(id)-23;}};
+   CombatResolver.Definition def=new CombatResolver.Definition("SK_무도가_001",CombatResolver.ActionKind.SKILL,CombatResolver.ActionState.SKILL,CombatResolver.EffectType.PHYSICAL_HIT,true,0,1,150,.14f,0);
+   fx.consume(Collections.singletonList(new CombatResolver.Event(1,1,CombatResolver.EventType.ACTION_STARTED,"player","monster",def,CombatResolver.InputMode.MANUAL,null,null,0)),anchors);assertEquals(1,fx.pulses.size());fx.pulses.get(0).age=.15f;
+   Bitmap b=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888);fx.draw(new Canvas(b),anchors);double total=0,cx=0,cy=0;for(int y=0;y<400;y++)for(int x=0;x<400;x++){int alpha=Color.alpha(b.getPixel(x,y));total+=alpha;cx+=alpha*x;cy+=alpha*y;}assertTrue(total>0);assertTrue("accepted direction",(cx/total-200)*direction[0]+(cy/total-177)*direction[1]>0);b.recycle();
+  }
+ }
+ @Test public void martialAreaContactsFollowActualMonstersAndTheirVisualHeight()throws Exception{
+  for(String id:new String[]{"SK_무도가_002","SK_무도가_014","SK_무도가_021","SK_무도가_023"}){
+   SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));SkillVfxRenderer.Anchors a=new SkillVfxRenderer.Anchors(){public float x(String actor){return actor.equals("player")?100:200;}public float y(String actor){return 200;}public float centerY(String actor){return 170;}};
+   CombatResolver.Definition def=new CombatResolver.Definition(id,CombatResolver.ActionKind.MAGIC,CombatResolver.ActionState.MAGIC,CombatResolver.EffectType.MAGIC_HIT,true,0,1,150,.14f,10);
+   fx.consume(Collections.singletonList(new CombatResolver.Event(2,2,CombatResolver.EventType.HIT_FEEDBACK,"player","monster",def,CombatResolver.InputMode.MANUAL,null,CombatResolver.HitSemantic.DAMAGE,10)),a);fx.pulses.removeIf(p->!p.sheet.equals("classic"));assertEquals(id,1,fx.pulses.size());assertEquals("monster",fx.pulses.get(0).anchor);fx.pulses.get(0).age=SkillFxAuditTest.sourcePeakAge(fx,fx.pulses.get(0));
+   SkillVfxRenderer.Anchors taller=new SkillVfxRenderer.Anchors(){public float x(String actor){return a.x(actor);}public float y(String actor){return 200;}public float centerY(String actor){return 182;}};
+   Bitmap before=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888),after=Bitmap.createBitmap(400,400,Bitmap.Config.ARGB_8888);fx.draw(new Canvas(before),a);fx.draw(new Canvas(after),taller);int visible=0;for(int y=0;y<388;y++)for(int x=0;x<400;x++){assertEquals(id,before.getPixel(x,y),after.getPixel(x,y+12));if(Color.alpha(before.getPixel(x,y))>0)visible++;}assertTrue(visible>0);before.recycle();after.recycle();
+  }
+ }
+ @Test public void rangedReleaseFacesTheActualMovingRecipientEvenWhenTheHitIsLethal()throws Exception{
+  for(String id:new String[]{"SK_무도가_011","SK_무도가_015","SK_무도가_020"}){
+   GameView view=directed(CharacterRenderer.Direction.SE);RuntimeState state=field(view,"state");RuntimeState.Monster target=state.monsters().get(0);target.hp=1;call(view,"useBookSkill",SkillBook.Entry.class,((SkillBook)field(view,"skillBook")).get(id));float contact=SkillActionContract.get(id).contact;advance(view,contact-.01f);target.x=state.player().x+32;target.y=state.player().y-16;advance(view,.011f);assertFalse(target.alive);assertEquals(id,CharacterRenderer.Direction.NE,((CanonicalActorFacing)field(view,"playerFacing")).presentation());
   }
  }
  static void save(Bitmap b,String name)throws Exception{File f=new File("build/reports/device-review/"+name);f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}}

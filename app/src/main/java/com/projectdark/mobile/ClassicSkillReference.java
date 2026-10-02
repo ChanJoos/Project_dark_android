@@ -27,12 +27,14 @@ final class ClassicSkillReference {
   private static JSONObject read(Context c,String path)throws Exception{return new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/"+path),StandardCharsets.UTF_8));}
   boolean has(String id){return effects.containsKey(id);}
   Channel channel(String id,boolean start){Map<String,Channel> channels=effects.get(id);return channels==null?null:channels.get(start?"CASTER_START":"RECIPIENT_CONTACT");}
-  void drawDirected(Canvas canvas,Channel channel,float age,float x,float y,float dx,float dy){
-    // Keep captured upright auras/impacts above their foot pivot. A full rotation
-    // around the feet would put NW impacts below the target or turn freeze cages sideways.
-    // The captured SE layer is reflected only for west-facing presentation.
-    if(dx>=0){draw(canvas,channel,age,x,y);return;}
-    canvas.save();canvas.scale(-1,1,x,y);draw(canvas,channel,age,x,y);canvas.restore();
+  void drawRegistered(Canvas canvas,Channel channel,float age,float x,float y,float pivotX,float pivotY,float dx,float dy,boolean projectile,int topCrop){
+    CapturedSkillFx.Sequence s=channel.sequence;int frame=s.frame(age),col=frame%s.columns,row=frame/s.columns;
+    canvas.save();
+    if(projectile&&Math.abs(dx)+Math.abs(dy)>.001f)canvas.rotate((float)Math.toDegrees(Math.atan2(dy,dx)-Math.atan2(13,28)),x,y);
+    else if(dx<0)canvas.scale(-1,1,x,y);
+    paint.setFilterBitmap(s.filterBitmap);paint.setXfermode(s.normalBlend?null:screen);
+    canvas.drawBitmap(s.atlas,new Rect(col*s.width,row*s.height+topCrop,(col+1)*s.width,(row+1)*s.height),new RectF(x-pivotX*s.scale,y+(topCrop-pivotY)*s.scale,x+(s.width-pivotX)*s.scale,y+(s.height-pivotY)*s.scale),paint);
+    paint.setXfermode(null);canvas.restore();
   }
   void draw(Canvas canvas,Channel channel,float age,float x,float y){CapturedSkillFx.Sequence s=channel.sequence;int frame=s.frame(age),col=frame%s.columns,row=frame/s.columns;paint.setFilterBitmap(s.filterBitmap);paint.setXfermode(s.normalBlend?null:screen);canvas.drawBitmap(s.atlas,new Rect(col*s.width,row*s.height,(col+1)*s.width,(row+1)*s.height),new RectF(x-s.pivotX*s.scale,y-s.pivotY*s.scale,x+(s.width-s.pivotX)*s.scale,y+(s.height-s.pivotY)*s.scale),paint);paint.setXfermode(null);}
 }
