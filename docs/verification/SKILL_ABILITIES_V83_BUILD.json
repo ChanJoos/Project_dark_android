@@ -1,0 +1,32 @@
+{
+  "sourceSha": "54780b98a276ca0c741c67e9b94aff8be4458a8f",
+  "checkoutSha": "552e884864126f44946763336b3664fddcd7e3eb",
+  "tree": "6f95b70bef02b24f5bb13339a81a4157b42f0769",
+  "runId": 36954125312,
+  "jobId": 110673189388,
+  "conclusion": "success",
+  "apkArtifactId": 11204983666,
+  "nativeArtifactId": 11205053316,
+  "apkSha256": "f396af5f278dfea89d82e36388532378af22da020f21d8a97ae9c2b808858760",
+  "apkBytes": 29158837,
+  "versionCode": 83,
+  "versionName": "0.83-skill-abilities",
+  "artifactUploadedAsiaSeoul": "2026-10-02T11:13:24+09:00",
+  "packagedAssetsMatched": 663,
+  "nativeImages": 681,
+  "nativeReview": [
+    "four V83 production spin images, four facings, all four neighbor damage popups"
+  ],
+  "phoneAcceptance": "PENDING",
+  "candidateBranch": "codex/original-skill-contract-v65",
+  "pr": 176,
+  "merged": false,
+  "coverage": {
+    "damage": 77,
+    "heal": 16,
+    "statusPolicies": 104,
+    "linkedPassive": 8,
+    "unsupportedServices": 16
+  },
+  "buildCompletedAsiaSeoul": "2026-10-02T11:13:21.911592+09:00"
+}
