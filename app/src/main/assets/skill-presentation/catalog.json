@@ -5184,7 +5184,7 @@
       "name": "파천각",
       "job": "무도가",
       "kind": "기술",
-      "motion": "IDLE",
+      "motion": "SPIN_KICK",
       "caster": "NONE",
       "target": "NONE",
       "targetSheet": "target",

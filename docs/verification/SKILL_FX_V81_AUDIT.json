@@ -639,7 +639,7 @@
       "id": "SK_전사_021",
       "name": "돌진",
       "job": "전사",
-      "standalonePresentationAllowed": false,
+      "standalonePresentationAllowed": true,
       "runtimeBranch": "warrior",
       "sourceCandidates": [
         "warrior"
@@ -664,8 +664,7 @@
       ],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
-        "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",
@@ -5722,14 +5721,13 @@
       "id": "SK_무도가_026",
       "name": "파천각",
       "job": "무도가",
-      "standalonePresentationAllowed": false,
+      "standalonePresentationAllowed": true,
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "NO_DECLARED_PARTICLE",
-        "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
+        "NO_DECLARED_PARTICLE"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",

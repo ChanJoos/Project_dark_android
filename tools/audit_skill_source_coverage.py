@@ -13,10 +13,11 @@ for directory in ['classic','rogue','warrior','shared']:
 # Finisher manifest uses a separately retained capture importer.
 finisher=json.loads((ASSETS/'skill-presentation/captured/manifest.json').read_text()) if (ASSETS/'skill-presentation/captured/manifest.json').exists() else {}
 for sid in finisher.get('skills',{}):effects.setdefault(sid,'captured:RECIPIENT_CONTACT_CASTER_REGISTERED')
+abilities={r["id"]:r for r in json.loads((ASSETS/"skills/abilities.json").read_text())}
 rows=[]
 for entry in catalog:
- sid=entry['id'];d=decisions[sid];mechanic=d['mechanic'];eligible=d['mode']=='ACTIVE' and mechanic!='PRESENTATION'
- rows.append(dict(id=sid,name=entry['name'],job=entry['job'],kind=entry['kind'],sourceIcon='RETAINED' if sid in icons else 'MISSING_VERIFIED_BINDING',body='SOURCE_PIXELS_PROJECT_SELECTION:'+d['motion'],sourceChannel=effects.get(sid,'REVIEWED_NO_PARTICLE' if sid in noFx else 'OTHER_CAPTURE_OR_ADAPTED_UNRESOLVED'),mechanic='ADAPTED_DAMAGE_HEAL' if eligible else 'PRESENTATION_OR_SERVICE_PENDING',device='PENDING',originalVisualAcceptance='PENDING'))
+ sid=entry['id'];d=decisions[sid];mechanic=d['mechanic'];ability=abilities[sid];eligible=ability['kind'] in ['DAMAGE','HEAL']
+ rows.append(dict(id=sid,name=entry['name'],job=entry['job'],kind=entry['kind'],sourceIcon='RETAINED' if sid in icons else 'MISSING_VERIFIED_BINDING',body='SOURCE_PIXELS_PROJECT_SELECTION:'+d['motion'],sourceChannel=effects.get(sid,'REVIEWED_NO_PARTICLE' if sid in noFx else 'OTHER_CAPTURE_OR_ADAPTED_UNRESOLVED'),mechanic='ADAPTED_DAMAGE_HEAL' if eligible else 'IMPLEMENTED_STATUS_TARGET_REQUIRED' if ability['kind']=='STATUS' else 'LINKED_PASSIVE' if ability['kind']=='PASSIVE' else 'SERVICE_PENDING',device='PENDING',originalVisualAcceptance='PENDING'))
 p=ROOT/'docs/SKILL_SOURCE_COVERAGE.csv'
 with p.open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator='\n');w.writeheader();w.writerows(rows)
-print('Catalog:',len(rows),'source icons:',sum(r['sourceIcon']=='RETAINED' for r in rows),'adapted damage/heal:',sum(r['mechanic']=='ADAPTED_DAMAGE_HEAL' for r in rows),'remaining service/presentation:',sum(r['mechanic']=='PRESENTATION_OR_SERVICE_PENDING' for r in rows))
+print('Catalog:',len(rows),'source icons:',sum(r['sourceIcon']=='RETAINED' for r in rows),'adapted damage/heal:',sum(r['mechanic']=='ADAPTED_DAMAGE_HEAL' for r in rows),'status handlers:',sum(r['mechanic']=='IMPLEMENTED_STATUS_TARGET_REQUIRED' for r in rows),'linked/passive:',sum(r['mechanic']=='LINKED_PASSIVE' for r in rows),'remaining services:',sum(r['mechanic']=='SERVICE_PENDING' for r in rows))
