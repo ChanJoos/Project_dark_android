@@ -96,6 +96,7 @@ public class SkillAbilityRuntimeTest {
  @Test public void allSupportedStatusesAreReachableThroughProductionEffectDispatch()throws Exception{
   for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.kind.equals("STATUS")){
    RuntimeState s=state();RuntimeCombatSession c=session(s);SkillActionContract.Rule r=SkillActionContract.get(a.id);
+   if(r.minReach>1){s.monsters().get(0).x=32*r.minReach;s.monsters().get(0).y=16*r.minReach;}
    if(a.status.equals("BASIC"))continue;
    if(a.status.equals("TRANSFER")){assertFalse(c.submitPlayer("player",a.id).accepted());continue;}
    if(r.presentationAllowed()){

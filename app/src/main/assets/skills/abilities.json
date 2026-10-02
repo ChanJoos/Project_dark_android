@@ -65,7 +65,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_ROOT"
+    "description": "이동불가(바투) 해제 · 10초"
   },
   {
     "id": "SK_전사_005",
@@ -116,7 +116,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "ROOT"
+    "description": "이동 불가. 기술/마법/아이템 사용은 가능 · 12초"
   },
   {
     "id": "SK_전사_008",
@@ -150,7 +150,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "DRAGON"
+    "description": "DAM+4, HIT+10; 지속 중 체력 감소 · 14초"
   },
   {
     "id": "SK_전사_010",
@@ -167,7 +167,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "PHOENIX"
+    "description": "드래곤모드의 상위 모드. 습득 시 드래곤모드는 삭제/대체된다. DAM/HIT 상승량은 드래곤모드의 2배이며, 지속 중 HP 감소는 드래곤모드와 동일한 방식. · 14초"
   },
   {
     "id": "SK_전사_011",
@@ -184,7 +184,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "DISARM"
+    "description": "상대 무기 장착 해제 · 14초"
   },
   {
     "id": "SK_전사_012",
@@ -201,7 +201,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TAUNT"
+    "description": "몬스터의 공격 대상을 자신으로 유도 · 8초"
   },
   {
     "id": "SK_전사_013",
@@ -235,7 +235,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "PHYSICAL_GUARD"
+    "description": "물리/기술 공격 방어; 마법 공격은 방어하지 않음 · 16초"
   },
   {
     "id": "SK_전사_015",
@@ -303,7 +303,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "FOCUS"
+    "description": "매드소울/크래셔 계열 위력 증가 · 18초"
   },
   {
     "id": "SK_전사_019",
@@ -320,7 +320,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "ROOT"
+    "description": "광역 바투 · 18초"
   },
   {
     "id": "SK_전사_020",
@@ -422,7 +422,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INSPECT"
+    "description": "몬스터 정보 확인. 숙련도가 오를수록 이름/EXP→HP→공격속성→방어속성까지 확인 가능. · 8초"
   },
   {
     "id": "SK_도적_003",
@@ -456,7 +456,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "PUSH"
+    "description": "대상을 밀어 이동시킴 · 10초"
   },
   {
     "id": "SK_도적_005",
@@ -473,7 +473,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "RESET_AGGRO"
+    "description": "몬스터의 인식을 초기화/타겟 해제 · 10초"
   },
   {
     "id": "SK_도적_006",
@@ -490,7 +490,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "BLIND"
+    "description": "연막탄 아이템을 소비해 광역 시야 방해 · 10초"
   },
   {
     "id": "SK_도적_007",
@@ -541,7 +541,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INSPECT"
+    "description": "상대 플레이어의 소지 아이템을 확인하는 기술. · 12초"
   },
   {
     "id": "SK_도적_010",
@@ -558,7 +558,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INSPECT"
+    "description": "유저의 HP/MP 등 정보를 확인. 센스몬스터의 플레이어 대상 버전. · 12초"
   },
   {
     "id": "SK_도적_011",
@@ -575,7 +575,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "STEALTH"
+    "description": "은신 · 12초"
   },
   {
     "id": "SK_도적_012",
@@ -592,7 +592,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "FIND_TRAP"
+    "description": "낮은 등급의 함정을 탐지/표시. · 12초"
   },
   {
     "id": "SK_도적_013",
@@ -609,7 +609,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "EVASION"
+    "description": "물리 공격 회피율을 높이는 버프. · 12초"
   },
   {
     "id": "SK_도적_014",
@@ -660,7 +660,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INSPECT"
+    "description": "하이드/하이더 탐지 · 14초"
   },
   {
     "id": "SK_도적_017",
@@ -677,7 +677,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "FIND_TRAP"
+    "description": "함정찾기1의 상위 탐지 마법. 승급자 사냥터급 함정 탐지에 사용. · 14초"
   },
   {
     "id": "SK_도적_018",
@@ -694,7 +694,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_TRAP"
+    "description": "함정 해체 · 14초"
   },
   {
     "id": "SK_도적_019",
@@ -711,7 +711,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "ARMOR_BREAK"
+    "description": "갑옷 장착 효과 해제/무효화 계열 · 16초"
   },
   {
     "id": "SK_도적_020",
@@ -813,7 +813,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TRAP"
+    "description": "함정 설치 · 18초"
   },
   {
     "id": "SK_도적_026",
@@ -830,7 +830,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "STEALTH"
+    "description": "상위 은신 마법. 하이드/하이더 계열 은신 상태를 형성. · 18초"
   },
   {
     "id": "SK_도적_027",
@@ -915,7 +915,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TRAP"
+    "description": "설치형 트랩을 습득하며 기본공격 추가타 1회를 부여하는 구조가 확인됨. · 20초"
   },
   {
     "id": "SK_마법사_001",
@@ -949,7 +949,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE20"
+    "description": "1단계 방어 저주; 자료상 AC+20 · 10초"
   },
   {
     "id": "SK_마법사_003",
@@ -1017,7 +1017,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "RESET_AGGRO"
+    "description": "몬스터의 공격 타겟/인식을 혼란·초기화하는 마법. 아무네지아와 유사한 역할. · 10초"
   },
   {
     "id": "SK_마법사_007",
@@ -1102,7 +1102,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE35"
+    "description": "2단계 저주. AC +35, 마법방어 -10%. · 12초"
   },
   {
     "id": "SK_마법사_012",
@@ -1119,7 +1119,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "POISON"
+    "description": "지속 중독 피해 · 18초"
   },
   {
     "id": "SK_마법사_013",
@@ -1204,7 +1204,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "SLEEP"
+    "description": "정지/행동 제한 계열 마법 · 12초"
   },
   {
     "id": "SK_마법사_018",
@@ -1306,7 +1306,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "BLIND"
+    "description": "시야 감소/실명 · 14초"
   },
   {
     "id": "SK_마법사_024",
@@ -1323,7 +1323,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE50"
+    "description": "3단계 저주; 자료상 AC+50, 마법방어 감소 · 14초"
   },
   {
     "id": "SK_마법사_025",
@@ -1340,7 +1340,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "FREEZE"
+    "description": "동결 상태 부여 · 14초"
   },
   {
     "id": "SK_마법사_026",
@@ -1561,7 +1561,7 @@
     "allMp": true,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "DEATH_POISON"
+    "description": "상급 중독 계열. 시전 시 MP가 0이 되며 뮤레칸의눈물 시약을 요구하는 구 규칙이 확인됨. 해골 틱마다 대상 체력의 약 5% 소모 자료. · 16초"
   },
   {
     "id": "SK_마법사_039",
@@ -1663,7 +1663,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "ELEMENT_BOOST"
+    "description": "속성 상성 효과를 강화 · 18초"
   },
   {
     "id": "SK_마법사_045",
@@ -1680,7 +1680,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "ARMOR20"
+    "description": "방어력 증가. 자료상 AC -20 · 18초"
   },
   {
     "id": "SK_마법사_046",
@@ -1697,7 +1697,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE70"
+    "description": "최상위 저주; 자료상 AC+70 및 마법방어 감소 · 20초"
   },
   {
     "id": "SK_마법사_047",
@@ -1714,7 +1714,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE20"
+    "description": "단일 저주. AC +20, 마법방어 0%. 지속시간은 일반 렌토 계열보다 짧은 순수승급 버전. · 20초"
   },
   {
     "id": "SK_마법사_048",
@@ -1731,7 +1731,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE35"
+    "description": "단일 저주. AC +35, 마법방어 -10%. · 20초"
   },
   {
     "id": "SK_마법사_049",
@@ -1748,7 +1748,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE50"
+    "description": "단일 저주. AC +50, 마법방어 -20%. · 20초"
   },
   {
     "id": "SK_마법사_050",
@@ -1765,7 +1765,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE65"
+    "description": "단일 저주. AC +65, 마법방어 -30%. · 20초"
   },
   {
     "id": "SK_마법사_051",
@@ -1782,7 +1782,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TECH_MAGIC_GUARD"
+    "description": "마법/기술 방어 계열 토글 · 20초"
   },
   {
     "id": "SK_마법사_052",
@@ -1799,7 +1799,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "PHYSICAL_GUARD"
+    "description": "기술공격 완전 방어 계열 토글 · 20초"
   },
   {
     "id": "SK_성직자_001",
@@ -1833,7 +1833,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TRANSFER"
+    "description": "자신의 HP를 소모해 주변 인원의 HP를 회복. 사용자 기억상 회복량은 대상 체력의 약 10% 수준. · 8초"
   },
   {
     "id": "SK_성직자_003",
@@ -1850,7 +1850,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE20"
+    "description": "렌토 해제 · 8초"
   },
   {
     "id": "SK_성직자_004",
@@ -1867,7 +1867,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "HIT10"
+    "description": "명중/HIT 증가 계열 축복 · 10초"
   },
   {
     "id": "SK_성직자_005",
@@ -1901,7 +1901,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE35"
+    "description": "바르도 해제 · 10초"
   },
   {
     "id": "SK_성직자_007",
@@ -1935,7 +1935,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_POISON"
+    "description": "베노미 해제 · 10초"
   },
   {
     "id": "SK_성직자_009",
@@ -1952,7 +1952,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "DAM4"
+    "description": "DAM 증가 계열 축복 · 10초"
   },
   {
     "id": "SK_성직자_011",
@@ -1986,7 +1986,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE35"
+    "description": "2단계 저주. AC +35, 마법방어 -10%. · 10초"
   },
   {
     "id": "SK_성직자_013",
@@ -2020,7 +2020,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE50"
+    "description": "데프레코/데프레타 저주 해제. · 12초"
   },
   {
     "id": "SK_성직자_015",
@@ -2054,7 +2054,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "REGEN"
+    "description": "체력 재생력 향상 · 12초"
   },
   {
     "id": "SK_성직자_017",
@@ -2071,7 +2071,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "SHIELD"
+    "description": "보호/방어 계열 마법 · 12초"
   },
   {
     "id": "SK_성직자_018",
@@ -2088,7 +2088,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "ARMOR10"
+    "description": "갑옷무장. 자료상 AC -10 · 12초"
   },
   {
     "id": "SK_성직자_019",
@@ -2105,7 +2105,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "HIT20"
+    "description": "벨라르모 상위 HIT 버프 · 12초"
   },
   {
     "id": "SK_성직자_020",
@@ -2173,7 +2173,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE65"
+    "description": "프라보/프라베라 저주 해제. · 14초"
   },
   {
     "id": "SK_성직자_024",
@@ -2224,7 +2224,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_FREEZE"
+    "description": "소루마(동결) 해제. · 14초"
   },
   {
     "id": "SK_성직자_027",
@@ -2258,7 +2258,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "PROTECT"
+    "description": "받는 피해 감소 보호 마법 · 14초"
   },
   {
     "id": "SK_성직자_029",
@@ -2275,7 +2275,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INVINCIBLE"
+    "description": "무적/보호 계열 · 18초"
   },
   {
     "id": "SK_성직자_030",
@@ -2292,7 +2292,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "RESCUE"
+    "description": "코마 상태 구조/회복 계열 핵심 마법 · 16초"
   },
   {
     "id": "SK_성직자_031",
@@ -2309,7 +2309,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_ALL"
+    "description": "다수 마법 효과 해제; 이로운 효과도 해제될 수 있음 · 16초"
   },
   {
     "id": "SK_성직자_032",
@@ -2360,7 +2360,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "REFLECT_MAGIC"
+    "description": "마법공격 반사 계열 · 16초"
   },
   {
     "id": "SK_성직자_035",
@@ -2377,7 +2377,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "DAM8"
+    "description": "에나르마 상위 DAM 버프 · 18초"
   },
   {
     "id": "SK_성직자_036",
@@ -2394,7 +2394,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "HIT30"
+    "description": "수페라벨라르모 상위 HIT 버프 · 18초"
   },
   {
     "id": "SK_성직자_037",
@@ -2411,7 +2411,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "MAGIC_GUARD"
+    "description": "마법 회피/방어 증가 계열 · 18초"
   },
   {
     "id": "SK_성직자_038",
@@ -2428,7 +2428,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "BLESS_ALL"
+    "description": "그룹원에게 호르라마/콜라마/엑스벨라룸/수페라에나르마 계열 일괄 부여 · 18초"
   },
   {
     "id": "SK_성직자_039",
@@ -2445,7 +2445,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE70"
+    "description": "어둠의각인 해제 · 18초"
   },
   {
     "id": "SK_성직자_040",
@@ -2479,7 +2479,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE20"
+    "description": "렌토/렌티아 계열 해제 · 20초"
   },
   {
     "id": "SK_성직자_042",
@@ -2496,7 +2496,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE35"
+    "description": "바르도/바르데아 계열 해제 · 20초"
   },
   {
     "id": "SK_성직자_043",
@@ -2513,7 +2513,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE50"
+    "description": "데프레코/데프레타 계열 해제 · 20초"
   },
   {
     "id": "SK_성직자_044",
@@ -2530,7 +2530,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE65"
+    "description": "프라보/프라베라 계열 해제 · 20초"
   },
   {
     "id": "SK_성직자_045",
@@ -2547,7 +2547,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_CURSE70"
+    "description": "어둠의각인 계열 해제 · 20초"
   },
   {
     "id": "SK_성직자_046",
@@ -2564,7 +2564,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_BLIND"
+    "description": "딜루메니 해제 · 20초"
   },
   {
     "id": "SK_성직자_047",
@@ -2581,7 +2581,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_SLEEP"
+    "description": "나르콜리 해제 · 20초"
   },
   {
     "id": "SK_성직자_048",
@@ -2598,7 +2598,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_POISON"
+    "description": "베노미 해제 · 20초"
   },
   {
     "id": "SK_성직자_049",
@@ -2615,7 +2615,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_FREEZE"
+    "description": "소루마 해제 · 20초"
   },
   {
     "id": "SK_무도가_001",
@@ -2666,7 +2666,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "LEAP"
+    "description": "대상을 뛰어넘어 뒤로 이동 · 10초"
   },
   {
     "id": "SK_무도가_004",
@@ -2683,7 +2683,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "EVASION"
+    "description": "회피율 증가 계열 · 10초"
   },
   {
     "id": "SK_무도가_005",
@@ -2751,7 +2751,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "SPEED"
+    "description": "이동속도 증가 의도. 현재/버전별 실제 효과 차이 자료 존재 · 12초"
   },
   {
     "id": "SK_무도가_009",
@@ -2785,7 +2785,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "BLIND"
+    "description": "대상에게 실명/딜루메니 효과 · 12초"
   },
   {
     "id": "SK_무도가_011",
@@ -2819,7 +2819,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "REGEN"
+    "description": "체력 재생력 향상 · 12초"
   },
   {
     "id": "SK_무도가_013",
@@ -2836,7 +2836,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "ARMOR10"
+    "description": "자기무장. 자료상 AC -10 · 12초"
   },
   {
     "id": "SK_무도가_014",
@@ -2887,7 +2887,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INVINCIBLE"
+    "description": "무적 마법. 구 팬자료 기준 약 9초 유지, 전딜/후딜 없음. 실패 가능성 및 MP200 자료 존재. · 9초"
   },
   {
     "id": "SK_무도가_017",
@@ -2938,7 +2938,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "BASIC_POWER"
+    "description": "기본공격 강화. 구 테스트 자료에서 일정 확률로 기본공격 2배 대미지. · 14초"
   },
   {
     "id": "SK_무도가_020",
@@ -2989,7 +2989,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "REFLECT_TECH"
+    "description": "반탄/반격 계열 기술 · 16초"
   },
   {
     "id": "SK_무도가_023",
@@ -3108,7 +3108,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "PROTECT"
+    "description": "호르라마와 같은 보호 계열 · 18초"
   },
   {
     "id": "SK_공통_001",
@@ -3125,7 +3125,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "BASIC"
+    "description": "기본 공격 · 8초"
   },
   {
     "id": "SK_공통_002",
@@ -3142,7 +3142,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "DOOR"
+    "description": "건물 문 열기 · 8초"
   },
   {
     "id": "SK_공통_003",
@@ -3159,7 +3159,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INSPECT"
+    "description": "타일 위 아이템·골드·몬스터·유저 확인 · 8초"
   },
   {
     "id": "SK_공통_004",
@@ -3176,7 +3176,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "INSPECT"
+    "description": "아이템 능력치 감정 · 8초"
   },
   {
     "id": "SK_공통_005",
@@ -3193,7 +3193,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "REST"
+    "description": "초당 HP 200 회복 · 8초"
   },
   {
     "id": "SK_공통_006",
@@ -3346,7 +3346,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "DOOR"
+    "description": "자물쇠 열기 · 8초"
   },
   {
     "id": "SK_성직자_050",
@@ -3363,7 +3363,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TRAVEL"
+    "description": "국적 내 임의 마을 여관으로 이동 · 10초"
   },
   {
     "id": "SK_성직자_051",
@@ -3414,7 +3414,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_SLEEP"
+    "description": "나르콜리 해제 · 12초"
   },
   {
     "id": "SK_성직자_054",
@@ -3431,7 +3431,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_BLIND"
+    "description": "딜루메니 해제 · 12초"
   },
   {
     "id": "SK_성직자_055",
@@ -3448,7 +3448,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CHANGE_ELEMENT"
+    "description": "몬스터 속성 변경 · 16초"
   },
   {
     "id": "SK_성직자_056",
@@ -3499,7 +3499,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CURSE65"
+    "description": "저주 마법; 정확 효과 수치는 대조 필요 · 14초"
   },
   {
     "id": "SK_무도가_030",
@@ -3516,7 +3516,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_BLIND"
+    "description": "딜루메니 해제 · 10초"
   },
   {
     "id": "SK_무도가_031",
@@ -3533,7 +3533,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_POISON"
+    "description": "베노미 해제 · 10초"
   },
   {
     "id": "SK_마법사_054",
@@ -3567,7 +3567,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "STAFF"
+    "description": "스태프 사용 기술로 표에 기재 · 10초"
   },
   {
     "id": "SK_도적_033",
@@ -3584,7 +3584,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "CLEAR_TRAP"
+    "description": "상자 트랩 해체 · 10초"
   },
   {
     "id": "SK_도적_034",
@@ -3686,7 +3686,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TRAVEL"
+    "description": "국적 내 임의 마을 여관으로 이동 · 10초"
   },
   {
     "id": "SK_마법사_056",
@@ -3737,7 +3737,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "SPEED"
+    "description": "이동속도를 높힌다. (Speed+20%) · 12초"
   },
   {
     "id": "SK_무도가_034",
@@ -3754,6 +3754,6 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "TRAVEL"
+    "description": "소속된 국적의여관으로 순간이동 · 14초"
   }
 ]

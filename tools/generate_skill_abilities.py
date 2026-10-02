@@ -72,8 +72,7 @@ for e in cat:
  duration=9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
  if kind=='HEAL':desc=f'회복 = round((WIS×5 + INT×1.5 + Lv×2)×{coef}); 최대 HP까지'
  elif kind=='DAMAGE':desc={'PHYSICAL':'(8+STR×3+DAM)','ROGUE':'(8+STR×1.8+DEX×2.2+DAM)','MARTIAL':'(8+sqrt(STR×CON)×4+DAM)','MAGIC':'(8+INT×4+WIS+Lv×1.5)','BASIC':'(8+STR×3+DAM)'}.get(formula,formula)+f' × {coef}'
- else:desc=status or ('기본공격/장착 연동' if kind=='PASSIVE' else '대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음')
- if formula in anchors.values():pass
+ else:desc=(e['effect']+f' · {duration}초') if status else ('기본공격/장착 연동' if kind=='PASSIVE' else '대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음')
  exact={'CRASH':f'최대HP × {coef}; 현재HP ≤ 최대HP의2%', 'SOUL':f'현재HP × {coef}; HP90% 소모', 'ASSASSIN':'현재HP × 0.6336 / 강타25%: ×1.69', 'ASSASSIN_PLUS':'현재HP ×0.95 / 강타25%: ×3.5', 'SEMELIA':'max(0, MP-3240) ×1.815', 'METEOR':'max(0, MP-12960) ×1.815', 'RAGNAROK':'MP ×0.454', 'DARA':'max(0, HP+MP-1440) ×3.38', 'DALMA':'현재HP ×0.30; 방어/속성/무적 무시', 'HP_BURST':f'현재HP ×{coef}', 'MP_BURST':f'MP ×{coef}'}
  if formula in exact:desc=exact[formula]
  rows.append(dict(id=e['id'],name=n,job=e['job'],circle=c,kind=kind,formula=formula,coefficient=coef,status=status,mpCost=cost,cooldown=cd,duration=duration,allMp=allmp,evidence=evidence,source=source,description=desc))

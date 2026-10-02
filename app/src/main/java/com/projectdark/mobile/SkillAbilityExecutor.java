@@ -90,6 +90,7 @@ final class SkillAbilityExecutor {
   if(applied<=0)return;RuntimeState.Monster m=SkillEffectState.monster(state,target);
   if(a.status.equals("POISON_HIT"))fx.put(target,a.id,"POISON",Math.max(1,applied/8),8);
   if(a.status.equals("FREEZE_HIT")){fx.put(target,a.id,"FREEZE",1,10);if(m!=null){state.cancelMonsterAttack(m);m.isMoving=false;}}
+  if(a.status.equals("CHARGE")&&m!=null&&movement!=null){float dx=m.x-state.player().x,dy=m.y-state.player().y;int d=SkillActionContract.distance(state.player().x,state.player().y,m.x,m.y);if(d>1&&d<6)movement.movePlayer(m.x-dx/d,m.y-dy/d);}
   if(a.status.equals("DRAIN"))state.player().hp=Math.min(state.player().maxHp,state.player().hp+applied);
   if(a.name.equals("기습")||a.name.equals("습격진"))fx.put(target,a.id,"CURSE",20,10);
  }

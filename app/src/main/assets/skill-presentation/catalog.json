@@ -2481,7 +2481,7 @@
       "name": "돌진",
       "job": "전사",
       "kind": "기술",
-      "motion": "IDLE",
+      "motion": "SWING",
       "caster": "NONE",
       "target": "NONE",
       "targetSheet": "target",
@@ -2491,7 +2491,7 @@
       "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "원작 전방5칸 돌진 확인. 충돌/착지 규칙 확인 및 이동 서비스 구현 전에는 제자리 가짜 공격을 출력하지 않음."
+      "note": "V83 전방 최대5칸 공격과 적 앞의 빈 타일까지 이동. 전체 경로 타일/충돌 검사, 막힌 경로는 이동하지 않음. 원작 착지 연출은 미확정."
     },
     {
       "id": "SK_전사_022",
