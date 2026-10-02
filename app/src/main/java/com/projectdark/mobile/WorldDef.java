@@ -43,14 +43,14 @@ public final class WorldDef {
     blockers=Collections.unmodifiableList(b);
 
     List<NpcSpawn> n=new ArrayList<>();
-    n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",665f,615f,"밀레스 탐색/대화 루프 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",633.0f,599.0f,"밀레스 탐색/대화 루프 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
     // Field travel belongs at the player's first readable decision point, not at a remote map edge.
     // One canonical diagonal step from the initial spawn keeps the NPC visible without blocking spawn occupancy.
-    // Place the guide one legal isometric step from the Milles spawn so the forest route reads immediately.
-    n.add(new NpcSpawn("pote_travel_guide","포테의 숲 이동 안내인",652f,576f,"포테의 숲으로 이동하시겠습니까?",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_gate_proto","남문 안내 지점 [B]",790f,1450f,"확장 남문 접근 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",285f,705f,"확장 마을 서부 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1900f,820f,"확장 동부 시장 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
+    // Keep outdoor NPCs one isometric step northwest of their prior anchors.
+    n.add(new NpcSpawn("pote_travel_guide","포테의 숲 이동 안내인",620.0f,560.0f,"포테의 숲으로 이동하시겠습니까?",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_gate_proto","남문 안내 지점 [B]",758.0f,1434.0f,"확장 남문 접근 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",253.0f,689.0f,"확장 마을 서부 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1868.0f,804.0f,"확장 동부 시장 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
     npcSpawns=Collections.unmodifiableList(n);
 
     List<MonsterSpawn> m=new ArrayList<>();

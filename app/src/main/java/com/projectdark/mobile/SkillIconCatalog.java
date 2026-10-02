@@ -43,6 +43,12 @@ final class SkillIconCatalog {
     if(windowSkin.draw(c,id,dest))return true;
     Bitmap image=presentation.get(id);if(image==null)return false;paint.setFilterBitmap(true);c.drawBitmap(image,null,dest,paint);return true;
   }
+  boolean drawQuickslot(Canvas c,String id,RectF dest){
+    Path clip=new Path();clip.addRoundRect(dest,3,3,Path.Direction.CW);c.save();c.clipPath(clip);
+    boolean result=windowSkin.drawContent(c,id,dest);
+    if(!result){Bitmap image=presentation.get(id);if(image!=null){int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));paint.setFilterBitmap(false);c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),dest,paint);result=true;}}
+    c.restore();return result;
+  }
   boolean has(String id){return index.containsKey(id);}
   boolean draw(Canvas canvas,String id,RectF dest){
     Integer i=index.get(id);if(i==null)return false;

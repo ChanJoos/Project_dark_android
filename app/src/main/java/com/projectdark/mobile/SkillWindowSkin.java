@@ -23,6 +23,7 @@ final class SkillWindowSkin {
   JSONObject capturedDetails(String id){return capturedDetails.optJSONObject(id);}
   int promotionOrder(String id){int index=roguePromotionOrder.indexOf(id);return index<0?99:index;}
   boolean draw(Canvas c,String key,RectF rect){Bitmap image=images.get(key);if(image==null)return false;c.drawBitmap(image,null,rect,paint);return true;}
+  boolean drawContent(Canvas c,String key,RectF rect){Bitmap image=images.get(key);if(image==null)return false;int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),rect,paint);return true;}
   void panel(Canvas c,RectF r,boolean detail){
     draw(c,detail?"detail-paper":"paper",r);
     draw(c,detail?"detail-header":"list-header",new RectF(r.left,r.top,r.right,r.top+31));

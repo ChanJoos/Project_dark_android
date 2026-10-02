@@ -156,6 +156,17 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  MARTIAL_HUD_089:
+    title: "User-reported martial contact/facing/FX and NPC/AUTO/quickslot correction"
+    priority: P0
+    claim: Director/Integration
+    queue_state: IN_VALIDATION
+    implementation: IMPLEMENTED
+    native_runtime: PENDING_EXACT_CI
+    phone_acceptance: PENDING
+    user_visual_acceptance: PENDING
+    scope: "34 martial IDs, front intent, particle registration, NPC labels/placement, registered-slot AUTO, square insets, gold utility glyph"
+    proof: docs/verification/MARTIAL_HUD_V89_BUILD.json
   TOWN_DETAIL_088:
     title: "Original-inspired prop density and small-scale interior detail"
     system: town_interior_visual

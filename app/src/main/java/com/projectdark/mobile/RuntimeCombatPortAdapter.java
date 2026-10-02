@@ -36,11 +36,13 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     return null;
   }
   public void prepareAction(String actor,String id){abilities.prepare(actor,id);}
-  public void finishAction(String actor,String id){abilities.finish(actor,id);}
+  public void finishAction(String actor,String id){abilities.finish(actor,id);directions.remove(actor+":"+id);}
   private final LineOfSightPort lineOfSight;
   private final LearnedActionPort learnedActions;
   private final ControlPort control;
   private final Map<String,Float> cooldowns=new HashMap<>();
+  private final Map<String,float[]> directions=new HashMap<>();
+  public void lockDirection(String actor,String target,String id){Position a=position(actor),t=position(target);if(a!=null&&t!=null)directions.put(actor+":"+id,new float[]{t.x-a.x,t.y-a.y});}
   private java.util.function.Predicate<String> visible=id->true;
   private java.util.function.IntSupplier basicHits=()->1;
   public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
@@ -53,7 +55,9 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(a==null||t==null)return out;
     if(r.pattern==SkillActionContract.Pattern.SINGLE)return visible(target)&&SkillActionContract.canStart(r,a.x,a.y,t.x,t.y,true)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SELF||r.pattern==SkillActionContract.Pattern.ALLY||r.pattern==SkillActionContract.Pattern.GROUP){out.add(actor);return out;}
-    for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,t.x,t.y,m.x,m.y,true)&&hasLineOfSight(actor,m.id))out.add(m.id);
+    float tx=t.x,ty=t.y;float[] intent=directions.get(actor+":"+action);
+    if(intent!=null&&(r.pattern==SkillActionContract.Pattern.FRONT||r.pattern==SkillActionContract.Pattern.FRONT_BACK)){tx=a.x+intent[0];ty=a.y+intent[1];}
+    for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,tx,ty,m.x,m.y,true)&&hasLineOfSight(actor,m.id))out.add(m.id);
     return out;
   }
 

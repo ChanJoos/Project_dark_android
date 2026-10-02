@@ -44,7 +44,7 @@ public final class RuntimeCombatSession {
   /** Fail closed for the starting commoner: no skill or magic fixture is learned implicitly. */
   public static RuntimeCombatPortAdapter.LearnedActionPort startingCommonerLearnedActions(){return (actorId,actionId)->false;}
 
-  public CombatActionOrchestrator.Submission submitPlayer(String targetId,String actionId){return actions.submitManual(PLAYER_ID,targetId,actionId);}
+  public CombatActionOrchestrator.Submission submitPlayer(String targetId,String actionId){CombatActionOrchestrator.Submission result=actions.submitManual(PLAYER_ID,targetId,actionId);if(result.accepted())port.lockDirection(PLAYER_ID,targetId,actionId);return result;}
   public CombatActionOrchestrator.Submission submitPlayerAttack(String targetId,int attackMode){return submitPlayer(targetId,playerAttackActionId(attackMode));}
 
   /** Resolves the equipped weapon semantic before submitting one shared Resolver action. */
