@@ -27,7 +27,7 @@ final class ItemIconCatalog {
     if(slot.equals("장갑")){rect(c,p,6,9,11,18,edge);rect(c,p,13,8,18,18,edge);rect(c,p,7,10,10,16,base);rect(c,p,14,9,17,16,base);rect(c,p,8,10,9,12,light);rect(c,p,15,9,16,11,light);rect(c,p,6,17,11,20,dark);rect(c,p,13,17,18,20,dark);}
     else if(slot.equals("각반")){rect(c,p,4,5,19,9,edge);rect(c,p,5,6,18,8,base);rect(c,p,6,9,11,19,edge);rect(c,p,13,9,18,19,edge);rect(c,p,7,10,10,17,base);rect(c,p,14,10,17,17,base);rect(c,p,7,10,8,14,light);rect(c,p,14,10,15,14,light);rect(c,p,6,18,11,20,dark);rect(c,p,13,18,18,20,dark);}
     else if(slot.equals("귀걸이")){ring(c,p,7,10,edge,base);ring(c,p,16,10,edge,base);rect(c,p,6,5,8,8,light);rect(c,p,15,5,17,8,light);}
-    else if(slot.equals("반지")){ring(c,p,12,13,edge,light);rect(c,p,10,4,15,10,edge);rect(c,p,11,5,14,8,base);c.drawPoint(12,6,color(p,light),p);}
+    else if(slot.equals("반지")){ring(c,p,12,13,edge,light);rect(c,p,10,4,15,10,edge);rect(c,p,11,5,14,8,base);color(p,light);c.drawPoint(12,6,p);}
     else if(slot.equals("목걸이")){ring(c,p,12,11,edge,base);rect(c,p,10,14,15,20,edge);rect(c,p,11,15,14,18,light);}
     else if(slot.equals("벨트")){rect(c,p,3,9,20,15,edge);rect(c,p,4,10,19,14,base);rect(c,p,10,9,14,15,light);}
     else return null;
