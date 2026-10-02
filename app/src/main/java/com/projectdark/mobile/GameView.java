@@ -180,7 +180,7 @@ public final class GameView extends View {
   private boolean isActing(){return action!=Action.IDLE&&action!=Action.WALK;}
   private boolean attacking(){return action==Action.SWING||action==Action.THRUST||action==Action.THROW||action==Action.PUNCH;}
   private float duration(Action a){SkillActionContract.Rule r=SkillActionContract.get(activeSkillVisualId);if(r!=null&&r.contact>.3f)return r.contact+.35f;switch(a){case CAST:return .65f;case SWING:return .45f;case THRUST:return .38f;case THROW:return .52f;case PUNCH:return .32f;case SKILL:return .50f;case KICK:return .45f;default:return 0;}}
-  private void trigger(Action a){if(isActing()||!state.player().alive)return;activeWorld().cancelForAction();interaction.cancel();combat.cancelApproach();action=a;actionClock=0;}
+  private void trigger(Action a){if(isActing()||!state.player().alive)return;state.skillEffects().stopRest();activeWorld().cancelForAction();interaction.cancel();combat.cancelApproach();action=a;actionClock=0;}
   private void showFeedback(String s){showFeedback(s,FeedbackTone.INFO);}private void showFeedback(String s,FeedbackTone tone){feedback=s;feedbackTone=tone;feedbackClock=1.15f;}private void showReward(String s){rewardBanner=s;rewardClock=2.4f;}
   private boolean requireTarget(){if(combat.hasUsableTarget())return true;showFeedback("먼저 몬스터를 선택하세요",FeedbackTone.WARN);return false;}
   private boolean inRange(float range){return combat.inRange(state,range);}

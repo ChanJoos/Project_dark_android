@@ -104,6 +104,10 @@ public class SkillAbilityRuntimeTest {
    }else assertTrue(a.id,c.useUtility(a.id));
   }
  }
+ @Test public void persistedTimedBuffSurvivesRealGameViewRestartAndRegularRegenSurvivesHit()throws Exception{
+  GameView view=new GameView(context);RuntimeState s=field(view,"state");s.skillEffects().put("player","SK_전사_009","DRAGON",4,14);view.pause();F5mSaveStore.install(context);GameView restarted=new GameView(context);RuntimeState restored=field(restarted,"state");assertTrue(restored.skillEffects().has("player","DRAGON"));assertEquals(14,restored.skillEffects().get("player","DRAGON").remaining,.001f);
+  restored.skillEffects().put("player","SK_무도가_012","REGEN",2,20);restored.damagePlayer(1);assertTrue(restored.skillEffects().has("player","REGEN"));restored.skillEffects().put("player","SK_공통_005","REGEN",200,60);restored.damagePlayer(1);assertFalse(restored.skillEffects().has("player","REGEN"));
+ }
  static void tick(GameView v,float dt)throws Exception{Method m=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);m.setAccessible(true);m.invoke(v,dt);}
  @SuppressWarnings("unchecked") static <T>T field(Object o,String n)throws Exception{Field f=o.getClass().getDeclaredField(n);f.setAccessible(true);return(T)f.get(o);}
 }

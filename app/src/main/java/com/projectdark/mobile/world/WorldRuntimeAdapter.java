@@ -214,6 +214,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     float startX=runtime.player().x,startY=runtime.player().y;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
     if(!canPlayerTraverse(startX,startY,destinationX,destinationY))return false;
+    runtime.skillEffects().stopRest();
     runtime.player().x=destinationX;
     runtime.player().y=destinationY;
     return true;

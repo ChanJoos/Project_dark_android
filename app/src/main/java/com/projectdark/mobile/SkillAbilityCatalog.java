@@ -37,7 +37,7 @@ public final class SkillAbilityCatalog {
    default:return 0;
   }
   // Supplied finishers preserve their exact base coefficients; learned ordinary attacks improve with practice.
-  if(!a.resourceBurst())raw*=.8+.2*Math.max(0,Math.min(100,x.proficiency))/100d;
+  if(!a.resourceBurst()&&!a.heal())raw*=.8+.2*Math.max(0,Math.min(100,x.proficiency))/100d;
   return Math.max(0,(int)Math.min(Integer.MAX_VALUE,Math.round(raw)));
  }
  public static String resources(Ability a){if(a==null)return "";if(a.formula.equals("DARA"))return "HP·MP → 1";if(a.allMp)return "MP 전량";if(a.formula.equals("DALMA"))return "HP 60%";if(Arrays.asList("SOUL","HP_BURST","ASSASSIN","ASSASSIN_PLUS").contains(a.formula))return "HP 90%";if(a.formula.equals("CRASH"))return "HP 2% 이하";return "MP "+a.mpCost;}

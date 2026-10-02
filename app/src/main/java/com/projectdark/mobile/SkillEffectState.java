@@ -10,6 +10,7 @@ public final class SkillEffectState {
  public Effect get(String actor,String kind){Map<String,Effect> e=effects.get(actor);return e==null?null:e.get(kind);}
  public int power(String actor,String kind){Effect e=get(actor,kind);return e==null?0:e.power;}
  public void remove(String actor,String kind){Map<String,Effect> e=effects.get(actor);if(e!=null)e.remove(kind);}
+ public void stopRest(){Effect e=get("player","REGEN");if(e!=null&&e.source.equals("SK_공통_005"))remove("player","REGEN");}
  public void clear(String actor){effects.remove(actor);}
  public boolean rooted(String actor){return has(actor,"ROOT")||disabled(actor);}
  public boolean disabled(String actor){return has(actor,"FREEZE")||has(actor,"SLEEP");}

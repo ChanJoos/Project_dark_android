@@ -164,7 +164,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
 
     if("player".equals(targetId)){
       int before=state.player().hp;
-      state.skillEffects().remove("player","REGEN");state.damagePlayer(amount);
+      state.damagePlayer(amount);
       int applied=Math.max(0,before-state.player().hp);
       return new CombatResolver.EffectResult(applied,before>0&&!state.player().alive,
           CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,
