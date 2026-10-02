@@ -35,7 +35,11 @@ public final class WorldDef {
   public WorldDef(){
     if(!MillesProductionCollisionAudit.verify())throw new IllegalStateException("Milles production collision audit failed");
     List<RectF> b=new ArrayList<>();
-    for(MillesProductionCollision.Footprint f:MillesProductionCollision.blockers())b.add(new RectF(f.left,f.top,f.right,f.bottom));
+    for(MillesProductionCollision.Footprint f:MillesProductionCollision.blockers()){
+      com.projectdark.mobile.world.MillesDoorAnchors.Door door=null;for(com.projectdark.mobile.world.MillesDoorAnchors.Door d:com.projectdark.mobile.world.MillesDoorAnchors.ALL)if(d.building.equals(f.id))door=d;
+      if(door==null)b.add(new RectF(f.left,f.top,f.right,f.bottom));
+      else{float half=26,top=door.y-28;b.add(new RectF(f.left,f.top,f.right,top));b.add(new RectF(f.left,top,door.x-half,f.bottom));b.add(new RectF(door.x+half,top,f.right,f.bottom));}
+    }
     blockers=Collections.unmodifiableList(b);
 
     List<NpcSpawn> n=new ArrayList<>();

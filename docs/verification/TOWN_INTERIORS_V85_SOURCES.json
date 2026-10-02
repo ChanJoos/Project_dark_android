@@ -57,5 +57,11 @@
       "supports": "Named wearable appearance IDs"
     }
   ],
-  "limits": "Bank/church architecture and portraits/palettes are creative interpretation; most prices/stats/shop distribution and Curum heal100 adapted; Excuranum50000/HP10000 source reported. No claim of complete current original inventory. Other-city recalls omitted until their destinations exist."
+  "limits": "Bank/church architecture and portraits/palettes are creative interpretation; most prices/stats/shop distribution and Curum heal100 adapted; Excuranum50000/HP10000 source reported. No claim of complete current original inventory. Other-city recalls omitted until their destinations exist.",
+  "generation": {
+    "mode": "built-in imagegen",
+    "portrait_prompt": "Four waist-up late-1990s Korean fantasy RPG dialogue portraits, 2x2 transparent sheet: brown-haired teal-cap blue-robed apothecary; orange leather weaponsmith; navy-vest banker; ivory burgundy-stole priest. Consistent ink outlines and muted hand-painted palette.",
+    "icon_prompt": "4x2 transparent pixel RPG inventory icons: green Curum vial, pale cyan holy water, leather gloves, leather leggings, silver earrings, ruby ring, violet Goru ring, medicine pouch. Crisp silhouette, no text or frames.",
+    "processing": "Only WebP encoding optimization; same image dimensions and alpha; region selection at runtime. Source wearable registration and original sprite bytes retained."
+  }
 }
