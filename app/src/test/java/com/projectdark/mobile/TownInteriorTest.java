@@ -17,7 +17,7 @@ public class TownInteriorTest {
   }
  }
  @Test public void exteriorDoorsEnterAllFourScenesThroughWorldNavigation()throws Exception{
-  for(TownInteriorDef d:TownInteriorDef.ALL){GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=field(v,"state");WorldRuntimeAdapter world=field(v,"worldAdapter");WorldDef.PortalSpawn door=null;for(WorldDef.PortalSpawn p:s.world().portalSpawns())if(d.doorId.equals(p.id))door=p;assertNotNull(door);s.player().x=door.x;s.player().y=door.y;world.snapCameraToPlayer();tick(v,1);assertEquals(d.mapId,s.currentMapId());}
+  for(TownInteriorDef d:TownInteriorDef.ALL){GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=field(v,"state");WorldRuntimeAdapter world=field(v,"worldAdapter");WorldDef.PortalSpawn door=null;for(WorldDef.PortalSpawn p:s.world().portalSpawns())if(d.doorId.equals(p.portalId))door=p;assertNotNull(door);s.player().x=door.x;s.player().y=door.y;world.snapCameraToPlayer();tick(v,1);assertEquals(d.mapId,s.currentMapId());}
  }
  @Test public void transactionsAreConservedAndRollbackEveryChannel(){RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.restoreGold(2000);String id="IT_TEST_WEAPON_MW002";Map<String,Integer> original=new LinkedHashMap<>(r.inventory());
   assertEquals(TownCommerce.Result.SAVE_FAILED,TownCommerce.transact(s,TownInteriorDef.Kind.EQUIPMENT,TownCommerce.Operation.BUY,id,3,()->false));assertEquals(original,r.inventory());assertEquals(2000L,r.gold().longValue());
