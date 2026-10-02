@@ -151,12 +151,16 @@ work_packages:
     system: combat_presentation
     priority: P0
     claim: Director/Integration
-    queue_state: IN_DEVELOPMENT
+    queue_state: DEVICE_PENDING
     source_branch: codex/original-skill-contract-v65
     failed_predecessor: "V81 DEVICE_FAILED (user-reported) for Dankak/Bungkak/Spin and early Dara arms; installed SHA unconfirmed"
     required_sources: [docs/SKILL_ACTION_DECISIONS.csv, tools/generate_skill_presentation.py, master/data/Asset_Animation_Frame_Master.csv, master/data/Asset_Animation_Semantics.csv, master/source/skill_fx/naver_classic_2020/definitions.json, app/src/main/java/com/projectdark/mobile/SkillBodyRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java, docs/SKILL_PRESENTATION_CONTRACT.md]
     acceptance: ["Dankak front kick", "Bungkak side kick", "Spin kick rotates using original kick BODY", "Dara stays idle until actual release contact", "Both bodies and four facings with actual equipped GameView captures", "Ragnarok and Defense approval retained"]
-    remaining: "Exact source CI/native review/APK; phone visual revalidation"
+    remaining: "Kicks/Dara physical phone revalidation; original cadence remains project-authored"
+    source_sha: 4bf789dc952403163fbc0aab6bc805186f75a28c
+    build_verified: "Actions36942749572 SUCCESS; version82 APK11201490465"
+    native_verified: "679 PNGs;272 V82 captures;actual starting facings/standing wait/release reviewed"
+    delivery_evidence: docs/verification/SKILL_FX_V82_BUILD.json
   SKILL_PRESENTATION_081:
     title: "User-labelled Ragnarok still extraction and recipient animation"
     system: combat_presentation
