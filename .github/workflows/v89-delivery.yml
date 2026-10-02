@@ -35,7 +35,7 @@ jobs:
           from zoneinfo import ZoneInfo
           source='a4dcc1086f283fd49b7673c8fa5c4ddf8c140f97'
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==source
-          apk=Path('delivery-apk/app-debug.apk');z=zipfile.ZipFile(apk);assert z.testzip() is None
+          apk=Path('delivery-apk/app-debug.apk');z=zipfile.ZipFile(apk,metadata_encoding='utf-8');assert z.testzip() is None
           b=z.read('AndroidManifest.xml');offset=8;strings=[];attrs={}
           while offset<len(b):
               kind,header,size=struct.unpack_from('<HHI',b,offset)
@@ -64,6 +64,7 @@ jobs:
               key=p.removeprefix('app/src/main/')
               if key not in z.namelist():missing.append(p)
               elif z.read(key)!=Path(p).read_bytes():different.append(p)
+          print('APK_ASSET_NAME_DIAGNOSTIC',[(n,z.getinfo(n).flag_bits) for n in z.namelist() if any(x in n for x in ['mu0000118','mh223','mh259'])])
           assert not missing and not different,(missing,different)
           captures=sorted(Path('delivery-captures').glob('v89-*.png'))
           assert len(captures)==37,len(captures)
