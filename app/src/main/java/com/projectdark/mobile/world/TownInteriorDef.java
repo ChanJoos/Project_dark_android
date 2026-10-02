@@ -19,10 +19,10 @@ public final class TownInteriorDef {
   props=Collections.unmodifiableList(p);
  }
  public static final List<TownInteriorDef> ALL=Collections.unmodifiableList(Arrays.asList(
-  new TownInteriorDef(Kind.REAGENT,"milles_interior_potion_shop","시약상점","노비스","mu0000058,mh172","potion_shop_door"),
-  new TownInteriorDef(Kind.EQUIPMENT,"milles_interior_weapon_shop","장비상점","로건","mu0000002,mh173","weapon_shop_door"),
-  new TownInteriorDef(Kind.BANK,"milles_interior_bank","밀레스 은행","은행원","mu0000003,mh174","general_shop_door"),
-  new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000058","church_door")));
+  new TownInteriorDef(Kind.REAGENT,"milles_interior_potion_shop","시약상점","노비스","mu0000020,mh172,ml228","potion_shop_door"),
+  new TownInteriorDef(Kind.EQUIPMENT,"milles_interior_weapon_shop","장비상점","로건","mu0000016,ml228","weapon_shop_door"),
+  new TownInteriorDef(Kind.BANK,"milles_interior_bank","밀레스 은행","은행원","mu0000026,ml228","general_shop_door"),
+  new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000018,ml228","church_door")));
  public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;return null;}
  public static TownInteriorDef forDoor(String id){for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
