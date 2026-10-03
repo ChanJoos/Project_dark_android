@@ -55,9 +55,9 @@ public final class WorldDef {
 
     List<MonsterSpawn> m=new ArrayList<>();
     m.add(new MonsterSpawn("milles_mouse_proto","여관 뒤뜰 생쥐 [ADAPTED]",1888f,768f,24,ASSET_STATUS));
-    m.add(new MonsterSpawn("combat_dummy_01","숲길 훈련 몬스터 A [B]",896f,1360f,60,ASSET_STATUS));
-    m.add(new MonsterSpawn("combat_dummy_02","숲길 훈련 몬스터 B [B]",992f,1424f,60,ASSET_STATUS));
-    m.add(new MonsterSpawn("combat_dummy_03","숲길 훈련 몬스터 C [B]",896f,1488f,60,ASSET_STATUS));
+    m.add(new MonsterSpawn("combat_dummy_01","훈련 몬스터 A [B]",1315f,715f,60,ASSET_STATUS));
+    m.add(new MonsterSpawn("combat_dummy_02","훈련 몬스터 B [B]",1450f,790f,60,ASSET_STATUS));
+    m.add(new MonsterSpawn("combat_dummy_03","훈련 몬스터 C [B]",1575f,720f,60,ASSET_STATUS));
     monsterSpawns=Collections.unmodifiableList(m);
 
     List<PortalSpawn> p=new ArrayList<>();
