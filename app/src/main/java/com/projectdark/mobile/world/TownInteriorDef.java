@@ -6,9 +6,12 @@ public final class TownInteriorDef {
  public enum Kind { REAGENT,EQUIPMENT,BANK,CHURCH,INN }
  public static final float MIN_X=64,MAX_X=896,MIN_Y=0,MAX_Y=540;
  public static final class Prop {
-  public final String asset;public final int u,v;public final float width,lift;public final boolean blocking;
+  public final String asset;public final int u,v;public final float width,lift;public final boolean blocking;public final int cellsU,cellsV;
   public Prop(String a,int u,int v,float w){this(a,u,v,w,0,true);}
-  public Prop(String a,int u,int v,float w,float lift,boolean blocking){asset=a;this.u=u;this.v=v;width=w;this.lift=lift;this.blocking=blocking;}
+  public Prop(String a,int u,int v,float w,float lift,boolean blocking){this(a,u,v,w,lift,blocking,1,1);}
+  public Prop(String a,int u,int v,float w,float lift,boolean blocking,int cellsU,int cellsV){asset=a;this.u=u;this.v=v;width=w;this.lift=lift;this.blocking=blocking;this.cellsU=cellsU;this.cellsV=cellsV;}
+  public boolean occupies(int tu,int tv){return blocking&&tu>=u&&tu<u+cellsU&&tv>=v&&tv<v+cellsV;}
+  public float depthY(){return y()+16*(cellsU+cellsV-2);}
   public float x(){return TownInteriorDef.x(u,v);}public float y(){return TownInteriorDef.y(u,v);}
  }
 
@@ -52,19 +55,23 @@ public final class TownInteriorDef {
    p.add(new Prop("open_book",6,1,20,45,false));
   }
   if(k==Kind.INN){
-   // Original footage main hall: U-shaped reception, dining groups/rugs,
-   // two brick hearths, log walls and the rear doorway. No beds in the hall.
-   p.add(new Prop("inn_counter",7,4,320));
-   p.add(new Prop("storage_barrel",2,2,35));p.add(new Prop("storage_barrel",3,2,35));
-   p.add(new Prop("inn_table_food",4,7,160));p.add(new Prop("inn_table",9,8,185));
-   p.add(new Prop("inn_table",5,10,185));
-   p.add(new Prop("inn_hearth",1,5,82));p.add(new Prop("inn_hearth",12,1,82));
-   p.add(new Prop("herb_planter",1,6,32));p.add(new Prop("herb_planter",11,1,32));
-   p.add(new Prop("storage_sack",11,10,25));p.add(new Prop("storage_sack",12,10,25));
-   p.add(new Prop("storage_crate",12,9,32));
-
+   // Same independently placed counter modules as the existing shops.
+   for(int u=3;u<=10;u++)p.add(new Prop("joined_counter",u,4,64));
+   for(int v=2;v<4;v++){p.add(new Prop("joined_counter_sw",3,v,64));if(v==3)p.add(new Prop("joined_counter_sw",10,v,64));}
+   p.add(new Prop("storage_barrel",1,2,35));p.add(new Prop("storage_barrel",2,2,35));
+   dining(p,4,7,true);dining(p,9,8,true);dining(p,2,10,false);
+   p.add(new Prop("inn_world_hearth",1,4,96,0,true,1,2));p.add(new Prop("inn_world_hearth",11,1,96,0,true,2,1));
+   p.add(new Prop("herb_planter",1,6,32));p.add(new Prop("herb_planter",10,1,32));
+   p.add(new Prop("storage_sack",11,10,25));p.add(new Prop("storage_sack",12,10,25));p.add(new Prop("storage_crate",12,6,32));
+   p.add(new Prop("open_book",5,4,23,42,false));p.add(new Prop("bottle_tray",8,4,28,42,false));
   }
   props=Collections.unmodifiableList(p);
+ }
+ private static void dining(List<Prop> p,int u,int v,boolean food){
+  p.add(new Prop("inn_world_table",u,v,96,0,true,2,1));
+  p.add(new Prop("inn_world_chair_ne",u-1,v,32));p.add(new Prop("inn_world_chair_sw",u+2,v,32));
+  p.add(new Prop("inn_world_chair_se",u,v-1,32));p.add(new Prop("inn_world_chair_nw",u+1,v+1,32));
+  if(food)p.add(new Prop("bottle_tray",u,v,23,32,false,2,1));
  }
  public static final List<TownInteriorDef> ALL=Collections.unmodifiableList(Arrays.asList(
   new TownInteriorDef(Kind.REAGENT,"milles_interior_potion_shop","시약상점","멀린","mu0000020,mh172,ml230","potion_shop_door"),
@@ -78,7 +85,7 @@ public final class TownInteriorDef {
  private int entryU(){return kind==Kind.BANK?5:6;}
  public float spawnX(){return x(entryU(),rows-2);}public float spawnY(){return y(entryU(),rows-2);}public float exitX(){return x(entryU(),rows-1);}public float exitY(){return y(entryU(),rows-1);}
  public float npcX(){return x(npcU,npcV)-12;}public float npcY(){return y(npcU,npcV)-6;}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
- public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if(kind==Kind.INN&&((v==4&&u>=3&&u<=10)||(u==3||u==10)&&v>=2&&v<=4))return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.blocking&&p.u==u&&p.v==v)return true;return false;}
+ public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}
  public List<WorldMoveTargetController.TileCenter> navigationTiles(){List<WorldMoveTargetController.TileCenter> t=new ArrayList<>();for(int u=1;u<columns;u++)for(int v=1;v<rows;v++)if(!blocked(u,v))t.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(t);}
  public List<RectF> obstacles(){List<RectF> a=new ArrayList<>();for(int u=0;u<columns;u++)for(int v=0;v<rows;v++)if(blocked(u,v))a.add(new RectF(x(u,v)-3,y(u,v)-3,x(u,v)+3,y(u,v)+3));return a;}
  public int floor(int u,int v){return kind==Kind.REAGENT?1:kind==Kind.CHURCH?(u>=5&&u<=7?3:2):0;}
