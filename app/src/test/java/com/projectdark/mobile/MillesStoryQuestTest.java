@@ -26,10 +26,10 @@ public final class MillesStoryQuestTest {
     TownInteriorDef inn=TownInteriorDef.forMap("milles_interior_inn");
     assertNotNull("the exterior inn portal now resolves to a real room",inn);
     assertEquals(TownInteriorDef.Kind.INN,inn.kind);
-    assertEquals("메리 · 여관 주인 [ADAPTED]",inn.npcName);
+    assertEquals("메리 · 여관 주인",inn.npcName);
     assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_table")));
     assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_hearth")));
-    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_bed")));
+    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_counter")));
     assertEquals(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID,"milles_mouse_proto");
     MonsterDefinition mouse=new MonsterDefinitionRegistry().resolve("milles_mouse_proto");
     assertEquals(MonsterDefinition.Status.PROTOTYPE_PENDING,mouse.status);
@@ -42,6 +42,8 @@ public final class MillesStoryQuestTest {
     assertNull(find(state,"milles_mouse_proto"));
     F5mAdaptedPrologueQuest quest=new F5mAdaptedPrologueQuest(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID);
     assertEquals(F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED,quest.accept());
+    assertNull("mouse cannot be spawned in the outdoor map",state.ensureAdaptedMillesMouse());
+    state.enterTownInterior(TownInteriorDef.forMap("milles_interior_inn"));
     RuntimeState.Monster mouse=state.ensureAdaptedMillesMouse();
     assertNotNull(mouse);
     assertSame(mouse,state.ensureAdaptedMillesMouse());
@@ -50,6 +52,9 @@ public final class MillesStoryQuestTest {
 
   @Test public void mouseAndControlMonsterUseIdenticalSharedChaseAndAttackFlow(){
     RuntimeState mouseState=new RuntimeState(),controlState=new RuntimeState();
+    mouseState.enterTownInterior(TownInteriorDef.forMap("milles_interior_inn"));
+    controlState.enterTownInterior(TownInteriorDef.forMap("milles_interior_inn"));
+    addControl(controlState,new RuntimeState.Monster("combat_dummy_01","control",TownInteriorDef.x(10,11),TownInteriorDef.y(10,11),24,"test"));
     mouseState.ensureAdaptedMillesMouse();
     RuntimeState.Monster mouse=find(mouseState,"milles_mouse_proto");
     RuntimeState.Monster control=find(controlState,"combat_dummy_01");
@@ -99,30 +104,16 @@ public final class MillesStoryQuestTest {
     assertEquals("mouse uses the same resolver damage as the control monster",controlHp-controlState.player().hp,mouseHp-mouseState.player().hp);
   }
 
-  @Test public void adaptedMouseRendererProducesASeparateReadableSilhouette(){
-    WorldEntityPresentationRenderer renderer=new WorldEntityPresentationRenderer();
-    Bitmap mouse=render(renderer,"PENDING_CROP/milles/monster/milles_mouse_proto");
-    Bitmap generic=render(renderer,"PENDING_CROP/milles/monster/combat_dummy_01");
-    int different=0;for(int y=0;y<mouse.getHeight();y++)for(int x=0;x<mouse.getWidth();x++)if(mouse.getPixel(x,y)!=generic.getPixel(x,y))different++;
-    assertTrue("rat silhouette is not the generic prototype blob",different>20);
-    mouse.recycle();generic.recycle();
-  }
-
-  @Test public void adaptedMouseHasFourSeparatelyRenderedDiagonalFacings(){
-    WorldEntityPresentationRenderer renderer=new WorldEntityPresentationRenderer();
-    Bitmap[] views=new Bitmap[4];CharacterRenderer.Direction[] directions={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
-    for(int i=0;i<directions.length;i++){views[i]=render(renderer,"PENDING_CROP/milles/monster/milles_mouse_proto",directions[i]);for(int j=0;j<i;j++)assertTrue("each diagonal gets its own mouse pose",differentPixels(views[i],views[j])>4);}
-    for(Bitmap b:views)b.recycle();
-  }
-
-  @Test public void innkeeperPaletteAndApronSeparateHerFromTheShopkeeper(){
-    Context context=RuntimeEnvironment.getApplication();TownNpcRenderer renderer=new TownNpcRenderer();
-    assertNotNull(context);
-    Bitmap shop=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888),inn=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
-    renderer.draw(new Canvas(shop),TownInteriorDef.forMap("milles_interior_potion_shop"),64,112);
+  @Test public void innkeeperUsesRegisteredWearablesWithoutAnOpaqueApron() throws Exception {
+    Context context=RuntimeEnvironment.getApplication();TownNpcRenderer renderer=new TownNpcRenderer(context);
+    Bitmap inn=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
     renderer.draw(new Canvas(inn),TownInteriorDef.forMap("milles_interior_inn"),64,112);
-    assertTrue("Mary has her own warm apron silhouette",differentPixels(shop,inn)>40);
-    shop.recycle();inn.recycle();
+    int occupied=0;for(int y=60;y<112;y++)for(int x=42;x<85;x++)if(android.graphics.Color.alpha(inn.getPixel(x,y))>0)occupied++;
+    assertTrue("Mary loads the detailed BODY/wearable sprite",occupied>100);assertTrue("no full opaque rectangular apron covering the character",occupied<900);
+    inn.recycle();
+  }
+  @SuppressWarnings("unchecked") private static void addControl(RuntimeState state,RuntimeState.Monster m) throws RuntimeException {
+    try{java.lang.reflect.Field f=RuntimeState.class.getDeclaredField("monsters");f.setAccessible(true);((java.util.List<RuntimeState.Monster>)f.get(state)).add(m);}catch(Exception e){throw new RuntimeException(e);}
   }
 
   @Test public void questJournalButtonOpensAnActionableReviewCapture() throws Exception {

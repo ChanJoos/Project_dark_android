@@ -103,7 +103,7 @@ jobs:
       - name: Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V90 adapted Milles story quest and shared mouse AI
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
       - name: Verify V83 per-skill abilities and runtime formulas
         run: |
           python3 tools/generate_skill_abilities.py
@@ -209,6 +209,7 @@ jobs:
           path: |
             app/build/reports/device-review/v89-*.png
             app/build/reports/device-review/v90-*.png
+            app/build/reports/device-review/v91-*.png
             app/build/reports/device-review/v88-*.png
           if-no-files-found: error
       - name: Build debug APK

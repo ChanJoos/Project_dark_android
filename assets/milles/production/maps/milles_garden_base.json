@@ -46,11 +46,12 @@
     },
     {
       "id": "inn",
-      "asset": "buildings/BLD_006_inn.png",
-      "x": 1980,
-      "y": 650,
-      "scale": 1.0,
-      "district": "waterside"
+      "asset": "buildings/BLD_006_inn_early.png",
+      "x": 2035.2,
+      "y": 766.4,
+      "scale": 0.8,
+      "district": "waterside",
+      "source": "Early supplied 04 inn crop; source-preserving alpha outline; measured doorway pixel 184,308"
     },
     {
       "id": "civic_fountain",

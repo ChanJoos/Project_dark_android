@@ -128,7 +128,6 @@ public final class WorldEntityPresentationRenderer {
   }
 
   private void drawMonster(Canvas c,Pose pose,int frame,float idleWave){
-    if(pose.visualRef!=null&&pose.visualRef.contains("milles_mouse_proto")){drawAdaptedMouse(c,pose,frame,idleWave);return;}
     boolean left=isLeft(pose.direction),down=isDown(pose.direction);
     float side=left?-1f:1f;
     int step=pose.state==CharacterRenderer.State.WALK?(frame==1?1:frame==3?-1:0):0;
@@ -154,25 +153,6 @@ public final class WorldEntityPresentationRenderer {
   }
 
   /** Small story-only rat silhouette. It is adapted art, never claimed as an original sprite. */
-  private void drawAdaptedMouse(Canvas c,Pose pose,int frame,float idleWave){
-    boolean left=isLeft(pose.direction),down=isDown(pose.direction);float side=left?-1f:1f;
-    float step=pose.state==CharacterRenderer.State.WALK?(frame==1?2f:frame==3?-2f:0f):0f;
-    float breathe=pose.state==CharacterRenderer.State.IDLE?idleWave*.55f:0f;
-    int outline=0xff292321,fur=pose.hitFlash?0xffd7b8a5:0xff89817b,light=0xffc0b3a7;
-    p.setColor(outline);c.drawOval(new RectF(1,15,9,20),p);p.setColor(0xff655953);c.drawOval(new RectF(-5,16,8,19),p);
-    p.setColor(outline);c.drawOval(new RectF(3+side*1.5f,8-breathe,14+side*1.5f,19),p);p.setColor(fur);c.drawOval(new RectF(4+side*1.5f,9-breathe,13+side*1.5f,18),p);
-    float hx=left?2.5f:9f;p.setColor(outline);c.drawCircle(hx+side*1.5f,8-breathe,4.4f,p);p.setColor(fur);c.drawCircle(hx+side*1.5f,8-breathe,3.5f,p);
-    p.setColor(0xffb77779);c.drawCircle(hx+(left?-2.3f:2.3f)+side*1.5f,5-breathe,2.3f,p);
-    p.setColor(light);c.drawOval(new RectF(6+side*1.5f,13-breathe,12+side*1.5f,17),p);
-    if(down){p.setColor(0xff171615);c.drawCircle((left?4.5f:10.5f)+side*1.5f,7-breathe,.75f,p);}
-    p.setColor(0xff5b514c);c.drawCircle((left?3:14)+side*1.5f,10-breathe,.9f,p);
-    // Clear directional whiskers make all four adapted facings legible at mobile scale.
-    p.setColor(0xffd2c3b4);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);
-    float mx=(left?2.8f:13.4f)+side*1.5f,my=10-breathe,fx=left?-1f:1f,fy=down?1f:-1f;
-    c.drawLine(mx,my,mx+fx*4.2f,my+fy*1.1f,p);c.drawLine(mx,my+1.2f,mx+fx*4f,my+fy*2.9f,p);c.drawLine(mx,my-1.2f,mx+fx*3.8f,my-fy*.8f,p);p.setStyle(Paint.Style.FILL);
-    p.setColor(outline);c.drawRect(5+step,17,7+step,21,p);c.drawRect(11-step,17,13-step,21,p);
-  }
-
   private void drawEffect(Canvas c,Pose pose){
     CharacterRenderer.EffectFamily family=pose.hitFlash?CharacterRenderer.EffectFamily.HIT:pose.effectFamily;
     if(family==CharacterRenderer.EffectFamily.NONE)return;

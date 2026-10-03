@@ -60,9 +60,9 @@ STORY_PROPS = [
     ("church_bench", "video_reference/objects/bench_video_cutout_02.png", 1760, 584, .42, "east_quiet"),
     ("church_flower_a", "vegetation/flowers/OBJ_flower_01.png", 1680, 570, .28, "east_quiet"),
     ("church_flower_b", "vegetation/flowers/OBJ_flower_03.png", 1848, 430, .30, "east_quiet"),
-    ("inn_cart", "market/OBJ_cart.png", 2160, 704, .25, "waterside"),
-    ("inn_crates", "storage/OBJ_crate.png", 2130, 660, .25, "waterside"),
-    ("inn_sacks", "storage/OBJ_sack.png", 2180, 626, .30, "waterside"),
+    ("inn_cart", "market/OBJ_cart.png", 2256, 832, .25, "waterside"),
+    ("inn_crates", "storage/OBJ_crate.png", 2240, 768, .25, "waterside"),
+    ("inn_sacks", "storage/OBJ_sack.png", 2272, 720, .30, "waterside"),
     ("inn_bench", "video_reference/objects/bench_video_cutout_03.png", 2130, 830, .43, "waterside"),
     ("inn_lantern", "street/OBJ_lamp_milles_rope.png", 2084, 800, .76, "waterside"),
     ("pond_rocks", "rocks/OBJ_rock_01.png", 1700, 1090, .31, "waterside"),
@@ -120,7 +120,7 @@ def distance_road(x, y):
 
 
 def within_building(x, y, margin=0):
-    bases = [(320, 420), (760, 300), (1120, 360), (1540, 455), (1980, 650)]
+    bases = [(320, 420), (760, 300), (1120, 360), (1540, 455), (2035.2, 766.4)]
     bases += [(x, y) for _, _, x, y, _, _ in BUILDINGS]
     return any(abs(x - bx) < 134 + margin and by - 188 - margin < y < by + 48 + margin for bx, by in bases)
 

@@ -101,7 +101,9 @@ Run the repository workflow and add or extend tests for the new ID. At minimum v
 
 ## 7. Adapted Milles mouse fixture — candidate story slice
 
-`milles_mouse_proto` is a project-authored story fixture, not a canonical monster identity. The current Master has no mouse row or original mouse sprite. It is tagged `B`/`PROTOTYPE_PENDING`, has no canonical EXP or drops, and uses a code-drawn four-diagonal silhouette tagged `PENDING_CROP`; do not describe this artwork or its behavior as original-game data.
+`milles_mouse_proto` is a project-authored story fixture, not a canonical monster identity. The current Master has no mouse row or original mouse sprite. It is tagged `B`/`PROTOTYPE_PENDING`, has no canonical EXP or drops, and uses three observed mouse silhouettes cropped from the supplied 20260924_163501 recording. Original direction/action animation remains unresolved; SW reuses the observed west pose without mirroring. See assets/milles/production/interiors/v91/sources.json for hashes, masks and source coordinates. Do not describe fixture stats or behavior as original-game data.
+
+V91 confines this fixture to milles_interior_inn after quest acceptance, uses InnMouseRenderer at 24 px width and RuntimeState collision radius 7, and routes selection, AUTO, damage, quest reward and checkpoint through the existing shared controllers. Outdoor actors are suspended/restored at the doorway. Native InnSourceRepairTest covers the actual indoor target, pursuit, defeat, Mary approach, one reward, HP checkpoint and completed restart. Physical verification and visual acceptance remain pending.
 
 The fixture is included in the same `MonsterAIController.tickPrototypeMonster()` branch as `combat_dummy_01`. Its chase step, attack wind-up and shared-resolver submission are compared against that control in `MillesStoryQuestTest`. The fixture remains project-story-only until exact CI tests and device observation pass; the comparison cannot establish original mouse behavior.
 

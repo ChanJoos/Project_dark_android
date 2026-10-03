@@ -85,6 +85,10 @@ public final class F5mSaveStore {
 
   private void writeRuntime(SharedPreferences.Editor edit){
     RuntimeState.Player p=runtime.player();
+    for(RuntimeState.Monster m:runtime.monsters())if("milles_mouse_proto".equals(m.id)){
+      edit.putString("inn_mouse_map",runtime.currentMapId()).putInt("inn_mouse_hp",m.hp)
+          .putFloat("inn_mouse_x",m.isMoving?m.moveTargetX:m.x).putFloat("inn_mouse_y",m.isMoving?m.moveTargetY:m.y);
+    }
     edit.putString("map_id",runtime.currentMapId()).putFloat("player_x",p.x).putFloat("player_y",p.y)
         .putString("skill_effects_v1",runtime.skillEffects().snapshot().toString()).putInt("player_hp",p.alive?p.hp:0).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
   }
@@ -95,6 +99,10 @@ public final class F5mSaveStore {
     if(r.currentMapId().equals(p.getString("map_id",null))){
       float x=p.getFloat("player_x",r.player().x),y=p.getFloat("player_y",r.player().y);
       if(Float.isFinite(x)&&Float.isFinite(y)&&x>=RuntimeState.WORLD_MIN_X&&x<=RuntimeState.WORLD_MAX_X&&y>=RuntimeState.WORLD_MIN_Y&&y<=RuntimeState.WORLD_MAX_Y){r.player().x=x;r.player().y=y;}
+    }
+    if(r.currentMapId().equals(p.getString("inn_mouse_map",null)))for(RuntimeState.Monster m:r.monsters())if("milles_mouse_proto".equals(m.id)){
+      int hp=p.getInt("inn_mouse_hp",m.hp);float x=p.getFloat("inn_mouse_x",m.x),y=p.getFloat("inn_mouse_y",m.y);
+      if(hp>0){m.hp=Math.min(m.maxHp,hp);if(r.isMonsterTileCenter(x,y)&&!r.blocked(x,y)){m.x=x;m.y=y;}}
     }
     r.player().hp=Math.max(0,Math.min(r.player().maxHp,p.getInt("player_hp",r.player().hp)));
     r.player().mp=Math.max(0,Math.min(r.player().maxMp,p.getInt("player_mp",r.player().mp)));

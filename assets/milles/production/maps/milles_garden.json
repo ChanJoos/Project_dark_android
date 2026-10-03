@@ -46,11 +46,12 @@
     },
     {
       "id": "inn",
-      "asset": "buildings/BLD_006_inn.png",
-      "x": 1980,
-      "y": 650,
-      "scale": 1.0,
-      "district": "waterside"
+      "asset": "buildings/BLD_006_inn_early.png",
+      "x": 2035.2,
+      "y": 766.4,
+      "scale": 0.8,
+      "district": "waterside",
+      "source": "Early supplied 04 inn crop; source-preserving alpha outline; measured doorway pixel 184,308"
     },
     {
       "id": "civic_fountain",
@@ -637,24 +638,24 @@
     {
       "id": "inn_cart",
       "asset": "market/OBJ_cart.png",
-      "x": 2160,
-      "y": 704,
+      "x": 2256,
+      "y": 832,
       "scale": 0.25,
       "district": "waterside"
     },
     {
       "id": "inn_crates",
       "asset": "storage/OBJ_crate.png",
-      "x": 2130,
-      "y": 660,
+      "x": 2240,
+      "y": 768,
       "scale": 0.25,
       "district": "waterside"
     },
     {
       "id": "inn_sacks",
       "asset": "storage/OBJ_sack.png",
-      "x": 2180,
-      "y": 626,
+      "x": 2272,
+      "y": 720,
       "scale": 0.3,
       "district": "waterside"
     },
@@ -2323,19 +2324,11 @@
       "district": "waterside"
     },
     {
-      "id": "shoulder_3_1179_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1920,
-      "y": 757,
+      "id": "shoulder_3_1179_l",
+      "asset": "vegetation/grass/OBJ_grass_milles_dense.png",
+      "x": 1875,
+      "y": 668,
       "scale": 0.43,
-      "district": "waterside"
-    },
-    {
-      "id": "shoulder_3_1237_r",
-      "asset": "vegetation/grass/OBJ_grass_edge_milles_reference.png",
-      "x": 1979,
-      "y": 726,
-      "scale": 0.28,
       "district": "waterside"
     },
     {

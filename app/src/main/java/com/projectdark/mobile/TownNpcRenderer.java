@@ -4,7 +4,9 @@ import com.projectdark.mobile.world.TownInteriorDef;
 import java.util.*;
 /** Role palette only; approved BODY and all original wearable bytes remain untouched. */
 final class TownNpcRenderer {
- private final CharacterRenderer body=new CharacterRenderer();private final Map<TownInteriorDef.Kind,Bitmap> cache=new EnumMap<>(TownInteriorDef.Kind.class);private final Paint p=new Paint();
+ private final CharacterRenderer body;
+ TownNpcRenderer(){body=new CharacterRenderer();}
+ TownNpcRenderer(android.content.Context c){body=new CharacterRenderer(c);}private final Map<TownInteriorDef.Kind,Bitmap> cache=new EnumMap<>(TownInteriorDef.Kind.class);private final Paint p=new Paint();
  void draw(Canvas c,TownInteriorDef d,float x,float y){Bitmap b=cache.get(d.kind);if(b==null){b=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);body.draw(new Canvas(b),new CharacterRenderer.Pose(64,112,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,d.outfit,null,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
   for(int yy=0;yy<128;yy++)for(int xx=0;xx<128;xx++){int color=b.getPixel(xx,yy);if(Color.alpha(color)==0)continue;float[] hsv=new float[3];Color.colorToHSV(color,hsv);
    if(hsv[0]>265&&hsv[0]<325&&hsv[1]>.25f&&yy<79){hsv[0]=d.kind==TownInteriorDef.Kind.CHURCH?0:28;hsv[1]=d.kind==TownInteriorDef.Kind.CHURCH?.04f:.55f;hsv[2]=d.kind==TownInteriorDef.Kind.CHURCH?Math.min(1,hsv[2]+.35f):hsv[2]*.72f;b.setPixel(xx,yy,Color.HSVToColor(Color.alpha(color),hsv));}
@@ -12,12 +14,7 @@ final class TownNpcRenderer {
    else if(d.kind==TownInteriorDef.Kind.BANK&&xx>57&&xx<71&&yy>79&&yy<102&&hsv[0]>8&&hsv[0]<65&&hsv[1]>.5f){hsv[0]=220;hsv[1]=.4f;hsv[2]*=.6f;b.setPixel(xx,yy,Color.HSVToColor(Color.alpha(color),hsv));}
    else if(d.kind==TownInteriorDef.Kind.CHURCH&&hsv[0]>8&&hsv[0]<65&&hsv[1]>.45f&&yy>75){hsv[0]=42;hsv[1]=.15f;hsv[2]=Math.min(1,.4f+hsv[2]*.58f);b.setPixel(xx,yy,Color.HSVToColor(Color.alpha(color),hsv));}
   }
-  if(d.kind==TownInteriorDef.Kind.INN){
-   // Project-authored linen apron separates the innkeeper silhouette from the reagent seller.
-   Paint apron=new Paint();apron.setAntiAlias(false);apron.setColor(0xffd3c39f);Path shape=new Path();shape.moveTo(55,72);shape.lineTo(73,72);shape.lineTo(78,103);shape.lineTo(51,103);shape.close();new Canvas(b).drawPath(shape,apron);
-   apron.setColor(0xffa88c62);new Canvas(b).drawLine(56,73,52,101,apron);new Canvas(b).drawLine(72,73,77,101,apron);
-   apron.setColor(0xffeee0bf);new Canvas(b).drawLine(57,76,72,76,apron);
-  }
+
   cache.put(d.kind,b);}c.drawBitmap(b,x-64,y-112,p);
  }
 }

@@ -19,6 +19,7 @@ public final class F5mRuntimeBindingAudit {
       return Result.fail("opening quest did not activate");
     }
     // The adapted story mouse is spawned by the accepted quest flow, not at world startup.
+    runtime.enterTownInterior(com.projectdark.mobile.world.TownInteriorDef.forMap("milles_interior_inn"));
     RuntimeState.Monster target = runtime.ensureAdaptedMillesMouse();
 
     runtime.damage(target, target.maxHp);

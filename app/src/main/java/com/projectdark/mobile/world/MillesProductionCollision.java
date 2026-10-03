@@ -47,7 +47,7 @@ public final class MillesProductionCollision {
     rect(b,"weapon_shop",Kind.BUILDING,640f,125f,880f,275f);
     rect(b,"general_shop",Kind.BUILDING,1000f,165f,1240f,335f);
     rect(b,"church",Kind.CHURCH,1370f,150f,1710f,460f);
-    rect(b,"inn",Kind.BUILDING,1860f,430f,2100f,689f);
+    rect(b,"inn",Kind.BUILDING,1880f,575f,2190f,770f);
     // Five additional authored districts; each solid shop uses its visible foot anchor.
     rect(b,"west_armorer",Kind.BUILDING,-60f,530f,180f,739f);
     rect(b,"south_flower_shop",Kind.BUILDING,280f,870f,520f,1079f);

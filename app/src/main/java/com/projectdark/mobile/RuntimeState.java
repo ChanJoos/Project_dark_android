@@ -58,6 +58,9 @@ public final class RuntimeState {
   private final List<RectF> obstacles=new ArrayList<>();
   private final List<Npc> npcs=new ArrayList<>();
   private final List<Monster> monsters=new ArrayList<>();
+  private final List<Monster> suspendedMillesMonsters=new ArrayList<>();
+  private final List<Npc> suspendedMillesNpcs=new ArrayList<>();
+  private final List<RectF> suspendedMillesObstacles=new ArrayList<>();
   private final CombatLedger ledger=new CombatLedger();
   private final SkillEffectState skillEffects=new SkillEffectState();
   public SkillEffectState skillEffects(){return skillEffects;}
@@ -93,16 +96,21 @@ public final class RuntimeState {
   public BootMode bootMode(){return bootMode;}
   public String currentMapId(){return currentMapId;}
   public com.projectdark.mobile.world.WorldMoveTargetController.TileCenter nearestMonsterTileCenter(float x,float y){
+    com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
+    if(d!=null){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter best=null;float score=Float.MAX_VALUE;for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles()){float distance=distanceSquared(x,y,t.x,t.y);if(distance<score){best=t;score=distance;}}return best;}
     if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
       return com.projectdark.mobile.world.PoteFieldDef.nearestNavigationCenter(x,y);
     return MonsterTileCenterLocomotion.nearestAuthoredCenter(x,y);
   }
   public boolean isMonsterTileCenter(float x,float y){
+    com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
+    if(d!=null){for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;return false;}
     if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
       return com.projectdark.mobile.world.PoteFieldDef.isNavigationCenter(x,y);
     return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
   }
   public List<com.projectdark.mobile.world.WorldMoveTargetController.TileCenter> monsterNavigationTiles(){
+    com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);if(d!=null)return d.navigationTiles();
     if(com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(currentMapId))
       return com.projectdark.mobile.world.PoteFieldDef.navigationTiles();
     return MonsterTileCenterLocomotion.authoredCenters();
@@ -134,20 +142,24 @@ public final class RuntimeState {
 
   /** Spawn the explicitly adapted opening-quest mouse only after the player accepts that story. */
   public Monster ensureAdaptedMillesMouse(){
+    if(!"milles_interior_inn".equals(currentMapId))return null;
     for(Monster m:monsters)if("milles_mouse_proto".equals(m.id))return m;
-    float x=1888f,y=768f;
-    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(x,y);
-    Monster mouse=new Monster("milles_mouse_proto","여관 뒤뜰 생쥐 [ADAPTED]",center==null?x:center.x,center==null?y:center.y,24,WorldDef.ASSET_STATUS);
+    float x=com.projectdark.mobile.world.TownInteriorDef.x(10,11),y=com.projectdark.mobile.world.TownInteriorDef.y(10,11);
+    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=nearestMonsterTileCenter(x,y);
+    Monster mouse=new Monster("milles_mouse_proto","생쥐",center==null?x:center.x,center==null?y:center.y,24,WorldDef.ASSET_STATUS);
     monsters.add(mouse);return mouse;
   }
 
   /** Live map transition keeps RPG/combat ledger identity while replacing map-local actors/collision. */
   public void enterTownInterior(com.projectdark.mobile.world.TownInteriorDef d){
-    if(d==null)throw new IllegalArgumentException("interior");currentMapId=d.mapId;
+    if(d==null)throw new IllegalArgumentException("interior");
+    if(WorldDef.ID.equals(currentMapId)){suspendedMillesMonsters.clear();suspendedMillesMonsters.addAll(monsters);suspendedMillesNpcs.clear();suspendedMillesNpcs.addAll(npcs);suspendedMillesObstacles.clear();suspendedMillesObstacles.addAll(obstacles);}
+    currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();obstacles.addAll(d.obstacles());
+    npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
     currentMinX=d.MIN_X;currentMaxX=d.MAX_X;currentMinY=d.MIN_Y;currentMaxY=d.MAX_Y;
     player.spawnX=d.spawnX();player.spawnY=d.spawnY();player.x=player.spawnX;player.y=player.spawnY;
   }
-  public void leaveTownInterior(float x,float y){currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
+  public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
   public void enterPoteField(){
     currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=com.projectdark.mobile.world.PoteFieldDef.MIN_X;currentMaxX=com.projectdark.mobile.world.PoteFieldDef.MAX_X;currentMinY=com.projectdark.mobile.world.PoteFieldDef.MIN_Y;currentMaxY=com.projectdark.mobile.world.PoteFieldDef.MAX_Y;
     obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
@@ -252,7 +264,7 @@ public final class RuntimeState {
     return false;
   }
   private float monsterCollisionRadius(Monster monster){
-    return "POTE_LYCAN".equals(monster.id)?16f:MONSTER_RADIUS;
+    return "milles_mouse_proto".equals(monster.id)?7f:"POTE_LYCAN".equals(monster.id)?16f:MONSTER_RADIUS;
   }
   private boolean npcOccupied(float x,float y,float radius){
     for(Npc n:npcs){float min=radius+NPC_RADIUS+ACTOR_CLEARANCE;if(distance(x,y,n.x,n.y)<min)return true;}
