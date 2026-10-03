@@ -1,0 +1,47 @@
+{
+  "source_commit": "f2e2338b01f8122f1ea68fc0549829160d04a6d3",
+  "source_tree": "d6a7e0d37f0f90511b0b415ae8b23d6d4affca25",
+  "source_branch": "codex/town-interiors-mobile-v86",
+  "main_merged": false,
+  "build_run": 37103214563,
+  "build_job": 111146655605,
+  "build_status": "SUCCESS",
+  "build_started_seoul": "2026-10-03T15:29:16+09:00",
+  "build_completed_seoul": "2026-10-03T15:37:48+09:00",
+  "version_code": 90,
+  "version_name": "0.90-milles-story-quest",
+  "apk_artifact_id": 11267235369,
+  "apk_artifact_name": "PROJECT_DARK-debug-f2e2338b01f8122f1ea68fc0549829160d04a6d3",
+  "apk_artifact_zip_bytes": 30066206,
+  "apk_artifact_zip_sha256": "2375efcadd6a222d3dad2ac705d0265441bf95167df47a568bb7c79cc9b0eee5",
+  "apk_bytes": 30595853,
+  "apk_sha256": "d0ab3320ca4e4bce11012318464c4bbaa70965cd065dbf45f60c0d9c9b8067b9",
+  "apk_checked": {
+    "zip_integrity": "PASS",
+    "android_manifest": "PRESENT",
+    "dex_files": 3,
+    "source_sha_matches_run": true
+  },
+  "device_review_artifact_id": 11267555065,
+  "device_review_artifact_sha256": "c2653d4d4f801be0bc9f6cbf20f00c768429cfc2245fcaa9b2e865c09aaaefea",
+  "device_review_png_count": 58,
+  "journal_capture": "v90-milles-story-quest-journal.png",
+  "journal_capture_sha256": "b51f5221c95a6d58b2f7df7297cffaa6a7419f485c87d334a4c1f7a8a9168030",
+  "verification_scope": [
+    "MillesStoryQuestTest",
+    "FieldTransitionE2ETest",
+    "TownInteriorTest",
+    "F5MAdaptedPrologueQuestAudit",
+    "F5mRuntimeBindingAudit",
+    "F5mRestartPersistenceMatrixTest",
+    "full configured Android CI"
+  ],
+  "implementation": "Adapted Milles story quest journal; named project-authored NPCs James/Hans/Mary; mapped inn interior and turn-in; mouse story fixture appears after quest acceptance and uses shared MonsterAIController/combat resolver path.",
+  "provenance": "Mouse/NPC story details and mouse silhouette remain explicitly ADAPTED/B; no canonical mouse identity, original sprite, original reward or canonical Quest_Master claim.",
+  "acceptance": {
+    "implementation": "BUILD_VERIFIED",
+    "native_capture": "VISUALLY_INSPECTED",
+    "phone_device": "PENDING",
+    "user_visual": "PENDING"
+  }
+}
