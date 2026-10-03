@@ -48,7 +48,7 @@ public final class MillesStoryQuestTest {
     outer: for(WorldMoveTargetController.TileCenter from:tiles){
       for(WorldMoveTargetController.TileCenter to:tiles){
         float d=(float)Math.hypot(to.x-from.x,to.y-from.y);
-        if(d<48||d>=MonsterAIController.CHASE_RADIUS_B)continue;
+        if(d<48||d>=180f)continue;
         if(mouseState.nextMonsterChaseStep(new RuntimeState.Monster("probe","probe",from.x,from.y,1,"test"),to.x,to.y)!=null){start=from;target=to;break outer;}
       }
     }

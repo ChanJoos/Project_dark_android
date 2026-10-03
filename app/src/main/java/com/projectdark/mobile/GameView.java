@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 26400)
+Total output lines: 705
+
 package com.projectdark.mobile;
 
 import android.content.Context;
@@ -369,134 +372,7 @@ public final class GameView extends View {
     fieldReturnX=state.player().x;fieldReturnY=state.player().y;F5mSaveStore.saveFieldReturnPointActive(fieldReturnX,fieldReturnY);autoAttackEnabled=false;combat.clearTarget();interaction.cancel();worldAdapter.cancelForAction();
     state.enterPoteField();inPoteField=true;inventoryOpen=statsOpen=equipmentOpen=false;skillWindow.close();
     poteFieldAdapter=new WorldRuntimeAdapter(state,logicalViewportWidth,H,PoteFieldDef.MIN_X,PoteFieldDef.MAX_X,PoteFieldDef.MIN_Y,PoteFieldDef.MAX_Y,PoteFieldDef.navigationTiles(),PoteFieldDef.obstacles(),true);
-    poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();action=Action.IDLE;joy=false;vx=vy=0;directStepClock=0f;checkpoint();showFeedback("포테의 숲 · 1구역 [B]",FeedbackTone.INFO);
-  }
-  private void leavePoteField(){
-    cancelSkillApproach();skillVfx.clear();activeSkillVisualId=null;
-    if(poteFieldAdapter!=null)poteFieldAdapter.cancel();combat.clearTarget();inPoteField=false;poteFieldAdapter=null;
-    state.enterMillesFromField(fieldReturnX,Math.max(1510f,fieldReturnY-32f));worldAdapter.snapCameraToPlayer();camera=worldAdapter.camera();action=Action.IDLE;joy=false;vx=vy=0;checkpoint();showFeedback("밀레스",FeedbackTone.INFO);
-  }
-  private void updatePoteField(float dt){
-    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);
-    combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
-    if(!state.player().alive){cancelSkillApproach();autoAttackEnabled=false;action=Action.IDLE;playerFacing.endAttack();combat.clearTarget();combat.cancelApproach();poteFieldAdapter.cancelForAction();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;return;}
-    if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;activeSkillVisualId=null;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
-    if(state.skillEffects().rooted("player")){activeWorld().cancelForAction();joy=false;return;}
-    tickSkillApproach(dt);if(isActing())return;
-    WorldRuntimeAdapter.FrameSnapshot navigation=poteFieldAdapter.tickNavigation(dt*state.skillEffects().speed());
-    if(PoteFieldDef.atExit(state.player().x,state.player().y)){leavePoteField();return;}
-    if(joy&&(vx!=0||vy!=0)){directStepClock=Math.max(0f,directStepClock-dt*state.skillEffects().speed());if(!poteFieldAdapter.presentationMoving()&&directStepClock<=0f){WorldMoveTargetController.Snapshot step=poteFieldAdapter.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;applyWorldFacing(step.lastStepDirection);consumeMoveOutcome(step);}action=poteFieldAdapter.presentationMoving()?Action.WALK:Action.IDLE;if(action==Action.WALK)walkClock+=dt;combat.cancelApproach();return;}
-    WorldMoveTargetController.Snapshot move=navigation.movement;if(move.status==WorldMoveTargetController.Status.MOVING||poteFieldAdapter.presentationMoving()){if(move.lastStepDirection!=null)applyWorldFacing(move.lastStepDirection);action=Action.WALK;walkClock+=dt;return;}consumeMoveOutcome(move);if(!isActing())action=Action.IDLE;tickSkillApproach(0);if(skillApproach.skillId==null&&!isActing())tickAutoAttack(move);
-  }
-  private void drawPoteField(Canvas c){p.setColor(0xff315f2c);c.drawRect(0,0,logicalViewportWidth,H,p);poteFieldRenderer.draw(c,poteFieldAdapter);}
-
-  private void enterReagentShop(){enterTownInterior(TownInteriorDef.ALL.get(0));}
-  private void restoreTownInterior(){TownInteriorDef d=TownInteriorDef.forMap(F5mSaveStore.savedMapIdActive());if(d==null)return;float[] r=F5mSaveStore.savedFieldReturnPointActive();millesReturnX=r[0];millesReturnY=r[1];townInterior=d;inReagentShop=true;state.enterTownInterior(d);F5mSaveStore.restoreRuntimeActive(state);createTownAdapter();}
-  private void createTownAdapter(){reagentShopAdapter=new WorldRuntimeAdapter(state,logicalViewportWidth,H,TownInteriorDef.MIN_X,TownInteriorDef.MAX_X,TownInteriorDef.MIN_Y,TownInteriorDef.MAX_Y,townInterior.navigationTiles(),townInterior.obstacles());reagentShopAdapter.snapCameraToPlayer();camera=reagentShopAdapter.camera();}
-  private void enterTownInterior(TownInteriorDef d){cancelSkillApproach();skillVfx.clear();activeSkillVisualId=null;autoAttackEnabled=false;
-    millesReturnX=state.player().x;millesReturnY=state.player().y;F5mSaveStore.saveFieldReturnPointActive(millesReturnX,millesReturnY);
-    townInterior=d;inReagentShop=true;merchantApproach=false;reagentShopOpen=false;innDialogueOpen=false;townWindow.close();inventoryOpen=statsOpen=equipmentOpen=false;skillWindow.close();
-    interaction.cancel();combat.cancelApproach();combat.clearTarget();worldAdapter.cancelForAction();state.enterTownInterior(d);createTownAdapter();if(d.kind==TownInteriorDef.Kind.INN&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY){reagentShopAdapter.requestGroundWorld(d.customerX(),d.customerY());}action=Action.IDLE;joy=false;vx=vy=0;directStepClock=0;checkpoint();showFeedback(d.title,FeedbackTone.INFO);
-  }
-  private void leaveReagentShop(){cancelSkillApproach();skillVfx.clear();activeSkillVisualId=null;reagentShopAdapter.cancel();townWindow.close();merchantApproach=false;inReagentShop=false;reagentShopOpen=false;reagentShopAdapter=null;
-    // Choose a legal canonical tile outside every door radius, preventing immediate re-entry.
-    float rx=millesReturnX,ry=millesReturnY;float best=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:worldAdapter.navigationTiles()){float dx=t.x-millesReturnX,dy=t.y-millesReturnY,dist=dx*dx+dy*dy;if(dist>1&&dist<best&&worldAdapter.canPlayerOccupy(t.x,t.y)&&worldAdapter.portalAt(t.x,t.y)==null){rx=t.x;ry=t.y;best=dist;}}
-    state.leaveTownInterior(rx,ry);worldAdapter.snapCameraToPlayer();camera=worldAdapter.camera();action=Action.IDLE;joy=false;vx=vy=0;checkpoint();showFeedback("밀레스",FeedbackTone.INFO);
-  }
-  private void updateReagentShop(float dt){feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);if(reagentShopAdapter==null)return;reagentShopOpen=townWindow.isOpen();if(reagentShopOpen||innDialogueOpen){action=Action.IDLE;return;}
-    WorldRuntimeAdapter.FrameSnapshot nav=reagentShopAdapter.tickNavigation(dt);
-    if(joy&&(vx!=0||vy!=0)){directStepClock=Math.max(0,directStepClock-dt);if(!reagentShopAdapter.presentationMoving()&&directStepClock<=0){WorldMoveTargetController.Snapshot step=reagentShopAdapter.step(joystickDirection());directStepClock=WorldMoveTargetController.TILE_STEP_SECONDS;applyWorldFacing(step.lastStepDirection);}}
-    if(nav.movement.lastStepDirection!=null)applyWorldFacing(nav.movement.lastStepDirection);if(reagentShopAdapter.presentationMoving()){action=Action.WALK;walkClock+=dt;}else action=Action.IDLE;
-    if(merchantApproach&&!reagentShopAdapter.presentationMoving()&&Math.abs(state.player().x-townInterior.customerX())<.01&&Math.abs(state.player().y-townInterior.customerY())<.01){merchantApproach=false;townWindow.open(townInterior,state);reagentShopOpen=true;reagentShopAdapter.cancelForAction();}
-    if(townInterior.kind==TownInteriorDef.Kind.INN&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY&&!reagentShopAdapter.presentationMoving()&&Math.abs(state.player().x-townInterior.customerX())<.01&&Math.abs(state.player().y-townInterior.customerY())<.01){innDialogueOpen=true;reagentShopAdapter.cancelForAction();}
-    if(Math.abs(state.player().x-townInterior.exitX())<.01&&Math.abs(state.player().y-townInterior.exitY())<.01)leaveReagentShop();
-  }
-  private void drawReagentShopWorld(Canvas c){if(reagentShopAdapter==null)return;townRenderer.ground(c,reagentShopAdapter,townInterior);java.util.List<Runnable> draws=new java.util.ArrayList<>();java.util.List<Float> depths=new java.util.ArrayList<>();
-    for(TownInteriorDef.Prop o:townInterior.props){draws.add(()->townRenderer.prop(c,reagentShopAdapter,o));depths.add(o.y());}
-    draws.add(()->{WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());townNpcRenderer.draw(c,townInterior,m.x,m.y);drawTownNpcName(c,townInterior.npcName,m.x,m.y);});depths.add(townInterior.npcY());
-    draws.add(()->{WorldCameraTransform.Point q=reagentShopAdapter.worldToScreen(reagentShopAdapter.presentationPlayerX(),reagentShopAdapter.presentationPlayerY());CharacterVisualBinding v=CharacterVisualBinding.from(state.rpg());characterRenderer.draw(c,new CharacterRenderer.Pose(q.x,q.y,characterDirection(),reagentShopAdapter.presentationMoving()?CharacterRenderer.State.WALK:CharacterRenderer.State.IDLE,walkClock,0,1,false,v.equipmentVisualRef(),v.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));});depths.add(reagentShopAdapter.presentationPlayerY());
-    java.util.List<Integer> order=new java.util.ArrayList<>();for(int i=0;i<draws.size();i++)order.add(i);java.util.Collections.sort(order,(a,b)->Float.compare(depths.get(a),depths.get(b)));for(int i:order)draws.get(i).run();
-  }
-  private void drawReagentShop(Canvas c){townWindow.draw(c,hudCenterOffset);}
-  private void drawInnDialogue(Canvas c){panel(c,190,330,770,468);text(c,"메리 · 밀레스 여관 [ADAPTED]",218,360,13);String line=f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY?"뒤뜰의 생쥐를 정리했군요. 약속한 보급품을 받아요.":"어서 와요. 따뜻한 식사와 방이 준비되어 있어요.";drawWrappedText(c,line,218,388,500,11,18);if(f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,650,442),9,9,p);text(c,"보급품 받기",525,430,10);}else text(c,"화면을 터치해 닫기",218,444,9);}
-  private boolean handleReagentShopTouch(MotionEvent e,float x,float y){if(e.getActionMasked()==MotionEvent.ACTION_DOWN){if(innDialogueOpen){if(f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY&&inside(x,y,500,408,650,442)){F5mTurnInCoordinator.Result tr=F5mQuestUiFlow.confirmTurnIn(f5mQuest,state.rpg());if(tr==F5mTurnInCoordinator.Result.COMPLETED){state.applyDerivedGrowth();checkpoint();showReward(F5mQuestUiFlow.completionMessage(tr));}else showFeedback(F5mQuestUiFlow.completionMessage(tr),FeedbackTone.WARN);innDialogueOpen=false;return true;}innDialogueOpen=false;return true;}if(townWindow.isOpen()){townWindow.touch(x,y,hudCenterOffset,()->F5mSaveStore.writable()&&F5mSaveStore.checkpointActive());reagentShopOpen=townWindow.isOpen();return true;}if(reagentShopAdapter==null)return true;
-    WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());if(dist(x,y,m.x,m.y-24)<=36){merchantApproach=false;joy=false;vx=vy=0;reagentShopAdapter.cancelForAction();if(townInterior.kind==TownInteriorDef.Kind.INN){innDialogueOpen=true;}else{townWindow.open(townInterior,state);reagentShopOpen=true;}action=Action.IDLE;return true;}
-    if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){merchantApproach=false;reagentShopAdapter.cancelForDirectInput();joy=true;directStepClock=0;stick(x,y);return true;}
-    if(!isHudSurface(x,y)){merchantApproach=false;WorldCameraTransform.Point w=reagentShopAdapter.screenToWorld(x,y);reagentShopAdapter.requestGroundWorld(w.x,w.y);}return true;}
-    if(e.getActionMasked()==MotionEvent.ACTION_MOVE&&joy){stick(x,y);return true;}if(e.getActionMasked()==MotionEvent.ACTION_UP||e.getActionMasked()==MotionEvent.ACTION_CANCEL){joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;}return true;
-  }
-
-  private void drawWorld(Canvas c){p.setColor(0xff4f6928);c.drawRect(0,0,logicalViewportWidth,H,p);mapRenderer.draw(c,worldAdapter);}
-  private void drawTapMarker(Canvas c){if(tapMarkerClock<=0)return;float q=Math.max(0f,Math.min(1f,tapMarkerClock/.7f));p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2.5f);p.setColor(0xD8FFD86B);c.drawCircle(tapMarkerX,tapMarkerY,8f+8f*(1f-q),p);p.setStyle(Paint.Style.FILL);p.setColor(0x66FFD86B);c.drawCircle(tapMarkerX,tapMarkerY,3.5f,p);}
-  private void drawTownNpcName(Canvas c,String name,float x,float y){p.setTextSize(10);p.setTypeface(Typeface.DEFAULT_BOLD);float w=p.measureText(name);text(c,name,x-w/2,y-48,10);}
-  private void drawNpcs(Canvas c){for(RuntimeState.Npc n:state.npcs()){CharacterRenderer.Direction facing=WorldEntityPresentationRenderer.directionToward(n.x,n.y,state.player().x,state.player().y,CharacterRenderer.Direction.SE);boolean selected=interaction.approachNpc()==n;worldEntityRenderer.draw(c,new WorldEntityPresentationRenderer.Pose(WorldEntityPresentationRenderer.Kind.NPC,n.x,n.y,facing,CharacterRenderer.State.IDLE,0f,0f,0f,CharacterRenderer.EffectFamily.NONE,false,selected,"PENDING_CROP/milles/npc/"+n.id,null));p.setTextSize(9);p.setTypeface(Typeface.create("sans-serif-medium",Typeface.NORMAL));p.setColor(0xfff6e8c8);float tw=p.measureText(n.name);p.setColor(0xB51C1710);c.drawRoundRect(new RectF(n.x-tw/2-4,n.y-36,n.x+tw/2+4,n.y-23),4,4,p);p.setColor(0xfff6e8c8);c.drawText(n.name,n.x-tw/2,n.y-26,p);if(selected){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.7f);p.setColor(0xfff0d17a);c.drawCircle(n.x,n.y-23,17,p);p.setStyle(Paint.Style.FILL);}}}
-  private void drawMonsters(Canvas c){RuntimeState.Monster selected=combat.target();for(RuntimeState.Monster m:state.monsters()){if(!m.alive)continue;CharacterRenderer.Direction facing=inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)?PoteForestMonsterShowcase.presentationFacing(m):m.visualFacing.presentation();boolean isSelected=selected==m;CharacterRenderer.State poseState=WorldEntityPresentationRenderer.presentationState(m);float poseClock=m.attackPrimed?.24f-m.attackWindup:m.detourClock;float poseDuration=m.attackPrimed?.24f:1f;if(inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)){String pose=PoteForestMonsterShowcase.poseFor(m);poteFieldRenderer.drawMonsterTestPose(c,m.id,pose,facing,PoteForestMonsterShowcase.attackProgress(m),m.animationClock,m.x,m.y,m.hitFlash>0f);p.setTypeface(Typeface.create("sans-serif-medium",Typeface.NORMAL));p.setTextAlign(Paint.Align.CENTER);p.setTextSize(8);p.setColor(isSelected?0xffffe38b:0xfff3e8cd);c.drawText(m.name.replace(" [테스트 배치]",""),m.x,m.y-("POTE_LYCAN".equals(m.id)?61f:45f),p);p.setTextAlign(Paint.Align.LEFT);}else worldEntityRenderer.draw(c,new WorldEntityPresentationRenderer.Pose(WorldEntityPresentationRenderer.Kind.MONSTER,m.x,m.y,facing,poseState,m.detourClock,poseClock,poseDuration,m.attackPrimed?CharacterRenderer.EffectFamily.PUNCH:CharacterRenderer.EffectFamily.NONE,m.hitFlash>0f,isSelected,"PENDING_CROP/milles/monster/"+m.id,null));if(m.attackPrimed&&!inPoteField){float q=1f-Math.min(1f,m.attackWindup/.24f);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.6f+1.8f*q);p.setColor(0xaaff7755);c.drawCircle(m.x,m.y-18,18+6*q,p);p.setStyle(Paint.Style.FILL);}float barTop=m.y-((inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id))?("POTE_LYCAN".equals(m.id)?53f:37f):40f);bar(c,m.x-18,barTop,m.x+18,barTop+5f,0xffd63442,m.hp/(float)m.maxHp);if(m.damagePopupClock>0){p.setTextSize(12);p.setTypeface(Typeface.create("sans-serif-medium",Typeface.NORMAL));p.setColor(0xffffdc72);String d="-"+m.lastDamage;float tw=p.measureText(d);float damageTop=inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)?("POTE_LYCAN".equals(m.id)?78f:62f):47f;c.drawText(d,m.x-tw/2,m.y-damageTop-(.65f-m.damagePopupClock)*20,p);}}}
-  static float monsterFacingX(CharacterRenderer.Direction d){return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-3f:3f;}
-  static float monsterFacingY(CharacterRenderer.Direction d){return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-2f:2f;}
-  private CharacterRenderer.Direction characterDirection(){return playerFacing.presentation();}
-  private CharacterRenderer.State characterState(){if(!state.player().alive)return CharacterRenderer.State.DEAD;switch(action){case WALK:return CharacterRenderer.State.WALK;case CAST:return CharacterRenderer.State.CAST;case SKILL:case KICK:return CharacterRenderer.State.SKILL;case SWING:case THRUST:case THROW:case PUNCH:return CharacterRenderer.State.ATTACK;default:return CharacterRenderer.State.IDLE;}}
-  private CharacterRenderer.EffectFamily characterEffectFamily(){switch(action){case CAST:return CharacterRenderer.EffectFamily.CAST;case THROW:return CharacterRenderer.EffectFamily.THROW;case PUNCH:return CharacterRenderer.EffectFamily.PUNCH;case KICK:return CharacterRenderer.EffectFamily.KICK;case SKILL:return CharacterRenderer.EffectFamily.SKILL;default:return CharacterRenderer.EffectFamily.NONE;}}
-  static float skillPosePhase(float clock,float duration,float hitTime){return clock<hitTime?clock/Math.max(.001f,hitTime)/3f:1f/3f+(2f/3f)*(clock-hitTime)/Math.max(.001f,duration-hitTime);}
-  float renderedPlayerWorldX(){return activeWorld().presentationPlayerX();}
-  float renderedPlayerWorldY(){return activeWorld().presentationPlayerY();}
-  private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
-    SkillPresentationCatalog.Entry selected=skillPresentation.get(activeSkillVisualId);
-    if(selected!=null&&isActing()){
-      SkillActionContract.Rule poseRule=SkillActionContract.get(activeSkillVisualId);
-      float contact=poseRule==null?(action==Action.CAST?.24f:.14f):poseRule.contact;
-      // Dara's preparation is standing. Raised arms belong only to the accepted release,
-      // on the same contact clock as damage/recipient FX; never to button-down.
-      if("CHARGE_CAST".equals(selected.motion)&&actionClock<contact){
-        if("mm001".equals(characterBodyIdentity))characterRenderer.draw(c,new CharacterRenderer.Pose(pose.x,pose.y,pose.direction,CharacterRenderer.State.IDLE,walkClock,0,1,false,pose.equipmentVisualRef,pose.weaponVisualRef,pose.effectVisualRef,CharacterRenderer.EffectFamily.NONE));
-        else skillBodyRenderer.draw(c,pose,characterBodyIdentity,"IDLE",0);
-        return;
-      }
-      if("SWING".equals(selected.motion)&&"mm001".equals(characterBodyIdentity)){characterRenderer.draw(c,new CharacterRenderer.Pose(pose.x,pose.y,pose.direction,CharacterRenderer.State.ATTACK,walkClock,actionClock,stateDuration,false,pose.equipmentVisualRef,pose.weaponVisualRef,pose.effectVisualRef,pose.effectFamily,AnimationAction.SWING));return;}
-      if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,selected.motion,skillPosePhase(actionClock,stateDuration,contact)))return;
-    }
-    characterRenderer.draw(c,pose);}
-
-  private void panel(Canvas c,float l,float t,float r,float b){p.setStyle(Paint.Style.FILL);p.setColor(0x8A17120E);c.drawRoundRect(new RectF(l,t,r,b),7,7,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.3f);p.setColor(0xA0A86F3B);c.drawRoundRect(new RectF(l+.5f,t+.5f,r-.5f,b-.5f),7,7,p);p.setStyle(Paint.Style.FILL);}
-  private void modalPanel(Canvas c,float l,float t,float r,float b){p.setStyle(Paint.Style.FILL);p.setColor(0xED11151A);c.drawRoundRect(new RectF(l,t,r,b),12,12,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.4f);p.setColor(0xAACFB171);c.drawRoundRect(new RectF(l+.5f,t+.5f,r-.5f,b-.5f),12,12,p);p.setStyle(Paint.Style.FILL);}
-  private void text(Canvas c,String s,float x,float y,float size){p.setTypeface(Typeface.create("sans-serif",Typeface.BOLD));p.setTextSize(size);p.setColor(0xfff4ead5);c.drawText(s,x,y,p);p.setTypeface(Typeface.create("sans-serif",Typeface.NORMAL));}
-  private void mutedText(Canvas c,String s,float x,float y,float size){p.setTypeface(Typeface.create("sans-serif",Typeface.NORMAL));p.setTextSize(size);p.setColor(0xffb8aa91);c.drawText(s,x,y,p);}
-  private void bar(Canvas c,float l,float t,float r,float b,int color,float ratio){ratio=Math.max(0,Math.min(1,ratio));p.setColor(0xCC171416);c.drawRoundRect(new RectF(l,t,r,b),(b-t)*.3f,(b-t)*.3f,p);p.setColor(color);c.drawRoundRect(new RectF(l,t,l+(r-l)*ratio,b),(b-t)*.3f,(b-t)*.3f,p);}
-
-  private void drawHud(Canvas c){drawTopLeftStatus(c);int statusIndex=0;for(SkillEffectState.Effect e:state.skillEffects().playerEffects()){if(statusIndex>=3)break;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(e.source);mutedText(c,(a==null?e.kind:a.name)+" "+Math.max(1,(int)Math.ceil(e.remaining))+"초",18,137+statusIndex++*12,8);}ActiveQuestTracker.Quest tracked=ActiveQuestTracker.current(f5mQuest,quest2);if(tracked==ActiveQuestTracker.Quest.PROLOGUE)drawQuest(c);else if(tracked==ActiveQuestTracker.Quest.GROWTH_2)drawQuest2(c);else if(PostF5mHudPresentation.showNextPurpose(f5mQuest.state()))drawNextPurpose(c);drawTarget(c);drawMinimap(c);drawQuestJournalButton(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawCombatCluster(c);if(questJournalOpen)drawQuestJournal(c);}
-  private void drawTopLeftStatus(Canvas c){
-    panel(c,14,12,264,124);
-    Integer level=state.rpg().normalLevel();
-    p.setColor(0xD8201B18);c.drawRect(20,20,70,82,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(0xB7A78966);c.drawRect(20.5f,20.5f,69.5f,81.5f,p);p.setStyle(Paint.Style.FILL);
-    centeredText(c,"LV",45,39,8,false);centeredText(c,level==null?"?":String.valueOf(level),45,69,20,true);
-    drawReferenceResourceBar(c,78,28,258,42,"HP",state.player().hp,state.player().maxHp);
-    drawReferenceResourceBar(c,78,58,258,72,"MP",state.player().mp,state.player().maxMp);
-    Float ratio=PostF5mHudPresentation.expRatio(state.rpg());float q=ratio==null?0f:Math.max(0f,Math.min(1f,ratio));
-    p.setColor(0xD8201B18);c.drawRect(20,87,258,117,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0x967D7060);c.drawRect(20.5f,87.5f,257.5f,116.5f,p);p.setStyle(Paint.Style.FILL);
-    text(c,"EXP",31,106,8);
-    p.setColor(0xff101211);c.drawRect(80,94,251,110,p);p.setColor(0xff158143);c.drawRect(82,96,80+171*q,108,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xB9919A8C);c.drawRect(80.5f,94.5f,250.5f,109.5f,p);p.setStyle(Paint.Style.FILL);
-    centeredText(c,Math.round(q*100f)+"%",165,106,7,true);
-  }
-  private void centeredText(Canvas c,String value,float cx,float baseline,float size,boolean bold){p.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));p.setTextSize(size);p.setColor(bold?0xfff4ead5:0xffb8aa91);c.drawText(value,cx-p.measureText(value)/2f,baseline,p);p.setTypeface(Typeface.create("sans-serif",Typeface.NORMAL));}
-  private void drawReferenceResourceBar(Canvas c,float l,float t,float r,float b,String label,int value,int max){
-    float radius=4f;
-    RectF outer=new RectF(l-4,t-3,r+4,b+3),inner=new RectF(l,t,r,b);
-    p.setShadowLayer(2f,1f,2f,0xB9000000);p.setShader(new LinearGradient(l,t,l,b,new int[]{0xff66513b,0xff201b18,0xff493522},null,Shader.TileMode.CLAMP));c.drawRoundRect(outer,radius+1,radius+1,p);p.clearShadowLayer();p.setShader(null);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1f);p.setColor(0xffb49a72);c.drawRoundRect(outer,radius+1,radius+1,p);p.setStrokeWidth(1);p.setColor(0xff110f0d);c.drawRoundRect(new RectF(l-1,t-1,r+1,b+1),radius,radius,p);p.setStyle(Paint.Style.FILL);
-    float q=Math.max(0f,Math.min(1f,value/(float)Math.max(1,max)));
-    p.setShader(new LinearGradient(l,t,l,b,new int[]{0xff121416,0xff292a28,0xff111211},null,Shader.TileMode.CLAMP));c.drawRoundRect(inner,radius,radius,p);p.setShader(null);
-    int[] fill=label.equals("HP")?new int[]{0xff8b2526,0xffd2503f,0xffa42d2b}:new int[]{0xff19415e,0xff4d83a4,0xff28516f};
-    float filled=l+(r-l)*q;
-    if(filled>l){p.setShader(new LinearGradient(l,t,l,b,fill,null,Shader.TileMode.CLAMP));c.drawRoundRect(new RectF(l,t,filled,b),radius,radius,p);p.setShader(null);}
-    if(filled>l+4){p.setShader(new LinearGradient(l,t+1,l,t+7,new int[]{0x38ffffff,0x00ffffff},null,Shader.TileMode.CLAMP));c.drawRoundRect(new RectF(l+2,t+2,filled-2,t+7),2,2,p);p.setShader(null);}
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1f);p.setColor(0xA8090807);c.drawRoundRect(inner,radius,radius,p);p.setStyle(Paint.Style.FILL);
-    String valueText=label+"   "+value+" / "+max;p.setTypeface(Typeface.create("sans-serif",Typeface.BOLD));p.setTextSize(10);float width=p.measureText(valueText);p.setShadowLayer(1.5f,0,1,0xff080706);text(c,valueText,(l+r-width)/2f,(t+b)/2f+3.5f,10);p.clearShadowLayer();
-  }
-  private void rightAlignedText(Canvas c,String value,float right,float baseline,float size){p.setTextSize(size);p.setTypeface(Typeface.create("sans-serif",Typeface.BOLD));float width=p.measureText(value);text(c,value,right-width,baseline,size);}
-  private void drawQuest(Canvas c){F5mAdaptedPrologueQuest.State q=f5mQuest.state();String task;String hint;int progress=f5mQuest.currentCount(),goal=f5mQuest.requiredCount();if(q==F5mAdaptedPrologueQuest.State.AVAILABLE){task="제임스에게 말을 걸어 뒤뜰 의뢰 받기";hint="탭하면 제임스에게 이동";progress=0;}else if(q==F5mAdaptedPrologueQuest.State.ACTIVE){task="여관 뒤뜰 생쥐 처치";hint="탭하면 퀘스트 목표로 이동";}else if(q==F5mAdaptedPrologueQuest.State.RETURN_READY){task="여관의 메리에게 결과 보고";hint="탭하면 여관 입구로 이동";progress=goal;}else{task="첫 훈련 완료";hint="다음 이야기를 확인하세요";progress=goal;}drawQuestCard(c,"뒤뜰의 소란",task,progress,goal,hint,q==F5mAdaptedPrologueQuest.State.RETURN_READY||q==F5mAdaptedPrologueQuest.State.COMPLETED);}
-  private void drawQuest2(Canvas c){GrowthQuest2.State q=quest2.state();String task;String hint;int progress=quest2.currentCount(),goal=quest2.requiredCount();if(q==GrowthQuest2.State.AVAILABLE){task="안내인에게 말을 걸어 의뢰 받기";hint="보상  EXP 15,000  ·  Gold 250";progress=0;}else if(q==GrowthQuest2.State.ACTIVE){task="훈련용 몬스터 처치";hint="보상  EXP 15,000  ·  Gold 250";}else{task="안내인에게 돌아가 보상 받기";hint="보상  EXP 15,000  ·  Gold 250";progress=goal;}drawQuestCard(c,"성장 훈련",task,progress,goal,hint,q==GrowthQuest2.State.RETURN_READY);}
+    poteFieldAdapter.snapCameraToPlayer…6400 tokens truncated… 말을 걸어 의뢰 받기";hint="보상  EXP 15,000  ·  Gold 250";progress=0;}else if(q==GrowthQuest2.State.ACTIVE){task="훈련용 몬스터 처치";hint="보상  EXP 15,000  ·  Gold 250";}else{task="안내인에게 돌아가 보상 받기";hint="보상  EXP 15,000  ·  Gold 250";progress=goal;}drawQuestCard(c,"성장 훈련",task,progress,goal,hint,q==GrowthQuest2.State.RETURN_READY);}
   private void drawNextPurpose(Canvas c){drawQuestCard(c,PostF5mHudPresentation.purposeTitle(f5mQuest.state()),PostF5mHudPresentation.purposeBody(f5mQuest.state()),0,0,"탭하면 퀘스트 안내",false);}
   private void drawQuestCard(Canvas c,String title,String task,int progress,int goal,String hint,boolean ready){
     float top=132,bottom=questCollapsed?172:236;panel(c,14,top,264,bottom);p.setColor(0xFFBD9356);c.drawRect(15,141,18,160,p);
