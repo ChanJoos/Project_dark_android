@@ -38,9 +38,9 @@ public class ChungryongWeaponTest {
   @Test public void sourceWeaponFramesAndBothBodiesHaveDistinctFourWayMotion()throws Exception{
     SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer body=new SkillBodyRenderer(c,catalog);ChungryongWeaponRenderer weapon=new ChungryongWeaponRenderer(c);assertTrue(cyan(weapon.icon)>50);
     for(String identity:new String[]{"mm001","wm001"})for(String motion:ChungryongWeaponRenderer.MOTIONS){
-      Bitmap sheet=Bitmap.createBitmap(720,440,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(sheet);out.drawColor(0xff403b34);int col=0;
+      Bitmap sheet=Bitmap.createBitmap(720,550,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(sheet);out.drawColor(0xff403b34);int col=0;
       for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-        for(int n=0;n<4;n++){float q=new float[]{0,.2f,1f/3f,.85f}[n];Bitmap b=Bitmap.createBitmap(180,110,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(b);
+        for(int n=0;n<5;n++){float q=new float[]{0,.2f,.28f,1f/3f,.85f}[n];Bitmap b=Bitmap.createBitmap(180,110,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(b);
           CharacterRenderer.Pose p=new CharacterRenderer.Pose(90,92,d,CharacterRenderer.State.ATTACK,0,q,1,false,"mu0000001,mh172,ml228",ChungryongWeaponRenderer.APPEARANCE,null,CharacterRenderer.EffectFamily.NONE,AnimationAction.SWING);
           assertTrue(body.drawChungryong(canvas,p,identity,motion,q));assertTrue("visible blade "+identity+motion+d+n,cyan(b)>20);out.drawBitmap(b,col*180,n*110,null);b.recycle();}
         col++;
