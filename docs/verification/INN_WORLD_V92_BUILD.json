@@ -1,0 +1,66 @@
+{
+  "source_commit": "d1cf4d5e90b650ad8f2fe50a41972fd384b7ea01",
+  "source_tree": "489c9d2b0a85cd881a5d3c98f5e75bc5e3184adf",
+  "source_branch": "codex/town-interiors-mobile-v86",
+  "main_merged": false,
+  "build_run": 37118998262,
+  "build_job": 111191279217,
+  "status": "success",
+  "build_started_utc": "2026-10-03T11:14:05Z",
+  "build_completed_utc": "2026-10-03T11:22:31Z",
+  "build_completed_seoul": "2026-10-03T20:22:31+09:00",
+  "version_code": 92,
+  "version_name": "0.92-inn-world-objects",
+  "apk_artifact": 11272203790,
+  "review_artifact": 11272333655,
+  "apk_bytes": 31229157,
+  "apk_sha256": "2243e830ec86562747cd7b56f21e4b25fc600e174cf388e212ae943d01b85b4d",
+  "apk_zip_sha256": "a810de7e8e35c09bed510277dff3772d99c2ff03f062a6b08c6670773511a55c",
+  "review_zip_sha256": "3833218074c6e740c9d0eab917f4392d0f81f9f943859a1ea6b6537ddb6b83f0",
+  "checks": {
+    "zip": "PASS",
+    "manifest": "version92 com.projectdark.mobile",
+    "assets_identical_to_v91": 942,
+    "configured_workflow": "ALL_PASS",
+    "native_inn_tests": "InnWorldObjectTest + InnSourceRepairTest + MillesStoryQuestTest + FieldTransitionE2ETest"
+  },
+  "implementation": {
+    "renderer": "InnSourceRenderer removed; shared shop floor/wall renderer, separately authored tile-footprint furniture",
+    "tables": 3,
+    "chairs": 12,
+    "counter_modules": 11,
+    "reachable_floor_cells": 115,
+    "rugs": "walkable ground-only",
+    "collision": "all solid occupied cells excluded from movement/AI navigation",
+    "depth": "footprint ground-depth sort"
+  },
+  "manual_native_review": {
+    "artifact": 11271994990,
+    "source": "843af52b0c85007f9135719c310e87c878ed923a",
+    "runtime_identical_to_final": true,
+    "only_final_source_difference": "MillesStoryQuestTest expected asset IDs",
+    "inspected": [
+      "v92-inn-entry-world-objects.png",
+      "v92-inn-depth-5-6.png",
+      "v92-inn-depth-6-8.png",
+      "v92-inn-walk-3-6.png",
+      "v92-inn-walk-8-10.png",
+      "v91-inn-chase.png",
+      "v91-inn-mary-report.png"
+    ],
+    "final_review_download": "Archive exceeds32MiB executor transfer limit; direct signed transfer403. Manual review uses same runtime before test-only correction; final full native tests PASS."
+  },
+  "limitations": [
+    "Native tests/captures are not handset installation or user visual acceptance",
+    "Furniture geometry/materials are authored reconstruction, not exact original asset pixels",
+    "Mary identity/full original mouse animation/original full room topology remain unresolved"
+  ],
+  "acceptance": {
+    "implementation": "BUILD_VERIFIED",
+    "native_runtime": "VERIFIED_AUTOMATED_SCOPE",
+    "manual_scene": "INSPECTED_IDENTICAL_RUNTIME",
+    "handset": "PENDING",
+    "user_visual": "PENDING",
+    "prior_v91": "DEVICE_FAILED_USER_VISUAL_REPORT"
+  }
+}

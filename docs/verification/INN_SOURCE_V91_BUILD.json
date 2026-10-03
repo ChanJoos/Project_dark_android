@@ -1,0 +1,53 @@
+{
+  "source_commit": "90a00e1c4008545271aa759c52f99337da40720c",
+  "source_tree": "276f1c82f1448c70b77042c57bf0dc3d0f2e440c",
+  "source_branch": "codex/town-interiors-mobile-v86",
+  "main_merged": false,
+  "build_run": 37116911615,
+  "build_job": 111185379271,
+  "build_status": "SUCCESS",
+  "build_started_seoul": "2026-10-03T19:35:23+09:00",
+  "build_completed_seoul": "2026-10-03T19:42:19+09:00",
+  "version_code": 91,
+  "version_name": "0.91-inn-source-repair",
+  "apk_artifact_id": 11271862430,
+  "review_artifact_id": 11271687714,
+  "apk_bytes": 31226293,
+  "apk_sha256": "283ddf1165d0e9eb65445faf2e370ec5d76fd992bc03cddf89314b4ba5b8439f",
+  "apk_zip_sha256": "10638072247908625e23fb940a1fc45052d8beaf39d0112876ce46ad327965af",
+  "review_zip_sha256": "cde53dfc6dcaec50b2f63b496c334a0d6409a3744b78897a0800c08eec3fc06a",
+  "checked": {
+    "manifest_version": 91,
+    "manifest_package": "com.projectdark.mobile",
+    "zip_integrity": "PASS",
+    "packaged_inn_assets": 13,
+    "source_asset_bytes": "EXACT_MATCH"
+  },
+  "tests": [
+    "InnSourceRepairTest",
+    "MillesStoryQuestTest",
+    "TownInteriorTest",
+    "FieldTransitionE2ETest",
+    "full configured workflow"
+  ],
+  "manual_captures_inspected": [
+    "v91-inn-entry.png",
+    "v91-inn-mary-report.png",
+    "v91-inn-actors.png",
+    "v91-inn-exterior.png"
+  ],
+  "scope": "Native actual GameView entry/select/chase/AUTO/defeat/Mary report/reward/HP checkpoint/restart; early exterior door; original shared controls and regression suite.",
+  "limitations": [
+    "Phone installation and user visual acceptance PENDING",
+    "Mary reuses source-backed existing character outfit; original Mary identity unresolved",
+    "Only three observed mouse source stills, SW shares west pose; complete original animation unresolved",
+    "Adapted hall arrangement; original complete room/corridor topology not restored"
+  ],
+  "acceptance": {
+    "implementation": "BUILD_VERIFIED",
+    "native_runtime": "VERIFIED_AUTOMATED_SCOPE",
+    "manual_visual": "INSPECTED_NOT_USER_ACCEPTED",
+    "device": "PENDING",
+    "prior_v90": "DEVICE_FAILED_USER_REPORTED"
+  }
+}
