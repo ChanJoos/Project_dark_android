@@ -99,6 +99,12 @@ Run the repository workflow and add or extend tests for the new ID. At minimum v
 - Existing Pote spatial, water, monster presentation, Milles movement, combat, and save tests still pass.
 - The APK artifact's source SHA matches the exact tested commit. Report build verification separately from physical-device verification and visual acceptance. A CI-rendered screenshot is not a substitute for device testing.
 
+## 7. Adapted Milles mouse fixture — candidate story slice
+
+`milles_mouse_proto` is a project-authored story fixture, not a canonical monster identity. The current Master has no mouse row or original mouse sprite. It is tagged `B`/`PROTOTYPE_PENDING`, has no canonical EXP or drops, and uses a code-drawn four-diagonal silhouette tagged `PENDING_CROP`; do not describe this artwork or its behavior as original-game data.
+
+The fixture is included in the same `MonsterAIController.tickPrototypeMonster()` branch as `combat_dummy_01`. Its chase step, attack wind-up and shared-resolver submission are compared against that control in `MillesStoryQuestTest`. The fixture remains project-story-only until exact CI tests and device observation pass; the comparison cannot establish original mouse behavior.
+
 ## 7. Current acceptance status
 
 The 2026-09-29 versionCode 53 spacing/facing update passed GitHub Actions but was not physically verified on the user's handset. The user later reported that overlap still occurs during automatic combat. Treat the new report as DEVICE_FAILED (user-reported), keep the complete device root cause UNKNOWN until reproduced, and do not mark this manual's spacing rules DEVICE_VERIFIED merely because unit tests pass. See docs/PROJECT_STATE.md and docs/DIRECTOR_BACKLOG.md for the active follow-up. The versionCode 54 follow-up now delegates World point and whole-step actor collision to RuntimeState and blocks entry into a moving monster's reserved destination/path. Exact source HEAD 5905e963de7898acec4b84644e78fcb98cec395e passed Actions run 36570339135; APK artifact 11033662723 has SHA-256 97b892b9afd8afb82c888db1ed13305f565e3072300900e26ffbf5ec848f2fb4. This is BUILD_VERIFIED only; device verification remains pending.

@@ -57,9 +57,24 @@ public final class TownInteriorDetails {
    case "coin_tray":
     slab(c,0xff655036,0xff3c2d1c,0xff48341e,0,-1,20,3);
     for(int i=0;i<12;i++){float xx=-12+(i%4)*7,yy=-3-(i/4)*4;oval(c,0xff5a4420,xx-3,yy-2,xx+4,yy+3);oval(c,0xffbea153,xx-3,yy-3,xx+3,yy+1);line(c,0xffe2c882,1,xx-2,yy-2,xx+1,yy-2);}break;
+   case "inn_table":
+    slab(c,0xff9a6338,0xff58371f,0xff714725,0,-1,25,8);
+    rect(c,0xff39271b,-17,-9,-14,15);rect(c,0xff39271b,14,-9,17,15);
+    rect(c,0xffbd8b52,-18,-12,18,-9);break;
+   case "inn_stool":
+    slab(c,0xffa97845,0xff50341f,0xff684426,0,-1,13,5);
+    rect(c,0xff49301e,-8,-2,-6,12);rect(c,0xff49301e,6,-2,8,12);break;
+   case "inn_hearth":
+    poly(c,0xff777064,-29,0,-22,-15,22,-15,29,0,22,6,-22,6);
+    rect(c,0xff302a25,-20,-31,20,-8);rect(c,0xff9a8e78,-24,-34,24,-29);
+    poly(c,0xffc27b34,0,-29,7,-18,1,-10,-5,-19);poly(c,0xffffce66,0,-25,4,-18,0,-13,-3,-19);break;
+   case "inn_bed":
+    slab(c,0xff845b3d,0xff49301f,0xff5e3d27,0,-2,24,6);
+    poly(c,0xffd1c4a6,-20,-9,0,-18,20,-9,0,1);poly(c,0xffeee1c5,-18,-10,-8,-15,1,-10,-10,-5);
+    rect(c,0xff69472d,-24,-14,-20,4);rect(c,0xff69472d,20,-14,24,4);break;
 
   }
   c.restore();return true;
  }
- private static final class ArraysHolder {static final java.util.Set<String>TYPES=new java.util.HashSet<>(java.util.Arrays.asList("open_book","brass_scale","bottle_tray","weapon_tray","coin_tray"));}
+ private static final class ArraysHolder {static final java.util.Set<String>TYPES=new java.util.HashSet<>(java.util.Arrays.asList("open_book","brass_scale","bottle_tray","weapon_tray","coin_tray","inn_table","inn_stool","inn_hearth","inn_bed"));}
 }

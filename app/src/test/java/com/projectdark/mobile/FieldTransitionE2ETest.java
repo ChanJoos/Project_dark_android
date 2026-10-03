@@ -12,7 +12,7 @@ public final class FieldTransitionE2ETest {
     assertEquals(WorldDef.ID,state.currentMapId());
     state.enterPoteField();
     assertEquals(PotePrototypeWorldDef.MAP_ID,state.currentMapId());
-    assertEquals(16,state.monsters().size());
+    assertEquals("Pote test layout defines five runtime actors",5,state.monsters().size());
     assertEquals("POTE_PURPLE",state.monsters().get(0).id);
     assertEquals(PoteFieldDef.ENTRY_X,state.player().x,.01f);
     assertEquals(PoteFieldDef.ENTRY_Y,state.player().y,.01f);
@@ -22,6 +22,6 @@ public final class FieldTransitionE2ETest {
     state.enterMillesFromField(790f,1510f);
     assertEquals(WorldDef.ID,state.currentMapId());
     assertTrue(state.npcs().size()>=1);
-    assertEquals(3,state.monsters().size());
+    assertEquals("Milles training roster is unchanged",3,state.monsters().size());
   }
 }

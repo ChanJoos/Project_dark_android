@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 89
-        versionName '0.89-martial-auto-hud'
+        versionCode 90
+        versionName '0.90-milles-story-quest'
     }
     sourceSets {
         main {

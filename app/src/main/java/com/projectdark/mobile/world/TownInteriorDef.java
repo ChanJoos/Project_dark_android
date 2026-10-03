@@ -3,7 +3,7 @@ import android.graphics.RectF;
 import java.util.*;
 /** Authored isometric rooms; service anchors face the customer across one counter tile. */
 public final class TownInteriorDef {
- public enum Kind { REAGENT,EQUIPMENT,BANK,CHURCH }
+ public enum Kind { REAGENT,EQUIPMENT,BANK,CHURCH,INN }
  public static final float MIN_X=64,MAX_X=896,MIN_Y=0,MAX_Y=540;
  public static final class Prop {
   public final String asset;public final int u,v;public final float width,lift;public final boolean blocking;
@@ -17,12 +17,12 @@ public final class TownInteriorDef {
  public final int columns,rows,npcU,npcV,customerU,customerV,counterV,counterStart,counterEnd;
  private TownInteriorDef(Kind k,String id,String title,String npc,String outfit,String door){
   kind=k;mapId=id;this.title=title;npcName=npc;this.outfit=outfit;doorId=door;
-  columns=k==Kind.EQUIPMENT?14:k==Kind.BANK?10:12;rows=k==Kind.EQUIPMENT?10:12;
+  columns=k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
   npcU=k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:7;npcV=k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
   counterV=npcV+2;customerU=npcU;customerV=counterV+1;
   counterStart=k==Kind.BANK?4:3;counterEnd=k==Kind.EQUIPMENT?11:k==Kind.BANK?8:10;
   List<Prop> p=new ArrayList<>();
-  if(k!=Kind.CHURCH)for(int u=counterStart;u<=counterEnd;u++)p.add(new Prop("joined_counter",u,counterV,64));
+  if(k==Kind.REAGENT||k==Kind.EQUIPMENT||k==Kind.BANK)for(int u=counterStart;u<=counterEnd;u++)p.add(new Prop("joined_counter",u,counterV,64));
   if(k==Kind.REAGENT){
    p.add(new Prop("potion_cabinet",2,1,76));p.add(new Prop("potion_cabinet",5,1,76));p.add(new Prop("potion_cabinet",10,1,76));
    p.add(new Prop("potion_table",2,3,54));p.add(new Prop("potion_table",10,2,50));p.add(new Prop("potion_table",1,8,54));
@@ -51,20 +51,29 @@ public final class TownInteriorDef {
    p.add(new Prop("holy_font",1,9,40));p.add(new Prop("herb_planter",1,5,36));p.add(new Prop("herb_planter",10,5,36));
    p.add(new Prop("open_book",6,1,20,45,false));
   }
+  if(k==Kind.INN){
+   // Adapted village inn layout: reception counter, shared supper tables, hearth and sleeping rooms.
+   p.add(new Prop("joined_counter",4,4,64));p.add(new Prop("joined_counter",5,4,64));p.add(new Prop("joined_counter",6,4,64));p.add(new Prop("joined_counter",7,4,64));
+   p.add(new Prop("inn_table",3,7,58));p.add(new Prop("inn_stool",2,7,25));p.add(new Prop("inn_stool",4,7,25));
+   p.add(new Prop("inn_table",8,8,58));p.add(new Prop("inn_stool",7,8,25));p.add(new Prop("inn_stool",9,8,25));
+   p.add(new Prop("inn_hearth",10,3,68));p.add(new Prop("inn_bed",2,2,62));p.add(new Prop("inn_bed",11,2,62));
+   p.add(new Prop("open_book",5,4,22,43,false));p.add(new Prop("bottle_tray",6,4,29,43,false));
+  }
   props=Collections.unmodifiableList(p);
  }
  public static final List<TownInteriorDef> ALL=Collections.unmodifiableList(Arrays.asList(
   new TownInteriorDef(Kind.REAGENT,"milles_interior_potion_shop","시약상점","멀린","mu0000020,mh172,ml230","potion_shop_door"),
   new TownInteriorDef(Kind.EQUIPMENT,"milles_interior_weapon_shop","장비상점","로건","mu0000016,mh001,ml230","weapon_shop_door"),
   new TownInteriorDef(Kind.BANK,"milles_interior_bank","밀레스 은행","은행원","mu0000026,mh004,ml230","general_shop_door"),
-  new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000015,mh003,ml230","church_door")));
+  new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000015,mh003,ml230","church_door"),
+  new TownInteriorDef(Kind.INN,"milles_interior_inn","밀레스 여관","메리 · 여관 주인 [ADAPTED]","mu0000020,mh172,ml230","inn_door")));
  public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;return null;}
  public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
  private int entryU(){return kind==Kind.BANK?5:6;}
  public float spawnX(){return x(entryU(),rows-2);}public float spawnY(){return y(entryU(),rows-2);}public float exitX(){return x(entryU(),rows-1);}public float exitY(){return y(entryU(),rows-1);}
  public float npcX(){return x(npcU,npcV)-12;}public float npcY(){return y(npcU,npcV)-6;}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
- public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if(kind!=Kind.CHURCH&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.blocking&&p.u==u&&p.v==v)return true;return false;}
+ public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.blocking&&p.u==u&&p.v==v)return true;return false;}
  public List<WorldMoveTargetController.TileCenter> navigationTiles(){List<WorldMoveTargetController.TileCenter> t=new ArrayList<>();for(int u=1;u<columns;u++)for(int v=1;v<rows;v++)if(!blocked(u,v))t.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(t);}
  public List<RectF> obstacles(){List<RectF> a=new ArrayList<>();for(int u=0;u<columns;u++)for(int v=0;v<rows;v++)if(blocked(u,v))a.add(new RectF(x(u,v)-3,y(u,v)-3,x(u,v)+3,y(u,v)+3));return a;}
  public int floor(int u,int v){return kind==Kind.REAGENT?1:kind==Kind.CHURCH?(u>=5&&u<=7?3:2):0;}

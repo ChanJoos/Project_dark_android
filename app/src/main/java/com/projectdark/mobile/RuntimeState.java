@@ -132,6 +132,15 @@ public final class RuntimeState {
   public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
   public List<Monster> monsters(){return Collections.unmodifiableList(monsters);}
 
+  /** Spawn the explicitly adapted opening-quest mouse only after the player accepts that story. */
+  public Monster ensureAdaptedMillesMouse(){
+    for(Monster m:monsters)if("milles_mouse_proto".equals(m.id))return m;
+    float x=1888f,y=768f;
+    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(x,y);
+    Monster mouse=new Monster("milles_mouse_proto","여관 뒤뜰 생쥐 [ADAPTED]",center==null?x:center.x,center==null?y:center.y,24,WorldDef.ASSET_STATUS);
+    monsters.add(mouse);return mouse;
+  }
+
   /** Live map transition keeps RPG/combat ledger identity while replacing map-local actors/collision. */
   public void enterTownInterior(com.projectdark.mobile.world.TownInteriorDef d){
     if(d==null)throw new IllegalArgumentException("interior");currentMapId=d.mapId;

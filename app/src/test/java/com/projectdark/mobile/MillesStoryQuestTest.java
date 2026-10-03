@@ -1,0 +1,139 @@
+package com.projectdark.mobile;
+
+import static org.junit.Assert.*;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import com.projectdark.mobile.world.TownInteriorDef;
+import com.projectdark.mobile.world.WorldMoveTargetController;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.List;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.GraphicsMode;
+
+/** Story fixtures stay explicitly adapted; mouse behavior is compared against the shared AI path. */
+@RunWith(RobolectricTestRunner.class)
+@Config(sdk=34,manifest=Config.NONE)
+@GraphicsMode(GraphicsMode.Mode.NATIVE)
+public final class MillesStoryQuestTest {
+  @Test public void innIsAReachableDistinctInteriorAndMouseIsExplicitlyAdapted(){
+    TownInteriorDef inn=TownInteriorDef.forMap("milles_interior_inn");
+    assertNotNull("the exterior inn portal now resolves to a real room",inn);
+    assertEquals(TownInteriorDef.Kind.INN,inn.kind);
+    assertEquals("메리 · 여관 주인 [ADAPTED]",inn.npcName);
+    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_table")));
+    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_hearth")));
+    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_bed")));
+    assertEquals(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID,"milles_mouse_proto");
+    MonsterDefinition mouse=new MonsterDefinitionRegistry().resolve("milles_mouse_proto");
+    assertEquals(MonsterDefinition.Status.PROTOTYPE_PENDING,mouse.status);
+    assertEquals(MonsterDefinition.Evidence.B,mouse.evidence);
+    assertFalse(mouse.hasCanonicalReward());
+  }
+
+  @Test public void mouseAndControlMonsterUseIdenticalSharedChaseAndAttackFlow(){
+    RuntimeState mouseState=new RuntimeState(),controlState=new RuntimeState();
+    mouseState.ensureAdaptedMillesMouse();
+    RuntimeState.Monster mouse=find(mouseState,"milles_mouse_proto");
+    RuntimeState.Monster control=find(controlState,"combat_dummy_01");
+    assertNotNull(mouse);assertNotNull(control);
+    silence(mouseState,mouse);silence(controlState,control);
+    List<WorldMoveTargetController.TileCenter> tiles=mouseState.monsterNavigationTiles();
+    WorldMoveTargetController.TileCenter start=null,target=null;
+    outer: for(WorldMoveTargetController.TileCenter from:tiles){
+      for(WorldMoveTargetController.TileCenter to:tiles){
+        float d=(float)Math.hypot(to.x-from.x,to.y-from.y);
+        if(d<48||d>=180f)continue;
+        if(mouseState.nextMonsterChaseStep(new RuntimeState.Monster("probe","probe",from.x,from.y,1,"test"),to.x,to.y)!=null){start=from;target=to;break outer;}
+      }
+    }
+    assertNotNull("Milles navigation exposes a reachable chase pair",start);assertNotNull(target);
+    mouse.x=control.x=start.x;mouse.y=control.y=start.y;
+    mouseState.player().x=controlState.player().x=target.x;mouseState.player().y=controlState.player().y=target.y;
+    MonsterAIController mouseAi=new MonsterAIController(),controlAi=new MonsterAIController();
+    mouseAi.tick(mouseState,MonsterAIController.MONSTER_STEP_SECONDS_B);
+    controlAi.tick(controlState,MonsterAIController.MONSTER_STEP_SECONDS_B);
+    assertTrue("mouse enters the same tile-walk state",mouse.isMoving);
+    assertEquals(control.isMoving,mouse.isMoving);
+    assertEquals(control.moveTargetX,mouse.moveTargetX,.001f);
+    assertEquals(control.moveTargetY,mouse.moveTargetY,.001f);
+    assertEquals(control.state,mouse.state);
+
+    WorldMoveTargetController.TileCenter adjacent=null,playerTile=null;
+    for(WorldMoveTargetController.TileCenter a:tiles)for(WorldMoveTargetController.TileCenter b:tiles){
+      if(CanonicalMeleeTileContract.reachable(a.x,a.y,b.x,b.y)){adjacent=a;playerTile=b;break;}
+    }
+    assertNotNull(adjacent);assertNotNull(playerTile);
+    mouse.isMoving=control.isMoving=false;mouse.attackCooldown=control.attackCooldown=0;
+    mouse.x=control.x=adjacent.x;mouse.y=control.y=adjacent.y;
+    mouseState.player().x=controlState.player().x=playerTile.x;mouseState.player().y=controlState.player().y=playerTile.y;
+    RuntimeCombatSession mouseCombat=new RuntimeCombatSession(mouseState,(a,t)->true,RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
+    RuntimeCombatSession controlCombat=new RuntimeCombatSession(controlState,(a,t)->true,RuntimeCombatSession.startingCommonerLearnedActions(),a->true);
+    mouseAi=new MonsterAIController(new MonsterAIController.SharedResolverAttackRouter(mouseCombat.monsterAutoBridge()));
+    controlAi=new MonsterAIController(new MonsterAIController.SharedResolverAttackRouter(controlCombat.monsterAutoBridge()));
+    int mouseHp=mouseState.player().hp,controlHp=controlState.player().hp;
+    mouseAi.tick(mouseState,0);controlAi.tick(controlState,0);
+    assertTrue(mouse.attackPrimed);assertTrue(control.attackPrimed);
+    mouseState.tick(.25f);controlState.tick(.25f);mouseAi.tick(mouseState,0);controlAi.tick(controlState,0);
+    assertEquals(MonsterAIController.AttackRoute.SHARED_RESOLVER,mouseAi.lastAttackSubmission().route);
+    assertEquals(MonsterAIController.SubmissionOutcome.ACCEPTED,mouseAi.lastAttackSubmission().outcome);
+    assertEquals(controlAi.lastAttackSubmission().outcome,mouseAi.lastAttackSubmission().outcome);
+    mouseCombat.tick(.24f);controlCombat.tick(.24f);
+    assertEquals("mouse uses the same resolver damage as the control monster",controlHp-controlState.player().hp,mouseHp-mouseState.player().hp);
+  }
+
+  @Test public void adaptedMouseRendererProducesASeparateReadableSilhouette(){
+    WorldEntityPresentationRenderer renderer=new WorldEntityPresentationRenderer();
+    Bitmap mouse=render(renderer,"PENDING_CROP/milles/monster/milles_mouse_proto");
+    Bitmap generic=render(renderer,"PENDING_CROP/milles/monster/combat_dummy_01");
+    int different=0;for(int y=0;y<mouse.getHeight();y++)for(int x=0;x<mouse.getWidth();x++)if(mouse.getPixel(x,y)!=generic.getPixel(x,y))different++;
+    assertTrue("rat silhouette is not the generic prototype blob",different>20);
+    mouse.recycle();generic.recycle();
+  }
+
+  @Test public void adaptedMouseHasFourSeparatelyRenderedDiagonalFacings(){
+    WorldEntityPresentationRenderer renderer=new WorldEntityPresentationRenderer();
+    Bitmap[] views=new Bitmap[4];CharacterRenderer.Direction[] directions={CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE};
+    for(int i=0;i<directions.length;i++){views[i]=render(renderer,"PENDING_CROP/milles/monster/milles_mouse_proto",directions[i]);for(int j=0;j<i;j++)assertTrue("each diagonal gets its own mouse pose",differentPixels(views[i],views[j])>4);}
+    for(Bitmap b:views)b.recycle();
+  }
+
+  @Test public void innkeeperPaletteAndApronSeparateHerFromTheShopkeeper(){
+    Context context=RuntimeEnvironment.getApplication();TownNpcRenderer renderer=new TownNpcRenderer();
+    assertNotNull(context);
+    Bitmap shop=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888),inn=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
+    renderer.draw(new Canvas(shop),TownInteriorDef.forMap("milles_interior_potion_shop"),64,112);
+    renderer.draw(new Canvas(inn),TownInteriorDef.forMap("milles_interior_inn"),64,112);
+    assertTrue("Mary has her own warm apron silhouette",differentPixels(shop,inn)>40);
+    shop.recycle();inn.recycle();
+  }
+
+  @Test public void questJournalButtonOpensAnActionableReviewCapture() throws Exception {
+    GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,960,540);
+    tap(view,294,28);assertTrue(field(view,"questJournalOpen"));
+    Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(frame));
+    File file=new File("build/reports/device-review/v90-milles-story-quest-journal.png");file.getParentFile().mkdirs();
+    try(FileOutputStream out=new FileOutputStream(file)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}
+    assertTrue(file.isFile()&&file.length()>0);frame.recycle();tap(view,686,112);assertFalse(field(view,"questJournalOpen"));
+  }
+
+  private static Bitmap render(WorldEntityPresentationRenderer r,String visual){
+    return render(r,visual,CharacterRenderer.Direction.SE);
+  }
+  private static Bitmap render(WorldEntityPresentationRenderer r,String visual,CharacterRenderer.Direction direction){
+    Bitmap b=Bitmap.createBitmap(48,48,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(b);
+    r.draw(c,new WorldEntityPresentationRenderer.Pose(WorldEntityPresentationRenderer.Kind.MONSTER,24,42,
+        direction,CharacterRenderer.State.IDLE,0,0,1,CharacterRenderer.EffectFamily.NONE,false,false,visual,null));return b;
+  }
+  private static int differentPixels(Bitmap a,Bitmap b){int count=0;for(int y=0;y<a.getHeight();y++)for(int x=0;x<a.getWidth();x++)if(a.getPixel(x,y)!=b.getPixel(x,y))count++;return count;}
+  private static boolean field(GameView view,String name)throws Exception{java.lang.reflect.Field f=GameView.class.getDeclaredField(name);f.setAccessible(true);return f.getBoolean(view);}
+  private static void tap(GameView view,float x,float y){MotionEvent e=MotionEvent.obtain(0,1,MotionEvent.ACTION_DOWN,x,y,0);view.onTouchEvent(e);e.recycle();}
+  private static RuntimeState.Monster find(RuntimeState state,String id){for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m;return null;}
+  private static void silence(RuntimeState state,RuntimeState.Monster keep){for(RuntimeState.Monster m:state.monsters())m.alive=m==keep;}
+}

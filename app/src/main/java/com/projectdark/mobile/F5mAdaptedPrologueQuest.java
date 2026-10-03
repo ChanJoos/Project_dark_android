@@ -2,7 +2,7 @@ package com.projectdark.mobile;
 
 /** [ADAPTED] First-five-minute prologue quest domain contract. */
 public final class F5mAdaptedPrologueQuest {
-  public static final String QUEST_ID="Q_ADAPTED_F5M_PROLOGUE_01",OPENING_MONSTER_ID="combat_dummy_01",PROVENANCE="ADAPTED",BALANCE_PROVENANCE="ADAPTED_BALANCE";
+  public static final String QUEST_ID="Q_ADAPTED_MILLES_MOUSE_01",OPENING_MONSTER_ID="milles_mouse_proto",PROVENANCE="ADAPTED",BALANCE_PROVENANCE="ADAPTED_BALANCE";
   public enum State{AVAILABLE,ACTIVE,RETURN_READY,COMPLETED} public enum AcceptResult{ACTIVATED,ALREADY_ACTIVE,ALREADY_RETURN_READY,ALREADY_COMPLETED,BLOCKED_TARGET_UNRESOLVED}
   public enum DeclineResult{LEFT_AVAILABLE,NO_CHANGE} public enum DefeatResult{IGNORED,PROGRESSED,RETURN_READY} public enum TurnInResult{COMPLETED,NOT_READY,ALREADY_COMPLETED}
   private static F5mAdaptedPrologueQuest activeOpening;

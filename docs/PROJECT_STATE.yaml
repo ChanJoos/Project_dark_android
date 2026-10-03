@@ -517,6 +517,71 @@ work_packages:
       - "Quest/chat/skill/control presentation remains usable but no longer visually dominates the playable world."
       - "Touch routing and existing functional controls must not regress while visual hierarchy/occupied area is improved."
 
+  MILLES_STORY_QUEST_UI_MOUSE_AI_001:
+    title: "Implement adapted Milles story quest journal and verify mouse AI parity"
+    system: [quest, ux, monster]
+    scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: VERIFICATION_PENDING
+    claim: null
+    required_sources:
+      - AGENTS.md
+      - docs/DIRECTOR_GUIDE.md
+      - docs/DIRECTOR_BACKLOG.md
+      - docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md
+      - docs/PROJECT_STATE.yaml
+      - docs/CHAT_HANDOFF.md
+      - docs/DECISION_LOG.md
+      - docs/MONSTER_CREATION_MANUAL.md
+      - design/DATA_CONTRACT.md
+      - design/SOURCE_OF_TRUTH.md
+      - master/MASTER_MANIFEST.md
+      - master/RECONCILIATION.md
+      - master/DATA_CONSUMPTION_CONTRACT.md
+      - master/data/Quest_Runtime_Master.csv
+      - master/data/NPC_Master.csv
+      - master/data/NPC_Runtime_Master.csv
+      - master/data/Monster_Master.csv
+      - app/src/main/java/com/projectdark/mobile/GameView.java
+      - app/src/main/java/com/projectdark/mobile/RuntimeState.java
+      - app/src/main/java/com/projectdark/mobile/WorldDef.java
+      - app/src/main/java/com/projectdark/mobile/WorldEntityPresentationRenderer.java
+      - app/src/main/java/com/projectdark/mobile/TownNpcRenderer.java
+      - app/src/main/java/com/projectdark/mobile/F5mCompletionPresentation.java
+      - app/src/main/java/com/projectdark/mobile/world/MillesDoorAnchors.java
+      - app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java
+      - app/src/main/java/com/projectdark/mobile/world/TownInteriorDetails.java
+      - app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java
+      - app/src/main/java/com/projectdark/mobile/world/MillesProductionCollision.java
+      - app/src/main/java/com/projectdark/mobile/world/MillesProductionCollisionAudit.java
+      - app/src/main/java/com/projectdark/mobile/F5mAdaptedPrologueQuest.java
+      - app/src/main/java/com/projectdark/mobile/GrowthQuest2.java
+      - app/src/main/java/com/projectdark/mobile/F5mSaveStore.java
+      - app/src/main/java/com/projectdark/mobile/F5mQuestUiFlow.java
+      - app/src/main/java/com/projectdark/mobile/ActiveQuestTracker.java
+      - app/src/main/java/com/projectdark/mobile/MonsterAIController.java
+      - app/src/main/java/com/projectdark/mobile/MonsterDefinitionRegistry.java
+      - app/src/test/java/com/projectdark/mobile/HudTouchAcceptanceTest.java
+      - app/src/test/java/com/projectdark/mobile/MonsterChasePathfinderTest.java
+      - app/src/test/java/com/projectdark/mobile/PoteMonsterPlayableRuntimeTest.java
+      - app/src/test/java/com/projectdark/mobile/TownInteriorTest.java
+      - app/src/test/java/com/projectdark/mobile/FieldTransitionE2ETest.java
+      - app/src/test/java/com/projectdark/mobile/MillesStoryQuestTest.java
+      - assets/milles/production/maps/milles_garden.json
+      - assets/milles/production/maps/milles_garden_base.json
+    gap: "Current prologue is a generic guide-to-training-dummy loop; no canonical mouse identity or mouse sprite exists in the Master/assets. User requests an adapted story, named NPCs, a useful quest journal, and a verified shared-AI mouse comparison."
+    acceptance:
+      - "Project-authored Milles NPCs have stable IDs, distinct role-specific names/appearance, and connected dialogue/quest progression."
+      - "Quest journal exposes state, issuer, objective, progress, reward and next destination without breaking touch routing."
+      - "Mouse remains explicitly ADAPTED/B and uses the same MonsterAIController chase, path, attack and combat resolver behavior as the control monster."
+      - "Focused unit/UI tests pass; exact build and device verification are reported separately."
+      - "Canonical Q_POT_01 and unknown original mouse facts remain unchanged/unclaimed."
+    current_followup:
+      implementation_state: "IMPLEMENTED"
+      observable_state: "DEVICE_PENDING"
+      evidence: "V90 candidate source and focused tests added; Gradle/CI not yet run. Mouse remains explicitly adapted."
+      next_check: "Run exact-source CI tests, inspect V90 journal capture, verify APK SHA and package contents."
+
 agent_selection_policy:
   - "Every scheduled Dev/Verify run MUST load current PROJECT_STATE and DEVICE_20260915_214834 before selecting or verifying work."
   - "Every finding in DEVICE_20260915_214834 is mapped to a work package or explicit preserve constraint; no finding may silently disappear because another P0 is being worked."
