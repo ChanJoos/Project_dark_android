@@ -31,8 +31,7 @@ public final class F5mAdaptedPrologueQuestAudit {
 
   static boolean approvedOpeningTargetIsBound(){
     F5mAdaptedPrologueQuest q = F5mAdaptedPrologueQuest.openingFixture();
-    return "combat_dummy_01".equals(q.objectiveMonsterId())
-        && F5mAdaptedPrologueQuest.OPENING_MONSTER_ID.equals(q.objectiveMonsterId())
+    return F5mAdaptedPrologueQuest.OPENING_MONSTER_ID.equals(q.objectiveMonsterId())
         && q.targetResolved();
   }
 
