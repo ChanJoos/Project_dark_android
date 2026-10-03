@@ -166,6 +166,10 @@ public final class WorldEntityPresentationRenderer {
     p.setColor(light);c.drawOval(new RectF(6+side*1.5f,13-breathe,12+side*1.5f,17),p);
     if(down){p.setColor(0xff171615);c.drawCircle((left?4.5f:10.5f)+side*1.5f,7-breathe,.75f,p);}
     p.setColor(0xff5b514c);c.drawCircle((left?3:14)+side*1.5f,10-breathe,.9f,p);
+    // Clear directional whiskers make all four adapted facings legible at mobile scale.
+    p.setColor(0xffd2c3b4);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);
+    float mx=(left?2.8f:13.4f)+side*1.5f,my=10-breathe,fx=left?-1f:1f,fy=down?1f:-1f;
+    c.drawLine(mx,my,mx+fx*4.2f,my+fy*1.1f,p);c.drawLine(mx,my+1.2f,mx+fx*4f,my+fy*2.9f,p);c.drawLine(mx,my-1.2f,mx+fx*3.8f,my-fy*.8f,p);p.setStyle(Paint.Style.FILL);
     p.setColor(outline);c.drawRect(5+step,17,7+step,21,p);c.drawRect(11-step,17,13-step,21,p);
   }
 
