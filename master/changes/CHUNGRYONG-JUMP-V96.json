@@ -14,10 +14,13 @@
     "combat clocks/resources/guard",
     "Dara V95 recipient fix"
   ],
-  "validation": "PENDING_EXACT_CI_NATIVE_REVIEW",
+  "validation": "BUILD_NATIVE_VERIFIED_PHONE_USER_VISUAL_PENDING",
   "limitations": [
     "Original exact jump frames/cadence not proven",
     "Original independent four-direction weapon source unavailable",
     "Occluded grip and cord remain unavailable"
-  ]
+  ],
+  "sourceSha": "e76991d29bb0fe4e302b2114614ede934bb5fd2c",
+  "proof": "docs/verification/CHUNGRYONG_JUMP_V96_BUILD.json",
+  "completeDefenseWeapon": "Equipped blade and gear follow project jump; ground shadow/world position and accepted sphere remain fixed"
 }
