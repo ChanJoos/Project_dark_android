@@ -27,9 +27,9 @@ public final class MillesStoryQuestTest {
     assertNotNull("the exterior inn portal now resolves to a real room",inn);
     assertEquals(TownInteriorDef.Kind.INN,inn.kind);
     assertEquals("메리 · 여관 주인",inn.npcName);
-    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_table")));
-    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_hearth")));
-    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_counter")));
+    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_world_table")));
+    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_world_hearth")));
+    assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("joined_counter")));
     assertEquals(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID,"milles_mouse_proto");
     MonsterDefinition mouse=new MonsterDefinitionRegistry().resolve("milles_mouse_proto");
     assertEquals(MonsterDefinition.Status.PROTOTYPE_PENDING,mouse.status);
