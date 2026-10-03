@@ -19,7 +19,13 @@ final class SkillVfxRenderer {
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
   void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null)return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);}
   void consume(List<CombatResolver.Event> events,Anchors a){for(CombatResolver.Event e:events){
-    if(!RuntimeCombatSession.PLAYER_ID.equals(e.actorId))continue;
+    if(!RuntimeCombatSession.PLAYER_ID.equals(e.actorId)){
+      if(e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)){
+        String key=e.actionSequence+":monster-contact:"+e.targetId;float x=a.x(e.targetId),y=a.y(e.targetId);
+        if(Float.isFinite(x)&&Float.isFinite(y)&&seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,e.actionId,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,x,y));if(pulses.size()>64)pulses.remove(0);}
+      }
+      continue;
+    }
     String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||id.equals("SK_공통_001"))continue;
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
     boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.hitSemantic!=CombatResolver.HitSemantic.MISS;

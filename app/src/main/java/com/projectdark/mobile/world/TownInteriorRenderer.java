@@ -154,10 +154,17 @@ public final class TownInteriorRenderer {
    for(TownInteriorDef.Prop o:d.props)if("inn_world_table".equals(o.asset)){
     // Rug is a walkable floor surface, drawn before every actor and solid prop.
     WorldCameraTransform.Point q=w.worldToScreen(o.x(),o.y());
-    polygon(c,0xffa48369,q.x-92,q.y-8,q.x+4,q.y-56,q.x+116,q.y,q.x+20,q.y+48);
-    polygon(c,0xff53362d,q.x-86,q.y-8,q.x+4,q.y-53,q.x+110,q.y,q.x+20,q.y+45);
-    polygon(c,0xff775148,q.x-78,q.y-8,q.x+4,q.y-49,q.x+102,q.y,q.x+20,q.y+41);
-    for(int i=0;i<8;i++){float xx=q.x-60+i*20,yy=q.y-4+(i%2)*4;polygon(c,0xff9b7560,xx-4,yy,xx,yy-2,xx+4,yy,xx,yy+2);}
+    c.save();Matrix rug=new Matrix();rug.setValues(new float[]{1,-1,q.x-4,.5f,.5f,q.y-50,0,0,1});c.concat(rug);
+    p.setColor(0xff9e8060);c.drawRect(0,0,112,96,p);p.setColor(0xff3b2522);c.drawRect(3,3,109,93,p);
+    p.setColor(0xff7b5544);c.drawRect(6,6,106,90,p);p.setColor(0xff49322d);c.drawRect(13,13,99,83,p);
+    for(int t=7;t<106;t+=7){polygon(c,0xffb19771,t,7,t+3,10,t,13,t-3,10);polygon(c,0xffb19771,t,83,t+3,86,t,89,t-3,86);}
+    for(int t=17;t<81;t+=7){polygon(c,0xffb19771,7,t,10,t+3,13,t,10,t-3);polygon(c,0xffb19771,99,t,102,t+3,105,t,102,t-3);}
+    for(int u=23;u<98;u+=17)for(int v=22;v<80;v+=14){
+      polygon(c,0xff80634d,u-5,v,u,v-5,u+5,v,u,v+5);polygon(c,0xffac8b63,u-2,v,u,v-2,u+2,v,u,v+2);
+      line(c,0xff655947,1,u+3,v+4,u+8,v+8);line(c,0xff655947,1,u-3,v+4,u-8,v+8);
+    }
+    polygon(c,0xffb19570,56,29,76,48,56,67,36,48);polygon(c,0xff674735,56,33,72,48,56,63,40,48);polygon(c,0xffaa8964,56,41,63,48,56,55,49,48);
+    for(int t=1;t<112;t+=3){line(c,0xffbba17c,1,t,-3,t,1);line(c,0xffbba17c,1,t,95,t,99);}c.restore();
    }
   }
   // Bordered entrance/customer mats, with central paths left open.
