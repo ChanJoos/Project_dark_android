@@ -133,6 +133,8 @@ public final class F5mSaveStore {
 
   private SharedPreferences.Editor writeRpg(SharedPreferences.Editor edit,RpgProgressionState r){
     return edit.putInt("save_schema",SCHEMA)
+        // A save authored by V94 already includes the one-time grant, even if the player removed it.
+        .putBoolean("chungryong_granted_v94",true)
         .putString("inventory_v2",new JSONObject(r.inventory()).toString())
         .putString("equipment_v2",new JSONObject(r.equipment()).toString())
         .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
