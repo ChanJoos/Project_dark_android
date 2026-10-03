@@ -43,17 +43,18 @@ public final class WorldDef {
     blockers=Collections.unmodifiableList(b);
 
     List<NpcSpawn> n=new ArrayList<>();
-    n.add(new NpcSpawn("milles_guide_proto","밀레스 안내인 [B]",633.0f,599.0f,"밀레스 탐색/대화 루프 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_guide_proto","제임스 · 마을 경비 [ADAPTED]",633.0f,599.0f,"여관 식료품 창고에 생쥐가 나타났어. 메리에게 사정을 듣고 와 주겠나?",ASSET_STATUS));
     // Field travel belongs at the player's first readable decision point, not at a remote map edge.
     // One canonical diagonal step from the initial spawn keeps the NPC visible without blocking spawn occupancy.
     // Keep outdoor NPCs one isometric step northwest of their prior anchors.
     n.add(new NpcSpawn("pote_travel_guide","포테의 숲 이동 안내인",620.0f,560.0f,"포테의 숲으로 이동하시겠습니까?",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_gate_proto","남문 안내 지점 [B]",758.0f,1434.0f,"확장 남문 접근 동선 검증용 프로토타입 NPC입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_gate_proto","한스 · 숲길 경비 [ADAPTED]",758.0f,1434.0f,"남쪽 숲길에 팜팻 흔적이 보여. 준비가 되면 내게 말해.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",253.0f,689.0f,"확장 마을 서부 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1868.0f,804.0f,"확장 동부 시장 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
     npcSpawns=Collections.unmodifiableList(n);
 
     List<MonsterSpawn> m=new ArrayList<>();
+    m.add(new MonsterSpawn("milles_mouse_proto","여관 뒤뜰 생쥐 [ADAPTED]",1888f,768f,24,ASSET_STATUS));
     m.add(new MonsterSpawn("combat_dummy_01","훈련 몬스터 A [B]",1315f,715f,60,ASSET_STATUS));
     m.add(new MonsterSpawn("combat_dummy_02","훈련 몬스터 B [B]",1450f,790f,60,ASSET_STATUS));
     m.add(new MonsterSpawn("combat_dummy_03","훈련 몬스터 C [B]",1575f,720f,60,ASSET_STATUS));
