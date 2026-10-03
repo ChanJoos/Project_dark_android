@@ -117,7 +117,7 @@ public final class MillesStoryQuestTest {
     GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,960,540);
     tap(view,294,28);assertTrue(field(view,"questJournalOpen"));
     Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(frame));
-    File file=new File("build/reports/device-review/milles-story-quest-journal.png");file.getParentFile().mkdirs();
+    File file=new File("build/reports/device-review/v89-milles-story-quest-journal.png");file.getParentFile().mkdirs();
     try(FileOutputStream out=new FileOutputStream(file)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}
     assertTrue(file.isFile()&&file.length()>0);frame.recycle();tap(view,686,112);assertFalse(field(view,"questJournalOpen"));
   }
