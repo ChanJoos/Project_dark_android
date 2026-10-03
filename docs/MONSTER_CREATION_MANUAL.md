@@ -1,3 +1,6 @@
+## 2026-10-03 V93 resolved recipient impact contract (BUILD/NATIVE VERIFIED)
+Shared SkillVfxRenderer now consumes actual non-miss damaging monster HIT_FEEDBACK as recipient-only damageImpact on the live target center. It never emits an unlearned monster skill/caster effect or changes chase, wind-up, cooldown, damage, sprite bytes or BODY. Indoor mouse remains a source-still ADAPTED/B actor. New native test uses the actual mouse AI/resolver attack to verify player damage and visible onDraw effect pixels. Exact source42d20ece, Actions37122438002 SUCCESS, actual indoor mouse→player damage/visible onDraw impact native test PASS; no phone acceptance claim.
+
 # Monster Creation and Runtime Integration Manual
 
 This is the required checklist for adding or replacing any monster in PROJECT DARK. It records the current Pote runtime contract and separates confirmed implementation values from prototype-only values. Read it before changing monster art, roster entries, scale, collision, AI, or combat.

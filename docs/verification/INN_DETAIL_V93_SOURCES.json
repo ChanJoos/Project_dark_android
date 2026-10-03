@@ -114,8 +114,9 @@
       "burgundy upholstered chairs and stone fireplace mantel",
       "woven rug motifs"
     ],
-    "review_status": "initial actual GameView native images manually viewed; final source runtime/native verification pending; not original-pixel equivalence or user acceptance",
+    "review_status": "Final source42d20ece actual GameView/native APK review verified; entry/two furniture depths/growth/Hans/magic/self-heal/mouse-hit images manually examined. Authored reconstruction; PHONE/USER_VISUAL_PENDING.",
     "layout_scope": "Common hall is adapted: three dining tables/twelve chairs; the provided full reference view shows four dining groups. Furniture form/material comparison is not a full original topology claim."
   },
-  "sprite_extraction_qa": "chair_sw and hearth rectangular crop bounds overlapped neighboring sprites; preserve selected connected source pixels and alpha edge, discard detached foreign components; no creative repaint"
+  "sprite_extraction_qa": "chair_sw and hearth rectangular crop bounds overlapped neighboring sprites; preserve selected connected source pixels and alpha edge, discard detached foreign components; no creative repaint",
+  "prompt_spec": "Built-in image_gen: transparent six-sprite antique atlas; supplied inn recording is style/material reference only. One isolated 2:1 oak dining table with thick beveled top/carved baluster legs/apron/brass joinery; four separately authored matching ladderback chairs in SE/SW/NE/NW with burgundy seats; one isolated brick hearth with arched soot-black firebox, stone mantel/chimney, flame/logs/iron grate. Late-1990s Korean isometric RPG pixel shading, warm oak/walnut palette, upper-left light, no room/floor/UI/characters/rugs/cluster screenshot. Actual alpha retained; independent crops/native widths/feet and neighboring-component extraction checked."
 }

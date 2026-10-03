@@ -580,10 +580,10 @@ work_packages:
       - "Focused unit/UI tests pass; exact build and device verification are reported separately."
       - "Canonical Q_POT_01 and unknown original mouse facts remain unchanged/unclaimed."
     current_followup:
-      implementation_state: "BUILD_NATIVE_VERIFIED_V92"
-      observable_state: "DEVICE_FAILED (user-reported)"
-      evidence: "Exact V90 source f2e2338b01f8122f1ea68fc0549829160d04a6d3 passed Actions run 37103214563/job 111146655605; debug APK artifact 11267235369 SHA-256 d0ab3320ca4e4bce11012318464c4bbaa70965cd065dbf45f60c0d9c9b8067b9. V90 journal render inspected. Device acceptance pending."
-      next_check: "Install exact V92 d1cf4d5e APK; handset independent-chair/table collision/depth and mouse/Mary/restart checks pending. Exact CI37118998262 SUCCESS; proof docs/verification/INN_WORLD_V92_BUILD.json; V91 user visual FAIL remains historical."
+      implementation_state: "BUILD_NATIVE_VERIFIED_V93"
+      observable_state: "DEVICE_PENDING (V93); prior V92 DEVICE_FAILED user-reported"
+      evidence: "Exact V93 source42d20ece678b0a4bc5aa111da468f3dcec31c95b passed Actions37122438002/job111201056317 at21:27:24 KST. APK11273852663 SHA256421302d612e43de3cbfe2e9afc8e1aade7b2d9b6124a6dc2473e0512df87f40d; native20 inn tests/7 new regressions and18 PNGs verified. Source/body942 asset bytes retained,6 new sprites match APK. Full proof docs/verification/INN_DETAIL_V93_BUILD.json; historical V90/V91/V92 device reports preserved in handoff/decision/verification records."
+      next_check: "Install exact V93 source42d20ece APK: Actions37122438002 SUCCESS; native20 inn tests/7 new regressions,18 focused screenshots reviewed; manifest/new6 sprite bytes and prior942 asset bytes verified. APK11273852663 SHA256421302d612e43de3cbfe2e9afc8e1aade7b2d9b6124a6dc2473e0512df87f40d; proof INN_DETAIL_V93_BUILD.json. Handset/user visual acceptance pending; V92 user-reported primitive furniture/quest/FX DEVICE_FAILED retained."
 
 agent_selection_policy:
   - "Every scheduled Dev/Verify run MUST load current PROJECT_STATE and DEVICE_20260915_214834 before selecting or verifying work."
