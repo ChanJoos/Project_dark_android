@@ -18,8 +18,10 @@ final class SkillBodyRenderer {
     boolean back=ChungryongWeaponRenderer.back(p.direction);int n=ChungryongWeaponRenderer.frame(motion,phase);
     String group=ChungryongWeaponRenderer.group(motion);int index=ChungryongWeaponRenderer.bodyIndex(motion,back,n);
     JSONObject f=catalog.frames.optJSONObject(body+"/"+group+"/"+index);if(f==null)return false;Bitmap b=bitmap(f.optString("path"));if(b==null)return false;
-    float x=p.x,y=p.y+8*SCALE;float[] hand=ChungryongWeaponRenderer.hand(group,index);
-    float hx=x+hand[0]*SCALE,hy=y+hand[1]*SCALE;
+    float x=p.x,y=p.y+8*SCALE;
+    float[] hand=ChungryongWeaponRenderer.hand(group,index,b.getWidth(),b.getHeight());
+    float hx=x+(hand[0]-(float)f.optDouble("pivotX"))*SCALE;
+    float hy=y+(hand[1]-b.getHeight()-(float)f.optDouble("offsetY"))*SCALE;
     c.save();if(ChungryongWeaponRenderer.west(p.direction))c.scale(-1,1,x,y);
     if(back)chungryong.layer(c,motion,true,n,hx,hy,SCALE);
     float left=x-(float)f.optDouble("pivotX")*SCALE,top=y-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
@@ -34,6 +36,7 @@ final class SkillBodyRenderer {
     String[] parts=key.split("/");String group=parts[1];int index=Integer.parseInt(parts[2]);
     boolean mirror=p.direction==CharacterRenderer.Direction.NW||p.direction==CharacterRenderer.Direction.SW;
     float rootX=p.x,rootY=p.y+8f*SCALE;
+    if("JUMP".equals(motion)){paint.setColor(0x50000000);c.drawOval(new RectF(p.x-7,p.y-2,p.x+7,p.y+2),paint);paint.setColor(Color.WHITE);rootY-=jumpLift(phase);}
     c.save();if(mirror)c.scale(-1,1,rootX,rootY);
     boolean weapon=motion.equals("THRUST")||motion.equals("SWING");
     if(weapon){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",ChungryongWeaponRenderer.back(p.direction),0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawGear(c,p.weaponVisualRef,group,index,p.direction,rootX,rootY);}
@@ -42,6 +45,8 @@ final class SkillBodyRenderer {
     for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,group,index,p.direction,rootX,rootY);
     c.restore();return true;
   }
+  // Presentation-only takeoff/contact/landing; world position and accepted sphere stay fixed.
+  static float jumpLift(float phase){float q=Math.max(0,Math.min(1,phase));return q<1f/3f?12f*q*3:12f*(1-q)*1.5f;}
   private void drawGear(Canvas c,String id,String group,int index,CharacterRenderer.Direction direction,float x,float y){
     if(id==null||id.isEmpty())return;EquipmentVisualRegistry.Visual v=gear.get(id);if(v==null||v.atlas==null)return;
     JSONObject j=registration(id);if(j==null)return;JSONObject sprites=j.optJSONObject("sprites");if(sprites==null)return;

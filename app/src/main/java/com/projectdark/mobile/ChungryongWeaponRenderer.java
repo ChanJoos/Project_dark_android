@@ -39,23 +39,31 @@ final class ChungryongWeaponRenderer {
   static String group(String motion){return "twohand".equals(motion)?"e":"c";}
   static int bodyIndex(String motion,boolean back,int n){
     if("twohand".equals(motion))return (back?16:20)+n;
-    if("horizontal".equals(motion))return (back?8:6)+(n==2?1:0);
-    if("vertical".equals(motion))return n==0?(back?0:3):(back?10:12)+(n==2?1:0);
-    return (back?0:3)+n;
+    if("horizontal".equals(motion))return new int[]{back?8:6,back?0:4,back?2:7}[n];
+    if("vertical".equals(motion))return new int[]{back?8:6,back?9:12,back?10:13}[n];
+    return new int[]{back?8:6,back?0:4,back?1:5}[n];
   }
-  // Explicit source-pixel hand attachment per BODY pose, relative to its authored root.
+  // Coordinates in the actual cropped BODY bitmap, before source-pivot registration.
+  // Previous root-relative guesses attached several frames to the legs.
   static float[] hand(String group,int n){
-    float[][] c={{5,-28},{4,-32},{9,-30},{4,-29},{4,-35},{10,-31},{6,-28},{13,-25},{5,-28},{10,-24},{5,-32},{8,-48},{4,-32},{15,-14}};
-    float[][] e={{6,-32},{5,-26},{6,-37},{10,-36},{5,-32},{9,-25},{7,-32},{10,-35}};
+    float[][] c={{16,8},{13,17},{13,17},{13,25},{5,9},{16,20},{21,16},{18,18},{13,28},{4,9},{13,17},{17,18},{3,8},{13,21}};
+    float[][] e={{9,25},{9,25},{4,17},{4,17},{4,17},{4,17},{14,26},{18,22}};
     return "e".equals(group)?e[n-16]:c[n];
+  }
+  static float[] hand(String group,int n,int width,int height){
+    float[] point=hand(group,n);
+    int[] widths="c".equals(group)?new int[]{19,16,16,19,19,20,23,24,17,19,16,21,19,17}:new int[]{16,16,16,16,16,16,17,20};
+    int[] heights="c".equals(group)?new int[]{51,52,52,48,51,49,49,48,46,60,48,46,61,43}:new int[]{52,52,52,52,52,52,55,54};
+    int i="c".equals(group)?n:n-16;
+    return new float[]{point[0]*width/widths[i],point[1]*height/heights[i]};
   }
   void layer(Canvas c,String motion,boolean back,int n,float handX,float handY,float bodyScale){
     JSONObject f=manifest.optJSONObject("frames").optJSONObject(motion).optJSONArray(back?"back":"front").optJSONObject(n);
-    float scale=bodyScale*(float)manifest.optDouble("sourceScale",.6),w=f.optInt("w")*scale,h=f.optInt("h")*scale;
+    float scale=bodyScale*(float)manifest.optDouble("sourceScale",.5),w=f.optInt("w")*scale,h=f.optInt("h")*scale;
     float x=handX-(float)f.optDouble("gripX")*scale,y=handY-(float)f.optDouble("gripY")*scale;
     c.drawBitmap(atlas,new Rect(f.optInt("sx"),f.optInt("sy"),f.optInt("sx")+f.optInt("w"),f.optInt("sy")+f.optInt("h")),new RectF(x,y,x+w,y+h),paint);
   }
   void carry(Canvas c,CharacterRenderer.Pose p,float x,float y,float bodyScale){
-    c.save();if(west(p.direction))c.scale(-1,1,x,y);layer(c,"basic",back(p.direction),0,x,y,bodyScale);c.restore();
+    c.save();if(west(p.direction))c.scale(-1,1,x,y);layer(c,"basic",back(p.direction),0,x,y,bodyScale*(float)manifest.optDouble("carryBodyRatio",43f/51f));c.restore();
   }
 }

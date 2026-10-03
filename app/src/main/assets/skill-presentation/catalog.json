@@ -225,6 +225,15 @@
         2
       ]
     },
+    "JUMP": {
+      "group": "f",
+      "back": [
+        4
+      ],
+      "front": [
+        5
+      ]
+    },
     "RAISE": {
       "group": "f",
       "back": [
@@ -2362,17 +2371,17 @@
       "name": "완전방어",
       "job": "전사",
       "kind": "기술",
-      "motion": "RAISE",
+      "motion": "JUMP",
       "caster": "NONE",
       "target": "DEFENSE_SPHERE",
       "targetSheet": "procedural",
       "targetRow": -1,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "poseEvidence": "USER_20261004_JUMP_SOURCE_GUARD_PROJECT_LIFT",
       "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "자기 대상; 20260930 영상: 캐릭터를 감싸는 얇은 파란 구형 보호막, 적 피격 없음."
+      "note": "사용자 20261004: 캐릭터 모션은 점프; 원본 수비 자세에 프로젝트 수직 이동 적용. 자기 대상; 20260930 영상: 캐릭터를 감싸는 얇은 파란 구형 보호막, 적 피격 없음."
     },
     {
       "id": "SK_전사_015",

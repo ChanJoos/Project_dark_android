@@ -1,3 +1,4 @@
+# V96 weapon/complete-defense user failure diagnosed; exact CI and native review pending. Details master/changes/CHUNGRYONG-JUMP-V96.json.
 # V95 exact source65d01e51, Actions37136447554 SUCCESS; 3 native tests/5 recipient frames, SHA0183dfb4; PHONE_PENDING, unmerged candidate. Details docs/verification/DARA_RECIPIENT_V95.json.
 # V95 explicit user Dara DEVICE_FAILED; low-resource test-release fix INTEGRATED, exact CI pending.
 # required_sources consumed: SkillVfxRenderer, GameView, RuntimeCombatPortAdapter, SkillAbilityExecutor, SkillAbilityCatalog, CombatResolver, classic manifest, MartialDefenseStarRegressionTest, SKILL_FX_AUDIT_CONTRACT, SKILL_PRESENTATION_CONTRACT, AGENTS, director/handoff/state/decision/backlog, development/design constitution, DATA_CONTRACT, Master manifest/data consumption/source catalog/runtime visual rules.

@@ -20,6 +20,7 @@ profiles={
  'SPIN_KICK':{'group':'d','back':[10,11,12,13,14,15,16,17,10],'front':[14,15,16,17,10,11,12,13,14],'phases':[0,.15,1/3,.43,.52,.60,.68,.76,.85]},
  'JUMP_KICK':{'group':'c','back':[24,25,26],'front':[27,28,29]},
  'SWING':{'group':'02','back':[0],'front':[2]},
+ 'JUMP':{'group':'f','back':[4],'front':[5]},
  'RAISE':{'group':'f','back':[0,1,0],'front':[2,3,2]},
  'IDLE':{'group':'01','back':[0],'front':[1]},
  'EQUIPPED_BASIC':{'group':'02','back':[0],'front':[2]},

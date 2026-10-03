@@ -13,7 +13,7 @@ import org.robolectric.annotation.*;
 public class ChungryongWeaponTest {
   Context c;
   @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();c.getSharedPreferences("project_dark_visual_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
-  void save(Bitmap b,String n)throws Exception{File f=new File("build/reports/device-review/v94-"+n+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}}
+  void save(Bitmap b,String n)throws Exception{File f=new File("build/reports/device-review/v96-"+n+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}}
   Bitmap render(GameView v)throws Exception{Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));return b;}
   int cyan(Bitmap b){int count=0;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++){int z=b.getPixel(x,y);if(Color.alpha(z)>128&&Color.blue(z)-Color.red(z)>=20&&Color.green(z)-Color.red(z)>=5)count++;}return count;}
   @Test public void inventoryInputEquipsActualIconAndPaperDollThenRestarts()throws Exception{
@@ -61,6 +61,33 @@ public class ChungryongWeaponTest {
     GameView v=new MartialHudAutoRegressionTest(){ {c=ChungryongWeaponTest.this.c;} }.directed(CharacterRenderer.Direction.SE);RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().equip(ChungryongWeaponRenderer.ITEM);
     int before=s.monsters().get(0).hp;TownInteriorTest.tap(v,914,498);assertEquals("SWING",TownInteriorTest.field(v,"action").toString());advance(v,.17f);assertEquals("basic has no early hit before shared resolver contact",before,s.monsters().get(0).hp);advance(v,.011f);assertTrue("basic resolves at actual .18s contact",s.monsters().get(0).hp<before);assertEquals(ChungryongWeaponRenderer.APPEARANCE,CharacterVisualBinding.from(s.rpg()).weaponVisualRef());save(render(v),"basic-world");
     setup();InnDetailQuestFxTest inn=new InnDetailQuestFxTest();inn.c=c;v=inn.start();inn.place(v);s=TownInteriorTest.field(v,"state");s.rpg().equip(ChungryongWeaponRenderer.ITEM);SkillBook b=TownInteriorTest.field(v,"skillBook");b.assign(0,"SK_전사_001");TownInteriorTest.tap(v,671,395);assertEquals("SK_전사_001",TownInteriorTest.field(v,"activeSkillVisualId"));advance(v,.16f);save(render(v),"inn-horizontal");inn.assertVisibleFx(v,s.monsters().get(0).id);
+  }
+  @Test public void carryUsesBodyRatioAndEveryWalkFrameKeepsFourWayBlade()throws Exception{
+    CharacterRenderer renderer=new CharacterRenderer(c);ChungryongWeaponRenderer weapon=new ChungryongWeaponRenderer(c);
+    assertEquals(.5,weapon.manifest.getDouble("sourceScale"),.0001);
+    assertEquals(43.0/51,weapon.manifest.getDouble("carryBodyRatio"),.0001);
+    Bitmap sheet=Bitmap.createBitmap(640,600,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(sheet);out.drawColor(0xff403b34);int col=0;
+    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+      for(int n=0;n<5;n++){
+        Bitmap b=Bitmap.createBitmap(160,120,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(b);
+        CharacterRenderer.Pose p=new CharacterRenderer.Pose(80,100,d,n==0?CharacterRenderer.State.IDLE:CharacterRenderer.State.WALK,n*.14f,0,1,false,"mu0000001,mh172,ml228,ms001",ChungryongWeaponRenderer.APPEARANCE,null,CharacterRenderer.EffectFamily.NONE);
+        renderer.draw(canvas,p);assertTrue("walk blade "+d+n,cyan(b)>20);out.drawBitmap(b,col*160,n*120,null);b.recycle();
+      }col++;
+    }save(sheet,"carry-all-frames");
+  }
+  @Test public void completeDefenseJumpsAndReturnsOnTheRealInputClock()throws Exception{
+    SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);assertEquals("JUMP",catalog.get("SK_전사_014").motion);
+    assertEquals(0,SkillBodyRenderer.jumpLift(0),.001);assertEquals(12,SkillBodyRenderer.jumpLift(1f/3f),.001);assertEquals(0,SkillBodyRenderer.jumpLift(1),.001);
+    for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
+      setup();c.getSharedPreferences("project_dark_visual_v1",0).edit().putString("body_identity",body).commit();
+      GameView v=new MartialHudAutoRegressionTest(){ {c=ChungryongWeaponTest.this.c;} }.directed(direction);
+      RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;
+      SkillBook book=TownInteriorTest.field(v,"skillBook");assertTrue(book.assign(0,"SK_전사_014"));TownInteriorTest.tap(v,671,395);
+      assertEquals("SK_전사_014",TownInteriorTest.field(v,"activeSkillVisualId"));
+      save(render(v),"jump-start-"+body+direction);advance(v,.14f);save(render(v),"jump-contact-"+body+direction);
+      assertTrue(s.skillEffects().has("player","PHYSICAL_GUARD"));assertEquals(x,s.player().x,.001);assertEquals(y,s.player().y,.001);
+      advance(v,1);assertNull(TownInteriorTest.field(v,"activeSkillVisualId"));save(render(v),"jump-land-"+body+direction);
+    }
   }
   void advance(GameView v,float seconds)throws Exception{for(float t=0;t<seconds;t+=.01f)MartialHudAutoRegressionTest.call(v,"update",float.class,Math.min(.01f,seconds-t));}
 }

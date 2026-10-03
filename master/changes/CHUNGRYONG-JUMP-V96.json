@@ -1,0 +1,23 @@
+{
+  "revision": "V96",
+  "userReport": "DEVICE_FAILED_USER_REPORTED",
+  "source": "article490398 preserved GIFs and five supplied phone captures",
+  "scale": {
+    "sourceBodyRatio": 0.5,
+    "carryBodyRatio": 0.8431372549019608
+  },
+  "handRegistration": "cropped BODY coordinates then source pivot and offset; female dimensions adapted",
+  "completeDefense": "USER_CONFIRMED_JUMP / SOURCE_GUARD_BODY_PLUS_PROJECT_VERTICAL_LIFT",
+  "preserved": [
+    "all original BODY and weapon pixels",
+    "defense sphere",
+    "combat clocks/resources/guard",
+    "Dara V95 recipient fix"
+  ],
+  "validation": "PENDING_EXACT_CI_NATIVE_REVIEW",
+  "limitations": [
+    "Original exact jump frames/cadence not proven",
+    "Original independent four-direction weapon source unavailable",
+    "Occluded grip and cord remain unavailable"
+  ]
+}

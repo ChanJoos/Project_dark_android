@@ -123,7 +123,7 @@ public class MartialDefenseStarRegressionTest {
   for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
    Bitmap actor=Bitmap.createBitmap(240,220,Bitmap.Config.ARGB_8888);Canvas actorCanvas=new Canvas(actor);
    CharacterRenderer.Pose pose=new CharacterRenderer.Pose(120,150,d,CharacterRenderer.State.SKILL,0,.2f,.5f,false,body.equals("mm001")?"mu0000001,mh172,ml228":null,null,null,CharacterRenderer.EffectFamily.SKILL);
-   assertTrue(renderer.draw(actorCanvas,pose,body,"RAISE",.4f));
+   assertTrue(renderer.draw(actorCanvas,pose,body,"JUMP",.4f));
    Bitmap shell=Bitmap.createBitmap(240,220,Bitmap.Config.ARGB_8888);reference.draw(new Canvas(shell),channel,.2f,120,150+channel.sequence.footOffsetY);
    for(int y=0;y<actor.getHeight();y++)for(int x=0;x<actor.getWidth();x++)if(Color.alpha(actor.getPixel(x,y))>12){
     float dx=(x-120)/(110*.31f),dy=(y-(150-35))/(118*.31f);
