@@ -419,7 +419,7 @@ public final class GameView extends View {
   }
   private void updateReagentShop(float dt){feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);if(reagentShopAdapter==null)return;reagentShopOpen=townWindow.isOpen();if(reagentShopOpen||innDialogueOpen){action=Action.IDLE;return;}
     boolean inn=townInterior.kind==TownInteriorDef.Kind.INN;
-    if(inn){combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
+    {combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
       if(f5mQuest.state()!=F5mAdaptedPrologueQuest.State.ACTIVE)for(RuntimeState.Monster m:state.monsters())if(!m.alive)m.respawnClock=Float.POSITIVE_INFINITY;
       if(!state.player().alive){autoAttackEnabled=false;action=Action.IDLE;combat.clearTarget();reagentShopAdapter.cancelForAction();return;}
       if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;activeSkillVisualId=null;playerFacing.endAttack();action=Action.IDLE;}return;}

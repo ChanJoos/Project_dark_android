@@ -80,6 +80,11 @@ public class InnDetailQuestFxTest {
     GameView v=start();capture(v,"antique-entry");RuntimeState s=TownInteriorTest.field(v,"state");WorldRuntimeAdapter w=TownInteriorTest.field(v,"reagentShopAdapter");
     for(int[] tile:new int[][]{{5,6},{6,8},{8,7},{11,9}}){s.player().x=TownInteriorDef.x(tile[0],tile[1]);s.player().y=TownInteriorDef.y(tile[0],tile[1]);w.snapCameraToPlayer();capture(v,"antique-depth-"+tile[0]+"-"+tile[1]);}
   }
+  @Test public void sharedSkillWindowSelfCastAlsoFinishesInAServiceInterior()throws Exception{
+    GameView v=new GameView(c);v.layout(0,0,960,540);TownInteriorTest.enter(v,TownInteriorDef.ALL.get(0));v.setSkillTestMode(true);
+    RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=10000;s.player().mp=20000;
+    SkillWindow.Actions actions=TownInteriorTest.field(v,"skillActions");SkillBook book=TownInteriorTest.field(v,"skillBook");actions.use(book.get("SK_무도가_017"));assertEquals("SK_무도가_017",TownInteriorTest.field(v,"activeSkillVisualId"));advance(v,.2f);assertTrue("shared UI action actually resolves in all facility maps",s.player().hp>10000);advance(v,.6f);assertNull("service room cannot strand an accepted action clock",TownInteriorTest.field(v,"activeSkillVisualId"));capture(v,"service-self-cast-finished");
+  }
   @Test public void skillWindowAndInventoryCanBeOpenedAndClosedInsideInn()throws Exception{
     GameView v=start();TownInteriorTest.tap(v,773,28);assertTrue(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);capture(v,"inn-skills");TownInteriorTest.tap(v,773,28);assertFalse(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);
     TownInteriorTest.tap(v,608,28);assertTrue((Boolean)TownInteriorTest.field(v,"inventoryOpen"));capture(v,"inn-inventory");
