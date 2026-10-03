@@ -62,6 +62,9 @@ public class QuestJournalTest {
   @Test public void wideViewportMovesQuestBesideSkillsAndJournalToTheCenter()throws Exception{
     GameView v=start();v.layout(0,0,2340,1080);float d=GameView.rightHudOffsetForView(2340,1080);assertEquals(1018,GameView.questIconX(d),0);gesture(v,GameView.questIconX(d)*2,56);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));capture(v,"wide-all");gesture(v,(818+d/2)*2,148);assertFalse((Boolean)TownInteriorTest.field(v,"questJournalOpen"));capture(v,"wide-hud");assertFalse(GameView.blocksWorldTapForHud(294,28,false));
   }
+  @Test public void manualWorldTapCancelsPendingQuestDoorContinuation()throws Exception{
+    GameView v=start();((F5mAdaptedPrologueQuest)TownInteriorTest.field(v,"f5mQuest")).accept();gesture(v,100,155);assertTrue((Boolean)TownInteriorTest.field(v,"questEntryPending"));gesture(v,310,190);assertFalse("manual target replaces pending quest continuation",(Boolean)TownInteriorTest.field(v,"questEntryPending"));assertFalse((Boolean)TownInteriorTest.field(v,"questExitPending"));
+  }
   @Test public void journalDragScrollDoesNotStartWorldMovement()throws Exception{
     GameView v=start();gesture(v,808,28);RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;
     for(int[] event:new int[][]{{0,380},{2,320},{2,240},{2,180},{1,180}}){MotionEvent e=MotionEvent.obtain(0,1,event[0],240,event[1],0);v.onTouchEvent(e);e.recycle();}

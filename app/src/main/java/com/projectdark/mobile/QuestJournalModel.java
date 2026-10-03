@@ -33,7 +33,7 @@ final class QuestJournalModel {
   List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest){
     List<Row> out=new ArrayList<>();Status s=Status.valueOf(q.state()==F5mAdaptedPrologueQuest.State.RETURN_READY?"REPORT":q.state()==F5mAdaptedPrologueQuest.State.COMPLETED?"COMPLETE":q.state().name());
     String goal=s==Status.AVAILABLE?"제임스에게 여관 의뢰 받기":s==Status.ACTIVE?"여관 생쥐 처치":s==Status.REPORT?"여관의 메리에게 보고":"여관의 소란을 해결했습니다";
-    out.add(new Row(q.questId(),"여관의 소란","밀레스 · 여관","제임스 → 메리","여관의 손님들이 생쥐 때문에 곤란해하고 있습니다. 제임스의 의뢰를 받아 여관 안을 살펴보세요.",goal,"경험치와 초보자 보급품","처음부터 받을 수 있습니다","완료 후: 제임스의 성장 훈련",s,q.currentCount(),q.requiredCount()));
+    out.add(new Row(q.questId(),"여관의 소란","밀레스 · 여관","제임스 → 메리","여관의 손님들이 생쥐 때문에 곤란해하고 있습니다. 제임스의 의뢰를 받아 여관 안을 살펴보세요.",goal,"EXP 7,500  ·  Gold 100  ·  훈련 증표 1","처음부터 받을 수 있습니다","완료 후: 제임스의 성장 훈련",s,q.currentCount(),q.requiredCount()));
     Status gs=Status.valueOf(g.state()==GrowthQuest2.State.RETURN_READY?"REPORT":g.state()==GrowthQuest2.State.COMPLETED?"COMPLETE":g.state().name());
     String ggoal=gs==Status.LOCKED?"여관의 소란 완료":gs==Status.AVAILABLE?"제임스에게 성장 훈련 받기":gs==Status.ACTIVE?"밀레스 훈련 몬스터 처치":gs==Status.REPORT?"제임스에게 훈련 결과 보고":"성장 훈련을 마쳤습니다";
     out.add(new Row(GrowthQuest2.QUEST_ID,"성장 훈련","밀레스 · 마을","제임스","여관의 문제를 해결했다면 마을 밖으로 나갈 준비를 하세요. 제임스가 전투 훈련을 도와줍니다.",ggoal,"EXP 15,000  ·  Gold 250","선행: 여관의 소란 완료","완료 후: 한스의 포테 숲길 안내",gs,g.currentCount(),g.requiredCount()));
