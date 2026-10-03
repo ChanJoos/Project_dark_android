@@ -10,9 +10,24 @@ import java.nio.charset.StandardCharsets;
 final class SkillBodyRenderer {
   private final Context context;private final SkillPresentationCatalog catalog;private final EquipmentVisualRegistry gear;
   private final Map<String,Bitmap> bitmaps=new HashMap<>();private final Map<String,JSONObject> registrations=new HashMap<>();
-  private final Paint paint=new Paint();
+  private final Paint paint=new Paint();private final ChungryongWeaponRenderer chungryong;
   static final float SCALE=CharacterRenderer.SOURCE_PRESENTATION_SCALE*43f/51f;
-  SkillBodyRenderer(Context c,SkillPresentationCatalog s){context=c;catalog=s;gear=new EquipmentVisualRegistry(c);paint.setFilterBitmap(false);}
+  SkillBodyRenderer(Context c,SkillPresentationCatalog s){context=c;catalog=s;gear=new EquipmentVisualRegistry(c);chungryong=new ChungryongWeaponRenderer(c);paint.setFilterBitmap(false);}
+  boolean drawChungryong(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
+    if(!ChungryongWeaponRenderer.equipped(p.weaponVisualRef))return false;
+    boolean back=ChungryongWeaponRenderer.back(p.direction);int n=ChungryongWeaponRenderer.frame(motion,phase);
+    String group=ChungryongWeaponRenderer.group(motion);int index=ChungryongWeaponRenderer.bodyIndex(motion,back,n);
+    JSONObject f=catalog.frames.optJSONObject(body+"/"+group+"/"+index);if(f==null)return false;Bitmap b=bitmap(f.optString("path"));if(b==null)return false;
+    float x=p.x,y=p.y+8*SCALE;float[] hand=ChungryongWeaponRenderer.hand(group,index);
+    float hx=x+hand[0]*SCALE,hy=y+hand[1]*SCALE;
+    c.save();if(ChungryongWeaponRenderer.west(p.direction))c.scale(-1,1,x,y);
+    if(back)chungryong.layer(c,motion,true,n,hx,hy,SCALE);
+    float left=x-(float)f.optDouble("pivotX")*SCALE,top=y-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
+    c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
+    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,group,index,p.direction,x,y);
+    if(!back)chungryong.layer(c,motion,false,n,hx,hy,SCALE);
+    c.restore();return true;
+  }
   boolean draw(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
     if(p.direction==null)return false;String key=catalog.frameKey(body,motion,p.direction,phase);JSONObject f=key==null?null:catalog.frames.optJSONObject(key);if(f==null)return false;
     Bitmap b=bitmap(f.optString("path"));if(b==null)return false;
@@ -21,7 +36,7 @@ final class SkillBodyRenderer {
     float rootX=p.x,rootY=p.y+8f*SCALE;
     c.save();if(mirror)c.scale(-1,1,rootX,rootY);
     boolean weapon=motion.equals("THRUST")||motion.equals("SWING");
-    if(weapon)drawGear(c,p.weaponVisualRef,group,index,p.direction,rootX,rootY);
+    if(weapon){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",ChungryongWeaponRenderer.back(p.direction),0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawGear(c,p.weaponVisualRef,group,index,p.direction,rootX,rootY);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
     for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,group,index,p.direction,rootX,rootY);

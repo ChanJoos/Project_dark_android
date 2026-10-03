@@ -160,6 +160,11 @@ public final class F5mSaveStore {
       }
       RpgProgressionState staged=new RpgProgressionState();
       if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid saved ownership");
+      // User-requested visual test item: seed old saves once, preserve all equipment and other ownership.
+      if(!prefs.getBoolean("chungryong_granted_v94",false)&&!owned.containsKey(RpgProgressionState.CHUNGRYONG_ITEM_ID)){
+        owned.put(RpgProgressionState.CHUNGRYONG_ITEM_ID,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid V94 ownership migration");
+      }
       Map<String,Integer> bank=new LinkedHashMap<>();JSONObject bankJson=new JSONObject(prefs.getString("bank_inventory_v84","{}"));
       for(java.util.Iterator<String> it=bankJson.keys();it.hasNext();){String id=it.next();bank.put(id,bankJson.getInt(id));}
       if(!staged.restoreBank(prefs.getLong("bank_gold_v84",0),bank))throw new IllegalArgumentException("Invalid bank");
@@ -168,6 +173,7 @@ public final class F5mSaveStore {
       staged.restoreStats(prefs.getInt("str",3),prefs.getInt("int",3),prefs.getInt("wis",3),prefs.getInt("con",3),prefs.getInt("dex",3),prefs.getInt("stat_points",0));
       staged.restoreBaseResources(prefs.getInt("base_max_hp_v3",staged.baseMaxHp()),prefs.getInt("base_max_mp_v3",staged.baseMaxMp()));
       staged.restoreCombatSequence(prefs.getLong("reward_sequence",0));copyRpg(staged,r);
+      if(!prefs.getBoolean("chungryong_granted_v94",false))prefs.edit().putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putBoolean("chungryong_granted_v94",true).commit();
     }catch(Exception invalid){writable=false;}
   }
 

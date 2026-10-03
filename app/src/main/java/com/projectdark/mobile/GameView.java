@@ -57,6 +57,7 @@ public final class GameView extends View {
   private final CharacterRenderer characterRenderer=new CharacterRenderer();
   private final SkillPresentationCatalog skillPresentation;
   private final SkillBodyRenderer skillBodyRenderer;
+  private final ChungryongWeaponRenderer chungryongWeapon;
   private final SkillVfxRenderer skillVfx;
   private String activeSkillVisualId,characterBodyIdentity="mm001";
   private final SkillApproachController skillApproach=new SkillApproachController();
@@ -105,7 +106,7 @@ public final class GameView extends View {
 
   private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(checkpointClock>=2f||savedLedgerSequence!=state.ledger().sequence()){checkpoint();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postDelayed(this,16);}};
 
-  public GameView(Context c){super(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
+  public GameView(Context c){super(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
     combatSession.setSkillMovement(new SkillAbilityExecutor.Movement(){
       public boolean movePlayer(float x,float y){int steps=SkillActionContract.distance(state.player().x,state.player().y,x,y);if(steps==Integer.MAX_VALUE||steps>6||state.skillEffects().rooted("player"))return false;for(int i=1;i<=steps;i++){float q=i/(float)steps;if(!activeWorld().canPlayerOccupy(state.player().x+(x-state.player().x)*q,state.player().y+(y-state.player().y)*q))return false;}if(!activeWorld().canPlayerOccupy(x,y))return false;activeWorld().cancelForAction();state.player().x=x;state.player().y=y;activeWorld().snapCameraToPlayer();return true;}
       public boolean moveMonster(RuntimeState.Monster m,float x,float y){return state.tryMoveMonster(m,x-m.x,y-m.y,(float)Math.hypot(x-m.x,y-m.y));}
@@ -475,6 +476,10 @@ public final class GameView extends View {
   float renderedPlayerWorldY(){return activeWorld().presentationPlayerY();}
   private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
     SkillPresentationCatalog.Entry selected=skillPresentation.get(activeSkillVisualId);
+    if(isActing()&&ChungryongWeaponRenderer.equipped(pose.weaponVisualRef)&&((selected==null&&presentation==CharacterRenderer.State.ATTACK)||(selected!=null&&selected.id.startsWith("SK_전사_")&&"SWING".equals(selected.motion)))){
+      SkillActionContract.Rule rule=selected==null?null:SkillActionContract.get(selected.id);float contact=rule==null?.14f:rule.contact;
+      if(skillBodyRenderer.drawChungryong(c,pose,characterBodyIdentity,ChungryongWeaponRenderer.motion(activeSkillVisualId),skillPosePhase(actionClock,stateDuration,contact)))return;
+    }
     if(selected!=null&&isActing()){
       SkillActionContract.Rule poseRule=SkillActionContract.get(activeSkillVisualId);
       float contact=poseRule==null?(action==Action.CAST?.24f:.14f):poseRule.contact;
@@ -597,6 +602,7 @@ public final class GameView extends View {
   }
   private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
     RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
+    if(ChungryongWeaponRenderer.ITEM.equals(row.itemId)){Bitmap b=chungryongWeapon.icon;float sc=Math.min(size/b.getWidth(),size/b.getHeight());float w=b.getWidth()*sc,h=b.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(b,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     Bitmap reagent=reagentVisuals.get(row.itemId);if(reagent!=null){float sc=Math.min(size/reagent.getWidth(),size/reagent.getHeight()),w=reagent.getWidth()*sc,h=reagent.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(reagent,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     Bitmap catalog=ItemIconCatalog.reagent(row.itemId);if(catalog==null)catalog=ItemIconCatalog.get(row.itemId,d);if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     if(d!=null&&drawSourceItemIcon(c,d,l,t,size))return;
