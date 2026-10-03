@@ -11,6 +11,13 @@ final class TownNpcRenderer {
    else if(yy>103&&hsv[0]>75&&hsv[1]>.25f){hsv[0]=25;hsv[1]=.25f;hsv[2]*=.40f;b.setPixel(xx,yy,Color.HSVToColor(Color.alpha(color),hsv));}
    else if(d.kind==TownInteriorDef.Kind.BANK&&xx>57&&xx<71&&yy>79&&yy<102&&hsv[0]>8&&hsv[0]<65&&hsv[1]>.5f){hsv[0]=220;hsv[1]=.4f;hsv[2]*=.6f;b.setPixel(xx,yy,Color.HSVToColor(Color.alpha(color),hsv));}
    else if(d.kind==TownInteriorDef.Kind.CHURCH&&hsv[0]>8&&hsv[0]<65&&hsv[1]>.45f&&yy>75){hsv[0]=42;hsv[1]=.15f;hsv[2]=Math.min(1,.4f+hsv[2]*.58f);b.setPixel(xx,yy,Color.HSVToColor(Color.alpha(color),hsv));}
-  }cache.put(d.kind,b);}c.drawBitmap(b,x-64,y-112,p);
+  }
+  if(d.kind==TownInteriorDef.Kind.INN){
+   // Project-authored linen apron separates the innkeeper silhouette from the reagent seller.
+   Paint apron=new Paint();apron.setAntiAlias(false);apron.setColor(0xffd3c39f);Path shape=new Path();shape.moveTo(55,72);shape.lineTo(73,72);shape.lineTo(78,103);shape.lineTo(51,103);shape.close();new Canvas(b).drawPath(shape,apron);
+   apron.setColor(0xffa88c62);new Canvas(b).drawLine(56,73,52,101,apron);new Canvas(b).drawLine(72,73,77,101,apron);
+   apron.setColor(0xffeee0bf);new Canvas(b).drawLine(57,76,72,76,apron);
+  }
+  cache.put(d.kind,b);}c.drawBitmap(b,x-64,y-112,p);
  }
 }

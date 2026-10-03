@@ -22,6 +22,6 @@ public final class FieldTransitionE2ETest {
     state.enterMillesFromField(790f,1510f);
     assertEquals(WorldDef.ID,state.currentMapId());
     assertTrue(state.npcs().size()>=1);
-    assertEquals(3,state.monsters().size());
+    assertEquals("Milles now has three training actors and the separate adapted mouse",4,state.monsters().size());
   }
 }

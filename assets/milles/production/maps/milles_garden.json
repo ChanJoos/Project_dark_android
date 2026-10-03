@@ -431,6 +431,26 @@
       "evidence": "Source-image threshold; MillesDoorAnchors transform"
     },
     {
+      "id": "inn_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 2016,
+      "y": 736,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "ADAPTED_INN_ENTRY"
+    },
+    {
+      "id": "inn_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 2048,
+      "y": 752,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "ADAPTED_INN_ENTRY"
+    },
+    {
       "id": "west_armorer",
       "asset": "buildings/BLD_004_armor_shop.png",
       "x": 60,
