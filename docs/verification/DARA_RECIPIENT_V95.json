@@ -1,7 +1,33 @@
 {
-  "user_report": "DEVICE_FAILED V94 Dara recipient effect missing",
-  "diagnosis": "test access bypasses MP minimum, retained damage formula resolves zero/MISS and renderer suppressed source release",
-  "fix": "explicit testAccess + Dara zero resolved contact shows source burst; no damage impact or combat changes",
-  "state": "INTEGRATED; CI/NATIVE/PHONE_PENDING",
-  "base": "758d09c4f323f7e26e34e18c4c7ef0e7df2313c9"
+  "source_commit": "65d01e51c5a345654dbdb092b5f03a73702101a9",
+  "source_tree": "1cc7e34bf8669f9b82ea13e0bde2025ceff7d96b",
+  "branch": "codex/town-interiors-mobile-v86",
+  "main_merged": false,
+  "run": 37136447554,
+  "job": 111241849304,
+  "status": "success",
+  "apk_artifact": 11278649727,
+  "review_artifact": 11278913858,
+  "apk_sha256": "0183dfb4aa92a01d76bcdb11f08d1e47de0598c10009b329bfdbfad5cac5aa76",
+  "apk_bytes": 31898784,
+  "assemble_completed_seoul": "2026-10-04T01:28:34.9395229+09:00",
+  "version_code": 95,
+  "version_name": "0.95-dara-recipient-fx",
+  "new_tests": 3,
+  "native_frames": 5,
+  "prior_assets_byte_identical": 951,
+  "verified": [
+    "low HP100 MP90 test release retains zero damage/resources",
+    "no burst before three-second contact",
+    "actual recipient anchor/pixels four outdoor directions and inn mouse",
+    "source pulse expires; zero damage has no damage impact",
+    "actual death cancellation and normal MISS suppress preview",
+    "all configured existing regressions pass"
+  ],
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "first_run": {
+    "id": 37136229882,
+    "result": "new cancellation fixture set alive=false without respawn delay, so immediate respawn; corrected fixture uses real RuntimeState.damage; runtime fix unchanged"
+  }
 }
