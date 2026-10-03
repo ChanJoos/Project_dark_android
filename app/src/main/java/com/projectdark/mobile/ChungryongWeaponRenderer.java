@@ -9,11 +9,16 @@ final class ChungryongWeaponRenderer {
   static final String APPEARANCE="mw_chungryong",ITEM="IT_WEAPON_CHUNGRYONG";
   static final String[] MOTIONS={"basic","twohand","horizontal","vertical"};
   final Bitmap atlas,icon;final JSONObject manifest;private final Paint paint=new Paint();
-  ChungryongWeaponRenderer(Context c){try{
-    atlas=BitmapFactory.decodeStream(c.getAssets().open("weapons/chungryong/atlas.png"));
-    icon=BitmapFactory.decodeStream(c.getAssets().open("weapons/chungryong/icon.png"));
-    manifest=new JSONObject(new String(PresentationAssetBytes.read(c,"weapons/chungryong/manifest.json"),StandardCharsets.UTF_8));
-  }catch(Exception e){throw new IllegalStateException("Chungryong source projection",e);}paint.setFilterBitmap(false);}
+  private static Bitmap sharedAtlas,sharedIcon;private static JSONObject sharedManifest;
+  ChungryongWeaponRenderer(Context c){synchronized(ChungryongWeaponRenderer.class){
+    if(sharedAtlas==null)try{
+      Bitmap a=BitmapFactory.decodeStream(c.getAssets().open("weapons/chungryong/atlas.png"));
+      Bitmap i=BitmapFactory.decodeStream(c.getAssets().open("weapons/chungryong/icon.png"));
+      JSONObject j=new JSONObject(new String(PresentationAssetBytes.read(c,"weapons/chungryong/manifest.json"),StandardCharsets.UTF_8));
+      if(a==null||i==null)throw new IllegalStateException("missing weapon pixels");sharedAtlas=a;sharedIcon=i;sharedManifest=j;
+    }catch(Exception e){throw new IllegalStateException("Chungryong source projection",e);}
+    atlas=sharedAtlas;icon=sharedIcon;manifest=sharedManifest;
+  }paint.setFilterBitmap(false);}
   static boolean equipped(String id){return APPEARANCE.equals(id);}
   static String motion(String skillId){
     if(skillId==null)return "basic";

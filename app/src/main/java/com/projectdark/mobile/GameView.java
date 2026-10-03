@@ -477,7 +477,7 @@ public final class GameView extends View {
   private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
     SkillPresentationCatalog.Entry selected=skillPresentation.get(activeSkillVisualId);
     if(isActing()&&ChungryongWeaponRenderer.equipped(pose.weaponVisualRef)&&((selected==null&&presentation==CharacterRenderer.State.ATTACK)||(selected!=null&&selected.id.startsWith("SK_전사_")&&"SWING".equals(selected.motion)))){
-      SkillActionContract.Rule rule=selected==null?null:SkillActionContract.get(selected.id);float contact=rule==null?.14f:rule.contact;
+      SkillActionContract.Rule rule=selected==null?null:SkillActionContract.get(selected.id);float contact=rule==null?CombatResolver.attackPrototype(combat.attackDef(),combat.attackMode()).hitTime:rule.contact;
       if(skillBodyRenderer.drawChungryong(c,pose,characterBodyIdentity,ChungryongWeaponRenderer.motion(activeSkillVisualId),skillPosePhase(actionClock,stateDuration,contact)))return;
     }
     if(selected!=null&&isActing()){
