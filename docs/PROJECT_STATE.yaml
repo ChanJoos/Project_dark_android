@@ -556,6 +556,7 @@ work_packages:
       - app/src/main/java/com/projectdark/mobile/world/MillesProductionCollisionAudit.java
       - app/src/main/java/com/projectdark/mobile/F5mAdaptedPrologueQuest.java
       - app/src/main/java/com/projectdark/mobile/F5mAdaptedPrologueQuestAudit.java
+      - app/src/main/java/com/projectdark/mobile/F5mRuntimeBindingAudit.java
       - app/src/main/java/com/projectdark/mobile/F5mWorldUxQuestPresentationAudit.java
       - app/src/main/java/com/projectdark/mobile/GrowthQuest2.java
       - app/src/main/java/com/projectdark/mobile/F5mSaveStore.java

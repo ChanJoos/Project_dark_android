@@ -37,6 +37,17 @@ public final class MillesStoryQuestTest {
     assertFalse(mouse.hasCanonicalReward());
   }
 
+  @Test public void mouseAppearsOnlyAfterTheAdaptedQuestIsAccepted(){
+    RuntimeState state=new RuntimeState();
+    assertNull(find(state,"milles_mouse_proto"));
+    F5mAdaptedPrologueQuest quest=new F5mAdaptedPrologueQuest(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID);
+    assertEquals(F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED,quest.accept());
+    RuntimeState.Monster mouse=state.ensureAdaptedMillesMouse();
+    assertNotNull(mouse);
+    assertSame(mouse,state.ensureAdaptedMillesMouse());
+    assertEquals("milles_mouse_proto",mouse.id);
+  }
+
   @Test public void mouseAndControlMonsterUseIdenticalSharedChaseAndAttackFlow(){
     RuntimeState mouseState=new RuntimeState(),controlState=new RuntimeState();
     mouseState.ensureAdaptedMillesMouse();
