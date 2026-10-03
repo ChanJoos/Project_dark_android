@@ -61,7 +61,7 @@ public class DaraRecipientFxTest {
     assertEquals(hp,m.hp);visible(v,m,"inn");
   }
   @Test public void cancelledReleaseAndNormalMissDoNotEmitTestBurst()throws Exception{
-    GameView v=start(CharacterRenderer.Direction.SE);RuntimeState s=TownInteriorTest.field(v,"state");use(v);s.monsters().get(0).alive=false;tick(v,3.01f);
+    GameView v=start(CharacterRenderer.Direction.SE);RuntimeState s=TownInteriorTest.field(v,"state");use(v);s.damage(s.monsters().get(0),s.monsters().get(0).hp);tick(v,3.01f);
     assertFalse(((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).pulses.stream().anyMatch(this::source));
     v=start(CharacterRenderer.Direction.SE);((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).testAccess=false;use(v);tick(v,3.01f);
     assertFalse(((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).pulses.stream().anyMatch(this::source));
