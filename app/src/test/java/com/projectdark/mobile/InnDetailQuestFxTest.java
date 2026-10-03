@@ -72,6 +72,7 @@ public class InnDetailQuestFxTest {
     for(TownInteriorDef.Prop chair:inn.props)if(chair.asset.startsWith("inn_world_chair_")){
       float best=Float.MAX_VALUE,dx=0,dy=0;
       for(TownInteriorDef.Prop table:inn.props)if(table.asset.equals("inn_world_table"))for(int u=table.u;u<table.u+table.cellsU;u++){
+        if(Math.abs(u-chair.u)+Math.abs(table.v-chair.v)!=1)continue;
         float x=TownInteriorDef.x(u,table.v)-chair.x(),y=TownInteriorDef.y(u,table.v)-chair.y(),dist=x*x+y*y;if(dist<best){best=dist;dx=x;dy=y;}
       }
       assertEquals("chair faces its own table", "inn_world_chair_"+CanonicalActorFacing.quantize(dx,dy,CharacterRenderer.Direction.SE).name().toLowerCase(java.util.Locale.ROOT),chair.asset);
