@@ -38,11 +38,17 @@ final class SkillBodyRenderer {
     float rootX=p.x,rootY=p.y+8f*SCALE;
     if("JUMP".equals(motion)){paint.setColor(0x50000000);c.drawOval(new RectF(p.x-7,p.y-2,p.x+7,p.y+2),paint);paint.setColor(Color.WHITE);rootY-=jumpLift(phase);}
     c.save();if(mirror)c.scale(-1,1,rootX,rootY);
+    boolean jumpWeapon="JUMP".equals(motion)&&ChungryongWeaponRenderer.equipped(p.weaponVisualRef);
+    boolean back=ChungryongWeaponRenderer.back(p.direction);
+    float jumpHandX=rootX+(13f*b.getWidth()/17f-(float)f.optDouble("pivotX"))*SCALE;
+    float jumpHandY=rootY+(24-b.getHeight()-(float)f.optDouble("offsetY"))*SCALE;
+    if(jumpWeapon&&back)chungryong.layer(c,"basic",true,0,jumpHandX,jumpHandY,SCALE);
     boolean weapon=motion.equals("THRUST")||motion.equals("SWING");
     if(weapon){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",ChungryongWeaponRenderer.back(p.direction),0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawGear(c,p.weaponVisualRef,group,index,p.direction,rootX,rootY);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
     for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,group,index,p.direction,rootX,rootY);
+    if(jumpWeapon&&!back)chungryong.layer(c,"basic",false,0,jumpHandX,jumpHandY,SCALE);
     c.restore();return true;
   }
   // Presentation-only takeoff/contact/landing; world position and accepted sphere stay fixed.

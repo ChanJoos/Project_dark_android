@@ -81,11 +81,15 @@ public class ChungryongWeaponTest {
     for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
       setup();c.getSharedPreferences("project_dark_visual_v1",0).edit().putString("body_identity",body).commit();
       GameView v=new MartialHudAutoRegressionTest(){ {c=ChungryongWeaponTest.this.c;} }.directed(direction);
-      RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;
+      RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;s.rpg().equip(ChungryongWeaponRenderer.ITEM);
       SkillBook book=TownInteriorTest.field(v,"skillBook");assertTrue(book.assign(0,"SK_전사_014"));TownInteriorTest.tap(v,671,395);
       assertEquals("SK_전사_014",TownInteriorTest.field(v,"activeSkillVisualId"));
       save(render(v),"jump-start-"+body+direction);advance(v,.14f);save(render(v),"jump-contact-"+body+direction);
       assertTrue(s.skillEffects().has("player","PHYSICAL_GUARD"));assertEquals(x,s.player().x,.001);assertEquals(y,s.player().y,.001);
+      advance(v,.12f);save(render(v),"jump-sphere-"+body+direction);
+      Bitmap actor=Bitmap.createBitmap(180,140,Bitmap.Config.ARGB_8888);
+      CharacterRenderer.Pose jumping=new CharacterRenderer.Pose(90,110,direction,CharacterRenderer.State.SKILL,0,.14f,.5f,false,null,ChungryongWeaponRenderer.APPEARANCE,null,CharacterRenderer.EffectFamily.NONE);
+      assertTrue(new SkillBodyRenderer(c,catalog).draw(new Canvas(actor),jumping,body,"JUMP",1f/3f));assertTrue("equipped weapon follows jump",cyan(actor)>20);actor.recycle();
       advance(v,1);assertNull(TownInteriorTest.field(v,"activeSkillVisualId"));save(render(v),"jump-land-"+body+direction);
     }
   }
