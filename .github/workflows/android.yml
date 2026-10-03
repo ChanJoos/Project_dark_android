@@ -9,7 +9,9 @@ permissions:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    permissions:
+      contents: write
     env:
       ANDROID_HOME: /usr/local/lib/android/sdk
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
@@ -104,6 +106,8 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V90 adapted Milles story quest and shared mouse AI
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
+      - name: Verify V97 quest list, state filters, compact navigation and restart
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
       - name: Verify V96 four-way carry, all weapon motions and complete defense jump
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ChungryongWeaponTest --stacktrace
       - name: Verify V95 low-resource Dara recipient release and cancellation
@@ -248,3 +252,28 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
+      - name: Upload focused V97 quest review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quest-v97-review-${{ github.sha }}
+          path: app/build/reports/device-review/v97-*.png
+          if-no-files-found: warn
+      - name: Publish directly downloadable candidate APK
+        if: github.event_name == 'push' && github.ref == 'refs/heads/codex/town-interiors-mobile-v86'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          grep -q 'versionCode 97' app/build.gradle || exit 0
+          mkdir -p apk-delivery
+          cp app/build/outputs/apk/debug/app-debug.apk apk-delivery/PROJECT_DARK_V97.apk
+          sha256sum apk-delivery/PROJECT_DARK_V97.apk > apk-delivery/SHA256SUMS.txt
+          tag="candidate-v97-${GITHUB_SHA:0:8}"
+          python3 - <<'PYINFO'
+          import json,os,pathlib,hashlib,datetime
+          p=pathlib.Path('apk-delivery/PROJECT_DARK_V97.apk')
+          report={'sourceCommit':os.environ['GITHUB_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'candidate':True,'versionCode':97,'apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'apkBytes':p.stat().st_size,'builtSeoul':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'verification':'Full configured CI and native runtime gates passed. Physical phone and user visual acceptance pending.'}
+          pathlib.Path('apk-delivery/BUILD_INFO.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          PYINFO
+          gh release create "$tag" apk-delivery/PROJECT_DARK_V97.apk apk-delivery/SHA256SUMS.txt apk-delivery/BUILD_INFO.json --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V97 퀘스트 개선 후보' --notes "퀘스트 목록·수락 가능 표시·목표 이동 개선. Source: $GITHUB_SHA. Native CI verified; phone/user review pending."
