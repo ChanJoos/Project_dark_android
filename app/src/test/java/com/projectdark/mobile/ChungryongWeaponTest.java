@@ -71,9 +71,11 @@ public class ChungryongWeaponTest {
       for(int n=0;n<5;n++){
         Bitmap b=Bitmap.createBitmap(160,120,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(b);
         CharacterRenderer.Pose p=new CharacterRenderer.Pose(80,100,d,n==0?CharacterRenderer.State.IDLE:CharacterRenderer.State.WALK,n*.14f,0,1,false,"mu0000001,mh172,ml228,ms001",ChungryongWeaponRenderer.APPEARANCE,null,CharacterRenderer.EffectFamily.NONE);
+        CharacterRenderer.setPresentationWalkClock((n-1)*CharacterRenderer.WALK_FRAME_SECONDS);
+        assertEquals(n,CharacterRenderer.paperDollAtlasColumn(p.state,CharacterRenderer.presentationWalkClock()));
         renderer.draw(canvas,p);assertTrue("walk blade "+d+n,cyan(b)>20);out.drawBitmap(b,col*160,n*120,null);b.recycle();
       }col++;
-    }save(sheet,"carry-all-frames");
+    }CharacterRenderer.setPresentationWalkClock(0);save(sheet,"carry-all-frames");
   }
   @Test public void completeDefenseJumpsAndReturnsOnTheRealInputClock()throws Exception{
     SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);assertEquals("JUMP",catalog.get("SK_전사_014").motion);
