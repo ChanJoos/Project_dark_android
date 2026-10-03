@@ -1,0 +1,87 @@
+{
+  "source_commit": "e586a908a3ce493bc5d12fcc48bee5daa2b079e5",
+  "source_tree": "fd1a56dfc801baab81bac066322fac0bc3bedca0",
+  "source_branch": "codex/town-interiors-mobile-v86",
+  "main_merged": false,
+  "main_commit": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "build_run": 37125545957,
+  "build_job": 111209999300,
+  "version_code": 94,
+  "version_name": "0.94-chungryong-warrior",
+  "checks": {
+    "weapon_native_tests": 6,
+    "review_pngs": 24,
+    "prior_packaged_assets_identical": 948,
+    "original_BODY_bytes_identical": 268,
+    "new_source_weapon_assets_byte_match": 3,
+    "configured_workflow": "ALL_PASS",
+    "workflow_successful_steps": 49,
+    "manifest": {
+      "versionCode": 94,
+      "versionName": "0.94-chungryong-warrior",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "zip_crc_and_artifact_digests": "PASS",
+    "final_captures": "24 byte-identical to manually inspected fa21a runtime captures; final basic/inn PNG viewed directly"
+  },
+  "implemented": [
+    "one actual inventory weapon and one-time valid old-save migration; equip/unequip/restart via existing input",
+    "26 independent source-capture blade/trail frames and actual item icon, no captured actor or floor",
+    "original both-sex BODY c/e profiles; basic/twohand/horizontal/vertical; original four-way runtime rig",
+    "existing warrior skill selection and actual quickslot contact/facing/recovery; shared combat and indoor FX",
+    "basic presentation contact uses authoritative .18sec resolver; applicable warrior clock .14sec unchanged",
+    "current-version ownership checkpoints mark one-time grant even when weapon removed"
+  ],
+  "limitations": [
+    "PHONE_PENDING / USER_VISUAL_PENDING; unmerged candidate",
+    "BODY hand registration and selected pose/clothing fallback are ADAPTED; source actor clothes not copied",
+    "capture-occluded grip/red cord pixels are absent from world blade; independent source four views unavailable",
+    "one independent article reference; PENDING_REFERENCE for three-source requirement",
+    "original event distribution, weapon durability and S/L damage not implemented or invented"
+  ],
+  "source_article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/490398?fromList=true&menuId=131&tc=cafe_article_list",
+  "source_title": "『청룡의숨결』 각 직업 모션",
+  "source_author": "아머드코어",
+  "source_date": "2025-07-08 16:33",
+  "source_provenance": "master/source/weapons/chungryong_490398; sourceHashes recorded in packaged weapons/chungryong/manifest.json",
+  "source_acceptance": "master/changes/CHUNGRYONG-WARRIOR-V94.json",
+  "source_comparison": "Actual original item PNG and four labelled GIFs compared to source-independent native blade contact. Original BODY and existing equipment retained; selected pose and grip are explicit adaptation, not exact original actor reconstruction.",
+  "manual_native_review": [
+    "v94-inventory-compare.png",
+    "v94-equipped-paper-doll.png",
+    "v94-basic-world.png",
+    "v94-inn-horizontal.png",
+    "v94-live-SK_전사_006-NW.png",
+    "v94-live-SK_전사_015-SW.png",
+    "all eight both-sex four-motion sheets"
+  ],
+  "attempts": [
+    {
+      "source": "fd2836741d78d20fd0a2c6a4ae8221263a0ad978",
+      "run": 37124698170,
+      "result": "FAIL: new basic test assumed .16sec; resolver actually .18sec. Corrected new presentation to resolver clock and test .17/.181; immutable atlas shared."
+    },
+    {
+      "source": "fa21a56241095706af351cc3ad762a7dfb1a7938",
+      "run": 37125013579,
+      "result": "FAIL: all six weapon tests passed, existing empty-inventory checkpoint exposed regrant on current-version save. writeRpg now records one-time flag with ownership checkpoint."
+    }
+  ],
+  "status": "success",
+  "build_started_utc": "2026-10-03T13:15:15Z",
+  "build_completed_utc": "2026-10-03T13:22:14Z",
+  "build_completed_seoul": "2026-10-03T22:22:14+09:00",
+  "completion_clock": "completed-success workflow updated_at; APK assemble completed 2026-10-03T13:22:07.4141432Z",
+  "apk_artifact": 11275595579,
+  "review_artifact": 11274611522,
+  "full_review_artifact": 11275071042,
+  "inn_review_artifact": 11274721363,
+  "apk_sha256": "210a20df1892f1e3261af75e8f08b40eaaf95e7da398c298641a9044fbfe2270",
+  "apk_bytes": 31898712,
+  "apk_zip_sha256": "3cd0a700a41d9f7d908a0993c817abbff632456e9de14088a1f3fddb7e8f45e9",
+  "focused_review_zip_sha256": "274f1574ba39f6e366e2ed720914c9954b95d25e4a9594ebdafc1ce8e41bf30d"
+}

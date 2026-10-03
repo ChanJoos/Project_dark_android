@@ -585,6 +585,47 @@ work_packages:
       evidence: "Exact V93 source42d20ece678b0a4bc5aa111da468f3dcec31c95b passed Actions37122438002/job111201056317 at21:27:24 KST. APK11273852663 SHA256421302d612e43de3cbfe2e9afc8e1aade7b2d9b6124a6dc2473e0512df87f40d; native20 inn tests/7 new regressions and18 PNGs verified. Source/body942 asset bytes retained,6 new sprites match APK. Full proof docs/verification/INN_DETAIL_V93_BUILD.json; historical V90/V91/V92 device reports preserved in handoff/decision/verification records."
       next_check: "Install exact V93 source42d20ece APK: Actions37122438002 SUCCESS; native20 inn tests/7 new regressions,18 focused screenshots reviewed; manifest/new6 sprite bytes and prior942 asset bytes verified. APK11273852663 SHA256421302d612e43de3cbfe2e9afc8e1aade7b2d9b6124a6dc2473e0512df87f40d; proof INN_DETAIL_V93_BUILD.json. Handset/user visual acceptance pending; V92 user-reported primitive furniture/quest/FX DEVICE_FAILED retained."
 
+  CHUNGRYONG_WEAPON_WARRIOR_001:
+    title: Source-backed 청룡의숨결 item and warrior weapon presentation
+    system:
+    - item
+    - inventory
+    - equipment
+    - animation
+    - combat
+    scenes:
+    - SCENE_MILLES_VILLAGE
+    - SCENE_FIELD_COMBAT
+    priority: P1
+    queue_state: BUILD_VERIFIED
+    claim: null
+    required_sources:
+    - master/source/weapons/chungryong_490398
+    - master/changes/CHUNGRYONG-WARRIOR-V94.json
+    - docs/SKILL_PRESENTATION_CONTRACT.md
+    - app/src/main/java/com/projectdark/mobile/ChungryongWeaponRenderer.java
+    - app/src/test/java/com/projectdark/mobile/ChungryongWeaponTest.java
+    acceptance:
+    - Actual inventory input equips/unequips/restarts without replacing old ownership.
+    - Source blade and four motions remain visible on both original BODY identities
+      and four facings.
+    - Real quickslot/basic contact, indoor recipient FX and existing combat rules pass.
+    - Physical phone and user visual acceptance are recorded separately.
+    current_followup:
+      implementation_state: BUILD_NATIVE_VERIFIED_V94
+      observable_state: DEVICE_PENDING / USER_VISUAL_PENDING
+      implementation_source_sha: e586a908a3ce493bc5d12fcc48bee5daa2b079e5
+      actions_run: 37125545957
+      apk_artifact: 11275595579
+      apk_sha256: 210a20df1892f1e3261af75e8f08b40eaaf95e7da398c298641a9044fbfe2270
+      evidence: docs/verification/CHUNGRYONG_WEAPON_V94_BUILD.json; six weapon tests
+        and 24 native PNGs; prior 948 assets identical.
+      limitations: ADAPTED BODY/grip/clothing mapping; occluded weapon pixels; mirrored
+        four views; one independent reference; no original stats/durability claim.
+      next_check: Install exact V94 candidate, equip 청룡의숨결 in inventory, try basic attack
+        and warrior 숏블레이드/메가블레이드/크래셔 in field and inn, restart. Preserve V93 furniture/quest/FX
+        fixes.
+
 agent_selection_policy:
   - "Every scheduled Dev/Verify run MUST load current PROJECT_STATE and DEVICE_20260915_214834 before selecting or verifying work."
   - "Every finding in DEVICE_20260915_214834 is mapped to a work package or explicit preserve constraint; no finding may silently disappear because another P0 is being worked."

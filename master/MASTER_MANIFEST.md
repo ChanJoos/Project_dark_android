@@ -1,8 +1,12 @@
 # PROJECT DARK Master manifest
 
-Revision M003 / D001 · 2026-09-30
+Revision M004 / D001 · 2026-10-03
 
 이 Master는 지속 개정하는 기준 데이터다. 변환 manifest는 원래 제공된 92개 sheet를 기록한다. 현재 `master/data`에는 여기에 6개 구조 검사 대상 canonical CSV가 추가됐고, `Asset_Master.csv`, `Skill_Evidence.csv`, `Skill_Master.csv`, `Skill_Requirements.csv`, `Skill_Research_Audit.csv`는 명시적 canonical override다. 기술·마법 캡처에서 전사한 구클라이언트 요구 조건은 `Skill_Evidence.csv` 및 `Skill_Legacy_Requirements.csv`에 보존한다. 원본 XLSX 자체는 미확보이므로 이를 lossless XLSX 검증 완료라고 부르지 않는다.
+
+## M004 — additive V94 weapon projection
+
+User-authorized custom item IT_WEAPON_CHUNGRYONG / appearance mw_chungryong is recorded in changes/CHUNGRYONG-WARRIOR-V94.json. source/weapons/chungryong_490398 preserves one community article, source icon and four labelled GIFs; tools/extract_chungryong_weapon.py projects them into app assets/weapons/chungryong. Existing canonical/source CSV bytes are unchanged; this additive appearance/grant/BODY adapter is not an invented canonical numeric Item_Master row. Existing original BODY c/e semantics stay authoritative; selected pose/hand registration is ADAPTED. Source durability and S/L damage are retained as reference only. Exact build/native evidence: ../docs/verification/CHUNGRYONG_WEAPON_V94_BUILD.json. Physical device, user visual acceptance and reference shortage remain pending.
 
 ## 검증 결과
 
