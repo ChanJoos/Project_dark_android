@@ -69,8 +69,8 @@ public final class TownInteriorDef {
  }
  private static void dining(List<Prop> p,int u,int v,boolean food){
   p.add(new Prop("inn_world_table",u,v,96,0,true,2,1));
-  p.add(new Prop("inn_world_chair_ne",u-1,v,32));p.add(new Prop("inn_world_chair_sw",u+2,v,32));
-  p.add(new Prop("inn_world_chair_se",u,v-1,32));p.add(new Prop("inn_world_chair_nw",u+1,v+1,32));
+  p.add(new Prop("inn_world_chair_se",u-1,v,32));p.add(new Prop("inn_world_chair_nw",u+2,v,32));
+  p.add(new Prop("inn_world_chair_sw",u,v-1,32));p.add(new Prop("inn_world_chair_ne",u+1,v+1,32));
   if(food)p.add(new Prop("bottle_tray",u,v,23,32,false,2,1));
  }
  public static final List<TownInteriorDef> ALL=Collections.unmodifiableList(Arrays.asList(

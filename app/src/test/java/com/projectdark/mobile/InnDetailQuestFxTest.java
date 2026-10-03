@@ -68,6 +68,14 @@ public class InnDetailQuestFxTest {
       for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++){int p=b.getPixel(x,y);if(Color.alpha(p)>128){visible++;colors.add(p);}if(Color.alpha(p)==0)clear++;}
       assertTrue(n+" retains material detail",colors.size()>100);assertTrue(n+" is an isolated object",clear>500);assertTrue(visible>500);b.recycle();
     }
+    TownInteriorDef inn=TownInteriorDef.forMap("milles_interior_inn");
+    for(TownInteriorDef.Prop chair:inn.props)if(chair.asset.startsWith("inn_world_chair_")){
+      float best=Float.MAX_VALUE,dx=0,dy=0;
+      for(TownInteriorDef.Prop table:inn.props)if(table.asset.equals("inn_world_table"))for(int u=table.u;u<table.u+table.cellsU;u++){
+        float x=TownInteriorDef.x(u,table.v)-chair.x(),y=TownInteriorDef.y(u,table.v)-chair.y(),dist=x*x+y*y;if(dist<best){best=dist;dx=x;dy=y;}
+      }
+      assertEquals("chair faces its own table", "inn_world_chair_"+CanonicalActorFacing.quantize(dx,dy,CharacterRenderer.Direction.SE).name().toLowerCase(java.util.Locale.ROOT),chair.asset);
+    }
     GameView v=start();capture(v,"antique-entry");RuntimeState s=TownInteriorTest.field(v,"state");WorldRuntimeAdapter w=TownInteriorTest.field(v,"reagentShopAdapter");
     for(int[] tile:new int[][]{{5,6},{6,8},{8,7},{11,9}}){s.player().x=TownInteriorDef.x(tile[0],tile[1]);s.player().y=TownInteriorDef.y(tile[0],tile[1]);w.snapCameraToPlayer();capture(v,"antique-depth-"+tile[0]+"-"+tile[1]);}
   }
