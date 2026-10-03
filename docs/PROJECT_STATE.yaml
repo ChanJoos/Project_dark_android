@@ -1,3 +1,5 @@
+# V95 explicit user Dara DEVICE_FAILED; low-resource test-release fix INTEGRATED, exact CI pending.
+# required_sources consumed: SkillVfxRenderer, GameView, RuntimeCombatPortAdapter, SkillAbilityExecutor, SkillAbilityCatalog, CombatResolver, classic manifest, MartialDefenseStarRegressionTest, SKILL_FX_AUDIT_CONTRACT, SKILL_PRESENTATION_CONTRACT, AGENTS, director/handoff/state/decision/backlog, development/design constitution, DATA_CONTRACT, Master manifest/data consumption/source catalog/runtime visual rules.
 # V83 active user request: skill formulas and real effects, continuing V82 candidate.
 # required_sources consumed: AGENTS.md, DIRECTOR_GUIDE, CHAT_HANDOFF, PROJECT_STATE,
 # DECISION_LOG, DIRECTOR_BACKLOG, development constitution, DATA_CONTRACT,

@@ -12,6 +12,7 @@ final class SkillVfxRenderer {
     Pulse(long seq,String id,String sheet,int row,String anchor,boolean caster,float duration,float x,float y){actionSequence=seq;this.id=id;this.sheet=sheet;this.row=row;this.anchor=anchor;this.caster=caster;this.duration=duration;this.x=x;this.y=y;}
   }
   private final CapturedSkillFx captured;private final ClassicSkillReference classic,rogue,warrior,shared;private final SkillPresentationCatalog catalog;private final Map<String,Bitmap> sheets=new HashMap<>();
+  boolean testAccess;
   final List<Pulse> pulses=new ArrayList<>();private final Set<String> seen=new HashSet<>();private final Deque<String> history=new ArrayDeque<>();private final Paint p=new Paint();
   SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);rogue=new ClassicSkillReference(c,"rogue");warrior=new ClassicSkillReference(c,"warrior");shared=new ClassicSkillReference(c,"shared");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
@@ -28,7 +29,11 @@ final class SkillVfxRenderer {
     }
     String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||id.equals("SK_공통_001"))continue;
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
-    boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.hitSemantic!=CombatResolver.HitSemantic.MISS;
+    // Test access bypasses Dara's MP prerequisite but retains its real damage formula.
+    // A low-resource test release therefore reports zero/MISS. Show the source release
+    // on its resolved recipient without inventing damage, an impact, or an early cast.
+    boolean daraTestRelease=testAccess&&id.equals("SK_무도가_020")&&e.amount==0;
+    boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&(e.hitSemantic!=CombatResolver.HitSemantic.MISS||daraTestRelease);
     if(!caster&&!target)continue;
     // A real resolved damaging contact has its own recipient-only visual channel.
     // Preview (amount zero), misses and healing never pretend the monster took damage.

@@ -106,6 +106,8 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
       - name: Verify V94 source weapon, inventory migration, equipped motions and real warrior contact
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ChungryongWeaponTest --stacktrace
+      - name: Verify V95 low-resource Dara recipient release and cancellation
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DaraRecipientFxTest --stacktrace
       - name: Verify V83 per-skill abilities and runtime formulas
         run: |
           python3 tools/generate_skill_abilities.py
@@ -231,6 +233,13 @@ jobs:
         with:
           name: weapon-v94-review-${{ github.sha }}
           path: app/build/reports/device-review/v94-*.png
+          if-no-files-found: warn
+      - name: Upload focused V95 Dara review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dara-v95-review-${{ github.sha }}
+          path: app/build/reports/device-review/v95-*.png
           if-no-files-found: warn
       - name: Upload debug APK
         uses: actions/upload-artifact@v4

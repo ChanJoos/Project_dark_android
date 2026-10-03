@@ -1,0 +1,7 @@
+{
+  "user_report": "DEVICE_FAILED V94 Dara recipient effect missing",
+  "diagnosis": "test access bypasses MP minimum, retained damage formula resolves zero/MISS and renderer suppressed source release",
+  "fix": "explicit testAccess + Dara zero resolved contact shows source burst; no damage impact or combat changes",
+  "state": "INTEGRATED; CI/NATIVE/PHONE_PENDING",
+  "base": "758d09c4f323f7e26e34e18c4c7ef0e7df2313c9"
+}
