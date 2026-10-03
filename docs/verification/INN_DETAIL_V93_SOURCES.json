@@ -45,7 +45,7 @@
         163,
         256
       ],
-      "sha256": "e7a007293aed1febd3f5b8fc2cd5720f0a6806fdd7fc69b8d0fd9e9da5bac6a1"
+      "sha256": "4508e416fe07c6e69864245afc6c99115b3bf50c126d3073494edab558c71114"
     },
     {
       "name": "chair_ne",
@@ -87,12 +87,35 @@
         256,
         251
       ],
-      "sha256": "9da4fee28ed838b60816667c20b161f523fc0f7b4df58e683905f7d79e453ebe"
+      "sha256": "3b330929cc2b68bfdd68064b946b3ea0d7fd67b54318617ee88df29b2a21ede2"
     }
   ],
   "limitations": [
     "authored antique variant; burgundy upholstery/carved relief added by user-requested antique direction",
     "hearth second orientation uses runtime reflection",
     "common hall remains adapted; Mary source identity and full original topology unresolved"
-  ]
+  ],
+  "original_comparison": {
+    "reference": "inn_reference_video/Screen_Recording_20260924_163501_YouTube.mp4, extracted reference-half.png (supplied recording)",
+    "observed_original": [
+      "wood dining tables with thick tops and individual chairs",
+      "bordered patterned rugs on walkable floor",
+      "continuous paneled wooden counter",
+      "red brick hearths with dark openings and flames",
+      "horizontal log walls and floorboards"
+    ],
+    "v93_preserved": [
+      "shared 64x32 World projection, tile footprints, customer/staff route and depth ordering",
+      "independent table/chair objects, walkable rugs, shop counter modules and opposed hearths",
+      "original player/body and all prior skill/source asset bytes"
+    ],
+    "v93_antique_adaptation": [
+      "carved turned table and chair legs/aprons, brass joinery",
+      "burgundy upholstered chairs and stone fireplace mantel",
+      "woven rug motifs"
+    ],
+    "review_status": "initial actual GameView native images manually viewed; final source runtime/native verification pending; not original-pixel equivalence or user acceptance",
+    "layout_scope": "Common hall is adapted: three dining tables/twelve chairs; the provided full reference view shows four dining groups. Furniture form/material comparison is not a full original topology claim."
+  },
+  "sprite_extraction_qa": "chair_sw and hearth rectangular crop bounds overlapped neighboring sprites; preserve selected connected source pixels and alpha edge, discard detached foreign components; no creative repaint"
 }

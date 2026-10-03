@@ -66,6 +66,10 @@ public class InnDetailQuestFxTest {
     for(String n:new String[]{"table","chair_ne","chair_nw","chair_se","chair_sw","hearth"})try(InputStream in=c.getAssets().open("interiors/v93/"+n+".png")){
       Bitmap b=BitmapFactory.decodeStream(in);Set<Integer> colors=new HashSet<>();int visible=0,clear=0;
       for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++){int p=b.getPixel(x,y);if(Color.alpha(p)>128){visible++;colors.add(p);}if(Color.alpha(p)==0)clear++;}
+      int start=-1,total=0;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if(Color.alpha(b.getPixel(x,y))>128){start=y*b.getWidth()+x;total++;}
+      boolean[] seen=new boolean[b.getWidth()*b.getHeight()];ArrayDeque<Integer> queue=new ArrayDeque<>();queue.add(start);seen[start]=true;int joined=0;
+      while(!queue.isEmpty()){int q=queue.remove(),x=q%b.getWidth(),y=q/b.getWidth();joined++;for(int dy=-1;dy<=1;dy++)for(int dx=-1;dx<=1;dx++){int xx=x+dx,yy=y+dy;if(xx<0||yy<0||xx>=b.getWidth()||yy>=b.getHeight())continue;int i=yy*b.getWidth()+xx;if(!seen[i]&&Color.alpha(b.getPixel(xx,yy))>128){seen[i]=true;queue.add(i);}}}
+      assertEquals(n+" contains only its own connected sprite; no neighboring atlas fragments",total,joined);
       assertTrue(n+" retains material detail",colors.size()>100);assertTrue(n+" is an isolated object",clear>500);assertTrue(visible>500);b.recycle();
     }
     TownInteriorDef inn=TownInteriorDef.forMap("milles_interior_inn");
