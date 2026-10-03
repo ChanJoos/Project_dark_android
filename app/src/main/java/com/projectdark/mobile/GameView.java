@@ -73,7 +73,7 @@ public final class GameView extends View {
   private final EquipmentVisualRegistry inventoryVisuals;
   private final ReagentItemVisualRegistry reagentVisuals;
   private final ReagentShopInteriorRenderer reagentShopRenderer;
-  private WorldRuntimeAdapter reagentShopAdapter;
+  private WorldRuntimeAdapter reagentShopAdapter,lastOutcomeWorld;
   private boolean inReagentShop=false,reagentShopOpen=false;
   private float millesReturnX,millesReturnY;
   private TownInteriorDef townInterior;
@@ -155,6 +155,8 @@ public final class GameView extends View {
 
   private void consumeMoveOutcome(WorldMoveTargetController.Snapshot move){
     if(move==null)return;
+    // Request sequence numbers are local to each map adapter.
+    if(lastOutcomeWorld!=activeWorld()){lastOutcomeWorld=activeWorld();lastMoveRequestId=-1;lastMoveStatus=WorldMoveTargetController.Status.IDLE;}
     if(move.requestId!=lastMoveRequestId){lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;}
     if(move.status==lastMoveStatus)return;
     lastMoveStatus=move.status;

@@ -53,8 +53,14 @@ public class InnDetailQuestFxTest {
     GrowthQuest2 next=TownInteriorTest.field(v,"quest2");assertEquals(F5mAdaptedPrologueQuest.State.COMPLETED,q.state());assertEquals("unlocked in the same reward transaction",GrowthQuest2.State.AVAILABLE,next.state());capture(v,"inn-next-quest");
     // Production journal button, then production objective navigation.
     TownInteriorTest.tap(v,294,28);capture(v,"growth-journal");TownInteriorTest.tap(v,560,404);TownInteriorTest.tick(v,2400);
-    assertEquals(WorldDef.ID,s.currentMapId());InteractionController interaction=TownInteriorTest.field(v,"interaction");assertTrue("continued route opens the next NPC dialogue",interaction.dialogOpen());assertEquals("milles_guide_proto",interaction.dialogNpc().id);capture(v,"growth-npc");TownInteriorTest.tap(v,550,426);assertEquals(GrowthQuest2.State.ACTIVE,next.state());
+    assertEquals(WorldDef.ID,s.currentMapId());InteractionController interaction=TownInteriorTest.field(v,"interaction");assertTrue("continued route opens next dialogue; alive="+s.player().alive+", hp="+s.player().hp+", x="+s.player().x+", y="+s.player().y,interaction.dialogOpen());assertEquals("milles_guide_proto",interaction.dialogNpc().id);capture(v,"growth-npc");TownInteriorTest.tap(v,550,426);assertEquals(GrowthQuest2.State.ACTIVE,next.state());
     assertTrue(F5mSaveStore.checkpointActive());F5mSaveStore.install(c);GameView restored=new GameView(c);assertEquals(GrowthQuest2.State.ACTIVE,((GrowthQuest2)TownInteriorTest.field(restored,"quest2")).state());assertEquals(s.rpg().gold(),((RuntimeState)TownInteriorTest.field(restored,"state")).rpg().gold());
+  }
+  @Test public void completedGrowthJournalReachesHansAndHisForestTravel()throws Exception{
+    GameView v=start();F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");q.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);GrowthQuest2 growth=TownInteriorTest.field(v,"quest2");growth.restore(GrowthQuest2.State.COMPLETED,3);
+    TownInteriorTest.call(v,"leaveReagentShop");RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=s.player().maxHp;
+    TownInteriorTest.tap(v,294,28);capture(v,"forest-journal");TownInteriorTest.tap(v,560,404);TownInteriorTest.tick(v,1600);
+    InteractionController i=TownInteriorTest.field(v,"interaction");assertTrue("Hans route opens dialogue",i.dialogOpen());assertEquals("milles_gate_proto",i.dialogNpc().id);capture(v,"hans-travel");TownInteriorTest.tap(v,550,426);assertEquals(PoteFieldDef.MAP_ID,s.currentMapId());capture(v,"forest-arrival");
   }
   @Test public void individualAntiqueSpritesHaveTransparentMarginsAndNativeScaleDetail()throws Exception{
     for(String n:new String[]{"table","chair_ne","chair_nw","chair_se","chair_sw","hearth"})try(InputStream in=c.getAssets().open("interiors/v93/"+n+".png")){
