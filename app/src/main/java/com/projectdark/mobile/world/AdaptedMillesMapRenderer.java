@@ -32,7 +32,7 @@ public final class AdaptedMillesMapRenderer {
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   private static final float TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
-  private static final String GRASS_SURFACE="video_reference/terrain/grass_texture.png";
+  private static final String GRASS_SURFACE="video_reference/objects/milles_buildings_reference.png";
   private static final String SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png";
 
   private static final class SpritePlacement {
@@ -238,6 +238,9 @@ public final class AdaptedMillesMapRenderer {
     Bitmap image=null;
     String source=MillesSourceStyle.completeBenchSource(path);
     if(assets!=null)try(InputStream in=assets.open(source)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;options.inPremultiplied=!source.contains("bench_video_cutout");image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
+    // A clean material-only crop, excluding the building, actor, road and lamp.
+    // The tiny mirrored swatch created conspicuous repeated circular patterns.
+    if(image!=null&&path.equals(GRASS_SURFACE))image=Bitmap.createBitmap(image,65,205,435,165);
     if(image!=null){image=source.contains("bench_video_cutout")?MillesSourceStyle.bench(image,source):sourceStyle.scenery(image,path);}
     bitmapCache.put(path,image);return image;
   }

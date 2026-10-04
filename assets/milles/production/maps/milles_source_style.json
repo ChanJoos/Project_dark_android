@@ -499,5 +499,15 @@
       700
     ],
     "method": "24 equal luminance bands of observed tree canopy, not ground grass"
+  },
+  "grass_sample": {
+    "source": "video_reference/objects/milles_buildings_reference.png",
+    "crop_xywh": [
+      65,
+      205,
+      435,
+      165
+    ],
+    "processing": "clean captured grass-only material; unchanged native RGB; .43 world scale; no objects/UI/whole-frame scene"
   }
 }
