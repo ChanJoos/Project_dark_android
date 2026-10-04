@@ -1,6 +1,17 @@
 milles_river_style_v102:
   implementation: IMPLEMENTED_CANDIDATE
-  exact_native_build: PENDING
+  exact_native_build: BUILD_AND_NATIVE_RUNTIME_VERIFIED
+  source_commit: 2ffd629c96086b3554311004628c9d0b4eef3040
+  actions_run: 37197488523
+  focused_native_tests: 18
+  locally_reviewed_frames: 18
+  apk_sha256: d9b3ac430af3fd27541b6e17b14bb69a3e10b0856144f5383bc79403f43d4701
+  built_seoul: '2026-10-04T20:06:46.478572+09:00'
+  final_save: SUCCEEDED_ALL_THREE_RECEIPTS
+  in_place_upgrade: false
+  original_identity: ADAPTED_NOT_PIXEL_IDENTICAL
+  general_ci: IN_PROGRESS_37197488544
+  evidence: docs/verification/MILLES_RIVER_STYLE_V102_BUILD.json
   physical_phone: PENDING
   user_visual: PENDING
   source_contract: docs/MILLES_RIVER_STYLE_V102_CONTRACT.md
