@@ -26,7 +26,7 @@ public final class MillesStoryQuestTest {
     TownInteriorDef inn=TownInteriorDef.forMap("milles_interior_inn");
     assertNotNull("the exterior inn portal now resolves to a real room",inn);
     assertEquals(TownInteriorDef.Kind.INN,inn.kind);
-    assertEquals("메리 · 여관 주인",inn.npcName);
+    assertEquals("Benjamin · 여관 주인",inn.npcName);
     assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_world_table")));
     assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("inn_world_hearth")));
     assertTrue(inn.props.stream().anyMatch(p->p.asset.equals("joined_counter")));
