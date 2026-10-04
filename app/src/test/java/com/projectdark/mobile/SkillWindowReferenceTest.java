@@ -34,7 +34,7 @@ public class SkillWindowReferenceTest {
     GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillWindow w=field(v,"skillWindow");RuntimeState state=field(v,"state");w.open=true;w.showJob("전체");float x=state.player().x,y=state.player().y;
     event(v,MotionEvent.ACTION_DOWN,450,450);event(v,MotionEvent.ACTION_MOVE,450,150);event(v,MotionEvent.ACTION_UP,450,150);assertEquals(300,w.scroll,.01);assertEquals(x,state.player().x,0);assertEquals(y,state.player().y,0);
     assertTrue(w.maxScroll()>w.scroll);String selected=w.selectedId;tap(v,100,530);assertEquals(selected,w.selectedId);render(v,"skill-window-v73-scrolled.png");
-    w.showJob("도적");assertEquals(0,w.scroll,0);for(SkillWindow.Item item:w.layout()){assertEquals(49,item.rect.width(),0);assertEquals(57,item.rect.height(),0);}assertTrue(w.rows().stream().anyMatch(e->e.magic()));assertTrue(w.rows().stream().anyMatch(e->!e.magic()));
+    w.showJob("도적");assertEquals(0,w.scroll,0);for(SkillWindow.Item item:w.layout()){assertTrue("modern grid has larger touch cards",item.rect.width()>=56);assertEquals(57,item.rect.height(),0);}assertTrue(w.rows().stream().anyMatch(e->e.magic()));assertTrue(w.rows().stream().anyMatch(e->!e.magic()));
   }
   @Test public void latestSquareIconUsesExactReferenceCropPixels()throws Exception{
     SkillIconCatalog icons=new SkillIconCatalog(c);Bitmap actual=Bitmap.createBitmap(65,65,Bitmap.Config.ARGB_8888);assertTrue(icons.drawSquare(new Canvas(actual),"SK_도적_025",new RectF(0,0,65,65)));

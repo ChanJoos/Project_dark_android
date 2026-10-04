@@ -1,0 +1,11 @@
+{
+  "family": "Pretendard",
+  "version": "1.3.9",
+  "source": "https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip",
+  "license": "SIL Open Font License 1.1",
+  "files": {
+    "Pretendard-SemiBold.otf": "c89bc43027dc7cde5726e96223376f8eec09302b2fc1f8147fd5b57cfc376118",
+    "Pretendard-Regular.otf": "3ffbacde6ab8411f1d2db54bb9b1f0b3ee2a738932033722cf0388c06aed1c93",
+    "LICENSE.txt": "b04538c9abec39a3db75108cf0af0fd9c77032fe8aa2cf38345b4d250e98e38e"
+  }
+}

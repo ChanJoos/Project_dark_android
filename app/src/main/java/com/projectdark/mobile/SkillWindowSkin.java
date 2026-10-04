@@ -25,10 +25,7 @@ final class SkillWindowSkin {
   boolean draw(Canvas c,String key,RectF rect){Bitmap image=images.get(key);if(image==null)return false;c.drawBitmap(image,null,rect,paint);return true;}
   boolean drawContent(Canvas c,String key,RectF rect){Bitmap image=images.get(key);if(image==null)return false;int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),rect,paint);return true;}
   void panel(Canvas c,RectF r,boolean detail){
-    draw(c,detail?"detail-paper":"paper",r);
-    draw(c,detail?"detail-header":"list-header",new RectF(r.left,r.top,r.right,r.top+31));
-    draw(c,detail?"detail-left":"left-edge",new RectF(r.left,r.top+31,r.left+4,r.bottom));
-    draw(c,detail?"detail-right":"right-edge",new RectF(r.right-4,r.top+31,r.right,r.bottom));
-    draw(c,detail?"detail-bottom":"bottom-edge",new RectF(r.left,r.bottom-4,r.right,r.bottom));
+    UiTheme.panel(c,new RectF(r.left,r.top,r.right,detail?532:r.bottom),detail?"스킬 정보":"스킬");
+    UiTheme.close(c,detail?914:610,61);
   }
 }

@@ -1,0 +1,87 @@
+{
+  "version": 98,
+  "source_commit": "98e12db0c6f390684b6bb8928534af3f8d9e36a3",
+  "build": "LOCAL_BUILD_VERIFIED",
+  "native_runtime": "ROBOLECTRIC_NATIVE_VERIFIED",
+  "test_count": 66,
+  "test_suites": [
+    {
+      "name": "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.HudTouchAcceptanceTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ItemWindowReferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MartialHudAutoRegressionTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ModernUiTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.QuestJournalTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+      "tests": "15",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowTest",
+      "tests": "16",
+      "failures": "0",
+      "errors": "0"
+    }
+  ],
+  "captured_pngs": {
+    "v98-equipment.png": "efbd0be3eae298e9e2edc47f8a8fadff397f35f556bd857b4bb9f5eded744409",
+    "v98-hud.png": "f942f572005bce40e551cf850c4bcb306390b52d37bc10451d608b624791eccb",
+    "v98-inventory-compare.png": "13ba2207e8c089a99fa71430d5507f0bc38484891422b21cac52bab12fa299c0",
+    "v98-inventory.png": "20b2560e03e201021dedebca874faba5647b753161b99422ef2d0e06367bd7ab",
+    "v98-quests.png": "81f1dbd19a83683ec59d0b92c352ed0865f23cbd01d42072e8cee28bd381fcc9",
+    "v98-skills-conditions.png": "e850f2a7e94dce741ec6556176f79e448ea84430f3c77f2a298b7c8139863578",
+    "v98-skills.png": "3e9516f0d8309c91c6b1b12029fbcf38ef494ad3ac3253fd60573f5d9b603491",
+    "v98-stats.png": "ea62f3c710092b508ed509cc3ce1387f1e9e3302ba6e591e7419949052996888",
+    "v98-wide-equipment.png": "99bc0d07c9d5c5bfbbc6cd583f7e251fdb1e0eade8f16c957120a2d756c5e7e9",
+    "v98-wide-inventory.png": "10f5500271c92bb5f635a07b0d15221ca9c0c2fb5c74af9c363a01677fe5227f",
+    "v98-wide-quests.png": "5fda4a543343a86d7439f20913cb13916c5cea8e97f49e7b56b987891a22c8c1",
+    "v98-wide-skills.png": "d667ff1569ab430f5ca331f7a8f74cc70b31ed74b4382c9b4b2a4529c41da7f3",
+    "v98-wide-stats.png": "93697055459f0d683c58b830ffe135caa9edf669c6e830ce5b67f6824c10c528"
+  },
+  "apk_sha256": "f0b1a477d05d37b82fa9db92e5c3806eba2d1a6c37502324c8e95b97794e8ef3",
+  "apk_bytes": 34078401,
+  "assembled_kst": "2026-10-04T10:14:03.230247+09:00",
+  "signer_sha256": "bf5af946d872378da9e0ba3b9d2f803df2090b4682e5b922aa04975b0a94b23e",
+  "signer_warning": "Local debug signer differs from V97; not an in-place update APK. Do not uninstall an existing game/save to install this local candidate. Await approved canonical CI delivery.",
+  "github_push": "BLOCKED_AUTO_APPROVAL_EXPLICIT_PUBLIC_EXPORT_AUTHORIZATION_REQUIRED",
+  "actions": "NOT_RUN_FOR_V98",
+  "phone": "PENDING",
+  "user_visual": "PENDING"
+}
