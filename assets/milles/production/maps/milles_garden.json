@@ -613,9 +613,9 @@
       "y": 708,
       "scale": 0.7,
       "district": "west_crafts",
-      "draw": "ground",
       "anchor_x": 85.0,
-      "anchor_y": 39.5
+      "anchor_y": 39.5,
+      "draw": "ground"
     },
     {
       "id": "south_garden_tree",
@@ -632,9 +632,9 @@
       "y": 1230,
       "scale": 0.7,
       "district": "south_residences",
-      "draw": "ground",
       "anchor_x": 85.0,
-      "anchor_y": 39.5
+      "anchor_y": 39.5,
+      "draw": "ground"
     },
     {
       "id": "south_garden_bench",
@@ -677,9 +677,9 @@
       "y": 536,
       "scale": 0.7,
       "district": "garden",
-      "draw": "ground",
       "anchor_x": 85.0,
-      "anchor_y": 39.5
+      "anchor_y": 39.5,
+      "draw": "ground"
     },
     {
       "id": "park_bench_nw",
@@ -2729,5 +2729,31 @@
       "scale": 0.32,
       "district": "south_gate"
     }
-  ]
+  ],
+  "asset_anchors": {
+    "video_reference/objects/bench_video_cutout_04.png": {
+      "anchor_x": 102.0,
+      "anchor_y": 100
+    },
+    "video_reference/objects/bench_video_cutout_01.png": {
+      "anchor_x": 87.0,
+      "anchor_y": 113
+    },
+    "video_reference/objects/bench_video_cutout_03.png": {
+      "anchor_x": 110.0,
+      "anchor_y": 114
+    },
+    "video_reference/objects/bench_video_cutout_02.png": {
+      "anchor_x": 89.0,
+      "anchor_y": 117
+    },
+    "video_reference/objects/bench_lantern_reference.png": {
+      "anchor_x": 165.0,
+      "anchor_y": 190
+    },
+    "street/OBJ_tree_ring_milles_reference.png": {
+      "anchor_x": 85.0,
+      "anchor_y": 39.5
+    }
+  }
 }

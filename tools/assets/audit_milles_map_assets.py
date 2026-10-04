@@ -17,8 +17,8 @@ DISTRICT_FENCES = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesD
 def main() -> None:
     authored_bytes = LAYOUT.read_bytes()
     layout = json.loads(authored_bytes.decode("utf-8"))
-    generated = subprocess.run(["python3", str(ROOT / "tools/assets/build_milles_village_scene.py")], capture_output=True, text=True, check=True)
-    assert generated.returncode == 0
+    generated = subprocess.run(["python3", str(ROOT / "tools/assets/build_milles_village_scene.py")], capture_output=True, text=True, check=False)
+    assert generated.returncode == 0, generated.stderr
     assert LAYOUT.read_bytes() == authored_bytes, "generated map differs from authored source; commit base and output together"
     assert layout["ground"]["tile_size"] == [64, 32]
     assert layout["ground"]["path_width_tiles"] <= 1

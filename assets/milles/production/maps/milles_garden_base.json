@@ -394,5 +394,31 @@
       "evidence": "PROJECT_RECONSTRUCTION/imagegen; user video12sec motif",
       "ground_z": 1
     }
-  ]
+  ],
+  "asset_anchors": {
+    "video_reference/objects/bench_video_cutout_04.png": {
+      "anchor_x": 102.0,
+      "anchor_y": 100
+    },
+    "video_reference/objects/bench_video_cutout_01.png": {
+      "anchor_x": 87.0,
+      "anchor_y": 113
+    },
+    "video_reference/objects/bench_video_cutout_03.png": {
+      "anchor_x": 110.0,
+      "anchor_y": 114
+    },
+    "video_reference/objects/bench_video_cutout_02.png": {
+      "anchor_x": 89.0,
+      "anchor_y": 117
+    },
+    "video_reference/objects/bench_lantern_reference.png": {
+      "anchor_x": 165.0,
+      "anchor_y": 190
+    },
+    "street/OBJ_tree_ring_milles_reference.png": {
+      "anchor_x": 85.0,
+      "anchor_y": 39.5
+    }
+  }
 }

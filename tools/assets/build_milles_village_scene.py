@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MAPS = ROOT / "assets/milles/production/maps"
 BASE = MAPS / "milles_garden_base.json"
 OUTPUT = MAPS / "milles_garden.json"
+ASSET_ANCHORS = json.loads(BASE.read_text(encoding="utf-8")).get("asset_anchors", {})
 FENCE_JAVA = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesDistrictFenceFootprints.java"
 
 # These are the same authored centerlines as AdaptedMillesIsometricTileLayer.PATHS.
@@ -116,14 +117,11 @@ def within_building(x, y, margin=0):
 
 def add(objects, id, asset, x, y, scale, district):
     item = dict(id=id, asset=asset, x=round(x), y=round(y), scale=round(scale, 2), district=district)
-    from PIL import Image
-    if "/bench_" in asset:
-        im = Image.open(ROOT / "assets/milles/production" / asset)
-        box = im.getbbox()
-        item.update(anchor_x=(box[0]+box[2])/2, anchor_y=box[3])
+    # Measured immutable source anchors are authored data, so clean CI needs no image library.
+    if asset in ASSET_ANCHORS:
+        item.update(ASSET_ANCHORS[asset])
     if "_ring" in id:
-        im = Image.open(ROOT / "assets/milles/production" / asset)
-        item.update(draw="ground", anchor_x=im.width/2, anchor_y=im.height/2)
+        item["draw"] = "ground"
     objects.append(item)
 
 
