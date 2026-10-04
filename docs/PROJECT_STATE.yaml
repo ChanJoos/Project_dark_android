@@ -1,9 +1,23 @@
 npc_identity_style_v104:
   implementation: IMPLEMENTED_CANDIDATE
-  build: PENDING
-  native_runtime: PENDING
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+  source_commit: 48f8a037872c8ddfab8abacd5808671de9dd9f8f
+  actions_run: 37203753211
+  focused_native_tests: 32
+  native_pngs: 27
+  visually_reviewed_npc_pngs: 7
+  directional_pixel_comparisons: 44
+  npc_profiles: 11
+  new_source_wearables: 28
+  apk_sha256: 0defe4e08fdfb711d3816fb881a2c7b8802b6eae54d52d20fdf0374d35161689
+  built_seoul: '2026-10-04T21:57:46.848378+09:00'
+  final_save: SUCCEEDED_ALL_FOUR_RECEIPTS
+  in_place_upgrade: false
+  general_ci: IN_PROGRESS_37204025653_TEST_ONLY_FOLLOWUP
   physical_phone: PENDING
   user_visual: PENDING
+  evidence: docs/verification/NPC_IDENTITY_STYLE_V104_BUILD.json
   contract: docs/NPC_IDENTITY_STYLE_V104_CONTRACT.md
 milles_church_bench_v103:
   implementation: IMPLEMENTED_CANDIDATE
