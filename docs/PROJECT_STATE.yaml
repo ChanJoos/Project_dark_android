@@ -1,3 +1,23 @@
+milles_source_style_v101:
+  implementation: IMPLEMENTED_CANDIDATE
+  source_commit: 87e8915ab785734bdfc7d594e571d13e37f75c69
+  actions_run: 37194828641
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED
+  focused_native_tests: 17
+  locally_reviewed_frames: 18
+  apk_artifact: 11300441516
+  native_artifact: 11300516191
+  apk_sha256: c203e1f58211bb8efb72ae79931f5b7e722713fd3c54b73a437440470f8e52d2
+  built_seoul: '2026-10-04T19:17:56.145381+09:00'
+  signature: V2_SIGNATURE_AND_CONTENT_DIGEST_VERIFIED
+  in_place_upgrade: false
+  final_save: SUCCEEDED_BOTH_RECEIPTS
+  physical_phone: PENDING
+  user_visual: PENDING
+  original_identity: ADAPTED_NOT_PIXEL_IDENTICAL
+  final_general_ci: IN_PROGRESS_37194828669
+  evidence: docs/verification/MILLES_SOURCE_STYLE_V101_BUILD.json
 milles_reconstruction_v100:
   implementation: IMPLEMENTED_CANDIDATE
   source_commit: 7f71aa38be9ae31027c3204d65a6bb8b4a5df66b
@@ -15,7 +35,7 @@ milles_reconstruction_v100:
   signature: V2_VERIFIED_DIFFERENT_FROM_V99
   in_place_upgrade: false
   physical_phone: PENDING
-  user_visual: PENDING
+  user_visual: USER_VISUAL_REJECTED
   CI_native_byte_comparison: PENDING_TERMINAL_UNRESPONSIVE
   final_library_save: UNKNOWN_TERMINAL_NO_RESPONSE_NOT_RETRIED
   evidence: docs/verification/MILLES_V100_BUILD.json

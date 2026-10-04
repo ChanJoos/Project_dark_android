@@ -1,0 +1,53 @@
+{
+  "source_commit": "87e8915ab785734bdfc7d594e571d13e37f75c69",
+  "source_tree": "a3fb511c271fceab3e50958c992886a9014ad076",
+  "actions_run": 37194828641,
+  "job": 111414413206,
+  "conclusion": "SUCCESS",
+  "versionCode": 101,
+  "versionName": "1.01-milles-source-style",
+  "package": "com.projectdark.mobile",
+  "apk_sha256": "c203e1f58211bb8efb72ae79931f5b7e722713fd3c54b73a437440470f8e52d2",
+  "apk_bytes": 35145681,
+  "built_seoul": "2026-10-04T19:17:56.145381+09:00",
+  "apk_artifact": 11300441516,
+  "native_artifact": 11300516191,
+  "native_tests": 17,
+  "native_pngs_decoded_reviewed": 18,
+  "tests": {
+    "MillesSourceStyleTest": 2,
+    "MillesReconstructionTest": 4,
+    "TownInteriorTest": 8,
+    "ModernUiTest": 3
+  },
+  "independent_checks": [
+    "ZIP_CRC",
+    "BINARY_MANIFEST",
+    "APK_V2_SIGNATURE",
+    "APK_V2_CONTENT_DIGEST"
+  ],
+  "signer_sha256": "b0839898c4512c29009fde8aad7a1f36242412939b5180f40c29a0a2f8f46acd",
+  "in_place_upgrade": false,
+  "preserve_existing_app_save": true,
+  "final_general_ci": {
+    "run": 37194828669,
+    "state": "IN_PROGRESS_AT_CLOSURE"
+  },
+  "full_baseline": {
+    "source": "59fea43adb6062e7dbc3b262ea949bb21b9f442d",
+    "run": 37193474493,
+    "conclusion": "SUCCESS"
+  },
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "v100_user_visual": "USER_VISUAL_REJECTED",
+  "limitations": [
+    "ADAPTED material treatment; no identical original architecture claim",
+    "Existing NPC/actor placeholders remain",
+    "Stable signing/migration remains open"
+  ],
+  "delivery_receipts": {
+    "apk": "libfile_d7aa6030d3188191bb63ae2fc774f468",
+    "overview": "libfile_dd09ec4caf948191b7867a2750c992a4"
+  }
+}
