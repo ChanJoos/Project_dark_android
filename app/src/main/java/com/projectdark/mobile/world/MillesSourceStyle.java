@@ -38,20 +38,22 @@ final class MillesSourceStyle {
       :new float[][][]{
       {{27,95},{43,100},{47,119},{37,123},{29,112}},
       {{145,77},{160,73},{160,95},{150,99},{144,91}}};
-    float[] hsv=new float[3];
-    for(int y=0;y<raw.getHeight();y++)for(int x=0;x<raw.getWidth();x++){
-      int c=raw.getPixel(x,y),r=Color.red(c),g=Color.green(c),b=Color.blue(c);
-      Color.colorToHSV(c,hsv);
+    int width=raw.getWidth(),height=raw.getHeight();int[] pixels=new int[width*height];
+    raw.getPixels(pixels,0,width,0,0,width,height);
+    for(int y=0;y<height;y++)for(int x=0;x<width;x++){
+      int c=pixels[y*width+x],r=c>>16&255,g=c>>8&255,b=c&255;
+      int max=Math.max(r,Math.max(g,b)),delta=max-Math.min(r,Math.min(g,b));float hue=hue(r,g,b,max,delta);
       boolean support=inside(x,y,feet[0])||inside(x,y,feet[1]);
       // Restore the retained source RGB of the iron legs and arms. The earlier key
       // erased every low-luminance pixel, including the metal and its foot contacts.
-      boolean metal=support&&hsv[2]<.45f;
-      boolean grass=hsv[0]>65&&hsv[0]<170&&hsv[1]>.22f;
-      int a=Color.alpha(c);
+      boolean metal=support&&max<115;
+      boolean grass=hue>65&&hue<170&&delta>max*.22f;
+      int a=c>>>24;
       if(metal)a=255;
       else if(grass)a=0;
-      result.setPixel(x,y,Color.argb(a,r,g,b));
+      pixels[y*width+x]=(a<<24)|(r<<16)|(g<<8)|b;
     }
+    result.setPixels(pixels,0,width,0,0,width,height);
     return result;
   }
   Bitmap scenery(Bitmap original,String path){
@@ -64,12 +66,12 @@ final class MillesSourceStyle {
     result=result.copy(Bitmap.Config.ARGB_8888,true);
     // Match each material's light/shadow distribution before palette selection.
     // Direct nearest-RGB would collapse the brighter generated leaves into one flat green.
-    float[] hsv=new float[3];
+    int[] pixels=new int[w*h];result.getPixels(pixels,0,w,0,0,w,h);
     Map<String,double[]> stats=new HashMap<>();
     for(String f:palettes.keySet())stats.put(f,new double[3]);
     for(int y=0;y<h;y++)for(int x=0;x<w;x++){
-      int c=result.getPixel(x,y);if(Color.alpha(c)==0)continue;
-      String f=family(c,path,(float)x/w,(float)y/h,hsv);if(f==null)continue;
+      int c=pixels[y*w+x];if((c>>>24)==0)continue;
+      String f=family(c,path,(float)x/w,(float)y/h);if(f==null)continue;
       double l=luma(c);double[] a=stats.get(f);a[0]+=l;a[1]+=l*l;a[2]++;
     }
     Map<String,double[]> transforms=new HashMap<>();
@@ -91,24 +93,30 @@ final class MillesSourceStyle {
       tables.put(f,table);
     }
     for(int y=0;y<h;y++)for(int x=0;x<w;x++){
-      int c=result.getPixel(x,y);if(Color.alpha(c)==0)continue;
-      String f=family(c,path,(float)x/w,(float)y/h,hsv);if(f==null)continue;
+      int c=pixels[y*w+x];if((c>>>24)==0)continue;
+      String f=family(c,path,(float)x/w,(float)y/h);if(f==null)continue;
       int best=tables.get(f)[(int)Math.round(luma(c))];
-      result.setPixel(x,y,(c&0xff000000)|(best&0xffffff));
+      pixels[y*w+x]=(c&0xff000000)|(best&0xffffff);
     }
+    result.setPixels(pixels,0,w,0,0,w,h);
     return result;
   }
-  private static double luma(int c){return Color.red(c)*.30+Color.green(c)*.59+Color.blue(c)*.11;}
-  private static String family(int c,String path,float x,float y,float[] hsv){
-    Color.colorToHSV(c,hsv);
+  private static double luma(int c){return (c>>16&255)*.30+(c>>8&255)*.59+(c&255)*.11;}
+  private static float hue(int r,int g,int b,int max,int delta){
+    if(delta==0)return 0;float hue=max==r?(float)(g-b)/delta:max==g?2f+(float)(b-r)/delta:4f+(float)(r-g)/delta;
+    hue*=60f;return hue<0?hue+360:hue;
+  }
+  private static String family(int c,String path,float x,float y){
+    int r=c>>16&255,g=c>>8&255,b=c&255,max=Math.max(r,Math.max(g,b)),delta=max-Math.min(r,Math.min(g,b));
+    float hue=hue(r,g,b,max,delta),saturation=max==0?0:(float)delta/max,value=max/255f;
     boolean building=path.startsWith("buildings/"),vegetation=path.startsWith("vegetation/");
-    boolean coloredRoof=y<.62f&&(hsv[0]<12||hsv[0]>330||hsv[0]>175&&hsv[0]<315)&&hsv[1]>.28f;
-    boolean chimney=x>.70f&&x<.85f&&y<.31f&&hsv[1]<.25f;
-    if(building&&!chimney&&(inside(x,y,ROOF)||coloredRoof)&&hsv[2]>.10f)return "roof";
-    if(vegetation&&hsv[0]>45&&hsv[0]<180&&hsv[1]>.20f)return "foliage";
-    if(hsv[0]>12&&hsv[0]<63&&hsv[1]>.24f)return "wood";
-    if(hsv[1]<.23f)return "stone";
-    if(path.startsWith("landmarks/")&&hsv[0]>175&&hsv[0]<265&&hsv[2]<.8f)return "roof";
+    boolean coloredRoof=y<.62f&&(hue<12||hue>330||hue>175&&hue<315)&&saturation>.28f;
+    boolean chimney=x>.70f&&x<.85f&&y<.31f&&saturation<.25f;
+    if(building&&!chimney&&(inside(x,y,ROOF)||coloredRoof)&&value>.10f)return "roof";
+    if(vegetation&&hue>45&&hue<180&&saturation>.20f)return "foliage";
+    if(hue>12&&hue<63&&saturation>.24f)return "wood";
+    if(saturation<.23f)return "stone";
+    if(path.startsWith("landmarks/")&&hue>175&&hue<265&&value<.8f)return "roof";
     return null;
   }
   static boolean inside(float x,float y,float[][] polygon){

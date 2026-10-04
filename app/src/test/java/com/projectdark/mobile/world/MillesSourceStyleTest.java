@@ -20,15 +20,16 @@ public final class MillesSourceStyleTest {
       String p="video_reference/objects/bench_video_cutout_0"+orientation+".png";
       Bitmap raw;try(InputStream in=assets.open(p)){BitmapFactory.Options options=new BitmapFactory.Options();options.inPremultiplied=false;raw=BitmapFactory.decodeStream(in,null,options);}
       Bitmap fixed=MillesSourceStyle.bench(raw,p);
-      int restored=0,lowerLeg=0;
+      int restored=0,lowerLeg=0,retainedSourceRgb=0;
       for(int y=0;y<raw.getHeight();y++)for(int x=0;x<raw.getWidth();x++){
         int before=raw.getPixel(x,y),after=fixed.getPixel(x,y);
         if(Color.alpha(before)==0&&Color.alpha(after)>0){
-          restored++;assertEquals("recover source metal RGB, never fabricate feet",before&0xffffff,after&0xffffff);
+          restored++;if((before&0xffffff)!=0)retainedSourceRgb++;assertEquals("recover source metal RGB, never fabricate feet",before&0xffffff,after&0xffffff);
           if(y>110)lowerLeg++;
         }
       }
       assertTrue("the old key deleted metal supports",restored>70);
+      assertTrue("PNG decoding retains real hidden RGB; black fabricated supports do not qualify",retainedSourceRgb>50);
       assertTrue("visible leg continues below the seat, not merely the armrest",lowerLeg>15);
       assertEquals("background gutter remains transparent",0,Color.alpha(fixed.getPixel(0,0)));
       Bitmap actual=Bitmap.createBitmap(800,660,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(actual);
