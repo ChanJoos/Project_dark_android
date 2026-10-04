@@ -143,10 +143,21 @@ final class MillesSourceStyle {
       int c=pixels[y*w+x];if((c>>>24)==0)continue;
       String f=family(c,path,(float)x/w,(float)y/h);if(f==null)continue;
       int best=tables.get(f)[(int)Math.round(luma(c))];
+      if("roof".equals(f)&&path.startsWith("buildings/"))best=roofVariant(best,path);
       pixels[y*w+x]=(c&0xff000000)|(best&0xffffff);
     }
     result.setPixels(pixels,0,w,0,0,w,h);
     return result;
+  }
+  /** Observed muted roof families in the supplied north-village overview; adapted assignment. */
+  private static int roofVariant(int color,String path){
+    int r=color>>16&255,g=color>>8&255,b=color&255;double l=luma(color);
+    if(path.contains("general")||path.contains("guild"))return Color.rgb((int)(l*.93),(int)(l*1.04),(int)(l*.84));
+    if(path.contains("weapon")||path.contains("library"))return Color.rgb((int)(l*.86),(int)(l*.97),(int)(l*1.08));
+    if(path.contains("armor"))return Color.rgb((int)(l*.80),(int)(l*.83),(int)(l*.85));
+    if(path.contains("flower"))return Color.rgb((int)(l*1.09),(int)(l*.84),(int)(l*.78));
+    if(path.contains("inn"))return Color.rgb((int)(r*.95),(int)(g*.94),(int)(b*.92));
+    return color;
   }
   private static double luma(int c){return (c>>16&255)*.30+(c>>8&255)*.59+(c&255)*.11;}
   private static float hue(int r,int g,int b,int max,int delta){
@@ -157,7 +168,7 @@ final class MillesSourceStyle {
     int r=c>>16&255,g=c>>8&255,b=c&255,max=Math.max(r,Math.max(g,b)),delta=max-Math.min(r,Math.min(g,b));
     float hue=hue(r,g,b,max,delta),saturation=max==0?0:(float)delta/max,value=max/255f;
     boolean building=path.startsWith("buildings/"),vegetation=path.startsWith("vegetation/");
-    boolean coloredRoof=y<.62f&&(hue<12||hue>330||hue>175&&hue<315)&&saturation>.28f;
+    boolean coloredRoof=y<.62f&&(hue<12||hue>330||hue>175&&hue<315)&&saturation>.08f;
     boolean chimney=x>.70f&&x<.85f&&y<.31f&&saturation<.25f;
     if(building&&!chimney&&(inside(x,y,ROOF)||coloredRoof)&&value>.10f)return "roof";
     if(vegetation&&hue>45&&hue<180&&saturation>.20f)return "foliage";
