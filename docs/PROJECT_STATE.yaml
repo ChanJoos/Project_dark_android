@@ -181,12 +181,18 @@ work_packages:
     title: "V98 user-rejected stat terminology and equipment alignment repair"
     priority: P0
     claim: Director/Integration
-    queue_state: VERIFICATION_PENDING
-    implementation: INTEGRATED
+    queue_state: DEVICE_PENDING
+    implementation: BUILD_VERIFIED
     prior_v98_visual: USER_REJECTED
     contract: docs/MODERN_UI_V99_CONTRACT.md
     phone_acceptance: PENDING
     user_visual_acceptance: PENDING
+    source_commit: 4666202ab1eb26768d52da9553ab5bc296decdcd
+    ci_run: 37177996173
+    native_runtime: VERIFIED
+    native_pngs: 14
+    anonymous_download: HTTP200_HASH_VERIFIED
+    proof: docs/verification/EQUIPMENT_UI_V99_BUILD.json
   MODERN_UI_098:
     title: "User-authorized whole-game modern mobile UI redesign"
     claim: Director/Integration

@@ -1,0 +1,64 @@
+{
+  "version": 99,
+  "source_commit": "4666202ab1eb26768d52da9553ab5bc296decdcd",
+  "first_ci": {
+    "run": 37169633101,
+    "source": "48e58bee46a44e700dca902a5bd6f9b8c4c4988d",
+    "failure": "Java heap OOM constructing a GameView in combined 78-test skill suite; UI/input tests passed"
+  },
+  "local_related_tests_passed": 66,
+  "final_fixture_tests_passed": 3,
+  "local_native_capture_sha256": {
+    "v99-equipment-empty.png": "6cf5133cef71180365a4a4ecd065906b87e197d14d94ba63b1ec495a34f29e4a",
+    "v99-equipment.png": "e2056baf6f0c3a5fb74379fc06f1d1c668488f24d1e2808bf5378453560a6f15",
+    "v99-hud.png": "f942f572005bce40e551cf850c4bcb306390b52d37bc10451d608b624791eccb",
+    "v99-inventory-compare.png": "13ba2207e8c089a99fa71430d5507f0bc38484891422b21cac52bab12fa299c0",
+    "v99-inventory.png": "20b2560e03e201021dedebca874faba5647b753161b99422ef2d0e06367bd7ab",
+    "v99-quests.png": "81f1dbd19a83683ec59d0b92c352ed0865f23cbd01d42072e8cee28bd381fcc9",
+    "v99-skills-conditions.png": "e850f2a7e94dce741ec6556176f79e448ea84430f3c77f2a298b7c8139863578",
+    "v99-skills.png": "3e9516f0d8309c91c6b1b12029fbcf38ef494ad3ac3253fd60573f5d9b603491",
+    "v99-stats.png": "fbb7d73d5e9dea5058bdeca8550d09b7e476d79994d600204d6096dddab2fa3f",
+    "v99-wide-equipment.png": "0321952d62022fd145a93c3f36874cd7f6a2215d51a76a82483f0549249c4afc",
+    "v99-wide-inventory.png": "10f5500271c92bb5f635a07b0d15221ca9c0c2fb5c74af9c363a01677fe5227f",
+    "v99-wide-quests.png": "5fda4a543343a86d7439f20913cb13916c5cea8e97f49e7b56b987891a22c8c1",
+    "v99-wide-skills.png": "d667ff1569ab430f5ca331f7a8f74cc70b31ed74b4382c9b4b2a4529c41da7f3",
+    "v99-wide-stats.png": "1653fc75a60e14334e3121ce403bb8564139b3b56b4ba915a5fb616e6e76e96f"
+  },
+  "ci_run": 37177996173,
+  "ci_status": "SUCCESS",
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "prior_v98_visual": "USER_REJECTED",
+  "reviewed_changes": [
+    "STR INT WIS CON DEX restored",
+    "Centered empty socket glyphs instead of text",
+    "Symmetric equipment rails and centered actor/head/lower pair",
+    "Aligned stat numbers and continuous summary/detail sheet"
+  ],
+  "signing_migration": "V99 CI signer differs from V98; not in-place-upgrade compatible. User warned not to delete existing save/app; no migration/uninstall performed.",
+  "all_configured_ci_gates_passed": true,
+  "ci_job": 111364560018,
+  "apk_sha256": "b2edfa18835e85ece33b24e3584bb2972d302977549de26314051e8cacf6c2e9",
+  "apk_bytes": 34079805,
+  "build_info_kst": "2026-10-04T13:58:56.550901+09:00",
+  "anonymous_download": {
+    "status": 200,
+    "authorizationHeader": false,
+    "contentDisposition": "attachment; filename=PROJECT_DARK_V99.apk",
+    "bytes": 34079805,
+    "sha256": "b2edfa18835e85ece33b24e3584bb2972d302977549de26314051e8cacf6c2e9"
+  },
+  "public_url": "https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v99-4666202a/PROJECT_DARK_V99.apk",
+  "release_id": 402847732,
+  "native_ci_reviewed_local_byte_identical": 14,
+  "native_artifact": {
+    "id": 11294275944,
+    "digest": "sha256:542a4e85fba3c370d9b434af513a91ca7aba0aeffa32baf193fa1c8f571e882c"
+  },
+  "apk_artifact": {
+    "id": 11294340852,
+    "digest": "sha256:c3b4b9843ab68b8a14394faa0465b9ee9b23d62896362a0ab35336e8212737c6"
+  },
+  "signing_certificate_sha256": "a6f79441163d5949d2d7eb0f7ceb1993b3f5b5897ff866517a0c6e38e208cbcf",
+  "all_956_v98_packaged_assets_unchanged": true
+}
