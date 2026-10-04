@@ -32,7 +32,7 @@ public final class AdaptedMillesMapRenderer {
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   private static final float TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
-  private static final String GRASS_SURFACE="video_reference/terrain/grass_tile_01.png";
+  private static final String GRASS_SURFACE="video_reference/terrain/grass_texture.png";
   private static final String SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png";
 
   private static final class SpritePlacement {
@@ -52,6 +52,8 @@ public final class AdaptedMillesMapRenderer {
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
+  private final MillesSourceStyle sourceStyle;
+  private final Paint grassPaint=new Paint();
   private final List<SpritePlacement> placements,groundPlacements,standingPlacements;
 
   public AdaptedMillesMapRenderer(){
@@ -60,7 +62,7 @@ public final class AdaptedMillesMapRenderer {
     configureRoadPaint(soilEdgePaint,0x996b522d,49f);
     configureRoadPaint(soilPaint,0xff91602d,43f);
     soilPaint.setStyle(Paint.Style.FILL);soilEdgePaint.setStyle(Paint.Style.FILL);
-    assets=findAssets();placements=loadPlacements();
+    assets=findAssets();sourceStyle=new MillesSourceStyle(assets);placements=loadPlacements();
     List<SpritePlacement> ground=new ArrayList<>(),standing=new ArrayList<>();
     for(SpritePlacement value:placements){
       if("ground".equals(value.drawMode)||"tile".equals(value.drawMode))ground.add(value);else standing.add(value);
@@ -85,8 +87,7 @@ public final class AdaptedMillesMapRenderer {
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
     // Draw one grass material below the road: alternating full-diamond crops produced a
     // visible checker grid at every grass/soil boundary.
-    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
-      drawTerrainTile(canvas,world,GRASS_SURFACE,tile.centerX,tile.centerY);
+    drawContinuousGrass(canvas,world);
     drawConnectedSoil(canvas,world);
     for(SpritePlacement placement:groundPlacements)drawPlacement(canvas,world,placement);
     List<DepthDraw> ordered=actors==null?new ArrayList<>():new ArrayList<>(actors);
@@ -141,7 +142,7 @@ public final class AdaptedMillesMapRenderer {
   private void drawConnectedSoil(Canvas canvas,WorldRuntimeAdapter world){
     Bitmap soil=bitmap(SOIL_SURFACE);
     if(soil==null)return;
-    soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));
+    soilPaint.setShader(sourceMaterial(soil));
     canvas.save();
     canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
     // Draw every fringe before the soil surfaces, so intersections cannot leave
@@ -152,6 +153,20 @@ public final class AdaptedMillesMapRenderer {
     drawRoadCaps(canvas,soilPaint,21.5f);
     canvas.restore();
     soilPaint.setShader(null);
+  }
+
+  private static BitmapShader sourceMaterial(Bitmap image){
+    BitmapShader shader=new BitmapShader(image,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
+    android.graphics.Matrix nativePixels=new android.graphics.Matrix();nativePixels.setScale(.43f,.43f);
+    shader.setLocalMatrix(nativePixels);return shader;
+  }
+  private void drawContinuousGrass(Canvas canvas,WorldRuntimeAdapter world){
+    Bitmap grass=bitmap(GRASS_SURFACE);if(grass==null)return;
+    grassPaint.setAntiAlias(false);grassPaint.setFilterBitmap(false);grassPaint.setShader(sourceMaterial(grass));
+    canvas.save();canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
+    canvas.drawRect(com.projectdark.mobile.WorldDef.MIN_X,com.projectdark.mobile.WorldDef.MIN_Y,
+        com.projectdark.mobile.WorldDef.MAX_X,com.projectdark.mobile.WorldDef.MAX_Y,grassPaint);
+    canvas.restore();
   }
 
   private static void drawRoadCaps(Canvas canvas,Paint paint,float radius){
@@ -221,7 +236,9 @@ public final class AdaptedMillesMapRenderer {
   private Bitmap bitmap(String path){
     if(bitmapCache.containsKey(path))return bitmapCache.get(path);
     Bitmap image=null;
-    if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
+    String source=MillesSourceStyle.completeBenchSource(path);
+    if(assets!=null)try(InputStream in=assets.open(source)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;options.inPremultiplied=!source.contains("bench_video_cutout");image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
+    if(image!=null){image=source.contains("bench_video_cutout")?MillesSourceStyle.bench(image,source):sourceStyle.scenery(image,path);}
     bitmapCache.put(path,image);return image;
   }
   private static AssetManager findAssets(){

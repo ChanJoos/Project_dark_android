@@ -163,6 +163,8 @@ jobs:
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Verify HUD leaves empty-world tap regions available
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
+      - name: Verify V101 source metal feet and scenery-only style
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
       - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest --stacktrace
       - name: Render West, South and Waterside Milles districts
@@ -275,7 +277,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: milles-v100-review-${{ github.sha }}
-          path: app/build/reports/device-review/v100-*.png
+          path: |
+            app/build/reports/device-review/v100-*.png
+            app/build/reports/device-review/v101-*.png
           if-no-files-found: error
       - name: Publish directly downloadable candidate APK
         if: github.event_name == 'push' && github.ref == 'refs/heads/codex/town-interiors-mobile-v86'
@@ -283,15 +287,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          grep -q 'versionCode 100' app/build.gradle || exit 0
+          grep -q 'versionCode 101' app/build.gradle || exit 0
           mkdir -p apk-delivery
-          cp app/build/outputs/apk/debug/app-debug.apk apk-delivery/PROJECT_DARK_V100.apk
-          sha256sum apk-delivery/PROJECT_DARK_V100.apk > apk-delivery/SHA256SUMS.txt
-          tag="candidate-v100-${GITHUB_SHA:0:8}"
+          cp app/build/outputs/apk/debug/app-debug.apk apk-delivery/PROJECT_DARK_V101.apk
+          sha256sum apk-delivery/PROJECT_DARK_V101.apk > apk-delivery/SHA256SUMS.txt
+          tag="candidate-v101-${GITHUB_SHA:0:8}"
           python3 - <<'PYINFO'
           import json,os,pathlib,hashlib,datetime
-          p=pathlib.Path('apk-delivery/PROJECT_DARK_V100.apk')
-          report={'sourceCommit':os.environ['GITHUB_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'candidate':True,'versionCode':100,'apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'apkBytes':p.stat().st_size,'builtSeoul':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'verification':'Full configured CI and native runtime gates passed. Physical phone and user visual acceptance pending.'}
+          p=pathlib.Path('apk-delivery/PROJECT_DARK_V101.apk')
+          report={'sourceCommit':os.environ['GITHUB_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'candidate':True,'versionCode':101,'apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'apkBytes':p.stat().st_size,'builtSeoul':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'verification':'Full configured CI and native runtime gates passed. Physical phone and user visual acceptance pending.'}
           pathlib.Path('apk-delivery/BUILD_INFO.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
           PYINFO
-          gh release create "$tag" apk-delivery/PROJECT_DARK_V100.apk apk-delivery/SHA256SUMS.txt apk-delivery/BUILD_INFO.json --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V100 밀레스 재구성 후보' --notes "구 밀레스 분수공원·정원·물가 배치, 전체 장식 정리·발 기준 가림·충돌 일치. Source: $GITHUB_SHA. Native CI verified; phone/user review pending."
+          gh release create "$tag" apk-delivery/PROJECT_DARK_V101.apk apk-delivery/SHA256SUMS.txt apk-delivery/BUILD_INFO.json --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V101 밀레스 색감·벤치 후보' --notes "구 밀레스 분수공원·정원·물가 배치, 전체 장식 정리·발 기준 가림·충돌 일치. Source: $GITHUB_SHA. Native CI verified; phone/user review pending."

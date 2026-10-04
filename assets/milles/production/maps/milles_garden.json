@@ -70,7 +70,7 @@
       "scale": 0.43,
       "district": "civic_square",
       "anchor_x": 87.0,
-      "anchor_y": 113
+      "anchor_y": 128
     },
     {
       "id": "square_bench_east",
@@ -79,8 +79,8 @@
       "y": 628,
       "scale": 0.43,
       "district": "civic_square",
-      "anchor_x": 110.0,
-      "anchor_y": 114
+      "anchor_x": 87.0,
+      "anchor_y": 128
     },
     {
       "id": "garden_bench",
@@ -89,8 +89,8 @@
       "y": 624,
       "scale": 0.43,
       "district": "garden",
-      "anchor_x": 102.0,
-      "anchor_y": 100
+      "anchor_x": 89.0,
+      "anchor_y": 123
     },
     {
       "id": "waterside_bench",
@@ -100,7 +100,7 @@
       "scale": 0.43,
       "district": "waterside",
       "anchor_x": 89.0,
-      "anchor_y": 117
+      "anchor_y": 123
     },
     {
       "id": "garden_tree_1",
@@ -490,7 +490,7 @@
       "scale": 0.42,
       "district": "east_quiet",
       "anchor_x": 89.0,
-      "anchor_y": 117
+      "anchor_y": 123
     },
     {
       "id": "church_flower_a",
@@ -539,8 +539,8 @@
       "y": 830,
       "scale": 0.43,
       "district": "waterside",
-      "anchor_x": 110.0,
-      "anchor_y": 114
+      "anchor_x": 87.0,
+      "anchor_y": 128
     },
     {
       "id": "inn_lantern",
@@ -643,8 +643,8 @@
       "y": 1320,
       "scale": 0.42,
       "district": "south_residences",
-      "anchor_x": 110.0,
-      "anchor_y": 114
+      "anchor_x": 87.0,
+      "anchor_y": 128
     },
     {
       "id": "east_guild_notice",
@@ -689,7 +689,7 @@
       "scale": 0.43,
       "district": "civic_square",
       "anchor_x": 89.0,
-      "anchor_y": 117
+      "anchor_y": 123
     },
     {
       "id": "park_bench_ne",
@@ -698,8 +698,8 @@
       "y": 404,
       "scale": 0.43,
       "district": "civic_square",
-      "anchor_x": 110.0,
-      "anchor_y": 114
+      "anchor_x": 87.0,
+      "anchor_y": 128
     },
     {
       "id": "park_bench_sw",
@@ -709,7 +709,7 @@
       "scale": 0.43,
       "district": "civic_square",
       "anchor_x": 87.0,
-      "anchor_y": 113
+      "anchor_y": 128
     },
     {
       "id": "park_bench_se",
@@ -718,8 +718,8 @@
       "y": 572,
       "scale": 0.43,
       "district": "civic_square",
-      "anchor_x": 102.0,
-      "anchor_y": 100
+      "anchor_x": 89.0,
+      "anchor_y": 123
     },
     {
       "id": "park_rope_light_nw",
@@ -2732,20 +2732,20 @@
   ],
   "asset_anchors": {
     "video_reference/objects/bench_video_cutout_04.png": {
-      "anchor_x": 102.0,
-      "anchor_y": 100
+      "anchor_x": 89.0,
+      "anchor_y": 123
     },
     "video_reference/objects/bench_video_cutout_01.png": {
       "anchor_x": 87.0,
-      "anchor_y": 113
+      "anchor_y": 128
     },
     "video_reference/objects/bench_video_cutout_03.png": {
-      "anchor_x": 110.0,
-      "anchor_y": 114
+      "anchor_x": 87.0,
+      "anchor_y": 128
     },
     "video_reference/objects/bench_video_cutout_02.png": {
       "anchor_x": 89.0,
-      "anchor_y": 117
+      "anchor_y": 123
     },
     "video_reference/objects/bench_lantern_reference.png": {
       "anchor_x": 165.0,
