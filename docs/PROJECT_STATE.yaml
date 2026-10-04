@@ -177,6 +177,16 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  EQUIPMENT_UI_099:
+    title: "V98 user-rejected stat terminology and equipment alignment repair"
+    priority: P0
+    claim: Director/Integration
+    queue_state: VERIFICATION_PENDING
+    implementation: INTEGRATED
+    prior_v98_visual: USER_REJECTED
+    contract: docs/MODERN_UI_V99_CONTRACT.md
+    phone_acceptance: PENDING
+    user_visual_acceptance: PENDING
   MODERN_UI_098:
     title: "User-authorized whole-game modern mobile UI redesign"
     claim: Director/Integration

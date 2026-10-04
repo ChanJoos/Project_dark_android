@@ -24,6 +24,47 @@ final class UiTheme {
   static void slot(Canvas c,RectF r,boolean selected,boolean equipped){surface(c,r,SURFACE,selected?ACCENT:LINE,8);p.setShader(new RadialGradient(r.centerX(),r.centerY(),r.width()*.7f,new int[]{0xff29394a,0xff141e2a},null,Shader.TileMode.CLAMP));RectF a=new RectF(r.left+3,r.top+3,r.right-3,r.bottom-3);c.drawRoundRect(a,6,6,p);p.setShader(null);if(equipped){p.setColor(GOOD);c.drawCircle(r.right-7,r.top+7,3,p);}}
   static void close(Canvas c,float x,float y){surface(c,new RectF(x-13,y-13,x+13,y+13),RAISED,LINE,7);line(c,x-4,y-4,x+4,y+4,MUTED);line(c,x+4,y-4,x-4,y+4,MUTED);}
   static void utility(Canvas c,float x,float y,String icon,boolean active,float radius){surface(c,new RectF(x-radius,y-radius,x+radius,y+radius),active?0xed344e57:0xeb101722,active?ACCENT:0xff536273,10);glyph(c,icon,x,y,9,active?ACCENT:GOLD);}
+  /** Empty equipment sockets use centered silhouettes, never text labels. */
+  static void equipmentGlyph(Canvas c,String slot,float x,float y,float size,int color){
+    c.save();c.translate(x,y);c.scale(size/10,size/10);
+    p.setShader(null);p.setColor(color);p.setStyle(Paint.Style.STROKE);
+    p.setStrokeWidth(1.25f);p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeJoin(Paint.Join.ROUND);
+    Path q=new Path();
+    switch(slot){
+      case "귀걸이":
+        c.drawCircle(0,-7,1.4f,p);c.drawOval(new RectF(-5,-4,5,8),p);break;
+      case "목걸이":
+        q.moveTo(-7,-8);q.cubicTo(-9,-1,-5,4,0,5);q.cubicTo(5,4,9,-1,7,-8);c.drawPath(q,p);
+        q.reset();q.moveTo(0,3);q.lineTo(3,7);q.lineTo(0,10);q.lineTo(-3,7);q.close();c.drawPath(q,p);break;
+      case "갑옷":
+        q.moveTo(-4,-8);q.lineTo(-8,-5);q.lineTo(-6,0);q.lineTo(-4,-1);q.lineTo(-5,8);q.lineTo(5,8);q.lineTo(4,-1);q.lineTo(6,0);q.lineTo(8,-5);q.lineTo(4,-8);q.quadTo(0,-3,-4,-8);q.close();c.drawPath(q,p);
+        c.drawLine(-4,4,4,4,p);break;
+      case "모자":
+        q.moveTo(-7,5);q.lineTo(-7,-1);q.cubicTo(-7,-10,7,-10,7,-1);q.lineTo(7,5);q.lineTo(3,8);q.lineTo(2,2);q.lineTo(-2,2);q.lineTo(-3,8);q.close();c.drawPath(q,p);
+        c.drawLine(0,-7,0,-1,p);break;
+      case "날개":
+        q.moveTo(-7,8);q.cubicTo(-10,-1,-5,-8,7,-8);q.quadTo(4,-5,1,-3);q.lineTo(6,-3);q.lineTo(0,2);q.lineTo(4,2);q.lineTo(-3,7);q.close();c.drawPath(q,p);
+        c.drawLine(-7,8,2,-4,p);break;
+      case "무기":
+        q.moveTo(-5,5);q.lineTo(4,-7);q.lineTo(8,-9);q.lineTo(7,-4);q.lineTo(-3,7);q.close();c.drawPath(q,p);
+        c.drawLine(-7,2,1,8,p);c.drawLine(-5,5,-8,9,p);break;
+      case "방패":
+        q.moveTo(0,-9);q.lineTo(7,-6);q.lineTo(6,2);q.quadTo(5,6,0,9);q.quadTo(-5,6,-6,2);q.lineTo(-7,-6);q.close();c.drawPath(q,p);
+        c.drawLine(0,-5,0,5,p);c.drawLine(-4,0,4,0,p);break;
+      case "장갑":
+        q.moveTo(-5,8);q.lineTo(-6,1);q.lineTo(-9,-3);q.quadTo(-9,-6,-6,-4);q.lineTo(-4,-1);q.lineTo(-4,-7);q.quadTo(-3,-10,-2,-7);q.lineTo(-2,-2);q.lineTo(-2,-8);q.quadTo(-1,-11,0,-8);q.lineTo(0,-2);q.lineTo(0,-7);q.quadTo(1,-10,2,-7);q.lineTo(2,-1);q.lineTo(2,-5);q.quadTo(4,-8,5,-5);q.lineTo(5,3);q.lineTo(3,8);q.close();c.drawPath(q,p);
+        c.drawLine(-5,5,4,5,p);break;
+      case "벨트":
+        c.drawRoundRect(new RectF(-9,-3,9,4),2,2,p);c.drawRoundRect(new RectF(-3,-4,3,5),1,1,p);c.drawLine(-1,0,2,0,p);break;
+      case "각반":
+        q.moveTo(-7,-8);q.lineTo(7,-8);q.lineTo(6,8);q.lineTo(1,8);q.lineTo(0,-1);q.lineTo(-1,8);q.lineTo(-6,8);q.close();c.drawPath(q,p);
+        c.drawLine(-6,-4,6,-4,p);break;
+      case "신발":
+        q.moveTo(-5,-8);q.lineTo(3,-8);q.lineTo(3,1);q.lineTo(8,5);q.quadTo(10,8,7,9);q.lineTo(-7,9);q.lineTo(-7,3);q.lineTo(-5,1);q.close();c.drawPath(q,p);
+        c.drawLine(-7,6,7,6,p);c.drawLine(-5,-4,3,-4,p);break;
+    }
+    p.setStyle(Paint.Style.FILL);p.setStrokeCap(Paint.Cap.BUTT);c.restore();
+  }
   /** Consistent 1.5px line illustration, rendered at native resolution. */
   static void glyph(Canvas c,String kind,float x,float y,float size,int color){c.save();c.translate(x,y);c.scale(size/10,size/10);p.setShader(null);p.setColor(color);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.5f);p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeJoin(Paint.Join.ROUND);Path q=new Path();switch(kind){
     case "bag":c.drawRoundRect(new RectF(-7,-5,7,8),2,2,p);c.drawArc(new RectF(-4,-10,4,-2),180,180,false,p);c.drawLine(-3,1,3,1,p);break;
