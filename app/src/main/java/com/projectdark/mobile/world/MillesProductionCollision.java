@@ -53,7 +53,7 @@ public final class MillesProductionCollision {
     rect(b,"south_flower_shop",Kind.BUILDING,280f,918f,520f,1127f);
     rect(b,"south_library",Kind.BUILDING,1000f,880f,1240f,1089f);
     rect(b,"east_guild",Kind.BUILDING,1410f,1000f,1650f,1209f);
-    rect(b,"north_healer",Kind.BUILDING,1904f,150f,2144f,359f);
+    rect(b,"north_healer",Kind.BUILDING,1904f,150f,2144f,315f);
 
     // Ground contact of the authored palisade enclosure. Keep the southwest opening walkable.
     add(b,"garden_fence_nw_1",Kind.FENCE,996f,530f,38f,16f);
