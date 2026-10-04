@@ -50,6 +50,11 @@ final class MillesSourceStyle {
     float dx=doorX-(sourceX-left)*sx,dy=doorY-(sourceY-top)*sy;
     Bitmap result=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);Paint p=new Paint();p.setFilterBitmap(false);
     new Canvas(result).drawBitmap(clean,new Rect(left,top,right,bottom),new RectF(dx,dy,dx+(right-left)*sx,dy+(bottom-top)*sy),p);clean.recycle();
+    // Fractional Canvas registration can create edge coverage even with nearest sampling.
+    // Snap that coverage to an actual native pixel silhouette after registration.
+    int[] registered=new int[w*h];result.getPixels(registered,0,w,0,0,w,h);
+    for(int i=0;i<registered.length;i++)registered[i]=(registered[i]>>>24)<128?0:0xff000000|(registered[i]&0xffffff);
+    result.setPixels(registered,0,w,0,0,w,h);
     return result;
   }
   static Bitmap quietGrass(Bitmap raw){

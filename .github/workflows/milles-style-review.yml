@@ -82,5 +82,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: milles-style-native-${{ github.sha }}
-        path: app/build/reports/device-review/v10*.png
+        path: |
+          app/build/reports/device-review/v10*.png
+          app/build/test-results/testDebugUnitTest/*.xml
         if-no-files-found: error
