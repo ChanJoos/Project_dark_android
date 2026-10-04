@@ -1,12 +1,19 @@
 quest_journal_v97:
   implementation: IMPLEMENTED_CANDIDATE
-  reported_quest_ux: DEVICE_FAILED_USER_REPORTED
-  reported_apk_delivery: DELIVERY_FAILED_USER_REPORTED
-  build: PENDING
-  native_runtime: PENDING
+  source_commit: 25871a27bfe599ed8ad2b742d2e16c386be7778a
+  source_tree: 41d775e6ce042e9f8b4aa8c6e10fce6c687170e3
+  reported_quest_ux: DEVICE_FAILED_USER_REPORTED_NATIVE_REPRODUCTION_REPAIRED
+  reported_apk_delivery: DELIVERY_FAILED_USER_REPORTED_INDEPENDENT_DOWNLOAD_NOW_PASS
+  build: BUILD_VERIFIED
+  actions_run: 37163238922
+  native_runtime: RUNTIME_VERIFIED_NATIVE
+  focused_native_tests: 9
+  manually_reviewed_native_pngs: 20
+  anonymous_download: HTTP200_HASH_VERIFIED
   physical_phone: PENDING
   user_visual: PENDING
   contract: docs/QUEST_JOURNAL_V97_CONTRACT.md
+  proof: docs/verification/QUEST_JOURNAL_V97_BUILD.json
 # V96 source e76991d29bb0fe4e302b2114614ede934bb5fd2c, Actions37160669377 SUCCESS; 8 native tests/57 images; APK SHA52a488ed. PHONE_PENDING, unmerged candidate. Proof docs/verification/CHUNGRYONG_JUMP_V96_BUILD.json.
 # V96 weapon/complete-defense user failure diagnosed; exact CI and native review pending. Details master/changes/CHUNGRYONG-JUMP-V96.json.
 # V95 exact source65d01e51, Actions37136447554 SUCCESS; 3 native tests/5 recipient frames, SHA0183dfb4; PHONE_PENDING, unmerged candidate. Details docs/verification/DARA_RECIPIENT_V95.json.

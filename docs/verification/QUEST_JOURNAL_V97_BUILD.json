@@ -1,0 +1,102 @@
+{
+  "sourceCommit": "25871a27bfe599ed8ad2b742d2e16c386be7778a",
+  "sourceTree": "41d775e6ce042e9f8b4aa8c6e10fce6c687170e3",
+  "candidate": true,
+  "apkBytes": 31907428,
+  "apkSha256": "86c120b1f1ec47f7ea2d91734dc63edcf0722bc07cf6afb1936dc5c0b0bc48f8",
+  "manifest": {
+    "versionCode": 97,
+    "versionName": "0.97-quest-journal",
+    "package": "com.projectdark.mobile",
+    "minSdkVersion": 26,
+    "targetSdkVersion": 35
+  },
+  "priorV96PackagedAssetsUnchanged": 951,
+  "addedPackagedAssets": [
+    "assets/quests/journal.json"
+  ],
+  "nativePngCount": 20,
+  "nativePngSha256": {
+    "v97-active-opening.png": "f8f4d55961d576e95c0d0172e8132ec06dccf652716fdad0cd245ff9c4065435",
+    "v97-all-available.png": "b0936bbbeced4a9df9050eb0a992f716ef48755f03c90472977369d56b90b4cc",
+    "v97-available-only.png": "fc45073d7173c534c32b2f39b163907369657628585a7593ac6af1919508b5ba",
+    "v97-compact-growth-inn.png": "6358a9808eeaf29e8d2c5917760a656f9b00916cff7dd405878c508668f5a301",
+    "v97-compact-initial.png": "8f6323d380523b89b1d64f40666a0178a470a672683392e31ad96c0ce478f9da",
+    "v97-completed-chain.png": "997e61a9095e9a6f4525f945b4ce342286c136b6b7132bf59a3a4862b1d16c10",
+    "v97-continued-growth.png": "ecb2fa2c8910d6046084dcce49f6268f1806cbb94f540efd83c95bc3dc078771",
+    "v97-dragged-list.png": "0e0078fda023983e3b1af62da3053acde4f535c2b5ba0daef6c4f1efd9021787",
+    "v97-empty-completed.png": "8b698181f7c29c174b9b28ef842dd0fd5b876a8808f2b763f4da5418df86eb93",
+    "v97-empty-progress.png": "88ce98fd3dd6f94e82d194f395ea5c17c91e748211c663287f93524fea55459e",
+    "v97-growth-report.png": "381f3c5462b59a7d720db08e22d1928d16bead3abf2801a247609ab09e0580ba",
+    "v97-last-planned-quest.png": "6eb5ceaf0d8ce224b8c8a6cd9640ec4ffac8eb6a94614f84036e77ea43620c05",
+    "v97-locked-prerequisite.png": "2ee51f7273bbb80e971ab9f6220b8b77f6b3be0f9da1848a8f591c84cc2887ef",
+    "v97-quick-arrived-james.png": "4f1cdc6854478828ef6f89eaae5f363a06cdb89cb68283a953c21f4ff821e975",
+    "v97-quick-inn-target.png": "b6768c3c628d5ded7ceb3902702569c02220b53ba7dc8e6a2a59679085583148",
+    "v97-quick-mary-report.png": "41ac06bdb5bba240458fe303a6f58893d9474a2632cbe3b65b6bf70f9f574c63",
+    "v97-quick-next-growth.png": "8baf7720b7137b4438741cb44777758b717a2dddca4d336d7a3be5bc8f192068",
+    "v97-restored-completed.png": "0bdf916895d281691c987653f0699bbc3ed3471843837dff0126a5dea81274c0",
+    "v97-wide-all.png": "bcf34650cbffdfcc17992f9dcf2b5788e688eb11496eec8fad0999025c602478",
+    "v97-wide-hud.png": "d4a9e806d596eff7f95c82c8d658c279e4b9b82fec1de2e6bb509d415fac0b4f"
+  },
+  "physicalPhone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "sourceBranch": "codex/town-interiors-mobile-v86",
+  "mainAtComparison": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "actionsRun": 37163238922,
+  "actionsJob": 111320859970,
+  "ciConclusion": "SUCCESS",
+  "apkAssembledSeoul": "2026-10-04T09:03:23.469931+09:00",
+  "releaseBuildInfoSeoul": "2026-10-04T09:03:33.052428+09:00",
+  "apkArtifactId": 11287939968,
+  "apkArtifactDigest": "sha256:fa33567e00254d4383c0f302da1bc23c25f40f8e41a73ef30f14a6a148eba6d7",
+  "nativeArtifactId": 11287894957,
+  "nativeArtifactDigest": "sha256:8e7628013f5ddf185b996d7e64266dd01dbb787a1541a012d38f62092f753ca9",
+  "releaseId": 402741839,
+  "releaseTag": "candidate-v97-25871a27",
+  "releaseAssets": [
+    {
+      "id": 608762056,
+      "name": "BUILD_INFO.json",
+      "url": "https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v97-25871a27/BUILD_INFO.json",
+      "bytes": 416,
+      "digest": "sha256:f75c4f70308f4df788e2504702ae33cdf28c7ea93c06920a3f8a844cab93cd20"
+    },
+    {
+      "id": 608762052,
+      "name": "PROJECT_DARK_V97.apk",
+      "url": "https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v97-25871a27/PROJECT_DARK_V97.apk",
+      "bytes": 31907428,
+      "digest": "sha256:86c120b1f1ec47f7ea2d91734dc63edcf0722bc07cf6afb1936dc5c0b0bc48f8"
+    },
+    {
+      "id": 608762053,
+      "name": "SHA256SUMS.txt",
+      "url": "https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v97-25871a27/SHA256SUMS.txt",
+      "bytes": 100,
+      "digest": "sha256:bf61912d86494d098be7339e8f9f8173b2572022f45bdc6ce2f2f725b29b31eb"
+    }
+  ],
+  "anonymousDownload": {
+    "status": 200,
+    "authorizationHeader": false,
+    "contentDisposition": "attachment; filename=PROJECT_DARK_V97.apk",
+    "bytes": 31907428,
+    "sha256": "86c120b1f1ec47f7ea2d91734dc63edcf0722bc07cf6afb1936dc5c0b0bc48f8",
+    "sameAsActionsArtifact": true
+  },
+  "focusedNativeTests": 9,
+  "allConfiguredGatesPassed": true,
+  "manuallyReviewedNativePngs": 20,
+  "earlierPreviewByteIdenticalFinalPngs": 13,
+  "implementation": "IMPLEMENTED",
+  "build": "BUILD_VERIFIED",
+  "nativeRuntime": "RUNTIME_VERIFIED_NATIVE",
+  "visual": "MANUALLY_REVIEWED_NATIVE_USER_ACCEPTANCE_PENDING",
+  "allQuests": 12,
+  "playableDomainQuests": 2,
+  "existingTravelMilestones": 1,
+  "masterRegionLockedQuests": 9,
+  "firstAttempt": "37162969079 failed only new test boxed Long/JUnit overload compilation; corrected. 37163118329 succeeded with 8 focused tests; final source adds manual movement cancellation and exact rewards, 9 focused tests passed.",
+  "verificationScope": "Actual first touch James approach and NPC acceptance -> inn portal -> actual mouse target -> defeat ledger -> Mary approach/report -> immediate GrowthQuest2 availability; inn exit -> James acceptance; existing complete-growth -> Hans travel. Full list/filter/locked last row no reward or movement, objective/report/completed statuses, drag input shielding, manual destination cancellation, 21:9 layout, reward idempotency, forest visit and restart. All existing configured combat/skills/FX/BODY/weapon/persistence gates passed.",
+  "contract": "docs/QUEST_JOURNAL_V97_CONTRACT.md"
+}
