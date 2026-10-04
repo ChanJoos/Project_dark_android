@@ -15,6 +15,7 @@ public final class NpcIdentity {
   new Profile("pote_travel_guide","Noah",60,"숲 여행 안내","mu0000102,mh007,ml240",null),
   new Profile("milles_west_proto","David",5,"서부 주민","mu0000030,mh010,ml243",null),
   new Profile("milles_market_proto","Matthew",13,"시장 상인","mu0000237,mh232,ml240",null),
+  new Profile("milles_job_counselor","Michael",2,"직업 상담관","mu0000007,mh132,ml255","mw015"),
   new Profile("pote_trail_guide","Alexander",43,"숲길 안내","mu0000365,mh009,ml255",null),
   new Profile("interior_reagent","Henry",56,"시약상","mu0000117,mh132,ml240","mw024"),
   new Profile("interior_equipment","Logan",78,"장비상","mu0000055,mh005,ml255",null),

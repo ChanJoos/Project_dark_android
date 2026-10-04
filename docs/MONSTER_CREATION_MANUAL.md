@@ -1,3 +1,9 @@
+
+### 2026-10-04 Lv1–40 adapted reward profile boundary — implementation unverified
+
+`AdaptedCampaignRewardCatalog` defines 15 noncanonical profiles, separately from `CanonicalMonsterRewardCatalog` and the three training-token test actors. `RuntimeState.enterPoteField()` attaches profiles only to the four currently spawned Pamfet IDs; the accepted `milles_mouse_proto` attaches its own profile only after the adapted inn quest creates that actor. `RpgProgressionState` first resolves canonical entries, otherwise requires a matching actor-level profile. Unprofiled `POTE_PURPLE` and unknown IDs remain pending; `POTE_SPIRIT` remains canonical only. All profile values are project balance, not source EXP/Gold claims.
+
+New reward-boundary and restart tests are wired in CI but have NOT RUN. The local environment has no Gradle executable or wrapper; current source `db231e3dfc50d1450d9ad7daae08fe91464a171e` is local-only after public branch push was rejected by automatic review. Only four of the fourteen Pote profiles are presently reachable from the field; a catalog entry is not a playable spawn.
 ## 2026-10-03 V93 resolved recipient impact contract (BUILD/NATIVE VERIFIED)
 Shared SkillVfxRenderer now consumes actual non-miss damaging monster HIT_FEEDBACK as recipient-only damageImpact on the live target center. It never emits an unlearned monster skill/caster effect or changes chase, wind-up, cooldown, damage, sprite bytes or BODY. Indoor mouse remains a source-still ADAPTED/B actor. New native test uses the actual mouse AI/resolver attack to verify player damage and visible onDraw effect pixels. Exact source42d20ece, Actions37122438002 SUCCESS, actual indoor mouse→player damage/visible onDraw impact native test PASS; no phone acceptance claim.
 

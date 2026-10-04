@@ -114,6 +114,8 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ModernUiTest --stacktrace
       - name: Verify V96 four-way carry, all weapon motions and complete defense jump
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ChungryongWeaponTest --stacktrace
+      - name: Verify LV40 monster rewards, job choice, wardrobe and restart
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.AdaptedCampaignRewardTest --tests com.projectdark.mobile.NpcAppearanceTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
       - name: Verify V95 low-resource Dara recipient release and cancellation
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DaraRecipientFxTest --stacktrace
       - name: Verify V83 per-skill abilities and runtime formulas

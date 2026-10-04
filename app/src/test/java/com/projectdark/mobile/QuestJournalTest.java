@@ -70,4 +70,13 @@ public class QuestJournalTest {
     for(int[] event:new int[][]{{0,380},{2,320},{2,240},{2,180},{1,180}}){MotionEvent e=MotionEvent.obtain(0,1,event[0],240,event[1],0);v.onTouchEvent(e);e.recycle();}
     assertTrue(((QuestJournalWindow)TownInteriorTest.field(v,"questJournalWindow")).offset>=3);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);capture(v,"dragged-list");
   }
+  @Test public void growthCompletionOpensFirstJobQuestAndRoutesToMichael()throws Exception{
+    GameView v=start();F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");GrowthQuest2 g=TownInteriorTest.field(v,"quest2");RuntimeState runtime=TownInteriorTest.field(v,"state");
+    q.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);g.restore(GrowthQuest2.State.COMPLETED,3);runtime.rpg().grantAdaptedReward(22800,0);
+    QuestJournalModel model=TownInteriorTest.field(v,"questJournalModel");List<QuestJournalModel.Row> actual=model.rows(q,g,false,runtime.rpg());
+    QuestJournalModel.Row job=null;for(QuestJournalModel.Row row:actual)if(QuestJournalModel.JOB_CHOICE.equals(row.id))job=row;
+    assertNotNull(job);assertEquals(QuestJournalModel.Status.AVAILABLE,job.status);
+    assertEquals(QuestJournalModel.JOB_CHOICE,model.current(q,g,false,runtime.rpg()).id);
+    assertTrue(runtime.npcs().stream().anyMatch(n->"milles_job_counselor".equals(n.id)));
+  }
 }

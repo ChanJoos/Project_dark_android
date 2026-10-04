@@ -10,6 +10,7 @@ import java.util.List;
 /** Read-only journal projection. Acceptance, defeat and rewards stay in their domain owners. */
 final class QuestJournalModel {
   static final String FOREST="Q_ADAPTED_FOREST_GUIDE";
+  static final String JOB_CHOICE="Q_ADAPTED_FIRST_JOB";
   enum Status { AVAILABLE, ACTIVE, REPORT, LOCKED, COMPLETE }
   static final class Row {
     final String id,title,area,npc,story,objective,reward,condition,next;
@@ -30,7 +31,8 @@ final class QuestJournalModel {
   }catch(Exception e){throw new IllegalStateException("Quest journal catalog unavailable",e);}}
   private static byte[] read(java.io.InputStream in)throws java.io.IOException{java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream();byte[] bytes=new byte[4096];for(int n;(n=in.read(bytes))!=-1;)out.write(bytes,0,n);return out.toByteArray();}
   void visitForest(F5mAdaptedPrologueQuest q,GrowthQuest2 g){if(q.state()==F5mAdaptedPrologueQuest.State.COMPLETED&&g.state()==GrowthQuest2.State.COMPLETED&&F5mSaveStore.writable())context.getSharedPreferences("project_dark_journal_v1",0).edit().putBoolean("forest_visited",true).commit();}
-  List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest){
+  List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest){return rows(q,g,inForest,null);}
+  List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest,RpgProgressionState rpg){
     List<Row> out=new ArrayList<>();Status s=Status.valueOf(q.state()==F5mAdaptedPrologueQuest.State.RETURN_READY?"REPORT":q.state()==F5mAdaptedPrologueQuest.State.COMPLETED?"COMPLETE":q.state().name());
     String goal=s==Status.AVAILABLE?"James에게 여관 의뢰 받기":s==Status.ACTIVE?"여관 생쥐 처치":s==Status.REPORT?"여관의 Benjamin에게 보고":"여관의 소란을 해결했습니다";
     out.add(new Row(q.questId(),"여관의 소란","밀레스 · 여관","James → Benjamin","여관의 손님들이 생쥐 때문에 곤란해하고 있습니다. James의 의뢰를 받아 여관 안을 살펴보세요.",goal,"EXP 7,500  ·  Gold 100  ·  훈련 증표 1","처음부터 받을 수 있습니다","완료 후: James의 성장 훈련",s,q.currentCount(),q.requiredCount()));
@@ -40,9 +42,11 @@ final class QuestJournalModel {
     boolean visited=inForest||context.getSharedPreferences("project_dark_journal_v1",0).getBoolean("forest_visited",false);
     Status fs=gs!=Status.COMPLETE?Status.LOCKED:visited?Status.COMPLETE:Status.AVAILABLE;
     out.add(new Row(FOREST,"포테의 숲길","밀레스 → 포테의 숲","William","훈련을 마쳤습니다. 숲길 경비 William에게 말을 걸면 포테의 숲으로 안내받을 수 있습니다.",fs==Status.LOCKED?"성장 훈련 완료":fs==Status.COMPLETE?"포테의 숲에 도착했습니다":"William와 대화하고 숲으로 이동","포테의 숲 탐험","선행: 성장 훈련 완료","다음 모험: 팜팻의 변화 · 의뢰 지역 개방 필요",fs,visited?1:0,1));
+    if(rpg!=null){boolean ready=gs==Status.COMPLETE&&rpg.normalLevel()!=null&&rpg.normalLevel()>=3;Status js=!"COMMONER".equals(rpg.currentJobCode())?Status.COMPLETE:ready?Status.AVAILABLE:Status.LOCKED;out.add(new Row(JOB_CHOICE,"기본 직업 선택","밀레스 · 광장","Michael","성장 훈련과 Lv3을 달성했습니다. Michael과 대화해 전사·도적·마법사·성직자·무도가 중 하나를 고르세요.",js==Status.COMPLETE?"기본 직업을 선택했습니다":ready?"Michael과 대화해 직업과 입문 장비 선택":"성장 훈련 완료 · Lv3 도달","직업별 입문 장비 1세트","선행: 성장 훈련 완료 · Lv3","직업 선택 후 포테의 숲으로 이동",js,js==Status.COMPLETE?1:0,1));}
     out.addAll(future);return out;
   }
-  Row current(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean forest){for(Row r:rows(q,g,forest))if(r.navigable())return r;return null;}
+  Row current(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean forest){return current(q,g,forest,null);}
+  Row current(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean forest,RpgProgressionState rpg){List<Row> all=rows(q,g,forest,rpg);for(Row r:all)if(JOB_CHOICE.equals(r.id)&&r.navigable())return r;for(Row r:all)if(r.navigable())return r;return null;}
   int available(List<Row> rows){int n=0;for(Row r:rows)if(r.status==Status.AVAILABLE)n++;return n;}
   int attention(List<Row> rows){int n=0;for(Row r:rows)if(r.status==Status.AVAILABLE||r.status==Status.REPORT)n++;return n;}
 }

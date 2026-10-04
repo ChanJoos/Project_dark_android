@@ -1,3 +1,7 @@
+## 2026-10-04 — Mobile Lv1–40 ADAPTED implementation is user-authorized, but not complete
+
+User requested development from `docs/LEVEL1_40_PROGRESSION_PLAN.md`. Use that plan's explicitly adapted mobile EXP/Gold, first-job and equipment values only under `[B]/[ADAPTED]`; never write them into canonical reward or Master facts. Preserve canonical priority and fail-closed unresolved rewards. The existing user-approved rule of preserving unknown source data and not inventing official item identity remains active. The current integrated slice is recorded in `docs/PROJECT_STATE.md`. It does not authorize treating the unimplemented 35-quest/four-zone/Piet/Lv40 loop as complete.
+
 ## 2026-10-04 KST — Lv1–40 complete progression planning (PROPOSED)
 
 User requests planning before implementation: missing first-job acquisition and Pote EXP break the Lv40/second-circle journey. Plan docs/LEVEL1_40_PROGRESSION_PLAN.md defines free first job at proposedLv3, 5mentor/player-style NPCs, common20+job branches15 definitions (23per character), Pote4areas/Piet minimalhub, class gear/skills/MP supply, economy, save migration, and actual normal-mode5job1→40 acceptance. Current Master curve summed9,000,000EXP: proposed once quests3,600,000 + hunting5,400,000, representativeceil300kills, target150min; monetary targets34,000income/25,450mandatorycost/8,550surplus. These are arithmetic-checked design targets, not playable simulation or phone results.

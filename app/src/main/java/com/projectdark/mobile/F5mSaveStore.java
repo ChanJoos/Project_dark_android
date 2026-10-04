@@ -140,7 +140,8 @@ public final class F5mSaveStore {
         .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
         .putInt("training_token_qty",quantity(r)).putInt("normal_level",r.normalLevel()).putLong("normal_exp",r.normalExp()).putLong("gold",r.gold())
         .putInt("str",r.str()).putInt("int",r.intel()).putInt("wis",r.wis()).putInt("con",r.con()).putInt("dex",r.dex()).putInt("stat_points",r.statPoints())
-        .putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence());
+        .putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence())
+        .putString("job_code_v4",r.currentJobCode());
   }
   private void restoreRpg(RpgProgressionState r){
     // Decode ownership first. Unknown identities preserve the source save instead of overwriting it.
@@ -171,6 +172,7 @@ public final class F5mSaveStore {
       for(java.util.Iterator<String> it=bankJson.keys();it.hasNext();){String id=it.next();bank.put(id,bankJson.getInt(id));}
       if(!staged.restoreBank(prefs.getLong("bank_gold_v84",0),bank))throw new IllegalArgumentException("Invalid bank");
       staged.restoreProgression(prefs.getInt("normal_level",1),prefs.getLong("normal_exp",0L));
+      if(!staged.restoreJobCode(prefs.getString("job_code_v4","COMMONER")))throw new IllegalArgumentException("Invalid saved job");
       staged.restoreGold(prefs.getLong("gold",0L));
       staged.restoreStats(prefs.getInt("str",3),prefs.getInt("int",3),prefs.getInt("wis",3),prefs.getInt("con",3),prefs.getInt("dex",3),prefs.getInt("stat_points",0));
       staged.restoreBaseResources(prefs.getInt("base_max_hp_v3",staged.baseMaxHp()),prefs.getInt("base_max_mp_v3",staged.baseMaxMp()));
@@ -181,6 +183,7 @@ public final class F5mSaveStore {
 
   private static void copyRpg(RpgProgressionState source,RpgProgressionState dest){
     dest.restoreProgression(source.normalLevel(),source.normalExp());dest.restoreGold(source.gold());
+    if(!dest.restoreJobCode(source.currentJobCode()))throw new IllegalArgumentException("Invalid job");
     dest.restoreStats(source.str(),source.intel(),source.wis(),source.con(),source.dex(),source.statPoints());
     dest.restoreBaseResources(source.baseMaxHp(),source.baseMaxMp());
     if(!dest.restoreOwnedItems(source.inventory(),source.equipment()))throw new IllegalArgumentException("Invalid ownership");

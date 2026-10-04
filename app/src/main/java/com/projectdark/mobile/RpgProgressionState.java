@@ -119,6 +119,7 @@ public final class RpgProgressionState {
   private final List<RewardResolution> rewardHistory=new ArrayList<>();
   private final CanonicalMonsterRewardCatalog monsterRewards=new CanonicalMonsterRewardCatalog();
   private final AdaptedPrototypeRewardCatalog prototypeRewards=new AdaptedPrototypeRewardCatalog();
+  private final AdaptedCampaignRewardCatalog campaignRewards=new AdaptedCampaignRewardCatalog();
   private long lastCombatSequence=0L;
 
   public static final String B_SMALL_POTION_ITEM_ID="IT_B_SMALL_POTION";
@@ -205,6 +206,15 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_TEST_HAT_MH174","모자 mh174",HEAD_SLOT,"mh174",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000002","레더튜닉",ARMOR_SLOT,"mu0000002",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000003","도복",ARMOR_SLOT,"mu0000003",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_WARRIOR_TUNIC","전사 수련 튜닉 [ADAPTED]",ARMOR_SLOT,"mu0000007",1,jobSet("WARRIOR"),true,null,null,stats("AC",-2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_ROGUE_GARMENT","도적 수련복 [ADAPTED]",ARMOR_SLOT,"mu0000055",1,jobSet("ROGUE"),true,null,null,stats("AC",-1,"DEX",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_MAGE_ROBE","마법사 수련 로브 [ADAPTED]",ARMOR_SLOT,"mu0000058",1,jobSet("MAGE"),true,null,null,stats("AC",-1,"MP",20),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_CLERIC_ROBE","성직자 수련 로브 [ADAPTED]",ARMOR_SLOT,"mu0000015",1,jobSet("CLERIC"),true,null,null,stats("AC",-1,"MP",20),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_MONK_GI","무도가 수련 도복 [ADAPTED]",ARMOR_SLOT,"mu0000057",1,jobSet("MARTIAL_ARTIST"),true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_WARRIOR_WEAPON","경비대 수련검 [ADAPTED]",WEAPON_SLOT,"mw015",AnimationAction.SWING,1,jobSet("WARRIOR"),true,null,null,stats("DAM",4),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_ROGUE_WEAPON","정찰자 단검 [ADAPTED]",WEAPON_SLOT,"mw024",AnimationAction.THRUST,1,jobSet("ROGUE"),true,null,null,stats("DAM",4,"HIT",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_MAGE_WAND","수련 지팡이 [ADAPTED]",WEAPON_SLOT,"mw024",AnimationAction.THRUST,1,jobSet("MAGE"),true,null,null,stats("DAM",3),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_JOB_CLERIC_WAND","성직 완드 [ADAPTED]",WEAPON_SLOT,"mw026",AnimationAction.THRUST,1,jobSet("CLERIC"),true,null,null,stats("DAM",2),Evidence.ADAPTED));
     // Playable visual-slice fixture: source-named appearance, no invented stats or reward relation.
     inventory.put(STARTER_SHIRT_ITEM_ID,1);
     // Starter armor uses the verified classic paper-doll garment frames while retaining the canonical shirt item identity.
@@ -233,6 +243,11 @@ public final class RpgProgressionState {
   public List<RewardResolution> rewardHistory(){return Collections.unmodifiableList(rewardHistory);}
   public ProgressionNode progressionNode(){return progressionNode;}
   public String currentJobCode(){return currentJobCode;}
+  public boolean restoreJobCode(String code){
+    if(code==null||!("COMMONER".equals(code)||"WARRIOR".equals(code)||"ROGUE".equals(code)||"MAGE".equals(code)||"CLERIC".equals(code)||"MARTIAL_ARTIST".equals(code)))return false;
+    if("COMMONER".equals(code)||normalLevel==null||normalLevel<3)return "COMMONER".equals(code);
+    currentJobCode=code;progressionNode=ProgressionNode.BASIC_JOB;return true;
+  }
   public Integer normalLevel(){return normalLevel;}
   public Long normalExp(){return normalExp;}
   public Long gold(){return gold;}
@@ -259,6 +274,18 @@ public final class RpgProgressionState {
     bankGold=balance;bankInventory.clear();bankInventory.putAll(deposited);return true;
   }
   public void restoreGold(long value){gold=Math.max(0L,value);}
+  /** First-job choice is a one-time, cost-free mobile campaign transaction. */
+  public boolean chooseInitialJob(String jobCode){
+    if(normalLevel==null||normalLevel<3||!"COMMONER".equals(currentJobCode))return false;
+    if(!("WARRIOR".equals(jobCode)||"ROGUE".equals(jobCode)||"MAGE".equals(jobCode)||"CLERIC".equals(jobCode)||"MARTIAL_ARTIST".equals(jobCode)))return false;
+    currentJobCode=jobCode;
+    progressionNode=ProgressionNode.BASIC_JOB;
+    String weapon="WARRIOR".equals(jobCode)?"IT_B_JOB_WARRIOR_WEAPON":"ROGUE".equals(jobCode)?"IT_B_JOB_ROGUE_WEAPON":"MAGE".equals(jobCode)?"IT_B_JOB_MAGE_WAND":"CLERIC".equals(jobCode)?"IT_B_JOB_CLERIC_WAND":null;
+    String armor="WARRIOR".equals(jobCode)?"IT_B_JOB_WARRIOR_TUNIC":"ROGUE".equals(jobCode)?"IT_B_JOB_ROGUE_GARMENT":"MAGE".equals(jobCode)?"IT_B_JOB_MAGE_ROBE":"CLERIC".equals(jobCode)?"IT_B_JOB_CLERIC_ROBE":"IT_B_JOB_MONK_GI";
+    if(weapon==null)equipmentBySlot.remove(WEAPON_SLOT);else{inventory.put(weapon,Math.max(1,value(inventory,weapon)));equipmentBySlot.put(WEAPON_SLOT,weapon);}
+    inventory.put(armor,Math.max(1,value(inventory,armor)));equipmentBySlot.put(ARMOR_SLOT,armor);
+    return true;
+  }
   public boolean buySmallPotion(){return buyItem(B_SMALL_POTION_ITEM_ID,B_SMALL_POTION_PRICE);}
   public boolean buyItem(String itemId,long price){
     if(price<0||gold<price||!items.containsKey(itemId))return false;
@@ -316,13 +343,17 @@ public final class RpgProgressionState {
       if(e.sequence<=lastCombatSequence)continue;
       lastCombatSequence=e.sequence;
       if(e.type!=CombatLedger.Type.MONSTER_DEFEATED)continue;
-      resolveMonsterDefeat(e);
+      String campaignId=runtime==null?null:runtime.campaignRewardProfileFor(e.targetId);
+      resolveCampaignDefeat(e,campaignId);
     }
   }
 
   private void resolveMonsterDefeat(CombatLedger.Event e){
     CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
     if(reward==null){
+      // An explicit actor-level adapter is required. The canonical POTE_PURPLE fixture and
+      // every unprofiled defeat remain unresolved, preserving the fail-closed boundary audit.
+      // (The runtime supplies its profile through the overload below.)
       AdaptedPrototypeRewardCatalog.Entry prototype=prototypeRewards.find(e.targetId);
       if(prototype!=null){
         Map<String,Integer> granted=new LinkedHashMap<>();
@@ -352,6 +383,19 @@ public final class RpgProgressionState {
     if(reward.exp!=null)normalExp+=reward.exp.longValue();
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes,
         RewardSource.CANONICAL,"CANONICAL_MONSTER_REWARD",reward.expEvidence==null?null:reward.expEvidence.name()));
+    trimRewardHistory();
+  }
+
+  /** Campaign-aware defeat endpoint; only map actors admitted by the mobile field adapter can resolve. */
+  private void resolveCampaignDefeat(CombatLedger.Event e,String profileId){
+    CanonicalMonsterRewardCatalog.RewardEntry canonical=monsterRewards.find(e.targetId);
+    if(canonical!=null){resolveMonsterDefeat(e);return;}
+    AdaptedCampaignRewardCatalog.Reward reward=campaignRewards.find(profileId);
+    if(reward==null||!e.targetId.equals(reward.monsterId)){resolveMonsterDefeat(e);return;}
+    grantAdaptedReward(reward.exp,reward.gold);
+    rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,
+        Collections.<String,Integer>emptyMap(),Collections.<String,AutoLootResult>emptyMap(),
+        RewardSource.ADAPTED_TEST,AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone));
     trimRewardHistory();
   }
 

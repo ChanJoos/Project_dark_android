@@ -100,6 +100,15 @@
       "outfit": "mu0000025,mh011,ml243",
       "weapon": null,
       "rationale": "여관 주인의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "milles_job_counselor",
+      "name": "Michael",
+      "rank": 2,
+      "role": "직업 상담관",
+      "outfit": "mu0000007,mh132,ml255",
+      "weapon": "mw015",
+      "rationale": "다섯 기본 직업의 선택과 입문 장비를 안내하는 신규 NPC"
     }
   ]
 }

@@ -35,6 +35,8 @@ public final class RuntimeState {
   public static final class Monster {
     public enum State { SPAWN,IDLE,WANDER,DETECT,CHASE,ATTACK,DEAD,RESPAWN }
     public final String id,name,assetStatus;public final float spawnX,spawnY;public float x,y;
+    /** Selected only by the mobile 2-circle field adapter; null keeps unknown prototypes fail-closed. */
+    public String campaignRewardProfileId;
     public float moveStartX,moveStartY,moveTargetX,moveTargetY,moveElapsed,moveDuration;
     public boolean isMoving;
     public int hp;public final int maxHp;public boolean alive=true;
@@ -139,6 +141,7 @@ public final class RuntimeState {
   public List<RectF> obstacles(){return Collections.unmodifiableList(obstacles);}
   public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
   public List<Monster> monsters(){return Collections.unmodifiableList(monsters);}
+  public String campaignRewardProfileFor(String monsterId){for(Monster m:monsters)if(monsterId!=null&&monsterId.equals(m.id))return m.campaignRewardProfileId;return null;}
 
   /** Spawn the explicitly adapted opening-quest mouse only after the player accepts that story. */
   public Monster ensureAdaptedMillesMouse(){
@@ -147,6 +150,7 @@ public final class RuntimeState {
     float x=com.projectdark.mobile.world.TownInteriorDef.x(10,11),y=com.projectdark.mobile.world.TownInteriorDef.y(10,11);
     com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=nearestMonsterTileCenter(x,y);
     Monster mouse=new Monster("milles_mouse_proto","생쥐",center==null?x:center.x,center==null?y:center.y,24,WorldDef.ASSET_STATUS);
+    mouse.campaignRewardProfileId=mouse.id;
     monsters.add(mouse);return mouse;
   }
 
@@ -167,6 +171,8 @@ public final class RuntimeState {
         "북동쪽 흙길을 따라가면 숲 안쪽 공터와 물가로 이어집니다.","PENDING_CROP/pote/npc/trail_guide"));
     monsters.clear();monsters.addAll(PoteForestMonsterShowcase.instantiate(
         new PoteMonsterRoster(),com.projectdark.mobile.world.PoteFieldDef.navigationTiles()));
+    AdaptedCampaignRewardCatalog campaignRewards=new AdaptedCampaignRewardCatalog();
+    for(Monster monster:monsters)if(campaignRewards.find(monster.id)!=null)monster.campaignRewardProfileId=monster.id;
     player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
   }
   public void enterMillesFromField(float x,float y){
