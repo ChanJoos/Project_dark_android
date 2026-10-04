@@ -1,3 +1,25 @@
+milles_reconstruction_v100:
+  implementation: IMPLEMENTED_CANDIDATE
+  source_commit: 7f71aa38be9ae31027c3204d65a6bb8b4a5df66b
+  source_tree: 1aea13deb6a925b3a88c280ebc353411b2268c77
+  actions_run: 37181394473
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_GATES_VERIFIED
+  local_reviewed_frames: 16
+  focused_native_tests: 25
+  native_artifact: 11294979007
+  apk_artifact: 11294764162
+  apk_sha256: 21460a617ef12c0b2d0a1209e043f956e1c1ba3f30b15b0242e8f6214faa8458
+  built_seoul: '2026-10-04T15:10:36.581611+09:00'
+  anonymous_download: HTTP200_HASH_VERIFIED
+  signature: V2_VERIFIED_DIFFERENT_FROM_V99
+  in_place_upgrade: false
+  physical_phone: PENDING
+  user_visual: PENDING
+  CI_native_byte_comparison: PENDING_TERMINAL_UNRESPONSIVE
+  final_library_save: UNKNOWN_TERMINAL_NO_RESPONSE_NOT_RETRIED
+  evidence: docs/verification/MILLES_V100_BUILD.json
+  contract: docs/MILLES_RECONSTRUCTION_V100_CONTRACT.md
 quest_journal_v97:
   implementation: IMPLEMENTED_CANDIDATE
   source_commit: 25871a27bfe599ed8ad2b742d2e16c386be7778a
