@@ -10,7 +10,7 @@ import org.json.*;
 /** Presentation-only source palette. Source sprites and world/domain geometry stay immutable. */
 final class MillesSourceStyle {
   private final Map<String,int[]> palettes=new HashMap<>();
-  private final Map<String,Map<Integer,Integer>> lookup=new HashMap<>();
+  private static final float[][] ROOF={{.29f,.03f},{.89f,.23f},{.70f,.61f},{.16f,.32f}};
   MillesSourceStyle(AssetManager assets){
     if(assets==null)return;
     try(InputStream in=assets.open("maps/milles_source_style.json")){
@@ -19,7 +19,7 @@ final class MillesSourceStyle {
       for(String name:Arrays.asList("wood","roof","foliage","stone")){
         JSONArray rows=p.getJSONArray(name);int[] colors=new int[rows.length()];
         for(int i=0;i<colors.length;i++){JSONArray c=rows.getJSONArray(i);colors[i]=Color.rgb(c.getInt(0),c.getInt(1),c.getInt(2));}
-        palettes.put(name,colors);lookup.put(name,new HashMap<>());
+        palettes.put(name,colors);
       }
     }catch(Exception e){throw new IllegalStateException("Milles source palette unavailable",e);}
   }
@@ -62,32 +62,54 @@ final class MillesSourceStyle {
     Bitmap small=Bitmap.createScaledBitmap(original,Math.max(1,w/step),Math.max(1,h/step),false);
     Bitmap result=Bitmap.createScaledBitmap(small,w,h,false);if(small!=result)small.recycle();
     result=result.copy(Bitmap.Config.ARGB_8888,true);
+    // Match each material's light/shadow distribution before palette selection.
+    // Direct nearest-RGB would collapse the brighter generated leaves into one flat green.
     float[] hsv=new float[3];
-    boolean building=path.startsWith("buildings/"),vegetation=path.startsWith("vegetation/");
-    float[][] roof={{.31f,.03f},{.82f,.20f},{.70f,.53f},{.19f,.34f}};
+    Map<String,double[]> stats=new HashMap<>();
+    for(String f:palettes.keySet())stats.put(f,new double[3]);
     for(int y=0;y<h;y++)for(int x=0;x<w;x++){
       int c=result.getPixel(x,y);if(Color.alpha(c)==0)continue;
-      Color.colorToHSV(c,hsv);String family=null;
-      if(building&&inside((float)x/w,(float)y/h,roof)&&hsv[2]>.10f)family="roof";
-      else if(vegetation&&hsv[0]>45&&hsv[0]<180&&hsv[1]>.20f)family="foliage";
-      else if(hsv[0]>12&&hsv[0]<63&&hsv[1]>.24f)family="wood";
-      else if(hsv[1]<.23f)family="stone";
-      else if(path.startsWith("landmarks/")&&hsv[0]>175&&hsv[0]<265&&hsv[2]<.8f)family="roof";
-      if(family!=null){int color=nearest(c,family);result.setPixel(x,y,(c&0xff000000)|(color&0xffffff));}
+      String f=family(c,path,(float)x/w,(float)y/h,hsv);if(f==null)continue;
+      double l=luma(c);double[] a=stats.get(f);a[0]+=l;a[1]+=l*l;a[2]++;
+    }
+    Map<String,double[]> transforms=new HashMap<>();
+    for(String f:palettes.keySet()){
+      double[] a=stats.get(f);if(a[2]==0)continue;
+      double mean=a[0]/a[2],sd=Math.sqrt(Math.max(1,a[1]/a[2]-mean*mean));
+      double sum=0,sq=0;for(int color:palettes.get(f)){double l=luma(color);sum+=l;sq+=l*l;}
+      int n=palettes.get(f).length;double target=sum/n;
+      transforms.put(f,new double[]{mean,sd,target,Math.sqrt(Math.max(1,sq/n-target*target))});
+    }
+    Map<String,int[]> tables=new HashMap<>();
+    for(String f:transforms.keySet()){
+      double[] t=transforms.get(f);int[] table=new int[256];
+      for(int level=0;level<256;level++){
+        double brightness=t[2]+(level-t[0])*t[3]/t[1],distance=Double.MAX_VALUE;int best=0;
+        for(int color:palettes.get(f)){double d=Math.abs(luma(color)-brightness);if(d<distance){distance=d;best=color;}}
+        table[level]=best;
+      }
+      tables.put(f,table);
+    }
+    for(int y=0;y<h;y++)for(int x=0;x<w;x++){
+      int c=result.getPixel(x,y);if(Color.alpha(c)==0)continue;
+      String f=family(c,path,(float)x/w,(float)y/h,hsv);if(f==null)continue;
+      int best=tables.get(f)[(int)Math.round(luma(c))];
+      result.setPixel(x,y,(c&0xff000000)|(best&0xffffff));
     }
     return result;
   }
-  private int nearest(int c,String family){
-    Map<Integer,Integer> cache=lookup.get(family);
-    int key=(Color.red(c)/8<<10)|(Color.green(c)/8<<5)|Color.blue(c)/8;
-    Integer found=cache.get(key);if(found!=null)return found;
-    int best=0;double distance=Double.MAX_VALUE;
-    for(int p:palettes.get(family)){
-      int dr=Color.red(c)-Color.red(p),dg=Color.green(c)-Color.green(p),db=Color.blue(c)-Color.blue(p);
-      double d=dr*dr*.30+dg*dg*.59+db*db*.11;
-      if(d<distance){distance=d;best=p;}
-    }
-    cache.put(key,best);return best;
+  private static double luma(int c){return Color.red(c)*.30+Color.green(c)*.59+Color.blue(c)*.11;}
+  private static String family(int c,String path,float x,float y,float[] hsv){
+    Color.colorToHSV(c,hsv);
+    boolean building=path.startsWith("buildings/"),vegetation=path.startsWith("vegetation/");
+    boolean coloredRoof=y<.62f&&(hsv[0]<12||hsv[0]>330||hsv[0]>175&&hsv[0]<315)&&hsv[1]>.28f;
+    boolean chimney=x>.70f&&x<.85f&&y<.31f&&hsv[1]<.25f;
+    if(building&&!chimney&&(inside(x,y,ROOF)||coloredRoof)&&hsv[2]>.10f)return "roof";
+    if(vegetation&&hsv[0]>45&&hsv[0]<180&&hsv[1]>.20f)return "foliage";
+    if(hsv[0]>12&&hsv[0]<63&&hsv[1]>.24f)return "wood";
+    if(hsv[1]<.23f)return "stone";
+    if(path.startsWith("landmarks/")&&hsv[0]>175&&hsv[0]<265&&hsv[2]<.8f)return "roof";
+    return null;
   }
   static boolean inside(float x,float y,float[][] polygon){
     boolean inside=false;
