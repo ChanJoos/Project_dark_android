@@ -1,0 +1,61 @@
+{
+  "source_commit": "7f71aa38be9ae31027c3204d65a6bb8b4a5df66b",
+  "source_tree": "1aea13deb6a925b3a88c280ebc353411b2268c77",
+  "actions_run": 37181394473,
+  "actions_job": 111374533183,
+  "conclusion": "SUCCESS",
+  "apk_artifact": {
+    "id": 11294764162,
+    "zip_sha256": "e0c593bd16e3e010e40c556165ab54aef2a50baf76dbf747c635a5931a286272",
+    "size": 34579994
+  },
+  "native_artifact": {
+    "id": 11294979007,
+    "zip_sha256": "726770ea373741ca6ea846f7e80c00f8f3247f8dd1a6b3e85c4aa847e8f8bdf1",
+    "size": 20776594
+  },
+  "release": {
+    "id": 402872541,
+    "tag": "candidate-v100-7f71aa38",
+    "apk_asset": 609255956
+  },
+  "apk_sha256": "21460a617ef12c0b2d0a1209e043f956e1c1ba3f30b15b0242e8f6214faa8458",
+  "apk_bytes": 35139795,
+  "versionCode": 100,
+  "versionName": "1.00-milles-reconstruction",
+  "builtSeoul": "2026-10-04T15:10:36.581611+09:00",
+  "anonymous_download": "HTTP200 attachment; complete bytes and SHA256 match release BUILD_INFO and release asset digest",
+  "signature": "apksigner verify PASS; APK v2",
+  "signer": "9115ec38df9829a183d0a6c31acd96920f70a9bf1cabf3d64f141b00edccf01b",
+  "previous_v99_signer": "a6f79441163d5949d2d7eb0f7ceb1993b3f5b5897ff866517a0c6e38e208cbcf",
+  "in_place_update_compatible": false,
+  "prior_assets": 956,
+  "unchanged_assets": 954,
+  "modified_assets": [
+    "assets/maps/milles_garden.json",
+    "assets/maps/milles_garden_base.json"
+  ],
+  "new_assets": [
+    "assets/structures/bridges/OBJ_bridge_milles_v100.png"
+  ],
+  "removed_assets": [],
+  "local_native": {
+    "focused_tests": 25,
+    "final_reviewed_pngs": 16,
+    "evidence": "MILLES_V100_LOCAL.json"
+  },
+  "verification": {
+    "configured_CI": "PASS including exact V100 native depth pixel/navigation/bridge/water and existing full configured regressions",
+    "physical_phone": "PENDING",
+    "user_visual": "PENDING",
+    "CI_vs_local_PNG_bytes": "PENDING: native artifact downloaded locally; terminal execution stopped responding before extraction/hash comparison",
+    "APK_artifact_vs_release": "CI build and release source/hash verified; original Actions ZIP extraction pending due terminal unavailability"
+  },
+  "limitations": [
+    "ADAPTED compact map, not complete original coordinates/topology",
+    "New independent generated bridge, not original extracted pixels",
+    "Existing NPC/monster placeholder appearance retained",
+    "CI signer differs from V99; do not uninstall/delete save; stable signing/migration OPEN",
+    "Final Library batch invoked once; no response from terminal service, outcome UNKNOWN (not retried). Local git sync blocked; closure persisted through GitHub API."
+  ]
+}
