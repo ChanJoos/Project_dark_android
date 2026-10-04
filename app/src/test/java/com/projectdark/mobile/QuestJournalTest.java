@@ -32,7 +32,7 @@ public class QuestJournalTest {
   @Test public void lockedConditionsAndLastQuestStayReachableWithoutNavigatingOrRewarding()throws Exception{
     GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;long gold=s.rpg().gold();gesture(v,808,28);QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");
     gesture(v,250,230);assertEquals(GrowthQuest2.QUEST_ID,w.selected(rows(v)).id);assertEquals(QuestJournalModel.Status.LOCKED,w.selected(rows(v)).status);capture(v,"locked-prerequisite");gesture(v,680,443);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
-    gesture(v,355,450);gesture(v,355,450);assertEquals(7,w.offset);gesture(v,250,394);assertEquals("Q_PRO_01",w.selected(rows(v)).id);capture(v,"last-planned-quest");gesture(v,680,443);
+    List<QuestJournalModel.Row> all=rows(v);for(int i=0;i<3;i++)gesture(v,355,450);assertEquals("journal can scroll to its final five rows",Math.max(0,all.size()-5),w.offset);gesture(v,250,394);assertEquals("Q_PRO_01",w.selected(rows(v)).id);capture(v,"last-planned-quest");gesture(v,680,443);
     assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);assertEquals(gold,s.rpg().gold().longValue());assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
     gesture(v,720,124);assertTrue(w.visible(rows(v)).isEmpty());capture(v,"empty-completed");
   }
