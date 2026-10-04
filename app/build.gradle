@@ -17,6 +17,12 @@ android {
     }
     testOptions {
         unitTests.includeAndroidResources = true
+        // Native source rendering retains large atlases; isolate each test class.
+        unitTests.all {
+            maxHeapSize = '1536m'
+            maxParallelForks = 1
+            forkEvery = 1
+        }
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
