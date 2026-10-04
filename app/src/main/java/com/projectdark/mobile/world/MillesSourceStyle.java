@@ -27,6 +27,9 @@ final class MillesSourceStyle {
   }
   /** One independent authored cabin is intentionally reused; not counted as many unique assets. */
   Bitmap replacement(Bitmap old,String path){
+    // The single-tower V102 substitute removed the church's established identity.
+    if(path.equals("landmarks/BLD_011_church.png"))return old;
+    if(path.contains("bench_video_cutout"))return completeBench(path);
     boolean house=path.startsWith("buildings/");boolean tree=path.startsWith("vegetation/trees/");boolean church=path.equals("landmarks/BLD_011_church.png");
     if(!house&&!tree&&!church)return old;
     String asset=tree?"style_v102/willow.png":church?"style_v102/church.png":"style_v102/log_cabin.png";
@@ -56,6 +59,30 @@ final class MillesSourceStyle {
     for(int i=0;i<registered.length;i++)registered[i]=(registered[i]>>>24)<128?0:0xff000000|(registered[i]&0xffffff);
     result.setPixels(registered,0,w,0,0,w,h);
     return result;
+  }
+  /** One complete authored support structure, explicitly reused in mirrored orientation. */
+  Bitmap completeBench(String path){
+    Bitmap raw;
+    try(InputStream in=assets.open("style_v103/bench_complete.png")){raw=BitmapFactory.decodeStream(in);}
+    catch(Exception e){throw new IllegalStateException("Complete bench unavailable",e);}
+    int w=raw.getWidth(),h=raw.getHeight(),left=w,top=h,right=0,bottom=0;
+    int[] pixels=new int[w*h];raw.getPixels(pixels,0,w,0,0,w,h);
+    for(int y=0;y<h;y++)for(int x=0;x<w;x++){
+      int k=y*w+x,c=pixels[k];
+      if((c>>>24)<220)pixels[k]=0;
+      else{pixels[k]=0xff000000|(c&0xffffff);left=Math.min(left,x);top=Math.min(top,y);right=Math.max(right,x+1);bottom=Math.max(bottom,y+1);}
+    }
+    raw.setPixels(pixels,0,w,0,0,w,h);
+    Bitmap result=Bitmap.createBitmap(180,180,Bitmap.Config.ARGB_8888);
+    float scale=Math.min(176f/(right-left),164f/(bottom-top));
+    float width=(right-left)*scale,height=(bottom-top)*scale;
+    Canvas canvas=new Canvas(result);Paint pixel=new Paint();pixel.setFilterBitmap(false);
+    if(path.contains("_02")||path.contains("_04")){canvas.translate(180,0);canvas.scale(-1,1);}
+    canvas.drawBitmap(raw,new Rect(left,top,right,bottom),new RectF(90-width/2,172-height,90+width/2,172),pixel);
+    raw.recycle();
+    int[] registered=new int[180*180];result.getPixels(registered,0,180,0,0,180,180);
+    for(int i=0;i<registered.length;i++)registered[i]=(registered[i]>>>24)<128?0:0xff000000|(registered[i]&0xffffff);
+    result.setPixels(registered,0,180,0,0,180,180);return result;
   }
   static Bitmap quietGrass(Bitmap raw){
     Bitmap result=Bitmap.createBitmap(raw.getWidth(),raw.getHeight(),Bitmap.Config.ARGB_8888);Paint p=new Paint();

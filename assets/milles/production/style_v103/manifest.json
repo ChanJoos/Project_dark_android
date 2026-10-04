@@ -1,0 +1,16 @@
+{
+  "status": "CANDIDATE",
+  "classification": "ADAPTED",
+  "source": "built-in imagegen precise-object-edit of retained bench_video_cutout_01.png",
+  "sha256": "2a38a97ebc298e2505dcecfce695ece4f7d7343b5c3ee5b8552f381a97d2300f",
+  "reuse": "One independently edited bench, mirrored for the other orientation; not counted as a second asset",
+  "nativeCanvas": [
+    180,
+    180
+  ],
+  "footAnchor": [
+    90,
+    172
+  ],
+  "scope": "Complete seat-to-ground iron supports and feet; no grass or ground baked into sprite"
+}

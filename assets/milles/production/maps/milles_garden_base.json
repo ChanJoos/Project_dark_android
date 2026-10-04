@@ -69,8 +69,8 @@
       "y": 572,
       "scale": 0.43,
       "district": "civic_square",
-      "anchor_x": 87.0,
-      "anchor_y": 128
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "square_bench_east",
@@ -79,8 +79,8 @@
       "y": 628,
       "scale": 0.43,
       "district": "civic_square",
-      "anchor_x": 87.0,
-      "anchor_y": 128
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "garden_bench",
@@ -89,8 +89,8 @@
       "y": 624,
       "scale": 0.43,
       "district": "garden",
-      "anchor_x": 89.0,
-      "anchor_y": 123
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "waterside_bench",
@@ -99,8 +99,8 @@
       "y": 536,
       "scale": 0.43,
       "district": "waterside",
-      "anchor_x": 89.0,
-      "anchor_y": 123
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "garden_tree_1",
@@ -399,20 +399,20 @@
   ],
   "asset_anchors": {
     "video_reference/objects/bench_video_cutout_04.png": {
-      "anchor_x": 89.0,
-      "anchor_y": 123
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     "video_reference/objects/bench_video_cutout_01.png": {
-      "anchor_x": 87.0,
-      "anchor_y": 128
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     "video_reference/objects/bench_video_cutout_03.png": {
-      "anchor_x": 87.0,
-      "anchor_y": 128
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     "video_reference/objects/bench_video_cutout_02.png": {
-      "anchor_x": 89.0,
-      "anchor_y": 123
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     "video_reference/objects/bench_lantern_reference.png": {
       "anchor_x": 165.0,

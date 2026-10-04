@@ -1,4 +1,12 @@
+milles_church_bench_v103:
+  implementation: IMPLEMENTED_CANDIDATE
+  build: PENDING
+  native_runtime: PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  contract: docs/MILLES_CHURCH_BENCH_V103_CONTRACT.md
 milles_river_style_v102:
+  reported_device: DEVICE_FAILED_USER_REPORTED_CHURCH_IDENTITY_AND_BENCH_SUPPORTS
   implementation: IMPLEMENTED_CANDIDATE
   exact_native_build: BUILD_AND_NATIVE_RUNTIME_VERIFIED
   source_commit: 2ffd629c96086b3554311004628c9d0b4eef3040
@@ -13,7 +21,7 @@ milles_river_style_v102:
   general_ci: IN_PROGRESS_37197488544
   evidence: docs/verification/MILLES_RIVER_STYLE_V102_BUILD.json
   physical_phone: PENDING
-  user_visual: PENDING
+  user_visual: USER_VISUAL_REJECTED
   source_contract: docs/MILLES_RIVER_STYLE_V102_CONTRACT.md
   governing_inputs: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, assets/milles/VISUAL_CONSTITUTION.md, master/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md]
 milles_source_style_v101:

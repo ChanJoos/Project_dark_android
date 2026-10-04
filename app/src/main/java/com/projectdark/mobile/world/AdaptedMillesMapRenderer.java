@@ -263,7 +263,8 @@ public final class AdaptedMillesMapRenderer {
     // The tiny mirrored swatch created conspicuous repeated circular patterns.
     if(image!=null&&path.equals(GRASS_SURFACE))image=MillesSourceStyle.quietGrass(image);
     else if(image!=null)image=sourceStyle.replacement(image,path);
-    if(image!=null){image=source.contains("bench_video_cutout")?MillesSourceStyle.bench(image,source):sourceStyle.scenery(image,path);}
+    // Complete V103 supports must never pass through the old grass-key/short-foot mask.
+    if(image!=null&&!source.contains("bench_video_cutout"))image=sourceStyle.scenery(image,path);
     bitmapCache.put(path,image);return image;
   }
   private static AssetManager findAssets(){

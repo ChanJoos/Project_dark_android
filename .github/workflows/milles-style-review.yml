@@ -6,6 +6,7 @@ name: Milles source style native and APK
     paths:
     - assets/milles/production/maps/milles_source_style.json
     - assets/milles/production/style_v102/**
+    - assets/milles/production/style_v103/**
     - assets/milles/production/maps/**
     - app/src/main/java/com/projectdark/mobile/world/**
     - app/src/test/java/com/projectdark/mobile/MillesReconstructionTest.java
@@ -54,7 +55,7 @@ jobs:
         '
     - name: Audit reusable Milles map assets and layout
       run: python tools/assets/audit_milles_map_assets.py
-    - name: Verify V102 source metal feet, sprite identity and terrain
+    - name: Verify V103 complete bench supports and restored church identity
       run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
     - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
       run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest --stacktrace
@@ -69,7 +70,7 @@ jobs:
 
         p=pathlib.Path(''app/build/outputs/apk/debug/app-debug.apk'')
 
-        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':102,''scope'':''V102 source-observed north exterior river, park/outer circuits, bridge navigation and source-expression assets; exact native bench/style/depth/district/doors/UI and assemble''}
+        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':103,''scope'':''V103 restored multi-spire church and complete iron bench legs, retained north-river navigation; exact native bench/style/depth/district/doors/UI and assemble''}
 
         pathlib.Path(''app/build/outputs/apk/debug/BUILD_INFO.json'').write_text(json.dumps(r,indent=2)+''\n'')
 
