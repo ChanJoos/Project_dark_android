@@ -1,7 +1,17 @@
 milles_church_bench_v103:
   implementation: IMPLEMENTED_CANDIDATE
-  build: PENDING
-  native_runtime: PENDING
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED
+  source_commit: 1a7809354681219a2bdbd1457ebc30d550d93ccb
+  actions_run: 37200737195
+  focused_native_tests: 20
+  locally_reviewed_frames: 20
+  apk_sha256: 119219b4e9d22fde2e6f1e43a662c574d6a51abfdd5e059c383607a06a3276e4
+  built_seoul: '2026-10-04T21:04:31.520506+09:00'
+  final_save: SUCCEEDED_ALL_FOUR_RECEIPTS
+  in_place_upgrade: false
+  general_ci: IN_PROGRESS_37200737185
+  evidence: docs/verification/MILLES_CHURCH_BENCH_V103_BUILD.json
   physical_phone: PENDING
   user_visual: PENDING
   contract: docs/MILLES_CHURCH_BENCH_V103_CONTRACT.md

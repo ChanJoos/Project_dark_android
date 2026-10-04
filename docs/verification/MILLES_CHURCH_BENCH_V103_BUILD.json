@@ -1,0 +1,41 @@
+{
+  "sourceCommit": "1a7809354681219a2bdbd1457ebc30d550d93ccb",
+  "runId": "37200737195",
+  "apkSha256": "119219b4e9d22fde2e6f1e43a662c574d6a51abfdd5e059c383607a06a3276e4",
+  "apkBytes": 43707859,
+  "builtSeoul": "2026-10-04T21:04:31.520506+09:00",
+  "versionCode": 103,
+  "scope": "V103 restored multi-spire church and complete iron bench legs, retained north-river navigation; exact native bench/style/depth/district/doors/UI and assemble",
+  "focusedJob": 111431719038,
+  "focusedConclusion": "SUCCESS",
+  "focusedNativeTests": 20,
+  "testGroups": {
+    "MillesSourceStyleTest": 5,
+    "MillesReconstructionTest": 4,
+    "TownInteriorTest": 8,
+    "ModernUiTest": 3
+  },
+  "decodedReviewedNativePngs": 20,
+  "nativeArtifact": 11302749088,
+  "apkArtifact": 11302579693,
+  "nativeArchiveSha256": "303c9b025201e82987f2bbfd6f51a199064cd5dc9340f59fd5fb98aa4b8c735b",
+  "apkArchiveSha256": "5bc2649199a747370516659e60d4032523aa702ac9a7dbf8e770e4c2992f4dea",
+  "v2SignatureAndContentDigest": "PASS",
+  "binaryManifestVersionCode": 103,
+  "signerSha256": "b700180e310ea4d1a890beeede188ca6506de287c0d3729df246410d3918a30d",
+  "inPlaceUpgrade": false,
+  "physicalPhone": "PENDING",
+  "userVisual": "PENDING",
+  "previousV102": "DEVICE_FAILED_USER_REPORTED_VISUAL_REJECTION",
+  "generalRun": 37200737185,
+  "generalStatus": "IN_PROGRESS_22_STEPS_PASSED",
+  "branch": "codex/town-interiors-mobile-v86",
+  "mainUnchanged": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "save": "SUCCEEDED_ALL_FOUR_RECEIPTS",
+  "libraryFiles": [
+    "libfile_307a0809c34c8191b0ec6def40476611",
+    "libfile_696e7c93682c8191bb5dc860c6ed2e51",
+    "libfile_d1ed5c8f622c81919b8022799a9b5341",
+    "libfile_cf6983fac3408191aa5807761a8de03d"
+  ]
+}
