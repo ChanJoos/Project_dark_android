@@ -92,6 +92,21 @@ def main() -> None:
     for building in ("west_armorer", "south_flower_shop", "south_library", "east_guild", "north_healer"):
         assert f'"{building}",Kind.BUILDING,' in COLLISION.read_text(encoding="utf-8")
         assert building in ids
+    # V100: visible solids and ground layers share the committed placement authority.
+    scenery = (ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesSceneryFootprints.java").read_text()
+    solids = [item for item in items if "vegetation/trees/" in item["asset"] or "/bench_" in item["asset"] or "fountain" in item["asset"] or "OBJ_well" in item["asset"]]
+    for item in solids:
+        assert f'Footprint("{item["id"]}",' in scenery, f"visible solid lacks ground collision: {item['id']}"
+    by_id = {item["id"]: item for item in items}
+    for item in items:
+        if item.get("draw") == "door":
+            host = by_id[item["id"].split("_portal")[0]]
+            assert item["depth_y"] > host["y"], "door marker must remain above its facade"
+    assert by_id["garden_ring"]["draw"] == "ground", "tree bed must not paint over its trunk"
+    assert by_id["waterside_pond"]["draw"] == "ground"
+    assert by_id["waterside_bridge"]["ground_z"] > by_id["waterside_pond"].get("ground_z", 0)
+    generator = (ROOT / "tools/assets/build_milles_village_scene.py").read_text()
+    assert 'TILE_JAVA.read_text()' in generator, "road margins must follow runtime roads including shop-door branches"
     # Scene generation is deterministic; a repeated run may not silently reflow a district.
     before = LAYOUT.read_bytes()
     subprocess.run(["python3", str(ROOT / "tools/assets/build_milles_village_scene.py")], check=True, capture_output=True)

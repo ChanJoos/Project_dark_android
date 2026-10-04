@@ -1,0 +1,62 @@
+{
+  "video": {
+    "file": "Screen_Recording_20260924_163242_YouTube.mp4",
+    "sha256": "faeaa70b507ea93ec26c058ff2486891a6063864e26b53eb06ea12f24723cd97",
+    "observed": [
+      "00:00-00:05 six benches around fountain, grass island, dirt paths, rope lamps",
+      "00:06-00:11 diamond raised tree bed and palisade gap",
+      "00:12-00:16 wooden rope bridge over river",
+      "00:17-00:20 open stepped sanctuary, riverside rocks"
+    ]
+  },
+  "community": [
+    {
+      "title": "구 밀레스",
+      "url": "https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767924",
+      "sha256": "56cc622f131e362ceec7d26244384c9c3a51978d7a6bcdf8f8c2655d192edae5",
+      "evidence": "U/Nexon-hosted community; visually inspected in-game map",
+      "post": "https://lod.nexon.com/Community/screenshot/136184?Category2=2",
+      "published": "2021-06-01"
+    },
+    {
+      "title": "북밀레스",
+      "url": "https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767925",
+      "sha256": "1d2cf6258430682815df65aea190ed79829c59222d53d5dc9249659d63745c34",
+      "evidence": "U/Nexon-hosted community; visually inspected in-game map",
+      "post": "https://lod.nexon.com/Community/screenshot/136184?Category2=2",
+      "published": "2021-06-01"
+    },
+    {
+      "title": "동밀레스",
+      "url": "https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767926",
+      "sha256": "0cddf0a7f9cf000bc9bc04393679e5e6082f8a9d5e56d16b97202c7db97c8053",
+      "evidence": "U/Nexon-hosted community; visually inspected in-game map",
+      "post": "https://lod.nexon.com/Community/screenshot/136184?Category2=2",
+      "published": "2021-06-01"
+    },
+    {
+      "title": "서밀레스",
+      "url": "https://file.nexon.com/NxFile/download/FileDownloader.aspx?oidFile=5053116125680767927",
+      "sha256": "b98692460e9495b4a8227a2296cd450910e4a8e68430abcd106a30d618db607e",
+      "evidence": "U/Nexon-hosted community; visually inspected in-game map",
+      "post": "https://lod.nexon.com/Community/screenshot/136184?Category2=2",
+      "published": "2021-06-01"
+    }
+  ],
+  "adaptation": "Existing compact map, ten buildings, doors and gameplay anchors retained; lawn-road relation, clean tree beds, foliage palette and waterside bridge adapted. Not full original geometry or pixel-identical art.",
+  "new_asset": {
+    "path": "assets/milles/production/structures/bridges/OBJ_bridge_milles_v100.png",
+    "sha256": "557bae16da80b41fdec5bbd5281276915d73ee4e867c0b1900ffc79261aef2c7",
+    "size": [
+      1672,
+      941
+    ],
+    "rgba": true,
+    "generator": "built-in imagegen",
+    "evidence": "PROJECT_RECONSTRUCTION; generated independent bridge; not original extracted pixels",
+    "prompt": "Use case: stylized-concept. Asset type: independent transparent game world sprite, one wooden rope bridge for a classic late-1990s Korean 2.5D isometric pixel-art RPG village, matching Legend of Darkness old Milles. Single complete rectangular low rustic bridge, brown horizontal plank deck crossing a narrow river from southwest (screen bottom-left) to northeast (screen top-right), long direction 2:1 isometric diagonal rising to the right. Deck about 6 meters long and 3 meters wide. Four chunky wood posts, simple thin tan rope railing along both long sides; no ropes across entrances. Orthographic 2:1 isometric perspective. Hand-pixelled crisp old PC game art with visible pixel clusters, earthy muted browns, top-left light, weathered planks. The deck must be broad and playable, low height, no arches or towering poles. Entire object isolated on genuine alpha transparent background, centered with transparent margin. NO water, terrain, grass, rocks, buildings, people, text, UI, labels, surrounding environment or cast shadow outside the bridge. Only one bridge sprite, no sheet, no variants. Produce landscape canvas; emulate sprite about 320 by 180 native pixels, with chunky pixel clusters rather than fine illustration.",
+    "status": "QA_PASS/USER_VISUAL_PENDING"
+  },
+  "immutable": "All previous runtime asset image bytes unchanged; only placement and anchor metadata revised.",
+  "geometry_note": "Fountain plinth removed to match the reference grass island. Garden approach road stays west of the palisade. Inn rope lamp moved away from the doorway."
+}

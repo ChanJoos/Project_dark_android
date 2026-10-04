@@ -11,7 +11,7 @@ import java.util.List;
  * bottom-center anchored; collision only covers the area where an object meets the walk plane.
  */
 public final class MillesProductionCollision {
-  public enum Kind { BUILDING, CHURCH, TREE, WELL, STALL, FENCE, LAKE }
+  public enum Kind { BUILDING, CHURCH, TREE, WELL, STALL, FENCE, LAKE, BENCH, FOUNTAIN }
 
   public static final class Footprint {
     public final String id;
@@ -50,7 +50,7 @@ public final class MillesProductionCollision {
     rect(b,"inn",Kind.BUILDING,1880f,575f,2190f,770f);
     // Five additional authored districts; each solid shop uses its visible foot anchor.
     rect(b,"west_armorer",Kind.BUILDING,-60f,530f,180f,739f);
-    rect(b,"south_flower_shop",Kind.BUILDING,280f,870f,520f,1079f);
+    rect(b,"south_flower_shop",Kind.BUILDING,280f,918f,520f,1127f);
     rect(b,"south_library",Kind.BUILDING,1000f,880f,1240f,1089f);
     rect(b,"east_guild",Kind.BUILDING,1410f,1000f,1650f,1209f);
     rect(b,"north_healer",Kind.BUILDING,1760f,150f,2000f,359f);
@@ -67,6 +67,8 @@ public final class MillesProductionCollision {
     add(b,"garden_fence_se_3",Kind.FENCE,1096f,590f,38f,16f);
     add(b,"garden_fence_sw_3",Kind.FENCE,1064f,590f,38f,16f);
     MillesDistrictFenceFootprints.addTo(b);
+
+    MillesSceneryFootprints.addTo(b);
 
     // Only currently visible buildings and the garden palisade are collision-authoritative.
     // Invisible legacy scenery footprints are intentionally excluded from runtime blockers.
