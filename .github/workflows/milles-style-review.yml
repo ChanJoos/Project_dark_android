@@ -6,6 +6,9 @@ name: Milles source style native and APK
     paths:
     - assets/milles/production/maps/milles_source_style.json
     - assets/milles/production/style_v102/**
+    - assets/milles/production/maps/**
+    - app/src/main/java/com/projectdark/mobile/world/**
+    - app/src/test/java/com/projectdark/mobile/MillesReconstructionTest.java
     - .github/workflows/milles-style-review.yml
   workflow_dispatch: {}
 permissions:
@@ -66,7 +69,7 @@ jobs:
 
         p=pathlib.Path(''app/build/outputs/apk/debug/app-debug.apk'')
 
-        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':102,''scope'':''V102 river/bridge navigation and source-expression assets; exact native bench/style/depth/district/doors/UI and assemble''}
+        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':102,''scope'':''V102 source-observed north exterior river, park/outer circuits, bridge navigation and source-expression assets; exact native bench/style/depth/district/doors/UI and assemble''}
 
         pathlib.Path(''app/build/outputs/apk/debug/BUILD_INFO.json'').write_text(json.dumps(r,indent=2)+''\n'')
 

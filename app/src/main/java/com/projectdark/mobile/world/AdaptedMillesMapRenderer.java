@@ -54,6 +54,7 @@ public final class AdaptedMillesMapRenderer {
   private final AssetManager assets;
   private final MillesSourceStyle sourceStyle;
   private final Paint grassPaint=new Paint();
+  private BitmapShader riverWaterShader;
   private final List<SpritePlacement> placements,groundPlacements,standingPlacements;
 
   public AdaptedMillesMapRenderer(){
@@ -162,10 +163,13 @@ public final class AdaptedMillesMapRenderer {
     p.setColor(0xff4b563a);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2+10);canvas.drawPath(channel,p);
     p.setColor(0xff71694c);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2);canvas.drawPath(channel,p);
     p.setColor(0xff234e59);p.setStrokeWidth(MillesRiverGeometry.HALF_WIDTH*2);canvas.drawPath(channel,p);
-    p.setColor(0xff326570);p.setStrokeWidth((MillesRiverGeometry.HALF_WIDTH-8)*2);canvas.drawPath(channel,p);
+    p.setColor(0xff326570);p.setStrokeWidth((MillesRiverGeometry.HALF_WIDTH-5)*2);
+    if(riverWaterShader==null){Bitmap sourceWater=bitmap("water/lakes/OBJ_lake_main.png");if(sourceWater!=null){Bitmap water=Bitmap.createBitmap(sourceWater,175,130,60,30);riverWaterShader=new BitmapShader(water,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);}}
+    p.setShader(riverWaterShader);
+    canvas.drawPath(channel,p);p.setShader(null);
     // Quiet pixel ripples follow the actual water mask; never extend onto bank/deck.
     p.setStyle(Paint.Style.FILL);p.setColor(0xff51808a);
-    for(int y=48;y<1600;y+=16)for(int x=1632;x<2304;x+=32){
+    for(int y=48;y<1600;y+=16)for(int x=-512;x<2304;x+=32){
       if(MillesRiverGeometry.distance(x,y)>MillesRiverGeometry.HALF_WIDTH-14||MillesRiverGeometry.bridgeDeck(x,y))continue;
       int k=(x*17+y*13)&31;if(k>11)continue;canvas.drawRect(x,y,x+6+(k%3)*3,y+1,p);
     }

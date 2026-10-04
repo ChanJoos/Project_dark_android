@@ -1,7 +1,7 @@
 {
   "schema": "project-dark-milles-map-v1",
   "map_id": "milles_village_adapted",
-  "evidence": "ADAPTED/V102; source expression correction and traversable river/bridge; not exact original world coordinates",
+  "evidence": "U/ADAPTED V102; user old Milles NORTH village whole map 1000058519.jpg. Central garden, surrounding paths and north exterior river topology observed; service identity and exact bridge/coordinate extraction unresolved.",
   "ground": {
     "tile_size": [
       64,
@@ -95,8 +95,8 @@
     {
       "id": "waterside_bench",
       "asset": "video_reference/objects/bench_video_cutout_02.png",
-      "x": 2104,
-      "y": 1104,
+      "x": 1960,
+      "y": 536,
       "scale": 0.43,
       "district": "waterside",
       "anchor_x": 89.0,
@@ -386,14 +386,14 @@
     {
       "id": "waterside_bridge",
       "asset": "structures/bridges/OBJ_bridge_milles_v100.png",
-      "x": 1880,
-      "y": 1050,
+      "x": 2048,
+      "y": 400,
       "scale": 0.27,
       "anchor_x": 836.0,
       "anchor_y": 470.5,
       "draw": "ground",
       "district": "waterside",
-      "evidence": "PROJECT_RECONSTRUCTION/imagegen; user video12sec motif",
+      "evidence": "ADAPTED north-perimeter crossing; supplied old north-village overview places water on outer northern rim, exact bridge location unresolved",
       "ground_z": 1
     }
   ],

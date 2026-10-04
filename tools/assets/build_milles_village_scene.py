@@ -188,7 +188,7 @@ def path_margin(objects):
                     if beside_river(x,y) or distance_road(x, y) < 38 or any(math.hypot(x-o["x"], (y-o["y"])*1.5) < 48 for o in objects if not o["id"].startswith("shoulder_")):
                         continue
                     art = "vegetation/grass/OBJ_grass_milles_dense.png" if key % 3 == 0 else "vegetation/grass/OBJ_grass_edge_milles_reference.png"
-                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate"][arm]
+                    district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate"][arm % 5]
                     add(objects, f"shoulder_{arm}_{int(d)}_{'l' if side < 0 else 'r'}", art, x, y, .28 + key % 5 * .038, district)
             walked += length
 

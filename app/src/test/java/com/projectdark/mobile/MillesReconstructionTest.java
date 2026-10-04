@@ -35,7 +35,7 @@ public final class MillesReconstructionTest {
     GameView v=fresh();WorldRuntimeAdapter world=TownInteriorTest.field(v,"worldAdapter");
     List<float[]> targets=new ArrayList<>();
     for(MillesDoorAnchors.Door door:MillesDoorAnchors.ALL)targets.add(new float[]{door.approachX,door.approachY});
-    targets.addAll(Arrays.asList(new float[]{992,576},new float[]{256,800},new float[]{800,1136},new float[]{1696,1152},new float[]{1888,1056},new float[]{2080,960},new float[]{800,1536},new float[]{620,560}));
+    targets.addAll(Arrays.asList(new float[]{992,576},new float[]{256,800},new float[]{800,1136},new float[]{1696,1152},new float[]{1856,496},new float[]{2048,400},new float[]{2240,304},new float[]{800,1536},new float[]{620,560}));
     for(float[] target:targets){
       WorldMoveTargetController.Snapshot request=world.requestGroundWorld(target[0],target[1]);
       assertNotEquals("district request "+Arrays.toString(target),WorldMoveTargetController.Status.BLOCKED,request.status);
@@ -52,18 +52,18 @@ public final class MillesReconstructionTest {
       bench|=f.kind==MillesProductionCollision.Kind.BENCH;fountain|=f.kind==MillesProductionCollision.Kind.FOUNTAIN;
     }
     assertTrue(water&&tree&&bench&&fountain);
-    assertTrue("river beside deck blocks standing in water",MillesProductionCollision.blocked(1888,1120,9));
-    assertFalse("bridge center remains navigable",MillesProductionCollision.blocked(1888,1056,9));
-    assertTrue("river flows into north boundary",MillesProductionCollision.blocked(1824,64,9));
-    assertTrue("river continues to south boundary",MillesProductionCollision.blocked(2280,1584,9));
-    assertFalse("southwest bridge landing is dry",MillesProductionCollision.blocked(1696,1152,9));
-    assertFalse("northeast bridge landing is dry",MillesProductionCollision.blocked(2080,960,9));
+    assertTrue("river beside deck blocks standing in water",MillesProductionCollision.blocked(2048,448,9));
+    assertFalse("bridge center remains navigable",MillesProductionCollision.blocked(2048,400,9));
+    assertTrue("river follows north perimeter",MillesProductionCollision.blocked(768,64,9));
+    assertTrue("river continues to east perimeter",MillesProductionCollision.blocked(2288,528,9));
+    assertFalse("southwest bridge landing is dry",MillesProductionCollision.blocked(1856,496,9));
+    assertFalse("northeast bridge landing is dry",MillesProductionCollision.blocked(2240,304,9));
     assertFalse("initial spawn remains clear",MillesProductionCollision.blocked(620,560,9));
   }
 
   @Test public void renderEveryDistrictAndPlayerOnBothSidesOfScenery() throws Exception {
     GameView v=fresh();RuntimeState state=TownInteriorTest.field(v,"state");WorldRuntimeAdapter world=TownInteriorTest.field(v,"worldAdapter");
-    float[][] points={{620,560},{768,592},{320,448},{1120,480},{1540,520},{2032,784},{1888,1056},{400,1136},{1088,1264},{800,1456},{512,480},{512,544}};
+    float[][] points={{620,560},{768,592},{320,448},{1120,480},{1540,520},{2032,784},{2048,400},{400,1136},{1088,1264},{800,1456},{512,480},{512,544}};
     String[] names={"spawn","fountain-park","west-services","bank-garden","church-east","inn","waterside-bridge","south-west","south-garden","south-gate","tree-behind","tree-front"};
     for(int i=0;i<points.length;i++){
       state.player().x=points[i][0];state.player().y=points[i][1];world.snapCameraToPlayer();
