@@ -19,7 +19,7 @@ public final class TownInteriorDef {
  public final List<Prop> props;
  public final int columns,rows,npcU,npcV,customerU,customerV,counterV,counterStart,counterEnd;
  private TownInteriorDef(Kind k,String id,String title,String npc,String outfit,String door){
-  kind=k;mapId=id;this.title=title;npcName=npc;this.outfit=outfit;doorId=door;
+  kind=k;mapId=id;this.title=title;com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(com.projectdark.mobile.NpcIdentity.interiorKey(k.name()));npcName=profile.label();this.outfit=profile.outfit;doorId=door;
   columns=k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
   npcU=k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
   counterV=npcV+2;customerU=npcU;customerV=counterV+1;

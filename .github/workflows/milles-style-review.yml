@@ -7,6 +7,9 @@ name: Milles source style native and APK
     - assets/milles/production/maps/milles_source_style.json
     - assets/milles/production/style_v102/**
     - assets/milles/production/style_v103/**
+    - app/src/main/assets/npc/**
+    - app/src/main/java/com/projectdark/mobile/Npc*.java
+    - app/src/main/java/com/projectdark/mobile/TownNpcRenderer.java
     - assets/milles/production/maps/**
     - app/src/main/java/com/projectdark/mobile/world/**
     - app/src/test/java/com/projectdark/mobile/MillesReconstructionTest.java
@@ -59,6 +62,8 @@ jobs:
       run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
     - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
       run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest --stacktrace
+    - name: Verify every NPC source paper doll and stable quest names
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.NpcAppearanceTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
     - name: Verify retained services and all UI touch routing
       run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --tests com.projectdark.mobile.ModernUiTest --stacktrace
     - name: Build exact source candidate
@@ -70,7 +75,7 @@ jobs:
 
         p=pathlib.Path(''app/build/outputs/apk/debug/app-debug.apk'')
 
-        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':103,''scope'':''V103 restored multi-spire church and complete iron bench legs, retained north-river navigation; exact native bench/style/depth/district/doors/UI and assemble''}
+        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':104,''scope'':''V104 all human NPCs share player paper doll, new source equipment, SSA top100 names; retained Milles church/bench/rivers; exact native bench/style/depth/district/doors/UI and assemble''}
 
         pathlib.Path(''app/build/outputs/apk/debug/BUILD_INFO.json'').write_text(json.dumps(r,indent=2)+''\n'')
 

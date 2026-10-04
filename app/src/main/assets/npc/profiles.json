@@ -1,0 +1,105 @@
+{
+  "classification": "ADAPTED_PRESENTATION_NAMES_AND_OUTFITS",
+  "sourceNames": "https://www.ssa.gov/OACT/babynames/decades/century.html",
+  "profiles": [
+    {
+      "id": "milles_guide_proto",
+      "name": "James",
+      "rank": 1,
+      "role": "마을 경비",
+      "outfit": "mu0000059,mh124,ml255",
+      "weapon": "mw015",
+      "rationale": "마을 경비의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "milles_gate_proto",
+      "name": "William",
+      "rank": 6,
+      "role": "숲길 경비",
+      "outfit": "mu0000057,mh108,ml243",
+      "weapon": "mw015",
+      "rationale": "숲길 경비의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "pote_travel_guide",
+      "name": "Noah",
+      "rank": 60,
+      "role": "숲 여행 안내",
+      "outfit": "mu0000102,mh007,ml240",
+      "weapon": null,
+      "rationale": "숲 여행 안내의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "milles_west_proto",
+      "name": "David",
+      "rank": 5,
+      "role": "서부 주민",
+      "outfit": "mu0000030,mh010,ml243",
+      "weapon": null,
+      "rationale": "서부 주민의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "milles_market_proto",
+      "name": "Matthew",
+      "rank": 13,
+      "role": "시장 상인",
+      "outfit": "mu0000237,mh232,ml240",
+      "weapon": null,
+      "rationale": "시장 상인의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "pote_trail_guide",
+      "name": "Alexander",
+      "rank": 43,
+      "role": "숲길 안내",
+      "outfit": "mu0000365,mh009,ml255",
+      "weapon": null,
+      "rationale": "숲길 안내의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "interior_reagent",
+      "name": "Henry",
+      "rank": 56,
+      "role": "시약상",
+      "outfit": "mu0000117,mh132,ml240",
+      "weapon": "mw024",
+      "rationale": "시약상의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "interior_equipment",
+      "name": "Logan",
+      "rank": 78,
+      "role": "장비상",
+      "outfit": "mu0000055,mh005,ml255",
+      "weapon": null,
+      "rationale": "장비상의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "interior_bank",
+      "name": "Charles",
+      "rank": 11,
+      "role": "은행원",
+      "outfit": "mu0000202,mh006,ml243",
+      "weapon": null,
+      "rationale": "은행원의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "interior_church",
+      "name": "Joseph",
+      "rank": 8,
+      "role": "사제",
+      "outfit": "mu0000210,mh008,ml240",
+      "weapon": "mw026",
+      "rationale": "사제의 역할에 맞는 독립 복장·머리 구성"
+    },
+    {
+      "id": "interior_inn",
+      "name": "Benjamin",
+      "rank": 39,
+      "role": "여관 주인",
+      "outfit": "mu0000025,mh011,ml243",
+      "weapon": null,
+      "rationale": "여관 주인의 역할에 맞는 독립 복장·머리 구성"
+    }
+  ]
+}

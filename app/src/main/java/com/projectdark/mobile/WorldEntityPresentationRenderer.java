@@ -12,7 +12,7 @@ import android.graphics.RectF;
 public final class WorldEntityPresentationRenderer {
   public static final String EVIDENCE="B+ADAPTED";
   public static final String ASSET_STATUS="PENDING_CROP";
-  public static final float NPC_RENDER_SCALE=0.84f;
+  public static final float NPC_RENDER_SCALE=CharacterRenderer.PLAYER_RENDER_SCALE;
   public static final float MONSTER_RENDER_SCALE=0.88f;
   public static final float NPC_SHADOW_SCALE=0.54f;
   public static final float MONSTER_SHADOW_SCALE=0.62f;
@@ -51,6 +51,7 @@ public final class WorldEntityPresentationRenderer {
   }
 
   private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
+  private NpcActorRenderer npcActors;
 
   public WorldEntityPresentationRenderer(){
     if(!WorldEntityPresentationAudit.passes())throw new IllegalStateException(
@@ -60,6 +61,14 @@ public final class WorldEntityPresentationRenderer {
   public void draw(Canvas c,Pose pose){
     if(c==null||pose==null||pose.kind==null||pose.direction==null||pose.state==null)
       throw new IllegalArgumentException("Entity pose requires kind, direction and state");
+
+    if(pose.kind==Kind.NPC){
+      if(npcActors==null)npcActors=new NpcActorRenderer();
+      String ref=pose.visualRef==null?"npc_resident":pose.visualRef;
+      String id=ref.substring(ref.lastIndexOf('/')+1);
+      npcActors.draw(c,id,pose.x,pose.y,pose.direction,pose.state,pose.walkClock);
+      return;
+    }
 
     float actorScale=pose.kind==Kind.NPC?NPC_RENDER_SCALE:MONSTER_RENDER_SCALE;
     float shadowScale=pose.kind==Kind.NPC?NPC_SHADOW_SCALE:MONSTER_SHADOW_SCALE;
@@ -97,34 +106,9 @@ public final class WorldEntityPresentationRenderer {
       c.rotate(left?-68f:68f,8f,pose.kind==Kind.NPC?27f:24f);
       c.scale(1f,.84f,8f,pose.kind==Kind.NPC?27f:24f);
     }
-    if(pose.kind==Kind.NPC)drawNpc(c,pose,frame,idleWave);else drawMonster(c,pose,frame,idleWave);
+    drawMonster(c,pose,frame,idleWave);
     drawEffect(c,pose);
     c.restore();
-  }
-
-  private void drawNpc(Canvas c,Pose pose,int frame,float idleWave){
-    boolean left=isLeft(pose.direction),down=isDown(pose.direction);
-    float side=left?-1f:1f;
-    int step=pose.state==CharacterRenderer.State.WALK?(frame==1?1:frame==3?-1:0):0;
-    int depth=down?step:-step;
-    float breathe=pose.state==CharacterRenderer.State.IDLE?idleWave*.35f:0f;
-    float shift=side*1.35f;
-    boolean hans=pose.visualRef!=null&&pose.visualRef.contains("milles_gate_proto");
-    boolean james=pose.visualRef!=null&&pose.visualRef.contains("milles_guide_proto");
-    int outline=0xff201c1a,skin=pose.hitFlash?0xffffddd0:0xffffc99c,cloth=hans?0xff466448:james?0xff9a7340:0xff8b7763,dark=hans?0xff29372f:james?0xff594126:0xff4f443a;
-
-    rect(c,outline,left?10f:5f,19-depth,left?12f:7f,28-depth);
-    rect(c,dark,left?10.4f:5.4f,20-depth,left?11.6f:6.6f,27-depth);
-    rect(c,outline,left?5f:10f,19+depth,left?7.4f:12.4f,28+depth);
-    rect(c,dark,left?5.4f:10.4f,20+depth,left?7f:12f,27+depth);
-
-    rect(c,outline,4.6f+shift,9f-breathe,12.4f+shift,21f);
-    rect(c,cloth,5.5f+shift,10f-breathe,11.5f+shift,20f);
-    float headShift=side*1.8f;
-    p.setColor(outline);c.drawOval(new RectF(4.2f+headShift,-breathe,13f+headShift,10f-breathe),p);
-    p.setColor(skin);c.drawOval(new RectF(5f+headShift,1f-breathe,12.2f+headShift,9f-breathe),p);
-    p.setColor(hans?0xff392c20:james?0xff6b432d:0xff3c2a21);c.drawRect(3.5f+headShift,-breathe,13.4f+headShift,4.5f-breathe,p);
-    if(down){float eyeX=left?6f:11f;rect(c,0xff27211e,eyeX+headShift,6f-breathe,eyeX+1f+headShift,7f-breathe);}
   }
 
   private void drawMonster(Canvas c,Pose pose,int frame,float idleWave){

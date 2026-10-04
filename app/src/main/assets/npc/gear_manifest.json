@@ -1,0 +1,529 @@
+{
+  "retrieved": "2026-10-04",
+  "classification": "U_SOURCE_WEARABLE_ATLASES",
+  "assetCount": 28,
+  "sources": [
+    {
+      "id": "mu0000030",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000030.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000030.json",
+          "sha256": "a8a5d68eb1917561f538c09e621178461b9fa44d2175a72fe86bbbd5129e0ccc",
+          "bytes": 2344
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000030.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000030.webp",
+          "sha256": "dbc71f75552c9045da6aafbe0b14e6a900a9c227325a14c8823ac324f774f0de",
+          "bytes": 4862
+        }
+      ]
+    },
+    {
+      "id": "mu0000055",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000055.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000055.json",
+          "sha256": "c1c849fe02db8eff040f3d226738540d1e7b6abc5311e8812c451ccdcf937e9e",
+          "bytes": 2896
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000055.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000055.webp",
+          "sha256": "152b2a7443792cf13dd97831fa0a10de2eda148570a80ac750a7360b329b21cc",
+          "bytes": 3946
+        }
+      ]
+    },
+    {
+      "id": "mu0000057",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000057.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000057.json",
+          "sha256": "3561d0d03531061dd21eb866792edb23907167bfd82576f8ab4ac77f3c4e0b38",
+          "bytes": 2896
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000057.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000057.webp",
+          "sha256": "75c491f0188101994f3ef0fff8f95b252ae345cd98db0ce770656ff647ade9c6",
+          "bytes": 3968
+        }
+      ]
+    },
+    {
+      "id": "mu0000117",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000117.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000117.json",
+          "sha256": "5e9064c7a240e7bab3281987cef81aaca769379db743fec85eba863bad989abf",
+          "bytes": 2896
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000117.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000117.webp",
+          "sha256": "0e83d3f6e79db7f1f9a8be4f2a9047172b74d2632db92788bb1e2b17934731cf",
+          "bytes": 3996
+        }
+      ]
+    },
+    {
+      "id": "mu0000210",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000210.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000210.json",
+          "sha256": "0ce2e90c723f1763979f2da5147633ac9e7dc04887cd7a6470e9edd4ca2700b9",
+          "bytes": 2872
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000210.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000210.webp",
+          "sha256": "6bafaf7934013c15c6b88b38aaa702b04015a73754cbc1204f9972c175757a4b",
+          "bytes": 4418
+        }
+      ]
+    },
+    {
+      "id": "mu0000202",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000202.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000202.json",
+          "sha256": "7b6e5f7d2e2f6bcae9aaf452a7bdd012a10ff1fa4fe7e9c9de2603251e02cac7",
+          "bytes": 2340
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000202.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000202.webp",
+          "sha256": "f8f79215d822f37224b9eed0824de7cb84fa637a485a4fa8b1da7745ce470573",
+          "bytes": 4928
+        }
+      ]
+    },
+    {
+      "id": "mu0000059",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000059.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000059.json",
+          "sha256": "b42eb77ca26362062398c1fc4ac1d198ab0ed88aeddbfaab35358532cc7250df",
+          "bytes": 4013
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000059.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000059.webp",
+          "sha256": "b0d6c426e988ae4c8681b14935a2c9b94e498760b5ee0d76cf3254da3b8cc40e",
+          "bytes": 4208
+        }
+      ]
+    },
+    {
+      "id": "mu0000025",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000025.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000025.json",
+          "sha256": "d2f9669e69d959cd096a51d13fa2c1047a50230d03c75da8f198ac59eb5f9e91",
+          "bytes": 2892
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000025.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000025.webp",
+          "sha256": "57cfcbc159defb78226254a0e8f5b3b7dbd8589b03746d1736d5418d049e25b7",
+          "bytes": 4086
+        }
+      ]
+    },
+    {
+      "id": "mu0000102",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000102.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000102.json",
+          "sha256": "171249a85c158c9025704dccab9e8348c77489acc69ddc399255a8be93c646e9",
+          "bytes": 4009
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000102.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000102.webp",
+          "sha256": "f3432db4cb448c8e4f7b2a0ef04f1704490d3a6d56cbf964df27f971e582d600",
+          "bytes": 2954
+        }
+      ]
+    },
+    {
+      "id": "mu0000365",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000365.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000365.json",
+          "sha256": "3960b09eb222d3f8b5910f8c23c31c46b1fe680ca868d4c663088ed03c5b44f6",
+          "bytes": 2309
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000365.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000365.webp",
+          "sha256": "b43f95f78b7799c67cc5110f08debee3f9bc84be36919e3ef4189bcdc6daea28",
+          "bytes": 5164
+        }
+      ]
+    },
+    {
+      "id": "mu0000237",
+      "kind": "armor",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/armor/mu0000237.json",
+          "path": "qa/npc-source-discovery/data/type/armor/mu0000237.json",
+          "sha256": "45894d5b9523b8cb1f88d40ae996040b7f80959ca293f654ceb68e6aab3e214f",
+          "bytes": 2869
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/armor/mu0000237.webp",
+          "path": "qa/npc-source-discovery/atlas/armor/mu0000237.webp",
+          "sha256": "08f38e4832afc2136cfa46eb22e11a863aac2c6d856c6057361b03e16b74607b",
+          "bytes": 5058
+        }
+      ]
+    },
+    {
+      "id": "mh005",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh005.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh005.json",
+          "sha256": "50e6a448934ef356a39c2bf0577a80c4489c912543b6d6e8fea1b2bc3eb660a0",
+          "bytes": 12159
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh005.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh005.webp",
+          "sha256": "9b153451e6bdfecce8babd7eecc06afb2a0a5c65c237d2a082bb4a9273ca0d9a",
+          "bytes": 590
+        }
+      ]
+    },
+    {
+      "id": "mh006",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh006.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh006.json",
+          "sha256": "c733e8ddddfd3aafebbcdb245bb15e3af6a4ba00aac1e73425ea595d2c8ea434",
+          "bytes": 12356
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh006.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh006.webp",
+          "sha256": "869ed6e18cf75ac8329ff916360a9b0802c7486faadfbbfc8930e7e677113919",
+          "bytes": 980
+        }
+      ]
+    },
+    {
+      "id": "mh007",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh007.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh007.json",
+          "sha256": "107b7181dc70a7426f9ce31dc65e4e841cff452eab7c2130d503812b480dfa4d",
+          "bytes": 12192
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh007.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh007.webp",
+          "sha256": "1d60a1b2139cf34a572e75c0b790359444cefcd20281c684a4be5d976b6703b1",
+          "bytes": 370
+        }
+      ]
+    },
+    {
+      "id": "mh008",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh008.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh008.json",
+          "sha256": "a83c2381f180acd735d902137d38800bbf053baee02b9aca1e36125eabf19ba7",
+          "bytes": 12354
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh008.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh008.webp",
+          "sha256": "5105267e98a440b36188c6ed250882c146636a97c8e8d5647b5fb38ef1d550ed",
+          "bytes": 312
+        }
+      ]
+    },
+    {
+      "id": "mh009",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh009.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh009.json",
+          "sha256": "8bddbb7d895380f424a92339b4920917e1de814e3e412671f0eadb5bd1f0460c",
+          "bytes": 12348
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh009.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh009.webp",
+          "sha256": "afd4473708a9c4b4261748b9c9eccf484561c9891552a72be8a0aed998fa0eb1",
+          "bytes": 468
+        }
+      ]
+    },
+    {
+      "id": "mh010",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh010.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh010.json",
+          "sha256": "639cb7753f6466424fdc751b6110316d38b107b5b3523eb69a94da21c477c80f",
+          "bytes": 12254
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh010.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh010.webp",
+          "sha256": "0f25e1da3c00c76bc5a116441c8a23f6491bd2b00e373f9ffdefa92515e053d1",
+          "bytes": 504
+        }
+      ]
+    },
+    {
+      "id": "mh011",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh011.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh011.json",
+          "sha256": "5572c791fde2251f55eb9bbf6a0f16fa6502805e9cea0949d577f3fcfd962a89",
+          "bytes": 12197
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh011.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh011.webp",
+          "sha256": "b8111547168d45dc15324ed147e8cb5d1568bd5b23d6f6d3cb3da68fc74105d4",
+          "bytes": 554
+        }
+      ]
+    },
+    {
+      "id": "mh108",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh108.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh108.json",
+          "sha256": "5829e30c1469c579438198669f5cf6737d99eab1ae2f549f811190e5265ba0d4",
+          "bytes": 12147
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh108.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh108.webp",
+          "sha256": "a077c74269ae0a014a9a7b8e636ec1574929f914c02b670ff140bd41e5787aaa",
+          "bytes": 504
+        }
+      ]
+    },
+    {
+      "id": "mh124",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh124.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh124.json",
+          "sha256": "2d6a226af23279d0a9762d043c42bd716f30961950247207bf71121a78b4b3dd",
+          "bytes": 10450
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh124.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh124.webp",
+          "sha256": "c6c05f6787263b3d750c3cbba8e84f2f1f5b620c4a50022e5d893841cb4a50c7",
+          "bytes": 734
+        }
+      ]
+    },
+    {
+      "id": "mh132",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh132.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh132.json",
+          "sha256": "93c5e18779f4b3ad146ad0e7d5c675e14b35f3f456645ac33a3bad31143afb1b",
+          "bytes": 6781
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh132.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh132.webp",
+          "sha256": "d09ee17af418bec4cdf5285c7e013de8b21093d228bea109e2dddef228b904f6",
+          "bytes": 478
+        }
+      ]
+    },
+    {
+      "id": "mh232",
+      "kind": "hair",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/hair/mh232.json",
+          "path": "qa/npc-source-discovery/data/type/hair/mh232.json",
+          "sha256": "0d999dacc62a5171b1d3a0ad3821926500d7ba310631690368d6ab5a6f5d6f96",
+          "bytes": 6678
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/hair/mh232.webp",
+          "path": "qa/npc-source-discovery/atlas/hair/mh232.webp",
+          "sha256": "b77764d32bade2cfb0503a9d2d224b53792ae7db719b6173e84575a64980fb7d",
+          "bytes": 376
+        }
+      ]
+    },
+    {
+      "id": "ml240",
+      "kind": "shoes",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/shoes/ml240.json",
+          "path": "qa/npc-source-discovery/data/type/shoes/ml240.json",
+          "sha256": "abc45ac2cef7dfaa8663dd5172cf45ae01723c5c8050839b068e0b836419f9fe",
+          "bytes": 12200
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/shoes/ml240.webp",
+          "path": "qa/npc-source-discovery/atlas/shoes/ml240.webp",
+          "sha256": "84d0e568e73c9fa33f64d42c0a22b2e6fa81944e9525c3eb4e685989d7915fab",
+          "bytes": 6158
+        }
+      ]
+    },
+    {
+      "id": "ml243",
+      "kind": "shoes",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/shoes/ml243.json",
+          "path": "qa/npc-source-discovery/data/type/shoes/ml243.json",
+          "sha256": "06993bee67b11bfb3c27e43e1e5e412cd0de76aa81a758344a059d443bd84dfe",
+          "bytes": 12264
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/shoes/ml243.webp",
+          "path": "qa/npc-source-discovery/atlas/shoes/ml243.webp",
+          "sha256": "b10d03bb6e5cb77dfc0824e430f01a121d55de930e8a847726e850393d281e11",
+          "bytes": 4506
+        }
+      ]
+    },
+    {
+      "id": "ml255",
+      "kind": "shoes",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/shoes/ml255.json",
+          "path": "qa/npc-source-discovery/data/type/shoes/ml255.json",
+          "sha256": "a005eb3836613c866608e7abe440d44042ff1a5603ffc3281358ffd7cefdb1bd",
+          "bytes": 5489
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/shoes/ml255.webp",
+          "path": "qa/npc-source-discovery/atlas/shoes/ml255.webp",
+          "sha256": "d4be16beb2542e986e8559b430add448d7920e8396cb7732c1b746ac0c0a62c2",
+          "bytes": 1930
+        }
+      ]
+    },
+    {
+      "id": "mw015",
+      "kind": "weapon",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/weapon/mw015.json",
+          "path": "qa/npc-source-discovery/data/type/weapon/mw015.json",
+          "sha256": "13e44ad564eb87cab980f2631b9dce4ef387db9c80110a24476963dc2fa4b0c0",
+          "bytes": 2505
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/weapon/mw015.webp",
+          "path": "qa/npc-source-discovery/atlas/weapon/mw015.webp",
+          "sha256": "2d43bd19008908d5cb2f17f612bed940ecd6ecafa2f3c5016d07f80a3244b286",
+          "bytes": 1426
+        }
+      ]
+    },
+    {
+      "id": "mw024",
+      "kind": "weapon",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/weapon/mw024.json",
+          "path": "qa/npc-source-discovery/data/type/weapon/mw024.json",
+          "sha256": "f7360cc48a7855fb7498b78ae18ad571d9d0e283e53156500ed175a6b992744a",
+          "bytes": 1325
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/weapon/mw024.webp",
+          "path": "qa/npc-source-discovery/atlas/weapon/mw024.webp",
+          "sha256": "879a8a2821ae5112505a8b1eba6e225bbf07e67ccda14bb4cac1e156cd0898d2",
+          "bytes": 894
+        }
+      ]
+    },
+    {
+      "id": "mw026",
+      "kind": "weapon",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/weapon/mw026.json",
+          "path": "qa/npc-source-discovery/data/type/weapon/mw026.json",
+          "sha256": "58e7d3ae460fc1687f9cd46e2825963c4340d49a4d990c262455a76f66b1e3f3",
+          "bytes": 1356
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/weapon/mw026.webp",
+          "path": "qa/npc-source-discovery/atlas/weapon/mw026.webp",
+          "sha256": "4dc979b99105cb229ef3ff74600edb4b39969ba2370f230a22b2396c1bbb73cc",
+          "bytes": 1138
+        }
+      ]
+    },
+    {
+      "id": "mm001",
+      "kind": "body",
+      "files": [
+        {
+          "url": "https://lod-dressup-2.web.app/data/type/body/mm001.json",
+          "path": "qa/npc-source-discovery/data/type/body/mm001.json",
+          "sha256": "0a4015e03f660bc75fa4f78fab2777e5621e0852498894288c3add54015f5548",
+          "bytes": 12303
+        },
+        {
+          "url": "https://lod-dressup-2.web.app/atlas/body/mm001.webp",
+          "path": "qa/npc-source-discovery/atlas/body/mm001.webp",
+          "sha256": "e71b1a517b5090db6b4e7e7136ac53ea354e001c6c8fe376712cf949ae0db19f",
+          "bytes": 18962
+        }
+      ]
+    }
+  ]
+}

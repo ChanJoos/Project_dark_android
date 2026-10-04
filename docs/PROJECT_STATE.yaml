@@ -1,3 +1,10 @@
+npc_identity_style_v104:
+  implementation: IMPLEMENTED_CANDIDATE
+  build: PENDING
+  native_runtime: PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  contract: docs/NPC_IDENTITY_STYLE_V104_CONTRACT.md
 milles_church_bench_v103:
   implementation: IMPLEMENTED_CANDIDATE
   build: BUILD_VERIFIED

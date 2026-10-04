@@ -29,7 +29,7 @@ public final class RuntimeState {
 
   public static final class Npc {
     public final String id,name,dialogue,assetStatus;public final float x,y;
-    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name=name;this.x=x;this.y=y;this.dialogue=dialogue;this.assetStatus=assetStatus;}
+    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
   }
 
   public static final class Monster {

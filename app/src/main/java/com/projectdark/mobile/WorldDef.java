@@ -24,7 +24,7 @@ public final class WorldDef {
 
   public enum LayerKind { TILE, OBJECT, COLLISION, NPC, MONSTER_SPAWN, PORTAL }
   public static final class LayerStatus { public final LayerKind kind; public final String evidence,status; LayerStatus(LayerKind k,String e,String s){kind=k;evidence=e;status=s;} }
-  public static final class NpcSpawn { public final String id,name,dialogue,assetStatus; public final float x,y; NpcSpawn(String i,String n,float px,float py,String d,String a){id=i;name=n;x=px;y=py;dialogue=d;assetStatus=a;} }
+  public static final class NpcSpawn { public final String id,name,dialogue,assetStatus; public final float x,y; NpcSpawn(String i,String n,float px,float py,String d,String a){id=i;name=NpcIdentity.forId(i).label();x=px;y=py;dialogue=NpcIdentity.text(d);assetStatus=a;} }
   public static final class MonsterSpawn { public final String id,name,assetStatus; public final float x,y; public final int hp; MonsterSpawn(String i,String n,float px,float py,int h,String a){id=i;name=n;x=px;y=py;hp=h;assetStatus=a;} }
   public static final class PortalSpawn { public final String portalId,targetMapId,evidence,status; public final float x,y,radius; PortalSpawn(String i,String t,float px,float py,float r,String e,String s){portalId=i;targetMapId=t;x=px;y=py;radius=r;evidence=e;status=s;} }
   public static final class WorldObject { public final String objectId,visualAssetRef,evidence,status; public final float x,y; WorldObject(String i,String v,float px,float py,String e,String s){objectId=i;visualAssetRef=v;x=px;y=py;evidence=e;status=s;} }
@@ -49,8 +49,8 @@ public final class WorldDef {
     // Keep outdoor NPCs one isometric step northwest of their prior anchors.
     n.add(new NpcSpawn("pote_travel_guide","포테의 숲 이동 안내인",620.0f,560.0f,"포테의 숲으로 이동하시겠습니까?",ASSET_STATUS));
     n.add(new NpcSpawn("milles_gate_proto","한스 · 숲길 경비 [ADAPTED]",758.0f,1434.0f,"남쪽 숲길에 팜팻 흔적이 보여. 준비가 되면 내게 말해.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",253.0f,689.0f,"확장 마을 서부 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1868.0f,804.0f,"확장 동부 시장 탐색 동선 검증용 지점입니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",253.0f,689.0f,"서쪽 길을 따라가면 장비상점과 주민들의 집이 나옵니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1868.0f,804.0f,"시장에서는 필요한 물건을 미리 챙기세요. 강을 건널 때는 다리를 이용하시고요.",ASSET_STATUS));
     npcSpawns=Collections.unmodifiableList(n);
 
     List<MonsterSpawn> m=new ArrayList<>();
