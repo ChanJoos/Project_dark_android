@@ -19,13 +19,13 @@ public class QuestJournalTest {
   Context c;
   @Before public void setup(){c=RuntimeEnvironment.getApplication();for(String name:new String[]{"project_dark_f5m_v1","project_dark_journal_v1","project_dark_skill_test_v1"})c.getSharedPreferences(name,0).edit().clear().commit();F5mSaveStore.install(c);}
   GameView start(){GameView v=new GameView(c);v.layout(0,0,960,540);return v;}
-  List<QuestJournalModel.Row> rows(GameView v)throws Exception{return ((QuestJournalModel)TownInteriorTest.field(v,"questJournalModel")).rows(TownInteriorTest.field(v,"f5mQuest"),TownInteriorTest.field(v,"quest2"),TownInteriorTest.field(v,"inPoteField"));}
+  List<QuestJournalModel.Row> rows(GameView v)throws Exception{RuntimeState s=TownInteriorTest.field(v,"state");return ((QuestJournalModel)TownInteriorTest.field(v,"questJournalModel")).rows(TownInteriorTest.field(v,"f5mQuest"),TownInteriorTest.field(v,"quest2"),TownInteriorTest.field(v,"inPoteField"),s.rpg());}
   static void gesture(GameView v,float x,float y){for(int action:new int[]{MotionEvent.ACTION_DOWN,MotionEvent.ACTION_UP}){MotionEvent e=MotionEvent.obtain(0,1,action,x,y,0);v.onTouchEvent(e);e.recycle();}}
   void capture(GameView v,String name)throws Exception{Bitmap b=Bitmap.createBitmap(v.getWidth(),v.getHeight(),Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));File f=new File("build/reports/device-review/v97-"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}b.recycle();}
   void completeOpening(GameView v)throws Exception{F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");q.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);((GrowthQuest2)TownInteriorTest.field(v,"quest2")).unlockIfPrologueCompleted(q);}
   @Test public void rightIconListsEveryQuestAndAvailableFilterOnlyShowsReceivableQuest()throws Exception{
-    GameView v=start();assertEquals(12,rows(v).size());assertEquals(1,((QuestJournalModel)TownInteriorTest.field(v,"questJournalModel")).available(rows(v)));
-    gesture(v,808,28);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");assertEquals(12,w.visible(rows(v)).size());capture(v,"all-available");
+    GameView v=start();assertEquals(13,rows(v).size());assertEquals(1,((QuestJournalModel)TownInteriorTest.field(v,"questJournalModel")).available(rows(v)));
+    gesture(v,808,28);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");assertEquals(13,w.visible(rows(v)).size());capture(v,"all-available");
     gesture(v,365,124);assertEquals(QuestJournalWindow.Filter.AVAILABLE,w.filter);assertEquals(1,w.visible(rows(v)).size());assertEquals(F5mAdaptedPrologueQuest.QUEST_ID,w.selected(rows(v)).id);capture(v,"available-only");
     gesture(v,540,124);assertTrue(w.visible(rows(v)).isEmpty());capture(v,"empty-progress");gesture(v,818,74);assertFalse((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
   }
