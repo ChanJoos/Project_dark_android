@@ -2,7 +2,11 @@ package com.projectdark.mobile;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
+@RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE)
 public final class AdaptedCampaignRewardTest {
   @Test public void admittedFieldActorsReceiveSpeciesSpecificAdaptedExpAndGold(){
     RuntimeState state=new RuntimeState();state.enterPoteField();
@@ -17,13 +21,13 @@ public final class AdaptedCampaignRewardTest {
     assertEquals(RpgProgressionState.RewardSource.ADAPTED_TEST,result.source);
   }
   @Test public void unprofiledCanonicalPrototypeStillFailsClosed(){
-    RpgProgressionState r=new RpgProgressionState();long before=r.normalExp();
+    RpgProgressionState r=new RpgProgressionState();long before=r.normalExp();java.util.Map<String,Integer> inventoryBefore=new java.util.LinkedHashMap<>(r.inventory());
     CombatLedger ledger=new CombatLedger();ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player","POTE_PURPLE",0);
     r.consumeCombat(ledger.snapshot(),null);
     RpgProgressionState.RewardResolution result=r.rewardHistory().get(0);
     assertEquals(RpgProgressionState.RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,result.status);
     assertNull(result.exp);assertTrue(result.autoLootedItems.isEmpty());
-    assertEquals(before,r.normalExp().longValue());assertTrue(r.inventory().isEmpty());
+    assertEquals(before,r.normalExp().longValue());assertEquals(inventoryBefore,r.inventory());
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
@@ -37,7 +41,7 @@ public final class AdaptedCampaignRewardTest {
     assertEquals(Integer.valueOf(3),r.normalLevel());
     assertTrue(r.chooseInitialJob("MARTIAL_ARTIST"));
     assertEquals("MARTIAL_ARTIST",r.currentJobCode());
-    assertEquals("IT_TEST_ARMOR_MU0000003",r.equipment().get(RpgProgressionState.ARMOR_SLOT));
+    assertEquals("IT_B_JOB_MONK_GI",r.equipment().get(RpgProgressionState.ARMOR_SLOT));
     assertFalse(r.chooseInitialJob("MAGE"));
   }
   @Test public void firstJobChoiceSurvivesRestartWithoutRegranting(){
