@@ -24,3 +24,7 @@ ModernUiTest renders every requested pane and both aspect ratios through the pro
 ## Exact local verification
 
 Source 98e12db0c6f390684b6bb8928534af3f8d9e36a3: local assembleDebug and 66 tests in nine relevant suites PASS; 13 native PNGs captured. Equipment preview overlap fixed and wide pane touch alignment reviewed. Public CI/push blocked by automatic approval review pending explicit user authorization. Phone/user visual acceptance pending. Local APK signer differs from V97; it is not offered as an update. Proof: docs/verification/MODERN_UI_V98_BUILD.json.
+
+## Published exact verification
+
+User approval received. Public source72de0f03/treeb62bff9 exactly matches reviewed local bytes. Actions37168089905 SUCCESS/all configured checks; all13 final native PNGs match reviewed local output. V97 prior952 assets unchanged. Release candidate-v98-72de0f03 anonymous full APK HTTP200/hash matches CI. Version98 built10:37:27KST. CI signing differs from V97, so not an in-place upgrade; user warned to retain existing app/save. Phone/user visual acceptance pending. Full evidence MODERN_UI_V98_BUILD.json.
