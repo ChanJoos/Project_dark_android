@@ -52,4 +52,19 @@ public final class MillesSourceStyleTest {
     assertTrue("palette conversion is wired into actual generated scenery",changed>1000);
     assertEquals(authored.getWidth(),styled.getWidth());assertEquals(authored.getHeight(),styled.getHeight());
   }
+  @Test public void replacementSpritesRetainDoorAndTrunkRegistrationWithoutGlow()throws Exception{
+    AssetManager a=RuntimeEnvironment.getApplication().getAssets();MillesSourceStyle style=new MillesSourceStyle(a);
+    Bitmap old;try(InputStream in=a.open("buildings/BLD_003_weapon_shop.png")){old=BitmapFactory.decodeStream(in);}
+    Bitmap house=style.replacement(old,"buildings/BLD_003_weapon_shop.png");
+    assertEquals(old.getWidth(),house.getWidth());assertEquals(old.getHeight(),house.getHeight());
+    assertTrue("actual source-derived open threshold is opaque",Color.alpha(house.getPixel(97,214))>0);
+    int c=house.getPixel(97,214);assertTrue("threshold is a dark open door",(Color.red(c)+Color.green(c)+Color.blue(c))/3<100);
+    assertEquals("outside cabin is transparent",0,Color.alpha(house.getPixel(0,0)));
+    for(int y=0;y<house.getHeight();y++)for(int x=0;x<house.getWidth();x++){int alpha=Color.alpha(house.getPixel(x,y));assertTrue("no generated glow alpha",alpha==0||alpha==255);}
+    Bitmap treeOld;try(InputStream in=a.open("vegetation/trees/OBJ_tree_milles_willow.png")){treeOld=BitmapFactory.decodeStream(in);}
+    Bitmap tree=style.replacement(treeOld,"vegetation/trees/OBJ_tree_milles_willow.png");
+    assertEquals(0,Color.alpha(tree.getPixel(0,0)));int base=0;for(int y=tree.getHeight()-12;y<tree.getHeight();y++)for(int x=tree.getWidth()/2-12;x<tree.getWidth()/2+12;x++)if(Color.alpha(tree.getPixel(x,y))>0)base++;
+    assertTrue("trunk remains at ground foot anchor",base>10);
+  }
+
 }

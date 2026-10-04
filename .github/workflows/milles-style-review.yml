@@ -5,6 +5,7 @@ name: Milles source style native and APK
     - codex/town-interiors-mobile-v86
     paths:
     - assets/milles/production/maps/milles_source_style.json
+    - assets/milles/production/style_v102/**
     - .github/workflows/milles-style-review.yml
   workflow_dispatch: {}
 permissions:
@@ -50,7 +51,7 @@ jobs:
         '
     - name: Audit reusable Milles map assets and layout
       run: python tools/assets/audit_milles_map_assets.py
-    - name: Verify V101 source metal feet and scenery-only style
+    - name: Verify V102 source metal feet, sprite identity and terrain
       run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
     - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
       run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest --stacktrace
@@ -65,8 +66,7 @@ jobs:
 
         p=pathlib.Path(''app/build/outputs/apk/debug/app-debug.apk'')
 
-        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':101,''scope'':''palette-only
-        change from full-CI 59fea43a; exact native bench/style/depth/district/bridge/doors/UI and assemble''}
+        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':102,''scope'':''V102 river/bridge navigation and source-expression assets; exact native bench/style/depth/district/doors/UI and assemble''}
 
         pathlib.Path(''app/build/outputs/apk/debug/BUILD_INFO.json'').write_text(json.dumps(r,indent=2)+''\n'')
 

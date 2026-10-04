@@ -9,9 +9,11 @@ import org.json.*;
 
 /** Presentation-only source palette. Source sprites and world/domain geometry stay immutable. */
 final class MillesSourceStyle {
+  private final AssetManager assets;
   private final Map<String,int[]> palettes=new HashMap<>();
   private static final float[][] ROOF={{.29f,.03f},{.89f,.23f},{.70f,.61f},{.16f,.32f}};
   MillesSourceStyle(AssetManager assets){
+    this.assets=assets;
     if(assets==null)return;
     try(InputStream in=assets.open("maps/milles_source_style.json")){
       ByteArrayOutputStream bytes=new ByteArrayOutputStream();byte[] buffer=new byte[4096];int read;while((read=in.read(buffer))!=-1)bytes.write(buffer,0,read);
@@ -22,6 +24,38 @@ final class MillesSourceStyle {
         palettes.put(name,colors);
       }
     }catch(Exception e){throw new IllegalStateException("Milles source palette unavailable",e);}
+  }
+  /** One independent authored cabin is intentionally reused; not counted as many unique assets. */
+  Bitmap replacement(Bitmap old,String path){
+    boolean house=path.startsWith("buildings/");boolean tree=path.startsWith("vegetation/trees/");boolean church=path.equals("landmarks/BLD_011_church.png");
+    if(!house&&!tree&&!church)return old;
+    String asset=tree?"style_v102/willow.png":church?"style_v102/church.png":"style_v102/log_cabin.png";
+    Bitmap raw;try(InputStream in=assets.open(asset)){raw=BitmapFactory.decodeStream(in);}catch(Exception e){throw new IllegalStateException("Missing V102 production sprite "+asset,e);}
+    int rw=raw.getWidth(),rh=raw.getHeight();int[] pixels=new int[rw*rh];raw.getPixels(pixels,0,rw,0,0,rw,rh);
+    int left=rw,top=rh,right=0,bottom=0;
+    for(int y=0;y<rh;y++)for(int x=0;x<rw;x++){
+      int i=y*rw+x,c=pixels[i];
+      // Generated semi-transparent colored glows are presentation artifacts, not ground shadows.
+      if((c>>>24)<220)pixels[i]=0;else{pixels[i]=0xff000000|(c&0xffffff);left=Math.min(left,x);top=Math.min(top,y);right=Math.max(right,x+1);bottom=Math.max(bottom,y+1);}
+    }
+    Bitmap clean=Bitmap.createBitmap(rw,rh,Bitmap.Config.ARGB_8888);clean.setPixels(pixels,0,rw,0,0,rw,rh);raw.recycle();
+    int w=old.getWidth(),h=old.getHeight();float doorX=w*.29f,doorY=h*.82f,sourceX=500,sourceY=878;
+    if(tree){w=path.contains("tree_01")?256:180;h=path.contains("tree_01")?200:140;doorX=w*.5f;doorY=h-1;sourceX=840;sourceY=960;}
+    else if(church){doorX=85;doorY=281;sourceX=458;sourceY=914;}
+    else if(path.contains("potion")){doorX=98;doorY=216;}
+    else if(path.contains("weapon")){doorX=97;doorY=216;}
+    else if(path.contains("general")){doorX=91;doorY=216;}
+    else if(path.contains("inn")){doorX=184;doorY=308;}
+    float sx=w*.90f/(right-left),sy=h*.90f/(bottom-top);
+    float dx=doorX-(sourceX-left)*sx,dy=doorY-(sourceY-top)*sy;
+    Bitmap result=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);Paint p=new Paint();p.setFilterBitmap(false);
+    new Canvas(result).drawBitmap(clean,new Rect(left,top,right,bottom),new RectF(dx,dy,dx+(right-left)*sx,dy+(bottom-top)*sy),p);clean.recycle();
+    return result;
+  }
+  static Bitmap quietGrass(Bitmap raw){
+    Bitmap result=Bitmap.createBitmap(raw.getWidth(),raw.getHeight(),Bitmap.Config.ARGB_8888);Paint p=new Paint();
+    p.setColorFilter(new ColorMatrixColorFilter(new float[]{.62f,0,0,0,22, 0,.62f,0,0,35, 0,0,.62f,0,17, 0,0,0,1,0}));
+    new Canvas(result).drawBitmap(raw,0,0,p);return result;
   }
   static String completeBenchSource(String path){
     // 03/04 have already clipped/lost RGB below the seat. Use the complete source in
@@ -46,12 +80,20 @@ final class MillesSourceStyle {
       boolean support=inside(x,y,feet[0])||inside(x,y,feet[1]);
       // Restore the retained source RGB of the iron legs and arms. The earlier key
       // erased every low-luminance pixel, including the metal and its foot contacts.
-      boolean metal=support&&max<115;
+      boolean metal=support&&max<115&&!(g>r*1.55f&&g>b*1.45f);
       boolean grass=hue>65&&hue<170&&delta>max*.22f;
       int a=c>>>24;
       if(metal)a=255;
       else if(grass)a=0;
+      // Remove pale keying fringe only at the silhouette edge, not silver interior pixels.
+      if(a>0&&!support&&max>180&&delta<34&&(x==0||y==0||x==width-1||y==height-1||((raw.getPixel(Math.max(0,x-1),y)>>>24)==0)||((raw.getPixel(Math.min(width-1,x+1),y)>>>24)==0)))a=0;
       pixels[y*width+x]=(a<<24)|(r<<16)|(g<<8)|b;
+    }
+    boolean[] seen=new boolean[pixels.length];int[] queue=new int[pixels.length];
+    for(int i=0;i<pixels.length;i++){
+      if(seen[i]||(pixels[i]>>>24)==0)continue;int n=1;queue[0]=i;seen[i]=true;
+      for(int q=0;q<n;q++){int v=queue[q],vx=v%width,vy=v/width;for(int yy=Math.max(0,vy-1);yy<=Math.min(height-1,vy+1);yy++)for(int xx=Math.max(0,vx-1);xx<=Math.min(width-1,vx+1);xx++){int k=yy*width+xx;if(!seen[k]&&(pixels[k]>>>24)>0){seen[k]=true;queue[n++]=k;}}}
+      if(n<7)for(int q=0;q<n;q++)pixels[queue[q]]=0;
     }
     result.setPixels(pixels,0,width,0,0,width,height);
     return result;

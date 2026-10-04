@@ -1,3 +1,10 @@
+milles_river_style_v102:
+  implementation: IMPLEMENTED_CANDIDATE
+  exact_native_build: PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  source_contract: docs/MILLES_RIVER_STYLE_V102_CONTRACT.md
+  governing_inputs: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, assets/milles/VISUAL_CONSTITUTION.md, master/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md]
 milles_source_style_v101:
   implementation: IMPLEMENTED_CANDIDATE
   source_commit: 87e8915ab785734bdfc7d594e571d13e37f75c69
@@ -14,7 +21,7 @@ milles_source_style_v101:
   in_place_upgrade: false
   final_save: SUCCEEDED_BOTH_RECEIPTS
   physical_phone: PENDING
-  user_visual: PENDING
+  user_visual: USER_VISUAL_REJECTED
   original_identity: ADAPTED_NOT_PIXEL_IDENTICAL
   final_general_ci: IN_PROGRESS_37194828669
   evidence: docs/verification/MILLES_SOURCE_STYLE_V101_BUILD.json

@@ -1,0 +1,44 @@
+{
+  "version": 102,
+  "single_object_assets": true,
+  "sprite_sheets_used": false,
+  "reuse": "One cabin and one willow intentionally reused. Not claimed as unique assets per placement.",
+  "assets": [
+    {
+      "file": "log_cabin.png",
+      "sha256": "cfd28ac6c1dab0a42a79625ae4b6a1b5ad148458e7c3458c8a51de78051ecea8",
+      "bytes": 1722788,
+      "evidence": "ADAPTED/imagegen",
+      "status": "CANDIDATE_USER_VISUAL_PENDING",
+      "source_reference": "video_reference/objects/milles_buildings_reference.png",
+      "runtime_processing": "Native alpha220 cutoff, registered door/trunk, nearest sampling. grass: cached low-contrast material transform."
+    },
+    {
+      "file": "willow.png",
+      "sha256": "b93daac74abf9a517b37fe9f8544df8d14ab2d65abf7c1e827503e452cf0945c",
+      "bytes": 1644983,
+      "evidence": "ADAPTED/imagegen",
+      "status": "CANDIDATE_USER_VISUAL_PENDING",
+      "source_reference": "video_reference/objects/milles_buildings_reference.png",
+      "runtime_processing": "Native alpha220 cutoff, registered door/trunk, nearest sampling. grass: cached low-contrast material transform."
+    },
+    {
+      "file": "church.png",
+      "sha256": "72b9d9f72139011aa0cd3e22e13d9633c68cb8f2a4c32cbf507aa6091f9f58e1",
+      "bytes": 1646554,
+      "evidence": "ADAPTED/imagegen",
+      "status": "CANDIDATE_USER_VISUAL_PENDING",
+      "source_reference": "video_reference/objects/milles_buildings_reference.png",
+      "runtime_processing": "Native alpha220 cutoff, registered door/trunk, nearest sampling. grass: cached low-contrast material transform."
+    },
+    {
+      "file": "grass.png",
+      "sha256": "abf92546abdb4c74dd6ea12b64a696de1f25c4a1b08cf6211f96163dac028f7a",
+      "bytes": 2146959,
+      "evidence": "ADAPTED/imagegen",
+      "status": "CANDIDATE_USER_VISUAL_PENDING",
+      "source_reference": "video_reference/objects/milles_buildings_reference.png",
+      "runtime_processing": "Native alpha220 cutoff, registered door/trunk, nearest sampling. grass: cached low-contrast material transform."
+    }
+  ]
+}

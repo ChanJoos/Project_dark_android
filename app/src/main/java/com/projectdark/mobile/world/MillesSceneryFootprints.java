@@ -41,7 +41,6 @@ final class MillesSceneryFootprints {
     out.add(new MillesProductionCollision.Footprint("civic_park_tree_4", MillesProductionCollision.Kind.TREE, 492.0f, 701.0f, 508.0f, 711.0f));
     out.add(new MillesProductionCollision.Footprint("civic_park_tree_5", MillesProductionCollision.Kind.TREE, 586.0f, 789.0f, 602.0f, 799.0f));
     out.add(new MillesProductionCollision.Footprint("east_garden_tree_1", MillesProductionCollision.Kind.TREE, 1296.0f, 225.0f, 1312.0f, 235.0f));
-    out.add(new MillesProductionCollision.Footprint("east_garden_tree_2", MillesProductionCollision.Kind.TREE, 1722.0f, 319.0f, 1738.0f, 329.0f));
     out.add(new MillesProductionCollision.Footprint("east_garden_tree_4", MillesProductionCollision.Kind.TREE, 1382.0f, 601.0f, 1398.0f, 611.0f));
     out.add(new MillesProductionCollision.Footprint("east_garden_tree_5", MillesProductionCollision.Kind.TREE, 1642.0f, 615.0f, 1658.0f, 625.0f));
     out.add(new MillesProductionCollision.Footprint("south_grove_tree_0", MillesProductionCollision.Kind.TREE, 238.0f, 1345.0f, 254.0f, 1355.0f));
@@ -50,9 +49,7 @@ final class MillesSceneryFootprints {
     out.add(new MillesProductionCollision.Footprint("south_grove_tree_3", MillesProductionCollision.Kind.TREE, 1152.0f, 1425.0f, 1168.0f, 1435.0f));
     out.add(new MillesProductionCollision.Footprint("south_grove_tree_4", MillesProductionCollision.Kind.TREE, 1342.0f, 1315.0f, 1358.0f, 1325.0f));
     out.add(new MillesProductionCollision.Footprint("south_grove_tree_5", MillesProductionCollision.Kind.TREE, 1542.0f, 1465.0f, 1558.0f, 1475.0f));
-    out.add(new MillesProductionCollision.Footprint("waterside_tree_0", MillesProductionCollision.Kind.TREE, 1722.0f, 955.0f, 1738.0f, 965.0f));
     out.add(new MillesProductionCollision.Footprint("waterside_tree_1", MillesProductionCollision.Kind.TREE, 2142.0f, 1003.0f, 2158.0f, 1013.0f));
-    out.add(new MillesProductionCollision.Footprint("waterside_tree_2", MillesProductionCollision.Kind.TREE, 2142.0f, 1315.0f, 2158.0f, 1325.0f));
     out.add(new MillesProductionCollision.Footprint("waterside_tree_3", MillesProductionCollision.Kind.TREE, 1872.0f, 1425.0f, 1888.0f, 1435.0f));
     out.add(new MillesProductionCollision.Footprint("waterside_tree_4", MillesProductionCollision.Kind.TREE, 2262.0f, 1215.0f, 2278.0f, 1225.0f));
     out.add(new MillesProductionCollision.Footprint("west_edge_tree_0", MillesProductionCollision.Kind.TREE, -348.0f, 683.0f, -332.0f, 693.0f));
@@ -72,42 +69,7 @@ final class MillesSceneryFootprints {
     out.add(new MillesProductionCollision.Footprint("east_edge_tree_0", MillesProductionCollision.Kind.TREE, 2152.0f, 411.0f, 2168.0f, 421.0f));
     out.add(new MillesProductionCollision.Footprint("east_edge_tree_1", MillesProductionCollision.Kind.TREE, 2224.0f, 507.0f, 2240.0f, 517.0f));
     out.add(new MillesProductionCollision.Footprint("east_edge_tree_2", MillesProductionCollision.Kind.TREE, 2272.0f, 939.0f, 2288.0f, 949.0f));
-    out.add(new MillesProductionCollision.Footprint("east_edge_tree_3", MillesProductionCollision.Kind.TREE, 2208.0f, 1435.0f, 2224.0f, 1445.0f));
     out.add(new MillesProductionCollision.Footprint("east_edge_tree_4", MillesProductionCollision.Kind.TREE, 2016.0f, 1491.0f, 2032.0f, 1501.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1792_976", MillesProductionCollision.Kind.LAKE, 1782.0f, 970.0f, 1802.0f, 982.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1856_976", MillesProductionCollision.Kind.LAKE, 1846.0f, 970.0f, 1866.0f, 982.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1920_976", MillesProductionCollision.Kind.LAKE, 1910.0f, 970.0f, 1930.0f, 982.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1760_992", MillesProductionCollision.Kind.LAKE, 1750.0f, 986.0f, 1770.0f, 998.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1824_992", MillesProductionCollision.Kind.LAKE, 1814.0f, 986.0f, 1834.0f, 998.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1888_992", MillesProductionCollision.Kind.LAKE, 1878.0f, 986.0f, 1898.0f, 998.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1728_1008", MillesProductionCollision.Kind.LAKE, 1718.0f, 1002.0f, 1738.0f, 1014.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1792_1008", MillesProductionCollision.Kind.LAKE, 1782.0f, 1002.0f, 1802.0f, 1014.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1856_1008", MillesProductionCollision.Kind.LAKE, 1846.0f, 1002.0f, 1866.0f, 1014.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1760_1024", MillesProductionCollision.Kind.LAKE, 1750.0f, 1018.0f, 1770.0f, 1030.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1824_1024", MillesProductionCollision.Kind.LAKE, 1814.0f, 1018.0f, 1834.0f, 1030.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_2016_1024", MillesProductionCollision.Kind.LAKE, 2006.0f, 1018.0f, 2026.0f, 1030.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1728_1040", MillesProductionCollision.Kind.LAKE, 1718.0f, 1034.0f, 1738.0f, 1046.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1792_1040", MillesProductionCollision.Kind.LAKE, 1782.0f, 1034.0f, 1802.0f, 1046.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1984_1040", MillesProductionCollision.Kind.LAKE, 1974.0f, 1034.0f, 1994.0f, 1046.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_2048_1040", MillesProductionCollision.Kind.LAKE, 2038.0f, 1034.0f, 2058.0f, 1046.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1760_1056", MillesProductionCollision.Kind.LAKE, 1750.0f, 1050.0f, 1770.0f, 1062.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1952_1056", MillesProductionCollision.Kind.LAKE, 1942.0f, 1050.0f, 1962.0f, 1062.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_2016_1056", MillesProductionCollision.Kind.LAKE, 2006.0f, 1050.0f, 2026.0f, 1062.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1728_1072", MillesProductionCollision.Kind.LAKE, 1718.0f, 1066.0f, 1738.0f, 1078.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1920_1072", MillesProductionCollision.Kind.LAKE, 1910.0f, 1066.0f, 1930.0f, 1078.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1984_1072", MillesProductionCollision.Kind.LAKE, 1974.0f, 1066.0f, 1994.0f, 1078.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_2048_1072", MillesProductionCollision.Kind.LAKE, 2038.0f, 1066.0f, 2058.0f, 1078.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1888_1088", MillesProductionCollision.Kind.LAKE, 1878.0f, 1082.0f, 1898.0f, 1094.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1952_1088", MillesProductionCollision.Kind.LAKE, 1942.0f, 1082.0f, 1962.0f, 1094.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_2016_1088", MillesProductionCollision.Kind.LAKE, 2006.0f, 1082.0f, 2026.0f, 1094.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1856_1104", MillesProductionCollision.Kind.LAKE, 1846.0f, 1098.0f, 1866.0f, 1110.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1920_1104", MillesProductionCollision.Kind.LAKE, 1910.0f, 1098.0f, 1930.0f, 1110.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1984_1104", MillesProductionCollision.Kind.LAKE, 1974.0f, 1098.0f, 1994.0f, 1110.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1824_1120", MillesProductionCollision.Kind.LAKE, 1814.0f, 1114.0f, 1834.0f, 1126.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1888_1120", MillesProductionCollision.Kind.LAKE, 1878.0f, 1114.0f, 1898.0f, 1126.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1952_1120", MillesProductionCollision.Kind.LAKE, 1942.0f, 1114.0f, 1962.0f, 1126.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1856_1136", MillesProductionCollision.Kind.LAKE, 1846.0f, 1130.0f, 1866.0f, 1142.0f));
-    out.add(new MillesProductionCollision.Footprint("pond_water_1920_1136", MillesProductionCollision.Kind.LAKE, 1910.0f, 1130.0f, 1930.0f, 1142.0f));
   }
   private MillesSceneryFootprints(){}
 }

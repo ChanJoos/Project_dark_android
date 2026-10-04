@@ -1,7 +1,7 @@
 {
   "schema": "project-dark-milles-map-v1",
   "map_id": "milles_village_adapted",
-  "evidence": "ADAPTED/V100; user Milles video 20260924 and Nexon-hosted community old-map post136184; compact relational reconstruction, not exact original coordinates",
+  "evidence": "ADAPTED/V102; source expression correction and traversable river/bridge; not exact original world coordinates",
   "ground": {
     "tile_size": [
       64,
@@ -264,7 +264,9 @@
       "district": "waterside",
       "draw": "ground",
       "anchor_x": 226.5,
-      "anchor_y": 136.5
+      "anchor_y": 136.5,
+      "visible": false,
+      "source": "V102 legacy pond retired; MillesRiverGeometry draws the continuous river"
     },
     {
       "id": "potion_shop_portal",

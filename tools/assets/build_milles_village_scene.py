@@ -24,13 +24,17 @@ road_source = TILE_JAVA.read_text().split("private static final float[][][] PATH
 PATHS = [[(float(x), float(y)) for x, y in re.findall(r"\{([-\d.]+),([-\d.]+)\}", line)]
          for line in road_source.splitlines() if re.search(r"\{[-\d.]+,[-\d.]+\}", line)]
 
+RIVER_JAVA = ROOT / "app/src/main/java/com/projectdark/mobile/world/MillesRiverGeometry.java"
+river_source = RIVER_JAVA.read_text().split("CENTER={", 1)[1].split(";", 1)[0]
+RIVER = [(float(x),float(y)) for x,y in re.findall(r"\{([-\d.]+),([-\d.]+)\}",river_source)]
+
 
 BUILDINGS = [
     ("west_armorer", "buildings/BLD_004_armor_shop.png", 60, 700, .86, "west_crafts"),
     ("south_flower_shop", "buildings/BLD_007_flower_shop.png", 400, 1088, .92, "south_residences"),
     ("south_library", "buildings/BLD_008_library.png", 1120, 1050, .92, "south_residences"),
     ("east_guild", "buildings/BLD_009_guild.png", 1530, 1170, .92, "east_residences"),
-    ("north_healer", "buildings/BLD_010_healer.png", 1880, 320, .89, "east_quiet"),
+    ("north_healer", "buildings/BLD_010_healer.png", 2024, 320, .89, "east_quiet"),
 ]
 
 # A pair of small gardens reuses the ten-piece open-gate footprint of the
@@ -109,6 +113,10 @@ def distance_road(x, y):
     return min(distance_segment(x, y, *a, *b) for path in PATHS for a, b in zip(path, path[1:]))
 
 
+def beside_river(x,y):
+    return min(distance_segment(x,y,*a,*b) for a,b in zip(RIVER,RIVER[1:])) < 90
+
+
 def within_building(x, y, margin=0):
     bases = [(320, 420), (760, 300), (1120, 360), (1540, 455), (2035.2, 766.4)]
     bases += [(x, y) for _, _, x, y, _, _ in BUILDINGS]
@@ -177,7 +185,7 @@ def path_margin(objects):
                         continue
                     if not (-475 < x < 2260 and 90 < y < 1570):
                         continue
-                    if distance_road(x, y) < 38 or any(math.hypot(x-o["x"], (y-o["y"])*1.5) < 48 for o in objects if not o["id"].startswith("shoulder_")):
+                    if beside_river(x,y) or distance_road(x, y) < 38 or any(math.hypot(x-o["x"], (y-o["y"])*1.5) < 48 for o in objects if not o["id"].startswith("shoulder_")):
                         continue
                     art = "vegetation/grass/OBJ_grass_milles_dense.png" if key % 3 == 0 else "vegetation/grass/OBJ_grass_edge_milles_reference.png"
                     district = ["west_crafts", "north_services", "east_market", "waterside", "south_gate"][arm]
@@ -205,12 +213,6 @@ def scenery_contacts(objects):
         else:
             continue
         contacts.append((item["id"], kind, x-w/2, y-h/2, x+w/2, y+h/2))
-    # Water follows an ellipse. The bridge corridor is the measured SW↔NE deck axis.
-    for y in range(896, 1217, 16):
-        for x in range(1632+((y//16)%2)*32, 2145, 64):
-            dx, dy = x-1880, y-1050
-            if (dx/193)**2+(dy/95)**2 < .88 and abs(dy+.5*dx)>34:
-                contacts.append((f"pond_water_{x}_{y}", "LAKE", x-10, y-6, x+10, y+6))
     rows = [f'    out.add(new MillesProductionCollision.Footprint("{id}", MillesProductionCollision.Kind.{kind}, {l:.1f}f, {t:.1f}f, {rr:.1f}f, {b:.1f}f));' for id,kind,l,t,rr,b in contacts]
     source = """package com.projectdark.mobile.world;
 import java.util.List;
@@ -231,13 +233,13 @@ def main():
     gardens(objects)
     for zone, locations in GROVES:
         for i, (x, y) in enumerate(locations):
-            if within_building(x, y, 8) or distance_road(x, y) < 66:
+            if within_building(x, y, 8) or distance_road(x, y) < 66 or beside_river(x,y):
                 continue
             tree = TREE_ART[(i + len(zone)) % len(TREE_ART)]
             add(objects, f"{zone}_tree_{i}", tree, x, y, .90 if "willow" in tree else (.55 if "tree_01" in tree else .88), zone)
             for k, (dx, dy) in enumerate(((-45, 28), (54, 23))):
                 bx, by = x + dx, y + dy
-                if within_building(bx, by) or distance_road(bx, by) < 48 or any(math.hypot(bx-o["x"], (by-o["y"])*1.5) < 38 for o in objects):
+                if within_building(bx, by) or beside_river(bx,by) or distance_road(bx, by) < 48 or any(math.hypot(bx-o["x"], (by-o["y"])*1.5) < 38 for o in objects):
                     continue
                 add(objects, f"{zone}_understory_{i}_{k}", BUSH_ART[(i + k) % 3], bx, by, .27 + (i % 3) * .03, zone)
     path_margin(objects)

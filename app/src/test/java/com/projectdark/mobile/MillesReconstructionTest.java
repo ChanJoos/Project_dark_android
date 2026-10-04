@@ -52,8 +52,12 @@ public final class MillesReconstructionTest {
       bench|=f.kind==MillesProductionCollision.Kind.BENCH;fountain|=f.kind==MillesProductionCollision.Kind.FOUNTAIN;
     }
     assertTrue(water&&tree&&bench&&fountain);
-    assertTrue("pond beside deck blocks standing in water",MillesProductionCollision.blocked(1888,1120,9));
+    assertTrue("river beside deck blocks standing in water",MillesProductionCollision.blocked(1888,1120,9));
     assertFalse("bridge center remains navigable",MillesProductionCollision.blocked(1888,1056,9));
+    assertTrue("river flows into north boundary",MillesProductionCollision.blocked(1824,64,9));
+    assertTrue("river continues to south boundary",MillesProductionCollision.blocked(2280,1584,9));
+    assertFalse("southwest bridge landing is dry",MillesProductionCollision.blocked(1696,1152,9));
+    assertFalse("northeast bridge landing is dry",MillesProductionCollision.blocked(2080,960,9));
     assertFalse("initial spawn remains clear",MillesProductionCollision.blocked(620,560,9));
   }
 

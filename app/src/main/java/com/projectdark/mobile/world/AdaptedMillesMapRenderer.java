@@ -32,7 +32,7 @@ public final class AdaptedMillesMapRenderer {
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   private static final float TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
-  private static final String GRASS_SURFACE="video_reference/objects/milles_buildings_reference.png";
+  private static final String GRASS_SURFACE="style_v102/grass.png";
   private static final String SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png";
 
   private static final class SpritePlacement {
@@ -89,6 +89,7 @@ public final class AdaptedMillesMapRenderer {
     // visible checker grid at every grass/soil boundary.
     drawContinuousGrass(canvas,world);
     drawConnectedSoil(canvas,world);
+    drawRiver(canvas,world);
     for(SpritePlacement placement:groundPlacements)drawPlacement(canvas,world,placement);
     List<DepthDraw> ordered=actors==null?new ArrayList<>():new ArrayList<>(actors);
     ordered.sort(Comparator.comparingDouble(value->value.footY));
@@ -153,6 +154,22 @@ public final class AdaptedMillesMapRenderer {
     drawRoadCaps(canvas,soilPaint,21.5f);
     canvas.restore();
     soilPaint.setShader(null);
+  }
+
+  private void drawRiver(Canvas canvas,WorldRuntimeAdapter world){
+    Path channel=MillesRiverGeometry.centerline();Paint p=new Paint();p.setAntiAlias(false);p.setStyle(Paint.Style.STROKE);p.setStrokeJoin(Paint.Join.ROUND);p.setStrokeCap(Paint.Cap.ROUND);
+    canvas.save();canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
+    p.setColor(0xff4b563a);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2+10);canvas.drawPath(channel,p);
+    p.setColor(0xff71694c);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2);canvas.drawPath(channel,p);
+    p.setColor(0xff234e59);p.setStrokeWidth(MillesRiverGeometry.HALF_WIDTH*2);canvas.drawPath(channel,p);
+    p.setColor(0xff326570);p.setStrokeWidth((MillesRiverGeometry.HALF_WIDTH-8)*2);canvas.drawPath(channel,p);
+    // Quiet pixel ripples follow the actual water mask; never extend onto bank/deck.
+    p.setStyle(Paint.Style.FILL);p.setColor(0xff51808a);
+    for(int y=48;y<1600;y+=16)for(int x=1632;x<2304;x+=32){
+      if(MillesRiverGeometry.distance(x,y)>MillesRiverGeometry.HALF_WIDTH-14||MillesRiverGeometry.bridgeDeck(x,y))continue;
+      int k=(x*17+y*13)&31;if(k>11)continue;canvas.drawRect(x,y,x+6+(k%3)*3,y+1,p);
+    }
+    canvas.restore();
   }
 
   private static BitmapShader sourceMaterial(Bitmap image){
@@ -240,7 +257,8 @@ public final class AdaptedMillesMapRenderer {
     if(assets!=null)try(InputStream in=assets.open(source)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;options.inPremultiplied=!source.contains("bench_video_cutout");image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
     // A clean material-only crop, excluding the building, actor, road and lamp.
     // The tiny mirrored swatch created conspicuous repeated circular patterns.
-    if(image!=null&&path.equals(GRASS_SURFACE))image=Bitmap.createBitmap(image,65,205,435,165);
+    if(image!=null&&path.equals(GRASS_SURFACE))image=MillesSourceStyle.quietGrass(image);
+    else if(image!=null)image=sourceStyle.replacement(image,path);
     if(image!=null){image=source.contains("bench_video_cutout")?MillesSourceStyle.bench(image,source):sourceStyle.scenery(image,path);}
     bitmapCache.put(path,image);return image;
   }
