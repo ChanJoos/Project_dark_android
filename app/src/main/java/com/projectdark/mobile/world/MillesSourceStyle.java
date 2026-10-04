@@ -72,14 +72,14 @@ final class MillesSourceStyle {
       if((c>>>24)<220)pixels[k]=0;
       else{pixels[k]=0xff000000|(c&0xffffff);left=Math.min(left,x);top=Math.min(top,y);right=Math.max(right,x+1);bottom=Math.max(bottom,y+1);}
     }
-    raw.setPixels(pixels,0,w,0,0,w,h);
+    Bitmap clean=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);clean.setPixels(pixels,0,w,0,0,w,h);raw.recycle();
     Bitmap result=Bitmap.createBitmap(180,180,Bitmap.Config.ARGB_8888);
     float scale=Math.min(176f/(right-left),164f/(bottom-top));
     float width=(right-left)*scale,height=(bottom-top)*scale;
     Canvas canvas=new Canvas(result);Paint pixel=new Paint();pixel.setFilterBitmap(false);
     if(path.contains("_02")||path.contains("_04")){canvas.translate(180,0);canvas.scale(-1,1);}
-    canvas.drawBitmap(raw,new Rect(left,top,right,bottom),new RectF(90-width/2,172-height,90+width/2,172),pixel);
-    raw.recycle();
+    canvas.drawBitmap(clean,new Rect(left,top,right,bottom),new RectF(90-width/2,172-height,90+width/2,172),pixel);
+    clean.recycle();
     int[] registered=new int[180*180];result.getPixels(registered,0,180,0,0,180,180);
     for(int i=0;i<registered.length;i++)registered[i]=(registered[i]>>>24)<128?0:0xff000000|(registered[i]&0xffffff);
     result.setPixels(registered,0,180,0,0,180,180);return result;
