@@ -70,5 +70,14 @@ public final class MillesReconstructionTest {
     Bitmap map=Bitmap.createBitmap(2816,1552,Bitmap.Config.ARGB_8888);
     new AdaptedMillesMapRenderer().draw(new Canvas(map),overview);write(map,"overview");map.recycle();
   }
-  private static void write(Bitmap b,String name)throws IOException{File f=new File("build/reports/device-review/v100-"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream o=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,o));}}
+  private static void write(Bitmap b,String name)throws IOException{
+    File f=new File("build/reports/device-review/v100-"+name+".png");f.getParentFile().mkdirs();
+    ByteArrayOutputStream encoded=new ByteArrayOutputStream();assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,encoded));
+    byte[] bytes=encoded.toByteArray(),end={0,0,0,0,73,69,78,68,(byte)174,66,96,(byte)130};
+    assertTrue("complete PNG stream",bytes.length>end.length);
+    assertArrayEquals("PNG IEND is intact",end,Arrays.copyOfRange(bytes,bytes.length-end.length,bytes.length));
+    java.nio.file.Path temporary=java.nio.file.Files.createTempFile(f.getParentFile().toPath(),"milles-render-",".tmp");
+    java.nio.file.Files.write(temporary,bytes);java.nio.file.Files.move(temporary,f.toPath(),java.nio.file.StandardCopyOption.REPLACE_EXISTING,java.nio.file.StandardCopyOption.ATOMIC_MOVE);
+    assertArrayEquals("saved review bytes equal complete native encoding",bytes,java.nio.file.Files.readAllBytes(f.toPath()));
+  }
 }

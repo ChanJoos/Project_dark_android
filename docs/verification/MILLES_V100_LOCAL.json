@@ -1,0 +1,35 @@
+{
+  "status": "LOCAL_NATIVE_VERIFIED",
+  "captures": {
+    "v100-bank-garden.png": "656c4d5c3d38132fcf63672a83f08596bb278646bc49ac263c256e8efdc4ede3",
+    "v100-church-east.png": "908b93ae352984591024dea7c0acb7f7cdffa6b29ca15435c5166e55d45760a3",
+    "v100-depth-behind.png": "3cef43dc7eed08d8d3c0eb1d90ae24559443dcfc68ca31a67dcfc05b99cfa5e2",
+    "v100-depth-front.png": "2cce6c042d844272dcaf085ee2108dcd287760a58da6a212120a9e695ebf0c60",
+    "v100-fountain-park.png": "1cf8bbd89779800680bf52cfddc9a685e75f2f136a488576c60afc025c497dbf",
+    "v100-inn.png": "7c7199bb58b92c56d2e8f39e8c371712cecdaded0ce0c1db4dd4046014edbd6f",
+    "v100-overview.png": "6d960bcd35cbcfecdc9965028bfa55fc1dd500795e53e70fa15d24f5b4879103",
+    "v100-south-garden.png": "2bff4653506fe70a255a1b0aa4cdf2713878f06dbb72c6a856e057faaf0e8d48",
+    "v100-south-gate.png": "bb71adb62959b783597e59cb761f1a9fad483451a435dc1d329746f132c94648",
+    "v100-south-west.png": "ef6007f3f9657ab2dd0499d0602a9dea5464140f237a2cba9fb0c7ad89f4956c",
+    "v100-spawn.png": "6e395ab2a6f859df65380e023595a865e6f66ab5116d37a73dc393dd67451caa",
+    "v100-tree-behind.png": "dbe24eadcebe195743acabdd3bcfccb33e9cea888ed749a72f204bec8c938ffa",
+    "v100-tree-front.png": "951bebbd9e0f6e516910631971c185bf183d50fb795da9e4f501e814794e88ea",
+    "v100-waterside-bridge.png": "941f7a7e12798b68cbf0bb4441c1bafe846053d2a35d0c0cf93ee834ad93f0b5",
+    "v100-west-services.png": "660cf4be956b487221971c560948447aed04941e154a8a2c14a6061639c9754a",
+    "v100-wide-tree.png": "d9abbcb5eb1df4c9e3cd4dd7fe99b5d26e6507fea5c794b1f322c029c02a2a91"
+  },
+  "capture_count": 16,
+  "focused_suites": {
+    "MillesReconstructionTest": 4,
+    "MillesDistrictReviewTest": 1,
+    "TownInteriorTest": 8,
+    "QuestJournalTest": 9,
+    "ModernUiTest": 3
+  },
+  "last_exact_runtime_suites": "Milles4+Town8 PASS after one marker per door; Milles4 PASS after atomic complete PNG write guard",
+  "full_ci": "PENDING",
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "local_assemble": "STOPPED; no local APK delivery",
+  "source_parent": "eadbecbe96be2fee677486d553ca84c595ebd52f"
+}
