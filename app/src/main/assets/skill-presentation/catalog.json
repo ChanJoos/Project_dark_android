@@ -1,5 +1,5 @@
 {
-  "revision": "PROJECT_ADAPTED_SKILL_PRESENTATION_V1",
+  "revision": "USER_MARTIAL_KICK_RELEASE_V82",
   "profiles": {
     "CAST": {
       "group": "f",
@@ -12,6 +12,72 @@
         3,
         3,
         2
+      ]
+    },
+    "MARTIAL_CAST": {
+      "group": "f",
+      "back": [
+        0,
+        1,
+        0
+      ],
+      "front": [
+        2,
+        3,
+        2
+      ],
+      "phases": [
+        0,
+        0.2,
+        0.8
+      ]
+    },
+    "CHARGE_CAST": {
+      "group": "f",
+      "back": [
+        0,
+        1,
+        0
+      ],
+      "front": [
+        2,
+        3,
+        2
+      ],
+      "phases": [
+        0,
+        0.3333333333333333,
+        0.8
+      ]
+    },
+    "TRIPLE_PUNCH": {
+      "group": "e",
+      "back": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "front": [
+        2,
+        3,
+        2,
+        3,
+        2,
+        3,
+        2
+      ],
+      "phases": [
+        0,
+        0.3333333333333333,
+        0.44,
+        0.55,
+        0.66,
+        0.77,
+        0.88
       ]
     },
     "PUNCH": {
@@ -54,29 +120,87 @@
       ]
     },
     "FRONT_KICK": {
-      "group": "c",
+      "group": "d",
       "back": [
         0,
         1,
-        3
+        2,
+        1,
+        0
       ],
       "front": [
+        3,
         4,
         5,
-        7
+        4,
+        3
+      ],
+      "phases": [
+        0,
+        0.15,
+        0.3333333333333333,
+        0.7,
+        0.85
       ]
     },
     "SIDE_KICK": {
-      "group": "c",
+      "group": "d",
       "back": [
-        14,
-        18,
-        14
+        10,
+        11,
+        12,
+        13,
+        10
       ],
       "front": [
-        19,
-        21,
-        19
+        14,
+        15,
+        16,
+        17,
+        14
+      ],
+      "phases": [
+        0,
+        0.15,
+        0.3333333333333333,
+        0.7,
+        0.85
+      ]
+    },
+    "SPIN_KICK": {
+      "group": "d",
+      "back": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        10
+      ],
+      "front": [
+        14,
+        15,
+        16,
+        17,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "phases": [
+        0,
+        0.15,
+        0.3333333333333333,
+        0.43,
+        0.52,
+        0.6,
+        0.68,
+        0.76,
+        0.85
       ]
     },
     "JUMP_KICK": {
@@ -2023,11 +2147,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_전사_002",
@@ -2035,16 +2159,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "독립 시전이 아닌 기본공격 연동 추가 타격"
     },
     {
       "id": "SK_전사_003",
@@ -2052,16 +2176,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
-      "targetSheet": "target",
+      "caster": "NONE",
+      "target": "BLADE_GREEN",
+      "targetSheet": "finisher-v65",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "같은 방향의 연속 세 타일"
     },
     {
       "id": "SK_전사_004",
@@ -2069,16 +2193,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
+      "caster": "NONE",
       "target": "DISPEL",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_전사_005",
@@ -2086,16 +2210,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "독립 시전이 아닌 기본공격 연동 추가 타격"
     },
     {
       "id": "SK_전사_006",
@@ -2103,16 +2227,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
-      "targetSheet": "target",
+      "caster": "NONE",
+      "target": "BLADE_GREEN",
+      "targetSheet": "finisher-v65",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 사방 한 타일; 대각선 제외"
     },
     {
       "id": "SK_전사_007",
@@ -2120,33 +2244,33 @@
       "job": "전사",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
+      "caster": "NONE",
       "target": "CURSE",
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_전사_008",
       "name": "투핸드어택",
       "job": "전사",
       "kind": "기술",
-      "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
-      "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetRow": -1,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "양손무기 장착 허용 패시브: 공격 모션/피격 이펙트 없음"
     },
     {
       "id": "SK_전사_009",
@@ -2154,16 +2278,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
+      "caster": "NONE",
       "target": "PROTECT",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_전사_010",
@@ -2171,16 +2295,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
+      "caster": "NONE",
       "target": "PROTECT",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_전사_011",
@@ -2193,11 +2317,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요."
     },
     {
       "id": "SK_전사_012",
@@ -2210,11 +2334,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_전사_013",
@@ -2222,16 +2346,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "SOUL_BURST",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_전사_014",
@@ -2239,16 +2363,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
-      "target": "PROTECT",
-      "targetSheet": "status",
-      "targetRow": 4,
+      "caster": "NONE",
+      "target": "DEFENSE_SPHERE",
+      "targetSheet": "procedural",
+      "targetRow": -1,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상; 20260930 영상: 캐릭터를 감싸는 얇은 파란 구형 보호막, 적 피격 없음."
     },
     {
       "id": "SK_전사_015",
@@ -2256,16 +2380,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
-      "targetSheet": "target",
-      "targetRow": 0,
+      "caster": "NONE",
+      "target": "CRASHER_BLUE",
+      "targetSheet": "procedural",
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_전사_016",
@@ -2273,16 +2397,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
-      "targetSheet": "target",
-      "targetRow": 0,
+      "caster": "NONE",
+      "target": "BLADE_WHITE",
+      "targetSheet": "finisher-v65",
+      "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "같은 방향의 연속 세 타일"
     },
     {
       "id": "SK_전사_017",
@@ -2290,33 +2414,33 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
-      "targetSheet": "target",
-      "targetRow": 0,
+      "caster": "NONE",
+      "target": "BLADE_RED",
+      "targetSheet": "finisher-v65",
+      "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 사방 한 타일; 대각선 제외"
     },
     {
       "id": "SK_전사_018",
       "name": "집중",
       "job": "전사",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
+      "kind": "마법",
+      "motion": "CAST",
+      "caster": "NONE",
       "target": "PROTECT",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상; 2013 원문 집중은 승급 마법으로 명시."
     },
     {
       "id": "SK_전사_019",
@@ -2329,11 +2453,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외"
     },
     {
       "id": "SK_전사_020",
@@ -2341,33 +2465,33 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "독립 시전이 아닌 기본공격 연동 추가 타격"
     },
     {
       "id": "SK_전사_021",
       "name": "돌진",
       "job": "전사",
       "kind": "기술",
-      "motion": "THRUST",
-      "caster": "SLASH",
-      "target": "CUT",
+      "motion": "SWING",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_RETAINED_2013_SOURCE_PIXELS_PROJECT_MATTING_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "V83 전방 최대5칸 공격과 적 앞의 빈 타일까지 이동. 전체 경로 타일/충돌 검사, 막힌 경로는 이동하지 않음. 원작 착지 연출은 미확정."
     },
     {
       "id": "SK_전사_022",
@@ -2375,16 +2499,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "SOUL_BURST",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_전사_023",
@@ -2392,16 +2516,16 @@
       "job": "전사",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
-      "targetSheet": "target",
-      "targetRow": 0,
+      "caster": "NONE",
+      "target": "CRASHER_RED",
+      "targetSheet": "procedural",
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_도적_001",
@@ -2414,11 +2538,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_002",
@@ -2426,16 +2550,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
+      "caster": "NONE",
       "target": "NONE",
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_도적_003",
@@ -2448,11 +2572,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "최대4칸, 붙어서 사용 불가. 타일 거리 측정 방식은 프로젝트 Chebyshev 기준."
     },
     {
       "id": "SK_도적_004",
@@ -2465,11 +2589,11 @@
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단."
     },
     {
       "id": "SK_도적_005",
@@ -2477,16 +2601,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THROW",
-      "caster": "ARCANE",
-      "target": "CURSE",
+      "caster": "NONE",
+      "target": "CONFUSION",
       "targetSheet": "status",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "인접 대상 사용 불가: 최소 두 타일 거리. 최대4칸은 프로젝트 임시 상한."
     },
     {
       "id": "SK_도적_006",
@@ -2494,16 +2618,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THROW",
-      "caster": "ARCANE",
+      "caster": "NONE",
       "target": "BLIND",
       "targetSheet": "status",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문에서 화면 내 모든 몬스터 확인, 맵 전체 여부는 미확정. 시험 모드 화면 범위만 적용."
     },
     {
       "id": "SK_도적_007",
@@ -2516,11 +2640,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_008",
@@ -2528,16 +2652,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "독립 시전이 아닌 기본공격 연동 추가 타격"
     },
     {
       "id": "SK_도적_009",
@@ -2550,49 +2674,15 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_도적_010",
       "name": "센스",
-      "job": "도적",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "ARCANE",
-      "target": "NONE",
-      "targetSheet": "target",
-      "targetRow": -1,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
-      "originalEffectVerified": false,
-      "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
-    },
-    {
-      "id": "SK_도적_011",
-      "name": "하이드",
-      "job": "도적",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "ARCANE",
-      "target": "TELEPORT",
-      "targetSheet": "status",
-      "targetRow": 6,
-      "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
-      "originalEffectVerified": false,
-      "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
-    },
-    {
-      "id": "SK_도적_012",
-      "name": "함정찾기1",
       "job": "도적",
       "kind": "기술",
       "motion": "IDLE",
@@ -2601,28 +2691,62 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
+    },
+    {
+      "id": "SK_도적_011",
+      "name": "하이드",
+      "job": "도적",
+      "kind": "마법",
+      "motion": "CAST",
+      "caster": "NONE",
+      "target": "NONE",
+      "targetSheet": "status",
+      "targetRow": -1,
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "originalEffectVerified": false,
+      "combatStatus": "EXISTING_RUNTIME_ONLY",
+      "note": "자기 대상; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도."
+    },
+    {
+      "id": "SK_도적_012",
+      "name": "함정찾기1",
+      "job": "도적",
+      "kind": "마법",
+      "motion": "CAST",
+      "caster": "NONE",
+      "target": "NONE",
+      "targetSheet": "target",
+      "targetRow": -1,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "originalEffectVerified": false,
+      "combatStatus": "EXISTING_RUNTIME_ONLY",
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도."
     },
     {
       "id": "SK_도적_013",
       "name": "라이트닝무브",
       "job": "도적",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
-      "target": "PROTECT",
+      "kind": "마법",
+      "motion": "CAST",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 4,
+      "targetRow": -1,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도."
     },
     {
       "id": "SK_도적_014",
@@ -2635,11 +2759,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_015",
@@ -2647,50 +2771,50 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THRUST",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "AMBUSH",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_016",
       "name": "센서스",
       "job": "도적",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "kind": "마법",
+      "motion": "CAST",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 5,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도."
     },
     {
       "id": "SK_도적_017",
       "name": "함정찾기2",
       "job": "도적",
-      "kind": "기술",
-      "motion": "IDLE",
+      "kind": "마법",
+      "motion": "CAST",
       "caster": "NONE",
       "target": "NONE",
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도."
     },
     {
       "id": "SK_도적_018",
@@ -2703,11 +2827,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_도적_019",
@@ -2720,11 +2844,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단."
     },
     {
       "id": "SK_도적_020",
@@ -2732,16 +2856,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THRUST",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "ASSASSIN",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_도적_021",
@@ -2754,11 +2878,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_022",
@@ -2771,11 +2895,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_023",
@@ -2783,16 +2907,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THRUST",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "AMBUSH",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_024",
@@ -2800,16 +2924,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "SWING",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "독립 시전이 아닌 기본공격 연동 추가 타격"
     },
     {
       "id": "SK_도적_025",
@@ -2822,28 +2946,28 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_도적_026",
       "name": "하이더",
       "job": "도적",
-      "kind": "기술",
+      "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "TELEPORT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 6,
+      "targetRow": -1,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상; 2015 도적 마법 원문 분류, 원본 BODY 중 프로젝트가 선택한 머리 위 시전 모션. 상태 기능 별도.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단."
     },
     {
       "id": "SK_도적_027",
@@ -2851,16 +2975,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THRUST",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "ASSASSIN",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CAPTURE_EXTRACTED_APPROXIMATE_ALPHA",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음."
     },
     {
       "id": "SK_도적_028",
@@ -2868,16 +2992,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THRUST",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "AMBUSH",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_029",
@@ -2885,16 +3009,16 @@
       "job": "도적",
       "kind": "기술",
       "motion": "THRUST",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "BACKSTAB",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_도적_030",
@@ -2907,11 +3031,11 @@
       "targetSheet": "target",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 전후 한 타일; 옆 제외"
     },
     {
       "id": "SK_도적_031",
@@ -2924,11 +3048,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_마법사_001",
@@ -2941,11 +3065,11 @@
       "targetSheet": "target",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_002",
@@ -2958,11 +3082,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_003",
@@ -2975,11 +3099,11 @@
       "targetSheet": "target",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_004",
@@ -2992,11 +3116,11 @@
       "targetSheet": "target",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_005",
@@ -3009,11 +3133,11 @@
       "targetSheet": "target",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_006",
@@ -3026,11 +3150,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_007",
@@ -3043,11 +3167,11 @@
       "targetSheet": "target",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 사방 한 타일; 대각선 제외"
     },
     {
       "id": "SK_마법사_008",
@@ -3060,11 +3184,11 @@
       "targetSheet": "target",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 사방 한 타일; 대각선 제외"
     },
     {
       "id": "SK_마법사_009",
@@ -3077,11 +3201,11 @@
       "targetSheet": "target",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 사방 한 타일; 대각선 제외"
     },
     {
       "id": "SK_마법사_010",
@@ -3094,11 +3218,11 @@
       "targetSheet": "target",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 사방 한 타일; 대각선 제외"
     },
     {
       "id": "SK_마법사_011",
@@ -3111,11 +3235,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_012",
@@ -3128,11 +3252,11 @@
       "targetSheet": "status",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_013",
@@ -3145,11 +3269,11 @@
       "targetSheet": "target",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_014",
@@ -3162,11 +3286,11 @@
       "targetSheet": "target",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_015",
@@ -3179,11 +3303,11 @@
       "targetSheet": "target",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_016",
@@ -3196,11 +3320,11 @@
       "targetSheet": "target",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_017",
@@ -3213,11 +3337,11 @@
       "targetSheet": "status",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_018",
@@ -3230,11 +3354,11 @@
       "targetSheet": "target",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "선택 대상과 그 사방 한 타일"
     },
     {
       "id": "SK_마법사_019",
@@ -3247,11 +3371,11 @@
       "targetSheet": "target",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "선택 대상과 그 사방 한 타일"
     },
     {
       "id": "SK_마법사_020",
@@ -3264,11 +3388,11 @@
       "targetSheet": "target",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "선택 대상과 그 사방 한 타일"
     },
     {
       "id": "SK_마법사_021",
@@ -3281,28 +3405,28 @@
       "targetSheet": "target",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "선택 대상과 그 사방 한 타일"
     },
     {
       "id": "SK_마법사_022",
       "name": "로카테오",
       "job": "마법사",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "TELEPORT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 6,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_마법사_023",
@@ -3315,11 +3439,11 @@
       "targetSheet": "status",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_024",
@@ -3332,11 +3456,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_025",
@@ -3345,15 +3469,15 @@
       "kind": "마법",
       "motion": "CAST",
       "caster": "ARCANE",
-      "target": "SLEEP",
+      "target": "FREEZE",
       "targetSheet": "status",
-      "targetRow": 2,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_026",
@@ -3366,11 +3490,11 @@
       "targetSheet": "target",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_027",
@@ -3383,11 +3507,11 @@
       "targetSheet": "target",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_028",
@@ -3400,11 +3524,11 @@
       "targetSheet": "target",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_029",
@@ -3417,11 +3541,11 @@
       "targetSheet": "target",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_030",
@@ -3434,11 +3558,11 @@
       "targetSheet": "target",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외"
     },
     {
       "id": "SK_마법사_031",
@@ -3451,11 +3575,11 @@
       "targetSheet": "target",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외"
     },
     {
       "id": "SK_마법사_032",
@@ -3468,11 +3592,11 @@
       "targetSheet": "target",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외"
     },
     {
       "id": "SK_마법사_033",
@@ -3485,11 +3609,11 @@
       "targetSheet": "target",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외"
     },
     {
       "id": "SK_마법사_034",
@@ -3497,16 +3621,16 @@
       "job": "마법사",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "CURSE",
+      "caster": "NONE",
+      "target": "DARK_STAR",
       "targetSheet": "status",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "USER_CONFIRMED_STAR_SHAPE_PROJECT_RECONSTRUCTION_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 사용자 확인 별 모양으로 재구성. 원본 픽셀/색/프레임 미확인."
     },
     {
       "id": "SK_마법사_035",
@@ -3514,16 +3638,16 @@
       "job": "마법사",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "CURSE",
+      "caster": "NONE",
+      "target": "DARK_STAR",
       "targetSheet": "status",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "USER_CONFIRMED_STAR_SHAPE_PROJECT_RECONSTRUCTION_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "암흑 사방 공격; 반경 한 타일 프로젝트 적용.; 사용자 확인 별 모양으로 재구성. 원본 픽셀/색/프레임 미확인."
     },
     {
       "id": "SK_마법사_036",
@@ -3531,16 +3655,16 @@
       "job": "마법사",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "CURSE",
+      "caster": "NONE",
+      "target": "DARK_STAR",
       "targetSheet": "status",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "USER_CONFIRMED_STAR_SHAPE_PROJECT_RECONSTRUCTION_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "대상 중심 사방4칸. 대각선 제외.; 사용자 확인 별 모양으로 재구성. 원본 픽셀/색/프레임 미확인."
     },
     {
       "id": "SK_마법사_037",
@@ -3548,16 +3672,16 @@
       "job": "마법사",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "CURSE",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "USER_LABELLED_RAGNAROK_STILL_CAPTURE_DECLARED_REPAIR_PROJECT_TIMING",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외; 사용자 라그나로크 원작 캡처 4장 추출. 육각별/룬/금색 원/흰 섬광. 가림 복원과 보간/시간은 프로젝트 처리로 기록."
     },
     {
       "id": "SK_마법사_038",
@@ -3570,11 +3694,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_039",
@@ -3587,11 +3711,11 @@
       "targetSheet": "target",
       "targetRow": 2,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_040",
@@ -3604,11 +3728,11 @@
       "targetSheet": "target",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_041",
@@ -3621,11 +3745,11 @@
       "targetSheet": "target",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_042",
@@ -3638,11 +3762,11 @@
       "targetSheet": "target",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_043",
@@ -3650,16 +3774,16 @@
       "job": "마법사",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "FIRE",
-      "targetSheet": "target",
+      "caster": "NONE",
+      "target": "METEOR",
+      "targetSheet": "finisher-v65",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "SOURCE_FORM_WHERE_AVAILABLE + IMAGEGEN_RECONSTRUCTION_NOT_ORIGINAL",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "현재 화면 안의 적 전체; 화면 밖 제외"
     },
     {
       "id": "SK_마법사_044",
@@ -3672,11 +3796,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_마법사_045",
@@ -3689,11 +3813,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_마법사_046",
@@ -3706,11 +3830,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_마법사_047",
@@ -3723,11 +3847,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "렌티아·바르데아·데프레타·프라베라는 화면 전체 저주. 기존 Master 단일 표기는 정정 제안으로 보존."
     },
     {
       "id": "SK_마법사_048",
@@ -3740,11 +3864,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "렌티아·바르데아·데프레타·프라베라는 화면 전체 저주. 기존 Master 단일 표기는 정정 제안으로 보존."
     },
     {
       "id": "SK_마법사_049",
@@ -3757,11 +3881,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "렌티아·바르데아·데프레타·프라베라는 화면 전체 저주. 기존 Master 단일 표기는 정정 제안으로 보존."
     },
     {
       "id": "SK_마법사_050",
@@ -3774,11 +3898,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "렌티아·바르데아·데프레타·프라베라는 화면 전체 저주. 기존 Master 단일 표기는 정정 제안으로 보존."
     },
     {
       "id": "SK_마법사_051",
@@ -3791,11 +3915,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_마법사_052",
@@ -3808,11 +3932,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_성직자_001",
@@ -3820,16 +3944,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "체력 회복 1단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_002",
@@ -3841,12 +3965,12 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "아군 단일; 현재 런타임에서는 자신만 선택 가능"
     },
     {
       "id": "SK_성직자_003",
@@ -3854,16 +3978,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "저주 1단계 렌토 마법 해제 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_004",
@@ -3871,16 +3995,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "초급축복마법 - 집중력을 높힌다. (HIT+10) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_005",
@@ -3888,16 +4012,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "체력회복 2단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_006",
@@ -3905,16 +4029,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "저주 2단계 바르도 마법해제 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_007",
@@ -3922,16 +4046,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹 체력회복 1단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_008",
@@ -3939,16 +4063,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "중독 해제 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_009",
@@ -3956,16 +4080,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "초급 축복 마법 - 공격력 상승 (DMG+2) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_011",
@@ -3973,16 +4097,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "체력 회복 3단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_012",
@@ -3995,11 +4119,11 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_성직자_013",
@@ -4007,16 +4131,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "HOLY",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 6,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "성스러운 번개로 공격하는 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_014",
@@ -4024,16 +4148,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "저주 3단계 데프레코 마법 해제 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_015",
@@ -4041,16 +4165,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹 체력 회복 2단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_016",
@@ -4058,16 +4182,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기재생력 향상 (재생력+20) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_017",
@@ -4075,16 +4199,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자신의 사방에 보호막 설치 (몬스터접근x) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음. 사방 통행 차단의 실제 도메인 서비스는 미구현."
     },
     {
       "id": "SK_성직자_018",
@@ -4092,16 +4216,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "중급마법 - 갑옷을 단단하게 한다 (AC-10) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_019",
@@ -4109,16 +4233,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "중급마법 - 집중력을 더욱 높게한다. (HIT+20) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_020",
@@ -4131,11 +4255,11 @@
       "targetSheet": "target",
       "targetRow": 6,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_성직자_021",
@@ -4143,33 +4267,33 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "체력 회복 4단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_022",
       "name": "로카메아",
       "job": "성직자",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "TELEPORT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 6,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원을 자신의 앞으로 소환한다.조건 1. 같은 국적 및 마을서버조건 2. 자신의 캐릭터보다 낮은 서열(하단 이미지 참고) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_023",
@@ -4177,50 +4301,50 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "저주 4단계 프라보 마법 해제 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_024",
       "name": "리치마나",
       "job": "성직자",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
-      "targetRow": 4,
-      "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetRow": -1,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원의 마나를 빼앗는다(회복). · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_025",
       "name": "소모니아",
       "job": "성직자",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "SUMMON",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 7,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "하급 몬스터 소환마법조건 1. 무속성의 몬스터조건 2. 몬스터 Lv. 98 이하의 몬스터조건 3. 마법을 쓰지 않는 몬스터 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_026",
@@ -4228,16 +4352,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "소루마 해제 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_027",
@@ -4245,16 +4369,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹 체력회복 3단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_028",
@@ -4262,16 +4386,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "상급축복마법 - 보호마법 (타격 50%감소) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_029",
@@ -4279,16 +4403,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "무적 토글 마법(기술,마법 공격 보호) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_030",
@@ -4296,16 +4420,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "코마상태 해제 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_031",
@@ -4313,16 +4437,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "모든 상태이상 마법 해제 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_032",
@@ -4330,16 +4454,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "체력회복 5단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_033",
@@ -4347,16 +4471,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹 체력회복 4단계 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_034",
@@ -4364,16 +4488,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "마법공격 반사 토글 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_035",
@@ -4386,11 +4510,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "아군 단일; 현재 런타임에서는 자신만 선택 가능"
     },
     {
       "id": "SK_성직자_036",
@@ -4403,11 +4527,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "아군 단일; 현재 런타임에서는 자신만 선택 가능"
     },
     {
       "id": "SK_성직자_037",
@@ -4420,11 +4544,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "아군 단일; 현재 런타임에서는 자신만 선택 가능"
     },
     {
       "id": "SK_성직자_038",
@@ -4437,11 +4561,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_039",
@@ -4454,11 +4578,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "아군 단일; 현재 런타임에서는 자신만 선택 가능"
     },
     {
       "id": "SK_성직자_040",
@@ -4466,16 +4590,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "HOLY",
-      "targetSheet": "target",
+      "caster": "NONE",
+      "target": "DARK_DRAGON",
+      "targetSheet": "finisher-v65",
       "targetRow": 6,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "SOURCE_FORM_WHERE_AVAILABLE + IMAGEGEN_RECONSTRUCTION_NOT_ORIGINAL",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "화면 전체, 이름과 달리 암흑 속성(2005 실험 및 PDF). 용 이펙트 원본은 미확보."
     },
     {
       "id": "SK_성직자_041",
@@ -4488,11 +4612,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_042",
@@ -4505,11 +4629,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_043",
@@ -4522,11 +4646,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_044",
@@ -4539,11 +4663,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_045",
@@ -4556,11 +4680,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_046",
@@ -4573,11 +4697,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_047",
@@ -4590,11 +4714,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_048",
@@ -4607,11 +4731,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_성직자_049",
@@ -4624,11 +4748,11 @@
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_무도가_001",
@@ -4641,11 +4765,11 @@
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_무도가_002",
@@ -4653,50 +4777,50 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "FRONT_KICK",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "USER_CONFIRMED_MARTIAL_BODY_AND_RELEASE_V82",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "﻿전방대상 앞차기 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_003",
       "name": "이형환위",
       "job": "무도가",
       "kind": "기술",
-      "motion": "JUMP_KICK",
-      "caster": "MARTIAL",
-      "target": "TELEPORT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 6,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 3칸 대상을 뛰어넘는다. · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음. 이동/착지 서비스 미구현: 시전 차단."
     },
     {
       "id": "SK_무도가_004",
       "name": "미종보법",
       "job": "무도가",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
-      "target": "PROTECT",
+      "kind": "마법",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "몸을 가볍게하여 공격을 피한다. · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_005",
@@ -4704,16 +4828,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "(일반 기본 공격 모션)기본 공격 시 2회 타격 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_006",
@@ -4721,16 +4845,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "POISON",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "몬스터를 독에 걸리게 한다. · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_007",
@@ -4738,33 +4862,33 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "SIDE_KICK",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "USER_CONFIRMED_MARTIAL_BODY_AND_RELEASE_V82",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 대상 옆차기 · 사용자 2026-10-02 정정; 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_008",
       "name": "경신공",
       "job": "무도가",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
-      "target": "PROTECT",
+      "kind": "마법",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "이동속도를 높힌다. (Speed+1) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_009",
@@ -4772,16 +4896,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 1~3칸 적 공격 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_010",
@@ -4789,84 +4913,84 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLIND",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 3,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "몬스터의 이동을 제한시킨다 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_011",
       "name": "흡정신공",
       "job": "무도가",
-      "kind": "기술",
-      "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "kind": "마법",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "몬스터의 체력을 흡수한다. · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_012",
       "name": "쿠랄툼",
       "job": "무도가",
       "kind": "기술",
-      "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 재생력 향상 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_013",
       "name": "철포삼",
       "job": "무도가",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
-      "target": "PROTECT",
+      "kind": "마법",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "방어력 상승 마법 (AC-10) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_014",
       "name": "선풍각",
       "job": "무도가",
       "kind": "기술",
-      "motion": "SIDE_KICK",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "motion": "SPIN_KICK",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "USER_CONFIRMED_MARTIAL_BODY_AND_RELEASE_V82",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 주변 사방 돌려차기 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_015",
@@ -4874,50 +4998,50 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "내공으로 적 원거리 공격 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_016",
       "name": "금강불괴",
       "job": "무도가",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
-      "target": "PROTECT",
+      "kind": "마법",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "무적상태 (토글마법) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_017",
       "name": "쿠라노토",
       "job": "무도가",
       "kind": "기술",
-      "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 체력 회복 2단계 (HP + 500) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_018",
@@ -4925,16 +5049,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "몬스터 대상을 얼린다. · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_019",
@@ -4942,67 +5066,67 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "기본공격 관련 기술 데미지 상승ex) 백보신권 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_020",
       "name": "다라밀공",
       "job": "무도가",
-      "kind": "기술",
-      "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
-      "targetSheet": "target",
-      "targetRow": 1,
+      "kind": "마법",
+      "motion": "CHARGE_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
+      "targetSheet": "finisher-v65",
+      "targetRow": 7,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "USER_CONFIRMED_MARTIAL_BODY_AND_RELEASE_V82",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "내공을 모두 모아 쏘는 필살기데미지 : (체력+마력-1440)*2 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음. INT53 정정 적용."
     },
     {
       "id": "SK_무도가_021",
       "name": "구양신공",
       "job": "무도가",
       "kind": "기술",
-      "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "사방의 적을 대상으로 하는 체력 소모 필살기 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_022",
       "name": "반탄신공",
       "job": "무도가",
-      "kind": "기술",
-      "motion": "RAISE",
-      "caster": "MARTIAL",
-      "target": "PROTECT",
+      "kind": "마법",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "기술반사 (토글마법) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_023",
@@ -5010,16 +5134,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방의 적을 대상으로 하는 체력 소모 필살기(체력 30%를 상대방에게 데미지로 전달)- 이모탈, 버프등 영향 받지 않는 스킬 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_024",
@@ -5032,62 +5156,62 @@
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전방 인접 한 타일"
     },
     {
       "id": "SK_무도가_025",
       "name": "붕신선각",
       "job": "무도가",
       "kind": "기술",
-      "motion": "SIDE_KICK",
+      "motion": "SPIN_KICK",
       "caster": "MARTIAL",
       "target": "BLUNT",
       "targetSheet": "target",
       "targetRow": 1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시전자 둘레 여덟 타일; 자신 제외"
     },
     {
       "id": "SK_무도가_026",
       "name": "파천각",
       "job": "무도가",
       "kind": "기술",
-      "motion": "JUMP_KICK",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "motion": "SPIN_KICK",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "사용자 전체스킬 구현 요청: 선풍각 승급, 사방2칸 프로젝트 규칙; 원작 최대범위 미확정"
     },
     {
       "id": "SK_무도가_027",
       "name": "트리플펀치",
       "job": "무도가",
       "kind": "기술",
-      "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "BLUNT",
+      "motion": "TRIPLE_PUNCH",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 1,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "독립 시전이 아닌 기본공격 연동 추가 타격"
     },
     {
       "id": "SK_무도가_028",
@@ -5095,16 +5219,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "PUNCH",
-      "caster": "MARTIAL",
-      "target": "WIND",
+      "caster": "NONE",
+      "target": "QI_BLAST",
       "targetSheet": "target",
-      "targetRow": 4,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "같은 방향의 연속 세 타일"
     },
     {
       "id": "SK_무도가_029",
@@ -5112,16 +5236,16 @@
       "job": "무도가",
       "kind": "기술",
       "motion": "RAISE",
-      "caster": "ARCANE",
+      "caster": "NONE",
       "target": "PROTECT",
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_공통_001",
@@ -5129,16 +5253,16 @@
       "job": "공통",
       "kind": "기술",
       "motion": "EQUIPPED_BASIC",
-      "caster": "SLASH",
-      "target": "CUT",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 0,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "USER_20261002_BASIC_BODY_ONLY",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; USER_CONFIRMED_BASIC_SWING_WITHOUT_PARTICLE"
     },
     {
       "id": "SK_공통_002",
@@ -5151,11 +5275,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_003",
@@ -5168,28 +5292,28 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_004",
       "name": "아들레스투",
       "job": "공통",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "TELEPORT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 6,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_005",
@@ -5202,11 +5326,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_006",
@@ -5219,11 +5343,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_007",
@@ -5236,11 +5360,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_008",
@@ -5253,11 +5377,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_009",
@@ -5270,11 +5394,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_010",
@@ -5287,11 +5411,11 @@
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_공통_011",
@@ -5304,11 +5428,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_012",
@@ -5321,28 +5445,28 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_공통_013",
       "name": "마나스페라",
       "job": "공통",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "PROTECT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 4,
-      "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetRow": -1,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_도적_032",
@@ -5355,28 +5479,28 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_성직자_050",
       "name": "아지토",
       "job": "성직자",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "TELEPORT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 6,
-      "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetRow": -1,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_성직자_051",
@@ -5389,11 +5513,11 @@
       "targetSheet": "status",
       "targetRow": 4,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_성직자_052",
@@ -5406,11 +5530,11 @@
       "targetSheet": "target",
       "targetRow": 6,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_성직자_053",
@@ -5418,16 +5542,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "나르콜리 해제 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_054",
@@ -5435,16 +5559,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "딜루메니or연막(눈뽕) 시력회복 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_055",
@@ -5452,16 +5576,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "몬스터의 속성을 바꾸는 마법 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_056",
@@ -5474,11 +5598,11 @@
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "아군 단일; 현재 런타임에서는 자신만 선택 가능"
     },
     {
       "id": "SK_성직자_057",
@@ -5490,12 +5614,12 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "그룹원 전체; 현재 런타임에 다른 아군 개체가 없어 자신만 포함"
     },
     {
       "id": "SK_마법사_053",
@@ -5508,45 +5632,45 @@
       "targetSheet": "status",
       "targetRow": 0,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙."
     },
     {
       "id": "SK_무도가_030",
       "name": "일루메나",
       "job": "무도가",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "시력 회복 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_무도가_031",
       "name": "디베노모",
       "job": "무도가",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "status",
       "targetRow": 5,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "중독 회복 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_마법사_054",
@@ -5554,33 +5678,33 @@
       "job": "마법사",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 7,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "이름만 확인. 효과와 범위 미확정이라 회복/공격으로 오인시키지 않음."
     },
     {
       "id": "SK_공통_014",
       "name": "유즈스태프",
       "job": "공통",
       "kind": "기술",
-      "motion": "RAISE",
-      "caster": "ARCANE",
+      "motion": "IDLE",
+      "caster": "NONE",
       "target": "NONE",
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_도적_033",
@@ -5593,11 +5717,11 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_도적_034",
@@ -5610,28 +5734,28 @@
       "targetSheet": "target",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Utility interaction: idle/no recipient combat effect."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_무도가_032",
       "name": "쿠로토",
       "job": "무도가",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 체력 회복 마법 1단계 (HP+100) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
     },
     {
       "id": "SK_성직자_058",
@@ -5643,12 +5767,12 @@
       "target": "HEAL",
       "targetSheet": "target",
       "targetRow": 7,
-      "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "아군 단일; 현재 런타임에서는 자신만 선택 가능"
     },
     {
       "id": "SK_성직자_059",
@@ -5656,16 +5780,16 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "HEAL",
-      "target": "HEAL",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "target",
-      "targetRow": 7,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "이름만 확인. 효과와 범위 미확정이라 회복/공격으로 오인시키지 않음."
     },
     {
       "id": "SK_성직자_060",
@@ -5673,33 +5797,33 @@
       "job": "성직자",
       "kind": "마법",
       "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 5,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "이름만 확인. 효과와 범위 미확정이라 회복/공격으로 오인시키지 않음."
     },
     {
       "id": "SK_마법사_055",
       "name": "아지토",
       "job": "마법사",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "TELEPORT",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 6,
-      "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "targetRow": -1,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
     },
     {
       "id": "SK_마법사_056",
@@ -5712,28 +5836,62 @@
       "targetSheet": "target",
       "targetRow": 7,
       "targetAnchor": "RECIPIENT",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "자기 대상"
     },
     {
       "id": "SK_마법사_057",
       "name": "헬푸라",
       "job": "마법사",
       "kind": "마법",
-      "motion": "CAST",
-      "caster": "ARCANE",
-      "target": "DISPEL",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
       "targetSheet": "status",
-      "targetRow": 5,
+      "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS + PROJECT_SELECTED_POSE",
-      "effectEvidence": "ADAPTED_NEW_ART",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "Pose/effect choice is a project adaptation based on catalog description; original per-skill animation was not independently verified."
+      "note": "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지"
+    },
+    {
+      "id": "SK_무도가_033",
+      "name": "경신공법",
+      "job": "무도가",
+      "kind": "마법",
+      "motion": "MARTIAL_CAST",
+      "caster": "NONE",
+      "target": "CLASSIC_CAPTURE",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "RECIPIENT",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
+      "originalEffectVerified": false,
+      "combatStatus": "EXISTING_RUNTIME_ONLY",
+      "note": "이동속도를 높힌다. (Speed+20%) · 이동속도/목적지 원작 서비스는 미구현."
+    },
+    {
+      "id": "SK_무도가_034",
+      "name": "아지토",
+      "job": "무도가",
+      "kind": "마법",
+      "motion": "IDLE",
+      "caster": "NONE",
+      "target": "NONE",
+      "targetSheet": "status",
+      "targetRow": 4,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
+      "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
+      "originalEffectVerified": false,
+      "combatStatus": "EXISTING_RUNTIME_ONLY",
+      "note": "소속된 국적의여관으로 순간이동 · 이동속도/목적지 원작 서비스는 미구현."
     }
   ]
 }

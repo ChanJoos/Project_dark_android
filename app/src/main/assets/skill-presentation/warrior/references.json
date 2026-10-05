@@ -1,0 +1,258 @@
+{
+  "revision": "ALL_JOB_WARRIOR_SOURCE_V70",
+  "rows": [
+    {
+      "id": "SK_전사_001",
+      "name": "숏블레이드",
+      "iconAssetPath": "icons/81a6dc2a993c9ba5.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/76fb9efa393a4f87f3b9536b5cda830ce5f1ecdfc8232ae2735cff1305aed951.jpg",
+      "sourceSha256": "76fb9efa393a4f87f3b9536b5cda830ce5f1ecdfc8232ae2735cff1305aed951",
+      "sourceOrdinal": {
+        "articleId": 191105,
+        "imageIndex": 1
+      }
+    },
+    {
+      "id": "SK_전사_012",
+      "name": "레스큐",
+      "iconAssetPath": "icons/a057978df3d29c0c.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/78de3e89b2e02b17b1e268a1c336827dc5d307d184f081778571129655bb4d48.jpg",
+      "sourceSha256": "78de3e89b2e02b17b1e268a1c336827dc5d307d184f081778571129655bb4d48",
+      "sourceOrdinal": {
+        "articleId": 191105,
+        "imageIndex": 3
+      }
+    },
+    {
+      "id": "SK_전사_002",
+      "name": "더블어택",
+      "iconAssetPath": "icons/9e93c77c9bc35874.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/675590ddda3153280b88a437992c1ae9343073e898e4612b184508aab1926c1d.jpg",
+      "sourceSha256": "675590ddda3153280b88a437992c1ae9343073e898e4612b184508aab1926c1d",
+      "sourceOrdinal": {
+        "articleId": 191110,
+        "imageIndex": 3
+      }
+    },
+    {
+      "id": "SK_전사_003",
+      "name": "윈드블레이드",
+      "iconAssetPath": "icons/97ea2f20135b07e9.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/82d93372620540f6dcd405ca18ca330216cf27d7c27609c512358edeee248bd4.jpg",
+      "sourceSha256": "82d93372620540f6dcd405ca18ca330216cf27d7c27609c512358edeee248bd4",
+      "sourceOrdinal": {
+        "articleId": 191110,
+        "imageIndex": 5
+      }
+    },
+    {
+      "id": "SK_전사_004",
+      "name": "디바투",
+      "iconAssetPath": "icons/2664e14c5585a6b9.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/bc25562aa1ea84de879041047fd6ff111034c0546ccf94e0c7ed38de6c9afc30.jpg",
+      "sourceSha256": "bc25562aa1ea84de879041047fd6ff111034c0546ccf94e0c7ed38de6c9afc30",
+      "sourceOrdinal": {
+        "articleId": 191110,
+        "imageIndex": 8
+      }
+    },
+    {
+      "id": "SK_전사_005",
+      "name": "트리플어택",
+      "iconAssetPath": "icons/33ce6f5bdf29ba91.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/3fcfe83820aa5f279766068d788f355968158697b1184906a00bc4337c039e75.jpg",
+      "sourceSha256": "3fcfe83820aa5f279766068d788f355968158697b1184906a00bc4337c039e75",
+      "sourceOrdinal": {
+        "articleId": 191114,
+        "imageIndex": 1
+      }
+    },
+    {
+      "id": "SK_전사_006",
+      "name": "메가블레이드",
+      "iconAssetPath": "icons/971b74a2fb06e6f2.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/59a9236645a86283894b4025e5b694f6045763d026b55a52184b7a6106253eef.jpg",
+      "sourceSha256": "59a9236645a86283894b4025e5b694f6045763d026b55a52184b7a6106253eef",
+      "sourceOrdinal": {
+        "articleId": 191114,
+        "imageIndex": 3
+      }
+    },
+    {
+      "id": "SK_전사_007",
+      "name": "바투",
+      "iconAssetPath": "icons/3a777f7e978d86f2.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/d6071711a46565db5d0380a49bc1ea2b723156497c97d0a2ad75bf4d41a81dd9.jpg",
+      "sourceSha256": "d6071711a46565db5d0380a49bc1ea2b723156497c97d0a2ad75bf4d41a81dd9",
+      "sourceOrdinal": {
+        "articleId": 191114,
+        "imageIndex": 6
+      }
+    },
+    {
+      "id": "SK_전사_008",
+      "name": "투핸드어택",
+      "iconAssetPath": "icons/7079376f83cc4ff0.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/411973bdbf41b441d49caa6224623ef5eb36394e8d58b0107e29e141eeabcfe6.jpg",
+      "sourceSha256": "411973bdbf41b441d49caa6224623ef5eb36394e8d58b0107e29e141eeabcfe6",
+      "sourceOrdinal": {
+        "articleId": 191241,
+        "imageIndex": 3
+      }
+    },
+    {
+      "id": "SK_전사_011",
+      "name": "적무기쳐내기",
+      "iconAssetPath": "icons/affa2fbaec40801a.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/f04d06e899a63fe912a4b5b0a705300c09b8915f28a19935e279c43a2f587abb.jpg",
+      "sourceSha256": "f04d06e899a63fe912a4b5b0a705300c09b8915f28a19935e279c43a2f587abb",
+      "sourceOrdinal": {
+        "articleId": 191241,
+        "imageIndex": 14
+      }
+    },
+    {
+      "id": "SK_전사_009",
+      "name": "드래곤모드",
+      "iconAssetPath": "icons/e6e3c43066b8ad00.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/e1fb2adaafc2ce0a0b9369bd6cb800b3a1d4230ac0ab5c6e68eaa9f5f1fa9fd2.jpg",
+      "sourceSha256": "e1fb2adaafc2ce0a0b9369bd6cb800b3a1d4230ac0ab5c6e68eaa9f5f1fa9fd2",
+      "sourceOrdinal": {
+        "articleId": 191241,
+        "imageIndex": 17
+      }
+    },
+    {
+      "id": "SK_전사_010",
+      "name": "피닉스모드",
+      "iconAssetPath": "icons/0a8f8b4352e0495d.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/c3f326cf87e7a7f041c9d5472838b2a0458bd3352d4bea978c794d2b2c1f8091.jpg",
+      "sourceSha256": "c3f326cf87e7a7f041c9d5472838b2a0458bd3352d4bea978c794d2b2c1f8091",
+      "sourceOrdinal": {
+        "articleId": 191445,
+        "imageIndex": 1
+      }
+    },
+    {
+      "id": "SK_전사_014",
+      "name": "완전방어",
+      "iconAssetPath": "icons/e0c42bec201a678c.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/f3f845005761e4372a8bcd7f06836e61caf69f87089d21b1614011fc8cbb230e.jpg",
+      "sourceSha256": "f3f845005761e4372a8bcd7f06836e61caf69f87089d21b1614011fc8cbb230e",
+      "sourceOrdinal": {
+        "articleId": 191445,
+        "imageIndex": 4
+      }
+    },
+    {
+      "id": "SK_전사_013",
+      "name": "매드소울",
+      "iconAssetPath": "icons/0b472202eee0d9b6.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/0d1036e1d318ef1a5e00a468208a7ede88e172735303ffee5a494b823314c840.jpg",
+      "sourceSha256": "0d1036e1d318ef1a5e00a468208a7ede88e172735303ffee5a494b823314c840",
+      "sourceOrdinal": {
+        "articleId": 191445,
+        "imageIndex": 9
+      }
+    },
+    {
+      "id": "SK_전사_015",
+      "name": "크래셔",
+      "iconAssetPath": "icons/2a3795b3120ce9cc.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/6b9f3971afe96f48ac85c96f330ad5a9492487dd18919153bdd9775a9f15d08f.jpg",
+      "sourceSha256": "6b9f3971afe96f48ac85c96f330ad5a9492487dd18919153bdd9775a9f15d08f",
+      "sourceOrdinal": {
+        "articleId": 191445,
+        "imageIndex": 12
+      }
+    },
+    {
+      "id": "SK_전사_020",
+      "name": "메가어택",
+      "iconAssetPath": "icons/1592f99cf2d32805.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/4fdcc24e4f8ae283d22faf060d16b357a529d11e88cbcf6809d48fa4fc69a60c.jpg",
+      "sourceSha256": "4fdcc24e4f8ae283d22faf060d16b357a529d11e88cbcf6809d48fa4fc69a60c",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 1
+      }
+    },
+    {
+      "id": "SK_전사_021",
+      "name": "돌진",
+      "iconAssetPath": "icons/26767a1a0ae17e83.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/256f6b81b43d838504c845e3031cfd144899b91aa3ee5f6713939c0073aa9912.jpg",
+      "sourceSha256": "256f6b81b43d838504c845e3031cfd144899b91aa3ee5f6713939c0073aa9912",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 3
+      }
+    },
+    {
+      "id": "SK_전사_018",
+      "name": "집중",
+      "iconAssetPath": "icons/bf2ece4cf0af5993.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/05496c62a5ef8636a8d0cdb9bea817a04d513fa46a47b0327954e06407e2c7e9.jpg",
+      "sourceSha256": "05496c62a5ef8636a8d0cdb9bea817a04d513fa46a47b0327954e06407e2c7e9",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 7
+      }
+    },
+    {
+      "id": "SK_전사_019",
+      "name": "포효",
+      "iconAssetPath": "icons/9449601f83953bac.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/7e8844c4794ee8d95c2584f95c854487201a64f446d2246abd2ca50dd8ab6594.jpg",
+      "sourceSha256": "7e8844c4794ee8d95c2584f95c854487201a64f446d2246abd2ca50dd8ab6594",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 10
+      }
+    },
+    {
+      "id": "SK_전사_016",
+      "name": "스톰블레이드",
+      "iconAssetPath": "icons/204490436e8ad060.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/3aae81446f3d44ddbc50ec56fd0b3644208e503c228c41c676c89169ed6ca918.jpg",
+      "sourceSha256": "3aae81446f3d44ddbc50ec56fd0b3644208e503c228c41c676c89169ed6ca918",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 12
+      }
+    },
+    {
+      "id": "SK_전사_017",
+      "name": "룬블레이드",
+      "iconAssetPath": "icons/659acf0eefc5e5eb.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/3201dc629aa789d815fb4607860d56961011b8c823bd7592d2a5111cc5131644.jpg",
+      "sourceSha256": "3201dc629aa789d815fb4607860d56961011b8c823bd7592d2a5111cc5131644",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 15
+      }
+    },
+    {
+      "id": "SK_전사_022",
+      "name": "매드소울진",
+      "iconAssetPath": "icons/f09d081355a4069e.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/d3219078cbbec3b39ec0eec5ffcc4e0e0d97e96d70ff895c6fd040f3ccbaf251.jpg",
+      "sourceSha256": "d3219078cbbec3b39ec0eec5ffcc4e0e0d97e96d70ff895c6fd040f3ccbaf251",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 18
+      }
+    },
+    {
+      "id": "SK_전사_023",
+      "name": "데빌크래셔",
+      "iconAssetPath": "icons/2431e9a96ab4a1b9.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/81cb1a6da11d378a47e058f6231ca0ff9a8b7c2fa0380d584633d70c80d74c39.jpg",
+      "sourceSha256": "81cb1a6da11d378a47e058f6231ca0ff9a8b7c2fa0380d584633d70c80d74c39",
+      "sourceOrdinal": {
+        "articleId": 191777,
+        "imageIndex": 20
+      }
+    }
+  ]
+}

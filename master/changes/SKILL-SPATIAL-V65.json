@@ -1,0 +1,32 @@
+{
+  "id": "SKILL-SPATIAL-V65",
+  "status": "ACCEPTED",
+  "source": "Skill_Master / user skills PDF",
+  "sourceIds": [
+    "SK_마법사_047",
+    "SK_마법사_048",
+    "SK_마법사_049",
+    "SK_마법사_050",
+    "SK_무도가_020",
+    "SK_무도가_021",
+    "SK_전사_008"
+  ],
+  "before": "single-target descriptions / unspecified Dara and Guyang / two-hand SWING mapping",
+  "after": "screen-wide curses / ranged single Dara, cross Guyang / passive no attack",
+  "evidence": [
+    "USER_SKILLS_PDF relevant job sections",
+    "https://rockerse.tistory.com/6?category=907422",
+    "https://rockerse.tistory.com/8"
+  ],
+  "reason": "User explicitly requests original per-skill spatial rules; fix observed catalog-to-runtime errors without rewriting source snapshot",
+  "numericLimits": "unknown maximum distances, Guyang radius and art remain adaptations",
+  "impacts": [
+    "SkillActionData",
+    "SkillActionContract",
+    "SkillRuntimeCatalog",
+    "RuntimeCombatSession",
+    "GameView",
+    "SkillSpatialContractTest"
+  ],
+  "saveImpact": "normal learned IDs/slots unchanged; no original snapshot rewrite"
+}

@@ -9,6 +9,14 @@ parser=argparse.ArgumentParser();parser.add_argument('--source-dir',type=Path,re
 sources=args.source_dir
 catalog=json.loads((root/'app/src/main/assets/skills/catalog.json').read_text())
 records={ (x['job'],x['name']):x['id'] for x in catalog }
+# The user screenshot places the same exact skill, with the same description
+# and visible artwork, under both Warrior and Rogue. In the app catalog it is
+# the shared Common skill. Keep this deliberately narrow; other same-name
+# class rows must never borrow an icon through this rule.
+shared_source_rows={
+ ('11-Screenshot_20260929_233743_NAVER.jpg','전사','쿠로토'):'SK_공통_010',
+ ('11-Screenshot_20260929_233743_NAVER.jpg','도적','쿠로토'):'SK_공통_010',
+}
 specs=[
 ('05-Screenshot_20260929_233857_NAVER.jpg','도적','상자트랩해체 연막탄터뜨리기 찔러휘비기 더블어택 품뒤져보기 함정해체 센스 두번찌르기 습격 소매치기 함정파기 적갑옷해체 암살격'.split()),
 ('06-Screenshot_20260929_233816_NAVER.jpg','성직자','디프라바 리치마나 쿠라네라 디소루마 소모니아 호르라마 이모탈 엑스쿠라노 디네츄라 엑스쿠라네라 리베라토 코마디아 디노센스 텔포라 리플렉토 디네츄라'.split()),
@@ -39,7 +47,8 @@ for filename,job,names in specs:
  assert len(names)==len(boxes),(filename,len(names),len(boxes))
  for row_index,(name,box) in enumerate(zip(names,boxes)):
   row_job=job[row_index] if isinstance(job,list) else job
-  ident=records.get((row_job,name));row=dict(source=filename,source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),job=row_job,source_name=name,crop=box,skill_id=ident)
+  ident=records.get((row_job,name)) or shared_source_rows.get((filename,row_job,name));row=dict(source=filename,source_sha256=hashlib.sha256(p.read_bytes()).hexdigest(),job=row_job,source_name=name,crop=box,skill_id=ident)
+  if (filename,row_job,name) in shared_source_rows:row['mapping_basis']='Exact name and description in two class sections; shared visible artwork maps to the existing common catalog skill SK_공통_010.'
   if not ident:row['status']='UNMAPPED_EXACT_NAME_ONLY'
   elif ident in seen:row['status']='DUPLICATE_NOT_REGISTERED'
   else:

@@ -85,7 +85,7 @@ summaries.update({
  '슬래쉬':'두번찌르기를 강화한 공격 기술입니다.',
  '기습':'습격을 강화한 기술입니다. 자신을 알아차리지 못한 적을 공격합니다.',
  '함정파기':'적이 밟으면 작동하는 함정을 설치합니다.',
- '하이더':'하이드보다 강력한 은신 효과로 모습을 감춥니다.',
+ '하이더':'다른 유저에게 은신을 부여합니다. 대상 유저와 지속 상태 기능은 구현 준비 중입니다.',
  '암살격진':'암살격을 강화한 기술입니다. 체력을 희생해 적에게 강력한 일격을 가합니다.',
  '습격진':'습격을 강화한 상위 공격 기술입니다.',
  '백스탭':'적의 허점을 노려 기습 공격을 가합니다.',
@@ -216,6 +216,7 @@ def summary(e):
  if '미확정' in text or '확인 필요' in text or '캡처에서' in text or '후보식' in text:return '상세 효과가 아직 등록되지 않은 스킬입니다.'
  return text.rstrip('.')+'.'
 materials={'SK_성직자_008':{'IT_REAGENT_DIBENOMUM':1},'SK_무도가_031':{'IT_REAGENT_DIBENOMUM':1},'SK_성직자_011':{'IT_REAGENT_CURANUM':1},'SK_성직자_030':{'IT_REAGENT_KOMADIUM':1},'SK_성직자_032':{'IT_REAGENT_CURANUM':2},'SK_성직자_056':{'IT_REAGENT_CURANUM':3}}
+classic={r["id"]:r for r in json.loads((root/"master/source/skill_fx/naver_classic_2020/definitions.json").read_text()) if r["id"]}
 out={}
 for e in catalog:
  tier=int(e['circle']) if e['circle'].isdigit() and 1<=int(e['circle'])<=5 else 6
@@ -227,7 +228,8 @@ for e in catalog:
   match=re.search(r'(?:^| · )'+k+r' (\d+)(?:$| · )',source)
   if match:
    stats[k]=int(match.group(1));captured_stats.append(k)
- out[e['id']]={'stats':stats,'gold':0 if e['id'] in ['SK_공통_001','SK_공통_002'] else prices[tier],'items':materials.get(e['id'],{}),'summary':summary(e),'evidence':'PROJECT_ADAPTED_V60','stat_source':'USER_CAPTURE' if len(captured_stats)==5 else 'CAPTURE_WITH_PROJECT_DEFAULTS' if captured_stats else 'PROJECT_TIER_POLICY'}
+ if e['id'] in classic:stats=classic[e['id']]['stats'];captured_stats=keys
+ out[e['id']]={'stats':stats,'gold':0 if e['id'] in ['SK_공통_001','SK_공통_002'] else prices[tier],'items':materials.get(e['id'],{}),'summary':classic[e['id']]['description'] if e['id'] in classic else summary(e),'evidence':'PROJECT_ADAPTED_V60','stat_source':'FAN_SEO_2020_CORRECTED_TABLE' if e['id'] in classic else 'USER_CAPTURE' if len(captured_stats)==5 else 'CAPTURE_WITH_PROJECT_DEFAULTS' if captured_stats else 'PROJECT_TIER_POLICY'}
 for id in ['skill_proto','kick_proto','cast_proto']:out[id]={'stats':{k:3 for k in keys},'gold':0,'items':{},'summary':'전투 검사에 사용하는 내부 스킬입니다.','evidence':'B_TEST_ONLY'}
 (assets/'mobile_learning.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 print('Mobile skill policies:',len(out))

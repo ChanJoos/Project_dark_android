@@ -180,6 +180,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   /** Mirrors current RuntimeState player occupancy without making GameView know collision details. */
   @Override public boolean canPlayerOccupy(float x,float y){
+    if(runtime.skillEffects().rooted("player"))return false;
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
     for(RectF obstacle:sceneObstacles)if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
@@ -190,6 +191,10 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   /** Obstacle-only sight test; actors do not occlude their own attack endpoints. */
   public boolean hasCombatLineOfSight(String actorId,String targetId){
     float[] a=combatPosition(actorId),b=combatPosition(targetId);if(a==null||b==null)return false;
+    return hasLineOfSight(a[0],a[1],b[0],b[1]);
+  }
+  public boolean hasLineOfSight(float ax,float ay,float bx,float by){
+    float[] a={ax,ay},b={bx,by};
     int steps=Math.max(1,(int)Math.ceil(distance(a[0],a[1],b[0],b[1])/4f));
     for(int i=0;i<=steps;i++){
       float t=i/(float)steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
@@ -209,6 +214,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     float startX=runtime.player().x,startY=runtime.player().y;
     if(WorldMoveTargetController.Direction.between(startX,startY,destinationX,destinationY)!=direction)return false;
     if(!canPlayerTraverse(startX,startY,destinationX,destinationY))return false;
+    runtime.skillEffects().stopRest();
     runtime.player().x=destinationX;
     runtime.player().y=destinationY;
     return true;

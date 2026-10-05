@@ -182,6 +182,12 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition(REAGENT_KOMADIUM_ITEM_ID,"코마디움",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(REAGENT_DIBENOMUM_ITEM_ID,"디베노뭄",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(REAGENT_CURANUM_ITEM_ID,"쿠라눔",null,null,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_SHOP_ARMOR_JIPON","지폰",ARMOR_SLOT,"mu0000007",11,jobSet("WARRIOR"),true,null,null,stats("AC",-3),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_REAGENT_CURUM","쿠룸",null,null,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_REAGENT_EXCURANUM","엑스쿠라눔",null,null,anyJob,true,null,null,noStats,Evidence.O));
+    registerItem(new ItemDefinition("IT_REAGENT_HOLYWATER","성수",null,null,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_SHOP_WEAPON_MW004","세이버",WEAPON_SLOT,"mw004",AnimationAction.SWING,11,anyJob,true,null,null,stats("DAM",7,"HIT",2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_SHOP_WEAPON_MW005","그라디우스",WEAPON_SLOT,"mw005",AnimationAction.SWING,11,anyJob,true,null,null,stats("DAM",9,"HIT",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition(RECALL_MILLES_ITEM_ID,"밀레스리콜",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠 [PENDING WEARABLE FRAMES]",ARMOR_SLOT,
         STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,shirtStats,Evidence.ADAPTED));
@@ -240,6 +246,15 @@ public final class RpgProgressionState {
   public void restoreBaseResources(int hp,int mp){baseMaxHp=Math.max(1,hp);baseMaxMp=Math.max(0,mp);}
   public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
   public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(3,s);intel=Math.max(3,i);wis=Math.max(3,w);con=Math.max(3,c);dex=Math.max(3,d);statPoints=Math.max(0,points);}
+  private long bankGold;
+  private final Map<String,Integer> bankInventory=new LinkedHashMap<>();
+  public long bankGold(){return bankGold;}
+  public Map<String,Integer> bankInventory(){return Collections.unmodifiableMap(bankInventory);}
+  public boolean restoreBank(long balance,Map<String,Integer> deposited){
+    if(balance<0||deposited==null)return false;
+    for(Map.Entry<String,Integer> e:deposited.entrySet())if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return false;
+    bankGold=balance;bankInventory.clear();bankInventory.putAll(deposited);return true;
+  }
   public void restoreGold(long value){gold=Math.max(0L,value);}
   public boolean buySmallPotion(){return buyItem(B_SMALL_POTION_ITEM_ID,B_SMALL_POTION_PRICE);}
   public boolean buyItem(String itemId,long price){
@@ -341,15 +356,18 @@ public final class RpgProgressionState {
    * Direct-inventory endpoint for a reward whose item identity and quantity were already resolved upstream.
    * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
    */
-  public boolean isConsumable(String itemId){return B5_SMALL_HP_POTION_ITEM_ID.equals(itemId);}
+  public boolean isConsumable(String itemId){return B5_SMALL_HP_POTION_ITEM_ID.equals(itemId)||"IT_REAGENT_CURUM".equals(itemId)||"IT_REAGENT_EXCURANUM".equals(itemId);}
   public UseResult useConsumable(String itemId,RuntimeState runtime){
     Integer owned=inventory.get(itemId);if(owned==null||owned<=0)return UseResult.ITEM_NOT_OWNED;
     if(!isConsumable(itemId)||runtime==null)return UseResult.NOT_CONSUMABLE;
     if(runtime.player().hp>=runtime.player().maxHp)return UseResult.NO_EFFECT;
-    runtime.player().hp=Math.min(runtime.player().maxHp,runtime.player().hp+B5_SMALL_HP_POTION_HEAL);
+    int amount="IT_REAGENT_EXCURANUM".equals(itemId)?10000:"IT_REAGENT_CURUM".equals(itemId)?100:B5_SMALL_HP_POTION_HEAL;
+    runtime.player().hp=Math.min(runtime.player().maxHp,runtime.player().hp+amount);
     if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);
     return UseResult.USED;
   }
+  public boolean isRecall(String id){return RECALL_MILLES_ITEM_ID.equals(id);}
+  public UseResult useMillesRecall(RuntimeState runtime){int owned=inventory.getOrDefault(RECALL_MILLES_ITEM_ID,0);if(owned<=0)return UseResult.ITEM_NOT_OWNED;if(runtime==null||!runtime.player().alive)return UseResult.NO_EFFECT;if(owned==1)inventory.remove(RECALL_MILLES_ITEM_ID);else inventory.put(RECALL_MILLES_ITEM_ID,owned-1);return UseResult.USED;}
   public boolean grantB5SmallHpPotion(int quantity){return autoLootResolvedItem(B5_SMALL_HP_POTION_ITEM_ID,quantity)==AutoLootResult.LOOTED;}
   public AutoLootResult autoLootResolvedItem(String itemId,int quantity){
     if(quantity<=0)return AutoLootResult.INVALID_QUANTITY;

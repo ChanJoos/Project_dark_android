@@ -1,0 +1,47 @@
+{
+  "id": "USER-MARTIAL-KICK-RELEASE-V82",
+  "status": "ACCEPTED",
+  "dateKST": "2026-10-02",
+  "evidence": "U + ORIGINAL_BODY_BYTES + LABELLED_FAN_GIF",
+  "userQuote": "발로 앞차기가 단각, 옆차기가 붕각이고 돌려차기가 선풍각인데 전사 모션이 자꾸 나가. 거기다 다라밀공은 팔을 처음부터 올리는게아니라 다라밀공 누르고 딜레이 후 스킬이 나갈때만 팔을 올려야해.",
+  "sourceSheet": "Asset_Animation_Frame_Master; Skill_Master historical rows unchanged",
+  "sourceIds": [
+    "SK_무도가_002",
+    "SK_무도가_007",
+    "SK_무도가_014",
+    "SK_무도가_020"
+  ],
+  "before": {
+    "front": "c14/15/18 and c19/20/23",
+    "side": "c14/15/17 and c19/20/22",
+    "spin": "c14/15/17/18 and c19/20/22/23",
+    "dara": "arms raised at normalized .025 during 3sec preparation"
+  },
+  "after": {
+    "front": "d0/1/2 rear and d3/4/5 front",
+    "side": "d10/11/12/13 rear and d14/15/16/17 front",
+    "spin": "same original side-kick frames traverse rear and front orientations then recover",
+    "dara": "equipped standing before contact3sec; f1/f3 raise at actual damage release; lower and recover"
+  },
+  "reason": "Device report overrides incorrect V80 c-group selections. Full original d-group view visibly contains lifted knees and extended feet; c14–23 contains grounded lunge/hand thrust. Correct delayed release pose without changing damage, range, resource or contact.",
+  "affected": [
+    "tools/generate_skill_presentation.py",
+    "docs/SKILL_ACTION_DECISIONS.csv",
+    "app/src/main/java/com/projectdark/mobile/GameView.java",
+    "app/src/test/java/com/projectdark/mobile/MartialDefenseStarRegressionTest.java"
+  ],
+  "sourceHashes": {
+    "master/source/skill_fx/naver_classic_2020/8ec5d74c18de3f14.gif": "c8feef5ebaff80a710a281f86d4695ce4fd7a37288aa74e20f09a17b7bfe47ed",
+    "master/source/skill_fx/naver_classic_2020/1c0b975a9a213465.gif": "c909b89bcff0c8d3219a066a2e8e95823fc7a1c245ef74af008c81dbcf6b2107",
+    "master/source/skill_fx/naver_classic_2020/e81d9ac269e3aa35.gif": "c436eba1dd47cf6eb6da2e7e7b0790df165c70402d7a25170eb9ec1669b98f6c",
+    "master/source/skill_fx/naver_classic_2020/57ea601283e249bb.gif": "3078b4253060e5dbe9f2822f8adce9446c76c6f7f419a625bb35383cd32511a9"
+  },
+  "limits": [
+    "Original source GIF covers one facing and outfits differ; project sequencing and spin interpolation do not prove original cadence.",
+    "Female creator UI and missing animated garment groups remain prior declared gaps."
+  ],
+  "approvalPreserved": [
+    "Ragnarok user accepted",
+    "Complete Defense user accepted"
+  ]
+}

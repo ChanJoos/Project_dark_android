@@ -1,0 +1,54 @@
+{
+  "versionCode": 73,
+  "versionName": "0.73-all-job-visible-tabs",
+  "branch": "codex/original-skill-contract-v65",
+  "pr": 176,
+  "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "runtimeAndTestHead": "8dc610e17abbf005073fbd0b33fc61d67d7c2593",
+  "actualPrCheckout": "f90facca64233f7ac12fd61a587d950a1230b378",
+  "equalTree": "d52bf4ba6610925192497626120882a18f8c0e56",
+  "runId": 36813536121,
+  "jobId": 110213560625,
+  "conclusion": "SUCCESS",
+  "builtAsiaSeoul": "2026-10-01T13:10:36+09:00",
+  "apkArtifactId": 11140962290,
+  "reviewArtifactId": 11140653325,
+  "verification": {
+    "apkSha256": "626907f1d71c562e3789fc522b12095f6d5224b65ba9b78861ac9f12c7c10f85",
+    "apkBytes": 25528023,
+    "preservedV72Assets": 818,
+    "previewSha256": "13459b988855fa7b91ea01ed32bb3ce5621784692a986749ef75957b7e97b15e",
+    "artifactHashes": {
+      "v73-delivery-apk.zip": "c479e2a6991ead04ad76e0d9ac94292976503ca4b73dd5779f4a400ca9690dcf",
+      "v73-delivery-review.zip": "352b9e1dee9ca86ac2a7b77457828d781c91c878414bc9cded4cd6ea4eea1a40"
+    },
+    "nativeReviewHashes": {
+      "skill-window-v73-6.png": "330a42e8c29f7140223d31da16a93ad146617088890104ca71cf2ff02d499e8f",
+      "skill-window-v73-4.png": "ae100a0398a9994cf34f6790fe09132444209f320ba3b8d5591031675de932ba",
+      "skill-window-v73-all-tabs.png": "13459b988855fa7b91ea01ed32bb3ce5621784692a986749ef75957b7e97b15e",
+      "skill-window-v73-2.png": "7e8204519d86e5fc3a1117f12ddd1348bff31be9da52339240f20cc3e35177c0",
+      "skill-window-v73-reference-rogue.png": "52b8f58947b8f59194615de4c57a4e8a3e7aebc95771ccdabaced5d8cc4d6c10",
+      "skill-window-v73-scrolled.png": "eab74ad2d7d3141e77bc1640ed7dbeff7efde8fe67e8d619e242fd0fc792bc45",
+      "skill-window-v73-0.png": "e04fe032b23ea354f96535c215304e12fa306e3cc2564801d65af71779d41908",
+      "skill-window-v73-5.png": "750b5798c9a9270c346e9abd11282612286e0636e53b20a841a0491492a85235",
+      "skill-window-v73-3.png": "cb751893cf74042f35efdb89b51d6bf81f31884e6e3054e9826fa60bb1cc44e5",
+      "skill-window-v73-1.png": "d59e24ac5bdf264481ed39b388d062a8af1a8a23fd8b1e9f4d0f1f81a401a991"
+    }
+  },
+  "scope": [
+    "Seven job tabs simultaneously visible in one row; no paging",
+    "Direct real GameView touch selects common/Warrior/Rogue/Martial/Mage/Cleric/all",
+    "All221 catalog IDs reachable, exact source trap pixels, scroll/clipping/world isolation",
+    "Existing skill learning/economy/quickslot/save and all configured world/BODY/VFX/combat/growth/restart regressions",
+    "All818 V72 packaged assets byte-identical; no skill mechanics/data changes"
+  ],
+  "visualReview": "NATIVE_REVIEWED: all-tabs and selected Rogue frames; physical-device/user visual acceptance PENDING",
+  "pending": [
+    "Previously recorded61 window icon bindings,9 inferred-name acceptance and133 service/presentation gaps unchanged",
+    "Physical-device/user visual acceptance"
+  ],
+  "libraryDeliverables": {
+    "apk": "libfile_2d4dbf5193fc8191a93b4b02bc04705a",
+    "preview": "libfile_b529a1b188648191b7b540c1622b3efb"
+  }
+}

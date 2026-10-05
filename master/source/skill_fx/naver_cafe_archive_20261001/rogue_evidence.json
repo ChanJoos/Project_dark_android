@@ -1,0 +1,1648 @@
+{
+  "revision": "ROGUE_SOURCE_EVIDENCE_2015_V1",
+  "rows": [
+    {
+      "articleId": 245450,
+      "sectionNumber": "1.",
+      "name": "기본공격",
+      "sourceNames": [
+        "기본공격"
+      ],
+      "candidateSkillIds": [
+        "SK_공통_001"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "1. 기본공격  : 선수과목 없이 그냥 아이디 생성하면 있는 기본공격 입니다..\n힘 : 3  인트 : 3  위즈 : 3  콘 : 3  덱스 : 3",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 3
+      },
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "2.",
+      "name": "자물쇠열기",
+      "sourceNames": [
+        "자물쇠열기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_032"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "2. 자물쇠열기 : 잠겨져 있는 자물쇠를 연다..는데 전 잘 모르겠습니다..\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 1,000전\n힘 : 3  인트 : 3  위즈 : 3  콘 : 3  덱스 : 3\n★ 2써클 기술",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 3
+      },
+      "sourceMaterialsRaw": "금전 1,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "3.",
+      "name": "센스몬스터",
+      "sourceNames": [
+        "센스몬스터"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_002"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "3. 센스몬스터 : 몬스터의 정보를 조사한다..   도적 필수기술이죠.. 몹의 속성을 파악합니다.\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 5,000전\n힘 : 3  인트 : 5  위즈 : 3  콘 : 3  덱스 : 4\n* 기술시전시 아래와 같습니다.\nName=몹 이름, EXP=주는 겸치, HP=몹 체력, Lev=몹 레벨\nATTACK NATURE=몹이 공격하는 속성(몹이 착용하고 있는 속성 목걸이라고 생각하시면 편하겠네요)\nDEFENSE NATURE=몹이 방어하는 속성(마찬가지로 몹이 착용하고 있는 벨트라고 생각하시면..)\n방어 속성이 수 일경우 토속성 공격, 토일경우 풍, 풍일경우 화, 화일경우 수\n기본적으로   수>토>풍(숲 속성 대체가능)>화(강철 속성 대체가능)   이구요\n암흑속성 빛(신성)속성이 있습니다.   암흑은 기본속성을 다 이기고(70%), 빛은 기본속성한테 안이긴다고 쉽게 생각하시면 되고,  암흑과 빛은 서로 죽고 죽이는 속성? 입니다.\n※ 속성관련 한것은 어둠 홈피에 친절히 나와 있는 것으로 알고 있습니다.",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 5,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 4
+      },
+      "sourceMaterialsRaw": "금전 5,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "4.",
+      "name": "표창날리기",
+      "sourceNames": [
+        "표창날리기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_003"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "4. 표창날리기 : 표창이나 수리검을 던진다.   승급이전 도적님들이 몹 땡길때 쓸 수 있겠네요..\n배우는 장소 : 피에트 전투기술사범\n필요 준비물 : 금전 5,000전\n힘 : 6  인트 : 3  위즈 : 3  콘 : 3  덱스 : 4\n* 기술시전시 아래와 같습니다.\n본인 앞 4칸까지는 공격되고, 5칸부터는 공격되지 않는것 같습니다. 관통은 없고 1타켓만 타격\n거리에 따른 데미지 차이는 없는 것 같습니다. 그냥 평타, 크리타 정도 인듯합니다.",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 6,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 4
+      },
+      "sourceMaterialsRaw": "금전 5,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 전투기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 5,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830.gif",
+          "sha256": "4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "5.",
+      "name": "밀기",
+      "sourceNames": [
+        "밀기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_004"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "5. 밀기 : 유저를 한칸 민다. 몬스터에게는 사용불가..  사냥시 긴급하게 밀거나, 장난치거나, 밀기 ㅍㅋㅇ범들이 사용하겠네요 -_-;;\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 5,000전\n힘 : 3  인트 : 6  위즈 : 3  콘 : 3  덱스 : 4\n* 기술시전시 아래와 같습니다.\n(예전에는 연습장에서 밀기로 방 해 를 많이 했던것 같습니다. 그로 인해 연습장에서 사용이 금지된 기술..\n전 안했어요..\n)",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 6,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 4
+      },
+      "sourceMaterialsRaw": "금전 5,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 7,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/5a2ccba1af68a02e791ad513f6d3f045a7151d4b6b48e6374424e47aa2fc15e6.gif",
+          "sha256": "5a2ccba1af68a02e791ad513f6d3f045a7151d4b6b48e6374424e47aa2fc15e6",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "6.",
+      "name": "아무네지아",
+      "sourceNames": [
+        "아무네지아"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_005"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "6. 아무네지아 : 주의를 다른곳으로 돌린다.   아주 중요한 기술인것 같습니다. 법사의 콘푸지오 같은 효과를 봅니다.\n선수과목 : 표창날리기 10\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 5,000전\n힘 : 6  인트 : 3  위즈 : 3  콘 : 3  덱스 : 5\n* 기술시전시 아래와 같습니다.\n(사용하려는 대상 몹과 1칸 떨어진채 사용해야 합니다.)\n몹이 나를 인식하고 있을때 기습, 습격, 백스탭 등의 기술이 시전되지 않습니다.\n도적의 경우 때리던 몹에 기습, 습격, 백스탭을 가하고 싶을때 한칸 떨어진채로 아무네지아를 써서 잠깐 멍때리게 한 후 기술 사용하면 되겠습니다.",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 6,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 5
+      },
+      "sourceMaterialsRaw": "금전 5,000전",
+      "sourcePrerequisiteRaw": "표창날리기 10",
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 9,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/68cf124c18a9db0997670d3589a788c9786aec6c7fca726bb8dcb660a7cc8872.gif",
+          "sha256": "68cf124c18a9db0997670d3589a788c9786aec6c7fca726bb8dcb660a7cc8872",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "7.",
+      "name": "연막탄터뜨리기",
+      "sourceNames": [
+        "연막탄터뜨리기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_006"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "7. 연막탄터뜨리기 : 연막탄을 사용하여 시야를 어둡게 한다.\n그룹원들에게는 통하지 않는다.    주요 사냥터에서 자주 사용하는 기술입니다.\n선수과목 : 표창날리기 30\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 5,000전\n힘 : 16  인트 : 3  위즈 : 3  콘 : 3  덱스 : 10\n* 기술시전시 아래와 같습니다.\n(예전에 마을에서 막 터뜨리고 했던거 같은데 지금은 사냥터에서만 되는것 같습니다.)\n화면 전체인지, 맵 전체인지는 모르겠습니다만, 본인이 보는 화면에 있는 모든 몹들이\n이펙이 적용되면서 약 3초간 암흑상태가 됩니다. 전체 딜루라고나 할까...",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 16,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 10
+      },
+      "sourceMaterialsRaw": "금전 5,000전",
+      "sourcePrerequisiteRaw": "표창날리기 30",
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [
+        "이펙이 적용되면서 약 3초간 암흑상태가 됩니다. 전체 딜루라고나 할까..."
+      ],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 11,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/63a38209cbb4469caaaca786d16faaf50c459b1199299bf44e01528289d358dd.gif",
+          "sha256": "63a38209cbb4469caaaca786d16faaf50c459b1199299bf44e01528289d358dd",
+          "frames": 5,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "8.",
+      "name": "찔러휘비기",
+      "sourceNames": [
+        "찔러휘비기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_007"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "8. 찔러휘비기 : 날카로운 무기를 이용하여 대상을 찌른다.    도적의 기본적인 공격기술 입니다.\n배우는 장소 : 피에트 전투기술사범(기초공격기술배우기로 습득)\n필요 준비물 : 금전 5,000전\n힘 : 18  인트 : 3  위즈 : 3  콘 : 3  덱스 : 12\n* 기술시전시 아래와 같습니다.\n★ 3써클 기술",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 18,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 12
+      },
+      "sourceMaterialsRaw": "금전 5,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 전투기술사범(기초공격기술배우기로 습득)",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 13,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
+          "sha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "9.",
+      "name": "더블어택",
+      "sourceNames": [
+        "더블어택"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_008"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "9. 더블어택 : 칼을 빠르게 두번 휘두를수 있게 하는 기술..   이랍니다..\n기본공격과 함께 나가는 기술로   한번에 2번 때린다고 생각하시면 됩니다.\n선수과목 : 표창날리기 60\n배우는 장소 : 피에트 전투기술사범\n필요 준비물 : 금전 12,000전\n힘 : 20  인트 : 3  위즈 : 3  콘 : 3  덱스 : 14",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 20,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 14
+      },
+      "sourceMaterialsRaw": "금전 12,000전",
+      "sourcePrerequisiteRaw": "표창날리기 60",
+      "sourceTrainerRaw": "피에트 전투기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "10.",
+      "name": "품뒤져보기",
+      "sourceNames": [
+        "품뒤져보기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_009"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "10. 품뒤져보기 : 대상의 아이템창을 조사한다.  다른유저의 아이템을 확인하는 기술 입니다.\n선수과목 : 센스몬스터 60\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 12,000전\n힘 : 23  인트 : 3  위즈 : 3  콘 : 3  덱스 : 18\n* 기술시전시 아래와 같습니다.\n(내화면)\n(상대방 화면)\n상대방 화면은 찔러보는 모습이 다 보입니다.. 주의..",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 23,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 18
+      },
+      "sourceMaterialsRaw": "금전 12,000전",
+      "sourcePrerequisiteRaw": "센스몬스터 60",
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 17,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/3c3ca7b04a5ddbd1fd7c00fd3c1ff77ffde839ba8d83f99c72cb407c602def32.gif",
+          "sha256": "3c3ca7b04a5ddbd1fd7c00fd3c1ff77ffde839ba8d83f99c72cb407c602def32",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "11.",
+      "name": "센스",
+      "sourceNames": [
+        "센스"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_010"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "11. 센스 : 유저의 정보를 조사한다.\n선수과목 : 센스몬스터 100\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 12,000전\n힘 : 3  인트 : 9  위즈 : 3  콘 : 3  덱스 : 24\n* 기술시전시 아래와 같습니다.\n센스몬스터와 비슷합니다.\n단, 5써클(지존) 도적은 상대방의 스탯은 보이지 않습니다.\n상대방의 스탯은 승급도적 이상만 확인되겠습니다.\n(제 전직용 도적이랍시고 키우던건데.. 조금 망했.. 심심하신 누군가 ㅉ을 좀..)\n★ 4써클 기술\n(아이템 고치기 생략)\n4써클 이상 기술부터는 필요 준비물이 늘어 납니다.. 사범들이 형편이 좋지 않아서...",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 9,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 24
+      },
+      "sourceMaterialsRaw": "금전 12,000전",
+      "sourcePrerequisiteRaw": "센스몬스터 100",
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "12.",
+      "name": "두번찌르기",
+      "sourceNames": [
+        "두번찌르기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_014"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "12. 두번찌르기 : 날렵한 공격으로 한번에 두번찌른다.  때린곳 또 때리기..  도적 기본 기술2 입니다.\n선수과목 : 더블어택 75, 찔러휘비기 60\n배우는 장소 : 피에트 전투기술사범\n필요 준비물 : 금전 50,000전, 엑스쿠라눔 3개, 쿠라눔 6개, 쌍은귀걸이 2개\n힘 : 38  인트 : 3  위즈 : 3  콘 : 3  덱스 : 32\n* 기술시전시 아래와 같습니다.\n(두번찔르는거 같습니까.. 그냥 찔러휘비기랑 같아보입니까??)",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 38,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 32
+      },
+      "sourceMaterialsRaw": "금전 50,000전, 엑스쿠라눔 3개, 쿠라눔 6개, 쌍은귀걸이 2개",
+      "sourcePrerequisiteRaw": "더블어택 75, 찔러휘비기 60",
+      "sourceTrainerRaw": "피에트 전투기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 21,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f.gif",
+          "sha256": "9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "13.",
+      "name": "습격",
+      "sourceNames": [
+        "습격"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_015"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "13. 습격 : 대상이 모르게 갑자기 공격한다.\n5써클(지존)이하 도적의 기술중 가장 강한 기술 인것 같습니다.(체높은 도적의 암살 제외)\n선수과목 : 찔러휘비기 75, 두번찌르기 30\n배우는 장소 : 피에트 전투기술사범\n필요 준비물 : 금전 50,000전, 엑스쿠라눔 5개, 쿠라눔 10개, 쌍금귀걸이 2개\n힘 : 46  인트 : 3  위즈 : 3  콘 : 3  덱스 : 40\n* 기술시전시 아래와 같습니다.\n제 케릭이 순수승급 도적이어서, 길드에 동명이인인 동생 케릭으로 기습이펙을 획득했습니다.",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 46,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 40
+      },
+      "sourceMaterialsRaw": "금전 50,000전, 엑스쿠라눔 5개, 쿠라눔 10개, 쌍금귀걸이 2개",
+      "sourcePrerequisiteRaw": "찔러휘비기 75, 두번찌르기 30",
+      "sourceTrainerRaw": "피에트 전투기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [
+        "제 케릭이 순수승급 도적이어서, 길드에 동명이인인 동생 케릭으로 기습이펙을 획득했습니다."
+      ],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 23,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d.gif",
+          "sha256": "64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "14.",
+      "name": "함정해체",
+      "sourceNames": [
+        "함정해체"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_018"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "14. 함정해체 : 던전의 함정을 해체시킨다.\n3써 후반 이상? 던전에 있는 함정을 해체하는 기술입니다. 근데 함정해체 실패도 하나요?\n배우는 장소 : 피에트 전투기술사범\n필요 준비물 : 금전 50,000전, 엑스쿠라눔 5개, 쿠라눔 10개, 쌍금귀걸이 2개\n힘 : 65  인트 : 3  위즈 : 3  콘 : 3  덱스 : 49\n* 기술시전시 아래와 같습니다.\n예전엔 기술모션은 나갔던것 같은데 현재는 없어진것 같습니다. (혹시나 해서 3써옷으로도 해봄.)\n★ 5써클 기술",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 65,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 49
+      },
+      "sourceMaterialsRaw": "금전 50,000전, 엑스쿠라눔 5개, 쿠라눔 10개, 쌍금귀걸이 2개",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 전투기술사범",
+      "sourceMotionLines": [
+        "예전엔 기술모션은 나갔던것 같은데 현재는 없어진것 같습니다. (혹시나 해서 3써옷으로도 해봄.)"
+      ],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 25,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a.gif",
+          "sha256": "c4b20d502f01823dbfd670630b10df441ef9dd51cdcf8343b8b03e4c9a10322a",
+          "frames": 2,
+          "durationsMs": [
+            300,
+            300
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "15.",
+      "name": "적갑옷해체",
+      "sourceNames": [
+        "적갑옷해체"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_019"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "15. 적갑옷해체 : 대상의 갑옷을 해체.    유저에게만 적용됩니다. 배틀장에서만 사용 되는 것 같습니다.\n선수과목 : 하이드 100\n배우는 장소 : 피에트 특수기술사범\n필요 준비물 : 금전 500,000전, 엑스쿠라눔 8개, 쿠라눔 12개, 쌍금귀걸이 4개\n힘 : 78  인트 : 3  위즈 : 3  콘 : 3  덱스 : 52\n* 기술시전시 아래와 같습니다.\n배틀장에서 상대의 갑옷을 해체시키고 기습 날리면 쌔겠죠?",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 78,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 52
+      },
+      "sourceMaterialsRaw": "금전 500,000전, 엑스쿠라눔 8개, 쿠라눔 12개, 쌍금귀걸이 4개",
+      "sourcePrerequisiteRaw": "하이드 100",
+      "sourceTrainerRaw": "피에트 특수기술사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 27,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd.gif",
+          "sha256": "68e2acb9c885fb8920c074c49f9f00256c6b9bed5818238adbef2b25cddf19fd",
+          "frames": 7,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "16.",
+      "name": "암살격",
+      "sourceNames": [
+        "암살격"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_020"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "16. 암살격 : 체력을 소모하여 불시에 공격한다.     필살기죠.. 팟..\n선수과목 : 습격 90\n배우는 장소 : 암살격이벤트 클리어시 습득  (검색)\n힘 : 80  인트 : 3  위즈 : 3  콘 : 3  덱스 : 55\n* 기술시전시 아래와 같습니다.\n(ㄱㄱㄱㄱ 없어지면 했어야지!!! ㅠㅠ)\n★ 승급 기술",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 80,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 55
+      },
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": "습격 90",
+      "sourceTrainerRaw": "암살격이벤트 클리어시 습득  (검색)",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 29,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/47b14b65d53c7ff831e21a6ba533830e4b24a6aae84b7476203670aea7c1b429.gif",
+          "sha256": "47b14b65d53c7ff831e21a6ba533830e4b24a6aae84b7476203670aea7c1b429",
+          "frames": 10,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "17.",
+      "name": "기습",
+      "sourceNames": [
+        "기습"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_023"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "17. 기습 : 대상의 방어력을 떨어뜨리면서 불시에 공격     갓승급이 쓸수있는 최고 데미지 기술인것 같습니다.\n배우는 장소 : 승급기본기술 (승급하면 셔스가 갈챠줌..)\n힘 : 0  인트 : 0  위즈 : 0  콘 : 0  덱스 : 0\n* 기술시전시 아래와 같습니다.",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "승급기본기술 (승급하면 셔스가 갈챠줌..)",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 31,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa.gif",
+          "sha256": "25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "18.",
+      "name": "트리플어택",
+      "sourceNames": [
+        "트리플어택"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_024"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "18. 트리플어택 : 칼을 빠르게 세번 휘두를수 있게 하는 기술\n배우는 장소 : 승급기본기술 (승급하면 셔스가 갈챠줌..)\n힘 : 0  인트 : 0  위즈 : 0  콘 : 0  덱스 : 0\n* 기술시전시 아래와 같습니다.\n기본공격 모션인데 데미지가 3칸 나가는게 보입니까?",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "승급기본기술 (승급하면 셔스가 갈챠줌..)",
+      "sourceMotionLines": [
+        "기본공격 모션인데 데미지가 3칸 나가는게 보입니까?"
+      ],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 33,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/eb1a39c44895d3305c85221001bcf5706dd0412f6ee2ca40a3b83bfbb513e40b.gif",
+          "sha256": "eb1a39c44895d3305c85221001bcf5706dd0412f6ee2ca40a3b83bfbb513e40b",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "19.",
+      "name": "함정파기",
+      "sourceNames": [
+        "함정파기"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_025"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "19. 함정파기 : 체력을 소모시키는 함정을 판다.\n사실 저도 없습니다... 이거 유용합니까?? ㅡㅡ;;\n선수과목 : 기습 10\n배우는 장소 : 승급셔스\n힘 : 92  인트 : 24  위즈 : 27  콘 : 15  덱스 : 130",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 92,
+        "INT": 24,
+        "WIS": 27,
+        "CON": 15,
+        "DEX": 130
+      },
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": "기습 10",
+      "sourceTrainerRaw": "승급셔스",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "20.21.",
+      "name": "마구찌르기, 슬래쉬",
+      "sourceNames": [
+        "마구찌르기",
+        "슬래쉬"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_021",
+        "SK_도적_022"
+      ],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "기술",
+      "rawSection": "20.21. 마구찌르기, 슬래쉬 : 각 각 찔러휘비기, 두번찌르기가 업그레이드된 기술      전 아직 못배웠네여  ;;\n배우는 장소 : 밀레스신전 세토아\n필요준비물 : 베레스의발톱 2개, 포보스의글러브 2개, 브론즈오피온의비늘 1개\n* 기술시전시 아래와 같습니다.\n<마구찌르기>                                <슬래쉬>",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": "베레스의발톱 2개, 포보스의글러브 2개, 브론즈오피온의비늘 1개",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "밀레스신전 세토아",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 36,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b.gif",
+          "sha256": "b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b",
+          "frames": 4,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        },
+        {
+          "imageIndex": 37,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8.gif",
+          "sha256": "332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8",
+          "frames": 4,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "22.",
+      "name": "습격진",
+      "sourceNames": [
+        "습격진"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_028"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "22. 습격진 : 위력이 증가한 습격   (비전직 순수 승급 도적만 배울 수 있습니다.)\n배우는 장소 : 승급셔스\n필요 준비물 : 금전 1,000,000원 배틀부츠 3개, 데스나이트의투구 3개\n힘 : 0  인트 : 0  위즈 : 0  콘 : 0  덱스 : 0\n* 기술시전시 아래와 같습니다.\n이펙은 뭐 별게 없네요..ㅎ  뭔가 공간을 가르는 느낌이..ㅎ\n<이미지, 기술표에는 없습니다. 윈드블레이드? 같네요 ^^>",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "sourceMaterialsRaw": "금전 1,000,000원 배틀부츠 3개, 데스나이트의투구 3개",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "승급셔스",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [
+        "이펙은 뭐 별게 없네요..ㅎ  뭔가 공간을 가르는 느낌이..ㅎ"
+      ],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 39,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983.gif",
+          "sha256": "116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "23.",
+      "name": "백슬래쉬",
+      "sourceNames": [
+        "백슬래쉬"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_030"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "23. 백슬래쉬 : 전방, 후방 각 1칸 공격 기술\n(비전직 순수 승급 도적만 배울 수 있습니다.)\n배우는 장소 : 밀레스신전   키워드 \"순수직업입니다.\"\n필요준비물 : 금전 20,00,000원, 포보스방패, 깨진포보스방패\n힘 : 105  인트 : 15  위즈 : 20  콘 : 15  덱스 : 155\n현자 천장지구투님 말씀을 참고해보면..  딜레이는 약 6초, 이펙트는 돌진이랑 흡사\n몹이 나를 인식해도 기술이 나간다는 장점이 있다고 하네요..\n배워보니 앞뒤로 한칸씩 기술 인식되네요 ㅎㅎ\n(기술표에 없네요..)",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 105,
+        "INT": 15,
+        "WIS": 20,
+        "CON": 15,
+        "DEX": 155
+      },
+      "sourceMaterialsRaw": "금전 20,00,000원, 포보스방패, 깨진포보스방패",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "밀레스신전   키워드 \"순수직업입니다.\"",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [
+        "현자 천장지구투님 말씀을 참고해보면..  딜레이는 약 6초, 이펙트는 돌진이랑 흡사"
+      ],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 41,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/87e8ba3b3eecbc50e7ad7212d0ebbee30cc664de39640d0a0aec0b30692ee1a1.gif",
+          "sha256": "87e8ba3b3eecbc50e7ad7212d0ebbee30cc664de39640d0a0aec0b30692ee1a1",
+          "frames": 4,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "24.",
+      "name": "백스탭",
+      "sourceNames": [
+        "백스탭"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_029"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "24. 백스탭 : 습격진이랑 비슷비슷한 데미지 기술..  (비전직 순수 승급 도적만 배울 수 있습니다.)\n배우는 장소 : 밀레스신전   키워드 \"순수직업입니다.\"\n필요 준비물 : 금전 30,000,000원, 드라코의눈 10개, 베레스의발톱 20개\n힘 : 110  인트 : 15  위즈 : 20  콘 : 15  덱스 : 165\n* 기술시전시 아래와 같습니다.\n(기술표에 없네요..)",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 110,
+        "INT": 15,
+        "WIS": 20,
+        "CON": 15,
+        "DEX": 165
+      },
+      "sourceMaterialsRaw": "금전 30,000,000원, 드라코의눈 10개, 베레스의발톱 20개",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "밀레스신전   키워드 \"순수직업입니다.\"",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 43,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70.gif",
+          "sha256": "8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70",
+          "frames": 5,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "25.",
+      "name": "암살격진",
+      "sourceNames": [
+        "암살격진"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_027"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "기술",
+      "rawSection": "25. 암살격진 : 위력이 증가한 암살격   (비전직 순수 승급 도적만 배울 수 있습니다.)\n배우는 장소 : 승급셔스  키워드 \"기술\"\n필요 준비물 : 조나단백작의문장\n힘 : 115  인트 : 20  위즈 : 25  콘 : 20  덱스 : 175\n* 기술시전시 아래와 같습니다.\n★ 2차 직업(궁사) 기술",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 115,
+        "INT": 20,
+        "WIS": 25,
+        "CON": 20,
+        "DEX": 175
+      },
+      "sourceMaterialsRaw": "조나단백작의문장",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "승급셔스  키워드 \"기술\"",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 45,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/93a29acbc82a032537c74fe23fcf2c8f5528c32a0e3c66d0cd76bb5884a872a5.gif",
+          "sha256": "93a29acbc82a032537c74fe23fcf2c8f5528c32a0e3c66d0cd76bb5884a872a5",
+          "frames": 11,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "26.",
+      "name": "사격",
+      "sourceNames": [
+        "사격"
+      ],
+      "candidateSkillIds": [],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "기술",
+      "rawSection": "26. 사격 : 궁사 기본기술",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "27.",
+      "name": "활쏘기",
+      "sourceNames": [
+        "활쏘기"
+      ],
+      "candidateSkillIds": [],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "기술",
+      "rawSection": "27. 활쏘기 : 화살을 사용한 원거리 공격 기술\n필요준비물 : 기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^\n기술 이펙트와 활용성은 카나메마나카 님 글 참조하시면 되겠습니다..",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": "기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [
+        "기술 이펙트와 활용성은 카나메마나카 님 글 참조하시면 되겠습니다.."
+      ],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "28.",
+      "name": "저격",
+      "sourceNames": [
+        "저격"
+      ],
+      "candidateSkillIds": [],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "기술",
+      "rawSection": "28. 저격 : 원거리에서 적이 모르게 공격하는 기술\n제일 유명하죠.. 나이x, 아x다스 처럼..\n도적 어빌 기술에서 뭐 최고 기술 정도라고 설명할 수 있을 것 같습니다.(전방 5칸?을 없애버리져...)\n신화의 신곡 가사중에   \"네심장을 저격해~♬\" (어둠하거나 서든하는걸까요? ㅈㅅ)\n필요준비물 : 기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^\n기술 이펙트는 배우면 올릴까요??ㅠㅠ",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": "기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [
+        "기술 이펙트는 배우면 올릴까요??ㅠㅠ"
+      ],
+      "demonstrationCandidates": [],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "29.",
+      "name": "라이트닝트랩",
+      "sourceNames": [
+        "라이트닝트랩"
+      ],
+      "candidateSkillIds": [],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "기술",
+      "rawSection": "29. 라이트닝트랩 : 전격 함정을 통해 적을 마비시키는 기술\n이 기술은 순수 도적 승급자만 배울 수 있는 기술입니다.  저격과 마찬가지로 아주 좋은 기술 입니다...\n필요준비물 : 기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^\n* 기술시전시 아래와 같습니다.\n기술 시전하면 레벨에 따라 1~3개의 파란 함정이 생깁니다.\n(제 케릭이 부족해서 옆에서 ㅁㅋ 하던 트로엔님 동의를 구하지 못하고 .. ㅈㅅ ㅠㅠ)\n그 빨판에 몹이 들어서면 오른쪽 처럼 전기에 감전되서 움직이질 못합니다.\n때려도 나르처럼 풀리는게 아니고, 일정시간이 지나면 풀리는 함정 기술\n이 기술 활용에 따라 순도 급이 나뉜다나.. 어쩐다나.. 저랑 아직 상관없는.. ㅠㅠ",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": "기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 51,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/47c8abeb9496ddcc4d6d671d556d4c4578b9c2475716e8a109012f92dae36c54.gif",
+          "sha256": "47c8abeb9496ddcc4d6d671d556d4c4578b9c2475716e8a109012f92dae36c54",
+          "frames": 9,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245450,
+      "sectionNumber": "30.",
+      "name": "아머크래쉬",
+      "sourceNames": [
+        "아머크래쉬"
+      ],
+      "candidateSkillIds": [],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "기술",
+      "rawSection": "30. 아머크래쉬 : 적의 방어력을 무력화하는 기술\n필요준비물 : 기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^\n이 기술도 나중에 올려놓을게여..ㅠ\n* 기술시전시 아래와 같습니다.(백스텝 같네용)\n도적기술 마무리하며..\n제가 글을 언제 남긴적이 있는지는 모르겠습니다.. 대부분 눈팅, 댓글 \"ㅋㅋㅋ\", \"우왕 이쁘네여\" 등만 한거 같습니다..\n그냥.. 자다가 일어나서 갑자기 그냥 생각나서 한번 해봤습니다..\n마법 까지 다 저장 해뒀는데,, 너무 힘들어서.. 다음에 올릴게여..\n카나메마도카님 등 자료 올려주시는 분들께\n감사의 마음을 항상.. 갖고 있습니다.. (대단하십니다.)\n(맞춤법 오타 등은 아.. 멍청하구나 하구 넘어가시고,, 부족한 점이나 보충 설명 등은 알려주시면.. 참고할게요..)\n투표는 표시되지 않습니다.",
+      "sourceSnapshotSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450?fromList=true&menuId=132&tc=cafe_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": "기술렙에 따라 틀립니다. 게임상에서 확인해주세요 ^^",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 53,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/860b71929cf54e5bb508e1ae3fa57ea79f3820e9e5fdc2450e82aaa78524f4fb.gif",
+          "sha256": "860b71929cf54e5bb508e1ae3fa57ea79f3820e9e5fdc2450e82aaa78524f4fb",
+          "frames": 5,
+          "durationsMs": [
+            180,
+            180,
+            180,
+            180,
+            180
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "1.",
+      "name": "쿠로토",
+      "sourceNames": [
+        "쿠로토"
+      ],
+      "candidateSkillIds": [
+        "SK_공통_010"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "마법",
+      "rawSection": "1. 쿠로토 : 체력을 회복시키는 마법    (개인 힐, 도망가면서 많이 쓰져..ㅎㅎ 아악 죽기싫어 쿨토 쿨토 쿨토 이런느낌..)\n배우는 장소 : 피에트 백마법 사범\n필요준비물 : 금전 5,000전\n힘 : 3  인트 : 3  위즈 : 3  콘 : 3  덱스 : 3\n★ 3써클 마법",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 3,
+        "WIS": 3,
+        "CON": 3,
+        "DEX": 3
+      },
+      "sourceMaterialsRaw": "금전 5,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 백마법 사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 0,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/f4de75015085218e7d0c2c857b03214730236c2a7a0b5edc1a98f65cee359740.gif",
+          "sha256": "f4de75015085218e7d0c2c857b03214730236c2a7a0b5edc1a98f65cee359740",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "2.",
+      "name": "라이트닝무브",
+      "sourceNames": [
+        "라이트닝무브"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_013"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "마법",
+      "rawSection": "2. 라이트닝무브 : 몸을 민첩하게 해서 공격을 회피하는 기술\n배우는 장소 : 피에트 백마법 사범\n필요준비물 : 금전 12,000전\n힘 : 3  인트 : 11  위즈 : 10  콘 : 3  덱스 : 8",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 11,
+        "WIS": 10,
+        "CON": 3,
+        "DEX": 8
+      },
+      "sourceMaterialsRaw": "금전 12,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 백마법 사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 1,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50.gif",
+          "sha256": "e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "3.",
+      "name": "하이드",
+      "sourceNames": [
+        "하이드"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_011"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "마법",
+      "rawSection": "3. 하이드 : 자신의 몸을 투명하게하여 보이지 않게 한다\n배우는 장소 : 피에트 백마법 사범\n필요준비물 : 금전 12,000전\n힘 : 3  인트 : 18  위즈 : 12  콘 : 3  덱스 : 12\n하이드 상태에서는 투명인간이 됩니다. 하지만 다른 기술 또는 마법을 쓰면 하이드가 해제 됩니다.",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 18,
+        "WIS": 12,
+        "CON": 3,
+        "DEX": 12
+      },
+      "sourceMaterialsRaw": "금전 12,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 백마법 사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 2,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286.gif",
+          "sha256": "0f0b87541f7fe1843af389758839fcfb3a791736ce97c42779728257d9030286",
+          "frames": 3,
+          "durationsMs": [
+            300,
+            300,
+            300
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "4.",
+      "name": "함정찾기1",
+      "sourceNames": [
+        "함정찾기1"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_012"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "마법",
+      "rawSection": "4. 함정찾기1 : 1단계(3서클이하)의 함정을 찾는다\n배우는 장소 : 피에트 백마법 사범\n필요준비물 : 금전 12,000전\n힘 : 3  인트 : 18  위즈 : 13  콘 : 3  덱스 : 12\n★ 4써클 마법",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 18,
+        "WIS": 13,
+        "CON": 3,
+        "DEX": 12
+      },
+      "sourceMaterialsRaw": "금전 12,000전",
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": "피에트 백마법 사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 3,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2.gif",
+          "sha256": "6023d3d90cc7385adb2631723d333272f35128b8737fd8b81a1b2c833186b7d2",
+          "frames": 2,
+          "durationsMs": [
+            1000,
+            1000
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "5.",
+      "name": "센서스",
+      "sourceNames": [
+        "센서스"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_016"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "마법",
+      "rawSection": "5. 센서스 : 하이드상태인 유저를 볼 수 있게한다.\n배우는 장소 : 피에트 백마법 사범\n선수과목 : 하이드 30\n필요준비물 : 금전 50,000전, 엑스쿠라눔 5개, 산호귀걸이 2개, 마라디움 10개\n힘 : 3  인트 : 20  위즈 : 14  콘 : 3  덱스 : 3",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 20,
+        "WIS": 14,
+        "CON": 3,
+        "DEX": 3
+      },
+      "sourceMaterialsRaw": "금전 50,000전, 엑스쿠라눔 5개, 산호귀걸이 2개, 마라디움 10개",
+      "sourcePrerequisiteRaw": "하이드 30",
+      "sourceTrainerRaw": "피에트 백마법 사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 4,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f.gif",
+          "sha256": "d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f",
+          "frames": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        },
+        {
+          "imageIndex": 5,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/5d690c06930ad0b6c5217a469fd23b0de6202be4d63cf6ad9f27d2672f53658e.gif",
+          "sha256": "5d690c06930ad0b6c5217a469fd23b0de6202be4d63cf6ad9f27d2672f53658e",
+          "frames": 4,
+          "durationsMs": [
+            200,
+            200,
+            200,
+            200
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "6.",
+      "name": "함정찾기2",
+      "sourceNames": [
+        "함정찾기2"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_017"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "마법",
+      "rawSection": "6. 함정찾기2 : 2단계(4서클이상)의 함정을 찾는다\n배우는 장소 : 피에트 백마법 사범\n선수과목 : 함정찾기1 40\n필요준비물 : 금전 50,000원, 엑스쿠라눔 5개, 산호귀걸이 2개, 마라디움 10개\n힘 : 3  인트 : 20  위즈 : 14  콘 : 3  덱스 : 3\n★ 승급 마법",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 3,
+        "INT": 20,
+        "WIS": 14,
+        "CON": 3,
+        "DEX": 3
+      },
+      "sourceMaterialsRaw": "금전 50,000원, 엑스쿠라눔 5개, 산호귀걸이 2개, 마라디움 10개",
+      "sourcePrerequisiteRaw": "함정찾기1 40",
+      "sourceTrainerRaw": "피에트 백마법 사범",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 6,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d.gif",
+          "sha256": "07bf8385758b92499053a8e285d2e0e95e17213417e2394f5a89997617e1620d",
+          "frames": 5,
+          "durationsMs": [
+            500,
+            500,
+            500,
+            500,
+            500
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "7.",
+      "name": "하이더",
+      "sourceNames": [
+        "하이더"
+      ],
+      "candidateSkillIds": [
+        "SK_도적_026"
+      ],
+      "bindingStatus": "EXACT_NAME_JOB_MATCH",
+      "sourceKind": "마법",
+      "rawSection": "7. 하이더 : 대상의 모습을 일시적으로 감춘다.        유저 대상으로 사용함.\n배우는 장소 : 승급 셔스\n선수과목 : 없음. (함정파기 0은 없어진 기술이라 없이도 배워지는 것 같습니다. 제가 확인해볼게요)\n필요준비물 : 금전 10,000,000원, 드라코의눈 3개, 배틀부츠 3개\n힘 : 100  인트 : 30  위즈 : 34  콘 : 20  덱스 : 140\n★ 2차 직업 마법",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {
+        "STR": 100,
+        "INT": 30,
+        "WIS": 34,
+        "CON": 20,
+        "DEX": 140
+      },
+      "sourceMaterialsRaw": "금전 10,000,000원, 드라코의눈 3개, 배틀부츠 3개",
+      "sourcePrerequisiteRaw": "없음. (함정파기 0은 없어진 기술이라 없이도 배워지는 것 같습니다. 제가 확인해볼게요)",
+      "sourceTrainerRaw": "승급 셔스",
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 7,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d.gif",
+          "sha256": "4a3a5053567956740e5859bb99926058ad68bac0a652a02c6a60aa1c5c00781d",
+          "frames": 2,
+          "durationsMs": [
+            400,
+            400
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "8.",
+      "name": "Charge(챠지)",
+      "sourceNames": [
+        "Charge(챠지)"
+      ],
+      "candidateSkillIds": [],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "마법",
+      "rawSection": "8. Charge(챠지) : 화살의 위력을 모아 쏘는 마법 (마법 화살인듯)\n필요준비물은 마법 레벨에 따라 틀리니까 게임상에서 확인해주십시오.",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 8,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/6a1a10d2bd66153ea2ec43644a5825733d2a5978bed93e2aa79df90c9a79544a.gif",
+          "sha256": "6a1a10d2bd66153ea2ec43644a5825733d2a5978bed93e2aa79df90c9a79544a",
+          "frames": 6,
+          "durationsMs": [
+            180,
+            180,
+            180,
+            180,
+            180,
+            180
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    },
+    {
+      "articleId": 245456,
+      "sectionNumber": "9.",
+      "name": "회심의저격",
+      "sourceNames": [
+        "회심의저격"
+      ],
+      "candidateSkillIds": [],
+      "bindingStatus": "COMBINED_OR_UNBOUND_REVIEW_REQUIRED",
+      "sourceKind": "마법",
+      "rawSection": "9. 회심의저격 : 기를 모아 적에게 필살의 공격을 날리는 마법\n필요준비물은 마법 레벨에 따라 틀리니까 게임상에서 확인해주십시오.\n마법 시전시 아래같은 이펙트로 나가며, 1/3   2/3  3/3    3개의 데미지중 1개로 나간다고 합니다.\n어빌렙 상승에 따라 회심의저격 상위 레벨을 배우면  3/3(원킬) 확률이 올라간다고 하네요~^^\n아까 기술 올리는데 너무 많은 에너지를 쏟았네요 ㅋㅋ\n고수분들은 구경해주시고, 아직 초보이신 유저분들이 참고해주시면 좋겠습니다.\n즐둠하세여!!\n투표는 표시되지 않습니다.",
+      "sourceSnapshotSha256": "80140cfc62972130e97280014cf1bf0d6b7af0f2fa62e42890952b077218843b",
+      "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245456?menuId=132&tc=article_bottom_article_list",
+      "evidence": "FAN_HISTORICAL_SOURCE_2015",
+      "sourceStats": {},
+      "sourceMaterialsRaw": null,
+      "sourcePrerequisiteRaw": null,
+      "sourceTrainerRaw": null,
+      "sourceMotionLines": [],
+      "sourceEffectLines": [
+        "마법 시전시 아래같은 이펙트로 나가며, 1/3   2/3  3/3    3개의 데미지중 1개로 나간다고 합니다."
+      ],
+      "demonstrationCandidates": [
+        {
+          "imageIndex": 9,
+          "path": "master/source/skill_fx/naver_cafe_archive_20261001/media/b0366dbb0bb29026790d867eaaa422c37f6af4019658f3401ac631f3a888351d.gif",
+          "sha256": "b0366dbb0bb29026790d867eaaa422c37f6af4019658f3401ac631f3a888351d",
+          "frames": 13,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "bindingStatus": "LABELLED_SECTION_CANDIDATE_VISUAL_REVIEW_REQUIRED"
+        }
+      ],
+      "runtimeChangeApplied": false
+    }
+  ],
+  "conflicts": [
+    {
+      "articleId": 245450,
+      "name": "습격",
+      "field": "demonstrationIdentity",
+      "status": "DO_NOT_BIND_AUTOMATICALLY",
+      "reason": "The author explicitly says the shown effect was acquired from another character as 기습. Do not assign this GIF to 습격 solely from its section or filename."
+    },
+    {
+      "articleId": 245450,
+      "name": "백슬래쉬",
+      "field": "iconIdentityAndGold",
+      "status": "UNRESOLVED",
+      "reason": "Author calls the icon 윈드블레이드? and prints Gold as 20,00,000. Preserve the ambiguity; do not guess icon identity or normalize currency to 2M/20M."
+    },
+    {
+      "articleId": 245456,
+      "name": "하이드",
+      "field": "breakOnAction",
+      "status": "BODY_COMMENT_CONFLICT",
+      "reason": "Body says other actions break stealth; visible comments name exceptions 센스몬스터, 센스, 콘푸지오. Preserve both as historical fan evidence, not accepted current mechanics."
+    },
+    {
+      "articleId": 245450,
+      "name": "함정파기",
+      "field": "availability",
+      "status": "BODY_COMMENT_CONFLICT",
+      "reason": "Body lists requirements; a visible comment says the skill was removed in an earlier patch. Do not implement availability from the body alone."
+    },
+    {
+      "articleId": 245456,
+      "name": "하이더",
+      "field": "targetAndPrerequisite",
+      "status": "REVIEW_RUNTIME",
+      "reason": "Source targets another user and treats the removed 함정파기 prerequisite as uncertain. Existing self-only project presentation is not original service behavior."
+    },
+    {
+      "articleId": 245450,
+      "name": "연막탄터뜨리기",
+      "field": "recipientScope",
+      "status": "VIEWPORT_VS_MAP_UNRESOLVED",
+      "reason": "Source observes all visible monsters, excludes group members and says about 3s; author explicitly does not establish viewport vs whole map."
+    }
+  ],
+  "visibleCommentPolicy": "Only skill-relevant conflict observations from loaded comments are indexed. Raw comments, commenter profiles and account data are not retained; all comment pages are not claimed complete.",
+  "scopePolicy": "2차 궁사/어빌 sections remain source inventory outside the current runtime progression scope."
+}

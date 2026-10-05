@@ -76,7 +76,8 @@ public final class AdaptedMillesMapRenderer {
     for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
       if(tile.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
         drawTerrainTile(canvas,world,tile.assetRef,tile.centerX,tile.centerY);
-    for(SpritePlacement placement:placements)drawPlacement(canvas,world,placement);
+    for(SpritePlacement placement:placements)if(!"door".equals(placement.drawMode))drawPlacement(canvas,world,placement);
+    for(SpritePlacement placement:placements)if("door".equals(placement.drawMode))drawPlacement(canvas,world,placement);
   }
 
   private List<SpritePlacement> loadPlacements(){
@@ -98,6 +99,9 @@ public final class AdaptedMillesMapRenderer {
   private void drawPlacement(Canvas canvas,WorldRuntimeAdapter world,SpritePlacement placement){
     Bitmap image=bitmap(placement.asset);if(image==null)return;
     WorldCameraTransform.Point foot=world.worldToScreen(placement.x,placement.y);
+    if("door".equals(placement.drawMode)){
+      RectF dst=new RectF(foot.x-20,foot.y-8,foot.x+20,foot.y+8);canvas.drawBitmap(image,null,dst,pixelPaint);return;
+    }
     if("tile".equals(placement.drawMode)){
       RectF dst=new RectF(Math.round(foot.x-TILE_W*.5f),Math.round(foot.y-TILE_H*.5f),
           Math.round(foot.x+TILE_W*.5f),Math.round(foot.y+TILE_H*.5f));

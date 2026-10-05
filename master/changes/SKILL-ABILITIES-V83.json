@@ -1,0 +1,36 @@
+{
+  "changeId": "SKILL-ABILITIES-V83",
+  "status": "ACCEPTED_USER_SCOPE",
+  "userRequest": "선풍각은 몬스터를 바라보지 않아도 사방 발동. 모든 스킬 능력/개별 공식/능력치 연동. 제공 필살기는 보존하고 미제공은 습득시점/써클 고려해 설계.",
+  "baseline": "V82 candidate 1d27a5e; main bfd668d4 remains unchanged",
+  "before": "Most attacks/heals fixed prototypes; statuses presentation only; self area quickslot follows a target",
+  "after": "221 explicit ability policies,77 stat/resource-based attacks,16 WIS heals,104 statuses/services dispatch,8 linked/passive;16 unavailable services retained and fail closed. Source anchors plus explicit project coefficients. Spin casts from current tile without selection/facing/approach.",
+  "numericSource": [
+    "master/data/Skill_Formula_Research.csv",
+    "master/data/Skill_Damage_Model.csv",
+    "master/data/Ultimate_Resource_Scaling.csv",
+    "master/data/User_Confirmed_Skill_Facts.csv",
+    "user skills PDF"
+  ],
+  "authoredRules": "Ordinary physical/martial/magic/heal coefficients use learning circle + required stat burden. Geometric STR/CON martial balance. Proficiency0..100 gives80..100% ordinary power. Supplied finisher multipliers unchanged. All status durations/probability/unsourced costs explicit project policies.",
+  "resourceRule": "Fixed MP on accepted start; resource burst reads live HP/MP once at release then charges once for all recipients; no target / invalid burst conditions do not commit cooldown or resources. Test mode waives costs/thresholds, never fabricates stats or damage.",
+  "remaining": "Party recipients/network, summon roster, manufacturing/gather/fishing/stall, water navigation, durability and unspecified Climens/Dinosense/Helpura are not claimed playable;16 SERVICE entries expose unavailable required system. Existing single-player ally/group shapes target player; transfusion rejects absent other member. Traps local ephemeral. Physical device validation pending.",
+  "validation": [
+    "all77 actions through Resolver",
+    "all104 statuses through dispatch with explicit absent-party rejection",
+    "exact source formula anchors",
+    "4 faced quickslot spin with4 neighbors",
+    "MP explosion once per multiple recipients",
+    "Dara release/cancellation",
+    "defense channel separation",
+    "poison/freeze/curse/dispel/expiry",
+    "effect persistence compatibility"
+  ],
+  "preserve": [
+    "Ragnarok/CompleteDefense accepted presentation",
+    "V82 martial BODY/Dara release",
+    "all original source bytes",
+    "main unmerged state",
+    "historical original facts"
+  ]
+}

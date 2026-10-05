@@ -1,0 +1,41 @@
+{
+  "sourceSha": "4a8875796e6c14d8404f5c816276d05231585dcf",
+  "ciCheckoutSha": "8be116d4decb267e3a6f8ff8cefb74ace8bbddcf",
+  "treeSha": "a11e0860aaf9c148a7ba415e2ba297696d8f7d6a",
+  "branch": "codex/original-skill-contract-v65",
+  "pr": 176,
+  "unmergedCandidate": true,
+  "runId": 36880039516,
+  "runConclusion": "success",
+  "apkArtifactId": 11170802690,
+  "nativeArtifactId": 11171027453,
+  "apkSha256": "bd3cfe584b5131316a639cc7ea0613a81d1b802410d82a85eb9a727704c83b17",
+  "apkBytes": 28634582,
+  "buildCompletedAsiaSeoul": "2026-10-01T23:59:41.934897+09:00",
+  "apkVersionCode": 78,
+  "apkVersionName": "0.78-provided-source-recheck",
+  "packagedSkillPresentationFilesVerified": 591,
+  "nativeFrames": 243,
+  "runtimeVerification": "ROBOLECTRIC_NATIVE_INPUT_AND_RENDER_PASS",
+  "physicalDevice": "PENDING",
+  "visualAcceptance": "PENDING_USER_REVIEW",
+  "sourceGaps": 34,
+  "mageSourceGaps": 22,
+  "unlabelledGifs": 2,
+  "outOfCatalogAbilities": 7,
+  "sourceTimingLimitations": [
+    "Mage still captures use project-authored hold/fade or captured frame order, not proven original animation cadence.",
+    "Holy Dragon retains 1000ms original blank lead-in; isolated recipient crop has source occlusion/crop limits.",
+    "Cleric Bardo is explicit same-name project reuse, not Cleric-specific footage."
+  ],
+  "visuallyReviewed": [
+    "alljob-live-SK_전사_009.png",
+    "alljob-live-SK_전사_011.png",
+    "alljob-live-SK_도적_003.png",
+    "alljob-live-SK_성직자_040.png",
+    "alljob-live-SK_성직자_012.png",
+    "alljob-live-SK_전사_023.png",
+    "fx-live-v75-SK_전사_014-0.png",
+    "classic-SK_마법사_053.png"
+  ]
+}

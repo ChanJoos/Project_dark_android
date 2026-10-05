@@ -1,0 +1,444 @@
+{
+  "revision": "PROVIDED_SOURCE_RECHECK_V78",
+  "base": "d57e480c1342f8f9ad7936b3c3f25d4630d9345c",
+  "catalogCount": 221,
+  "initialFallbackCount": 40,
+  "resolved": [
+    {
+      "id": "SK_전사_009",
+      "name": "드래곤모드",
+      "route": "warrior",
+      "status": "SOURCE_CHANNEL_CONNECTED",
+      "source": [
+        "master/source/skill_fx/naver_cafe_archive_20261001/media/ce72d300fc1a4f8cbdc60fdf8bf6947b30cde09615da97961b3fbf6dcaf93251.jpg"
+      ],
+      "warnings": [
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
+      ]
+    },
+    {
+      "id": "SK_전사_011",
+      "name": "적무기쳐내기",
+      "route": "warrior",
+      "status": "SOURCE_CHANNEL_CONNECTED",
+      "source": [
+        "master/source/skill_fx/naver_cafe_archive_20261001/media/182bffcb1028fd9fa08a9fe70d102f9486cdd7b67ee9555a46e81a1b5f5dcdd7.jpg"
+      ],
+      "warnings": [
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
+      ]
+    },
+    {
+      "id": "SK_도적_003",
+      "name": "표창날리기",
+      "route": "rogue",
+      "status": "SOURCE_CHANNEL_CONNECTED",
+      "source": [
+        "master/source/skill_fx/naver_cafe_archive_20261001/media/4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830.gif"
+      ],
+      "warnings": [
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
+      ]
+    },
+    {
+      "id": "SK_도적_004",
+      "name": "밀기",
+      "route": "rogue",
+      "status": "DEMONSTRATION_LINKED_NO_SEPARATELY_RECOVERABLE_PARTICLE",
+      "source": [
+        "master/source/skill_fx/naver_cafe_archive_20261001/media/5a2ccba1af68a02e791ad513f6d3f045a7151d4b6b48e6374424e47aa2fc15e6.gif"
+      ],
+      "warnings": [
+        "REVIEWED_NO_PARTICLE_CHANNEL",
+        "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
+      ]
+    },
+    {
+      "id": "SK_성직자_012",
+      "name": "바르도",
+      "route": "shared",
+      "status": "SOURCE_CHANNEL_CONNECTED",
+      "source": [
+        "master/source/skill_fx/naver_magic_recovered_20261001/598c04193efb021f.jpg"
+      ],
+      "warnings": [
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE",
+        "PROJECT_REUSED_FORM_NOT_PER_JOB_ORIGINAL_FOOTAGE"
+      ]
+    },
+    {
+      "id": "SK_성직자_040",
+      "name": "홀리드래곤",
+      "route": "classic",
+      "status": "SOURCE_CHANNEL_CONNECTED",
+      "source": [
+        "master/source/skill_fx/naver_magic_recovered_20261001/cc65bc6160429dc7.gif"
+      ],
+      "warnings": [
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
+      ]
+    }
+  ],
+  "remainingOriginalEffectCount": 34,
+  "remaining": [
+    {
+      "id": "SK_도적_001",
+      "name": "찌르기",
+      "job": "도적",
+      "reasonCode": "NO_LABELLED_DEMONSTRATION",
+      "reason": "No labelled basic 찌르기 particle demonstration in the retained articles or attachments.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_도적_015",
+      "name": "습격",
+      "job": "도적",
+      "reasonCode": "LABEL_CONFLICT",
+      "reason": "Article 245450 places the GIF under 습격 but its text calls it 기습; cannot certify 습격-specific pixels.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_006",
+      "name": "콘푸지오",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_007",
+      "name": "수페라마레나",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_008",
+      "name": "수페라테라미카",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_009",
+      "name": "수페라아듀라",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_010",
+      "name": "수페라플라미카",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_012",
+      "name": "베노미",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_017",
+      "name": "나르콜리",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_018",
+      "name": "엑스마레나",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_019",
+      "name": "엑스테라미카",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_020",
+      "name": "엑스아듀라",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_021",
+      "name": "엑스플라미카",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_023",
+      "name": "딜루메니",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_025",
+      "name": "소루마",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_030",
+      "name": "마네나로",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_031",
+      "name": "테라미칼로",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_032",
+      "name": "아듀랄로",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_033",
+      "name": "플라미칼로",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_034",
+      "name": "세멜리아",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_035",
+      "name": "아마게돈",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_036",
+      "name": "숨마스텔라",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_037",
+      "name": "라그나로크",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_마법사_038",
+      "name": "데스",
+      "job": "마법사",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_성직자_002",
+      "name": "수혈",
+      "job": "성직자",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_성직자_020",
+      "name": "홀리블로우",
+      "job": "성직자",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_무도가_001",
+      "name": "정권",
+      "job": "무도가",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_무도가_024",
+      "name": "연천단각",
+      "job": "무도가",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_무도가_025",
+      "name": "붕신선각",
+      "job": "무도가",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_무도가_028",
+      "name": "무영신공",
+      "job": "무도가",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_무도가_029",
+      "name": "자기보호",
+      "job": "무도가",
+      "reasonCode": "NO_LABELLED_EFFECT_FRAMES",
+      "reason": "Supplied name/requirements/description evidence is not labelled effect frames; no exact-name recoverable demonstration in the retained source corpus.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_공통_001",
+      "name": "기본공격",
+      "job": "공통",
+      "reasonCode": "BODY_NOT_INDEPENDENT_SOURCE_FX",
+      "reason": "Approved ATTACK BODY is connected; an independent original basic-hit particle is not identified.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_성직자_051",
+      "name": "블레스",
+      "job": "성직자",
+      "reasonCode": "NEWER_VARIANT_NOT_LABELLED",
+      "reason": "Older buff captures do not identify 블레스; cannot borrow blessing pixels by resemblance.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    },
+    {
+      "id": "SK_성직자_052",
+      "name": "홀리쇼크",
+      "job": "성직자",
+      "reasonCode": "NEWER_VARIANT_NOT_LABELLED",
+      "reason": "Holy Bolt/Blow/Dragon are different names; no labelled 홀리쇼크 demonstration.",
+      "runtime": "Existing project fallback; NOT original",
+      "needed": "Labelled original use/impact footage or sprite frames"
+    }
+  ],
+  "verifiedRetainedMediaReferences": 516,
+  "unlabelledUserGIFs": [
+    {
+      "file": "16-7.gif",
+      "sha256": "f964ed6c4768d01583ed2a7cf1694e19d3d76098b523a09a9b0cbf90d7c167d9",
+      "reason": "No skill label. Motif resemblance to dragon/fire does not identify a skill or original era."
+    },
+    {
+      "file": "17-8.gif",
+      "sha256": "6ee8a93feb9875898ae4f9e980624b0e2070468b03344d764a95b053aec86d13",
+      "reason": "No skill label. Motif resemblance to dragon/fire does not identify a skill or original era."
+    }
+  ],
+  "outsideCurrentCatalog": [
+    {
+      "name": "성장(바드)",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "reason": "No current catalog ID; no automatic later-job content expansion."
+    },
+    {
+      "name": "연주",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "reason": "No current catalog ID; no automatic later-job content expansion."
+    },
+    {
+      "name": "연주공격",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "reason": "No current catalog ID; no automatic later-job content expansion."
+    },
+    {
+      "name": "슈페이아움",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "reason": "No current catalog ID; no automatic later-job content expansion."
+    },
+    {
+      "name": "리젠",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "reason": "No current catalog ID; no automatic later-job content expansion."
+    },
+    {
+      "name": "카운터",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "reason": "No current catalog ID; no automatic later-job content expansion."
+    },
+    {
+      "name": "사일런스",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/416054",
+      "reason": "No current catalog ID; no automatic later-job content expansion."
+    }
+  ],
+  "sharedRouteBoundary": "All four shared routes are project reuse, not per-job original footage proof.",
+  "device": "PENDING",
+  "visualAcceptance": "PENDING"
+}

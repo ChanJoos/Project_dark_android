@@ -1,0 +1,68 @@
+{
+  "versionCode": 72,
+  "versionName": "0.72-reference-skill-window",
+  "branch": "codex/original-skill-contract-v65",
+  "pr": 176,
+  "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "runtimeAndTestHead": "1b4c456abed36cef8a5dd262780d8c65b1dc23d5",
+  "actualPrCheckout": "adb95976da8268d77061209cc038072c7fd4c75f",
+  "equalTree": "dbadb0d564ee42583e1db1e7f4fbaa34e34d0ebd",
+  "runId": 36812062766,
+  "jobId": 110209069294,
+  "conclusion": "SUCCESS",
+  "builtAsiaSeoul": "2026-10-01T12:50:32+09:00",
+  "apkArtifactId": 11140760052,
+  "reviewArtifactId": 11139851327,
+  "verification": {
+    "apkSha256": "5b073725c2f8c18ef02f309ac4336d414d68e54abc7221b682e3ba517744c359",
+    "apkBytes": 25528159,
+    "preservedV71Assets": 790,
+    "previewSha256": "10cad845e4950cb60a942af07de88e66f9a7c93dd49fc7bec5801830b64e35ce",
+    "artifactHashes": {
+      "v72-delivery-review.zip": "85188f44d8a989cd1d676d766ef83c84c747778ab3e5c2bf770c195097ab84ae",
+      "v72-delivery-apk.zip": "c609da4a471d968d34e0452553bf5222c4d49a4d21e74cb5960e53f57df6e383"
+    },
+    "nativeReviewHashes": {
+      "skill-window-v72-1.png": "9eed0f0f0053ff0c6ad57ad961b5e08267bac486f999a195aed9a13685596d36",
+      "skill-window-v72-3.png": "bf51715c81aaac3158ec5c8e0c2379bbdc995a6e186a62e86c670ef91f64b96e",
+      "skill-window-v72-6.png": "9bf162a8d69aaa0f14de2ff187fa4f89328c1f0349bb58061dd693fa8073b9e1",
+      "skill-window-v72-scrolled.png": "5fff0bd0498c5a027b4681084a8acf81decb48a69e2fa984daaf4165aaa21fa5",
+      "skill-window-v72-4.png": "864e7d37dd8e1f40107349c5bdd74fb687d75f808cd6cf7a98d44977fd38ded0",
+      "skill-window-v72-0.png": "f15bed08397201b07bb1db46ebcd639a8e2a1f4f47549c90e1b2b74864900c47",
+      "skill-window-v72-reference-rogue.png": "10cad845e4950cb60a942af07de88e66f9a7c93dd49fc7bec5801830b64e35ce",
+      "skill-window-v72-2.png": "c176945ea814375a89e8f4f89b415bdff6f5adc8f8b37d014abfed2b37ba9f1c",
+      "skill-window-v72-5.png": "1f92af8f8d0b5bd61fc043d6f6b03fa6e0e23c8c163d3b29426f697ceef7dbc0"
+    }
+  },
+  "scope": [
+    "All221 catalog IDs selected through production input",
+    "Exact screenshot trap pixels; missing ID never borrows art",
+    "Real drag scrolling, clipped hit regions, no world movement from scroll",
+    "Seven jobs; original-style three-tab paging; learning and 8-slot registration",
+    "Existing Gold/material/save rollback and process restart regressions",
+    "All configured BODY/VFX, world/Pote/monster hit, combat/growth/reward/restart checks and assembleDebug"
+  ],
+  "presentationFacts": {
+    "skinCrops": 27,
+    "modernRogueIconCrops": 10,
+    "directlyLabelledIconBindings": 1,
+    "explicitlyInferredIconBindings": 9,
+    "historicalIconBindings": 157,
+    "combinedWindowIconBindings": 160,
+    "unresolvedWindowIcons": 61,
+    "trapCapturedValues": "SOURCE_PREVIEW_ONLY:23sec cooldown,0sec cast,0MP; explicit pending-combat label",
+    "learnedCounters": "ADAPTED boolean0/1 or1/1; not original progression ranks"
+  },
+  "visualReview": "NATIVE_REVIEWED_WITH_GAPS; command-box double text removed, trap selection at source column3, source frame/material/spacing retained",
+  "pending": [
+    "Second-job data/ranks not in current Master; no fabricated stage or8 original skills",
+    "61 current icon bindings and nine new name/motif inference acceptance",
+    "133 previously recorded skill presentation/domain-service gaps remain open",
+    "Physical-device/user visual acceptance",
+    "Original screenshot pixel-identical request not fully met"
+  ],
+  "libraryDeliverables": {
+    "apk": "libfile_419f717d35608191b79c09ead15f32d2",
+    "preview": "libfile_87018b05a5b88191bcb2c8b0db25fd5f"
+  }
+}

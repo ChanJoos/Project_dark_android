@@ -97,9 +97,43 @@ jobs:
       - name: Verify skill presentation mapping is reproducible
         run: |
           python tools/generate_skill_presentation.py
-          git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv
+          git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
+      - name: Audit reusable Milles map assets and layout
+        run: python tools/assets/audit_milles_map_assets.py
+      - name: Verify V85 town interiors, door markers, merchant input, atomic trade and bank restart
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
+      - name: Verify V83 per-skill abilities and runtime formulas
+        run: |
+          python3 tools/generate_skill_abilities.py
+          git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_ABILITY_FORMULAS.csv
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillAbilityRuntimeTest --stacktrace
+      - name: Verify classic capture sources and projections
+        run: |
+          pip install numpy Pillow scipy
+          python tools/import_classic_skill_references.py
+          python tools/import_rogue_skill_references.py
+          python tools/import_all_job_skill_references.py
+          python tools/audit_skill_source_coverage.py
+          git diff --exit-code -- app/src/main/assets/skill-presentation/warrior app/src/main/assets/skill-presentation/shared docs/SKILL_SOURCE_COVERAGE.csv
+          git diff --exit-code -- app/src/main/assets/skill-presentation/rogue
+          git diff --exit-code -- app/src/main/assets/skill-presentation/classic
+      - name: Verify source window crops are reproducible
+        run: |
+          python tools/extract_skill_window_reference.py
+          git diff --exit-code -- app/src/main/assets/skill-window
+      - name: Audit every skill FX source and runtime precedence
+        run: |
+          python3 tools/audit_runtime_skill_fx.py
+          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V81_AUDIT.json
+          python3 tools/audit_provided_skill_sources.py
+          git diff --exit-code -- docs/REMAINING_ORIGINAL_SKILL_FX.csv docs/verification/PROVIDED_SOURCE_RECHECK_V81.json
+      - name: Verify item window source crops and input
+        run: |
+          python3 tools/extract_item_window_reference.py
+          git diff --exit-code -- app/src/main/assets/item-window
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ItemWindowReferenceTest --tests com.projectdark.mobile.EquipmentStatsAndDetailsTest --stacktrace
       - name: Verify skill window, shared combat and restart persistence
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillFxAuditTest --tests com.projectdark.mobile.SkillWindowReferenceTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest --tests com.projectdark.mobile.AllJobSkillSourceTest --tests com.projectdark.mobile.SkillContactRegressionTest --tests com.projectdark.mobile.MartialDefenseStarRegressionTest --tests com.projectdark.mobile.RagnarokSourceCaptureTest --stacktrace
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit
@@ -111,8 +145,6 @@ jobs:
 
       - name: Execute Bundle B1 building scale audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.MillesB1ScaleAudit
-      - name: Audit reusable Milles map assets and layout
-        run: python tools/assets/audit_milles_map_assets.py
       - name: Execute Bundle B5 integrated loop audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.BundleB5Audit
       - name: Execute Quick Quest optimal approach audit
@@ -124,7 +156,7 @@ jobs:
       - name: Render POTE production forest review frames
         run: |
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteVisualReviewTest --stacktrace
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
       - name: Milddok ingestion identity audit
@@ -147,6 +179,26 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest --stacktrace
       - name: Execute device recording regressions with native source rendering
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceRecordingRegressionTest --tests com.projectdark.mobile.ShirtRenderingRegressionTest --stacktrace
+      - name: Print unit test failure details
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          files=list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
+          found=0
+          for file in files:
+              root=ET.parse(file).getroot()
+              for case in root.iter('testcase'):
+                  failure=case.find('failure')
+                  if failure is None: failure=case.find('error')
+                  if failure is not None:
+                      found+=1
+                      print(f'FAILED {case.get("classname")}.{case.get("name")}')
+                      print(failure.get('message',''))
+                      print((failure.text or '')[-5000:])
+          if not found: print('No JUnit failure detail XML found.')
+          PY
       - name: Upload device review rendering
         if: always()
         uses: actions/upload-artifact@v4
@@ -163,4 +215,3 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
-
