@@ -54,6 +54,16 @@ public class SkillPresentationTest {
       tick.invoke(v,.05f);Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));save(image,"skill-vfx-live-"+id+".png");
     }
   }
+  @Test public void unverifiedQiBlastAndBloodTransferUseExplicitDirectionalReconstructions()throws Exception{
+    SkillPresentationCatalog s=new SkillPresentationCatalog(c);SkillVfxRenderer r=new SkillVfxRenderer(c,s);
+    SkillVfxRenderer.Anchors a=new SkillVfxRenderer.Anchors(){public float x(String id){return id.equals("player")?180:360;}public float y(String id){return 220;}};
+    r.preview(51,"SK_무도가_028",false,"target",a);r.preview(52,"SK_성직자_002",true,"player",a);
+    assertEquals(2,r.pulses.size());SkillVfxRenderer.Pulse qi=r.pulses.get(0),blood=r.pulses.get(1);
+    assertEquals("QI_BLAST",s.get(qi.id).target);assertEquals("reconstruction",blood.sheet);assertTrue(blood.caster);
+    Bitmap image=Bitmap.createBitmap(500,360,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(image);r.draw(canvas,a);
+    int colored=0;for(int yy=0;yy<image.getHeight();yy++)for(int xx=0;xx<image.getWidth();xx++)if(Color.alpha(image.getPixel(xx,yy))>0)colored++;
+    assertTrue("directional QI impact and caster transfer must draw visible pixels",colored>20);
+  }
   private void save(Bitmap b,String name)throws Exception{File dir=new File("build/reports/device-review");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,name))){b.compress(Bitmap.CompressFormat.PNG,100,out);}}
   @SuppressWarnings("unchecked") private static <T>T field(Object o,String name)throws Exception{Field f=o.getClass().getDeclaredField(name);f.setAccessible(true);return(T)f.get(o);}
 }
