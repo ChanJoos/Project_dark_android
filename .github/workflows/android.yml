@@ -311,6 +311,7 @@ jobs:
         run: |
           set -euo pipefail
           grep -q 'versionCode 108' app/build.gradle
+          git fetch --no-tags --depth=1 origin "$SOURCE_SHA"
           test "$(git rev-parse HEAD^{tree})" = "$(git rev-parse "$SOURCE_SHA^{tree}")"
           mkdir -p apk-delivery
           cp app/build/outputs/apk/debug/app-debug.apk apk-delivery/PROJECT_DARK_V108.apk
