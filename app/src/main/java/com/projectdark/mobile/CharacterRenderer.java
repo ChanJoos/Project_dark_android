@@ -193,307 +193,36 @@ public final class CharacterRenderer {
     drawRawSourceScaled(c,bodyActionFrames[source],transform.bodyLeft,transform.bodyTop,transform.scale);
     String garment=garmentAppearance(pose.equipmentVisualRef);EquipmentVisualRegistry.Visual gv=garment==null||equipmentRegistry==null?null:equipmentRegistry.get(garment);
     if(gv!=null&&gv.registration!=null&&gv.registration.action(source)!=null){drawRegisteredAction(c,gv.atlas,gv.registration,source,transform,composition.mirrorBody);}else if(containsVisualRef(pose.equipmentVisualRef,CharacterVisualBinding.RESOLVED_SHIRT_APPEARANCE_ID)&&validAtlas(shirtActionFrames[source],SHIRT_ACTION_WIDTH[source],SHIRT_ACTION_HEIGHT[source])){drawRawSourceScaled(c,shirtActionFrames[source],transform.bodyLeft+ShirtSourceRegistration.actionX(source)*transform.scale,transform.bodyTop+ShirtSourceRegistration.actionY(source)*transform.scale,transform.scale);}else if(composition.robeVisible&&validAtlas(robeActionFrames[source],ROBE_ACTION_WIDTH[source],ROBE_ACTION_HEIGHT[source])){float robeLeft=transform.layerLeft(ROBE_ACTION_OFFSET_X[source],BODY_ACTION_OFFSET_X[source],0f),robeTop=transform.layerTop(ROBE_ACTION_OFFSET_Y[source],BODY_ACTION_OFFSET_Y[source],0f);float robeAnchorX=(pose.x-robeLeft)/transform.scale,robeAnchorY=(anchorY-robeTop)/transform.scale;drawGarmentAttached(c,robeActionFrames[source],pose.x,anchorY,robeAnchorX,robeAnchorY,transform.scale);}
-    c.restore();drawActionAccessories(c,pose,source,transform,body);if(composition.weaponVisible&&!composition.weaponBehindBody)drawActionWeapon(c,pose,source,transform,body);if(!uß­¢G§²ÚîÆ­yĞÒÔ—ÖKSX]œ›İ[™
-Ù[X[XÑÛØ˜[›ÛİJÙJJKÙ[\‘\œSX]œ›İ[™
-X]˜XœÊÓÕTÑWÑ“ÓÕĞSÒÔ—ÖJÙ[X[XÑÛØ˜[]›İ
-Ù
-JJK\œSX]˜XœÊYKšZYÚ
-
-KXXİ[Û‹šZYÚ
-
-JNÜ™]\›ˆ™]ÈXİ[Û‘Ù[ÛY]JK“ÑWĞPÕSÓ—ÒRQÒÜÛİ\˜ÙWK\œ‹›Ûİ\œ‹Ù[\‘\œ‹YJNßBˆš]˜]Hİ]XÈ[P›İ[™È[P›İ[™Êš]X\š]X\
-^ÚYŠš]X\O[[
-\™]\›ˆ™]È[P›İ[™ÊLKLJNÚ[Xš]X\™Ù]ÚY
-
-KXš]X\™Ù]ZYÚ
-
-KKLKKLNÙ›ÜŠ[OLŞOš]X\™Ù]ZYÚ
-
-NŞJÊÊY›ÜŠ[LŞš]X\™Ù]ÚY
-
-NŞ
-ÊÊZYŠ
-
-š]X\™Ù]^[
-JOŒ
-IŒ™ŠHOL
-^ÚYŠ
-[^ÚYŠœŠ\^ÚYŠO
-]^NÚYŠO˜ŠX^Nß\™]\›ˆ™]È[P›İ[™Ê‹ŠNßHš]˜]Hİ]XÈ[P›İ[™È[P›İ[™ĞÙ[
-š]X\]\Ë[›İË[ÛÛ[Ë[
-^ÚYŠ]\ÏO[[
-\™]\›ˆ™]È[P›İ[™ÊLKLJNÚ[ŞXÛÛ
-ËŞO\›İÊš]ËZKLKKLNÙ›ÜŠ[OLŞOŞJÊÊY›ÜŠ[LŞÎŞ
-ÊÊZYŠ
-
-]\Ë™Ù]^[
-Ş
-ŞŞJŞJOŒ
-IŒ™ŠHOL
-^ÚYŠ
-[^ÚYŠœŠ\^ÚYŠO
-]^NÚYŠO˜ŠX^Nß\™]\›ˆ™]È[P›İ[™Ê‹ŠNßBˆX›XÈİ]XÈ›Ø]›Ü›X[^™YXİ[Û”ØØ[J[Ûİ\˜ÙJ^Ü™]\›ˆÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSNßHX›XÈİ]XÈ[Xİ[ÛØ[›ÛšXØ[š\ÚX›RZYÚ^[Ê
-^Ü™]\›ˆÓÕTÑWÑ”SQWÒRQÒßHX›XÈİ]XÈ[Xİ[ÛØ[›ÛšXØ[›Ûİ[˜ÚÜ”^[Ê
-^Ü™]\›ˆÓÕTÑWÑ“ÓÕĞSÒÔ—ÖNßHX›XÈİ]XÈ[Xİ[Û•š\ÚX›RZYÚ^[Ê[Ûİ\˜ÙJ^ÚYŠÛİ\˜ÙOÛİ\˜ÙOTÓÕTÑWĞPÕSÓ—ĞÓÕS•
-\™]\›ˆÜ™]\›ˆ“ÑWĞPÕSÓ—ÒRQÒÜÛİ\˜ÙWNßHX›XÈİ]XÈ›Ø]Xİ[Û”Ù[X[XÔ]›İ
-[Ûİ\˜ÙJ^Ü™]\›ˆÛİ\˜ÙOÛİ\˜ÙOTÓÕTÑWĞPÕSÓ—ĞÓÕS•Ñ›Ø]“˜S“ÑWĞPÕSÓ—ÓÑ‘”ÑUÖÜÛİ\˜ÙWJĞ“ÑWĞPÕSÓ—ÔU“ÕÖÜÛİ\˜ÙWNßHX›XÈİ]XÈ›Ø]Xİ[Û”Ù[X[XÑ›ÛİJ[Ûİ\˜ÙJ^Ü™]\›ˆÛİ\˜ÙOÛİ\˜ÙOTÓÕTÑWĞPÕSÓ—ĞÓÕS•Ñ›Ø]“˜S“ÑWĞPÕSÓ—ÓÑ‘”ÑUÖVÜÛİ\˜ÙWJĞ“ÑWĞPÕSÓ—Ñ“ÓÕÖVÜÛİ\˜ÙWNßHX›XÈİ]XÈ›ÛÛX[ˆ›ÙSZ\œ›Ü–
-\™Xİ[Ûˆ
-^Ü™]\›ˆOQ\™Xİ[Û‹“•ßOQ\™Xİ[Û‹”ÕÎßHX›XÈİ]XÈ›ÛÛX[ˆÙX\Û“Z\œ›Ü–
-\™Xİ[Ûˆ
-^Ü™]\›ˆOQ\™Xİ[Û‹“•ßOQ\™Xİ[Û‹”ÕÎßBˆX›XÈİ]XÈ]XÚÕš\İX[ÛÛ\ÜÚ][Ûˆ]XÚÕš\İX[ÛÛ\ÜÚ][ÛŠ\™Xİ[Ûˆ\™Xİ[Û‹İš[™È\]Z\Y[š\İX[™Y‹İš[™ÈÙX\Û•š\İX[™YŠ^Ü™]\›ˆ™]È]XÚÕš\İX[ÛÛ\ÜÚ][ÛŠ\™Xİ[Û‹Xİ[Û”Ûİ\˜ÙR[™^
-\™Xİ[ÛŠK›ÙSZ\œ›Ü–
-\™Xİ[ÛŠKÙX\Û™Z[™›ÙJ\™Xİ[ÛŠKØ\›Y[\X\˜[˜ÙJ\]Z\Y[š\İX[™YŠHO[[\ÕÙX\Û\X\˜[˜ÙJÙX\Û•š\İX[™YŠKVQT—Ô‘S‘T—ÔĞĞSJNßHX›XÈİ]XÈ›ÛÛX[ˆÙX\Û™Z[™›ÙJ\™Xİ[Ûˆ\™Xİ[ÛŠ^Ü™]\›ˆ\™Xİ[ÛOQ\™Xİ[Û‹“•ß\™Xİ[ÛOQ\™Xİ[Û‹“‘NßBˆš]˜]HÚ[™Ü[Û™ÕÙX\Û”™[™\™\ˆÚ[™Ü[Û™ÕÙX\ÛÂˆš]˜]H›ÚY˜]ÕÙX\ÛŠØ[˜\ÈËÜÙHÜÙK›Ø][˜ÚÜ–K›ÛÛX[ˆ]XÚÚ[™Ê^ÂˆYŠÚ[™Ü[Û™ÕÙX\Û”™[™\™\‹™\]Z\Y
-ÜÙKÙX\Û•š\İX[™YŠJ^ÂˆYŠÚ[™Ü[Û™ÕÙX\ÛO[[
-^ĞÛÛ^ÛÛ^Yš[™›ØÙ\ÜĞÛÛ^
-
-NÚYŠÛÛ^O[[
-XÚ[™Ü[Û™ÕÙX\Û[™]ÈÚ[™Ü[Û™ÕÙX\Û”™[™\™\ŠÛÛ^
-NßBˆYŠÚ[™Ü[Û™ÕÙX\ÛˆO[[
-^Ú[›İÏX]\Ô›İÊÜÙK™\™Xİ[ÛŠKÛÛ[[\\\‘Û]\ĞÛÛ[[ŠÜÙKœİ]K™\Ù[][Û•Ø[ĞÛØÚÊNÙ›Ø]ØØ[OTÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSNÙ›Ø]SX]œ›İ[™
-ÜÙKTÓÕTÑWÑ“ÓÕĞSÒÔ—Ö
-œØØ[JJĞÚ[™Ü[Û™ÕÙX\Û”™[™\™\‹˜Ø\œR[™
-ÜÙK™\™Xİ[Û‹ÛÛ[[ŠJœØØ[KOSX]œ›İ[™
-[˜ÚÜ–KTÓÕTÑWÑ“ÓÕĞSÒÔ—ÖJœØØ[JJĞÚ[™Ü[Û™ÕÙX\Û”™[™\™\‹˜Ø\œR[™JÜÙK™\™Xİ[Û‹ÛÛ[[ŠJœØØ[NØÚ[™Ü[Û™ÕÙX\Û‹˜Ø\œJËÜÙKKØØ[JNß\™]\›ÂˆB”İš[™È\X\˜[˜ÙO\ÜÙKÙX\Û•š\İX[™YO[[Û[œÜÙKÙX\Û•š\İX[™Y‹ÓİÙ\Ø\ÙJ
-NÑ\]Z\Y[š\İX[™YÚ\İK•š\İX[Y\]Z\Y[™YÚ\İOO[[Û[™\]Z\Y[™YÚ\İK™Ù]
-\X\˜[˜ÙJNÚYŠˆO[[	‰‹œ™YÚ\İ˜][ÛˆO[[
-^Ú[›İÏX]\Ô›İÊÜÙK™\™Xİ[ÛŠKÛÛ\\\‘Û]\ĞÛÛ[[ŠÜÙKœİ]K™\Ù[][Û•Ø[ĞÛØÚÊNÚYŠ›İÏ
-\™]\›Ğ[P›İ[™È›İ[™ÏX[P›İ[™ĞÙ[
-YUØ[Ğ]\Ë›İËÛÛÓÕTÑWÑ”SQWÕÒQÓÕTÑWÑ”SQWÒRQÒ
-NÚYŠ›İ[™Ë™[\J
-J\™]\›Ù›Ø]YSX]œ›İ[™
-ÜÙKTÓÕTÑWÑ“ÓÕĞSÒÔ—Ö
-”ÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSJJØ›İ[™Ë›Y
-”ÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSKÜSX]œ›İ[™
-[˜ÚÜ–KTÓÕTÑWÑ“ÓÕĞSÒÔ—ÖJ”ÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSJJØ›İ[™ËÜ
-”ÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSNÚ[›ÙQœ˜[YOTÚ\Ûİ\˜ÙT™YÚ\İ˜][Û‹šYQœ˜[YJÜÙK™\™Xİ[Û‹ÛÛ
-NÙ›Ø]ŞX›İ[™ËÚY
-
-J”ÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSKÔÚ\Ûİ\˜ÙT™YÚ\İ˜][Û‹“ÑWÕÒQØ›ÙQœ˜[YWKŞOX›İ[™ËšZYÚ
-
-J”ÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSKÔÚ\Ûİ\˜ÙT™YÚ\İ˜][Û‹“ÑWÒRQÒØ›ÙQœ˜[YWNÙ˜]Ô™YÚ\İ\™YYJË‹˜]\Ë‹œ™YÚ\İ˜][Û‹ÜÙK™\™Xİ[Û‹ÛÛYÜŞŞKÜÙK™\™Xİ[ÛOQ\™Xİ[Û‹“•ßÜÙK™\™Xİ[ÛOQ\™Xİ[Û‹”ÕË›İ[™ÊNÜ™]\›ßZYŠXÛÛZ[œÕš\İX[™YŠÜÙKÙX\Û•š\İX[™Y‹Ú\˜Xİ\•š\İX[š[™[™Ë”‘TÓÓ‘QÕÑPTÓ—ĞTPTSÑWÒQ
-_]ÙX\Û”Ûİ\˜ÙPXİ]™J
-J\™]\›Ù›Ø]ØØ[OTÓÕTÑWÔ‘TÑS•USÓ—ÔĞĞSNÚ[œ˜[YO\\\‘Û]\ĞÛÛ[[ŠÜÙKœİ]K™\Ù[][Û•Ø[ĞÛØÚÊK›İÏX]\Ô›İÊÜÙK™\™Xİ[ÛŠNÚYŠ›İÏ
-\™]\›Ú[Ûİ\˜ÙPÛÛ[[X]XÚÚ[™ÏÌ™œ˜[YNÔ™XİÙ[X]\ĞÙ[™Xİ
-›İËÛİ\˜ÙPÛÛ[[ŠNÙ›Ø]›ÙSYSX]œ›İ[™
-ÜÙKTÓÕTÑWÑ“ÓÕĞSÒÔ—Ö
-œØØ[JK›ÙUÜSX]œ›İ[™
-[˜ÚÜ–KTÓÕTÑWÑ“ÓÕĞSÒÔ—ÖJœØØ[JNĞÚ\˜Xİ\”Ù[X[XÔšYË[˜ÚÜœÈ›ÙOPÚ\˜Xİ\”Ù[X[XÔšYË™\š]™JYUØ[Ğ]\ËÙ[ÜÙK™\™Xİ[ÛŠNÙ›Ø][™VX›ÙSY
-Ø›ÙK™ÛZ[˜[[™
-œØØ[K[™VOX›ÙUÜ
-Ø›ÙK™ÛZ[˜[[™JœØØ[K[™ÛOX]XÚÚ[™ÏİÙX\Û]XÚĞ[™ÛJÜÙK™\™Xİ[Û‹]XÚÔ\ÙJÜÙJJNÙX\ÛØ\œP[™ÛJÜÙK™\™Xİ[Û‹œ˜[YJNØËœØ]™J
-NØËœ›İ]J[™ÛK[™V[™VJNÚYŠÙX\Û“Z\œ›Ü–
-ÜÙK™\™Xİ[ÛŠJXËœØØ[JLY‹Y‹[™V[™VJNÙ˜]Ô˜]ÔÛİ\˜ÙTØØ[Y
-Ë[ÚÙÔÜš]K[™VUÑPTÓ—ÒS‘WÖ
-œØØ[K[™VKUÑPTÓ—ÒS‘WÖJœØØ[KØØ[JNØËœ™\İÜ™J
-NßBˆš]˜]Hİ]XÈ™Xİ]\ĞÙ[™Xİ
-[›İË[ÛÛ
-^Ú[YXÛÛ
-”ÓÕTÑWÑ”SQWÕÒQÜ\›İÊ”ÓÕTÑWÑ”SQWÒRQÒÜ™]\›ˆ™]È™Xİ
-YÜY
-ÔÓÕTÑWÑ”SQWÕÒQÜ
-ÔÓÕTÑWÑ”SQWÒRQÒ
-NßHš]˜]Hİ]XÈ›Ø]]XÚÔ\ÙJÜÙHÜÙJ^ÚYŠÜÙOO[[ÜÙKœİ]Q\˜][ÛLŠ\™]\›ˆÜ™]\›ˆX]›X^
-‹X]›Z[ŠY‹ÜÙKœİ]PÛØÚËÜÜÙKœİ]Q\˜][ÛŠJNßBˆX›XÈİ]XÈ›Ø]ÙX\ÛØ\œP[™ÛJ\™Xİ[Ûˆ\™Xİ[ÛŠ^ÚYŠ\™Xİ[ÛO[[
-\™]\›ˆÜİÚ]Ú
-\™Xİ[ÛŠ^ØØ\ÙH•Îœ™]\›ˆM™ØØ\ÙH‘Nœ™]\›ˆMØØ\ÙHÕÎœ™]\›ˆÌ™ØØ\ÙHÑNœ™]\›ˆMŒ™ÙY˜][œ™]\›ˆß_HX›XÈİ]XÈ›Ø]ÙX\ÛØ\œP[™ÛJ\™Xİ[Ûˆ\™Xİ[Û‹[]\ĞÛÛ[[Š^Ú[›İÏX]\Ô›İÊ\™Xİ[ÛŠKÛÛ[[SX]›X^
-X]›Z[ŠQWÕĞS×ĞÓÓSS”ËLK]\ĞÛÛ[[ŠJNÚYŠ›İÏ
-\™]\›ˆÜ™]\›ˆĞT”–WÑ”SQWĞS‘ÓVÜ›İ×VØÛÛ[[—NßHX›XÈİ]XÈ›Ø]ÙX\ÛØ\œSÙ™œÙ]
-\™Xİ[Ûˆ\™Xİ[ÛŠ^ÚYŠ\™Xİ[ÛO[[
-\™]\›ˆÜİÚ]Ú
-\™Xİ[ÛŠ^ØØ\ÙH•Îœ™]\›ˆMÙØØ\ÙH‘Nœ™]\›ˆ™ØØ\ÙHÕÎœ™]\›ˆNYØØ\ÙHÑNœ™]\›ˆÙY˜][œ™]\›ˆß_HX›XÈİ]XÈ›Ø]ÙX\ÛØ\œSÙ™œÙ]
-\™Xİ[Ûˆ\™Xİ[Û‹[]\ĞÛÛ[[Š^Ü™]\›ˆØ\œQœ˜[YP[˜ÚÜŠ\™Xİ[Û‹]\ĞÛÛ[[‹YJNßHX›XÈİ]XÈ›Ø]ÙX\ÛØ\œSÙ™œÙ]J\™Xİ[Ûˆ\™Xİ[ÛŠ^ÚYŠ\™Xİ[ÛO[[
-\™]\›ˆŒ™ÜİÚ]Ú
-\™Xİ[ÛŠ^ØØ\ÙH•Îœ™]\›ˆ™ØØ\ÙH‘Nœ™]\›ˆØØ\ÙHÕÎœ™]\›ˆŒYØØ\ÙHÑNœ™]\›ˆŒÙÙY˜][œ™]\›ˆŒ™ß_HX›XÈİ]XÈ›Ø]ÙX\ÛØ\œSÙ™œÙ]J\™Xİ[Ûˆ\™Xİ[Û‹[]\ĞÛÛ[[Š^Ü™]\›ˆØ\œQœ˜[YP[˜ÚÜŠ\™Xİ[Û‹]\ĞÛÛ[[‹˜[ÙJNßHš]˜]Hİ]XÈ›Ø]Ø\œQœ˜[YP[˜ÚÜŠ\™Xİ[Ûˆ\™Xİ[Û‹[]\ĞÛÛ[[‹›ÛÛX[ˆ
-^Ú[›İÏX]\Ô›İÊ\™Xİ[ÛŠKÛÛ[[SX]›X^
-X]›Z[ŠQWÕĞS×ĞÓÓSS”ËLK]\ĞÛÛ[[ŠJNÚYŠ›İÏ
-\™]\›ˆÜ™]\›ˆĞĞT”–WÑ”SQWÖÜ›İ×VØÛÛ[[—NĞT”–WÑ”SQWÖVÜ›İ×VØÛÛ[[—NßBˆX›XÈİ]XÈ›Ø]ÙX\ÛØ\œSX^[\
-\™Xİ[Ûˆ\™Xİ[ÛŠ^Ü™]\›ˆX^Ø\œR[\
-\™Xİ[Û‹
-NßHX›XÈİ]XÈ›Ø]ÙX\ÛØ\œSX^[\J\™Xİ[Ûˆ\™Xİ[ÛŠ^Ü™]\›ˆX^Ø\œR[\
-\™Xİ[Û‹JNßHX›XÈİ]XÈ›Ø]ÙX\ÛØ\œSX^[\[™ÛJ\™Xİ[Ûˆ\™Xİ[ÛŠ^Ü™]\›ˆX^Ø\œR[\
-\™Xİ[Û‹ŠNßHš]˜]Hİ]XÈ›Ø]X^Ø\œR[\
-\™Xİ[Ûˆ\™Xİ[Û‹[ÛÛ\Û™[
-^Ú[›İÏX]\Ô›İÊ\™Xİ[ÛŠNÚYŠ›İÏ
-\™]\›ˆ›Ø]”ÔÒUU‘WÒS‘’S’UNÙ›Ø]X^LÙ›ÜŠ[ÛÛLNØÛÛQWÕĞS×ĞÓÓSS”ÎØÛÛ
-ÊÊ^Ù›Ø]OXÛÛ\Û™[OLĞĞT”–WÑ”SQWÖÜ›İ×VØÛÛLWN˜ÛÛ\Û™[OLOĞĞT”–WÑ”SQWÖVÜ›İ×VØÛÛLWNĞT”–WÑ”SQWĞS‘ÓVÜ›İ×VØÛÛLWKXÛÛ\Û™[OLĞĞT”–WÑ”SQWÖÜ›İ×VØÛÛN˜ÛÛ\Û™[OLOĞĞT”–WÑ”SQWÖVÜ›İ×VØÛÛNĞT”–WÑ”SQWĞS‘ÓVÜ›İ×VØÛÛNÛX^SX]›X^
-X^X]˜XœÊ‹XJJNß\™]\›ˆX^ßBˆX›XÈİ]XÈ›Ø]Xİ[Û’ZYÚ˜][Ê[Ûİ\˜ÙJ^ÚYŠÛİ\˜ÙOÛİ\˜ÙOTÓÕTÑWĞPÕSÓ—ĞÓÕS•
-\™]\›ˆYÜ™]\›ˆXİ[Û•š\ÚX›RZYÚ^[ÊÛİ\˜ÙJKÊ›Ø]
-TÓÕTÑWÑ”SQWÒRQÒßHX›XÈİ]XÈ›ÛÛX[ˆYØXŞT›ØÙY\˜[]XÚÔ™XXÚX›J
-^Ü™]\›ˆ˜[ÙNßHX›XÈİ]XÈ›ÛÛX[ˆ]Ú\˜Xİ\”ÜÙQ[˜X›Y
-
-^Ü™]\›ˆ˜[ÙNßHX›XÈİ]XÈ›ÛÛX[ˆÙX\Û•˜[œÙ›Ü›U\Ù\ÔÚ[™ÛSZ\œ›ÜŠ
-^Ü™]\›ˆYNßHX›XÈİ]XÈ›ÛÛX[ˆ]XÚÑ˜[˜XÚÕÙX\Û”İÚ[™Ô™XXÚX›J
-^Ü™]\›ˆ˜[ÙNßBˆš]˜]Hİ]XÈš[˜[›Ø]×HPÕSÓ—ÕÑPTÓ—ÒS‘Ö^ÍY‹LËY‹KŒ‹MKŒŸKPÕSÓ—ÕÑPTÓ—ÒS‘ÖO^ÌËŒ‹ËŒ‹Œ‹ËŒŸNÈX›XÈİ]XÈ›Ø]Xİ[Û•ÙX\Û’[™
-\™Xİ[ÛˆÚ\˜Xİ\”Ù[X[XÔšYË[˜ÚÜœÈ˜[˜XÚÊ^Ú[OXXİ[Û”Ûİ\˜ÙR[™^
-
-NÜ™]\›ˆOL	‰šOPÕSÓ—ÕÑPTÓ—ÒS‘Ö›[™İĞPÕSÓ—ÕÑPTÓ—ÒS‘ÖÚWNŠ˜[˜XÚÏO[[Ì™˜[˜XÚË™ÛZ[˜[[™
-NßHX›XÈİ]XÈ›Ø]Xİ[Û•ÙX\Û’[™J\™Xİ[ÛˆÚ\˜Xİ\”Ù[X[XÔšYË[˜ÚÜœÈ˜[˜XÚÊ^Ú[OXXİ[Û”Ûİ\˜ÙR[™^
-
-NÜ™]\›ˆOL	‰šOPÕSÓ—ÕÑPTÓ—ÒS‘ÖK›[™İĞPÕSÓ—ÕÑPTÓ—ÒS‘ÖVÚWNŠ˜[˜XÚÏO[[Ì™˜[˜XÚË™ÛZ[˜[[™JNßHX›XÈİ]XÈ›Ø]ÙX\Û]XÚÓÙ™œÙ]
-\™Xİ[Ûˆ\™Xİ[ÛŠ^Ü™]\›ˆßHX›XÈİ]XÈ›Ø]ÙX\Û]XÚÓÙ™œÙ]J\™Xİ[Ûˆ\™Xİ[ÛŠ^Ü™]\›ˆßHX›XÈİ]XÈ›Ø]ÙX\Û]XÚÑÜš\
-\™Xİ[Ûˆ\™Xİ[ÛŠ^ÚYŠ\™Xİ[ÛO[[
-\™]\›ˆÜİÚ]Ú
-\™Xİ[ÛŠ^ØØ\ÙH•Îœ™]\›ˆLYØØ\ÙH‘Nœ™]\›ˆYØØ\ÙHÕÎœ™]\›ˆLYØØ\ÙHÑNœ™]\›ˆYÙY˜][œ™]\›ˆß_HX›XÈİ]XÈ›Ø]ÙX\Û]XÚÑÜš\J\™Xİ[Ûˆ\™Xİ[ÛŠ^ÚYŠ\™Xİ[ÛO[[
-\™]\›ˆÜİÚ]Ú
-\™Xİ[ÛŠ^ØØ\ÙH•Î˜Ø\ÙH‘Nœ™]\›ˆYØØ\ÙHÕÎ˜Ø\ÙHÑNœ™]\›ˆLYÙY˜][œ™]\›ˆß_BˆÊŠˆ]XÚÈÙX\Ûˆ\È›È[™\[™[[\Ü˜[İÚ[™ÎÈÜšY[][Ûˆ\Èš^Y\ˆ“ÑHÛÛXİÜÙKˆ
-‹ÂˆX›XÈİ]XÈ›Ø]ÙX\Û]XÚĞ[™ÛJ\™Xİ[Ûˆ\™Xİ[Û‹›Ø]\ÙJ^ÚYŠ\™Xİ[ÛO[[
-\™]\›ˆÜİÚ]Ú
-\™Xİ[ÛŠ^ØØ\ÙH•Îœ™]\›ˆÌ™ØØ\ÙHÕÎœ™]\›ˆ™ØØ\ÙH‘Nœ™]\›ˆLÌ™ØØ\ÙHÑNœ™]\›ˆM™ÙY˜][œ™]\›ˆß_BˆX›XÈİ]XÈ›ÛÛX[ˆÙX\Û]XÚÕ\Ù\Ò[™\[™[İÚ[™Ê
-^Ü™]\›ˆ˜[ÙNßBˆš]˜]H›ÚY˜]Ô˜]ÔÛİ\˜ÙTØØ[Y
-Ø[˜\ÈËš]X\š]X\›Ø]Y›Ø]Ü›Ø]ØØ[J^ÚYŠš]X\O[[
-\™]\›ØË™˜]Ğš]X\
-š]X\[™]È™XİŠX]œ›İ[™
-Y
-KX]œ›İ[™
-Ü
-KX]œ›İ[™
-Y
-Øš]X\™Ù]ÚY
-
-JœØØ[JKX]œ›İ[™
-Ü
-Øš]X\™Ù]ZYÚ
-
-JœØØ[JJK^[Z[
-NßHš]˜]H›ÚY˜]Ô˜]ÔÛİ\˜ÙPÜ›ÜYØØ[Y
-Ø[˜\ÈËš]X\š]X\[Ü˜ÓY[Ü˜ÕÜ[Ü˜ÔšYÚ[Ü˜Ğ›İÛK›Ø]Y›Ø]Ü›Ø]ØØ[J^ÚYŠš]X\O[[Ü˜ÔšYÚ\Ü˜ÓYÜ˜Ğ›İÛO\Ü˜ÕÜ
-\™]\›Ô™XİÜ˜Ï[™]È™Xİ
-Ü˜ÓYÜ˜ÕÜÜ˜ÔšYÚÜ˜Ğ›İÛJNÔ™Xİˆİ[™]È™XİŠX]œ›İ[™
-Y
-KX]œ›İ[™
-Ü
-KX]œ›İ[™
-Y
-ÊÜ˜ÔšYÚ\Ü˜ÓY
-JœØØ[JKX]œ›İ[™
-Ü
-ÊÜ˜Ğ›İÛK\Ü˜ÕÜ
-JœØØ[JJNØË™˜]Ğš]X\
-š]X\Ü˜Ëİ^[Z[
-NßHš]˜]H›ÚY˜]Ğ]\ĞÙ[
-Ø[˜\ÈËš]X\]\Ë[›İË[ÛÛ[œ˜[YUÚY[œ˜[YRZYÚ›Ø]›Ûİ[˜ÚÜ–›Ø]›Ûİ[˜ÚÜ–K›Ø]˜]ÔØØ[K›Ø][˜ÚÜ–K›Ø]
-^Ú[YXÛÛ
-™œ˜[YUÚYÜ\›İÊ™œ˜[YRZYÚÔ™XİÜ˜Ï[™]È™Xİ
-YÜY
-Ùœ˜[YUÚYÜ
-Ùœ˜[YRZYÚ
-NÙ›Ø]ØØ[YÚYYœ˜[YUÚY
-™˜]ÔØØ[KØØ[YZYÚYœ˜[YRZYÚ
-™˜]ÔØØ[KØØ[Y[˜ÚÜ–Y›Ûİ[˜ÚÜ–
-™˜]ÔØØ[KØØ[Y[˜ÚÜ–OY›Ûİ[˜ÚÜ–J™˜]ÔØØ[NÔ™Xİˆİ[™]È™XİŠX]œ›İ[™
-\ØØ[Y[˜ÚÜ–
-KX]œ›İ[™
-[˜ÚÜ–K\ØØ[Y[˜ÚÜ–JKX]œ›İ[™
-\ØØ[Y[˜ÚÜ–
-ÜØØ[YÚY
-KX]œ›İ[™
-[˜ÚÜ–K\ØØ[Y[˜ÚÜ–JÜØØ[YZYÚ
-JNØË™˜]Ğš]X\
-]\ËÜ˜Ëİ^[Z[
-NßBˆš]˜]Hš]X\SØYS˜[YP[J™\Ûİ\˜Ù\È™\Ûİ\˜Ù\Ëİš[™È˜[YJ^ÚYŠ™\Ûİ\˜Ù\ÏO[[˜[YOO[[
-\™]\›ˆ[İ^Ú[™\ÒY\™\Ûİ\˜Ù\Ë™Ù]Y[YšY\Š˜[YK™˜]ØX›H‹˜ÛÛKœ›Ú™Xİ\šË›[Øš[HŠNÚYŠ™\ÒYOL
-\™]\›ˆ[Ğš]X\˜XİÜK“Ü[ÛœÈÜ[ÛœÏ[™]Èš]X\˜XİÜK“Ü[ÛœÊ
-NÛÜ[ÛœËš[”ØØ[YY˜[ÙNÜ™]\›ˆš]X\˜XİÜK™XÛÙT™\Ûİ\˜ÙJ™\Ûİ\˜Ù\Ë™\ÒYÜ[ÛœÊNßXØ]Ú
-›İØX›HYÛ›Ü™Y
-^Ü™]\›ˆ[ß_Bˆš]˜]Hš]X\SØYS˜[YJ™\Ûİ\˜Ù\È™\Ûİ\˜Ù\Ëİš[™È˜[YK[^XİYÚY[^XİYZYÚ
-^ÚYŠ™\Ûİ\˜Ù\ÏO[[˜[YOO[[
-\™]\›ˆ[İ^Ú[™\ÒY\™\Ûİ\˜Ù\Ë™Ù]Y[YšY\Š˜[YK™˜]ØX›H‹˜ÛÛKœ›Ú™Xİ\šË›[Øš[HŠNÚYŠ™\ÒYOL
-\™]\›ˆ[Ğš]X\˜XİÜK“Ü[ÛœÈÜ[ÛœÏ[™]Èš]X\˜XİÜK“Ü[ÛœÊ
-NÛÜ[ÛœËš[”ØØ[YY˜[ÙNĞš]X\XÛÙYPš]X\˜XİÜK™XÛÙT™\Ûİ\˜ÙJ™\Ûİ\˜Ù\Ë™\ÒYÜ[ÛœÊNÜ™]\›ˆ˜[Y]\ÊXÛÙY^XİYÚY^XİYZYÚ
-OÙXÛÙY›[ßXØ]Ú
-›İØX›HYÛ›Ü™Y
-^Ü™]\›ˆ[ß_BˆX›XÈİ]XÈ[Ø[Ñœ˜[YR[™^
-›Ø]Ø[ĞÛØÚÊ^Ù›Ø]ØY™PÛØÚÏSX]›X^
-‹Ø[ĞÛØÚÊK\ÙO\ØY™PÛØÚÉUĞS×ĞÖPÓWÔÑPÓÓ‘ÎÜ™]\›ˆX]›Z[ŠQWÕĞS×ĞÓÓSS”ËL‹
-[
-SX]™›ÛÜŠ
-\ÙJËŒYŠKÕĞS×Ñ”SQWÔÑPÓÓ‘ÊJNßHš]˜]Hİ]XÈÛÛ^š[™›ØÙ\ÜĞÛÛ^
-
-^İ^ĞÛ\ÜÏÏˆXİ]š]U™XYPÛ\ÜË™›Ü“˜[YJ˜[™›ÚY˜\Xİ]š]U™XYŠNÓY]Ùİ\œ™[\XØ][ÛXXİ]š]U™XY™Ù]XÛ\™YY]Ù
-˜İ\œ™[\XØ][ÛˆŠNÓØš™Xİ\XØ][ÛXİ\œ™[\XØ][Û‹š[›ÚÙJ[
-NÜ™]\›ˆ\XØ][Ûˆ[œİ[˜Ù[ÙˆÛÛ^ÊÛÛ^
-X\XØ][Û›[ßXØ]Ú
-›İØX›HYÛ›Ü™Y
-^Ü™]\›ˆ[ß_Hš]˜]H™\Ûİ\˜Ù\Èš[™›ØÙ\ÜÔ™\Ûİ\˜Ù\Ê
-^ĞÛÛ^ÏYš[™›ØÙ\ÜĞÛÛ^
-
-NÜ™]\›ˆÏO[[Û[˜Ë™Ù]™\Ûİ\˜Ù\Ê
-NßHš]˜]Hİ]XÈ›ÛÛX[ˆ˜[Y]\Êš]X\š]X\[^XİYÚY[^XİYZYÚ
-^Ü™]\›ˆš]X\O[[	‰˜š]X\™Ù]ÚY
-
-OOY^XİYÚY	‰˜š]X\™Ù]ZYÚ
-
-OOY^XİYZYÚßHÊŠˆ“ÑHXİ[ÛŒˆÛİ\˜ÙHÜ™\ˆ\Èš\İX[H™\šYšYYYØZ[œİH›İ\ˆ^˜XİY›ÙHœ˜[Y\Îˆ•ÏL‘OLKÕÏL‹ÑOLËˆÙX\ÛˆY]Y]H\È›İH“ÑHÛİ\˜ÙK[X\]]Üš]Kˆ
-‹ÈX›XÈİ]XÈ[Xİ[Û”Ûİ\˜ÙR[™^
-\™Xİ[Ûˆ\™Xİ[ÛŠ^Ü™]\›ˆ]\Ô›İÊ\™Xİ[ÛŠNßHš]˜]Hİ]XÈ[š[X][ÛXİ[Ûˆ[™™\[š[X][ÛXİ[ÛŠİ]Hİ]KY™™Xİ˜[Z[HY™™Xİİš[™ÈÙX\Û•š\İX[™YŠ^ÚYŠİ]OOTİ]KUPÒÉ‰š\ÕÙX\Û\X\˜[˜ÙJÙX\Û•š\İX[™YŠJ\™]\›ˆ[š[X][ÛXİ[Û‹”ÕÒS‘ÎÚYŠY™™XİOQY™™Xİ˜[Z[K•“ÕÊ\™]\›ˆ[š[X][ÛXİ[Û‹•“ÕÎÚYŠY™™XİOQY™™Xİ˜[Z[K’ÒPÒÊ\™]\›ˆ[š[X][ÛXİ[Û‹’ÒPÒÎÚYŠY™™XİOQY™™Xİ˜[Z[KĞTÕY™™XİOQY™™Xİ˜[Z[K“PQÒPÊ\™]\›ˆ[š[X][ÛXİ[Û‹ĞTÕÚYŠY™™XİOQY™™Xİ˜[Z[K”ÒÒS
-\™]\›ˆ[š[X][ÛXİ[Û‹”ÒÒSÜ™]\›ˆİ]OOTİ]KUPÒÏĞ[š[X][ÛXİ[Û‹”SÒ›[ßBˆš]˜]H›ÚY˜]ÔØY™TX\Ø[˜[˜XÚÊØ[˜\ÈËÜÙHÜÙK›Ø][˜ÚÜ–J^Ø›ÛÛX[ˆY\ÜÙK™\™Xİ[ÛOQ\™Xİ[Û‹“•ßÜÙK™\™Xİ[ÛOQ\™Xİ[Û‹”ÕËİÛ\ÜÙK™\™Xİ[ÛOQ\™Xİ[Û‹”ÕßÜÙK™\™Xİ[ÛOQ\™Xİ[Û‹”ÑNÚ[œ˜[YO\ÜÙKœİ]OOTİ]K•ĞSÏİØ[Ñœ˜[YR[™^
-™\Ù[][Û•Ø[ĞÛØÚÊNŒİ\Yœ˜[YOOLOËLN™œ˜[YOOLÏÌNŒÙ›Ø]\ÙO\ÜÙKœİ]Q\˜][ÛLÌ“X]›X^
-‹X]›Z[ŠY‹ÜÙKœİ]PÛØÚËÜÜÙKœİ]Q\˜][ÛŠJNØËœØ]™J
-NØË˜[œÛ]JÜÙKLL™Š”VQT—Ô‘S‘T—ÔĞĞSK[˜ÚÜ–KLÌ™Š”VQT—Ô‘S‘T—ÔĞĞSJNØËœØØ[JVQT—Ô‘S‘T—ÔĞĞSKVQT—Ô‘S‘T—ÔĞĞSJNÚ[İ][™OL™ŒYNLMËÚÚ[\ÜÙKš]›\ÚÌ™™™™ØØNŒ™˜ÎNËÚÚ[’OL™™MŒËZ\L™ŒÍ‹Z\’OL™ÌLLØKZ\”ÚYİÏL™Œ˜ÌŒXKÛİL™ÍM‹ÛİOL™˜YMM™ÛİÚYİÏL™MÙ‹[ÏL™M[ÒOL™ŒÍXÍMKÚÙOL™ŒÌÌ˜ÌÚ[™X\–[YÍÎŒM˜\–[YÌLÎÜ
-Ëİ][™KKNKË
-NÜ
-Ë[ËLNKKÊNÜ
-Ëİ][™K˜\–
-Üİ\ŒKË
-NÜ
-Ë[Ë˜\–
-Üİ\
-ÌKŒ‹‹ŠNÜ
-ËÚÙK˜\–
-Üİ\LKKÊNÜ
-Ëİ][™K™X\–\İ\ŒJNÜ
-Ë[ÒK™X\–\İ\
-ÌKŒK‹ÊNÜ
-ËÚÙK™X\–\İ\LK‹ÊNÚ[ÜœÛÖ[YÍÎNÜ
-Ëİ][™KÜœÛÖKKLŠNÜ
-ËÛİÚYİËÜœÛÖ
-ÌKLËL
-NÜ
-ËÛİÜœÛÖ
-Ì‹L‹JNÜ
-ËÛİKÜœÛÖ
-Ì‹L‹ŠNÚ[˜\”Úİ[\[YÌMNÜ
-Ëİ][™K˜\”Úİ[\‹LKË
-NÜ
-ËÚÚ[‹˜\”Úİ[\ŠÊYÌŒJKL‹‹ŠNÚ[™X\”Úİ[\[YÍŒMÎÜ
-Ëİ][™K™X\”Úİ[\‹LK
-NÜ
-ËÚÚ[‹™X\”Úİ[\ŠÊYÌŒJKL‹ËŠNÚ[XY[YÎÎÜ
-Ëİ][™KXYKLJNÜ
-ËZ\”ÚYİËXYKLJNÜ
-ËZ\‹XY
-ÌKKJNÜ
-ËZ\’KXY
-Ì‹KJNÚYŠİÛŠ^Ü
-ËÚÚ[‹XY
-ÌKJNÜ
-ËÚÚ[’KXY
-Ì‹‹ŠNÜ
-Ë™ŒYNKYÚXY
-ÌÎšXY
-Í‹‹KJNßY[ÙH
-ËÚÚ[‹XY
-Ì‹K‹
-NÚYŠÜÙKœİ]OOTİ]KĞTÕÜÙKœİ]OOTİ]K”ÒÒS
-^ÙZ[œÙ]İ[JZ[”İ[K”Õ“ÒÑJNÙZ[œÙ]İ›ÚÙUÚY
-™ŠNÙZ[œÙ]ÛÛÜŠØÍÎXÙ™™ŠNØË™˜]ĞÚ\˜ÛJLŠÊYËMYYŠK
-Ü\ÙJY‹Z[
-NÙZ[œÙ]İ[JZ[”İ[K‘’S
-NßZYŠÜÙKœİ]OOTİ]K‘PQ
-XËœ›İ]JYËMÌ™Ì™‹L™‹ÌŠNØËœ™\İÜ™J
-NßBˆš]˜]H›ÚY
-Ø[˜\ÈË[ÛÛÜ‹›Ø]›Ø]K›Ø]Ë›Ø]
-^Ü^[Z[œÙ]İ[JZ[”İ[K‘’S
-NÜ^[Z[œÙ]ÛÛÜŠÛÛÜŠNØË™˜]Ô™Xİ
-K
-İËJÚ^[Z[
-NßHX›XÈ›ÛÛX[ˆ\Ô™\]Z\™Yİ]PÛÛ˜Xİ
-
-^Ü™]\›ˆÚ\˜Xİ\”™[™\™\]Y]œ\ÜÙ\Ê
-NßHX›XÈİš[™ÈÛÛ˜Xİ]Y]İ[[X\J
-^Ü™]\›ˆÚ\˜Xİ\”™[™\™\]Y]œİ[[X\J
-NßHX›XÈ›ÛÛX[ˆİÛœÔ^Y\“ØØ[Y™™XİÊ
-^Ü™]\›ˆYNßHX›XÈ›Ø]^Y\”™[™\”ØØ[J
-^Ü™]\›ˆVQT—Ô‘S‘T—ÔĞĞSNßHX›XÈ›ÛÛX[ˆ\Ù\ÑY˜][]\Ñ›ÜŠİ]Hİ]J^Ü™]\›ˆİ]OOTİ]K’Q_İ]OOTİ]K•ĞSßİ]OOTİ]K’UÜ™\Ûİ\˜ÙP]\ĞXİ]™J
-Nœİ]OOTİ]KUPÒÉ‰œÛİ\˜ÙPXİ[ÛXİ]™J
-NßBŸ
+    c.restore();drawActionAccessories(c,pose,source,transform,body);if(composition.weaponVisible&&!composition.weaponBehindBody)drawActionWeapon(c,pose,source,transform,body);if(!shieldBehindBody(pose.direction))drawActionShield(c,pose,transform,body);
+  }
+  private void drawActionAccessories(Canvas c,Pose pose,int source,AttackCompositeTransform.Result transform,CharacterSemanticRig.Anchors rig){if(transform==null)return;for(String x:visualTokens(pose.equipmentVisualRef)){String a=x.toLowerCase();if(!(a.startsWith("mh")||a.startsWith("wh")||a.startsWith("ml")||a.startsWith("wl")))continue;EquipmentVisualRegistry.Visual v=equipmentRegistry==null?null:equipmentRegistry.get(a);if(v!=null)drawRegisteredAction(c,v.atlas,v.registration,source,transform,bodyMirrorX(pose.direction));}}
+  private void drawActionShield(Canvas c,Pose pose,AttackCompositeTransform.Result transform,CharacterSemanticRig.Anchors rig){if(transform==null)return;for(String x:visualTokens(pose.equipmentVisualRef)){String a=x.toLowerCase();if(!(a.startsWith("ms")||a.startsWith("ws")))continue;EquipmentVisualRegistry.Visual v=equipmentRegistry==null?null:equipmentRegistry.get(a);if(v!=null)drawRegisteredAction(c,v.atlas,v.registration,actionSourceIndex(pose.direction),transform,bodyMirrorX(pose.direction));}}
+  private void drawRegisteredAction(Canvas c,Bitmap atlas,SourceEquipmentRegistration registration,int source,AttackCompositeTransform.Result transform,boolean mirror){if(atlas==null||registration==null||transform==null)return;SourceEquipmentRegistration.Frame f=registration.action(source);if(f==null)return;float x=transform.bodyLeft+f.dx*transform.scale,y=transform.bodyTop+f.dy*transform.scale;RectF dst=new RectF(Math.round(x),Math.round(y),Math.round(x+f.src.width()*transform.scale),Math.round(y+f.src.height()*transform.scale));c.save();if(mirror)c.scale(-1f,1f,transform.mirrorPivotX,transform.bodyTop);c.drawBitmap(atlas,f.src,dst,pixelPaint);c.restore();}
+  private void drawActionWeapon(Canvas c,Pose pose,int source,AttackCompositeTransform.Result transform,CharacterSemanticRig.Anchors body){if(!hasWeaponAppearance(pose.weaponVisualRef)||source<0||source>=SOURCE_ACTION_COUNT||transform==null||body==null)return;String appearance=pose.weaponVisualRef.toLowerCase();EquipmentVisualRegistry.Visual v=equipmentRegistry==null?null:equipmentRegistry.get(appearance);if(v!=null){SourceEquipmentRegistration.Frame f=v.registration==null?null:v.registration.action(source);if(f!=null){drawRegisteredAction(c,v.atlas,v.registration,source,transform,bodyMirrorX(pose.direction));return;}drawWeaponBitmapAtActionHand(c,v.atlas,pose,transform,body);return;}if(containsVisualRef(pose.weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)&&weaponSourceActive())drawWeaponBitmapAtActionHand(c,mokdoSprite,pose,transform,body);}
+  private void drawWeaponBitmapAtActionHand(Canvas c,Bitmap weapon,Pose pose,AttackCompositeTransform.Result transform,CharacterSemanticRig.Anchors body){if(weapon==null)return;float scale=transform.scale;float handleX=transform.handleX(actionWeaponHandX(pose.direction,body),bodyMirrorX(pose.direction)),handleY=transform.handleY(actionWeaponHandY(pose.direction,body)),angle=weaponAttackAngle(pose.direction,attackPhase(pose));float hx=Math.max(1f,weapon.getWidth()*.125f),hy=Math.max(1f,weapon.getHeight()*.5f);c.save();c.rotate(angle,handleX,handleY);if(weaponMirrorX(pose.direction))c.scale(-1f,1f,handleX,handleY);drawRawSourceScaled(c,weapon,handleX-hx*scale,handleY-hy*scale,scale);c.restore();}
+  private ActionGeometry actionGeometry(Direction direction,int source){if(direction==null||source<0||source>=SOURCE_ACTION_COUNT||!resourceAtlasActive())return null;int row=atlasRow(direction);if(row<0)return null;AlphaBounds idle=alphaBoundsCell(idleWalkAtlas,row,0,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT),action=alphaBounds(bodyActionFrames[source]);if(idle.empty()||action.empty())return null;float semanticGlobalPivotX=BODY_ACTION_OFFSET_X[source]+BODY_ACTION_PIVOT_X[source],semanticGlobalFootY=BODY_ACTION_OFFSET_Y[source]+BODY_ACTION_FOOT_Y[source];int dx=Math.round(SOURCE_FOOT_ANCHOR_X-semanticGlobalPivotX),dy=Math.round(SOURCE_FOOT_ANCHOR_Y-semanticGlobalFootY),footErr=Math.abs(SOURCE_FOOT_ANCHOR_Y-Math.round(semanticGlobalFootY+dy)),centerErr=Math.round(Math.abs(SOURCE_FOOT_ANCHOR_X-(semanticGlobalPivotX+dx))),hErr=Math.abs(idle.height()-action.height());return new ActionGeometry(dx,dy,0,BODY_ACTION_HEIGHT[source],hErr,footErr,centerErr,true);}
+  private static AlphaBounds alphaBounds(Bitmap bitmap){if(bitmap==null)return new AlphaBounds(0,0,-1,-1);int l=bitmap.getWidth(),t=bitmap.getHeight(),r=-1,b=-1;for(int y=0;y<bitmap.getHeight();y++)for(int x=0;x<bitmap.getWidth();x++)if(((bitmap.getPixel(x,y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}return new AlphaBounds(l,t,r,b);} private static AlphaBounds alphaBoundsCell(Bitmap atlas,int row,int col,int w,int h){if(atlas==null)return new AlphaBounds(0,0,-1,-1);int ox=col*w,oy=row*h,l=w,t=h,r=-1,b=-1;for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(((atlas.getPixel(ox+x,oy+y)>>>24)&0xff)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>b)b=y;}return new AlphaBounds(l,t,r,b);}
+  public static float normalizedActionScale(int source){return SOURCE_PRESENTATION_SCALE;} public static int actionCanonicalVisibleHeightPixels(){return SOURCE_FRAME_HEIGHT;} public static int actionCanonicalFootAnchorPixels(){return SOURCE_FOOT_ANCHOR_Y;} public static int actionVisibleHeightPixels(int source){if(source<0||source>=SOURCE_ACTION_COUNT)return 0;return BODY_ACTION_HEIGHT[source];} public static float actionSemanticPivotX(int source){return source<0||source>=SOURCE_ACTION_COUNT?Float.NaN:BODY_ACTION_OFFSET_X[source]+BODY_ACTION_PIVOT_X[source];} public static float actionSemanticFootY(int source){return source<0||source>=SOURCE_ACTION_COUNT?Float.NaN:BODY_ACTION_OFFSET_Y[source]+BODY_ACTION_FOOT_Y[source];} public static boolean bodyMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;} public static boolean weaponMirrorX(Direction d){return d==Direction.NW||d==Direction.SW;}
+  public static AttackVisualComposition attackVisualComposition(Direction direction,String equipmentVisualRef,String weaponVisualRef){return new AttackVisualComposition(direction,actionSourceIndex(direction),bodyMirrorX(direction),weaponBehindBody(direction),garmentAppearance(equipmentVisualRef)!=null,hasWeaponAppearance(weaponVisualRef),PLAYER_RENDER_SCALE);} public static boolean weaponBehindBody(Direction direction){return direction==Direction.NW||direction==Direction.NE;}
+  private ChungryongWeaponRenderer chungryongWeapon;
+  private void drawWeapon(Canvas c,Pose pose,float anchorY,boolean attacking){
+    if(ChungryongWeaponRenderer.equipped(pose.weaponVisualRef)){
+      if(chungryongWeapon==null){Context context=findProcessContext();if(context!=null)chungryongWeapon=new ChungryongWeaponRenderer(context);}
+      if(chungryongWeapon!=null){int row=atlasRow(pose.direction),column=paperDollAtlasColumn(pose.state,presentationWalkClock);float scale=SOURCE_PRESENTATION_SCALE;float x=Math.round(pose.x-SOURCE_FOOT_ANCHOR_X*scale)+ChungryongWeaponRenderer.carryHandX(pose.direction,column)*scale,y=Math.round(anchorY-SOURCE_FOOT_ANCHOR_Y*scale)+ChungryongWeaponRenderer.carryHandY(pose.direction,column)*scale;chungryongWeapon.carry(c,pose,x,y,scale);}return;
+    }
+String appearance=pose.weaponVisualRef==null?null:pose.weaponVisualRef.toLowerCase();EquipmentVisualRegistry.Visual v=equipmentRegistry==null?null:equipmentRegistry.get(appearance);if(v!=null&&v.registration!=null){int row=atlasRow(pose.direction),col=paperDollAtlasColumn(pose.state,presentationWalkClock);if(row<0)return;AlphaBounds bounds=alphaBoundsCell(idleWalkAtlas,row,col,SOURCE_FRAME_WIDTH,SOURCE_FRAME_HEIGHT);if(bounds.empty())return;float left=Math.round(pose.x-SOURCE_FOOT_ANCHOR_X*SOURCE_PRESENTATION_SCALE)+bounds.left*SOURCE_PRESENTATION_SCALE,top=Math.round(anchorY-SOURCE_FOOT_ANCHOR_Y*SOURCE_PRESENTATION_SCALE)+bounds.top*SOURCE_PRESENTATION_SCALE;int bodyFrame=ShirtSourceRegistration.idleFrame(pose.direction,col);float sx=bounds.width()*SOURCE_PRESENTATION_SCALE/ShirtSourceRegistration.BODY_WIDTH[bodyFrame],sy=bounds.height()*SOURCE_PRESENTATION_SCALE/ShirtSourceRegistration.BODY_HEIGHT[bodyFrame];drawRegisteredIdle(c,v.atlas,v.registration,pose.direction,col,left,top,sx,sy,pose.direction==Direction.NW||pose.direction==Direction.SW,bounds);return;}if(!containsVisualRef(pose.weaponVisualRef,CharacterVisualBinding.RESOLVED_WEAPON_APPEARANCE_ID)||!weaponSourceActive())return;float scale=SOURCE_PRESENTATION_SCALE;int frame=paperDollAtlasColumn(pose.state,presentationWalkClock),row=atlasRow(pose.direction);if(row<0)return;int sourceColumn=attacking?0:frame;Rect cell=atlasCellRect(row,sourceColumn);float bodyLeft=Math.round(pose.x-SOURCE_FOOT_ANCHOR_X*scale),bodyTop=Math.round(anchorY-SOURCE_FOOT_ANCHOR_Y*scale);CharacterSemanticRig.Anchors body=CharacterSemanticRig.derive(idleWalkAtlas,cell,pose.direction);float handleX=bodyLeft+body.dominantHand.x*scale,handleY=bodyTop+body.dominantHand.y*scale,angle=attacking?weaponAttackAngle(pose.direction,attackPhase(pose)):weaponCarryAngle(pose.direction,frame);c.save();c.rotate(angle,handleX,handleY);if(weaponMirrorX(pose.direction))c.scale(-1f,1f,handleX,handleY);drawRawSourceScaled(c,mokdoSprite,handleX-WEAPON_HANDLE_X*scale,handleY-WEAPON_HANDLE_Y*scale,scale);c.restore();}
+  private static Rect atlasCellRect(int row,int col){int left=col*SOURCE_FRAME_WIDTH,top=row*SOURCE_FRAME_HEIGHT;return new Rect(left,top,left+SOURCE_FRAME_WIDTH,top+SOURCE_FRAME_HEIGHT);} private static float attackPhase(Pose pose){if(pose==null||pose.stateDuration<=0f)return 0f;return Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));}
+  public static float weaponCarryAngle(Direction direction){if(direction==null)return 0f;switch(direction){case NW:return 56f;case NE:return -64f;case SW:return 72f;case SE:return -62f;default:return 0f;}} public static float weaponCarryAngle(Direction direction,int atlasColumn){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));if(row<0)return 0f;return CARRY_FRAME_ANGLE[row][column];} public static float weaponCarryOffsetX(Direction direction){if(direction==null)return 0f;switch(direction){case NW:return -7f;case NE:return 6f;case SW:return -9f;case SE:return 8f;default:return 0f;}} public static float weaponCarryOffsetX(Direction direction,int atlasColumn){return carryFrameAnchor(direction,atlasColumn,true);} public static float weaponCarryOffsetY(Direction direction){if(direction==null)return 22f;switch(direction){case NW:return 26f;case NE:return 24f;case SW:return 21f;case SE:return 23f;default:return 22f;}} public static float weaponCarryOffsetY(Direction direction,int atlasColumn){return carryFrameAnchor(direction,atlasColumn,false);} private static float carryFrameAnchor(Direction direction,int atlasColumn,boolean x){int row=atlasRow(direction),column=Math.max(0,Math.min(IDLE_WALK_COLUMNS-1,atlasColumn));if(row<0)return 0f;return x?CARRY_FRAME_X[row][column]:CARRY_FRAME_Y[row][column];}
+  public static float weaponCarryMaxJumpX(Direction direction){return maxCarryJump(direction,0);} public static float weaponCarryMaxJumpY(Direction direction){return maxCarryJump(direction,1);} public static float weaponCarryMaxJumpAngle(Direction direction){return maxCarryJump(direction,2);} private static float maxCarryJump(Direction direction,int component){int row=atlasRow(direction);if(row<0)return Float.POSITIVE_INFINITY;float max=0f;for(int col=1;col<IDLE_WALK_COLUMNS;col++){float a=component==0?CARRY_FRAME_X[row][col-1]:component==1?CARRY_FRAME_Y[row][col-1]:CARRY_FRAME_ANGLE[row][col-1],b=component==0?CARRY_FRAME_X[row][col]:component==1?CARRY_FRAME_Y[row][col]:CARRY_FRAME_ANGLE[row][col];max=Math.max(max,Math.abs(b-a));}return max;}
+  public static float actionHeightRatio(int source){if(source<0||source>=SOURCE_ACTION_COUNT)return 1f;return actionVisibleHeightPixels(source)/(float)SOURCE_FRAME_HEIGHT;} public static boolean legacyProceduralAttackReachable(){return false;} public static boolean hitCharacterPoseEnabled(){return false;} public static boolean weaponTransformUsesSingleMirror(){return true;} public static boolean attackFallbackWeaponSwingReachable(){return false;}
+  private static final float[] ACTION_WEAPON_HAND_X={4.5f,13.5f,5.0f,15.0f},ACTION_WEAPON_HAND_Y={27.0f,27.0f,28.0f,27.0f}; public static float actionWeaponHandX(Direction d,CharacterSemanticRig.Anchors fallback){int i=actionSourceIndex(d);return i>=0&&i<ACTION_WEAPON_HAND_X.length?ACTION_WEAPON_HAND_X[i]:(fallback==null?0f:fallback.dominantHand.x);} public static float actionWeaponHandY(Direction d,CharacterSemanticRig.Anchors fallback){int i=actionSourceIndex(d);return i>=0&&i<ACTION_WEAPON_HAND_Y.length?ACTION_WEAPON_HAND_Y[i]:(fallback==null?0f:fallback.dominantHand.y);} public static float weaponAttackOffsetX(Direction direction){return 0f;} public static float weaponAttackOffsetY(Direction direction){return 0f;} public static float weaponAttackGripX(Direction direction){if(direction==null)return 0f;switch(direction){case NW:return -0.5f;case NE:return 0.5f;case SW:return -0.5f;case SE:return 0.5f;default:return 0f;}} public static float weaponAttackGripY(Direction direction){if(direction==null)return 0f;switch(direction){case NW:case NE:return 0.5f;case SW:case SE:return -0.5f;default:return 0f;}}
+  /** Attack weapon has no independent temporal swing; orientation is fixed per BODY contact pose. */
+  public static float weaponAttackAngle(Direction direction,float phase){if(direction==null)return 0f;switch(direction){case NW:return 32f;case SW:return 42f;case NE:return -32f;case SE:return -42f;default:return 0f;}}
+  public static boolean weaponAttackUsesIndependentSwing(){return false;}
+  private void drawRawSourceScaled(Canvas c,Bitmap bitmap,float left,float top,float scale){if(bitmap==null)return;c.drawBitmap(bitmap,null,new RectF(Math.round(left),Math.round(top),Math.round(left+bitmap.getWidth()*scale),Math.round(top+bitmap.getHeight()*scale)),pixelPaint);} private void drawRawSourceCroppedScaled(Canvas c,Bitmap bitmap,int srcLeft,int srcTop,int srcRight,int srcBottom,float left,float top,float scale){if(bitmap==null||srcRight<=srcLeft||srcBottom<=srcTop)return;Rect src=new Rect(srcLeft,srcTop,srcRight,srcBottom);RectF dst=new RectF(Math.round(left),Math.round(top),Math.round(left+(srcRight-srcLeft)*scale),Math.round(top+(srcBottom-srcTop)*scale));c.drawBitmap(bitmap,src,dst,pixelPaint);} private void drawAtlasCell(Canvas c,Bitmap atlas,int row,int col,int frameWidth,int frameHeight,float footAnchorX,float footAnchorY,float drawScale,float anchorY,float x){int left=col*frameWidth,top=row*frameHeight;Rect src=new Rect(left,top,left+frameWidth,top+frameHeight);float scaledWidth=frameWidth*drawScale,scaledHeight=frameHeight*drawScale,scaledAnchorX=footAnchorX*drawScale,scaledAnchorY=footAnchorY*drawScale;RectF dst=new RectF(Math.round(x-scaledAnchorX),Math.round(anchorY-scaledAnchorY),Math.round(x-scaledAnchorX+scaledWidth),Math.round(anchorY-scaledAnchorY+scaledHeight));c.drawBitmap(atlas,src,dst,pixelPaint);}
+  private Bitmap tryLoadByNameAny(Resources resources,String name){if(resources==null||name==null)return null;try{int resId=resources.getIdentifier(name,"drawable","com.projectdark.mobile");if(resId==0)return null;BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;return BitmapFactory.decodeResource(resources,resId,options);}catch(Throwable ignored){return null;}}
+  private Bitmap tryLoadByName(Resources resources,String name,int expectedWidth,int expectedHeight){if(resources==null||name==null)return null;try{int resId=resources.getIdentifier(name,"drawable","com.projectdark.mobile");if(resId==0)return null;BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;Bitmap decoded=BitmapFactory.decodeResource(resources,resId,options);return validAtlas(decoded,expectedWidth,expectedHeight)?decoded:null;}catch(Throwable ignored){return null;}}
+  public static int walkFrameIndex(float walkClock){float safeClock=Math.max(0f,walkClock),phase=safeClock%WALK_CYCLE_SECONDS;return Math.min(IDLE_WALK_COLUMNS-2,(int)Math.floor((phase+.00001f)/WALK_FRAME_SECONDS));} private static Context findProcessContext(){try{Class<?> activityThread=Class.forName("android.app.ActivityThread");Method currentApplication=activityThread.getDeclaredMethod("currentApplication");Object application=currentApplication.invoke(null);return application instanceof Context?(Context)application:null;}catch(Throwable ignored){return null;}} private Resources findProcessResources(){Context c=findProcessContext();return c==null?null:c.getResources();} private static boolean validAtlas(Bitmap bitmap,int expectedWidth,int expectedHeight){return bitmap!=null&&bitmap.getWidth()==expectedWidth&&bitmap.getHeight()==expectedHeight;} /** BODY action02 source order is visually verified against the four extracted body frames: NW=0, NE=1, SW=2, SE=3. Weapon metadata is not a BODY source-map authority. */ public static int actionSourceIndex(Direction direction){return atlasRow(direction);} private static AnimationAction inferAnimationAction(State state,EffectFamily effect,String weaponVisualRef){if(state==State.ATTACK&&hasWeaponAppearance(weaponVisualRef))return AnimationAction.SWING;if(effect==EffectFamily.THROW)return AnimationAction.THROW;if(effect==EffectFamily.KICK)return AnimationAction.KICK;if(effect==EffectFamily.CAST||effect==EffectFamily.MAGIC)return AnimationAction.CAST;if(effect==EffectFamily.SKILL)return AnimationAction.SKILL;return state==State.ATTACK?AnimationAction.PUNCH:null;}
+  private void drawSafePeasantFallback(Canvas c,Pose pose,float anchorY){boolean left=pose.direction==Direction.NW||pose.direction==Direction.SW,down=pose.direction==Direction.SW||pose.direction==Direction.SE;int frame=pose.state==State.WALK?walkFrameIndex(presentationWalkClock):0,step=frame==1?-1:frame==3?1:0;float phase=pose.stateDuration<=0f?0f:Math.max(0f,Math.min(1f,pose.stateClock/pose.stateDuration));c.save();c.translate(pose.x-12f*PLAYER_RENDER_SCALE,anchorY-32f*PLAYER_RENDER_SCALE);c.scale(PLAYER_RENDER_SCALE,PLAYER_RENDER_SCALE);int outline=0xff1d1917,skin=pose.hitFlash?0xffffd7ca:0xffc98d67,skinHi=0xffe4b087,hair=0xff4b3426,hairHi=0xff72513a,hairShadow=0xff2c201a,cloth=0xff8b7656,clothHi=0xffad956d,clothShadow=0xff64543f,pants=0xff4b4540,pantsHi=0xff635c55,shoe=0xff332c28;int nearX=left?7:14,farX=left?13:8;px(c,outline,9,19,7,4);px(c,pants,10,19,5,3);px(c,outline,farX+step,21,3,8);px(c,pants,farX+step+1,22,2,6);px(c,shoe,farX+step-1,28,5,3);px(c,outline,nearX-step,20,4,9);px(c,pantsHi,nearX-step+1,21,2,7);px(c,shoe,nearX-step-1,28,6,3);int torsoX=left?7:9;px(c,outline,torsoX,9,9,12);px(c,clothShadow,torsoX+1,10,7,10);px(c,cloth,torsoX+2,10,6,9);px(c,clothHi,torsoX+2,10,2,2);int farShoulder=left?15:8;px(c,outline,farShoulder,11,3,8);px(c,skin,farShoulder+(left?0:1),12,2,6);int nearShoulder=left?6:17;px(c,outline,nearShoulder,11,4,8);px(c,skin,nearShoulder+(left?0:1),12,3,6);int headX=left?8:7;px(c,outline,headX,1,10,9);px(c,hairShadow,headX,1,10,5);px(c,hair,headX+1,1,8,5);px(c,hairHi,headX+2,1,4,1);if(down){px(c,skin,headX+1,4,8,5);px(c,skinHi,headX+2,4,2,2);px(c,0xff281d19,left?headX+3:headX+6,6,1,1);}else px(c,skin,headX+2,5,6,4);if(pose.state==State.CAST||pose.state==State.SKILL){fxPaint.setStyle(Paint.Style.STROKE);fxPaint.setStrokeWidth(2f);fxPaint.setColor(0xcc79cfff);c.drawCircle(12+(left?-5f:5f),8,4+phase*5f,fxPaint);fxPaint.setStyle(Paint.Style.FILL);}if(pose.state==State.DEAD)c.rotate(left?-72f:72f,12f,30f);c.restore();}
+  private void px(Canvas c,int color,float x,float y,float w,float h){pixelPaint.setStyle(Paint.Style.FILL);pixelPaint.setColor(color);c.drawRect(x,y,x+w,y+h,pixelPaint);} public boolean hasRequiredStateContract(){return CharacterRendererAudit.passes();} public String contractAuditSummary(){return CharacterRendererAudit.summary();} public boolean ownsPlayerLocalEffects(){return true;} public float playerRenderScale(){return PLAYER_RENDER_SCALE;} public boolean usesDefaultAtlasFor(State state){return state==State.IDLE||state==State.WALK||state==State.HIT?resourceAtlasActive():state==State.ATTACK&&sourceActionActive();}
+}
