@@ -4,6 +4,24 @@ import android.graphics.*;
 
 /** Reconstructed pixel effects. Source-described shape/color is separate from unverified original pixels. */
 final class SkillEffectShapes {
+  static void drawDirected(Canvas c,Paint p,String name,float x,float y,float t,float dx,float dy){
+    if(!"QI_BLAST".equals(name)){draw(c,p,name,x,y,t);return;}
+    c.save();c.translate(Math.round(x),Math.round(y-24));c.rotate((float)Math.toDegrees(Math.atan2(dy,dx)));
+    int alpha=Math.round(255*Math.min(1,(1-t)*4));float travel=10+18*Math.min(1,t*2);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeCap(Paint.Cap.SQUARE);p.setColor(0xff45d9ff);p.setAlpha(alpha/2);p.setStrokeWidth(10);c.drawLine(-travel-18,0,-5,0,p);
+    p.setColor(0xffa9f5ff);p.setAlpha(alpha);p.setStrokeWidth(4);c.drawLine(-travel-12,0,-3,0,p);p.setStyle(Paint.Style.FILL);p.setStrokeCap(Paint.Cap.BUTT);
+    Path diamond=new Path();diamond.moveTo(8,0);diamond.lineTo(-1,-7);diamond.lineTo(-7,0);diamond.lineTo(-1,7);diamond.close();p.setColor(0xffdffcff);p.setAlpha(alpha);c.drawPath(diamond,p);
+    float r=8+12*Math.min(1,t*2);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xff45d9ff);p.setAlpha(alpha*3/4);c.drawCircle(0,0,r,p);p.setStyle(Paint.Style.FILL);
+    c.restore();p.setAlpha(255);p.setStyle(Paint.Style.FILL);
+  }
+  static void drawCasterStream(Canvas c,Paint p,float x,float y,float t,float dx,float dy){
+    c.save();c.translate(Math.round(x),Math.round(y-24));c.rotate((float)Math.toDegrees(Math.atan2(dy,dx)));
+    int alpha=Math.round(255*Math.min(1,(1-t)*4));float phase=t*42f;
+    p.setStyle(Paint.Style.STROKE);p.setStrokeCap(Paint.Cap.ROUND);p.setColor(0xffe24961);p.setAlpha(alpha/2);p.setStrokeWidth(7);c.drawLine(4,0,37,0,p);
+    p.setColor(0xffff8792);p.setAlpha(alpha);p.setStrokeWidth(2);c.drawLine(4,0,37,0,p);p.setStyle(Paint.Style.FILL);p.setStrokeCap(Paint.Cap.BUTT);
+    for(int i=0;i<5;i++){float px=8+((i*9+phase)%32),py=(float)Math.sin(i*2.1+t*9)*3;pixel(c,p,px,py,3,i%2==0?0xffff526e:0xffffd4d8,alpha);}
+    pixel(c,p,3,0,4,0xffffd4d8,alpha);c.restore();p.setAlpha(255);p.setStyle(Paint.Style.FILL);
+  }
   static void draw(Canvas c,Paint p,String name,float x,float y,float t){
     c.save();c.translate(Math.round(x),Math.round(y-24));
     p.setStyle(Paint.Style.FILL);int alpha=Math.round(255*Math.min(1,(1-t)*4));
