@@ -36,8 +36,8 @@ public final class HudTouchAcceptanceTest {
         GameView.blocksWorldTapForHud(950, 498, true));
     assertTrue("screen area outside the enlarged attack stays available to the world",
         !GameView.blocksWorldTapForHud(953, 498, true));
-    assertTrue("utility rail shifted right while its former position returns to the world",
-        !GameView.blocksWorldTapForHud(640, 28, false));
+    assertTrue("gap between equally spaced utility icons stays available to the world",
+        !GameView.blocksWorldTapForHud(633, 28, false));
     assertTrue("world outside the left cards and icon rail stays tappable",
         !GameView.blocksWorldTapForHud(310, 190, false));
 

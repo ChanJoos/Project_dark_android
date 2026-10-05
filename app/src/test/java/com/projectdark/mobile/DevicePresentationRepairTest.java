@@ -7,6 +7,7 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import org.junit.*;
+import org.json.*;
 import org.junit.runner.RunWith;
 import org.robolectric.*;
 import org.robolectric.annotation.*;
@@ -17,12 +18,15 @@ import org.robolectric.annotation.*;
 public class DevicePresentationRepairTest {
  Context context;
  @Before public void setup(){context=RuntimeEnvironment.getApplication();for(String n:new String[]{"project_dark_f5m_v1","project_dark_journal_v1","project_dark_skill_test_v1"})context.getSharedPreferences(n,0).edit().clear().commit();F5mSaveStore.install(context);}
- @Test public void retainedStarterAndShopEquipmentHaveRealMatchingFrames(){
+ @Test public void retainedStarterAndShopEquipmentHaveRealMatchingFrames()throws Exception{
   EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context);
   String[] ids={"mu0000001","mu0000002","mu0000003","ml228","ml229","ml230","mh172","mh173","mh174","ms001","ms002","ms003","mw001","mw002","mw003","mw004","mw005","mw006","mw007","mw008","mw009","mw010"};
   for(String id:ids){EquipmentVisualRegistry.Visual v=registry.get(id);assertNotNull(id,v);assertNotNull("V105 omitted "+id,v.registration);
-   for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(int col=0;col<5;col++)assertInside(id,v.atlas,v.registration.idle(d,col));
-   for(int i=0;i<4;i++)assertInside(id,v.atlas,v.registration.action(i));
+   JSONObject sprites;try(InputStream input=context.getAssets().open("source-registration/"+id+".json")){sprites=new JSONObject(new String(input.readAllBytes(),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("sprites");}
+   // mw006 original has nine idle/walk and three action frames. Preserve its explicit
+   // missing final source poses; never manufacture art just to satisfy a test.
+   for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(int col=0;col<5;col++){int index=ShirtSourceRegistration.idleFrame(d,col);SourceEquipmentRegistration.Frame f=v.registration.idle(d,col);if(index<sprites.getJSONArray("01").length())assertInside(id,v.atlas,f);else assertNull("unavailable original frame "+id,f);}
+   for(int i=0;i<4;i++){SourceEquipmentRegistration.Frame f=v.registration.action(i);if(i<sprites.getJSONArray("02").length())assertInside(id,v.atlas,f);else assertNull("unavailable original action "+id,f);}
   }
  }
  private void assertInside(String id,Bitmap b,SourceEquipmentRegistration.Frame f){assertNotNull(id,f);assertTrue(id,f.src.width()>0&&f.src.height()>0&&f.src.left>=0&&f.src.top>=0&&f.src.right<=b.getWidth()&&f.src.bottom<=b.getHeight());}
