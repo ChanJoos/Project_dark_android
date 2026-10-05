@@ -2,9 +2,9 @@
 
 | Item | State | Evidence / next action |
 |---|---|---|
-| Kill quickquest enables auto-attack | IMPLEMENTED, native tests passed | GameView quickquest integration; verify CI and phone behavior |
-| Warrior Shortblade skill-use count | IMPLEMENTED, native tests passed | Resolver event integration and duplicate/wrong-skill cases; verify CI and phone behavior |
-| Other quest functionality audit | AUDITED against rule/event paths and class progression suites | Runtime tests cover all five class routes, 23 quests each; phone acceptance remains pending |
+| Kill quickquest enables auto-attack | IMPLEMENTED, native tests passed | GameView integration; campaign Actions 37309497449 PASS, phone behavior pending |
+| Warrior Shortblade skill-use count | IMPLEMENTED, native tests passed | Resolver integration plus duplicate/wrong-skill cases; campaign Actions 37309497449 PASS, phone behavior pending |
+| Other quest functionality audit | AUDITED against rule/event paths and class progression suites | Runtime tests cover all five class routes, 23 quests each; exact V108 build verified, phone acceptance pending |
 
 ## 2026-10-05 — V106 presentation repair verified candidate
 

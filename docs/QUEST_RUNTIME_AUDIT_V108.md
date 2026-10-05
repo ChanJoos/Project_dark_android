@@ -13,4 +13,4 @@ Focused Robolectric test classes passed after the change: CampaignQuickQuestInte
 
 ## Acceptance status
 
-IMPLEMENTED_CANDIDATE; native runtime tests passed. GitHub Actions build and exact artifact are pending. The original failures remain recorded as user-reported V106 device failures; test V108 on the handset after CI delivery.
+IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED. Campaign Actions 37309497449 passed source-aware verification, test suites, exact APK build, and package verification for source 4e1cb570c3b352cef2251799b072d2ee5c33694f. APK artifact 11345975613, version 108, SHA-256 05795213163bfca3ba7792ef524c16444251d03d752f38ba8d2ffd01aefe98c7; release: https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v108-4e1cb570/PROJECT_DARK_V108.apk. Full regression workflow 37309497455 was still running at this record. The original failures remain recorded as user-reported V106 device failures; physical phone and user visual acceptance are pending.

@@ -1,10 +1,17 @@
 quest_runtime_v108:
   implementation: IMPLEMENTED_CANDIDATE
-  build: PENDING_GITHUB_ACTIONS
+  build: BUILD_VERIFIED_GITHUB_ACTIONS
   native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
   reported_failures: [quickquest_kill_autoattack, warrior_shortblade_use_count]
   focused_suites: [CampaignQuickQuestIntegrationTest, CampaignProgressTest, QuestJournalTest, QuickQuestLatencyTest, HudTouchAcceptanceTest]
   quest_routes_audited: 5
+  source_commit: 4e1cb570c3b352cef2251799b072d2ee5c33694f
+  campaign_actions_run: 37309497449
+  regression_actions_run: 37309497455
+  apk_artifact: 11345975613
+  native_test_artifact: 11344744281
+  apk_sha256: 05795213163bfca3ba7792ef524c16444251d03d752f38ba8d2ffd01aefe98c7
+  release: https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v108-4e1cb570/PROJECT_DARK_V108.apk
   quests_per_class: 23
   physical_phone: PENDING
   user_visual: PENDING
