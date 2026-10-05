@@ -5,6 +5,7 @@
 | Kill quickquest enables auto-attack | IMPLEMENTED, native tests passed | GameView integration; campaign Actions 37309497449 PASS, phone behavior pending |
 | Warrior Shortblade skill-use count | IMPLEMENTED, native tests passed | Resolver integration plus duplicate/wrong-skill cases; campaign Actions 37309497449 PASS, phone behavior pending |
 | Other quest functionality audit | AUDITED against rule/event paths and class progression suites | Runtime tests cover all five class routes, 23 quests each; exact V108 build verified, phone acceptance pending |
+| Inn mouse movement/readability; early field mice | IMPLEMENTED, follow-up verification pending | Strict GameView chase displacement assertion; captured mouse renderer enlarged; all three early field actors and quickquest label use mouse presentation while stable combat IDs preserve campaign progression. Run exact-source Actions and deliver refreshed V108 candidate; physical device check remains pending. |
 
 ## 2026-10-05 — V106 presentation repair verified candidate
 

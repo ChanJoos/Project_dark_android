@@ -31,7 +31,7 @@ public class InnSourceRepairTest {
     assertNotNull(rat);assertEquals(1,s.monsters().size());assertTrue(s.isMonsterTileCenter(rat.x,rat.y));
     WorldRuntimeAdapter w=TownInteriorTest.field(v,"reagentShopAdapter");assertFalse(w.canPlayerOccupy(rat.x,rat.y));
     capture(v,"entry");
-    float x=rat.x,y=rat.y;TownInteriorTest.tick(v,30);assertTrue("shared AI actually pursues inside the inn",rat.isMoving||Math.hypot(rat.x-x,rat.y-y)>1);
+    float x=rat.x,y=rat.y;TownInteriorTest.tick(v,30);assertTrue("shared AI moves the visible mouse inside the inn",Math.hypot(rat.x-x,rat.y-y)>1f);
     capture(v,"chase");WorldCameraTransform.Point p=w.worldToScreen(rat.x,rat.y);TownInteriorTest.tap(v,p.x,p.y-3);
     CombatController combat=TownInteriorTest.field(v,"combat");assertSame("actual screen tap selects the indoor mouse",rat,combat.target());
     TownInteriorTest.tap(v,826,502); // existing AUTO control

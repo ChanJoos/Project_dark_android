@@ -4,7 +4,7 @@ import android.graphics.*;
 import java.io.InputStream;
 import java.util.EnumMap;
 
-/** Actual tiny gray mouse silhouettes from the reference recording.
+/** Source-captured gray mouse silhouettes, shared by the inn and opening field.
  * Unobserved poses stay explicitly shared source stills; no fabricated animation.
  */
 final class InnMouseRenderer {
@@ -27,9 +27,8 @@ final class InnMouseRenderer {
   void draw(Canvas c,RuntimeState.Monster mouse,float x,float y){
     Bitmap b=images.get(mouse.visualFacing.presentation());
     p.setColor(Color.WHITE);p.setColorFilter(mouse.hitFlash>0?new PorterDuffColorFilter(0xffe9d6b1,PorterDuff.Mode.SRC_ATOP):null);
-    // Reference body is about 20x8 pixels, below the player's ankles. Ground
-    // anchor follows the shared interpolated monster position in every state.
-    float width=24f,height=width*b.getHeight()/b.getWidth();
+    // Keep the small source silhouette recognizable at the game camera scale.
+    float width=48f,height=width*b.getHeight()/b.getWidth();
     c.drawBitmap(b,null,new RectF(x-width/2,y-height,x+width/2,y),p);p.setColorFilter(null);
   }
 }

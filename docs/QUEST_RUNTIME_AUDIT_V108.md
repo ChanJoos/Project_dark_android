@@ -4,6 +4,7 @@
 
 - Selecting an active monster-kill/pair quickquest now enables auto-attack before searching for an eligible target. If no target is currently available, auto-attack remains armed. Target selection is restricted to the active objective and pair objectives respect remaining wanted count.
 - Warrior Shortblade “use 3 times” listens to successful skill effect events. A successful action counts even if computed damage is zero after rounding. Failed, duplicate-sequence, wrong-ability, and test-mode events do not count. Healing objectives continue to require positive applied healing.
+- Follow-up for the user’s inn/field report: inn chase is asserted by actual mouse coordinate displacement through the GameView update loop; the three early Milles field actors now use the captured mouse sprites at a readable scale. Their combat IDs remain unchanged so M04 quickquest progression and rewards keep their existing route. Their visible names and quickquest objective now say “들쥐”.
 
 ## Coverage and runtime connections
 
@@ -13,4 +14,4 @@ Focused Robolectric test classes passed after the change: CampaignQuickQuestInte
 
 ## Acceptance status
 
-IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED. Campaign Actions 37309497449 passed source-aware verification, test suites, exact APK build, and package verification for source 4e1cb570c3b352cef2251799b072d2ee5c33694f. APK artifact 11345975613, version 108, SHA-256 05795213163bfca3ba7792ef524c16444251d03d752f38ba8d2ffd01aefe98c7; release: https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v108-4e1cb570/PROJECT_DARK_V108.apk. Full regression workflow 37309497455 was still running at this record. The original failures remain recorded as user-reported V106 device failures; physical phone and user visual acceptance are pending.
+The earlier V108 candidate (source 4e1cb570c3b352cef2251799b072d2ee5c33694f) passed campaign Actions 37309497449 and full regression Actions 37309497455. The user subsequently reported that the inn mouse did not visibly move and did not read as a mouse, and requested mice in the early field. Follow-up code/tests now cover live GameView coordinate movement and readable source-sprite rendering in the field; exact follow-up CI/APK verification is pending. Physical phone and user visual acceptance are not claimed.
