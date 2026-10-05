@@ -280,10 +280,19 @@ work_packages:
     title: "V105 user-reported broken equipment/icons and NPC facing/name repair"
     priority: P0
     claim: Director/Integration
-    queue_state: IN_PROGRESS
+    queue_state: DEVICE_PENDING
     prior_v105_device: DEVICE_FAILED_USER_REPORTED
     required_sources: [AGENTS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md, master/data/Asset_Source_Catalog.csv, master/data/Runtime_Visual_Rules.csv, docs/ITEM_WINDOW_CONTRACT.md, docs/MODERN_UI_V99_CONTRACT.md, docs/NPC_IDENTITY_STYLE_V104_CONTRACT.md, verification/V106_RESTORED_EQUIPMENT.json]
     acceptance: ["exact registered original equipment and inventory icons packaged", "NPC Korean names everywhere", "NPC stationary SW pose", "upper right icons restored and equally spaced", "native full screen review and exact APK verification"]
+    implementation: IMPLEMENTED
+    build: BUILD_VERIFIED
+    native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+    source_commit: 7cefb0a1ad707b07bb0a5436a73a8189d5f1825c
+    ci_run: 37263309751
+    apk_artifact: 11324339557
+    native_artifact: 11325382653
+    final_focused_tests: 25
+    evidence: docs/verification/DEVICE_PRESENTATION_V106_BUILD.json
     phone_acceptance: PENDING
     user_visual_acceptance: PENDING
   EQUIPMENT_UI_099:
