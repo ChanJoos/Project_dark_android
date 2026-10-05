@@ -64,6 +64,18 @@ public class CampaignProgressTest {
   }
   java.nio.file.Path out=java.nio.file.Path.of("build/reports/campaign/normal-five-classes.json");java.nio.file.Files.createDirectories(out.getParent());java.nio.file.Files.write(out,report.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
+ @Test public void successfulWarriorTechniqueUseCountsEvenWhenMitigationProducesZeroDamage()throws Exception{
+  RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(1_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
+  CampaignProgress c=r.campaign();c.syncOpening(true,true);SkillBook b=SkillBook.load(context);
+  assertTrue(c.accept("M03",r,b));assertTrue(c.claim("M03",r));assertTrue(c.accept("J01_WARRIOR",r,b));
+  c.validSkill("SK_전사_001",1,0,false,r);
+  assertEquals("applied skill event counts despite rounded zero damage",1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
+  c.validSkill("SK_전사_001",1,9,false,r);
+  assertEquals("duplicate resolver sequence is ignored",1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
+  c.validSkill("SK_전사_002",2,9,false,r);
+  assertEquals("wrong technique does not count",1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
+ }
+
  @Test public void fullInventoryRejectsQuestWithoutPartialRewardsAndBadSnapshotsFailClosed()throws Exception{
   RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(22800,0);r.chooseInitialJob("WARRIOR");r.campaign().syncOpening(true,true);assertTrue(r.campaign().accept("M03",r,null));r.autoLootResolvedItem("IT_B_MP_POTION",999999);long exp=r.normalExp(),gold=r.gold();assertFalse(r.campaign().claim("M03",r));assertEquals(exp,r.normalExp().longValue());assertEquals(gold,r.gold().longValue());assertEquals("M03",r.campaign().activeId());
   JSONObject invalid=r.campaign().snapshot().put("sequence",-1);assertFalse(r.campaign().restore(invalid));

@@ -128,15 +128,8 @@ public final class WorldMoveTargetController {
   public int monsterApproachPathSteps(float worldX,float worldY,float approachTolerance){
     TileCenter start=currentTile();
     if(start==null||!Float.isFinite(worldX)||!Float.isFinite(worldY))return -1;
-    int best=Integer.MAX_VALUE;
-    for(TileCenter tile:tiles){
-      if(!world.canPlayerOccupy(tile.x,tile.y)
-          ||distance(tile.x,tile.y,worldX,worldY)>approachTolerance
-          ||!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(tile.x,tile.y,worldX,worldY))continue;
-      List<TileCenter> candidate=same(start,tile)?Collections.emptyList():findPath(start,tile);
-      if((same(start,tile)||!candidate.isEmpty())&&candidate.size()<best)best=candidate.size();
-    }
-    return best==Integer.MAX_VALUE?-1:best;
+    ApproachPlan plan=bestApproachPlan(start,worldX,worldY,approachTolerance,true);
+    return plan==null?-1:plan.path.size();
   }
   private Snapshot beginEntity(RequestKind requestKind,String id,float x,float y,float approachTolerance){
     if(id==null||id.trim().isEmpty())throw new IllegalArgumentException("entity id is required");
@@ -153,7 +146,7 @@ public final class WorldMoveTargetController {
       goal=nearestTraversable(requestedX,requestedY);
       plannedPath=start==null||goal==null?Collections.emptyList():findPath(start,goal);
     }else{
-      ApproachPlan plan=start==null?null:bestApproachPlan(start,requestedX,requestedY,approachTolerance);
+      ApproachPlan plan=start==null?null:bestApproachPlan(start,requestedX,requestedY,approachTolerance,requestKind==RequestKind.MONSTER_APPROACH&&approachTolerance<=48f);
       goal=plan==null?null:plan.goal;
       plannedPath=plan==null?Collections.emptyList():plan.path;
     }
@@ -224,22 +217,60 @@ public final class WorldMoveTargetController {
    * interaction-valid tile and prefer the reachable one with the fewest authored tile steps.
    * Entity distance is only a tie-breaker, so interaction remains visually tight.
    */
-  private ApproachPlan bestApproachPlan(TileCenter start,float x,float y,float approachTolerance){
-    ApproachPlan bestPlan=null;int bestSteps=Integer.MAX_VALUE;float bestEntityDistance=Float.MAX_VALUE;
-    for(TileCenter tile:tiles){
-      if(!world.canPlayerOccupy(tile.x,tile.y))continue;
-      float entityDistance=distance(tile.x,tile.y,x,y);
-      if(entityDistance>approachTolerance)continue;
-      if(kind==RequestKind.MONSTER_APPROACH&&approachTolerance<=48f
-          &&!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(tile.x,tile.y,x,y))continue;
-      List<TileCenter> candidate=same(start,tile)?Collections.emptyList():findPath(start,tile);
-      if(!same(start,tile)&&candidate.isEmpty())continue;
-      int steps=candidate.size();
-      if(steps<bestSteps||(steps==bestSteps&&entityDistance<bestEntityDistance)){
-        bestSteps=steps;bestEntityDistance=entityDistance;bestPlan=new ApproachPlan(tile,candidate,entityDistance);
+  private ApproachPlan bestApproachPlan(TileCenter start,float x,float y,float approachTolerance,boolean meleeOnly){
+    // Collect legal goals cheaply before consulting collision. One multi-goal A* replaces
+    // a complete A* per candidate; live occupancy is scoped to this request, never cached
+    // across actor movement or map changes.
+    Map<String,TileCenter> goals=new HashMap<>();
+    Map<String,Integer> goalOrder=new HashMap<>();
+    float radiusSquared=approachTolerance*approachTolerance;
+    for(int i=0;i<tiles.size();i++){
+      TileCenter tile=tiles.get(i);
+      if(distanceSquared(tile.x,tile.y,x,y)>radiusSquared
+          ||(meleeOnly&&!com.projectdark.mobile.CanonicalMeleeTileContract.reachable(tile.x,tile.y,x,y))
+          ||!world.canPlayerOccupy(tile.x,tile.y))continue;
+      String k=key(tile.x,tile.y);goals.put(k,tile);goalOrder.put(k,i);
+    }
+    if(goals.isEmpty())return null;
+    PriorityQueue<Node> open=new PriorityQueue<>(Comparator.comparingDouble(n->n.f));
+    Map<String,Float> best=new HashMap<>();Set<String> closed=new HashSet<>();
+    Map<String,Boolean> occupancy=new HashMap<>();
+    open.add(new Node(start,0f,approachHeuristic(start,goals.values()),null));best.put(key(start.x,start.y),0f);
+    Node chosen=null;float bestSteps=Float.MAX_VALUE,bestDistance=Float.MAX_VALUE;int bestOrder=Integer.MAX_VALUE;
+    while(!open.isEmpty()){
+      Node current=open.poll();if(current.f>bestSteps)break;
+      String currentKey=key(current.tile.x,current.tile.y);if(!closed.add(currentKey))continue;
+      if(goals.containsKey(currentKey)){
+        float d=distanceSquared(current.tile.x,current.tile.y,x,y);int order=goalOrder.get(currentKey);
+        if(current.g<bestSteps||(current.g==bestSteps&&(d<bestDistance||(d==bestDistance&&order<bestOrder)))){
+          chosen=current;bestSteps=current.g;bestDistance=d;bestOrder=order;
+        }
+        continue;
+      }
+      if(current.g>=bestSteps)continue;
+      for(Direction direction:Direction.values()){
+        TileCenter next=byCenter.get(key(current.tile.x+direction.dx,current.tile.y+direction.dy));
+        if(next==null)continue;String nextKey=key(next.x,next.y);
+        if(closed.contains(nextKey))continue;
+        float ng=current.g+1f;Float previous=best.get(nextKey);if(previous!=null&&previous<=ng)continue;
+        Boolean occupiable=occupancy.get(nextKey);
+        if(occupiable==null){occupiable=world.canPlayerOccupy(next.x,next.y);occupancy.put(nextKey,occupiable);}
+        if(!occupiable||!edgeTraversable(current.tile,next,direction))continue;
+        float estimate=ng+approachHeuristic(next,goals.values());if(estimate>bestSteps)continue;
+        best.put(nextKey,ng);open.add(new Node(next,ng,estimate,current));
       }
     }
-    return bestPlan;
+    return chosen==null?null:new ApproachPlan(chosen.tile,reconstruct(chosen),(float)Math.sqrt(bestDistance));
+  }
+  private static float approachHeuristic(TileCenter tile,java.util.Collection<TileCenter> goals){
+    float best=Float.MAX_VALUE;
+    for(TileCenter goal:goals){
+      // Every legal diagonal step changes X by32 and Y by16. This exact unobstructed
+      // distance is consistent, so closed nodes cannot hide a shorter goal route.
+      float h=Math.max(Math.abs(tile.x-goal.x)/32f,Math.abs(tile.y-goal.y)/16f);
+      best=Math.min(best,h);
+    }
+    return best;
   }
   private List<TileCenter> findPath(TileCenter start,TileCenter goal){
     PriorityQueue<Node> open=new PriorityQueue<>(Comparator.comparingDouble(n->n.f));

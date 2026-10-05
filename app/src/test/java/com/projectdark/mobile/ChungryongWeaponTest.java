@@ -62,6 +62,17 @@ public class ChungryongWeaponTest {
     int before=s.monsters().get(0).hp;TownInteriorTest.tap(v,914,498);assertEquals("SWING",TownInteriorTest.field(v,"action").toString());advance(v,.17f);assertEquals("basic has no early hit before shared resolver contact",before,s.monsters().get(0).hp);advance(v,.011f);assertTrue("basic resolves at actual .18s contact",s.monsters().get(0).hp<before);assertEquals(ChungryongWeaponRenderer.APPEARANCE,CharacterVisualBinding.from(s.rpg()).weaponVisualRef());save(render(v),"basic-world");
     setup();InnDetailQuestFxTest inn=new InnDetailQuestFxTest();inn.c=c;v=inn.start();inn.place(v);s=TownInteriorTest.field(v,"state");s.rpg().equip(ChungryongWeaponRenderer.ITEM);SkillBook b=TownInteriorTest.field(v,"skillBook");b.assign(0,"SK_전사_001");TownInteriorTest.tap(v,671,395);assertEquals("SK_전사_001",TownInteriorTest.field(v,"activeSkillVisualId"));advance(v,.16f);save(render(v),"inn-horizontal");inn.assertVisibleFx(v,s.monsters().get(0).id);
   }
+  @Test public void carryStaysOnTheSameVisibleArmDuringWalk(){
+    Bitmap body=BitmapFactory.decodeResource(c.getResources(),c.getResources().getIdentifier("player_peasant_idle_walk","drawable",c.getPackageName()));
+    for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(int n=0;n<5;n++){
+      float x=ChungryongWeaponRenderer.carryHandX(d,n),y=ChungryongWeaponRenderer.carryHandY(d,n);
+      assertTrue("west-facing near hand never switches to east arm",!ChungryongWeaponRenderer.west(d)||x<=18);
+      assertTrue("east-facing near hand never switches to west arm",ChungryongWeaponRenderer.west(d)||x>=18);
+      int row=CharacterRenderer.atlasRow(d),pixels=0;
+      for(int dy=-2;dy<=2;dy++)for(int dx=-2;dx<=2;dx++)if(Color.alpha(body.getPixel(n*36+(int)x+dx,row*48+(int)y+dy))>128)pixels++;
+      assertTrue("grip touches source BODY pixels "+d+"/"+n,pixels>0);
+    }
+  }
   @Test public void carryUsesBodyRatioAndEveryWalkFrameKeepsFourWayBlade()throws Exception{
     CharacterRenderer renderer=new CharacterRenderer(c);ChungryongWeaponRenderer weapon=new ChungryongWeaponRenderer(c);
     assertEquals(.5,weapon.manifest.getDouble("sourceScale"),.0001);

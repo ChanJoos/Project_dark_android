@@ -53,7 +53,15 @@ public final class CampaignProgress {
  public void visit(String map){if(map!=null)visited.add(map);}
  public void bought(){bought=true;} public void sold(){sold=true;} public void healed(){healed=true;}
  public void consume(CombatLedger.Event e,RuntimeState runtime){if(e==null||e.sequence<=eventSequence)return;eventSequence=e.sequence;Def d=find(active);if(d==null||e.type!=CombatLedger.Type.MONSTER_DEFEATED||!(d.kind.equals("KILL")||d.kind.equals("PAIR")))return;String species=runtime==null?e.targetId:runtime.campaignRewardProfileFor(e.targetId);if(species==null)species=e.targetId;if(!Arrays.asList(d.targets.split(",")).contains(species))return;if(runtime==null||(!e.targetId.startsWith("combat_dummy_")&&runtime.campaignRewardProfileFor(e.targetId)==null))return;counts.put(species,Math.min(d.goal,counts.getOrDefault(species,0)+1));}
- public void validSkill(String action,long sequence,int amount,boolean testMode,RpgProgressionState r){if(testMode||amount<=0||sequence<=skillSequence)return;skillSequence=sequence;Def d=find(active);if(d==null||!d.kind.equals("SKILL"))return;String wanted=skill(r.currentJobCode(),Integer.parseInt(d.id.substring(2,3)));if(wanted.equals(action))counts.put("action",Math.min(d.goal,counts.getOrDefault("action",0)+1));}
+ public void validSkill(String action,long sequence,int amount,boolean testMode,RpgProgressionState r){
+  if(testMode||sequence<=skillSequence)return;skillSequence=sequence;Def d=find(active);if(d==null||!d.kind.equals("SKILL"))return;
+  String wanted=skill(r.currentJobCode(),Integer.parseInt(d.id.substring(2,3)));if(!wanted.equals(action))return;
+  SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(action);
+  // An applied damage technique counts as a use even when mitigation rounds damage to zero;
+  // a healing practice still requires actual HP restored.
+  if(ability==null||(!ability.damage()&&(!ability.heal()||amount<=0)))return;
+  counts.put("action",Math.min(d.goal,counts.getOrDefault("action",0)+1));
+ }
  public boolean purify(String altar,RpgProgressionState r){
   Def d=find(active);if(d==null||!d.kind.equals("ALTAR")||!Arrays.asList("campaign_altar_0","campaign_altar_1","campaign_altar_2").contains(altar)||altars.contains(altar))return false;
   int quantity=r.inventory().getOrDefault("IT_B_PURIFIED_ESSENCE",0);if(quantity<1)return false;

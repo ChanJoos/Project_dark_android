@@ -1,3 +1,34 @@
+quest_runtime_v108:
+  implementation: IMPLEMENTED_CANDIDATE
+  build: PENDING_GITHUB_ACTIONS
+  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+  reported_failures: [quickquest_kill_autoattack, warrior_shortblade_use_count]
+  focused_suites: [CampaignQuickQuestIntegrationTest, CampaignProgressTest, QuestJournalTest, QuickQuestLatencyTest, HudTouchAcceptanceTest]
+  quest_routes_audited: 5
+  quests_per_class: 23
+  physical_phone: PENDING
+  user_visual: PENDING
+  audit: docs/QUEST_RUNTIME_AUDIT_V108.md
+
+chungryong_quickquest_v107:
+  implementation: IMPLEMENTED_LOCAL_CANDIDATE
+  build: BUILD_VERIFIED_LOCAL
+  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+  source_commit: c99345776c5633843bf80fa80e1e6eabfee7c226
+  evidence: verification/V107_LOCAL_BUILD.json
+  focused_tests: 27
+  upgrade_compatible_apk: BLOCKED_SIGNING_DIFFERENCE_REQUIRES_CI
+  reported_device: DEVICE_FAILED_USER_REPORTED_V106
+  physical_phone: PENDING
+  publication: BLOCKED_AUTO_REVIEW_REQUIRES_CURRENT_USER_APPROVAL
+  contract: docs/CHUNGRYONG_QUICKQUEST_V107_CONTRACT.md
+  required_sources:
+    - master/source/weapons/chungryong_490398/basic.gif
+    - master/data/Asset_Master.csv
+    - master/source/reference_warrior_v107/mu0000180.json
+    - master/source/reference_warrior_v107/mu0000180.webp
+    - master/source/reference_warrior_v107/mh168.json
+    - master/source/reference_warrior_v107/mh168.webp
 npc_identity_style_v104:
   implementation: IMPLEMENTED_CANDIDATE
   build: BUILD_VERIFIED

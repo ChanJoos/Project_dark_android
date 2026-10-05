@@ -1,0 +1,25 @@
+{
+  "status": "ACCEPTED_USER_REQUEST",
+  "source": "User supplied reference1000058541 and retained basic.gif frame0",
+  "items": [
+    {
+      "id": "IT_REFERENCE_LEOPARD",
+      "appearance": "mu0000180",
+      "name": "레오파드"
+    },
+    {
+      "id": "IT_REFERENCE_HELM",
+      "appearance": "mh168",
+      "name": "헬름"
+    }
+  ],
+  "grant": "one each, inventory only, new game and one-time existing-save migration",
+  "requirements": "ADAPTED level1/all jobs for requested early visual testing; no invented canonical stats",
+  "idle": "accepted standing/walk BODY01 with source basic weapon frame0, original outfit01 registration and corrected per-frame hand anchors",
+  "sourceHashes": {
+    "mh168.webp": "c6eba4e8821e4f59236d0fe0ae035c1a7d4777b21636eeb2c85802ffcd0977a6",
+    "mu0000180.webp": "c23481f89d695c863b9844f13e7dbb2a2696e09f1e7f95a814b7ec5d24a9739b",
+    "mh168.json": "f520b8d562bb1211ce9e41ec8fa1dff2c2500e0b8f2a5e23d16212b5883b87a8",
+    "mu0000180.json": "0064a5a479f2dcbba47784a5383d2e096e0974330b1def9f32e24fb212c74ca4"
+  }
+}

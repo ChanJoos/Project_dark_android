@@ -28,6 +28,34 @@ public final class WorldMoveTargetControllerPathTest {
     assertEquals(detour.y,walker.y,.01f);
   }
 
+  @Test public void unreachableNpcCandidatesShareOneSearchInsteadOfRepeatingFullMapWork(){
+    java.util.ArrayList<WorldMoveTargetController.TileCenter> cells=new java.util.ArrayList<>();
+    for(int x=0;x<80;x++)for(int y=0;y<80;y++)if((x+y)%2==0)cells.add(tile(x,y));
+    final int[] occupancyCalls={0};
+    WorldMoveTargetController.NavigationWorld world=new WorldMoveTargetController.NavigationWorld(){
+      public List<WorldMoveTargetController.TileCenter> navigationTiles(){return cells;}
+      public boolean canPlayerOccupy(float x,float y){occupancyCalls[0]++;return x!=40*32f;}
+      public boolean canPlayerTraverse(float ax,float ay,float bx,float by){return bx!=40*32f;}
+    };
+    WorldMoveTargetController.Walker walker=new WorldMoveTargetController.Walker(){
+      public float worldX(){return 0;}public float worldY(){return 0;}
+      public boolean moveToAdjacentTile(float x,float y,WorldMoveTargetController.Direction d){return true;}
+    };
+    WorldMoveTargetController movement=new WorldMoveTargetController(world,walker);
+    assertEquals(WorldMoveTargetController.Status.BLOCKED,movement.requestNpcApproach("npc",70*32f,40*16f,80f).status);
+    assertTrue("bounded collision work: "+occupancyCalls[0],occupancyCalls[0]<cells.size()*2);
+  }
+
+  @Test public void equalLengthNpcGoalsPreferCloserEntityAndCanAlreadyBeReached(){
+    List<WorldMoveTargetController.TileCenter> cells=Arrays.asList(tile(0,0),tile(1,-1),tile(1,1),tile(2,0));
+    World world=new World(cells,tile(-9,-9),tile(-9,-9));Walker walker=new Walker(world,tile(0,0));
+    WorldMoveTargetController movement=new WorldMoveTargetController(world,walker);
+    WorldMoveTargetController.Snapshot result=movement.requestNpcApproach("npc",64,8,40);
+    assertEquals(32,result.targetX,0);assertEquals(16,result.targetY,0);assertEquals(1,result.remainingWaypoints);
+    movement.tick(.6f);
+    assertEquals(WorldMoveTargetController.Status.REACHED,movement.requestNpcApproach("npc",64,8,40).status);
+  }
+
   private static WorldMoveTargetController.TileCenter tile(int u,int v){
     return new WorldMoveTargetController.TileCenter(u*32f,v*16f);
   }

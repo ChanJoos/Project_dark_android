@@ -134,6 +134,8 @@ public final class RpgProgressionState {
   public static final String RECALL_MILLES_ITEM_ID="IT_RECALL_MILLES";
   public static final long B_SMALL_POTION_PRICE=20L;
   public static final String SHOP_MOKDO_ITEM_ID="IT_ADAPTED_PLAYTEST_MOKDO";
+  public static final String REFERENCE_LEOPARD_ITEM_ID="IT_REFERENCE_LEOPARD";
+  public static final String REFERENCE_HELM_ITEM_ID="IT_REFERENCE_HELM";
   public static final String CHUNGRYONG_ITEM_ID="IT_WEAPON_CHUNGRYONG";
   public static final String SHOP_LEATHER_GLOVE_ITEM_ID="IT_GLOVE_LEATHER";
   public static final String SHOP_SHOES_ITEM_ID="IT_SHOES";
@@ -205,6 +207,8 @@ public final class RpgProgressionState {
         PLAYTEST_WEAPON_APPEARANCE_ID,AnimationAction.SWING,1,anyJob,true,null,null,mokdoStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_WEAPON_MW002","에페",WEAPON_SLOT,"mw002",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",4,"HIT",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_WEAPON_MW003","커틀라스",WEAPON_SLOT,"mw003",AnimationAction.SWING,1,anyJob,true,null,null,stats("DAM",5),Evidence.ADAPTED));
+    registerItem(new ItemDefinition(REFERENCE_LEOPARD_ITEM_ID,"레오파드",ARMOR_SLOT,"mu0000180",1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
+    registerItem(new ItemDefinition(REFERENCE_HELM_ITEM_ID,"헬름",HEAD_SLOT,"mh168",1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(CHUNGRYONG_ITEM_ID,"청룡의숨결",WEAPON_SLOT,"mw_chungryong",AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHOES_ML229","신발 ml229",SHOES_SLOT,"ml229",1,anyJob,true,null,null,stats("DEX",2),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHOES_ML230","신발 ml230",SHOES_SLOT,"ml230",1,anyJob,true,null,null,stats("DEX",3),Evidence.ADAPTED));
@@ -233,6 +237,7 @@ public final class RpgProgressionState {
     inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);
     registerCampaignEquipment();
     inventory.put(CHUNGRYONG_ITEM_ID,1);
+    inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
     inventory.put("IT_TEST_SHIELD_MS002",1);inventory.put("IT_TEST_SHIELD_MS003",1);
     inventory.put("IT_TEST_HAT_MH173",1);inventory.put("IT_TEST_HAT_MH174",1);

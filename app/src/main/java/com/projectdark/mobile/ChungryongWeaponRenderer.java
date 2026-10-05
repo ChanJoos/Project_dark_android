@@ -63,10 +63,15 @@ final class ChungryongWeaponRenderer {
     float x=Math.round(handX-(float)f.optDouble("gripX")*scale),y=Math.round(handY-(float)f.optDouble("gripY")*scale);
     c.drawBitmap(atlas,new Rect(f.optInt("sx"),f.optInt("sy"),f.optInt("sx")+f.optInt("w"),f.optInt("sy")+f.optInt("h")),new RectF(x,y,x+w,y+h),paint);
   }
+  // Same near arm throughout the authored four-direction BODY walk cycle. The shared
+  // legacy carry table switches to the far arm at column2 (and SW column4).
+  // Keep this correction local to Chungryong; other accepted weapons are unchanged.
+  private static final float[][] CARRY_X={{14,11,9,14,18},{22,25,27,22,18},{14,11,9,14,18},{22,25,27,22,18}};
+  private static final float[][] CARRY_Y={{28,25,23,29,22},{28,25,23,29,22},{24,26,19,27,23},{24,26,19,27,23}};
+  static float carryHandX(CharacterRenderer.Direction direction,int column){return CARRY_X[CharacterRenderer.atlasRow(direction)][column];}
+  static float carryHandY(CharacterRenderer.Direction direction,int column){return CARRY_Y[CharacterRenderer.atlasRow(direction)][column];}
   void carry(Canvas c,CharacterRenderer.Pose p,float x,float y,float bodyScale){
-    // Back-facing recovery grip needs five source pixels of lateral clearance from the sleeve.
-    // BODY/step/depth/source bytes remain unchanged; attachment is an adapted registration.
-    if(back(p.direction)&&p.state==CharacterRenderer.State.WALK&&CharacterRenderer.paperDollAtlasColumn(p.state,CharacterRenderer.presentationWalkClock())==4)x+=(west(p.direction)?-1:1)*5f*bodyScale;
+    // Mirror about the actual grip, without a recovery-frame lateral shove.
     c.save();if(west(p.direction))c.scale(-1,1,x,y);layer(c,"basic",back(p.direction),0,x,y,bodyScale*(float)manifest.optDouble("carryBodyRatio",43f/51f));c.restore();
   }
 }

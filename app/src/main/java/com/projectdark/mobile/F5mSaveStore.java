@@ -134,7 +134,7 @@ public final class F5mSaveStore {
   private SharedPreferences.Editor writeRpg(SharedPreferences.Editor edit,RpgProgressionState r){
     return edit.putInt("save_schema",SCHEMA)
         // A save authored by V94 already includes the one-time grant, even if the player removed it.
-        .putBoolean("chungryong_granted_v94",true)
+        .putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true)
         .putString("inventory_v2",new JSONObject(r.inventory()).toString())
         .putString("equipment_v2",new JSONObject(r.equipment()).toString())
         .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
@@ -168,6 +168,11 @@ public final class F5mSaveStore {
         owned.put(RpgProgressionState.CHUNGRYONG_ITEM_ID,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid V94 ownership migration");
       }
+      if(!prefs.getBoolean("reference_warrior_granted_v107",false)){
+        owned.putIfAbsent(RpgProgressionState.REFERENCE_LEOPARD_ITEM_ID,1);
+        owned.putIfAbsent(RpgProgressionState.REFERENCE_HELM_ITEM_ID,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid reference gear migration");
+      }
       Map<String,Integer> bank=new LinkedHashMap<>();JSONObject bankJson=new JSONObject(prefs.getString("bank_inventory_v84","{}"));
       for(java.util.Iterator<String> it=bankJson.keys();it.hasNext();){String id=it.next();bank.put(id,bankJson.getInt(id));}
       if(!staged.restoreBank(prefs.getLong("bank_gold_v84",0),bank))throw new IllegalArgumentException("Invalid bank");
@@ -178,7 +183,7 @@ public final class F5mSaveStore {
       staged.restoreBaseResources(prefs.getInt("base_max_hp_v3",staged.baseMaxHp()),prefs.getInt("base_max_mp_v3",staged.baseMaxMp()));
       if(prefs.contains("campaign_v1")&&!staged.campaign().restore(new JSONObject(prefs.getString("campaign_v1",""))))throw new IllegalArgumentException("Invalid campaign");
       staged.restoreCombatSequence(prefs.getLong("reward_sequence",0));copyRpg(staged,r);
-      if(!prefs.getBoolean("chungryong_granted_v94",false))prefs.edit().putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putBoolean("chungryong_granted_v94",true).commit();
+      if(!prefs.getBoolean("chungryong_granted_v94",false)||!prefs.getBoolean("reference_warrior_granted_v107",false))prefs.edit().putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).commit();
     }catch(Exception invalid){writable=false;}
   }
 
