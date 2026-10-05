@@ -1,3 +1,7 @@
+# V105 approved campaign acquisition override
+
+Explicit Lv40 implementation approval adopts first job after training/Lv3 and matching-job normal use. Core skills are awarded without Gold/materials by class practice accept transactions; J01/J02/J03 each require3actual positive-effect actions, not casts/misses/test-mode actions. Cleric uses013HolyBolt,052HolyShock and005Curano; original catalog IDs preserved. Existing paid optional learning remains transactional and old learned/slot records remain stored. Explicit skill-test mode does not count campaign practice or award normal first-job skill data. No claim that these new mobile gates/rewards are original-server facts. See verification/LV40_IMPLEMENTATION_SCOPE.md.
+
 # Latest presentation override — v62
 
 User prefers the v60 4×3 icon grid and seven direct job tabs. This overrides the v61 six-card/dropdown layout only. Learning, material purchase, supported-only default/no-charge archive, atomic saves, actual healing and shared cooldown rules below remain authoritative. Description/conditions use fixed tabs; restored input coordinates are covered by the existing end-to-end tests. Device/visual acceptance pending.

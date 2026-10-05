@@ -21,6 +21,14 @@ public final class NpcIdentity {
   new Profile("interior_equipment","Logan",78,"장비상","mu0000055,mh005,ml255",null),
   new Profile("interior_bank","Charles",11,"은행원","mu0000202,mh006,ml243",null),
   new Profile("interior_church","Joseph",8,"사제","mu0000210,mh008,ml240","mw026"),
+  new Profile("mentor_warrior","Robert",4,"전사 지도자","mu0000059,mh005,ml255","mw015"),
+  new Profile("mentor_rogue","John",3,"도적 지도자","mu0000055,mh010,ml243","mw024"),
+  new Profile("mentor_mage","Daniel",12,"마법사 지도자","mu0000117,mh006,ml240","mw024"),
+  new Profile("mentor_cleric","Thomas",9,"성직자 지도자","mu0000210,mh011,ml243","mw026"),
+  new Profile("mentor_monk","Jacob",48,"무도가 지도자","mu0000057,mh007,ml255",null),
+  new Profile("piet_investigator","Ethan",61,"피에트 조사 담당","mu0000030,mh009,ml243",null),
+  new Profile("piet_supplier","Joshua",19,"피에트 보급 담당","mu0000237,mh124,ml240",null),
+  new Profile("piet_purifier","Samuel",42,"정화 담당","mu0000202,mh008,ml243","mw026"),
   new Profile("interior_inn","Benjamin",39,"여관 주인","mu0000025,mh011,ml243",null)));
  public static Profile forId(String id){
   if(id==null||id.isEmpty())throw new IllegalArgumentException("NPC stable ID required");

@@ -60,10 +60,13 @@ final class ChungryongWeaponRenderer {
   void layer(Canvas c,String motion,boolean back,int n,float handX,float handY,float bodyScale){
     JSONObject f=manifest.optJSONObject("frames").optJSONObject(motion).optJSONArray(back?"back":"front").optJSONObject(n);
     float scale=bodyScale*(float)manifest.optDouble("sourceScale",.5),w=f.optInt("w")*scale,h=f.optInt("h")*scale;
-    float x=handX-(float)f.optDouble("gripX")*scale,y=handY-(float)f.optDouble("gripY")*scale;
+    float x=Math.round(handX-(float)f.optDouble("gripX")*scale),y=Math.round(handY-(float)f.optDouble("gripY")*scale);
     c.drawBitmap(atlas,new Rect(f.optInt("sx"),f.optInt("sy"),f.optInt("sx")+f.optInt("w"),f.optInt("sy")+f.optInt("h")),new RectF(x,y,x+w,y+h),paint);
   }
   void carry(Canvas c,CharacterRenderer.Pose p,float x,float y,float bodyScale){
+    // Back-facing recovery grip needs five source pixels of lateral clearance from the sleeve.
+    // BODY/step/depth/source bytes remain unchanged; attachment is an adapted registration.
+    if(back(p.direction)&&p.state==CharacterRenderer.State.WALK&&CharacterRenderer.paperDollAtlasColumn(p.state,CharacterRenderer.presentationWalkClock())==4)x+=(west(p.direction)?-1:1)*5f*bodyScale;
     c.save();if(west(p.direction))c.scale(-1,1,x,y);layer(c,"basic",back(p.direction),0,x,y,bodyScale*(float)manifest.optDouble("carryBodyRatio",43f/51f));c.restore();
   }
 }

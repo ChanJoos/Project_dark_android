@@ -24,6 +24,7 @@ public final class AdaptedCampaignRewardCatalog {
     add(m,"POTE_WOLFRIDER","포테 3구역",26000,54);add(m,"POTE_ANTGIANT","포테 3구역",28000,58);
     add(m,"POTE_SILVERWOLF","포테 4구역",36000,74);add(m,"POTE_STRONG_GNOLL","포테 4구역",48000,96);
     add(m,"POTE_STRONG_WOLFRIDER","포테 4구역",52000,104);add(m,"POTE_STRONG_TREANT","포테 4구역",56000,112);
+    add(m,"POTE_CAMPAIGN_ELITE_GNOLL","포테 4구역",56000,160);
     // POTE_SPIRIT is deliberately absent: its canonical V EXP remains the only rule for that actor.
     rewards=Collections.unmodifiableMap(m);
   }

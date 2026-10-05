@@ -18,7 +18,7 @@ public final class AdaptedCampaignRewardTest {
     assertEquals(Integer.valueOf(9000),result.exp);assertEquals(gold+20,state.rpg().gold().longValue());
     assertEquals(before+9000,state.rpg().normalExp().longValue());
     assertEquals(AdaptedCampaignRewardCatalog.POLICY_ID,result.policyId);
-    assertEquals(RpgProgressionState.RewardSource.ADAPTED_TEST,result.source);
+    assertEquals(RpgProgressionState.RewardSource.ADAPTED_CAMPAIGN,result.source);
   }
   @Test public void unprofiledCanonicalPrototypeStillFailsClosed(){
     RpgProgressionState r=new RpgProgressionState();long before=r.normalExp();java.util.Map<String,Integer> inventoryBefore=new java.util.LinkedHashMap<>(r.inventory());
@@ -31,7 +31,7 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(15,c.entries().size());assertNull(c.find("POTE_SPIRIT"));
+    assertEquals(16,c.entries().size());assertNull(c.find("POTE_SPIRIT"));
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
   }
   @Test public void firstJobChoiceIsLevelGatedOneTimeAndGrantsRoleGear(){

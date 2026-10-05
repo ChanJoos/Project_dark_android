@@ -1,4 +1,10 @@
+## 2026-10-04 — Adopt executable mobile Lv40 policy
+
+Latest explicit user approval authorizes completing implementation and publication. Adopt35ADAPTED quest definitions, free class core practices/starter gear, 4forest instances + safe Piet camp using the existing World shell, matching-job normal skill use, separate16-entry adapted actor rewards, HP/MP recovery and schema4 atomic campaign persistence. Preserve original level curve/Spirit canon, old learned/owned saves and all source bytes. Retained review art is explicitly candidate, strengthened forms share family art; source art/user acceptance not invented. Outdoor acquisition replaces the proposed new counselor room for this playable candidate; optional trial remains unimplemented. Evidence/scope: verification/LV40_IMPLEMENTATION_SCOPE.md. Exact build evidence follows only successful CI.
+
 ## 2026-10-04 — Mobile Lv1–40 ADAPTED implementation is user-authorized, but not complete
+
+Continuation at `5f777ba99ca038c42395a150092088b9f2c9e4d5` distinguishes live mobile campaign rewards (`ADAPTED_CAMPAIGN`) from the older isolated prototype/test reward source (`ADAPTED_TEST`). This is provenance metadata only and changes no reward values or canonical Master data.
 
 User requested development from `docs/LEVEL1_40_PROGRESSION_PLAN.md`. Use that plan's explicitly adapted mobile EXP/Gold, first-job and equipment values only under `[B]/[ADAPTED]`; never write them into canonical reward or Master facts. Preserve canonical priority and fail-closed unresolved rewards. The existing user-approved rule of preserving unknown source data and not inventing official item identity remains active. The current integrated slice is recorded in `docs/PROJECT_STATE.md`. It does not authorize treating the unimplemented 35-quest/four-zone/Piet/Lv40 loop as complete.
 

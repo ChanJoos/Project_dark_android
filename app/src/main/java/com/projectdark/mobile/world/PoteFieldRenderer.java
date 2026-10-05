@@ -92,7 +92,7 @@ public final class PoteFieldRenderer {
     if(name==null)return;
     Bitmap b=bitmap(name);if(b==null)return;
     // Pamfets keep their small authored scale; the Lycan uses the player-sized frame.
-    float h="POTE_LYCAN".equals(monsterId)?72f:48f,w=h*b.getWidth()/Math.max(1f,b.getHeight());
+    String species=PoteForestMonsterShowcase.species(monsterId);float h=PoteForestMonsterShowcase.bodyHeight(monsterId),w=h*b.getWidth()/Math.max(1f,b.getHeight());
     float cx=x,cy=y;
     if("idle".equals(pose)){
       cy-=(float)Math.sin(idleClock*4.5f)*.55f;
@@ -149,17 +149,18 @@ public final class PoteFieldRenderer {
   }
 
   /** Draw terrain and objects whose ground anchors are behind the supplied actor depth. */
+  private boolean campClearing(WorldRuntimeAdapter w,Placement p){return CampaignWorld.PIET.equals(w.runtime().currentMapId())&&!"water".equals(p.role)&&p.x>=540&&p.x<=1080&&p.y>=380&&p.y<=760;}
   public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
     c.drawColor(0xff241d15);drawFloor(c,w);drawCreekBed(c,w);
-    for(Placement p:placements)if(!"bridge".equals(p.role)&&("water".equals(p.role)||p.y<=actorY))drawPlacement(c,w,p);
+    for(Placement p:placements)if(!campClearing(w,p)&&!"bridge".equals(p.role)&&("water".equals(p.role)||p.y<=actorY))drawPlacement(c,w,p);
     drawBridge(c,w);
   }
 
   /** Draw foreground canopies/props after the actor so Y-depth remains spatially believable. */
   public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
-    for(Placement p:placements)if(!"bridge".equals(p.role)&&!"water".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
+    for(Placement p:placements)if(!campClearing(w,p)&&!"bridge".equals(p.role)&&!"water".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){

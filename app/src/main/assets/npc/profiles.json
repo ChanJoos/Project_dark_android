@@ -109,6 +109,78 @@
       "outfit": "mu0000007,mh132,ml255",
       "weapon": "mw015",
       "rationale": "다섯 기본 직업의 선택과 입문 장비를 안내하는 신규 NPC"
+    },
+    {
+      "id": "mentor_warrior",
+      "name": "Robert",
+      "rank": 4,
+      "role": "전사 지도자",
+      "outfit": "mu0000059,mh005,ml255",
+      "weapon": "mw015",
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "mentor_rogue",
+      "name": "John",
+      "rank": 3,
+      "role": "도적 지도자",
+      "outfit": "mu0000055,mh010,ml243",
+      "weapon": "mw024",
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "mentor_mage",
+      "name": "Daniel",
+      "rank": 12,
+      "role": "마법사 지도자",
+      "outfit": "mu0000117,mh006,ml240",
+      "weapon": "mw024",
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "mentor_cleric",
+      "name": "Thomas",
+      "rank": 9,
+      "role": "성직자 지도자",
+      "outfit": "mu0000210,mh011,ml243",
+      "weapon": "mw026",
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "mentor_monk",
+      "name": "Jacob",
+      "rank": 48,
+      "role": "무도가 지도자",
+      "outfit": "mu0000057,mh007,ml255",
+      "weapon": null,
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "piet_investigator",
+      "name": "Ethan",
+      "rank": 61,
+      "role": "피에트 조사 담당",
+      "outfit": "mu0000030,mh009,ml243",
+      "weapon": null,
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "piet_supplier",
+      "name": "Joshua",
+      "rank": 19,
+      "role": "피에트 보급 담당",
+      "outfit": "mu0000237,mh124,ml240",
+      "weapon": null,
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "piet_purifier",
+      "name": "Samuel",
+      "rank": 42,
+      "role": "정화 담당",
+      "outfit": "mu0000202,mh008,ml243",
+      "weapon": "mw026",
+      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
     }
   ]
 }

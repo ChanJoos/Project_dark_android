@@ -43,10 +43,19 @@ final class QuestJournalModel {
     Status fs=gs!=Status.COMPLETE?Status.LOCKED:visited?Status.COMPLETE:Status.AVAILABLE;
     out.add(new Row(FOREST,"포테의 숲길","밀레스 → 포테의 숲","William","훈련을 마쳤습니다. 숲길 경비 William에게 말을 걸면 포테의 숲으로 안내받을 수 있습니다.",fs==Status.LOCKED?"성장 훈련 완료":fs==Status.COMPLETE?"포테의 숲에 도착했습니다":"William와 대화하고 숲으로 이동","포테의 숲 탐험","선행: 성장 훈련 완료","다음 모험: 팜팻의 변화 · 의뢰 지역 개방 필요",fs,visited?1:0,1));
     if(rpg!=null){boolean ready=gs==Status.COMPLETE&&rpg.normalLevel()!=null&&rpg.normalLevel()>=3;Status js=!"COMMONER".equals(rpg.currentJobCode())?Status.COMPLETE:ready?Status.AVAILABLE:Status.LOCKED;out.add(new Row(JOB_CHOICE,"기본 직업 선택","밀레스 · 광장","Michael","성장 훈련과 Lv3을 달성했습니다. Michael과 대화해 전사·도적·마법사·성직자·무도가 중 하나를 고르세요.",js==Status.COMPLETE?"기본 직업을 선택했습니다":ready?"Michael과 대화해 직업과 입문 장비 선택":"성장 훈련 완료 · Lv3 도달","직업별 입문 장비 1세트","선행: 성장 훈련 완료 · Lv3","직업 선택 후 포테의 숲으로 이동",js,js==Status.COMPLETE?1:0,1));}
+    if(rpg!=null)for(CampaignProgress.Def d:CampaignProgress.definitions()){
+      if(d.kind.equals("EXTERNAL"))continue;CampaignProgress.Status cs=rpg.campaign().status(d,rpg);
+      String objective=rpg.campaign().objective(d);
+      String reason="Lv"+d.level+" · 선행 의뢰 완료"+(d.job==null?"":" · "+CampaignProgress.jobName(d.job));
+      if(cs==CampaignProgress.Status.AVAILABLE||cs==CampaignProgress.Status.REPORT)objective=NpcIdentity.forId(d.npc).name+"에게 "+(cs==CampaignProgress.Status.AVAILABLE?"의뢰 수락":"결과 보고");
+      if(cs==CampaignProgress.Status.LOCKED)objective=rpg.normalLevel()<d.level?"Lv"+d.level+"까지 사냥 후 의뢰 받기":"선행 의뢰 또는 직업 조건 확인";
+      out.add(new Row("CAMPAIGN_"+d.id,d.title,com.projectdark.mobile.world.CampaignWorld.contains(d.map)?com.projectdark.mobile.world.CampaignWorld.title(d.map):"밀레스",NpcIdentity.forId(d.npc).name,"밀레스에서 시작한 모험이 포테의 숲과 피에트 조사 거점으로 이어집니다.",objective,"EXP "+d.exp+" · Gold "+d.gold+(d.id.startsWith("J02_")||d.id.startsWith("J03_")?" · 직업 장비":""),reason,"완료 후 다음 의뢰가 열립니다",Status.valueOf(cs.name()),rpg.campaign().count(d,rpg),d.goal));
+    }
+    if(rpg!=null){CampaignProgress.Def next=rpg.campaign().next(rpg);if(next!=null&&!next.kind.equals("EXTERNAL")&&rpg.normalLevel()<next.level)out.add(new Row("CAMPAIGN_HUNT_"+next.id,"다음 의뢰를 위한 성장","현재 사냥 구역","", "사냥 보상으로 레벨을 올린 뒤 다음 의뢰를 받으세요.","Lv"+next.level+"까지 성장","몬스터 EXP · Gold","","목표를 누르면 현재 레벨에 맞는 사냥터로 안내합니다.",Status.ACTIVE,rpg.normalLevel(),next.level));}
     out.addAll(future);return out;
   }
   Row current(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean forest){return current(q,g,forest,null);}
-  Row current(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean forest,RpgProgressionState rpg){List<Row> all=rows(q,g,forest,rpg);for(Row r:all)if(JOB_CHOICE.equals(r.id)&&r.navigable())return r;for(Row r:all)if(r.navigable())return r;return null;}
+  Row current(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean forest,RpgProgressionState rpg){List<Row> all=rows(q,g,forest,rpg);for(Row r:all)if(JOB_CHOICE.equals(r.id)&&r.navigable())return r;for(Row r:all)if(r.id.startsWith("CAMPAIGN_")&&r.navigable())return r;for(Row r:all)if(r.navigable())return r;return null;}
   int available(List<Row> rows){int n=0;for(Row r:rows)if(r.status==Status.AVAILABLE)n++;return n;}
   int attention(List<Row> rows){int n=0;for(Row r:rows)if(r.status==Status.AVAILABLE||r.status==Status.REPORT)n++;return n;}
 }

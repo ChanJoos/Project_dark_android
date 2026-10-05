@@ -73,7 +73,7 @@ public class ChungryongWeaponTest {
         CharacterRenderer.Pose p=new CharacterRenderer.Pose(80,100,d,n==0?CharacterRenderer.State.IDLE:CharacterRenderer.State.WALK,n*.14f,0,1,false,"mu0000001,mh172,ml228,ms001",ChungryongWeaponRenderer.APPEARANCE,null,CharacterRenderer.EffectFamily.NONE);
         CharacterRenderer.setPresentationWalkClock((n-1)*CharacterRenderer.WALK_FRAME_SECONDS);
         assertEquals(n,CharacterRenderer.paperDollAtlasColumn(p.state,CharacterRenderer.presentationWalkClock()));
-        renderer.draw(canvas,p);assertTrue("walk blade "+d+n,cyan(b)>20);out.drawBitmap(b,col*160,n*120,null);b.recycle();
+        renderer.draw(canvas,p);if(d==CharacterRenderer.Direction.NE&&n==4)save(b,"carry-ne4-diagnostic");assertTrue("walk blade "+d+n,cyan(b)>20);out.drawBitmap(b,col*160,n*120,null);b.recycle();
       }col++;
     }CharacterRenderer.setPresentationWalkClock(0);save(sheet,"carry-all-frames");
   }

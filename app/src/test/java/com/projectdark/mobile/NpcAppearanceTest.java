@@ -21,7 +21,7 @@ public final class NpcAppearanceTest {
  private int[] pixels(Bitmap b){int[] a=new int[b.getWidth()*b.getHeight()];b.getPixels(a,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return a;}
  @Test public void allHumanNpcRoutesHaveDistinctRegisteredAmericanProfilesAndFutureDefaults(){
   Set<String> names=new HashSet<>(),outfits=new HashSet<>();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context());
-  assertEquals(12,NpcIdentity.ALL.size());
+  assertEquals(20,NpcIdentity.ALL.size());
   for(NpcIdentity.Profile p:NpcIdentity.ALL){
    assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));assertTrue(outfits.add(p.outfit));
    for(String id:p.outfit.split(",")){EquipmentVisualRegistry.Visual v=registry.get(id);assertNotNull("real atlas "+id,v);assertNotNull("real source registration "+id,v.registration);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())assertNotNull(v.registration.idle(d,0));}
@@ -39,7 +39,7 @@ public final class NpcAppearanceTest {
   }
  }
  @Test public void nativeRosterAndEveryTownServiceAreCapturedWithThePlayer()throws Exception{
-  Bitmap sheet=Bitmap.createBitmap(1540,1920,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(sheet);c.drawColor(0xff314b30);Paint label=new Paint();label.setColor(Color.WHITE);label.setTextSize(18);
+  Bitmap sheet=Bitmap.createBitmap(1540,NpcIdentity.ALL.size()*160,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(sheet);c.drawColor(0xff314b30);Paint label=new Paint();label.setColor(Color.WHITE);label.setTextSize(18);
   int row=0;for(NpcIdentity.Profile p:NpcIdentity.ALL){c.drawText(p.label(),15,row*160+25,label);int col=0;for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
    c.drawText(d.name(),270+col*300,row*160+25,label);c.save();c.translate(270+col*300,row*160+35);c.scale(2,2);new NpcActorRenderer(context()).draw(c,p.id,40,55,d,CharacterRenderer.State.IDLE,0);c.restore();col++;
   }row++;}write(sheet,"roster");

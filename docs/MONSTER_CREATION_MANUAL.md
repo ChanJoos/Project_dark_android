@@ -1,3 +1,9 @@
+## V105 adapted campaign registration — candidate acceptance record
+
+Six retained review families (trant,antlion,gnoll,wolf_rider,ant_giant,silver_wolf) are now registered byte-for-byte under `assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1`;72 source/runtime pairs and SHA256s are in provenance.json. Earlier historical-only exclusion below is superseded **only for these explicit candidate registrations**. Five prior runtime art families and original Master bytes remain unchanged. Strong gnoll/treant/wolfrider and adapted elite share the corresponding family art, not invented original variant art.
+
+Unique actorID=species#spawn with admitted species reward profile; separate ADAPTED policy,240/450/800/1200zoneHP,2200eliteHP,24second respawn. SharedAI/Resolver/World lattice, no alternate damage path. Spawn selection uses connected terrain and four open neighbours,≥90spacing; gates/NPC/species paths tested. Body frames48px,gnoll/wolfrider/lycan72px,treant80px; originallycan16px collision retained and instance-aware; other current actor collision12px. Candidate idle/walk/attack timings follow existing renderer. PHONE and USER_VISUAL PENDING; this does not establish original monster art/four-facing animation acceptance. Exact source/CI evidence to follow successful build.
+
 
 ### 2026-10-04 Lv1–40 adapted reward profile boundary — implementation unverified
 

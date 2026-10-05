@@ -21,7 +21,7 @@ import java.util.Set;
 public final class RpgProgressionState {
   public enum Evidence { O,V,U,B,ADAPTED,PENDING,FAN }
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
-  public enum RewardSource { CANONICAL, ADAPTED_TEST, UNRESOLVED }
+  public enum RewardSource { CANONICAL, ADAPTED_TEST, ADAPTED_CAMPAIGN, UNRESOLVED }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
   public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
   public enum UseResult { USED, ITEM_NOT_OWNED, NOT_CONSUMABLE, NO_EFFECT }
@@ -83,6 +83,7 @@ public final class RpgProgressionState {
     public final String monsterId;
     public final RewardStatus status;
     public final Integer exp;
+    public final long gold;
     public final Map<String,Integer> autoLootedItems;
     public final Map<String,AutoLootResult> itemOutcomes;
     public final RewardSource source;
@@ -95,6 +96,10 @@ public final class RpgProgressionState {
     RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,
         Map<String,Integer> autoLootedItems,Map<String,AutoLootResult> itemOutcomes,
         RewardSource source,String policyId,String evidence){
+      this(combatSequence,monsterId,status,exp,autoLootedItems,itemOutcomes,source,policyId,evidence,0);
+    }
+    RewardResolution(long combatSequence,String monsterId,RewardStatus status,Integer exp,Map<String,Integer> autoLootedItems,Map<String,AutoLootResult> itemOutcomes,RewardSource source,String policyId,String evidence,long gold){
+      this.gold=gold;
       this.combatSequence=combatSequence;this.monsterId=monsterId;this.status=status;this.exp=exp;
       this.autoLootedItems=Collections.unmodifiableMap(new LinkedHashMap<>(autoLootedItems));
       this.itemOutcomes=Collections.unmodifiableMap(new LinkedHashMap<>(itemOutcomes));
@@ -146,6 +151,8 @@ public final class RpgProgressionState {
   public static final String PLAYTEST_WEAPON_APPEARANCE_ID="mw001";
   public static final String PLAYTEST_WEAPON_SOURCE_EVIDENCE="Asset_Master mw001 목도 SOURCE_NAMED; COMMONER equip and SWING are ADAPTED PLAYTEST FIXTURE";
 
+  private final CampaignProgress campaign=new CampaignProgress();
+  public CampaignProgress campaign(){return campaign;}
   private ProgressionNode progressionNode=ProgressionNode.COMMONER;
   private String currentJobCode="COMMONER";
   private Integer normalLevel=1;
@@ -185,6 +192,7 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition(REAGENT_DIBENOMUM_ITEM_ID,"디베노뭄",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(REAGENT_CURANUM_ITEM_ID,"쿠라눔",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_SHOP_ARMOR_JIPON","지폰",ARMOR_SLOT,"mu0000007",11,jobSet("WARRIOR"),true,null,null,stats("AC",-3),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_B_MP_POTION","마나 회복약",null,null,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_REAGENT_CURUM","쿠룸",null,null,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_REAGENT_EXCURANUM","엑스쿠라눔",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition("IT_REAGENT_HOLYWATER","성수",null,null,anyJob,true,null,null,noStats,Evidence.ADAPTED));
@@ -223,6 +231,7 @@ public final class RpgProgressionState {
     equipmentBySlot.put(WEAPON_SLOT,PLAYTEST_WEAPON_ITEM_ID);
     inventory.put("IT_SHOES",1);inventory.put(STARTER_HAT_ITEM_ID,1);inventory.put(STARTER_SHIELD_ITEM_ID,1);
     inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);
+    registerCampaignEquipment();
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
     inventory.put("IT_TEST_SHIELD_MS002",1);inventory.put("IT_TEST_SHIELD_MS003",1);
@@ -231,6 +240,18 @@ public final class RpgProgressionState {
     equipmentBySlot.put(SHOES_SLOT,"IT_SHOES");equipmentBySlot.put(HEAD_SLOT,STARTER_HAT_ITEM_ID);equipmentBySlot.put(SHIELD_SLOT,STARTER_SHIELD_ITEM_ID);
   }
 
+  private void registerCampaignEquipment(){
+    registerItem(new ItemDefinition("IT_B_PURIFIED_ESSENCE","정화된 숲의 정수",null,null,0,jobSet(),true,null,null,stats(),Evidence.ADAPTED));
+    String[] looks={"mu0000059","mu0000055","mu0000117","mu0000210","mu0000057"};
+    for(int i=0;i<CampaignProgress.JOBS.length;i++)for(int level:new int[]{11,26}){
+      String job=CampaignProgress.JOBS[i],id="IT_B_CAMPAIGN_"+job+"_"+level;
+      registerItem(new ItemDefinition(id,CampaignProgress.jobName(job)+(level==11?" 견습 장비":" 숙련 장비"),ARMOR_SLOT,looks[i],level,jobSet(job),true,null,null,stats("AC",level==11?-5:-10,"DAM",level==11?3:7,"HP",level==11?80:180,"MP",level==11?80:180),Evidence.ADAPTED));
+      String starter="WARRIOR".equals(job)?"IT_B_JOB_WARRIOR_WEAPON":"ROGUE".equals(job)?"IT_B_JOB_ROGUE_WEAPON":"MAGE".equals(job)?"IT_B_JOB_MAGE_WAND":"IT_B_JOB_CLERIC_WAND";
+      ItemDefinition base=items.get(starter);boolean monk="MARTIAL_ARTIST".equals(job),magic="MAGE".equals(job)||"CLERIC".equals(job);
+      registerItem(new ItemDefinition("IT_B_CAMPAIGN_TOOL_"+job+"_"+level,CampaignProgress.jobName(job)+(level==11?" 수련 도구":" 숙련 도구"),monk?"장갑":WEAPON_SLOT,monk?null:base.appearanceId,monk?null:base.basicAttackAction,level,jobSet(job),true,null,null,stats("DAM",level==11?4:9,magic?"INT":"STR",level==11?3:6,magic?"WIS":"CON",level==11?2:4),Evidence.ADAPTED));
+    }
+  }
+  public boolean grantCampaignGear(int level){String id="IT_B_CAMPAIGN_"+currentJobCode+"_"+level;if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;equipmentBySlot.put(ARMOR_SLOT,id);return true;}
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
   private static Map<String,Integer> stats(Object... kv){Map<String,Integer> out=new LinkedHashMap<>();for(int i=0;i+1<kv.length;i+=2)out.put((String)kv[i],(Integer)kv[i+1]);return out;}
   private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
@@ -245,7 +266,8 @@ public final class RpgProgressionState {
   public String currentJobCode(){return currentJobCode;}
   public boolean restoreJobCode(String code){
     if(code==null||!("COMMONER".equals(code)||"WARRIOR".equals(code)||"ROGUE".equals(code)||"MAGE".equals(code)||"CLERIC".equals(code)||"MARTIAL_ARTIST".equals(code)))return false;
-    if("COMMONER".equals(code)||normalLevel==null||normalLevel<3)return "COMMONER".equals(code);
+    if("COMMONER".equals(code)){currentJobCode=code;progressionNode=ProgressionNode.COMMONER;return true;}
+    if(normalLevel==null||normalLevel<3)return false;
     currentJobCode=code;progressionNode=ProgressionNode.BASIC_JOB;return true;
   }
   public Integer normalLevel(){return normalLevel;}
@@ -291,7 +313,7 @@ public final class RpgProgressionState {
     if(price<0||gold<price||!items.containsKey(itemId))return false;
     AutoLootResult added=autoLootResolvedItem(itemId,1);
     if(added!=AutoLootResult.LOOTED)return false;
-    gold-=price;return true;
+    gold-=price;campaign.bought();return true;
   }
   /** Atomic project skill-acquisition payment: validate every cost before mutating any balance. */
   public boolean paySkillLearningCost(long price,Map<String,Integer> materials){
@@ -342,6 +364,7 @@ public final class RpgProgressionState {
     for(CombatLedger.Event e:events){
       if(e.sequence<=lastCombatSequence)continue;
       lastCombatSequence=e.sequence;
+      campaign.consume(e,runtime);
       if(e.type!=CombatLedger.Type.MONSTER_DEFEATED)continue;
       String campaignId=runtime==null?null:runtime.campaignRewardProfileFor(e.targetId);
       resolveCampaignDefeat(e,campaignId);
@@ -363,7 +386,7 @@ public final class RpgProgressionState {
         if(result==AutoLootResult.LOOTED)granted.put(prototype.itemId,prototype.quantity);
         grantAdaptedReward(AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD);
         rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_EXP,granted,outcomes,
-            RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence));
+            RewardSource.ADAPTED_TEST,prototype.policyId,prototype.evidence,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD));
         trimRewardHistory();
         return;
       }
@@ -391,11 +414,11 @@ public final class RpgProgressionState {
     CanonicalMonsterRewardCatalog.RewardEntry canonical=monsterRewards.find(e.targetId);
     if(canonical!=null){resolveMonsterDefeat(e);return;}
     AdaptedCampaignRewardCatalog.Reward reward=campaignRewards.find(profileId);
-    if(reward==null||!e.targetId.equals(reward.monsterId)){resolveMonsterDefeat(e);return;}
+    if(reward==null){resolveMonsterDefeat(e);return;}
     grantAdaptedReward(reward.exp,reward.gold);
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,
         Collections.<String,Integer>emptyMap(),Collections.<String,AutoLootResult>emptyMap(),
-        RewardSource.ADAPTED_TEST,AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone));
+        RewardSource.ADAPTED_CAMPAIGN,AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone,reward.gold));
     trimRewardHistory();
   }
 
@@ -403,15 +426,16 @@ public final class RpgProgressionState {
    * Direct-inventory endpoint for a reward whose item identity and quantity were already resolved upstream.
    * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
    */
-  public boolean isConsumable(String itemId){return B5_SMALL_HP_POTION_ITEM_ID.equals(itemId)||"IT_REAGENT_CURUM".equals(itemId)||"IT_REAGENT_EXCURANUM".equals(itemId);}
+  public boolean isConsumable(String itemId){return B5_SMALL_HP_POTION_ITEM_ID.equals(itemId)||"IT_REAGENT_CURUM".equals(itemId)||"IT_REAGENT_EXCURANUM".equals(itemId)||"IT_B_MP_POTION".equals(itemId);}
   public UseResult useConsumable(String itemId,RuntimeState runtime){
     Integer owned=inventory.get(itemId);if(owned==null||owned<=0)return UseResult.ITEM_NOT_OWNED;
     if(!isConsumable(itemId)||runtime==null)return UseResult.NOT_CONSUMABLE;
+    if("IT_B_MP_POTION".equals(itemId)){if(runtime.player().mp>=runtime.player().maxMp)return UseResult.NO_EFFECT;runtime.player().mp=Math.min(runtime.player().maxMp,runtime.player().mp+100);if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);campaign.healed();return UseResult.USED;}
     if(runtime.player().hp>=runtime.player().maxHp)return UseResult.NO_EFFECT;
     int amount="IT_REAGENT_EXCURANUM".equals(itemId)?10000:"IT_REAGENT_CURUM".equals(itemId)?100:B5_SMALL_HP_POTION_HEAL;
     runtime.player().hp=Math.min(runtime.player().maxHp,runtime.player().hp+amount);
     if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);
-    return UseResult.USED;
+    campaign.healed();return UseResult.USED;
   }
   public boolean isRecall(String id){return RECALL_MILLES_ITEM_ID.equals(id);}
   public UseResult useMillesRecall(RuntimeState runtime){int owned=inventory.getOrDefault(RECALL_MILLES_ITEM_ID,0);if(owned<=0)return UseResult.ITEM_NOT_OWNED;if(runtime==null||!runtime.player().alive)return UseResult.NO_EFFECT;if(owned==1)inventory.remove(RECALL_MILLES_ITEM_ID);else inventory.put(RECALL_MILLES_ITEM_ID,owned-1);return UseResult.USED;}

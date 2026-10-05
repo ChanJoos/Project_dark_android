@@ -101,7 +101,7 @@ public final class MonsterAIController {
     for(RuntimeState.Monster m:state.monsters()){
       if(!m.alive){tileStates.remove(m);continue;}
       MonsterDefinition def=definitions.resolve(m.id);
-      boolean poteShowcase=com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(state.currentMapId())
+      boolean poteShowcase=com.projectdark.mobile.world.CampaignWorld.contains(state.currentMapId())
           &&PoteForestMonsterShowcase.containsMonster(m.id);
       if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING&&!poteShowcase)continue;
       tickPrototypeMonster(state,m,dt);

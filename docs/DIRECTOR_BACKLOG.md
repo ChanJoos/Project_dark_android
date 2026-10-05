@@ -1,4 +1,12 @@
+## 2026-10-04 — V105 executable Lv40 candidate (active continuation)
+
+User approved continuing implementation and publication. This supersedes the earlier approval/build-environment block below. The full common20+class15 campaign, 4forest instances/Piet safe hub, class practice/gear/shop, MP/HP supply/real essence altars and schema4 transactions are implemented. Five normal Resolver/resource simulations completed23quests each and reachedLv40; no forcedEXP/infiniteMP/testskills. Placement fixtures are not phone/timing acceptance. All NPC/species/gate paths and native choice/map/restart tests are in the candidate gate. Details and explicit remaining design proposals: [implementation scope](verification/LV40_IMPLEMENTATION_SCOPE.md). Final exact source/CI/artifact evidence is to be appended after build verification. PHONE/USER_VISUAL pending; main remains unchanged.
+
 ## 2026-10-04 KST — Lv1–40 implementation PARTIAL; BUILD NOT VERIFIED
+
+Latest local continuation `5f777ba99ca038c42395a150092088b9f2c9e4d5`: campaign rewards distinguish `ADAPTED_CAMPAIGN` from `ADAPTED_TEST`; the regression test asserts the correct policy label. `git diff --check` and `tools/validate_master.py` pass; Android tests/build not run. Resume the accepted Lv1–40 work with a concrete integrated gameplay slice, then reattempt verification only when the source environment provides Gradle/CI access. No APK or complete progression claim.
+
+Publication attempt was rejected by automatic review twice, which classified the same-branch push as unverified public publication and prohibited alternate routes. Keep the local candidate; no remote PR or CI exists for this update. Continue with locally verifiable work and request a fresh approval only if publication is still blocked after the user authorizes it in the active turn.
 
 User authorized implementation from the plan. Current local source HEAD `db231e3dfc50d1450d9ad7daae08fe91464a171e` on `codex/town-interiors-mobile-v86`; base V104 remains source `48f8a037872c8ddfab8abacd5808671de9dd9f8f`, previous remote branch head `4782fae09995949891503f2b32b2f47a85211421`, main `bfd668d4e178fa82625d634b5a54be0e27ce30a3`.
 

@@ -1,4 +1,12 @@
+## 2026-10-04 — V105 executable Lv40 candidate (active continuation)
+
+User approved continuing implementation and publication. This supersedes the earlier approval/build-environment block below. The full common20+class15 campaign, 4forest instances/Piet safe hub, class practice/gear/shop, MP/HP supply/real essence altars and schema4 transactions are implemented. Five normal Resolver/resource simulations completed23quests each and reachedLv40; no forcedEXP/infiniteMP/testskills. Placement fixtures are not phone/timing acceptance. All NPC/species/gate paths and native choice/map/restart tests are in the candidate gate. Details and explicit remaining design proposals: [implementation scope](verification/LV40_IMPLEMENTATION_SCOPE.md). Final exact source/CI/artifact evidence is to be appended after build verification. PHONE/USER_VISUAL pending; main remains unchanged.
+
 ## 2026-10-04 KST — Lv1–40 implementation PARTIAL; BUILD NOT VERIFIED
+
+Continuation update at source `5f777ba99ca038c42395a150092088b9f2c9e4d5` (local task clone; active branch `codex/town-interiors-mobile-v86`). Corrected reward provenance so resolved mobile campaign rewards report `ADAPTED_CAMPAIGN`, while isolated training fixtures remain `ADAPTED_TEST`; added a regression assertion. `git diff --check` and `python3 tools/validate_master.py` PASS. No gameplay payout changed. Android tests/build were not run (no Gradle executable or wrapper); no APK, runtime, or visual verification. This is a local source update only; public branch push remains blocked by the recorded automatic-review rejection. Main remains `bfd668d4e178fa82625d634b5a54be0e27ce30a3`.
+
+Publication follow-up at local docs commit `e1be1b4989e312c97fdba063b526b68929600071`: push to the existing review branch was attempted after the user had authorized “푸시하고 승인”. Automatic approval review rejected it twice as publication to an unverified public remote and directed no workaround/indirect route. No further push route was attempted. This source remains reviewable only in the local task clone until the approval gate can accept the user authorization. The push rejection does not change implementation status.
 
 User authorized implementation from the plan. Current local source HEAD `db231e3dfc50d1450d9ad7daae08fe91464a171e` on `codex/town-interiors-mobile-v86`; base V104 remains source `48f8a037872c8ddfab8abacd5808671de9dd9f8f`, previous remote branch head `4782fae09995949891503f2b32b2f47a85211421`, main `bfd668d4e178fa82625d634b5a54be0e27ce30a3`.
 

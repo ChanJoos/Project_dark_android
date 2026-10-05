@@ -1,4 +1,12 @@
+## 2026-10-04 — V105 executable Lv40 candidate (active continuation)
+
+User approved continuing implementation and publication. This supersedes the earlier approval/build-environment block below. The full common20+class15 campaign, 4forest instances/Piet safe hub, class practice/gear/shop, MP/HP supply/real essence altars and schema4 transactions are implemented. Five normal Resolver/resource simulations completed23quests each and reachedLv40; no forcedEXP/infiniteMP/testskills. Placement fixtures are not phone/timing acceptance. All NPC/species/gate paths and native choice/map/restart tests are in the candidate gate. Details and explicit remaining design proposals: [implementation scope](verification/LV40_IMPLEMENTATION_SCOPE.md). Final exact source/CI/artifact evidence is to be appended after build verification. PHONE/USER_VISUAL pending; main remains unchanged.
+
 ## 2026-10-04 KST — Lv1–40 implementation PARTIAL; BUILD NOT VERIFIED
+
+Latest local source: `5f777ba99ca038c42395a150092088b9f2c9e4d5` on `codex/town-interiors-mobile-v86`. Campaign reward provenance now has its own `ADAPTED_CAMPAIGN` source; isolated training-token prototype rewards retain `ADAPTED_TEST`. Regression expectation updated. This is a source classification correction; EXP/Gold values and runtime behavior are unchanged. `git diff --check` and Master CSV integrity validation pass. Android tests/build, APK, device, and visual checks remain NOT RUN. The authorized implementation remains partial: four Pote areas, Piet, executable quest chains, later gear/skills/economy, and normal-mode Lv40 completion are outstanding. Source has not been pushed because the prior public push was rejected by automatic approval review; no alternate publication route was attempted.
+
+Publication status update (review retry): user-authorized push to the same existing review branch was attempted; automatic review again rejected publishing to the public GitHub remote as unverified and explicitly barred workaround/indirect execution. No retry through another channel. Docs commit `e1be1b4989e312c97fdba063b526b68929600071` records this. Local working source remains the code commit above; main unchanged.
 
 User authorized implementation from the plan. Current local source HEAD `db231e3dfc50d1450d9ad7daae08fe91464a171e` on `codex/town-interiors-mobile-v86`; base V104 remains source `48f8a037872c8ddfab8abacd5808671de9dd9f8f`, previous remote branch head `4782fae09995949891503f2b32b2f47a85211421`, main `bfd668d4e178fa82625d634b5a54be0e27ce30a3`.
 
