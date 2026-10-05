@@ -56,7 +56,7 @@ public final class AdaptedCampaignRewardTest {
   @Test public void jobCounselorIsAReachableNewTownNpc(){
     RuntimeState state=new RuntimeState();RuntimeState.Npc counselor=null;
     for(RuntimeState.Npc npc:state.npcs())if("milles_job_counselor".equals(npc.id))counselor=npc;
-    assertNotNull(counselor);assertEquals("Michael",NpcIdentity.forId(counselor.id).name);
+    assertNotNull(counselor);assertEquals("마이클",NpcIdentity.forId(counselor.id).name);
     assertFalse(state.blocked(counselor.x,counselor.y));
     assertNotNull(state.nearestMonsterTileCenter(counselor.x,counselor.y));
   }

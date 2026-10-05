@@ -15,7 +15,7 @@ public final class NpcAppearanceTest {
  private Bitmap actor(NpcIdentity.Profile p,CharacterRenderer.Direction d,boolean npc){
   Bitmap b=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(b);
   if(npc)new WorldEntityPresentationRenderer().draw(c,new WorldEntityPresentationRenderer.Pose(WorldEntityPresentationRenderer.Kind.NPC,64,112,d,CharacterRenderer.State.IDLE,0,0,1,CharacterRenderer.EffectFamily.NONE,false,false,"npc/"+p.id,null));
-  else new CharacterRenderer(context()).draw(c,new CharacterRenderer.Pose(64,112,d,CharacterRenderer.State.IDLE,0,0,1,false,p.outfit,p.weapon,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+  else new CharacterRenderer(context()).draw(c,new CharacterRenderer.Pose(64,112,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,p.outfit,p.weapon,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
   return b;
  }
  private int[] pixels(Bitmap b){int[] a=new int[b.getWidth()*b.getHeight()];b.getPixels(a,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return a;}
@@ -33,7 +33,7 @@ public final class NpcAppearanceTest {
  @Test public void allFourDirectionsUseExactlyThePlayerPaperDollAndOutfitsAreVisiblyDifferent(){
   Set<Integer> appearances=new HashSet<>();assertTrue(new CharacterRenderer(context()).resourceAtlasActive());
   for(NpcIdentity.Profile p:NpcIdentity.ALL)for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-   Bitmap npc=actor(p,d,true),player=actor(p,d,false);assertArrayEquals("same source scale, body, equipment and foot "+p.id+" "+d,pixels(player),pixels(npc));
+   Bitmap npc=actor(p,d,true),player=actor(p,d,false);assertArrayEquals("fixed SW NPC has same source scale, body, equipment and foot "+p.id+" "+d,pixels(player),pixels(npc));
    if(d==CharacterRenderer.Direction.SE)assertTrue("different actual outfit pixels "+p.id,appearances.add(Arrays.hashCode(pixels(npc))));
    int count=0;for(int color:pixels(npc))if(Color.alpha(color)>0)count++;assertTrue("real dressed sprite, not missing layers",count>350);
   }

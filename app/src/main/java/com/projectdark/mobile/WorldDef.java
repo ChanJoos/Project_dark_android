@@ -48,7 +48,7 @@ public final class WorldDef {
     // One canonical diagonal step from the initial spawn keeps the NPC visible without blocking spawn occupancy.
     // Keep outdoor NPCs one isometric step northwest of their prior anchors.
     n.add(new NpcSpawn("pote_travel_guide","포테의 숲 이동 안내인",620.0f,560.0f,"포테의 숲으로 이동하시겠습니까?",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_job_counselor","Michael · 직업 상담관",930.0f,630.0f,"기본 수련을 마쳤다면 다섯 직업의 전투 방식과 입문 장비를 안내해 주겠네.",ASSET_STATUS));
+    n.add(new NpcSpawn("milles_job_counselor","마이클 · 직업 상담관",930.0f,630.0f,"기본 수련을 마쳤다면 다섯 직업의 전투 방식과 입문 장비를 안내해 주겠네.",ASSET_STATUS));
     String[] mentors={"mentor_warrior","mentor_rogue","mentor_mage","mentor_cleric","mentor_monk"};
     for(int i=0;i<mentors.length;i++)n.add(new NpcSpawn(mentors[i],"직업 지도자",1056f+i*64f,592f,"직업 기술 실습과 장비 점검을 도와줍니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_gate_proto","한스 · 숲길 경비 [ADAPTED]",758.0f,1434.0f,"남쪽 숲길에 팜팻 흔적이 보여. 준비가 되면 내게 말해.",ASSET_STATUS));

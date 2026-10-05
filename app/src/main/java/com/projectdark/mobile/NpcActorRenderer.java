@@ -8,6 +8,6 @@ public final class NpcActorRenderer {
  public NpcActorRenderer(Context context){character=new CharacterRenderer(context);}
  public void draw(Canvas canvas,String id,float x,float y,CharacterRenderer.Direction direction,CharacterRenderer.State state,float clock){
   NpcIdentity.Profile p=NpcIdentity.forId(id);
-  character.draw(canvas,new CharacterRenderer.Pose(x,y,direction,state,clock,0,1,false,p.outfit,p.weapon,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
+  character.draw(canvas,new CharacterRenderer.Pose(x,y,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,p.outfit,p.weapon,CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
  }
 }

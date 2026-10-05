@@ -181,8 +181,8 @@ public final class RuntimeState {
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
     enterPoteField();currentMapId=id;npcs.clear();monsters.clear();
     int zone=com.projectdark.mobile.world.CampaignWorld.zone(id);monsters.addAll(CampaignMonsters.spawn(zone));
-    if(zone==0){npcs.add(new Npc("piet_investigator","Ethan",768,512,"피에트 조사와 서신을 담당합니다.","ADAPTED"));npcs.add(new Npc("piet_supplier","Joshua",864,560,"조사 장비와 보급품을 준비하세요.","ADAPTED"));npcs.add(new Npc("piet_purifier","Samuel",672,560,"숲의 정수를 정화합니다.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"지도자",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"숙련 기술과 장비를 지도합니다.","ADAPTED"));}
-    else {npcs.add(new Npc("pote_trail_guide","Alexander",736,496,"숲길 조사와 무료 휴식", "ADAPTED"));if(zone==4)for(int i=0;i<3;i++)npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),672+i*160,672,"제단 정화", "ADAPTED"));}
+    if(zone==0){npcs.add(new Npc("piet_investigator","이선",768,512,"피에트 조사와 서신을 담당합니다.","ADAPTED"));npcs.add(new Npc("piet_supplier","조슈아",864,560,"조사 장비와 보급품을 준비하세요.","ADAPTED"));npcs.add(new Npc("piet_purifier","새뮤얼",672,560,"숲의 정수를 정화합니다.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"지도자",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"숙련 기술과 장비를 지도합니다.","ADAPTED"));}
+    else {npcs.add(new Npc("pote_trail_guide","알렉산더",736,496,"숲길 조사와 무료 휴식", "ADAPTED"));if(zone==4)for(int i=0;i<3;i++)npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),672+i*160,672,"제단 정화", "ADAPTED"));}
     com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
   }
   public void enterMillesFromField(float x,float y){

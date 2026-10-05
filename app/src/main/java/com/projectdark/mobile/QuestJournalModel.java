@@ -34,15 +34,15 @@ final class QuestJournalModel {
   List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest){return rows(q,g,inForest,null);}
   List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest,RpgProgressionState rpg){
     List<Row> out=new ArrayList<>();Status s=Status.valueOf(q.state()==F5mAdaptedPrologueQuest.State.RETURN_READY?"REPORT":q.state()==F5mAdaptedPrologueQuest.State.COMPLETED?"COMPLETE":q.state().name());
-    String goal=s==Status.AVAILABLE?"James에게 여관 의뢰 받기":s==Status.ACTIVE?"여관 생쥐 처치":s==Status.REPORT?"여관의 Benjamin에게 보고":"여관의 소란을 해결했습니다";
-    out.add(new Row(q.questId(),"여관의 소란","밀레스 · 여관","James → Benjamin","여관의 손님들이 생쥐 때문에 곤란해하고 있습니다. James의 의뢰를 받아 여관 안을 살펴보세요.",goal,"EXP 7,500  ·  Gold 100  ·  훈련 증표 1","처음부터 받을 수 있습니다","완료 후: James의 성장 훈련",s,q.currentCount(),q.requiredCount()));
+    String goal=s==Status.AVAILABLE?"제임스에게 여관 의뢰 받기":s==Status.ACTIVE?"여관 생쥐 처치":s==Status.REPORT?"여관의 벤저민에게 보고":"여관의 소란을 해결했습니다";
+    out.add(new Row(q.questId(),"여관의 소란","밀레스 · 여관","제임스 → 벤저민","여관의 손님들이 생쥐 때문에 곤란해하고 있습니다. 제임스의 의뢰를 받아 여관 안을 살펴보세요.",goal,"EXP 7,500  ·  Gold 100  ·  훈련 증표 1","처음부터 받을 수 있습니다","완료 후: 제임스의 성장 훈련",s,q.currentCount(),q.requiredCount()));
     Status gs=Status.valueOf(g.state()==GrowthQuest2.State.RETURN_READY?"REPORT":g.state()==GrowthQuest2.State.COMPLETED?"COMPLETE":g.state().name());
-    String ggoal=gs==Status.LOCKED?"여관의 소란 완료":gs==Status.AVAILABLE?"James에게 성장 훈련 받기":gs==Status.ACTIVE?"밀레스 훈련 몬스터 처치":gs==Status.REPORT?"James에게 훈련 결과 보고":"성장 훈련을 마쳤습니다";
-    out.add(new Row(GrowthQuest2.QUEST_ID,"성장 훈련","밀레스 · 마을","James","여관의 문제를 해결했다면 마을 밖으로 나갈 준비를 하세요. James가 전투 훈련을 도와줍니다.",ggoal,"EXP 15,000  ·  Gold 250","선행: 여관의 소란 완료","완료 후: William의 포테 숲길 안내",gs,g.currentCount(),g.requiredCount()));
+    String ggoal=gs==Status.LOCKED?"여관의 소란 완료":gs==Status.AVAILABLE?"제임스에게 성장 훈련 받기":gs==Status.ACTIVE?"밀레스 훈련 몬스터 처치":gs==Status.REPORT?"제임스에게 훈련 결과 보고":"성장 훈련을 마쳤습니다";
+    out.add(new Row(GrowthQuest2.QUEST_ID,"성장 훈련","밀레스 · 마을","제임스","여관의 문제를 해결했다면 마을 밖으로 나갈 준비를 하세요. 제임스가 전투 훈련을 도와줍니다.",ggoal,"EXP 15,000  ·  Gold 250","선행: 여관의 소란 완료","완료 후: 윌리엄의 포테 숲길 안내",gs,g.currentCount(),g.requiredCount()));
     boolean visited=inForest||context.getSharedPreferences("project_dark_journal_v1",0).getBoolean("forest_visited",false);
     Status fs=gs!=Status.COMPLETE?Status.LOCKED:visited?Status.COMPLETE:Status.AVAILABLE;
-    out.add(new Row(FOREST,"포테의 숲길","밀레스 → 포테의 숲","William","훈련을 마쳤습니다. 숲길 경비 William에게 말을 걸면 포테의 숲으로 안내받을 수 있습니다.",fs==Status.LOCKED?"성장 훈련 완료":fs==Status.COMPLETE?"포테의 숲에 도착했습니다":"William와 대화하고 숲으로 이동","포테의 숲 탐험","선행: 성장 훈련 완료","다음 모험: 팜팻의 변화 · 의뢰 지역 개방 필요",fs,visited?1:0,1));
-    if(rpg!=null){boolean ready=gs==Status.COMPLETE&&rpg.normalLevel()!=null&&rpg.normalLevel()>=3;Status js=!"COMMONER".equals(rpg.currentJobCode())?Status.COMPLETE:ready?Status.AVAILABLE:Status.LOCKED;out.add(new Row(JOB_CHOICE,"기본 직업 선택","밀레스 · 광장","Michael","성장 훈련과 Lv3을 달성했습니다. Michael과 대화해 전사·도적·마법사·성직자·무도가 중 하나를 고르세요.",js==Status.COMPLETE?"기본 직업을 선택했습니다":ready?"Michael과 대화해 직업과 입문 장비 선택":"성장 훈련 완료 · Lv3 도달","직업별 입문 장비 1세트","선행: 성장 훈련 완료 · Lv3","직업 선택 후 포테의 숲으로 이동",js,js==Status.COMPLETE?1:0,1));}
+    out.add(new Row(FOREST,"포테의 숲길","밀레스 → 포테의 숲","윌리엄","훈련을 마쳤습니다. 숲길 경비 윌리엄에게 말을 걸면 포테의 숲으로 안내받을 수 있습니다.",fs==Status.LOCKED?"성장 훈련 완료":fs==Status.COMPLETE?"포테의 숲에 도착했습니다":"윌리엄와 대화하고 숲으로 이동","포테의 숲 탐험","선행: 성장 훈련 완료","다음 모험: 팜팻의 변화 · 의뢰 지역 개방 필요",fs,visited?1:0,1));
+    if(rpg!=null){boolean ready=gs==Status.COMPLETE&&rpg.normalLevel()!=null&&rpg.normalLevel()>=3;Status js=!"COMMONER".equals(rpg.currentJobCode())?Status.COMPLETE:ready?Status.AVAILABLE:Status.LOCKED;out.add(new Row(JOB_CHOICE,"기본 직업 선택","밀레스 · 광장","마이클","성장 훈련과 Lv3을 달성했습니다. 마이클과 대화해 전사·도적·마법사·성직자·무도가 중 하나를 고르세요.",js==Status.COMPLETE?"기본 직업을 선택했습니다":ready?"마이클과 대화해 직업과 입문 장비 선택":"성장 훈련 완료 · Lv3 도달","직업별 입문 장비 1세트","선행: 성장 훈련 완료 · Lv3","직업 선택 후 포테의 숲으로 이동",js,js==Status.COMPLETE?1:0,1));}
     if(rpg!=null)for(CampaignProgress.Def d:CampaignProgress.definitions()){
       if(d.kind.equals("EXTERNAL"))continue;CampaignProgress.Status cs=rpg.campaign().status(d,rpg);
       String objective=rpg.campaign().objective(d);

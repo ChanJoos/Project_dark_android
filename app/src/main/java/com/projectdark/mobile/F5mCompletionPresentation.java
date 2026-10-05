@@ -9,6 +9,6 @@ public final class F5mCompletionPresentation{
   return null;
  }
  public static String nextPurposeTitle(F5mAdaptedPrologueQuest.State state){return state==F5mAdaptedPrologueQuest.State.COMPLETED?"다음 목표":"";}
- public static String nextPurposeBody(F5mAdaptedPrologueQuest.State state){return state==F5mAdaptedPrologueQuest.State.COMPLETED?"William에게 포테의 숲길 안내를 받으세요. EXP 성장과 BAG 장비·물약을 확인한 뒤 숲으로 이동하세요.":"";}
+ public static String nextPurposeBody(F5mAdaptedPrologueQuest.State state){return state==F5mAdaptedPrologueQuest.State.COMPLETED?"윌리엄에게 포테의 숲길 안내를 받으세요. EXP 성장과 BAG 장비·물약을 확인한 뒤 숲으로 이동하세요.":"";}
  public static boolean showNextPurpose(F5mAdaptedPrologueQuest.State state){return state==F5mAdaptedPrologueQuest.State.COMPLETED;}
 }

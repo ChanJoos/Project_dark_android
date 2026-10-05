@@ -5,10 +5,12 @@ public final class NpcIdentity {
  public static final String NAME_SOURCE="SSA_US_1926_2025_TOP100";
  public static final class Profile {
   public final String id,name,role,outfit,weapon; public final int rank;
-  Profile(String id,String name,int rank,String role,String outfit,String weapon){this.id=id;this.name=name;this.rank=rank;this.role=role;this.outfit=outfit;this.weapon=weapon;}
+  Profile(String id,String name,int rank,String role,String outfit,String weapon){this.id=id;this.name=korean(name);this.rank=rank;this.role=role;this.outfit=outfit;this.weapon=weapon;}
   public String label(){return name+" · "+role;}
  }
  private static final String[] NAMES={"James","Michael","John","Robert","David","William","Richard","Joseph","Thomas","Christopher","Charles","Daniel","Matthew","Anthony","Mark","Steven","Andrew","Donald","Joshua","Paul","Kevin","Kenneth","Brian","Timothy","Ronald","Jason","George","Edward","Jeffrey","Jacob","Ryan","Nicholas","Gary","Eric","Jonathan","Stephen","Larry","Justin","Benjamin","Scott","Brandon","Samuel","Alexander","Gregory","Patrick","Jack","Frank","Raymond","Dennis","Aaron","Tyler","Jerry","Jose","Nathan","Adam","Henry","Zachary","Douglas","Peter","Noah","Ethan","Kyle","Christian","Jeremy","Austin","Keith","Sean","Terry","Roger","Dylan","Walter","Gerald","Jordan","Gabriel","Carl","Bryan","Jesse","Logan","Lawrence","Elijah","Arthur","Bruce","Harold","Billy","Liam","Alan","Juan","Joe","Mason","Lucas","Randy","Willie","Wayne","Vincent","Caleb","Albert","Luke","Isaac","Bradley","Cameron"};
+ private static final String[] KOREAN_NAMES={"제임스","마이클","존","로버트","데이비드","윌리엄","리처드","조셉","토머스","크리스토퍼","찰스","대니얼","매슈","앤서니","마크","스티븐","앤드루","도널드","조슈아","폴","케빈","케네스","브라이언","티머시","로널드","제이슨","조지","에드워드","제프리","제이컵","라이언","니컬러스","게리","에릭","조너선","스테픈","래리","저스틴","벤저민","스콧","브랜던","새뮤얼","알렉산더","그레고리","패트릭","잭","프랭크","레이먼드","데니스","에런","타일러","제리","호세","네이선","애덤","헨리","재커리","더글러스","피터","노아","이선","카일","크리스천","제러미","오스틴","키스","숀","테리","로저","딜런","월터","제럴드","조던","게이브리얼","칼","브라이언","제시","로건","로런스","일라이자","아서","브루스","해럴드","빌리","리엄","앨런","후안","조","메이슨","루커스","랜디","윌리","웨인","빈센트","케일럽","앨버트","루크","아이작","브래들리","캐머런"};
+ public static String korean(String name){for(int i=0;i<NAMES.length;i++)if(NAMES[i].equals(name))return KOREAN_NAMES[i];return name;}
  public static final List<Profile> ALL=Collections.unmodifiableList(Arrays.asList(
   new Profile("milles_guide_proto","James",1,"마을 경비","mu0000059,mh124,ml255","mw015"),
   new Profile("milles_gate_proto","William",6,"숲길 경비","mu0000057,mh108,ml243","mw015"),
@@ -39,6 +41,6 @@ public final class NpcIdentity {
   return new Profile(id,NAMES[index],index+1,"주민",clothes[0]+","+accessory[1]+","+clothes[2],null);
  }
  public static String interiorKey(String kind){return "interior_"+kind.toLowerCase(Locale.ROOT);}
- public static String text(String original){if(original==null)return null;return original.replace("제임스","James").replace("한스","William").replace("메리","Benjamin").replace("멀린","Henry").replace("로건","Logan");}
+ public static String text(String original){if(original==null)return null;String value=original.replace("한스","윌리엄").replace("메리","벤저민").replace("멀린","헨리");for(int i=0;i<NAMES.length;i++)value=value.replace(NAMES[i],KOREAN_NAMES[i]);return value;}
  private NpcIdentity(){}
 }
