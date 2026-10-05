@@ -86,6 +86,6 @@ public final class PoteVisualReviewTest {
   assertEquals(sx+16f,field.presentationPlayerX(),.1f);
   field.tickNavigation(.30f);
   assertEquals(sx+32f,field.presentationPlayerX(),.01f);assertEquals(sy-16f,field.presentationPlayerY(),.01f);
-  assertTrue("entry guide remains close to spawn",field.runtime().npcs().stream().anyMatch(n->Math.hypot(n.x-sx,n.y-sy)<100f));
+  assertTrue("campaign gate arrival reaches the guide through shared World navigation",CampaignNavigationTest.walk(field,field.requestNpcApproach("pote_trail_guide")));
  }
 }
