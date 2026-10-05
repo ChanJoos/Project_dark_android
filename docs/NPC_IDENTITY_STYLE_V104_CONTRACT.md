@@ -1,3 +1,7 @@
+## 2026-10-05 user correction — supersedes facing/name presentation below
+
+All human NPCs remain at their map coordinates with one fixed SW (lower-left) IDLE frame, zero animation clock, and no player-facing rotation. American identities are displayed in Korean transcription everywhere: world labels, services, dialogue, quest objectives and feedback. English strings remain only source identity/provenance. Player appearance/movement is not changed by this correction.
+
 # V104 — All human NPCs use the player source paper doll
 
 User2026-10-04 authorizes all present/future NPC appearances to match the player, American top100 names, distinctive newly discovered wearables. Eleven present NPC identities (five outdoor Milles, one Pote, five services) have unique SSA US1926–2025 top100 given names and independent armor/hair/boot/optional weapon combinations. Names are ADAPTED presentation choices, not original NPC canon; original Master names/source records remain preserved. Keep stable domain IDs, route/quest/service/save bindings. James/William/Benjamin mentions consistent across labels, dialogue, quest journal and next-target feedback.

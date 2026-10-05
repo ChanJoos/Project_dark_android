@@ -221,6 +221,21 @@
       "path": "app/src/main/res/drawable-nodpi/equip_mw010_source.webp",
       "sha256": "df9fa8268521dd0f0e419e19935e6d0d50e2fd5f0df39bdf779b45642577c917",
       "apkEntry": "res/drawable-nodpi-v4/equip_mw010_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp",
+      "sha256": "03642accfca56db30a7d0f505ee027b40b9401f8a97e99a8257e07f074570d5a",
+      "apkEntry": "res/drawable-nodpi-v4/player_hat_mh172_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp",
+      "sha256": "895ca597cbba6992b49f4e5a09b68b699a92e64058236425d8a464285c77bfe5",
+      "apkEntry": "res/drawable-nodpi-v4/player_shield_ms001_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp",
+      "sha256": "f33770961b0e62a0ea6a5b591f66257c8896a292a5e8231dabb97eeb4d049bc4",
+      "apkEntry": "res/drawable-nodpi-v4/player_shoes_ml228_source.webp"
     }
   ]
 }

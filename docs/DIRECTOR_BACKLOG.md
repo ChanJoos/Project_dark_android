@@ -1,3 +1,7 @@
+## V106 user-reported presentation repair — active P0
+
+V105 DEVICE_FAILED_USER_REPORTED / USER_VISUAL_REJECTED. Fix all reported presentation faults together: recover47 exact previously packaged equipment frames/registrations, restore prior utility icons/equal gaps, Korean NPC identity everywhere and stationary SW frame. Proof: verification/V106_RESTORED_EQUIPMENT.json; native DevicePresentationRepairTest + existing inventory/NPC/full campaign regressions; final APK per-entry hash gate. First source262c77bc/run37261568293 pending; exact final CI/native/APK/phone evidence to be appended. No new original terrain or unrelated UI redesign.
+
 ## 2026-10-04 — V105 executable Lv40 candidate (active continuation)
 
 User approved continuing implementation and publication. This supersedes the earlier approval/build-environment block below. The full common20+class15 campaign, 4forest instances/Piet safe hub, class practice/gear/shop, MP/HP supply/real essence altars and schema4 transactions are implemented. Five normal Resolver/resource simulations completed23quests each and reachedLv40; no forcedEXP/infiniteMP/testskills. Placement fixtures are not phone/timing acceptance. All NPC/species/gate paths and native choice/map/restart tests are in the candidate gate. Details and explicit remaining design proposals: [implementation scope](verification/LV40_IMPLEMENTATION_SCOPE.md). Final exact source/CI/artifact evidence is to be appended after build verification. PHONE/USER_VISUAL pending; main remains unchanged.
