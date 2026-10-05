@@ -76,7 +76,20 @@ public final class AdaptedMillesIsometricTileLayer {
       {{768,592},{768,544},{752,496},{752,448},{736,400},{736,368}},
       {{768,592},{832,560},{896,528},{960,480},{1024,432},{1088,400},{1152,400},{1216,416},{1280,432},{1344,448},{1408,448},{1472,448},{1536,448}},
       {{768,592},{832,640},{896,672},{960,704},{1056,720},{1184,736},{1312,752},{1440,768},{1568,784},{1696,784},{1824,752},{1920,704},{1984,656}},
-      {{768,592},{736,656},{720,720},{704,784},{704,848},{720,912},{736,976},{752,1040},{768,1104},{784,1168},{800,1232},{800,1328},{800,1456},{800,1568}}
+      {{768,592},{736,656},{720,720},{704,784},{704,848},{720,912},{736,976},{752,1040},{768,1104},{784,1168},{800,1232},{800,1328},{800,1456},{800,1568}},
+      // A short shore-side footpath connects the pond rest area to the inn road.
+      {{1824,752},{1860,824},{1900,904},{1960,992},{1980,1060}},
+      {{800,1328},{900,1345},{1060,1335}}
+  };
+
+  // Smaller walked approaches connect the five services and residential clusters to village lanes.
+  // They remain passable grass underfoot; the renderer adds a light soil trace.
+  private static final float[][][] APPROACH_PATHS={
+      {{472,472},{290,525},{215,585},{205,710},{195,755}}, // west residential frontage
+      {{720,912},{630,940},{560,995},{535,1090},{460,1110}}, // southwest homes and well
+      {{784,1168},{880,1140},{985,1120},{1120,1115}}, // south homes
+      {{1060,1335},{1210,1310},{1360,1280},{1530,1240}}, // east homes from south gardens
+      {{1824,752},{2140,752},{2140,390},{2020,390},{1820,390}} // northeast residential lane runs around the inn and east settlement edge
   };
 
   private static final List<Tile> TILES=build();
@@ -85,6 +98,12 @@ public final class AdaptedMillesIsometricTileLayer {
   public static float[][][] roadPaths(){
     float[][][] copy=new float[PATHS.length][][];
     for(int i=0;i<PATHS.length;i++){copy[i]=new float[PATHS[i].length][];for(int j=0;j<PATHS[i].length;j++)copy[i][j]=PATHS[i][j].clone();}
+    return copy;
+  }
+
+  public static float[][][] approachPaths(){
+    float[][][] copy=new float[APPROACH_PATHS.length][][];
+    for(int i=0;i<APPROACH_PATHS.length;i++){copy[i]=new float[APPROACH_PATHS[i].length][];for(int j=0;j<APPROACH_PATHS[i].length;j++)copy[i][j]=APPROACH_PATHS[i][j].clone();}
     return copy;
   }
 
