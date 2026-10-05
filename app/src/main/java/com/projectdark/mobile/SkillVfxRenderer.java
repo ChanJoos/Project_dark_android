@@ -17,7 +17,7 @@ final class SkillVfxRenderer {
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
   void clear(){pulses.clear();}
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
-  void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null)return;boolean transferCaster=caster&&id.equals("SK_성직자_002");int row=caster?casterRow(v.caster):v.targetRow;if(row<0&&!transferCaster&&(!(!caster&&v.target.equals("QI_BLAST"))))return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;String sheet=transferCaster?"reconstruction":caster?"caster":v.targetSheet;pulses.add(new Pulse(seq,id,sheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);}
+  void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null)return;boolean transferCaster=caster&&id.equals("SK_성직자_002");int row=caster?casterRow(v.caster):v.targetRow;if(caster&&row<0&&!transferCaster||!caster&&v.target.equals("NONE"))return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;String sheet=transferCaster?"reconstruction":caster?"caster":v.targetSheet;pulses.add(new Pulse(seq,id,sheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);}
   void consume(List<CombatResolver.Event> events,Anchors a){for(CombatResolver.Event e:events){
     if(!RuntimeCombatSession.PLAYER_ID.equals(e.actorId))continue;
     String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||id.equals("SK_공통_001"))continue;
@@ -39,7 +39,7 @@ final class SkillVfxRenderer {
       pulses.add(new Pulse(e.actionSequence,id,sourceSheet,0,anchor,caster,channel.sequence.duration,x,y));if(pulses.size()>64)pulses.remove(0);continue;
     }
 boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequence+":"+(caster?"caster":captureContact?"capture":"target:"+e.targetId);if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
-    boolean transferCaster=caster&&id.equals("SK_성직자_002");int row=caster?casterRow(v.caster):v.targetRow;if(caster&&row<0&&!transferCaster||!caster&&(v.target.equals("NONE")||row<0&&!v.target.equals("QI_BLAST")))continue;String anchor=caster||(captureContact&&captured.get(id).directional)?e.actorId:e.targetId;
+    boolean transferCaster=caster&&id.equals("SK_성직자_002");int row=caster?casterRow(v.caster):v.targetRow;if(caster&&row<0&&!transferCaster||!caster&&v.target.equals("NONE"))continue;String anchor=caster||(captureContact&&captured.get(id).directional)?e.actorId:e.targetId;
     CapturedSkillFx.Sequence sequence=caster?null:captured.get(id);String sheet=sequence!=null?"capture":transferCaster?"reconstruction":caster?"caster":v.targetSheet;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
     Pulse pulse=new Pulse(e.actionSequence,id,sheet,row,anchor,caster,sequence!=null?sequence.duration:caster?.30f:row<0||sheet.equals("finisher-v65")?.75f:.48f,x,y);pulse.directionX=a.x(e.targetId)-a.x(e.actorId);pulse.directionY=a.y(e.targetId)-a.y(e.actorId);pulses.add(pulse);if(pulses.size()>64)pulses.remove(0);
   }}
