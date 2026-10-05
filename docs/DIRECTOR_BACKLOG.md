@@ -1,11 +1,11 @@
-## V108 quest runtime verification
+## V108 quest runtime verification — DEVICE_FAILED_USER_REPORTED (2026-10-06)
 
 | Item | State | Evidence / next action |
 |---|---|---|
-| Kill quickquest enables auto-attack | IMPLEMENTED, native tests passed | GameView integration; campaign Actions 37309497449 PASS, phone behavior pending |
-| Warrior Shortblade skill-use count | IMPLEMENTED, native tests passed | Resolver integration plus duplicate/wrong-skill cases; campaign Actions 37309497449 PASS, phone behavior pending |
-| Other quest functionality audit | AUDITED against rule/event paths and class progression suites | Runtime tests cover all five class routes, 23 quests each; exact V108 build verified, phone acceptance pending |
-| Inn mouse movement/readability; early field mice | IMPLEMENTED, follow-up verification pending | Strict GameView chase displacement assertion; captured mouse renderer enlarged; all three early field actors and quickquest label use mouse presentation while stable combat IDs preserve campaign progression. Run exact-source Actions and deliver refreshed V108 candidate; physical device check remains pending. |
+| Kill quickquest enables auto-attack | DEVICE_FAILED_USER_REPORTED; repair in progress | Source review found AUTO armed only after map travel; old M04 test started on objective map. New M07 test taps from Milles and checks AUTO before travel. |
+| Warrior Shortblade use count | DEVICE_FAILED_USER_REPORTED; repair in progress | Old test invoked a private method. New GameView test taps visible quickslot three times, checks REPORT and claims; objective now says “사용 3회”. |
+| Other quest functionality audit | Native simulation only; phone status unresolved | Five class routes/23 quests remain exercised in automation. User reports gameplay remained unchanged; verify route input, objective, event count, turn-in, reward and save path in follow-up before acceptance. |
+| Inn mouse appearance; early field mice | DEVICE_FAILED_USER_REPORTED for appearance; movement reported working | V91 capture is visibly an indistinct gray blur. Four project-authored, labelled ADAPTED stills replace runtime art; source captures remain preserved. Build, native render, phone and visual gates pending. |
 
 ## 2026-10-05 — V106 presentation repair verified candidate
 

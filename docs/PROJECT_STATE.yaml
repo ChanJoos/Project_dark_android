@@ -1,11 +1,15 @@
 quest_runtime_v108:
-  implementation: IMPLEMENTED_CANDIDATE
-  build: BUILD_VERIFIED_GITHUB_ACTIONS
-  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
-  reported_failures: [quickquest_kill_autoattack, warrior_shortblade_use_count]
-  focused_suites: [CampaignQuickQuestIntegrationTest, CampaignProgressTest, QuestJournalTest, QuickQuestLatencyTest, HudTouchAcceptanceTest]
-  quest_routes_audited: 5
-  source_commit: 4e1cb570c3b352cef2251799b072d2ee5c33694f
+  implementation: FOLLOW_UP_IN_PROGRESS
+  previous_candidate_build: BUILD_VERIFIED_GITHUB_ACTIONS
+  previous_candidate_native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+  previous_candidate_device: DEVICE_FAILED_USER_REPORTED_2026-10-06
+  current_source_review_findings: [AUTO_armed_only_after_objective_map, Shortblade_test_bypassed_visible_quickslot, Shortblade_text_said_valid_hit, captured_mouse_stills_blurred]
+  follow_up_tests: [CampaignQuickQuestIntegrationTest_M07_from_Milles, CampaignQuickQuestIntegrationTest_three_visible_Shortblade_slot_uses, MillesMousePresentationTest_four_direction_art]
+  follow_up_build: PENDING
+  follow_up_native_runtime: PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  source_commit_previous_candidate: 4e1cb570c3b352cef2251799b072d2ee5c33694f
   campaign_actions_run: 37309497449
   regression_actions_run: 37309497455
   apk_artifact: 11345975613
@@ -13,8 +17,6 @@ quest_runtime_v108:
   apk_sha256: 05795213163bfca3ba7792ef524c16444251d03d752f38ba8d2ffd01aefe98c7
   release: https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v108-4e1cb570/PROJECT_DARK_V108.apk
   quests_per_class: 23
-  physical_phone: PENDING
-  user_visual: PENDING
   audit: docs/QUEST_RUNTIME_AUDIT_V108.md
 
 chungryong_quickquest_v107:

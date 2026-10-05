@@ -2,7 +2,6 @@ package com.projectdark.mobile;
 
 import static org.junit.Assert.*;
 import android.content.Context;
-import java.lang.reflect.Method;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +9,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.GraphicsMode;
+import com.projectdark.mobile.world.WorldRuntimeAdapter;
 
 /** Exercises the user's quest controls through GameView and the production combat event path. */
 @RunWith(RobolectricTestRunner.class)
@@ -34,11 +34,29 @@ public final class CampaignQuickQuestIntegrationTest {
     ((F5mAdaptedPrologueQuest)TownInteriorTest.field(view,"f5mQuest")).restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);
     ((GrowthQuest2)TownInteriorTest.field(view,"quest2")).restore(GrowthQuest2.State.COMPLETED,3);
     assertEquals("campaign hunt is the visible quick quest","CAMPAIGN_M04",((QuestJournalModel)TownInteriorTest.field(view,"questJournalModel")).current(TownInteriorTest.field(view,"f5mQuest"),TownInteriorTest.field(view,"quest2"),false,r).id);
+    RuntimeState.Monster target=runtime.monsters().get(0);
+    for(RuntimeState.Monster m:runtime.monsters())if(m!=target)m.alive=false;
+    target.x=runtime.player().x+32;target.y=runtime.player().y+16;target.hp=1;
     TownInteriorTest.tap(view,80,150);
     assertTrue("quick hunt turns AUTO on",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
     CombatController combat=TownInteriorTest.field(view,"combat");
     assertNotNull("quick hunt selects an objective target",combat.target());
     assertTrue(campaign.wanted(CampaignProgress.find("M04"),combat.target().id));
+    assertSame(target,combat.target());
+    TownInteriorTest.tick(view,30);
+    assertEquals("the tap-driven quick hunt defeats its selected quest target",1,campaign.count(CampaignProgress.find("M04"),r));
+  }
+
+  @Test public void killQuickQuestArmsAutoBeforeTravelingToItsMap()throws Exception{
+    GameView view=new GameView(context);view.layout(0,0,960,540);
+    RuntimeState runtime=TownInteriorTest.field(view,"state");RpgProgressionState r=runtime.rpg();
+    r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
+    CampaignProgress campaign=r.campaign();org.json.JSONObject saved=campaign.snapshot();
+    saved.put("complete",new org.json.JSONArray().put("M01").put("M02").put("M03").put("J01_WARRIOR").put("M04").put("M05").put("M06"));
+    saved.put("active","M07");assertTrue(campaign.restore(saved));
+    TownInteriorTest.tap(view,80,150);
+    assertTrue("AUTO is visibly armed as soon as a kill quest is selected",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
+    assertEquals("quick-quest route begins toward the forest travel guide","pote_travel_guide",((WorldRuntimeAdapter)TownInteriorTest.field(view,"worldAdapter")).movement().snapshot().targetEntityId);
   }
 
   @Test public void warriorShortbladePracticeCountsARealGameViewEffect()throws Exception{
@@ -51,13 +69,17 @@ public final class CampaignQuickQuestIntegrationTest {
     RuntimeState.Monster target=null;for(RuntimeState.Monster m:runtime.monsters())if(m.alive){target=m;break;}
     assertNotNull("test needs an actual spawned target",target);
     target.x=runtime.player().x+32;target.y=runtime.player().y+16;
+    target.hp=10000;
     ((CombatController)TownInteriorTest.field(view,"combat")).selectTarget(target);
     SkillBook.Entry shortblade=book.get("SK_전사_001");assertNotNull(shortblade);assertTrue(book.usable(shortblade.id));
-    Method use=GameView.class.getDeclaredMethod("useBookSkillNow",SkillBook.Entry.class);use.setAccessible(true);use.invoke(view,shortblade);
-    assertEquals("GameView submits the selected warrior ability",shortblade.id,TownInteriorTest.field(view,"activeSkillVisualId"));
-    TownInteriorTest.tick(view,5);
+    for(int use=0;use<3;use++){
+      TownInteriorTest.tap(view,671,395);
+      TownInteriorTest.tick(view,60);
+    }
     CampaignProgress.Def quest=CampaignProgress.find("J01_WARRIOR");
-    assertEquals("the GameView EFFECT_APPLIED event increments the live quest",1,campaign.count(quest,r));
-    assertEquals(CampaignProgress.Status.ACTIVE,campaign.status(quest,r));
+    assertEquals("quest copy matches the requested action count","숏블레이드 사용 3회",campaign.objective(quest));
+    assertEquals("three actual quickslot uses advance the live warrior quest",3,campaign.count(quest,r));
+    assertEquals(CampaignProgress.Status.REPORT,campaign.status(quest,r));
+    assertTrue(campaign.claim("J01_WARRIOR",r));
   }
 }

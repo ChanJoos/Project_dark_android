@@ -122,7 +122,13 @@ V91 confines this fixture to milles_interior_inn after quest acceptance, uses In
 
 The fixture is included in the same `MonsterAIController.tickPrototypeMonster()` branch as `combat_dummy_01`. Its chase step, attack wind-up and shared-resolver submission are compared against that control in `MillesStoryQuestTest`. The fixture remains project-story-only until exact CI tests and device observation pass; the comparison cannot establish original mouse behavior.
 
-## 7. Current acceptance status
+## 8. V108 adapted mouse appearance follow-up
+
+The user explicitly rejected the prior captured gray mouse as not recognizable. Keep the V91 recording crops and hashes unchanged as historical evidence. Production inn and early-field runtime now use `assets/milles/production/interiors/v108/field_mouse_{nw,ne,sw,se}.png`, generated for this project and classified `PROJECT_ADAPTED_GENERATED_ART` in the sibling manifest. The review-only source sheet is `assets/milles/review/interiors/v108/field_mouse_sheet.png`; this is not an original-game sprite claim.
+
+The four stills show the same mouse from four diagonal facings. They do not add walk/attack animation, original canonical behavior, or new canonical rewards/stats. Stable actor IDs, campaign targeting/rewards, collision, and the shared movement/combat runtime remain the existing adapted fixture. `MillesMousePresentationTest` must exercise all four loaded render frames and the live early-field actor path; `InnSourceRepairTest` must retain actual coordinate displacement/chase and quest turn-in coverage. Build/runtime/device/visual acceptance are separate; the user has already rejected the earlier appearance.
+
+## 9. Current acceptance status
 
 The 2026-09-29 versionCode 53 spacing/facing update passed GitHub Actions but was not physically verified on the user's handset. The user later reported that overlap still occurs during automatic combat. Treat the new report as DEVICE_FAILED (user-reported), keep the complete device root cause UNKNOWN until reproduced, and do not mark this manual's spacing rules DEVICE_VERIFIED merely because unit tests pass. See docs/PROJECT_STATE.md and docs/DIRECTOR_BACKLOG.md for the active follow-up. The versionCode 54 follow-up now delegates World point and whole-step actor collision to RuntimeState and blocks entry into a moving monster's reserved destination/path. Exact source HEAD 5905e963de7898acec4b84644e78fcb98cec395e passed Actions run 36570339135; APK artifact 11033662723 has SHA-256 97b892b9afd8afb82c888db1ed13305f565e3072300900e26ffbf5ec848f2fb4. This is BUILD_VERIFIED only; device verification remains pending.
 

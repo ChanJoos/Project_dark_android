@@ -1,6 +1,10 @@
-## 2026-10-05 — V108 quest runtime fixes and audit (CI verified candidate)
+## 2026-10-06 — V108 device report supersedes prior candidate claims
 
-User-reported V106 device failures: kill-quest quickquest did not enable auto-attack; Warrior “use Shortblade 3 times” did not advance. V108 fixes both in production GameView/CampaignProgress event paths. Quickquest now enables auto-attack immediately for active KILL/PAIR goals, targets only quest-relevant monsters and respects pair caps. Successful Shortblade skill-use events count even when damage rounds to zero; healing goals still require actual healing. Added GameView integration coverage for quickquest and real Shortblade use plus duplicate/wrong-skill/zero-damage rules.
+User reports the delivered APK only changed field mice and their movement; quickquest AUTO, Warrior Shortblade count and recognizable mouse art still failed. Classify source `4e1cb570c3b352cef2251799b072d2ee5c33694f` as `DEVICE_FAILED_USER_REPORTED` despite green CI. Preserve PR #178 and V108 versionCode 108. Source review found AUTO was armed only after arrival at the kill quest map; prior coverage tapped M04 from its own map. Shortblade UI coverage bypassed the visible slot, and its objective copy incorrectly required a “valid hit.” Follow-up behavior is to arm AUTO immediately when an active kill/pair quest is selected, verify the visible slot three-use path and report/claim, and show “사용 3회”. Retain V91 mouse crops as historical source evidence, but replace production presentation with four-direction project-authored ADAPTED art; do not label it original. Phone and user visual acceptance stay pending until direct user device review.
+
+## 2026-10-05 — Original V108 quest runtime attempt (CI passed; device later failed)
+
+The original V108 candidate attempted to fix user-reported V106 failures. Its passing tests missed AUTO-before-travel and bypassed the visible Shortblade skill slot; the delivered candidate later failed on the user's device. Current follow-up status is recorded above.
 
 Quest audit: all five class campaign routes (23 entries per class) are exercised through progression/reward tests; KILL/PAIR combat events, SKILL resolver events, VISIT map entry, SUPPLY shop/sale/healing/equipment, ALTAR distinct altar/essence, LEVEL normal progression, prologue/growth handoff and idempotent claim/save are connected to runtime rules. Quickquest/journal UI, latency and HUD touch tests cover route and display behavior.
 

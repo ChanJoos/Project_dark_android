@@ -1,0 +1,68 @@
+{
+  "assetSet": "V108_ADAPTED_FIELD_MOUSE",
+  "classification": "PROJECT_ADAPTED_GENERATED_ART",
+  "use": [
+    "Milles inn mouse",
+    "three early Milles field monsters"
+  ],
+  "sourceImage": "../../../review/interiors/v108/field_mouse_sheet.png",
+  "sourceSha256": "a3009cc52ad2387ce8951a05018c853b86ce1b311fec682221fdb58841ea7164",
+  "prompt": "ImageGen generated a transparent four-direction isometric pixel-art mouse sheet on 2026-10-06 for the user request to make the mouse visibly mouse-like. The tracked 256x64 review sheet is the nearest-neighbor downsampled source used for four 64x64 directional stills; the full-resolution generated output remains in workspace generated_images.",
+  "directionOrder": [
+    "nw",
+    "ne",
+    "sw",
+    "se"
+  ],
+  "assets": [
+    {
+      "file": "field_mouse_nw.png",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        9,
+        20,
+        54,
+        64
+      ],
+      "sha256": "496af398f5698fe3a36fc5cdaeb66bf808ccb12fe7c899c8778267a0117f6bdc"
+    },
+    {
+      "file": "field_mouse_ne.png",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        12,
+        38,
+        52,
+        64
+      ],
+      "sha256": "7517eca99a2b5e299028b49c8e5d63d54b77527f79e2167cb1f53a432efd1e4e"
+    },
+    {
+      "file": "field_mouse_sw.png",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        15,
+        22,
+        49,
+        64
+      ],
+      "sha256": "9ea9d4c01beb3e09727fd5b11935ec46e01fe7070ca18dde8eb20262f32c1812"
+    },
+    {
+      "file": "field_mouse_se.png",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        27,
+        58,
+        64
+      ],
+      "sha256": "30a1e18dbebb11f42d82ee13b4a256c2bf3c45cb59a8b361a9fc86d9ed7a19ce"
+    }
+  ],
+  "animation": "Still frames only; no new animation is claimed."
+}

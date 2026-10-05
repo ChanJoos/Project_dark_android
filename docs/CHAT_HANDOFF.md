@@ -1,6 +1,12 @@
-## 2026-10-05 — V108 quest runtime fixes and audit (CI verified candidate)
+## 2026-10-06 — V108 DEVICE_FAILED_USER_REPORTED; current repair handoff
 
-User-reported V106 device failures: kill-quest quickquest did not enable auto-attack; Warrior “use Shortblade 3 times” did not advance. V108 fixes both in production GameView/CampaignProgress event paths. Quickquest now enables auto-attack immediately for active KILL/PAIR goals, targets only quest-relevant monsters and respects pair caps. Successful Shortblade skill-use events count even when damage rounds to zero; healing goals still require actual healing. Added GameView integration coverage for quickquest and real Shortblade use plus duplicate/wrong-skill/zero-damage rules.
+The user reports that the delivered V108 APK only changed the early-field mice and movement; quickquest AUTO, Warrior Shortblade count, and mouse appearance still did not work. Old candidate source `4e1cb570c3b352cef2251799b072d2ee5c33694f` is DEVICE_FAILED_USER_REPORTED. Root cause from code review: AUTO toggled on only after arriving at the quest map, and the passing test began on that map. The Shortblade test called a private action method rather than tapping the visible quickslot; the displayed quest text said “valid hit,” not “use.” The three V91 mouse captures are blurred blobs, not recognizable mouse art.
+
+The local follow-up arms AUTO on active KILL/PAIR selection before any map travel; its new M07 integration case taps the Milles quickquest and asserts AUTO plus travel target. Warrior coverage taps the visible skill quickslot three times, expects REPORT, then claims the quest. Objective copy says use count. Four-direction pixel mouse stills are now explicitly labelled project-authored ADAPTED art, with source-capture history retained. Current local source changes remain unbuilt/unrun. Verify Gradle tests, exact PR #178 head tree/APK and source hash through Actions; update this report and PR #178 with `DEVICE_FAILED_USER_REPORTED` until user verifies on phone. Do not say phone/visual acceptance passed.
+
+## 2026-10-05 — Original V108 quest runtime attempt (CI passed; device later failed)
+
+The original V108 candidate attempted to fix user-reported V106 failures in production GameView/CampaignProgress paths. Its tests did not cover an active kill quest before map arrival, and the Shortblade test bypassed the visible skill slot. The delivered candidate later failed on the user's device; see the 2026-10-06 follow-up above.
 
 Quest audit: all five class campaign routes (23 entries per class) are exercised through progression/reward tests; KILL/PAIR combat events, SKILL resolver events, VISIT map entry, SUPPLY shop/sale/healing/equipment, ALTAR distinct altar/essence, LEVEL normal progression, prologue/growth handoff and idempotent claim/save are connected to runtime rules. Quickquest/journal UI, latency and HUD touch tests cover route and display behavior.
 
