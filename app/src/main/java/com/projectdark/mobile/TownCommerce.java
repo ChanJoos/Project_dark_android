@@ -6,14 +6,14 @@ public final class TownCommerce {
  public enum Result { OK,INVALID,INSUFFICIENT_GOLD,NOT_OWNED,EQUIPPED,FULL,SAVE_FAILED }
  public static final class Offer {public final String id,name,category,description;public final long price;public Offer(String id,String n,String cat,long p,String desc){this.id=id;name=n;category=cat;price=p;description=desc;}}
  private static final List<Offer> REAGENTS=Collections.unmodifiableList(Arrays.asList(
-  new Offer("IT_B_MP_POTION","마력 물약","시약류",25,"마력 100 회복 · 한 병씩 사용"),
   new Offer("IT_REAGENT_KOMADIUM","코마디움","시약류",100,"기술 수련에 사용하는 기본 시약"),
   new Offer("IT_REAGENT_DIBENOMUM","디베노뭄","시약류",100,"기술 수련에 사용하는 해독 계열 시약"),
   new Offer("IT_REAGENT_CURANUM","쿠라눔","시약류",50,"성직자 기술 수련에 사용하는 시약"),
   new Offer("IT_REAGENT_CURUM","쿠룸","시약류",100,"생명력 100 회복 · 한 병씩 사용"),
   new Offer("IT_REAGENT_EXCURANUM","엑스쿠라눔","시약류",50000,"생명력 10,000 회복 · 되팔기 불가"),
   new Offer("IT_REAGENT_HOLYWATER","성수","시약류",300,"성직자 수련과 의식용 성수"),
-  new Offer("IT_RECALL_MILLES","밀레스리콜","리콜류",1000,"밀레스마을 귀환 스크롤")));
+  new Offer("IT_RECALL_MILLES","밀레스리콜","리콜류",1000,"밀레스마을 귀환 스크롤"),
+  new Offer("IT_B_MP_POTION","마력 물약","시약류",25,"마력 100 회복 · 한 병씩 사용")));
  private static final List<Offer> EQUIPMENT=campaignEquipment(Arrays.asList(
   new Offer("IT_TEST_WEAPON_MW002","에페","무기",300,"세검 · DAM 4 / HIT 1"),
   new Offer("IT_TEST_WEAPON_MW003","커틀라스","무기",500,"곡도 · DAM 5"),

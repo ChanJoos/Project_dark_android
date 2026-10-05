@@ -58,7 +58,9 @@ public class SkillFxAuditTest {
  static float sourcePeakAge(SkillVfxRenderer fx,SkillVfxRenderer.Pulse q)throws Exception{
   ClassicSkillReference ref=Arrays.asList("classic","warrior","rogue","shared").contains(q.sheet)?field(fx,q.sheet):null;
   if(ref==null)return q.duration*.45f;ClassicSkillReference.Channel ch=ref.channel(q.id,q.caster);if(ch==null)return q.duration*.45f;CapturedSkillFx.Sequence s=ch.sequence;long best=-1;int bestStart=0,bestDuration=0,elapsed=0;
-  for(int i=0;i<s.durations.length;i++){long energy=0;int ox=(i%s.columns)*s.width,oy=(i/s.columns)*s.height;for(int y=0;y<s.height;y++)for(int x=0;x<s.width;x++)energy+=Color.alpha(s.atlas.getPixel(ox+x,oy+y));if(energy>best){best=energy;bestStart=elapsed;bestDuration=s.durations[i];}elapsed+=s.durations[i];}
+  // One native read per frame retains exact alpha sums and all existing assertions.
+  int[] pixels=new int[s.width*s.height];
+  for(int i=0;i<s.durations.length;i++){long energy=0;int ox=(i%s.columns)*s.width,oy=(i/s.columns)*s.height;s.atlas.getPixels(pixels,0,s.width,ox,oy,s.width,s.height);for(int pixel:pixels)energy+=Color.alpha(pixel);if(energy>best){best=energy;bestStart=elapsed;bestDuration=s.durations[i];}elapsed+=s.durations[i];}
   return (bestStart+bestDuration*.5f)/1000f;
  }
  static void save(Bitmap b,String name)throws Exception{File f=new File("build/reports/device-review/"+name);f.getParentFile().mkdirs();try(FileOutputStream o=new FileOutputStream(f)){b.compress(Bitmap.CompressFormat.PNG,100,o);}}

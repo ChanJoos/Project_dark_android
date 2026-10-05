@@ -134,7 +134,7 @@ public class SkillWindowTest {
     RuntimeState r=new RuntimeState();r.rpg().restoreGold(49);assertEquals(ReagentPurchase.Result.INSUFFICIENT_GOLD,ReagentPurchase.buy("IT_REAGENT_CURANUM",r.rpg(),()->true));r.rpg().restoreGold(200);assertEquals(ReagentPurchase.Result.SAVE_FAILED,ReagentPurchase.buy("IT_REAGENT_CURANUM",r.rpg(),()->false));assertEquals(200L,r.rpg().gold().longValue());
     SkillBook b=SkillBook.load(context);SkillAcquisition a=new SkillAcquisition(b);r.rpg().restoreStats(3,3,3,3,3,0);r.rpg().restoreGold(0);assertTrue(a.learn("SK_공통_001",r.rpg()));assertFalse(a.learn("SK_전사_001",r.rpg()));r.rpg().grantAdaptedReward(0,AdaptedPrototypeRewardCatalog.TRAINING_MONSTER_GOLD*2);assertFalse(a.learn("SK_전사_001",r.rpg()));job(r,"WARRIOR");assertTrue(a.learn("SK_전사_001",r.rpg()));assertEquals(0L,r.rpg().gold().longValue());
   }
-  private static void job(RuntimeState r,String value){try{Field f=RpgProgressionState.class.getDeclaredField("currentJobCode");f.setAccessible(true);f.set(r.rpg(),value);}catch(Exception e){throw new AssertionError(e);}}
+  private static void job(RuntimeState r,String value){if(r.rpg().normalLevel()==null||r.rpg().normalLevel()<3)r.rpg().restoreProgression(3,0);assertTrue("legal basic job fixture",r.rpg().restoreJobCode(value));}
   private static void chooseJob(GameView v,int i)throws Exception{
     String wanted=new String[]{"전체","공통","전사","도적","무도가","마법사","성직자"}[i];String[] order={"공통","전사","도적","무도가","마법사","성직자","전체"};int target=java.util.Arrays.asList(order).indexOf(wanted);tap(v,85+target*82,90);
   }
