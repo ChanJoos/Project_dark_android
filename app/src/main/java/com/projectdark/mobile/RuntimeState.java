@@ -1,199 +1,5 @@
-package com.projectdark.mobile;
-
-import android.graphics.RectF;
-import com.projectdark.mobile.world.WorldMoveTargetController;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Arrays;
-
-/**
- * PROJECT DARK prototype runtime state.
- * [B] Coordinates/collision/combat values are reconstruction fixtures.
- * [ADAPTED] Screen-space geometry validates mobile controls before verified tile collision exists.
- */
-public final class RuntimeState {
-  public enum BootMode { MILLES, POTE_01_PROTOTYPE }
-
-  public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
-  public static final float PLAYER_RADIUS=10f,MONSTER_RADIUS=12f,NPC_RADIUS=10f;
-  private static final float ACTOR_CLEARANCE=5f;
-
-  public static final class Player {
-    public float spawnX,spawnY;
-    public float x,y;
-    public int hp=100,maxHp=100,mp=90,maxMp=100;
-    public boolean alive=true;
-    public float hitFlash=0f;
-    Player(float spawnX,float spawnY){this.spawnX=spawnX;this.spawnY=spawnY;this.x=spawnX;this.y=spawnY;}
-  }
-
-  public static final class Npc {
-    public final String id,name,dialogue,assetStatus;public final float x,y;
-    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||id.startsWith("campaign_altar_")?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
-  }
-
-  public static final class Monster {
-    public enum State { SPAWN,IDLE,WANDER,DETECT,CHASE,ATTACK,DEAD,RESPAWN }
-    public final String id,name,assetStatus;public final float spawnX,spawnY;public float x,y;
-    /** Selected only by the mobile 2-circle field adapter; null keeps unknown prototypes fail-closed. */
-    public String campaignRewardProfileId;
-    public float moveStartX,moveStartY,moveTargetX,moveTargetY,moveElapsed,moveDuration;
-    public boolean isMoving;
-    public int hp;public final int maxHp;public boolean alive=true;
-    public State state=State.SPAWN;
-    public float attackCooldown=0f,attackWindup=0f,attackVisualRemaining=0f,respawnClock=0f,hitFlash=0f,damagePopupClock=0f;
-    public boolean attackPrimed=false;
-    public final CanonicalActorFacing visualFacing=new CanonicalActorFacing(CharacterRenderer.Direction.SE);
-    public int lastDamage=0;
-    public int detourSign=1;
-    public float detourClock=0f;
-    /** Per-actor animation phase used to animate single-pose candidate art. */
-    public float animationClock=0f;
-    public float respawnSeconds=4f;
-    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;state=State.IDLE;}
-  }
-
-  private final BootMode bootMode;
-  private String currentMapId;
-  private float currentMinX=WorldDef.MIN_X,currentMaxX=WorldDef.MAX_X,currentMinY=WorldDef.MIN_Y,currentMaxY=WorldDef.MAX_Y;
-  private final WorldDef world=new WorldDef();
-  private final Player player;
-  private final List<RectF> obstacles=new ArrayList<>();
-  private final List<Npc> npcs=new ArrayList<>();
-  private final List<Monster> monsters=new ArrayList<>();
-  private final List<Monster> suspendedMillesMonsters=new ArrayList<>();
-  private final List<Npc> suspendedMillesNpcs=new ArrayList<>();
-  private final List<RectF> suspendedMillesObstacles=new ArrayList<>();
-  private final CombatLedger ledger=new CombatLedger();
-  private final SkillEffectState skillEffects=new SkillEffectState();
-  public SkillEffectState skillEffects(){return skillEffects;}
-  private final RuntimeMetrics metrics=new RuntimeMetrics();
-  private final RpgProgressionState rpg=new RpgProgressionState();
-
-  public RuntimeState(){this(BootMode.MILLES,false);}
-  public RuntimeState(BootMode bootMode){this(bootMode,false);}
-
-  RuntimeState(BootMode bootMode,boolean skipPoteRuntimeE2EAudit){
-    this.bootMode=bootMode==null?BootMode.MILLES:bootMode;
-    currentMapId=this.bootMode==BootMode.POTE_01_PROTOTYPE?PotePrototypeWorldDef.MAP_ID:WorldDef.ID;
-
-    // IMPORTANT: regression/content audits are CI/development checks, not runtime startup gates.
-    // A stale audit must never make a build that otherwise renders and plays crash before GameView appears.
-    // Keep the audit classes independently runnable from CI/tools, but construct the playable runtime fail-safe.
-
-    if(this.bootMode==BootMode.POTE_01_PROTOTYPE){
-      player=new Player(PotePrototypeWorldDef.PLAYER_X_B,PotePrototypeWorldDef.PLAYER_Y_B);
-      monsters.addAll(PoteForestMonsterShowcase.instantiate(
-          new PoteMonsterRoster(),com.projectdark.mobile.world.PoteFieldDef.navigationTiles()));
-    }else{
-      player=new Player(WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y);
-      for(RectF r:world.blockers())obstacles.add(new RectF(r));
-      for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
-      for(WorldDef.MonsterSpawn m:world.monsterSpawns()){
-        com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);
-        monsters.add(new Monster(m.id,m.name,center==null?m.x:center.x,center==null?m.y:center.y,m.hp,m.assetStatus));
-      }
-    }
-  }
-
-  public BootMode bootMode(){return bootMode;}
-  public String currentMapId(){return currentMapId;}
-  public com.projectdark.mobile.world.WorldMoveTargetController.TileCenter nearestMonsterTileCenter(float x,float y){
-    com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
-    if(d!=null){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter best=null;float score=Float.MAX_VALUE;for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles()){float distance=distanceSquared(x,y,t.x,t.y);if(distance<score){best=t;score=distance;}}return best;}
-    if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).nearest(x,y);
-    return MonsterTileCenterLocomotion.nearestAuthoredCenter(x,y);
-  }
-  public boolean isMonsterTileCenter(float x,float y){
-    com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
-    if(d!=null){for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;return false;}
-    if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;
-    return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
-  }
-  public List<com.projectdark.mobile.world.WorldMoveTargetController.TileCenter> monsterNavigationTiles(){
-    com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);if(d!=null)return d.navigationTiles();
-    if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles();
-    return MonsterTileCenterLocomotion.authoredCenters();
-  }
-  public WorldMoveTargetController.Direction nextMonsterChaseStep(Monster monster,float targetX,float targetY){
-    if(monster==null||!monster.alive)return null;
-    return MonsterChasePathfinder.nextStep(monsterNavigationTiles(),monster.x,monster.y,targetX,targetY,
-        (from,to)->monsterCanTraverse(monster,from.x,from.y,to.x,to.y));
-  }
-  private boolean monsterCanTraverse(Monster self,float fromX,float fromY,float toX,float toY){
-    int samples=Math.max(2,(int)Math.ceil(distance(fromX,fromY,toX,toY)/4f));
-    for(int i=1;i<=samples;i++){
-      float t=i/(float)samples,x=fromX+(toX-fromX)*t,y=fromY+(toY-fromY)*t;
-      if(x<currentMinX||x>currentMaxX||y<currentMinY||y>currentMaxY
-          ||!monsterCanOccupy(self,x,y))return false;
-    }
-    return true;
-  }
-  public WorldDef world(){return world;}
-  public Player player(){return player;}
-  public CombatLedger ledger(){return ledger;}
-  public RuntimeMetrics metrics(){return metrics;}
-  public RpgProgressionState rpg(){return rpg;}
-  public void applyDerivedGrowth(){int oldMaxHp=player.maxHp,oldMaxMp=player.maxMp;int newMaxHp=rpg.maxHpGrowth(),newMaxMp=rpg.maxMpGrowth();player.maxHp=newMaxHp;player.maxMp=newMaxMp;if(newMaxHp>oldMaxHp)player.hp=Math.min(newMaxHp,player.hp+(newMaxHp-oldMaxHp));else player.hp=Math.min(player.hp,newMaxHp);if(newMaxMp>oldMaxMp)player.mp=Math.min(newMaxMp,player.mp+(newMaxMp-oldMaxMp));else player.mp=Math.min(player.mp,newMaxMp);}
-  @Deprecated public void syncPlayerGrowth(){applyDerivedGrowth();}
-  public List<RectF> obstacles(){return Collections.unmodifiableList(obstacles);}
-  public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
-  public List<Monster> monsters(){return Collections.unmodifiableList(monsters);}
-  public String campaignRewardProfileFor(String monsterId){for(Monster m:monsters)if(monsterId!=null&&monsterId.equals(m.id))return m.campaignRewardProfileId;return null;}
-
-  /** Spawn the explicitly adapted opening-quest mouse only after the player accepts that story. */
-  public Monster ensureAdaptedMillesMouse(){
-    if(!"milles_interior_inn".equals(currentMapId))return null;
-    for(Monster m:monsters)if("milles_mouse_proto".equals(m.id))return m;
-    float x=com.projectdark.mobile.world.TownInteriorDef.x(10,11),y=com.projectdark.mobile.world.TownInteriorDef.y(10,11);
-    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=nearestMonsterTileCenter(x,y);
-    Monster mouse=new Monster("milles_mouse_proto","ÏÉùÏ•ê",center==null?x:center.x,center==null?y:center.y,24,WorldDef.ASSET_STATUS);
-    mouse.campaignRewardProfileId=mouse.id;
-    monsters.add(mouse);return mouse;
-  }
-
-  /** Live map transition keeps RPG/combat ledger identity while replacing map-local actors/collision. */
-  public void enterTownInterior(com.projectdark.mobile.world.TownInteriorDef d){
-    if(d==null)throw new IllegalArgumentException("interior");
-    if(WorldDef.ID.equals(currentMapId)){suspendedMillesMonsters.clear();suspendedMillesMonsters.addAll(monsters);suspendedMillesNpcs.clear();suspendedMillesNpcs.addAll(npcs);suspendedMillesObstacles.clear();suspendedMillesObstacles.addAll(obstacles);}
-    currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();obstacles.addAll(d.obstacles());
-    npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
-    currentMinX=d.MIN_X;currentMaxX=d.MAX_X;currentMinY=d.MIN_Y;currentMaxY=d.MAX_Y;
-    player.spawnX=d.spawnX();player.spawnY=d.spawnY();player.x=player.spawnX;player.y=player.spawnY;
-  }
-  public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
-  public void enterPoteField(){
-    currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=com.projectdark.mobile.world.PoteFieldDef.MIN_X;currentMaxX=com.projectdark.mobile.world.PoteFieldDef.MAX_X;currentMinY=com.projectdark.mobile.world.PoteFieldDef.MIN_Y;currentMaxY=com.projectdark.mobile.world.PoteFieldDef.MAX_Y;
-    obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
-    npcs.clear();npcs.add(new Npc("pote_trail_guide","Ïà≤Í∏∏ ÏïàÎÇ¥Ïù∏",736f,496f,
-        "Î∂ÅÎèôÏ™Ω ÌùôÍ∏∏ÏùÑ Îî∞ÎùºÍ∞ÄÎ©¥ Ïà≤ ÏïàÏ™Ω Í≥µÌÑ∞ÏôÄ Î¨ºÍ∞ÄÎ°ú Ïù¥Ïñ¥ÏßëÎãàÎã§.","PENDING_CROP/pote/npc/trail_guide"));
-    monsters.clear();monsters.addAll(PoteForestMonsterShowcase.instantiate(
-        new PoteMonsterRoster(),com.projectdark.mobile.world.PoteFieldDef.navigationTiles()));
-    AdaptedCampaignRewardCatalog campaignRewards=new AdaptedCampaignRewardCatalog();
-    for(Monster monster:monsters)if(campaignRewards.find(monster.id)!=null)monster.campaignRewardProfileId=monster.id;
-    player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
-  }
-  public void enterCampaignMap(String id,boolean fromNext){
-    if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
-    enterPoteField();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
-    int zone=map.zone;monsters.addAll(CampaignMonsters.spawnForMap(id));
-    if(zone==0){npcs.add(new Npc("piet_investigator","Ïù¥ÏÑ†",768,512,"ÌîºÏóêÌä∏ Ï°∞ÏÇ¨ÏôÄ ÏÑúÏã†ÏùÑ Îã¥ÎãπÌï©ÎãàÎã§.","ADAPTED"));npcs.add(new Npc("piet_supplier","Ï°∞ÏäàÏïÑ",864,560,"Ï°∞ÏÇ¨ Ïû•ÎπÑÏôÄ Î≥¥Í∏âÌíàÏùÑ Ï§ÄÎπÑÌïòÏÑ∏Ïöî.","ADAPTED"));npcs.add(new Npc("piet_purifier","ÏÉàÎÆ§Ïñº",672,560,"Ïà≤Ïùò Ï†ïÏàòÎ•º Ï†ïÌôîÌï©ÎãàÎã§.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"ÏßÄÎèÑÏûê",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"ÏàôÎ†® Í∏∞Ïà†Í≥º Ïû•ÎπÑÎ•º ÏßÄÎèÑÌï©ÎãàÎã§.","ADAPTED"));}
-    else {com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=map.nearest(map.entryX+96,map.entryY+16);npcs.add(new Npc("pote_trail_guide","ÏïåÎ†âÏÇ∞Îçî",guide.x,guide.y,"Ïà≤Í∏∏ Ï°∞ÏÇ¨ÏôÄ Î¨¥Î£å Ìú¥Ïãù", "ADAPTED"));if(zone==3&&!"MAP_POTE_04".equals(id)){float[][] sites={{720,560},{1536,760},{2300,1040}};for(int i=0;i<3;i++){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter altar=map.nearest(sites[i][0],sites[i][1]);npcs.add(new Npc("campaign_altar_"+i,"Ï†ïÌôî Ï†úÎã® "+(i+1),altar.x,altar.y,"Ï†úÎã® Ï†ïÌôî", "ADAPTED"));}}}
-    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(id,fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
-  }
-  public void enterMillesFromField(float x,float y){
-    currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;
-    obstacles.clear();for(RectF r:world.blockers())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
-    for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
-    for(WorldDef.MonsterSpawn m:world.monsterSpawns()){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);monsters.add(new Monster(m.id,m.name,center==null?m.x:center.x,center==null?m.y:center.y,m.hp,m.assetStatus));}
-    player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;
-  }
-
-  public boolean tryMove(float dx,float dy){if(!player.alive||skillEffects.rooted("player"))return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,currentMinX,currentMaxX),ny=clamp(player.y+dy,currentMinY,currentMaxY);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
+Y™Áäx-ÆÈ‹j◊ù¢Îi∫⁄+äßj[hëÈ‹¢ÈÌ˜_9NãZñã≠¶Îeäw¨’¡Öç≠ÖùîÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îÏ()•µ¡Ω…–ÅÖπë…Ω•êπù…Ö¡°•çÃπIïç—Ï)•µ¡Ω…–ÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»Ï)•µ¡Ω…–Å©ÖŸÑπ’—•∞π……ÖÂ1•Õ–Ï)•µ¡Ω…–Å©ÖŸÑπ’—•∞πΩ±±ïç—•ΩπÃÏ)•µ¡Ω…–Å©ÖŸÑπ’—•∞π1•Õ–Ï)•µ¡Ω…–Å©ÖŸÑπ’—•∞π……ÖÂÃÏ((º®®(Ä®ÅAI=)PÅI,Å¡…Ω—Ω—Â¡îÅ…’π—•µîÅÕ—Ö—î∏(Ä®Åm	tÅΩΩ…ë•πÖ—ïÃΩçΩ±±•Õ•Ω∏ΩçΩµâÖ–ÅŸÖ±’ïÃÅÖ…îÅ…ïçΩπÕ—…’ç—•Ω∏Åô•·—’…ïÃ∏(Ä®ÅmAQtÅMç…ïï∏µÕ¡ÖçîÅùïΩµï—…‰ÅŸÖ±•ëÖ—ïÃÅµΩâ•±îÅçΩπ—…Ω±ÃÅâïôΩ…îÅŸï…•ô•ïêÅ—•±îÅçΩ±±•Õ•Ω∏Åï·•Õ—Ã∏(Ä®º)¡’â±•åÅô•πÖ∞Åç±ÖÕÃÅI’π—•µïM—Ö—îÅÏ(ÄÅ¡’â±•åÅïπ’¥Å	ΩΩ—5ΩëîÅÏÅ5%11L∞ÅA=Q|¿≈}AI=Q=QeAÅÙ((ÄÅ¡’â±•åÅÕ—Ö—•åÅô•πÖ∞Åô±ΩÖ–Å]=I1}5%9}`ı]Ω…±ëïòπ5%9}`±]=I1}5a}`ı]Ω…±ëïòπ5a}`±]=I1}5%9}dı]Ω…±ëïòπ5%9}d±]=I1}5a}dı]Ω…±ëïòπ5a}dÏ(ÄÅ¡’â±•åÅÕ—Ö—•åÅô•πÖ∞Åô±ΩÖ–ÅA1eI}I%ULÙƒ¡ò±5=9MQI}I%ULÙƒ…ò±9A}I%ULÙƒ¡òÏ(ÄÅ¡…•ŸÖ—îÅÕ—Ö—•åÅô•πÖ∞Åô±ΩÖ–ÅQ=I}1I9Ù’òÏ((ÄÅ¡’â±•åÅÕ—Ö—•åÅô•πÖ∞Åç±ÖÕÃÅA±ÖÂï»ÅÏ(ÄÄÄÅ¡’â±•åÅô±ΩÖ–ÅÕ¡Ö›π`±Õ¡Ö›πdÏ(ÄÄÄÅ¡’â±•åÅô±ΩÖ–Å‡±‰Ï(ÄÄÄÅ¡’â±•åÅ•π–Å°¿Ùƒ¿¿±µÖ·!¿Ùƒ¿¿±µ¿Ù‰¿±µÖ·5¿Ùƒ¿¿Ï(ÄÄÄÅ¡’â±•åÅâΩΩ±ïÖ∏ÅÖ±•Ÿîı—…’îÏ(ÄÄÄÅ¡’â±•åÅô±ΩÖ–Å°•—±ÖÕ†Ù¡òÏ(ÄÄÄÅA±ÖÂï»°ô±ΩÖ–ÅÕ¡Ö›π`±ô±ΩÖ–ÅÕ¡Ö›πd•Ì—°•ÃπÕ¡Ö›π`ıÕ¡Ö›π`Ì—°•ÃπÕ¡Ö›πdıÕ¡Ö›πdÌ—°•Ãπ‡ıÕ¡Ö›π`Ì—°•Ãπ‰ıÕ¡Ö›πdÌÙ(ÄÅÙ((ÄÅ¡’â±•åÅÕ—Ö—•åÅô•πÖ∞Åç±ÖÕÃÅ9¡åÅÏ(ÄÄÄÅ¡’â±•åÅô•πÖ∞ÅM—…•πúÅ•ê±πÖµî±ë•Ö±Ωù’î±ÖÕÕï—M—Ö—’ÃÌ¡’â±•åÅô•πÖ∞Åô±ΩÖ–Å‡±‰Ï(ÄÄÄÅ9¡å°M—…•πúÅ•ê±M—…•πúÅπÖµî±ô±ΩÖ–Å‡±ô±ΩÖ–Å‰±M—…•πúÅë•Ö±Ωù’î±M—…•πúÅÖÕÕï—M—Ö—’Ã•Ì—°•Ãπ•êı•êÌ—°•ÃππÖµîÙâ—Ω›π}≠ïï¡ï»àπï≈’Ö±Ã°•ê•ÒÒ•êπÕ—Ö…—Õ]•—††âçÖµ¡Ö•ùπ}Ö±—Ö…|à§˝πÖµîÈ9¡ç%ëïπ—•—‰πôΩ…%ê°•ê§π±Öâï∞†§Ì—°•Ãπ‡ı‡Ì—°•Ãπ‰ı‰Ì—°•Ãπë•Ö±Ωù’îı9¡ç%ëïπ—•—‰π—ï·–°ë•Ö±Ωù’î§Ì—°•ÃπÖÕÕï—M—Ö—’ÃıÖÕÕï—M—Ö—’ÃÌÙ(ÄÅÙ((ÄÅ¡’â±•åÅÕ—Ö—•åÅô•πÖ∞Åç±ÖÕÃÅ5ΩπÕ—ï»ÅÏ(ÄÄÄÅ¡’â±•åÅïπ’¥ÅM—Ö—îÅÏÅMA]8±%1±]9H±QP±!M±QQ,±±IMA]8ÅÙ(ÄÄÄÅ¡’â±•åÅô•πÖ∞ÅM—…•πúÅ•ê±πÖµî±ÖÕÕï—M—Ö—’ÃÌ¡’â±•åÅô•πÖ∞Åô±ΩÖ–ÅÕ¡Ö›π`±Õ¡Ö›πdÌ¡’â±•åÅô±ΩÖ–Å‡±‰Ï(ÄÄÄÄº®®ÅMï±ïç—ïêÅΩπ±‰Åâ‰Å—°îÅµΩâ•±îÄ»µç•…ç±îÅô•ï±êÅÖëÖ¡—ï»ÏÅπ’±∞Å≠ïï¡ÃÅ’π≠πΩ›∏Å¡…Ω—Ω—Â¡ïÃÅôÖ•∞µç±ΩÕïê∏Ä®º(ÄÄÄÅ¡’â±•åÅM—…•πúÅçÖµ¡Ö•ùπIï›Ö…ëA…Ωô•±ï%êÏ(ÄÄÄÅ¡’â±•åÅô±ΩÖ–ÅµΩŸïM—Ö…—`±µΩŸïM—Ö…—d±µΩŸïQÖ…ùï—`±µΩŸïQÖ…ùï—d±µΩŸï±Ö¡Õïê±µΩŸï’…Ö—•Ω∏Ï(ÄÄÄÅ¡’â±•åÅâΩΩ±ïÖ∏Å•Õ5ΩŸ•πúÏ(ÄÄÄÅ¡’â±•åÅ•π–Å°¿Ì¡’â±•åÅô•πÖ∞Å•π–ÅµÖ·!¿Ì¡’â±•åÅâΩΩ±ïÖ∏ÅÖ±•Ÿîı—…’îÏ(ÄÄÄÅ¡’â±•åÅM—Ö—îÅÕ—Ö—îıM—Ö—îπMA]8Ï(ÄÄÄÅ¡’â±•åÅô±ΩÖ–ÅÖ——Öç≠ΩΩ±ëΩ›∏Ù¡ò±Ö——Öç≠]•πë’¿Ù¡ò±Ö——Öç≠Y•Õ’Ö±IïµÖ•π•πúÙ¡ò±…ïÕ¡Ö›π±Ωç¨Ù¡ò±°•—±ÖÕ†Ù¡ò±ëÖµÖùïAΩ¡’¡±Ωç¨Ù¡òÏ(ÄÄÄÅ¡’â±•åÅâΩΩ±ïÖ∏ÅÖ——Öç≠A…•µïêıôÖ±ÕîÏ(ÄÄÄÅ¡’â±•åÅô•πÖ∞ÅÖπΩπ•çÖ±ç—Ω…Öç•πúÅŸ•Õ’Ö±Öç•πúıπï‹ÅÖπΩπ•çÖ±ç—Ω…Öç•πú°°Ö…Öç—ï…Iïπëï…ï»π•…ïç—•Ω∏πM§Ï(ÄÄÄÅ¡’â±•åÅ•π–Å±ÖÕ—ÖµÖùîÙ¿Ï(ÄÄÄÅ¡’â±•åÅ•π–Åëï—Ω’…M•ù∏ÙƒÏ(ÄÄÄÅ¡’â±•åÅô±ΩÖ–Åëï—Ω’…±Ωç¨Ù¡òÏ(ÄÄÄÄº®®ÅAï»µÖç—Ω»ÅÖπ•µÖ—•Ω∏Å¡°ÖÕîÅ’ÕïêÅ—ºÅÖπ•µÖ—îÅÕ•πù±îµ¡ΩÕîÅçÖπë•ëÖ—îÅÖ…–∏Ä®º(ÄÄÄÅ¡’â±•åÅô±ΩÖ–ÅÖπ•µÖ—•Ωπ±Ωç¨Ù¡òÏ(ÄÄÄÅ¡’â±•åÅô±ΩÖ–Å…ïÕ¡Ö›πMïçΩπëÃÙ—òÏ(ÄÄÄÅ5ΩπÕ—ï»°M—…•πúÅ•ê±M—…•πúÅπÖµî±ô±ΩÖ–Å‡±ô±ΩÖ–Å‰±•π–Å°¿±M—…•πúÅÖÕÕï—M—Ö—’Ã•Ì—°•Ãπ•êı•êÌ—°•ÃππÖµîıπÖµîÌ—°•ÃπÖÕÕï—M—Ö—’ÃıÖÕÕï—M—Ö—’ÃÌÕ¡Ö›π`ı‡ÌÕ¡Ö›πdı‰Ì—°•Ãπ‡ı‡Ì—°•Ãπ‰ı‰Ì—°•Ãπ°¿ı°¿ÌµÖ·!¿ı°¿ÌÕ—Ö—îıM—Ö—îπ%1ÌÙ(ÄÅÙ((ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å	ΩΩ—5ΩëîÅâΩΩ—5ΩëîÏ(ÄÅ¡…•ŸÖ—îÅM—…•πúÅç’……ïπ—5Ö¡%êÏ(ÄÅ¡…•ŸÖ—îÅô±ΩÖ–Åç’……ïπ—5•π`ı]Ω…±ëïòπ5%9}`±ç’……ïπ—5Ö·`ı]Ω…±ëïòπ5a}`±ç’……ïπ—5•πdı]Ω…±ëïòπ5%9}d±ç’……ïπ—5Ö·dı]Ω…±ëïòπ5a}dÏ(ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å]Ω…±ëïòÅ›Ω…±êıπï‹Å]Ω…±ëïò†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞ÅA±ÖÂï»Å¡±ÖÂï»Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å1•Õ–ÒIïç—¯ÅΩâÕ—Öç±ïÃıπï‹Å……ÖÂ1•Õ–¯†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å1•Õ–Ò9¡å¯Åπ¡çÃıπï‹Å……ÖÂ1•Õ–¯†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å1•Õ–Ò5ΩπÕ—ï»¯ÅµΩπÕ—ï…Ãıπï‹Å……ÖÂ1•Õ–¯†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å1•Õ–Ò5ΩπÕ—ï»¯ÅÕ’Õ¡ïπëïë5•±±ïÕ5ΩπÕ—ï…Ãıπï‹Å……ÖÂ1•Õ–¯†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å1•Õ–Ò9¡å¯ÅÕ’Õ¡ïπëïë5•±±ïÕ9¡çÃıπï‹Å……ÖÂ1•Õ–¯†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞Å1•Õ–ÒIïç—¯ÅÕ’Õ¡ïπëïë5•±±ïÕ=âÕ—Öç±ïÃıπï‹Å……ÖÂ1•Õ–¯†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞ÅΩµâÖ—1ïëùï»Å±ïëùï»ıπï‹ÅΩµâÖ—1ïëùï»†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞ÅM≠•±±ôôïç—M—Ö—îÅÕ≠•±±ôôïç—Ãıπï‹ÅM≠•±±ôôïç—M—Ö—î†§Ï(ÄÅ¡’â±•åÅM≠•±±ôôïç—M—Ö—îÅÕ≠•±±ôôïç—Ã†•Ì…ï—’…∏ÅÕ≠•±±ôôïç—ÃÌÙ(ÄÅ¡…•ŸÖ—îÅô•πÖ∞ÅI’π—•µï5ï—…•çÃÅµï—…•çÃıπï‹ÅI’π—•µï5ï—…•çÃ†§Ï(ÄÅ¡…•ŸÖ—îÅô•πÖ∞ÅI¡ùA…Ωù…ïÕÕ•ΩπM—Ö—îÅ…¡úıπï‹ÅI¡ùA…Ωù…ïÕÕ•ΩπM—Ö—î†§Ï((ÄÅ¡’â±•åÅI’π—•µïM—Ö—î†•Ì—°•Ã°	ΩΩ—5Ωëîπ5%11L±ôÖ±Õî§ÌÙ(ÄÅ¡’â±•åÅI’π—•µïM—Ö—î°	ΩΩ—5ΩëîÅâΩΩ—5Ωëî•Ì—°•Ã°âΩΩ—5Ωëî±ôÖ±Õî§ÌÙ((ÄÅI’π—•µïM—Ö—î°	ΩΩ—5ΩëîÅâΩΩ—5Ωëî±âΩΩ±ïÖ∏ÅÕ≠•¡AΩ—ïI’π—•µï…’ë•–•Ï(ÄÄÄÅ—°•ÃπâΩΩ—5ΩëîıâΩΩ—5ΩëîÙıπ’±∞˝	ΩΩ—5Ωëîπ5%11LÈâΩΩ—5ΩëîÏ(ÄÄÄÅç’……ïπ—5Ö¡%êı—°•ÃπâΩΩ—5ΩëîÙı	ΩΩ—5ΩëîπA=Q|¿≈}AI=Q=QeA˝AΩ—ïA…Ω—Ω—Â¡ï]Ω…±ëïòπ5A}%È]Ω…±ëïòπ%Ï((ÄÄÄÄººÅ%5A=IQ9PËÅ…ïù…ïÕÕ•Ω∏ΩçΩπ—ïπ–ÅÖ’ë•—ÃÅÖ…îÅ$ΩëïŸï±Ω¡µïπ–Åç°ïç≠Ã∞ÅπΩ–Å…’π—•µîÅÕ—Ö…—’¿ÅùÖ—ïÃ∏(ÄÄÄÄººÅÅÕ—Ö±îÅÖ’ë•–Åµ’Õ–ÅπïŸï»ÅµÖ≠îÅÑÅâ’•±êÅ—°Ö–ÅΩ—°ï…›•ÕîÅ…ïπëï…ÃÅÖπêÅ¡±ÖÂÃÅç…ÖÕ†ÅâïôΩ…îÅÖµïY•ï‹ÅÖ¡¡ïÖ…Ã∏(ÄÄÄÄººÅ-ïï¿Å—°îÅÖ’ë•–Åç±ÖÕÕïÃÅ•πëï¡ïπëïπ—±‰Å…’ππÖâ±îÅô…Ω¥Å$Ω—ΩΩ±Ã∞Åâ’–ÅçΩπÕ—…’ç–Å—°îÅ¡±ÖÂÖâ±îÅ…’π—•µîÅôÖ•∞µÕÖôî∏((ÄÄÄÅ•ò°—°•ÃπâΩΩ—5ΩëîÙı	ΩΩ—5ΩëîπA=Q|¿≈}AI=Q=QeA•Ï(ÄÄÄÄÄÅ¡±ÖÂï»ıπï‹ÅA±ÖÂï»°AΩ—ïA…Ω—Ω—Â¡ï]Ω…±ëïòπA1eI}a}±AΩ—ïA…Ω—Ω—Â¡ï]Ω…±ëïòπA1eI}e}§Ï(ÄÄÄÄÄÅµΩπÕ—ï…ÃπÖëë±∞°AΩ—ïΩ…ïÕ—5ΩπÕ—ï…M°Ω›çÖÕîπ•πÕ—Öπ—•Ö—î†(ÄÄÄÄÄÄÄÄÄÅπï‹ÅAΩ—ï5ΩπÕ—ï…IΩÕ—ï»†§±çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ï•ï±ëïòππÖŸ•ùÖ—•ΩπQ•±ïÃ†§§§Ï(ÄÄÄÅıï±ÕïÏ(ÄÄÄÄÄÅ¡±ÖÂï»ıπï‹ÅA±ÖÂï»°]Ω…±ëïòπA1eI}MA]9}`±]Ω…±ëïòπA1eI}MA]9}d§Ï(ÄÄÄÄÄÅôΩ»°Iïç—Å»È›Ω…±êπâ±Ωç≠ï…Ã†§•ΩâÕ—Öç±ïÃπÖëê°πï‹ÅIïç—°»§§Ï(ÄÄÄÄÄÅôΩ»°]Ω…±ëïòπ9¡çM¡Ö›∏Å∏È›Ω…±êππ¡çM¡Ö›πÃ†§•π¡çÃπÖëê°πï‹Å9¡å°∏π•ê±∏ππÖµî±∏π‡±∏π‰±∏πë•Ö±Ωù’î±∏πÖÕÕï—M—Ö—’Ã§§Ï(ÄÄÄÄÄÅôΩ»°]Ω…±ëïòπ5ΩπÕ—ï…M¡Ö›∏Å¥È›Ω…±êπµΩπÕ—ï…M¡Ö›πÃ†§•Ï(ÄÄÄÄÄÄÄÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»Åçïπ—ï»ı5ΩπÕ—ï…Q•±ïïπ—ï…1ΩçΩµΩ—•Ω∏ππïÖ…ïÕ—’—°Ω…ïëïπ—ï»°¥π‡±¥π‰§Ï(ÄÄÄÄÄÄÄÅµΩπÕ—ï…ÃπÖëê°πï‹Å5ΩπÕ—ï»°¥π•ê±¥ππÖµî±çïπ—ï»Ùıπ’±∞˝¥π‡Èçïπ—ï»π‡±çïπ—ï»Ùıπ’±∞˝¥π‰Èçïπ—ï»π‰±¥π°¿±¥πÖÕÕï—M—Ö—’Ã§§Ï(ÄÄÄÄÄÅÙ(ÄÄÄÅÙ(ÄÅÙ((ÄÅ¡’â±•åÅ	ΩΩ—5ΩëîÅâΩΩ—5Ωëî†•Ì…ï—’…∏ÅâΩΩ—5ΩëîÌÙ(ÄÅ¡’â±•åÅM—…•πúÅç’……ïπ—5Ö¡%ê†•Ì…ï—’…∏Åç’……ïπ—5Ö¡%êÌÙ(ÄÅ¡’â±•åÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»ÅπïÖ…ïÕ—5ΩπÕ—ï…Q•±ïïπ—ï»°ô±ΩÖ–Å‡±ô±ΩÖ–Å‰•Ï(ÄÄÄÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòÅêıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòπôΩ…5Ö¿°ç’……ïπ—5Ö¡%ê§Ï(ÄÄÄÅ•ò°êÑıπ’±∞•ÌçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»ÅâïÕ–ıπ’±∞Ìô±ΩÖ–ÅÕçΩ…îı±ΩÖ–π5a}Y1UÌôΩ»°çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»Å–ÈêππÖŸ•ùÖ—•ΩπQ•±ïÃ†§•Ìô±ΩÖ–Åë•Õ—Öπçîıë•Õ—ÖπçïM≈’Ö…ïê°‡±‰±–π‡±–π‰§Ì•ò°ë•Õ—ÖπçîÒÕçΩ…î•ÌâïÕ–ı–ÌÕçΩ…îıë•Õ—ÖπçîÌıı…ï—’…∏ÅâïÕ–ÌÙ(ÄÄÄÅ•ò°çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπÖµ¡Ö•ùπ]Ω…±êπçΩπ—Ö•πÃ°ç’……ïπ—5Ö¡%ê§§(ÄÄÄÄÄÅ…ï—’…∏ÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ïÖµ¡Ö•ùπ5Ö¡ïòπôΩ…%ê°ç’……ïπ—5Ö¡%ê§ππïÖ…ïÕ–°‡±‰§Ï(ÄÄÄÅ…ï—’…∏Å5ΩπÕ—ï…Q•±ïïπ—ï…1ΩçΩµΩ—•Ω∏ππïÖ…ïÕ—’—°Ω…ïëïπ—ï»°‡±‰§Ï(ÄÅÙ(ÄÅ¡’â±•åÅâΩΩ±ïÖ∏Å•Õ5ΩπÕ—ï…Q•±ïïπ—ï»°ô±ΩÖ–Å‡±ô±ΩÖ–Å‰•Ï(ÄÄÄÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòÅêıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòπôΩ…5Ö¿°ç’……ïπ—5Ö¡%ê§Ï(ÄÄÄÅ•ò°êÑıπ’±∞•ÌôΩ»°çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»Å–ÈêππÖŸ•ùÖ—•ΩπQ•±ïÃ†§••ò°5Ö—†πÖâÃ°–π‡µ‡§∏¿≈òòô5Ö—†πÖâÃ°–π‰µ‰§∏¿≈ò•…ï—’…∏Å—…’îÌ…ï—’…∏ÅôÖ±ÕîÌÙ(ÄÄÄÅ•ò°çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπÖµ¡Ö•ùπ]Ω…±êπçΩπ—Ö•πÃ°ç’……ïπ—5Ö¡%ê§§(ÄÄÄÄÄÅôΩ»°çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»Å–ÈçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ïÖµ¡Ö•ùπ5Ö¡ïòπôΩ…%ê°ç’……ïπ—5Ö¡%ê§ππÖŸ•ùÖ—•ΩπQ•±ïÃ†§••ò°5Ö—†πÖâÃ°–π‡µ‡§∏¿≈òòô5Ö—†πÖâÃ°–π‰µ‰§∏¿≈ò•…ï—’…∏Å—…’îÏ(ÄÄÄÅ…ï—’…∏Å5ΩπÕ—ï…Q•±ïïπ—ï…1ΩçΩµΩ—•Ω∏π•Õ’—°Ω…ïëïπ—ï»°‡±‰§Ï(ÄÅÙ(ÄÅ¡’â±•åÅ1•Õ–ÒçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»¯ÅµΩπÕ—ï…9ÖŸ•ùÖ—•ΩπQ•±ïÃ†•Ï(ÄÄÄÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòÅêıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòπôΩ…5Ö¿°ç’……ïπ—5Ö¡%ê§Ì•ò°êÑıπ’±∞•…ï—’…∏ÅêππÖŸ•ùÖ—•ΩπQ•±ïÃ†§Ï(ÄÄÄÅ•ò°çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπÖµ¡Ö•ùπ]Ω…±êπçΩπ—Ö•πÃ°ç’……ïπ—5Ö¡%ê§§(ÄÄÄÄÄÅ…ï—’…∏ÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ïÖµ¡Ö•ùπ5Ö¡ïòπôΩ…%ê°ç’……ïπ—5Ö¡%ê§ππÖŸ•ùÖ—•ΩπQ•±ïÃ†§Ï(ÄÄÄÅ…ï—’…∏Å5ΩπÕ—ï…Q•±ïïπ—ï…1ΩçΩµΩ—•Ω∏πÖ’—°Ω…ïëïπ—ï…Ã†§Ï(ÄÅÙ(ÄÅ¡’â±•åÅ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»π•…ïç—•Ω∏Åπï·—5ΩπÕ—ï…°ÖÕïM—ï¿°5ΩπÕ—ï»ÅµΩπÕ—ï»±ô±ΩÖ–Å—Ö…ùï—`±ô±ΩÖ–Å—Ö…ùï—d•Ï(ÄÄÄÅ•ò°µΩπÕ—ï»Ùıπ’±±ÒÖµΩπÕ—ï»πÖ±•Ÿî•…ï—’…∏Åπ’±∞Ï(ÄÄÄÅ…ï—’…∏Å5ΩπÕ—ï…°ÖÕïAÖ—°ô•πëï»ππï·—M—ï¿°µΩπÕ—ï…9ÖŸ•ùÖ—•ΩπQ•±ïÃ†§±µΩπÕ—ï»π‡±µΩπÕ—ï»π‰±—Ö…ùï—`±—Ö…ùï—d∞(ÄÄÄÄÄÄÄÄ°ô…Ω¥±—º§¥˘µΩπÕ—ï…ÖπQ…ÖŸï…Õî°µΩπÕ—ï»±ô…Ω¥π‡±ô…Ω¥π‰±—ºπ‡±—ºπ‰§§Ï(ÄÅÙ(ÄÅ¡…•ŸÖ—îÅâΩΩ±ïÖ∏ÅµΩπÕ—ï…ÖπQ…ÖŸï…Õî°5ΩπÕ—ï»ÅÕï±ò±ô±ΩÖ–Åô…Ωµ`±ô±ΩÖ–Åô…Ωµd±ô±ΩÖ–Å—Ω`±ô±ΩÖ–Å—Ωd•Ï(ÄÄÄÅ•π–ÅÕÖµ¡±ïÃı5Ö—†πµÖ‡†»∞°•π–•5Ö—†πçï•∞°ë•Õ—Öπçî°ô…Ωµ`±ô…Ωµd±—Ω`±—Ωd§º—ò§§Ï(ÄÄÄÅôΩ»°•π–Å§ÙƒÌ§ıÕÖµ¡±ïÃÌ§¨¨•Ï(ÄÄÄÄÄÅô±ΩÖ–Å–ı§º°ô±ΩÖ–•ÕÖµ¡±ïÃ±‡ıô…Ωµ`¨°—Ω`µô…Ωµ`§©–±‰ıô…Ωµd¨°—Ωdµô…Ωµd§©–Ï(ÄÄÄÄÄÅ•ò°‡Òç’……ïπ—5•πaÒÒ‡˘ç’……ïπ—5Ö·aÒÒ‰Òç’……ïπ—5•πeÒÒ‰˘ç’……ïπ—5Ö·d(ÄÄÄÄÄÄÄÄÄÅÒÖµΩπÕ—ï…Öπ=çç’¡‰°Õï±ò±‡±‰§•…ï—’…∏ÅôÖ±ÕîÏ(ÄÄÄÅÙ(ÄÄÄÅ…ï—’…∏Å—…’îÏ(ÄÅÙ(ÄÅ¡’â±•åÅ]Ω…±ëïòÅ›Ω…±ê†•Ì…ï—’…∏Å›Ω…±êÌÙ(ÄÅ¡’â±•åÅA±ÖÂï»Å¡±ÖÂï»†•Ì…ï—’…∏Å¡±ÖÂï»ÌÙ(ÄÅ¡’â±•åÅΩµâÖ—1ïëùï»Å±ïëùï»†•Ì…ï—’…∏Å±ïëùï»ÌÙ(ÄÅ¡’â±•åÅI’π—•µï5ï—…•çÃÅµï—…•çÃ†•Ì…ï—’…∏Åµï—…•çÃÌÙ(ÄÅ¡’â±•åÅI¡ùA…Ωù…ïÕÕ•ΩπM—Ö—îÅ…¡ú†•Ì…ï—’…∏Å…¡úÌÙ(ÄÅ¡’â±•åÅŸΩ•êÅÖ¡¡±Âï…•Ÿïë…Ω›—††•Ì•π–ÅΩ±ë5Ö·!¿ı¡±ÖÂï»πµÖ·!¿±Ω±ë5Ö·5¿ı¡±ÖÂï»πµÖ·5¿Ì•π–Åπï›5Ö·!¿ı…¡úπµÖ·!¡…Ω›—††§±πï›5Ö·5¿ı…¡úπµÖ·5¡…Ω›—††§Ì¡±ÖÂï»πµÖ·!¿ıπï›5Ö·!¿Ì¡±ÖÂï»πµÖ·5¿ıπï›5Ö·5¿Ì•ò°πï›5Ö·!¿˘Ω±ë5Ö·!¿•¡±ÖÂï»π°¿ı5Ö—†πµ•∏°πï›5Ö·!¿±¡±ÖÂï»π°¿¨°πï›5Ö·!¿µΩ±ë5Ö·!¿§§Ìï±ÕîÅ¡±ÖÂï»π°¿ı5Ö—†πµ•∏°¡±ÖÂï»π°¿±πï›5Ö·!¿§Ì•ò°πï›5Ö·5¿˘Ω±ë5Ö·5¿•¡±ÖÂï»πµ¿ı5Ö—†πµ•∏°πï›5Ö·5¿±¡±ÖÂï»πµ¿¨°πï›5Ö·5¿µΩ±ë5Ö·5¿§§Ìï±ÕîÅ¡±ÖÂï»πµ¿ı5Ö—†πµ•∏°¡±ÖÂï»πµ¿±πï›5Ö·5¿§ÌÙ(ÄÅï¡…ïçÖ—ïêÅ¡’â±•åÅŸΩ•êÅÕÂπçA±ÖÂï……Ω›—††•ÌÖ¡¡±Âï…•Ÿïë…Ω›—††§ÌÙ(ÄÅ¡’â±•åÅ1•Õ–ÒIïç—¯ÅΩâÕ—Öç±ïÃ†•Ì…ï—’…∏ÅΩ±±ïç—•ΩπÃπ’πµΩë•ô•Öâ±ï1•Õ–°ΩâÕ—Öç±ïÃ§ÌÙ(ÄÅ¡’â±•åÅ1•Õ–Ò9¡å¯Åπ¡çÃ†•Ì…ï—’…∏ÅΩ±±ïç—•ΩπÃπ’πµΩë•ô•Öâ±ï1•Õ–°π¡çÃ§ÌÙ(ÄÅ¡’â±•åÅ1•Õ–Ò5ΩπÕ—ï»¯ÅµΩπÕ—ï…Ã†•Ì…ï—’…∏ÅΩ±±ïç—•ΩπÃπ’πµΩë•ô•Öâ±ï1•Õ–°µΩπÕ—ï…Ã§ÌÙ(ÄÅ¡’â±•åÅM—…•πúÅçÖµ¡Ö•ùπIï›Ö…ëA…Ωô•±ïΩ»°M—…•πúÅµΩπÕ—ï…%ê•ÌôΩ»°5ΩπÕ—ï»Å¥ÈµΩπÕ—ï…Ã••ò°µΩπÕ—ï…%êÑıπ’±∞òôµΩπÕ—ï…%êπï≈’Ö±Ã°¥π•ê§•…ï—’…∏Å¥πçÖµ¡Ö•ùπIï›Ö…ëA…Ωô•±ï%êÌ…ï—’…∏Åπ’±∞ÌÙ((ÄÄº®®ÅM¡Ö›∏Å—°îÅï·¡±•ç•—±‰ÅÖëÖ¡—ïêÅΩ¡ïπ•πúµ≈’ïÕ–ÅµΩ’ÕîÅΩπ±‰ÅÖô—ï»Å—°îÅ¡±ÖÂï»ÅÖççï¡—ÃÅ—°Ö–ÅÕ—Ω…‰∏Ä®º(ÄÅ¡’â±•åÅ5ΩπÕ—ï»ÅïπÕ’…ïëÖ¡—ïë5•±±ïÕ5Ω’Õî†•Ï(ÄÄÄÅ•ò†Ñâµ•±±ïÕ}•π—ï…•Ω…}•π∏àπï≈’Ö±Ã°ç’……ïπ—5Ö¡%ê§•…ï—’…∏Åπ’±∞Ï(ÄÄÄÅôΩ»°5ΩπÕ—ï»Å¥ÈµΩπÕ—ï…Ã••ò†âµ•±±ïÕ}µΩ’Õï}¡…Ω—ºàπï≈’Ö±Ã°¥π•ê§•…ï—’…∏Å¥Ï(ÄÄÄÅô±ΩÖ–Å‡ıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòπ‡†ƒ¿∞ƒƒ§±‰ıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòπ‰†ƒ¿∞ƒƒ§Ï(ÄÄÄÅçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπ]Ω…±ë5ΩŸïQÖ…ùï—Ωπ—…Ω±±ï»πQ•±ïïπ—ï»Åçïπ—ï»ıπïÖ…ïÕ—5ΩπÕ—ï…Q•±ïïπ—ï»°‡±‰§Ï(ÄÄÄÅ5ΩπÕ—ï»ÅµΩ’Õîıπï‹Å5ΩπÕ—ï»†âµ•±±ïÕ}µΩ’Õï}¡…Ω—ºà∞ã≤w≤ñ@à±çïπ—ï»Ùıπ’±∞˝‡Èçïπ—ï»π‡±çïπ—ï»Ùıπ’±∞˝‰Èçïπ—ï»π‰∞»–±]Ω…±ëïòπMMQ}MQQUL§Ï(ÄÄÄÅµΩ’ÕîπçÖµ¡Ö•ùπIï›Ö…ëA…Ωô•±ï%êıµΩ’Õîπ•êÏ(ÄÄÄÅµΩπÕ—ï…ÃπÖëê°µΩ’Õî§Ì…ï—’…∏ÅµΩ’ÕîÏ(ÄÅÙ((ÄÄº®®Å1•ŸîÅµÖ¿Å—…ÖπÕ•—•Ω∏Å≠ïï¡ÃÅIAΩçΩµâÖ–Å±ïëùï»Å•ëïπ—•—‰Å›°•±îÅ…ï¡±Öç•πúÅµÖ¿µ±ΩçÖ∞ÅÖç—Ω…ÃΩçΩ±±•Õ•Ω∏∏Ä®º(ÄÅ¡’â±•åÅŸΩ•êÅïπ—ï…QΩ›π%π—ï…•Ω»°çΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπQΩ›π%π—ï…•Ω…ïòÅê•Ï(ÄÄÄÅ•ò°êÙıπ’±∞•—°…Ω‹Åπï‹Å%±±ïùÖ±…ù’µïπ—·çï¡—•Ω∏†â•π—ï…•Ω»à§Ï(ÄÄÄÅ•ò°]Ω…±ëïòπ%πï≈’Ö±Ã°ç’……ïπ—5Ö¡%ê§•ÌÕ’Õ¡ïπëïë5•±±ïÕ5ΩπÕ—ï…Ãπç±ïÖ»†§ÌÕ’Õ¡ïπëïë5•±±ïÕ5ΩπÕ—ï…ÃπÖëë±∞°µΩπÕ—ï…Ã§ÌÕ’Õ¡ïπëïë5•±±ïÕ9¡çÃπç±ïÖ»†§ÌÕ’Õ¡ïπëïë5•±±ïÕ9¡çÃπÖëë±∞°π¡çÃ§ÌÕ’Õ¡ïπëïë5•±±ïÕ=âÕ—Öç±ïÃπç±ïÖ»†§ÌÕ’Õ¡ïπëïë5•±±ïÕ=âÕ—Öç±ïÃπÖëë±∞°ΩâÕ—Öç±ïÃ§ÌÙ(ÄÄÄÅç’……ïπ—5Ö¡%êıêπµÖ¡%êÌµΩπÕ—ï…Ãπç±ïÖ»†§Ìπ¡çÃπç±ïÖ»†§ÌΩâÕ—Öç±ïÃπç±ïÖ»†§ÌΩâÕ—Öç±ïÃπÖëë±∞°êπΩâÕ—Öç±ïÃ†§§Ï(ÄÄÄÅπ¡çÃπÖëê°πï‹Å9¡å†â—Ω›π}≠ïï¡ï»à±êππ¡ç9Öµî±êππ¡ç`†§±êππ¡çd†§∞àà±]Ω…±ëïòπMMQ}MQQUL§§Ï(ÄÄÄÅç’……ïπ—5•π`ıêπ5%9}`Ìç’……ïπ—5Ö·`ıêπ5a}`Ìç’……ïπ—5•πdıêπ5%9}dÌç’……ïπ—5Ö·dıêπ5a}dÏ(ÄÄÄÅ¡±ÖÂï»πÕ¡Ö›π`ıêπÕ¡Ö›π`†§Ì¡±ÖÂï»πÕ¡Ö›πdıêπÕ¡Ö›πd†§Ì¡±ÖÂï»π‡ı¡±ÖÂï»πÕ¡Ö›π`Ì¡±ÖÂï»π‰ı¡±ÖÂï»πÕ¡Ö›πdÏ(ÄÅÙ(ÄÅ¡’â±•åÅŸΩ•êÅ±ïÖŸïQΩ›π%π—ï…•Ω»°ô±ΩÖ–Å‡±ô±ΩÖ–Å‰•ÌµΩπÕ—ï…Ãπç±ïÖ»†§ÌµΩπÕ—ï…ÃπÖëë±∞°Õ’Õ¡ïπëïë5•±±ïÕ5ΩπÕ—ï…Ã§Ìπ¡çÃπç±ïÖ»†§Ìπ¡çÃπÖëë±∞°Õ’Õ¡ïπëïë5•±±ïÕ9¡çÃ§ÌΩâÕ—Öç±ïÃπç±ïÖ»†§ÌΩâÕ—Öç±ïÃπÖëë±∞°Õ’Õ¡ïπëïë5•±±ïÕ=âÕ—Öç±ïÃ§Ìç’……ïπ—5Ö¡%êı]Ω…±ëïòπ%Ìç’……ïπ—5•π`ı]Ω…±ëïòπ5%9}`Ìç’……ïπ—5Ö·`ı]Ω…±ëïòπ5a}`Ìç’……ïπ—5•πdı]Ω…±ëïòπ5%9}dÌç’……ïπ—5Ö·dı]Ω…±ëïòπ5a}dÌ¡±ÖÂï»πÕ¡Ö›π`ı]Ω…±ëïòπA1eI}MA]9}`Ì¡±ÖÂï»πÕ¡Ö›πdı]Ω…±ëïòπA1eI}MA]9}dÌ¡±ÖÂï»π‡ı‡Ì¡±ÖÂï»π‰ı‰ÌÙ(ÄÅ¡’â±•åÅŸΩ•êÅïπ—ï…AΩ—ï•ï±ê†•Ï(ÄÄÄÅç’……ïπ—5Ö¡%êıAΩ—ïA…Ω—Ω—Â¡ï]Ω…±ëïòπ5A}%Ìç’……ïπ—5•π`ıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ï•ï±ëïòπ5%9}`Ìç’……ïπ—5Ö·`ıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ï•ï±ëïòπ5a}`Ìç’……ïπ—5•πdıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ï•ï±ëïòπ5%9}dÌç’……ïπ—5Ö·dıçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ï•ï±ëïòπ5a}dÏ(ÄÄÄÅΩâÕ—Öç±ïÃπç±ïÖ»†§ÌôΩ»°Iïç—Å»ÈçΩ¥π¡…Ω©ïç—ëÖ…¨πµΩâ•±îπ›Ω…±êπAΩ—ï•ï±ëïòπΩâÕ—Öç±ïÃ†§•ΩâÕ—Öç±ïÃπÖëê°πï‹ÅIïç—°»§§Ï(ÄÄÄÅπ¡çÃπç±ïÖ»†§Ìπ¡çÃπÖëê°πï‹Å9¡å†â¡Ω—ï}—…Ö•±}ù’•ëîà∞ã≤"À™‚‡É≤V#Æ
+”≤v‡à∞‹ÃŸò∞–‰Ÿò∞(ÄÄÄÄÄÄÄÄãÆ⁄Æ>g≤™ÙÉ∂vg]|Ê⁄$z{-ÆÈ‹j◊ùf(!player.alive||skillEffects.rooted("player"))return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,currentMinX,currentMaxX),ny=clamp(player.y+dy,currentMinY,currentMaxY);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
 
   public boolean tryMoveMonster(Monster m,float desiredDx,float desiredDy,float distance){
     if(m==null||!m.alive)return false;
