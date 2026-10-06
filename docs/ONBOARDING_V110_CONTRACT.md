@@ -1,6 +1,6 @@
 # V110 guided Lv1–11 curriculum
 
-User explicitly accepted V109 device behavior, then requested separate, taught essentials, spread EXP to Lv11, and a usable quest journal. V109 combat/AUTO/Shortblade/Rescue/mouse acceptance is DEVICE_VERIFIED_USER_REPORTED for the reported scenarios. V110 remains IMPLEMENTED_PENDING_VERIFICATION until exact CI/native/APK evidence is appended.
+User explicitly accepted V109 device behavior, then requested separate, taught essentials, spread EXP to Lv11, and a usable quest journal. V109 combat/AUTO/Shortblade/Rescue/mouse acceptance is DEVICE_VERIFIED_USER_REPORTED for the reported scenarios. V110 is IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC on exact source fadd41a7; [verification evidence](verification/ONBOARDING_V110_BUILD.json) records 96 passing focused tests and two successful full pipelines. V110 physical phone/user visual acceptance remains pending.
 
 All added curriculum, rewards, stories and controls are PROJECT_ADAPTED_V110. Original Master CSVs, skill requirements, EXP thresholds, sprites and save ownership are preserved.
 
