@@ -822,7 +822,7 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
       if(statsOpen){float sx=x-hudCenterOffset;
         if(circleHit(x,y,UTILITY_X0+UTILITY_STEP+hudRightOffset,UTILITY_Y0,UTILITY_R+4)||circleHit(sx,y,911,91,18)){statsOpen=false;showFeedback("스탯창 닫힘",FeedbackTone.INFO);return true;}
         String st=inside(sx,y,700,132,754,158)?"STR":inside(sx,y,700,162,754,188)?"INT":inside(sx,y,700,192,754,218)?"WIS":inside(sx,y,700,222,754,248)?"CON":inside(sx,y,700,252,754,278)?"DEX":null;
-        if(st!=null){if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().spendStat(st))){state.applyDerivedGrowth();F5mSaveStore.saveRewardsActive(state.rpg());showFeedback(st+" +1 · 성장 반영",FeedbackTone.REWARD);}else showFeedback("STAT POINT가 부족합니다",FeedbackTone.WARN);return true;}
+        if(st!=null){final String chosenStat=st;if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().spendStat(chosenStat))){state.applyDerivedGrowth();F5mSaveStore.saveRewardsActive(state.rpg());showFeedback(st+" +1 · 성장 반영",FeedbackTone.REWARD);}else showFeedback("STAT POINT가 부족합니다",FeedbackTone.WARN);return true;}
         if(!inside(sx,y,570,72,936,390)){statsOpen=false;showFeedback("스탯창 닫힘",FeedbackTone.INFO);}return true;
       }
       if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();autoAttackEnabled=false;combat.clearTarget();interaction.cancel();activeWorld().cancelForAction();activeWorld().snapCameraToPlayer();camera=activeWorld().camera();action=Action.IDLE;actionClock=0f;playerFacing.endAttack();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;checkpoint();}return true;}
