@@ -1,3 +1,7 @@
+## 2026-10-06 — V109 acceptance revision (verification pending)
+
+V108 c48cd39d is DEVICE_FAILED_USER_REPORTED. Preserve all16 V108 animation PNG bytes and existing collision/AI timings; scale the shared inn/field display64→40px and anchor source baseline59 to actor ground. Body footprint approximately32px, smaller than player48px. Native tests must inspect production idle/walkA/walkB/attack in all4 facings and whole GameView scenes. Rescue now explicitly drives live TAUNT pursuit despite stealth/reset; its non-damaging adjacent range is ADAPTED_USER, not an original monster fact. Actual MainActivity-default regressions verify opening/growth hunts, skill quest and Rescue attacks. Build/native evidence pending; phone/visual acceptance pending. Contract: docs/DEVICE_QUEST_V109.md.
+
 ## V105 adapted campaign registration — candidate acceptance record
 
 Six retained review families (trant,antlion,gnoll,wolf_rider,ant_giant,silver_wolf) are now registered byte-for-byte under `assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1`;72 source/runtime pairs and SHA256s are in provenance.json. Earlier historical-only exclusion below is superseded **only for these explicit candidate registrations**. Five prior runtime art families and original Master bytes remain unchanged. Strong gnoll/treant/wolfrider and adapted elite share the corresponding family art, not invented original variant art.
