@@ -42,7 +42,13 @@ public final class PotePamfetPresentationTest {
       try(FileOutputStream out=new FileOutputStream(file)){assertTrue(cell.compress(Bitmap.CompressFormat.PNG,100,out));}
       cell.recycle();
     }
-    assertEquals("incomplete species sets must not be registered",null,PoteForestMonsterShowcase.assetPath("POTE_TREANT","attack",CharacterRenderer.Direction.NE));
+    assertEquals("unknown species must not be registered",null,PoteForestMonsterShowcase.assetPath("POTE_UNKNOWN","attack",CharacterRenderer.Direction.NE));
+    for(String id:new String[]{"POTE_TREANT","POTE_ANTLION","POTE_GNOLL","POTE_WOLFRIDER","POTE_ANTGIANT","POTE_SILVERWOLF"})for(String state:states)for(CharacterRenderer.Direction direction:directions){
+      Bitmap cell=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
+      renderer.drawMonsterTestPose(new Canvas(cell),id,state,direction,.5f,.4f,64f,112f);
+      assertTrue("complete new campaign sprite "+id+" "+state+" "+direction,countOpaque(cell,new Rect(0,0,128,128))>100);
+      cell.recycle();
+    }
   }
 
   @Test public void runtimePlacesEveryMasterRosterIdentityOnADistinctWalkableTile(){

@@ -62,6 +62,29 @@
     },
     {"asset_id":"BLD_003","name":"bank","category":"buildings","status":"PLANNED"},
     {"asset_id":"BLD_004","name":"cathedral","category":"buildings","status":"PLANNED"},
-    {"asset_id":"BLD_005","name":"inn","category":"buildings","status":"PLANNED"}
+    {"asset_id":"BLD_005","name":"inn","category":"buildings","status":"PLANNED"},
+    {
+      "asset_id": "STR_BRIDGE_MILLES_V100",
+      "name": "milles_rope_bridge",
+      "category": "structures_landmarks",
+      "status": "QA_PASS",
+      "visual_family": "OLD_MILLES_VIDEO_ADAPTED",
+      "production": {
+        "path": "assets/milles/production/structures/bridges/OBJ_bridge_milles_v100.png",
+        "normalized_size": [
+          1672,
+          941
+        ],
+        "anchor": {
+          "type": "deck_center",
+          "x": 836,
+          "y": 470.5
+        },
+        "sha256": "557bae16da80b41fdec5bbd5281276915d73ee4e867c0b1900ffc79261aef2c7",
+        "edge_touch": false,
+        "rgba_alpha": true
+      },
+      "notes": "Independent built-in ImageGen bridge, no terrain/actor/UI/text; inspected true alpha/margin; new sibling asset, no prior image overwritten. Project reconstruction, user visual acceptance pending."
+    }
   ]
 }

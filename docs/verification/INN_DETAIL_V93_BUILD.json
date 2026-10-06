@@ -1,0 +1,92 @@
+{
+  "source_commit": "42d20ece678b0a4bc5aa111da468f3dcec31c95b",
+  "source_tree": "d147d67741f33b41165751e48b419b0d04c18605",
+  "source_branch": "codex/town-interiors-mobile-v86",
+  "main_merged": false,
+  "main_commit": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "build_run": 37122438002,
+  "build_job": 111201056317,
+  "status": "success",
+  "build_started_utc": "2026-10-03T12:18:22Z",
+  "build_completed_utc": "2026-10-03T12:27:24Z",
+  "build_completed_seoul": "2026-10-03T21:27:24+09:00",
+  "version_code": 93,
+  "version_name": "0.93-inn-detail-quest-fx",
+  "apk_artifact": 11273852663,
+  "review_artifact": 11274261676,
+  "full_review_artifact": 11273947389,
+  "apk_sha256": "421302d612e43de3cbfe2e9afc8e1aade7b2d9b6124a6dc2473e0512df87f40d",
+  "apk_bytes": 31768106,
+  "apk_zip_sha256": "16ea21583ee7e63ff13d14d9a7ac0fd06415acc8dcdb05b6e9b9a12b9c88340d",
+  "focused_review_zip_sha256": "c9cc3f0f62ec726ab04aacb7d96ed49c2c2af0bf28406e85d675343496bad533",
+  "checks": {
+    "configured_workflow": "ALL_PASS",
+    "inn_suite_tests": 20,
+    "new_focused_tests": 7,
+    "review_pngs": 18,
+    "manifest": "93 com.projectdark.mobile",
+    "prior_packaged_assets_identical": 942,
+    "new_antique_assets_byte_match": 6,
+    "zip_crc_and_artifact_digests": "PASS"
+  },
+  "implemented": [
+    "six independent transparent antique sprites; no scene/group screenshot loader; 3 tables/12 chairs/11 counter modules retained",
+    "four isometric chair facings toward adjacent table cells; full footprints/depth and 115 connected legal tiles preserved",
+    "woven ground rug motifs, separate source-backed tabletop details",
+    "shared skill BODY/motion and caster/recipient FX rendered using active interior camera; tiny mouse recipient center calibrated",
+    "real non-miss damaging monster contact uses existing shared recipient impact, no fabricated monster magic",
+    "shared utility windows/touch and accepted self-cast clocks advance across service interiors",
+    "immediate quest2 unlock after Mary reward; tracked journal dispatches existing quest2 or Hans route",
+    "actual exit-to-next-NPC dialogue/acceptance/checkpoint/restart; map-scoped request-ID completion; Hans to existing forest travel"
+  ],
+  "source_defects_reproduced": [
+    "indoor VFX draw omitted; indoor BODY bypassed shared skill motion",
+    "quest2 unlock omitted on interior path and journal hardwired to prologue",
+    "completed quest navigation omitted; map-local request IDs can suppress immediate NPC REACHED handling",
+    "rectangular atlas slices overlap detached neighbor pixels; final chair_sw/hearth alpha isolates their own component"
+  ],
+  "manual_native_review": [
+    "v93-antique-entry.png",
+    "v93-antique-depth-5-6.png",
+    "v93-antique-depth-11-9.png",
+    "v93-growth-npc.png",
+    "v93-hans-travel.png",
+    "v93-inn-마법사_005.png",
+    "v93-inn-무도가_017.png",
+    "v93-inn-mouse-hit.png"
+  ],
+  "comparison": "Supplied original recording examined for furniture form/material; six antique sprites are authored reconstruction, not original pixels. Common hall keeps 3 dining sets while full reference shows 4; exact full-room topology not claimed.",
+  "limitations": [
+    "PHONE_PENDING and USER_VISUAL_PENDING; prior V92 DEVICE_FAILED user report retained, installed hash not independently supplied",
+    "original Mary identity, complete mouse animations, full original inn rooms/corridors unresolved",
+    "quest/progression/reward sequence remains explicitly ADAPTED/B; no canonical original story completion claim",
+    "existing skill-source/fallback gaps remain; fixes restore existing presentation paths"
+  ],
+  "attempts": [
+    {
+      "run": 37120872796,
+      "source": "5d1420dfad46d2ea3b72856cb2f8497b831d26c1",
+      "result": "FAIL: reproduced immediate NPC completion collision"
+    },
+    {
+      "run": 37121207767,
+      "source": "9b572d2a06ea9ae9c2cb523eeb88ae8ccdd5eff3",
+      "result": "PASS; superseded chair-facing calibration"
+    },
+    {
+      "run": 37121516452,
+      "source": "93e79efd16aefd7fef29a80e9cc4a8757941b156",
+      "result": "FAIL: Euclidean nearest table cell chose a diagonal instead of adjacent iso face; axis assertion fixed"
+    },
+    {
+      "run": 37121703892,
+      "source": "c47a5bc22aab2bc48f6bebc1bd91ff4068702cc8",
+      "result": "PASS; superseded service-clock consistency"
+    },
+    {
+      "run": 37121961449,
+      "source": "8ee0bec27e27f26b9fee28f428b000b9b90ad278",
+      "result": "PASS; superseded detached atlas-fragment alpha fix"
+    }
+  ]
+}

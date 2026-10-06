@@ -1,0 +1,241 @@
+{
+  "sourceApkSha256": "0defe4e08fdfb711d3816fb881a2c7b8802b6eae54d52d20fdf0374d35161689",
+  "sourceCommit": "48f8a037872c8ddfab8abacd5808671de9dd9f8f",
+  "restored": [
+    {
+      "path": "app/src/main/assets/source-registration/mh172.json",
+      "sha256": "4f3a88a9f9aff1d5d4629a4ab46f9a27630459361fae4bd385d0252153a588fb",
+      "apkEntry": "assets/source-registration/mh172.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mh173.json",
+      "sha256": "32bed12c869936c8ae226e4141c94d82b827d2bc171d8d0a685024c725cbbcf8",
+      "apkEntry": "assets/source-registration/mh173.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mh174.json",
+      "sha256": "eab4a05f809f0370c94c1216785a1d9e7f5c25c2613ccd566069cfac0904ca26",
+      "apkEntry": "assets/source-registration/mh174.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/ml228.json",
+      "sha256": "9d44eaa0c9163883b39f6974a7091b638a7a9bf2b5a925b1545ed9edfc25e43a",
+      "apkEntry": "assets/source-registration/ml228.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/ml229.json",
+      "sha256": "da8c3de37a9d6d075e1f6a36bc8ceb5fa7f050907d64a95556732cc7f08ff793",
+      "apkEntry": "assets/source-registration/ml229.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/ml230.json",
+      "sha256": "d9ab713c59644a83be917c72663f1868efeadb504e31876adba3c4fc61170848",
+      "apkEntry": "assets/source-registration/ml230.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/ms001.json",
+      "sha256": "b90e994595bad98c5f2c914046d9aaa9f22f205c56520fd5ab956426e6e9defa",
+      "apkEntry": "assets/source-registration/ms001.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/ms002.json",
+      "sha256": "60098a307a80569dac98e3d8445743d03d0faa627e8d71ac101de845851e56e2",
+      "apkEntry": "assets/source-registration/ms002.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/ms003.json",
+      "sha256": "c5fd52d09978156ff05d93211ca9b33366a73e9dd3161f5490be4456ff59e1d4",
+      "apkEntry": "assets/source-registration/ms003.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mu0000001.json",
+      "sha256": "51b3ea152722e03b17a4962c3c14df567aa388ab9649cb43fe5c18f37d91da7b",
+      "apkEntry": "assets/source-registration/mu0000001.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mu0000002.json",
+      "sha256": "a2987e382184c0eb4073cee497bdb0eb5f217b70b1381430f48b173909c2e63e",
+      "apkEntry": "assets/source-registration/mu0000002.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mu0000003.json",
+      "sha256": "3d8e6175602ea254a260d558aca91875d7eb933051f0f328ef2cf285f503410d",
+      "apkEntry": "assets/source-registration/mu0000003.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw001.json",
+      "sha256": "f855de4a25479f438a9feaea2d0ff44785e9f5b440e67c210401cca8d4ba891d",
+      "apkEntry": "assets/source-registration/mw001.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw002.json",
+      "sha256": "d893ec4119cd6b76ee36dcd54955dd59603df9412104492ccb41365da5a5b988",
+      "apkEntry": "assets/source-registration/mw002.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw003.json",
+      "sha256": "172bf49d5175422ccaa254b3110b947629ca5a1f7c774c4109e972e2b449f3e1",
+      "apkEntry": "assets/source-registration/mw003.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw004.json",
+      "sha256": "29ad298350bb6e8483c6b9b21f04bede5efbd81cbc1d929ebecfacea81226dbb",
+      "apkEntry": "assets/source-registration/mw004.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw005.json",
+      "sha256": "60447b3174b81f7e1b5f9fa5d2f406112cd460872c9ecdc79bd240477d0f6cae",
+      "apkEntry": "assets/source-registration/mw005.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw006.json",
+      "sha256": "ded1b9fe3e1393f727f22f382ddb98099edd5c59a4177810f84014d1d99b222d",
+      "apkEntry": "assets/source-registration/mw006.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw007.json",
+      "sha256": "12c759a9c92186ff1d9d4a83134e0ad95049358888550154a16743caa0d64ad5",
+      "apkEntry": "assets/source-registration/mw007.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw008.json",
+      "sha256": "1d15e616e0f8aa934c5a5b396117a5515689122dcb856f5553b38f8ab9eda428",
+      "apkEntry": "assets/source-registration/mw008.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw009.json",
+      "sha256": "f17ceb680216824a8ad77196aacf88d2ef4bc318e011722f2ade5718e560e56e",
+      "apkEntry": "assets/source-registration/mw009.json"
+    },
+    {
+      "path": "app/src/main/assets/source-registration/mw010.json",
+      "sha256": "658e8725212add1b36a1be84a522add15fd5dfa37871364c92de157854a61173",
+      "apkEntry": "assets/source-registration/mw010.json"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mh172_source.webp",
+      "sha256": "03642accfca56db30a7d0f505ee027b40b9401f8a97e99a8257e07f074570d5a",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mh172_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mh173_source.webp",
+      "sha256": "e51247527d378ae027da0169d7387c065b1df13683f32aa630a233020f256ff3",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mh173_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mh174_source.webp",
+      "sha256": "320e4e6b2111202841b83dbe8240968a3933019fc2e60391dd11e9d4e2949a48",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mh174_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_ml228_source.webp",
+      "sha256": "f33770961b0e62a0ea6a5b591f66257c8896a292a5e8231dabb97eeb4d049bc4",
+      "apkEntry": "res/drawable-nodpi-v4/equip_ml228_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_ml229_source.webp",
+      "sha256": "0c0e503eb5c14d331d65d0b9423fb34308e9e374cfdeec5a58e48bf3794464b4",
+      "apkEntry": "res/drawable-nodpi-v4/equip_ml229_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_ml230_source.webp",
+      "sha256": "aee048d7c0a6c1bec7f88fe280c21cc4e079ffc029a3d704b7ddca25b3371456",
+      "apkEntry": "res/drawable-nodpi-v4/equip_ml230_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_ms001_source.webp",
+      "sha256": "895ca597cbba6992b49f4e5a09b68b699a92e64058236425d8a464285c77bfe5",
+      "apkEntry": "res/drawable-nodpi-v4/equip_ms001_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_ms002_source.webp",
+      "sha256": "ddbc2fb36db845e91186dd2c64e96944f6b768c0588331d81f1ca0801593ea72",
+      "apkEntry": "res/drawable-nodpi-v4/equip_ms002_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_ms003_source.webp",
+      "sha256": "854804f2d4619caf6d8c6f65f488ff7e933a23fb9332490c181972ed61187004",
+      "apkEntry": "res/drawable-nodpi-v4/equip_ms003_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mu0000001_source.webp",
+      "sha256": "4cf9c3a1d5b28164fa5f666902e5e7946a755dc11987f06012fc0a2c930d9294",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mu0000001_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mu0000002_source.webp",
+      "sha256": "b5622696208a1e7a7abd86257ff20c4ebc4959fc4f0f24dfdd76fb44b7e81038",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mu0000002_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mu0000003_source.webp",
+      "sha256": "797966409d789ab4ce2b863ad05dfe8c563f714ad9e69a756ca474470085f196",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mu0000003_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw001_source.webp",
+      "sha256": "81573196526fd3f26e0eb74424d367b01ec5b94701d830225c2155bda299e0cb",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw001_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw002_source.webp",
+      "sha256": "b8b43b409ee291dfc66072691d82c171b104285c62f7c0807e8f7f62a473dda2",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw002_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw003_source.webp",
+      "sha256": "2a3d171af8cad4372711a4f303b9c6b998cc55a2b2c9e8f2032e0ca78f5f6b60",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw003_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw004_source.webp",
+      "sha256": "5db5d32df7d62b9484dfd4eaf2736452accd2751076dcc06ba989198a419c81b",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw004_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw005_source.webp",
+      "sha256": "053ac3be5c99f67d939dfbc199544c44244e68e205a307e224951596993ab442",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw005_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw006_source.webp",
+      "sha256": "cdb2d8b9b6719395eaefe324a1a52eeaf3d6ff6c59e4ac62674eacb9fcd24f7f",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw006_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw007_source.webp",
+      "sha256": "85eeb537eb03b9a0905a804ae4098d9782781017f8906faa6e431088ff96f374",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw007_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw008_source.webp",
+      "sha256": "5cfbbf60aa270f0bcd16822b33160017f11b8566e533cb9b2d5fd75f632d58c3",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw008_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw009_source.webp",
+      "sha256": "4d556e602fb86dc3691db687b90ef78c2cf5fbadd68106e04623c14aca33db15",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw009_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/equip_mw010_source.webp",
+      "sha256": "df9fa8268521dd0f0e419e19935e6d0d50e2fd5f0df39bdf779b45642577c917",
+      "apkEntry": "res/drawable-nodpi-v4/equip_mw010_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp",
+      "sha256": "03642accfca56db30a7d0f505ee027b40b9401f8a97e99a8257e07f074570d5a",
+      "apkEntry": "res/drawable-nodpi-v4/player_hat_mh172_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp",
+      "sha256": "895ca597cbba6992b49f4e5a09b68b699a92e64058236425d8a464285c77bfe5",
+      "apkEntry": "res/drawable-nodpi-v4/player_shield_ms001_source.webp"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp",
+      "sha256": "f33770961b0e62a0ea6a5b591f66257c8896a292a5e8231dabb97eeb4d049bc4",
+      "apkEntry": "res/drawable-nodpi-v4/player_shoes_ml228_source.webp"
+    }
+  ]
+}

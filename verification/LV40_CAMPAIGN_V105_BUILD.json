@@ -1,0 +1,56 @@
+{
+  "version": 105,
+  "apkSourceCommit": "5ebf1fc2c7fd07bc004b4863f86dd9204edfdadd",
+  "sourceTree": "8db891b404874cb647d97e1bae8363d455f87ac2",
+  "branch": "codex/town-interiors-mobile-v86",
+  "workflowRun": 37254439040,
+  "workflowJob": 111588416336,
+  "workflowConclusion": "success",
+  "buildCompletedSeoul": "2026-10-05T11:30:40+09:00",
+  "buildTimeBasis": "Actions log completion; BUILD_INFO contents not independently read",
+  "tests": {
+    "configuredCount": 248,
+    "result": "full configured Gradle suite passed",
+    "countBasis": "same configured suite as prior run; passing XML not independently downloaded"
+  },
+  "releaseTag": "candidate-v105-5ebf1fc2",
+  "releaseUrl": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v105-5ebf1fc2",
+  "apk": {
+    "url": "https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v105-5ebf1fc2/PROJECT_DARK_V105.apk",
+    "bytes": 52869317,
+    "sha256": "32c95a7dcf5f397f9f829776a48f25ddf7cf9b7cb3475ce10ece571c27cad2a8",
+    "digestBasis": "GitHub release asset metadata"
+  },
+  "nativeArtifactId": 11322517094,
+  "apkArtifactId": 11322651570,
+  "campaign": {
+    "classes": [
+      "WAR",
+      "ROG",
+      "MAGE",
+      "CLERIC",
+      "MONK"
+    ],
+    "level": 40,
+    "questsPerClass": 23,
+    "skillPracticeActionsPerClass": 9,
+    "earnedExpPerClass": 9003000,
+    "commonDefinitions": 20,
+    "classDefinitions": 15
+  },
+  "verification": {
+    "domainSimulation": "PASS",
+    "configuredRegression": "PASS",
+    "apkBuild": "PASS",
+    "phoneInstall": "PENDING",
+    "userVisualAcceptance": "PENDING",
+    "finalIndependentBinarySignatureInspection": "BLOCKED_ENVIRONMENT_OFFLINE",
+    "chatAttachmentSaving": "BLOCKED_ENVIRONMENT_OFFLINE"
+  },
+  "scope": "Functional Lv40 route implemented. Four forest instances and Piet safe camp reuse existing Pote shell. Unique original terrain/Piet full town/new counselor building/timed trial/strengthened monster art remain proposals.",
+  "preservation": "Approved BODY/movement/source bytes preserved. 72 retained monster PNG hashes checked; 8 legacy draft PNGs restored from original Git blobs. NPC paperdoll comparisons covered all 80 directional renders.",
+  "main": {
+    "sha": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+    "merged": false
+  }
+}

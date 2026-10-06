@@ -1,0 +1,40 @@
+{
+  "work_package": "TOWN_DETAIL_088",
+  "classification": "Original-inspired layout using unchanged existing project atlas/storage/foliage pixels; five small countertop details are authored stand-ins. Does not claim recovered original client art.",
+  "references": {
+    "1000056705(2).jpg": "79b533750aef5e6d1ba83eef3b4f7863e8ae78a1ead264c9bce8efd4d1d66370",
+    "1000056711(1).jpg": "7d8f8c51f00b05e6b3b5846b29f475398ef669e90fa667a4611fd1489a4435c1",
+    "1000056707.jpg": "6f0a5d85ea509ae5b40cde4c8b171bb9b708bdccc0a143830e2096b8b31f568d"
+  },
+  "relationships": {
+    "reagent": "three rear cabinets, two work tables, packaged storage at left edge, herb planter at front side; bottle trays/book/scale on counter",
+    "equipment": "three rear weapon racks plus side shields, front shield display and delivery storage; weapons and order book on counter",
+    "bank": "rear safes and side document safe, ledger desk and bundled storage; counting tray/book/scale on service counter",
+    "church": "paired detailed side shrines, side plants and entrance font; paired pews and preserved central runner/altar"
+  },
+  "existing_pixels": [
+    "interiors/v84/props.png",
+    "storage/OBJ_barrel.png",
+    "storage/OBJ_crate.png",
+    "storage/OBJ_sack.png",
+    "interiors/v85/materials.webp",
+    "vegetation/bushes/OBJ_bush_02.png"
+  ],
+  "new_stand_ins": [
+    "open_book",
+    "brass_scale",
+    "bottle_tray",
+    "weapon_tray",
+    "coin_tray"
+  ],
+  "navigation": "Only solid floor furniture blocks its occupied tile; tabletop props are elevated and non-blocking. BFS customer/exit route, unique anchors, registered rendering, surface support checks added to actual native TownInteriorTest.",
+  "fine_details": [
+    "reduced floor material scale",
+    "bordered entrance mats",
+    "carpet woven diamond motif",
+    "wall mounted bracket candles",
+    "source pixel oak counter fronts"
+  ],
+  "verification": "Final exact-source CI37004867957/job110830655877 SUCCESS;16 native frames reviewed;903 packaged assets match. Physical phone/user original-quality acceptance pending.",
+  "refinement": "First exact native render rejected flat armor/archive/votive/plant stand-ins. Replace with detailed shield rack/safe/altar pixels; planter layers transparent existing foliage and barrel. Font reuses altar masonry crop with authored water inset. Final exact CI/native/APK verified."
+}

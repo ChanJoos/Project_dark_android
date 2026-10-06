@@ -1,0 +1,80 @@
+{
+  "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/401229",
+  "originalPost": "https://m.blog.naver.com/180921/221777831873",
+  "evidence": "FAN_GAME_CAPTURE_GIF",
+  "serverVersion": "UNRESOLVED",
+  "files": [
+    {
+      "slug": "crasher",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfMjM5/MDAxNTc5NDIyOTkyNTc5.ASxbO1gZRIL9sYvwk4EhRyrmIBqFmU_I_Odj_RQ6h4Ag.c_DE086_vvCxvcYrRHvUNxe4-JKKEvR9aCfAGIG_JPAg.GIF.180921/크래셔.gif?type=w800",
+      "name": "크래셔.gif",
+      "status": "FETCHED",
+      "size": 309257,
+      "sha256": "42e0ac503f65989ac27935815c7b367db4b9a79e60649ff293335d88ac6f5d84"
+    },
+    {
+      "slug": "mad_soul",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfMjQx/MDAxNTc5NDIzMDk4MDkw.vT4hDHOKUzAZc44HOGQc4K3TCXYYZFhus-A3L-XSDccg.Y6XV_UAvExMyuPBpXRjjJ5S47f4BmcOYAQr1ZCeI1ncg.GIF.180921/매드소울.gif?type=w800",
+      "name": "매드소울.gif",
+      "status": "FETCHED",
+      "size": 431650,
+      "sha256": "64cfb71e2815df494991b09b7c9d57d82f98f03fe1e8611deb57e4a514730367"
+    },
+    {
+      "slug": "devil_crasher",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfNTgg/MDAxNTc5NDIzMTkxODU4.bNQJTPAmPRZZE2lNkJNkHXdOWmHyCl-HWzC2m4aVP_Ig.w_tpvuGFn7mpGTpGsSRq51nQfoxoHcm0u4xJNT-HmE4g.GIF.180921/데빌크래셔.gif?type=w800",
+      "name": "데빌크래셔.gif",
+      "status": "FETCHED",
+      "size": 171047,
+      "sha256": "041a1d3141d10c4e742df4254373d5fd8f46f4609d4a26f76cc108b73e70171f"
+    },
+    {
+      "slug": "mad_soul_jin",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfNTUg/MDAxNTc5NDIzMjM2Njcz.5HWYeSgmMPOtBWhtUxBvIeVKJIDHjwCF4tGTZc2Wu_Mg.LuSvJneTR6KRXT37cQ0F58ZMoV5XoRKnMAJvktTPldEg.GIF.180921/매드소울진.gif?type=w800",
+      "name": "매드소울진.gif",
+      "status": "FETCHED",
+      "size": 449125,
+      "sha256": "113f92b14d0890f7ca9aab8ad818a11bae43cadf4952c26f2f811713ba97c91e"
+    },
+    {
+      "slug": "assassination",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfMTkx/MDAxNTc5NDIzNDY5NDky.aGCNwBDSDEnz6RQJJWMZ2EByN1_H__OV3w9qKcLx-pIg.dsIB_NDjdeq5rzStVSlKEQgVNdajh4muaU2vE9oFFBwg.GIF.180921/암살격.gif?type=w800",
+      "name": "암살격.gif",
+      "status": "FETCHED",
+      "size": 446932,
+      "sha256": "f27a2844f16193af620cca7c9d38bde6c3767678e187894272cf5c3d15aef98d"
+    },
+    {
+      "slug": "assassination_jin",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfMTU2/MDAxNTc5NDIzNTcxNDU2.pDHA0Jg7WaJPK08JXdhCp9kPZaHUgm6dMa5hOYWQ290g.srJuqxyxFENsR974FH2d7QTb5b6adPSquoxjcFvkKlAg.GIF.180921/암살진.gif?type=w800",
+      "name": "암살진.gif",
+      "status": "FETCHED",
+      "size": 410668,
+      "sha256": "74bc5c3f02de93b690974f90b7537e0c1176397c911b5b20252a8b1de74f81cf"
+    },
+    {
+      "slug": "dara",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfMTc3/MDAxNTc5NDIzOTc0MzQ5.Ej_lAjG7TyH-J-DeCWOFFyNMzIlmhUbyIo5JXcTAhmEg.m-RToi6N4341ikpMxD1MPpNbTOQLjLNuCyN_rGCnGDcg.GIF.180921/다라밀공.gif?type=w800",
+      "name": "다라밀공.gif",
+      "status": "FETCHED",
+      "size": 210225,
+      "sha256": "ca7f7e17cd1fcf8b541d3f163bfb0be129086c5b1ccbd77673a0d7c898b6d8bc"
+    },
+    {
+      "slug": "guyang",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfNDQg/MDAxNTc5NDI0MDYzNzg1.LikPVo7kYUNAZ8lqt6FhAoOe70I7DqxG5cVn-MzikU8g.ya7H8fYz_eTipDFtpPWnlONvrQ1LAaHn6oQ69CjOc1wg.GIF.180921/구양신공.gif?type=w800",
+      "name": "구양신공.gif",
+      "status": "FETCHED",
+      "size": 75625,
+      "sha256": "960b5ed4e336c4f13dfdb2770b3a06d8abb5b76e2ebfbb6bb4d091da6a20a59f"
+    },
+    {
+      "slug": "dalma",
+      "url": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMTlfNzUg/MDAxNTc5NDI0MTEyNDEz.6014zcF-GsUIpFqKqgEbNvZPpmPuGTcP8ccI0uhLjdEg.Pvl0CV6QPaHUqdSKOB_-Wv1exXv57v2OWIt3gTpuOskg.GIF.180921/달마신공.gif?type=w800",
+      "name": "달마신공.gif",
+      "status": "FETCHED",
+      "size": 47975,
+      "sha256": "29a80be60bbfe7aad997121e01bdc4695d10cecba2d84f422905d261c4a0c221"
+    }
+  ]
+}

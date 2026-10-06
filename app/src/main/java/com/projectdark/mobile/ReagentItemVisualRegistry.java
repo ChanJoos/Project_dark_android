@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Source-backed classic reagent/recall icons. No placeholder drawing is permitted here. */
+/** Captured original core icons; Curum/holy-water icons are documented project reconstruction. */
 final class ReagentItemVisualRegistry {
   private final Context context;
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
@@ -21,13 +21,21 @@ final class ReagentItemVisualRegistry {
     else if(RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID.equals(itemId))file="it_reagent_dibenomum.webp";
     else if(RpgProgressionState.REAGENT_CURANUM_ITEM_ID.equals(itemId))file="it_reagent_curanum.webp";
     else if(RpgProgressionState.RECALL_MILLES_ITEM_ID.equals(itemId))file="it_recall_milles.webp";
-    // Curanum deliberately has no fabricated visual mapping until its source icon is confirmed.
+    else if("IT_REAGENT_EXCURANUM".equals(itemId))file="it_reagent_excuranum.webp";
     Bitmap out=null;
     if(file!=null)try(InputStream in=context.getAssets().open("assets/items/consumable/"+file)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;
-      out=cleanCapturedBackground(BitmapFactory.decodeStream(in,null,o));
+      // These five originals already have alpha. Flood-filling by their corner RGB
+      // erased the black Excuranum stopper and dark glass outline on transparent pixels.
+      out=preserveCapturedAlpha(BitmapFactory.decodeStream(in,null,o));
     }catch(Throwable ignored){}
+
     cache.put(itemId,out);return out;
+  }
+  private static Bitmap preserveCapturedAlpha(Bitmap src){
+    if(src==null)return null;
+    for(int y=0;y<src.getHeight();y++)for(int x=0;x<src.getWidth();x++)if((src.getPixel(x,y)>>>24)!=0)return src;
+    return cleanCapturedBackground(src);
   }
   private static Bitmap cleanCapturedBackground(Bitmap src){
     if(src==null||src.getWidth()<2||src.getHeight()<2)return src;
@@ -38,5 +46,5 @@ final class ReagentItemVisualRegistry {
     return trimTransparent(out);
   }
   private static Bitmap trimTransparent(Bitmap b){int l=b.getWidth(),t=b.getHeight(),r=-1,bt=-1;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if((b.getPixel(x,y)>>>24)!=0){if(x<l)l=x;if(x>r)r=x;if(y<t)t=y;if(y>bt)bt=y;}return r>=l?Bitmap.createBitmap(b,l,t,r-l+1,bt-t+1):b;}
-  boolean sourceBacked(String itemId){return get(itemId)!=null;}
+  boolean sourceBacked(String itemId){return !"IT_REAGENT_CURUM".equals(itemId)&&!"IT_REAGENT_HOLYWATER".equals(itemId)&&get(itemId)!=null;}
 }

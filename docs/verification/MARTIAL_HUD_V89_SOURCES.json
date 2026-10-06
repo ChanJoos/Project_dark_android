@@ -1,0 +1,106 @@
+{
+  "sourceCommit": "a4dcc1086f283fd49b7673c8fa5c4ddf8c140f97",
+  "sourceTree": "f651e78774083f3bbc86870317ae2cfd0cff25a1",
+  "inputReference": "User screenshot1000058195.jpg,1536x709; successfully downloaded and inspected before environment went offline",
+  "coreChanges": [
+    "Accepted FRONT/FRONT_BACK intent locked through contact; actual recipient shape revalidated",
+    "Ranged SINGLE release faces actual moved target, including lethal contact",
+    "Per-capture martial actor-foot registry; damage channels follow actual recipient including CROSS",
+    "Recipient height/head/floor anchors distinguish hit, blind and freeze; upright effects remain upright",
+    "Projectile and generic martial crescent planes follow accepted direction; source crescent SW (-32,+16)",
+    "NPC outdoor NW32/16, interior NW12/6; head-centered labels",
+    "AUTO fairly cycles learned assigned quickslots, respects cooldown/resources, skips active buffs/full-health heals",
+    "One HUD frame, inset square cropped icon content; skill rail reuses embossed gold scroll"
+  ],
+  "sourceCaptureFeet": {
+    "002/006/007/010/014": {
+      "caster": [
+        118,
+        105
+      ],
+      "recipient": [
+        145,
+        118
+      ]
+    },
+    "009/011/015/018/023": {
+      "caster": [
+        100,
+        96
+      ],
+      "recipient": [
+        128,
+        109
+      ]
+    },
+    "021": {
+      "caster": [
+        118,
+        94
+      ],
+      "recipient": [
+        145,
+        105
+      ]
+    },
+    "019": [
+      100,
+      96
+    ],
+    "032": [
+      94,
+      96
+    ],
+    "remainingSelf": [
+      100,
+      100
+    ]
+  },
+  "nativeTestScope": {
+    "martialIds": 34,
+    "activeIds": 30,
+    "directions": 4,
+    "moments": [
+      "precontact",
+      "contact",
+      "+120ms",
+      "controlled source FX peak"
+    ],
+    "newNativeRegressionTests": 9,
+    "linkedBasicAttackIds": [
+      "SK_무도가_005",
+      "SK_무도가_027"
+    ],
+    "utilityNotStandaloneCombatIds": [
+      "SK_무도가_003",
+      "SK_무도가_034"
+    ],
+    "otherCases": [
+      "moved frontal target cannot turn attack behind actor",
+      "all martial damage shape recipients",
+      "AUTO fair cycling/cooling/unlearned/full-health heal",
+      "all8 icon pixel bounds",
+      "registered upright north/west pixels",
+      "generic cast actual directional energy",
+      "actual recipient height translation",
+      "lethal moved ranged recipient facing"
+    ],
+    "existingBothSexBodyMatrix": "34 IDs x2 BODY identities x4 directions x5 phases retained in full CI",
+    "referenceAspect": "1536x709"
+  },
+  "sourceBytes": "Original GIF/atlas/asset bytes remain unchanged; runtime registration/reflection/flight transform/cursor-band clipping only. Matting/occlusion and absent original FX remain unresolved.",
+  "visualReview": {
+    "priorCalibrationCaptures": "6712dce2/37022015105: IDs002,010,014,018,021,023,017,032 reviewed after per-capture foot/height correction. Earlier1036b790 full30 contact/+120ms/peak sheets reviewed before final calibration. UI outdoor1536x709 and all four rooms reviewed before unchanged final UI build.",
+    "finalNativeCaptures": "a4dcc108/37022876847 generated53;9 regression gates pass; manual final pixel review blocked by local execution environment offline",
+    "phone": "PENDING",
+    "userAcceptance": "PENDING",
+    "originalQuality": "NOT_CERTIFIED"
+  },
+  "buildRun": 37022876847,
+  "buildJob": 110890093716,
+  "buildStatus": "SUCCESS",
+  "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "sourceBranch": "codex/town-interiors-mobile-v86",
+  "candidate": true,
+  "deliveryRecovery": "Local unified exec and download_file returned environment_offline after source CI success; independent GitHub runner verifies exact artifact bytes and builds install evidence ZIP. No new gameplay code introduced by delivery workflow."
+}

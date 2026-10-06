@@ -1,0 +1,260 @@
+{
+  "assetSet": "V108_ADAPTED_FIELD_MOUSE_ANIMATED",
+  "classification": "PROJECT_ADAPTED_GENERATED_ART",
+  "sourceImage": "../../../review/interiors/v108/field_mouse_sheet.png",
+  "sourceSha256": "61abe8c4b52f57fdab7ef3a1419c6a8a41b86ebed63b14748fc62a61f03b5191",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "rowDirectionOrder": [
+    "nw",
+    "ne",
+    "sw",
+    "se"
+  ],
+  "columnActivityOrder": [
+    "idle",
+    "walk_a",
+    "walk_b",
+    "attack"
+  ],
+  "normalization": {
+    "contentRect": [
+      6,
+      23,
+      58,
+      59
+    ],
+    "groundBaselineY": 59,
+    "alphaCropThreshold": 128,
+    "resampling": "Lanczos; fixed projection frame 52x36"
+  },
+  "assets": [
+    {
+      "file": "field_mouse_nw_idle.png",
+      "direction": "nw",
+      "activity": "idle",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "6027807541a349de79365e742e550188322600236c3108f28b33aaca7c381d7c"
+    },
+    {
+      "file": "field_mouse_nw_walk_a.png",
+      "direction": "nw",
+      "activity": "walk_a",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "986ef0758232fe4a436ac16d1d2b38a97c986f57d52f56fbec7420292f8a8ed9"
+    },
+    {
+      "file": "field_mouse_nw_walk_b.png",
+      "direction": "nw",
+      "activity": "walk_b",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "e87e421c7c2817c347cae0c1dde54d65037f79dcea46df3a628026cded132baf"
+    },
+    {
+      "file": "field_mouse_nw_attack.png",
+      "direction": "nw",
+      "activity": "attack",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "5b440f3dc7a68ead68e17bc7d604ae18e7154b34d1fc35f73d8e633489a6c49a"
+    },
+    {
+      "file": "field_mouse_ne_idle.png",
+      "direction": "ne",
+      "activity": "idle",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "25daf0a1973ec2c5459ed9d120e7d06c271bebe09be7985fe4d82001033919b5"
+    },
+    {
+      "file": "field_mouse_ne_walk_a.png",
+      "direction": "ne",
+      "activity": "walk_a",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "9834028e84d91040851b272f202ab650c145012bc0e63840662c506b5ae29c4f"
+    },
+    {
+      "file": "field_mouse_ne_walk_b.png",
+      "direction": "ne",
+      "activity": "walk_b",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "ed97e885cc2627c6b2a425024455aa74ac4cd728440be81b218398a16ebd69bc"
+    },
+    {
+      "file": "field_mouse_ne_attack.png",
+      "direction": "ne",
+      "activity": "attack",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "f3ef62d590fbb136aeb8d3c983def6e534fda10f070cabad5762488bb525f266"
+    },
+    {
+      "file": "field_mouse_sw_idle.png",
+      "direction": "sw",
+      "activity": "idle",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "d68646387b7e34b732dd863c299272172fb76eceb8882b713aaca3b001a1bbf7"
+    },
+    {
+      "file": "field_mouse_sw_walk_a.png",
+      "direction": "sw",
+      "activity": "walk_a",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "e0d2b1ae725781cda83c1d494ed2066abdbae5e9c1579792825c63bea23febea"
+    },
+    {
+      "file": "field_mouse_sw_walk_b.png",
+      "direction": "sw",
+      "activity": "walk_b",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "c42729edff410cadfc3bc9ddbeef09291bb253b4f206057b2729153c2d0484ea"
+    },
+    {
+      "file": "field_mouse_sw_attack.png",
+      "direction": "sw",
+      "activity": "attack",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "e8b764419eed99f0639bd0d9f760311cc0f8f1f90df31865b36fee9cdbf15850"
+    },
+    {
+      "file": "field_mouse_se_idle.png",
+      "direction": "se",
+      "activity": "idle",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "9f93945e60928d52453d686ff8b8826f67fb0d71d3ca190485ab2f04bdbe0f55"
+    },
+    {
+      "file": "field_mouse_se_walk_a.png",
+      "direction": "se",
+      "activity": "walk_a",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "903eb51cf4d57998ac8e2aea7abf970e25491d71685fb65a111911b4be2a95f6"
+    },
+    {
+      "file": "field_mouse_se_walk_b.png",
+      "direction": "se",
+      "activity": "walk_b",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "a22265520b38469a011e18ec3bfa5c9c316cb15297b47680bed3a38a7266ad6c"
+    },
+    {
+      "file": "field_mouse_se_attack.png",
+      "direction": "se",
+      "activity": "attack",
+      "width": 64,
+      "height": 64,
+      "opaque_bounds": [
+        6,
+        23,
+        58,
+        59
+      ],
+      "sha256": "0b5416c46e68992ee723ad55b20731e0dc0fed1264081e778f5ed036539b34c9"
+    }
+  ],
+  "runtime": "idle when still; walk_a/walk_b alternate from animationClock; attack while attackPrimed or attackVisualRemaining > 0"
+}

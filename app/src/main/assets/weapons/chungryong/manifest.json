@@ -1,0 +1,465 @@
+{
+  "revision": "CHUNGRYONG_V96_HAND_AND_SCALE",
+  "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/490398?fromList=true&menuId=131&tc=cafe_article_list",
+  "title": "『청룡의숨결』 각 직업 모션",
+  "author": "아머드코어",
+  "published": "2025-07-08 16:33",
+  "sourceScale": 0.5,
+  "carryBodyRatio": 0.8431372549019608,
+  "frames": {
+    "basic": {
+      "front": [
+        {
+          "sx": 0,
+          "sy": 0,
+          "w": 81,
+          "h": 37,
+          "gripX": 4,
+          "gripY": 10,
+          "sourceFrame": 0,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            123,
+            103,
+            204,
+            140
+          ]
+        },
+        {
+          "sx": 180,
+          "sy": 0,
+          "w": 59,
+          "h": 56,
+          "gripX": 56,
+          "gripY": 11,
+          "sourceFrame": 1,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            235,
+            64,
+            294,
+            120
+          ]
+        },
+        {
+          "sx": 360,
+          "sy": 0,
+          "w": 139,
+          "h": 152,
+          "gripX": 20,
+          "gripY": 114,
+          "sourceFrame": 2,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            107,
+            28,
+            246,
+            180
+          ]
+        }
+      ],
+      "back": [
+        {
+          "sx": 540,
+          "sy": 0,
+          "w": 56,
+          "h": 52,
+          "gripX": 12,
+          "gripY": 44,
+          "sourceFrame": 3,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            146,
+            66,
+            202,
+            118
+          ]
+        },
+        {
+          "sx": 720,
+          "sy": 0,
+          "w": 59,
+          "h": 56,
+          "gripX": 58,
+          "gripY": 8,
+          "sourceFrame": 4,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            233,
+            68,
+            292,
+            124
+          ]
+        },
+        {
+          "sx": 900,
+          "sy": 0,
+          "w": 89,
+          "h": 114,
+          "gripX": 4,
+          "gripY": 109,
+          "sourceFrame": 5,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            117,
+            9,
+            206,
+            123
+          ]
+        }
+      ]
+    },
+    "twohand": {
+      "front": [
+        {
+          "sx": 0,
+          "sy": 180,
+          "w": 76,
+          "h": 30,
+          "gripX": 66,
+          "gripY": 21,
+          "sourceFrame": 0,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            227,
+            32,
+            303,
+            62
+          ]
+        },
+        {
+          "sx": 180,
+          "sy": 180,
+          "w": 82,
+          "h": 111,
+          "gripX": 11,
+          "gripY": 70,
+          "sourceFrame": 1,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            119,
+            26,
+            201,
+            137
+          ]
+        },
+        {
+          "sx": 360,
+          "sy": 180,
+          "w": 49,
+          "h": 101,
+          "gripX": 24,
+          "gripY": 67,
+          "sourceFrame": 2,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            148,
+            11,
+            197,
+            112
+          ]
+        },
+        {
+          "sx": 540,
+          "sy": 180,
+          "w": 85,
+          "h": 144,
+          "gripX": -2,
+          "gripY": 84,
+          "sourceFrame": 3,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            127,
+            36,
+            212,
+            180
+          ]
+        }
+      ],
+      "back": [
+        {
+          "sx": 720,
+          "sy": 180,
+          "w": 67,
+          "h": 35,
+          "gripX": 51,
+          "gripY": 15,
+          "sourceFrame": 4,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            218,
+            54,
+            285,
+            89
+          ]
+        },
+        {
+          "sx": 900,
+          "sy": 180,
+          "w": 82,
+          "h": 110,
+          "gripX": 15,
+          "gripY": 87,
+          "sourceFrame": 5,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            119,
+            10,
+            201,
+            120
+          ]
+        },
+        {
+          "sx": 1080,
+          "sy": 180,
+          "w": 58,
+          "h": 60,
+          "gripX": 48,
+          "gripY": 3,
+          "sourceFrame": 6,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            215,
+            92,
+            273,
+            152
+          ]
+        },
+        {
+          "sx": 1260,
+          "sy": 180,
+          "w": 114,
+          "h": 97,
+          "gripX": 30,
+          "gripY": 80,
+          "sourceFrame": 7,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            107,
+            54,
+            221,
+            151
+          ]
+        }
+      ]
+    },
+    "horizontal": {
+      "front": [
+        {
+          "sx": 0,
+          "sy": 360,
+          "w": 77,
+          "h": 34,
+          "gripX": 52,
+          "gripY": 20,
+          "sourceFrame": 0,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            174,
+            108,
+            251,
+            142
+          ]
+        },
+        {
+          "sx": 180,
+          "sy": 360,
+          "w": 64,
+          "h": 42,
+          "gripX": 52,
+          "gripY": 36,
+          "sourceFrame": 1,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            216,
+            42,
+            280,
+            84
+          ]
+        },
+        {
+          "sx": 360,
+          "sy": 360,
+          "w": 161,
+          "h": 120,
+          "gripX": 37,
+          "gripY": 48,
+          "sourceFrame": 2,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            127,
+            41,
+            288,
+            161
+          ]
+        }
+      ],
+      "back": [
+        {
+          "sx": 540,
+          "sy": 360,
+          "w": 82,
+          "h": 36,
+          "gripX": 40,
+          "gripY": 16,
+          "sourceFrame": 3,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            168,
+            109,
+            250,
+            145
+          ]
+        },
+        {
+          "sx": 720,
+          "sy": 360,
+          "w": 62,
+          "h": 43,
+          "gripX": 66,
+          "gripY": 42,
+          "sourceFrame": 4,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            237,
+            36,
+            299,
+            79
+          ]
+        },
+        {
+          "sx": 900,
+          "sy": 360,
+          "w": 121,
+          "h": 74,
+          "gripX": 13,
+          "gripY": 57,
+          "sourceFrame": 5,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            100,
+            68,
+            221,
+            142
+          ]
+        }
+      ]
+    },
+    "vertical": {
+      "front": [
+        {
+          "sx": 0,
+          "sy": 540,
+          "w": 65,
+          "h": 58,
+          "gripX": 20,
+          "gripY": 72,
+          "sourceFrame": 0,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            159,
+            55,
+            224,
+            113
+          ]
+        },
+        {
+          "sx": 180,
+          "sy": 540,
+          "w": 39,
+          "h": 64,
+          "gripX": 35,
+          "gripY": 19,
+          "sourceFrame": 1,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            236,
+            39,
+            275,
+            103
+          ]
+        },
+        {
+          "sx": 360,
+          "sy": 540,
+          "w": 107,
+          "h": 168,
+          "gripX": 27,
+          "gripY": 131,
+          "sourceFrame": 2,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            124,
+            4,
+            231,
+            172
+          ]
+        }
+      ],
+      "back": [
+        {
+          "sx": 540,
+          "sy": 540,
+          "w": 63,
+          "h": 59,
+          "gripX": 6,
+          "gripY": 70,
+          "sourceFrame": 3,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            148,
+            56,
+            211,
+            115
+          ]
+        },
+        {
+          "sx": 720,
+          "sy": 540,
+          "w": 48,
+          "h": 66,
+          "gripX": 40,
+          "gripY": 12,
+          "sourceFrame": 4,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            235,
+            44,
+            283,
+            110
+          ]
+        },
+        {
+          "sx": 900,
+          "sy": 540,
+          "w": 102,
+          "h": 151,
+          "gripX": 28,
+          "gripY": 134,
+          "sourceFrame": 5,
+          "sourceDurationMs": 300,
+          "sourceBox": [
+            122,
+            3,
+            224,
+            154
+          ]
+        }
+      ]
+    }
+  },
+  "evidence": "V_COMMUNITY_CAPTURE / ADAPTED_COLOR_MATTING_AND_HAND_REGISTRATION",
+  "limitations": [
+    "cyan capture silhouette only; occluded grip/cord pixels cannot be recovered",
+    "source has front/back views; west/east reflection follows existing rig",
+    "source GIF holds are 300ms; combat duration/contact remains existing resolver",
+    "original event distribution, durability and 1~2 S/L damage are not invented as runtime rules"
+  ],
+  "sourceHashes": {
+    "basic.gif": "e2ef004188e6e198c5098cc7119959c9c9606793cf31cb73bbff81ba7f6e637c",
+    "vertical.gif": "6f6131728b76ef768d8d7872303435de03a539b3f0214ac23f3ecbb99aab9ace",
+    "item.png": "d0ea205c8ca70fc98dcf3042722efa2acbc0c1c5abd78d4042b6b55c59fe88ec",
+    "twohand.gif": "8fee1d0c24a699dd006cf1e94249bebfefd258b655c37a3cc104ed7b2dc09568",
+    "horizontal.gif": "c70c2c9974eced2dadec46d9080861a6877f38903a9b86f8b49bfea74174ca58"
+  }
+}

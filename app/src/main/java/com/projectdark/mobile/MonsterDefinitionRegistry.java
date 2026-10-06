@@ -34,6 +34,12 @@ public final class MonsterDefinitionRegistry {
     definitions.put("combat_dummy_03",new MonsterDefinition(
         "combat_dummy_03","훈련 몬스터 C [B]","밀레스 runtime prototype",null,null,null,null,
         MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
+
+    // User-requested story fixture. There is no matching canonical Master row or original asset.
+    // It is deliberately tagged ADAPTED and uses the same prototype AI/controller as the dummies.
+    definitions.put("milles_mouse_proto",new MonsterDefinition(
+        "milles_mouse_proto","마을 생쥐 [ADAPTED]","밀레스 여관 창고 · project story fixture",null,null,null,null,
+        MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
   }
 
   public MonsterDefinition resolve(String monsterId){

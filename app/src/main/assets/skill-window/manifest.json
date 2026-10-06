@@ -1,0 +1,315 @@
+{
+  "source": "master/source/skill_window/user_reference_20261001.jpg",
+  "sha256": "7c55eaf816b641d6e29f3b871aac008b1cf1d109f39475e3f2e4db8f8b2009a0",
+  "size": [
+    1536,
+    950
+  ],
+  "crops": {
+    "paper": {
+      "box": [
+        535,
+        375,
+        971,
+        485
+      ],
+      "path": "skill-window/paper.png",
+      "sha256": "377ce89bd44f90f1c841f5e816372a7fcf226568c79a4843f490ae8a7b116098"
+    },
+    "detail-paper": {
+      "box": [
+        1040,
+        312,
+        1440,
+        387
+      ],
+      "path": "skill-window/detail-paper.png",
+      "sha256": "a329c494fb533a691ba570d7c1c0cdc0e93ff48f2a3de2e6fd5633408337f3a1"
+    },
+    "list-header": {
+      "box": [
+        57,
+        80,
+        1001,
+        134
+      ],
+      "path": "skill-window/list-header.png",
+      "sha256": "9310e598e5da42528175f38e17bbbb32cf992967302027ec21cdb919bb6739b1"
+    },
+    "detail-header": {
+      "box": [
+        1011,
+        79,
+        1482,
+        133
+      ],
+      "path": "skill-window/detail-header.png",
+      "sha256": "35e650362e2be99bf475bd2dd76117169f0860ef9b447d5c3f2ae726f85a9dde"
+    },
+    "left-edge": {
+      "box": [
+        55,
+        220,
+        62,
+        895
+      ],
+      "path": "skill-window/left-edge.png",
+      "sha256": "6cc1c462916104f8e9a475fa554313de5be92d7ba3aed9b1492b12c08f6fff56"
+    },
+    "right-edge": {
+      "box": [
+        996,
+        220,
+        1004,
+        895
+      ],
+      "path": "skill-window/right-edge.png",
+      "sha256": "c056cdabc0eb9800ced8dd4b6097f1672d87c08c89c12b0a4f18d0a98a5deae2"
+    },
+    "bottom-edge": {
+      "box": [
+        65,
+        928,
+        995,
+        937
+      ],
+      "path": "skill-window/bottom-edge.png",
+      "sha256": "73b77a218dc94ba42b1218f60b16b2d87f481aa6c6b723ae3ace5eaa6cbccb58"
+    },
+    "detail-left": {
+      "box": [
+        1008,
+        134,
+        1016,
+        554
+      ],
+      "path": "skill-window/detail-left.png",
+      "sha256": "bde6086ad4202380cca2daed0f8fd7d941fe141aab51957c0de27169896db763"
+    },
+    "detail-right": {
+      "box": [
+        1478,
+        134,
+        1486,
+        554
+      ],
+      "path": "skill-window/detail-right.png",
+      "sha256": "892876c523e31fe43a827bea63b057167059eef1d5adfb89f6b4709b2d8846a4"
+    },
+    "detail-bottom": {
+      "box": [
+        1016,
+        554,
+        1478,
+        563
+      ],
+      "path": "skill-window/detail-bottom.png",
+      "sha256": "6cdbd446de9988137fbcee12522effcbc652bb5522eda906982a79aa25f74728"
+    },
+    "icon-frame": {
+      "box": [
+        79,
+        437,
+        158,
+        537
+      ],
+      "path": "skill-window/icon-frame.png",
+      "sha256": "f1755d44f982b35ac08ab42d21400a31c80a88143dccf223c2d964e7d719f86b"
+    },
+    "selected-frame": {
+      "box": [
+        254,
+        598,
+        336,
+        699
+      ],
+      "path": "skill-window/selected-frame.png",
+      "sha256": "a1a01986f2215dfa16477db7c7db57c8f5cc1e5e18300e9ef4cdf9f6ebe9d675"
+    },
+    "scroll-track": {
+      "box": [
+        980,
+        202,
+        1000,
+        914
+      ],
+      "path": "skill-window/scroll-track.png",
+      "sha256": "0d377ebfd347168c63ee23c0b9c02b0bf67ce2e847a5c882a8d6142c2b122c36"
+    },
+    "scroll-thumb": {
+      "box": [
+        980,
+        487,
+        1000,
+        884
+      ],
+      "path": "skill-window/scroll-thumb.png",
+      "sha256": "27c960f8655e9d42fce7a9b39fb988c0f759191131b06b58594d3d3ca811cd1b"
+    },
+    "scroll-up": {
+      "box": [
+        980,
+        184,
+        1000,
+        203
+      ],
+      "path": "skill-window/scroll-up.png",
+      "sha256": "f8e17fd5fb90c1f1ee4df0444a12df38b278c5072dc0195343fd5c5a72e96228"
+    },
+    "scroll-down": {
+      "box": [
+        980,
+        904,
+        1000,
+        926
+      ],
+      "path": "skill-window/scroll-down.png",
+      "sha256": "0c4679ea7ce98aac97e6418e63ba62b86b12a7a88ad0dc5ea6b970cf6e2202f7"
+    },
+    "command-box": {
+      "box": [
+        1034,
+        393,
+        1465,
+        445
+      ],
+      "path": "skill-window/command-box.png",
+      "sha256": "d9579a27239ed6fed7cc8f4d2303db705aeb23b0b683370d5e4c4e037f0f43ad"
+    },
+    "SK_도적_014": {
+      "box": [
+        86,
+        280,
+        151,
+        345
+      ],
+      "path": "skill-window/rogue_014.png",
+      "sha256": "cd8f1bbea55c217b9a5272da5065a3c8a08fd76a043bfb74157a6d710a24b57d"
+    },
+    "SK_도적_015": {
+      "box": [
+        174,
+        280,
+        239,
+        345
+      ],
+      "path": "skill-window/rogue_015.png",
+      "sha256": "2f102919afb24e4a0521b8365a0cd11161a1133020b675e0da52ec7f70c31fb8"
+    },
+    "SK_도적_016": {
+      "box": [
+        262,
+        280,
+        327,
+        345
+      ],
+      "path": "skill-window/rogue_016.png",
+      "sha256": "df66fbe7e75fbba7aa30aedb76281894b9f9e07d5ba4f961325d5fa5084d996e"
+    },
+    "SK_도적_017": {
+      "box": [
+        350,
+        280,
+        415,
+        345
+      ],
+      "path": "skill-window/rogue_017.png",
+      "sha256": "428718dfa870c6d5926d1b52bf418472fba202c44ac448afd15bc30681578154"
+    },
+    "SK_도적_018": {
+      "box": [
+        438,
+        280,
+        503,
+        345
+      ],
+      "path": "skill-window/rogue_018.png",
+      "sha256": "9d2bab4b771ddcd7bbbc0aeb228fc15fe979127ecbc099ca034273bd5c9e0afb"
+    },
+    "SK_도적_019": {
+      "box": [
+        86,
+        444,
+        151,
+        509
+      ],
+      "path": "skill-window/rogue_019.png",
+      "sha256": "c5827f837683ba714d8ac300f8f9a4ef925975219b19030189ebf02ba8c44dec"
+    },
+    "SK_도적_020": {
+      "box": [
+        174,
+        444,
+        239,
+        509
+      ],
+      "path": "skill-window/rogue_020.png",
+      "sha256": "901a1dcaa0bebf5b5d4b92bf2a92584b99f97914c1c00927bcfd326e95d2c7ec"
+    },
+    "SK_도적_022": {
+      "box": [
+        87,
+        606,
+        152,
+        671
+      ],
+      "path": "skill-window/rogue_022.png",
+      "sha256": "24d6108c113148b47b036babc197fc395cef44fb4a5745a5ade026748ad4b44c"
+    },
+    "SK_도적_026": {
+      "box": [
+        175,
+        606,
+        240,
+        671
+      ],
+      "path": "skill-window/rogue_026.png",
+      "sha256": "f728fc07867bd454698487c8c24636f846ae82f6877fbe11c80313bca3c38256"
+    },
+    "SK_도적_025": {
+      "box": [
+        263,
+        606,
+        328,
+        671
+      ],
+      "path": "skill-window/rogue_025.png",
+      "sha256": "bddc122433211690ff3956e26417adb41a7c3649c670e81f8aa20dc17c71cbfd"
+    }
+  },
+  "iconBindings": {
+    "SK_도적_014": "skill-window/rogue_014.png",
+    "SK_도적_015": "skill-window/rogue_015.png",
+    "SK_도적_016": "skill-window/rogue_016.png",
+    "SK_도적_017": "skill-window/rogue_017.png",
+    "SK_도적_018": "skill-window/rogue_018.png",
+    "SK_도적_019": "skill-window/rogue_019.png",
+    "SK_도적_020": "skill-window/rogue_020.png",
+    "SK_도적_022": "skill-window/rogue_022.png",
+    "SK_도적_026": "skill-window/rogue_026.png",
+    "SK_도적_025": "skill-window/rogue_025.png"
+  },
+  "limitations": [
+    "Only the selected trap is labelled directly in this screenshot. Circle-four/five ordering and two promotion visual motifs are cross-checked against the preserved catalog; keep these nine icon/name inferences explicit.",
+    "Second-job rank counts are not an implemented progression system.",
+    "Window skin is extracted from this single user-selected reference, not certified as shipping licensed art."
+  ],
+  "capturedDetails": {
+    "SK_도적_025": {
+      "name": "함정파기",
+      "cooldownSeconds": 23,
+      "castSeconds": 0,
+      "mpCost": 0,
+      "description": "체력을 소모시키는 함정을 판다.",
+      "status": "SOURCE_PREVIEW_ONLY"
+    }
+  },
+  "roguePromotionOrder": [
+    "SK_도적_022",
+    "SK_도적_026",
+    "SK_도적_025",
+    "SK_도적_021",
+    "SK_도적_023",
+    "SK_도적_024"
+  ]
+}

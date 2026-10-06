@@ -1,0 +1,479 @@
+{
+  "sourceCommit": "a4dcc1086f283fd49b7673c8fa5c4ddf8c140f97",
+  "sourceTree": "f651e78774083f3bbc86870317ae2cfd0cff25a1",
+  "sourceBranch": "codex/town-interiors-mobile-v86",
+  "mainAtComparison": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "candidate": true,
+  "buildRun": 37022876847,
+  "buildJob": 110890093716,
+  "buildCompletedSeoul": "2026-10-02T23:57:38+09:00",
+  "apkArtifactId": 11233149249,
+  "nativeArtifactId": 11233174312,
+  "apkSha256": "2577f83ba1bd5d4e4f913e0b45a32021dd3fd8d42b3934c1a3972124bc5be086",
+  "apkBytes": 30592205,
+  "manifest": {
+    "versionCode": 89,
+    "versionName": "0.89-martial-auto-hud",
+    "compileSdkVersion": 35,
+    "compileSdkVersionCodename": "15",
+    "package": "com.projectdark.mobile",
+    "platformBuildVersionCode": 35,
+    "platformBuildVersionName": 15
+  },
+  "trackedPackagedAssetsByteMatched": 679,
+  "trackedPackagedDrawableBytesMatched": 45,
+  "totalTrackedPresentationFilesByteMatched": 724,
+  "missingAssets": [],
+  "mismatchedAssets": [],
+  "generatedNativeCaptures": 53,
+  "includedV89Captures": 37,
+  "captureHashes": {
+    "v89-auto-quickslots.png": "df6b6f83caaddda3c994b1fcee6a9acd525b64283a06cf31ec37c16fa5c80edd",
+    "v89-hud-npc.png": "05b804ab8a0397b2950eb56ac1476d7ea2e924f343b2abd058fe6785cf727678",
+    "v89-hud-wide-npc.png": "eec6d89797f0ae4284392ba639d05c5d6ce77c9f3c45f27f75df441a64287394",
+    "v89-martial-SK_무도가_001.png": "d7e820b8820ca9b639794be8a73300b45fda600f752075c015223401b2dd5c70",
+    "v89-martial-SK_무도가_002.png": "c789cda20de52b8c57b2f09d8d85f1eec8032ce9a4936e71045705fd903e578d",
+    "v89-martial-SK_무도가_004.png": "197288621baba7c1066beb5fa968938efa1f0e2d1dacb203cdf5a39b0aa42fbf",
+    "v89-martial-SK_무도가_006.png": "622d98fc5f7e5f8cff812326a308b03b59d286296af60ed2e3a0e34a520e6d92",
+    "v89-martial-SK_무도가_007.png": "5895b76b8300020a0ff49966a6bc0dd52f6b4b4a2721c053d5ddbacc65b17c60",
+    "v89-martial-SK_무도가_008.png": "67f288777a21da338f5ce5c36c666cff3b196068f650ceae19f58f02baa71d02",
+    "v89-martial-SK_무도가_009.png": "c1a0dae8b17c3faa9e613b90a14f2f38bde468838e8181d59b56ffd53acfa2ad",
+    "v89-martial-SK_무도가_010.png": "676a53de5369f4a43a0b94678ccafe336bffde4c957af214cc36e662912dfc52",
+    "v89-martial-SK_무도가_011.png": "0462aad36ba28ce4abeb1a30e25da6c9758dda27e344446ab3a84b2426fd76d0",
+    "v89-martial-SK_무도가_012.png": "2dcd0392258b787ae2df716d50936c48e1f208f31dee629b781b581cd730d95d",
+    "v89-martial-SK_무도가_013.png": "fa0487de32d657b14d2104d4a0670ee8479cfa4187cb64507c0a49ec8711ea5c",
+    "v89-martial-SK_무도가_014.png": "8240065bcd57f0e4e359dcf1f3b2b712e39596dd4c73b1e8694a056481682cee",
+    "v89-martial-SK_무도가_015.png": "71947e5975bd6fef2b09bbff33fe29950db81da23e1107f4f04901f1fdf935ce",
+    "v89-martial-SK_무도가_016.png": "cff8356357ce72ea89e26b13c165ce8f0b4dc1c83bcdd157cfa82903c3aece21",
+    "v89-martial-SK_무도가_017.png": "f64a4d3f07a392fcf8b9405b0a328f0f34e7ba36f4370fbb0e245ff2978aba90",
+    "v89-martial-SK_무도가_018.png": "c294d1140104bccb56f92c9eec685d0b58b34799fc8caa318a1c1095fb1be46b",
+    "v89-martial-SK_무도가_019.png": "6f40aae7bcc07757d398ebe5aaf2f2a33237f577eda008bc191cf70d997ad400",
+    "v89-martial-SK_무도가_020.png": "b0587d9a4e34b8d17296be19f43b69cf91ea6baaacc8fe16eeef2814dfa6757b",
+    "v89-martial-SK_무도가_021.png": "8c604b004b4c3de4cbe937ea538ffe3584cde6cda880f5cb70ebf693f051d658",
+    "v89-martial-SK_무도가_022.png": "77eb3d3cfe3e0156f56519d09c3ed51f3de16747ba62c8f947ba6110cdfd95ce",
+    "v89-martial-SK_무도가_023.png": "49dda06bb6cff7bf498010116e1fd7cdad4ae0fca90b255b760c7fc9b902951a",
+    "v89-martial-SK_무도가_024.png": "8f8c08567f98270ef531ed5610658f541f431d45bafa03f84ca5becf5a1ac550",
+    "v89-martial-SK_무도가_025.png": "b2976b9e8331fb65085f58de40570874562fa9b0b4cf1047a32e243229fe9327",
+    "v89-martial-SK_무도가_026.png": "7a64290640159d7b41e8fd6e32a20f1d8466873209eaff2de70967b61759c3a3",
+    "v89-martial-SK_무도가_028.png": "e60c20a4ac0b6c7ecadf3845a1447300f5539c124edd65254879cc81891b72a7",
+    "v89-martial-SK_무도가_029.png": "6f8ae4949d3283e02c342cef63b437d2526066e00575abe0cf32df16830a6797",
+    "v89-martial-SK_무도가_030.png": "83b147581da82c34c5e761ac51f9468903fa895e93bfedddf524ecd10202fdfa",
+    "v89-martial-SK_무도가_031.png": "52bb61228b1085ee8d1668e55cc2054f579c70fa56fa3233f90ec3827a1fa7fd",
+    "v89-martial-SK_무도가_032.png": "c8f8d4e3ae3e785e761afd39e0cfdb8239b78b0cb98c3004ce9685da12611a97",
+    "v89-martial-SK_무도가_033.png": "67f288777a21da338f5ce5c36c666cff3b196068f650ceae19f58f02baa71d02",
+    "v89-town-bank.png": "4e33d8c0ded86153a6dbc7fa1c673cecf309781310c705e4813fe1b638174e02",
+    "v89-town-church.png": "191a1d8c9bc4c0b0b0772bcfe20e039d9e0f4ec75d2d44e02a3ba8f5832363c7",
+    "v89-town-equipment.png": "40a7c83e6c88d595dddf4ac0d0e073127b26e7dcfa440d11ef5aae7eb506194c",
+    "v89-town-reagent.png": "b1189d4ebfa0ff40eabe2817a24ea8f5af8ac9b6bc549d3e3ec7e5e800c3b611"
+  },
+  "verification": "Exact source full Android CI SUCCESS, nine new martial/HUD/AUTO native regressions plus all configured existing gates. 34 martial IDs reviewed:30 ACTIVE four directions,2 LINKED basic attack,2 UTILITY not independent combat casts. Native camera ratio1536x709. Source capture matting remains approximate, original quality and physical phone/user acceptance pending.",
+  "localDelivery": "Execution environment went offline after exact CI success. Immutable CI artifacts verified and packaged on Actions runner.",
+  "deliveryZipBytes": 47791241,
+  "deliveryZipSha256": "367e8284fcea6cb667069c41bf198b9da30952dfbc7c24f8da3448e504a5d4ab",
+  "verificationRun": 37025471193,
+  "verificationJob": 110898869502,
+  "verifiedDeliveryArtifact": {
+    "id": 11235087055,
+    "name": "PROJECT_DARK_v89_verified_install",
+    "size_in_bytes": 47805748,
+    "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11235087055",
+    "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11235087055/zip",
+    "expired": false,
+    "created_at": "2026-10-02T15:13:57Z",
+    "expires_at": "2026-10-16T15:13:55Z",
+    "updated_at": "2026-10-02T15:13:57Z",
+    "digest": "sha256:e3c739f8de6f718139b0d93ef88bd6a192c76217c1603c9cdb29f12d82dd0179",
+    "workflow_run": {
+      "id": 37025471193,
+      "repository_id": 1362092000,
+      "head_repository_id": 1362092000,
+      "head_branch": "codex/town-interiors-mobile-v86",
+      "head_sha": "b6f36f2b399293f431f66fcfbada286de35f1207"
+    }
+  },
+  "configuredBuildSteps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2
+    },
+    {
+      "name": "Recover starter gear source manifests",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3
+    },
+    {
+      "name": "Run actions/setup-java@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4
+    },
+    {
+      "name": "Run gradle/actions/setup-gradle@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5
+    },
+    {
+      "name": "Prepare Android SDK",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6
+    },
+    {
+      "name": "Validate Master DB",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7
+    },
+    {
+      "name": "Verify generated skill catalog matches Master",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8
+    },
+    {
+      "name": "Verify project skill learning policy is reproducible",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9
+    },
+    {
+      "name": "Verify skill presentation mapping is reproducible",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10
+    },
+    {
+      "name": "Audit reusable Milles map assets and layout",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11
+    },
+    {
+      "name": "Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 12
+    },
+    {
+      "name": "Verify V83 per-skill abilities and runtime formulas",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 13
+    },
+    {
+      "name": "Verify classic capture sources and projections",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 14
+    },
+    {
+      "name": "Verify source window crops are reproducible",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 15
+    },
+    {
+      "name": "Audit every skill FX source and runtime precedence",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 16
+    },
+    {
+      "name": "Verify item window source crops and input",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17
+    },
+    {
+      "name": "Verify skill window, shared combat and restart persistence",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 18
+    },
+    {
+      "name": "Compile debug sources",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 19
+    },
+    {
+      "name": "Execute F5M production Quick Quest route audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 20
+    },
+    {
+      "name": "Execute Bundle B Milles early-loop audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 21
+    },
+    {
+      "name": "Execute Bundle B1 building scale audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 22
+    },
+    {
+      "name": "Execute Bundle B5 integrated loop audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 23
+    },
+    {
+      "name": "Execute Quick Quest optimal approach audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 24
+    },
+    {
+      "name": "Verify HUD leaves empty-world tap regions available",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 25
+    },
+    {
+      "name": "Render West, South and Waterside Milles districts",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 26
+    },
+    {
+      "name": "Render POTE production forest review frames",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 27
+    },
+    {
+      "name": "Execute 4-way BODY robe mokdo visual contract audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 28
+    },
+    {
+      "name": "Milddok ingestion identity audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 29
+    },
+    {
+      "name": "Execute Combat v3 FinalStats pipeline audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 30
+    },
+    {
+      "name": "Execute Growth Core v3 and FinalStats audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 31
+    },
+    {
+      "name": "Execute Growth v2 coherence audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 32
+    },
+    {
+      "name": "Execute Growth v2 Quest2 and stat progression audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 33
+    },
+    {
+      "name": "Execute F5M gameplay contract audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 34
+    },
+    {
+      "name": "Execute F5M production runtime binding audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 35
+    },
+    {
+      "name": "Execute F5M restart persistence matrix",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 36
+    },
+    {
+      "name": "Execute runtime checkpoint and legacy migration regression",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 37
+    },
+    {
+      "name": "Execute device recording regressions with native source rendering",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 38
+    },
+    {
+      "name": "Print unit test failure details",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 39
+    },
+    {
+      "name": "Upload device review rendering",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 40
+    },
+    {
+      "name": "Build debug APK",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 41
+    },
+    {
+      "name": "Upload debug APK",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 42
+    },
+    {
+      "name": "Post Run gradle/actions/setup-gradle@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 82
+    },
+    {
+      "name": "Post Run actions/setup-java@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 83
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 84
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 85
+    }
+  ],
+  "sourceBoundary": {
+    "sourceCommit": "a4dcc1086f283fd49b7673c8fa5c4ddf8c140f97",
+    "sourceTree": "f651e78774083f3bbc86870317ae2cfd0cff25a1",
+    "inputReference": "User screenshot1000058195.jpg,1536x709; successfully downloaded and inspected before environment went offline",
+    "coreChanges": [
+      "Accepted FRONT/FRONT_BACK intent locked through contact; actual recipient shape revalidated",
+      "Ranged SINGLE release faces actual moved target, including lethal contact",
+      "Per-capture martial actor-foot registry; damage channels follow actual recipient including CROSS",
+      "Recipient height/head/floor anchors distinguish hit, blind and freeze; upright effects remain upright",
+      "Projectile and generic martial crescent planes follow accepted direction; source crescent SW (-32,+16)",
+      "NPC outdoor NW32/16, interior NW12/6; head-centered labels",
+      "AUTO fairly cycles learned assigned quickslots, respects cooldown/resources, skips active buffs/full-health heals",
+      "One HUD frame, inset square cropped icon content; skill rail reuses embossed gold scroll"
+    ],
+    "sourceCaptureFeet": {
+      "002/006/007/010/014": {
+        "caster": [
+          118,
+          105
+        ],
+        "recipient": [
+          145,
+          118
+        ]
+      },
+      "009/011/015/018/023": {
+        "caster": [
+          100,
+          96
+        ],
+        "recipient": [
+          128,
+          109
+        ]
+      },
+      "021": {
+        "caster": [
+          118,
+          94
+        ],
+        "recipient": [
+          145,
+          105
+        ]
+      },
+      "019": [
+        100,
+        96
+      ],
+      "032": [
+        94,
+        96
+      ],
+      "remainingSelf": [
+        100,
+        100
+      ]
+    },
+    "nativeTestScope": {
+      "martialIds": 34,
+      "activeIds": 30,
+      "directions": 4,
+      "moments": [
+        "precontact",
+        "contact",
+        "+120ms",
+        "controlled source FX peak"
+      ],
+      "newNativeRegressionTests": 9,
+      "linkedBasicAttackIds": [
+        "SK_무도가_005",
+        "SK_무도가_027"
+      ],
+      "utilityNotStandaloneCombatIds": [
+        "SK_무도가_003",
+        "SK_무도가_034"
+      ],
+      "otherCases": [
+        "moved frontal target cannot turn attack behind actor",
+        "all martial damage shape recipients",
+        "AUTO fair cycling/cooling/unlearned/full-health heal",
+        "all8 icon pixel bounds",
+        "registered upright north/west pixels",
+        "generic cast actual directional energy",
+        "actual recipient height translation",
+        "lethal moved ranged recipient facing"
+      ],
+      "existingBothSexBodyMatrix": "34 IDs x2 BODY identities x4 directions x5 phases retained in full CI",
+      "referenceAspect": "1536x709"
+    },
+    "sourceBytes": "Original GIF/atlas/asset bytes remain unchanged; runtime registration/reflection/flight transform/cursor-band clipping only. Matting/occlusion and absent original FX remain unresolved.",
+    "visualReview": {
+      "priorCalibrationCaptures": "6712dce2/37022015105: IDs002,010,014,018,021,023,017,032 reviewed after per-capture foot/height correction. Earlier1036b790 full30 contact/+120ms/peak sheets reviewed before final calibration. UI outdoor1536x709 and all four rooms reviewed before unchanged final UI build.",
+      "finalNativeCaptures": "a4dcc108/37022876847 generated53;9 regression gates pass; manual final pixel review blocked by local execution environment offline",
+      "phone": "PENDING",
+      "userAcceptance": "PENDING",
+      "originalQuality": "NOT_CERTIFIED"
+    },
+    "buildRun": 37022876847,
+    "buildJob": 110890093716,
+    "buildStatus": "SUCCESS",
+    "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+    "sourceBranch": "codex/town-interiors-mobile-v86",
+    "candidate": true,
+    "deliveryRecovery": "Local unified exec and download_file returned environment_offline after source CI success; independent GitHub runner verifies exact artifact bytes and builds install evidence ZIP. No new gameplay code introduced by delivery workflow."
+  },
+  "manualFinalVisualReview": "BLOCKED_EXECUTION_ENVIRONMENT_OFFLINE; critical registered sheets and prior all30 reviewed, final native9 regressions pass; PHONE/USER_ACCEPTANCE_PENDING"
+}

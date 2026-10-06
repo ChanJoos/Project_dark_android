@@ -1,0 +1,58 @@
+{
+  "work_package": "TOWN_INTERIORS_086",
+  "request": "Polish mobile shop interiors, move merchant one tile away from counter, open shop on NPC tap, represent both door tiles with portals, use numeric keyboard for quantity, remove generated accessory icons and repair Excuranum alpha.",
+  "master_inventory": "Item_Master.csv includes leather glove AC-1, leather legging, double silver earring, Redjade ring, three-line gold ring and Goru ring. Asset_Master has no named inventory icon bytes for these accessories.",
+  "verified_item_effects": {
+    "IT_GLOVE_LEATHER": {
+      "AC": -1,
+      "source": "https://lod.nexon.com/board/1493172227/5975"
+    },
+    "IT_LEGGING_LEATHER": {
+      "AC": -2,
+      "source": "https://w.atwiki.jp/takesi100/pages/155.html",
+      "cross_check": "Nexon novice-item comparison at https://lod.nexon.com/board/1493172227/5975 confirms leather leggings lower AC further than -1"
+    },
+    "IT_EARRING_DOUBLE_SILVER": {
+      "STR": 1,
+      "source": "https://lod.nexon.com/board/1493172227/1669"
+    },
+    "IT_RING_REDJADE": {
+      "HP": 100,
+      "MP": 50,
+      "source": "https://lod.nexon.com/board/1493172227/1664"
+    },
+    "IT_RING_THREELINEGOLD": {
+      "AC": -1,
+      "HP": 300,
+      "MP": 150,
+      "MAGIC_DEFENSE": 1,
+      "source": "https://lod.nexon.com/board/1493172227/1664"
+    },
+    "IT_RING_GORU": {
+      "MP": 150,
+      "source": "https://lod.nexon.com/board/1493172227/1664"
+    }
+  },
+  "icon_policy": "Do not use the AI-generated accessory crops. Existing valid master/source icons retain precedence. Items without original named inventory crops use the same compact, authored type-and-color pixel symbol in shop and inventory; this stand-in is marked as reconstructed, not original.",
+  "excuranum": "Source assets/items/consumable/it_reagent_excuranum.webp is already transparent 18x24 RGBA. Runtime no longer flood-removes its dark stopper/outline; native test compares source stopper pixels.",
+  "remaining": "16 of 23 Master glove/legging/earring/ring slot items lack runtime definitions; one of the seven existing definitions has no stats; only five are shop offers. Original named accessory inventory crops are absent from Asset_Master, so current pixel symbols are reconstructions rather than source art. V86 native interactions and CI pass, but direct interior screenshot review found visual quality incomplete and not accepted. Physical-phone keyboard/touch validation remains pending.",
+  "verification_review": {
+    "passed_ci_commit": "20dadb73c65261b30820c205200f26baad854f07",
+    "actions_run": 36990064690,
+    "ci_result": "SUCCESS, 45/45 workflow stages",
+    "native_review_captures": 16,
+    "visual_acceptance": "NOT_ACCEPTED",
+    "visual_findings": [
+      "sparse large floor areas",
+      "repetitive room surfaces",
+      "counter materials and proportions do not integrate with walls/floor",
+      "props are sparse or grouped at wall ends"
+    ],
+    "master_equipment_slot_rows": 23,
+    "runtime_definitions": 7,
+    "definitions_with_sourced_effects": 6,
+    "equipment_shop_offers": 5,
+    "physical_device_keyboard": "PENDING",
+    "source_screenshot_scope": "Supplied Naver screenshots are skill/magic tables, not equipment stat tables."
+  }
+}

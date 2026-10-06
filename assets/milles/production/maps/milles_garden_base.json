@@ -1,7 +1,7 @@
 {
   "schema": "project-dark-milles-map-v1",
   "map_id": "milles_village_adapted",
-  "evidence": "ADAPTED; motifs and object families derived from user-provided Milles recordings",
+  "evidence": "U/ADAPTED V102; user old Milles NORTH village whole map 1000058519.jpg. Central garden, surrounding paths and north exterior river topology observed; service identity and exact bridge/coordinate extraction unresolved.",
   "ground": {
     "tile_size": [
       64,
@@ -18,15 +18,6 @@
       "x": 320,
       "y": 420,
       "scale": 1.0,
-      "district": "west_crafts"
-    },
-    {
-      "id": "potion_shop_portal",
-      "asset": "assets/world/portal/portal_reagent_shop.webp",
-      "x": 320,
-      "y": 459,
-      "scale": 1.0,
-      "draw": "tile",
       "district": "west_crafts"
     },
     {
@@ -55,11 +46,12 @@
     },
     {
       "id": "inn",
-      "asset": "buildings/BLD_006_inn.png",
-      "x": 1980,
-      "y": 650,
-      "scale": 1.0,
-      "district": "waterside"
+      "asset": "buildings/BLD_006_inn_early.png",
+      "x": 2035.2,
+      "y": 766.4,
+      "scale": 0.8,
+      "district": "waterside",
+      "source": "Early supplied 04 inn crop; source-preserving alpha outline; measured doorway pixel 184,308"
     },
     {
       "id": "civic_fountain",
@@ -73,65 +65,65 @@
     {
       "id": "square_bench_west",
       "asset": "video_reference/objects/bench_video_cutout_01.png",
-      "x": 624,
-      "y": 704,
-      "scale": 0.48,
-      "district": "civic_square"
+      "x": 580,
+      "y": 572,
+      "scale": 0.43,
+      "district": "civic_square",
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "square_bench_east",
       "asset": "video_reference/objects/bench_video_cutout_03.png",
-      "x": 912,
-      "y": 448,
-      "scale": 0.48,
-      "district": "civic_square"
+      "x": 888,
+      "y": 628,
+      "scale": 0.43,
+      "district": "civic_square",
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "garden_bench",
       "asset": "video_reference/objects/bench_video_cutout_04.png",
-      "x": 1280,
-      "y": 944,
-      "scale": 0.5,
-      "district": "garden"
+      "x": 1272,
+      "y": 624,
+      "scale": 0.43,
+      "district": "garden",
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "waterside_bench",
       "asset": "video_reference/objects/bench_video_cutout_02.png",
-      "x": 1840,
-      "y": 1264,
-      "scale": 0.5,
-      "district": "waterside"
+      "x": 1960,
+      "y": 536,
+      "scale": 0.43,
+      "district": "waterside",
+      "anchor_x": 90,
+      "anchor_y": 172
     },
     {
       "id": "garden_tree_1",
-      "asset": "vegetation/trees/OBJ_tree_01.png",
+      "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
       "x": 1080,
       "y": 536,
-      "scale": 0.48,
-      "district": "garden"
-    },
-    {
-      "id": "garden_tree_2",
-      "asset": "vegetation/trees/OBJ_tree_04.png",
-      "x": 1136,
-      "y": 552,
-      "scale": 0.46,
+      "scale": 0.88,
       "district": "garden"
     },
     {
       "id": "square_tree_west",
-      "asset": "vegetation/trees/OBJ_tree_01.png",
-      "x": 476,
-      "y": 610,
-      "scale": 0.43,
+      "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
+      "x": 532,
+      "y": 506,
+      "scale": 0.88,
       "district": "civic_square"
     },
     {
       "id": "boundary_tree_west",
-      "asset": "vegetation/trees/OBJ_tree_03.png",
+      "asset": "vegetation/trees/OBJ_tree_milles_willow.png",
       "x": 160,
       "y": 1024,
-      "scale": 0.5,
+      "scale": 0.88,
       "district": "village_edge"
     },
     {
@@ -144,10 +136,10 @@
     },
     {
       "id": "boundary_tree_east",
-      "asset": "vegetation/trees/OBJ_tree_02.png",
+      "asset": "vegetation/trees/OBJ_tree_01.png",
       "x": 2200,
       "y": 944,
-      "scale": 0.48,
+      "scale": 0.56,
       "district": "village_edge"
     },
     {
@@ -155,7 +147,7 @@
       "asset": "vegetation/trees/OBJ_tree_05.png",
       "x": 2040,
       "y": 1280,
-      "scale": 0.48,
+      "scale": 0.86,
       "district": "waterside"
     },
     {
@@ -240,124 +232,195 @@
       "district": "garden"
     },
     {
-      "id": "square_lamp_west",
-      "asset": "street/OBJ_lamp_03.png",
-      "x": 600,
-      "y": 472,
-      "scale": 0.42,
-      "district": "civic_square"
-    },
-    {
-      "id": "square_lamp_east",
-      "asset": "street/OBJ_lamp_01.png",
-      "x": 940,
-      "y": 436,
-      "scale": 0.42,
-      "district": "civic_square"
-    },
-    {
       "id": "south_gate_lamp",
       "asset": "street/OBJ_lamp_02.png",
-      "x": 730,
-      "y": 1240,
+      "x": 880,
+      "y": 1420,
       "scale": 0.4,
       "district": "south_gate"
     },
     {
-      "id": "village_noticeboard",
-      "asset": "street/OBJ_noticeboard.png",
-      "x": 608,
-      "y": 744,
-      "scale": 0.38,
-      "district": "civic_square"
-    },
-    {
       "id": "market_barrel_1",
       "asset": "storage/OBJ_barrel.png",
-      "x": 248,
-      "y": 488,
+      "x": 160,
+      "y": 464,
       "scale": 0.28,
       "district": "west_crafts"
     },
     {
       "id": "market_crate_1",
       "asset": "storage/OBJ_crate.png",
-      "x": 384,
-      "y": 472,
+      "x": 448,
+      "y": 396,
       "scale": 0.25,
       "district": "west_crafts"
     },
     {
-      "id": "market_cart",
-      "asset": "market/OBJ_cart.png",
-      "x": 1240,
-      "y": 480,
-      "scale": 0.3,
-      "district": "east_market"
-    },
-    {
-      "id": "garden_flowerbed_1",
-      "asset": "vegetation/flowers/OBJ_flower_01.png",
-      "x": 1032,
-      "y": 800,
-      "scale": 0.36,
-      "district": "garden"
-    },
-    {
-      "id": "garden_flowerbed_2",
-      "asset": "vegetation/flowers/OBJ_flower_03.png",
-      "x": 1320,
-      "y": 1040,
-      "scale": 0.34,
-      "district": "garden"
-    },
-    {
-      "id": "square_shrub_west",
-      "asset": "vegetation/bushes/OBJ_bush_01.png",
-      "x": 648,
-      "y": 694,
-      "scale": 0.34,
-      "district": "civic_square"
-    },
-    {
-      "id": "square_shrub_east",
-      "asset": "vegetation/bushes/OBJ_bush_03.png",
-      "x": 856,
-      "y": 416,
-      "scale": 0.35,
-      "district": "civic_square"
-    },
-    {
-      "id": "square_grass_1",
-      "asset": "vegetation/flowers/OBJ_flower_02.png",
-      "x": 576,
-      "y": 392,
-      "scale": 0.18,
-      "district": "civic_square"
-    },
-    {
-      "id": "square_grass_2",
-      "asset": "vegetation/flowers/OBJ_flower_01.png",
-      "x": 984,
-      "y": 532,
-      "scale": 0.16,
-      "district": "garden"
-    },
-    {
-      "id": "waterside_bush",
-      "asset": "vegetation/bushes/OBJ_bush_02.png",
-      "x": 1904,
-      "y": 1136,
-      "scale": 0.45,
-      "district": "waterside"
-    },
-    {
       "id": "waterside_pond",
       "asset": "water/lakes/OBJ_lake_main.png",
-      "x": 1856,
-      "y": 1088,
-      "scale": 0.42,
-      "district": "waterside"
+      "x": 1880,
+      "y": 1050,
+      "scale": 1.0,
+      "district": "waterside",
+      "draw": "ground",
+      "anchor_x": 226.5,
+      "anchor_y": 136.5,
+      "visible": false,
+      "source": "V102 legacy pond retired; MillesRiverGeometry draws the continuous river"
+    },
+    {
+      "id": "potion_shop_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 244.5,
+      "y": 371,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 420.01
+    },
+    {
+      "id": "weapon_shop_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 688,
+      "y": 250,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 300.01
+    },
+    {
+      "id": "general_shop_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1050.5,
+      "y": 313,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 360.01
+    },
+    {
+      "id": "church_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1463.05,
+      "y": 422.6,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 455.01
+    },
+    {
+      "id": "potion_shop_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 276.5,
+      "y": 387,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 420.01,
+      "visible": false
+    },
+    {
+      "id": "weapon_shop_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 720,
+      "y": 266,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 300.01,
+      "visible": false
+    },
+    {
+      "id": "general_shop_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1082.5,
+      "y": 329,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 360.01,
+      "visible": false
+    },
+    {
+      "id": "church_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 1495.05,
+      "y": 438.6,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "Source-image threshold; MillesDoorAnchors transform",
+      "depth_y": 455.01,
+      "visible": false
+    },
+    {
+      "id": "inn_portal",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 2016,
+      "y": 736,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "ADAPTED_INN_ENTRY",
+      "depth_y": 766.41
+    },
+    {
+      "id": "inn_portal_2",
+      "asset": "assets/world/portal/portal_reagent_shop.webp",
+      "x": 2048,
+      "y": 752,
+      "scale": 0.65,
+      "draw": "door",
+      "district": "door_threshold",
+      "evidence": "ADAPTED_INN_ENTRY",
+      "depth_y": 766.41,
+      "visible": false
+    },
+    {
+      "id": "waterside_bridge",
+      "asset": "structures/bridges/OBJ_bridge_milles_v100.png",
+      "x": 2048,
+      "y": 400,
+      "scale": 0.27,
+      "anchor_x": 836.0,
+      "anchor_y": 470.5,
+      "draw": "ground",
+      "district": "waterside",
+      "evidence": "ADAPTED north-perimeter crossing; supplied old north-village overview places water on outer northern rim, exact bridge location unresolved",
+      "ground_z": 1
     }
-  ]
+  ],
+  "asset_anchors": {
+    "video_reference/objects/bench_video_cutout_04.png": {
+      "anchor_x": 90,
+      "anchor_y": 172
+    },
+    "video_reference/objects/bench_video_cutout_01.png": {
+      "anchor_x": 90,
+      "anchor_y": 172
+    },
+    "video_reference/objects/bench_video_cutout_03.png": {
+      "anchor_x": 90,
+      "anchor_y": 172
+    },
+    "video_reference/objects/bench_video_cutout_02.png": {
+      "anchor_x": 90,
+      "anchor_y": 172
+    },
+    "video_reference/objects/bench_lantern_reference.png": {
+      "anchor_x": 165.0,
+      "anchor_y": 190
+    },
+    "street/OBJ_tree_ring_milles_reference.png": {
+      "anchor_x": 85.0,
+      "anchor_y": 39.5
+    }
+  }
 }

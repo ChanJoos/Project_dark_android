@@ -18,7 +18,8 @@ final class SkillPresentationCatalog {
     JSONObject p=profiles.optJSONObject(motion);if(p==null)return null;String group=p.optString("group");
     boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
     JSONArray a=p.optJSONArray(back?"back":"front");if(a==null||a.length()==0)return null;
-    int n=Math.min(a.length()-1,(int)(Math.max(0,Math.min(.999f,phase))*a.length()));
+    float q=Math.max(0,Math.min(.999f,phase));int n=Math.min(a.length()-1,(int)(q*a.length()));
+    JSONArray stops=p.optJSONArray("phases");if(stops!=null){n=0;for(int i=1;i<stops.length()&&i<a.length();i++)if(q+.00001f>=stops.optDouble(i))n=i;}
     return body+"/"+group+"/"+a.optInt(n);
   }
 }

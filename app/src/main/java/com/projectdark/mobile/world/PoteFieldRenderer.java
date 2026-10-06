@@ -39,6 +39,7 @@ public final class PoteFieldRenderer {
   private final Path groundCells=new Path();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
+  private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
   private static final List<Placement> AUTHORED_PLACEMENTS=buildPlacements();
   private final List<Placement> placements=AUTHORED_PLACEMENTS;
 
@@ -79,13 +80,19 @@ public final class PoteFieldRenderer {
   /** Paint the registered generated candidate pose selected by the live test actor state and facing. */
   public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
       float actionProgress,float idleClock,float x,float y){
+    drawMonsterTestPose(c,monsterId,state,direction,actionProgress,idleClock,x,y,false);
+  }
+
+  /** Resolved damage uses the existing actor hit timer, retaining pose, alpha and foot anchor. */
+  public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
+      float actionProgress,float idleClock,float x,float y,boolean hitFlash){
     if(c==null)return;
     String pose=("walk".equals(state)||"attack".equals(state))?state:"idle";
     String name=PoteForestMonsterShowcase.assetPath(monsterId,pose,direction);
     if(name==null)return;
     Bitmap b=bitmap(name);if(b==null)return;
     // Pamfets keep their small authored scale; the Lycan uses the player-sized frame.
-    float h="POTE_LYCAN".equals(monsterId)?72f:48f,w=h*b.getWidth()/Math.max(1f,b.getHeight());
+    String species=PoteForestMonsterShowcase.species(monsterId);float h=PoteForestMonsterShowcase.bodyHeight(monsterId),w=h*b.getWidth()/Math.max(1f,b.getHeight());
     float cx=x,cy=y;
     if("idle".equals(pose)){
       cy-=(float)Math.sin(idleClock*4.5f)*.55f;
@@ -102,8 +109,21 @@ public final class PoteFieldRenderer {
       cy+=facingY(direction)*1.6f*impulse;
     }
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
-    c.drawBitmap(b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
+    c.drawBitmap(hitFlash?hitBitmap(name,b):b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
     pixel.setAlpha(255);
+  }
+
+  /** Cache a color-only variant: GPU color filters can bleed into transparent scaled edges. */
+  private Bitmap hitBitmap(String name,Bitmap source){
+    Bitmap hit=hitCache.get(name);if(hit!=null)return hit;
+    int width=source.getWidth(),height=source.getHeight();int[] colors=new int[width*height];
+    source.getPixels(colors,0,width,0,0,width,height);
+    for(int i=0;i<colors.length;i++){
+      int color=colors[i];if((color>>>24)==0)continue;
+      int r=Math.min(255,((color>>>16)&255)+96),g=Math.min(255,((color>>>8)&255)+64),b=Math.min(255,(color&255)+64);
+      colors[i]=(color&0xff000000)|(r<<16)|(g<<8)|b;
+    }
+    hit=source.copy(Bitmap.Config.ARGB_8888,true);hit.setPixels(colors,0,width,0,0,width,height);hitCache.put(name,hit);return hit;
   }
 
   private static float facingX(CharacterRenderer.Direction d){
@@ -129,17 +149,18 @@ public final class PoteFieldRenderer {
   }
 
   /** Draw terrain and objects whose ground anchors are behind the supplied actor depth. */
+  private boolean campClearing(WorldRuntimeAdapter w,Placement p){return CampaignWorld.PIET.equals(w.runtime().currentMapId())&&!"water".equals(p.role)&&p.x>=540&&p.x<=1080&&p.y>=380&&p.y<=760;}
   public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
     c.drawColor(0xff241d15);drawFloor(c,w);drawCreekBed(c,w);
-    for(Placement p:placements)if(!"bridge".equals(p.role)&&("water".equals(p.role)||p.y<=actorY))drawPlacement(c,w,p);
+    for(Placement p:placements)if(!campClearing(w,p)&&!"bridge".equals(p.role)&&("water".equals(p.role)||p.y<=actorY))drawPlacement(c,w,p);
     drawBridge(c,w);
   }
 
   /** Draw foreground canopies/props after the actor so Y-depth remains spatially believable. */
   public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
-    for(Placement p:placements)if(!"bridge".equals(p.role)&&!"water".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
+    for(Placement p:placements)if(!campClearing(w,p)&&!"bridge".equals(p.role)&&!"water".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
   }
 
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){

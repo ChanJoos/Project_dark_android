@@ -9,6 +9,6 @@ public final class F5mWorldUxQuestPresentationAudit {
     if(q.decline()!=F5mAdaptedPrologueQuest.DeclineResult.LEFT_AVAILABLE)return false;
     if(q.accept()!=F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED)return false;
     if(q.accept()!=F5mAdaptedPrologueQuest.AcceptResult.ALREADY_ACTIVE)return false;
-    return q.currentCount()==0&&q.requiredCount()==1&&"combat_dummy_01".equals(q.objectiveMonsterId());
+    return q.currentCount()==0&&q.requiredCount()==1&&F5mAdaptedPrologueQuest.OPENING_MONSTER_ID.equals(q.objectiveMonsterId());
   }
 }

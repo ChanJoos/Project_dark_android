@@ -1,5 +1,5 @@
 """Deterministic read-only UI projection; no combat formulas or acquisition defaults."""
-import csv, json
+import csv, json, hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 def rows(name):
@@ -13,6 +13,26 @@ for r in rows('Skill_Master'):
     q=requirements.get(r['Skill_ID'],{})
     old=legacy.get((r['직업'],r['스킬명']),{})
     entries.append(dict(id=r['Skill_ID'],name=r['스킬명'],job=r['직업'],stage=r['단계'],kind=r['종류'],circle=r['서클'],effect=r['핵심효과'] or '효과 미확정',target=r['대상'] or '미확정',range=r['사거리/범위'] or '미확정',resource=(r['소모자원']+' '+r['소모량']).strip() or '미확정',limit=r['발동조건/제한'] or '미확정',requirements=pairs(q,['요구Lv','STR','INT','WIS','CON','DEX','선행스킬','필요아이템','Gold','숙련조건']) or '습득 조건 미확정',requirementValues={k:q.get(k,'') for k in ['요구Lv','STR','INT','WIS','CON','DEX']},requirementStatus=q.get('상태','확인 필요'),legacy=pairs(old,['Legacy_Circle','STR','INT','WIS','CON','DEX','Prerequisite_Skill','Required_Prerequisite_Level']),evidence=r['Effect_Evidence'] or r['Evidence'],source=r['Detail_Source_URL'] or r['Source_URL']))
-p=root/'app/src/main/assets/skills/catalog.json';p.parent.mkdir(parents=True,exist_ok=True)
+change=json.loads((root/'master/changes/CLASSIC-MARTIAL-CLERIC-V68.json').read_text())
+assert change['status']=='ACCEPTED'
+for entry in entries:entry.update(change['overrides'].get(entry['id'],{}))
+entries.extend(change['addedCatalogEntries'])
+rogue=json.loads((root/'master/changes/ROGUE-2015-SOURCE-REVIEW.json').read_text())
+assert rogue['status']=='ACCEPTED'
+for correction in rogue['changes']:
+    assert correction['field']=='종류'
+    assert hashlib.sha256((root/correction['sourceSnapshot']).read_bytes()).hexdigest()==correction['sourceSnapshotSha256']
+    evidence=json.loads((root/'master/source/skill_fx/naver_cafe_archive_20261001/rogue_evidence.json').read_text())['rows']
+    assert any(row['articleId']==245456 and correction['sourceId'] in row['candidateSkillIds'] and row['sourceKind']==correction['after'] for row in evidence)
+    entry=next(e for e in entries if e['id']==correction['sourceId'])
+    assert entry['kind']==correction['before']
+    entry['kind']=correction['after']
+all_jobs=json.loads((root/'master/changes/ALL-JOB-SOURCE-V70.json').read_text())
+assert all_jobs['status']=='ACCEPTED'
+assert hashlib.sha256((root/all_jobs['sourceSnapshot']).read_bytes()).hexdigest()==all_jobs['sourceSnapshotSha256']
+assert all_jobs['evidenceQuote'] in json.loads((root/all_jobs['sourceSnapshot']).read_text())['text']
+for entry in entries:entry.update(all_jobs['overrides'].get(entry['id'],{}))
+assert len({e['id'] for e in entries})==len(entries)
+p=root/'app/src/main/assets/skills/catalog.json' ;p.parent.mkdir(parents=True,exist_ok=True)
 p.write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(f'{len(entries)} skill catalog entries')

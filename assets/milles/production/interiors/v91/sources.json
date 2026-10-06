@@ -1,0 +1,511 @@
+{
+  "schema": "inn-source-crops-v91",
+  "video_name": "Screen_Recording_20260924_163501_YouTube.mp4",
+  "video_sha256": "bedf098a298d1d7639916bd6ab3b9b969762944614e7b5b43d92d1e28c7aaa12",
+  "video_library_id": "libfile_94b8225a622881918893269e3b60de9e",
+  "building_library_id": "libfile_90d38620534c8191ace7a6af6d3bd0db",
+  "building_source_sha256": "f77b505fc91adc71405db2d49c8f5edae485c4f60032c792fa05227dd4b3b6e4",
+  "building_crop": [
+    1104,
+    62,
+    1520,
+    408
+  ],
+  "building_sha256": "6c3029c938eb341ff7d758fd099da82e7a3779df68197a2eed1e8ad162407378",
+  "assets": [
+    {
+      "name": "inn_table",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        1016,
+        628,
+        1584,
+        876
+      ],
+      "polygon": [
+        [
+          508,
+          390
+        ],
+        [
+          560,
+          365
+        ],
+        [
+          560,
+          334
+        ],
+        [
+          600,
+          314
+        ],
+        [
+          617,
+          319
+        ],
+        [
+          630,
+          315
+        ],
+        [
+          646,
+          316
+        ],
+        [
+          647,
+          335
+        ],
+        [
+          736,
+          355
+        ],
+        [
+          792,
+          375
+        ],
+        [
+          671,
+          438
+        ]
+      ],
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "4cfb87830bd60b86fc688976fdcb9942ff904ca11001e6c1342130f692f93119",
+      "size": [
+        284,
+        124
+      ]
+    },
+    {
+      "name": "inn_table_food",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        1184,
+        326,
+        1596,
+        556
+      ],
+      "polygon": [
+        [
+          592,
+          224
+        ],
+        [
+          603,
+          197
+        ],
+        [
+          610,
+          194
+        ],
+        [
+          615,
+          209
+        ],
+        [
+          652,
+          196
+        ],
+        [
+          649,
+          179
+        ],
+        [
+          658,
+          177
+        ],
+        [
+          666,
+          195
+        ],
+        [
+          694,
+          186
+        ],
+        [
+          703,
+          163
+        ],
+        [
+          713,
+          166
+        ],
+        [
+          723,
+          180
+        ],
+        [
+          736,
+          182
+        ],
+        [
+          741,
+          198
+        ],
+        [
+          770,
+          190
+        ],
+        [
+          777,
+          202
+        ],
+        [
+          775,
+          223
+        ],
+        [
+          798,
+          239
+        ],
+        [
+          749,
+          278
+        ],
+        [
+          625,
+          251
+        ]
+      ],
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "7b874f0d910369d34a4bccb52a9a9af9bf6e6eef5721355d0809e2547eee003c",
+      "size": [
+        206,
+        115
+      ]
+    },
+    {
+      "name": "inn_hearth",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        1836,
+        30,
+        2066,
+        270
+      ],
+      "polygon": [
+        [
+          924,
+          43
+        ],
+        [
+          989,
+          15
+        ],
+        [
+          1006,
+          15
+        ],
+        [
+          1009,
+          61
+        ],
+        [
+          1033,
+          74
+        ],
+        [
+          1033,
+          110
+        ],
+        [
+          974,
+          135
+        ],
+        [
+          918,
+          115
+        ],
+        [
+          918,
+          58
+        ]
+      ],
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "541e7e5b5f353879c24be44976eea25ea70d2a7b7a27576f2da8c83ebaf6f099",
+      "size": [
+        115,
+        120
+      ]
+    },
+    {
+      "name": "inn_counter",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        960,
+        0,
+        1756,
+        262
+      ],
+      "polygon": [
+        [
+          480,
+          0
+        ],
+        [
+          675,
+          0
+        ],
+        [
+          710,
+          18
+        ],
+        [
+          778,
+          0
+        ],
+        [
+          878,
+          0
+        ],
+        [
+          878,
+          33
+        ],
+        [
+          666,
+          131
+        ],
+        [
+          480,
+          69
+        ]
+      ],
+      "counter_hole_xy": [
+        [
+          95,
+          0
+        ],
+        [
+          274,
+          0
+        ],
+        [
+          210,
+          40
+        ],
+        [
+          180,
+          47
+        ]
+      ],
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "530b0db07abb9f1b9fd766e4726a92d9ed0361f46e845b1ed55f97604750c019",
+      "size": [
+        398,
+        131
+      ]
+    },
+    {
+      "name": "inn_wall",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        410,
+        80,
+        556,
+        252
+      ],
+      "polygon": [
+        [
+          205,
+          75
+        ],
+        [
+          278,
+          40
+        ],
+        [
+          278,
+          91
+        ],
+        [
+          205,
+          126
+        ]
+      ],
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "a874345f103d3bac953db38736558bb352456673388f3f6281732a748c036c79",
+      "size": [
+        73,
+        86
+      ]
+    },
+    {
+      "name": "inn_door",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        552,
+        64,
+        692,
+        254
+      ],
+      "polygon": [
+        [
+          276,
+          69
+        ],
+        [
+          346,
+          32
+        ],
+        [
+          346,
+          87
+        ],
+        [
+          276,
+          127
+        ]
+      ],
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "4e951ab921eff8722ff8d2472c61977d655ea56db8e7b9e9aacaff98ad2828f6",
+      "size": [
+        70,
+        95
+      ]
+    },
+    {
+      "name": "inn_planter",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        1704,
+        50,
+        1812,
+        164
+      ],
+      "polygon": [
+        [
+          853,
+          40
+        ],
+        [
+          860,
+          28
+        ],
+        [
+          881,
+          25
+        ],
+        [
+          900,
+          36
+        ],
+        [
+          906,
+          53
+        ],
+        [
+          895,
+          65
+        ],
+        [
+          886,
+          81
+        ],
+        [
+          871,
+          76
+        ],
+        [
+          865,
+          60
+        ]
+      ],
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "3a938c412633fa4b6d00e1b0534b181d5388d46d8c2a186c03a680d022c5dd90",
+      "size": [
+        54,
+        57
+      ]
+    },
+    {
+      "name": "mouse_se",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        614,
+        280,
+        698,
+        318
+      ],
+      "polygon": null,
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "0ca6469b848869ab21b3d553a6dd1faac838db2e9aad6d104f473b02c1567608",
+      "size": [
+        42,
+        19
+      ]
+    },
+    {
+      "name": "mouse_nw",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        364,
+        692,
+        452,
+        728
+      ],
+      "polygon": null,
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "2b54b2c6bb7536ec5b4690014e2e7312afb47ddcd7ddcb945dfb44018e64489d",
+      "size": [
+        44,
+        18
+      ]
+    },
+    {
+      "name": "mouse_ne",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        310,
+        340,
+        366,
+        372
+      ],
+      "polygon": null,
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "6e3b20b31854b268aed5dfd7fe7e8dfc4b7cc04df98a0fbf14ca922aa5a9e63b",
+      "size": [
+        28,
+        16
+      ]
+    },
+    {
+      "name": "inn_floor",
+      "frame": "frame_3s.png",
+      "time_seconds": 3,
+      "crop_xyxy": [
+        1604,
+        584,
+        1860,
+        712
+      ],
+      "polygon": null,
+      "counter_hole_xy": null,
+      "processing": "source crop + documented alpha mask + nearest reduction 0.5",
+      "sha256": "52390e29c63feccf6fa2b0ed0d6bb207ce8b5fb995dbbf9895e32e67d90d5d6b",
+      "size": [
+        128,
+        64
+      ]
+    }
+  ],
+  "mouse_note": "Three observed source silhouettes only. SW retains the observed west-facing pose; missing original direction/action frames are not fabricated. Runtime uses shared AI and source pose translation, not invented original animation."
+}

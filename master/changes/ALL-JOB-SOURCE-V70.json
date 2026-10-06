@@ -1,0 +1,13 @@
+{
+  "id": "ALL-JOB-SOURCE-V70",
+  "status": "ACCEPTED",
+  "overrides": {
+    "SK_전사_018": {
+      "kind": "마법"
+    }
+  },
+  "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/191777.json",
+  "sourceSnapshotSha256": "211c54587ac8665fefa2d2c13b148414c2510c7c41f7b2274ff75fcd401455c3",
+  "evidenceQuote": "전사의 유일한 승급 마법이며 필살기의 위력을 2배로 올려주는 마법입니다.",
+  "scope": "Presentation/kind/source bindings only; original damage multipliers and persistent status are not applied as new mechanics."
+}

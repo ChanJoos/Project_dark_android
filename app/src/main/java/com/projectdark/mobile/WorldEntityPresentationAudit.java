@@ -7,7 +7,7 @@ public final class WorldEntityPresentationAudit {
   public static boolean passes(){
     if(WorldEntityPresentationRenderer.Kind.values().length!=2)return false;
     if(!"PENDING_CROP".equals(WorldEntityPresentationRenderer.ASSET_STATUS))return false;
-    if(WorldEntityPresentationRenderer.NPC_RENDER_SCALE<=0f||WorldEntityPresentationRenderer.NPC_RENDER_SCALE>=1f)return false;
+    if(WorldEntityPresentationRenderer.NPC_RENDER_SCALE!=CharacterRenderer.PLAYER_RENDER_SCALE)return false;
     if(WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE<=0f||WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE>=1f)return false;
     if(WorldEntityPresentationRenderer.NPC_SHADOW_SCALE>=WorldEntityPresentationRenderer.NPC_RENDER_SCALE)return false;
     if(WorldEntityPresentationRenderer.MONSTER_SHADOW_SCALE>=WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE)return false;

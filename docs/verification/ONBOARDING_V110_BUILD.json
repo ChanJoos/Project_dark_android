@@ -1,0 +1,151 @@
+{
+  "sourceCommit": "fadd41a7c947a561b1b3e4a2a0315010019c6c7a",
+  "runId": "37415043124",
+  "versionCode": 110,
+  "versionName": "1.10-guided-onboarding",
+  "apkSha256": "970f41a7c1cfc9d5ddf924a322599ef0945e2b511eca8e324e8c9df604d44b28",
+  "apkBytes": 53052183,
+  "builtSeoul": "2026-10-06T13:49:32.442826+09:00",
+  "scope": "Five-job normal-resource onboarding reaches Lv11 at 378000 EXP and retains Lv40 campaign; manual stat/learn/slot UI; physical shop route and trade counters; V109 save migration; journal chapter/method UI and accepted V109 combat/mouse regressions",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "implementation": "IMPLEMENTED",
+  "build": "BUILD_VERIFIED",
+  "nativeRuntime": "NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC",
+  "focused": {
+    "run": 37415043124,
+    "job": 112111698724,
+    "result": "SUCCESS",
+    "apkArtifact": 11390194338,
+    "nativeArtifact": 11390029337,
+    "tests": 96,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "nativeArtifactSha256": "eb512f251b12250fb12ee32ce2f6762f9527e72ecdfac06a9334b4ca4e864994"
+  },
+  "fullPipelines": [
+    {
+      "run": 37415043085,
+      "job": 112111698855,
+      "result": "SUCCESS",
+      "successfulGradleInvocations": 24
+    },
+    {
+      "run": 37415047650,
+      "job": 112111712368,
+      "result": "SUCCESS"
+    }
+  ],
+  "basicCurriculum": {
+    "quests": 16,
+    "finalLevel": 11,
+    "cumulativeNormalExp": 378000,
+    "classes": [
+      "WARRIOR",
+      "ROGUE",
+      "MAGE",
+      "CLERIC",
+      "MARTIAL_ARTIST"
+    ],
+    "noExpInjection": true
+  },
+  "normalCampaign": {
+    "WARRIOR": {
+      "level": 40,
+      "earnedExp": 9003240,
+      "expIntoLevel": 3240,
+      "gold": 27527,
+      "kills": 233,
+      "completedQuests": 32,
+      "validSkillActions": 9,
+      "scope": "normal Resolver/resource domain; placement fixture; phone/time acceptance pending"
+    },
+    "ROGUE": {
+      "level": 40,
+      "earnedExp": 9003240,
+      "expIntoLevel": 3240,
+      "gold": 27527,
+      "kills": 234,
+      "completedQuests": 32,
+      "validSkillActions": 9,
+      "scope": "normal Resolver/resource domain; placement fixture; phone/time acceptance pending"
+    },
+    "MAGE": {
+      "level": 40,
+      "earnedExp": 9003240,
+      "expIntoLevel": 3240,
+      "gold": 27552,
+      "kills": 232,
+      "completedQuests": 32,
+      "validSkillActions": 9,
+      "scope": "normal Resolver/resource domain; placement fixture; phone/time acceptance pending"
+    },
+    "CLERIC": {
+      "level": 40,
+      "earnedExp": 9003240,
+      "expIntoLevel": 3240,
+      "gold": 27502,
+      "kills": 233,
+      "completedQuests": 32,
+      "validSkillActions": 9,
+      "scope": "normal Resolver/resource domain; placement fixture; phone/time acceptance pending"
+    },
+    "MARTIAL_ARTIST": {
+      "level": 40,
+      "earnedExp": 9003240,
+      "expIntoLevel": 3240,
+      "gold": 27527,
+      "kills": 233,
+      "completedQuests": 32,
+      "validSkillActions": 9,
+      "scope": "normal Resolver/resource domain; placement fixture; phone/time acceptance pending"
+    }
+  },
+  "downloadVerification": [
+    "Downloaded exact APK SHA256 matches BUILD_INFO and GitHub release digest",
+    "Embedded source/run/version identity matches final source",
+    "ZIP CRC passes",
+    "47 original equipment files match approved SHA256",
+    "16 mouse frames match unchanged source bytes",
+    "Packaged skill presentation catalog matches source"
+  ],
+  "nativeImages": [
+    "v110-guided-shoe-shop.png",
+    "v110-journal-current.png",
+    "v110-journal-method.png",
+    "v110-learn-CLERIC.png",
+    "v110-learn-MAGE.png",
+    "v110-learn-MARTIAL_ARTIST.png",
+    "v110-learn-ROGUE.png",
+    "v110-learn-WARRIOR.png",
+    "v110-quick-potion-real-hp.png",
+    "v110-registered-CLERIC.png",
+    "v110-registered-MAGE.png",
+    "v110-registered-MARTIAL_ARTIST.png",
+    "v110-registered-ROGUE.png",
+    "v110-registered-WARRIOR.png",
+    "v110-stat-correction.png",
+    "v110-stats-CLERIC.png",
+    "v110-stats-MAGE.png",
+    "v110-stats-MARTIAL_ARTIST.png",
+    "v110-stats-ROGUE.png",
+    "v110-stats-WARRIOR.png"
+  ],
+  "visuallyReviewed": [
+    "journal-current",
+    "journal-method",
+    "stat-correction",
+    "learn-MAGE",
+    "learn-CLERIC",
+    "registered-MAGE",
+    "guided-shoe-shop",
+    "quick-potion-real-hp"
+  ],
+  "visualReviewScope": "Readable native capture review only; physical phone and user acceptance pending",
+  "legacySave": "V109 Lv11 M07 count2, EXP/Gold/equipment preserved through restart",
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v110-fadd41a7-37415043124-1",
+  "activePr": 178,
+  "mainMerged": false,
+  "closureScope": "DOCUMENTATION_ONLY_APK_SOURCE_UNCHANGED"
+}

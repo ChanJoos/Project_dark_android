@@ -9,7 +9,7 @@ import org.json.JSONObject;
 /** Versioned, single-editor checkpoints over the existing app-private save slot. */
 public final class F5mSaveStore {
   private static final String PREF="project_dark_f5m_v1";
-  private static final int SCHEMA=3;
+  private static final int SCHEMA=4;
   private static F5mSaveStore active;
   private final SharedPreferences prefs;
   private RuntimeState runtime;
@@ -27,7 +27,7 @@ public final class F5mSaveStore {
   public static String savedMapIdActive(){
     if(active==null||!active.writable)return WorldDef.ID;
     String map=active.prefs.getString("map_id",WorldDef.ID);
-    if(WorldDef.ID.equals(map)||com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(map))return map;
+    if(com.projectdark.mobile.world.TownInteriorDef.forMap(map)!=null||WorldDef.ID.equals(map)||com.projectdark.mobile.world.CampaignWorld.contains(map))return map;
     active.writable=false;
     return WorldDef.ID;
   }
@@ -85,8 +85,12 @@ public final class F5mSaveStore {
 
   private void writeRuntime(SharedPreferences.Editor edit){
     RuntimeState.Player p=runtime.player();
+    for(RuntimeState.Monster m:runtime.monsters())if("milles_mouse_proto".equals(m.id)){
+      edit.putString("inn_mouse_map",runtime.currentMapId()).putInt("inn_mouse_hp",m.hp)
+          .putFloat("inn_mouse_x",m.isMoving?m.moveTargetX:m.x).putFloat("inn_mouse_y",m.isMoving?m.moveTargetY:m.y);
+    }
     edit.putString("map_id",runtime.currentMapId()).putFloat("player_x",p.x).putFloat("player_y",p.y)
-        .putInt("player_hp",p.alive?p.hp:0).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
+        .putString("skill_effects_v1",runtime.skillEffects().snapshot().toString()).putInt("player_hp",p.alive?p.hp:0).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
   }
   public static void restoreRuntimeActive(RuntimeState r){
     r.applyDerivedGrowth();
@@ -96,9 +100,15 @@ public final class F5mSaveStore {
       float x=p.getFloat("player_x",r.player().x),y=p.getFloat("player_y",r.player().y);
       if(Float.isFinite(x)&&Float.isFinite(y)&&x>=RuntimeState.WORLD_MIN_X&&x<=RuntimeState.WORLD_MAX_X&&y>=RuntimeState.WORLD_MIN_Y&&y<=RuntimeState.WORLD_MAX_Y){r.player().x=x;r.player().y=y;}
     }
+    if(r.currentMapId().equals(p.getString("inn_mouse_map",null)))for(RuntimeState.Monster m:r.monsters())if("milles_mouse_proto".equals(m.id)){
+      int hp=p.getInt("inn_mouse_hp",m.hp);float x=p.getFloat("inn_mouse_x",m.x),y=p.getFloat("inn_mouse_y",m.y);
+      if(hp>0){m.hp=Math.min(m.maxHp,hp);if(r.isMonsterTileCenter(x,y)&&!r.blocked(x,y)){m.x=x;m.y=y;}}
+    }
     r.player().hp=Math.max(0,Math.min(r.player().maxHp,p.getInt("player_hp",r.player().hp)));
     r.player().mp=Math.max(0,Math.min(r.player().maxMp,p.getInt("player_mp",r.player().mp)));
     r.player().alive=r.player().hp>0;
+    String effectJson=p.getString("skill_effects_v1",null);if(effectJson!=null)try{if(!r.skillEffects().restore(new org.json.JSONObject(effectJson)))active.writable=false;}catch(Exception ex){active.writable=false;}
+
     long watermark=Math.max(p.getLong("ledger_sequence",0),r.rpg().consumedCombatSequence());
     watermark=Math.max(watermark,Math.max(p.getLong("quest_sequence",0),p.getLong("quest2_sequence",0)));
     r.ledger().restoreSequence(watermark);
@@ -123,11 +133,15 @@ public final class F5mSaveStore {
 
   private SharedPreferences.Editor writeRpg(SharedPreferences.Editor edit,RpgProgressionState r){
     return edit.putInt("save_schema",SCHEMA)
+        // A save authored by V94 already includes the one-time grant, even if the player removed it.
+        .putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true)
         .putString("inventory_v2",new JSONObject(r.inventory()).toString())
         .putString("equipment_v2",new JSONObject(r.equipment()).toString())
+        .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
         .putInt("training_token_qty",quantity(r)).putInt("normal_level",r.normalLevel()).putLong("normal_exp",r.normalExp()).putLong("gold",r.gold())
         .putInt("str",r.str()).putInt("int",r.intel()).putInt("wis",r.wis()).putInt("con",r.con()).putInt("dex",r.dex()).putInt("stat_points",r.statPoints())
-        .putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence());
+        .putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence())
+        .putString("job_code_v4",r.currentJobCode()).putString("campaign_v1",r.campaign().snapshot().toString());
   }
   private void restoreRpg(RpgProgressionState r){
     // Decode ownership first. Unknown identities preserve the source save instead of overwriting it.
@@ -149,20 +163,55 @@ public final class F5mSaveStore {
       }
       RpgProgressionState staged=new RpgProgressionState();
       if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid saved ownership");
+      // User-requested visual test item: seed old saves once, preserve all equipment and other ownership.
+      if(!prefs.getBoolean("chungryong_granted_v94",false)&&!owned.containsKey(RpgProgressionState.CHUNGRYONG_ITEM_ID)){
+        owned.put(RpgProgressionState.CHUNGRYONG_ITEM_ID,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid V94 ownership migration");
+      }
+      if(!prefs.getBoolean("reference_warrior_granted_v107",false)){
+        owned.putIfAbsent(RpgProgressionState.REFERENCE_LEOPARD_ITEM_ID,1);
+        owned.putIfAbsent(RpgProgressionState.REFERENCE_HELM_ITEM_ID,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid reference gear migration");
+      }
+      Map<String,Integer> bank=new LinkedHashMap<>();JSONObject bankJson=new JSONObject(prefs.getString("bank_inventory_v84","{}"));
+      for(java.util.Iterator<String> it=bankJson.keys();it.hasNext();){String id=it.next();bank.put(id,bankJson.getInt(id));}
+      if(!staged.restoreBank(prefs.getLong("bank_gold_v84",0),bank))throw new IllegalArgumentException("Invalid bank");
       staged.restoreProgression(prefs.getInt("normal_level",1),prefs.getLong("normal_exp",0L));
+      if(!staged.restoreJobCode(prefs.getString("job_code_v4","COMMONER")))throw new IllegalArgumentException("Invalid saved job");
       staged.restoreGold(prefs.getLong("gold",0L));
       staged.restoreStats(prefs.getInt("str",3),prefs.getInt("int",3),prefs.getInt("wis",3),prefs.getInt("con",3),prefs.getInt("dex",3),prefs.getInt("stat_points",0));
       staged.restoreBaseResources(prefs.getInt("base_max_hp_v3",staged.baseMaxHp()),prefs.getInt("base_max_mp_v3",staged.baseMaxMp()));
+      if(prefs.contains("campaign_v1")&&!staged.campaign().restore(new JSONObject(prefs.getString("campaign_v1",""))))throw new IllegalArgumentException("Invalid campaign");
       staged.restoreCombatSequence(prefs.getLong("reward_sequence",0));copyRpg(staged,r);
+      if(!prefs.getBoolean("chungryong_granted_v94",false)||!prefs.getBoolean("reference_warrior_granted_v107",false))prefs.edit().putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).commit();
     }catch(Exception invalid){writable=false;}
   }
 
   private static void copyRpg(RpgProgressionState source,RpgProgressionState dest){
     dest.restoreProgression(source.normalLevel(),source.normalExp());dest.restoreGold(source.gold());
+    if(!dest.restoreJobCode(source.currentJobCode()))throw new IllegalArgumentException("Invalid job");
     dest.restoreStats(source.str(),source.intel(),source.wis(),source.con(),source.dex(),source.statPoints());
     dest.restoreBaseResources(source.baseMaxHp(),source.baseMaxMp());
     if(!dest.restoreOwnedItems(source.inventory(),source.equipment()))throw new IllegalArgumentException("Invalid ownership");
+    dest.restoreBank(source.bankGold(),source.bankInventory());
     dest.restoreCombatSequence(source.consumedCombatSequence());
+    if(!dest.campaign().restore(source.campaign().snapshot()))throw new IllegalArgumentException("Invalid campaign state");
+  }
+  /** One durable edit covers job/quest/gear/skills; failure restores the live snapshot. */
+  public static boolean transactActive(RpgProgressionState r,SkillBook book,java.util.function.BooleanSupplier mutation){
+    if(!writable())return false;
+    RpgProgressionState before=new RpgProgressionState();copyRpg(r,before);
+    JSONObject skills=book==null?null:book.snapshot();
+    int hp=active!=null&&active.runtime!=null?active.runtime.player().hp:0,mp=active!=null&&active.runtime!=null?active.runtime.player().mp:0;
+    boolean saved=false;
+    try {
+      if(mutation.getAsBoolean()){
+        if(active==null)saved=true;
+        else if(active.runtime!=null)saved=active.checkpoint();
+        else {SharedPreferences.Editor edit=active.writeRpg(active.prefs.edit(),r);if(book!=null)edit.putString("skill_book_v1",book.snapshot().toString());saved=edit.commit();}
+      }
+    }catch(RuntimeException failure){saved=false;}
+    if(saved)return true;copyRpg(before,r);if(book!=null)book.restore(skills);if(active!=null&&active.runtime!=null){active.runtime.applyDerivedGrowth();active.runtime.player().hp=hp;active.runtime.player().mp=mp;}return false;
   }
   private static int quantity(RpgProgressionState r){Integer q=r.inventory().get(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID);return q==null?0:q;}
 

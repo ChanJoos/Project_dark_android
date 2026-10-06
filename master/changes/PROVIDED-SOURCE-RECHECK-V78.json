@@ -1,0 +1,20 @@
+{
+  "id": "PROVIDED-SOURCE-RECHECK-V78",
+  "status": "ACCEPTED",
+  "userDirective": "Verify all unconfirmed supplied-original references, connect evidenced matches, leave only true source gaps.",
+  "base": "d57e480c1342f8f9ad7936b3c3f25d4630d9345c",
+  "sourceFields": [
+    "warrior_bindings.rows.effect",
+    "rogue_bindings.rows.effect/noEffect",
+    "classic Holy Dragon projection",
+    "shared Cleric Bardo same-name project reuse"
+  ],
+  "before": "40 catalog IDs selected project fallback despite four labelled omitted particle demonstrations.",
+  "after": "34 actual particle gaps, four new original source channels, one named project reuse, one reviewed no-separable-particle demonstration.",
+  "evidence": [
+    "docs/verification/PROVIDED_SOURCE_RECHECK_V78.json",
+    "docs/verification/PROVIDED_SOURCE_RECHECK_V78_ATTACHMENTS.json"
+  ],
+  "impact": "VFX source routing and immutable bitmap decode reuse only; no balance, costs, catalog additions, BODY or map edits.",
+  "validation": "Deterministic projection regeneration and source hashes locally; exact SHA Android input/render/build gate pending."
+}

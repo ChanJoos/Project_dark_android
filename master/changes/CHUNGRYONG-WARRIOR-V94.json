@@ -1,0 +1,78 @@
+{
+  "id": "CHUNGRYONG-WARRIOR-V94",
+  "status": "ACCEPTED",
+  "authority": "user requested referenced weapon, inventory grant and warrior motions",
+  "source": "Naver cafe13434008/article490398,2025-07-08",
+  "source_sheet": "Asset_Animation_Frame_Master mm001/wm001 c/e; additive custom capture weapon",
+  "before": "weapon absent; current approved weapon/BODY contracts retained",
+  "after": {
+    "itemId": "IT_WEAPON_CHUNGRYONG",
+    "appearance": "mw_chungryong",
+    "name": "청룡의숨결",
+    "level": 1,
+    "job": "unrestricted source weapon; warrior attack profiles",
+    "grant": "one explicit playtest weapon per fresh or previous save; no auto equip",
+    "stats": "no runtime DAM/HIT modifiers; captured S/L1~2 and durability300000 not a claimed implemented stat system",
+    "motions": {
+      "basic": {
+        "c_back": [
+          0,
+          1,
+          2
+        ],
+        "c_front": [
+          3,
+          4,
+          5
+        ]
+      },
+      "twohand": {
+        "e_back": [
+          16,
+          17,
+          18,
+          19
+        ],
+        "e_front": [
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      "horizontal": {
+        "c_back": [
+          8,
+          8,
+          9
+        ],
+        "c_front": [
+          6,
+          6,
+          7
+        ]
+      },
+      "vertical": {
+        "c_back": [
+          0,
+          10,
+          11
+        ],
+        "c_front": [
+          3,
+          12,
+          13
+        ]
+      }
+    }
+  },
+  "evidence": "labelled icon plus four GIFs; color-matted weapon-only pixels; BODY profile/grip adaptation",
+  "reference_gate": "one independent article with four separate animation captures; PENDING_REFERENCE for three independent source requirement",
+  "limitations": [
+    "capture-occluded weapon pixels and garment groups not restored",
+    "source front/back mirrored to four directions; original independent four views unavailable",
+    "project contact clock unchanged; original GIF300ms holds not assigned as combat timing",
+    "all existing skills/FX and original BODY bytes preserved"
+  ],
+  "tests": "ChungryongWeaponTest inventory/input/restart/migration/corrupt-save/both-body4direction4motion/live contact/inn; existing full gates"
+}

@@ -28,7 +28,7 @@ public final class HudTouchAcceptanceTest {
         result.movedCameraAccepted == UxTapAcceptanceAudit.REQUIRED_POINTS);
   }
 
-  @Test public void statusQuestAndUtilitySurfacesAreProtectedButQuestCardCanFold() throws Exception {
+  @Test public void statusQuestAndUtilitySurfacesAreProtectedAndQuickQuestDirectlyRoutes() throws Exception {
     assertTrue(GameView.blocksWorldTapForHud(140, 110, false));
     assertTrue(GameView.blocksWorldTapForHud(140, 150, false));
     assertTrue(GameView.blocksWorldTapForHud(608, 28, false));
@@ -36,20 +36,18 @@ public final class HudTouchAcceptanceTest {
         GameView.blocksWorldTapForHud(950, 498, true));
     assertTrue("screen area outside the enlarged attack stays available to the world",
         !GameView.blocksWorldTapForHud(953, 498, true));
-    assertTrue("utility rail shifted right while its former position returns to the world",
-        !GameView.blocksWorldTapForHud(640, 28, false));
+    assertTrue("gap between equally spaced utility icons stays available to the world",
+        !GameView.blocksWorldTapForHud(633, 28, false));
     assertTrue("world outside the left cards and icon rail stays tappable",
         !GameView.blocksWorldTapForHud(310, 190, false));
 
     GameView view = new GameView(RuntimeEnvironment.getApplication());
     view.layout(0, 0, 960, 540);
     assertTrue("quest starts folded to preserve map space", questCollapsed(view));
-    tap(view, 80, 150); // open the compact tracker
-    assertTrue(!questCollapsed(view));
-    tap(view, 244, 151); // fold chevron on the expanded card
-    assertTrue(questCollapsed(view));
-    tap(view, 80, 150); // collapsed card opens without routing a move
-    assertTrue(!questCollapsed(view));
+    tap(view, 80, 150);
+    assertTrue("quick quest keeps its compact bounds after routing",questCollapsed(view));
+    assertTrue("routing does not open the journal",!(Boolean)TownInteriorTest.field(view,"questJournalOpen"));
+    assertTrue("quest icon protects its visible pixels",GameView.blocksWorldTapForHud(808,28,false));
     assertTrue(!chatExpanded(view));
     tap(view, 420, 480); // compact chat opens
     assertTrue(chatExpanded(view));

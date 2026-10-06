@@ -14,7 +14,7 @@ public final class MillesProductionCollisionAudit {
       if(f.kind==MillesProductionCollision.Kind.CHURCH)church=true;
       if(f.kind==MillesProductionCollision.Kind.FENCE)fenceCount++;
       // Scenery blockers require matching visible map assets.
-      if(f.kind!=MillesProductionCollision.Kind.BUILDING&&f.kind!=MillesProductionCollision.Kind.CHURCH&&f.kind!=MillesProductionCollision.Kind.FENCE)return false;
+      if(f.right<=f.left||f.bottom<=f.top)return false;
     }
     if(!(building&&church&&fenceCount==30))return false;
 

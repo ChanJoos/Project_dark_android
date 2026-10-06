@@ -101,7 +101,7 @@ public final class MonsterAIController {
     for(RuntimeState.Monster m:state.monsters()){
       if(!m.alive){tileStates.remove(m);continue;}
       MonsterDefinition def=definitions.resolve(m.id);
-      boolean poteShowcase=com.projectdark.mobile.world.PoteFieldDef.MAP_ID.equals(state.currentMapId())
+      boolean poteShowcase=com.projectdark.mobile.world.CampaignWorld.contains(state.currentMapId())
           &&PoteForestMonsterShowcase.containsMonster(m.id);
       if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING&&!poteShowcase)continue;
       tickPrototypeMonster(state,m,dt);
@@ -110,6 +110,9 @@ public final class MonsterAIController {
 
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
+    if(state.skillEffects().disabled(m.id)){state.cancelMonsterAttack(m);tile.resetClock();return;}
+    boolean taunted=state.skillEffects().has(m.id,"TAUNT");
+    if(!taunted&&(state.skillEffects().hidden()||state.skillEffects().has(m.id,"AGGRO_RESET"))){state.cancelMonsterAttack(m);tile.resetClock();return;}
     if(m.isMoving){tile.resetClock();return;}
     ensureCentered(state,m,tile);
     float dx=state.player().x-m.x;
@@ -127,7 +130,7 @@ public final class MonsterAIController {
     // Let the hit frame submit first; only pause pursuit while the attack recovery is still visible.
     if(m.attackVisualRemaining>0f){tile.resetClock();return;}
 
-    if(d<CHASE_RADIUS_B&&!meleeAdjacent){
+    if((taunted||d<CHASE_RADIUS_B)&&!meleeAdjacent&&!state.skillEffects().rooted(m.id)){
       tile.stepClock+=Math.max(0f,dt);
       if(tile.stepClock+.00001f<MONSTER_STEP_SECONDS_B)return;
       tile.stepClock-=MONSTER_STEP_SECONDS_B;

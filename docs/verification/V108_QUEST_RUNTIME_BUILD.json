@@ -1,0 +1,18 @@
+{
+  "status": "IMPLEMENTED_BUILD_VERIFIED_NATIVE_RUNTIME_VERIFIED",
+  "sourceCommit": "4e1cb570c3b352cef2251799b072d2ee5c33694f",
+  "campaignActionsRun": 37309497449,
+  "regressionActionsRun": 37309497455,
+  "campaignConclusion": "success",
+  "apkArtifact": 11345975613,
+  "nativeTestArtifact": 11344744281,
+  "versionCode": 108,
+  "versionName": "1.08-quest-runtime-fixes",
+  "apkSha256": "05795213163bfca3ba7792ef524c16444251d03d752f38ba8d2ffd01aefe98c7",
+  "apkBytes": 52965218,
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v108-4e1cb570/PROJECT_DARK_V108.apk",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "reportedFailures": ["kill-quest quickquest must enable auto-attack", "Warrior Shortblade use quest count did not advance"],
+  "testEvidence": "CampaignQuickQuestIntegrationTest, CampaignProgressTest, QuestJournalTest, QuickQuestLatencyTest, HudTouchAcceptanceTest passed locally; exact CI run 37309497449 passed all configured tests and APK package verification."
+}

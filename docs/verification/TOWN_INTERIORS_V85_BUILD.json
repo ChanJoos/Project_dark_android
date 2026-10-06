@@ -1,0 +1,93 @@
+{
+  "source_sha": "b565d7baef5e6437793335a67a25b650b2eabd16",
+  "ci_checkout_sha": "33f55515397fb343b19b7290a7ab1db3a60704c1",
+  "source_and_checkout_tree": "8b40ae109ee86190ae1a22f1b1509c5c487f51a6",
+  "actions_run": 36974927217,
+  "job": 110736572673,
+  "conclusion": "success",
+  "apk_artifact_id": 11213037515,
+  "native_artifact_id": 11212872600,
+  "apk_archive_sha256": "428cf43babdfc45cd3d517a79847f75aaf5a2cac18b23575ab96a636496aa761",
+  "native_archive_sha256": "a24372b4e86255ea69d014ae8def9c6f2344c0954c98b8ba9a8c757dd1e5c2cb",
+  "apk_build_completed_utc": "2026-10-02T06:50:20.3820204Z",
+  "apk_build_completed_kst": "2026-10-02T15:50:20.382020+09:00",
+  "version": {
+    "versionCode": 85,
+    "versionName": "0.85-town-polish"
+  },
+  "apk_sha256": "9ae2cef08cf9d55dc1a138ba5a4dea504a85985d559984bf2deeed8c87974566",
+  "apk_bytes": 30575309,
+  "native_png_count": 697,
+  "town_native_review_frames": [
+    "v85-bank-confirm.png",
+    "v85-bank-exterior-door.png",
+    "v85-bank-map.png",
+    "v85-bank-ui.png",
+    "v85-church-confirm.png",
+    "v85-church-exterior-door.png",
+    "v85-church-map.png",
+    "v85-church-ui.png",
+    "v85-equipment-confirm.png",
+    "v85-equipment-exterior-door.png",
+    "v85-equipment-map.png",
+    "v85-equipment-ui.png",
+    "v85-reagent-confirm.png",
+    "v85-reagent-exterior-door.png",
+    "v85-reagent-map.png",
+    "v85-reagent-ui.png"
+  ],
+  "packaged_door_markers": {
+    "potion_shop_portal": [
+      244.5,
+      371,
+      "door"
+    ],
+    "weapon_shop_portal": [
+      688,
+      250,
+      "door"
+    ],
+    "general_shop_portal": [
+      1050.5,
+      313,
+      "door"
+    ],
+    "church_portal": [
+      1463.05,
+      422.6,
+      "door"
+    ]
+  },
+  "byte_matched_runtime_assets": 948,
+  "excluded_nonruntime_qa_assets": [
+    "assets/milles/production/_QA/QA_church_lake_FINAL.png",
+    "assets/milles/production/_QA/contact_1.png",
+    "assets/milles/production/_QA/contact_2.png",
+    "assets/milles/production/_QA/contact_3.png",
+    "assets/milles/production/_QA/contact_4.png",
+    "assets/milles/production/_QA/contact_5.png"
+  ],
+  "asset_mismatches": [],
+  "missing_assets": [],
+  "tested_scope": [
+    "authored scene regeneration byte-stable before native tests and APK",
+    "four packaged visible portal markers share runtime thresholds",
+    "actual four-door navigation into interiors",
+    "walk to facing NPC, native UI and confirmation",
+    "registered 25-item catalogs and Excuranum healing",
+    "bank item/gold conservation and save-failure rollback",
+    "four-map position/inventory/gold/bank restart",
+    "all configured existing skill/source/BODY/UI/combat/Milles/forest/growth/save gates"
+  ],
+  "status": {
+    "implemented": "VERIFIED",
+    "build": "VERIFIED",
+    "native_runtime": "VERIFIED",
+    "native_visual_review": "REVIEWED: all 16 final-source native frames",
+    "phone": "PENDING",
+    "user_visual_acceptance": "PENDING"
+  },
+  "main_sha": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "candidate": true,
+  "limits": "Creative materials/portraits/missing icons and bank/church layouts; most prices/stats/distribution adapted; original community evidence dated in source manifest."
+}

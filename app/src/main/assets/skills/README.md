@@ -1,6 +1,6 @@
 # Skill artwork and mobile learning policy — v60
 
-135 exact-ID crops from eleven user-provided screenshots are registered in source_icons.json with original hashes, rectangles and mapping decisions. The original screenshot/atlas bytes are preserved. Native SkillIconCatalog masks cyan capture-background corner pixels and clips the presentation to rounded icon bounds; unregistered IDs use a neutral placeholder.
+136 ID mappings from eleven user-provided screenshots are registered in source_icons.json with original hashes, rectangles and mapping decisions (135 direct class/name matches plus the shared 쿠로토 entry). The original screenshot bytes are preserved; the atlas contains cropped presentation copies. Native SkillIconCatalog masks cyan capture-background corner pixels and clips the presentation to rounded icon bounds; unregistered IDs use a neutral placeholder.
 
 Rebuild the source atlas with tools/extract_skill_reference_icons.py --source-dir /path/to/project_sources. No unknown name borrows another skill image. Screenshot evidence is V, not proof of official provenance.
 

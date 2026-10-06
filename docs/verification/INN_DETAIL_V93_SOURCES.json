@@ -1,0 +1,122 @@
+{
+  "status": "PROJECT_RECONSTRUCTION",
+  "generator": "built-in image_gen; transparent antique sprite atlas",
+  "reference": "supplied inn recording reference-half.png; not recovered original pixels",
+  "reference_sha256": "9e3412b5d421336eaed2124ae82e85a5762503a77905c5d6bf6f6a3032c9bbbf",
+  "atlas_sha256": "7a4c91d7dc00de27f6b47e44290c42fa372bdc0123088d1b043e2c0ee04a44a2",
+  "sprites": [
+    {
+      "name": "table",
+      "source_crop": [
+        60,
+        56,
+        712,
+        501
+      ],
+      "size": [
+        256,
+        175
+      ],
+      "sha256": "eb5d89ba3ec2a2820ddf1f9388ba853ae151d3d696a751c4fb29e2e2fb8e2b43"
+    },
+    {
+      "name": "chair_se",
+      "source_crop": [
+        796,
+        31,
+        1077,
+        476
+      ],
+      "size": [
+        162,
+        256
+      ],
+      "sha256": "e24fc201905a4007a10a43cebadc4367fb734296a32de31005e139d31d82ba7a"
+    },
+    {
+      "name": "chair_sw",
+      "source_crop": [
+        1198,
+        34,
+        1479,
+        476
+      ],
+      "size": [
+        163,
+        256
+      ],
+      "sha256": "4508e416fe07c6e69864245afc6c99115b3bf50c126d3073494edab558c71114"
+    },
+    {
+      "name": "chair_ne",
+      "source_crop": [
+        86,
+        539,
+        355,
+        944
+      ],
+      "size": [
+        170,
+        256
+      ],
+      "sha256": "be6d651791c0e3831e957da9afbd2ff05f42419505dc3ca66a59488a7f6c78ba"
+    },
+    {
+      "name": "chair_nw",
+      "source_crop": [
+        435,
+        537,
+        705,
+        943
+      ],
+      "size": [
+        170,
+        256
+      ],
+      "sha256": "aa505d6cf29ec530f6a4424b5e7d23fd7800d786b46ab9f6c1b9baafe462523e"
+    },
+    {
+      "name": "hearth",
+      "source_crop": [
+        914,
+        450,
+        1485,
+        1009
+      ],
+      "size": [
+        256,
+        251
+      ],
+      "sha256": "3b330929cc2b68bfdd68064b946b3ea0d7fd67b54318617ee88df29b2a21ede2"
+    }
+  ],
+  "limitations": [
+    "authored antique variant; burgundy upholstery/carved relief added by user-requested antique direction",
+    "hearth second orientation uses runtime reflection",
+    "common hall remains adapted; Mary source identity and full original topology unresolved"
+  ],
+  "original_comparison": {
+    "reference": "inn_reference_video/Screen_Recording_20260924_163501_YouTube.mp4, extracted reference-half.png (supplied recording)",
+    "observed_original": [
+      "wood dining tables with thick tops and individual chairs",
+      "bordered patterned rugs on walkable floor",
+      "continuous paneled wooden counter",
+      "red brick hearths with dark openings and flames",
+      "horizontal log walls and floorboards"
+    ],
+    "v93_preserved": [
+      "shared 64x32 World projection, tile footprints, customer/staff route and depth ordering",
+      "independent table/chair objects, walkable rugs, shop counter modules and opposed hearths",
+      "original player/body and all prior skill/source asset bytes"
+    ],
+    "v93_antique_adaptation": [
+      "carved turned table and chair legs/aprons, brass joinery",
+      "burgundy upholstered chairs and stone fireplace mantel",
+      "woven rug motifs"
+    ],
+    "review_status": "Final source42d20ece actual GameView/native APK review verified; entry/two furniture depths/growth/Hans/magic/self-heal/mouse-hit images manually examined. Authored reconstruction; PHONE/USER_VISUAL_PENDING.",
+    "layout_scope": "Common hall is adapted: three dining tables/twelve chairs; the provided full reference view shows four dining groups. Furniture form/material comparison is not a full original topology claim."
+  },
+  "sprite_extraction_qa": "chair_sw and hearth rectangular crop bounds overlapped neighboring sprites; preserve selected connected source pixels and alpha edge, discard detached foreign components; no creative repaint",
+  "prompt_spec": "Built-in image_gen: transparent six-sprite antique atlas; supplied inn recording is style/material reference only. One isolated 2:1 oak dining table with thick beveled top/carved baluster legs/apron/brass joinery; four separately authored matching ladderback chairs in SE/SW/NE/NW with burgundy seats; one isolated brick hearth with arched soot-black firebox, stone mantel/chimney, flame/logs/iron grate. Late-1990s Korean isometric RPG pixel shading, warm oak/walnut palette, upper-left light, no room/floor/UI/characters/rugs/cluster screenshot. Actual alpha retained; independent crops/native widths/feet and neighboring-component extraction checked."
+}

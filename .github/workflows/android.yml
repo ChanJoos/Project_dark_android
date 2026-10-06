@@ -9,12 +9,17 @@ permissions:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
+    permissions:
+      contents: write
     env:
+      PROJECT_DARK_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       ANDROID_HOME: /usr/local/lib/android/sdk
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Recover starter gear source manifests
         run: |
           python3 tools/collect_peasant_sources.py
@@ -97,9 +102,64 @@ jobs:
       - name: Verify skill presentation mapping is reproducible
         run: |
           python tools/generate_skill_presentation.py
-          git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv
+          git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
+      - name: Audit reusable Milles map assets and layout
+        run: python tools/assets/audit_milles_map_assets.py
+      - name: Verify V101 source metal feet and scenery-only style
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
+      - name: Verify generated V108 mouse directions and animation frames are reproducible
+        run: |
+          pip install Pillow
+          python tools/assets/build_v108_mouse_animation.py
+          git diff --exit-code -- assets/milles/production/interiors/v108
+      - name: Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
+      - name: Verify V90 adapted Milles story quest and shared mouse AI
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.MillesMousePresentationTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
+      - name: Verify V110 learning and retained phone-default quest actions and full campaign route audit
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.OnboardingUiTest --tests com.projectdark.mobile.DeviceQuestRegressionTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
+      - name: Verify V97 quest list, state filters, compact navigation and restart
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
+      - name: Verify V99 equipment UI fonts, all modal input and wide native rendering
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ModernUiTest --stacktrace
+      - name: Verify V96 four-way carry, all weapon motions and complete defense jump
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ChungryongWeaponTest --stacktrace
+      - name: Verify LV40 monster rewards, job choice, wardrobe and restart
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.AdaptedCampaignRewardTest --tests com.projectdark.mobile.NpcAppearanceTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
+      - name: Verify V95 low-resource Dara recipient release and cancellation
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DaraRecipientFxTest --stacktrace
+      - name: Verify V83 per-skill abilities and runtime formulas
+        run: |
+          python3 tools/generate_skill_abilities.py
+          git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_ABILITY_FORMULAS.csv
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillAbilityRuntimeTest --stacktrace
+      - name: Verify classic capture sources and projections
+        run: |
+          pip install numpy Pillow scipy
+          python tools/import_classic_skill_references.py
+          python tools/import_rogue_skill_references.py
+          python tools/import_all_job_skill_references.py
+          python tools/audit_skill_source_coverage.py
+          git diff --exit-code -- app/src/main/assets/skill-presentation/warrior app/src/main/assets/skill-presentation/shared docs/SKILL_SOURCE_COVERAGE.csv
+          git diff --exit-code -- app/src/main/assets/skill-presentation/rogue
+          git diff --exit-code -- app/src/main/assets/skill-presentation/classic
+      - name: Verify source window crops are reproducible
+        run: |
+          python tools/extract_skill_window_reference.py
+          git diff --exit-code -- app/src/main/assets/skill-window
+      - name: Audit every skill FX source and runtime precedence
+        run: |
+          python3 tools/audit_runtime_skill_fx.py
+          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V81_AUDIT.json
+          python3 tools/audit_provided_skill_sources.py
+          git diff --exit-code -- docs/REMAINING_ORIGINAL_SKILL_FX.csv docs/verification/PROVIDED_SOURCE_RECHECK_V81.json
+      - name: Verify item window source crops and input
+        run: |
+          python3 tools/extract_item_window_reference.py
+          git diff --exit-code -- app/src/main/assets/item-window
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ItemWindowReferenceTest --tests com.projectdark.mobile.EquipmentStatsAndDetailsTest --stacktrace
       - name: Verify skill window, shared combat and restart persistence
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MartialHudAutoRegressionTest --tests com.projectdark.mobile.SkillFxAuditTest --tests com.projectdark.mobile.SkillWindowReferenceTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest --tests com.projectdark.mobile.AllJobSkillSourceTest --tests com.projectdark.mobile.SkillContactRegressionTest --tests com.projectdark.mobile.MartialDefenseStarRegressionTest --tests com.projectdark.mobile.RagnarokSourceCaptureTest --stacktrace
       - name: Compile debug sources
         run: gradle :app:compileDebugJavaWithJavac --stacktrace
       - name: Execute F5M production Quick Quest route audit
@@ -111,20 +171,20 @@ jobs:
 
       - name: Execute Bundle B1 building scale audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.MillesB1ScaleAudit
-      - name: Audit reusable Milles map assets and layout
-        run: python tools/assets/audit_milles_map_assets.py
       - name: Execute Bundle B5 integrated loop audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.BundleB5Audit
       - name: Execute Quick Quest optimal approach audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
       - name: Verify HUD leaves empty-world tap regions available
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
+      - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest --stacktrace
       - name: Render West, South and Waterside Milles districts
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesDistrictReviewTest --stacktrace
       - name: Render POTE production forest review frames
         run: |
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteVisualReviewTest --stacktrace
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
       - name: Milddok ingestion identity audit
@@ -147,20 +207,97 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest --stacktrace
       - name: Execute device recording regressions with native source rendering
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceRecordingRegressionTest --tests com.projectdark.mobile.ShirtRenderingRegressionTest --stacktrace
+      - name: Print unit test failure details
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          files=list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
+          found=0
+          for file in files:
+              root=ET.parse(file).getroot()
+              for case in root.iter('testcase'):
+                  failure=case.find('failure')
+                  if failure is None: failure=case.find('error')
+                  if failure is not None:
+                      found+=1
+                      print(f'FAILED {case.get("classname")}.{case.get("name")}')
+                      print(failure.get('message',''))
+                      print((failure.text or '')[-5000:])
+          if not found: print('No JUnit failure detail XML found.')
+          PY
       - name: Upload device review rendering
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: device-review-${{ github.sha }}
-          path: app/build/reports/device-review/
-          if-no-files-found: ignore
-      - name: Build debug APK
-        run: gradle :app:assembleDebug --stacktrace
+          path: |
+            app/build/reports/device-review/v109-*.png
+            app/build/reports/device-review/v89-*.png
+            app/build/reports/device-review/v90-*.png
+            app/build/reports/device-review/v91-*.png
+            app/build/reports/device-review/v92-*.png
+            app/build/reports/device-review/v93-*.png
+            app/build/reports/device-review/v88-*.png
+          if-no-files-found: error
+      - name: Upload focused V93 review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inn-v93-review-${{ github.sha }}
+          path: app/build/reports/device-review/v93-*.png
+          if-no-files-found: warn
+      - name: Build and verify exact V110 debug APK
+        run: |
+          gradle :app:assembleDebug --stacktrace
+          python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v110_apk.py app/build/outputs/apk/debug/app-debug.apk
+      - name: Upload focused V96 weapon and jump review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weapon-v96-review-${{ github.sha }}
+          path: app/build/reports/device-review/v96-*.png
+          if-no-files-found: warn
+      - name: Upload focused V95 Dara review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dara-v95-review-${{ github.sha }}
+          path: app/build/reports/device-review/v95-*.png
+          if-no-files-found: warn
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
           name: PROJECT_DARK-debug-${{ github.sha }}
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/debug/BUILD_INFO.json
           if-no-files-found: error
           retention-days: 14
-
+      - name: Upload focused V97 quest review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quest-v97-review-${{ github.sha }}
+          path: app/build/reports/device-review/v97-*.png
+          if-no-files-found: warn
+      - name: Upload focused V99 UI review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-v99-review-${{ github.sha }}
+          path: app/build/reports/device-review/v99-*.png
+          if-no-files-found: warn
+      - name: Upload focused V100 Milles review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: milles-v100-review-${{ github.sha }}
+          path: |
+            app/build/reports/device-review/v100-*.png
+            app/build/reports/device-review/v101-*.png
+          if-no-files-found: error
+      # campaign-review.yml is the single V110 release publisher. This full
+      # suite uploads its independent APK/identity and never races a release tag.

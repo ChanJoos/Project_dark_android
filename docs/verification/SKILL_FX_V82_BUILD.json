@@ -1,0 +1,46 @@
+{
+  "versionCode": 82,
+  "versionName": "0.82-martial-kick-release",
+  "sourceSha": "4bf789dc952403163fbc0aab6bc805186f75a28c",
+  "sourceTree": "8177ecda01df08c33a49baa715449382a068fa1b",
+  "ciRun": 36942749572,
+  "ciJob": 110637808191,
+  "ciConclusion": "SUCCESS",
+  "apkArtifactId": 11201490465,
+  "nativeArtifactId": 11201495497,
+  "apkSha256": "48612dec0648f4bdcee106af80a0cb34d84b6d29752a8e31356b7b7f4101bc1c",
+  "apkBytes": 29124483,
+  "buildTimeKST": "2026-10-02T08:53:41+09:00",
+  "matchedPackagedAssetFiles": 659,
+  "branch": "codex/original-skill-contract-v65",
+  "pullRequest": 176,
+  "merged": false,
+  "main": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "userAcceptedPreserved": [
+    "Ragnarok",
+    "Complete Defense"
+  ],
+  "originalBodyByteParity": 268,
+  "status": {
+    "implemented": true,
+    "build": "VERIFIED",
+    "native": "VERIFIED",
+    "phone": "PENDING",
+    "userVisualAcceptance": "PENDING_FOR_KICKS_DARA"
+  },
+  "failedEarlierRun": {
+    "run": 36941351678,
+    "cause": "Regression reflection inferred Object[] varargs cast; test-only fix; runtime unchanged"
+  },
+  "nativePngFiles": 679,
+  "v82NativePngFiles": 272,
+  "nativeArtifactSha256": "250cd7529019f1b280d908c7d9537c01de8130f1a978df19f89336794761a855",
+  "apkArtifactSha256": "bf08c9ea025d069dfe5693e5c624d25c9a316feb1829ca1846501d75ae4f7257",
+  "scope": [
+    "Correct original d-group front/side kick source frames; both bodies/four facings on real GameView input",
+    "Spin cycles rear/front kick source orientations; actual starting facing asserted",
+    "Dara standing pixels equal during 0..2.99sec prep; raises at 3sec real damage/recipient contact, then lowers/recovery",
+    "Ragnarok and Defense retained user acceptance; all configured skill/world/combat/growth/restart gates passed"
+  ],
+  "nativeReview": "679 native PNGs; all24 equipped kick contact actors, all8 spin turn actors and all8 Dara startup/wait/release/lower/end sequences reviewed; 272 V82 actor/live frames. Actual spin starting facings asserted."
+}

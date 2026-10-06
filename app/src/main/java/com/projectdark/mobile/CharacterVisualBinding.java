@@ -51,7 +51,7 @@ public final class CharacterVisualBinding {
   public static GarmentCoverage garmentCoverageForAppearance(String appearanceId){
     if(appearanceId==null)return null;
     String a=appearanceId.toLowerCase();
-    if(RESOLVED_LUERS_ROBE_APPEARANCE_ID.equals(a))return GarmentCoverage.FULL_BODY;
+    if(RESOLVED_LUERS_ROBE_APPEARANCE_ID.equals(a)||"mu0000180".equals(a))return GarmentCoverage.FULL_BODY;
     if(a.startsWith("mu")||a.startsWith("wu"))return GarmentCoverage.UPPER;
     return null;
   }

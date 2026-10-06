@@ -1,0 +1,762 @@
+{
+  "revision": "V78_ATTACHMENT_REVIEW",
+  "files": [
+    {
+      "file": "01-PDF",
+      "sha256": "d61ad4cfb1b4c9d597d437c6a26f8a7ef70783b1993365148e225eb79b4cd850",
+      "bytes": 5420030,
+      "type": "PDF_TEXT_AND_REFERENCE_IMAGES",
+      "pages": 28,
+      "effectEvidence": "No labelled effect-frame sequence; skill description/name evidence only."
+    },
+    {
+      "file": "02-_-.PDF",
+      "sha256": "ed00844bb3c4c2de58c2dd36bbce2712bf4a40d553c8f3007ba8dc04de9d5c51",
+      "bytes": 946966,
+      "type": "PDF_TEXT_AND_REFERENCE_IMAGES",
+      "pages": 28,
+      "effectEvidence": "No labelled effect-frame sequence; skill description/name evidence only."
+    },
+    {
+      "file": "03-Screen_Recording_20260915_003701_YouTube.mp4",
+      "sha256": "047920ab732acafd76db6bae9817a59938be908448a5826e31a66170a29710f0",
+      "bytes": 64477265,
+      "type": "VIDEO",
+      "effectEvidence": "Complete Defense (23); village walkthrough (03); tutorial/basic combat without unambiguous missing-magic labels (04)."
+    },
+    {
+      "file": "04-Screen_Recording_20260915_003420_YouTube.mp4",
+      "sha256": "8e6eb9e580383c22783f3b220c3cc52a1b4fb4493ce93dee3721113a5412fd73",
+      "bytes": 85014794,
+      "type": "VIDEO",
+      "effectEvidence": "Complete Defense (23); village walkthrough (03); tutorial/basic combat without unambiguous missing-magic labels (04)."
+    },
+    {
+      "file": "05-Screenshot_20260929_233857_NAVER.jpg",
+      "sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f",
+      "bytes": 2392591,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "06-Screenshot_20260929_233816_NAVER.jpg",
+      "sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd",
+      "bytes": 3518109,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "07-Screenshot_20260929_233811_NAVER.jpg",
+      "sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d",
+      "bytes": 299010,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "08-Screenshot_20260929_233847_NAVER.jpg",
+      "sha256": "3bdb7caddac36e77178e62e666aa4f3bc264576d574c640a54c67f8a41668e0d",
+      "bytes": 841028,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "09-Screenshot_20260929_233801_NAVER.jpg",
+      "sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398",
+      "bytes": 290165,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+      "sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3",
+      "bytes": 276637,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "11-Screenshot_20260929_233743_NAVER.jpg",
+      "sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e",
+      "bytes": 197365,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "12-Screenshot_20260930_052204_NAVER.jpg",
+      "sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4",
+      "bytes": 767276,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "13-Screenshot_20260930_052212_NAVER.jpg",
+      "sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980",
+      "bytes": 1429231,
+      "type": "SKILL_REQUIREMENT_TABLE",
+      "effectEvidence": "Names/icons/requirements; no cast/impact scene."
+    },
+    {
+      "file": "14-6.gif",
+      "sha256": "1b551fa5703d2f21e04f2b23b4c4217a99017b57f388113aa889c0a33fd2b2f5",
+      "bytes": 76347,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "15-4.gif",
+      "sha256": "f7ece527f89b38b4aafc9a3a0054f5845ad1f3c770dc8dec94e4bcaec1314779",
+      "bytes": 210054,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "16-7.gif",
+      "sha256": "f964ed6c4768d01583ed2a7cf1694e19d3d76098b523a09a9b0cbf90d7c167d9",
+      "bytes": 91572,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "17-8.gif",
+      "sha256": "6ee8a93feb9875898ae4f9e980624b0e2070468b03344d764a95b053aec86d13",
+      "bytes": 99979,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "18-5.gif",
+      "sha256": "dd3d2ee7c3784af2e657948d0e5ee0e7d7a0935bf637bfb1a90cdef8b28746ae",
+      "bytes": 48715,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "19-2.gif",
+      "sha256": "ac874387f2d081c6977a567d1233a101416afcad51650917a9f3609f9dd0f79e",
+      "bytes": 172225,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "20-3.gif",
+      "sha256": "16899ea38d7f935a15cdcb243bbc97cb236f28cf1c35d8f7ff97f85d5059ade6",
+      "bytes": 445242,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "21-gif",
+      "sha256": "e8cd4b61f146635e6ef7965a4bebbe9b55ca3ceb8fcab15ce47b4e7c85e98fdc",
+      "bytes": 312106,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "22-1.gif",
+      "sha256": "748d45cf33917bb79e4436d06ca59306b59601a50daf94eb1304a5d124818054",
+      "bytes": 430404,
+      "type": "ANIMATED_GIF",
+      "effectEvidence": "Compared to retained user_20260930 bytes; 7 labelled decoded-source matches, 2 still unlabelled."
+    },
+    {
+      "file": "23-Screen_Recording_20260930_201141_YouTube.mp4",
+      "sha256": "2f2a39dec31930975badbed92752ad6e4bdb73eb1d5d35e50784abc1e2bcb910",
+      "bytes": 7937332,
+      "type": "VIDEO",
+      "effectEvidence": "Complete Defense (23); village walkthrough (03); tutorial/basic combat without unambiguous missing-magic labels (04)."
+    }
+  ],
+  "remainingNamePageEvidence": [
+    {
+      "id": "SK_도적_001",
+      "name": "찌르기",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            7,
+            9,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_도적_015",
+      "name": "습격",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            5,
+            8,
+            9,
+            10,
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_006",
+      "name": "콘푸지오",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            18,
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_007",
+      "name": "수페라마레나",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_008",
+      "name": "수페라테라미카",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_009",
+      "name": "수페라아듀라",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_010",
+      "name": "수페라플라미카",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_012",
+      "name": "베노미",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            12,
+            16,
+            19,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_017",
+      "name": "나르콜리",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": [
+            16
+          ]
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            11,
+            13,
+            16,
+            19,
+            20,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_018",
+      "name": "엑스마레나",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_019",
+      "name": "엑스테라미카",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_020",
+      "name": "엑스아듀라",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_021",
+      "name": "엑스플라미카",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_023",
+      "name": "딜루메니",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            13,
+            16,
+            18,
+            19,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_025",
+      "name": "소루마",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            11,
+            14,
+            16,
+            20,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_030",
+      "name": "마네나로",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_031",
+      "name": "테라미칼로",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_032",
+      "name": "아듀랄로",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_033",
+      "name": "플라미칼로",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_034",
+      "name": "세멜리아",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            2,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_035",
+      "name": "아마게돈",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_036",
+      "name": "숨마스텔라",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            2,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_037",
+      "name": "라그나로크",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            2,
+            20,
+            21
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_038",
+      "name": "데스",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": [
+            4,
+            15
+          ]
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            19,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_성직자_002",
+      "name": "수혈",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": []
+        }
+      ]
+    },
+    {
+      "id": "SK_성직자_020",
+      "name": "홀리블로우",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_무도가_001",
+      "name": "정권",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_무도가_024",
+      "name": "연천단각",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_무도가_025",
+      "name": "붕신선각",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_무도가_028",
+      "name": "무영신공",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            25,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_무도가_029",
+      "name": "자기보호",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            21,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_공통_001",
+      "name": "기본공격",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": [
+            5,
+            6,
+            18
+          ]
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            11,
+            14,
+            23,
+            24,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_성직자_051",
+      "name": "블레스",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SK_성직자_052",
+      "name": "홀리쇼크",
+      "pdfNameReferences": [
+        {
+          "file": "01-PDF",
+          "pages": []
+        },
+        {
+          "file": "02-_-.PDF",
+          "pages": [
+            13
+          ]
+        }
+      ]
+    }
+  ]
+}

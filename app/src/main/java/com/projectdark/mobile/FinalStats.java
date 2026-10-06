@@ -10,6 +10,13 @@ public final class FinalStats {
     r.baseMaxHp()+v(e,"HP"),r.baseMaxMp()+v(e,"MP"),v(e,"AC"),v(e,"MAGIC_DEFENSE"),v(e,"HIT"),v(e,"DAM"),r.attackElement(),r.defenseElement(),v(e,"DAMAGE_REDUCTION_PCT"),v(e,"FLAT_MITIGATION"),v(e,"AC_IGNORE"));
  }
  public static FinalStats neutral(int hp,int mp){return new FinalStats(0,0,0,0,0,hp,mp,0,0,0,0,"NONE","NONE",0,0,0);}
+ public FinalStats withEffects(SkillEffectState e,String actor){
+  int mode=e.power(actor,"PHOENIX")+e.power(actor,"DRAGON");int curse=e.power(actor,"CURSE");
+  return new FinalStats(str,intel,wis,con,dex,maxHp,maxMp,ac-e.power(actor,"ARMOR")+curse+e.power(actor,"ARMOR_BREAK"),magicDefense-Math.max(0,curse-20)/2,
+   hit+e.power(actor,"HIT")+(mode>0?(mode==8?20:10):0),dam+e.power(actor,"DAM")+mode,
+   attackElement,e.has(actor,"CHANGE_ELEMENT")?"FIRE":defenseElement,damageReductionPct,flatMitigation,acIgnore);
+ }
+ public FinalStats withAttackElement(String element){return new FinalStats(str,intel,wis,con,dex,maxHp,maxMp,ac,magicDefense,hit,dam,element,defenseElement,damageReductionPct,flatMitigation,acIgnore);}
  public int prototypePhysicalAttack(){return Math.max(1,8+str*3+dam);}
  private static int v(Map<String,Integer> m,String k){Integer x=m.get(k);return x==null?0:x;}
 }

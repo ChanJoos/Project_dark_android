@@ -1,0 +1,16 @@
+{
+  "id": "DEVICE-QUEST-RESCUE-V109",
+  "status": "BUILD_NATIVE_VERIFIED_PHONE_PENDING",
+  "source": "USER_DEVICE_REPORT_2026_10_06",
+  "originalFacts": [
+    "Rescue makes monsters attack caster; supplied PDF has no range",
+    "Master/source CSV unchanged"
+  ],
+  "adaptedDecisions": [
+    "Rescue FRONT reach1 minReach1 non-damaging TAUNT",
+    "Mouse display40px with common ground baseline59"
+  ],
+  "contract": "docs/DEVICE_QUEST_V109.md",
+  "sourceCommit": "44d19c1e8dc1ec6fbab51030e6c1188f7b90ab97",
+  "evidence": "docs/verification/DEVICE_QUEST_V109_BUILD.json"
+}

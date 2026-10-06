@@ -1,0 +1,111 @@
+{
+  "sourceCommit": "c99345776c5633843bf80fa80e1e6eabfee7c226",
+  "branch": "codex/town-interiors-mobile-v86",
+  "artifactStatus": "UNMERGED_DIVERGED_BRANCH_CANDIDATE",
+  "build": "LOCAL_GRADLE_8.11.1_ANDROID35_JDK17",
+  "actionsRun": null,
+  "apkSha256": "69c8c90d55138991f2eda88dd9c011d0188cd140a999b8dca2d45cb97cb5bd8d",
+  "buildTimeAsiaSeoul": "2026-10-05T20:13:53.399912+09:00",
+  "versionCode": 107,
+  "versionName": "1.07-chungryong-quickquest",
+  "apkSizeBytes": 52964374,
+  "tests": [
+    {
+      "name": "com.projectdark.mobile.ChungryongWeaponTest",
+      "tests": "9",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-05T11:10:55",
+      "hostname": "923480ca27a2",
+      "time": "114.465"
+    },
+    {
+      "name": "com.projectdark.mobile.QuestJournalTest",
+      "tests": "10",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-05T11:12:50",
+      "hostname": "923480ca27a2",
+      "time": "35.144"
+    },
+    {
+      "name": "com.projectdark.mobile.QuickQuestLatencyTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-05T11:13:26",
+      "hostname": "923480ca27a2",
+      "time": "6.727"
+    },
+    {
+      "name": "com.projectdark.mobile.ReferenceWarriorTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-05T11:13:34",
+      "hostname": "923480ca27a2",
+      "time": "9.508"
+    },
+    {
+      "name": "com.projectdark.mobile.world.F5mProductionQuickQuestRouteTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-05T11:13:44",
+      "hostname": "923480ca27a2",
+      "time": "0.136"
+    },
+    {
+      "name": "com.projectdark.mobile.world.WorldMoveTargetControllerPathTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-05T11:13:44",
+      "hostname": "923480ca27a2",
+      "time": "0.019"
+    }
+  ],
+  "totalTests": 27,
+  "quickQuestDownUpMilliseconds": [
+    45,
+    6,
+    3,
+    3,
+    3,
+    4
+  ],
+  "timingScope": "Robolectric SDK34 real GameView touch callback; not physical phone",
+  "navigationOracle": "100 seeded obstacle maps: exact goal and cost agree with exhaustive BFS",
+  "referenceEquipmentPackageBytes": [
+    {
+      "apkEntry": "assets/source-registration/mh168.json",
+      "sha256": "f520b8d562bb1211ce9e41ec8fa1dff2c2500e0b8f2a5e23d16212b5883b87a8"
+    },
+    {
+      "apkEntry": "res/drawable-nodpi-v4/equip_mh168_source.webp",
+      "sha256": "c6eba4e8821e4f59236d0fe0ae035c1a7d4777b21636eeb2c85802ffcd0977a6"
+    },
+    {
+      "apkEntry": "assets/source-registration/mu0000180.json",
+      "sha256": "0064a5a479f2dcbba47784a5383d2e096e0974330b1def9f32e24fb212c74ca4"
+    },
+    {
+      "apkEntry": "res/drawable-nodpi-v4/equip_mu0000180_source.webp",
+      "sha256": "c23481f89d695c863b9844f13e7dbb2a2696e09f1e7f95a814b7ec5d24a9739b"
+    }
+  ],
+  "preservedEquipmentCount": 47,
+  "visualScope": "Native renderer: 20 carry frames and 20 reference outfit idle/walk frames inspected",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "signerSha256": "96854686becc8c5fe342ef4827a4f5558fe10f80e37b64a32a724f6a77199c3f",
+  "v106SignerSha256": "de94df6cbedafcd867355c6334a0c2235d1b58675c0bf33afe80fb3be9e198ab",
+  "inPlaceUpdateFromV106": false,
+  "publication": "BLOCKED_BY_AUTO_REVIEW: current user approval required; no bypass attempted"
+}

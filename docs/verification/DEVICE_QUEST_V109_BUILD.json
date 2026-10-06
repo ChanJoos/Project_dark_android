@@ -1,0 +1,201 @@
+{
+  "sourceCommit": "44d19c1e8dc1ec6fbab51030e6c1188f7b90ab97",
+  "versionCode": 109,
+  "versionName": "1.09-device-quest-rescue-fix",
+  "builtSeoul": "2026-10-06T12:22:04.792865+09:00",
+  "implementation": "IMPLEMENTED",
+  "build": "BUILD_VERIFIED",
+  "nativeRuntime": "NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC",
+  "physicalPhone": "PENDING",
+  "userVisual": "PENDING",
+  "rejectedSource": "c48cd39d33aae4c608d122b1257518cbaf3ec828",
+  "rejectedDevice": "DEVICE_FAILED_USER_REPORTED",
+  "baseline": {
+    "tests": 4,
+    "expectedAssertionFailures": 4,
+    "result": "REPRODUCED"
+  },
+  "focused": {
+    "run": 37408187292,
+    "result": "SUCCESS",
+    "testCount": 82,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.CampaignNavigationTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.CampaignProgressTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.CampaignQuickQuestIntegrationTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.CampaignUiTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.ChungryongWeaponTest",
+        "tests": "9",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.DevicePresentationRepairTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.DeviceQuestRegressionTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.HudTouchAcceptanceTest",
+        "tests": "5",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.InnSourceRepairTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.ItemWindowReferenceTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.MillesMousePresentationTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.ModernUiTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.NpcAppearanceTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.QuestJournalTest",
+        "tests": "10",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.QuickQuestLatencyTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.ReferenceWarriorTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.SkillAbilityRuntimeTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.SkillTestModeTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.world.WorldMoveTargetControllerPathTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.world.F5mProductionQuickQuestRouteTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0"
+      }
+    ],
+    "nativeArtifact": 11388331641,
+    "apkArtifact": 11388746060,
+    "nativeArtifactSha256": "4d831b19b9f9f4c097aef858837c4c4d040e1bba33c48c3f015daa4c17dfc31f",
+    "skipped": 0
+  },
+  "full": {
+    "run": 37408187293,
+    "result": "SUCCESS",
+    "additionalPullRequestRun": 37408190698,
+    "additionalPullRequestResult": "SUCCESS",
+    "allConfiguredRuntimeSourceWorldGrowthSaveAndAPKChecks": "PASS",
+    "gradleInvocationsInAdditionalRun": 24,
+    "failedGradleInvocationsInAdditionalRun": 0
+  },
+  "apk": {
+    "sha256": "89dada263f76c5084e02222bc139192a4cf8dbbc7106e3c85ac8de38c342143b",
+    "bytes": 53041399,
+    "url": "https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v109-44d19c1e-37408187292-1/PROJECT_DARK_V109.apk",
+    "downloadedReleaseHashIdentityCRC": "PASS",
+    "originalEquipmentFiles": 47,
+    "mouseFrames": 16
+  },
+  "nativeFrames": [
+    {
+      "name": "v109-growth-auto-three-kills.png",
+      "sha256": "4a7773ab561c42133658e10d9ae7448c7c9c7d1ea7d42bedc1733ff6d6c6ad8e",
+      "visualReview": "REVIEWED_NATIVE_ONLY"
+    },
+    {
+      "name": "v109-opening-auto-kill.png",
+      "sha256": "fd11da24b26b614977dea530401d9763a9eb1cb28ef6d900011fbdb3a6125e65",
+      "visualReview": "REVIEWED_NATIVE_ONLY"
+    },
+    {
+      "name": "v109-opening-inn-entry.png",
+      "sha256": "f5b0af0368eadc3a33077654f4d7568107868f737261d43d4a92756da2d2c789",
+      "visualReview": "REVIEWED_NATIVE_ONLY"
+    },
+    {
+      "name": "v109-rescue-live-taunt.png",
+      "sha256": "29bd653ad009f66273c57147928e13f9fa8ed0b59a9f5aec87a6ec68d75b687a",
+      "visualReview": "REVIEWED_NATIVE_ONLY"
+    },
+    {
+      "name": "v109-shortblade-three-report.png",
+      "sha256": "f4b6ead09cbdffb32707d2fb2e47b045e4a98c0f30e8130e7e891884628ce14d",
+      "visualReview": "REVIEWED_NATIVE_ONLY"
+    },
+    {
+      "name": "v109-small-mouse-animation-grid.png",
+      "sha256": "861b67840ecaf30224b1acd4014c520f623ea617e9ae238ff4e011138e2fab56",
+      "visualReview": "REVIEWED_NATIVE_ONLY"
+    }
+  ],
+  "checkpointScope": "Documentation only; app/assets/tools/workflows byte-identical to the tested APK source."
+}

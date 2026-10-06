@@ -38,12 +38,12 @@ public final class RpgInventoryPresentation {
     public final long combatSequence;
     public final String monsterId;
     public final RpgProgressionState.RewardStatus status;
-    public final Integer exp;
+    public final Integer exp;public final long gold;
     public final Map<String,Integer> autoLootedItems;
     public final Map<String,RpgProgressionState.AutoLootResult> itemOutcomes;
     public final RpgProgressionState.RewardSource source;
     public final String policyId,evidence;
-    RewardNotice(RpgProgressionState.RewardResolution reward){this.combatSequence=reward.combatSequence;this.monsterId=reward.monsterId;this.status=reward.status;this.exp=reward.exp;this.autoLootedItems=reward.autoLootedItems;this.itemOutcomes=reward.itemOutcomes;this.source=reward.source;this.policyId=reward.policyId;this.evidence=reward.evidence;}
+    RewardNotice(RpgProgressionState.RewardResolution reward){this.combatSequence=reward.combatSequence;this.monsterId=reward.monsterId;this.status=reward.status;this.exp=reward.exp;this.gold=reward.gold;this.autoLootedItems=reward.autoLootedItems;this.itemOutcomes=reward.itemOutcomes;this.source=reward.source;this.policyId=reward.policyId;this.evidence=reward.evidence;}
   }
 
   public List<ItemRow> inventoryRows(RpgProgressionState rpg){

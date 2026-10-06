@@ -1,0 +1,39 @@
+{
+  "sourceCommit": "2ffd629c96086b3554311004628c9d0b4eef3040",
+  "runId": "37197488523",
+  "apkSha256": "d9b3ac430af3fd27541b6e17b14bb69a3e10b0856144f5383bc79403f43d4701",
+  "apkBytes": 42470860,
+  "builtSeoul": "2026-10-04T20:06:46.478572+09:00",
+  "versionCode": 102,
+  "scope": "V102 source-observed north exterior river, park/outer circuits, bridge navigation and source-expression assets; exact native bench/style/depth/district/doors/UI and assemble",
+  "branch": "codex/town-interiors-mobile-v86",
+  "focusedJob": 111422247871,
+  "focusedConclusion": "SUCCESS",
+  "focusedNativeTests": 18,
+  "testGroups": {
+    "MillesSourceStyleTest": 3,
+    "MillesReconstructionTest": 4,
+    "TownInteriorTest": 8,
+    "ModernUiTest": 3
+  },
+  "decodedReviewedFrames": 18,
+  "apkArtifact": 11300574743,
+  "nativeArtifact": 11301705178,
+  "apkArchiveSha256": "339b17a7e0627265684c2604730e31baf81d709e679e0ec7cb1318a1805d1d8a",
+  "nativeArchiveSha256": "102b6dd2ac0f7c3def55a2e534281bd3c4f229c5f03730fb79167bf1d5b672f5",
+  "v2SignatureAndContentDigest": "PASS",
+  "signerSha256": "52f7ea00a9b73715f4e8cc6b19155daf3a18ef545ae3b20cd5d39bfd6e074e6b",
+  "inPlaceUpgrade": false,
+  "physicalPhone": "PENDING",
+  "userVisual": "PENDING",
+  "originalIdentity": "ADAPTED_NOT_PIXEL_IDENTICAL",
+  "wholeMapReferenceSha256": "16aa89faae1c06631b743f744c01a133c552a50082a1dde74f5d4689d38e7421",
+  "generalRun": 37197488544,
+  "generalConclusion": "IN_PROGRESS_23_STEPS_PASS",
+  "save": "SUCCEEDED_ALL_THREE_RECEIPTS",
+  "libraryFiles": [
+    "libfile_e23817c37a588191a7a1ff2c04c80ecb",
+    "libfile_bfce58fd80ac8191a484afb7446fa525",
+    "libfile_b78b69c121888191a22d5f876ff4d7b8"
+  ]
+}

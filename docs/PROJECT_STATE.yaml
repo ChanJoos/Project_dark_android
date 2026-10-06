@@ -1,3 +1,218 @@
+onboarding_v110:
+  implementation: IMPLEMENTED
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC_96_TESTS_ZERO_FAILURES_ZERO_SKIPS
+  source: fadd41a7c947a561b1b3e4a2a0315010019c6c7a
+  actions_run: 37415043124
+  apk_artifact: 11390194338
+  native_artifact: 11390029337
+  apk_sha256: 970f41a7c1cfc9d5ddf924a322599ef0945e2b511eca8e324e8c9df604d44b28
+  built_seoul: 2026-10-06T13:49:32.442826+09:00
+  evidence: docs/verification/ONBOARDING_V110_BUILD.json
+  baseline: V109_DEVICE_VERIFIED_USER_REPORTED
+  basic_steps: 16
+  own_route_quests: 32
+  completed_basic_level: 11
+  cumulative_normal_exp: 378000
+  save_migration: V1_LEGACY_ROUTE_PRESERVED_V2
+  physical_phone: PENDING
+  user_visual: PENDING
+  contract: docs/ONBOARDING_V110_CONTRACT.md
+
+device_quest_v109:
+  implementation: IMPLEMENTED
+  source: 44d19c1e8dc1ec6fbab51030e6c1188f7b90ab97
+  rejected_source: c48cd39d33aae4c608d122b1257518cbaf3ec828
+  rejected_device: DEVICE_FAILED_USER_REPORTED
+  root_causes: [legacy_hunt_auto_disabled, startup_preview_discarded_skill_uses, taunt_without_AI_consumer]
+  baseline: FOUR_ASSERTION_FAILURES_REPRODUCED
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC_82_TESTS_ZERO_FAILURES_ZERO_SKIPS
+  physical_phone: DEVICE_VERIFIED_USER_REPORTED
+  user_visual: PENDING
+  actions_run: 37408187292
+  full_pipeline_evidence: docs/verification/DEVICE_QUEST_V109_BUILD.json
+  apk_artifact: 11388746060
+  native_artifact: 11388331641
+  apk_sha256: 89dada263f76c5084e02222bc139192a4cf8dbbc7106e3c85ac8de38c342143b
+  built_seoul: '2026-10-06T12:22:04.792865+09:00'
+  contract: docs/DEVICE_QUEST_V109.md
+  tests: [DeviceQuestRegressionTest, QuestJournalTest, MillesMousePresentationTest, SkillAbilityRuntimeTest]
+  required_sources: [docs/DEVICE_QUEST_V109.md, docs/SKILL_ACTION_DECISIONS.csv, master/changes/DEVICE-QUEST-RESCUE-V109.json]
+  active_pr: 178
+  active_branch: codex/town-interiors-mobile-v86
+  checkpoint_scope: DOCUMENTATION_ONLY_APK_SOURCE_UNCHANGED
+
+quest_runtime_v108:
+  implementation: FOLLOW_UP_IN_PROGRESS
+  previous_candidate_build: BUILD_VERIFIED_GITHUB_ACTIONS
+  previous_candidate_native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+  previous_candidate_device: DEVICE_FAILED_USER_REPORTED_2026-10-06
+  previous_candidate_source: ad374ec52898cfb4f49a08cf2557258512ccc3eb
+  previous_candidate_actions_run: 37371178428
+  device_root_cause: UNKNOWN_UNTIL_REPRODUCED
+  follow_up_scope: [full_M07_from_Milles_to_kill, accepted_Shortblade_ACTION_STARTED_count, four_direction_mouse_idle_walk_attack]
+  follow_up_tests: [CampaignQuickQuestIntegrationTest, CampaignProgressTest, MillesMousePresentationTest, InnSourceRepairTest]
+  follow_up_source: LOCAL_UNBUILT
+  follow_up_build: PENDING
+  follow_up_native_runtime: PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  active_pr: 178
+  active_branch: codex/town-interiors-mobile-v86
+  main_sha: bfd668d4e178fa82625d634b5a54be0e27ce30a3
+  quests_per_class_audited: 23
+  audit: docs/QUEST_RUNTIME_AUDIT_V108.md
+
+chungryong_quickquest_v107:
+  implementation: IMPLEMENTED_LOCAL_CANDIDATE
+  build: BUILD_VERIFIED_LOCAL
+  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+  source_commit: c99345776c5633843bf80fa80e1e6eabfee7c226
+  evidence: verification/V107_LOCAL_BUILD.json
+  focused_tests: 27
+  upgrade_compatible_apk: BLOCKED_SIGNING_DIFFERENCE_REQUIRES_CI
+  reported_device: DEVICE_FAILED_USER_REPORTED_V106
+  physical_phone: PENDING
+  publication: BLOCKED_AUTO_REVIEW_REQUIRES_CURRENT_USER_APPROVAL
+  contract: docs/CHUNGRYONG_QUICKQUEST_V107_CONTRACT.md
+  required_sources:
+    - master/source/weapons/chungryong_490398/basic.gif
+    - master/data/Asset_Master.csv
+    - master/source/reference_warrior_v107/mu0000180.json
+    - master/source/reference_warrior_v107/mu0000180.webp
+    - master/source/reference_warrior_v107/mh168.json
+    - master/source/reference_warrior_v107/mh168.webp
+npc_identity_style_v104:
+  implementation: IMPLEMENTED_CANDIDATE
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+  source_commit: 48f8a037872c8ddfab8abacd5808671de9dd9f8f
+  actions_run: 37203753211
+  focused_native_tests: 32
+  native_pngs: 27
+  visually_reviewed_npc_pngs: 7
+  directional_pixel_comparisons: 44
+  npc_profiles: 11
+  new_source_wearables: 28
+  apk_sha256: 0defe4e08fdfb711d3816fb881a2c7b8802b6eae54d52d20fdf0374d35161689
+  built_seoul: '2026-10-04T21:57:46.848378+09:00'
+  final_save: SUCCEEDED_ALL_FOUR_RECEIPTS
+  in_place_upgrade: false
+  general_ci: IN_PROGRESS_37204025653_TEST_ONLY_FOLLOWUP
+  physical_phone: PENDING
+  user_visual: PENDING
+  evidence: docs/verification/NPC_IDENTITY_STYLE_V104_BUILD.json
+  contract: docs/NPC_IDENTITY_STYLE_V104_CONTRACT.md
+milles_church_bench_v103:
+  implementation: IMPLEMENTED_CANDIDATE
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED
+  source_commit: 1a7809354681219a2bdbd1457ebc30d550d93ccb
+  actions_run: 37200737195
+  focused_native_tests: 20
+  locally_reviewed_frames: 20
+  apk_sha256: 119219b4e9d22fde2e6f1e43a662c574d6a51abfdd5e059c383607a06a3276e4
+  built_seoul: '2026-10-04T21:04:31.520506+09:00'
+  final_save: SUCCEEDED_ALL_FOUR_RECEIPTS
+  in_place_upgrade: false
+  general_ci: IN_PROGRESS_37200737185
+  evidence: docs/verification/MILLES_CHURCH_BENCH_V103_BUILD.json
+  physical_phone: PENDING
+  user_visual: PENDING
+  contract: docs/MILLES_CHURCH_BENCH_V103_CONTRACT.md
+milles_river_style_v102:
+  reported_device: DEVICE_FAILED_USER_REPORTED_CHURCH_IDENTITY_AND_BENCH_SUPPORTS
+  implementation: IMPLEMENTED_CANDIDATE
+  exact_native_build: BUILD_AND_NATIVE_RUNTIME_VERIFIED
+  source_commit: 2ffd629c96086b3554311004628c9d0b4eef3040
+  actions_run: 37197488523
+  focused_native_tests: 18
+  locally_reviewed_frames: 18
+  apk_sha256: d9b3ac430af3fd27541b6e17b14bb69a3e10b0856144f5383bc79403f43d4701
+  built_seoul: '2026-10-04T20:06:46.478572+09:00'
+  final_save: SUCCEEDED_ALL_THREE_RECEIPTS
+  in_place_upgrade: false
+  original_identity: ADAPTED_NOT_PIXEL_IDENTICAL
+  general_ci: IN_PROGRESS_37197488544
+  evidence: docs/verification/MILLES_RIVER_STYLE_V102_BUILD.json
+  physical_phone: PENDING
+  user_visual: USER_VISUAL_REJECTED
+  source_contract: docs/MILLES_RIVER_STYLE_V102_CONTRACT.md
+  governing_inputs: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, assets/milles/VISUAL_CONSTITUTION.md, master/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md]
+milles_source_style_v101:
+  implementation: IMPLEMENTED_CANDIDATE
+  source_commit: 87e8915ab785734bdfc7d594e571d13e37f75c69
+  actions_run: 37194828641
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_VERIFIED
+  focused_native_tests: 17
+  locally_reviewed_frames: 18
+  apk_artifact: 11300441516
+  native_artifact: 11300516191
+  apk_sha256: c203e1f58211bb8efb72ae79931f5b7e722713fd3c54b73a437440470f8e52d2
+  built_seoul: '2026-10-04T19:17:56.145381+09:00'
+  signature: V2_SIGNATURE_AND_CONTENT_DIGEST_VERIFIED
+  in_place_upgrade: false
+  final_save: SUCCEEDED_BOTH_RECEIPTS
+  physical_phone: PENDING
+  user_visual: USER_VISUAL_REJECTED
+  original_identity: ADAPTED_NOT_PIXEL_IDENTICAL
+  final_general_ci: IN_PROGRESS_37194828669
+  evidence: docs/verification/MILLES_SOURCE_STYLE_V101_BUILD.json
+milles_reconstruction_v100:
+  implementation: IMPLEMENTED_CANDIDATE
+  source_commit: 7f71aa38be9ae31027c3204d65a6bb8b4a5df66b
+  source_tree: 1aea13deb6a925b3a88c280ebc353411b2268c77
+  actions_run: 37181394473
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_RUNTIME_GATES_VERIFIED
+  local_reviewed_frames: 16
+  focused_native_tests: 25
+  native_artifact: 11294979007
+  apk_artifact: 11294764162
+  apk_sha256: 21460a617ef12c0b2d0a1209e043f956e1c1ba3f30b15b0242e8f6214faa8458
+  built_seoul: '2026-10-04T15:10:36.581611+09:00'
+  anonymous_download: HTTP200_HASH_VERIFIED
+  signature: V2_VERIFIED_DIFFERENT_FROM_V99
+  in_place_upgrade: false
+  physical_phone: PENDING
+  user_visual: USER_VISUAL_REJECTED
+  CI_native_byte_comparison: PENDING_TERMINAL_UNRESPONSIVE
+  final_library_save: UNKNOWN_TERMINAL_NO_RESPONSE_NOT_RETRIED
+  evidence: docs/verification/MILLES_V100_BUILD.json
+  contract: docs/MILLES_RECONSTRUCTION_V100_CONTRACT.md
+quest_journal_v97:
+  implementation: IMPLEMENTED_CANDIDATE
+  source_commit: 25871a27bfe599ed8ad2b742d2e16c386be7778a
+  source_tree: 41d775e6ce042e9f8b4aa8c6e10fce6c687170e3
+  reported_quest_ux: DEVICE_FAILED_USER_REPORTED_NATIVE_REPRODUCTION_REPAIRED
+  reported_apk_delivery: DELIVERY_FAILED_USER_REPORTED_INDEPENDENT_DOWNLOAD_NOW_PASS
+  build: BUILD_VERIFIED
+  actions_run: 37163238922
+  native_runtime: RUNTIME_VERIFIED_NATIVE
+  focused_native_tests: 9
+  manually_reviewed_native_pngs: 20
+  anonymous_download: HTTP200_HASH_VERIFIED
+  physical_phone: PENDING
+  user_visual: PENDING
+  contract: docs/QUEST_JOURNAL_V97_CONTRACT.md
+  proof: docs/verification/QUEST_JOURNAL_V97_BUILD.json
+# V96 source e76991d29bb0fe4e302b2114614ede934bb5fd2c, Actions37160669377 SUCCESS; 8 native tests/57 images; APK SHA52a488ed. PHONE_PENDING, unmerged candidate. Proof docs/verification/CHUNGRYONG_JUMP_V96_BUILD.json.
+# V96 weapon/complete-defense user failure diagnosed; exact CI and native review pending. Details master/changes/CHUNGRYONG-JUMP-V96.json.
+# V95 exact source65d01e51, Actions37136447554 SUCCESS; 3 native tests/5 recipient frames, SHA0183dfb4; PHONE_PENDING, unmerged candidate. Details docs/verification/DARA_RECIPIENT_V95.json.
+# V95 explicit user Dara DEVICE_FAILED; low-resource test-release fix INTEGRATED, exact CI pending.
+# required_sources consumed: SkillVfxRenderer, GameView, RuntimeCombatPortAdapter, SkillAbilityExecutor, SkillAbilityCatalog, CombatResolver, classic manifest, MartialDefenseStarRegressionTest, SKILL_FX_AUDIT_CONTRACT, SKILL_PRESENTATION_CONTRACT, AGENTS, director/handoff/state/decision/backlog, development/design constitution, DATA_CONTRACT, Master manifest/data consumption/source catalog/runtime visual rules.
+# V83 active user request: skill formulas and real effects, continuing V82 candidate.
+# required_sources consumed: AGENTS.md, DIRECTOR_GUIDE, CHAT_HANDOFF, PROJECT_STATE,
+# DECISION_LOG, DIRECTOR_BACKLOG, development constitution, DATA_CONTRACT,
+# MASTER_MANIFEST, SOURCE_OF_TRUTH, Skill_Master, Skill_Damage_Model,
+# Skill_Formula_Research, Ultimate_Resource_Scaling, User_Confirmed_Skill_Facts,
+# supplied skills PDF, action decisions/catalog/learning policy,
+# SkillBook, GameView, CombatResolver, RuntimeCombatSession/PortAdapter,
+# RuntimeState, FinalStats, CombatStatPipeline, Defense/Element formula, F5mSaveStore.
+# Acceptance: source anchor equations, stat/gear scaling, 4-way spin quickslot,
+# resources once at release, statuses/effects/expiry/restore, exact CI and APK.
 schema_version: 1
 project:
   name: PROJECT DARK
@@ -146,6 +361,192 @@ scenes:
     gaps: [WORLD_MILLES_001, HUD_WORLD_BALANCE_001]
 
 work_packages:
+  DEVICE_PRESENTATION_106:
+    title: "V105 user-reported broken equipment/icons and NPC facing/name repair"
+    priority: P0
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    prior_v105_device: DEVICE_FAILED_USER_REPORTED
+    required_sources: [AGENTS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md, master/data/Asset_Source_Catalog.csv, master/data/Runtime_Visual_Rules.csv, docs/ITEM_WINDOW_CONTRACT.md, docs/MODERN_UI_V99_CONTRACT.md, docs/NPC_IDENTITY_STYLE_V104_CONTRACT.md, verification/V106_RESTORED_EQUIPMENT.json]
+    acceptance: ["exact registered original equipment and inventory icons packaged", "NPC Korean names everywhere", "NPC stationary SW pose", "upper right icons restored and equally spaced", "native full screen review and exact APK verification"]
+    implementation: IMPLEMENTED
+    build: BUILD_VERIFIED
+    native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC
+    source_commit: 7cefb0a1ad707b07bb0a5436a73a8189d5f1825c
+    ci_run: 37263309751
+    apk_artifact: 11324339557
+    native_artifact: 11325382653
+    final_focused_tests: 25
+    evidence: docs/verification/DEVICE_PRESENTATION_V106_BUILD.json
+    phone_acceptance: PENDING
+    user_visual_acceptance: PENDING
+  EQUIPMENT_UI_099:
+    title: "V98 user-rejected stat terminology and equipment alignment repair"
+    priority: P0
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    implementation: BUILD_VERIFIED
+    prior_v98_visual: USER_REJECTED
+    contract: docs/MODERN_UI_V99_CONTRACT.md
+    phone_acceptance: PENDING
+    user_visual_acceptance: PENDING
+    source_commit: 4666202ab1eb26768d52da9553ab5bc296decdcd
+    ci_run: 37177996173
+    native_runtime: VERIFIED
+    native_pngs: 14
+    anonymous_download: HTTP200_HASH_VERIFIED
+    proof: docs/verification/EQUIPMENT_UI_V99_BUILD.json
+  MODERN_UI_098:
+    title: "User-authorized whole-game modern mobile UI redesign"
+    claim: Director/Integration
+    priority: P0
+    queue_state: DEVICE_PENDING
+    implementation: BUILD_VERIFIED
+    required_sources: [docs/MODERN_UI_V98_CONTRACT.md, app/src/main/java/com/projectdark/mobile/GameView.java, app/src/main/java/com/projectdark/mobile/ItemWindow.java, app/src/main/java/com/projectdark/mobile/SkillWindow.java, app/src/main/java/com/projectdark/mobile/QuestJournalWindow.java, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md]
+    phone_acceptance: PENDING
+    user_visual_acceptance: PENDING
+    source_commit: 72de0f03216625d9105db06f76589adb92893f1f
+    native_runtime: RUNTIME_VERIFIED_NATIVE
+    native_tests: 66
+    captured_pngs: 13
+    github_publication: USER_APPROVED_PUBLISHED
+    proof: docs/verification/MODERN_UI_V98_BUILD.json
+    actions_run: 37168089905
+    anonymous_download: HTTP200_HASH_VERIFIED
+    signing_upgrade: INCOMPATIBLE_WITH_V97_USER_WARNED
+  MARTIAL_HUD_089:
+    title: "User-reported martial contact/facing/FX and NPC/AUTO/quickslot correction"
+    priority: P0
+    claim: Director/Integration
+    queue_state: VISUAL_PENDING
+    implementation: IMPLEMENTED
+    native_runtime: VERIFIED_SOURCE_a4dcc108
+    phone_acceptance: PENDING
+    user_visual_acceptance: PENDING
+    scope: "34 martial IDs, front intent, particle registration, NPC labels/placement, registered-slot AUTO, square insets, gold utility glyph"
+    build_source: a4dcc1086f283fd49b7673c8fa5c4ddf8c140f97
+    build_run: 37022876847
+    verified_delivery_run: 37025471193
+    delivery_artifact: 11235087055
+    apk_sha256: 2577f83ba1bd5d4e4f913e0b45a32021dd3fd8d42b3934c1a3972124bc5be086
+    local_attachment: BLOCKED_ENVIRONMENT_OFFLINE
+    proof: docs/verification/MARTIAL_HUD_V89_BUILD.json
+  TOWN_DETAIL_088:
+    title: "Original-inspired prop density and small-scale interior detail"
+    system: town_interior_visual
+    priority: P0
+    claim: Director/Integration
+    queue_state: VISUAL_PENDING
+    required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/PROJECT_STATE.yaml, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md, master/data/Asset_Source_Catalog.csv, master/data/Runtime_Visual_Rules.csv, master/data/Asset_Map_Mapping.csv, docs/verification/TOWN_INTERIORS_V85_SOURCES.json, docs/verification/TOWN_INTERIORS_V86_SOURCES.json, docs/verification/TOWN_WALLS_V87_BUILD.json, app/src/main/assets/interiors/v84/atlas.json, app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java, app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java, app/src/test/java/com/projectdark/mobile/TownInteriorTest.java]
+    external_references: ["1000056705(2).jpg dense weapon display", "1000056711(1).jpg reagent countertop/material detail", "1000056707.jpg Milles service area/clear customer floor", "1000057986.jpg user four-room architecture direction"]
+    acceptance: ["role-specific counter display and storage groups", "smaller-scale floor materials and carpet weave", "existing detailed prop atlas reused with explicit stand-ins for unsupported new props", "central customer aisle, merchant clearance and exits reachable", "decorations do not add floor collision", "native four-room map/UI/exterior review and exact-source APK"]
+    exact_source: "32f40ddb181845013988f2c9f5f82f97530d18c6"
+    ci_run: 37004867957
+    implementation: BUILD_VERIFIED
+    native_runtime: VERIFIED
+    visual_acceptance: PENDING_USER
+    phone_acceptance: PENDING
+    proof: docs/verification/TOWN_DETAIL_V88_BUILD.json
+    next: "User review of exact V88 interior map screenshots and phone APK; preserve source/layout changes and continue fine pixel art if rejected."
+
+  TOWN_WALLS_087:
+    title: "Repair flat walls and pasted-on windows after repeated user rejection"
+    system: town_interior_visual
+    priority: P0
+    claim: Director/Integration
+    queue_state: VISUAL_PENDING
+    failed_predecessor: "V86 wall/window visual FAIL, user-reported 2026-10-02; installed SHA unknown"
+    required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, master/MASTER_MANIFEST.md, master/DATA_CONSUMPTION_CONTRACT.md, master/data/Asset_Source_Catalog.csv, master/data/Runtime_Visual_Rules.csv, docs/verification/TOWN_INTERIORS_V85_SOURCES.json, docs/verification/TOWN_INTERIORS_V86_SOURCES.json, app/src/main/assets/interiors/v84/atlas.json, app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java, app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java, app/src/test/java/com/projectdark/mobile/TownInteriorTest.java]
+    external_reference: "user 1000057986.jpg, four-room isometric architecture comparison, inspected in this session"
+    acceptance: ["non-singular wall material projection", "timber structural framing and distinct stone church", "recessed windows with visible reveal, projecting sill and frame depth", "native four-room screenshots reviewed at full resolution", "exact-source build with phone/user visual acceptance explicitly pending"]
+    exact_source: "5890ba9d9ed861601ca9e6b55229ad2dfba8025d"
+    ci_run: 37000854573
+    evidence: docs/verification/TOWN_WALLS_V87_BUILD.json
+    verification: "BUILD/NATIVE VERIFIED; 16 PNGs reviewed; user/phone acceptance pending"
+  TOWN_INTERIORS_086:
+    title: "Fix source gaps and mobile interactions after V85 interior visual rejection"
+    system: town_interiors_and_commerce
+    priority: P0
+    claim: Director/Integration
+    queue_state: VERIFICATION_PENDING
+    failed_predecessor: "V85 interiors/items user reports still unnatural; installed APK SHA unconfirmed"
+    required_sources: [master/data/Item_Master.csv, master/data/Asset_Master.csv, master/changes/TOWN-INTERIORS-V86.json, docs/verification/TOWN_INTERIORS_V86_SOURCES.json, app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java]
+    acceptance: ["merchant tap opens immediately without moving player", "NPC stands one tile farther from connected counter", "two independently activating portals on each measured double-tile door", "keyboard numeric quantity editing with range validation", "source-backed glove/legging/earring/ring FinalStats and visible details", "AI accessory crops no longer used; one consistent shop/inventory pixel symbol where original item crop is unavailable", "captured Excuranum stopper/alpha preserved", "four native room/shop captures plus exact-source CI APK"]
+    source_sha: "20dadb73c65261b30820c205200f26baad854f07 (Actions 36990064690 SUCCESS; 45/45 stages)"
+    build_verified: "V86 debug APK generated; SHA-256 897447c42d47eaf6b18f95b2a7190be88208dc64f1aedc0b76885d49bd07034b"
+    native_verified: "Interaction and regression tests PASS; 16 native captures reviewed; VISUAL_ACCEPTED=NO"
+    remaining: "Master equipment slot audit: 23 rows, 7 runtime definitions, 6 sourced effects, 5 shop offers; original named accessory icons absent. Interiors need art/layout rework. Physical phone keyboard/touch acceptance pending. Naver screenshots are skill tables, not gear stat proof."
+  SKILL_PRESENTATION_082:
+    title: "User-reported martial kick mapping and Dara release timing repair"
+    system: combat_presentation
+    priority: P0
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    source_branch: codex/original-skill-contract-v65
+    failed_predecessor: "V81 DEVICE_FAILED (user-reported) for Dankak/Bungkak/Spin and early Dara arms; installed SHA unconfirmed"
+    required_sources: [docs/SKILL_ACTION_DECISIONS.csv, tools/generate_skill_presentation.py, master/data/Asset_Animation_Frame_Master.csv, master/data/Asset_Animation_Semantics.csv, master/source/skill_fx/naver_classic_2020/definitions.json, app/src/main/java/com/projectdark/mobile/SkillBodyRenderer.java, app/src/main/java/com/projectdark/mobile/GameView.java, docs/SKILL_PRESENTATION_CONTRACT.md]
+    acceptance: ["Dankak front kick", "Bungkak side kick", "Spin kick rotates using original kick BODY", "Dara stays idle until actual release contact", "Both bodies and four facings with actual equipped GameView captures", "Ragnarok and Defense approval retained"]
+    remaining: "Kicks/Dara physical phone revalidation; original cadence remains project-authored"
+    source_sha: 4bf789dc952403163fbc0aab6bc805186f75a28c
+    build_verified: "Actions36942749572 SUCCESS; version82 APK11201490465"
+    native_verified: "679 PNGs;272 V82 captures;actual starting facings/standing wait/release reviewed"
+    delivery_evidence: docs/verification/SKILL_FX_V82_BUILD.json
+  SKILL_PRESENTATION_081:
+    title: "User-labelled Ragnarok still extraction and recipient animation"
+    system: combat_presentation
+    priority: P1
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    source_sha: b35a69b09f163da91140a466adba5b971e0bb8e4
+    build_verified: "Actions36914678590 SUCCESS; version81 APK11188683570"
+    native_verified: "404 native PNGs; Ragnarok14 isolated phases and8 live frames inspected"
+    delivery_evidence: docs/verification/SKILL_FX_V81_BUILD.json
+    source_branch: codex/original-skill-contract-v65
+    required_sources: [master/source/skill_fx/user_ragnarok_20261002/provenance.json, docs/verification/SKILL_FX_V81_AUDIT.json]
+    acceptance: ["Four originals retained with hashes", "Six-point sigil extraction with declared reconstruction", "Source animation starts at actual recipient contact", "GIF plus exact-source APK delivered"]
+    user_visual_acceptance: "2026-10-02 user accepts Ragnarok on delivered V81; no installed hash supplied"
+    remaining: "Original timing and occluded pixels; 32 independent effect sources"
+    delivery_policy: "GIF and ZIP containing APK"
+  SKILL_PRESENTATION_080:
+    title: "Martial motion review, Defense envelope and fifth-circle star contact"
+    system: combat_presentation
+    priority: P1
+    claim: Director/Integration
+    queue_state: DEVICE_PENDING
+    source_branch: codex/original-skill-contract-v65
+    source_sha: d10e729f87253867efdb1d123122fb710ebe235a
+    failed_predecessor: "V79 DEVICE_FAILED (user-reported); installed SHA unconfirmed"
+    required_sources: [docs/verification/MARTIAL_MOTION_V80_AUDIT.json, docs/verification/SKILL_FX_V80_AUDIT.json, docs/SKILL_ACTION_DECISIONS.csv]
+    acceptance: ["Kick full extension at real contact", "Both bodies and four directions for all34 martial selections", "Retained Defense sphere contains head/feet", "Four finisher stars visible at each actual recipient contact", "Exact source SHA CI/APK evidence"]
+    remaining: "Original caster cadence/occluded poses, original finisher pixels/color/cadence and33 particle sources; physical phone and user visual acceptance"
+    delivery_policy: "ZIP containing APK because APK-only links were not clickable on phone"
+    build_verified: "Actions36905998670 SUCCESS; APK11183672728; sha256 f6f52fa0d23ba2629062feb30936901b74435677b85bfa89c1775b4cd4dd7d52"
+    native_verified: "382 PNGs; full ellipse envelope; live contact clocks; four finisher contacts"
+    delivery_evidence: docs/verification/SKILL_FX_V80_BUILD.json
+  SKILL_FX_SOURCE_RECHECK_078:
+    title: "Recheck all supplied originals and connect omitted labelled source routes"
+    system: combat_presentation
+    priority: P1
+    queue_state: DEVICE_VERIFICATION_PENDING
+    claim: Director/Integration
+    source_branch: codex/original-skill-contract-v65
+    required_sources: [docs/SKILL_FX_AUDIT_CONTRACT.md, docs/verification/SKILL_FX_V77_AUDIT.json, master/source/skill_fx/naver_cafe_archive_20261001/warrior_bindings.json, master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json, master/source/skill_fx/naver_magic_recovered_20261001/definitions.json, master/source/skill_fx/naver_magic_recovered_20261001/media.json, master/source/skill_fx/user_20260930/provenance.json, docs/verification/PROVIDED_SOURCE_RECHECK_V78_ATTACHMENTS.json, app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java, app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java]
+    acceptance: ["All 40 previous fallback IDs have explicit evidence outcomes", "Four omitted original channels reachable through production input", "Same-name reuse remains explicitly adapted registration", "34 missing originals and 2 unlabelled GIFs remain honest gaps", "Exact SHA native render and APK checks"]
+    remaining: "Mage22 original particle sources; total34 particle gaps; phone and original visual acceptance"
+    build_verified: "4a887579; Actions36880039516 SUCCESS; APK11170802690"
+    native_verified: "221 route audit, production input, peak-frame renderer review; native artifact11171027453"
+    delivery_evidence: docs/verification/V78_DELIVERY.json
+  CLASSIC_MARTIAL_CLERIC_068:
+    title: "Import labelled classic martial and cleric references into source and presentation"
+    system: combat_presentation
+    scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: VERIFICATION_PENDING
+    claim: Director/Integration
+    required_sources: [docs/CLASSIC_MARTIAL_CLERIC_V68.md, master/source/skill_fx/naver_classic_2020/provenance.json, master/source/skill_fx/naver_classic_2020/definitions.json, docs/SKILL_SPATIAL_CONTRACT.md, docs/SKILL_ACTION_DECISIONS.csv, master/changes/CLASSIC-MARTIAL-CLERIC-V68.json, app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java, app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java]
+    acceptance: ["61 source rows and byte hashes retained", "55 labelled effect IDs emit separate caster/contact channels", "Source descriptions/stats/icons visible", "Shared legality and no-enemy-heal regressions pass", "Native composited captures reviewed; device gate separately pending"]
+    remaining: "Persistent status, travel, party, summon and finisher mechanics; original alpha/occlusion and every-facing pose fidelity"
+
   SKILL-WINDOW-02:
     owner: Director/Visual
     status: BUILD_VERIFIED
@@ -373,6 +774,115 @@ work_packages:
     acceptance:
       - "Quest/chat/skill/control presentation remains usable but no longer visually dominates the playable world."
       - "Touch routing and existing functional controls must not regress while visual hierarchy/occupied area is improved."
+
+  MILLES_STORY_QUEST_UI_MOUSE_AI_001:
+    title: "Implement adapted Milles story quest journal and verify mouse AI parity"
+    system: [quest, ux, monster]
+    scenes: [SCENE_MILLES_VILLAGE, SCENE_FIELD_COMBAT]
+    priority: P1
+    queue_state: BUILD_VERIFIED
+    claim: null
+    required_sources:
+      - AGENTS.md
+      - docs/DIRECTOR_GUIDE.md
+      - docs/DIRECTOR_BACKLOG.md
+      - docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md
+      - docs/PROJECT_STATE.yaml
+      - docs/CHAT_HANDOFF.md
+      - docs/DECISION_LOG.md
+      - docs/MONSTER_CREATION_MANUAL.md
+      - design/DATA_CONTRACT.md
+      - design/SOURCE_OF_TRUTH.md
+      - master/MASTER_MANIFEST.md
+      - master/RECONCILIATION.md
+      - master/DATA_CONSUMPTION_CONTRACT.md
+      - master/data/Quest_Runtime_Master.csv
+      - master/data/NPC_Master.csv
+      - master/data/NPC_Runtime_Master.csv
+      - master/data/Monster_Master.csv
+      - app/src/main/java/com/projectdark/mobile/GameView.java
+      - app/src/main/java/com/projectdark/mobile/RuntimeState.java
+      - app/src/main/java/com/projectdark/mobile/WorldDef.java
+      - app/src/main/java/com/projectdark/mobile/WorldEntityPresentationRenderer.java
+      - app/src/main/java/com/projectdark/mobile/TownNpcRenderer.java
+      - app/src/main/java/com/projectdark/mobile/F5mCompletionPresentation.java
+      - app/src/main/java/com/projectdark/mobile/world/MillesDoorAnchors.java
+      - app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java
+      - app/src/main/java/com/projectdark/mobile/world/TownInteriorDetails.java
+      - app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java
+      - app/src/main/java/com/projectdark/mobile/world/MillesProductionCollision.java
+      - app/src/main/java/com/projectdark/mobile/world/MillesProductionCollisionAudit.java
+      - app/src/main/java/com/projectdark/mobile/F5mAdaptedPrologueQuest.java
+      - app/src/main/java/com/projectdark/mobile/F5mAdaptedPrologueQuestAudit.java
+      - app/src/main/java/com/projectdark/mobile/F5mRuntimeBindingAudit.java
+      - app/src/main/java/com/projectdark/mobile/F5mWorldUxQuestPresentationAudit.java
+      - app/src/main/java/com/projectdark/mobile/GrowthQuest2.java
+      - app/src/main/java/com/projectdark/mobile/F5mSaveStore.java
+      - app/src/main/java/com/projectdark/mobile/F5mQuestUiFlow.java
+      - app/src/main/java/com/projectdark/mobile/ActiveQuestTracker.java
+      - app/src/main/java/com/projectdark/mobile/MonsterAIController.java
+      - app/src/main/java/com/projectdark/mobile/MonsterDefinitionRegistry.java
+      - app/src/test/java/com/projectdark/mobile/HudTouchAcceptanceTest.java
+      - app/src/test/java/com/projectdark/mobile/MonsterChasePathfinderTest.java
+      - app/src/test/java/com/projectdark/mobile/PoteMonsterPlayableRuntimeTest.java
+      - app/src/test/java/com/projectdark/mobile/TownInteriorTest.java
+      - app/src/test/java/com/projectdark/mobile/FieldTransitionE2ETest.java
+      - app/src/test/java/com/projectdark/mobile/MillesStoryQuestTest.java
+      - assets/milles/production/maps/milles_garden.json
+      - assets/milles/production/maps/milles_garden_base.json
+    gap: "Current prologue is a generic guide-to-training-dummy loop; no canonical mouse identity or mouse sprite exists in the Master/assets. User requests an adapted story, named NPCs, a useful quest journal, and a verified shared-AI mouse comparison."
+    acceptance:
+      - "Project-authored Milles NPCs have stable IDs, distinct role-specific names/appearance, and connected dialogue/quest progression."
+      - "Quest journal exposes state, issuer, objective, progress, reward and next destination without breaking touch routing."
+      - "Mouse remains explicitly ADAPTED/B and uses the same MonsterAIController chase, path, attack and combat resolver behavior as the control monster."
+      - "Focused unit/UI tests pass; exact build and device verification are reported separately."
+      - "Canonical Q_POT_01 and unknown original mouse facts remain unchanged/unclaimed."
+    current_followup:
+      implementation_state: "BUILD_NATIVE_VERIFIED_V93"
+      observable_state: "DEVICE_PENDING (V93); prior V92 DEVICE_FAILED user-reported"
+      evidence: "Exact V93 source42d20ece678b0a4bc5aa111da468f3dcec31c95b passed Actions37122438002/job111201056317 at21:27:24 KST. APK11273852663 SHA256421302d612e43de3cbfe2e9afc8e1aade7b2d9b6124a6dc2473e0512df87f40d; native20 inn tests/7 new regressions and18 PNGs verified. Source/body942 asset bytes retained,6 new sprites match APK. Full proof docs/verification/INN_DETAIL_V93_BUILD.json; historical V90/V91/V92 device reports preserved in handoff/decision/verification records."
+      next_check: "Install exact V93 source42d20ece APK: Actions37122438002 SUCCESS; native20 inn tests/7 new regressions,18 focused screenshots reviewed; manifest/new6 sprite bytes and prior942 asset bytes verified. APK11273852663 SHA256421302d612e43de3cbfe2e9afc8e1aade7b2d9b6124a6dc2473e0512df87f40d; proof INN_DETAIL_V93_BUILD.json. Handset/user visual acceptance pending; V92 user-reported primitive furniture/quest/FX DEVICE_FAILED retained."
+
+  CHUNGRYONG_WEAPON_WARRIOR_001:
+    title: Source-backed 청룡의숨결 item and warrior weapon presentation
+    system:
+    - item
+    - inventory
+    - equipment
+    - animation
+    - combat
+    scenes:
+    - SCENE_MILLES_VILLAGE
+    - SCENE_FIELD_COMBAT
+    priority: P1
+    queue_state: BUILD_VERIFIED
+    claim: null
+    required_sources:
+    - master/source/weapons/chungryong_490398
+    - master/changes/CHUNGRYONG-WARRIOR-V94.json
+    - docs/SKILL_PRESENTATION_CONTRACT.md
+    - app/src/main/java/com/projectdark/mobile/ChungryongWeaponRenderer.java
+    - app/src/test/java/com/projectdark/mobile/ChungryongWeaponTest.java
+    acceptance:
+    - Actual inventory input equips/unequips/restarts without replacing old ownership.
+    - Source blade and four motions remain visible on both original BODY identities
+      and four facings.
+    - Real quickslot/basic contact, indoor recipient FX and existing combat rules pass.
+    - Physical phone and user visual acceptance are recorded separately.
+    current_followup:
+      implementation_state: BUILD_NATIVE_VERIFIED_V94
+      observable_state: DEVICE_PENDING / USER_VISUAL_PENDING
+      implementation_source_sha: e586a908a3ce493bc5d12fcc48bee5daa2b079e5
+      actions_run: 37125545957
+      apk_artifact: 11275595579
+      apk_sha256: 210a20df1892f1e3261af75e8f08b40eaaf95e7da398c298641a9044fbfe2270
+      evidence: docs/verification/CHUNGRYONG_WEAPON_V94_BUILD.json; six weapon tests
+        and 24 native PNGs; prior 948 assets identical.
+      limitations: ADAPTED BODY/grip/clothing mapping; occluded weapon pixels; mirrored
+        four views; one independent reference; no original stats/durability claim.
+      next_check: Install exact V94 candidate, equip 청룡의숨결 in inventory, try basic attack
+        and warrior 숏블레이드/메가블레이드/크래셔 in field and inn, restart. Preserve V93 furniture/quest/FX
+        fixes.
 
 agent_selection_policy:
   - "Every scheduled Dev/Verify run MUST load current PROJECT_STATE and DEVICE_20260915_214834 before selecting or verifying work."

@@ -1,0 +1,431 @@
+{
+  "source_sha": "32f40ddb181845013988f2c9f5f82f97530d18c6",
+  "tree": "8914d1878e89a104c7f834cb32529161274ddfd6",
+  "run_id": 37004867957,
+  "job_id": 110830655877,
+  "consumed_sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "4c5aedddf2d6d7a7049357ff08d39370e5f16c9920ea47e517017782903e0c8d"
+    },
+    {
+      "path": "docs/DIRECTOR_GUIDE.md",
+      "sha256": "b47446e4ebe477bafb0063464c06f31c4f339d56c2264f2c22454eb4d4e0111f"
+    },
+    {
+      "path": "docs/CHAT_HANDOFF.md",
+      "sha256": "393b4dc80c65414e01441b80e84bb6840dbcfc306d3f53e1ac157ea80f3c8784"
+    },
+    {
+      "path": "docs/PROJECT_STATE.md",
+      "sha256": "b29c64074b03ba3e4a8194e559abf51e02c8eeaa7924c42ffe0cb81c423b32e4"
+    },
+    {
+      "path": "docs/PROJECT_STATE.yaml",
+      "sha256": "dffb41017f02b8e48ab1897ec7a9ad13f5c9ab18b043ff026ce91c808b2aa15d"
+    },
+    {
+      "path": "docs/DECISION_LOG.md",
+      "sha256": "113c7f494ae22e7f197c8a04cda5ccd6c74f748a86b5d62ff00316790636d925"
+    },
+    {
+      "path": "docs/DIRECTOR_BACKLOG.md",
+      "sha256": "0377594e4d5e4831d4a56bc40c54f9d1ef98fe33ba0ac31f729d01d0de5f0fb5"
+    },
+    {
+      "path": "docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md",
+      "sha256": "152f206448188cdae4216ee06c47456ef93dc7b42bad654d19545a71b4bb88da"
+    },
+    {
+      "path": "master/MASTER_MANIFEST.md",
+      "sha256": "6ffac4c7f4bfc14f1e0f792420d7f80543cb113cd9071fb0cf9cada7b69f343b"
+    },
+    {
+      "path": "master/DATA_CONSUMPTION_CONTRACT.md",
+      "sha256": "7504feca5a4a3a8e39e290d52b8aeb2024a3e3482c7c8b4ea009e4cf4da287e5"
+    },
+    {
+      "path": "master/data/Asset_Source_Catalog.csv",
+      "sha256": "38298082ce043227576f53c30ec664ff1619124e560874827ac9b684ad3d4ff8"
+    },
+    {
+      "path": "master/data/Runtime_Visual_Rules.csv",
+      "sha256": "804f8b3f37b0ae153f77e4aca26b95b8b38775373c2b3c436aa6feb07a08ec10"
+    },
+    {
+      "path": "master/data/Asset_Map_Mapping.csv",
+      "sha256": "e5746688429307ab2d33c62613d71049c46230c81ce94f39be59f29ca5f4faba"
+    },
+    {
+      "path": "docs/verification/TOWN_INTERIORS_V85_SOURCES.json",
+      "sha256": "a474de9783ceb61403d5d1ce6f36521fb8fa4169a327242634baf789bc2e1a75"
+    },
+    {
+      "path": "docs/verification/TOWN_INTERIORS_V86_SOURCES.json",
+      "sha256": "05fe70805382d548bb01718e33d85c3d8ff84e37ba5f6f57b8134b8ae77c28d1"
+    },
+    {
+      "path": "docs/verification/TOWN_WALLS_V87_BUILD.json",
+      "sha256": "645ffa5be52172242bc61fa3dd29949228b6c37f6504b57f2feb79eabb0ad914"
+    },
+    {
+      "path": "docs/verification/TOWN_DETAIL_V88_SOURCES.json",
+      "sha256": "a32b6d801d1bd74803b8c8015bce3d2cad25f47192c87079a9cf4fc83cb865ba"
+    },
+    {
+      "path": "app/src/main/assets/interiors/v84/atlas.json",
+      "sha256": "7bb8a268bbd6c157267513b97c27faad4a34b9cdc55c9165231976be822cbf76"
+    },
+    {
+      "path": "app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java",
+      "sha256": "8713c54fbab8708f6f6ef8e25281f25e982c5227ececeb11cbbc59984d2d1034"
+    },
+    {
+      "path": "app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java",
+      "sha256": "943b5f7cf0c5fba58c3938220f9246f05d2b61eaed67f1ccca87b9cc1013ead8"
+    },
+    {
+      "path": "app/src/main/java/com/projectdark/mobile/world/TownInteriorDetails.java",
+      "sha256": "5fd4ee27b0aa38dda6116439c4086092cbda633854373e5e71224289e2f59d2a"
+    },
+    {
+      "path": "app/src/main/java/com/projectdark/mobile/GameView.java",
+      "sha256": "fed3006904722b684dbc2b891663b7a956538f47f613dcc499e95c523f53fc4b"
+    },
+    {
+      "path": "app/src/test/java/com/projectdark/mobile/TownInteriorTest.java",
+      "sha256": "a328006a06e3e5738a8ccfd6af840dd533ab91e307f75f5dd590a0b9aba0dce6"
+    }
+  ],
+  "local_checks": [
+    "Master integrity PASS",
+    "Milles 313 placements PASS",
+    "git diff --check PASS"
+  ],
+  "physical_phone": "PENDING",
+  "user_visual_acceptance": "PENDING",
+  "ci": "SUCCESS",
+  "classification": "Existing project reconstruction atlas and source foliage/storage reused unchanged; five authored small countertop details and composed font/planter. Original-quality user acceptance pending.",
+  "first_native_revision": {
+    "source_sha": "bcaa27fa816374ef5bb6703c8e51e91b47e62c6c",
+    "run_id": 37003581768,
+    "result": "CI passed; native review rejected flat armor/archive/plant/votive props; superseded without delivery."
+  },
+  "job_summary": {
+    "jobs": [
+      {
+        "id": 110830655877,
+        "name": "compile",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 37004867957,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Recover starter gear source manifests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-java@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run gradle/actions/setup-gradle@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Prepare Android SDK",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Validate Master DB",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Verify generated skill catalog matches Master",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Verify project skill learning policy is reproducible",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Verify skill presentation mapping is reproducible",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Audit reusable Milles map assets and layout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Verify V83 per-skill abilities and runtime formulas",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Verify classic capture sources and projections",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Verify source window crops are reproducible",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Audit every skill FX source and runtime precedence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Verify item window source crops and input",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Verify skill window, shared combat and restart persistence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Compile debug sources",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "Execute F5M production Quick Quest route audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "Execute Bundle B Milles early-loop audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          },
+          {
+            "name": "Execute Bundle B1 building scale audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22
+          },
+          {
+            "name": "Execute Bundle B5 integrated loop audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "Execute Quick Quest optimal approach audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "Verify HUD leaves empty-world tap regions available",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          },
+          {
+            "name": "Render West, South and Waterside Milles districts",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "Render POTE production forest review frames",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          },
+          {
+            "name": "Execute 4-way BODY robe mokdo visual contract audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28
+          },
+          {
+            "name": "Milddok ingestion identity audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29
+          },
+          {
+            "name": "Execute Combat v3 FinalStats pipeline audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 30
+          },
+          {
+            "name": "Execute Growth Core v3 and FinalStats audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31
+          },
+          {
+            "name": "Execute Growth v2 coherence audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 32
+          },
+          {
+            "name": "Execute Growth v2 Quest2 and stat progression audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33
+          },
+          {
+            "name": "Execute F5M gameplay contract audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34
+          },
+          {
+            "name": "Execute F5M production runtime binding audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35
+          },
+          {
+            "name": "Execute F5M restart persistence matrix",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 36
+          },
+          {
+            "name": "Execute runtime checkpoint and legacy migration regression",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 37
+          },
+          {
+            "name": "Execute device recording regressions with native source rendering",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 38
+          },
+          {
+            "name": "Print unit test failure details",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 39
+          },
+          {
+            "name": "Upload device review rendering",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 40
+          },
+          {
+            "name": "Build debug APK",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 41
+          },
+          {
+            "name": "Upload debug APK",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 42
+          },
+          {
+            "name": "Post Run gradle/actions/setup-gradle@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 82
+          },
+          {
+            "name": "Post Run actions/setup-java@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 83
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 84
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 85
+          }
+        ]
+      }
+    ]
+  },
+  "main_sha": "bfd668d4e178fa82625d634b5a54be0e27ce30a3",
+  "artifact_ids": {
+    "apk": 11225493429,
+    "native": 11225139585
+  },
+  "artifact_zip_digests": {
+    "PROJECT_DARK-debug-32f40ddb181845013988f2c9f5f82f97530d18c6": "sha256:3717bf1005bb208dc5a85bc36fb1873b0d5f0eb550fa2bd06f35bdf4afa2dd41",
+    "device-review-32f40ddb181845013988f2c9f5f82f97530d18c6": "sha256:84099bd98ca4bc5a77f736ba92774d6f197d94eea53219e703404d0b4d317520"
+  },
+  "build_artifact_time_kst": "2026-10-02T21:13:42+09:00",
+  "apk_sha256": "1226ff0d99e5ee83cc331b95b3929fad93d7e5abecb7cd9164f66fee88079711",
+  "apk_bytes": 30588677,
+  "binary_manifest": {
+    "versionCode": 88,
+    "versionName": "0.88-interior-detail"
+  },
+  "tracked_packaged_assets_byte_matched": 903,
+  "native_captures": 16,
+  "native_review": "All16 final native map/UI/confirm/exterior frames inspected. Detailed pixel counters, cabinet/rack/storage clusters and foliage are integrated; crude large procedural stand-ins removed after initial review. Countertop decorations remain authored and visually simpler than atlas furniture. Floor repeat, sparse central floors and portrait/world style mismatch limit original-quality equivalence. Physical phone and user visual acceptance PENDING.",
+  "runtime_scope": [
+    "Four scene NPC immediate taps, native window/confirmation and service transactions",
+    "Exterior door navigation and exit without portal loops",
+    "Furniture customer/exit BFS, unique anchors and tabletop support/noncollision",
+    "Registered catalogs, conserved atomic commerce and bank rollback",
+    "Interior map/position/ownership/bank restart persistence",
+    "All configured source/BODY/skill/combat/world/growth/save regressions"
+  ]
+}

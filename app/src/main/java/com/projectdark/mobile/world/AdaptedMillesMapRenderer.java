@@ -32,16 +32,17 @@ public final class AdaptedMillesMapRenderer {
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   private static final float TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
-  private static final String GRASS_SURFACE="video_reference/terrain/grass_tile_01.png";
+  private static final String GRASS_SURFACE="style_v102/grass.png";
   private static final String SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png";
 
   private static final class SpritePlacement {
     final String id,asset,drawMode,district;
-    final float x,y,scale;
+    final float x,y,scale,anchorX,anchorY,groundZ,depthY;
     SpritePlacement(JSONObject value){
       id=value.optString("id","");asset=value.optString("asset","");
       drawMode=value.optString("draw","foot");district=value.optString("district","");
       x=(float)value.optDouble("x",0);y=(float)value.optDouble("y",0);scale=(float)value.optDouble("scale",1);
+      anchorX=(float)value.optDouble("anchor_x",-1);anchorY=(float)value.optDouble("anchor_y",-1);groundZ=(float)value.optDouble("ground_z",0);depthY=(float)value.optDouble("depth_y",y);
     }
   }
 
@@ -51,7 +52,10 @@ public final class AdaptedMillesMapRenderer {
   private final Map<String,Bitmap> bitmapCache=new LinkedHashMap<>();
   private final Map<String,Rect> opaqueBoundsCache=new LinkedHashMap<>();
   private final AssetManager assets;
-  private final List<SpritePlacement> placements;
+  private final MillesSourceStyle sourceStyle;
+  private final Paint grassPaint=new Paint();
+  private BitmapShader riverWaterShader;
+  private final List<SpritePlacement> placements,groundPlacements,standingPlacements;
 
   public AdaptedMillesMapRenderer(){
     configureFill(outsidePaint,0xff355127);
@@ -59,24 +63,45 @@ public final class AdaptedMillesMapRenderer {
     configureRoadPaint(soilEdgePaint,0x996b522d,49f);
     configureRoadPaint(soilPaint,0xff91602d,43f);
     soilPaint.setStyle(Paint.Style.FILL);soilEdgePaint.setStyle(Paint.Style.FILL);
-    assets=findAssets();placements=loadPlacements();
+    assets=findAssets();sourceStyle=new MillesSourceStyle(assets);placements=loadPlacements();
+    List<SpritePlacement> ground=new ArrayList<>(),standing=new ArrayList<>();
+    for(SpritePlacement value:placements){
+      if("ground".equals(value.drawMode)||"tile".equals(value.drawMode))ground.add(value);else standing.add(value);
+    }
+    ground.sort(Comparator.comparingDouble(value->value.groundZ));
+    groundPlacements=Collections.unmodifiableList(ground);standingPlacements=Collections.unmodifiableList(standing);
   }
 
   public int placementCount(){return placements.size();}
 
-  public void draw(Canvas canvas,WorldRuntimeAdapter world){
+  public static final class DepthDraw {
+    public final float footY;
+    public final Runnable draw;
+    public DepthDraw(float footY,Runnable draw){this.footY=footY;this.draw=draw;}
+  }
+
+  public void draw(Canvas canvas,WorldRuntimeAdapter world){draw(canvas,world,Collections.emptyList());}
+
+  /** Ground overlays first; all standing sprites share one foot-plane painter order. */
+  public void draw(Canvas canvas,WorldRuntimeAdapter world,List<DepthDraw> actors){
     if(canvas==null||world==null||world.map()==null)return;
     canvas.drawRect(0,0,canvas.getWidth(),canvas.getHeight(),outsidePaint);
     // Draw one grass material below the road: alternating full-diamond crops produced a
     // visible checker grid at every grass/soil boundary.
-    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
-      if(tile.kind!=AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
-        drawTerrainTile(canvas,world,GRASS_SURFACE,tile.centerX,tile.centerY);
+    drawContinuousGrass(canvas,world);
     drawConnectedSoil(canvas,world);
-    for(AdaptedMillesIsometricTileLayer.Tile tile:world.map().tiles())
-      if(tile.kind==AdaptedMillesIsometricTileLayer.TileKind.PLAZA)
-        drawTerrainTile(canvas,world,tile.assetRef,tile.centerX,tile.centerY);
-    for(SpritePlacement placement:placements)drawPlacement(canvas,world,placement);
+    drawRiver(canvas,world);
+    for(SpritePlacement placement:groundPlacements)drawPlacement(canvas,world,placement);
+    List<DepthDraw> ordered=actors==null?new ArrayList<>():new ArrayList<>(actors);
+    ordered.sort(Comparator.comparingDouble(value->value.footY));
+    int next=0;
+    // Merge the pre-sorted standing layer with a handful of live actors. Avoid hundreds
+    // of object closures/allocations and a full scenery sort on every mobile frame.
+    for(SpritePlacement placement:standingPlacements){
+      while(next<ordered.size()&&ordered.get(next).footY<placement.depthY)ordered.get(next++).draw.run();
+      drawPlacement(canvas,world,placement);
+    }
+    while(next<ordered.size())ordered.get(next++).draw.run();
   }
 
   private List<SpritePlacement> loadPlacements(){
@@ -87,10 +112,10 @@ public final class AdaptedMillesMapRenderer {
       JSONArray entries=root.getJSONArray("objects");List<SpritePlacement> result=new ArrayList<>();
       for(int i=0;i<entries.length();i++){
         JSONObject entry=entries.getJSONObject(i);
-        if(entry.optString("id").isEmpty()||entry.optString("asset").isEmpty()||entry.optDouble("scale",0)<=0)continue;
+        if(!entry.optBoolean("visible",true)||entry.optString("id").isEmpty()||entry.optString("asset").isEmpty()||entry.optDouble("scale",0)<=0)continue;
         result.add(new SpritePlacement(entry));
       }
-      result.sort(Comparator.comparingDouble((SpritePlacement value)->value.y).thenComparing(value->value.id));
+      result.sort(Comparator.comparingDouble((SpritePlacement value)->value.depthY).thenComparing(value->value.id));
       return Collections.unmodifiableList(result);
     }catch(Throwable ignored){return Collections.emptyList();}
   }
@@ -98,6 +123,9 @@ public final class AdaptedMillesMapRenderer {
   private void drawPlacement(Canvas canvas,WorldRuntimeAdapter world,SpritePlacement placement){
     Bitmap image=bitmap(placement.asset);if(image==null)return;
     WorldCameraTransform.Point foot=world.worldToScreen(placement.x,placement.y);
+    if("door".equals(placement.drawMode)){
+      RectF dst=new RectF(foot.x-20,foot.y-8,foot.x+20,foot.y+8);canvas.drawBitmap(image,null,dst,pixelPaint);return;
+    }
     if("tile".equals(placement.drawMode)){
       RectF dst=new RectF(Math.round(foot.x-TILE_W*.5f),Math.round(foot.y-TILE_H*.5f),
           Math.round(foot.x+TILE_W*.5f),Math.round(foot.y+TILE_H*.5f));
@@ -105,8 +133,10 @@ public final class AdaptedMillesMapRenderer {
       return;
     }
     float width=image.getWidth()*placement.scale,height=image.getHeight()*placement.scale;
-    RectF dst=new RectF(Math.round(foot.x-width*.5f),Math.round(foot.y-height),
-        Math.round(foot.x+width*.5f),Math.round(foot.y));
+    float ax=placement.anchorX>=0?placement.anchorX:image.getWidth()*.5f;
+    float ay=placement.anchorY>=0?placement.anchorY:image.getHeight();
+    float left=foot.x-ax*placement.scale,top=foot.y-ay*placement.scale;
+    RectF dst=new RectF(Math.round(left),Math.round(top),Math.round(left+width),Math.round(top+height));
     if(visible(dst,canvas))canvas.drawBitmap(image,null,dst,pixelPaint);
   }
 
@@ -114,7 +144,7 @@ public final class AdaptedMillesMapRenderer {
   private void drawConnectedSoil(Canvas canvas,WorldRuntimeAdapter world){
     Bitmap soil=bitmap(SOIL_SURFACE);
     if(soil==null)return;
-    soilPaint.setShader(new BitmapShader(soil,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR));
+    soilPaint.setShader(sourceMaterial(soil));
     canvas.save();
     canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
     // Draw every fringe before the soil surfaces, so intersections cannot leave
@@ -125,6 +155,39 @@ public final class AdaptedMillesMapRenderer {
     drawRoadCaps(canvas,soilPaint,21.5f);
     canvas.restore();
     soilPaint.setShader(null);
+  }
+
+  private void drawRiver(Canvas canvas,WorldRuntimeAdapter world){
+    Path channel=MillesRiverGeometry.centerline();Paint p=new Paint();p.setAntiAlias(false);p.setStyle(Paint.Style.STROKE);p.setStrokeJoin(Paint.Join.ROUND);p.setStrokeCap(Paint.Cap.ROUND);
+    canvas.save();canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
+    p.setColor(0xff4b563a);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2+10);canvas.drawPath(channel,p);
+    p.setColor(0xff71694c);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2);canvas.drawPath(channel,p);
+    p.setColor(0xff234e59);p.setStrokeWidth(MillesRiverGeometry.HALF_WIDTH*2);canvas.drawPath(channel,p);
+    p.setColor(0xff326570);p.setStrokeWidth((MillesRiverGeometry.HALF_WIDTH-5)*2);
+    if(riverWaterShader==null){Bitmap sourceWater=bitmap("water/lakes/OBJ_lake_main.png");if(sourceWater!=null){Bitmap water=Bitmap.createBitmap(sourceWater,175,130,60,30);riverWaterShader=new BitmapShader(water,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);}}
+    p.setShader(riverWaterShader);
+    canvas.drawPath(channel,p);p.setShader(null);
+    // Quiet pixel ripples follow the actual water mask; never extend onto bank/deck.
+    p.setStyle(Paint.Style.FILL);p.setColor(0xff51808a);
+    for(int y=48;y<1600;y+=16)for(int x=-512;x<2304;x+=32){
+      if(MillesRiverGeometry.distance(x,y)>MillesRiverGeometry.HALF_WIDTH-14||MillesRiverGeometry.bridgeDeck(x,y))continue;
+      int k=(x*17+y*13)&31;if(k>11)continue;canvas.drawRect(x,y,x+6+(k%3)*3,y+1,p);
+    }
+    canvas.restore();
+  }
+
+  private static BitmapShader sourceMaterial(Bitmap image){
+    BitmapShader shader=new BitmapShader(image,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
+    android.graphics.Matrix nativePixels=new android.graphics.Matrix();nativePixels.setScale(.43f,.43f);
+    shader.setLocalMatrix(nativePixels);return shader;
+  }
+  private void drawContinuousGrass(Canvas canvas,WorldRuntimeAdapter world){
+    Bitmap grass=bitmap(GRASS_SURFACE);if(grass==null)return;
+    grassPaint.setAntiAlias(false);grassPaint.setFilterBitmap(false);grassPaint.setShader(sourceMaterial(grass));
+    canvas.save();canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
+    canvas.drawRect(com.projectdark.mobile.WorldDef.MIN_X,com.projectdark.mobile.WorldDef.MIN_Y,
+        com.projectdark.mobile.WorldDef.MAX_X,com.projectdark.mobile.WorldDef.MAX_Y,grassPaint);
+    canvas.restore();
   }
 
   private static void drawRoadCaps(Canvas canvas,Paint paint,float radius){
@@ -194,7 +257,14 @@ public final class AdaptedMillesMapRenderer {
   private Bitmap bitmap(String path){
     if(bitmapCache.containsKey(path))return bitmapCache.get(path);
     Bitmap image=null;
-    if(assets!=null)try(InputStream in=assets.open(path)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
+    String source=MillesSourceStyle.completeBenchSource(path);
+    if(assets!=null)try(InputStream in=assets.open(source)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;options.inPremultiplied=!source.contains("bench_video_cutout");image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
+    // A clean material-only crop, excluding the building, actor, road and lamp.
+    // The tiny mirrored swatch created conspicuous repeated circular patterns.
+    if(image!=null&&path.equals(GRASS_SURFACE))image=MillesSourceStyle.quietGrass(image);
+    else if(image!=null)image=sourceStyle.replacement(image,path);
+    // Complete V103 supports must never pass through the old grass-key/short-foot mask.
+    if(image!=null&&!source.contains("bench_video_cutout"))image=sourceStyle.scenery(image,path);
     bitmapCache.put(path,image);return image;
   }
   private static AssetManager findAssets(){

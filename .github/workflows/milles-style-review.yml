@@ -1,0 +1,97 @@
+name: Milles source style native and APK
+'on':
+  push:
+    branches:
+    - codex/town-interiors-mobile-v86
+    paths:
+    - assets/milles/production/maps/milles_source_style.json
+    - assets/milles/production/style_v102/**
+    - assets/milles/production/style_v103/**
+    - app/src/main/assets/npc/**
+    - app/src/main/java/com/projectdark/mobile/Npc*.java
+    - app/src/main/java/com/projectdark/mobile/TownNpcRenderer.java
+    - assets/milles/production/maps/**
+    - app/src/main/java/com/projectdark/mobile/world/**
+    - app/src/test/java/com/projectdark/mobile/MillesReconstructionTest.java
+    - .github/workflows/milles-style-review.yml
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+    steps:
+    - uses: actions/checkout@v4
+    - name: Recover starter gear source manifests
+      run: "python3 tools/collect_peasant_sources.py\npython3 - <<'PY'\nimport json, pathlib, sys\nrows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())\nneed={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010','mu0000001','mu0000002','mu0000003'}\n\
+        got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}\nmissing=need-got\nprint('SOURCE_REGISTRATION_FETCHED',sorted(got & need))\nprint('SOURCE_REGISTRATION_MISSING',sorted(missing))\n\
+        if missing:\n    sys.exit(23)\nPY\nmkdir -p app/src/main/assets/source-registration\ncp qa/peasant-sources/data/type/body/mm001.json app/src/main/assets/source-registration/mm001.json\ncp qa/peasant-sources/data/type/shoes/ml228.json\
+        \ app/src/main/assets/source-registration/ml228.json\ncp qa/peasant-sources/data/type/shield/ms001.json app/src/main/assets/source-registration/ms001.json\ncp qa/peasant-sources/data/type/hair/mh172.json\
+        \ app/src/main/assets/source-registration/mh172.json\ncp qa/peasant-sources/atlas/shoes/ml228.webp app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp\ncp qa/peasant-sources/atlas/shield/ms001.webp\
+        \ app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp\ncp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp\npython3 - <<'PY'\nfrom\
+        \ pathlib import Path\nimport shutil\nspecs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010'],'armor':['mu0000001','mu0000002','mu0000003']}\n\
+        assets=Path('app/src/main/assets/source-registration'); draw=Path('app/src/main/res/drawable-nodpi')\nfor kind, ids in specs.items():\n    for ident in ids:\n        shutil.copy(Path('qa/peasant-sources/data/type')/kind/(ident+'.json'),\
+        \ assets/(ident+'.json'))\n        shutil.copy(Path('qa/peasant-sources/atlas')/kind/(ident+'.webp'), draw/('equip_'+ident+'_source.webp'))\nPY\npython3 - <<'PY'\nimport json\nfrom pathlib import\
+        \ Path\nfor ident in ('mm001','mu0000001','ml228','ms001','mh172'):\n    p=Path('qa/peasant-sources/data/type')\n    found=list(p.glob('*/'+ident+'.json'))\n    if not found: continue\n    d=json.loads(found[0].read_text())\n\
+        \    print('META',ident,{k:v for k,v in d.items() if k!='sprites'})\nfor ident in ('mm001','mu0000001'):\n    found=list(Path('qa/peasant-sources/data/type').glob('*/'+ident+'.json'))\n    d=json.loads(found[0].read_text())\n\
+        \    for g in ('01','02','03','b','c','d','e','f'):\n        if g in d['sprites']: print('BASE_REG',ident,g,d['sprites'][g][:12])\nPY\npython3 - <<'PY'\nimport json, pathlib\nfor ident in ('ml228','ms001','mh172'):\n\
+        \    p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')\n    d=json.loads(p.read_text())\n    sprites=d['sprites']\n    print('REG_MANIFEST',ident,'count',len(sprites))\n\
+        \    for k in list(sprites)[:12]:\n        print('REG',ident,k,sprites[k])\nPY\n"
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+    - uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: 8.11.1
+    - name: Prepare Android SDK
+      run: 'SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+
+        yes | "$SDKMANAGER" --licenses >/dev/null || true
+
+        "$SDKMANAGER" ''platforms;android-35'' ''build-tools;35.0.0''
+
+        '
+    - name: Audit reusable Milles map assets and layout
+      run: python tools/assets/audit_milles_map_assets.py
+    - name: Verify V103 complete bench supports and restored church identity
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
+    - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest --stacktrace
+    - name: Verify every NPC source paper doll and stable quest names
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.NpcAppearanceTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
+    - name: Verify retained services and all UI touch routing
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --tests com.projectdark.mobile.ModernUiTest --stacktrace
+    - name: Build exact source candidate
+      run: gradle :app:assembleDebug --stacktrace
+    - name: Record exact source build
+      run: 'python3 - <<''PYINFO''
+
+        import json,os,pathlib,hashlib,datetime
+
+        p=pathlib.Path(''app/build/outputs/apk/debug/app-debug.apk'')
+
+        r={''sourceCommit'':os.environ[''GITHUB_SHA''],''runId'':os.environ[''GITHUB_RUN_ID''],''apkSha256'':hashlib.sha256(p.read_bytes()).hexdigest(),''apkBytes'':p.stat().st_size,''builtSeoul'':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),''versionCode'':104,''scope'':''V104 all human NPCs share player paper doll, new source equipment, SSA top100 names; retained Milles church/bench/rivers; exact native bench/style/depth/district/doors/UI and assemble''}
+
+        pathlib.Path(''app/build/outputs/apk/debug/BUILD_INFO.json'').write_text(json.dumps(r,indent=2)+''\n'')
+
+        PYINFO'
+    - name: Upload exact APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: milles-style-apk-${{ github.sha }}
+        path: app/build/outputs/apk/debug/
+        if-no-files-found: error
+    - name: Upload exact native style review
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: milles-style-native-${{ github.sha }}
+        path: |
+          app/build/reports/device-review/v10*.png
+          app/build/test-results/testDebugUnitTest/*.xml
+        if-no-files-found: error

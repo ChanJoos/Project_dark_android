@@ -1,0 +1,41 @@
+{
+  "sourceCommit": "7cefb0a1ad707b07bb0a5436a73a8189d5f1825c",
+  "runId": "37263309751",
+  "candidate": true,
+  "versionCode": 106,
+  "versionName": "1.06-equipment-npc-repair",
+  "apkSha256": "6cdb3e6724fd22cb231519744f334a0e14cbd33f46ddccf9a84c7a2265fb517b",
+  "apkBytes": 52946582,
+  "builtSeoul": "2026-10-05T13:26:05.523420+09:00",
+  "scope": "Affected repair/UI/NPC/Lv40 tests on exact source; unchanged remaining regression cases passed in full 251-case run37261714320 (two stale expectations corrected here). Runtime source and assets unchanged from b8353728. Actual APK47-file hash gate. Phone pending.",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "apkArtifact": 11324339557,
+  "nativeArtifact": 11325382653,
+  "implementation": "IMPLEMENTED",
+  "build": "BUILD_VERIFIED",
+  "nativeRuntime": "NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC",
+  "focusedTests": {
+    "tests": 25,
+    "failures": 0,
+    "errors": 0
+  },
+  "baselineRegression": {
+    "run": 37261714320,
+    "source": "b83537286dc3f945b67020e2c22fb6f1cc7d45af",
+    "tests": 251,
+    "passed": 249,
+    "failed": 2,
+    "note": "Two stale expectations corrected; runtime and assets identical to final source."
+  },
+  "restoredOriginalFiles": 47,
+  "apkV2Signature": "PASS",
+  "wholeFileContentDigest": "PASS",
+  "signerCertificateSha256": "de94df6cbedafcd867355c6334a0c2235d1b58675c0bf33afe80fb3be9e198ab",
+  "inPlaceUpgradeFromV105": false,
+  "visuallyReviewedFinalFrames": [
+    "v106-hud.png",
+    "v106-inventory.png",
+    "v106-equipment.png"
+  ]
+}

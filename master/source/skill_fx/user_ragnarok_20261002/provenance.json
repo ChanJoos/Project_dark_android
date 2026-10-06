@@ -1,0 +1,41 @@
+{
+  "revision": "USER_RAGNAROK_V81",
+  "skillId": "SK_마법사_037",
+  "identityEvidence": "USER_EXPLICIT_RAGNAROK_LABEL_20261002",
+  "sources": [
+    {
+      "index": 0,
+      "path": "master/source/skill_fx/user_ragnarok_20261002/capture_00.jpg",
+      "sha256": "25d5c9b8672a2ba8585ff46c7292d59901fb0fe775fe35040788f3ab39246c58",
+      "uploadedName": "04-1000057951.jpg"
+    },
+    {
+      "index": 1,
+      "path": "master/source/skill_fx/user_ragnarok_20261002/capture_01.jpg",
+      "sha256": "0e476f04848d0058ce3b03e3f83faea62dac7cc5231e52fa95eba38f1cdb3af7",
+      "uploadedName": "03-1000057953.jpg"
+    },
+    {
+      "index": 2,
+      "path": "master/source/skill_fx/user_ragnarok_20261002/capture_02.jpg",
+      "sha256": "a615112f4dcd979436fc34f777b3c8e7fcaa0088878decb6b66723d116f49811",
+      "uploadedName": "02-1000057955.jpg"
+    },
+    {
+      "index": 3,
+      "path": "master/source/skill_fx/user_ragnarok_20261002/capture_03.jpg",
+      "sha256": "54ab77a134ca0ee101cc103b611770d8abc710891c45709760e3ae3a8e9656a5",
+      "uploadedName": "01-1000057957.jpg"
+    }
+  ],
+  "captureOrder": "Ascending capture filenames; gallery 10 then 11 corroborates the middle phases; sequence is a project inference.",
+  "method": "Two clean views from each screenshot, fitted circular registration, gold/white colour gating, HP/damage-number masks. Inner hexagram/inner rings upper core repaired using observed 180-degree symmetry from the lower core. Outer rune text is not mirrored or generated. Purple field is an explicit source-colour reconstruction. Ring-only phase uses the radial alpha profile of observed clean arcs to repair bar gaps; source-tone colour is consolidated.",
+  "enhancement": "3x Lanczos enlargement with source-colour matting and transparent scene removal; no AI redraw or claim to recover lost detail.",
+  "sourceTiming": "PROJECT_CAPTURE_ORDER_CROSSFADE_NOT_ORIGINAL_CADENCE",
+  "limitations": [
+    "Four stills cannot establish original cadence.",
+    "Overlapping source spells and JPEG compression limit outer rune fidelity.",
+    "Occluded central pixels and violet fill contain declared reconstruction.",
+    "One source facing; runtime centres this nondirectional sigil on each recipient."
+  ]
+}

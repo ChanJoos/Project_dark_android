@@ -1,0 +1,506 @@
+[
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/idle_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/idle_nw.png",
+    "sha256": "7a2a6acaad53cd7809acbbda50edb7c1dca64d156c091c51c539b6138b371a47",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/idle_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/idle_ne.png",
+    "sha256": "f6dcf0209e7ede34ffb011517c28796eba80cc9c16dd8a5ba4f5802c73e422ed",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/idle_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/idle_sw.png",
+    "sha256": "18ff2f900c140d9b031d5ec3edaef660abce48ee1b50e73b782951bba07d56eb",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/idle_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/idle_se.png",
+    "sha256": "cc99189ea79bcf0fc33300cee95c50f67c6e64ef68b93638b04541f1875c2855",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/walk_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/walk_nw.png",
+    "sha256": "21ec0e2767e64df63fd73a5b1de162ccecf2e44a3dc65e2cd0a9dcfe8a0b620c",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/walk_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/walk_ne.png",
+    "sha256": "891842a4e1fa97d5600e81aa153e13d33ecadd3a425fc140284b4a56b5728f58",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/walk_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/walk_sw.png",
+    "sha256": "b217c028b11664a3bd8796115f222c66d205651d355c2a4e94954806880c605c",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/walk_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/walk_se.png",
+    "sha256": "d7d0af4a6626a481b498d52a8c8521371fc0841f57f5a8dd9ed783b5fc92fa65",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/attack_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/attack_nw.png",
+    "sha256": "73707d87898ccf721552aadb72eb0adf7a36c1ce713139122ecee937e559799d",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/attack_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/attack_ne.png",
+    "sha256": "debd80bd933c01f21a7248b71c8617b97b8d3c7a9d84e814ec264095d010adf8",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/attack_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/attack_sw.png",
+    "sha256": "9e1714d64f78f8aebbdb196d5f6fb2fd85899c859f86c3cf93e88e8e1554bf39",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/trant/attack_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/trant/attack_se.png",
+    "sha256": "020e505898ff28fdd71374ca29646bf164d67abf2f3ef7693221d3ab93cb8f45",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/idle_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/idle_nw.png",
+    "sha256": "220823d68661431fb12996d1bc07261c6542e8068c2310d509ecc48dab8faa36",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/idle_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/idle_ne.png",
+    "sha256": "1ee9fc67a05e20779a00ee16a4d7a6cd000a11c45653fb3be8a66bb1161dda6a",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/idle_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/idle_sw.png",
+    "sha256": "491325f88dfc2ede5f72beeb9ff55d9dbdcf01e1eae1b112259daa6a7cb0a632",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/idle_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/idle_se.png",
+    "sha256": "23e983e76af60ef96ac062ea26cfad85c0d8bca19ba44fdfa9b170d9f2e57577",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/walk_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/walk_nw.png",
+    "sha256": "b5d7baaf4adf706824d3b14f63de20c778baaa807d2fddf86db9cb2794eaaf01",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/walk_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/walk_ne.png",
+    "sha256": "d093a81e1b1406672bba64d7abdfdc99b56c2dbccaa57dfa69ef49fc52056870",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/walk_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/walk_sw.png",
+    "sha256": "b51627c5247c7f0ea6628cc1e0a59e54fee1e183fc441e92712b7dc1d1b4e697",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/walk_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/walk_se.png",
+    "sha256": "6fbcc43a883f1a5a7c73c8aaac5a16b094198957d4cf2c79cc12126fd5306808",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/attack_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/attack_nw.png",
+    "sha256": "ca2832d5616dc9b001087818453154212f70910857561567841ce8f0f26fd9d4",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/attack_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/attack_ne.png",
+    "sha256": "464d93f9c7d0404359214faa337e19b5e7c9f92564e4c43319c0c8929a2986f7",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/attack_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/attack_sw.png",
+    "sha256": "56c9bd186dbd37a64256217d65cac217d32a66e3578c06b7bf2b2db682366764",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/antlion/attack_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/antlion/attack_se.png",
+    "sha256": "1b7a0eeea02bce8e7bf43aee1fc9decf9a5d531de03e7d3c3ac3d620f86f2952",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/idle_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/idle_nw.png",
+    "sha256": "1bac928b2071765f9a99b8cb9a805faa91542db7a86945738a6df3a3e419751f",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/idle_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/idle_ne.png",
+    "sha256": "6cc6ae5915e84933957269339657244e63fd25402d77f15812cae87a66e17945",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/idle_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/idle_sw.png",
+    "sha256": "b25d8621784dff2a758dc27a17d24ccec6509301b2296cee8a1d9cbe05585bba",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/idle_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/idle_se.png",
+    "sha256": "d7488415fd3d242ef5085cd166b35dc3a930c680fefa6750f2220b42e9cd9fa3",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/walk_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/walk_nw.png",
+    "sha256": "a9ea2eccd4c5ef64280199f6e94677f320070880143ff74a0ca71a03640445f5",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/walk_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/walk_ne.png",
+    "sha256": "e7d19e813bcc915d184740ed891289f7b4984c2302f520fac7597f5745cf6b08",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/walk_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/walk_sw.png",
+    "sha256": "03ee7b66c4014de030afd1fcf731c5d38a98c9062fb2415d22f44f7f74c68821",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/walk_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/walk_se.png",
+    "sha256": "f61e6a0472f468f5c722c10da9ab3b09cf942f117a9256fc84635d30b950e680",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/attack_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/attack_nw.png",
+    "sha256": "54822729f7a8dc083de2c253b46f2b1d641b7931f40ad3ed0a1d1da1b651df49",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/attack_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/attack_ne.png",
+    "sha256": "3628b6ab2815f13f13ece9e9f520ed1d19cb319a0e12f5ce3ce92b4f23262508",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/attack_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/attack_sw.png",
+    "sha256": "9a91278a8bd1183e75d19a394219205d9c72693b1aa91cf689f9395e16acbd55",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/gnoll/attack_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/gnoll/attack_se.png",
+    "sha256": "c583cb4eb0d2e3387f6b99651bd711ab68163131eb613a7da39df0c939a466a7",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/idle_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/idle_nw.png",
+    "sha256": "028b6211820d95d405ee2d377c2d071d9b324edd9fe81d6f7c954a390906312d",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/idle_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/idle_ne.png",
+    "sha256": "da912759b70e8fccd7dfeffeb00848dd7517a654b8494f886c3cfab309d06cc7",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/idle_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/idle_sw.png",
+    "sha256": "b7830d1a790dea70c7699f69191d3e21d0e6c8d7712f271a6ce37ed9fd95b363",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/idle_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/idle_se.png",
+    "sha256": "4a130e1109bb2a1a223830069fc667e25acd68fe59fdc941b6b1b478691d1321",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/walk_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/walk_nw.png",
+    "sha256": "ee85c3a1e17df5146691c3abbbbcf4bb39b7e39837ddd322f1c7ed35182925e6",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/walk_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/walk_ne.png",
+    "sha256": "9bba03395bb71da9702c612d302e93952568d6f803be2b95fcaa8b5056ba7c81",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/walk_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/walk_sw.png",
+    "sha256": "e46d82b9b9fce7f3f37cec3cdac6a104eb7431f7344ea63df17f21f9b470954e",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/walk_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/walk_se.png",
+    "sha256": "bf4edb0fa99bfaed68ea20a3c849f4374f4f5ce14a51db32faad979b35ea74c0",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/attack_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/attack_nw.png",
+    "sha256": "c657024d0a5250b9f9a014fa3258b624ca8fc1574c6fde8bf37f0585d1856999",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/attack_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/attack_ne.png",
+    "sha256": "63eae9eebec54d1025fe6fc9b0eebc4b4a51ea9f3a26820f3a41847b8c6e4e9f",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/attack_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/attack_sw.png",
+    "sha256": "9514a4d124aa39c71be79d08f855ec9daafd78e5e11612f26d8c3eda05eb0859",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/wolf_rider/attack_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/wolf_rider/attack_se.png",
+    "sha256": "ba482def9222854c3dad14697a10da6260b9defef6f0236bd6b158808fb30678",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/idle_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/idle_nw.png",
+    "sha256": "87cf1d57c2899bbca95988104cf13a1d3a03fed660c8cf37fb808d82a6cebd21",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/idle_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/idle_ne.png",
+    "sha256": "712ca8306024c88b885541ad9310dd8d80fe3021b230fab8c35440d1dc4a5ec3",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/idle_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/idle_sw.png",
+    "sha256": "2d29542ad036740fc2c176dea68e5716ee467a7bc8aab742dcd5c612af9b970d",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/idle_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/idle_se.png",
+    "sha256": "806c728429bc3b05f0f7818535244a4b288b039253348b3d7c31c493939f2e4d",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/walk_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/walk_nw.png",
+    "sha256": "2168d2e245bf159ae18991ae4730082cefb019c3aec652c267166bfc3725f2a3",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/walk_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/walk_ne.png",
+    "sha256": "3b2b56d0b13f753a98e30bb69f981953dc6a3467f76ddde78a6100776be9e990",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/walk_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/walk_sw.png",
+    "sha256": "f9b11b0702eef50a85e69cd13c9ee3a6739817123128f7b1e7a6cd121a3a6d26",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/walk_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/walk_se.png",
+    "sha256": "df2bbe3b20ed11984664e99e75d35fa3a5c2d8e55483a8c395704a82980c7dda",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/attack_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/attack_nw.png",
+    "sha256": "6e22f2c9ce7b9c8e4b0b987b42aae35fe2243566c5f0b21bd311064c94d577da",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/attack_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/attack_ne.png",
+    "sha256": "7287b6cf928b7f92a1b116ebbb127fa0b7b943e1a0cf35156076b18b0f810a83",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/attack_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/attack_sw.png",
+    "sha256": "f98ac5c2521c8a112854cfdda35c9c2dedfc016469b4dbe347a026f447364a6f",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/ant_giant/attack_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/ant_giant/attack_se.png",
+    "sha256": "17072e6a4282361ca0fa4babc0eb58539962670eade8d0c14c9b04cf56793a7a",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/idle_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/idle_nw.png",
+    "sha256": "28d6d206be7cc168c2a249e45b38c0ed33e3ec26f7025bb842a45750440340a1",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/idle_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/idle_ne.png",
+    "sha256": "2c4ec9fe948226ebf6e77650b084317f3861eab040b2b342de5ffc6377d7252a",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/idle_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/idle_sw.png",
+    "sha256": "1a76898494200ff72b6a1795ba80eda48582a978f5c04367e500ceb76ae8fc33",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/idle_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/idle_se.png",
+    "sha256": "9be7b9ae69645c0173c510bda00ab6cfb08f93eaecdfbcd4c227a01c78aa3efd",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/walk_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/walk_nw.png",
+    "sha256": "f503ce119a521f633bc54c453927818ea8134b302fa73a1acc0d044f0b61bff9",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/walk_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/walk_ne.png",
+    "sha256": "614405fe95d89fea85bb6e939af7c1ac093f28f8a9a073c495517ebd5517d8c9",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/walk_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/walk_sw.png",
+    "sha256": "81ad2f1daa126f60efa7a170c7964bbd3685d80bd26fc98785321dd82bfd8cea",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/walk_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/walk_se.png",
+    "sha256": "a8c40845109450759032bd3a8cc7330c23d03a6f88a8f660c05f0be0408e4f58",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/attack_nw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/attack_nw.png",
+    "sha256": "c1f7efb3ea0db0afb60c78f5fe90fe801cae06654f55d175079117652297660d",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/attack_ne.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/attack_ne.png",
+    "sha256": "20df0b58199673e0e11248f96bc45ad3426d3b08de5b451203d9f2c3a14a102f",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/attack_sw.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/attack_sw.png",
+    "sha256": "f7c5bd05d4e0bc25fea3525b53c84c6e2960bbab6b023fa74953e70b3ef01cf3",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  },
+  {
+    "source": "assets/pote/review/monster_concepts_v0.4/sprites/silver_wolf/attack_se.png",
+    "runtime": "assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v1/silver_wolf/attack_se.png",
+    "sha256": "5aa8a02eeda74d4deba6681393044a07df673030919ab4f71dc7e2a6cab40c52",
+    "classification": "ADAPTED_RETAINED_CANDIDATE",
+    "visualAcceptance": "PENDING"
+  }
+]

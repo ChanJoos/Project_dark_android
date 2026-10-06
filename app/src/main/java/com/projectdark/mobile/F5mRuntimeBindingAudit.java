@@ -14,19 +14,13 @@ public final class F5mRuntimeBindingAudit {
 
   public static Result run(){
     RuntimeState runtime = new RuntimeState(RuntimeState.BootMode.MILLES, true);
-    RuntimeState.Monster target = null;
-    for(RuntimeState.Monster monster : runtime.monsters()){
-      if(F5mAdaptedPrologueQuest.OPENING_MONSTER_ID.equals(monster.id)){
-        target = monster;
-        break;
-      }
-    }
-    if(target == null) return Result.fail("opening target is not spawned in Milles runtime");
-
     F5mAdaptedPrologueQuest quest = F5mAdaptedPrologueQuest.openingFixture();
     if(quest.accept() != F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED){
       return Result.fail("opening quest did not activate");
     }
+    // The adapted story mouse is spawned by the accepted quest flow, not at world startup.
+    runtime.enterTownInterior(com.projectdark.mobile.world.TownInteriorDef.forMap("milles_interior_inn"));
+    RuntimeState.Monster target = runtime.ensureAdaptedMillesMouse();
 
     runtime.damage(target, target.maxHp);
     CombatLedger.Event defeat = latestDefeat(runtime.ledger().snapshot(), target.id);

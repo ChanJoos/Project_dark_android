@@ -1,0 +1,88 @@
+{
+  "references": [
+    {
+      "file": "01-1000056946.jpg",
+      "sha256": "3af73435dad32f59dc139144ff6c7b7d232279a0813819202fc501d6f77be411"
+    },
+    {
+      "file": "02-1000056713.jpg",
+      "sha256": "525de35c76a3009ad6e07fc4d5aaf98ad17e3c3f56e7e8fd32aaed38179db1db"
+    },
+    {
+      "file": "03-1000056711.jpg",
+      "sha256": "7d8f8c51f00b05e6b3b5846b29f475398ef669e90fa667a4611fd1489a4435c1"
+    },
+    {
+      "file": "04-1000056707.jpg",
+      "sha256": "6f0a5d85ea509ae5b40cde4c8b171bb9b708bdccc0a143830e2096b8b31f568d"
+    },
+    {
+      "file": "05-1000056705.jpg",
+      "sha256": "79b533750aef5e6d1ba83eef3b4f7863e8ae78a1ead264c9bce8efd4d1d66370"
+    }
+  ],
+  "evidence": "PROJECT_RECONSTRUCTION",
+  "bank_church": "No supplied internal reference; inferred shared architecture",
+  "npc": "approved mm001 BODY plus source registered garments; approximate costume, no original portrait claim",
+  "prices": "Project balance; supplied recall screenshot 1000 Gold; curanum prior50 retained",
+  "atlas": "interiors/v84/atlas.json",
+  "root_cause": "previous potion renderer used screen-fixed single plate and did not save map identity",
+  "npcSources": [
+    {
+      "identity": "mu0000016",
+      "source": "https://lod-dressup-2.web.app/data/type/armor/mu0000016.json",
+      "sha256": "6bbfb7adf754c2f21b715cbf3ef5534b370497ef0c9983f1ed9703baac4d1dbc",
+      "packaged": "app/src/main/assets/source-registration/mu0000016.json",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    },
+    {
+      "identity": "mu0000016",
+      "source": "https://lod-dressup-2.web.app/atlas/armor/mu0000016.webp",
+      "sha256": "40f8fb571b010ea7f7ced0a5d81f6e11a28c49642637395ae10f486e8613cfe0",
+      "packaged": "app/src/main/res/drawable-nodpi/equip_mu0000016_source.webp",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    },
+    {
+      "identity": "mu0000018",
+      "source": "https://lod-dressup-2.web.app/data/type/armor/mu0000018.json",
+      "sha256": "c5296a0a31a97b79fabb411b546cc046b7e518268295bebbb46fae7bd71ce21f",
+      "packaged": "app/src/main/assets/source-registration/mu0000018.json",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    },
+    {
+      "identity": "mu0000018",
+      "source": "https://lod-dressup-2.web.app/atlas/armor/mu0000018.webp",
+      "sha256": "d89d8510be72a8644238cd7d2497c7d80e1dc0ebde27947bf51c9da6ff00ef1c",
+      "packaged": "app/src/main/res/drawable-nodpi/equip_mu0000018_source.webp",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    },
+    {
+      "identity": "mu0000020",
+      "source": "https://lod-dressup-2.web.app/data/type/armor/mu0000020.json",
+      "sha256": "76052da79db7e69f47870376fb32b952f1f8d1c3700b0571b68a04fe3e57b414",
+      "packaged": "app/src/main/assets/source-registration/mu0000020.json",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    },
+    {
+      "identity": "mu0000020",
+      "source": "https://lod-dressup-2.web.app/atlas/armor/mu0000020.webp",
+      "sha256": "655863000f2f0840012562d8d0f355a6aae4945daee37e17fd216d471bd6086b",
+      "packaged": "app/src/main/res/drawable-nodpi/equip_mu0000020_source.webp",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    },
+    {
+      "identity": "mu0000026",
+      "source": "https://lod-dressup-2.web.app/data/type/armor/mu0000026.json",
+      "sha256": "afd0258ec713ea97685159df7617dad0798692dab920acbe5a0bfc3d389619a9",
+      "packaged": "app/src/main/assets/source-registration/mu0000026.json",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    },
+    {
+      "identity": "mu0000026",
+      "source": "https://lod-dressup-2.web.app/atlas/armor/mu0000026.webp",
+      "sha256": "a81973681f05b359a8e94a31db618dfbffb1dc24237617458458cae7e989a452",
+      "packaged": "app/src/main/res/drawable-nodpi/equip_mu0000026_source.webp",
+      "evidence": "source bytes preserved; NPC costume selection adapted"
+    }
+  ]
+}

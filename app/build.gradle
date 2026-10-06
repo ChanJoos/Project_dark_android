@@ -7,16 +7,24 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 64
-        versionName '0.64-skill-test-mode'
+        versionCode 110
+        versionName '1.10-guided-onboarding'
+        buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
+    buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production']
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile]
         }
     }
     testOptions {
         unitTests.includeAndroidResources = true
+        // Native source rendering retains large atlases; isolate each test class.
+        unitTests.all {
+            maxHeapSize = '1536m'
+            maxParallelForks = 1
+            forkEvery = 1
+        }
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
@@ -26,3 +34,17 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.14.1'
 }
 
+// The identity is embedded in the APK that was tested, not inferred from a release name.
+def identitySource = System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED'
+def identityRun = System.getenv('GITHUB_RUN_ID') ?: 'LOCAL'
+tasks.register('writeBuildIdentity') {
+    inputs.property('sourceCommit', identitySource)
+    inputs.property('runId', identityRun)
+    outputs.file(layout.buildDirectory.file('generated/build-identity/build_identity.json'))
+    doLast {
+        def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
+        out.parentFile.mkdirs()
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 110, versionName: '1.10-guided-onboarding']) + '\n'
+    }
+}
+tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
