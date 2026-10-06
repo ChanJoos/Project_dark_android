@@ -31,7 +31,7 @@ final class OnboardingGuide {
  }}
  static String how(CampaignProgress.Def d,RpgProgressionState r,SkillBook book){String skill=CampaignProgress.beginnerSkill(r.currentJobCode());SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(skill);String name=a==null?"첫 기술":a.name;
   switch(d.kind){
-   case "STAT":return "① 안내 버튼으로 능력치창 열기\n② 원하는 능력치 옆 + 누르기\nSTR: 물리 공격 · INT: 마법 공격\nDEX: 명중 · CON/WIS: HP/MP 성장\n"+(r.currentJobCode().equals("MAGE")?"첫 마법 조건: INT 6 · WIS 4. 조건을 먼저 맞추세요.":r.currentJobCode().equals("CLERIC")?"성직자는 INT/WIS, 근접 직업은 STR/CON을 먼저 살펴보세요.":"근접 직업은 STR/CON을 먼저 살펴보세요.");
+   case "STAT":return "① 안내 버튼으로 능력치창 열기\n② 원하는 능력치 옆 + 누르기\nSTR: 물리 공격 · INT: 마법 공격\nDEX: 명중 · CON/WIS: HP/MP 성장\n"+(r.currentJobCode().equals("MAGE")?"첫 마법 조건: INT 6 · WIS 4. 조건을 먼저 맞추세요.\n잘못 배분했다면 입문 배분 다시 하기로 포인트를 돌려받으세요.":r.currentJobCode().equals("CLERIC")?"성직자는 INT/WIS, 근접 직업은 STR/CON을 먼저 살펴보세요.":"근접 직업은 STR/CON을 먼저 살펴보세요.");
    case "LEARN":return "① 안내 버튼으로 "+name+" 선택\n② 조건 탭에서 스탯·Gold 확인\n③ 부족한 스탯은 능력치창의 +로 배분\n④ 습득 버튼 누르기 (첫 기술 50 Gold)\n시험 목록은 습득으로 인정되지 않습니다.";
    case "SLOT":return "① 안내 버튼으로 "+name+" 선택\n② 등록 버튼 누르기\n③ 아래 8개 슬롯 중 빈 슬롯 선택\n④ 책을 닫고 하단 기술 아이콘 확인\n이미 실제 슬롯에 등록했다면 완료 가능합니다.";
    case "BUY":if(d.id.equals("M13"))return "① 피에트 보급 담당자에게 대화\n② 회복약 20G 버튼으로 소형 회복물약 1개 구매\n③ 완료 버튼으로 조사대에 보급 보고\n이번 의뢰는 회복약 구매만 확인합니다.";return "① 목표 안내로 상점 주인에게 이동\n② 구매 탭에서 "+(d.id.equals("T04")?"가죽 신발":d.id.equals("T06")?"소형 회복물약":"마력 물약")+" 선택\n③ 수량 1과 금액 확인 후 구매\n구매 전 보유하던 물품은 구매 횟수로 세지 않습니다.";

@@ -289,6 +289,9 @@ public final class RpgProgressionState {
   public String attackElement(){for(String id:equipmentBySlot.values()){ItemDefinition d=items.get(id);if(d!=null&&d.attackElement!=null)return d.attackElement;}return "NONE";}
   public String defenseElement(){for(String id:equipmentBySlot.values()){ItemDefinition d=items.get(id);if(d!=null&&d.defenseElement!=null)return d.defenseElement;}return "NONE";}
   public void restoreBaseResources(int hp,int mp){baseMaxHp=Math.max(1,hp);baseMaxMp=Math.max(0,mp);}
+  public boolean canResetIntroAllocation(SkillBook book){String id=campaign.activeId();return !campaign.legacy()&&("T01".equals(id)||"T02".equals(id))&&book!=null&&!book.owned(CampaignProgress.beginnerSkill(currentJobCode))&&str+intel+wis+con+dex>15;}
+  /** Explicit beginner correction only: refund allocated points, retain levels, rewards and HP/MP growth. */
+  public boolean resetIntroAllocation(SkillBook book){if(!canResetIntroAllocation(book))return false;int spent=str+intel+wis+con+dex-15;if(spent<=0||statPoints>Integer.MAX_VALUE-spent)return false;str=intel=wis=con=dex=3;statPoints+=spent;return true;}
   public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;campaign.record("STAT",stat);return true;}
   public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(3,s);intel=Math.max(3,i);wis=Math.max(3,w);con=Math.max(3,c);dex=Math.max(3,d);statPoints=Math.max(0,points);}
   private long bankGold;
