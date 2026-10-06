@@ -68,11 +68,11 @@ public class CampaignProgressTest {
   RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(1_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
   CampaignProgress c=r.campaign();c.syncOpening(true,true);SkillBook b=SkillBook.load(context);
   assertTrue(c.accept("M03",r,b));assertTrue(c.claim("M03",r));assertTrue(c.accept("J01_WARRIOR",r,b));
-  c.validSkill("SK_전사_001",1,0,false,r);
-  assertEquals("applied skill event counts despite rounded zero damage",1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
-  c.validSkill("SK_전사_001",1,9,false,r);
+  c.acceptedSkillUse("SK_전사_001",1,false,r);
+  assertEquals("accepted use counts without requiring contact damage",1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
+  c.acceptedSkillUse("SK_전사_001",1,false,r);
   assertEquals("duplicate resolver sequence is ignored",1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
-  c.validSkill("SK_전사_002",2,9,false,r);
+  c.acceptedSkillUse("SK_전사_002",2,false,r);
   assertEquals("wrong technique does not count",1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
  }
 
@@ -88,5 +88,5 @@ public class CampaignProgressTest {
  static void position(RuntimeState s,RuntimeState.Monster m){s.player().x=m.x-32;s.player().y=m.y-16;}
  static void cast(RuntimeState s,RuntimeCombatSession session,SkillBook b,RuntimeState.Monster m,String id){position(s,m);int reach=Math.max(1,SkillActionContract.get(id).minReach);s.player().x=m.x-32*reach;s.player().y=m.y-16*reach;assertTrue(id+" submission",session.submitPlayer(SkillActionContract.get(id).selfAnchored()?"player":m.id,id).accepted());tick(s,session,b,3);}
  static void kill(RuntimeState s,RuntimeCombatSession session,SkillBook b,RuntimeState.Monster m,String skill){if(!m.alive){s.tick(25);session.tick(25);}position(s,m);int turns=0;while(m.alive&&turns++<500){session.submitPlayerBasicAttack(m.id);session.monsterAutoBridge().submit(m.id,"player");tick(s,session,b,.6f);if(s.player().hp<s.player().maxHp/2){if(s.rpg().inventory().getOrDefault(RpgProgressionState.B_SMALL_POTION_ITEM_ID,0)==0)assertTrue(s.rpg().buySmallPotion());assertEquals(RpgProgressionState.UseResult.USED,s.rpg().useConsumable(RpgProgressionState.B_SMALL_POTION_ITEM_ID,s));}assertTrue("normal character survives",s.player().alive);}assertFalse("kill has real damage "+m.id,m.alive);}
- static void tick(RuntimeState s,RuntimeCombatSession session,SkillBook book,float dt){RuntimeCombatSession.FrameResult frame=session.tick(dt);for(CombatResolver.Event e:frame.events)if(e.type==CombatResolver.EventType.EFFECT_APPLIED&&e.actorId.equals("player"))s.rpg().campaign().validSkill(e.actionId,e.actionSequence,e.amount,book.testAccess(),s.rpg());s.tick(dt);s.applyDerivedGrowth();}
+ static void tick(RuntimeState s,RuntimeCombatSession session,SkillBook book,float dt){RuntimeCombatSession.FrameResult frame=session.tick(dt);for(CombatResolver.Event e:frame.events)if(e.actorId.equals("player")){if(e.type==CombatResolver.EventType.ACTION_STARTED)s.rpg().campaign().acceptedSkillUse(e.actionId,e.actionSequence,book.testAccess(),s.rpg());else if(e.type==CombatResolver.EventType.EFFECT_APPLIED)s.rpg().campaign().appliedHealingUse(e.actionId,e.actionSequence,e.amount,book.testAccess(),s.rpg());}s.tick(dt);s.applyDerivedGrowth();}
 }

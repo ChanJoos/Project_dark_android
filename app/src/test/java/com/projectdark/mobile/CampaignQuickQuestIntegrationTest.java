@@ -2,6 +2,7 @@ package com.projectdark.mobile;
 
 import static org.junit.Assert.*;
 import android.content.Context;
+import java.lang.reflect.Method;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,7 +48,7 @@ public final class CampaignQuickQuestIntegrationTest {
     assertEquals("the tap-driven quick hunt defeats its selected quest target",1,campaign.count(CampaignProgress.find("M04"),r));
   }
 
-  @Test public void killQuickQuestArmsAutoBeforeTravelingToItsMap()throws Exception{
+  @Test public void killQuickQuestTravelsToForestTargetsAndAutoAttacksQuestMonster()throws Exception{
     GameView view=new GameView(context);view.layout(0,0,960,540);
     RuntimeState runtime=TownInteriorTest.field(view,"state");RpgProgressionState r=runtime.rpg();
     r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
@@ -57,13 +58,28 @@ public final class CampaignQuickQuestIntegrationTest {
     TownInteriorTest.tap(view,80,150);
     assertTrue("AUTO is visibly armed as soon as a kill quest is selected",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
     assertEquals("quick-quest route begins toward the forest travel guide","pote_travel_guide",((WorldRuntimeAdapter)TownInteriorTest.field(view,"worldAdapter")).movement().snapshot().targetEntityId);
+    CombatController combat=TownInteriorTest.field(view,"combat");RuntimeState.Monster objectiveTarget=null;
+    // Exercise the production GameView/update path through the guide approach,
+    // map transition, objective selection, monster approach, and first attack.
+    Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);
+    for(int frame=0;frame<1800&&campaign.count(CampaignProgress.find("M07"),r)==0;frame++){
+      update.invoke(view,.05f);
+      if((Boolean)TownInteriorTest.field(view,"inPoteField")){
+        assertEquals("quickquest enters its objective map","MAP_POTE_01",runtime.currentMapId());
+        assertTrue("AUTO remains armed after the Milles-to-forest transition",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
+        if(objectiveTarget==null&&combat.target()!=null){objectiveTarget=combat.target();assertTrue("selected mob matches M07's red/green objective",campaign.wanted(CampaignProgress.find("M07"),objectiveTarget.campaignRewardProfileId));objectiveTarget.hp=1;}
+      }
+    }
+    assertTrue("the route selected an objective monster",objectiveTarget!=null);
+    assertTrue("AUTO defeated a target and advanced the live campaign count",campaign.count(CampaignProgress.find("M07"),r)>0);
+    assertTrue("AUTO stays enabled after an objective kill",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
   }
 
-  @Test public void warriorShortbladePracticeCountsARealGameViewEffect()throws Exception{
+  @Test public void warriorShortbladePracticeCountsThreeAcceptedVisibleQuickslotUses()throws Exception{
     GameView view=new GameView(context);view.layout(0,0,960,540);
     RuntimeState runtime=TownInteriorTest.field(view,"state");RpgProgressionState r=runtime.rpg();
     r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
-    SkillBook book=TownInteriorTest.field(view,"skillBook");CampaignProgress campaign=r.campaign();campaign.syncOpening(true,true);
+    SkillBook book=TownInteriorTest.field(view,"skillBook");assertFalse("quest input uses production skill rules, not skill-test mode",book.testAccess());CampaignProgress campaign=r.campaign();campaign.syncOpening(true,true);
     assertTrue(campaign.accept("M03",r,book));assertTrue(campaign.claim("M03",r));
     assertTrue(campaign.accept("J01_WARRIOR",r,book));
     RuntimeState.Monster target=null;for(RuntimeState.Monster m:runtime.monsters())if(m.alive){target=m;break;}
@@ -72,9 +88,14 @@ public final class CampaignQuickQuestIntegrationTest {
     target.hp=10000;
     ((CombatController)TownInteriorTest.field(view,"combat")).selectTarget(target);
     SkillBook.Entry shortblade=book.get("SK_전사_001");assertNotNull(shortblade);assertTrue(book.usable(shortblade.id));
+    int previousProficiency=book.proficiency("SK_전사_001");
     for(int use=0;use<3;use++){
       TownInteriorTest.tap(view,671,395);
-      TownInteriorTest.tick(view,60);
+      for(int frame=0;frame<120&&(campaign.count(CampaignProgress.find("J01_WARRIOR"),r)==use||book.proficiency("SK_전사_001")==previousProficiency);frame++)TownInteriorTest.tick(view,1);
+      assertTrue("tap starts and resolves the visible Shortblade quickslot action #"+(use+1),book.proficiency("SK_전사_001")>previousProficiency);
+      previousProficiency=book.proficiency("SK_전사_001");
+      assertEquals("each accepted Shortblade action increments the active quest immediately",use+1,campaign.count(CampaignProgress.find("J01_WARRIOR"),r));
+      TownInteriorTest.tick(view,15); // Let the live skill animation/cooldown settle before the next physical slot tap.
     }
     CampaignProgress.Def quest=CampaignProgress.find("J01_WARRIOR");
     assertEquals("quest copy matches the requested action count","숏블레이드 사용 3회",campaign.objective(quest));

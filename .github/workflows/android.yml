@@ -104,6 +104,11 @@ jobs:
         run: python tools/assets/audit_milles_map_assets.py
       - name: Verify V101 source metal feet and scenery-only style
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
+      - name: Verify generated V108 mouse directions and animation frames are reproducible
+        run: |
+          pip install Pillow
+          python tools/assets/build_v108_mouse_animation.py
+          git diff --exit-code -- assets/milles/production/interiors/v108
       - name: Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V90 adapted Milles story quest and shared mouse AI
@@ -318,8 +323,8 @@ jobs:
           python3 - <<'PY'
           import datetime,hashlib,json,os,pathlib
           p=pathlib.Path('apk-delivery/PROJECT_DARK_V108.apk')
-          info={'sourceCommit':os.environ['SOURCE_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'candidate':True,'versionCode':108,'versionName':'1.08-quest-runtime-fixes','apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'apkBytes':p.stat().st_size,'builtSeoul':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'scope':'V108 kill quickquest auto-attack and Warrior Shortblade quest-count repairs; five class routes with 23 quests each; inn mouse chase coordinate displacement; readable captured mouse art on the inn and all three early Milles field actors. Exact PR-head/tree equality checked before APK publication.','phoneAcceptance':'PENDING','userVisualAcceptance':'PENDING'}
+          info={'sourceCommit':os.environ['SOURCE_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'candidate':True,'versionCode':108,'versionName':'1.08-quest-runtime-fixes','apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'apkBytes':p.stat().st_size,'builtSeoul':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'scope':'M07 GameView quickquest from Milles through travel guide, forest entry, objective target, approach and first counted autoattack; three visible Shortblade quickslot uses counted from accepted ACTION_STARTED events (healing still requires positive applied HP restoration); four-direction mouse idle/walk A/walk B/attack animations connected to live inn/field AI states with normalized frame bounds and anchor. Five 23-quest campaign routes retain their resolver/progression simulation audit. Exact PR-head/tree equality checked before APK publication.','phoneAcceptance':'PENDING','userVisualAcceptance':'PENDING'}
           pathlib.Path('apk-delivery/BUILD_INFO.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n')
           PY
           tag="candidate-v108-${SOURCE_SHA:0:8}"
-          gh release create "$tag" apk-delivery/PROJECT_DARK_V108.apk apk-delivery/BUILD_INFO.json --repo "$GITHUB_REPOSITORY" --target "$SOURCE_SHA" --prerelease --title 'PROJECT DARK V108 퀘스트·쥐 수정 후보' --notes "정확한 PR head $SOURCE_SHA 빌드. 퀵퀘스트 자동공격, 숏블레이드 사용 횟수, 여관 쥐 이동 및 가시성, 초반 필드 쥐 외형 수정. 전체 Android CI 통과 후 생성. 기기/사용자 시각 검수는 대기 중."
+          gh release create "$tag" apk-delivery/PROJECT_DARK_V108.apk apk-delivery/BUILD_INFO.json --repo "$GITHUB_REPOSITORY" --target "$SOURCE_SHA" --prerelease --title 'PROJECT DARK V108 퀘스트·쥐 동작 검증 후보' --notes "정확한 PR head $SOURCE_SHA에서 생성. M07 퀵퀘스트 전체 경로/첫 처치, 숏블레이드 3회 실제 슬롯 사용 카운트, 네 방향 쥐 idle/walk/attack 애니메이션 native regression 포함. 전체 Android CI 통과 후 생성. 실제 휴대폰 동작·시각 확인은 별도 대기 중."

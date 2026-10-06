@@ -50,28 +50,58 @@ public final class MillesMousePresentationTest {
     }
   }
 
-  @Test public void allFourMouseFacingsLoadDistinctFramesFromTheProductionRenderer() throws Exception {
+  @Test public void allFourFacingsUseNormalizedIdleWalkAndAttackFramesInTheProductionActorPath() throws Exception {
     GameView view=new GameView(RuntimeEnvironment.getApplication());
-    RuntimeState state=field(view,"state");RuntimeState.Monster mouse=state.monsters().get(0);
-    InnMouseRenderer renderer=new InnMouseRenderer(RuntimeEnvironment.getApplication());
-    Bitmap previous=null;int i=0;
-    Bitmap review=Bitmap.createBitmap(4*96,112,Bitmap.Config.ARGB_8888);Canvas sheet=new Canvas(review);sheet.drawColor(0xff5f4429);
+    RuntimeState state=field(view,"state");RuntimeState.Monster mouse=state.monsters().get(0);mouse.x=80;mouse.y=96;
+    assertTrue("test actor uses the production mouse rendering branch",MillesMousePresentation.isMouse(mouse.id));
+    String[] activities={"idle","walk_a","walk_b","attack"};
+    Bitmap[][] rendered=new Bitmap[4][4];Bitmap review=Bitmap.createBitmap(4*96,4*96,Bitmap.Config.ARGB_8888);Canvas sheet=new Canvas(review);sheet.drawColor(0xff5f4429);
+    int directionIndex=0;
     for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
-      mouse.visualFacing.setLocomotion(direction);
-      Bitmap frame=Bitmap.createBitmap(96,112,Bitmap.Config.ARGB_8888);
-      renderer.draw(new Canvas(frame),mouse,48,88);
-      int left=frame.getWidth(),right=-1,top=frame.getHeight(),bottom=-1,pixels=0;
-      for(int y=0;y<frame.getHeight();y++)for(int x=0;x<frame.getWidth();x++)if(Color.alpha(frame.getPixel(x,y))>0){pixels++;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
-      assertTrue("each direction has visible mouse pixels: "+direction,pixels>300);
-      assertTrue("each mouse has ears, body and tail at world scale: "+direction,right-left>=32&&bottom-top>=24);
-      if(previous!=null)assertFalse("facing selects a distinct source still: "+direction,previous.sameAs(frame));
-      sheet.drawBitmap(frame,i*96,0,null);if(previous!=null)previous.recycle();previous=frame.copy(frame.getConfig(),false);frame.recycle();i++;
+      mouse.visualFacing.setLocomotion(direction);int activityIndex=0;
+      for(String activity:activities){
+        mouse.isMoving=activity.startsWith("walk");mouse.animationClock="walk_b".equals(activity)?.2f:0f;
+        mouse.attackPrimed="attack".equals(activity);mouse.attackVisualRemaining=0f;
+        int expected=activity.equals("idle")?0:activity.equals("walk_a")?1:activity.equals("walk_b")?2:3;
+        assertEquals(direction+"/"+activity,expected,InnMouseRenderer.activityFrame(mouse));
+        Bitmap frame=Bitmap.createBitmap(160,128,Bitmap.Config.ARGB_8888);
+        invokeDrawMonster(view,new Canvas(frame),mouse);
+        Bitmap actor=Bitmap.createBitmap(frame,48,32,64,64);frame.recycle();
+        int left=actor.getWidth(),right=-1,top=actor.getHeight(),bottom=-1,pixels=0;
+        for(int y=0;y<actor.getHeight();y++)for(int x=0;x<actor.getWidth();x++)if(Color.alpha(actor.getPixel(x,y))>0){pixels++;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
+        assertTrue(direction+"/"+activity+" has the live mouse sprite",pixels>900);
+        assertEquals(direction+"/"+activity+" preserves common projected width",52,right-left+1);
+        assertEquals(direction+"/"+activity+" preserves common ground anchor",58,bottom);
+        if(activityIndex>0)assertFalse(direction+" uses different idle/walk/attack poses",rendered[directionIndex][activityIndex-1].sameAs(actor));
+        rendered[directionIndex][activityIndex]=actor.copy(Bitmap.Config.ARGB_8888,false);
+        sheet.drawBitmap(actor,directionIndex*96+16,activityIndex*96+16,null);actor.recycle();activityIndex++;
+      }
+      if(directionIndex>0)assertFalse("each compass direction has its own silhouette",rendered[directionIndex][0].sameAs(rendered[0][0]));directionIndex++;
     }
-    if(previous!=null)previous.recycle();
-    java.io.File file=new java.io.File("build/reports/device-review/v108-adapted-mouse-directions.png");file.getParentFile().mkdirs();
+    for(Bitmap[] direction:rendered)for(Bitmap frame:direction)frame.recycle();
+    java.io.File file=new java.io.File("build/reports/device-review/v108-adapted-mouse-animation-grid.png");file.getParentFile().mkdirs();
     try(java.io.FileOutputStream out=new java.io.FileOutputStream(file)){assertTrue(review.compress(Bitmap.CompressFormat.PNG,100,out));}
     review.recycle();
   }
+
+  @Test public void innStoryMouseUsesTheSameWalkAndAttackAnimationFrames() throws Exception {
+    GameView view=new GameView(RuntimeEnvironment.getApplication());
+    RuntimeState state=field(view,"state");state.enterTownInterior(com.projectdark.mobile.world.TownInteriorDef.ALL.get(4));
+    RuntimeState.Monster mouse=state.ensureAdaptedMillesMouse();assertNotNull(mouse);assertEquals("milles_mouse_proto",mouse.id);mouse.x=80;mouse.y=96;
+    Bitmap[] poses=new Bitmap[3];String[] activities={"idle","walk_a","attack"};
+    for(int i=0;i<activities.length;i++){
+      mouse.isMoving="walk_a".equals(activities[i]);mouse.animationClock=.05f;mouse.attackPrimed="attack".equals(activities[i]);
+      Bitmap frame=Bitmap.createBitmap(160,128,Bitmap.Config.ARGB_8888);invokeDrawMonster(view,new Canvas(frame),mouse);
+      poses[i]=Bitmap.createBitmap(frame,48,32,64,64);frame.recycle();
+      assertTrue("inn mouse " + activities[i] + " is visibly rendered",nonTransparent(poses[i])>900);
+      assertEquals("inn mouse selects matching live state",i==0?0:i==1?1:3,InnMouseRenderer.activityFrame(mouse));
+    }
+    assertFalse("walking pose changes the inn idle pose",poses[0].sameAs(poses[1]));
+    assertFalse("attack pose changes the inn idle pose",poses[0].sameAs(poses[2]));
+    for(Bitmap pose:poses)pose.recycle();
+  }
+
+  private static int nonTransparent(Bitmap b){int n=0;for(int y=0;y<b.getHeight();y++)for(int x=0;x<b.getWidth();x++)if(Color.alpha(b.getPixel(x,y))>0)n++;return n;}
 
   private static void invokeDrawMonster(GameView view,Canvas canvas,RuntimeState.Monster monster)throws Exception{
     java.lang.reflect.Method method=GameView.class.getDeclaredMethod("drawMonster",Canvas.class,RuntimeState.Monster.class);
