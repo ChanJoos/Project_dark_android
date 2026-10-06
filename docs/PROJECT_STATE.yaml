@@ -1,3 +1,15 @@
+onboarding_v110:
+  implementation: IMPLEMENTED_PENDING_VERIFICATION
+  baseline: V109_DEVICE_VERIFIED_USER_REPORTED
+  basic_steps: 16
+  own_route_quests: 32
+  completed_basic_level: 11
+  cumulative_normal_exp: 378000
+  save_migration: V1_LEGACY_ROUTE_PRESERVED_V2
+  physical_phone: PENDING
+  user_visual: PENDING
+  contract: docs/ONBOARDING_V110_CONTRACT.md
+
 device_quest_v109:
   implementation: IMPLEMENTED
   source: 44d19c1e8dc1ec6fbab51030e6c1188f7b90ab97
@@ -7,7 +19,7 @@ device_quest_v109:
   baseline: FOUR_ASSERTION_FAILURES_REPRODUCED
   build: BUILD_VERIFIED
   native_runtime: NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC_82_TESTS_ZERO_FAILURES_ZERO_SKIPS
-  physical_phone: PENDING
+  physical_phone: DEVICE_VERIFIED_USER_REPORTED
   user_visual: PENDING
   actions_run: 37408187292
   full_pipeline_evidence: docs/verification/DEVICE_QUEST_V109_BUILD.json

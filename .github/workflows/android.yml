@@ -116,7 +116,7 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V90 adapted Milles story quest and shared mouse AI
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.MillesMousePresentationTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
-      - name: Verify V109 phone-default quest actions and full campaign route audit
+      - name: Verify V110 learning and retained phone-default quest actions and full campaign route audit
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.OnboardingUiTest --tests com.projectdark.mobile.DeviceQuestRegressionTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
       - name: Verify V97 quest list, state filters, compact navigation and restart
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
@@ -248,11 +248,11 @@ jobs:
           name: inn-v93-review-${{ github.sha }}
           path: app/build/reports/device-review/v93-*.png
           if-no-files-found: warn
-      - name: Build and verify exact V109 debug APK
+      - name: Build and verify exact V110 debug APK
         run: |
           gradle :app:assembleDebug --stacktrace
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v109_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v110_apk.py app/build/outputs/apk/debug/app-debug.apk
       - name: Upload focused V96 weapon and jump review
         if: always()
         uses: actions/upload-artifact@v4

@@ -210,7 +210,7 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition(REFERENCE_LEOPARD_ITEM_ID,"레오파드",ARMOR_SLOT,"mu0000180",1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(REFERENCE_HELM_ITEM_ID,"헬름",HEAD_SLOT,"mh168",1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(CHUNGRYONG_ITEM_ID,"청룡의숨결",WEAPON_SLOT,"mw_chungryong",AnimationAction.SWING,1,anyJob,true,null,null,noStats,Evidence.ADAPTED));
-    registerItem(new ItemDefinition("IT_TEST_SHOES_ML229","신발 ml229",SHOES_SLOT,"ml229",1,anyJob,true,null,null,stats("DEX",2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_SHOES_ML229","가죽 신발",SHOES_SLOT,"ml229",1,anyJob,true,null,null,stats("DEX",2),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHOES_ML230","신발 ml230",SHOES_SLOT,"ml230",1,anyJob,true,null,null,stats("DEX",3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHIELD_MS002","방패 ms002",SHIELD_SLOT,"ms002",1,anyJob,true,null,null,stats("AC",-3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHIELD_MS003","방패 ms003",SHIELD_SLOT,"ms003",1,anyJob,true,null,null,stats("AC",-4),Evidence.ADAPTED));

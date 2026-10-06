@@ -15,8 +15,8 @@ All added curriculum, rewards, stories and controls are PROJECT_ADAPTED_V110. Or
 |5|T02 첫 기술 배우기|Actual learned record, not preview availability|48000|
 |6|T03 기술을 손끝에|Owned beginner skill in a real quickslot|60500 / Lv5|
 |7|J01 직업별 첫 기술 실습|Three accepted matching actions; actual positive HP restoration for Cleric|78800|
-|8|T04 첫 장비 구매|Successful purchase of IT_SHOES|87800 / Lv6|
-|9|T05 신발 장착하기|Successful explicit shoe equip|105000|
+|8|T04 첫 장비 구매|Successful purchase of IT_TEST_SHOES_ML229|87800 / Lv6|
+|9|T05 가죽 신발 장착하기|Successful explicit leather-shoe equip|105000|
 |10|T06 회복 물약 구매|Successful purchase of small HP potion|122800 / Lv7|
 |11|T07 다친 몸 돌보기|Actual HP restoration by this potion|145000|
 |12|T08 마력 물약 구매|Successful purchase of MP potion|167800 / Lv8|
@@ -25,7 +25,7 @@ All added curriculum, rewards, stories and controls are PROJECT_ADAPTED_V110. Or
 |15|M04 자동 사냥 익히기|Three real target field-mouse defeats|300000 / Lv10|
 |16|M06 포테 숲길 답사|Actual forest map visit and report|378000 / Lv11|
 
-Turn-in grants max(0, milestone − total normal EXP already earned); it never sets a level, removes EXP, or lowers an overlevelled character. Display/reward toast quote the actual current amount. Extra early combat reduces the catch-up reward; levels already beyond the milestone remain. Original LevelExpCurve is unchanged. No filler hunting gate before Lv11. Every T quest has one action, not a composite boolean supply objective. T rewards do not flood inventory with HP/MP potion stacks. Gold budgets retain affordably paid first learning (50G), shoes (100G), HP20/MP25 and sale proceeds.
+Turn-in grants max(0, milestone − total normal EXP already earned); it never sets a level, removes EXP, or lowers an overlevelled character. Display/reward toast quote the actual current amount. Extra early combat reduces the catch-up reward; levels already beyond the milestone remain. Original LevelExpCurve is unchanged. No filler hunting gate before Lv11. Every T quest has one action, not a composite boolean supply objective. T rewards do not flood inventory with HP/MP potion stacks. Gold budgets retain affordably paid first learning (50G), leather shoes (150G), HP20/MP25 and sale proceeds.
 
 ## Manual learning and teaching
 
@@ -39,7 +39,7 @@ T tutorials accept and explicitly claim through their own current journal/quickq
 
 Only the player's ordered playable route appears; no foreign class quests, duplicate forest/job cards or unimplemented source placeholders in the runtime list. Original catalogs remain available as source data. Clear chapters, specific previous-quest lock reason, actual current objective, reward and next title replace generic text. Current row is selected and scrolled into view. Separate scrollable 방법 보기 describes exact controls. Larger 290×62 quickquest shows title/state/action/count. Journal action dispatches the selected current row; it cannot silently navigate a different row. Modal touches/swipes block world movement; wide centering remains.
 
-Campaign snapshots advance to v2 and preserve all v1 IDs/counts/completion/resources. Existing v1 progress past M03 imports the original route (legacy flag persists), avoiding inserted compulsory lessons, duplicate rewards, changed progress or restarting a user's Lv11 character. Early v1 saves before job completion use the new curriculum. Imported M05's original composite objective remains only on that old route; fresh route replaces it entirely. Existing class skill/slot ownership stays intact. Completion is not fabricated to award new tutorial rewards.
+Campaign snapshots advance to v2 and preserve all v1 IDs/counts/completion/resources. Existing v1 progress past M03 imports the original route (legacy flag persists), avoiding inserted compulsory lessons, duplicate rewards, changed progress or restarting a user's Lv11 character. Early v1 saves before job completion use the new curriculum. Imported M05's original composite objective remains only on that old route; fresh route replaces it entirely. Fresh M13 is also one specific HP-potion purchase rather than another composite supply bundle; original M13 remains only on imported routes. Existing class skill/slot ownership stays intact. Completion is not fabricated to award new tutorial rewards.
 
 ## Verification gates
 
