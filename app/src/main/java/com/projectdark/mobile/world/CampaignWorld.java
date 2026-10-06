@@ -11,11 +11,12 @@ public final class CampaignWorld {
  public static String previous(String id){int i=Arrays.asList(ROUTE).indexOf(id);return i<=0?null:ROUTE[i-1];}
  public static String next(String id){int i=Arrays.asList(ROUTE).indexOf(id);return i<0||i+1==ROUTE.length?null:ROUTE[i+1];}
  public static WorldMoveTargetController.TileCenter forward(){return forward(PoteFieldDef.MAP_ID);}
- public static WorldMoveTargetController.TileCenter forward(String mapId){PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);return d.zone==1||d.zone==0?d.nearest(1056,240):d.nearest(d.nextX,d.nextY);}
+ public static WorldMoveTargetController.TileCenter forward(String mapId){PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);return nearestConnected(mapId,d.zone==1||d.zone==0?1056:d.nextX,d.zone==1||d.zone==0?240:d.nextY);}
  public static WorldMoveTargetController.TileCenter backward(){return backward(PoteFieldDef.MAP_ID);}
- public static WorldMoveTargetController.TileCenter backward(String mapId){PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);return d.nearest(d.backX,d.backY);}
+ public static WorldMoveTargetController.TileCenter backward(String mapId){PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);return nearestConnected(mapId,d.backX,d.backY);}
  public static WorldMoveTargetController.TileCenter arrival(boolean fromNext){return arrival(PoteFieldDef.MAP_ID,fromNext);}
- public static WorldMoveTargetController.TileCenter arrival(String mapId,boolean fromNext){PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);WorldMoveTargetController.TileCenter gate=fromNext?forward(mapId):backward(mapId);WorldMoveTargetController.TileCenter best=null;float distance=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:d.navigationTiles()){float dg=(float)Math.hypot(t.x-gate.x,t.y-gate.y);if(dg<75||dg>110)continue;float q=(float)Math.hypot(t.x-d.entryX,t.y-d.entryY);if(q<distance){distance=q;best=t;}}return best==null?d.nearest(d.entryX,d.entryY):best;}
+ public static WorldMoveTargetController.TileCenter arrival(String mapId,boolean fromNext){PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);WorldMoveTargetController.TileCenter gate=fromNext?forward(mapId):backward(mapId);WorldMoveTargetController.TileCenter best=null;float distance=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:connectedTiles(mapId)){float dg=(float)Math.hypot(t.x-gate.x,t.y-gate.y);if(dg<75||dg>110)continue;float q=(float)Math.hypot(t.x-d.entryX,t.y-d.entryY);if(q<distance){distance=q;best=t;}}return best==null?nearestConnected(mapId,d.entryX,d.entryY):best;}
+ private static WorldMoveTargetController.TileCenter nearestConnected(String mapId,float x,float y){WorldMoveTargetController.TileCenter best=null;float bd=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:connectedTiles(mapId)){float dx=t.x-x,dy=t.y-y,q=dx*dx+dy*dy;if(q<bd){bd=q;best=t;}}return best;}
  private static final Map<String,List<WorldMoveTargetController.TileCenter>> CONNECTED=new HashMap<>();
  /** Terrain-only connected component; prevents spawn/gate anchors on isolated creek banks. */
  public static List<WorldMoveTargetController.TileCenter> connectedTiles(){
