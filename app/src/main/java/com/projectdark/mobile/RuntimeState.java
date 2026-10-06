@@ -103,20 +103,20 @@ public final class RuntimeState {
     com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
     if(d!=null){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter best=null;float score=Float.MAX_VALUE;for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles()){float distance=distanceSquared(x,y,t.x,t.y);if(distance<score){best=t;score=distance;}}return best;}
     if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      return com.projectdark.mobile.world.PoteFieldDef.nearestNavigationCenter(x,y);
+      return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).nearest(x,y);
     return MonsterTileCenterLocomotion.nearestAuthoredCenter(x,y);
   }
   public boolean isMonsterTileCenter(float x,float y){
     com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
     if(d!=null){for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;return false;}
     if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      return com.projectdark.mobile.world.PoteFieldDef.isNavigationCenter(x,y);
+      for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;
     return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
   }
   public List<com.projectdark.mobile.world.WorldMoveTargetController.TileCenter> monsterNavigationTiles(){
     com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);if(d!=null)return d.navigationTiles();
     if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      return com.projectdark.mobile.world.PoteFieldDef.navigationTiles();
+      return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles();
     return MonsterTileCenterLocomotion.authoredCenters();
   }
   public WorldMoveTargetController.Direction nextMonsterChaseStep(Monster monster,float targetX,float targetY){
@@ -179,11 +179,11 @@ public final class RuntimeState {
   }
   public void enterCampaignMap(String id,boolean fromNext){
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
-    enterPoteField();currentMapId=id;npcs.clear();monsters.clear();
-    int zone=com.projectdark.mobile.world.CampaignWorld.zone(id);monsters.addAll(CampaignMonsters.spawn(zone));
+    enterPoteField();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    int zone=map.zone;monsters.addAll(CampaignMonsters.spawnForMap(id));
     if(zone==0){npcs.add(new Npc("piet_investigator","이선",768,512,"피에트 조사와 서신을 담당합니다.","ADAPTED"));npcs.add(new Npc("piet_supplier","조슈아",864,560,"조사 장비와 보급품을 준비하세요.","ADAPTED"));npcs.add(new Npc("piet_purifier","새뮤얼",672,560,"숲의 정수를 정화합니다.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"지도자",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"숙련 기술과 장비를 지도합니다.","ADAPTED"));}
-    else {npcs.add(new Npc("pote_trail_guide","알렉산더",736,496,"숲길 조사와 무료 휴식", "ADAPTED"));if(zone==4)for(int i=0;i<3;i++)npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),672+i*160,672,"제단 정화", "ADAPTED"));}
-    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
+    else {com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=map.nearest(map.entryX+96,map.entryY+16);npcs.add(new Npc("pote_trail_guide","알렉산더",guide.x,guide.y,"숲길 조사와 무료 휴식", "ADAPTED"));if(zone==3&&!"MAP_POTE_04".equals(id)){float[][] sites={{720,560},{1536,760},{2300,1040}};for(int i=0;i<3;i++){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter altar=map.nearest(sites[i][0],sites[i][1]);npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),altar.x,altar.y,"제단 정화", "ADAPTED"));}}}
+    com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(id,fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
   }
   public void enterMillesFromField(float x,float y){
     currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;
@@ -280,7 +280,7 @@ public final class RuntimeState {
     return false;
   }
   private float monsterCollisionRadius(Monster monster){
-    return "milles_mouse_proto".equals(monster.id)?7f:"POTE_LYCAN".equals(PoteForestMonsterShowcase.species(monster.id))?16f:MONSTER_RADIUS;
+    return "milles_mouse_proto".equals(monster.id)?7f:"POTE_MANTIS".equals(PoteForestMonsterShowcase.species(monster.id))?18f:"POTE_LYCAN".equals(PoteForestMonsterShowcase.species(monster.id))?16f:MONSTER_RADIUS;
   }
   private boolean npcOccupied(float x,float y,float radius){
     for(Npc n:npcs){float min=radius+NPC_RADIUS+ACTOR_CLEARANCE;if(distance(x,y,n.x,n.y)<min)return true;}

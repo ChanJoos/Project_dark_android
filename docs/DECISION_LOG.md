@@ -1,3 +1,7 @@
+## 2026-10-06 — Pote route starts from merged V110
+
+User-selected direction: three ordinary hunting maps A/B/C for Lv11–40 and separate Mantis finale D to reach Lv41. Strong monster variants are out of scope. Existing ordinary roster is distributed A: four Pamfets; B: Treant, Antlion, Gnoll, Lycan; C: Wolf Rider, Ant Giant, Silver Wolf. Brown/black spirits stay out until source/pose review. The current local D encounter is an adapted placeholder with no source-art acceptance; this does not change the user's Mantis finale direction. V110 #178 was merged first (merge `00b094c76add19d7c5fc1292365cf208882bf3a5`); all work starts from this main SHA. Current A/B/C/D candidate is implemented locally but Android tests/build/runtime and device acceptance are pending.
+
 ## 2026-10-06 — V110 guided onboarding candidate verified
 
 IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC. Exact APK source `fadd41a7c947a561b1b3e4a2a0315010019c6c7a`; focused Actions `37415043124` SUCCESS: **96 tests, zero failures/errors/skips**. Full push `37415043085` and PR `37415047650` both SUCCESS; full push has 24 successful Gradle invocations. [Exact evidence](verification/ONBOARDING_V110_BUILD.json).

@@ -1,3 +1,11 @@
+## 2026-10-06 — V111 implementation / CI pending
+
+V110 merge `00b094c76add19d7c5fc1292365cf208882bf3a5`를 기준으로 `codex/pote-abcd-lv11-41`에서 V111 후보를 작업 중이다. A/B/C/D 맵, 28개 A01–D04 의뢰, Lv11 출발→Lv41 보상 경로, 11개 일반 몬스터 분배를 구현했다. 맨티스용 4방향×idle/walk/attack 12포즈를 생성·분리해 D 보스에 연결하고 provenance/hash를 기록했다. 강력형 몬스터는 경로에 넣지 않았다. 버전 111 APK 검증 스크립트와 CI 테스트도 추가했다. `git diff --check`, Master 정합성 검증은 통과. 로컬 Gradle/Android SDK가 없어 Android 검증은 아직 실행 전이다. 이후 원격 CI가 전체 테스트와 exact APK를 통과하면 PR 검토/승인/merge를 완료하고, 실기기·사용자 시각 승인은 별도로 표시한다.
+
+## 2026-10-06 — Pote A/B/C/D growth route candidate (not build-verified)
+
+Base: V110 merge `00b094c76add19d7c5fc1292365cf208882bf3a5`; worktree `codex/pote-abcd-lv11-41`, source HEAD is unchanged and the candidate is uncommitted. Added independent A/B/C/D map geometry and monster pools, 28 A01–D04 campaign quests for fresh saves, a single adapted Giant Mantis on `MAP_POTE_D_BOSS`, Lv41 EXP on its D03 turn-in, and V110 `MAP_POTE_04` compatibility handling. Strong/elite variants and Pote spirits are excluded. User-provided Mantis pose extraction is still pending; generic actor fallback is not visually accepted. `git diff --check` and `python3 tools/validate_master.py` pass. No Gradle executable/wrapper was found, so Android compile/tests/APK/runtime/device and visual checks are NOT RUN.
+
 ## 2026-10-05 — V105 final CI / public APK closure
 
 User-authorized implementation and candidate publication completed. APK source commit `5ebf1fc2c7fd07bc004b4863f86dd9204edfdadd`; Actions run 37254439040 / job 111588416336 completed SUCCESS. The full configured 248-test Gradle suite and APK assembly passed. Build completion from Actions log: 2026-10-05 11:30:40 KST.
