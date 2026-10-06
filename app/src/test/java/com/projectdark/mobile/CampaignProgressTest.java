@@ -46,7 +46,7 @@ public class CampaignProgressTest {
       enter(state,d.level<11?WorldDef.ID:d.level<26?"MAP_POTE_01":"MAP_POTE_03");String skill=r.campaign().practiceSkill(d,r);assertTrue(book.usable(skill));
       for(int practice=0;r.campaign().status(d,r)!=CampaignProgress.Status.REPORT&&practice<10;practice++){
        rest(state);RuntimeState.Monster target=state.monsters().get(0);if(!target.alive){state.tick(25);session.tick(25);}
-       position(state,target);if(SkillRuntimeCatalog.healing(skill)){session.monsterAutoBridge().submit(target.id,"player");tick(state,session,book,1);}
+       position(state,target);if(SkillRuntimeCatalog.healing(skill)){takeHit(state,session,book,target);}
        long before=r.campaign().count(d,r);cast(state,session,book,target,skill);skillActions+=r.campaign().count(d,r)-before;
       }break;
      case "STAT":assertTrue(r.spendStat(job.equals("MAGE")||job.equals("CLERIC")?"WIS":"STR"));break;
@@ -58,11 +58,11 @@ public class CampaignProgressTest {
      case "USE":case "QUICK_USE":
       enter(state,WorldDef.ID);rest(state);RuntimeState.Monster drill=state.monsters().get(0);if(!drill.alive){state.tick(25);session.tick(25);}position(state,drill);
       boolean mana=d.kind.equals("QUICK_USE")&&(job.equals("MAGE")||job.equals("CLERIC"));
-      if(mana){if(job.equals("CLERIC")){session.monsterAutoBridge().submit(drill.id,"player");tick(state,session,book,1);}cast(state,session,book,drill,CampaignProgress.beginnerSkill(job));assertTrue(state.player().mp<state.player().maxMp);}else{session.monsterAutoBridge().submit(drill.id,"player");tick(state,session,book,1);assertTrue(state.player().hp<state.player().maxHp);}
+      if(mana){if(job.equals("CLERIC")){takeHit(state,session,book,drill);}cast(state,session,book,drill,CampaignProgress.beginnerSkill(job));assertTrue(job+" "+d.id+" must actually consume MP before recovery",state.player().mp<state.player().maxMp);}else{takeHit(state,session,book,drill);assertTrue(job+" "+d.id+" must actually lose HP before recovery",state.player().hp<state.player().maxHp);}
       assertEquals(RpgProgressionState.UseResult.USED,d.kind.equals("QUICK_USE")?r.useQuickConsumable(mana?"IT_B_MP_POTION":RpgProgressionState.B_SMALL_POTION_ITEM_ID,state):r.useConsumable(d.targets,state));break;
      case "SUPPLY":
       assertTrue(r.buyItem(RpgProgressionState.B_SMALL_POTION_ITEM_ID,20));assertEquals(TownCommerce.Result.OK,TownCommerce.transact(state,TownInteriorDef.Kind.REAGENT,TownCommerce.Operation.BUY,"IT_B_MP_POTION",1,()->F5mSaveStore.checkpointActive()));assertEquals(TownCommerce.Result.OK,TownCommerce.transact(state,TownInteriorDef.Kind.REAGENT,TownCommerce.Operation.SELL,"IT_B_MP_POTION",1,()->F5mSaveStore.checkpointActive()));RuntimeState.Monster target;
-      enter(state,WorldDef.ID);target=state.monsters().get(0);if(!target.alive){state.tick(25);session.tick(25);}position(state,target);session.monsterAutoBridge().submit(target.id,"player");tick(state,session,book,1);
+      enter(state,WorldDef.ID);target=state.monsters().get(0);if(!target.alive){state.tick(25);session.tick(25);}position(state,target);takeHit(state,session,book,target);
       assertEquals(RpgProgressionState.UseResult.USED,r.useConsumable(RpgProgressionState.B_SMALL_POTION_ITEM_ID,state));break;
      case "ALTAR":enter(state,"MAP_POTE_04");for(int i=0;i<3;i++)assertTrue(r.campaign().purify("campaign_altar_"+i,r));break;
      default:break;
@@ -95,6 +95,7 @@ public class CampaignProgressTest {
  static String huntMap(int lv){return lv<10?WorldDef.ID:lv<15?"MAP_POTE_01":lv<20?"MAP_POTE_02":lv<30?"MAP_POTE_03":"MAP_POTE_04";}
  static void enter(RuntimeState s,String map){if(map.equals(s.currentMapId()))return;if(WorldDef.ID.equals(map))s.enterMillesFromField(WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y);else if(CampaignWorld.contains(map))s.enterCampaignMap(map,false);else throw new AssertionError(map);s.rpg().campaign().visit(map);}
  static void allocate(RpgProgressionState r,String job){int n=0;while(r.statPoints()>0)assertTrue(r.spendStat((n++%4==0)?("MAGE".equals(job)||"CLERIC".equals(job)?"WIS":"CON"):("MAGE".equals(job)||"CLERIC".equals(job)?"INT":"STR")));}
+ static void takeHit(RuntimeState s,RuntimeCombatSession session,SkillBook b,RuntimeState.Monster m){int hp=s.player().hp;MonsterAutoCombatBridge.Result last=null;for(int n=0;n<60&&s.player().hp==hp;n++){position(s,m);last=session.monsterAutoBridge().submit(m.id,"player");tick(s,session,b,.3f);}assertTrue("real monster hit must resolve; last="+(last==null?"none":last.outcome+"/"+last.rejectReason)+" hp="+hp+"/"+s.player().hp,s.player().hp<hp);}
  static void rest(RuntimeState s){CampaignResources.freeRest(s);}
  static void position(RuntimeState s,RuntimeState.Monster m){s.player().x=m.x-32;s.player().y=m.y-16;}
  static void cast(RuntimeState s,RuntimeCombatSession session,SkillBook b,RuntimeState.Monster m,String id){position(s,m);int reach=Math.max(1,SkillActionContract.get(id).minReach);s.player().x=m.x-32*reach;s.player().y=m.y-16*reach;assertTrue(id+" submission",session.submitPlayer(SkillActionContract.get(id).selfAnchored()?"player":m.id,id).accepted());tick(s,session,b,3);}
