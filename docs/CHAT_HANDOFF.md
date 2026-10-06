@@ -1,3 +1,7 @@
+## 2026-10-06 — V109 device-default repair, verification pending
+
+Rejected V108 `c48cd39d33aae4c608d122b1257518cbaf3ec828` is DEVICE_FAILED_USER_REPORTED. Confirmed source gaps: legacy opening/growth navigation disabled AUTO; default MainActivity preview discarded quest skill uses; Rescue TAUNT had no AI consumer. V109 addresses these paths, tests actual startup/save/restart, and reduces mouse drawing37.5% with shared ground anchor. Rescue is non-damaging adjacent adapted taunt, original range unknown. Four failure-reproduction tests run against rejected V108 before the same fixed tests. Exact APK source/run identity and single unique publisher added. IMPLEMENTED; BUILD/NATIVE pending; PHONE/USER_VISUAL pending. See [acceptance contract](DEVICE_QUEST_V109.md). Existing PR178 only; no main merge.
+
 ## 2026-10-06 — V108 DEVICE_FAILED_USER_REPORTED; current repair handoff
 
 The user reports the delivered V108 APK (`ad374ec52898cfb4f49a08cf2557258512ccc3eb`, PR #178; prior Actions `37371178428`) still failed on device: kill quickquest did not finish travel/target/autoattack, Shortblade uses did not advance, and mouse movement/attack/pose size were wrong. Mark that delivered SHA `DEVICE_FAILED_USER_REPORTED`; the root cause for the failure on that APK remains UNKNOWN until the device scenario is reproduced. The earlier source diagnosis applies to predecessor `4e1cb570c3b352cef2251799b072d2ee5c33694f` only; its fix and green CI did not establish the requested behavior.

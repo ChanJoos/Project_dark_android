@@ -7,12 +7,14 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 108
-        versionName '1.08-quest-runtime-fixes'
+        versionCode 109
+        versionName '1.09-device-quest-rescue-fix'
+        buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
+    buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production']
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile]
         }
     }
     testOptions {
@@ -31,3 +33,18 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.robolectric:robolectric:4.14.1'
 }
+
+// The identity is embedded in the APK that was tested, not inferred from a release name.
+def identitySource = System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED'
+def identityRun = System.getenv('GITHUB_RUN_ID') ?: 'LOCAL'
+tasks.register('writeBuildIdentity') {
+    inputs.property('sourceCommit', identitySource)
+    inputs.property('runId', identityRun)
+    outputs.file(layout.buildDirectory.file('generated/build-identity/build_identity.json'))
+    doLast {
+        def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
+        out.parentFile.mkdirs()
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 109, versionName: '1.09-device-quest-rescue-fix']) + '\n'
+    }
+}
+tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }

@@ -14,7 +14,7 @@ final class SkillActionData {
     {"SK_전사_009", "드래곤모드", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "자기 대상", "기술"},
     {"SK_전사_010", "피닉스모드", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "자기 대상", "기술"},
     {"SK_전사_011", "적무기쳐내기", "ACTIVE", "FRONT", "1", "1", "PRESENTATION", "1", "0.14", "ADAPTED_MELEE_REACH_ORIGINAL_UNRESOLVED", "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.", "기술"},
-    {"SK_전사_012", "레스큐", "ACTIVE", "SINGLE", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.", "기술"},
+    {"SK_전사_012", "레스큐", "ACTIVE", "FRONT", "1", "1", "TAUNT", "1", "0.14", "ADAPTED_USER_V109_NEAR_TAUNT", "인접한 전방 몬스터를 도발하여 자신을 추적하게 함; 피해/투사체 없음. 근접 1타일은 사용자 지시에 따른 프로젝트 규칙이며 PDF에는 사거리 수치가 없음.", "기술"},
     {"SK_전사_013", "매드소울", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "ADAPTED_MELEE_REACH_ORIGINAL_UNRESOLVED", "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음.", "기술"},
     {"SK_전사_014", "완전방어", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "사용자 20261004: 캐릭터 모션은 점프; 원본 수비 자세에 프로젝트 수직 이동 적용. 자기 대상; 20260930 영상: 캐릭터를 감싸는 얇은 파란 구형 보호막, 적 피격 없음.", "기술"},
     {"SK_전사_015", "크래셔", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "ADAPTED_MELEE_REACH_ORIGINAL_UNRESOLVED", "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음.", "기술"},

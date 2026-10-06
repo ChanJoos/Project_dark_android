@@ -1,3 +1,17 @@
+device_quest_v109:
+  implementation: IMPLEMENTED
+  rejected_source: c48cd39d33aae4c608d122b1257518cbaf3ec828
+  rejected_device: DEVICE_FAILED_USER_REPORTED
+  build: PENDING_ACTIONS
+  native_runtime: PENDING_ACTIONS
+  physical_phone: PENDING
+  user_visual: PENDING
+  contract: docs/DEVICE_QUEST_V109.md
+  tests: [DeviceQuestRegressionTest, MillesMousePresentationTest, SkillAbilityRuntimeTest]
+  required_sources: [docs/DEVICE_QUEST_V109.md, docs/SKILL_ACTION_DECISIONS.csv, master/changes/DEVICE-QUEST-RESCUE-V109.json]
+  active_pr: 178
+  active_branch: codex/town-interiors-mobile-v86
+
 quest_runtime_v108:
   implementation: FOLLOW_UP_IN_PROGRESS
   previous_candidate_build: BUILD_VERIFIED_GITHUB_ACTIONS

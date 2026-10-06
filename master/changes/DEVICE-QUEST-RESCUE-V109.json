@@ -1,0 +1,14 @@
+{
+  "id": "DEVICE-QUEST-RESCUE-V109",
+  "status": "IMPLEMENTED_VERIFICATION_PENDING",
+  "source": "USER_DEVICE_REPORT_2026_10_06",
+  "originalFacts": [
+    "Rescue makes monsters attack caster; supplied PDF has no range",
+    "Master/source CSV unchanged"
+  ],
+  "adaptedDecisions": [
+    "Rescue FRONT reach1 minReach1 non-damaging TAUNT",
+    "Mouse display40px with common ground baseline59"
+  ],
+  "contract": "docs/DEVICE_QUEST_V109.md"
+}

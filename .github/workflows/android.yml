@@ -13,10 +13,13 @@ jobs:
     permissions:
       contents: write
     env:
+      PROJECT_DARK_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       ANDROID_HOME: /usr/local/lib/android/sdk
       ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Recover starter gear source manifests
         run: |
           python3 tools/collect_peasant_sources.py
@@ -113,8 +116,8 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V90 adapted Milles story quest and shared mouse AI
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.MillesMousePresentationTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
-      - name: Verify V108 quest actions and full campaign route audit
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
+      - name: Verify V109 phone-default quest actions and full campaign route audit
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceQuestRegressionTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
       - name: Verify V97 quest list, state filters, compact navigation and restart
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
       - name: Verify V99 equipment UI fonts, all modal input and wide native rendering
@@ -230,6 +233,7 @@ jobs:
         with:
           name: device-review-${{ github.sha }}
           path: |
+            app/build/reports/device-review/v109-*.png
             app/build/reports/device-review/v89-*.png
             app/build/reports/device-review/v90-*.png
             app/build/reports/device-review/v91-*.png
@@ -244,8 +248,11 @@ jobs:
           name: inn-v93-review-${{ github.sha }}
           path: app/build/reports/device-review/v93-*.png
           if-no-files-found: warn
-      - name: Build debug APK
-        run: gradle :app:assembleDebug --stacktrace
+      - name: Build and verify exact V109 debug APK
+        run: |
+          gradle :app:assembleDebug --stacktrace
+          python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v109_apk.py app/build/outputs/apk/debug/app-debug.apk
       - name: Upload focused V96 weapon and jump review
         if: always()
         uses: actions/upload-artifact@v4
@@ -264,7 +271,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PROJECT_DARK-debug-${{ github.sha }}
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/debug/BUILD_INFO.json
           if-no-files-found: error
           retention-days: 14
       - name: Upload focused V97 quest review
@@ -290,41 +299,5 @@ jobs:
             app/build/reports/device-review/v100-*.png
             app/build/reports/device-review/v101-*.png
           if-no-files-found: error
-      - name: Publish directly downloadable candidate APK
-        if: github.event_name == 'push' && github.ref == 'refs/heads/codex/town-interiors-mobile-v86'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          grep -q 'versionCode 104' app/build.gradle || exit 0
-          mkdir -p apk-delivery
-          cp app/build/outputs/apk/debug/app-debug.apk apk-delivery/PROJECT_DARK_V104.apk
-          sha256sum apk-delivery/PROJECT_DARK_V104.apk > apk-delivery/SHA256SUMS.txt
-          tag="candidate-v104-${GITHUB_SHA:0:8}"
-          python3 - <<'PYINFO'
-          import json,os,pathlib,hashlib,datetime
-          p=pathlib.Path('apk-delivery/PROJECT_DARK_V104.apk')
-          report={'sourceCommit':os.environ['GITHUB_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'candidate':True,'versionCode':104,'apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'apkBytes':p.stat().st_size,'builtSeoul':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'verification':'Full configured CI and native runtime gates passed. Physical phone and user visual acceptance pending.'}
-          pathlib.Path('apk-delivery/BUILD_INFO.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-          PYINFO
-          gh release create "$tag" apk-delivery/PROJECT_DARK_V104.apk apk-delivery/SHA256SUMS.txt apk-delivery/BUILD_INFO.json --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V104 NPC 공통 캐릭터·새 복장 후보' --notes "구 밀레스 분수공원·정원·물가 배치, 전체 장식 정리·발 기준 가림·충돌 일치. Source: $GITHUB_SHA. Native CI verified; phone/user review pending."
-      - name: Publish exact V108 device-fix candidate
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'codex/town-interiors-mobile-v86'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          set -euo pipefail
-          grep -q 'versionCode 108' app/build.gradle
-          git fetch --no-tags --depth=1 origin "$SOURCE_SHA"
-          test "$(git rev-parse HEAD^{tree})" = "$(git rev-parse "$SOURCE_SHA^{tree}")"
-          mkdir -p apk-delivery
-          cp app/build/outputs/apk/debug/app-debug.apk apk-delivery/PROJECT_DARK_V108.apk
-          python3 - <<'PY'
-          import datetime,hashlib,json,os,pathlib
-          p=pathlib.Path('apk-delivery/PROJECT_DARK_V108.apk')
-          info={'sourceCommit':os.environ['SOURCE_SHA'],'runId':os.environ['GITHUB_RUN_ID'],'candidate':True,'versionCode':108,'versionName':'1.08-quest-runtime-fixes','apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'apkBytes':p.stat().st_size,'builtSeoul':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'scope':'M07 GameView quickquest from Milles through travel guide, forest entry, objective target, approach and first counted autoattack; three visible Shortblade quickslot uses counted from accepted ACTION_STARTED events (healing still requires positive applied HP restoration); four-direction mouse idle/walk A/walk B/attack animations connected to live inn/field AI states with normalized frame bounds and anchor. Five 23-quest campaign routes retain their resolver/progression simulation audit. Exact PR-head/tree equality checked before APK publication.','phoneAcceptance':'PENDING','userVisualAcceptance':'PENDING'}
-          pathlib.Path('apk-delivery/BUILD_INFO.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n')
-          PY
-          tag="candidate-v108-${SOURCE_SHA:0:8}"
-          gh release create "$tag" apk-delivery/PROJECT_DARK_V108.apk apk-delivery/BUILD_INFO.json --repo "$GITHUB_REPOSITORY" --target "$SOURCE_SHA" --prerelease --title 'PROJECT DARK V108 퀘스트·쥐 동작 검증 후보' --notes "정확한 PR head $SOURCE_SHA에서 생성. M07 퀵퀘스트 전체 경로/첫 처치, 숏블레이드 3회 실제 슬롯 사용 카운트, 네 방향 쥐 idle/walk/attack 애니메이션 native regression 포함. 전체 Android CI 통과 후 생성. 실제 휴대폰 동작·시각 확인은 별도 대기 중."
+      # campaign-review.yml is the single V109 release publisher. This full
+      # suite uploads its independent APK/identity and never races a release tag.

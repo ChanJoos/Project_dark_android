@@ -9,6 +9,7 @@ final class InnMouseRenderer {
   private final EnumMap<CharacterRenderer.Direction,Bitmap[]> images=new EnumMap<>(CharacterRenderer.Direction.class);
   private final Paint p=new Paint();
   private static final String[] ACTIVITY={"idle","walk_a","walk_b","attack"};
+  static final float FRAME_SIZE=40f,GROUND_BASELINE=59f;
   InnMouseRenderer(Context context){
     p.setFilterBitmap(false);p.setAntiAlias(false);
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
@@ -25,7 +26,8 @@ final class InnMouseRenderer {
   void draw(Canvas c,RuntimeState.Monster mouse,float x,float y){
     Bitmap b=images.get(mouse.visualFacing.presentation())[activityFrame(mouse)];
     p.setColor(Color.WHITE);p.setColorFilter(mouse.hitFlash>0?new PorterDuffColorFilter(0xffe9d6b1,PorterDuff.Mode.SRC_ATOP):null);
-    c.drawBitmap(b,null,new RectF(x-32f,y-64f,x+32f,y),p);p.setColorFilter(null);
+    float top=y-GROUND_BASELINE*FRAME_SIZE/64f;
+    c.drawBitmap(b,null,new RectF(x-FRAME_SIZE/2f,top,x+FRAME_SIZE/2f,top+FRAME_SIZE),p);p.setColorFilter(null);
   }
 
   static int activityFrame(RuntimeState.Monster mouse){return mouse.attackPrimed||mouse.attackVisualRemaining>0f?3:mouse.isMoving?1+(((int)(mouse.animationClock*8f)&1)):0;}
