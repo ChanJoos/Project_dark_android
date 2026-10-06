@@ -1,3 +1,7 @@
+# V110 current beginner acquisition override
+
+Fresh job choice and J01 no longer award/assign the first technique automatically. T02 requires actual paid acquisition, T03 actual real-slot registration, and Cleric starts with attainable basic heal001. Imported V109 route/skills and later J02/J03 adapted mentor awards remain preserved. See [ONBOARDING_V110_CONTRACT.md](ONBOARDING_V110_CONTRACT.md). Previous V105 beginner override below is historical for fresh saves.
+
 # V105 approved campaign acquisition override
 
 Explicit Lv40 implementation approval adopts first job after training/Lv3 and matching-job normal use. Core skills are awarded without Gold/materials by class practice accept transactions; J01/J02/J03 each require3actual positive-effect actions, not casts/misses/test-mode actions. Cleric uses013HolyBolt,052HolyShock and005Curano; original catalog IDs preserved. Existing paid optional learning remains transactional and old learned/slot records remain stored. Explicit skill-test mode does not count campaign practice or award normal first-job skill data. No claim that these new mobile gates/rewards are original-server facts. See verification/LV40_IMPLEMENTATION_SCOPE.md.

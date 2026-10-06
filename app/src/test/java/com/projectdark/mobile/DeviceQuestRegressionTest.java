@@ -68,7 +68,7 @@ public class DeviceQuestRegressionTest {
     ((GrowthQuest2)TownInteriorTest.field(v,"quest2")).restore(GrowthQuest2.State.COMPLETED,3);
     r.grantAdaptedReward(22800,350);assertTrue(r.chooseInitialJob("WARRIOR"));
     SkillBook book=TownInteriorTest.field(v,"skillBook");CampaignProgress c=r.campaign();c.syncOpening(true,true);
-    assertTrue(c.accept("M03",r,book));assertTrue(c.claim("M03",r));assertTrue(c.accept("J01_WARRIOR",r,book));
+    assertTrue(c.accept("M03",r,book));assertTrue(c.claim("M03",r));assertTrue(c.restore(c.snapshot().put("version",1)));assertTrue(c.accept("J01_WARRIOR",r,book));
     assertTrue(book.assign(0,"SK_전사_001"));TownInteriorTest.call(v,"saveSkillSlots");
     for(int use=0;use<3;use++){
       s=TownInteriorTest.field(v,"state");r=s.rpg();c=r.campaign();RuntimeState.Monster target=s.monsters().get(0);

@@ -9,7 +9,7 @@ permissions:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     permissions:
       contents: write
     env:
@@ -117,7 +117,7 @@ jobs:
       - name: Verify V90 adapted Milles story quest and shared mouse AI
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.MillesMousePresentationTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
       - name: Verify V109 phone-default quest actions and full campaign route audit
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceQuestRegressionTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.OnboardingUiTest --tests com.projectdark.mobile.DeviceQuestRegressionTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
       - name: Verify V97 quest list, state filters, compact navigation and restart
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
       - name: Verify V99 equipment UI fonts, all modal input and wide native rendering
@@ -299,5 +299,5 @@ jobs:
             app/build/reports/device-review/v100-*.png
             app/build/reports/device-review/v101-*.png
           if-no-files-found: error
-      # campaign-review.yml is the single V109 release publisher. This full
+      # campaign-review.yml is the single V110 release publisher. This full
       # suite uploads its independent APK/identity and never races a release tag.

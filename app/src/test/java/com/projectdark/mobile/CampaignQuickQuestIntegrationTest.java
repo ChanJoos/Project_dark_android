@@ -30,7 +30,7 @@ public final class CampaignQuickQuestIntegrationTest {
     r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
     CampaignProgress campaign=r.campaign();
     org.json.JSONObject state=campaign.snapshot();
-    state.put("complete",new org.json.JSONArray().put("M01").put("M02").put("M03").put("J01_WARRIOR"));
+    state.put("version",1);state.put("complete",new org.json.JSONArray().put("M01").put("M02").put("M03").put("J01_WARRIOR"));
     state.put("active","M04");assertTrue(campaign.restore(state));
     ((F5mAdaptedPrologueQuest)TownInteriorTest.field(view,"f5mQuest")).restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);
     ((GrowthQuest2)TownInteriorTest.field(view,"quest2")).restore(GrowthQuest2.State.COMPLETED,3);
@@ -53,7 +53,7 @@ public final class CampaignQuickQuestIntegrationTest {
     RuntimeState runtime=TownInteriorTest.field(view,"state");RpgProgressionState r=runtime.rpg();
     r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
     CampaignProgress campaign=r.campaign();org.json.JSONObject saved=campaign.snapshot();
-    saved.put("complete",new org.json.JSONArray().put("M01").put("M02").put("M03").put("J01_WARRIOR").put("M04").put("M05").put("M06"));
+    saved.put("version",1);saved.put("complete",new org.json.JSONArray().put("M01").put("M02").put("M03").put("J01_WARRIOR").put("M04").put("M05").put("M06"));
     saved.put("active","M07");assertTrue(campaign.restore(saved));
     TownInteriorTest.tap(view,80,150);
     assertTrue("AUTO is visibly armed as soon as a kill quest is selected",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
@@ -80,7 +80,7 @@ public final class CampaignQuickQuestIntegrationTest {
     RuntimeState runtime=TownInteriorTest.field(view,"state");RpgProgressionState r=runtime.rpg();
     r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
     SkillBook book=TownInteriorTest.field(view,"skillBook");assertFalse("quest input uses production skill rules, not skill-test mode",book.testAccess());CampaignProgress campaign=r.campaign();campaign.syncOpening(true,true);
-    assertTrue(campaign.accept("M03",r,book));assertTrue(campaign.claim("M03",r));
+    assertTrue(campaign.accept("M03",r,book));assertTrue(campaign.claim("M03",r));assertTrue(campaign.restore(campaign.snapshot().put("version",1)));
     assertTrue(campaign.accept("J01_WARRIOR",r,book));
     RuntimeState.Monster target=null;for(RuntimeState.Monster m:runtime.monsters())if(m.alive){target=m;break;}
     assertNotNull("test needs an actual spawned target",target);

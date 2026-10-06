@@ -289,7 +289,7 @@ public final class RpgProgressionState {
   public String attackElement(){for(String id:equipmentBySlot.values()){ItemDefinition d=items.get(id);if(d!=null&&d.attackElement!=null)return d.attackElement;}return "NONE";}
   public String defenseElement(){for(String id:equipmentBySlot.values()){ItemDefinition d=items.get(id);if(d!=null&&d.defenseElement!=null)return d.defenseElement;}return "NONE";}
   public void restoreBaseResources(int hp,int mp){baseMaxHp=Math.max(1,hp);baseMaxMp=Math.max(0,mp);}
-  public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;return true;}
+  public boolean spendStat(String stat){if(statPoints<=0)return false;if("STR".equals(stat))str++;else if("INT".equals(stat))intel++;else if("WIS".equals(stat))wis++;else if("CON".equals(stat))con++;else if("DEX".equals(stat))dex++;else return false;statPoints--;campaign.record("STAT",stat);return true;}
   public void restoreStats(int s,int i,int w,int c,int d,int points){str=Math.max(3,s);intel=Math.max(3,i);wis=Math.max(3,w);con=Math.max(3,c);dex=Math.max(3,d);statPoints=Math.max(0,points);}
   private long bankGold;
   private final Map<String,Integer> bankInventory=new LinkedHashMap<>();
@@ -318,7 +318,7 @@ public final class RpgProgressionState {
     if(price<0||gold<price||!items.containsKey(itemId))return false;
     AutoLootResult added=autoLootResolvedItem(itemId,1);
     if(added!=AutoLootResult.LOOTED)return false;
-    gold-=price;campaign.bought();return true;
+    gold-=price;campaign.bought(itemId);return true;
   }
   /** Atomic project skill-acquisition payment: validate every cost before mutating any balance. */
   public boolean paySkillLearningCost(long price,Map<String,Integer> materials){
@@ -432,15 +432,16 @@ public final class RpgProgressionState {
    * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
    */
   public boolean isConsumable(String itemId){return B5_SMALL_HP_POTION_ITEM_ID.equals(itemId)||"IT_REAGENT_CURUM".equals(itemId)||"IT_REAGENT_EXCURANUM".equals(itemId)||"IT_B_MP_POTION".equals(itemId);}
+  public UseResult useQuickConsumable(String id,RuntimeState runtime){UseResult result=useConsumable(id,runtime);if(result==UseResult.USED)campaign.quickUse(id,this);return result;}
   public UseResult useConsumable(String itemId,RuntimeState runtime){
     Integer owned=inventory.get(itemId);if(owned==null||owned<=0)return UseResult.ITEM_NOT_OWNED;
     if(!isConsumable(itemId)||runtime==null)return UseResult.NOT_CONSUMABLE;
-    if("IT_B_MP_POTION".equals(itemId)){if(runtime.player().mp>=runtime.player().maxMp)return UseResult.NO_EFFECT;runtime.player().mp=Math.min(runtime.player().maxMp,runtime.player().mp+100);if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);campaign.healed();return UseResult.USED;}
+    if("IT_B_MP_POTION".equals(itemId)){if(runtime.player().mp>=runtime.player().maxMp)return UseResult.NO_EFFECT;runtime.player().mp=Math.min(runtime.player().maxMp,runtime.player().mp+100);if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);campaign.healed(itemId);return UseResult.USED;}
     if(runtime.player().hp>=runtime.player().maxHp)return UseResult.NO_EFFECT;
     int amount="IT_REAGENT_EXCURANUM".equals(itemId)?10000:"IT_REAGENT_CURUM".equals(itemId)?100:B5_SMALL_HP_POTION_HEAL;
     runtime.player().hp=Math.min(runtime.player().maxHp,runtime.player().hp+amount);
     if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);
-    campaign.healed();return UseResult.USED;
+    campaign.healed(itemId);return UseResult.USED;
   }
   public boolean isRecall(String id){return RECALL_MILLES_ITEM_ID.equals(id);}
   public UseResult useMillesRecall(RuntimeState runtime){int owned=inventory.getOrDefault(RECALL_MILLES_ITEM_ID,0);if(owned<=0)return UseResult.ITEM_NOT_OWNED;if(runtime==null||!runtime.player().alive)return UseResult.NO_EFFECT;if(owned==1)inventory.remove(RECALL_MILLES_ITEM_ID);else inventory.put(RECALL_MILLES_ITEM_ID,owned-1);return UseResult.USED;}
@@ -494,7 +495,7 @@ public final class RpgProgressionState {
       removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage.FULL_BODY);
     }
     equipmentBySlot.put(def.equipSlot,itemId);
-    return EquipResult.EQUIPPED;
+    campaign.record("EQUIP",itemId);return EquipResult.EQUIPPED;
   }
 
   private void removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage coverage){

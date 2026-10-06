@@ -1,3 +1,11 @@
+## 2026-10-06 — V109 device accepted; V110 onboarding refinement in progress
+
+User confirmed the delivered V109 functions work, after testing to Lv11: DEVICE_VERIFIED_USER_REPORTED for the reported AUTO/Shortblade/Rescue/mouse scope. V109 source44d19c1e / run37408187292 / APK89dada26 remains the accepted behavior baseline. This does not imply all other game content is device or visually accepted.
+
+Latest instruction: split purchase/equip/sell and all core learning actions; teach stats, actual skill learning/registration; spread rewards so essentials finish at Lv11; improve journal/UI. Implementation contract: [ONBOARDING_V110_CONTRACT.md](ONBOARDING_V110_CONTRACT.md). Added fresh 16-step curriculum and ten one-action lessons, normal EXP catch-up milestones ending378000, manual first learning, own-route chapter/method journal, bigger quickquest, physical shop/product guidance, legacy route import without restarting existing Lv11 saves. Original Master/source/EXP curve/assets preserved. Existing branch/PR178, no main merge or new branch. Local diff/master gates passed; exact native/build/source/APK verification IN_PROGRESS. No new APK verification or phone acceptance claim yet.
+
+Next: exact-SHA CI and all5 normal routes plus real learning/trade/navigation/save UI; inspect final native screenshots; verify packaged assets/identity/hash; publish candidate V110; update exact evidence before delivery.
+
 ## 2026-10-06 — V109 verified native candidate; phone acceptance pending
 
 Exact APK source `44d19c1e8dc1ec6fbab51030e6c1188f7b90ab97`; focused Actions `37408187292` SUCCESS, 82 tests / 0 failures / 0 errors / 0 skipped. Rejected V108 `c48cd39d33aae4c608d122b1257518cbaf3ec828` reproduced four assertion failures (opening/growth AUTO, startup-preview Shortblade count, distant Rescue). Full pipeline is tracked separately in the exact [verification record](verification/DEVICE_QUEST_V109_BUILD.json).
