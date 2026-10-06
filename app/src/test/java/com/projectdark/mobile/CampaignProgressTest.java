@@ -36,7 +36,7 @@ public class CampaignProgressTest {
    state.enterMillesFromField(WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y);growth.unlockIfPrologueCompleted(opening);assertTrue(growth.accept());
    for(RuntimeState.Monster m:new ArrayList<>(state.monsters()))if(m.id.startsWith("combat_dummy_")){kill(state,session,book,m,null);for(CombatLedger.Event e:state.ledger().snapshot())growth.consume(e);}
    assertTrue(growth.turnIn(r));r.campaign().syncOpening(true,true);assertTrue(r.chooseInitialJob(job));
-   assertTrue("exercise old route fixture for existing compatibility regression",r.campaign().restore(r.campaign().snapshot().put("version",3)));
+   assertTrue("fresh characters use the V111 four-region route",r.campaign().restore(r.campaign().snapshot()));
    int completed=2,kills=4;long skillActions=0;
    for(int guard=0;guard<1500&&!r.campaign().finished();guard++){
     CampaignProgress.Def d=r.campaign().next(r);assertNotNull(job,d);if(!d.id.startsWith("T")&&!d.id.startsWith("J01")&&!d.id.equals("M03"))allocate(r,job);state.applyDerivedGrowth();

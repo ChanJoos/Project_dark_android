@@ -24,15 +24,15 @@ public class QuestJournalTest {
   void capture(GameView v,String name)throws Exception{Bitmap b=Bitmap.createBitmap(v.getWidth(),v.getHeight(),Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));File f=new File("build/reports/device-review/v97-"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}b.recycle();}
   void completeOpening(GameView v)throws Exception{F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");q.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);((GrowthQuest2)TownInteriorTest.field(v,"quest2")).unlockIfPrologueCompleted(q);}
   @Test public void rightIconListsEveryQuestAndAvailableFilterOnlyShowsReceivableQuest()throws Exception{
-    GameView v=start();assertEquals(29,rows(v).size());assertEquals(1,((QuestJournalModel)TownInteriorTest.field(v,"questJournalModel")).available(rows(v)));
-    gesture(v,808,28);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");assertEquals(29,w.visible(rows(v)).size());capture(v,"all-available");
+    GameView v=start();assertEquals(43,rows(v).size());assertEquals(1,((QuestJournalModel)TownInteriorTest.field(v,"questJournalModel")).available(rows(v)));
+    gesture(v,808,28);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");assertEquals(43,w.visible(rows(v)).size());capture(v,"all-available");
     gesture(v,365,124);assertEquals(QuestJournalWindow.Filter.AVAILABLE,w.filter);assertEquals(1,w.visible(rows(v)).size());assertEquals(F5mAdaptedPrologueQuest.QUEST_ID,w.selected(rows(v)).id);capture(v,"available-only");
     gesture(v,540,124);assertTrue(w.visible(rows(v)).isEmpty());capture(v,"empty-progress");gesture(v,818,74);assertFalse((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
   }
   @Test public void lockedConditionsAndLastQuestStayReachableWithoutNavigatingOrRewarding()throws Exception{
     GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;long gold=s.rpg().gold();gesture(v,808,28);QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");
     gesture(v,250,230);assertEquals(GrowthQuest2.QUEST_ID,w.selected(rows(v)).id);assertEquals(QuestJournalModel.Status.LOCKED,w.selected(rows(v)).status);capture(v,"locked-prerequisite");gesture(v,680,443);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
-    List<QuestJournalModel.Row> all=rows(v);for(int i=0;i<(all.size()+3)/4;i++)gesture(v,355,450);assertEquals("journal can scroll to its final five rows",Math.max(0,all.size()-5),w.offset);gesture(v,250,394);assertEquals("CAMPAIGN_M20",w.selected(rows(v)).id);capture(v,"last-planned-quest");gesture(v,680,443);
+    List<QuestJournalModel.Row> all=rows(v);for(int i=0;i<(all.size()+3)/4;i++)gesture(v,355,450);assertEquals("journal can scroll to its final five rows",Math.max(0,all.size()-5),w.offset);gesture(v,250,394);assertEquals("CAMPAIGN_D04",w.selected(rows(v)).id);capture(v,"last-planned-quest");gesture(v,680,443);
     assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);assertEquals(gold,s.rpg().gold().longValue());assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
     gesture(v,720,124);assertTrue(w.visible(rows(v)).isEmpty());capture(v,"empty-completed");
   }
