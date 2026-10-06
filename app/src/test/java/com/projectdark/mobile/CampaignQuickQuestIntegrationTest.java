@@ -95,7 +95,12 @@ public final class CampaignQuickQuestIntegrationTest {
       assertTrue("tap starts and resolves the visible Shortblade quickslot action #"+(use+1),book.proficiency("SK_전사_001")>previousProficiency);
       previousProficiency=book.proficiency("SK_전사_001");
       assertEquals("each accepted Shortblade action increments the active quest immediately",use+1,campaign.count(CampaignProgress.find("J01_WARRIOR"),r));
-      TownInteriorTest.tick(view,15); // Let the live skill animation/cooldown settle before the next physical slot tap.
+      if(use<2){
+        RuntimeCombatSession session=TownInteriorTest.field(view,"combatSession");
+        for(int frame=0;frame<240&&session.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,"SK_전사_001")>0f;frame++)TownInteriorTest.tick(view,1);
+        assertEquals("wait for the real Shortblade cooldown before the next quickslot tap",0f,session.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,"SK_전사_001"),.01f);
+        TownInteriorTest.tick(view,15); // Let the live skill animation settle before the next physical slot tap.
+      }
     }
     CampaignProgress.Def quest=CampaignProgress.find("J01_WARRIOR");
     assertEquals("quest copy matches the requested action count","숏블레이드 사용 3회",campaign.objective(quest));
