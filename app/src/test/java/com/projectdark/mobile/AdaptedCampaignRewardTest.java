@@ -31,7 +31,7 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(16,c.entries().size());assertNull(c.find("POTE_SPIRIT"));
+    assertEquals(17,c.entries().size());assertNull(c.find("POTE_SPIRIT"));
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
   }
   @Test public void firstJobChoiceIsLevelGatedOneTimeAndGrantsRoleGear(){
