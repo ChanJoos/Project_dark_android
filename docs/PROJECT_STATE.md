@@ -1,6 +1,10 @@
-## 2026-10-06 — V109 device-default repair, verification pending
+## 2026-10-06 — V109 verified native candidate; phone acceptance pending
 
-Rejected V108 `c48cd39d33aae4c608d122b1257518cbaf3ec828` is DEVICE_FAILED_USER_REPORTED. Confirmed source gaps: legacy opening/growth navigation disabled AUTO; default MainActivity preview discarded quest skill uses; Rescue TAUNT had no AI consumer. V109 addresses these paths, tests actual startup/save/restart, and reduces mouse drawing37.5% with shared ground anchor. Rescue is non-damaging adjacent adapted taunt, original range unknown. Four failure-reproduction tests run against rejected V108 before the same fixed tests. Exact APK source/run identity and single unique publisher added. IMPLEMENTED; BUILD/NATIVE pending; PHONE/USER_VISUAL pending. See [acceptance contract](DEVICE_QUEST_V109.md). Existing PR178 only; no main merge.
+Exact APK source `44d19c1e8dc1ec6fbab51030e6c1188f7b90ab97`; focused Actions `37408187292` SUCCESS, 82 tests / 0 failures / 0 errors / 0 skipped. Rejected V108 `c48cd39d33aae4c608d122b1257518cbaf3ec828` reproduced four assertion failures (opening/growth AUTO, startup-preview Shortblade count, distant Rescue). Full pipeline is tracked separately in the exact [verification record](verification/DEVICE_QUEST_V109_BUILD.json).
+
+IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC. Actual MainActivity defaults, saved growth, Shortblade use1→restart→uses2/3→REPORT, natural inn kill/report and live non-damaging adjacent Rescue are verified. Mouse draw64→40px (37.5% smaller) shares a ground anchor and all16 source idle/walk/attack frames. Six native images reviewed; APK release downloaded and source/run/version/CRC/hash checked, with original47 equipment files and all16 mouse frames preserved. PHONE and USER_VISUAL remain PENDING; do not mark a CI screenshot as device acceptance.
+
+Built 2026-10-06 12:22:04 KST; APK SHA256 `89dada263f76c5084e02222bc139192a4cf8dbbc7106e3c85ac8de38c342143b`, 53,041,399 bytes. APK artifact11388746060; native artifact11388331641. [V109 APK](https://github.com/ChanJoos/Project_dark_android/releases/download/candidate-v109-44d19c1e-37408187292-1/PROJECT_DARK_V109.apk). Active PR178, branch codex/town-interiors-mobile-v86; main unchanged. This later checkpoint changes documentation only; the APK source remains44d19c1e. Next check is exact-candidate phone input/visual acceptance, not rebuilding an old V108. [Acceptance contract](DEVICE_QUEST_V109.md).
 
 ## 2026-10-06 — V108 DEVICE_FAILED_USER_REPORTED; current repair in progress
 

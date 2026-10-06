@@ -1,6 +1,6 @@
 # V109 device quest and Rescue repair
 
-Rejected V108 source: `c48cd39d33aae4c608d122b1257518cbaf3ec828` (user device failures). This supersedes prior CI-only acceptance. Implementation is complete; BUILD and NATIVE_RUNTIME pending Actions; PHONE and USER_VISUAL pending.
+Rejected V108 source: `c48cd39d33aae4c608d122b1257518cbaf3ec828` (user device failures). This supersedes prior CI-only acceptance. IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC. Focused Actions37408187292: all82 tests passed, zero failures/errors/skips; rejected source reproduced four assertion failures. Actual release hash/identity/CRC, original47 equipment files and all16 mouse frames verified. Six native images inspected. Full pipeline result: docs/verification/DEVICE_QUEST_V109_BUILD.json. PHONE and USER_VISUAL pending.
 
 ## Root causes and acceptance
 
