@@ -151,7 +151,7 @@ public final class PoteFieldRenderer {
     if(c==null||w==null)return;drawBelow(c,w,Float.POSITIVE_INFINITY);
   }
 
-  public void drawPortalWorld(Canvas c,float x,float y){Bitmap b=bitmap("world/portal/portal_reagent_shop.webp");if(b!=null){pixel.setAlpha(255);pixel.setColor(0xffffffff);c.drawBitmap(b,null,new RectF(x-32,y-22,x+32,y+10),pixel);}}
+  public void drawPortalWorld(Canvas c,float x,float y){Bitmap b=bitmap("assets/world/portal/portal_reagent_shop.webp");if(b!=null){pixel.setAlpha(255);pixel.setColor(0xffffffff);c.drawBitmap(b,null,new RectF(x-32,y-22,x+32,y+10),pixel);}}
   /** Actor bounds/callbacks use world feet. Each tree fades only if its foreground pixels hide an actor. */
   public static final class ActorDraw {
     public final float x,y,height,width; public final Runnable draw;
@@ -325,7 +325,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/"))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);

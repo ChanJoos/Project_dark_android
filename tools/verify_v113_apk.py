@@ -19,7 +19,7 @@ with zipfile.ZipFile(apk_path) as apk:
         assert apk.read(packaged) == path.read_bytes(), path
     for path in pathlib.Path('assets/pote/production/reference_v113').glob('*'):
         assert apk.read('assets/reference_v113/'+path.name)==path.read_bytes(), path
-    assert apk.read('assets/world/portal/portal_reagent_shop.webp')==pathlib.Path('app/src/main/assets/world/portal/portal_reagent_shop.webp').read_bytes()
+    assert apk.read('assets/assets/world/portal/portal_reagent_shop.webp')==pathlib.Path('app/src/main/assets/assets/world/portal/portal_reagent_shop.webp').read_bytes()
     frames = list(pathlib.Path('assets/milles/production/interiors/v108').glob('field_mouse_*.png'))
     assert len(frames) == 16
     for path in frames:
