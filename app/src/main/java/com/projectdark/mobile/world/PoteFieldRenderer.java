@@ -229,13 +229,14 @@ public final class PoteFieldRenderer {
       if(k==0&&side==1)surface.moveTo(q.x,q.y);else surface.lineTo(q.x,q.y);
     }
     Bitmap shore=bitmap("reference_v113/shore_material.png");
-    if(shore!=null){BitmapShader bank=new BitmapShader(shore,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);Matrix bp=new Matrix();bp.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());bank.setLocalMatrix(bp);pixel.setShader(bank);pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(17);pixel.setStrokeJoin(Paint.Join.ROUND);c.drawPath(surface,pixel);pixel.setShader(null);}
+    if(shore!=null){BitmapShader bank=new BitmapShader(shore,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);Matrix bp=new Matrix();bp.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());bank.setLocalMatrix(bp);pixel.setShader(bank);pixel.setColor(0xffffffff);pixel.setAlpha(105);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(11);pixel.setStrokeJoin(Paint.Join.ROUND);c.drawPath(surface,pixel);pixel.setShader(null);}
     surface.close();pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setShader(shader);pixel.setStyle(Paint.Style.FILL);c.drawPath(surface,pixel);pixel.setShader(null);
-    // Source cutout shore stones stagger along both banks; avoid repeating identical outlined tiles.
-    Bitmap rock=bitmap("reference_v113/shore_rock.png");if(rock!=null)for(int i=1;i<nodes.length-1;i+=7+(i%3)){
+    // Independent bank clusters: no mirrored pairs or evenly spaced stones.
+    Bitmap rock=bitmap("reference_v113/shore_rock.png");if(rock!=null)for(int i=1;i<nodes.length-1;i++){
       float[] a=nodes[i],before=nodes[i-1],after=nodes[i+1];float dx=after[0]-before[0],dy=after[1]-before[1],len=Math.max(1,(float)Math.hypot(dx,dy));
-      for(int side=-1;side<=1;side+=2){float offset=a[2]+1+(i%3)*2;WorldCameraTransform.Point q=w.worldToScreen(a[0]-dy/len*offset*side,a[1]+dx/len*offset*side);float scale=.75f+(i%5)*.09f;
-        c.drawBitmap(rock,null,new RectF(q.x-24*scale,q.y-13*scale,q.x+24*scale,q.y+14*scale),pixel);
+      for(int side=-1;side<=1;side+=2){int seed=(i*1103515245+side*12345)&0x7fffffff;if(seed%13>3)continue;
+        float offset=a[2]+2+(seed%7),jitter=((seed/13)%17)-8;WorldCameraTransform.Point q=w.worldToScreen(a[0]-dy/len*offset*side+dx/len*jitter,a[1]+dx/len*offset*side+dy/len*jitter);float scale=.62f+((seed/31)%9)*.08f;
+        c.save();c.rotate(((seed/7)%19)-9,q.x,q.y);if((seed&1)==0){c.translate(q.x*2,0);c.scale(-1,1);}c.drawBitmap(rock,null,new RectF(q.x-24*scale,q.y-13*scale,q.x+24*scale,q.y+14*scale),pixel);c.restore();
       }
     }
     pixel.setColor(0xffffffff);pixel.setAlpha(255);
