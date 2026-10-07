@@ -12,6 +12,7 @@ jobs:
     env:
       PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
       ANDROID_HOME: /usr/local/lib/android/sdk
+      PROJECT_DARK_SIDE_BY_SIDE: '1'
     steps:
       - uses: actions/checkout@v4
       - name: Recover starter gear source manifests
@@ -105,5 +106,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V114.apk
-          gh release create "candidate-v114-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V114.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V114 포테 원작 영상 기반 지형 · 나무 가림 · 자동 사냥 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Physical phone and user visual acceptance pending."
+          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V114_TEST.apk
+          gh release create "candidate-v114-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V114.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V114 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v114test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."

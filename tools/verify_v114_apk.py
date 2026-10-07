@@ -31,7 +31,9 @@ with zipfile.ZipFile(apk_path) as apk:
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
 assert "versionCode='114'" in badging and "versionName='1.14-forest-performance-ui'" in badging, badging[:300]
-info = dict(identity, apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
+expected_package = 'com.projectdark.mobile.v114test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
+assert "package: name='"+expected_package+"'" in badging
+info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v114test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
             scope='Reference-derived forest trees/earth/current; per-actor depth and foreground canopy fade; map-wide quest-filtered AUTO; 72/96/108 population, 6-8s adapted respawn; preserved campaign/save/body',
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance='PENDING')

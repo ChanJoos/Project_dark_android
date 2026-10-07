@@ -5,6 +5,8 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v114test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V114 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
         versionCode 114
