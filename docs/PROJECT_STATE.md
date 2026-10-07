@@ -1,3 +1,13 @@
+## 2026-10-06 — V111 implementation / CI pending
+
+V110 merge `00b094c76add19d7c5fc1292365cf208882bf3a5`를 기준으로 `codex/pote-abcd-lv11-41`에서 V111 후보를 작업 중이다. A/B/C/D 맵, 28개 A01–D04 의뢰, Lv11 출발→Lv41 보상 경로, 11개 일반 몬스터 분배를 구현했다. 맨티스용 4방향×idle/walk/attack 12포즈를 생성·분리해 D 보스에 연결하고 provenance/hash를 기록했다. 강력형 몬스터는 경로에 넣지 않았다. 버전 111 APK 검증 스크립트와 CI 테스트도 추가했다. `git diff --check`, Master 정합성 검증은 통과. 로컬 Gradle/Android SDK가 없어 Android 검증은 아직 실행 전이다. 이후 원격 CI가 전체 테스트와 exact APK를 통과하면 PR 검토/승인/merge를 완료하고, 실기기·사용자 시각 승인은 별도로 표시한다.
+
+## 2026-10-06 — Pote A/B/C/D Lv11–41 candidate implemented; build not verified
+
+V110 PR #178 merge is `00b094c76add19d7c5fc1292365cf208882bf3a5`. Active branch `codex/pote-abcd-lv11-41` is based on that exact main commit. Implemented locally: distinct A/B/C bounds, grids, trails/creeks/props/collision and ordinary species pools (A four Pamfets; B Treant/Antlion/Gnoll/Lycan; C Wolf Rider/Ant Giant/Silver Wolf), Piet safe hub/transit, and a separate D single-Mantis adapted encounter. The route contains the V110 M06 Lv10→11 handoff in Milles, A01 forest entry at Lv11, and 28 A01–D04 forest quests. V1–V3 migration preserves completed records and keeps historical `MAP_POTE_04` separate from D. D03's one-time turn-in awards the remaining EXP to Lv41 and a three-line gold ring directly to inventory, adapted from the recorded Mantis drop. Strong/elite variants and identity-unverified spirits are excluded. Mantis HP/AI/reward and presentation are adapted; runtime art is still a generic placeholder.
+
+`git diff --check` PASS; `python3 tools/validate_master.py` PASS (104 preserved findings, no errors). The native progression test now expects 44 route entries, keeps the Lv10→11 handoff at Milles before the A01 Lv11 forest entry, exercises D03 on boss D, and checks the one-time ring after save restore. Android tests/build have not run: no local Gradle, wrapper or cached launcher; there is no APK. IMPLEMENTED CANDIDATE; BUILD/RUNTIME/DEVICE/USER VISUAL are NOT VERIFIED. Source modifications are uncommitted and unpushed.
+
 ## 2026-10-06 — V110 guided onboarding candidate verified
 
 IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC. Exact APK source `fadd41a7c947a561b1b3e4a2a0315010019c6c7a`; focused Actions `37415043124` SUCCESS: **96 tests, zero failures/errors/skips**. Full push `37415043085` and PR `37415047650` both SUCCESS; full push has 24 successful Gradle invocations. [Exact evidence](verification/ONBOARDING_V110_BUILD.json).

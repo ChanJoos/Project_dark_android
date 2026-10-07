@@ -1,3 +1,19 @@
+## 2026-10-06 — V111 implementation / CI pending
+
+V110 merge `00b094c76add19d7c5fc1292365cf208882bf3a5`를 기준으로 `codex/pote-abcd-lv11-41`에서 V111 후보를 작업 중이다. A/B/C/D 맵, 28개 A01–D04 의뢰, Lv11 출발→Lv41 보상 경로, 11개 일반 몬스터 분배를 구현했다. 맨티스용 4방향×idle/walk/attack 12포즈를 생성·분리해 D 보스에 연결하고 provenance/hash를 기록했다. 강력형 몬스터는 경로에 넣지 않았다. 버전 111 APK 검증 스크립트와 CI 테스트도 추가했다. `git diff --check`, Master 정합성 검증은 통과. 로컬 Gradle/Android SDK가 없어 Android 검증은 아직 실행 전이다. 이후 원격 CI가 전체 테스트와 exact APK를 통과하면 PR 검토/승인/merge를 완료하고, 실기기·사용자 시각 승인은 별도로 표시한다.
+
+## 2026-10-06 — Pote A/B/C/D campaign implementation (active)
+
+| Task | State | Evidence / next |
+|---|---|---|
+| V110 source baseline | COMPLETE | PR #178 merged as `00b094c76add19d7c5fc1292365cf208882bf3a5`; branch `codex/pote-abcd-lv11-41` based on it |
+| Ordinary pools + A01–D04 quests | IMPLEMENTED LOCALLY / TEST PENDING | `CampaignMonsters`, `CampaignProgress`, `GameView`, journal and migration tests; strong/elite removed; D03 routes to boss D and grants remaining EXP to Lv41 |
+| Four map environments and safe hub | IMPLEMENTED LOCALLY / TEST PENDING | Map-local `PoteCampaignMapDef`, geometry/trail/creek/props/collision, navigation bounds, gates and spawning; Piet remains transit hub; verify path tests on Android runner |
+| Save migration | IMPLEMENTED LOCALLY / TEST PENDING | V1–V3 completed objectives map forward where safe; active changed objectives reset; historical `MAP_POTE_04` remains a legacy map, not D |
+| Spirits and source-based boss art | BLOCKED ON SOURCE/IDENTITY REVIEW | Brown direction/anchor and black spirit source unresolved; Mantis runtime uses explicitly adapted generic placeholder; do not promote old concept art |
+| D finale and Lv41 transaction | IMPLEMENTED LOCALLY / TEST PENDING | Single adapted Mantis encounter, zero direct EXP, D03 one-time Lv41 settlement plus direct inventory three-line gold ring (adapted from recorded drop) in the save transaction; five-job route test corrected to assert one-time reward/restore, but not run |
+| Exact build/runtime/device acceptance | OPEN / ENVIRONMENT BLOCKED LOCALLY | This checkout has no Gradle executable, wrapper or cached launcher. Run focused CampaignProgress/CampaignNavigation/UI tests and assemble on Android runner; then inspect exact-SHA capture and device behavior. No APK exists for this branch. |
+
 ## 2026-10-06 — V110 guided onboarding candidate verified
 
 IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC. Exact APK source `fadd41a7c947a561b1b3e4a2a0315010019c6c7a`; focused Actions `37415043124` SUCCESS: **96 tests, zero failures/errors/skips**. Full push `37415043085` and PR `37415047650` both SUCCESS; full push has 24 successful Gradle invocations. [Exact evidence](verification/ONBOARDING_V110_BUILD.json).

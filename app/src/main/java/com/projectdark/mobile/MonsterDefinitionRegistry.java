@@ -24,6 +24,11 @@ public final class MonsterDefinitionRegistry {
         "POTE_PURPLE","퍼플팜팻 [B]","포테의숲 runtime prototype",null,null,null,null,
         MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
 
+    // Final map encounter and generated directional art are adapted; source-canonical stats are unresolved.
+    definitions.put("POTE_MANTIS",new MonsterDefinition(
+        "POTE_MANTIS","자이언트맨티스 [ADAPTED]","포테의 숲 D · 결계 너머",null,null,null,null,
+        MonsterDefinition.Evidence.B,MonsterDefinition.Status.PROTOTYPE_PENDING));
+
     // Current Milles runtime combat fixture. It is not a Master monster and receives no canonical reward.
     definitions.put("combat_dummy_01",new MonsterDefinition(
         "combat_dummy_01","훈련용 몬스터 [B]","밀레스 runtime prototype",null,null,null,null,

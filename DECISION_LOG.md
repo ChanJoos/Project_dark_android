@@ -1,3 +1,7 @@
+## 2026-10-06 — User-approved forest layout / implementation candidate
+
+The forest growth path uses three ordinary hunting areas A/B/C for Lv11–40 and a separate D map for the final Giant Mantis quest; strong/elite variants are not needed. New boss map ID is `MAP_POTE_D_BOSS`; prior saves using `MAP_POTE_04` keep a distinct compatibility map. Current implementation uses only ordinary species in A/B/C and an adapted single-boss combat fixture in D. D03 turn-in provides catch-up EXP to Lv41. Mantis art remains a generic placeholder until the user source cells are mapped and accepted. Source base `00b094c76add19d7c5fc1292365cf208882bf3a5`; build/device/visual acceptance not run.
+
 ## 2026-10-05 — V105 final CI / public APK closure
 
 User-authorized implementation and candidate publication completed. APK source commit `5ebf1fc2c7fd07bc004b4863f86dd9204edfdadd`; Actions run 37254439040 / job 111588416336 completed SUCCESS. The full configured 248-test Gradle suite and APK assembly passed. Build completion from Actions log: 2026-10-05 11:30:40 KST.

@@ -26,6 +26,7 @@ final class OnboardingGuide {
   case "KILL":return d.id.equals("M04")?"경비: 들쥐 세 마리를 정리해 주게. 의뢰 목표를 누르면 자동으로 접근해 공격하네.":"경비: 이 구역의 위험한 개체를 정리하고 숲길을 안전하게 만들어 주세요.";
   case "PAIR":return "조사관: 서로 다른 개체를 균형 있게 조사해야 변화의 원인을 알 수 있습니다.";
   case "VISIT":return "안내자: 준비를 마쳤다면 다음 지역으로 갑시다. 길을 따라 이동해 도착을 확인하세요.";
+  case "LEVEL":return d.id.equals("M06")?"마이클: 숲길 출정 준비가 끝났네. Lv11 정산을 마치면 포테의 숲에 들어갈 수 있네.":"먼저 지정 레벨에 도달한 뒤 의뢰인에게 보고하세요.";
   case "ALTAR":return "정제사: 모아 둔 정수를 세 제단에 하나씩 바쳐 결계를 안정시켜 주세요.";
   default:return "먼저 현재 의뢰를 마치세요. 다음 단계는 완료한 뒤 차례로 열립니다.";
  }}
@@ -40,6 +41,7 @@ final class OnboardingGuide {
    case "QUICK_USE":return "① "+((r.currentJobCode().equals("MAGE")||r.currentJobCode().equals("CLERIC"))?r.currentJobCode().equals("CLERIC")?"피격 후 회복 기술 사용 → 하단 MP 물약":"기술로 MP를 소모한 뒤 하단 MP 물약":"들쥐에게 맞은 뒤 하단 HP 물약")+" 누르기\n② 실제 회복되면 완료\n근접 직업의 첫 기술은 MP를 쓰지 않습니다. 마력 물약은 이후 기술을 위해 준비합니다.";
    case "SELL":return "① 목표 안내로 시약점에 이동\n② 판매 탭에서 마력 물약 선택\n③ 수량 1과 받을 Gold 확인 후 판매\n은행 보관과 버리기는 판매로 인정하지 않습니다.";
    case "SKILL":String id=r.campaign().practiceSkill(d,r);SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(id);return "① 기술창에서 "+(ability==null?"목표 기술":ability.name)+" 등록 확인\n② 목표 안내로 들판의 적에게 접근\n③ 하단의 등록한 기술을 직접 3회 사용\n"+(ability!=null&&ability.heal()?"회복 기술은 HP가 감소한 상태에서 실제 회복해야 합니다.":"MP·거리·재사용 시간을 확인하세요. 거절된 입력은 세지 않습니다.");
+   case "LEVEL":if(d.id.equals("M06"))return "① 안내자에게 숲길 출정 준비 보고\n② 완료를 눌러 Lv11로 인계\n③ 포테의 숲 A 입구에 들어가 A01 등록 의뢰를 시작";return "① 목표 레벨에 도달\n② 의뢰인에게 돌아가 완료";
    case "KILL":return "① 의뢰를 수락한 뒤 목표 안내 누르기\n② 목표까지 이동·타기팅·자동 공격\n③ 목표 수를 채우면 보고 가능으로 변경\n④ 안내 버튼으로 의뢰인에게 돌아가 완료";
    default:return "① 선행 의뢰를 마치고 수락\n② 목표 안내를 따라 실제 행동 수행\n③ 보고 가능이 되면 의뢰인에게 완료\n같은 의뢰의 보상은 한 번만 받을 수 있습니다.";
   }

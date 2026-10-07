@@ -181,10 +181,10 @@ jobs:
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest --stacktrace
       - name: Render West, South and Waterside Milles districts
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesDistrictReviewTest --stacktrace
-      - name: Render POTE production forest review frames
+      - name: Render and test POTE production forest and A/B/C/D campaign
         run: |
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteVisualReviewTest --stacktrace
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.CampaignNavigationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
       - name: Execute 4-way BODY robe mokdo visual contract audit
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
       - name: Milddok ingestion identity audit
@@ -248,11 +248,11 @@ jobs:
           name: inn-v93-review-${{ github.sha }}
           path: app/build/reports/device-review/v93-*.png
           if-no-files-found: warn
-      - name: Build and verify exact V110 debug APK
+      - name: Build and verify exact V111 debug APK
         run: |
           gradle :app:assembleDebug --stacktrace
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v110_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v111_apk.py app/build/outputs/apk/debug/app-debug.apk
       - name: Upload focused V96 weapon and jump review
         if: always()
         uses: actions/upload-artifact@v4
@@ -299,5 +299,5 @@ jobs:
             app/build/reports/device-review/v100-*.png
             app/build/reports/device-review/v101-*.png
           if-no-files-found: error
-      # campaign-review.yml is the single V110 release publisher. This full
+      # This full
       # suite uploads its independent APK/identity and never races a release tag.
