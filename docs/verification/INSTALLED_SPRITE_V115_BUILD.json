@@ -1,0 +1,65 @@
+{
+  "sourceCommit": "f32d9dd5049a95163b5225b00e21f63411e2c046",
+  "runId": "37704377668",
+  "versionCode": 115,
+  "versionName": "1.15-installed-sprite-resources",
+  "applicationId": "com.projectdark.mobile.v115test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "60d675d4d2801d70b3b4fee79a61dbfe804d57c74c4f217ce6ea4a280a13f598",
+  "apkBytes": 55410960,
+  "builtSeoul": "2026-10-08T08:53:11.862552+09:00",
+  "scope": "Installed-package drawable lookup; relocated-table player idle/walk/attack four directions and 20 NPC pixel comparisons; retained forest/UI/navigation/campaign regressions",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "tests": {
+    "tests": 69,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "artifactPngFiles": 68,
+  "reviewedNativeScreens": [
+    "v115-installed-player.png",
+    "v115-installed-npc.png",
+    "v104-npc-milles.png",
+    "v104-npc-inn.png"
+  ],
+  "apkArtifact": 11518703778,
+  "nativeArtifact": 11518049858,
+  "jobId": 113075142097,
+  "v2SignatureVerified": true,
+  "certificateSha256": "63dd147e0620f905ae3d719a818aebc3dd55f86fd86bf447581d24e7e2f3a20f",
+  "restoredEquipmentFiles": 47,
+  "referenceAssetsVerified": true,
+  "archiveHashesVerified": true,
+  "resourceTablePackageAndBodyEntriesVerifiedInCI": true,
+  "v114PhoneStatus": "DEVICE_FAILED_USER_REPORTED",
+  "codeDefect": "HARDCODED_RESOURCE_PACKAGE_MISMATCH",
+  "phoneSymptomConfirmation": "PENDING_NO_NEW_SCREENSHOT",
+  "otherReportedAnomalies": "UNKNOWN_UNSPECIFIED",
+  "releaseUrl": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v115-f32d9dd5-37704377668-1",
+  "fullCi": [
+    {
+      "id": 37704382130,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "pull_request"
+    },
+    {
+      "id": 37704377672,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "push"
+    },
+    {
+      "id": 37704377668,
+      "name": "Pote V115 reference repair",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push"
+    }
+  ]
+}
