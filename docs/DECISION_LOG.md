@@ -1,4 +1,14 @@
 
+## 2026-10-08 — V114 separate-install CI candidate delivered
+
+Exact source 0bf1343f11b64e284a39cc2335eb367d95865d8e; focused Actions37682916356/job113003278871 SUCCESS,63 tests,0 failures/errors/skips,24 native SDK34 captures reviewed. Built2026-10-08 05:36:30 Asia/Seoul. APK55,410,856bytes,SHA2568b10b30dc713506f72536dd4d680d1fe8f9bf17eab4d0cfef26fb9480c5dd617;APK artifact11509552776,native11509542867. Downloaded archives match Actions digests; embedded source/run/version,ZIP CRC,47 restored equipment files,9 reference-derived assets,12mantis poses,16mouse frames,portal/catalog and APKv2 signature verified. Final JVM forest entry455ms,20k gate calls3ms,72k AI tile calls27ms: NOT phone timings.
+
+https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v114-0bf1343f-37682916356-1
+
+Application ID com.projectdark.mobile.v114test,label PROJECT DARK V114 TEST; installs separately with separate save/profile. Existing installed production app and saves are retained; no automatic character/save transfer. V113 update signing is unavailable and inconsistent runner debug certificates were demonstrated; do not instruct uninstall or call this update-compatible. Default production ID is unchanged outside focused candidate option. Source f8f0997a built/tests/package passed but its release command had a mismatched filename;0bf1343f corrects that workflow-only defect and successfully publishes. Publication approved and complete. Main remains18ef615;draft PR180 unmerged candidate. Full broad push/PR CI remains 37682922184:in_progress/PENDING,37682916019:in_progress/PENDING; no claim of broad-CI completion.
+
+IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED. PHONE / USER_VISUAL PENDING. Device crash root causeUNKNOWN_NO_DEVICE_LOG;river original-level recreation still incomplete. User should evaluate separate test app forest entry/long play,skill proportions,quest/dialogue UI,NPC role services and water. Exact record:verification/DEVICE_REPAIR_V114_CI_BUILD.json. Earlier local-only/publication-blocked statuses are superseded. Closure docs-only;delivered APK source remains0bf1343f.
+
 ## 2026-10-08 — V114 approved publication and signature comparison
 
 User explicitly approved publication of modified code/assets to public ChanJoos/Project_dark_android and CI delivery. Source e259e2b170f9eb069098f3b9bc30b1258c0b95a7 exactly matches local closure tree3b96282131e443958d8f57bc6aff9fd5398eb85d. Focused Actions37681384188/job112998024636 SUCCESS:63 tests,zero failures/errors/skips,24 native SDK34 captures. APK artifact11508549561/native11509925214; APK SHA256010e0a9f6ec3e910f826b77eb1dc7ecdabd7e1534f8a3c2dc27017571ba7f963;55,410,884bytes;built2026-10-08 05:24:24KST. Downloaded archives match their published hashes; embedded source/run/version and APKv2 signature verified.
