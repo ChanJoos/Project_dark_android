@@ -19,6 +19,7 @@ public final class PoteFieldDef {
   public static final float EXIT_RADIUS=34f;
   public static final float BRIDGE_X=PoteForestGeometry.BRIDGE_X,BRIDGE_Y=PoteForestGeometry.BRIDGE_Y;
   private static final List<RectF> OBSTACLES=buildObstacles();
+  private static final TerrainObstacleIndex INDEX=new TerrainObstacleIndex(OBSTACLES);
   private static final List<WorldMoveTargetController.TileCenter> NAVIGATION_TILES=buildNavigationTiles();
   private PoteFieldDef(){}
 
@@ -97,7 +98,6 @@ public final class PoteFieldDef {
   private static boolean blocked(float x,float y){
     float radius=14f;
     if(x-radius<MIN_X||x+radius>MAX_X||y-radius<MIN_Y||y+radius>MAX_Y)return true;
-    for(RectF r:obstacles())if(x+radius>r.left&&x-radius<r.right&&y+radius>r.top&&y-radius<r.bottom)return true;
-    return false;
+    return INDEX.blocked(x,y,radius);
   }
 }

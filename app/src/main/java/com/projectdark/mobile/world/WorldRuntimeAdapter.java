@@ -30,6 +30,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
   private final float sceneMinX,sceneMaxX,sceneMinY,sceneMaxY;
   private final List<RectF> sceneObstacles;
+  private final TerrainObstacleIndex terrainIndex;
   private final boolean actorsBlockMovement;
   private float presentationWalkClock;
 
@@ -42,7 +43,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     for(AdaptedMillesIsometricTileLayer.Tile tile:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
     navigationTiles=Collections.unmodifiableList(centers);
     sceneMinX=map.bounds().minX;sceneMaxX=map.bounds().maxX;sceneMinY=map.bounds().minY;sceneMaxY=map.bounds().maxY;
-    sceneObstacles=runtime.obstacles();actorsBlockMovement=true;
+    sceneObstacles=runtime.obstacles();terrainIndex=new TerrainObstacleIndex(sceneObstacles);actorsBlockMovement=true;
     snapPlayerToNearestTraversableTile();
     camera=map.newCamera(viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
@@ -64,7 +65,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     this.runtime=runtime;this.map=null;
     this.navigationTiles=Collections.unmodifiableList(new ArrayList<>(tiles));
     sceneMinX=minX;sceneMaxX=maxX;sceneMinY=minY;sceneMaxY=maxY;
-    sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));this.actorsBlockMovement=actorsBlockMovement;
+    sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));this.actorsBlockMovement=actorsBlockMovement;terrainIndex=new TerrainObstacleIndex(sceneObstacles);
     snapPlayerToNearestTraversableTile();
     camera=new WorldCameraTransform(minX,maxX,minY,maxY,viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
@@ -188,7 +189,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     if(runtime.skillEffects().rooted("player"))return false;
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
-    for(RectF obstacle:sceneObstacles)if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+    if(terrainIndex.blocked(x,y,r))return false;
     if(actorsBlockMovement&&!runtime.canPlayerOccupyActors(x,y))return false;
     return true;
   }
@@ -238,7 +239,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     for(int i=1;i<=steps;i++){
       float t=i/(float)steps,x=ax+(bx-ax)*t,y=ay+(by-ay)*t;
       if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
-      for(RectF obstacle:sceneObstacles)if(x+r>obstacle.left&&x-r<obstacle.right&&y+r>obstacle.top&&y-r<obstacle.bottom)return false;
+      if(terrainIndex.blocked(x,y,r))return false;
     }
     return true;
   }

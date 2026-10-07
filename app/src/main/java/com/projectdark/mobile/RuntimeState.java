@@ -60,6 +60,7 @@ public final class RuntimeState {
   private final WorldDef world=new WorldDef();
   private final Player player;
   private final List<RectF> obstacles=new ArrayList<>();
+  private com.projectdark.mobile.world.TerrainObstacleIndex terrainIndex;
   private final List<Npc> npcs=new ArrayList<>();
   private final List<Monster> monsters=new ArrayList<>();
   private final List<Monster> suspendedMillesMonsters=new ArrayList<>();
@@ -110,7 +111,7 @@ public final class RuntimeState {
     com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
     if(d!=null){for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;return false;}
     if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;
+      return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).isNavigationCenter(x,y);
     return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
   }
   public List<com.projectdark.mobile.world.WorldMoveTargetController.TileCenter> monsterNavigationTiles(){
@@ -160,15 +161,15 @@ public final class RuntimeState {
   public void enterTownInterior(com.projectdark.mobile.world.TownInteriorDef d){
     if(d==null)throw new IllegalArgumentException("interior");
     if(WorldDef.ID.equals(currentMapId)){suspendedMillesMonsters.clear();suspendedMillesMonsters.addAll(monsters);suspendedMillesNpcs.clear();suspendedMillesNpcs.addAll(npcs);suspendedMillesObstacles.clear();suspendedMillesObstacles.addAll(obstacles);}
-    currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();obstacles.addAll(d.obstacles());
+    currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();terrainIndex=null;obstacles.addAll(d.obstacles());
     npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
     currentMinX=d.MIN_X;currentMaxX=d.MAX_X;currentMinY=d.MIN_Y;currentMaxY=d.MAX_Y;
     player.spawnX=d.spawnX();player.spawnY=d.spawnY();player.x=player.spawnX;player.y=player.spawnY;
   }
-  public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
+  public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();terrainIndex=null;obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
   public void enterPoteField(){
     currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=com.projectdark.mobile.world.PoteFieldDef.MIN_X;currentMaxX=com.projectdark.mobile.world.PoteFieldDef.MAX_X;currentMinY=com.projectdark.mobile.world.PoteFieldDef.MIN_Y;currentMaxY=com.projectdark.mobile.world.PoteFieldDef.MAX_Y;
-    obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
+    obstacles.clear();terrainIndex=null;for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
     npcs.clear();npcs.add(new Npc("pote_trail_guide","숲길 안내인",736f,496f,
         "북동쪽 흙길을 따라가면 숲 안쪽 공터와 물가로 이어집니다.","PENDING_CROP/pote/npc/trail_guide"));
     monsters.clear();monsters.addAll(PoteForestMonsterShowcase.instantiate(
@@ -179,15 +180,15 @@ public final class RuntimeState {
   }
   public void enterCampaignMap(String id,boolean fromNext){
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
-    enterPoteField();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
     int zone=map.zone;monsters.addAll(CampaignMonsters.spawnForMap(id));
     if(zone==0){npcs.add(new Npc("piet_investigator","이선",768,512,"피에트 조사와 서신을 담당합니다.","ADAPTED"));npcs.add(new Npc("piet_supplier","조슈아",864,560,"조사 장비와 보급품을 준비하세요.","ADAPTED"));npcs.add(new Npc("piet_purifier","새뮤얼",672,560,"숲의 정수를 정화합니다.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"지도자",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"숙련 기술과 장비를 지도합니다.","ADAPTED"));}
-    else {com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=map.nearest(map.entryX+96,map.entryY+16);npcs.add(new Npc("pote_trail_guide","알렉산더",guide.x,guide.y,"숲길 조사와 무료 휴식", "ADAPTED"));if(zone==3&&!"MAP_POTE_04".equals(id)){float[][] sites={{720,560},{1536,760},{2300,1040}};for(int i=0;i<3;i++){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter altar=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,sites[i][0],sites[i][1]);npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),altar.x,altar.y,"제단 정화", "ADAPTED"));}}}
+    else {com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=map.nearest(map.entryX+96,map.entryY+16);npcs.add(new Npc("pote_trail_guide","알렉산더",guide.x,guide.y,"숲길 안내와 조사 의뢰", "ADAPTED"));if(zone==3&&!"MAP_POTE_04".equals(id)){float[][] sites={{720,560},{1536,760},{2300,1040}};for(int i=0;i<3;i++){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter altar=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,sites[i][0],sites[i][1]);npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),altar.x,altar.y,"제단 정화", "ADAPTED"));}}}
     com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(id,fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
   }
   public void enterMillesFromField(float x,float y){
     currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;
-    obstacles.clear();for(RectF r:world.blockers())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    obstacles.clear();terrainIndex=null;for(RectF r:world.blockers())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
     for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
     for(WorldDef.MonsterSpawn m:world.monsterSpawns()){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);monsters.add(new Monster(m.id,m.name,center==null?m.x:center.x,center==null?m.y:center.y,m.hp,m.assetStatus));}
     player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;
@@ -218,7 +219,7 @@ public final class RuntimeState {
   private boolean playerCanOccupy(float x,float y){return !blocked(x,y,PLAYER_RADIUS)&&!monsterOccupied(null,x,y,PLAYER_RADIUS)&&!npcOccupied(x,y,PLAYER_RADIUS);}
   private boolean monsterCanOccupy(Monster self,float x,float y){float radius=monsterCollisionRadius(self);return !blocked(x,y,radius)&&!playerOccupied(x,y,radius)&&!monsterOccupied(self,x,y,radius)&&!npcOccupied(x,y,radius);}
   public boolean blocked(float x,float y){return blocked(x,y,PLAYER_RADIUS);}
-  private boolean blocked(float x,float y,float radius){for(RectF r:obstacles)if(x+radius>r.left&&x-radius<r.right&&y+radius>r.top&&y-radius<r.bottom)return true;return false;}
+  private boolean blocked(float x,float y,float radius){if(terrainIndex==null)terrainIndex=new com.projectdark.mobile.world.TerrainObstacleIndex(obstacles);return terrainIndex.blocked(x,y,radius);}
   private boolean playerOccupied(float x,float y,float radius){
     if(!player.alive)return false;
     float min=radius+PLAYER_RADIUS+ACTOR_CLEARANCE;

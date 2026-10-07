@@ -1,0 +1,24 @@
+{
+  "sourceCommit": "7c4a4036128bd3fda540c960b1118ad6b1ce775c",
+  "runId": "LOCAL_V114_NO_CI",
+  "versionCode": 114,
+  "versionName": "1.14-forest-performance-ui",
+  "apkSha256": "9dabd172e27992349325b4f3d50e819d5695496d4b6a2c9440a3b2f70e4dd9e0",
+  "apkBytes": 55537285,
+  "builtSeoul": "2026-10-08T03:40:48.383734+09:00",
+  "scope": "Forest entry/AI/terrain broadphase performance; square skill art; quest and dialogue hierarchy; NPC role service restrictions; adjusted river shader/bank; unchanged campaign/save/BODY",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "status": "BUILD_VERIFIED_LOCAL / NATIVE_RUNTIME_VERIFIED / DEVICE_PENDING / USER_VISUAL_PENDING / PUBLICATION_BLOCKED_AUTO_REVIEW",
+  "updateCompatibility": "PENDING_LOCAL_SIGNATURE",
+  "uniqueTestsAcrossTwoRuns": 59,
+  "finalSourceTests": 31,
+  "measurementsJVM": [
+    "V114_ENTRY_JVM_MS=352; GATE_20000_CALLS_MS=6; PHONE_PENDING",
+    "V114_AI_MEMBERSHIP_72000_MS=19"
+  ],
+  "phoneErrorRootCause": "UNKNOWN_NO_DEVICE_LOG",
+  "nativeScreens": 24,
+  "referenceVisualAcceptance": "PENDING_NOT_ORIGINAL_PERFECT"
+}

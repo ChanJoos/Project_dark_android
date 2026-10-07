@@ -43,7 +43,7 @@ final class SkillIconCatalog {
     if(windowSkin.draw(c,id,dest))return true;
     Bitmap image=presentation.get(id);if(image==null)return false;paint.setFilterBitmap(true);c.drawBitmap(image,null,dest,paint);return true;
   }
-  boolean drawQuickslot(Canvas c,String id,RectF dest){
+  boolean drawQuickslot(Canvas c,String id,RectF dest){float side=Math.min(dest.width(),dest.height());dest=new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2);
     Path clip=new Path();clip.addRoundRect(dest,3,3,Path.Direction.CW);c.save();c.clipPath(clip);
     boolean result=windowSkin.drawContent(c,id,dest);
     if(!result){Bitmap image=presentation.get(id);if(image!=null){int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));paint.setFilterBitmap(false);c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),dest,paint);result=true;}}

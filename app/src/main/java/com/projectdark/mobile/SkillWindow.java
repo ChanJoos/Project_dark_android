@@ -96,7 +96,7 @@ final class SkillWindow {
       String status=q.learned?"습득 완료":q.blockers.isEmpty()?"습득 가능":q.blockers.get(0);fittedCenter(c,status,779,303,265,11,q.learned||q.canLearn?GREEN:RED);
     }
   }
-  private void icon(Canvas c,SkillBook.Entry e,RectF r){if(!icons.drawSquare(c,e.id,r)){fill(c,r.left,r.top,r.right,r.bottom,0xff201d16);center(c,"—",r.centerX(),r.centerY()+4,13,MUTED);}}
+  private void icon(Canvas c,SkillBook.Entry e,RectF r){float side=Math.min(r.width(),r.height());r=new RectF(r.centerX()-side/2,r.centerY()-side/2,r.centerX()+side/2,r.centerY()+side/2);if(!icons.drawSquare(c,e.id,r)){fill(c,r.left,r.top,r.right,r.bottom,0xff201d16);center(c,"—",r.centerX(),r.centerY()+4,13,MUTED);}}
   boolean motion(int action,float x,float y){if(!open)return false;
     if(action==MotionEvent.ACTION_DOWN){downY=y;startScroll=scroll;scrollGesture=VIEWPORT.contains(x,y)||new RectF(610,104,627,520).contains(x,y);dragging=false;return false;}
     if(action==MotionEvent.ACTION_MOVE&&scrollGesture){if(Math.abs(y-downY)>5)dragging=true;if(dragging)scroll=Math.max(0,Math.min(maxScroll(),startScroll+downY-y));return true;}

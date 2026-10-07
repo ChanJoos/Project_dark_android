@@ -39,6 +39,10 @@ public final class PoteFieldRenderer {
   private final Path groundCells=new Path();
   private final AssetManager assets=findAssets();
   private final Map<String,Bitmap> cache=new LinkedHashMap<>();
+  private final Map<String,BitmapShader> shaders=new LinkedHashMap<>();
+  private final Matrix texturePhase=new Matrix();
+  private final Map<String,float[][]> channels=new LinkedHashMap<>();
+  private BitmapShader shader(String name,Bitmap bitmap,Shader.TileMode mode){BitmapShader s=shaders.get(name);if(s==null){s=new BitmapShader(bitmap,mode,mode);shaders.put(name,s);}return s;}
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
   private static final List<Placement> AUTHORED_PLACEMENTS=buildPlacements();
   private static final Map<String,List<Placement>> MAP_PLACEMENTS=new LinkedHashMap<>();
@@ -170,7 +174,7 @@ public final class PoteFieldRenderer {
     drawFloor(c,w);drawCreekBed(c,w);
     List<DepthItem> depth=new ArrayList<>();
     for(Placement p:placementsForMap(w.runtime().currentMapId())){
-      if(campClearing(w,p)||"water".equals(p.role))continue;
+      if(campClearing(w,p)||"water".equals(p.role)||!visiblePlacement(c,w,p))continue;
       if("groundcover".equals(p.role)||"bank".equals(p.role)||"bridge".equals(p.role))drawPlacement(c,w,p);
       else depth.add(new DepthItem(p.y,()->drawPlacement(c,w,p)));
     }
@@ -197,8 +201,8 @@ public final class PoteFieldRenderer {
   /** Feathered source earth patches overlap at irregular widths; no painted road border. */
   private void drawTrail(Canvas c,WorldRuntimeAdapter w){
     Bitmap texture=bitmap("reference_v113/trail_earth.png");if(texture==null)return;
-    BitmapShader shader=new BitmapShader(texture,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
-    Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
+    BitmapShader shader=shader("trail",texture,Shader.TileMode.MIRROR);
+    Matrix phase=texturePhase;phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
     pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
     float[][] trail=PoteForestGeometry.trailCenterline(w.runtime().currentMapId());
     for(int i=1;i<trail.length;i++){
@@ -207,6 +211,7 @@ public final class PoteFieldRenderer {
         float t=j/(float)n,t2=(j+1)/(float)n;
         WorldCameraTransform.Point p=w.worldToScreen(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t);
         WorldCameraTransform.Point q=w.worldToScreen(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t2,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t2);
+        if(Math.max(p.x,q.x)<-200||Math.min(p.x,q.x)>c.getWidth()+200||Math.max(p.y,q.y)<-200||Math.min(p.y,q.y)>c.getHeight()+200)continue;
         float width=86+18*(float)Math.sin((i*n+j)*.37);
         // Many low-opacity shoulders soften into the same soil; original dirt colour, no gold stripe.
         for(int layer=5;layer>=0;layer--){pixel.setAlpha(layer==0?32:8);pixel.setStrokeWidth(width+layer*13);c.drawLine(p.x,p.y,q.x,q.y,pixel);}
@@ -216,10 +221,10 @@ public final class PoteFieldRenderer {
   }
   /** The visible river and the bank collision consume identical sampled centre/width data. */
   private void drawCreekBed(Canvas c,WorldRuntimeAdapter w){
-    float[][] nodes=PoteForestGeometry.channel(w.runtime().currentMapId());if(nodes.length<2)return;
+    float[][] nodes=channels.computeIfAbsent(w.runtime().currentMapId(),PoteForestGeometry::channel);if(nodes.length<2)return;
     Bitmap water=bitmap("reference_v113/water_current.png");if(water==null)return;
-    BitmapShader shader=new BitmapShader(water,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
-    Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX()+waterClock*2,-w.camera().cameraY()+waterClock*.6f);shader.setLocalMatrix(phase);
+    BitmapShader shader=shader("water",water,Shader.TileMode.MIRROR);
+    Matrix phase=texturePhase;phase.setRotate(-26.565f);phase.postTranslate(-w.camera().cameraX()+waterClock*2,-w.camera().cameraY()+waterClock*.6f);shader.setLocalMatrix(phase);
     Path surface=new Path();
     for(int side=1;side>=-1;side-=2)for(int k=0;k<nodes.length;k++){
       int i=side==1?k:nodes.length-1-k;
@@ -228,14 +233,14 @@ public final class PoteFieldRenderer {
       WorldCameraTransform.Point q=w.worldToScreen(a[0]-dy/len*a[2]*side,a[1]+dx/len*a[2]*side);
       if(k==0&&side==1)surface.moveTo(q.x,q.y);else surface.lineTo(q.x,q.y);
     }
-    Bitmap shore=bitmap("reference_v113/shore_material.png");
-    if(shore!=null){BitmapShader bank=new BitmapShader(shore,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);Matrix bp=new Matrix();bp.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());bank.setLocalMatrix(bp);pixel.setShader(bank);pixel.setColor(0xffffffff);pixel.setAlpha(105);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(11);pixel.setStrokeJoin(Paint.Join.ROUND);c.drawPath(surface,pixel);pixel.setShader(null);}
+    // Damp earth edge rather than a continuous repeated grey stone rim.
+    surface.close();pixel.setShader(null);pixel.setColor(0x99523e2e);pixel.setAlpha(140);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(5);pixel.setStrokeJoin(Paint.Join.ROUND);c.drawPath(surface,pixel);
     surface.close();pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setShader(shader);pixel.setStyle(Paint.Style.FILL);c.drawPath(surface,pixel);pixel.setShader(null);
     // Independent bank clusters: no mirrored pairs or evenly spaced stones.
     Bitmap rock=bitmap("reference_v113/shore_rock.png");if(rock!=null)for(int i=1;i<nodes.length-1;i++){
       float[] a=nodes[i],before=nodes[i-1],after=nodes[i+1];float dx=after[0]-before[0],dy=after[1]-before[1],len=Math.max(1,(float)Math.hypot(dx,dy));
-      for(int side=-1;side<=1;side+=2){int seed=(i*1103515245+side*12345)&0x7fffffff;if(seed%13>3)continue;
-        float offset=a[2]+2+(seed%7),jitter=((seed/13)%17)-8;WorldCameraTransform.Point q=w.worldToScreen(a[0]-dy/len*offset*side+dx/len*jitter,a[1]+dx/len*offset*side+dy/len*jitter);float scale=.62f+((seed/31)%9)*.08f;
+      for(int side=-1;side<=1;side+=2){int seed=(i*1103515245+side*12345)&0x7fffffff;if(seed%11>2)continue;
+        float offset=a[2]+2+(seed%7),jitter=((seed/13)%17)-8;WorldCameraTransform.Point q=w.worldToScreen(a[0]-dy/len*offset*side+dx/len*jitter,a[1]+dx/len*offset*side+dy/len*jitter);float scale=.45f+((seed/31)%8)*.08f;
         c.save();c.rotate(((seed/7)%19)-9,q.x,q.y);if((seed&1)==0){c.translate(q.x*2,0);c.scale(-1,1);}c.drawBitmap(rock,null,new RectF(q.x-24*scale,q.y-13*scale,q.x+24*scale,q.y+14*scale),pixel);c.restore();
       }
     }
@@ -244,17 +249,11 @@ public final class PoteFieldRenderer {
   /** Each navigation-ground diamond samples one shared, source-video texture in world space. */
   private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
     Bitmap soil=bitmap(SOIL_TEXTURE);if(soil==null)return;
-    BitmapShader shader=new BitmapShader(soil,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT);
-    Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
+    BitmapShader shader=shader("soil",soil,Shader.TileMode.REPEAT);
+    texturePhase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(texturePhase);
     soilPaint.setShader(shader);soilPaint.setColor(0xffffffff);soilPaint.setStyle(Paint.Style.FILL);
-    groundCells.reset();
-    for(WorldMoveTargetController.TileCenter tile:PoteCampaignMapDef.forId(w.runtime().currentMapId()).groundTiles()){
-      WorldCameraTransform.Point point=w.worldToScreen(tile.x,tile.y);
-      if(point.x<-40||point.x>c.getWidth()+40||point.y<-24||point.y>c.getHeight()+24)continue;
-      groundCells.moveTo(point.x,point.y-16f);groundCells.lineTo(point.x+32f,point.y);
-      groundCells.lineTo(point.x,point.y+16f);groundCells.lineTo(point.x-32f,point.y);groundCells.close();
-    }
-    c.save();c.clipPath(groundCells);c.drawRect(0,0,c.getWidth(),c.getHeight(),soilPaint);c.restore();
+    PoteCampaignMapDef d=PoteCampaignMapDef.forId(w.runtime().currentMapId());
+    c.drawRect(d.minX-32-w.camera().cameraX(),d.minY-16-w.camera().cameraY(),d.maxX+32-w.camera().cameraX(),d.maxY+16-w.camera().cameraY(),soilPaint);
     soilPaint.setShader(null);
   }
   private void drawGroundPatch(Canvas c,WorldRuntimeAdapter w,String name,float wx,float wy,float scale){
@@ -273,7 +272,9 @@ public final class PoteFieldRenderer {
     for(Placement p:placementsForMap(w.runtime().currentMapId()))if("bridge".equals(p.role))drawPlacement(c,w,p);
   }
 
+  private boolean visiblePlacement(Canvas c,WorldRuntimeAdapter w,Placement p){float x=p.x-w.camera().cameraX(),y=p.y-w.camera().cameraY();return x>=-512&&x<=c.getWidth()+512&&y>=-100&&y<=c.getHeight()+512;}
   private void drawPlacement(Canvas c,WorldRuntimeAdapter w,Placement p){
+    if(!visiblePlacement(c,w,p))return;
     Bitmap b=bitmap(p.asset);if(b==null)return;
     WorldCameraTransform.Point q=w.worldToScreen(p.x,p.y);
     if(p.tile){
@@ -325,7 +326,7 @@ public final class PoteFieldRenderer {
   private Bitmap bitmap(String name){
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
-      BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
+      BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;if(name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT))o.inSampleSize=2;b=BitmapFactory.decodeStream(in,null,o);
       if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));

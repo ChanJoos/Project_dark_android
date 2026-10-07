@@ -7,8 +7,8 @@ android {
         applicationId 'com.projectdark.mobile'
         minSdk 26
         targetSdk 35
-        versionCode 113
-        versionName '1.13-pote-reference-visibility'
+        versionCode 114
+        versionName '1.14-forest-performance-ui'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
@@ -44,7 +44,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 113, versionName: '1.13-pote-reference-visibility']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 114, versionName: '1.14-forest-performance-ui']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }

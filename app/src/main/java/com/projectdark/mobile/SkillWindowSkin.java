@@ -22,7 +22,7 @@ final class SkillWindowSkin {
   }catch(Exception e){throw new IllegalStateException("Skill window reference skin unavailable",e);}}
   JSONObject capturedDetails(String id){return capturedDetails.optJSONObject(id);}
   int promotionOrder(String id){int index=roguePromotionOrder.indexOf(id);return index<0?99:index;}
-  boolean draw(Canvas c,String key,RectF rect){Bitmap image=images.get(key);if(image==null)return false;c.drawBitmap(image,null,rect,paint);return true;}
+  boolean draw(Canvas c,String key,RectF rect){Bitmap image=images.get(key);if(image==null)return false;float scale=Math.min(rect.width()/image.getWidth(),rect.height()/image.getHeight());float hw=image.getWidth()*scale/2,hh=image.getHeight()*scale/2;c.drawBitmap(image,null,new RectF(rect.centerX()-hw,rect.centerY()-hh,rect.centerX()+hw,rect.centerY()+hh),paint);return true;}
   boolean drawContent(Canvas c,String key,RectF rect){Bitmap image=images.get(key);if(image==null)return false;int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),rect,paint);return true;}
   void panel(Canvas c,RectF r,boolean detail){
     UiTheme.panel(c,new RectF(r.left,r.top,r.right,detail?532:r.bottom),detail?"스킬 정보":"스킬");

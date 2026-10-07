@@ -11,6 +11,11 @@ public final class PoteCampaignMapDef {
   public final float minX,maxX,minY,maxY,entryX,entryY,backX,backY,nextX,nextY,exitRadius;
   private List<WorldMoveTargetController.TileCenter> navigation,ground;
   private List<RectF> obstacles;
+  private Map<Long,WorldMoveTargetController.TileCenter> centerLookup;
+  public WorldMoveTargetController.TileCenter exactCenter(float x,float y){if(Math.abs(x-Math.round(x))>=.01f||Math.abs(y-Math.round(y))>=.01f)return null;if(centerLookup==null){centerLookup=new HashMap<>();for(WorldMoveTargetController.TileCenter t:navigationTiles())centerLookup.put(((long)Math.round(t.x)<<32)^(Math.round(t.y)&0xffffffffL),t);}return centerLookup.get(((long)Math.round(x)<<32)^(Math.round(y)&0xffffffffL));}
+  public boolean isNavigationCenter(float x,float y){return exactCenter(x,y)!=null;}
+  private TerrainObstacleIndex index;
+  public boolean terrainBlocked(float x,float y,float radius){if(index==null)index=new TerrainObstacleIndex(obstacles());return index.blocked(x,y,radius);}
 
   private PoteCampaignMapDef(String id,int zone,String title,float minX,float maxX,float minY,float maxY,
       float entryX,float entryY,float backX,float backY,float nextX,float nextY,float exitRadius){
@@ -42,7 +47,7 @@ public final class PoteCampaignMapDef {
     for(float y=minY;y<=maxY;y+=16f,row++){float first=minX+((row&1)==0?0f:32f);for(float x=first;x<=maxX;x+=64f)out.add(new WorldMoveTargetController.TileCenter(x,y));}
     ground=Collections.unmodifiableList(out);return ground;
   }
-  public WorldMoveTargetController.TileCenter nearest(float x,float y){WorldMoveTargetController.TileCenter best=null;float bd=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:navigationTiles()){float dx=t.x-x,dy=t.y-y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=t;}}return best;}
+  public WorldMoveTargetController.TileCenter nearest(float x,float y){WorldMoveTargetController.TileCenter exact=exactCenter(x,y);if(exact!=null)return exact;WorldMoveTargetController.TileCenter best=null;float bd=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:navigationTiles()){float dx=t.x-x,dy=t.y-y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=t;}}return best;}
   public float[][] trail(){return PoteForestGeometry.trailCenterline(id);}
   public float[][] creek(){return PoteForestGeometry.creekCenterline(id);}
   public float bridgeX(){return PoteForestGeometry.bridgeX(id);}
@@ -54,5 +59,5 @@ public final class PoteCampaignMapDef {
     out.addAll(PoteForestGeometry.waterObstacles(id));
     return Collections.unmodifiableList(out);
   }
-  private boolean blocked(float x,float y){float r=14;if(x-r<minX||x+r>maxX||y-r<minY||y+r>maxY)return true;for(RectF o:obstacles())if(x+r>o.left&&x-r<o.right&&y+r>o.top&&y-r<o.bottom)return true;return false;}
+  private boolean blocked(float x,float y){float r=14;if(x-r<minX||x+r>maxX||y-r<minY||y+r>maxY)return true;return terrainBlocked(x,y,r);}
 }
