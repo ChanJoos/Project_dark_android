@@ -1,3 +1,5 @@
+# Current user repair: POTE_REFERENCE_V113; V112 USER_VISUAL_REJECTED.
+# Inputs: latest main18ef615, supplied1000056919/1000056952 videos, docs/visual/POTE_FOREST_DESIGN_V1.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/MONSTER_CREATION_MANUAL.md.
 onboarding_v110:
   implementation: IMPLEMENTED
   build: BUILD_VERIFIED

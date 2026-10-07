@@ -29,7 +29,7 @@ public final class GameView extends View {
   private static final float CHAT_LEFT=288f,CHAT_RIGHT=624f;
   private static final float MODE_X=778f,MODE_Y=495f,MODE_R=22f;
   private static final float AUTO_X=842f,AUTO_Y=495f,AUTO_R=24f;
-  static final float AUTO_TARGET_RADIUS=256f;
+  static final float AUTO_TARGET_RADIUS=Float.MAX_VALUE;
   private static final float UTILITY_X0=608f,UTILITY_Y0=28f,UTILITY_STEP=50f,UTILITY_R=16f;
 
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -136,7 +136,7 @@ public final class GameView extends View {
     quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);
     if(inReagentShop){updateReagentShop(dt);return;}
     if(inPoteField){updatePoteField(dt);return;}
-    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);
+    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);autoAcquireWait=Math.max(0,autoAcquireWait-dt);
     combat.tick(dt);if(autoAttackEnabled&&combat.target()==null&&isMonsterApproach(moveTarget.snapshot()))worldAdapter.cancel();combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){cancelSkillApproach();autoAttackEnabled=false;action=Action.IDLE;playerFacing.endAttack();interaction.cancel();combat.clearTarget();combat.cancelApproach();activeWorld().cancelForAction();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;activeSkillVisualId=null;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
@@ -356,11 +356,14 @@ public final class GameView extends View {
     if(!autoAttackEnabled||isActing()||joy||!state.player().alive||activeWorld().presentationMoving())return;
     if(navigation!=null&&navigation.status==WorldMoveTargetController.Status.MOVING)return;
     CampaignProgress.Def hunt=activeCampaignHunt();
+    if(autoHuntQuestId!=null&&hunt==null){autoHuntQuestId=null;autoAttackEnabled=false;combat.clearTarget();autoNavigateCampaign();return;}
+
     RuntimeState.Monster current=combat.target();
     if(!combat.hasUsableTarget()||(current!=null
-        &&(!campaignHuntTarget(hunt,current)||activeWorld().monsterApproachPathSteps(current.id,CanonicalMeleeTileContract.REACH_DISTANCE)<0))){
+        &&(!campaignHuntTarget(hunt,current)||(navigation!=null&&navigation.status==WorldMoveTargetController.Status.BLOCKED)))){
+      if(autoAcquireWait>0)return;
       RuntimeState.Monster best=bestReachableAutoTarget(hunt);
-      if(best==null){combat.clearTarget();if(autoTargetHintClock<=0f){showFeedback("접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);autoTargetHintClock=3f;}return;}
+      if(best==null){autoAcquireWait=.5f;combat.clearTarget();if(autoTargetHintClock<=0f){showFeedback("접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);autoTargetHintClock=3f;}return;}
       combat.selectTarget(best);
       autoTargetHintClock=1f;
     }
@@ -384,9 +387,11 @@ public final class GameView extends View {
 
   private static boolean isMonsterApproach(WorldMoveTargetController.Snapshot move){return move!=null&&move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH&&move.status==WorldMoveTargetController.Status.MOVING;}
 
+  private String autoHuntQuestId;
+  private float autoAcquireWait;
   private CampaignProgress.Def activeCampaignHunt(){
     CampaignProgress.Def d=campaignNext();
-    if(d==null||state.rpg().campaign().status(d,state.rpg())!=CampaignProgress.Status.ACTIVE
+    if(d==null||autoHuntQuestId==null||!autoHuntQuestId.equals(d.id)||state.rpg().campaign().status(d,state.rpg())!=CampaignProgress.Status.ACTIVE
         ||!(d.kind.equals("KILL")||d.kind.equals("PAIR")))return null;
     return d;
   }
@@ -397,9 +402,7 @@ public final class GameView extends View {
   }
   private RuntimeState.Monster bestReachableAutoTarget(){return bestReachableAutoTarget(null);}
   private RuntimeState.Monster bestReachableAutoTarget(CampaignProgress.Def hunt){
-    return AutoAttackTargetSelector.select(state.monsters(),state.player().x,state.player().y,
-        AUTO_TARGET_RADIUS,monster->activeWorld().monsterApproachPathSteps(
-            monster.id,CanonicalMeleeTileContract.REACH_DISTANCE),monster->campaignHuntTarget(hunt,monster));
+    return activeWorld().selectAutoTarget(monster->campaignHuntTarget(hunt,monster));
   }
 
   private void attack(){
@@ -416,7 +419,7 @@ public final class GameView extends View {
   static float logicalWidthForView(int width,int height){float fittedScale=Math.min(width/W,height/H);return fittedScale<=0?W:width/fittedScale;}
   static float rightHudOffsetForView(int width,int height){return Math.max(0f,logicalWidthForView(width,height)-W);}
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);logicalViewportWidth=logicalWidthForView(w,h);boolean wide=logicalViewportWidth>W+.01f;ox=wide?0:(w-W*scale)/2;oy=(h-H*scale)/2;hudRightOffset=wide?logicalViewportWidth-W:0;hudCenterOffset=hudRightOffset*.5f;worldAdapter.resizeViewport(logicalViewportWidth,H);if(poteFieldAdapter!=null)poteFieldAdapter.resizeViewport(logicalViewportWidth,H);camera=activeWorld().camera();if(reagentShopAdapter!=null)reagentShopAdapter.resizeViewport(logicalViewportWidth,H);}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){poteFieldRenderer.drawBelow(c,poteFieldAdapter,activeWorld().presentationPlayerY());c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawTapMarker(c);drawCampaignGates(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);skillVfx.draw(c,skillAnchors);c.restore();poteFieldRenderer.drawAbove(c,poteFieldAdapter,activeWorld().presentationPlayerY());}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){drawPoteWorld(c);}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);c.restore();}
 
   private WorldRuntimeAdapter activeWorld(){if(inReagentShop&&reagentShopAdapter!=null)return reagentShopAdapter;return inPoteField&&poteFieldAdapter!=null?poteFieldAdapter:worldAdapter;}
 
@@ -484,7 +487,9 @@ public final class GameView extends View {
     campaignAutoRoute=false;
     if(st==CampaignProgress.Status.AVAILABLE||st==CampaignProgress.Status.REPORT||(st==CampaignProgress.Status.ACTIVE&&(d.kind.equals("SUPPLY")||d.kind.equals("BUY")||d.kind.equals("VISIT")||d.kind.equals("JOB")||d.kind.equals("LEVEL")))){RuntimeState.Npc npc=findNpc(d.npc);if(npc!=null)activeWorld().requestNpcApproach(npc.id);return;}
     if(st==CampaignProgress.Status.ACTIVE&&d.kind.equals("ALTAR")){for(RuntimeState.Npc n:state.npcs())if(n.id.startsWith("campaign_altar_")&&!state.rpg().campaign().altarDone(n.id)){activeWorld().requestNpcApproach(n.id);return;}}
-    RuntimeState.Monster target=null;for(RuntimeState.Monster m:state.monsters()){String species=m.campaignRewardProfileId==null?m.id:m.campaignRewardProfileId;boolean wanted=st==CampaignProgress.Status.LOCKED||d.kind.equals("SKILL")||state.rpg().campaign().wanted(d,species);if(m.alive&&wanted&&(target==null||Math.hypot(m.x-state.player().x,m.y-state.player().y)<Math.hypot(target.x-state.player().x,target.y-state.player().y)))target=m;}
+    boolean questHunt=st==CampaignProgress.Status.ACTIVE&&(d.kind.equals("KILL")||d.kind.equals("PAIR"));
+    if(questHunt){autoHuntQuestId=d.id;autoAcquireWait=0;autoAttackEnabled=true;}
+    RuntimeState.Monster target=bestReachableAutoTarget(questHunt?d:null);
     if(target!=null){
       combat.selectTarget(target);
       activeWorld().requestMonsterApproach(target.id,CanonicalMeleeTileContract.REACH_DISTANCE);
@@ -494,7 +499,7 @@ public final class GameView extends View {
   private WorldRuntimeAdapter campaignWorldAdapter(){com.projectdark.mobile.world.PoteCampaignMapDef d=com.projectdark.mobile.world.PoteCampaignMapDef.forId(state.currentMapId());return new WorldRuntimeAdapter(state,logicalViewportWidth,H,d.minX,d.maxX,d.minY,d.maxY,d.navigationTiles(),d.obstacles(),true);}
   private void changeCampaignMap(String id,boolean fromNext){cancelSkillApproach();skillVfx.clear();combat.clearTarget();combat.cancelApproach();interaction.cancel();if(poteFieldAdapter!=null)poteFieldAdapter.cancel();state.enterCampaignMap(id,fromNext);poteFieldAdapter=campaignWorldAdapter();poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();action=Action.IDLE;joy=false;vx=vy=0;directStepClock=0;checkpoint();showFeedback(com.projectdark.mobile.world.CampaignWorld.title(id),FeedbackTone.INFO);if(campaignAutoRoute)autoNavigateCampaign();}
   private boolean checkCampaignGate(){WorldMoveTargetController.TileCenter back=com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId()),forward=com.projectdark.mobile.world.CampaignWorld.forward(state.currentMapId());float x=state.player().x,y=state.player().y;if(Math.hypot(x-back.x,y-back.y)<22){String previous=com.projectdark.mobile.world.CampaignWorld.previous(state.currentMapId());if(previous==null){boolean route=campaignAutoRoute;leavePoteField();if(route)autoNavigateCampaign();}else changeCampaignMap(previous,true);return true;}String next=com.projectdark.mobile.world.CampaignWorld.next(state.currentMapId());if(next!=null&&Math.hypot(x-forward.x,y-forward.y)<22){changeCampaignMap(next,false);return true;}return false;}
-  private void drawCampaignGates(Canvas c){if(!inPoteField)return;WorldMoveTargetController.TileCenter[] gates={com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId()),com.projectdark.mobile.world.CampaignWorld.forward(state.currentMapId())};for(int i=0;i<2;i++){String id=i==0?com.projectdark.mobile.world.CampaignWorld.previous(state.currentMapId()):com.projectdark.mobile.world.CampaignWorld.next(state.currentMapId());if(i==1&&id==null)continue;WorldMoveTargetController.TileCenter t=gates[i];p.setColor(0x8891b6bb);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);c.drawOval(t.x-22,t.y-11,t.x+22,t.y+11,p);p.setStyle(Paint.Style.FILL);text(c,id==null?"밀레스":com.projectdark.mobile.world.CampaignWorld.title(id),t.x-30,t.y-18,9);}}
+  private void drawCampaignGates(Canvas c){if(!inPoteField)return;WorldMoveTargetController.TileCenter[] gates={com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId()),com.projectdark.mobile.world.CampaignWorld.forward(state.currentMapId())};for(int i=0;i<2;i++){String id=i==0?com.projectdark.mobile.world.CampaignWorld.previous(state.currentMapId()):com.projectdark.mobile.world.CampaignWorld.next(state.currentMapId());if(i==1&&id==null)continue;WorldMoveTargetController.TileCenter t=gates[i];poteFieldRenderer.drawPortalWorld(c,t.x,t.y);text(c,id==null?"밀레스":com.projectdark.mobile.world.CampaignWorld.title(id),t.x-30,t.y-18,9);}}
 
   private void enterPoteField(){
     cancelSkillApproach();skillVfx.clear();activeSkillVisualId=null;
@@ -509,8 +514,9 @@ public final class GameView extends View {
     state.enterMillesFromField(fieldReturnX,Math.max(1510f,fieldReturnY-32f));worldAdapter.snapCameraToPlayer();camera=worldAdapter.camera();action=Action.IDLE;joy=false;vx=vy=0;checkpoint();showFeedback("밀레스",FeedbackTone.INFO);
   }
   private void updatePoteField(float dt){
+    poteFieldRenderer.tick(dt);
     if(interaction.dialogOpen()||townWindow.isOpen()){action=Action.IDLE;return;}
-    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);
+    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);autoAcquireWait=Math.max(0,autoAcquireWait-dt);
     combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){cancelSkillApproach();autoAttackEnabled=false;action=Action.IDLE;playerFacing.endAttack();combat.clearTarget();combat.cancelApproach();poteFieldAdapter.cancelForAction();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;activeSkillVisualId=null;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
@@ -571,7 +577,7 @@ public final class GameView extends View {
       if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();reagentShopAdapter.snapCameraToPlayer();checkpoint();}return true;}
       if(inside(x,y,14,132,304,194)){autoNavigateQuest();return true;}
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){merchantApproach=false;attack();return true;}
-      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){merchantApproach=false;cancelSkillApproach();autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null)combat.selectTarget(best);}return true;}
+      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){merchantApproach=false;cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null)combat.selectTarget(best);}return true;}
       for(int i=0;i<8;i++)if(slotRect(i).contains(x,y)){SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);return true;}
       WorldCameraTransform.Point target=reagentShopAdapter.screenToWorld(x,y);RuntimeState.Monster rat=state.hitMonster(target.x,target.y,18);if(rat!=null&&!isHudSurface(x,y)){merchantApproach=false;reagentShopAdapter.cancelForAction();combat.selectTarget(rat);return true;}
     }
@@ -580,6 +586,17 @@ public final class GameView extends View {
     if(e.getActionMasked()==MotionEvent.ACTION_MOVE&&joy){stick(x,y);return true;}if(e.getActionMasked()==MotionEvent.ACTION_UP||e.getActionMasked()==MotionEvent.ACTION_CANCEL){joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;}return true;
   }
 
+  private void drawPoteWorld(Canvas c){
+    java.util.List<com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw> actors=new java.util.ArrayList<>();
+    actors.add(poteActor(c,0,Float.NEGATIVE_INFINITY,0,()->{drawTapMarker(c);drawCampaignGates(c);}));
+    for(RuntimeState.Npc n:state.npcs())actors.add(poteActor(c,n.x,n.y,58,()->drawNpc(c,n)));
+    for(RuntimeState.Monster m:state.monsters())if(m.alive)actors.add(poteActor(c,m.x,m.y,PoteForestMonsterShowcase.bodyHeight(m.id),()->drawMonster(c,m)));
+    actors.add(poteActor(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),52,()->drawCharacter(c)));
+    poteFieldRenderer.drawScene(c,poteFieldAdapter,actors);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();
+  }
+  private com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw poteActor(Canvas c,float x,float y,float height,Runnable draw){
+    return new com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw(x,y,height,32,()->{c.save();c.translate(-camera.cameraX(),-camera.cameraY());draw.run();c.restore();});
+  }
   private void drawWorld(Canvas c){
     java.util.List<AdaptedMillesMapRenderer.DepthDraw> actors=new java.util.ArrayList<>();
     actors.add(millesDepth(c,Float.NEGATIVE_INFINITY,()->drawTapMarker(c)));
@@ -844,7 +861,7 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
       for(int i=0;i<10;i++)if(slotRect(i).contains(x,y)){pressedControl="SLOT"+i;if(i<8){SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);}else {String potion=i==8?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION";if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().useQuickConsumable(potion,state)==RpgProgressionState.UseResult.USED))showFeedback(i==8?"회복약 사용":"마나약 사용",FeedbackTone.INFO);else showFeedback("물약이 없거나 회복할 필요가 없습니다",FeedbackTone.INFO);}return true;}
       if(circleHit(x,y,MODE_X+hudRightOffset,MODE_Y,MODE_R+3)){pressedControl="MODE";activeWorld().cancelForAction();showFeedback("기본 공격은 장착한 무기에 따라 결정됩니다",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
-      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
+      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
       if(isHudSurface(x,y))return true;
       WorldRuntimeAdapter active=activeWorld();WorldCameraTransform.Point wp=active.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){cancelSkillApproach();combat.cancelApproach();interaction.cancelApproach();active.requestNpcApproach(npc.id);showFeedback("NPC 접근 · "+npc.name,FeedbackTone.INFO);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){cancelSkillApproach();active.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name,FeedbackTone.INFO);return true;}requestGroundMove(x,y);return true;
     case MotionEvent.ACTION_MOVE:if(joy)stick(x,y);return true;

@@ -118,6 +118,11 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     return movement.requestMonsterApproach(monster.id,targetX,targetY,Math.max(1f,approachTolerance));
   }
 
+  public RuntimeState.Monster selectAutoTarget(java.util.function.Predicate<RuntimeState.Monster> filter){
+    List<RuntimeState.Monster> candidates=new ArrayList<>();List<WorldMoveTargetController.TileCenter> targets=new ArrayList<>();
+    for(RuntimeState.Monster m:runtime.monsters())if(m.alive&&filter.test(m)){candidates.add(m);targets.add(new WorldMoveTargetController.TileCenter(m.isMoving?m.moveTargetX:m.x,m.isMoving?m.moveTargetY:m.y));}
+    int index=movement.nearestApproachTarget(targets);return index<0?null:candidates.get(index);
+  }
   public int monsterApproachPathSteps(String monsterId,float approachTolerance){
     RuntimeState.Monster monster=findMonster(monsterId);
     if(monster==null||!monster.alive)return -1;

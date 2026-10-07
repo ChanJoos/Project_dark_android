@@ -12,7 +12,7 @@ import java.util.List;
  */
 public final class PoteFieldDef {
   public static final String MAP_ID="MAP_POTE_01";
-  public static final float MIN_X=64f,MAX_X=1792f,MIN_Y=64f,MAX_Y=896f;
+  public static final float MIN_X=64f,MAX_X=4096f,MIN_Y=64f,MAX_Y=2048f;
   /** Field arrivals open on the central trail so the player can see where the route goes. */
   public static final float ENTRY_X=800f,ENTRY_Y=528f;
   public static final float EXIT_X=128f,EXIT_Y=832f;
@@ -84,20 +84,8 @@ public final class PoteFieldDef {
   private static List<RectF> buildObstacles(){
     List<RectF> out=new ArrayList<>();
     out.addAll(PoteFieldRenderer.blockingFootprints());
-    // Sample the winding channel into narrow blocking footprints; bounding rectangles around
-    // diagonal bends block too much ground and leave implausible gaps at the outer edges.
-    float[][] water=PoteForestGeometry.creekCenterline();
-    for(int i=1;i<water.length;i++){
-      float x0=water[i-1][0],y0=water[i-1][1],x1=water[i][0],y1=water[i][1];
-      float length=(float)Math.hypot(x1-x0,y1-y0);
-      int steps=Math.max(1,(int)Math.ceil(length/18f));
-      for(int step=0;step<=steps;step++){
-        float t=step/(float)steps,x=x0+(x1-x0)*t,y=y0+(y1-y0)*t;
-        // The bank stays solid beside the deck, leaving only a narrow bridge-width opening.
-        if(Math.hypot(x-PoteForestGeometry.BRIDGE_X,y-PoteForestGeometry.BRIDGE_Y)<=47f)continue;
-        out.add(new RectF(x-19f,y-19f,x+19f,y+19f));
-      }
-    }
+
+    out.addAll(PoteForestGeometry.waterObstacles(PoteFieldDef.MAP_ID));
     return Collections.unmodifiableList(out);
   }
 

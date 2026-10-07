@@ -1,0 +1,799 @@
+{
+  "status": "CAPTURE_DERIVED; original pixels; user visual review pending",
+  "records": [
+    {
+      "file": "tree_willow.png",
+      "source": "1000056919.mp4",
+      "box": [
+        1226,
+        70,
+        1606,
+        485
+      ],
+      "exterior": [
+        [
+          92,
+          5
+        ],
+        [
+          140,
+          20
+        ],
+        [
+          165,
+          42
+        ],
+        [
+          198,
+          22
+        ],
+        [
+          236,
+          22
+        ],
+        [
+          272,
+          56
+        ],
+        [
+          277,
+          84
+        ],
+        [
+          330,
+          96
+        ],
+        [
+          346,
+          143
+        ],
+        [
+          327,
+          175
+        ],
+        [
+          374,
+          210
+        ],
+        [
+          377,
+          307
+        ],
+        [
+          349,
+          310
+        ],
+        [
+          318,
+          277
+        ],
+        [
+          289,
+          282
+        ],
+        [
+          276,
+          334
+        ],
+        [
+          238,
+          337
+        ],
+        [
+          216,
+          369
+        ],
+        [
+          188,
+          405
+        ],
+        [
+          126,
+          404
+        ],
+        [
+          128,
+          363
+        ],
+        [
+          94,
+          337
+        ],
+        [
+          72,
+          320
+        ],
+        [
+          29,
+          327
+        ],
+        [
+          15,
+          301
+        ],
+        [
+          21,
+          266
+        ],
+        [
+          18,
+          227
+        ],
+        [
+          2,
+          188
+        ],
+        [
+          15,
+          145
+        ],
+        [
+          28,
+          131
+        ],
+        [
+          23,
+          103
+        ],
+        [
+          47,
+          97
+        ],
+        [
+          66,
+          52
+        ]
+      ],
+      "bark": [
+        [
+          [
+            174,
+            162
+          ],
+          [
+            196,
+            178
+          ],
+          [
+            226,
+            130
+          ],
+          [
+            232,
+            155
+          ],
+          [
+            206,
+            210
+          ],
+          [
+            249,
+            230
+          ],
+          [
+            262,
+            238
+          ],
+          [
+            252,
+            257
+          ],
+          [
+            211,
+            242
+          ],
+          [
+            208,
+            310
+          ],
+          [
+            193,
+            370
+          ],
+          [
+            211,
+            394
+          ],
+          [
+            184,
+            404
+          ],
+          [
+            166,
+            380
+          ],
+          [
+            166,
+            325
+          ],
+          [
+            154,
+            289
+          ],
+          [
+            117,
+            259
+          ],
+          [
+            111,
+            246
+          ],
+          [
+            164,
+            263
+          ],
+          [
+            174,
+            238
+          ],
+          [
+            172,
+            190
+          ]
+        ],
+        [
+          [
+            92,
+            191
+          ],
+          [
+            127,
+            210
+          ],
+          [
+            181,
+            223
+          ],
+          [
+            185,
+            238
+          ],
+          [
+            146,
+            233
+          ],
+          [
+            105,
+            213
+          ]
+        ]
+      ],
+      "method": "source colour/exterior/trunk mask; nearest half-size; missing pixels not filled",
+      "sha256": "d1e5b3675d457f1ebb4f8595311640fe23437b3da572d0b6a755ceadcf73948a",
+      "time": 9
+    },
+    {
+      "file": "tree_oak.png",
+      "source": "1000056952.mp4",
+      "box": [
+        1070,
+        20,
+        1453,
+        415
+      ],
+      "exterior": [
+        [
+          150,
+          0
+        ],
+        [
+          182,
+          15
+        ],
+        [
+          207,
+          27
+        ],
+        [
+          220,
+          12
+        ],
+        [
+          251,
+          17
+        ],
+        [
+          262,
+          32
+        ],
+        [
+          313,
+          41
+        ],
+        [
+          340,
+          69
+        ],
+        [
+          336,
+          96
+        ],
+        [
+          302,
+          115
+        ],
+        [
+          332,
+          139
+        ],
+        [
+          352,
+          169
+        ],
+        [
+          344,
+          210
+        ],
+        [
+          317,
+          226
+        ],
+        [
+          290,
+          213
+        ],
+        [
+          255,
+          228
+        ],
+        [
+          224,
+          248
+        ],
+        [
+          220,
+          290
+        ],
+        [
+          200,
+          332
+        ],
+        [
+          225,
+          350
+        ],
+        [
+          246,
+          364
+        ],
+        [
+          246,
+          385
+        ],
+        [
+          215,
+          391
+        ],
+        [
+          187,
+          383
+        ],
+        [
+          161,
+          387
+        ],
+        [
+          145,
+          374
+        ],
+        [
+          125,
+          380
+        ],
+        [
+          96,
+          369
+        ],
+        [
+          95,
+          344
+        ],
+        [
+          113,
+          325
+        ],
+        [
+          120,
+          285
+        ],
+        [
+          104,
+          277
+        ],
+        [
+          81,
+          254
+        ],
+        [
+          49,
+          249
+        ],
+        [
+          34,
+          223
+        ],
+        [
+          42,
+          199
+        ],
+        [
+          24,
+          179
+        ],
+        [
+          9,
+          161
+        ],
+        [
+          17,
+          137
+        ],
+        [
+          39,
+          123
+        ],
+        [
+          42,
+          98
+        ],
+        [
+          64,
+          93
+        ],
+        [
+          75,
+          72
+        ],
+        [
+          55,
+          53
+        ],
+        [
+          55,
+          28
+        ],
+        [
+          90,
+          6
+        ],
+        [
+          120,
+          13
+        ]
+      ],
+      "bark": [
+        [
+          [
+            144,
+            175
+          ],
+          [
+            158,
+            160
+          ],
+          [
+            184,
+            101
+          ],
+          [
+            205,
+            83
+          ],
+          [
+            242,
+            67
+          ],
+          [
+            266,
+            68
+          ],
+          [
+            233,
+            90
+          ],
+          [
+            222,
+            107
+          ],
+          [
+            195,
+            135
+          ],
+          [
+            181,
+            173
+          ],
+          [
+            235,
+            165
+          ],
+          [
+            265,
+            138
+          ],
+          [
+            278,
+            141
+          ],
+          [
+            260,
+            171
+          ],
+          [
+            214,
+            189
+          ],
+          [
+            188,
+            221
+          ],
+          [
+            178,
+            281
+          ],
+          [
+            173,
+            336
+          ],
+          [
+            199,
+            354
+          ],
+          [
+            229,
+            366
+          ],
+          [
+            230,
+            381
+          ],
+          [
+            203,
+            375
+          ],
+          [
+            174,
+            364
+          ],
+          [
+            163,
+            376
+          ],
+          [
+            140,
+            363
+          ],
+          [
+            116,
+            368
+          ],
+          [
+            116,
+            352
+          ],
+          [
+            143,
+            334
+          ],
+          [
+            146,
+            304
+          ],
+          [
+            139,
+            270
+          ],
+          [
+            138,
+            240
+          ],
+          [
+            130,
+            218
+          ],
+          [
+            89,
+            201
+          ],
+          [
+            90,
+            190
+          ],
+          [
+            118,
+            192
+          ],
+          [
+            142,
+            204
+          ]
+        ],
+        [
+          [
+            173,
+            209
+          ],
+          [
+            214,
+            232
+          ],
+          [
+            248,
+            244
+          ],
+          [
+            238,
+            254
+          ],
+          [
+            206,
+            246
+          ],
+          [
+            181,
+            232
+          ]
+        ]
+      ],
+      "method": "source colour/exterior/trunk mask; nearest half-size; missing pixels not filled",
+      "sha256": "cf3d866694ffc0320086b6970e3f352e7217c56c96c9280a32d8764886595073",
+      "time": 25
+    },
+    {
+      "file": "trail_earth.png",
+      "source": "1000056919.mp4",
+      "time": 9,
+      "box": [
+        1060,
+        290,
+        1188,
+        354
+      ],
+      "sha256": "5a1be7d60c959c082d4b192ad65a6e2c0666adde8d808481e03e667621657b03"
+    },
+    {
+      "file": "water_current.png",
+      "source": "03-Screen_Recording_20260915_003701_YouTube.mp4",
+      "time": 20,
+      "box": [
+        882,
+        15,
+        1110,
+        77
+      ],
+      "note": "Original client water material; Milles capture, not claimed Pote river geometry",
+      "sha256": "e86131d1c2d826533cbac2f54ba35fa2ef6967b0ea15a19bb01a6b08ac3f12ea"
+    },
+    {
+      "file": "shore_rock.png",
+      "source": "03-Screen_Recording_20260915_003701_YouTube.mp4",
+      "time": 20,
+      "box": [
+        1050,
+        197,
+        1146,
+        251
+      ],
+      "sha256": "63952cb9351bc36cf789cc90a1f99ee93c4280ac043f200d2734034d0a419083"
+    },
+    {
+      "file": "forest_floor.png",
+      "source": "1000056919.mp4",
+      "time": 27,
+      "boxes": [
+        [
+          835,
+          425,
+          1048,
+          598
+        ],
+        [
+          435,
+          103,
+          625,
+          250
+        ],
+        [
+          1040,
+          106,
+          1154,
+          194
+        ],
+        [
+          440,
+          275,
+          560,
+          380
+        ]
+      ],
+      "method": "cropped source patches, overlap feather and wrap seam blend",
+      "sha256": "b777c9c6faa955ce220b2c821336a9cf39be3514db8589539bc11eed23dcc9d7"
+    },
+    {
+      "file": "fern.png",
+      "source": "1000056919.mp4",
+      "time": 9,
+      "box": [
+        1122,
+        48,
+        1214,
+        128
+      ],
+      "sha256": "a486cd486ed8d599f680cb7e850cadbbeeea98ab4b675063158a8da85807c9e4"
+    },
+    {
+      "file": "flowers.png",
+      "source": "1000056919.mp4",
+      "time": 15,
+      "box": [
+        1200,
+        40,
+        1338,
+        140
+      ],
+      "sha256": "ec9fa06d00eb69b08ceabb307af512a4a47dabbd54cfb95228cfa5b6b36128b9"
+    },
+    {
+      "file": "shore_material.png",
+      "source": "03-Screen_Recording_20260915_003701_YouTube.mp4",
+      "time": 20,
+      "box": [
+        1435,
+        293,
+        1491,
+        325
+      ],
+      "sha256": "217f9b79d6dbc4a921029cf46bc43061cf0b057b0d0dc401bd9dae9783f1099e"
+    }
+  ],
+  "sourceProjection": "all crop/mask coordinates in nearest-neighbour 2032x938 inspection projection of original2340x1080 capture",
+  "sourceHashes": {
+    "upload/1000056919.mp4": "44edc1e6298fec1e36917b89a2f5bc87239915e161752630db12e92104e782a1",
+    "upload/1000056952.mp4": "4c5be4e4513bf57a66e3a88a3597853b7e23d7afdc6000729d3312e89ab91f74",
+    "project_sources/03-Screen_Recording_20260915_003701_YouTube.mp4": "047920ab732acafd76db6bae9817a59938be908448a5826e31a66170a29710f0"
+  },
+  "legacyWaterRepair": [
+    {
+      "source": "POTE_WT_01.png",
+      "sourceSha256": "7aa44416a8394b967a8254c07fcf84112bf725ba35713bf5db03e8dbeaa4539b",
+      "file": "POTE_WATER_01.png",
+      "sha256": "d5a69b65458dd697f3b96052ef9564d906b1f71453cd74469104044b0580e47d",
+      "method": "source blue/white water pixel alpha isolation; no source bytes overwritten"
+    },
+    {
+      "source": "POTE_WT_02.png",
+      "sourceSha256": "08e66c61e677e948cd9a4f3eb9ef39600d1aca1f1a52f78f8ba1d20ae05fb01a",
+      "file": "POTE_WATER_02.png",
+      "sha256": "a566bdb8c1a691ab0724fe041c3b00b5e969d1697bbe23e00e6a0388e27ea0bd",
+      "method": "source blue/white water pixel alpha isolation; no source bytes overwritten"
+    },
+    {
+      "source": "POTE_WT_03.png",
+      "sourceSha256": "645fb86a43bf675b896e5bf3dcd3f79454920d46f3383a4f036e17ed347b0a07",
+      "file": "POTE_WATER_03.png",
+      "sha256": "03774fa17d2816e07a9ae0a5145e7670e5609932d758ffa38eaf6db9fdafada6",
+      "method": "source blue/white water pixel alpha isolation; no source bytes overwritten"
+    },
+    {
+      "source": "POTE_WT_04.png",
+      "sourceSha256": "e1bdf355d346be009fdf53920c9b642f485c42baa8c334a4ad79bb39a60c8f41",
+      "file": "POTE_WATER_04.png",
+      "sha256": "1b4972664858c21770802bd1bd81fc9a84ffdb4df2873e294deaa7fe8e1367b6",
+      "method": "source blue/white water pixel alpha isolation; no source bytes overwritten"
+    },
+    {
+      "source": "POTE_WT_05.png",
+      "sourceSha256": "7792f86ae6046a6d18054acfa050a90f015d10defa27ba11b9c7c6dc0396635c",
+      "file": "POTE_WATER_05.png",
+      "sha256": "bd2fb22a2a0422d8e917ece5cfcde44264e688086bde70fd55ec1921766b04a0",
+      "method": "source blue/white water pixel alpha isolation; no source bytes overwritten"
+    },
+    {
+      "source": "POTE_WT_06.png",
+      "sourceSha256": "4fb58d9d7a4c43891203b2fe24303f496017d42586f886654cbded8d2f35259f",
+      "file": "POTE_WATER_06.png",
+      "sha256": "8b2a22b26183cdee04138f4d76cb5f54915991318146383a97b4e852480f0489",
+      "method": "source blue/white water pixel alpha isolation; no source bytes overwritten"
+    }
+  ]
+}

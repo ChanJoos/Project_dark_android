@@ -32,7 +32,7 @@ import java.util.Map;
 public final class PoteFieldRenderer {
   public static final String STATUS="POTE_FOREST_REFERENCE_GROUND_V10";
   private static final float TILE_W=64f,TILE_H=32f;
-  private static final String SOIL_TEXTURE="video_reference/terrain/pote_forest_soil_v2.png";
+  private static final String SOIL_TEXTURE="reference_v113/forest_floor.png";
   private static final String TRAIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private final Paint pixel=new Paint();
   private final Paint soilPaint=new Paint();
@@ -151,66 +151,95 @@ public final class PoteFieldRenderer {
     if(c==null||w==null)return;drawBelow(c,w,Float.POSITIVE_INFINITY);
   }
 
-  /** Draw terrain and objects whose ground anchors are behind the supplied actor depth. */
+  public void drawPortalWorld(Canvas c,float x,float y){Bitmap b=bitmap("world/portal/portal_reagent_shop.webp");if(b!=null){pixel.setAlpha(255);pixel.setColor(0xffffffff);c.drawBitmap(b,null,new RectF(x-32,y-22,x+32,y+10),pixel);}}
+  /** Actor bounds/callbacks use world feet. Each tree fades only if its foreground pixels hide an actor. */
+  public static final class ActorDraw {
+    public final float x,y,height,width; public final Runnable draw;
+    public ActorDraw(float x,float y,float height,float width,Runnable draw){this.x=x;this.y=y;this.height=height;this.width=width;this.draw=draw;}
+  }
+  private static final class DepthItem {
+    final float y;final Runnable draw;
+    DepthItem(float y,Runnable draw){this.y=y;this.draw=draw;}
+  }
+  private List<ActorDraw> visibleActors=Collections.emptyList();
+  private float waterClock;
+  public void tick(float dt){waterClock=(waterClock+Math.max(0,dt))%1024f;}
   private boolean campClearing(WorldRuntimeAdapter w,Placement p){return CampaignWorld.PIET.equals(w.runtime().currentMapId())&&!"water".equals(p.role)&&p.x>=540&&p.x<=1080&&p.y>=380&&p.y<=760;}
+  public void drawScene(Canvas c,WorldRuntimeAdapter w,List<ActorDraw> actors){
+    if(c==null||w==null)return;visibleActors=actors;
+    drawFloor(c,w);drawCreekBed(c,w);
+    List<DepthItem> depth=new ArrayList<>();
+    for(Placement p:placementsForMap(w.runtime().currentMapId())){
+      if(campClearing(w,p)||"water".equals(p.role))continue;
+      if("groundcover".equals(p.role)||"bank".equals(p.role)||"bridge".equals(p.role))drawPlacement(c,w,p);
+      else depth.add(new DepthItem(p.y,()->drawPlacement(c,w,p)));
+    }
+    for(ActorDraw actor:actors)depth.add(new DepthItem(actor.y,actor.draw));
+    depth.sort(Comparator.comparingDouble(i->i.y));
+    for(DepthItem item:depth)item.draw.run();visibleActors=Collections.emptyList();
+  }
   public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
-    if(c==null||w==null)return;
-    String mapId=w.runtime().currentMapId();List<Placement> placements=placementsForMap(mapId);
-    c.drawColor(0xff241d15);drawFloor(c,w);drawCreekBed(c,w);
-    for(Placement p:placements)if(!campClearing(w,p)&&!"bridge".equals(p.role)&&("water".equals(p.role)||p.y<=actorY))drawPlacement(c,w,p);
+    if(c==null||w==null)return;drawFloor(c,w);drawCreekBed(c,w);
+    for(Placement p:placementsForMap(w.runtime().currentMapId()))if(!campClearing(w,p)&&!"water".equals(p.role)&&p.y<=actorY)drawPlacement(c,w,p);
     drawBridge(c,w);
   }
-
-  /** Draw foreground canopies/props after the actor so Y-depth remains spatially believable. */
   public void drawAbove(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;
+    visibleActors=Collections.singletonList(new ActorDraw(w.presentationPlayerX(),actorY,52,30,()->{}));
     for(Placement p:placementsForMap(w.runtime().currentMapId()))if(!campClearing(w,p)&&!"bridge".equals(p.role)&&!"water".equals(p.role)&&p.y>actorY)drawPlacement(c,w,p);
+    visibleActors=Collections.emptyList();
   }
-
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
     pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     drawGroundTiles(c,w);drawTrail(c,w);
   }
 
-  /** A broad, gently bending bare-earth lane leads from the arrival point to the footbridge. */
+  /** Feathered source earth patches overlap at irregular widths; no painted road border. */
   private void drawTrail(Canvas c,WorldRuntimeAdapter w){
-    Bitmap texture=bitmap(TRAIL_TEXTURE);if(texture==null)return;
-    BitmapShader shader=new BitmapShader(texture,Shader.TileMode.REPEAT,Shader.TileMode.REPEAT);
+    Bitmap texture=bitmap("reference_v113/trail_earth.png");if(texture==null)return;
+    BitmapShader shader=new BitmapShader(texture,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
     Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
-    pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(72f);
-    pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
-    Path trail=new Path();float[][] points=PoteForestGeometry.trailCenterline(w.runtime().currentMapId());
-    WorldCameraTransform.Point[] screen=new WorldCameraTransform.Point[points.length];
-    for(int i=0;i<points.length;i++)screen[i]=w.worldToScreen(points[i][0],points[i][1]);
-    trail.moveTo(screen[0].x,screen[0].y);
-    for(int i=0;i<screen.length-1;i++){
-      WorldCameraTransform.Point p0=screen[Math.max(0,i-1)],p1=screen[i],p2=screen[i+1],p3=screen[Math.min(screen.length-1,i+2)];
-      float c1x=p1.x+(p2.x-p0.x)/6f,c1y=p1.y+(p2.y-p0.y)/6f;
-      float c2x=p2.x-(p3.x-p1.x)/6f,c2y=p2.y-(p3.y-p1.y)/6f;
-      trail.cubicTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
+    pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
+    float[][] trail=PoteForestGeometry.trailCenterline(w.runtime().currentMapId());
+    for(int i=1;i<trail.length;i++){
+      float len=(float)Math.hypot(trail[i][0]-trail[i-1][0],trail[i][1]-trail[i-1][1]);int n=Math.max(1,(int)(len/32));
+      for(int j=0;j<n;j++){
+        float t=j/(float)n,t2=(j+1)/(float)n;
+        WorldCameraTransform.Point p=w.worldToScreen(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t);
+        WorldCameraTransform.Point q=w.worldToScreen(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t2,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t2);
+        float width=86+18*(float)Math.sin((i*n+j)*.37);
+        // Many low-opacity shoulders soften into the same soil; original dirt colour, no gold stripe.
+        for(int layer=5;layer>=0;layer--){pixel.setAlpha(layer==0?32:8);pixel.setStrokeWidth(width+layer*13);c.drawLine(p.x,p.y,q.x,q.y,pixel);}
+      }
     }
-    c.drawPath(trail,pixel);pixel.setShader(null);pixel.setStyle(Paint.Style.FILL);
+    pixel.setShader(null);pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xffffffff);pixel.setAlpha(255);
   }
-
-  /** Continuous narrow creek bed fills the seams between the authored water sprites. */
+  /** The visible river and the bank collision consume identical sampled centre/width data. */
   private void drawCreekBed(Canvas c,WorldRuntimeAdapter w){
-    float[][] points=PoteForestGeometry.creekCenterline(w.runtime().currentMapId());if(points.length<2)return;
-    Path creek=new Path();WorldCameraTransform.Point[] screen=new WorldCameraTransform.Point[points.length];
-    for(int i=0;i<points.length;i++)screen[i]=w.worldToScreen(points[i][0],points[i][1]);
-    creek.moveTo(screen[0].x,screen[0].y);
-    for(int i=0;i<screen.length-1;i++){
-      WorldCameraTransform.Point p0=screen[Math.max(0,i-1)],p1=screen[i],p2=screen[i+1],p3=screen[Math.min(screen.length-1,i+2)];
-      float c1x=p1.x+(p2.x-p0.x)/6f,c1y=p1.y+(p2.y-p0.y)/6f;
-      float c2x=p2.x-(p3.x-p1.x)/6f,c2y=p2.y-(p3.y-p1.y)/6f;
-      creek.cubicTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
+    float[][] nodes=PoteForestGeometry.channel(w.runtime().currentMapId());if(nodes.length<2)return;
+    Bitmap water=bitmap("reference_v113/water_current.png");if(water==null)return;
+    BitmapShader shader=new BitmapShader(water,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);
+    Matrix phase=new Matrix();phase.setTranslate(-w.camera().cameraX()+waterClock*2,-w.camera().cameraY()+waterClock*.6f);shader.setLocalMatrix(phase);
+    Path surface=new Path();
+    for(int side=1;side>=-1;side-=2)for(int k=0;k<nodes.length;k++){
+      int i=side==1?k:nodes.length-1-k;
+      float[] prev=nodes[Math.max(0,i-1)],next=nodes[Math.min(nodes.length-1,i+1)],a=nodes[i];
+      float dx=next[0]-prev[0],dy=next[1]-prev[1],len=Math.max(1,(float)Math.hypot(dx,dy));
+      WorldCameraTransform.Point q=w.worldToScreen(a[0]-dy/len*a[2]*side,a[1]+dx/len*a[2]*side);
+      if(k==0&&side==1)surface.moveTo(q.x,q.y);else surface.lineTo(q.x,q.y);
     }
-    pixel.setShader(null);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
-    pixel.setColor(0xff55442e);pixel.setStrokeWidth(46f);c.drawPath(creek,pixel);
-    pixel.setColor(0xff72b5c4);pixel.setStrokeWidth(32f);c.drawPath(creek,pixel);
-    pixel.setColor(0x997de0ea);pixel.setStrokeWidth(2f);c.drawPath(creek,pixel);
-    pixel.setStyle(Paint.Style.FILL);
+    Bitmap shore=bitmap("reference_v113/shore_material.png");
+    if(shore!=null){BitmapShader bank=new BitmapShader(shore,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);Matrix bp=new Matrix();bp.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());bank.setLocalMatrix(bp);pixel.setShader(bank);pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(17);pixel.setStrokeJoin(Paint.Join.ROUND);c.drawPath(surface,pixel);pixel.setShader(null);}
+    surface.close();pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setShader(shader);pixel.setStyle(Paint.Style.FILL);c.drawPath(surface,pixel);pixel.setShader(null);
+    // Source cutout shore stones stagger along both banks; avoid repeating identical outlined tiles.
+    Bitmap rock=bitmap("reference_v113/shore_rock.png");if(rock!=null)for(int i=1;i<nodes.length-1;i+=7+(i%3)){
+      float[] a=nodes[i],before=nodes[i-1],after=nodes[i+1];float dx=after[0]-before[0],dy=after[1]-before[1],len=Math.max(1,(float)Math.hypot(dx,dy));
+      for(int side=-1;side<=1;side+=2){float offset=a[2]+1+(i%3)*2;WorldCameraTransform.Point q=w.worldToScreen(a[0]-dy/len*offset*side,a[1]+dx/len*offset*side);float scale=.75f+(i%5)*.09f;
+        c.drawBitmap(rock,null,new RectF(q.x-24*scale,q.y-13*scale,q.x+24*scale,q.y+14*scale),pixel);
+      }
+    }
+    pixel.setColor(0xffffffff);pixel.setAlpha(255);
   }
-
   /** Each navigation-ground diamond samples one shared, source-video texture in world space. */
   private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
     Bitmap soil=bitmap(SOIL_TEXTURE);if(soil==null)return;
@@ -258,10 +287,26 @@ public final class PoteFieldRenderer {
       if("water".equals(p.role)){
         float angle=creekSegmentAngle(w,p.x,p.y);
         c.save();c.rotate(angle,q.x,q.y);c.drawBitmap(b,null,dst,pixel);c.restore();
-      }else c.drawBitmap(b,null,dst,pixel);
+      }else if("bridge".equals(p.role)){
+        c.save();c.rotate(trailAngle(w.runtime().currentMapId(),p.x,p.y)-20f,q.x,q.y);c.drawBitmap(b,null,dst,pixel);c.restore();
+      }else{
+        pixel.setAlpha(occludesActor(p,b)?64:255);c.drawBitmap(b,null,dst,pixel);pixel.setAlpha(255);
+      }
     }
   }
 
+  private boolean occludesActor(Placement p,Bitmap b){
+    if(!"canopy".equals(p.role)&&!"secondary_canopy".equals(p.role))return false;
+    float ww=b.getWidth()*p.scale,hh=b.getHeight()*p.scale;
+    for(ActorDraw a:visibleActors){
+      if(a.y>=p.y||Math.abs(a.x-p.x)>ww*.5f+a.width*.5f||a.y<p.y-hh||a.y-a.height>p.y)continue;
+      for(float yy=a.y-a.height;yy<a.y;yy+=5)for(float xx=a.x-a.width*.4f;xx<=a.x+a.width*.4f;xx+=5){
+        int bx=(int)((xx-(p.x-ww*.5f))/p.scale),by=(int)((yy-(p.y-hh))/p.scale);
+        if(bx>=0&&bx<b.getWidth()&&by>=0&&by<b.getHeight()&&(b.getPixel(bx,by)>>>24)>64)return true;
+      }
+    }
+    return false;
+  }
   /** Align each source creek tile with the closest authored creek segment. */
   private float creekSegmentAngle(WorldRuntimeAdapter w,float x,float y){
     float[][] line=PoteForestGeometry.creekCenterline(w.runtime().currentMapId());float best=Float.MAX_VALUE,angle=0f;
@@ -275,11 +320,12 @@ public final class PoteFieldRenderer {
     return angle;
   }
 
+  private static float trailAngle(String map,float x,float y){float[][] pts=PoteForestGeometry.trailCenterline(map);float best=Float.MAX_VALUE,angle=20;for(int i=1;i<pts.length;i++){float d=(float)Math.hypot(x-pts[i][0],y-pts[i][1]);if(d<best){best=d;angle=(float)Math.toDegrees(Math.atan2(pts[i][1]-pts[i-1][1],pts[i][0]-pts[i-1][0]));}}return angle;}
   private Bitmap bitmap(String name){
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_"))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
@@ -355,67 +401,46 @@ public final class PoteFieldRenderer {
     synchronized(MAP_PLACEMENTS){List<Placement> cached=MAP_PLACEMENTS.get(key);if(cached!=null)return cached;List<Placement> made=buildPlacements(key);MAP_PLACEMENTS.put(key,made);return made;}
   }
   private static List<Placement> buildPlacements(String mapId){
-    if("MAP_POTE_01".equals(mapId)||"MAP_POTE_04".equals(mapId)||CampaignWorld.PIET.equals(mapId))return buildPoteA();
-    List<Placement> p=new ArrayList<>();
+    List<Placement> p=new ArrayList<>();PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);
     float[][] trail=PoteForestGeometry.trailCenterline(mapId),creek=PoteForestGeometry.creekCenterline(mapId);
-    if("MAP_POTE_02".equals(mapId)){
-      mass(p,new float[][]{{250,180},{600,250},{980,190},{1440,190},{1900,170},{360,1080},{820,1080},{1260,1080},{1780,1060},{2170,1020}},3);
-      for(int i=1;i<trail.length-1;i++)pathEdge(p,trail[i][0],trail[i][1],i+2);
-      grove(p,530,470,4);grove(p,870,850,6);grove(p,1760,520,3);rock(p,1110,430,2);stump(p,1550,900,3);
-    }else if("MAP_POTE_03".equals(mapId)){
-      mass(p,new float[][]{{220,180},{620,170},{1020,180},{1780,180},{2300,180},{2700,240},{220,760},{2600,780},{500,1380},{900,1390},{2100,1380},{2600,1360}},5);
-      for(int i=1;i<trail.length-1;i++){pathEdge(p,trail[i][0],trail[i][1],i+5);shoulder(p,trail[i][0],trail[i][1],i+1);}
-      grove(p,800,600,7);grove(p,2050,900,2);rock(p,1150,430,5);stump(p,2350,620,4);
-    }else{
-      mass(p,new float[][]{{240,160},{500,120},{770,130},{1040,120},{1320,150},{1540,220},{240,860},{520,900},{1320,860},{1550,820}},1);
-      for(int i=1;i<trail.length-1;i++)shoulder(p,trail[i][0],trail[i][1],i+2);
-      rock(p,560,600,2);rock(p,1120,540,4);stump(p,1360,650,3);
+    // Authored macro patches vary by map. Jitter only distributes source sprites inside each patch.
+    float[][] patches="MAP_POTE_02".equals(mapId)?new float[][]{{.12f,.16f},{.36f,.23f},{.63f,.13f},{.87f,.32f},{.2f,.64f},{.46f,.71f},{.72f,.81f},{.91f,.66f}}:
+      "MAP_POTE_03".equals(mapId)?new float[][]{{.1f,.17f},{.31f,.12f},{.6f,.2f},{.88f,.17f},{.16f,.48f},{.37f,.65f},{.75f,.5f},{.93f,.73f},{.21f,.87f},{.62f,.86f}}:
+      new float[][]{{.13f,.14f},{.36f,.12f},{.7f,.12f},{.91f,.29f},{.12f,.51f},{.38f,.57f},{.73f,.48f},{.9f,.74f},{.21f,.85f},{.58f,.88f}};
+    java.util.List<float[]> macro=new ArrayList<>(java.util.Arrays.asList(patches));
+    for(int i=0;i<patches.length;i++){float[] a=patches[i];macro.add(new float[]{Math.max(.06f,Math.min(.94f,a[0]+((i%2==0)?.12f:-.13f))),Math.max(.08f,Math.min(.92f,a[1]+((i%3==0)?.18f:-.12f)))});}
+    if("MAP_POTE_01".equals(mapId)||CampaignWorld.PIET.equals(mapId)||"MAP_POTE_04".equals(mapId)){
+      macro.add(new float[]{.105f,.28f});macro.add(new float[]{.215f,.12f});macro.add(new float[]{.30f,.35f});
     }
-    if(creek.length>1){stream(p,creek);p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.bridgeX(mapId),PoteForestGeometry.bridgeY(mapId),.085f,"bridge",false));}
-    for(int i=p.size()-1;i>=0;i--){Placement item=p.get(i);if(!"water".equals(item.role)&&!"bridge".equals(item.role)&&distanceToPolyline(item.x,item.y,creek)<150f&&creek.length>1)p.remove(i);}
-    p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparingInt(a->"bridge".equals(a.role)?1:0).thenComparing(a->a.asset));
-    return Collections.unmodifiableList(p);
-  }
-  private static List<Placement> buildPoteA(){
-    List<Placement> p=new ArrayList<>();
-    // Distinct patches keep some forest edges dense while the middle opens into a broad route.
-    grove(p,190,185,2);grove(p,415,290,5);grove(p,250,620,6);grove(p,430,770,3);
-    grove(p,700,190,1);grove(p,550,790,5);grove(p,1010,190,4);grove(p,850,590,2);
-    grove(p,1700,130,7);grove(p,1605,665,4);grove(p,1730,390,1);
-
-    // Low plants and groundcover mark both shoulders without closing the walking lane.
-    float[][] trail=PoteForestGeometry.trailCenterline(),creek=PoteForestGeometry.creekCenterline();
-    for(int i=1;i<trail.length-1;i++){
-      float x=trail[i][0],y=trail[i][1];
-      if(distanceToPolyline(x-8,y+112,creek)>=48f)ground(p,x-8,y+112,1+(i%6));
-      if(distanceToPolyline(x+10,y-112,creek)>=48f)ground(p,x+10,y-112,1+((i+2)%6));
-      if((i&1)==0){
-        if(distanceToPolyline(x-32,y+145,creek)>=48f)bush(p,x-32,y+145,1+(i%8));
-        if(distanceToPolyline(x+24,y-145,creek)>=48f)bush(p,x+24,y-145,1+((i+3)%8));
+    int seed=0;
+    for(float[] patch:macro){float x=d.minX+(d.maxX-d.minX)*patch[0],y=d.minY+(d.maxY-d.minY)*patch[1];
+      // Sparse and dense groves alternate, leaving large irregular encounter clearings.
+      for(int k=0;k<5+seed%4;k++){float angle=k*2.39996f+seed,radius=38+28*(k%4);float xx=x+(float)Math.cos(angle)*radius*1.65f,yy=y+(float)Math.sin(angle)*radius;
+        if(distanceToPolyline(xx,yy,creek)<150||distanceToPolyline(xx,yy,trail)<105)continue;
+        tree(p,xx,yy,k+seed,.88f+(k%3)*.11f);if((k&1)==0)bush(p,xx-53,yy+25,1+k%8);ground(p,xx+51,yy+21,1+k%6);
+      }seed++;
+    }
+    // Landmark groves beside the arrival/route turns keep extended hunting areas woodland,
+    // while the clear lane itself stays walkable. Alternating shoulders avoid two canopy rows.
+    if(!CampaignWorld.BOSS_D.equals(mapId))for(int i=1;i<trail.length;i++){
+      if(i%3==0)continue;float[] a=trail[i-1],b=trail[i];float dx=b[0]-a[0],dy=b[1]-a[1],len=Math.max(1,(float)Math.hypot(dx,dy)),side=(i%2==0?1:-1);
+      for(int k=0;k<3;k++){float xx=b[0]-dy/len*(215+k*24)*side+(k-1)*58,yy=b[1]+dx/len*(215+k*24)*side+(k-1)*27;
+        if(xx<d.minX+95||xx>d.maxX-95||yy<d.minY+100||yy>d.maxY-90||distanceToPolyline(xx,yy,creek)<150||distanceToPolyline(xx,yy,trail)<105)continue;
+        tree(p,xx,yy,i+k,.9f+(k%2)*.13f);
       }
     }
-
-    // Water segments form the creek; the authored bridge is its only placed crossing.
-    stream(p,PoteForestGeometry.creekCenterline());
-    p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.BRIDGE_X,PoteForestGeometry.BRIDGE_Y,.085f,"bridge",false));
-    grove(p,1650,300,3);grove(p,1370,565,6);
-
-    // Sparse landmarks vary by patch; the arrival clearing and bridge approach stay readable.
-    stump(p,365,535,2);rock(p,510,590,4);small(p,305,505,2);
-    stump(p,550,365,3);rock(p,910,670,2);small(p,870,690,3);
-    rock(p,1570,300,5);small(p,1660,320,1);stump(p,1690,760,4);
-
-    // Suppress all non-crossing props near the creek, including oversized canopy footprints.
-    // Water PNGs are the only creek sprites; the authored bridge is the only crossing object.
-    for(int i=p.size()-1;i>=0;i--){
-      Placement item=p.get(i);
-      if(!"water".equals(item.role)&&!"bridge".equals(item.role)
-          &&distanceToPolyline(item.x,item.y,PoteForestGeometry.creekCenterline())<150f)p.remove(i);
+    // Ground vegetation is irregular throughout the floor, not two repeated rows along a painted road.
+    for(float y=d.minY+140;y<d.maxY-100;y+=116)for(float x=d.minX+130;x<d.maxX-100;x+=164){
+      int h=Math.floorMod((int)x*13+(int)y*31,997);float xx=x+(h%97)-48,yy=y+((h/7)%59)-29;
+      if(distanceToPolyline(xx,yy,creek)<150)continue;
+      if(distanceToPolyline(xx,yy,trail)<50&&h%3!=0)continue;
+      ground(p,xx,yy,1+h%6);if(h%7==0)bush(p,xx+35,yy-25,1+h%8);
+      if(h%29==0)rock(p,xx-25,yy+20,1+h%5);if(h%43==0)stump(p,xx+27,yy+18,1+h%4);
     }
-    p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparingInt(a->"bridge".equals(a.role)?1:0).thenComparing(a->a.asset));
-    return p;
+    if(creek.length>1){stream(p,creek);p.add(new Placement("POTE_BR_01.png",PoteForestGeometry.bridgeX(mapId),PoteForestGeometry.bridgeY(mapId),.12f,"bridge",false));}
+    for(int i=p.size()-1;i>=0;i--){Placement a=p.get(i);if(!"water".equals(a.role)&&!"bridge".equals(a.role)&&distanceToPolyline(a.x,a.y,creek)<150)p.remove(i);}
+    p.sort(Comparator.comparingDouble((Placement a)->a.y).thenComparing(a->a.asset));return Collections.unmodifiableList(p);
   }
-
   /** A compact asymmetric grove: canopy anchors grouped around understory and ground details. */
   private static void grove(List<Placement> p,float x,float y,int seed){
     tree(p,x-78,y+18,1+Math.floorMod(seed,7),.82f);
@@ -486,11 +511,11 @@ public final class PoteFieldRenderer {
     rock(p,x+120,y-45,1+seed%5);
   }
   private static void bushRing(List<Placement> p,float[][] xy,int seed){int i=0;for(float[] q:xy)bush(p,q[0],q[1],1+(seed+i++)%8);}
-  private static void tree(List<Placement> p,float x,float y,int n,float s){p.add(new Placement(String.format("POTE_TR_%02d.png",n),x,y,s,"canopy",false));}
+  private static void tree(List<Placement> p,float x,float y,int n,float s){p.add(new Placement("reference_v113/tree_"+((n&1)==0?"willow":"oak")+".png",x,y,s,"canopy",false));}
   private static void oak(List<Placement> p,float x,float y,float scale){p.add(new Placement("POTE_TR_08.png",x,y,scale,"canopy",false));}
   private static void small(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_TS_%02d.png",n),x,y,.96f,"secondary_canopy",false));}
   private static void bush(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_BS_%02d.png",n),x,y,.72f+(n%4)*.05f,"understory",false));}
-  private static void ground(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_GF_%02d.png",n),x,y,.88f,"groundcover",false));}
+  private static void ground(List<Placement> p,float x,float y,int n){p.add(new Placement("reference_v113/"+(n%3==0?"flowers":"fern")+".png",x,y,.88f,"groundcover",false));}
   private static void stump(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_ST_%02d.png",n),x,y,1f,"stump",false));}
   private static void rock(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_RK_%02d.png",n),x,y,.76f+(n%3)*.07f,"rock",false));}
   private static void water(List<Placement> p,float x,float y,int n){p.add(new Placement(String.format("POTE_WT_%02d.png",n),x,y,1.05f,"stream",false));}

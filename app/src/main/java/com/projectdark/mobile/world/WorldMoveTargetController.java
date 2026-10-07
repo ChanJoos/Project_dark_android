@@ -124,6 +124,28 @@ public final class WorldMoveTargetController {
     targetX=goal.x;targetY=goal.y;status=path.isEmpty()?Status.REACHED:Status.MOVING;return snapshot();
   }
 
+  /** One multi-goal BFS for the whole map. It avoids one separate A* search per monster. */
+  public int nearestApproachTarget(List<TileCenter> targets){
+    TileCenter start=currentTile();if(start==null)return -1;
+    Map<String,Integer> goals=new HashMap<>();
+    for(int i=0;i<targets.size();i++){
+      TileCenter target=targets.get(i);
+      for(Direction d:Direction.values()){
+        TileCenter goal=byCenter.get(key(target.x+d.dx,target.y+d.dy));
+        if(goal!=null&&world.canPlayerOccupy(goal.x,goal.y))goals.putIfAbsent(key(goal.x,goal.y),i);
+      }
+    }
+    java.util.ArrayDeque<TileCenter> queue=new java.util.ArrayDeque<>();Set<String> seen=new HashSet<>();queue.add(start);seen.add(key(start.x,start.y));
+    while(!queue.isEmpty()){
+      TileCenter current=queue.remove();Integer index=goals.get(key(current.x,current.y));if(index!=null)return index;
+      for(Direction d:Direction.values()){
+        TileCenter next=byCenter.get(key(current.x+d.dx,current.y+d.dy));if(next==null)continue;String k=key(next.x,next.y);
+        if(seen.contains(k)||!world.canPlayerOccupy(next.x,next.y)||!edgeTraversable(current,next,d))continue;
+        seen.add(k);queue.add(next);
+      }
+    }
+    return -1;
+  }
   /** Shortest reachable legal melee approach measured in authored tile steps; -1 if unreachable. */
   public int monsterApproachPathSteps(float worldX,float worldY,float approachTolerance){
     TileCenter start=currentTile();

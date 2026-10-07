@@ -1589,5 +1589,230 @@
     "visual_qa": "PENDING_V10",
     "production_status": "ADAPTED_SOURCE_VIDEO_COMPOSITE",
     "source_note": "24 bare-soil crops blended from supplied recording frames at 8s, 14s, 22s and 28s; 32-color palette; no resampling."
+  },
+  {
+    "asset_id": "POTE_REF_V113_FERN",
+    "category": "terrain_texture",
+    "file": "reference_v113/fern.png",
+    "source_pixel_size": [
+      46,
+      40
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      46,
+      40
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_FLOWERS",
+    "category": "terrain_texture",
+    "file": "reference_v113/flowers.png",
+    "source_pixel_size": [
+      69,
+      50
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      69,
+      50
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_FOREST_FLOOR",
+    "category": "terrain_texture",
+    "file": "reference_v113/forest_floor.png",
+    "source_pixel_size": [
+      384,
+      320
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      384,
+      320
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_SHORE_MATERIAL",
+    "category": "terrain_texture",
+    "file": "reference_v113/shore_material.png",
+    "source_pixel_size": [
+      28,
+      16
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      28,
+      16
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_SHORE_ROCK",
+    "category": "terrain_texture",
+    "file": "reference_v113/shore_rock.png",
+    "source_pixel_size": [
+      48,
+      27
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      48,
+      27
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_TRAIL_EARTH",
+    "category": "terrain_texture",
+    "file": "reference_v113/trail_earth.png",
+    "source_pixel_size": [
+      64,
+      32
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      64,
+      32
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_TREE_OAK",
+    "category": "canopy",
+    "file": "reference_v113/tree_oak.png",
+    "source_pixel_size": [
+      191,
+      197
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      191,
+      197
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk 28x20",
+    "blocking": true,
+    "depth_rule": "per_actor_feet; foreground alpha64 when occluding",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_TREE_WILLOW",
+    "category": "canopy",
+    "file": "reference_v113/tree_willow.png",
+    "source_pixel_size": [
+      190,
+      207
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      190,
+      207
+    ],
+    "anchor": "bottom_center",
+    "collision_footprint": "trunk 28x20",
+    "blocking": true,
+    "depth_rule": "per_actor_feet; foreground alpha64 when occluding",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
+  },
+  {
+    "asset_id": "POTE_REF_V113_WATER_CURRENT",
+    "category": "terrain_texture",
+    "file": "reference_v113/water_current.png",
+    "source_pixel_size": [
+      114,
+      31
+    ],
+    "source_pixels_resampled": true,
+    "render_scale": 1.0,
+    "runtime_estimated_size": [
+      114,
+      31
+    ],
+    "anchor": "world_texture_origin",
+    "collision_footprint": "none",
+    "blocking": false,
+    "depth_rule": "ground",
+    "relationship_tags": [
+      "source_capture",
+      "reference_v113"
+    ],
+    "visual_qa": "PENDING_USER_V113",
+    "production_status": "SOURCE_CAPTURE_DERIVATIVE; layout ADAPTED"
   }
 ]
