@@ -73,5 +73,5 @@ public final class CharacterSemanticRigEvidenceProbe {
 
   private static Rect cell(int row,int col){int left=col*CharacterRenderer.SOURCE_FRAME_WIDTH,top=row*CharacterRenderer.SOURCE_FRAME_HEIGHT;return new Rect(left,top,left+CharacterRenderer.SOURCE_FRAME_WIDTH,top+CharacterRenderer.SOURCE_FRAME_HEIGHT);}
   private static boolean finite(float v){return !Float.isNaN(v)&&!Float.isInfinite(v);}
-  private static Bitmap load(Resources r,String name,int w,int h){if(r==null)return null;try{int id=r.getIdentifier(name,"drawable","com.projectdark.mobile");if(id==0)return null;BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;Bitmap b=BitmapFactory.decodeResource(r,id,o);return b!=null&&b.getWidth()==w&&b.getHeight()==h?b:null;}catch(Throwable ignored){return null;}}
+  private static Bitmap load(Resources r,String name,int w,int h){if(r==null)return null;try{int id=DrawableResources.id(r,name);if(id==0)return null;BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;Bitmap b=BitmapFactory.decodeResource(r,id,o);return b!=null&&b.getWidth()==w&&b.getHeight()==h?b:null;}catch(Throwable ignored){return null;}}
 }

@@ -184,7 +184,7 @@ public final class CharacterVisualEvidenceProbe {
   private static Bitmap load(Resources r,String name,int width,int height){
     if(r==null)return null;
     try{
-      int id=r.getIdentifier(name,"drawable","com.projectdark.mobile");if(id==0)return null;
+      int id=DrawableResources.id(r,name);if(id==0)return null;
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;
       Bitmap b=BitmapFactory.decodeResource(r,id,o);return b!=null&&b.getWidth()==width&&b.getHeight()==height?b:null;
     }catch(Throwable ignored){return null;}

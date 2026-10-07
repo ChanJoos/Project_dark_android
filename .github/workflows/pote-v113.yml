@@ -1,4 +1,4 @@
-name: Pote V114 reference repair
+name: Pote V115 reference repair
 on:
   push:
     branches: [codex/pote-forest-v112]
@@ -82,23 +82,24 @@ jobs:
       - name: Verify world, AUTO, quest, population, depth and native screens
         run: |
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
+          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
       - name: Build and verify exact APK
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v114_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v115_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pote-v114-native-${{ github.sha }}
+          name: pote-v115-native-${{ github.sha }}
           path: |
             app/build/reports/pote-v113/
+            app/build/reports/device-review/
             app/build/test-results/
             app/build/reports/tests/
       - uses: actions/upload-artifact@v4
         with:
-          name: pote-v114-apk-${{ github.sha }}
+          name: pote-v115-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
@@ -106,5 +107,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V114_TEST.apk
-          gh release create "candidate-v114-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V114_TEST.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V114 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v114test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."
+          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V115_TEST.apk
+          gh release create "candidate-v115-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V115_TEST.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V115 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v115test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."
