@@ -92,7 +92,7 @@ jobs:
       - name: Verify world, AUTO, quest, population, depth and native screens
         run: |
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*ForestPixelCacheTest' --tests '*ForestFrameProfileTest' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
+          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*ForestPixelCacheTest' --tests '*ForestFloorCacheTest' --tests '*ForestFrameProfileTest' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
       - name: Build and verify exact APK
         run: |
           gradle :app:assembleDebug

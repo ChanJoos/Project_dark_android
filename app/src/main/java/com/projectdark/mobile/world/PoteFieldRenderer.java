@@ -45,6 +45,13 @@ public final class PoteFieldRenderer {
   private final Map<String,float[][]> channels=new LinkedHashMap<>();
   private BitmapShader shader(String name,Bitmap bitmap,Shader.TileMode mode){BitmapShader s=shaders.get(name);if(s==null){s=new BitmapShader(bitmap,mode,mode);shaders.put(name,s);}return s;}
   private final Map<Bitmap,SpriteAlphaMask> alphaMasks=new java.util.IdentityHashMap<>();
+  private static final int FLOOR_CHUNK=256,FLOOR_GUTTER=2,FLOOR_CACHE_LIMIT=32;
+  // About 8.3 MiB of retained CPU pixels, independent of total map size. Water stays live.
+  private final LinkedHashMap<Long,Bitmap> floorChunks=new LinkedHashMap<>(32,.75f,true);
+  private String floorMap;
+  private int floorChunkBuilds;
+  private final Rect floorSource=new Rect(FLOOR_GUTTER,FLOOR_GUTTER,FLOOR_GUTTER+FLOOR_CHUNK,FLOOR_GUTTER+FLOOR_CHUNK);
+  private final RectF floorDestination=new RectF();
   private final List<Placement> depthPlacements=new ArrayList<>();
   private final List<ActorDraw> depthActors=new ArrayList<>();
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
@@ -200,23 +207,45 @@ public final class PoteFieldRenderer {
     visibleActors=Collections.emptyList();
   }
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){
-    pixel.setStyle(Paint.Style.FILL);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    drawGroundTiles(c,w);drawTrail(c,w);
+    String map=w.runtime().currentMapId();
+    if(!map.equals(floorMap)){floorChunks.clear();floorMap=map;}
+    float ox=w.camera().cameraX(),oy=w.camera().cameraY();
+    int left=(int)Math.floor(ox/FLOOR_CHUNK),top=(int)Math.floor(oy/FLOOR_CHUNK);
+    int right=(int)Math.floor((ox+w.camera().viewportWidth())/FLOOR_CHUNK),bottom=(int)Math.floor((oy+w.camera().viewportHeight())/FLOOR_CHUNK);
+    // Extreme viewports must not thrash a bounded cache. Normal phone viewports use 6-18 chunks.
+    if((right-left+1)*(bottom-top+1)>FLOOR_CACHE_LIMIT){drawFloorDirect(c,map,ox,oy);return;}
+    for(int y=top;y<=bottom;y++)for(int x=left;x<=right;x++){
+      long key=((long)x<<32)|(y&0xffffffffL);Bitmap chunk=floorChunks.get(key);
+      if(chunk==null){
+        chunk=Bitmap.createBitmap(FLOOR_CHUNK+2*FLOOR_GUTTER,FLOOR_CHUNK+2*FLOOR_GUTTER,Bitmap.Config.ARGB_8888);
+        drawFloorDirect(new Canvas(chunk),map,x*FLOOR_CHUNK-FLOOR_GUTTER,y*FLOOR_CHUNK-FLOOR_GUTTER);
+        floorChunkBuilds++;floorChunks.put(key,chunk);
+        if(floorChunks.size()>FLOOR_CACHE_LIMIT)floorChunks.remove(floorChunks.keySet().iterator().next());
+        // Do not recycle: a hardware display list may still retain an evicted bitmap.
+      }
+      pixel.setShader(null);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setFilterBitmap(false);
+      floorDestination.set(x*FLOOR_CHUNK-ox,y*FLOOR_CHUNK-oy,(x+1)*FLOOR_CHUNK-ox,(y+1)*FLOOR_CHUNK-oy);
+      c.drawBitmap(chunk,floorSource,floorDestination,pixel);
+    }
+  }
+  private void drawFloorDirect(Canvas c,String map,float ox,float oy){
+    pixel.setStyle(Paint.Style.FILL);pixel.setShader(null);pixel.setAlpha(255);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    drawGroundTiles(c,map,ox,oy);drawTrail(c,map,ox,oy);
   }
 
   /** Feathered source earth patches overlap at irregular widths; no painted road border. */
-  private void drawTrail(Canvas c,WorldRuntimeAdapter w){
+  private void drawTrail(Canvas c,String map,float ox,float oy){
     Bitmap texture=bitmap("reference_v113/trail_earth.png");if(texture==null)return;
     BitmapShader shader=shader("trail",texture,Shader.TileMode.MIRROR);
-    Matrix phase=texturePhase;phase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(phase);
+    Matrix phase=texturePhase;phase.setTranslate(-ox,-oy);shader.setLocalMatrix(phase);
     pixel.setShader(shader);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeCap(Paint.Cap.ROUND);pixel.setStrokeJoin(Paint.Join.ROUND);
-    float[][] trail=PoteForestGeometry.trailCenterline(w.runtime().currentMapId());
+    float[][] trail=PoteForestGeometry.trailCenterline(map);
     for(int i=1;i<trail.length;i++){
       float len=(float)Math.hypot(trail[i][0]-trail[i-1][0],trail[i][1]-trail[i-1][1]);int n=Math.max(1,(int)(len/32));
       for(int j=0;j<n;j++){
         float t=j/(float)n,t2=(j+1)/(float)n;
-        WorldCameraTransform.Point p=w.worldToScreen(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t);
-        WorldCameraTransform.Point q=w.worldToScreen(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t2,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t2);
+        WorldCameraTransform.Point p=new WorldCameraTransform.Point(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t-ox,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t-oy);
+        WorldCameraTransform.Point q=new WorldCameraTransform.Point(trail[i-1][0]+(trail[i][0]-trail[i-1][0])*t2-ox,trail[i-1][1]+(trail[i][1]-trail[i-1][1])*t2-oy);
         if(Math.max(p.x,q.x)<-200||Math.min(p.x,q.x)>c.getWidth()+200||Math.max(p.y,q.y)<-200||Math.min(p.y,q.y)>c.getHeight()+200)continue;
         float width=86+18*(float)Math.sin((i*n+j)*.37);
         // Many low-opacity shoulders soften into the same soil; original dirt colour, no gold stripe.
@@ -253,13 +282,13 @@ public final class PoteFieldRenderer {
     pixel.setColor(0xffffffff);pixel.setAlpha(255);
   }
   /** Each navigation-ground diamond samples one shared, source-video texture in world space. */
-  private void drawGroundTiles(Canvas c,WorldRuntimeAdapter w){
+  private void drawGroundTiles(Canvas c,String map,float ox,float oy){
     Bitmap soil=bitmap(SOIL_TEXTURE);if(soil==null)return;
     BitmapShader shader=shader("soil",soil,Shader.TileMode.REPEAT);
-    texturePhase.setTranslate(-w.camera().cameraX(),-w.camera().cameraY());shader.setLocalMatrix(texturePhase);
+    texturePhase.setTranslate(-ox,-oy);shader.setLocalMatrix(texturePhase);
     soilPaint.setShader(shader);soilPaint.setColor(0xffffffff);soilPaint.setStyle(Paint.Style.FILL);
-    PoteCampaignMapDef d=PoteCampaignMapDef.forId(w.runtime().currentMapId());
-    c.drawRect(d.minX-32-w.camera().cameraX(),d.minY-16-w.camera().cameraY(),d.maxX+32-w.camera().cameraX(),d.maxY+16-w.camera().cameraY(),soilPaint);
+    PoteCampaignMapDef d=PoteCampaignMapDef.forId(map);
+    c.drawRect(d.minX-32-ox,d.minY-16-oy,d.maxX+32-ox,d.maxY+16-oy,soilPaint);
     soilPaint.setShader(null);
   }
   private void drawGroundPatch(Canvas c,WorldRuntimeAdapter w,String name,float wx,float wy,float scale){

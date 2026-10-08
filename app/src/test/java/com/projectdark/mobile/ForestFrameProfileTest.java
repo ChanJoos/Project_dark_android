@@ -29,21 +29,24 @@ public class ForestFrameProfileTest {
    }assertNotNull(canopy);
    Field x=canopy.getClass().getDeclaredField("x"),y=canopy.getClass().getDeclaredField("y");x.setAccessible(true);y.setAccessible(true);
    PoteCampaignMapDef def=PoteCampaignMapDef.forId(map);WorldMoveTargetController.TileCenter start=def.nearest(x.getFloat(canopy),y.getFloat(canopy)-80),end=def.nearest(start.x+192,start.y+96);
-   world.cancelForAction();state.player().x=start.x;state.player().y=start.y;world.camera().snapTo(start.x,start.y);world.requestGroundWorld(end.x,end.y);
+   state.player().x=start.x;state.player().y=start.y;world.cancelForAction();world.snapCameraToPlayer();
+   assertEquals(WorldMoveTargetController.Status.MOVING,world.requestGroundWorld(end.x,end.y).status);
    Bitmap image=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(image);long[] updateNs=new long[100],renderNs=new long[100];
-   float beforeX=world.presentationPlayerX(),beforeY=world.presentationPlayerY();
+   float beforeX=world.presentationPlayerX(),beforeY=world.presentationPlayerY();int movingSamples=0;double sampledTravel=0;
    for(int frame=0;frame<140;frame++){
+    float previousX=world.presentationPlayerX(),previousY=world.presentationPlayerY();
     long a=System.nanoTime();update.invoke(view,.016f);world.camera().follow(world.presentationPlayerX(),world.presentationPlayerY());long b=System.nanoTime();view.draw(canvas);long c=System.nanoTime();
-    if(frame>=40){updateNs[frame-40]=b-a;renderNs[frame-40]=c-b;}
+    if(frame>=40){updateNs[frame-40]=b-a;renderNs[frame-40]=c-b;double travel=Math.hypot(world.presentationPlayerX()-previousX,world.presentationPlayerY()-previousY);sampledTravel+=travel;if(travel>.001)movingSamples++;}
    }
-   double moved=Math.hypot(world.presentationPlayerX()-beforeX,world.presentationPlayerY()-beforeY);assertTrue("actual interpolated forest movement "+map,moved>1);
+   double moved=Math.hypot(world.presentationPlayerX()-beforeX,world.presentationPlayerY()-beforeY);assertTrue("measured frames really move near canopy "+map,movingSamples>=75&&sampledTravel>10);
    Arrays.sort(updateNs);Arrays.sort(renderNs);
    JSONObject stages=new JSONObject();PoteFieldRenderer renderer=TownInteriorTest.field(view,"poteFieldRenderer");
    for(String methodName:new String[]{"drawFloor","drawCreekBed"}){
     Method stage=PoteFieldRenderer.class.getDeclaredMethod(methodName,Canvas.class,WorldRuntimeAdapter.class);stage.setAccessible(true);long[] samples=new long[30];
-    for(int i=0;i<30;i++){long begin=System.nanoTime();stage.invoke(renderer,canvas,world);samples[i]=System.nanoTime()-begin;}Arrays.sort(samples);stages.put(methodName+"MedianMs",samples[15]/1e6);
+    canvas.save();float scale=1536/world.camera().viewportWidth();canvas.scale(scale,scale);
+    for(int i=0;i<30;i++){long begin=System.nanoTime();stage.invoke(renderer,canvas,world);samples[i]=System.nanoTime()-begin;}canvas.restore();Arrays.sort(samples);stages.put(methodName+"MedianMs",samples[15]/1e6);
    }
-   scenes.put(new JSONObject().put("stages",stages).put("map",map).put("monsters",state.monsters().size()).put("movedPixels",moved).put("updateMedianMs",updateNs[50]/1e6).put("updateP95Ms",updateNs[95]/1e6).put("renderMedianMs",renderNs[50]/1e6).put("renderP95Ms",renderNs[95]/1e6));image.recycle();
+   scenes.put(new JSONObject().put("stages",stages).put("map",map).put("monsters",state.monsters().size()).put("movedPixels",moved).put("movingSamples",movingSamples).put("sampledTravelPixels",sampledTravel).put("updateMedianMs",updateNs[50]/1e6).put("updateP95Ms",updateNs[95]/1e6).put("renderMedianMs",renderNs[50]/1e6).put("renderP95Ms",renderNs[95]/1e6));image.recycle();
   }
   JSONObject out=new JSONObject().put("source",System.getenv("PROJECT_DARK_SOURCE_SHA")).put("environment","Robolectric SDK34 native CPU, not phone FPS").put("warmFrames",40).put("samplesPerMap",100).put("scenes",scenes);
   File file=new File("build/reports/forest-performance/PROFILE.json");file.getParentFile().mkdirs();try(Writer writer=new FileWriter(file)){writer.write(out.toString(2));}System.out.println(out.toString());
