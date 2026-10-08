@@ -1,4 +1,11 @@
 
+## 2026-10-08 — V115 ongoing forest lag user report / V116 frame diagnosis
+
+User reports persistent severe forest lag while moving near trees/obstacles, suspects actor occlusion fading. V115 DEVICE_FAILED_USER_REPORTED for performance;physical cause remains UNKNOWN without device trace. Confirmed hot paths: per-tree/per-actor sample loops call native Bitmap.getPixel on every frame; CharacterRenderer rescans immutable BODY cells and derives source hand rig repeatedly across equipment layers. Cache exact alpha bytes via one bulk getPixels per immutable source bitmap; cache exact frame alpha bounds and hand anchors in renderer lifetime;merge already sorted static placements with stable actor depth order using reusable lists. Fade samples/threshold64/alpha64,source pixels,source scale,collision/simulation/population remain unchanged. No global bitmap cache or recycled/mutable source assumptions.
+
+CI runs the identical real moving-canopy update/native-draw harness on exact V115 fe8dc5d2 and V116,reporting separate update/render/floor/river timings (CPU/JVM,not phone FPS). Independent legacy getPixel occlusion oracle,alpha edge thresholds,frame bound/hand reference checks and original native occlusion/player/NPC/navigation tests required. BUILD/PERF/NATIVE/PHONE acceptance PENDING. V116 separate.v116test preserves existing apps/saves;stable production signing remains unavailable. Prior publication approval persists;no new consent required. Other unspecified rendering issues and original river recreation remain unresolved.
+
+
 ## 2026-10-08 — V115 installed drawable-package repair verified candidate
 
 Exact delivered sourcef32d9dd5049a95163b5225b00e21f63411e2c046;focused Actions37704377668/job113075142097 SUCCESS.69 tests,0fail/error/skip. Relocated Resources fixture rejects old namespace lookup (id0), proves real body/action/clothes/weapon atlases load, compares player four directions at idle/walk/attack to accepted pixels and all20 NPC sprites to normal package. Manually reviewed two native comparison sheets and Milles/inn GameView screens. This simulates installed-table mismatch and uses native Robolectric graphics;NOT physical phone verification. Fixed resource package discovery across character/equipment/all three probes. No art/scale/frame registration edits.

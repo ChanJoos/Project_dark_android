@@ -1,6 +1,7 @@
 package com.projectdark.mobile.world;
 
 import com.projectdark.mobile.CharacterRenderer;
+import com.projectdark.mobile.SpriteAlphaMask;
 import com.projectdark.mobile.PoteForestMonsterShowcase;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -43,6 +44,9 @@ public final class PoteFieldRenderer {
   private final Matrix texturePhase=new Matrix();
   private final Map<String,float[][]> channels=new LinkedHashMap<>();
   private BitmapShader shader(String name,Bitmap bitmap,Shader.TileMode mode){BitmapShader s=shaders.get(name);if(s==null){s=new BitmapShader(bitmap,mode,mode);shaders.put(name,s);}return s;}
+  private final Map<Bitmap,SpriteAlphaMask> alphaMasks=new java.util.IdentityHashMap<>();
+  private final List<Placement> depthPlacements=new ArrayList<>();
+  private final List<ActorDraw> depthActors=new ArrayList<>();
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
   private static final List<Placement> AUTHORED_PLACEMENTS=buildPlacements();
   private static final Map<String,List<Placement>> MAP_PLACEMENTS=new LinkedHashMap<>();
@@ -161,10 +165,7 @@ public final class PoteFieldRenderer {
     public final float x,y,height,width; public final Runnable draw;
     public ActorDraw(float x,float y,float height,float width,Runnable draw){this.x=x;this.y=y;this.height=height;this.width=width;this.draw=draw;}
   }
-  private static final class DepthItem {
-    final float y;final Runnable draw;
-    DepthItem(float y,Runnable draw){this.y=y;this.draw=draw;}
-  }
+  private static final Comparator<ActorDraw> ACTOR_DEPTH=Comparator.comparingDouble(a->a.y);
   private List<ActorDraw> visibleActors=Collections.emptyList();
   private float waterClock;
   public void tick(float dt){waterClock=(waterClock+Math.max(0,dt))%1024f;}
@@ -172,15 +173,20 @@ public final class PoteFieldRenderer {
   public void drawScene(Canvas c,WorldRuntimeAdapter w,List<ActorDraw> actors){
     if(c==null||w==null)return;visibleActors=actors;
     drawFloor(c,w);drawCreekBed(c,w);
-    List<DepthItem> depth=new ArrayList<>();
+    depthPlacements.clear();depthActors.clear();
     for(Placement p:placementsForMap(w.runtime().currentMapId())){
       if(campClearing(w,p)||"water".equals(p.role)||!visiblePlacement(c,w,p))continue;
       if("groundcover".equals(p.role)||"bank".equals(p.role)||"bridge".equals(p.role))drawPlacement(c,w,p);
-      else depth.add(new DepthItem(p.y,()->drawPlacement(c,w,p)));
+      else depthPlacements.add(p);
     }
-    for(ActorDraw actor:actors)depth.add(new DepthItem(actor.y,actor.draw));
-    depth.sort(Comparator.comparingDouble(i->i.y));
-    for(DepthItem item:depth)item.draw.run();visibleActors=Collections.emptyList();
+    depthActors.addAll(actors);depthActors.sort(ACTOR_DEPTH);
+    // Static placements already have stable depth order. Merge actors, keeping props first on ties.
+    int prop=0,actor=0;
+    try{while(prop<depthPlacements.size()||actor<depthActors.size()){
+      if(prop<depthPlacements.size()&&(actor>=depthActors.size()||depthPlacements.get(prop).y<=depthActors.get(actor).y))
+        drawPlacement(c,w,depthPlacements.get(prop++));
+      else depthActors.get(actor++).draw.run();
+    }}finally{visibleActors=Collections.emptyList();depthActors.clear();depthPlacements.clear();}
   }
   public void drawBelow(Canvas c,WorldRuntimeAdapter w,float actorY){
     if(c==null||w==null)return;drawFloor(c,w);drawCreekBed(c,w);
@@ -300,11 +306,13 @@ public final class PoteFieldRenderer {
   private boolean occludesActor(Placement p,Bitmap b){
     if(!"canopy".equals(p.role)&&!"secondary_canopy".equals(p.role))return false;
     float ww=b.getWidth()*p.scale,hh=b.getHeight()*p.scale;
+    SpriteAlphaMask mask=null;
     for(ActorDraw a:visibleActors){
       if(a.y>=p.y||Math.abs(a.x-p.x)>ww*.5f+a.width*.5f||a.y<p.y-hh||a.y-a.height>p.y)continue;
+      if(mask==null){mask=alphaMasks.get(b);if(mask==null){mask=new SpriteAlphaMask(b);alphaMasks.put(b,mask);}}
       for(float yy=a.y-a.height;yy<a.y;yy+=5)for(float xx=a.x-a.width*.4f;xx<=a.x+a.width*.4f;xx+=5){
         int bx=(int)((xx-(p.x-ww*.5f))/p.scale),by=(int)((yy-(p.y-hh))/p.scale);
-        if(bx>=0&&bx<b.getWidth()&&by>=0&&by<b.getHeight()&&(b.getPixel(bx,by)>>>24)>64)return true;
+        if(bx>=0&&bx<b.getWidth()&&by>=0&&by<b.getHeight()&&mask.at(bx,by)>64)return true;
       }
     }
     return false;
