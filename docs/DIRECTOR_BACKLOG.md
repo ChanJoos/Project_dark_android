@@ -1,4 +1,12 @@
 
+## 2026-10-08 — V117 ground-tap candidate build and callback verification
+
+APK source1677b3ea8676585c06feda22d559e6e83576f0d6, Actions37728020453/job113150512274 SUCCESS.79 selected test methods; actual32 GameView DOWN+UP ground callbacks and16 long routes on A/B/C/D,300 independent BFS/destination comparisons, live blocker revalidation pass. Exact destinations/statuses/shortest lengths match V116. Native CPU callback medians A57.880→2.123ms,B82.852→1.663ms,C109.513→1.605ms,D0.985→0.191ms;long-route medians A192.042→28.378ms,B323.747→14.941ms,C192.194→11.080ms,D0.882→0.220ms. Request occupancy work drops95.0/96.1/95.1/98.0%. These are Robolectric CPU values, NOT phone timings or proof of phone lag recovery.
+
+APK55,413,252bytes,SHA256f29c7e54424f87061c2227e5ae672f38b7f89482bb0e46aa3bea780e3b876d36,built2026-10-08 13:37:35KST. Artifacts APK11528558141/native11528159867. Downloaded release APK hash/CRC/embedded exact source/run/version verified;native archive signed download returned403,so no claim of downloaded XML count/digest verification. CI logs confirm both baseline/candidate tests and paired comparison succeeded. Source has79 selected test methods;79 is not independently counted from downloaded XML.
+
+PROJECT DARK V117 TEST/.v117test is a separate app/fresh profile;existing apps/saves retained,no automatic save transfer/update compatibility claim. IMPLEMENTED/BUILD_VERIFIED/NATIVE_TOUCH_RUNTIME_VERIFIED. V116 DEVICE_FAILED_USER_REPORTED;physical root cause UNKNOWN_NO_DEVICE_TRACE and V117 PHYSICAL_PHONE/USER_VISUAL PENDING. Broad CI37728024531/37728020468 remains in_progress at last observation;main18ef615 unchanged,PR180 draft candidate unmerged. Exact evidence verification/FOREST_TAP_V117_BUILD.json and release https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v117-1677b3ea-37728020453-1. Next: phone repeated map taps near trees/obstacles,ground target replacement and extended forest travel;device trace if lag persists. Closure docs do not change delivered runtime SHA.
+
 ## 2026-10-08 — V117 ground-tap repair in progress
 
 V116 eed465d3 is DEVICE_FAILED_USER_REPORTED: severe lag when tapping the Pote map to move. Prior moving-render measurements do not verify tap latency or phone recovery. Physical root cause remains UNKNOWN without device trace. Code diagnosis: nearestTraversable checks live occupancy for every authored tile before testing distance; ground A* assumes nonexistent 64px horizontal steps, repeats collision work for closed/non-improving neighbors and broad equal-f fronts.

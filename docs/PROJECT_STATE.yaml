@@ -1,9 +1,9 @@
 forest_tap_v117:
   baseline: V116_DEVICE_FAILED_USER_REPORTED_TAP_LAG
-  implementation: LOCAL_CANDIDATE
+  implementation: IMPLEMENTED
   physical_root_cause: UNKNOWN_NO_DEVICE_TRACE
-  build: PENDING
-  native_runtime: PENDING
+  build: BUILD_VERIFIED
+  native_runtime: NATIVE_TOUCH_RUNTIME_VERIFIED
   physical_phone: PENDING
   active_branch: codex/pote-forest-v112
   active_pr: 180
@@ -912,3 +912,5 @@ status_summary:
   unresolved_device_findings: [D214834_PLAYER_TO_MONSTER_ATTACK, D214834_MONSTER_TO_PLAYER_ATTACK, D214834_MONSTER_MOVEMENT, D214834_ATTACK_BODY, D214834_ATTACK_WEAPON, D214834_WALK_WEAPON, D214834_ATTACK_SCALE, D214834_HIT_PRESENTATION, D214834_COMBAT_READABILITY, D214834_MOVE_COMBAT_LINK, D214834_MILLES_PATHS, D214834_MILLES_COMPOSITION, D214834_UI_WORLD_BALANCE, D214834_MONSTER_VISUAL]
   preserve_findings: [D214834_MILLES_GROUND]
   next_global_rule: "Treat the full 21:48 device matrix as current project truth. Repair upstream combat reciprocity/pipeline and authored attack presentation under separate gates, then consume remaining P1/P2 findings without allowing any one defect to monopolize development. Preserve the corrected Milles grass/dirt semantics."
+
+forest_tap_v117_evidence: verification/FOREST_TAP_V117_BUILD.json
