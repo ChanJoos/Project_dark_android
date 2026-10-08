@@ -1,0 +1,164 @@
+{
+  "build": {
+    "sourceCommit": "eed465d35d27089d1db04b02c427d08137849fb5",
+    "runId": "37710334653",
+    "versionCode": 116,
+    "versionName": "1.16-forest-frame-cache",
+    "applicationId": "com.projectdark.mobile.v116test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "f7a355367efa0d465a2a24d317403a4cb6c504a729db9d43a73d45fa37642f14",
+    "apkBytes": 55413024,
+    "builtSeoul": "2026-10-08T10:01:41.375440+09:00",
+    "scope": "Reference-derived forest trees/earth/current; per-actor depth and foreground canopy fade; map-wide quest-filtered AUTO; 72/96/108 population, 6-8s adapted respawn; preserved campaign/save/body",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "focusedActions": {
+    "runId": 37710334653,
+    "jobId": 113094525318,
+    "conclusion": "success"
+  },
+  "artifacts": [
+    {
+      "id": 11521971599,
+      "kind": "apk",
+      "archiveSha256": "955f926c572532aca232209ef0347ee4860140eac4cc64acb3432547383ecd18"
+    },
+    {
+      "id": 11521622864,
+      "kind": "native",
+      "archiveSha256": "01b84d0521f1845a09f2e928ec88e3e19fd3ff98d3cfccaf7f29f721b964975e"
+    }
+  ],
+  "baseline": {
+    "source": "fe8dc5d2d973caffd5aaa103cc509a29bb292a4f",
+    "environment": "Robolectric SDK34 native CPU, not phone FPS",
+    "warmFrames": 40,
+    "samplesPerMap": 100,
+    "scenes": [
+      {
+        "stages": {
+          "drawFloorMedianMs": 2.381207,
+          "drawCreekBedMedianMs": 0.232957
+        },
+        "map": "MAP_POTE_01",
+        "monsters": 72,
+        "movedPixels": 133.5677756588308,
+        "movingSamples": 100,
+        "sampledTravelPixels": 95.40558547300111,
+        "updateMedianMs": 0.305834,
+        "updateP95Ms": 0.541155,
+        "renderMedianMs": 16.627763,
+        "renderP95Ms": 22.080014
+      },
+      {
+        "stages": {
+          "drawFloorMedianMs": 16.026154,
+          "drawCreekBedMedianMs": 1.047265
+        },
+        "map": "MAP_POTE_03",
+        "monsters": 108,
+        "movedPixels": 133.56766647581293,
+        "movingSamples": 100,
+        "sampledTravelPixels": 95.40547605415207,
+        "updateMedianMs": 0.215684,
+        "updateP95Ms": 0.346641,
+        "renderMedianMs": 26.109168,
+        "renderP95Ms": 28.718684
+      }
+    ]
+  },
+  "candidate": {
+    "source": "eed465d35d27089d1db04b02c427d08137849fb5",
+    "environment": "Robolectric SDK34 native CPU, not phone FPS",
+    "warmFrames": 40,
+    "samplesPerMap": 100,
+    "scenes": [
+      {
+        "stages": {
+          "drawFloorMedianMs": 1.138045,
+          "drawCreekBedMedianMs": 0.454623
+        },
+        "map": "MAP_POTE_01",
+        "monsters": 72,
+        "movedPixels": 133.5677756588308,
+        "movingSamples": 100,
+        "sampledTravelPixels": 95.40558547300111,
+        "updateMedianMs": 0.236413,
+        "updateP95Ms": 0.411392,
+        "renderMedianMs": 9.007758,
+        "renderP95Ms": 15.310792
+      },
+      {
+        "stages": {
+          "drawFloorMedianMs": 1.074366,
+          "drawCreekBedMedianMs": 1.038298
+        },
+        "map": "MAP_POTE_03",
+        "monsters": 108,
+        "movedPixels": 133.56766647581293,
+        "movingSamples": 100,
+        "sampledTravelPixels": 95.40547605415207,
+        "updateMedianMs": 0.190597,
+        "updateP95Ms": 0.34634,
+        "renderMedianMs": 8.105665,
+        "renderP95Ms": 13.669032
+      }
+    ]
+  },
+  "testEvidence": {
+    "tests": {
+      "tests": 75,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "outputs": {
+      "test-results/testDebugUnitTest/TEST-com.projectdark.mobile.ForestFloorCacheTest.xml": "FROZEN_V115_PAINT_FLAGS: pixel=1280;soil=1280;filter=false;AA=false;dither=false\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.0; MEAN_RGB_ERROR=4.3131510416666665E-4; MAX_CHANNEL_ERROR=5\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.25; MEAN_RGB_ERROR=0.0250244140625; MAX_CHANNEL_ERROR=11\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.75; MEAN_RGB_ERROR=0.0248046875; MAX_CHANNEL_ERROR=11\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.0; MEAN_RGB_ERROR=3.7841796875E-4; MAX_CHANNEL_ERROR=5\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.25; MEAN_RGB_ERROR=0.0273681640625; MAX_CHANNEL_ERROR=8\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.75; MEAN_RGB_ERROR=0.02718505859375; MAX_CHANNEL_ERROR=8\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.0; MEAN_RGB_ERROR=1.4241536458333334E-4; MAX_CHANNEL_ERROR=4\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.25; MEAN_RGB_ERROR=0.01378173828125; MAX_CHANNEL_ERROR=9\nFLOOR_RASTER_CASE=MAP_POTE_01; FRACTION=0.75; MEAN_RGB_ERROR=0.014143880208333333; MAX_CHANNEL_ERROR=8\nFROZEN_V115_PAINT_FLAGS: pixel=1280;soil=1280;filter=false;AA=false;dither=false\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.0; MEAN_RGB_ERROR=3.662109375E-4; MAX_CHANNEL_ERROR=3\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.25; MEAN_RGB_ERROR=0.035420735677083336; MAX_CHANNEL_ERROR=10\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.75; MEAN_RGB_ERROR=0.03522542317708333; MAX_CHANNEL_ERROR=13\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.0; MEAN_RGB_ERROR=4.1097005208333334E-4; MAX_CHANNEL_ERROR=4\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.25; MEAN_RGB_ERROR=0.037939453125; MAX_CHANNEL_ERROR=9\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.75; MEAN_RGB_ERROR=0.03728841145833333; MAX_CHANNEL_ERROR=12\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.0; MEAN_RGB_ERROR=3.5807291666666664E-4; MAX_CHANNEL_ERROR=6\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.25; MEAN_RGB_ERROR=3.5807291666666664E-4; MAX_CHANNEL_ERROR=6\nFLOOR_RASTER_CASE=MAP_POTE_02; FRACTION=0.75; MEAN_RGB_ERROR=3.5807291666666664E-4; MAX_CHANNEL_ERROR=6\nFROZEN_V115_PAINT_FLAGS: pixel=1280;soil=1280;filter=false;AA=false;dither=false\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.0; MEAN_RGB_ERROR=3.946940104166667E-4; MAX_CHANNEL_ERROR=3\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.25; MEAN_RGB_ERROR=0.036055501302083334; MAX_CHANNEL_ERROR=9\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.75; MEAN_RGB_ERROR=0.03638102213541667; MAX_CHANNEL_ERROR=8\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.0; MEAN_RGB_ERROR=6.34765625E-4; MAX_CHANNEL_ERROR=6\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.25; MEAN_RGB_ERROR=0.03583984375; MAX_CHANNEL_ERROR=10\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.75; MEAN_RGB_ERROR=0.0359619140625; MAX_CHANNEL_ERROR=11\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.0; MEAN_RGB_ERROR=3.946940104166667E-4; MAX_CHANNEL_ERROR=5\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.25; MEAN_RGB_ERROR=3.946940104166667E-4; MAX_CHANNEL_ERROR=5\nFLOOR_RASTER_CASE=MAP_POTE_03; FRACTION=0.75; MEAN_RGB_ERROR=3.946940104166667E-4; MAX_CHANNEL_ERROR=5\nFROZEN_V115_PAINT_FLAGS: pixel=1280;soil=1280;filter=false;AA=false;dither=false\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.0; MEAN_RGB_ERROR=2.4820963541666665E-4; MAX_CHANNEL_ERROR=4\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.25; MEAN_RGB_ERROR=0.029801432291666666; MAX_CHANNEL_ERROR=12\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.75; MEAN_RGB_ERROR=0.029512532552083335; MAX_CHANNEL_ERROR=11\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.0; MEAN_RGB_ERROR=5.655924479166667E-4; MAX_CHANNEL_ERROR=3\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.25; MEAN_RGB_ERROR=0.028267415364583333; MAX_CHANNEL_ERROR=8\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.75; MEAN_RGB_ERROR=0.02879638671875; MAX_CHANNEL_ERROR=8\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.0; MEAN_RGB_ERROR=4.597981770833333E-4; MAX_CHANNEL_ERROR=4\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.25; MEAN_RGB_ERROR=0.0163818359375; MAX_CHANNEL_ERROR=9\nFLOOR_RASTER_CASE=MAP_POTE_D_BOSS; FRACTION=0.75; MEAN_RGB_ERROR=0.016939290364583335; MAX_CHANNEL_ERROR=11\nFLOOR_LEGACY_RASTER_WORST_MEAN_RGB_ERROR=0.037939453125; MAX_CHANNEL_ERROR=13\nFLOOR_RETAINED_PIXEL_BYTES_MAX=8652800; STATIC_REPEAT_FRAMES=100; REBUILDS=0\n",
+      "test-results/testDebugUnitTest/TEST-com.projectdark.mobile.ForestPixelCacheTest.xml": "V116_CANOPY_ORACLE_QUERIES=5000; LEGACY_NATIVE_PIXEL_READS=67794; NEW_BULK_READBACKS=2; FRAME_PIXEL_READS=0\nV116_PLAYER_ALPHA_BULK_READBACKS=5; BODY_CELL_SCANS_CACHED=20\n"
+    }
+  },
+  "checks": {
+    "downloadArchiveHashes": "PASS",
+    "embeddedSourceRunVersion": "PASS",
+    "packageResourceTable": "PASS_IN_CI_com.projectdark.mobile.v116test",
+    "requiredBodyShirtEntries": "PASS_IN_CI",
+    "zipCRC": "PASS",
+    "originalEquipmentFiles": 47,
+    "referenceAssets": 10,
+    "bossPoses": 12,
+    "mouseFrames": 16,
+    "portalAndSkillCatalog": "PASS",
+    "apkV2Signature": "PASS",
+    "signingCertificateSha256": "45625edc9f8f288eeeccb919ea77b0fc479f685270a7218011cc91e5c89be7c9",
+    "manualNativeImages": [
+      "floor-legacy-worst.png",
+      "floor-cached-worst.png",
+      "occluded-player.png",
+      "MAP_POTE_03-2.png"
+    ]
+  },
+  "acceptance": {
+    "implemented": true,
+    "buildVerified": true,
+    "nativeRuntimeVerified": true,
+    "nativePerformanceVerified": true,
+    "physicalPhone": "PENDING",
+    "userVisual": "PENDING",
+    "phoneLagRootCause": "UNKNOWN_NO_DEVICE_TRACE",
+    "mainMerged": false
+  },
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v116-eed465d3-37710334653-1",
+  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "broadCIAtClosure": [
+    {
+      "id": 37710334649,
+      "status": "in_progress"
+    },
+    {
+      "id": 37710338458,
+      "status": "in_progress"
+    }
+  ]
+}
