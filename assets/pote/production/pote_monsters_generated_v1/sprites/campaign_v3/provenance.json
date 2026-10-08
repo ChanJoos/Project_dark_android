@@ -1,0 +1,3038 @@
+{
+  "version": 118,
+  "evidence": "ADAPTED_GENERATED_USER_REFERENCE; original animation not verified",
+  "poseContract": "idle/walk/attack x NW/NE/SW/SE; one still per pose, no mirroring",
+  "sources": {
+    "pamfet.png": "bbd1fdbaf379e6b7e6438b0dd08e0e02c65401cba4f99ef1db584da37459cb05",
+    "wolves.png": "39a9551804906ab960b0a8a9ae143fe92804dd7714f1eb4527d29d1ce9d03f35",
+    "insects.png": "df170b7ed2d581c909a6453c483e7aea95dbf3ed4168c60b4b2c040ee4b9dae9",
+    "treant.png": "5328980d86dba03beff09cbc32861406a0aea1d4f3c9c68e35eada405003ea93",
+    "spirits.png": "c160b97b7bbe1df099a06a792013c18f0127a0d56ae88a96c0dc4543031b0bdd"
+  },
+  "frames": [
+    {
+      "family": "red_pamfet",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        0,
+        0,
+        181,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5df1f8b1ebb1846ff342f822c7996c8a1393198d9b4fa463feab461378b6e5b7"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        181,
+        0,
+        362,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "196f2cfe4c7d0780a1a747697d0b1f6d5c5d6e09f6c295b1c77785bdb07b1384"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        362,
+        0,
+        543,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "35fa86f78312acb47da217d3d112f5da727864dd821cfea8cba9df9fb363a392"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "idle",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        543,
+        0,
+        724,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ba894fc477b4bdd2c8d3e07511d5522aa8295a0abfe7c2d51a577645d5493d57"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        0,
+        181,
+        181,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e6549fb880e96020f7145eb93d808a10bf98ccf0f7efaf33e1b829a1620c6f8a"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        181,
+        181,
+        362,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "9dbc5ce6fe75b2b3b00835f4ccc14aadd706597581a41c3becec46b38c8be1f6"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        362,
+        181,
+        543,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "21812cbd28dfdebf5c5acf4d780b01d0f42cc53523849bb53f94a6c39c9f0842"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "walk",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        543,
+        181,
+        724,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "eb79c4686f3340a226f5e0bd33ed4a9fcff086d04b4473827076ed506ff98809"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        0,
+        362,
+        181,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "1b4c1f146cea7904a1bd6e63426e9abab5b4c1ab2f89d22c9b32462219e42b46"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        181,
+        362,
+        362,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "2a1cfb1b59cf8d544f7092cbde896f74d3ef0f80b9638bf16ba48e23aea66ed3"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        362,
+        362,
+        543,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "3f614d243a4c25e3e4684eaa515411163f3810293d1eef7f3a7901ed7937b977"
+    },
+    {
+      "family": "red_pamfet",
+      "pose": "attack",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        543,
+        362,
+        724,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "abac2835c9649bda58e632c450e341b159e8ca7a0205522ce66a73e053d7b0a5"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        724,
+        0,
+        905,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "790f4eaeb4ab21383e1136160e1a02176e70f5e642990183a5f8817868320565"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        905,
+        0,
+        1086,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d65c2555b22e44dad1c195a624dc6d7636d3440685a09e15b64f52d639c1a8a7"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        1086,
+        0,
+        1267,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ba7826eb95c62642b7f1dbb5574e76a5ef27088178638f4163b1fd0cf9aeb509"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "idle",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        1267,
+        0,
+        1448,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "2d40e799e16a7eec6b717be82653794de6e35bf703473382b33a46f1d56be233"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        724,
+        181,
+        905,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6c9b018b74cf9e26d79e1287ba0703d86c8d83b174ab905971a05efe04576c58"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        905,
+        181,
+        1086,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e76302e77ca11b3221eb69f224d69cb5c43c453540d72810d38f9de4f9f53b7b"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        1086,
+        181,
+        1267,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "596120dcb7973af070643dc1dccd07a5d6767a6ec9bfc55e364c5007bb009d16"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "walk",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        1267,
+        181,
+        1448,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "8ff3b8eb2e2d827d2f7be832e15ef755deee81ff8b5b4088b09ab97395698728"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        724,
+        362,
+        905,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "fb9dfa72bc6d49b19022e328312a9c2fd0424557008b97982eb54ff0a77e8633"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        905,
+        362,
+        1086,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "3a5979684f744f00049020992ae6496bb5e3050fe0a486cecb14373b86ccacc0"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        1086,
+        362,
+        1267,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "f77921d46d82854b3c0bf1960692b793f7dd4d296983b9bb78b712b6ff105132"
+    },
+    {
+      "family": "green_pamfet",
+      "pose": "attack",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        1267,
+        362,
+        1448,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "201f1e3c6e1080c965d49a91084e685dbaa1f17e745af6a0c2819e1c3d0786d2"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        0,
+        543,
+        181,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "2cad2dd2bcfbdf2e593fdcc45fab86d4a03593122f6ec4696cb12b41a6c96d55"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        181,
+        543,
+        362,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6aa53b67227176dee2918f2e1be457ee2dd04a179c4b2631b730a4e6f9e61831"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        362,
+        543,
+        543,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6e34612ad2c0aad8cc901855d3cdb78fa8e051661779b1649692b21814a058ee"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "idle",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        543,
+        543,
+        724,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "48484c53e68220f1e81e99f231d3a8127614509fa888970df7a6eb7bb70d8358"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        0,
+        724,
+        181,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "bcafe8a0bfe1b17d3003456ba6045d8e5c5d9950c22779b1ff0cdbdb1328afe3"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        181,
+        724,
+        362,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a0c502ff16be2f8c69e9f6020b97c3db42e37a4f0112da5e48c5c760c6a587b2"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        362,
+        724,
+        543,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "9f8ffac14366e1a72787d06aa929bf5e882ce654e27290c80305352dca34f143"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "walk",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        543,
+        724,
+        724,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "332fb68bd781b25879944edf871df4e99430f3ec385dd2a3614872eab9632cbd"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        0,
+        905,
+        181,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c28d5a24cd461c69bddd6406d52677233f64d7a5482f3d32a9fde969e4e6e468"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        181,
+        905,
+        362,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "fc966512a98bac64d66f7f333293fea757ab8dbf52130f74ac7de9a91f96e2a7"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        362,
+        905,
+        543,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b51638a08ef5bd3b8dc5e56857250de44368637b11ae6fdaa0e1d9f7246bba73"
+    },
+    {
+      "family": "purple_pamfet",
+      "pose": "attack",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        543,
+        905,
+        724,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "2bc1b0a65b27a1df8009407d49fce1cd9c3c5a39cb4938c9bbc57a7c1afd8c24"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        724,
+        543,
+        905,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "3db3f0960dacbedaddfc17c8b2683052098de2ad51b84065b312a6ba33d4c6a2"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        905,
+        543,
+        1086,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "91517c70f7f7fd06ca2f271b7ece4957860d4218f5c7665c15ed850ada3ba11a"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        1086,
+        543,
+        1267,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "90ccb13101b7d09e6bdc09e88af16b71a42d5a125649cc4c785c54b33e8877ed"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "idle",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        1267,
+        543,
+        1448,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "97f21eb56ac06ffc60658c092738f89c9159a9d98c5c366feeaf26d863bc0f72"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        724,
+        724,
+        905,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "1688d646ede6bd69fa5d5e1a1f021175f7b70ea2ef7972528685275f2bc5cadb"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        905,
+        724,
+        1086,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e06fd914a7c40f75b5bc7ac6ad2c6bee240534843b123015857cf079ee5a0dc3"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        1086,
+        724,
+        1267,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "645ef0d73c5e2dc960cf9920cf3340bc4831318a81426d610b889896959948ca"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "walk",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        1267,
+        724,
+        1448,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "79257b84d8e5d9397e4d778a6988bda1bfdac1e67e366e27f0a596d8ef2e63ae"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "pamfet.png",
+      "crop": [
+        724,
+        905,
+        905,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "2293de72f71bbdde31b954c01ccd6e5d8ba9e20f2161721c7a88f8a4c96c9aa3"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "pamfet.png",
+      "crop": [
+        905,
+        905,
+        1086,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "649d43e0382d00e86f0bcde5f2b3413f2664615658b7e28fbf614f04e7f01fe0"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "pamfet.png",
+      "crop": [
+        1086,
+        905,
+        1267,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "41994eb7bb4a50b9680ab93bcc93040fc801fffc87a22f271118584c186d8080"
+    },
+    {
+      "family": "silver_pamfet",
+      "pose": "attack",
+      "direction": "se",
+      "source": "pamfet.png",
+      "crop": [
+        1267,
+        905,
+        1448,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a0b1f42910cac5e9f57a69f9e0c4b599309271a8315c057bce71e8a3dd8bf801"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        0,
+        0,
+        181,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "bedd61a9dd5558297b40a946390006334d36dce702b14b71f99b34ca12dc7e06"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        181,
+        0,
+        362,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "3ef7109b0056392f15fa5e822fd331395eebe22ad60c4021c6fbc38ec805ab88"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        362,
+        0,
+        543,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b8cd515495c8e2ec047f8c86785f8a7f86e2456125c6764e8a4fbad9c5fdb456"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        543,
+        0,
+        724,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "76307cd31a8e067417562eb2e440dafda8c0461aab6e0899e8259858fe94790e"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        0,
+        181,
+        181,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "76688a396edeb01db2c093ce924db3cb98edf9301aec5477472dee6d39c3d466"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        181,
+        181,
+        362,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "06ba30f8925cf51ab1f7149be0cb46635ead5fa283183b6961652c54616d5e41"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        362,
+        181,
+        543,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "cb42dcc8829469fccad8622cd338cce021e3188c054b7d4835fe53bc734a0957"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        543,
+        181,
+        724,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "eca789fcdf38fffe65f90c9fceecf6515479194ea6e284087a1ae501bbcff038"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        0,
+        362,
+        181,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d735eebd8252dd47bc2127b94e939de42e97ff36b18dc3f1b4421b536782ad84"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        181,
+        362,
+        362,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "4c703f6a3a11e5e75b3c9677bdf721428bb02045f61e6ac8a6f5eb240e0f2c54"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        362,
+        362,
+        543,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "38a496e27c44407f76a2d1c2b9bcd1adeb6d23122f2a760f9623923a114ac5db"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        543,
+        362,
+        724,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ee375fcd1e240e504704a9ccbbe8a8fd521ec8ddaa93272ac005452199ae929d"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        724,
+        0,
+        905,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "92718c38d6032b6f1c452faff4a5a053d33550e7cff1a889fa26fb06592def88"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        905,
+        0,
+        1086,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "9765bf5cae94505f11418463d835e1365d02b0f5dcb7f3209d40a76f4614d027"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        1086,
+        0,
+        1267,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e6649e7cf0fa64d68e830841af9ddd249a28926bb75134861a17c5a142d5c464"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        1267,
+        0,
+        1448,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "778241979d50c0a93509795ce433e76946a3d4202e0682afac984db400b990b8"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        724,
+        181,
+        905,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ed3f47c9b8326254f12a1682d8677adcf6719487d0eacc56dcaa68086f61dcd7"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        905,
+        181,
+        1086,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "f1dc8e16bdf9507f943604be3e96e1345f18b81295a8f5d9ce42c2e9afc29160"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        1086,
+        181,
+        1267,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c93d3d68f9f1ca6005649771828fdcbaedc85716db156eadb7c231701ba5d0d0"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        1267,
+        181,
+        1448,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "bdfb49ed2954b08dfe65ea308c886a7c3640b1f0682f0e4d87c3e7fb576c8b33"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        724,
+        362,
+        905,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "00f03d518d0535a57040a229f3c07b6cca29c28a7553a61071057c4a539e1c20"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        905,
+        362,
+        1086,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "69cf56290623c0a6c42e5d0daf69a95dca2cb7380ffb033e2e85cf37a2b05e1f"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        1086,
+        362,
+        1267,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "4e9462628d9fdb65ec81448ee83c000f6993a8d1ccde9d358ae125ff44e30d4a"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        1267,
+        362,
+        1448,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e9e30228d4e64be812b433866ab805fd2a275df2c279669ac2dfcb44c905b66b"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        0,
+        543,
+        181,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "34ea1caf5ef3d53196718243adf2402ccaf5c57b2e59517efca6c11ce86e8d65"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        181,
+        543,
+        362,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "410548ee3e0f2af6afaba80eb1c3561d0ca095649907c331f0a455666bc47fbe"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        362,
+        543,
+        543,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "76eb47bd36263cede622ed728f1557024d136cbbbd17665d5302d4dd8d69ccef"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        543,
+        543,
+        724,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "bc2db55fcda5e1c50e32326988e3300189bf76af120a89dea8ae8fdd21581847"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        0,
+        724,
+        181,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "714ca07ccf6f1fa664c00435b9c119099d1d6245f1f15244e285a5f0ef3f95d1"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        181,
+        724,
+        362,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a91e2b27f1c880ffad25a2703ae0fa696c9cfcafbc4e5c9210a20fa4ddf1eeb3"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        362,
+        724,
+        543,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "1770791699cb3d0239a92a0ca8ad73569b04eaa93e94fac9d658bd662bfa2405"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        543,
+        724,
+        724,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b443cba534237bad0abbc85e7150efaa39803a2dfe6f0483db0767c9550ea62c"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        0,
+        905,
+        181,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "315a624eda13dc5515d0474dda85480f4194d78be6b0b86a870678db2aa2c5c0"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        181,
+        905,
+        362,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d47dc1ec689113001c252814199ef3eff787d349432363c2a27c44ec0295775a"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        362,
+        905,
+        543,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "67f98ae745ce4f86c4fe406c2063bd01ae71db74d43ce9ede70fd13131de2d08"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        543,
+        905,
+        724,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d42e049315d2621cf40f5d3e14a0ad3f5498c886a059c8c6db47c0776223d452"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        724,
+        543,
+        905,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c50ade223e51832575770456ddb500a946f6f52818c6cdb1448266508c2e6d2e"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        905,
+        543,
+        1086,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "57cf3e641f2fb360a04a6ad4294ea092cdeaea98e98af2c293334698e4a3a3c9"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        1086,
+        543,
+        1267,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ba8a70ed5ef2b664b096450bd2fd8f92df80218d2eac0d2076d957c4fcb2f829"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        1267,
+        543,
+        1448,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5d1d051ca208b8f70fe8a722b18c279217bcd1f0d1c49cd54f74ae9108bfd1e5"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        724,
+        724,
+        905,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6fe2957a7eeb6a64b57b1d508296a4f00e9d24a9b5fb64358e6d5b322d3c5a7f"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        905,
+        724,
+        1086,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "bc3d800becab63ff8456458560c1f564403d82d2ad8584c4db9f8273604f511a"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        1086,
+        724,
+        1267,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "dddfc8aa5ea3fa0a179c9d14066d01f4716def6f192e86884f041d2d50c85ef5"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        1267,
+        724,
+        1448,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "87a470076bcb70dd1e69c4acb60b7ac47cd0a18b2ffcc7dbd7d44d947d30f56d"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "wolves.png",
+      "crop": [
+        724,
+        905,
+        905,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6db4bfffc8fef3ef6aae5869a920cb3fb17708cd33633aad0a598df45d22f16d"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "wolves.png",
+      "crop": [
+        905,
+        905,
+        1086,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5adf0da3579722486658a8b30e9ce31602a606e45ed17dff6d16d2890dc3faf0"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "wolves.png",
+      "crop": [
+        1086,
+        905,
+        1267,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "f012a04c5c7434b84b18db8af292d49f6f6c014893ab4425f83f2a7e3d4e1def"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "se",
+      "source": "wolves.png",
+      "crop": [
+        1267,
+        905,
+        1448,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "096731be24e131699f328b654f3dd5db8d3528b8c325bb83bf62f620603ab3c1"
+    },
+    {
+      "family": "antlion",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        724,
+        0,
+        905,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c5bc4f59364a97fd2d6201576d7422b94f09b16db77b2fbd68d24627dc86f6af"
+    },
+    {
+      "family": "antlion",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        905,
+        0,
+        1086,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a7de0927f14ea7683c8ce0c9deea7e711c859911fffd50ee83c24b0017972883"
+    },
+    {
+      "family": "antlion",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        1086,
+        0,
+        1267,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c3b67e87433e36bd33d06403ea731707ce34e9e16cc2339bc0aa68941510cd67"
+    },
+    {
+      "family": "antlion",
+      "pose": "idle",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        1267,
+        0,
+        1448,
+        181
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "69baa204a560f34644b833a3f2dfb652ff9837a476a0dad9814864f02f17b826"
+    },
+    {
+      "family": "antlion",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        724,
+        181,
+        905,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5fd7c04c4337566ee5894cf32f3187a557393ae22ed204fd59c02c302cb61d26"
+    },
+    {
+      "family": "antlion",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        905,
+        181,
+        1086,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6ad7bd203d578fb27792fe479ebfcafb71305b59c54ac6240a89d514dca60f95"
+    },
+    {
+      "family": "antlion",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        1086,
+        181,
+        1267,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "52eea158aa237e354abdf79a7b652d1dc14927356fca0af54d4132c41c0f947c"
+    },
+    {
+      "family": "antlion",
+      "pose": "walk",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        1267,
+        181,
+        1448,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "170f6c1321be85674522accef5fa608ffa642106b6dfd3421d13ab14c6d273f5"
+    },
+    {
+      "family": "antlion",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        724,
+        362,
+        905,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "7976a50a63bcf0466e96740033bf873142a211596b4f21c2d8adaed1baca921a"
+    },
+    {
+      "family": "antlion",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        905,
+        362,
+        1086,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "27fc4fe79a1fa53cdd3ceb2070abaaad226769195bc3f6967e166c29cee8695a"
+    },
+    {
+      "family": "antlion",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        1086,
+        362,
+        1267,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5b87cb9a1355869fbf9b7db621986e60dd17f1ad452cce9d01f6ca2dd3ecfb02"
+    },
+    {
+      "family": "antlion",
+      "pose": "attack",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        1267,
+        362,
+        1448,
+        543
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "7c096904c3ad1218be450bc33d4698210e91a610a3d0271d51025ba37f791dd4"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        0,
+        543,
+        181,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "4e1b8f7f3330133606513f5717c8d7451aadd00193115f286675c935ad9d734b"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        181,
+        543,
+        362,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6ae5a648666af72bf6bbcbefc665a6e445f553bac3cfd55d50addbf01441ebf7"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        362,
+        543,
+        543,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "84b7e124f6bcfa351955f3f3d7317aef5c391b541a5da3e2b947f10c3d255aad"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "idle",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        543,
+        543,
+        724,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "3ecc3db3b6c644cb2e61f36c1a456ab856b7214d8a64ed4dd8ef9c0d22e2b9ce"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        0,
+        724,
+        181,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "1f594f78c5ed4de85ca886a9f6ea6c2804c62149df71fbbe57bcda1128f0116c"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        181,
+        724,
+        362,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d7c2420aadc4ab0da63f85544e25f91c382e5defdbba1e247b9464e34a1c48ec"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        362,
+        724,
+        543,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e0e22cc29d5931fb19ec87f4880af223c55c7cbd4295935d3202d3486e92a81e"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "walk",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        543,
+        724,
+        724,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b6dfee62fce4bff3caeb96e14fcbc0bb3000ff18eec85e89d08d64380812d84f"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        0,
+        905,
+        181,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "2f95fb3ac83f6ce62f0683c992c50f6136a9194b677922d8839c2d555a3bf360"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        181,
+        905,
+        362,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "89f7b091e4f845fba876ca6363462e01fb822ed14a396d12d46293a5276c2d99"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        362,
+        905,
+        543,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a40981459fe218c2d75e43530f1d59367576ab0811909830a7ff56b4a3698d27"
+    },
+    {
+      "family": "ant_giant",
+      "pose": "attack",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        543,
+        905,
+        724,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b917d0fdeaa1e4d551eb3f4510c601047ef2d00755ddc0715ef49c8d9dffb341"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        724,
+        543,
+        905,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0894c7284487fbead514f8afa7c1204220044dba23d2af94b388bd051706f324"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        905,
+        543,
+        1086,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "54feed1799654a191daa54f30ae15cc32846eb65b32e6046c503d42d98c42c56"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        1086,
+        543,
+        1267,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "7314a3f274491ed663d8cc6f2f4c6ebd6911fae7e71ce95b5ba9f825b23368bd"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "idle",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        1267,
+        543,
+        1448,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "44449c0180f896ddba0f0533e6e90fc7486441c970723e06a43abe209dd97ee8"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        724,
+        724,
+        905,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d85156aff720ca30a56f4e1c99bb25fcd696215c16eed4037d3d3460ed2ca23a"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        905,
+        724,
+        1086,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "76b99722076209f3ff07e79373cf6de450619d4e198393e2e1e3e3a641a53901"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        1086,
+        724,
+        1267,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d2fa2dd7b958b7c8f2f3032b6a9fd9d9077f334af71a0e53bbc4e95544df1b0a"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "walk",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        1267,
+        724,
+        1448,
+        905
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0e3fe0a9470194cc68356eb32761c699b59eb47412df1c1205c36c9af2de3b4a"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "insects.png",
+      "crop": [
+        724,
+        905,
+        905,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5195f0299766b0569f7420c3bc258cdd83e51d5ca5a9f280bc51acb63a604279"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "insects.png",
+      "crop": [
+        905,
+        905,
+        1086,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c29445a9ae7d9515e3121e304492531b16a76c732e5cbf665e9843866fe9583d"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "insects.png",
+      "crop": [
+        1086,
+        905,
+        1267,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "acc19b8bc8e1f458c5f145b34b18a54322bb0260b7fbb34dda190c087a0d4f06"
+    },
+    {
+      "family": "giant_mantis",
+      "pose": "attack",
+      "direction": "se",
+      "source": "insects.png",
+      "crop": [
+        1267,
+        905,
+        1448,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "4711a1bb71a2e388027bcf6c21bc885a0468247c03726a0b6a1ec8400ba78004"
+    },
+    {
+      "family": "trant",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "treant.png",
+      "crop": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "9f8ec440dc4249fa4e21b1687b9f844db3825b320b7f478f2f7f9ff5dd67c567"
+    },
+    {
+      "family": "trant",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "treant.png",
+      "crop": [
+        362,
+        0,
+        724,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "76f91de99ac84b1ab6b804c0d624b9a992c2cc7310e26a7f2d5cea55def99fca"
+    },
+    {
+      "family": "trant",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "treant.png",
+      "crop": [
+        724,
+        0,
+        1086,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d3075474dad8bdd292ffd406eeba11321838e61d235dd090dd3d31c67d95a022"
+    },
+    {
+      "family": "trant",
+      "pose": "idle",
+      "direction": "se",
+      "source": "treant.png",
+      "crop": [
+        1086,
+        0,
+        1448,
+        362
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a1fe04dc05ac3d97d8ca9b233897943655ec77ce6db05aeac16d0b4a43f9c8be"
+    },
+    {
+      "family": "trant",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "treant.png",
+      "crop": [
+        0,
+        362,
+        362,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "52fa5df466a77c247dc546fe3c963045de71faaaa8638b1c0e424ce5e64268d4"
+    },
+    {
+      "family": "trant",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "treant.png",
+      "crop": [
+        362,
+        362,
+        724,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c374ded8c1969fcfcbebd460e6f8bf69517f7d988ea436d7830ebe9aaa1d1ad3"
+    },
+    {
+      "family": "trant",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "treant.png",
+      "crop": [
+        724,
+        362,
+        1086,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ba1f24641e25d63a5cd899abcee7aaa70f6a0f189baaf8956d72a145cdc1ace0"
+    },
+    {
+      "family": "trant",
+      "pose": "walk",
+      "direction": "se",
+      "source": "treant.png",
+      "crop": [
+        1086,
+        362,
+        1448,
+        724
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0f2ba27e3b1086ea817831f5074b6e533518440d9f13aa6287ec08282987d8ce"
+    },
+    {
+      "family": "trant",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "treant.png",
+      "crop": [
+        0,
+        724,
+        362,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "9587892f55f3eece21af74ecb63c3cbe8fb011218698af930c8f64ede7b30ed3"
+    },
+    {
+      "family": "trant",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "treant.png",
+      "crop": [
+        362,
+        724,
+        724,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6e73a997ac7d3060b90998500cca6bf1f25b3af7e00bdb203728a16eec8fa76b"
+    },
+    {
+      "family": "trant",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "treant.png",
+      "crop": [
+        724,
+        724,
+        1086,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6bbf4904a4bb4cd56b330128d121d13f8cebe0e31c6713441b2b1c5962acfa08"
+    },
+    {
+      "family": "trant",
+      "pose": "attack",
+      "direction": "se",
+      "source": "treant.png",
+      "crop": [
+        1086,
+        724,
+        1448,
+        1086
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d338e529cf639d289ec16f4ae14c0f20a3a8087ec4d8e64882f53d2d39a95bd1"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "spirits.png",
+      "crop": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "7671f90f2c0dcaeaeea19420043f083dfa00d5bfdee11ed826754925d466d8a9"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "spirits.png",
+      "crop": [
+        256,
+        0,
+        512,
+        256
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c0ed3ead16ff1e2a2496f7decbb0c4458844fd5c971517f2098b150e9e85026c"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "spirits.png",
+      "crop": [
+        512,
+        0,
+        768,
+        256
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "1cceeb0faec3e85e856c0b7ee8fd90d5d6e4027f3ba65b7deb53f47c4750e3a4"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "idle",
+      "direction": "se",
+      "source": "spirits.png",
+      "crop": [
+        768,
+        0,
+        1024,
+        256
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "95c1b7bc869ab2e6e37ec91d5f8a0804776cd2ab2eb414d5994135239798ca2b"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "spirits.png",
+      "crop": [
+        0,
+        256,
+        256,
+        512
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e77700e0901b80ea50b51ea0c0d435ae0ae752336c6d02709236681c4bf1ae41"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "spirits.png",
+      "crop": [
+        256,
+        256,
+        512,
+        512
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "90e46e5dec48c797339ead4240534f97031b91edb0218d566466ac823ddf5858"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "spirits.png",
+      "crop": [
+        512,
+        256,
+        768,
+        512
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "de82250146cefbf7159018d7e5061786f1a79ca3343878c6a3855265ba40616b"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "walk",
+      "direction": "se",
+      "source": "spirits.png",
+      "crop": [
+        768,
+        256,
+        1024,
+        512
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d8ebac2aec66ec841a954fbda1114585092d0cdebde6a0ac6cf301af55fa4505"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "spirits.png",
+      "crop": [
+        0,
+        512,
+        256,
+        768
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "95b54611898a8f560c8b59e5dfd2db45b1aa98da708327752b57318a638d6930"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "spirits.png",
+      "crop": [
+        256,
+        512,
+        512,
+        768
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "7c456a17dab57fcb3b5f72fe7021f7294edf9bef90d2c1c7dee29e45213ef032"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "spirits.png",
+      "crop": [
+        512,
+        512,
+        768,
+        768
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6135e66c5b5f1bca3601f821a0345e1fa32ed6441fb75fb080228c452c91dfbc"
+    },
+    {
+      "family": "brown_pote_spirit",
+      "pose": "attack",
+      "direction": "se",
+      "source": "spirits.png",
+      "crop": [
+        768,
+        512,
+        1024,
+        768
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "c5f9bf64ec78e818f0259bc4abae8017751be21520300b24162826678a48be15"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "spirits.png",
+      "crop": [
+        0,
+        768,
+        256,
+        1024
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e96336113395771c456e9b706ab0be621581b7337c8b027826c2c5a2df1f542b"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "spirits.png",
+      "crop": [
+        256,
+        768,
+        512,
+        1024
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5b6f987207d80ef394486396f9f7514c1d056dab1282f53b201879130f76171e"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "spirits.png",
+      "crop": [
+        512,
+        768,
+        768,
+        1024
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ff7cf04c663ac50d27312b0d52e39821dbd91ff60dd3c0146aaf5f67e5a5fbaf"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "idle",
+      "direction": "se",
+      "source": "spirits.png",
+      "crop": [
+        768,
+        768,
+        1024,
+        1024
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "7721d0dab7c1b879d08fca8d5a721a8596b9f192609d87a4ca5ebe83a1a2bb6b"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "spirits.png",
+      "crop": [
+        0,
+        1024,
+        256,
+        1280
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "9f94e924129224389fd2bdd22486f7a0ab5b9b49483a87e3fce245e4dd2cc89e"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "spirits.png",
+      "crop": [
+        256,
+        1024,
+        512,
+        1280
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "fa38b2666eb049b1fbcb912a69586b82df2dc304d0b928c76c2f675a22fa0a45"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "spirits.png",
+      "crop": [
+        512,
+        1024,
+        768,
+        1280
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b6875407e797b64b33c04ce480202b375476b51398d229cb6f254c31ff0bc380"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "walk",
+      "direction": "se",
+      "source": "spirits.png",
+      "crop": [
+        768,
+        1024,
+        1024,
+        1280
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0c44467807ac4215836ce02870bf552942b4659152f9e8796c2eb463de66c8b7"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "spirits.png",
+      "crop": [
+        0,
+        1280,
+        256,
+        1536
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "55f3f47ac154a643f11dba5b5ac1852e601605db151f284fd0ebd0d445f0719f"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "spirits.png",
+      "crop": [
+        256,
+        1280,
+        512,
+        1536
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "f7a9f0f591eec0c61f0f2836325ffe6b28de17ef05de9d6c59dce561babb3452"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "spirits.png",
+      "crop": [
+        512,
+        1280,
+        768,
+        1536
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5799d387de0aecbb8837a4ecbaad27943c390a98bcde5919b0a072fcf05004a5"
+    },
+    {
+      "family": "black_pote_spirit",
+      "pose": "attack",
+      "direction": "se",
+      "source": "spirits.png",
+      "crop": [
+        768,
+        1280,
+        1024,
+        1536
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e25a75a8c8274b80759217930ff18dd10350d877b9727143872fd1ac8828963c"
+    }
+  ]
+}

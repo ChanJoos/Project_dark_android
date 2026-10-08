@@ -18,8 +18,8 @@ public class CampaignNavigationTest {
   }
   assertEquals(new HashSet<>(Arrays.asList("POTE_RED","POTE_GREEN","POTE_PURPLE","POTE_SILVER")),species(1));
   assertEquals(new HashSet<>(Arrays.asList("POTE_TREANT","POTE_ANTLION","POTE_GNOLL","POTE_LYCAN")),species(2));
-  assertEquals(new HashSet<>(Arrays.asList("POTE_WOLFRIDER","POTE_ANTGIANT","POTE_SILVERWOLF")),species(3));
-  AdaptedCampaignRewardCatalog rewards=new AdaptedCampaignRewardCatalog();for(String id:species(1))assertEquals("A reward metadata follows its assigned pool","포테 A · 입구 숲",rewards.find(id).zone);for(String id:species(2))assertEquals("B reward metadata follows its assigned pool","포테 B · 무리 숲",rewards.find(id).zone);for(String id:species(3))assertEquals("C reward metadata follows its assigned pool","포테 C · 깊은 숲",rewards.find(id).zone);
+  assertEquals(new HashSet<>(Arrays.asList("POTE_WOLFRIDER","POTE_ANTGIANT","POTE_SILVERWOLF","POTE_SPIRIT")),species(3));
+  AdaptedCampaignRewardCatalog rewards=new AdaptedCampaignRewardCatalog();for(String id:species(1))assertEquals("A reward metadata follows its assigned pool","포테 A · 입구 숲",rewards.find(id).zone);for(String id:species(2))assertEquals("B reward metadata follows its assigned pool","포테 B · 무리 숲",rewards.find(id).zone);for(String id:species(3))if(!"POTE_SPIRIT".equals(id))assertEquals("C reward metadata follows its assigned pool","포테 C · 깊은 숲",rewards.find(id).zone);
   assertEquals("D is a single-boss encounter",1,CampaignMonsters.spawn(4).size());assertEquals("POTE_MANTIS",CampaignMonsters.spawn(4).get(0).campaignRewardProfileId);assertTrue("final encounter has four-direction idle/walk/attack art",PoteForestMonsterShowcase.containsMonster("POTE_MANTIS#0"));
   for(CampaignProgress.Def d:CampaignProgress.definitions()){
    if(!d.kind.equals("KILL")&&!d.kind.equals("PAIR"))continue;

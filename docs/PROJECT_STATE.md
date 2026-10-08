@@ -1,3 +1,13 @@
+## 2026-10-08 — V118 monster quality / intermittent frame repair candidate
+
+V117 DEVICE_FAILED_USER_REPORTED: tap lag improved, intermittent stutter remains; Pamfet art pixelated and old monster coverage questioned. Physical root UNKNOWN_NO_DEVICE_TRACE. Confirmed code hazards: 48px sprites decoded at 24px, first-state/first-hit decode in draw, synchronous two-second disk commit, fixed16ms delay after update. Candidate full192px sprite decode, map-entry all-pose/hit preparation, vsync scheduling and periodic apply(); reward/transaction/pause commit retained. Android orders apply/commit; no asynchronous durability claim.
+
+User authorizes sheet generation/cropping/size matching.14 visual families×12 still poses=168 frames,192RGBA and baseline184. Pamfet and Lycan silhouettes maximum120px preserve prior30/45 logical body heights; remaining species max176px within same48/72/80 logical canvas. Source sheets and exact crop/hash provenance preserved. Pamfet reference is retained current flower-bud silhouette; other supplied tree/insect/wolf/deer sheets guide reimplementation. Generated candidates are not original frames; original match and four-facing visual acceptance remain pending. First ogre-shaped Pamfet generation and incomplete tree block rejected.12 poses means one still per state/direction, not12-frame continuous animation.
+
+A/B/C/D populations remain72/96/108/1. C additionally includes canonical POTE_SPIRIT with alternating brown/black visual variants, existing canonical stat/reward identity unchanged; spawn HP/positions remain adapted. Strong/elite registry aliases remain available using corresponding family art but outside the previously selected ordinary campaign. Full14-art-family coverage does not assert every Master variant has a unique sprite.
+
+Tests add168 native draw/decode checks, all-map prewarm cache stability/variant reachability, real periodic loop apply-vs-commit and pause newest-state; retained save/restart/rollback, pose-size, tap oracle and gameplay checks included. IMPLEMENTED; BUILD/NATIVE/PHYSICAL_PHONE/USER_VISUAL pending until exact CI. Same draft PR180, unmerged candidate vs main18ef615.
+
 
 ## 2026-10-08 — V117 ground-tap candidate build and callback verification
 

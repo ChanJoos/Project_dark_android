@@ -23,8 +23,10 @@ public final class PoteForestMonsterShowcase {
     art.put("POTE_LYCAN","lycanthrope");
     art.put("POTE_TREANT","campaign_v1/trant");art.put("POTE_ANTLION","campaign_v1/antlion");art.put("POTE_GNOLL","campaign_v1/gnoll");art.put("POTE_WOLFRIDER","campaign_v1/wolf_rider");art.put("POTE_ANTGIANT","campaign_v1/ant_giant");art.put("POTE_SILVERWOLF","campaign_v1/silver_wolf");
     // Generated adapted final-encounter art; original-game frames were not present in supplied sources.
-    art.put("POTE_MANTIS","campaign_v2/giant_mantis");
+    art.put("POTE_MANTIS","campaign_v3/giant_mantis");
+    art.put("POTE_SPIRIT","campaign_v3/brown_pote_spirit");
     art.put("POTE_STRONG_GNOLL","campaign_v1/gnoll");art.put("POTE_STRONG_WOLFRIDER","campaign_v1/wolf_rider");art.put("POTE_STRONG_TREANT","campaign_v1/trant");art.put("POTE_CAMPAIGN_ELITE_GNOLL","campaign_v1/gnoll");
+    art.replaceAll((id,key)->"campaign_v3/"+key.substring(key.lastIndexOf('/')+1));
     ART=Collections.unmodifiableMap(art);
     IDS=Collections.unmodifiableList(new ArrayList<>(java.util.Arrays.asList("POTE_PURPLE","POTE_RED","POTE_GREEN","POTE_SILVER","POTE_LYCAN")));
   }
@@ -34,7 +36,13 @@ public final class PoteForestMonsterShowcase {
   public static float bodyHeight(String id){String s=species(id);return s!=null&&s.contains("MANTIS")?72f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){return id==null?null:id.split("#",2)[0];}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}
-  public static String artKey(String id){return ART.get(species(id));}
+  public static String artKey(String id){
+    // One canonical spirit identity; two generated visual variants, same rewards/AI.
+    if("POTE_SPIRIT".equals(species(id))&&id!=null&&id.contains("#")){
+      try{if(Integer.parseInt(id.split("#",2)[1])%2!=0)return "campaign_v3/black_pote_spirit";}catch(NumberFormatException ignored){}
+    }
+    return ART.get(species(id));
+  }
   public static String poseFor(RuntimeState.Monster monster){
     if(monster==null)return "idle";
     if(monster.isMoving)return "walk";

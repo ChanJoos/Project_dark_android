@@ -57,6 +57,23 @@ public final class PoteFieldRenderer {
   private final List<Placement> depthPlacements=new ArrayList<>();
   private final List<ActorDraw> depthActors=new ArrayList<>();
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
+  private String preparedMonsterMap;
+
+  /** Decode/upload all states at map entry, rather than on a walk turn or first hit. */
+  public void prepareMonsters(com.projectdark.mobile.RuntimeState runtime){
+    if(runtime.currentMapId().equals(preparedMonsterMap))return;
+    cache.keySet().removeIf(key->key.startsWith(PoteForestMonsterShowcase.ASSET_ROOT));
+    hitCache.clear();
+    java.util.Set<String> loaded=new java.util.HashSet<>();
+    for(com.projectdark.mobile.RuntimeState.Monster monster:runtime.monsters()){
+      for(String pose:new String[]{"idle","walk","attack"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
+        String key=PoteForestMonsterShowcase.assetPath(monster.id,pose,direction);
+        if(key==null||!loaded.add(key))continue;
+        Bitmap source=bitmap(key);if(source!=null){source.prepareToDraw();hitBitmap(key,source).prepareToDraw();}
+      }
+    }
+    preparedMonsterMap=runtime.currentMapId();
+  }
   private static final List<Placement> AUTHORED_PLACEMENTS=buildPlacements();
   private static final Map<String,List<Placement>> MAP_PLACEMENTS=new LinkedHashMap<>();
 
@@ -181,6 +198,7 @@ public final class PoteFieldRenderer {
   private boolean campClearing(WorldRuntimeAdapter w,Placement p){return CampaignWorld.PIET.equals(w.runtime().currentMapId())&&!"water".equals(p.role)&&p.x>=540&&p.x<=1080&&p.y>=380&&p.y<=760;}
   public void drawScene(Canvas c,WorldRuntimeAdapter w,List<ActorDraw> actors){
     if(c==null||w==null)return;visibleActors=actors;
+    prepareMonsters(w.runtime());
     drawFloor(c,w);drawCreekBed(c,w);
     depthPlacements.clear();depthActors.clear();
     for(Placement p:placementsForMap(w.runtime().currentMapId())){
@@ -370,7 +388,7 @@ public final class PoteFieldRenderer {
   private Bitmap bitmap(String name){
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
-      BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;if(name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT))o.inSampleSize=2;b=BitmapFactory.decodeStream(in,null,o);
+      BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
       if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));

@@ -106,7 +106,7 @@ public final class GameView extends View {
   private float feedbackClock=0,rewardClock=0;
   private FeedbackTone feedbackTone=FeedbackTone.INFO;
 
-  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(checkpointClock>=2f||savedLedgerSequence!=state.ledger().sequence()){checkpoint();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postDelayed(this,16);}};
+  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(savedLedgerSequence!=state.ledger().sequence()){checkpoint();}else if(checkpointClock>=2f){autosave();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postOnAnimation(this);}};
 
   public GameView(Context c){super(c);UiTheme.install(c);questJournalModel=new QuestJournalModel(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
     combatSession.setSkillMovement(new SkillAbilityExecutor.Movement(){
@@ -122,6 +122,11 @@ public final class GameView extends View {
   private boolean saveSkillSlots(){if(!skillBook.testAccess()){org.json.JSONObject before=state.rpg().campaign().snapshot();state.rpg().campaign().observeBasics(state.rpg(),skillBook);boolean saved=F5mSaveStore.writable()&&F5mSaveStore.checkpointActive();if(!saved)state.rpg().campaign().restore(before);return saved;}org.json.JSONArray a=new org.json.JSONArray();for(String id:skillBook.testSlots())a.put(id==null?org.json.JSONObject.NULL:id);return getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().putString("slots",a.toString()).commit();}
   public void resume(){if(running)return;running=true;last=SystemClock.uptimeMillis();post(loop);}
   public void pause(){cancelSkillApproach();running=false;removeCallbacks(loop);F5mSaveStore.beginFrame();try{state.tick(0f);state.applyDerivedGrowth();consumeLedger();}finally{F5mSaveStore.endFrame();}checkpoint();}
+  private void autosave(){
+    state.rpg().campaign().visit(state.currentMapId());state.rpg().campaign().observeBasics(state.rpg(),skillBook);
+    // apply() is queued, not proof of disk durability. Only commit() clears save warnings.
+    F5mSaveStore.autosaveActive();checkpointClock=0f;
+  }
   private boolean checkpoint(){
     savedLedgerSequence=state.ledger().sequence();
     state.rpg().campaign().visit(state.currentMapId());state.rpg().campaign().observeBasics(state.rpg(),skillBook);boolean saved=F5mSaveStore.checkpointActive();

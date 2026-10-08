@@ -1,4 +1,4 @@
-name: Pote V117 reference repair
+name: Pote V118 reference repair
 on:
   push:
     branches: [codex/pote-forest-v112]
@@ -92,18 +92,18 @@ jobs:
       - name: Verify world, AUTO, quest, population, depth and native screens
         run: |
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*ForestPixelCacheTest' --tests '*ForestFloorCacheTest' --tests '*ForestFrameProfileTest' --tests '*ForestTapProfileTest' --tests '*GroundTapPathTest' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
+          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*ForestPixelCacheTest' --tests '*MonsterQualityV118Test' --tests '*RuntimeCheckpointTest' --tests '*PotePamfetPresentationTest' --tests '*ForestFloorCacheTest' --tests '*ForestFrameProfileTest' --tests '*ForestTapProfileTest' --tests '*GroundTapPathTest' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
       - name: Compare real touch and long-route collision work
         run: python3 tools/compare_forest_taps.py
       - name: Build and verify exact APK
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v117_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v118_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pote-v117-native-${{ github.sha }}
+          name: pote-v118-native-${{ github.sha }}
           path: |
             app/build/reports/pote-v113/
             app/build/reports/device-review/
@@ -112,7 +112,7 @@ jobs:
             app/build/reports/tests/
       - uses: actions/upload-artifact@v4
         with:
-          name: pote-v117-apk-${{ github.sha }}
+          name: pote-v118-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
@@ -120,5 +120,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V117_TEST.apk
-          gh release create "candidate-v117-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V117_TEST.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V117 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v117test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."
+          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V118_TEST.apk
+          gh release create "candidate-v118-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V118_TEST.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V118 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v118test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."
