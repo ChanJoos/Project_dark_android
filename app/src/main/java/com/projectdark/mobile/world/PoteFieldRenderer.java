@@ -214,11 +214,14 @@ public final class PoteFieldRenderer {
     int right=(int)Math.floor((ox+w.camera().viewportWidth())/FLOOR_CHUNK),bottom=(int)Math.floor((oy+w.camera().viewportHeight())/FLOOR_CHUNK);
     // Extreme viewports must not thrash a bounded cache. Normal phone viewports use 6-18 chunks.
     if((right-left+1)*(bottom-top+1)>FLOOR_CACHE_LIMIT){drawFloorDirect(c,map,ox,oy);return;}
+    // Keep the ground shader live: its subpixel sampling must follow the camera exactly.
+    pixel.setStyle(Paint.Style.FILL);pixel.setShader(null);pixel.setAlpha(255);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    drawGroundTiles(c,map,ox,oy);
     for(int y=top;y<=bottom;y++)for(int x=left;x<=right;x++){
       long key=((long)x<<32)|(y&0xffffffffL);Bitmap chunk=floorChunks.get(key);
       if(chunk==null){
         chunk=Bitmap.createBitmap(FLOOR_CHUNK+2*FLOOR_GUTTER,FLOOR_CHUNK+2*FLOOR_GUTTER,Bitmap.Config.ARGB_8888);
-        drawFloorDirect(new Canvas(chunk),map,x*FLOOR_CHUNK-FLOOR_GUTTER,y*FLOOR_CHUNK-FLOOR_GUTTER);
+        drawTrail(new Canvas(chunk),map,x*FLOOR_CHUNK-FLOOR_GUTTER,y*FLOOR_CHUNK-FLOOR_GUTTER);
         floorChunkBuilds++;floorChunks.put(key,chunk);
         if(floorChunks.size()>FLOOR_CACHE_LIMIT)floorChunks.remove(floorChunks.keySet().iterator().next());
         // Do not recycle: a hardware display list may still retain an evicted bitmap.
