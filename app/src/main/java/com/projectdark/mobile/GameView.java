@@ -23,7 +23,7 @@ import java.util.Map;
 /** PROJECT DARK v0.74 - original-inspired mobile HUD adaptation + precise world tap routing. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
-  private static final float JOY_X=92f,JOY_Y=454f,JOY_R=58f;
+  private static final float JOY_X=112f,JOY_Y=434f,JOY_R=58f;
   private static final float SLOT=42f,SLOT_GAP=8f,SLOT_X0=650f,SLOT_Y0=374f;
   private static final float ATK_X=914f,ATK_Y=498f,ATK_R=34f;
   private static final float CHAT_LEFT=288f,CHAT_RIGHT=624f;

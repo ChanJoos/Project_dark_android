@@ -248,11 +248,11 @@ jobs:
           name: inn-v93-review-${{ github.sha }}
           path: app/build/reports/device-review/v93-*.png
           if-no-files-found: warn
-      - name: Build and verify exact V117 debug APK
+      - name: Build and verify exact V119 debug APK
         run: |
           gradle :app:assembleDebug --stacktrace
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v118_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v119_apk.py app/build/outputs/apk/debug/app-debug.apk
       - name: Upload focused V96 weapon and jump review
         if: always()
         uses: actions/upload-artifact@v4

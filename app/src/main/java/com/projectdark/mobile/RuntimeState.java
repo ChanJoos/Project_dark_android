@@ -120,9 +120,12 @@ public final class RuntimeState {
       return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles();
     return MonsterTileCenterLocomotion.authoredCenters();
   }
+  private String chaseMapId;
+  private MonsterChasePathfinder.IndexedMap chaseMap;
   public WorldMoveTargetController.Direction nextMonsterChaseStep(Monster monster,float targetX,float targetY){
     if(monster==null||!monster.alive)return null;
-    return MonsterChasePathfinder.nextStep(monsterNavigationTiles(),monster.x,monster.y,targetX,targetY,
+    if(chaseMap==null||!currentMapId.equals(chaseMapId)){chaseMap=new MonsterChasePathfinder.IndexedMap(monsterNavigationTiles());chaseMapId=currentMapId;}
+    return chaseMap.nextStep(monster.x,monster.y,targetX,targetY,
         (from,to)->monsterCanTraverse(monster,from.x,from.y,to.x,to.y));
   }
   private boolean monsterCanTraverse(Monster self,float fromX,float fromY,float toX,float toY){

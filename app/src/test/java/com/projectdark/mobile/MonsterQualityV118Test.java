@@ -44,6 +44,15 @@ public class MonsterQualityV118Test {
   }
   assertEquals(new HashSet<>(Arrays.asList("campaign_v3/brown_pote_spirit","campaign_v3/black_pote_spirit")),spiritVariants);
  }
+ @Test public void repeatedMapSwitchesKeepOnlyCurrentMonsterPosesWithinMemoryBudget()throws Exception{
+  PoteFieldRenderer renderer=new PoteFieldRenderer();RuntimeState state=new RuntimeState();
+  for(int round=0;round<3;round++)for(String map:new String[]{"MAP_POTE_01","MAP_POTE_02","MAP_POTE_03",CampaignWorld.BOSS_D}){
+   state.enterCampaignMap(map,false);renderer.prepareMonsters(state);long bytes=0;int count=0;
+   for(Object o:((Map<?,?>)get(renderer,"cache")).entrySet()){Map.Entry<?,?> e=(Map.Entry<?,?>)o;if(e.getKey().toString().startsWith(PoteForestMonsterShowcase.ASSET_ROOT)){assertNotNull(e.getValue());bytes+=((Bitmap)e.getValue()).getAllocationByteCount();count++;}}
+   Map<?,?> hits=(Map<?,?>)get(renderer,"hitCache");for(Object b:hits.values())bytes+=((Bitmap)b).getAllocationByteCount();
+   assertTrue("current-map source count "+map,count<=60);assertEquals(count,hits.size());assertTrue("monster cache bounded "+bytes,bytes<=60L*192*192*4*2);
+  }
+ }
  @Test public void livePeriodicFrameQueuesSaveAndPauseCommitsNewestSnapshot()throws Exception{
   android.content.Context context=RuntimeEnvironment.getApplication();SharedPreferences actual=context.getSharedPreferences("project_dark_f5m_v1",0);actual.edit().clear().commit();F5mSaveStore.install(context);
   GameView view=new GameView(context);RuntimeState runtime=(RuntimeState)get(view,"state");Object store=F5mSaveStore.class.getDeclaredField("active");Field active=F5mSaveStore.class.getDeclaredField("active");active.setAccessible(true);store=active.get(null);
