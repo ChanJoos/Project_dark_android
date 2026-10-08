@@ -1,3 +1,13 @@
+forest_tap_v117:
+  baseline: V116_DEVICE_FAILED_USER_REPORTED_TAP_LAG
+  implementation: LOCAL_CANDIDATE
+  physical_root_cause: UNKNOWN_NO_DEVICE_TRACE
+  build: PENDING
+  native_runtime: PENDING
+  physical_phone: PENDING
+  active_branch: codex/pote-forest-v112
+  active_pr: 180
+  required_sources: [AGENTS.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/visual/POTE_FOREST_DESIGN_V1.md, verification/FOREST_PERFORMANCE_V116_BUILD.json]
 # Current user repair: POTE_REFERENCE_V113; V112 USER_VISUAL_REJECTED.
 # Inputs: latest main18ef615, supplied1000056919/1000056952 videos, docs/visual/POTE_FOREST_DESIGN_V1.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/MONSTER_CREATION_MANUAL.md.
 onboarding_v110:

@@ -224,8 +224,13 @@ public final class WorldMoveTargetController {
     return exact;
   }
   private TileCenter nearestTraversable(float x,float y){
+    // Geometry first: a normal tap needs one live occupancy query, not one per map tile.
+    // Keep authored order for equal-distance destinations (the original tie contract).
+    TileCenter nearest=null;float nearestDistance=Float.MAX_VALUE;
+    for(TileCenter tile:tiles){float d=distanceSquared(tile.x,tile.y,x,y);if(d<nearestDistance){nearestDistance=d;nearest=tile;}}
+    if(nearest!=null&&world.canPlayerOccupy(nearest.x,nearest.y))return nearest;
     TileCenter best=null;float bestDistance=Float.MAX_VALUE;
-    for(TileCenter tile:tiles){if(!world.canPlayerOccupy(tile.x,tile.y))continue;float d=distanceSquared(tile.x,tile.y,x,y);if(d<bestDistance){bestDistance=d;best=tile;}}
+    for(TileCenter tile:tiles){float d=distanceSquared(tile.x,tile.y,x,y);if(d<bestDistance&&world.canPlayerOccupy(tile.x,tile.y)){bestDistance=d;best=tile;}}
     return best;
   }
   private boolean insideAuthoredPlane(float x,float y){return x>=minTileX-32f&&x<=maxTileX+32f&&y>=minTileY-16f&&y<=maxTileY+16f;}
@@ -295,17 +300,22 @@ public final class WorldMoveTargetController {
     return best;
   }
   private List<TileCenter> findPath(TileCenter start,TileCenter goal){
-    PriorityQueue<Node> open=new PriorityQueue<>(Comparator.comparingDouble(n->n.f));
+    // All four legal steps are 32x16 diagonals. Favor progress on equal-f fronts.
+    PriorityQueue<Node> open=new PriorityQueue<>(Comparator.<Node>comparingDouble(n->n.f).thenComparingDouble(n->-n.g));
     Map<String,Float> best=new HashMap<>();Set<String> closed=new HashSet<>();
+    Map<String,Boolean> occupancy=new HashMap<>();
     open.add(new Node(start,0f,heuristic(start,goal),null));best.put(key(start.x,start.y),0f);
     while(!open.isEmpty()){
       Node current=open.poll();String currentKey=key(current.tile.x,current.tile.y);if(!closed.add(currentKey))continue;
       if(same(current.tile,goal))return reconstruct(current);
       for(Direction direction:Direction.values()){
         TileCenter next=byCenter.get(key(current.tile.x+direction.dx,current.tile.y+direction.dy));
-        if(next==null||!world.canPlayerOccupy(next.x,next.y)||!edgeTraversable(current.tile,next,direction))continue;
+        if(next==null)continue;
         String nextKey=key(next.x,next.y);if(closed.contains(nextKey))continue;
         float ng=current.g+1f;Float previous=best.get(nextKey);if(previous!=null&&previous<=ng)continue;
+        Boolean occupiable=occupancy.get(nextKey);
+        if(occupiable==null){occupiable=world.canPlayerOccupy(next.x,next.y);occupancy.put(nextKey,occupiable);}
+        if(!occupiable||!edgeTraversable(current.tile,next,direction))continue;
         best.put(nextKey,ng);open.add(new Node(next,ng,ng+heuristic(next,goal),current));
       }
     }
@@ -320,11 +330,8 @@ public final class WorldMoveTargetController {
     Collections.reverse(reversed);if(!reversed.isEmpty())reversed.remove(0);return reversed;
   }
   private static float heuristic(TileCenter a,TileCenter b){
-    float dx=Math.abs(a.x-b.x),dy=Math.abs(a.y-b.y);
-    // E/W can consume 64 world-X in one logical traversal; diagonals consume 32x16.
-    float verticalSteps=dy/16f;
-    float residualX=Math.max(0f,dx-verticalSteps*32f);
-    return verticalSteps+(float)Math.ceil(residualX/64f);
+    // There are no 64px E/W steps in Direction. This is the exact open-grid distance.
+    return Math.max(Math.abs(a.x-b.x)/32f,Math.abs(a.y-b.y)/16f);
   }
   private static boolean same(TileCenter a,TileCenter b){return close(a.x,b.x)&&close(a.y,b.y);}
   private static boolean close(float a,float b){return Math.abs(a-b)<.01f;}

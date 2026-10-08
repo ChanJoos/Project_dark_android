@@ -1,0 +1,8 @@
+
+## 2026-10-08 — V117 ground-tap repair in progress
+
+V116 eed465d3 is DEVICE_FAILED_USER_REPORTED: severe lag when tapping the Pote map to move. Prior moving-render measurements do not verify tap latency or phone recovery. Physical root cause remains UNKNOWN without device trace. Code diagnosis: nearestTraversable checks live occupancy for every authored tile before testing distance; ground A* assumes nonexistent 64px horizontal steps, repeats collision work for closed/non-improving neighbors and broad equal-f fronts.
+
+Candidate uses geometric nearest-first selection with original authored tie order and exact fallback, correct 4-diagonal max(dx/32,dy/16) heuristic, progress tie breaking and request-local occupancy memoization. Live destination/segment/actor checks remain authoritative at each step; no collision or actor population changes. Same branch/PR180; main remains18ef615. Inputs consumed: AGENTS.md, current CHAT_HANDOFF/PROJECT_STATE/DECISION_LOG/DIRECTOR_BACKLOG, DIRECTOR_GUIDE, development constitution, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, forest design, V116 evidence and current controller/adapter/runtime/input/tests.
+
+New independent BFS/destination tests cover300 randomized taps, large-map collision-work bound and actor movement revalidation. Exact same32 real GameView DOWN+UP touches and16 long routes on four forest maps run against V116 and candidate, report timing/collision work and require unchanged destination/status/shortest length plus at least50% fewer long-route occupancy calls. BUILD/NATIVE/PHONE remain PENDING until exact CI passes. V117 separate test package retains existing apps/saves, new profile.
