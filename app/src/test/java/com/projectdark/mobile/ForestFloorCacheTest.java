@@ -23,11 +23,13 @@ public class ForestFloorCacheTest {
     int[] expected=new int[320*256],actual=new int[expected.length];a.getPixels(expected,0,320,0,0,320,256);b.getPixels(actual,0,320,0,0,320,256);long error=0;int localMax=0;
     for(int i=0;i<expected.length;i++){assertEquals(255,actual[i]>>>24);for(int shift:new int[]{0,8,16}){int delta=Math.abs(((expected[i]>>shift)&255)-((actual[i]>>shift)&255));error+=delta;localMax=Math.max(localMax,delta);}}
     double mean=error/(double)(expected.length*3);worstMean=Math.max(worstMean,mean);maximum=Math.max(maximum,localMax);
-    assertTrue("world-aligned floor, no cache-grid line: "+map+" fraction="+fraction+" mean="+mean,mean<1.0);
+    System.out.println("FLOOR_RASTER_CASE="+map+"; FRACTION="+fraction+"; MEAN_RGB_ERROR="+mean+"; MAX_CHANNEL_ERROR="+localMax);
+    if(mean>=worstMean){java.io.File folder=new java.io.File("build/reports/forest-performance");folder.mkdirs();try(java.io.FileOutputStream out=new java.io.FileOutputStream(new java.io.File(folder,"floor-legacy-worst.png"))){a.compress(Bitmap.CompressFormat.PNG,100,out);}try(java.io.FileOutputStream out=new java.io.FileOutputStream(new java.io.File(folder,"floor-cached-worst.png"))){b.compress(Bitmap.CompressFormat.PNG,100,out);}}
     a.recycle();b.recycle();
    }
   }
   System.out.println("FLOOR_LEGACY_RASTER_WORST_MEAN_RGB_ERROR="+worstMean+"; MAX_CHANNEL_ERROR="+maximum);
+  assertTrue("world-aligned floor, no cache-grid line; worst mean RGB error="+worstMean,worstMean<1.0);
  }
  @Test public void stationaryFloorReusesChunksAndMapTravelHasBoundedMemory()throws Exception{
   PoteFieldRenderer r=new PoteFieldRenderer();WorldRuntimeAdapter w=world("MAP_POTE_01");Bitmap image=Bitmap.createBitmap(320,256,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(image);

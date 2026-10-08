@@ -13,3 +13,9 @@ IMPLEMENTED locally; final BUILD/NATIVE/PERFORMANCE/PHONE acceptance pending. Do
 75 tests:74pass,1floor raster failure. The corrected profiler proves100/100 measured moving frames in both maps, identical95.406px measured travel. Native render median MAP_POTE_01 13.087→12.498ms,MAP_POTE_03 25.595→8.225ms;floor2.327→1.068ms and16.060→1.058ms. However fractional camera (.25) full-floor raster meanRGB difference1.947 exceeded the1.0 guard. No APK built/published for this source;not a deliverable.
 
 Repair keeps the **ground shader live** for original subpixel texture phase and caches only static translucent trail paint. Same bounded world tiles/gutters/LRU;water unchanged. Frozen-raster guard is retained (not weakened). BUILD/NATIVE/PERFORMANCE acceptance pending again.
+
+## Trail-only colour composition rejected, 27e991d2 / Actions37708817086
+
+75 tests:74pass,1frozen-raster guard failure;whole-pixel camera meanRGB error1.543 from caching translucent trail separately. Separate transparent compositing rounds colours differently from original strokes on opaque ground. No APK built/published. Native map1 also regressed (11.075→16.076ms), despite map3 gain27.051→10.797ms. This is not a deliverable.
+
+Final approach being verified: opaque full-floor chunks keep original source-over colour composition, sampled through **BitmapShader** with original world/camera phase (not drawBitmap image-rect sampling). Same256px chunks/2px gutters/32chunk byte bound. Frozen V115 guard still meanRGB<1.0, now reports every map/spot/fraction and writes worst-case reference/cached PNGs to diagnose all phases. No threshold relaxed. Performance acceptance pending.

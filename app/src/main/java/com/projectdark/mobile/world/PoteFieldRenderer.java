@@ -13,7 +13,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.graphics.Rect;
 import android.graphics.Shader;
 import java.io.InputStream;
 import java.lang.reflect.Method;
@@ -47,10 +46,13 @@ public final class PoteFieldRenderer {
   private final Map<Bitmap,SpriteAlphaMask> alphaMasks=new java.util.IdentityHashMap<>();
   private static final int FLOOR_CHUNK=256,FLOOR_GUTTER=2,FLOOR_CACHE_LIMIT=32;
   // About 8.3 MiB of retained CPU pixels, independent of total map size. Water stays live.
-  private final LinkedHashMap<Long,Bitmap> floorChunks=new LinkedHashMap<>(32,.75f,true);
+  private static final class FloorChunk {
+    final Bitmap bitmap;final BitmapShader shader;
+    FloorChunk(Bitmap bitmap){this.bitmap=bitmap;shader=new BitmapShader(bitmap,Shader.TileMode.CLAMP,Shader.TileMode.CLAMP);}
+  }
+  private final LinkedHashMap<Long,FloorChunk> floorChunks=new LinkedHashMap<>(32,.75f,true);
   private String floorMap;
   private int floorChunkBuilds;
-  private final Rect floorSource=new Rect(FLOOR_GUTTER,FLOOR_GUTTER,FLOOR_GUTTER+FLOOR_CHUNK,FLOOR_GUTTER+FLOOR_CHUNK);
   private final RectF floorDestination=new RectF();
   private final List<Placement> depthPlacements=new ArrayList<>();
   private final List<ActorDraw> depthActors=new ArrayList<>();
@@ -214,22 +216,25 @@ public final class PoteFieldRenderer {
     int right=(int)Math.floor((ox+w.camera().viewportWidth())/FLOOR_CHUNK),bottom=(int)Math.floor((oy+w.camera().viewportHeight())/FLOOR_CHUNK);
     // Extreme viewports must not thrash a bounded cache. Normal phone viewports use 6-18 chunks.
     if((right-left+1)*(bottom-top+1)>FLOOR_CACHE_LIMIT){drawFloorDirect(c,map,ox,oy);return;}
-    // Keep the ground shader live: its subpixel sampling must follow the camera exactly.
-    pixel.setStyle(Paint.Style.FILL);pixel.setShader(null);pixel.setAlpha(255);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    drawGroundTiles(c,map,ox,oy);
     for(int y=top;y<=bottom;y++)for(int x=left;x<=right;x++){
-      long key=((long)x<<32)|(y&0xffffffffL);Bitmap chunk=floorChunks.get(key);
+      long key=((long)x<<32)|(y&0xffffffffL);FloorChunk chunk=floorChunks.get(key);
       if(chunk==null){
-        chunk=Bitmap.createBitmap(FLOOR_CHUNK+2*FLOOR_GUTTER,FLOOR_CHUNK+2*FLOOR_GUTTER,Bitmap.Config.ARGB_8888);
-        drawTrail(new Canvas(chunk),map,x*FLOOR_CHUNK-FLOOR_GUTTER,y*FLOOR_CHUNK-FLOOR_GUTTER);
+        Bitmap bitmap=Bitmap.createBitmap(FLOOR_CHUNK+2*FLOOR_GUTTER,FLOOR_CHUNK+2*FLOOR_GUTTER,Bitmap.Config.ARGB_8888);
+        drawFloorDirect(new Canvas(bitmap),map,x*FLOOR_CHUNK-FLOOR_GUTTER,y*FLOOR_CHUNK-FLOOR_GUTTER);
+        chunk=new FloorChunk(bitmap);
         floorChunkBuilds++;floorChunks.put(key,chunk);
         if(floorChunks.size()>FLOOR_CACHE_LIMIT)floorChunks.remove(floorChunks.keySet().iterator().next());
         // Do not recycle: a hardware display list may still retain an evicted bitmap.
       }
-      pixel.setShader(null);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setFilterBitmap(false);
+      // Use the same shader sampling convention as the original soil, including fractional camera
+      // coordinates. Image-rect blits use a different sample phase and cannot preserve this texture.
+      texturePhase.setTranslate(x*FLOOR_CHUNK-FLOOR_GUTTER-ox,y*FLOOR_CHUNK-FLOOR_GUTTER-oy);
+      chunk.shader.setLocalMatrix(texturePhase);
+      pixel.setShader(chunk.shader);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setFilterBitmap(false);
       floorDestination.set(x*FLOOR_CHUNK-ox,y*FLOOR_CHUNK-oy,(x+1)*FLOOR_CHUNK-ox,(y+1)*FLOOR_CHUNK-oy);
-      c.drawBitmap(chunk,floorSource,floorDestination,pixel);
+      c.drawRect(floorDestination,pixel);
     }
+    pixel.setShader(null);
   }
   private void drawFloorDirect(Canvas c,String map,float ox,float oy){
     pixel.setStyle(Paint.Style.FILL);pixel.setShader(null);pixel.setAlpha(255);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
