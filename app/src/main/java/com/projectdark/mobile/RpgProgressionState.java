@@ -380,7 +380,10 @@ public final class RpgProgressionState {
   }
 
   private void resolveMonsterDefeat(CombatLedger.Event e){
-    CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
+    resolveMonsterDefeat(e,monsterRewards.find(e.targetId));
+  }
+
+  private void resolveMonsterDefeat(CombatLedger.Event e,CanonicalMonsterRewardCatalog.RewardEntry reward){
     if(reward==null){
       // An explicit actor-level adapter is required. The canonical POTE_PURPLE fixture and
       // every unprofiled defeat remain unresolved, preserving the fail-closed boundary audit.
@@ -420,7 +423,9 @@ public final class RpgProgressionState {
   /** Campaign-aware defeat endpoint; only map actors admitted by the mobile field adapter can resolve. */
   private void resolveCampaignDefeat(CombatLedger.Event e,String profileId){
     CanonicalMonsterRewardCatalog.RewardEntry canonical=monsterRewards.find(e.targetId);
-    if(canonical!=null){resolveMonsterDefeat(e);return;}
+    // Admit instance rewards only through a matching live actor species profile.
+    if(canonical==null&&profileId!=null&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId)))canonical=monsterRewards.find(profileId);
+    if(canonical!=null){resolveMonsterDefeat(e,canonical);return;}
     AdaptedCampaignRewardCatalog.Reward reward=campaignRewards.find(profileId);
     if(reward==null){resolveMonsterDefeat(e);return;}
     grantAdaptedReward(reward.exp,reward.gold);

@@ -10,7 +10,7 @@ review=Path('assets/pote/review/monster_v118');review.mkdir(parents=True,exist_o
 out=Path('assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v3')
 specs=[
  ('pamfet.png','exec-bfefd230-3285-434f-8f2f-500c8d88d4fe.png',8,6,[('red_pamfet',0,0,.625),('green_pamfet',4,0,.625),('purple_pamfet',0,3,.625),('silver_pamfet',4,3,.625)]),
- ('wolves.png','exec-cb1e00c8-f35a-43d7-9791-80601aec1cfb.png',8,6,[('lycanthrope',0,0,.625),('wolf_rider',4,0,.917),('gnoll',0,3,.917),('silver_wolf',4,3,.917)]),
+ ('wolves.png','exec-cb1e00c8-f35a-43d7-9791-80601aec1cfb.png',8,6,[('lycanthrope',0,0,2/3),('wolf_rider',4,0,.917),('gnoll',0,3,.917),('silver_wolf',4,3,.917)]),
  ('insects.png','exec-433e73f1-2de9-4843-8ce9-7dd9f6567b19.png',8,6,[('antlion',4,0,.917),('ant_giant',0,3,.917),('giant_mantis',4,3,.917)]),
  ('treant.png','exec-39cb7f20-de90-4b2c-9c02-dc88e3549cbc.png',4,3,[('trant',0,0,.917)]),
  ('spirits.png','exec-cb71bcbd-5b53-4971-97ac-33398d8912aa.png',4,6,[('brown_pote_spirit',0,0,.917),('black_pote_spirit',0,3,.917)])]

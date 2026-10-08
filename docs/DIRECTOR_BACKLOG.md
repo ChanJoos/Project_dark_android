@@ -1,3 +1,9 @@
+## 2026-10-09 — V118 failed CI recovery
+
+Remote source868ffc90989333287e5675e8089fedcf21b895f0 failed focused Actions37773204198 (101 tests,2 failures) and broad PR37773209749; no V118 APK was published. Lycan crouched attacks projected38.25px, below retained40px minimum. Shared family scale now128/192 (idle maximum48px, attacks40.875px); all12 poses keep relative geometry,192canvas,184ground anchor. Pamfet and other156 poses unchanged; crop provenance regenerated. Navigation reward assertion now accepts canonical as well as adapted registered profiles. Source review additionally found spirit instance IDs bypassed canonical rewards: admitted matching live species profiles now resolve existing canonicalEXP308950 without invented gold/drop and preserve event target/duplicate guard. Added real C-map spirit defeat/exact-once/unbound fail-closed test. No canonical Master values changed.
+
+Same PR180/branch codex/pote-forest-v112;main18ef615 unchanged. Master integrity and diff checks pass. Exact-source CI/native/APK pending;phone stutter and visual acceptance pending. This supersedes prior45px Lycan maximum with48px maximum;logical72px canvas/collision remain unchanged.
+
 ## 2026-10-08 — V118 monster quality / intermittent frame repair candidate
 
 V117 DEVICE_FAILED_USER_REPORTED: tap lag improved, intermittent stutter remains; Pamfet art pixelated and old monster coverage questioned. Physical root UNKNOWN_NO_DEVICE_TRACE. Confirmed code hazards: 48px sprites decoded at 24px, first-state/first-hit decode in draw, synchronous two-second disk commit, fixed16ms delay after update. Candidate full192px sprite decode, map-entry all-pose/hit preparation, vsync scheduling and periodic apply(); reward/transaction/pause commit retained. Android orders apply/commit; no asynchronous durability claim.

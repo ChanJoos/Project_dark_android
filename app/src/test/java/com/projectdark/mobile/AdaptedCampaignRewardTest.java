@@ -34,6 +34,21 @@ public final class AdaptedCampaignRewardTest {
     assertEquals(17,c.entries().size());assertNull(c.find("POTE_SPIRIT"));
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
   }
+  @Test public void admittedSpiritInstancesResolveCanonicalExpExactlyOnceWithoutInventedDrops(){
+    RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_POTE_03",false);
+    RuntimeState.Monster spirit=null;for(RuntimeState.Monster m:state.monsters())if(m.id.startsWith("POTE_SPIRIT#")){spirit=m;break;}
+    assertNotNull(spirit);long before=state.rpg().normalExp();long gold=state.rpg().gold();
+    java.util.Map<String,Integer> inventory=new java.util.LinkedHashMap<>(state.rpg().inventory());
+    state.ledger().add(CombatLedger.Type.MONSTER_DEFEATED,"player",spirit.id,0);
+    state.rpg().consumeCombat(state.ledger().snapshot(),state);
+    RpgProgressionState.RewardResolution result=state.rpg().rewardHistory().get(0);
+    assertEquals(RpgProgressionState.RewardSource.CANONICAL,result.source);
+    assertEquals(Integer.valueOf(308950),result.exp);assertEquals(before+308950,state.rpg().normalExp().longValue());
+    assertEquals(gold,state.rpg().gold().longValue());assertEquals(inventory,state.rpg().inventory());
+    state.rpg().consumeCombat(state.ledger().snapshot(),state);assertEquals(1,state.rpg().rewardHistory().size());
+    RpgProgressionState unbound=new RpgProgressionState();unbound.consumeCombat(state.ledger().snapshot(),null);
+    assertEquals(RpgProgressionState.RewardStatus.PENDING_NO_CANONICAL_MONSTER_REWARD,unbound.rewardHistory().get(0).status);
+  }
   @Test public void firstJobChoiceIsLevelGatedOneTimeAndGrantsRoleGear(){
     RpgProgressionState r=new RpgProgressionState();
     assertFalse(r.chooseInitialJob("WARRIOR"));
