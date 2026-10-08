@@ -1,8 +1,12 @@
 # PROJECT DARK Master manifest
 
-Revision M004 / D001 · 2026-10-03
+Revision M005 / D001 · 2026-10-09
 
 이 Master는 지속 개정하는 기준 데이터다. 변환 manifest는 원래 제공된 92개 sheet를 기록한다. 현재 `master/data`에는 여기에 6개 구조 검사 대상 canonical CSV가 추가됐고, `Asset_Master.csv`, `Skill_Evidence.csv`, `Skill_Master.csv`, `Skill_Requirements.csv`, `Skill_Research_Audit.csv`는 명시적 canonical override다. 기술·마법 캡처에서 전사한 구클라이언트 요구 조건은 `Skill_Evidence.csv` 및 `Skill_Legacy_Requirements.csv`에 보존한다. 원본 XLSX 자체는 미확보이므로 이를 lossless XLSX 검증 완료라고 부르지 않는다.
+
+## M005 — user monster style references
+
+Accepted change `changes/POTE-MONSTER-STYLE-V120.json` preserves three user-supplied original-game catalog screenshots and U_REFERENCE_ONLY hashes under `source/monsters/user_style_20261009`. Style reference is the retained generated Pote spirit;48 newly drawn wolf-family poses replace adapted runtime art. Canonical CSV/source snapshots stay intact. Original pixels are not runtime sprites; stats/EXP/drop identity remain unchanged. Asset and exact-source build/native verification are separate from user visual acceptance.
 
 ## M004 — additive V94 weapon projection
 

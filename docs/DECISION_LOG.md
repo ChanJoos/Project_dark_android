@@ -1,3 +1,11 @@
+## 2026-10-09 — V120 spirit-style monster replacement
+
+User reports forest speed resolved; preserve V119 runtime02026e91 and performance regressions. Exact handset APK was not named, so record USER_REPORTED_RESOLVED rather than independent device trace. Mandatory new-map baseline: docs/HUNT_MAP_PERFORMANCE_LESSONS.md, linked from AGENTS.md.
+
+User-provided catalog1000057394/7396/7398.jpg preserved byte-for-byte under master/source/monsters/user_style_20261009 with hashes/U_REFERENCE_ONLY. Newly generated gray lycan, olive-brown gnoll with axe, armored gnoll wolf-rider with saddle/spear, silver wolf replace48 existing campaign_v3 poses. Style follows unchanged Pote spirit palette/broad-shading/outline.12 still poses per family=idle/walk/attack×NW/NE/SW/SE; not continuous animation. All source sheets/prompts/crop/hash provenance retained. Frames192RGBA, ground184; original family-wide scale and runtime/collision/AI/rewards/caches retained. Generated interpretation is ADAPTED, not original artwork or user visual acceptance.
+
+IMPLEMENTED candidate on existing branch codex/pote-forest-v112 / PR180, main18ef615 unchanged. Local Master integrity PASS; all168 pose hashes/resolution/transparent edges/ground184 PASS; other120 sprites byte-unchanged. Lycan projected heights40.875–48px preserve acceptance bounds. Exact-source CI/native/APK pending. Separate com.projectdark.mobile.v120test preserves prior installed profile; no automatic save transfer claim. Next: native all168 pose rendering/cache/navigation/save regressions plus exact package verification, then user phone/style review.
+
 ## 2026-10-09 — V119 exact candidate/native verification, phone root unresolved
 
 Runtime source02026e910cc068fa54236ce334ae5ea48f188674;focused Actions37849753339/job113559451902 SUCCESS. Independently downloaded native ZIP SHA256dd81c2ce9d476116a72352a393971750424992240a72665054a525a7b4409a56 matches GitHub;116 XML tests,0 failures/errors/skips. Static graph/live collision changing-blocker oracle200cases,11,552-tile workbound,relocated actual joystick input,12 repeated map switches source+hit allocations bounded17,694,720bytes,existing floor32chunk bound8,652,800bytes passed; these are retained cache bounds,not whole-process/GPU memory.

@@ -26,3 +26,6 @@ Report IMPLEMENTED / BUILD VERIFIED / RUNTIME VERIFIED / VISUAL ACCEPTED separat
 - When a user reports a delivered APK failure, record the report as DEVICE_FAILED (user-reported), keep root cause UNKNOWN until reproduced, and make diagnosis/reproduction the immediate handoff task. Do not send a newly built APK as a fix unless the runtime change and requested device scenario have been verified; if device verification is unavailable, label it pending.
 
 - APK source selection follows the active task branch. Compare it with main before building; label an unmerged/diverged branch artifact as a candidate, never as the current main APK.
+
+## Required hunting-map performance baseline
+Before creating or changing any hunting map, read `docs/HUNT_MAP_PERFORMANCE_LESSONS.md` and retain its static-cache/live-collision/prewarm/vsync/save and memory regression gates. User reported forest speed resolved on 2026-10-09; do not regress the accepted experience.

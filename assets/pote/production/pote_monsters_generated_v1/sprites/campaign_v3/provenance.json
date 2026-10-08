@@ -1,13 +1,17 @@
 {
-  "version": 118,
-  "evidence": "ADAPTED_GENERATED_USER_REFERENCE; original animation not verified",
+  "version": 120,
+  "evidence": "ADAPTED_GENERATED_USER_REFERENCE; style matched to retained Pote spirits; original animation not verified",
   "poseContract": "idle/walk/attack x NW/NE/SW/SE; one still per pose, no mirroring",
   "sources": {
     "pamfet.png": "bbd1fdbaf379e6b7e6438b0dd08e0e02c65401cba4f99ef1db584da37459cb05",
     "wolves.png": "39a9551804906ab960b0a8a9ae143fe92804dd7714f1eb4527d29d1ce9d03f35",
     "insects.png": "df170b7ed2d581c909a6453c483e7aea95dbf3ed4168c60b4b2c040ee4b9dae9",
     "treant.png": "5328980d86dba03beff09cbc32861406a0aea1d4f3c9c68e35eada405003ea93",
-    "spirits.png": "c160b97b7bbe1df099a06a792013c18f0127a0d56ae88a96c0dc4543031b0bdd"
+    "spirits.png": "c160b97b7bbe1df099a06a792013c18f0127a0d56ae88a96c0dc4543031b0bdd",
+    "assets/pote/review/monster_v120/silver_wolf.png": "7265c324cc1d147c5d8e29412ca96bedae464a9a1aa3280b05611712cb44a9ea",
+    "assets/pote/review/monster_v120/gnoll.png": "60cad54efa8a85a1c462601cdf1969ebff8619bfe5b76c35e32270f7d3917545",
+    "assets/pote/review/monster_v120/wolf_rider.png": "971a5b884690e6bb7c2a815c451df5110534b8a22bf876fbb25187f166eff2c7",
+    "assets/pote/review/monster_v120/lycanthrope.png": "c4a650bb028d80629da33213ec7388bf50cce3b085125e64004f807e1b1f0378"
   },
   "frames": [
     {
@@ -873,870 +877,6 @@
       ],
       "groundBaseline": 184,
       "sha256": "a0b1f42910cac5e9f57a69f9e0c4b599309271a8315c057bce71e8a3dd8bf801"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "idle",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        0,
-        0,
-        181,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "b190d6026b3173a71b5fb19953a215985c83c282b0ed6f66a599166ce4ea5a57"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "idle",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        181,
-        0,
-        362,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "bfca4d5b1147efc6fa0be3481c6230fd413aeed77ff3e82bc5592a8a8f37ebc4"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "idle",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        362,
-        0,
-        543,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "a3e9fc952b8b68909909ce464a494b1981cee76d7a3b3d34b3ea2ff00988c5ef"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "idle",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        543,
-        0,
-        724,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "b09aaa23627313dd566bc211362208e33d397bfd1eb5a0eeff3d0181b1da2c9e"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "walk",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        0,
-        181,
-        181,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "a065cca02e6800993553d11f18256e5e209432468a6461f411de2b18b42da5ef"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "walk",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        181,
-        181,
-        362,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "3dc80e0b2ddaf578ffdbcc003fa6290465ad81c94176c7fb5b2944b20693394b"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "walk",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        362,
-        181,
-        543,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "0991b2eca669a62cfd19002f92bc3feefa44297702ef89d1ea1fd9919c8875dd"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "walk",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        543,
-        181,
-        724,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "89183f12736c640d08df5ea19ff6c1d02d3483bf74d305acc2cc6fd043e7de1f"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "attack",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        0,
-        362,
-        181,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "089b8b062096d8db1fd1c241f018f40075a9284b08a9d7adf29f12fb80c1bfdc"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "attack",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        181,
-        362,
-        362,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "21cc3a0d5f5d1b1bf2e69be559299b8db6a156e10e4c9d885782a9b6ea7c68b8"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "attack",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        362,
-        362,
-        543,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "05d385bc044f803cecbf782780867d8da51202961f575e81b5b716a707c35499"
-    },
-    {
-      "family": "lycanthrope",
-      "pose": "attack",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        543,
-        362,
-        724,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "62d9955cb58815d7cbf0ee964dca87cb5bfe6e3b9b75d65158b6551dfff77c68"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "idle",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        724,
-        0,
-        905,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "92718c38d6032b6f1c452faff4a5a053d33550e7cff1a889fa26fb06592def88"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "idle",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        905,
-        0,
-        1086,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "9765bf5cae94505f11418463d835e1365d02b0f5dcb7f3209d40a76f4614d027"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "idle",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        1086,
-        0,
-        1267,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "e6649e7cf0fa64d68e830841af9ddd249a28926bb75134861a17c5a142d5c464"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "idle",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        1267,
-        0,
-        1448,
-        181
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "778241979d50c0a93509795ce433e76946a3d4202e0682afac984db400b990b8"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "walk",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        724,
-        181,
-        905,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "ed3f47c9b8326254f12a1682d8677adcf6719487d0eacc56dcaa68086f61dcd7"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "walk",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        905,
-        181,
-        1086,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "f1dc8e16bdf9507f943604be3e96e1345f18b81295a8f5d9ce42c2e9afc29160"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "walk",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        1086,
-        181,
-        1267,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "c93d3d68f9f1ca6005649771828fdcbaedc85716db156eadb7c231701ba5d0d0"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "walk",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        1267,
-        181,
-        1448,
-        362
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "bdfb49ed2954b08dfe65ea308c886a7c3640b1f0682f0e4d87c3e7fb576c8b33"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "attack",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        724,
-        362,
-        905,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "00f03d518d0535a57040a229f3c07b6cca29c28a7553a61071057c4a539e1c20"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "attack",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        905,
-        362,
-        1086,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "69cf56290623c0a6c42e5d0daf69a95dca2cb7380ffb033e2e85cf37a2b05e1f"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "attack",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        1086,
-        362,
-        1267,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "4e9462628d9fdb65ec81448ee83c000f6993a8d1ccde9d358ae125ff44e30d4a"
-    },
-    {
-      "family": "wolf_rider",
-      "pose": "attack",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        1267,
-        362,
-        1448,
-        543
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "e9e30228d4e64be812b433866ab805fd2a275df2c279669ac2dfcb44c905b66b"
-    },
-    {
-      "family": "gnoll",
-      "pose": "idle",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        0,
-        543,
-        181,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "34ea1caf5ef3d53196718243adf2402ccaf5c57b2e59517efca6c11ce86e8d65"
-    },
-    {
-      "family": "gnoll",
-      "pose": "idle",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        181,
-        543,
-        362,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "410548ee3e0f2af6afaba80eb1c3561d0ca095649907c331f0a455666bc47fbe"
-    },
-    {
-      "family": "gnoll",
-      "pose": "idle",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        362,
-        543,
-        543,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "76eb47bd36263cede622ed728f1557024d136cbbbd17665d5302d4dd8d69ccef"
-    },
-    {
-      "family": "gnoll",
-      "pose": "idle",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        543,
-        543,
-        724,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "bc2db55fcda5e1c50e32326988e3300189bf76af120a89dea8ae8fdd21581847"
-    },
-    {
-      "family": "gnoll",
-      "pose": "walk",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        0,
-        724,
-        181,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "714ca07ccf6f1fa664c00435b9c119099d1d6245f1f15244e285a5f0ef3f95d1"
-    },
-    {
-      "family": "gnoll",
-      "pose": "walk",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        181,
-        724,
-        362,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "a91e2b27f1c880ffad25a2703ae0fa696c9cfcafbc4e5c9210a20fa4ddf1eeb3"
-    },
-    {
-      "family": "gnoll",
-      "pose": "walk",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        362,
-        724,
-        543,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "1770791699cb3d0239a92a0ca8ad73569b04eaa93e94fac9d658bd662bfa2405"
-    },
-    {
-      "family": "gnoll",
-      "pose": "walk",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        543,
-        724,
-        724,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "b443cba534237bad0abbc85e7150efaa39803a2dfe6f0483db0767c9550ea62c"
-    },
-    {
-      "family": "gnoll",
-      "pose": "attack",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        0,
-        905,
-        181,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "315a624eda13dc5515d0474dda85480f4194d78be6b0b86a870678db2aa2c5c0"
-    },
-    {
-      "family": "gnoll",
-      "pose": "attack",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        181,
-        905,
-        362,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "d47dc1ec689113001c252814199ef3eff787d349432363c2a27c44ec0295775a"
-    },
-    {
-      "family": "gnoll",
-      "pose": "attack",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        362,
-        905,
-        543,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "67f98ae745ce4f86c4fe406c2063bd01ae71db74d43ce9ede70fd13131de2d08"
-    },
-    {
-      "family": "gnoll",
-      "pose": "attack",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        543,
-        905,
-        724,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "d42e049315d2621cf40f5d3e14a0ad3f5498c886a059c8c6db47c0776223d452"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "idle",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        724,
-        543,
-        905,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "c50ade223e51832575770456ddb500a946f6f52818c6cdb1448266508c2e6d2e"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "idle",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        905,
-        543,
-        1086,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "57cf3e641f2fb360a04a6ad4294ea092cdeaea98e98af2c293334698e4a3a3c9"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "idle",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        1086,
-        543,
-        1267,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "ba8a70ed5ef2b664b096450bd2fd8f92df80218d2eac0d2076d957c4fcb2f829"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "idle",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        1267,
-        543,
-        1448,
-        724
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "5d1d051ca208b8f70fe8a722b18c279217bcd1f0d1c49cd54f74ae9108bfd1e5"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "walk",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        724,
-        724,
-        905,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "6fe2957a7eeb6a64b57b1d508296a4f00e9d24a9b5fb64358e6d5b322d3c5a7f"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "walk",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        905,
-        724,
-        1086,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "bc3d800becab63ff8456458560c1f564403d82d2ad8584c4db9f8273604f511a"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "walk",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        1086,
-        724,
-        1267,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "dddfc8aa5ea3fa0a179c9d14066d01f4716def6f192e86884f041d2d50c85ef5"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "walk",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        1267,
-        724,
-        1448,
-        905
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "87a470076bcb70dd1e69c4acb60b7ac47cd0a18b2ffcc7dbd7d44d947d30f56d"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "attack",
-      "direction": "nw",
-      "source": "wolves.png",
-      "crop": [
-        724,
-        905,
-        905,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "6db4bfffc8fef3ef6aae5869a920cb3fb17708cd33633aad0a598df45d22f16d"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "attack",
-      "direction": "ne",
-      "source": "wolves.png",
-      "crop": [
-        905,
-        905,
-        1086,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "5adf0da3579722486658a8b30e9ce31602a606e45ed17dff6d16d2890dc3faf0"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "attack",
-      "direction": "sw",
-      "source": "wolves.png",
-      "crop": [
-        1086,
-        905,
-        1267,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "f012a04c5c7434b84b18db8af292d49f6f6c014893ab4425f83f2a7e3d4e1def"
-    },
-    {
-      "family": "silver_wolf",
-      "pose": "attack",
-      "direction": "se",
-      "source": "wolves.png",
-      "crop": [
-        1267,
-        905,
-        1448,
-        1086
-      ],
-      "size": [
-        192,
-        192
-      ],
-      "groundBaseline": 184,
-      "sha256": "096731be24e131699f328b654f3dd5db8d3528b8c325bb83bf62f620603ab3c1"
     },
     {
       "family": "antlion",
@@ -3033,6 +2173,870 @@
       ],
       "groundBaseline": 184,
       "sha256": "e25a75a8c8274b80759217930ff18dd10350d877b9727143872fd1ac8828963c"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        55,
+        111,
+        273,
+        445
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "e52473af9a8cf88dbfea2e92751886303ab14c9d6b342bf9d3f51f4c2ab177ec"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        351,
+        112,
+        549,
+        448
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "be0cbf3e271fdad7e946673e99799edb5ee1d480db94d6de8c9b805f41e384f7"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        627,
+        120,
+        847,
+        454
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ba104512d6a0f13c0664fb5199f1ea85f52066879aa96e52ec3d7e5e587ca023"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "idle",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        910,
+        123,
+        1140,
+        453
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "281263c07d397152e8851d7c5f95a571336bb9a36826f13484fd39ea72e91c11"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        51,
+        522,
+        261,
+        859
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "da40bf44ef5d3bb8e076771b051dd62c6aa4e954eb2b129553b4904e3efcaee0"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        339,
+        522,
+        575,
+        867
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5c4b9b2cf6ff5f2b37daf4eb522f4f805d7029caa07a7362634929e93588e633"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        615,
+        533,
+        852,
+        867
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "cfa488afcb212e3558c65e644934f920ef02abc82d4da29491b24b59b703d1f5"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "walk",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        913,
+        535,
+        1136,
+        865
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b3633cb6a3ac28dd122000cd4259a992ce8a87356e3ef52727864ec1e37f951c"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        34,
+        928,
+        299,
+        1257
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "23ea83bdb50147d6b01da17d00b4c333bf74d996e3c4eaa3ed822f7adbdcde81"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        333,
+        912,
+        598,
+        1257
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "009f645f1c3fcb7cf490adf004a9b33ca75c0887242ec3c2618d0c158a76d859"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        592,
+        951,
+        852,
+        1244
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "91ffe54791178524c2899e7a10ea0c23e9c0dd7f78302678471b813ff64a9ae0"
+    },
+    {
+      "family": "lycanthrope",
+      "pose": "attack",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/lycanthrope.png",
+      "crop": [
+        893,
+        965,
+        1163,
+        1258
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "daa449dd84cb5140659172db6ef4071f3cd55694edf8ad523cfcccee1c7b220a"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        32,
+        246,
+        247,
+        606
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "297c9a3d6e9ba131f435c8daf1ed94f087c625dc87661ebad0ba60e1e6174403"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        274,
+        242,
+        481,
+        606
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "83557d0977b3fc302a90c3fee81bd5fca3246b0d7b2fa80533f0c45e72cef1a9"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        541,
+        247,
+        755,
+        606
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "1644f65d64083a7a76e323f82d75dea3e058697d2f98b791a01845d7f19c08d0"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "idle",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        783,
+        261,
+        996,
+        606
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "56a3532973a4b17fa5c0cf9f1735af5ff7648a27b18bdb9c0405499676621b0e"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        50,
+        658,
+        262,
+        1008
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0d295c10d2c5b500d680ca7c0479a0636254b3be018940592b114a098cc77c47"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        282,
+        645,
+        477,
+        998
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "66cdcfafc4f7fd208f219268b68d4ac14d51968a57e4f0b9a9d03811d79a1b5a"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        537,
+        665,
+        766,
+        1008
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "bb1af7a3325fdfc155e0e6c511564e3dc8c94246e45cbd9408a9050869fa0fd5"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "walk",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        783,
+        669,
+        1003,
+        1019
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "148fc93346e1981805baad63ffee182bc4bdf59e8aeb119aa220ae4ab6693454"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        15,
+        1086,
+        296,
+        1372
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "bf80dc142058d821d2ec05b437f01bbcf4440edd58dea55826e9588ceaae49fe"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        293,
+        1095,
+        509,
+        1369
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0b9aa156a250930b82eb805a17077465052c4e27df9197334adb004344aa75a0"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        486,
+        1094,
+        771,
+        1350
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0bf2197ecd5b8baa6381289fec101e174250a007b6730dc698c4826d0b42ee72"
+    },
+    {
+      "family": "wolf_rider",
+      "pose": "attack",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/wolf_rider.png",
+      "crop": [
+        783,
+        1110,
+        1024,
+        1383
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6a7c6fe7d9ba2e934c6d52bfb02b0d0e47f704e1b5f96b02b20b79b1766a0e83"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        51,
+        124,
+        261,
+        438
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "1b6da0f6ec47f786dcde491e1bb7ebca07a25613f465689f26b607fe7b8e4223"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        349,
+        129,
+        565,
+        438
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "63c386b45cd205f5bfc54eb437f46d48f67c98960551fd40b2ea6b28e331fcc3"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        621,
+        131,
+        839,
+        441
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "ea4a29da2902eb4c489ff059d58ec8f3d6df122f3c5c9ca23ccbbfb293461fcd"
+    },
+    {
+      "family": "gnoll",
+      "pose": "idle",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        923,
+        129,
+        1141,
+        428
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "6034a99262cab3d067d7844ecb963db4163760513ab667fafd60142141cb0b0d"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        38,
+        496,
+        274,
+        802
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "cc8525e18c14256b7c80f1d95f36d456a8f166e1fc173c72cb0f84fcb3326be6"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        344,
+        496,
+        575,
+        802
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "68bea62b44cf4a5d08ae8ff3edd3d7d05d9c893954567689667dd4d99564e7c0"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        620,
+        511,
+        863,
+        801
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "27526f8c059779e95990279b8403c673c880ce5ab6fec9b4d4fd370e24e52f17"
+    },
+    {
+      "family": "gnoll",
+      "pose": "walk",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        923,
+        507,
+        1161,
+        795
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "4d3a3c2b96918a75bc027b41b7cc3de43be16fde5b95368003a249abc2400a0c"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        64,
+        869,
+        266,
+        1242
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "f8e79c24fdf193a34a90a074edadb745653a35ba91ceb15d1fec9888007121e7"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        358,
+        855,
+        548,
+        1243
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "428504b721a10b25e7e6596bb4f35e9e8cff06a44de5e784a0bec40fc57cad2a"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        625,
+        882,
+        858,
+        1245
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "0567809900a7f4c4d241ce8226d8d1f7c090cea953e755bf9e76e1dfbce8cb88"
+    },
+    {
+      "family": "gnoll",
+      "pose": "attack",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/gnoll.png",
+      "crop": [
+        916,
+        861,
+        1140,
+        1247
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "df904fb28c1006491ce5d5b9271072511e48bb36b64f160326f414713d08792c"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        44,
+        113,
+        287,
+        411
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "08656c37bc5feeaf34752f87e32077a53fdf4d0cd12974f72ae0abb4f7398e28"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        330,
+        113,
+        536,
+        413
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "12a9e7cf12a334849318f685be9fee4d7fb116823ace862c082b7ab8e8ffeb48"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        623,
+        136,
+        862,
+        408
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "39f8dcb1ae0970f655130eb13730fd129d7b1e2b2deba099b678c005a45bc337"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "idle",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        900,
+        146,
+        1148,
+        416
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5cbc38430a0c8513c05305d807ea7cadfe74ed4ab639e74b7aa471b9bcf7b0e7"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        44,
+        533,
+        281,
+        820
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "5498060481241df7c3dc9c23b301b74ae1ff040c0a15cb5e1a6a9f44a776e6a6"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        334,
+        533,
+        564,
+        820
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "b7c4bc214f61d2a249591ab32ef5f65b6a5403830a180ed1ef336dfccb795fbe"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        618,
+        585,
+        869,
+        839
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "44b344aa757ed72ba7cc290490865f44ceb9945e1bfc122fc49fd84fb363508c"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "walk",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        894,
+        591,
+        1154,
+        828
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "685633000b417ad616da1a91f0e789b2ffbb5718d686333f3716371cb7a96d20"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "nw",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        28,
+        960,
+        299,
+        1215
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "d3898c3d31e43eb850146a17021622a74c6adc9d23a5e9b959f3b819415136ea"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "ne",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        321,
+        956,
+        571,
+        1220
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "3bc297fc2807f388bab6ebd0b3d8ad655212fae7967e41bfbaabdf1d872531b6"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "sw",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        616,
+        952,
+        861,
+        1223
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a618c6e023b386ebc05b683c0a6343bda7a31a8b9d5a8f8924f4be3f122e670b"
+    },
+    {
+      "family": "silver_wolf",
+      "pose": "attack",
+      "direction": "se",
+      "source": "assets/pote/review/monster_v120/silver_wolf.png",
+      "crop": [
+        917,
+        948,
+        1156,
+        1232
+      ],
+      "size": [
+        192,
+        192
+      ],
+      "groundBaseline": 184,
+      "sha256": "a79d3b1732e6f452dd6f58f67547cd38d14e611dc934e6e03298799f066dc5e3"
     }
   ]
 }
