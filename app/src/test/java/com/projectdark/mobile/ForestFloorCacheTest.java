@@ -16,6 +16,8 @@ public class ForestFloorCacheTest {
   double worstMean=0;int maximum=0;
   for(String map:new String[]{"MAP_POTE_01","MAP_POTE_02","MAP_POTE_03",CampaignWorld.BOSS_D}){
    WorldRuntimeAdapter w=world(map);PoteFieldRenderer r=new PoteFieldRenderer();LegacyFloor old=new LegacyFloor();float[][] trail=PoteForestGeometry.trailCenterline(map);
+   assertEquals(old.pixel.getFlags(),((Paint)ForestPixelCacheTest.field(r,"pixel")).getFlags());
+   assertEquals(old.soilPaint.getFlags(),((Paint)ForestPixelCacheTest.field(r,"soilPaint")).getFlags());
    for(int spot:new int[]{1,trail.length/2,trail.length-1})for(float fraction:new float[]{0,.25f,.75f}){
     float cx=(float)Math.floor(trail[spot][0]-160)+fraction,cy=(float)Math.floor(trail[spot][1]-128)+fraction;
     w.camera().snapTo(cx+w.camera().anchorX(),cy+w.camera().anchorY());
@@ -41,6 +43,12 @@ public class ForestFloorCacheTest {
  // Frozen V115 fe8dc5d2 ground renderer, independent of the chunk implementation.
  private static class LegacyFloor {
   final Paint pixel=new Paint(),soilPaint=new Paint();final Matrix texturePhase=new Matrix();final PoteFieldRenderer sources=new PoteFieldRenderer();final Map<String,BitmapShader> shaders=new HashMap<>();final String SOIL_TEXTURE="reference_v113/forest_floor.png";
+  LegacyFloor(){
+   // Freeze the V115 constructor as well as its draw methods; platform Paint defaults are not the contract.
+   pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);
+   soilPaint.setAntiAlias(false);soilPaint.setFilterBitmap(false);soilPaint.setDither(false);
+   System.out.println("FROZEN_V115_PAINT_FLAGS: pixel="+pixel.getFlags()+";soil="+soilPaint.getFlags()+";filter=false;AA=false;dither=false");
+  }
   private Bitmap bitmap(String name){try{Method load=PoteFieldRenderer.class.getDeclaredMethod("bitmap",String.class);load.setAccessible(true);return (Bitmap)load.invoke(sources,name);}catch(Exception ex){throw new AssertionError(ex);}}
   private BitmapShader shader(String name,Bitmap b,Shader.TileMode mode){return shaders.computeIfAbsent(name,n->new BitmapShader(b,mode,mode));}
   private void drawFloor(Canvas c,WorldRuntimeAdapter w){

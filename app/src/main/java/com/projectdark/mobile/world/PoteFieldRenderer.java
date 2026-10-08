@@ -226,8 +226,7 @@ public final class PoteFieldRenderer {
         if(floorChunks.size()>FLOOR_CACHE_LIMIT)floorChunks.remove(floorChunks.keySet().iterator().next());
         // Do not recycle: a hardware display list may still retain an evicted bitmap.
       }
-      // Use the same shader sampling convention as the original soil, including fractional camera
-      // coordinates. Image-rect blits use a different sample phase and cannot preserve this texture.
+      // World-aligned shader phase retains the original soil's nearest-neighbour sampling.
       texturePhase.setTranslate(x*FLOOR_CHUNK-FLOOR_GUTTER-ox,y*FLOOR_CHUNK-FLOOR_GUTTER-oy);
       chunk.shader.setLocalMatrix(texturePhase);
       pixel.setShader(chunk.shader);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setFilterBitmap(false);
