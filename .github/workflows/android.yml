@@ -91,6 +91,13 @@ jobs:
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
       - name: Validate Master DB
         run: python tools/validate_master.py
+      - name: Verify V124 source equipment, live combat and staged rewards
+        run: |
+          pip install Pillow
+          python3 tools/generate_equipment_stats.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceEquipmentStats.java
+          python3 tools/verify_equipment_icons.py
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.EquipmentFoundationV124Test --tests com.projectdark.mobile.PoteRewardsV123Test --stacktrace
       - name: Verify generated skill catalog matches Master
         run: |
           python tools/generate_skill_catalog.py

@@ -1,3 +1,21 @@
+equipment_foundation_v124:
+  implementation: IMPLEMENTED
+  build: BUILD_VERIFIED_FOCUSED
+  native_runtime: ROBOLECTRIC_153_TESTS_ZERO_FAILURES_ERRORS_SKIPS
+  source: 0f29986e43b7ca5cdc513013a4dfc681a87699e1
+  actions_run: 37881535964
+  apk_artifact: 11594932509
+  native_artifact: 11594648013
+  apk_sha256: 813194184cc98986e0ea42b01f86e122ab45dfc27e5123a5df603f270c4d7be8
+  evidence: verification/EQUIPMENT_FOUNDATION_V124_BUILD.json
+  contract: docs/EQUIPMENT_FOUNDATION_V124_CONTRACT.md
+  physical_phone: PENDING
+  user_visual: PENDING
+  original_accessory_images: PENDING_BODY_401_MEDIA_404
+  broad_ci: REVERIFY_CORRECTED_V124_GATE
+  active_branch: codex/pote-forest-v112
+  active_pr: 180
+
 pote_rewards_v123:
   implementation: IMPLEMENTED
   build: BUILD_VERIFIED
