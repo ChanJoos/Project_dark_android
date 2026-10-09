@@ -4421,7 +4421,7 @@
       "asset": "minimob_7.png",
       "sourcePath": "master/source/equipment/accessories_20261009/minimob_07.jpg",
       "sourceSha256": "209182cfbddcc256dd81557a2c65111b5b1d03c8c2c793c8f1aeb40ac4fd1179",
-      "assetSha256": "298e956f232023f546b9ec6d7f66a804cb2c122f52875b4f2909ce9a3a675349",
+      "assetSha256": "6080e0bbc9e9b676fa2ca87b61769b937f9e422234d1d2038dfafed1e4bf70bb",
       "crop": [
         0,
         0,
@@ -4432,7 +4432,7 @@
       "evidence": "LABELLED_2012_CAPTURE",
       "rawPixelAsset": "master/assets/equipment/accessories_20261009/minimob_7.png",
       "alphaMask": "master/assets/equipment/background_masks_v126/minimob_7.png",
-      "alphaMaskSha256": "57d43dbcbebad0864f8fd5e37c797f3a6eb4e1e9570c3ea76a1d2a031568a971",
+      "alphaMaskSha256": "5ac003a5356f75ee5aeab16e6bf4027b5f5401297159e2e1d60f3be76aeac8b9",
       "backgroundRemoval": "REVIEWED_SOURCE_POLYGON"
     },
     "IT_SOURCE_MINIMOB_5": {

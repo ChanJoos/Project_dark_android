@@ -1090,7 +1090,7 @@
       "asset": "minimob_7.png",
       "mask": "master/assets/equipment/background_masks_v126/minimob_7.png",
       "method": "REVIEWED_SOURCE_POLYGON",
-      "foregroundPixels": 543,
+      "foregroundPixels": 526,
       "totalPixels": 1440
     },
     {

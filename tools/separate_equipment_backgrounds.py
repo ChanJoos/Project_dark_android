@@ -40,6 +40,7 @@ def main():
   if name in POLYGONS:
    mask=Image.new('L',im.size,0);ImageDraw.Draw(mask).polygon(POLYGONS[name],fill=255)
    for hole in HOLES.get(name,[]):ImageDraw.Draw(mask).polygon(hole,fill=0)
+   if name=='minimob_7.png':ImageDraw.Draw(mask).rectangle((33,0,35,im.height-1),fill=0) # original screenshot's right frame
    method='REVIEWED_SOURCE_POLYGON'
   else:
    for y in range(im.height):
