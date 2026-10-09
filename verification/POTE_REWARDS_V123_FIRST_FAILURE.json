@@ -1,1 +1,19 @@
-{"source":"026aace57f5ac03326d08ecc9db9310e8152d452","run":37874806713,"job":113640837747,"test":"AdaptedCampaignRewardTest.admittedSpiritInstancesResolveAdaptedExpExactlyOnceWithoutInventedDrops","failure":"Expected40000 normalExp but700 observed","cause":"Adapted reward normalizes across level thresholds immediately; original canonical path kept raw EXP until runtime growth normalization. Assert total earned EXP, not EXP remaining into the new level.","fix":"Preserve40000 awarded EXP and normalization; compare CampaignProgress.earnedExp for exact payout.","status":"REBUILD_REQUIRED"}
+{
+  "source": "026aace57f5ac03326d08ecc9db9310e8152d452",
+  "run": 37874806713,
+  "job": 113640837747,
+  "test": "AdaptedCampaignRewardTest.admittedSpiritInstancesResolveAdaptedExpExactlyOnceWithoutInventedDrops",
+  "failure": "Expected40000 normalExp but700 observed",
+  "cause": "Adapted reward normalizes across level thresholds immediately; original canonical path kept raw EXP until runtime growth normalization. Assert total earned EXP, not EXP remaining into the new level.",
+  "fix": "Preserve40000 awarded EXP and normalization; compare CampaignProgress.earnedExp for exact payout.",
+  "status": "REBUILD_REQUIRED",
+  "focusedRun": 37874806749,
+  "focusedJob": 113640837636,
+  "tests": 144,
+  "failures": 2,
+  "additionalFailure": {
+    "test": "PoteRewardsV123Test.allJobRewardIdsResolveAndEachSlotHasReachableAcquisition",
+    "cause": "Fixture tried restoring a basic job atLv1; the production level gate correctly refused it, leaving COMMONER and no job gear.",
+    "fix": "Use actualLv3 chooseInitialJob path and assert it succeeded before inspecting the route."
+  }
+}

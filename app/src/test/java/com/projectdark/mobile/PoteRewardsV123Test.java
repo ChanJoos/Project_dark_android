@@ -23,7 +23,7 @@ public class PoteRewardsV123Test {
     assertTrue(r.campaign().restore(j));assertEquals(CampaignProgress.Status.REPORT,r.campaign().status(target,r));return r;
   }
   @Test public void allJobRewardIdsResolveAndEachSlotHasReachableAcquisition(){
-    for(String job:CampaignProgress.JOBS){RpgProgressionState r=new RpgProgressionState();r.restoreJobCode(job);Set<String> slots=new HashSet<>();
+    for(String job:CampaignProgress.JOBS){RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(22800,0);assertTrue(r.chooseInitialJob(job));Set<String> slots=new HashSet<>();
       for(CampaignProgress.Def d:r.campaign().route(job))for(String id:AdaptedPoteQuestRewards.items(d,r).keySet()){
         RpgProgressionState.ItemDefinition item=r.itemDefinitions().get(id);assertNotNull(job+" "+d.id+" "+id,item);if(item.equippable())slots.add(item.equipSlot);
       }
