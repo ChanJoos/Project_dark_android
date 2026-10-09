@@ -1,3 +1,11 @@
+## 2026-10-10 — V127 integration and interrupted verification closed
+
+IMPLEMENTED / BUILD_VERIFIED / RUNTIME_VERIFIED_NATIVE / AGENT_VISUAL_REVIEW_PASS. USER_VISUAL_ACCEPTANCE and PHYSICAL_PHONE_ACCEPTANCE remain PENDING. Continued existing PR182 without restarting asset work. Runtime source b7519a7651b75c314041e4fab38a15ce6cb6473b; focused Actions37956454482/job113908088777 SUCCESS, downloaded native artifact11627454658 independently hash/CRC verified (f69e1b5a71d5d258688845e0cb7473d15c6d806f75cff9dcbf84ccbbea5fce65):11 suites55 tests, zero failures/errors. Full Android Actions37956454450/job113908089119 and37956461156/job113908112315 SUCCESS; integration log inspected, including broad rule/combat/skill/save audits and exact APK verification. Reviewed actual inventory pages1/5, equipment, skills and stats native renders; all five page outputs retained. Local verify_full_item_catalog and validate_master pass.
+
+All236 registered items have explicit shared original-art bindings,194 unique originals.53 visual-equivalent bindings remain explicitly limited:41 adapted choices,11 unresolved exact identities,1 localization equivalent. This is full image coverage, not236 independently verified original identities. Brown colours retained with quieter texture, Korean serif headings, aligned tabs/footer and shared shop styles. Accepted phone combat feel stays DONE_EXCLUDED.
+
+PR182 merged to main853dd723d84bbe30de2d88e78d26d05d1115cd05. Merge tree05ccd940ea118d77db09b6301643025645eea4b4 exactly equals tested runtime source tree. Separate V127 TEST APK from Actions37956454482/artifact11628172171 (release candidate-v127-b7519a76-37956454482-1), built2026-10-10T01:08:32.929675+09:00,60552796bytes,SHA25699d4f2852f8b6ee45788316dfea1404ab1986dc6ec5d53d78d17bd3e0a1c04f6,com.projectdark.mobile.v127test. Downloaded release APK independently matches receipt SHA/bytes/CRC, embedded source/run/version and packaged item-icons/equipment-icons/classic-ui/ui-fonts. Documentation closure changes no runtime code. Supersedes V127 pending-CI/unmerged checkpoint; next gate is physical-phone/user visual review and exact source identity recovery for the11 unresolved images.
+
 ## 2026-10-09 — V126 original brown UI integrated
 
 ## V127 full item artwork and UI refinement — implementation checkpoint

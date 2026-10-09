@@ -1,0 +1,26 @@
+{
+  "runtimeSource": "b7519a7651b75c314041e4fab38a15ce6cb6473b",
+  "mergeCommit": "853dd723d84bbe30de2d88e78d26d05d1115cd05",
+  "testedAndMergedTree": "05ccd940ea118d77db09b6301643025645eea4b4",
+  "focusedRun": 37956454482,
+  "fullRuns": [
+    37956454450,
+    37956461156
+  ],
+  "nativeArtifact": 11627454658,
+  "nativeZipSha256": "f69e1b5a71d5d258688845e0cb7473d15c6d806f75cff9dcbf84ccbbea5fce65",
+  "nativeSuites": 11,
+  "nativeTests": 55,
+  "failures": 0,
+  "errors": 0,
+  "apkArtifact": 11628172171,
+  "apkSha256": "99d4f2852f8b6ee45788316dfea1404ab1986dc6ec5d53d78d17bd3e0a1c04f6",
+  "apkBytes": 60552796,
+  "builtSeoul": "2026-10-10T01:08:32.929675+09:00",
+  "applicationId": "com.projectdark.mobile.v127test",
+  "coveredItems": 236,
+  "uniqueArtworks": 194,
+  "visualEquivalentBindings": 53,
+  "physicalPhone": "PENDING",
+  "userVisualAcceptance": "PENDING"
+}
