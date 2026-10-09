@@ -50,6 +50,10 @@ public class EquipmentFoundationV124Test {
   GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=ItemWindowReferenceTest.field(v,"state");
   SourceItemIconRegistry registry=new SourceItemIconRegistry(c);int count=0;
   for(RpgProgressionState.ItemDefinition d:s.rpg().itemDefinitions().values())if(d.appearanceId!=null&&!d.appearanceId.isEmpty()){assertNotNull(d.itemId,registry.get(d));count++;}
+  for(String id:new String[]{"IT_RING_THREELINEGOLD"}){
+   android.graphics.Bitmap icon=registry.get(s.rpg().itemDefinitions().get(id));assertNotNull(id,icon);
+   assertEquals(0,android.graphics.Color.alpha(icon.getPixel(0,0)));
+  }
   assertTrue(count>=30);ItemWindowReferenceTest.tap(v,608,28);
   ItemWindow w=ItemWindowReferenceTest.field(v,"itemWindow");int index=-1;java.util.List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());for(int i=0;i<rows.size();i++)if(rows.get(i).itemId.equals("IT_TEST_WEAPON_MW002"))index=i;
   assertTrue(index>=0);android.graphics.RectF b=ItemWindow.cell(index%50);ItemWindowReferenceTest.tap(v,b.centerX(),b.centerY());

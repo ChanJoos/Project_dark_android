@@ -11,7 +11,9 @@ equipment_foundation_v124:
   contract: docs/EQUIPMENT_FOUNDATION_V124_CONTRACT.md
   physical_phone: PENDING
   user_visual: PENDING
-  original_accessory_images: PENDING_BODY_401_MEDIA_404
+  original_accessory_images: RING_CONNECTED_TWO_BELT_REFERENCES_MATERIAL_UNCONFIRMED
+  recovered_icons: [IT_RING_THREELINEGOLD]
+  recovered_icon_build: PENDING
   broad_ci: REVERIFY_CORRECTED_V124_GATE
   active_branch: codex/pote-forest-v112
   active_pr: 180
