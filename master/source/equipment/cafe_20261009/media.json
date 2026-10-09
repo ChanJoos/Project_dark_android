@@ -8,7 +8,8 @@
     "articleBody": "401_UNAVAILABLE",
     "status": "UNAVAILABLE",
     "error": "HTTP Error 404: Not Found",
-    "thumbnailError": "HTTP Error 404: Not Found"
+    "thumbnailError": "HTTP Error 404: Not Found",
+    "originalHostError": "HTTP Error 404: Not Found"
   },
   {
     "articleId": 293869,
@@ -19,7 +20,8 @@
     "articleBody": "401_UNAVAILABLE",
     "status": "UNAVAILABLE",
     "error": "HTTP Error 404: Not Found",
-    "thumbnailError": "HTTP Error 404: Not Found"
+    "thumbnailError": "HTTP Error 404: Not Found",
+    "originalHostError": "HTTP Error 404: Not Found"
   },
   {
     "articleId": 293205,
@@ -30,7 +32,8 @@
     "articleBody": "401_UNAVAILABLE",
     "status": "UNAVAILABLE",
     "error": "HTTP Error 404: Not Found",
-    "thumbnailError": "HTTP Error 404: Not Found"
+    "thumbnailError": "HTTP Error 404: Not Found",
+    "originalHostError": "HTTP Error 404: Not Found"
   },
   {
     "articleId": 292933,
@@ -41,6 +44,7 @@
     "articleBody": "401_UNAVAILABLE",
     "status": "UNAVAILABLE",
     "error": "HTTP Error 404: Not Found",
-    "thumbnailError": "HTTP Error 404: Not Found"
+    "thumbnailError": "HTTP Error 404: Not Found",
+    "originalHostError": "HTTP Error 404: Not Found"
   }
 ]

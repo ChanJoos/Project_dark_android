@@ -100,6 +100,7 @@ jobs:
           cp /tmp/project-dark-v121-baseline/app/build/reports/forest-performance/CONTINUOUS.json app/build/reports/forest-performance/V120_CONTINUOUS_BASELINE.json
       - name: Verify world, AUTO, quest, population, depth and native screens
         run: |
+          python3 -m pip install Pillow
           python3 tools/generate_equipment_stats.py
           git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceEquipmentStats.java
           python3 tools/verify_equipment_icons.py

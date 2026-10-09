@@ -14,7 +14,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×3+DAM) × 1.07"
+    "description": "(무기 공격+STR×3+DAM) × 1.07"
   },
   {
     "id": "SK_전사_002",
@@ -48,7 +48,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×3+DAM) × 1.49"
+    "description": "(무기 공격+STR×3+DAM) × 1.49"
   },
   {
     "id": "SK_전사_004",
@@ -99,7 +99,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×3+DAM) × 1.707"
+    "description": "(무기 공격+STR×3+DAM) × 1.707"
   },
   {
     "id": "SK_전사_007",
@@ -269,7 +269,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×3+DAM) × 2.954"
+    "description": "(무기 공격+STR×3+DAM) × 2.954"
   },
   {
     "id": "SK_전사_017",
@@ -286,7 +286,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×3+DAM) × 2.6"
+    "description": "(무기 공격+STR×3+DAM) × 2.6"
   },
   {
     "id": "SK_전사_018",
@@ -354,7 +354,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×3+DAM) × 2.954"
+    "description": "(무기 공격+STR×3+DAM) × 2.954"
   },
   {
     "id": "SK_전사_022",
@@ -405,7 +405,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 1.07"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 1.07"
   },
   {
     "id": "SK_도적_002",
@@ -439,7 +439,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×3+DAM) × 1"
+    "description": "(무기 공격+STR×3+DAM) × 1"
   },
   {
     "id": "SK_도적_004",
@@ -507,7 +507,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 1.412"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 1.412"
   },
   {
     "id": "SK_도적_008",
@@ -626,7 +626,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 2.072"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.072"
   },
   {
     "id": "SK_도적_015",
@@ -643,7 +643,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 2.12"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.12"
   },
   {
     "id": "SK_도적_016",
@@ -745,7 +745,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 2.852"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.852"
   },
   {
     "id": "SK_도적_022",
@@ -762,7 +762,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 2.852"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.852"
   },
   {
     "id": "SK_도적_023",
@@ -779,7 +779,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 2.852"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.852"
   },
   {
     "id": "SK_도적_024",
@@ -864,7 +864,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 3.122"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122"
   },
   {
     "id": "SK_도적_029",
@@ -881,7 +881,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 3.122"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122"
   },
   {
     "id": "SK_도적_030",
@@ -898,7 +898,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+STR×1.8+DEX×2.2+DAM) × 3.122"
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122"
   },
   {
     "id": "SK_도적_031",
@@ -2632,7 +2632,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 1.07"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 1.07"
   },
   {
     "id": "SK_무도가_002",
@@ -2649,7 +2649,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 1.349"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 1.349"
   },
   {
     "id": "SK_무도가_003",
@@ -2717,7 +2717,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 1.412"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 1.412"
   },
   {
     "id": "SK_무도가_007",
@@ -2734,7 +2734,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 1.718"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 1.718"
   },
   {
     "id": "SK_무도가_008",
@@ -2768,7 +2768,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 1.733"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 1.733"
   },
   {
     "id": "SK_무도가_010",
@@ -2853,7 +2853,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 1.815"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 1.815"
   },
   {
     "id": "SK_무도가_015",
@@ -2870,7 +2870,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 2.054"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 2.054"
   },
   {
     "id": "SK_무도가_016",
@@ -2921,7 +2921,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 2.099"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 2.099"
   },
   {
     "id": "SK_무도가_019",
@@ -3023,7 +3023,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 2.912"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 2.912"
   },
   {
     "id": "SK_무도가_025",
@@ -3040,7 +3040,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 2.563"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 2.563"
   },
   {
     "id": "SK_무도가_026",
@@ -3057,7 +3057,7 @@
     "allMp": false,
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(8+sqrt(STR×CON)×4+DAM) × 2.563"
+    "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 2.563"
   },
   {
     "id": "SK_무도가_027",
