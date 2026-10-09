@@ -214,8 +214,8 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_TEST_SHOES_ML230","신발 ml230",SHOES_SLOT,"ml230",1,anyJob,true,null,null,stats("DEX",3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHIELD_MS002","방패 ms002",SHIELD_SLOT,"ms002",1,anyJob,true,null,null,stats("AC",-3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHIELD_MS003","방패 ms003",SHIELD_SLOT,"ms003",1,anyJob,true,null,null,stats("AC",-4),Evidence.ADAPTED));
-    registerItem(new ItemDefinition("IT_TEST_HAT_MH173","모자 mh173",HEAD_SLOT,"mh173",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
-    registerItem(new ItemDefinition("IT_TEST_HAT_MH174","모자 mh174",HEAD_SLOT,"mh174",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_HAT_MH173","아벨털모자",HEAD_SLOT,"mh173",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_HAT_MH174","루어스털모자",HEAD_SLOT,"mh174",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000002","레더튜닉",ARMOR_SLOT,"mu0000002",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000003","도복",ARMOR_SLOT,"mu0000003",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_B_JOB_WARRIOR_TUNIC","전사 수련 튜닉 [ADAPTED]",ARMOR_SLOT,"mu0000007",1,jobSet("WARRIOR"),true,null,null,stats("AC",-2),Evidence.ADAPTED));

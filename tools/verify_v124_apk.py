@@ -2,7 +2,7 @@
 import datetime, hashlib, json, os, pathlib, subprocess, sys, zipfile
 apk_path = pathlib.Path(sys.argv[1])
 source = os.environ['PROJECT_DARK_SOURCE_SHA']
-assert len(source) == 40 and all(c in '0124456789abcdef' for c in source)
+assert len(source) == 40 and all(c in '0123456789abcdef' for c in source)
 assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip() == source
 subprocess.run(['git', 'diff', '--exit-code', '--', 'app/src/main/java', 'app/build.gradle'], check=True)
 pose_root = pathlib.Path('assets/pote/production/pote_monsters_generated_v1/sprites/campaign_v3/giant_mantis')
