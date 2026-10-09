@@ -25,7 +25,7 @@ CHOICES={
  'IT_SHOP_WEAPON_MW005':(81,'gradius.gif','EXACT_SOURCE_NAME'),
  'IT_B_JOB_WARRIOR_WEAPON':(81,'longsword.gif','ADAPTED_VISUAL_EQUIVALENT'),
  'IT_B_JOB_ROGUE_WEAPON':(81,'tanken1.gif','ADAPTED_VISUAL_EQUIVALENT'),
- 'IT_B_JOB_MAGE_WAND':(250,'arute.gif','ADAPTED_VISUAL_EQUIVALENT'),
+ 'IT_B_JOB_MAGE_WAND':(87,'magic_satia.gif','ADAPTED_VISUAL_EQUIVALENT'),
  'IT_B_JOB_CLERIC_WAND':(250,'seitue01.gif','ADAPTED_VISUAL_EQUIVALENT'),
  'IT_ADAPTED_STARTER_SHIELD':(196,'tate1.gif','ADAPTED_VISUAL_EQUIVALENT'),
  'IT_TEST_SHIELD_MS002':(196,'tate11.gif','ADAPTED_VISUAL_EQUIVALENT'),
@@ -77,6 +77,7 @@ def main():
  bg=Image.open(ROOT/'master/assets/equipment/background_masks_v126/source_socket_consensus.png').convert('RGB');audit=[]
  for ident,(page,name,identity)in CHOICES.items():
   e=entries[(page,name)];src=SRC/'raw'/e['file'];assert sha(src)==e['sha256'];im=Image.open(src).convert('RGBA');assert im.size==(32,32),(ident,im.size)
+  original_alpha=im.getchannel('A');native_alpha=original_alpha.getextrema()[0]==0
   mask=Image.new('L',im.size,255)
   for y in range(32):
    for x in range(32):
@@ -97,9 +98,10 @@ def main():
      r,g,b=im.getpixel(q)[:3];return 45<=r<=135 and 25<=g<=100 and 10<=b<=65 and r>g>b and .52<g/max(1,r)<.86 and .30<b/max(1,g)<.84
     if all(brown(q)for q in component):
      for q in component:mask.putpixel(q,0)
+  if native_alpha:mask=original_alpha # Already transparent originals need no capture-frame removal.
   kept=sum(bool(x)for x in mask.getdata());assert 5<kept<870,(ident,kept)
   im.putalpha(mask);file=e['file'].rsplit('.',1)[0]+'.png';im.save(APP/file)
-  record=dict(itemId=ident,assetPath='item-icons/'+file,sourceUrl=e['url'],sourceRows=e['rows'],sourceArchive='master/source/items/full_20261010/original_sources.zip',sourceMember='raw/'+e['file'],sourceSha256=e['sha256'],assetSha256=sha(APP/file),projection='SOURCE_RGB_WITH_SEPARATE_ALPHA',backgroundRemoval='SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN',identityMatch=identity,foregroundPixels=kept,limitation=None if identity=='EXACT_SOURCE_NAME' else 'Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.')
+  record=dict(itemId=ident,assetPath='item-icons/'+file,sourceUrl=e['url'],sourceRows=e['rows'],sourceArchive='master/source/items/full_20261010/original_sources.zip',sourceMember='raw/'+e['file'],sourceSha256=e['sha256'],assetSha256=sha(APP/file),projection='SOURCE_RGB_WITH_SEPARATE_ALPHA',backgroundRemoval='ORIGINAL_SOURCE_ALPHA' if native_alpha else 'SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN',identityMatch=identity,foregroundPixels=kept,limitation=None if identity=='EXACT_SOURCE_NAME' else 'Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.')
   items[ident]=record;audit.append(record)
  for ident,target in REUSE.items():items[ident]=dict(items[target],itemId=ident,reusesItemArt=target,identityMatch='ADAPTED_VISUAL_EQUIVALENT',limitation='Original inventory artwork visual equivalent; exact historical identity not asserted.')
  # Retain the already labelled original Chungryong inventory illustration.

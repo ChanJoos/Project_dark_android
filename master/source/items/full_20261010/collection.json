@@ -9182,5 +9182,18 @@
       }
     ],
     "sha256": "6ea44444a537dc9388b55188eb2c2ad7ab0716198a77c7cc98f5c19e0761449d"
+  },
+  {
+    "file": "minimob87_magic_satia.gif",
+    "url": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+    "sha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+    "rows": [
+      {
+        "page": "page_87",
+        "label": "매직새티아",
+        "fields": {},
+        "sourcePage": "https://minimob.tistory.com/87"
+      }
+    ]
   }
 ]

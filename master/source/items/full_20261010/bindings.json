@@ -905,7 +905,7 @@
     },
     "IT_B_JOB_MAGE_WAND": {
       "name": "수련 지팡이 [ADAPTED]",
-      "assetPath": "item-icons/f6bfda76696f_arute.png",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
     },
     "IT_B_JOB_CLERIC_WAND": {
@@ -1100,7 +1100,7 @@
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_11": {
       "name": "MAGE tool",
-      "assetPath": "item-icons/f6bfda76696f_arute.png",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
     },
     "IT_B_CAMPAIGN_MAGE_26": {
@@ -1110,7 +1110,7 @@
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_26": {
       "name": "MAGE tool",
-      "assetPath": "item-icons/f6bfda76696f_arute.png",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
     },
     "IT_B_CAMPAIGN_CLERIC_11": {

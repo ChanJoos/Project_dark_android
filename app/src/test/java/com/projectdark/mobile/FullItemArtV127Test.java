@@ -21,7 +21,7 @@ public class FullItemArtV127Test {
   for(RpgProgressionState.ItemDefinition def:state.itemDefinitions().values()){
    JSONObject receipt=icons.receipt(def.itemId);assertNotNull(def.itemId,receipt);Bitmap b=icons.get(def);assertNotNull(def.itemId,b);assertSame(def.itemId,b,icons.get(def.itemId));assertTrue(def.itemId,b.getWidth()>1&&b.getHeight()>1);
    if(receipt.getString("identityMatch").contains("EQUIVALENT"))assertTrue(receipt.has("limitation"));
-   float x=i%12*83,y=i/12*84;UiTheme.slot(canvas,new RectF(x+3,y+3,x+77,y+70),false,false);float scale=Math.min(52f/b.getWidth(),52f/b.getHeight()),w=b.getWidth()*scale,h=b.getHeight()*scale;canvas.drawBitmap(b,null,new RectF(x+40-w/2,y+35-h/2,x+40+w/2,y+35+h/2),pixel);UiTheme.fit(canvas,RpgInventoryPresentation.displayName(def.name),x+3,y+81,76,9,UiTheme.TEXT,false);i++;
+   float x=i%12*83,y=i/12*84;UiTheme.slot(canvas,new RectF(x+3,y+3,x+77,y+70),false,false);SourceItemIconRegistry.draw(canvas,b,new RectF(x+14,y+9,x+66,y+61),pixel);UiTheme.fit(canvas,RpgInventoryPresentation.displayName(def.name),x+3,y+81,76,9,UiTheme.TEXT,false);i++;
   }
   for(String id:new String[]{"IT_REAGENT_KOMADIUM","IT_REAGENT_DIBENOMUM","IT_REAGENT_CURANUM","IT_REAGENT_EXCURANUM","IT_REAGENT_CURUM","IT_REAGENT_HOLYWATER","IT_RECALL_MILLES"}){
    Bitmap a=icons.get(id),b=new ReagentItemVisualRegistry(context).get(id);assertNotNull(id,b);assertEquals(a.getWidth(),b.getWidth());assertEquals(a.getHeight(),b.getHeight());assertTrue(id,a.sameAs(b));

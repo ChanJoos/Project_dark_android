@@ -4374,48 +4374,24 @@
     },
     "IT_B_JOB_MAGE_WAND": {
       "itemId": "IT_B_JOB_MAGE_WAND",
-      "assetPath": "item-icons/f6bfda76696f_arute.png",
-      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/250/920/arute.gif",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
       "sourceRows": [
         {
-          "page": "page_250",
-          "label": "アルテミス（魔）",
-          "fields": {
-            "画像": "",
-            "名前": "アルテミス（魔）",
-            "装備可能LV": "11",
-            "重量": "5",
-            "攻撃力": "4m20 6m30",
-            "耐久": "3000",
-            "コメント": "詠唱-1行",
-            "入手場所": "森8-1オオカミ"
-          },
-          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
-        },
-        {
-          "page": "page_250",
-          "label": "アルテミス（聖）",
-          "fields": {
-            "画像": "",
-            "名前": "アルテミス（聖）",
-            "装備可能LV": "11",
-            "重量": "5",
-            "攻撃力": "？",
-            "耐久": "？",
-            "コメント": "詠唱-2行",
-            "入手場所": "森18-1ウィスプ"
-          },
-          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
         }
       ],
       "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
-      "sourceMember": "raw/f6bfda76696f_arute.gif",
-      "sourceSha256": "336c6c0a63d35c63a4b0863d4bf9a3d1e84ef715803c1ca99158205b1286c05c",
-      "assetSha256": "64a17a605fd7c0b301a9d701c444ccaa24bfa1245a720e68e254074fedec6ede",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
       "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
-      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT",
-      "foregroundPixels": 155,
+      "foregroundPixels": 135,
       "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged."
     },
     "IT_B_JOB_CLERIC_WAND": {
@@ -5601,48 +5577,24 @@
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_11": {
       "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_11",
-      "assetPath": "item-icons/f6bfda76696f_arute.png",
-      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/250/920/arute.gif",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
       "sourceRows": [
         {
-          "page": "page_250",
-          "label": "アルテミス（魔）",
-          "fields": {
-            "画像": "",
-            "名前": "アルテミス（魔）",
-            "装備可能LV": "11",
-            "重量": "5",
-            "攻撃力": "4m20 6m30",
-            "耐久": "3000",
-            "コメント": "詠唱-1行",
-            "入手場所": "森8-1オオカミ"
-          },
-          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
-        },
-        {
-          "page": "page_250",
-          "label": "アルテミス（聖）",
-          "fields": {
-            "画像": "",
-            "名前": "アルテミス（聖）",
-            "装備可能LV": "11",
-            "重量": "5",
-            "攻撃力": "？",
-            "耐久": "？",
-            "コメント": "詠唱-2行",
-            "入手場所": "森18-1ウィスプ"
-          },
-          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
         }
       ],
       "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
-      "sourceMember": "raw/f6bfda76696f_arute.gif",
-      "sourceSha256": "336c6c0a63d35c63a4b0863d4bf9a3d1e84ef715803c1ca99158205b1286c05c",
-      "assetSha256": "64a17a605fd7c0b301a9d701c444ccaa24bfa1245a720e68e254074fedec6ede",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
       "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
-      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT",
-      "foregroundPixels": 155,
+      "foregroundPixels": 135,
       "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged."
     },
     "IT_B_CAMPAIGN_MAGE_26": {
@@ -5678,48 +5630,24 @@
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_26": {
       "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_26",
-      "assetPath": "item-icons/f6bfda76696f_arute.png",
-      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/250/920/arute.gif",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
       "sourceRows": [
         {
-          "page": "page_250",
-          "label": "アルテミス（魔）",
-          "fields": {
-            "画像": "",
-            "名前": "アルテミス（魔）",
-            "装備可能LV": "11",
-            "重量": "5",
-            "攻撃力": "4m20 6m30",
-            "耐久": "3000",
-            "コメント": "詠唱-1行",
-            "入手場所": "森8-1オオカミ"
-          },
-          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
-        },
-        {
-          "page": "page_250",
-          "label": "アルテミス（聖）",
-          "fields": {
-            "画像": "",
-            "名前": "アルテミス（聖）",
-            "装備可能LV": "11",
-            "重量": "5",
-            "攻撃力": "？",
-            "耐久": "？",
-            "コメント": "詠唱-2行",
-            "入手場所": "森18-1ウィスプ"
-          },
-          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
         }
       ],
       "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
-      "sourceMember": "raw/f6bfda76696f_arute.gif",
-      "sourceSha256": "336c6c0a63d35c63a4b0863d4bf9a3d1e84ef715803c1ca99158205b1286c05c",
-      "assetSha256": "64a17a605fd7c0b301a9d701c444ccaa24bfa1245a720e68e254074fedec6ede",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
       "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
-      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT",
-      "foregroundPixels": 155,
+      "foregroundPixels": 135,
       "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged."
     },
     "IT_B_CAMPAIGN_CLERIC_11": {
