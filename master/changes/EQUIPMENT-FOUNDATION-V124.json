@@ -1,0 +1,21 @@
+{
+  "id": "EQUIPMENT-FOUNDATION-V124",
+  "status": "ACCEPTED",
+  "authority": "2026-10-09 explicit user equipment-stat/source-image wiring repair",
+  "before": "known reference gear empty; S/L attack range ignored; some procedural icons",
+  "after": "canonical numeric projection with field-level receipts; existing source snapshots immutable; historic values explicitly versioned; playtest requirements kept ADAPTED",
+  "source_sheet": "Asset_Master mu0000180/mu0000002; retained Cafe490398 item.png; Nexon community269/986/3749",
+  "conflicts": [
+    "Asset_Master mu0000012 includes Set5 ability options despite normal halfplate name: excluded",
+    "2005 magic-defense 3 vs 2006 30% is unresolved unit conflict: retain Master3, not canonical30%",
+    "No arbitrary source-name/stat inference for unnamed shoes or adapted campaign items"
+  ],
+  "affected": [
+    "RpgProgressionState",
+    "FinalStats",
+    "SkillAbilityCatalog",
+    "inventory/shop icons",
+    "saved equipment reprojection"
+  ],
+  "verification": "PENDING"
+}

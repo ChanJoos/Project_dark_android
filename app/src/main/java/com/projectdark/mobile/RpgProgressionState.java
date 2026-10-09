@@ -260,7 +260,11 @@ public final class RpgProgressionState {
   public boolean grantCampaignGear(int level){String id="IT_B_CAMPAIGN_"+currentJobCode+"_"+level;if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;equipmentBySlot.put(ARMOR_SLOT,id);return true;}
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
   private static Map<String,Integer> stats(Object... kv){Map<String,Integer> out=new LinkedHashMap<>();for(int i=0;i+1<kv.length;i+=2)out.put((String)kv[i],(Integer)kv[i+1]);return out;}
-  private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
+  private void registerItem(ItemDefinition def){
+    Map<String,Integer> source=SourceEquipmentStats.forItem(def.itemId);
+    if(source!=null)def=new ItemDefinition(def.itemId,def.name,def.equipSlot,def.appearanceId,def.basicAttackAction,def.requiredLevel,def.allowedJobCodes,def.jobRestrictionResolved,def.attackElement,def.defenseElement,source,Evidence.ADAPTED);
+    items.put(def.itemId,def);
+  }
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
   public Map<String,String> equipment(){return Collections.unmodifiableMap(equipmentBySlot);}

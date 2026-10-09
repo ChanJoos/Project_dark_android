@@ -1,8 +1,12 @@
 # PROJECT DARK Master manifest
 
-Revision M005 / D001 · 2026-10-09
+Revision M006 / D001 · 2026-10-09
 
 이 Master는 지속 개정하는 기준 데이터다. 변환 manifest는 원래 제공된 92개 sheet를 기록한다. 현재 `master/data`에는 여기에 6개 구조 검사 대상 canonical CSV가 추가됐고, `Asset_Master.csv`, `Skill_Evidence.csv`, `Skill_Master.csv`, `Skill_Requirements.csv`, `Skill_Research_Audit.csv`는 명시적 canonical override다. 기술·마법 캡처에서 전사한 구클라이언트 요구 조건은 `Skill_Evidence.csv` 및 `Skill_Legacy_Requirements.csv`에 보존한다. 원본 XLSX 자체는 미확보이므로 이를 lossless XLSX 검증 완료라고 부르지 않는다.
+
+## M006 — equipment foundation
+
+Accepted `changes/EQUIPMENT-FOUNDATION-V124.json`: field-level source receipts populate the previously empty canonical numeric tables and generate SourceEquipmentStats. Original Asset_Master and source snapshots remain byte-unchanged. Runtime reads weapon S range through FinalStats into basic/physical skills, plus historic armor/resource modifiers. Korean inventory screenshot and original Master thumbnail are distinct evidence. Existing playtest restrictions and midpoint combat formula are ADAPTED; source dates stay explicit. Asset_Master halfplate/Set5 conflation and magic-defense units remain unresolved, not silently promoted. Adapter revision SOURCE_EQUIPMENT_STATS_V124 / SOURCE_EQUIPMENT_ICONS_V124. Native/device acceptance pending.
 
 ## M005 — user monster style references
 

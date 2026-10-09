@@ -12,7 +12,7 @@ public final class CombatStatPipeline {
  }
  public static Result resolve(int actionBase,Channel channel,FinalStats attacker,FinalStats defender){
    int raw=Math.max(1,actionBase);
-   if(channel==Channel.PHYSICAL&&attacker!=null)raw=Math.max(raw,attacker.prototypePhysicalAttack());
+   if(channel==Channel.PHYSICAL&&attacker!=null)raw=attacker.weaponMaxAttack>0?attacker.prototypePhysicalAttack():Math.max(raw,attacker.prototypePhysicalAttack());
    int elemental=ElementalDamageFormula.apply(raw,attacker==null?"NONE":attacker.attackElement,defender==null?"NONE":defender.defenseElement);
    if(channel==Channel.PHYSICAL)return new Result(raw,elemental,CombatDefenseFormula.physical(elemental,attacker,defender),false);
    // MDEF exact probability/applicability is PENDING. Keep channel separate and neutral rather than invent a roll.

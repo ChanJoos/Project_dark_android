@@ -732,37 +732,18 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
     p.setStrokeWidth(1.4f);p.setColor(0xFFD0A066);c.drawRect(l+7,t+7,r-7,b-7,p);p.setStyle(Paint.Style.FILL);
     p.setColor(0xFF3B271B);c.drawRect(l+10,t+10,r-10,t+42,p);text(c,title,l+25,t+33,14);
   }
+  private SourceItemIconRegistry sourceItemIcons;
   private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
     RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
     if(ChungryongWeaponRenderer.ITEM.equals(row.itemId)){Bitmap b=chungryongWeapon.icon;float sc=Math.min(size/b.getWidth(),size/b.getHeight());float w=b.getWidth()*sc,h=b.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(b,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     Bitmap reagent=reagentVisuals.get(row.itemId);if(reagent!=null){float sc=Math.min(size/reagent.getWidth(),size/reagent.getHeight()),w=reagent.getWidth()*sc,h=reagent.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(reagent,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
-    Bitmap catalog=ItemIconCatalog.reagent(row.itemId);if(catalog==null)catalog=ItemIconCatalog.get(row.itemId,d);if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
-    if(d!=null&&drawSourceItemIcon(c,d,l,t,size))return;
+    if(sourceItemIcons==null)sourceItemIcons=new SourceItemIconRegistry(getContext());
+    Bitmap catalog=sourceItemIcons.get(d);if(catalog==null)catalog=ItemIconCatalog.reagent(row.itemId);if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
+
     drawFallbackItemIcon(c,d,l,t,size);
   }
-  private boolean drawSourceItemIcon(Canvas c,RpgProgressionState.ItemDefinition d,float l,float t,float size){
-    if(d==null||d.appearanceId==null||d.appearanceId.isEmpty())return false;
-    EquipmentVisualRegistry.Visual v=inventoryVisuals.get(d.appearanceId);
-    if(v==null||v.atlas==null||v.registration==null)return false;
-    SourceEquipmentRegistration.Frame frame=v.registration.idle(CharacterRenderer.Direction.SW,0);
-    if(frame==null||frame.src==null||frame.src.width()<=0||frame.src.height()<=0)return false;
-    Rect src=new Rect(frame.src);src.left=Math.max(0,src.left);src.top=Math.max(0,src.top);src.right=Math.min(v.atlas.getWidth(),src.right);src.bottom=Math.min(v.atlas.getHeight(),src.bottom);
-    if(src.width()<=0||src.height()<=0)return false;
-    float pad=Math.max(2f,size*.08f),avail=size-pad*2f,sc=Math.min(avail/src.width(),avail/src.height());
-    float dw=Math.max(1,src.width()*sc),dh=Math.max(1,src.height()*sc),dx=l+(size-dw)/2f,dy=t+(size-dh)/2f;
-    Paint old=p;p.setFilterBitmap(false);c.drawBitmap(v.atlas,src,new RectF(dx,dy,dx+dw,dy+dh),p);return true;
-  }
   private void drawFallbackItemIcon(Canvas c,RpgProgressionState.ItemDefinition d,float l,float t,float size){
-    String slot=d==null?"":d.equipSlot;float cx=l+size/2,cy=t+size/2;
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(Math.max(2,size*.07f));p.setColor(0xFFE5D2A5);
-    if("무기".equals(slot)){c.drawLine(l+size*.25f,t+size*.78f,l+size*.73f,t+size*.22f,p);c.drawLine(l+size*.19f,t+size*.62f,l+size*.39f,t+size*.82f,p);}
-    else if("방패".equals(slot)){Path q=new Path();q.moveTo(cx,t+size*.15f);q.lineTo(l+size*.82f,t+size*.28f);q.lineTo(l+size*.72f,t+size*.72f);q.lineTo(cx,t+size*.88f);q.lineTo(l+size*.28f,t+size*.72f);q.lineTo(l+size*.18f,t+size*.28f);q.close();c.drawPath(q,p);}
-    else if("모자".equals(slot)){c.drawArc(new RectF(l+size*.2f,t+size*.28f,l+size*.8f,t+size*.78f),190,160,false,p);c.drawLine(l+size*.18f,t+size*.66f,l+size*.82f,t+size*.66f,p);}
-    else if("신발".equals(slot)||"각반".equals(slot)){c.drawLine(l+size*.38f,t+size*.2f,l+size*.38f,t+size*.7f,p);c.drawLine(l+size*.38f,t+size*.7f,l+size*.75f,t+size*.78f,p);}
-    else if("장갑".equals(slot)){c.drawCircle(cx,cy,size*.24f,p);for(int i=-2;i<=2;i++)c.drawLine(cx+i*size*.08f,cy-size*.18f,cx+i*size*.08f,t+size*.18f,p);}
-    else if("귀걸이".equals(slot)||"목걸이".equals(slot)){c.drawCircle(cx,cy,size*.25f,p);c.drawCircle(cx,cy+size*.25f,size*.07f,p);}
-    else if("벨트".equals(slot)){c.drawRect(l+size*.15f,cy-size*.1f,l+size*.85f,cy+size*.1f,p);c.drawRect(cx-size*.12f,cy-size*.16f,cx+size*.12f,cy+size*.16f,p);}
-    else {c.drawCircle(cx,cy,size*.24f,p);c.drawLine(cx,cy-size*.38f,cx,cy+size*.38f,p);}p.setStyle(Paint.Style.FILL);
+    UiTheme.center(c,"?",l+size/2,t+size*.68f,Math.min(18,size*.5f),UiTheme.MUTED,false);
   }
   private void drawCompareCard(Canvas c,String title,RpgProgressionState.ItemDefinition d,float x,float y,float w,float h){
     p.setColor(0xCC241A14);c.drawRoundRect(new RectF(x,y,x+w,y+h),5,5,p);

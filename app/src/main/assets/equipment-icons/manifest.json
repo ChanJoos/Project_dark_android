@@ -1,0 +1,666 @@
+{
+  "revision": "SOURCE_EQUIPMENT_ICONS_V124",
+  "appearances": [
+    {
+      "appearanceId": "mh168",
+      "sourceName": "헬름",
+      "sourcePath": "master/assets/items/hair/mh168_헬름.webp",
+      "sourceSha256": "2a65dd57355fc4c8600d1a65bf70bc529d48313884d3bafd36f3ebfbe26e9311",
+      "crop": [
+        0,
+        0,
+        19,
+        23
+      ],
+      "upstreamAtlasThumb": [
+        659,
+        233,
+        19,
+        23
+      ],
+      "asset": "mh168.png",
+      "assetSha256": "10f55a8008c1d7093bbb26826db132d4681c8107157216fc90484d6d6babe2f1",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mh172",
+      "sourceName": "밀레스털모자",
+      "sourcePath": "master/assets/items/hair/mh172_밀레스털모자.webp",
+      "sourceSha256": "4a6b9ea95fa53154d5bf9bc1cd44f2d571ece29fd65630fb500b82034d469890",
+      "crop": [
+        0,
+        0,
+        18,
+        13
+      ],
+      "upstreamAtlasThumb": [
+        868,
+        416,
+        18,
+        13
+      ],
+      "asset": "mh172.png",
+      "assetSha256": "441857c1f179ea4c03de484dbc2932abed9fe3e8f3d7ae7445966a42b9b72590",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mh173",
+      "sourceName": "아벨털모자",
+      "sourcePath": "master/assets/items/hair/mh173_아벨털모자.webp",
+      "sourceSha256": "7dc919456d25b9a6d3897ac8ce6a07bd253d978ca14b8cc33f02e4dc59611c43",
+      "crop": [
+        0,
+        0,
+        18,
+        13
+      ],
+      "upstreamAtlasThumb": [
+        887,
+        416,
+        18,
+        13
+      ],
+      "asset": "mh173.png",
+      "assetSha256": "2d3cd73530d8cf42125af84a01bfb704bcddb2a5c9763427a275a6437ed35499",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mh174",
+      "sourceName": "루어스털모자",
+      "sourcePath": "master/assets/items/hair/mh174_루어스털모자.webp",
+      "sourceSha256": "638497cd7f07f84ac20ba9970d3b5bf8a561f33eaea07bcd7d1ddaf41fdc18b2",
+      "crop": [
+        0,
+        0,
+        18,
+        13
+      ],
+      "upstreamAtlasThumb": [
+        906,
+        416,
+        18,
+        13
+      ],
+      "asset": "mh174.png",
+      "assetSha256": "88f20e93916f35aa7e491d8e73ff72e3cf259d460ea83b8306386d8495db6768",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ml228",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shoes/ml228_UNNAMED.webp",
+      "sourceSha256": "5f28527d552556e78a774f8f5abfabe3370b1eca810caa78bd2e4c9708968fd5",
+      "crop": [
+        0,
+        0,
+        20,
+        18
+      ],
+      "upstreamAtlasThumb": [
+        306,
+        0,
+        20,
+        18
+      ],
+      "asset": "ml228.png",
+      "assetSha256": "d6175cc9c8431b9c1e8d167db26ef79aa73575f75fff6627056c584a89fb5b97",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ml229",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shoes/ml229_UNNAMED.webp",
+      "sourceSha256": "ba66afe4acdf252a0cf26568439da4888510df90ca8051c1788b7c3ef1fe39d6",
+      "crop": [
+        0,
+        0,
+        19,
+        11
+      ],
+      "upstreamAtlasThumb": [
+        57,
+        46,
+        19,
+        11
+      ],
+      "asset": "ml229.png",
+      "assetSha256": "5c11a21378c540fd99edd1b0e5113079e53f4e94c427b5fc136ed3a9aed0c1ff",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ml230",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shoes/ml230_UNNAMED.webp",
+      "sourceSha256": "d9e2f559a5ff2c04785b741602b2895b63b57733a579dedcfd54d93bed1ff7f9",
+      "crop": [
+        0,
+        0,
+        19,
+        18
+      ],
+      "upstreamAtlasThumb": [
+        327,
+        0,
+        19,
+        18
+      ],
+      "asset": "ml230.png",
+      "assetSha256": "143328bb9321f575d613751a8480d38503f9b1f0001f75478fad1714e99af0df",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ms001",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shield/ms001_UNNAMED.webp",
+      "sourceSha256": "3711730e6b7445586596b8337466377eafb254a1e671c1aac33f3b00363b098a",
+      "crop": [
+        0,
+        0,
+        17,
+        22
+      ],
+      "upstreamAtlasThumb": [
+        394,
+        0,
+        17,
+        22
+      ],
+      "asset": "ms001.png",
+      "assetSha256": "45009d0553cdd42281dcf6419c259ded26b24b34c9f73d2586b6068263aee080",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ms002",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shield/ms002_UNNAMED.webp",
+      "sourceSha256": "ccf9bfafc741e16cfaf3223af61aee46640b0c2c4afd8dbba8e236a2ec6752b8",
+      "crop": [
+        0,
+        0,
+        15,
+        19
+      ],
+      "upstreamAtlasThumb": [
+        448,
+        0,
+        15,
+        19
+      ],
+      "asset": "ms002.png",
+      "assetSha256": "05d1ad53d12e32da235ab186ae94c1f778eabb4b6a583d6b415b6236329df455",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ms003",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shield/ms003_UNNAMED.webp",
+      "sourceSha256": "79a9de92bd41046a4404518005e2e3d8f50569ae46fe02c4ad39f2b7ca75e666",
+      "crop": [
+        0,
+        0,
+        16,
+        23
+      ],
+      "upstreamAtlasThumb": [
+        377,
+        0,
+        16,
+        23
+      ],
+      "asset": "ms003.png",
+      "assetSha256": "a9ca4e3bfae4805e1899242b3fa69250f63d9b6d96a906fdc8afee527ecfc928",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000001",
+      "sourceName": "셔츠",
+      "sourcePath": "master/assets/items/armor/mu0000001_셔츠.webp",
+      "sourceSha256": "0217c4978f2f782766b918e46a2dd0b3829cf55f250235a40829082aff2f358c",
+      "crop": [
+        0,
+        0,
+        11,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        604,
+        931,
+        11,
+        17
+      ],
+      "asset": "mu0000001.png",
+      "assetSha256": "7f755cc26b1cdffefa94421a5eae0e49206f304dcbcf0bfce4d664b0303bd6bc",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000002",
+      "sourceName": "레더튜닉",
+      "sourcePath": "master/assets/items/armor/mu0000002_레더튜닉.webp",
+      "sourceSha256": "7167d676370d1b4a4b58e16ec247d16ed7159f27baf349dea85a7fefa9268fc3",
+      "crop": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "upstreamAtlasThumb": [
+        629,
+        931,
+        16,
+        16
+      ],
+      "asset": "mu0000002.png",
+      "assetSha256": "b3d5c3fd2fa1b094bd364b1451c986d9e78b6be6ee7be2185a3e00736c15e17f",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000003",
+      "sourceName": "도복",
+      "sourcePath": "master/assets/items/armor/mu0000003_도복.webp",
+      "sourceSha256": "1099883b691b237401bc620bfd882e43b03749b0c074a276339d46c68af9f1cd",
+      "crop": [
+        0,
+        0,
+        12,
+        25
+      ],
+      "upstreamAtlasThumb": [
+        663,
+        876,
+        12,
+        25
+      ],
+      "asset": "mu0000003.png",
+      "assetSha256": "e56ece6746a630f71892c03843b9f7082515a53dbcfbad9c4eb2df1c7751820e",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000007",
+      "sourceName": "지폰",
+      "sourcePath": "master/assets/items/armor/mu0000007_지폰.webp",
+      "sourceSha256": "00b805b25fb9a3ca23f628d99efd048b275d01f6a1bd4298fb226edf253d6d01",
+      "crop": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "upstreamAtlasThumb": [
+        646,
+        931,
+        16,
+        16
+      ],
+      "asset": "mu0000007.png",
+      "assetSha256": "9720e03bf2e4b1c5a3d9b24c3d17bc01e43bda8a686265eba42f3ca34ca5c889",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000015",
+      "sourceName": "맨틀",
+      "sourcePath": "master/assets/items/armor/mu0000015_맨틀.webp",
+      "sourceSha256": "ddc58fc1ff7323fc7edb30324301ddc0d67a94b4da5ee48d38ebe408e155318d",
+      "crop": [
+        0,
+        0,
+        18,
+        31
+      ],
+      "upstreamAtlasThumb": [
+        893,
+        810,
+        18,
+        31
+      ],
+      "asset": "mu0000015.png",
+      "assetSha256": "197b1d1a1540bbc1d0e2bd2d11d69ac39a3e01390f0da540751e7c587ce33340",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000055",
+      "sourceName": "수오미레더로브",
+      "sourcePath": "master/assets/items/armor/mu0000055_수오미레더로브.webp",
+      "sourceSha256": "c8f9b47d0a4c703bda13c229bfb8472bd57c90a45b3a185601e86602385cf28e",
+      "crop": [
+        0,
+        0,
+        19,
+        26
+      ],
+      "upstreamAtlasThumb": [
+        457,
+        876,
+        19,
+        26
+      ],
+      "asset": "mu0000055.png",
+      "assetSha256": "a72c4ebbd0376fb6f07b8a365cb1fb5524706a4422066210baf0fbe3db8e25bc",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000057",
+      "sourceName": "뤼케시온레더로브",
+      "sourcePath": "master/assets/items/armor/mu0000057_뤼케시온레더로브.webp",
+      "sourceSha256": "1e8092d3cea197fb6f6ba2d297701bfc3ae5ecbd5c679f71cb0c23351b5731ae",
+      "crop": [
+        0,
+        0,
+        19,
+        26
+      ],
+      "upstreamAtlasThumb": [
+        497,
+        876,
+        19,
+        26
+      ],
+      "asset": "mu0000057.png",
+      "assetSha256": "20c989dcf486c185bcc22461bd5a8faef910203142d99feee5beb67aab612dbd",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000058",
+      "sourceName": "루어스레더로브",
+      "sourcePath": "master/assets/items/armor/mu0000058_루어스레더로브.webp",
+      "sourceSha256": "db38e76fc13844283418c0bf86a08753506dac59cf53f10970ac5bc98586ee20",
+      "crop": [
+        0,
+        0,
+        19,
+        26
+      ],
+      "upstreamAtlasThumb": [
+        517,
+        876,
+        19,
+        26
+      ],
+      "asset": "mu0000058.png",
+      "assetSha256": "024361b89d1797dc233663d5fbc7d1483c1a4437a5dd5b3f05c2f7f925c4d6ec",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000059",
+      "sourceName": "오렌가이아로럼",
+      "sourcePath": "master/assets/items/armor/mu0000059_오렌가이아로럼.webp",
+      "sourceSha256": "9a1ef766333a0ca572095431a76b8a1649dc0353af90c174a50acddf16ae339e",
+      "crop": [
+        0,
+        0,
+        19,
+        29
+      ],
+      "upstreamAtlasThumb": [
+        532,
+        844,
+        19,
+        29
+      ],
+      "asset": "mu0000059.png",
+      "assetSha256": "850b83db92452b9adbe6b6fb1adaf592c1967044bbf43b46385ec5bc5a1e590e",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000117",
+      "sourceName": "루어스위저드로브",
+      "sourcePath": "master/assets/items/armor/mu0000117_루어스위저드로브.webp",
+      "sourceSha256": "ab2d352afd3412edbb4f3414d08480f237f05f2e71d266d0e0bd96278d2ad196",
+      "crop": [
+        0,
+        0,
+        20,
+        37
+      ],
+      "upstreamAtlasThumb": [
+        300,
+        659,
+        20,
+        37
+      ],
+      "asset": "mu0000117.png",
+      "assetSha256": "a8ccff5fe2efe0db4a511c79c173741674df2bd5f752cf3c636c245424818b95",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000180",
+      "sourceName": "레오파드",
+      "sourcePath": "master/assets/items/armor/mu0000180_레오파드.webp",
+      "sourceSha256": "f0ae0d264638d34d3eeb2ee14f283bf649c8ecc3f38401ab003491fda23fa8ae",
+      "crop": [
+        0,
+        0,
+        32,
+        40
+      ],
+      "upstreamAtlasThumb": [
+        627,
+        298,
+        32,
+        40
+      ],
+      "asset": "mu0000180.png",
+      "assetSha256": "da690a0836539c650d48c262b736320036760edb1051ea259e099afd85cac42d",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000210",
+      "sourceName": "다크클레릭의상",
+      "sourcePath": "master/assets/items/armor/mu0000210_다크클레릭의상.webp",
+      "sourceSha256": "a252beeaff6eac99f52155760f18eac9f784e989ce5662ff70393cd85b73e198",
+      "crop": [
+        0,
+        0,
+        25,
+        41
+      ],
+      "upstreamAtlasThumb": [
+        497,
+        213,
+        25,
+        41
+      ],
+      "asset": "mu0000210.png",
+      "assetSha256": "7d6872a16e1bf6e56b203d3d6ed5e878d76eac3e370769a62e83a6b3ee34b646",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw001",
+      "sourceName": "목도",
+      "sourcePath": "master/assets/items/weapon/mw001_목도.webp",
+      "sourceSha256": "84dcaee208723b07622866668b5ad750499de88e0adff92cc3d624ab4c36e730",
+      "crop": [
+        0,
+        0,
+        16,
+        8
+      ],
+      "upstreamAtlasThumb": [
+        952,
+        383,
+        16,
+        8
+      ],
+      "asset": "mw001.png",
+      "assetSha256": "3e934f904533d4cb08c4098c2cd7eec29305f7f6bc09b23dcb64163d7fc3e966",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw002",
+      "sourceName": "에페",
+      "sourcePath": "master/assets/items/weapon/mw002_에페.webp",
+      "sourceSha256": "9c10c4580b96eae3f0f61e69f163a6fe840c04e27b2dfd5afce2d44ae48e7a94",
+      "crop": [
+        0,
+        0,
+        18,
+        14
+      ],
+      "upstreamAtlasThumb": [
+        81,
+        340,
+        18,
+        14
+      ],
+      "asset": "mw002.png",
+      "assetSha256": "d5ac48c693a4c6841c17dad0a8f913dc5c5085c38eeb57a568d7c5a0476d10b5",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw003",
+      "sourceName": "커틀라스",
+      "sourcePath": "master/assets/items/weapon/mw003_커틀라스.webp",
+      "sourceSha256": "3424725a8c85e4b8043b4f3d8ac903bcc1026bf13ae0cd375d3c9890fa7c1aec",
+      "crop": [
+        0,
+        0,
+        22,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        628,
+        270,
+        22,
+        17
+      ],
+      "asset": "mw003.png",
+      "assetSha256": "6e9cc05b98daee675d64388e2ac6ed2d337b9997c2678497b24862b897f58816",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw004",
+      "sourceName": "세이버",
+      "sourcePath": "master/assets/items/weapon/mw004_세이버.webp",
+      "sourceSha256": "0b1a4c628cd81bf712678a6c46aa1395a4d12cb00a8dd425989fa3092426860c",
+      "crop": [
+        0,
+        0,
+        24,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        651,
+        270,
+        24,
+        17
+      ],
+      "asset": "mw004.png",
+      "assetSha256": "8e134c788bb2780f1e99777097f798ae132d5cef98f149d5541fd3d9af0456f0",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw005",
+      "sourceName": "그라디우스",
+      "sourcePath": "master/assets/items/weapon/mw005_그라디우스.webp",
+      "sourceSha256": "d1dd14d7cfc258474aa36efc09e8345c29c1ffc99260953cab26b61fe28bacf7",
+      "crop": [
+        0,
+        0,
+        28,
+        21
+      ],
+      "upstreamAtlasThumb": [
+        187,
+        183,
+        28,
+        21
+      ],
+      "asset": "mw005.png",
+      "assetSha256": "462748e0a9b0cc1f56b216bc96a470a328073fe73719e316f3b36f0f5b923abc",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw015",
+      "sourceName": "롱소드",
+      "sourcePath": "master/assets/items/weapon/mw015_롱소드.webp",
+      "sourceSha256": "01decf75bc058dbc243ee84de009855df20b0f5f1e091017ad8d0aa11ac9c1e6",
+      "crop": [
+        0,
+        0,
+        32,
+        12
+      ],
+      "upstreamAtlasThumb": [
+        822,
+        356,
+        32,
+        12
+      ],
+      "asset": "mw015.png",
+      "assetSha256": "a5538e5bc1ae8dc6dd9d6c6f842dc6026ad8f6913116ea47c4fb594218acbf4d",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw024",
+      "sourceName": "매직새티아",
+      "sourcePath": "master/assets/items/weapon/mw024_매직새티아.webp",
+      "sourceSha256": "596ff2473aba2e1cd7588f907a8b5128ed6b85d3e742f53329e8dc8f227519ee",
+      "crop": [
+        0,
+        0,
+        24,
+        7
+      ],
+      "upstreamAtlasThumb": [
+        458,
+        394,
+        24,
+        7
+      ],
+      "asset": "mw024.png",
+      "assetSha256": "a513fc23649b03d0ca75dfc644d9e918e48c2eae423ed0724f7184ac75546fe7",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw026",
+      "sourceName": "매직루나",
+      "sourcePath": "master/assets/items/weapon/mw026_매직루나.webp",
+      "sourceSha256": "de4b90a0fbd9d90a9580b4be6f534007aa09c6e642d212f6fc77c218ce02c439",
+      "crop": [
+        0,
+        0,
+        31,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        676,
+        270,
+        31,
+        17
+      ],
+      "asset": "mw026.png",
+      "assetSha256": "baa097f2736d95de79fa1297540fe63c919472d94da60436827bd43cf2803371",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    }
+  ],
+  "items": {}
+}

@@ -1,4 +1,4 @@
-name: Pote V123 Pote reward progression
+name: Pote V124 equipment stats and source icons
 on:
   push:
     branches: [codex/pote-forest-v112]
@@ -100,23 +100,27 @@ jobs:
           cp /tmp/project-dark-v121-baseline/app/build/reports/forest-performance/CONTINUOUS.json app/build/reports/forest-performance/V120_CONTINUOUS_BASELINE.json
       - name: Verify world, AUTO, quest, population, depth and native screens
         run: |
+          python3 tools/generate_equipment_stats.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceEquipmentStats.java
+          python3 tools/verify_equipment_icons.py
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*ForestPixelCacheTest' --tests '*MonsterQualityV118Test' --tests '*PoteMonsterMotionV121Test' --tests '*PoteMonsterVisualRepairV122Test' --tests '*RuntimeCheckpointTest' --tests '*AdaptedCampaignRewardTest' --tests '*PoteRewardsV123Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*TownInteriorTest' --tests '*PotePamfetPresentationTest' --tests '*ForestFloorCacheTest' --tests '*ForestFrameProfileTest' --tests '*ForestTapProfileTest' --tests '*GroundTapPathTest' --tests '*MonsterChasePathfinderTest' --tests '*MonsterChasePerformanceTest' --tests '*ContinuousMoveProfileTest' --tests '*JoystickV119Test' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
+          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*ForestPixelCacheTest' --tests '*MonsterQualityV118Test' --tests '*PoteMonsterMotionV121Test' --tests '*PoteMonsterVisualRepairV122Test' --tests '*RuntimeCheckpointTest' --tests '*AdaptedCampaignRewardTest' --tests '*PoteRewardsV123Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*ItemWindowReferenceTest' --tests '*TownInteriorTest' --tests '*PotePamfetPresentationTest' --tests '*ForestFloorCacheTest' --tests '*ForestFrameProfileTest' --tests '*ForestTapProfileTest' --tests '*GroundTapPathTest' --tests '*MonsterChasePathfinderTest' --tests '*MonsterChasePerformanceTest' --tests '*ContinuousMoveProfileTest' --tests '*JoystickV119Test' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
       - name: Compare real touch and long-route collision work
         run: python3 tools/compare_forest_taps.py
       - name: Build and verify exact APK
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v123_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v124_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pote-v123-native-${{ github.sha }}
+          name: pote-v124-native-${{ github.sha }}
           path: |
             app/build/reports/pote-v113/
             app/build/reports/device-review/
             app/build/reports/pote-rewards-v123/
+            app/build/reports/equipment-foundation-v124/
             app/build/reports/monster-motion-v121/
             app/build/reports/monster-visual-v122/
             app/build/reports/forest-performance/
@@ -124,7 +128,7 @@ jobs:
             app/build/reports/tests/
       - uses: actions/upload-artifact@v4
         with:
-          name: pote-v123-apk-${{ github.sha }}
+          name: pote-v124-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
@@ -132,5 +136,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V123_TEST.apk
-          gh release create "candidate-v123-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V123_TEST.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V123 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v123test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."
+          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V124_TEST.apk
+          gh release create "candidate-v124-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V124_TEST.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V124 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v124test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."

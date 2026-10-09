@@ -1,3 +1,7 @@
+## V124 source equipment foundation delta
+
+SourceItemIconRegistry replaces worn-frame/procedural equipment icons with exact Master thumbnails and existing captured weapon/reagent originals. Unsupported source art uses a question marker; Cafe accessory source bytes remain outstanding. Comparison includes minimum/maximum attack and actual element labels; sourced numeric definitions project to actual combat/resources. See EQUIPMENT_FOUNDATION_V124_CONTRACT.md for evidence/date/formula and pending limitations.
+
 # Inventory and equipment reference window contract — V74
 
 User direction (2026-10-01): adapt both supplied screenshots into the existing application. Continue verified V73; keep every job tab, prior skills, world and appearance work.

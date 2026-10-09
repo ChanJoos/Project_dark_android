@@ -1,1 +1,11 @@
 Item_ID,MinATK,MaxATK,AC,HIT,DAM,HP,MP,STR,INT,WIS,CON,DEX,MagicDefense,AttackElement,DefenseElement,Weight,Durability,Evidence,Source_ID,SourceItemKey,Era,Confidence,Notes
+IT_TEST_WEAPON_MW002,20,30,,3,3,,,,,,,,,,,,,V_HISTORICAL,V124_SOURCE_GEAR,에페,2008-06-13,SOURCE_OBSERVED_NOT_CURRENT,S20~30; L1~2. POST_PATCH_SHERS; not current-server claim
+IT_WEAPON_CHUNGRYONG,1,2,,,,,,,,,,,,,,,,V_HISTORICAL,V124_SOURCE_GEAR,청룡의숨결,2025-07-08,SOURCE_OBSERVED_NOT_CURRENT,Exact labelled item.png S/L1~2. Cosmetic event item is not a high-damage weapon
+IT_REFERENCE_LEOPARD,,,-79,,,1500,-500,1,-1,2,-4,-2,3,,,,,V_HISTORICAL,V124_SOURCE_GEAR,레오파드,2005-09-07,SOURCE_OBSERVED_NOT_CURRENT,"Asset_Master mu0000180; original promotion restriction; existing Lv1 playtest allowance ADAPTED; magic-defense units unresolved, retained Master3"
+IT_REFERENCE_HELM,,,-12,,,400,500,,,,,,1,,,,,V_HISTORICAL,V124_SOURCE_GEAR,헬름,2005-09-07,SOURCE_OBSERVED_NOT_CURRENT,Original warrior upgrade headgear; existing Lv1 allowance ADAPTED; magic-defense units unresolved
+IT_TEST_ARMOR_MU0000002,,,-11,,,,,,,,,,,,,,,V_HISTORICAL,V124_SOURCE_GEAR,레더튜닉,2006-03-22,SOURCE_OBSERVED_NOT_CURRENT,Asset_Master mu0000002 historical value; no suffix element
+IT_SHOP_ARMOR_JIPON,,,-17,,,,,,,,,,,,,,,V_HISTORICAL,V124_SOURCE_GEAR,지폰,2006-03-22,SOURCE_OBSERVED_NOT_CURRENT,Source Set1 normal Jipon Lv11; no high-ability Set5 options
+IT_RING_THREELINEGOLD,,,-1,,,300,150,,,,,,1,,,,,V_HISTORICAL,V124_SOURCE_GEAR,세줄금반지,2006-06-29,SOURCE_OBSERVED_NOT_CURRENT,"Nexon community1640 historical ring table. Magic-defense unit ambiguity retained, not current-server claim"
+IT_RING_REDJADE,,,,,,100,50,,,,,,,,,,,V_HISTORICAL,V124_SOURCE_GEAR,홍옥반지,2006-06-29,SOURCE_OBSERVED_NOT_CURRENT,"Nexon community1640 historical ring table. Magic-defense unit ambiguity retained, not current-server claim"
+IT_RING_GORU,,,,,,,150,,,,,,,,,,,V_HISTORICAL,V124_SOURCE_GEAR,고루반지,2006-06-29,SOURCE_OBSERVED_NOT_CURRENT,"Nexon community1640 historical ring table. Magic-defense unit ambiguity retained, not current-server claim"
+IT_RING_SILVERAQUA,,,-1,,1,350,170,1,,,,,,,,,,V_HISTORICAL,V124_SOURCE_GEAR,실버아쿠아링,2006-06-29,SOURCE_OBSERVED_NOT_CURRENT,"Nexon community1640 historical ring table. Magic-defense unit ambiguity retained, not current-server claim"

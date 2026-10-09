@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+"""Prove every packaged Master icon is an exact original-pixel crop, never redrawn."""
+from pathlib import Path
+import hashlib,json
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[1]
+DIR=ROOT/'app/src/main/assets/equipment-icons'
+j=json.loads((DIR/'manifest.json').read_text())
+assert len(j['appearances'])==30
+for r in j['appearances']:
+    source=ROOT/r['sourcePath'];asset=DIR/r['asset']
+    assert hashlib.sha256(source.read_bytes()).hexdigest()==r['sourceSha256']
+    assert hashlib.sha256(asset.read_bytes()).hexdigest()==r['assetSha256']
+    x,y,w,h=r['crop'];original=Image.open(source).convert('RGBA').crop((x,y,x+w,y+h));out=Image.open(asset).convert('RGBA')
+    assert original.size==out.size and original.tobytes()==out.tobytes(),r['appearanceId']
+print('EXACT_ORIGINAL_MASTER_ICONS_PASS',len(j['appearances']))

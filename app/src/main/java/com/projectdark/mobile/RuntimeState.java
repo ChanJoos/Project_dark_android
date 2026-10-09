@@ -142,7 +142,15 @@ public final class RuntimeState {
   public CombatLedger ledger(){return ledger;}
   public RuntimeMetrics metrics(){return metrics;}
   public RpgProgressionState rpg(){return rpg;}
-  public void applyDerivedGrowth(){int oldMaxHp=player.maxHp,oldMaxMp=player.maxMp;int newMaxHp=rpg.maxHpGrowth(),newMaxMp=rpg.maxMpGrowth();player.maxHp=newMaxHp;player.maxMp=newMaxMp;if(newMaxHp>oldMaxHp)player.hp=Math.min(newMaxHp,player.hp+(newMaxHp-oldMaxHp));else player.hp=Math.min(player.hp,newMaxHp);if(newMaxMp>oldMaxMp)player.mp=Math.min(newMaxMp,player.mp+(newMaxMp-oldMaxMp));else player.mp=Math.min(player.mp,newMaxMp);}
+  private int appliedBaseMaxHp=100,appliedBaseMaxMp=100;
+  public void applyDerivedGrowth(){
+    int newMaxHp=rpg.maxHpGrowth(),newMaxMp=rpg.maxMpGrowth();
+    int earnedHp=Math.max(0,rpg.baseMaxHp()-appliedBaseMaxHp),earnedMp=Math.max(0,rpg.baseMaxMp()-appliedBaseMaxMp);
+    appliedBaseMaxHp=rpg.baseMaxHp();appliedBaseMaxMp=rpg.baseMaxMp();
+    player.maxHp=newMaxHp;player.maxMp=newMaxMp;
+    player.hp=Math.max(0,(int)Math.min(newMaxHp,(long)player.hp+earnedHp));
+    player.mp=Math.max(0,(int)Math.min(newMaxMp,(long)player.mp+earnedMp));
+  }
   @Deprecated public void syncPlayerGrowth(){applyDerivedGrowth();}
   public List<RectF> obstacles(){return Collections.unmodifiableList(obstacles);}
   public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
