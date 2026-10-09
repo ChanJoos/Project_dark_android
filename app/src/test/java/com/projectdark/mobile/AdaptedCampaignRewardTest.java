@@ -43,7 +43,7 @@ public final class AdaptedCampaignRewardTest {
     state.rpg().consumeCombat(state.ledger().snapshot(),state);
     RpgProgressionState.RewardResolution result=state.rpg().rewardHistory().get(0);
     assertEquals(RpgProgressionState.RewardSource.ADAPTED_CAMPAIGN,result.source);
-    assertEquals(Integer.valueOf(40000),result.exp);assertEquals(before+40000,state.rpg().normalExp().longValue());
+    assertEquals(Integer.valueOf(40000),result.exp);assertEquals(before+40000,CampaignProgress.earnedExp(state.rpg()));
     assertEquals(gold+82,state.rpg().gold().longValue());assertEquals(inventory,state.rpg().inventory());
     state.rpg().consumeCombat(state.ledger().snapshot(),state);assertEquals(1,state.rpg().rewardHistory().size());
     RpgProgressionState unbound=new RpgProgressionState();unbound.consumeCombat(state.ledger().snapshot(),null);
