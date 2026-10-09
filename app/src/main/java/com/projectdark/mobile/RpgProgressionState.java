@@ -118,6 +118,7 @@ public final class RpgProgressionState {
 
   private static final int INVENTORY_STACK_LIMIT=999999; // safety ceiling only; per-item canonical stack limits remain PENDING.
   private final Map<String,ItemDefinition> items=new LinkedHashMap<>();
+  private boolean equipmentSandbox;
   private final Map<String,Integer> inventory=new LinkedHashMap<>();
   private final Map<String,String> equipmentBySlot=new LinkedHashMap<>();
   private final Map<String,Integer> baseStats=new LinkedHashMap<>();
@@ -236,6 +237,7 @@ public final class RpgProgressionState {
     inventory.put("IT_SHOES",1);inventory.put(STARTER_HAT_ITEM_ID,1);inventory.put(STARTER_SHIELD_ITEM_ID,1);
     inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);
     registerCampaignEquipment();
+    SourceAccessoryCatalog.register(this);
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
@@ -264,6 +266,13 @@ public final class RpgProgressionState {
     Map<String,Integer> source=SourceEquipmentStats.forItem(def.itemId);
     if(source!=null)def=new ItemDefinition(def.itemId,def.name,def.equipSlot,def.appearanceId,def.basicAttackAction,def.requiredLevel,def.allowedJobCodes,def.jobRestrictionResolved,def.attackElement,def.defenseElement,source,Evidence.ADAPTED);
     items.put(def.itemId,def);
+  }
+  // Existing canonical items retain their accepted stats/requirements; historical receipts add new identities.
+  void registerSourceAccessory(ItemDefinition def){if(!items.containsKey(def.itemId))items.put(def.itemId,def);}
+  public boolean equipmentSandbox(){return equipmentSandbox;}
+  public void enableEquipmentSandbox(boolean grant){
+    equipmentSandbox=true;
+    if(grant)for(ItemDefinition d:items.values())if(d.equippable())inventory.put(d.itemId,Math.max(1,inventory.getOrDefault(d.itemId,0)));
   }
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
@@ -367,7 +376,7 @@ public final class RpgProgressionState {
     return RequirementResult.MET;
   }
 
-  public RequirementResult currentRequirements(String itemId){return evaluateRequirements(itemId,currentJobCode,normalLevel);}
+  public RequirementResult currentRequirements(String itemId){if(equipmentSandbox&&items.containsKey(itemId)&&items.get(itemId).equippable())return RequirementResult.MET;return evaluateRequirements(itemId,currentJobCode,normalLevel);}
 
   /**
    * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.

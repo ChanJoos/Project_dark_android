@@ -10,7 +10,7 @@ final class ItemWindow {
   interface Visuals { void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size); void actor(Canvas c,float x,float y); }
   enum Hit { NONE,CLOSE,SELECT,ACTION,DETAILS,CONSUMED }
   static final int PAGE_SIZE=50;
-  static final String[] SLOTS={"귀걸이","목걸이","갑옷","모자","날개","무기","방패","장갑","벨트","각반","신발"};
+  static final String[] SLOTS={"귀걸이","목걸이","갑옷","모자","반지","무기","방패","장갑","벨트","각반","신발"};
   // Balanced paper doll: two equal rails, centered head and paired lower slots.
   static final float[][] POS={{242,134},{438,134},{242,198},{340,94},{438,198},{242,262},{438,262},{242,326},{438,326},{306,390},{374,390}};
   final Map<String,Bitmap> images=new HashMap<>();
@@ -41,8 +41,8 @@ final class ItemWindow {
     panel(c,b,title);if(d==null){txt(c,"장착한 장비가 없습니다",b.left+26,b.top+95,13,0xffb7b2a4);return;}
     RpgInventoryPresentation.ItemRow row=find(r,d.itemId);if(row!=null)v.icon(c,row,b.left+15,b.top+42,48);fit(c,RpgInventoryPresentation.displayName(d.name),b.left+76,b.top+56,b.width()-115,15,0xffe4dccb);
     String job=!d.jobRestrictionResolved?"직업 조건 확인 중":d.allowedJobCodes.isEmpty()?"공통":String.join(" · ",d.allowedJobCodes);fit(c,job,b.left+76,b.top+76,b.width()-92,11,0xffd5bd7c);
-    txt(c,d.requiredLevel==null?"레벨 조건 확인 중":"Lv."+d.requiredLevel+" 이상 장착 가능",b.left+76,b.top+96,12,0xffd0ccbf);if(row!=null)txt(c,presentation.requirementLabel(row),b.left+76,b.top+115,11,0xffc4b79c);
-    txt(c,d.equippable()?"기본 옵션":"보유 수량  "+(row==null?0:row.quantity),b.left+16,b.top+145,12,0xffd8ccb3);
+    txt(c,d.requiredLevel==null?"레벨 조건 확인 중":"Lv."+d.requiredLevel+" 이상 장착 가능",b.left+76,b.top+96,12,0xffd0ccbf);if(row!=null)txt(c,r.equipmentSandbox()?"테스트: 레벨·직업 조건 면제":presentation.requirementLabel(row),b.left+76,b.top+115,11,0xffc4b79c);
+    txt(c,d.equippable()?(d.evidence==RpgProgressionState.Evidence.FAN?"기본 옵션 · 특수 효과 확인 중":"기본 옵션"):"보유 수량  "+(row==null?0:row.quantity),b.left+16,b.top+145,12,0xffd8ccb3);
     RectF opts=new RectF(b.left+14,b.top+156,b.right-14,b.bottom-48);border(c,opts,0xff354656);int n=0;
     String[] keys={"MinATK","MaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX"};
     for(String key:keys){int value=mod(d,key),prior=mod(old,key);if(value==0&&prior==0)continue;float yy=opts.top+14+(n%6)*12,xx=opts.left+(n/6)*opts.width()/2;txt(c,key.equals("MinATK")?"최소 공격":key.equals("MaxATK")?"최대 공격":key.equals("MAGIC_DEFENSE")?"마법방어":key,xx+8,yy,10,0xffdcd8cd);txt(c,""+value,xx+81,yy,11,0xffebe5d8);int delta=value-prior;if(old!=null&&delta!=0){boolean good=key.equals("AC")?delta<0:delta>0;txt(c,(good?"▲ ":"▼ ")+Math.abs(delta),xx+115,yy,10,good?0xff6dda59:0xffed8074);}n++;}if(n==0)txt(c,d.attackElement!=null||d.defenseElement!=null?"속성 장비":d.equippable()?"수치 자료 확인 중":"추가 능력치 없음",opts.left+9,opts.top+24,12,0xffaaa696);

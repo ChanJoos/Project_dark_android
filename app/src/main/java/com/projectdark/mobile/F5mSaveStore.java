@@ -20,6 +20,7 @@ public final class F5mSaveStore {
 
   private F5mSaveStore(Context c){prefs=c.getApplicationContext().getSharedPreferences(PREF,Context.MODE_PRIVATE);writable=prefs.getInt("save_schema",1)<=SCHEMA;}
   public static void install(Context c){active=new F5mSaveStore(c);}
+  public static boolean freshEquipmentTestProfile(){return active==null||!active.prefs.contains("inventory_v2");}
   public static boolean installed(){return active!=null;}
   public static boolean writable(){return active==null||active.writable;}
   public static boolean rewardClaimedActive(){return active!=null&&active.prefs.getBoolean("quest_reward_claimed",false);}

@@ -1,0 +1,12 @@
+{
+  "decision": "USER_APPROVED_ALL_REVIEWED_EQUIPMENT_ASSETS",
+  "sourceImages": 152,
+  "historicalLogicalItems": 167,
+  "previousTooltipItems": 6,
+  "projectedOriginalIcons": 157,
+  "testPolicy": "Fresh V125 game grants every equippable item once; all equipment requirements bypassed only in explicit runtime sandbox. Original fields stay preserved. Restored inventories are never regranted.",
+  "canonicalCollisionPolicy": "Previously accepted item definitions retain their stats and requirements; source aliases supply icons without replacing stronger canonical evidence.",
+  "pending": "Tooltip-only obsidian necklace icon; unidentified shoe name; unparsed special effects, durability and expiry are retained source fields, not implemented. Historical fan names/values are not certified current official canon.",
+  "phoneCombatFeel": "EXCLUDED_USER_DONE",
+  "elementPolicy": "Existing four-element historical formula preserved; LIFE/DARK uses retained Element_Matrix BALANCED 1.75. Wood/metal relationships remain neutral pending evidence."
+}
