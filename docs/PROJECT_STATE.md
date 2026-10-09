@@ -1,3 +1,13 @@
+## 2026-10-09 — V120 resumed: exact candidate verified
+
+IMPLEMENTED / BUILD_VERIFIED / NATIVE_SCOPE_VERIFIED: source `a7de04660d317d64f2b6b07cd44e2d57c5da4462`, focused Actions `37864095275` SUCCESS; APK artifact `11587763303`, native `11587881579`. Independently downloaded both ZIPs and verified GitHub digests, APK CRC/embedded exact source/run/version/package and all168 runtime PNG bytes.30 XML suites contain116 tests, zero failures/errors/skips, including actual JoystickV119Test. APK59,947,419bytes, SHA256 `46d782c787258c0814bdce3e6f8e3cfc344efe8dbd7b1930c0ec59614cf926fb`, built `2026-10-09T09:26:25.042284+09:00`. Evidence: `verification/MONSTER_STYLE_V120_BUILD.json`.
+
+Resumption fixed two CI-only faults: android.yml still invoked V119 APK version verifier against version120; focused workflow selected nonexistent JoystickV120Test and silently omitted the existing joystick test. Corrected both and verified actual joystick XML in successful exact-source artifact. Runtime Java/assets/Master are byte-identical to f4a37475; no new performance tuning. V120 crop generator reproducibility, all168 frame hashes/192RGBA/ground184 and three retained original screenshot hashes pass. Manually reviewed48 replacement poses against unchanged spirit at runtime scale and native B/C scenes.
+
+User speed resolution remains USER_REPORTED_RESOLVED without identifying an exact handset APK. Mandatory hunting-map performance lessons and AGENTS.md link retained. Paired native CPU timings remain environment-specific and do not prove phone FPS or sustained maximum-frame recovery. Separate `com.projectdark.mobile.v120test` preserves existing installed apps/saves; it uses a fresh separate profile. New assets remain ADAPTED_GENERATED and PHONE/USER_VISUAL PENDING. Draft PR180/unmerged versus main18ef615; no main promotion. Broad Android runs37864101065/37864095323 still IN_PROGRESS at closure; prior broad failure37857894010 was obsolete-version verification after preceding gameplay steps succeeded.
+
+Next: inspect exact V120 phone movement/first attack and four-family style; preserve accepted performance baseline. Continue missing original monster/animation evidence only if requested. Do not restart asset generation or substitute old V118/V119 APK.
+
 ## 2026-10-09 — V120 spirit-style monster replacement
 
 User reports forest speed resolved; preserve V119 runtime02026e91 and performance regressions. Exact handset APK was not named, so record USER_REPORTED_RESOLVED rather than independent device trace. Mandatory new-map baseline: docs/HUNT_MAP_PERFORMANCE_LESSONS.md, linked from AGENTS.md.
