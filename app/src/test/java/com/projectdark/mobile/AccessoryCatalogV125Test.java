@@ -18,11 +18,14 @@ public class AccessoryCatalogV125Test {
   GameView view=new GameView(c);RpgProgressionState r=((RuntimeState)ItemWindowReferenceTest.field(view,"state")).rpg();
   SourceItemIconRegistry registry=new SourceItemIconRegistry(c);int connected=0;
   assertEquals(Integer.valueOf(1),r.normalLevel());assertEquals("COMMONER",r.currentJobCode());assertTrue(r.equipmentSandbox());
+  assertEquals(r.itemDefinitions().keySet(),r.inventory().keySet());
   for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.equippable()){
    assertEquals(d.itemId,Integer.valueOf(1),r.inventory().get(d.itemId));assertEquals(RpgProgressionState.RequirementResult.MET,r.currentRequirements(d.itemId));
    if(d.itemId.startsWith("IT_SOURCE_")&&!d.name.startsWith("흑요석워리어")){assertNotNull(d.itemId,registry.get(d));connected++;}
   }
   assertTrue(connected>=150);
+  java.io.File dir=new java.io.File("build/reports/device-review");dir.mkdirs();
+  java.nio.file.Files.writeString(new java.io.File(dir,"accessory-v125-coverage.json").toPath(),new org.json.JSONObject().put("ownedItems",r.inventory().size()).put("definitions",r.itemDefinitions().size()).put("sourceIconsLoaded",connected).put("job",r.currentJobCode()).put("level",r.normalLevel()).put("testRequirementsBypass",r.equipmentSandbox()).toString());
  }
  @Test public void fourCircleLeggingsAreSeparateAndChangeRealStats(){
   RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);int base=r.finalStats().ac;

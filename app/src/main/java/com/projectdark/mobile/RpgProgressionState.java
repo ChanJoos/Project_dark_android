@@ -272,7 +272,7 @@ public final class RpgProgressionState {
   public boolean equipmentSandbox(){return equipmentSandbox;}
   public void enableEquipmentSandbox(boolean grant){
     equipmentSandbox=true;
-    if(grant)for(ItemDefinition d:items.values())if(d.equippable())inventory.put(d.itemId,Math.max(1,inventory.getOrDefault(d.itemId,0)));
+    if(grant)for(ItemDefinition d:items.values())inventory.put(d.itemId,Math.max(1,inventory.getOrDefault(d.itemId,0)));
   }
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
