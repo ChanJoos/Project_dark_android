@@ -1,0 +1,17 @@
+{
+  "status": "ACCEPTED_PARTIAL_SOURCE_RECOVERY",
+  "authority": "2026-10-09 user equipment stats/requirements/accessory image request; GitHub preauthorized",
+  "numericRuntimeItems": 5,
+  "canonicalNumericTotal": 15,
+  "levelReceipts": 5,
+  "newRetainedImages": 11,
+  "imageRuntimeStatus": "REFERENCE_ONLY: recovered items differ from current leather/pearl item names; no arbitrary identity binding",
+  "phoneCombatFeel": "EXCLUDED_USER_REPORTED_ALREADY_DONE",
+  "unresolved": [
+    "Elemental pearl necklaces: neutral pearl HIT5/Lv11 not automatically inherited",
+    "Leather belt durability1500 vs2000 conflicts by date",
+    "Original job restrictions absent in cited five-item tables",
+    "Current leather legging / elemental pearl / elemental leather icon bytes still unconfirmed"
+  ],
+  "verification": "LOCAL_PASS: accepted field receipts and deterministic Java projection5 items; unproven necklace absent;5 existing runtime Lv11 matches;6 HTML hashes;11 image hashes/decode; Master integrity;30 Master+1 accessory pixel equality. javac unavailable locally; full Android/device/new APK not verified in this task."
+}

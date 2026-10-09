@@ -59,6 +59,21 @@ final class SourceEquipmentStats {
     m.put("MP",170);
     m.put("STR",1);
     return m;
+   case "IT_LEGGING_LEATHER":
+    m.put("AC",-2);
+    return m;
+   case "IT_BELT_WATER_LEATHER":
+    m.put("WIS",1);
+    return m;
+   case "IT_BELT_EARTH_LEATHER":
+    m.put("WIS",1);
+    return m;
+   case "IT_BELT_WIND_LEATHER":
+    m.put("WIS",1);
+    return m;
+   case "IT_BELT_FIRE_LEATHER":
+    m.put("WIS",1);
+    return m;
    default:return null;
   }
  }
