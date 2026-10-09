@@ -144,6 +144,10 @@ public final class PoteFieldRenderer {
       float progress,float clock,float x,float y,float hitRemaining){
     if(c==null||"dead".equals(state))return;
     PoteMonsterMotion.sample(id,state,progress,clock,hitRemaining,motion);
+    String family=PoteForestMonsterShowcase.species(id);
+    // Aliased back idle and walk must share the same rasterization as well as the same art.
+    if("idle".equals(state)&&("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
+        &&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE))motion.articulated=true;
     String name=PoteForestMonsterShowcase.assetPath(id,motion.pose,direction);
     if(name==null)return;
     Bitmap source=bitmap(name);if(source==null)return;
