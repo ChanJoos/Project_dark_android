@@ -99,7 +99,7 @@ jobs:
           python3 tools/generate_equipment_stats.py
           git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceEquipmentStats.java
           python3 tools/verify_equipment_icons.py
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.EquipmentFoundationV124Test --tests com.projectdark.mobile.AccessoryCatalogV125Test --tests com.projectdark.mobile.PoteRewardsV123Test --stacktrace
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.EquipmentFoundationV124Test --tests com.projectdark.mobile.AccessoryCatalogV125Test --tests com.projectdark.mobile.PoteRewardsV123Test --tests com.projectdark.mobile.SkillWindowTest.curanumPurchaseToLearningUsesRealShopInputAndPersists --stacktrace
       - name: Verify generated skill catalog matches Master
         run: |
           python tools/generate_skill_catalog.py
