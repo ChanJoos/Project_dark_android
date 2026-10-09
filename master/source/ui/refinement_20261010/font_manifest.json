@@ -1,0 +1,9 @@
+{
+  "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/gowunbatang/GowunBatang-Bold.ttf",
+  "sourceSha256": "dbfcaa646e5831e7478524924f02906f550285a5050699b4e38c9950b3ec4b94",
+  "assetPath": "app/src/main/assets/ui-fonts/GowunBatang-Heading.ttf",
+  "assetSha256": "eee47bb7ce202d7b867e54b05307bd93c22a7f11ff0bf770b5a856dbfa2dbcaf",
+  "derivation": "FontTools subset of Java UI characters; original glyph outlines preserved",
+  "license": "app/src/main/assets/ui-fonts/GowunBatang-LICENSE.txt",
+  "usage": "Shared Korean serif window headings; regular/SemiBold body fonts retained for legibility"
+}

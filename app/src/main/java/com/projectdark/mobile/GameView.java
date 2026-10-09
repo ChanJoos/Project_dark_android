@@ -735,10 +735,9 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
   private SourceItemIconRegistry sourceItemIcons;
   private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
     RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
-    if(ChungryongWeaponRenderer.ITEM.equals(row.itemId)){Bitmap b=chungryongWeapon.icon;float sc=Math.min(size/b.getWidth(),size/b.getHeight());float w=b.getWidth()*sc,h=b.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(b,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
-    Bitmap reagent=reagentVisuals.get(row.itemId);if(reagent!=null){float sc=Math.min(size/reagent.getWidth(),size/reagent.getHeight()),w=reagent.getWidth()*sc,h=reagent.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(reagent,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     if(sourceItemIcons==null)sourceItemIcons=new SourceItemIconRegistry(getContext());
-    Bitmap catalog=sourceItemIcons.get(d);if(catalog==null)catalog=ItemIconCatalog.reagent(row.itemId);if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
+    Bitmap catalog=sourceItemIcons.get(d);
+    if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
 
     drawFallbackItemIcon(c,d,l,t,size);
   }

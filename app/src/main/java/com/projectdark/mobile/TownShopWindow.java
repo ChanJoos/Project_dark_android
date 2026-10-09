@@ -40,7 +40,7 @@ public final class TownShopWindow {
   if(r-l>150&&b-t>60)for(float x:new float[]{l+9,r-9})for(float y:new float[]{t+9,b-9}){p.setColor(0xff21150d);c.drawCircle(x,y,4,p);p.setColor(0xffbd9562);c.drawCircle(x-1,y-1,2,p);}
  }
  private void wrapped(Canvas c,String s,float x,float y,float width,int size,int color){p.setTextSize(size);int start=0;for(int row=0;row<2&&start<s.length();row++){int end=start+1;while(end<=s.length()&&p.measureText(s,start,end)<=width)end++;end=Math.max(start+1,end-1);label(c,s.substring(start,end),x,y+row*15,size,color);start=end;}}
- private Bitmap icon(String id){if(iconCache.containsKey(id))return iconCache.get(id);Bitmap b=reagent.get(id);RpgProgressionState.ItemDefinition item=state.rpg().itemDefinitions().get(id);if(b==null)b=ItemIconCatalog.reagent(id);if(b==null)b=sourceIcons.get(item);iconCache.put(id,b);return b;}
+ private Bitmap icon(String id){if(iconCache.containsKey(id))return iconCache.get(id);Bitmap b=sourceIcons.get(state.rpg().itemDefinitions().get(id));iconCache.put(id,b);return b;}
 
  private void button(Canvas c,float l,float t,float r,float b,String s){wood(c,l,t,r,b);label(c,s,l+12,t+(b-t)*.67f,12,0xffe4d2aa);}
  private void label(Canvas c,String s,float x,float y,int size,int color){p.setTypeface(Typeface.DEFAULT);p.setTextSize(size);p.setColor(color);c.drawText(s,x,y,p);}

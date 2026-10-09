@@ -2,3 +2,7 @@
 **/build/
 local.properties
 *.iml
+
+# Expanded historical originals are reproducibly recovered from retained archive.
+master/source/items/full_20261010/raw/
+master/source/items/full_20261010/page_*.html
