@@ -17,5 +17,19 @@
     "inventory/shop icons",
     "saved equipment reprojection"
   ],
-  "verification": "PENDING"
+  "verification": {
+    "status": "BUILD_VERIFIED_NATIVE_SCOPE_VERIFIED",
+    "source": "0f29986e43b7ca5cdc513013a4dfc681a87699e1",
+    "run": 37881535964,
+    "suites": 37,
+    "tests": 153,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "numericItems": 10,
+    "exactOriginalMasterThumbnails": 30,
+    "evidence": "verification/EQUIPMENT_FOUNDATION_V124_BUILD.json",
+    "phone": "PENDING",
+    "originalAccessoryBytes": "PENDING"
+  }
 }

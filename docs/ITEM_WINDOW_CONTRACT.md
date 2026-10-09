@@ -1,3 +1,7 @@
+## V124 exact verification
+
+Source0f29986e43b7ca5cdc513013a4dfc681a87699e1; Actions37881535964: actual original Master icon registry and Epe range comparison render inspected.30 exact source thumbnails pass pixel/hash/package checks;37suites153tests,0failures/errors/skips. Phone acceptance and unavailable accessory original bytes remain pending.
+
 ## V124 source equipment foundation delta
 
 SourceItemIconRegistry replaces worn-frame/procedural equipment icons with exact Master thumbnails and existing captured weapon/reagent originals. Unsupported source art uses a question marker; Cafe accessory source bytes remain outstanding. Comparison includes minimum/maximum attack and actual element labels; sourced numeric definitions project to actual combat/resources. See EQUIPMENT_FOUNDATION_V124_CONTRACT.md for evidence/date/formula and pending limitations.
