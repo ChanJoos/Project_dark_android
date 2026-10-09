@@ -1051,9 +1051,21 @@ status_summary:
 forest_tap_v117_evidence: verification/FOREST_TAP_V117_BUILD.json
 
 classic_ui_v126:
-  status: IMPLEMENTED_PENDING_CI
+  status: INTEGRATED_BUILD_AND_NATIVE_RUNTIME_VERIFIED
+  source_commit: 1e3df0a9605e44442e36d66a910a50344c4fd10a
+  merge_commit: 9a0e4916970f52e9cf5d86bd81d5c21e3ebdf1ec
+  pr: 181
   contract: docs/CLASSIC_UI_V126_CONTRACT.md
+  receipt: docs/verification/CLASSIC_UI_V126_DELIVERY.json
   source_skin: app/src/main/assets/classic-ui/manifest.json
   separate_icon_masks: 157
+  focused_run: 37919855872
+  focused_tests: 42
+  full_android_runs: [37919855921, 37919861915]
+  full_android_status: SUCCESS
+  agent_visual_review: PASS_ALL_FIVE_PAGES_AND_FOUR_WINDOWS
   user_visual_acceptance: PENDING
   phone_acceptance: PENDING
+  previous_v125_report: DEVICE_FAILED_USER_REPORTED
+  reproduced_cause: CAPTURED_ICON_SOCKET_COMPOSITED_OVER_BLUE_UI
+  combat_feel: DONE_EXCLUDED

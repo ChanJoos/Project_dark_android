@@ -1,0 +1,58 @@
+{
+  "revision": "CLASSIC_UI_V126_DELIVERY",
+  "sourceCommit": "1e3df0a9605e44442e36d66a910a50344c4fd10a",
+  "mergeCommit": "9a0e4916970f52e9cf5d86bd81d5c21e3ebdf1ec",
+  "sourceAndMergeTree": "1dd95b86f41b45ab1626c2c4779ac41150ec3acd",
+  "pr": 181,
+  "mergeStatus": "MERGED",
+  "focusedRun": 37919855872,
+  "focusedJob": 113784901600,
+  "focusedStatus": "SUCCESS",
+  "tests": {
+    "suites": 8,
+    "tests": 42,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fullAndroidRuns": [
+    37919855921,
+    37919861915
+  ],
+  "fullAndroidStatus": "SUCCESS",
+  "nativeArtifact": {
+    "id": 11611995361,
+    "sha256": "f3f3b349115d7196523a151f16deb54ea1b447f50687459daf3d3694b282d500"
+  },
+  "apkArtifact": {
+    "id": 11611780501,
+    "sha256": "f116e8525c3b0b5daa310e9a8c8bd83993e9116e3eb5cdd8a3cc330c8de4a454"
+  },
+  "apk": {
+    "sourceCommit": "1e3df0a9605e44442e36d66a910a50344c4fd10a",
+    "runId": "37919855872",
+    "versionCode": 126,
+    "versionName": "1.26-classic-ui",
+    "applicationId": "com.projectdark.mobile.v126test",
+    "apkSha256": "b9c4ae6911333c437f334b5eacd35243b738c5e1e81c69a5504b8334c52efadc",
+    "apkBytes": 60335063,
+    "builtSeoul": "2026-10-09T19:51:39.277864+09:00"
+  },
+  "screensReviewed": [
+    "inventory-page-1.png",
+    "inventory-page-2.png",
+    "inventory-page-3.png",
+    "inventory-page-4.png",
+    "inventory-page-5.png",
+    "equipment.png",
+    "skills.png",
+    "stats.png"
+  ],
+  "agentVisualReview": "PASS_NATIVE_ACTUAL_ALL_FIVE_PAGES_AND_FOUR_WINDOWS",
+  "userVisualAcceptance": "PENDING",
+  "physicalPhoneAcceptance": "PENDING",
+  "previousV125Report": "DEVICE_FAILED_USER_REPORTED",
+  "reproducedCause": "Preserved source decodes include captured brown sockets; V125 renderer composites entire square over separate blue rounded slot. Reproduced asset composition mismatch; fixed separate alpha and original UI texture.",
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v126-1e3df0a9-37919855872-1",
+  "combatFeel": "DONE_EXCLUDED"
+}
