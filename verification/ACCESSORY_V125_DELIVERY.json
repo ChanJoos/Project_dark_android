@@ -56,10 +56,16 @@
     "Wood/metal relationships neutral pending evidence"
   ],
   "phoneCombatFeel": "USER_DONE_EXCLUDED",
-  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "main": "cb3c6ddf3643e8a702c7252def3f1ff0a37394f2",
   "pr": 180,
   "release": "candidate-v125-ff19f79f-37912812521-1",
-  "fullAndroid": "RETRY_IN_PROGRESS_AFTER_LEGACY_INITIAL_STOCK_ASSERTION_FIX",
+  "fullAndroid": {
+    "status": "SUCCESS",
+    "run": 37912818972,
+    "job": 113761777709,
+    "source": "ff19f79fefafb7bb079139fa10aeb7392603783e",
+    "allConfiguredSteps": "SUCCESS"
+  },
   "correctedMaterialTest": {
     "source": "ff19f79fefafb7bb079139fa10aeb7392603783e",
     "run": 37912812541,
@@ -67,5 +73,12 @@
     "earlyEquipmentRewardsAndMaterialGate": "SUCCESS",
     "tests": 20,
     "scope": "Purchase +1, learning consumes1, remaining starting stock survives restart; earlier78-test phase only failed old zero-stock assumption."
+  },
+  "integration": {
+    "status": "MERGED",
+    "pr": 180,
+    "mergeSha": "cb3c6ddf3643e8a702c7252def3f1ff0a37394f2",
+    "reviewedHead": "34790de8b813ed97c313282a2d8910e8467f0412",
+    "runtimeSourceUnchanged": true
   }
 }

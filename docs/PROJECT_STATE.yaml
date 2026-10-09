@@ -17,13 +17,14 @@ accessory_catalog_v125:
   package: com.projectdark.mobile.v125test
   apk_sha256: 641bbedf329c5b6f795a51ef0869807d83eb37a66b2522e74df2eaf608a68cbe
   built_seoul: '2026-10-09T18:49:36.449949+09:00'
-  full_android: RETRY_IN_PROGRESS_CORRECTED_MATERIAL_TEST_VERIFIED
+  full_android: SUCCESS_RUN_37912818972_JOB_113761777709
   release: candidate-v125-ff19f79f-37912812521-1
   evidence: verification/ACCESSORY_V125_DELIVERY.json
   phone_combat_feel: USER_DONE_EXCLUDED
   physical_phone_new_equipment: PENDING
   unresolved: [obsidian_icon, unnamed_shoe_canonical_name, special_regen_exp_durability_expiry, wood_metal_relationships]
-  main: 18ef615b54833e2155b103cffbabdac304821a23
+  main: cb3c6ddf3643e8a702c7252def3f1ff0a37394f2
+  integration: MERGED_PR_180
   pr: 180
 
 # 2026-10-09 equipment image review: SOURCE_RECOVERED / REVIEW_PENDING. Correct prior count:11 files were5 icons+6 tooltips for6 items, not11 equipment icons. Additional152 original image files with152 unique SHA256 hashes recovered from historical Korean-game atwiki tables: leggings15, necklaces37, belts17, gloves/bracelets36, shoes13, earrings15, rings19. Leather/copper/silver/gold leggings separately retained for circles2/3/4/5 (source Lv11/41/71/99). Some belt elemental rows share one source icon; preserved aliases, no invented distinct icons. Original images/pages retained in master/source/equipment/atwiki_20261009/original_sources.zip; manifest and fresh-checkout regeneration validated. All prior11 originals,152 new files, earlier ring/belt references and8 review sheets supplied in master/source/equipment/review_20261009/PROJECT_DARK_equipment_image_review.zip. Names translated from Japanese-only rows are REVIEW translations, not canonical acceptance. New source images not yet connected to runtime; user image review pending. Phone combat feel remains EXCLUDED_USER_REPORTED_DONE. Previous5-item numeric delta source2a341e49 focused Actions37900644681 SUCCESS; no new APK delivery in this image-review task.
