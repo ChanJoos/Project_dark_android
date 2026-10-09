@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1641",
+    "url": "https://lod.nexon.com/community/game/1641?SearchBoard=1",
+    "path": "master/source/equipment/accessories_20261009/1641.html",
+    "sha256": "944094060668b2248ad7638ee199b11fbd3a813f07308f0db0a74bb5a8e748ac",
+    "status": "RETAINED"
+  },
+  {
+    "id": "1666",
+    "url": "https://lod.nexon.com/community/game/1666?SearchBoard=1",
+    "path": "master/source/equipment/accessories_20261009/1666.html",
+    "sha256": "186cfe409e59c25f46a3b7ed88f01e11290bc7a2325887ae9c45907bcd6b2ef6",
+    "status": "RETAINED"
+  },
+  {
+    "id": "488",
+    "url": "https://lod.nexon.com/community/game/488?SearchBoard=1",
+    "path": "master/source/equipment/accessories_20261009/488.html",
+    "sha256": "73ffe8bd2fc4bdbeaa67e460a8fd945dea6491c47e43a39ba4c03c26fcd092d0",
+    "status": "RETAINED"
+  },
+  {
+    "id": "230",
+    "url": "https://lod.nexon.com/community/game/230?SearchBoard=1",
+    "path": "master/source/equipment/accessories_20261009/230.html",
+    "sha256": "a461e7d7e150ed6f1f488ce977f56b3a5cf62649a85f00a7e30912929e18f581",
+    "status": "RETAINED"
+  },
+  {
+    "id": "6540",
+    "url": "https://lod.nexon.com/community/game/6540?SearchBoard=1",
+    "path": "master/source/equipment/accessories_20261009/6540.html",
+    "sha256": "90baac310ad3ca4e719ef91870fff24fdb15f79a816473ad79bf02639aa8e3e7",
+    "status": "RETAINED"
+  },
+  {
+    "id": "minimob99",
+    "url": "https://minimob.tistory.com/99",
+    "path": "master/source/equipment/accessories_20261009/minimob99.html",
+    "sha256": "be77f2da789a0b1e57b1f02bd7bea54e3005a68d2e61aae1880cde43c821c46f",
+    "status": "RETAINED"
+  }
+]

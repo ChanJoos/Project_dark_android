@@ -23,13 +23,13 @@ import java.util.Map;
 /** PROJECT DARK v0.74 - original-inspired mobile HUD adaptation + precise world tap routing. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
-  private static final float JOY_X=92f,JOY_Y=454f,JOY_R=58f;
+  private static final float JOY_X=112f,JOY_Y=434f,JOY_R=58f;
   private static final float SLOT=42f,SLOT_GAP=8f,SLOT_X0=650f,SLOT_Y0=374f;
   private static final float ATK_X=914f,ATK_Y=498f,ATK_R=34f;
   private static final float CHAT_LEFT=288f,CHAT_RIGHT=624f;
   private static final float MODE_X=778f,MODE_Y=495f,MODE_R=22f;
   private static final float AUTO_X=842f,AUTO_Y=495f,AUTO_R=24f;
-  static final float AUTO_TARGET_RADIUS=256f;
+  static final float AUTO_TARGET_RADIUS=Float.MAX_VALUE;
   private static final float UTILITY_X0=608f,UTILITY_Y0=28f,UTILITY_STEP=50f,UTILITY_R=16f;
 
   private enum Action { IDLE,WALK,CAST,SWING,THRUST,THROW,PUNCH,SKILL,KICK }
@@ -106,13 +106,13 @@ public final class GameView extends View {
   private float feedbackClock=0,rewardClock=0;
   private FeedbackTone feedbackTone=FeedbackTone.INFO;
 
-  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(checkpointClock>=2f||savedLedgerSequence!=state.ledger().sequence()){checkpoint();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postDelayed(this,16);}};
+  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(savedLedgerSequence!=state.ledger().sequence()){checkpoint();}else if(checkpointClock>=2f){autosave();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postOnAnimation(this);}};
 
-  public GameView(Context c){super(c);UiTheme.install(c);questJournalModel=new QuestJournalModel(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
+  public GameView(Context c){super(c);final boolean freshEquipmentProfile=F5mSaveStore.freshEquipmentTestProfile();UiTheme.install(c);questJournalModel=new QuestJournalModel(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
     combatSession.setSkillMovement(new SkillAbilityExecutor.Movement(){
       public boolean movePlayer(float x,float y){int steps=SkillActionContract.distance(state.player().x,state.player().y,x,y);if(steps==Integer.MAX_VALUE||steps>6||state.skillEffects().rooted("player"))return false;for(int i=1;i<=steps;i++){float q=i/(float)steps;if(!activeWorld().canPlayerOccupy(state.player().x+(x-state.player().x)*q,state.player().y+(y-state.player().y)*q))return false;}if(!activeWorld().canPlayerOccupy(x,y))return false;activeWorld().cancelForAction();state.player().x=x;state.player().y=y;activeWorld().snapCameraToPlayer();return true;}
       public boolean moveMonster(RuntimeState.Monster m,float x,float y){return state.tryMoveMonster(m,x-m.x,y-m.y,(float)Math.hypot(x-m.x,y-m.y));}
-    });skillBook.bindJob(()->state.rpg().currentJobCode());skillWindow=new SkillWindow(skillBook,new SkillIconCatalog(c));F5mSaveStore.restoreAndBindSkillsActive(skillBook);hudSprites=new HudSpriteCatalog(c);inventoryVisuals=new EquipmentVisualRegistry(c);reagentVisuals=new ReagentItemVisualRegistry(c);reagentShopRenderer=new ReagentShopInteriorRenderer(c);townRenderer=new TownInteriorRenderer(c);townWindow=new TownShopWindow(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);float[] returnPoint=F5mSaveStore.savedFieldReturnPointActive();fieldReturnX=returnPoint[0];fieldReturnY=returnPoint[1];if(com.projectdark.mobile.world.CampaignWorld.contains(F5mSaveStore.savedMapIdActive())){state.enterCampaignMap(F5mSaveStore.savedMapIdActive(),false);inPoteField=true;}F5mSaveStore.restoreRuntimeActive(state);worldAdapter.snapCameraToPlayer();if(inPoteField){poteFieldAdapter=campaignWorldAdapter();poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();}F5mSaveStore.bindRuntime(state,f5mQuest,quest2);restoreTownInterior();if(inPoteField)questJournalModel.visitForest(f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);}
+    });skillBook.bindJob(()->state.rpg().currentJobCode());skillWindow=new SkillWindow(skillBook,new SkillIconCatalog(c));F5mSaveStore.restoreAndBindSkillsActive(skillBook);hudSprites=new HudSpriteCatalog(c);inventoryVisuals=new EquipmentVisualRegistry(c);reagentVisuals=new ReagentItemVisualRegistry(c);reagentShopRenderer=new ReagentShopInteriorRenderer(c);townRenderer=new TownInteriorRenderer(c);townWindow=new TownShopWindow(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());state.rpg().enableEquipmentSandbox(F5mSaveStore.writable()&&freshEquipmentProfile);F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);float[] returnPoint=F5mSaveStore.savedFieldReturnPointActive();fieldReturnX=returnPoint[0];fieldReturnY=returnPoint[1];if(com.projectdark.mobile.world.CampaignWorld.contains(F5mSaveStore.savedMapIdActive())){state.enterCampaignMap(F5mSaveStore.savedMapIdActive(),false);inPoteField=true;}F5mSaveStore.restoreRuntimeActive(state);worldAdapter.snapCameraToPlayer();if(inPoteField){poteFieldAdapter=campaignWorldAdapter();poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();}F5mSaveStore.bindRuntime(state,f5mQuest,quest2);if(freshEquipmentProfile&&F5mSaveStore.writable())F5mSaveStore.saveRewardsActive(state.rpg());restoreTownInterior();if(inPoteField)questJournalModel.visitForest(f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);}
   void setSkillTestMode(boolean enabled){
     cancelSkillApproach();skillVfx.clear();skillVfx.testAccess=enabled;activeSkillVisualId=null;skillBook.setTestAccess(enabled);combatSession.setSkillTestMode(enabled);
     getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().putBoolean("enabled",enabled).apply();
@@ -122,6 +122,11 @@ public final class GameView extends View {
   private boolean saveSkillSlots(){if(!skillBook.testAccess()){org.json.JSONObject before=state.rpg().campaign().snapshot();state.rpg().campaign().observeBasics(state.rpg(),skillBook);boolean saved=F5mSaveStore.writable()&&F5mSaveStore.checkpointActive();if(!saved)state.rpg().campaign().restore(before);return saved;}org.json.JSONArray a=new org.json.JSONArray();for(String id:skillBook.testSlots())a.put(id==null?org.json.JSONObject.NULL:id);return getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().putString("slots",a.toString()).commit();}
   public void resume(){if(running)return;running=true;last=SystemClock.uptimeMillis();post(loop);}
   public void pause(){cancelSkillApproach();running=false;removeCallbacks(loop);F5mSaveStore.beginFrame();try{state.tick(0f);state.applyDerivedGrowth();consumeLedger();}finally{F5mSaveStore.endFrame();}checkpoint();}
+  private void autosave(){
+    state.rpg().campaign().visit(state.currentMapId());state.rpg().campaign().observeBasics(state.rpg(),skillBook);
+    // apply() is queued, not proof of disk durability. Only commit() clears save warnings.
+    F5mSaveStore.autosaveActive();checkpointClock=0f;
+  }
   private boolean checkpoint(){
     savedLedgerSequence=state.ledger().sequence();
     state.rpg().campaign().visit(state.currentMapId());state.rpg().campaign().observeBasics(state.rpg(),skillBook);boolean saved=F5mSaveStore.checkpointActive();
@@ -136,7 +141,7 @@ public final class GameView extends View {
     quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);
     if(inReagentShop){updateReagentShop(dt);return;}
     if(inPoteField){updatePoteField(dt);return;}
-    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);
+    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);autoAcquireWait=Math.max(0,autoAcquireWait-dt);
     combat.tick(dt);if(autoAttackEnabled&&combat.target()==null&&isMonsterApproach(moveTarget.snapshot()))worldAdapter.cancel();combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){cancelSkillApproach();autoAttackEnabled=false;action=Action.IDLE;playerFacing.endAttack();interaction.cancel();combat.clearTarget();combat.cancelApproach();activeWorld().cancelForAction();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;activeSkillVisualId=null;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
@@ -356,11 +361,14 @@ public final class GameView extends View {
     if(!autoAttackEnabled||isActing()||joy||!state.player().alive||activeWorld().presentationMoving())return;
     if(navigation!=null&&navigation.status==WorldMoveTargetController.Status.MOVING)return;
     CampaignProgress.Def hunt=activeCampaignHunt();
+    if(autoHuntQuestId!=null&&hunt==null){autoHuntQuestId=null;autoAttackEnabled=false;combat.clearTarget();autoNavigateCampaign();return;}
+
     RuntimeState.Monster current=combat.target();
     if(!combat.hasUsableTarget()||(current!=null
-        &&(!campaignHuntTarget(hunt,current)||activeWorld().monsterApproachPathSteps(current.id,CanonicalMeleeTileContract.REACH_DISTANCE)<0))){
+        &&(!campaignHuntTarget(hunt,current)||(navigation!=null&&navigation.status==WorldMoveTargetController.Status.BLOCKED)))){
+      if(autoAcquireWait>0)return;
       RuntimeState.Monster best=bestReachableAutoTarget(hunt);
-      if(best==null){combat.clearTarget();if(autoTargetHintClock<=0f){showFeedback("접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);autoTargetHintClock=3f;}return;}
+      if(best==null){autoAcquireWait=.5f;combat.clearTarget();if(autoTargetHintClock<=0f){showFeedback("접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);autoTargetHintClock=3f;}return;}
       combat.selectTarget(best);
       autoTargetHintClock=1f;
     }
@@ -384,9 +392,11 @@ public final class GameView extends View {
 
   private static boolean isMonsterApproach(WorldMoveTargetController.Snapshot move){return move!=null&&move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH&&move.status==WorldMoveTargetController.Status.MOVING;}
 
+  private String autoHuntQuestId;
+  private float autoAcquireWait;
   private CampaignProgress.Def activeCampaignHunt(){
     CampaignProgress.Def d=campaignNext();
-    if(d==null||state.rpg().campaign().status(d,state.rpg())!=CampaignProgress.Status.ACTIVE
+    if(d==null||autoHuntQuestId==null||!autoHuntQuestId.equals(d.id)||state.rpg().campaign().status(d,state.rpg())!=CampaignProgress.Status.ACTIVE
         ||!(d.kind.equals("KILL")||d.kind.equals("PAIR")))return null;
     return d;
   }
@@ -397,9 +407,7 @@ public final class GameView extends View {
   }
   private RuntimeState.Monster bestReachableAutoTarget(){return bestReachableAutoTarget(null);}
   private RuntimeState.Monster bestReachableAutoTarget(CampaignProgress.Def hunt){
-    return AutoAttackTargetSelector.select(state.monsters(),state.player().x,state.player().y,
-        AUTO_TARGET_RADIUS,monster->activeWorld().monsterApproachPathSteps(
-            monster.id,CanonicalMeleeTileContract.REACH_DISTANCE),monster->campaignHuntTarget(hunt,monster));
+    return activeWorld().selectAutoTarget(monster->campaignHuntTarget(hunt,monster));
   }
 
   private void attack(){
@@ -416,7 +424,7 @@ public final class GameView extends View {
   static float logicalWidthForView(int width,int height){float fittedScale=Math.min(width/W,height/H);return fittedScale<=0?W:width/fittedScale;}
   static float rightHudOffsetForView(int width,int height){return Math.max(0f,logicalWidthForView(width,height)-W);}
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);logicalViewportWidth=logicalWidthForView(w,h);boolean wide=logicalViewportWidth>W+.01f;ox=wide?0:(w-W*scale)/2;oy=(h-H*scale)/2;hudRightOffset=wide?logicalViewportWidth-W:0;hudCenterOffset=hudRightOffset*.5f;worldAdapter.resizeViewport(logicalViewportWidth,H);if(poteFieldAdapter!=null)poteFieldAdapter.resizeViewport(logicalViewportWidth,H);camera=activeWorld().camera();if(reagentShopAdapter!=null)reagentShopAdapter.resizeViewport(logicalViewportWidth,H);}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){poteFieldRenderer.drawBelow(c,poteFieldAdapter,activeWorld().presentationPlayerY());c.save();c.translate(-camera.cameraX(),-camera.cameraY());drawTapMarker(c);drawCampaignGates(c);drawNpcs(c);drawMonsters(c);drawCharacter(c);skillVfx.draw(c,skillAnchors);c.restore();poteFieldRenderer.drawAbove(c,poteFieldAdapter,activeWorld().presentationPlayerY());}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){drawPoteWorld(c);}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);c.restore();}
 
   private WorldRuntimeAdapter activeWorld(){if(inReagentShop&&reagentShopAdapter!=null)return reagentShopAdapter;return inPoteField&&poteFieldAdapter!=null?poteFieldAdapter:worldAdapter;}
 
@@ -427,24 +435,26 @@ public final class GameView extends View {
     CampaignProgress.Def d=campaignNext();boolean relevant=d!=null&&d.npc.equals(npc.id);String body;
     if(npc.id.startsWith("campaign_altar_"))body="숲의 정수를 모아 제단을 정화하세요. 정화 의뢰를 수락한 뒤 세 곳을 각각 방문합니다.";
     else if(relevant){CampaignProgress.Status status=state.rpg().campaign().status(d,state.rpg());body=d.title+" · "+(status==CampaignProgress.Status.LOCKED?"Lv"+d.level+"에 다시 찾아오세요":status==CampaignProgress.Status.AVAILABLE?"수락한 뒤 목표를 수행하고 돌아오세요":status==CampaignProgress.Status.REPORT?"조사를 마쳤군요. 완료를 눌러 보상을 받으세요":state.rpg().campaign().objective(d)+" · "+state.rpg().campaign().count(d,state.rpg())+" / "+d.goal);}
-    else body="조사를 준비하세요. 이곳에서 무료로 쉬거나 회복약과 마나약을 살 수 있습니다.";
-    drawWrappedText(c,body,218,370,510,11,17);
-    String[] labels={"무료 휴식","회복약 20G",npc.id.equals("piet_supplier")?"장비 상점":"마나약 25G",""};
+    else body=npc.dialogue;
+    if(relevant){String gear=AdaptedPoteQuestRewards.equipmentText(d,state.rpg());if(!gear.isEmpty())body+="\n장비 보상 · "+gear;}
+    drawWrappedText(c,body,218,366,510,11,16);
+    boolean supplier=npc.id.equals("piet_supplier");String[] labels={"",supplier?"회복약 20G":"",supplier?"장비 상점":"",""};
     if(npc.id.startsWith("campaign_altar_"))labels[3]="정화";
     else if(relevant){CampaignProgress.Status st=state.rpg().campaign().status(d,state.rpg());labels[3]=st==CampaignProgress.Status.AVAILABLE?"수락":st==CampaignProgress.Status.REPORT?"완료":"목표 확인";}
-    for(int i=0;i<4;i++){float x=218+i*130;p.setColor(0xD05B4727);c.drawRoundRect(new RectF(x,412,x+118,446),7,7,p);text(c,labels[i],x+14,434,9);}
+    for(int i=0;i<4;i++){if(labels[i].isEmpty())continue;float x=218+i*130;UiTheme.button(c,new RectF(x,412,x+118,446),labels[i],true,i==3);}
   }
   private void handleCampaignDialogue(float x,float y){
     if(circleHit(x,y,744,321,18)||!inside(x,y,210,315,750,456)){interaction.dismissDialog();activeWorld().cancelForAction();return;}
     if(y<412||y>446)return;int button=(int)((x-218)/130);if(x<218||button<0||button>3)return;RuntimeState.Npc npc=interaction.dialogNpc();if(npc==null)return;
-    if(button==0){int hp=state.player().hp,mp=state.player().mp;CampaignResources.freeRest(state);if(!checkpoint()){state.player().hp=hp;state.player().mp=mp;}else showReward("휴식 완료 · HP/MP 회복");return;}
+    if(button==0)return;
+    if((button==1||button==2)&&!npc.id.equals("piet_supplier"))return;
     if(button==2&&npc.id.equals("piet_supplier")){interaction.dismissDialog();townWindow.openCampaign(state);return;}
     if(button==1||button==2){String id=button==1?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION";long price=button==1?20:25;if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().buyItem(id,price)))showReward("보급품 구매 · Gold -"+price);else showFeedback("구매할 금전 또는 저장 상태를 확인하세요",FeedbackTone.WARN);return;}
     if(npc.id.startsWith("campaign_altar_")){if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().campaign().purify(npc.id,state.rpg())))showReward("제단 정화 완료");else showFeedback("정화 의뢰 또는 이미 정화한 제단을 확인하세요",FeedbackTone.INFO);return;}
     CampaignProgress.Def d=campaignNext();if(d==null||!d.npc.equals(npc.id))return;CampaignProgress.Status st=state.rpg().campaign().status(d,state.rpg());boolean ok=false;int rewardExp=state.rpg().campaign().rewardExp(d,state.rpg());
     if(st==CampaignProgress.Status.AVAILABLE)ok=F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().campaign().accept(d.id,state.rpg(),skillBook));
     else if(st==CampaignProgress.Status.REPORT)ok=F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().campaign().claim(d.id,state.rpg()));
-    if(ok){state.applyDerivedGrowth();interaction.dismissDialog();showReward(st==CampaignProgress.Status.REPORT?d.title+" 완료 · EXP +"+rewardExp+" · Gold +"+d.gold:"의뢰 수락 · "+d.title);}
+    if(ok){state.applyDerivedGrowth();interaction.dismissDialog();showReward(st==CampaignProgress.Status.REPORT?d.title+" 완료 · "+AdaptedPoteQuestRewards.summary(d,state.rpg(),rewardExp):"의뢰 수락 · "+d.title);}
     else if(st==CampaignProgress.Status.ACTIVE){interaction.dismissDialog();autoNavigateCampaign();}
     else showFeedback("필요 레벨과 목표, 저장 상태를 확인하세요",FeedbackTone.INFO);
   }
@@ -453,7 +463,7 @@ public final class GameView extends View {
   private void navigateTutorial(CampaignProgress.Def d,CampaignProgress.Status status){
     RpgProgressionState r=state.rpg();autoAttackEnabled=false;campaignAutoRoute=false;interaction.cancel();activeWorld().cancelForAction();combat.cancelApproach();joy=false;inventoryOpen=statsOpen=equipmentOpen=false;skillWindow.close();townWindow.close();
     if(status==CampaignProgress.Status.AVAILABLE){if(!F5mSaveStore.transactActive(r,skillBook,()->r.campaign().accept(d.id,r,skillBook))){showFeedback("학습을 시작하지 못했습니다 · 저장 상태 확인",FeedbackTone.WARN);return;}status=r.campaign().status(d,r);}
-    if(status==CampaignProgress.Status.REPORT){int exp=r.campaign().rewardExp(d,r);if(F5mSaveStore.transactActive(r,skillBook,()->r.campaign().claim(d.id,r))){state.applyDerivedGrowth();showReward(d.title+" 완료 · EXP +"+exp+" · Gold +"+d.gold);openQuestJournal();}else showFeedback("보상을 저장하지 못했습니다",FeedbackTone.WARN);return;}
+    if(status==CampaignProgress.Status.REPORT){int exp=r.campaign().rewardExp(d,r);if(F5mSaveStore.transactActive(r,skillBook,()->r.campaign().claim(d.id,r))){state.applyDerivedGrowth();showReward(d.title+" 완료 · "+AdaptedPoteQuestRewards.summary(d,r,exp));openQuestJournal();}else showFeedback("보상을 저장하지 못했습니다",FeedbackTone.WARN);return;}
     if(status!=CampaignProgress.Status.ACTIVE)return;
     if(inPoteField&&(d.kind.equals("BUY")||d.kind.equals("SELL")||d.kind.equals("USE")||d.kind.equals("QUICK_USE"))){campaignAutoRoute=true;WorldMoveTargetController.TileCenter gate=com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId());poteFieldAdapter.requestGroundWorld(gate.x,gate.y);showFeedback("숲길을 따라 밀레스 학습 장소로 돌아갑니다",FeedbackTone.INFO);return;}
     switch(d.kind){
@@ -484,7 +494,9 @@ public final class GameView extends View {
     campaignAutoRoute=false;
     if(st==CampaignProgress.Status.AVAILABLE||st==CampaignProgress.Status.REPORT||(st==CampaignProgress.Status.ACTIVE&&(d.kind.equals("SUPPLY")||d.kind.equals("BUY")||d.kind.equals("VISIT")||d.kind.equals("JOB")||d.kind.equals("LEVEL")))){RuntimeState.Npc npc=findNpc(d.npc);if(npc!=null)activeWorld().requestNpcApproach(npc.id);return;}
     if(st==CampaignProgress.Status.ACTIVE&&d.kind.equals("ALTAR")){for(RuntimeState.Npc n:state.npcs())if(n.id.startsWith("campaign_altar_")&&!state.rpg().campaign().altarDone(n.id)){activeWorld().requestNpcApproach(n.id);return;}}
-    RuntimeState.Monster target=null;for(RuntimeState.Monster m:state.monsters()){String species=m.campaignRewardProfileId==null?m.id:m.campaignRewardProfileId;boolean wanted=st==CampaignProgress.Status.LOCKED||d.kind.equals("SKILL")||state.rpg().campaign().wanted(d,species);if(m.alive&&wanted&&(target==null||Math.hypot(m.x-state.player().x,m.y-state.player().y)<Math.hypot(target.x-state.player().x,target.y-state.player().y)))target=m;}
+    boolean questHunt=st==CampaignProgress.Status.ACTIVE&&(d.kind.equals("KILL")||d.kind.equals("PAIR"));
+    if(questHunt){autoHuntQuestId=d.id;autoAcquireWait=0;autoAttackEnabled=true;}
+    RuntimeState.Monster target=bestReachableAutoTarget(questHunt?d:null);
     if(target!=null){
       combat.selectTarget(target);
       activeWorld().requestMonsterApproach(target.id,CanonicalMeleeTileContract.REACH_DISTANCE);
@@ -494,7 +506,7 @@ public final class GameView extends View {
   private WorldRuntimeAdapter campaignWorldAdapter(){com.projectdark.mobile.world.PoteCampaignMapDef d=com.projectdark.mobile.world.PoteCampaignMapDef.forId(state.currentMapId());return new WorldRuntimeAdapter(state,logicalViewportWidth,H,d.minX,d.maxX,d.minY,d.maxY,d.navigationTiles(),d.obstacles(),true);}
   private void changeCampaignMap(String id,boolean fromNext){cancelSkillApproach();skillVfx.clear();combat.clearTarget();combat.cancelApproach();interaction.cancel();if(poteFieldAdapter!=null)poteFieldAdapter.cancel();state.enterCampaignMap(id,fromNext);poteFieldAdapter=campaignWorldAdapter();poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();action=Action.IDLE;joy=false;vx=vy=0;directStepClock=0;checkpoint();showFeedback(com.projectdark.mobile.world.CampaignWorld.title(id),FeedbackTone.INFO);if(campaignAutoRoute)autoNavigateCampaign();}
   private boolean checkCampaignGate(){WorldMoveTargetController.TileCenter back=com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId()),forward=com.projectdark.mobile.world.CampaignWorld.forward(state.currentMapId());float x=state.player().x,y=state.player().y;if(Math.hypot(x-back.x,y-back.y)<22){String previous=com.projectdark.mobile.world.CampaignWorld.previous(state.currentMapId());if(previous==null){boolean route=campaignAutoRoute;leavePoteField();if(route)autoNavigateCampaign();}else changeCampaignMap(previous,true);return true;}String next=com.projectdark.mobile.world.CampaignWorld.next(state.currentMapId());if(next!=null&&Math.hypot(x-forward.x,y-forward.y)<22){changeCampaignMap(next,false);return true;}return false;}
-  private void drawCampaignGates(Canvas c){if(!inPoteField)return;WorldMoveTargetController.TileCenter[] gates={com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId()),com.projectdark.mobile.world.CampaignWorld.forward(state.currentMapId())};for(int i=0;i<2;i++){String id=i==0?com.projectdark.mobile.world.CampaignWorld.previous(state.currentMapId()):com.projectdark.mobile.world.CampaignWorld.next(state.currentMapId());if(i==1&&id==null)continue;WorldMoveTargetController.TileCenter t=gates[i];p.setColor(0x8891b6bb);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);c.drawOval(t.x-22,t.y-11,t.x+22,t.y+11,p);p.setStyle(Paint.Style.FILL);text(c,id==null?"밀레스":com.projectdark.mobile.world.CampaignWorld.title(id),t.x-30,t.y-18,9);}}
+  private void drawCampaignGates(Canvas c){if(!inPoteField)return;WorldMoveTargetController.TileCenter[] gates={com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId()),com.projectdark.mobile.world.CampaignWorld.forward(state.currentMapId())};for(int i=0;i<2;i++){String id=i==0?com.projectdark.mobile.world.CampaignWorld.previous(state.currentMapId()):com.projectdark.mobile.world.CampaignWorld.next(state.currentMapId());if(i==1&&id==null)continue;WorldMoveTargetController.TileCenter t=gates[i];poteFieldRenderer.drawPortalWorld(c,t.x,t.y);text(c,id==null?"밀레스":com.projectdark.mobile.world.CampaignWorld.title(id),t.x-30,t.y-18,9);}}
 
   private void enterPoteField(){
     cancelSkillApproach();skillVfx.clear();activeSkillVisualId=null;
@@ -509,8 +521,9 @@ public final class GameView extends View {
     state.enterMillesFromField(fieldReturnX,Math.max(1510f,fieldReturnY-32f));worldAdapter.snapCameraToPlayer();camera=worldAdapter.camera();action=Action.IDLE;joy=false;vx=vy=0;checkpoint();showFeedback("밀레스",FeedbackTone.INFO);
   }
   private void updatePoteField(float dt){
+    poteFieldRenderer.tick(dt);
     if(interaction.dialogOpen()||townWindow.isOpen()){action=Action.IDLE;return;}
-    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);
+    feedbackClock=Math.max(0,feedbackClock-dt);rewardClock=Math.max(0,rewardClock-dt);tapMarkerClock=Math.max(0,tapMarkerClock-dt);autoTargetHintClock=Math.max(0,autoTargetHintClock-dt);autoAcquireWait=Math.max(0,autoAcquireWait-dt);
     combat.tick(dt);combat.setBasicAttack(equipmentActions.resolveBasicAttack(state.rpg()).animationAction);tickSkillCombat(dt);state.tick(dt);state.applyDerivedGrowth();consumeLedger();consumeRewardNotice();monsterAi.tick(state,dt);
     if(!state.player().alive){cancelSkillApproach();autoAttackEnabled=false;action=Action.IDLE;playerFacing.endAttack();combat.clearTarget();combat.cancelApproach();poteFieldAdapter.cancelForAction();joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;directStepClock=0f;return;}
     if(isActing()){actionClock+=dt;if(actionClock>=duration(action)){actionClock=0;activeSkillVisualId=null;playerFacing.endAttack();action=(joy&&(vx!=0||vy!=0))?Action.WALK:Action.IDLE;}return;}
@@ -564,14 +577,14 @@ public final class GameView extends View {
     c.save();c.translate(-reagentShopAdapter.camera().cameraX(),-reagentShopAdapter.camera().cameraY());skillVfx.draw(c,skillAnchors);c.restore();
   }
   private void drawReagentShop(Canvas c){townWindow.draw(c,hudCenterOffset);}
-  private void drawInnDialogue(Canvas c){panel(c,190,330,770,468);text(c,"벤저민 · 밀레스 여관",218,360,13);String line=f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY?"여관 안의 생쥐를 정리했군요. 약속한 보급품을 받아요.":"어서 와요. 따뜻한 식사와 방이 준비되어 있어요.";drawWrappedText(c,line,218,388,500,11,18);if(f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,650,442),9,9,p);text(c,"보급품 받기",525,430,10);}else text(c,"화면을 터치해 닫기",218,444,9);}
+  private void drawInnDialogue(Canvas c){panel(c,190,330,770,468);text(c,"벤저민 · 밀레스 여관",218,360,13);String line=f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY?"여관 안의 생쥐를 정리했군요. 약속한 보급품을 받아요.":"어서 와요. 따뜻한 식사와 방이 준비되어 있어요.";drawWrappedText(c,line,218,388,500,11,18);if(f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY){p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(500,408,650,442),9,9,p);text(c,"보급품 받기",525,430,10);}else text(c,"화면을 터치해 닫기",218,444,9);}
   private boolean handleReagentShopTouch(MotionEvent e,float x,float y){if(e.getActionMasked()==MotionEvent.ACTION_DOWN){if(innDialogueOpen){if(f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY&&inside(x,y,500,408,650,442)){F5mTurnInCoordinator.Result tr=F5mQuestUiFlow.confirmTurnIn(f5mQuest,state.rpg());if(tr==F5mTurnInCoordinator.Result.COMPLETED){state.applyDerivedGrowth();quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);checkpoint();showReward(F5mQuestUiFlow.completionMessage(tr)+" · 다음: 제임스의 성장 훈련");}else showFeedback(F5mQuestUiFlow.completionMessage(tr),FeedbackTone.WARN);innDialogueOpen=false;return true;}innDialogueOpen=false;return true;}if(townWindow.isOpen()){townWindow.touch(x,y,hudCenterOffset,()->F5mSaveStore.writable()&&F5mSaveStore.checkpointActive());reagentShopOpen=townWindow.isOpen();return true;}if(reagentShopAdapter==null)return true;
     WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());if(dist(x,y,m.x,m.y-24)<=36){joy=false;vx=vy=0;reagentShopAdapter.cancelForAction();if(townInterior.kind==TownInteriorDef.Kind.INN){combat.cancelApproach();autoAttackEnabled=false;merchantApproach=true;reagentShopAdapter.requestGroundWorld(townInterior.customerX(),townInterior.customerY());}else{townWindow.open(townInterior,state);focusTutorialShop();reagentShopOpen=true;}action=Action.IDLE;return true;}
     if(townInterior.kind==TownInteriorDef.Kind.INN){
       if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();reagentShopAdapter.snapCameraToPlayer();checkpoint();}return true;}
       if(inside(x,y,14,132,304,194)){autoNavigateQuest();return true;}
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){merchantApproach=false;attack();return true;}
-      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){merchantApproach=false;cancelSkillApproach();autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null)combat.selectTarget(best);}return true;}
+      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){merchantApproach=false;cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null)combat.selectTarget(best);}return true;}
       for(int i=0;i<8;i++)if(slotRect(i).contains(x,y)){SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);return true;}
       WorldCameraTransform.Point target=reagentShopAdapter.screenToWorld(x,y);RuntimeState.Monster rat=state.hitMonster(target.x,target.y,18);if(rat!=null&&!isHudSurface(x,y)){merchantApproach=false;reagentShopAdapter.cancelForAction();combat.selectTarget(rat);return true;}
     }
@@ -580,6 +593,18 @@ public final class GameView extends View {
     if(e.getActionMasked()==MotionEvent.ACTION_MOVE&&joy){stick(x,y);return true;}if(e.getActionMasked()==MotionEvent.ACTION_UP||e.getActionMasked()==MotionEvent.ACTION_CANCEL){joy=false;vx=vy=0;knobX=JOY_X;knobY=JOY_Y;}return true;
   }
 
+  private boolean forestVisible(float x,float y,float height){float sx=x-camera.cameraX(),sy=y-camera.cameraY();return sx>=-100&&sx<=logicalViewportWidth+100&&sy>=-40&&sy<=H+height;}
+  private void drawPoteWorld(Canvas c){
+    java.util.List<com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw> actors=new java.util.ArrayList<>();
+    actors.add(poteActor(c,0,Float.NEGATIVE_INFINITY,0,()->{drawTapMarker(c);drawCampaignGates(c);}));
+    for(RuntimeState.Npc n:state.npcs())if(forestVisible(n.x,n.y,72))actors.add(poteActor(c,n.x,n.y,58,()->drawNpc(c,n)));
+    for(RuntimeState.Monster m:state.monsters())if(m.alive&&forestVisible(m.x,m.y,PoteForestMonsterShowcase.bodyHeight(m.id)))actors.add(poteActor(c,m.x,m.y,PoteForestMonsterShowcase.bodyHeight(m.id),()->drawMonster(c,m)));
+    actors.add(poteActor(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),52,()->drawCharacter(c)));
+    poteFieldRenderer.drawScene(c,poteFieldAdapter,actors);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();
+  }
+  private com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw poteActor(Canvas c,float x,float y,float height,Runnable draw){
+    return new com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw(x,y,height,height>100f?height:32f,()->{c.save();c.translate(-camera.cameraX(),-camera.cameraY());draw.run();c.restore();});
+  }
   private void drawWorld(Canvas c){
     java.util.List<AdaptedMillesMapRenderer.DepthDraw> actors=new java.util.ArrayList<>();
     actors.add(millesDepth(c,Float.NEGATIVE_INFINITY,()->drawTapMarker(c)));
@@ -596,7 +621,18 @@ public final class GameView extends View {
   private void drawNpcs(Canvas c){for(RuntimeState.Npc n:state.npcs())drawNpc(c,n);}
   private void drawNpc(Canvas c,RuntimeState.Npc n){if(n.id.startsWith("campaign_altar_")){boolean done=state.rpg().campaign().altarDone(n.id);p.setColor(0xff575854);c.drawOval(new RectF(n.x-22,n.y-12,n.x+22,n.y+10),p);p.setColor(0xffa5a393);c.drawRect(n.x-12,n.y-30,n.x+12,n.y-4,p);p.setColor(done?0xff83e5ce:0xffbd914d);c.drawOval(new RectF(n.x-11,n.y-36,n.x+11,n.y-24),p);text(c,done?"정화 완료":n.name,n.x-26,n.y-43,9);return;}CharacterRenderer.Direction facing=CharacterRenderer.Direction.SW;boolean selected=interaction.approachNpc()==n;worldEntityRenderer.draw(c,new WorldEntityPresentationRenderer.Pose(WorldEntityPresentationRenderer.Kind.NPC,n.x,n.y,facing,CharacterRenderer.State.IDLE,0f,0f,0f,CharacterRenderer.EffectFamily.NONE,false,selected,"npc/"+n.id,null));p.setTextSize(9);p.setTypeface(UiTheme.font(true));p.setColor(0xfff6e8c8);String label=n.id.startsWith("mentor_")||n.id.startsWith("piet_")?NpcIdentity.forId(n.id).name:n.name;float tw=p.measureText(label);p.setColor(0xB51C1710);c.drawRoundRect(new RectF(n.x-tw/2-4,n.y-64,n.x+tw/2+4,n.y-51),4,4,p);p.setColor(0xfff6e8c8);c.drawText(label,n.x-tw/2,n.y-54,p);if(selected){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.7f);p.setColor(0xfff0d17a);c.drawCircle(n.x,n.y-23,17,p);p.setStyle(Paint.Style.FILL);}}
   private void drawMonsters(Canvas c){for(RuntimeState.Monster m:state.monsters())drawMonster(c,m);}
-  private void drawMonster(Canvas c,RuntimeState.Monster m){RuntimeState.Monster selected=combat.target();if(!m.alive)return;CharacterRenderer.Direction facing=inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)?PoteForestMonsterShowcase.presentationFacing(m):m.visualFacing.presentation();boolean isSelected=selected==m;CharacterRenderer.State poseState=WorldEntityPresentationRenderer.presentationState(m);float poseClock=m.attackPrimed?.24f-m.attackWindup:m.detourClock;float poseDuration=m.attackPrimed?.24f:1f;if(inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)){String pose=PoteForestMonsterShowcase.poseFor(m);poteFieldRenderer.drawMonsterTestPose(c,m.id,pose,facing,PoteForestMonsterShowcase.attackProgress(m),m.animationClock,m.x,m.y,m.hitFlash>0f);p.setTypeface(UiTheme.font(true));p.setTextAlign(Paint.Align.CENTER);p.setTextSize(8);p.setColor(isSelected?0xffffe38b:0xfff3e8cd);c.drawText(m.name.replace(" [테스트 배치]",""),m.x,m.y-(PoteForestMonsterShowcase.bodyHeight(m.id)-11f),p);p.setTextAlign(Paint.Align.LEFT);}else if(MillesMousePresentation.isMouse(m.id)){innMouseRenderer.draw(c,m,m.x,m.y);}else worldEntityRenderer.draw(c,new WorldEntityPresentationRenderer.Pose(WorldEntityPresentationRenderer.Kind.MONSTER,m.x,m.y,facing,poseState,m.detourClock,poseClock,poseDuration,m.attackPrimed?CharacterRenderer.EffectFamily.PUNCH:CharacterRenderer.EffectFamily.NONE,m.hitFlash>0f,isSelected,"PENDING_CROP/milles/monster/"+m.id,null));if(m.attackPrimed&&!inPoteField&&!MillesMousePresentation.isMouse(m.id)){float q=1f-Math.min(1f,m.attackWindup/.24f);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.6f+1.8f*q);p.setColor(0xaaff7755);c.drawCircle(m.x,m.y-18,18+6*q,p);p.setStyle(Paint.Style.FILL);}float barTop=m.y-((inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id))?(PoteForestMonsterShowcase.bodyHeight(m.id)-19f):MillesMousePresentation.isMouse(m.id)?31f:40f);bar(c,m.x-18,barTop,m.x+18,barTop+5f,0xffd63442,m.hp/(float)m.maxHp);if(m.damagePopupClock>0){p.setTextSize(12);p.setTypeface(UiTheme.font(true));p.setColor(0xffffdc72);String d="-"+m.lastDamage;float tw=p.measureText(d);float damageTop=inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)?(PoteForestMonsterShowcase.bodyHeight(m.id)+6f):MillesMousePresentation.isMouse(m.id)?39f:47f;c.drawText(d,m.x-tw/2,m.y-damageTop-(.65f-m.damagePopupClock)*20,p);}}
+  private void drawMonster(Canvas c,RuntimeState.Monster m){RuntimeState.Monster selected=combat.target();if(!m.alive)return;CharacterRenderer.Direction facing=inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)?PoteForestMonsterShowcase.presentationFacing(m):m.visualFacing.presentation();boolean isSelected=selected==m;CharacterRenderer.State poseState=WorldEntityPresentationRenderer.presentationState(m);float poseClock=m.attackPrimed?.24f-m.attackWindup:m.detourClock;float poseDuration=m.attackPrimed?.24f:1f;if(inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)){String pose=PoteForestMonsterShowcase.poseFor(m);poteFieldRenderer.drawMonster(c,m,m.x,m.y);p.setTypeface(UiTheme.font(true));p.setTextAlign(Paint.Align.CENTER);p.setTextSize(8);p.setColor(isSelected?0xffffe38b:0xfff3e8cd);c.drawText(m.name.replace(" [테스트 배치]",""),m.x,m.y-(PoteForestMonsterShowcase.bodyHeight(m.id)-11f),p);p.setTextAlign(Paint.Align.LEFT);}else if(MillesMousePresentation.isMouse(m.id)){innMouseRenderer.draw(c,m,m.x,m.y);}else worldEntityRenderer.draw(c,new WorldEntityPresentationRenderer.Pose(WorldEntityPresentationRenderer.Kind.MONSTER,m.x,m.y,facing,poseState,m.detourClock,poseClock,poseDuration,m.attackPrimed?CharacterRenderer.EffectFamily.PUNCH:CharacterRenderer.EffectFamily.NONE,m.hitFlash>0f,isSelected,"PENDING_CROP/milles/monster/"+m.id,null));if(m.attackPrimed&&!inPoteField&&!MillesMousePresentation.isMouse(m.id)){float q=1f-Math.min(1f,m.attackWindup/.24f);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.6f+1.8f*q);p.setColor(0xaaff7755);c.drawCircle(m.x,m.y-18,18+6*q,p);p.setStyle(Paint.Style.FILL);}float barTop=m.y-((inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id))?(PoteForestMonsterShowcase.bodyHeight(m.id)-19f):MillesMousePresentation.isMouse(m.id)?31f:40f);bar(c,m.x-18,barTop,m.x+18,barTop+5f,0xffd63442,m.hp/(float)m.maxHp);drawMonsterDamage(c,m);}
+  private void drawMonsterDamage(Canvas c,RuntimeState.Monster m){
+    if(m.damagePopupClock<=0f)return;
+    float age=Math.max(0f,.65f-m.damagePopupClock),pulse=1f+.16f*Math.max(0f,1f-age/.12f);
+    float top=inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id)?PoteForestMonsterShowcase.bodyHeight(m.id)+6f:MillesMousePresentation.isMouse(m.id)?39f:47f;
+    String value="-"+m.lastDamage;p.setTypeface(UiTheme.font(true));p.setTextSize(12f*pulse);
+    float left=m.x-p.measureText(value)*.5f,y=m.y-top-age*20f;
+    int alpha=Math.round(255f*Math.min(1f,m.damagePopupClock/.18f));
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.8f);p.setColor(0xff241817);p.setAlpha(alpha);c.drawText(value,left,y,p);
+    p.setStyle(Paint.Style.FILL);p.setColor(0xffffdc72);p.setAlpha(alpha);c.drawText(value,left,y,p);p.setAlpha(255);
+  }
+
   static float monsterFacingX(CharacterRenderer.Direction d){return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-3f:3f;}
   static float monsterFacingY(CharacterRenderer.Direction d){return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-2f:2f;}
   private CharacterRenderer.Direction characterDirection(){return playerFacing.presentation();}
@@ -696,37 +732,18 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
     p.setStrokeWidth(1.4f);p.setColor(0xFFD0A066);c.drawRect(l+7,t+7,r-7,b-7,p);p.setStyle(Paint.Style.FILL);
     p.setColor(0xFF3B271B);c.drawRect(l+10,t+10,r-10,t+42,p);text(c,title,l+25,t+33,14);
   }
+  private SourceItemIconRegistry sourceItemIcons;
   private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
     RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
     if(ChungryongWeaponRenderer.ITEM.equals(row.itemId)){Bitmap b=chungryongWeapon.icon;float sc=Math.min(size/b.getWidth(),size/b.getHeight());float w=b.getWidth()*sc,h=b.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(b,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
     Bitmap reagent=reagentVisuals.get(row.itemId);if(reagent!=null){float sc=Math.min(size/reagent.getWidth(),size/reagent.getHeight()),w=reagent.getWidth()*sc,h=reagent.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(reagent,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
-    Bitmap catalog=ItemIconCatalog.reagent(row.itemId);if(catalog==null)catalog=ItemIconCatalog.get(row.itemId,d);if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
-    if(d!=null&&drawSourceItemIcon(c,d,l,t,size))return;
+    if(sourceItemIcons==null)sourceItemIcons=new SourceItemIconRegistry(getContext());
+    Bitmap catalog=sourceItemIcons.get(d);if(catalog==null)catalog=ItemIconCatalog.reagent(row.itemId);if(catalog!=null){float sc=Math.min(size/catalog.getWidth(),size/catalog.getHeight()),w=catalog.getWidth()*sc,h=catalog.getHeight()*sc;p.setFilterBitmap(false);c.drawBitmap(catalog,null,new RectF(l+(size-w)/2,t+(size-h)/2,l+(size+w)/2,t+(size+h)/2),p);return;}
+
     drawFallbackItemIcon(c,d,l,t,size);
   }
-  private boolean drawSourceItemIcon(Canvas c,RpgProgressionState.ItemDefinition d,float l,float t,float size){
-    if(d==null||d.appearanceId==null||d.appearanceId.isEmpty())return false;
-    EquipmentVisualRegistry.Visual v=inventoryVisuals.get(d.appearanceId);
-    if(v==null||v.atlas==null||v.registration==null)return false;
-    SourceEquipmentRegistration.Frame frame=v.registration.idle(CharacterRenderer.Direction.SW,0);
-    if(frame==null||frame.src==null||frame.src.width()<=0||frame.src.height()<=0)return false;
-    Rect src=new Rect(frame.src);src.left=Math.max(0,src.left);src.top=Math.max(0,src.top);src.right=Math.min(v.atlas.getWidth(),src.right);src.bottom=Math.min(v.atlas.getHeight(),src.bottom);
-    if(src.width()<=0||src.height()<=0)return false;
-    float pad=Math.max(2f,size*.08f),avail=size-pad*2f,sc=Math.min(avail/src.width(),avail/src.height());
-    float dw=Math.max(1,src.width()*sc),dh=Math.max(1,src.height()*sc),dx=l+(size-dw)/2f,dy=t+(size-dh)/2f;
-    Paint old=p;p.setFilterBitmap(false);c.drawBitmap(v.atlas,src,new RectF(dx,dy,dx+dw,dy+dh),p);return true;
-  }
   private void drawFallbackItemIcon(Canvas c,RpgProgressionState.ItemDefinition d,float l,float t,float size){
-    String slot=d==null?"":d.equipSlot;float cx=l+size/2,cy=t+size/2;
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(Math.max(2,size*.07f));p.setColor(0xFFE5D2A5);
-    if("무기".equals(slot)){c.drawLine(l+size*.25f,t+size*.78f,l+size*.73f,t+size*.22f,p);c.drawLine(l+size*.19f,t+size*.62f,l+size*.39f,t+size*.82f,p);}
-    else if("방패".equals(slot)){Path q=new Path();q.moveTo(cx,t+size*.15f);q.lineTo(l+size*.82f,t+size*.28f);q.lineTo(l+size*.72f,t+size*.72f);q.lineTo(cx,t+size*.88f);q.lineTo(l+size*.28f,t+size*.72f);q.lineTo(l+size*.18f,t+size*.28f);q.close();c.drawPath(q,p);}
-    else if("모자".equals(slot)){c.drawArc(new RectF(l+size*.2f,t+size*.28f,l+size*.8f,t+size*.78f),190,160,false,p);c.drawLine(l+size*.18f,t+size*.66f,l+size*.82f,t+size*.66f,p);}
-    else if("신발".equals(slot)||"각반".equals(slot)){c.drawLine(l+size*.38f,t+size*.2f,l+size*.38f,t+size*.7f,p);c.drawLine(l+size*.38f,t+size*.7f,l+size*.75f,t+size*.78f,p);}
-    else if("장갑".equals(slot)){c.drawCircle(cx,cy,size*.24f,p);for(int i=-2;i<=2;i++)c.drawLine(cx+i*size*.08f,cy-size*.18f,cx+i*size*.08f,t+size*.18f,p);}
-    else if("귀걸이".equals(slot)||"목걸이".equals(slot)){c.drawCircle(cx,cy,size*.25f,p);c.drawCircle(cx,cy+size*.25f,size*.07f,p);}
-    else if("벨트".equals(slot)){c.drawRect(l+size*.15f,cy-size*.1f,l+size*.85f,cy+size*.1f,p);c.drawRect(cx-size*.12f,cy-size*.16f,cx+size*.12f,cy+size*.16f,p);}
-    else {c.drawCircle(cx,cy,size*.24f,p);c.drawLine(cx,cy-size*.38f,cx,cy+size*.38f,p);}p.setStyle(Paint.Style.FILL);
+    UiTheme.center(c,"?",l+size/2,t+size*.68f,Math.min(18,size*.5f),UiTheme.MUTED,false);
   }
   private void drawCompareCard(Canvas c,String title,RpgProgressionState.ItemDefinition d,float x,float y,float w,float h){
     p.setColor(0xCC241A14);c.drawRoundRect(new RectF(x,y,x+w,y+h),5,5,p);
@@ -792,8 +809,8 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
   private String[] initialJobs(){return new String[]{"WARRIOR","ROGUE","MAGE","CLERIC","MARTIAL_ARTIST"};}
   private String[] initialJobLabels(){return new String[]{"전사","도적","마법사","성직자","무도가"};}
   private String initialSkill(String job){switch(job){case "WARRIOR":return "SK_전사_001";case "ROGUE":return "SK_도적_001";case "MAGE":return "SK_마법사_001";case "CLERIC":return "SK_성직자_013";case "MARTIAL_ARTIST":return "SK_무도가_001";default:return null;}}
-  private void drawDialogue(Canvas c){RuntimeState.Npc dialogNpc=interaction.dialogNpc();if(dialogNpc==null)return;p.setColor(0x74000000);c.drawRect(0,0,W,H,p);modalPanel(c,190,300,770,462);p.setColor(0xC95A472A);c.drawRoundRect(new RectF(210,316,338,345),8,8,p);text(c,dialogNpc.name,226,335,11.5f);if(campaignDialogue()){drawCampaignDialogue(c,dialogNpc);}else if(jobCounselorDialogue()){boolean ready=f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED&&quest2.state()==GrowthQuest2.State.COMPLETED&&state.rpg().normalLevel()!=null&&state.rpg().normalLevel()>=3;drawWrappedText(c,ready?"원하는 기본 직업을 한 번 선택하세요. 입문 장비는 무료로 지급합니다.":"직업 선택은 성장 훈련을 마치고 Lv3에 도달하면 열립니다.",218,372,510,11,18);if(ready&&"COMMONER".equals(state.rpg().currentJobCode())){String[] labels=initialJobLabels();for(int i=0;i<labels.length;i++){float x=i<3?218+i*173:304+(i-3)*173;float y=i<3?398:430;p.setColor(0xD05B4727);c.drawRoundRect(new RectF(x,y,x+154,y+27),7,7,p);text(c,labels[i]+" 선택",x+38,y+18,9);}}else mutedText(c,"현재 직업 · "+state.rpg().currentJobCode(),218,430,9);}else if(f5mGuideDialogue()){F5mAdaptedPrologueQuest.State qs=f5mQuest.state();if(qs==F5mAdaptedPrologueQuest.State.COMPLETED&&quest2.state()!=GrowthQuest2.State.LOCKED&&quest2.state()!=GrowthQuest2.State.COMPLETED){GrowthQuest2.State q2=quest2.state();String body=q2==GrowthQuest2.State.AVAILABLE?"좋아. 이번에는 훈련용 몬스터 세 마리를 상대하며 성장해 보게.":q2==GrowthQuest2.State.ACTIVE?"성장 훈련 중이군. 세 마리를 모두 처치하고 돌아오게.":"충분히 성장했군. 완료를 눌러 보상을 받게.";drawWrappedText(c,body,218,372,510,11,18);if(q2==GrowthQuest2.State.AVAILABLE||q2==GrowthQuest2.State.RETURN_READY){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,q2==GrowthQuest2.State.AVAILABLE?"수락":"완료",538,430,10);}}else{String body=qs==F5mAdaptedPrologueQuest.State.AVAILABLE?"밀레스 여관 안의 생쥐 한 마리를 정리해 주겠나?":qs==F5mAdaptedPrologueQuest.State.ACTIVE?"여관 안의 생쥐를 처치하고 벤저민에게 보고하게.":qs==F5mAdaptedPrologueQuest.State.RETURN_READY?"잘 해냈군. 완료를 눌러 보상을 받게.":"첫 훈련은 완료되었네.";drawWrappedText(c,body,218,372,510,11,18);if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"수락",538,430,10);p.setColor(0xA0343030);c.drawRoundRect(new RectF(620,408,726,442),9,9,p);text(c,"거절",658,430,10);}else if(qs==F5mAdaptedPrologueQuest.State.RETURN_READY){p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"완료",538,430,10);}}}else if(poteTravelDialogue()){drawWrappedText(c,"포테의 숲으로 이동하시겠습니까?",218,372,510,11,18);p.setColor(0xD05B4727);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"이동",538,430,10);}else if(supplyDialogue()){drawWrappedText(c,"아이템 상점 [B]  물약 20G · 목도 120G · 가죽장갑 80G · 신발 60G",218,366,510,10,16);mutedText(c,"보유 Gold "+state.rpg().gold(),218,389,9);String[] sn={"물약","목도","장갑","신발"};for(int i=0;i<4;i++){float bx=218+i*128;p.setColor(0xD05B4727);c.drawRoundRect(new RectF(bx,408,bx+112,442),9,9,p);text(c,sn[i],bx+36,430,9);}}else{drawWrappedText(c,dialogNpc.dialogue,218,372,510,11,18);mutedText(c,"화면을 터치하면 닫기",616,446,8);}p.setColor(0xB024262A);c.drawCircle(744,321,14,p);text(c,"×",739,326,14);}
-  private void drawDeath(Canvas c){if(state.player().alive)return;p.setColor(0xB6000000);c.drawRect(0,0,W,H,p);modalPanel(c,330,205,630,335);text(c,"행동 불능",428,242,18);mutedText(c,"프로토타입 부활",432,270,9.5f);p.setColor(0xD05B4727);c.drawRoundRect(new RectF(405,286,555,320),10,10,p);text(c,"화면 중앙 터치",433,308,10.5f);}
+  private void drawDialogue(Canvas c){RuntimeState.Npc dialogNpc=interaction.dialogNpc();if(dialogNpc==null)return;UiTheme.scrim(c);modalPanel(c,190,300,770,462);UiTheme.fit(c,NpcIdentity.text(dialogNpc.name),218,333,480,18,UiTheme.TEXT,true);UiTheme.line(c,218,346,742,346,UiTheme.LINE);if(campaignDialogue()){drawCampaignDialogue(c,dialogNpc);}else if(jobCounselorDialogue()){boolean ready=f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED&&quest2.state()==GrowthQuest2.State.COMPLETED&&state.rpg().normalLevel()!=null&&state.rpg().normalLevel()>=3;drawWrappedText(c,ready?"원하는 기본 직업을 한 번 선택하세요. 입문 장비는 무료로 지급합니다.":"직업 선택은 성장 훈련을 마치고 Lv3에 도달하면 열립니다.",218,372,510,13,19);if(ready&&"COMMONER".equals(state.rpg().currentJobCode())){String[] labels=initialJobLabels();for(int i=0;i<labels.length;i++){float x=i<3?218+i*173:304+(i-3)*173;float y=i<3?398:430;p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(x,y,x+154,y+27),7,7,p);text(c,labels[i]+" 선택",x+38,y+18,9);}}else mutedText(c,"현재 직업 · "+state.rpg().currentJobCode(),218,430,9);}else if(f5mGuideDialogue()){F5mAdaptedPrologueQuest.State qs=f5mQuest.state();if(qs==F5mAdaptedPrologueQuest.State.COMPLETED&&quest2.state()!=GrowthQuest2.State.LOCKED&&quest2.state()!=GrowthQuest2.State.COMPLETED){GrowthQuest2.State q2=quest2.state();String body=q2==GrowthQuest2.State.AVAILABLE?"좋아. 이번에는 훈련용 몬스터 세 마리를 상대하며 성장해 보게.":q2==GrowthQuest2.State.ACTIVE?"성장 훈련 중이군. 세 마리를 모두 처치하고 돌아오게.":"충분히 성장했군. 완료를 눌러 보상을 받게.";drawWrappedText(c,body,218,372,510,13,19);if(q2==GrowthQuest2.State.AVAILABLE||q2==GrowthQuest2.State.RETURN_READY){p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,q2==GrowthQuest2.State.AVAILABLE?"수락":"완료",538,430,10);}}else{String body=qs==F5mAdaptedPrologueQuest.State.AVAILABLE?"밀레스 여관 안의 생쥐 한 마리를 정리해 주겠나?":qs==F5mAdaptedPrologueQuest.State.ACTIVE?"여관 안의 생쥐를 처치하고 벤저민에게 보고하게.":qs==F5mAdaptedPrologueQuest.State.RETURN_READY?"잘 해냈군. 완료를 눌러 보상을 받게.":"첫 훈련은 완료되었네.";drawWrappedText(c,body,218,372,510,13,19);if(qs==F5mAdaptedPrologueQuest.State.AVAILABLE){p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"수락",538,430,10);p.setColor(0xA0343030);c.drawRoundRect(new RectF(620,408,726,442),9,9,p);text(c,"거절",658,430,10);}else if(qs==F5mAdaptedPrologueQuest.State.RETURN_READY){p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"완료",538,430,10);}}}else if(poteTravelDialogue()){drawWrappedText(c,"포테의 숲으로 이동하시겠습니까?",218,372,510,13,19);p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(500,408,606,442),9,9,p);text(c,"이동",538,430,10);}else if(supplyDialogue()){drawWrappedText(c,"아이템 상점 [B]  물약 20G · 목도 120G · 가죽장갑 80G · 신발 60G",218,366,510,10,16);mutedText(c,"보유 Gold "+state.rpg().gold(),218,389,9);String[] sn={"물약","목도","장갑","신발"};for(int i=0;i<4;i++){float bx=218+i*128;p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(bx,408,bx+112,442),9,9,p);text(c,sn[i],bx+36,430,9);}}else{drawWrappedText(c,dialogNpc.dialogue,218,372,510,13,19);mutedText(c,"화면을 터치하면 닫기",616,446,8);}UiTheme.close(c,744,321);}
+  private void drawDeath(Canvas c){if(state.player().alive)return;p.setColor(0xB6000000);c.drawRect(0,0,W,H,p);modalPanel(c,330,205,630,335);text(c,"행동 불능",428,242,18);mutedText(c,"프로토타입 부활",432,270,9.5f);p.setColor(UiTheme.RAISED);c.drawRoundRect(new RectF(405,286,555,320),10,10,p);text(c,"화면 중앙 터치",433,308,10.5f);}
   private void fittedText(Canvas c,String value,float x,float y,float width,float size){
     p.setTypeface(UiTheme.font(true));p.setTextSize(size);String shown=value;
     if(p.measureText(shown)>width){while(shown.length()>0&&p.measureText(shown+"…")>width)shown=shown.substring(0,shown.length()-1);shown+="…";}
@@ -844,7 +861,7 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
       for(int i=0;i<10;i++)if(slotRect(i).contains(x,y)){pressedControl="SLOT"+i;if(i<8){SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);}else {String potion=i==8?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION";if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().useQuickConsumable(potion,state)==RpgProgressionState.UseResult.USED))showFeedback(i==8?"회복약 사용":"마나약 사용",FeedbackTone.INFO);else showFeedback("물약이 없거나 회복할 필요가 없습니다",FeedbackTone.INFO);}return true;}
       if(circleHit(x,y,MODE_X+hudRightOffset,MODE_Y,MODE_R+3)){pressedControl="MODE";activeWorld().cancelForAction();showFeedback("기본 공격은 장착한 무기에 따라 결정됩니다",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
-      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
+      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
       if(isHudSurface(x,y))return true;
       WorldRuntimeAdapter active=activeWorld();WorldCameraTransform.Point wp=active.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){cancelSkillApproach();combat.cancelApproach();interaction.cancelApproach();active.requestNpcApproach(npc.id);showFeedback("NPC 접근 · "+npc.name,FeedbackTone.INFO);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){cancelSkillApproach();active.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name,FeedbackTone.INFO);return true;}requestGroundMove(x,y);return true;
     case MotionEvent.ACTION_MOVE:if(joy)stick(x,y);return true;

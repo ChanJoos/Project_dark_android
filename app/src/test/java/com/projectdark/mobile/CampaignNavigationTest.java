@@ -18,8 +18,8 @@ public class CampaignNavigationTest {
   }
   assertEquals(new HashSet<>(Arrays.asList("POTE_RED","POTE_GREEN","POTE_PURPLE","POTE_SILVER")),species(1));
   assertEquals(new HashSet<>(Arrays.asList("POTE_TREANT","POTE_ANTLION","POTE_GNOLL","POTE_LYCAN")),species(2));
-  assertEquals(new HashSet<>(Arrays.asList("POTE_WOLFRIDER","POTE_ANTGIANT","POTE_SILVERWOLF")),species(3));
-  AdaptedCampaignRewardCatalog rewards=new AdaptedCampaignRewardCatalog();for(String id:species(1))assertEquals("A reward metadata follows its assigned pool","포테 A · 입구 숲",rewards.find(id).zone);for(String id:species(2))assertEquals("B reward metadata follows its assigned pool","포테 B · 무리 숲",rewards.find(id).zone);for(String id:species(3))assertEquals("C reward metadata follows its assigned pool","포테 C · 깊은 숲",rewards.find(id).zone);
+  assertEquals(new HashSet<>(Arrays.asList("POTE_WOLFRIDER","POTE_ANTGIANT","POTE_SILVERWOLF","POTE_SPIRIT")),species(3));
+  AdaptedCampaignRewardCatalog rewards=new AdaptedCampaignRewardCatalog();for(String id:species(1))assertEquals("A reward metadata follows its assigned pool","포테 A · 입구 숲",rewards.find(id).zone);for(String id:species(2))assertEquals("B reward metadata follows its assigned pool","포테 B · 무리 숲",rewards.find(id).zone);for(String id:species(3))if(!"POTE_SPIRIT".equals(id))assertEquals("C reward metadata follows its assigned pool","포테 C · 깊은 숲",rewards.find(id).zone);
   assertEquals("D is a single-boss encounter",1,CampaignMonsters.spawn(4).size());assertEquals("POTE_MANTIS",CampaignMonsters.spawn(4).get(0).campaignRewardProfileId);assertTrue("final encounter has four-direction idle/walk/attack art",PoteForestMonsterShowcase.containsMonster("POTE_MANTIS#0"));
   for(CampaignProgress.Def d:CampaignProgress.definitions()){
    if(!d.kind.equals("KILL")&&!d.kind.equals("PAIR"))continue;
@@ -35,7 +35,7 @@ public class CampaignNavigationTest {
   for(String map:CampaignWorld.ROUTE){RuntimeState s=new RuntimeState();s.enterCampaignMap(map,false);PoteCampaignMapDef def=PoteCampaignMapDef.forId(map);WorldRuntimeAdapter w=adapter(s);WorldMoveTargetController.TileCenter start=def.nearest(s.player().x,s.player().y);assertNotNull(start);assertEquals(start.x,s.player().x,.01f);assertEquals(start.y,s.player().y,.01f);assertFalse(s.blocked(s.player().x,s.player().y));
    if(map.equals(CampaignWorld.PIET))assertTrue(s.monsters().isEmpty());
    for(RuntimeState.Npc n:s.npcs()){assertFalse(map+" NPC terrain "+n.id,s.blocked(n.x,n.y));assertTrue(map+" NPC path "+n.id,walk(w,w.requestNpcApproach(n.id)));}
-   for(RuntimeState.Monster m:s.monsters()){assertNotNull(new AdaptedCampaignRewardCatalog().find(m.campaignRewardProfileId));assertTrue(map+" art "+m.id,PoteForestMonsterShowcase.containsMonster(m.id));assertTrue(map+" monster path "+m.id,walk(w,w.requestMonsterApproach(m.id,CanonicalMeleeTileContract.REACH_DISTANCE)));}
+   for(RuntimeState.Monster m:s.monsters()){assertTrue("registered reward profile "+m.id,new AdaptedCampaignRewardCatalog().find(m.campaignRewardProfileId)!=null||new CanonicalMonsterRewardCatalog().find(m.campaignRewardProfileId)!=null);assertTrue(map+" art "+m.id,PoteForestMonsterShowcase.containsMonster(m.id));assertTrue(map+" monster path "+m.id,walk(w,w.requestMonsterApproach(m.id,CanonicalMeleeTileContract.REACH_DISTANCE)));}
    assertTrue(map+" forward",walk(w,w.requestGroundWorld(CampaignWorld.forward(map).x,CampaignWorld.forward(map).y)));assertTrue(map+" backward",walk(w,w.requestGroundWorld(CampaignWorld.backward(map).x,CampaignWorld.backward(map).y)));
    s.enterCampaignMap(map,true);assertTrue(Math.hypot(s.player().x-CampaignWorld.forward(map).x,s.player().y-CampaignWorld.forward(map).y)>70);
   }

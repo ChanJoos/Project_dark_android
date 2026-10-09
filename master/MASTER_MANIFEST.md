@@ -1,8 +1,31 @@
+2026-10-09 V125 equipment catalog IMPLEMENTED / BUILD_VERIFIED / NATIVE_SCOPE_VERIFIED. User approved recovered source images. Runtime source ff19f79fefafb7bb079139fa10aeb7392603783e; focused Actions37912812521/job113761756053 SUCCESS,38 suites158 tests zero failures/errors/skips. Independently downloaded native/APK ZIP digests and CRC match GitHub. All189 packaged equipment-icon files and168 unchanged monster frames match exact source. Actual new GameView starts Lv1 COMMONER with236 owned definitions, five inventory pages; all items reachable, final-page actual touch equip, source icon decoding, four circle leggings, elemental stats and save/restart covered. Screens inspected. Master retains152 source icons →167 historical variants plus6 earlier tooltip items (5 more icons),173 catalog rows and157 new PNG projections. Existing canonical fields win collisions; missing fields now filled, including elemental pearl HIT5. Original source restrictions retained, explicit sandbox bypasses equip gates. Fresh status captured before migration, inventory saved immediately; restored empty/banked/sold ownership never regranted. Earlier test-report API and startup-order failures retained in verification/; assertions preserved.
+
+Candidate separate packagecom.projectdark.mobile.v125test; built2026-10-09T18:49:36.449949+09:00,60290601bytes,SHA256641bbedf329c5b6f795a51ef0869807d83eb37a66b2522e74df2eaf608a68cbe. Release candidate-v125-ff19f79f-37912812521-1. Evidence verification/ACCESSORY_V125_DELIVERY.json. Full Android CI RETRY_IN_PROGRESS_CORRECTED_MATERIAL_TEST_VERIFIED. Main18ef615 unchanged; PR180 remains unmerged candidate. Tooltip-only obsidian necklace icon, unnamed shoe canonical name, special regen/EXP/durability/expiry and wood/metal relationships remain pending, with source receipts preserved. Source images USER_APPROVED; runtime physical-phone/UI review not claimed. Phone combat feel USER_DONE / EXCLUDED. This supersedes older review-pending/source-only summaries below.
+
+
+Corrected zero-start-stock legacy purchase assertion; same-source early20-test equipment/reward/material gate SUCCESS on37912812541/job113761756721. Broader full Android retry remains running; no full-CI success claim.
+
+2026-10-09 V125 accessory catalog: user approved all reviewed assets. Master accessory PNG projections preserve all152 original first-frame pixels plus5 earlier labelled icons. 167 historical item variants +6 prior tooltip items retained in canonical/Accessory_Catalog.json with source level, raw row, unprojected comments and provenance. One tooltip-only necklace has no invented image. Existing canonical item definitions win conflicts. New test profile grants all equippable items; explicit sandbox bypasses restrictions while preserving source conditions. See changes/ACCESSORY-CATALOG-V125.json. Native/build pending.
+
+2026-10-09 equipment image review: SOURCE_RECOVERED / REVIEW_PENDING. Correct prior count:11 files were5 icons+6 tooltips for6 items, not11 equipment icons. Additional152 original image files with152 unique SHA256 hashes recovered from historical Korean-game atwiki tables: leggings15, necklaces37, belts17, gloves/bracelets36, shoes13, earrings15, rings19. Leather/copper/silver/gold leggings separately retained for circles2/3/4/5 (source Lv11/41/71/99). Some belt elemental rows share one source icon; preserved aliases, no invented distinct icons. Original images/pages retained in master/source/equipment/atwiki_20261009/original_sources.zip; manifest and fresh-checkout regeneration validated. All prior11 originals,152 new files, earlier ring/belt references and8 review sheets supplied in master/source/equipment/review_20261009/PROJECT_DARK_equipment_image_review.zip. Names translated from Japanese-only rows are REVIEW translations, not canonical acceptance. New source images not yet connected to runtime; user image review pending. Phone combat feel remains EXCLUDED_USER_REPORTED_DONE. Previous5-item numeric delta source2a341e49 focused Actions37900644681 SUCCESS; no new APK delivery in this image-review task.
+
 # PROJECT DARK Master manifest
 
-Revision M004 / D001 · 2026-10-03
+Revision M006 / D001 · 2026-10-09
 
 이 Master는 지속 개정하는 기준 데이터다. 변환 manifest는 원래 제공된 92개 sheet를 기록한다. 현재 `master/data`에는 여기에 6개 구조 검사 대상 canonical CSV가 추가됐고, `Asset_Master.csv`, `Skill_Evidence.csv`, `Skill_Master.csv`, `Skill_Requirements.csv`, `Skill_Research_Audit.csv`는 명시적 canonical override다. 기술·마법 캡처에서 전사한 구클라이언트 요구 조건은 `Skill_Evidence.csv` 및 `Skill_Legacy_Requirements.csv`에 보존한다. 원본 XLSX 자체는 미확보이므로 이를 lossless XLSX 검증 완료라고 부르지 않는다.
+
+## M007 — accessory source recovery
+
+Accepted `changes/ACCESSORY-SOURCES-20261009.json`:5 numeric source projections and5 historical level receipts under `canonical/Equipment_Requirements.csv`; unknown jobs and conflicting durability stay unresolved.6 retained HTML sources and11 original JPEG icon/detail captures are hashed under `source/equipment/accessories_20261009`. These reference images are not bound to differently named runtime items. Full Android/native verification pending for this delta. Phone combat feel excluded by explicit user report2026-10-09.
+
+## M006 — equipment foundation
+
+Accepted `changes/EQUIPMENT-FOUNDATION-V124.json`: field-level source receipts populate the previously empty canonical numeric tables and generate SourceEquipmentStats. Original Asset_Master and source snapshots remain byte-unchanged. Runtime reads weapon S range through FinalStats into basic/physical skills, plus historic armor/resource modifiers. Korean inventory screenshot and original Master thumbnail are distinct evidence. Existing playtest restrictions and midpoint combat formula are ADAPTED; source dates stay explicit. Asset_Master halfplate/Set5 conflation and magic-defense units remain unresolved, not silently promoted. Adapter revision SOURCE_EQUIPMENT_STATS_V124 / SOURCE_EQUIPMENT_ICONS_V124. Native/device acceptance pending.
+
+## M005 — user monster style references
+
+Accepted change `changes/POTE-MONSTER-STYLE-V120.json` preserves three user-supplied original-game catalog screenshots and U_REFERENCE_ONLY hashes under `source/monsters/user_style_20261009`. Style reference is the retained generated Pote spirit;48 newly drawn wolf-family poses replace adapted runtime art. Canonical CSV/source snapshots stay intact. Original pixels are not runtime sprites; stats/EXP/drop identity remain unchanged. Asset and exact-source build/native verification are separate from user visual acceptance.
 
 ## M004 — additive V94 weapon projection
 
@@ -150,3 +173,6 @@ Accepted USER-MARTIAL-KICK-RELEASE-V82.json corrects runtime pose projections; h
 
 ## V83 accepted project ability policy
 SKILL-ABILITIES-V83.json authorizes new per-ID formulas/status balance beside preserved source sheets. Consumer chain in docs/SKILL_ABILITY_CONTRACT.md. Original art and numerical/source snapshots remain unchanged;16 absent services are explicitly unresolved.
+
+## Adapter revision POTE-REWARDS-V123 (2026-10-09)
+Accepted mobile reward policy: master/changes/POTE-REWARDS-V123.json → AdaptedPoteQuestRewards/AdaptedCampaignRewardCatalog V2 → CampaignProgress/RPG/commerce/journal/GameView. Original92CSV/canonical Equipment_Stats snapshot unchanged; source EXP/drop facts remain distinct. Contract docs/POTE_REWARDS_V123_CONTRACT.md.

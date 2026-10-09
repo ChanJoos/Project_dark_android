@@ -1,0 +1,47 @@
+{
+  "sourceCommit": "a7de04660d317d64f2b6b07cd44e2d57c5da4462",
+  "runId": "37864095275",
+  "versionCode": 120,
+  "versionName": "1.20-spirit-style-monsters",
+  "applicationId": "com.projectdark.mobile.v120test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "46d782c787258c0814bdce3e6f8e3cfc344efe8dbd7b1930c0ec59614cf926fb",
+  "apkBytes": 59947419,
+  "builtSeoul": "2026-10-09T09:26:25.042284+09:00",
+  "scope": "48 spirit-style wolf-family poses; preserved map-lifetime static chase graph with shortest-path A-star and live collision checks; joystick right/up 20 logical pixels; paired V118 continuous movement tails; bounded floor/sprite caches and map-switch memory verification; preserved 168 poses/campaign/save/body",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "nativeTests": 116,
+  "nativeSuites": 30,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "nativeArtifact": 11587881579,
+  "apkArtifact": 11587763303,
+  "nativeZipSha256": "5da5c963b771554b0fd78b23583b48853a33cbdec4c775ec4f3c1411f636bf55",
+  "apkZipSha256": "59a4674a195162e4afba48e1e47c6181c03bbe9c76427f4973fab001deefb86a",
+  "checks": [
+    "independent download/digests/CRC",
+    "exact source/run/version/package",
+    "all168 packaged sprites byte match",
+    "actual joystick test XML included",
+    "source reference hashes and deterministic regeneration",
+    "native B/C scenes and48-pose contact sheet reviewed"
+  ],
+  "pipelineCorrection": "Old V119 APK verifier replaced with V120; missing JoystickV120Test filter restored to existing JoystickV119Test",
+  "physicalPhone": "PENDING",
+  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "branch": "codex/pote-forest-v112",
+  "pr": 180,
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v120-a7de0466-37864095275-1",
+  "broaderCi": {
+    "37864101065": "IN_PROGRESS_AT_CLOSURE",
+    "37864095323": "IN_PROGRESS_AT_CLOSURE"
+  },
+  "limitations": [
+    "Robolectric native scope is not physical phone verification or phone FPS",
+    "12 still poses per family; no new continuous animation",
+    "Original-style adaptation requires user visual acceptance; main not merged"
+  ]
+}

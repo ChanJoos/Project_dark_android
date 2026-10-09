@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-09",
+  "files": [
+    {
+      "path": "master/source/monsters/user_style_20261009/1000057394.jpg",
+      "sha256": "2bb18bfc962726ae1bdf8d8ba9e4bf455a93f6f9e3fc741623f8a268f0817f46",
+      "evidence": "U_REFERENCE_ONLY",
+      "usage": "Silhouette/style reference; not runtime source sprites",
+      "source": "User supplied original-game catalog screenshot"
+    },
+    {
+      "path": "master/source/monsters/user_style_20261009/1000057396.jpg",
+      "sha256": "c4fb5242e97b488406e9b7e0cbfa6e9fcce26d7e5536a121fbb380da29a11e8e",
+      "evidence": "U_REFERENCE_ONLY",
+      "usage": "Silhouette/style reference; not runtime source sprites",
+      "source": "User supplied original-game catalog screenshot"
+    },
+    {
+      "path": "master/source/monsters/user_style_20261009/1000057398.jpg",
+      "sha256": "fcf0b183d6b1ce0fd5681dd613da678cae2a14817af937aae3a0ad5479897cc4",
+      "evidence": "U_REFERENCE_ONLY",
+      "usage": "Silhouette/style reference; not runtime source sprites",
+      "source": "User supplied original-game catalog screenshot"
+    }
+  ]
+}

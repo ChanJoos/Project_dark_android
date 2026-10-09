@@ -118,6 +118,7 @@ public final class RpgProgressionState {
 
   private static final int INVENTORY_STACK_LIMIT=999999; // safety ceiling only; per-item canonical stack limits remain PENDING.
   private final Map<String,ItemDefinition> items=new LinkedHashMap<>();
+  private boolean equipmentSandbox;
   private final Map<String,Integer> inventory=new LinkedHashMap<>();
   private final Map<String,String> equipmentBySlot=new LinkedHashMap<>();
   private final Map<String,Integer> baseStats=new LinkedHashMap<>();
@@ -214,8 +215,8 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_TEST_SHOES_ML230","신발 ml230",SHOES_SLOT,"ml230",1,anyJob,true,null,null,stats("DEX",3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHIELD_MS002","방패 ms002",SHIELD_SLOT,"ms002",1,anyJob,true,null,null,stats("AC",-3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_SHIELD_MS003","방패 ms003",SHIELD_SLOT,"ms003",1,anyJob,true,null,null,stats("AC",-4),Evidence.ADAPTED));
-    registerItem(new ItemDefinition("IT_TEST_HAT_MH173","모자 mh173",HEAD_SLOT,"mh173",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
-    registerItem(new ItemDefinition("IT_TEST_HAT_MH174","모자 mh174",HEAD_SLOT,"mh174",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_HAT_MH173","아벨털모자",HEAD_SLOT,"mh173",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
+    registerItem(new ItemDefinition("IT_TEST_HAT_MH174","루어스털모자",HEAD_SLOT,"mh174",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000002","레더튜닉",ARMOR_SLOT,"mu0000002",1,anyJob,true,null,null,stats("AC",-2),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_TEST_ARMOR_MU0000003","도복",ARMOR_SLOT,"mu0000003",1,anyJob,true,null,null,stats("AC",-2,"DEX",1),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_B_JOB_WARRIOR_TUNIC","전사 수련 튜닉 [ADAPTED]",ARMOR_SLOT,"mu0000007",1,jobSet("WARRIOR"),true,null,null,stats("AC",-2),Evidence.ADAPTED));
@@ -236,6 +237,7 @@ public final class RpgProgressionState {
     inventory.put("IT_SHOES",1);inventory.put(STARTER_HAT_ITEM_ID,1);inventory.put(STARTER_SHIELD_ITEM_ID,1);
     inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);
     registerCampaignEquipment();
+    SourceAccessoryCatalog.register(this);
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
@@ -246,6 +248,7 @@ public final class RpgProgressionState {
   }
 
   private void registerCampaignEquipment(){
+    registerItem(new ItemDefinition("IT_B_POTE_SHOES","숲길 신발",SHOES_SLOT,"ml230",20,jobSet(),true,null,null,stats("AC",-1,"DEX",3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_B_PURIFIED_ESSENCE","정화된 숲의 정수",null,null,0,jobSet(),true,null,null,stats(),Evidence.ADAPTED));
     String[] looks={"mu0000059","mu0000055","mu0000117","mu0000210","mu0000057"};
     for(int i=0;i<CampaignProgress.JOBS.length;i++)for(int level:new int[]{11,26}){
@@ -259,7 +262,24 @@ public final class RpgProgressionState {
   public boolean grantCampaignGear(int level){String id="IT_B_CAMPAIGN_"+currentJobCode+"_"+level;if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;equipmentBySlot.put(ARMOR_SLOT,id);return true;}
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
   private static Map<String,Integer> stats(Object... kv){Map<String,Integer> out=new LinkedHashMap<>();for(int i=0;i+1<kv.length;i+=2)out.put((String)kv[i],(Integer)kv[i+1]);return out;}
-  private void registerItem(ItemDefinition def){items.put(def.itemId,def);}
+  private void registerItem(ItemDefinition def){
+    Map<String,Integer> source=SourceEquipmentStats.forItem(def.itemId);
+    if(source!=null)def=new ItemDefinition(def.itemId,def.name,def.equipSlot,def.appearanceId,def.basicAttackAction,def.requiredLevel,def.allowedJobCodes,def.jobRestrictionResolved,def.attackElement,def.defenseElement,source,Evidence.ADAPTED);
+    items.put(def.itemId,def);
+  }
+  // Historical fields fill gaps; accepted canonical fields and original requirements win collisions.
+  void registerSourceAccessory(ItemDefinition def){
+    ItemDefinition old=items.get(def.itemId);
+    if(old==null){items.put(def.itemId,def);return;}
+    Map<String,Integer> merged=new LinkedHashMap<>(def.statModifiers);merged.putAll(old.statModifiers);
+    Map<String,Integer> canonical=SourceEquipmentStats.forItem(def.itemId);if(canonical!=null)merged.putAll(canonical);
+    items.put(def.itemId,new ItemDefinition(old.itemId,old.name,old.equipSlot,old.appearanceId,old.basicAttackAction,old.requiredLevel,old.allowedJobCodes,old.jobRestrictionResolved,old.attackElement,old.defenseElement,merged,Evidence.ADAPTED));
+  }
+  public boolean equipmentSandbox(){return equipmentSandbox;}
+  public void enableEquipmentSandbox(boolean grant){
+    equipmentSandbox=true;
+    if(grant)for(ItemDefinition d:items.values())inventory.put(d.itemId,Math.max(1,inventory.getOrDefault(d.itemId,0)));
+  }
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
   public Map<String,String> equipment(){return Collections.unmodifiableMap(equipmentBySlot);}
@@ -362,7 +382,7 @@ public final class RpgProgressionState {
     return RequirementResult.MET;
   }
 
-  public RequirementResult currentRequirements(String itemId){return evaluateRequirements(itemId,currentJobCode,normalLevel);}
+  public RequirementResult currentRequirements(String itemId){if(equipmentSandbox&&items.containsKey(itemId)&&items.get(itemId).equippable())return RequirementResult.MET;return evaluateRequirements(itemId,currentJobCode,normalLevel);}
 
   /**
    * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.
@@ -380,7 +400,10 @@ public final class RpgProgressionState {
   }
 
   private void resolveMonsterDefeat(CombatLedger.Event e){
-    CanonicalMonsterRewardCatalog.RewardEntry reward=monsterRewards.find(e.targetId);
+    resolveMonsterDefeat(e,monsterRewards.find(e.targetId));
+  }
+
+  private void resolveMonsterDefeat(CombatLedger.Event e,CanonicalMonsterRewardCatalog.RewardEntry reward){
     if(reward==null){
       // An explicit actor-level adapter is required. The canonical POTE_PURPLE fixture and
       // every unprofiled defeat remain unresolved, preserving the fail-closed boundary audit.
@@ -419,10 +442,19 @@ public final class RpgProgressionState {
 
   /** Campaign-aware defeat endpoint; only map actors admitted by the mobile field adapter can resolve. */
   private void resolveCampaignDefeat(CombatLedger.Event e,String profileId){
+    // Same-HP campaign spirits use the mobile economy; preserve the V source record separately.
+    if("POTE_SPIRIT".equals(profileId)&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId))){
+      applyCampaignReward(e,campaignRewards.find(profileId));return;
+    }
     CanonicalMonsterRewardCatalog.RewardEntry canonical=monsterRewards.find(e.targetId);
-    if(canonical!=null){resolveMonsterDefeat(e);return;}
+    // Admit instance rewards only through a matching live actor species profile.
+    if(canonical==null&&profileId!=null&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId)))canonical=monsterRewards.find(profileId);
+    if(canonical!=null){resolveMonsterDefeat(e,canonical);return;}
     AdaptedCampaignRewardCatalog.Reward reward=campaignRewards.find(profileId);
     if(reward==null){resolveMonsterDefeat(e);return;}
+    applyCampaignReward(e,reward);
+  }
+  private void applyCampaignReward(CombatLedger.Event e,AdaptedCampaignRewardCatalog.Reward reward){
     grantAdaptedReward(reward.exp,reward.gold);
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,
         Collections.<String,Integer>emptyMap(),Collections.<String,AutoLootResult>emptyMap(),

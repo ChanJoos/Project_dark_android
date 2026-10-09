@@ -60,6 +60,7 @@ public final class RuntimeState {
   private final WorldDef world=new WorldDef();
   private final Player player;
   private final List<RectF> obstacles=new ArrayList<>();
+  private com.projectdark.mobile.world.TerrainObstacleIndex terrainIndex;
   private final List<Npc> npcs=new ArrayList<>();
   private final List<Monster> monsters=new ArrayList<>();
   private final List<Monster> suspendedMillesMonsters=new ArrayList<>();
@@ -110,7 +111,7 @@ public final class RuntimeState {
     com.projectdark.mobile.world.TownInteriorDef d=com.projectdark.mobile.world.TownInteriorDef.forMap(currentMapId);
     if(d!=null){for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:d.navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;return false;}
     if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId))
-      for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t:com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles())if(Math.abs(t.x-x)<.01f&&Math.abs(t.y-y)<.01f)return true;
+      return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).isNavigationCenter(x,y);
     return MonsterTileCenterLocomotion.isAuthoredCenter(x,y);
   }
   public List<com.projectdark.mobile.world.WorldMoveTargetController.TileCenter> monsterNavigationTiles(){
@@ -119,9 +120,12 @@ public final class RuntimeState {
       return com.projectdark.mobile.world.PoteCampaignMapDef.forId(currentMapId).navigationTiles();
     return MonsterTileCenterLocomotion.authoredCenters();
   }
+  private String chaseMapId;
+  private MonsterChasePathfinder.IndexedMap chaseMap;
   public WorldMoveTargetController.Direction nextMonsterChaseStep(Monster monster,float targetX,float targetY){
     if(monster==null||!monster.alive)return null;
-    return MonsterChasePathfinder.nextStep(monsterNavigationTiles(),monster.x,monster.y,targetX,targetY,
+    if(chaseMap==null||!currentMapId.equals(chaseMapId)){chaseMap=new MonsterChasePathfinder.IndexedMap(monsterNavigationTiles());chaseMapId=currentMapId;}
+    return chaseMap.nextStep(monster.x,monster.y,targetX,targetY,
         (from,to)->monsterCanTraverse(monster,from.x,from.y,to.x,to.y));
   }
   private boolean monsterCanTraverse(Monster self,float fromX,float fromY,float toX,float toY){
@@ -138,7 +142,15 @@ public final class RuntimeState {
   public CombatLedger ledger(){return ledger;}
   public RuntimeMetrics metrics(){return metrics;}
   public RpgProgressionState rpg(){return rpg;}
-  public void applyDerivedGrowth(){int oldMaxHp=player.maxHp,oldMaxMp=player.maxMp;int newMaxHp=rpg.maxHpGrowth(),newMaxMp=rpg.maxMpGrowth();player.maxHp=newMaxHp;player.maxMp=newMaxMp;if(newMaxHp>oldMaxHp)player.hp=Math.min(newMaxHp,player.hp+(newMaxHp-oldMaxHp));else player.hp=Math.min(player.hp,newMaxHp);if(newMaxMp>oldMaxMp)player.mp=Math.min(newMaxMp,player.mp+(newMaxMp-oldMaxMp));else player.mp=Math.min(player.mp,newMaxMp);}
+  private int appliedBaseMaxHp=100,appliedBaseMaxMp=100;
+  public void applyDerivedGrowth(){
+    int newMaxHp=rpg.maxHpGrowth(),newMaxMp=rpg.maxMpGrowth();
+    int earnedHp=Math.max(0,rpg.baseMaxHp()-appliedBaseMaxHp),earnedMp=Math.max(0,rpg.baseMaxMp()-appliedBaseMaxMp);
+    appliedBaseMaxHp=rpg.baseMaxHp();appliedBaseMaxMp=rpg.baseMaxMp();
+    player.maxHp=newMaxHp;player.maxMp=newMaxMp;
+    player.hp=Math.max(0,(int)Math.min(newMaxHp,(long)player.hp+earnedHp));
+    player.mp=Math.max(0,(int)Math.min(newMaxMp,(long)player.mp+earnedMp));
+  }
   @Deprecated public void syncPlayerGrowth(){applyDerivedGrowth();}
   public List<RectF> obstacles(){return Collections.unmodifiableList(obstacles);}
   public List<Npc> npcs(){return Collections.unmodifiableList(npcs);}
@@ -160,15 +172,15 @@ public final class RuntimeState {
   public void enterTownInterior(com.projectdark.mobile.world.TownInteriorDef d){
     if(d==null)throw new IllegalArgumentException("interior");
     if(WorldDef.ID.equals(currentMapId)){suspendedMillesMonsters.clear();suspendedMillesMonsters.addAll(monsters);suspendedMillesNpcs.clear();suspendedMillesNpcs.addAll(npcs);suspendedMillesObstacles.clear();suspendedMillesObstacles.addAll(obstacles);}
-    currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();obstacles.addAll(d.obstacles());
+    currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();terrainIndex=null;obstacles.addAll(d.obstacles());
     npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
     currentMinX=d.MIN_X;currentMaxX=d.MAX_X;currentMinY=d.MIN_Y;currentMaxY=d.MAX_Y;
     player.spawnX=d.spawnX();player.spawnY=d.spawnY();player.x=player.spawnX;player.y=player.spawnY;
   }
-  public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
+  public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();terrainIndex=null;obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
   public void enterPoteField(){
     currentMapId=PotePrototypeWorldDef.MAP_ID;currentMinX=com.projectdark.mobile.world.PoteFieldDef.MIN_X;currentMaxX=com.projectdark.mobile.world.PoteFieldDef.MAX_X;currentMinY=com.projectdark.mobile.world.PoteFieldDef.MIN_Y;currentMaxY=com.projectdark.mobile.world.PoteFieldDef.MAX_Y;
-    obstacles.clear();for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
+    obstacles.clear();terrainIndex=null;for(RectF r:com.projectdark.mobile.world.PoteFieldDef.obstacles())obstacles.add(new RectF(r));
     npcs.clear();npcs.add(new Npc("pote_trail_guide","숲길 안내인",736f,496f,
         "북동쪽 흙길을 따라가면 숲 안쪽 공터와 물가로 이어집니다.","PENDING_CROP/pote/npc/trail_guide"));
     monsters.clear();monsters.addAll(PoteForestMonsterShowcase.instantiate(
@@ -179,15 +191,15 @@ public final class RuntimeState {
   }
   public void enterCampaignMap(String id,boolean fromNext){
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
-    enterPoteField();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
     int zone=map.zone;monsters.addAll(CampaignMonsters.spawnForMap(id));
     if(zone==0){npcs.add(new Npc("piet_investigator","이선",768,512,"피에트 조사와 서신을 담당합니다.","ADAPTED"));npcs.add(new Npc("piet_supplier","조슈아",864,560,"조사 장비와 보급품을 준비하세요.","ADAPTED"));npcs.add(new Npc("piet_purifier","새뮤얼",672,560,"숲의 정수를 정화합니다.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"지도자",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"숙련 기술과 장비를 지도합니다.","ADAPTED"));}
-    else {com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=map.nearest(map.entryX+96,map.entryY+16);npcs.add(new Npc("pote_trail_guide","알렉산더",guide.x,guide.y,"숲길 조사와 무료 휴식", "ADAPTED"));if(zone==3&&!"MAP_POTE_04".equals(id)){float[][] sites={{720,560},{1536,760},{2300,1040}};for(int i=0;i<3;i++){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter altar=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,sites[i][0],sites[i][1]);npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),altar.x,altar.y,"제단 정화", "ADAPTED"));}}}
+    else {com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=map.nearest(map.entryX+96,map.entryY+16);npcs.add(new Npc("pote_trail_guide","알렉산더",guide.x,guide.y,"숲길 안내와 조사 의뢰", "ADAPTED"));if(zone==3&&!"MAP_POTE_04".equals(id)){float[][] sites={{720,560},{1536,760},{2300,1040}};for(int i=0;i<3;i++){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter altar=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,sites[i][0],sites[i][1]);npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),altar.x,altar.y,"제단 정화", "ADAPTED"));}}}
     com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(id,fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
   }
   public void enterMillesFromField(float x,float y){
     currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;
-    obstacles.clear();for(RectF r:world.blockers())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    obstacles.clear();terrainIndex=null;for(RectF r:world.blockers())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
     for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
     for(WorldDef.MonsterSpawn m:world.monsterSpawns()){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter center=MonsterTileCenterLocomotion.nearestAuthoredCenter(m.x,m.y);monsters.add(new Monster(m.id,m.name,center==null?m.x:center.x,center==null?m.y:center.y,m.hp,m.assetStatus));}
     player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;
@@ -218,7 +230,7 @@ public final class RuntimeState {
   private boolean playerCanOccupy(float x,float y){return !blocked(x,y,PLAYER_RADIUS)&&!monsterOccupied(null,x,y,PLAYER_RADIUS)&&!npcOccupied(x,y,PLAYER_RADIUS);}
   private boolean monsterCanOccupy(Monster self,float x,float y){float radius=monsterCollisionRadius(self);return !blocked(x,y,radius)&&!playerOccupied(x,y,radius)&&!monsterOccupied(self,x,y,radius)&&!npcOccupied(x,y,radius);}
   public boolean blocked(float x,float y){return blocked(x,y,PLAYER_RADIUS);}
-  private boolean blocked(float x,float y,float radius){for(RectF r:obstacles)if(x+radius>r.left&&x-radius<r.right&&y+radius>r.top&&y-radius<r.bottom)return true;return false;}
+  private boolean blocked(float x,float y,float radius){if(terrainIndex==null)terrainIndex=new com.projectdark.mobile.world.TerrainObstacleIndex(obstacles);return terrainIndex.blocked(x,y,radius);}
   private boolean playerOccupied(float x,float y,float radius){
     if(!player.alive)return false;
     float min=radius+PLAYER_RADIUS+ACTOR_CLEARANCE;
@@ -323,20 +335,20 @@ public final class RuntimeState {
   private static float cross(float ax,float ay,float bx,float by){return ax*by-ay*bx;}
 
   public Npc hitNpc(float x,float y,float radius){for(Npc n:npcs){float dx=x-n.x,dy=y-n.y;if(dx*dx+dy*dy<=radius*radius)return n;}return null;}
-  public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId)&&PoteForestMonsterShowcase.containsMonster(m.id)&&Math.abs(dx)<=42f&&dy>=-42f&&dy<=8f)return m;}return null;}
+  public Monster hitMonster(float x,float y,float radius){for(Monster m:monsters){if(!m.alive)continue;float dx=x-m.x,dy=y-m.y;if(dx*dx+dy*dy<=radius*radius)return m;if(com.projectdark.mobile.world.CampaignWorld.contains(currentMapId)&&PoteForestMonsterShowcase.containsMonster(m.id)&&Math.abs(dx)<=("POTE_MANTIS".equals(PoteForestMonsterShowcase.species(m.id))?81f:42f)&&dy>=("POTE_MANTIS".equals(PoteForestMonsterShowcase.species(m.id))?-180f:-42f)&&dy<=8f)return m;}return null;}
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 
   public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){m.visualFacing.beginAttack(player.x-m.x,player.y-m.y);m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;m.attackVisualRemaining=.36f;}}
   public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.state==Monster.State.ATTACK&&m.attackPrimed&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
-  public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);damagePlayer(damage);m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}
+  public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);m.attackVisualRemaining=.36f;damagePlayer(damage);if(m.alive)m.state=m.attackVisualRemaining>0f?Monster.State.ATTACK:Monster.State.IDLE;}
   public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;m.attackVisualRemaining=0f;m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}}
 
-  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=m.respawnSeconds;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
+  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.isMoving=false;m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.attackVisualRemaining=0f;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=m.respawnSeconds;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
   public void damagePlayer(int amount){if(amount<=0||!player.alive)return;skillEffects.stopRest();player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.state=Monster.State.IDLE;}}}
   public void revivePlayer(){skillEffects.clear("player");player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;player.hitFlash=0f;ledger.add(CombatLedger.Type.PLAYER_REVIVED,"runtime","player",0);}
 
-  public void tick(float dt){skillEffects.tick(this,Math.max(0f,dt));player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){tickMonsterMovement(m,dt);m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);float priorAttackVisual=m.attackVisualRemaining;m.attackVisualRemaining=Math.max(0f,m.attackVisualRemaining-dt);if(priorAttackVisual>0f&&m.attackVisualRemaining<=0f&&!m.attackPrimed)m.visualFacing.endAttack();m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive)m.animationClock+=Math.max(0f,dt);if(m.alive)continue;if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){m.state=Monster.State.SPAWN;m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackVisualRemaining=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
+  public void tick(float dt){skillEffects.tick(this,Math.max(0f,dt));player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){tickMonsterMovement(m,dt);m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);float priorAttackVisual=m.attackVisualRemaining;if(!m.attackPrimed)m.attackVisualRemaining=Math.max(0f,m.attackVisualRemaining-dt);if(priorAttackVisual>0f&&m.attackVisualRemaining<=0f&&!m.attackPrimed){m.visualFacing.endAttack();if(m.alive&&m.state==Monster.State.ATTACK)m.state=Monster.State.IDLE;}m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive)m.animationClock+=Math.max(0f,dt);if(m.alive)continue;if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){m.state=Monster.State.SPAWN;m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.attackCooldown=0f;m.attackWindup=0f;m.attackVisualRemaining=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;m.hitFlash=0f;m.damagePopupClock=0f;m.animationClock=0f;m.isMoving=false;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
 
   private static void tickMonsterMovement(Monster m,float dt){if(!m.isMoving)return;m.moveElapsed=Math.min(m.moveDuration,m.moveElapsed+Math.max(0f,dt));float t=m.moveDuration<=0f?1f:m.moveElapsed/m.moveDuration;float eased=t*t*(3f-2f*t);m.x=m.moveStartX+(m.moveTargetX-m.moveStartX)*eased;m.y=m.moveStartY+(m.moveTargetY-m.moveStartY)*eased;if(t>=1f){m.x=m.moveTargetX;m.y=m.moveTargetY;m.isMoving=false;}}
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}

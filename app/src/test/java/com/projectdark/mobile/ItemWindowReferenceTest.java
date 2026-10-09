@@ -31,7 +31,7 @@ public class ItemWindowReferenceTest {
  }
  @Test public void filtersAreReadOnlyAndAllOwnedItemsRemainReachable()throws Exception{
   GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=field(v,"state");ItemWindow w=field(v,"itemWindow");Map<String,Integer> owned=new LinkedHashMap<>(s.rpg().inventory());Map<String,String> eq=new LinkedHashMap<>(s.rpg().equipment());tap(v,608,28);
-  tap(v,438,93);assertEquals(1,w.filter);for(RpgInventoryPresentation.ItemRow row:w.rows(s.rpg()))assertFalse(row.equipSlot.isEmpty());tap(v,509,93);assertEquals(2,w.filter);for(RpgInventoryPresentation.ItemRow row:w.rows(s.rpg()))assertTrue(s.rpg().isConsumable(row.itemId));tap(v,366,93);assertEquals(0,w.filter);
+  tap(v,438,93);assertEquals(1,w.filter);for(RpgInventoryPresentation.ItemRow row:w.rows(s.rpg()))assertFalse(row.equipSlot.isEmpty());tap(v,509,93);assertEquals(2,w.filter);for(RpgInventoryPresentation.ItemRow row:w.rows(s.rpg()))assertTrue(s.rpg().isConsumable(row.itemId)||s.rpg().isRecall(row.itemId));tap(v,366,93);assertEquals(0,w.filter);
   Set<String> seen=new HashSet<>();for(int i=0;i<w.rows(s.rpg()).size();i++){w.page=i/50;RectF b=ItemWindow.cell(i%50);tap(v,b.centerX(),b.centerY());seen.add(((RpgInteractionController)field(v,"rpgInteraction")).selectedInventoryItemId());tap(v,914,250);}assertEquals(owned.keySet(),seen);assertEquals(owned,s.rpg().inventory());assertEquals(eq,s.rpg().equipment());
  }
  static void tap(GameView v,float x,float y){MotionEvent e=MotionEvent.obtain(0,0,MotionEvent.ACTION_DOWN,x,y,0);v.onTouchEvent(e);e.recycle();}

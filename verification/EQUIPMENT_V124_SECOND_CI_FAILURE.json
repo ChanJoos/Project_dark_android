@@ -1,0 +1,13 @@
+{
+  "source": "b5e3e0abd8ccf3e1bad448bb3084112b18c06dd1",
+  "run": 37881383919,
+  "job": 113661621226,
+  "native_gradle_step": "PASS",
+  "apk_compile": "PASS",
+  "packaged_equipment_verifier": "PASS_47_EXACT_SOURCE_FILES",
+  "status": "APK_IDENTITY_VERIFIER_FAILED",
+  "error": "Copied hexadecimal SHA whitelist omitted digit 3",
+  "repair_source": "0f29986e43b7ca5cdc513013a4dfc681a87699e1",
+  "repair": "Accept complete 0123456789abcdef; exact source/run/version assertions retained.",
+  "phone": "PENDING"
+}

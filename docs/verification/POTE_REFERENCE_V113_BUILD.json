@@ -1,0 +1,32 @@
+{
+  "sourceCommit": "d5472f7245ef430601c5bdd0d7f97f8e6ad8775b",
+  "runId": "37628115881",
+  "versionCode": 113,
+  "versionName": "1.13-pote-reference-visibility",
+  "apkSha256": "9e11aec3b06b862aaee847bf535683cd189124fcc93c625187d9df20cf457201",
+  "apkBytes": 55408708,
+  "builtSeoul": "2026-10-07T22:26:05.723824+09:00",
+  "scope": "Reference-derived forest trees/earth/current; per-actor depth and foreground canopy fade; map-wide quest-filtered AUTO; 72/96/108 population, 6-8s adapted respawn; preserved campaign/save/body",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "workflowUrl": "https://github.com/ChanJoos/Project_dark_android/actions/runs/37628115881",
+  "workflowConclusion": "success",
+  "apkArtifactId": 11484753928,
+  "nativeArtifactId": 11484847139,
+  "nativeArchiveSha256": "abd298c740775de7ee36a9d607fa76b18846ea0a07541ec3a1b15e9ac3634756",
+  "tests": {
+    "tests": 47,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "nativeScreens": 20,
+  "fullWorkflowRun": 37628115950,
+  "fullWorkflowStatusAtDelivery": "IN_PROGRESS",
+  "releaseUrl": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v113-d5472f72-37628115881-1",
+  "prUrl": "https://github.com/ChanJoos/Project_dark_android/pull/180",
+  "reviewSha256": "5b768b6bb0b73ee897b7fe7f0c546da95e62b9f7635d8593b4f12a00e51793eb",
+  "status": "IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED / PHONE_PENDING / USER_VISUAL_PENDING",
+  "layout": "Original-video materials; adapted geometry; exact original map topology unresolved"
+}

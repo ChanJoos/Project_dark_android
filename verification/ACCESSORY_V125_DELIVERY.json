@@ -1,0 +1,71 @@
+{
+  "status": "IMPLEMENTED_BUILD_VERIFIED_NATIVE_SCOPE_VERIFIED",
+  "source": "ff19f79fefafb7bb079139fa10aeb7392603783e",
+  "actionsRun": 37912812521,
+  "actionsJob": 113761756053,
+  "nativeArtifact": 11608770638,
+  "apkArtifact": 11608605830,
+  "nativeZipSha256": "e8436065e3f245502baa98e1b15ea66f7e9881d267fb6f27823cae2bd0101a9d",
+  "apkZipSha256": "3b229516bbd83b3a6e4019153a57250cd1c27aac6359d816eccd45d33c1e69d7",
+  "build": {
+    "sourceCommit": "ff19f79fefafb7bb079139fa10aeb7392603783e",
+    "runId": "37912812521",
+    "versionCode": 125,
+    "versionName": "1.25-accessory-catalog",
+    "applicationId": "com.projectdark.mobile.v125test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "641bbedf329c5b6f795a51ef0869807d83eb37a66b2522e74df2eaf608a68cbe",
+    "apkBytes": 60290601,
+    "builtSeoul": "2026-10-09T18:49:36.449949+09:00",
+    "scope": "source-backed weapon range and equipment modifiers, original Master icon registry, actual equip/combat/resources/save verification; staged Pote quest equipment, named reward preview/receipt, Lv26 training upgrade, adapted C spirit EXP/Gold, overflow-safe one-time first-clear ring/Gold, all-job combat progression and save regressions; V122 art/death removal/scale/directions and hunting cache/navigation preserved",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "nativeSuites": 38,
+  "nativeTests": 158,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "actualStartup": {
+    "ownedItems": 236,
+    "definitions": 236,
+    "sourceIconsLoaded": 158,
+    "job": "COMMONER",
+    "level": 1,
+    "testRequirementsBypass": true
+  },
+  "newSourceImages": 152,
+  "newLogicalHistoricalVariants": 167,
+  "previousTooltipItems": 6,
+  "projectedOriginalIcons": 157,
+  "masterCatalogItems": 173,
+  "packagedIconFilesMatched": 189,
+  "unchangedMonsterFramesMatched": 168,
+  "nativeScreens": {
+    "accessory-v125-last-page-details.png": "1c637dc462b0c60bb58373e9fe3239f9053d4ebb659ab08f6371d46f03044b90",
+    "inventory-v74-grid.png": "5711db207e7fd47be021663a159c3aa892754fbf10338f7ed29fa4403b621c53"
+  },
+  "visualReview": "Native first-page grid and last-page comparison inspected; source pixels and labels retained. User approved source images before implementation; runtime UI phone review not asserted.",
+  "canonicalPolicy": "Historical fields fill gaps; accepted canonical values and original requirements win conflicts. Unknown source jobs stay pending; runtime sandbox bypasses equip restrictions.",
+  "testPolicy": "Fresh V125 profile owns all236 registered items; all equipment testable by Lv1 commoner; save immediate, no restart regrant.",
+  "pending": [
+    "Tooltip-only obsidian necklace has no sourced icon",
+    "Unknown shoe canonical name",
+    "Special regeneration/EXP/durability/expiry effects not simulated",
+    "Wood/metal relationships neutral pending evidence"
+  ],
+  "phoneCombatFeel": "USER_DONE_EXCLUDED",
+  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "pr": 180,
+  "release": "candidate-v125-ff19f79f-37912812521-1",
+  "fullAndroid": "RETRY_IN_PROGRESS_AFTER_LEGACY_INITIAL_STOCK_ASSERTION_FIX",
+  "correctedMaterialTest": {
+    "source": "ff19f79fefafb7bb079139fa10aeb7392603783e",
+    "run": 37912812541,
+    "job": 113761756721,
+    "earlyEquipmentRewardsAndMaterialGate": "SUCCESS",
+    "tests": 20,
+    "scope": "Purchase +1, learning consumes1, remaining starting stock survives restart; earlier78-test phase only failed old zero-stock assumption."
+  }
+}

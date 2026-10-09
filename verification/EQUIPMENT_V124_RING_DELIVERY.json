@@ -1,0 +1,48 @@
+{
+  "sourceCommit": "ac700103e45f8bf19548f6cd3976a361a2360e2c",
+  "runId": "37893135254",
+  "versionCode": 124,
+  "versionName": "1.24-equipment-foundation",
+  "applicationId": "com.projectdark.mobile.v124test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "b59fa7701c6521749bb15146d9247c8198a7ed454d6c91c81b138324ca0c4ee8",
+  "apkBytes": 59979735,
+  "builtSeoul": "2026-10-09T15:30:44.498470+09:00",
+  "scope": "source-backed weapon range and equipment modifiers, original Master icon registry, actual equip/combat/resources/save verification; staged Pote quest equipment, named reward preview/receipt, Lv26 training upgrade, adapted C spirit EXP/Gold, overflow-safe one-time first-clear ring/Gold, all-job combat progression and save regressions; V122 art/death removal/scale/directions and hunting cache/navigation preserved",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "focusedActionsRun": 37893135254,
+  "focusedJob": 113698329872,
+  "tests": 153,
+  "suites": 37,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "apkArtifact": 11599422131,
+  "nativeArtifact": 11599691379,
+  "apkZipSha256": "a816c2800c0dbdc7bc155d35d9afa89e9493f8a821cca63887883c1ea8ead137",
+  "nativeZipSha256": "de549a836d972b31e8ac667d3261adc3bbf2fd4f8cc3e737f082451a4b22c997",
+  "exactPackagedIcons": 31,
+  "unchangedMonsterSprites": 168,
+  "independentZipCrc": "PASS",
+  "independentApkIdentityHashes": "PASS",
+  "nativeScreensReviewed": [
+    "equipment-v124-source-epe-comparison.png",
+    "D03.png"
+  ],
+  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "candidateUnmerged": true,
+  "remainingAccessorySourceBytes": "PENDING_OTHER_THAN_RING",
+  "fullAndroidCI": {
+    "run": 37893139690,
+    "job": 113698343965,
+    "conclusion": "SUCCESS",
+    "source": "ac700103e45f8bf19548f6cd3976a361a2360e2c",
+    "exactV124ApkVerifier": "PASS"
+  },
+  "duplicatePushRun": {
+    "run": 37893135265,
+    "status": "IN_PROGRESS_AT_CHECKPOINT_NOT_CERTIFIED"
+  }
+}

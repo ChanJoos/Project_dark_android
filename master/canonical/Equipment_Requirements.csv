@@ -1,0 +1,6 @@
+Item_ID,SourceName,MinLevel,JobRestriction,Evidence,Era,SourceURL,RuntimeStatus,Notes
+IT_LEGGING_LEATHER,가죽각반,11,UNSPECIFIED_IN_SOURCE,V_HISTORICAL,2006-01-04,https://lod.nexon.com/community/game/1641?SearchBoard=1,EXISTING_LV11_MATCHES,Unspecified job does not establish all-job original canon.
+IT_BELT_WATER_LEATHER,바다의가죽벨트,11,UNSPECIFIED_IN_SOURCE,V_HISTORICAL,2006-08-09,https://lod.nexon.com/community/game/488?SearchBoard=1,EXISTING_LV11_MATCHES,Unspecified job does not establish all-job original canon.
+IT_BELT_EARTH_LEATHER,대지의가죽벨트,11,UNSPECIFIED_IN_SOURCE,V_HISTORICAL,2006-08-09,https://lod.nexon.com/community/game/488?SearchBoard=1,EXISTING_LV11_MATCHES,Unspecified job does not establish all-job original canon.
+IT_BELT_WIND_LEATHER,바람의가죽벨트,11,UNSPECIFIED_IN_SOURCE,V_HISTORICAL,2006-08-09,https://lod.nexon.com/community/game/488?SearchBoard=1,EXISTING_LV11_MATCHES,Unspecified job does not establish all-job original canon.
+IT_BELT_FIRE_LEATHER,화염의가죽벨트,11,UNSPECIFIED_IN_SOURCE,V_HISTORICAL,2006-08-09,https://lod.nexon.com/community/game/488?SearchBoard=1,EXISTING_LV11_MATCHES,Unspecified job does not establish all-job original canon.

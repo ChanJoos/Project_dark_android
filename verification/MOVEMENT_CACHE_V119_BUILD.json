@@ -1,0 +1,397 @@
+{
+  "runtimeSource": "02026e910cc068fa54236ce334ae5ea48f188674",
+  "focusedRun": 37849753339,
+  "focusedJob": 113559451902,
+  "status": "SUCCESS",
+  "apkArtifact": 11581877345,
+  "nativeArtifact": 11581837496,
+  "buildInfo": {
+    "sourceCommit": "02026e910cc068fa54236ce334ae5ea48f188674",
+    "runId": "37849753339",
+    "versionCode": 119,
+    "versionName": "1.19-live-chase-cache",
+    "applicationId": "com.projectdark.mobile.v119test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "c8b498acfd6f25c9a6498a864dc405d9070535ccd23181f19c39521425b350bb",
+    "apkBytes": 60064727,
+    "builtSeoul": "2026-10-09T07:00:15.441320+09:00",
+    "scope": "Map-lifetime static chase graph with shortest-path A-star and live collision checks; joystick right/up 20 logical pixels; paired V118 continuous movement tails; bounded floor/sprite caches and map-switch memory verification; preserved 168 poses/campaign/save/body",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "native": {
+    "archiveSha256": "dd81c2ce9d476116a72352a393971750424992240a72665054a525a7b4409a56",
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.AdaptedCampaignRewardTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.AutoAttackTargetSelectorTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.CampaignNavigationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.CampaignProgressTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.CampaignQuickQuestIntegrationTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.DeviceRepairV114Test",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ForestFloorCacheTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ForestFrameProfileTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ForestPixelCacheTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ForestTapProfileTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.HudTouchAcceptanceTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.InstalledSpriteResourcesTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.JoystickV119Test",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.MonsterChasePathfinderTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.MonsterChasePerformanceTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.MonsterQualityV118Test",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.PoteCreekWaterAssetTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.NpcAppearanceTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.PoteForestSpatialGrammarTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.PotePamfetPresentationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.PoteReferenceV113Test",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.PoteVisualReviewTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.QuestJournalTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.QuickQuestLatencyTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+        "tests": 15,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.world.GroundTapPathTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.world.WorldMoveTargetControllerPathTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "totals": {
+      "tests": 116,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "CONTINUOUS.json": {
+      "source": "02026e910cc068fa54236ce334ae5ea48f188674",
+      "environment": "Robolectric native CPU; no physical phone FPS claim",
+      "framesPerScene": 360,
+      "scenes": [
+        {
+          "map": "MILLES",
+          "monsters": 3,
+          "tiles": 4176,
+          "travel": 263.6958015695292,
+          "movingFrames": 277,
+          "updateMedianMs": 0.127498,
+          "updateP95Ms": 0.622439,
+          "updateP99Ms": 1.016222,
+          "updateMaxMs": 14.993668,
+          "renderMedianMs": 12.747879,
+          "renderP95Ms": 26.660945,
+          "renderP99Ms": 40.954369,
+          "renderMaxMs": 2067.765506
+        },
+        {
+          "map": "MAP_POTE_01",
+          "monsters": 72,
+          "tiles": 7075,
+          "travel": 142.58096206023575,
+          "movingFrames": 151,
+          "updateMedianMs": 0.141563,
+          "updateP95Ms": 0.330946,
+          "updateP99Ms": 0.844362,
+          "updateMaxMs": 10.235051,
+          "renderMedianMs": 7.756789,
+          "renderP95Ms": 14.057136,
+          "renderP99Ms": 20.751017,
+          "renderMaxMs": 177.598631
+        },
+        {
+          "map": "MAP_POTE_03",
+          "monsters": 108,
+          "tiles": 10222,
+          "travel": 214.5618036012228,
+          "movingFrames": 226,
+          "updateMedianMs": 0.126396,
+          "updateP95Ms": 0.200674,
+          "updateP99Ms": 1.265316,
+          "updateMaxMs": 7.248953,
+          "renderMedianMs": 6.02772,
+          "renderP95Ms": 6.518272,
+          "renderP99Ms": 9.408683,
+          "renderMaxMs": 84.248397
+        }
+      ]
+    },
+    "V118_CONTINUOUS_BASELINE.json": {
+      "source": "9f0d09e3df6f5beaabb8456d552cf7071b122aae",
+      "environment": "Robolectric native CPU; no physical phone FPS claim",
+      "framesPerScene": 360,
+      "scenes": [
+        {
+          "map": "MILLES",
+          "monsters": 3,
+          "tiles": 4176,
+          "travel": 263.6958015695292,
+          "movingFrames": 277,
+          "updateMedianMs": 0.147825,
+          "updateP95Ms": 0.767328,
+          "updateP99Ms": 2.788531,
+          "updateMaxMs": 14.108918,
+          "renderMedianMs": 12.879416,
+          "renderP95Ms": 27.285604,
+          "renderP99Ms": 39.689806,
+          "renderMaxMs": 2373.699629
+        },
+        {
+          "map": "MAP_POTE_01",
+          "monsters": 72,
+          "tiles": 7075,
+          "travel": 142.58096206023575,
+          "movingFrames": 151,
+          "updateMedianMs": 0.163675,
+          "updateP95Ms": 0.359278,
+          "updateP99Ms": 2.222607,
+          "updateMaxMs": 5.556093,
+          "renderMedianMs": 7.712808,
+          "renderP95Ms": 14.373056,
+          "renderP99Ms": 16.305291,
+          "renderMaxMs": 164.649008
+        },
+        {
+          "map": "MAP_POTE_03",
+          "monsters": 108,
+          "tiles": 10222,
+          "travel": 214.5618036012228,
+          "movingFrames": 226,
+          "updateMedianMs": 0.120735,
+          "updateP95Ms": 0.202798,
+          "updateP99Ms": 1.476438,
+          "updateMaxMs": 9.826182,
+          "renderMedianMs": 5.975323,
+          "renderP95Ms": 7.752992,
+          "renderP99Ms": 10.778584,
+          "renderMaxMs": 83.015826
+        }
+      ]
+    },
+    "TAP_COMPARISON.json": {
+      "baseline": "eed465d35d27089d1db04b02c427d08137849fb5",
+      "candidate": "02026e910cc068fa54236ce334ae5ea48f188674",
+      "scenes": [
+        {
+          "map": "MAP_POTE_01",
+          "baselineOccupancy": 52681,
+          "candidateOccupancy": 2668,
+          "baselineTapMedianMs": 84.5236305,
+          "candidateTapMedianMs": 2.7351115000000004,
+          "baselineRouteMedianMs": 261.50131150000004,
+          "candidateRouteMedianMs": 37.445229
+        },
+        {
+          "map": "MAP_POTE_02",
+          "baselineOccupancy": 56080,
+          "candidateOccupancy": 2192,
+          "baselineTapMedianMs": 112.224031,
+          "candidateTapMedianMs": 3.3596655,
+          "baselineRouteMedianMs": 424.61314699999997,
+          "candidateRouteMedianMs": 23.0556635
+        },
+        {
+          "map": "MAP_POTE_03",
+          "baselineOccupancy": 57518,
+          "candidateOccupancy": 2837,
+          "baselineTapMedianMs": 141.510256,
+          "candidateTapMedianMs": 2.190096,
+          "baselineRouteMedianMs": 248.312839,
+          "candidateRouteMedianMs": 15.4163885
+        },
+        {
+          "map": "MAP_POTE_D_BOSS",
+          "baselineOccupancy": 23076,
+          "candidateOccupancy": 454,
+          "baselineTapMedianMs": 1.911373,
+          "candidateTapMedianMs": 0.3449675,
+          "baselineRouteMedianMs": 1.8668905,
+          "candidateRouteMedianMs": 0.2776025
+        }
+      ],
+      "phone": "PENDING"
+    }
+  },
+  "physicalPhone": "PENDING; V118 DEVICE_FAILED user report; root UNKNOWN_NO_DEVICE_TRACE",
+  "review": "200 independent BFS comparisons and bounded search work passed; native joystick and repeated sprite map switches passed. Paired 360-frame profiles preserve actual movement totals, but only142/215px forest travel and151/226 moving frames. Cannot establish continuous long-distance phone fix. Render maxima remain84-178ms and A update max increased5.556->10.235ms; no overall stutter-resolution claim. Prior commentary identified these as first-render cold peaks, but frame indices were not captured; cause/timing must remain unresolved. Static retained floor8,652,800byte bound; monster current-map source+hit17,694,720byte bound, not total process/GPU memory.",
+  "visualReview": "Manually reviewed native A/C frames and visible relocated joystick; user visual acceptance pending",
+  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "pr": 180,
+  "broadCI": "37849761761 and37849753349 pending at closure; unmerged candidate"
+}

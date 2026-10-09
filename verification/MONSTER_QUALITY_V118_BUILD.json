@@ -1,0 +1,94 @@
+{
+  "build": {
+    "sourceCommit": "9f0d09e3df6f5beaabb8456d552cf7071b122aae",
+    "runId": "37840619005",
+    "versionCode": 118,
+    "versionName": "1.18-monster-quality",
+    "applicationId": "com.projectdark.mobile.v118test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "a68ddfc84fa8a3a49b18e0a764f02a166b87558a77e6a0ebb1f4917ec8241023",
+    "apkBytes": 60062907,
+    "builtSeoul": "2026-10-09T05:41:54.410427+09:00",
+    "scope": "Reference-derived forest trees/earth/current; per-actor depth and foreground canopy fade; map-wide quest-filtered AUTO; 72/96/108 population, 6-8s adapted respawn; preserved campaign/save/body",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "focusedActions": {
+    "runId": 37840619005,
+    "jobId": 113528745268,
+    "conclusion": "success"
+  },
+  "artifacts": {
+    "apk": 11577816876,
+    "native": 11578160902,
+    "nativeSha256": "aecf4f5b6680436e00ea85398a50306de651178f941cabcb75ddc81bd0285e8f"
+  },
+  "tests": {
+    "suites": 26,
+    "tests": 109,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "downloadedApkVerification": [
+    "sha256 matches CI and release digest",
+    "embedded exact source/run/version identity",
+    "ZIP CRC",
+    "168 PNG source bytes equal packaged assets"
+  ],
+  "tapComparison": {
+    "baseline": "eed465d35d27089d1db04b02c427d08137849fb5",
+    "candidate": "9f0d09e3df6f5beaabb8456d552cf7071b122aae",
+    "scenes": [
+      {
+        "map": "MAP_POTE_01",
+        "baselineOccupancy": 52681,
+        "candidateOccupancy": 2668,
+        "baselineTapMedianMs": 88.33861300000001,
+        "candidateTapMedianMs": 2.864133,
+        "baselineRouteMedianMs": 282.607164,
+        "candidateRouteMedianMs": 35.56326
+      },
+      {
+        "map": "MAP_POTE_02",
+        "baselineOccupancy": 56080,
+        "candidateOccupancy": 2192,
+        "baselineTapMedianMs": 112.0325665,
+        "candidateTapMedianMs": 3.154935,
+        "baselineRouteMedianMs": 436.23877849999997,
+        "candidateRouteMedianMs": 22.3299295
+      },
+      {
+        "map": "MAP_POTE_03",
+        "baselineOccupancy": 57518,
+        "candidateOccupancy": 2837,
+        "baselineTapMedianMs": 142.773373,
+        "candidateTapMedianMs": 2.166732,
+        "baselineRouteMedianMs": 256.2757545,
+        "candidateRouteMedianMs": 15.349317500000002
+      },
+      {
+        "map": "MAP_POTE_D_BOSS",
+        "baselineOccupancy": 23076,
+        "candidateOccupancy": 454,
+        "baselineTapMedianMs": 1.5221355,
+        "candidateTapMedianMs": 0.2963885,
+        "baselineRouteMedianMs": 1.314713,
+        "candidateRouteMedianMs": 0.465013
+      }
+    ],
+    "phone": "PENDING"
+  },
+  "manualReview": [
+    "all168 generated poses contact sheet",
+    "native MAP_POTE_01-0",
+    "native MAP_POTE_03-1"
+  ],
+  "broadCI": "IN_PROGRESS_AT_CLOSURE",
+  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "status": "UNMERGED_TEST_CANDIDATE",
+  "phone": "PENDING",
+  "visualAcceptance": "PENDING",
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v118-9f0d09e3-37840619005-1"
+}

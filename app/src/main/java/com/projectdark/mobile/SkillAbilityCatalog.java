@@ -21,9 +21,9 @@ public final class SkillAbilityCatalog {
   FinalStats s=x.stats;double raw;
   switch(a.formula){
    case "BASIC":raw=s.prototypePhysicalAttack();break;
-   case "PHYSICAL":raw=(8+3d*s.str+s.dam)*a.coefficient;break;
-   case "ROGUE":raw=(8+1.8*s.str+2.2*s.dex+s.dam)*a.coefficient;break;
-   case "MARTIAL":raw=(8+4*Math.sqrt(Math.max(0,(double)s.str*s.con))+s.dam)*a.coefficient;break;
+   case "PHYSICAL":raw=(s.weaponBaseAttack()+3d*s.str+s.dam)*a.coefficient;break;
+   case "ROGUE":raw=(s.weaponBaseAttack()+1.8*s.str+2.2*s.dex+s.dam)*a.coefficient;break;
+   case "MARTIAL":raw=(s.weaponBaseAttack()+4*Math.sqrt(Math.max(0,(double)s.str*s.con))+s.dam)*a.coefficient;break;
    case "MAGIC":raw=(8+4d*s.intel+s.wis+1.5*x.level)*a.coefficient;break;
    case "HEAL":raw=(5d*s.wis+1.5*s.intel+2d*x.level)*a.coefficient;break;
    case "CRASH":raw=s.maxHp*a.coefficient;break;

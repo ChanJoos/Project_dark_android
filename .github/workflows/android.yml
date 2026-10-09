@@ -91,6 +91,15 @@ jobs:
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
       - name: Validate Master DB
         run: python tools/validate_master.py
+      - name: Verify V124 source equipment, live combat and staged rewards
+        run: |
+          pip install Pillow
+          python3 tools/build_accessory_catalog.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceAccessoryCatalog.java app/src/main/assets/equipment-icons master/canonical/Accessory_Catalog.json master/assets/equipment/accessories_20261009
+          python3 tools/generate_equipment_stats.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceEquipmentStats.java
+          python3 tools/verify_equipment_icons.py
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.EquipmentFoundationV124Test --tests com.projectdark.mobile.AccessoryCatalogV125Test --tests com.projectdark.mobile.PoteRewardsV123Test --tests com.projectdark.mobile.SkillWindowTest.curanumPurchaseToLearningUsesRealShopInputAndPersists --stacktrace
       - name: Verify generated skill catalog matches Master
         run: |
           python tools/generate_skill_catalog.py
@@ -248,11 +257,11 @@ jobs:
           name: inn-v93-review-${{ github.sha }}
           path: app/build/reports/device-review/v93-*.png
           if-no-files-found: warn
-      - name: Build and verify exact V111 debug APK
+      - name: Build and verify exact V124 debug APK
         run: |
           gradle :app:assembleDebug --stacktrace
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v111_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v125_apk.py app/build/outputs/apk/debug/app-debug.apk
       - name: Upload focused V96 weapon and jump review
         if: always()
         uses: actions/upload-artifact@v4

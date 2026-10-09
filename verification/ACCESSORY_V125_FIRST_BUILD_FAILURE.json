@@ -1,0 +1,1 @@
+{"source":"a66bc24cd90eb77bb282337a2549054f1ac024a7","run":37909637237,"job":113751409871,"failure":"Test report Files.writeString API unavailable on Android compile bootclasspath; production Java compiled successfully","fix":"Use supported Files.write UTF-8 bytes; no runtime or test assertions removed"}

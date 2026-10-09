@@ -1,0 +1,20 @@
+{
+  "status": "SOURCE_RECOVERED_REVIEW_PENDING",
+  "countsByCategory": {
+    "각반": 15,
+    "목걸이": 37,
+    "벨트": 17,
+    "장갑·팔찌": 36,
+    "신발": 13,
+    "귀걸이": 15,
+    "반지": 19
+  },
+  "retainedImageFiles": 152,
+  "uniqueSha256": 152,
+  "unavailable": 0,
+  "previousBatch": "11 files =5 icons+6 tooltips,6 item references; not11 equipment icons",
+  "runtime": "New GIFs are source/review evidence only; no runtime image replacements in this commit",
+  "phoneCombatFeel": "EXCLUDED_USER_REPORTED_ALREADY_DONE",
+  "sourceUrl": "https://w.atwiki.jp/takesi100/pages/217.html",
+  "sourceScope": "Historical Korean-game fan wiki written in Japanese. Names and values require current/canonical cross-check; table reuses some images across elemental variants."
+}

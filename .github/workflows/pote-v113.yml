@@ -1,0 +1,143 @@
+name: Pote V125 full accessory catalog and equipment sandbox
+on:
+  push:
+    branches: [codex/pote-forest-v112]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      PROJECT_DARK_SIDE_BY_SIDE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover starter gear source manifests
+        run: |
+          python3 tools/collect_peasant_sources.py
+          python3 - <<'PY'
+          import json, pathlib, sys
+          rows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())
+          need={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010','mu0000001','mu0000002','mu0000003'}
+          got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}
+          missing=need-got
+          print('SOURCE_REGISTRATION_FETCHED',sorted(got & need))
+          print('SOURCE_REGISTRATION_MISSING',sorted(missing))
+          if missing:
+              sys.exit(23)
+          PY
+          mkdir -p app/src/main/assets/source-registration
+          cp qa/peasant-sources/data/type/body/mm001.json app/src/main/assets/source-registration/mm001.json
+          cp qa/peasant-sources/data/type/shoes/ml228.json app/src/main/assets/source-registration/ml228.json
+          cp qa/peasant-sources/data/type/shield/ms001.json app/src/main/assets/source-registration/ms001.json
+          cp qa/peasant-sources/data/type/hair/mh172.json app/src/main/assets/source-registration/mh172.json
+          cp qa/peasant-sources/atlas/shoes/ml228.webp app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp
+          cp qa/peasant-sources/atlas/shield/ms001.webp app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp
+          cp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          specs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010'],'armor':['mu0000001','mu0000002','mu0000003']}
+          assets=Path('app/src/main/assets/source-registration'); draw=Path('app/src/main/res/drawable-nodpi')
+          for kind, ids in specs.items():
+              for ident in ids:
+                  shutil.copy(Path('qa/peasant-sources/data/type')/kind/(ident+'.json'), assets/(ident+'.json'))
+                  shutil.copy(Path('qa/peasant-sources/atlas')/kind/(ident+'.webp'), draw/('equip_'+ident+'_source.webp'))
+          PY
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for ident in ('mm001','mu0000001','ml228','ms001','mh172'):
+              p=Path('qa/peasant-sources/data/type')
+              found=list(p.glob('*/'+ident+'.json'))
+              if not found: continue
+              d=json.loads(found[0].read_text())
+              print('META',ident,{k:v for k,v in d.items() if k!='sprites'})
+          for ident in ('mm001','mu0000001'):
+              found=list(Path('qa/peasant-sources/data/type').glob('*/'+ident+'.json'))
+              d=json.loads(found[0].read_text())
+              for g in ('01','02','03','b','c','d','e','f'):
+                  if g in d['sprites']: print('BASE_REG',ident,g,d['sprites'][g][:12])
+          PY
+          python3 - <<'PY'
+          import json, pathlib
+          for ident in ('ml228','ms001','mh172'):
+              p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')
+              d=json.loads(p.read_text())
+              sprites=d['sprites']
+              print('REG_MANIFEST',ident,'count',len(sprites))
+              for k in list(sprites)[:12]:
+                  print('REG',ident,k,sprites[k])
+          PY
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Profile identical real forest touches on V116 baseline
+        run: |
+          git fetch --depth=1 origin eed465d35d27089d1db04b02c427d08137849fb5
+          git worktree add --detach /tmp/project-dark-v116-baseline eed465d35d27089d1db04b02c427d08137849fb5
+          cp app/src/test/java/com/projectdark/mobile/ForestTapProfileTest.java /tmp/project-dark-v116-baseline/app/src/test/java/com/projectdark/mobile/
+          cp -a app/src/main/res/drawable-nodpi/. /tmp/project-dark-v116-baseline/app/src/main/res/drawable-nodpi/
+          cp -a app/src/main/assets/source-registration/. /tmp/project-dark-v116-baseline/app/src/main/assets/source-registration/
+          PROJECT_DARK_SOURCE_SHA=eed465d35d27089d1db04b02c427d08137849fb5 gradle -p /tmp/project-dark-v116-baseline :app:testDebugUnitTest --tests '*ForestTapProfileTest'
+          mkdir -p app/build/reports/forest-performance
+          cp /tmp/project-dark-v116-baseline/app/build/reports/forest-performance/TAPS.json app/build/reports/forest-performance/V116_TAPS_BASELINE.json
+      - name: Profile identical continuous movement on V120 baseline
+        run: |
+          git fetch --depth=1 origin a7de04660d317d64f2b6b07cd44e2d57c5da4462
+          git worktree add --detach /tmp/project-dark-v121-baseline a7de04660d317d64f2b6b07cd44e2d57c5da4462
+          cp app/src/test/java/com/projectdark/mobile/ContinuousMoveProfileTest.java /tmp/project-dark-v121-baseline/app/src/test/java/com/projectdark/mobile/
+          cp -a app/src/main/res/drawable-nodpi/. /tmp/project-dark-v121-baseline/app/src/main/res/drawable-nodpi/
+          cp -a app/src/main/assets/source-registration/. /tmp/project-dark-v121-baseline/app/src/main/assets/source-registration/
+          PROJECT_DARK_SOURCE_SHA=a7de04660d317d64f2b6b07cd44e2d57c5da4462 gradle -p /tmp/project-dark-v121-baseline :app:testDebugUnitTest --tests '*ContinuousMoveProfileTest'
+          cp /tmp/project-dark-v121-baseline/app/build/reports/forest-performance/CONTINUOUS.json app/build/reports/forest-performance/V120_CONTINUOUS_BASELINE.json
+      - name: Verify world, AUTO, quest, population, depth and native screens
+        run: |
+          python3 -m pip install Pillow
+          python3 tools/build_accessory_catalog.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceAccessoryCatalog.java app/src/main/assets/equipment-icons master/canonical/Accessory_Catalog.json master/assets/equipment/accessories_20261009
+          python3 tools/generate_equipment_stats.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceEquipmentStats.java
+          python3 tools/verify_equipment_icons.py
+          python3 tools/validate_master.py
+          gradle :app:testDebugUnitTest --tests '*PoteReferenceV113Test' --tests '*DeviceRepairV114Test' --tests '*InstalledSpriteResourcesTest' --tests '*ForestPixelCacheTest' --tests '*MonsterQualityV118Test' --tests '*PoteMonsterMotionV121Test' --tests '*PoteMonsterVisualRepairV122Test' --tests '*RuntimeCheckpointTest' --tests '*AdaptedCampaignRewardTest' --tests '*PoteRewardsV123Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*AccessoryCatalogV125Test' --tests '*ItemWindowReferenceTest' --tests '*TownInteriorTest' --tests '*PotePamfetPresentationTest' --tests '*ForestFloorCacheTest' --tests '*ForestFrameProfileTest' --tests '*ForestTapProfileTest' --tests '*GroundTapPathTest' --tests '*MonsterChasePathfinderTest' --tests '*MonsterChasePerformanceTest' --tests '*ContinuousMoveProfileTest' --tests '*JoystickV119Test' --tests '*NpcAppearanceTest' --tests '*SkillWindowReferenceTest' --tests '*QuestJournalTest' --tests '*PoteCreekWaterAssetTest' --tests '*PoteForestSpatialGrammarTest' --tests '*PoteVisualReviewTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*CampaignNavigationTest' --tests '*CampaignProgressTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*AutoAttackTargetSelectorTest' --tests '*WorldMoveTargetControllerPathTest' --tests '*QuickQuestLatencyTest' --tests '*HudTouchAcceptanceTest'
+      - name: Compare real touch and long-route collision work
+        run: python3 tools/compare_forest_taps.py
+      - name: Build and verify exact APK
+        run: |
+          gradle :app:assembleDebug
+          python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v125_apk.py app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pote-v125-native-${{ github.sha }}
+          path: |
+            app/build/reports/pote-v113/
+            app/build/reports/device-review/
+            app/build/reports/pote-rewards-v123/
+            app/build/reports/equipment-foundation-v124/
+            app/build/reports/monster-motion-v121/
+            app/build/reports/monster-visual-v122/
+            app/build/reports/forest-performance/
+            app/build/test-results/
+            app/build/reports/tests/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pote-v125-apk-${{ github.sha }}
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/debug/BUILD_INFO.json
+      - name: Publish tested candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk PROJECT_DARK_V125_TEST.apk
+          gh release create "candidate-v125-${GITHUB_SHA:0:8}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" PROJECT_DARK_V125_TEST.apk app/build/outputs/apk/debug/BUILD_INFO.json --target "$GITHUB_SHA" --prerelease --title 'PROJECT DARK V125 별도 설치 테스트 후보' --notes "Exact source $GITHUB_SHA. CI build/native verified. Separate application ID com.projectdark.mobile.v125test preserves the existing app. Separate save/profile. Physical phone and user visual acceptance pending."

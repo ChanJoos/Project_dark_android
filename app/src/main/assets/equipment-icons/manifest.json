@@ -1,0 +1,3770 @@
+{
+  "revision": "SOURCE_ACCESSORY_CATALOG_V125",
+  "appearances": [
+    {
+      "appearanceId": "mh168",
+      "sourceName": "헬름",
+      "sourcePath": "master/assets/items/hair/mh168_헬름.webp",
+      "sourceSha256": "2a65dd57355fc4c8600d1a65bf70bc529d48313884d3bafd36f3ebfbe26e9311",
+      "crop": [
+        0,
+        0,
+        19,
+        23
+      ],
+      "upstreamAtlasThumb": [
+        659,
+        233,
+        19,
+        23
+      ],
+      "asset": "mh168.png",
+      "assetSha256": "10f55a8008c1d7093bbb26826db132d4681c8107157216fc90484d6d6babe2f1",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mh172",
+      "sourceName": "밀레스털모자",
+      "sourcePath": "master/assets/items/hair/mh172_밀레스털모자.webp",
+      "sourceSha256": "4a6b9ea95fa53154d5bf9bc1cd44f2d571ece29fd65630fb500b82034d469890",
+      "crop": [
+        0,
+        0,
+        18,
+        13
+      ],
+      "upstreamAtlasThumb": [
+        868,
+        416,
+        18,
+        13
+      ],
+      "asset": "mh172.png",
+      "assetSha256": "441857c1f179ea4c03de484dbc2932abed9fe3e8f3d7ae7445966a42b9b72590",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mh173",
+      "sourceName": "아벨털모자",
+      "sourcePath": "master/assets/items/hair/mh173_아벨털모자.webp",
+      "sourceSha256": "7dc919456d25b9a6d3897ac8ce6a07bd253d978ca14b8cc33f02e4dc59611c43",
+      "crop": [
+        0,
+        0,
+        18,
+        13
+      ],
+      "upstreamAtlasThumb": [
+        887,
+        416,
+        18,
+        13
+      ],
+      "asset": "mh173.png",
+      "assetSha256": "2d3cd73530d8cf42125af84a01bfb704bcddb2a5c9763427a275a6437ed35499",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mh174",
+      "sourceName": "루어스털모자",
+      "sourcePath": "master/assets/items/hair/mh174_루어스털모자.webp",
+      "sourceSha256": "638497cd7f07f84ac20ba9970d3b5bf8a561f33eaea07bcd7d1ddaf41fdc18b2",
+      "crop": [
+        0,
+        0,
+        18,
+        13
+      ],
+      "upstreamAtlasThumb": [
+        906,
+        416,
+        18,
+        13
+      ],
+      "asset": "mh174.png",
+      "assetSha256": "88f20e93916f35aa7e491d8e73ff72e3cf259d460ea83b8306386d8495db6768",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ml228",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shoes/ml228_UNNAMED.webp",
+      "sourceSha256": "5f28527d552556e78a774f8f5abfabe3370b1eca810caa78bd2e4c9708968fd5",
+      "crop": [
+        0,
+        0,
+        20,
+        18
+      ],
+      "upstreamAtlasThumb": [
+        306,
+        0,
+        20,
+        18
+      ],
+      "asset": "ml228.png",
+      "assetSha256": "d6175cc9c8431b9c1e8d167db26ef79aa73575f75fff6627056c584a89fb5b97",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ml229",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shoes/ml229_UNNAMED.webp",
+      "sourceSha256": "ba66afe4acdf252a0cf26568439da4888510df90ca8051c1788b7c3ef1fe39d6",
+      "crop": [
+        0,
+        0,
+        19,
+        11
+      ],
+      "upstreamAtlasThumb": [
+        57,
+        46,
+        19,
+        11
+      ],
+      "asset": "ml229.png",
+      "assetSha256": "5c11a21378c540fd99edd1b0e5113079e53f4e94c427b5fc136ed3a9aed0c1ff",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ml230",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shoes/ml230_UNNAMED.webp",
+      "sourceSha256": "d9e2f559a5ff2c04785b741602b2895b63b57733a579dedcfd54d93bed1ff7f9",
+      "crop": [
+        0,
+        0,
+        19,
+        18
+      ],
+      "upstreamAtlasThumb": [
+        327,
+        0,
+        19,
+        18
+      ],
+      "asset": "ml230.png",
+      "assetSha256": "143328bb9321f575d613751a8480d38503f9b1f0001f75478fad1714e99af0df",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ms001",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shield/ms001_UNNAMED.webp",
+      "sourceSha256": "3711730e6b7445586596b8337466377eafb254a1e671c1aac33f3b00363b098a",
+      "crop": [
+        0,
+        0,
+        17,
+        22
+      ],
+      "upstreamAtlasThumb": [
+        394,
+        0,
+        17,
+        22
+      ],
+      "asset": "ms001.png",
+      "assetSha256": "45009d0553cdd42281dcf6419c259ded26b24b34c9f73d2586b6068263aee080",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ms002",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shield/ms002_UNNAMED.webp",
+      "sourceSha256": "ccf9bfafc741e16cfaf3223af61aee46640b0c2c4afd8dbba8e236a2ec6752b8",
+      "crop": [
+        0,
+        0,
+        15,
+        19
+      ],
+      "upstreamAtlasThumb": [
+        448,
+        0,
+        15,
+        19
+      ],
+      "asset": "ms002.png",
+      "assetSha256": "05d1ad53d12e32da235ab186ae94c1f778eabb4b6a583d6b415b6236329df455",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "ms003",
+      "sourceName": "",
+      "sourcePath": "master/assets/items/shield/ms003_UNNAMED.webp",
+      "sourceSha256": "79a9de92bd41046a4404518005e2e3d8f50569ae46fe02c4ad39f2b7ca75e666",
+      "crop": [
+        0,
+        0,
+        16,
+        23
+      ],
+      "upstreamAtlasThumb": [
+        377,
+        0,
+        16,
+        23
+      ],
+      "asset": "ms003.png",
+      "assetSha256": "a9ca4e3bfae4805e1899242b3fa69250f63d9b6d96a906fdc8afee527ecfc928",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000001",
+      "sourceName": "셔츠",
+      "sourcePath": "master/assets/items/armor/mu0000001_셔츠.webp",
+      "sourceSha256": "0217c4978f2f782766b918e46a2dd0b3829cf55f250235a40829082aff2f358c",
+      "crop": [
+        0,
+        0,
+        11,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        604,
+        931,
+        11,
+        17
+      ],
+      "asset": "mu0000001.png",
+      "assetSha256": "7f755cc26b1cdffefa94421a5eae0e49206f304dcbcf0bfce4d664b0303bd6bc",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000002",
+      "sourceName": "레더튜닉",
+      "sourcePath": "master/assets/items/armor/mu0000002_레더튜닉.webp",
+      "sourceSha256": "7167d676370d1b4a4b58e16ec247d16ed7159f27baf349dea85a7fefa9268fc3",
+      "crop": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "upstreamAtlasThumb": [
+        629,
+        931,
+        16,
+        16
+      ],
+      "asset": "mu0000002.png",
+      "assetSha256": "b3d5c3fd2fa1b094bd364b1451c986d9e78b6be6ee7be2185a3e00736c15e17f",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000003",
+      "sourceName": "도복",
+      "sourcePath": "master/assets/items/armor/mu0000003_도복.webp",
+      "sourceSha256": "1099883b691b237401bc620bfd882e43b03749b0c074a276339d46c68af9f1cd",
+      "crop": [
+        0,
+        0,
+        12,
+        25
+      ],
+      "upstreamAtlasThumb": [
+        663,
+        876,
+        12,
+        25
+      ],
+      "asset": "mu0000003.png",
+      "assetSha256": "e56ece6746a630f71892c03843b9f7082515a53dbcfbad9c4eb2df1c7751820e",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000007",
+      "sourceName": "지폰",
+      "sourcePath": "master/assets/items/armor/mu0000007_지폰.webp",
+      "sourceSha256": "00b805b25fb9a3ca23f628d99efd048b275d01f6a1bd4298fb226edf253d6d01",
+      "crop": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "upstreamAtlasThumb": [
+        646,
+        931,
+        16,
+        16
+      ],
+      "asset": "mu0000007.png",
+      "assetSha256": "9720e03bf2e4b1c5a3d9b24c3d17bc01e43bda8a686265eba42f3ca34ca5c889",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000015",
+      "sourceName": "맨틀",
+      "sourcePath": "master/assets/items/armor/mu0000015_맨틀.webp",
+      "sourceSha256": "ddc58fc1ff7323fc7edb30324301ddc0d67a94b4da5ee48d38ebe408e155318d",
+      "crop": [
+        0,
+        0,
+        18,
+        31
+      ],
+      "upstreamAtlasThumb": [
+        893,
+        810,
+        18,
+        31
+      ],
+      "asset": "mu0000015.png",
+      "assetSha256": "197b1d1a1540bbc1d0e2bd2d11d69ac39a3e01390f0da540751e7c587ce33340",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000055",
+      "sourceName": "수오미레더로브",
+      "sourcePath": "master/assets/items/armor/mu0000055_수오미레더로브.webp",
+      "sourceSha256": "c8f9b47d0a4c703bda13c229bfb8472bd57c90a45b3a185601e86602385cf28e",
+      "crop": [
+        0,
+        0,
+        19,
+        26
+      ],
+      "upstreamAtlasThumb": [
+        457,
+        876,
+        19,
+        26
+      ],
+      "asset": "mu0000055.png",
+      "assetSha256": "a72c4ebbd0376fb6f07b8a365cb1fb5524706a4422066210baf0fbe3db8e25bc",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000057",
+      "sourceName": "뤼케시온레더로브",
+      "sourcePath": "master/assets/items/armor/mu0000057_뤼케시온레더로브.webp",
+      "sourceSha256": "1e8092d3cea197fb6f6ba2d297701bfc3ae5ecbd5c679f71cb0c23351b5731ae",
+      "crop": [
+        0,
+        0,
+        19,
+        26
+      ],
+      "upstreamAtlasThumb": [
+        497,
+        876,
+        19,
+        26
+      ],
+      "asset": "mu0000057.png",
+      "assetSha256": "20c989dcf486c185bcc22461bd5a8faef910203142d99feee5beb67aab612dbd",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000058",
+      "sourceName": "루어스레더로브",
+      "sourcePath": "master/assets/items/armor/mu0000058_루어스레더로브.webp",
+      "sourceSha256": "db38e76fc13844283418c0bf86a08753506dac59cf53f10970ac5bc98586ee20",
+      "crop": [
+        0,
+        0,
+        19,
+        26
+      ],
+      "upstreamAtlasThumb": [
+        517,
+        876,
+        19,
+        26
+      ],
+      "asset": "mu0000058.png",
+      "assetSha256": "024361b89d1797dc233663d5fbc7d1483c1a4437a5dd5b3f05c2f7f925c4d6ec",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000059",
+      "sourceName": "오렌가이아로럼",
+      "sourcePath": "master/assets/items/armor/mu0000059_오렌가이아로럼.webp",
+      "sourceSha256": "9a1ef766333a0ca572095431a76b8a1649dc0353af90c174a50acddf16ae339e",
+      "crop": [
+        0,
+        0,
+        19,
+        29
+      ],
+      "upstreamAtlasThumb": [
+        532,
+        844,
+        19,
+        29
+      ],
+      "asset": "mu0000059.png",
+      "assetSha256": "850b83db92452b9adbe6b6fb1adaf592c1967044bbf43b46385ec5bc5a1e590e",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000117",
+      "sourceName": "루어스위저드로브",
+      "sourcePath": "master/assets/items/armor/mu0000117_루어스위저드로브.webp",
+      "sourceSha256": "ab2d352afd3412edbb4f3414d08480f237f05f2e71d266d0e0bd96278d2ad196",
+      "crop": [
+        0,
+        0,
+        20,
+        37
+      ],
+      "upstreamAtlasThumb": [
+        300,
+        659,
+        20,
+        37
+      ],
+      "asset": "mu0000117.png",
+      "assetSha256": "a8ccff5fe2efe0db4a511c79c173741674df2bd5f752cf3c636c245424818b95",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000180",
+      "sourceName": "레오파드",
+      "sourcePath": "master/assets/items/armor/mu0000180_레오파드.webp",
+      "sourceSha256": "f0ae0d264638d34d3eeb2ee14f283bf649c8ecc3f38401ab003491fda23fa8ae",
+      "crop": [
+        0,
+        0,
+        32,
+        40
+      ],
+      "upstreamAtlasThumb": [
+        627,
+        298,
+        32,
+        40
+      ],
+      "asset": "mu0000180.png",
+      "assetSha256": "da690a0836539c650d48c262b736320036760edb1051ea259e099afd85cac42d",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mu0000210",
+      "sourceName": "다크클레릭의상",
+      "sourcePath": "master/assets/items/armor/mu0000210_다크클레릭의상.webp",
+      "sourceSha256": "a252beeaff6eac99f52155760f18eac9f784e989ce5662ff70393cd85b73e198",
+      "crop": [
+        0,
+        0,
+        25,
+        41
+      ],
+      "upstreamAtlasThumb": [
+        497,
+        213,
+        25,
+        41
+      ],
+      "asset": "mu0000210.png",
+      "assetSha256": "7d6872a16e1bf6e56b203d3d6ed5e878d76eac3e370769a62e83a6b3ee34b646",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw001",
+      "sourceName": "목도",
+      "sourcePath": "master/assets/items/weapon/mw001_목도.webp",
+      "sourceSha256": "84dcaee208723b07622866668b5ad750499de88e0adff92cc3d624ab4c36e730",
+      "crop": [
+        0,
+        0,
+        16,
+        8
+      ],
+      "upstreamAtlasThumb": [
+        952,
+        383,
+        16,
+        8
+      ],
+      "asset": "mw001.png",
+      "assetSha256": "3e934f904533d4cb08c4098c2cd7eec29305f7f6bc09b23dcb64163d7fc3e966",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw002",
+      "sourceName": "에페",
+      "sourcePath": "master/assets/items/weapon/mw002_에페.webp",
+      "sourceSha256": "9c10c4580b96eae3f0f61e69f163a6fe840c04e27b2dfd5afce2d44ae48e7a94",
+      "crop": [
+        0,
+        0,
+        18,
+        14
+      ],
+      "upstreamAtlasThumb": [
+        81,
+        340,
+        18,
+        14
+      ],
+      "asset": "mw002.png",
+      "assetSha256": "d5ac48c693a4c6841c17dad0a8f913dc5c5085c38eeb57a568d7c5a0476d10b5",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw003",
+      "sourceName": "커틀라스",
+      "sourcePath": "master/assets/items/weapon/mw003_커틀라스.webp",
+      "sourceSha256": "3424725a8c85e4b8043b4f3d8ac903bcc1026bf13ae0cd375d3c9890fa7c1aec",
+      "crop": [
+        0,
+        0,
+        22,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        628,
+        270,
+        22,
+        17
+      ],
+      "asset": "mw003.png",
+      "assetSha256": "6e9cc05b98daee675d64388e2ac6ed2d337b9997c2678497b24862b897f58816",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw004",
+      "sourceName": "세이버",
+      "sourcePath": "master/assets/items/weapon/mw004_세이버.webp",
+      "sourceSha256": "0b1a4c628cd81bf712678a6c46aa1395a4d12cb00a8dd425989fa3092426860c",
+      "crop": [
+        0,
+        0,
+        24,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        651,
+        270,
+        24,
+        17
+      ],
+      "asset": "mw004.png",
+      "assetSha256": "8e134c788bb2780f1e99777097f798ae132d5cef98f149d5541fd3d9af0456f0",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw005",
+      "sourceName": "그라디우스",
+      "sourcePath": "master/assets/items/weapon/mw005_그라디우스.webp",
+      "sourceSha256": "d1dd14d7cfc258474aa36efc09e8345c29c1ffc99260953cab26b61fe28bacf7",
+      "crop": [
+        0,
+        0,
+        28,
+        21
+      ],
+      "upstreamAtlasThumb": [
+        187,
+        183,
+        28,
+        21
+      ],
+      "asset": "mw005.png",
+      "assetSha256": "462748e0a9b0cc1f56b216bc96a470a328073fe73719e316f3b36f0f5b923abc",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw015",
+      "sourceName": "롱소드",
+      "sourcePath": "master/assets/items/weapon/mw015_롱소드.webp",
+      "sourceSha256": "01decf75bc058dbc243ee84de009855df20b0f5f1e091017ad8d0aa11ac9c1e6",
+      "crop": [
+        0,
+        0,
+        32,
+        12
+      ],
+      "upstreamAtlasThumb": [
+        822,
+        356,
+        32,
+        12
+      ],
+      "asset": "mw015.png",
+      "assetSha256": "a5538e5bc1ae8dc6dd9d6c6f842dc6026ad8f6913116ea47c4fb594218acbf4d",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw024",
+      "sourceName": "매직새티아",
+      "sourcePath": "master/assets/items/weapon/mw024_매직새티아.webp",
+      "sourceSha256": "596ff2473aba2e1cd7588f907a8b5128ed6b85d3e742f53329e8dc8f227519ee",
+      "crop": [
+        0,
+        0,
+        24,
+        7
+      ],
+      "upstreamAtlasThumb": [
+        458,
+        394,
+        24,
+        7
+      ],
+      "asset": "mw024.png",
+      "assetSha256": "a513fc23649b03d0ca75dfc644d9e918e48c2eae423ed0724f7184ac75546fe7",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    },
+    {
+      "appearanceId": "mw026",
+      "sourceName": "매직루나",
+      "sourcePath": "master/assets/items/weapon/mw026_매직루나.webp",
+      "sourceSha256": "de4b90a0fbd9d90a9580b4be6f534007aa09c6e642d212f6fc77c218ce02c439",
+      "crop": [
+        0,
+        0,
+        31,
+        17
+      ],
+      "upstreamAtlasThumb": [
+        676,
+        270,
+        31,
+        17
+      ],
+      "asset": "mw026.png",
+      "assetSha256": "baa097f2736d95de79fa1297540fe63c919472d94da60436827bd43cf2803371",
+      "evidence": "ASSET_MASTER_EXACT_THUMB_ORIGINAL_PIXELS",
+      "limitation": "original wardrobe thumbnail; not a verified Korean inventory-icon screenshot"
+    }
+  ],
+  "items": {
+    "IT_RING_THREELINEGOLD": {
+      "itemId": "IT_RING_THREELINEGOLD",
+      "sourcePath": "master/source/items/tistory_20261009/three_line_gold_ring.png",
+      "sourceSha256": "bcdab54b55f4a97e813fb28ed9789a46b07865ae9a778d839b74a9be38c6d77e",
+      "crop": [
+        20,
+        8,
+        54,
+        48
+      ],
+      "transparentBackgroundRGB": [
+        246,
+        245,
+        240
+      ],
+      "asset": "it_ring_threelinegold.png",
+      "assetSha256": "96525f24df112fc0d0becb0b4a4b71bebd94ecb9abc8c534da1c2daf06066905",
+      "evidence": "FAN_HISTORICAL_LABELLED_GAME_ICON_CAPTURE",
+      "sourceUrl": "https://time-to-watch.tistory.com/92",
+      "sourcePublished": "2020-10-30",
+      "limitation": "Labelled retrospective table; capture era unknown. Exact foreground RGB retained; only uniform table background alpha removed."
+    },
+    "IT_EARRING_DOUBLE_SILVER": {
+      "itemId": "IT_EARRING_DOUBLE_SILVER",
+      "asset": "146_souginiyaringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_souginiyaringu.gif",
+      "sourceSha256": "b7efa9556001a43ac750c37d43a2841c84eded21ec9052f82fd978fe9beb9cc4",
+      "assetSha256": "5d24b3e577ae9792bde94bb2fa6235bf2ae4a8f33b665a3042953bbaa91ab1f5",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_souginiyaringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_JUNDAMAIYARINGU_93B90B4A": {
+      "itemId": "IT_SOURCE_146_JUNDAMAIYARINGU_93B90B4A",
+      "asset": "146_jundamaiyaringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_jundamaiyaringu.gif",
+      "sourceSha256": "ab27d39f035e7289bd7ba1ad436679546d4cf9fbd09306e0ff1162e93146249b",
+      "assetSha256": "3342ef68ddc35090e1885169415a5acee97337444d414137bbdc2ecd8cc7553f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_jundamaiyaringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_SOUKINIYARINGU_71ACA148": {
+      "itemId": "IT_SOURCE_146_SOUKINIYARINGU_71ACA148",
+      "asset": "146_soukiniyaringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_soukiniyaringu.gif",
+      "sourceSha256": "d0b0e6c31945451c2cfa9fafe2dac10af146b660fe933c94982c25604b09b7af",
+      "assetSha256": "fc5a02afaf6e4a1b8db10813171a2cdd90b487d9af296f032b5d0b147eaa05c3",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_soukiniyaringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_SANGOIYARINGU_9FA3A3C8": {
+      "itemId": "IT_SOURCE_146_SANGOIYARINGU_9FA3A3C8",
+      "asset": "146_sangoiyaringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_sangoiyaringu.gif",
+      "sourceSha256": "8a6899804d36b90b452dfe32460278d829251f118ff198a27c37dd6c8c64037b",
+      "assetSha256": "891a8ee573a8815b3b6b8511686bca81143fa280214a424b711e2ba885e5e130",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_sangoiyaringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_SANGOSEKIIYARINGU_BD93B8B9": {
+      "itemId": "IT_SOURCE_146_SANGOSEKIIYARINGU_BD93B8B9",
+      "asset": "146_sangosekiiyaringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_sangosekiiyaringu.gif",
+      "sourceSha256": "76eacbdf58097bcf6bbad38e746e2ee6947cb1a68089638347be9c5e47eb5a24",
+      "assetSha256": "9c47e4ae5c0742e2070b5335b8640175c4b40997d7e41069faad73f900e7f50e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_sangosekiiyaringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_RUBIIYARINGU_FA45A3F9": {
+      "itemId": "IT_SOURCE_146_RUBIIYARINGU_FA45A3F9",
+      "asset": "146_rubiiyaringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_rubiiyaringu.gif",
+      "sourceSha256": "7cab3be2b5149ad0cb0714c17a54553709f65bf3eea6dc4f2bc6202d1e78a344",
+      "assetSha256": "498902468c70dd17c3e86b16fc722550ab30910860a516b8249aa6a68b73a82f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_rubiiyaringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_RI-ZENTO_DC68008A": {
+      "itemId": "IT_SOURCE_146_RI-ZENTO_DC68008A",
+      "asset": "146_ri-zento.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_ri-zento.gif",
+      "sourceSha256": "0e5a69af3f672210da9af746fcfcdf06227a5f151250b083b8e885d057508b3e",
+      "assetSha256": "8dbc602dd6f1a1780d2e2396c410d682e0ba4dc3c6023675d4d31f372aef442e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_ri-zento.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_REDMARINE_4BEA9E11": {
+      "itemId": "IT_SOURCE_146_REDMARINE_4BEA9E11",
+      "asset": "146_redmarine.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_redmarine.gif",
+      "sourceSha256": "923630a15c849012cd2a2f3d2eea98de2b0424ac45ba9a1fcac8bf3b3da1b4b7",
+      "assetSha256": "0bd4db3d67ec099e160bf6a132523ef512a626b05491171e8d9496e33691bdf9",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_redmarine.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_HORUDEITORINGU_358D472E": {
+      "itemId": "IT_SOURCE_146_HORUDEITORINGU_358D472E",
+      "asset": "146_horudeitoringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_horudeitoringu.gif",
+      "sourceSha256": "9240f2097adc019f01db04f0ff4443297dfd12536267ef9942ce14be44f9d4f5",
+      "assetSha256": "f366352bc6e73161af56d8ddaa3236bf249f4dc4c8c57099965d8cf9045ed90c",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_horudeitoringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_KAENHORUDEITO_964F13A2": {
+      "itemId": "IT_SOURCE_146_KAENHORUDEITO_964F13A2",
+      "asset": "146_kaenhorudeito.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_kaenhorudeito.gif",
+      "sourceSha256": "f6cd0bdcf1f4cf948f810afe79c3a66bb672a02329cd51aff8ef1a7485c3800d",
+      "assetSha256": "efe92681060a47c48731b0217577ed21c6ecb1107218094587a96ee1a8d72d43",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_kaenhorudeito.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599": {
+      "itemId": "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599",
+      "asset": "146_kazehorudeito.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_kazehorudeito.gif",
+      "sourceSha256": "1cda82b87a68333fd4b89a0e1a44586fab3fc61a87154d3d353b7d3a50f9f095",
+      "assetSha256": "fe731f50d944d2bc7a65dc2646a19bdfb3ae4e611349236b81c78433a7b9da11",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_kazehorudeito.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_DAITIHORUDEITO_6523D03A": {
+      "itemId": "IT_SOURCE_146_DAITIHORUDEITO_6523D03A",
+      "asset": "146_daitihorudeito.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_daitihorudeito.gif",
+      "sourceSha256": "b9b6b6de1669bd66348fccd53367c3c9c8a2155e4b0ac4f561ae171bcbb8e02d",
+      "assetSha256": "a701175bfaaf859ceade133aca67dbebbbda922c2e3ec93d7bfcdb14b0e9c9db",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_daitihorudeito.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_UMIHORUDEITO_652BB8EC": {
+      "itemId": "IT_SOURCE_146_UMIHORUDEITO_652BB8EC",
+      "asset": "146_umihorudeito.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_umihorudeito.gif",
+      "sourceSha256": "df49813b9e447cd29bc3f2931741587d91092447ca4b264fcd7405534ff35b82",
+      "assetSha256": "07c3ef2bd2c416816eef7b0f9d2736662de16c212acfda7bda58dded6cfa1a8b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_umihorudeito.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_SEIRARINGU_0EB6FB35": {
+      "itemId": "IT_SOURCE_146_SEIRARINGU_0EB6FB35",
+      "asset": "146_seiraringu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_seiraringu.gif",
+      "sourceSha256": "acf1544d7a4496ba7a528818c09126f2185e8d3b77d8a0d23be9721052cbd7dd",
+      "assetSha256": "4f13a614a57760204280b15a447074f8411d18671855bb19b5875d841dae2ae7",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_seiraringu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_146_HADEEAR_84C2EB0E": {
+      "itemId": "IT_SOURCE_146_HADEEAR_84C2EB0E",
+      "asset": "146_hadeear.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/146_hadeear.gif",
+      "sourceSha256": "920f4d0c09bf47bf02ae08946bc78f235009bcfbcfe6dc1f716d5c10f0e65998",
+      "assetSha256": "82666f5324aa2c6022c021d76148439b2028549af1b975f5378c8f4a1c627b27",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "146_hadeear.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/146.html"
+    },
+    "IT_SOURCE_150_KUTU1_6FDB18DA": {
+      "itemId": "IT_SOURCE_150_KUTU1_6FDB18DA",
+      "asset": "150_kutu1.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_kutu1.gif",
+      "sourceSha256": "6267084b4136b584a164fac0a8a1b5ddbf9c48b2b546f0ab5ee2b6934e809ef4",
+      "assetSha256": "74174b5ca7f190f4d54c41500c0ac96d0b266bae804ba95face2bf9b6dbb1f1f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_kutu1.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_JAPANUNIFORM02_8A8DE823": {
+      "itemId": "IT_SOURCE_150_JAPANUNIFORM02_8A8DE823",
+      "asset": "150_japanuniform02.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_japanuniform02.gif",
+      "sourceSha256": "5e30983c78fc9e16abe4e808e1447e6213c072b62f3c612ee67d6beccecc1a07",
+      "assetSha256": "4d189b5773538dc92701adec8288a2560fcc772e898d849a07ccd20c73faaa1d",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_japanuniform02.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_KUTU26_00B7153C": {
+      "itemId": "IT_SOURCE_150_KUTU26_00B7153C",
+      "asset": "150_kutu26.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_kutu26.gif",
+      "sourceSha256": "e97680c2160940d7833f62fedf5f8104474757da6d76cdb1c93305cb0721d8b5",
+      "assetSha256": "3f3d39770a6010a5c49377cdec4efae015135452c704838a185fb20a36689ffe",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_kutu26.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_KUTU41_24CE5A29": {
+      "itemId": "IT_SOURCE_150_KUTU41_24CE5A29",
+      "asset": "150_kutu41.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_kutu41.gif",
+      "sourceSha256": "84d8f6dafe6dbd9e5fd1e2523c251aa88749aa9d26dd172c7bcb5ef057c6691b",
+      "assetSha256": "9587b1b6afd506e3d83eb2970db655c6e91684dd566fc93d0cda9dd945e52bec",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_kutu41.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_SIRUKUBU-TU_002F34C7": {
+      "itemId": "IT_SOURCE_150_SIRUKUBU-TU_002F34C7",
+      "asset": "150_sirukubu-tu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_sirukubu-tu.jpg",
+      "sourceSha256": "88c5bf41c202688b2b3d81acf977cdb7ffde6c920d052cc6d587c5ada1eb15c6",
+      "assetSha256": "8f3395def8e1c64bb5d827047a6ed063b0346c1d93749cc1be56b70e6a779023",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_sirukubu-tu.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_KUTU56_83C01E8B": {
+      "itemId": "IT_SOURCE_150_KUTU56_83C01E8B",
+      "asset": "150_kutu56.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_kutu56.gif",
+      "sourceSha256": "b9cb9744dfe4f1472719997222a3174606477953cbf4969fdb4aaea84ef69508",
+      "assetSha256": "680d745f0137d311e9ea25465a4ff56949a9e15c16fe84e86e44494a434a5132",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_kutu56.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_SAFIAN_0C302BDB": {
+      "itemId": "IT_SOURCE_150_SAFIAN_0C302BDB",
+      "asset": "150_safian.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_safian.gif",
+      "sourceSha256": "c1cf7ab4226cf2a3b3bd6e7716f184225208e4b39a401503925bc667c1f01fb6",
+      "assetSha256": "30d9eb6b56b67e6835c7b5b45ce91582d7570701e9f1bb48536165e213062317",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_safian.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_KUTU86_3F9DA5BB": {
+      "itemId": "IT_SOURCE_150_KUTU86_3F9DA5BB",
+      "asset": "150_kutu86.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_kutu86.gif",
+      "sourceSha256": "5e30ecd1082c0b2f46a7dfb3aca31d74359abc8355145f4f9d1baa99f36b1de5",
+      "assetSha256": "039bb010167d2115a8088a6b27dbb805c4bedba4645535cd0a6f8f9568e2fa99",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_kutu86.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_MAGICBOOTS_2238025C": {
+      "itemId": "IT_SOURCE_150_MAGICBOOTS_2238025C",
+      "asset": "150_magicboots.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_magicboots.gif",
+      "sourceSha256": "f7b8e240c962322883245a740c61152b2bd6c1b4a7601c2feb4e14ccbb4278c6",
+      "assetSha256": "25683a60939a68dcb5061365474895dec879c301097b3028e2ff37bfb4fe2c97",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_magicboots.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_BATORUBUTU_9220E76A": {
+      "itemId": "IT_SOURCE_150_BATORUBUTU_9220E76A",
+      "asset": "150_batorubutu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_batorubutu.gif",
+      "sourceSha256": "ca33f960fe19e6128d545526a3921d3d0a239d093ab7395cd83f0eb7b3edb5e2",
+      "assetSha256": "30138ee466da3a6d2147b51a46212da32aabf5adb6b4e7320e2b16fb0e2a260e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_batorubutu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_MISURIRUBUTU_4580A69D": {
+      "itemId": "IT_SOURCE_150_MISURIRUBUTU_4580A69D",
+      "asset": "150_misurirubutu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_misurirubutu.gif",
+      "sourceSha256": "693c2c6c9407d80941764928c01428a6043d303ea1689f12f74128ab4abdee6d",
+      "assetSha256": "01e184fdf0c11e184463b953585b246a1e03227b7c444a2277b610b5c5ffe305",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_misurirubutu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_WORIAWOKA_3CD02556": {
+      "itemId": "IT_SOURCE_150_WORIAWOKA_3CD02556",
+      "asset": "150_woriawoka.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_woriawoka.gif",
+      "sourceSha256": "4738e991a9d93634cc6f6f0cf4839a1612a771420bd3930b90e1d3d23698d6cf",
+      "assetSha256": "397a814818cec2e85be65a5f1e997171295e073b4c3c20333594e27438ade55d",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_woriawoka.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_150_BARUTI_39722257": {
+      "itemId": "IT_SOURCE_150_BARUTI_39722257",
+      "asset": "150_baruti.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/150_baruti.gif",
+      "sourceSha256": "56aa44cdc81eb6f967ea1b963ffe1a9e0ea2132930ae94adf0ca668548935048",
+      "assetSha256": "96f1a20eb5fa411cc57aeccd0cb6bddaeab7924975d2a2607b111e3bf73c5e14",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "150_baruti.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/150.html"
+    },
+    "IT_SOURCE_152_ROORING_4759F2BA": {
+      "itemId": "IT_SOURCE_152_ROORING_4759F2BA",
+      "asset": "152_rooring.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_rooring.gif",
+      "sourceSha256": "ee7019f3437976c3e0bdd913809a286f92ea244491e3c20747a40333a6e62234",
+      "assetSha256": "9903d7183e5aa102b568c7f4ec4a664da89153cdea232c3ba28c41c83435749d",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_rooring.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_KENTETU_8B92FCD7": {
+      "itemId": "IT_SOURCE_152_KENTETU_8B92FCD7",
+      "asset": "152_kentetu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_kentetu.gif",
+      "sourceSha256": "5b74f6051405d7732a527ef3977ca2b7ea53e54253bb7104fa593e0264c2065a",
+      "assetSha256": "578432c35804a1bdf73b6ccf4b7bb0d67465b44f5da71526e3e3744f6d57e74b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_kentetu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_KIN_67A36C40": {
+      "itemId": "IT_SOURCE_152_KIN_67A36C40",
+      "asset": "152_kin.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_kin.gif",
+      "sourceSha256": "df4b6fdabaf494d7a7f92d0fe61b55dacbaa8db0375d5d14a4fabc84e007379a",
+      "assetSha256": "ff7571366e517dd645e883d06eca5a90283702817535ed0d114fb2ee9c250c01",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_kin.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_RING_REDJADE": {
+      "itemId": "IT_RING_REDJADE",
+      "asset": "152_kougyoku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_kougyoku.gif",
+      "sourceSha256": "3884a228386b168d64410e32ed5aa5f3d17283520aed5ecc4f25b4e3458b2975",
+      "assetSha256": "a79eb8851d49714f1af818f483857110ed6ade28e4120fb921cfa87bebe7e689",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_kougyoku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_SISUISYOU_11310F31": {
+      "itemId": "IT_SOURCE_152_SISUISYOU_11310F31",
+      "asset": "152_sisuisyou.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_sisuisyou.gif",
+      "sourceSha256": "913425bf10789ddad4469bb706aa5a1a3103110039213a8f0b349804a3510904",
+      "assetSha256": "2d72eb0b909f979a191a96121bffb9e84e655f09ed252075cb8157d488dcc6cd",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_sisuisyou.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_SANGO_A6FE6F21": {
+      "itemId": "IT_SOURCE_152_SANGO_A6FE6F21",
+      "asset": "152_sango.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_sango.gif",
+      "sourceSha256": "cdbb9d59e4937b9175f0eabc7949de94925d0eb51385129b0a803f49e0ac5365",
+      "assetSha256": "f81cc4cedacfd0dff3864ec0f441f3b1edf7b8d54b09db33efddd617e1fecca5",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_sango.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_TORAME_B1522F0F": {
+      "itemId": "IT_SOURCE_152_TORAME_B1522F0F",
+      "asset": "152_torame.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_torame.gif",
+      "sourceSha256": "a7b313ffd81db3c80844dcd7efe102a70d7a413532eb6b568fe374b942bda491",
+      "assetSha256": "a425f6800a20c7e8e1f287c95be174b421a1aea5b472f2cf44d472716d6ff8b9",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_torame.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_SAFAIA_81A4D338": {
+      "itemId": "IT_SOURCE_152_SAFAIA_81A4D338",
+      "asset": "152_safaia.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_safaia.gif",
+      "sourceSha256": "4df5cd13894806a562e8502c416e30dd3a0ceab6a40524eb01eb9a3dae37377f",
+      "assetSha256": "5e68659000b7d1ccc493afc98c519f832d020d206913434fa8cb28d7ba0ace02",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_safaia.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_RING_GORU": {
+      "itemId": "IT_RING_GORU",
+      "asset": "152_korou.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_korou.gif",
+      "sourceSha256": "8823779d975b2bc1c5c7758f841d9d69422f1779cac7ef752ba40f58fd3b2931",
+      "assetSha256": "45d33a57a77ce8a7582b40d17d04e18daa41bf0e5abd33ba3af4db5193a61e78",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_korou.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_RYOKUGYOKU_7AB8ADDD": {
+      "itemId": "IT_SOURCE_152_RYOKUGYOKU_7AB8ADDD",
+      "asset": "152_ryokugyoku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_ryokugyoku.gif",
+      "sourceSha256": "caf3dcc1cb402312c1f19d886c254d7754f9f05b61eb1993bb9719c8e1574782",
+      "assetSha256": "af41456c36fd42d4e490d9fe221ab1f900ac4e96ee67dffc00777d18ea237e8b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_ryokugyoku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_TAIRYOKUNOBLUESEPIAYUBIWA_745BFE1C": {
+      "itemId": "IT_SOURCE_152_TAIRYOKUNOBLUESEPIAYUBIWA_745BFE1C",
+      "asset": "152_tairyokunobluesepiayubiwa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_tairyokunobluesepiayubiwa.gif",
+      "sourceSha256": "799d1d3a76533a1f6b4527e2aafb03ed3e808be0f43ccb20c4cfabf418524671",
+      "assetSha256": "1fe80a1c24079c411ceaaacf034224c66e6669961fb5c212615b2ead5263b394",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_tairyokunobluesepiayubiwa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_RING_SILVERAQUA": {
+      "itemId": "IT_RING_SILVERAQUA",
+      "asset": "152_silveraqua.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_silveraqua.gif",
+      "sourceSha256": "3ad3f233c796ab433273c2a2fe0821f2c35e25e462fbab411930c802e5f319e0",
+      "assetSha256": "33a0083fcb8c63779a6aa58476bf45455a438e0cce33f3ca524fb4550be122dd",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_silveraqua.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_GORUDOAKUA_DE45DA1B": {
+      "itemId": "IT_SOURCE_152_GORUDOAKUA_DE45DA1B",
+      "asset": "152_gorudoakua.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_gorudoakua.gif",
+      "sourceSha256": "be0a262ba3dc2a5795d36fd90c1d90a8ed4428eefabf1cc757ce2ac783a27595",
+      "assetSha256": "a43b15e417fa124b810e8cfc8654c74c17d0bb66c96c031d7e8fec770099be44",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_gorudoakua.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_REDDOGANETOYUBIWA_CC8ED229": {
+      "itemId": "IT_SOURCE_152_REDDOGANETOYUBIWA_CC8ED229",
+      "asset": "152_reddoganetoyubiwa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_reddoganetoyubiwa.gif",
+      "sourceSha256": "11efdf28c7155fc2c37d99690a1b8e7c8b6def3aa91365df202cad48e212f8a1",
+      "assetSha256": "1da33102aaa7c266c641f3c2850f20b5fee8914657d2ba8dff01f87fac96ea3d",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_reddoganetoyubiwa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_RUBI_1313E2F4": {
+      "itemId": "IT_SOURCE_152_RUBI_1313E2F4",
+      "asset": "152_rubi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_rubi.gif",
+      "sourceSha256": "abe6c3e0dde7b9535ee011eb4861a2a5c04457402c3606bd71860a19592140e3",
+      "assetSha256": "f14c32878869413a2e7ce0afc8a3823f93aa863fd058b2715979d38041fe937f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_rubi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_TOPAZUYUBIWA_A13CED6E": {
+      "itemId": "IT_SOURCE_152_TOPAZUYUBIWA_A13CED6E",
+      "asset": "152_topazuyubiwa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_topazuyubiwa.gif",
+      "sourceSha256": "8633e719126cc05accffe3ee6c67c26fe3c8a42dc3db36c768b9709c8d4eb974",
+      "assetSha256": "271f7e34f3963c2cf69a18496aa766ab19ecb5d56322570010253484872c713f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_topazuyubiwa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_SUZAKUNOYUBIWA_98951BA8": {
+      "itemId": "IT_SOURCE_152_SUZAKUNOYUBIWA_98951BA8",
+      "asset": "152_suzakunoyubiwa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_suzakunoyubiwa.gif",
+      "sourceSha256": "a7f9978bac6576988acc1b04d04e3f39d9706bd1a366556f73be31dbdda6ed9f",
+      "assetSha256": "e60405ddc33724bacb57d71e462ee14e24625fc6b080b52d4abbce6ad8593bed",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_suzakunoyubiwa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_BAIRONNOYUBIWA_11415A80": {
+      "itemId": "IT_SOURCE_152_BAIRONNOYUBIWA_11415A80",
+      "asset": "152_baironnoyubiwa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_baironnoyubiwa.gif",
+      "sourceSha256": "2cd6cef409d4ee48e11fb905d42de7b96931f32d011d6c77ceafe2af093cd407",
+      "assetSha256": "d3d02127c75e88716b1e8d778fe443394c60a9f41de85c8cb01cae0cccacd262",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_baironnoyubiwa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_SOURCE_152_KEKONYUBIWA_2892DC6B": {
+      "itemId": "IT_SOURCE_152_KEKONYUBIWA_2892DC6B",
+      "asset": "152_kekonyubiwa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/152_kekonyubiwa.gif",
+      "sourceSha256": "52f7d47e885f826ca2d037e12368dcc11e6e464faa151d3646ce7b85cc3436fe",
+      "assetSha256": "da12e6a8352484b9fc1eeb665b858e6c83e2cb4b1981cfdc24c7659af4d30a5f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "152_kekonyubiwa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/152.html"
+    },
+    "IT_LEGGING_LEATHER": {
+      "itemId": "IT_LEGGING_LEATHER",
+      "asset": "155_kawaguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_kawaguri.gif",
+      "sourceSha256": "d17a66cdc6763162a77d5d0e09a6527f1beceee65dc3794df495dd65e14d35d7",
+      "assetSha256": "36eb66ca31874e535528a03765ccf8cec6dbdb941b2797e9974216804dc1fc9c",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_kawaguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_GURINHATOGURI_871D87FC": {
+      "itemId": "IT_SOURCE_155_GURINHATOGURI_871D87FC",
+      "asset": "155_gurinhatoguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_gurinhatoguri.gif",
+      "sourceSha256": "c3b34f74e056ee276ecb9d880e9de74432d36f827705cf808704153c762dac6c",
+      "assetSha256": "f7c2346d0cf4cefe7c8446872fbdb00911b0d2d9d14dbc597e9569cac2d3a166",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_gurinhatoguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_REDOHATOGURI_BA65AE3F": {
+      "itemId": "IT_SOURCE_155_REDOHATOGURI_BA65AE3F",
+      "asset": "155_redohatoguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_redohatoguri.gif",
+      "sourceSha256": "14e27e98bb7698646f3824dd891416ea3f0d5281828bab01c9462b895133f1e4",
+      "assetSha256": "3c3cb30e8935adc7d2135516c328d036d4bee038e1644d8783f77bef61ef8788",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_redohatoguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_DOUGURI_A82A5522": {
+      "itemId": "IT_SOURCE_155_DOUGURI_A82A5522",
+      "asset": "155_douguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_douguri.gif",
+      "sourceSha256": "b188e4639967a6e87cddcf72e58c70580d1fed120a82d209defb79c2209b1483",
+      "assetSha256": "89bbab90a652728fdbcdacd5bf5018e18ac34a03175fc34dc1b47e7902c8534b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_douguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_SANGOGURI_48B5B5B7": {
+      "itemId": "IT_SOURCE_155_SANGOGURI_48B5B5B7",
+      "asset": "155_sangoguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_sangoguri.gif",
+      "sourceSha256": "e9526cf3011cba873cab72fa6ce2eed55c13d38ec2b3e281781ddcd68c871566",
+      "assetSha256": "76f6ea38b5a192eabd8e25dd58ff1ccebfb6a90df750aed9ea48700afc1b5b1f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_sangoguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_GINGURI_A34075CC": {
+      "itemId": "IT_SOURCE_155_GINGURI_A34075CC",
+      "asset": "155_ginguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_ginguri.gif",
+      "sourceSha256": "d8b7d12f73468b13b663cbf50942ea018849127431eb6a60c491bd25762e33fd",
+      "assetSha256": "fe650e10c1a2628ecca40b67698f13df9a9aaf9e6582bd73ed284410a3620924",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_ginguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_AIANREZA-GURI-BUSU_250C8D66": {
+      "itemId": "IT_SOURCE_155_AIANREZA-GURI-BUSU_250C8D66",
+      "asset": "155_aianreza-guri-busu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_aianreza-guri-busu.gif",
+      "sourceSha256": "9a78dbd3b844fed58bb04d261be59e24491e525f582d1bb798616a98141be4aa",
+      "assetSha256": "4620241d85b8837e2978c2ad289809ecdd679abda8a40d853ce89a68c9a92877",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_aianreza-guri-busu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_AKUAGURI_C4398D7E": {
+      "itemId": "IT_SOURCE_155_AKUAGURI_C4398D7E",
+      "asset": "155_akuaguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_akuaguri.gif",
+      "sourceSha256": "39eefd97f98b71a75e22cd3f553a03cfb453641ae0e8aa6607411f87b7557ca5",
+      "assetSha256": "71dcc66947cfc9dc40e277223386770c9c8ae99efd559e294b677671335b7f36",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_akuaguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_KINGURI_1D935B28": {
+      "itemId": "IT_SOURCE_155_KINGURI_1D935B28",
+      "asset": "155_kinguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_kinguri.gif",
+      "sourceSha256": "8cf4503bd854a3b7ecf33624297e4f8aee47f9c7578e7bf7669530c8b07f6710",
+      "assetSha256": "51896d0152b1b87562ad814868cfb71a4e011be2aba2cfc7cd12972088e7352e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_kinguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_GORUDENPURETOGURI_7FFBB6A1": {
+      "itemId": "IT_SOURCE_155_GORUDENPURETOGURI_7FFBB6A1",
+      "asset": "155_gorudenpuretoguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_gorudenpuretoguri.gif",
+      "sourceSha256": "34a7fc543bbe6fad5e3d0e9697c5d41638b8d515351d82cd65ee47bf93a25911",
+      "assetSha256": "dc2f102321708bfb57e49c63fe0f100c355d9a843af16014dc4243cc20ba1e3e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_gorudenpuretoguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_MATAGURI_7CD3401F": {
+      "itemId": "IT_SOURCE_155_MATAGURI_7CD3401F",
+      "asset": "155_mataguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_mataguri.gif",
+      "sourceSha256": "f123bd68a7f481b1ef20fb9eceb82bd377655a50999bd2633233a15162d6cdbc",
+      "assetSha256": "89064b70e263b005669123e66fa804d6604be662740472a500dfccbe11bd7fc9",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_mataguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_YUMOU_47B94777": {
+      "itemId": "IT_SOURCE_155_YUMOU_47B94777",
+      "asset": "155_yumou.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_yumou.gif",
+      "sourceSha256": "245205eb213245ca1a399b90c701476f39c7506fa86adfe71c716e95ac024b31",
+      "assetSha256": "3c155339dfe0d85a4c6f3f9cd8e0680fd1ea2ab4404bf54833917e29556d6818",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_yumou.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_RYUGURI_A6E43C6B": {
+      "itemId": "IT_SOURCE_155_RYUGURI_A6E43C6B",
+      "asset": "155_ryuguri.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_ryuguri.gif",
+      "sourceSha256": "d7a29a4a580fcb2e8043dedf0d0bc2e1c7258080865c4e0dbcedcbe130be615b",
+      "assetSha256": "f1e66959767cd62444b3f01a63f2150914adb3c2a31eb09c343e4f95e9466e4b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_ryuguri.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103": {
+      "itemId": "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103",
+      "asset": "155_benethikawakuripu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_benethikawakuripu.gif",
+      "sourceSha256": "44f3b71e76ef988f4bce97b9d7cc1d77f40773a09a34bc89685c83fd7403de76",
+      "assetSha256": "927712d9a4c06cfb678d8b1e82a35e9ea8cbd2de8f540691d53eccf14f2876a6",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_benethikawakuripu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_SOURCE_155_AB10_A6AAE9C2": {
+      "itemId": "IT_SOURCE_155_AB10_A6AAE9C2",
+      "asset": "155_ab10.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/155_ab10.gif",
+      "sourceSha256": "9eb44386eabeb74923ceb190ad8804a5079e95b2a950965a101ce845ac0aef9c",
+      "assetSha256": "bf79ad161c6fe6785fffc73649509a161d907d44da26c64ca3f632336332ea31",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "155_ab10.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/155.html"
+    },
+    "IT_GLOVE_LEATHER": {
+      "itemId": "IT_GLOVE_LEATHER",
+      "asset": "170_kawate.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kawate.gif",
+      "sourceSha256": "02e53f9b47303abf463669e2dbe72ef5d7c8aac83d8e54a55ac37214cf8cd707",
+      "assetSha256": "d3058a279dc4b8fd40427d425eb4f807d414eb141b94d7bee32127c7da813eea",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kawate.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_DOUTE_A5E44029": {
+      "itemId": "IT_SOURCE_170_DOUTE_A5E44029",
+      "asset": "170_doute.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_doute.gif",
+      "sourceSha256": "3692479a304ee90df10998bc61af173f6e84d3c5d17d002f2c57932025e56cd7",
+      "assetSha256": "0530f9785cf76a42f0b9169e7f506e21a51d739027fcdb9053bc24a6b5620b06",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_doute.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_AQUAGLOVE_D58808FC": {
+      "itemId": "IT_SOURCE_170_AQUAGLOVE_D58808FC",
+      "asset": "170_aquaglove.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_aquaglove.jpg",
+      "sourceSha256": "a0d6e565d522d110ccecb7b2397131a2258af7caaf27b45f2661d78a54ee0530",
+      "assetSha256": "6528fefea3d79371c2e1489059f37e07efdbd0b3e32490a34795a10e97125006",
+      "crop": [
+        0,
+        0,
+        32,
+        30
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_aquaglove.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_GINTE_D06DD1FA": {
+      "itemId": "IT_SOURCE_170_GINTE_D06DD1FA",
+      "asset": "170_ginte.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_ginte.gif",
+      "sourceSha256": "42386f2863baeb3252e9ae087a34fc05b12aec26931a5b1c2f765af12644baf9",
+      "assetSha256": "98ecf885b11c4c632a5407a6e43db6f03177f754ac77ec9b9cb0fbb332131611",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_ginte.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_AQUAGLOVE02_2FABCC4B": {
+      "itemId": "IT_SOURCE_170_AQUAGLOVE02_2FABCC4B",
+      "asset": "170_aquaglove02.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_aquaglove02.gif",
+      "sourceSha256": "be5c2cebc91cdbaa0dcdd0280f2c97bc7fc7dacbc542a1e7fbff97a26f9e9c49",
+      "assetSha256": "28d05d9e7f3bded4fd2c8ca628cfc3c6b3aaf6dc1d3e5f9d82c8e830d0e96b9b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_aquaglove02.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_AIANREZA-TEBUKURO_4D381BCE": {
+      "itemId": "IT_SOURCE_170_AIANREZA-TEBUKURO_4D381BCE",
+      "asset": "170_aianreza-tebukuro.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_aianreza-tebukuro.gif",
+      "sourceSha256": "85e2fca9b3227a4a40778fed140f10cf767fa84aa770045ae8f1343542f86fe7",
+      "assetSha256": "3ba5a09330d2d346b34485573063903d964acd8779e93358f0f7f9388fe0dd65",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_aianreza-tebukuro.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_GINTE_R_166E6D7D": {
+      "itemId": "IT_SOURCE_170_GINTE_R_166E6D7D",
+      "asset": "170_ginte_r.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_ginte_r.gif",
+      "sourceSha256": "ed060f01e388cccd0c85232da291ada637508c84116ea9500425e11403b7b8f0",
+      "assetSha256": "ea7aec0e591a589d294a7101bd407d4845ecf424eb65f07e51e71456505b6726",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_ginte_r.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_KINTEBUKURO_7E1109C9": {
+      "itemId": "IT_SOURCE_170_KINTEBUKURO_7E1109C9",
+      "asset": "170_kintebukuro.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kintebukuro.gif",
+      "sourceSha256": "1e6eb706066715aadd0bbc760cef18f9050d0f207643bc0921aff15c26eb277e",
+      "assetSha256": "34e6e8fda4fa100422530c91460c7f23d99bfbd4921d101343b0498751393f0a",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kintebukuro.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_KHANGOLDGLOVER_A65F8611": {
+      "itemId": "IT_SOURCE_170_KHANGOLDGLOVER_A65F8611",
+      "asset": "170_khangoldgloveR.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_khangoldgloveR.jpg",
+      "sourceSha256": "a2e73da55d4f6267b41ddec8e396e85958dab1418462d8bb475bb5aea7a728ed",
+      "assetSha256": "c2996f2b507d022f049e9304e23a24b7472b394a439c8bde05e3ccc1cfd906a1",
+      "crop": [
+        0,
+        0,
+        34,
+        31
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_khangoldgloveR.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8": {
+      "itemId": "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8",
+      "asset": "170_noesglove51.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_noesglove51.gif",
+      "sourceSha256": "e560a48efc87c7422964ca251778e33e58f1335874fd826a52b5fc80062ed92d",
+      "assetSha256": "9d8754a5e0664759e109f729c3909bfcfba81fa70a7a70f08584d29cb2666411",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_noesglove51.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_NOESGLOVE81_7DBCEB08": {
+      "itemId": "IT_SOURCE_170_NOESGLOVE81_7DBCEB08",
+      "asset": "170_noesglove81.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_noesglove81.gif",
+      "sourceSha256": "21beff3c18be960fe63a5c3c9b862bccf8a2f935ba5b94d18a76519b86154367",
+      "assetSha256": "e4e49e36862dbb340beb76ffb1039920a1aef8ec41ce48a1b3c8463e0b42e48a",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_noesglove81.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_NOESGLOVEMAS_04B5B0C9": {
+      "itemId": "IT_SOURCE_170_NOESGLOVEMAS_04B5B0C9",
+      "asset": "170_noesglovemas.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_noesglovemas.gif",
+      "sourceSha256": "60c34480931b1603e764fa84d27299fa5137141c9218666add03321e689d85da",
+      "assetSha256": "272dcd62d62984729387c43b49cd4856ebaf698e28d9466ce29b4b6b7ff9498b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_noesglovemas.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_MATARUMUGLOVE_13EFD244": {
+      "itemId": "IT_SOURCE_170_MATARUMUGLOVE_13EFD244",
+      "asset": "170_matarumuglove.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_matarumuglove.gif",
+      "sourceSha256": "4354dc25a3e68b93a37bc54a0e66e724beb18f9c4b91ac85fbdd821499c62ce5",
+      "assetSha256": "7e14d09bde4aaaff6cd16b1e754490458391ac3906b1e5cf330c0371f5a6c32e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_matarumuglove.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_REDAGLOVE_F007FA8F": {
+      "itemId": "IT_SOURCE_170_REDAGLOVE_F007FA8F",
+      "asset": "170_redaglove.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_redaglove.gif",
+      "sourceSha256": "dc0b304bdc6c0db4b58263ad81acbf2f08207690d74e2da8fdc68f8f424f5ca0",
+      "assetSha256": "08589da0b04c7dde77853ece1f7bfe786139b3a80e1a800bec47f23d91f5eff9",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_redaglove.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_GUMGLOVE_A39D8422": {
+      "itemId": "IT_SOURCE_170_GUMGLOVE_A39D8422",
+      "asset": "170_gumglove.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_gumglove.gif",
+      "sourceSha256": "738cd7fdfbc0a0402afaf5f4102ffd9bcb4a4631ec249d62fa74108714ddd08e",
+      "assetSha256": "f7516a4a930d0dd75d9f246c8e28dcb239765cc733bfb49b17c52697a476b5ff",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_gumglove.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_NEBILIST_8B0E7D73": {
+      "itemId": "IT_SOURCE_170_NEBILIST_8B0E7D73",
+      "asset": "170_nebilist.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_nebilist.jpg",
+      "sourceSha256": "58343f934efe3d5a85229fedfab419fbdb77ce7940d4a6f665c8b180906636f5",
+      "assetSha256": "311f79be18303e2d8e75cbc36e9bccdbd88d68c47532e188a92f09d1a0a9d423",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_nebilist.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_JUELGLOVE_2594DE89": {
+      "itemId": "IT_SOURCE_170_JUELGLOVE_2594DE89",
+      "asset": "170_juelglove.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_juelglove.jpg",
+      "sourceSha256": "729e0ae83ca6eaff3bb7b42ea28cc42ef28de85784e82e34b9b70047719a315d",
+      "assetSha256": "015008b7c4f770f3ba998f67d7ffd8ef4d630aafdad35e88160ccd98886f7d1e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_juelglove.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_VEGAGLOVE_2C49C6AE": {
+      "itemId": "IT_SOURCE_170_VEGAGLOVE_2C49C6AE",
+      "asset": "170_vegaglove.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_vegaglove.jpg",
+      "sourceSha256": "262f404b19ccf1392fee093e178e9e728b255f84a90a935b57091b825be68ec8",
+      "assetSha256": "3726f92cbd8d1c4191f92e16683647e98bce2378cfe422c7de23c5d61644e08e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_vegaglove.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_PAWARISUTO_CCE90CC1": {
+      "itemId": "IT_SOURCE_170_PAWARISUTO_CCE90CC1",
+      "asset": "170_pawarisuto.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_pawarisuto.gif",
+      "sourceSha256": "159cd496339f6de5c8783d1cd3eca6a3e8170b2d89c31c402905b69e048cb7d1",
+      "assetSha256": "6ab42e66696bf64932b5d26e59daaca58f43bbc5469a3afc381c8a62b9d2ad9b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_pawarisuto.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_MAJIKURISUTO_695C046E": {
+      "itemId": "IT_SOURCE_170_MAJIKURISUTO_695C046E",
+      "asset": "170_majikurisuto.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_majikurisuto.gif",
+      "sourceSha256": "8020dbb15fc6cf369b94a7bc4565db448a874e1c17831ce13241f1cbba69bb1f",
+      "assetSha256": "f99ae4c80a0df83722cceb024a37e13268ec0310f5fd8b2a4110a278845995e6",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_majikurisuto.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_JUNO_AA3C7686": {
+      "itemId": "IT_SOURCE_170_JUNO_AA3C7686",
+      "asset": "170_juno.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_juno.jpg",
+      "sourceSha256": "8ef330dde5a9b04ef874ad3cf7d14032aa35ed2e5856007c3617e377932035c7",
+      "assetSha256": "bad69138bc52b17365024d411d61b9e92b62530693907f21f1f8cc06aa0402cb",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_juno.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_KUREARISUTO_EB00C792": {
+      "itemId": "IT_SOURCE_170_KUREARISUTO_EB00C792",
+      "asset": "170_kurearisuto.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kurearisuto.gif",
+      "sourceSha256": "0faacd71fd02e14de52806d6bd5b2d36c55ff19cba32c5410ba830d046ccfdfc",
+      "assetSha256": "e5db7de8ebf35fde894ee708ef4e1c3c433d1313321fde90e8066f5603bd5d95",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kurearisuto.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_KAWAUDEWA_7B660B48": {
+      "itemId": "IT_SOURCE_170_KAWAUDEWA_7B660B48",
+      "asset": "170_kawaudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kawaudewa.gif",
+      "sourceSha256": "967a26b0863c9c5b1dd9f0d6bf58943ae6b81e9371ab30acaba40501dc227bb5",
+      "assetSha256": "bd88b36a3d215efff6aadcac552566604f1b94304132cbc20ca4cf0f8cba0743",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kawaudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_DOUUDEWA_627B876E": {
+      "itemId": "IT_SOURCE_170_DOUUDEWA_627B876E",
+      "asset": "170_douudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_douudewa.gif",
+      "sourceSha256": "c529123c26afc11e9f55ef442e1a16ed3933e7ec75691a269e4ee39292a810c0",
+      "assetSha256": "1a2525d92b0f85373076563edbdbf97f1aa86e5834b3b8d54d72478ade04463a",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_douudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_GINUDEWA_98AFCA6F": {
+      "itemId": "IT_SOURCE_170_GINUDEWA_98AFCA6F",
+      "asset": "170_ginudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_ginudewa.gif",
+      "sourceSha256": "12383aa56527df346b3b40c9dfef7eb9e5658d2f7e2b5f1805428e965a7c4ee6",
+      "assetSha256": "4144696fa6da72f1d1505c58eaa2cba8b0cdd31fa4b1255a95f9c410b296886e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_ginudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_KINUDEWA_9D051BB4": {
+      "itemId": "IT_SOURCE_170_KINUDEWA_9D051BB4",
+      "asset": "170_kinudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kinudewa.gif",
+      "sourceSha256": "074e96976274d3f4c87b9c1cc2345611172654014dc91496e312bc691b65e8be",
+      "assetSha256": "ba7fa60af17c1e1116c7abf5c8074431af1118954e6fcdd58f20526e7d3c0ab4",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kinudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_SAMEKAWAUDEWA_2772BFCF": {
+      "itemId": "IT_SOURCE_170_SAMEKAWAUDEWA_2772BFCF",
+      "asset": "170_samekawaudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_samekawaudewa.gif",
+      "sourceSha256": "a40259ea2c9dfc5358550b2cc59dc4edecdd5dec84ce4399765948212e1df652",
+      "assetSha256": "505f93138e86198116588069e82412db77fdcc9024daba4642ddc51e1224f86a",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_samekawaudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_SANGOUDEWA_ADBB6639": {
+      "itemId": "IT_SOURCE_170_SANGOUDEWA_ADBB6639",
+      "asset": "170_sangoudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_sangoudewa.gif",
+      "sourceSha256": "cdbbf6f08f69257d22a576ed65ffeadcefe4a64ba825ee247c9d14e5cf6e00d4",
+      "assetSha256": "473b19c8ea9c6212bd23b02205b586c33b5015bd848a7ec6ade92a7be75912e1",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_sangoudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_NOESUDEWA51_63C1878A": {
+      "itemId": "IT_SOURCE_170_NOESUDEWA51_63C1878A",
+      "asset": "170_noesudewa51.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_noesudewa51.gif",
+      "sourceSha256": "243ccaf23cb8f010a716a52a0fd9e5d022b16d2705e3338bc50c4318dd41ecf4",
+      "assetSha256": "b20598af91cc3718200b7664ae2e2ce12604c035ee482431418a5b11ff2f889f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_noesudewa51.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_NOESUDEWA81_1D924113": {
+      "itemId": "IT_SOURCE_170_NOESUDEWA81_1D924113",
+      "asset": "170_noesudewa81.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_noesudewa81.gif",
+      "sourceSha256": "f795b38347984d940c23574aca621cbd300381f73c478d2737c2b5de2fb6db14",
+      "assetSha256": "7ecf548a193efd06b8fcf39e474f8e1cd819b0f472f6afaccfd6e8c0f241417d",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_noesudewa81.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72": {
+      "itemId": "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72",
+      "asset": "170_noesudewamas.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_noesudewamas.gif",
+      "sourceSha256": "69a23e85b701490eda5028d5ee545afe61fe26a2ef81f29a98c0474dbc0ffb00",
+      "assetSha256": "f5f9ec62c48bce21ff217826f6ee62ed75bea210da2e4ca8ef5ab0633e9265a1",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_noesudewamas.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_BUREISA_BC0CFFF2": {
+      "itemId": "IT_SOURCE_170_BUREISA_BC0CFFF2",
+      "asset": "170_bureisa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_bureisa.gif",
+      "sourceSha256": "03b0b8a38e445f5a9ed13510d658e60d92be786d4ac3f80c6bd0f1fe16274082",
+      "assetSha256": "33e1e71b9c4e5ab4916408b534fa19496d1549e4295300eca11894cd6ce17faa",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_bureisa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_EXCELDEAMONUDEWA_90A44943": {
+      "itemId": "IT_SOURCE_170_EXCELDEAMONUDEWA_90A44943",
+      "asset": "170_exceldeamonudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_exceldeamonudewa.gif",
+      "sourceSha256": "24f6c2385c6c2aecec291edaa1b533ee59a6071f19a2b056e2ffa7f23c082ae3",
+      "assetSha256": "0b5fd52c175cebaa9dca80b80c89370185f9383ec6f24e1c0493ea7296352ada",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_exceldeamonudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_IRONBRACE_C42CC60D": {
+      "itemId": "IT_SOURCE_170_IRONBRACE_C42CC60D",
+      "asset": "170_ironbrace.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_ironbrace.jpg",
+      "sourceSha256": "91ade4ff5212f743034a0d3ff810ba20a36c54935b51ae243bfd2d6106a583f4",
+      "assetSha256": "83f0f690a5c452fc68bb3ada6c36d0760b417c8205a10bae5aacc6f1fb23d1ae",
+      "crop": [
+        0,
+        0,
+        33,
+        34
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_ironbrace.jpg",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_RYUUUDEWA_01F1AC5F": {
+      "itemId": "IT_SOURCE_170_RYUUUDEWA_01F1AC5F",
+      "asset": "170_ryuuudewa.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_ryuuudewa.gif",
+      "sourceSha256": "515d5d8a1f141a7e184cef56146c3ed5e5c7eebbe423116107661bbb6a7ffb31",
+      "assetSha256": "5878e1e210abf23a4797d96f56fac90de2b0e59fca6b9e0acea9af89735867ff",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_ryuuudewa.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_170_JUNOABUREISU_BB4EED95": {
+      "itemId": "IT_SOURCE_170_JUNOABUREISU_BB4EED95",
+      "asset": "170_junoabureisu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_junoabureisu.gif",
+      "sourceSha256": "cce354dca4d15439b7274a06587b1075b36a9d57a6847cbefbc6d1fea3bf54a6",
+      "assetSha256": "04a2a68d66d92c477e2faa0817913d5919b2cebac1671e57d909a877af712adf",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_junoabureisu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html"
+    },
+    "IT_SOURCE_193_FIREBELT_449392D4": {
+      "itemId": "IT_SOURCE_193_FIREBELT_449392D4",
+      "asset": "193_firebelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_firebelt.gif",
+      "sourceSha256": "c0805a9da12796fbcbe2993bcefb485a423c9cf706b0690a7e61e2384b1102d2",
+      "assetSha256": "287f59ef16bae357243a085427e019d933792e712708d20bdc0a3b5b9b8ca5c6",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_firebelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_WINDBELT_AF012333": {
+      "itemId": "IT_SOURCE_193_WINDBELT_AF012333",
+      "asset": "193_windbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_windbelt.gif",
+      "sourceSha256": "888e36e2d2d3a9d0025dafaaf6d6d183e0904eedac1378e397564635c6fd4c2f",
+      "assetSha256": "c6588aab1d2d0a6e0e342fcb6432e12fae184b6560ba7f044f317818a12391bc",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_windbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_EARTHBELT_226B231D": {
+      "itemId": "IT_SOURCE_193_EARTHBELT_226B231D",
+      "asset": "193_earthbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_earthbelt.gif",
+      "sourceSha256": "a49c81b24487a414f54a2cd4d73e75ea8e3972d548ab5b5060351a2a86b81a28",
+      "assetSha256": "2ab1bb4ab528bf97b0ef5e3c8cc474baeaeb46ea045f34bea7ec83f225ec527b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_earthbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_WATERBELT_383B7970": {
+      "itemId": "IT_SOURCE_193_WATERBELT_383B7970",
+      "asset": "193_waterbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_waterbelt.gif",
+      "sourceSha256": "a3fd4093dfefda5a7d63040c69d789d6526f86cb2cadd01804069284ee2418cf",
+      "assetSha256": "367eb598d2b4ef7680a58ff70d02a7a6c25cd46fcf104cc04604f59660f25ced",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_waterbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_LEATHERBELT_22469A11": {
+      "itemId": "IT_SOURCE_193_LEATHERBELT_22469A11",
+      "asset": "193_leatherbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_leatherbelt.gif",
+      "sourceSha256": "9497fbc47c7cee96b176a6da474010b521cf17300ca5c1cb15da9655092cedce",
+      "assetSha256": "534ace8837d7669d17e3b6f5797abde59a58bb9904177b732e3bab3fe13ee7c4",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_leatherbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_BELT_FIRE_LEATHER": {
+      "itemId": "IT_BELT_FIRE_LEATHER",
+      "asset": "193_leatherbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_leatherbelt.gif",
+      "sourceSha256": "9497fbc47c7cee96b176a6da474010b521cf17300ca5c1cb15da9655092cedce",
+      "assetSha256": "534ace8837d7669d17e3b6f5797abde59a58bb9904177b732e3bab3fe13ee7c4",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_leatherbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_BELT_WIND_LEATHER": {
+      "itemId": "IT_BELT_WIND_LEATHER",
+      "asset": "193_leatherbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_leatherbelt.gif",
+      "sourceSha256": "9497fbc47c7cee96b176a6da474010b521cf17300ca5c1cb15da9655092cedce",
+      "assetSha256": "534ace8837d7669d17e3b6f5797abde59a58bb9904177b732e3bab3fe13ee7c4",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_leatherbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_BELT_EARTH_LEATHER": {
+      "itemId": "IT_BELT_EARTH_LEATHER",
+      "asset": "193_leatherbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_leatherbelt.gif",
+      "sourceSha256": "9497fbc47c7cee96b176a6da474010b521cf17300ca5c1cb15da9655092cedce",
+      "assetSha256": "534ace8837d7669d17e3b6f5797abde59a58bb9904177b732e3bab3fe13ee7c4",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_leatherbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_BELT_WATER_LEATHER": {
+      "itemId": "IT_BELT_WATER_LEATHER",
+      "asset": "193_leatherbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_leatherbelt.gif",
+      "sourceSha256": "9497fbc47c7cee96b176a6da474010b521cf17300ca5c1cb15da9655092cedce",
+      "assetSha256": "534ace8837d7669d17e3b6f5797abde59a58bb9904177b732e3bab3fe13ee7c4",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_leatherbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_SILVERBELT_59257BAB": {
+      "itemId": "IT_SOURCE_193_SILVERBELT_59257BAB",
+      "asset": "193_silverbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_silverbelt.gif",
+      "sourceSha256": "4b935d09192b20dc9450228f427d3b26019e3904b24efbde85a49bddd0c12432",
+      "assetSha256": "58f01b40cee04d2109eeebd7f04fcf4d97cd21b976957b2b4777da5dc2441cd8",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_silverbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_SILVERBELT_9B4B562A": {
+      "itemId": "IT_SOURCE_193_SILVERBELT_9B4B562A",
+      "asset": "193_silverbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_silverbelt.gif",
+      "sourceSha256": "4b935d09192b20dc9450228f427d3b26019e3904b24efbde85a49bddd0c12432",
+      "assetSha256": "58f01b40cee04d2109eeebd7f04fcf4d97cd21b976957b2b4777da5dc2441cd8",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_silverbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_SILVERBELT_26ACEA62": {
+      "itemId": "IT_SOURCE_193_SILVERBELT_26ACEA62",
+      "asset": "193_silverbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_silverbelt.gif",
+      "sourceSha256": "4b935d09192b20dc9450228f427d3b26019e3904b24efbde85a49bddd0c12432",
+      "assetSha256": "58f01b40cee04d2109eeebd7f04fcf4d97cd21b976957b2b4777da5dc2441cd8",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_silverbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_SILVERBELT_9A400E2B": {
+      "itemId": "IT_SOURCE_193_SILVERBELT_9A400E2B",
+      "asset": "193_silverbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_silverbelt.gif",
+      "sourceSha256": "4b935d09192b20dc9450228f427d3b26019e3904b24efbde85a49bddd0c12432",
+      "assetSha256": "58f01b40cee04d2109eeebd7f04fcf4d97cd21b976957b2b4777da5dc2441cd8",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_silverbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_SILVERBELT_E2347088": {
+      "itemId": "IT_SOURCE_193_SILVERBELT_E2347088",
+      "asset": "193_silverbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_silverbelt.gif",
+      "sourceSha256": "4b935d09192b20dc9450228f427d3b26019e3904b24efbde85a49bddd0c12432",
+      "assetSha256": "58f01b40cee04d2109eeebd7f04fcf4d97cd21b976957b2b4777da5dc2441cd8",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_silverbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_GOLDBELT_8ABE1100": {
+      "itemId": "IT_SOURCE_193_GOLDBELT_8ABE1100",
+      "asset": "193_goldbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_goldbelt.gif",
+      "sourceSha256": "26aa0f2c5aacc317787180fc825e6b3dcdaf5df3f573d3f82b0bc1ddbc5edc71",
+      "assetSha256": "e19399d9a824ab10f08e2f82191dcf9cf8718661f1174e77ffb1ebe5a5397323",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_goldbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_GOLDBELT_BC73AA9A": {
+      "itemId": "IT_SOURCE_193_GOLDBELT_BC73AA9A",
+      "asset": "193_goldbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_goldbelt.gif",
+      "sourceSha256": "26aa0f2c5aacc317787180fc825e6b3dcdaf5df3f573d3f82b0bc1ddbc5edc71",
+      "assetSha256": "e19399d9a824ab10f08e2f82191dcf9cf8718661f1174e77ffb1ebe5a5397323",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_goldbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_GOLDBELT_F5E4AA12": {
+      "itemId": "IT_SOURCE_193_GOLDBELT_F5E4AA12",
+      "asset": "193_goldbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_goldbelt.gif",
+      "sourceSha256": "26aa0f2c5aacc317787180fc825e6b3dcdaf5df3f573d3f82b0bc1ddbc5edc71",
+      "assetSha256": "e19399d9a824ab10f08e2f82191dcf9cf8718661f1174e77ffb1ebe5a5397323",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_goldbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_GOLDBELT_43AC2098": {
+      "itemId": "IT_SOURCE_193_GOLDBELT_43AC2098",
+      "asset": "193_goldbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_goldbelt.gif",
+      "sourceSha256": "26aa0f2c5aacc317787180fc825e6b3dcdaf5df3f573d3f82b0bc1ddbc5edc71",
+      "assetSha256": "e19399d9a824ab10f08e2f82191dcf9cf8718661f1174e77ffb1ebe5a5397323",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_goldbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_GOLDBELT_E78C2A09": {
+      "itemId": "IT_SOURCE_193_GOLDBELT_E78C2A09",
+      "asset": "193_goldbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_goldbelt.gif",
+      "sourceSha256": "26aa0f2c5aacc317787180fc825e6b3dcdaf5df3f573d3f82b0bc1ddbc5edc71",
+      "assetSha256": "e19399d9a824ab10f08e2f82191dcf9cf8718661f1174e77ffb1ebe5a5397323",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_goldbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_ZEMBELT_HI_F3EB78A9": {
+      "itemId": "IT_SOURCE_193_ZEMBELT_HI_F3EB78A9",
+      "asset": "193_zembelt_hi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_zembelt_hi.gif",
+      "sourceSha256": "4f37a5382eb8ab255001666ddab3d5c9cbd8e2a74db7d240a696af220fd9684e",
+      "assetSha256": "852faed485926233d37af19fc085940a84a8516fc879e42b1abd83c8cf1729b3",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_zembelt_hi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_ZEMBELT_KAZE_A13FE1DB": {
+      "itemId": "IT_SOURCE_193_ZEMBELT_KAZE_A13FE1DB",
+      "asset": "193_zembelt_kaze.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_zembelt_kaze.gif",
+      "sourceSha256": "811f05865e9bdc680268fbdffb441e1878bbe0fb11ca7de68c713c68d27b4a57",
+      "assetSha256": "26bbdb5c6712f83cff61a5daef224a9afd31cca79c6a47841fc54e989f40b299",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_zembelt_kaze.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_ZEMBELT_TI_ABF612E2": {
+      "itemId": "IT_SOURCE_193_ZEMBELT_TI_ABF612E2",
+      "asset": "193_zembelt_ti.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_zembelt_ti.gif",
+      "sourceSha256": "2e23ca0003234d38b45d387dad2b2f5029f6d532d2e7622b7ccd971f31185155",
+      "assetSha256": "48bff935b5426a52514dd90dd295254aa876e8f1a04d4afe64229ffc871318a8",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_zembelt_ti.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_ZEMBELT_UMI_B85A36BB": {
+      "itemId": "IT_SOURCE_193_ZEMBELT_UMI_B85A36BB",
+      "asset": "193_zembelt_umi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_zembelt_umi.gif",
+      "sourceSha256": "f4a29d5bb0c6951bf7eec5a0bcc2505a33b81a2e4f151f351343b54d706d394a",
+      "assetSha256": "52323a1c254ab8470417113a2a307939c2157f0f171f11e31ff1fc17382627bf",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_zembelt_umi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_ZEMBELT_KIN_99326977": {
+      "itemId": "IT_SOURCE_193_ZEMBELT_KIN_99326977",
+      "asset": "193_zembelt_kin.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_zembelt_kin.gif",
+      "sourceSha256": "b12d557560460e0a70929cd76531234880de7a134d5ea2c65c9a06a21ec54a8d",
+      "assetSha256": "e12a06508f9de78c4cbb9c0d5cd3c14cbc480ca9a6eed5b27e9cd8d714777ebe",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_zembelt_kin.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_ZEMUBELT_KI_E92C1218": {
+      "itemId": "IT_SOURCE_193_ZEMUBELT_KI_E92C1218",
+      "asset": "193_zemubelt_ki.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_zemubelt_ki.gif",
+      "sourceSha256": "1d77c87411e8f8d65d6ba004e8a35eff9433e4e34ce62945a2aea9f31e8fa108",
+      "assetSha256": "50cd5d076e7725813445412082f046703a21d0d69b98ab3576b337ce6d40ee9c",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_zemubelt_ki.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_MASTERBELT_3B1C2CC1": {
+      "itemId": "IT_SOURCE_193_MASTERBELT_3B1C2CC1",
+      "asset": "193_masterbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_masterbelt.gif",
+      "sourceSha256": "f2c8afb47bf487a17fd446b8b311b4240e5c39785ddc6c297a2b1a9e19771492",
+      "assetSha256": "7307d4cc5d620b1730466adcc8a7404ee8ca3798cb47757743497731f422048b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_masterbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_MASTERBELT_205324F4": {
+      "itemId": "IT_SOURCE_193_MASTERBELT_205324F4",
+      "asset": "193_masterbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_masterbelt.gif",
+      "sourceSha256": "f2c8afb47bf487a17fd446b8b311b4240e5c39785ddc6c297a2b1a9e19771492",
+      "assetSha256": "7307d4cc5d620b1730466adcc8a7404ee8ca3798cb47757743497731f422048b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_masterbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_MASTERBELT_27922105": {
+      "itemId": "IT_SOURCE_193_MASTERBELT_27922105",
+      "asset": "193_masterbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_masterbelt.gif",
+      "sourceSha256": "f2c8afb47bf487a17fd446b8b311b4240e5c39785ddc6c297a2b1a9e19771492",
+      "assetSha256": "7307d4cc5d620b1730466adcc8a7404ee8ca3798cb47757743497731f422048b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_masterbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_MASTERBELT_DFE6DBAF": {
+      "itemId": "IT_SOURCE_193_MASTERBELT_DFE6DBAF",
+      "asset": "193_masterbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_masterbelt.gif",
+      "sourceSha256": "f2c8afb47bf487a17fd446b8b311b4240e5c39785ddc6c297a2b1a9e19771492",
+      "assetSha256": "7307d4cc5d620b1730466adcc8a7404ee8ca3798cb47757743497731f422048b",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_masterbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_KAENNORUNASABERUTO_D6CECBD9": {
+      "itemId": "IT_SOURCE_193_KAENNORUNASABERUTO_D6CECBD9",
+      "asset": "193_kaennorunasaberuto.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_kaennorunasaberuto.gif",
+      "sourceSha256": "f18868f8a7e5b2879f467f34ed5c88d42057f008a47cdaed762b75e3b463ebca",
+      "assetSha256": "54fecb04580970dd475952b0d386ebb3cfe6821a8feeabd3aa13f2f89876dfd9",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_kaennorunasaberuto.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038": {
+      "itemId": "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038",
+      "asset": "193_suzakunoberuto.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_suzakunoberuto.gif",
+      "sourceSha256": "90ced6ad34f4e57f07a60f59a7d15ebca693dbdd0c7077fd9fa1a44fac7d6b5c",
+      "assetSha256": "f64f910571435da1e3faa28f0f5fb5f997850a24389e249b581d08c8924247e3",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_suzakunoberuto.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_193_DARKBELT_6B3683B8": {
+      "itemId": "IT_SOURCE_193_DARKBELT_6B3683B8",
+      "asset": "193_darkbelt.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/193_darkbelt.gif",
+      "sourceSha256": "ffb067b56432a3d48b849a5bc4171caeaf44923c443fc6485b1f41811c46700a",
+      "assetSha256": "ddc8683d78d81310fa236f6dd5223feff1ab53e954fa60a84ca01399723eaf6a",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "193_darkbelt.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/193.html"
+    },
+    "IT_SOURCE_197_KANNEKU_56B04FF1": {
+      "itemId": "IT_SOURCE_197_KANNEKU_56B04FF1",
+      "asset": "197_kanneku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kanneku.gif",
+      "sourceSha256": "6aaf52ba87724c6a55c174ac6148e9f6b49a7ec612d5cd98c65a8e9dba255e86",
+      "assetSha256": "a080b9497cde3baaf6d7e4fa7876a863c190c6fba4d5b861b259021c0d7259d3",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kanneku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_KAENNEKU_584513F2": {
+      "itemId": "IT_SOURCE_197_KAENNEKU_584513F2",
+      "asset": "197_kaenneku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kaenneku.gif",
+      "sourceSha256": "c967012f626670ce9b76eb5d65a8eec28cb5ebc32e416bf5f37c44b842927a68",
+      "assetSha256": "e614ec3fd9d7fcf3a439c8ef8d8fc7985666b95796a0a4bf517b15baa3c910fc",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kaenneku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_KAZENEKU_2DB6010B": {
+      "itemId": "IT_SOURCE_197_KAZENEKU_2DB6010B",
+      "asset": "197_kazeneku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kazeneku.gif",
+      "sourceSha256": "449e63d2dc70ede18cedadd6419e20213908f7a6d66bb4b6f7622fd6cb53696e",
+      "assetSha256": "341233b5e75f5be362665bfc7c044e3d8411a44e3c9acc38902adc5afb1d54d4",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kazeneku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_DAICHINEKU_E75BD4C9": {
+      "itemId": "IT_SOURCE_197_DAICHINEKU_E75BD4C9",
+      "asset": "197_daichineku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_daichineku.gif",
+      "sourceSha256": "3c4b875060cac578c3c0a5697a72016fef324ee2f098cb56a763f13c449038bc",
+      "assetSha256": "f6eb4fd6091d0f37dc4e5095b15caf602ce013ff3aade2dfef98be1d8689e5f0",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_daichineku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_UMINEKU_D2A72A12": {
+      "itemId": "IT_SOURCE_197_UMINEKU_D2A72A12",
+      "asset": "197_umineku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_umineku.gif",
+      "sourceSha256": "ac233dae571e1286fae0eaaab1ccbc0ed8f9fa1d46fcdf918912d6729072c5bc",
+      "assetSha256": "9dceff6e000be11bdde4cc510d788cf4c66f8407d61183acb3ac8604b04d4ab2",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_umineku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_KIN-KAEN_4D647A6B": {
+      "itemId": "IT_SOURCE_197_KIN-KAEN_4D647A6B",
+      "asset": "197_kin-kaen.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kin-kaen.gif",
+      "sourceSha256": "eac9a5d0fe3f452e726a67a6c8f15f74e4ae2f34d0a60c5aba9a603aa9809c81",
+      "assetSha256": "6744e0024e674d6e2e5ee2863bd87250cc509a621a02a23673529303d4af7601",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kin-kaen.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_KIN-KAZE_71BFBAEC": {
+      "itemId": "IT_SOURCE_197_KIN-KAZE_71BFBAEC",
+      "asset": "197_kin-kaze.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kin-kaze.gif",
+      "sourceSha256": "b2da710fb3e7e884cc9a7ae1ab25e2ff12c4129d4744a730e7653089ed44db82",
+      "assetSha256": "235c9785fa0473a1c30c627c181b833b45cfd839bb11fe230bc26181535d132a",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kin-kaze.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_KIN-DAICHI_158A1DC4": {
+      "itemId": "IT_SOURCE_197_KIN-DAICHI_158A1DC4",
+      "asset": "197_kin-daichi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kin-daichi.gif",
+      "sourceSha256": "e7f827ac5071b10cc5f0ec665a3ebb82a04599cf1838500730e7a231f213b5ca",
+      "assetSha256": "90549d4eff13a7e623f4013b1601f41eedfdb4d4021f9c699fa92704a5f1759f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kin-daichi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_KIN-UMI_CAB975EA": {
+      "itemId": "IT_SOURCE_197_KIN-UMI_CAB975EA",
+      "asset": "197_kin-umi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kin-umi.gif",
+      "sourceSha256": "dab98ca5d1bdac49bbde9e888ede0c783b606a787198406f1eeafd7447e29ec0",
+      "assetSha256": "dfc6f72decb4d0bc546ec964a4b198865e98c5091a731d4c287298f603a2c0fd",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kin-umi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_NECK_FIRE_PEARL": {
+      "itemId": "IT_NECK_FIRE_PEARL",
+      "asset": "197_shinjyu-kaen.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_shinjyu-kaen.gif",
+      "sourceSha256": "4fa1ccd6ee410b4e924935fd2254e4ff2ceb593e954db938e122e791089d426b",
+      "assetSha256": "eb8e251c28ac1854b36b337230939f185e8c2759dd335d4da1c95dba516e7b57",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_shinjyu-kaen.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_NECK_WIND_PEARL": {
+      "itemId": "IT_NECK_WIND_PEARL",
+      "asset": "197_shinjyu-kaze.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_shinjyu-kaze.gif",
+      "sourceSha256": "b88cd6d42cce63d0af1d0387346fb20d69a892c0c4807b9bd86f5aad465ac1fd",
+      "assetSha256": "abf2bbb7f730db9251d6d3e6adc228cfcd74213194e9c016e01043d857fc9fb5",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_shinjyu-kaze.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_NECK_EARTH_PEARL": {
+      "itemId": "IT_NECK_EARTH_PEARL",
+      "asset": "197_shinjyu-daichi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_shinjyu-daichi.gif",
+      "sourceSha256": "0a0da93b7aa1f1b88312bcf1f2efb576e3aa408edf3ce1b98b5e2ea7f18ee544",
+      "assetSha256": "27f7e203644b173719e9713be7a793fedbaedaf09c40643735721643a5e5fe62",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_shinjyu-daichi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_NECK_WATER_PEARL": {
+      "itemId": "IT_NECK_WATER_PEARL",
+      "asset": "197_shinjyu-umi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_shinjyu-umi.gif",
+      "sourceSha256": "1fd3ae9d8b73ae99f1cecbf3e921c0a008bc84b0ecbadbba7ceaca65415c0005",
+      "assetSha256": "6cacbcd9f7a24b9ea210cc20aa481839511f20eb1fcafad73caa1d431b5b5705",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_shinjyu-umi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_SUISHOU-KAEN_80452A02": {
+      "itemId": "IT_SOURCE_197_SUISHOU-KAEN_80452A02",
+      "asset": "197_suishou-kaen.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_suishou-kaen.gif",
+      "sourceSha256": "e08511af1e12402f5e187aaa5ab8c93ac89b22086fc7c9a2266340cbd6578551",
+      "assetSha256": "ee3db3717f965760fb5b7c4acd0c64fb070438b219f1e18053b7d8fa94c89725",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_suishou-kaen.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_SUISHOU-KAZE_F0E7357B": {
+      "itemId": "IT_SOURCE_197_SUISHOU-KAZE_F0E7357B",
+      "asset": "197_suishou-kaze.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_suishou-kaze.gif",
+      "sourceSha256": "ed0a009e750e4982d09dc04d2d4b9a5c1e5a7a492ec245eff81abec34c110d24",
+      "assetSha256": "8f9d9d6d7abc34c4c6492ec362e802a48106ebed8f800ca86bf290f7829d42fe",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_suishou-kaze.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_SUISHOU-DAICHI_4D70A2AD": {
+      "itemId": "IT_SOURCE_197_SUISHOU-DAICHI_4D70A2AD",
+      "asset": "197_suishou-daichi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_suishou-daichi.gif",
+      "sourceSha256": "76655419b6aaff643f787499b3fd2c7a3d54735d445f2e837e11a628eb5d494b",
+      "assetSha256": "0a0e068fbd9acec74cd345c18130d8e533a7769c1b4fe2d36ed51d24395f9cea",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_suishou-daichi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_SUISHOU-UMI_60179756": {
+      "itemId": "IT_SOURCE_197_SUISHOU-UMI_60179756",
+      "asset": "197_suishou-umi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_suishou-umi.gif",
+      "sourceSha256": "4b110987b304f81d03995a49486e61dade77e97801efc769ac0bf6cc5dfa8483",
+      "assetSha256": "9551342925f5af26ebca3a884ceb18458df983d8d84fa2b1ad25b9b366cce2e6",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_suishou-umi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_HI_HEKIGEKU_361934BE": {
+      "itemId": "IT_SOURCE_197_HI_HEKIGEKU_361934BE",
+      "asset": "197_hi_hekigeku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_hi_hekigeku.gif",
+      "sourceSha256": "cdd7b71495d55cdefcf272c51961236924c464634ad0a6003f74d7de75452973",
+      "assetSha256": "383b252c587533e0d82155129638992c8edad15713cf0499d020871c99a7a6dd",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_hi_hekigeku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_HEKIGYOKU-KAZE_C3FC5734": {
+      "itemId": "IT_SOURCE_197_HEKIGYOKU-KAZE_C3FC5734",
+      "asset": "197_hekigyoku-kaze.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_hekigyoku-kaze.gif",
+      "sourceSha256": "a5a1f018774c0bf06f77385b249a1347d2069c3bb4361df0a1ca938d9eb70cec",
+      "assetSha256": "36fa740bba32541d50d7633a678076bf1ea862cb438a6d49b9346e3b1b084a92",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_hekigyoku-kaze.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_DAITI_HEKIGYOKU_7D05B7DB": {
+      "itemId": "IT_SOURCE_197_DAITI_HEKIGYOKU_7D05B7DB",
+      "asset": "197_daiti_hekigyoku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_daiti_hekigyoku.gif",
+      "sourceSha256": "74d252cf26d07d3615ebeca425539bdc8676ad2e06565d42c10bced977cc79aa",
+      "assetSha256": "902ae7fe8e3963be438fb61bade74f2ab2e5613412041063c34bd62701b97c1e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_daiti_hekigyoku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_MIZU_HEKIGYOKU_7B2382B5": {
+      "itemId": "IT_SOURCE_197_MIZU_HEKIGYOKU_7B2382B5",
+      "asset": "197_mizu_hekigyoku.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_mizu_hekigyoku.gif",
+      "sourceSha256": "0c0c891e18c9a176e8beafc2b1efe3a2a77cc316901f72029d16f878822ba6f1",
+      "assetSha256": "76f7380c1580bc552b13f9dcf7c2426a75bb41d127306e39fe3817dc34d0513f",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_mizu_hekigyoku.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_MAGIRA_HI_3C371C7E": {
+      "itemId": "IT_SOURCE_197_MAGIRA_HI_3C371C7E",
+      "asset": "197_magira_hi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_magira_hi.gif",
+      "sourceSha256": "bc2fa31958b766fcd1714eb1f482122d8160e245624dc58ec11611dbc197f71f",
+      "assetSha256": "040629fb391945bac6a9544c37125056868769f297912b271b9017f9452093ae",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_magira_hi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_MAGIRA_KAZE_E3B6280F": {
+      "itemId": "IT_SOURCE_197_MAGIRA_KAZE_E3B6280F",
+      "asset": "197_magira_kaze.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_magira_kaze.gif",
+      "sourceSha256": "238a24ce759b9ddaddde77652e353d45dce2b8968df7789a3b19ca1304ef9954",
+      "assetSha256": "499b9467a7c69a46b25b5767df4bbd01b9d4e76939f0b23adb6ad3021d8f83bd",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_magira_kaze.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_MAGIRA_TI_01801011": {
+      "itemId": "IT_SOURCE_197_MAGIRA_TI_01801011",
+      "asset": "197_magira_ti.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_magira_ti.gif",
+      "sourceSha256": "ceee9d8e85034443b7640ece2fed3a554a59c3469a565def97c20b5a21a4e67d",
+      "assetSha256": "5987ce81877bcb77e32285f96a579c187c022dfd7d9b43aed2d226bb557c88fb",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_magira_ti.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_MAGIRA_UMI_8EB93900": {
+      "itemId": "IT_SOURCE_197_MAGIRA_UMI_8EB93900",
+      "asset": "197_magira_umi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_magira_umi.gif",
+      "sourceSha256": "f71c7975ae9bbda50bec513406d70e82c6e6c5c510568e7e5d457d65adf5423e",
+      "assetSha256": "a4a968cd97e0b5b0e53784bba8d83c3f843bb13b207809a97ff6e34b9598e572",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_magira_umi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_DAITINORU-NSUTO-NNEKKURESU_1970651C": {
+      "itemId": "IT_SOURCE_197_DAITINORU-NSUTO-NNEKKURESU_1970651C",
+      "asset": "197_daitinoru-nsuto-nnekkuresu.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_daitinoru-nsuto-nnekkuresu.gif",
+      "sourceSha256": "96b829ea12541991102ab8f6c228bde536e30c5f4c22a9f853b149d951dacd81",
+      "assetSha256": "972654bb917ee7c2154e2a72a4f47ca7671459dda5066ea4a89f024d921269a8",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_daitinoru-nsuto-nnekkuresu.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_ZEMSTONE_HI_62C3AF8C": {
+      "itemId": "IT_SOURCE_197_ZEMSTONE_HI_62C3AF8C",
+      "asset": "197_zemstone_hi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_zemstone_hi.gif",
+      "sourceSha256": "ac0a8cbeedfcfd9196ca257bd92e9c0cd17ef8f87578b572e063f0d760c003c3",
+      "assetSha256": "43053d1d731ef129fa33042987d78cfcc7f6534dc008df1227618b0c0726f6ba",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_zemstone_hi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_ZEMSTONE_KAZE_88EE1EDC": {
+      "itemId": "IT_SOURCE_197_ZEMSTONE_KAZE_88EE1EDC",
+      "asset": "197_zemstone_kaze.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_zemstone_kaze.gif",
+      "sourceSha256": "1091a7cde7740c7c97b810baf9dfff8d03ba7f0fc982c3eac8caec1284fa9758",
+      "assetSha256": "368830f9f20d74d7cecd16d6b8d03c25c0e54669b89cfe09a86a6f19a820f2e0",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_zemstone_kaze.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_ZEMSTONE_TI_5D6A1048": {
+      "itemId": "IT_SOURCE_197_ZEMSTONE_TI_5D6A1048",
+      "asset": "197_zemstone_ti.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_zemstone_ti.gif",
+      "sourceSha256": "3a9ef677a06c9fca9b504f6ada42d8eb504a5b9706d7afe741cdc7823d9b976e",
+      "assetSha256": "7204cc15894df8d42e65296321aa359870dbddae384f966a2b4eff37d982f305",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_zemstone_ti.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_ZEMSTONE_UMI_62F2D328": {
+      "itemId": "IT_SOURCE_197_ZEMSTONE_UMI_62F2D328",
+      "asset": "197_zemstone_umi.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_zemstone_umi.gif",
+      "sourceSha256": "569d12a9e7e39d91ea4c599638a65c84041a0aaa9850cd82f7c41854ac2693b6",
+      "assetSha256": "eb5388f4047d3ea4440298e6b57b75b74f9f6fdb6478b2e2b42392a0abb39cda",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_zemstone_umi.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_CRYSTAL_5911EC0D": {
+      "itemId": "IT_SOURCE_197_CRYSTAL_5911EC0D",
+      "asset": "197_crystal.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_crystal.gif",
+      "sourceSha256": "d5574016178ddad3f5e51d723cb374da1059a682dbeaffcb8637c9b47cb4773a",
+      "assetSha256": "d7d1a7655efeafb0e6f6f85233fcb22fc447a09f2bc7df69baa70f0ac105ed0d",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_crystal.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_HICRYSTAL_A94FCE06": {
+      "itemId": "IT_SOURCE_197_HICRYSTAL_A94FCE06",
+      "asset": "197_hicrystal.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_hicrystal.gif",
+      "sourceSha256": "e8b8bf8e76f925e15f6f393575f0454afcab03d3b4337500aed01be911b25d38",
+      "assetSha256": "31dbfdd3aac1cd7bf7440c4742d201f71ab5eed6ebd1a057eab8760fbeedb22e",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_hicrystal.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B": {
+      "itemId": "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B",
+      "asset": "197_kazecrystal.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_kazecrystal.gif",
+      "sourceSha256": "66c75b25dd505e885407a6d87a6ab107c5b9a9acbc4acadff56fa500ad42fde3",
+      "assetSha256": "fdcd651b3faa21d90f8045f8ef7a3fcf9530679ef6aaea0392a16d195824014d",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_kazecrystal.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_TICRYSTAL_A90E7D50": {
+      "itemId": "IT_SOURCE_197_TICRYSTAL_A90E7D50",
+      "asset": "197_ticrystal.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_ticrystal.gif",
+      "sourceSha256": "e5b2642acd54b3d1e6f3098e0cc0c3eda46ffb9bd3fa1ecf195f23400e078d04",
+      "assetSha256": "10dff4835d1e59864c96f99dda0067220e131612084d16ae219e2bbb772ef6cf",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_ticrystal.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_UMICRYSTAL_21B5EDA7": {
+      "itemId": "IT_SOURCE_197_UMICRYSTAL_21B5EDA7",
+      "asset": "197_umicrystal.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_umicrystal.gif",
+      "sourceSha256": "1d9583f644caba9741992e494a10e15741fd9ad638f997124d3c7fe436deae0e",
+      "assetSha256": "f14469293775714cdf4dba58225bec22056933a03590ba87d760458d48ea24a1",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_umicrystal.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_DARKNECK_38E272A2": {
+      "itemId": "IT_SOURCE_197_DARKNECK_38E272A2",
+      "asset": "197_darkneck.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_darkneck.gif",
+      "sourceSha256": "6b1f9b173507ae1a7d0476187c83bdc0ca78e53de75f1c49cb46c01dae59ca5e",
+      "assetSha256": "d25a19e45074e5ae1305ede79124d5c1101ad2df257680cbbaf982ba94096e50",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_darkneck.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_197_HIKARINECK_CE1F9258": {
+      "itemId": "IT_SOURCE_197_HIKARINECK_CE1F9258",
+      "asset": "197_hikarineck.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/197_hikarineck.gif",
+      "sourceSha256": "9dd57c8959d9b4308ab5ce33619a19086c765eb7d74b7da2582a8d3ee32e11fc",
+      "assetSha256": "528ca4e640cc6ccfb7c17a94a8f7cee03bb8b95f823d43d40e51cfbb38c0d3a2",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "197_hikarineck.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/197.html"
+    },
+    "IT_SOURCE_MINIMOB_0": {
+      "itemId": "IT_SOURCE_MINIMOB_0",
+      "asset": "minimob_0.png",
+      "sourcePath": "master/source/equipment/accessories_20261009/minimob_00.jpg",
+      "sourceSha256": "39c37eee3ee075008f06cd217b3652e97ed53bf3e5788af9eb7724deba85ced7",
+      "assetSha256": "b2400c918cfdb24b904a4ff5ad7268c0f56780515ab55944d07f17bc0b545fc8",
+      "crop": [
+        0,
+        0,
+        31,
+        35
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "evidence": "LABELLED_2012_CAPTURE"
+    },
+    "IT_SOURCE_MINIMOB_1": {
+      "itemId": "IT_SOURCE_MINIMOB_1",
+      "asset": "minimob_2.png",
+      "sourcePath": "master/source/equipment/accessories_20261009/minimob_02.jpg",
+      "sourceSha256": "d01565002bcaf3e47bf19869e28edb1a06b0ba3305c5d9ba3a6ba09da57c8af5",
+      "assetSha256": "0161d6895475c0944aa0ed7400317e374836d6c7679610ec17ac50dfa448e92e",
+      "crop": [
+        0,
+        0,
+        32,
+        38
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "evidence": "LABELLED_2012_CAPTURE"
+    },
+    "IT_SOURCE_MINIMOB_3": {
+      "itemId": "IT_SOURCE_MINIMOB_3",
+      "asset": "minimob_5.png",
+      "sourcePath": "master/source/equipment/accessories_20261009/minimob_05.jpg",
+      "sourceSha256": "fb7770c7e5c208c27c023259cb2fe6c8b02944f3f24c69bdfb9176b6473a33db",
+      "assetSha256": "78ce92d1183b93ad100510fd645075fb414c0945a54875309bd235eea17a5dad",
+      "crop": [
+        0,
+        0,
+        34,
+        41
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "evidence": "LABELLED_2012_CAPTURE"
+    },
+    "IT_SOURCE_MINIMOB_4": {
+      "itemId": "IT_SOURCE_MINIMOB_4",
+      "asset": "minimob_7.png",
+      "sourcePath": "master/source/equipment/accessories_20261009/minimob_07.jpg",
+      "sourceSha256": "209182cfbddcc256dd81557a2c65111b5b1d03c8c2c793c8f1aeb40ac4fd1179",
+      "assetSha256": "517fe26f03bd2f6f01870fc2d0cc55a077f4d600b7a1244a55c6f4ec9fe2dcbf",
+      "crop": [
+        0,
+        0,
+        36,
+        40
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "evidence": "LABELLED_2012_CAPTURE"
+    },
+    "IT_SOURCE_MINIMOB_5": {
+      "itemId": "IT_SOURCE_MINIMOB_5",
+      "asset": "minimob_9.png",
+      "sourcePath": "master/source/equipment/accessories_20261009/minimob_09.jpg",
+      "sourceSha256": "a17d6798b93d61ae896fcc479b1742a1c85e30582ff9f62588807c9338a20d5e",
+      "assetSha256": "147843c2a7e81018748a76fce834a0c5e50a730b51ef047ed0c94640c03cf5ce",
+      "crop": [
+        0,
+        0,
+        35,
+        37
+      ],
+      "projection": "DECODED_FIRST_FRAME_EXACT_RGBA",
+      "evidence": "LABELLED_2012_CAPTURE"
+    }
+  }
+}

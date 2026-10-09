@@ -1,0 +1,14 @@
+{
+  "source": "9cd4fd285b7ef04a3fd651a1e35ed47097282a8f",
+  "actionsRun": 37870740856,
+  "job": 113628002978,
+  "nativeArtifact": 11590606821,
+  "nativeArchiveSha256": "143480cceb69d904b57ce02de9b7397a3124f1501ef132833199258d5fba2f22",
+  "tests": 125,
+  "failures": 1,
+  "failure": "consistent back silhouette POTE_TREANT NW",
+  "cause": "same authored alias used different native rasterization: idle bitmap versus walk mesh",
+  "fix": "back tree/giant-ant idle uses same mesh rasterization as walk; retain exact visual equality assertion",
+  "scope": "Other124tests pass including immediate death removal, spirit hooves/fractional placement, large boss/select/collision and retained regressions",
+  "status": "FIX_IMPLEMENTED_PENDING_CI"
+}

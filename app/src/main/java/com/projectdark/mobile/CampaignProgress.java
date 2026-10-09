@@ -126,16 +126,13 @@ public final class CampaignProgress {
  }
  public boolean claim(String id,RpgProgressionState r){
   Def d=definition(id);if(d==null||status(d,r)!=Status.REPORT)return false;
-  Map<String,Integer> rewards=new LinkedHashMap<>();if(!d.id.startsWith("T")){rewards.put(RpgProgressionState.B_SMALL_POTION_ITEM_ID,3);rewards.put("IT_B_MP_POTION",3);}
-  int tier=d.id.equals("B06")||d.id.startsWith("J02_")?11:d.id.startsWith("J03_")?26:0;
-  if(tier>0)rewards.put("IT_B_CAMPAIGN_"+r.currentJobCode()+"_"+tier,1);
-  if(d.id.equals("M15")||d.id.equals("C06"))rewards.put("IT_B_PURIFIED_ESSENCE",3);
-  // Adapt the recorded Mantis ring drop into a first-clear, direct-inventory quest reward.
-  if(d.id.equals("D03"))rewards.put("IT_RING_THREELINEGOLD",1);
+  Map<String,Integer> rewards=AdaptedPoteQuestRewards.items(d,r);
+  long gold=AdaptedPoteQuestRewards.gold(d);if(r.gold()>Long.MAX_VALUE-gold)return false;
   for(Map.Entry<String,Integer> e:rewards.entrySet())if(!r.itemDefinitions().containsKey(e.getKey())||r.inventory().getOrDefault(e.getKey(),0)>999999-e.getValue())return false;
   for(Map.Entry<String,Integer> e:rewards.entrySet())r.autoLootResolvedItem(e.getKey(),e.getValue());
-  if(tier>0)r.equip("IT_B_CAMPAIGN_"+r.currentJobCode()+"_"+tier);
-  r.grantAdaptedReward(rewardExp(d,r),d.gold);completed.add(id);active=null;counts.clear();altars.clear();return true;
+  // Existing training armor auto-equip is retained; new rewards leave the current outfit alone.
+  if(d.id.equals("B06")||d.id.startsWith("J02_")||d.id.startsWith("J03_"))r.equip("IT_B_CAMPAIGN_"+r.currentJobCode()+"_"+AdaptedPoteQuestRewards.gearTier(d.id));
+  r.grantAdaptedReward(rewardExp(d,r),gold);completed.add(id);active=null;counts.clear();altars.clear();return true;
  }
 
  public boolean wanted(Def d,String species){if(d==null||!Arrays.asList(d.targets.split(",")).contains(species))return false;return !d.kind.equals("PAIR")||counts.getOrDefault(species,0)<d.goal/d.targets.split(",").length;}

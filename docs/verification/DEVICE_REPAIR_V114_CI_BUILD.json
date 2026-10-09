@@ -1,0 +1,59 @@
+{
+  "sourceCommit": "0bf1343f11b64e284a39cc2335eb367d95865d8e",
+  "runId": "37682916356",
+  "versionCode": 114,
+  "versionName": "1.14-forest-performance-ui",
+  "applicationId": "com.projectdark.mobile.v114test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "8b10b30dc713506f72536dd4d680d1fe8f9bf17eab4d0cfef26fb9480c5dd617",
+  "apkBytes": 55410856,
+  "builtSeoul": "2026-10-08T05:36:30.657866+09:00",
+  "scope": "Reference-derived forest trees/earth/current; per-actor depth and foreground canopy fade; map-wide quest-filtered AUTO; 72/96/108 population, 6-8s adapted respawn; preserved campaign/save/body",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "tests": {
+    "tests": 63,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "nativeScreens": 24,
+  "apkArtifact": 11509552776,
+  "nativeArtifact": 11509542867,
+  "jobId": 113003278871,
+  "signatureV2Verified": true,
+  "certificateSha256": "0f6db30d63016417a10223aaec554e8c2bdd88ceef15af1484127628d025c7cd",
+  "preservedEquipmentFiles": 47,
+  "referenceAssetsVerified": true,
+  "zipCrcVerified": true,
+  "firstForestEntryJvmMs": 455,
+  "gate20000CallsJvmMs": 3,
+  "aiMembership72000CallsJvmMs": 27,
+  "releaseUrl": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v114-0bf1343f-37682916356-1",
+  "fullCi": [
+    {
+      "id": 37682922184,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "pull_request"
+    },
+    {
+      "id": 37682916019,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "push"
+    },
+    {
+      "id": 37682916356,
+      "name": "Pote V114 reference repair",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push"
+    }
+  ],
+  "phoneCrashCause": "UNKNOWN_NO_DEVICE_LOG",
+  "originalPerfectRiver": false
+}

@@ -1,0 +1,10 @@
+{
+  "source": "bcbd8aa750c9ec05102b391a5e19bcc515ff63ee",
+  "run": 37880633096,
+  "job": 113659276890,
+  "status": "CI_SETUP_FAILED_MISSING_PIL",
+  "step": 8,
+  "error": "ModuleNotFoundError: No module named PIL",
+  "new_equipment_tests_executed": false,
+  "repair": "Install Pillow before exact original-pixel verification; keep verification mandatory."
+}

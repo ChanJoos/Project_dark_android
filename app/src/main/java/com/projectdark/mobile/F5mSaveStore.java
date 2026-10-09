@@ -20,6 +20,7 @@ public final class F5mSaveStore {
 
   private F5mSaveStore(Context c){prefs=c.getApplicationContext().getSharedPreferences(PREF,Context.MODE_PRIVATE);writable=prefs.getInt("save_schema",1)<=SCHEMA;}
   public static void install(Context c){active=new F5mSaveStore(c);}
+  public static boolean freshEquipmentTestProfile(){return active==null||!active.prefs.contains("inventory_v2");}
   public static boolean installed(){return active!=null;}
   public static boolean writable(){return active==null||active.writable;}
   public static boolean rewardClaimedActive(){return active!=null&&active.prefs.getBoolean("quest_reward_claimed",false);}
@@ -75,12 +76,23 @@ public final class F5mSaveStore {
   public static void endFrame(){if(active!=null)active.inFrame=false;}
   public static boolean checkpointActive(){return active==null||active.checkpoint();}
 
+  /** Position-only periodic checkpoint: memory is updated now; Android queues disk IO.
+   * Rewards/transactions and pause still use commit(), which also drains preceding apply(). */
+  public static boolean autosaveActive(){
+    if(active==null)return true;
+    if(!active.writable||active.runtime==null)return false;
+    active.checkpointEditor().apply();return true;
+  }
+
   private boolean checkpoint(){
     if(!writable||runtime==null)return false;
+    return checkpointEditor().commit();
+  }
+  private SharedPreferences.Editor checkpointEditor(){
     SharedPreferences.Editor edit=writeRpg(prefs.edit(),runtime.rpg());
     writeQuest(edit,quest);writeQuest2(edit,quest2);writeRuntime(edit);
     if(skillBook!=null)edit.putString("skill_book_v1",skillBook.snapshot().toString());
-    return edit.commit();
+    return edit;
   }
 
   private void writeRuntime(SharedPreferences.Editor edit){

@@ -53,7 +53,7 @@ final class QuestJournalModel {
       if(cs==CampaignProgress.Status.AVAILABLE&&!d.id.startsWith("T")||cs==CampaignProgress.Status.REPORT&&!d.id.startsWith("T"))objective=NpcIdentity.forId(d.npc).name+"에게 "+(cs==CampaignProgress.Status.AVAILABLE?"의뢰 수락":"결과 보고");
       String next=i+1<route.size()?"다음: "+route.get(i+1).title:"이 장의 모험을 마쳤습니다";
       out.add(new Row("CAMPAIGN_"+d.id,d.title,OnboardingGuide.chapter(d),NpcIdentity.forId(d.npc).name,OnboardingGuide.story(d),objective,
-        (cs==CampaignProgress.Status.COMPLETE?"보상 수령 완료":"EXP "+String.format(java.util.Locale.ROOT,"%,d",rpg.campaign().rewardExp(d,rpg))+" · Gold "+d.gold)+(d.id.equals("B06")||d.id.startsWith("J02_")||d.id.startsWith("J03_")?" · 직업 장비":""),reason,next,Status.valueOf(cs.name()),cs==CampaignProgress.Status.COMPLETE?d.goal:rpg.campaign().count(d,rpg),d.goal,OnboardingGuide.how(d,rpg,null)));
+        (cs==CampaignProgress.Status.COMPLETE?"보상 수령 완료 · "+AdaptedPoteQuestRewards.equipmentText(d,rpg):AdaptedPoteQuestRewards.summary(d,rpg,rpg.campaign().rewardExp(d,rpg))),reason,next,Status.valueOf(cs.name()),cs==CampaignProgress.Status.COMPLETE?d.goal:rpg.campaign().count(d,rpg),d.goal,OnboardingGuide.how(d,rpg,null)));
     }}
     if(rpg!=null){CampaignProgress.Def next=rpg.campaign().next(rpg);if(next!=null&&!next.kind.equals("EXTERNAL")&&rpg.normalLevel()<next.level)out.add(new Row("CAMPAIGN_HUNT_"+next.id,"다음 의뢰를 위한 성장","현재 사냥 구역","", "사냥 보상으로 레벨을 올린 뒤 다음 의뢰를 받으세요.","Lv"+next.level+"까지 성장","몬스터 EXP · Gold","","목표를 누르면 현재 레벨에 맞는 사냥터로 안내합니다.",Status.ACTIVE,rpg.normalLevel(),next.level));}
     if(rpg==null)out.addAll(future);return out;

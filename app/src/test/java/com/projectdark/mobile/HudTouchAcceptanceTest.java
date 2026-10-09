@@ -63,8 +63,10 @@ public final class HudTouchAcceptanceTest {
     AutoAttackTargetSelector.ApproachCost reachable=m->m==far?-1:0;
     assertTrue(AutoAttackTargetSelector.select(java.util.Arrays.asList(distant,far,dead,near),0,0,
         GameView.AUTO_TARGET_RADIUS,reachable)==near);
-    assertTrue("auto target acquisition is limited to nearby monsters",AutoAttackTargetSelector.select(
-        java.util.Collections.singletonList(distant),0,0,GameView.AUTO_TARGET_RADIUS,m->0)==null);
+    assertTrue("manual AUTO acquires a reachable living monster anywhere on the active map",AutoAttackTargetSelector.select(
+        java.util.Collections.singletonList(distant),0,0,GameView.AUTO_TARGET_RADIUS,m->0)==distant);
+    assertTrue("map-wide AUTO still excludes an unreachable remote monster",AutoAttackTargetSelector.select(
+        java.util.Collections.singletonList(distant),0,0,GameView.AUTO_TARGET_RADIUS,m->-1)==null);
   }
 
   @Test public void rightHudUsesWideScreenSideMargin() throws Exception {

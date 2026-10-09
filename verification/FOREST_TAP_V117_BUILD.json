@@ -1,0 +1,129 @@
+{
+  "build": {
+    "sourceCommit": "1677b3ea8676585c06feda22d559e6e83576f0d6",
+    "runId": "37728020453",
+    "versionCode": 117,
+    "versionName": "1.17-ground-tap-path",
+    "applicationId": "com.projectdark.mobile.v117test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "f29c7e54424f87061c2227e5ae672f38b7f89482bb0e46aa3bea780e3b876d36",
+    "apkBytes": 55413252,
+    "builtSeoul": "2026-10-08T13:37:35.958801+09:00",
+    "scope": "Reference-derived forest trees/earth/current; per-actor depth and foreground canopy fade; map-wide quest-filtered AUTO; 72/96/108 population, 6-8s adapted respawn; preserved campaign/save/body",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "focusedActions": {
+    "runId": 37728020453,
+    "jobId": 113150512274,
+    "conclusion": "success"
+  },
+  "baselineSource": "eed465d35d27089d1db04b02c427d08137849fb5",
+  "tests": {
+    "selectedMethods": 79,
+    "gradleSuite": "SUCCESS",
+    "actualGroundCallbacks": 32,
+    "longRoutes": 16,
+    "independentBfsDestinationCases": 300,
+    "dynamicBlockerRevalidation": "PASS",
+    "destinationsStatusesShortestLengths": "MATCH_V116",
+    "longRouteOccupancyReductionGate": "PASS_ALL_MAPS"
+  },
+  "comparison": [
+    {
+      "map": "MAP_POTE_01",
+      "baselineOccupancy": 52681,
+      "candidateOccupancy": 2668,
+      "baselineTapMedianMs": 57.8803815,
+      "candidateTapMedianMs": 2.12277,
+      "baselineRouteMedianMs": 192.0415875,
+      "candidateRouteMedianMs": 28.378256
+    },
+    {
+      "map": "MAP_POTE_02",
+      "baselineOccupancy": 56080,
+      "candidateOccupancy": 2192,
+      "baselineTapMedianMs": 82.8523835,
+      "candidateTapMedianMs": 1.6630530000000001,
+      "baselineRouteMedianMs": 323.7469055,
+      "candidateRouteMedianMs": 14.940586999999999
+    },
+    {
+      "map": "MAP_POTE_03",
+      "baselineOccupancy": 57518,
+      "candidateOccupancy": 2837,
+      "baselineTapMedianMs": 109.51292649999999,
+      "candidateTapMedianMs": 1.604835,
+      "baselineRouteMedianMs": 192.1939215,
+      "candidateRouteMedianMs": 11.080161
+    },
+    {
+      "map": "MAP_POTE_D_BOSS",
+      "baselineOccupancy": 23076,
+      "candidateOccupancy": 454,
+      "baselineTapMedianMs": 0.9845075000000001,
+      "candidateTapMedianMs": 0.19060149999999998,
+      "baselineRouteMedianMs": 0.8824385,
+      "candidateRouteMedianMs": 0.21972049999999999
+    }
+  ],
+  "environment": "Robolectric SDK34 CPU, not physical phone timings",
+  "downloadChecks": {
+    "apkSha256": "PASS",
+    "zipCRC": "PASS",
+    "embeddedSourceRunVersion": "PASS",
+    "nativeArchive": "NOT_MATERIALIZED_signed_download_HTTP403"
+  },
+  "artifacts": [
+    {
+      "id": 11528558141,
+      "name": "pote-v117-apk-1677b3ea8676585c06feda22d559e6e83576f0d6",
+      "size_in_bytes": 54732157,
+      "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11528558141",
+      "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11528558141/zip",
+      "expired": false,
+      "created_at": "2026-10-08T04:37:40Z",
+      "expires_at": "2027-01-06T04:33:04Z",
+      "updated_at": "2026-10-08T04:37:40Z",
+      "digest": "sha256:2afb5db3ab9a1b9dba962fdf5683196912568755d8971016780b63d99cf527dc",
+      "workflow_run": {
+        "id": 37728020453,
+        "repository_id": 1362092000,
+        "head_repository_id": 1362092000,
+        "head_branch": "codex/pote-forest-v112",
+        "head_sha": "1677b3ea8676585c06feda22d559e6e83576f0d6"
+      }
+    },
+    {
+      "id": 11528159867,
+      "name": "pote-v117-native-1677b3ea8676585c06feda22d559e6e83576f0d6",
+      "size_in_bytes": 63875693,
+      "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11528159867",
+      "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11528159867/zip",
+      "expired": false,
+      "created_at": "2026-10-08T04:37:38Z",
+      "expires_at": "2027-01-06T04:33:04Z",
+      "updated_at": "2026-10-08T04:37:38Z",
+      "digest": "sha256:8848c05ae5f8c88a62bdeae7db168635aab022d3f33bc305662ea7c31ff4e443",
+      "workflow_run": {
+        "id": 37728020453,
+        "repository_id": 1362092000,
+        "head_repository_id": 1362092000,
+        "head_branch": "codex/pote-forest-v112",
+        "head_sha": "1677b3ea8676585c06feda22d559e6e83576f0d6"
+      }
+    }
+  ],
+  "acceptance": {
+    "implemented": true,
+    "buildVerified": true,
+    "nativeTouchRuntimeVerified": true,
+    "physicalPhone": "PENDING",
+    "phoneRootCause": "UNKNOWN_NO_DEVICE_TRACE",
+    "baselineDevice": "V116_DEVICE_FAILED_USER_REPORTED_GROUND_TAP_LAG",
+    "mainMerged": false
+  },
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v117-1677b3ea-37728020453-1",
+  "broadCI": "IN_PROGRESS_LAST_OBSERVED_37728024531"
+}

@@ -1,0 +1,36 @@
+{
+  "retrieved": "2026-10-09",
+  "numericSources": [
+    {
+      "path": "nexon_269.html",
+      "url": "https://lod.nexon.com/community/game/269?SearchBoard=1",
+      "sha256": "790946cd4e18fa3c3f9fa0675a51a4b01c07bdc644aebaba17c14dc03e69d47d",
+      "status": "RETAINED",
+      "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL"
+    },
+    {
+      "path": "nexon_986.html",
+      "url": "https://lod.nexon.com/community/game/986?SearchBoard=1",
+      "sha256": "b38fd27ce3d8eeb1e0159333a9b07caaff995db511b56cc1d8f0abee5e2e9d58",
+      "status": "RETAINED",
+      "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL"
+    },
+    {
+      "path": "nexon_3749.html",
+      "url": "https://lod.nexon.com/board/1493172227/3749",
+      "sha256": "75f1f361a2614c16e45fb11b23f0c30f40ef8260e659e3f82b429cfc2dfd80fc",
+      "status": "RETAINED",
+      "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL"
+    },
+    {
+      "path": "nexon_1640.html",
+      "url": "https://lod.nexon.com/Community/game/1640?Category2=1&SearchBoard=1",
+      "sha256": "b29bb7fca7688a1c34f4b632698979fbf5ed30fd71699b34ebf324902245f62d",
+      "status": "RETAINED",
+      "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL"
+    }
+  ],
+  "preserve": "Existing Master/source bytes unchanged",
+  "cafeListing": "First-party cafe-boardlist-api URL observed in public current Javascript",
+  "limitations": "Current Cafe article gateway401 and representative CDN404; no source bytes synthesized"
+}

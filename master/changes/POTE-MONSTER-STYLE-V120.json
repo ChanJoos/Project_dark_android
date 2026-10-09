@@ -1,0 +1,22 @@
+{
+  "changeId": "POTE-MONSTER-STYLE-V120",
+  "status": "ACCEPTED",
+  "date": "2026-10-09",
+  "source": "master/source/monsters/user_style_20261009/manifest.json",
+  "sourceIds": [
+    "1000057394.jpg",
+    "1000057396.jpg",
+    "1000057398.jpg"
+  ],
+  "before": "V118 campaign_v3 wolf-family art rejected by user as inconsistent with Pote spirit",
+  "after": "48 adapted generated spirit-style poses, same IDs/runtime paths and192RGBA/184ground; canonical data unchanged",
+  "reason": "Explicit user request: preserve reference in Master, reimplement original-game feel with Pote spirit as style benchmark; do not reuse original pixels",
+  "evidence": "Current user request and supplied catalog screenshots; U_REFERENCE_ONLY; ADAPTED_GENERATED",
+  "impact": [
+    "pote_monsters_generated_v1/sprites/campaign_v3/{lycanthrope,gnoll,wolf_rider,silver_wolf}",
+    "MONSTER_CREATION_MANUAL",
+    "Master manifest M005"
+  ],
+  "saveImpact": "NONE",
+  "verification": "Asset integrity, native render/cache/navigation/save and exact APK required; PHONE/USER_VISUAL pending"
+}
