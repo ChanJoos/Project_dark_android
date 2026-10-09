@@ -29,7 +29,7 @@ def main():
   for name in z.namelist():
    assert Path(name).name==name
    if not (SRC/name).exists():(SRC/name).write_bytes(z.read(name))
- entries=json.loads((SRC/'manifest.json').read_text());byalias={norm(a):e for e in entries for a in e['sourceAliases']};catalog=[];icons=json.loads((APP/'manifest.json').read_text());used=set()
+ entries=json.loads((SRC/'manifest.json').read_text());byalias={norm(a):e for e in entries for a in e['sourceAliases']};catalog=[];icons=json.loads((APP/'manifest.json').read_text());icons['items']={k:v for k,v in icons['items'].items() if v.get('projection')!='DECODED_FIRST_FRAME_EXACT_RGBA'};used=set()
  known={'가죽각반':'IT_LEGGING_LEATHER','가죽장갑':'IT_GLOVE_LEATHER','쌍은귀걸이':'IT_EARRING_DOUBLE_SILVER','홍옥반지':'IT_RING_REDJADE','고루반지':'IT_RING_GORU','실버아쿠아링':'IT_RING_SILVERAQUA'}
  for e in entries:
   source=SRC/e['path'];assert hashlib.sha256(source.read_bytes()).hexdigest()==e['sha256'];Image.open(source).convert('RGBA').save(OUT/(Path(e['path']).stem+'.png'))
@@ -52,7 +52,7 @@ def main():
     if key=='ALL':stats.update({k:value for k in ['STR','INT','WIS','CON','DEX']})
     else:stats[key]=value
    element=None
-   for pattern,val in [('火','화염'),('風','바람'),('地','대지'),('水','바다'),('海','바다'),('木','숲'),('金の','금속'),('暗黒','암흑'),('生命','생명')]:
+   for pattern,val in [('火','화염'),('風','바람'),('大地','대지'),('地','대지'),('水','바다'),('海','바다'),('木','숲'),('金の','금속'),('暗黒','암흑'),('生命','생명')]:
     if label.startswith(pattern):element=val;break
    ident=known.get(name)
    if slot=='목걸이' and '진주목걸이' in name and element in ('화염','바람','대지','바다'):ident='IT_NECK_'+{'화염':'FIRE','바람':'WIND','대지':'EARTH','바다':'WATER'}[element]+'_PEARL'

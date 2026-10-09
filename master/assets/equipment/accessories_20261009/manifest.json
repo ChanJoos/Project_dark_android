@@ -4108,7 +4108,7 @@
       "sourceMinLevel": null,
       "sourceJobRestriction": "UNSPECIFIED",
       "attackElement": null,
-      "defenseElement": null,
+      "defenseElement": "대지",
       "stats": {
         "AC": 0,
         "STR": 1,
@@ -4362,7 +4362,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 1,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {},
       "sourceFields": {
@@ -4478,7 +4478,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 11,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "DAM": 1
@@ -4593,12 +4593,12 @@
       "testRequirementPolicy": "ADAPTED_USER_ALL_EQUIPMENT_LV1"
     },
     {
-      "itemId": "IT_SOURCE_197_SHINJYU-DAICHI_46EECBB9",
+      "itemId": "IT_NECK_EARTH_PEARL",
       "name": "대지의진주목걸이",
       "slot": "목걸이",
       "sourceMinLevel": 11,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "HIT": 5
@@ -4718,7 +4718,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 11,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "DAM": 2
@@ -4838,7 +4838,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 11,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "HIT": 10
@@ -4960,7 +4960,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 11,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "DAM": 1,
@@ -5022,7 +5022,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 1,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "DAM": 3
@@ -5114,7 +5114,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 70,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "DAM": 10,
@@ -5270,7 +5270,7 @@
       "slot": "목걸이",
       "sourceMinLevel": 11,
       "sourceJobRestriction": "UNSPECIFIED",
-      "attackElement": null,
+      "attackElement": "대지",
       "defenseElement": null,
       "stats": {
         "AC": -1,
