@@ -1,3 +1,23 @@
+pote_rewards_v123:
+  implementation: IMPLEMENTED
+  build: BUILD_VERIFIED
+  native_runtime: ROBOLECTRIC_144_TESTS_ZERO_FAILURES_ERRORS_SKIPS
+  reward_tests: 8
+  physical_phone: PENDING
+  user_acceptance: PENDING
+  source: 7ea2dcd0048598d61f4bb514a8dfbb0fd995cdd8
+  actions_run: 37875659441
+  apk_artifact: 11592860835
+  native_artifact: 11592726353
+  apk_sha256: aeada750ab92a51744c961f6bbdd6585c477f80edd450a9ee19beb9b7fc41e13
+  built_seoul: '2026-10-09T11:49:30.811449+09:00'
+  application_id: com.projectdark.mobile.v123test
+  evidence: verification/POTE_REWARDS_V123_BUILD.json
+  contract: docs/POTE_REWARDS_V123_CONTRACT.md
+  active_branch: codex/pote-forest-v112
+  active_pr: 180
+  next: EXACT_V123_PHONE_REWARD_REVIEW
+
 monster_visual_v122:
   implementation: IMPLEMENTED
   build: BUILD_VERIFIED

@@ -1,0 +1,316 @@
+{
+  "source": "7ea2dcd0048598d61f4bb514a8dfbb0fd995cdd8",
+  "actionsRun": 37875659441,
+  "job": 113643547795,
+  "status": "IMPLEMENTED_BUILD_VERIFIED_NATIVE_SCOPE_VERIFIED",
+  "main": "18ef615b54833e2155b103cffbabdac304821a23",
+  "branch": "codex/pote-forest-v112",
+  "pr": 180,
+  "apkArtifact": 11592860835,
+  "nativeArtifact": 11592726353,
+  "zipDigests": {
+    "final-apk.zip": "c8d9d5fc36d122f9b16d659e2eab7bcb5e8608cff8d44e81dfe81a28bcb0cfce",
+    "final-native.zip": "e1d13fb06c921129513b1aaa07d615236e603844d28298f0a1d039117616f9c1"
+  },
+  "suiteCount": 35,
+  "counts": {
+    "tests": 144,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "rewardTests": {
+    "name": "com.projectdark.mobile.PoteRewardsV123Test",
+    "tests": "8",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0"
+  },
+  "apk": {
+    "sourceCommit": "7ea2dcd0048598d61f4bb514a8dfbb0fd995cdd8",
+    "runId": "37875659441",
+    "versionCode": 123,
+    "versionName": "1.23-pote-rewards",
+    "applicationId": "com.projectdark.mobile.v123test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "aeada750ab92a51744c961f6bbdd6585c477f80edd450a9ee19beb9b7fc41e13",
+    "apkBytes": 59951091,
+    "builtSeoul": "2026-10-09T11:49:30.811449+09:00",
+    "scope": "staged Pote quest equipment, named reward preview/receipt, Lv26 training upgrade, adapted C spirit EXP/Gold, overflow-safe one-time first-clear ring/Gold, all-job combat progression and save regressions; V122 art/death removal/scale/directions and hunting cache/navigation preserved",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "identity": {
+    "sourceCommit": "7ea2dcd0048598d61f4bb514a8dfbb0fd995cdd8",
+    "runId": "37875659441",
+    "versionCode": 123,
+    "versionName": "1.23-pote-rewards"
+  },
+  "sourceSpritesVerified": 168,
+  "phoneAcceptance": "PENDING",
+  "userAcceptance": "PENDING",
+  "scope": "Robolectric34 native render/input/domain/checkpoint; five-job Resolver campaign; eight new reward tests; existing forest/V122/equipment/commerce suites; not independent physical phone process termination",
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.AdaptedCampaignRewardTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.AutoAttackTargetSelectorTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignNavigationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignProgressTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignQuickQuestIntegrationTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.DeviceRepairV114Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFloorCacheTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFrameProfileTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ForestPixelCacheTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ForestTapProfileTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.HudTouchAcceptanceTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.InstalledSpriteResourcesTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.JoystickV119Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterChasePathfinderTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterQualityV118Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.NpcAppearanceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteCreekWaterAssetTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteForestSpatialGrammarTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterMotionV121Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterVisualRepairV122Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PotePamfetPresentationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteReferenceV113Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteRewardsV123Test",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.PoteVisualReviewTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.QuestJournalTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.QuickQuestLatencyTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+      "tests": "15",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.TownInteriorTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.world.WorldMoveTargetControllerPathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "reviewedRewardScreens": {
+    "M06": "0e62a1e17aa1bef5b9dfbe50d90651e2138e59664b792831a56d4bd81a400473",
+    "B06": "7c899ff80ad1119c91dde744b26db7674227a0f9245ce9189fa36ced815d2ac0",
+    "D03": "23c3faf814d83ed4a1e1c3e0e60fc5fa7c55914b86ddede3e643134c6033caa0"
+  },
+  "broaderWorkflowRuns": [
+    {
+      "id": 37875659453,
+      "status": "IN_PROGRESS_AT_CLOSURE"
+    },
+    {
+      "id": 37875663659,
+      "status": "IN_PROGRESS_AT_CLOSURE"
+    }
+  ]
+}

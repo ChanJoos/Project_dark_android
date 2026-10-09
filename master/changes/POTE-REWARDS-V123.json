@@ -57,5 +57,13 @@
     "TownInteriorTest",
     "RuntimeCheckpointTest"
   ],
-  "verification": "PENDING_EXACT_SOURCE_NATIVE_APK;PHONE_PENDING"
+  "verification": {
+    "source": "7ea2dcd0048598d61f4bb514a8dfbb0fd995cdd8",
+    "actionsRun": 37875659441,
+    "tests": 144,
+    "failures": 0,
+    "rewardTests": 8,
+    "evidence": "verification/POTE_REWARDS_V123_BUILD.json",
+    "physicalPhone": "PENDING"
+  }
 }
