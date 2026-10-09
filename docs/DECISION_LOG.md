@@ -1,3 +1,10 @@
+## 2026-10-09 — V125 verified all-item sandbox
+
+Accepted user instruction covers every registered item, not only gear: actual startup owns236 definitions, each one once, with all equipment testable byLv1 commoner. Preserve pure original requirement evaluation; enable runtime sandbox explicitly. Capture fresh-profile status before legacy restore migration and checkpoint the grant immediately. Never regrant saved, emptied or banked inventories. Historical fields fill previously missing values; canonical values/requirements win conflicts. Source images approved; unknown image/name/special fields remain unresolved. Exact runtime ff19f79f, focused38 suites158 tests/zero failures; evidence ACCESSORY_V125_DELIVERY.json. Full Android RETRY_IN_PROGRESS_CORRECTED_MATERIAL_TEST_VERIFIED.
+
+
+Corrected zero-start-stock legacy purchase assertion; same-source early20-test equipment/reward/material gate SUCCESS on37912812541/job113761756721. Broader full Android retry remains running; no full-CI success claim.
+
 ## 2026-10-09 — accepted V125 equipment sandbox
 
 User explicitly requests all reviewed images assetized in Master/runtime, all items in new-game inventory and functional equipment. Approved test policy: each equippable definition starts owned, Lv1 commoner can test all equipment. Source restrictions remain visible/preserved, pure evaluateRequirements retains them; runtime currentRequirements bypass is explicit sandbox only. Known canonical IDs retain stronger accepted definitions instead of overwriting with conflicting fan-era values. Pending image/name/special-effect fields remain pending. No repeated startup grants after saved inventory exists. Separate V125 installation/profile.
