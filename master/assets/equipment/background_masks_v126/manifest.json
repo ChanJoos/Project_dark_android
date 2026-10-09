@@ -1,0 +1,1104 @@
+{
+  "policy": "Original RGB preserved at every pixel; only alpha changed. Source pixels, masks and methods retained.",
+  "items": [
+    {
+      "asset": "146_daitihorudeito.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_daitihorudeito.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 162,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_hadeear.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_hadeear.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 166,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_horudeitoringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_horudeitoringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 162,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_jundamaiyaringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_jundamaiyaringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 67,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_kaenhorudeito.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_kaenhorudeito.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 166,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_kazehorudeito.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_kazehorudeito.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 162,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_redmarine.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_redmarine.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 166,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_ri-zento.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_ri-zento.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 242,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_rubiiyaringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_rubiiyaringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 78,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_sangoiyaringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_sangoiyaringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 67,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_sangosekiiyaringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_sangosekiiyaringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 82,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_seiraringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_seiraringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 284,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_souginiyaringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_souginiyaringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 184,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_soukiniyaringu.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_soukiniyaringu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 180,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "146_umihorudeito.png",
+      "mask": "master/assets/equipment/background_masks_v126/146_umihorudeito.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 166,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_baruti.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_baruti.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 28,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_batorubutu.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_batorubutu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 203,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_japanuniform02.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_japanuniform02.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 195,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_kutu1.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_kutu1.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 183,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_kutu26.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_kutu26.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 178,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_kutu41.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_kutu41.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 179,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_kutu56.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_kutu56.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 181,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_kutu86.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_kutu86.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 184,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_magicboots.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_magicboots.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 183,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_misurirubutu.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_misurirubutu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 173,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_safian.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_safian.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 214,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_sirukubu-tu.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_sirukubu-tu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 241,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "150_woriawoka.png",
+      "mask": "master/assets/equipment/background_masks_v126/150_woriawoka.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 179,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_baironnoyubiwa.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_baironnoyubiwa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 283,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_gorudoakua.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_gorudoakua.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 439,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_kekonyubiwa.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_kekonyubiwa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 237,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_kentetu.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_kentetu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 432,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_kin.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_kin.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 341,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_korou.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_korou.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 460,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_kougyoku.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_kougyoku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 391,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_reddoganetoyubiwa.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_reddoganetoyubiwa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 536,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_rooring.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_rooring.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 353,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_rubi.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_rubi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 440,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_ryokugyoku.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_ryokugyoku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 393,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_safaia.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_safaia.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 407,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_sango.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_sango.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 182,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_silveraqua.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_silveraqua.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 456,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_sisuisyou.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_sisuisyou.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 379,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_suzakunoyubiwa.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_suzakunoyubiwa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 418,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_tairyokunobluesepiayubiwa.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_tairyokunobluesepiayubiwa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 435,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_topazuyubiwa.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_topazuyubiwa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 489,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "152_torame.png",
+      "mask": "master/assets/equipment/background_masks_v126/152_torame.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 236,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_ab10.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_ab10.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 247,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_aianreza-guri-busu.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_aianreza-guri-busu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 447,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_akuaguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_akuaguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 309,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_benethikawakuripu.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_benethikawakuripu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 451,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_douguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_douguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 306,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_ginguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_ginguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 310,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_gorudenpuretoguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_gorudenpuretoguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 306,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_gurinhatoguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_gurinhatoguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 342,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_kawaguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_kawaguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 455,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_kinguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_kinguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 375,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_mataguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_mataguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 316,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_redohatoguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_redohatoguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 337,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_ryuguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_ryuguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 445,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_sangoguri.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_sangoguri.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 310,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "155_yumou.png",
+      "mask": "master/assets/equipment/background_masks_v126/155_yumou.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 354,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_aianreza-tebukuro.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_aianreza-tebukuro.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 389,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_aquaglove.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_aquaglove.png",
+      "method": "SOURCE_SOCKET_PALETTE_MATCH",
+      "foregroundPixels": 460,
+      "totalPixels": 960
+    },
+    {
+      "asset": "170_aquaglove02.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_aquaglove02.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 353,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_bureisa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_bureisa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 450,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_doute.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_doute.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 361,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_douudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_douudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 386,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_exceldeamonudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_exceldeamonudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 251,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_ginte.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_ginte.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 365,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_ginte_r.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_ginte_r.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 361,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_ginudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_ginudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 392,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_gumglove.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_gumglove.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 280,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_ironbrace.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_ironbrace.png",
+      "method": "SOURCE_SOCKET_PALETTE_MATCH",
+      "foregroundPixels": 442,
+      "totalPixels": 1122
+    },
+    {
+      "asset": "170_juelglove.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_juelglove.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 330,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_juno.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_juno.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 374,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_junoabureisu.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_junoabureisu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 373,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_kawate.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_kawate.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 352,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_kawaudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_kawaudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 337,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_khangoldgloveR.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_khangoldgloveR.png",
+      "method": "SOURCE_SOCKET_PALETTE_MATCH",
+      "foregroundPixels": 416,
+      "totalPixels": 1054
+    },
+    {
+      "asset": "170_kintebukuro.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_kintebukuro.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 371,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_kinudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_kinudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 419,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_kurearisuto.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_kurearisuto.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 324,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_majikurisuto.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_majikurisuto.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 325,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_matarumuglove.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_matarumuglove.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 263,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_nebilist.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_nebilist.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 340,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_noesglove51.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_noesglove51.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 402,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_noesglove81.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_noesglove81.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 359,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_noesglovemas.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_noesglovemas.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 353,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_noesudewa51.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_noesudewa51.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 283,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_noesudewa81.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_noesudewa81.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 314,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_noesudewamas.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_noesudewamas.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 297,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_pawarisuto.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_pawarisuto.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 318,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_redaglove.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_redaglove.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 280,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_ryuuudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_ryuuudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 395,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_samekawaudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_samekawaudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 242,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_sangoudewa.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_sangoudewa.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 353,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "170_vegaglove.png",
+      "mask": "master/assets/equipment/background_masks_v126/170_vegaglove.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 344,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_darkbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_darkbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 605,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_earthbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_earthbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 414,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_firebelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_firebelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 415,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_goldbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_goldbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 420,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_kaennorunasaberuto.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_kaennorunasaberuto.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 378,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_leatherbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_leatherbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 410,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_masterbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_masterbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 382,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_silverbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_silverbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 423,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_suzakunoberuto.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_suzakunoberuto.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 424,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_waterbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_waterbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 412,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_windbelt.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_windbelt.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 416,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_zembelt_hi.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_zembelt_hi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 411,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_zembelt_kaze.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_zembelt_kaze.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 418,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_zembelt_kin.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_zembelt_kin.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 414,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_zembelt_ti.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_zembelt_ti.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 409,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_zembelt_umi.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_zembelt_umi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 411,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "193_zemubelt_ki.png",
+      "mask": "master/assets/equipment/background_masks_v126/193_zemubelt_ki.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 412,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_crystal.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_crystal.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 193,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_daichineku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_daichineku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 263,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_daiti_hekigyoku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_daiti_hekigyoku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 103,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_daitinoru-nsuto-nnekkuresu.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_daitinoru-nsuto-nnekkuresu.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 146,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_darkneck.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_darkneck.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 361,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_hekigyoku-kaze.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_hekigyoku-kaze.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 108,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_hi_hekigeku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_hi_hekigeku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 103,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_hicrystal.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_hicrystal.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 193,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_hikarineck.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_hikarineck.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 304,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kaenneku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kaenneku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 115,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kanneku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kanneku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 280,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kazecrystal.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kazecrystal.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 193,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kazeneku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kazeneku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 147,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kin-daichi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kin-daichi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 118,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kin-kaen.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kin-kaen.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 131,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kin-kaze.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kin-kaze.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 109,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_kin-umi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_kin-umi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 126,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_magira_hi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_magira_hi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 97,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_magira_kaze.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_magira_kaze.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 99,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_magira_ti.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_magira_ti.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 114,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_magira_umi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_magira_umi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 103,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_mizu_hekigyoku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_mizu_hekigyoku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 103,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_shinjyu-daichi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_shinjyu-daichi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 83,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_shinjyu-kaen.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_shinjyu-kaen.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 97,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_shinjyu-kaze.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_shinjyu-kaze.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 77,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_shinjyu-umi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_shinjyu-umi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 88,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_suishou-daichi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_suishou-daichi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 179,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_suishou-kaen.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_suishou-kaen.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 173,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_suishou-kaze.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_suishou-kaze.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 177,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_suishou-umi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_suishou-umi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 173,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_ticrystal.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_ticrystal.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 193,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_umicrystal.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_umicrystal.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 193,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_umineku.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_umineku.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 172,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_zemstone_hi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_zemstone_hi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 187,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_zemstone_kaze.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_zemstone_kaze.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 185,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_zemstone_ti.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_zemstone_ti.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 176,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "197_zemstone_umi.png",
+      "mask": "master/assets/equipment/background_masks_v126/197_zemstone_umi.png",
+      "method": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "foregroundPixels": 209,
+      "totalPixels": 1024
+    },
+    {
+      "asset": "minimob_0.png",
+      "mask": "master/assets/equipment/background_masks_v126/minimob_0.png",
+      "method": "REVIEWED_SOURCE_POLYGON",
+      "foregroundPixels": 283,
+      "totalPixels": 1085
+    },
+    {
+      "asset": "minimob_2.png",
+      "mask": "master/assets/equipment/background_masks_v126/minimob_2.png",
+      "method": "REVIEWED_SOURCE_POLYGON",
+      "foregroundPixels": 373,
+      "totalPixels": 1216
+    },
+    {
+      "asset": "minimob_5.png",
+      "mask": "master/assets/equipment/background_masks_v126/minimob_5.png",
+      "method": "REVIEWED_SOURCE_POLYGON",
+      "foregroundPixels": 477,
+      "totalPixels": 1394
+    },
+    {
+      "asset": "minimob_7.png",
+      "mask": "master/assets/equipment/background_masks_v126/minimob_7.png",
+      "method": "REVIEWED_SOURCE_POLYGON",
+      "foregroundPixels": 526,
+      "totalPixels": 1440
+    },
+    {
+      "asset": "minimob_9.png",
+      "mask": "master/assets/equipment/background_masks_v126/minimob_9.png",
+      "method": "REVIEWED_SOURCE_POLYGON",
+      "foregroundPixels": 335,
+      "totalPixels": 1295
+    }
+  ]
+}

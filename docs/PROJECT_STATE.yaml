@@ -1049,3 +1049,11 @@ status_summary:
   next_global_rule: "Treat the full 21:48 device matrix as current project truth. Repair upstream combat reciprocity/pipeline and authored attack presentation under separate gates, then consume remaining P1/P2 findings without allowing any one defect to monopolize development. Preserve the corrected Milles grass/dirt semantics."
 
 forest_tap_v117_evidence: verification/FOREST_TAP_V117_BUILD.json
+
+classic_ui_v126:
+  status: IMPLEMENTED_PENDING_CI
+  contract: docs/CLASSIC_UI_V126_CONTRACT.md
+  source_skin: app/src/main/assets/classic-ui/manifest.json
+  separate_icon_masks: 157
+  user_visual_acceptance: PENDING
+  phone_acceptance: PENDING

@@ -29,7 +29,12 @@ for ident,r in j['items'].items():
     assert hashlib.sha256(source.read_bytes()).hexdigest()==r['sourceSha256']
     assert hashlib.sha256(asset.read_bytes()).hexdigest()==r['assetSha256']
     x,y,w,h=r['crop'];crop=Image.open(source).convert('RGBA').crop((x,y,x+w,y+h))
-    if r.get('projection')!='DECODED_FIRST_FRAME_EXACT_RGBA':
+    if r.get('projection')=='SOURCE_RGB_WITH_SEPARATE_ALPHA_MASK':
+        mask_path=ROOT/r['alphaMask'];assert hashlib.sha256(mask_path.read_bytes()).hexdigest()==r['alphaMaskSha256']
+        mask=Image.open(mask_path).convert('L');assert mask.size==crop.size
+        assert mask.getpixel((0,0))==0 and mask.getbbox() is not None
+        crop.putalpha(mask)
+    elif r.get('projection')!='DECODED_FIRST_FRAME_EXACT_RGBA':
         bg=tuple(r['transparentBackgroundRGB'])
         crop.putdata([(*p[:3],0) if p[:3]==bg else p for p in crop.getdata()])
     out=Image.open(asset).convert('RGBA')

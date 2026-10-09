@@ -29,7 +29,7 @@ def main():
   for name in z.namelist():
    assert Path(name).name==name
    if not (SRC/name).exists():(SRC/name).write_bytes(z.read(name))
- entries=json.loads((SRC/'manifest.json').read_text());byalias={norm(a):e for e in entries for a in e['sourceAliases']};catalog=[];icons=json.loads((APP/'manifest.json').read_text());icons['items']={k:v for k,v in icons['items'].items() if v.get('projection')!='DECODED_FIRST_FRAME_EXACT_RGBA'};used=set()
+ entries=json.loads((SRC/'manifest.json').read_text());byalias={norm(a):e for e in entries for a in e['sourceAliases']};catalog=[];icons=json.loads((APP/'manifest.json').read_text());icons['items']={k:v for k,v in icons['items'].items() if not v.get('sourceArchive','').endswith('atwiki_20261009/original_sources.zip') and not k.startswith('IT_SOURCE_MINIMOB_')};used=set()
  known={'가죽각반':'IT_LEGGING_LEATHER','가죽장갑':'IT_GLOVE_LEATHER','쌍은귀걸이':'IT_EARRING_DOUBLE_SILVER','홍옥반지':'IT_RING_REDJADE','고루반지':'IT_RING_GORU','실버아쿠아링':'IT_RING_SILVERAQUA'}
  for e in entries:
   source=SRC/e['path'];assert hashlib.sha256(source.read_bytes()).hexdigest()==e['sha256'];Image.open(source).convert('RGBA').save(OUT/(Path(e['path']).stem+'.png'))
@@ -83,4 +83,6 @@ def main():
   code.append('  r.registerSourceAccessory(new RpgProgressionState.ItemDefinition('+','.join([jstr(item['itemId']),jstr(item['name']),jstr(item['slot']),level,jobs,'false' if item['sourceJobRestriction']=='UNSPECIFIED' else 'true','null' if item['attackElement'] is None else jstr(item['attackElement']),'null' if item['defenseElement'] is None else jstr(item['defenseElement']),'stats('+mods+')','RpgProgressionState.Evidence.'+item['evidence']])+'));')
  code+=[' }',' private static Map<String,Integer> stats(Object... kv){Map<String,Integer> m=new LinkedHashMap<>();for(int i=0;i<kv.length;i+=2)m.put((String)kv[i],(Integer)kv[i+1]);return m;}','}']
  (ROOT/'app/src/main/java/com/projectdark/mobile/SourceAccessoryCatalog.java').write_text('\n'.join(code)+'\n');print('ACCESSORY_CATALOG',len(catalog),'items / 157 pixel-preserved icons')
+ from separate_equipment_backgrounds import main as separate_backgrounds
+ separate_backgrounds()
 if __name__=='__main__':main()
