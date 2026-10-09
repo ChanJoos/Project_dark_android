@@ -1,0 +1,424 @@
+{
+  "build": {
+    "sourceCommit": "363ddca72c0c210568f844c714c41859c6358bea",
+    "runId": "37871336909",
+    "versionCode": 122,
+    "versionName": "1.22-monster-visual-repair",
+    "applicationId": "com.projectdark.mobile.v122test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "4ee239646e4c0b003fd56364ff8d320ed0c3269f363bf3d1ba3a78bd20832c1d",
+    "apkBytes": 59949763,
+    "builtSeoul": "2026-10-09T10:54:00.835364+09:00",
+    "scope": "2.5x mantis, stable spirit hooves, audited back facing, asset-preserving articulated walk, contact-synchronized attacks, hit recoil and immediate removal on defeat; preserved map-lifetime static chase graph with shortest-path A-star and live collision checks; joystick right/up 20 logical pixels; paired accepted V120 continuous movement tails; bounded floor/sprite caches and map-switch memory verification; preserved 168 poses/campaign/save/body",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "actionsRun": 37871336909,
+  "job": 113629894711,
+  "apkArtifact": 11589928876,
+  "nativeArtifact": 11589908910,
+  "archiveDigests": {
+    "11589928876": "825e7babb70707c7997395e1e12f0b8b1e22442cee26a53acb4a00c314465627",
+    "11589908910": "47c70ff48daa6215413f81a6369965f21f3a435ed5f43e94abad77fe5116ce2a"
+  },
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteVisualReviewTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.InstalledSpriteResourcesTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.AutoAttackTargetSelectorTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteCreekWaterAssetTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterVisualRepairV122Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignProgressTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFrameProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFloorCacheTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.QuickQuestLatencyTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteForestSpatialGrammarTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.DeviceRepairV114Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.world.WorldMoveTargetControllerPathTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterMotionV121Test",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterChasePathfinderTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.NpcAppearanceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignNavigationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PotePamfetPresentationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.HudTouchAcceptanceTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.QuestJournalTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.AdaptedCampaignRewardTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignQuickQuestIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestPixelCacheTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterQualityV118Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteReferenceV113Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.JoystickV119Test",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestTapProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "totals": {
+    "tests": 125,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "approvedSprites": "ALL168_BYTE_IDENTICAL_V120_V121",
+  "unidentifiedPreviousOptions": [
+    3,
+    4
+  ],
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v122-363ddca7-37871336909-1",
+  "V120_CONTINUOUS_BASELINE": {
+    "source": "a7de04660d317d64f2b6b07cd44e2d57c5da4462",
+    "environment": "Robolectric native CPU; no physical phone FPS claim",
+    "framesPerScene": 360,
+    "scenes": [
+      {
+        "map": "MILLES",
+        "monsters": 3,
+        "tiles": 4176,
+        "travel": 263.6958015695292,
+        "movingFrames": 277,
+        "updateMedianMs": 0.13827,
+        "updateP95Ms": 0.536747,
+        "updateP99Ms": 1.003362,
+        "updateMaxMs": 15.526417,
+        "renderMedianMs": 12.522404,
+        "renderP95Ms": 26.842079,
+        "renderP99Ms": 37.152495,
+        "renderMaxMs": 2230.475421
+      },
+      {
+        "map": "MAP_POTE_01",
+        "monsters": 72,
+        "tiles": 7075,
+        "travel": 142.58096206023575,
+        "movingFrames": 151,
+        "updateMedianMs": 0.155081,
+        "updateP95Ms": 0.329408,
+        "updateP99Ms": 0.907112,
+        "updateMaxMs": 10.343307,
+        "renderMedianMs": 8.081525,
+        "renderP95Ms": 12.999538,
+        "renderP99Ms": 14.99442,
+        "renderMaxMs": 177.773289
+      },
+      {
+        "map": "MAP_POTE_03",
+        "monsters": 108,
+        "tiles": 10222,
+        "travel": 214.5618036012228,
+        "movingFrames": 226,
+        "updateMedianMs": 0.100999,
+        "updateP95Ms": 0.148198,
+        "updateP99Ms": 1.277376,
+        "updateMaxMs": 8.61771,
+        "renderMedianMs": 5.877011,
+        "renderP95Ms": 6.290145,
+        "renderP99Ms": 7.205162,
+        "renderMaxMs": 90.15865
+      }
+    ]
+  },
+  "CONTINUOUS": {
+    "source": "363ddca72c0c210568f844c714c41859c6358bea",
+    "environment": "Robolectric native CPU; no physical phone FPS claim",
+    "framesPerScene": 360,
+    "scenes": [
+      {
+        "map": "MILLES",
+        "monsters": 3,
+        "tiles": 4176,
+        "travel": 263.6958015695292,
+        "movingFrames": 277,
+        "updateMedianMs": 0.146705,
+        "updateP95Ms": 0.606107,
+        "updateP99Ms": 1.08746,
+        "updateMaxMs": 18.626798,
+        "renderMedianMs": 12.952338,
+        "renderP95Ms": 26.94127,
+        "renderP99Ms": 33.154912,
+        "renderMaxMs": 2052.151726
+      },
+      {
+        "map": "MAP_POTE_01",
+        "monsters": 72,
+        "tiles": 7075,
+        "travel": 142.58096206023575,
+        "movingFrames": 151,
+        "updateMedianMs": 0.139231,
+        "updateP95Ms": 0.33055,
+        "updateP99Ms": 1.33833,
+        "updateMaxMs": 10.710795,
+        "renderMedianMs": 7.896718,
+        "renderP95Ms": 14.391126,
+        "renderP99Ms": 15.932176,
+        "renderMaxMs": 189.457497
+      },
+      {
+        "map": "MAP_POTE_03",
+        "monsters": 108,
+        "tiles": 10222,
+        "travel": 214.5618036012228,
+        "movingFrames": 226,
+        "updateMedianMs": 0.120386,
+        "updateP95Ms": 0.194685,
+        "updateP99Ms": 1.286291,
+        "updateMaxMs": 7.857685,
+        "renderMedianMs": 6.077406,
+        "renderP95Ms": 6.912734,
+        "renderP99Ms": 9.336498,
+        "renderMaxMs": 82.935942
+      }
+    ]
+  },
+  "TAP_COMPARISON": {
+    "baseline": "eed465d35d27089d1db04b02c427d08137849fb5",
+    "candidate": "363ddca72c0c210568f844c714c41859c6358bea",
+    "scenes": [
+      {
+        "map": "MAP_POTE_01",
+        "baselineOccupancy": 52681,
+        "candidateOccupancy": 2668,
+        "baselineTapMedianMs": 83.930215,
+        "candidateTapMedianMs": 3.7221695,
+        "baselineRouteMedianMs": 275.5291765,
+        "candidateRouteMedianMs": 36.5318195
+      },
+      {
+        "map": "MAP_POTE_02",
+        "baselineOccupancy": 56080,
+        "candidateOccupancy": 2192,
+        "baselineTapMedianMs": 112.55828650000001,
+        "candidateTapMedianMs": 2.4204085,
+        "baselineRouteMedianMs": 441.5663485,
+        "candidateRouteMedianMs": 20.5157405
+      },
+      {
+        "map": "MAP_POTE_03",
+        "baselineOccupancy": 57518,
+        "candidateOccupancy": 2837,
+        "baselineTapMedianMs": 144.68786649999998,
+        "candidateTapMedianMs": 2.416531,
+        "baselineRouteMedianMs": 253.20839999999998,
+        "candidateRouteMedianMs": 15.2658315
+      },
+      {
+        "map": "MAP_POTE_D_BOSS",
+        "baselineOccupancy": 23076,
+        "candidateOccupancy": 454,
+        "baselineTapMedianMs": 1.7445865,
+        "candidateTapMedianMs": 0.389675,
+        "baselineRouteMedianMs": 1.7536235000000002,
+        "candidateRouteMedianMs": 0.595687
+      }
+    ],
+    "phone": "PENDING"
+  },
+  "manualNativeReview": "Final all-ant four-facing idle/walk grid, full boss/player map, brown/black four-facing foot phase sheets and V121/V122 foot closeups inspected. Generated QA composite preserves pixel aspect.",
+  "firstFailure": {
+    "source": "9cd4fd285b7ef04a3fd651a1e35ed47097282a8f",
+    "run": 37870740856,
+    "tests": 125,
+    "failures": 1,
+    "reason": "POTE_TREANT NW idle used different rasterization than walk",
+    "resolvedBy": "363ddca72c0c210568f844c714c41859c6358bea",
+    "evidence": "verification/MONSTER_VISUAL_V122_FIRST_FAILURE.json"
+  },
+  "performanceInterpretation": "Same360 native CPU frames: A render p95 12.999538→14.391126ms,p99 14.994420→15.932176ms,max177.773289→189.457497ms;C p956.290145→6.912734ms,p997.205162→9.336498ms,max90.158650→82.935942ms. Some tails rose; no device-speed preservation or phone FPS proof. All cache/map-switch/path/collision/save regression gates pass.",
+  "previousOptionsScope": "3 and4 definitions absent; retrieval twice errored; requires names, not approval. Do not claim them completed."
+}
