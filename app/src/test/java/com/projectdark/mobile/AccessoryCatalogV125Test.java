@@ -20,7 +20,7 @@ public class AccessoryCatalogV125Test {
   assertEquals(Integer.valueOf(1),r.normalLevel());assertEquals("COMMONER",r.currentJobCode());assertTrue(r.equipmentSandbox());
   assertEquals(r.itemDefinitions().keySet(),r.inventory().keySet());
   for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.equippable()){
-   assertEquals(d.itemId,Integer.valueOf(1),r.inventory().get(d.itemId));assertEquals(RpgProgressionState.RequirementResult.MET,r.currentRequirements(d.itemId));
+   assertEquals(d.itemId,Integer.valueOf(RpgProgressionState.pairedSlot(d.equipSlot)?2:1),r.inventory().get(d.itemId));assertEquals(RpgProgressionState.RequirementResult.MET,r.currentRequirements(d.itemId));
    if(d.itemId.startsWith("IT_SOURCE_")&&!d.name.startsWith("흑요석워리어")){assertNotNull(d.itemId,registry.get(d));connected++;}
   }
   for(String element:new String[]{"WATER","EARTH","WIND","FIRE"}){assertNotNull(element,registry.get(r.itemDefinitions().get("IT_NECK_"+element+"_PEARL")));assertNotNull(element,registry.get(r.itemDefinitions().get("IT_BELT_"+element+"_LEATHER")));}

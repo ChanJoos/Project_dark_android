@@ -1,5 +1,5 @@
 {
-  "currentItems": 236,
+  "currentItems": 408,
   "newSourceBindings": 55,
   "reusedSourceBindings": 7,
   "items": {
@@ -869,134 +869,134 @@
       "identityMatch": "EXISTING_LABELLED_SOURCE"
     },
     "IT_ADAPTED_PLAYTEST_MOKDO": {
-      "name": "목도 [ADAPTED PLAYTEST]",
-      "assetPath": "item-icons/3e54c1a60e05_bokutou.png",
-      "identityMatch": "EXACT_SOURCE_NAME"
+      "name": "목도",
+      "assetPath": "item-icons/identity_mw001.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_WEAPON_MW002": {
       "name": "에페",
-      "assetPath": "item-icons/8956a8316ba1_epe.png",
-      "identityMatch": "EXACT_SOURCE_NAME"
+      "assetPath": "item-icons/identity_mw002.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_WEAPON_MW003": {
       "name": "커틀라스",
-      "assetPath": "item-icons/e7fe2e00743a_katorasu.png",
-      "identityMatch": "EXACT_SOURCE_NAME"
+      "assetPath": "item-icons/identity_mw003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_SHOP_WEAPON_MW004": {
       "name": "세이버",
-      "assetPath": "item-icons/a0c4b69c67e4_sabel.png",
-      "identityMatch": "HISTORICAL_LOCALIZATION_EQUIVALENT"
+      "assetPath": "item-icons/identity_mw004.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_SHOP_WEAPON_MW005": {
       "name": "그라디우스",
-      "assetPath": "item-icons/a14293fb487b_gradius.png",
-      "identityMatch": "EXACT_SOURCE_NAME"
+      "assetPath": "item-icons/identity_mw005.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_WARRIOR_WEAPON": {
-      "name": "경비대 수련검 [ADAPTED]",
-      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "롱소드 · 수련",
+      "assetPath": "item-icons/identity_mw015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_ROGUE_WEAPON": {
-      "name": "정찰자 단검 [ADAPTED]",
-      "assetPath": "item-icons/a42d8c622e26_tanken1.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "에페 · 수련",
+      "assetPath": "item-icons/identity_mw002.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_MAGE_WAND": {
-      "name": "수련 지팡이 [ADAPTED]",
-      "assetPath": "item-icons/minimob87_magic_satia.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "매직새티아 · 수련",
+      "assetPath": "item-icons/identity_mw024.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_CLERIC_WAND": {
-      "name": "성직 완드 [ADAPTED]",
-      "assetPath": "item-icons/f37af7497943_seitue01.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "홀리머큐리아 · 수련",
+      "assetPath": "item-icons/identity_mw008.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_ADAPTED_STARTER_SHIELD": {
-      "name": "기본 방패",
-      "assetPath": "item-icons/5fb7b319183a_tate1.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "이름 미확인 방패",
+      "assetPath": "item-icons/identity_ms001.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_SHIELD_MS002": {
-      "name": "방패 ms002",
-      "assetPath": "item-icons/3cd662ea5f31_tate11.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "이름 미확인 방패",
+      "assetPath": "item-icons/identity_ms002.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_SHIELD_MS003": {
-      "name": "방패 ms003",
-      "assetPath": "item-icons/0347dae45a7d_tate26.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "이름 미확인 방패",
+      "assetPath": "item-icons/identity_ms003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_ARMOR_MU0000002": {
       "name": "레더튜닉",
-      "assetPath": "item-icons/3f957abbaead_L1_male.png",
-      "identityMatch": "EXACT_SOURCE_NAME"
+      "assetPath": "item-icons/identity_mu0000002.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_APPEARANCE_PEASANT_SHIRT": {
-      "name": "셔츠 [PENDING WEARABLE FRAMES]",
-      "assetPath": "item-icons/c45e87e0009c_japanuniform01.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "name": "셔츠",
+      "assetPath": "item-icons/identity_mu0000001.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_SHOP_ARMOR_JIPON": {
       "name": "지폰",
-      "assetPath": "item-icons/5ba810d690bf_O41_male.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_ARMOR_MU0000003": {
       "name": "도복",
-      "assetPath": "item-icons/5333956b6053_sougetu.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_REFERENCE_LEOPARD": {
       "name": "레오파드",
-      "assetPath": "item-icons/c624027e1807_L1_male.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "assetPath": "item-icons/identity_mu0000180.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_REFERENCE_HELM": {
       "name": "헬름",
-      "assetPath": "item-icons/109f4481f4da_baikuherumeto.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "assetPath": "item-icons/identity_mh168.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_ADAPTED_STARTER_HAT": {
       "name": "밀레스털모자",
-      "assetPath": "item-icons/852f02918848_m_goggle.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "assetPath": "item-icons/identity_mh172.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_HAT_MH173": {
       "name": "아벨털모자",
-      "assetPath": "item-icons/5b8c644799ec_f_goggle.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "assetPath": "item-icons/identity_mh173.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_HAT_MH174": {
       "name": "루어스털모자",
-      "assetPath": "item-icons/5b8c644799ec_f_goggle.png",
-      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+      "assetPath": "item-icons/identity_mh174.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_WARRIOR_TUNIC": {
-      "name": "전사 수련 튜닉 [ADAPTED]",
-      "assetPath": "item-icons/3f957abbaead_L1_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "지폰 · 수련",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_ROGUE_GARMENT": {
-      "name": "도적 수련복 [ADAPTED]",
-      "assetPath": "item-icons/c624027e1807_L1_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "스카웃튜닉 · 수련",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_MAGE_ROBE": {
-      "name": "마법사 수련 로브 [ADAPTED]",
-      "assetPath": "item-icons/20c8118ca6d6_L1_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "루어스레더로브 · 수련",
+      "assetPath": "item-icons/identity_mu0000058.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_CLERIC_ROBE": {
-      "name": "성직자 수련 로브 [ADAPTED]",
-      "assetPath": "item-icons/1a8eceb891bf_N1_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "맨틀 · 수련",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_JOB_MONK_GI": {
-      "name": "무도가 수련 도복 [ADAPTED]",
-      "assetPath": "item-icons/5333956b6053_sougetu.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "도복 · 수련",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_SMALL_POTION": {
       "name": "소형 회복물약 [B]",
@@ -1054,114 +1054,114 @@
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
     },
     "IT_B_CAMPAIGN_WARRIOR_11": {
-      "name": "WARRIOR armor",
-      "assetPath": "item-icons/d27f34a3815a_L86_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "지폰 · 수련",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_WARRIOR_11": {
-      "name": "WARRIOR tool",
-      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "롱소드 · 수련",
+      "assetPath": "item-icons/identity_mw015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_WARRIOR_26": {
-      "name": "WARRIOR armor",
-      "assetPath": "item-icons/d27f34a3815a_L86_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "지폰 · 수련",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_WARRIOR_26": {
-      "name": "WARRIOR tool",
-      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "롱소드 · 수련",
+      "assetPath": "item-icons/identity_mw015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_ROGUE_11": {
-      "name": "ROGUE armor",
-      "assetPath": "item-icons/c624027e1807_L1_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "스카웃튜닉 · 수련",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_ROGUE_11": {
-      "name": "ROGUE tool",
-      "assetPath": "item-icons/a42d8c622e26_tanken1.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "에페 · 수련",
+      "assetPath": "item-icons/identity_mw002.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_ROGUE_26": {
-      "name": "ROGUE armor",
-      "assetPath": "item-icons/c624027e1807_L1_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "스카웃튜닉 · 수련",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_ROGUE_26": {
-      "name": "ROGUE tool",
-      "assetPath": "item-icons/a42d8c622e26_tanken1.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "에페 · 수련",
+      "assetPath": "item-icons/identity_mw002.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_MAGE_11": {
-      "name": "MAGE armor",
-      "assetPath": "item-icons/35730b2dc5eb_L99_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "후드로브 · 수련",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_11": {
-      "name": "MAGE tool",
-      "assetPath": "item-icons/minimob87_magic_satia.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "매직새티아 · 수련",
+      "assetPath": "item-icons/identity_mw024.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_MAGE_26": {
-      "name": "MAGE armor",
-      "assetPath": "item-icons/35730b2dc5eb_L99_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "후드로브 · 수련",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_26": {
-      "name": "MAGE tool",
-      "assetPath": "item-icons/minimob87_magic_satia.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "매직새티아 · 수련",
+      "assetPath": "item-icons/identity_mw024.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_CLERIC_11": {
-      "name": "CLERIC armor",
-      "assetPath": "item-icons/c37fca988c04_L99_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "맨틀 · 수련",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_CLERIC_11": {
-      "name": "CLERIC tool",
-      "assetPath": "item-icons/f37af7497943_seitue01.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "홀리머큐리아 · 수련",
+      "assetPath": "item-icons/identity_mw008.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_CLERIC_26": {
-      "name": "CLERIC armor",
-      "assetPath": "item-icons/c37fca988c04_L99_male.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "맨틀 · 수련",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_CLERIC_26": {
-      "name": "CLERIC tool",
-      "assetPath": "item-icons/f37af7497943_seitue01.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "홀리머큐리아 · 수련",
+      "assetPath": "item-icons/identity_mw008.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_11": {
-      "name": "MARTIAL_ARTIST armor",
-      "assetPath": "item-icons/1cfb6d9ab196_orurosu.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "도복 · 수련",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_26": {
-      "name": "MARTIAL_ARTIST armor",
-      "assetPath": "item-icons/1cfb6d9ab196_orurosu.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "도복 · 수련",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_SHOES": {
-      "name": "신발",
-      "assetPath": "equipment-icons/150_kutu1.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "이름 미확인 신발",
+      "assetPath": "item-icons/identity_ml228.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_SHOES_ML229": {
-      "name": "가죽 신발",
-      "assetPath": "equipment-icons/150_kutu56.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "이름 미확인 신발",
+      "assetPath": "item-icons/identity_ml229.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_TEST_SHOES_ML230": {
-      "name": "신발 ml230",
-      "assetPath": "equipment-icons/150_kutu41.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "이름 미확인 신발",
+      "assetPath": "item-icons/identity_ml230.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_POTE_SHOES": {
-      "name": "숲길 신발",
-      "assetPath": "equipment-icons/150_kutu41.png",
-      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+      "name": "이름 미확인 신발 · 수련",
+      "assetPath": "item-icons/identity_ml230.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_SOURCE_MINIMOB_2": {
       "name": "흑요석워리어목걸이(수)",
@@ -1182,6 +1182,866 @@
       "name": "청룡의숨결",
       "assetPath": "weapons/chungryong/icon.png",
       "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_WARDROBE_MH106": {
+      "name": "털모자",
+      "assetPath": "item-icons/identity_mh106.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH108": {
+      "name": "햇",
+      "assetPath": "item-icons/identity_mh108.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH111": {
+      "name": "이프리트투구",
+      "assetPath": "item-icons/identity_mh111.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH112": {
+      "name": "풀플레이트투구",
+      "assetPath": "item-icons/identity_mh112.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH113": {
+      "name": "골든플레이트투구",
+      "assetPath": "item-icons/identity_mh113.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH121": {
+      "name": "카게",
+      "assetPath": "item-icons/identity_mh121.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH122": {
+      "name": "로그",
+      "assetPath": "item-icons/identity_mh122.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH123": {
+      "name": "닌자드",
+      "assetPath": "item-icons/identity_mh123.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH124": {
+      "name": "화랑복건",
+      "assetPath": "item-icons/identity_mh124.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH125": {
+      "name": "아이언",
+      "assetPath": "item-icons/identity_mh125.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH131": {
+      "name": "매직세인트",
+      "assetPath": "item-icons/identity_mh131.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH132": {
+      "name": "매직코니칼",
+      "assetPath": "item-icons/identity_mh132.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH133": {
+      "name": "매직풀",
+      "assetPath": "item-icons/identity_mh133.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH134": {
+      "name": "매직피어",
+      "assetPath": "item-icons/identity_mh134.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH135": {
+      "name": "매직치프",
+      "assetPath": "item-icons/identity_mh135.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH136": {
+      "name": "매직네비",
+      "assetPath": "item-icons/identity_mh136.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH137": {
+      "name": "매직레드",
+      "assetPath": "item-icons/identity_mh137.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH138": {
+      "name": "매직썬라이징",
+      "assetPath": "item-icons/identity_mh138.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH143": {
+      "name": "노랑두건",
+      "assetPath": "item-icons/identity_mh143.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH147": {
+      "name": "파란두건",
+      "assetPath": "item-icons/identity_mh147.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH152": {
+      "name": "페리위그",
+      "assetPath": "item-icons/identity_mh152.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH153": {
+      "name": "풀플레이트투구수",
+      "assetPath": "item-icons/identity_mh153.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH154": {
+      "name": "풀플레이트투구토",
+      "assetPath": "item-icons/identity_mh154.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH155": {
+      "name": "풀플레이트투구풍",
+      "assetPath": "item-icons/identity_mh155.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH156": {
+      "name": "풀플레이트투구화",
+      "assetPath": "item-icons/identity_mh156.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH157": {
+      "name": "세인트홀",
+      "assetPath": "item-icons/identity_mh157.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH158": {
+      "name": "다크홀",
+      "assetPath": "item-icons/identity_mh158.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH162": {
+      "name": "아가트",
+      "assetPath": "item-icons/identity_mh162.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH163": {
+      "name": "헬름",
+      "assetPath": "item-icons/identity_mh163.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH165": {
+      "name": "루크",
+      "assetPath": "item-icons/identity_mh165.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH166": {
+      "name": "마르두크",
+      "assetPath": "item-icons/identity_mh166.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH167": {
+      "name": "아가트",
+      "assetPath": "item-icons/identity_mh167.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MH171": {
+      "name": "마르두크",
+      "assetPath": "item-icons/identity_mh171.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000005": {
+      "name": "셍즈",
+      "assetPath": "item-icons/identity_mu0000005.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000008": {
+      "name": "천지도복",
+      "assetPath": "item-icons/identity_mu0000008.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000011": {
+      "name": "달마티카",
+      "assetPath": "item-icons/identity_mu0000011.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000012": {
+      "name": "하프플레이트",
+      "assetPath": "item-icons/identity_mu0000012.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000013": {
+      "name": "단도복",
+      "assetPath": "item-icons/identity_mu0000013.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000014": {
+      "name": "팔루텐",
+      "assetPath": "item-icons/identity_mu0000014.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000016": {
+      "name": "로럼",
+      "assetPath": "item-icons/identity_mu0000016.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000017": {
+      "name": "카스뮴아머",
+      "assetPath": "item-icons/identity_mu0000017.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000018": {
+      "name": "선풍도복",
+      "assetPath": "item-icons/identity_mu0000018.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000019": {
+      "name": "키톤",
+      "assetPath": "item-icons/identity_mu0000019.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000020": {
+      "name": "위저드로브",
+      "assetPath": "item-icons/identity_mu0000020.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000022": {
+      "name": "체인메일",
+      "assetPath": "item-icons/identity_mu0000022.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000023": {
+      "name": "태산도복",
+      "assetPath": "item-icons/identity_mu0000023.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000024": {
+      "name": "바르도클",
+      "assetPath": "item-icons/identity_mu0000024.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000025": {
+      "name": "네크로브",
+      "assetPath": "item-icons/identity_mu0000025.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000027": {
+      "name": "풀플레이트",
+      "assetPath": "item-icons/identity_mu0000027.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000028": {
+      "name": "이프리트메일",
+      "assetPath": "item-icons/identity_mu0000028.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000029": {
+      "name": "골든플레이트",
+      "assetPath": "item-icons/identity_mu0000029.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000043": {
+      "name": "수오미지폰",
+      "assetPath": "item-icons/identity_mu0000043.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000044": {
+      "name": "밀레스지폰",
+      "assetPath": "item-icons/identity_mu0000044.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000045": {
+      "name": "뤼케시온지폰",
+      "assetPath": "item-icons/identity_mu0000045.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000046": {
+      "name": "루어스지폰",
+      "assetPath": "item-icons/identity_mu0000046.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000047": {
+      "name": "수오미노미쉬레더",
+      "assetPath": "item-icons/identity_mu0000047.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000048": {
+      "name": "뤼케시온노미쉬레더",
+      "assetPath": "item-icons/identity_mu0000048.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000049": {
+      "name": "밀레스노미쉬레더",
+      "assetPath": "item-icons/identity_mu0000049.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000050": {
+      "name": "루어스노미쉬레더",
+      "assetPath": "item-icons/identity_mu0000050.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000051": {
+      "name": "수오미달마티카",
+      "assetPath": "item-icons/identity_mu0000051.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000052": {
+      "name": "뤼케시온달마티카",
+      "assetPath": "item-icons/identity_mu0000052.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000053": {
+      "name": "밀레스달마티카",
+      "assetPath": "item-icons/identity_mu0000053.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000054": {
+      "name": "루어스달마티카",
+      "assetPath": "item-icons/identity_mu0000054.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000055": {
+      "name": "수오미레더로브",
+      "assetPath": "item-icons/identity_mu0000055.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000056": {
+      "name": "밀레스레더로브",
+      "assetPath": "item-icons/identity_mu0000056.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000057": {
+      "name": "뤼케시온레더로브",
+      "assetPath": "item-icons/identity_mu0000057.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000059": {
+      "name": "오렌가이아로럼",
+      "assetPath": "item-icons/identity_mu0000059.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000060": {
+      "name": "루어스단도복",
+      "assetPath": "item-icons/identity_mu0000060.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000061": {
+      "name": "뤼케시온단도복",
+      "assetPath": "item-icons/identity_mu0000061.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000062": {
+      "name": "수오미단도복",
+      "assetPath": "item-icons/identity_mu0000062.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000063": {
+      "name": "수오미레더튜닉",
+      "assetPath": "item-icons/identity_mu0000063.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000064": {
+      "name": "뤼케시온레더튜닉",
+      "assetPath": "item-icons/identity_mu0000064.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000065": {
+      "name": "루어스레더튜닉",
+      "assetPath": "item-icons/identity_mu0000065.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000066": {
+      "name": "밀레스레더튜닉",
+      "assetPath": "item-icons/identity_mu0000066.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000067": {
+      "name": "수오미스카웃튜닉",
+      "assetPath": "item-icons/identity_mu0000067.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000068": {
+      "name": "밀레스스카웃튜닉",
+      "assetPath": "item-icons/identity_mu0000068.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000069": {
+      "name": "뤼케시온스카웃튜닉",
+      "assetPath": "item-icons/identity_mu0000069.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000070": {
+      "name": "루어스스카웃튜닉",
+      "assetPath": "item-icons/identity_mu0000070.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000071": {
+      "name": "수오미후드로브",
+      "assetPath": "item-icons/identity_mu0000071.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000072": {
+      "name": "뤼케시온후드로브",
+      "assetPath": "item-icons/identity_mu0000072.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000073": {
+      "name": "밀레스후드로브",
+      "assetPath": "item-icons/identity_mu0000073.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000074": {
+      "name": "루어스후드로브",
+      "assetPath": "item-icons/identity_mu0000074.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000075": {
+      "name": "수오미셍즈",
+      "assetPath": "item-icons/identity_mu0000075.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000076": {
+      "name": "밀레스셍즈",
+      "assetPath": "item-icons/identity_mu0000076.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000077": {
+      "name": "뤼케시온셍즈",
+      "assetPath": "item-icons/identity_mu0000077.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000078": {
+      "name": "루어스셍즈",
+      "assetPath": "item-icons/identity_mu0000078.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000079": {
+      "name": "수오미도복",
+      "assetPath": "item-icons/identity_mu0000079.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000080": {
+      "name": "뤼케시온도복",
+      "assetPath": "item-icons/identity_mu0000080.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000081": {
+      "name": "루어스도복",
+      "assetPath": "item-icons/identity_mu0000081.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000082": {
+      "name": "밀레스도복",
+      "assetPath": "item-icons/identity_mu0000082.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000083": {
+      "name": "뤼케시온하프플레이트",
+      "assetPath": "item-icons/identity_mu0000083.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000084": {
+      "name": "밀레스하프플레이트",
+      "assetPath": "item-icons/identity_mu0000084.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000085": {
+      "name": "루어스하프플레이트",
+      "assetPath": "item-icons/identity_mu0000085.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000086": {
+      "name": "수오미하프플레이트",
+      "assetPath": "item-icons/identity_mu0000086.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000087": {
+      "name": "수오미팔루텐",
+      "assetPath": "item-icons/identity_mu0000087.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000090": {
+      "name": "루어스팔루텐",
+      "assetPath": "item-icons/identity_mu0000090.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000091": {
+      "name": "수오미로럼",
+      "assetPath": "item-icons/identity_mu0000091.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000092": {
+      "name": "뤼케시온로럼",
+      "assetPath": "item-icons/identity_mu0000092.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000093": {
+      "name": "밀레스로럼",
+      "assetPath": "item-icons/identity_mu0000093.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000094": {
+      "name": "루어스로럼",
+      "assetPath": "item-icons/identity_mu0000094.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000095": {
+      "name": "밀레스맨틀",
+      "assetPath": "item-icons/identity_mu0000095.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000096": {
+      "name": "루어스맨틀",
+      "assetPath": "item-icons/identity_mu0000096.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000097": {
+      "name": "수오미맨틀",
+      "assetPath": "item-icons/identity_mu0000097.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000098": {
+      "name": "뤼케시온맨틀",
+      "assetPath": "item-icons/identity_mu0000098.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000100": {
+      "name": "밀레스천지도복",
+      "assetPath": "item-icons/identity_mu0000100.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000101": {
+      "name": "뤼케시온천지도복",
+      "assetPath": "item-icons/identity_mu0000101.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000102": {
+      "name": "루어스천지도복",
+      "assetPath": "item-icons/identity_mu0000102.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000111": {
+      "name": "수오미가이아로럼",
+      "assetPath": "item-icons/identity_mu0000111.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000112": {
+      "name": "뤼케시온가이아로럼",
+      "assetPath": "item-icons/identity_mu0000112.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000113": {
+      "name": "루어스가이아로럼",
+      "assetPath": "item-icons/identity_mu0000113.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000114": {
+      "name": "밀레스가이아로럼",
+      "assetPath": "item-icons/identity_mu0000114.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000115": {
+      "name": "수오미위저드로브",
+      "assetPath": "item-icons/identity_mu0000115.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000116": {
+      "name": "뤼케시온위저드로브",
+      "assetPath": "item-icons/identity_mu0000116.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000117": {
+      "name": "루어스위저드로브",
+      "assetPath": "item-icons/identity_mu0000117.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000118": {
+      "name": "밀레스위저드로브",
+      "assetPath": "item-icons/identity_mu0000118.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000121": {
+      "name": "루어스선풍도복",
+      "assetPath": "item-icons/identity_mu0000121.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000122": {
+      "name": "밀레스선풍도복",
+      "assetPath": "item-icons/identity_mu0000122.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000123": {
+      "name": "수오미풀플레이트",
+      "assetPath": "item-icons/identity_mu0000123.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000124": {
+      "name": "뤼케시온풀플레이트",
+      "assetPath": "item-icons/identity_mu0000124.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000125": {
+      "name": "루어스풀플레이트",
+      "assetPath": "item-icons/identity_mu0000125.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000126": {
+      "name": "밀레스풀플레이트",
+      "assetPath": "item-icons/identity_mu0000126.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000127": {
+      "name": "수오미바르도클",
+      "assetPath": "item-icons/identity_mu0000127.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000128": {
+      "name": "뤼케시온바르도클",
+      "assetPath": "item-icons/identity_mu0000128.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000129": {
+      "name": "루어스바르도클",
+      "assetPath": "item-icons/identity_mu0000129.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000130": {
+      "name": "밀레스바르도클",
+      "assetPath": "item-icons/identity_mu0000130.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000131": {
+      "name": "수오미다크로럼",
+      "assetPath": "item-icons/identity_mu0000131.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000132": {
+      "name": "뤼케시온다크로럼",
+      "assetPath": "item-icons/identity_mu0000132.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000133": {
+      "name": "루어스다크로럼",
+      "assetPath": "item-icons/identity_mu0000133.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000134": {
+      "name": "밀레스다크로럼",
+      "assetPath": "item-icons/identity_mu0000134.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000135": {
+      "name": "수오미네크로브",
+      "assetPath": "item-icons/identity_mu0000135.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000136": {
+      "name": "뤼케시온네크로브",
+      "assetPath": "item-icons/identity_mu0000136.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000137": {
+      "name": "루어스네크로브",
+      "assetPath": "item-icons/identity_mu0000137.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000138": {
+      "name": "밀레스네크로브",
+      "assetPath": "item-icons/identity_mu0000138.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MU0000139": {
+      "name": "수오미태산도복",
+      "assetPath": "item-icons/identity_mu0000139.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW007": {
+      "name": "매직마르시아",
+      "assetPath": "item-icons/identity_mw007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW009": {
+      "name": "매직쥬피티아",
+      "assetPath": "item-icons/identity_mw009.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW010": {
+      "name": "매스커레이드",
+      "assetPath": "item-icons/identity_mw010.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW011": {
+      "name": "매스케이드",
+      "assetPath": "item-icons/identity_mw011.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW012": {
+      "name": "배틀소드",
+      "assetPath": "item-icons/identity_mw012.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW013": {
+      "name": "블랙데쓰",
+      "assetPath": "item-icons/identity_mw013.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW014": {
+      "name": "프렘벨",
+      "assetPath": "item-icons/identity_mw014.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW016": {
+      "name": "투핸드크레이모어",
+      "assetPath": "item-icons/identity_mw016.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW017": {
+      "name": "스틸라",
+      "assetPath": "item-icons/identity_mw017.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW018": {
+      "name": "투핸드에메랄드소드",
+      "assetPath": "item-icons/identity_mw018.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW019": {
+      "name": "투핸드드래곤크로어",
+      "assetPath": "item-icons/identity_mw019.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW020": {
+      "name": "드래곤슬레이어",
+      "assetPath": "item-icons/identity_mw020.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW021": {
+      "name": "투핸드그레이트소드",
+      "assetPath": "item-icons/identity_mw021.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW022": {
+      "name": "투핸드엑시큐터",
+      "assetPath": "item-icons/identity_mw022.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW023": {
+      "name": "투핸드가이아두스",
+      "assetPath": "item-icons/identity_mw023.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW026": {
+      "name": "매직루나",
+      "assetPath": "item-icons/identity_mw026.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW027": {
+      "name": "매직가이아",
+      "assetPath": "item-icons/identity_mw027.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW029": {
+      "name": "채찍",
+      "assetPath": "item-icons/identity_mw029.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW034": {
+      "name": "우든클럽",
+      "assetPath": "item-icons/identity_mw034.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW035": {
+      "name": "스파이크클럽",
+      "assetPath": "item-icons/identity_mw035.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW036": {
+      "name": "자이언트클럽",
+      "assetPath": "item-icons/identity_mw036.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW037": {
+      "name": "자이언트스톤클럽",
+      "assetPath": "item-icons/identity_mw037.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW039": {
+      "name": "액스",
+      "assetPath": "item-icons/identity_mw039.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW040": {
+      "name": "하이브레이질액스",
+      "assetPath": "item-icons/identity_mw040.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW041": {
+      "name": "자이언트스톤액스",
+      "assetPath": "item-icons/identity_mw041.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW043": {
+      "name": "배틀액스",
+      "assetPath": "item-icons/identity_mw043.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW044": {
+      "name": "자이언트스톤해머",
+      "assetPath": "item-icons/identity_mw044.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW047": {
+      "name": "시미터",
+      "assetPath": "item-icons/identity_mw047.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW048": {
+      "name": "더브릴",
+      "assetPath": "item-icons/identity_mw048.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW049": {
+      "name": "타고나이트채찍",
+      "assetPath": "item-icons/identity_mw049.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW050": {
+      "name": "미스릴채찍",
+      "assetPath": "item-icons/identity_mw050.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW051": {
+      "name": "루비채찍",
+      "assetPath": "item-icons/identity_mw051.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW053": {
+      "name": "타고나이트액스",
+      "assetPath": "item-icons/identity_mw053.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW055": {
+      "name": "하이브레이질배틀액스",
+      "assetPath": "item-icons/identity_mw055.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW056": {
+      "name": "실버시미터",
+      "assetPath": "item-icons/identity_mw056.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW059": {
+      "name": "매직솔라",
+      "assetPath": "item-icons/identity_mw059.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW060": {
+      "name": "아리펠스탭",
+      "assetPath": "item-icons/identity_mw060.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_WARDROBE_MW062": {
+      "name": "매직파나",
+      "assetPath": "item-icons/identity_mw062.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     }
   }
 }

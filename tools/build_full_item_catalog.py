@@ -15,6 +15,12 @@ def runtime_items():
   for lv in (11,26):
    rows[f'IT_B_CAMPAIGN_{job}_{lv}']=job+' armor';rows[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']=job+' tool'
  for e in json.loads((ROOT/'master/canonical/Accessory_Catalog.json').read_text()):rows.setdefault(e['itemId'],e['name'])
+ wardrobe=ROOT/'master/source/equipment/identity_v128/catalog.json'
+ if wardrobe.exists():
+  j=json.loads(wardrobe.read_text())
+  for id,e in j['existing'].items():
+   if id in rows:rows[id]=e['name']+(' · 수련' if e['adaptedVariant'] else '')
+  for e in j['additions']:rows[e['itemId']]=e['name']
  return rows
 # source page + first-cell image filename; different pages may use identical filenames.
 CHOICES={
@@ -106,9 +112,15 @@ def main():
  for ident,target in REUSE.items():items[ident]=dict(items[target],itemId=ident,reusesItemArt=target,identityMatch='ADAPTED_VISUAL_EQUIVALENT',limitation='Original inventory artwork visual equivalent; exact historical identity not asserted.')
  # Retain the already labelled original Chungryong inventory illustration.
  p=ROOT/'app/src/main/assets/weapons/chungryong/icon.png';items['IT_WEAPON_CHUNGRYONG']=dict(itemId='IT_WEAPON_CHUNGRYONG',assetPath='weapons/chungryong/icon.png',assetSha256=sha(p),sourcePath='master/source/chungryong',identityMatch='EXISTING_LABELLED_SOURCE',projection='EXISTING_SOURCE_ALPHA')
- runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==236
- manifest=dict(revision='ALL_REGISTERED_ORIGINAL_ITEM_ART_V127',registeredItems=len(items),policy='Every current item has an explicit original inventory-art binding. Source RGB retained; captured sockets removed by alpha. Exact names and visual equivalents distinguished. Presentation only; no item statistics or wearable changes.',items=items)
+ wardrobe=ROOT/'master/source/equipment/identity_v128/catalog.json'
+ if wardrobe.exists():
+  j=json.loads(wardrobe.read_text())
+  for ident,e in j['existing'].items():
+   if ident in items:items[ident]=dict(j['icons'][e['appearanceId']],itemId=ident)
+  for e in j['additions']:items[e['itemId']]=dict(j['icons'][e['appearanceId']],itemId=e['itemId'])
+ runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==408
+ manifest=dict(revision='IDENTITY_FIRST_NATIVE_SIZE_V128',registeredItems=len(items),policy='Every current item has an explicit original inventory-art binding. Source RGB retained, native-size presentation. Exact wearable identities replace visual equivalents; missing dedicated inventory illustrations and unknown names/stats remain explicitly recorded.',items=items)
  (APP/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
- (SRC/'bindings.json').write_text(json.dumps(dict(currentItems=236,newSourceBindings=len(audit),reusedSourceBindings=len(REUSE),items={k:dict(name=runtime[k],assetPath=v['assetPath'],identityMatch=v['identityMatch'])for k,v in items.items()}),ensure_ascii=False,indent=2)+'\n')
+ (SRC/'bindings.json').write_text(json.dumps(dict(currentItems=len(items),newSourceBindings=len(audit),reusedSourceBindings=len(REUSE),items={k:dict(name=runtime[k],assetPath=v['assetPath'],identityMatch=v['identityMatch'])for k,v in items.items()}),ensure_ascii=False,indent=2)+'\n')
  print('FULL_ITEM_ART',len(items),'runtime bindings;',len(set(v['assetPath']for v in items.values())),'unique originals')
 if __name__=='__main__':main()

@@ -6,3 +6,9 @@ local.properties
 # Expanded historical originals are reproducibly recovered from retained archive.
 master/source/items/full_20261010/raw/
 master/source/items/full_20261010/page_*.html
+
+# Exact wardrobe bytes are retained in the V128 source/built-asset archives.
+app/src/main/assets/item-icons/identity_*.png
+app/src/main/assets/wearable-atlases/
+app/src/main/assets/source-registration/*.json
+tools/__pycache__/

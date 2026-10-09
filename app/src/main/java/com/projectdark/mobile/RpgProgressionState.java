@@ -23,7 +23,7 @@ public final class RpgProgressionState {
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
   public enum RewardSource { CANONICAL, ADAPTED_TEST, ADAPTED_CAMPAIGN, UNRESOLVED }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
-  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
+  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, INVALID_SLOT, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
   public enum UseResult { USED, ITEM_NOT_OWNED, NOT_CONSUMABLE, NO_EFFECT }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
 
@@ -37,6 +37,12 @@ public final class RpgProgressionState {
     FIRST_ADVANCEMENT
   }
 
+  public static final String RIGHT_GLOVE_SLOT="장갑(오른손)";
+  public static final String RIGHT_RING_SLOT="반지(오른손)";
+  public static boolean pairedSlot(String slot){return "장갑".equals(slot)||"반지".equals(slot);}
+  public static String secondSlot(String slot){return "장갑".equals(slot)?RIGHT_GLOVE_SLOT:"반지".equals(slot)?RIGHT_RING_SLOT:null;}
+  public static String baseSlot(String slot){return RIGHT_GLOVE_SLOT.equals(slot)?"장갑":RIGHT_RING_SLOT.equals(slot)?"반지":slot;}
+  public static boolean acceptsSlot(String slot,ItemDefinition def){return def!=null&&def.equippable()&&def.equipSlot.equals(baseSlot(slot));}
   public static final String ARMOR_SLOT="갑옷";
   public static final String LOWER_GARMENT_SLOT="각반";
   public static final String WEAPON_SLOT="무기";
@@ -238,6 +244,7 @@ public final class RpgProgressionState {
     inventory.put("IT_TEST_WEAPON_MW002",1);inventory.put("IT_TEST_WEAPON_MW003",1);
     registerCampaignEquipment();
     SourceAccessoryCatalog.register(this);
+    SourceWardrobeCatalog.install(this);
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
@@ -275,10 +282,15 @@ public final class RpgProgressionState {
     Map<String,Integer> canonical=SourceEquipmentStats.forItem(def.itemId);if(canonical!=null)merged.putAll(canonical);
     items.put(def.itemId,new ItemDefinition(old.itemId,old.name,old.equipSlot,old.appearanceId,old.basicAttackAction,old.requiredLevel,old.allowedJobCodes,old.jobRestrictionResolved,old.attackElement,old.defenseElement,merged,Evidence.ADAPTED));
   }
+  /** Identity correction keeps stable save IDs and established numeric modifiers. */
+  void rebindSourceIdentity(String id,String name,String appearance){
+    ItemDefinition d=items.get(id);if(d==null)return;
+    items.put(id,new ItemDefinition(id,name,d.equipSlot,appearance,d.basicAttackAction,d.requiredLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,d.statModifiers,d.evidence));
+  }
   public boolean equipmentSandbox(){return equipmentSandbox;}
   public void enableEquipmentSandbox(boolean grant){
     equipmentSandbox=true;
-    if(grant)for(ItemDefinition d:items.values())inventory.put(d.itemId,Math.max(1,inventory.getOrDefault(d.itemId,0)));
+    if(grant)for(ItemDefinition d:items.values())inventory.put(d.itemId,Math.max(pairedSlot(d.equipSlot)?2:1,inventory.getOrDefault(d.itemId,0)));
   }
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
@@ -494,27 +506,49 @@ public final class RpgProgressionState {
   public boolean restoreOwnedItems(Map<String,Integer> owned,Map<String,String> equipped){
     for(Map.Entry<String,Integer> e:owned.entrySet())
       if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return false;
+    Map<String,Integer> counts=new LinkedHashMap<>();
     for(Map.Entry<String,String> e:equipped.entrySet()){
       ItemDefinition d=items.get(e.getValue());
-      if(d==null||!d.equippable()||!e.getKey().equals(d.equipSlot)||!owned.containsKey(d.itemId))return false;
+      if(!acceptsSlot(e.getKey(),d)||!owned.containsKey(d.itemId))return false;
+      int count=counts.getOrDefault(d.itemId,0)+1;counts.put(d.itemId,count);
+      if(count>owned.get(d.itemId))return false;
     }
-    inventory.clear();inventory.putAll(owned);
-    equipmentBySlot.clear();equipmentBySlot.putAll(equipped);
+    Map<String,Integer> ownCopy=new LinkedHashMap<>(owned);Map<String,String> equipCopy=new LinkedHashMap<>(equipped);
+    inventory.clear();inventory.putAll(ownCopy);
+    equipmentBySlot.clear();equipmentBySlot.putAll(equipCopy);
     return true;
   }
   public long consumedCombatSequence(){return lastCombatSequence;}
   public void restoreCombatSequence(long sequence){lastCombatSequence=Math.max(0L,sequence);rewardHistory.clear();}
 
+  /** Inventory chooses an available hand; explicit slot actions can replace/remove either hand. */
   public EquipResult equip(String itemId){
+    ItemDefinition def=items.get(itemId);if(def==null)return inventory.containsKey(itemId)?EquipResult.UNKNOWN_ITEM:EquipResult.ITEM_NOT_OWNED;
+    String slot=def.equipSlot;
+    if(pairedSlot(slot)){
+      String second=secondSlot(slot);int count=equippedCount(itemId);
+      if(count>0&&inventory.getOrDefault(itemId,0)<=count){
+        return unequip(itemId.equals(equipmentBySlot.get(second))?second:slot);
+      }
+      if(equipmentBySlot.containsKey(slot)&&!equipmentBySlot.containsKey(second))slot=second;
+      else if(equipmentBySlot.containsKey(slot)&&equipmentBySlot.containsKey(second)&&count>0)return unequip(itemId.equals(equipmentBySlot.get(second))?second:slot);
+    }
+    return equipToSlot(itemId,slot);
+  }
+  public int equippedCount(String id){int n=0;for(String value:equipmentBySlot.values())if(value.equals(id))n++;return n;}
+  public EquipResult unequip(String slot){return equipmentBySlot.remove(slot)==null?EquipResult.UNKNOWN_ITEM:EquipResult.UNEQUIPPED;}
+  public EquipResult equipToSlot(String itemId,String slot){
     Integer owned=inventory.get(itemId);
     if(owned==null||owned<=0)return EquipResult.ITEM_NOT_OWNED;
     ItemDefinition def=items.get(itemId);
     if(def==null)return EquipResult.UNKNOWN_ITEM;
     if(!def.equippable())return EquipResult.NOT_EQUIPPABLE;
-    if(itemId.equals(equipmentBySlot.get(def.equipSlot))){
-      equipmentBySlot.remove(def.equipSlot);
+    if(!acceptsSlot(slot,def))return EquipResult.INVALID_SLOT;
+    if(itemId.equals(equipmentBySlot.get(slot))){
+      equipmentBySlot.remove(slot);
       return EquipResult.UNEQUIPPED;
     }
+    if(equippedCount(itemId)>=owned)return EquipResult.ITEM_NOT_OWNED;
     RequirementResult requirements=currentRequirements(itemId);
     if(requirements==RequirementResult.PENDING)return EquipResult.REQUIREMENT_PENDING;
     if(requirements!=RequirementResult.MET)return EquipResult.REQUIREMENT_NOT_MET;
@@ -529,7 +563,7 @@ public final class RpgProgressionState {
         ||incoming==CharacterVisualBinding.GarmentCoverage.LOWER){
       removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage.FULL_BODY);
     }
-    equipmentBySlot.put(def.equipSlot,itemId);
+    equipmentBySlot.put(slot,itemId);
     campaign.record("EQUIP",itemId);return EquipResult.EQUIPPED;
   }
 

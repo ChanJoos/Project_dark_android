@@ -1,0 +1,4742 @@
+[
+  {
+    "itemId": "IT_RING_THREELINEGOLD",
+    "name": "세줄금반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/it_ring_threelinegold.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": "Labelled retrospective table; capture era unknown. Exact foreground RGB retained; only uniform table background alpha removed.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_EARRING_DOUBLE_SILVER",
+    "name": "쌍은귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_souginiyaringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_JUNDAMAIYARINGU_93B90B4A",
+    "name": "순옥귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_jundamaiyaringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_SOUKINIYARINGU_71ACA148",
+    "name": "쌍금귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_soukiniyaringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_SANGOIYARINGU_9FA3A3C8",
+    "name": "산호귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_sangoiyaringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_SANGOSEKIIYARINGU_BD93B8B9",
+    "name": "산호석귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_sangosekiiyaringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_RUBIIYARINGU_FA45A3F9",
+    "name": "루비귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_rubiiyaringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_RI-ZENTO_DC68008A",
+    "name": "리젠트다이아귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_ri-zento.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_REDMARINE_4BEA9E11",
+    "name": "레드마린귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_redmarine.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_HORUDEITORINGU_358D472E",
+    "name": "홀디트링",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_horudeitoringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_KAENHORUDEITO_964F13A2",
+    "name": "화염의홀디트링",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_kaenhorudeito.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599",
+    "name": "바람의홀디트링",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_kazehorudeito.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_DAITIHORUDEITO_6523D03A",
+    "name": "대지의홀디트링",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_daitihorudeito.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_UMIHORUDEITO_652BB8EC",
+    "name": "바다의홀디트링",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_umihorudeito.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_SEIRARINGU_0EB6FB35",
+    "name": "세일라링",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_seiraringu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_146_HADEEAR_84C2EB0E",
+    "name": "화려한귀걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/146_hadeear.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU1_6FDB18DA",
+    "name": "파란신발",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_kutu1.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_JAPANUNIFORM02_8A8DE823",
+    "name": "이름 미확인 신발",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_japanuniform02.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU26_00B7153C",
+    "name": "회색신발",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_kutu26.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU41_24CE5A29",
+    "name": "녹색신발",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_kutu41.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_SIRUKUBU-TU_002F34C7",
+    "name": "실크부츠",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_sirukubu-tu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU56_83C01E8B",
+    "name": "가죽부츠",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_kutu56.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_SAFIAN_0C302BDB",
+    "name": "사피안",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_safian.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU86_3F9DA5BB",
+    "name": "크림슨",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_kutu86.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_MAGICBOOTS_2238025C",
+    "name": "매직부츠",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_magicboots.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_BATORUBUTU_9220E76A",
+    "name": "배틀부츠",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_batorubutu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_MISURIRUBUTU_4580A69D",
+    "name": "미스릴부츠",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_misurirubutu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_WORIAWOKA_3CD02556",
+    "name": "워리어워커",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_woriawoka.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_150_BARUTI_39722257",
+    "name": "발찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/150_baruti.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_ROORING_4759F2BA",
+    "name": "로오의반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_rooring.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_KENTETU_8B92FCD7",
+    "name": "현철반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_kentetu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_KIN_67A36C40",
+    "name": "금반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_kin.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_RING_REDJADE",
+    "name": "홍옥반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_kougyoku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_SISUISYOU_11310F31",
+    "name": "자수정반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_sisuisyou.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_SANGO_A6FE6F21",
+    "name": "산호반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_sango.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_TORAME_B1522F0F",
+    "name": "호안석반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_torame.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_SAFAIA_81A4D338",
+    "name": "사파이어반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_safaia.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_RING_GORU",
+    "name": "고루반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_korou.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_RYOKUGYOKU_7AB8ADDD",
+    "name": "녹옥반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_ryokugyoku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_TAIRYOKUNOBLUESEPIAYUBIWA_745BFE1C",
+    "name": "체력의블루세피아반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_tairyokunobluesepiayubiwa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_RING_SILVERAQUA",
+    "name": "실버아쿠아링",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_silveraqua.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_GORUDOAKUA_DE45DA1B",
+    "name": "골드아쿠아링",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_gorudoakua.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_REDDOGANETOYUBIWA_CC8ED229",
+    "name": "레드가넷반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_reddoganetoyubiwa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_RUBI_1313E2F4",
+    "name": "루비나반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_rubi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_TOPAZUYUBIWA_A13CED6E",
+    "name": "토파즈반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_topazuyubiwa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_SUZAKUNOYUBIWA_98951BA8",
+    "name": "주작의반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_suzakunoyubiwa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_BAIRONNOYUBIWA_11415A80",
+    "name": "바이런의반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_baironnoyubiwa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_152_KEKONYUBIWA_2892DC6B",
+    "name": "결혼반지",
+    "appearanceId": null,
+    "icon": "equipment-icons/152_kekonyubiwa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_LEGGING_LEATHER",
+    "name": "가죽각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_kawaguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_GURINHATOGURI_871D87FC",
+    "name": "그린하트각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_gurinhatoguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_REDOHATOGURI_BA65AE3F",
+    "name": "레드하트각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_redohatoguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_DOUGURI_A82A5522",
+    "name": "동각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_douguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_SANGOGURI_48B5B5B7",
+    "name": "산호각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_sangoguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_GINGURI_A34075CC",
+    "name": "은각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_ginguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_AIANREZA-GURI-BUSU_250C8D66",
+    "name": "아이언레더각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_aianreza-guri-busu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_AKUAGURI_C4398D7E",
+    "name": "아쿠아각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_akuaguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_KINGURI_1D935B28",
+    "name": "금각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_kinguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_GORUDENPURETOGURI_7FFBB6A1",
+    "name": "골든플레이트각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_gorudenpuretoguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_MATAGURI_7CD3401F",
+    "name": "마타룸각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_mataguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_YUMOU_47B94777",
+    "name": "용맹의각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_yumou.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_RYUGURI_A6E43C6B",
+    "name": "용각반",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_ryuguri.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103",
+    "name": "베네티가죽클립",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_benethikawakuripu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_155_AB10_A6AAE9C2",
+    "name": "베네티풀잎클립",
+    "appearanceId": null,
+    "icon": "equipment-icons/155_ab10.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_GLOVE_LEATHER",
+    "name": "가죽장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_kawate.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_DOUTE_A5E44029",
+    "name": "동장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_doute.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_AQUAGLOVE_D58808FC",
+    "name": "아쿠아글러브",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_aquaglove.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_GINTE_D06DD1FA",
+    "name": "은장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_ginte.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_AQUAGLOVE02_2FABCC4B",
+    "name": "아쿠아레더글러브",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_aquaglove02.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_AIANREZA-TEBUKURO_4D381BCE",
+    "name": "아이언언레더장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_aianreza-tebukuro.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_GINTE_R_166E6D7D",
+    "name": "은장갑R",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_ginte_r.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_KINTEBUKURO_7E1109C9",
+    "name": "금장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_kintebukuro.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_KHANGOLDGLOVER_A65F8611",
+    "name": "금장갑R",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_khangoldgloveR.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8",
+    "name": "버팔로가죽장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_noesglove51.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_NOESGLOVE81_7DBCEB08",
+    "name": "표범가죽장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_noesglove81.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_NOESGLOVEMAS_04B5B0C9",
+    "name": "쥼글러브",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_noesglovemas.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_MATARUMUGLOVE_13EFD244",
+    "name": "마타룸장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_matarumuglove.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_REDAGLOVE_F007FA8F",
+    "name": "레더글러브",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_redaglove.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_GUMGLOVE_A39D8422",
+    "name": "고무장갑",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_gumglove.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_NEBILIST_8B0E7D73",
+    "name": "네비리스트",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_nebilist.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_JUELGLOVE_2594DE89",
+    "name": "쥬얼리스트",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_juelglove.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_VEGAGLOVE_2C49C6AE",
+    "name": "베가리스트",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_vegaglove.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_PAWARISUTO_CCE90CC1",
+    "name": "파워리스트",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_pawarisuto.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_MAJIKURISUTO_695C046E",
+    "name": "매직리스트",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_majikurisuto.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_JUNO_AA3C7686",
+    "name": "쥬노아겐트리트",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_juno.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_KUREARISUTO_EB00C792",
+    "name": "클레어리스트",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_kurearisuto.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_KAWAUDEWA_7B660B48",
+    "name": "가죽팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_kawaudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_DOUUDEWA_627B876E",
+    "name": "동팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_douudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_GINUDEWA_98AFCA6F",
+    "name": "은팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_ginudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_KINUDEWA_9D051BB4",
+    "name": "금팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_kinudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_SAMEKAWAUDEWA_2772BFCF",
+    "name": "상어가죽팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_samekawaudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_SANGOUDEWA_ADBB6639",
+    "name": "산호석팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_sangoudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_NOESUDEWA51_63C1878A",
+    "name": "브론즈네일",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_noesudewa51.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_NOESUDEWA81_1D924113",
+    "name": "실버네일",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_noesudewa81.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72",
+    "name": "골드네일",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_noesudewamas.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_BUREISA_BC0CFFF2",
+    "name": "브레이사",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_bureisa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_EXCELDEAMONUDEWA_90A44943",
+    "name": "엑셀데몬의팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_exceldeamonudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_IRONBRACE_C42CC60D",
+    "name": "아이언팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_ironbrace.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_RYUUUDEWA_01F1AC5F",
+    "name": "용팔찌",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_ryuuudewa.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_170_JUNOABUREISU_BB4EED95",
+    "name": "쥬노아브레이스",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_junoabureisu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_FIREBELT_449392D4",
+    "name": "화염의벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_firebelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_WINDBELT_AF012333",
+    "name": "바람의벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_windbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_EARTHBELT_226B231D",
+    "name": "대지의벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_earthbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_WATERBELT_383B7970",
+    "name": "바다의벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_waterbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_LEATHERBELT_22469A11",
+    "name": "가죽벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_leatherbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_BELT_FIRE_LEATHER",
+    "name": "화염의가죽벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_leatherbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_BELT_WIND_LEATHER",
+    "name": "바람의가죽벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_leatherbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_BELT_EARTH_LEATHER",
+    "name": "대지의가죽벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_leatherbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_BELT_WATER_LEATHER",
+    "name": "바다의가죽벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_leatherbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_SILVERBELT_59257BAB",
+    "name": "은벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_silverbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_SILVERBELT_9B4B562A",
+    "name": "화염의은벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_silverbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_SILVERBELT_26ACEA62",
+    "name": "바람의은벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_silverbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_SILVERBELT_9A400E2B",
+    "name": "대지의은벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_silverbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_SILVERBELT_E2347088",
+    "name": "바다의은벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_silverbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_GOLDBELT_8ABE1100",
+    "name": "금벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_goldbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_GOLDBELT_BC73AA9A",
+    "name": "화염의금벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_goldbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_GOLDBELT_F5E4AA12",
+    "name": "바람의금벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_goldbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_GOLDBELT_43AC2098",
+    "name": "대지의금벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_goldbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_GOLDBELT_E78C2A09",
+    "name": "바다의금벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_goldbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_ZEMBELT_HI_F3EB78A9",
+    "name": "화염의젬벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_zembelt_hi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_ZEMBELT_KAZE_A13FE1DB",
+    "name": "바람의젬벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_zembelt_kaze.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_ZEMBELT_TI_ABF612E2",
+    "name": "대지의젬벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_zembelt_ti.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_ZEMBELT_UMI_B85A36BB",
+    "name": "바다의젬벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_zembelt_umi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_ZEMBELT_KIN_99326977",
+    "name": "금속성의젬벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_zembelt_kin.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_ZEMUBELT_KI_E92C1218",
+    "name": "숲의젬벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_zemubelt_ki.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_MASTERBELT_3B1C2CC1",
+    "name": "화염의승염벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_masterbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_MASTERBELT_205324F4",
+    "name": "바람의승염벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_masterbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_MASTERBELT_27922105",
+    "name": "대지의승염벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_masterbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_MASTERBELT_DFE6DBAF",
+    "name": "바다의승염벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_masterbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_KAENNORUNASABERUTO_D6CECBD9",
+    "name": "화염의루나사벨트 화염의루나사벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_kaennorunasaberuto.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038",
+    "name": "주작의벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_suzakunoberuto.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_193_DARKBELT_6B3683B8",
+    "name": "암흑의벨트",
+    "appearanceId": null,
+    "icon": "equipment-icons/193_darkbelt.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KANNEKU_56B04FF1",
+    "name": "칸의목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kanneku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KAENNEKU_584513F2",
+    "name": "화염의목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kaenneku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KAZENEKU_2DB6010B",
+    "name": "바람의목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kazeneku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_DAICHINEKU_E75BD4C9",
+    "name": "대지의목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_daichineku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_UMINEKU_D2A72A12",
+    "name": "바다의목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_umineku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KIN-KAEN_4D647A6B",
+    "name": "화염의금목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kin-kaen.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KIN-KAZE_71BFBAEC",
+    "name": "바람의금목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kin-kaze.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KIN-DAICHI_158A1DC4",
+    "name": "대지의금목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kin-daichi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KIN-UMI_CAB975EA",
+    "name": "바다의금목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kin-umi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_NECK_FIRE_PEARL",
+    "name": "화염의진주목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_shinjyu-kaen.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_NECK_WIND_PEARL",
+    "name": "바람의진주목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_shinjyu-kaze.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_NECK_EARTH_PEARL",
+    "name": "대지의진주목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_shinjyu-daichi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_NECK_WATER_PEARL",
+    "name": "바다의진주목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_shinjyu-umi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_SUISHOU-KAEN_80452A02",
+    "name": "화염의자수정목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_suishou-kaen.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_SUISHOU-KAZE_F0E7357B",
+    "name": "바람의자수정목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_suishou-kaze.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_SUISHOU-DAICHI_4D70A2AD",
+    "name": "대지의자수정목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_suishou-daichi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_SUISHOU-UMI_60179756",
+    "name": "바다의자수정목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_suishou-umi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_HI_HEKIGEKU_361934BE",
+    "name": "화염의벽옥목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_hi_hekigeku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_HEKIGYOKU-KAZE_C3FC5734",
+    "name": "바람의벽옥목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_hekigyoku-kaze.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_DAITI_HEKIGYOKU_7D05B7DB",
+    "name": "대지의벽옥목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_daiti_hekigyoku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_MIZU_HEKIGYOKU_7B2382B5",
+    "name": "바다의벽옥목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_mizu_hekigyoku.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_HI_3C371C7E",
+    "name": "화염의마기라목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_magira_hi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_KAZE_E3B6280F",
+    "name": "바람의마기라목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_magira_kaze.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_TI_01801011",
+    "name": "대지의마기라목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_magira_ti.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_UMI_8EB93900",
+    "name": "바다의마기라목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_magira_umi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_DAITINORU-NSUTO-NNEKKURESU_1970651C",
+    "name": "대지의룬스톤목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_daitinoru-nsuto-nnekkuresu.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_HI_62C3AF8C",
+    "name": "화염의잼스톤목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_zemstone_hi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_KAZE_88EE1EDC",
+    "name": "바람의잼스톤목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_zemstone_kaze.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_TI_5D6A1048",
+    "name": "대지의잼스톤목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_zemstone_ti.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_UMI_62F2D328",
+    "name": "바다의잼스톤목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_zemstone_umi.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_CRYSTAL_5911EC0D",
+    "name": "크리스탈목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_crystal.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_HICRYSTAL_A94FCE06",
+    "name": "화염의크리스탈목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_hicrystal.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B",
+    "name": "바람의크리스탈목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_kazecrystal.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_TICRYSTAL_A90E7D50",
+    "name": "대지의크리스탈목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_ticrystal.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_UMICRYSTAL_21B5EDA7",
+    "name": "바다의크리스탈목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_umicrystal.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_DARKNECK_38E272A2",
+    "name": "암흑의목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_darkneck.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_197_HIKARINECK_CE1F9258",
+    "name": "생명의목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_hikarineck.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_MINIMOB_0",
+    "name": "골든플레이트각반 [2012]",
+    "appearanceId": null,
+    "icon": "equipment-icons/minimob_0.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_MINIMOB_1",
+    "name": "숲의잼스톤목걸이",
+    "appearanceId": null,
+    "icon": "equipment-icons/minimob_2.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_MINIMOB_3",
+    "name": "금벨트 [2012]",
+    "appearanceId": null,
+    "icon": "equipment-icons/minimob_5.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_MINIMOB_4",
+    "name": "다크그레이벨트(수)+1",
+    "appearanceId": null,
+    "icon": "equipment-icons/minimob_7.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_MINIMOB_5",
+    "name": "쥬얼십자가목걸이FX",
+    "appearanceId": null,
+    "icon": "equipment-icons/minimob_9.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_ADAPTED_PLAYTEST_MOKDO",
+    "name": "목도",
+    "appearanceId": "mw001",
+    "icon": "item-icons/identity_mw001.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      8
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_WEAPON_MW002",
+    "name": "에페",
+    "appearanceId": "mw002",
+    "icon": "item-icons/identity_mw002.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      14
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_WEAPON_MW003",
+    "name": "커틀라스",
+    "appearanceId": "mw003",
+    "icon": "item-icons/identity_mw003.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      17
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SHOP_WEAPON_MW004",
+    "name": "세이버",
+    "appearanceId": "mw004",
+    "icon": "item-icons/identity_mw004.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      24,
+      17
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SHOP_WEAPON_MW005",
+    "name": "그라디우스",
+    "appearanceId": "mw005",
+    "icon": "item-icons/identity_mw005.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      28,
+      21
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_WARRIOR_WEAPON",
+    "name": "롱소드 · 수련",
+    "appearanceId": "mw015",
+    "icon": "item-icons/identity_mw015.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      32,
+      12
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_ROGUE_WEAPON",
+    "name": "에페 · 수련",
+    "appearanceId": "mw002",
+    "icon": "item-icons/identity_mw002.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      14
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_MAGE_WAND",
+    "name": "매직새티아 · 수련",
+    "appearanceId": "mw024",
+    "icon": "item-icons/identity_mw024.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      24,
+      7
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_CLERIC_WAND",
+    "name": "홀리머큐리아 · 수련",
+    "appearanceId": "mw008",
+    "icon": "item-icons/identity_mw008.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      12
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_ADAPTED_STARTER_SHIELD",
+    "name": "이름 미확인 방패",
+    "appearanceId": "ms001",
+    "icon": "item-icons/identity_ms001.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      22
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_SHIELD_MS002",
+    "name": "이름 미확인 방패",
+    "appearanceId": "ms002",
+    "icon": "item-icons/identity_ms002.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      15,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_SHIELD_MS003",
+    "name": "이름 미확인 방패",
+    "appearanceId": "ms003",
+    "icon": "item-icons/identity_ms003.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      23
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_ARMOR_MU0000002",
+    "name": "레더튜닉",
+    "appearanceId": "mu0000002",
+    "icon": "item-icons/identity_mu0000002.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_APPEARANCE_PEASANT_SHIRT",
+    "name": "셔츠",
+    "appearanceId": "mu0000001",
+    "icon": "item-icons/identity_mu0000001.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      11,
+      17
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SHOP_ARMOR_JIPON",
+    "name": "지폰",
+    "appearanceId": "mu0000007",
+    "icon": "item-icons/identity_mu0000007.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_ARMOR_MU0000003",
+    "name": "도복",
+    "appearanceId": "mu0000003",
+    "icon": "item-icons/identity_mu0000003.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REFERENCE_LEOPARD",
+    "name": "레오파드",
+    "appearanceId": "mu0000180",
+    "icon": "item-icons/identity_mu0000180.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      32,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REFERENCE_HELM",
+    "name": "헬름",
+    "appearanceId": "mh168",
+    "icon": "item-icons/identity_mh168.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      23
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_ADAPTED_STARTER_HAT",
+    "name": "밀레스털모자",
+    "appearanceId": "mh172",
+    "icon": "item-icons/identity_mh172.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_HAT_MH173",
+    "name": "아벨털모자",
+    "appearanceId": "mh173",
+    "icon": "item-icons/identity_mh173.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_HAT_MH174",
+    "name": "루어스털모자",
+    "appearanceId": "mh174",
+    "icon": "item-icons/identity_mh174.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_WARRIOR_TUNIC",
+    "name": "지폰 · 수련",
+    "appearanceId": "mu0000007",
+    "icon": "item-icons/identity_mu0000007.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_ROGUE_GARMENT",
+    "name": "스카웃튜닉 · 수련",
+    "appearanceId": "mu0000004",
+    "icon": "item-icons/identity_mu0000004.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_MAGE_ROBE",
+    "name": "루어스레더로브 · 수련",
+    "appearanceId": "mu0000058",
+    "icon": "item-icons/identity_mu0000058.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      26
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_CLERIC_ROBE",
+    "name": "맨틀 · 수련",
+    "appearanceId": "mu0000015",
+    "icon": "item-icons/identity_mu0000015.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_JOB_MONK_GI",
+    "name": "도복 · 수련",
+    "appearanceId": "mu0000003",
+    "icon": "item-icons/identity_mu0000003.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_SMALL_POTION",
+    "name": "소형 회복물약 [B]",
+    "appearanceId": null,
+    "icon": "item-icons/3eea1156dd88_kuranumu.png",
+    "identity": "ADAPTED_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_MP_POTION",
+    "name": "마나 회복약",
+    "appearanceId": null,
+    "icon": "item-icons/7731b247ebe5_maradhiumu.png",
+    "identity": "ADAPTED_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REAGENT_KOMADIUM",
+    "name": "코마디움",
+    "appearanceId": null,
+    "icon": "item-icons/77eb642c6391_komadhiumu.png",
+    "identity": "EXACT_SOURCE_NAME",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REAGENT_DIBENOMUM",
+    "name": "디베노뭄",
+    "appearanceId": null,
+    "icon": "item-icons/8addf7f9f927_dhibenonumu.png",
+    "identity": "EXACT_SOURCE_NAME",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REAGENT_CURANUM",
+    "name": "쿠라눔",
+    "appearanceId": null,
+    "icon": "item-icons/3eea1156dd88_kuranumu.png",
+    "identity": "EXACT_SOURCE_NAME",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REAGENT_EXCURANUM",
+    "name": "엑스쿠라눔",
+    "appearanceId": null,
+    "icon": "item-icons/acc3a80e5a74_axkuranumu.png",
+    "identity": "EXACT_SOURCE_NAME",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REAGENT_CURUM",
+    "name": "쿠룸",
+    "appearanceId": null,
+    "icon": "item-icons/3eea1156dd88_kuranumu.png",
+    "identity": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_REAGENT_HOLYWATER",
+    "name": "성수",
+    "appearanceId": null,
+    "icon": "item-icons/70dbaf29c4e0_seimeinomizud.png",
+    "identity": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_RECALL_MILLES",
+    "name": "밀레스리콜",
+    "appearanceId": null,
+    "icon": "item-icons/366aa7f5a952_redrikoru.png",
+    "identity": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_TRAINING_TOKEN",
+    "name": "훈련 증표 [B]",
+    "appearanceId": null,
+    "icon": "item-icons/3b31e3382634_ounomonsyou.png",
+    "identity": "ADAPTED_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_PURIFIED_ESSENCE",
+    "name": "정화된 숲의 정수",
+    "appearanceId": null,
+    "icon": "item-icons/8501f2305ff1_1.png",
+    "identity": "ADAPTED_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_WARRIOR_11",
+    "name": "지폰 · 수련",
+    "appearanceId": "mu0000007",
+    "icon": "item-icons/identity_mu0000007.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_11",
+    "name": "롱소드 · 수련",
+    "appearanceId": "mw015",
+    "icon": "item-icons/identity_mw015.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      32,
+      12
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_WARRIOR_26",
+    "name": "지폰 · 수련",
+    "appearanceId": "mu0000007",
+    "icon": "item-icons/identity_mu0000007.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_26",
+    "name": "롱소드 · 수련",
+    "appearanceId": "mw015",
+    "icon": "item-icons/identity_mw015.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      32,
+      12
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_ROGUE_11",
+    "name": "스카웃튜닉 · 수련",
+    "appearanceId": "mu0000004",
+    "icon": "item-icons/identity_mu0000004.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_11",
+    "name": "에페 · 수련",
+    "appearanceId": "mw002",
+    "icon": "item-icons/identity_mw002.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      14
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_ROGUE_26",
+    "name": "스카웃튜닉 · 수련",
+    "appearanceId": "mu0000004",
+    "icon": "item-icons/identity_mu0000004.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_26",
+    "name": "에페 · 수련",
+    "appearanceId": "mw002",
+    "icon": "item-icons/identity_mw002.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      14
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_MAGE_11",
+    "name": "후드로브 · 수련",
+    "appearanceId": "mu0000006",
+    "icon": "item-icons/identity_mu0000006.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_11",
+    "name": "매직새티아 · 수련",
+    "appearanceId": "mw024",
+    "icon": "item-icons/identity_mw024.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      24,
+      7
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_MAGE_26",
+    "name": "후드로브 · 수련",
+    "appearanceId": "mu0000006",
+    "icon": "item-icons/identity_mu0000006.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_26",
+    "name": "매직새티아 · 수련",
+    "appearanceId": "mw024",
+    "icon": "item-icons/identity_mw024.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      24,
+      7
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_CLERIC_11",
+    "name": "맨틀 · 수련",
+    "appearanceId": "mu0000015",
+    "icon": "item-icons/identity_mu0000015.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_11",
+    "name": "홀리머큐리아 · 수련",
+    "appearanceId": "mw008",
+    "icon": "item-icons/identity_mw008.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      12
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_CLERIC_26",
+    "name": "맨틀 · 수련",
+    "appearanceId": "mu0000015",
+    "icon": "item-icons/identity_mu0000015.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_26",
+    "name": "홀리머큐리아 · 수련",
+    "appearanceId": "mw008",
+    "icon": "item-icons/identity_mw008.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      12
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_MARTIAL_ARTIST_11",
+    "name": "도복 · 수련",
+    "appearanceId": "mu0000003",
+    "icon": "item-icons/identity_mu0000003.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_MARTIAL_ARTIST_26",
+    "name": "도복 · 수련",
+    "appearanceId": "mu0000003",
+    "icon": "item-icons/identity_mu0000003.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SHOES",
+    "name": "이름 미확인 신발",
+    "appearanceId": "ml228",
+    "icon": "item-icons/identity_ml228.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      18
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_SHOES_ML229",
+    "name": "이름 미확인 신발",
+    "appearanceId": "ml229",
+    "icon": "item-icons/identity_ml229.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      11
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_TEST_SHOES_ML230",
+    "name": "이름 미확인 신발",
+    "appearanceId": "ml230",
+    "icon": "item-icons/identity_ml230.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      18
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_POTE_SHOES",
+    "name": "이름 미확인 신발 · 수련",
+    "appearanceId": "ml230",
+    "icon": "item-icons/identity_ml230.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      18
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_SOURCE_MINIMOB_2",
+    "name": "흑요석워리어목걸이(수)",
+    "appearanceId": null,
+    "icon": "equipment-icons/197_zemstone_umi.png",
+    "identity": "ADAPTED_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork visual equivalent; exact historical identity not asserted.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_11",
+    "name": "MARTIAL_ARTIST tool",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_kawate.png",
+    "identity": "ADAPTED_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork visual equivalent; exact historical identity not asserted.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_26",
+    "name": "MARTIAL_ARTIST tool",
+    "appearanceId": null,
+    "icon": "equipment-icons/170_kintebukuro.png",
+    "identity": "ADAPTED_VISUAL_EQUIVALENT",
+    "nativeSize": null,
+    "limitation": "Original inventory artwork visual equivalent; exact historical identity not asserted.",
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_WEAPON_CHUNGRYONG",
+    "name": "청룡의숨결",
+    "appearanceId": null,
+    "icon": "weapons/chungryong/icon.png",
+    "identity": "EXISTING_LABELLED_SOURCE",
+    "nativeSize": null,
+    "limitation": null,
+    "numericalStatus": "EXISTING_MODIFIERS_RETAINED"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH106",
+    "name": "털모자",
+    "appearanceId": "mh106",
+    "icon": "item-icons/identity_mh106.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH108",
+    "name": "햇",
+    "appearanceId": "mh108",
+    "icon": "item-icons/identity_mh108.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      10
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH111",
+    "name": "이프리트투구",
+    "appearanceId": "mh111",
+    "icon": "item-icons/identity_mh111.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      15,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH112",
+    "name": "풀플레이트투구",
+    "appearanceId": "mh112",
+    "icon": "item-icons/identity_mh112.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH113",
+    "name": "골든플레이트투구",
+    "appearanceId": "mh113",
+    "icon": "item-icons/identity_mh113.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      21
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH121",
+    "name": "카게",
+    "appearanceId": "mh121",
+    "icon": "item-icons/identity_mh121.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH122",
+    "name": "로그",
+    "appearanceId": "mh122",
+    "icon": "item-icons/identity_mh122.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH123",
+    "name": "닌자드",
+    "appearanceId": "mh123",
+    "icon": "item-icons/identity_mh123.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      13,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH124",
+    "name": "화랑복건",
+    "appearanceId": "mh124",
+    "icon": "item-icons/identity_mh124.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      24,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH125",
+    "name": "아이언",
+    "appearanceId": "mh125",
+    "icon": "item-icons/identity_mh125.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      11,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH131",
+    "name": "매직세인트",
+    "appearanceId": "mh131",
+    "icon": "item-icons/identity_mh131.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      22
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH132",
+    "name": "매직코니칼",
+    "appearanceId": "mh132",
+    "icon": "item-icons/identity_mh132.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH133",
+    "name": "매직풀",
+    "appearanceId": "mh133",
+    "icon": "item-icons/identity_mh133.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH134",
+    "name": "매직피어",
+    "appearanceId": "mh134",
+    "icon": "item-icons/identity_mh134.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH135",
+    "name": "매직치프",
+    "appearanceId": "mh135",
+    "icon": "item-icons/identity_mh135.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      11,
+      9
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH136",
+    "name": "매직네비",
+    "appearanceId": "mh136",
+    "icon": "item-icons/identity_mh136.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      15,
+      14
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH137",
+    "name": "매직레드",
+    "appearanceId": "mh137",
+    "icon": "item-icons/identity_mh137.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      14
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH138",
+    "name": "매직썬라이징",
+    "appearanceId": "mh138",
+    "icon": "item-icons/identity_mh138.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      14
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH143",
+    "name": "노랑두건",
+    "appearanceId": "mh143",
+    "icon": "item-icons/identity_mh143.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH147",
+    "name": "파란두건",
+    "appearanceId": "mh147",
+    "icon": "item-icons/identity_mh147.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH152",
+    "name": "페리위그",
+    "appearanceId": "mh152",
+    "icon": "item-icons/identity_mh152.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      17
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH153",
+    "name": "풀플레이트투구수",
+    "appearanceId": "mh153",
+    "icon": "item-icons/identity_mh153.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH154",
+    "name": "풀플레이트투구토",
+    "appearanceId": "mh154",
+    "icon": "item-icons/identity_mh154.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH155",
+    "name": "풀플레이트투구풍",
+    "appearanceId": "mh155",
+    "icon": "item-icons/identity_mh155.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH156",
+    "name": "풀플레이트투구화",
+    "appearanceId": "mh156",
+    "icon": "item-icons/identity_mh156.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH157",
+    "name": "세인트홀",
+    "appearanceId": "mh157",
+    "icon": "item-icons/identity_mh157.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      22
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH158",
+    "name": "다크홀",
+    "appearanceId": "mh158",
+    "icon": "item-icons/identity_mh158.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      29,
+      24
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH162",
+    "name": "아가트",
+    "appearanceId": "mh162",
+    "icon": "item-icons/identity_mh162.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      22
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH163",
+    "name": "헬름",
+    "appearanceId": "mh163",
+    "icon": "item-icons/identity_mh163.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      21
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH165",
+    "name": "루크",
+    "appearanceId": "mh165",
+    "icon": "item-icons/identity_mh165.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      24
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH166",
+    "name": "마르두크",
+    "appearanceId": "mh166",
+    "icon": "item-icons/identity_mh166.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      10
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH167",
+    "name": "아가트",
+    "appearanceId": "mh167",
+    "icon": "item-icons/identity_mh167.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      22
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MH171",
+    "name": "마르두크",
+    "appearanceId": "mh171",
+    "icon": "item-icons/identity_mh171.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      10
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000005",
+    "name": "셍즈",
+    "appearanceId": "mu0000005",
+    "icon": "item-icons/identity_mu0000005.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000008",
+    "name": "천지도복",
+    "appearanceId": "mu0000008",
+    "icon": "item-icons/identity_mu0000008.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      15,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000011",
+    "name": "달마티카",
+    "appearanceId": "mu0000011",
+    "icon": "item-icons/identity_mu0000011.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000012",
+    "name": "하프플레이트",
+    "appearanceId": "mu0000012",
+    "icon": "item-icons/identity_mu0000012.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      11
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000013",
+    "name": "단도복",
+    "appearanceId": "mu0000013",
+    "icon": "item-icons/identity_mu0000013.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      29
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000014",
+    "name": "팔루텐",
+    "appearanceId": "mu0000014",
+    "icon": "item-icons/identity_mu0000014.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      36
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000016",
+    "name": "로럼",
+    "appearanceId": "mu0000016",
+    "icon": "item-icons/identity_mu0000016.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      34
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000017",
+    "name": "카스뮴아머",
+    "appearanceId": "mu0000017",
+    "icon": "item-icons/identity_mu0000017.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      39
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000018",
+    "name": "선풍도복",
+    "appearanceId": "mu0000018",
+    "icon": "item-icons/identity_mu0000018.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000019",
+    "name": "키톤",
+    "appearanceId": "mu0000019",
+    "icon": "item-icons/identity_mu0000019.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000020",
+    "name": "위저드로브",
+    "appearanceId": "mu0000020",
+    "icon": "item-icons/identity_mu0000020.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000022",
+    "name": "체인메일",
+    "appearanceId": "mu0000022",
+    "icon": "item-icons/identity_mu0000022.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      24
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000023",
+    "name": "태산도복",
+    "appearanceId": "mu0000023",
+    "icon": "item-icons/identity_mu0000023.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      24
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000024",
+    "name": "바르도클",
+    "appearanceId": "mu0000024",
+    "icon": "item-icons/identity_mu0000024.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000025",
+    "name": "네크로브",
+    "appearanceId": "mu0000025",
+    "icon": "item-icons/identity_mu0000025.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      38
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000027",
+    "name": "풀플레이트",
+    "appearanceId": "mu0000027",
+    "icon": "item-icons/identity_mu0000027.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      30,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000028",
+    "name": "이프리트메일",
+    "appearanceId": "mu0000028",
+    "icon": "item-icons/identity_mu0000028.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      38
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000029",
+    "name": "골든플레이트",
+    "appearanceId": "mu0000029",
+    "icon": "item-icons/identity_mu0000029.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      29,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000043",
+    "name": "수오미지폰",
+    "appearanceId": "mu0000043",
+    "icon": "item-icons/identity_mu0000043.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000044",
+    "name": "밀레스지폰",
+    "appearanceId": "mu0000044",
+    "icon": "item-icons/identity_mu0000044.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000045",
+    "name": "뤼케시온지폰",
+    "appearanceId": "mu0000045",
+    "icon": "item-icons/identity_mu0000045.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000046",
+    "name": "루어스지폰",
+    "appearanceId": "mu0000046",
+    "icon": "item-icons/identity_mu0000046.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000047",
+    "name": "수오미노미쉬레더",
+    "appearanceId": "mu0000047",
+    "icon": "item-icons/identity_mu0000047.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000048",
+    "name": "뤼케시온노미쉬레더",
+    "appearanceId": "mu0000048",
+    "icon": "item-icons/identity_mu0000048.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000049",
+    "name": "밀레스노미쉬레더",
+    "appearanceId": "mu0000049",
+    "icon": "item-icons/identity_mu0000049.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000050",
+    "name": "루어스노미쉬레더",
+    "appearanceId": "mu0000050",
+    "icon": "item-icons/identity_mu0000050.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000051",
+    "name": "수오미달마티카",
+    "appearanceId": "mu0000051",
+    "icon": "item-icons/identity_mu0000051.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000052",
+    "name": "뤼케시온달마티카",
+    "appearanceId": "mu0000052",
+    "icon": "item-icons/identity_mu0000052.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000053",
+    "name": "밀레스달마티카",
+    "appearanceId": "mu0000053",
+    "icon": "item-icons/identity_mu0000053.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000054",
+    "name": "루어스달마티카",
+    "appearanceId": "mu0000054",
+    "icon": "item-icons/identity_mu0000054.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000055",
+    "name": "수오미레더로브",
+    "appearanceId": "mu0000055",
+    "icon": "item-icons/identity_mu0000055.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      26
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000056",
+    "name": "밀레스레더로브",
+    "appearanceId": "mu0000056",
+    "icon": "item-icons/identity_mu0000056.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      26
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000057",
+    "name": "뤼케시온레더로브",
+    "appearanceId": "mu0000057",
+    "icon": "item-icons/identity_mu0000057.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      26
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000059",
+    "name": "오렌가이아로럼",
+    "appearanceId": "mu0000059",
+    "icon": "item-icons/identity_mu0000059.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      29
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000060",
+    "name": "루어스단도복",
+    "appearanceId": "mu0000060",
+    "icon": "item-icons/identity_mu0000060.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      29
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000061",
+    "name": "뤼케시온단도복",
+    "appearanceId": "mu0000061",
+    "icon": "item-icons/identity_mu0000061.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      29
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000062",
+    "name": "수오미단도복",
+    "appearanceId": "mu0000062",
+    "icon": "item-icons/identity_mu0000062.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      29
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000063",
+    "name": "수오미레더튜닉",
+    "appearanceId": "mu0000063",
+    "icon": "item-icons/identity_mu0000063.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000064",
+    "name": "뤼케시온레더튜닉",
+    "appearanceId": "mu0000064",
+    "icon": "item-icons/identity_mu0000064.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000065",
+    "name": "루어스레더튜닉",
+    "appearanceId": "mu0000065",
+    "icon": "item-icons/identity_mu0000065.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000066",
+    "name": "밀레스레더튜닉",
+    "appearanceId": "mu0000066",
+    "icon": "item-icons/identity_mu0000066.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000067",
+    "name": "수오미스카웃튜닉",
+    "appearanceId": "mu0000067",
+    "icon": "item-icons/identity_mu0000067.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000068",
+    "name": "밀레스스카웃튜닉",
+    "appearanceId": "mu0000068",
+    "icon": "item-icons/identity_mu0000068.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000069",
+    "name": "뤼케시온스카웃튜닉",
+    "appearanceId": "mu0000069",
+    "icon": "item-icons/identity_mu0000069.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000070",
+    "name": "루어스스카웃튜닉",
+    "appearanceId": "mu0000070",
+    "icon": "item-icons/identity_mu0000070.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000071",
+    "name": "수오미후드로브",
+    "appearanceId": "mu0000071",
+    "icon": "item-icons/identity_mu0000071.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000072",
+    "name": "뤼케시온후드로브",
+    "appearanceId": "mu0000072",
+    "icon": "item-icons/identity_mu0000072.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000073",
+    "name": "밀레스후드로브",
+    "appearanceId": "mu0000073",
+    "icon": "item-icons/identity_mu0000073.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000074",
+    "name": "루어스후드로브",
+    "appearanceId": "mu0000074",
+    "icon": "item-icons/identity_mu0000074.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000075",
+    "name": "수오미셍즈",
+    "appearanceId": "mu0000075",
+    "icon": "item-icons/identity_mu0000075.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000076",
+    "name": "밀레스셍즈",
+    "appearanceId": "mu0000076",
+    "icon": "item-icons/identity_mu0000076.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000077",
+    "name": "뤼케시온셍즈",
+    "appearanceId": "mu0000077",
+    "icon": "item-icons/identity_mu0000077.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000078",
+    "name": "루어스셍즈",
+    "appearanceId": "mu0000078",
+    "icon": "item-icons/identity_mu0000078.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000079",
+    "name": "수오미도복",
+    "appearanceId": "mu0000079",
+    "icon": "item-icons/identity_mu0000079.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000080",
+    "name": "뤼케시온도복",
+    "appearanceId": "mu0000080",
+    "icon": "item-icons/identity_mu0000080.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000081",
+    "name": "루어스도복",
+    "appearanceId": "mu0000081",
+    "icon": "item-icons/identity_mu0000081.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000082",
+    "name": "밀레스도복",
+    "appearanceId": "mu0000082",
+    "icon": "item-icons/identity_mu0000082.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000083",
+    "name": "뤼케시온하프플레이트",
+    "appearanceId": "mu0000083",
+    "icon": "item-icons/identity_mu0000083.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      11
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000084",
+    "name": "밀레스하프플레이트",
+    "appearanceId": "mu0000084",
+    "icon": "item-icons/identity_mu0000084.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      11
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000085",
+    "name": "루어스하프플레이트",
+    "appearanceId": "mu0000085",
+    "icon": "item-icons/identity_mu0000085.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      11
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000086",
+    "name": "수오미하프플레이트",
+    "appearanceId": "mu0000086",
+    "icon": "item-icons/identity_mu0000086.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      12,
+      11
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000087",
+    "name": "수오미팔루텐",
+    "appearanceId": "mu0000087",
+    "icon": "item-icons/identity_mu0000087.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000090",
+    "name": "루어스팔루텐",
+    "appearanceId": "mu0000090",
+    "icon": "item-icons/identity_mu0000090.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000091",
+    "name": "수오미로럼",
+    "appearanceId": "mu0000091",
+    "icon": "item-icons/identity_mu0000091.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      34
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000092",
+    "name": "뤼케시온로럼",
+    "appearanceId": "mu0000092",
+    "icon": "item-icons/identity_mu0000092.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      34
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000093",
+    "name": "밀레스로럼",
+    "appearanceId": "mu0000093",
+    "icon": "item-icons/identity_mu0000093.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      34
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000094",
+    "name": "루어스로럼",
+    "appearanceId": "mu0000094",
+    "icon": "item-icons/identity_mu0000094.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      34
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000095",
+    "name": "밀레스맨틀",
+    "appearanceId": "mu0000095",
+    "icon": "item-icons/identity_mu0000095.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000096",
+    "name": "루어스맨틀",
+    "appearanceId": "mu0000096",
+    "icon": "item-icons/identity_mu0000096.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000097",
+    "name": "수오미맨틀",
+    "appearanceId": "mu0000097",
+    "icon": "item-icons/identity_mu0000097.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000098",
+    "name": "뤼케시온맨틀",
+    "appearanceId": "mu0000098",
+    "icon": "item-icons/identity_mu0000098.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      31
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000100",
+    "name": "밀레스천지도복",
+    "appearanceId": "mu0000100",
+    "icon": "item-icons/identity_mu0000100.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000101",
+    "name": "뤼케시온천지도복",
+    "appearanceId": "mu0000101",
+    "icon": "item-icons/identity_mu0000101.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000102",
+    "name": "루어스천지도복",
+    "appearanceId": "mu0000102",
+    "icon": "item-icons/identity_mu0000102.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000111",
+    "name": "수오미가이아로럼",
+    "appearanceId": "mu0000111",
+    "icon": "item-icons/identity_mu0000111.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000112",
+    "name": "뤼케시온가이아로럼",
+    "appearanceId": "mu0000112",
+    "icon": "item-icons/identity_mu0000112.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000113",
+    "name": "루어스가이아로럼",
+    "appearanceId": "mu0000113",
+    "icon": "item-icons/identity_mu0000113.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000114",
+    "name": "밀레스가이아로럼",
+    "appearanceId": "mu0000114",
+    "icon": "item-icons/identity_mu0000114.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000115",
+    "name": "수오미위저드로브",
+    "appearanceId": "mu0000115",
+    "icon": "item-icons/identity_mu0000115.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000116",
+    "name": "뤼케시온위저드로브",
+    "appearanceId": "mu0000116",
+    "icon": "item-icons/identity_mu0000116.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000117",
+    "name": "루어스위저드로브",
+    "appearanceId": "mu0000117",
+    "icon": "item-icons/identity_mu0000117.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000118",
+    "name": "밀레스위저드로브",
+    "appearanceId": "mu0000118",
+    "icon": "item-icons/identity_mu0000118.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000121",
+    "name": "루어스선풍도복",
+    "appearanceId": "mu0000121",
+    "icon": "item-icons/identity_mu0000121.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000122",
+    "name": "밀레스선풍도복",
+    "appearanceId": "mu0000122",
+    "icon": "item-icons/identity_mu0000122.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      37
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000123",
+    "name": "수오미풀플레이트",
+    "appearanceId": "mu0000123",
+    "icon": "item-icons/identity_mu0000123.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      30,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000124",
+    "name": "뤼케시온풀플레이트",
+    "appearanceId": "mu0000124",
+    "icon": "item-icons/identity_mu0000124.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      30,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000125",
+    "name": "루어스풀플레이트",
+    "appearanceId": "mu0000125",
+    "icon": "item-icons/identity_mu0000125.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      30,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000126",
+    "name": "밀레스풀플레이트",
+    "appearanceId": "mu0000126",
+    "icon": "item-icons/identity_mu0000126.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      30,
+      40
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000127",
+    "name": "수오미바르도클",
+    "appearanceId": "mu0000127",
+    "icon": "item-icons/identity_mu0000127.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000128",
+    "name": "뤼케시온바르도클",
+    "appearanceId": "mu0000128",
+    "icon": "item-icons/identity_mu0000128.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000129",
+    "name": "루어스바르도클",
+    "appearanceId": "mu0000129",
+    "icon": "item-icons/identity_mu0000129.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000130",
+    "name": "밀레스바르도클",
+    "appearanceId": "mu0000130",
+    "icon": "item-icons/identity_mu0000130.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      16,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000131",
+    "name": "수오미다크로럼",
+    "appearanceId": "mu0000131",
+    "icon": "item-icons/identity_mu0000131.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      39
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000132",
+    "name": "뤼케시온다크로럼",
+    "appearanceId": "mu0000132",
+    "icon": "item-icons/identity_mu0000132.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      39
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000133",
+    "name": "루어스다크로럼",
+    "appearanceId": "mu0000133",
+    "icon": "item-icons/identity_mu0000133.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      39
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000134",
+    "name": "밀레스다크로럼",
+    "appearanceId": "mu0000134",
+    "icon": "item-icons/identity_mu0000134.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      20,
+      39
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000135",
+    "name": "수오미네크로브",
+    "appearanceId": "mu0000135",
+    "icon": "item-icons/identity_mu0000135.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      38
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000136",
+    "name": "뤼케시온네크로브",
+    "appearanceId": "mu0000136",
+    "icon": "item-icons/identity_mu0000136.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      38
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000137",
+    "name": "루어스네크로브",
+    "appearanceId": "mu0000137",
+    "icon": "item-icons/identity_mu0000137.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      38
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000138",
+    "name": "밀레스네크로브",
+    "appearanceId": "mu0000138",
+    "icon": "item-icons/identity_mu0000138.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      38
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MU0000139",
+    "name": "수오미태산도복",
+    "appearanceId": "mu0000139",
+    "icon": "item-icons/identity_mu0000139.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      17,
+      28
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW007",
+    "name": "매직마르시아",
+    "appearanceId": "mw007",
+    "icon": "item-icons/identity_mw007.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      18,
+      12
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW009",
+    "name": "매직쥬피티아",
+    "appearanceId": "mw009",
+    "icon": "item-icons/identity_mw009.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      11
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW010",
+    "name": "매스커레이드",
+    "appearanceId": "mw010",
+    "icon": "item-icons/identity_mw010.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      34,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW011",
+    "name": "매스케이드",
+    "appearanceId": "mw011",
+    "icon": "item-icons/identity_mw011.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      29,
+      24
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW012",
+    "name": "배틀소드",
+    "appearanceId": "mw012",
+    "icon": "item-icons/identity_mw012.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      25,
+      19
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW013",
+    "name": "블랙데쓰",
+    "appearanceId": "mw013",
+    "icon": "item-icons/identity_mw013.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      27,
+      21
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW014",
+    "name": "프렘벨",
+    "appearanceId": "mw014",
+    "icon": "item-icons/identity_mw014.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      30,
+      7
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW016",
+    "name": "투핸드크레이모어",
+    "appearanceId": "mw016",
+    "icon": "item-icons/identity_mw016.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      34,
+      26
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW017",
+    "name": "스틸라",
+    "appearanceId": "mw017",
+    "icon": "item-icons/identity_mw017.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      38,
+      13
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW018",
+    "name": "투핸드에메랄드소드",
+    "appearanceId": "mw018",
+    "icon": "item-icons/identity_mw018.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      35,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW019",
+    "name": "투핸드드래곤크로어",
+    "appearanceId": "mw019",
+    "icon": "item-icons/identity_mw019.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      37,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW020",
+    "name": "드래곤슬레이어",
+    "appearanceId": "mw020",
+    "icon": "item-icons/identity_mw020.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      35,
+      7
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW021",
+    "name": "투핸드그레이트소드",
+    "appearanceId": "mw021",
+    "icon": "item-icons/identity_mw021.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      42,
+      9
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW022",
+    "name": "투핸드엑시큐터",
+    "appearanceId": "mw022",
+    "icon": "item-icons/identity_mw022.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      38,
+      8
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW023",
+    "name": "투핸드가이아두스",
+    "appearanceId": "mw023",
+    "icon": "item-icons/identity_mw023.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      34,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW026",
+    "name": "매직루나",
+    "appearanceId": "mw026",
+    "icon": "item-icons/identity_mw026.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      31,
+      17
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW027",
+    "name": "매직가이아",
+    "appearanceId": "mw027",
+    "icon": "item-icons/identity_mw027.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      32,
+      10
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW029",
+    "name": "채찍",
+    "appearanceId": "mw029",
+    "icon": "item-icons/identity_mw029.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW034",
+    "name": "우든클럽",
+    "appearanceId": "mw034",
+    "icon": "item-icons/identity_mw034.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      19,
+      8
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW035",
+    "name": "스파이크클럽",
+    "appearanceId": "mw035",
+    "icon": "item-icons/identity_mw035.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      21,
+      10
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW036",
+    "name": "자이언트클럽",
+    "appearanceId": "mw036",
+    "icon": "item-icons/identity_mw036.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      27,
+      17
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW037",
+    "name": "자이언트스톤클럽",
+    "appearanceId": "mw037",
+    "icon": "item-icons/identity_mw037.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      31,
+      22
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW039",
+    "name": "액스",
+    "appearanceId": "mw039",
+    "icon": "item-icons/identity_mw039.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      26,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW040",
+    "name": "하이브레이질액스",
+    "appearanceId": "mw040",
+    "icon": "item-icons/identity_mw040.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      25,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW041",
+    "name": "자이언트스톤액스",
+    "appearanceId": "mw041",
+    "icon": "item-icons/identity_mw041.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      31,
+      24
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW043",
+    "name": "배틀액스",
+    "appearanceId": "mw043",
+    "icon": "item-icons/identity_mw043.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      22,
+      23
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW044",
+    "name": "자이언트스톤해머",
+    "appearanceId": "mw044",
+    "icon": "item-icons/identity_mw044.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      36,
+      25
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW047",
+    "name": "시미터",
+    "appearanceId": "mw047",
+    "icon": "item-icons/identity_mw047.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      28,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW048",
+    "name": "더브릴",
+    "appearanceId": "mw048",
+    "icon": "item-icons/identity_mw048.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      33,
+      15
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW049",
+    "name": "타고나이트채찍",
+    "appearanceId": "mw049",
+    "icon": "item-icons/identity_mw049.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW050",
+    "name": "미스릴채찍",
+    "appearanceId": "mw050",
+    "icon": "item-icons/identity_mw050.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW051",
+    "name": "루비채찍",
+    "appearanceId": "mw051",
+    "icon": "item-icons/identity_mw051.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      14,
+      20
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW053",
+    "name": "타고나이트액스",
+    "appearanceId": "mw053",
+    "icon": "item-icons/identity_mw053.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      31,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW055",
+    "name": "하이브레이질배틀액스",
+    "appearanceId": "mw055",
+    "icon": "item-icons/identity_mw055.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      28,
+      32
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW056",
+    "name": "실버시미터",
+    "appearanceId": "mw056",
+    "icon": "item-icons/identity_mw056.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      29,
+      16
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW059",
+    "name": "매직솔라",
+    "appearanceId": "mw059",
+    "icon": "item-icons/identity_mw059.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      29,
+      6
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW060",
+    "name": "아리펠스탭",
+    "appearanceId": "mw060",
+    "icon": "item-icons/identity_mw060.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      32,
+      8
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  },
+  {
+    "itemId": "IT_WARDROBE_MW062",
+    "name": "매직파나",
+    "appearanceId": "mw062",
+    "icon": "item-icons/identity_mw062.png",
+    "identity": "EXACT_WEARABLE_APPEARANCE",
+    "nativeSize": [
+      32,
+      10
+    ],
+    "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+    "numericalStatus": "ORIGINAL_FIELDS_PENDING"
+  }
+]
