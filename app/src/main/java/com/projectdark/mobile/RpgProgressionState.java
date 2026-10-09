@@ -246,6 +246,7 @@ public final class RpgProgressionState {
   }
 
   private void registerCampaignEquipment(){
+    registerItem(new ItemDefinition("IT_B_POTE_SHOES","숲길 신발",SHOES_SLOT,"ml230",20,jobSet(),true,null,null,stats("AC",-1,"DEX",3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_B_PURIFIED_ESSENCE","정화된 숲의 정수",null,null,0,jobSet(),true,null,null,stats(),Evidence.ADAPTED));
     String[] looks={"mu0000059","mu0000055","mu0000117","mu0000210","mu0000057"};
     for(int i=0;i<CampaignProgress.JOBS.length;i++)for(int level:new int[]{11,26}){
@@ -422,12 +423,19 @@ public final class RpgProgressionState {
 
   /** Campaign-aware defeat endpoint; only map actors admitted by the mobile field adapter can resolve. */
   private void resolveCampaignDefeat(CombatLedger.Event e,String profileId){
+    // Same-HP campaign spirits use the mobile economy; preserve the V source record separately.
+    if("POTE_SPIRIT".equals(profileId)&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId))){
+      applyCampaignReward(e,campaignRewards.find(profileId));return;
+    }
     CanonicalMonsterRewardCatalog.RewardEntry canonical=monsterRewards.find(e.targetId);
     // Admit instance rewards only through a matching live actor species profile.
     if(canonical==null&&profileId!=null&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId)))canonical=monsterRewards.find(profileId);
     if(canonical!=null){resolveMonsterDefeat(e,canonical);return;}
     AdaptedCampaignRewardCatalog.Reward reward=campaignRewards.find(profileId);
     if(reward==null){resolveMonsterDefeat(e);return;}
+    applyCampaignReward(e,reward);
+  }
+  private void applyCampaignReward(CombatLedger.Event e,AdaptedCampaignRewardCatalog.Reward reward){
     grantAdaptedReward(reward.exp,reward.gold);
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,
         Collections.<String,Integer>emptyMap(),Collections.<String,AutoLootResult>emptyMap(),

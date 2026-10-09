@@ -1,3 +1,7 @@
+## 2026-10-09 — V123 reward audit implementation pending verification
+
+User asks Pote EXP/drop, quests/equipment and Mantis ring review. Accepted ADAPTED policy in POTE_REWARDS_V123_CONTRACT.md and master/changes/POTE-REWARDS-V123.json. Actual staged slot acquisition, M06 armor+tool, corrected B06Lv26, visible named reward receipts, all four element shop fallback, first-clear ring+10000Gold, spirit800HP reward40000EXP+82Gold; original source record preserved. Main unchanged18ef615; branchPR180 candidate. Exact-source native/build/APK and physical phone acceptance pending.
+
 ## 2026-10-09 — V122 exact combined repair verified
 
 IMPLEMENTED / BUILD_VERIFIED / NATIVE_SCOPE_VERIFIED. Runtime source363ddca72c0c210568f844c714c41859c6358bea;focused Actions37871336909/job113629894711 SUCCESS. Downloaded ZIP digests match GitHub;32 XML suites independently counted125tests,0failures/errors/skips. APK59,949,763bytes,SHA2564ee239646e4c0b003fd56364ff8d320ed0c3269f363bf3d1ba3a78bd20832c1d,built2026-10-09T10:54:00.835364+09:00. APK artifact11589928876/native11589908910. Embedded source/run/version122/package and168unchanged sprite bytes verified. Separate com.projectdark.mobile.v122test,fresh profile;draftPR180/unmerged/main18ef615. Release https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v122-363ddca7-37871336909-1 . Evidence verification/MONSTER_VISUAL_V122_BUILD.json.

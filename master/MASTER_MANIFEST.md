@@ -154,3 +154,6 @@ Accepted USER-MARTIAL-KICK-RELEASE-V82.json corrects runtime pose projections; h
 
 ## V83 accepted project ability policy
 SKILL-ABILITIES-V83.json authorizes new per-ID formulas/status balance beside preserved source sheets. Consumer chain in docs/SKILL_ABILITY_CONTRACT.md. Original art and numerical/source snapshots remain unchanged;16 absent services are explicitly unresolved.
+
+## Adapter revision POTE-REWARDS-V123 (2026-10-09)
+Accepted mobile reward policy: master/changes/POTE-REWARDS-V123.json → AdaptedPoteQuestRewards/AdaptedCampaignRewardCatalog V2 → CampaignProgress/RPG/commerce/journal/GameView. Original92CSV/canonical Equipment_Stats snapshot unchanged; source EXP/drop facts remain distinct. Contract docs/POTE_REWARDS_V123_CONTRACT.md.

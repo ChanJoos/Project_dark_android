@@ -436,7 +436,8 @@ public final class GameView extends View {
     if(npc.id.startsWith("campaign_altar_"))body="숲의 정수를 모아 제단을 정화하세요. 정화 의뢰를 수락한 뒤 세 곳을 각각 방문합니다.";
     else if(relevant){CampaignProgress.Status status=state.rpg().campaign().status(d,state.rpg());body=d.title+" · "+(status==CampaignProgress.Status.LOCKED?"Lv"+d.level+"에 다시 찾아오세요":status==CampaignProgress.Status.AVAILABLE?"수락한 뒤 목표를 수행하고 돌아오세요":status==CampaignProgress.Status.REPORT?"조사를 마쳤군요. 완료를 눌러 보상을 받으세요":state.rpg().campaign().objective(d)+" · "+state.rpg().campaign().count(d,state.rpg())+" / "+d.goal);}
     else body=npc.dialogue;
-    drawWrappedText(c,body,218,370,510,13,19);
+    if(relevant){String gear=AdaptedPoteQuestRewards.equipmentText(d,state.rpg());if(!gear.isEmpty())body+="\n장비 보상 · "+gear;}
+    drawWrappedText(c,body,218,366,510,11,16);
     boolean supplier=npc.id.equals("piet_supplier");String[] labels={"",supplier?"회복약 20G":"",supplier?"장비 상점":"",""};
     if(npc.id.startsWith("campaign_altar_"))labels[3]="정화";
     else if(relevant){CampaignProgress.Status st=state.rpg().campaign().status(d,state.rpg());labels[3]=st==CampaignProgress.Status.AVAILABLE?"수락":st==CampaignProgress.Status.REPORT?"완료":"목표 확인";}
@@ -453,7 +454,7 @@ public final class GameView extends View {
     CampaignProgress.Def d=campaignNext();if(d==null||!d.npc.equals(npc.id))return;CampaignProgress.Status st=state.rpg().campaign().status(d,state.rpg());boolean ok=false;int rewardExp=state.rpg().campaign().rewardExp(d,state.rpg());
     if(st==CampaignProgress.Status.AVAILABLE)ok=F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().campaign().accept(d.id,state.rpg(),skillBook));
     else if(st==CampaignProgress.Status.REPORT)ok=F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().campaign().claim(d.id,state.rpg()));
-    if(ok){state.applyDerivedGrowth();interaction.dismissDialog();showReward(st==CampaignProgress.Status.REPORT?d.title+" 완료 · EXP +"+rewardExp+" · Gold +"+d.gold:"의뢰 수락 · "+d.title);}
+    if(ok){state.applyDerivedGrowth();interaction.dismissDialog();showReward(st==CampaignProgress.Status.REPORT?d.title+" 완료 · "+AdaptedPoteQuestRewards.summary(d,state.rpg(),rewardExp):"의뢰 수락 · "+d.title);}
     else if(st==CampaignProgress.Status.ACTIVE){interaction.dismissDialog();autoNavigateCampaign();}
     else showFeedback("필요 레벨과 목표, 저장 상태를 확인하세요",FeedbackTone.INFO);
   }
@@ -462,7 +463,7 @@ public final class GameView extends View {
   private void navigateTutorial(CampaignProgress.Def d,CampaignProgress.Status status){
     RpgProgressionState r=state.rpg();autoAttackEnabled=false;campaignAutoRoute=false;interaction.cancel();activeWorld().cancelForAction();combat.cancelApproach();joy=false;inventoryOpen=statsOpen=equipmentOpen=false;skillWindow.close();townWindow.close();
     if(status==CampaignProgress.Status.AVAILABLE){if(!F5mSaveStore.transactActive(r,skillBook,()->r.campaign().accept(d.id,r,skillBook))){showFeedback("학습을 시작하지 못했습니다 · 저장 상태 확인",FeedbackTone.WARN);return;}status=r.campaign().status(d,r);}
-    if(status==CampaignProgress.Status.REPORT){int exp=r.campaign().rewardExp(d,r);if(F5mSaveStore.transactActive(r,skillBook,()->r.campaign().claim(d.id,r))){state.applyDerivedGrowth();showReward(d.title+" 완료 · EXP +"+exp+" · Gold +"+d.gold);openQuestJournal();}else showFeedback("보상을 저장하지 못했습니다",FeedbackTone.WARN);return;}
+    if(status==CampaignProgress.Status.REPORT){int exp=r.campaign().rewardExp(d,r);if(F5mSaveStore.transactActive(r,skillBook,()->r.campaign().claim(d.id,r))){state.applyDerivedGrowth();showReward(d.title+" 완료 · "+AdaptedPoteQuestRewards.summary(d,r,exp));openQuestJournal();}else showFeedback("보상을 저장하지 못했습니다",FeedbackTone.WARN);return;}
     if(status!=CampaignProgress.Status.ACTIVE)return;
     if(inPoteField&&(d.kind.equals("BUY")||d.kind.equals("SELL")||d.kind.equals("USE")||d.kind.equals("QUICK_USE"))){campaignAutoRoute=true;WorldMoveTargetController.TileCenter gate=com.projectdark.mobile.world.CampaignWorld.backward(state.currentMapId());poteFieldAdapter.requestGroundWorld(gate.x,gate.y);showFeedback("숲길을 따라 밀레스 학습 장소로 돌아갑니다",FeedbackTone.INFO);return;}
     switch(d.kind){

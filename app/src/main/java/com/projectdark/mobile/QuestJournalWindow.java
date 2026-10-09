@@ -36,7 +36,7 @@ final class QuestJournalWindow {
       if(help){text(c,"방법 안내 · 위아래로 스크롤",440,251,12,UiTheme.GOLD,true);c.save();c.clipRect(434,260,817,405);wrap(c,r.guide,440,279-detailScroll,365,13,19,40,UiTheme.TEXT);c.restore();}
       else {wrap(c,r.story,440,250,365,12,18,2,UiTheme.TEXT);text(c,"목표",440,297,11,UiTheme.MUTED,true);wrap(c,r.objective+(r.goal>0&&r.status==QuestJournalModel.Status.ACTIVE?"  "+r.count+" / "+r.goal:""),440,318,365,14,19,2,color(r));
         if(r.goal>0&&r.status==QuestJournalModel.Status.ACTIVE){UiTheme.surface(c,new RectF(440,346,805,350),UiTheme.RAISED,0,2);float ratio=Math.min(1,Math.max(0,r.count/(float)r.goal));if(ratio>0)UiTheme.surface(c,new RectF(440,346,440+365*ratio,350),UiTheme.ACCENT,0,2);}
-        if(r.status==QuestJournalModel.Status.LOCKED)wrap(c,r.condition,440,362,365,12,17,2,UiTheme.MUTED);else{fit(c,"보상  "+r.reward,440,362,365,12,UiTheme.GOLD,false);fit(c,r.next,440,390,365,11,UiTheme.MUTED,false);}}
+        if(r.status==QuestJournalModel.Status.LOCKED)wrap(c,r.condition,440,362,365,12,17,2,UiTheme.MUTED);else{wrap(c,"보상  "+r.reward,440,362,365,11,16,2,UiTheme.GOLD);fit(c,r.next,440,402,365,10,UiTheme.MUTED,false);}}
       c.restore();UiTheme.button(c,new RectF(420,421,538,466),help?"목표 보기":"방법 보기",true,help);
       UiTheme.button(c,new RectF(550,421,810,466),r.action(),r.navigable(),r.navigable());
     }

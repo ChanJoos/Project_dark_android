@@ -6,7 +6,7 @@ import java.util.Map;
 
 /** Explicit mobile-campaign rewards; never used as canonical Pote source facts. */
 public final class AdaptedCampaignRewardCatalog {
-  public static final String POLICY_ID="ADAPTED_LV1_40_CAMPAIGN_V1";
+  public static final String POLICY_ID="ADAPTED_LV1_40_CAMPAIGN_V2";
   public static final class Reward {
     public final String monsterId,zone;
     public final int exp;
@@ -27,7 +27,9 @@ public final class AdaptedCampaignRewardCatalog {
     add(m,"POTE_MANTIS","포테 D 결계 보스",0,0);
     add(m,"POTE_STRONG_WOLFRIDER","포테 4구역",52000,104);add(m,"POTE_STRONG_TREANT","포테 4구역",56000,112);
     add(m,"POTE_CAMPAIGN_ELITE_GNOLL","포테 4구역",56000,160);
-    // POTE_SPIRIT is deliberately absent: its canonical V EXP remains the only rule for that actor.
+    // At 800 adapted HP, 308950 source EXP was an 8–12x outlier versus its C-zone peers.
+    // Preserve CanonicalMonsterRewardCatalog; override only admitted mobile campaign instances.
+    add(m,"POTE_SPIRIT","포테 C · 깊은 숲",40000,82);
     rewards=Collections.unmodifiableMap(m);
   }
   private static void add(Map<String,Reward> m,String id,String zone,int exp,long gold){m.put(id,new Reward(id,zone,exp,gold));}

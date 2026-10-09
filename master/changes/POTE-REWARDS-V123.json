@@ -1,0 +1,61 @@
+{
+  "changeId": "POTE-REWARDS-V123",
+  "status": "ACCEPTED",
+  "date": "2026-10-09",
+  "authorization": "User requests Pote monster EXP/rewards/equipment/quest audit and richer gear acquisition",
+  "classification": "ADAPTED_MOBILE_REWARD_POLICY",
+  "sourceRefs": [
+    {
+      "sheet": "Progression_Master.csv",
+      "id": "P01",
+      "before": "planned 2circle gloves/leggings/element first set",
+      "after": "M06/A02/A03/A05/B01/etc actual inventory acquisition"
+    },
+    {
+      "sheet": "Monster_Master.csv",
+      "id": "POTE_SPIRIT",
+      "before": "source308950 EXP consumed on adapted800HP actor",
+      "after": "preserve source; admitted mobile instance40000EXP+82Gold"
+    },
+    {
+      "sheet": "Monster_Drop.csv",
+      "id": "자이언트맨티스",
+      "before": "ring relation / rates unresolved; D03ring already wired but not displayed",
+      "after": "named one-time D03 ring; adapted10000Gold; no invented combat drop"
+    }
+  ],
+  "evidence": [
+    {
+      "url": "https://lod.nexon.com/community/game/24?SearchBoard=1",
+      "date": "2005-08-17",
+      "tag": "V_NEXON_HOSTED_COMMUNITY",
+      "observation": "post-boss NPC reward ring plus2000000 historical Gold; not developer drop table"
+    },
+    {
+      "url": "https://lod.nexon.com/News/update/5020?Page=2",
+      "date": "2023-11-29",
+      "tag": "O",
+      "observation": "main quests EXP potion and spirit spawn/HP/Gold changed; numericEXP/drop unknown"
+    }
+  ],
+  "contract": "docs/POTE_REWARDS_V123_CONTRACT.md",
+  "sourceSnapshotImpact": "NONE",
+  "saveImpact": "stable IDs added; old completed quests stay complete; no retroactive duplicate claims; shop fallback",
+  "consumers": [
+    "AdaptedPoteQuestRewards",
+    "CampaignProgress.claim",
+    "RpgProgressionState.resolveCampaignDefeat",
+    "TownCommerce",
+    "QuestJournalModel",
+    "GameView"
+  ],
+  "tests": [
+    "PoteRewardsV123Test",
+    "CampaignProgressTest",
+    "AdaptedCampaignRewardTest",
+    "EquipmentStatsAndDetailsTest",
+    "TownInteriorTest",
+    "RuntimeCheckpointTest"
+  ],
+  "verification": "PENDING_EXACT_SOURCE_NATIVE_APK;PHONE_PENDING"
+}
