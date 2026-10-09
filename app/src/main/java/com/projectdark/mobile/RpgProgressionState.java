@@ -267,8 +267,14 @@ public final class RpgProgressionState {
     if(source!=null)def=new ItemDefinition(def.itemId,def.name,def.equipSlot,def.appearanceId,def.basicAttackAction,def.requiredLevel,def.allowedJobCodes,def.jobRestrictionResolved,def.attackElement,def.defenseElement,source,Evidence.ADAPTED);
     items.put(def.itemId,def);
   }
-  // Existing canonical items retain their accepted stats/requirements; historical receipts add new identities.
-  void registerSourceAccessory(ItemDefinition def){if(!items.containsKey(def.itemId))items.put(def.itemId,def);}
+  // Historical fields fill gaps; accepted canonical fields and original requirements win collisions.
+  void registerSourceAccessory(ItemDefinition def){
+    ItemDefinition old=items.get(def.itemId);
+    if(old==null){items.put(def.itemId,def);return;}
+    Map<String,Integer> merged=new LinkedHashMap<>(def.statModifiers);merged.putAll(old.statModifiers);
+    Map<String,Integer> canonical=SourceEquipmentStats.forItem(def.itemId);if(canonical!=null)merged.putAll(canonical);
+    items.put(def.itemId,new ItemDefinition(old.itemId,old.name,old.equipSlot,old.appearanceId,old.basicAttackAction,old.requiredLevel,old.allowedJobCodes,old.jobRestrictionResolved,old.attackElement,old.defenseElement,merged,Evidence.ADAPTED));
+  }
   public boolean equipmentSandbox(){return equipmentSandbox;}
   public void enableEquipmentSandbox(boolean grant){
     equipmentSandbox=true;

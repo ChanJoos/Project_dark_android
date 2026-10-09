@@ -50,7 +50,7 @@ public class AccessoryCatalogV125Test {
  }
  @Test public void elementalEquipmentFeedsTheCombatPipeline(){
   RpgProgressionState a=new RpgProgressionState(),d=new RpgProgressionState();a.enableEquipmentSandbox(true);d.enableEquipmentSandbox(true);
-  a.equip("IT_NECK_FIRE_PEARL");d.equip("IT_BELT_WATER_LEATHER");
+  a.equip("IT_NECK_FIRE_PEARL");assertEquals(Integer.valueOf(5),a.equippedDefinition("목걸이").statModifiers.get("HIT"));d.equip("IT_BELT_WATER_LEATHER");
   assertEquals(38,ElementalDamageFormula.apply(100,a.finalStats().attackElement,d.finalStats().defenseElement));
   assertEquals(175,ElementalDamageFormula.apply(100,"생명","암흑"));assertEquals(100,ElementalDamageFormula.apply(100,"숲","숲"));
  }
