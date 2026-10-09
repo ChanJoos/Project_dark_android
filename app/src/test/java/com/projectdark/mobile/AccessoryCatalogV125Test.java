@@ -25,7 +25,7 @@ public class AccessoryCatalogV125Test {
   }
   assertTrue(connected>=150);
   java.io.File dir=new java.io.File("build/reports/device-review");dir.mkdirs();
-  java.nio.file.Files.writeString(new java.io.File(dir,"accessory-v125-coverage.json").toPath(),new org.json.JSONObject().put("ownedItems",r.inventory().size()).put("definitions",r.itemDefinitions().size()).put("sourceIconsLoaded",connected).put("job",r.currentJobCode()).put("level",r.normalLevel()).put("testRequirementsBypass",r.equipmentSandbox()).toString());
+  java.nio.file.Files.write(new java.io.File(dir,"accessory-v125-coverage.json").toPath(),new org.json.JSONObject().put("ownedItems",r.inventory().size()).put("definitions",r.itemDefinitions().size()).put("sourceIconsLoaded",connected).put("job",r.currentJobCode()).put("level",r.normalLevel()).put("testRequirementsBypass",r.equipmentSandbox()).toString().getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void fourCircleLeggingsAreSeparateAndChangeRealStats(){
   RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);int base=r.finalStats().ac;
