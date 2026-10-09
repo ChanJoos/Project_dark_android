@@ -1,0 +1,118 @@
+{
+  "revision": "CLASSIC_UI_V126",
+  "source": "master/source/ui/classic_20261009/inventory_weapon.jpg",
+  "sourceSha256": "79b533750aef5e6d1ba83eef3b4f7863e8ae78a1ead264c9bce8efd4d1d66370",
+  "policy": "Exact source crops. Runtime repeats interior texture and stretches only empty border strips. Icons are separate RGBA layers.",
+  "crops": {
+    "paper": {
+      "path": "classic-ui/paper.png",
+      "box": [
+        308,
+        948,
+        330,
+        969
+      ],
+      "sha256": "8ac40893adf366f56cf112f4ff8bb816bacc5580d0236ea0e1b3bfbc7f124ff1"
+    },
+    "cell": {
+      "path": "classic-ui/cell.png",
+      "box": [
+        298,
+        946,
+        331,
+        975
+      ],
+      "sha256": "4570a152aa6be3b60462b4fef5c7946512b84ed155e1a427c2a2f149b12b4043"
+    },
+    "top": {
+      "path": "classic-ui/top.png",
+      "box": [
+        120,
+        855,
+        574,
+        864
+      ],
+      "sha256": "3eaaa84852b0010be89b2a48a61cf88164bfff1cc5fedb4f17c5dbf3db6207a6"
+    },
+    "bottom": {
+      "path": "classic-ui/bottom.png",
+      "box": [
+        120,
+        978,
+        574,
+        987
+      ],
+      "sha256": "abbe47d1f9c6d4d45795644e1aafb2e9a8c964d1d8beb66677a0f09ee5f6d025"
+    },
+    "left": {
+      "path": "classic-ui/left.png",
+      "box": [
+        84,
+        864,
+        94,
+        976
+      ],
+      "sha256": "cf2c5e8a8b9d9f079f67c9f4fa62e2019a94b812c4ec43e16cb6aa765aa8907a"
+    },
+    "right": {
+      "path": "classic-ui/right.png",
+      "box": [
+        577,
+        864,
+        587,
+        976
+      ],
+      "sha256": "11d0e582894e2003374bffb6c27fc592acd2d12b319cd0194b0518905fb6d326"
+    },
+    "corner_tl": {
+      "path": "classic-ui/corner_tl.png",
+      "box": [
+        84,
+        855,
+        96,
+        867
+      ],
+      "sha256": "66b4784cb8e88931f98e5d5d9832c40e93f451cdabf4e3193c39775f3f59a0d9"
+    },
+    "corner_tr": {
+      "path": "classic-ui/corner_tr.png",
+      "box": [
+        575,
+        855,
+        587,
+        867
+      ],
+      "sha256": "74c28f95b4db6ccdb2cfc7295a925b5fee23b95d98f9be34c266e140df4abb4e"
+    },
+    "corner_bl": {
+      "path": "classic-ui/corner_bl.png",
+      "box": [
+        84,
+        975,
+        96,
+        987
+      ],
+      "sha256": "da7a66a761d8e2dddab6c044e4da576f6d76279fbc260dd67f4d83c76170fbb9"
+    },
+    "corner_br": {
+      "path": "classic-ui/corner_br.png",
+      "box": [
+        575,
+        975,
+        587,
+        987
+      ],
+      "sha256": "b81b269523eeb1ced65767650a9601900156be824e626c890f1d07fc3cf623dc"
+    },
+    "header": {
+      "path": "classic-ui/header.png",
+      "box": [
+        349,
+        841,
+        567,
+        850
+      ],
+      "sha256": "0538b9633f67fb321c4d47429b6b5842314050b453f07b5858ee4b15ad16c4f4"
+    }
+  }
+}

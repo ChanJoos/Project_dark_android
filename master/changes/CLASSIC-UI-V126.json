@@ -1,0 +1,11 @@
+{
+  "id": "CLASSIC-UI-V126",
+  "status": "IMPLEMENTED_PENDING_CI",
+  "userRequest": "Original brown inventory form and matching equipment/skills/stats; original item illustrations with separate backgrounds",
+  "contract": "docs/CLASSIC_UI_V126_CONTRACT.md",
+  "sourceSkin": "app/src/main/assets/classic-ui/manifest.json",
+  "alphaMasks": "master/assets/equipment/background_masks_v126/manifest.json",
+  "sourcePixelPolicy": "RGB unchanged; separately auditable alpha only",
+  "physicalPhoneAcceptance": "PENDING",
+  "combatFeel": "DONE_EXCLUDED"
+}

@@ -699,7 +699,7 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
     for(int n=0;n<5;n++){float yy=150+n*30;UiTheme.surface(c,new RectF(584,yy-17,752,yy+11),UiTheme.SURFACE,0,5);UiTheme.text(c,labels[n],594,yy,11,UiTheme.TEXT,true);Integer bonus=ss.equipment.get(keys[n]);UiTheme.right(c,base[n]+(bonus!=null&&bonus!=0?" +"+bonus:""),693,yy,12,UiTheme.GOLD,true);UiTheme.button(c,new RectF(705,yy-15,743,yy+9),"+",r.statPoints()>0,false);}
     String[] labels2={"생명력","마나","방어 / 마법방어","명중 / 피해","물리 공격","공격 속성","방어 속성","피해 감소","방어 무시"};
     String[] vals={state.player().hp+" / "+fs.maxHp,state.player().mp+" / "+fs.maxMp,fs.ac+" / "+fs.magicDefense,fs.hit+" / "+fs.dam,""+fs.prototypePhysicalAttack(),"NONE".equals(String.valueOf(fs.attackElement))?"없음":""+fs.attackElement,"NONE".equals(String.valueOf(fs.defenseElement))?"없음":""+fs.defenseElement,fs.damageReductionPct+"% · "+fs.flatMitigation,""+fs.acIgnore};
-    for(int n=0;n<9;n++){float yy=150+n*23;UiTheme.text(c,labels2[n],771,yy,9.5f,UiTheme.MUTED,false);UiTheme.right(c,vals[n],915,yy,10.5f,UiTheme.TEXT,true);if(n<8)UiTheme.line(c,771,yy+7,915,yy+7,0xff283747);}
+    for(int n=0;n<9;n++){float yy=150+n*23;UiTheme.text(c,labels2[n],771,yy,9.5f,UiTheme.MUTED,false);UiTheme.right(c,vals[n],915,yy,10.5f,UiTheme.TEXT,true);if(n<8)UiTheme.line(c,771,yy+7,915,yy+7,UiTheme.LINE);}
     UiTheme.text(c,"STR 물리 · INT 마법 · DEX 명중",590,301,10,UiTheme.MUTED,false);UiTheme.text(c,"기술 조건은 스킬창 → 조건에서 확인",590,322,10,UiTheme.GOLD,false);
     if(r.canResetIntroAllocation(skillBook))UiTheme.button(c,new RectF(584,330,752,355),"입문 배분 다시 하기",true,false);
     UiTheme.line(c,590,357,915,357,UiTheme.LINE);UiTheme.text(c,"CON · WIS는 다음 레벨의 HP · MP 성장에 반영됩니다.",590,378,10,UiTheme.MUTED,false);c.restore();
