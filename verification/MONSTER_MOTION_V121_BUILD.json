@@ -1,0 +1,390 @@
+{
+  "build": {
+    "sourceCommit": "794823078ec3a5ee2b93fcb8803a939273721938",
+    "runId": "37866922982",
+    "versionCode": 121,
+    "versionName": "1.21-monster-motion",
+    "applicationId": "com.projectdark.mobile.v121test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "7ac0ddacd843ef1f58fae671b1cae733dbe6fee552e90a879890b1adbcec924a",
+    "apkBytes": 59949443,
+    "builtSeoul": "2026-10-09T09:59:48.033294+09:00",
+    "scope": "asset-preserving articulated walk, contact-synchronized attacks, hit recoil and transient corpse; preserved map-lifetime static chase graph with shortest-path A-star and live collision checks; joystick right/up 20 logical pixels; paired accepted V120 continuous movement tails; bounded floor/sprite caches and map-switch memory verification; preserved 168 poses/campaign/save/body",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "actionsRun": 37866922982,
+  "apkArtifact": 11589150496,
+  "nativeArtifact": 11588472821,
+  "archiveDigests": {
+    "11589150496": "3ced24923f6d1129aadf7cbff699f9715f203a27262450c45bc2d1426acec3bb",
+    "11588472821": "128fd3d149fd3e982a8ca6747cd1656b07759e21456369dde26952fdc3d7d24d"
+  },
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteVisualReviewTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.InstalledSpriteResourcesTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.AutoAttackTargetSelectorTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteCreekWaterAssetTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignProgressTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFrameProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFloorCacheTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.QuickQuestLatencyTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteForestSpatialGrammarTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.DeviceRepairV114Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.world.WorldMoveTargetControllerPathTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteMonsterMotionV121Test",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterChasePathfinderTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.NpcAppearanceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignNavigationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PotePamfetPresentationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.HudTouchAcceptanceTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.QuestJournalTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.AdaptedCampaignRewardTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.CampaignQuickQuestIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestPixelCacheTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterQualityV118Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.PoteReferenceV113Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.JoystickV119Test",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ForestTapProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "totals": {
+    "tests": 121,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "approved168Assets": "BYTE_IDENTICAL_V120",
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "performance": {
+    "baseline": "a7de04660d317d64f2b6b07cd44e2d57c5da4462",
+    "candidate": "794823078ec3a5ee2b93fcb8803a939273721938",
+    "scenes": [
+      {
+        "map": "MILLES",
+        "render_ms": {
+          "renderMedianMs": [
+            12.731372,
+            12.563202
+          ],
+          "renderP95Ms": [
+            26.855096,
+            25.205657
+          ],
+          "renderP99Ms": [
+            35.952345,
+            35.877966
+          ],
+          "renderMaxMs": [
+            2028.438546,
+            2154.887733
+          ]
+        },
+        "update_ms": {
+          "updateMedianMs": [
+            0.137178,
+            0.134544
+          ],
+          "updateP95Ms": [
+            0.556969,
+            0.572878
+          ],
+          "updateP99Ms": [
+            0.877363,
+            0.893182
+          ],
+          "updateMaxMs": [
+            14.4401,
+            14.917059
+          ]
+        }
+      },
+      {
+        "map": "MAP_POTE_01",
+        "render_ms": {
+          "renderMedianMs": [
+            7.708426,
+            7.672754
+          ],
+          "renderP95Ms": [
+            13.865588,
+            13.475921
+          ],
+          "renderP99Ms": [
+            14.913312,
+            15.053331
+          ],
+          "renderMaxMs": [
+            179.615761,
+            175.832141
+          ]
+        },
+        "update_ms": {
+          "updateMedianMs": [
+            0.12732,
+            0.120857
+          ],
+          "updateP95Ms": [
+            0.319051,
+            0.33419
+          ],
+          "updateP99Ms": [
+            0.808764,
+            0.779568
+          ],
+          "updateMaxMs": [
+            12.402371,
+            9.68327
+          ]
+        }
+      },
+      {
+        "map": "MAP_POTE_03",
+        "render_ms": {
+          "renderMedianMs": [
+            5.857124,
+            5.976284
+          ],
+          "renderP95Ms": [
+            6.452479,
+            6.738648
+          ],
+          "renderP99Ms": [
+            10.027185,
+            10.761679
+          ],
+          "renderMaxMs": [
+            84.67624,
+            80.116401
+          ]
+        },
+        "update_ms": {
+          "updateMedianMs": [
+            0.09046,
+            0.100088
+          ],
+          "updateP95Ms": [
+            0.163528,
+            0.169609
+          ],
+          "updateP99Ms": [
+            1.305669,
+            1.320485
+          ],
+          "updateMaxMs": [
+            6.672694,
+            7.22295
+          ]
+        }
+      }
+    ],
+    "interpretation": "Native CPU only; independent timing distributions, not synchronized frames or phone FPS"
+  },
+  "manualNativeReview": "All14 family SE walk sequences, full four-facing lycan sequence, windup/contact/recovery and hit/death sheets, actual forest corpse scene inspected; accepted art retained. User visual acceptance pending.",
+  "sourceAssetMode": "ADAPTED_PRESENTATION_INTERPOLATION: reusable Canvas mesh and transforms over existing168 PNGs; no new authored multi-frame atlas",
+  "release": "https://github.com/ChanJoos/Project_dark_android/releases/tag/candidate-v121-79482307-37866922982-1",
+  "baselineAcceptance": "V120 option1 explicitly confirmed by user2026-10-09; no independent physical trace",
+  "v120BroadRuns": [
+    {
+      "id": 37864101065,
+      "conclusion": "success"
+    },
+    {
+      "id": 37864095323,
+      "conclusion": "success"
+    }
+  ]
+}

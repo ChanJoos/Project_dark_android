@@ -1,12 +1,19 @@
 pote_monster_motion_v121:
-  implementation: IMPLEMENTED_LOCAL_CANDIDATE
+  implementation: IMPLEMENTED
   baseline: V120_USER_ACCEPTED_OPTION_1
-  build: PENDING
-  native_runtime: PENDING
+  build: BUILD_VERIFIED
+  native_runtime: ROBOLECTRIC_121_TESTS_ZERO_FAILURES_ERRORS_SKIPS
   physical_phone: PENDING
   user_visual: PENDING
   active_branch: codex/pote-forest-v112
   active_pr: 180
+  source: 794823078ec3a5ee2b93fcb8803a939273721938
+  actions_run: 37866922982
+  apk_artifact: 11589150496
+  native_artifact: 11588472821
+  apk_sha256: 7ac0ddacd843ef1f58fae671b1cae733dbe6fee552e90a879890b1adbcec924a
+  built_seoul: '2026-10-09T09:59:48.033294+09:00'
+  evidence: verification/MONSTER_MOTION_V121_BUILD.json
   contract: docs/MONSTER_MOTION_V121_CONTRACT.md
 
 pote_monster_style_v120:
@@ -25,7 +32,7 @@ pote_monster_style_v120:
   apk_sha256: 46d782c787258c0814bdce3e6f8e3cfc344efe8dbd7b1930c0ec59614cf926fb
   evidence: verification/MONSTER_STYLE_V120_BUILD.json
   required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/MONSTER_CREATION_MANUAL.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/visual/POTE_FOREST_DESIGN_V1.md, master/source/monsters/user_style_20261009/manifest.json, master/changes/POTE-MONSTER-STYLE-V120.json]
-  broader_ci: IN_PROGRESS_AT_CLOSURE
+  broader_ci: SUCCESS_BOTH_RUNS_37864101065_37864095323
   next: V121_CONTINUOUS_MONSTER_MOTION
 
 forest_tap_v117:
