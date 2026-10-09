@@ -1,0 +1,1187 @@
+{
+  "currentItems": 236,
+  "newSourceBindings": 55,
+  "reusedSourceBindings": 7,
+  "items": {
+    "IT_RING_THREELINEGOLD": {
+      "name": "세줄금반지",
+      "assetPath": "equipment-icons/it_ring_threelinegold.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_EARRING_DOUBLE_SILVER": {
+      "name": "쌍은귀걸이",
+      "assetPath": "equipment-icons/146_souginiyaringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_JUNDAMAIYARINGU_93B90B4A": {
+      "name": "순옥귀걸이",
+      "assetPath": "equipment-icons/146_jundamaiyaringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_SOUKINIYARINGU_71ACA148": {
+      "name": "쌍금귀걸이",
+      "assetPath": "equipment-icons/146_soukiniyaringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_SANGOIYARINGU_9FA3A3C8": {
+      "name": "산호귀걸이",
+      "assetPath": "equipment-icons/146_sangoiyaringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_SANGOSEKIIYARINGU_BD93B8B9": {
+      "name": "산호석귀걸이",
+      "assetPath": "equipment-icons/146_sangosekiiyaringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_RUBIIYARINGU_FA45A3F9": {
+      "name": "루비귀걸이",
+      "assetPath": "equipment-icons/146_rubiiyaringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_RI-ZENTO_DC68008A": {
+      "name": "리젠트다이아귀걸이",
+      "assetPath": "equipment-icons/146_ri-zento.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_REDMARINE_4BEA9E11": {
+      "name": "레드마린귀걸이",
+      "assetPath": "equipment-icons/146_redmarine.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_HORUDEITORINGU_358D472E": {
+      "name": "홀디트링",
+      "assetPath": "equipment-icons/146_horudeitoringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_KAENHORUDEITO_964F13A2": {
+      "name": "화염의홀디트링",
+      "assetPath": "equipment-icons/146_kaenhorudeito.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599": {
+      "name": "바람의홀디트링",
+      "assetPath": "equipment-icons/146_kazehorudeito.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_DAITIHORUDEITO_6523D03A": {
+      "name": "대지의홀디트링",
+      "assetPath": "equipment-icons/146_daitihorudeito.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_UMIHORUDEITO_652BB8EC": {
+      "name": "바다의홀디트링",
+      "assetPath": "equipment-icons/146_umihorudeito.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_SEIRARINGU_0EB6FB35": {
+      "name": "세일라링",
+      "assetPath": "equipment-icons/146_seiraringu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_146_HADEEAR_84C2EB0E": {
+      "name": "화려한귀걸이",
+      "assetPath": "equipment-icons/146_hadeear.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_KUTU1_6FDB18DA": {
+      "name": "파란신발",
+      "assetPath": "equipment-icons/150_kutu1.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_JAPANUNIFORM02_8A8DE823": {
+      "name": "이름 미확인 신발",
+      "assetPath": "equipment-icons/150_japanuniform02.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_KUTU26_00B7153C": {
+      "name": "회색신발",
+      "assetPath": "equipment-icons/150_kutu26.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_KUTU41_24CE5A29": {
+      "name": "녹색신발",
+      "assetPath": "equipment-icons/150_kutu41.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_SIRUKUBU-TU_002F34C7": {
+      "name": "실크부츠",
+      "assetPath": "equipment-icons/150_sirukubu-tu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_KUTU56_83C01E8B": {
+      "name": "가죽부츠",
+      "assetPath": "equipment-icons/150_kutu56.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_SAFIAN_0C302BDB": {
+      "name": "사피안",
+      "assetPath": "equipment-icons/150_safian.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_KUTU86_3F9DA5BB": {
+      "name": "크림슨",
+      "assetPath": "equipment-icons/150_kutu86.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_MAGICBOOTS_2238025C": {
+      "name": "매직부츠",
+      "assetPath": "equipment-icons/150_magicboots.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_BATORUBUTU_9220E76A": {
+      "name": "배틀부츠",
+      "assetPath": "equipment-icons/150_batorubutu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_MISURIRUBUTU_4580A69D": {
+      "name": "미스릴부츠",
+      "assetPath": "equipment-icons/150_misurirubutu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_WORIAWOKA_3CD02556": {
+      "name": "워리어워커",
+      "assetPath": "equipment-icons/150_woriawoka.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_150_BARUTI_39722257": {
+      "name": "발찌",
+      "assetPath": "equipment-icons/150_baruti.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_ROORING_4759F2BA": {
+      "name": "로오의반지",
+      "assetPath": "equipment-icons/152_rooring.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_KENTETU_8B92FCD7": {
+      "name": "현철반지",
+      "assetPath": "equipment-icons/152_kentetu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_KIN_67A36C40": {
+      "name": "금반지",
+      "assetPath": "equipment-icons/152_kin.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_RING_REDJADE": {
+      "name": "홍옥반지",
+      "assetPath": "equipment-icons/152_kougyoku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_SISUISYOU_11310F31": {
+      "name": "자수정반지",
+      "assetPath": "equipment-icons/152_sisuisyou.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_SANGO_A6FE6F21": {
+      "name": "산호반지",
+      "assetPath": "equipment-icons/152_sango.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_TORAME_B1522F0F": {
+      "name": "호안석반지",
+      "assetPath": "equipment-icons/152_torame.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_SAFAIA_81A4D338": {
+      "name": "사파이어반지",
+      "assetPath": "equipment-icons/152_safaia.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_RING_GORU": {
+      "name": "고루반지",
+      "assetPath": "equipment-icons/152_korou.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_RYOKUGYOKU_7AB8ADDD": {
+      "name": "녹옥반지",
+      "assetPath": "equipment-icons/152_ryokugyoku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_TAIRYOKUNOBLUESEPIAYUBIWA_745BFE1C": {
+      "name": "체력의블루세피아반지",
+      "assetPath": "equipment-icons/152_tairyokunobluesepiayubiwa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_RING_SILVERAQUA": {
+      "name": "실버아쿠아링",
+      "assetPath": "equipment-icons/152_silveraqua.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_GORUDOAKUA_DE45DA1B": {
+      "name": "골드아쿠아링",
+      "assetPath": "equipment-icons/152_gorudoakua.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_REDDOGANETOYUBIWA_CC8ED229": {
+      "name": "레드가넷반지",
+      "assetPath": "equipment-icons/152_reddoganetoyubiwa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_RUBI_1313E2F4": {
+      "name": "루비나반지",
+      "assetPath": "equipment-icons/152_rubi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_TOPAZUYUBIWA_A13CED6E": {
+      "name": "토파즈반지",
+      "assetPath": "equipment-icons/152_topazuyubiwa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_SUZAKUNOYUBIWA_98951BA8": {
+      "name": "주작의반지",
+      "assetPath": "equipment-icons/152_suzakunoyubiwa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_BAIRONNOYUBIWA_11415A80": {
+      "name": "바이런의반지",
+      "assetPath": "equipment-icons/152_baironnoyubiwa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_152_KEKONYUBIWA_2892DC6B": {
+      "name": "결혼반지",
+      "assetPath": "equipment-icons/152_kekonyubiwa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_LEGGING_LEATHER": {
+      "name": "가죽각반",
+      "assetPath": "equipment-icons/155_kawaguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_GURINHATOGURI_871D87FC": {
+      "name": "그린하트각반",
+      "assetPath": "equipment-icons/155_gurinhatoguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_REDOHATOGURI_BA65AE3F": {
+      "name": "레드하트각반",
+      "assetPath": "equipment-icons/155_redohatoguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_DOUGURI_A82A5522": {
+      "name": "동각반",
+      "assetPath": "equipment-icons/155_douguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_SANGOGURI_48B5B5B7": {
+      "name": "산호각반",
+      "assetPath": "equipment-icons/155_sangoguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_GINGURI_A34075CC": {
+      "name": "은각반",
+      "assetPath": "equipment-icons/155_ginguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_AIANREZA-GURI-BUSU_250C8D66": {
+      "name": "아이언레더각반",
+      "assetPath": "equipment-icons/155_aianreza-guri-busu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_AKUAGURI_C4398D7E": {
+      "name": "아쿠아각반",
+      "assetPath": "equipment-icons/155_akuaguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_KINGURI_1D935B28": {
+      "name": "금각반",
+      "assetPath": "equipment-icons/155_kinguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_GORUDENPURETOGURI_7FFBB6A1": {
+      "name": "골든플레이트각반",
+      "assetPath": "equipment-icons/155_gorudenpuretoguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_MATAGURI_7CD3401F": {
+      "name": "마타룸각반",
+      "assetPath": "equipment-icons/155_mataguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_YUMOU_47B94777": {
+      "name": "용맹의각반",
+      "assetPath": "equipment-icons/155_yumou.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_RYUGURI_A6E43C6B": {
+      "name": "용각반",
+      "assetPath": "equipment-icons/155_ryuguri.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103": {
+      "name": "베네티가죽클립",
+      "assetPath": "equipment-icons/155_benethikawakuripu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_155_AB10_A6AAE9C2": {
+      "name": "베네티풀잎클립",
+      "assetPath": "equipment-icons/155_ab10.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_GLOVE_LEATHER": {
+      "name": "가죽장갑",
+      "assetPath": "equipment-icons/170_kawate.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_DOUTE_A5E44029": {
+      "name": "동장갑",
+      "assetPath": "equipment-icons/170_doute.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_AQUAGLOVE_D58808FC": {
+      "name": "아쿠아글러브",
+      "assetPath": "equipment-icons/170_aquaglove.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_GINTE_D06DD1FA": {
+      "name": "은장갑",
+      "assetPath": "equipment-icons/170_ginte.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_AQUAGLOVE02_2FABCC4B": {
+      "name": "아쿠아레더글러브",
+      "assetPath": "equipment-icons/170_aquaglove02.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_AIANREZA-TEBUKURO_4D381BCE": {
+      "name": "아이언언레더장갑",
+      "assetPath": "equipment-icons/170_aianreza-tebukuro.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_GINTE_R_166E6D7D": {
+      "name": "은장갑R",
+      "assetPath": "equipment-icons/170_ginte_r.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_KINTEBUKURO_7E1109C9": {
+      "name": "금장갑",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_KHANGOLDGLOVER_A65F8611": {
+      "name": "금장갑R",
+      "assetPath": "equipment-icons/170_khangoldgloveR.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8": {
+      "name": "버팔로가죽장갑",
+      "assetPath": "equipment-icons/170_noesglove51.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_NOESGLOVE81_7DBCEB08": {
+      "name": "표범가죽장갑",
+      "assetPath": "equipment-icons/170_noesglove81.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_NOESGLOVEMAS_04B5B0C9": {
+      "name": "쥼글러브",
+      "assetPath": "equipment-icons/170_noesglovemas.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_MATARUMUGLOVE_13EFD244": {
+      "name": "마타룸장갑",
+      "assetPath": "equipment-icons/170_matarumuglove.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_REDAGLOVE_F007FA8F": {
+      "name": "레더글러브",
+      "assetPath": "equipment-icons/170_redaglove.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_GUMGLOVE_A39D8422": {
+      "name": "고무장갑",
+      "assetPath": "equipment-icons/170_gumglove.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_NEBILIST_8B0E7D73": {
+      "name": "네비리스트",
+      "assetPath": "equipment-icons/170_nebilist.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_JUELGLOVE_2594DE89": {
+      "name": "쥬얼리스트",
+      "assetPath": "equipment-icons/170_juelglove.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_VEGAGLOVE_2C49C6AE": {
+      "name": "베가리스트",
+      "assetPath": "equipment-icons/170_vegaglove.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_PAWARISUTO_CCE90CC1": {
+      "name": "파워리스트",
+      "assetPath": "equipment-icons/170_pawarisuto.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_MAJIKURISUTO_695C046E": {
+      "name": "매직리스트",
+      "assetPath": "equipment-icons/170_majikurisuto.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_JUNO_AA3C7686": {
+      "name": "쥬노아겐트리트",
+      "assetPath": "equipment-icons/170_juno.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_KUREARISUTO_EB00C792": {
+      "name": "클레어리스트",
+      "assetPath": "equipment-icons/170_kurearisuto.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_KAWAUDEWA_7B660B48": {
+      "name": "가죽팔찌",
+      "assetPath": "equipment-icons/170_kawaudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_DOUUDEWA_627B876E": {
+      "name": "동팔찌",
+      "assetPath": "equipment-icons/170_douudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_GINUDEWA_98AFCA6F": {
+      "name": "은팔찌",
+      "assetPath": "equipment-icons/170_ginudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_KINUDEWA_9D051BB4": {
+      "name": "금팔찌",
+      "assetPath": "equipment-icons/170_kinudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_SAMEKAWAUDEWA_2772BFCF": {
+      "name": "상어가죽팔찌",
+      "assetPath": "equipment-icons/170_samekawaudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_SANGOUDEWA_ADBB6639": {
+      "name": "산호석팔찌",
+      "assetPath": "equipment-icons/170_sangoudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_NOESUDEWA51_63C1878A": {
+      "name": "브론즈네일",
+      "assetPath": "equipment-icons/170_noesudewa51.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_NOESUDEWA81_1D924113": {
+      "name": "실버네일",
+      "assetPath": "equipment-icons/170_noesudewa81.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72": {
+      "name": "골드네일",
+      "assetPath": "equipment-icons/170_noesudewamas.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_BUREISA_BC0CFFF2": {
+      "name": "브레이사",
+      "assetPath": "equipment-icons/170_bureisa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_EXCELDEAMONUDEWA_90A44943": {
+      "name": "엑셀데몬의팔찌",
+      "assetPath": "equipment-icons/170_exceldeamonudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_IRONBRACE_C42CC60D": {
+      "name": "아이언팔찌",
+      "assetPath": "equipment-icons/170_ironbrace.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_RYUUUDEWA_01F1AC5F": {
+      "name": "용팔찌",
+      "assetPath": "equipment-icons/170_ryuuudewa.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_170_JUNOABUREISU_BB4EED95": {
+      "name": "쥬노아브레이스",
+      "assetPath": "equipment-icons/170_junoabureisu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_FIREBELT_449392D4": {
+      "name": "화염의벨트",
+      "assetPath": "equipment-icons/193_firebelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_WINDBELT_AF012333": {
+      "name": "바람의벨트",
+      "assetPath": "equipment-icons/193_windbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_EARTHBELT_226B231D": {
+      "name": "대지의벨트",
+      "assetPath": "equipment-icons/193_earthbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_WATERBELT_383B7970": {
+      "name": "바다의벨트",
+      "assetPath": "equipment-icons/193_waterbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_LEATHERBELT_22469A11": {
+      "name": "가죽벨트",
+      "assetPath": "equipment-icons/193_leatherbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_BELT_FIRE_LEATHER": {
+      "name": "화염의가죽벨트",
+      "assetPath": "equipment-icons/193_leatherbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_BELT_WIND_LEATHER": {
+      "name": "바람의가죽벨트",
+      "assetPath": "equipment-icons/193_leatherbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_BELT_EARTH_LEATHER": {
+      "name": "대지의가죽벨트",
+      "assetPath": "equipment-icons/193_leatherbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_BELT_WATER_LEATHER": {
+      "name": "바다의가죽벨트",
+      "assetPath": "equipment-icons/193_leatherbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_SILVERBELT_59257BAB": {
+      "name": "은벨트",
+      "assetPath": "equipment-icons/193_silverbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_SILVERBELT_9B4B562A": {
+      "name": "화염의은벨트",
+      "assetPath": "equipment-icons/193_silverbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_SILVERBELT_26ACEA62": {
+      "name": "바람의은벨트",
+      "assetPath": "equipment-icons/193_silverbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_SILVERBELT_9A400E2B": {
+      "name": "대지의은벨트",
+      "assetPath": "equipment-icons/193_silverbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_SILVERBELT_E2347088": {
+      "name": "바다의은벨트",
+      "assetPath": "equipment-icons/193_silverbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_GOLDBELT_8ABE1100": {
+      "name": "금벨트",
+      "assetPath": "equipment-icons/193_goldbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_GOLDBELT_BC73AA9A": {
+      "name": "화염의금벨트",
+      "assetPath": "equipment-icons/193_goldbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_GOLDBELT_F5E4AA12": {
+      "name": "바람의금벨트",
+      "assetPath": "equipment-icons/193_goldbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_GOLDBELT_43AC2098": {
+      "name": "대지의금벨트",
+      "assetPath": "equipment-icons/193_goldbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_GOLDBELT_E78C2A09": {
+      "name": "바다의금벨트",
+      "assetPath": "equipment-icons/193_goldbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_ZEMBELT_HI_F3EB78A9": {
+      "name": "화염의젬벨트",
+      "assetPath": "equipment-icons/193_zembelt_hi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_ZEMBELT_KAZE_A13FE1DB": {
+      "name": "바람의젬벨트",
+      "assetPath": "equipment-icons/193_zembelt_kaze.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_ZEMBELT_TI_ABF612E2": {
+      "name": "대지의젬벨트",
+      "assetPath": "equipment-icons/193_zembelt_ti.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_ZEMBELT_UMI_B85A36BB": {
+      "name": "바다의젬벨트",
+      "assetPath": "equipment-icons/193_zembelt_umi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_ZEMBELT_KIN_99326977": {
+      "name": "금속성의젬벨트",
+      "assetPath": "equipment-icons/193_zembelt_kin.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_ZEMUBELT_KI_E92C1218": {
+      "name": "숲의젬벨트",
+      "assetPath": "equipment-icons/193_zemubelt_ki.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_MASTERBELT_3B1C2CC1": {
+      "name": "화염의승염벨트",
+      "assetPath": "equipment-icons/193_masterbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_MASTERBELT_205324F4": {
+      "name": "바람의승염벨트",
+      "assetPath": "equipment-icons/193_masterbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_MASTERBELT_27922105": {
+      "name": "대지의승염벨트",
+      "assetPath": "equipment-icons/193_masterbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_MASTERBELT_DFE6DBAF": {
+      "name": "바다의승염벨트",
+      "assetPath": "equipment-icons/193_masterbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_KAENNORUNASABERUTO_D6CECBD9": {
+      "name": "화염의루나사벨트 화염의루나사벨트",
+      "assetPath": "equipment-icons/193_kaennorunasaberuto.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038": {
+      "name": "주작의벨트",
+      "assetPath": "equipment-icons/193_suzakunoberuto.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_193_DARKBELT_6B3683B8": {
+      "name": "암흑의벨트",
+      "assetPath": "equipment-icons/193_darkbelt.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KANNEKU_56B04FF1": {
+      "name": "칸의목걸이",
+      "assetPath": "equipment-icons/197_kanneku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KAENNEKU_584513F2": {
+      "name": "화염의목걸이",
+      "assetPath": "equipment-icons/197_kaenneku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KAZENEKU_2DB6010B": {
+      "name": "바람의목걸이",
+      "assetPath": "equipment-icons/197_kazeneku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_DAICHINEKU_E75BD4C9": {
+      "name": "대지의목걸이",
+      "assetPath": "equipment-icons/197_daichineku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_UMINEKU_D2A72A12": {
+      "name": "바다의목걸이",
+      "assetPath": "equipment-icons/197_umineku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KIN-KAEN_4D647A6B": {
+      "name": "화염의금목걸이",
+      "assetPath": "equipment-icons/197_kin-kaen.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KIN-KAZE_71BFBAEC": {
+      "name": "바람의금목걸이",
+      "assetPath": "equipment-icons/197_kin-kaze.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KIN-DAICHI_158A1DC4": {
+      "name": "대지의금목걸이",
+      "assetPath": "equipment-icons/197_kin-daichi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KIN-UMI_CAB975EA": {
+      "name": "바다의금목걸이",
+      "assetPath": "equipment-icons/197_kin-umi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_NECK_FIRE_PEARL": {
+      "name": "화염의진주목걸이",
+      "assetPath": "equipment-icons/197_shinjyu-kaen.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_NECK_WIND_PEARL": {
+      "name": "바람의진주목걸이",
+      "assetPath": "equipment-icons/197_shinjyu-kaze.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_NECK_EARTH_PEARL": {
+      "name": "대지의진주목걸이",
+      "assetPath": "equipment-icons/197_shinjyu-daichi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_NECK_WATER_PEARL": {
+      "name": "바다의진주목걸이",
+      "assetPath": "equipment-icons/197_shinjyu-umi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_SUISHOU-KAEN_80452A02": {
+      "name": "화염의자수정목걸이",
+      "assetPath": "equipment-icons/197_suishou-kaen.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_SUISHOU-KAZE_F0E7357B": {
+      "name": "바람의자수정목걸이",
+      "assetPath": "equipment-icons/197_suishou-kaze.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_SUISHOU-DAICHI_4D70A2AD": {
+      "name": "대지의자수정목걸이",
+      "assetPath": "equipment-icons/197_suishou-daichi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_SUISHOU-UMI_60179756": {
+      "name": "바다의자수정목걸이",
+      "assetPath": "equipment-icons/197_suishou-umi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_HI_HEKIGEKU_361934BE": {
+      "name": "화염의벽옥목걸이",
+      "assetPath": "equipment-icons/197_hi_hekigeku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_HEKIGYOKU-KAZE_C3FC5734": {
+      "name": "바람의벽옥목걸이",
+      "assetPath": "equipment-icons/197_hekigyoku-kaze.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_DAITI_HEKIGYOKU_7D05B7DB": {
+      "name": "대지의벽옥목걸이",
+      "assetPath": "equipment-icons/197_daiti_hekigyoku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_MIZU_HEKIGYOKU_7B2382B5": {
+      "name": "바다의벽옥목걸이",
+      "assetPath": "equipment-icons/197_mizu_hekigyoku.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_MAGIRA_HI_3C371C7E": {
+      "name": "화염의마기라목걸이",
+      "assetPath": "equipment-icons/197_magira_hi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_MAGIRA_KAZE_E3B6280F": {
+      "name": "바람의마기라목걸이",
+      "assetPath": "equipment-icons/197_magira_kaze.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_MAGIRA_TI_01801011": {
+      "name": "대지의마기라목걸이",
+      "assetPath": "equipment-icons/197_magira_ti.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_MAGIRA_UMI_8EB93900": {
+      "name": "바다의마기라목걸이",
+      "assetPath": "equipment-icons/197_magira_umi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_DAITINORU-NSUTO-NNEKKURESU_1970651C": {
+      "name": "대지의룬스톤목걸이",
+      "assetPath": "equipment-icons/197_daitinoru-nsuto-nnekkuresu.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_ZEMSTONE_HI_62C3AF8C": {
+      "name": "화염의잼스톤목걸이",
+      "assetPath": "equipment-icons/197_zemstone_hi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_ZEMSTONE_KAZE_88EE1EDC": {
+      "name": "바람의잼스톤목걸이",
+      "assetPath": "equipment-icons/197_zemstone_kaze.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_ZEMSTONE_TI_5D6A1048": {
+      "name": "대지의잼스톤목걸이",
+      "assetPath": "equipment-icons/197_zemstone_ti.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_ZEMSTONE_UMI_62F2D328": {
+      "name": "바다의잼스톤목걸이",
+      "assetPath": "equipment-icons/197_zemstone_umi.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_CRYSTAL_5911EC0D": {
+      "name": "크리스탈목걸이",
+      "assetPath": "equipment-icons/197_crystal.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_HICRYSTAL_A94FCE06": {
+      "name": "화염의크리스탈목걸이",
+      "assetPath": "equipment-icons/197_hicrystal.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B": {
+      "name": "바람의크리스탈목걸이",
+      "assetPath": "equipment-icons/197_kazecrystal.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_TICRYSTAL_A90E7D50": {
+      "name": "대지의크리스탈목걸이",
+      "assetPath": "equipment-icons/197_ticrystal.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_UMICRYSTAL_21B5EDA7": {
+      "name": "바다의크리스탈목걸이",
+      "assetPath": "equipment-icons/197_umicrystal.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_DARKNECK_38E272A2": {
+      "name": "암흑의목걸이",
+      "assetPath": "equipment-icons/197_darkneck.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_197_HIKARINECK_CE1F9258": {
+      "name": "생명의목걸이",
+      "assetPath": "equipment-icons/197_hikarineck.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_MINIMOB_0": {
+      "name": "골든플레이트각반 [2012]",
+      "assetPath": "equipment-icons/minimob_0.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_MINIMOB_1": {
+      "name": "숲의잼스톤목걸이",
+      "assetPath": "equipment-icons/minimob_2.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_MINIMOB_3": {
+      "name": "금벨트 [2012]",
+      "assetPath": "equipment-icons/minimob_5.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_MINIMOB_4": {
+      "name": "다크그레이벨트(수)+1",
+      "assetPath": "equipment-icons/minimob_7.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_SOURCE_MINIMOB_5": {
+      "name": "쥬얼십자가목걸이FX",
+      "assetPath": "equipment-icons/minimob_9.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    },
+    "IT_ADAPTED_PLAYTEST_MOKDO": {
+      "name": "목도 [ADAPTED PLAYTEST]",
+      "assetPath": "item-icons/3e54c1a60e05_bokutou.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_TEST_WEAPON_MW002": {
+      "name": "에페",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_TEST_WEAPON_MW003": {
+      "name": "커틀라스",
+      "assetPath": "item-icons/e7fe2e00743a_katorasu.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_SHOP_WEAPON_MW004": {
+      "name": "세이버",
+      "assetPath": "item-icons/a0c4b69c67e4_sabel.png",
+      "identityMatch": "HISTORICAL_LOCALIZATION_EQUIVALENT"
+    },
+    "IT_SHOP_WEAPON_MW005": {
+      "name": "그라디우스",
+      "assetPath": "item-icons/a14293fb487b_gradius.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_B_JOB_WARRIOR_WEAPON": {
+      "name": "경비대 수련검 [ADAPTED]",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_ROGUE_WEAPON": {
+      "name": "정찰자 단검 [ADAPTED]",
+      "assetPath": "item-icons/a42d8c622e26_tanken1.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_MAGE_WAND": {
+      "name": "수련 지팡이 [ADAPTED]",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_CLERIC_WAND": {
+      "name": "성직 완드 [ADAPTED]",
+      "assetPath": "item-icons/f37af7497943_seitue01.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_ADAPTED_STARTER_SHIELD": {
+      "name": "기본 방패",
+      "assetPath": "item-icons/5fb7b319183a_tate1.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_SHIELD_MS002": {
+      "name": "방패 ms002",
+      "assetPath": "item-icons/3cd662ea5f31_tate11.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_SHIELD_MS003": {
+      "name": "방패 ms003",
+      "assetPath": "item-icons/0347dae45a7d_tate26.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_ARMOR_MU0000002": {
+      "name": "레더튜닉",
+      "assetPath": "item-icons/3f957abbaead_L1_male.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_APPEARANCE_PEASANT_SHIRT": {
+      "name": "셔츠 [PENDING WEARABLE FRAMES]",
+      "assetPath": "item-icons/c45e87e0009c_japanuniform01.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_SHOP_ARMOR_JIPON": {
+      "name": "지폰",
+      "assetPath": "item-icons/5ba810d690bf_O41_male.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_ARMOR_MU0000003": {
+      "name": "도복",
+      "assetPath": "item-icons/5333956b6053_sougetu.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_REFERENCE_LEOPARD": {
+      "name": "레오파드",
+      "assetPath": "item-icons/c624027e1807_L1_male.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_REFERENCE_HELM": {
+      "name": "헬름",
+      "assetPath": "item-icons/109f4481f4da_baikuherumeto.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_ADAPTED_STARTER_HAT": {
+      "name": "밀레스털모자",
+      "assetPath": "item-icons/852f02918848_m_goggle.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_HAT_MH173": {
+      "name": "아벨털모자",
+      "assetPath": "item-icons/5b8c644799ec_f_goggle.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_HAT_MH174": {
+      "name": "루어스털모자",
+      "assetPath": "item-icons/5b8c644799ec_f_goggle.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_WARRIOR_TUNIC": {
+      "name": "전사 수련 튜닉 [ADAPTED]",
+      "assetPath": "item-icons/3f957abbaead_L1_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_ROGUE_GARMENT": {
+      "name": "도적 수련복 [ADAPTED]",
+      "assetPath": "item-icons/c624027e1807_L1_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_MAGE_ROBE": {
+      "name": "마법사 수련 로브 [ADAPTED]",
+      "assetPath": "item-icons/20c8118ca6d6_L1_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_CLERIC_ROBE": {
+      "name": "성직자 수련 로브 [ADAPTED]",
+      "assetPath": "item-icons/1a8eceb891bf_N1_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_JOB_MONK_GI": {
+      "name": "무도가 수련 도복 [ADAPTED]",
+      "assetPath": "item-icons/5333956b6053_sougetu.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_SMALL_POTION": {
+      "name": "소형 회복물약 [B]",
+      "assetPath": "item-icons/3eea1156dd88_kuranumu.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_MP_POTION": {
+      "name": "마나 회복약",
+      "assetPath": "item-icons/7731b247ebe5_maradhiumu.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_REAGENT_KOMADIUM": {
+      "name": "코마디움",
+      "assetPath": "item-icons/77eb642c6391_komadhiumu.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_REAGENT_DIBENOMUM": {
+      "name": "디베노뭄",
+      "assetPath": "item-icons/8addf7f9f927_dhibenonumu.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_REAGENT_CURANUM": {
+      "name": "쿠라눔",
+      "assetPath": "item-icons/3eea1156dd88_kuranumu.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_REAGENT_EXCURANUM": {
+      "name": "엑스쿠라눔",
+      "assetPath": "item-icons/acc3a80e5a74_axkuranumu.png",
+      "identityMatch": "EXACT_SOURCE_NAME"
+    },
+    "IT_REAGENT_CURUM": {
+      "name": "쿠룸",
+      "assetPath": "item-icons/3eea1156dd88_kuranumu.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_REAGENT_HOLYWATER": {
+      "name": "성수",
+      "assetPath": "item-icons/70dbaf29c4e0_seimeinomizud.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_RECALL_MILLES": {
+      "name": "밀레스리콜",
+      "assetPath": "item-icons/366aa7f5a952_redrikoru.png",
+      "identityMatch": "UNRESOLVED_IDENTITY_VISUAL_EQUIVALENT"
+    },
+    "IT_B_TRAINING_TOKEN": {
+      "name": "훈련 증표 [B]",
+      "assetPath": "item-icons/3b31e3382634_ounomonsyou.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_PURIFIED_ESSENCE": {
+      "name": "정화된 숲의 정수",
+      "assetPath": "item-icons/8501f2305ff1_1.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_WARRIOR_11": {
+      "name": "WARRIOR armor",
+      "assetPath": "item-icons/d27f34a3815a_L86_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_11": {
+      "name": "WARRIOR tool",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_WARRIOR_26": {
+      "name": "WARRIOR armor",
+      "assetPath": "item-icons/d27f34a3815a_L86_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_26": {
+      "name": "WARRIOR tool",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_ROGUE_11": {
+      "name": "ROGUE armor",
+      "assetPath": "item-icons/c624027e1807_L1_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_11": {
+      "name": "ROGUE tool",
+      "assetPath": "item-icons/a42d8c622e26_tanken1.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_ROGUE_26": {
+      "name": "ROGUE armor",
+      "assetPath": "item-icons/c624027e1807_L1_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_26": {
+      "name": "ROGUE tool",
+      "assetPath": "item-icons/a42d8c622e26_tanken1.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_MAGE_11": {
+      "name": "MAGE armor",
+      "assetPath": "item-icons/35730b2dc5eb_L99_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_11": {
+      "name": "MAGE tool",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_MAGE_26": {
+      "name": "MAGE armor",
+      "assetPath": "item-icons/35730b2dc5eb_L99_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_26": {
+      "name": "MAGE tool",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_CLERIC_11": {
+      "name": "CLERIC armor",
+      "assetPath": "item-icons/c37fca988c04_L99_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_11": {
+      "name": "CLERIC tool",
+      "assetPath": "item-icons/f37af7497943_seitue01.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_CLERIC_26": {
+      "name": "CLERIC armor",
+      "assetPath": "item-icons/c37fca988c04_L99_male.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_26": {
+      "name": "CLERIC tool",
+      "assetPath": "item-icons/f37af7497943_seitue01.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_11": {
+      "name": "MARTIAL_ARTIST armor",
+      "assetPath": "item-icons/1cfb6d9ab196_orurosu.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_26": {
+      "name": "MARTIAL_ARTIST armor",
+      "assetPath": "item-icons/1cfb6d9ab196_orurosu.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_SHOES": {
+      "name": "신발",
+      "assetPath": "equipment-icons/150_kutu1.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_SHOES_ML229": {
+      "name": "가죽 신발",
+      "assetPath": "equipment-icons/150_kutu56.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_TEST_SHOES_ML230": {
+      "name": "신발 ml230",
+      "assetPath": "equipment-icons/150_kutu41.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_POTE_SHOES": {
+      "name": "숲길 신발",
+      "assetPath": "equipment-icons/150_kutu41.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_SOURCE_MINIMOB_2": {
+      "name": "흑요석워리어목걸이(수)",
+      "assetPath": "equipment-icons/197_zemstone_umi.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_11": {
+      "name": "MARTIAL_ARTIST tool",
+      "assetPath": "equipment-icons/170_kawate.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_26": {
+      "name": "MARTIAL_ARTIST tool",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_WEAPON_CHUNGRYONG": {
+      "name": "청룡의숨결",
+      "assetPath": "weapons/chungryong/icon.png",
+      "identityMatch": "EXISTING_LABELLED_SOURCE"
+    }
+  }
+}

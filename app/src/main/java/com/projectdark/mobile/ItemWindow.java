@@ -30,11 +30,20 @@ final class ItemWindow {
   void inventory(Canvas c,RpgProgressionState r,String selected,Visuals v){
     UiTheme.scrim(c);panel(c,new RectF(328,48,940,520),"인벤토리");UiTheme.close(c,916,66);
     List<RpgInventoryPresentation.ItemRow> rows=rows(r);int pages=Math.max(1,(rows.size()+49)/50);page=Math.max(0,Math.min(page,pages-1));
-    String[] keys={"all","gear","use"},labels={"전체","장비","소비"};for(int i=0;i<3;i++){image(c,keys[i],new RectF(344+i*70,83,371+i*70,108));txt(c,labels[i],373+i*70,101,10,filter==i?0xffe2c78b:0xff888478);if(filter==i)border(c,new RectF(342+i*70,80,409+i*70,110),0xffb59b66);}
-    txt(c,"보유 "+presentation.inventoryRows(r).size()+"종",791,102,11,0xffe0d8c5);
+    String[] keys={"all","gear","use"},labels={"전체","장비","소비"};
+    for(int i=0;i<3;i++){
+      RectF tab=new RectF(342+i*70,82,409+i*70,110);UiTheme.surface(c,tab,filter==i?UiTheme.RAISED:UiTheme.BG,filter==i?UiTheme.GOLD:0,0);
+      image(c,keys[i],new RectF(348+i*70,87,365+i*70,105));UiTheme.text(c,labels[i],372+i*70,101,11,filter==i?UiTheme.TEXT:UiTheme.MUTED,true);
+      if(filter==i)UiTheme.line(c,tab.left+5,109,tab.right-5,109,UiTheme.ACCENT);
+    }
+    UiTheme.right(c,"보유 아이템  "+presentation.inventoryRows(r).size()+"종",922,101,11,UiTheme.MUTED,false);
     for(int i=0;i<50;i++){RectF b=cell(i);UiTheme.slot(c,b,false,false);if(i<10)txt(c,i==9?"0":String.valueOf(i+1),b.left+3,b.top+9,8,UiTheme.GOLD);int index=page*50+i;if(index>=rows.size())continue;RpgInventoryPresentation.ItemRow row=rows.get(index);v.icon(c,row,b.left+7,b.top+10,43);if(row.quantity>1){String q=row.quantity>9999?"9999+":""+row.quantity;p.setTextSize(11);txt(c,q,b.right-4-p.measureText(q),b.bottom-5,11,0xfffaf5e3);}if(row.equipped)txt(c,"✓",b.right-14,b.top+14,13,0xffe2bd6a);if(row.itemId.equals(selected)&&details)border(c,b,0xffe9c367);}
-    UiTheme.surface(c,new RectF(344,424,924,449),UiTheme.BG,UiTheme.LINE,0);txt(c,"아이템을 선택하면 성능과 착용 조건을 확인할 수 있습니다.",355,441,11,UiTheme.GOLD);
-    button(c,new RectF(344,463,400,499),"‹");button(c,new RectF(866,463,923,499),"›");txt(c,(page+1)+" / "+pages,609,486,12,0xffc9c1ab);txt(c,"Gold  "+r.gold(),700,511,10,0xffc9ac67);
+    UiTheme.line(c,344,428,924,428,UiTheme.LINE);
+    UiTheme.text(c,"소지품",347,446,11,UiTheme.MUTED,false);
+    UiTheme.right(c,String.format(java.util.Locale.ROOT,"%,d",r.gold())+" G",921,447,13,UiTheme.GOLD,true);
+    button(c,new RectF(344,463,400,499),"‹");button(c,new RectF(866,463,923,499),"›");
+    UiTheme.center(c,String.format(java.util.Locale.ROOT,"%02d  /  %02d",page+1,pages),634,485,12,UiTheme.TEXT,true);
+    UiTheme.center(c,new String[]{"전체 아이템","장비 목록","소비 아이템"}[filter],634,504,10,UiTheme.MUTED,false);
     RpgInventoryPresentation.ItemRow selectedRow=find(r,selected);if(details&&selectedRow!=null){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(selected);if(d.equippable()){card(c,r,r.equippedDefinition(d.equipSlot),null,new RectF(40,228,467,517),"현재 장착",v);card(c,r,d,r.equippedDefinition(d.equipSlot),new RectF(479,228,936,517),"선택 장비",v);}else card(c,r,d,null,new RectF(479,228,936,517),"아이템 정보",v);button(c,new RectF(743,476,893,507),(r.isConsumable(selected)||r.isRecall(selected))?"사용":selectedRow.equipped?"해제":"장착");button(c,new RectF(898,234,929,264),"×");}
   }
   RpgInventoryPresentation.ItemRow find(RpgProgressionState r,String id){for(RpgInventoryPresentation.ItemRow row:presentation.inventoryRows(r))if(row.itemId.equals(id))return row;return null;}
@@ -61,13 +70,13 @@ final class ItemWindow {
     UiTheme.line(c,242,450,493,450,UiTheme.LINE);
     for(int i=0;i<5;i++){float x=i<3?242:381,y=469+(i<3?i:i-3)*18;UiTheme.text(c,keys[i],x,y,10,UiTheme.MUTED,true);int bonus=total[i]-base[i];UiTheme.right(c,String.valueOf(total[i]),x+69,y,12,UiTheme.TEXT,true);if(bonus!=0)UiTheme.right(c,(bonus>0?"+":"")+bonus,x+111,y,10,UiTheme.ACCENT,true);}
     // One continuous information sheet, with aligned readouts and contextual details.
-    UiTheme.surface(c,new RectF(533,48,921,519),UiTheme.BG,UiTheme.LINE,12);
-    button(c,new RectF(549,74,797,112),"상세 능력치");UiTheme.glyph(c,"stats",867,93,13,UiTheme.ACCENT);
+    panel(c,new RectF(533,48,921,519),"장비 정보");
+    button(c,new RectF(549,84,797,112),"상세 능력치");UiTheme.glyph(c,"stats",867,93,13,UiTheme.ACCENT);
     String[] summary={"HP","MP","AC","HIT","DAM"};int[] values={f.maxHp,f.maxMp,f.ac,f.hit,f.dam};
     for(int i=0;i<5;i++){float x=553+i*69;UiTheme.center(c,summary[i],x+25,145,10,UiTheme.MUTED,true);UiTheme.center(c,String.valueOf(values[i]),x+25,174,20,UiTheme.TEXT,true);}
     UiTheme.line(c,549,195,905,195,UiTheme.LINE);
     if(selectedSlot!=null){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(r.equipment().get(selectedSlot));card(c,r,d,null,new RectF(533,228,921,517),selectedSlot,v);if(d!=null)button(c,new RectF(743,476,893,507),"해제");}
-    else{UiTheme.equipmentGlyph(c,"갑옷",727,305,28,0xff9b7a4f);UiTheme.center(c,"장비를 선택하세요",727,368,16,UiTheme.TEXT,true);UiTheme.center(c,"장착 부위의 아이콘을 누르면 상세 정보가 표시됩니다.",727,393,11,UiTheme.MUTED,false);}
+    else{UiTheme.equipmentGlyph(c,"갑옷",727,305,28,0xff9b7a4f);UiTheme.center(c,"장비를 선택하세요",727,368,16,UiTheme.TEXT,true);UiTheme.center(c,"각 부위의 능력치와 착용 정보를 확인합니다.",727,393,11,UiTheme.MUTED,false);}
   }
   Hit inventoryTouch(float x,float y,RpgProgressionState r){hitItem=null;if(new RectF(896,48,940,83).contains(x,y))return Hit.CLOSE;
     if(details&&y>=228){if(new RectF(898,234,936,268).contains(x,y)){details=false;return Hit.CONSUMED;}if(new RectF(743,476,893,507).contains(x,y))return Hit.ACTION;return Hit.CONSUMED;}

@@ -21,7 +21,8 @@ final class ClassicUiSkin {
   }catch(Exception e){throw new IllegalStateException("Original classic UI skin unavailable",e);}
  }
  static void texture(Canvas c,RectF r,boolean title){
-  pixel.setFilterBitmap(false);pixel.setShader(title?header:paper);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);c.drawRect(r,pixel);pixel.setShader(null);
+  pixel.setShader(null);pixel.setColor(title?UiTheme.BG:UiTheme.SURFACE);pixel.setAlpha(255);c.drawRect(r,pixel);
+  pixel.setFilterBitmap(false);pixel.setShader(title?header:paper);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(title?165:88);c.drawRect(r,pixel);pixel.setShader(null);pixel.setAlpha(255);
  }
  private static void part(Canvas c,String key,RectF r){pixel.setShader(null);pixel.setFilterBitmap(false);c.drawBitmap(art.get(key),null,r,pixel);}
  static void frame(Canvas c,RectF r){
