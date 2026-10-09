@@ -1,0 +1,13 @@
+{
+  "changeId": "POTE-MONSTER-MOTION-V121",
+  "status": "ACCEPTED_TASK",
+  "date": "2026-10-09",
+  "source": "User confirms option1 and requests option2; V120 accepted assets",
+  "before": "single source pose with simple bob; corpse immediately disappears",
+  "after": "procedural articulation and contact/hit/death presentation retaining every accepted sprite byte",
+  "classification": "ADAPTED_PRESENTATION_INTERPOLATION",
+  "canonicalDataImpact": "NONE",
+  "saveImpact": "NONE_TRANSIENT_FIELDS_ONLY",
+  "contract": "docs/MONSTER_MOTION_V121_CONTRACT.md",
+  "verification": "PENDING_EXACT_SOURCE_NATIVE_AND_APK;PHONE_USER_VISUAL_PENDING"
+}

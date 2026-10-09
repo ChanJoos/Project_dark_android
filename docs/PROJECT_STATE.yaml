@@ -1,10 +1,21 @@
+pote_monster_motion_v121:
+  implementation: IMPLEMENTED_LOCAL_CANDIDATE
+  baseline: V120_USER_ACCEPTED_OPTION_1
+  build: PENDING
+  native_runtime: PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  active_branch: codex/pote-forest-v112
+  active_pr: 180
+  contract: docs/MONSTER_MOTION_V121_CONTRACT.md
+
 pote_monster_style_v120:
   implementation: IMPLEMENTED
   build: BUILD_VERIFIED
   native_runtime: ROBOLECTRIC_116_TESTS_ZERO_FAILURES_ERRORS_SKIPS
   user_speed_feedback: USER_REPORTED_RESOLVED_EXACT_PHONE_APK_UNSPECIFIED
   physical_phone: PENDING
-  user_visual: PENDING
+  user_visual: USER_ACCEPTED_BASELINE_2026_10_09
   active_branch: codex/pote-forest-v112
   active_pr: 180
   source: a7de04660d317d64f2b6b07cd44e2d57c5da4462
@@ -15,7 +26,7 @@ pote_monster_style_v120:
   evidence: verification/MONSTER_STYLE_V120_BUILD.json
   required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/MONSTER_CREATION_MANUAL.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/visual/POTE_FOREST_DESIGN_V1.md, master/source/monsters/user_style_20261009/manifest.json, master/changes/POTE-MONSTER-STYLE-V120.json]
   broader_ci: IN_PROGRESS_AT_CLOSURE
-  next: PHONE_STYLE_AND_CONTINUOUS_FOREST_REVIEW
+  next: V121_CONTINUOUS_MONSTER_MOTION
 
 forest_tap_v117:
   baseline: V116_DEVICE_FAILED_USER_REPORTED_TAP_LAG

@@ -3,6 +3,7 @@ package com.projectdark.mobile.world;
 import com.projectdark.mobile.CharacterRenderer;
 import com.projectdark.mobile.SpriteAlphaMask;
 import com.projectdark.mobile.PoteForestMonsterShowcase;
+import com.projectdark.mobile.PoteMonsterMotion;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -58,6 +59,10 @@ public final class PoteFieldRenderer {
   private final List<ActorDraw> depthActors=new ArrayList<>();
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
   private String preparedMonsterMap;
+  private final PoteMonsterMotion.Frame motion=new PoteMonsterMotion.Frame();
+  private static final int MESH_COLS=4,MESH_ROWS=6;
+  private final float[] motionVertices=new float[(MESH_COLS+1)*(MESH_ROWS+1)*2];
+  private final RectF monsterDestination=new RectF();
 
   /** Decode/upload all states at map entry, rather than on a walk turn or first hit. */
   public void prepareMonsters(com.projectdark.mobile.RuntimeState runtime){
@@ -120,30 +125,50 @@ public final class PoteFieldRenderer {
   /** Resolved damage uses the existing actor hit timer, retaining pose, alpha and foot anchor. */
   public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
       float actionProgress,float idleClock,float x,float y,boolean hitFlash){
+    drawAnimatedMonster(c,monsterId,state,direction,actionProgress,idleClock,x,y,hitFlash?.14f:0f,0f);
+  }
+
+  /** Live pose/phase is sampled from the same combat and movement state that owns contact. */
+  public void drawMonster(Canvas c,com.projectdark.mobile.RuntimeState.Monster monster,float x,float y){
+    if(!PoteMonsterMotion.visible(monster))return;
+    CharacterRenderer.Direction direction=monster.alive?PoteForestMonsterShowcase.presentationFacing(monster):monster.deathFacing;
+    String state=monster.alive?PoteForestMonsterShowcase.poseFor(monster):"dead";
+    drawAnimatedMonster(c,monster.id,state,direction,PoteForestMonsterShowcase.attackProgress(monster),
+        monster.animationClock,x,y,monster.hitFlash,monster.deathVisualRemaining);
+  }
+
+  private void drawAnimatedMonster(Canvas c,String id,String state,CharacterRenderer.Direction direction,
+      float progress,float clock,float x,float y,float hitRemaining,float deathRemaining){
     if(c==null)return;
-    String pose=("walk".equals(state)||"attack".equals(state))?state:"idle";
-    String name=PoteForestMonsterShowcase.assetPath(monsterId,pose,direction);
-    if(name==null)return;
-    Bitmap b=bitmap(name);if(b==null)return;
-    // Pamfets keep their small authored scale; the Lycan uses the player-sized frame.
-    String species=PoteForestMonsterShowcase.species(monsterId);float h=PoteForestMonsterShowcase.bodyHeight(monsterId),w=h*b.getWidth()/Math.max(1f,b.getHeight());
-    float cx=x,cy=y;
-    if("idle".equals(pose)){
-      cy-=(float)Math.sin(idleClock*4.5f)*.55f;
-    }else if("walk".equals(pose)){
-      // The art supplies one walk pose per facing. Add a visible two-beat gait while preserving
-      // its direction-specific source image and the shared ground anchor.
-      float gait=(float)Math.sin(idleClock*(2f*(float)Math.PI/CharacterRenderer.WALK_CYCLE_SECONDS));
-      cy-=.5f+Math.abs(gait)*1.5f;
+    PoteMonsterMotion.sample(id,state,progress,clock,hitRemaining,deathRemaining,motion);
+    String name=PoteForestMonsterShowcase.assetPath(id,motion.pose,direction);
+    if(name==null||motion.alpha==0)return;
+    Bitmap source=bitmap(name);if(source==null)return;
+    Bitmap b=hitRemaining>0f?hitBitmap(name,source):source;
+    float h=PoteForestMonsterShowcase.bodyHeight(id),w=h*b.getWidth()/Math.max(1f,b.getHeight());
+    float fx=facingX(direction),fy=facingY(direction);
+    float cx=x+fx*(motion.lunge-motion.recoil),cy=y+fy*(motion.lunge-motion.recoil)-motion.lift;
+    pixel.setColor(0xffffffff);pixel.setAlpha(motion.alpha);pixel.setFilterBitmap(false);
+    if(motion.collapse>0f){
+      c.save();c.translate(x,y);c.rotate(fx*22f*motion.collapse);
+      c.scale(1f+.10f*motion.collapse,1f-.65f*motion.collapse);
+      monsterDestination.set(-w*.5f,-h+3f,w*.5f,3f);c.drawBitmap(b,null,monsterDestination,pixel);c.restore();
+    }else if(motion.articulated){
+      // One reusable 35-vertex mesh: opposing lower-limb beats and upper-body lean.
+      // The approved pixels stay in the same prewarmed textures; no per-frame raster/decode/cache.
+      int k=0;
+      for(int row=0;row<=MESH_ROWS;row++)for(int col=0;col<=MESH_COLS;col++){
+        float u=col/(float)MESH_COLS,v=row/(float)MESH_ROWS;
+        float lower=Math.max(0f,Math.min(1f,(v-.58f)/.38f));
+        float side=(u-.5f)*2f;
+        float leg=motion.stride*side*lower;
+        motionVertices[k++]=cx-w*.5f+u*w+leg+motion.lean*(1f-v);
+        motionVertices[k++]=cy-h+3f+v*h+motion.lift*lower-Math.max(0f,leg)*.65f;
+      }
+      c.drawBitmapMesh(b,MESH_COLS,MESH_ROWS,motionVertices,0,null,0,pixel);
     }else{
-      // Keep the four authored diagonal attack facings; animate a short forward strike/recoil
-      // without rotating into unsupported cardinal/eight-way directions.
-      float impulse=(float)Math.sin(Math.max(0f,Math.min(1f,actionProgress))*(float)Math.PI);
-      cx+=facingX(direction)*1.6f*impulse;
-      cy+=facingY(direction)*1.6f*impulse;
+      monsterDestination.set(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f);c.drawBitmap(b,null,monsterDestination,pixel);
     }
-    pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
-    c.drawBitmap(hitFlash?hitBitmap(name,b):b,null,new RectF(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f),pixel);
     pixel.setAlpha(255);
   }
 
