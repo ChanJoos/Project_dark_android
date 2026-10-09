@@ -1,20 +1,21 @@
 equipment_foundation_v124:
   implementation: IMPLEMENTED
-  build: BUILD_VERIFIED_FOCUSED
+  build: BUILD_VERIFIED_FULL_AND_FOCUSED
   native_runtime: ROBOLECTRIC_153_TESTS_ZERO_FAILURES_ERRORS_SKIPS
-  source: 0f29986e43b7ca5cdc513013a4dfc681a87699e1
-  actions_run: 37881535964
-  apk_artifact: 11594932509
-  native_artifact: 11594648013
-  apk_sha256: 813194184cc98986e0ea42b01f86e122ab45dfc27e5123a5df603f270c4d7be8
-  evidence: verification/EQUIPMENT_FOUNDATION_V124_BUILD.json
+  source: ac700103e45f8bf19548f6cd3976a361a2360e2c
+  actions_run: 37893135254
+  apk_artifact: 11599422131
+  native_artifact: 11599691379
+  apk_sha256: b59fa7701c6521749bb15146d9247c8198a7ed454d6c91c81b138324ca0c4ee8
+  evidence: verification/EQUIPMENT_V124_RING_DELIVERY.json
   contract: docs/EQUIPMENT_FOUNDATION_V124_CONTRACT.md
   physical_phone: PENDING
   user_visual: PENDING
   original_accessory_images: RING_CONNECTED_TWO_BELT_REFERENCES_MATERIAL_UNCONFIRMED
   recovered_icons: [IT_RING_THREELINEGOLD]
-  recovered_icon_build: PENDING
-  broad_ci: REVERIFY_CORRECTED_V124_GATE
+  recovered_icon_build: BUILD_VERIFIED_NATIVE_SCOPE_VERIFIED
+  broad_ci: SUCCESS_RUN_37893139690
+  duplicate_push_ci: IN_PROGRESS_AT_CHECKPOINT_37893135265
   active_branch: codex/pote-forest-v112
   active_pr: 180
 
