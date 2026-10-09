@@ -33,7 +33,7 @@ public final class PoteForestMonsterShowcase {
 
   private PoteForestMonsterShowcase(){}
   public static List<String> monsterIds(){return IDS;}
-  public static float bodyHeight(String id){String s=species(id);return s!=null&&s.contains("MANTIS")?72f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
+  public static float bodyHeight(String id){String s=species(id);return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){return id==null?null:id.split("#",2)[0];}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}
   public static String artKey(String id){
@@ -73,6 +73,18 @@ public final class PoteForestMonsterShowcase {
     String species=artKey(monsterId);
     if(species==null||direction==null)return null;
     String pose="walk".equals(state)||"attack".equals(state)?state:"idle";
+    // V122 visual audit: back-facing antlion heads were labeled with opposite diagonals.
+    // Preserve source bytes and resolve presentation only; canonical movement stays untouched.
+    String family=species(monsterId);
+    if("POTE_ANTLION".equals(family)&&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE)){
+      direction=direction==CharacterRenderer.Direction.NW?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.NW;
+      if("attack".equals(pose))pose="idle"; // Existing back attack art turns its head toward the viewer.
+    }
+    // Back-view tree/giant-ant idle silhouettes differ from the applied walking direction.
+    // Use the same authored back silhouette across idle/walk; runtime gait provides movement.
+    if(("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
+        &&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE)
+        &&"idle".equals(pose))pose="walk";
     String dir;
     switch(direction){
       case NW:dir="nw";break;

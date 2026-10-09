@@ -1,3 +1,23 @@
+monster_visual_v122:
+  implementation: IMPLEMENTED_LOCAL
+  build: PENDING
+  native_runtime: PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  unidentified_previous_options: [3, 4]
+  contract: docs/MONSTER_VISUAL_V122_CONTRACT.md
+  active_branch: codex/pote-forest-v112
+  active_pr: 180
+
+monster_death_removal:
+  implementation: IMPLEMENTED_LOCAL
+  build: PENDING
+  native_runtime: PENDING
+  next: IDENTIFY_AND_COMBINE_PREVIOUS_OPTIONS_3_4
+  source: LOCAL_UNBUILT
+  active_branch: codex/pote-forest-v112
+  active_pr: 180
+
 pote_monster_motion_v121:
   implementation: IMPLEMENTED
   baseline: V120_USER_ACCEPTED_OPTION_1

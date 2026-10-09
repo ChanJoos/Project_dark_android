@@ -125,35 +125,47 @@ public final class PoteFieldRenderer {
   /** Resolved damage uses the existing actor hit timer, retaining pose, alpha and foot anchor. */
   public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
       float actionProgress,float idleClock,float x,float y,boolean hitFlash){
-    drawAnimatedMonster(c,monsterId,state,direction,actionProgress,idleClock,x,y,hitFlash?.14f:0f,0f);
+    drawAnimatedMonster(c,monsterId,state,direction,actionProgress,idleClock,x,y,hitFlash?.14f:0f);
   }
 
   /** Live pose/phase is sampled from the same combat and movement state that owns contact. */
   public void drawMonster(Canvas c,com.projectdark.mobile.RuntimeState.Monster monster,float x,float y){
-    if(!PoteMonsterMotion.visible(monster))return;
-    CharacterRenderer.Direction direction=monster.alive?PoteForestMonsterShowcase.presentationFacing(monster):monster.deathFacing;
-    String state=monster.alive?PoteForestMonsterShowcase.poseFor(monster):"dead";
+    if(monster==null||!monster.alive)return;
+    CharacterRenderer.Direction direction=PoteForestMonsterShowcase.presentationFacing(monster);
+    String state=PoteForestMonsterShowcase.poseFor(monster);
     drawAnimatedMonster(c,monster.id,state,direction,PoteForestMonsterShowcase.attackProgress(monster),
-        monster.animationClock,x,y,monster.hitFlash,monster.deathVisualRemaining);
+        monster.animationClock,x,y,monster.hitFlash);
   }
 
+  private final Matrix monsterPixelMatrix=new Matrix();
+  private final float[] monsterPixelValues=new float[9];
+
   private void drawAnimatedMonster(Canvas c,String id,String state,CharacterRenderer.Direction direction,
-      float progress,float clock,float x,float y,float hitRemaining,float deathRemaining){
-    if(c==null)return;
-    PoteMonsterMotion.sample(id,state,progress,clock,hitRemaining,deathRemaining,motion);
+      float progress,float clock,float x,float y,float hitRemaining){
+    if(c==null||"dead".equals(state))return;
+    PoteMonsterMotion.sample(id,state,progress,clock,hitRemaining,motion);
     String name=PoteForestMonsterShowcase.assetPath(id,motion.pose,direction);
-    if(name==null||motion.alpha==0)return;
+    if(name==null)return;
     Bitmap source=bitmap(name);if(source==null)return;
     Bitmap b=hitRemaining>0f?hitBitmap(name,source):source;
     float h=PoteForestMonsterShowcase.bodyHeight(id),w=h*b.getWidth()/Math.max(1f,b.getHeight());
     float fx=facingX(direction),fy=facingY(direction);
-    float cx=x+fx*(motion.lunge-motion.recoil),cy=y+fy*(motion.lunge-motion.recoil)-motion.lift;
-    pixel.setColor(0xffffffff);pixel.setAlpha(motion.alpha);pixel.setFilterBitmap(false);
-    if(motion.collapse>0f){
-      c.save();c.translate(x,y);c.rotate(fx*22f*motion.collapse);
-      c.scale(1f+.10f*motion.collapse,1f-.65f*motion.collapse);
-      monsterDestination.set(-w*.5f,-h+3f,w*.5f,3f);c.drawBitmap(b,null,monsterDestination,pixel);c.restore();
-    }else if(motion.articulated){
+    boolean spirit="POTE_SPIRIT".equals(PoteForestMonsterShowcase.species(id));
+    float anchorX=x+fx*(motion.lunge-motion.recoil),anchorY=y+fy*(motion.lunge-motion.recoil);
+    if(spirit){
+      // Subpixel camera translation must not erase a one-pixel hoof at some screen positions.
+      c.getMatrix(monsterPixelMatrix);monsterPixelMatrix.getValues(monsterPixelValues);
+      float sx=monsterPixelValues[Matrix.MSCALE_X],sy=monsterPixelValues[Matrix.MSCALE_Y];
+      if(Math.abs(sx)>.001f&&Math.abs(sy)>.001f
+          &&monsterPixelValues[Matrix.MSKEW_X]==0f&&monsterPixelValues[Matrix.MSKEW_Y]==0f){
+        anchorX+=(Math.round(anchorX*sx+monsterPixelValues[Matrix.MTRANS_X])-(anchorX*sx+monsterPixelValues[Matrix.MTRANS_X]))/sx;
+        anchorY+=(Math.round(anchorY*sy+monsterPixelValues[Matrix.MTRANS_Y])-(anchorY*sy+monsterPixelValues[Matrix.MTRANS_Y]))/sy;
+      }
+    }
+    float cx=anchorX,cy=anchorY-motion.lift;
+    float groundInset="POTE_MANTIS".equals(PoteForestMonsterShowcase.species(id))?h/24f:3f;
+    pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
+    if(motion.articulated){
       // One reusable 35-vertex mesh: opposing lower-limb beats and upper-body lean.
       // The approved pixels stay in the same prewarmed textures; no per-frame raster/decode/cache.
       int k=0;
@@ -162,12 +174,14 @@ public final class PoteFieldRenderer {
         float lower=Math.max(0f,Math.min(1f,(v-.58f)/.38f));
         float side=(u-.5f)*2f;
         float leg=motion.stride*side*lower;
-        motionVertices[k++]=cx-w*.5f+u*w+leg+motion.lean*(1f-v);
-        motionVertices[k++]=cy-h+3f+v*h+motion.lift*lower-Math.max(0f,leg)*.65f;
+        float upper=spirit?Math.max(0f,Math.min(1f,(.60f-v)/.18f)):1f;
+        motionVertices[k++]=cx-w*.5f+u*w+(spirit?0f:leg)+motion.lean*(1f-v)*upper;
+        motionVertices[k++]=spirit?anchorY-h+groundInset+v*h-motion.lift*upper
+            :cy-h+groundInset+v*h+motion.lift*lower-Math.max(0f,leg)*.65f;
       }
       c.drawBitmapMesh(b,MESH_COLS,MESH_ROWS,motionVertices,0,null,0,pixel);
     }else{
-      monsterDestination.set(cx-w*.5f,cy-h+3f,cx+w*.5f,cy+3f);c.drawBitmap(b,null,monsterDestination,pixel);
+      monsterDestination.set(cx-w*.5f,cy-h+groundInset,cx+w*.5f,cy+groundInset);c.drawBitmap(b,null,monsterDestination,pixel);
     }
     pixel.setAlpha(255);
   }

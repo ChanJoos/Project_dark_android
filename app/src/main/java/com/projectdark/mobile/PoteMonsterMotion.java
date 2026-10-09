@@ -2,26 +2,17 @@ package com.projectdark.mobile;
 
 /** Continuous, asset-preserving presentation. Never changes damage, movement or rewards. */
 public final class PoteMonsterMotion {
-  public static final float DEATH_SECONDS=.60f;
   public static final class Frame {
     public String pose;
-    public float lift,lean,stride,lunge,recoil,collapse;
-    public int alpha;
+    public float lift,lean,stride,lunge,recoil;
     public boolean articulated;
   }
   private PoteMonsterMotion(){}
   private static float clamp(float v){return Math.max(0f,Math.min(1f,v));}
   private static float smooth(float v){v=clamp(v);return v*v*(3f-2f*v);}
-  public static void sample(String id,String state,float progress,float clock,float hitRemaining,
-      float deathRemaining,Frame out){
-    out.pose="idle";out.lift=out.lean=out.stride=out.lunge=out.recoil=out.collapse=0f;
-    out.alpha=255;out.articulated=false;
-    if("dead".equals(state)){
-      float age=DEATH_SECONDS-Math.max(0f,deathRemaining);
-      out.collapse=smooth(age/.34f);out.recoil=1.3f*(1f-out.collapse);
-      out.alpha=Math.round(255f*(1f-smooth((age-.40f)/.20f)));
-      return;
-    }
+  public static void sample(String id,String state,float progress,float clock,float hitRemaining,Frame out){
+    out.pose="idle";out.lift=out.lean=out.stride=out.lunge=out.recoil=0f;
+    out.articulated=false;
     String species=PoteForestMonsterShowcase.species(id);
     boolean plant=species!=null&&(species.contains("PAMFET")||species.contains("PURPLE")
         ||species.contains("RED")||species.contains("GREEN")||species.contains("SILVER")&&!species.contains("WOLF"));
@@ -46,8 +37,5 @@ public final class PoteMonsterMotion {
       float age=.14f-Math.min(.14f,hitRemaining);
       out.recoil=2.2f*(float)Math.sin(Math.PI*clamp(age/.14f));
     }
-  }
-  public static boolean visible(RuntimeState.Monster monster){
-    return monster!=null&&(monster.alive||monster.deathVisualRemaining>0f);
   }
 }

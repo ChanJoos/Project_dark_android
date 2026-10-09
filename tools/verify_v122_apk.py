@@ -1,4 +1,4 @@
-"""Verify the exact V121 campaign APK, including its identity and Pote final-boss poses."""
+"""Verify the exact V122 campaign APK, including its identity and Pote final-boss poses."""
 import datetime, hashlib, json, os, pathlib, subprocess, sys, zipfile
 apk_path = pathlib.Path(sys.argv[1])
 source = os.environ['PROJECT_DARK_SOURCE_SHA']
@@ -13,7 +13,7 @@ with zipfile.ZipFile(apk_path) as apk:
     identity = json.loads(apk.read('assets/build_identity.json'))
     assert identity['sourceCommit'] == source, identity
     assert identity['runId'] == os.environ['GITHUB_RUN_ID'], identity
-    assert identity['versionCode'] == 121, identity
+    assert identity['versionCode'] == 122, identity
     for path in poses:
         packaged = 'assets/pote_monsters_generated_v1/sprites/campaign_v3/giant_mantis/' + path.name
         assert apk.read(packaged) == path.read_bytes(), path
@@ -34,16 +34,16 @@ with zipfile.ZipFile(apk_path) as apk:
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
-assert "versionCode='121'" in badging and "versionName='1.21-monster-motion'" in badging, badging[:300]
-expected_package = 'com.projectdark.mobile.v121test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
+assert "versionCode='122'" in badging and "versionName='1.22-monster-visual-repair'" in badging, badging[:300]
+expected_package = 'com.projectdark.mobile.v122test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
 resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'resources', str(apk_path)], text=True)
 assert 'name='+expected_package in resource_table, resource_table[:400]
 for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','player_shirt_mu0000001_source'):
     assert ':drawable/'+drawable in resource_table, drawable
-info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v121test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
+info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v122test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope='asset-preserving articulated walk, contact-synchronized attacks, hit recoil and immediate removal on defeat; preserved map-lifetime static chase graph with shortest-path A-star and live collision checks; joystick right/up 20 logical pixels; paired accepted V120 continuous movement tails; bounded floor/sprite caches and map-switch memory verification; preserved 168 poses/campaign/save/body',
+            scope='2.5x mantis, stable spirit hooves, audited back facing, asset-preserving articulated walk, contact-synchronized attacks, hit recoil and immediate removal on defeat; preserved map-lifetime static chase graph with shortest-path A-star and live collision checks; joystick right/up 20 logical pixels; paired accepted V120 continuous movement tails; bounded floor/sprite caches and map-switch memory verification; preserved 168 poses/campaign/save/body',
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance='PENDING')
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))

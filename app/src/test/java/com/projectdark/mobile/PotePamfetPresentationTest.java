@@ -73,11 +73,11 @@ public final class PotePamfetPresentationTest {
     PoteFieldRenderer renderer=new PoteFieldRenderer();
     for(String state:new String[]{"idle","walk","attack"})for(CharacterRenderer.Direction direction:new CharacterRenderer.Direction[]{
         CharacterRenderer.Direction.NW,CharacterRenderer.Direction.NE,CharacterRenderer.Direction.SW,CharacterRenderer.Direction.SE}){
-      Bitmap frame=Bitmap.createBitmap(128,128,Bitmap.Config.ARGB_8888);
-      renderer.drawMonsterTestPose(new Canvas(frame),"POTE_MANTIS#0",state,direction,.5f,.4f,64f,112f);
-      Rect bounds=opaqueBounds(frame,new Rect(0,0,128,128));
-      assertTrue("mantis final boss pose is present: "+state+" "+direction,countOpaque(frame,new Rect(0,0,128,128))>100);
-      assertTrue("mantis is rendered at boss scale: "+bounds.height(),bounds.height()>=48&&bounds.height()<=72);
+      Bitmap frame=Bitmap.createBitmap(320,320,Bitmap.Config.ARGB_8888);
+      renderer.drawMonsterTestPose(new Canvas(frame),"POTE_MANTIS#0",state,direction,.5f,.4f,160f,296f);
+      Rect bounds=opaqueBounds(frame,new Rect(0,0,320,320));
+      assertTrue("mantis final boss pose is present: "+state+" "+direction,countOpaque(frame,new Rect(0,0,320,320))>100);
+      assertTrue("mantis is rendered at boss scale: "+bounds.height(),bounds.height()>=120&&bounds.height()<=180);
       File file=new File("build/reports/device-review/monster-candidates/POTE_MANTIS_"+state+"_"+direction.name().toLowerCase()+".png");
       File parent=file.getParentFile();if(parent!=null)parent.mkdirs();
       try(FileOutputStream out=new FileOutputStream(file)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}

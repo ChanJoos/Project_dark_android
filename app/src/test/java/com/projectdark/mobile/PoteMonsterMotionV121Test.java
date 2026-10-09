@@ -55,19 +55,19 @@ public class PoteMonsterMotionV121Test {
     state.tick(.18f);assertEquals(.75f,PoteForestMonsterShowcase.attackProgress(m),.001f);
     state.tick(.19f);assertFalse(m.visualFacing.attackLocked());assertEquals(RuntimeState.Monster.State.IDLE,m.state);
   }
-  @Test public void corpseDoesNotMoveOrRemainSelectableAndDefeatStillOccursOnce(){
+  @Test public void deathImmediatelyHidesActorWithoutMovingOrDuplicateDefeat(){
     RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_POTE_03",false);
     RuntimeState.Monster m=state.monsters().get(0);m.isMoving=true;m.moveStartX=m.x;m.moveStartY=m.y;
     m.moveTargetX=m.x+32;m.moveTargetY=m.y+16;m.moveElapsed=0;m.moveDuration=.6f;
     float x=m.x,y=m.y;state.damage(m,m.hp);m.respawnClock=Float.POSITIVE_INFINITY;
-    assertFalse(m.isMoving);assertTrue(PoteMonsterMotion.visible(m));assertNull(state.hitMonster(x,y,1));
+    assertFalse(m.isMoving);assertFalse(m.alive);assertNull(state.hitMonster(x,y,1));
     state.damage(m,99);state.tick(.3f);assertEquals(x,m.x,0);assertEquals(y,m.y,0);
-    assertTrue(PoteMonsterMotion.visible(m));state.tick(.31f);assertFalse(PoteMonsterMotion.visible(m));
+    assertFalse(m.alive);state.tick(.31f);assertFalse(m.alive);
     assertFalse(m.alive);assertEquals(Float.POSITIVE_INFINITY,m.respawnClock,0);
     long defeats=state.ledger().snapshot().stream().filter(e->e.type==CombatLedger.Type.MONSTER_DEFEATED&&e.targetId.equals(m.id)).count();
     assertEquals(1,defeats);
   }
-  @Test public void deathAndHitRenderAndKeepTheCurrentMapTextureBudget()throws Exception{
+  @Test public void hitRendersAndDeathDrawsNothingWithinCurrentTextureBudget()throws Exception{
     RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_POTE_03",false);
     PoteFieldRenderer renderer=new PoteFieldRenderer();renderer.prepareMonsters(state);
     Field source=PoteFieldRenderer.class.getDeclaredField("cache"),hits=PoteFieldRenderer.class.getDeclaredField("hitCache");source.setAccessible(true);hits.setAccessible(true);
@@ -77,17 +77,24 @@ public class PoteMonsterMotionV121Test {
     state.damage(m,1);
     for(int i=0;i<8;i++){m.hitFlash=.14f*(1f-i/8f);canvas.save();canvas.translate(i*128,0);renderer.drawMonster(canvas,m,64,112);canvas.restore();}
     state.damage(m,m.hp);
-    for(int i=0;i<8;i++){m.deathVisualRemaining=PoteMonsterMotion.DEATH_SECONDS*(1f-i/7f);canvas.save();canvas.translate(i*128,128);renderer.drawMonster(canvas,m,64,112);canvas.restore();}
+    for(int i=0;i<8;i++){canvas.save();canvas.translate(i*128,128);renderer.drawMonster(canvas,m,64,112);canvas.restore();}
+    int[] deadPixels=new int[8*128*128];sheet.getPixels(deadPixels,0,8*128,0,128,8*128,128);
+    for(int color:deadPixels)assertEquals("no corpse/fade pixels after lethal damage",0,color);
     assertEquals(before,((Map<?,?>)source.get(renderer)).size());assertEquals(hitBefore,((Map<?,?>)hits.get(renderer)).size());
-    save(sheet,"hit-and-death");
+    save(sheet,"hit-and-immediate-removal");
   }
-  @Test public void liveForestGameViewActuallyDrawsCorpseBeforeItDisappears()throws Exception{
+  @Test public void liveForestGameViewImmediatelyRemovesDeadActor()throws Exception{
     GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,1536,864);
     Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(view);
     RuntimeState state=TownInteriorTest.field(view,"state");RuntimeState.Monster m=state.monsters().get(0);
     WorldRuntimeAdapter world=TownInteriorTest.field(view,"poteFieldAdapter");state.player().x=m.x-32;state.player().y=m.y-16;world.snapCameraToPlayer();
-    state.damage(m,m.hp);Bitmap corpse=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);view.draw(new Canvas(corpse));save(corpse,"live-corpse");
-    state.tick(.61f);Bitmap gone=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);view.draw(new Canvas(gone));save(gone,"live-corpse-finished");
-    assertFalse(corpse.sameAs(gone));assertFalse(m.alive);
+    Bitmap alive=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);view.draw(new Canvas(alive));
+    state.damage(m,m.hp);Bitmap dead=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);view.draw(new Canvas(dead));save(dead,"live-immediate-removal");
+    // No tick, camera or other actor changes: a dead body at its old location must draw nothing,
+    // just as when its location is outside the visible scene.
+    m.x+=10000;m.y+=10000;
+    Bitmap absent=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);view.draw(new Canvas(absent));
+    assertFalse("live monster was visible before lethal damage",alive.sameAs(dead));
+    assertTrue("no dead body or lethal popup remains",dead.sameAs(absent));assertFalse(m.alive);
   }
 }
