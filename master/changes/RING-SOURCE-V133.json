@@ -15,7 +15,8 @@
     "additionalGamezonePages": "502; no replacement bytes",
     "existingTistoryCapture": "REJECTED; historical snapshot retained, projection removed"
   },
-  "validation": "SOURCE_RGB_ALPHA_AUDIT_PASS; NATIVE_BUILD_FULL_CI_PENDING",
-  "userVisual": "USER_REFERENCE_MATCHED_REPLACEMENT_CANDIDATE; ACCEPTANCE_PENDING",
-  "replacementReceipt": "master/source/items/ring_reference_v133/receipt.json"
+  "validation": "SOURCE_RGB_ALPHA_BUILD_NATIVE_FULL_CI_VERIFIED",
+  "userVisual": "REFERENCE_MATCH_REVIEWED; USER_ACCEPTANCE_PENDING",
+  "replacementReceipt": "master/source/items/ring_reference_v133/receipt.json",
+  "buildReceipt": "master/changes/V133_BUILD_RUNTIME_RECEIPT.json"
 }

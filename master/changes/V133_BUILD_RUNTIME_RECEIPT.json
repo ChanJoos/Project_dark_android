@@ -1,0 +1,86 @@
+{
+  "id": "V133_BUILD_RUNTIME_RECEIPT",
+  "status": "IMPLEMENTED_BUILD_VERIFIED_NATIVE_RUNTIME_VERIFIED_INTEGRATED",
+  "sourceCommit": "ac0b4bb7aaf0c2a6eea89ba10e5b5c094e40375a",
+  "sourceTree": "675036d061c23b1cb5b3bebe0746731194559e1a",
+  "sourceBase": "80bdf6fc608fab0010be93ed36f03228aced9969",
+  "buildInfo": {
+    "sourceCommit": "ac0b4bb7aaf0c2a6eea89ba10e5b5c094e40375a",
+    "runId": "38048198251",
+    "versionCode": 133,
+    "versionName": "1.33-ring-reference",
+    "applicationId": "com.projectdark.mobile.v133test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "61b355f7654f531d0666de27bfb82a6ed09c0a81236491e5ab826a2339a9dd8d",
+    "apkBytes": 61542350,
+    "builtSeoul": "2026-10-10T20:26:48.298347+09:00",
+    "scope": "User-rejected table crop removed; native braided gold ring replaces it using user reference match; source RGB preserved; Single inventory equip action; automatic vacant ring/glove target; explicit compact-card replacement selection when both slots occupied; shared restrained classic UI; V131 original icons and V130 stats preserved; native runtime tested, physical phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "focused": {
+    "run": 38048198251,
+    "job": 114201877995,
+    "conclusion": "success",
+    "suites": 19,
+    "tests": 108,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "packagedSourceComparisons": 678,
+    "logsInspected": true
+  },
+  "artifacts": [
+    {
+      "id": 11668198422,
+      "type": "apk",
+      "digest": "47a6b47be2fa0374476b60a72f22a0709baf7b32b103781d122327ca281e3f28"
+    },
+    {
+      "id": 11667898703,
+      "type": "native",
+      "digest": "8d1d885e85df5e6b23944be549d78215f5586a703bbea3926847c5df250e69a5"
+    }
+  ],
+  "visualReview": {
+    "scope": "Native actual detail normal/wide and paired ring equipment card; original braided ring shape with transparent socket background; old rejected crop absent.",
+    "reviewer": "Director_single_editor",
+    "userAcceptance": "PENDING",
+    "physicalPhone": "PENDING"
+  },
+  "savedFiles": [
+    {
+      "filename": "PROJECT_DARK_V133_TEST.apk",
+      "libraryFileId": "libfile_15d8da8041e48191b9bd2e088353094b"
+    },
+    {
+      "filename": "PROJECT_DARK_V133_PREVIEW.png",
+      "libraryFileId": "libfile_c109a74f98608191ac0d85871cb2c5c7"
+    }
+  ],
+  "sourceLimitation": "User reference corroborates ring correspondence. Native capture has no visible name tooltip; not independently source-labelled. No claim of physical-phone/user visual acceptance.",
+  "integration": {
+    "pr": 188,
+    "status": "MERGED",
+    "mergeCommit": "e21663273da34d0f1422b4a7c072e570975b50a1",
+    "mergeTree": "675036d061c23b1cb5b3bebe0746731194559e1a",
+    "exactTestedTreeMatch": true
+  },
+  "fullCI": [
+    {
+      "run": 38048198225,
+      "job": 114201878041,
+      "event": "push",
+      "conclusion": "success",
+      "logsInspected": true
+    },
+    {
+      "run": 38048200599,
+      "job": 114201883587,
+      "event": "pull_request",
+      "conclusion": "success",
+      "logsInspected": true
+    }
+  ]
+}

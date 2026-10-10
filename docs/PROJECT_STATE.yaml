@@ -1,10 +1,18 @@
 ring_source_v133:
   owner: Director_single_editor
-  status: IMPLEMENTED_BUILD_PENDING
-  user_visual: REJECTED_V132_CAPTURE
+  status: INTEGRATED_VERIFIED_REFERENCE_MATCH
+  user_visual: PENDING_REFERENCE_MATCHED_REPLACEMENT
+  previous_capture: REJECTED_V132
+  physical_phone: PENDING
   replacement_source: USER_REFERENCE_MATCHED_NATIVE_CAPTURE
   source_receipt: master/source/items/ring_reference_v133/receipt.json
-  active_branch: codex/ring-source-v133
+  source: ac0b4bb7aaf0c2a6eea89ba10e5b5c094e40375a
+  merge: e21663273da34d0f1422b4a7c072e570975b50a1
+  focused_actions: 38048198251
+  native_tests: 108_PASS
+  full_android: [SUCCESS_38048198225, SUCCESS_38048200599]
+  evidence: master/changes/V133_BUILD_RUNTIME_RECEIPT.json
+  active_branch: main
   required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/items/tistory_20261009/manifest.json, master/source/equipment/inventory_art_v131/catalog.json]
 
 item_functions_v129:
