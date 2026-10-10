@@ -6,6 +6,10 @@ from build_full_item_catalog import runtime_items
 ROOT=Path(__file__).resolve().parents[1];APP=ROOT/'app/src/main/assets';m=json.loads((APP/'item-icons/manifest.json').read_text());assert set(m['items'])==set(runtime_items());seen=set();equivalent=0
 with zipfile.ZipFile(ROOT/'master/source/items/full_20261010/original_sources.zip')as z:
  for ident,r in m['items'].items():
+  if r.get('identityMatch')=='PENDING_REPLACEMENT_SOURCE':
+   assert ident=='IT_RING_THREELINEGOLD' and r['assetPath'] is None
+   assert not (APP/'equipment-icons/it_ring_threelinegold.png').exists()
+   continue
   p=APP/r['assetPath'];assert p.exists(),ident;assert hashlib.sha256(p.read_bytes()).hexdigest()==r['assetSha256'],ident
   if 'EQUIVALENT'in r['identityMatch']:equivalent+=1;assert r.get('limitation'),ident
   if r['assetPath']in seen:continue
@@ -22,4 +26,20 @@ with zipfile.ZipFile(ROOT/'master/source/items/full_20261010/original_sources.zi
 assert len(m['items'])==422
 for p in ('GameView.java','TownShopWindow.java'):
  t=(ROOT/'app/src/main/java/com/projectdark/mobile'/p).read_text();assert 'ItemIconCatalog'not in t
-print('VERIFIED_FULL_ORIGINAL_ART',len(m['items']),'items',len(seen),'unique originals',equivalent,'explicit visual equivalents (not exact historical identity claims)')
+pending=sum(r.get('identityMatch')=='PENDING_REPLACEMENT_SOURCE' for r in m['items'].values())
+assert pending==0
+print('VERIFIED_ITEM_ART_COVERAGE',len(m['items'])-pending,'image bindings;',pending,'explicit pending source;',len(seen),'unique originals;',equivalent,'explicit visual equivalents')
+
+ring=m['items']['IT_RING_THREELINEGOLD'];assert ring['identityMatch']=='USER_REFERENCE_MATCHED_NATIVE_CAPTURE'
+with zipfile.ZipFile(ROOT/ring['sourceArchive']) as archive:
+ import io
+ data=archive.read(ring['sourceMember']);assert hashlib.sha256(data).hexdigest()==ring['sourceSha256']
+ raw=Image.open(io.BytesIO(data)).convert('RGBA');x,y,w,h=ring['crop'];raw=raw.crop((x,y,x+w,y+h))
+ icon=Image.open(APP/ring['assetPath']).convert('RGBA');mask=Image.open(ROOT/ring['maskPath']).convert('L')
+ assert icon.size==raw.size==(32,32)
+ for y in range(32):
+  for x in range(32):
+   assert icon.getpixel((x,y))[:3]==raw.getpixel((x,y))[:3]
+   assert icon.getpixel((x,y))[3]==mask.getpixel((x,y))
+ assert sum(bool(a)for a in mask.getdata())==ring['foregroundPixels']
+ print('RING_NATIVE_SOURCE_RGB_AND_REFERENCE_MASK_VERIFIED',ring['foregroundPixels'])

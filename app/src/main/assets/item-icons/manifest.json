@@ -3,32 +3,6 @@
   "registeredItems": 422,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
-    "IT_RING_THREELINEGOLD": {
-      "itemId": "IT_RING_THREELINEGOLD",
-      "sourcePath": "master/source/items/tistory_20261009/three_line_gold_ring.png",
-      "sourceSha256": "bcdab54b55f4a97e813fb28ed9789a46b07865ae9a778d839b74a9be38c6d77e",
-      "crop": [
-        29,
-        17,
-        35,
-        27
-      ],
-      "transparentBackgroundRGB": [
-        246,
-        245,
-        240
-      ],
-      "asset": "it_ring_threelinegold.png",
-      "assetSha256": "511e853c19fb89b16e2a4bfd36dc435777730ec0f672c1feaf6357fcec3251f7",
-      "evidence": "FAN_HISTORICAL_LABELLED_GAME_ICON_CAPTURE",
-      "sourceUrl": "https://time-to-watch.tistory.com/92",
-      "sourcePublished": "2020-10-30",
-      "limitation": "Labelled historical capture, capture era unknown. Same716 foreground pixels preserved; only fully transparent margins removed. No redraw/upscale/resampling.",
-      "projection": "SOURCE_RGB_TRANSPARENT_MARGIN_TRIM_V131",
-      "inventoryPresentation": "35x27 foreground at1x; previous54x48 canvas forced43/54 downsampling",
-      "assetPath": "equipment-icons/it_ring_threelinegold.png",
-      "identityMatch": "EXISTING_LABELLED_SOURCE"
-    },
     "IT_EARRING_DOUBLE_SILVER": {
       "itemId": "IT_EARRING_DOUBLE_SILVER",
       "asset": "146_souginiyaringu.png",
@@ -10661,6 +10635,33 @@
       "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
       "itemId": "IT_WARDROBE_MW060",
       "inventoryArtwork": false
+    },
+    "IT_RING_THREELINEGOLD": {
+      "itemId": "IT_RING_THREELINEGOLD",
+      "assetPath": "item-icons/ring_reference_v133.png",
+      "sourceArchive": "master/source/items/ring_reference_v133/original_sources.zip",
+      "sourceMember": "naver_game_native.png",
+      "sourceUrl": "http://blogfiles.naver.net/20131124_137/ksj3814_1385269407422bBU9j_PNG/5.png",
+      "sourcePage": "https://blog.naver.com/ksj3814/40201418084",
+      "sourceSha256": "3cd0f30f0d3a83531245c4b503067bd31f897f9cc9a6a618c0e5875e0960620b",
+      "crop": [
+        310,
+        338,
+        32,
+        32
+      ],
+      "maskPath": "master/source/items/ring_reference_v133/foreground_mask.png",
+      "maskSha256": "f05399c53191c1a98acade6a3b684e575966f19bd4ec005919d2d76b16ee6900",
+      "identityMatch": "USER_REFERENCE_MATCHED_NATIVE_CAPTURE",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "nativeSize": [
+        32,
+        32
+      ],
+      "visualStatus": "REFERENCE_MATCHED_REPLACEMENT_CANDIDATE",
+      "limitation": "Braided gold ring correspondence corroborated by the two user-provided references. Native screenshot has no visible item-name tooltip; visual match is recorded, not independent source-label identity. No upscaling, recoloring or generated artwork.",
+      "foregroundPixels": 290,
+      "assetSha256": "df8ce512fb789ac79ae951e729694de80ca36a2706925595e4da677eec1f343e"
     }
   }
 }

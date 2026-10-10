@@ -1,0 +1,21 @@
+{
+  "id": "RING-SOURCE-V133",
+  "status": "ACCEPTED",
+  "owner": "Director_single_editor",
+  "before": "V132 enlarged table crop with blurred edges, rejected by user 2026-10-10",
+  "after": "Rejected runtime capture removed; native32x32 braided ring replacement corroborated by user inventory/equipment reference. Shared source RGB/native-size art restored. Stable item/stat/save unchanged.",
+  "sourceSheet": "Item_Master",
+  "sourceItemId": "IT_RING_THREELINEGOLD",
+  "sourcePath": "master/source/items/tistory_20261009/three_line_gold_ring.png",
+  "reason": "User explicitly requested removing the poor image and finding a new internet original. Pixel preservation alone was insufficient visual acceptance.",
+  "research": {
+    "labelledGifPage": "https://www.ilbe.com/view/1149305921",
+    "labelledGifUrl": "https://ncache.ilbe.com/files/attach/new/20130429/377678/50238046/1148780107/a3f2698783e5f3b817f1b2af6a57c1d4.gif",
+    "result": "404_NOT_FOUND",
+    "additionalGamezonePages": "502; no replacement bytes",
+    "existingTistoryCapture": "REJECTED; historical snapshot retained, projection removed"
+  },
+  "validation": "SOURCE_RGB_ALPHA_AUDIT_PASS; NATIVE_BUILD_FULL_CI_PENDING",
+  "userVisual": "USER_REFERENCE_MATCHED_REPLACEMENT_CANDIDATE; ACCEPTANCE_PENDING",
+  "replacementReceipt": "master/source/items/ring_reference_v133/receipt.json"
+}

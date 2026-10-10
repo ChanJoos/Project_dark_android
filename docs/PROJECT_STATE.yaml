@@ -1,3 +1,12 @@
+ring_source_v133:
+  owner: Director_single_editor
+  status: IMPLEMENTED_BUILD_PENDING
+  user_visual: REJECTED_V132_CAPTURE
+  replacement_source: USER_REFERENCE_MATCHED_NATIVE_CAPTURE
+  source_receipt: master/source/items/ring_reference_v133/receipt.json
+  active_branch: codex/ring-source-v133
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, docs/PROJECT_STATE.md, docs/DECISION_LOG.md, docs/DIRECTOR_BACKLOG.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/items/tistory_20261009/manifest.json, master/source/equipment/inventory_art_v131/catalog.json]
+
 item_functions_v129:
   owner: Director_single_editor
   status: INTEGRATED_VERIFIED_KNOWN_SCOPE

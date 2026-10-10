@@ -19,7 +19,9 @@ public class FullItemArtV127Test {
   JSONObject manifest=new JSONObject(new String(PresentationAssetBytes.read(context,"item-icons/manifest.json"),"UTF-8"));assertEquals(state.itemDefinitions().size(),manifest.getJSONObject("items").length());assertEquals(422,state.itemDefinitions().size());
   Bitmap sheet=Bitmap.createBitmap(1000,((state.itemDefinitions().size()+11)/12)*84,Bitmap.Config.ARGB_8888);sheet.eraseColor(UiTheme.BG);Canvas canvas=new Canvas(sheet);Paint pixel=new Paint();pixel.setFilterBitmap(false);int i=0;
   for(RpgProgressionState.ItemDefinition def:state.itemDefinitions().values()){
-   JSONObject receipt=icons.receipt(def.itemId);assertNotNull(def.itemId,receipt);Bitmap b=icons.get(def);assertNotNull(def.itemId,b);assertSame(def.itemId,b,icons.get(def.itemId));assertTrue(def.itemId,b.getWidth()>1&&b.getHeight()>1);
+   JSONObject receipt=icons.receipt(def.itemId);assertNotNull(def.itemId,receipt);Bitmap b=icons.get(def);
+   assertFalse(def.itemId,icons.pending(def.itemId));
+   assertNotNull(def.itemId,b);assertSame(def.itemId,b,icons.get(def.itemId));assertTrue(def.itemId,b.getWidth()>1&&b.getHeight()>1);
    if(receipt.getString("identityMatch").contains("EQUIVALENT"))assertTrue(receipt.has("limitation"));
    float x=i%12*83,y=i/12*84;UiTheme.slot(canvas,new RectF(x+3,y+3,x+77,y+70),false,false);SourceItemIconRegistry.draw(canvas,b,new RectF(x+14,y+9,x+66,y+61),pixel);UiTheme.fit(canvas,RpgInventoryPresentation.displayName(def.name),x+3,y+81,76,9,UiTheme.TEXT,false);i++;
   }

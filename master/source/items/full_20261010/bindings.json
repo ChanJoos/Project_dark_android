@@ -3,11 +3,6 @@
   "newSourceBindings": 87,
   "reusedSourceBindings": 7,
   "items": {
-    "IT_RING_THREELINEGOLD": {
-      "name": "세줄금반지",
-      "assetPath": "equipment-icons/it_ring_threelinegold.png",
-      "identityMatch": "EXISTING_LABELLED_SOURCE"
-    },
     "IT_EARRING_DOUBLE_SILVER": {
       "name": "쌍은귀걸이",
       "assetPath": "equipment-icons/146_souginiyaringu.png",
@@ -2112,6 +2107,11 @@
       "name": "아리펠스탭",
       "assetPath": "item-icons/identity_mw060.png",
       "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_RING_THREELINEGOLD": {
+      "name": "세줄금반지",
+      "assetPath": "item-icons/ring_reference_v133.png",
+      "identityMatch": "USER_REFERENCE_MATCHED_NATIVE_CAPTURE"
     }
   }
 }

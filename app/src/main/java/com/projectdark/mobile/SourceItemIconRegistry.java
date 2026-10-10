@@ -19,7 +19,13 @@ final class SourceItemIconRegistry {
 
  private static byte[] read(InputStream in)throws java.io.IOException{java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream();byte[] bytes=new byte[4096];int n;while((n=in.read(bytes))!=-1)out.write(bytes,0,n);return out.toByteArray();}
  JSONObject receipt(String id){return full.optJSONObject("items").optJSONObject(id);}
+ boolean pending(String id){JSONObject row=receipt(id);return row!=null&&"PENDING_REPLACEMENT_SOURCE".equals(row.optString("identityMatch"));}
+ static void drawPending(Canvas c,RectF target){
+  UiTheme.center(c,"이미지",target.centerX(),target.centerY()-1,8,UiTheme.MUTED,false);
+  UiTheme.center(c,"준비 중",target.centerX(),target.centerY()+10,8,UiTheme.MUTED,false);
+ }
  Bitmap get(String id){
+  if(pending(id))return null;
   JSONObject row=receipt(id);if(row==null)return null;String path=row.optString("assetPath",null);
   if(path==null)return null;if(cache.containsKey(path))return cache.get(path);
   Bitmap bitmap=null;try(InputStream in=context.getAssets().open(path)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;bitmap=BitmapFactory.decodeStream(in,null,options);}catch(Exception e){throw new IllegalStateException("Missing original item artwork: "+id,e);}
