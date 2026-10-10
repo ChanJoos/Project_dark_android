@@ -13,6 +13,13 @@ final class MobileHudSkin {
     p.setStrokeWidth(.6f);p.setColor(0x554d4e42);c.drawCircle(x,y,r-2.8f,p);
     p.setColor(active?0xfff4e6b1:0xaaddd0a6);c.drawArc(x-r+1,y-r+1,x+r-1,y+r-1,210,120,false,p);p.setStyle(Paint.Style.FILL);
   }
+  static void joystick(Canvas c,float x,float y,float r,float kx,float ky,boolean active){
+    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(active?0x2413191b:0x0e13191b);c.drawCircle(x,y,r,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);p.setColor(active?0x88c2bea8:0x428e978d);c.drawCircle(x,y,r-1,p);
+    p.setStrokeWidth(.5f);p.setColor(active?0x445d695e:0x205d695e);c.drawCircle(x,y,r-4,p);
+    p.setStyle(Paint.Style.FILL);p.setShader(new RadialGradient(kx-5,ky-6,28,new int[]{active?0x665f6961:0x28455047,active?0x44141d18:0x14141d18},null,Shader.TileMode.CLAMP));c.drawCircle(kx,ky,active?23:20,p);p.setShader(null);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);p.setColor(active?0x99d5d2ba:0x507b877d);c.drawCircle(kx,ky,active?23:20,p);p.setStyle(Paint.Style.FILL);
+  }
   static void crown(Canvas c,float x,float y){
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xbbb7b4a2);
     path.reset();path.moveTo(x-47,y+4);path.lineTo(x-27,y-2);path.lineTo(x-34,y-17);path.lineTo(x-14,y-8);path.lineTo(x-10,y-26);path.lineTo(x,y-16);path.lineTo(x+10,y-26);path.lineTo(x+14,y-8);path.lineTo(x+34,y-17);path.lineTo(x+27,y-2);path.lineTo(x+47,y+4);c.drawPath(path,p);
@@ -26,6 +33,7 @@ final class MobileHudSkin {
     if(active){p.setColor(GOLD);c.drawRoundRect(x-12,y+17,x+12,y+18,1,1,p);}
   }
   static void icon(Canvas c,String kind,float x,float y,float r,boolean active){
+    if(MobileHudArtwork.icon(c,kind,x,y,r*2.5f,active))return;
     c.save();c.translate(x,y);c.scale(r/11f,r/11f);p.setStrokeJoin(Paint.Join.ROUND);p.setStrokeCap(Paint.Cap.ROUND);
     switch(kind){
       case "bag":
@@ -65,10 +73,8 @@ final class MobileHudSkin {
     p.setStyle(Paint.Style.FILL);p.setShader(new RadialGradient(x-r*.3f,y-r*.4f,r*1.6f,new int[]{active?0xc7675b35:0xd0354244,0xe00d161b},null,Shader.TileMode.CLAMP));c.drawCircle(x,y,r,p);p.setShader(null);
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setShader(new LinearGradient(x-r,y-r,x+r,y+r,new int[]{0xffeee7cc,0xff667372,0xffc8ba91},null,Shader.TileMode.CLAMP));c.drawCircle(x,y,r-1,p);p.setShader(null);p.setStrokeWidth(.65f);p.setColor(active?0xffe1c783:0xff718381);c.drawCircle(x,y,r-3.5f,p);p.setStyle(Paint.Style.FILL);
     if(auto){
-      // Two stacked words match the reference's compact AUTO mark. Orbit arrows
-      // stay on the perimeter and do not cross the letter shapes.
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);p.setColor(active?GOLD:0xffacbab8);c.drawArc(x-r+4,y-r+4,x+r-4,y+r-4,205,65,false,p);c.drawArc(x-r+4,y-r+4,x+r-4,y+r-4,25,65,false,p);p.setStyle(Paint.Style.FILL);
-      UiTheme.center(c,"AU",x,y-.5f,8,active?GOLD:WHITE,true);UiTheme.center(c,"TO",x,y+7.5f,8,active?GOLD:WHITE,true);
+      UiTheme.center(c,"AUTO",x,y+3,7.5f,active?GOLD:WHITE,true);
+      if(active){p.setColor(GOLD);c.drawCircle(x,y+r-6,1.4f,p);}
 
     }else{
       icon(c,"attack",x,y-1,r*.58f,active);
@@ -81,6 +87,7 @@ final class MobileHudSkin {
     String glyph=status==QuestJournalModel.Status.REPORT?"✓":status==QuestJournalModel.Status.ACTIVE?"›":status==QuestJournalModel.Status.LOCKED?"·":"!";UiTheme.center(c,glyph,x,y+4,12,WHITE,true);
   }
   static void potion(Canvas c,float x,float y,boolean hp){
+    if(MobileHudArtwork.potion(c,x,y,hp))return;
     p.setStyle(Paint.Style.FILL);p.setColor(0xff242a2d);c.drawRoundRect(x-7,y-5,x+7,y+9,4,4,p);
     p.setShader(new LinearGradient(x-5,y,x+5,y+7,hp?0xffe99d9a:0xffa5dbef,hp?0xff983b42:0xff386bba,Shader.TileMode.CLAMP));c.drawRoundRect(x-5,y,x+5,y+7,2,2,p);p.setShader(null);
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xffc6c7bb);c.drawRoundRect(x-7,y-5,x+7,y+9,4,4,p);c.drawRect(x-3,y-10,x+3,y-5,p);c.drawLine(x-3,y-1,x-3,y+4,p);
