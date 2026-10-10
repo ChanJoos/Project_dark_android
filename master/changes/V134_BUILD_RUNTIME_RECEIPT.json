@@ -1,0 +1,103 @@
+{
+  "sourceSha": "f8eec3fd6c831dae33f699c6f27315d41473156e",
+  "sourceTree": "b8b7a7219b55180bd40b2a45dfe0cbf766eb8f9a",
+  "status": "INTEGRATED_BUILD_NATIVE_FULL_CI_VERIFIED",
+  "nativePreview": {
+    "runId": 38051917485,
+    "artifactId": 11669079838,
+    "zipSha256": "c0b820b6a2308e6b49b002e833214c1c35baf28ea917d5dca2a20db2eaa3b1ed",
+    "tests": 5,
+    "failed": 0,
+    "frames": [
+      "town-960x540",
+      "town-2340x1080",
+      "forest-960x540",
+      "forest-2340x1080"
+    ]
+  },
+  "skillSourceFilesUnchanged": 627,
+  "visualReview": "NATIVE_REVIEWED_USER_PENDING",
+  "physicalPhone": "PENDING",
+  "references": {
+    "originals": 10,
+    "userImages": 2,
+    "libraryId": "libfile_8ce81fed4bc881918aab42c7093d1c0b",
+    "archiveSha256": "4108530c6bbd0cc4d43fcbca41bea198b499385a8ca703ce7823e0ec5e858577"
+  },
+  "appTree": "09db1d7f009819409946478c890d92d7544bd24b",
+  "build": {
+    "sourceCommit": "f8eec3fd6c831dae33f699c6f27315d41473156e",
+    "runId": "38051917485",
+    "versionCode": 134,
+    "versionName": "1.34-mobile-hud",
+    "applicationId": "com.projectdark.mobile.v134test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "b55ceceb7b10fb37f0d56edfbc44616ab9908ca2f6089a68c649cb4dedc995a8",
+    "apkBytes": 61545190,
+    "builtSeoul": "2026-10-10T21:30:49.812897+09:00",
+    "scope": "Mobile HUD: upper-left minimap, transparent right quest, white utility icons, ten unchanged-art skill slots, bottom-center HP/MP and potions. Legacy eight-slot saves migrate transactionally. Native runtime tested; physical phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "nativeRegression": {
+    "runId": 38051917485,
+    "jobId": 114212594640,
+    "artifactId": 11669189904,
+    "zipSha256": "276aaa1578764d44e0a6c9762d13dbd1a21299047d66f1f54e2c973532046b19",
+    "suites": 14,
+    "tests": 91,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "apkArtifact": {
+    "id": 11669434795,
+    "zipSha256": "00f16724200cbdafa78f832de5fbd1ef8c512f3b6d9790ea27570e3fe2d3e671",
+    "CRC": "PASS",
+    "embeddedIdentity": "PASS",
+    "nativeHudClasses": "PASS",
+    "skillAssetByteMatches": 627
+  },
+  "previewImageSha256": "526b8fc91399256b9506477baddcafcdb8605d4f8d317c93cdc27d850d3ac597",
+  "townImageSha256": "beeecd24dbe3e69436d4825a358ce2f32f29d15b281f7b3ca57728bc00a7f59f",
+  "library": {
+    "apk": "libfile_d5a710d892e08191bd9d7f010d8863d9",
+    "forestPreview": "libfile_382f5cbe7d848191ba25a36c617d3f79",
+    "townPreview": "libfile_aadc429ac4188191819b5d4b8696be42",
+    "references": "libfile_8ce81fed4bc881918aab42c7093d1c0b",
+    "uiAssets": "libfile_34157307c8148191b5ce0f1fc463b7d5",
+    "uiAssetPreview": "libfile_2b9e986ae788819186d2450ff4924af9"
+  },
+  "uiAssetExport": {
+    "svg": 10,
+    "transparentPng": 10,
+    "archiveBytes": 77010,
+    "archiveSha256": "69bdaa5721c3b8413ef6d380f56052f6f8c8985716e07fc00528d45f750c7566",
+    "rasterVerification": "CAIRO_SVG_PASS_VISUALLY_REVIEWED",
+    "runtime": "Equivalent native Canvas vectors; skill art unchanged"
+  },
+  "fullAndroidPr": {
+    "runId": 38051920451,
+    "jobId": 114212603214,
+    "status": "SUCCESS",
+    "logsInspected": true,
+    "head": "f8eec3fd6c831dae33f699c6f27315d41473156e"
+  },
+  "fullAndroidPush": {
+    "runId": 38051917537,
+    "jobId": 114212594753,
+    "status": "SUCCESS",
+    "logsInspected": true,
+    "head": "f8eec3fd6c831dae33f699c6f27315d41473156e"
+  },
+  "merge": {
+    "pr": 189,
+    "sha": "abe94195002802c3a3e7bb5f58ccc73dc91c3ba4",
+    "tree": "b8b7a7219b55180bd40b2a45dfe0cbf766eb8f9a",
+    "exactTestedTreeMatch": true
+  },
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "nativeVisualReview": "Four actual 960x540/2340x1080 town/forest render fixtures reviewed; transient setup notices suppressed only in fixtures."
+}

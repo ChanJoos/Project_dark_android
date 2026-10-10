@@ -1,13 +1,20 @@
 mobile_hud_v134:
   owner: Director_single_editor
-  status: IMPLEMENTED_VERIFICATION_PENDING
-  active_branch: codex/mobile-hud-v134
+  status: INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED
+  active_branch: main
+  source: f8eec3fd6c831dae33f699c6f27315d41473156e
+  merge: abe94195002802c3a3e7bb5f58ccc73dc91c3ba4
+  source_tree: b8b7a7219b55180bd40b2a45dfe0cbf766eb8f9a
   skill_slots: 10
   legacy_slot_migration: 8_TO_10_TRANSACTIONAL
-  skill_art: PRESERVED
+  skill_art: PRESERVED_627_APK_BYTE_MATCHES
+  focused_actions: 38051917485
+  native_tests: 96_PASS
+  full_android: [SUCCESS_38051917537, SUCCESS_38051920451]
   physical_phone: PENDING
   user_visual: PENDING
-  evidence: master/source/ui/mobile_hud_v134/sources.json
+  evidence: master/changes/V134_BUILD_RUNTIME_RECEIPT.json
+  source_evidence: master/source/ui/mobile_hud_v134/sources.json
 
 ring_source_v133:
   owner: Director_single_editor

@@ -7,7 +7,10 @@
   "after": "Upper-left minimap with authored static terrain projection and live actors; transparent right quest; white upper-right native utility icons; ten circular unchanged-art skill slots; centered resources and HP/MP potions; lower-left compact chat.",
   "save": "Eight-slot snapshots accepted transactionally; ten-slot snapshots retain version1 and stable skill IDs; test slots migrate separately.",
   "evidence": "master/source/ui/mobile_hud_v134/sources.json",
-  "validation": "IMPLEMENTED_NATIVE_BUILD_PENDING",
+  "validation": "BUILD_NATIVE_FULL_CI_INTEGRATED_VERIFIED",
   "phone": "PENDING",
-  "userVisual": "PENDING"
+  "userVisual": "PENDING",
+  "receipt": "master/changes/V134_BUILD_RUNTIME_RECEIPT.json",
+  "sourceSha": "f8eec3fd6c831dae33f699c6f27315d41473156e",
+  "mergeSha": "abe94195002802c3a3e7bb5f58ccc73dc91c3ba4"
 }
