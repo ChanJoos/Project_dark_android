@@ -737,6 +737,7 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
   private void drawInventoryItemIcon(Canvas c,RpgInventoryPresentation.ItemRow row,float l,float t,float size){
     RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(row.itemId);
     if(sourceItemIcons==null)sourceItemIcons=new SourceItemIconRegistry(getContext());
+    if(sourceItemIcons.pending(row.itemId)){SourceItemIconRegistry.drawPending(c,new RectF(l,t,l+size,t+size));return;}
     Bitmap catalog=sourceItemIcons.get(d);
     if(catalog!=null){SourceItemIconRegistry.draw(c,catalog,new RectF(l,t,l+size,t+size),p);return;}
 

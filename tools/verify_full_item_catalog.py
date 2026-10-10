@@ -6,6 +6,10 @@ from build_full_item_catalog import runtime_items
 ROOT=Path(__file__).resolve().parents[1];APP=ROOT/'app/src/main/assets';m=json.loads((APP/'item-icons/manifest.json').read_text());assert set(m['items'])==set(runtime_items());seen=set();equivalent=0
 with zipfile.ZipFile(ROOT/'master/source/items/full_20261010/original_sources.zip')as z:
  for ident,r in m['items'].items():
+  if r.get('identityMatch')=='PENDING_REPLACEMENT_SOURCE':
+   assert ident=='IT_RING_THREELINEGOLD' and r['assetPath'] is None
+   assert not (APP/'equipment-icons/it_ring_threelinegold.png').exists()
+   continue
   p=APP/r['assetPath'];assert p.exists(),ident;assert hashlib.sha256(p.read_bytes()).hexdigest()==r['assetSha256'],ident
   if 'EQUIVALENT'in r['identityMatch']:equivalent+=1;assert r.get('limitation'),ident
   if r['assetPath']in seen:continue

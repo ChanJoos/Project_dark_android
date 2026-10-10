@@ -27,14 +27,13 @@ public class InventoryArtV131Test {
   assertEquals(30,(int)r.itemDefinitions().get("IT_TEST_WEAPON_MW002").statModifiers.get("MaxATK"));
   GameView v=new GameView(c);v.layout(0,0,960,540);ItemWindowReferenceTest.tap(v,608,28);save(v,"inventory-source-weapons");
  }
- @Test public void ringDrawsAllSourceForegroundPixelsAtOneToOneInsteadOfDownsampling()throws Exception{
-  SourceItemIconRegistry icons=new SourceItemIconRegistry(c);Bitmap ring=icons.get("IT_RING_THREELINEGOLD");assertEquals(35,ring.getWidth());assertEquals(27,ring.getHeight());
-  Bitmap canvas=Bitmap.createBitmap(43,43,Bitmap.Config.ARGB_8888);SourceItemIconRegistry.draw(new Canvas(canvas),ring,new RectF(0,0,43,43),new Paint());
-  int pixels=0;for(int y=0;y<27;y++)for(int x=0;x<35;x++){int p=ring.getPixel(x,y);assertEquals("source pixel "+x+","+y,p,canvas.getPixel(x+4,y+8));if(Color.alpha(p)>0)pixels++;}assertEquals(716,pixels);
+ @Test public void rejectedRingCaptureIsAbsentWhileDetailsAndEquipmentRemainReachable()throws Exception{
+  SourceItemIconRegistry icons=new SourceItemIconRegistry(c);assertTrue(icons.pending("IT_RING_THREELINEGOLD"));assertNull(icons.get("IT_RING_THREELINEGOLD"));
+  try{c.getAssets().open("equipment-icons/it_ring_threelinegold.png");fail("Rejected capture packaged");}catch(java.io.FileNotFoundException expected){}
   GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(v,"state");ItemWindow w=ItemWindowReferenceTest.field(v,"itemWindow");ItemWindowReferenceTest.tap(v,608,28);
   List<RpgInventoryPresentation.ItemRow> rows=new ArrayList<>(new RpgInventoryPresentation().inventoryRows(state.rpg()));int index=0;while(!"IT_RING_THREELINEGOLD".equals(rows.get(index).itemId))index++;
   w.page=index/50;int local=index%50;RectF cell=ItemWindow.cell(local);ItemWindowReferenceTest.tap(v,cell.centerX(),cell.centerY());assertEquals("IT_RING_THREELINEGOLD",w.hitItem);assertTrue(w.details);save(v,"ring-native-details");
-  canvas.recycle();
+
  }
  void save(GameView view,String name)throws Exception{Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(b));File p=new File("build/reports/inventory-art-v131");p.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(p,name+".png"))){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}b.recycle();}
 }

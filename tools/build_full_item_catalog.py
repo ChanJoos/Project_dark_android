@@ -87,18 +87,12 @@ if inventory_art:
    e=inventory_art['appearances'][a];CHOICES[ident]=(e['page'],e['filename'],e['identityMatch']);weapon_inventory[ident]=a
 
 def trim_ring():
- if not inventory_art:return
- spec=inventory_art['ring'];path=ROOT/spec['sourcePath'];x,y,w,h=spec['originalSourceCrop']
- image=Image.open(path).convert('RGBA').crop((x,y,x+w,y+h));bg=tuple(spec['transparentBackgroundRGB'])
- image.putdata([(*p[:3],0) if p[:3]==bg else p for p in image.getdata()])
- box=image.getbbox();assert box is not None
- original_foreground=sum(p[3]>0 for p in image.getdata());out=image.crop(box)
- assert list(out.size)==spec['newSize'] and sum(p[3]>0 for p in out.getdata())==original_foreground
- equip=ROOT/'app/src/main/assets/equipment-icons';out.save(equip/'it_ring_threelinegold.png')
- manifest=json.loads((equip/'manifest.json').read_text());row=manifest['items'][spec['itemId']]
- row.update(crop=[x+box[0],y+box[1],box[2]-box[0],box[3]-box[1]],assetSha256=sha(equip/'it_ring_threelinegold.png'),
-  projection='SOURCE_RGB_TRANSPARENT_MARGIN_TRIM_V131',inventoryPresentation='35x27 foreground at1x; previous54x48 canvas forced43/54 downsampling',
-  limitation='Labelled historical capture, capture era unknown. Same716 foreground pixels preserved; only fully transparent margins removed. No redraw/upscale/resampling.')
+ # V133: the user rejected this enlarged/blurred table capture. Preserve the
+ # historical source, but never regenerate or package its rejected projection.
+ equip=ROOT/'app/src/main/assets/equipment-icons'
+ (equip/'it_ring_threelinegold.png').unlink(missing_ok=True)
+ manifest=json.loads((equip/'manifest.json').read_text())
+ manifest['items'].pop('IT_RING_THREELINEGOLD',None)
  (equip/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 
 def main():
@@ -168,6 +162,7 @@ def main():
   for e in json.loads(performance.read_text())['shields']:
    original=e['iconSource'];name=original.split('_',1)[1];base=next(r for r in audit if r.get('sourceMember')=='raw/'+original)
    items[e['id']]=dict(base,itemId=e['id'],identityMatch='EXACT_SOURCE_KOREAN_LABEL',limitation='Exact named inventory icon; wearable appearance ID unverified and unbound.')
+ items['IT_RING_THREELINEGOLD']=dict(itemId='IT_RING_THREELINEGOLD',assetPath=None,identityMatch='PENDING_REPLACEMENT_SOURCE',visualStatus='USER_REJECTED_CAPTURE_REMOVED',limitation='V132 table capture rejected by user. Labelled native GIF URL found, but returns404. No substitute illustration asserted as original.')
  runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==422
  manifest=dict(revision='INVENTORY_ART_V131',registeredItems=len(items),policy='Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.',items=items)
  (APP/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
