@@ -46,7 +46,7 @@ public class SkillAbilityRuntimeTest {
    if(a.status.equals("DRAIN"))s.monsters().get(0).hp=100;
    if(r.minReach>1){s.monsters().get(0).x=32*r.minReach;s.monsters().get(0).y=16*r.minReach;}
    String target=r.selfAnchored()?"player":"m0";assertTrue(a.id,c.submitPlayer(target,a.id).accepted());
-   List<CombatResolver.Event> events=c.tick(r.contact+.001f).events;
+   List<CombatResolver.Event> events=c.tick(c.effectiveCastSeconds(a.id)+.001f).events;
    CombatResolver.Event hit=events.stream().filter(e->e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.amount>0).findFirst().orElse(null);assertNotNull(a.id,hit);distinct.add(hit.amount);
   }assertTrue("skills no longer share a flat fallback",distinct.size()>35);
  }

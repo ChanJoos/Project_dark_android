@@ -1,0 +1,224 @@
+{
+  "IT_WARDROBE_MU0000011": {
+    "name": "달마티카",
+    "stats": {
+      "AC": -16
+    },
+    "level": 11,
+    "source": "master/source/equipment/functions_v129/nexon_244.html",
+    "excerpt": "달마티카          /베누스타       : Ac-16, 레벨 11 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000016": {
+    "name": "로럼",
+    "stats": {
+      "AC": -24
+    },
+    "level": 41,
+    "source": "master/source/equipment/functions_v129/nexon_244.html",
+    "excerpt": "로럼                /스톨라          : Ac-24, 레벨 41 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000013": {
+    "name": "단도복",
+    "stats": {
+      "AC": -19
+    },
+    "level": 11,
+    "source": "master/source/equipment/functions_v129/nexon_268.html",
+    "excerpt": "단도복/연무도복    : Ac-19, 레벨 11 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000008": {
+    "name": "천지도복",
+    "stats": {
+      "AC": -29
+    },
+    "level": 41,
+    "source": "master/source/equipment/functions_v129/nexon_268.html",
+    "excerpt": "천지도복/풍월도복 : Ac-29, 레벨 41 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000018": {
+    "name": "선풍도복",
+    "stats": {
+      "AC": -38
+    },
+    "level": 71,
+    "source": "master/source/equipment/functions_v129/nexon_268.html",
+    "excerpt": "선풍도복/풍전도복 : Ac-38, 레벨 71 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000023": {
+    "name": "태산도복",
+    "stats": {
+      "AC": -48
+    },
+    "level": 99,
+    "source": "master/source/equipment/functions_v129/nexon_268.html",
+    "excerpt": "태산도복/대양도복 : Ac-48, 레벨 99 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000012": {
+    "name": "하프플레이트",
+    "stats": {
+      "AC": -24
+    },
+    "level": 26,
+    "source": "master/source/equipment/nexon_269.html",
+    "excerpt": "하프플레이트/미스티플레이트 : Ac-24, 레벨 26 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000017": {
+    "name": "카스뮴아머",
+    "stats": {
+      "AC": -30
+    },
+    "level": 41,
+    "source": "master/source/equipment/nexon_269.html",
+    "excerpt": "카스뮴아머/카스뮴플레이트    : Ac-30, 레벨 41 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000022": {
+    "name": "체인메일",
+    "stats": {
+      "AC": -36
+    },
+    "level": 56,
+    "source": "master/source/equipment/nexon_269.html",
+    "excerpt": "체인메일/아마존아머             : Ac-36, 레벨 56 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000028": {
+    "name": "이프리트메일",
+    "stats": {
+      "AC": -43
+    },
+    "level": 71,
+    "source": "master/source/equipment/nexon_269.html",
+    "excerpt": "이프리트메일/라비린스메일    : Ac-43, 레벨 71 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000027": {
+    "name": "풀플레이트",
+    "stats": {
+      "AC": -49
+    },
+    "level": 86,
+    "source": "master/source/equipment/nexon_269.html",
+    "excerpt": "풀플레이트/피닉스메일          : Ac-49, 레벨 86 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000029": {
+    "name": "골든플레이트",
+    "stats": {
+      "AC": -55
+    },
+    "level": 99,
+    "source": "master/source/equipment/nexon_269.html",
+    "excerpt": "골든플레이트/세인트아머       : Ac-55, 레벨 99 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000014": {
+    "name": "팔루텐",
+    "stats": {
+      "AC": -30
+    },
+    "level": 41,
+    "source": "master/source/equipment/functions_v129/nexon_270.html",
+    "excerpt": "팔루텐/코르스          : Ac-30, 레벨 41 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000019": {
+    "name": "키톤",
+    "stats": {
+      "AC": -40
+    },
+    "level": 71,
+    "source": "master/source/equipment/functions_v129/nexon_270.html",
+    "excerpt": "키톤/페플로스          : Ac-40, 레벨 71 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MU0000024": {
+    "name": "바르도클",
+    "stats": {
+      "AC": -50
+    },
+    "level": 99,
+    "source": "master/source/equipment/functions_v129/nexon_270.html",
+    "excerpt": "바르도클/카쿰          : Ac-50, 레벨 99 이상",
+    "status": "PARTIAL_NUMERIC_VERIFIED"
+  },
+  "IT_WARDROBE_MH162": {
+    "name": "아가트",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": -500,
+      "MAGIC_DEFENSE": 1
+    },
+    "level": null,
+    "source": "master/source/equipment/nexon_986.html",
+    "status": "PROMOTION_RESTRICTION_AND_MDEF_UNIT_PENDING"
+  },
+  "IT_WARDROBE_MH163": {
+    "name": "헬름",
+    "stats": {
+      "AC": -12,
+      "HP": 400,
+      "MP": 500,
+      "MAGIC_DEFENSE": 1
+    },
+    "level": null,
+    "source": "master/source/equipment/nexon_986.html",
+    "status": "PROMOTION_RESTRICTION_AND_MDEF_UNIT_PENDING"
+  },
+  "IT_WARDROBE_MH165": {
+    "name": "루크",
+    "stats": {
+      "AC": -8,
+      "HP": 800,
+      "MP": 200,
+      "MAGIC_DEFENSE": 1
+    },
+    "level": null,
+    "source": "master/source/equipment/nexon_986.html",
+    "status": "PROMOTION_RESTRICTION_AND_MDEF_UNIT_PENDING"
+  },
+  "IT_WARDROBE_MH166": {
+    "name": "마르두크",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": 600,
+      "MAGIC_DEFENSE": 1
+    },
+    "level": null,
+    "source": "master/source/equipment/nexon_986.html",
+    "status": "PROMOTION_RESTRICTION_AND_MDEF_UNIT_PENDING"
+  },
+  "IT_WARDROBE_MH167": {
+    "name": "아가트",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": -500,
+      "MAGIC_DEFENSE": 1
+    },
+    "level": null,
+    "source": "master/source/equipment/nexon_986.html",
+    "status": "PROMOTION_RESTRICTION_AND_MDEF_UNIT_PENDING"
+  },
+  "IT_WARDROBE_MH171": {
+    "name": "마르두크",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": 600,
+      "MAGIC_DEFENSE": 1
+    },
+    "level": null,
+    "source": "master/source/equipment/nexon_986.html",
+    "status": "PROMOTION_RESTRICTION_AND_MDEF_UNIT_PENDING"
+  }
+}

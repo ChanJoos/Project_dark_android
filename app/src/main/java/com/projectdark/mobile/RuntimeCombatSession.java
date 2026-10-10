@@ -75,11 +75,13 @@ public final class RuntimeCombatSession {
   public void setSkillProficiency(java.util.function.ToIntFunction<String> p){port.setSkillProficiency(p);}
   public void setSkillMovement(SkillAbilityExecutor.Movement m){port.setSkillMovement(m);}
   public String takeSkillNotice(){return port.takeSkillNotice();}
-  public boolean useUtility(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null||!a.supported()||!port.learned(PLAYER_ID,id)||!port.cooldownReady(PLAYER_ID,id)||port.actionReady(PLAYER_ID,PLAYER_ID,id,true)!=null)return false;port.prepareAction(PLAYER_ID,id);port.consumeResource(PLAYER_ID,a.mpCost);port.commitCooldown(PLAYER_ID,id,a.cooldown);port.applyDamage(PLAYER_ID,PLAYER_ID,id,0);port.finishAction(PLAYER_ID,id);return true;}
+  public boolean useUtility(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null||!a.supported()||!port.learned(PLAYER_ID,id)||!port.cooldownReady(PLAYER_ID,id)||port.actionReady(PLAYER_ID,PLAYER_ID,id,true)!=null)return false;port.prepareAction(PLAYER_ID,id);port.consumeResource(PLAYER_ID,ItemEffects.mpCost(state.rpg(),id,a.mpCost));port.commitCooldown(PLAYER_ID,id,a.cooldown);port.applyDamage(PLAYER_ID,PLAYER_ID,id,0);port.finishAction(PLAYER_ID,id);return true;}
   public float cooldownRemaining(String actorId,String actionId){return port.cooldownRemaining(actorId,actionId);}
   public void setSkillVisibility(java.util.function.Predicate<String> visible){port.setVisible(visible);}
   public void setBasicHits(java.util.function.IntSupplier hits){port.setBasicHits(hits);}
   public Map<String,CombatResolver.Definition> actionDefinitions(){return actions.definitions();}
+  public float effectiveCastSeconds(String id){CombatResolver.Definition d=actions.definitions().get(id);return d==null?Float.NaN:port.resolveDefinition(PLAYER_ID,d).hitTime;}
+  public int effectiveMpCost(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a==null?0:ItemEffects.mpCost(state.rpg(),id,a.mpCost);}
   public boolean playerActionActive(){return resolver.actionActive(PLAYER_ID);}
 
   public static String playerAttackActionId(int attackMode){

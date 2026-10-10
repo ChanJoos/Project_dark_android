@@ -16,7 +16,7 @@ final class ItemWindow {
   final Map<String,Bitmap> images=new HashMap<>();
   final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
   final RpgInventoryPresentation presentation=new RpgInventoryPresentation();
-  int page,filter;boolean details;String selectedSlot,hitItem,hitTargetSlot;
+  int page,filter,effectPage,effectPages=1;boolean details,effectDetails;String selectedSlot,hitItem,hitTargetSlot;
   ItemWindow(Context context){try{JSONObject m=new JSONObject(new String(PresentationAssetBytes.read(context,"item-window/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("crops");Iterator<String> keys=m.keys();while(keys.hasNext()){String k=keys.next();Bitmap b=BitmapFactory.decodeStream(context.getAssets().open(m.getJSONObject(k).getString("path")));if(b==null)throw new IllegalStateException(k);images.put(k,b);}}catch(Exception e){throw new IllegalStateException("Item window skin unavailable",e);}}
   static RectF cell(int i){float x=344+(i%10)*58,y=118+(i/10)*58;return new RectF(x,y,x+58,y+58);}
   static RectF slot(int i){return new RectF(POS[i][0],POS[i][1],POS[i][0]+55,POS[i][1]+55);}
@@ -47,7 +47,7 @@ final class ItemWindow {
     RpgInventoryPresentation.ItemRow selectedRow=find(r,selected);if(details&&selectedRow!=null){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(selected);if(d.equippable()){card(c,r,r.equippedDefinition(d.equipSlot),null,new RectF(40,228,467,517),"현재 장착",v);card(c,r,d,r.equippedDefinition(d.equipSlot),new RectF(479,228,936,517),"선택 장비",v);}else card(c,r,d,null,new RectF(479,228,936,517),"아이템 정보",v);if(RpgProgressionState.pairedSlot(d.equipSlot)){
       button(c,new RectF(649,476,765,507),d.itemId.equals(r.equipment().get(d.equipSlot))?"왼쪽 해제":"왼쪽 장착");
       button(c,new RectF(771,476,892,507),d.itemId.equals(r.equipment().get(RpgProgressionState.secondSlot(d.equipSlot)))?"오른쪽 해제":"오른쪽 장착");
-    }else button(c,new RectF(743,476,893,507),(r.isConsumable(selected)||r.isRecall(selected))?"사용":selectedRow.equipped?"해제":"장착");button(c,new RectF(898,234,929,264),"×");}
+    }else button(c,new RectF(743,476,893,507),ItemEffects.actionLabel(d,r,selectedRow.equipped));button(c,new RectF(898,234,929,264),"×");}
   }
   RpgInventoryPresentation.ItemRow find(RpgProgressionState r,String id){for(RpgInventoryPresentation.ItemRow row:presentation.inventoryRows(r))if(row.itemId.equals(id))return row;return null;}
   void card(Canvas c,RpgProgressionState r,RpgProgressionState.ItemDefinition d,RpgProgressionState.ItemDefinition old,RectF b,String title,Visuals v){
@@ -55,11 +55,23 @@ final class ItemWindow {
     RpgInventoryPresentation.ItemRow row=find(r,d.itemId);if(row!=null)v.icon(c,row,b.left+15,b.top+42,48);fit(c,RpgInventoryPresentation.displayName(d.name),b.left+76,b.top+56,b.width()-115,15,0xffe4dccb);
     String job=!d.jobRestrictionResolved?"직업 조건 확인 중":d.allowedJobCodes.isEmpty()?"공통":String.join(" · ",d.allowedJobCodes);fit(c,job,b.left+76,b.top+76,b.width()-92,11,0xffd5bd7c);
     txt(c,d.requiredLevel==null?"레벨 조건 확인 중":"Lv."+d.requiredLevel+" 이상 장착 가능",b.left+76,b.top+96,12,0xffd0ccbf);if(row!=null)txt(c,r.equipmentSandbox()?"테스트: 레벨·직업 조건 면제":presentation.requirementLabel(row),b.left+76,b.top+115,11,0xffc4b79c);
-    txt(c,d.equippable()?(d.evidence==RpgProgressionState.Evidence.FAN?"기본 옵션 · 특수 효과 확인 중":"기본 옵션"):"보유 수량  "+(row==null?0:row.quantity),b.left+16,b.top+145,12,0xffd8ccb3);
-    RectF opts=new RectF(b.left+14,b.top+156,b.right-14,b.bottom-48);border(c,opts,UiTheme.LINE);int n=0;
-    String[] keys={"MinATK","MaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX"};
-    for(String key:keys){int value=mod(d,key),prior=mod(old,key);if(value==0&&prior==0)continue;float yy=opts.top+14+(n%6)*12,xx=opts.left+(n/6)*opts.width()/2;txt(c,key.equals("MinATK")?"최소 공격":key.equals("MaxATK")?"최대 공격":key.equals("MAGIC_DEFENSE")?"마법방어":key,xx+8,yy,10,0xffdcd8cd);txt(c,""+value,xx+81,yy,11,0xffebe5d8);int delta=value-prior;if(old!=null&&delta!=0){boolean good=key.equals("AC")?delta<0:delta>0;txt(c,(good?"▲ ":"▼ ")+Math.abs(delta),xx+115,yy,10,good?0xff6dda59:0xffed8074);}n++;}if(n==0)txt(c,d.attackElement!=null||d.defenseElement!=null?"속성 장비":d.equippable()?"수치 자료 확인 중":"추가 능력치 없음",opts.left+9,opts.top+24,12,0xffaaa696);
+    button(c,new RectF(b.left+14,b.top+126,b.left+130,b.top+150),"능력치");button(c,new RectF(b.left+142,b.top+126,b.left+268,b.top+150),"효과 · 설명");
+    RectF opts=new RectF(b.left+14,b.top+156,b.right-14,b.bottom-48);border(c,opts,UiTheme.LINE);if(effectDetails||!d.equippable()){drawEffects(c,d,opts);return;}int n=0;
+    String[] keys={"MinATK","MaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX","REGEN"};
+    for(String key:keys){int value=mod(d,key),prior=mod(old,key);if(value==0&&prior==0)continue;float yy=opts.top+14+(n%7)*10,xx=opts.left+(n/7)*opts.width()/2;txt(c,key.equals("MinATK")?"최소 공격":key.equals("MaxATK")?"최대 공격":key.equals("MAGIC_DEFENSE")?"마법방어":key.equals("REGEN")?"재생력":key,xx+8,yy,10,0xffdcd8cd);txt(c,""+value,xx+81,yy,11,0xffebe5d8);int delta=value-prior;if(old!=null&&delta!=0){boolean good=key.equals("AC")?delta<0:delta>0;txt(c,(good?"▲ ":"▼ ")+Math.abs(delta),xx+115,yy,10,good?0xff6dda59:0xffed8074);}n++;}if(n==0)txt(c,d.attackElement!=null||d.defenseElement!=null?"속성 장비":d.equippable()?"수치 자료 확인 중":"추가 능력치 없음",opts.left+9,opts.top+24,12,0xffaaa696);
     if(d.attackElement!=null||d.defenseElement!=null)txt(c,(d.attackElement!=null?"공격 속성 "+d.attackElement:"방어 속성 "+d.defenseElement),opts.left+9,opts.bottom-7,10,0xffd5bd7c);
+  }
+  void drawEffects(Canvas c,RpgProgressionState.ItemDefinition d,RectF b){
+    List<String> lines=new ArrayList<>();p.setTypeface(UiTheme.font(false));p.setTextSize(11);
+    for(String para:ItemEffects.description(d)){String line="";for(int i=0;i<para.length();i++){String next=line+para.charAt(i);if(p.measureText(next)>b.width()-20&&!line.isEmpty()){lines.add(line);line=""+para.charAt(i);}else line=next;}if(!line.isEmpty())lines.add(line);}
+    int pages=Math.max(1,(lines.size()+4)/5),pg=Math.min(effectPage,pages-1);effectPages=pages;effectPage=pg;
+    for(int i=0;i<5&&pg*5+i<lines.size();i++)txt(c,lines.get(pg*5+i),b.left+8,b.top+14+i*12,11,UiTheme.TEXT);
+    if(pages>1){txt(c,"‹",b.left+12,b.bottom-3,12,UiTheme.GOLD);txt(c,(pg+1)+" / "+pages,b.centerX()-20,b.bottom-3,10,UiTheme.MUTED);txt(c,"›",b.right-22,b.bottom-3,12,UiTheme.GOLD);}
+  }
+  boolean detailTouch(float x,float y,float left){
+    if(y>=354&&y<=378&&x>=left+14&&x<=left+268){effectDetails=x>=left+142;effectPage=0;return true;}
+    if(y>=450&&y<469){if(x>=left+14&&x<left+75){effectPage=Math.max(0,effectPage-1);return true;}if(x>left+300&&x<=left+440){effectPage=Math.min(effectPages-1,effectPage+1);return true;}}
+    return false;
   }
   static int mod(RpgProgressionState.ItemDefinition d,String k){return d==null?0:d.statModifiers.getOrDefault(k,0);}
   void equipment(Canvas c,RpgProgressionState r,String selected,Visuals v){
@@ -82,17 +94,17 @@ final class ItemWindow {
     else{UiTheme.equipmentGlyph(c,"갑옷",727,305,28,0xff9b7a4f);UiTheme.center(c,"장비를 선택하세요",727,368,16,UiTheme.TEXT,true);UiTheme.center(c,"각 부위의 능력치와 착용 정보를 확인합니다.",727,393,11,UiTheme.MUTED,false);}
   }
   Hit inventoryTouch(float x,float y,RpgProgressionState r){hitItem=null;hitTargetSlot=null;if(new RectF(896,48,940,83).contains(x,y))return Hit.CLOSE;
-    if(details&&y>=228){if(new RectF(898,234,936,268).contains(x,y)){details=false;return Hit.CONSUMED;}if(y>=476&&y<=507&&x>=649&&x<=892){
+    if(details&&y>=228){if(detailTouch(x,y,479))return Hit.CONSUMED;if(new RectF(898,234,936,268).contains(x,y)){details=false;return Hit.CONSUMED;}if(y>=476&&y<=507&&x>=649&&x<=892){
       // Selection is held by the controller; derive target from the displayed item below.
       hitTargetSlot=x<771?"LEFT":"RIGHT";return Hit.ACTION;
     }return Hit.CONSUMED;}
     for(int i=0;i<3;i++)if(new RectF(342+i*70,80,409+i*70,110).contains(x,y)){filter=i;page=0;details=false;return Hit.CONSUMED;}
     List<RpgInventoryPresentation.ItemRow> list=rows(r);int pages=Math.max(1,(list.size()+49)/50);if(y>=463&&y<500){if(x>=344&&x<400)page=Math.max(0,page-1);if(x>=866&&x<924)page=Math.min(pages-1,page+1);return Hit.CONSUMED;}
-    for(int i=0;i<50;i++)if(cell(i).contains(x,y)){int n=page*50+i;if(n<list.size()){hitItem=list.get(n).itemId;details=true;return Hit.SELECT;}return Hit.CONSUMED;}
+    for(int i=0;i<50;i++)if(cell(i).contains(x,y)){int n=page*50+i;if(n<list.size()){hitItem=list.get(n).itemId;details=true;effectDetails=false;effectPage=0;return Hit.SELECT;}return Hit.CONSUMED;}
     return Hit.CONSUMED;
   }
-  Hit equipmentTouch(float x,float y,RpgProgressionState r){hitItem=null;if(new RectF(476,48,511,84).contains(x,y))return Hit.CLOSE;if(new RectF(549,74,797,112).contains(x,y))return Hit.DETAILS;
+  Hit equipmentTouch(float x,float y,RpgProgressionState r){hitItem=null;if(selectedSlot!=null&&detailTouch(x,y,533))return Hit.CONSUMED;if(new RectF(476,48,511,84).contains(x,y))return Hit.CLOSE;if(new RectF(549,74,797,112).contains(x,y))return Hit.DETAILS;
     if(new RectF(743,476,893,507).contains(x,y)&&selectedSlot!=null){hitItem=r.equipment().get(selectedSlot);if(hitItem!=null)return Hit.ACTION;}
-    for(int i=0;i<SLOTS.length;i++)if(slot(i).contains(x,y)){selectedSlot=SLOTS[i];hitItem=r.equipment().get(selectedSlot);return hitItem==null?Hit.CONSUMED:Hit.SELECT;}return Hit.CONSUMED;
+    for(int i=0;i<SLOTS.length;i++)if(slot(i).contains(x,y)){selectedSlot=SLOTS[i];effectDetails=false;effectPage=0;hitItem=r.equipment().get(selectedSlot);return hitItem==null?Hit.CONSUMED:Hit.SELECT;}return Hit.CONSUMED;
   }
 }

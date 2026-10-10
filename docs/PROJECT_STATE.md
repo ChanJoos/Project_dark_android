@@ -1,3 +1,7 @@
+## 2026-10-10 — V129 item function repair candidate
+
+User authorized all functions and explicit GitHub writes. Accepted master/changes/ITEM-FUNCTIONS-V129.json. Central ItemEffects connects conditional staff cast time/fixed MP costs, consumable atomic use, paired REGEN and actual descriptions;21 exact partial source numeric profiles and23 regeneration profiles. All408 definitions audited in native test output. Original completeness NOT verified:151 wardrobe numerical options, coma/party/XP/durability/expiry remain pending; source-conflicting regeneration and antidote explicitly adapted. Preserved original pixels and accepted physical combat. Implementation candidate; exact build/native/UI/phone verification PENDING. Branch codex/item-functions-v129 from ada25c7d1ac77bf666ad0419cb127bc475febccc.
+
 ## 2026-10-10 — V128 identity and dual equipment repair integrated
 
 IMPLEMENTED / BUILD_VERIFIED / RUNTIME_VERIFIED_NATIVE / AGENT_VISUAL_REVIEW_PASS. USER_VISUAL_ACCEPTANCE and PHYSICAL_PHONE_ACCEPTANCE remain PENDING. User-reported V127 mismatched names/icons/wearables and up-to2.5x enlarged small items are reproduced and repaired. Registered408 items audited; added172 source-named wardrobe entries (38 weapons,101 armor,33 hats), including Magic Pana. Original native pixels/max1x shared across inventory/equipment/shop/reagents. Both glove and ring pairs support explicit left/right equip/unequip, owned quantity limits, additive FinalStats and real save restore; legacy keys remain the left hand.

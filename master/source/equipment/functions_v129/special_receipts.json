@@ -1,0 +1,183 @@
+{
+  "staffLevelReceipts": {
+    "IT_WARDROBE_MW007": {
+      "name": "매직마르시아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW009": {
+      "name": "매직쥬피티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW026": {
+      "name": "매직루나",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW027": {
+      "name": "매직가이아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW059": {
+      "name": "매직솔라",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW060": {
+      "name": "아리펠스탭",
+      "level": 41,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW062": {
+      "name": "매직파나",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_JOB_MAGE_WAND": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_JOB_CLERIC_WAND": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_11": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_26": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_11": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_26": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    }
+  },
+  "accessoryRegeneration": {
+    "IT_SOURCE_146_REDMARINE_4BEA9E11": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_146_KAENHORUDEITO_964F13A2": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_146_DAITIHORUDEITO_6523D03A": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_146_UMIHORUDEITO_652BB8EC": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_155_GURINHATOGURI_871D87FC": {
+      "REGEN": 5
+    },
+    "IT_SOURCE_155_REDOHATOGURI_BA65AE3F": {
+      "REGEN": 5
+    },
+    "IT_SOURCE_155_SANGOGURI_48B5B5B7": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_155_AKUAGURI_C4398D7E": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_155_YUMOU_47B94777": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_155_RYUGURI_A6E43C6B": {
+      "REGEN": 5
+    },
+    "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103": {
+      "REGEN": 5
+    },
+    "IT_SOURCE_155_AB10_A6AAE9C2": {
+      "REGEN": 5
+    },
+    "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_170_NOESGLOVE81_7DBCEB08": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_170_NOESUDEWA51_63C1878A": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_170_NOESUDEWA81_1D924113": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038": {
+      "REGEN": 1
+    },
+    "IT_SOURCE_197_HICRYSTAL_A94FCE06": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_197_TICRYSTAL_A90E7D50": {
+      "REGEN": 10
+    },
+    "IT_SOURCE_197_UMICRYSTAL_21B5EDA7": {
+      "REGEN": 10
+    }
+  },
+  "warnings": {
+    "IT_SOURCE_146_RI-ZENTO_DC68008A": "경험치 증가·시간별 내구 소모는 원작 규칙 미확정으로 적용되지 않습니다.",
+    "IT_SOURCE_146_REDMARINE_4BEA9E11": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_146_KAENHORUDEITO_964F13A2": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_146_DAITIHORUDEITO_6523D03A": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_146_UMIHORUDEITO_652BB8EC": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_GURINHATOGURI_871D87FC": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_REDOHATOGURI_BA65AE3F": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_SANGOGURI_48B5B5B7": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_AKUAGURI_C4398D7E": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_YUMOU_47B94777": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_RYUGURI_A6E43C6B": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_155_AB10_A6AAE9C2": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_170_NOESGLOVE81_7DBCEB08": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_170_NOESUDEWA51_63C1878A": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_170_NOESUDEWA81_1D924113": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_197_HICRYSTAL_A94FCE06": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_197_TICRYSTAL_A90E7D50": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+    "IT_SOURCE_197_UMICRYSTAL_21B5EDA7": "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다."
+  },
+  "regenerationFormula": "PROJECT_ADAPTED: additional HP every25s = floor(baseMaxHP * REGEN /1000); no MP; source1878 internally inconsistent, not original-certification",
+  "staffTimingSource": "nexon_3578.html",
+  "panaMpSource": "nexon_276.html",
+  "consumableSource": "nexon_3747.html"
+}

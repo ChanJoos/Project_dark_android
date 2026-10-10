@@ -40,6 +40,7 @@ public final class CombatResolver {
     default RejectReason actionReady(String actor,String target,String action,boolean begin){return null;}
     default void prepareAction(String actor,String action){}
     default void finishAction(String actor,String action){}
+    default Definition resolveDefinition(String actor,Definition definition){return definition;}
     default List<String> recipients(String actor,String target,String action){return Collections.singletonList(target);}
   }
   public static final class Event {
@@ -62,6 +63,7 @@ public final class CombatResolver {
 
   public BeginResult begin(Definition d,String a,String t,InputMode m){
     if(d==null||a==null||t==null)throw new IllegalArgumentException("action request");
+    d=port.resolveDefinition(a,d);
     InputMode mode=m==null?InputMode.MANUAL:m; RejectReason r=validate(d,a,t,true);
     if(r==null&&activeByActor.containsKey(a))r=RejectReason.ACTION_BUSY;
     if(r!=null){emit(EventType.ACTION_REJECTED,0,a,t,d,mode,r,null,0);return new BeginResult(false,0,r);}

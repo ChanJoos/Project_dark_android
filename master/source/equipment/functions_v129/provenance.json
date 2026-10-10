@@ -1,0 +1,72 @@
+[
+  {
+    "path": "master/source/equipment/functions_v129/nexon_1340.html",
+    "sha256": "bed957c99e182638acfc0e6769572e0c43806212f99f5a33416ddba04c2070f6",
+    "url": "https://lod.nexon.com/community/game/1340?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_1414.html",
+    "sha256": "8ea1c7c1d40df594617d8890176bd0740831c91120029ca2759052121ea12a17",
+    "url": "https://lod.nexon.com/community/game/1414?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_1878.html",
+    "sha256": "7f0188ad0b43e2b8615fb07b46563bf277c31ca1cd41f8731b5e8cc31e422f52",
+    "url": "https://lod.nexon.com/community/game/1878?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_244.html",
+    "sha256": "765296213a60273dc8952d9f18fa092afb3cb8dba9a35be7fc0450e224e0cca9",
+    "url": "https://lod.nexon.com/community/game/244?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_268.html",
+    "sha256": "7462acbbbe8be15cfa885dc63124316115b650a387dff8c01e70daa4114dd549",
+    "url": "https://lod.nexon.com/community/game/268?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_270.html",
+    "sha256": "27ee0159a0b830e5e62932e5b02b08217390a66336201f6230e203cf394cf938",
+    "url": "https://lod.nexon.com/community/game/270?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_276.html",
+    "sha256": "54d43c804fbefd20f189e60861a66a2763f4f6064ec916819a56f42cdb2924df",
+    "url": "https://lod.nexon.com/community/game/276?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_3578.html",
+    "sha256": "b3f2eb7b3fb347c31413e7e1d520604553f16a51bd7b6f52ace33d3a7551c870",
+    "url": "https://lod.nexon.com/community/game/3578?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_3747.html",
+    "sha256": "b4a9fd588d9f7a769ecc3dff31e31261c803cbcbbbe7f5ee2df7a4c81f725532",
+    "url": "https://lod.nexon.com/community/game/3747?SearchBoard=1",
+    "authority": "NEXON_HOSTED_COMMUNITY_V_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/functions_v129/nexon_4933.html",
+    "sha256": "4dffba663f8eb88edc6ff4d5b2e19f0fb7597a766fd277a21c1483385870f40c",
+    "url": "https://lod.nexon.com/News/update/4933",
+    "authority": "NEXON_OFFICIAL_UPDATE_O",
+    "retrieved": "2026-10-10"
+  }
+]

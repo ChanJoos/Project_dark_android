@@ -9,6 +9,8 @@ final class SkillWindow {
   interface Actions {
     void use(SkillBook.Entry entry);boolean canLearn(SkillBook.Entry entry);void learn(SkillBook.Entry entry);
     SkillAcquisition.Quote quote(SkillBook.Entry entry);long gold();boolean save();float cooldown(String id);
+    default float castSeconds(String id){return Float.NaN;}
+    default int mpCost(String id,int base){return base;}
     String requirements(SkillBook.Entry entry);void notice(String text);default void testMode(boolean enabled){}
   }
   private static final String[] JOBS={"공통","전사","도적","무도가","마법사","성직자","전체"};
@@ -80,10 +82,11 @@ final class SkillWindow {
     fittedCenter(c,e.name,r.centerX(),r.bottom-4,r.width()-6,9.5f,book.learned(e.id)?TEXT:MUTED);
     float cd=a.cooldown(e.id);if(cd>0){fill(c,art.left,art.top,art.right,art.bottom,0xb9000000);center(c,seconds(cd),art.centerX(),art.centerY()+4,12,TEXT);}
   }
+  private String resourceLabel(String id,Actions actions){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a==null?"—":a.resourceBurst()?SkillAbilityCatalog.resources(a):"MP "+actions.mpCost(id,a.mpCost);}
   private void drawDetail(Canvas c,SkillBook.Entry e,Actions a){icon(c,e,new RectF(647,87,687,123));fitted(c,e.name,695,109,213,14,TEXT,true);
     SkillDef d=e.runtime;org.json.JSONObject captured=skin.capturedDetails(e.id);String cd=d==null?(captured==null?"—":captured.optInt("cooldownSeconds")+" 초"):"SK_공통_001".equals(e.id)?"무기 기준":seconds(d.cooldown)+" 초";
-    label(c,"대기시간",646,141,13,TEXT,false);right(c,cd,773,141,13,TEXT);label(c,"시전시간",783,141,13,TEXT,false);right(c,captured==null?"—":captured.optInt("castSeconds")+" 초",911,141,13,TEXT);
-    label(c,"숙련도",646,156,13,TEXT,false);right(c,book.proficiency(e.id)+"/100",773,156,13,TEXT);label(c,"소모MP",783,156,13,TEXT,false);right(c,d==null?(captured==null?"—":""+captured.optInt("mpCost")):SkillAbilityCatalog.resources(SkillAbilityCatalog.get(e.id)),911,156,13,TEXT);
+    label(c,"대기시간",646,141,13,TEXT,false);right(c,cd,773,141,13,TEXT);label(c,"시전시간",783,141,13,TEXT,false);right(c,Float.isNaN(a.castSeconds(e.id))?(captured==null?"—":captured.optInt("castSeconds")+" 초"):seconds(a.castSeconds(e.id))+" 초",911,141,13,TEXT);
+    label(c,"숙련도",646,156,13,TEXT,false);right(c,book.proficiency(e.id)+"/100",773,156,13,TEXT);label(c,"소모MP",783,156,13,TEXT,false);right(c,SkillAbilityCatalog.get(e.id)==null?(captured==null?"—":""+captured.optInt("mpCost")):resourceLabel(e.id,a),911,156,13,TEXT);
     if(detailPage==0){SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(e.id);String summary=ability!=null&&ability.supported()?(ability.damage()||ability.heal()?e.effect+"\n":"")+ability.description:captured==null?book.summary(e.id):captured.optString("description");List<String> lines=wrap(summary.isEmpty()?e.effect:summary,265,11);c.save();c.clipRect(646,164,912,219);for(int i=0;i<Math.min(4,lines.size());i++)label(c,lines.get(i),646,175+i*13,11,TEXT,false);c.restore();
       fill(c,646,225,912,254,UiTheme.SURFACE);UiTheme.surface(c,new RectF(646,225,912,254),UiTheme.SURFACE,UiTheme.LINE,6);center(c,"퀵슬롯에 등록해 주세요.",779,244,12,MUTED);
       String status=book.learned(e.id)?"보유하고 있는 스킬입니다.":a.canLearn(e)?"습득할 수 있는 스킬입니다.":e.runtime==null&&!book.testAccess()?"현재 습득할 수 없는 스킬입니다.":"습득 조건을 확인해 주세요.";

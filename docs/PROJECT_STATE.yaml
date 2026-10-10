@@ -1,3 +1,15 @@
+item_functions_v129:
+  owner: Director_single_editor
+  status: ACTIVE_IMPLEMENTATION
+  user_authorized: 2026-10-10_ALL_REGISTERED_ITEM_FUNCTIONS_AND_DESCRIPTIONS
+  base_sha: ada25c7d1ac77bf666ad0419cb127bc475febccc
+  branch: codex/item-functions-v129
+  required_sources: [docs/ITEM_FUNCTIONS_V129_CONTRACT.md, design/DATA_CONTRACT.md, docs/EQUIPMENT_FOUNDATION_V124_CONTRACT.md, master/canonical/Equipment_Stats.csv, master/canonical/Item_Evidence.csv, master/canonical/Accessory_Catalog.json, master/source/equipment/identity_v128/catalog.json, master/source/equipment/functions_v129/provenance.json]
+  original_all_item_function_completeness: NOT_VERIFIED
+  build: PENDING
+  native_runtime: PENDING
+  physical_phone: PENDING
+
 accessory_catalog_v125:
   implementation: IMPLEMENTED
   source_images_user_review: APPROVED
