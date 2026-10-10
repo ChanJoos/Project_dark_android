@@ -1,3 +1,11 @@
+all_skill_runtime_v138:
+  owner: Director_single_editor
+  status: IN_DEVELOPMENT
+  active_branch: codex/all-skill-runtime-v138
+  scope: ALL_221_TIMING_SPATIAL_RESOURCE_AND_SUPPORT_AUDIT
+  required_sources: [docs/SKILL_ABILITY_CONTRACT.md, docs/SKILL_SPATIAL_CONTRACT.md, docs/MAGIC_RUNTIME_V137.md, docs/SKILL_ACTION_DECISIONS.csv, app/src/main/assets/skills/catalog.json, app/src/main/assets/skills/abilities.json, master/data/Skill_Master.csv, master/data/Skill_Formula_Research.csv, master/data/Skill_Damage_Model.csv, master/changes/ALL-JOB-SOURCE-V70.json]
+  physical_phone: PENDING
+
 magic_runtime_v137:
   owner: Director_single_editor
   active_branch: main

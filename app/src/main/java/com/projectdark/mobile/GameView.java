@@ -398,12 +398,12 @@ public final class GameView extends View {
       if(entry==null||!skillBook.usable(entry.id)||!skillBook.jobAllowed(entry.id))continue;
       SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
       if(!rangedSpell(rule)||!rule.damage())continue;
-      if(current!=null&&(!skillTargetVisible(current.id)||!activeWorld().hasCombatLineOfSight("player",current.id))){skillApproach.begin(entry.id,current.id);tickSkillApproach(0);}
+      if(!rule.selfAnchored()&&current!=null&&(!skillTargetVisible(current.id)||!activeWorld().hasCombatLineOfSight("player",current.id))){skillApproach.begin(entry.id,current.id);tickSkillApproach(0);}
       return;
     }
     if(combat.attackReady())attack();
   }
-  private static boolean rangedSpell(SkillActionContract.Rule rule){return rule!=null&&"마법".equals(rule.kind)&&rule.pattern==SkillActionContract.Pattern.SINGLE&&rule.reach==0&&rule.minReach==0;}
+  private static boolean rangedSpell(SkillActionContract.Rule rule){return rule!=null&&"마법".equals(rule.kind)&&rule.minReach==0&&(rule.pattern==SkillActionContract.Pattern.SINGLE&&rule.reach==0||rule.pattern==SkillActionContract.Pattern.TARGET_CROSS||rule.pattern==SkillActionContract.Pattern.SCREEN);}
 
   private static boolean isMonsterApproach(WorldMoveTargetController.Snapshot move){return move!=null&&move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH&&move.status==WorldMoveTargetController.Status.MOVING;}
 
