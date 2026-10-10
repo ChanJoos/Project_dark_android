@@ -1,3 +1,7 @@
+## 2026-10-10 — V134 publishing HUD implementation (active)
+
+User-authorized mobile HUD reconstruction: left minimap, transparent right quest, fine white utility glyphs, ten actual skill slots preserving existing artwork, central HP/MP/resources and potions, left compact chat. Stable gameplay/content retained. Legacy eight-slot saves migrate transactionally; normal/test slots remain separate. Official HUD originals, Android store and user mobile references recorded in master/source/ui/mobile_hud_v134/sources.json. YouTube channel timed out; no video-frame extraction claimed. Implementation/native build/runtime/phone/user acceptance gates are tracked separately. Branch codex/mobile-hud-v134. Accepted change master/changes/MOBILE-HUD-V134.json.
+
 ## 2026-10-10 — V133 reference-matched ring replacement integrated
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED / INTEGRATED. Replaced the user-rejected blurred table crop with the32×32 native braided ring corroborated by the two user inventory/equipment references; original RGB/native size preserved with a separate alpha mask. All422 item-art bindings verified; rejected equipment PNG absent. Same ring ID/stats/equip/trade/save. Normal/wide detail and paired-card native images reviewed; phone/user visual acceptance PENDING. Native capture is not independently tooltip-labelled; receipt explicitly records user-reference correspondence.

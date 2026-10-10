@@ -46,7 +46,7 @@ public class EquipmentPerformanceV130Test {
   }
   assertEquals(14,count);
   for(String id:new String[]{"IT_WARDROBE_MW023","IT_WARDROBE_MW044","IT_WARDROBE_MW062","IT_WARDROBE_MW060","IT_SHIELD_LEATHER","IT_SHIELD_GOLD","IT_SHIELD_DEATHKNIGHT"}){
-   ItemWindowReferenceTest.tap(view,608,28);ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());int index=-1;for(int i=0;i<rows.size();i++)if(rows.get(i).itemId.equals(id))index=i;assertTrue(index>=0);
+   ItemWindowReferenceTest.tap(view,742,28);ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());int index=-1;for(int i=0;i<rows.size();i++)if(rows.get(i).itemId.equals(id))index=i;assertTrue(index>=0);
    while(w.page<index/50)ItemWindowReferenceTest.tap(view,894,480);while(w.page>index/50)ItemWindowReferenceTest.tap(view,372,480);
    RectF b=ItemWindow.cell(index%50);ItemWindowReferenceTest.tap(view,b.centerX(),b.centerY());
    Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(image));try(FileOutputStream out=new FileOutputStream(new File(directory(),id+"-stats.png"))){assertTrue(image.compress(Bitmap.CompressFormat.PNG,100,out));}image.recycle();

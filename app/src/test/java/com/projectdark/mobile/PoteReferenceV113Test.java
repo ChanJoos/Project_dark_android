@@ -32,10 +32,10 @@ public final class PoteReferenceV113Test {
   for(RuntimeState.Monster m:state.monsters())m.alive=false;
   WorldRuntimeAdapter world=TownInteriorTest.field(v,"poteFieldAdapter");WorldMoveTargetController.TileCenter far=PoteCampaignMapDef.forId(state.currentMapId()).nearest(3000,1400),near=PoteCampaignMapDef.forId(state.currentMapId()).nearest(state.player().x+96,state.player().y+48);
   RuntimeState.Monster red=state.monsters().get(0),green=state.monsters().get(1);red.alive=green.alive=true;red.x=far.x;red.y=far.y;green.x=near.x;green.y=near.y;
-  assertEquals("A02",cp.next(state.rpg()).id);TownInteriorTest.tap(v,80,150);CombatController combat=TownInteriorTest.field(v,"combat");assertSame("A02 red hunt acquires the remote red, ignoring near green",red,combat.target());assertTrue(Math.hypot(red.x-state.player().x,red.y-state.player().y)>1000);
+  assertEquals("A02",cp.next(state.rpg()).id);TownInteriorTest.tap(v,790,104);CombatController combat=TownInteriorTest.field(v,"combat");assertSame("A02 red hunt acquires the remote red, ignoring near green",red,combat.target());assertTrue(Math.hypot(red.x-state.player().x,red.y-state.player().y)>1000);
   assertSame(red,world.selectAutoTarget(m->m.campaignRewardProfileId.equals("POTE_RED")));
   // Visible manual AUTO off/on must discard the quickquest species filter.
-  TownInteriorTest.tap(v,842,495);TownInteriorTest.tap(v,842,495);assertNull(TownInteriorTest.field(v,"autoHuntQuestId"));assertSame(green,combat.target());
+  TownInteriorTest.tap(v,842,518);TownInteriorTest.tap(v,842,518);assertNull(TownInteriorTest.field(v,"autoHuntQuestId"));assertSame(green,combat.target());
  }
  @Test public void nativeSceneShowsAllMapsAndOccludedPlayerMonsterNpc()throws Exception{
   GameView v=new GameView(RuntimeEnvironment.getApplication());v.layout(0,0,1536,864);invoke(v,"enterPoteField");RuntimeState state=TownInteriorTest.field(v,"state");

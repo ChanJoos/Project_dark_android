@@ -1,0 +1,13 @@
+{
+  "id": "MOBILE-HUD-V134",
+  "status": "ACCEPTED",
+  "owner": "Director_single_editor",
+  "reason": "User requests publishing-video HUD matching Dokkaebi world mobile layout, keeping existing skill icons.",
+  "before": "Opaque top-left status and quest, top-right minimap, eight skill slots plus two potions, centered chat",
+  "after": "Upper-left minimap with authored static terrain projection and live actors; transparent right quest; white upper-right native utility icons; ten circular unchanged-art skill slots; centered resources and HP/MP potions; lower-left compact chat.",
+  "save": "Eight-slot snapshots accepted transactionally; ten-slot snapshots retain version1 and stable skill IDs; test slots migrate separately.",
+  "evidence": "master/source/ui/mobile_hud_v134/sources.json",
+  "validation": "IMPLEMENTED_NATIVE_BUILD_PENDING",
+  "phone": "PENDING",
+  "userVisual": "PENDING"
+}

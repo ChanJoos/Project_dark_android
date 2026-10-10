@@ -16,7 +16,7 @@ public class ClassicPolishV132Test {
  RpgProgressionState rpg(GameView v)throws Exception{return ((RuntimeState)ItemWindowReferenceTest.field(v,"state")).rpg();}
  ItemWindow window(GameView v)throws Exception{return ItemWindowReferenceTest.field(v,"itemWindow");}
  void tap(GameView v,float x,float y)throws Exception{float scale=v.getHeight()/540f,offset=GameView.rightHudOffsetForView(v.getWidth(),v.getHeight())/2;ItemWindowReferenceTest.tap(v,(x+offset)*scale,y*scale);}
- void open(GameView v)throws Exception{float scale=v.getHeight()/540f,right=GameView.rightHudOffsetForView(v.getWidth(),v.getHeight());ItemWindowReferenceTest.tap(v,(608+right)*scale,28*scale);}
+ void open(GameView v)throws Exception{float scale=v.getHeight()/540f,right=GameView.rightHudOffsetForView(v.getWidth(),v.getHeight());ItemWindowReferenceTest.tap(v,(742+right)*scale,28*scale);}
  void select(GameView v,String id)throws Exception{ItemWindow w=window(v);List<RpgInventoryPresentation.ItemRow> rows=w.rows(rpg(v));int n=0;while(!rows.get(n).itemId.equals(id))n++;w.page=n/50;RectF b=ItemWindow.cell(n%50);tap(v,b.centerX(),b.centerY());assertEquals(id,w.detailItemId);assertNull(w.pickedTargetSlot);}
  @Test public void oneActionFillsBothVacantRingAndGloveSlotsWithoutChangingOwnership()throws Exception{
   GameView v=view(960,540);RpgProgressionState r=rpg(v);Map<String,Integer> owned=new LinkedHashMap<>(r.inventory());int hp=r.finalStats().maxHp;open(v);

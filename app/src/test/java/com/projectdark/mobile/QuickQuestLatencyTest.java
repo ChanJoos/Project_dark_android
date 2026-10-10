@@ -17,7 +17,7 @@ public class QuickQuestLatencyTest {
     F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);
     long[] timings=new long[6];
     for(int i=0;i<timings.length;i++){
-      long start=System.nanoTime();QuestJournalTest.gesture(v,80,150);timings[i]=(System.nanoTime()-start)/1000000;
+      long start=System.nanoTime();QuestJournalTest.gesture(v,790,104);timings[i]=(System.nanoTime()-start)/1000000;
       WorldRuntimeAdapter world=TownInteriorTest.field(v,"worldAdapter");
       assertEquals(WorldMoveTargetController.Status.MOVING,world.movement().snapshot().status);
       assertFalse((Boolean)TownInteriorTest.field(v,"questJournalOpen"));

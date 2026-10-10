@@ -26,7 +26,7 @@ public class DaraRecipientFxTest {
     ((com.projectdark.mobile.world.WorldRuntimeAdapter)TownInteriorTest.field(v,"worldAdapter")).snapCameraToPlayer();
     ((SkillBook)TownInteriorTest.field(v,"skillBook")).assign(0,"SK_무도가_020");return v;
   }
-  void use(GameView v)throws Exception{TownInteriorTest.tap(v,671,395);assertEquals("SK_무도가_020",TownInteriorTest.field(v,"activeSkillVisualId"));}
+  void use(GameView v)throws Exception{TownInteriorTest.tap(v,672,429);assertEquals("SK_무도가_020",TownInteriorTest.field(v,"activeSkillVisualId"));}
   void tick(GameView v,float seconds)throws Exception{for(float t=0;t<seconds;t+=.01f)MartialHudAutoRegressionTest.call(v,"update",float.class,Math.min(.01f,seconds-t));}
   boolean source(SkillVfxRenderer.Pulse p){return p.id.equals("SK_무도가_020")&&p.sheet.equals("classic")&&!p.caster;}
   void visible(GameView v,RuntimeState.Monster m,String name)throws Exception{

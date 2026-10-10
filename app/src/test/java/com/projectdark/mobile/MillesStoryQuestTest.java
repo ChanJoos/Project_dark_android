@@ -118,7 +118,7 @@ public final class MillesStoryQuestTest {
 
   @Test public void questJournalButtonOpensAnActionableReviewCapture() throws Exception {
     GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,960,540);
-    tap(view,808,28);assertTrue(field(view,"questJournalOpen"));
+    tap(view,918,28);assertTrue(field(view,"questJournalOpen"));
     Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(frame));
     File file=new File("build/reports/device-review/v90-milles-story-quest-journal.png");file.getParentFile().mkdirs();
     try(FileOutputStream out=new FileOutputStream(file)){assertTrue(frame.compress(Bitmap.CompressFormat.PNG,100,out));}

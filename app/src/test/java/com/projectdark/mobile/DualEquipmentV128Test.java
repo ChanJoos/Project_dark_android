@@ -64,7 +64,7 @@ public class DualEquipmentV128Test {
  }
  @Test public void actualEquipmentWindowCanTargetEitherRingWithoutTouchingTheOther()throws Exception{
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");RpgProgressionState r=state.rpg();r.equipToSlot("IT_RING_REDJADE","반지");r.equipToSlot("IT_RING_THREELINEGOLD",RpgProgressionState.RIGHT_RING_SLOT);
-  ItemWindowReferenceTest.tap(view,716,28);int right=Arrays.asList(ItemWindow.SLOTS).indexOf(RpgProgressionState.RIGHT_RING_SLOT);RectF b=ItemWindow.slot(right);ItemWindowReferenceTest.tap(view,b.centerX(),b.centerY());assertEquals(RpgProgressionState.RIGHT_RING_SLOT,w.selectedSlot);ItemWindowReferenceTest.tap(view,805,490);assertNull(r.equipment().get(RpgProgressionState.RIGHT_RING_SLOT));assertEquals("IT_RING_REDJADE",r.equipment().get("반지"));
+  ItemWindowReferenceTest.tap(view,830,28);int right=Arrays.asList(ItemWindow.SLOTS).indexOf(RpgProgressionState.RIGHT_RING_SLOT);RectF b=ItemWindow.slot(right);ItemWindowReferenceTest.tap(view,b.centerX(),b.centerY());assertEquals(RpgProgressionState.RIGHT_RING_SLOT,w.selectedSlot);ItemWindowReferenceTest.tap(view,805,490);assertNull(r.equipment().get(RpgProgressionState.RIGHT_RING_SLOT));assertEquals("IT_RING_REDJADE",r.equipment().get("반지"));
   Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(image));File dir=new File("build/reports/identity-v128");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,"paired-slots.png"))){image.compress(Bitmap.CompressFormat.PNG,100,out);}
  }
 }

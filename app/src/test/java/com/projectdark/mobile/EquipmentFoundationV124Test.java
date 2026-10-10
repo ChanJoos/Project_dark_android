@@ -54,7 +54,7 @@ public class EquipmentFoundationV124Test {
    assertFalse(registry.pending(id));assertNotNull(registry.get(s.rpg().itemDefinitions().get(id)));
    assertEquals(Integer.valueOf(300),s.rpg().itemDefinitions().get(id).statModifiers.get("HP"));
   }
-  assertTrue(count>=30);ItemWindowReferenceTest.tap(v,608,28);
+  assertTrue(count>=30);ItemWindowReferenceTest.tap(v,742,28);
   ItemWindow w=ItemWindowReferenceTest.field(v,"itemWindow");int index=-1;java.util.List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());for(int i=0;i<rows.size();i++)if(rows.get(i).itemId.equals("IT_TEST_WEAPON_MW002"))index=i;
   assertTrue(index>=0);android.graphics.RectF b=ItemWindow.cell(index%50);ItemWindowReferenceTest.tap(v,b.centerX(),b.centerY());
   ItemWindowReferenceTest.render(v,"equipment-v124-source-epe-comparison.png");

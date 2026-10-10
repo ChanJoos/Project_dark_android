@@ -38,7 +38,7 @@ public final class CampaignQuickQuestIntegrationTest {
     RuntimeState.Monster target=runtime.monsters().get(0);
     for(RuntimeState.Monster m:runtime.monsters())if(m!=target)m.alive=false;
     target.x=runtime.player().x+32;target.y=runtime.player().y+16;target.hp=1;
-    TownInteriorTest.tap(view,80,150);
+    TownInteriorTest.tap(view,790,104);
     assertTrue("quick hunt turns AUTO on",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
     CombatController combat=TownInteriorTest.field(view,"combat");
     assertNotNull("quick hunt selects an objective target",combat.target());
@@ -55,7 +55,7 @@ public final class CampaignQuickQuestIntegrationTest {
     CampaignProgress campaign=r.campaign();org.json.JSONObject saved=campaign.snapshot();
     saved.put("version",1);saved.put("complete",new org.json.JSONArray().put("M01").put("M02").put("M03").put("J01_WARRIOR").put("M04").put("M05").put("M06"));
     saved.put("active","M07");assertTrue(campaign.restore(saved));
-    TownInteriorTest.tap(view,80,150);
+    TownInteriorTest.tap(view,790,104);
     assertTrue("AUTO is visibly armed as soon as a kill quest is selected",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
     assertEquals("quick-quest route begins toward the forest travel guide","pote_travel_guide",((WorldRuntimeAdapter)TownInteriorTest.field(view,"worldAdapter")).movement().snapshot().targetEntityId);
     CombatController combat=TownInteriorTest.field(view,"combat");RuntimeState.Monster objectiveTarget=null;
@@ -90,7 +90,7 @@ public final class CampaignQuickQuestIntegrationTest {
     SkillBook.Entry shortblade=book.get("SK_전사_001");assertNotNull(shortblade);assertTrue(book.usable(shortblade.id));
     int previousProficiency=book.proficiency("SK_전사_001");
     for(int use=0;use<3;use++){
-      TownInteriorTest.tap(view,671,395);
+      TownInteriorTest.tap(view,672,429);
       for(int frame=0;frame<120&&(campaign.count(CampaignProgress.find("J01_WARRIOR"),r)==use||book.proficiency("SK_전사_001")==previousProficiency);frame++)TownInteriorTest.tick(view,1);
       assertTrue("tap starts and resolves the visible Shortblade quickslot action #"+(use+1),book.proficiency("SK_전사_001")>previousProficiency);
       previousProficiency=book.proficiency("SK_전사_001");

@@ -16,7 +16,7 @@ public class SkillWindowReferenceTest {
   Context c;
   @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
   @Test public void originalPanelsAndAllCatalogItemsRemainReachableThroughProductionInput()throws Exception{
-    GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillWindow w=field(v,"skillWindow");SkillBook book=field(v,"skillBook");tap(v,770,28);assertTrue(w.open);
+    GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillWindow w=field(v,"skillWindow");SkillBook book=field(v,"skillBook");tap(v,874,28);assertTrue(w.open);
     String[] jobs={"공통","전사","도적","무도가","마법사","성직자","전체"};Set<String> seen=new HashSet<>();
     render(v,"skill-window-v73-all-tabs.png");
     for(int target=0;target<jobs.length;target++){
@@ -28,7 +28,7 @@ public class SkillWindowReferenceTest {
     }
     assertEquals(book.catalogSize(),seen.size());
     w.showJob("도적");w.reveal("SK_도적_014");w.selectedId="SK_도적_025";render(v,"skill-window-v73-reference-rogue.png");
-    tap(v,850,400);tap(v,677,460);assertEquals("SK_도적_025",book.slot(0));tap(v,611,59);assertFalse(w.open);
+    tap(v,850,400);tap(v,671,460);assertEquals("SK_도적_025",book.slot(0));tap(v,611,59);assertFalse(w.open);
   }
   @Test public void realScrollClipsHitsAndNeverMovesTheWorld()throws Exception{
     GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillWindow w=field(v,"skillWindow");RuntimeState state=field(v,"state");w.open=true;w.showJob("전체");float x=state.player().x,y=state.player().y;

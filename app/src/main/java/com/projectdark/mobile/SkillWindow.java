@@ -49,7 +49,7 @@ final class SkillWindow {
   float maxScroll(){List<Item> items=layout();return items.isEmpty()?0:Math.max(0,items.get(items.size()-1).rect.bottom+12-VIEWPORT.bottom);}
   RectF rectFor(String id){for(Item i:layout())if(i.entry.id.equals(id)){RectF r=new RectF(i.rect);r.offset(0,-scroll);return r;}return null;}
   void reveal(String id){for(Item i:layout())if(i.entry.id.equals(id)){scroll=Math.max(0,Math.min(maxScroll(),i.rect.top-155));return;}}
-  static RectF bookSlot(int i){float x=646+(i%4)*68,y=441+(i/4)*43;return new RectF(x,y,x+62,y+39);}
+  static RectF bookSlot(int i){float x=646+(i%5)*54,y=441+(i/5)*43;return new RectF(x,y,x+50,y+39);}
   static RectF jobTab(int i){return new RectF(44+i*82,77,126+i*82,104);}
   void showJob(String value){job=value;reset();}
   void draw(Canvas c,Actions a){if(!open)return;
@@ -74,7 +74,7 @@ final class SkillWindow {
     button(c,LEARN,e==null?"습득":book.learned(e.id)?"습득 완료":!supported?"습득 불가":q.gold==0?"습득 · 무료":"습득 · "+number(q.gold)+" G",e!=null&&a.canLearn(e));
     button(c,REGISTER,choosingSlot?"등록 취소":"퀵슬롯 등록",supported&&book.learned(e.id));
     fitted(c,message.isEmpty()?choosingSlot?"등록할 슬롯을 선택하세요":"퀵슬롯":message,646,433,266,10,message.isEmpty()?MUTED:messageColor,false);
-    for(int i=0;i<8;i++){RectF r=bookSlot(i);fill(c,r.left,r.top,r.right,r.bottom,UiTheme.SURFACE);outline(c,r,choosingSlot||i==flashSlot?GOLD:UiTheme.LINE,1);label(c,""+(i+1),r.left+4,r.top+11,9,MUTED,false);SkillBook.Entry sl=book.get(book.slot(i));if(sl!=null){icon(c,sl,new RectF(r.left+18,r.top+3,r.left+49,r.top+34));float cd=a.cooldown(sl.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb5000000);center(c,seconds(cd),r.centerX(),r.centerY()+4,11,TEXT);}}}
+    for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=bookSlot(i);fill(c,r.left,r.top,r.right,r.bottom,UiTheme.SURFACE);outline(c,r,choosingSlot||i==flashSlot?GOLD:UiTheme.LINE,1);label(c,""+(i+1),r.left+4,r.top+11,9,MUTED,false);SkillBook.Entry sl=book.get(book.slot(i));if(sl!=null){icon(c,sl,new RectF(r.left+14,r.top+4,r.left+44,r.top+34));float cd=a.cooldown(sl.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb5000000);center(c,seconds(cd),r.centerX(),r.centerY()+4,11,TEXT);}}}
   }
   private void drawCard(Canvas c,SkillBook.Entry e,RectF r,Actions a){UiTheme.slot(c,r,e.id.equals(selectedId),book.learned(e.id));
     RectF art=new RectF(r.left+5,r.top+4,r.right-5,r.top+43);icon(c,e,art);
@@ -115,10 +115,20 @@ final class SkillWindow {
     if(VIEWPORT.contains(x,y)){for(Item i:layout()){RectF r=new RectF(i.rect);r.offset(0,-scroll);if(r.contains(x,y)){selectedId=i.entry.id;detailPage=detailOffset=0;choosingSlot=false;message="";break;}}return true;}
     if(LEARN.contains(x,y)){SkillBook.Entry e=selected();if(e!=null&&!book.learned(e.id)){if(!a.canLearn(e)){message=a.requirements(e);messageColor=RED;detailPage=1;return true;}a.learn(e);messageColor=book.learned(e.id)?GREEN:RED;message=book.learned(e.id)?e.name+" 습득 · 퀵슬롯에 등록하세요":"저장 실패 · 습득 비용을 돌려드렸습니다";}return true;}
     if(REGISTER.contains(x,y)){SkillBook.Entry e=selected();if(e!=null&&(e.runtime!=null||book.testAccess())&&book.learned(e.id)){choosingSlot=!choosingSlot;message="";}else a.notice("먼저 사용 가능한 스킬을 습득하세요");return true;}
-    for(int i=0;i<8;i++)if(bookSlot(i).contains(x,y)){if(choosingSlot&&selected()!=null){org.json.JSONObject before=book.snapshot();String[] beforeTest=book.testSlots();if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;if(!a.save()){book.restore(before);book.restoreTestSlots(beforeTest);message="저장 실패 · 등록 취소";messageColor=RED;a.notice(message);return true;}choosingSlot=false;flashSlot=i;messageColor=GREEN;message="슬롯 "+(i+1)+" · "+(book.slot(i)==null?"등록 해제":"등록 완료 · 창을 닫고 사용하세요");a.notice(message);}else{SkillBook.Entry e=book.get(book.slot(i));if(e!=null){selectedId=e.id;detailPage=0;}}return true;}
+    for(int i=0;i<SkillBook.SLOT_COUNT;i++)if(bookSlot(i).contains(x,y)){if(choosingSlot&&selected()!=null){org.json.JSONObject before=book.snapshot();String[] beforeTest=book.testSlots();if(selectedId.equals(book.slot(i)))book.clearSlot(i);else if(!book.assign(i,selectedId))return true;if(!a.save()){book.restore(before);book.restoreTestSlots(beforeTest);message="저장 실패 · 등록 취소";messageColor=RED;a.notice(message);return true;}choosingSlot=false;flashSlot=i;messageColor=GREEN;message="슬롯 "+(i+1)+" · "+(book.slot(i)==null?"등록 해제":"등록 완료 · 창을 닫고 사용하세요");a.notice(message);}else{SkillBook.Entry e=book.get(book.slot(i));if(e!=null){selectedId=e.id;detailPage=0;}}return true;}
     return true;
   }
   void drawSlot(Canvas c,RectF r,int index,Actions a){SkillBook.Entry e=book.get(book.slot(index));if(e==null)return;RectF art=new RectF(r.left+6,r.top+6,r.right-6,r.bottom-6);icons.drawQuickslot(c,e.id,art);float cd=a.cooldown(e.id);if(cd>0){c.save();c.clipRect(art);fill(c,art.left,art.top,art.right,art.bottom,0xb9000000);center(c,seconds(cd),art.centerX(),art.centerY()+4,10,TEXT);c.restore();}}
+  void drawHudSlot(Canvas c,RectF r,int index,Actions a){
+    SkillBook.Entry e=book.get(book.slot(index));float radius=r.width()/2f;
+    MobileHudSkin.ring(c,r.centerX(),r.centerY(),radius,false);
+    if(e!=null){c.save();Path clip=new Path();clip.addCircle(r.centerX(),r.centerY(),radius-3,Path.Direction.CW);c.clipPath(clip);
+      // Use the existing quickslot artwork; only its surrounding HUD changes.
+      icons.drawQuickslot(c,e.id,new RectF(r.left+3,r.top+3,r.right-3,r.bottom-3));
+      float cd=a.cooldown(e.id);if(cd>0){p.setStyle(Paint.Style.FILL);p.setColor(0xbc0c1014);float duration=e.runtime==null?cd:Math.max(cd,e.runtime.cooldown);c.drawArc(r,-90,360*Math.min(1,cd/Math.max(.01f,duration)),true,p);center(c,seconds(cd),r.centerX(),r.centerY()+4,11,TEXT);}c.restore();
+    }else MobileHudSkin.icon(c,"empty",r.centerX(),r.centerY(),7,false);
+    UiTheme.center(c,String.valueOf(index+1),r.centerX(),r.bottom-2,6.5f,0xffeee3c8,true);
+  }
   private static String seconds(float f){return f==Math.round(f)?""+Math.round(f):String.format(Locale.ROOT,"%.1f",f);}
   private static String number(long n){return String.format(Locale.ROOT,"%,d",n);}
   private void fill(Canvas c,float l,float t,float r,float b,int color){p.setStyle(Paint.Style.FILL);p.setShader(null);p.setColor(color);c.drawRect(l,t,r,b,p);}

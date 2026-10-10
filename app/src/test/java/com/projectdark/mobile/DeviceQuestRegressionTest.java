@@ -40,7 +40,7 @@ public class DeviceQuestRegressionTest {
   @Test public void openingQuickQuestFromTownEntersInnAndKillsWithoutAnAutoButtonTap()throws Exception{
     GameView v=launch();RuntimeState s=TownInteriorTest.field(v,"state");
     F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");assertEquals(F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED,q.accept());
-    TownInteriorTest.tap(v,80,150);assertTrue("opening mouse hunt arms AUTO",(Boolean)TownInteriorTest.field(v,"autoAttackEnabled"));
+    TownInteriorTest.tap(v,790,104);assertTrue("opening mouse hunt arms AUTO",(Boolean)TownInteriorTest.field(v,"autoAttackEnabled"));
     boolean entered=false;
     for(int frame=0;frame<2400&&q.state()==F5mAdaptedPrologueQuest.State.ACTIVE;frame++){
       TownInteriorTest.tick(v,1);
@@ -58,7 +58,7 @@ public class DeviceQuestRegressionTest {
     s.rpg().grantAdaptedReward(7500,100);s.applyDerivedGrowth();
     GrowthQuest2 growth=TownInteriorTest.field(v,"quest2");growth.unlockIfPrologueCompleted(q);assertTrue(growth.accept());v.pause();
     v=launch();growth=TownInteriorTest.field(v,"quest2");assertEquals(GrowthQuest2.State.ACTIVE,growth.state());
-    TownInteriorTest.tap(v,80,150);assertTrue("growth hunt arms AUTO after restart",(Boolean)TownInteriorTest.field(v,"autoAttackEnabled"));
+    TownInteriorTest.tap(v,790,104);assertTrue("growth hunt arms AUTO after restart",(Boolean)TownInteriorTest.field(v,"autoAttackEnabled"));
     for(int frame=0;frame<2400&&growth.state()==GrowthQuest2.State.ACTIVE;frame++)TownInteriorTest.tick(v,1);
     assertEquals("growth hunt retargets the remaining two mice",GrowthQuest2.State.RETURN_READY,growth.state());assertEquals(3,growth.currentCount());capture(v,"growth-auto-three-kills");
   }
@@ -75,7 +75,7 @@ public class DeviceQuestRegressionTest {
       for(RuntimeState.Monster m:s.monsters())if(m!=target){m.alive=false;m.hp=0;m.respawnClock=30f;}
       target.x=s.player().x+32;target.y=s.player().y+16;target.hp=target.maxHp;target.alive=true;
       ((CombatController)TownInteriorTest.field(v,"combat")).selectTarget(target);
-      TownInteriorTest.tap(v,671,395);
+      TownInteriorTest.tap(v,672,429);
       for(int frame=0;frame<120&&c.count(CampaignProgress.find("J01_WARRIOR"),r)==use;frame++)TownInteriorTest.tick(v,1);
       assertEquals("accepted visible Shortblade slot tap counts in the actual app mode",use+1,c.count(CampaignProgress.find("J01_WARRIOR"),r));
       RuntimeCombatSession session=TownInteriorTest.field(v,"combatSession");
@@ -99,7 +99,7 @@ public class DeviceQuestRegressionTest {
     assertTrue("fixture has a reachable distant mouse",placed);world.snapCameraToPlayer();
     s.skillEffects().put("player","SK_도적_004","STEALTH",1,30);s.skillEffects().put(target.id,"SK_도적_009","AGGRO_RESET",1,30);
     assertTrue(book.assign(0,"SK_전사_012"));((CombatController)TownInteriorTest.field(v,"combat")).selectTarget(target);int hp=target.hp;
-    TownInteriorTest.tap(v,671,395);assertFalse("no remote taunt is applied before walking adjacent",s.skillEffects().has(target.id,"TAUNT"));
+    TownInteriorTest.tap(v,672,429);assertFalse("no remote taunt is applied before walking adjacent",s.skillEffects().has(target.id,"TAUNT"));
     for(int frame=0;frame<600&&!s.skillEffects().has(target.id,"TAUNT");frame++)TownInteriorTest.tick(v,1);
     assertTrue("accepted Rescue changes live monster aggro",s.skillEffects().has(target.id,"TAUNT"));
     assertTrue("Rescue was applied only from the adjacent tile",CanonicalMeleeTileContract.reachable(s.player().x,s.player().y,target.x,target.y));

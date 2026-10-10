@@ -1,0 +1,142 @@
+name: V134 mobile HUD and ten skill slots
+on:
+  push:
+    branches: [codex/mobile-hud-v134]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      PROJECT_DARK_SIDE_BY_SIDE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover starter gear source manifests
+        run: |
+          python3 tools/collect_peasant_sources.py
+          python3 - <<'PY'
+          import json, pathlib, sys
+          rows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())
+          need={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010','mu0000001','mu0000002','mu0000003'}
+          got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}
+          missing=need-got
+          print('SOURCE_REGISTRATION_FETCHED',sorted(got & need))
+          print('SOURCE_REGISTRATION_MISSING',sorted(missing))
+          if missing:
+              sys.exit(23)
+          PY
+          mkdir -p app/src/main/assets/source-registration
+          cp qa/peasant-sources/data/type/body/mm001.json app/src/main/assets/source-registration/mm001.json
+          cp qa/peasant-sources/data/type/shoes/ml228.json app/src/main/assets/source-registration/ml228.json
+          cp qa/peasant-sources/data/type/shield/ms001.json app/src/main/assets/source-registration/ms001.json
+          cp qa/peasant-sources/data/type/hair/mh172.json app/src/main/assets/source-registration/mh172.json
+          cp qa/peasant-sources/atlas/shoes/ml228.webp app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp
+          cp qa/peasant-sources/atlas/shield/ms001.webp app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp
+          cp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          specs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010'],'armor':['mu0000001','mu0000002','mu0000003']}
+          assets=Path('app/src/main/assets/source-registration'); draw=Path('app/src/main/res/drawable-nodpi')
+          for kind, ids in specs.items():
+              for ident in ids:
+                  shutil.copy(Path('qa/peasant-sources/data/type')/kind/(ident+'.json'), assets/(ident+'.json'))
+                  shutil.copy(Path('qa/peasant-sources/atlas')/kind/(ident+'.webp'), draw/('equip_'+ident+'_source.webp'))
+          PY
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for ident in ('mm001','mu0000001','ml228','ms001','mh172'):
+              p=Path('qa/peasant-sources/data/type')
+              found=list(p.glob('*/'+ident+'.json'))
+              if not found: continue
+              d=json.loads(found[0].read_text())
+              print('META',ident,{k:v for k,v in d.items() if k!='sprites'})
+          for ident in ('mm001','mu0000001'):
+              found=list(Path('qa/peasant-sources/data/type').glob('*/'+ident+'.json'))
+              d=json.loads(found[0].read_text())
+              for g in ('01','02','03','b','c','d','e','f'):
+                  if g in d['sprites']: print('BASE_REG',ident,g,d['sprites'][g][:12])
+          PY
+          python3 - <<'PY'
+          import json, pathlib
+          for ident in ('ml228','ms001','mh172'):
+              p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')
+              d=json.loads(p.read_text())
+              sprites=d['sprites']
+              print('REG_MANIFEST',ident,'count',len(sprites))
+              for k in list(sprites)[:12]:
+                  print('REG',ident,k,sprites[k])
+          PY
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Verify source pixels and render actual windows
+        run: |
+          python3 -m pip install Pillow beautifulsoup4
+          python3 tools/build_accessory_catalog.py
+          python3 tools/build_classic_ui.py
+          python3 tools/build_wardrobe_v128.py
+          python3 tools/build_item_functions_v129.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceItemFunctions.java master/source/equipment/functions_v129/numeric_receipts.json master/source/equipment/functions_v129/special_receipts.json
+          python3 tools/build_equipment_performance_v130.py
+          git diff --exit-code -- app/src/main/java/com/projectdark/mobile/SourceEquipmentPerformance.java
+          python3 tools/build_full_item_catalog.py
+          python3 tools/verify_full_item_catalog.py
+          python3 tools/verify_identity_v128.py
+          git diff --exit-code -- app/src/main/assets/equipment-icons app/src/main/assets/classic-ui master/assets/equipment/background_masks_v126 app/src/main/java/com/projectdark/mobile/SourceAccessoryCatalog.java master/canonical/Accessory_Catalog.json master/assets/equipment/accessories_20261009
+          python3 tools/verify_equipment_icons.py
+          python3 tools/validate_master.py
+          gradle :app:testDebugUnitTest --tests '*MobileHudV134Test' --stacktrace
+      - name: Upload actual mobile HUD preview immediately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-hud-v134-preview-${{ github.sha }}
+          path: |
+            app/build/reports/mobile-hud-v134/
+            app/build/test-results/
+          if-no-files-found: warn
+      - name: Verify HUD input, interior controls, skill learning, saves and cached forest
+        run: gradle :app:testDebugUnitTest --tests '*HudTouchAcceptanceTest' --tests '*SkillWindowTest' --tests '*SkillWindowReferenceTest' --tests '*SkillTestModeTest' --tests '*QuestJournalTest' --tests '*OnboardingUiTest' --tests '*TownInteriorTest' --tests '*InnSourceRepairTest' --tests '*InnDetailQuestFxTest' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*ClassicPolishV132Test' --tests '*RuntimeCheckpointTest' --tests '*ForestFloorCacheTest' --stacktrace
+      - name: Build and verify exact APK
+        run: |
+          gradle :app:assembleDebug
+          python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v134_apk.py app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-hud-v134-native-${{ github.sha }}
+          path: |
+            app/build/reports/mobile-hud-v134/
+            app/build/reports/classic-ui-v126/
+            app/build/reports/full-item-v127/
+            app/build/reports/identity-v128/
+            app/build/reports/item-functions-v129/
+            app/build/reports/equipment-performance-v130/
+            app/build/reports/inventory-art-v131/
+            app/build/reports/classic-polish-v132/
+            app/build/reports/pote-v113/
+            app/build/reports/device-review/
+            app/build/reports/pote-rewards-v123/
+            app/build/reports/equipment-foundation-v124/
+            app/build/reports/monster-motion-v121/
+            app/build/reports/monster-visual-v122/
+            app/build/reports/forest-performance/
+            app/build/test-results/
+            app/build/reports/tests/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobile-hud-v134-apk-${{ github.sha }}
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/debug/BUILD_INFO.json
