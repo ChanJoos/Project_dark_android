@@ -91,7 +91,7 @@ jobs:
           git diff --exit-code -- app/src/main/assets/equipment-icons app/src/main/assets/classic-ui master/assets/equipment/background_masks_v126 app/src/main/java/com/projectdark/mobile/SourceAccessoryCatalog.java master/canonical/Accessory_Catalog.json master/assets/equipment/accessories_20261009
           python3 tools/verify_equipment_icons.py
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*DualEquipmentV128Test' --tests '*ClassicUiV126Test' --tests '*FullItemArtV127Test' --tests '*ModernUiTest' --tests '*TownInteriorTest' --tests '*ItemWindowReferenceTest' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*AccessoryCatalogV125Test' --tests '*SkillWindowReferenceTest' --tests '*HudTouchAcceptanceTest' --tests '*RuntimeCheckpointTest'
+          gradle :app:testDebugUnitTest --tests '*PoteRewardsV123Test' --tests '*DualEquipmentV128Test' --tests '*ClassicUiV126Test' --tests '*FullItemArtV127Test' --tests '*ModernUiTest' --tests '*TownInteriorTest' --tests '*ItemWindowReferenceTest' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*AccessoryCatalogV125Test' --tests '*SkillWindowReferenceTest' --tests '*HudTouchAcceptanceTest' --tests '*RuntimeCheckpointTest'
       - name: Build and verify exact APK
         run: |
           gradle :app:assembleDebug
