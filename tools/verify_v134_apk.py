@@ -13,7 +13,7 @@ with zipfile.ZipFile(apk_path) as apk:
     identity = json.loads(apk.read('assets/build_identity.json'))
     assert identity['sourceCommit'] == source, identity
     assert identity['runId'] == os.environ['GITHUB_RUN_ID'], identity
-    assert identity['versionCode'] == 133, identity
+    assert identity['versionCode'] == 134, identity
     for path in poses:
         packaged = 'assets/pote_monsters_generated_v1/sprites/campaign_v3/giant_mantis/' + path.name
         assert apk.read(packaged) == path.read_bytes(), path
