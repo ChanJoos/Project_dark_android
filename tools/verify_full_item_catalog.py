@@ -26,4 +26,6 @@ with zipfile.ZipFile(ROOT/'master/source/items/full_20261010/original_sources.zi
 assert len(m['items'])==422
 for p in ('GameView.java','TownShopWindow.java'):
  t=(ROOT/'app/src/main/java/com/projectdark/mobile'/p).read_text();assert 'ItemIconCatalog'not in t
-print('VERIFIED_FULL_ORIGINAL_ART',len(m['items']),'items',len(seen),'unique originals',equivalent,'explicit visual equivalents (not exact historical identity claims)')
+pending=sum(r.get('identityMatch')=='PENDING_REPLACEMENT_SOURCE' for r in m['items'].values())
+assert pending==1
+print('VERIFIED_ITEM_ART_COVERAGE',len(m['items'])-pending,'image bindings;',pending,'explicit pending source;',len(seen),'unique originals;',equivalent,'explicit visual equivalents')
