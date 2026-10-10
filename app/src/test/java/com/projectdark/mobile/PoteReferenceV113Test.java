@@ -35,7 +35,7 @@ public final class PoteReferenceV113Test {
   assertEquals("A02",cp.next(state.rpg()).id);TownInteriorTest.tap(v,790,104);CombatController combat=TownInteriorTest.field(v,"combat");assertSame("A02 red hunt acquires the remote red, ignoring near green",red,combat.target());assertTrue(Math.hypot(red.x-state.player().x,red.y-state.player().y)>1000);
   assertSame(red,world.selectAutoTarget(m->m.campaignRewardProfileId.equals("POTE_RED")));
   // Visible manual AUTO off/on must discard the quickquest species filter.
-  TownInteriorTest.tap(v,842,518);TownInteriorTest.tap(v,842,518);assertNull(TownInteriorTest.field(v,"autoHuntQuestId"));assertSame(green,combat.target());
+  TownInteriorTest.tap(v,926,507);TownInteriorTest.tap(v,926,507);assertNull(TownInteriorTest.field(v,"autoHuntQuestId"));assertSame(green,combat.target());
  }
  @Test public void nativeSceneShowsAllMapsAndOccludedPlayerMonsterNpc()throws Exception{
   GameView v=new GameView(RuntimeEnvironment.getApplication());v.layout(0,0,1536,864);invoke(v,"enterPoteField");RuntimeState state=TownInteriorTest.field(v,"state");

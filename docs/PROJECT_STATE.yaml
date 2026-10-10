@@ -1,3 +1,11 @@
+mobile_hud_v136:
+  owner: Director_single_editor
+  active_branch: codex/mobile-hud-v136
+  status: IMPLEMENTED_QA_PENDING
+  required_sources: [docs/ui/MOBILE_HUD_V136.md, master/changes/MOBILE-HUD-V136.json, master/source/ui/mobile_hud_v134/sources.json]
+  physical_phone: PENDING
+  user_visual: PENDING_RUNTIME
+
 mobile_hud_v135:
   owner: Director_single_editor
   active_branch: main

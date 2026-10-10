@@ -1,3 +1,7 @@
+## 2026-10-11 — V136 user-approved B HUD
+
+B design explicitly approved. IMPLEMENTED, BUILD/NATIVE/INTEGRATION PENDING. Floating central LV/HP/MP/EXP, potions above, compact current-first quest entries, generated adapted UI illustrations, one-line AUTO below attack. Joystick110,374 moves right/up and idle fill alpha14/255. Ten source skill images preserved. Single editor Director, branch codex/mobile-hud-v136. Contract docs/ui/MOBILE_HUD_V136.md, change master/changes/MOBILE-HUD-V136.json. Physical phone and runtime visual acceptance pending.
+
 ## 2026-10-10 — V135 HUD corrections integrated after V134 visual rejection
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED / INTEGRATED. Restored V133 LV tile/red HP/blue MP/gold EXP format at bottom center with real HP/MP potions above; moved joystick112,434→84,398; filled silver utility/sword controls and legible stacked AUTO; three real quest rows with notched title ribbons, diamond/seal, objective/status/progress and row-specific input. Current quest routes; future rows open their exact journal details. Ten existing skill slots and all627 source/packaged skill bytes preserved. World/actors/combat/save semantics unchanged. Native town/forest960×540/2340×1080 plus active/report tracker frames reviewed; actual V134/V135 comparison saved. V134 USER_VISUAL_REJECTED; V135 phone and USER_VISUAL ACCEPTANCE remain PENDING.

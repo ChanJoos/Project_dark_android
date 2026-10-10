@@ -23,12 +23,11 @@ import java.util.Map;
 /** PROJECT DARK v0.74 - original-inspired mobile HUD adaptation + precise world tap routing. */
 public final class GameView extends View {
   private static final float W=960f,H=540f;
-  private static final float JOY_X=84f,JOY_Y=398f,JOY_R=58f;
+  private static final float JOY_X=110f,JOY_Y=374f,JOY_R=58f;
   private static final float SLOT=44f,SLOT_GAP=6f,SLOT_X0=650f,SLOT_Y0=407f;
   private static final float ATK_X=926f,ATK_Y=449f,ATK_R=27f;
   private static final float CHAT_LEFT=14f,CHAT_RIGHT=266f;
-  private static final float MODE_X=926f,MODE_Y=507f,MODE_R=19f;
-  private static final float AUTO_X=842f,AUTO_Y=518f,AUTO_R=16f;
+  private static final float AUTO_X=926f,AUTO_Y=507f,AUTO_R=16f;
   static final float AUTO_TARGET_RADIUS=Float.MAX_VALUE;
   private static final float UTILITY_X0=742f,UTILITY_Y0=28f,UTILITY_STEP=44f,UTILITY_R=18f;
 
@@ -107,7 +106,7 @@ public final class GameView extends View {
 
   private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=Math.min(.05f,(n-last)/1000f);last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(savedLedgerSequence!=state.ledger().sequence()){checkpoint();}else if(checkpointClock>=2f){autosave();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postOnAnimation(this);}};
 
-  public GameView(Context c){super(c);final boolean freshEquipmentProfile=F5mSaveStore.freshEquipmentTestProfile();UiTheme.install(c);questJournalModel=new QuestJournalModel(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
+  public GameView(Context c){super(c);final boolean freshEquipmentProfile=F5mSaveStore.freshEquipmentTestProfile();UiTheme.install(c);MobileHudArtwork.install(c);questJournalModel=new QuestJournalModel(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
     combatSession.setSkillMovement(new SkillAbilityExecutor.Movement(){
       public boolean movePlayer(float x,float y){int steps=SkillActionContract.distance(state.player().x,state.player().y,x,y);if(steps==Integer.MAX_VALUE||steps>6||state.skillEffects().rooted("player"))return false;for(int i=1;i<=steps;i++){float q=i/(float)steps;if(!activeWorld().canPlayerOccupy(state.player().x+(x-state.player().x)*q,state.player().y+(y-state.player().y)*q))return false;}if(!activeWorld().canPlayerOccupy(x,y))return false;activeWorld().cancelForAction();state.player().x=x;state.player().y=y;activeWorld().snapCameraToPlayer();return true;}
       public boolean moveMonster(RuntimeState.Monster m,float x,float y){return state.tryMoveMonster(m,x-m.x,y-m.y,(float)Math.hypot(x-m.x,y-m.y));}
@@ -672,16 +671,7 @@ public final class GameView extends View {
   private void drawHud(Canvas c){drawTopLeftStatus(c);int statusIndex=0;for(SkillEffectState.Effect e:state.skillEffects().playerEffects()){if(statusIndex>=3)break;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(e.source);mutedText(c,(a==null?e.kind:a.name)+" "+Math.max(1,(int)Math.ceil(e.remaining))+"초",18,153+statusIndex++*12,8);}drawQuickQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawCombatCluster(c);}
   private void drawTopLeftStatus(Canvas c){
     float d=hudCenterOffset;Integer level=state.rpg().normalLevel();
-    // Restore the V133 information format exactly, translated to the bottom center.
-    c.save();c.translate(341+d,412);
-    panel(c,14,12,264,124);
-    UiTheme.surface(c,new RectF(24,23,69,81),UiTheme.RAISED,UiTheme.LINE,9);
-    UiTheme.center(c,"LV",46,39,8,UiTheme.GOLD,true);UiTheme.center(c,level==null?"?":String.valueOf(level),46,68,23,UiTheme.TEXT,true);
-    drawReferenceResourceBar(c,82,39,249,46,"HP",state.player().hp,state.player().maxHp);
-    drawReferenceResourceBar(c,82,70,249,77,"MP",state.player().mp,state.player().maxMp);
-    Float ratio=PostF5mHudPresentation.expRatio(state.rpg());float q=ratio==null?0f:Math.max(0f,Math.min(1f,ratio));
-    UiTheme.text(c,"경험치",25,104,9,UiTheme.MUTED,false);UiTheme.right(c,Math.round(q*100)+"%",249,104,9,UiTheme.GOLD,true);
-    UiTheme.surface(c,new RectF(74,99,205,104),UiTheme.RAISED,0,3);if(q>0)UiTheme.surface(c,new RectF(74,99,74+131*q,104),UiTheme.GOLD,0,3);c.restore();
+    MobileHudStatus.draw(c,state,hudRightOffset);
     UiTheme.center(c,String.format(java.util.Locale.ROOT,"%,d G",state.rpg().gold()==null?0L:state.rpg().gold()),480+d,24,9,UiTheme.GOLD,true);
   }
 
@@ -742,16 +732,16 @@ private void drawUtilityRail(Canvas c){
     if(chatExpanded){UiTheme.text(c,"[지역] 밀레스에 오신 것을 환영합니다.",r.left+8,r.top+34,8,UiTheme.TEXT,false);UiTheme.text(c,"[시스템] NPC · 전투 · 보상 알림",r.left+8,r.top+51,8,UiTheme.TEXT,false);}
   }
   private void drawJoystick(Canvas c){
-    MobileHudSkin.ring(c,JOY_X,JOY_Y,JOY_R,joy);p.setColor(joy?0x665e645e:0x223f4947);c.drawCircle(knobX,knobY,joy?23:20,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(joy?0xcce8d9b7:0x667a827a);c.drawCircle(knobX,knobY,joy?23:20,p);p.setStyle(Paint.Style.FILL);
+    MobileHudSkin.joystick(c,JOY_X,JOY_Y,JOY_R,knobX,knobY,joy);
+
   }
   private RectF slotRect(int index){return slotRectStatic(index,hudRightOffset);}
   private void drawCombatCluster(Canvas c){
     for(int i=0;i<SkillBook.SLOT_COUNT;i++)skillWindow.drawHudSlot(c,slotRect(i),i,skillActions);
     for(int i=0;i<2;i++){RectF r=MobileHudLayout.potion(i,hudRightOffset);MobileHudSkin.ring(c,r.centerX(),r.centerY(),r.width()/2,false);MobileHudSkin.potion(c,r.centerX(),r.centerY()-4,i==0);UiTheme.center(c,""+inventoryQuantity(i==0?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION"),r.centerX(),r.bottom-3,8,UiTheme.TEXT,true);}
     float d=hudRightOffset;MobileHudSkin.combat(c,ATK_X+d,ATK_Y,ATK_R,false,combat.attackReady()&&combat.hasUsableTarget());
-    MobileHudSkin.combat(c,AUTO_X+d,AUTO_Y,AUTO_R,true,autoAttackEnabled);drawModeControl(c);
+    MobileHudSkin.combat(c,AUTO_X+d,AUTO_Y,AUTO_R,true,autoAttackEnabled);
   }
-  private void drawModeControl(Canvas c){MobileHudSkin.ring(c,MODE_X+hudRightOffset,MODE_Y,MODE_R,false);MobileHudSkin.icon(c,"attack",MODE_X+hudRightOffset,MODE_Y,8,false);}
   private boolean useHudPotion(float x,float y){for(int i=0;i<2;i++)if(MobileHudLayout.potion(i,hudRightOffset).contains(x,y)){String id=i==0?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION";if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().useQuickConsumable(id,state)==RpgProgressionState.UseResult.USED))showFeedback(i==0?"회복약 사용":"마나약 사용",FeedbackTone.INFO);else showFeedback("물약이 없거나 회복할 필요가 없습니다",FeedbackTone.INFO);return true;}return false;}
 
   private void circleIcon(Canvas c,float cx,float cy,float r,ClassicHudIconAtlas.Icon icon,boolean enabled,boolean pressed){RectF b=new RectF(cx-r,cy-r,cx+r,cy+r);hudIcons.draw(c,p,icon,b,enabled,false,pressed);}
@@ -875,7 +865,7 @@ private void drawUtilityRail(Canvas c){
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
     for(int i=0;i<5;i++){float cx=UTILITY_X0+i*UTILITY_STEP+d;if(circleHit(x,y,cx,UTILITY_Y0,UTILITY_R+2)||inside(x,y,cx-18,44,cx+18,54))return true;}
     for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRectStatic(i,d);if(circleHit(x,y,r.centerX(),r.centerY(),SLOT/2))return true;}
-    return circleHit(x,y,ATK_X+d,ATK_Y,ATK_R+3)||circleHit(x,y,MODE_X+d,MODE_Y,MODE_R+3)||circleHit(x,y,AUTO_X+d,AUTO_Y,AUTO_R+3);
+    return circleHit(x,y,ATK_X+d,ATK_Y,ATK_R+3)||circleHit(x,y,AUTO_X+d,AUTO_Y,AUTO_R+3);
   }
 
   private static RectF slotRectStatic(int index,float d){int col=index%5,row=index/5;float l=SLOT_X0+d+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
@@ -908,7 +898,6 @@ private void drawUtilityRail(Canvas c){
       if(useHudPotion(x,y))return true;
       for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRect(i);if(circleHit(x,y,r.centerX(),r.centerY(),SLOT/2)){pressedControl="SLOT"+i;SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);return true;}}
 
-      if(circleHit(x,y,MODE_X+hudRightOffset,MODE_Y,MODE_R+3)){pressedControl="MODE";activeWorld().cancelForAction();showFeedback("기본 공격은 장착한 무기에 따라 결정됩니다",FeedbackTone.INFO);return true;}
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
       if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
       if(isHudSurface(x,y))return true;

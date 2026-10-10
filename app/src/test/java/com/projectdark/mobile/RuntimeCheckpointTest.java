@@ -83,9 +83,9 @@ public class RuntimeCheckpointTest {
     for(com.projectdark.mobile.world.WorldMoveTargetController.Direction d:com.projectdark.mobile.world.WorldMoveTargetController.Direction.values())
       if(adapter.canPlayerOccupy(state.player().x+d.dx,state.player().y+d.dy)){direction=d;break;}
     assertNotNull("Pote spawn has a free neighboring tile",direction);
-    android.view.MotionEvent down=android.view.MotionEvent.obtain(0,2,android.view.MotionEvent.ACTION_DOWN,84,398,0);view.onTouchEvent(down);down.recycle();assertTrue("visible relocated joystick actually activates",(Boolean)TownInteriorTest.field(view,"joy"));
-    float tx=direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.NW?56:direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.SE?112:84;
-    float ty=direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.NE?370:direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.SW?426:398;
+    android.view.MotionEvent down=android.view.MotionEvent.obtain(0,2,android.view.MotionEvent.ACTION_DOWN,110,374,0);view.onTouchEvent(down);down.recycle();assertTrue("visible relocated joystick actually activates",(Boolean)TownInteriorTest.field(view,"joy"));
+    float tx=direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.NW?82:direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.SE?138:110;
+    float ty=direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.NE?346:direction==com.projectdark.mobile.world.WorldMoveTargetController.Direction.SW?402:374;
     android.view.MotionEvent move=android.view.MotionEvent.obtain(0,3,android.view.MotionEvent.ACTION_MOVE,tx,ty,0);view.onTouchEvent(move);move.recycle();
     java.lang.reflect.Method update=GameView.class.getDeclaredMethod("updatePoteField",float.class);update.setAccessible(true);
     float x=state.player().x,y=state.player().y;for(int i=0;i<30;i++)update.invoke(view,.05f);

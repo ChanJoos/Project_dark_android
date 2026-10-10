@@ -29,7 +29,8 @@ public final class HudTouchAcceptanceTest {
   }
 
   @Test public void statusQuestAndUtilitySurfacesAreProtectedAndQuickQuestDirectlyRoutes() throws Exception {
-    assertTrue(GameView.blocksWorldTapForHud(480, 466, false));
+    assertTrue(GameView.blocksWorldTapForHud(480, 486, false));
+    assertTrue("removed panel space is available to world taps", !GameView.blocksWorldTapForHud(480, 466, false));
     assertTrue(GameView.blocksWorldTapForHud(790, 104, false));
     assertTrue(GameView.blocksWorldTapForHud(742, 28, false));
     assertTrue("enlarged basic attack touch area reaches its visible edge",
