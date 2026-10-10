@@ -21,5 +21,13 @@
     "actual inventory source-weapon/ring details rendering",
     "existing dual slots/equip/quantities/save regressions",
     "exact V131 APK identity/source/pixels"
-  ]
+  ],
+  "implementation": "IMPLEMENTED",
+  "buildVerification": "PASS",
+  "nativeRuntimeVerification": "PASS_18_SUITES_104_TESTS",
+  "physicalPhoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "testedSource": "62f3b0d527b08679950757ebe21fbb10c9236925",
+  "runtimeReceipt": "master/changes/V131_BUILD_RUNTIME_RECEIPT.json",
+  "integration": "MERGED_PR_186"
 }

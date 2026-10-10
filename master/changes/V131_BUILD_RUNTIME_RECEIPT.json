@@ -1,0 +1,225 @@
+{
+  "source": "62f3b0d527b08679950757ebe21fbb10c9236925",
+  "tree": "33d3e0adc70a0407c8730cde90f8e33f165935cb",
+  "runId": 38021878697,
+  "jobId": 114124434836,
+  "apkArtifact": 11658358142,
+  "nativeArtifact": 11658408257,
+  "nativeSuites": 18,
+  "nativeResults": {
+    "tests": 104,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "checkedAssetFiles": 909,
+  "buildInfo": {
+    "sourceCommit": "62f3b0d527b08679950757ebe21fbb10c9236925",
+    "runId": "38021878697",
+    "versionCode": 131,
+    "versionName": "1.31-inventory-art",
+    "applicationId": "com.projectdark.mobile.v131test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "6a8fdae670d51e41de5f9679ffc6da38c489a427f183bde8b387d826c01830c7",
+    "apkBytes": 61542185,
+    "builtSeoul": "2026-10-10T12:53:20.719305+09:00",
+    "scope": "32 weapon entries use25 labelled inventory illustrations instead of held previews;23 weapon inventory illustrations unresolved; existing Chungryong illustration retained; ring716 source pixels preserved at1x; paired glove/ring mechanics and V130 performance unchanged; physical-phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "suites": [
+    "com.projectdark.mobile.AccessoryCatalogV125Test",
+    "com.projectdark.mobile.ClassicUiV126Test",
+    "com.projectdark.mobile.DualEquipmentV128Test",
+    "com.projectdark.mobile.EquipmentFoundationV124Test",
+    "com.projectdark.mobile.EquipmentPerformanceV130Test",
+    "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+    "com.projectdark.mobile.FullItemArtV127Test",
+    "com.projectdark.mobile.HudTouchAcceptanceTest",
+    "com.projectdark.mobile.InventoryArtV131Test",
+    "com.projectdark.mobile.ItemFunctionsV129Test",
+    "com.projectdark.mobile.ItemWindowReferenceTest",
+    "com.projectdark.mobile.ModernUiTest",
+    "com.projectdark.mobile.PoteRewardsV123Test",
+    "com.projectdark.mobile.RuntimeCheckpointTest",
+    "com.projectdark.mobile.SkillAbilityRuntimeTest",
+    "com.projectdark.mobile.SkillSpatialContractTest",
+    "com.projectdark.mobile.SkillWindowReferenceTest",
+    "com.projectdark.mobile.TownInteriorTest"
+  ],
+  "dedicatedWeaponEntries": 32,
+  "dedicatedAppearanceIllustrations": 25,
+  "unresolvedWeaponInventoryIllustrations": [
+    {
+      "itemId": "IT_B_JOB_CLERIC_WAND",
+      "name": "홀리머큐리아",
+      "appearanceId": "mw008"
+    },
+    {
+      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_11",
+      "name": "홀리머큐리아",
+      "appearanceId": "mw008"
+    },
+    {
+      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_26",
+      "name": "홀리머큐리아",
+      "appearanceId": "mw008"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW007",
+      "name": "매직마르시아",
+      "appearanceId": "mw007"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW009",
+      "name": "매직쥬피티아",
+      "appearanceId": "mw009"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW011",
+      "name": "매스케이드",
+      "appearanceId": "mw011"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW012",
+      "name": "배틀소드",
+      "appearanceId": "mw012"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW020",
+      "name": "드래곤슬레이어",
+      "appearanceId": "mw020"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW026",
+      "name": "매직루나",
+      "appearanceId": "mw026"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW027",
+      "name": "매직가이아",
+      "appearanceId": "mw027"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW034",
+      "name": "우든클럽",
+      "appearanceId": "mw034"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW035",
+      "name": "스파이크클럽",
+      "appearanceId": "mw035"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW036",
+      "name": "자이언트클럽",
+      "appearanceId": "mw036"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW037",
+      "name": "자이언트스톤클럽",
+      "appearanceId": "mw037"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW039",
+      "name": "액스",
+      "appearanceId": "mw039"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW040",
+      "name": "하이브레이질액스",
+      "appearanceId": "mw040"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW041",
+      "name": "자이언트스톤액스",
+      "appearanceId": "mw041"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW043",
+      "name": "배틀액스",
+      "appearanceId": "mw043"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW044",
+      "name": "자이언트스톤해머",
+      "appearanceId": "mw044"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW047",
+      "name": "시미터",
+      "appearanceId": "mw047"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW053",
+      "name": "타고나이트액스",
+      "appearanceId": "mw053"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW056",
+      "name": "실버시미터",
+      "appearanceId": "mw056"
+    },
+    {
+      "itemId": "IT_WARDROBE_MW060",
+      "name": "아리펠스탭",
+      "appearanceId": "mw060"
+    }
+  ],
+  "existingChungryongInventoryIllustration": "RETAINED",
+  "ring": {
+    "oldCanvas": [
+      54,
+      48
+    ],
+    "newCanvas": [
+      35,
+      27
+    ],
+    "foregroundPixels": 716,
+    "renderScale": 1,
+    "pixels": "SOURCE_FOREGROUND_RGBA_PRESERVED",
+    "sourceSha256": "bcdab54b55f4a97e813fb28ed9789a46b07865ae9a778d839b74a9be38c6d77e"
+  },
+  "visualReview": "AGENT_NATIVE_RENDER_REVIEW_PASS",
+  "reviewedNativeImages": [
+    "inventory-1.png through inventory-9.png",
+    "ring-native-details.png"
+  ],
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "savedApkLibraryId": "libfile_475ab10754bc8191a06a8c143139d9c1",
+  "nativeZipSha256": "db1276d7ca6566d3e39e1fff53f93042ef89628dede7abdf1f278242ce080a7e",
+  "apkZipSha256": "590ea2fdf67cc84ba3205ad9ab8dca31120997c81e522f238f7c472dd4006dc3",
+  "firstFailure": {
+    "source": "ac7f0312764c2f78e41f7bc4d4dc40adefae7608",
+    "run": 38021555169,
+    "tests": 104,
+    "failures": 1,
+    "cause": "New regression asserted pre-patch Epe S3 rather than accepted V130 sourced S20–30. Corrected test to assert S20 and30; production stats unchanged. Ring native pixel regression passed on first run."
+  },
+  "dualSlotReview": "Historical paired gloves/rings confirmed; current left/right buttons are project mobile adaptation; original PC interaction unverified.",
+  "mergeSha": "28007aa27be0b8862d8a924907676b45cdd138fd",
+  "mergedTree": "33d3e0adc70a0407c8730cde90f8e33f165935cb",
+  "integration": "MERGED_PR_186",
+  "fullAndroidRuns": [
+    {
+      "run": 38021878720,
+      "job": 114124435012,
+      "status": "SUCCESS",
+      "logsInspected": true
+    },
+    {
+      "run": 38021881316,
+      "job": 114124442618,
+      "status": "SUCCESS",
+      "logsInspected": true
+    }
+  ],
+  "testedScope": "32 weapon entries use25 labelled inventory illustrations instead of held previews;23 weapon inventory illustrations unresolved; existing Chungryong illustration retained; ring716 source pixels preserved at1x; paired glove/ring mechanics and V130 performance unchanged; physical-phone and user visual acceptance pending",
+  "implementation": "IMPLEMENTED",
+  "build": "BUILD_VERIFIED",
+  "runtime": "NATIVE_SCOPE_VERIFIED",
+  "visual": "AGENT_NATIVE_RENDER_REVIEW_PASS; USER_VISUAL_ACCEPTANCE_PENDING"
+}
