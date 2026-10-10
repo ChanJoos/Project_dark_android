@@ -38,7 +38,8 @@ public class InnDetailQuestFxTest {
     for(String id:new String[]{"SK_무도가_007","SK_마법사_005","SK_무도가_017"}){
       setup();GameView v=start();place(v);SkillBook b=TownInteriorTest.field(v,"skillBook");assertTrue(b.assign(0,id));TownInteriorTest.tap(v,672,429);
       assertEquals("actual quickslot is accepted indoors",id,TownInteriorTest.field(v,"activeSkillVisualId"));
-      advance(v,SkillActionContract.get(id).contact+.06f);
+      float contact="마법".equals(SkillActionContract.get(id).kind)?((RuntimeCombatSession)TownInteriorTest.field(v,"combatSession")).effectiveCastSeconds(id):SkillActionContract.get(id).contact;
+      advance(v,contact+.06f);
       RuntimeState s=TownInteriorTest.field(v,"state");assertVisibleFx(v,SkillActionContract.get(id).selfAnchored()?"player":s.monsters().get(0).id);capture(v,"inn-"+id.replace("SK_", ""));
     }
   }
