@@ -1,0 +1,58 @@
+{
+  "status": "INTEGRATED_BUILD_NATIVE_FULL_CI_VERIFIED",
+  "source": "409d12bf7eaf5f255f99a383f5e598221c44df7f",
+  "source_tree": "249305d12119f85e01cf37f1dcbfd9e0500bb02b",
+  "app_tree": "de174b6ddfd521586029f0255e8fd7af6e6f36ff",
+  "pr": 191,
+  "focused_actions": 38071297808,
+  "full_android": [
+    {
+      "id": 38071298077,
+      "conclusion": "success"
+    },
+    {
+      "id": 38071300764,
+      "conclusion": "IN_PROGRESS_DUPLICATE_SAME_SOURCE_WORKFLOW_AT_MERGE"
+    }
+  ],
+  "native_runtime": {
+    "suites": 18,
+    "tests": 110,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "mode": "ROBOLECTRIC_NATIVE_GRAPHICS_SDK34"
+  },
+  "preview_artifact": 11676419405,
+  "native_artifact": 11677192969,
+  "apk_artifact": 11676613683,
+  "apk_sha256": "5e336b1933b8f99c81fb5a387b34a448e58ff896def2140470e81e9c2fb49cc2",
+  "apk_bytes": 62041692,
+  "package": "com.projectdark.mobile.v136test",
+  "version": "1.36-slim-hud",
+  "built_seoul": "2026-10-11T02:30:25.057700+09:00",
+  "skill_art": "627_PACKAGED_SOURCE_BYTE_MATCHES",
+  "native_visual_review": "6_EXACT_SOURCE_SCENES_NORMAL_WIDE_TOWN_FOREST_ACTIVE_REPORT_REVIEWED",
+  "joystick": {
+    "before": {
+      "x": 84,
+      "y": 398,
+      "idle_fill_alpha": 100
+    },
+    "after": {
+      "x": 110,
+      "y": 374,
+      "idle_fill_alpha": 14,
+      "active_fill_alpha": 36
+    },
+    "radius": 58
+  },
+  "physical_phone": "PENDING",
+  "user_visual": "PENDING_RUNTIME",
+  "deliverables": {
+    "apk": "libfile_0c39b2ed87ac8191882ab16072ae6dd0",
+    "town": "libfile_58d0653c13cc8191be03ef7b05657ee5",
+    "forest": "libfile_e9797477eb508191a7251436f91f51b3"
+  },
+  "merge": "8917e85c0636440d8b9f7407cf77e71aa85ee962"
+}

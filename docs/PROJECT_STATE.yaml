@@ -1,10 +1,20 @@
 mobile_hud_v136:
   owner: Director_single_editor
-  active_branch: codex/mobile-hud-v136
-  status: IMPLEMENTED_QA_PENDING
-  required_sources: [docs/ui/MOBILE_HUD_V136.md, master/changes/MOBILE-HUD-V136.json, master/source/ui/mobile_hud_v134/sources.json]
+  active_branch: main
+  status: INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED
+  source: 409d12bf7eaf5f255f99a383f5e598221c44df7f
+  source_tree: 249305d12119f85e01cf37f1dcbfd9e0500bb02b
+  app_tree: de174b6ddfd521586029f0255e8fd7af6e6f36ff
+  merge: 8917e85c0636440d8b9f7407cf77e71aa85ee962
+  focused_actions: 38071297808
+  full_android: SUCCESS_38071298077
+  duplicate_pr_check: IN_PROGRESS_38071300764_AT_MERGE_SAME_SOURCE_WORKFLOW
+  native_tests: 110_PASS
+  skill_art: PRESERVED_627_SOURCE_AND_APK_BYTES
   physical_phone: PENDING
   user_visual: PENDING_RUNTIME
+  contract: docs/ui/MOBILE_HUD_V136.md
+  evidence: master/changes/V136_BUILD_RUNTIME_RECEIPT.json
 
 mobile_hud_v135:
   owner: Director_single_editor

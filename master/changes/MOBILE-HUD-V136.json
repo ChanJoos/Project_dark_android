@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_USER_DESIGN_IMPLEMENTED_QA_PENDING",
+  "status": "ACCEPTED_USER_DESIGN_INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED",
   "evidence": "User approved B concept 2026-10-11, joystick right/up more transparent",
   "before": "V135 panel/flat silver native glyphs",
   "after": "B floating status, illustrated UI icons, compact live quests,110/374 translucent pad",
@@ -23,5 +23,8 @@
     "sha256": "31197285bb664014dad401c6e3319a4bff0bdf50897faa04c2a732aa87d4ff81"
   },
   "device": "PENDING",
-  "user_visual": "PENDING_RUNTIME"
+  "user_visual": "PENDING_RUNTIME",
+  "receipt": "master/changes/V136_BUILD_RUNTIME_RECEIPT.json",
+  "source": "409d12bf7eaf5f255f99a383f5e598221c44df7f",
+  "merge": "8917e85c0636440d8b9f7407cf77e71aa85ee962"
 }
