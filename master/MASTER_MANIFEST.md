@@ -194,3 +194,7 @@ SKILL-ABILITIES-V83.json authorizes new per-ID formulas/status balance beside pr
 
 ## Adapter revision POTE-REWARDS-V123 (2026-10-09)
 Accepted mobile reward policy: master/changes/POTE-REWARDS-V123.json → AdaptedPoteQuestRewards/AdaptedCampaignRewardCatalog V2 → CampaignProgress/RPG/commerce/journal/GameView. Original92CSV/canonical Equipment_Stats snapshot unchanged; source EXP/drop facts remain distinct. Contract docs/POTE_REWARDS_V123_CONTRACT.md.
+
+## V129 runtime function audit closure
+
+Known supported functions and all408 actual descriptions verified and integrated through PR184. Exact source/build/native evidence: changes/V129_BUILD_RUNTIME_RECEIPT.json. Retained per-item runtime audit: changes/V129_ALL408_RUNTIME_FUNCTION_AUDIT.json. Original unresolved values and unsupported services remain distinct from current adapted rules; no whole-original-function certification.

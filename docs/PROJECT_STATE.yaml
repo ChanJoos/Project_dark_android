@@ -1,14 +1,24 @@
 item_functions_v129:
   owner: Director_single_editor
-  status: ACTIVE_IMPLEMENTATION
-  user_authorized: 2026-10-10_ALL_REGISTERED_ITEM_FUNCTIONS_AND_DESCRIPTIONS
-  base_sha: ada25c7d1ac77bf666ad0419cb127bc475febccc
-  branch: codex/item-functions-v129
-  required_sources: [docs/ITEM_FUNCTIONS_V129_CONTRACT.md, design/DATA_CONTRACT.md, docs/EQUIPMENT_FOUNDATION_V124_CONTRACT.md, master/canonical/Equipment_Stats.csv, master/canonical/Item_Evidence.csv, master/canonical/Accessory_Catalog.json, master/source/equipment/identity_v128/catalog.json, master/source/equipment/functions_v129/provenance.json]
+  status: INTEGRATED_VERIFIED_KNOWN_SCOPE
+  source: 26d9e488342cdc5aaaeb05fa372102937921ab89
+  tree: de215aa19336db12c43a68b3e5cfcdcc42181248
+  pr: 184
+  merge_sha: 03bf75c819056dbb264775aeb2946317a7562ec7
+  build: BUILD_VERIFIED
+  focused_actions: 38013381805
+  native_runtime: ROBOLECTRIC_16_SUITES_96_TESTS_ZERO_FAILURES_ERRORS_SKIPS
+  full_android: [SUCCESS_RUN_38013385738, SUCCESS_RUN_38013382323]
+  registered_items_audited: 408
+  wardrobe_numeric_pending: 151
   original_all_item_function_completeness: NOT_VERIFIED
-  build: PENDING
-  native_runtime: PENDING
   physical_phone: PENDING
+  user_visual: PENDING
+  delivered_apk: PROJECT_DARK_V129_TEST.apk
+  apk_sha256: 67128853dc355d12db08ad2851ea69fa4bbdc12bc50aaa405f42225d42fccf0d
+  built_seoul: '2026-10-10T10:33:09.463644+09:00'
+  evidence: master/changes/V129_BUILD_RUNTIME_RECEIPT.json
+  remaining: [wardrobe_source_numbers, party_coma, original_regeneration_formula, antidote_identity, experience_bonus, durability, expiry]
 
 accessory_catalog_v125:
   implementation: IMPLEMENTED

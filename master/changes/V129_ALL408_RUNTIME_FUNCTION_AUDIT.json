@@ -1,0 +1,5871 @@
+[
+  {
+    "id": "IT_GLOVE_LEATHER",
+    "name": "가죽장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_LEGGING_LEATHER",
+    "name": "가죽각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SHOES",
+    "name": "이름 미확인 신발",
+    "slot": "신발",
+    "stats": {
+      "DEX": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_ADAPTED_STARTER_HAT",
+    "name": "밀레스털모자",
+    "slot": "모자",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_ADAPTED_STARTER_SHIELD",
+    "name": "이름 미확인 방패",
+    "slot": "방패",
+    "stats": {
+      "AC": -2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_EARRING_DOUBLE_SILVER",
+    "name": "쌍은귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": 0,
+      "STR": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_RING_REDJADE",
+    "name": "홍옥반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 100,
+      "MP": 50
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_RING_THREELINEGOLD",
+    "name": "세줄금반지",
+    "slot": "반지",
+    "stats": {
+      "AC": -1,
+      "HP": 300,
+      "MP": 150,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_RING_GORU",
+    "name": "고루반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "MP": 150
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_NECK_WATER_PEARL",
+    "name": "바다의진주목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 5
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_BELT_WATER_LEATHER",
+    "name": "바다의가죽벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_NECK_EARTH_PEARL",
+    "name": "대지의진주목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 5
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_BELT_EARTH_LEATHER",
+    "name": "대지의가죽벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_NECK_WIND_PEARL",
+    "name": "바람의진주목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 5
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_BELT_WIND_LEATHER",
+    "name": "바람의가죽벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_NECK_FIRE_PEARL",
+    "name": "화염의진주목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 5
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_BELT_FIRE_LEATHER",
+    "name": "화염의가죽벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_RING_SILVERAQUA",
+    "name": "실버아쿠아링",
+    "slot": "반지",
+    "stats": {
+      "AC": -1,
+      "HP": 350,
+      "MP": 170,
+      "DAM": 1,
+      "HIT": 1,
+      "STR": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_TRAINING_TOKEN",
+    "name": "훈련 증표 [B]",
+    "slot": null,
+    "stats": {},
+    "evidence": "B",
+    "usable": false,
+    "description": [
+      "퀘스트·진행용 재료 · 직접 사용/장착 불가"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_SMALL_POTION",
+    "name": "소형 회복물약 [B]",
+    "slot": null,
+    "stats": {},
+    "evidence": "B",
+    "usable": true,
+    "description": [
+      "사용 시 HP 35 회복 · 최대 HP 초과 불가",
+      "회복할 자원이 없거나 사망 상태면 소모되지 않습니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REAGENT_KOMADIUM",
+    "name": "코마디움",
+    "slot": null,
+    "stats": {},
+    "evidence": "O",
+    "usable": false,
+    "description": [
+      "코마 상태 동료 회복용 · 동료/코마 대상 기능 미구현"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REAGENT_DIBENOMUM",
+    "name": "디베노뭄",
+    "slot": null,
+    "stats": {},
+    "evidence": "O",
+    "usable": true,
+    "description": [
+      "시험 기능: 자신의 중독 해제 · 중독 시만 소모 · 원작 아이템 규칙 미확정"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REAGENT_CURANUM",
+    "name": "쿠라눔",
+    "slot": null,
+    "stats": {},
+    "evidence": "O",
+    "usable": true,
+    "description": [
+      "사용 시 HP 1000 회복 · 최대 HP 초과 불가",
+      "회복할 자원이 없거나 사망 상태면 소모되지 않습니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SHOP_ARMOR_JIPON",
+    "name": "지폰",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -17
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_MP_POTION",
+    "name": "마나 회복약",
+    "slot": null,
+    "stats": {},
+    "evidence": "ADAPTED",
+    "usable": true,
+    "description": [
+      "사용 시 MP 100 회복 · 최대 MP 초과 불가",
+      "회복할 자원이 없거나 사망 상태면 소모되지 않습니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REAGENT_CURUM",
+    "name": "쿠룸",
+    "slot": null,
+    "stats": {},
+    "evidence": "ADAPTED",
+    "usable": true,
+    "description": [
+      "사용 시 HP 200 회복 · 최대 HP 초과 불가",
+      "회복할 자원이 없거나 사망 상태면 소모되지 않습니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REAGENT_EXCURANUM",
+    "name": "엑스쿠라눔",
+    "slot": null,
+    "stats": {},
+    "evidence": "O",
+    "usable": true,
+    "description": [
+      "사용 시 HP 10000 회복 · 최대 HP 초과 불가",
+      "회복할 자원이 없거나 사망 상태면 소모되지 않습니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REAGENT_HOLYWATER",
+    "name": "성수",
+    "slot": null,
+    "stats": {},
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "성수의 원작 사용 효과는 미확정 · 현재 사용 불가"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SHOP_WEAPON_MW004",
+    "name": "세이버",
+    "slot": "무기",
+    "stats": {
+      "DAM": 7,
+      "HIT": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SHOP_WEAPON_MW005",
+    "name": "그라디우스",
+    "slot": "무기",
+    "stats": {
+      "DAM": 9,
+      "HIT": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_RECALL_MILLES",
+    "name": "밀레스리콜",
+    "slot": null,
+    "stats": {},
+    "evidence": "O",
+    "usable": true,
+    "description": [
+      "살아 있을 때 밀레스마을 시작 위치로 귀환 · 1개 소모"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_APPEARANCE_PEASANT_SHIRT",
+    "name": "셔츠",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_ADAPTED_PLAYTEST_MOKDO",
+    "name": "목도",
+    "slot": "무기",
+    "stats": {
+      "DAM": 3,
+      "HIT": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_WEAPON_MW002",
+    "name": "에페",
+    "slot": "무기",
+    "stats": {
+      "MinATK": 20,
+      "MaxATK": 30,
+      "HIT": 3,
+      "DAM": 3
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_WEAPON_MW003",
+    "name": "커틀라스",
+    "slot": "무기",
+    "stats": {
+      "DAM": 5
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REFERENCE_LEOPARD",
+    "name": "레오파드",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -79,
+      "HP": 1500,
+      "MP": -500,
+      "STR": 1,
+      "INT": -1,
+      "WIS": 2,
+      "CON": -4,
+      "DEX": -2,
+      "MAGIC_DEFENSE": 3
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_REFERENCE_HELM",
+    "name": "헬름",
+    "slot": "모자",
+    "stats": {
+      "AC": -12,
+      "HP": 400,
+      "MP": 500,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WEAPON_CHUNGRYONG",
+    "name": "청룡의숨결",
+    "slot": "무기",
+    "stats": {
+      "MinATK": 1,
+      "MaxATK": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_SHOES_ML229",
+    "name": "이름 미확인 신발",
+    "slot": "신발",
+    "stats": {
+      "DEX": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_SHOES_ML230",
+    "name": "이름 미확인 신발",
+    "slot": "신발",
+    "stats": {
+      "DEX": 3
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_SHIELD_MS002",
+    "name": "이름 미확인 방패",
+    "slot": "방패",
+    "stats": {
+      "AC": -3
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_SHIELD_MS003",
+    "name": "이름 미확인 방패",
+    "slot": "방패",
+    "stats": {
+      "AC": -4
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_HAT_MH173",
+    "name": "아벨털모자",
+    "slot": "모자",
+    "stats": {
+      "AC": -2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_HAT_MH174",
+    "name": "루어스털모자",
+    "slot": "모자",
+    "stats": {
+      "AC": -2,
+      "DEX": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_ARMOR_MU0000002",
+    "name": "레더튜닉",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -11
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_TEST_ARMOR_MU0000003",
+    "name": "도복",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -2,
+      "DEX": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_WARRIOR_TUNIC",
+    "name": "지폰 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_ROGUE_GARMENT",
+    "name": "스카웃튜닉 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -1,
+      "DEX": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_MAGE_ROBE",
+    "name": "루어스레더로브 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -1,
+      "MP": 20
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_CLERIC_ROBE",
+    "name": "맨틀 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -1,
+      "MP": 20
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_MONK_GI",
+    "name": "도복 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -2,
+      "DEX": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_WARRIOR_WEAPON",
+    "name": "롱소드 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 4
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_ROGUE_WEAPON",
+    "name": "에페 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 4,
+      "HIT": 1
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_MAGE_WAND",
+    "name": "매직새티아 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 3
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_JOB_CLERIC_WAND",
+    "name": "홀리머큐리아 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_POTE_SHOES",
+    "name": "이름 미확인 신발 · 수련",
+    "slot": "신발",
+    "stats": {
+      "AC": -1,
+      "DEX": 3
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_PURIFIED_ESSENCE",
+    "name": "정화된 숲의 정수",
+    "slot": null,
+    "stats": {},
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "퀘스트·진행용 재료 · 직접 사용/장착 불가"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_WARRIOR_11",
+    "name": "지폰 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -5,
+      "DAM": 3,
+      "HP": 80,
+      "MP": 80
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_11",
+    "name": "롱소드 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 4,
+      "STR": 3,
+      "CON": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_WARRIOR_26",
+    "name": "지폰 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -10,
+      "DAM": 7,
+      "HP": 180,
+      "MP": 180
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_26",
+    "name": "롱소드 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 9,
+      "STR": 6,
+      "CON": 4
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_ROGUE_11",
+    "name": "스카웃튜닉 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -5,
+      "DAM": 3,
+      "HP": 80,
+      "MP": 80
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_ROGUE_11",
+    "name": "에페 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 4,
+      "STR": 3,
+      "CON": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_ROGUE_26",
+    "name": "스카웃튜닉 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -10,
+      "DAM": 7,
+      "HP": 180,
+      "MP": 180
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_ROGUE_26",
+    "name": "에페 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 9,
+      "STR": 6,
+      "CON": 4
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_MAGE_11",
+    "name": "후드로브 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -5,
+      "DAM": 3,
+      "HP": 80,
+      "MP": 80
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_MAGE_11",
+    "name": "매직새티아 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 4,
+      "INT": 3,
+      "WIS": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_MAGE_26",
+    "name": "후드로브 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -10,
+      "DAM": 7,
+      "HP": 180,
+      "MP": 180
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_MAGE_26",
+    "name": "매직새티아 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 9,
+      "INT": 6,
+      "WIS": 4
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_CLERIC_11",
+    "name": "맨틀 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -5,
+      "DAM": 3,
+      "HP": 80,
+      "MP": 80
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_CLERIC_11",
+    "name": "홀리머큐리아 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 4,
+      "INT": 3,
+      "WIS": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_CLERIC_26",
+    "name": "맨틀 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -10,
+      "DAM": 7,
+      "HP": 180,
+      "MP": 180
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_CLERIC_26",
+    "name": "홀리머큐리아 · 수련",
+    "slot": "무기",
+    "stats": {
+      "DAM": 9,
+      "INT": 6,
+      "WIS": 4
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_MARTIAL_ARTIST_11",
+    "name": "도복 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -5,
+      "DAM": 3,
+      "HP": 80,
+      "MP": 80
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_11",
+    "name": "무도가 수련 도구",
+    "slot": "장갑",
+    "stats": {
+      "DAM": 4,
+      "STR": 3,
+      "CON": 2
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_MARTIAL_ARTIST_26",
+    "name": "도복 · 수련",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -10,
+      "DAM": 7,
+      "HP": 180,
+      "MP": 180
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_26",
+    "name": "무도가 숙련 도구",
+    "slot": "장갑",
+    "stats": {
+      "DAM": 9,
+      "STR": 6,
+      "CON": 4
+    },
+    "evidence": "ADAPTED",
+    "usable": false,
+    "description": [
+      "일부 수치는 현재 게임의 시험 설정입니다."
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_JUNDAMAIYARINGU_93B90B4A",
+    "name": "순옥귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": 0,
+      "INT": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_SOUKINIYARINGU_71ACA148",
+    "name": "쌍금귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": 0,
+      "STR": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_SANGOIYARINGU_9FA3A3C8",
+    "name": "산호귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": 0,
+      "INT": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_SANGOSEKIIYARINGU_BD93B8B9",
+    "name": "산호석귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": 0,
+      "STR": 3,
+      "HIT": 1,
+      "HP": 50
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_RUBIIYARINGU_FA45A3F9",
+    "name": "루비귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": 0,
+      "STR": 1,
+      "INT": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_RI-ZENTO_DC68008A",
+    "name": "리젠트다이아귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "경험치 증가·시간별 내구 소모는 원작 규칙 미확정으로 적용되지 않습니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_REDMARINE_4BEA9E11",
+    "name": "레드마린귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": 0,
+      "MP": 50,
+      "INT": 3,
+      "HIT": 1,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_HORUDEITORINGU_358D472E",
+    "name": "홀디트링",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_KAENHORUDEITO_964F13A2",
+    "name": "화염의홀디트링",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1,
+      "HP": 150,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599",
+    "name": "바람의홀디트링",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1,
+      "STR": 3,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_DAITIHORUDEITO_6523D03A",
+    "name": "대지의홀디트링",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1,
+      "HIT": 10,
+      "DAM": 2,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_UMIHORUDEITO_652BB8EC",
+    "name": "바다의홀디트링",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_SEIRARINGU_0EB6FB35",
+    "name": "세일라링",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1,
+      "HIT": 10,
+      "DAM": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_146_HADEEAR_84C2EB0E",
+    "name": "화려한귀걸이",
+    "slot": "귀걸이",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_KUTU1_6FDB18DA",
+    "name": "파란신발",
+    "slot": "신발",
+    "stats": {},
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_JAPANUNIFORM02_8A8DE823",
+    "name": "이름 미확인 신발",
+    "slot": "신발",
+    "stats": {},
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_KUTU26_00B7153C",
+    "name": "회색신발",
+    "slot": "신발",
+    "stats": {
+      "DEX": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_KUTU41_24CE5A29",
+    "name": "녹색신발",
+    "slot": "신발",
+    "stats": {
+      "DEX": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_SIRUKUBU-TU_002F34C7",
+    "name": "실크부츠",
+    "slot": "신발",
+    "stats": {
+      "DEX": 8
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_KUTU56_83C01E8B",
+    "name": "가죽부츠",
+    "slot": "신발",
+    "stats": {
+      "DEX": 3
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_SAFIAN_0C302BDB",
+    "name": "사피안",
+    "slot": "신발",
+    "stats": {
+      "DEX": 4
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_KUTU86_3F9DA5BB",
+    "name": "크림슨",
+    "slot": "신발",
+    "stats": {
+      "DEX": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_MAGICBOOTS_2238025C",
+    "name": "매직부츠",
+    "slot": "신발",
+    "stats": {
+      "DEX": 6
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_BATORUBUTU_9220E76A",
+    "name": "배틀부츠",
+    "slot": "신발",
+    "stats": {
+      "DEX": 10,
+      "HP": 1000,
+      "STR": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_MISURIRUBUTU_4580A69D",
+    "name": "미스릴부츠",
+    "slot": "신발",
+    "stats": {
+      "DEX": 10,
+      "MP": 1000,
+      "WIS": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_WORIAWOKA_3CD02556",
+    "name": "워리어워커",
+    "slot": "신발",
+    "stats": {
+      "DEX": 12,
+      "HP": 1100,
+      "HIT": 1,
+      "DAM": 1,
+      "STR": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_150_BARUTI_39722257",
+    "name": "발찌",
+    "slot": "신발",
+    "stats": {
+      "DEX": 10,
+      "HP": 1000,
+      "MP": 100,
+      "STR": 1,
+      "INT": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_ROORING_4759F2BA",
+    "name": "로오의반지",
+    "slot": "반지",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_KENTETU_8B92FCD7",
+    "name": "현철반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 100
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_KIN_67A36C40",
+    "name": "금반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "MP": 50
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_SISUISYOU_11310F31",
+    "name": "자수정반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 200
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_SANGO_A6FE6F21",
+    "name": "산호반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "MP": 100
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_TORAME_B1522F0F",
+    "name": "호안석반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 200,
+      "MP": 100
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_SAFAIA_81A4D338",
+    "name": "사파이어반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 300
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_RYOKUGYOKU_7AB8ADDD",
+    "name": "녹옥반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 300,
+      "MP": 150
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_TAIRYOKUNOBLUESEPIAYUBIWA_745BFE1C",
+    "name": "체력의블루세피아반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 600,
+      "STR": -6,
+      "CON": -6,
+      "INT": -2,
+      "WIS": -2,
+      "DEX": -2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_GORUDOAKUA_DE45DA1B",
+    "name": "골드아쿠아링",
+    "slot": "반지",
+    "stats": {
+      "AC": -1,
+      "HP": 400,
+      "MP": 150,
+      "DAM": 1,
+      "HIT": 1,
+      "STR": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_REDDOGANETOYUBIWA_CC8ED229",
+    "name": "레드가넷반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 250,
+      "MP": 1000,
+      "DAM": 3,
+      "HIT": 3,
+      "WIS": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_RUBI_1313E2F4",
+    "name": "루비나반지",
+    "slot": "반지",
+    "stats": {
+      "AC": -1,
+      "HP": 500,
+      "MP": 50,
+      "DAM": 2,
+      "HIT": 2,
+      "DEX": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_TOPAZUYUBIWA_A13CED6E",
+    "name": "토파즈반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 300,
+      "MP": 150,
+      "STR": 1,
+      "INT": 1,
+      "WIS": 1,
+      "CON": 1,
+      "DEX": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_SUZAKUNOYUBIWA_98951BA8",
+    "name": "주작의반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 500,
+      "MP": 500,
+      "STR": 1,
+      "INT": 1,
+      "WIS": 1,
+      "CON": 1,
+      "DEX": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_BAIRONNOYUBIWA_11415A80",
+    "name": "바이런의반지",
+    "slot": "반지",
+    "stats": {
+      "AC": -3,
+      "HP": 500,
+      "MP": 50,
+      "STR": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_152_KEKONYUBIWA_2892DC6B",
+    "name": "결혼반지",
+    "slot": "반지",
+    "stats": {
+      "AC": 0,
+      "HP": 300,
+      "MP": 150
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_GURINHATOGURI_871D87FC",
+    "name": "그린하트각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -9,
+      "HIT": 1,
+      "HP": 1000,
+      "MP": 300,
+      "REGEN": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +5 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_REDOHATOGURI_BA65AE3F",
+    "name": "레드하트각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -9,
+      "HIT": 1,
+      "HP": 300,
+      "MP": 1000,
+      "REGEN": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +5 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_DOUGURI_A82A5522",
+    "name": "동각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -4
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_SANGOGURI_48B5B5B7",
+    "name": "산호각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -5,
+      "HP": 30,
+      "MP": 10,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_GINGURI_A34075CC",
+    "name": "은각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -6
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_AIANREZA-GURI-BUSU_250C8D66",
+    "name": "아이언레더각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -6,
+      "HIT": 3,
+      "DAM": 3,
+      "HP": 250,
+      "MP": 50
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_AKUAGURI_C4398D7E",
+    "name": "아쿠아각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -7,
+      "HP": 40,
+      "MP": 20,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_KINGURI_1D935B28",
+    "name": "금각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -8
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_GORUDENPURETOGURI_7FFBB6A1",
+    "name": "골든플레이트각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -6,
+      "HP": 100,
+      "MP": 100,
+      "HIT": 3,
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_MATAGURI_7CD3401F",
+    "name": "마타룸각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -8
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_YUMOU_47B94777",
+    "name": "용맹의각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -10,
+      "HP": -500,
+      "HIT": 1,
+      "DAM": 1,
+      "STR": 1,
+      "INT": 1,
+      "CON": 1,
+      "WIS": -1,
+      "DEX": -1,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_RYUGURI_A6E43C6B",
+    "name": "용각반",
+    "slot": "각반",
+    "stats": {
+      "AC": -10,
+      "HP": 500,
+      "REGEN": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +5 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103",
+    "name": "베네티가죽클립",
+    "slot": "각반",
+    "stats": {
+      "AC": -11,
+      "HP": 500,
+      "REGEN": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +5 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_155_AB10_A6AAE9C2",
+    "name": "베네티풀잎클립",
+    "slot": "각반",
+    "stats": {
+      "AC": -12,
+      "HP": 600,
+      "HIT": 2,
+      "DAM": 2,
+      "REGEN": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +5 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_DOUTE_A5E44029",
+    "name": "동장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_AQUAGLOVE_D58808FC",
+    "name": "아쿠아글러브",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_GINTE_D06DD1FA",
+    "name": "은장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_AQUAGLOVE02_2FABCC4B",
+    "name": "아쿠아레더글러브",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3,
+      "HIT": 1,
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_AIANREZA-TEBUKURO_4D381BCE",
+    "name": "아이언언레더장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2,
+      "HIT": 3,
+      "DAM": 3,
+      "STR": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_GINTE_R_166E6D7D",
+    "name": "은장갑R",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_KINTEBUKURO_7E1109C9",
+    "name": "금장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -4
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_KHANGOLDGLOVER_A65F8611",
+    "name": "금장갑R",
+    "slot": "장갑",
+    "stats": {
+      "AC": -4
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8",
+    "name": "버팔로가죽장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_NOESGLOVE81_7DBCEB08",
+    "name": "표범가죽장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_NOESGLOVEMAS_04B5B0C9",
+    "name": "쥼글러브",
+    "slot": "장갑",
+    "stats": {
+      "AC": -4
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_MATARUMUGLOVE_13EFD244",
+    "name": "마타룸장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3,
+      "HIT": 1,
+      "DAM": 1,
+      "STR": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_REDAGLOVE_F007FA8F",
+    "name": "레더글러브",
+    "slot": "장갑",
+    "stats": {
+      "AC": -4
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_GUMGLOVE_A39D8422",
+    "name": "고무장갑",
+    "slot": "장갑",
+    "stats": {
+      "AC": -5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_NEBILIST_8B0E7D73",
+    "name": "네비리스트",
+    "slot": "장갑",
+    "stats": {
+      "AC": -5,
+      "HP": 800,
+      "MP": 500,
+      "STR": 1,
+      "INT": 1,
+      "WIS": 1,
+      "CON": 1,
+      "DEX": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_JUELGLOVE_2594DE89",
+    "name": "쥬얼리스트",
+    "slot": "장갑",
+    "stats": {
+      "AC": -4,
+      "HP": -500,
+      "HIT": 1,
+      "DAM": 1,
+      "STR": 1,
+      "INT": 1,
+      "WIS": 1,
+      "CON": 1,
+      "DEX": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_VEGAGLOVE_2C49C6AE",
+    "name": "베가리스트",
+    "slot": "장갑",
+    "stats": {
+      "AC": -6,
+      "HP": -1000,
+      "HIT": 1,
+      "DAM": 1,
+      "STR": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_PAWARISUTO_CCE90CC1",
+    "name": "파워리스트",
+    "slot": "장갑",
+    "stats": {
+      "AC": -5,
+      "HP": 1000,
+      "MP": -300,
+      "HIT": 1,
+      "DAM": 1,
+      "STR": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_MAJIKURISUTO_695C046E",
+    "name": "매직리스트",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3,
+      "HP": -300,
+      "MP": 1000,
+      "WIS": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_JUNO_AA3C7686",
+    "name": "쥬노아겐트리트",
+    "slot": "장갑",
+    "stats": {
+      "AC": -9,
+      "HP": 1200,
+      "MP": -600,
+      "HIT": 3,
+      "DAM": 3,
+      "STR": -1,
+      "INT": -1,
+      "WIS": -1,
+      "CON": -1,
+      "DEX": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_KUREARISUTO_EB00C792",
+    "name": "클레어리스트",
+    "slot": "장갑",
+    "stats": {
+      "AC": -8,
+      "HIT": 3,
+      "DAM": 3,
+      "HP": 800,
+      "MP": -1000,
+      "STR": 2,
+      "INT": 2,
+      "WIS": 2,
+      "CON": 2,
+      "DEX": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_KAWAUDEWA_7B660B48",
+    "name": "가죽팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_DOUUDEWA_627B876E",
+    "name": "동팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_GINUDEWA_98AFCA6F",
+    "name": "은팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_KINUDEWA_9D051BB4",
+    "name": "금팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -4
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_SAMEKAWAUDEWA_2772BFCF",
+    "name": "상어가죽팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2,
+      "HIT": 1,
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_SANGOUDEWA_ADBB6639",
+    "name": "산호석팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3,
+      "HIT": 1,
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_NOESUDEWA51_63C1878A",
+    "name": "브론즈네일",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_NOESUDEWA81_1D924113",
+    "name": "실버네일",
+    "slot": "장갑",
+    "stats": {
+      "AC": -3,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72",
+    "name": "골드네일",
+    "slot": "장갑",
+    "stats": {
+      "AC": -4,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_BUREISA_BC0CFFF2",
+    "name": "브레이사",
+    "slot": "장갑",
+    "stats": {
+      "AC": -8,
+      "HP": 1500,
+      "MP": -100,
+      "STR": 2,
+      "DEX": 0
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_EXCELDEAMONUDEWA_90A44943",
+    "name": "엑셀데몬의팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -8,
+      "HP": 1200,
+      "MP": 500,
+      "HIT": 3,
+      "DAM": 3,
+      "STR": 1,
+      "INT": 1,
+      "WIS": 1,
+      "CON": 1,
+      "DEX": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_IRONBRACE_C42CC60D",
+    "name": "아이언팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -2,
+      "HIT": 3,
+      "DAM": 3,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_RYUUUDEWA_01F1AC5F",
+    "name": "용팔찌",
+    "slot": "장갑",
+    "stats": {
+      "AC": -6,
+      "MP": 1000,
+      "DEX": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_170_JUNOABUREISU_BB4EED95",
+    "name": "쥬노아브레이스",
+    "slot": "장갑",
+    "stats": {
+      "AC": -9,
+      "HIT": 3,
+      "DAM": 3,
+      "HP": 1200,
+      "MP": -600,
+      "STR": -1,
+      "INT": -1,
+      "WIS": -1,
+      "CON": -1,
+      "DEX": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_FIREBELT_449392D4",
+    "name": "화염의벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_WINDBELT_AF012333",
+    "name": "바람의벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_EARTHBELT_226B231D",
+    "name": "대지의벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_WATERBELT_383B7970",
+    "name": "바다의벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_LEATHERBELT_22469A11",
+    "name": "가죽벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_SILVERBELT_59257BAB",
+    "name": "은벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_SILVERBELT_9B4B562A",
+    "name": "화염의은벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_SILVERBELT_26ACEA62",
+    "name": "바람의은벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_SILVERBELT_9A400E2B",
+    "name": "대지의은벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_SILVERBELT_E2347088",
+    "name": "바다의은벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_GOLDBELT_8ABE1100",
+    "name": "금벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_GOLDBELT_BC73AA9A",
+    "name": "화염의금벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_GOLDBELT_F5E4AA12",
+    "name": "바람의금벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_GOLDBELT_43AC2098",
+    "name": "대지의금벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_GOLDBELT_E78C2A09",
+    "name": "바다의금벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_ZEMBELT_HI_F3EB78A9",
+    "name": "화염의젬벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_ZEMBELT_KAZE_A13FE1DB",
+    "name": "바람의젬벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_ZEMBELT_TI_ABF612E2",
+    "name": "대지의젬벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_ZEMBELT_UMI_B85A36BB",
+    "name": "바다의젬벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_ZEMBELT_KIN_99326977",
+    "name": "금속성의젬벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_ZEMUBELT_KI_E92C1218",
+    "name": "숲의젬벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_MASTERBELT_3B1C2CC1",
+    "name": "화염의승염벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "STR": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_MASTERBELT_205324F4",
+    "name": "바람의승염벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "STR": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_MASTERBELT_27922105",
+    "name": "대지의승염벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "STR": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_MASTERBELT_DFE6DBAF",
+    "name": "바다의승염벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "STR": 1,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_KAENNORUNASABERUTO_D6CECBD9",
+    "name": "화염의루나사벨트 화염의루나사벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0,
+      "HIT": 1,
+      "DAM": 1,
+      "HP": 300,
+      "MP": 100,
+      "CON": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038",
+    "name": "주작의벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": -2,
+      "STR": 1,
+      "INT": 1,
+      "WIS": 1,
+      "CON": 1,
+      "DEX": 1,
+      "REGEN": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +1 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_193_DARKBELT_6B3683B8",
+    "name": "암흑의벨트",
+    "slot": "벨트",
+    "stats": {
+      "AC": 0
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KANNEKU_56B04FF1",
+    "name": "칸의목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KAENNEKU_584513F2",
+    "name": "화염의목걸이",
+    "slot": "목걸이",
+    "stats": {},
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KAZENEKU_2DB6010B",
+    "name": "바람의목걸이",
+    "slot": "목걸이",
+    "stats": {},
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_DAICHINEKU_E75BD4C9",
+    "name": "대지의목걸이",
+    "slot": "목걸이",
+    "stats": {},
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_UMINEKU_D2A72A12",
+    "name": "바다의목걸이",
+    "slot": "목걸이",
+    "stats": {},
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KIN-KAEN_4D647A6B",
+    "name": "화염의금목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KIN-KAZE_71BFBAEC",
+    "name": "바람의금목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KIN-DAICHI_158A1DC4",
+    "name": "대지의금목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KIN-UMI_CAB975EA",
+    "name": "바다의금목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_SUISHOU-KAEN_80452A02",
+    "name": "화염의자수정목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_SUISHOU-KAZE_F0E7357B",
+    "name": "바람의자수정목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_SUISHOU-DAICHI_4D70A2AD",
+    "name": "대지의자수정목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_SUISHOU-UMI_60179756",
+    "name": "바다의자수정목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 2
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_HI_HEKIGEKU_361934BE",
+    "name": "화염의벽옥목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_HEKIGYOKU-KAZE_C3FC5734",
+    "name": "바람의벽옥목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_DAITI_HEKIGYOKU_7D05B7DB",
+    "name": "대지의벽옥목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_MIZU_HEKIGYOKU_7B2382B5",
+    "name": "바다의벽옥목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_MAGIRA_HI_3C371C7E",
+    "name": "화염의마기라목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_MAGIRA_KAZE_E3B6280F",
+    "name": "바람의마기라목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_MAGIRA_TI_01801011",
+    "name": "대지의마기라목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_MAGIRA_UMI_8EB93900",
+    "name": "바다의마기라목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 1,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_DAITINORU-NSUTO-NNEKKURESU_1970651C",
+    "name": "대지의룬스톤목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 3
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_ZEMSTONE_HI_62C3AF8C",
+    "name": "화염의잼스톤목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 10,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_ZEMSTONE_KAZE_88EE1EDC",
+    "name": "바람의잼스톤목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 10,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_ZEMSTONE_TI_5D6A1048",
+    "name": "대지의잼스톤목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 10,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_ZEMSTONE_UMI_62F2D328",
+    "name": "바다의잼스톤목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "DAM": 10,
+      "HIT": 5
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_CRYSTAL_5911EC0D",
+    "name": "크리스탈목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_HICRYSTAL_A94FCE06",
+    "name": "화염의크리스탈목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1,
+      "DAM": -2,
+      "HIT": 5,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B",
+    "name": "바람의크리스탈목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1,
+      "DAM": -2,
+      "HIT": 5,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_TICRYSTAL_A90E7D50",
+    "name": "대지의크리스탈목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1,
+      "DAM": -2,
+      "HIT": 5,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_UMICRYSTAL_21B5EDA7",
+    "name": "바다의크리스탈목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1,
+      "DAM": -2,
+      "HIT": 5,
+      "REGEN": 10
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "재생력 +10 · 25초마다 HP 추가 회복",
+      "시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음",
+      "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.",
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_DARKNECK_38E272A2",
+    "name": "암흑의목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1,
+      "HP": 300,
+      "MP": 150
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_197_HIKARINECK_CE1F9258",
+    "name": "생명의목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1,
+      "HP": 300,
+      "MP": 150
+    },
+    "evidence": "FAN",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_MINIMOB_0",
+    "name": "골든플레이트각반 [2012]",
+    "slot": "각반",
+    "stats": {
+      "AC": -9,
+      "HIT": 3,
+      "DAM": 15,
+      "HP": 100,
+      "MP": 100
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_MINIMOB_1",
+    "name": "숲의잼스톤목걸이",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 5,
+      "DAM": 10
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_MINIMOB_2",
+    "name": "흑요석워리어목걸이(수)",
+    "slot": "목걸이",
+    "stats": {
+      "AC": -1,
+      "HIT": 5,
+      "DAM": 8
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_MINIMOB_3",
+    "name": "금벨트 [2012]",
+    "slot": "벨트",
+    "stats": {
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_MINIMOB_4",
+    "name": "다크그레이벨트(수)+1",
+    "slot": "벨트",
+    "stats": {
+      "MP": 50,
+      "WIS": 1,
+      "CON": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_SOURCE_MINIMOB_5",
+    "name": "쥬얼십자가목걸이FX",
+    "slot": "목걸이",
+    "stats": {
+      "HIT": 10,
+      "DAM": 10
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH106",
+    "name": "털모자",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH108",
+    "name": "햇",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH111",
+    "name": "이프리트투구",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH112",
+    "name": "풀플레이트투구",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH113",
+    "name": "골든플레이트투구",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH121",
+    "name": "카게",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH122",
+    "name": "로그",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH123",
+    "name": "닌자드",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH124",
+    "name": "화랑복건",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH125",
+    "name": "아이언",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH131",
+    "name": "매직세인트",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH132",
+    "name": "매직코니칼",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH133",
+    "name": "매직풀",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH134",
+    "name": "매직피어",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH135",
+    "name": "매직치프",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH136",
+    "name": "매직네비",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH137",
+    "name": "매직레드",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH138",
+    "name": "매직썬라이징",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH143",
+    "name": "노랑두건",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH147",
+    "name": "파란두건",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH152",
+    "name": "페리위그",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH153",
+    "name": "풀플레이트투구수",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH154",
+    "name": "풀플레이트투구토",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH155",
+    "name": "풀플레이트투구풍",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH156",
+    "name": "풀플레이트투구화",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH157",
+    "name": "세인트홀",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH158",
+    "name": "다크홀",
+    "slot": "모자",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH162",
+    "name": "아가트",
+    "slot": "모자",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": -500,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH163",
+    "name": "헬름",
+    "slot": "모자",
+    "stats": {
+      "AC": -12,
+      "HP": 400,
+      "MP": 500,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH165",
+    "name": "루크",
+    "slot": "모자",
+    "stats": {
+      "AC": -8,
+      "HP": 800,
+      "MP": 200,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH166",
+    "name": "마르두크",
+    "slot": "모자",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": 600,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH167",
+    "name": "아가트",
+    "slot": "모자",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": -500,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MH171",
+    "name": "마르두크",
+    "slot": "모자",
+    "stats": {
+      "AC": -7,
+      "HP": 300,
+      "MP": 600,
+      "MAGIC_DEFENSE": 1
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000005",
+    "name": "셍즈",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000008",
+    "name": "천지도복",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -29
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000011",
+    "name": "달마티카",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -16
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000012",
+    "name": "하프플레이트",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -24
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000013",
+    "name": "단도복",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -19
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000014",
+    "name": "팔루텐",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -30
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000016",
+    "name": "로럼",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -24
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000017",
+    "name": "카스뮴아머",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -30
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000018",
+    "name": "선풍도복",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -38
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000019",
+    "name": "키톤",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -40
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000020",
+    "name": "위저드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000022",
+    "name": "체인메일",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -36
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000023",
+    "name": "태산도복",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -48
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000024",
+    "name": "바르도클",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -50
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000025",
+    "name": "네크로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000027",
+    "name": "풀플레이트",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -49
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000028",
+    "name": "이프리트메일",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -43
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000029",
+    "name": "골든플레이트",
+    "slot": "갑옷",
+    "stats": {
+      "AC": -55
+    },
+    "evidence": "V",
+    "usable": false,
+    "description": [
+      "확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000043",
+    "name": "수오미지폰",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000044",
+    "name": "밀레스지폰",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000045",
+    "name": "뤼케시온지폰",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000046",
+    "name": "루어스지폰",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000047",
+    "name": "수오미노미쉬레더",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000048",
+    "name": "뤼케시온노미쉬레더",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000049",
+    "name": "밀레스노미쉬레더",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000050",
+    "name": "루어스노미쉬레더",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000051",
+    "name": "수오미달마티카",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000052",
+    "name": "뤼케시온달마티카",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000053",
+    "name": "밀레스달마티카",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000054",
+    "name": "루어스달마티카",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000055",
+    "name": "수오미레더로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000056",
+    "name": "밀레스레더로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000057",
+    "name": "뤼케시온레더로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000059",
+    "name": "오렌가이아로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000060",
+    "name": "루어스단도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000061",
+    "name": "뤼케시온단도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000062",
+    "name": "수오미단도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000063",
+    "name": "수오미레더튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000064",
+    "name": "뤼케시온레더튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000065",
+    "name": "루어스레더튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000066",
+    "name": "밀레스레더튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000067",
+    "name": "수오미스카웃튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000068",
+    "name": "밀레스스카웃튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000069",
+    "name": "뤼케시온스카웃튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000070",
+    "name": "루어스스카웃튜닉",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000071",
+    "name": "수오미후드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000072",
+    "name": "뤼케시온후드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000073",
+    "name": "밀레스후드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000074",
+    "name": "루어스후드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000075",
+    "name": "수오미셍즈",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000076",
+    "name": "밀레스셍즈",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000077",
+    "name": "뤼케시온셍즈",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000078",
+    "name": "루어스셍즈",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000079",
+    "name": "수오미도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000080",
+    "name": "뤼케시온도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000081",
+    "name": "루어스도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000082",
+    "name": "밀레스도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000083",
+    "name": "뤼케시온하프플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000084",
+    "name": "밀레스하프플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000085",
+    "name": "루어스하프플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000086",
+    "name": "수오미하프플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000087",
+    "name": "수오미팔루텐",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000090",
+    "name": "루어스팔루텐",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000091",
+    "name": "수오미로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000092",
+    "name": "뤼케시온로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000093",
+    "name": "밀레스로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000094",
+    "name": "루어스로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000095",
+    "name": "밀레스맨틀",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000096",
+    "name": "루어스맨틀",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000097",
+    "name": "수오미맨틀",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000098",
+    "name": "뤼케시온맨틀",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000100",
+    "name": "밀레스천지도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000101",
+    "name": "뤼케시온천지도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000102",
+    "name": "루어스천지도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000111",
+    "name": "수오미가이아로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000112",
+    "name": "뤼케시온가이아로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000113",
+    "name": "루어스가이아로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000114",
+    "name": "밀레스가이아로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000115",
+    "name": "수오미위저드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000116",
+    "name": "뤼케시온위저드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000117",
+    "name": "루어스위저드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000118",
+    "name": "밀레스위저드로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000121",
+    "name": "루어스선풍도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000122",
+    "name": "밀레스선풍도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000123",
+    "name": "수오미풀플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000124",
+    "name": "뤼케시온풀플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000125",
+    "name": "루어스풀플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000126",
+    "name": "밀레스풀플레이트",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000127",
+    "name": "수오미바르도클",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000128",
+    "name": "뤼케시온바르도클",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000129",
+    "name": "루어스바르도클",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000130",
+    "name": "밀레스바르도클",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000131",
+    "name": "수오미다크로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000132",
+    "name": "뤼케시온다크로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000133",
+    "name": "루어스다크로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000134",
+    "name": "밀레스다크로럼",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000135",
+    "name": "수오미네크로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000136",
+    "name": "뤼케시온네크로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000137",
+    "name": "루어스네크로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000138",
+    "name": "밀레스네크로브",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MU0000139",
+    "name": "수오미태산도복",
+    "slot": "갑옷",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW007",
+    "name": "매직마르시아",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "저주 마법 시전 1초",
+      "재사용 대기시간·물리 공격에는 적용되지 않습니다.",
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW009",
+    "name": "매직쥬피티아",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "기본 시전 4초인 마법을 2초로 단축",
+      "재사용 대기시간·물리 공격에는 적용되지 않습니다.",
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW010",
+    "name": "매스커레이드",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW011",
+    "name": "매스케이드",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW012",
+    "name": "배틀소드",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW013",
+    "name": "블랙데쓰",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW014",
+    "name": "프렘벨",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW016",
+    "name": "투핸드크레이모어",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW017",
+    "name": "스틸라",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW018",
+    "name": "투핸드에메랄드소드",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW019",
+    "name": "투핸드드래곤크로어",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW020",
+    "name": "드래곤슬레이어",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW021",
+    "name": "투핸드그레이트소드",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW022",
+    "name": "투핸드엑시큐터",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW023",
+    "name": "투핸드가이아두스",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW026",
+    "name": "매직루나",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "모든 마법 시전 -1초 (최소 0초)",
+      "재사용 대기시간·물리 공격에는 적용되지 않습니다.",
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW027",
+    "name": "매직가이아",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "기본 시전 5초 이상인 마법을 4초로 단축",
+      "재사용 대기시간·물리 공격에는 적용되지 않습니다.",
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW029",
+    "name": "채찍",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW034",
+    "name": "우든클럽",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW035",
+    "name": "스파이크클럽",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW036",
+    "name": "자이언트클럽",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW037",
+    "name": "자이언트스톤클럽",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW039",
+    "name": "액스",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW040",
+    "name": "하이브레이질액스",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW041",
+    "name": "자이언트스톤액스",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW043",
+    "name": "배틀액스",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW044",
+    "name": "자이언트스톤해머",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW047",
+    "name": "시미터",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW048",
+    "name": "더브릴",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW049",
+    "name": "타고나이트채찍",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW050",
+    "name": "미스릴채찍",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW051",
+    "name": "루비채찍",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW053",
+    "name": "타고나이트액스",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW055",
+    "name": "하이브레이질배틀액스",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW056",
+    "name": "실버시미터",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW059",
+    "name": "매직솔라",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "모든 마법 시전시간 3초",
+      "재사용 대기시간·물리 공격에는 적용되지 않습니다.",
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW060",
+    "name": "아리펠스탭",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "일반 마법 시전 -1초 · 저주 1초",
+      "재사용 대기시간·물리 공격에는 적용되지 않습니다.",
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  },
+  {
+    "id": "IT_WARDROBE_MW062",
+    "name": "매직파나",
+    "slot": "무기",
+    "stats": {},
+    "evidence": "PENDING",
+    "usable": false,
+    "description": [
+      "일반 마법 시전 -1초 · 저주 1초 · 회복 마법 즉시 · 고정 MP 소모 10% 절감",
+      "재사용 대기시간·물리 공격에는 적용되지 않습니다.",
+      "원작 수치·착용 조건 미확정 · 외형 테스트용"
+    ],
+    "originalFullFunctionVerified": false
+  }
+]

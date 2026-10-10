@@ -1,0 +1,96 @@
+{
+  "source": "26d9e488342cdc5aaaeb05fa372102937921ab89",
+  "tree": "de215aa19336db12c43a68b3e5cfcdcc42181248",
+  "focusedRun": 38013381805,
+  "focusedJob": 114098232911,
+  "nativeArtifact": 11654582520,
+  "apkArtifact": 11654547485,
+  "counts": {
+    "tests": 96,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    "com.projectdark.mobile.AccessoryCatalogV125Test",
+    "com.projectdark.mobile.RuntimeCheckpointTest",
+    "com.projectdark.mobile.ModernUiTest",
+    "com.projectdark.mobile.SkillAbilityRuntimeTest",
+    "com.projectdark.mobile.DualEquipmentV128Test",
+    "com.projectdark.mobile.SkillSpatialContractTest",
+    "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+    "com.projectdark.mobile.ItemFunctionsV129Test",
+    "com.projectdark.mobile.TownInteriorTest",
+    "com.projectdark.mobile.FullItemArtV127Test",
+    "com.projectdark.mobile.PoteRewardsV123Test",
+    "com.projectdark.mobile.EquipmentFoundationV124Test",
+    "com.projectdark.mobile.ClassicUiV126Test",
+    "com.projectdark.mobile.HudTouchAcceptanceTest",
+    "com.projectdark.mobile.ItemWindowReferenceTest",
+    "com.projectdark.mobile.SkillWindowReferenceTest"
+  ],
+  "info": {
+    "sourceCommit": "26d9e488342cdc5aaaeb05fa372102937921ab89",
+    "runId": "38013381805",
+    "versionCode": 129,
+    "versionName": "1.29-item-functions",
+    "applicationId": "com.projectdark.mobile.v129test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "67128853dc355d12db08ad2851ea69fa4bbdc12bc50aaa405f42225d42fccf0d",
+    "apkBytes": 61481798,
+    "builtSeoul": "2026-10-10T10:33:09.463644+09:00",
+    "scope": "408 registered-item descriptions/audit, sourced staff cast and fixed MP effects, deficit-only consumables, paired HP regeneration, partial numeric options and unchanged native-size artwork; unverified original effects and physical-phone acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "all408Audit": true,
+  "matchedFiles": 655,
+  "phoneAcceptance": "PENDING",
+  "originalWholeGameFunctionCompleteness": "NOT_VERIFIED",
+  "visualReview": "AGENT_NATIVE_RENDER_REVIEW_PASS",
+  "reviewedNativeImages": [
+    "inventory-pages1-and9",
+    "equipment",
+    "MagicPana-details",
+    "Curanum-details",
+    "Komadium-unsupported-details"
+  ],
+  "nativeZipSha256": "a05215554c1b10a5e5bd816d2369239e864db28eca85992eb8cf2cd02a942197",
+  "apkZipSha256": "d684564eb2559441528a474d74ce3dc86bfcfea9ac387ad905243cdff3633f63",
+  "savedApkLibraryId": "libfile_ef06c2b348e48191abe690c41a7b53c8",
+  "remainingOriginalGaps": {
+    "wardrobeNumericPending": 151,
+    "unsupportedTargetSystems": [
+      "party/coma"
+    ],
+    "unverifiedMechanisms": [
+      "original regeneration formula",
+      "original antidote identity",
+      "experience bonus",
+      "durability",
+      "expiry"
+    ],
+    "phoneAcceptance": "PENDING"
+  },
+  "unchangedV128NativeImages": {
+    "inventoryPages": 9,
+    "allWearableNameIconActorSheet": "BYTE_IDENTICAL"
+  },
+  "integration": "MERGED_PR_184",
+  "mergeSha": "03bf75c819056dbb264775aeb2946317a7562ec7",
+  "mergedTree": "de215aa19336db12c43a68b3e5cfcdcc42181248",
+  "fullAndroidRuns": [
+    {
+      "run": 38013385738,
+      "job": 114098245864,
+      "status": "SUCCESS",
+      "logsInspected": true
+    },
+    {
+      "run": 38013382323,
+      "job": 114098234729,
+      "status": "SUCCESS"
+    }
+  ]
+}
