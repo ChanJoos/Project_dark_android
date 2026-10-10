@@ -781,16 +781,22 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
     if(hit==ItemWindow.Hit.CLOSE){equipmentOpen=false;return true;}
     if(hit==ItemWindow.Hit.DETAILS){equipmentOpen=false;statsOpen=true;return true;}
     if(hit==ItemWindow.Hit.SELECT||hit==ItemWindow.Hit.ACTION)rpgInteraction.selectInventoryItem(state.rpg(),itemWindow.hitItem);
-    if(hit==ItemWindow.Hit.ACTION)activateInventoryItem();
+    if(hit==ItemWindow.Hit.ACTION){RpgProgressionState.EquipResult result=state.rpg().unequip(itemWindow.selectedSlot);state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),FeedbackTone.INFO);}
     return true;
   }
-  private String equipResultLabel(RpgProgressionState.EquipResult result){switch(result){case EQUIPPED:return "장착 완료";case UNEQUIPPED:return "해제 완료";case REQUIREMENT_NOT_MET:return "장착 불가 · 조건 미충족";case REQUIREMENT_PENDING:return "장착 보류 · 조건 확인 필요";case NOT_EQUIPPABLE:return "장착할 수 없는 아이템";case UNKNOWN_ITEM:return "알 수 없는 아이템";case ITEM_NOT_OWNED:default:return "보유하지 않은 아이템";}}
+  private String equipResultLabel(RpgProgressionState.EquipResult result){switch(result){case EQUIPPED:return "장착 완료";case UNEQUIPPED:return "해제 완료";case REQUIREMENT_NOT_MET:return "장착 불가 · 조건 미충족";case REQUIREMENT_PENDING:return "장착 보류 · 조건 확인 필요";case INVALID_SLOT:return "장착 부위가 맞지 않습니다";case NOT_EQUIPPABLE:return "장착할 수 없는 아이템";case UNKNOWN_ITEM:return "알 수 없는 아이템";case ITEM_NOT_OWNED:default:return "보유하지 않은 아이템";}}
   private boolean handleInventoryTouch(float x,float y){
     if(!inventoryOpen)return false;
     ItemWindow.Hit hit=itemWindow.inventoryTouch(x,y,state.rpg());
     if(hit==ItemWindow.Hit.CLOSE){inventoryOpen=false;itemWindow.details=false;return true;}
     if(hit==ItemWindow.Hit.SELECT)rpgInteraction.selectInventoryItem(state.rpg(),itemWindow.hitItem);
-    if(hit==ItemWindow.Hit.ACTION)activateInventoryItem();
+    if(hit==ItemWindow.Hit.ACTION){
+      RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(rpgInteraction.selectedInventoryItemId());
+      if(d!=null&&RpgProgressionState.pairedSlot(d.equipSlot)&&itemWindow.hitTargetSlot!=null){
+        String slot="RIGHT".equals(itemWindow.hitTargetSlot)?RpgProgressionState.secondSlot(d.equipSlot):d.equipSlot;
+        RpgProgressionState.EquipResult result=state.rpg().equipToSlot(d.itemId,slot);state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),FeedbackTone.INFO);
+      }else if(x>=743)activateInventoryItem();
+    }
     return true;
   }
   private void activateInventoryItem(){

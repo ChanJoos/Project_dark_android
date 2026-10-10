@@ -64,7 +64,7 @@ public class PoteRewardsV123Test {
   @Test public void journalShowsExactRingAndNamedEquipmentRatherThanOnlyExpGold()throws Exception{
     RpgProgressionState r=reportReady("D03","WARRIOR");QuestJournalModel model=new QuestJournalModel(context);
     boolean found=false;for(QuestJournalModel.Row row:model.rows(F5mAdaptedPrologueQuest.openingFixture(),new GrowthQuest2(),true,r))if(row.id.equals("CAMPAIGN_D03")){found=true;assertTrue(row.reward.contains("세줄금반지"));assertTrue(row.reward.contains("10,000"));}
-    assertTrue(found);assertTrue(AdaptedPoteQuestRewards.equipmentText(CampaignProgress.find("B05"),r).contains("숲길 신발"));
+    assertTrue(found);assertTrue(AdaptedPoteQuestRewards.equipmentText(CampaignProgress.find("B05"),r).contains("이름 미확인 신발"));
   }
   @Test public void spiritMobileRewardNoLongerDominatesSameHpPeersAndSourceStaysIntact(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();assertTrue(c.find("POTE_SPIRIT").exp<=c.find("POTE_WOLFRIDER").exp*2);

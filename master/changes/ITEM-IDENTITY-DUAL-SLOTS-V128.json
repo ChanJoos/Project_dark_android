@@ -1,0 +1,42 @@
+{
+  "changeId": "ITEM-IDENTITY-DUAL-SLOTS-V128",
+  "status": "ACCEPTED",
+  "authorization": "User request 2026-10-10: full identity/name/size audit, more original equipment, two gloves and two rings with stats, source quality consistency. Existing explicit GitHub authorization persists.",
+  "before": {
+    "registeredItems": 236,
+    "pairedSlots": false,
+    "fitScaleMaximum": 2.5,
+    "furHatBoundToGoggles": true
+  },
+  "after": {
+    "registeredItems": 408,
+    "sourceNamedAdditions": 172,
+    "pairedSlots": [
+      "장갑",
+      "장갑(오른손)",
+      "반지",
+      "반지(오른손)"
+    ],
+    "nativeIconMaxScale": 1,
+    "inventoryMatchesWearableAppearance": true
+  },
+  "evidence": [
+    "master/data/Asset_Master.csv",
+    "master/source/equipment/identity_v128/catalog.json",
+    "master/source/equipment/identity_v128/retrieval.json",
+    "master/source/items/full_20261010/collection.json"
+  ],
+  "unresolved": [
+    "7 original wardrobe identities lack complete frames, not admitted",
+    "3 source shoe identities and 3 shield identities have no verified Korean item name",
+    "Dedicated inventory illustrations not recovered for all exact wearable previews",
+    "Original numerical/requirement values for additions pending; sandbox explicitly bypasses requirements",
+    "10 explicitly recorded remaining original-art visual equivalents for consumables/adapted nonwearable items"
+  ],
+  "impact": [
+    "stable existing IDs and existing modifiers preserved",
+    "old glove/ring slot keys retain left-hand semantics; new right-hand keys persist in existing equipment JSON",
+    "two identical items require owned quantity>=2; all modifier instances summed by FinalStats",
+    "physical phone/user acceptance pending"
+  ]
+}

@@ -67,7 +67,7 @@ public final class RpgInteractionController {
     Map<String,Integer> inventory=rpg.inventory();
     for(String itemId:rpg.equipment().values()){
       Integer quantity=inventory.get(itemId);
-      if(quantity==null||quantity<=0)return false;
+      if(quantity==null||quantity<rpg.equippedCount(itemId))return false;
     }
     return true;
   }

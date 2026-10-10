@@ -11,7 +11,7 @@ import java.util.Set;
 public final class RpgInventoryPresentation {
   static String displayName(String name){
     if(name==null)return "";
-    return name.replaceAll("\\s*\\[(?:PENDING WEARABLE FRAMES|ADAPTED PLAYTEST|B)\\]", "").trim();
+    return name.replaceAll("\\s*\\[(?:PENDING WEARABLE FRAMES|ADAPTED PLAYTEST|ADAPTED|B)\\]", "").trim();
   }
   public static final class ItemRow {
     public final String itemId,name,equipSlot;

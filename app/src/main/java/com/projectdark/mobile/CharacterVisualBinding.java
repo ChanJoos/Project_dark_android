@@ -82,7 +82,7 @@ public final class CharacterVisualBinding {
     for(Map.Entry<String,String> e:equipped.entrySet()){
       String slot=e.getKey(),itemId=e.getValue();
       RpgProgressionState.ItemDefinition def=defs.get(itemId);
-      if(def==null||def.equipSlot==null||!slot.equals(def.equipSlot))ok=false;
+      if(def==null||def.equipSlot==null||!RpgProgressionState.acceptsSlot(slot,def))ok=false;
       if(WEAPON_SLOT.equals(slot)){
         weapon=itemId;
         if(def!=null&&def.appearanceId!=null){

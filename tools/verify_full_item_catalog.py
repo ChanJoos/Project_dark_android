@@ -10,13 +10,16 @@ with zipfile.ZipFile(ROOT/'master/source/items/full_20261010/original_sources.zi
   if 'EQUIVALENT'in r['identityMatch']:equivalent+=1;assert r.get('limitation'),ident
   if r['assetPath']in seen:continue
   seen.add(r['assetPath']);im=Image.open(p).convert('RGBA');assert im.getbbox(),ident
+  if r.get('identityMatch')=='EXACT_WEARABLE_APPEARANCE':
+   source=ROOT/r['sourcePath'];assert hashlib.sha256(source.read_bytes()).hexdigest()==r['sourceSha256']
+   raw=Image.open(source).convert('RGBA');x,y,w,h=r['crop'];raw=raw.crop((x,y,x+w,y+h));assert im.size==raw.size and im.tobytes()==raw.tobytes(),ident
   if r.get('sourceArchive','').endswith('full_20261010/original_sources.zip'):
    import io
    original=z.read(r['sourceMember']);assert hashlib.sha256(original).hexdigest()==r['sourceSha256'];raw=Image.open(io.BytesIO(original)).convert('RGBA');assert im.size==raw.size
    for y in range(im.height):
     for x in range(im.width):assert im.getpixel((x,y))[:3]==raw.getpixel((x,y))[:3],(ident,x,y)
    assert im.getpixel((0,0))[3]==0;assert im.getpixel((31,31))[3]==0
-assert len(m['items'])==236
+assert len(m['items'])==408
 for p in ('GameView.java','TownShopWindow.java'):
  t=(ROOT/'app/src/main/java/com/projectdark/mobile'/p).read_text();assert 'ItemIconCatalog'not in t
 print('VERIFIED_FULL_ORIGINAL_ART',len(m['items']),'items',len(seen),'unique originals',equivalent,'explicit visual equivalents (not exact historical identity claims)')

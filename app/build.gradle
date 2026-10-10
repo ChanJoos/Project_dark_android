@@ -5,18 +5,18 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v127test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V127 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v128test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V128 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 127
-        versionName '1.27-full-item-ui'
+        versionCode 128
+        versionName '1.28-identity-dual-equipment'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile]
         }
     }
     testOptions {
@@ -46,7 +46,16 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 127, versionName: '1.27-full-item-ui']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 128, versionName: '1.28-identity-dual-equipment']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
+
+// Retained exact asset bundle keeps fresh builds reproducible without network recovery.
+tasks.register('extractWardrobeV128', Copy) {
+    from(zipTree(rootProject.file('master/source/equipment/identity_v128/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('preBuild').configure { dependsOn('extractWardrobeV128') }
