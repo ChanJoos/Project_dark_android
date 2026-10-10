@@ -1,17 +1,17 @@
 {
-  "revision": "IDENTITY_FIRST_NATIVE_SIZE_V128",
+  "revision": "INVENTORY_ART_V131",
   "registeredItems": 422,
-  "policy": "Every current item has an explicit original inventory-art binding. Source RGB retained, native-size presentation. Exact wearable identities replace visual equivalents; missing dedicated inventory illustrations and unknown names/stats remain explicitly recorded.",
+  "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_RING_THREELINEGOLD": {
       "itemId": "IT_RING_THREELINEGOLD",
       "sourcePath": "master/source/items/tistory_20261009/three_line_gold_ring.png",
       "sourceSha256": "bcdab54b55f4a97e813fb28ed9789a46b07865ae9a778d839b74a9be38c6d77e",
       "crop": [
-        20,
-        8,
-        54,
-        48
+        29,
+        17,
+        35,
+        27
       ],
       "transparentBackgroundRGB": [
         246,
@@ -19,11 +19,13 @@
         240
       ],
       "asset": "it_ring_threelinegold.png",
-      "assetSha256": "96525f24df112fc0d0becb0b4a4b71bebd94ecb9abc8c534da1c2daf06066905",
+      "assetSha256": "511e853c19fb89b16e2a4bfd36dc435777730ec0f672c1feaf6357fcec3251f7",
       "evidence": "FAN_HISTORICAL_LABELLED_GAME_ICON_CAPTURE",
       "sourceUrl": "https://time-to-watch.tistory.com/92",
       "sourcePublished": "2020-10-30",
-      "limitation": "Labelled retrospective table; capture era unknown. Exact foreground RGB retained; only uniform table background alpha removed.",
+      "limitation": "Labelled historical capture, capture era unknown. Same716 foreground pixels preserved; only fully transparent margins removed. No redraw/upscale/resampling.",
+      "projection": "SOURCE_RGB_TRANSPARENT_MARGIN_TRIM_V131",
+      "inventoryPresentation": "35x27 foreground at1x; previous54x48 canvas forced43/54 downsampling",
       "assetPath": "equipment-icons/it_ring_threelinegold.png",
       "identityMatch": "EXISTING_LABELLED_SOURCE"
     },
@@ -4141,188 +4143,299 @@
       "identityMatch": "EXISTING_LABELLED_SOURCE"
     },
     "IT_ADAPTED_PLAYTEST_MOKDO": {
+      "itemId": "IT_ADAPTED_PLAYTEST_MOKDO",
+      "assetPath": "item-icons/3e54c1a60e05_bokutou.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/896/bokutou.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "木刀",
+          "fields": {
+            "画像": "",
+            "名前": "木刀",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "4m14 1m2",
+            "耐久": "1000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/3e54c1a60e05_bokutou.gif",
+      "sourceSha256": "8a91b51f085187f99e31e6ceecd6d8c85047786c69673ae9b39dc87beadd988a",
+      "assetSha256": "54d0f466c592c61ee26ee9f77ab72b56759d316d089224550bc90ce8eb8c8928",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 56,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw001",
-      "assetPath": "item-icons/identity_mw001.png",
-      "assetSha256": "3e934f904533d4cb08c4098c2cd7eec29305f7f6bc09b23dcb64163d7fc3e966",
-      "sourcePath": "master/assets/items/weapon/mw001_목도.webp",
-      "sourceSha256": "84dcaee208723b07622866668b5ad750499de88e0adff92cc3d624ab4c36e730",
-      "crop": [
-        0,
-        0,
-        16,
-        8
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        16,
-        8
-      ],
+      "inventoryArtwork": true,
       "name": "목도",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_ADAPTED_PLAYTEST_MOKDO"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_TEST_WEAPON_MW002": {
+      "itemId": "IT_TEST_WEAPON_MW002",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "assetSha256": "1a7b73204964448ef264b807d5128dd83277caba42081e4e7a543de4445ba515",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 55,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw002",
-      "assetPath": "item-icons/identity_mw002.png",
-      "assetSha256": "d5ac48c693a4c6841c17dad0a8f913dc5c5085c38eeb57a568d7c5a0476d10b5",
-      "sourcePath": "master/assets/items/weapon/mw002_에페.webp",
-      "sourceSha256": "9c10c4580b96eae3f0f61e69f163a6fe840c04e27b2dfd5afce2d44ae48e7a94",
-      "crop": [
-        0,
-        0,
-        18,
-        14
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        18,
-        14
-      ],
+      "inventoryArtwork": true,
       "name": "에페",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_TEST_WEAPON_MW002"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_TEST_WEAPON_MW003": {
+      "itemId": "IT_TEST_WEAPON_MW003",
+      "assetPath": "item-icons/e7fe2e00743a_katorasu.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/900/katorasu.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "カトラス",
+          "fields": {
+            "画像": "",
+            "名前": "カトラス",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "18m28 1m2",
+            "耐久": "6000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/e7fe2e00743a_katorasu.gif",
+      "sourceSha256": "2ed56f83a8e223c104c429cc8d62c29d5880559f654764aadcfde50013503d0a",
+      "assetSha256": "da1ad7313030d88663b083c9d601e61c970acaeb799c855d795f1c6457093a8c",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 101,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw003",
-      "assetPath": "item-icons/identity_mw003.png",
-      "assetSha256": "6e9cc05b98daee675d64388e2ac6ed2d337b9997c2678497b24862b897f58816",
-      "sourcePath": "master/assets/items/weapon/mw003_커틀라스.webp",
-      "sourceSha256": "3424725a8c85e4b8043b4f3d8ac903bcc1026bf13ae0cd375d3c9890fa7c1aec",
-      "crop": [
-        0,
-        0,
-        22,
-        17
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        22,
-        17
-      ],
+      "inventoryArtwork": true,
       "name": "커틀라스",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_TEST_WEAPON_MW003"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_SHOP_WEAPON_MW004": {
+      "itemId": "IT_SHOP_WEAPON_MW004",
+      "assetPath": "item-icons/a0c4b69c67e4_sabel.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/907/sabel.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "サーベル",
+          "fields": {
+            "画像": "",
+            "名前": "サーベル",
+            "装備可能LV": "56",
+            "重量": "11",
+            "攻撃力": "55m75 4m6",
+            "耐久": "20000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/a0c4b69c67e4_sabel.gif",
+      "sourceSha256": "6a9179f3f64662098e684b394afc32bc2780b31c97e5cc343733e8c81040867c",
+      "assetSha256": "0d17e0518f48a6b9305208d3fe49623269289afdb8428e53deb9b6500a9f37d7",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "HISTORICAL_LOCALIZATION_EQUIVALENT",
+      "foregroundPixels": 114,
+      "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
       "appearanceId": "mw004",
-      "assetPath": "item-icons/identity_mw004.png",
-      "assetSha256": "8e134c788bb2780f1e99777097f798ae132d5cef98f149d5541fd3d9af0456f0",
-      "sourcePath": "master/assets/items/weapon/mw004_세이버.webp",
-      "sourceSha256": "0b1a4c628cd81bf712678a6c46aa1395a4d12cb00a8dd425989fa3092426860c",
-      "crop": [
-        0,
-        0,
-        24,
-        17
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        24,
-        17
-      ],
+      "inventoryArtwork": true,
       "name": "세이버",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_SHOP_WEAPON_MW004"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_SHOP_WEAPON_MW005": {
+      "itemId": "IT_SHOP_WEAPON_MW005",
+      "assetPath": "item-icons/a14293fb487b_gradius.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/899/gradius.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "グラディウス",
+          "fields": {
+            "画像": "",
+            "名前": "グラディウス",
+            "装備可能LV": "26",
+            "重量": "7",
+            "攻撃力": "33m43 3m4",
+            "耐久": "10000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/a14293fb487b_gradius.gif",
+      "sourceSha256": "5fe42bb5bb8c67de8266705528d5a971340355b8be24b9054fd7f4bd65f786e4",
+      "assetSha256": "b68a8df617b4932497ea842321fad927169994d9771c24fc6a9fce1650b850b6",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 169,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw005",
-      "assetPath": "item-icons/identity_mw005.png",
-      "assetSha256": "462748e0a9b0cc1f56b216bc96a470a328073fe73719e316f3b36f0f5b923abc",
-      "sourcePath": "master/assets/items/weapon/mw005_그라디우스.webp",
-      "sourceSha256": "d1dd14d7cfc258474aa36efc09e8345c29c1ffc99260953cab26b61fe28bacf7",
-      "crop": [
-        0,
-        0,
-        28,
-        21
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        28,
-        21
-      ],
+      "inventoryArtwork": true,
       "name": "그라디우스",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_SHOP_WEAPON_MW005"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_B_JOB_WARRIOR_WEAPON": {
-      "appearanceId": "mw015",
-      "assetPath": "item-icons/identity_mw015.png",
-      "assetSha256": "a5538e5bc1ae8dc6dd9d6c6f842dc6026ad8f6913116ea47c4fb594218acbf4d",
-      "sourcePath": "master/assets/items/weapon/mw015_롱소드.webp",
-      "sourceSha256": "01decf75bc058dbc243ee84de009855df20b0f5f1e091017ad8d0aa11ac9c1e6",
-      "crop": [
-        0,
-        0,
-        32,
-        12
+      "itemId": "IT_B_JOB_WARRIOR_WEAPON",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/903/longsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ロングソード",
+          "fields": {
+            "画像": "",
+            "名前": "ロングソード",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "20m30 1m2",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
       ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/d08a9c24d6f2_longsword.gif",
+      "sourceSha256": "29b089f27e0b0b3bd6ce4893b40e2dc5f2c83bec04e6cf87bc10a8533f16911f",
+      "assetSha256": "a5fb2335954e0c6580ce8218cdd5891e8b27df3f3f3d9a05620755b291e23160",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 128,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw015",
+      "inventoryArtwork": true,
+      "name": "롱소드",
       "nativeSize": [
         32,
-        12
-      ],
-      "name": "롱소드",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_JOB_WARRIOR_WEAPON"
+        32
+      ]
     },
     "IT_B_JOB_ROGUE_WEAPON": {
+      "itemId": "IT_B_JOB_ROGUE_WEAPON",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "assetSha256": "1a7b73204964448ef264b807d5128dd83277caba42081e4e7a543de4445ba515",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 55,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw002",
-      "assetPath": "item-icons/identity_mw002.png",
-      "assetSha256": "d5ac48c693a4c6841c17dad0a8f913dc5c5085c38eeb57a568d7c5a0476d10b5",
-      "sourcePath": "master/assets/items/weapon/mw002_에페.webp",
-      "sourceSha256": "9c10c4580b96eae3f0f61e69f163a6fe840c04e27b2dfd5afce2d44ae48e7a94",
-      "crop": [
-        0,
-        0,
-        18,
-        14
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        18,
-        14
-      ],
+      "inventoryArtwork": true,
       "name": "에페",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_JOB_ROGUE_WEAPON"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_B_JOB_MAGE_WAND": {
+      "itemId": "IT_B_JOB_MAGE_WAND",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+      "sourceRows": [
+        {
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 135,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw024",
-      "assetPath": "item-icons/identity_mw024.png",
-      "assetSha256": "a513fc23649b03d0ca75dfc644d9e918e48c2eae423ed0724f7184ac75546fe7",
-      "sourcePath": "master/assets/items/weapon/mw024_매직새티아.webp",
-      "sourceSha256": "596ff2473aba2e1cd7588f907a8b5128ed6b85d3e742f53329e8dc8f227519ee",
-      "crop": [
-        0,
-        0,
-        24,
-        7
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        24,
-        7
-      ],
+      "inventoryArtwork": true,
       "name": "매직새티아",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_JOB_MAGE_WAND"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_B_JOB_CLERIC_WAND": {
       "appearanceId": "mw008",
@@ -4344,8 +4457,9 @@
       ],
       "name": "홀리머큐리아",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_JOB_CLERIC_WAND"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_B_JOB_CLERIC_WAND",
+      "inventoryArtwork": false
     },
     "IT_ADAPTED_STARTER_SHIELD": {
       "appearanceId": "ms001",
@@ -5092,27 +5206,42 @@
       "itemId": "IT_B_CAMPAIGN_WARRIOR_11"
     },
     "IT_B_CAMPAIGN_TOOL_WARRIOR_11": {
-      "appearanceId": "mw015",
-      "assetPath": "item-icons/identity_mw015.png",
-      "assetSha256": "a5538e5bc1ae8dc6dd9d6c6f842dc6026ad8f6913116ea47c4fb594218acbf4d",
-      "sourcePath": "master/assets/items/weapon/mw015_롱소드.webp",
-      "sourceSha256": "01decf75bc058dbc243ee84de009855df20b0f5f1e091017ad8d0aa11ac9c1e6",
-      "crop": [
-        0,
-        0,
-        32,
-        12
+      "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_11",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/903/longsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ロングソード",
+          "fields": {
+            "画像": "",
+            "名前": "ロングソード",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "20m30 1m2",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
       ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/d08a9c24d6f2_longsword.gif",
+      "sourceSha256": "29b089f27e0b0b3bd6ce4893b40e2dc5f2c83bec04e6cf87bc10a8533f16911f",
+      "assetSha256": "a5fb2335954e0c6580ce8218cdd5891e8b27df3f3f3d9a05620755b291e23160",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 128,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw015",
+      "inventoryArtwork": true,
+      "name": "롱소드",
       "nativeSize": [
         32,
-        12
-      ],
-      "name": "롱소드",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_11"
+        32
+      ]
     },
     "IT_B_CAMPAIGN_WARRIOR_26": {
       "appearanceId": "mu0000007",
@@ -5138,27 +5267,42 @@
       "itemId": "IT_B_CAMPAIGN_WARRIOR_26"
     },
     "IT_B_CAMPAIGN_TOOL_WARRIOR_26": {
-      "appearanceId": "mw015",
-      "assetPath": "item-icons/identity_mw015.png",
-      "assetSha256": "a5538e5bc1ae8dc6dd9d6c6f842dc6026ad8f6913116ea47c4fb594218acbf4d",
-      "sourcePath": "master/assets/items/weapon/mw015_롱소드.webp",
-      "sourceSha256": "01decf75bc058dbc243ee84de009855df20b0f5f1e091017ad8d0aa11ac9c1e6",
-      "crop": [
-        0,
-        0,
-        32,
-        12
+      "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_26",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/903/longsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ロングソード",
+          "fields": {
+            "画像": "",
+            "名前": "ロングソード",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "20m30 1m2",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
       ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/d08a9c24d6f2_longsword.gif",
+      "sourceSha256": "29b089f27e0b0b3bd6ce4893b40e2dc5f2c83bec04e6cf87bc10a8533f16911f",
+      "assetSha256": "a5fb2335954e0c6580ce8218cdd5891e8b27df3f3f3d9a05620755b291e23160",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 128,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw015",
+      "inventoryArtwork": true,
+      "name": "롱소드",
       "nativeSize": [
         32,
-        12
-      ],
-      "name": "롱소드",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_26"
+        32
+      ]
     },
     "IT_B_CAMPAIGN_ROGUE_11": {
       "appearanceId": "mu0000004",
@@ -5184,27 +5328,42 @@
       "itemId": "IT_B_CAMPAIGN_ROGUE_11"
     },
     "IT_B_CAMPAIGN_TOOL_ROGUE_11": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_11",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "assetSha256": "1a7b73204964448ef264b807d5128dd83277caba42081e4e7a543de4445ba515",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 55,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw002",
-      "assetPath": "item-icons/identity_mw002.png",
-      "assetSha256": "d5ac48c693a4c6841c17dad0a8f913dc5c5085c38eeb57a568d7c5a0476d10b5",
-      "sourcePath": "master/assets/items/weapon/mw002_에페.webp",
-      "sourceSha256": "9c10c4580b96eae3f0f61e69f163a6fe840c04e27b2dfd5afce2d44ae48e7a94",
-      "crop": [
-        0,
-        0,
-        18,
-        14
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        18,
-        14
-      ],
+      "inventoryArtwork": true,
       "name": "에페",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_11"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_B_CAMPAIGN_ROGUE_26": {
       "appearanceId": "mu0000004",
@@ -5230,27 +5389,42 @@
       "itemId": "IT_B_CAMPAIGN_ROGUE_26"
     },
     "IT_B_CAMPAIGN_TOOL_ROGUE_26": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_26",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "assetSha256": "1a7b73204964448ef264b807d5128dd83277caba42081e4e7a543de4445ba515",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 55,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw002",
-      "assetPath": "item-icons/identity_mw002.png",
-      "assetSha256": "d5ac48c693a4c6841c17dad0a8f913dc5c5085c38eeb57a568d7c5a0476d10b5",
-      "sourcePath": "master/assets/items/weapon/mw002_에페.webp",
-      "sourceSha256": "9c10c4580b96eae3f0f61e69f163a6fe840c04e27b2dfd5afce2d44ae48e7a94",
-      "crop": [
-        0,
-        0,
-        18,
-        14
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        18,
-        14
-      ],
+      "inventoryArtwork": true,
       "name": "에페",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_26"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_B_CAMPAIGN_MAGE_11": {
       "appearanceId": "mu0000006",
@@ -5276,27 +5450,33 @@
       "itemId": "IT_B_CAMPAIGN_MAGE_11"
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_11": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_11",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+      "sourceRows": [
+        {
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 135,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw024",
-      "assetPath": "item-icons/identity_mw024.png",
-      "assetSha256": "a513fc23649b03d0ca75dfc644d9e918e48c2eae423ed0724f7184ac75546fe7",
-      "sourcePath": "master/assets/items/weapon/mw024_매직새티아.webp",
-      "sourceSha256": "596ff2473aba2e1cd7588f907a8b5128ed6b85d3e742f53329e8dc8f227519ee",
-      "crop": [
-        0,
-        0,
-        24,
-        7
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        24,
-        7
-      ],
+      "inventoryArtwork": true,
       "name": "매직새티아",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_11"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_B_CAMPAIGN_MAGE_26": {
       "appearanceId": "mu0000006",
@@ -5322,27 +5502,33 @@
       "itemId": "IT_B_CAMPAIGN_MAGE_26"
     },
     "IT_B_CAMPAIGN_TOOL_MAGE_26": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_26",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+      "sourceRows": [
+        {
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 135,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
       "appearanceId": "mw024",
-      "assetPath": "item-icons/identity_mw024.png",
-      "assetSha256": "a513fc23649b03d0ca75dfc644d9e918e48c2eae423ed0724f7184ac75546fe7",
-      "sourcePath": "master/assets/items/weapon/mw024_매직새티아.webp",
-      "sourceSha256": "596ff2473aba2e1cd7588f907a8b5128ed6b85d3e742f53329e8dc8f227519ee",
-      "crop": [
-        0,
-        0,
-        24,
-        7
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        24,
-        7
-      ],
+      "inventoryArtwork": true,
       "name": "매직새티아",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_26"
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_B_CAMPAIGN_CLERIC_11": {
       "appearanceId": "mu0000015",
@@ -5387,8 +5573,9 @@
       ],
       "name": "홀리머큐리아",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_11"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_11",
+      "inventoryArtwork": false
     },
     "IT_B_CAMPAIGN_CLERIC_26": {
       "appearanceId": "mu0000015",
@@ -5433,8 +5620,9 @@
       ],
       "name": "홀리머큐리아",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_26"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_26",
+      "inventoryArtwork": false
     },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_11": {
       "appearanceId": "mu0000003",
@@ -5929,6 +6117,810 @@
       "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
       "foregroundPixels": 474,
       "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_WARDROBE_MW010": {
+      "itemId": "IT_WARDROBE_MW010",
+      "assetPath": "item-icons/baaf0ca28a3e_mesuka.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/901/mesuka.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "メスカレイド",
+          "fields": {
+            "画像": "",
+            "名前": "メスカレイド",
+            "装備可能LV": "26",
+            "重量": "7",
+            "攻撃力": "31m41 3m4",
+            "耐久": "12000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/baaf0ca28a3e_mesuka.gif",
+      "sourceSha256": "41d3bbd065e18c565da38f39b96c8cdb19a609a0c43fb538c3d64e77e719fda4",
+      "assetSha256": "6bb64c43ba8f2309e2806ef645ecef68c82dcd936c8b7cc1d8370ac1f9f0d358",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 210,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw010",
+      "inventoryArtwork": true,
+      "name": "매스커레이드",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW013": {
+      "itemId": "IT_WARDROBE_MW013",
+      "assetPath": "item-icons/d64150348ca5_blackdeath.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/905/blackdeath.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ブラックデスソード",
+          "fields": {
+            "画像": "",
+            "名前": "ブラックデスソード",
+            "装備可能LV": "41",
+            "重量": "9",
+            "攻撃力": "34m54 4m6",
+            "耐久": "16000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/d64150348ca5_blackdeath.gif",
+      "sourceSha256": "ca69288a3e38aee9b20194bcdbbd3f89d7a54e1f6179bf39d754bfc0d4b03f5c",
+      "assetSha256": "6db07e43d2228d1ea11b50e4349c34892398ad18b54113baaec7f67264c28b68",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 137,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw013",
+      "inventoryArtwork": true,
+      "name": "블랙데쓰",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW014": {
+      "itemId": "IT_WARDROBE_MW014",
+      "assetPath": "item-icons/9607c2759659_branble.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/906/branble.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ブランブル",
+          "fields": {
+            "画像": "",
+            "名前": "ブランブル",
+            "装備可能LV": "41",
+            "重量": "9",
+            "攻撃力": "40m60 3m5",
+            "耐久": "15000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/9607c2759659_branble.gif",
+      "sourceSha256": "9ac89eac413cb75a52403399f03ee05e5a522f043349ac407fb75243ab607e41",
+      "assetSha256": "6a6c3910194cf01eccfe4c122e5e6b4c0906b751ed6a0e8c86193a1c0335ef17",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "HISTORICAL_LOCALIZATION_EQUIVALENT",
+      "foregroundPixels": 105,
+      "limitation": "Original inventory artwork used as a visual equivalent; exact historical identity is not asserted. Game names/stats/wearable layers unchanged.",
+      "appearanceId": "mw014",
+      "inventoryArtwork": true,
+      "name": "프렘벨",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW016": {
+      "itemId": "IT_WARDROBE_MW016",
+      "assetPath": "item-icons/42b4e46f1b36_battlesword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/904/battlesword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "クレイモア (크레이모어)",
+          "fields": {
+            "画像": "",
+            "名前": "クレイモア (크레이모어)",
+            "装備可能LV": "71",
+            "重量": "13",
+            "攻撃力": "70m90 6m8",
+            "耐久": "30000",
+            "コメント": "無し",
+            "入手場所": "ウンディネ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドクレイモア (투핸드크레이모어)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドクレイモア (투핸드크레이모어)",
+            "装備可能LV": "71",
+            "重量": "26",
+            "攻撃力": "140m180 12m16",
+            "耐久": "60000",
+            "コメント": "両手",
+            "入手場所": "ウンディネ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/42b4e46f1b36_battlesword.gif",
+      "sourceSha256": "b3d749e37aca10bc048acb1e263daacda219c3bcf6ab12cd262ad923aba95f36",
+      "assetSha256": "124476c7f2b45f0d115d9e4a05bc88bbcd6fbbf1912b658e628728ce213e4acc",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 155,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw016",
+      "inventoryArtwork": true,
+      "name": "투핸드크레이모어",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW017": {
+      "itemId": "IT_WARDROBE_MW017",
+      "assetPath": "item-icons/2602bbb1f097_stira.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/908/stira.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "スティラ",
+          "fields": {
+            "画像": "",
+            "名前": "スティラ",
+            "装備可能LV": "56",
+            "重量": "11",
+            "攻撃力": "49m69 5m7",
+            "耐久": "22000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/2602bbb1f097_stira.gif",
+      "sourceSha256": "045bfd04b7e326ccab11e747e0eb5ac61391221d13a3ca2057abcf375211c271",
+      "assetSha256": "34a7bab34c43f6ef4bf70365b42bb615161f6f2f2ced0d88227cdca5a2fb738f",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 141,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw017",
+      "inventoryArtwork": true,
+      "name": "스틸라",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW018": {
+      "itemId": "IT_WARDROBE_MW018",
+      "assetPath": "item-icons/4cf84b832e14_emeraldsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/909/emeraldsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エメラルドソード （에메랄드소드）",
+          "fields": {
+            "画像": "",
+            "名前": "エメラルドソード （에메랄드소드）",
+            "装備可能LV": "71",
+            "重量": "13",
+            "攻撃力": "62m82 7m9",
+            "耐久": "33000",
+            "コメント": "無し",
+            "入手場所": "ウンディネ武器屋 アベル武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドエメラルドソード (투핸드에메랄드소드)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドエメラルドソード (투핸드에메랄드소드)",
+            "装備可能LV": "71",
+            "重量": "26",
+            "攻撃力": "124m164 14m18",
+            "耐久": "66000",
+            "コメント": "両手",
+            "入手場所": "ウンディネ武器屋 アベル武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/4cf84b832e14_emeraldsword.gif",
+      "sourceSha256": "286898e195547fb497d60c2acad836cb62377f8d24e42bd38498e954994355e9",
+      "assetSha256": "e3be6bc2c8ecf2f057649dcea25612388d545cc5b844475faf89b7e2e264ee58",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 191,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw018",
+      "inventoryArtwork": true,
+      "name": "투핸드에메랄드소드",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW019": {
+      "itemId": "IT_WARDROBE_MW019",
+      "assetPath": "item-icons/dc54dc0d6583_dkuro.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/519/dkuro.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ドラゴンクロー （드래곤크로어）",
+          "fields": {
+            "画像": "",
+            "名前": "ドラゴンクロー （드래곤크로어）",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "80m110 90m120",
+            "耐久": "70000",
+            "コメント": "無し",
+            "入手場所": "坑道３ドラコ"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドドラゴンクロー (투핸드드래곤크로어)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドドラゴンクロー (투핸드드래곤크로어)",
+            "装備可能LV": "99",
+            "重量": "34",
+            "攻撃力": "180m240",
+            "耐久": "70000",
+            "コメント": "両手",
+            "入手場所": "製造魔法"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/dc54dc0d6583_dkuro.gif",
+      "sourceSha256": "9ae0acd605a4a2c80453e0cd8983006d94823d1f4936a653b34fa9932ff57505",
+      "assetSha256": "2666d4e8e43f6a3ec01c628e683734aeafcafa08eab1d832036c2910ebaa0b49",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 195,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw019",
+      "inventoryArtwork": true,
+      "name": "투핸드드래곤크로어",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW021": {
+      "itemId": "IT_WARDROBE_MW021",
+      "assetPath": "item-icons/b2a7278b89ab_greatsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/609/greatsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "グレートソード （그레이트소드）",
+          "fields": {
+            "画像": "",
+            "名前": "グレートソード （그레이트소드）",
+            "装備可能LV": "86",
+            "重量": "15",
+            "攻撃力": "67m97 7m10",
+            "耐久": "45000",
+            "コメント": "無し",
+            "入手場所": "ウンディネ武器屋 ルケシオン武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドグレートソード (투핸드그레이트소드)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドグレートソード (투핸드그레이트소드)",
+            "装備可能LV": "86",
+            "重量": "30",
+            "攻撃力": "134m194 15m21",
+            "耐久": "90000",
+            "コメント": "両手",
+            "入手場所": "ウンディネ武器屋 ルケシオン武器屋 地下21Fメロダ(火)"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/b2a7278b89ab_greatsword.gif",
+      "sourceSha256": "04a4ab9b9c0ea8cf2ebfba1988fd84bb1af23869b79406bf5824cd83aa02c9b1",
+      "assetSha256": "cecc5a7e01619d247f42f8594ec0f5cdcc1888bb8b1f6ca0b5cc269035a01d7d",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 236,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw021",
+      "inventoryArtwork": true,
+      "name": "투핸드그레이트소드",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW022": {
+      "itemId": "IT_WARDROBE_MW022",
+      "assetPath": "item-icons/52ab3e184817_fran.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/29/fran.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エクスキュート （엑시큐터）",
+          "fields": {
+            "画像": "",
+            "名前": "エクスキュート （엑시큐터）",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "90m120 8m11",
+            "耐久": "60000",
+            "コメント": "日本版フランベルジュと見た目が同じ",
+            "入手場所": "戦士クエスト"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドエクスキュート (투핸드엑스큐터)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドエクスキュート (투핸드엑스큐터)",
+            "装備可能LV": "99",
+            "重量": "？",
+            "攻撃力": "160m220",
+            "耐久": "？",
+            "コメント": "両手 日本版フランベルジュと見た目が同じ",
+            "入手場所": "戦士クエスト"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/52ab3e184817_fran.gif",
+      "sourceSha256": "6439158ea8b7ceb20774bdadd447a49ab74d60c66aec1fc06d5e597039247a54",
+      "assetSha256": "dc337cd9a919f5266291c40cf543b71ccfe5c61840e5b179db6b4df53ef39be3",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 156,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw022",
+      "inventoryArtwork": true,
+      "name": "투핸드엑시큐터",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW023": {
+      "itemId": "IT_WARDROBE_MW023",
+      "assetPath": "item-icons/4b1be39ecd6b_gaia.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/954/gaia.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ガイアデュス （가이아두스）",
+          "fields": {
+            "画像": "",
+            "名前": "ガイアデュス （가이아두스）",
+            "装備可能LV": "86",
+            "重量": "15",
+            "攻撃力": "75m109 6m9",
+            "耐久": "40000",
+            "コメント": "無し",
+            "入手場所": "ピエト武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドガイアデュス (투핸드가이아두스)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドガイアデュス (투핸드가이아두스)",
+            "装備可能LV": "86",
+            "重量": "30",
+            "攻撃力": "150m210",
+            "耐久": "80000",
+            "コメント": "両手",
+            "入手場所": "ピエト武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/4b1be39ecd6b_gaia.gif",
+      "sourceSha256": "0be5d321e817b37c8d379d456591c3dd3ac47d839f573956373edc24732c6c4f",
+      "assetSha256": "5aca6354043bb440e81d297d19d0ff7a88a9d7b61b4acd12d248e546a96a5d91",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 221,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw023",
+      "inventoryArtwork": true,
+      "name": "투핸드가이아두스",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW029": {
+      "itemId": "IT_WARDROBE_MW029",
+      "assetPath": "item-icons/a486614280b0_whip.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/736/whip.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "鞭 (채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "鞭 (채찍)",
+            "装備可能LV": "26",
+            "重量": "？",
+            "攻撃力": "20m80",
+            "耐久": "？",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/a486614280b0_whip.gif",
+      "sourceSha256": "706e7dda1becfa648e035bb9d41179379757c639cab8e36a647075824cdda179",
+      "assetSha256": "4642b0c7214dcad2fa0cb9a6ad4b1ff1a85560d6d706fc001c17aadc70f6f433",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 234,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw029",
+      "inventoryArtwork": true,
+      "name": "채찍",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW048": {
+      "itemId": "IT_WARDROBE_MW048",
+      "assetPath": "item-icons/24d7454738af_daburiru.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/1236/daburiru.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ダブリル (더브릴)",
+          "fields": {
+            "画像": "",
+            "名前": "ダブリル (더브릴)",
+            "装備可能LV": "99",
+            "重量": "15",
+            "攻撃力": "190m220 18m21",
+            "耐久": "40000",
+            "コメント": "片手の割りに強い 戦士専用",
+            "入手場所": "坑道3グリムロッククイン"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/24d7454738af_daburiru.gif",
+      "sourceSha256": "a0994e02a0145dd50e7d2ceba30ffc903c2ebba7d9071a1326cb26457e7e7e08",
+      "assetSha256": "c84a9d4984f6a47657e832be645c95f016057c43995010e10fc3d3490ce22676",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 194,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw048",
+      "inventoryArtwork": true,
+      "name": "더브릴",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW049": {
+      "itemId": "IT_WARDROBE_MW049",
+      "assetPath": "item-icons/3805152840e6_naitomuti.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/1025/naitomuti.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ナイト鞭 (타고나이트채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "ナイト鞭 (타고나이트채찍)",
+            "装備可能LV": "11",
+            "重量": "11",
+            "攻撃力": "90m110",
+            "耐久": "10000",
+            "コメント": "無し",
+            "入手場所": "イベント 詳細不明"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/3805152840e6_naitomuti.gif",
+      "sourceSha256": "cc0d6130fe9f514f93a5a48d93aee8f17b0fd774a84c31ceb4e269e6c4320422",
+      "assetSha256": "4f6224a560e7fb9dff5e65c8cdf2c984489d708ae0caabb4382baf35b4d1bd1f",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 238,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw049",
+      "inventoryArtwork": true,
+      "name": "타고나이트채찍",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW050": {
+      "itemId": "IT_WARDROBE_MW050",
+      "assetPath": "item-icons/f236d7e7885f_misurirumuti.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/631/misurirumuti.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ミスリル鞭 (미스릴채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "ミスリル鞭 (미스릴채찍)",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "90m100",
+            "耐久": "20000",
+            "コメント": "無し",
+            "入手場所": "死の町 ブルーエレメンタル"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/f236d7e7885f_misurirumuti.gif",
+      "sourceSha256": "8c43cf2985d6adf358ec7298feb89d432be9c5776ab827494737a14f2ef1c3b1",
+      "assetSha256": "817c6cb8ed715952a80d0a1b9b9282244b887099f4c58a2b291e291612daf6c6",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 238,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw050",
+      "inventoryArtwork": true,
+      "name": "미스릴채찍",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW051": {
+      "itemId": "IT_WARDROBE_MW051",
+      "assetPath": "item-icons/17b895098e2b_rubywhip.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/615/rubywhip.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ルビー鞭 (루비채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "ルビー鞭 (루비채찍)",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "90m100",
+            "耐久": "30000",
+            "コメント": "無し",
+            "入手場所": "死の町 ブルーエレメンタル"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/17b895098e2b_rubywhip.gif",
+      "sourceSha256": "1d9cd5d4693a60583c6a9836ca4485c73883effffc0480a8fe561cf6b913e931",
+      "assetSha256": "bf492e3a2e8e7ca968f1f6b94f6a27ce70418b3a816a1edd54fa02aca5df7a20",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 245,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw051",
+      "inventoryArtwork": true,
+      "name": "루비채찍",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW055": {
+      "itemId": "IT_WARDROBE_MW055",
+      "assetPath": "item-icons/ea3f3d0d980b_hibraysilbattleaxe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/291/hibraysilbattleaxe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ハイブレイジルバトルアックス (하이브레이질배틀엑스)",
+          "fields": {
+            "画像": "",
+            "名前": "ハイブレイジルバトルアックス (하이브레이질배틀엑스)",
+            "装備可能LV": "99",
+            "重量": "？",
+            "攻撃力": "234m284",
+            "耐久": "100000",
+            "コメント": "両手",
+            "入手場所": "坑道３ヘルナイト"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/ea3f3d0d980b_hibraysilbattleaxe.gif",
+      "sourceSha256": "2c0452d24d2018682979eaacb403084e8446b1ead9e5c7d6a64f95a1a4d29e79",
+      "assetSha256": "6a2c7543aab0cfeb45584a106684c1f40df6dd4740b204d335b37366a5c3734a",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 430,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw055",
+      "inventoryArtwork": true,
+      "name": "하이브레이질배틀액스",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW059": {
+      "itemId": "IT_WARDROBE_MW059",
+      "assetPath": "item-icons/76a08467ccd2_so-ra-.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/250/942/so-ra-.gif",
+      "sourceRows": [
+        {
+          "page": "page_250",
+          "label": "マジックソーラー （매직솔라）",
+          "fields": {
+            "画像": "",
+            "名前": "マジックソーラー （매직솔라）",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "4m20 6m30",
+            "耐久": "3000",
+            "コメント": "全ての魔法を3行 2行以下の魔法も3行に増える",
+            "入手場所": "？"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        },
+        {
+          "page": "page_250",
+          "label": "ホーリーソーラー (홀리솔라)",
+          "fields": {
+            "画像": "",
+            "名前": "ホーリーソーラー (홀리솔라)",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "4m20 6m30",
+            "耐久": "3000",
+            "コメント": "全ての魔法を2行 1行以下の魔法も2行に増える",
+            "入手場所": "？"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/76a08467ccd2_so-ra-.gif",
+      "sourceSha256": "1ba3bbc57a30d028ed4e8757d324b9f7ef701f6badaec769df7f0bddd4ff81fb",
+      "assetSha256": "088e7a9f2964d0d64f3a7a74208fad840154c461b13de7936c481c07ad2e128f",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 120,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw059",
+      "inventoryArtwork": true,
+      "name": "매직솔라",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_WARDROBE_MW062": {
+      "itemId": "IT_WARDROBE_MW062",
+      "assetPath": "item-icons/e3fef1884c06_fana.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/250/923/fana.gif",
+      "sourceRows": [
+        {
+          "page": "page_250",
+          "label": "マジックファナ",
+          "fields": {
+            "画像": "",
+            "名前": "マジックファナ",
+            "装備可能LV": "11",
+            "重量": "？",
+            "攻撃力": "？",
+            "耐久": "？",
+            "コメント": "詠唱-1行 呪い1行 消費MP10%軽減 魔法威力Down 回復魔法詠唱無し",
+            "入手場所": "クイズ"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        },
+        {
+          "page": "page_250",
+          "label": "ホーリーファナ",
+          "fields": {
+            "画像": "",
+            "名前": "ホーリーファナ",
+            "装備可能LV": "11",
+            "重量": "？",
+            "攻撃力": "？",
+            "耐久": "？",
+            "コメント": "詠唱-2行 呪い1行 MP軽減10% 魔法威力Down 回復魔法への影響は無し 回復魔法詠唱無し",
+            "入手場所": "クイズ"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/e3fef1884c06_fana.gif",
+      "sourceSha256": "6a56d441da80134880020d8cbf183bc0e1948cf26e1c9e509ea6fe81c19f698c",
+      "assetSha256": "dcd97f6b5aa0881037aa2c2bf4340900f296966cf8e6b98f078e45bf6d2da499",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 109,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw062",
+      "inventoryArtwork": true,
+      "name": "매직파나",
+      "nativeSize": [
+        32,
+        32
+      ]
     },
     "IT_SHOES": {
       "appearanceId": "ml228",
@@ -9210,8 +10202,9 @@
       ],
       "name": "매직마르시아",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW007"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW007",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW009": {
       "appearanceId": "mw009",
@@ -9233,31 +10226,9 @@
       ],
       "name": "매직쥬피티아",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW009"
-    },
-    "IT_WARDROBE_MW010": {
-      "appearanceId": "mw010",
-      "assetPath": "item-icons/identity_mw010.png",
-      "assetSha256": "db4c07adfb57f893e42de55f2037e6bf92784f60a3cb42be7825a32103aad0ad",
-      "sourcePath": "master/assets/items/weapon/mw010_매스커레이드.webp",
-      "sourceSha256": "f24916dc2dde0c6c2725aae8aa41a4bce4f11c4c9396c063571205d7ce25a96c",
-      "crop": [
-        0,
-        0,
-        34,
-        25
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        34,
-        25
-      ],
-      "name": "매스커레이드",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW010"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW009",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW011": {
       "appearanceId": "mw011",
@@ -9279,8 +10250,9 @@
       ],
       "name": "매스케이드",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW011"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW011",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW012": {
       "appearanceId": "mw012",
@@ -9302,146 +10274,9 @@
       ],
       "name": "배틀소드",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW012"
-    },
-    "IT_WARDROBE_MW013": {
-      "appearanceId": "mw013",
-      "assetPath": "item-icons/identity_mw013.png",
-      "assetSha256": "6a8e963645b8f47ee834f197c8b7735fedb8cec5795a0ae121d23fa197caaeb7",
-      "sourcePath": "master/assets/items/weapon/mw013_블랙데쓰.webp",
-      "sourceSha256": "4f65a0ecbce3fbf3e3f3e3a9fe418a11394cddec8e5701dc76e620e5f13cddf7",
-      "crop": [
-        0,
-        0,
-        27,
-        21
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        27,
-        21
-      ],
-      "name": "블랙데쓰",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW013"
-    },
-    "IT_WARDROBE_MW014": {
-      "appearanceId": "mw014",
-      "assetPath": "item-icons/identity_mw014.png",
-      "assetSha256": "f1312402d8d21920ea4997adcecae3efb3da152e4baf0cf0261b1440ec2297a7",
-      "sourcePath": "master/assets/items/weapon/mw014_프렘벨.webp",
-      "sourceSha256": "5f22c5e660e608966c17fa947ab404c51b37f63d4b73bd7d02fd87dac4357d73",
-      "crop": [
-        0,
-        0,
-        30,
-        7
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        30,
-        7
-      ],
-      "name": "프렘벨",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW014"
-    },
-    "IT_WARDROBE_MW016": {
-      "appearanceId": "mw016",
-      "assetPath": "item-icons/identity_mw016.png",
-      "assetSha256": "2ffc56e994454971d95ca11abcdb92136277e6882a0483696446edeef76dd42a",
-      "sourcePath": "master/assets/items/weapon/mw016_투핸드크레이모어.webp",
-      "sourceSha256": "ff59b69cb495b0bca3664dc11807209f5b8a1bbb17ab0014089d48a2c27e0fc7",
-      "crop": [
-        0,
-        0,
-        34,
-        26
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        34,
-        26
-      ],
-      "name": "투핸드크레이모어",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW016"
-    },
-    "IT_WARDROBE_MW017": {
-      "appearanceId": "mw017",
-      "assetPath": "item-icons/identity_mw017.png",
-      "assetSha256": "297a2a8a4b3bb79af6917ba81d44c5cb2a7629234fb491c3d6d4d3302992ae3f",
-      "sourcePath": "master/assets/items/weapon/mw017_스틸라.webp",
-      "sourceSha256": "e8f33329be572c6a83b48b89949f42a9d410418bb7dd616aeed502f9af190096",
-      "crop": [
-        0,
-        0,
-        38,
-        13
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        38,
-        13
-      ],
-      "name": "스틸라",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW017"
-    },
-    "IT_WARDROBE_MW018": {
-      "appearanceId": "mw018",
-      "assetPath": "item-icons/identity_mw018.png",
-      "assetSha256": "bc3eb693feea4d7da716b3daca530f269a8c5210a0e8f365b295067559df2c21",
-      "sourcePath": "master/assets/items/weapon/mw018_투핸드에메랄드소드.webp",
-      "sourceSha256": "ff25074066dc5d4932c479a22f81558b97963fb7dfdee5db58d9d8db87725d25",
-      "crop": [
-        0,
-        0,
-        35,
-        25
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        35,
-        25
-      ],
-      "name": "투핸드에메랄드소드",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW018"
-    },
-    "IT_WARDROBE_MW019": {
-      "appearanceId": "mw019",
-      "assetPath": "item-icons/identity_mw019.png",
-      "assetSha256": "20eda4ee12559b3088389940566011fdf6c089f23140d03f9ee91bde66c02c8b",
-      "sourcePath": "master/assets/items/weapon/mw019_투핸드드래곤크로어.webp",
-      "sourceSha256": "8cf9478fe1fbc5202d2d9ea8dc0607ac91bfb82c71940424dcdd3da99f61e3ef",
-      "crop": [
-        0,
-        0,
-        37,
-        15
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        37,
-        15
-      ],
-      "name": "투핸드드래곤크로어",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW019"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW012",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW020": {
       "appearanceId": "mw020",
@@ -9463,77 +10298,9 @@
       ],
       "name": "드래곤슬레이어",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW020"
-    },
-    "IT_WARDROBE_MW021": {
-      "appearanceId": "mw021",
-      "assetPath": "item-icons/identity_mw021.png",
-      "assetSha256": "ceec13a1c674d176adc00ef3542272d4a114002ceea7365b9424f67223971916",
-      "sourcePath": "master/assets/items/weapon/mw021_투핸드그레이트소드.webp",
-      "sourceSha256": "d6392d5fc47098c4d0bdcb30db5c757a451190358be8d6d44d0e17926557beb1",
-      "crop": [
-        0,
-        0,
-        42,
-        9
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        42,
-        9
-      ],
-      "name": "투핸드그레이트소드",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW021"
-    },
-    "IT_WARDROBE_MW022": {
-      "appearanceId": "mw022",
-      "assetPath": "item-icons/identity_mw022.png",
-      "assetSha256": "6e3c812039c331d4064c29018fb55e997945986f376346b6172db412b171672d",
-      "sourcePath": "master/assets/items/weapon/mw022_투핸드엑시큐터.webp",
-      "sourceSha256": "f51dfadb127d5b5fbb3d65603a8cfd8becddb61727fd3c31399bd1f030adb740",
-      "crop": [
-        0,
-        0,
-        38,
-        8
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        38,
-        8
-      ],
-      "name": "투핸드엑시큐터",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW022"
-    },
-    "IT_WARDROBE_MW023": {
-      "appearanceId": "mw023",
-      "assetPath": "item-icons/identity_mw023.png",
-      "assetSha256": "e70f36d9fc792b95a3e7a57b6d3754a6e348bc195e07886386e327c4747ba3bd",
-      "sourcePath": "master/assets/items/weapon/mw023_투핸드가이아두스.webp",
-      "sourceSha256": "a374a62b13ceaabeae1b0d060e633b0ba426af5c06d36c57a0b22e3f36d8cfa7",
-      "crop": [
-        0,
-        0,
-        34,
-        25
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        34,
-        25
-      ],
-      "name": "투핸드가이아두스",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW023"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW020",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW026": {
       "appearanceId": "mw026",
@@ -9555,8 +10322,9 @@
       ],
       "name": "매직루나",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW026"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW026",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW027": {
       "appearanceId": "mw027",
@@ -9578,31 +10346,9 @@
       ],
       "name": "매직가이아",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW027"
-    },
-    "IT_WARDROBE_MW029": {
-      "appearanceId": "mw029",
-      "assetPath": "item-icons/identity_mw029.png",
-      "assetSha256": "5471c336adf3a8e36f4153257046ab1d8cb42cdb5468345ffb96e4c55c241ec4",
-      "sourcePath": "master/assets/items/weapon/mw029_채찍.webp",
-      "sourceSha256": "ff89061abb9cd8b136f8a853f189a397e3eaac88963940ba8040ab761f2effe7",
-      "crop": [
-        0,
-        0,
-        14,
-        20
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        14,
-        20
-      ],
-      "name": "채찍",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW029"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW027",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW034": {
       "appearanceId": "mw034",
@@ -9624,8 +10370,9 @@
       ],
       "name": "우든클럽",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW034"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW034",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW035": {
       "appearanceId": "mw035",
@@ -9647,8 +10394,9 @@
       ],
       "name": "스파이크클럽",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW035"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW035",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW036": {
       "appearanceId": "mw036",
@@ -9670,8 +10418,9 @@
       ],
       "name": "자이언트클럽",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW036"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW036",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW037": {
       "appearanceId": "mw037",
@@ -9693,8 +10442,9 @@
       ],
       "name": "자이언트스톤클럽",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW037"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW037",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW039": {
       "appearanceId": "mw039",
@@ -9716,8 +10466,9 @@
       ],
       "name": "액스",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW039"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW039",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW040": {
       "appearanceId": "mw040",
@@ -9739,8 +10490,9 @@
       ],
       "name": "하이브레이질액스",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW040"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW040",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW041": {
       "appearanceId": "mw041",
@@ -9762,8 +10514,9 @@
       ],
       "name": "자이언트스톤액스",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW041"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW041",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW043": {
       "appearanceId": "mw043",
@@ -9785,8 +10538,9 @@
       ],
       "name": "배틀액스",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW043"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW043",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW044": {
       "appearanceId": "mw044",
@@ -9808,8 +10562,9 @@
       ],
       "name": "자이언트스톤해머",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW044"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW044",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW047": {
       "appearanceId": "mw047",
@@ -9831,100 +10586,9 @@
       ],
       "name": "시미터",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW047"
-    },
-    "IT_WARDROBE_MW048": {
-      "appearanceId": "mw048",
-      "assetPath": "item-icons/identity_mw048.png",
-      "assetSha256": "4d484e8e6a963e61217ed74b39e32af945c3f39bbd98f30c84694cde42dee60f",
-      "sourcePath": "master/assets/items/weapon/mw048_더브릴.webp",
-      "sourceSha256": "42a143971da52c3546b8f221f682ff8f640972cd790063523c781cb1f7427e7b",
-      "crop": [
-        0,
-        0,
-        33,
-        15
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        33,
-        15
-      ],
-      "name": "더브릴",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW048"
-    },
-    "IT_WARDROBE_MW049": {
-      "appearanceId": "mw049",
-      "assetPath": "item-icons/identity_mw049.png",
-      "assetSha256": "46db3116a94fcb979318a67bdddeb0568e1f645e8bea71776bd306613320dea2",
-      "sourcePath": "master/assets/items/weapon/mw049_타고나이트채찍.webp",
-      "sourceSha256": "5701e49743d3883a4c7acecd256b9c5bd0bcc238fc1d6387b44c03dfab7b329a",
-      "crop": [
-        0,
-        0,
-        14,
-        20
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        14,
-        20
-      ],
-      "name": "타고나이트채찍",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW049"
-    },
-    "IT_WARDROBE_MW050": {
-      "appearanceId": "mw050",
-      "assetPath": "item-icons/identity_mw050.png",
-      "assetSha256": "89ff81f0fd4c1ca2a5d6d770182d36b9a68109de6180b17a277ab61112796d7f",
-      "sourcePath": "master/assets/items/weapon/mw050_미스릴채찍.webp",
-      "sourceSha256": "e89a6563e0a90db0d4bf134938e2009fa22c68752ad9cb162f34d85b5ff36785",
-      "crop": [
-        0,
-        0,
-        14,
-        20
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        14,
-        20
-      ],
-      "name": "미스릴채찍",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW050"
-    },
-    "IT_WARDROBE_MW051": {
-      "appearanceId": "mw051",
-      "assetPath": "item-icons/identity_mw051.png",
-      "assetSha256": "2db1948339c8ad2fe579591d0bf84c3c8392cb62078c149d30117665605282ed",
-      "sourcePath": "master/assets/items/weapon/mw051_루비채찍.webp",
-      "sourceSha256": "42affb5b1393602fb1509787df8b9af15c0f6c9d0aeb1fd3179c10bfeecf1ae4",
-      "crop": [
-        0,
-        0,
-        14,
-        20
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        14,
-        20
-      ],
-      "name": "루비채찍",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW051"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW047",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW053": {
       "appearanceId": "mw053",
@@ -9946,31 +10610,9 @@
       ],
       "name": "타고나이트액스",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW053"
-    },
-    "IT_WARDROBE_MW055": {
-      "appearanceId": "mw055",
-      "assetPath": "item-icons/identity_mw055.png",
-      "assetSha256": "c609e5723650491e387bf57f5ec7a75473b066bda2ff19ef9e3ad89307b05f8e",
-      "sourcePath": "master/assets/items/weapon/mw055_하이브레이질배틀액스.webp",
-      "sourceSha256": "254c79026ef267fb8d76bffc021e5c44632801f203ba980be728a89d788850c9",
-      "crop": [
-        0,
-        0,
-        28,
-        32
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        28,
-        32
-      ],
-      "name": "하이브레이질배틀액스",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW055"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW053",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW056": {
       "appearanceId": "mw056",
@@ -9992,31 +10634,9 @@
       ],
       "name": "실버시미터",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW056"
-    },
-    "IT_WARDROBE_MW059": {
-      "appearanceId": "mw059",
-      "assetPath": "item-icons/identity_mw059.png",
-      "assetSha256": "edfd20fd2f5fc7bd5ebfb34ebe58452fb342952b3b3e96549794637e1dcf98db",
-      "sourcePath": "master/assets/items/weapon/mw059_매직솔라.webp",
-      "sourceSha256": "ee04a1f4422d29e89a3334410a0a5e0b830b4e690c3c34fbf748e46b92ec752f",
-      "crop": [
-        0,
-        0,
-        29,
-        6
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        29,
-        6
-      ],
-      "name": "매직솔라",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW059"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW056",
+      "inventoryArtwork": false
     },
     "IT_WARDROBE_MW060": {
       "appearanceId": "mw060",
@@ -10038,31 +10658,9 @@
       ],
       "name": "아리펠스탭",
       "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW060"
-    },
-    "IT_WARDROBE_MW062": {
-      "appearanceId": "mw062",
-      "assetPath": "item-icons/identity_mw062.png",
-      "assetSha256": "5f1c4765fd25c8a26366455d71ce4b8f781369028f0a6ff517fed3033845ebb2",
-      "sourcePath": "master/assets/items/weapon/mw062_매직파나.webp",
-      "sourceSha256": "bf982dd41e01252d8ff1260b1d9cf82090d6ad577fc33b2d7f641b1564c789b8",
-      "crop": [
-        0,
-        0,
-        32,
-        10
-      ],
-      "projection": "MASTER_NATIVE_THUMBNAIL",
-      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
-      "nativeSize": [
-        32,
-        10
-      ],
-      "name": "매직파나",
-      "nameEvidence": "lod-dressup data/names.json or /api/names",
-      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
-      "itemId": "IT_WARDROBE_MW062"
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_WARDROBE_MW060",
+      "inventoryArtwork": false
     }
   }
 }

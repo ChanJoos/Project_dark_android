@@ -1,0 +1,771 @@
+{
+  "revision": "INVENTORY_ART_V131",
+  "base": "7fbea44541e77014998f4540f287cfd707195938",
+  "appearances": {
+    "mw001": {
+      "page": 81,
+      "filename": "bokutou.gif",
+      "sourceFile": "3e54c1a60e05_bokutou.gif",
+      "sourceSha256": "8a91b51f085187f99e31e6ceecd6d8c85047786c69673ae9b39dc87beadd988a",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/896/bokutou.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "木刀",
+          "fields": {
+            "画像": "",
+            "名前": "木刀",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "4m14 1m2",
+            "耐久": "1000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw002": {
+      "page": 81,
+      "filename": "epe.gif",
+      "sourceFile": "8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw003": {
+      "page": 81,
+      "filename": "katorasu.gif",
+      "sourceFile": "e7fe2e00743a_katorasu.gif",
+      "sourceSha256": "2ed56f83a8e223c104c429cc8d62c29d5880559f654764aadcfde50013503d0a",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/900/katorasu.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "カトラス",
+          "fields": {
+            "画像": "",
+            "名前": "カトラス",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "18m28 1m2",
+            "耐久": "6000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw004": {
+      "page": 81,
+      "filename": "sabel.gif",
+      "sourceFile": "a0c4b69c67e4_sabel.gif",
+      "sourceSha256": "6a9179f3f64662098e684b394afc32bc2780b31c97e5cc343733e8c81040867c",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/907/sabel.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "サーベル",
+          "fields": {
+            "画像": "",
+            "名前": "サーベル",
+            "装備可能LV": "56",
+            "重量": "11",
+            "攻撃力": "55m75 4m6",
+            "耐久": "20000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "HISTORICAL_LOCALIZATION_EQUIVALENT"
+    },
+    "mw005": {
+      "page": 81,
+      "filename": "gradius.gif",
+      "sourceFile": "a14293fb487b_gradius.gif",
+      "sourceSha256": "5fe42bb5bb8c67de8266705528d5a971340355b8be24b9054fd7f4bd65f786e4",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/899/gradius.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "グラディウス",
+          "fields": {
+            "画像": "",
+            "名前": "グラディウス",
+            "装備可能LV": "26",
+            "重量": "7",
+            "攻撃力": "33m43 3m4",
+            "耐久": "10000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw010": {
+      "page": 81,
+      "filename": "mesuka.gif",
+      "sourceFile": "baaf0ca28a3e_mesuka.gif",
+      "sourceSha256": "41d3bbd065e18c565da38f39b96c8cdb19a609a0c43fb538c3d64e77e719fda4",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/901/mesuka.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "メスカレイド",
+          "fields": {
+            "画像": "",
+            "名前": "メスカレイド",
+            "装備可能LV": "26",
+            "重量": "7",
+            "攻撃力": "31m41 3m4",
+            "耐久": "12000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw013": {
+      "page": 81,
+      "filename": "blackdeath.gif",
+      "sourceFile": "d64150348ca5_blackdeath.gif",
+      "sourceSha256": "ca69288a3e38aee9b20194bcdbbd3f89d7a54e1f6179bf39d754bfc0d4b03f5c",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/905/blackdeath.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ブラックデスソード",
+          "fields": {
+            "画像": "",
+            "名前": "ブラックデスソード",
+            "装備可能LV": "41",
+            "重量": "9",
+            "攻撃力": "34m54 4m6",
+            "耐久": "16000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw014": {
+      "page": 81,
+      "filename": "branble.gif",
+      "sourceFile": "9607c2759659_branble.gif",
+      "sourceSha256": "9ac89eac413cb75a52403399f03ee05e5a522f043349ac407fb75243ab607e41",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/906/branble.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ブランブル",
+          "fields": {
+            "画像": "",
+            "名前": "ブランブル",
+            "装備可能LV": "41",
+            "重量": "9",
+            "攻撃力": "40m60 3m5",
+            "耐久": "15000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "HISTORICAL_LOCALIZATION_EQUIVALENT"
+    },
+    "mw015": {
+      "page": 81,
+      "filename": "longsword.gif",
+      "sourceFile": "d08a9c24d6f2_longsword.gif",
+      "sourceSha256": "29b089f27e0b0b3bd6ce4893b40e2dc5f2c83bec04e6cf87bc10a8533f16911f",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/903/longsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ロングソード",
+          "fields": {
+            "画像": "",
+            "名前": "ロングソード",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "20m30 1m2",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw016": {
+      "page": 81,
+      "filename": "battlesword.gif",
+      "sourceFile": "42b4e46f1b36_battlesword.gif",
+      "sourceSha256": "b3d749e37aca10bc048acb1e263daacda219c3bcf6ab12cd262ad923aba95f36",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/904/battlesword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "クレイモア (크레이모어)",
+          "fields": {
+            "画像": "",
+            "名前": "クレイモア (크레이모어)",
+            "装備可能LV": "71",
+            "重量": "13",
+            "攻撃力": "70m90 6m8",
+            "耐久": "30000",
+            "コメント": "無し",
+            "入手場所": "ウンディネ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドクレイモア (투핸드크레이모어)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドクレイモア (투핸드크레이모어)",
+            "装備可能LV": "71",
+            "重量": "26",
+            "攻撃力": "140m180 12m16",
+            "耐久": "60000",
+            "コメント": "両手",
+            "入手場所": "ウンディネ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw017": {
+      "page": 81,
+      "filename": "stira.gif",
+      "sourceFile": "2602bbb1f097_stira.gif",
+      "sourceSha256": "045bfd04b7e326ccab11e747e0eb5ac61391221d13a3ca2057abcf375211c271",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/908/stira.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "スティラ",
+          "fields": {
+            "画像": "",
+            "名前": "スティラ",
+            "装備可能LV": "56",
+            "重量": "11",
+            "攻撃力": "49m69 5m7",
+            "耐久": "22000",
+            "コメント": "無し",
+            "入手場所": "スオミ武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw018": {
+      "page": 81,
+      "filename": "emeraldsword.gif",
+      "sourceFile": "4cf84b832e14_emeraldsword.gif",
+      "sourceSha256": "286898e195547fb497d60c2acad836cb62377f8d24e42bd38498e954994355e9",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/909/emeraldsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エメラルドソード （에메랄드소드）",
+          "fields": {
+            "画像": "",
+            "名前": "エメラルドソード （에메랄드소드）",
+            "装備可能LV": "71",
+            "重量": "13",
+            "攻撃力": "62m82 7m9",
+            "耐久": "33000",
+            "コメント": "無し",
+            "入手場所": "ウンディネ武器屋 アベル武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドエメラルドソード (투핸드에메랄드소드)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドエメラルドソード (투핸드에메랄드소드)",
+            "装備可能LV": "71",
+            "重量": "26",
+            "攻撃力": "124m164 14m18",
+            "耐久": "66000",
+            "コメント": "両手",
+            "入手場所": "ウンディネ武器屋 アベル武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw019": {
+      "page": 81,
+      "filename": "dkuro.gif",
+      "sourceFile": "dc54dc0d6583_dkuro.gif",
+      "sourceSha256": "9ae0acd605a4a2c80453e0cd8983006d94823d1f4936a653b34fa9932ff57505",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/519/dkuro.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ドラゴンクロー （드래곤크로어）",
+          "fields": {
+            "画像": "",
+            "名前": "ドラゴンクロー （드래곤크로어）",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "80m110 90m120",
+            "耐久": "70000",
+            "コメント": "無し",
+            "入手場所": "坑道３ドラコ"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドドラゴンクロー (투핸드드래곤크로어)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドドラゴンクロー (투핸드드래곤크로어)",
+            "装備可能LV": "99",
+            "重量": "34",
+            "攻撃力": "180m240",
+            "耐久": "70000",
+            "コメント": "両手",
+            "入手場所": "製造魔法"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw021": {
+      "page": 81,
+      "filename": "greatsword.gif",
+      "sourceFile": "b2a7278b89ab_greatsword.gif",
+      "sourceSha256": "04a4ab9b9c0ea8cf2ebfba1988fd84bb1af23869b79406bf5824cd83aa02c9b1",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/609/greatsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "グレートソード （그레이트소드）",
+          "fields": {
+            "画像": "",
+            "名前": "グレートソード （그레이트소드）",
+            "装備可能LV": "86",
+            "重量": "15",
+            "攻撃力": "67m97 7m10",
+            "耐久": "45000",
+            "コメント": "無し",
+            "入手場所": "ウンディネ武器屋 ルケシオン武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドグレートソード (투핸드그레이트소드)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドグレートソード (투핸드그레이트소드)",
+            "装備可能LV": "86",
+            "重量": "30",
+            "攻撃力": "134m194 15m21",
+            "耐久": "90000",
+            "コメント": "両手",
+            "入手場所": "ウンディネ武器屋 ルケシオン武器屋 地下21Fメロダ(火)"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw022": {
+      "page": 81,
+      "filename": "fran.gif",
+      "sourceFile": "52ab3e184817_fran.gif",
+      "sourceSha256": "6439158ea8b7ceb20774bdadd447a49ab74d60c66aec1fc06d5e597039247a54",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/29/fran.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エクスキュート （엑시큐터）",
+          "fields": {
+            "画像": "",
+            "名前": "エクスキュート （엑시큐터）",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "90m120 8m11",
+            "耐久": "60000",
+            "コメント": "日本版フランベルジュと見た目が同じ",
+            "入手場所": "戦士クエスト"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドエクスキュート (투핸드엑스큐터)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドエクスキュート (투핸드엑스큐터)",
+            "装備可能LV": "99",
+            "重量": "？",
+            "攻撃力": "160m220",
+            "耐久": "？",
+            "コメント": "両手 日本版フランベルジュと見た目が同じ",
+            "入手場所": "戦士クエスト"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw023": {
+      "page": 81,
+      "filename": "gaia.gif",
+      "sourceFile": "4b1be39ecd6b_gaia.gif",
+      "sourceSha256": "0be5d321e817b37c8d379d456591c3dd3ac47d839f573956373edc24732c6c4f",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/954/gaia.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ガイアデュス （가이아두스）",
+          "fields": {
+            "画像": "",
+            "名前": "ガイアデュス （가이아두스）",
+            "装備可能LV": "86",
+            "重量": "15",
+            "攻撃力": "75m109 6m9",
+            "耐久": "40000",
+            "コメント": "無し",
+            "入手場所": "ピエト武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        },
+        {
+          "page": "page_81",
+          "label": "ツーハンドガイアデュス (투핸드가이아두스)",
+          "fields": {
+            "画像": "",
+            "名前": "ツーハンドガイアデュス (투핸드가이아두스)",
+            "装備可能LV": "86",
+            "重量": "30",
+            "攻撃力": "150m210",
+            "耐久": "80000",
+            "コメント": "両手",
+            "入手場所": "ピエト武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw024": {
+      "page": 87,
+      "filename": "magic_satia.gif",
+      "sourceFile": "minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+      "sourceRows": [
+        {
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw029": {
+      "page": 81,
+      "filename": "whip.gif",
+      "sourceFile": "a486614280b0_whip.gif",
+      "sourceSha256": "706e7dda1becfa648e035bb9d41179379757c639cab8e36a647075824cdda179",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/736/whip.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "鞭 (채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "鞭 (채찍)",
+            "装備可能LV": "26",
+            "重量": "？",
+            "攻撃力": "20m80",
+            "耐久": "？",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw048": {
+      "page": 81,
+      "filename": "daburiru.gif",
+      "sourceFile": "24d7454738af_daburiru.gif",
+      "sourceSha256": "a0994e02a0145dd50e7d2ceba30ffc903c2ebba7d9071a1326cb26457e7e7e08",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/1236/daburiru.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ダブリル (더브릴)",
+          "fields": {
+            "画像": "",
+            "名前": "ダブリル (더브릴)",
+            "装備可能LV": "99",
+            "重量": "15",
+            "攻撃力": "190m220 18m21",
+            "耐久": "40000",
+            "コメント": "片手の割りに強い 戦士専用",
+            "入手場所": "坑道3グリムロッククイン"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw049": {
+      "page": 81,
+      "filename": "naitomuti.gif",
+      "sourceFile": "3805152840e6_naitomuti.gif",
+      "sourceSha256": "cc0d6130fe9f514f93a5a48d93aee8f17b0fd774a84c31ceb4e269e6c4320422",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/1025/naitomuti.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ナイト鞭 (타고나이트채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "ナイト鞭 (타고나이트채찍)",
+            "装備可能LV": "11",
+            "重量": "11",
+            "攻撃力": "90m110",
+            "耐久": "10000",
+            "コメント": "無し",
+            "入手場所": "イベント 詳細不明"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw050": {
+      "page": 81,
+      "filename": "misurirumuti.gif",
+      "sourceFile": "f236d7e7885f_misurirumuti.gif",
+      "sourceSha256": "8c43cf2985d6adf358ec7298feb89d432be9c5776ab827494737a14f2ef1c3b1",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/631/misurirumuti.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ミスリル鞭 (미스릴채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "ミスリル鞭 (미스릴채찍)",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "90m100",
+            "耐久": "20000",
+            "コメント": "無し",
+            "入手場所": "死の町 ブルーエレメンタル"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw051": {
+      "page": 81,
+      "filename": "rubywhip.gif",
+      "sourceFile": "17b895098e2b_rubywhip.gif",
+      "sourceSha256": "1d9cd5d4693a60583c6a9836ca4485c73883effffc0480a8fe561cf6b913e931",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/615/rubywhip.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ルビー鞭 (루비채찍)",
+          "fields": {
+            "画像": "",
+            "名前": "ルビー鞭 (루비채찍)",
+            "装備可能LV": "99",
+            "重量": "17",
+            "攻撃力": "90m100",
+            "耐久": "30000",
+            "コメント": "無し",
+            "入手場所": "死の町 ブルーエレメンタル"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw055": {
+      "page": 81,
+      "filename": "hibraysilbattleaxe.gif",
+      "sourceFile": "ea3f3d0d980b_hibraysilbattleaxe.gif",
+      "sourceSha256": "2c0452d24d2018682979eaacb403084e8446b1ead9e5c7d6a64f95a1a4d29e79",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/291/hibraysilbattleaxe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ハイブレイジルバトルアックス (하이브레이질배틀엑스)",
+          "fields": {
+            "画像": "",
+            "名前": "ハイブレイジルバトルアックス (하이브레이질배틀엑스)",
+            "装備可能LV": "99",
+            "重量": "？",
+            "攻撃力": "234m284",
+            "耐久": "100000",
+            "コメント": "両手",
+            "入手場所": "坑道３ヘルナイト"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw059": {
+      "page": 250,
+      "filename": "so-ra-.gif",
+      "sourceFile": "76a08467ccd2_so-ra-.gif",
+      "sourceSha256": "1ba3bbc57a30d028ed4e8757d324b9f7ef701f6badaec769df7f0bddd4ff81fb",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/250/942/so-ra-.gif",
+      "sourceRows": [
+        {
+          "page": "page_250",
+          "label": "マジックソーラー （매직솔라）",
+          "fields": {
+            "画像": "",
+            "名前": "マジックソーラー （매직솔라）",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "4m20 6m30",
+            "耐久": "3000",
+            "コメント": "全ての魔法を3行 2行以下の魔法も3行に増える",
+            "入手場所": "？"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        },
+        {
+          "page": "page_250",
+          "label": "ホーリーソーラー (홀리솔라)",
+          "fields": {
+            "画像": "",
+            "名前": "ホーリーソーラー (홀리솔라)",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "4m20 6m30",
+            "耐久": "3000",
+            "コメント": "全ての魔法を2行 1行以下の魔法も2行に増える",
+            "入手場所": "？"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "mw062": {
+      "page": 250,
+      "filename": "fana.gif",
+      "sourceFile": "e3fef1884c06_fana.gif",
+      "sourceSha256": "6a56d441da80134880020d8cbf183bc0e1948cf26e1c9e509ea6fe81c19f698c",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/250/923/fana.gif",
+      "sourceRows": [
+        {
+          "page": "page_250",
+          "label": "マジックファナ",
+          "fields": {
+            "画像": "",
+            "名前": "マジックファナ",
+            "装備可能LV": "11",
+            "重量": "？",
+            "攻撃力": "？",
+            "耐久": "？",
+            "コメント": "詠唱-1行 呪い1行 消費MP10%軽減 魔法威力Down 回復魔法詠唱無し",
+            "入手場所": "クイズ"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        },
+        {
+          "page": "page_250",
+          "label": "ホーリーファナ",
+          "fields": {
+            "画像": "",
+            "名前": "ホーリーファナ",
+            "装備可能LV": "11",
+            "重量": "？",
+            "攻撃力": "？",
+            "耐久": "？",
+            "コメント": "詠唱-2行 呪い1行 MP軽減10% 魔法威力Down 回復魔法への影響は無し 回復魔法詠唱無し",
+            "入手場所": "クイズ"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/250.html"
+        }
+      ],
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    }
+  },
+  "ring": {
+    "itemId": "IT_RING_THREELINEGOLD",
+    "originalSourceCrop": [
+      20,
+      8,
+      54,
+      48
+    ],
+    "sourcePath": "master/source/items/tistory_20261009/three_line_gold_ring.png",
+    "transparentBackgroundRGB": [
+      246,
+      245,
+      240
+    ],
+    "method": "Trim transparent margins only; preserve every foreground RGB/alpha; no resampling/redraw",
+    "newSize": [
+      35,
+      27
+    ]
+  },
+  "dualSlotReview": {
+    "twoGlovesAndTwoRings": "Historical paired equipment confirmed",
+    "sourceUrls": [
+      "https://lod.nexon.com/community/game/4812?SearchBoard=1",
+      "https://time-to-watch.tistory.com/92"
+    ],
+    "leftRightButtons": "Project mobile UI adaptation; original PC interaction not verified"
+  },
+  "policy": "Keep inventory illustrations separate from wearable sprites. Exact labelled sources take precedence; unavailable inventory sources remain explicit wearable previews; no guessed rotations or painted source pixels."
+}

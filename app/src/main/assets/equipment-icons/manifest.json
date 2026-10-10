@@ -668,10 +668,10 @@
       "sourcePath": "master/source/items/tistory_20261009/three_line_gold_ring.png",
       "sourceSha256": "bcdab54b55f4a97e813fb28ed9789a46b07865ae9a778d839b74a9be38c6d77e",
       "crop": [
-        20,
-        8,
-        54,
-        48
+        29,
+        17,
+        35,
+        27
       ],
       "transparentBackgroundRGB": [
         246,
@@ -679,11 +679,13 @@
         240
       ],
       "asset": "it_ring_threelinegold.png",
-      "assetSha256": "96525f24df112fc0d0becb0b4a4b71bebd94ecb9abc8c534da1c2daf06066905",
+      "assetSha256": "511e853c19fb89b16e2a4bfd36dc435777730ec0f672c1feaf6357fcec3251f7",
       "evidence": "FAN_HISTORICAL_LABELLED_GAME_ICON_CAPTURE",
       "sourceUrl": "https://time-to-watch.tistory.com/92",
       "sourcePublished": "2020-10-30",
-      "limitation": "Labelled retrospective table; capture era unknown. Exact foreground RGB retained; only uniform table background alpha removed."
+      "limitation": "Labelled historical capture, capture era unknown. Same716 foreground pixels preserved; only fully transparent margins removed. No redraw/upscale/resampling.",
+      "projection": "SOURCE_RGB_TRANSPARENT_MARGIN_TRIM_V131",
+      "inventoryPresentation": "35x27 foreground at1x; previous54x48 canvas forced43/54 downsampling"
     },
     "IT_EARRING_DOUBLE_SILVER": {
       "itemId": "IT_EARRING_DOUBLE_SILVER",
