@@ -22,11 +22,11 @@ final class ClassicUiSkin {
  }
  static void texture(Canvas c,RectF r,boolean title){
   pixel.setShader(null);pixel.setColor(title?UiTheme.BG:UiTheme.SURFACE);pixel.setAlpha(255);c.drawRect(r,pixel);
-  pixel.setFilterBitmap(false);pixel.setShader(title?header:paper);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(title?165:88);c.drawRect(r,pixel);pixel.setShader(null);pixel.setAlpha(255);
+  pixel.setFilterBitmap(false);pixel.setShader(title?header:paper);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(title?70:28);c.drawRect(r,pixel);pixel.setShader(null);pixel.setAlpha(255);
  }
  private static void part(Canvas c,String key,RectF r){pixel.setShader(null);pixel.setFilterBitmap(false);c.drawBitmap(art.get(key),null,r,pixel);}
  static void frame(Canvas c,RectF r){
-  float e=7;
+  float e=4;
   part(c,"top",new RectF(r.left+e,r.top,r.right-e,r.top+e));
   part(c,"bottom",new RectF(r.left+e,r.bottom-e,r.right-e,r.bottom));
   part(c,"left",new RectF(r.left,r.top+e,r.left+e,r.bottom-e));

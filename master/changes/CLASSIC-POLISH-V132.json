@@ -1,0 +1,34 @@
+{
+  "id": "CLASSIC-POLISH-V132",
+  "status": "ACCEPTED",
+  "owner": "Director/Visual single editor",
+  "sourceBase": "7672b25bca284aa2eb709177c1d0554a99e7ee97",
+  "userDecision": "One equip action; automatic vacant slot; select compact equipped-item card when replacing; original feeling with refined shared UI.",
+  "before": "Two large left/right inventory action buttons and two large comparison sheets; strong wood texture/beveled borders.",
+  "after": "Single contextual action, automatic vacancy resolution, compact target cards with explicit full-slot replacement; restrained shared classic palette/texture/frame/button/slot styling.",
+  "sourceContract": "Retain immutable original source artwork and frame crops; changes are presentation and target-selection adaptation, not original PC UI claims.",
+  "affected": [
+    "ItemWindow",
+    "UiTheme",
+    "ClassicUiSkin"
+  ],
+  "unchanged": [
+    "Equipment domain authority",
+    "FinalStats",
+    "item IDs",
+    "source artwork",
+    "save format",
+    "combat",
+    "movement",
+    "world"
+  ],
+  "checks": [
+    "Native actual-tap ring/glove auto-fill",
+    "Full-slot no implicit replacement",
+    "Chosen-slot replace/remove and save/restart",
+    "One-copy quantity rejection",
+    "Wide touch alignment",
+    "All shared windows and original icons"
+  ],
+  "verification": "PENDING exact-source native/build/full CI; physical phone and user visual acceptance pending"
+}
