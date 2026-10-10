@@ -1,0 +1,54 @@
+{
+  "sources": [
+    {
+      "url": "https://gcdn.pcpf.kakaogames.com/ui-contents/qa/community/dokkaebi/community_dokkaebi_1791112481055_22.png",
+      "file": "/workspace/scratch/be89184af76b/hud_research/0.png",
+      "bytes": 1271245,
+      "sha256": "2b9dd5a22bf076279d3f06ea5ec0cc9664e6c013c83ef4857d6f4399fb60a414"
+    },
+    {
+      "url": "https://gcdn.pcpf.kakaogames.com/ui-contents/qa/community/dokkaebi/community_dokkaebi_1791113177718_18.png",
+      "file": "/workspace/scratch/be89184af76b/hud_research/1.png",
+      "bytes": 1065752,
+      "sha256": "437611c6c8ad2f4bf2446ae973642ab33c81ecaee62e8fc4bd4c18d643169bd3"
+    },
+    {
+      "url": "https://gcdn.pcpf.kakaogames.com/ui-contents/qa/community/dokkaebi/community_dokkaebi_1791113220822_44.png",
+      "file": "/workspace/scratch/be89184af76b/hud_research/2.png",
+      "bytes": 984586,
+      "sha256": "2c975ccc6c4f611255a29056db39be85c474f39db09a4fde5be31d1359c43d23"
+    },
+    {
+      "url": "https://gcdn.pcpf.kakaogames.com/ui-contents/qa/community/dokkaebi/community_dokkaebi_1791112498489_69.png",
+      "file": "/workspace/scratch/be89184af76b/hud_research/3.png",
+      "bytes": 906757,
+      "sha256": "007be3ae6cddf8016f4525ddbef13ae506054b8ff91e23f283ecf9a17476e2b4"
+    },
+    {
+      "url": "https://dokkaebi.kakaogames.com/",
+      "file": "/workspace/scratch/be89184af76b/hud_research/4.html",
+      "bytes": 88629,
+      "sha256": "025c20d600a3a6182a610c33c42092704a86986d262c8ec9cac663ff875f1a4c"
+    },
+    {
+      "url": "https://www.youtube.com/@dokkaebi.saegye/videos",
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?hl=ko&id=com.kakaogames.dokkaebi",
+      "kind": "OFFICIAL_ANDROID_STORE",
+      "screenshots": 6
+    },
+    {
+      "url": "https://www.youtube.com/embed/NE_x0FSJ2Ao",
+      "kind": "OFFICIAL_WEBSITE_EMBED",
+      "videoInspection": "NOT_RETRIEVED_YOUTUBE_TIMEOUT"
+    }
+  ],
+  "userReferences": [
+    "upload/01-1000058792.jpg",
+    "upload/02-1000058790.jpg"
+  ],
+  "runtimeArt": "Native vector frames and utility glyphs. Existing SkillIconCatalog.drawQuickslot source unchanged.",
+  "referenceInterpretation": "PC guide includes keyboard labels; mobile screenshots establish landscape geometry. User explicitly overrides eight reference skills to ten actual skills."
+}

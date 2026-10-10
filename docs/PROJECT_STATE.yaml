@@ -1,3 +1,14 @@
+mobile_hud_v134:
+  owner: Director_single_editor
+  status: IMPLEMENTED_VERIFICATION_PENDING
+  active_branch: codex/mobile-hud-v134
+  skill_slots: 10
+  legacy_slot_migration: 8_TO_10_TRANSACTIONAL
+  skill_art: PRESERVED
+  physical_phone: PENDING
+  user_visual: PENDING
+  evidence: master/source/ui/mobile_hud_v134/sources.json
+
 ring_source_v133:
   owner: Director_single_editor
   status: INTEGRATED_VERIFIED_REFERENCE_MATCH

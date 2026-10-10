@@ -25,12 +25,12 @@ public class InventoryArtV131Test {
   assertEquals("mw002",r.itemDefinitions().get("IT_TEST_WEAPON_MW002").appearanceId);
   assertEquals(20,(int)r.itemDefinitions().get("IT_TEST_WEAPON_MW002").statModifiers.get("MinATK"));
   assertEquals(30,(int)r.itemDefinitions().get("IT_TEST_WEAPON_MW002").statModifiers.get("MaxATK"));
-  GameView v=new GameView(c);v.layout(0,0,960,540);ItemWindowReferenceTest.tap(v,608,28);save(v,"inventory-source-weapons");
+  GameView v=new GameView(c);v.layout(0,0,960,540);ItemWindowReferenceTest.tap(v,742,28);save(v,"inventory-source-weapons");
  }
  @Test public void referenceMatchedRingReplacesRejectedCaptureWhileDetailsRemainReachable()throws Exception{
   SourceItemIconRegistry icons=new SourceItemIconRegistry(c);assertFalse(icons.pending("IT_RING_THREELINEGOLD"));Bitmap ring=icons.get("IT_RING_THREELINEGOLD");assertNotNull(ring);assertEquals(32,ring.getWidth());assertEquals(32,ring.getHeight());assertEquals("USER_REFERENCE_MATCHED_NATIVE_CAPTURE",icons.receipt("IT_RING_THREELINEGOLD").getString("identityMatch"));
   try{c.getAssets().open("equipment-icons/it_ring_threelinegold.png");fail("Rejected capture packaged");}catch(java.io.FileNotFoundException expected){}
-  GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(v,"state");ItemWindow w=ItemWindowReferenceTest.field(v,"itemWindow");ItemWindowReferenceTest.tap(v,608,28);
+  GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(v,"state");ItemWindow w=ItemWindowReferenceTest.field(v,"itemWindow");ItemWindowReferenceTest.tap(v,742,28);
   List<RpgInventoryPresentation.ItemRow> rows=new ArrayList<>(new RpgInventoryPresentation().inventoryRows(state.rpg()));int index=0;while(!"IT_RING_THREELINEGOLD".equals(rows.get(index).itemId))index++;
   w.page=index/50;int local=index%50;RectF cell=ItemWindow.cell(local);ItemWindowReferenceTest.tap(v,cell.centerX(),cell.centerY());assertEquals("IT_RING_THREELINEGOLD",w.hitItem);assertTrue(w.details);save(v,"ring-native-details");
 

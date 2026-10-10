@@ -25,12 +25,12 @@ public class QuestJournalTest {
   void completeOpening(GameView v)throws Exception{F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");q.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);((GrowthQuest2)TownInteriorTest.field(v,"quest2")).unlockIfPrologueCompleted(q);}
   @Test public void rightIconListsEveryQuestAndAvailableFilterOnlyShowsReceivableQuest()throws Exception{
     GameView v=start();assertEquals(43,rows(v).size());assertEquals(1,((QuestJournalModel)TownInteriorTest.field(v,"questJournalModel")).available(rows(v)));
-    gesture(v,808,28);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");assertEquals(43,w.visible(rows(v)).size());capture(v,"all-available");
+    gesture(v,918,28);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");assertEquals(43,w.visible(rows(v)).size());capture(v,"all-available");
     gesture(v,365,124);assertEquals(QuestJournalWindow.Filter.AVAILABLE,w.filter);assertEquals(1,w.visible(rows(v)).size());assertEquals(F5mAdaptedPrologueQuest.QUEST_ID,w.selected(rows(v)).id);capture(v,"available-only");
     gesture(v,540,124);assertTrue(w.visible(rows(v)).isEmpty());capture(v,"empty-progress");gesture(v,818,74);assertFalse((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
   }
   @Test public void lockedConditionsAndLastQuestStayReachableWithoutNavigatingOrRewarding()throws Exception{
-    GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;long gold=s.rpg().gold();gesture(v,808,28);QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");
+    GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;long gold=s.rpg().gold();gesture(v,918,28);QuestJournalWindow w=TownInteriorTest.field(v,"questJournalWindow");
     gesture(v,250,230);assertEquals(GrowthQuest2.QUEST_ID,w.selected(rows(v)).id);assertEquals(QuestJournalModel.Status.LOCKED,w.selected(rows(v)).status);capture(v,"locked-prerequisite");gesture(v,680,443);assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
     List<QuestJournalModel.Row> all=rows(v);for(int i=0;i<(all.size()+3)/4;i++)gesture(v,355,450);assertEquals("journal can scroll to its final five rows",Math.max(0,all.size()-5),w.offset);gesture(v,250,394);assertEquals("CAMPAIGN_D04",w.selected(rows(v)).id);capture(v,"last-planned-quest");gesture(v,680,443);
     assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);assertEquals(gold,s.rpg().gold().longValue());assertTrue((Boolean)TownInteriorTest.field(v,"questJournalOpen"));
@@ -40,7 +40,7 @@ public class QuestJournalTest {
     GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=s.player().maxHp;capture(v,"compact-initial");
     gesture(v,100,155);assertFalse((Boolean)TownInteriorTest.field(v,"questJournalOpen"));TownInteriorTest.tick(v,2200);
     InteractionController i=TownInteriorTest.field(v,"interaction");assertTrue("first compact touch drives actual NPC approach",i.dialogOpen());assertEquals("milles_guide_proto",i.dialogNpc().id);capture(v,"quick-arrived-james");gesture(v,550,426);assertEquals(F5mAdaptedPrologueQuest.State.ACTIVE,((F5mAdaptedPrologueQuest)TownInteriorTest.field(v,"f5mQuest")).state());
-    gesture(v,808,28);gesture(v,540,124);assertEquals(1,((QuestJournalWindow)TownInteriorTest.field(v,"questJournalWindow")).visible(rows(v)).size());capture(v,"active-opening");
+    gesture(v,918,28);gesture(v,540,124);assertEquals(1,((QuestJournalWindow)TownInteriorTest.field(v,"questJournalWindow")).visible(rows(v)).size());capture(v,"active-opening");
   }
   @Test public void firstTouchCrossesInnDoorTargetsMouseAndReportsToMary()throws Exception{
     GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=s.player().maxHp;
@@ -51,9 +51,9 @@ public class QuestJournalTest {
   @Test public void growthReportCompletionAndForestVisitReflectImmediatelyAndRestore()throws Exception{
     GameView v=start();completeOpening(v);((RuntimeState)TownInteriorTest.field(v,"state")).rpg().grantAdaptedReward(10000,100);GrowthQuest2 g=TownInteriorTest.field(v,"quest2");assertTrue(g.accept());RuntimeState s=TownInteriorTest.field(v,"state");
     for(String id:new String[]{"combat_dummy_01","combat_dummy_02","combat_dummy_03"})for(RuntimeState.Monster m:s.monsters())if(id.equals(m.id))s.damage(m,m.hp);
-    TownInteriorTest.tick(v,1);assertEquals(GrowthQuest2.State.RETURN_READY,g.state());assertEquals(QuestJournalModel.Status.REPORT,rows(v).get(1).status);gesture(v,808,28);capture(v,"growth-report");gesture(v,818,74);
-    assertTrue(g.turnIn(s.rpg()));long rewardGold=s.rpg().gold();assertFalse(g.turnIn(s.rpg()));assertEquals(rewardGold,s.rpg().gold().longValue());assertEquals(QuestJournalModel.Status.AVAILABLE,rows(v).get(2).status);gesture(v,808,28);gesture(v,720,124);assertEquals(2,((QuestJournalWindow)TownInteriorTest.field(v,"questJournalWindow")).visible(rows(v)).size());capture(v,"completed-chain");gesture(v,818,74);
-    TownInteriorTest.call(v,"enterPoteField");assertEquals(QuestJournalModel.JOB_CHOICE,rows(v).get(2).id);assertEquals(QuestJournalModel.Status.AVAILABLE,rows(v).get(2).status);TownInteriorTest.call(v,"leavePoteField");assertTrue(F5mSaveStore.checkpointActive());F5mSaveStore.install(c);GameView restored=start();assertEquals(QuestJournalModel.Status.AVAILABLE,rows(restored).get(2).status);assertEquals(rewardGold,((RuntimeState)TownInteriorTest.field(restored,"state")).rpg().gold().longValue());gesture(restored,808,28);capture(restored,"restored-completed");
+    TownInteriorTest.tick(v,1);assertEquals(GrowthQuest2.State.RETURN_READY,g.state());assertEquals(QuestJournalModel.Status.REPORT,rows(v).get(1).status);gesture(v,918,28);capture(v,"growth-report");gesture(v,818,74);
+    assertTrue(g.turnIn(s.rpg()));long rewardGold=s.rpg().gold();assertFalse(g.turnIn(s.rpg()));assertEquals(rewardGold,s.rpg().gold().longValue());assertEquals(QuestJournalModel.Status.AVAILABLE,rows(v).get(2).status);gesture(v,918,28);gesture(v,720,124);assertEquals(2,((QuestJournalWindow)TownInteriorTest.field(v,"questJournalWindow")).visible(rows(v)).size());capture(v,"completed-chain");gesture(v,818,74);
+    TownInteriorTest.call(v,"enterPoteField");assertEquals(QuestJournalModel.JOB_CHOICE,rows(v).get(2).id);assertEquals(QuestJournalModel.Status.AVAILABLE,rows(v).get(2).status);TownInteriorTest.call(v,"leavePoteField");assertTrue(F5mSaveStore.checkpointActive());F5mSaveStore.install(c);GameView restored=start();assertEquals(QuestJournalModel.Status.AVAILABLE,rows(restored).get(2).status);assertEquals(rewardGold,((RuntimeState)TownInteriorTest.field(restored,"state")).rpg().gold().longValue());gesture(restored,918,28);capture(restored,"restored-completed");
   }
   @Test public void quickQuestLeavesAnyServiceInteriorBeforeContinuingToTheNextNpc()throws Exception{
     GameView v=start();completeOpening(v);TownInteriorTest.enter(v,TownInteriorDef.forMap("milles_interior_inn"));RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=s.player().maxHp;
@@ -66,7 +66,7 @@ public class QuestJournalTest {
     GameView v=start();((F5mAdaptedPrologueQuest)TownInteriorTest.field(v,"f5mQuest")).accept();gesture(v,100,155);assertTrue((Boolean)TownInteriorTest.field(v,"questEntryPending"));gesture(v,310,190);assertFalse("manual target replaces pending quest continuation",(Boolean)TownInteriorTest.field(v,"questEntryPending"));assertFalse((Boolean)TownInteriorTest.field(v,"questExitPending"));
   }
   @Test public void journalDragScrollDoesNotStartWorldMovement()throws Exception{
-    GameView v=start();gesture(v,808,28);RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;
+    GameView v=start();gesture(v,918,28);RuntimeState s=TownInteriorTest.field(v,"state");float x=s.player().x,y=s.player().y;
     for(int[] event:new int[][]{{0,380},{2,320},{2,240},{2,180},{1,180}}){MotionEvent e=MotionEvent.obtain(0,1,event[0],240,event[1],0);v.onTouchEvent(e);e.recycle();}
     assertTrue(((QuestJournalWindow)TownInteriorTest.field(v,"questJournalWindow")).offset>=3);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);capture(v,"dragged-list");
   }

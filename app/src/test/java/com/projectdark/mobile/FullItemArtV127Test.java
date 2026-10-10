@@ -32,8 +32,8 @@ public class FullItemArtV127Test {
  }
  @Test public void allInventoryPagesAndCommonWindowsRenderWithoutMutatingInventory()throws Exception{
   GameView view=new GameView(context);view.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(view,"state");Map<String,Integer> owned=new LinkedHashMap<>(state.rpg().inventory());ItemWindow window=ItemWindowReferenceTest.field(view,"itemWindow");
-  ItemWindowReferenceTest.tap(view,608,28);for(int page=0;page<(state.rpg().inventory().size()+49)/50;page++){assertEquals(page,window.page);capture(view,"inventory-"+(page+1));if(page<(state.rpg().inventory().size()+49)/50-1)ItemWindowReferenceTest.tap(view,894,480);}
-  ItemWindowReferenceTest.tap(view,916,66);ItemWindowReferenceTest.tap(view,716,28);capture(view,"equipment");ItemWindowReferenceTest.tap(view,492,66);ItemWindowReferenceTest.tap(view,662,28);capture(view,"stats");ItemWindowReferenceTest.tap(view,911,91);ItemWindowReferenceTest.tap(view,770,28);capture(view,"skills");assertEquals(owned,state.rpg().inventory());
+  ItemWindowReferenceTest.tap(view,742,28);for(int page=0;page<(state.rpg().inventory().size()+49)/50;page++){assertEquals(page,window.page);capture(view,"inventory-"+(page+1));if(page<(state.rpg().inventory().size()+49)/50-1)ItemWindowReferenceTest.tap(view,894,480);}
+  ItemWindowReferenceTest.tap(view,916,66);ItemWindowReferenceTest.tap(view,830,28);capture(view,"equipment");ItemWindowReferenceTest.tap(view,492,66);ItemWindowReferenceTest.tap(view,662,28);capture(view,"stats");ItemWindowReferenceTest.tap(view,911,91);ItemWindowReferenceTest.tap(view,874,28);capture(view,"skills");assertEquals(owned,state.rpg().inventory());
  }
  void capture(GameView view,String name)throws Exception{Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(b));save(b,name);b.recycle();}
  void save(Bitmap b,String name)throws Exception{File directory=new File("build/reports/full-item-v127");directory.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(directory,name+".png"))){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}}

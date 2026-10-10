@@ -78,7 +78,7 @@ public class ItemFunctionsV129Test {
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState s=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");
   String id=RpgProgressionState.REAGENT_CURANUM_ITEM_ID;s.rpg().restoreBaseResources(5000,5000);s.applyDerivedGrowth();s.player().hp=1;
   int owned=s.rpg().inventory().getOrDefault(id,0);assertTrue(owned>0);float x=s.player().x,y=s.player().y;
-  ItemWindowReferenceTest.tap(view,608,28);ItemWindowReferenceTest.tap(view,509,93);assertEquals(2,w.filter);
+  ItemWindowReferenceTest.tap(view,742,28);ItemWindowReferenceTest.tap(view,509,93);assertEquals(2,w.filter);
   int index=-1;List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());for(int i=0;i<rows.size();i++)if(id.equals(rows.get(i).itemId))index=i;assertTrue(index>=0);
   w.page=index/50;android.graphics.RectF cell=ItemWindow.cell(index%50);ItemWindowReferenceTest.tap(view,cell.centerX(),cell.centerY());assertTrue(w.details);
   ItemWindowReferenceTest.tap(view,805,490);assertEquals(1001,s.player().hp);assertEquals(owned-1,s.rpg().inventory().getOrDefault(id,0).intValue());assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);

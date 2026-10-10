@@ -29,29 +29,29 @@ public final class HudTouchAcceptanceTest {
   }
 
   @Test public void statusQuestAndUtilitySurfacesAreProtectedAndQuickQuestDirectlyRoutes() throws Exception {
-    assertTrue(GameView.blocksWorldTapForHud(140, 110, false));
-    assertTrue(GameView.blocksWorldTapForHud(140, 150, false));
-    assertTrue(GameView.blocksWorldTapForHud(608, 28, false));
+    assertTrue(GameView.blocksWorldTapForHud(480, 466, false));
+    assertTrue(GameView.blocksWorldTapForHud(790, 104, false));
+    assertTrue(GameView.blocksWorldTapForHud(742, 28, false));
     assertTrue("enlarged basic attack touch area reaches its visible edge",
-        GameView.blocksWorldTapForHud(950, 498, true));
+        GameView.blocksWorldTapForHud(955, 449, true));
     assertTrue("screen area outside the enlarged attack stays available to the world",
-        !GameView.blocksWorldTapForHud(953, 498, true));
+        !GameView.blocksWorldTapForHud(958, 449, true));
     assertTrue("gap between equally spaced utility icons stays available to the world",
-        !GameView.blocksWorldTapForHud(633, 28, false));
+        !GameView.blocksWorldTapForHud(764, 28, false));
     assertTrue("world outside the left cards and icon rail stays tappable",
         !GameView.blocksWorldTapForHud(310, 190, false));
 
     GameView view = new GameView(RuntimeEnvironment.getApplication());
     view.layout(0, 0, 960, 540);
     assertTrue("quest starts folded to preserve map space", questCollapsed(view));
-    tap(view, 80, 150);
+    tap(view,790,104);
     assertTrue("quick quest keeps its compact bounds after routing",questCollapsed(view));
     assertTrue("routing does not open the journal",!(Boolean)TownInteriorTest.field(view,"questJournalOpen"));
-    assertTrue("quest icon protects its visible pixels",GameView.blocksWorldTapForHud(808,28,false));
+    assertTrue("quest icon protects its visible pixels",GameView.blocksWorldTapForHud(918,28,false));
     assertTrue(!chatExpanded(view));
-    tap(view, 420, 480); // compact chat opens
+    tap(view, 140, 512); // compact chat opens
     assertTrue(chatExpanded(view));
-    tap(view, 620, 432); // expanded chat folds
+    tap(view, 250, 356); // expanded chat folds
     assertTrue(!chatExpanded(view));
   }
 
@@ -75,10 +75,10 @@ public final class HudTouchAcceptanceTest {
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1920,1080))<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(2400,1080)-240f)<.01f);
     assertTrue(Math.abs(GameView.rightHudOffsetForView(1080,1920))<.01f);
-    assertTrue("chat hit region follows its centered wide-screen panel",GameView.blocksWorldTapForHud(700,480,false,210f));
+    assertTrue("chat remains at the bottom left",GameView.blocksWorldTapForHud(140,512,false,210f));
     assertTrue("old center-left chat position remains available to the world",!GameView.blocksWorldTapForHud(300,480,false,210f));
     assertTrue("larger attack button and its touch target stay inside a 2340px viewport",
-        914f+GameView.rightHudOffsetForView(2340,1080)+34f+4f<=GameView.logicalWidthForView(2340,1080));
+        926f+GameView.rightHudOffsetForView(2340,1080)+27f+3f<=GameView.logicalWidthForView(2340,1080));
     GameView view=new GameView(RuntimeEnvironment.getApplication());
     view.layout(0,0,2340,1080);
     assertTrue("wide camera expands to the full game viewport",Math.abs(viewCameraWidth(view)-1170f)<.01f);

@@ -57,7 +57,7 @@ public class AccessoryCatalogV125Test {
  }
  @Test public void realPagedInventoryCanReachAndEquipLastAccessoryAndRingSlot()throws Exception{
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");
-  ItemWindowReferenceTest.tap(view,608,28);List<RpgInventoryPresentation.ItemRow> rows=w.rows(state.rpg());int last=rows.size()-1;
+  ItemWindowReferenceTest.tap(view,742,28);List<RpgInventoryPresentation.ItemRow> rows=w.rows(state.rpg());int last=rows.size()-1;
   for(int p=0;p<last/50;p++)ItemWindowReferenceTest.tap(view,894,480);
   assertEquals(last/50,w.page);RectF b=ItemWindow.cell(last%50);ItemWindowReferenceTest.tap(view,b.centerX(),b.centerY());
   assertEquals(rows.get(last).itemId,w.hitItem);ItemWindowReferenceTest.render(view,"accessory-v125-last-page-details.png");

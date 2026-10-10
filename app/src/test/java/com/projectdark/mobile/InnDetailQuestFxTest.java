@@ -36,7 +36,7 @@ public class InnDetailQuestFxTest {
   }
   @Test public void realIndoorQuickslotsDrawMartialMagicAndSelfEffects()throws Exception{
     for(String id:new String[]{"SK_무도가_007","SK_마법사_005","SK_무도가_017"}){
-      setup();GameView v=start();place(v);SkillBook b=TownInteriorTest.field(v,"skillBook");assertTrue(b.assign(0,id));TownInteriorTest.tap(v,671,395);
+      setup();GameView v=start();place(v);SkillBook b=TownInteriorTest.field(v,"skillBook");assertTrue(b.assign(0,id));TownInteriorTest.tap(v,672,429);
       assertEquals("actual quickslot is accepted indoors",id,TownInteriorTest.field(v,"activeSkillVisualId"));
       advance(v,SkillActionContract.get(id).contact+.06f);
       RuntimeState s=TownInteriorTest.field(v,"state");assertVisibleFx(v,SkillActionContract.get(id).selfAnchored()?"player":s.monsters().get(0).id);capture(v,"inn-"+id.replace("SK_", ""));
@@ -52,16 +52,16 @@ public class InnDetailQuestFxTest {
     TownInteriorDef d=TownInteriorDef.forMap(s.currentMapId());WorldRuntimeAdapter w=TownInteriorTest.field(v,"reagentShopAdapter");WorldCameraTransform.Point npc=w.worldToScreen(d.npcX(),d.npcY());TownInteriorTest.tap(v,npc.x,npc.y-24);TownInteriorTest.tick(v,600);TownInteriorTest.tap(v,570,426);
     GrowthQuest2 next=TownInteriorTest.field(v,"quest2");assertEquals(F5mAdaptedPrologueQuest.State.COMPLETED,q.state());assertEquals("unlocked in the same reward transaction",GrowthQuest2.State.AVAILABLE,next.state());capture(v,"inn-next-quest");
     // Production journal button, then production objective navigation.
-    TownInteriorTest.tap(v,808,28);capture(v,"growth-journal");TownInteriorTest.tap(v,680,443);TownInteriorTest.tick(v,2400);
+    TownInteriorTest.tap(v,918,28);capture(v,"growth-journal");TownInteriorTest.tap(v,680,443);TownInteriorTest.tick(v,2400);
     assertEquals(WorldDef.ID,s.currentMapId());InteractionController interaction=TownInteriorTest.field(v,"interaction");assertTrue("continued route opens next dialogue; alive="+s.player().alive+", hp="+s.player().hp+", x="+s.player().x+", y="+s.player().y,interaction.dialogOpen());assertEquals("milles_guide_proto",interaction.dialogNpc().id);capture(v,"growth-npc");TownInteriorTest.tap(v,550,426);assertEquals(GrowthQuest2.State.ACTIVE,next.state());
     assertTrue(F5mSaveStore.checkpointActive());F5mSaveStore.install(c);GameView restored=new GameView(c);assertEquals(GrowthQuest2.State.ACTIVE,((GrowthQuest2)TownInteriorTest.field(restored,"quest2")).state());assertEquals(s.rpg().gold(),((RuntimeState)TownInteriorTest.field(restored,"state")).rpg().gold());
   }
   @Test public void completedGrowthJournalRequiresJobAndCoreLessonsBeforeForestTravel()throws Exception{
     GameView v=start();F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");q.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);GrowthQuest2 growth=TownInteriorTest.field(v,"quest2");growth.restore(GrowthQuest2.State.COMPLETED,3);
     TownInteriorTest.call(v,"leaveReagentShop");RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().grantAdaptedReward(25300,350);s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=s.player().maxHp;
-    TownInteriorTest.tap(v,808,28);QuestJournalWindow window=TownInteriorTest.field(v,"questJournalWindow");QuestJournalModel model=TownInteriorTest.field(v,"questJournalModel");assertEquals(QuestJournalModel.JOB_CHOICE,window.selected(model.rows(q,growth,false,s.rpg())).id);capture(v,"job-before-forest-journal");TownInteriorTest.tap(v,680,443);TownInteriorTest.tick(v,1600);
+    TownInteriorTest.tap(v,918,28);QuestJournalWindow window=TownInteriorTest.field(v,"questJournalWindow");QuestJournalModel model=TownInteriorTest.field(v,"questJournalModel");assertEquals(QuestJournalModel.JOB_CHOICE,window.selected(model.rows(q,growth,false,s.rpg())).id);capture(v,"job-before-forest-journal");TownInteriorTest.tap(v,680,443);TownInteriorTest.tick(v,1600);
     InteractionController i=TownInteriorTest.field(v,"interaction");assertTrue("guided job route opens real Michael dialogue",i.dialogOpen());assertEquals("milles_job_counselor",i.dialogNpc().id);assertEquals(WorldDef.ID,s.currentMapId());capture(v,"michael-before-forest");TownInteriorTest.tap(v,295,411);assertEquals("WARRIOR",s.rpg().currentJobCode());assertEquals(CampaignProgress.Status.REPORT,s.rpg().campaign().status(CampaignProgress.find("M03"),s.rpg()));
-    TownInteriorTest.tap(v,80,150);TownInteriorTest.tick(v,100);assertTrue(i.dialogOpen());TownInteriorTest.tap(v,666,430);assertEquals("T01",s.rpg().campaign().next(s.rpg()).id);assertEquals("CAMPAIGN_T01",model.current(q,growth,false,s.rpg()).id);assertEquals("learn core controls before forest instead of an obsolete duplicate travel quest",WorldDef.ID,s.currentMapId());
+    TownInteriorTest.tap(v,790,104);TownInteriorTest.tick(v,100);assertTrue(i.dialogOpen());TownInteriorTest.tap(v,666,430);assertEquals("T01",s.rpg().campaign().next(s.rpg()).id);assertEquals("CAMPAIGN_T01",model.current(q,growth,false,s.rpg()).id);assertEquals("learn core controls before forest instead of an obsolete duplicate travel quest",WorldDef.ID,s.currentMapId());
   }
   @Test public void individualAntiqueSpritesHaveTransparentMarginsAndNativeScaleDetail()throws Exception{
     for(String n:new String[]{"table","chair_ne","chair_nw","chair_se","chair_sw","hearth"})try(InputStream in=c.getAssets().open("interiors/v93/"+n+".png")){
@@ -92,6 +92,6 @@ public class InnDetailQuestFxTest {
   }
   @Test public void skillWindowAndInventoryCanBeOpenedAndClosedInsideInn()throws Exception{
     GameView v=start();TownInteriorTest.tap(v,773,28);assertTrue(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);capture(v,"inn-skills");TownInteriorTest.tap(v,773,28);assertFalse(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);
-    TownInteriorTest.tap(v,608,28);assertTrue((Boolean)TownInteriorTest.field(v,"inventoryOpen"));capture(v,"inn-inventory");
+    TownInteriorTest.tap(v,742,28);assertTrue((Boolean)TownInteriorTest.field(v,"inventoryOpen"));capture(v,"inn-inventory");
   }
 }

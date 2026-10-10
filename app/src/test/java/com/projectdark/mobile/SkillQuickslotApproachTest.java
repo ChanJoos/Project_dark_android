@@ -26,7 +26,7 @@ public class SkillQuickslotApproachTest {
       s.player().x=tile.x;s.player().y=tile.y;List<WorldMoveTargetController.TileCenter> path=SkillApproachController.path(world,rule,target,960,540);
       if(path!=null&&path.size()>=2&&path.size()<10){start=tile;break;}
     }assertNotNull(start);s.player().x=start.x;s.player().y=start.y;world.snapCameraToPlayer();book.assign(0,rule.id);
-    tap(view,671,395);SkillApproachController pending=field(view,"skillApproach");assertEquals(rule.id,pending.skillId);
+    tap(view,672,429);SkillApproachController pending=field(view,"skillApproach");assertEquals(rule.id,pending.skillId);
     RuntimeCombatSession session=field(view,"combatSession");assertFalse(session.playerActionActive());assertEquals(0,session.cooldownRemaining("player",rule.id),.001f);
     for(int n=0;n<200&&pending.skillId!=null;n++){world.tickNavigation(.1f);tickPending(view,.1f);}
     assertNull(pending.skillId);assertEquals(rule.id,field(view,"activeSkillVisualId"));assertTrue(session.playerActionActive());
@@ -82,7 +82,7 @@ public class SkillQuickslotApproachTest {
         if(route!=null&&route.size()>=2&&route.size()<5){placed=true;break;}
       }
       assertTrue("reachable scene "+forest,placed);world.snapCameraToPlayer();((CombatController)field(view,"combat")).selectTarget(target);
-      SkillBook book=field(view,"skillBook");book.assign(0,rule.id);tap(view,671,395);
+      SkillBook book=field(view,"skillBook");book.assign(0,rule.id);tap(view,672,429);
       SkillApproachController pending=field(view,"skillApproach");assertNotNull(pending.skillId);
       Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);
       for(int frame=0;frame<600&&pending.skillId!=null;frame++)update.invoke(view,.05f);

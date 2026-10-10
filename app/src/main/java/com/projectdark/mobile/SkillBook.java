@@ -9,7 +9,7 @@ import org.json.*;
 
 /** Definitions are read-only Master projections; saved state contains IDs and proficiency only. */
 public final class SkillBook {
-  public static final int SLOT_COUNT=8;
+  public static final int SLOT_COUNT=10;
   public static final class Entry {
     public final String id,name,job,stage,kind,circle,effect,target,range,resource,limit,requirements,requirementStatus,legacy,evidence;
     public final SkillDef runtime;
@@ -92,8 +92,8 @@ public final class SkillBook {
       if(j.getInt("version")!=1)return false;
       JSONObject l=j.getJSONObject("learned");Map<String,Integer> next=new LinkedHashMap<>();
       Iterator<String> it=l.keys();while(it.hasNext()){String id=it.next();Object v=l.get(id);if(get(id)==null||!(v instanceof Integer)||((Integer)v)<0||((Integer)v)>100)return false;next.put(id,(Integer)v);}
-      JSONArray s=j.getJSONArray("slots");if(s.length()!=SLOT_COUNT)return false;String[] nextSlots=new String[SLOT_COUNT];
-      for(int i=0;i<SLOT_COUNT;i++){if(s.isNull(i))continue;Object v=s.get(i);if(!(v instanceof String))return false;String id=(String)v;Entry e=get(id);if(e==null||!next.containsKey(id))return false;nextSlots[i]=id;}
+      JSONArray s=j.getJSONArray("slots");if(s.length()!=8&&s.length()!=SLOT_COUNT)return false;String[] nextSlots=new String[SLOT_COUNT];
+      for(int i=0;i<s.length();i++){if(s.isNull(i))continue;Object v=s.get(i);if(!(v instanceof String))return false;String id=(String)v;Entry e=get(id);if(e==null||!next.containsKey(id))return false;nextSlots[i]=id;}
       learned.clear();learned.putAll(next);System.arraycopy(nextSlots,0,slots,0,SLOT_COUNT);return true;
     }catch(JSONException e){return false;}
   }
