@@ -31,7 +31,7 @@ public class ClassicUiV126Test {
   ItemWindowReferenceTest.tap(v,742,28);
   for(int page=0;page<(state.rpg().inventory().size()+49)/50;page++){assertEquals(page,w.page);save(v,"inventory-page-"+(page+1),new Rect(330,50,938,518));if(page<(state.rpg().inventory().size()+49)/50-1)ItemWindowReferenceTest.tap(v,894,480);}
   ItemWindowReferenceTest.tap(v,916,66);ItemWindowReferenceTest.tap(v,830,28);save(v,"equipment",new Rect(226,50,510,517));
-  ItemWindowReferenceTest.tap(v,492,66);ItemWindowReferenceTest.tap(v,662,28);save(v,"stats",new Rect(572,74,934,388));
+  ItemWindowReferenceTest.tap(v,492,66);ItemWindowReferenceTest.tap(v,786,28);save(v,"stats",new Rect(572,74,934,388));
   ItemWindowReferenceTest.tap(v,911,91);ItemWindowReferenceTest.tap(v,874,28);save(v,"skills",new Rect(37,47,626,530));
   assertEquals(owned,state.rpg().inventory());
  }

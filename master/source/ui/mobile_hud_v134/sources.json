@@ -43,6 +43,42 @@
       "url": "https://www.youtube.com/embed/NE_x0FSJ2Ao",
       "kind": "OFFICIAL_WEBSITE_EMBED",
       "videoInspection": "NOT_RETRIEVED_YOUTUBE_TIMEOUT"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/7X3y38c9ZyuZ14CnIReTJ_L_k1cluHsBFpNLoC56vN-OdbJYeMyDo4mPcXxSoqTU0eU0ryvf7xSRe_6pn5oW9lw=w1920-h1080",
+      "file": "/workspace/scratch/be89184af76b/hud_research/android-store-0.webp",
+      "bytes": 1168529,
+      "sha256": "051cfa897d7e230493d260af29396145b44a02becc5147730cd55aa5a797a759"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/uGWDr-kCLnShDDqDLySJBO2YkLh_YZNeBFX9VWgIy48drmuUCO7hnIBZfdipIfQIjyj5NaMPt2jorD6E-Chz=w1920-h1080",
+      "file": "/workspace/scratch/be89184af76b/hud_research/android-store-1.webp",
+      "bytes": 2175589,
+      "sha256": "732fea45cf2babbef50151b247371a7efa478740e466ee096e8dc7983ea83fbf"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/g49ZJutqXhdftB_tBPAIE-veItQx1WUPoVfBioMp3eXSU3c0p5RT1rwHLNjnt7PUHeZMLx8hLewn7lXwvMUT1Q=w1920-h1080",
+      "file": "/workspace/scratch/be89184af76b/hud_research/android-store-2.webp",
+      "bytes": 1723493,
+      "sha256": "f0bfc5a2e7e0d1e06713aa3087f16d3a3ab12196b280d6faebfbe9f15f83e58f"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/1MPaa7CrhrMidnc0XJM1Tb1iSu90fCP8RsYjmgIjdTCqQtI2o1-71jCAFIhJE76-hE3QiQEyv1h7FeE1xYom=w1920-h1080",
+      "file": "/workspace/scratch/be89184af76b/hud_research/android-store-3.webp",
+      "bytes": 1654995,
+      "sha256": "29d1a640e51da229b9cfc1c158d71b54af441b157703179a677d659594559887"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/fMGo-BZPuDJwyS_-PanekapTDPpaf0RWYjPpnOJZexDidjt-Qci235I4aq2I8i7i3bx0Add6nnvm8msParwBXw=w1920-h1080",
+      "file": "/workspace/scratch/be89184af76b/hud_research/android-store-4.webp",
+      "bytes": 1878767,
+      "sha256": "01bf8246800412cbd22c63157a3ac8adb88ea50581e67409a21b2926426820f6"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/h82OeYCu73vWx1kq61NCKBQZ_eEbAHW21iJ8qrEN9oX31ddt4-GyEc23A1d4GMdRn1Ui06wpTOEaCY0qoZsKvg=w1920-h1080",
+      "file": "/workspace/scratch/be89184af76b/hud_research/android-store-5.webp",
+      "bytes": 1768496,
+      "sha256": "e86775aee08e8fab1764c1a42f415f1e1421c25cfb20fb1862e77563f64cbb3c"
     }
   ],
   "userReferences": [
@@ -50,5 +86,11 @@
     "upload/02-1000058790.jpg"
   ],
   "runtimeArt": "Native vector frames and utility glyphs. Existing SkillIconCatalog.drawQuickslot source unchanged.",
-  "referenceInterpretation": "PC guide includes keyboard labels; mobile screenshots establish landscape geometry. User explicitly overrides eight reference skills to ten actual skills."
+  "referenceInterpretation": "PC guide includes keyboard labels; mobile screenshots establish landscape geometry. User explicitly overrides eight reference skills to ten actual skills.",
+  "referenceArchive": {
+    "name": "PROJECT_DARK_V134_HUD_REFERENCES.zip",
+    "sha256": "4108530c6bbd0cc4d43fcbca41bea198b499385a8ca703ce7823e0ec5e858577",
+    "bytes": 14723704,
+    "contents": "Four original official HUD PNGs, six original Android store screenshots, user mobile references, retrieval receipts; preserved outside runtime APK."
+  }
 }
