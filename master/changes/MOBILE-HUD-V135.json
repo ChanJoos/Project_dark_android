@@ -1,0 +1,21 @@
+{
+  "id": "MOBILE-HUD-V135",
+  "status": "ACCEPTED",
+  "evidenceStatus": "USER_DIRECTED_ADAPTED",
+  "date": "2026-10-10",
+  "owner": "Director_single_editor",
+  "before": "V134 simplified resources, single fade quest card, thin line utility/combat icons, joystick112/434",
+  "after": "V133 format bottom center; potions above; joystick84/398; filled silver UI reliefs; live grouped three-row quest tracker",
+  "reason": "Latest user visual correction",
+  "source": "user current message; V133 GameView f1fa33f; master/source/ui/mobile_hud_v134/sources.json",
+  "affected": [
+    "GameView",
+    "MobileHudLayout",
+    "MobileHudSkin",
+    "MobileHudQuest"
+  ],
+  "validation": "PENDING",
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "contract": "docs/ui/MOBILE_HUD_V135.md"
+}
