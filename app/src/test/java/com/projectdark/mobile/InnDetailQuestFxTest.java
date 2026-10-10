@@ -91,7 +91,7 @@ public class InnDetailQuestFxTest {
     SkillWindow.Actions actions=TownInteriorTest.field(v,"skillActions");SkillBook book=TownInteriorTest.field(v,"skillBook");actions.use(book.get("SK_무도가_017"));assertEquals("SK_무도가_017",TownInteriorTest.field(v,"activeSkillVisualId"));advance(v,.2f);assertTrue("shared UI action actually resolves in all facility maps",s.player().hp>10000);advance(v,.6f);assertNull("service room cannot strand an accepted action clock",TownInteriorTest.field(v,"activeSkillVisualId"));capture(v,"service-self-cast-finished");
   }
   @Test public void skillWindowAndInventoryCanBeOpenedAndClosedInsideInn()throws Exception{
-    GameView v=start();TownInteriorTest.tap(v,773,28);assertTrue(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);capture(v,"inn-skills");TownInteriorTest.tap(v,773,28);assertFalse(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);
+    GameView v=start();TownInteriorTest.tap(v,874,28);assertTrue(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);capture(v,"inn-skills");TownInteriorTest.tap(v,874,28);assertFalse(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);
     TownInteriorTest.tap(v,742,28);assertTrue((Boolean)TownInteriorTest.field(v,"inventoryOpen"));capture(v,"inn-inventory");
   }
 }

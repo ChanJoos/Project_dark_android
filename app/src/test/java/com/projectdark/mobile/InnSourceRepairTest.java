@@ -34,7 +34,7 @@ public class InnSourceRepairTest {
     float x=rat.x,y=rat.y;TownInteriorTest.tick(v,30);assertTrue("shared AI moves the visible mouse inside the inn",Math.hypot(rat.x-x,rat.y-y)>1f);
     capture(v,"chase");WorldCameraTransform.Point p=w.worldToScreen(rat.x,rat.y);TownInteriorTest.tap(v,p.x,p.y-3);
     CombatController combat=TownInteriorTest.field(v,"combat");assertSame("actual screen tap selects the indoor mouse",rat,combat.target());
-    TownInteriorTest.tap(v,826,502); // existing AUTO control
+    TownInteriorTest.tap(v,842,518); // existing AUTO control
     F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");
     for(int i=0;i<800&&q.state()==F5mAdaptedPrologueQuest.State.ACTIVE;i++)TownInteriorTest.tick(v,1);
     assertEquals("real shared resolver defeats the actual indoor target",F5mAdaptedPrologueQuest.State.RETURN_READY,q.state());assertFalse(rat.alive);assertEquals(1,q.currentCount());

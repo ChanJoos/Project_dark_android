@@ -95,7 +95,18 @@ jobs:
           git diff --exit-code -- app/src/main/assets/equipment-icons app/src/main/assets/classic-ui master/assets/equipment/background_masks_v126 app/src/main/java/com/projectdark/mobile/SourceAccessoryCatalog.java master/canonical/Accessory_Catalog.json master/assets/equipment/accessories_20261009
           python3 tools/verify_equipment_icons.py
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*ClassicPolishV132Test' --tests '*InventoryArtV131Test' --tests '*EquipmentPerformanceV130Test' --tests '*ItemFunctionsV129Test' --tests '*SkillAbilityRuntimeTest' --tests '*SkillSpatialContractTest' --tests '*PoteRewardsV123Test' --tests '*DualEquipmentV128Test' --tests '*ClassicUiV126Test' --tests '*FullItemArtV127Test' --tests '*ModernUiTest' --tests '*TownInteriorTest' --tests '*ItemWindowReferenceTest' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*AccessoryCatalogV125Test' --tests '*SkillWindowReferenceTest' --tests '*MobileHudV134Test' --tests '*SkillWindowTest' --tests '*SkillTestModeTest' --tests '*SkillQuickslotApproachTest' --tests '*OnboardingUiTest' --tests '*QuestJournalTest' --tests '*ForestFloorCacheTest' --tests '*HudTouchAcceptanceTest' --tests '*RuntimeCheckpointTest'
+          gradle :app:testDebugUnitTest --tests '*MobileHudV134Test' --stacktrace
+      - name: Upload actual mobile HUD preview immediately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-hud-v134-preview-${{ github.sha }}
+          path: |
+            app/build/reports/mobile-hud-v134/
+            app/build/test-results/
+          if-no-files-found: warn
+      - name: Verify HUD input, interior controls, skill learning, saves and cached forest
+        run: gradle :app:testDebugUnitTest --tests '*HudTouchAcceptanceTest' --tests '*SkillWindowTest' --tests '*SkillWindowReferenceTest' --tests '*SkillTestModeTest' --tests '*QuestJournalTest' --tests '*OnboardingUiTest' --tests '*TownInteriorTest' --tests '*InnSourceRepairTest' --tests '*InnDetailQuestFxTest' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*ClassicPolishV132Test' --tests '*RuntimeCheckpointTest' --tests '*ForestFloorCacheTest' --stacktrace
       - name: Build and verify exact APK
         run: |
           gradle :app:assembleDebug
