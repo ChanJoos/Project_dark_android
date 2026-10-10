@@ -1,11 +1,20 @@
 mobile_hud_v135:
   owner: Director_single_editor
-  active_branch: codex/mobile-hud-v135
-  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  active_branch: main
+  status: INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED
+  source: f637fad784575ed7dfe4bc6e0cc71493d607ffc1
+  source_tree: cf128806d960c61cf4478ceabed5faa852941893
+  app_tree: 71de8495916fe0f2d61617ee8e21420e162f3107
+  merge: f78182099ff26192950562b3fb308e0718e67d58
+  native_tests: 101_PASS
+  focused_actions: 38055833678
+  full_android: [38055833427, 38055836769]
+  skill_art: PRESERVED_627_SOURCE_AND_APK_BYTES
   physical_phone: PENDING
   user_visual: PENDING
   supersedes_v134_visual: USER_REJECTED
   contract: docs/ui/MOBILE_HUD_V135.md
+  evidence: master/changes/V135_BUILD_RUNTIME_RECEIPT.json
 
 mobile_hud_v134:
   owner: Director_single_editor

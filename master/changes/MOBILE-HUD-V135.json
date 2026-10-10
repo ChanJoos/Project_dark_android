@@ -14,8 +14,11 @@
     "MobileHudSkin",
     "MobileHudQuest"
   ],
-  "validation": "PENDING",
+  "validation": "BUILD_NATIVE_FULL_CI_INTEGRATED_VERIFIED",
   "phone": "PENDING",
   "userVisual": "PENDING",
-  "contract": "docs/ui/MOBILE_HUD_V135.md"
+  "contract": "docs/ui/MOBILE_HUD_V135.md",
+  "receipt": "master/changes/V135_BUILD_RUNTIME_RECEIPT.json",
+  "sourceSha": "f637fad784575ed7dfe4bc6e0cc71493d607ffc1",
+  "mergeSha": "f78182099ff26192950562b3fb308e0718e67d58"
 }

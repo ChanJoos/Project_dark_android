@@ -1,0 +1,170 @@
+{
+  "sourceSha": "f637fad784575ed7dfe4bc6e0cc71493d607ffc1",
+  "sourceTree": "cf128806d960c61cf4478ceabed5faa852941893",
+  "apk": {
+    "sourceCommit": "f637fad784575ed7dfe4bc6e0cc71493d607ffc1",
+    "runId": "38055833678",
+    "versionCode": 135,
+    "versionName": "1.35-hud-refinement",
+    "applicationId": "com.projectdark.mobile.v135test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "f73ff5b25f754b1c507deeebfbc4f70f4adfeaaea723843f4497de6e1e5f65f1",
+    "apkBytes": 61548790,
+    "builtSeoul": "2026-10-10T22:35:32.523246+09:00",
+    "scope": "Mobile HUD: upper-left minimap, three live quest rows, silver utility emblems, ten unchanged-art skill slots, restored bottom-center LV/HP/MP/EXP with potions above. Legacy eight-slot saves migrate transactionally. Native runtime tested; physical phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "focusedRun": 38055833678,
+  "focusedJob": 114224091653,
+  "fullRuns": [
+    38055833427,
+    38055836769
+  ],
+  "previewArtifact": 11671220825,
+  "previewZipSha256": "77567e6177ab2a838d0520b7b1bcc90d214bf03c6455685622c8019200756810",
+  "nativePreviewTests": 9,
+  "visualChanges": [
+    "V133 LV/redHP/blueMP/goldEXP format restored at bottom center",
+    "HP and MP potion controls above status",
+    "Joystick84/398 instead of112/434",
+    "Silver filled menu and sword reliefs, readable stacked AUTO",
+    "Three real quest rows with ribbon/diamond/status/progress and per-row touch action"
+  ],
+  "preservedSkillAssetCount": 627,
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "visualReview": "NATIVE_TOWN_FOREST_NORMAL_WIDE_AND_ACTIVE_REPORT_REVIEWED",
+  "previews": [
+    {
+      "path": "/workspace/scratch/be89184af76b/delivery/PROJECT_DARK_V135_TOWN.png",
+      "sha256": "8749f71334a11b095751f572043730173d39104b361fef00cb297bd9e6e3ead2"
+    },
+    {
+      "path": "/workspace/scratch/be89184af76b/delivery/PROJECT_DARK_V135_FOREST.png",
+      "sha256": "f966665a2dad0fc623be0f281088546f2b497263d1eb022eb807d0759326c2b6"
+    },
+    {
+      "path": "/workspace/scratch/be89184af76b/delivery/PROJECT_DARK_V135_UI_REVIEW.png",
+      "sha256": "0a12f54d095bc3ee140a6f9cdab78f107d010a4435bbd058ef5993f70c28e5d3"
+    }
+  ],
+  "appTree": "71de8495916fe0f2d61617ee8e21420e162f3107",
+  "mainRuntimeTree": "0f3e62a11fba0397890800f47a53614adb642d1f",
+  "supersededRun": 38055340766,
+  "supersededStatus": "FAILED_STALE_POTION_AND_JOYSTICK_TEST_INPUTS_CORRECTED",
+  "previewSourceSha": "f637fad784575ed7dfe4bc6e0cc71493d607ffc1",
+  "previewRuntimeCheck": "6_IMAGES_BYTE_IDENTICAL_TO_REVIEWED_FRAMES",
+  "skillProof": "ALL_627_SOURCE_AND_APK_BYTE_MATCHES",
+  "references": "master/source/ui/mobile_hud_v134/sources.json",
+  "contract": "docs/ui/MOBILE_HUD_V135.md",
+  "priorVisual": "V134_USER_REJECTED",
+  "candidateLimit": "NATIVE_AND_CI_EVIDENCE_ONLY; PHYSICAL_PHONE_AND_USER_VISUAL_ACCEPTANCE_PENDING",
+  "apkArtifact": 11671117142,
+  "apkZipSha256": "a7b526ee6572c77c399a8ca72be96d4d5d0aee28512934ade24e2b806e7a31c1",
+  "nativeArtifact": 11671851607,
+  "nativeZipSha256": "6781f58e70998941ab13f1957dac7b6dfbc95f984a56f0b682fd3c947bdd45b7",
+  "focusedConclusion": "SUCCESS",
+  "nativeTotalTests": 101,
+  "nativeSuiteCounts": [
+    {
+      "name": "com.projectdark.mobile.InnSourceRepairTest",
+      "tests": 4
+    },
+    {
+      "name": "com.projectdark.mobile.QuestJournalTest",
+      "tests": 10
+    },
+    {
+      "name": "com.projectdark.mobile.JoystickV119Test",
+      "tests": 1
+    },
+    {
+      "name": "com.projectdark.mobile.HudTouchAcceptanceTest",
+      "tests": 5
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFloorCacheTest",
+      "tests": 2
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": 3
+    },
+    {
+      "name": "com.projectdark.mobile.OnboardingUiTest",
+      "tests": 7
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowTest",
+      "tests": 16
+    },
+    {
+      "name": "com.projectdark.mobile.ModernUiTest",
+      "tests": 3
+    },
+    {
+      "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+      "tests": 15
+    },
+    {
+      "name": "com.projectdark.mobile.TownInteriorTest",
+      "tests": 8
+    },
+    {
+      "name": "com.projectdark.mobile.InnDetailQuestFxTest",
+      "tests": 7
+    },
+    {
+      "name": "com.projectdark.mobile.ClassicPolishV132Test",
+      "tests": 4
+    },
+    {
+      "name": "com.projectdark.mobile.SkillTestModeTest",
+      "tests": 4
+    },
+    {
+      "name": "com.projectdark.mobile.ItemWindowReferenceTest",
+      "tests": 3
+    },
+    {
+      "name": "com.projectdark.mobile.MobileHudV134Test",
+      "tests": 5
+    },
+    {
+      "name": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": 4
+    }
+  ],
+  "savedArtifacts": {
+    "APK": "libfile_66d9b0f7a0488191b40f08601d7c40cb",
+    "town": "libfile_591b3d29c5748191867e724f3a5325b1",
+    "forest": "libfile_51d1b3a2c8908191abc24ce6fddee142",
+    "comparison": "libfile_86011c81681c81918c8302d64ad28a92",
+    "verification": "libfile_ae48488d8c2c8191ba7b0e36e8c89199"
+  },
+  "fullCI": [
+    {
+      "run": 38055833427,
+      "job": 114224090875,
+      "conclusion": "success",
+      "buildSuccesses": 25,
+      "logFailures": 0
+    },
+    {
+      "run": 38055836769,
+      "job": 114224100924,
+      "conclusion": "success",
+      "buildSuccesses": 25,
+      "logFailures": 0
+    }
+  ],
+  "merge": {
+    "pr": 190,
+    "sha": "f78182099ff26192950562b3fb308e0718e67d58",
+    "tree": "cf128806d960c61cf4478ceabed5faa852941893",
+    "testedTreeExactMatch": true
+  },
+  "integrationStatus": "INTEGRATED_TESTED_TREE"
+}
