@@ -46,11 +46,11 @@ with zipfile.ZipFile(apk_path) as apk:
         for name in bundle.namelist():
             assert apk.read('assets/'+name)==bundle.read(name), name
     assert 'assets/equipment-icons/it_ring_threelinegold.png' not in apk.namelist()
-    assert json.loads(apk.read('assets/item-icons/manifest.json'))['items']['IT_RING_THREELINEGOLD']['assetPath'] is None
+    assert json.loads(apk.read('assets/item-icons/manifest.json'))['items']['IT_RING_THREELINEGOLD']['assetPath'] == 'item-icons/ring_reference_v133.png'
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
-assert "versionCode='133'" in badging and "versionName='1.33-ring-source-pending'" in badging, badging[:300]
+assert "versionCode='133'" in badging and "versionName='1.33-ring-reference'" in badging, badging[:300]
 expected_package = 'com.projectdark.mobile.v133test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
 resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'resources', str(apk_path)], text=True)
@@ -59,7 +59,7 @@ for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','play
     assert ':drawable/'+drawable in resource_table, drawable
 info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v133test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope='User-rejected three-line gold ring capture removed; replacement source pending; Single inventory equip action; automatic vacant ring/glove target; explicit compact-card replacement selection when both slots occupied; shared restrained classic UI; V131 original icons and V130 stats preserved; native runtime tested, physical phone and user visual acceptance pending',
+            scope='User-rejected table crop removed; native braided gold ring replaces it using user reference match; source RGB preserved; Single inventory equip action; automatic vacant ring/glove target; explicit compact-card replacement selection when both slots occupied; shared restrained classic UI; V131 original icons and V130 stats preserved; native runtime tested, physical phone and user visual acceptance pending',
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance='PENDING')
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))

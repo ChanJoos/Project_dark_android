@@ -51,7 +51,7 @@ public class EquipmentFoundationV124Test {
   SourceItemIconRegistry registry=new SourceItemIconRegistry(c);int count=0;
   for(RpgProgressionState.ItemDefinition d:s.rpg().itemDefinitions().values())if(d.appearanceId!=null&&!d.appearanceId.isEmpty()){assertNotNull(d.itemId,registry.get(d));count++;}
   for(String id:new String[]{"IT_RING_THREELINEGOLD"}){
-   assertTrue(registry.pending(id));assertNull(registry.get(s.rpg().itemDefinitions().get(id)));
+   assertFalse(registry.pending(id));assertNotNull(registry.get(s.rpg().itemDefinitions().get(id)));
    assertEquals(Integer.valueOf(300),s.rpg().itemDefinitions().get(id).statModifiers.get("HP"));
   }
   assertTrue(count>=30);ItemWindowReferenceTest.tap(v,608,28);

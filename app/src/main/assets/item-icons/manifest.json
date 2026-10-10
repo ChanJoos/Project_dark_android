@@ -10638,10 +10638,30 @@
     },
     "IT_RING_THREELINEGOLD": {
       "itemId": "IT_RING_THREELINEGOLD",
-      "assetPath": null,
-      "identityMatch": "PENDING_REPLACEMENT_SOURCE",
-      "visualStatus": "USER_REJECTED_CAPTURE_REMOVED",
-      "limitation": "V132 table capture rejected by user. Labelled native GIF URL found, but returns404. No substitute illustration asserted as original."
+      "assetPath": "item-icons/ring_reference_v133.png",
+      "sourceArchive": "master/source/items/ring_reference_v133/original_sources.zip",
+      "sourceMember": "naver_game_native.png",
+      "sourceUrl": "http://blogfiles.naver.net/20131124_137/ksj3814_1385269407422bBU9j_PNG/5.png",
+      "sourcePage": "https://blog.naver.com/ksj3814/40201418084",
+      "sourceSha256": "3cd0f30f0d3a83531245c4b503067bd31f897f9cc9a6a618c0e5875e0960620b",
+      "crop": [
+        310,
+        338,
+        32,
+        32
+      ],
+      "maskPath": "master/source/items/ring_reference_v133/foreground_mask.png",
+      "maskSha256": "f05399c53191c1a98acade6a3b684e575966f19bd4ec005919d2d76b16ee6900",
+      "identityMatch": "USER_REFERENCE_MATCHED_NATIVE_CAPTURE",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "nativeSize": [
+        32,
+        32
+      ],
+      "visualStatus": "REFERENCE_MATCHED_REPLACEMENT_CANDIDATE",
+      "limitation": "Braided gold ring correspondence corroborated by the two user-provided references. Native screenshot has no visible item-name tooltip; visual match is recorded, not independent source-label identity. No upscaling, recoloring or generated artwork.",
+      "foregroundPixels": 290,
+      "assetSha256": "df8ce512fb789ac79ae951e729694de80ca36a2706925595e4da677eec1f343e"
     }
   }
 }

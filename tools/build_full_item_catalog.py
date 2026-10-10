@@ -162,7 +162,14 @@ def main():
   for e in json.loads(performance.read_text())['shields']:
    original=e['iconSource'];name=original.split('_',1)[1];base=next(r for r in audit if r.get('sourceMember')=='raw/'+original)
    items[e['id']]=dict(base,itemId=e['id'],identityMatch='EXACT_SOURCE_KOREAN_LABEL',limitation='Exact named inventory icon; wearable appearance ID unverified and unbound.')
- items['IT_RING_THREELINEGOLD']=dict(itemId='IT_RING_THREELINEGOLD',assetPath=None,identityMatch='PENDING_REPLACEMENT_SOURCE',visualStatus='USER_REJECTED_CAPTURE_REMOVED',limitation='V132 table capture rejected by user. Labelled native GIF URL found, but returns404. No substitute illustration asserted as original.')
+ ring=json.loads((ROOT/'master/source/items/ring_reference_v133/receipt.json').read_text())
+ with zipfile.ZipFile(ROOT/ring['sourceArchive']) as z:
+  import io
+  native=z.read(ring['sourceMember']);assert hashlib.sha256(native).hexdigest()==ring['sourceSha256']
+  im=Image.open(io.BytesIO(native)).convert('RGBA');x,y,w,h=ring['crop'];im=im.crop((x,y,x+w,y+h))
+ mask=ROOT/ring['maskPath'];assert sha(mask)==ring['maskSha256'];im.putalpha(Image.open(mask).convert('L'))
+ im.save(ROOT/'app/src/main/assets'/ring['assetPath']);assert sha(ROOT/'app/src/main/assets'/ring['assetPath'])==ring['assetSha256']
+ items['IT_RING_THREELINEGOLD']=ring
  runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==422
  manifest=dict(revision='INVENTORY_ART_V131',registeredItems=len(items),policy='Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.',items=items)
  (APP/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')

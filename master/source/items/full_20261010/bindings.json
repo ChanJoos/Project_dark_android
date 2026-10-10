@@ -2110,8 +2110,8 @@
     },
     "IT_RING_THREELINEGOLD": {
       "name": "세줄금반지",
-      "assetPath": null,
-      "identityMatch": "PENDING_REPLACEMENT_SOURCE"
+      "assetPath": "item-icons/ring_reference_v133.png",
+      "identityMatch": "USER_REFERENCE_MATCHED_NATIVE_CAPTURE"
     }
   }
 }

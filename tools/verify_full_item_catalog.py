@@ -27,5 +27,19 @@ assert len(m['items'])==422
 for p in ('GameView.java','TownShopWindow.java'):
  t=(ROOT/'app/src/main/java/com/projectdark/mobile'/p).read_text();assert 'ItemIconCatalog'not in t
 pending=sum(r.get('identityMatch')=='PENDING_REPLACEMENT_SOURCE' for r in m['items'].values())
-assert pending==1
+assert pending==0
 print('VERIFIED_ITEM_ART_COVERAGE',len(m['items'])-pending,'image bindings;',pending,'explicit pending source;',len(seen),'unique originals;',equivalent,'explicit visual equivalents')
+
+ring=m['items']['IT_RING_THREELINEGOLD'];assert ring['identityMatch']=='USER_REFERENCE_MATCHED_NATIVE_CAPTURE'
+with zipfile.ZipFile(ROOT/ring['sourceArchive']) as archive:
+ import io
+ data=archive.read(ring['sourceMember']);assert hashlib.sha256(data).hexdigest()==ring['sourceSha256']
+ raw=Image.open(io.BytesIO(data)).convert('RGBA');x,y,w,h=ring['crop'];raw=raw.crop((x,y,x+w,y+h))
+ icon=Image.open(APP/ring['assetPath']).convert('RGBA');mask=Image.open(ROOT/ring['maskPath']).convert('L')
+ assert icon.size==raw.size==(32,32)
+ for y in range(32):
+  for x in range(32):
+   assert icon.getpixel((x,y))[:3]==raw.getpixel((x,y))[:3]
+   assert icon.getpixel((x,y))[3]==mask.getpixel((x,y))
+ assert sum(bool(a)for a in mask.getdata())==ring['foregroundPixels']
+ print('RING_NATIVE_SOURCE_RGB_AND_REFERENCE_MASK_VERIFIED',ring['foregroundPixels'])
