@@ -751,7 +751,7 @@ private void drawUtilityRail(Canvas c){
     float d=hudRightOffset;MobileHudSkin.combat(c,ATK_X+d,ATK_Y,ATK_R,false,combat.attackReady()&&combat.hasUsableTarget());
     MobileHudSkin.combat(c,AUTO_X+d,AUTO_Y,AUTO_R,true,autoAttackEnabled);drawModeControl(c);
   }
-  private void drawModeControl(Canvas c){MobileHudSkin.ring(c,MODE_X+hudRightOffset,MODE_Y,MODE_R,false);MobileHudSkin.icon(c,"equipment",MODE_X+hudRightOffset,MODE_Y,8,false);}
+  private void drawModeControl(Canvas c){MobileHudSkin.ring(c,MODE_X+hudRightOffset,MODE_Y,MODE_R,false);MobileHudSkin.icon(c,"attack",MODE_X+hudRightOffset,MODE_Y,8,false);}
   private boolean useHudPotion(float x,float y){for(int i=0;i<2;i++)if(MobileHudLayout.potion(i,hudRightOffset).contains(x,y)){String id=i==0?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION";if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().useQuickConsumable(id,state)==RpgProgressionState.UseResult.USED))showFeedback(i==0?"회복약 사용":"마나약 사용",FeedbackTone.INFO);else showFeedback("물약이 없거나 회복할 필요가 없습니다",FeedbackTone.INFO);return true;}return false;}
 
   private void circleIcon(Canvas c,float cx,float cy,float r,ClassicHudIconAtlas.Icon icon,boolean enabled,boolean pressed){RectF b=new RectF(cx-r,cy-r,cx+r,cy+r);hudIcons.draw(c,p,icon,b,enabled,false,pressed);}

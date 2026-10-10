@@ -65,9 +65,11 @@ final class MobileHudSkin {
     p.setStyle(Paint.Style.FILL);p.setShader(new RadialGradient(x-r*.3f,y-r*.4f,r*1.6f,new int[]{active?0xc7675b35:0xd0354244,0xe00d161b},null,Shader.TileMode.CLAMP));c.drawCircle(x,y,r,p);p.setShader(null);
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setShader(new LinearGradient(x-r,y-r,x+r,y+r,new int[]{0xffeee7cc,0xff667372,0xffc8ba91},null,Shader.TileMode.CLAMP));c.drawCircle(x,y,r-1,p);p.setShader(null);p.setStrokeWidth(.65f);p.setColor(active?0xffe1c783:0xff718381);c.drawCircle(x,y,r-3.5f,p);p.setStyle(Paint.Style.FILL);
     if(auto){
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1.2f);p.setColor(active?GOLD:WHITE);c.drawArc(x-9,y-11,x+9,y+7,200,130,false,p);c.drawArc(x-9,y-11,x+9,y+7,20,130,false,p);p.setStyle(Paint.Style.FILL);
-      c.save();c.translate(x,y-2);polygon(c,active,8,-8,10,-2,4,-4);polygon(c,active,-8,8,-10,2,-4,4);c.restore();
-      UiTheme.center(c,"AUTO",x,y+9,5.8f,active?GOLD:WHITE,true);
+      // Two stacked words match the reference's compact AUTO mark. Orbit arrows
+      // stay on the perimeter and do not cross the letter shapes.
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);p.setColor(active?GOLD:0xffacbab8);c.drawArc(x-r+4,y-r+4,x+r-4,y+r-4,205,65,false,p);c.drawArc(x-r+4,y-r+4,x+r-4,y+r-4,25,65,false,p);p.setStyle(Paint.Style.FILL);
+      UiTheme.center(c,"AU",x,y-.5f,8,active?GOLD:WHITE,true);UiTheme.center(c,"TO",x,y+7.5f,8,active?GOLD:WHITE,true);
+
     }else{
       icon(c,"attack",x,y-1,r*.58f,active);
       for(int i=0;i<4;i++){double a=(i*90+45)*Math.PI/180;p.setColor(0xffd9cda5);c.drawCircle(x+(float)Math.cos(a)*(r-1),y+(float)Math.sin(a)*(r-1),1.3f,p);}
