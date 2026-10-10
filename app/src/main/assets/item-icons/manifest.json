@@ -1,6 +1,6 @@
 {
   "revision": "IDENTITY_FIRST_NATIVE_SIZE_V128",
-  "registeredItems": 408,
+  "registeredItems": 422,
   "policy": "Every current item has an explicit original inventory-art binding. Source RGB retained, native-size presentation. Exact wearable identities replace visual equivalents; missing dedicated inventory illustrations and unknown names/stats remain explicitly recorded.",
   "items": {
     "IT_RING_THREELINEGOLD": {
@@ -5481,6 +5481,454 @@
       "nameEvidence": "lod-dressup data/names.json or /api/names",
       "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
       "itemId": "IT_B_CAMPAIGN_MARTIAL_ARTIST_26"
+    },
+    "IT_SHIELD_WOOD": {
+      "itemId": "IT_SHIELD_WOOD",
+      "assetPath": "item-icons/5fb7b319183a_tate1.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/880/tate1.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "木の盾 (나무방패)",
+          "fields": {
+            "画像": "",
+            "名称": "木の盾 (나무방패)",
+            "Lv": "1",
+            "重量": "2",
+            "AC": "-3",
+            "魔法防御": "0%",
+            "耐久": "3000",
+            "コメント": "無し",
+            "入手場所": "ミルレス防具屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/5fb7b319183a_tate1.gif",
+      "sourceSha256": "b39730e2ae7424bf452766950b5b3fc1998f93414a289daad678923479acddcd",
+      "assetSha256": "ebc9e6f04971620508ea75fe52fd8409ef7738d01ca6a8a88a9934c182abd574",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 290,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_LEATHER": {
+      "itemId": "IT_SHIELD_LEATHER",
+      "assetPath": "item-icons/3cd662ea5f31_tate11.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/881/tate11.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "皮の盾 (가죽방패)",
+          "fields": {
+            "画像": "",
+            "名称": "皮の盾 (가죽방패)",
+            "Lv": "11",
+            "重量": "3",
+            "AC": "-5",
+            "魔法防御": "0%",
+            "耐久": "5000",
+            "コメント": "無し",
+            "入手場所": "ミルレス防具屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/3cd662ea5f31_tate11.gif",
+      "sourceSha256": "a7ae89a20e582ef807f8cd9e0afb1b355f76f011d2c22a662d8b9dbdef8de2b0",
+      "assetSha256": "2f33823a4c819e79ffa8c9c6e346775cd790b29bee94bb2f7dcfe4b6b690d936",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 399,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_COPPER": {
+      "itemId": "IT_SHIELD_COPPER",
+      "assetPath": "item-icons/0347dae45a7d_tate26.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/882/tate26.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "銅の盾 (구리방패)",
+          "fields": {
+            "画像": "",
+            "名称": "銅の盾 (구리방패)",
+            "Lv": "26",
+            "重量": "4",
+            "AC": "-8",
+            "魔法防御": "0%",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス防具屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/0347dae45a7d_tate26.gif",
+      "sourceSha256": "21d0cfaad3dde5aedb54628226782a35cc549d35f0cd7583042097b48a6a44ad",
+      "assetSha256": "c649e174b116492a03123468ccb0a8afb5ca4d10957f51f6c06f4bb4629ab663",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 369,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_IRON": {
+      "itemId": "IT_SHIELD_IRON",
+      "assetPath": "item-icons/5f19df039041_tate41.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/883/tate41.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "鉄の盾 (철방패)",
+          "fields": {
+            "画像": "",
+            "名称": "鉄の盾 (철방패)",
+            "Lv": "41",
+            "重量": "5",
+            "AC": "-10",
+            "魔法防御": "10%",
+            "耐久": "9000",
+            "コメント": "無し",
+            "入手場所": "スオミ防具屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/5f19df039041_tate41.gif",
+      "sourceSha256": "57a40862c01d936857ecf02fbb054249e6af681ac2a84ef24200ce6a32f09072",
+      "assetSha256": "cf98779e87e60724f67e28a06d6a1af55d3297438a3e76254244ecad573f4454",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 394,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_EXORCISM": {
+      "itemId": "IT_SHIELD_EXORCISM",
+      "assetPath": "item-icons/a82027a55f56_toematate.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/983/toematate.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "トエマの盾 (퇴마방패)",
+          "fields": {
+            "画像": "",
+            "名称": "トエマの盾 (퇴마방패)",
+            "Lv": "41",
+            "重量": "1",
+            "AC": "-18",
+            "魔法防御": "20%",
+            "耐久": "15000",
+            "コメント": "無し",
+            "入手場所": "ゾンビの肉×20と交換"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/a82027a55f56_toematate.gif",
+      "sourceSha256": "bbbfa84d754f5ac1290a8c1b15d8fb44d1f03b3a81889663d5ef6e8502edbb75",
+      "assetSha256": "35ec7045f336d7546930c039fe3dba43f7866120cd1d4d567ef14fe807db2da5",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 353,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_SKULL": {
+      "itemId": "IT_SHIELD_SKULL",
+      "assetPath": "item-icons/8b32c27d93b6_dokurotate.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/292/dokurotate.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "骸骨盾 (해골방패)",
+          "fields": {
+            "画像": "",
+            "名称": "骸骨盾 (해골방패)",
+            "Lv": "41",
+            "重量": "1",
+            "AC": "-18",
+            "魔法防御": "20%",
+            "耐久": "15000",
+            "コメント": "無し",
+            "入手場所": "勇者の公園宝くじ スケルトン骨×10と交換"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8b32c27d93b6_dokurotate.gif",
+      "sourceSha256": "412a52ca3ab8424c1df883389663fa1e3e4c0586cfe37af5ee7a60b9b9e769d5",
+      "assetSha256": "0c72b62008bf48219971a10a5d1b0cd53d6e8cbbf966d455a10a10be75118bfc",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 370,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_SILVER": {
+      "itemId": "IT_SHIELD_SILVER",
+      "assetPath": "item-icons/2fedfc34d33e_tate56.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/884/tate56.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "銀の盾 (은제방패)",
+          "fields": {
+            "画像": "",
+            "名称": "銀の盾 (은제방패)",
+            "Lv": "56",
+            "重量": "6",
+            "AC": "-13",
+            "魔法防御": "10%",
+            "耐久": "11000",
+            "コメント": "無し",
+            "入手場所": "スオミ防具屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/2fedfc34d33e_tate56.gif",
+      "sourceSha256": "ea1c371ba8dda652f8fa675c132b0a040d6a327e4e11d7ddb584717fe14efef3",
+      "assetSha256": "a89de4ee8db5c34095c7771e191c175321b11f86805bcb2f7cef7ce62a8340b7",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 253,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_GOLD": {
+      "itemId": "IT_SHIELD_GOLD",
+      "assetPath": "item-icons/52b1309ac7b1_tate71.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/885/tate71.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "金の盾 (금제방패)",
+          "fields": {
+            "画像": "",
+            "名称": "金の盾 (금제방패)",
+            "Lv": "71",
+            "重量": "7",
+            "AC": "-15",
+            "魔法防御": "20%",
+            "耐久": "13000",
+            "コメント": "無し",
+            "入手場所": "スオミ防具屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/52b1309ac7b1_tate71.gif",
+      "sourceSha256": "e3243addef0d48f07e8c91037b499fb28ed9628dd2d62c15e9effa1ce7044255",
+      "assetSha256": "1ec8d42a20e1103a0aad7217a040ec12b04d615439e2fb3c769cd5c96ebd3071",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 272,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_PAPAYA": {
+      "itemId": "IT_SHIELD_PAPAYA",
+      "assetPath": "item-icons/3d37f6cbc797_papayatate.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/982/papayatate.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "パパヤの盾 (파파야방패)",
+          "fields": {
+            "画像": "",
+            "名称": "パパヤの盾 (파파야방패)",
+            "Lv": "71",
+            "重量": "5",
+            "AC": "-20",
+            "魔法防御": "30%",
+            "耐久": "15000",
+            "コメント": "無し",
+            "入手場所": "?"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/3d37f6cbc797_papayatate.gif",
+      "sourceSha256": "acddca1d5ca173ebfb5d21aad3f53cc60a7989f156b0f50baeddc53dae044a37",
+      "assetSha256": "d8fb5a797f149dcc8a9d05c2b0c4723207a9ba975edfabaaadb550e6de787c61",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 384,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_PLANUM": {
+      "itemId": "IT_SHIELD_PLANUM",
+      "assetPath": "item-icons/986e0808d7d8_tate86.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/886/tate86.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "白金の盾 (플라늄방패)",
+          "fields": {
+            "画像": "",
+            "名称": "白金の盾 (플라늄방패)",
+            "Lv": "86",
+            "重量": "8",
+            "AC": "-18",
+            "魔法防御": "20%",
+            "耐久": "15000",
+            "コメント": "無し",
+            "入手場所": "スオミ防具屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/986e0808d7d8_tate86.gif",
+      "sourceSha256": "b81f3a640ce5dde7deee29f484b32913c3290b307b2a2eb645720f9ccfd5c909",
+      "assetSha256": "6a5e70376db74b35b35f24ae88fe422aeac8b29221df803eb52b360d01517cf9",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 296,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_KNIGHT": {
+      "itemId": "IT_SHIELD_KNIGHT",
+      "assetPath": "item-icons/cedf7ab2d1fd_gisidan.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/816/gisidan.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "技師団の盾 （기사단방패）",
+          "fields": {
+            "画像": "",
+            "名称": "技師団の盾 （기사단방패）",
+            "Lv": "99",
+            "重量": "12",
+            "AC": "-20",
+            "魔法防御": "30%",
+            "耐久": "17000",
+            "コメント": "無し",
+            "入手場所": "盗賊９９盾クエスト?"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/cedf7ab2d1fd_gisidan.gif",
+      "sourceSha256": "ba0fa97ca1694b048748850cb52cfa62b69cfaa6ec775afba298f9668afd126c",
+      "assetSha256": "5d379272f816416ebcb3323c223cf7538ff7976f26e2e1e3bad987ea7dd78c26",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 384,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_PHOBOS": {
+      "itemId": "IT_SHIELD_PHOBOS",
+      "assetPath": "item-icons/95bde1f20c92_fobo.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/26/fobo.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "フォボスの盾 （포보스의방패）",
+          "fields": {
+            "画像": "",
+            "名称": "フォボスの盾 （포보스의방패）",
+            "Lv": "マスター",
+            "重量": "12",
+            "AC": "-22",
+            "魔法防御": "30%",
+            "耐久": "19000",
+            "コメント": "DMG+2 HIT+1",
+            "入手場所": "製造"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/95bde1f20c92_fobo.gif",
+      "sourceSha256": "d36cd0114eb26adb25f6ccc9dd9a1872fed812a306abc0753d7d315a15225187",
+      "assetSha256": "b58b3023e308eeb36615b062a16d00a8ce4629fe516c71f444fb0e039651f3fe",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 369,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_BROKEN_PHOBOS": {
+      "itemId": "IT_SHIELD_BROKEN_PHOBOS",
+      "assetPath": "item-icons/a6404a874bfb_warefobosu.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/1358/warefobosu.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "割れたフォボスの盾 （깨진포보스의방패）",
+          "fields": {
+            "画像": "",
+            "名称": "割れたフォボスの盾 （깨진포보스의방패）",
+            "Lv": "マスター",
+            "重量": "12",
+            "AC": "-11",
+            "魔法防御": "30%",
+            "耐久": "3000",
+            "コメント": "無し",
+            "入手場所": "製造"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/a6404a874bfb_warefobosu.gif",
+      "sourceSha256": "ffad4618c9a696f2fbbd07cd28dc4a1e4582754e423ff00e16788f3ae74e73a3",
+      "assetSha256": "16a3c216c1717a39301824f1d43888056954f63d7ad1a1116b71f7fbc1865ddf",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 332,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
+    },
+    "IT_SHIELD_DEATHKNIGHT": {
+      "itemId": "IT_SHIELD_DEATHKNIGHT",
+      "assetPath": "item-icons/4ae5b623b810_desunaito.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/196/30/desunaito.gif",
+      "sourceRows": [
+        {
+          "page": "page_196",
+          "label": "デスナイトの盾 （데스나이트의방패）",
+          "fields": {
+            "画像": "",
+            "名称": "デスナイトの盾 （데스나이트의방패）",
+            "Lv": "マスター",
+            "重量": "20",
+            "AC": "-25",
+            "魔法防御": "30%",
+            "耐久": "33000",
+            "コメント": "HP-500 MP-500 DMG+3 HIT+3 ALL+1",
+            "入手場所": "赤龍洞-デスナイト"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/196.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/4ae5b623b810_desunaito.gif",
+      "sourceSha256": "92d8f42a1a8987c4fe84a6f377878e172482676613154e3baf38a11f8453a7dd",
+      "assetSha256": "12b9f885497bae391c341947776b9a30af342ac829485f45c101b0cf0d1ea530",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL",
+      "foregroundPixels": 474,
+      "limitation": "Exact named inventory icon; wearable appearance ID unverified and unbound."
     },
     "IT_SHOES": {
       "appearanceId": "ml228",

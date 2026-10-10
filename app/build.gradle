@@ -5,12 +5,12 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v129test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V129 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v130test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V130 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 129
-        versionName '1.29-item-functions'
+        versionCode 130
+        versionName '1.30-equipment-performance'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
@@ -46,7 +46,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 129, versionName: '1.29-item-functions']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 130, versionName: '1.30-equipment-performance']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }

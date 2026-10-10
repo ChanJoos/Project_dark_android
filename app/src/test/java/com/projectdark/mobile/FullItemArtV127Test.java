@@ -16,7 +16,7 @@ public class FullItemArtV127Test {
  @Before public void before(){context=RuntimeEnvironment.getApplication();context.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(context);UiTheme.install(context);}
  @Test public void everyRuntimeItemHasAnExplicitOriginalArtBindingAndSharedShopReagentPath()throws Exception{
   RpgProgressionState state=new RpgProgressionState();SourceItemIconRegistry icons=new SourceItemIconRegistry(context);
-  JSONObject manifest=new JSONObject(new String(PresentationAssetBytes.read(context,"item-icons/manifest.json"),"UTF-8"));assertEquals(state.itemDefinitions().size(),manifest.getJSONObject("items").length());assertEquals(408,state.itemDefinitions().size());
+  JSONObject manifest=new JSONObject(new String(PresentationAssetBytes.read(context,"item-icons/manifest.json"),"UTF-8"));assertEquals(state.itemDefinitions().size(),manifest.getJSONObject("items").length());assertEquals(422,state.itemDefinitions().size());
   Bitmap sheet=Bitmap.createBitmap(1000,((state.itemDefinitions().size()+11)/12)*84,Bitmap.Config.ARGB_8888);sheet.eraseColor(UiTheme.BG);Canvas canvas=new Canvas(sheet);Paint pixel=new Paint();pixel.setFilterBitmap(false);int i=0;
   for(RpgProgressionState.ItemDefinition def:state.itemDefinitions().values()){
    JSONObject receipt=icons.receipt(def.itemId);assertNotNull(def.itemId,receipt);Bitmap b=icons.get(def);assertNotNull(def.itemId,b);assertSame(def.itemId,b,icons.get(def.itemId));assertTrue(def.itemId,b.getWidth()>1&&b.getHeight()>1);

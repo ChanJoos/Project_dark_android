@@ -62,6 +62,8 @@ final class ItemEffects {
   if("IT_REAGENT_HOLYWATER".equals(d.itemId))lines.add("성수의 원작 사용 효과는 미확정 · 현재 사용 불가");
   String staff=staffDescription(d.name);if(!staff.isEmpty()){lines.add(staff);lines.add("재사용 대기시간·물리 공격에는 적용되지 않습니다.");}
   if(d.statModifiers.getOrDefault("REGEN",0)>0){lines.add("재생력 +"+d.statModifiers.get("REGEN")+" · 25초마다 HP 추가 회복");lines.add("시험식: 기본 최대HP × 재생력 / 1000 · MP 영향 없음");}
+  String performance=SourceEquipmentPerformance.note(d.itemId);if(!performance.isEmpty())lines.add(performance);
+  if(RpgProgressionState.WEAPON_SLOT.equals(d.equipSlot))lines.add("현재 물리 공격은 S 공격력의 평균값 + 힘×3 + DAM 적용 · L은 자료 표시");
   String pending=SourceItemFunctions.unresolved(d.itemId);if(!pending.isEmpty())lines.add(pending);
   if(d.equippable()){
    if(d.evidence==RpgProgressionState.Evidence.PENDING)lines.add("원작 수치·착용 조건 미확정 · 외형 테스트용");

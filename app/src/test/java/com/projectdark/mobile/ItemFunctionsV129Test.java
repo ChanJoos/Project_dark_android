@@ -66,13 +66,13 @@ public class ItemFunctionsV129Test {
   assertTrue(ItemEffects.description(s.rpg().itemDefinitions().get("IT_WARDROBE_MU0000044")).toString().contains("미확정"));
  }
  @Test public void all408RegisteredItemsHaveAnActualDescriptionAndACompleteAuditRow()throws Exception{
-  RuntimeState s=state();JSONArray rows=new JSONArray();Set<String> allowed=new HashSet<>(Arrays.asList("MinATK","MaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX","REGEN","DAMAGE_REDUCTION_PCT","FLAT_MITIGATION","AC_IGNORE"));int pending=0;
+  RuntimeState s=state();JSONArray rows=new JSONArray();Set<String> allowed=new HashSet<>(Arrays.asList("MinATK","MaxATK","LMinATK","LMaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX","REGEN","DAMAGE_REDUCTION_PCT","FLAT_MITIGATION","AC_IGNORE"));int pending=0;
   for(RpgProgressionState.ItemDefinition d:s.rpg().itemDefinitions().values()){
    assertFalse(d.itemId,ItemEffects.description(d).isEmpty());for(String k:d.statModifiers.keySet())assertTrue(d.itemId+":"+k,allowed.contains(k));
    if(d.evidence==RpgProgressionState.Evidence.PENDING)pending++;
    rows.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("slot",d.equipSlot==null?JSONObject.NULL:d.equipSlot).put("stats",new JSONObject(d.statModifiers)).put("evidence",d.evidence.name()).put("usable",s.rpg().isConsumable(d.itemId)||s.rpg().isRecall(d.itemId)).put("description",new JSONArray(ItemEffects.description(d))).put("originalFullFunctionVerified",false));
   }
-  assertEquals(408,rows.length());assertTrue(pending>0);File dir=new File("build/reports/item-functions-v129");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all408-runtime-function-audit.json").toPath(),rows.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+  assertEquals(422,rows.length());assertTrue(pending>0);File dir=new File("build/reports/item-functions-v129");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all408-runtime-function-audit.json").toPath(),rows.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void curanumActualInventoryUseButtonRestoresHpConsumesOneAndSurvivesRestart()throws Exception{
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState s=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");

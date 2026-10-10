@@ -1,0 +1,1425 @@
+{
+  "revision": "EQUIPMENT_PERFORMANCE_V130",
+  "weapons": [
+    {
+      "id": "IT_SHOP_WEAPON_MW004",
+      "name": "세이버",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_SHOP_WEAPON_MW005",
+      "name": "그라디우스",
+      "stats": {
+        "MinATK": 33,
+        "MaxATK": 43,
+        "LMinATK": 3,
+        "LMaxATK": 4
+      },
+      "level": 26,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "グラディウス",
+        "26",
+        "7",
+        "33m43 3m4",
+        "10000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_ADAPTED_PLAYTEST_MOKDO",
+      "name": "목도",
+      "stats": {
+        "MinATK": 4,
+        "MaxATK": 14,
+        "LMinATK": 1,
+        "LMaxATK": 2
+      },
+      "level": 1,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "木刀",
+        "1",
+        "3",
+        "4m14 1m2",
+        "1000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_TEST_WEAPON_MW002",
+      "name": "에페",
+      "stats": {
+        "MinATK": 20,
+        "MaxATK": 30,
+        "LMinATK": 1,
+        "LMaxATK": 2
+      },
+      "level": 1,
+      "status": "V",
+      "source": "master/source/equipment/nexon_3749.html",
+      "sourceRow": null,
+      "note": "2008년 패치 후 에페 S20~30 / L1~2",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_TEST_WEAPON_MW003",
+      "name": "커틀라스",
+      "stats": {
+        "MinATK": 18,
+        "MaxATK": 28,
+        "LMinATK": 1,
+        "LMaxATK": 2
+      },
+      "level": 11,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "カトラス",
+        "11",
+        "5",
+        "18m28 1m2",
+        "6000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_WEAPON_CHUNGRYONG",
+      "name": "청룡의숨결",
+      "stats": {
+        "MinATK": 1,
+        "MaxATK": 2,
+        "LMinATK": 1,
+        "LMaxATK": 2
+      },
+      "level": null,
+      "status": "V",
+      "source": "master/source/weapons/chungryong_490398/item.png",
+      "sourceRow": null,
+      "note": "확인된 청룡의숨결 공격력 S/L 1~2",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_JOB_WARRIOR_WEAPON",
+      "name": "롱소드 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_JOB_ROGUE_WEAPON",
+      "name": "에페 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_JOB_MAGE_WAND",
+      "name": "매직새티아 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_JOB_CLERIC_WAND",
+      "name": "홀리머큐리아 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_11",
+      "name": "롱소드 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_26",
+      "name": "롱소드 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_ROGUE_11",
+      "name": "에페 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_ROGUE_26",
+      "name": "에페 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_MAGE_11",
+      "name": "매직새티아 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_MAGE_26",
+      "name": "매직새티아 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_CLERIC_11",
+      "name": "홀리머큐리아 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_CLERIC_26",
+      "name": "홀리머큐리아 · 수련",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_WARDROBE_MW007",
+      "name": "매직마르시아",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW009",
+      "name": "매직쥬피티아",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW010",
+      "name": "매스커레이드",
+      "stats": {
+        "MinATK": 31,
+        "MaxATK": 41,
+        "LMinATK": 3,
+        "LMaxATK": 4
+      },
+      "level": 26,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "メスカレイド",
+        "26",
+        "7",
+        "31m41 3m4",
+        "12000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW011",
+      "name": "매스케이드",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW012",
+      "name": "배틀소드",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW013",
+      "name": "블랙데쓰",
+      "stats": {
+        "MinATK": 34,
+        "MaxATK": 54,
+        "LMinATK": 4,
+        "LMaxATK": 6
+      },
+      "level": 41,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ブラックデスソード",
+        "41",
+        "9",
+        "34m54 4m6",
+        "16000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW014",
+      "name": "프렘벨",
+      "stats": {
+        "MinATK": 40,
+        "MaxATK": 60,
+        "LMinATK": 3,
+        "LMaxATK": 5
+      },
+      "level": 41,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ブランブル",
+        "41",
+        "9",
+        "40m60 3m5",
+        "15000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW016",
+      "name": "투핸드크레이모어",
+      "stats": {
+        "MinATK": 140,
+        "MaxATK": 180,
+        "LMinATK": 12,
+        "LMaxATK": 16
+      },
+      "level": 71,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ツーハンドクレイモア (투핸드크레이모어)",
+        "71",
+        "26",
+        "140m180 12m16",
+        "60000",
+        "両手"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW017",
+      "name": "스틸라",
+      "stats": {
+        "MinATK": 49,
+        "MaxATK": 69,
+        "LMinATK": 5,
+        "LMaxATK": 7
+      },
+      "level": 56,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "スティラ",
+        "56",
+        "11",
+        "49m69 5m7",
+        "22000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW018",
+      "name": "투핸드에메랄드소드",
+      "stats": {
+        "MinATK": 124,
+        "MaxATK": 164,
+        "LMinATK": 14,
+        "LMaxATK": 18
+      },
+      "level": 71,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ツーハンドエメラルドソード (투핸드에메랄드소드)",
+        "71",
+        "26",
+        "124m164 14m18",
+        "66000",
+        "両手"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW019",
+      "name": "투핸드드래곤크로어",
+      "stats": {
+        "MinATK": 180,
+        "MaxATK": 240
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ツーハンドドラゴンクロー (투핸드드래곤크로어)",
+        "99",
+        "34",
+        "180m240",
+        "70000",
+        "両手"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW020",
+      "name": "드래곤슬레이어",
+      "stats": {
+        "MinATK": 385,
+        "MaxATK": 425,
+        "LMinATK": 10,
+        "LMaxATK": 13
+      },
+      "level": 11,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/nexon_2097.html",
+      "sourceRow": null,
+      "note": "2006년 자료 S385~425 / L10~13",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW021",
+      "name": "투핸드그레이트소드",
+      "stats": {
+        "MinATK": 134,
+        "MaxATK": 194,
+        "LMinATK": 15,
+        "LMaxATK": 21
+      },
+      "level": 86,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ツーハンドグレートソード (투핸드그레이트소드)",
+        "86",
+        "30",
+        "134m194 15m21",
+        "90000",
+        "両手"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW022",
+      "name": "투핸드엑시큐터",
+      "stats": {
+        "MinATK": 160,
+        "MaxATK": 220
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ツーハンドエクスキュート (투핸드엑스큐터)",
+        "99",
+        "？",
+        "160m220",
+        "？",
+        "両手 日本版フランベルジュと見た目が同じ"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW023",
+      "name": "투핸드가이아두스",
+      "stats": {
+        "MinATK": 150,
+        "MaxATK": 210
+      },
+      "level": 86,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ツーハンドガイアデュス (투핸드가이아두스)",
+        "86",
+        "30",
+        "150m210",
+        "80000",
+        "両手"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW026",
+      "name": "매직루나",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW027",
+      "name": "매직가이아",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW029",
+      "name": "채찍",
+      "stats": {
+        "MinATK": 20,
+        "MaxATK": 80
+      },
+      "level": 26,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "鞭 (채찍)",
+        "26",
+        "？",
+        "20m80",
+        "？",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW034",
+      "name": "우든클럽",
+      "stats": {
+        "MinATK": 90,
+        "MaxATK": 110
+      },
+      "level": 56,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "棍棒 (우든클럽)",
+        "56",
+        "11",
+        "90m110",
+        "20000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW035",
+      "name": "스파이크클럽",
+      "stats": {
+        "MinATK": 40,
+        "MaxATK": 60
+      },
+      "level": 71,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "スパイククラブ (스파이크클럽)",
+        "71",
+        "12",
+        "40m60",
+        "25000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW036",
+      "name": "자이언트클럽",
+      "stats": {
+        "MinATK": 90,
+        "MaxATK": 110
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ジャイアントクラブ (자이언트클럽)",
+        "99",
+        "15",
+        "90m110",
+        "40000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW037",
+      "name": "자이언트스톤클럽",
+      "stats": {
+        "MinATK": 180,
+        "MaxATK": 220
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ジャイアントストーンクラブ (자이언트스톤클럽)",
+        "99",
+        "19",
+        "180m220",
+        "100000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW039",
+      "name": "액스",
+      "stats": {
+        "MinATK": 35,
+        "MaxATK": 45
+      },
+      "level": 41,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "アックス (엑스)",
+        "41",
+        "7",
+        "35m45",
+        "13000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW040",
+      "name": "하이브레이질액스",
+      "stats": {
+        "MinATK": 60,
+        "MaxATK": 80
+      },
+      "level": 56,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ハイブレイジルアックス (하이브레이질액스)",
+        "56",
+        "11",
+        "60m80",
+        "？",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW041",
+      "name": "자이언트스톤액스",
+      "stats": {
+        "MinATK": 80,
+        "MaxATK": 110
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ジャイアントストーンアックス (자이언트스톤엑스)",
+        "99",
+        "17",
+        "80m110",
+        "40000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW043",
+      "name": "배틀액스",
+      "stats": {
+        "MinATK": 80,
+        "MaxATK": 110
+      },
+      "level": 71,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "バトルアックス (배틀액스)",
+        "71",
+        "16",
+        "80m110",
+        "10000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW044",
+      "name": "자이언트스톤해머",
+      "stats": {
+        "MinATK": 170,
+        "MaxATK": 190
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ジャイアントストーンハンマー (자이언트스톤해머)",
+        "99",
+        "29",
+        "170m190",
+        "40000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW047",
+      "name": "시미터",
+      "stats": {
+        "MinATK": 80,
+        "MaxATK": 110,
+        "LMinATK": 9,
+        "LMaxATK": 12
+      },
+      "level": 86,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "シミター",
+        "86",
+        "15",
+        "80m110 9m12",
+        "40000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW048",
+      "name": "더브릴",
+      "stats": {
+        "MinATK": 190,
+        "MaxATK": 220,
+        "LMinATK": 18,
+        "LMaxATK": 21
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ダブリル (더브릴)",
+        "99",
+        "15",
+        "190m220 18m21",
+        "40000",
+        "片手の割りに強い 戦士専用"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW049",
+      "name": "타고나이트채찍",
+      "stats": {
+        "MinATK": 90,
+        "MaxATK": 110
+      },
+      "level": 11,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ナイト鞭 (타고나이트채찍)",
+        "11",
+        "11",
+        "90m110",
+        "10000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW050",
+      "name": "미스릴채찍",
+      "stats": {
+        "MinATK": 90,
+        "MaxATK": 100
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ミスリル鞭 (미스릴채찍)",
+        "99",
+        "17",
+        "90m100",
+        "20000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW051",
+      "name": "루비채찍",
+      "stats": {
+        "MinATK": 90,
+        "MaxATK": 100
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ルビー鞭 (루비채찍)",
+        "99",
+        "17",
+        "90m100",
+        "30000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW053",
+      "name": "타고나이트액스",
+      "stats": {
+        "MinATK": 95,
+        "MaxATK": 120
+      },
+      "level": 11,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ナイトアックス (타고나이트액스)",
+        "11",
+        "11",
+        "95m120",
+        "3000",
+        "無し"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW055",
+      "name": "하이브레이질배틀액스",
+      "stats": {
+        "MinATK": 234,
+        "MaxATK": 284
+      },
+      "level": 99,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_81.html",
+      "sourceRow": [
+        "ハイブレイジルバトルアックス (하이브레이질배틀엑스)",
+        "99",
+        "？",
+        "234m284",
+        "100000",
+        "両手"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW056",
+      "name": "실버시미터",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW059",
+      "name": "매직솔라",
+      "stats": {
+        "MinATK": 4,
+        "MaxATK": 20,
+        "LMinATK": 6,
+        "LMaxATK": 30
+      },
+      "level": 11,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_250.html",
+      "sourceRow": [
+        "マジックソーラー （매직솔라）",
+        "11",
+        "5",
+        "4m20 6m30",
+        "3000",
+        "全ての魔法を3行 2行以下の魔法も3行に増える"
+      ],
+      "note": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW060",
+      "name": "아리펠스탭",
+      "stats": {
+        "MinATK": 4,
+        "MaxATK": 20,
+        "LMinATK": 6,
+        "LMaxATK": 30,
+        "MP": 150
+      },
+      "level": 41,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/nexon_7079.html",
+      "sourceRow": {
+        "name": "아리펠스탭",
+        "published": "2019-04-11",
+        "S": "4m20",
+        "L": "6m30",
+        "MP": 150
+      },
+      "note": "2019년 자료: 아리펠스탭 S4~20 / L6~30 · MP +150",
+      "existingAdaptedOptions": false
+    },
+    {
+      "id": "IT_WARDROBE_MW062",
+      "name": "매직파나",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "existingAdaptedOptions": false
+    }
+  ],
+  "shields": [
+    {
+      "id": "IT_SHIELD_WOOD",
+      "name": "나무방패",
+      "stats": {
+        "AC": -3,
+        "MAGIC_DEFENSE": 0
+      },
+      "level": 1,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "木の盾 (나무방패)",
+        "Lv": "1",
+        "重量": "2",
+        "AC": "-3",
+        "魔法防御": "0%",
+        "耐久": "3000",
+        "コメント": "無し",
+        "入手場所": "ミルレス防具屋"
+      },
+      "iconSource": "5fb7b319183a_tate1.gif",
+      "iconSha256": "b39730e2ae7424bf452766950b5b3fc1998f93414a289daad678923479acddcd",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인 · AC -3은 팬 표 기준 (2005년 -1 자료와 차이)"
+    },
+    {
+      "id": "IT_SHIELD_LEATHER",
+      "name": "가죽방패",
+      "stats": {
+        "AC": -5,
+        "MAGIC_DEFENSE": 0
+      },
+      "level": 11,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "皮の盾 (가죽방패)",
+        "Lv": "11",
+        "重量": "3",
+        "AC": "-5",
+        "魔法防御": "0%",
+        "耐久": "5000",
+        "コメント": "無し",
+        "入手場所": "ミルレス防具屋"
+      },
+      "iconSource": "3cd662ea5f31_tate11.gif",
+      "iconSha256": "a7ae89a20e582ef807f8cd9e0afb1b355f76f011d2c22a662d8b9dbdef8de2b0",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_COPPER",
+      "name": "구리방패",
+      "stats": {
+        "AC": -8,
+        "MAGIC_DEFENSE": 0
+      },
+      "level": 26,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "銅の盾 (구리방패)",
+        "Lv": "26",
+        "重量": "4",
+        "AC": "-8",
+        "魔法防御": "0%",
+        "耐久": "7000",
+        "コメント": "無し",
+        "入手場所": "ミルレス防具屋"
+      },
+      "iconSource": "0347dae45a7d_tate26.gif",
+      "iconSha256": "21d0cfaad3dde5aedb54628226782a35cc549d35f0cd7583042097b48a6a44ad",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_IRON",
+      "name": "철방패",
+      "stats": {
+        "AC": -10,
+        "MAGIC_DEFENSE": 10
+      },
+      "level": 41,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "鉄の盾 (철방패)",
+        "Lv": "41",
+        "重量": "5",
+        "AC": "-10",
+        "魔法防御": "10%",
+        "耐久": "9000",
+        "コメント": "無し",
+        "入手場所": "スオミ防具屋"
+      },
+      "iconSource": "5f19df039041_tate41.gif",
+      "iconSha256": "57a40862c01d936857ecf02fbb054249e6af681ac2a84ef24200ce6a32f09072",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_EXORCISM",
+      "name": "퇴마방패",
+      "stats": {
+        "AC": -18,
+        "MAGIC_DEFENSE": 20
+      },
+      "level": 41,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "トエマの盾 (퇴마방패)",
+        "Lv": "41",
+        "重量": "1",
+        "AC": "-18",
+        "魔法防御": "20%",
+        "耐久": "15000",
+        "コメント": "無し",
+        "入手場所": "ゾンビの肉×20と交換"
+      },
+      "iconSource": "a82027a55f56_toematate.gif",
+      "iconSha256": "bbbfa84d754f5ac1290a8c1b15d8fb44d1f03b3a81889663d5ef6e8502edbb75",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_SKULL",
+      "name": "해골방패",
+      "stats": {
+        "AC": -18,
+        "MAGIC_DEFENSE": 20
+      },
+      "level": 41,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "骸骨盾 (해골방패)",
+        "Lv": "41",
+        "重量": "1",
+        "AC": "-18",
+        "魔法防御": "20%",
+        "耐久": "15000",
+        "コメント": "無し",
+        "入手場所": "勇者の公園宝くじ スケルトン骨×10と交換"
+      },
+      "iconSource": "8b32c27d93b6_dokurotate.gif",
+      "iconSha256": "412a52ca3ab8424c1df883389663fa1e3e4c0586cfe37af5ee7a60b9b9e769d5",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_SILVER",
+      "name": "은제방패",
+      "stats": {
+        "AC": -13,
+        "MAGIC_DEFENSE": 10
+      },
+      "level": 56,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "銀の盾 (은제방패)",
+        "Lv": "56",
+        "重量": "6",
+        "AC": "-13",
+        "魔法防御": "10%",
+        "耐久": "11000",
+        "コメント": "無し",
+        "入手場所": "スオミ防具屋"
+      },
+      "iconSource": "2fedfc34d33e_tate56.gif",
+      "iconSha256": "ea1c371ba8dda652f8fa675c132b0a040d6a327e4e11d7ddb584717fe14efef3",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_GOLD",
+      "name": "금제방패",
+      "stats": {
+        "AC": -15,
+        "MAGIC_DEFENSE": 20
+      },
+      "level": 71,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "金の盾 (금제방패)",
+        "Lv": "71",
+        "重量": "7",
+        "AC": "-15",
+        "魔法防御": "20%",
+        "耐久": "13000",
+        "コメント": "無し",
+        "入手場所": "スオミ防具屋"
+      },
+      "iconSource": "52b1309ac7b1_tate71.gif",
+      "iconSha256": "e3243addef0d48f07e8c91037b499fb28ed9628dd2d62c15e9effa1ce7044255",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_PAPAYA",
+      "name": "파파야방패",
+      "stats": {
+        "AC": -20,
+        "MAGIC_DEFENSE": 30
+      },
+      "level": 71,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "パパヤの盾 (파파야방패)",
+        "Lv": "71",
+        "重量": "5",
+        "AC": "-20",
+        "魔法防御": "30%",
+        "耐久": "15000",
+        "コメント": "無し",
+        "入手場所": "?"
+      },
+      "iconSource": "3d37f6cbc797_papayatate.gif",
+      "iconSha256": "acddca1d5ca173ebfb5d21aad3f53cc60a7989f156b0f50baeddc53dae044a37",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_PLANUM",
+      "name": "플라늄방패",
+      "stats": {
+        "AC": -18,
+        "MAGIC_DEFENSE": 30
+      },
+      "level": 86,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "白金の盾 (플라늄방패)",
+        "Lv": "86",
+        "重量": "8",
+        "AC": "-18",
+        "魔法防御": "20%",
+        "耐久": "15000",
+        "コメント": "無し",
+        "入手場所": "スオミ防具屋"
+      },
+      "iconSource": "986e0808d7d8_tate86.gif",
+      "iconSha256": "b81f3a640ce5dde7deee29f484b32913c3290b307b2a2eb645720f9ccfd5c909",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인 · 마법방어 30%는 넥슨 게시판 기준 (팬 표 20%와 차이)"
+    },
+    {
+      "id": "IT_SHIELD_KNIGHT",
+      "name": "기사단방패",
+      "stats": {
+        "AC": -20,
+        "MAGIC_DEFENSE": 30
+      },
+      "level": 99,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "技師団の盾 （기사단방패）",
+        "Lv": "99",
+        "重量": "12",
+        "AC": "-20",
+        "魔法防御": "30%",
+        "耐久": "17000",
+        "コメント": "無し",
+        "入手場所": "盗賊９９盾クエスト?"
+      },
+      "iconSource": "cedf7ab2d1fd_gisidan.gif",
+      "iconSha256": "ba0fa97ca1694b048748850cb52cfa62b69cfaa6ec775afba298f9668afd126c",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_PHOBOS",
+      "name": "포보스의방패",
+      "stats": {
+        "AC": -22,
+        "MAGIC_DEFENSE": 30,
+        "HIT": 1,
+        "DAM": 2
+      },
+      "level": null,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "フォボスの盾 （포보스의방패）",
+        "Lv": "マスター",
+        "重量": "12",
+        "AC": "-22",
+        "魔法防御": "30%",
+        "耐久": "19000",
+        "コメント": "DMG+2 HIT+1",
+        "入手場所": "製造"
+      },
+      "iconSource": "95bde1f20c92_fobo.gif",
+      "iconSha256": "d36cd0114eb26adb25f6ccc9dd9a1872fed812a306abc0753d7d315a15225187",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_BROKEN_PHOBOS",
+      "name": "깨진포보스의방패",
+      "stats": {
+        "AC": -11,
+        "MAGIC_DEFENSE": 30
+      },
+      "level": null,
+      "status": "FAN",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "割れたフォボスの盾 （깨진포보스의방패）",
+        "Lv": "マスター",
+        "重量": "12",
+        "AC": "-11",
+        "魔法防御": "30%",
+        "耐久": "3000",
+        "コメント": "無し",
+        "入手場所": "製造"
+      },
+      "iconSource": "a6404a874bfb_warefobosu.gif",
+      "iconSha256": "ffad4618c9a696f2fbbd07cd28dc4a1e4582754e423ff00e16788f3ae74e73a3",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    },
+    {
+      "id": "IT_SHIELD_DEATHKNIGHT",
+      "name": "데스나이트의방패",
+      "stats": {
+        "AC": -25,
+        "MAGIC_DEFENSE": 30,
+        "HP": -500,
+        "MP": -500,
+        "HIT": 3,
+        "DAM": 3,
+        "STR": 1,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 1,
+        "DEX": 1
+      },
+      "level": null,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/atwiki_196.html",
+      "numericSource": "master/source/equipment/stats_v130/nexon_1487.html",
+      "sourceRow": {
+        "画像": "",
+        "名称": "デスナイトの盾 （데스나이트의방패）",
+        "Lv": "マスター",
+        "重量": "20",
+        "AC": "-25",
+        "魔法防御": "30%",
+        "耐久": "33000",
+        "コメント": "HP-500 MP-500 DMG+3 HIT+3 ALL+1",
+        "入手場所": "赤龍洞-デスナイト"
+      },
+      "iconSource": "4ae5b623b810_desunaito.gif",
+      "iconSha256": "92d8f42a1a8987c4fe84a6f377878e172482676613154e3baf38a11f8453a7dd",
+      "note": "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인"
+    }
+  ],
+  "policy": "S range feeds the existing deterministic midpoint physical formula. L range is retained/displayed only; no fabricated continent/monster-size switch. Unknown weapons retain explicit adapted 8~8 (previous fallback), not invented original facts. Named shield inventory icons exact; paper-doll appearance remains unbound until exact name/asset evidence."
+}
