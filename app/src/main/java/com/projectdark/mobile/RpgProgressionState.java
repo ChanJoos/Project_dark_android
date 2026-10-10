@@ -287,6 +287,10 @@ public final class RpgProgressionState {
     ItemDefinition d=items.get(id);if(d==null||d.evidence!=Evidence.PENDING)return;
     items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,level,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,values,Evidence.V));
   }
+  void fillSourceLevel(String id,int level){
+    ItemDefinition d=items.get(id);if(d==null||d.requiredLevel!=null)return;
+    items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,level,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,d.statModifiers,d.evidence));
+  }
   void addSourceOptions(String id,Map<String,Integer> values){
     ItemDefinition d=items.get(id);if(d==null)return;Map<String,Integer> m=new LinkedHashMap<>(d.statModifiers);m.putAll(values);
     items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,m,d.evidence));

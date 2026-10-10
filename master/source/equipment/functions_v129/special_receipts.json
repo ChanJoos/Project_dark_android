@@ -1,4 +1,84 @@
 {
+  "staffLevelReceipts": {
+    "IT_WARDROBE_MW007": {
+      "name": "매직마르시아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW009": {
+      "name": "매직쥬피티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW026": {
+      "name": "매직루나",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW027": {
+      "name": "매직가이아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW059": {
+      "name": "매직솔라",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW060": {
+      "name": "아리펠스탭",
+      "level": 41,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_WARDROBE_MW062": {
+      "name": "매직파나",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_JOB_MAGE_WAND": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_JOB_CLERIC_WAND": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_11": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_26": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_11": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_26": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    }
+  },
   "accessoryRegeneration": {
     "IT_SOURCE_146_REDMARINE_4BEA9E11": {
       "REGEN": 10

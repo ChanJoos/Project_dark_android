@@ -33,11 +33,17 @@ for r in accessories:
 lines=['package com.projectdark.mobile;','import java.util.*;','/** Generated from retained per-field source receipts. Unknown original fields stay pending. */','final class SourceItemFunctions {',' static void install(RpgProgressionState r){']
 for id,v in receipts.items():
  kv=','.join(json.dumps(k)+','+str(n) for k,n in v['stats'].items());lines.append(f'  r.fillSourceOptions("{id}",stats({kv}),'+('null' if v['level'] is None else str(v['level']))+');')
+staff_levels={name:(41 if name=='아리펠스탭' else 11) for name in ['매직파나','매직루나','매직마르시아','매직새티아','매직스태프','매직쥬피티아','매직가이아','매직솔라','아리펠스탭','홀리머큐리아']}
+level_receipts={}
+for id,name in names.items():
+ if name in staff_levels:
+  level_receipts[id]=dict(name=name,level=staff_levels[name],source='master/source/equipment/functions_v129/nexon_3578.html',status='LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING')
+  lines.append(f'  r.fillSourceLevel("{id}",{staff_levels[name]});')
 for id,v in extra.items():lines.append(f'  r.addSourceOptions("{id}",stats("REGEN",{v["REGEN"]}));')
 lines+=[' }',' static String unresolved(String id){switch(id){']
 for id,n in notes.items():lines.append(' case '+json.dumps(id)+':return '+json.dumps(n,ensure_ascii=False)+';')
 lines+=[' default:return "";}}',' private static Map<String,Integer> stats(Object... kv){Map<String,Integer> m=new LinkedHashMap<>();for(int i=0;i<kv.length;i+=2)m.put((String)kv[i],(Integer)kv[i+1]);return m;}','}']
 (ROOT/'app/src/main/java/com/projectdark/mobile/SourceItemFunctions.java').write_text('\n'.join(lines)+'\n')
 (SRC/'numeric_receipts.json').write_text(json.dumps(receipts,ensure_ascii=False,indent=2)+'\n')
-(SRC/'special_receipts.json').write_text(json.dumps({'accessoryRegeneration':extra,'warnings':notes,'regenerationFormula':'PROJECT_ADAPTED: additional HP every25s = floor(baseMaxHP * REGEN /1000); no MP; source1878 internally inconsistent, not original-certification','staffTimingSource':'nexon_3578.html','panaMpSource':'nexon_276.html','consumableSource':'nexon_3747.html'},ensure_ascii=False,indent=2)+'\n')
+(SRC/'special_receipts.json').write_text(json.dumps({'staffLevelReceipts':level_receipts,'accessoryRegeneration':extra,'warnings':notes,'regenerationFormula':'PROJECT_ADAPTED: additional HP every25s = floor(baseMaxHP * REGEN /1000); no MP; source1878 internally inconsistent, not original-certification','staffTimingSource':'nexon_3578.html','panaMpSource':'nexon_276.html','consumableSource':'nexon_3747.html'},ensure_ascii=False,indent=2)+'\n')
 print('EXACT_NUMERIC_OPTIONS',len(receipts),'REGEN_OPTIONS',len(extra))

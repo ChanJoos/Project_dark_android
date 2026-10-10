@@ -67,7 +67,7 @@ final class ItemEffects {
    if(d.evidence==RpgProgressionState.Evidence.PENDING)lines.add("원작 수치·착용 조건 미확정 · 외형 테스트용");
    else if(d.itemId.startsWith("IT_WARDROBE_"))lines.add("확인된 옵션만 적용 · 나머지 조건·특수 효과 확인 중");
    else if(d.evidence==RpgProgressionState.Evidence.ADAPTED||d.evidence==RpgProgressionState.Evidence.B)lines.add("일부 수치는 현재 게임의 시험 설정입니다.");
-   else if(d.evidence==RpgProgressionState.Evidence.FAN)lines.add("역사 자료 기본 옵션 적용 · 원작 전체 기능 검증 전");
+   else if(d.evidence==RpgProgressionState.Evidence.FAN||d.evidence==RpgProgressionState.Evidence.V||d.evidence==RpgProgressionState.Evidence.O||d.evidence==RpgProgressionState.Evidence.U)lines.add("장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전");
   }else if(lines.isEmpty())lines.add(d.itemId.contains("TOKEN")||d.itemId.contains("ESSENCE")?"퀘스트·진행용 재료 · 직접 사용/장착 불가":"용도·원작 효과 미확정 · 직접 사용/장착 불가");
   return Collections.unmodifiableList(lines);
  }

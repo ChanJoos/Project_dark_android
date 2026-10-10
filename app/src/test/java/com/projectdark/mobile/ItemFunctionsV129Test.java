@@ -26,7 +26,7 @@ public class ItemFunctionsV129Test {
  @Test public void realSessionAndDescriptionReadTheSameEquippedEffect(){
   RuntimeState s=state();RuntimeCombatSession session=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);String id=skill("홀리쇼크");assertEquals(3,session.effectiveCastSeconds(id),.001f);
   s.rpg().equipToSlot("IT_WARDROBE_MW062","무기");assertEquals(2,session.effectiveCastSeconds(id),.001f);assertEquals(17,session.effectiveMpCost(id));assertTrue(ItemEffects.description(s.rpg().itemDefinitions().get("IT_WARDROBE_MW062")).toString().contains("-1초"));
-  F5mSaveStore.saveRewardsActive(s.rpg());F5mSaveStore.install(c);RpgProgressionState restored=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(restored);assertEquals("매직파나",ItemEffects.weaponName(restored));assertEquals(2,ItemEffects.castSeconds(restored,id,3),.001f);
+  F5mSaveStore.saveRewardsActive(s.rpg());F5mSaveStore.install(c);RpgProgressionState restored=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(restored);assertEquals("매직파나",ItemEffects.weaponName(restored));assertEquals(Integer.valueOf(11),restored.itemDefinitions().get("IT_WARDROBE_MW062").requiredLevel);assertEquals(2,ItemEffects.castSeconds(restored,id,3),.001f);
  }
  @Test public void staffConditionalProfilesDoNotTurnIntoGenericCooldownReduction(){
   assertEquals(1,ItemEffects.castFor("매직새티아",2,false,false),0);assertEquals(3,ItemEffects.castFor("매직새티아",3,false,false),0);
@@ -66,7 +66,7 @@ public class ItemFunctionsV129Test {
   assertTrue(ItemEffects.description(s.rpg().itemDefinitions().get("IT_WARDROBE_MU0000044")).toString().contains("미확정"));
  }
  @Test public void all408RegisteredItemsHaveAnActualDescriptionAndACompleteAuditRow()throws Exception{
-  RuntimeState s=state();JSONArray rows=new JSONArray();Set<String> allowed=new HashSet<>(Arrays.asList("MinATK","MaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX","REGEN"));int pending=0;
+  RuntimeState s=state();JSONArray rows=new JSONArray();Set<String> allowed=new HashSet<>(Arrays.asList("MinATK","MaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX","REGEN","DAMAGE_REDUCTION_PCT","FLAT_MITIGATION","AC_IGNORE"));int pending=0;
   for(RpgProgressionState.ItemDefinition d:s.rpg().itemDefinitions().values()){
    assertFalse(d.itemId,ItemEffects.description(d).isEmpty());for(String k:d.statModifiers.keySet())assertTrue(d.itemId+":"+k,allowed.contains(k));
    if(d.evidence==RpgProgressionState.Evidence.PENDING)pending++;
