@@ -23,7 +23,8 @@ public class InventoryArtV131Test {
   }
   assertEquals(56,weapons);assertEquals(32,dedicated);assertEquals(23,fallback);
   assertEquals("mw002",r.itemDefinitions().get("IT_TEST_WEAPON_MW002").appearanceId);
-  assertEquals(3,(int)r.itemDefinitions().get("IT_TEST_WEAPON_MW002").statModifiers.get("MinATK"));
+  assertEquals(20,(int)r.itemDefinitions().get("IT_TEST_WEAPON_MW002").statModifiers.get("MinATK"));
+  assertEquals(30,(int)r.itemDefinitions().get("IT_TEST_WEAPON_MW002").statModifiers.get("MaxATK"));
   GameView v=new GameView(c);v.layout(0,0,960,540);ItemWindowReferenceTest.tap(v,608,28);save(v,"inventory-source-weapons");
  }
  @Test public void ringDrawsAllSourceForegroundPixelsAtOneToOneInsteadOfDownsampling()throws Exception{
