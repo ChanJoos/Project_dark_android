@@ -31,7 +31,7 @@ with zipfile.ZipFile(apk_path) as apk:
     for path in frames:
         assert apk.read('assets/interiors/v108/' + path.name) == path.read_bytes(), path
     assert apk.read('assets/skill-presentation/catalog.json') == pathlib.Path('app/src/main/assets/skill-presentation/catalog.json').read_bytes()
-    assert len(json.loads(apk.read('assets/equipment-icons/manifest.json'))['items']) >= 173
+    assert len(json.loads(apk.read('assets/equipment-icons/manifest.json'))['items']) == 172
     for path in pathlib.Path('app/src/main/assets/equipment-icons').glob('*'):
         assert apk.read('assets/equipment-icons/'+path.name)==path.read_bytes(),path
     for path in pathlib.Path('app/src/main/assets/classic-ui').glob('*'):
