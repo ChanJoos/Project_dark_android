@@ -12,9 +12,9 @@ import org.robolectric.annotation.*;
 public class ClassicPolishV132Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);UiTheme.install(c);}
- GameView view(int width,int height){GameView v=new GameView(c);v.layout(0,0,width,height);RpgProgressionState r=rpg(v);r.enableEquipmentSandbox(true);assertTrue(r.restoreOwnedItems(r.inventory(),Collections.emptyMap()));return v;}
- RpgProgressionState rpg(GameView v){return ((RuntimeState)ItemWindowReferenceTest.field(v,"state")).rpg();}
- ItemWindow window(GameView v){return ItemWindowReferenceTest.field(v,"itemWindow");}
+ GameView view(int width,int height)throws Exception{GameView v=new GameView(c);v.layout(0,0,width,height);RpgProgressionState r=rpg(v);r.enableEquipmentSandbox(true);assertTrue(r.restoreOwnedItems(r.inventory(),Collections.emptyMap()));return v;}
+ RpgProgressionState rpg(GameView v)throws Exception{return ((RuntimeState)ItemWindowReferenceTest.field(v,"state")).rpg();}
+ ItemWindow window(GameView v)throws Exception{return ItemWindowReferenceTest.field(v,"itemWindow");}
  void tap(GameView v,float x,float y)throws Exception{float scale=v.getHeight()/540f,offset=GameView.rightHudOffsetForView(v.getWidth(),v.getHeight())/2;ItemWindowReferenceTest.tap(v,(x+offset)*scale,y*scale);}
  void open(GameView v)throws Exception{float scale=v.getHeight()/540f,right=GameView.rightHudOffsetForView(v.getWidth(),v.getHeight());ItemWindowReferenceTest.tap(v,(608+right)*scale,28*scale);}
  void select(GameView v,String id)throws Exception{ItemWindow w=window(v);List<RpgInventoryPresentation.ItemRow> rows=w.rows(rpg(v));int n=0;while(!rows.get(n).itemId.equals(id))n++;w.page=n/50;RectF b=ItemWindow.cell(n%50);tap(v,b.centerX(),b.centerY());assertEquals(id,w.detailItemId);assertNull(w.pickedTargetSlot);}
