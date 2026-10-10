@@ -23,12 +23,12 @@ public final class MobileHudV135Test {
     RectF next=MobileHudLayout.questRow(1,0);MobileHudV134Test.tap(v,next.centerX(),next.centerY());assertTrue((Boolean)MobileHudV134Test.field(v,"questJournalOpen"));QuestJournalWindow journal=MobileHudV134Test.field(v,"questJournalWindow");assertEquals(rows.get(1).id,journal.selected(all).id);assertFalse("locked future details cannot grant or route",rows.get(1).navigable());
   }
   @Test public void bothPotionsAboveRestoredStatusConsumeHealAndRestartInWideViewport()throws Exception{
-    GameView v=view(2340,1080);RuntimeState r=MobileHudV134Test.field(v,"state");r.rpg().grantB5SmallHpPotion(3);assertEquals(RpgProgressionState.AutoLootResult.LOOTED,r.rpg().autoLootResolvedItem("IT_B_MP_POTION",3));r.player().hp=r.player().maxHp-10;r.player().mp=r.player().maxMp-10;
+    GameView v=view(2340,1080);RuntimeState r=MobileHudV134Test.field(v,"state");r.rpg().grantB5SmallHpPotion(3);assertEquals(RpgProgressionState.AutoLootResult.LOOTED,r.rpg().autoLootResolvedItem("IT_B_MP_POTION",3));int hpCount=r.rpg().inventory().get(RpgProgressionState.B_SMALL_POTION_ITEM_ID),mpCount=r.rpg().inventory().get("IT_B_MP_POTION");r.player().hp=r.player().maxHp-10;r.player().mp=r.player().maxMp-10;
     for(int i=0;i<2;i++){RectF p=MobileHudLayout.potion(i,210);assertTrue(p.bottom<MobileHudLayout.status(210).top);tapLogical(v,p.centerX(),p.centerY(),2);}
     assertEquals(r.player().maxHp,r.player().hp);assertEquals(r.player().maxMp,r.player().mp);
-    assertEquals(Integer.valueOf(2),r.rpg().inventory().get(RpgProgressionState.B_SMALL_POTION_ITEM_ID));assertEquals(Integer.valueOf(2),r.rpg().inventory().get("IT_B_MP_POTION"));
-    for(int i=0;i<2;i++){RectF p=MobileHudLayout.potion(i,210);tapLogical(v,p.centerX(),p.centerY(),2);}assertEquals(Integer.valueOf(2),r.rpg().inventory().get("IT_B_MP_POTION"));
-    v.pause();F5mSaveStore.install(c);RuntimeState saved=MobileHudV134Test.field(view(960,540),"state");assertEquals(Integer.valueOf(2),saved.rpg().inventory().get("IT_B_MP_POTION"));assertEquals(r.player().mp,saved.player().mp);
+    assertEquals(Integer.valueOf(hpCount-1),r.rpg().inventory().get(RpgProgressionState.B_SMALL_POTION_ITEM_ID));assertEquals(Integer.valueOf(mpCount-1),r.rpg().inventory().get("IT_B_MP_POTION"));
+    for(int i=0;i<2;i++){RectF p=MobileHudLayout.potion(i,210);tapLogical(v,p.centerX(),p.centerY(),2);}assertEquals(Integer.valueOf(mpCount-1),r.rpg().inventory().get("IT_B_MP_POTION"));
+    v.pause();F5mSaveStore.install(c);RuntimeState saved=MobileHudV134Test.field(view(960,540),"state");assertEquals(Integer.valueOf(mpCount-1),saved.rpg().inventory().get("IT_B_MP_POTION"));assertEquals(r.player().mp,saved.player().mp);
   }
   @Test public void movedJoystickAndAllVisibleSurfacesLeaveOldUnusedEdgesAvailable(){
     for(float d:new float[]{0,210}){assertTrue(GameView.blocksWorldTapForHud(84,398,false,d));assertFalse(GameView.blocksWorldTapForHud(160,455,false,d));assertTrue(GameView.blocksWorldTapForHud(370+d/2,530,false,d));assertTrue(GameView.blocksWorldTapForHud(456+d/2,398,false,d));assertTrue(GameView.blocksWorldTapForHud(790+d,220,false,d));assertFalse(GameView.blocksWorldTapForHud(610+d/2,490,false,d));}
