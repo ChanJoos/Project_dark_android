@@ -1,3 +1,12 @@
+mobile_hud_v135:
+  owner: Director_single_editor
+  active_branch: codex/mobile-hud-v135
+  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  physical_phone: PENDING
+  user_visual: PENDING
+  supersedes_v134_visual: USER_REJECTED
+  contract: docs/ui/MOBILE_HUD_V135.md
+
 mobile_hud_v134:
   owner: Director_single_editor
   status: INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED
