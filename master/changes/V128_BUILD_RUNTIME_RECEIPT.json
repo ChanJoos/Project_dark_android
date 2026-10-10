@@ -1,0 +1,86 @@
+{
+  "sourceCommit": "5da3af500aa94ec55a829b9d24589fe74758eafa",
+  "runId": "38007356458",
+  "versionCode": 128,
+  "versionName": "1.28-identity-dual-equipment",
+  "applicationId": "com.projectdark.mobile.v128test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "3abb6943a4d6600237f117447f5fff9f6004768742c515fc7d2e2f6a1721d382",
+  "apkBytes": 61475986,
+  "builtSeoul": "2026-10-10T09:07:41.310889+09:00",
+  "scope": "Identity-first 408 registered items, exact source names and wearables, native-size icons, two gloves and two rings with quantity-safe additive stats/save migration; physical-phone review pending",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "deliveredFile": "PROJECT_DARK_V128_TEST.apk",
+  "focusedRun": 38007356458,
+  "focusedJob": 114079111454,
+  "focusedSuites": 13,
+  "focusedTests": 69,
+  "failures": 0,
+  "errors": 0,
+  "nativeArtifact": {
+    "id": 11651598693,
+    "name": "pote-v128-native-5da3af500aa94ec55a829b9d24589fe74758eafa",
+    "size_in_bytes": 36775820,
+    "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11651598693",
+    "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11651598693/zip",
+    "expired": false,
+    "created_at": "2026-10-10T00:07:43Z",
+    "expires_at": "2027-01-08T00:03:30Z",
+    "updated_at": "2026-10-10T00:07:43Z",
+    "digest": "sha256:2f406b0471768865fff8321704c5f2fa566490f336df939cad87f9baf13b3486",
+    "workflow_run": {
+      "id": 38007356458,
+      "repository_id": 1362092000,
+      "head_repository_id": 1362092000,
+      "head_branch": "codex/item-identity-dual-slots-v128",
+      "head_sha": "5da3af500aa94ec55a829b9d24589fe74758eafa"
+    }
+  },
+  "apkArtifact": {
+    "id": 11651918053,
+    "name": "pote-v128-apk-5da3af500aa94ec55a829b9d24589fe74758eafa",
+    "size_in_bytes": 60605486,
+    "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11651918053",
+    "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11651918053/zip",
+    "expired": false,
+    "created_at": "2026-10-10T00:07:46Z",
+    "expires_at": "2027-01-08T00:03:30Z",
+    "updated_at": "2026-10-10T00:07:46Z",
+    "digest": "sha256:3367fdbdee74dcf7f042284b91c667be5ab495e8c9fb8b5bbe7df78146b777f6",
+    "workflow_run": {
+      "id": 38007356458,
+      "repository_id": 1362092000,
+      "head_repository_id": 1362092000,
+      "head_branch": "codex/item-identity-dual-slots-v128",
+      "head_sha": "5da3af500aa94ec55a829b9d24589fe74758eafa"
+    }
+  },
+  "agentVisualReview": {
+    "registeredItems": 408,
+    "inventoryPages": 9,
+    "wearableIdentities": 199,
+    "reviewedLatestNativeRendersByteEqualToEarlierReviewedRenders": true
+  },
+  "sourceNamedAdditions": {
+    "weapons": 38,
+    "armor": 101,
+    "hats": 33,
+    "total": 172
+  },
+  "wholeOriginalGameCompleteness": false,
+  "fullRegression": {
+    "runId": 38007360452,
+    "jobId": 114079125078,
+    "status": "SUCCESS",
+    "sourceCommit": "5da3af500aa94ec55a829b9d24589fe74758eafa",
+    "allConfiguredStepsCompleted": true,
+    "logsInspected": true
+  },
+  "physicalPhone": "PENDING",
+  "mergeCommit": "ffaaf387df5b96df103f2b6a6369ccc9ac94a619",
+  "testedTree": "c3cf6f6fe3ef32b9e2577ebac79586c1844c86cd",
+  "mergedTreeMatchesTested": true,
+  "status": "IMPLEMENTED_BUILD_VERIFIED_RUNTIME_VERIFIED_NATIVE_AGENT_VISUAL_REVIEW_PASS"
+}
