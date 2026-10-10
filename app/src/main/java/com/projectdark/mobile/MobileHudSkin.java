@@ -29,6 +29,12 @@ final class MobileHudSkin {
       default:p.setColor(0x887d806f);c.drawLine(-4,0,4,0,p);c.drawLine(0,-4,0,4,p);
     }p.setStyle(Paint.Style.FILL);p.setStrokeCap(Paint.Cap.BUTT);c.restore();
   }
+  static void potion(Canvas c,float x,float y,boolean hp){
+    p.setStyle(Paint.Style.FILL);p.setColor(0xff242a2d);c.drawRoundRect(x-7,y-5,x+7,y+9,4,4,p);
+    p.setShader(new LinearGradient(x-5,y,x+5,y+7,hp?0xffe99d9a:0xffa5dbef,hp?0xff983b42:0xff386bba,Shader.TileMode.CLAMP));c.drawRoundRect(x-5,y,x+5,y+7,2,2,p);p.setShader(null);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xffc6c7bb);c.drawRoundRect(x-7,y-5,x+7,y+9,4,4,p);c.drawRect(x-3,y-10,x+3,y-5,p);c.drawLine(x-3,y-1,x-3,y+4,p);
+    p.setStyle(Paint.Style.FILL);p.setColor(GOLD);c.drawRoundRect(x-4,y-12,x+4,y-9,1,1,p);
+  }
   static void minimap(Canvas c,RuntimeState state,float px,float py,float minX,float minY,float maxX,float maxY){
     final float cx=68,cy=73,r=49;ring(c,cx,cy,r+2,false);c.save();path.reset();path.addCircle(cx,cy,r-2,Path.Direction.CW);c.clipPath(path);
     String key=state.currentMapId()+":"+minX+":"+maxX+":"+minY+":"+maxY;
@@ -41,7 +47,7 @@ final class MobileHudSkin {
     }
     p.setColor(0xffffffff);c.drawBitmap(mapTerrain,null,new RectF(20,25,116,121),p);
     for(RuntimeState.Npc n:state.npcs())marker(c,n.x,n.y,minX,minY,maxX,maxY,0xffc3dfad,1.8f);
-    for(RuntimeState.Monster m:state.monsters())if(m.alive)marker(c,m.x,m.y,minX,minY,maxX,maxY,0xffd98a68,1.3f);
+    for(RuntimeState.Monster m:state.monsters())if(m.alive&&Math.abs(m.x-px)<600&&Math.abs(m.y-py)<360)marker(c,m.x,m.y,minX,minY,maxX,maxY,0xffd98a68,1.3f);
     float x=map(px,minX,maxX,22,114),y=map(py,minY,maxY,27,119);p.setColor(GOLD);path.reset();path.moveTo(x,y-4);path.lineTo(x-3,y+3);path.lineTo(x,y+1.5f);path.lineTo(x+3,y+3);path.close();c.drawPath(path,p);p.setStyle(Paint.Style.STROKE);p.setColor(0xccf8f1ca);p.setStrokeWidth(.7f);c.drawCircle(x,y,6,p);p.setStyle(Paint.Style.FILL);c.restore();
     UiTheme.center(c,"N",cx,31,7,GOLD,true);
   }

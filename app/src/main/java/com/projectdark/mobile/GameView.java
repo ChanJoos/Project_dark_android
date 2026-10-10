@@ -684,7 +684,7 @@ public final class GameView extends View {
   private void drawReferenceResourceBar(Canvas c,float l,float t,float r,float b,String label,int value,int max){
     float q=Math.max(0,Math.min(1,value/(float)Math.max(1,max)));
     UiTheme.text(c,label,l,t-6,9,UiTheme.MUTED,true);UiTheme.right(c,value+" / "+max,r,t-6,10,UiTheme.TEXT,true);
-    UiTheme.surface(c,new RectF(l,t,r,b),UiTheme.RAISED,0,4);if(q>0)UiTheme.surface(c,new RectF(l,t,l+(r-l)*q,b),label.equals("HP")?0xffe28d94:0xff81b4e8,0,4);
+    UiTheme.surface(c,new RectF(l,t,r,b),UiTheme.RAISED,0,4);if(q>0)UiTheme.surface(c,new RectF(l,t,l+(r-l)*q,b),label.equals("HP")?0xff91bd5f:0xff81b4e8,0,4);
   }
   private void rightAlignedText(Canvas c,String value,float right,float baseline,float size){p.setTextSize(size);p.setTypeface(UiTheme.font(true));float width=p.measureText(value);text(c,value,right-width,baseline,size);}
   private void drawQuickQuest(Canvas c){
@@ -741,7 +741,7 @@ private void drawUtilityRail(Canvas c){
   private RectF slotRect(int index){return slotRectStatic(index,hudRightOffset);}
   private void drawCombatCluster(Canvas c){
     for(int i=0;i<SkillBook.SLOT_COUNT;i++)skillWindow.drawHudSlot(c,slotRect(i),i,skillActions);
-    for(int i=0;i<2;i++){RectF r=MobileHudLayout.potion(i,hudRightOffset);MobileHudSkin.ring(c,r.centerX(),r.centerY(),r.width()/2,false);UiTheme.glyph(c,"potion",r.centerX(),r.centerY()-3,10,i==0?0xffe18d8d:0xff88b7df);UiTheme.center(c,""+inventoryQuantity(i==0?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION"),r.centerX(),r.bottom-3,8,UiTheme.TEXT,true);}
+    for(int i=0;i<2;i++){RectF r=MobileHudLayout.potion(i,hudRightOffset);MobileHudSkin.ring(c,r.centerX(),r.centerY(),r.width()/2,false);MobileHudSkin.potion(c,r.centerX(),r.centerY()-4,i==0);UiTheme.center(c,""+inventoryQuantity(i==0?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION"),r.centerX(),r.bottom-3,8,UiTheme.TEXT,true);}
     float d=hudRightOffset;MobileHudSkin.ring(c,ATK_X+d,ATK_Y,ATK_R,combat.attackReady()&&combat.hasUsableTarget());MobileHudSkin.icon(c,"attack",ATK_X+d,ATK_Y,14,false);
     MobileHudSkin.ring(c,AUTO_X+d,AUTO_Y,AUTO_R,autoAttackEnabled);UiTheme.center(c,"AUTO",AUTO_X+d,AUTO_Y+3,7,autoAttackEnabled?UiTheme.GOLD:UiTheme.TEXT,true);drawModeControl(c);
   }
