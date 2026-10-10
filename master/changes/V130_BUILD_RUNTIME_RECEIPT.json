@@ -1,0 +1,149 @@
+{
+  "source": "776afddbfd467443adbadf96dcd7845a6a792c87",
+  "tree": "2b4d96f31273f934801564cf976b44a55bb05f46",
+  "focusedRun": 38018432927,
+  "focusedJob": 114113850724,
+  "nativeArtifact": 11657256737,
+  "apkArtifact": 11657641600,
+  "counts": {
+    "tests": 102,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    "com.projectdark.mobile.AccessoryCatalogV125Test",
+    "com.projectdark.mobile.ClassicUiV126Test",
+    "com.projectdark.mobile.DualEquipmentV128Test",
+    "com.projectdark.mobile.EquipmentFoundationV124Test",
+    "com.projectdark.mobile.EquipmentPerformanceV130Test",
+    "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+    "com.projectdark.mobile.FullItemArtV127Test",
+    "com.projectdark.mobile.HudTouchAcceptanceTest",
+    "com.projectdark.mobile.ItemFunctionsV129Test",
+    "com.projectdark.mobile.ItemWindowReferenceTest",
+    "com.projectdark.mobile.ModernUiTest",
+    "com.projectdark.mobile.PoteRewardsV123Test",
+    "com.projectdark.mobile.RuntimeCheckpointTest",
+    "com.projectdark.mobile.SkillAbilityRuntimeTest",
+    "com.projectdark.mobile.SkillSpatialContractTest",
+    "com.projectdark.mobile.SkillWindowReferenceTest",
+    "com.projectdark.mobile.TownInteriorTest"
+  ],
+  "info": {
+    "sourceCommit": "776afddbfd467443adbadf96dcd7845a6a792c87",
+    "runId": "38018432927",
+    "versionCode": 130,
+    "versionName": "1.30-equipment-performance",
+    "applicationId": "com.projectdark.mobile.v130test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "64efb3ec51a77e7e1487f5efa7168ef530f7d6fc84a98589ea794dd1a40ed678",
+    "apkBytes": 61509492,
+    "builtSeoul": "2026-10-10T11:54:08.222554+09:00",
+    "scope": "408 registered-item descriptions/audit, sourced staff cast and fixed MP effects, deficit-only consumables, paired HP regeneration, partial numeric options and unchanged native-size artwork; unverified original effects and physical-phone acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "testedScope": "422 registered items; 56 explicit S weapon attack ranges in real enemy attacks; 14 named source shields with physical/magic mitigation and source options; actual inventory/equip/detail render and save/restart; retained skills, staff effects, dual equipment and original native pixels",
+  "buildInfoInheritedScopeNote": "BUILD_INFO.scope retains the V129 408-item wording; exact V130 scope and counts are recorded here and in native audits. Identity/version/source/hash fields independently verified.",
+  "weaponRanges": {
+    "historicalSourceBacked": 35,
+    "adaptedBaseline": 21,
+    "adaptedTrainingVariants": 12,
+    "unresolvedOriginalWeapons": 9
+  },
+  "namedShieldCount": 14,
+  "matchedPackagedFiles": 666,
+  "all56RealEnemyAttacksVerified": true,
+  "nativeZipSha256": "ddfa159fe3f12f063a588dc0bc09f40f325384f47a45f80c62bea592b47bad5a",
+  "apkZipSha256": "d21f98f4d4bbffc7e46ad9054c04f60bc738ec3ebe97c532632330d6c9086c18",
+  "savedApkLibraryId": "libfile_ed5f2bdeba88819197674dd9fadd357d",
+  "visualReview": "AGENT_NATIVE_RENDER_REVIEW_PASS",
+  "reviewedNativeImages": [
+    "all nine inventory pages",
+    "Aripel S4-20/L6-30/MP150",
+    "Gaia S150-210",
+    "Giant Stone Hammer S170-190",
+    "Magic Pana adapted8-8/Lunknown",
+    "Leather shieldAC-5",
+    "Gold shieldAC-15/MDEF20%",
+    "Deathknight shieldAC-25/MDEF30%/HIT3/DAM3/HP-500/MP-500/allStats1"
+  ],
+  "unchangedInitialV130NativeImages": {
+    "inventoryPages": 9,
+    "allWearableNameIconActorSheet": "BYTE_IDENTICAL"
+  },
+  "firstNativeFailure": {
+    "source": "ac60774a7340843b3516111daa38f11ae09c89c1",
+    "run": 38018054564,
+    "tests": 101,
+    "failures": 2,
+    "cause": "Two legacy EquipmentStatsAndDetailsTest assertions expected the prior Mokdo fallback; recovered 4-14 range yields midpoint9, starter physical21 and removal delta4. Final assertions verify the exact range and changed real outputs."
+  },
+  "remainingOriginalGaps": {
+    "weapons": [
+      {
+        "id": "IT_SHOP_WEAPON_MW004",
+        "name": "세이버"
+      },
+      {
+        "id": "IT_WARDROBE_MW007",
+        "name": "매직마르시아"
+      },
+      {
+        "id": "IT_WARDROBE_MW009",
+        "name": "매직쥬피티아"
+      },
+      {
+        "id": "IT_WARDROBE_MW011",
+        "name": "매스케이드"
+      },
+      {
+        "id": "IT_WARDROBE_MW012",
+        "name": "배틀소드"
+      },
+      {
+        "id": "IT_WARDROBE_MW026",
+        "name": "매직루나"
+      },
+      {
+        "id": "IT_WARDROBE_MW027",
+        "name": "매직가이아"
+      },
+      {
+        "id": "IT_WARDROBE_MW056",
+        "name": "실버시미터"
+      },
+      {
+        "id": "IT_WARDROBE_MW062",
+        "name": "매직파나"
+      }
+    ],
+    "namedShieldActorAppearance": "PENDING exact original correspondence; inventory icons and stats verified",
+    "LRangeCombatRouting": "PENDING; known L ranges displayed only",
+    "physicalPhoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING",
+    "originalWholeGameFunctionCompleteness": "NOT_VERIFIED",
+    "otherArmorHatNumericProfiles": 113
+  },
+  "integration": "MERGED_PR_185",
+  "fullAndroidRuns": [
+    {
+      "run": 38018432921,
+      "job": 114113850777,
+      "status": "SUCCESS",
+      "logsInspected": true
+    },
+    {
+      "run": 38018435228,
+      "job": 114113857993,
+      "status": "SUCCESS",
+      "logsInspected": true
+    }
+  ],
+  "all422RuntimeFunctionAudit": true,
+  "buildScopeMetadataFollowup": "Closure corrects the V130 verifier scope string for future builds; does not change delivered APK bytes or app runtime.",
+  "mergeSha": "38aad2d6bc8c612a73a8a0ed40eff1be30c81c65",
+  "mergedTree": "2b4d96f31273f934801564cf976b44a55bb05f46"
+}

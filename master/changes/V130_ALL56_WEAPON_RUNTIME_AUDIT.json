@@ -1,0 +1,635 @@
+[
+  {
+    "id": "IT_SHOP_WEAPON_MW004",
+    "name": "세이버",
+    "stats": {
+      "DAM": 7,
+      "HIT": 2,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 24,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_SHOP_WEAPON_MW005",
+    "name": "그라디우스",
+    "stats": {
+      "DAM": 9,
+      "HIT": 1,
+      "MinATK": 33,
+      "MaxATK": 43,
+      "LMinATK": 3,
+      "LMaxATK": 4
+    },
+    "actualPhysicalDamage": 56,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_ADAPTED_PLAYTEST_MOKDO",
+    "name": "목도",
+    "stats": {
+      "DAM": 3,
+      "HIT": 1,
+      "MinATK": 4,
+      "MaxATK": 14,
+      "LMinATK": 1,
+      "LMaxATK": 2
+    },
+    "actualPhysicalDamage": 21,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_TEST_WEAPON_MW002",
+    "name": "에페",
+    "stats": {
+      "MinATK": 20,
+      "MaxATK": 30,
+      "HIT": 3,
+      "DAM": 3,
+      "LMinATK": 1,
+      "LMaxATK": 2
+    },
+    "actualPhysicalDamage": 37,
+    "sourceNote": "2008년 패치 후 에페 S20~30 \/ L1~2"
+  },
+  {
+    "id": "IT_TEST_WEAPON_MW003",
+    "name": "커틀라스",
+    "stats": {
+      "DAM": 5,
+      "MinATK": 18,
+      "MaxATK": 28,
+      "LMinATK": 1,
+      "LMaxATK": 2
+    },
+    "actualPhysicalDamage": 37,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WEAPON_CHUNGRYONG",
+    "name": "청룡의숨결",
+    "stats": {
+      "MinATK": 1,
+      "MaxATK": 2,
+      "LMinATK": 1,
+      "LMaxATK": 2
+    },
+    "actualPhysicalDamage": 11,
+    "sourceNote": "확인된 청룡의숨결 공격력 S\/L 1~2"
+  },
+  {
+    "id": "IT_B_JOB_WARRIOR_WEAPON",
+    "name": "롱소드 · 수련",
+    "stats": {
+      "DAM": 4,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 21,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_JOB_ROGUE_WEAPON",
+    "name": "에페 · 수련",
+    "stats": {
+      "DAM": 4,
+      "HIT": 1,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 21,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_JOB_MAGE_WAND",
+    "name": "매직새티아 · 수련",
+    "stats": {
+      "DAM": 3,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 20,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_JOB_CLERIC_WAND",
+    "name": "홀리머큐리아 · 수련",
+    "stats": {
+      "DAM": 2,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 19,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_11",
+    "name": "롱소드 · 수련",
+    "stats": {
+      "DAM": 4,
+      "STR": 3,
+      "CON": 2,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 30,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_26",
+    "name": "롱소드 · 수련",
+    "stats": {
+      "DAM": 9,
+      "STR": 6,
+      "CON": 4,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 44,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_ROGUE_11",
+    "name": "에페 · 수련",
+    "stats": {
+      "DAM": 4,
+      "STR": 3,
+      "CON": 2,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 30,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_ROGUE_26",
+    "name": "에페 · 수련",
+    "stats": {
+      "DAM": 9,
+      "STR": 6,
+      "CON": 4,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 44,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_MAGE_11",
+    "name": "매직새티아 · 수련",
+    "stats": {
+      "DAM": 4,
+      "INT": 3,
+      "WIS": 2,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 21,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_MAGE_26",
+    "name": "매직새티아 · 수련",
+    "stats": {
+      "DAM": 9,
+      "INT": 6,
+      "WIS": 4,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 26,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_CLERIC_11",
+    "name": "홀리머큐리아 · 수련",
+    "stats": {
+      "DAM": 4,
+      "INT": 3,
+      "WIS": 2,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 21,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_B_CAMPAIGN_TOOL_CLERIC_26",
+    "name": "홀리머큐리아 · 수련",
+    "stats": {
+      "DAM": 9,
+      "INT": 6,
+      "WIS": 4,
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 26,
+    "sourceNote": "수련 장비 시험 공격력 8~8 · 추가 DAM\/능력치 별도 적용"
+  },
+  {
+    "id": "IT_WARDROBE_MW007",
+    "name": "매직마르시아",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_WARDROBE_MW009",
+    "name": "매직쥬피티아",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_WARDROBE_MW010",
+    "name": "매스커레이드",
+    "stats": {
+      "MinATK": 31,
+      "MaxATK": 41,
+      "LMinATK": 3,
+      "LMaxATK": 4
+    },
+    "actualPhysicalDamage": 45,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW011",
+    "name": "매스케이드",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_WARDROBE_MW012",
+    "name": "배틀소드",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_WARDROBE_MW013",
+    "name": "블랙데쓰",
+    "stats": {
+      "MinATK": 34,
+      "MaxATK": 54,
+      "LMinATK": 4,
+      "LMaxATK": 6
+    },
+    "actualPhysicalDamage": 53,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW014",
+    "name": "프렘벨",
+    "stats": {
+      "MinATK": 40,
+      "MaxATK": 60,
+      "LMinATK": 3,
+      "LMaxATK": 5
+    },
+    "actualPhysicalDamage": 59,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW016",
+    "name": "투핸드크레이모어",
+    "stats": {
+      "MinATK": 140,
+      "MaxATK": 180,
+      "LMinATK": 12,
+      "LMaxATK": 16
+    },
+    "actualPhysicalDamage": 169,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW017",
+    "name": "스틸라",
+    "stats": {
+      "MinATK": 49,
+      "MaxATK": 69,
+      "LMinATK": 5,
+      "LMaxATK": 7
+    },
+    "actualPhysicalDamage": 68,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW018",
+    "name": "투핸드에메랄드소드",
+    "stats": {
+      "MinATK": 124,
+      "MaxATK": 164,
+      "LMinATK": 14,
+      "LMaxATK": 18
+    },
+    "actualPhysicalDamage": 153,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW019",
+    "name": "투핸드드래곤크로어",
+    "stats": {
+      "MinATK": 180,
+      "MaxATK": 240
+    },
+    "actualPhysicalDamage": 219,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW020",
+    "name": "드래곤슬레이어",
+    "stats": {
+      "MinATK": 385,
+      "MaxATK": 425,
+      "LMinATK": 10,
+      "LMaxATK": 13
+    },
+    "actualPhysicalDamage": 414,
+    "sourceNote": "2006년 자료 S385~425 \/ L10~13"
+  },
+  {
+    "id": "IT_WARDROBE_MW021",
+    "name": "투핸드그레이트소드",
+    "stats": {
+      "MinATK": 134,
+      "MaxATK": 194,
+      "LMinATK": 15,
+      "LMaxATK": 21
+    },
+    "actualPhysicalDamage": 173,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW022",
+    "name": "투핸드엑시큐터",
+    "stats": {
+      "MinATK": 160,
+      "MaxATK": 220
+    },
+    "actualPhysicalDamage": 199,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW023",
+    "name": "투핸드가이아두스",
+    "stats": {
+      "MinATK": 150,
+      "MaxATK": 210
+    },
+    "actualPhysicalDamage": 189,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW026",
+    "name": "매직루나",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_WARDROBE_MW027",
+    "name": "매직가이아",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_WARDROBE_MW029",
+    "name": "채찍",
+    "stats": {
+      "MinATK": 20,
+      "MaxATK": 80
+    },
+    "actualPhysicalDamage": 59,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW034",
+    "name": "우든클럽",
+    "stats": {
+      "MinATK": 90,
+      "MaxATK": 110
+    },
+    "actualPhysicalDamage": 109,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW035",
+    "name": "스파이크클럽",
+    "stats": {
+      "MinATK": 40,
+      "MaxATK": 60
+    },
+    "actualPhysicalDamage": 59,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW036",
+    "name": "자이언트클럽",
+    "stats": {
+      "MinATK": 90,
+      "MaxATK": 110
+    },
+    "actualPhysicalDamage": 109,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW037",
+    "name": "자이언트스톤클럽",
+    "stats": {
+      "MinATK": 180,
+      "MaxATK": 220
+    },
+    "actualPhysicalDamage": 209,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW039",
+    "name": "액스",
+    "stats": {
+      "MinATK": 35,
+      "MaxATK": 45
+    },
+    "actualPhysicalDamage": 49,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW040",
+    "name": "하이브레이질액스",
+    "stats": {
+      "MinATK": 60,
+      "MaxATK": 80
+    },
+    "actualPhysicalDamage": 79,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW041",
+    "name": "자이언트스톤액스",
+    "stats": {
+      "MinATK": 80,
+      "MaxATK": 110
+    },
+    "actualPhysicalDamage": 104,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW043",
+    "name": "배틀액스",
+    "stats": {
+      "MinATK": 80,
+      "MaxATK": 110
+    },
+    "actualPhysicalDamage": 104,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW044",
+    "name": "자이언트스톤해머",
+    "stats": {
+      "MinATK": 170,
+      "MaxATK": 190
+    },
+    "actualPhysicalDamage": 189,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW047",
+    "name": "시미터",
+    "stats": {
+      "MinATK": 80,
+      "MaxATK": 110,
+      "LMinATK": 9,
+      "LMaxATK": 12
+    },
+    "actualPhysicalDamage": 104,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW048",
+    "name": "더브릴",
+    "stats": {
+      "MinATK": 190,
+      "MaxATK": 220,
+      "LMinATK": 18,
+      "LMaxATK": 21
+    },
+    "actualPhysicalDamage": 214,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW049",
+    "name": "타고나이트채찍",
+    "stats": {
+      "MinATK": 90,
+      "MaxATK": 110
+    },
+    "actualPhysicalDamage": 109,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW050",
+    "name": "미스릴채찍",
+    "stats": {
+      "MinATK": 90,
+      "MaxATK": 100
+    },
+    "actualPhysicalDamage": 104,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW051",
+    "name": "루비채찍",
+    "stats": {
+      "MinATK": 90,
+      "MaxATK": 100
+    },
+    "actualPhysicalDamage": 104,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW053",
+    "name": "타고나이트액스",
+    "stats": {
+      "MinATK": 95,
+      "MaxATK": 120
+    },
+    "actualPhysicalDamage": 117,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW055",
+    "name": "하이브레이질배틀액스",
+    "stats": {
+      "MinATK": 234,
+      "MaxATK": 284
+    },
+    "actualPhysicalDamage": 268,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW056",
+    "name": "실버시미터",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  },
+  {
+    "id": "IT_WARDROBE_MW059",
+    "name": "매직솔라",
+    "stats": {
+      "MinATK": 4,
+      "MaxATK": 20,
+      "LMinATK": 6,
+      "LMaxATK": 30
+    },
+    "actualPhysicalDamage": 21,
+    "sourceNote": "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님"
+  },
+  {
+    "id": "IT_WARDROBE_MW060",
+    "name": "아리펠스탭",
+    "stats": {
+      "MinATK": 4,
+      "MaxATK": 20,
+      "LMinATK": 6,
+      "LMaxATK": 30,
+      "MP": 150
+    },
+    "actualPhysicalDamage": 21,
+    "sourceNote": "2019년 자료: 아리펠스탭 S4~20 \/ L6~30 · MP +150"
+  },
+  {
+    "id": "IT_WARDROBE_MW062",
+    "name": "매직파나",
+    "stats": {
+      "MinATK": 8,
+      "MaxATK": 8
+    },
+    "actualPhysicalDamage": 17,
+    "sourceNote": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)"
+  }
+]

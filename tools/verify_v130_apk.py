@@ -57,7 +57,7 @@ for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','play
     assert ':drawable/'+drawable in resource_table, drawable
 info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v130test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope='408 registered-item descriptions/audit, sourced staff cast and fixed MP effects, deficit-only consumables, paired HP regeneration, partial numeric options and unchanged native-size artwork; unverified original effects and physical-phone acceptance pending',
+            scope='422 registered items; 56 explicit S weapon attack ranges and 14 named shield profiles; known historical L ranges displayed only; sourced staff effects, consumables and paired regeneration retained; original native pixels preserved; nine original weapon ranges, named shield actor appearance, L combat routing and physical-phone acceptance pending',
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance='PENDING')
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))
