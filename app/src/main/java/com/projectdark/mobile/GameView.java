@@ -272,6 +272,8 @@ public final class GameView extends View {
     public boolean save(){return saveSkillSlots();}
     public void testMode(boolean enabled){setSkillTestMode(enabled);}
     public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,"SK_공통_001".equals(id)?RuntimeCombatSession.playerAttackActionId(equipmentActions.resolveBasicAttack(state.rpg()).animationAction):id);}
+    public float castSeconds(String id){return combatSession.effectiveCastSeconds(id);}
+    public int mpCost(String id,int base){return combatSession.effectiveMpCost(id);}
     public String requirements(SkillBook.Entry e){return new SkillAcquisition(skillBook).description(e,state.rpg());}
     public void notice(String text){showFeedback(text,FeedbackTone.INFO);}
   };
@@ -802,7 +804,8 @@ private void drawUtilityRail(Canvas c){String[] labels={"가방","능력치","�
   private void activateInventoryItem(){
     String selected=rpgInteraction.selectedInventoryItemId();
     if(state.rpg().isRecall(selected)){if(state.rpg().useMillesRecall(state)==RpgProgressionState.UseResult.USED){if(inReagentShop)leaveReagentShop();if(inPoteField)leavePoteField();state.player().x=WorldDef.PLAYER_SPAWN_X;state.player().y=WorldDef.PLAYER_SPAWN_Y;worldAdapter.cancelForAction();worldAdapter.snapCameraToPlayer();inventoryOpen=false;checkpoint();showFeedback("밀레스마을로 귀환했습니다",FeedbackTone.INFO);}return;}
-    if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"회복 시약을 사용했습니다":used==RpgProgressionState.UseResult.NO_EFFECT?"HP가 이미 가득 찼습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return;}
+    if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"아이템 효과를 적용했습니다":used==RpgProgressionState.UseResult.NO_EFFECT?"적용할 효과가 없습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return;}
+    RpgProgressionState.ItemDefinition selectedDef=state.rpg().itemDefinitions().get(selected);if(selectedDef!=null&&!selectedDef.equippable()){showFeedback(String.join(" · ",ItemEffects.description(selectedDef)),FeedbackTone.WARN);return;}
     RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);
   }
 

@@ -245,6 +245,7 @@ public final class RpgProgressionState {
     registerCampaignEquipment();
     SourceAccessoryCatalog.register(this);
     SourceWardrobeCatalog.install(this);
+    SourceItemFunctions.install(this);
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
@@ -281,6 +282,14 @@ public final class RpgProgressionState {
     Map<String,Integer> merged=new LinkedHashMap<>(def.statModifiers);merged.putAll(old.statModifiers);
     Map<String,Integer> canonical=SourceEquipmentStats.forItem(def.itemId);if(canonical!=null)merged.putAll(canonical);
     items.put(def.itemId,new ItemDefinition(old.itemId,old.name,old.equipSlot,old.appearanceId,old.basicAttackAction,old.requiredLevel,old.allowedJobCodes,old.jobRestrictionResolved,old.attackElement,old.defenseElement,merged,Evidence.ADAPTED));
+  }
+  void fillSourceOptions(String id,Map<String,Integer> values,Integer level){
+    ItemDefinition d=items.get(id);if(d==null||d.evidence!=Evidence.PENDING)return;
+    items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,level,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,values,Evidence.V));
+  }
+  void addSourceOptions(String id,Map<String,Integer> values){
+    ItemDefinition d=items.get(id);if(d==null)return;Map<String,Integer> m=new LinkedHashMap<>(d.statModifiers);m.putAll(values);
+    items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,m,d.evidence));
   }
   /** Identity correction keeps stable save IDs and established numeric modifiers. */
   void rebindSourceIdentity(String id,String name,String appearance){
@@ -478,15 +487,21 @@ public final class RpgProgressionState {
    * Direct-inventory endpoint for a reward whose item identity and quantity were already resolved upstream.
    * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
    */
-  public boolean isConsumable(String itemId){return B5_SMALL_HP_POTION_ITEM_ID.equals(itemId)||"IT_REAGENT_CURUM".equals(itemId)||"IT_REAGENT_EXCURANUM".equals(itemId)||"IT_B_MP_POTION".equals(itemId);}
+  public boolean isConsumable(String itemId){return ItemEffects.usable(itemId);}
   public UseResult useQuickConsumable(String id,RuntimeState runtime){UseResult result=useConsumable(id,runtime);if(result==UseResult.USED)campaign.quickUse(id,this);return result;}
   public UseResult useConsumable(String itemId,RuntimeState runtime){
     Integer owned=inventory.get(itemId);if(owned==null||owned<=0)return UseResult.ITEM_NOT_OWNED;
     if(!isConsumable(itemId)||runtime==null)return UseResult.NOT_CONSUMABLE;
-    if("IT_B_MP_POTION".equals(itemId)){if(runtime.player().mp>=runtime.player().maxMp)return UseResult.NO_EFFECT;runtime.player().mp=Math.min(runtime.player().maxMp,runtime.player().mp+100);if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);campaign.healed(itemId);return UseResult.USED;}
-    if(runtime.player().hp>=runtime.player().maxHp)return UseResult.NO_EFFECT;
-    int amount="IT_REAGENT_EXCURANUM".equals(itemId)?10000:"IT_REAGENT_CURUM".equals(itemId)?100:B5_SMALL_HP_POTION_HEAL;
-    runtime.player().hp=Math.min(runtime.player().maxHp,runtime.player().hp+amount);
+    RuntimeState.Player p=runtime.player();if(!p.alive||p.hp<=0)return UseResult.NO_EFFECT;
+    if(REAGENT_DIBENOMUM_ITEM_ID.equals(itemId)){
+      if(!runtime.skillEffects().has("player","POISON"))return UseResult.NO_EFFECT;
+      runtime.skillEffects().remove("player","POISON");
+    }else{
+      int hp=ItemEffects.healHp(itemId),mp=ItemEffects.healMp(itemId);
+      if(hp>0&&p.hp>=p.maxHp||mp>0&&p.mp>=p.maxMp)return UseResult.NO_EFFECT;
+      if(hp>0)p.hp=(int)Math.min(p.maxHp,(long)p.hp+hp);
+      if(mp>0)p.mp=(int)Math.min(p.maxMp,(long)p.mp+mp);
+    }
     if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);
     campaign.healed(itemId);return UseResult.USED;
   }

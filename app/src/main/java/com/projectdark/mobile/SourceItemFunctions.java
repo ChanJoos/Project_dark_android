@@ -1,0 +1,78 @@
+package com.projectdark.mobile;
+import java.util.*;
+/** Generated from retained per-field source receipts. Unknown original fields stay pending. */
+final class SourceItemFunctions {
+ static void install(RpgProgressionState r){
+  r.fillSourceOptions("IT_WARDROBE_MU0000011",stats("AC",-16),11);
+  r.fillSourceOptions("IT_WARDROBE_MU0000016",stats("AC",-24),41);
+  r.fillSourceOptions("IT_WARDROBE_MU0000013",stats("AC",-19),11);
+  r.fillSourceOptions("IT_WARDROBE_MU0000008",stats("AC",-29),41);
+  r.fillSourceOptions("IT_WARDROBE_MU0000018",stats("AC",-38),71);
+  r.fillSourceOptions("IT_WARDROBE_MU0000023",stats("AC",-48),99);
+  r.fillSourceOptions("IT_WARDROBE_MU0000012",stats("AC",-24),26);
+  r.fillSourceOptions("IT_WARDROBE_MU0000017",stats("AC",-30),41);
+  r.fillSourceOptions("IT_WARDROBE_MU0000022",stats("AC",-36),56);
+  r.fillSourceOptions("IT_WARDROBE_MU0000028",stats("AC",-43),71);
+  r.fillSourceOptions("IT_WARDROBE_MU0000027",stats("AC",-49),86);
+  r.fillSourceOptions("IT_WARDROBE_MU0000029",stats("AC",-55),99);
+  r.fillSourceOptions("IT_WARDROBE_MU0000014",stats("AC",-30),41);
+  r.fillSourceOptions("IT_WARDROBE_MU0000019",stats("AC",-40),71);
+  r.fillSourceOptions("IT_WARDROBE_MU0000024",stats("AC",-50),99);
+  r.fillSourceOptions("IT_WARDROBE_MH162",stats("AC",-7,"HP",300,"MP",-500,"MAGIC_DEFENSE",1),null);
+  r.fillSourceOptions("IT_WARDROBE_MH163",stats("AC",-12,"HP",400,"MP",500,"MAGIC_DEFENSE",1),null);
+  r.fillSourceOptions("IT_WARDROBE_MH165",stats("AC",-8,"HP",800,"MP",200,"MAGIC_DEFENSE",1),null);
+  r.fillSourceOptions("IT_WARDROBE_MH166",stats("AC",-7,"HP",300,"MP",600,"MAGIC_DEFENSE",1),null);
+  r.fillSourceOptions("IT_WARDROBE_MH167",stats("AC",-7,"HP",300,"MP",-500,"MAGIC_DEFENSE",1),null);
+  r.fillSourceOptions("IT_WARDROBE_MH171",stats("AC",-7,"HP",300,"MP",600,"MAGIC_DEFENSE",1),null);
+  r.addSourceOptions("IT_SOURCE_146_REDMARINE_4BEA9E11",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_146_KAENHORUDEITO_964F13A2",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_146_KAZEHORUDEITO_FDA3F599",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_146_DAITIHORUDEITO_6523D03A",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_146_UMIHORUDEITO_652BB8EC",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_155_GURINHATOGURI_871D87FC",stats("REGEN",5));
+  r.addSourceOptions("IT_SOURCE_155_REDOHATOGURI_BA65AE3F",stats("REGEN",5));
+  r.addSourceOptions("IT_SOURCE_155_SANGOGURI_48B5B5B7",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_155_AKUAGURI_C4398D7E",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_155_YUMOU_47B94777",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_155_RYUGURI_A6E43C6B",stats("REGEN",5));
+  r.addSourceOptions("IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103",stats("REGEN",5));
+  r.addSourceOptions("IT_SOURCE_155_AB10_A6AAE9C2",stats("REGEN",5));
+  r.addSourceOptions("IT_SOURCE_170_NOESGLOVE51_9D8ACFE8",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_170_NOESGLOVE81_7DBCEB08",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_170_NOESUDEWA51_63C1878A",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_170_NOESUDEWA81_1D924113",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_170_NOESUDEWAMAS_C12A1A72",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_193_SUZAKUNOBERUTO_C5505038",stats("REGEN",1));
+  r.addSourceOptions("IT_SOURCE_197_HICRYSTAL_A94FCE06",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_197_KAZECRYSTAL_2C35EA1B",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_197_TICRYSTAL_A90E7D50",stats("REGEN",10));
+  r.addSourceOptions("IT_SOURCE_197_UMICRYSTAL_21B5EDA7",stats("REGEN",10));
+ }
+ static String unresolved(String id){switch(id){
+ case "IT_SOURCE_146_RI-ZENTO_DC68008A":return "경험치 증가·시간별 내구 소모는 원작 규칙 미확정으로 적용되지 않습니다.";
+ case "IT_SOURCE_146_REDMARINE_4BEA9E11":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_146_KAENHORUDEITO_964F13A2":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_146_DAITIHORUDEITO_6523D03A":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_146_UMIHORUDEITO_652BB8EC":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_GURINHATOGURI_871D87FC":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_REDOHATOGURI_BA65AE3F":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_SANGOGURI_48B5B5B7":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_AKUAGURI_C4398D7E":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_YUMOU_47B94777":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_RYUGURI_A6E43C6B":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_155_AB10_A6AAE9C2":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_170_NOESGLOVE51_9D8ACFE8":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_170_NOESGLOVE81_7DBCEB08":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_170_NOESUDEWA51_63C1878A":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_170_NOESUDEWA81_1D924113":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_197_HICRYSTAL_A94FCE06":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_197_TICRYSTAL_A90E7D50":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ case "IT_SOURCE_197_UMICRYSTAL_21B5EDA7":return "재생력은 HP 추가 회복에 적용됩니다. 원작 공식 충돌로 시험식을 사용합니다.";
+ default:return "";}}
+ private static Map<String,Integer> stats(Object... kv){Map<String,Integer> m=new LinkedHashMap<>();for(int i=0;i<kv.length;i+=2)m.put((String)kv[i],(Integer)kv[i+1]);return m;}
+}

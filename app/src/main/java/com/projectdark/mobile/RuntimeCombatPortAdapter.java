@@ -35,6 +35,13 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(begin&&a!=null&&a.damage()&&recipients(actor,target,id).isEmpty())return CombatResolver.RejectReason.TARGET_DEAD;
     return null;
   }
+  public CombatResolver.Definition resolveDefinition(String actor,CombatResolver.Definition d){
+    if(!"player".equals(actor)||d.kind!=CombatResolver.ActionKind.MAGIC)return d;
+    SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(d.actionId);
+    int base=a==null?d.resourceCost:a.mpCost;
+    float time=ItemEffects.castSeconds(state.rpg(),d.actionId,ItemEffects.baseCast(d.actionId,d.hitTime));
+    return new CombatResolver.Definition(d.actionId,d.kind,d.state,d.effectType,d.requiresLearned,ItemEffects.mpCost(state.rpg(),d.actionId,base),d.cooldown,d.range,time,d.damage);
+  }
   public void prepareAction(String actor,String id){abilities.prepare(actor,id);}
   public void finishAction(String actor,String id){abilities.finish(actor,id);directions.remove(actor+":"+id);}
   private final LineOfSightPort lineOfSight;

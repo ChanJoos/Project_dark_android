@@ -1,0 +1,34 @@
+{
+  "changeId": "ITEM-FUNCTIONS-V129",
+  "status": "ACCEPTED",
+  "authorization": "2026-10-10 user: implement all registered item functions and explanations; explicit GitHub approval persists",
+  "before": {
+    "registered": 408,
+    "magicPanaEffect": false,
+    "curanumUse": false,
+    "specialDescriptions": false
+  },
+  "after": {
+    "registered": 408,
+    "centralEffectAuthority": "ItemEffects",
+    "exactPartialNumericProfiles": 21,
+    "regenerationProfiles": 23,
+    "knownStaffProfiles": 9,
+    "unsupportedEffectsDisclosed": true
+  },
+  "evidence": [
+    "master/source/equipment/functions_v129/provenance.json",
+    "master/source/equipment/functions_v129/numeric_receipts.json",
+    "master/source/equipment/functions_v129/special_receipts.json"
+  ],
+  "unresolved": [
+    "Original whole-game completeness not verified",
+    "151 wardrobe additions still lack verified numeric options",
+    "Party/coma targeting unsupported; Komadium not consumed",
+    "XP, durability and expiry effects unsupported",
+    "Regeneration formula adapted because historical examples conflict",
+    "Dibenomum self-antidote is an explicitly adapted trial pending item rule",
+    "Unsourced spell base cast times stay project timings"
+  ],
+  "verification": "PENDING_EXACT_CI_AND_PHONE"
+}

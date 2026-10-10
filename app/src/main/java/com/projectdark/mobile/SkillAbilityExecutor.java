@@ -21,7 +21,7 @@ final class SkillAbilityExecutor {
   if(a.formula.equals("CRASH")&&p.hp>Math.max(1,state.rpg().finalStats().maxHp*.02))return CombatResolver.RejectReason.RESOURCE;
   if(a.formula.equals("DARA")&&(p.mp<1440||p.hp<=1))return CombatResolver.RejectReason.RESOURCE;
   if(a.formula.equals("SEMELIA")&&p.mp<=3240||a.formula.equals("METEOR")&&p.mp<=12960)return CombatResolver.RejectReason.RESOURCE;
-  if((a.allMp&&p.mp<=0)||begin&&p.mp<a.mpCost)return CombatResolver.RejectReason.RESOURCE;
+  if((a.allMp&&p.mp<=0)||begin&&p.mp<ItemEffects.mpCost(state.rpg(),id,a.mpCost))return CombatResolver.RejectReason.RESOURCE;
   if(Arrays.asList("SOUL","ASSASSIN","ASSASSIN_PLUS","HP_BURST","DALMA").contains(a.formula)&&p.hp<=1)return CombatResolver.RejectReason.RESOURCE;
   RuntimeState.Monster m=SkillEffectState.monster(state,target);
   if(a.status.equals("DRAIN")&&(m==null||m.hp>=m.maxHp*.05))return CombatResolver.RejectReason.CONTROL;
