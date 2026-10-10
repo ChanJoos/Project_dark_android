@@ -21,6 +21,9 @@ def runtime_items():
   for id,e in j['existing'].items():
    if id in rows:rows[id]=e['name']+(' · 수련' if e['adaptedVariant'] else '')
   for e in j['additions']:rows[e['itemId']]=e['name']
+ performance=ROOT/'master/source/equipment/stats_v130/catalog.json'
+ if performance.exists():
+  for e in json.loads(performance.read_text())['shields']:rows[e['id']]=e['name']
  return rows
 # source page + first-cell image filename; different pages may use identical filenames.
 CHOICES={
@@ -68,6 +71,9 @@ for job,page,filename,tool in [('WARRIOR',164,'L86_male.gif','IT_B_JOB_WARRIOR_W
   CHOICES[f'IT_B_CAMPAIGN_{job}_{lv}']=(page,filename,'ADAPTED_VISUAL_EQUIVALENT')
   if tool:CHOICES[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']=CHOICES[tool]
   else:REUSE[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']='IT_GLOVE_LEATHER' if lv==11 else 'IT_SOURCE_170_KINTEBUKURO_7E1109C9'
+for e in json.loads((ROOT/'master/source/equipment/stats_v130/catalog.json').read_text())['shields']:
+ CHOICES[e['id']]=(196,e['iconSource'].split('_',1)[1],'EXACT_SOURCE_KOREAN_LABEL')
+
 def main():
  APP.mkdir(parents=True,exist_ok=True)
  if not (SRC/'raw').exists():
@@ -118,7 +124,12 @@ def main():
   for ident,e in j['existing'].items():
    if ident in items:items[ident]=dict(j['icons'][e['appearanceId']],itemId=ident)
   for e in j['additions']:items[e['itemId']]=dict(j['icons'][e['appearanceId']],itemId=e['itemId'])
- runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==408
+ performance=ROOT/'master/source/equipment/stats_v130/catalog.json'
+ if performance.exists():
+  for e in json.loads(performance.read_text())['shields']:
+   original=e['iconSource'];name=original.split('_',1)[1];base=next(r for r in audit if r.get('sourceMember')=='raw/'+original)
+   items[e['id']]=dict(base,itemId=e['id'],identityMatch='EXACT_SOURCE_KOREAN_LABEL',limitation='Exact named inventory icon; wearable appearance ID unverified and unbound.')
+ runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==422
  manifest=dict(revision='IDENTITY_FIRST_NATIVE_SIZE_V128',registeredItems=len(items),policy='Every current item has an explicit original inventory-art binding. Source RGB retained, native-size presentation. Exact wearable identities replace visual equivalents; missing dedicated inventory illustrations and unknown names/stats remain explicitly recorded.',items=items)
  (APP/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
  (SRC/'bindings.json').write_text(json.dumps(dict(currentItems=len(items),newSourceBindings=len(audit),reusedSourceBindings=len(REUSE),items={k:dict(name=runtime[k],assetPath=v['assetPath'],identityMatch=v['identityMatch'])for k,v in items.items()}),ensure_ascii=False,indent=2)+'\n')

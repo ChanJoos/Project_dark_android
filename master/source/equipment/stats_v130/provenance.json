@@ -1,0 +1,44 @@
+[
+  {
+    "path": "master/source/equipment/stats_v130/nexon_2097.html",
+    "url": "https://lod.nexon.com/community/game/2097?SearchBoard=1",
+    "sha256": "e106961d21b15150b9ee27eb638d475755b5f89329cd6262c3b22049b1cc4c6a",
+    "authority": "NEXON_HOSTED_COMMUNITY_HISTORICAL",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/stats_v130/atwiki_196.html",
+    "url": "https://w.atwiki.jp/takesi100/pages/196.html",
+    "sha256": "dad20d03be31f8999241d930012fbf3cf738993c0c677d0c1699e91b277cbfee",
+    "authority": "HISTORICAL_FAN",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/stats_v130/atwiki_250.html",
+    "url": "https://w.atwiki.jp/takesi100/pages/250.html",
+    "sha256": "e442bbc64959359c89d3462f6c1cd11f154369424ea3cd8b56e7a2294c9ee272",
+    "authority": "HISTORICAL_FAN",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/stats_v130/atwiki_217.html",
+    "url": "https://w.atwiki.jp/takesi100/pages/217.html",
+    "sha256": "54a6465ba12dce83149c33dc37f0732a553091aa6ac05ac58ce0629734b8b02f",
+    "authority": "HISTORICAL_FAN",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/stats_v130/atwiki_81.html",
+    "url": "https://w.atwiki.jp/takesi100/pages/81.html",
+    "sha256": "5d6169bc8d9a3dff9f7272a3f94d7dcec31186e329ee8aba7aa768203a675688",
+    "authority": "HISTORICAL_FAN",
+    "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/stats_v130/nexon_1487.html",
+    "url": "https://lod.nexon.com/community/game/1487?SearchBoard=1",
+    "sha256": "263becd3b8b9f485beacadebe41de7776bcac4cacd4dd04bbe7776f6e1636ed9",
+    "authority": "NEXON_HOSTED_COMMUNITY_HISTORICAL",
+    "retrieved": "2026-10-10"
+  }
+]

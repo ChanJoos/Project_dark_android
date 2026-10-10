@@ -57,8 +57,19 @@ final class ItemWindow {
     txt(c,d.requiredLevel==null?"레벨 조건 확인 중":"Lv."+d.requiredLevel+" 이상 장착 가능",b.left+76,b.top+96,12,0xffd0ccbf);if(row!=null)txt(c,r.equipmentSandbox()?"테스트: 레벨·직업 조건 면제":presentation.requirementLabel(row),b.left+76,b.top+115,11,0xffc4b79c);
     button(c,new RectF(b.left+14,b.top+126,b.left+130,b.top+150),"능력치");button(c,new RectF(b.left+142,b.top+126,b.left+268,b.top+150),"효과 · 설명");
     RectF opts=new RectF(b.left+14,b.top+156,b.right-14,b.bottom-48);border(c,opts,UiTheme.LINE);if(effectDetails||!d.equippable()){drawEffects(c,d,opts);return;}int n=0;
-    String[] keys={"MinATK","MaxATK","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX","REGEN"};
-    for(String key:keys){int value=mod(d,key),prior=mod(old,key);if(value==0&&prior==0)continue;float yy=opts.top+14+(n%7)*10,xx=opts.left+(n/7)*opts.width()/2;txt(c,key.equals("MinATK")?"최소 공격":key.equals("MaxATK")?"최대 공격":key.equals("MAGIC_DEFENSE")?"마법방어":key.equals("REGEN")?"재생력":key,xx+8,yy,10,0xffdcd8cd);txt(c,""+value,xx+81,yy,11,0xffebe5d8);int delta=value-prior;if(old!=null&&delta!=0){boolean good=key.equals("AC")?delta<0:delta>0;txt(c,(good?"▲ ":"▼ ")+Math.abs(delta),xx+115,yy,10,good?0xff6dda59:0xffed8074);}n++;}if(n==0)txt(c,d.attackElement!=null||d.defenseElement!=null?"속성 장비":d.equippable()?"수치 자료 확인 중":"추가 능력치 없음",opts.left+9,opts.top+24,12,0xffaaa696);
+    String[] keys={"ATTACK_S","ATTACK_L","AC","HIT","DAM","MAGIC_DEFENSE","HP","MP","STR","INT","WIS","CON","DEX","REGEN"};
+    for(String key:keys){
+      boolean range=key.startsWith("ATTACK_");String minKey=key.equals("ATTACK_S")?"MinATK":"LMinATK",maxKey=key.equals("ATTACK_S")?"MaxATK":"LMaxATK";
+      int value=range?mod(d,maxKey):mod(d,key),prior=range?mod(old,maxKey):mod(old,key);
+      if(value==0&&prior==0)continue;
+      float yy=opts.top+14+(n%7)*10,xx=opts.left+(n/7)*opts.width()/2;
+      String label=key.equals("ATTACK_S")?"무기공격(S)":key.equals("ATTACK_L")?"무기공격(L)":key.equals("MAGIC_DEFENSE")?"마법방어":key.equals("REGEN")?"재생력":key;
+      String shown=range?(d.statModifiers.containsKey(maxKey)?mod(d,minKey)+"~"+value:"미확인"):""+value;
+      if(key.equals("MAGIC_DEFENSE"))shown+="%";
+      txt(c,label,xx+8,yy,10,0xffdcd8cd);txt(c,shown,xx+82,yy,10,0xffebe5d8);
+      int delta=value-prior;if(old!=null&&delta!=0){boolean good=key.equals("AC")?delta<0:delta>0;txt(c,(good?"▲ ":"▼ ")+Math.abs(delta),xx+148,yy,9,good?0xff6dda59:0xffed8074);}n++;
+    }
+    if(n==0)txt(c,d.attackElement!=null||d.defenseElement!=null?"속성 장비":d.equippable()?"수치 자료 확인 중":"추가 능력치 없음",opts.left+9,opts.top+24,12,0xffaaa696);
     if(d.attackElement!=null||d.defenseElement!=null)txt(c,(d.attackElement!=null?"공격 속성 "+d.attackElement:"방어 속성 "+d.defenseElement),opts.left+9,opts.bottom-7,10,0xffd5bd7c);
   }
   void drawEffects(Canvas c,RpgProgressionState.ItemDefinition d,RectF b){

@@ -246,6 +246,7 @@ public final class RpgProgressionState {
     SourceAccessoryCatalog.register(this);
     SourceWardrobeCatalog.install(this);
     SourceItemFunctions.install(this);
+    SourceEquipmentPerformance.install(this);
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
@@ -286,6 +287,12 @@ public final class RpgProgressionState {
   void fillSourceOptions(String id,Map<String,Integer> values,Integer level){
     ItemDefinition d=items.get(id);if(d==null||d.evidence!=Evidence.PENDING)return;
     items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,level,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,values,Evidence.V));
+  }
+  /** Reviewed ranges merge without erasing existing DAM, effects or stable save identities. */
+  void installEquipmentPerformance(String id,Map<String,Integer> values,Integer sourceLevel,Evidence evidence){
+    ItemDefinition d=items.get(id);if(d==null)throw new IllegalArgumentException("Unknown performance item "+id);
+    Map<String,Integer> m=new LinkedHashMap<>(d.statModifiers);m.putAll(values);
+    items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel!=null?d.requiredLevel:sourceLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,m,evidence));
   }
   void fillSourceLevel(String id,int level){
     ItemDefinition d=items.get(id);if(d==null||d.requiredLevel!=null)return;

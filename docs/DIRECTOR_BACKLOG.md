@@ -1,3 +1,9 @@
+## 2026-10-10 — V130 weapon/shield performance repair (in progress)
+
+DEVICE_FAILED_USER_REPORTED: V129 weapons appear without performance and named shields are missing. REPRODUCED:38 source-named wardrobe weapons have empty modifiers; all fall back to8, and only3 unnamed adapted shields are registered. Director/Game single editor, branch codex/equipment-performance-v130, base42bc3eda36272eba9294115c54d9c9be5d8543ac.
+
+IMPLEMENTED candidate:56 explicit weapon S ranges (34 historical source-backed;22 adapted preserved8~8 including11 training/11 unresolved originals),14 named shields with exact inventory artwork, AC/MDEF and known negative resource/all-stat options. Existing S midpoint/STR/DAM and defense pipeline retained; source L ranges displayed only, continent/size routing unverified. No false shield paper-doll binding; exact appearance IDs pending. All422 item bindings retain native pixels. Actual inventory/equip/enemy hit/magic mitigation/save regressions and exact APK verification PENDING. Original whole-game stats/physical phone/user acceptance not certified.
+
 ## 2026-10-10 — V129 item effects integrated and exact APK delivered
 
 IMPLEMENTED / BUILD_VERIFIED / RUNTIME_VERIFIED_NATIVE / AGENT_NATIVE_VISUAL_REVIEW_PASS. Resumed interrupted V129 and corrected two reproduced audit failures: historical V equipment descriptions were empty; the all77 skill test sampled the old contact time before newly sourced Holy Shock release. All408 items now have descriptions and retained audit rows. Central effects snapshot staff timing/fixed MP at submission; deficit-only consumable use restores/clamps resources, consumes exactly one and preserves ownership on restart. Known options:21 partial numeric profiles,23 paired regeneration profiles,13 exact staff-level bindings. Original pixels, movement and accepted phone combat remain unchanged.

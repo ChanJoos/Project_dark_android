@@ -1,6 +1,6 @@
 {
-  "currentItems": 408,
-  "newSourceBindings": 55,
+  "currentItems": 422,
+  "newSourceBindings": 69,
   "reusedSourceBindings": 7,
   "items": {
     "IT_RING_THREELINEGOLD": {
@@ -1142,6 +1142,76 @@
       "name": "도복 · 수련",
       "assetPath": "item-icons/identity_mu0000003.png",
       "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_SHIELD_WOOD": {
+      "name": "나무방패",
+      "assetPath": "item-icons/5fb7b319183a_tate1.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_LEATHER": {
+      "name": "가죽방패",
+      "assetPath": "item-icons/3cd662ea5f31_tate11.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_COPPER": {
+      "name": "구리방패",
+      "assetPath": "item-icons/0347dae45a7d_tate26.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_IRON": {
+      "name": "철방패",
+      "assetPath": "item-icons/5f19df039041_tate41.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_EXORCISM": {
+      "name": "퇴마방패",
+      "assetPath": "item-icons/a82027a55f56_toematate.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_SKULL": {
+      "name": "해골방패",
+      "assetPath": "item-icons/8b32c27d93b6_dokurotate.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_SILVER": {
+      "name": "은제방패",
+      "assetPath": "item-icons/2fedfc34d33e_tate56.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_GOLD": {
+      "name": "금제방패",
+      "assetPath": "item-icons/52b1309ac7b1_tate71.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_PAPAYA": {
+      "name": "파파야방패",
+      "assetPath": "item-icons/3d37f6cbc797_papayatate.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_PLANUM": {
+      "name": "플라늄방패",
+      "assetPath": "item-icons/986e0808d7d8_tate86.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_KNIGHT": {
+      "name": "기사단방패",
+      "assetPath": "item-icons/cedf7ab2d1fd_gisidan.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_PHOBOS": {
+      "name": "포보스의방패",
+      "assetPath": "item-icons/95bde1f20c92_fobo.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_BROKEN_PHOBOS": {
+      "name": "깨진포보스의방패",
+      "assetPath": "item-icons/a6404a874bfb_warefobosu.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
+    },
+    "IT_SHIELD_DEATHKNIGHT": {
+      "name": "데스나이트의방패",
+      "assetPath": "item-icons/4ae5b623b810_desunaito.png",
+      "identityMatch": "EXACT_SOURCE_KOREAN_LABEL"
     },
     "IT_SHOES": {
       "name": "이름 미확인 신발",
