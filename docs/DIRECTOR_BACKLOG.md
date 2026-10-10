@@ -2,7 +2,7 @@
 
 DEVICE_FAILED_USER_REPORTED: V129 weapons appear without performance and named shields are missing. REPRODUCED:38 source-named wardrobe weapons have empty modifiers; all fall back to8, and only3 unnamed adapted shields are registered. Director/Game single editor, branch codex/equipment-performance-v130, base42bc3eda36272eba9294115c54d9c9be5d8543ac.
 
-IMPLEMENTED candidate:56 explicit weapon S ranges (34 historical source-backed;22 adapted preserved8~8 including11 training/11 unresolved originals),14 named shields with exact inventory artwork, AC/MDEF and known negative resource/all-stat options. Existing S midpoint/STR/DAM and defense pipeline retained; source L ranges displayed only, continent/size routing unverified. No false shield paper-doll binding; exact appearance IDs pending. All422 item bindings retain native pixels. Actual inventory/equip/enemy hit/magic mitigation/save regressions and exact APK verification PENDING. Original whole-game stats/physical phone/user acceptance not certified.
+IMPLEMENTED candidate:56 explicit weapon S ranges (35 historical source-backed;21 adapted preserved8~8 including12 training/9 unresolved originals),14 named shields with exact inventory artwork, AC/MDEF and known negative resource/all-stat options. Existing S midpoint/STR/DAM and defense pipeline retained; source L ranges displayed only, continent/size routing unverified. No false shield paper-doll binding; exact appearance IDs pending. All422 item bindings retain native pixels. Actual inventory/equip/enemy hit/magic mitigation/save regressions and exact APK verification PENDING. Original whole-game stats/physical phone/user acceptance not certified.
 
 ## 2026-10-10 — V129 item effects integrated and exact APK delivered
 

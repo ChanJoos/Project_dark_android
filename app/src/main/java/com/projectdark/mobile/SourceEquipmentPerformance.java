@@ -57,7 +57,7 @@ final class SourceEquipmentPerformance {
   r.installEquipmentPerformance("IT_WARDROBE_MW055",stats("MinATK",234,"MaxATK",284),99,RpgProgressionState.Evidence.FAN);
   r.installEquipmentPerformance("IT_WARDROBE_MW056",stats("MinATK",8,"MaxATK",8),null,RpgProgressionState.Evidence.ADAPTED);
   r.installEquipmentPerformance("IT_WARDROBE_MW059",stats("MinATK",4,"MaxATK",20,"LMinATK",6,"LMaxATK",30),11,RpgProgressionState.Evidence.FAN);
-  r.installEquipmentPerformance("IT_WARDROBE_MW060",stats("MinATK",8,"MaxATK",8),null,RpgProgressionState.Evidence.ADAPTED);
+  r.installEquipmentPerformance("IT_WARDROBE_MW060",stats("MinATK",4,"MaxATK",20,"LMinATK",6,"LMaxATK",30,"MP",150),41,RpgProgressionState.Evidence.V);
   r.installEquipmentPerformance("IT_WARDROBE_MW062",stats("MinATK",8,"MaxATK",8),null,RpgProgressionState.Evidence.ADAPTED);
   r.registerSourceAccessory(new RpgProgressionState.ItemDefinition("IT_SHIELD_WOOD","나무방패",RpgProgressionState.SHIELD_SLOT,null,1,Collections.<String>emptySet(),false,null,null,stats("AC",-3,"MAGIC_DEFENSE",0),RpgProgressionState.Evidence.FAN));
   r.registerSourceAccessory(new RpgProgressionState.ItemDefinition("IT_SHIELD_LEATHER","가죽방패",RpgProgressionState.SHIELD_SLOT,null,11,Collections.<String>emptySet(),false,null,null,stats("AC",-5,"MAGIC_DEFENSE",0),RpgProgressionState.Evidence.V));
@@ -129,7 +129,7 @@ final class SourceEquipmentPerformance {
  case "IT_WARDROBE_MW055":return "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님";
  case "IT_WARDROBE_MW056":return "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)";
  case "IT_WARDROBE_MW059":return "과거 한국 서버 팬 자료의 공격력 · 현재 서버 확정치 아님";
- case "IT_WARDROBE_MW060":return "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)";
+ case "IT_WARDROBE_MW060":return "2019년 자료: 아리펠스탭 S4~20 / L6~30 · MP +150";
  case "IT_WARDROBE_MW062":return "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)";
  case "IT_SHIELD_WOOD":return "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인 · AC -3은 팬 표 기준 (2005년 -1 자료와 차이)";
  case "IT_SHIELD_LEATHER":return "장착 시 AC·마법방어 적용 · 착용 캐릭터 방패 외형 ID 미확인";

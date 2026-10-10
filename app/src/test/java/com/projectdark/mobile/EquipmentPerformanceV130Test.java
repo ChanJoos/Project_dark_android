@@ -45,7 +45,7 @@ public class EquipmentPerformanceV130Test {
    assertTrue(d.itemId,s.rpg().inventory().containsKey(d.itemId));assertTrue(d.itemId,d.statModifiers.get("AC")<0);assertNotNull(d.itemId,icons.get(d));assertEquals("EXACT_SOURCE_KOREAN_LABEL",icons.receipt(d.itemId).getString("identityMatch"));count++;
   }
   assertEquals(14,count);
-  for(String id:new String[]{"IT_WARDROBE_MW023","IT_WARDROBE_MW044","IT_WARDROBE_MW062","IT_SHIELD_LEATHER","IT_SHIELD_GOLD","IT_SHIELD_DEATHKNIGHT"}){
+  for(String id:new String[]{"IT_WARDROBE_MW023","IT_WARDROBE_MW044","IT_WARDROBE_MW062","IT_WARDROBE_MW060","IT_SHIELD_LEATHER","IT_SHIELD_GOLD","IT_SHIELD_DEATHKNIGHT"}){
    ItemWindowReferenceTest.tap(view,608,28);ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());int index=-1;for(int i=0;i<rows.size();i++)if(rows.get(i).itemId.equals(id))index=i;assertTrue(index>=0);
    while(w.page<index/50)ItemWindowReferenceTest.tap(view,894,480);while(w.page>index/50)ItemWindowReferenceTest.tap(view,372,480);
    RectF b=ItemWindow.cell(index%50);ItemWindowReferenceTest.tap(view,b.centerX(),b.centerY());
@@ -56,6 +56,10 @@ public class EquipmentPerformanceV130Test {
  @Test public void sourceRangesAndNewShieldOwnershipSurviveActualSaveRestore(){
   RuntimeState s=state();RpgProgressionState r=s.rpg();r.equip("IT_WARDROBE_MW023");r.equip("IT_SHIELD_PHOBOS");int damage=hit(s);int str=r.str();F5mSaveStore.saveRewardsActive(r);assertTrue(F5mSaveStore.writable());
   F5mSaveStore.install(c);RpgProgressionState copy=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(copy);assertEquals(r.equipment(),copy.equipment());assertEquals(r.inventory(),copy.inventory());assertEquals(str,copy.str());assertEquals(150,copy.finalStats().weaponMinAttack);assertEquals(210,copy.finalStats().weaponMaxAttack);assertEquals(r.finalStats().ac,copy.finalStats().ac);assertEquals(r.finalStats().magicDefense,copy.finalStats().magicDefense);assertTrue(damage>100);
+ }
+ @Test public void aripelRestoredAttackAndMpOptionReachActualPlayer(){
+  RuntimeState s=state();RpgProgressionState r=s.rpg();r.unequip("무기");s.applyDerivedGrowth();int mp=s.player().maxMp;
+  assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_WARDROBE_MW060"));s.applyDerivedGrowth();assertEquals(mp+150,s.player().maxMp);assertEquals(4,r.finalStats().weaponMinAttack);assertEquals(20,r.finalStats().weaponMaxAttack);assertEquals(6,(int)r.itemDefinitions().get("IT_WARDROBE_MW060").statModifiers.get("LMinATK"));
  }
  @Test public void adaptedRangesAndMissingLRemainExplicitInsteadOfClaimingOriginalFacts(){
   RpgProgressionState r=new RpgProgressionState();RpgProgressionState.ItemDefinition pana=r.itemDefinitions().get("IT_WARDROBE_MW062");assertEquals(Integer.valueOf(8),pana.statModifiers.get("MinATK"));assertEquals(RpgProgressionState.Evidence.ADAPTED,pana.evidence);assertTrue(ItemEffects.description(pana).toString().contains("원작 공격력 미확정"));assertFalse(pana.statModifiers.containsKey("LMaxATK"));

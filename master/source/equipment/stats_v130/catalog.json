@@ -1010,14 +1010,23 @@
       "id": "IT_WARDROBE_MW060",
       "name": "아리펠스탭",
       "stats": {
-        "MinATK": 8,
-        "MaxATK": 8
+        "MinATK": 4,
+        "MaxATK": 20,
+        "LMinATK": 6,
+        "LMaxATK": 30,
+        "MP": 150
       },
-      "level": null,
-      "status": "PROJECT_ADAPTED",
-      "source": null,
-      "sourceRow": null,
-      "note": "원작 공격력 미확정 · 현재 시험 공격력 8~8 적용 (기존 기본값)",
+      "level": 41,
+      "status": "V",
+      "source": "master/source/equipment/stats_v130/nexon_7079.html",
+      "sourceRow": {
+        "name": "아리펠스탭",
+        "published": "2019-04-11",
+        "S": "4m20",
+        "L": "6m30",
+        "MP": 150
+      },
+      "note": "2019년 자료: 아리펠스탭 S4~20 / L6~30 · MP +150",
       "existingAdaptedOptions": false
     },
     {

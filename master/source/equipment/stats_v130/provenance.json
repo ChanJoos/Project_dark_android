@@ -40,5 +40,12 @@
     "sha256": "263becd3b8b9f485beacadebe41de7776bcac4cacd4dd04bbe7776f6e1636ed9",
     "authority": "NEXON_HOSTED_COMMUNITY_HISTORICAL",
     "retrieved": "2026-10-10"
+  },
+  {
+    "path": "master/source/equipment/stats_v130/nexon_7079.html",
+    "url": "https://lod.nexon.com/community/game/7079?SearchBoard=1",
+    "sha256": "01a5abc50548a6be2e1603f4a3f392822d0af2c0b14fab9ea575078f1f91f919",
+    "authority": "NEXON_HOSTED_COMMUNITY_HISTORICAL",
+    "retrieved": "2026-10-10"
   }
 ]

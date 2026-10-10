@@ -5,7 +5,7 @@
   "trigger": "DEVICE_FAILED_USER_REPORTED: user sees weapons without attack stats and missing shields; root cause reproduced as38 empty wardrobe weapon profiles and only3 unnamed shield fixtures.",
   "base": "42bc3eda36272eba9294115c54d9c9be5d8543ac",
   "before": "56 weapons,38 empty weapon profiles;3 unnamed adapted shield fixtures; weapon range hidden when absent.",
-  "after": "Every56 weapon has explicit S attack range,34 source-backed /22 retained adapted base8 (11 training and11 unresolved historical weapons);14 exact named inventory shields with AC/MDEF and known penalties; original whole-game stats not certified.",
+  "after": "Every56 weapon has explicit S attack range,35 source-backed /21 retained adapted base8 (12 training and9 unresolved historical weapons);14 exact named inventory shields with AC/MDEF and known penalties; original whole-game stats not certified.",
   "evidence": "master/source/equipment/stats_v130/catalog.json and provenance.json; immutable previously retained icon originals",
   "impact": [
     "RpgProgressionState",
