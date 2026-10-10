@@ -28,7 +28,8 @@ final class MobileHudSkin {
   // Filled silver reliefs: silhouette first, dark engraving second, specular edge last.
   // At mobile scale these remain readable without a thick generic line-icon outline.
   static void utility(Canvas c,String kind,float x,float y,boolean active){
-    p.setStyle(Paint.Style.FILL);p.setShader(new RadialGradient(x,y,20,new int[]{0x88101416,0x42101416,0x00101416},new float[]{0,.62f,1},Shader.TileMode.CLAMP));c.drawCircle(x,y,21,p);p.setShader(null);
+    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(0xc01b211f);c.drawCircle(x,y,16,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.65f);p.setColor(active?GOLD:0xffa99a77);c.drawCircle(x,y,15.5f,p);p.setStyle(Paint.Style.FILL);
     icon(c,kind,x,y,12,active);
     if(active){p.setColor(GOLD);c.drawRoundRect(x-12,y+17,x+12,y+18,1,1,p);}
   }
@@ -77,7 +78,7 @@ final class MobileHudSkin {
       if(active){p.setColor(GOLD);c.drawCircle(x,y+r-6,1.4f,p);}
 
     }else{
-      icon(c,"attack",x,y-1,r*.58f,active);
+      icon(c,"attack",x,y-1,r*.78f,active);
       for(int i=0;i<4;i++){double a=(i*90+45)*Math.PI/180;p.setColor(0xffd9cda5);c.drawCircle(x+(float)Math.cos(a)*(r-1),y+(float)Math.sin(a)*(r-1),1.3f,p);}
     }
     p.setStyle(Paint.Style.FILL);
