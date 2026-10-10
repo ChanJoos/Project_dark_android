@@ -74,6 +74,16 @@ public class ItemFunctionsV129Test {
   }
   assertEquals(408,rows.length());assertTrue(pending>0);File dir=new File("build/reports/item-functions-v129");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all408-runtime-function-audit.json").toPath(),rows.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
+ @Test public void curanumActualInventoryUseButtonRestoresHpConsumesOneAndSurvivesRestart()throws Exception{
+  GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState s=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");
+  String id=RpgProgressionState.REAGENT_CURANUM_ITEM_ID;s.rpg().restoreBaseResources(5000,5000);s.applyDerivedGrowth();s.player().hp=1;
+  int owned=s.rpg().inventory().getOrDefault(id,0);assertTrue(owned>0);float x=s.player().x,y=s.player().y;
+  ItemWindowReferenceTest.tap(view,608,28);ItemWindowReferenceTest.tap(view,509,93);assertEquals(2,w.filter);
+  int index=-1;List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());for(int i=0;i<rows.size();i++)if(id.equals(rows.get(i).itemId))index=i;assertTrue(index>=0);
+  w.page=index/50;android.graphics.RectF cell=ItemWindow.cell(index%50);ItemWindowReferenceTest.tap(view,cell.centerX(),cell.centerY());assertTrue(w.details);
+  ItemWindowReferenceTest.tap(view,805,490);assertEquals(1001,s.player().hp);assertEquals(owned-1,s.rpg().inventory().getOrDefault(id,0).intValue());assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);
+  view.pause();GameView restarted=new GameView(c);RuntimeState restored=ItemWindowReferenceTest.field(restarted,"state");assertEquals(owned-1,restored.rpg().inventory().getOrDefault(id,0).intValue());
+ }
  @Test public void actualInventoryAndSkillWindowsShowEffectsAndUseTheExistingTouchRoute()throws Exception{
   GameView view=new GameView(c);RuntimeState s=(RuntimeState)ItemWindowReferenceTest.field(view,"state");ItemWindow w=(ItemWindow)ItemWindowReferenceTest.field(view,"itemWindow");
   ItemWindow.Visuals visuals=(ItemWindow.Visuals)ItemWindowReferenceTest.field(view,"itemWindowVisuals");w.details=true;assertEquals(ItemWindow.Hit.CONSUMED,w.inventoryTouch(650,365,s.rpg()));assertTrue(w.effectDetails);
