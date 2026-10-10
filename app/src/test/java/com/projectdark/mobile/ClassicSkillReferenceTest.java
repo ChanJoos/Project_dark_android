@@ -58,7 +58,7 @@ public class ClassicSkillReferenceTest {
    Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(v,0f);
    SkillVfxRenderer renderer=field(v,"skillVfx");ClassicSkillReference.Channel start=reference.channel(id,true);assertEquals(id,start==null?0:1,renderer.pulses.size());
    for(SkillVfxRenderer.Pulse pulse:renderer.pulses){assertTrue(pulse.caster);assertEquals("classic",pulse.sheet);assertEquals("player",pulse.anchor);}
-   tick.invoke(v,rule.contact+.001f);
+   tick.invoke(v,("마법".equals(rule.kind)?((RuntimeCombatSession)field(v,"combatSession")).effectiveCastSeconds(id):rule.contact)+.001f);
    ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster&&!pulse.sheet.equals("impact"))targets.add(pulse);
    if(rule.pattern==SkillActionContract.Pattern.SCREEN&&contact!=null)assertTrue(id,targets.size()>=1);else assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals("classic",pulse.sheet);if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(s.monsters().stream().anyMatch(monster->monster.id.equals(pulse.anchor)));else assertEquals(id,id.startsWith("SK_무도가_")?(MartialCaptureRegistration.recipient(id,false)?m.id:"player"):(contact.casterAnchor||rule.selfAnchored()?"player":m.id),pulse.anchor);pulse.age=SkillFxAuditTest.sourcePeakAge(renderer,pulse);}
    if(rule.heal())assertEquals(id,before,m.hp);

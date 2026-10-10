@@ -70,7 +70,7 @@ public class AllJobSkillSourceTest {
   for(String id:ids){
    F5mSaveStore.install(c);GameView view=new GameView(c);view.layout(0,0,960,540);view.setSkillTestMode(true);RuntimeState state=field(view,"state");SkillActionContract.Rule rule=SkillActionContract.get(id);RuntimeState.Monster monster=state.monsters().get(0);state.player().x=monster.x-32*Math.max(1,rule.minReach);state.player().y=monster.y-16*Math.max(1,rule.minReach);state.player().hp=5;state.player().mp=20000;
    ((CombatController)field(view,"combat")).selectTarget(monster);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(view,"worldAdapter")).snapCameraToPlayer();
-   Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(view,((SkillBook)field(view,"skillBook")).get(id));Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(view,rule.contact+.001f);
+   Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(view,((SkillBook)field(view,"skillBook")).get(id));Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(view,("마법".equals(rule.kind)?((RuntimeCombatSession)field(view,"combatSession")).effectiveCastSeconds(id):rule.contact)+.001f);
    SkillVfxRenderer fx=field(view,"skillVfx");
    if(Arrays.asList("SK_전사_009","SK_전사_011","SK_도적_003","SK_성직자_040","SK_성직자_012").contains(id)){
     String wanted=id.startsWith("SK_전사_")?"warrior":id.startsWith("SK_도적_")?"rogue":id.equals("SK_성직자_040")?"classic":"shared";

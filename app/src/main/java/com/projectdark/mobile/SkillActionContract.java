@@ -30,6 +30,9 @@ public final class SkillActionContract {
     if(r.selfAnchored())return Math.abs(ax-tx)<.01f&&Math.abs(ay-ty)<.01f;
     if(!visible)return false;
     if(r.pattern==Pattern.FRONT||r.pattern==Pattern.FRONT_BACK)return onAxis(ax,ay,tx,ty,r.reach);
+    // Screen-targeted single spells can hit an actor between tile centers while moving.
+    // Visibility and LOS remain separate live gates; finite melee shapes retain exact tiles.
+    if(r.pattern==Pattern.SINGLE&&r.reach==0&&r.minReach==0&&"마법".equals(r.kind))return true;
     int d=distance(ax,ay,tx,ty);if(d==Integer.MAX_VALUE)return false;
     return d>=r.minReach&&(r.reach==0||r.pattern==Pattern.TARGET_CROSS||d<=r.reach);
   }

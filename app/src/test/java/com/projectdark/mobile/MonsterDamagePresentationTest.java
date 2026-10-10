@@ -57,7 +57,7 @@ public class MonsterDamagePresentationTest {
         int hp=monster.hp;assertEquals(0,monster.hitFlash,0);
         invoke(view,"useBookSkill",new Class<?>[]{SkillBook.Entry.class},book.get(skill));
         assertEquals("contact has not happened",hp,monster.hp);assertEquals(0,monster.hitFlash,0);
-        float contact="SK_공통_001".equals(skill)?.2f:SkillActionContract.get(skill).contact+.001f;
+        float contact="SK_공통_001".equals(skill)?.2f:("마법".equals(SkillActionContract.get(skill).kind)?((RuntimeCombatSession)field(view,"combatSession")).effectiveCastSeconds(skill):SkillActionContract.get(skill).contact)+.001f;
         invoke(view,"tickSkillCombat",new Class<?>[]{float.class},contact);
         assertTrue(skill+" "+monster.id+" real damage",monster.hp<hp);assertTrue("keep this fixture alive to inspect the hit frame",monster.alive);assertTrue(monster.hitFlash>0);
         SkillVfxRenderer fx=field(view,"skillVfx");assertEquals("skill impact; user-approved basic BODY-only",skill.equals("SK_공통_001")?0:1,fx.pulses.stream().filter(p->p.sheet.equals("impact")&&p.anchor.equals(monster.id)).count());

@@ -7,9 +7,9 @@ final class ItemEffects {
  static boolean magic(String id){SkillActionContract.Rule r=SkillActionContract.get(id);return r!=null&&"마법".equals(r.kind);}
  static float baseCast(String id,float fallback){
   SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null||!magic(id))return fallback;
-  // Exact official 2021-04-22 update; no guessed cast defaults for other skills.
+  // Exact official 2021-04-22 Holy timings; early spell adaptations are explicit in MagicTimingPolicy.
   if(a.name.equals("홀리쇼크"))return 3f;if(a.name.equals("홀리블로우"))return 4f;
-  return fallback;
+  return MagicTimingPolicy.baseCast(id,fallback);
  }
  static float castSeconds(RpgProgressionState r,String id,float base){
   if(!magic(id))return base;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);
