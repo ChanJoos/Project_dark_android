@@ -48,11 +48,12 @@
     "radius": 58
   },
   "physical_phone": "PENDING",
-  "user_visual": "PENDING_RUNTIME",
+  "user_visual": "ACCEPTED_2026-10-11",
   "deliverables": {
     "apk": "libfile_0c39b2ed87ac8191882ab16072ae6dd0",
     "town": "libfile_58d0653c13cc8191be03ef7b05657ee5",
     "forest": "libfile_e9797477eb508191a7251436f91f51b3"
   },
-  "merge": "8917e85c0636440d8b9f7407cf77e71aa85ee962"
+  "merge": "8917e85c0636440d8b9f7407cf77e71aa85ee962",
+  "magic_device_report": "DEVICE_FAILED_USER_REPORTED_TRACKED_BY_MAGIC-RUNTIME-V137"
 }

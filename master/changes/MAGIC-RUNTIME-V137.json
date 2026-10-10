@@ -1,0 +1,45 @@
+{
+  "status": "ACCEPTED_IMPLEMENTED_QA_PENDING",
+  "owner": "Director_single_editor",
+  "user_report": "DEVICE_FAILED_USER_REPORTED_V136_MAGIC",
+  "ui_v136": "USER_VISUAL_ACCEPTED_2026-10-11",
+  "contract": "docs/MAGIC_RUNTIME_V137.md",
+  "before": {
+    "kurotoCooldown": 2,
+    "castVisualLock": 0.65,
+    "movingScreenSingle": "INTEGER_TILE_AND_STOP_REQUIRED",
+    "auto": "MELEE_FALLTHROUGH",
+    "marenoCooldown": 1.25
+  },
+  "after": {
+    "earlyMageAndKurotoCooldown": 0,
+    "sharedInterval": 0.3333333333333333,
+    "elementaryBaseCast": {
+      "seconds": 1,
+      "evidence": "ADAPTED_PENDING_ORIGINAL_TIMING"
+    },
+    "panaElementalCast": 0,
+    "kurotoCast": 0,
+    "ranged": "LIVE_SCREEN_LOS_MOVING_TARGET",
+    "auto": "RANGED_LOADOUT_STAYS_AT_SPELL_RANGE"
+  },
+  "sources": [
+    {
+      "path": "project_sources/02-_-.PDF",
+      "sha256": "ed00844bb3c4c2de58c2dd36bbce2712bf4a40d553c8f3007ba8dc04de9d5c51",
+      "evidence": "USER_PROVIDED_WIKI_PDF",
+      "rule": "Spell cast versus reuse distinction; 3 spells per second"
+    },
+    {
+      "url": "https://lod.nexon.com/community/game/3578?SearchBoard=1",
+      "evidence": "NEXON_HOSTED_PLAYER_GUIDE_2008",
+      "profile": "RETAINED_HISTORICAL_PANA_MINUS1S_HEAL0_CURSE1"
+    },
+    {
+      "url": "https://lod.nexon.com/community/game/7621?SearchBoard=1",
+      "evidence": "NEXON_HOSTED_PLAYER_GUIDE_2025",
+      "profile": "CURRENT_PANA_MINUS2_CONFLICT_RECORDED_NOT_OFFICIAL"
+    }
+  ],
+  "physical_phone": "PENDING_FIX_VALIDATION"
+}

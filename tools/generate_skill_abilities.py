@@ -69,6 +69,9 @@ for e in cat:
  if n=='쿠로토':cd=2
  if formula=='DARA':cd=12;cost=0
  if formula in ('CRASH','SOUL','ASSASSIN','ASSASSIN_PLUS','DALMA','HP_BURST'):cd=12
+ # Early spells have cast time, not the old per-circle invented reuse cooldown.
+ # User report + supplied skill PDF spell/technique distinction; upper-circle exceptions retained.
+ if e['kind']=='마법' and (n=='쿠로토' or e['job']=='마법사' and c<=2):cd=0
  duration=9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
  if kind=='HEAL':desc=f'회복 = round((WIS×5 + INT×1.5 + Lv×2)×{coef}); 최대 HP까지'
  elif kind=='DAMAGE':desc={'PHYSICAL':'(무기 공격+STR×3+DAM)','ROGUE':'(무기 공격+STR×1.8+DEX×2.2+DAM)','MARTIAL':'(무기 공격+sqrt(STR×CON)×4+DAM)','MAGIC':'(8+INT×4+WIS+Lv×1.5)','BASIC':'(무기 공격+STR×3+DAM)'}.get(formula,formula)+f' × {coef}'

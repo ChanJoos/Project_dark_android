@@ -225,7 +225,8 @@ public final class GameView extends View {
   static boolean hitCharacterPoseEnabled(){return false;}
   private boolean isActing(){return action!=Action.IDLE&&action!=Action.WALK;}
   private boolean attacking(){return action==Action.SWING||action==Action.THRUST||action==Action.THROW||action==Action.PUNCH;}
-  private float duration(Action a){SkillActionContract.Rule r=SkillActionContract.get(activeSkillVisualId);if(r!=null&&r.contact>.3f)return r.contact+.35f;switch(a){case CAST:return .65f;case SWING:return .45f;case THRUST:return .38f;case THROW:return .52f;case PUNCH:return .32f;case SKILL:return .50f;case KICK:return .45f;default:return 0;}}
+  private float activeSkillCastSeconds;
+  private float duration(Action a){if(a==Action.CAST&&activeSkillVisualId!=null&&MagicTimingPolicy.managed(activeSkillVisualId))return Math.max(MagicTimingPolicy.SPELL_INTERVAL,activeSkillCastSeconds);SkillActionContract.Rule r=SkillActionContract.get(activeSkillVisualId);if(r!=null&&r.contact>.3f)return r.contact+.35f;switch(a){case CAST:return .65f;case SWING:return .45f;case THRUST:return .38f;case THROW:return .52f;case PUNCH:return .32f;case SKILL:return .50f;case KICK:return .45f;default:return 0;}}
   private void trigger(Action a){if(isActing()||!state.player().alive)return;state.skillEffects().stopRest();activeWorld().cancelForAction();interaction.cancel();combat.cancelApproach();action=a;actionClock=0;}
   private void showFeedback(String s){showFeedback(s,FeedbackTone.INFO);}private void showFeedback(String s,FeedbackTone tone){feedback=s;feedbackTone=tone;feedbackClock=1.15f;}private void showReward(String s){rewardBanner=s;rewardClock=2.4f;}
   private boolean requireTarget(){if(combat.hasUsableTarget())return true;showFeedback("먼저 몬스터를 선택하세요",FeedbackTone.WARN);return false;}
@@ -287,9 +288,12 @@ public final class GameView extends View {
     boolean offensive=rule!=null&&rule.presentationAllowed()&&(!rule.selfAnchored()||rule.damage());
     if(!offensive){useBookSkillNow(entry);return;}
     float cd=skillActions.cooldown(entry.id);if(cd>0){showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",cd),FeedbackTone.WARN);return;}
-    if(!skillBook.testAccess()&&entry.runtime!=null&&state.player().mp<entry.runtime.mpCost){showFeedback("MP가 부족합니다",FeedbackTone.WARN);return;}
+    if(!skillBook.testAccess()&&entry.runtime!=null&&state.player().mp<combatSession.effectiveMpCost(entry.id)){showFeedback("MP가 부족합니다",FeedbackTone.WARN);return;}
     RuntimeState.Monster target=combat.target();List<WorldMoveTargetController.TileCenter> route=null;
-    if(target!=null&&target.alive)route=SkillApproachController.path(activeWorld(),rule,target,logicalViewportWidth,H);
+    if(target!=null&&target.alive){
+      if(skillTargetVisible(target.id)&&SkillApproachController.legal(rule,state.player().x,state.player().y,target.x,target.y)&&activeWorld().hasCombatLineOfSight("player",target.id)){useBookSkillNow(entry);return;}
+      route=SkillApproachController.path(activeWorld(),rule,target,logicalViewportWidth,H);
+    }
     else{
       int best=Integer.MAX_VALUE;
       for(RuntimeState.Monster candidate:state.monsters())if(candidate.alive&&skillTargetVisible(candidate.id)){
@@ -310,8 +314,8 @@ public final class GameView extends View {
     if(target==null||!target.alive||entry==null||!state.player().alive||!skillBook.usable(entry.id)||!skillBook.jobAllowed(entry.id)||skillApproach.age>30f){cancelSkillApproach();return;}
     if(activeWorld().presentationMoving()||isActing())return;
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
-    if(!target.isMoving&&skillTargetVisible(target.id)&&SkillApproachController.legal(rule,state.player().x,state.player().y,target.x,target.y)&&activeWorld().hasCombatLineOfSight("player",target.id)){
-      combat.selectTarget(target);cancelSkillApproach();useBookSkillNow(entry);return;
+    if((!target.isMoving||rangedSpell(rule))&&skillTargetVisible(target.id)&&SkillApproachController.legal(rule,state.player().x,state.player().y,target.x,target.y)&&activeWorld().hasCombatLineOfSight("player",target.id)){
+      combat.selectTarget(target);cancelSkillApproach();useBookSkillNow(entry,autoAttackEnabled);return;
     }
     float tx=target.isMoving?target.moveTargetX:target.x,ty=target.isMoving?target.moveTargetY:target.y;
     WorldMoveTargetController.Snapshot move=activeWorld().movement().snapshot();
@@ -353,7 +357,7 @@ public final class GameView extends View {
     if(isActing()||!state.player().alive)return;
     SkillActionContract.Rule rule=SkillActionContract.get(def.id);boolean self=rule!=null?rule.selfAnchored():def.targetPolicy==SkillDef.TargetPolicy.SELF;if(!self&&!requireTarget())return;
     CombatActionOrchestrator.Submission result=combatSession.submitPlayer(self?RuntimeCombatSession.PLAYER_ID:combat.target().id,def.id);
-    if(result.accepted()){if(!self)snapshotAttackFacingTarget();else playerFacing.beginAttack();activeSkillVisualId=def.id;trigger(visual);}
+    if(result.accepted()){if(!self)snapshotAttackFacingTarget();else playerFacing.beginAttack();activeSkillVisualId=def.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(def.id);trigger(visual);}
     else showFeedback(result.rejectReason==CombatResolver.RejectReason.NOT_LEARNED?"아직 배우지 않은 기술입니다":result.rejectReason==CombatResolver.RejectReason.RESOURCE?"MP가 부족합니다":result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":result.rejectReason==CombatResolver.RejectReason.RANGE?"대상이 사거리 밖에 있습니다":"지금 사용할 수 없습니다",FeedbackTone.WARN);
   }
   private Action actionFor(AttackDef.Kind k){switch(k){case THRUST:return Action.THRUST;case THROW:return Action.THROW;case PUNCH:return Action.PUNCH;default:return Action.SWING;}}
@@ -379,7 +383,7 @@ public final class GameView extends View {
       if(entry==null||!skillBook.usable(entry.id)||"SK_공통_001".equals(entry.id))continue;
       SkillActionContract.Rule rule=SkillActionContract.get(entry.id);SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(entry.id);
       if(rule==null||!rule.presentationAllowed()||ability==null||!ability.supported()||skillActions.cooldown(entry.id)>0)continue;
-      if(!skillBook.testAccess()&&state.player().mp<ability.mpCost)continue;
+      if(!skillBook.testAccess()&&state.player().mp<combatSession.effectiveMpCost(entry.id))continue;
       if(ability.heal()&&state.player().hp>=state.player().maxHp)continue;
       if(!ability.damage()&&!ability.heal()&&state.skillEffects().playerEffects().stream().anyMatch(e->entry.id.equals(e.source)))continue;
       boolean self=rule.selfAnchored();
@@ -387,8 +391,19 @@ public final class GameView extends View {
       useBookSkillNow(entry,true);
       if(isActing()){autoSkillCursor=(index+1)%SkillBook.SLOT_COUNT;return;}
     }
+    // A ranged damage loadout waits/casts at spell range rather than walking into melee
+    // during cast cadence, a cooling spell, or a missing-resource interval.
+    for(int n=0;n<SkillBook.SLOT_COUNT;n++){
+      SkillBook.Entry entry=skillBook.get(skillBook.slot((autoSkillCursor+n)%SkillBook.SLOT_COUNT));
+      if(entry==null||!skillBook.usable(entry.id)||!skillBook.jobAllowed(entry.id))continue;
+      SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
+      if(!rangedSpell(rule)||!rule.damage())continue;
+      if(current!=null&&(!skillTargetVisible(current.id)||!activeWorld().hasCombatLineOfSight("player",current.id))){skillApproach.begin(entry.id,current.id);tickSkillApproach(0);}
+      return;
+    }
     if(combat.attackReady())attack();
   }
+  private static boolean rangedSpell(SkillActionContract.Rule rule){return rule!=null&&"마법".equals(rule.kind)&&rule.pattern==SkillActionContract.Pattern.SINGLE&&rule.reach==0&&rule.minReach==0;}
 
   private static boolean isMonsterApproach(WorldMoveTargetController.Snapshot move){return move!=null&&move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH&&move.status==WorldMoveTargetController.Status.MOVING;}
 
@@ -407,6 +422,16 @@ public final class GameView extends View {
   }
   private RuntimeState.Monster bestReachableAutoTarget(){return bestReachableAutoTarget(null);}
   private RuntimeState.Monster bestReachableAutoTarget(CampaignProgress.Def hunt){
+    RuntimeState.Monster ranged=null;float distance=Float.MAX_VALUE;
+    for(int i=0;i<SkillBook.SLOT_COUNT;i++){
+      SkillBook.Entry e=skillBook.get(skillBook.slot(i));if(e==null||!skillBook.usable(e.id)||!skillBook.jobAllowed(e.id))continue;
+      SkillActionContract.Rule r=SkillActionContract.get(e.id);if(!rangedSpell(r)||!r.damage())continue;
+      for(RuntimeState.Monster m:state.monsters())if(m.alive&&campaignHuntTarget(hunt,m)&&skillTargetVisible(m.id)&&activeWorld().hasCombatLineOfSight("player",m.id)){
+        float d=dist(state.player().x,state.player().y,m.x,m.y);if(d<distance){distance=d;ranged=m;}
+      }
+      break;
+    }
+    if(ranged!=null)return ranged;
     return activeWorld().selectAutoTarget(monster->campaignHuntTarget(hunt,monster));
   }
 
@@ -499,7 +524,7 @@ public final class GameView extends View {
     RuntimeState.Monster target=bestReachableAutoTarget(questHunt?d:null);
     if(target!=null){
       combat.selectTarget(target);
-      activeWorld().requestMonsterApproach(target.id,CanonicalMeleeTileContract.REACH_DISTANCE);
+      if(!questHunt)activeWorld().requestMonsterApproach(target.id,CanonicalMeleeTileContract.REACH_DISTANCE);
       showFeedback("사냥 목표로 이동 · "+target.name+(autoAttackEnabled?" · 자동 공격":""),FeedbackTone.INFO);
     }else showFeedback("몬스터가 다시 나타날 때까지 쉬거나 보급하세요",FeedbackTone.INFO);
   }
@@ -649,7 +674,7 @@ public final class GameView extends View {
     }
     if(selected!=null&&isActing()){
       SkillActionContract.Rule poseRule=SkillActionContract.get(activeSkillVisualId);
-      float contact=poseRule==null?(action==Action.CAST?.24f:.14f):poseRule.contact;
+      float contact=action==Action.CAST&&MagicTimingPolicy.managed(activeSkillVisualId)?activeSkillCastSeconds:poseRule==null?(action==Action.CAST?.24f:.14f):poseRule.contact;
       // Dara's preparation is standing. Raised arms belong only to the accepted release,
       // on the same contact clock as damage/recipient FX; never to button-down.
       if("CHARGE_CAST".equals(selected.motion)&&actionClock<contact){

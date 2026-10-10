@@ -53,16 +53,16 @@ SK_도적_028,습격진,도적,7,DAMAGE,ROGUE,3.122,,0,3.95,20,False,PROJECT_ADA
 SK_도적_029,백스탭,도적,7,DAMAGE,ROGUE,3.122,,0,3.95,20,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122
 SK_도적_030,백슬래쉬,도적,7,DAMAGE,ROGUE,3.122,,0,3.95,20,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122
 SK_도적_031,설치형트랩,도적,7,STATUS,NONE,0,TRAP,0,3.95,20,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,설치형 트랩을 습득하며 기본공격 추가타 1회를 부여하는 구조가 확인됨. · 20초
-SK_마법사_001,마레노,마법사,1,DAMAGE,MAGIC,1.082,,7,1.25,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.082
-SK_마법사_002,렌토,마법사,2,STATUS,NONE,0,CURSE20,17,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,1단계 방어 저주; 자료상 AC+20 · 10초
-SK_마법사_003,테라미코,마법사,2,DAMAGE,MAGIC,1.391,,18,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.391
-SK_마법사_004,아듀로,마법사,2,DAMAGE,MAGIC,1.391,,18,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.391
-SK_마법사_005,플라모,마법사,2,DAMAGE,MAGIC,1.391,,18,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.391
-SK_마법사_006,콘푸지오,마법사,2,STATUS,NONE,0,RESET_AGGRO,20,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,몬스터의 공격 타겟/인식을 혼란·초기화하는 마법. 아무네지아와 유사한 역할. · 10초
-SK_마법사_007,수페라마레나,마법사,2,DAMAGE,MAGIC,1.274,,20,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
-SK_마법사_008,수페라테라미카,마법사,2,DAMAGE,MAGIC,1.274,,20,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
-SK_마법사_009,수페라아듀라,마법사,2,DAMAGE,MAGIC,1.274,,20,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
-SK_마법사_010,수페라플라미카,마법사,2,DAMAGE,MAGIC,1.274,,20,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
+SK_마법사_001,마레노,마법사,1,DAMAGE,MAGIC,1.082,,7,0,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.082
+SK_마법사_002,렌토,마법사,2,STATUS,NONE,0,CURSE20,17,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,1단계 방어 저주; 자료상 AC+20 · 10초
+SK_마법사_003,테라미코,마법사,2,DAMAGE,MAGIC,1.391,,18,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.391
+SK_마법사_004,아듀로,마법사,2,DAMAGE,MAGIC,1.391,,18,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.391
+SK_마법사_005,플라모,마법사,2,DAMAGE,MAGIC,1.391,,18,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.391
+SK_마법사_006,콘푸지오,마법사,2,STATUS,NONE,0,RESET_AGGRO,20,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,몬스터의 공격 타겟/인식을 혼란·초기화하는 마법. 아무네지아와 유사한 역할. · 10초
+SK_마법사_007,수페라마레나,마법사,2,DAMAGE,MAGIC,1.274,,20,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
+SK_마법사_008,수페라테라미카,마법사,2,DAMAGE,MAGIC,1.274,,20,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
+SK_마법사_009,수페라아듀라,마법사,2,DAMAGE,MAGIC,1.274,,20,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
+SK_마법사_010,수페라플라미카,마법사,2,DAMAGE,MAGIC,1.274,,20,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.274
 SK_마법사_011,바르도,마법사,3,STATUS,NONE,0,CURSE35,38,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,"2단계 저주. AC +35, 마법방어 -10%. · 12초"
 SK_마법사_012,베노미,마법사,6,STATUS,NONE,0,POISON,119,3.5,18,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,지속 중독 피해 · 18초
 SK_마법사_013,마레누스,마법사,3,DAMAGE,MAGIC,1.841,,39,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.841
@@ -191,7 +191,7 @@ SK_공통_006,수영,공통,1,SERVICE,NONE,0,,0,1.25,8,False,PROJECT_ADAPTED_V83
 SK_공통_007,노점개설,공통,1,SERVICE,NONE,0,,0,1.25,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
 SK_공통_008,채집,공통,1,SERVICE,NONE,0,,0,1.25,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
 SK_공통_009,낚시,공통,1,SERVICE,NONE,0,,0,1.25,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
-SK_공통_010,쿠로토,공통,2,HEAL,HEAL,0.55,,6,2,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
+SK_공통_010,쿠로토,공통,2,HEAL,HEAL,0.55,,6,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
 SK_공통_011,일반제조,공통,3,SERVICE,NONE,0,,0,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
 SK_공통_012,아이템고치기,공통,4,SERVICE,NONE,0,,0,2.6,14,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
 SK_공통_013,마나스페라,공통,6,SERVICE,NONE,0,,112,3.5,18,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
@@ -211,12 +211,12 @@ SK_마법사_054,클리멘스,마법사,4,SERVICE,NONE,0,,65,2.6,14,False,PROJEC
 SK_공통_014,유즈스태프,공통,2,STATUS,NONE,0,STAFF,0,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,스태프 사용 기술로 표에 기재 · 10초
 SK_도적_033,상자트랩해체,도적,2,STATUS,NONE,0,CLEAR_TRAP,0,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,상자 트랩 해체 · 10초
 SK_도적_034,소매치기,도적,4,SERVICE,NONE,0,,0,2.6,14,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
-SK_무도가_032,쿠로토,무도가,2,HEAL,HEAL,0.55,,6,2,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
-SK_성직자_058,쿠로토,성직자,1,HEAL,HEAL,0.55,,6,2,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
+SK_무도가_032,쿠로토,무도가,2,HEAL,HEAL,0.55,,6,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
+SK_성직자_058,쿠로토,성직자,1,HEAL,HEAL,0.55,,6,0,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
 SK_성직자_059,클리멘스,성직자,4,SERVICE,NONE,0,,65,2.6,14,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
 SK_성직자_060,디노센스,성직자,5,SERVICE,NONE,0,,97,3.05,16,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
-SK_마법사_055,아지토,마법사,2,STATUS,NONE,0,TRAVEL,17,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,국적 내 임의 마을 여관으로 이동 · 10초
-SK_마법사_056,쿠로토,마법사,2,HEAL,HEAL,0.55,,6,2,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
+SK_마법사_055,아지토,마법사,2,STATUS,NONE,0,TRAVEL,17,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,국적 내 임의 마을 여관으로 이동 · 10초
+SK_마법사_056,쿠로토,마법사,2,HEAL,HEAL,0.55,,6,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×0.55); 최대 HP까지
 SK_마법사_057,헬푸라,마법사,5,SERVICE,NONE,0,,96,3.05,16,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음
 SK_무도가_033,경신공법,무도가,3,STATUS,NONE,0,SPEED,31,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,이동속도를 높힌다. (Speed+20%) · 12초
 SK_무도가_034,아지토,무도가,4,STATUS,NONE,0,TRAVEL,53,2.6,14,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,소속된 국적의여관으로 순간이동 · 14초

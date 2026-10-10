@@ -83,16 +83,16 @@ public class SkillWindowTest {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="성직자";w.selectedId="SK_성직자_011";w.detailPage=1;render(v,"skill-window-requirements-missing.png");
     w.detailPage=0;render(v,"skill-window-magic.png");w.magic=false;w.job="전사";w.selectedId="SK_전사_012";render(v,"skill-window-warrior.png");
   }
-  @Test public void realSkillCooldownSharedBetweenDuplicateSlotsAndExpiresWithoutDoubleCharge() throws Exception {
+  @Test public void instantHealDuplicateSlotsShareCadenceWithoutDoubleCharge() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);SkillBook b=field(v,"skillBook");RuntimeState r=field(v,"state");RuntimeCombatSession session=field(v,"combatSession");
     job(r,"MARTIAL_ARTIST");b.learn("SK_무도가_032",0);b.assign(0,"SK_무도가_032");b.assign(1,"SK_무도가_032");r.player().hp=40;r.player().mp=50;
     Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,0),duplicate=(RectF)rect.invoke(v,1);
-    tap(v,slot.centerX(),slot.centerY());assertEquals(44,r.player().mp);assertEquals(40,r.player().hp);assertTrue(session.cooldownRemaining("player","SK_무도가_032")>0);
+    tap(v,slot.centerX(),slot.centerY());assertEquals(44,r.player().mp);assertEquals(40,r.player().hp);assertEquals(0,session.cooldownRemaining("player","SK_무도가_032"),0);tap(v,duplicate.centerX(),duplicate.centerY());assertEquals(44,r.player().mp);
     // Lv3 fixture: round((3*5 + 3*1.5 + 3*2)*0.55) = 14 HP.
-    session.tick(.3f);assertEquals(54,r.player().hp);int hp=r.player().hp;tap(v,duplicate.centerX(),duplicate.centerY());assertEquals(44,r.player().mp);assertEquals(hp,r.player().hp);
+    session.tick(.01f);assertEquals(54,r.player().hp);int hp=r.player().hp;tap(v,duplicate.centerX(),duplicate.centerY());assertEquals(44,r.player().mp);assertEquals(hp,r.player().hp);
     SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="무도가";w.selectedId="SK_무도가_032";render(v,"skill-window-cooldown.png");w.close();
-    session.tick(1.7f);assertEquals(0,session.cooldownRemaining("player","SK_무도가_032"),.0001f);assertTrue(session.submitPlayer("player","SK_무도가_032").accepted());assertEquals(38,r.player().mp);
-    session.tick(.3f);assertEquals(68,r.player().hp);
+    Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);update.invoke(v,.34f);tap(v,duplicate.centerX(),duplicate.centerY());assertEquals(38,r.player().mp);
+    session.tick(.01f);assertEquals(68,r.player().hp);
   }
   @Test public void learnedUnimplementedSkillRegistersAndRestoresWithoutPretendingCombatSupport() throws Exception {
     SkillBook b=SkillBook.load(context);assertTrue(b.learn("SK_무도가_003",0));assertTrue(b.assign(2,"SK_무도가_003"));assertTrue(b.usable("SK_무도가_003"));SkillBook restored=SkillBook.load(context);assertTrue(restored.restore(b.snapshot()));assertEquals("SK_무도가_003",restored.slot(2));

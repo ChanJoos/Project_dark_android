@@ -30,6 +30,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   public void setSkillMovement(SkillAbilityExecutor.Movement m){abilities.movement=m;}
   public String takeSkillNotice(){return abilities.takeNotice();}
   public CombatResolver.RejectReason actionReady(String actor,String target,String id,boolean begin){
+    if(begin&&"player".equals(actor)&&MagicTimingPolicy.managed(id)&&spellIntervalRemaining>0)return CombatResolver.RejectReason.ACTION_BUSY;
     CombatResolver.RejectReason r=abilities.ready(actor,target,id,begin);if(r!=null)return r;
     SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);
     if(begin&&a!=null&&a.damage()&&recipients(actor,target,id).isEmpty())return CombatResolver.RejectReason.TARGET_DEAD;
@@ -48,6 +49,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private final LearnedActionPort learnedActions;
   private final ControlPort control;
   private final Map<String,Float> cooldowns=new HashMap<>();
+  private float spellIntervalRemaining;
   private final Map<String,float[]> directions=new HashMap<>();
   public void lockDirection(String actor,String target,String id){Position a=position(actor),t=position(target);if(a!=null&&t!=null)directions.put(actor+":"+id,new float[]{t.x-a.x,t.y-a.y});}
   private java.util.function.Predicate<String> visible=id->true;
@@ -83,6 +85,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public void tick(float dt){
+    spellIntervalRemaining=Math.max(0,spellIntervalRemaining-Math.max(0,dt));
     abilities.tick(Math.max(0,dt));
     if(dt<=0f||cooldowns.isEmpty())return;
     Iterator<Map.Entry<String,Float>> it=cooldowns.entrySet().iterator();
@@ -124,6 +127,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public void commitCooldown(String actorId,String actionId,float cooldown){
+    if("player".equals(actorId)&&MagicTimingPolicy.managed(actionId))spellIntervalRemaining=MagicTimingPolicy.SPELL_INTERVAL;
     if(actorId==null||actionId==null)throw new IllegalArgumentException("cooldown identity");
     if(cooldown<=0f){cooldowns.remove(key(actorId,actionId));return;}
     cooldowns.put(key(actorId,actionId),cooldown);

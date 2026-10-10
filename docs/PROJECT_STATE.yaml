@@ -1,3 +1,11 @@
+magic_runtime_v137:
+  owner: Director_single_editor
+  active_branch: codex/magic-runtime-v137
+  status: DEVICE_FAILED_REPORTED_SOURCE_FIXED_QA_PENDING
+  contract: docs/MAGIC_RUNTIME_V137.md
+  evidence: master/changes/MAGIC-RUNTIME-V137.json
+  physical_phone: PENDING_FIX_VALIDATION
+
 mobile_hud_v136:
   owner: Director_single_editor
   active_branch: main
@@ -12,7 +20,7 @@ mobile_hud_v136:
   native_tests: 110_PASS
   skill_art: PRESERVED_627_SOURCE_AND_APK_BYTES
   physical_phone: PENDING
-  user_visual: PENDING_RUNTIME
+  user_visual: ACCEPTED_2026-10-11
   contract: docs/ui/MOBILE_HUD_V136.md
   evidence: master/changes/V136_BUILD_RUNTIME_RECEIPT.json
 
