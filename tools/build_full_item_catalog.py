@@ -74,8 +74,36 @@ for job,page,filename,tool in [('WARRIOR',164,'L86_male.gif','IT_B_JOB_WARRIOR_W
 for e in json.loads((ROOT/'master/source/equipment/stats_v130/catalog.json').read_text())['shields']:
  CHOICES[e['id']]=(196,e['iconSource'].split('_',1)[1],'EXACT_SOURCE_KOREAN_LABEL')
 
+# Inventory illustrations and the actor's held-weapon thumbnails are different sources.
+INVENTORY_ART=ROOT/'master/source/equipment/inventory_art_v131/catalog.json'
+inventory_art=json.loads(INVENTORY_ART.read_text()) if INVENTORY_ART.exists() else None
+weapon_inventory={}
+if inventory_art:
+ wardrobe=json.loads((ROOT/'master/source/equipment/identity_v128/catalog.json').read_text())
+ links={ident:e['appearanceId'] for ident,e in wardrobe['existing'].items()}
+ links.update({e['itemId']:e['appearanceId'] for e in wardrobe['additions']})
+ for ident,a in links.items():
+  if a in inventory_art['appearances']:
+   e=inventory_art['appearances'][a];CHOICES[ident]=(e['page'],e['filename'],e['identityMatch']);weapon_inventory[ident]=a
+
+def trim_ring():
+ if not inventory_art:return
+ spec=inventory_art['ring'];path=ROOT/spec['sourcePath'];x,y,w,h=spec['originalSourceCrop']
+ image=Image.open(path).convert('RGBA').crop((x,y,x+w,y+h));bg=tuple(spec['transparentBackgroundRGB'])
+ image.putdata([(*p[:3],0) if p[:3]==bg else p for p in image.getdata()])
+ box=image.getbbox();assert box is not None
+ original_foreground=sum(p[3]>0 for p in image.getdata());out=image.crop(box)
+ assert list(out.size)==spec['newSize'] and sum(p[3]>0 for p in out.getdata())==original_foreground
+ equip=ROOT/'app/src/main/assets/equipment-icons';out.save(equip/'it_ring_threelinegold.png')
+ manifest=json.loads((equip/'manifest.json').read_text());row=manifest['items'][spec['itemId']]
+ row.update(crop=[x+box[0],y+box[1],box[2]-box[0],box[3]-box[1]],assetSha256=sha(equip/'it_ring_threelinegold.png'),
+  projection='SOURCE_RGB_TRANSPARENT_MARGIN_TRIM_V131',inventoryPresentation='35x27 foreground at1x; previous54x48 canvas forced43/54 downsampling',
+  limitation='Labelled historical capture, capture era unknown. Same716 foreground pixels preserved; only fully transparent margins removed. No redraw/upscale/resampling.')
+ (equip/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+
 def main():
  APP.mkdir(parents=True,exist_ok=True)
+ trim_ring()
  if not (SRC/'raw').exists():
   with zipfile.ZipFile(SRC/'original_sources.zip')as z:
    for name in z.namelist():
@@ -124,13 +152,24 @@ def main():
   for ident,e in j['existing'].items():
    if ident in items:items[ident]=dict(j['icons'][e['appearanceId']],itemId=ident)
   for e in j['additions']:items[e['itemId']]=dict(j['icons'][e['appearanceId']],itemId=e['itemId'])
+ if inventory_art:
+  for ident,a in weapon_inventory.items():
+   spec=inventory_art['appearances'][a]
+   original=next(r for r in audit if r['itemId']==ident)
+   items[ident]=dict(original,appearanceId=a,inventoryArtwork=True,
+    name=j['icons'][a]['name'],nativeSize=[32,32],
+    limitation='Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.' if spec['identityMatch']=='SOURCE_LABELLED_INVENTORY_ICON' else original['limitation'])
+  for ident,row in items.items():
+   if row.get('appearanceId','').startswith('mw') and ident not in weapon_inventory:
+    row['inventoryArtwork']=False
+    row['limitation']='Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.'
  performance=ROOT/'master/source/equipment/stats_v130/catalog.json'
  if performance.exists():
   for e in json.loads(performance.read_text())['shields']:
    original=e['iconSource'];name=original.split('_',1)[1];base=next(r for r in audit if r.get('sourceMember')=='raw/'+original)
    items[e['id']]=dict(base,itemId=e['id'],identityMatch='EXACT_SOURCE_KOREAN_LABEL',limitation='Exact named inventory icon; wearable appearance ID unverified and unbound.')
  runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==422
- manifest=dict(revision='IDENTITY_FIRST_NATIVE_SIZE_V128',registeredItems=len(items),policy='Every current item has an explicit original inventory-art binding. Source RGB retained, native-size presentation. Exact wearable identities replace visual equivalents; missing dedicated inventory illustrations and unknown names/stats remain explicitly recorded.',items=items)
+ manifest=dict(revision='INVENTORY_ART_V131',registeredItems=len(items),policy='Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.',items=items)
  (APP/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
  (SRC/'bindings.json').write_text(json.dumps(dict(currentItems=len(items),newSourceBindings=len(audit),reusedSourceBindings=len(REUSE),items={k:dict(name=runtime[k],assetPath=v['assetPath'],identityMatch=v['identityMatch'])for k,v in items.items()}),ensure_ascii=False,indent=2)+'\n')
  print('FULL_ITEM_ART',len(items),'runtime bindings;',len(set(v['assetPath']for v in items.values())),'unique originals')

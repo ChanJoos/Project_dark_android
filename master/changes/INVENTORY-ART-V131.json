@@ -1,0 +1,25 @@
+{
+  "id": "INVENTORY-ART-V131",
+  "status": "ACCEPTED",
+  "owner": "Director/Visual single editor",
+  "trigger": "User questions horizontal inventory weapons, paired equip operation and distorted three-line gold ring.",
+  "base": "7fbea44541e77014998f4540f287cfd707195938",
+  "source": "master/source/equipment/inventory_art_v131/catalog.json",
+  "before": "55 standard weapon entries use held actor thumbnails; ring54x48 including transparent margins is downsampled into43px slots",
+  "after": "32 weapon entries use25 labelled inventory illustrations;23 dedicated weapon illustrations unresolved and explicitly retain held preview fallback; existing Chungryong illustration retained. Ring35x27 keeps all716 foreground pixels and renders at1x.",
+  "rules": "Weapon/player stats, actor atlases, dual glove/ring/save quantities unchanged. Paired slots supported by historical player equipment reports; left/right button interaction is a mobile project adaptation, not asserted original PC behavior.",
+  "unresolved": [
+    "23 weapon inventory illustrations",
+    "original PC left/right selection interaction",
+    "physical-phone/user visual acceptance",
+    "inherited V130 original stats/appearance gaps"
+  ],
+  "checks": [
+    "all422 bindings/sourceRGB identity",
+    "ring exact foreground pixels at1x native Canvas",
+    "all weapon actor IDs and V130 attack unchanged",
+    "actual inventory source-weapon/ring details rendering",
+    "existing dual slots/equip/quantities/save regressions",
+    "exact V131 APK identity/source/pixels"
+  ]
+}
