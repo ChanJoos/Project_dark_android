@@ -30,5 +30,6 @@
     "Wide touch alignment",
     "All shared windows and original icons"
   ],
-  "verification": "PENDING exact-source native/build/full CI; physical phone and user visual acceptance pending"
+  "verification": "PASS exact-source native/build/full push and PR CI; physical phone and user visual acceptance PENDING",
+  "receipt": "master/changes/V132_BUILD_RUNTIME_RECEIPT.json"
 }

@@ -1,0 +1,87 @@
+{
+  "id": "V132_BUILD_RUNTIME_RECEIPT",
+  "status": "IMPLEMENTED_BUILD_VERIFIED_NATIVE_RUNTIME_VERIFIED_INTEGRATED",
+  "sourceCommit": "508d5d497fefcc144cb09cc0306fae34206dea1e",
+  "sourceTree": "9366cb51c9365cb574af0e360c052242c5c1fad7",
+  "sourceBase": "7672b25bca284aa2eb709177c1d0554a99e7ee97",
+  "buildInfo": {
+    "sourceCommit": "508d5d497fefcc144cb09cc0306fae34206dea1e",
+    "runId": "38033377895",
+    "versionCode": 132,
+    "versionName": "1.32-classic-polish",
+    "applicationId": "com.projectdark.mobile.v132test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "9585fcabbbad3306df4da6269a1ee9e9973b9792b26a419418d4bafdf3534c21",
+    "apkBytes": 61543229,
+    "builtSeoul": "2026-10-10T16:13:53.596229+09:00",
+    "scope": "Single inventory equip action; automatic vacant ring/glove target; explicit compact-card replacement selection when both slots occupied; shared restrained classic UI; V131 original icons and V130 stats preserved; native runtime tested, physical phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "focused": {
+    "run": 38033377895,
+    "job": 114158725163,
+    "conclusion": "success",
+    "suites": 19,
+    "tests": 108,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "sourceAssetComparisons": 955,
+    "logsInspected": true
+  },
+  "artifacts": [
+    {
+      "id": 11663317851,
+      "type": "apk",
+      "digest": "987fe2bc38b80609bfc22ce9f75f814a86d0cd1038453e3d2187962cbdb460a7"
+    },
+    {
+      "id": 11663058146,
+      "type": "native",
+      "digest": "213b0c8d3546106ef7d473a29fb3a652289ad95aa5f192f6d86203b1cbc597a3"
+    }
+  ],
+  "visualReview": {
+    "scope": "Actual native rendering: six new auto-target/replacement normal and wide views; all nine inventory pages; shared equipment/stats/skills/quests and wide views; equipment/reagent merchant and purchase-confirm/bank/NPC dialogue. No clipping observed in reviewed target cards or shop controls. Source icon assets retained.",
+    "reviewer": "Director/Visual single editor",
+    "userAcceptance": "PENDING",
+    "physicalPhone": "PENDING"
+  },
+  "savedFiles": [
+    {
+      "filename": "PROJECT_DARK_V132_TEST.apk",
+      "libraryFileId": "libfile_0e2fc7e754d48191b0a02dc2f7d6ea07"
+    },
+    {
+      "filename": "PROJECT_DARK_V132_PREVIEW.png",
+      "libraryFileId": "libfile_36829419f3588191a8651c133fb7bb33"
+    }
+  ],
+  "fullCI": [
+    {
+      "run": 38033377840,
+      "job": 114158724941,
+      "event": "push",
+      "conclusion": "success",
+      "logsInspected": true
+    },
+    {
+      "run": 38033380920,
+      "job": 114158733870,
+      "event": "pull_request",
+      "conclusion": "success",
+      "logsInspected": true
+    }
+  ],
+  "integration": {
+    "pr": 187,
+    "status": "MERGED",
+    "mergeCommit": "6a2d0b57649be82953cecfab74bd4033a025dcac",
+    "mergeTree": "9366cb51c9365cb574af0e360c052242c5c1fad7",
+    "exactTestedTreeMatch": true
+  },
+  "retainedUnresolved": "V131 23 weapon dedicated inventory-art fallbacks; V130 original stat/effect gaps and shield actor-art correspondence; original PC equip operation unverified. This is an authorized mobile UI adaptation.",
+  "scopeLimit": "Native Android rendering and actual touch/restart verified; physical phone and user visual acceptance pending. Closure is documentation only; APK source remains 508d5d497fefcc144cb09cc0306fae34206dea1e."
+}
