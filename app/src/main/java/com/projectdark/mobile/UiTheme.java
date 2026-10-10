@@ -5,8 +5,8 @@ import android.graphics.*;
 
 /** Shared presentation-only system. No domain, inventory or combat authority. */
 final class UiTheme {
-  static final int BG=0xff352416, SURFACE=0xff523921, RAISED=0xff694b2c, LINE=0xff8a623b;
-  static final int TEXT=0xffeee0bd, MUTED=0xffc2aa83, GOLD=0xffe0b66d, ACCENT=0xfff0cc78, GOOD=0xffaaca78, BAD=0xffef9676;
+  static final int BG=0xff241e18, SURFACE=0xff362b21, RAISED=0xff4b3928, LINE=0xff796044;
+  static final int TEXT=0xfff1e5ce, MUTED=0xffc9b797, GOLD=0xffdbb97e, ACCENT=0xfff0d59a, GOOD=0xffaaca78, BAD=0xffef9676;
   private static Typeface regular=Typeface.create("sans-serif",0), semibold=Typeface.create("sans-serif-medium",0);
   private static Typeface heading=Typeface.create("serif",Typeface.BOLD);
   private static final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -19,17 +19,25 @@ final class UiTheme {
     ClassicUiSkin.texture(c,r,false);ClassicUiSkin.frame(c,r);
     RectF head=new RectF(r.left+7,r.top+7,r.right-7,r.top+32);ClassicUiSkin.texture(c,head,true);
     line(c,r.left+12,r.top+32,r.right-12,r.top+32,LINE);
-    p.setTypeface(heading);p.setTextSize(17);p.setColor(GOLD);p.setStyle(Paint.Style.FILL);p.setTextAlign(Paint.Align.LEFT);
+    p.setTypeface(heading);p.setTextSize(16);p.setColor(GOLD);p.setStyle(Paint.Style.FILL);p.setTextAlign(Paint.Align.LEFT);
     c.drawText(title,r.left+19,r.top+25,p);
   }
   static void text(Canvas c,String s,float x,float y,float size,int color,boolean bold){p.setShader(null);p.setStyle(Paint.Style.FILL);p.setTextAlign(Paint.Align.LEFT);p.setTypeface(font(bold));p.setTextSize(size);p.setColor(color);c.drawText(s,x,y,p);}
   static void center(Canvas c,String s,float x,float y,float size,int color,boolean bold){p.setTypeface(font(bold));p.setTextSize(size);text(c,s,x-p.measureText(s)/2,y,size,color,bold);}
   static void right(Canvas c,String s,float x,float y,float size,int color,boolean bold){p.setTypeface(font(bold));p.setTextSize(size);text(c,s,x-p.measureText(s),y,size,color,bold);}
   static void fit(Canvas c,String s,float x,float y,float width,float size,int color,boolean bold){p.setTypeface(font(bold));p.setTextSize(size);if(p.measureText(s)>width){int n=p.breakText(s,true,Math.max(0,width-p.measureText("…")),null);s=s.substring(0,Math.max(0,n))+"…";}text(c,s,x,y,size,color,bold);}
-  static void button(Canvas c,RectF r,String s,boolean active,boolean primary){surface(c,r,active?RAISED:BG,active&&primary?GOLD:LINE,0);if(active){line(c,r.left+1,r.top+1,r.right-1,r.top+1,0xffbd925b);line(c,r.left+1,r.top+1,r.left+1,r.bottom-1,0xffbd925b);}center(c,s,r.centerX(),r.centerY()+4.3f,12,active?TEXT:MUTED,true);}
+  static void button(Canvas c,RectF r,String s,boolean active,boolean primary){
+    surface(c,r,active&&primary?RAISED:BG,active&&primary?GOLD:LINE,3);
+    if(active&&primary)line(c,r.left+8,r.bottom-3,r.right-8,r.bottom-3,0x607f6240);
+    center(c,s,r.centerX(),r.centerY()+4,12,active?TEXT:MUTED,true);
+  }
   static void tab(Canvas c,RectF r,String s,boolean selected){surface(c,r,selected?RAISED:BG,LINE,0);center(c,s,r.centerX(),r.centerY()+4,12,selected?GOLD:MUTED,true);if(selected)line(c,r.left+2,r.bottom-2,r.right-2,r.bottom-2,ACCENT);}
   static void line(Canvas c,float x,float y,float xx,float yy,int color){p.setShader(null);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(color);c.drawLine(x,y,xx,yy,p);p.setStyle(Paint.Style.FILL);}
-  static void slot(Canvas c,RectF r,boolean selected,boolean equipped){ClassicUiSkin.texture(c,r,false);line(c,r.left,r.top,r.right,r.top,selected?ACCENT:0xff6b4f30);line(c,r.left,r.top,r.left,r.bottom,selected?ACCENT:0xff6b4f30);line(c,r.right,r.top,r.right,r.bottom,0xff3e2c1a);line(c,r.left,r.bottom,r.right,r.bottom,0xff3e2c1a);if(selected){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(ACCENT);c.drawRect(new RectF(r.left+1,r.top+1,r.right-1,r.bottom-1),p);p.setStyle(Paint.Style.FILL);}if(equipped){p.setColor(GOOD);c.drawCircle(r.right-7,r.top+7,2,p);}}
+  static void slot(Canvas c,RectF r,boolean selected,boolean equipped){
+    RectF b=new RectF(r.left+2,r.top+2,r.right-2,r.bottom-2);surface(c,b,BG,selected?ACCENT:0xff574533,2);
+    if(selected){line(c,b.left+4,b.top+2,b.right-4,b.top+2,ACCENT);line(c,b.left+4,b.bottom-2,b.right-4,b.bottom-2,ACCENT);}
+    if(equipped){p.setColor(GOOD);c.drawCircle(r.right-7,r.top+7,2,p);}
+  }
   static void close(Canvas c,float x,float y){button(c,new RectF(x-12,y-11,x+12,y+11),"×",true,false);}
   static void utility(Canvas c,float x,float y,String icon,boolean active,float radius){surface(c,new RectF(x-radius,y-radius,x+radius,y+radius),active?0xed694b2c:0xeb352416,active?ACCENT:LINE,10);glyph(c,icon,x,y,9,active?ACCENT:GOLD);}
   /** Empty equipment sockets use centered silhouettes, never text labels. */
