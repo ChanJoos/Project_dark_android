@@ -1,0 +1,68 @@
+{
+  "status": "INTEGRATED_BUILD_NATIVE_FULL_CI_VERIFIED",
+  "source": "64c541980d72a55f7a193d87b7eda0858d051844",
+  "source_tree": "5ed2df9e08fcd01509c8664e1346c03a63eda29d",
+  "app_tree": "43471188025ad9f33ee528860cba61b98153d43d",
+  "pr": 192,
+  "merge": "39fa5ac8b636116cb3a39f8f71ea9ac6c8f09c49",
+  "focused_actions": 38076035816,
+  "full_android": [
+    {
+      "id": 38076035738,
+      "conclusion": "success"
+    },
+    {
+      "id": 38076039505,
+      "conclusion": "success"
+    }
+  ],
+  "native_runtime": {
+    "suites": 27,
+    "tests": 158,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "mode": "ROBOLECTRIC_NATIVE_GRAPHICS_SDK34"
+  },
+  "preview_artifact": 11678880813,
+  "native_artifact": 11679216812,
+  "apk_artifact": 11678932130,
+  "apk_sha256": "33ffab85d84bbdda8fff84a7d3a30d57f7f90735c80e1a5ad850afff871cd8c5",
+  "apk_bytes": 62043032,
+  "package": "com.projectdark.mobile.v137test",
+  "version": "1.37-magic-runtime",
+  "built_seoul": "2026-10-11T03:44:11.936067+09:00",
+  "skill_files": "627_PACKAGED_CURRENT_SOURCE_BYTE_MATCHES",
+  "skill_art": "626_FILES_UNCHANGED_VS_V136; ONLY_SKILLS_ABILITIES_JSON_TIMING_CHANGED",
+  "native_visual_review": "3_EXACT_SOURCE_MAGIC_SCENES_REVIEWED",
+  "ui_v136": "USER_VISUAL_ACCEPTED_2026-10-11_RETAINED",
+  "physical_phone": "PENDING_FIX_VALIDATION",
+  "magic_user_acceptance": "PENDING_NEW_APK",
+  "timing": {
+    "early_mage_and_all_kuroto_individual_cooldown": 0,
+    "shared_interval_seconds": 0.3333333333333333,
+    "kuroto_cast_seconds": 0,
+    "pana_elemental_cast_seconds": 0,
+    "elemental_base_cast": {
+      "seconds": 1,
+      "evidence": "ADAPTED_PENDING_ORIGINAL_TIMING_CAPTURE"
+    },
+    "pana": "RETAINED_HISTORICAL_MINUS1S_PLAYER_GUIDE_PROFILE; CURRENT_GUIDE_CONFLICT_RECORDED"
+  },
+  "qa_history": {
+    "initial_source": "16fc502b4d6bc468150e28023e2be2381c521969",
+    "obsolete_tests": [
+      "InnDetailQuestFxTest.old_rule_contact",
+      "SkillTestModeTest.old_0.27s_cast",
+      "SkillPresentationTest.instant_heal_and_elemental_contact"
+    ],
+    "final": "EFFECTIVE_CAST_AND_QUEUED_START_OBSERVED; ALL_FINAL_CHECKS_SUCCESS; NO_FAILED_APK_DELIVERED"
+  },
+  "build_info_scope_note": "Inherited userVisualAcceptance PENDING means new V137 device/correction acceptance; V136 B layout is already USER_ACCEPTED.",
+  "deliverables": {
+    "apk": "libfile_ba8fa8bb7f1c8191847336ac7f331bd7",
+    "magic": "libfile_3cf1ff5ae22c8191a923e1886b034cf7",
+    "auto": "libfile_10ea072a83f881919defeb2a5cca2c93",
+    "build_info": "libfile_74684c9562d0819189f3dd7addc2bd38"
+  }
+}

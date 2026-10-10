@@ -1,10 +1,21 @@
 magic_runtime_v137:
   owner: Director_single_editor
-  active_branch: codex/magic-runtime-v137
-  status: DEVICE_FAILED_REPORTED_SOURCE_FIXED_QA_PENDING
+  active_branch: main
+  status: INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED
+  source: 64c541980d72a55f7a193d87b7eda0858d051844
+  source_tree: 5ed2df9e08fcd01509c8664e1346c03a63eda29d
+  app_tree: 43471188025ad9f33ee528860cba61b98153d43d
+  merge: 39fa5ac8b636116cb3a39f8f71ea9ac6c8f09c49
+  focused_actions: 38076035816
+  full_android: [38076035738, 38076039505]
+  native_tests: 158_PASS_27_SUITES
+  source_skill_files: 627_APK_CURRENT_BYTE_MATCHES
+  v136_ui: USER_VISUAL_ACCEPTED_RETAINED
   contract: docs/MAGIC_RUNTIME_V137.md
-  evidence: master/changes/MAGIC-RUNTIME-V137.json
+  evidence: master/changes/V137_BUILD_RUNTIME_RECEIPT.json
   physical_phone: PENDING_FIX_VALIDATION
+  magic_user_acceptance: PENDING_NEW_APK
+  original_elemental_base_cast: UNVERIFIED_ADAPTED_1S
 
 mobile_hud_v136:
   owner: Director_single_editor
@@ -16,7 +27,7 @@ mobile_hud_v136:
   merge: 8917e85c0636440d8b9f7407cf77e71aa85ee962
   focused_actions: 38071297808
   full_android: SUCCESS_38071298077
-  duplicate_pr_check: IN_PROGRESS_38071300764_AT_MERGE_SAME_SOURCE_WORKFLOW
+  duplicate_pr_check: SUCCESS_38071300764
   native_tests: 110_PASS
   skill_art: PRESERVED_627_SOURCE_AND_APK_BYTES
   physical_phone: PENDING

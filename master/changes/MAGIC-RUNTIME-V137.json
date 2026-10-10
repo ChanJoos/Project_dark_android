@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_IMPLEMENTED_QA_PENDING",
+  "status": "INTEGRATED_BUILD_NATIVE_FULL_CI_VERIFIED",
   "owner": "Director_single_editor",
   "user_report": "DEVICE_FAILED_USER_REPORTED_V136_MAGIC",
   "ui_v136": "USER_VISUAL_ACCEPTED_2026-10-11",
@@ -41,5 +41,9 @@
       "profile": "CURRENT_PANA_MINUS2_CONFLICT_RECORDED_NOT_OFFICIAL"
     }
   ],
-  "physical_phone": "PENDING_FIX_VALIDATION"
+  "physical_phone": "PENDING_FIX_VALIDATION",
+  "source": "64c541980d72a55f7a193d87b7eda0858d051844",
+  "receipt": "master/changes/V137_BUILD_RUNTIME_RECEIPT.json",
+  "native_tests": 158,
+  "full_android": "SUCCESS"
 }
