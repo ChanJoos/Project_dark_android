@@ -1,4 +1,4 @@
-name: V139 Abel coast
+name: V140 Abel coast reference revision
 on:
   push:
     branches: [codex/abel-coast-v139]
@@ -101,7 +101,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: abel-coast-v139-preview-${{ github.sha }}
+          name: abel-coast-v140-preview-${{ github.sha }}
           path: |
             app/build/reports/abel-v139/
             app/build/reports/mobile-hud-v136/
@@ -118,7 +118,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: abel-coast-v139-native-${{ github.sha }}
+          name: abel-coast-v140-native-${{ github.sha }}
           path: |
             app/build/reports/abel-v139/
             app/build/reports/mobile-hud-v136/
@@ -141,7 +141,7 @@ jobs:
             app/build/reports/tests/
       - uses: actions/upload-artifact@v4
         with:
-          name: abel-coast-v139-apk-${{ github.sha }}
+          name: abel-coast-v140-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json

@@ -5,12 +5,12 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v139test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V139 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v140test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V140 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 139
-        versionName '1.39-abel-coast'
+        versionCode 140
+        versionName '1.40-abel-reference'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
@@ -46,7 +46,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 139, versionName: '1.39-abel-coast']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 140, versionName: '1.40-abel-reference']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
@@ -67,3 +67,11 @@ tasks.register('extractAbelV139', Copy) {
     includeEmptyDirs = false
 }
 tasks.named('preBuild').configure { dependsOn('extractAbelV139') }
+
+// Reviewed coast revision assets share the same runtime/cache paths.
+tasks.register('extractAbelV140', Copy) {
+    from(zipTree(rootProject.file('master/assets/abel_v140/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/abel-v139'))
+    includeEmptyDirs = false
+}
+tasks.named('preBuild').configure { dependsOn('extractAbelV140') }
