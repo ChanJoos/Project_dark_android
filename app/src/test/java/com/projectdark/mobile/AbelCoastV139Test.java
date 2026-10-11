@@ -4,7 +4,8 @@ import android.graphics.*;
 import com.projectdark.mobile.world.*;
 import java.util.*;
 import java.lang.reflect.*;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import org.json.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -50,6 +51,13 @@ public class AbelCoastV139Test {
  @Test public void actualTravelDialogueOffersTestPreviewWithoutGrantingLevelOrCompletingD04()throws Exception{
   GameView v=new GameView(context);v.setSkillTestMode(true);v.layout(0,0,960,540);RuntimeState s=(RuntimeState)ForestPixelCacheTest.field(v,"state");SkillBook b=(SkillBook)ForestPixelCacheTest.field(v,"skillBook");assertTrue(b.testAccess());RuntimeState.Npc npc=null;for(RuntimeState.Npc n:s.npcs())if(n.id.equals("pote_travel_guide"))npc=n;assertNotNull(npc);s.player().x=npc.x;s.player().y=npc.y;
   InteractionController interaction=(InteractionController)ForestPixelCacheTest.field(v,"interaction");interaction.request(s,npc);int level=s.rpg().normalLevel();long exp=CampaignProgress.earnedExp(s.rpg());QuestJournalTest.gesture(v,682f,426f);assertEquals(AbelCoastGeometry.ENTRY,s.currentMapId());assertEquals(level,s.rpg().normalLevel().intValue());assertEquals(exp,CampaignProgress.earnedExp(s.rpg()));assertFalse(s.rpg().campaign().forestFinished());
+  Method gate=GameView.class.getDeclaredMethod("checkCampaignGate");gate.setAccessible(true);for(int i=0;i<AbelCoastGeometry.ROUTE.length-1;i++){WorldMoveTargetController.TileCenter at=CampaignWorld.forward(s.currentMapId());s.player().x=at.x;s.player().y=at.y;assertEquals(true,gate.invoke(v));assertEquals(AbelCoastGeometry.ROUTE[i+1],s.currentMapId());}assertEquals(level,s.rpg().normalLevel().intValue());assertEquals(exp,CampaignProgress.earnedExp(s.rpg()));
+ }
+ @Test public void actualQuickQuestTravelsToAbelHuntAndKillsItsSpecies()throws Exception{
+  GameView v=new GameView(context);v.layout(0,0,960,540);RuntimeState s=(RuntimeState)ForestPixelCacheTest.field(v,"state");restoreD04(s.rpg(),"WARRIOR");v.setSkillTestMode(false);((F5mAdaptedPrologueQuest)ForestPixelCacheTest.field(v,"f5mQuest")).restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);((GrowthQuest2)ForestPixelCacheTest.field(v,"quest2")).restore(GrowthQuest2.State.COMPLETED,3);
+  JSONObject saved=s.rpg().campaign().snapshot();saved.getJSONArray("complete").put("E01");saved.put("active","E02");assertTrue(s.rpg().campaign().restore(saved));TownInteriorTest.call(v,"enterPoteField");Method change=GameView.class.getDeclaredMethod("changeCampaignMap",String.class,boolean.class);change.setAccessible(true);change.invoke(v,AbelCoastGeometry.ENTRY,false);QuestJournalTest.gesture(v,790,104);assertTrue((Boolean)ForestPixelCacheTest.field(v,"autoAttackEnabled"));
+  Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);CombatController combat=(CombatController)ForestPixelCacheTest.field(v,"combat");boolean selected=false;for(int i=0;i<5000&&s.rpg().campaign().count(CampaignProgress.find("E02"),s.rpg())==0;i++){update.invoke(v,.05f);if(combat.target()!=null){assertEquals("MAP_ABEL_COAST_1A",s.currentMapId());assertEquals("ABEL_TURTLE",combat.target().campaignRewardProfileId);combat.target().hp=1;selected=true;}}
+  assertTrue("live quick quest selects an Abel turtle",selected);assertTrue("real AUTO attack records the kill",s.rpg().campaign().count(CampaignProgress.find("E02"),s.rpg())>0);
  }
  @Test public void restartRestoresEveryCoastMapAndExactPosition()throws Exception{
   GameView v=new GameView(context);v.layout(0,0,960,540);RuntimeState state=(RuntimeState)ForestPixelCacheTest.field(v,"state");restoreD04(state.rpg(),"WARRIOR");
