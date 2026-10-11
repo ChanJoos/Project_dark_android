@@ -4,15 +4,15 @@ import java.util.*;
 
 /** Source-referenced coast encounters; mobile counts and placements remain adapted. */
 public final class AbelCoastMonsters {
- public static final List<String> ALL=Collections.unmodifiableList(Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_GAS","ABEL_GRAB","ABEL_CRAB","ABEL_OCTOPUS","ABEL_OBS_PURPLE_EGG","ABEL_OBS_ORANGE_FLOAT","ABEL_OBS_PURPLE_MAW","ABEL_BERSERKER","ABEL_KINGARK_FAKE","ABEL_KINGARK"));
- public static String name(String id){switch(id){case "ABEL_TURTLE":return "터틀";case "ABEL_GAS":return "가스";case "ABEL_PONG":return "퐁퐁이";case "ABEL_ARKPUS":return "아크퍼스";case "ABEL_GRAB":return "그래브";case "ABEL_CRAB":return "갑각 몬스터";case "ABEL_OCTOPUS":return "문어";case "ABEL_OBS_PURPLE_EGG":return "보라 부유체";case "ABEL_OBS_ORANGE_FLOAT":return "주황 부유체";case "ABEL_OBS_PURPLE_MAW":return "보라 입꼬리 괴물";case "ABEL_BERSERKER":return "청록 문어";case "ABEL_KINGARK_FAKE":return "가짜 킹아크퍼스";case "ABEL_KINGARK":return "킹아크퍼스";default:return null;}}
+ public static final List<String> ALL=Collections.unmodifiableList(Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_CATERPILLAR","ABEL_GRAB","ABEL_OBS_SLATE","ABEL_OCTOPUS","ABEL_OBS_PURPLE_EGG","ABEL_GAS","ABEL_OBS_PURPLE_MAW","ABEL_BERSERKER","ABEL_KINGARK_FAKE","ABEL_KINGARK"));
+ public static String name(String id){switch(id){case "ABEL_TURTLE":return "터틀";case "ABEL_CATERPILLAR":return "애벌레";case "ABEL_PONG":return "퐁퐁이";case "ABEL_ARKPUS":return "아크퍼스";case "ABEL_GRAB":return "그래브";case "ABEL_OBS_SLATE":return "회청색 몬스터";case "ABEL_OCTOPUS":return "문어";case "ABEL_OBS_PURPLE_EGG":return "보라";case "ABEL_GAS":return "가스";case "ABEL_OBS_PURPLE_MAW":return "튜터";case "ABEL_BERSERKER":return "광폭자";case "ABEL_KINGARK_FAKE":return "가짜 킹아크퍼스";case "ABEL_KINGARK":return "킹아크퍼스";default:return null;}}
  /** Observed zone families; unknown proper names remain provisional in source receipts. */
  public static List<String> roster(String map){
   switch(AbelCoastGeometry.index(map)){
-   case 1:case 2:return Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_GAS");
-   case 3:return Arrays.asList("ABEL_TURTLE","ABEL_GRAB","ABEL_CRAB","ABEL_GAS","ABEL_PONG");
-   case 4:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_EGG","ABEL_OBS_ORANGE_FLOAT","ABEL_OBS_PURPLE_MAW","ABEL_GAS");
-   case 5:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_MAW","ABEL_OBS_ORANGE_FLOAT","ABEL_BERSERKER","ABEL_KINGARK_FAKE","ABEL_KINGARK");
+   case 1:case 2:return Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_CATERPILLAR");
+   case 3:return Arrays.asList("ABEL_TURTLE","ABEL_GRAB","ABEL_OBS_SLATE","ABEL_CATERPILLAR","ABEL_PONG");
+   case 4:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_EGG","ABEL_GAS","ABEL_OBS_PURPLE_MAW","ABEL_CATERPILLAR");
+   case 5:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_MAW","ABEL_GAS","ABEL_BERSERKER","ABEL_KINGARK_FAKE","ABEL_KINGARK");
    default:return Collections.emptyList();
   }
  }

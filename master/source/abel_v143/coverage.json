@@ -1,0 +1,201 @@
+{
+  "schema": 3,
+  "scope": "V143 user-corrected display names and visual bindings; historical source snapshots preserved",
+  "rosterClosed": false,
+  "secondVideo": {
+    "id": "VwC1KujHWvg",
+    "start": 571,
+    "end": 710,
+    "frameReview": "SUPPLIED_60_8S_RECORDING_REVIEWED_WITH_1FPS_SAMPLES_AND_DETAILED_CROPS",
+    "recordingDuration": 60.800042,
+    "sourceLibraryId": "libfile_6518b80d25708191b349c89ebf841266",
+    "decodedFrames": 1846,
+    "uniqueDecodedFrames": 1846,
+    "manualSampleCount": 61,
+    "earlyDetailedSampleCount": 32,
+    "sourceSha256": "a60559303ddc91c5d4f339c09aed5b0b68582b2b6446e4cd7189db161610e6d9",
+    "limitation": "Recording has seeks. Not every decoded frame was individually manually reviewed; original full YouTube interval completeness not certified."
+  },
+  "firstVideo": {
+    "id": "VxmS9AhpMwQ",
+    "frameReview": "SUPPLIED_34_8S_RECORDING_SAMPLED; full video not reviewed"
+  },
+  "entries": [
+    {
+      "id": "ABEL_TURTLE",
+      "name": "터틀",
+      "scope": "COAST",
+      "evidence": "supplied video/screenshot",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_ARKPUS",
+      "name": "아크퍼스",
+      "scope": "COAST",
+      "evidence": "supplied video/user identity",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_PONG",
+      "name": "퐁퐁이",
+      "scope": "COAST",
+      "evidence": "supplied video/user identity; KingArk material",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_CATERPILLAR",
+      "name": "애벌레",
+      "scope": "COAST",
+      "evidence": "supplied video/user identity",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "canonicalName": null,
+      "identityJoin": "USER_CONFIRMED_DISPLAY_20261012_GREEN_SPOTTED"
+    },
+    {
+      "id": "ABEL_OBS_SLATE",
+      "name": "회청색 몬스터",
+      "scope": "COAST",
+      "evidence": "Visible 그래브 label with clean slate-blue skirted body at recording4.375s, Abel2-C; official coastline2 placement",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "canonicalName": null,
+      "identityJoin": "USER_CONFIRMED_NOT_GRAB_ORIGINAL_NAME_UNKNOWN"
+    },
+    {
+      "id": "ABEL_GRAB",
+      "name": "그래브",
+      "scope": "COAST",
+      "evidence": "historical crab-shell quest; alias unresolved",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "canonicalName": "그래브",
+      "identityJoin": "USER_CONFIRMED_CRAB_IS_GRAB_20261012"
+    },
+    {
+      "id": "ABEL_BERSERKER",
+      "name": "광폭자",
+      "scope": "COAST_ELITE",
+      "evidence": "2008 Nexon-hosted player observation, Blue Arkpus likeness",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "identityJoin": "USER_CONFIRMED_TEAL_OCTOPUS_BOSS_20261012"
+    },
+    {
+      "id": "ABEL_KINGARK_FAKE",
+      "name": "가짜 킹아크퍼스",
+      "scope": "COAST_EVENT",
+      "evidence": "Historical KingArk event plus kingark-ref-13 central large purple octopus, partly obscured; generated interpretation",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "encounter": "ADAPTED_SOLO_PREVIEW_NOT_ORIGINAL_EVENT",
+      "artDistinction": "Fake/real share one generated family; original difference unverified"
+    },
+    {
+      "id": "ABEL_KINGARK",
+      "name": "킹아크퍼스",
+      "scope": "COAST_EVENT",
+      "evidence": "Historical KingArk event plus kingark-ref-13 central large purple octopus, partly obscured; generated interpretation",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "encounter": "ADAPTED_SOLO_PREVIEW_NOT_ORIGINAL_EVENT",
+      "artDistinction": "Fake/real share one generated family; original difference unverified"
+    },
+    {
+      "id": "ABEL_SLUG",
+      "name": "슬러그",
+      "scope": "REGION_CHECK",
+      "evidence": "2005 old Abel dungeon; coast placement unconfirmed",
+      "status": "PENDING_REGION_JOIN",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_ESCOMOID",
+      "name": "에스코모이드",
+      "scope": "REGION_CHECK",
+      "evidence": "2005 old Abel dungeon; coast placement unconfirmed",
+      "status": "PENDING_REGION_JOIN",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_OCTOPUS",
+      "name": "문어",
+      "canonicalName": "문어",
+      "scope": "COAST",
+      "evidence": "Visible 문어 label and red oval mantle at25s,3-C/4-C",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_EGG",
+      "name": "보라",
+      "canonicalName": null,
+      "scope": "COAST",
+      "evidence": "Purple spotted hovering oval and detached black shadow at20.6s,3-C",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "identityJoin": "USER_ASSIGNED_DISPLAY_NAME_20261012"
+    },
+    {
+      "id": "ABEL_GAS",
+      "name": "가스",
+      "canonicalName": "가스",
+      "scope": "COAST",
+      "evidence": "Orange spotted heart-like floating body and dangling beads at25/50s,3-C/4-C",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "identityJoin": "USER_CONFIRMED_YELLOW_ORANGE_FLOATER_20261012"
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_MAW",
+      "name": "튜터",
+      "canonicalName": null,
+      "scope": "COAST",
+      "evidence": "Purple toothed mouth and long looping stalk at25/50s,4-C",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false,
+      "identityJoin": "USER_ASSIGNED_DISPLAY_NAME_20261012"
+    }
+  ],
+  "rejectedAssets": [
+    "abel_v140/crab",
+    "abel_v140/berserker",
+    "abel_v139/red_octopus",
+    "abel_v140/pong"
+  ],
+  "completionPolicy": "Video visual coverage and all-known candidate bindings are distinct from original fidelity. Whole restoration requires remaining proper-name/version joins, black-pile classification, original event conditions, full intervals and visual acceptance.",
+  "unresolvedSilhouettes": [
+    {
+      "observationId": "ABEL_OBS_3C_BLACK_SPIKED",
+      "shape": "Small black spiked body on sand, center-right",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": null,
+      "note": "Small black spiky pile has no visible HP/name in historical capture. Not proven to be a live monster; do not invent a species or silently delete observation."
+    },
+    {
+      "observationId": "ABEL_OBS_3C_PURPLE_FLOATING",
+      "shape": "Purple spotted upright floating body with detached black oval shadow, top-right partial view",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": "ABEL_OBS_PURPLE_EGG",
+      "match": "User display name 보라; original proper name remains unverified"
+    },
+    {
+      "observationId": "ABEL_OBS_3C_RED_ROUND",
+      "shape": "Rounded red mantle with multiple tentacles, bottom-right",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": "ABEL_OCTOPUS",
+      "match": "Visible 문어 label in new recording"
+    }
+  ],
+  "identityPolicy": "Unlabelled observations are NOT separate confirmed species; reconcile with names and versions before closing roster. Rejected generated artwork must not be reused to fill these gaps.",
+  "candidateVisualRosterCovered": true,
+  "retiredRuntimeIds": [
+    "ABEL_CRAB",
+    "ABEL_OBS_ORANGE_FLOAT"
+  ],
+  "nameAuthority": "USER_20261012; assigned names 보라/튜터 are not independently verified original facts",
+  "krakenVsKingArk": "USER_CONFIRMED_DISTINCT; KingArk purple Kraken-type boss at3-4x normal; current art family remains adapted, scale3.5x"
+}

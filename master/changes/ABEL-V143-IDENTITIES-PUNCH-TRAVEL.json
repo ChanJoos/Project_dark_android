@@ -1,0 +1,14 @@
+{
+  "id": "ABEL-V143-IDENTITIES-PUNCH-TRAVEL",
+  "status": "IMPLEMENTED_CANDIDATE",
+  "base": "2e77b4a98bc1220e859d963fe1437569768cc388",
+  "nameAuthority": "USER20261012",
+  "before": "wrong gas/Grab joins, punch idle fallback, hidden Abel button/spawn-overlap NPC",
+  "after": "corrected13 IDs/12 families; retained group-e punch; visible and reachable Noah travel; Lv41/D04 normal gate retained",
+  "sourceAssetsChanged": false,
+  "combatBalanceChanged": false,
+  "normalKrakenAppearance": "UNRESOLVED",
+  "originalKingArkEvent": "UNIMPLEMENTED",
+  "phone": "PENDING",
+  "native": "PENDING"
+}

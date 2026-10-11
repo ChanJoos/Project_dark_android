@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--require-complete', action='store_true')
 parser.add_argument('--output', type=Path)
 args = parser.parse_args()
-coverage = json.loads((root/'master/source/abel_v142/coverage.json').read_text())
+coverage = json.loads((root/'master/source/abel_v143/coverage.json').read_text())
 java = root/'app/src/main/java/com/projectdark/mobile'
 spawn = (java/'AbelCoastMonsters.java').read_text()
 roster = re.search(r'ALL=Collections.unmodifiableList\(Arrays.asList\(([^)]+)\)\)', spawn).group(1)

@@ -67,7 +67,7 @@ public final class CampaignProgress {
   common("E02","터틀의 모래 해변","abel_coast_guide","MAP_ABEL_COAST_1A","KILL","ABEL_TURTLE",41,10,0,600);
   common("E03","암초의 아크퍼스","abel_coast_guide","MAP_ABEL_COAST_1B","KILL","ABEL_ARKPUS",43,10,0,700);
   common("E04","야자수 해안 답사","abel_coast_guide","MAP_ABEL_COAST_2A","VISIT","MAP_ABEL_COAST_2A",45,1,0,750);
-  common("E05","해안 생태 조사","abel_coast_guide","MAP_ABEL_COAST_2A","PAIR","ABEL_GRAB,ABEL_CRAB",46,16,0,800);
+  common("E05","해안 생태 조사","abel_coast_guide","MAP_ABEL_COAST_2A","PAIR","ABEL_GRAB,ABEL_OBS_SLATE",46,16,0,800);
   common("E06","숨겨진 해변","abel_coast_guide","MAP_ABEL_COAST_3B","VISIT","MAP_ABEL_COAST_3B",49,1,0,850);
   common("E07","깊은 해안의 위험","abel_coast_guide","MAP_ABEL_COAST_3B","PAIR","ABEL_OCTOPUS,ABEL_OBS_PURPLE_MAW",51,20,0,900);
   common("E08","4-C 암초 조사","abel_coast_guide","MAP_ABEL_COAST_4C","VISIT","MAP_ABEL_COAST_4C",54,1,0,1000);
