@@ -14,10 +14,11 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
   for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all()){
    count++;SkillActionContract.Rule r=SkillActionContract.get(a.id);assertNotNull(a.id,r);
    RuntimeState s=new RuntimeState();s.rpg().restoreBaseResources(200000,200000);s.applyDerivedGrowth();s.player().hp=1000;s.player().mp=100000;
-   RuntimeState.Monster m=s.monsters().get(0);m.x=s.player().x+32*Math.max(1,r.minReach);m.y=s.player().y+16*Math.max(1,r.minReach);m.maxHp=50000;m.hp=1000;
+   RuntimeState.Monster m=s.monsters().get(0);m.x=s.player().x+32*Math.max(1,r.minReach);m.y=s.player().y+16*Math.max(1,r.minReach);m.hp=1;
    s.skillEffects().put("player","qa-hidden","STEALTH",1,60);
    RuntimeCombatSession session=new RuntimeCombatSession(s,(x,y)->true,(x,id)->true,x->true);
    boolean spell=ItemEffects.magic(a.id);if(spell){spells++;assertTrue(a.id,MagicTimingPolicy.managed(a.id));}
+   if(a.id.equals("SK_공통_001")){assertTrue(session.submitPlayerBasicAttack(m.id).combat.accepted());session.tick(.3f);continue;}
    if(!a.supported()){int mp=s.player().mp;assertFalse(a.id,session.useUtility(a.id));assertEquals(a.id,mp,s.player().mp);continue;}
    if(a.status.equals("TRANSFER")){assertFalse(session.submitPlayer("player",a.id).accepted());continue;}
    if(!r.presentationAllowed()){

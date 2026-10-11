@@ -40,6 +40,8 @@ for e in cat:
  kind='DAMAGE' if mechanic=='DAMAGE_ADAPTED_BALANCE' else 'HEAL' if mechanic=='HEAL_ADAPTED_BALANCE' else 'STATUS' if status else 'PASSIVE' if r['mode'] in ('LINKED','PASSIVE') else 'SERVICE'
  if status in ('POISON_HIT','FREEZE_HIT','DRAIN','CHARGE'):kind='DAMAGE'
  if n=='파천각':kind='DAMAGE'
+ # Source gates: player-only Push/ArmorDisarm/HideOther and missing leap recipient.
+ if e['id'] in ('SK_도적_004','SK_도적_019','SK_도적_026','SK_무도가_003'):kind='SERVICE'
  evidence='PROJECT_ADAPTED_V83';source='User 2026-10-02: author unprovided formulas by learning circle/stat requirements'
  # Physical multipliers grow with circle and acquisition burden; martial balance uses STR/CON geometric mean.
  required=learn[e['id']]['stats'];burden=sum(required.values())-15

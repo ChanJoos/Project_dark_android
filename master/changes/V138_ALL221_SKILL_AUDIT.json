@@ -5,10 +5,11 @@
     "마법": 138
   },
   "routeCounts": {
-    "RESOLVER": 174,
+    "RESOLVER": 173,
     "LINKED_PASSIVE": 8,
-    "UTILITY": 22,
-    "UNAVAILABLE_SERVICE": 17
+    "UNAVAILABLE_SERVICE": 21,
+    "UTILITY": 18,
+    "BASIC_ATTACK": 1
   },
   "rows": [
     {
@@ -666,8 +667,8 @@
       "name": "밀기",
       "job": "도적",
       "kind": "기술",
-      "route": "UTILITY",
-      "mechanic": "STATUS",
+      "route": "UNAVAILABLE_SERVICE",
+      "mechanic": "SERVICE",
       "formula": "NONE",
       "formulaEvidence": "PROJECT_ADAPTED_V83",
       "mp": 0,
@@ -1041,8 +1042,8 @@
       "name": "적갑옷해체",
       "job": "도적",
       "kind": "기술",
-      "route": "UTILITY",
-      "mechanic": "STATUS",
+      "route": "UNAVAILABLE_SERVICE",
+      "mechanic": "SERVICE",
       "formula": "NONE",
       "formulaEvidence": "PROJECT_ADAPTED_V83",
       "mp": 0,
@@ -1216,8 +1217,8 @@
       "name": "하이더",
       "job": "도적",
       "kind": "마법",
-      "route": "UTILITY",
-      "mechanic": "STATUS",
+      "route": "UNAVAILABLE_SERVICE",
+      "mechanic": "SERVICE",
       "formula": "NONE",
       "formulaEvidence": "PROJECT_ADAPTED_V83",
       "mp": 126,
@@ -3916,8 +3917,8 @@
       "name": "이형환위",
       "job": "무도가",
       "kind": "기술",
-      "route": "UTILITY",
-      "mechanic": "STATUS",
+      "route": "UNAVAILABLE_SERVICE",
+      "mechanic": "SERVICE",
       "formula": "NONE",
       "formulaEvidence": "PROJECT_ADAPTED_V83",
       "mp": 0,
@@ -4591,7 +4592,7 @@
       "name": "기본공격",
       "job": "공통",
       "kind": "기술",
-      "route": "RESOLVER",
+      "route": "BASIC_ATTACK",
       "mechanic": "STATUS",
       "formula": "NONE",
       "formulaEvidence": "PROJECT_ADAPTED_V83",
@@ -5540,7 +5541,7 @@
   "scope": "STATIC_FULL_221; native execution separately verified by CI. Not all original mechanics or phone acceptance.",
   "sourceHashes": {
     "app/src/main/assets/skills/catalog.json": "56edf3fd041c32cd75fa9a51606c302b0b017f7bc45c2fe5ddefe7ab12c43fad",
-    "app/src/main/assets/skills/abilities.json": "c223af4ca55265818362b8245c50d7716953332667ad7c2ab5894e2dc7f2e442",
+    "app/src/main/assets/skills/abilities.json": "3b9a09e29cd724a9f764be4c37641efa3f8c16a11b707cf6f2af0fdb95c750c7",
     "docs/SKILL_ACTION_DECISIONS.csv": "2670ca32fc7247d30e3875b6b6fab010d317ba34abc7fdb8e9c2c1dc4e1cec8b"
   }
 }
