@@ -1,0 +1,10 @@
+{
+  "source": "9752b858fb9a7cdac912cb9aba79ac442047bcb1",
+  "run": 38176957527,
+  "job": 114581261302,
+  "status": "FAILED_NATIVE_REWARD_POLICY",
+  "scope": "42 tests, 2 reward-policy failures; 40 passed. Native map/156-pose renders produced; no APK from failed source.",
+  "rootCause": "Live bound ABEL_BERSERKER adapter reached canonical 606252 EXP instead of adapted 95000 EXP. Canonical catalog must remain retained, while bound coast actors use the explicitly adapted profile.",
+  "repairSource": "2cb7a9c837427ff5c96e409aacd45ec4d64d432a",
+  "repair": "RpgProgressionState guard uses matching live coast profiles before canonical fallback; all13 existing resolver/ledger/save tests retained and strengthened with evidence/source assertions."
+}

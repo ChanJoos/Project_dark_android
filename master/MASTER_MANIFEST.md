@@ -1,3 +1,7 @@
+## V142 exact candidate build/native receipt
+
+Source2cb7a9c / Actions38177352950 SUCCESS;105 tests/21 suites;13 candidate identities/12 art families. Original fidelity/event/names/roster closure and phone/user acceptance OPEN. master/changes/V142_BUILD_RUNTIME_RECEIPT.json; original snapshots retained.
+
 V142 candidate adapter amendment: master/changes/ABEL-V142-SECOND-VIDEO-ROSTER.json; additive source/asset/provenance snapshots master/source/abel_v142 and master/assets/abel_v142. Historical Master CSV source unchanged.
 
 ## 2026-10-11 — V138 all221 audit and whole-spell timing integrated
