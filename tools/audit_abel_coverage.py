@@ -29,14 +29,15 @@ for ident in admitted:
     assert names[ident]['status'] == 'CANDIDATE'
 required = {row['id'] for row in coverage['entries'] if row['scope'].startswith('COAST')}
 missing = sorted(required-admitted)
-complete = (coverage['rosterClosed'] and not missing
+unresolved = [row for row in coverage.get('unresolvedSilhouettes', []) if not row.get('identity')]
+complete = (coverage['rosterClosed'] and not missing and not unresolved
             and all(row['originalVisualAccepted'] for row in coverage['entries'] if row['id'] in required)
             and coverage['secondVideo']['frameReview'] == 'COMPLETE')
 report = dict(wholeRosterComplete=bool(complete), runtimeCandidates=sorted(admitted),
               knownRequiredMissing=missing, candidateCount=len(admitted),
               knownCoastAndEventCount=len(required), inventoryExhaustive=coverage['rosterClosed'],
               regionChecks=[row['id'] for row in coverage['entries'] if row['scope']=='REGION_CHECK'],
-              secondVideo=coverage['secondVideo'], originalVisualAccepted=False,
+              secondVideo=coverage['secondVideo'], unresolvedSilhouettes=unresolved, originalVisualAccepted=False,
               scope='Static source/12-pose/reward binding audit; not Android runtime or original visual verification')
 if args.output:
     args.output.parent.mkdir(parents=True, exist_ok=True)
