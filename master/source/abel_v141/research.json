@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-11",
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=VxmS9AhpMwQ",
+      "status": "VISUALLY_REVIEWED_SUPPLIED_34_8_SECOND_RECORDING; source seeks present; not entire15:17 playback",
+      "recordingSha256": "dc9d859037c751df1297a830b39eb8b9a9e037ff4fde28b45dad6b37a3cac211",
+      "decodedFrames": 1018,
+      "uniqueFullFrames": 970,
+      "visualSampling": "2fps extraction plus contact-sheet and three monster detail crops; not individual manual review of1018frames",
+      "observations": [
+        "Turtle: low brown segmented shell with dark blue limbs",
+        "User-labelled Arkpus: tall red conical mantle, splayed crimson tentacles, green sucker beads",
+        "User-labelled Pong: violet low rim, translucent gelatin, no cartoon face",
+        "User-labelled Gas: olive lime uneven mound, dark spots and side ring bubbles",
+        "Reefs overlap low rock bases; palm/banana/fern clusters; sand and small debris; off-map black diagonals"
+      ],
+      "identityEvidence": "U/user supplied family labels + visually observed shapes; no client sprite extraction"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=VwC1KujHWvg",
+      "requestedStart": 571,
+      "requestedEnd": 710,
+      "status": "FRAME_REVIEW_BLOCKED: ffmpeg download invalid; browser player readyState0 black; media export canceled. Metadata only, no additional monster identity claims"
+    }
+  ],
+  "assetStatus": "ADAPTED_GENERATED_REFERENCE_RECONSTRUCTION; 36 still poses; original cadence and directions not independently proven",
+  "mapStatus": "ADAPTED_PLAYABLE_TOPOLOGY; connected reef/plant clusters from source appearance; not complete unseen original layout",
+  "removedRuntime": [
+    "blue invented octopus/berserker",
+    "invented crab",
+    "rounded red octopus",
+    "cartoon purple pong"
+  ],
+  "retainedRuntime": [
+    "turtle12poses",
+    "approved player/UI",
+    "72/96/108 field population",
+    "shared movement/combat/ledger/save/performance gates"
+  ],
+  "open": [
+    "second video requested interval",
+    "all-original monster coverage",
+    "original animated frames",
+    "original full map topology",
+    "phone and visual acceptance"
+  ]
+}

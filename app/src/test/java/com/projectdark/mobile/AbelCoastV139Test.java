@@ -22,14 +22,15 @@ public class AbelCoastV139Test {
   JSONArray complete=new JSONArray();for(CampaignProgress.Def d:r.campaign().route(job))if(!d.id.startsWith("E"))complete.put(d.id);
   assertTrue(r.campaign().restore(r.campaign().snapshot().put("complete",complete)));
  }
- @Test public void coastHasFivePlayableFamiliesAndShorePropsRespectTideAndProtectedReturnCorridor(){
+ @Test public void coastHasFourReferenceFamiliesAndShorePropsRespectTideAndProtectedReturnCorridor(){
   Set<String> species=new HashSet<>(),objects=new HashSet<>();
   for(String map:AbelCoastGeometry.ROUTE){
    for(RuntimeState.Monster m:AbelCoastMonsters.spawn(map)){species.add(m.campaignRewardProfileId);assertTrue(m.y<AbelCoastGeometry.shoreY(map,m.x)-20);assertTrue(m.x>=448);}
    assertTrue("coast enters the initial viewport",AbelCoastGeometry.shoreY(map,384)<1120);
    for(AbelCoastGeometry.Prop p:AbelCoastGeometry.props(map)){objects.add(p.asset);if(p.solid)assertTrue("return portal corridor",Math.hypot(p.x-192,p.y-944)>=160);}
   }
-  assertEquals(new HashSet<>(Arrays.asList("ABEL_TURTLE","ADAPTED_COAST_RED_OCTOPUS","ABEL_CRAB","ABEL_PONG","ABEL_BERSERKER")),species);
+  assertEquals(new HashSet<>(Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_GAS")),species);
+  for(String rejected:new String[]{"ABEL_CRAB","ABEL_BERSERKER","ADAPTED_COAST_RED_OCTOPUS"})assertFalse(PoteForestMonsterShowcase.containsMonster(rejected));
   assertTrue(objects.containsAll(Arrays.asList("palm_curve","palm_fan","banana","fern","reef_low","reef_tall","barrels","shells","bones","driftwood")));
  }
  @Test public void oldD04ProgressOpensCoastWithoutRegrantingAnythingAndNormalEntryStaysGated()throws Exception{
@@ -98,6 +99,6 @@ public class AbelCoastV139Test {
   for(int trip=0;trip<12;trip++){String map=trip%2==0?AbelCoastGeometry.ROUTE[1+trip%5]:"MAP_POTE_03";RuntimeState s=new RuntimeState();s.enterCampaignMap(map,false);PoteCampaignMapDef d=PoteCampaignMapDef.forId(map);WorldRuntimeAdapter w=CampaignNavigationTest.adapter(s);r.prepareMonsters(s);int pairs=((Map<?,?>)ForestPixelCacheTest.field(r,"hitCache")).size();maxPairs=Math.max(maxPairs,pairs);assertTrue(pairs<=60);
    for(int spot=0;spot<6;spot++){w.camera().snapTo(500+spot*550,spot%2==0?880:760);Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(frame);List<PoteFieldRenderer.ActorDraw> actors=new ArrayList<>();for(RuntimeState.Monster m:s.monsters()){WorldCameraTransform.Point p=w.worldToScreen(m.x,m.y);actors.add(new PoteFieldRenderer.ActorDraw(m.x,m.y,72,50,()->r.drawMonster(c,m,p.x,p.y)));}r.drawScene(c,w,actors);assertTrue(((Map<?,?>)ForestPixelCacheTest.field(r,"floorChunks")).size()<=32);if(trip==0){try(java.io.OutputStream out=Files.newOutputStream(folder.resolve("coast-spot-"+spot+".png"))){frame.compress(Bitmap.CompressFormat.PNG,100,out);}}frame.recycle();}
   }
-  Bitmap sheet=Bitmap.createBitmap(1000,1500,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(sheet);c.drawColor(0xffc9a166);int species=0;for(String id:new String[]{"ABEL_TURTLE","ADAPTED_COAST_RED_OCTOPUS","ABEL_CRAB","ABEL_PONG","ABEL_BERSERKER"}){int pose=0;for(String state:new String[]{"idle","walk","attack"}){int dir=0;for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){String path=PoteForestMonsterShowcase.assetPath(id,state,direction);try(java.io.InputStream in=context.getAssets().open(path)){Bitmap b=BitmapFactory.decodeStream(in);assertEquals(192,b.getWidth());assertEquals(192,b.getHeight());assertEquals(0,b.getPixel(0,0)>>>24);}r.drawMonsterTestPose(c,id,state,direction,.6f,1f,120+dir++*245,species*300+pose*95+85);}pose++;}species++;}try(java.io.OutputStream out=Files.newOutputStream(folder.resolve("all-60-poses.png"))){sheet.compress(Bitmap.CompressFormat.PNG,100,out);}System.out.println("ABEL_MAX_MONSTER_SOURCE_HIT_PAIRS="+maxPairs+"; FLOOR_PIXEL_LIMIT="+(32*260*260*4)+"; ROUND_TRIPS=12");
+  Bitmap sheet=Bitmap.createBitmap(1000,1500,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(sheet);c.drawColor(0xffc9a166);int species=0;for(String id:new String[]{"ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_GAS"}){int pose=0;for(String state:new String[]{"idle","walk","attack"}){int dir=0;for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){String path=PoteForestMonsterShowcase.assetPath(id,state,direction);try(java.io.InputStream in=context.getAssets().open(path)){Bitmap b=BitmapFactory.decodeStream(in);assertEquals(192,b.getWidth());assertEquals(192,b.getHeight());assertEquals(0,b.getPixel(0,0)>>>24);}r.drawMonsterTestPose(c,id,state,direction,.6f,1f,120+dir++*245,species*300+pose*95+85);}pose++;}species++;}try(java.io.OutputStream out=Files.newOutputStream(folder.resolve("all-48-poses.png"))){sheet.compress(Bitmap.CompressFormat.PNG,100,out);}System.out.println("ABEL_MAX_MONSTER_SOURCE_HIT_PAIRS="+maxPairs+"; FLOOR_PIXEL_LIMIT="+(32*260*260*4)+"; ROUND_TRIPS=12");
  }
 }

@@ -475,7 +475,7 @@ public final class RpgProgressionState {
   /** Campaign-aware defeat endpoint; only map actors admitted by the mobile field adapter can resolve. */
   private void resolveCampaignDefeat(CombatLedger.Event e,String profileId){
     // Same-HP campaign spirits use the mobile economy; preserve the V source record separately.
-    if(("POTE_SPIRIT".equals(profileId)||"ABEL_BERSERKER".equals(profileId))&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId))){
+    if("POTE_SPIRIT".equals(profileId)&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId))){
       applyCampaignReward(e,campaignRewards.find(profileId));return;
     }
     CanonicalMonsterRewardCatalog.RewardEntry canonical=monsterRewards.find(e.targetId);

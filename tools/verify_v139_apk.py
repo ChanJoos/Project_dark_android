@@ -14,7 +14,7 @@ with zipfile.ZipFile(apk_path) as apk:
     identity = json.loads(apk.read('assets/build_identity.json'))
     assert identity['sourceCommit'] == source, identity
     assert identity['runId'] == os.environ['GITHUB_RUN_ID'], identity
-    assert identity['versionCode'] == 140, identity
+    assert identity['versionCode'] == 141, identity
     for path in poses:
         packaged = 'assets/pote_monsters_generated_v1/sprites/campaign_v3/giant_mantis/' + path.name
         assert apk.read(packaged) == path.read_bytes(), path
@@ -51,24 +51,30 @@ with zipfile.ZipFile(apk_path) as apk:
     with zipfile.ZipFile("master/assets/abel_v139/generated_assets.zip") as coast:
         assert len(coast.namelist()) == 28
         for name in coast.namelist():
+            if any(part in name for part in ("/red_octopus/","/crab/","/berserker/","/pong/")): continue
             assert apk.read("assets/"+name) == coast.read(name), name
     with zipfile.ZipFile("master/assets/abel_v140/generated_assets.zip") as coast:
         assert len(coast.namelist()) == 50
         for name in coast.namelist():
+            if any(part in name for part in ("/red_octopus/","/crab/","/berserker/","/pong/")): continue
             assert apk.read("assets/"+name) == coast.read(name), name
+    with zipfile.ZipFile("master/assets/abel_v141/generated_assets.zip") as coast:
+        assert len(coast.namelist()) == 36
+        for name in coast.namelist(): assert apk.read("assets/"+name) == coast.read(name), name
+    assert not any(any(part in n for part in ("/red_octopus/", "/crab/", "/berserker/", "abel_v140/pong/")) for n in apk.namelist())
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
-assert "versionCode='140'" in badging and "versionName='1.40-abel-reference'" in badging, badging[:300]
-expected_package = 'com.projectdark.mobile.v140test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
+assert "versionCode='141'" in badging and "versionName='1.41-abel-frame-reference'" in badging, badging[:300]
+expected_package = 'com.projectdark.mobile.v141test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
 resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'resources', str(apk_path)], text=True)
 assert 'name='+expected_package in resource_table, resource_table[:400]
 for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','player_shirt_mu0000001_source'):
     assert ':drawable/'+drawable in resource_table, drawable
-info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v140test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
+info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v141test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope="V140 coast visual revision: clustered palms/banana/ferns/reefs, shells/bones/driftwood/barrels, entry-visible shoreline, five adapted candidate monster families, 8 survey objectives Lv41-55, direct travel/preview, existing shared navigation/collision/prewarm/bounded floor cache. KingArk original event and Grab art and exact original monster identity/poses NOT COMPLETE. Normal growth supports Lv99. Physical phone/visual acceptance pending",
+            scope="V141 coast frame-reference revision: clustered palms/banana/ferns/reefs, shells/bones/driftwood/barrels, entry-visible shoreline, four reference-reconstructed candidate families, 8 survey objectives Lv41-55, direct travel/preview, existing shared navigation/collision/prewarm/bounded floor cache. Second video 9:31-11:50 playback unavailable; original full-map topology and client animation NOT VERIFIED. Normal growth supports Lv99. Physical phone/visual acceptance pending",
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance='PENDING')
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))

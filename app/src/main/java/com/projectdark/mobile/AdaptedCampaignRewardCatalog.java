@@ -30,8 +30,8 @@ public final class AdaptedCampaignRewardCatalog {
     // At 800 adapted HP, 308950 source EXP was an 8–12x outlier versus its C-zone peers.
     // Preserve CanonicalMonsterRewardCatalog; override only admitted mobile campaign instances.
     add(m,"POTE_SPIRIT","포테 C · 깊은 숲",40000,82);
-    add(m,"ABEL_TURTLE","아벨해안 · 모바일 사냥",65000,135);add(m,"ADAPTED_COAST_RED_OCTOPUS","아벨해안 · 모바일 사냥",80000,165);
-    add(m,"ABEL_CRAB","아벨해안 · 모바일 사냥",72000,145);add(m,"ABEL_PONG","아벨해안 · 모바일 사냥",70000,140);add(m,"ABEL_BERSERKER","아벨해안 · 모바일 사냥",95000,190);
+    add(m,"ABEL_TURTLE","아벨해안 · 모바일 사냥",65000,135);add(m,"ABEL_ARKPUS","아벨해안 · 모바일 사냥",80000,165);
+    add(m,"ABEL_GAS","아벨해안 · 모바일 사냥",72000,145);add(m,"ABEL_PONG","아벨해안 · 모바일 사냥",70000,140);
     rewards=Collections.unmodifiableMap(m);
   }
   private static void add(Map<String,Reward> m,String id,String zone,int exp,long gold){m.put(id,new Reward(id,zone,exp,gold));}

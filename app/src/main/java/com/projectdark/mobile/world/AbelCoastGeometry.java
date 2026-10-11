@@ -25,13 +25,30 @@ public final class AbelCoastGeometry {
  /** Groves shelter the inland edge; reefs mark coves; debris follows the high-tide line. */
  public static List<Prop> props(String id){return PROPS.computeIfAbsent(id,k->{List<Prop> out=new ArrayList<>();int phase=index(k);
   int groves=new int[]{6,7,5,12,10,4}[phase],reefs=new int[]{5,4,10,5,5,12}[phase];
-  for(int g=0;g<groves;g++){float cx=260+g*(width(k)-520)/(groves-1f),cy=740+(g%3)*60+(phase%3)*16;
+  for(int g=0;g<groves;g++){float cx=260+g*(width(k)-520)/(groves-1f),cy=g%2==0?540+(g%3)*85:800+(phase%3)*16;
    for(int j=0;j<7;j++){float angle=j*2.4f+g,r=35+(j%3)*44,x=cx+(float)Math.cos(angle)*r*1.5f,y=cy+(float)Math.sin(angle)*r;
     String a=j==0?"palm_curve":j==1?"palm_fan":j==2?"banana":"fern";add(out,k,a,x,y,j<3,j<3,1f);}
   }
   for(int g=0;g<reefs;g++){float x=620+g*(width(k)-900)/(reefs-1f),y=shoreY(k,x)-80-(g%2)*70;
    add(out,k,g%2==0?"reef_low":"reef_tall",x,y,true,false,1f);
    add(out,k,"boulders",x-66,y+22,true,false,.8f);add(out,k,"fern",x+56,y-12,false,false,.8f);
+  }
+  // Observed reefs join into layered masses with plants at their bases. Their
+  // gaps are adapted corridors, not a claim to the unseen original map topology.
+  for(int g=0;g<(phase==0?2:6);g++){
+   float x=700+g*560,y=340+(g%2)*230;
+   add(out,k,"reef_tall",x,y,true,false,1.25f);
+   add(out,k,"reef_low",x-68,y+42,true,false,1.1f);
+   add(out,k,"reef_low",x+60,y+30,true,false,1f);
+   add(out,k,"boulders",x+102,y+56,true,false,.85f);
+   add(out,k,"palm_curve",x-120,y-20,true,true,1f);
+   add(out,k,"banana",x-105,y+38,true,true,.9f);
+   add(out,k,"fern",x-75,y+55,false,false,1.1f);
+   add(out,k,"fern",x+105,y+82,false,false,1f);
+  }
+  for(int j=0;j<48;j++){
+   float x=520+j*(width(k)-780)/47f,y=245+(j*97%620);
+   add(out,k,j%3==0?"bones":j%3==1?"shells":"boulders",x,y,false,false,j%3==2?.4f:.65f);
   }
   for(int j=0;j<38;j++){float x=250+j*(width(k)-520)/37f,y=shoreY(k,x)-40-(j%4)*22;String a=j%5==0?"driftwood":j%3==0?"bones":"shells";add(out,k,a,x,y,false,false,1f);}
   add(out,k,"barrels",640,840,true,false,1f);add(out,k,"banana",700,850,true,true,1f);add(out,k,"fern",675,880,false,false,1f);

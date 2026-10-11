@@ -1,0 +1,86 @@
+{
+  "evidence": "ADAPTED_GENERATED_REFERENCE_RECONSTRUCTION",
+  "sourceSha256": "85ed194f1575d6cb347de357e52a4fdf4712b682806967fd14bb59cad5a495d6",
+  "frames": {
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/idle_nw.png": "3f19b85b74958d2214c425b96b1972b5c29bed480ae1133481d6a706bc112987",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/idle_ne.png": "49a9869a88fc09fb5181337528cb7b2a8f53cc6e892e36b74882eb2e5065079f",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/idle_sw.png": "3e6adff4a039d1d4ebe922cb7082fb336fd7d5ee6aa84695f05a572d592b1aa0",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/idle_se.png": "3b85dec153cd1820cc6c084547c8956232fecd5e7eabbe0fa20b286861669e76",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/walk_nw.png": "41a24d94c2514d56ca894e8036e84498b9670d032ad6c6761112bfd5e47fe4d1",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/walk_ne.png": "0c44176e32394798f95d356050e52ecdd6695876fbce39f9f8e5504a41ceea50",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/walk_sw.png": "3e0f79902caa0567b3fa5e07d33a49b35dab6952213c03081ef04cef55df5ef7",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/walk_se.png": "ee986cd10e1f63582dff6d2e945dbc7f38e5b0ebae1fc3d0c39cb16c9e4cae5e",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/attack_nw.png": "c554e61aac5946b717f92d817070be19c628732875d1768c7e8f1e8d2315d568",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/attack_ne.png": "9da08b31dfd1372a22dd8dad608f35b583ac392852561e57731960db5740f2f9",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/attack_sw.png": "01cd7b4c2aaae6eca7791551877c231ac6ef6263082bb856f30beb50ae8d74ed",
+    "pote_monsters_generated_v1/sprites/abel_v141/arkpus/attack_se.png": "3c95ff2c5da1518f5168543594d1d258546d55ff827a14d5465859006b285199",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/idle_nw.png": "25227090096f578b5bcfb1a2a05fe1e6be411428f1f97e12a1ff75a0b0e6c41b",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/idle_ne.png": "673e0ada9f9b31084308fc3d7b584c6d2902c043df84d666adab9d199ec6cc8f",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/idle_sw.png": "59a35a22d0ffe52004614cdf0db0375b63dd757a06ce5b87a58b94a687ae88d3",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/idle_se.png": "ac4a254646e650073c3b1dad9284bc254f5efb6493afff57fe1b2ca5ab5f7e51",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/walk_nw.png": "674034dc012f7b341d2548b9bf1ce3c1768a6975f74672d0871593dcbe09dc22",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/walk_ne.png": "37ee580d26e0878c67fd06c376350546bb86357e63a3ed278fc04ce65a24b3a4",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/walk_sw.png": "2d440ed8cc125de2fc74520c9e3484d45dd0dcfa5d0943173f054245fd24b751",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/walk_se.png": "9e2cf25c567c8ba56864ba9e092532c91b7a269e9e4489adcdf04baaa98babfc",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/attack_nw.png": "59be0c2154292854656b42d4dc5ada942f1131bcf1d03659faf0773e4528c075",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/attack_ne.png": "87a0d1c56e3307d60dc5d8f1a7cb337f8204a6dde8d51522b24c8f5f49467e7b",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/attack_sw.png": "f9ac2e9824a9f6c3e26d81a9c40813c1a3ce43f4f0c183f6d81d6d2a8e15a2a3",
+    "pote_monsters_generated_v1/sprites/abel_v141/pong/attack_se.png": "f7a6fa5d75cc3a535c7700f7d3616dec50eefe7f53b910da7d0f694f277bd2e2",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/idle_nw.png": "331207c32eb36da98f2ede99ff54b5aa0ad50aa9af3ed84790101577890b6c87",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/idle_ne.png": "9e42f046cd85663bf490e75d7014005a7c6eb4ce8f49b58648f1a65485745ffd",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/idle_sw.png": "e4b1c6246fbbea94bd59a54d944a93f495471d8cd2d613719fedd13b14281acd",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/idle_se.png": "6e2619343a901757d88cd15b9056f9cc3790768ec9c01af067810a12abbff886",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/walk_nw.png": "1a5cabb2b487c025bb5fffa77108e4857ead55118c7f2791c3fedf2b38a09b48",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/walk_ne.png": "0adbdba719c6e9cb1e5b099658c46358c9fa8cbca1d441ae6ad7d4694f5795cc",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/walk_sw.png": "b23b09a38295193af7c6234ba268a3818311fbd71ccee202b70b2f6234c8a4b4",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/walk_se.png": "c6e10eae928213d4413182681928b2d8d7f5e7fae3d5699f4665c9d545a80416",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/attack_nw.png": "dcc8f8684c8063b29f381b3da448993a801c800d137165451638d8e1af69fe68",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/attack_ne.png": "4841ff559c579402af493f7979bec348a5754303a07db819757aae4bddda26c6",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/attack_sw.png": "dde2e63433d2582dd2a6f19b31d7e34612537b477c8095d1a0bc88a482c08978",
+    "pote_monsters_generated_v1/sprites/abel_v141/gas/attack_se.png": "8ef318d9fffaf6ca206868be7baa6bcd6affb6ac93bac85333c1785201319467"
+  },
+  "canvas": [
+    192,
+    192
+  ],
+  "groundY": 184,
+  "bands": [
+    [
+      16,
+      239
+    ],
+    [
+      246,
+      476
+    ],
+    [
+      484,
+      690
+    ],
+    [
+      745,
+      898
+    ],
+    [
+      947,
+      1095
+    ],
+    [
+      1147,
+      1265
+    ],
+    [
+      1285,
+      1458
+    ],
+    [
+      1480,
+      1658
+    ],
+    [
+      1688,
+      1856
+    ]
+  ],
+  "status": "12 still poses per family; generated directions and original animation fidelity await visual acceptance"
+}
