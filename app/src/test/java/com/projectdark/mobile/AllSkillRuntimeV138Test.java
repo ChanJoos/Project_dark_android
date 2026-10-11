@@ -44,11 +44,17 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
  @Test public void upperCircleTargetCrossCastsAtMovingRangeAndAutoNeverFallsIntoMelee()throws Exception{
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook book=field(v,"skillBook");String ex="SK_마법사_018";assertTrue(book.learn(ex,50));book.clearSlot(0);book.clearSlot(1);book.clearSlot(2);assertTrue(book.assign(0,ex));RuntimeState.Monster m=distantTarget(v);m.x+=.2f;m.y+=.1f;m.isMoving=true;
   float x=s.player().x,y=s.player().y;int hp=m.hp;RectF slot=(RectF)invoke(v,"slotRect",int.class,0);tap(v,slot.centerX(),slot.centerY());invoke(v,"tickSkillCombat",float.class,.001f);assertTrue(m.hp<hp);assertEquals(0,((RuntimeCombatSession)field(v,"combatSession")).cooldownRemaining("player",ex),0);
-  advance(v,.4f);tap(v,926,507);advance(v,1.4f);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);
+  // The inter-tile contact fixture has no world movement segment; retire it after contact.
+  // Otherwise RuntimeState advances its uninitialized segment and moves the target out of LOS.
+  m.isMoving=false;advance(v,.4f);assertEquals(x,s.player().x,0);tap(v,926,507);advance(v,1.4f);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);render(v,"upper-target-cross-pana");
  }
  @Test public void upperSpellAndHealShareCadenceAndPanaPoseUsesEffectiveClock()throws Exception{
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String upper="SK_마법사_013";assertTrue(b.learn(upper,50));RuntimeState.Monster m=distantTarget(v);RuntimeCombatSession c=field(v,"combatSession");assertTrue(c.submitPlayer(m.id,upper).accepted());c.tick(.001f);assertEquals(CombatResolver.RejectReason.ACTION_BUSY,c.submitPlayer("player",HEAL).rejectReason);c.tick(.334f);assertTrue(c.submitPlayer("player",HEAL).accepted());
   s.rpg().autoLootResolvedItem("IT_WARDROBE_MW062",1);assertEquals(0,c.effectiveCastSeconds(upper),0);
+ }
+ @Test public void screenSpellAutoWaitsAtRangeAfterItsAllMpRelease()throws Exception{
+  GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String id="SK_마법사_043";assertTrue(b.learn(id,50));for(int i=0;i<SkillBook.SLOT_COUNT;i++)b.clearSlot(i);assertTrue(b.assign(0,id));RuntimeState.Monster m=distantTarget(v);float x=s.player().x,y=s.player().y;int hp=m.hp;
+  tap(v,926,507);advance(v,1.4f);assertTrue(m.hp<hp);assertEquals(0,s.player().mp);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);render(v,"screen-spell-empty-mp-auto");
  }
  @Test public void utilityRejectsInsufficientMpDeadPlayerAndControlWithoutCharging(){
   RuntimeState s=new RuntimeState();RuntimeCombatSession c=new RuntimeCombatSession(s,(a,b)->true,(a,id)->true,a->true);String id="SK_도적_012";s.player().mp=0;assertFalse(c.useUtility(id));assertEquals(0,s.player().mp);s.player().mp=100;s.player().alive=false;assertFalse(c.useUtility(id));assertEquals(100,s.player().mp);s.player().alive=true;s.skillEffects().put("player","qa-sleep","SLEEP",1,30);assertFalse(c.useUtility(id));assertEquals(100,s.player().mp);
