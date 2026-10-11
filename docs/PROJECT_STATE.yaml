@@ -1,13 +1,23 @@
 all_skill_runtime_v138:
   owner: Director_single_editor
-  status: NATIVE_BUILD_VERIFIED_FULL_WORKFLOW_CHECKER_REPAIR_VALIDATING
+  status: INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED_KNOWN_SCOPE
+  active_branch: main
+  scope: ALL_221_AUDIT_AND_ACTIVE_SPELL_TIMING
+  source: 20e0bc9a914d37059543180f90f41807f9db9338
+  source_tree: 5a20c708b01ff4361efb6a15b13cd2708b2f8676
   apk_source: 3e0caddb286ecf6ee2ea6d25a9448f8adcf5b57f
-  focused_actions: 38099342528
-  native_tests: 188_PASS_30_SUITES
-  active_branch: codex/all-skill-runtime-v138
-  scope: ALL_221_TIMING_SPATIAL_RESOURCE_AND_SUPPORT_AUDIT
-  required_sources: [docs/SKILL_ABILITY_CONTRACT.md, docs/SKILL_SPATIAL_CONTRACT.md, docs/MAGIC_RUNTIME_V137.md, docs/SKILL_ACTION_DECISIONS.csv, app/src/main/assets/skills/catalog.json, app/src/main/assets/skills/abilities.json, master/data/Skill_Master.csv, master/data/Skill_Formula_Research.csv, master/data/Skill_Damage_Model.csv, master/changes/ALL-JOB-SOURCE-V70.json]
+  app_tree: 965cab5d814ad9e0d777177edf7f82c14867062f
+  merge: e9c42656db87907c18532fc8e5ddd1e66b279049
+  focused_actions: 38100964019
+  delivered_apk_actions: 38099342528
+  full_android: [38100964002, 38100966448]
+  native_tests: 188_PASS_30_SUITES_IDENTICAL_APP_TEST_TREE
+  unavailable_paths: 21
+  original_completeness: NOT_VERIFIED
+  original_utility_cast_queue: PENDING
   physical_phone: PENDING
+  evidence: master/changes/V138_BUILD_RUNTIME_RECEIPT.json
+  required_sources: [docs/SKILL_ABILITY_CONTRACT.md, docs/SKILL_SPATIAL_CONTRACT.md, docs/MAGIC_RUNTIME_V137.md, docs/SKILL_ACTION_DECISIONS.csv, app/src/main/assets/skills/catalog.json, app/src/main/assets/skills/abilities.json, master/data/Skill_Master.csv, master/data/Skill_Formula_Research.csv, master/data/Skill_Damage_Model.csv, master/changes/ALL-JOB-SOURCE-V70.json]
 
 magic_runtime_v137:
   owner: Director_single_editor

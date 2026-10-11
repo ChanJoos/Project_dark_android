@@ -17,5 +17,6 @@
     "Jangpung classification conflict: 2020 Naver technique vs supplied wiki spell, retained source classification",
     "20 absent services plus separate-recipient transfusion (21 paths) remain unavailable",
     "Whole original effect fidelity and physical phone acceptance not verified"
-  ]
+  ],
+  "validationReceipt": "master/changes/V138_BUILD_RUNTIME_RECEIPT.json"
 }

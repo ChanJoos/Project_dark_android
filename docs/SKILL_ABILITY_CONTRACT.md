@@ -1,3 +1,7 @@
+# Current V138 correction
+
+V138 supersedes V83 ordinary Spell reuse and implied missing-recipient service support. All221 IDs and current execution routes are audited in master/changes/V138_ALL221_SKILL_AUDIT.json.20 SERVICE routes plus separate-recipient transfusion remain unavailable; original unknowns stay ADAPTED. Active Spell cast/presentation/shared cadence, source-version reuse exceptions, ranged AUTO and Dara recovery follow docs/ALL_SKILL_RUNTIME_V138.md. Utility original cast queues remain pending. Exact evidence: master/changes/V138_BUILD_RUNTIME_RECEIPT.json. The V83 account below is retained as implementation history.
+
 # V83 skill abilities
 
 Continue V82 on PR176. User requests actual skill effects and distinct stat-linked formulas; new balance is explicitly authored where formulas were not supplied. All221 rows are exported deterministically from the source catalog, action contracts and mobile learning policy. Skill_Formula_Research/Skill_Damage_Model remain untouched. Source formulas are preserved at their classic base; supplied PDF upgrade multipliers/conditions and missing project coefficients are distinguished by evidence.

@@ -1,0 +1,215 @@
+{
+  "id": "V138_BUILD_RUNTIME_RECEIPT",
+  "status": "INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED_KNOWN_SCOPE",
+  "source": "20e0bc9a914d37059543180f90f41807f9db9338",
+  "sourceTree": "5a20c708b01ff4361efb6a15b13cd2708b2f8676",
+  "apkSource": "3e0caddb286ecf6ee2ea6d25a9448f8adcf5b57f",
+  "apkSourceTree": "252333256166622b8d88fb10b7156c9d1cefa16d",
+  "appTree": "965cab5d814ad9e0d777177edf7f82c14867062f",
+  "productionMainTree": "60d6d51577b3fcb2386c785f4ad91771c2b64d89",
+  "merge": "e9c42656db87907c18532fc8e5ddd1e66b279049",
+  "pr": 193,
+  "kindCounts": {
+    "techniques": 83,
+    "spells": 138
+  },
+  "routeCounts": {
+    "resolver": 173,
+    "basic": 1,
+    "linkedPassive": 8,
+    "utility": 18,
+    "unavailable": 21
+  },
+  "latestFocused": {
+    "run": 38100964019,
+    "job": 114356629207,
+    "status": "SUCCESS",
+    "artifacts": [
+      {
+        "id": 11687359611,
+        "name": "all-skill-runtime-v138-native-20e0bc9a914d37059543180f90f41807f9db9338",
+        "digest": "sha256:f7718f8a085039afb7966a9421f1f40ba8658c19f8ff91e1450fefae038438b2"
+      },
+      {
+        "id": 11687344609,
+        "name": "all-skill-runtime-v138-apk-20e0bc9a914d37059543180f90f41807f9db9338",
+        "digest": "sha256:6edce7c1dd27b09754a1da5dd5dbf8e030234c981bc835cd59a2f9afd0d3c77d"
+      },
+      {
+        "id": 11687338275,
+        "name": "all-skill-runtime-v138-preview-20e0bc9a914d37059543180f90f41807f9db9338",
+        "digest": "sha256:a7decdc53aac57373f90aad785436fc001de4b2a59d7b41b4fbba2041d86894c"
+      }
+    ]
+  },
+  "fullAndroid": [
+    {
+      "run": 38100964002,
+      "job": 114356628969,
+      "status": "SUCCESS"
+    },
+    {
+      "run": 38100966448,
+      "job": 114356636302,
+      "status": "SUCCESS"
+    }
+  ],
+  "independentNativeArchiveReview": {
+    "source": "3e0caddb286ecf6ee2ea6d25a9448f8adcf5b57f",
+    "run": 38099342528,
+    "tests": 188,
+    "suites": 30,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "latestSourceIdenticalAppAndTestTree": true
+  },
+  "deliveredApk": {
+    "name": "PROJECT_DARK_V138_TEST.apk",
+    "sourceCommit": "3e0caddb286ecf6ee2ea6d25a9448f8adcf5b57f",
+    "runId": "38099342528",
+    "versionCode": 138,
+    "versionName": "1.38-all-skill-runtime",
+    "applicationId": "com.projectdark.mobile.v138test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "db464d4b45046d803fc0fdf40acd8eb97ffc042442360b076465eeab7fd06cb3",
+    "apkBytes": 62043312,
+    "builtSeoul": "2026-10-11T10:00:26.284784+09:00",
+    "scope": "V138: whole-catalog spell cadence, per-ID 221 audit, ranged target-cross and screen AUTO; V136 approved HUD preserved. Mobile HUD: upper-left minimap, three live quest rows, silver utility emblems, ten unchanged-art skill slots, approved B floating LV/HP/MP/EXP with potions above. Legacy eight-slot saves migrate transactionally. Native runtime tested; physical phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING",
+    "artifact": 11687930835,
+    "archiveSha256": "edf5527d44037add432481a6ce553417d7bfa9c1a1ad8099a342e44953507b2c",
+    "persisted": true
+  },
+  "skillFilesByteMatch": 627,
+  "unchangedSkillArtFiles": 626,
+  "apkToLatestSourceDifferences": [
+    ".github/workflows/android.yml",
+    "docs/PROJECT_STATE.yaml"
+  ],
+  "nativeVisualReview": [
+    "upper-target-cross-pana",
+    "screen-spell-empty-mp-auto",
+    "Dara standing at2.99s and raised arms after release in both BODY identities"
+  ],
+  "phone": "PENDING",
+  "newMagicUserAcceptance": "PENDING",
+  "v136HudUserAcceptance": "ACCEPTED_RETAINED",
+  "originalWholeSkillCompleteness": "NOT_VERIFIED",
+  "remaining": {
+    "unavailable": [
+      {
+        "id": "SK_도적_004",
+        "name": "밀기",
+        "job": "도적"
+      },
+      {
+        "id": "SK_도적_019",
+        "name": "적갑옷해체",
+        "job": "도적"
+      },
+      {
+        "id": "SK_도적_026",
+        "name": "하이더",
+        "job": "도적"
+      },
+      {
+        "id": "SK_마법사_022",
+        "name": "로카테오",
+        "job": "마법사"
+      },
+      {
+        "id": "SK_성직자_002",
+        "name": "수혈",
+        "job": "성직자"
+      },
+      {
+        "id": "SK_성직자_022",
+        "name": "로카메아",
+        "job": "성직자"
+      },
+      {
+        "id": "SK_성직자_024",
+        "name": "리치마나",
+        "job": "성직자"
+      },
+      {
+        "id": "SK_성직자_025",
+        "name": "소모니아",
+        "job": "성직자"
+      },
+      {
+        "id": "SK_무도가_003",
+        "name": "이형환위",
+        "job": "무도가"
+      },
+      {
+        "id": "SK_공통_006",
+        "name": "수영",
+        "job": "공통"
+      },
+      {
+        "id": "SK_공통_007",
+        "name": "노점개설",
+        "job": "공통"
+      },
+      {
+        "id": "SK_공통_008",
+        "name": "채집",
+        "job": "공통"
+      },
+      {
+        "id": "SK_공통_009",
+        "name": "낚시",
+        "job": "공통"
+      },
+      {
+        "id": "SK_공통_011",
+        "name": "일반제조",
+        "job": "공통"
+      },
+      {
+        "id": "SK_공통_012",
+        "name": "아이템고치기",
+        "job": "공통"
+      },
+      {
+        "id": "SK_공통_013",
+        "name": "마나스페라",
+        "job": "공통"
+      },
+      {
+        "id": "SK_마법사_054",
+        "name": "클리멘스",
+        "job": "마법사"
+      },
+      {
+        "id": "SK_도적_034",
+        "name": "소매치기",
+        "job": "도적"
+      },
+      {
+        "id": "SK_성직자_059",
+        "name": "클리멘스",
+        "job": "성직자"
+      },
+      {
+        "id": "SK_성직자_060",
+        "name": "디노센스",
+        "job": "성직자"
+      },
+      {
+        "id": "SK_마법사_057",
+        "name": "헬푸라",
+        "job": "마법사"
+      }
+    ],
+    "unknownOriginalTimingFormulaFx": "ADAPTED_OR_UNRESOLVED",
+    "utilityOriginalCastQueue": "PENDING_INCLUDING_ADLES_KNOWN_5S",
+    "classificationConflict": "Jangpung retained source technique; supplied wiki labels spell"
+  },
+  "deliveryLimitation": "Execution environment disconnected (environment_offline) after the exact-runtime APK was independently verified and persisted. Latest local APK replacement could not run. Delivered APK game/test/source assets are identical to latest integrated source; only android.yml and PROJECT_STATE.yaml differ. Latest-head APK ZIP: Actions38100964019/artifact11687344609, hash7370f02dbe768aa7d5d13b9da33f44b4a94bd444e345eeaefdb479fae34e58bb.",
+  "closure": "Documentation and future full-CI test selection only; no app/source/master asset changes."
+}
