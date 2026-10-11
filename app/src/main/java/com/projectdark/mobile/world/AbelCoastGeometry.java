@@ -24,7 +24,7 @@ public final class AbelCoastGeometry {
  public static List<RectF> water(String id){return WATER.computeIfAbsent(id,k->{List<RectF> out=new ArrayList<>();for(float x=64;x<width(k);x+=32){float y=Math.min(shoreY(k,x),shoreY(k,x+32));out.add(new RectF(x,y,Math.min(width(k),x+32),height(k)));}return Collections.unmodifiableList(out);});}
  /** Groves shelter the inland edge; reefs mark coves; debris follows the high-tide line. */
  public static List<Prop> props(String id){return PROPS.computeIfAbsent(id,k->{List<Prop> out=new ArrayList<>();int phase=index(k);
-  for(int g=0;g<10;g++){float cx=260+g*(width(k)-520)/9f,cy=300+(g%3)*140+(phase%3)*32;
+  for(int g=0;g<10;g++){float cx=260+g*(width(k)-520)/9f,cy=740+(g%3)*60+(phase%3)*16;
    for(int j=0;j<7;j++){float angle=j*2.4f+g,r=35+(j%3)*44,x=cx+(float)Math.cos(angle)*r*1.5f,y=cy+(float)Math.sin(angle)*r;
     String a=j==0?"palm_curve":j==1?"palm_fan":j==2?"banana":"fern";add(out,k,a,x,y,j<3,j<3,1f);}
   }
@@ -33,7 +33,7 @@ public final class AbelCoastGeometry {
    add(out,k,"boulders",x-66,y+22,true,false,.8f);add(out,k,"fern",x+56,y-12,false,false,.8f);
   }
   for(int j=0;j<38;j++){float x=250+j*(width(k)-520)/37f,y=shoreY(k,x)-40-(j%4)*22;String a=j%5==0?"driftwood":j%3==0?"bones":"shells";add(out,k,a,x,y,false,false,1f);}
-  add(out,k,"barrels",570,640,true,false,1f);add(out,k,"banana",625,620,true,true,1f);add(out,k,"fern",660,650,false,false,1f);
+  add(out,k,"barrels",640,840,true,false,1f);add(out,k,"banana",700,850,true,true,1f);add(out,k,"fern",675,880,false,false,1f);
   out.sort(Comparator.comparingDouble(p->p.y));return Collections.unmodifiableList(out);});}
  private static void add(List<Prop> out,String map,String asset,float x,float y,boolean solid,boolean canopy,float scale){
   if(x<96||x>width(map)-96||y<120||y>shoreY(map,x)-30)return;
