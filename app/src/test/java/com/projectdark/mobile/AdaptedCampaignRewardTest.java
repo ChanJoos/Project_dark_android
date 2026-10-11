@@ -31,7 +31,7 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(18,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(20,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
   }
   @Test public void admittedSpiritInstancesResolveAdaptedExpExactlyOnceWithoutInventedDrops(){

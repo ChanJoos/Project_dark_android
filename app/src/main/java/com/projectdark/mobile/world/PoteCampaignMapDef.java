@@ -23,8 +23,9 @@ public final class PoteCampaignMapDef {
     this.entryX=entryX;this.entryY=entryY;this.backX=backX;this.backY=backY;this.nextX=nextX;this.nextY=nextY;this.exitRadius=exitRadius;
   }
 
-  public static PoteCampaignMapDef forId(String id){String key=CampaignWorld.PIET.equals(id)||CampaignWorld.BOSS_D.equals(id)||"MAP_POTE_04".equals(id)?id:id!=null&&id.startsWith("MAP_POTE_")&&id.length()==11?id:"MAP_POTE_01";synchronized(CACHE){PoteCampaignMapDef d=CACHE.get(key);if(d==null){d=create(key);CACHE.put(key,d);}return d;}}
+  public static PoteCampaignMapDef forId(String id){String key=AbelCoastGeometry.contains(id)?id:CampaignWorld.PIET.equals(id)||CampaignWorld.BOSS_D.equals(id)||"MAP_POTE_04".equals(id)?id:id!=null&&id.startsWith("MAP_POTE_")&&id.length()==11?id:"MAP_POTE_01";synchronized(CACHE){PoteCampaignMapDef d=CACHE.get(key);if(d==null){d=create(key);CACHE.put(key,d);}return d;}}
   private static PoteCampaignMapDef create(String id){
+    if(AbelCoastGeometry.contains(id))return new PoteCampaignMapDef(id,10+AbelCoastGeometry.index(id),AbelCoastGeometry.title(id),64,AbelCoastGeometry.width(id),64,AbelCoastGeometry.height(id),384,864,192,944,AbelCoastGeometry.width(id)-192,512,40);
     if("MAP_POTE_02".equals(id))return new PoteCampaignMapDef(id,2,"포테의 숲 B · 무리 숲",64,4352,64,2176,320,1984,128,2048,4224,160,40);
     if("MAP_POTE_03".equals(id))return new PoteCampaignMapDef(id,3,"포테의 숲 C · 깊은 숲",64,4864,64,2432,320,2240,128,2304,4736,144,40);
     if(CampaignWorld.BOSS_D.equals(id))return new PoteCampaignMapDef(id,4,"포테의 숲 D · 결계 너머",64,3072,64,1536,256,768,128,768,2944,768,44);
@@ -33,7 +34,7 @@ public final class PoteCampaignMapDef {
     return new PoteCampaignMapDef("MAP_POTE_01",1,"포테의 숲 A · 입구 숲",PoteFieldDef.MIN_X,PoteFieldDef.MAX_X,PoteFieldDef.MIN_Y,PoteFieldDef.MAX_Y,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,PoteFieldDef.EXIT_X,PoteFieldDef.EXIT_Y,3968,1888,PoteFieldDef.EXIT_RADIUS);
   }
 
-  public List<RectF> obstacles(){if(obstacles==null){if(zone==1||zone==0||"MAP_POTE_04".equals(id))obstacles=PoteFieldDef.obstacles();else obstacles=buildObstacles();}return obstacles;}
+  public List<RectF> obstacles(){if(obstacles==null){if(AbelCoastGeometry.contains(id))obstacles=AbelCoastGeometry.obstacles(id);else if(zone==1||zone==0||"MAP_POTE_04".equals(id))obstacles=PoteFieldDef.obstacles();else obstacles=buildObstacles();}return obstacles;}
   public List<WorldMoveTargetController.TileCenter> navigationTiles(){
     if(navigation!=null)return navigation;
     if(zone==1||zone==0||"MAP_POTE_04".equals(id)){navigation=PoteFieldDef.navigationTiles();return navigation;}

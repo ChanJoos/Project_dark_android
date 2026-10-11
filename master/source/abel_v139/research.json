@@ -1,0 +1,97 @@
+{
+  "retrieved": "2026-10-11",
+  "evidence": "V/FAN original-game screenshots; not extracted client animation",
+  "sources": [
+    "https://gall.dcinside.com/mgallery/board/view/?id=darkages&no=2919",
+    "https://gall.dcinside.com/mgallery/board/view/?id=darkages&no=2974"
+  ],
+  "screenshots": {
+    "kingark-ref-04.jpg": "655739629fe7a5dc3a7b87f9cf1ecc80c2737999190ae8073669874ee7595000",
+    "kingark-ref-09.jpg": "aa3c6c72d7c4780b4a70147ba15d91a7c9ec32136f2f8370d7e81596bdfd2b50",
+    "kingark-ref-10.jpg": "1f1f69e61d0abfaa27987b99fdc66ab3020a1b22d844571616cb872f63b3fa12",
+    "kingark-ref-13.jpg": "08143a00ae3888063d7605c881ef52fd230fef7bd8a7758e36ae7a9be45c8960",
+    "turtle-ref-08.jpg": "6a55c2947a397194236b781582ae3df3c35759308d28e1d151553ed667e4f61f"
+  },
+  "youtube": {
+    "url": "https://www.youtube.com/watch?v=VxmS9AhpMwQ",
+    "title": "[어둠의전설] 아벨해안 파티사냥 [안해본RPG해보기]",
+    "channel": "딩군",
+    "duration": "15:17",
+    "status": "METADATA_VERIFIED; video and storyboard requests returned195-byte Site Unavailable HTML; playback/frame review OPEN"
+  },
+  "facts": [
+    {
+      "source": "https://lod.nexon.com/News/update/142677?Page=5",
+      "evidence": "O",
+      "fact": "2026-01-15 update explicitly fixes missing Grab spawns in Abel coast2. Current identity/area confirmed; appearance/stats OPEN."
+    },
+    {
+      "source": "https://lod.nexon.com/board/1493172227/3452",
+      "evidence": "V",
+      "fact": "Historical KingArk materials, Rucesion dependency, secret3-B room,4-C reef/class positions, false and real boss route."
+    },
+    {
+      "source": "https://lod.nexon.com/community/game/3472?SearchBoard=1",
+      "evidence": "V",
+      "fact": "Historical berserker resembles Blue Arkpus, Lv88/HP61982/EXP606252; random4elements. Not current-version tuning."
+    },
+    {
+      "source": "https://lod.nexon.com/Community/game/3192?Category2=1&SearchBoard=3",
+      "evidence": "V",
+      "fact": "Old Abel dungeon roster Pong/Slug/Gas/Escomoid; shoreline differs. Separate from circle coast and undersea."
+    }
+  ],
+  "roster": [
+    {
+      "id": "ABEL_TURTLE",
+      "name": "터틀",
+      "status": "original screenshot referenced;12 generated candidate poses admitted; combat stats ADAPTED"
+    },
+    {
+      "id": "ABEL_GRAB",
+      "name": "그래브",
+      "status": "current official coast2 roster confirmed; no replacement art admitted, visual/HP/EXP OPEN"
+    },
+    {
+      "id": "ABEL_PONG",
+      "name": "퐁퐁이",
+      "status": "historical original quest material producer; round eyes/small arms described; precise visual/poses/stats OPEN"
+    },
+    {
+      "id": "ABEL_CRAB",
+      "name": "크랩",
+      "alias": "크래커",
+      "status": "2017 guide names cracker as crab-shell producer; stable Master ID kept; precise image/poses/stats OPEN"
+    },
+    {
+      "id": "ABEL_BERSERKER",
+      "name": "해안의광폭자",
+      "status": "historical Blue Arkpus likeness/stats confirmed; art/current stats OPEN"
+    },
+    {
+      "id": "ABEL_KINGARK",
+      "name": "킹아크퍼스",
+      "status": "original purple octopus boss screenshot/behavior/quest researched; party-event and art not admitted"
+    },
+    {
+      "id": "ADAPTED_COAST_RED_OCTOPUS",
+      "name": "붉은 문어",
+      "status": "unlabeled screenshot likeness; do NOT rename Grab/Arkpus/Pong without evidence;12 adapted candidate poses admitted"
+    },
+    {
+      "id": null,
+      "name": "아크퍼스 계열",
+      "status": "quest says ordinary octopus kills; exact species/zone join OPEN"
+    },
+    {
+      "id": null,
+      "name": "슬러그·가스·에스코모이드",
+      "status": "old dungeon identities confirmed, excluded"
+    },
+    {
+      "id": null,
+      "name": "해저 몬스터",
+      "status": "oxygen/Marine entrance differs; excluded"
+    }
+  ]
+}
