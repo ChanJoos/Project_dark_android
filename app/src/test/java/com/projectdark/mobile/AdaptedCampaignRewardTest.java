@@ -36,7 +36,7 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void addedCoastFamiliesUseTheSameExactlyOnceLedgerWithoutInventedDrops(){
     for(String species:new String[]{"ABEL_CRAB","ABEL_PONG","ABEL_BERSERKER"}){
-      RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_ABEL_COAST_2A",false);
+      RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_ABEL_COAST_4C",false);
       RuntimeState.Monster actor=null;for(RuntimeState.Monster m:state.monsters())if(species.equals(m.campaignRewardProfileId)){actor=m;break;}
       assertNotNull(species,actor);long exp=CampaignProgress.earnedExp(state.rpg()),gold=state.rpg().gold();
       java.util.Map<String,Integer> inventory=new java.util.LinkedHashMap<>(state.rpg().inventory());
