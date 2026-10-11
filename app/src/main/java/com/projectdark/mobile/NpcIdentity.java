@@ -31,8 +31,8 @@ public final class NpcIdentity {
   new Profile("piet_investigator","Ethan",61,"피에트 조사 담당","mu0000030,mh009,ml243",null),
   new Profile("piet_supplier","Joshua",19,"피에트 보급 담당","mu0000237,mh124,ml240",null),
   new Profile("piet_purifier","Samuel",42,"정화 담당","mu0000202,mh008,ml243","mw026"),
-  new Profile("abel_coast_guide","Patrick",45,"아벨 해안 조사","mu0000365,mh009,ml255",null),
-  new Profile("abel_supplier","Aaron",50,"아벨 보급","mu0000237,mh124,ml240",null),
+  new Profile("abel_coast_guide","Patrick",45,"아벨 해안 조사","mu0000365,mh124,ml255",null),
+  new Profile("abel_supplier","Aaron",50,"아벨 보급","mu0000237,mh009,ml240",null),
   new Profile("interior_inn","Benjamin",39,"여관 주인","mu0000025,mh011,ml243",null)));
  public static Profile forId(String id){
   if(id==null||id.isEmpty())throw new IllegalArgumentException("NPC stable ID required");

@@ -96,7 +96,7 @@ jobs:
           python3 tools/verify_equipment_icons.py
           python3 tools/validate_master.py
           python3 tools/audit_all_skills_v138.py
-          gradle :app:testDebugUnitTest --tests '*AbelCoastV139Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*AbelCoastV139Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*NpcAppearanceTest' --stacktrace
       - name: Upload actual mobile HUD preview immediately
         if: always()
         uses: actions/upload-artifact@v4
