@@ -100,7 +100,7 @@ public class SkillAbilityRuntimeTest {
    if(a.status.equals("BASIC"))continue;
    if(a.status.equals("TRANSFER")){assertFalse(c.submitPlayer("player",a.id).accepted());continue;}
    if(r.presentationAllowed()){
-    String target=r.selfAnchored()?"player":"m0";assertTrue(a.id,c.submitPlayer(target,a.id).accepted());assertTrue(a.id,c.tick(r.contact+.01f).events.stream().anyMatch(e->e.type==CombatResolver.EventType.EFFECT_APPLIED));
+    String target=r.selfAnchored()?"player":"m0";assertTrue(a.id,c.submitPlayer(target,a.id).accepted());assertTrue(a.id,c.tick(c.effectiveCastSeconds(a.id)+.001f).events.stream().anyMatch(e->e.type==CombatResolver.EventType.EFFECT_APPLIED));
    }else assertTrue(a.id,c.useUtility(a.id));
   }
  }
