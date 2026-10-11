@@ -31,8 +31,22 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(20,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(23,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
+  }
+  @Test public void addedCoastFamiliesUseTheSameExactlyOnceLedgerWithoutInventedDrops(){
+    for(String species:new String[]{"ABEL_CRAB","ABEL_PONG","ABEL_BERSERKER"}){
+      RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_ABEL_COAST_2A",false);
+      RuntimeState.Monster actor=null;for(RuntimeState.Monster m:state.monsters())if(species.equals(m.campaignRewardProfileId)){actor=m;break;}
+      assertNotNull(species,actor);long exp=CampaignProgress.earnedExp(state.rpg()),gold=state.rpg().gold();
+      java.util.Map<String,Integer> inventory=new java.util.LinkedHashMap<>(state.rpg().inventory());
+      AdaptedCampaignRewardCatalog.Reward expected=new AdaptedCampaignRewardCatalog().find(species);
+      state.ledger().add(CombatLedger.Type.MONSTER_DEFEATED,"player",actor.id,0);
+      state.rpg().consumeCombat(state.ledger().snapshot(),state);
+      assertEquals(exp+expected.exp,CampaignProgress.earnedExp(state.rpg()));assertEquals(gold+expected.gold,state.rpg().gold().longValue());
+      assertEquals(inventory,state.rpg().inventory());state.rpg().consumeCombat(state.ledger().snapshot(),state);
+      assertEquals(1,state.rpg().rewardHistory().size());
+    }
   }
   @Test public void admittedSpiritInstancesResolveAdaptedExpExactlyOnceWithoutInventedDrops(){
     RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_POTE_03",false);
