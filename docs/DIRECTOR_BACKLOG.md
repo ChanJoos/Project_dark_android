@@ -1,3 +1,7 @@
+## 2026-10-11 — V139 아벨해안 첫 맵 구현 중
+
+사용자 승인에 따라 원작 게임 화면 기반 아벨 조사 거점+5사냥 구역,8개 Lv41~55 후속 조사 의뢰,터틀/붉은 문어 후보 및 이동/보급/저장 경로 구현. IMPLEMENTED; exact CI/native/APK/phone/visual acceptance PENDING. Director single editor codex/abel-coast-v139. 원작 전체 몬스터/킹아크 이벤트 완료 아님; 그래브 등 출처/외형 OPEN, YouTube metadata 확보/영상 CDN 차단. 포테 성능 계약 유지. 계약 docs/ABEL_COAST_V139.md; 조사 master/source/abel_v139/research.json. 다음: exact-source native/성능/기존 포테 회귀→렌더 확인→GitHub 통합/정확 APK.
+
 ## 2026-10-11 — Lv41+ expansion plan restored
 
 User requests the existing game expansion, rather than keeping the early campaign as the complete game. Current growth engine supports Lv99; playable CampaignProgress ends at D04/Lv41. Existing P03–P11 route restored: Abel41–70, Rucesion71–98, Mine/Horror99, pure/reclass and first advancement. Implementation tickets E01–E12 and source/asset/open-party boundaries: docs/EXPANSION_EXECUTION_PLAN.md. PLAN_READY only; no new map, runtime, APK or phone acceptance. Next actual ticket E01: Abel-specific source/asset/condition join; first release scope P03/P04. V138 unchanged.

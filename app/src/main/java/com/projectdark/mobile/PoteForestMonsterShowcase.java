@@ -27,13 +27,14 @@ public final class PoteForestMonsterShowcase {
     art.put("POTE_SPIRIT","campaign_v3/brown_pote_spirit");
     art.put("POTE_STRONG_GNOLL","campaign_v1/gnoll");art.put("POTE_STRONG_WOLFRIDER","campaign_v1/wolf_rider");art.put("POTE_STRONG_TREANT","campaign_v1/trant");art.put("POTE_CAMPAIGN_ELITE_GNOLL","campaign_v1/gnoll");
     art.replaceAll((id,key)->"campaign_v3/"+key.substring(key.lastIndexOf('/')+1));
+    art.put("ABEL_TURTLE","abel_v139/turtle");art.put("ADAPTED_COAST_RED_OCTOPUS","abel_v139/red_octopus");
     ART=Collections.unmodifiableMap(art);
     IDS=Collections.unmodifiableList(new ArrayList<>(java.util.Arrays.asList("POTE_PURPLE","POTE_RED","POTE_GREEN","POTE_SILVER","POTE_LYCAN")));
   }
 
   private PoteForestMonsterShowcase(){}
   public static List<String> monsterIds(){return IDS;}
-  public static float bodyHeight(String id){String s=species(id);return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
+  public static float bodyHeight(String id){String s=species(id);if("ABEL_TURTLE".equals(s))return 64f;if("ADAPTED_COAST_RED_OCTOPUS".equals(s))return 72f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){return id==null?null:id.split("#",2)[0];}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}
   public static String artKey(String id){

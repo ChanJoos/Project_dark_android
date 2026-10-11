@@ -5,18 +5,18 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v138test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V138 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v139test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V139 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 138
-        versionName '1.38-all-skill-runtime'
+        versionCode 139
+        versionName '1.39-abel-coast'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile]
         }
     }
     testOptions {
@@ -46,7 +46,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 138, versionName: '1.38-all-skill-runtime']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 139, versionName: '1.39-abel-coast']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
@@ -59,3 +59,11 @@ tasks.register('extractWardrobeV128', Copy) {
     eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
 }
 tasks.named('preBuild').configure { dependsOn('extractWardrobeV128') }
+
+// Source-referenced coast pack, packaged identically for native tests and APK.
+tasks.register('extractAbelV139', Copy) {
+    from(zipTree(rootProject.file('master/assets/abel_v139/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/abel-v139'))
+    includeEmptyDirs = false
+}
+tasks.named('preBuild').configure { dependsOn('extractAbelV139') }

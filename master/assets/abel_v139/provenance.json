@@ -1,0 +1,254 @@
+{
+  "tool": "built-in image_gen",
+  "status": "SOURCE_REFERENCED_ADAPTED_CANDIDATES; not original extracted animation",
+  "operations": "Mechanical uniform cell extraction, nearest size conversion, transparent feet registration. No mirroring or color replacement.",
+  "sources": {
+    "sand": {
+      "file": "exec-8f237c57-171d-48dc-9161-563ed09e1cd4.png",
+      "sha256": "3effa3441843105985eea0c7103703f41c36998fdbd3a14d82df79d10b1244ef",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "water": {
+      "file": "exec-30b99c49-bfce-405b-ae5b-b88a1389b2e1.png",
+      "sha256": "3832c0bc81866c94bb03dc40657a175309dcb3106cea0fb4e5b0391677b15118",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "palm": {
+      "file": "exec-ceb1888a-1245-45fe-881a-e8e7c3d47a1a.png",
+      "sha256": "73fc13c11be6334ff96e0962817b24a11a4ae4f7b13571e1dda466ecc9c5921b",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "reef": {
+      "file": "exec-f5e9e68d-629f-4e65-a8d9-3515ed9ef84c.png",
+      "sha256": "8d6c1dfb88286d16e1a20e150dfde9279543ccdb5d071e3b9396428c828b9aea",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "turtle": {
+      "file": "exec-6316f341-f7ad-46c9-8ff2-0a4590c9d5a5.png",
+      "sha256": "2ef09d2f89a9e820956928b3a4d95961db6462e5f5a42125370f9ca0b2e740b1",
+      "size": [
+        1448,
+        1086
+      ]
+    },
+    "red_octopus": {
+      "file": "exec-d0dc15cd-2ad8-47b4-a8e7-9a7e6276e5b0.png",
+      "sha256": "794773d9132798455b79fdc7379480cb4a4bccfb381ca1eda0c606b4e6a379cb",
+      "size": [
+        1448,
+        1086
+      ]
+    }
+  },
+  "assets": {
+    "abel_v139/palm.png": {
+      "sha256": "aeb19e538c174ad5849a3ae1e135d59277246ce8f84716a3a0587a17993b309a",
+      "size": [
+        213,
+        224
+      ]
+    },
+    "abel_v139/reef.png": {
+      "sha256": "8cfe0dd380e4ea7150378e42d802705f70f8b50b77ad059bb0b1f87a43c3954d",
+      "size": [
+        113,
+        128
+      ]
+    },
+    "abel_v139/sand.png": {
+      "sha256": "666b1ba399a1a11a22f9dfd4483c31350577c4829373631a32f4bd1a5c6de78e",
+      "size": [
+        256,
+        256
+      ]
+    },
+    "abel_v139/water.png": {
+      "sha256": "863b90cb98e8064911c14795c349e702683bfc309f26594ba3d64c0b94da89cf",
+      "size": [
+        256,
+        256
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/attack_ne.png": {
+      "sha256": "7c99a2dcc2f79fd0b2b4e8bf3cb524399076b17cbcccf651e5931964053337ab",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/attack_nw.png": {
+      "sha256": "db7ab71e15e360d27181f75a5254ab7b69ad32915b6debc163f6867bbc06a287",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/attack_se.png": {
+      "sha256": "7ffad957f41d5a0ecc9b78092ae7c700adf5c5e946a1e42907293c62ee0eeada",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/attack_sw.png": {
+      "sha256": "e84c4b2209ebeb3474355a13d12df51bf9ea97ec034706300debee5f908b460f",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/idle_ne.png": {
+      "sha256": "3eaf672f34a6496f3012bb485b112f3318473c7f5ce9f741912bcf2828a86ff9",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/idle_nw.png": {
+      "sha256": "5c2bd849f236143de15860f24acdc435c1f8ab8599204838c40ad990778b5d37",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/idle_se.png": {
+      "sha256": "3cc2e6278f4c79adc42e236f8b109a43f0b7efdb622b4b24fb777bb44c1268b6",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/idle_sw.png": {
+      "sha256": "e412c3829954b45daf1dd1874c2f2d5a3f4a68f5e386e7a4c97ecfc71e37a796",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/walk_ne.png": {
+      "sha256": "799f7fad8484d3c4e15a1505ed31a6ff654b0e162157a5890b2c5e5bedca33b7",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/walk_nw.png": {
+      "sha256": "69be451c53ac4446d801d9d232cf3ddf74ea419b0bc8ed2d91a5232f4d8f80fe",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/walk_se.png": {
+      "sha256": "f29e8d37b979a0ed49aec435a28fd7d244e8c041831374f29228f3bbd2a6b66d",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/red_octopus/walk_sw.png": {
+      "sha256": "ed995844c8858366e7ed5c30376293461029bf631350b503f7fd8d4cccecec32",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/attack_ne.png": {
+      "sha256": "460e2aa65d7f00e0fb1a6582264680e2e84d1618592eaf1ff84d6ed961a2d1c9",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/attack_nw.png": {
+      "sha256": "2f6a9f99811785e41e5c6374d532ebf260362ba0fa20da212107a99fd6d2501d",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/attack_se.png": {
+      "sha256": "b4cd5b0ea6427e1f800ef3675d46a7e3d222cd27c60e2b4dd90986bcd31e076c",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/attack_sw.png": {
+      "sha256": "d3eb84fc33064d709da5c1d7d2c88c50254ee478e806ce8d100a252e2acadad8",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/idle_ne.png": {
+      "sha256": "ddb0c7cdb118e45ba9e0dc4a344e5878c6a22286a5d7b66700181b8dc6d64aba",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/idle_nw.png": {
+      "sha256": "6062cf56b5b784471691b8b4392acbb0e1ce21c3cc29e808cc2d8422e233ba5b",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/idle_se.png": {
+      "sha256": "01cdd0c49101d3512a4787e1840f02d82ff5eedab28d0beca230cf69977354f6",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/idle_sw.png": {
+      "sha256": "b7c61601f02fc88d5cd468529f13fd023fcdb7b18e6f91cc489f0c7dc599ec57",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/walk_ne.png": {
+      "sha256": "becf5e70390adc8fffc6ccb2a794a46693e4ca131d60bfe21b80a028d342d3e9",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/walk_nw.png": {
+      "sha256": "c2a929b92b35d67ebc7073234f1d10221f89a459e8d7d6e848aa98dd89468322",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/walk_se.png": {
+      "sha256": "221343f337e85d63cf7f065d01aca0d7a5231a9ae3481d0465ae910ffbaefe41",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v139/turtle/walk_sw.png": {
+      "sha256": "b079d5d2a7271e6dee63df754d717f66f243a36af5f4a23e5029ee101ce27a71",
+      "size": [
+        192,
+        192
+      ]
+    }
+  },
+  "bundleSha256": "a36f47a6c62a469ca04ff950cfe3cf92f67688e778619f395469ac160db6db21"
+}
