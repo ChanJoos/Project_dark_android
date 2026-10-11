@@ -108,5 +108,26 @@
     "rounded red octopus",
     "cartoon pong"
   ],
-  "completionPolicy": "All source intervals reviewed, unknown silhouettes identified, every in-scope species reachable with art/AI/reward/save and native screenshots, original visual acceptance recorded. Candidate count is never whole-roster completion."
+  "completionPolicy": "All source intervals reviewed, unknown silhouettes identified, every in-scope species reachable with art/AI/reward/save and native screenshots, original visual acceptance recorded. Candidate count is never whole-roster completion.",
+  "unresolvedSilhouettes": [
+    {
+      "observationId": "ABEL_OBS_3C_BLACK_SPIKED",
+      "shape": "Small black spiked body on sand, center-right",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": null
+    },
+    {
+      "observationId": "ABEL_OBS_3C_PURPLE_FLOATING",
+      "shape": "Purple spotted upright floating body with detached black oval shadow, top-right partial view",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": null
+    },
+    {
+      "observationId": "ABEL_OBS_3C_RED_ROUND",
+      "shape": "Rounded red mantle with multiple tentacles, bottom-right",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": null
+    }
+  ],
+  "identityPolicy": "Unlabelled observations are NOT separate confirmed species; reconcile with names and versions before closing roster. Rejected generated artwork must not be reused to fill these gaps."
 }
