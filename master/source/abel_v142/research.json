@@ -1,0 +1,57 @@
+{
+  "sourceRecording": {
+    "id": "VwC1KujHWvg",
+    "start": 571,
+    "end": 710,
+    "frameReview": "SUPPLIED_60_8S_RECORDING_REVIEWED_WITH_1FPS_SAMPLES_AND_DETAILED_CROPS",
+    "recordingDuration": 60.800042,
+    "sourceLibraryId": "libfile_6518b80d25708191b349c89ebf841266",
+    "decodedFrames": 1846,
+    "uniqueDecodedFrames": 1846,
+    "manualSampleCount": 61,
+    "earlyDetailedSampleCount": 32,
+    "sourceSha256": "a60559303ddc91c5d4f339c09aed5b0b68582b2b6446e4cd7189db161610e6d9",
+    "limitation": "Recording has seeks. Not every decoded frame was individually manually reviewed; original full YouTube interval completeness not certified."
+  },
+  "observedZoneTransitions": [
+    {
+      "recordingSeconds": 1.2,
+      "originalMap": "아벨해안2-C",
+      "runtimeAdapterMap": "MAP_ABEL_COAST_2A"
+    },
+    {
+      "recordingSeconds": 18.3,
+      "originalMap": "아벨해안3-C",
+      "runtimeAdapterMap": "MAP_ABEL_COAST_3B"
+    },
+    {
+      "recordingSeconds": 23.4,
+      "originalMap": "아벨해안4-C",
+      "runtimeAdapterMap": "MAP_ABEL_COAST_4C"
+    }
+  ],
+  "visualForms": [
+    [
+      "ABEL_OCTOPUS",
+      "문어",
+      "Visible 문어 label and red oval mantle at25s,3-C/4-C"
+    ],
+    [
+      "ABEL_OBS_PURPLE_EGG",
+      "보라 부유체",
+      "Purple spotted hovering oval and detached black shadow at20.6s,3-C"
+    ],
+    [
+      "ABEL_OBS_ORANGE_FLOAT",
+      "주황 부유체",
+      "Orange spotted heart-like floating body and dangling beads at25/50s,3-C/4-C"
+    ],
+    [
+      "ABEL_OBS_PURPLE_MAW",
+      "보라 입꼬리 괴물",
+      "Purple toothed mouth and long looping stalk at25/50s,4-C"
+    ]
+  ],
+  "referencePolicy": "Each new video family has one supplied video source, not three independent labelled original references. Generated directions, attack stills, hidden KingArk details and mobile solo encounters are ADAPTED, visual acceptance PENDING. All source sheets retained byte-for-byte; extraction cutoff16 and seam detection recorded separately.",
+  "runtime": "13 candidate identities,12 distinct art families,8 new sheets96 poses. No old rejected art reused. 4-C source shows red octopus/purple maw/orange floater and teal boss; historic KingArk additional2 adapted identities share1 purple art family. HP/rewards/spawn timings are adapted only."
+}

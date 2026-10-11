@@ -31,16 +31,16 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(22,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(31,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
     java.util.Set<String> coast=new java.util.HashSet<>();
     for(String id:c.entries().keySet())if(id.startsWith("ABEL_")||id.startsWith("ADAPTED_COAST_"))coast.add(id);
-    assertEquals(new java.util.HashSet<>(java.util.Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_GAS")),coast);
-    for(String rejected:new String[]{"ABEL_CRAB","ABEL_BERSERKER","ADAPTED_COAST_RED_OCTOPUS"})assertNull(c.find(rejected));
+    assertEquals(new java.util.HashSet<>(AbelCoastMonsters.ALL),coast);
+    assertNull(c.find("ADAPTED_COAST_RED_OCTOPUS"));
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
   }
   @Test public void addedCoastFamiliesUseTheSameExactlyOnceLedgerWithoutInventedDrops(){
-    for(String species:new String[]{"ABEL_GAS","ABEL_PONG","ABEL_ARKPUS"}){
-      RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_ABEL_COAST_4C",false);
+    for(String species:AbelCoastMonsters.ALL){
+      RuntimeState state=new RuntimeState();String map=null;for(String id:com.projectdark.mobile.world.AbelCoastGeometry.ROUTE)if(AbelCoastMonsters.roster(id).contains(species)){map=id;break;}assertNotNull(species,map);state.enterCampaignMap(map,false);
       RuntimeState.Monster actor=null;for(RuntimeState.Monster m:state.monsters())if(species.equals(m.campaignRewardProfileId)){actor=m;break;}
       assertNotNull(species,actor);long exp=CampaignProgress.earnedExp(state.rpg()),gold=state.rpg().gold();
       java.util.Map<String,Integer> inventory=new java.util.LinkedHashMap<>(state.rpg().inventory());

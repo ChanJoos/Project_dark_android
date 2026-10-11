@@ -1,0 +1,26 @@
+{
+  "id": "ABEL-V142-SECOND-VIDEO-ROSTER",
+  "status": "ACCEPTED_FOR_IMPLEMENTATION_CANDIDATE",
+  "userInstruction": "All Abel monsters; inspect supplied recording, unknown names do not remove visual forms",
+  "base": "464a3792a44ff5c7007f3d1c39f3eb53ac3cf0ee",
+  "source": "master/source/abel_v142/research.json",
+  "before": "4 runtime candidate families; second video blocked",
+  "after": "13 candidate identities,12 art families,96 new poses, per-zone <=5 families and unchanged population; adapted solo KingArk placeholders use historical obscured source",
+  "runtimeFiles": [
+    "AbelCoastMonsters",
+    "PoteForestMonsterShowcase",
+    "AdaptedCampaignRewardCatalog",
+    "CampaignProgress"
+  ],
+  "evidenceStatus": "U_VIDEO_OBSERVED / ADAPTED_GENERATED / PROVISIONAL_NAME_JOINS",
+  "originalStatsChanged": false,
+  "originalPartyEventImplemented": false,
+  "userVisualAccepted": false,
+  "nativeBuildStatus": "PENDING_EXACT_SHA_CI",
+  "tests": [
+    "AbelCoastV139Test all13 real Resolver/exactly-once/save",
+    "156 pose native sheet",
+    "12 map roundtrips and <=60 source-hit pairs",
+    "retained campaign/navigation/skills/HUD/input/save regressions"
+  ]
+}

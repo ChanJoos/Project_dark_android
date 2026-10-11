@@ -29,13 +29,18 @@ public final class PoteForestMonsterShowcase {
     art.replaceAll((id,key)->"campaign_v3/"+key.substring(key.lastIndexOf('/')+1));
     art.put("ABEL_TURTLE","abel_v139/turtle");art.put("ABEL_ARKPUS","abel_v141/arkpus");
     art.put("ABEL_PONG","abel_v141/pong");art.put("ABEL_GAS","abel_v141/gas");
+    art.put("ABEL_GRAB","abel_v142/grab");art.put("ABEL_CRAB","abel_v142/armored");
+    art.put("ABEL_OCTOPUS","abel_v142/octopus");art.put("ABEL_OBS_PURPLE_EGG","abel_v142/purple_egg");
+    art.put("ABEL_OBS_ORANGE_FLOAT","abel_v142/orange_float");art.put("ABEL_OBS_PURPLE_MAW","abel_v142/purple_maw");
+    art.put("ABEL_BERSERKER","abel_v142/blue_boss");
+    art.put("ABEL_KINGARK_FAKE","abel_v142/kingark");art.put("ABEL_KINGARK","abel_v142/kingark");
     ART=Collections.unmodifiableMap(art);
     IDS=Collections.unmodifiableList(new ArrayList<>(java.util.Arrays.asList("POTE_PURPLE","POTE_RED","POTE_GREEN","POTE_SILVER","POTE_LYCAN")));
   }
 
   private PoteForestMonsterShowcase(){}
   public static List<String> monsterIds(){return IDS;}
-  public static float bodyHeight(String id){String s=species(id);if("ABEL_PONG".equals(s))return 48f;if("ABEL_GAS".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 48f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
+  public static float bodyHeight(String id){String s=species(id);if(s!=null&&s.startsWith("ABEL_KINGARK"))return 120f;if("ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_PONG".equals(s))return 48f;if("ABEL_GAS".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 48f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){return id==null?null:id.split("#",2)[0];}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}
   public static String artKey(String id){

@@ -32,6 +32,16 @@ public final class AdaptedCampaignRewardCatalog {
     add(m,"POTE_SPIRIT","포테 C · 깊은 숲",40000,82);
     add(m,"ABEL_TURTLE","아벨해안 · 모바일 사냥",65000,135);add(m,"ABEL_ARKPUS","아벨해안 · 모바일 사냥",80000,165);
     add(m,"ABEL_GAS","아벨해안 · 모바일 사냥",72000,145);add(m,"ABEL_PONG","아벨해안 · 모바일 사냥",70000,140);
+    add(m,"ABEL_GRAB","아벨해안 2 · 모바일 사냥",76000,150);add(m,"ABEL_CRAB","아벨해안 2 · 모바일 사냥",78000,155);
+    add(m,"ABEL_OCTOPUS","아벨해안 3/4 · 모바일 사냥",82000,170);
+    add(m,"ABEL_OBS_PURPLE_EGG","아벨해안 3 · 모바일 사냥",79000,160);
+    add(m,"ABEL_OBS_ORANGE_FLOAT","아벨해안 3/4 · 모바일 사냥",83000,175);
+    add(m,"ABEL_OBS_PURPLE_MAW","아벨해안 3/4 · 모바일 사냥",84000,180);
+    add(m,"ABEL_BERSERKER","아벨해안 4 · 모바일 조우",95000,190);
+    // Mobile solo encounters only: no claim of original party/event conditions
+    // or canonical random drops. Both identities use the normal reward ledger.
+    add(m,"ABEL_KINGARK_FAKE","아벨해안 4 · 모바일 조우",110000,220);
+    add(m,"ABEL_KINGARK","아벨해안 4 · 모바일 조우",150000,300);
     rewards=Collections.unmodifiableMap(m);
   }
   private static void add(Map<String,Reward> m,String id,String zone,int exp,long gold){m.put(id,new Reward(id,zone,exp,gold));}
