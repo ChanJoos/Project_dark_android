@@ -96,7 +96,7 @@ jobs:
           python3 tools/verify_equipment_icons.py
           python3 tools/validate_master.py
           python3 tools/audit_all_skills_v138.py
-          gradle :app:testDebugUnitTest --tests '*SkillAbilityRuntimeTest' --tests '*AllSkillRuntimeV138Test' --tests '*MagicRuntimeV137Test' --tests '*SkillTestModeTest' --tests '*SkillPresentationTest' --tests '*MobileHudV135Test' --tests '*MobileHudV134Test' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*MartialDefenseStarRegressionTest' --tests '*SkillAbilityRuntimeTest' --tests '*AllSkillRuntimeV138Test' --tests '*MagicRuntimeV137Test' --tests '*SkillTestModeTest' --tests '*SkillPresentationTest' --tests '*MobileHudV135Test' --tests '*MobileHudV134Test' --stacktrace
       - name: Upload actual mobile HUD preview immediately
         if: always()
         uses: actions/upload-artifact@v4
@@ -108,7 +108,7 @@ jobs:
             app/build/test-results/
           if-no-files-found: warn
       - name: Verify HUD input, interior controls, skill learning, saves and cached forest
-        run: gradle :app:testDebugUnitTest --tests '*SkillAbilityRuntimeTest' --tests '*AllSkillRuntimeV138Test' --tests '*MagicRuntimeV137Test' --tests '*AllJobSkillSourceTest' --tests '*ClassicSkillReferenceTest' --tests '*MonsterDamagePresentationTest' --tests '*ItemFunctionsV129Test' --tests '*SkillQuickslotApproachTest' --tests '*SkillSpatialContractTest' --tests '*SkillContactRegressionTest' --tests '*MartialHudAutoRegressionTest' --tests '*JoystickV119Test' --tests '*HudTouchAcceptanceTest' --tests '*SkillWindowTest' --tests '*SkillWindowReferenceTest' --tests '*SkillTestModeTest' --tests '*QuestJournalTest' --tests '*OnboardingUiTest' --tests '*TownInteriorTest' --tests '*InnSourceRepairTest' --tests '*InnDetailQuestFxTest' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*ClassicPolishV132Test' --tests '*RuntimeCheckpointTest' --tests '*ForestFloorCacheTest' --stacktrace
+        run: gradle :app:testDebugUnitTest --tests '*MartialDefenseStarRegressionTest' --tests '*SkillAbilityRuntimeTest' --tests '*AllSkillRuntimeV138Test' --tests '*MagicRuntimeV137Test' --tests '*AllJobSkillSourceTest' --tests '*ClassicSkillReferenceTest' --tests '*MonsterDamagePresentationTest' --tests '*ItemFunctionsV129Test' --tests '*SkillQuickslotApproachTest' --tests '*SkillSpatialContractTest' --tests '*SkillContactRegressionTest' --tests '*MartialHudAutoRegressionTest' --tests '*JoystickV119Test' --tests '*HudTouchAcceptanceTest' --tests '*SkillWindowTest' --tests '*SkillWindowReferenceTest' --tests '*SkillTestModeTest' --tests '*QuestJournalTest' --tests '*OnboardingUiTest' --tests '*TownInteriorTest' --tests '*InnSourceRepairTest' --tests '*InnDetailQuestFxTest' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*ClassicPolishV132Test' --tests '*RuntimeCheckpointTest' --tests '*ForestFloorCacheTest' --stacktrace
       - name: Build and verify exact APK
         run: |
           gradle :app:assembleDebug
