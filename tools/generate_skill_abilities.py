@@ -40,6 +40,8 @@ for e in cat:
  kind='DAMAGE' if mechanic=='DAMAGE_ADAPTED_BALANCE' else 'HEAL' if mechanic=='HEAL_ADAPTED_BALANCE' else 'STATUS' if status else 'PASSIVE' if r['mode'] in ('LINKED','PASSIVE') else 'SERVICE'
  if status in ('POISON_HIT','FREEZE_HIT','DRAIN','CHARGE'):kind='DAMAGE'
  if n=='파천각':kind='DAMAGE'
+ # Source gates: player-only Push/ArmorDisarm/HideOther and missing leap recipient.
+ if e['id'] in ('SK_도적_004','SK_도적_019','SK_도적_026','SK_무도가_003'):kind='SERVICE'
  evidence='PROJECT_ADAPTED_V83';source='User 2026-10-02: author unprovided formulas by learning circle/stat requirements'
  # Physical multipliers grow with circle and acquisition burden; martial balance uses STR/CON geometric mean.
  required=learn[e['id']]['stats'];burden=sum(required.values())-15
@@ -69,9 +71,10 @@ for e in cat:
  if n=='쿠로토':cd=2
  if formula=='DARA':cd=12;cost=0
  if formula in ('CRASH','SOUL','ASSASSIN','ASSASSIN_PLUS','DALMA','HP_BURST'):cd=12
- # Early spells have cast time, not the old per-circle invented reuse cooldown.
- # User report + supplied skill PDF spell/technique distinction; upper-circle exceptions retained.
- if e['kind']=='마법' and (n=='쿠로토' or e['job']=='마법사' and c<=2):cd=0
+ # V138: all Spell entries share cast cadence, not invented per-circle reuse.
+ # Explicit PDF reuse exceptions and the retained Dara finisher exception stay separate.
+ if e['kind']=='마법':
+  cd={'이모탈':5,'리플렉토':5,'나르콜리':1,'다라밀공':12}.get(n,0)
  duration=9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
  if kind=='HEAL':desc=f'회복 = round((WIS×5 + INT×1.5 + Lv×2)×{coef}); 최대 HP까지'
  elif kind=='DAMAGE':desc={'PHYSICAL':'(무기 공격+STR×3+DAM)','ROGUE':'(무기 공격+STR×1.8+DEX×2.2+DAM)','MARTIAL':'(무기 공격+sqrt(STR×CON)×4+DAM)','MAGIC':'(8+INT×4+WIS+Lv×1.5)','BASIC':'(무기 공격+STR×3+DAM)'}.get(formula,formula)+f' × {coef}'

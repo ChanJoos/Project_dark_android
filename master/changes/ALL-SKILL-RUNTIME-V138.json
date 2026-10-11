@@ -1,0 +1,21 @@
+{
+  "id": "ALL-SKILL-RUNTIME-V138",
+  "status": "ACCEPTED",
+  "base": "255e59ee068abd3735d8af5e427ce18576471e01",
+  "owner": "Director_single_editor",
+  "scope": "all221 catalog runtime audit; all138 Spell timing admission",
+  "before": "only early Mage/Kuroto managed; invented per-circle Spell reuse; upper-spell presentation not equipment-adjusted; utility resource/dead gate missing; target-cross AUTO melee fallback",
+  "after": "all Spell shared 1/3s; ordinary Spell reuse0; exceptions Immortal5 Reflect5 Sleep1 from supplied wiki PDF, Dara12 retained ADAPTED; all Spell presentation follows equipment-adjusted clock; utility rejects insufficient MP/dead/control; target-cross and SCREEN stay ranged",
+  "source": {
+    "path": "user supplied skills PDF",
+    "sha256": "ed00844bb3c4c2de58c2dd36bbce2712bf4a40d553c8f3007ba8dc04de9d5c51",
+    "evidence": "USER_PROVIDED_WIKI_NOT_OFFICIAL_SERVER_CANON"
+  },
+  "limits": [
+    "Individual physical reuse retained ADAPTED pending original timing evidence",
+    "Unknown Spell cast bases retained explicit ADAPTED contact values",
+    "Jangpung classification conflict: 2020 Naver technique vs supplied wiki spell, retained source classification",
+    "20 absent services plus separate-recipient transfusion (21 paths) remain unavailable",
+    "Whole original effect fidelity and physical phone acceptance not verified"
+  ]
+}

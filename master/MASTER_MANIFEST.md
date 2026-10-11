@@ -1,3 +1,7 @@
+## 2026-10-11 — V138 all221 execution audit in validation
+
+User requires all techniques/spells, superseding the V137 early-only task scope. Single Director edit on codex/all-skill-runtime-v138, PR193. All221 per-ID records and all138 Spell cadence correction implemented; upper target-cross/screen ranged AUTO and utility MP/dead/control gates corrected. 83 technique timings retained independently, original unknowns remain ADAPTED. Source-required missing recipient services fail closed; 21 paths remain unavailable. Contract docs/ALL_SKILL_RUNTIME_V138.md, audit master/changes/V138_ALL221_SKILL_AUDIT.json. Deterministic/local source checks PASS; native/fullCI/exactAPK PENDING; physical phone PENDING. Do not report all original mechanics or visuals complete.
+
 ## 2026-10-11 — V137 magic range, staff and cadence correction integrated
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED / FULL ANDROID CI VERIFIED / INTEGRATED. V136 B UI USER_VISUAL_ACCEPTED and retained. Corrected user-reported ranged Mareno failure, AUTO melee fallthrough, invented early magic/Kuroto reuse delays and fixed .65s CAST lock. Early mage circle<=2 and all Kuroto IDs have0 individual reuse cooldown; shared1/3s admission cadence retained. Kuroto immediate; equipped historical Pana makes four elementary spells immediate. Elementary base1s remains explicitly ADAPTED pending original timing capture; current versus historical Pana player-guide conflict remains recorded. Existing upper-circle policy and physical/finite skill contracts retained.

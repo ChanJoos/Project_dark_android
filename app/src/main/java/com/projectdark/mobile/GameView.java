@@ -226,7 +226,7 @@ public final class GameView extends View {
   private boolean isActing(){return action!=Action.IDLE&&action!=Action.WALK;}
   private boolean attacking(){return action==Action.SWING||action==Action.THRUST||action==Action.THROW||action==Action.PUNCH;}
   private float activeSkillCastSeconds;
-  private float duration(Action a){if(a==Action.CAST&&activeSkillVisualId!=null&&MagicTimingPolicy.managed(activeSkillVisualId))return Math.max(MagicTimingPolicy.SPELL_INTERVAL,activeSkillCastSeconds);SkillActionContract.Rule r=SkillActionContract.get(activeSkillVisualId);if(r!=null&&r.contact>.3f)return r.contact+.35f;switch(a){case CAST:return .65f;case SWING:return .45f;case THRUST:return .38f;case THROW:return .52f;case PUNCH:return .32f;case SKILL:return .50f;case KICK:return .45f;default:return 0;}}
+  private float duration(Action a){if(a==Action.CAST&&activeSkillVisualId!=null&&MagicTimingPolicy.managed(activeSkillVisualId)){SkillPresentationCatalog.Entry e=skillPresentation.get(activeSkillVisualId);float release=e!=null&&"CHARGE_CAST".equals(e.motion)?.35f:0;return Math.max(MagicTimingPolicy.SPELL_INTERVAL,activeSkillCastSeconds+release);}SkillActionContract.Rule r=SkillActionContract.get(activeSkillVisualId);if(r!=null&&r.contact>.3f)return r.contact+.35f;switch(a){case CAST:return .65f;case SWING:return .45f;case THRUST:return .38f;case THROW:return .52f;case PUNCH:return .32f;case SKILL:return .50f;case KICK:return .45f;default:return 0;}}
   private void trigger(Action a){if(isActing()||!state.player().alive)return;state.skillEffects().stopRest();activeWorld().cancelForAction();interaction.cancel();combat.cancelApproach();action=a;actionClock=0;}
   private void showFeedback(String s){showFeedback(s,FeedbackTone.INFO);}private void showFeedback(String s,FeedbackTone tone){feedback=s;feedbackTone=tone;feedbackClock=1.15f;}private void showReward(String s){rewardBanner=s;rewardClock=2.4f;}
   private boolean requireTarget(){if(combat.hasUsableTarget())return true;showFeedback("먼저 몬스터를 선택하세요",FeedbackTone.WARN);return false;}
@@ -398,12 +398,12 @@ public final class GameView extends View {
       if(entry==null||!skillBook.usable(entry.id)||!skillBook.jobAllowed(entry.id))continue;
       SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
       if(!rangedSpell(rule)||!rule.damage())continue;
-      if(current!=null&&(!skillTargetVisible(current.id)||!activeWorld().hasCombatLineOfSight("player",current.id))){skillApproach.begin(entry.id,current.id);tickSkillApproach(0);}
+      if(!rule.selfAnchored()&&current!=null&&(!skillTargetVisible(current.id)||!activeWorld().hasCombatLineOfSight("player",current.id))){skillApproach.begin(entry.id,current.id);tickSkillApproach(0);}
       return;
     }
     if(combat.attackReady())attack();
   }
-  private static boolean rangedSpell(SkillActionContract.Rule rule){return rule!=null&&"마법".equals(rule.kind)&&rule.pattern==SkillActionContract.Pattern.SINGLE&&rule.reach==0&&rule.minReach==0;}
+  private static boolean rangedSpell(SkillActionContract.Rule rule){return rule!=null&&"마법".equals(rule.kind)&&rule.minReach==0&&(rule.pattern==SkillActionContract.Pattern.SINGLE&&rule.reach==0||rule.pattern==SkillActionContract.Pattern.TARGET_CROSS||rule.pattern==SkillActionContract.Pattern.SCREEN);}
 
   private static boolean isMonsterApproach(WorldMoveTargetController.Snapshot move){return move!=null&&move.kind==WorldMoveTargetController.RequestKind.MONSTER_APPROACH&&move.status==WorldMoveTargetController.Status.MOVING;}
 
