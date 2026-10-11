@@ -95,6 +95,7 @@ jobs:
           git diff --exit-code -- app/src/main/assets/equipment-icons app/src/main/assets/classic-ui master/assets/equipment/background_masks_v126 app/src/main/java/com/projectdark/mobile/SourceAccessoryCatalog.java master/canonical/Accessory_Catalog.json master/assets/equipment/accessories_20261009
           python3 tools/verify_equipment_icons.py
           python3 tools/validate_master.py
+          python3 tools/audit_abel_coverage.py --output app/build/reports/abel-v139/coverage.json
           python3 tools/audit_all_skills_v138.py
           gradle :app:testDebugUnitTest --tests '*AbelCoastV139Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*NpcAppearanceTest' --tests '*OnboardingUiTest' --stacktrace
       - name: Upload actual mobile HUD preview immediately

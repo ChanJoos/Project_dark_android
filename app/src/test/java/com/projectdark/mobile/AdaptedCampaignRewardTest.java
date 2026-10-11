@@ -31,7 +31,11 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(23,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(22,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    java.util.Set<String> coast=new java.util.HashSet<>();
+    for(String id:c.entries().keySet())if(id.startsWith("ABEL_")||id.startsWith("ADAPTED_COAST_"))coast.add(id);
+    assertEquals(new java.util.HashSet<>(java.util.Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_GAS")),coast);
+    for(String rejected:new String[]{"ABEL_CRAB","ABEL_BERSERKER","ADAPTED_COAST_RED_OCTOPUS"})assertNull(c.find(rejected));
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
   }
   @Test public void addedCoastFamiliesUseTheSameExactlyOnceLedgerWithoutInventedDrops(){
