@@ -1,9 +1,18 @@
 abel_visual_revision:
   owner: Director_single_editor
   active_branch: codex/abel-coast-v139
-  status: IMPLEMENTING_USER_VISUAL_REJECTION
+  status: CANDIDATE_BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
   required_sources: [AGENTS.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/MONSTER_CREATION_MANUAL.md, design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/abel_v139/research.json, docs/ABEL_COAST_V139.md]
-  user_visual_acceptance: REJECTED_V139_2026_10_11
+  user_visual_acceptance: V140_PENDING_REVIEW_V139_REJECTED
+  runtime_source_sha: 824853992a1b96d6d30973cf93cbf59efcdb5e0c
+  focused_run: 38139162377
+  native_unique_tests: 104
+  native_suites: 21
+  apk_artifact: 11702615318
+  evidence: master/changes/V140_BUILD_RUNTIME_RECEIPT.json
+  physical_phone: PENDING
+  broader_android: IN_PROGRESS_UNCERTIFIED
+  integration: DRAFT_PR195_UNMERGED
 
 expansion_lv41_plus:
   status: FIRST_ABEL_SCOPE_INTEGRATED_NATIVE_FULL_CI_VERIFIED
