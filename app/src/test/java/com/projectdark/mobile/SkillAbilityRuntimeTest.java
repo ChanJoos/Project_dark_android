@@ -84,7 +84,7 @@ public class SkillAbilityRuntimeTest {
  @Test public void cursesBuffsFreezePoisonDispelAndExpiryChangeRealCombat()throws Exception{
   RuntimeState s=state();RuntimeCombatSession c=session(s);assertTrue(c.submitPlayer("m0","SK_마법사_011").accepted());c.tick(.25f);assertEquals(35,s.skillEffects().power("m0","CURSE"));
   assertTrue(c.submitPlayer("m0","SK_무도가_018").accepted());c.tick(.15f);assertTrue(s.skillEffects().disabled("m0"));assertFalse(s.monsters().get(0).attackPrimed);
-  assertTrue(c.submitPlayer("m0","SK_마법사_012").accepted());c.tick(.25f);int hp=s.monsters().get(0).hp;s.tick(1);assertTrue(s.monsters().get(0).hp<hp);
+  assertTrue(c.submitPlayer("m0","SK_마법사_012").accepted());c.tick(.25f);int hp=s.monsters().get(0).hp;s.tick(1);c.tick(1);assertTrue(s.monsters().get(0).hp<hp);
   s.skillEffects().put("player","SK_마법사_012","POISON",20,10);assertTrue(c.submitPlayer("player","SK_무도가_031").accepted());c.tick(.25f);assertFalse(s.skillEffects().has("player","POISON"));
   assertTrue(c.submitPlayer("player","SK_전사_009").accepted());c.tick(.15f);int base=s.rpg().finalStats().dam;assertEquals(base+4,s.rpg().finalStats().withEffects(s.skillEffects(),"player").dam);assertEquals(base,s.rpg().finalStats().dam);
   s.tick(60);assertTrue(s.skillEffects().playerEffects().isEmpty());assertFalse(s.skillEffects().disabled("m0"));
