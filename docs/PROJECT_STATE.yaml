@@ -1,3 +1,14 @@
+expansion_lv41_plus:
+  status: PLAN_READY_NOT_IMPLEMENTED
+  owner: Director_single_editor
+  active_branch: main
+  user_request: EXISTING_GAME_EXPANSION_BEYOND_EARLY_CAMPAIGN
+  plan: docs/EXPANSION_EXECUTION_PLAN.md
+  first_scope: P03_P04_ABEL_LV41_70
+  next_ticket: E01_ABEL_SOURCE_ASSET_CONDITION_JOIN
+  remaining_route: [P05_P06_RUCESION_71_98, P07_MINE_HORROR_99, P08_P11_PURE_RECLASS_FIRST_ADVANCEMENT]
+  physical_phone: NOT_APPLICABLE_PLAN_ONLY
+
 all_skill_runtime_v138:
   owner: Director_single_editor
   status: INTEGRATED_NATIVE_BUILD_FULL_CI_VERIFIED_KNOWN_SCOPE

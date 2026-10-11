@@ -1,3 +1,7 @@
+## 2026-10-11 — Lv41+ expansion plan restored
+
+User requests the existing game expansion, rather than keeping the early campaign as the complete game. Current growth engine supports Lv99; playable CampaignProgress ends at D04/Lv41. Existing P03–P11 route restored: Abel41–70, Rucesion71–98, Mine/Horror99, pure/reclass and first advancement. Implementation tickets E01–E12 and source/asset/open-party boundaries: docs/EXPANSION_EXECUTION_PLAN.md. PLAN_READY only; no new map, runtime, APK or phone acceptance. Next actual ticket E01: Abel-specific source/asset/condition join; first release scope P03/P04. V138 unchanged.
+
 ## 2026-10-11 — V138 all221 audit and whole-spell timing integrated
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED / FULL ANDROID CI VERIFIED / INTEGRATED for the documented scope. All221 IDs audited (83 techniques/138 spells):173 Resolver,1 basic,8 linked/passive,18 utility,21 unavailable. All active Spell timing/presentation follows the accepted equipment-adjusted clock and shared1/3s cadence; ordinary reuse0 with source-version exceptions. Technique reuse remains separate/ADAPTED where original seconds are unknown. Upper target-cross/screen AUTO stays ranged; utility alive/control/MP gates reject without charge; missing recipient services do not fake self-success. Dara CHARGE_CAST keeps its existing .35s release/recovery after effective contact. Approved V136 B HUD and source skill pixels retained.
