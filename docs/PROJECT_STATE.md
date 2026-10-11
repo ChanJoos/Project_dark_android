@@ -1,6 +1,14 @@
-## 2026-10-11 — V139 아벨해안 첫 맵 구현 중
+## 2026-10-11 — V139 아벨해안 첫 구현 검증/통합
 
-사용자 승인에 따라 원작 게임 화면 기반 아벨 조사 거점+5사냥 구역,8개 Lv41~55 후속 조사 의뢰,터틀/붉은 문어 후보 및 이동/보급/저장 경로 구현. IMPLEMENTED; exact CI/native/APK/phone/visual acceptance PENDING. Director single editor codex/abel-coast-v139. 원작 전체 몬스터/킹아크 이벤트 완료 아님; 그래브 등 출처/외형 OPEN, YouTube metadata 확보/영상 CDN 차단. 포테 성능 계약 유지. 계약 docs/ABEL_COAST_V139.md; 조사 master/source/abel_v139/research.json. 다음: exact-source native/성능/기존 포테 회귀→렌더 확인→GitHub 통합/정확 APK.
+IMPLEMENTED / BUILD VERIFIED / NATIVE SCOPE VERIFIED / FULL ANDROID CI VERIFIED / INTEGRATED for the first six-map/eight-quest scope. APK runtime source b57ed082e8ecd4084c39c33bfadabc4f39cc9114; focused Actions38131552722/job114446754482 SUCCESS, 102 independently counted unique tests/21 suites,0 failures/errors/skips. Full push38131552729 and PR38131554871 SUCCESS. PR194 merge 15b1790108b8aaf03d50c3844d713122ae132bb7. Documentation closure changes no app/runtime/assets; exact APK remains the tested source, not relabeled as the documentation commit.
+
+Six maps: shore hub and1-A/1-B/2-A/3-B/4-C; E01–E08 Lv41–55. Normal admission requires Lv41+D04; Noah skill-test preview and its internal gates grant no EXP, levels or prior rewards. Five-job actual Resolver/reward/restart routes, real dialogue, Quick Quest AUTO kill, all6 map restores and48 actual touch callbacks verified. Return corridor is spawn-free (x<448 /260-radius return gate); coast save coordinates are not first snapped through Milles. NPC guide/supplier appearance identity is distinct.
+
+APK com.projectdark.mobile.v139test/version139,63,297,093bytes,SHA256 dcf8f9acae3024ad964fbf70006dc89b47d858f64a31cc7fb4574859f7a49510,built2026-10-11T19:27:13.983121+09:00,artifact11699381914/run38131552722. Embedded source/run/package and168 Pote+627 skill+28 coast bytes independently verified. Side-by-side test application has its own profile; existing in-app D04 snapshots retain prior progress/rewards. Native artifact11699431880 and preview11699755894 ZIP digests/CRC/XML verified.
+
+Pote lessons retained: static lattice navigation/adjacency, live occupancy/reservation/segment checks, prewarm all12 poses+hits at entry, source/hit max58≤60, world-aligned floor LRU32≤8,652,800pixel bytes, vsync and periodicapply/criticalcommit. Twelve map round trips,24 poses and6 shoreline cameras reviewed. Robolectric CPU48-touch p95=3.643507ms,p99/max=24.432128ms; not handset FPS. Physical phone/process-kill performance and USER_VISUAL_ACCEPTED remain PENDING.
+
+Original five game screenshots/source hashes and all known Master six-species research are retained. Only ABEL_TURTLE and explicitly unnamed ADAPTED_COAST_RED_OCTOPUS are admitted now; original map topology/stats/animation/drop fidelity is not certified. YouTube metadata identified but playback/storyboard CDN blocked; no watched-frame claim. Remaining: original Grab/Pong/Crab/Berserker/KingArk artwork/stat resolution, circle3 equipment/learning and real party/boss event, Lv56–70 completion, then Rucesion71–98 /Mine-Horror99 /pure-reclass/first advancement. Contract docs/ABEL_COAST_V139.md; exact receipt master/changes/V139_BUILD_RUNTIME_RECEIPT.json.
 
 ## 2026-10-11 — Lv41+ expansion plan restored
 

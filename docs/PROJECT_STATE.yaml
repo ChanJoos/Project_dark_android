@@ -1,13 +1,21 @@
 expansion_lv41_plus:
-  status: PLAN_READY_NOT_IMPLEMENTED
+  status: FIRST_ABEL_SCOPE_INTEGRATED_NATIVE_FULL_CI_VERIFIED
   owner: Director_single_editor
   active_branch: main
   user_request: EXISTING_GAME_EXPANSION_BEYOND_EARLY_CAMPAIGN
   plan: docs/EXPANSION_EXECUTION_PLAN.md
-  first_scope: P03_P04_ABEL_LV41_70
-  next_ticket: E01_ABEL_SOURCE_ASSET_CONDITION_JOIN
-  remaining_route: [P05_P06_RUCESION_71_98, P07_MINE_HORROR_99, P08_P11_PURE_RECLASS_FIRST_ADVANCEMENT]
-  physical_phone: NOT_APPLICABLE_PLAN_ONLY
+  first_scope: SIX_MAPS_EIGHT_QUESTS_LV41_55
+  runtime_source_sha: b57ed082e8ecd4084c39c33bfadabc4f39cc9114
+  merge_sha: 15b1790108b8aaf03d50c3844d713122ae132bb7
+  focused_run: 38131552722
+  focused_tests: 102
+  full_android_runs: [38131552729, 38131554871]
+  receipt: master/changes/V139_BUILD_RUNTIME_RECEIPT.json
+  next_ticket: E06_ORIGINAL_MONSTER_ASSETS_AND_P03_CIRCLE3_GEAR_PARTY_EVENT
+  remaining_route: [P03_P04_ORIGINAL_MONSTERS_GEAR_PARTY_56_70, P05_P06_RUCESION_71_98, P07_MINE_HORROR_99, P08_P11_PURE_RECLASS_FIRST_ADVANCEMENT]
+  physical_phone: PENDING
+  user_visual_acceptance: PENDING
+  youtube_frame_review: BLOCKED_CDN_NOT_WATCHED
 
 all_skill_runtime_v138:
   owner: Director_single_editor

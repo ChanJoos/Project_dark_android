@@ -1,0 +1,115 @@
+{
+  "version": 139,
+  "status": "INTEGRATED_FIRST_SCOPE_NATIVE_BUILD_FULL_CI_VERIFIED",
+  "runtime_source_sha": "b57ed082e8ecd4084c39c33bfadabc4f39cc9114",
+  "source_tree_sha": "8b383bdf8a0a61ac20019aa072fa7089a7696279",
+  "app_tree_sha": "d1a21fd6856c51ade241e4487552f086cbf0f88c",
+  "runtime_main_tree_sha": "74127f5d224830b952720ac9d725984d9f99981f",
+  "assets_tree_sha": "67b22c4a82d938b7510a9116e1be633ddfe7d805",
+  "pr": 194,
+  "merge_sha": "15b1790108b8aaf03d50c3844d713122ae132bb7",
+  "closure_scope": "Documentation only; app/runtime/assets match the independently tested APK source. APK not relabeled as closure commit.",
+  "scope": {
+    "maps": [
+      "MAP_ABEL_COAST",
+      "1-A",
+      "1-B",
+      "2-A",
+      "3-B",
+      "4-C"
+    ],
+    "quests": "E01–E08",
+    "levels": "41–55",
+    "admitted_monsters": [
+      "ABEL_TURTLE",
+      "ADAPTED_COAST_RED_OCTOPUS"
+    ],
+    "poses": 24,
+    "original_fidelity": "ADAPTED map layout, quests, stats and generated assets; full original roster/animations/drop/event not certified"
+  },
+  "focused": {
+    "run_id": 38131552722,
+    "job_id": 114446754482,
+    "conclusion": "success",
+    "independently_counted_tests": 102,
+    "suites": 21,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "preview_tests": 39,
+    "regression_tests": 63,
+    "native_artifact": 11699431880,
+    "native_zip_sha256": "eda803bb9f8cd7fad522ed18c4167da189a08674b078dfd690921dc7c709addc",
+    "preview_artifact": 11699755894,
+    "preview_zip_sha256": "26be046d5815a932a2d2f3607440c9e4aee11047ef18da1f121005b110085161"
+  },
+  "full_android": {
+    "push": {
+      "run_id": 38131552729,
+      "job_id": 114446754525,
+      "conclusion": "success",
+      "completed_at": "2026-10-11T10:47:28Z"
+    },
+    "pull_request": {
+      "run_id": 38131554871,
+      "job_id": 114446761517,
+      "conclusion": "success",
+      "completed_at": "2026-10-11T10:47:01Z"
+    }
+  },
+  "apk": {
+    "artifact_id": 11699381914,
+    "run_id": 38131552722,
+    "source_sha": "b57ed082e8ecd4084c39c33bfadabc4f39cc9114",
+    "package": "com.projectdark.mobile.v139test",
+    "version_code": 139,
+    "version_name": "1.39-abel-coast",
+    "bytes": 63297093,
+    "sha256": "dcf8f9acae3024ad964fbf70006dc89b47d858f64a31cc7fb4574859f7a49510",
+    "zip_sha256": "5657bd3217a41ef1de54cb48eb5fe37f65551bd6fb5095f4bcb97fa1c17152f4",
+    "built_at_asia_seoul": "2026-10-11T19:27:13.983121+09:00",
+    "identity_and_crc": "independently verified",
+    "unchanged_pote_sprites": 168,
+    "unchanged_skill_assets": 627,
+    "new_coast_assets": 28,
+    "install_scope": "Side-by-side test package with independent profile; no cross-package save migration claim"
+  },
+  "native_scope": [
+    "Five jobs: D04 fixture → actual Resolver kills → eight atomic rewards → restart/idempotence",
+    "Normal Lv41/D04 admission; real Noah preview dialogue and internal gates without level/EXP/prior completion injection",
+    "Real E02 Quick Quest movement and AUTO kill with navigation fixture",
+    "Live reachable tiles for all six-map portals/NPC/monsters",
+    "Exact field coordinate process-style restore on all six maps",
+    "48 actual DOWN/UP native GameView touch callbacks",
+    "24 distinct directional poses, six native coastline cameras and 12 map round trips"
+  ],
+  "performance": {
+    "floor_lru_limit": 32,
+    "floor_pixel_byte_limit": 8652800,
+    "source_hit_pair_limit": 60,
+    "observed_max_pairs": 58,
+    "robolectric_cpu_touch_samples": 48,
+    "p95_ms": 3.643507,
+    "p99_and_max_ms": 24.432128,
+    "handset_fps_claim": false,
+    "contracts": "Static lattice/adjacency caches, live occupancy/reservations/segments, entry prewarm, world-aligned floor, vsync, periodic apply and critical commit retained"
+  },
+  "research": {
+    "path": "master/source/abel_v139/research.json",
+    "screenshots": "Five original game screenshots preserved with hashes",
+    "youtube": "VxmS9AhpMwQ metadata identified; video/storyboard CDN blocked, not watched",
+    "master_six_species_researched": true,
+    "complete_original_roster_verified": false
+  },
+  "physical_phone": "PENDING",
+  "user_visual_acceptance": "PENDING",
+  "remaining": [
+    "Grab/Pong/Crab/Berserker/KingArk original assets/current stats",
+    "P03 circle3 equipment/learning and original party event",
+    "P04 Lv56–70 and real KingArk boss/rewards",
+    "P05/P06 Rucesion71–98",
+    "P07 Mine/Horror99",
+    "P08/P11 pure/reclass/first advancement"
+  ],
+  "execution_note": "Local execution environment disconnected after artifact verification/saving; integration and documentation closure completed using connected GitHub. No runtime edits after verified source."
+}

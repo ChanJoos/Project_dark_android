@@ -2,13 +2,13 @@
 
 기준 main55988d8ab99fdf046d419d54cfa5bd67d073d77c. 사용자 요청: 원작/유튜브 참고, 포테 lessons learned 유지, 아벨부터 게임 확장. Director single editor; codex/abel-coast-v139.
 
-IMPLEMENTED, CI/native/phone/user visual acceptance PENDING until exact evidence is recorded.
+IMPLEMENTED / BUILD VERIFIED / NATIVE SCOPE VERIFIED / FULL ANDROID CI VERIFIED / INTEGRATED for this first scope. Phone and user visual acceptance PENDING. Exact receipt: master/changes/V139_BUILD_RUNTIME_RECEIPT.json; runtime source b57ed082e8ecd4084c39c33bfadabc4f39cc9114; PR194 merge 15b1790108b8aaf03d50c3844d713122ae132bb7; focused38131552722 (102 unique tests/21 suites,0 failures/errors/skips); full38131552729 and38131554871 SUCCESS.
 
 ## 실제 범위
 
 기존 포테/피에트 뒤 조사 거점 MAP_ABEL_COAST와 1-A/1-B/2-A/3-B/4-C의 여섯 맵을 연결한다. 대표 구역 이름은 원작 자료와 연결하되 크기/전체 연결/지형/개체 배치와 8개 E 조사 의뢰는 ADAPTED다. 원작 전체 방 목록이나 정확 좌표를 복제했다는 주장이 아니다. D04를 완료한 정상 Lv41 캐릭터에서 의뢰 E01이 이어지고 E08까지 Lv55 이상으로 정산한다. 정상 성장 엔진의 Lv99 상한은 유지하며 자유 사냥은 이후에도 가능하다.
 
-노아 여행 대화에 정상 조건을 만족하면 아벨 출정, 기존 스킬 시험 모드에서는 아벨 미리보기를 제공한다. 미리보기는 레벨/직업/과거 퀘스트 완료나 보상을 주입하지 않는다. 정상 해안 진입은 Lv41와 D04 완료를 확인한다. 기존 포테 퀵퀘스트·NPC 상호작용·중앙 B HUD 유지. 아벨 조사/보급 NPC의 이름과 서비스는 ADAPTED.
+노아 여행 대화에 정상 조건을 만족하면 아벨 출정, 기존 스킬 시험 모드에서는 아벨 미리보기를 제공한다. 미리보기는 해안 내부 문도 시험 모드로 연결하며 레벨/직업/과거 퀘스트 완료나 보상을 주입하지 않는다. 정상 해안 진입은 Lv41와 D04 완료를 확인한다. 기존 포테 퀵퀘스트·NPC 상호작용·중앙 B HUD 유지. 아벨 조사/보급 NPC의 이름과 서비스는 ADAPTED.
 
 첫 사냥 지형에 터틀 및 이름 매핑 미확정 붉은 문어 후보가 실제 등장한다. 각각12독립 포즈(idle/walk/attack×NW/NE/SW/SE),192RGBA, bottom184 foot registration. 붉은 문어를 그래브/아크퍼스 등 원작 이름으로 임의 등록하지 않는다. 모든 신규 HP/EXP/Gold/재등장 수치는 ADAPTED. 1-A72/1-B96/후속108개체; 기존 포테 개체/그림/스킬/장비를 축소·교체하지 않는다. 보상은 기존 Resolver→ledger→종별 프로필→직접 인벤토리/EXP/Gold 단일 경로에서 처리한다. 원작 임의 드롭 확률이나 킹아크 반지 보상을 만들지 않는다.
 
@@ -26,6 +26,8 @@ master/source/abel_v139/research.json은 Master6종과 붉은 문어/아크퍼�
 
 기존 world-aligned256+2gutter floor chunk LRU32(8,652,800 pixel bytes) 경로에 해안 모래·바다만 추가한다. 새 map-wide framebuffer/second loop 없음. 현재 맵 idle/walk/attack4directions+hit을 entry에 prewarm, 교체시 이전 몬스터 캐시를 제거한다. 최대60source/hit pairs 계약 유지. vsync 및 periodicapply/criticalcommit transaction 변경 없음.
 
-검증: AbelCoastV139Test 정상5직업 D04fixture→실제Resolver사냥→E8원자적 보상/저장, 이전 기록 보존/진입 조건, 모든 맵/문/NPC/개체의 실제 live-collision 길, 게임 대화 preview 무EXP주입, 모든 맵 process-style restore,24포즈/native6카메라/12round trips cache한도. 기존 숲 floor/pixel/tap/chase/movement/HUD/magic/save/quality 회귀. Robolectric CPU 수치를 handset FPS로 부르지 않는다.
+검증: AbelCoastV139Test 정상5직업 D04fixture→실제Resolver사냥→E8원자적 보상/저장, 이전 기록 보존/진입 조건, 모든 맵/문/NPC/개체의 실제 live-collision 길, 게임 대화 preview 무EXP주입/내부 문, 실제 E02 퀵퀘스트 경로와 AUTO 처치,48실제 touch callback, 모든 맵 process-style restore,24포즈/native6카메라/12round trips cache한도. 기존 숲 floor/pixel/tap/chase/movement/HUD/magic/save/quality 회귀. Robolectric CPU 수치를 handset FPS로 부르지 않는다.
 
 휴대폰 이동/첫 공격/다수 추격/바닷가 충돌/맵 왕복/앱 종료재개 및 새 그림 승인 PENDING.
+
+Return-portal safety: x<448 corridor and260-radius return-gate exclusion retain72/96/108 population. Restore field coordinates directly before field adapter snap; do not apply Milles snap first. Cache max58pairs; native CPU touch p95=3.643507ms,p99/max=24.432128ms. Side-by-side .v139test package has an independent profile.
