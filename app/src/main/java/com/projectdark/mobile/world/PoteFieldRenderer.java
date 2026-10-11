@@ -414,7 +414,7 @@ public final class PoteFieldRenderer {
       }else if("bridge".equals(p.role)){
         c.save();c.rotate(trailAngle(w.runtime().currentMapId(),p.x,p.y)-20f,q.x,q.y);c.drawBitmap(b,null,dst,pixel);c.restore();
       }else{
-        pixel.setAlpha(occludesActor(p,b)?64:255);c.drawBitmap(b,null,dst,pixel);pixel.setAlpha(255);
+        pixel.setAlpha(occludesActor(p,b)?(p.asset.startsWith("abel_v140/")?160:64):255);c.drawBitmap(b,null,dst,pixel);pixel.setAlpha(255);
       }
     }
   }
