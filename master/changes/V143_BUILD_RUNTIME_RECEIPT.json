@@ -1,0 +1,98 @@
+{
+  "source": "601fc35a57d259eb24a8c44bc7846f52b0dca1be",
+  "run": 38180326177,
+  "build": {
+    "sourceCommit": "601fc35a57d259eb24a8c44bc7846f52b0dca1be",
+    "runId": "38180326177",
+    "versionCode": 143,
+    "versionName": "1.43-abel-identities-punch-travel",
+    "applicationId": "com.projectdark.mobile.v143test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "1473db586d96e86cd3186a2b83dfe53bfce8821f0736762821f31a560a5018ab",
+    "apkBytes": 67603932,
+    "builtSeoul": "2026-10-12T07:29:49.253127+09:00",
+    "scope": "V143 user names/basic punch/visible Noah travel: 13 runtime candidate identities/12 art families, all seven newly observed video forms, per-zone roster <=5 art families/60 source-hit pairs, 72/96/108 actors and shared navigation/AI/Resolver/reward/save. KingArk fake/real are adapted solo encounters sharing one partially obscured screenshot reconstruction, NOT original party/event fidelity. Names of unlabelled forms and Crab/Berserker visual joins remain pending. Full original roster/animation/topology and phone/visual acceptance NOT VERIFIED",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "tests": 109,
+  "suites": 22,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "matchedPoteCoastFiles": 330,
+  "coastBundleFiles": 162,
+  "physicalPhone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "originalRestoration": "OPEN_NAMES_EVENT_FIDELITY_ROSTER_CLOSURE",
+  "job": 114591314579,
+  "apkArtifact": 11718295007,
+  "nativeArtifact": 11717646068,
+  "previewArtifact": 11717500639,
+  "apkZipSha256": "db9003d5df180a487b73348910d98f151dfdbc7590d39e53151f1fe7b059163f",
+  "nativeZipSha256": "d1bb885cd1b072667e2a256d214fde52f94e68c5a66bed9d10085acb64c05e98",
+  "previewZipSha256": "7a0edf5ada0cc7c9a207809e8978e1bf13e17f720570fd3211d46955e829aa3b",
+  "fullAndroid": "IN_PROGRESS_UNCERTIFIED",
+  "integration": "DRAFT_PR195_UNMERGED",
+  "currentVerifiedChanges": {
+    "green": "애벌레",
+    "purpleEgg": "보라_USER_ASSIGNED",
+    "purpleMaw": "튜터_USER_ASSIGNED",
+    "orange": "가스",
+    "armoredCrab": "그래브",
+    "slate": "회청색 몬스터_ORIGINAL_NAME_UNKNOWN",
+    "tealBoss": "광폭자",
+    "KingArkScale": "3.5x_normal60_canvas; original event/art fidelity still open",
+    "basicPunch": "actual normal attack input/contact/no FX; mm001+wm001 group-e, all4 directions",
+    "Noah": "512,544, label 아벨·포테 이동; visible Abel option and Lv41/forestFinished condition; actual normal non-test walk/dialogue/touch verified"
+  },
+  "cache": {
+    "sourceHitPairsMax": 60,
+    "floorLru": 32,
+    "floorPixelBytes": 8652800,
+    "roundTrips": 12
+  },
+  "punchSource": [
+    {
+      "key": "mm001/e/0",
+      "path": "app/src/main/assets/skill-presentation/body/mm001/e/mm001_e_000.webp",
+      "sha256": "a132b0a7b4281432e67922e6c8e60e50bc668a9fa49ac6c3f2c99221ccd4e115"
+    },
+    {
+      "key": "mm001/e/1",
+      "path": "app/src/main/assets/skill-presentation/body/mm001/e/mm001_e_001.webp",
+      "sha256": "b524ad83981bcdeb3c537d70fb8d444b471aca1fa0bdd9d8ee2086cb657dfbd5"
+    },
+    {
+      "key": "mm001/e/2",
+      "path": "app/src/main/assets/skill-presentation/body/mm001/e/mm001_e_002.webp",
+      "sha256": "135e0d0e6f394589443aee8dd315437bb6d12ea23cd5fe2f677354a104ba413c"
+    },
+    {
+      "key": "mm001/e/3",
+      "path": "app/src/main/assets/skill-presentation/body/mm001/e/mm001_e_003.webp",
+      "sha256": "6fa884168b9a0aae3e87a145bab3e121e89900302fa456034c28bcc31c443817"
+    },
+    {
+      "key": "wm001/e/0",
+      "path": "app/src/main/assets/skill-presentation/body/wm001/e/wm001_e_000.webp",
+      "sha256": "c0f9a03f023571bb55aa37011a728c51b6f2e3700d802e7a6bcfed37cc46b380"
+    },
+    {
+      "key": "wm001/e/1",
+      "path": "app/src/main/assets/skill-presentation/body/wm001/e/wm001_e_001.webp",
+      "sha256": "cb0cf869d047f6622847206ec71ae8086875241380fdc8f9834804ccadb5672f"
+    },
+    {
+      "key": "wm001/e/2",
+      "path": "app/src/main/assets/skill-presentation/body/wm001/e/wm001_e_002.webp",
+      "sha256": "88aed5ac5f3c6a155fdf085685c85aec80342d0c9f6fbc1ad043e65ca971b434"
+    },
+    {
+      "key": "wm001/e/3",
+      "path": "app/src/main/assets/skill-presentation/body/wm001/e/wm001_e_003.webp",
+      "sha256": "b584edae04e3953c0c15402b10fa2c4da8ecc93212874e42cb2e523af91ff2f7"
+    }
+  ]
+}

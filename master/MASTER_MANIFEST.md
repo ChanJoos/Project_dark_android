@@ -1,3 +1,7 @@
+## V143 corrected names/basic punch/Noah exact candidate receipt
+
+master/source/abel_v143/coverage.json and master/changes/V143_BUILD_RUNTIME_RECEIPT.json supersede old identity joins; source601fc35a/Actions38180326177 SUCCESS;109 native tests/22 suites. Phone/user visual and original unresolved names/events remain pending. Source pixels unchanged.
+
 ## V142 exact candidate build/native receipt
 
 Source2cb7a9c / Actions38177352950 SUCCESS;105 tests/21 suites;13 candidate identities/12 art families. Original fidelity/event/names/roster closure and phone/user acceptance OPEN. master/changes/V142_BUILD_RUNTIME_RECEIPT.json; original snapshots retained.
