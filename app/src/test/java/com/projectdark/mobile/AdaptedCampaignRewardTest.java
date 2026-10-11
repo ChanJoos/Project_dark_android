@@ -47,7 +47,9 @@ public final class AdaptedCampaignRewardTest {
       AdaptedCampaignRewardCatalog.Reward expected=new AdaptedCampaignRewardCatalog().find(species);
       state.ledger().add(CombatLedger.Type.MONSTER_DEFEATED,"player",actor.id,0);
       state.rpg().consumeCombat(state.ledger().snapshot(),state);
-      assertEquals(exp+expected.exp,CampaignProgress.earnedExp(state.rpg()));assertEquals(gold+expected.gold,state.rpg().gold().longValue());
+      assertEquals(species,exp+expected.exp,CampaignProgress.earnedExp(state.rpg()));assertEquals(gold+expected.gold,state.rpg().gold().longValue());
+      assertEquals(RpgProgressionState.RewardSource.ADAPTED_CAMPAIGN,state.rpg().rewardHistory().get(0).source);
+      assertEquals(Integer.valueOf(606252),new CanonicalMonsterRewardCatalog().find("ABEL_BERSERKER").exp);
       assertEquals(inventory,state.rpg().inventory());state.rpg().consumeCombat(state.ledger().snapshot(),state);
       assertEquals(1,state.rpg().rewardHistory().size());
     }

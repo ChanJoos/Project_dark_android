@@ -474,8 +474,10 @@ public final class RpgProgressionState {
 
   /** Campaign-aware defeat endpoint; only map actors admitted by the mobile field adapter can resolve. */
   private void resolveCampaignDefeat(CombatLedger.Event e,String profileId){
-    // Same-HP campaign spirits use the mobile economy; preserve the V source record separately.
-    if("POTE_SPIRIT".equals(profileId)&&profileId.equals(PoteForestMonsterShowcase.species(e.targetId))){
+    // Explicitly bound mobile spirits/coast candidates use their adapted HP/reward
+    // economy. Keep canonical records and unprofiled source fixtures separate.
+    if(profileId!=null&&("POTE_SPIRIT".equals(profileId)||AbelCoastMonsters.ALL.contains(profileId))
+        &&profileId.equals(PoteForestMonsterShowcase.species(e.targetId))){
       applyCampaignReward(e,campaignRewards.find(profileId));return;
     }
     CanonicalMonsterRewardCatalog.RewardEntry canonical=monsterRewards.find(e.targetId);
