@@ -37,7 +37,7 @@ public class AbelCoastV139Test {
    }
    assertTrue(s.rpg().campaign().finished());assertNull(s.rpg().campaign().next(s.rpg()));assertTrue(s.rpg().normalLevel()>=55);assertFalse(b.testAccess());assertTrue(s.rpg().gold()>0);assertTrue(s.rpg().inventory().getOrDefault("IT_RING_THREELINEGOLD",0)==0);
    report.put(job,new JSONObject().put("level",s.rpg().normalLevel()).put("kills",kills).put("gold",s.rpg().gold()).put("scope","D04 fixture; actual Resolver kills/transactions/checkpoint restore; no handset FPS claim"));
-  }Files.createDirectories(Path.of("build/reports/abel-v139"));Files.writeString(Path.of("build/reports/abel-v139/five-jobs.json"),report.toString(2));
+  }Files.createDirectories(Path.of("build/reports/abel-v139"));Files.write(Path.of("build/reports/abel-v139/five-jobs.json"),report.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void everyMapGateNpcAndEveryActorHasConnectedSharedLiveCollisionRoute()throws Exception{
   for(String map:AbelCoastGeometry.ROUTE){RuntimeState s=new RuntimeState();s.enterCampaignMap(map,false);WorldRuntimeAdapter w=CampaignNavigationTest.adapter(s);PoteCampaignMapDef d=PoteCampaignMapDef.forId(map);assertSame(d.navigationTiles(),d.navigationTiles());assertSame(CampaignWorld.connectedTiles(map),CampaignWorld.connectedTiles(map));
@@ -72,7 +72,7 @@ public class AbelCoastV139Test {
    for(int i=0;i<8;i++){WorldMoveTargetController.TileCenter t=cells.get(i*(cells.size()-1)/7);WorldCameraTransform.Point p=w.worldToScreen(t.x,t.y);long before=w.movement().snapshot().requestId,n=System.nanoTime();QuestJournalTest.gesture(v,p.x,p.y);timings.add((System.nanoTime()-n)/1e6);assertTrue(map+" real callback request",w.movement().snapshot().requestId>before);}
    Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(frame));try(java.io.OutputStream out=Files.newOutputStream(folder.resolve("gameview-"+map+".png"))){frame.compress(Bitmap.CompressFormat.PNG,100,out);}frame.recycle();
   }
-  Collections.sort(timings);JSONObject report=new JSONObject().put("scope","Robolectric real DOWN/UP callbacks with live actors, not handset FPS").put("taps",timings.size()).put("p95Ms",timings.get((int)Math.ceil(timings.size()*.95)-1)).put("p99Ms",timings.get((int)Math.ceil(timings.size()*.99)-1)).put("maxMs",timings.get(timings.size()-1));Files.writeString(folder.resolve("touch-profile.json"),report.toString(2));
+  Collections.sort(timings);JSONObject report=new JSONObject().put("scope","Robolectric real DOWN/UP callbacks with live actors, not handset FPS").put("taps",timings.size()).put("p95Ms",timings.get((int)Math.ceil(timings.size()*.95)-1)).put("p99Ms",timings.get((int)Math.ceil(timings.size()*.99)-1)).put("maxMs",timings.get(timings.size()-1));Files.write(folder.resolve("touch-profile.json"),report.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void nativeScenesFullPoseSetsAndTwelveMapRoundTripsKeepCacheBounded()throws Exception{
   Path folder=Path.of("build/reports/abel-v139");Files.createDirectories(folder);PoteFieldRenderer r=new PoteFieldRenderer();int maxPairs=0;
