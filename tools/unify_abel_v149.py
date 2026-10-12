@@ -35,6 +35,12 @@ for key in ['main','east']:
 props=copy.deepcopy(d['scenes']['main']['props'])
 for p in d['scenes']['east']['props']:
  a=copy.deepcopy(p);a['sourceWorld']=[a['sourceWorld'][0]+dx,a['sourceWorld'][1]+dy];a['sourceDistrict']='east';props.append(a)
+# The captured long shop facade is cut through its right wall. Keep it in source observations,
+# but use a complete observed facade family for the unverified adapted equipment service.
+whole=next(a for a in d['assets'] if a['id']=='building_two_storey')
+for p in props:
+ if p['asset']=='building_awning_long':
+  p.update(asset='building_two_storey',anchor=whole['anchor'],nativeSize=whole['size'],evidence='ADAPTED_SERVICE_FACADE_REUSE_WHOLE_OBSERVED_FAMILY',sourceParent='building_awning_long_observed_fragment')
 # Finish the unobserved connector as a landscaped public street, using existing source families.
 # Do not alter recorded water, facades or gardens. Tile corridors remain in the same 64x32 lattice.
 for u in range(27,79):

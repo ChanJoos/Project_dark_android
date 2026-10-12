@@ -44,7 +44,7 @@ p.add(new AbelTownGeometry.Prop("lamp_main",-954.520f,988.890f,13.000f,129.000f,
 p.add(new AbelTownGeometry.Prop("lamp",1484.000f,995.000f,13.000f,119.000f,23.000f,120.000f));
 p.add(new AbelTownGeometry.Prop("rail_down",-1679.530f,1004.080f,0.000f,34.000f,39.000f,54.000f));
 p.add(new AbelTownGeometry.Prop("building_awning_corner",1353.000f,1007.000f,250.000f,194.000f,297.000f,214.000f));
-p.add(new AbelTownGeometry.Prop("building_awning_long",-547.510f,1030.570f,178.000f,242.000f,207.000f,258.000f));
+p.add(new AbelTownGeometry.Prop("building_two_storey",-547.510f,1030.570f,48.000f,235.000f,210.000f,276.000f));
 p.add(new AbelTownGeometry.Prop("rail_down",-1623.530f,1032.080f,0.000f,34.000f,39.000f,54.000f));
 p.add(new AbelTownGeometry.Prop("tree_broadleaf",-745.500f,1043.670f,35.000f,108.000f,64.000f,111.000f));
 p.add(new AbelTownGeometry.Prop("garden_tree_pair",672.000f,1064.000f,44.000f,147.000f,94.000f,149.000f));

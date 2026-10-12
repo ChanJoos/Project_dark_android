@@ -6572,23 +6572,24 @@
           "evidence": "SOURCE_VISIBLE_PARTIAL"
         },
         {
-          "asset": "building_awning_long",
+          "asset": "building_two_storey",
           "scene": "main",
           "sourceWorld": [
             -547.51,
             1030.57
           ],
           "anchor": [
-            178,
-            242
+            48,
+            235
           ],
           "nativeSize": [
-            207,
-            258
+            210,
+            276
           ],
           "sourceFrame": 14,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE_PARTIAL"
+          "evidence": "ADAPTED_SERVICE_FACADE_REUSE_WHOLE_OBSERVED_FAMILY",
+          "sourceParent": "building_awning_long_observed_fragment"
         },
         {
           "asset": "rail_down",

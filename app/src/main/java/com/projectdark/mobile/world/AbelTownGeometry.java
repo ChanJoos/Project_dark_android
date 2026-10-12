@@ -28,7 +28,7 @@ public final class AbelTownGeometry {
  new Building("abel_church","abel_interior_church",facade("building_two_storey",181.48f,314.74f)),
  new Building("abel_reagent","abel_interior_reagent",facade("building_awning_corner",-74.51f,404.72f)),
  new Building("abel_bank","abel_interior_bank",facade("building_two_storey",461.5f,454.75f)),
- new Building("abel_equipment","abel_interior_equipment",facade("building_awning_long",-547.51f,1030.57f)),
+ new Building("abel_equipment","abel_interior_equipment",facade("building_two_storey",-547.51f,1030.57f)),
  new Building("abel_inn","abel_interior_inn",facade("building_awning_corner",1353f,1007f))));}
 
  public static Building forInterior(String id){for(Building b:BUILDINGS)if(Objects.equals(id,b.interior))return b;return null;}
