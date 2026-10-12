@@ -97,8 +97,7 @@ jobs:
           python3 tools/validate_master.py
           python3 tools/build_abel_v142.py
           git diff --exit-code -- master/assets/abel_v142
-          python3 tools/audit_abel_coverage.py --output app/build/reports/abel-v139/
-            app/build/reports/abel-v146/coverage.json
+          python3 tools/audit_abel_coverage.py --output app/build/reports/abel-v146/coverage.json
           python3 tools/audit_all_skills_v138.py
           gradle :app:testDebugUnitTest --tests '*AbelTownV146Test' --tests '*AbelCoastV139Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*NpcAppearanceTest' --tests '*OnboardingUiTest' --stacktrace
       - name: Upload actual mobile HUD preview immediately
