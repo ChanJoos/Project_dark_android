@@ -1,3 +1,7 @@
+## V147 user audit —2026-10-13
+
+52 media assets and runtime uploaded first in9eae03f. Bench contact/complete source support, independent Abel NPC identities, recorded inn facade,5 functional rooms and legal arrivals/gates corrected. Source map remains partial; source footprint2029/1692 cells, original full extent unknown. Exact current native/build evidence PENDING. Acceptance and continuation: docs/ABEL_VIDEO_V147.md.
+
 ## 2026-10-12 — V146 continued from saved source; exact CI candidate verified
 
 Continue same draft PR195/codex/abel-coast-v139. Runtime/test source2c60e33efe8c12671e08f26af59f2fe3d9857f05; focused Actions38234421107/job114761473028 SUCCESS. Independently downloaded APK/native/preview ZIPs, checked CRC/hashes and113 unique native tests in23 suites, zero failures/errors/skips. Local18 Abel checks plus63 retained regressions also PASS;35 native town captures are byte-identical to CI. Source/output split-line error in focused workflow fixed; stale preview test now checks Noah→Abel town→coast without granting level/EXP/D04 completion. Runtime artwork/source bytes unchanged from75ef65d; no regenerated forest/player assets.

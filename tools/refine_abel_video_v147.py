@@ -57,3 +57,16 @@ a=np.array(Image.open(src/'reference_frames/026.png').crop((232,226,288,254)).co
 for s in d['scenes'].values():s['props'].sort(key=lambda p:p['sourceWorld'][1])
 for p in [folder/'layout.json',src/'layout.json']:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 print('Observed basins/facade/pool details refined, clean inn checker separated')
+
+# Complete source bench family and ground contact. The pool fragment had an occluded support.
+import shutil,hashlib
+shutil.copyfile(folder/'bench_front_up.png',folder/'bench_pool.png')
+specs={a['id']:a for a in d['assets']}
+for name in ['bench_front_down','bench_front_up','bench_back_down','bench_back_up','bench_pool']:
+ a=np.array(Image.open(folder/(name+'.png')).convert('RGBA'));rgb=a[:,:,:3].astype(float);a[(rgb[:,:,1]>rgb[:,:,0]*1.07)&(rgb[:,:,1]>rgb[:,:,2]*1.1),3]=0
+ yy,xx=np.where(a[:,:,3]>0);sole=int(yy.max())+1;out=np.zeros((sole+4,a.shape[1],4),np.uint8);out[:sole]=a[:sole];Image.fromarray(out).save(folder/(name+'.png'));sp=specs[name];sp['size']=[a.shape[1],sole+4];sp['anchor']=[30 if name=='bench_pool' else sp['anchor'][0],sole];sp['anchorContract']='FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER';sp['sha256']=hashlib.sha256((folder/(name+'.png')).read_bytes()).hexdigest()
+ if name=='bench_pool':sp['sourceParent']='bench_front_up';sp['status']='SOURCE_CLEAR_SAME_FACING_REUSE'
+for scene in d['scenes'].values():
+ for prop in scene['props']:
+  if prop['asset'].startswith('bench_'):sp=specs[prop['asset']];prop['anchor']=sp['anchor'];prop['nativeSize']=sp['size']
+for p in [folder/'layout.json',src/'layout.json']:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

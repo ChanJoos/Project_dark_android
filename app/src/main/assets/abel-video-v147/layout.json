@@ -806,14 +806,19 @@
       "mode": "wood",
       "anchor": [
         29,
-        54
+        56
       ],
       "size": [
         57,
-        58
+        60
       ],
       "status": "SOURCE_VISIBLE",
-      "sha256": "81819d246c827b549abb708581c569f3f355d8037e48746cea0c1583c8fa7ee7"
+      "sha256": "63445645cdcc513d0a01fe7e0a9157c26ce22aae445ef9a5643d7092acd51e75",
+      "nativeCropSize": [
+        57,
+        58
+      ],
+      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
     },
     {
       "id": "bench_front_up",
@@ -857,14 +862,19 @@
       "mode": "wood",
       "anchor": [
         30,
-        57
+        61
       ],
       "size": [
         62,
-        61
+        65
       ],
       "status": "SOURCE_VISIBLE",
-      "sha256": "564723eda2a47ca223043711bde33e46a9a49e5b86db7f3292c7ad2072170bb0"
+      "sha256": "9bc97c278a0475ad6c26b32ef7afe1155f78e704824ceca35edafc9b679c8acf",
+      "nativeCropSize": [
+        62,
+        61
+      ],
+      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
     },
     {
       "id": "bench_back_up",
@@ -908,14 +918,19 @@
       "mode": "wood",
       "anchor": [
         31,
-        60
+        55
       ],
       "size": [
         62,
-        63
+        59
       ],
       "status": "SOURCE_VISIBLE",
-      "sha256": "c660e4438f400eaa912dedb2aef2dfda1b6fda9ca3aae1c468320005beb74bde"
+      "sha256": "27aa7bb13478471c32cd56bf47617a92adaf97a8e7dcc8581df569cecd537963",
+      "nativeCropSize": [
+        62,
+        63
+      ],
+      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
     },
     {
       "id": "bench_back_down",
@@ -959,10 +974,15 @@
       ],
       "size": [
         60,
-        53
+        52
       ],
       "status": "SOURCE_VISIBLE",
-      "sha256": "400d436a152dfed0555a339d005a368b811530933fc7ba09c10ede56e781b731"
+      "sha256": "378a3cabfd415dc730b36d69c33d4af34f2c97b93e7c2c3a3cd8ea52d43accd6",
+      "nativeCropSize": [
+        60,
+        53
+      ],
+      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
     },
     {
       "id": "signpost",
@@ -2219,7 +2239,7 @@
     },
     {
       "id": "bench_pool",
-      "sourceFrame": 28,
+      "sourceFrame": 54,
       "box": [
         334,
         318,
@@ -2253,14 +2273,22 @@
         ]
       ],
       "anchor": [
-        27,
-        51
+        30,
+        61
       ],
       "size": [
-        54,
-        54
+        62,
+        65
       ],
-      "status": "SOURCE_VISIBLE"
+      "status": "SOURCE_CLEAR_SAME_FACING_REUSE",
+      "sourceParent": "bench_front_up",
+      "notes": "Replaces tree-occluded fragment with complete matching source bench; no fabricated support pixels.",
+      "nativeCropSize": [
+        62,
+        61
+      ],
+      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER",
+      "sha256": "9bc97c278a0475ad6c26b32ef7afe1155f78e704824ceca35edafc9b679c8acf"
     },
     {
       "id": "lamp_pool",
@@ -2399,6 +2427,108 @@
         46
       ],
       "status": "SOURCE_VISIBLE"
+    },
+    {
+      "id": "lamp_main",
+      "sourceFrame": 5,
+      "box": [
+        353,
+        46,
+        380,
+        176
+      ],
+      "polygon": [
+        [
+          11,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          20,
+          13
+        ],
+        [
+          24,
+          22
+        ],
+        [
+          19,
+          29
+        ],
+        [
+          16,
+          35
+        ],
+        [
+          16,
+          114
+        ],
+        [
+          25,
+          123
+        ],
+        [
+          26,
+          126
+        ],
+        [
+          20,
+          129
+        ],
+        [
+          7,
+          129
+        ],
+        [
+          0,
+          126
+        ],
+        [
+          2,
+          122
+        ],
+        [
+          10,
+          114
+        ],
+        [
+          10,
+          35
+        ],
+        [
+          5,
+          29
+        ],
+        [
+          2,
+          22
+        ],
+        [
+          6,
+          13
+        ],
+        [
+          11,
+          8
+        ]
+      ],
+      "anchor": [
+        13,
+        129
+      ],
+      "size": [
+        27,
+        130
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "cb30f3f6ff067f003bc33acbf82e7ad7128f0db2cec0de362ddad2ef71d99645"
     }
   ],
   "views": [
@@ -2895,6 +3025,25 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            25.49,
+            357.72
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
           "asset": "tree_slender",
           "scene": "main",
           "sourceWorld": [
@@ -3142,6 +3291,25 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -562.5,
+            708.45
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 13,
+          "matchError": 0.03211371973156929,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
           "asset": "tree_slender",
           "scene": "main",
           "sourceWorld": [
@@ -3180,22 +3348,22 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "lamp",
+          "asset": "lamp_main",
           "scene": "main",
           "sourceWorld": [
-            -755.51,
-            799.34
+            -758.51,
+            806.57
           ],
           "anchor": [
             13,
-            119
+            129
           ],
           "nativeSize": [
-            23,
-            120
+            27,
+            130
           ],
-          "sourceFrame": 12,
-          "matchError": 0.046796,
+          "sourceFrame": 14,
+          "matchError": 0.05041012167930603,
           "evidence": "SOURCE_VISIBLE"
         },
         {
@@ -3237,6 +3405,44 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -926.5,
+            890.78
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 16,
+          "matchError": 0.01875762641429901,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -1150.5,
+            890.78
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 16,
+          "matchError": 0.03152579814195633,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
           "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
@@ -3272,6 +3478,25 @@
           ],
           "sourceFrame": 16,
           "matchError": 0.032184,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -954.52,
+            988.89
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 17,
+          "matchError": 0.04125644266605377,
           "evidence": "SOURCE_VISIBLE"
         },
         {
@@ -3405,6 +3630,25 @@
           ],
           "sourceFrame": 21,
           "matchError": 0.016304,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            1313.0,
+            1086.0
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.023572126403450966,
           "evidence": "SOURCE_VISIBLE"
         },
         {
@@ -3734,7 +3978,7 @@
           ],
           "nativeSize": [
             60,
-            53
+            52
           ],
           "sourceFrame": 45,
           "matchError": 0.0,
@@ -3753,7 +3997,7 @@
           ],
           "nativeSize": [
             60,
-            53
+            52
           ],
           "sourceFrame": 46,
           "matchError": 0.00647,
@@ -3768,11 +4012,11 @@
           ],
           "anchor": [
             29,
-            54
+            56
           ],
           "nativeSize": [
             57,
-            58
+            60
           ],
           "sourceFrame": 46,
           "matchError": 0.0,
@@ -3806,11 +4050,11 @@
           ],
           "anchor": [
             29,
-            54
+            56
           ],
           "nativeSize": [
             57,
-            58
+            60
           ],
           "sourceFrame": 47,
           "matchError": 0.046315,
@@ -4053,11 +4297,11 @@
           ],
           "anchor": [
             29,
-            54
+            56
           ],
           "nativeSize": [
             57,
-            58
+            60
           ],
           "sourceFrame": 38,
           "matchError": 0.005081,
@@ -4262,11 +4506,11 @@
           ],
           "anchor": [
             31,
-            60
+            55
           ],
           "nativeSize": [
             62,
-            63
+            59
           ],
           "sourceFrame": 46,
           "matchError": 0.0,
@@ -4300,11 +4544,11 @@
           ],
           "anchor": [
             29,
-            54
+            56
           ],
           "nativeSize": [
             57,
-            58
+            60
           ],
           "sourceFrame": 54,
           "matchError": 0.003442,
@@ -4319,11 +4563,11 @@
           ],
           "anchor": [
             29,
-            54
+            56
           ],
           "nativeSize": [
             57,
-            58
+            60
           ],
           "sourceFrame": 39,
           "matchError": 0.004272,
@@ -4357,11 +4601,11 @@
           ],
           "anchor": [
             30,
-            57
+            61
           ],
           "nativeSize": [
             62,
-            61
+            65
           ],
           "sourceFrame": 54,
           "matchError": 0.004898,
@@ -4376,11 +4620,11 @@
           ],
           "anchor": [
             30,
-            57
+            61
           ],
           "nativeSize": [
             62,
-            61
+            65
           ],
           "sourceFrame": 36,
           "matchError": 0.049927,
@@ -4414,11 +4658,11 @@
           ],
           "anchor": [
             29,
-            54
+            56
           ],
           "nativeSize": [
             57,
-            58
+            60
           ],
           "sourceFrame": 54,
           "matchError": 0.048436,
@@ -4563,11 +4807,11 @@
           ],
           "anchor": [
             30,
-            57
+            61
           ],
           "nativeSize": [
             62,
-            61
+            65
           ],
           "sourceFrame": 54,
           "matchError": 0.0,
@@ -4654,15 +4898,15 @@
             1224.01
           ],
           "anchor": [
-            27,
-            51
+            30,
+            61
           ],
           "nativeSize": [
-            54,
-            54
+            62,
+            65
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_CLEAR_SAME_FACING_REUSE"
         },
         {
           "asset": "tree_slender",

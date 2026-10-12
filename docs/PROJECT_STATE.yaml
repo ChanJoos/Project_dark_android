@@ -1,3 +1,16 @@
+abel_video_v147:
+  active_branch: codex/abel-coast-v139
+  first_media_save: 9eae03fecc650153ca2c0eec7642007f041ac09d
+  publication: EXPLICITLY_APPROVED_20261013_PUBLISHED
+  status: BENCH_NPC_DOOR_REPAIR_NATIVE_PENDING
+  npc_profiles: 28
+  interiors: 5
+  observed_main_cells: 2029
+  observed_east_cells: 1692
+  source_full_map: UNKNOWN
+  phone_visual: PENDING
+  handoff: docs/ABEL_VIDEO_V147.md
+
 abel_visual_v146:
   owner: Director_single_editor
   active_branch: codex/abel-coast-v139

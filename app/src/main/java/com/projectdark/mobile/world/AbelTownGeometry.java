@@ -22,7 +22,14 @@ public final class AbelTownGeometry {
   boolean occupies(int a,int b){return a>=u&&a<u+du&&b>=v&&b<v+dv&&!(a==prop.u&&b>=prop.v-1);}
  }
  public static final List<Building> BUILDINGS;
- static {List<Prop> p=new ArrayList<>();for(Prop a:PROPS)if(a.asset.startsWith("building_"))p.add(a);p.sort(Comparator.comparingDouble(a->a.y));String[] ids={"abel_church","abel_reagent","abel_bank","abel_equipment","abel_inn"};String[] rooms={"abel_interior_church","abel_interior_reagent","abel_interior_bank","abel_interior_equipment","abel_interior_inn"};List<Building> b=new ArrayList<>();for(int i=0;i<Math.min(ids.length,p.size());i++)b.add(new Building(ids[i],rooms[i],p.get(i)));BUILDINGS=Collections.unmodifiableList(b);}
+ private static Prop facade(String asset,float sx,float sy){Prop best=null;float dist=Float.MAX_VALUE;for(Prop p:PROPS)if(p.asset.equals(asset)){float x=(p.x-2560)/AbelVideoLayout.SCALE,y=(p.y-64)/AbelVideoLayout.SCALE,d=(x-sx)*(x-sx)+(y-sy)*(y-sy);if(d<dist){dist=d;best=p;}}if(best==null||dist>36)throw new IllegalStateException("Missing registered service facade "+asset);return best;}
+ static {BUILDINGS=Collections.unmodifiableList(Arrays.asList(
+ new Building("abel_church","abel_interior_church",facade("building_two_storey",181.48f,314.74f)),
+ new Building("abel_reagent","abel_interior_reagent",facade("building_awning_corner",-74.51f,404.72f)),
+ new Building("abel_bank","abel_interior_bank",facade("building_two_storey",461.5f,454.75f)),
+ new Building("abel_equipment","abel_interior_equipment",facade("building_awning_long",-547.51f,1030.57f)),
+ new Building("abel_inn","abel_interior_inn",facade("building_awning_corner",1353f,1007f))));}
+
  public static Building forInterior(String id){for(Building b:BUILDINGS)if(Objects.equals(id,b.interior))return b;return null;}
  public static Building doorAt(float px,float py){for(Building b:BUILDINGS)if(Math.hypot(px-b.doorX(),py-b.doorY())<12)return b;return null;}
  public static boolean pool(int u,int v){return tile(EAST_ID,u,v)==2;}
@@ -34,7 +41,7 @@ public final class AbelTownGeometry {
  public static boolean blocked(int u,int v){return blocked(ID,u,v);}
  public static boolean blocked(String id,int u,int v){if(u<1||v<1||u>=SIZE-1||v>=SIZE-1)return true;if(ID.equals(id))for(Building b:BUILDINGS)if(u==b.prop.u&&v>=b.prop.v-1&&v<=b.prop.v+2)return false;int kind=tile(id,u,v);if(kind==2||kind==4||kind==5)return true;
   if(ID.equals(id))for(Building b:BUILDINGS)if(b.occupies(u,v))return true;
-  for(Prop p:props(id))if(!p.asset.startsWith("building_")&&(p.asset.startsWith("tree_")||p.asset.startsWith("bench_")||p.asset.equals("lamp"))&&p.u==u&&p.v==v)return true;
+  for(Prop p:props(id))if(!p.asset.startsWith("building_")&&(p.asset.startsWith("tree_")||p.asset.startsWith("bench_")||p.asset.startsWith("lamp"))&&p.u==u&&p.v==v)return true;
   return false;
  }
  public static List<RectF> obstacles(){return obstacles(ID);}

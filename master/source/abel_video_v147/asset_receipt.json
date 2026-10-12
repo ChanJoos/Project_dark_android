@@ -2,11 +2,11 @@
   "sourceSha256": "0ce85617ea9bb94194e4cca0d7bb147fdbdd044c395f3f3aaf1fea04bf25816b",
   "assets": {
     "banner.png": "23a7cf7bc9269a941b29406000d040e7f8587039a10121060a08e7b4a6415244",
-    "bench_back_down.png": "400d436a152dfed0555a339d005a368b811530933fc7ba09c10ede56e781b731",
-    "bench_back_up.png": "c660e4438f400eaa912dedb2aef2dfda1b6fda9ca3aae1c468320005beb74bde",
-    "bench_front_down.png": "81819d246c827b549abb708581c569f3f355d8037e48746cea0c1583c8fa7ee7",
-    "bench_front_up.png": "564723eda2a47ca223043711bde33e46a9a49e5b86db7f3292c7ad2072170bb0",
-    "bench_pool.png": "dfbe0455488521385b388817eedf5ee22259342b6005144a0e84057e9aa89aa4",
+    "bench_back_down.png": "378a3cabfd415dc730b36d69c33d4af34f2c97b93e7c2c3a3cd8ea52d43accd6",
+    "bench_back_up.png": "27aa7bb13478471c32cd56bf47617a92adaf97a8e7dcc8581df569cecd537963",
+    "bench_front_down.png": "63445645cdcc513d0a01fe7e0a9157c26ce22aae445ef9a5643d7092acd51e75",
+    "bench_front_up.png": "9bc97c278a0475ad6c26b32ef7afe1155f78e704824ceca35edafc9b679c8acf",
+    "bench_pool.png": "9bc97c278a0475ad6c26b32ef7afe1155f78e704824ceca35edafc9b679c8acf",
     "building_awning_corner.png": "291d76ef75b27bd07cc965f5703acc6c12c3e8bcb5ba98b4201f89ff900490e7",
     "building_awning_long.png": "7c577a85916839092fd3dcfb6f9ba58b2e5d56f8af6fd698c03a53d609781693",
     "building_two_storey.png": "e62f5ecdc4e1e979d822503c08bdc51198b6ca89215a7e7d20ae6b5a6bf0886e",
@@ -34,6 +34,7 @@
     "inn_table_bottles.png": "e45b21c26629f56bcf8ed0b044fbc440298ede1bdc381f6d07ffbbf792f98b81",
     "inn_table_mugs.png": "d5ea2f5ddb25b879bb5798a038b85cd653aa5e0ef2ca2ed65c1385db5f395106",
     "lamp.png": "4ca3718420598bcf8805146c3d12b8c4f2953a2866ab2b6232332538fad3593e",
+    "lamp_main.png": "cb30f3f6ff067f003bc33acbf82e7ad7128f0db2cec0de362ddad2ef71d99645",
     "lamp_pool.png": "6af4beabe44a158f092b03e97fe65595065d70765cbef4d41bb363fe6f3eed14",
     "pool_rail_down.png": "3196abf80c8e4035221ef09e8899aad8ae8379609b3ed2bcdb1cc4d6b9bad223",
     "quay_wall_down.png": "4708572e1d7f7b86b2cc10a529c26e663246573bd83fcf522ab08605b334fb91",
@@ -54,7 +55,7 @@
     "tree_broadleaf.png": "f4f366ff07dd923a62c71e0c062ef522db38f745ec9dd2d1a883a84655bfd891",
     "tree_slender.png": "49bef93ad096e10c3cfb3db29462b4345b2c4567f552306671024730ec225b04"
   },
-  "assetCount": 52,
+  "assetCount": 53,
   "propCounts": {
     "main": 41,
     "east": 60,
@@ -64,6 +65,8 @@
   "androidNative": "NOT_RUN",
   "apk": "NOT_BUILT",
   "userVisual": "PENDING",
-  "remoteMedia": "BLOCKED_BY_AUTO_REVIEW",
-  "scope": "Source-visible crops, registered geometry; hidden shapes, original service identities/topology remain unresolved; plain-floor extensions/service joins are ADAPTED."
+  "remoteMedia": "PUBLISHED_USER_EXPLICIT_APPROVAL_20261013",
+  "scope": "Source-visible crops, registered geometry; hidden shapes, original service identities/topology remain unresolved; plain-floor extensions/service joins are ADAPTED.",
+  "npcProfiles": 28,
+  "nativeBenchContact": "PENDING_CURRENT_CI"
 }

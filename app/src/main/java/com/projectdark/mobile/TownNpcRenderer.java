@@ -7,5 +7,5 @@ final class TownNpcRenderer {
  TownNpcRenderer(){actors=new NpcActorRenderer();}
  TownNpcRenderer(android.content.Context c){actors=new NpcActorRenderer(c);}
  void draw(Canvas c,TownInteriorDef d,float x,float y){draw(c,d,x,y,CharacterRenderer.Direction.SW);}
- void draw(Canvas c,TownInteriorDef d,float x,float y,CharacterRenderer.Direction direction){actors.draw(c,NpcIdentity.interiorKey(d.kind.name()),x,y,direction,CharacterRenderer.State.IDLE,0);}
+ void draw(Canvas c,TownInteriorDef d,float x,float y,CharacterRenderer.Direction direction){actors.draw(c,d.npcId,x,y,direction,CharacterRenderer.State.IDLE,0);}
 }

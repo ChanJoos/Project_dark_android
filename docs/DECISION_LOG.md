@@ -1,3 +1,7 @@
+## V147 user audit —2026-10-13
+
+52 media assets and runtime uploaded first in9eae03f. Bench contact/complete source support, independent Abel NPC identities, recorded inn facade,5 functional rooms and legal arrivals/gates corrected. Source map remains partial; source footprint2029/1692 cells, original full extent unknown. Exact current native/build evidence PENDING. Acceptance and continuation: docs/ABEL_VIDEO_V147.md.
+
 ## 2026-10-12 — V146 entry verification follows restored town route
 
 Noah preview enters MAP_ABEL_TOWN before MAP_ABEL_COAST. Retain the restored town route; update the stale coast-only expectation and verify actual town gate travel with no level/EXP/D04 grants. No runtime balance/source-art change. Exact candidate receipt: master/changes/V146_BUILD_RUNTIME_RECEIPT.json; user phone/visual acceptance pending.

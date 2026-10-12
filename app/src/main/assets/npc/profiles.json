@@ -181,6 +181,60 @@
       "outfit": "mu0000202,mh008,ml243",
       "weapon": "mw026",
       "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+    },
+    {
+      "id": "abel_town_travel",
+      "name": "Kevin",
+      "rank": 21,
+      "role": "밀레스 이동",
+      "outfit": "mu0000102,mh006,ml243",
+      "weapon": null,
+      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+    },
+    {
+      "id": "abel_interior_reagent",
+      "name": "Richard",
+      "rank": 7,
+      "role": "아벨 시약상",
+      "outfit": "mu0000117,mh007,ml255",
+      "weapon": "mw024",
+      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+    },
+    {
+      "id": "abel_interior_equipment",
+      "name": "Andrew",
+      "rank": 17,
+      "role": "아벨 장비상",
+      "outfit": "mu0000055,mh008,ml243",
+      "weapon": "mw015",
+      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+    },
+    {
+      "id": "abel_interior_bank",
+      "name": "Mark",
+      "rank": 15,
+      "role": "아벨 은행원",
+      "outfit": "mu0000202,mh010,ml240",
+      "weapon": null,
+      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+    },
+    {
+      "id": "abel_interior_church",
+      "name": "Edward",
+      "rank": 28,
+      "role": "아벨 사제",
+      "outfit": "mu0000210,mh132,ml255",
+      "weapon": "mw026",
+      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+    },
+    {
+      "id": "abel_interior_inn",
+      "name": "George",
+      "rank": 27,
+      "role": "아벨 여관 주인",
+      "outfit": "mu0000025,mh009,ml240",
+      "weapon": null,
+      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
     }
   ]
 }
