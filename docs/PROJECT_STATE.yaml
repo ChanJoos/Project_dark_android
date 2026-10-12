@@ -1,6 +1,12 @@
 abel_single_v149:
-  status: IMPLEMENTED_NATIVE_BUILD_PENDING
+  status: BUILD_NATIVE_VERIFIED_PHONE_PENDING
   device_report: V148_USER_REPORTED_FAILED
+  runtime_source_sha: f061adbc6da964a13a2d004084e1f269bbc6368f
+  focused_run: 38321606252
+  unique_tests: 120
+  suites: 23
+  apk_artifact: 11779331257
+  evidence: master/changes/V149_BUILD_RUNTIME_RECEIPT.json
   runtime_map: MAP_ABEL_TOWN
   old_east_map: SAVE_ALIAS_ONLY
   forest_connection: REMOVED

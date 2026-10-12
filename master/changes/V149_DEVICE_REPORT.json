@@ -20,5 +20,6 @@
     "Generic gate arrival near facades rather than a dedicated plaza"
   ],
   "repairs": "One canonical town with offset source districts and landscaped bounded joins, logical viewport/cache/visible tile ranges/no manual recycle, .25s Abel-only steps with .2s catchup cap, isolated forest graph, plaza/harbor arrivals and legacy East migration",
-  "validation": "PENDING_EXACT_CI"
+  "validation": "V149_EXACT_NATIVE_BUILD_VERIFIED_PHYSICAL_PENDING",
+  "evidence": "master/changes/V149_BUILD_RUNTIME_RECEIPT.json"
 }

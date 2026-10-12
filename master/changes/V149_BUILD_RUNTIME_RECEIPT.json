@@ -1,0 +1,96 @@
+{
+  "version": 149,
+  "runtime_source": "f061adbc6da964a13a2d004084e1f269bbc6368f",
+  "focused_run": 38321606252,
+  "run_url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38321606252",
+  "conclusion": "success",
+  "unique_tests": 120,
+  "suites": 23,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "execution": "Robolectric NATIVE SDK34, actual GameView/phone-sized canvas and movement/save paths; not physical-phone performance",
+  "build": {
+    "sourceCommit": "f061adbc6da964a13a2d004084e1f269bbc6368f",
+    "runId": "38321606252",
+    "versionCode": 149,
+    "versionName": "1.49-abel-single-town",
+    "applicationId": "com.projectdark.mobile.v149test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "b974096a3ca87329f40ef689d788949adfde663111877a277d9b04b7b8df5c46",
+    "apkBytes": 69632022,
+    "builtSeoul": "2026-10-13T08:28:05.847110+09:00",
+    "scope": "V149 single continuous Abel town, source-visible district composition with adapted landscaped joins, logical-viewport floor chunks with zero warm rebuilds on scaled phone canvas, safe plaza/harbor arrivals and legacy East save migration; no forest gate, Milles-town NPC and Abel-coast NPC travel, retained bench and five interiors; actual movement/restart/cache regression checks. Original whole-map extent, clipped facades, role identities and unseen interiors remain partial/ADAPTED; phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "performance": {
+    "physicalCanvas": [
+      2340,
+      1080
+    ],
+    "logicalViewport": [
+      1170,
+      540
+    ],
+    "coldBuilds": 15,
+    "warmRebuilds": 0,
+    "warmP95Ms": 3.49442,
+    "warmMaxMs": 3.733353,
+    "scope": "Robolectric native CPU; not handset FPS"
+  },
+  "scene": {
+    "runtime_map": "MAP_ABEL_TOWN",
+    "old_east_id": "SAVE_ALIAS_ONLY",
+    "props": 135,
+    "bounded_active_cells": 6129,
+    "plaza_entry": [
+      22,
+      18
+    ],
+    "harbor_return": [
+      78,
+      40
+    ],
+    "coast_npc": [
+      81,
+      39
+    ],
+    "tile_step_seconds_Abel": 0.25,
+    "other_maps_step_seconds": 0.6,
+    "original_join": "UNKNOWN_ADAPTED_COMPOSITION"
+  },
+  "visual_review": "Exact latest whole single-town overview, actual2340x1080 GameView, unobscured plaza avatar, whole service facade proxy, harbor return, coast dialogue and retained bench/inn frames inspected; user acceptance pending",
+  "packaged_bytes_verified": "All53 PNGs+all Abel pack metadata and29-profile NPC receipt byte-match intended source; APK/ZIP hash/CRC and all three artifact digests independently verified",
+  "artifacts": [
+    {
+      "id": 11778428476,
+      "kind": "preview",
+      "digest": "aa29ed87932cc2ab421d0c91d3fe5a8f06f49d354a971c514eb6cfb70413051d"
+    },
+    {
+      "id": 11779351187,
+      "kind": "native",
+      "digest": "50228f22708bc474a6fab18ea16618c4fd741c92b632e5818b40d1a21c2ee822"
+    },
+    {
+      "id": 11779331257,
+      "kind": "apk",
+      "digest": "29ed830738147bc3f480a1fa4cb6ee5362f436083fc9aba78827b8e65970d8ea"
+    }
+  ],
+  "broader_android_runs": [
+    38321609120,
+    38321606193
+  ],
+  "broader_android_status": "IN_PROGRESS_UNCERTIFIED_AT_RECEIPT",
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "integration": "draft PR195, unmerged",
+  "remaining_original_scope": [
+    "Whole original extent unknown; district shift/connector/outskirts landscaping ADAPTED",
+    "Equipment service uses whole observed facade family in place of cut long fragment; source observations retained unchanged",
+    "Other4 authored interiors/service joins and hidden inn structure ADAPTED"
+  ]
+}
