@@ -1,0 +1,511 @@
+{
+  "evidence": "SOURCE_CROPS_AND_GENERATED_REFERENCE_RECONSTRUCTION",
+  "generated_buildings": "Based on observed miniature roofs/walls; exact original silhouettes and name joins unresolved",
+  "original_complete": false,
+  "fountain_variant": "V/NEXON_HOSTED_PLAYER_CAPTURE_2025_HEART_EVENT_VARIANT; no claim to timeless original fountain",
+  "hashes": {
+    "bank.png": "33fa549b2f84394eea24c373a311d647ea0c11f3f18433f903ca5fce9a8fc273",
+    "bench_ne.png": "f61392db0a9f4f298e9cfcbf4f84c868ddf56802afba037ea5040f070537e927",
+    "bench_nw.png": "29d2133115ea4b043b2d609d5f6070e94d658bf7f710c2b286c17f70ff962976",
+    "bench_se.png": "32bdbeda3d171b63079bbbceee9d9c6599a52b541324f718d933f78cfdb779c5",
+    "bench_sw.png": "3d64527a75e573ca988b516ae67db96cd9e36e30c36c3789f14d142bdf8929c5",
+    "church.png": "410d06d6ccc2db0474234922994ef32de7b9663b6fe06722a410483193388715",
+    "cobble.png": "c0533dbd45e5886e3a24eed5b94382c2650ff425853b8999341c61085421101d",
+    "cobble_material.png": "7cb7d7a54d6a97218f1d9e6f41b54d8c3f217ab6ce54511cd19ce95c84322bbd",
+    "fence.png": "1169e5c95f0417fa9fb98592eb3390eaabdef247e1c3387a59432cc3d7d15bbc",
+    "forge.png": "4ce5026c8203b19a08cd3c1f9fcb48af0280718e042edac04a6afcc2311dc9e0",
+    "fountain.png": "ac400d892eba5f14a51075f6b1db2fd6b2fc7de6718d7ef7fd62d72016ac9435",
+    "grass.png": "1e6a212f1136dfa414e1428417821e0842c16bf9dcda7ef720da2c42b23f609d",
+    "grass_material.png": "21fa8430cbe778c51179b36962dbcc53d8897103b39489ffb85dfcca3878390c",
+    "house.png": "8ee6c81b2d44abd0ef7784e439550582dd4ef46b9e42f197b4902651c7c4e501",
+    "inn.png": "49a531d9934ec4504a1662f926db78b362a30b40a9d6d1969706d220f6ff816f",
+    "lamp.png": "16388735c7b6df5afe997fadfbd65814d1c63a089ae45c5eac943d4ad978aa2b",
+    "notice.png": "953fef460afcdbbf212494948421694b9aa2ca52cafb809e14fcc23fa30efd29",
+    "stone.png": "c74fca0f99739ecb0dbb6120372f7d08c10ef5f13c80b6fa121f17c321825aff",
+    "stone_material.png": "516038003984b58c73d9788eef25073f3c355c8cd6f3edb073afd0b156a623d8",
+    "tree.png": "7d84b4c9a85b23aeb704b826e09458a4ed8574f3ec29019e4c5695f53fbc3375",
+    "water.png": "7776e6c0a2d80733d63ff383ddf2ccdabec4a9698601306490048b3db0e4c4e0",
+    "water_material.png": "796c6fc0e8550368621a8d61b8fec9ed3ae463b69d2e189b282904204cc8f8bc"
+  },
+  "revision": "V145_SOURCE_SCALE_AND_FOUR_BENCH_VIEWS",
+  "bench_views": [
+    {
+      "asset": "bench_se",
+      "source": "abel_square.png",
+      "box": [
+        470,
+        178,
+        577,
+        271
+      ],
+      "outline": [
+        [
+          4,
+          62
+        ],
+        [
+          12,
+          60
+        ],
+        [
+          9,
+          56
+        ],
+        [
+          20,
+          58
+        ],
+        [
+          28,
+          40
+        ],
+        [
+          87,
+          9
+        ],
+        [
+          98,
+          3
+        ],
+        [
+          105,
+          6
+        ],
+        [
+          102,
+          19
+        ],
+        [
+          84,
+          55
+        ],
+        [
+          82,
+          72
+        ],
+        [
+          65,
+          74
+        ],
+        [
+          58,
+          68
+        ],
+        [
+          39,
+          76
+        ],
+        [
+          39,
+          86
+        ],
+        [
+          26,
+          90
+        ],
+        [
+          18,
+          85
+        ],
+        [
+          1,
+          81
+        ]
+      ],
+      "source_size": [
+        107,
+        93
+      ],
+      "native_size": [
+        54,
+        46
+      ],
+      "matting": "polygon plus grass/cool-stone exclusion; original RGB unchanged",
+      "facing": "SE",
+      "mirror": false
+    },
+    {
+      "asset": "bench_sw",
+      "source": "abel_square.png",
+      "box": [
+        1030,
+        178,
+        1145,
+        277
+      ],
+      "outline": [
+        [
+          7,
+          6
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          66,
+          33
+        ],
+        [
+          79,
+          62
+        ],
+        [
+          89,
+          55
+        ],
+        [
+          90,
+          48
+        ],
+        [
+          99,
+          46
+        ],
+        [
+          106,
+          51
+        ],
+        [
+          108,
+          63
+        ],
+        [
+          104,
+          70
+        ],
+        [
+          114,
+          86
+        ],
+        [
+          103,
+          89
+        ],
+        [
+          98,
+          97
+        ],
+        [
+          88,
+          93
+        ],
+        [
+          88,
+          82
+        ],
+        [
+          25,
+          61
+        ],
+        [
+          20,
+          67
+        ],
+        [
+          6,
+          59
+        ],
+        [
+          1,
+          46
+        ],
+        [
+          13,
+          42
+        ]
+      ],
+      "source_size": [
+        115,
+        99
+      ],
+      "native_size": [
+        58,
+        50
+      ],
+      "matting": "polygon plus grass/cool-stone exclusion; original RGB unchanged",
+      "facing": "SW",
+      "mirror": false
+    },
+    {
+      "asset": "bench_ne",
+      "source": "abel_square.png",
+      "box": [
+        460,
+        440,
+        580,
+        556
+      ],
+      "outline": [
+        [
+          5,
+          49
+        ],
+        [
+          18,
+          48
+        ],
+        [
+          21,
+          24
+        ],
+        [
+          29,
+          8
+        ],
+        [
+          38,
+          3
+        ],
+        [
+          101,
+          36
+        ],
+        [
+          107,
+          51
+        ],
+        [
+          101,
+          68
+        ],
+        [
+          106,
+          78
+        ],
+        [
+          109,
+          84
+        ],
+        [
+          99,
+          94
+        ],
+        [
+          96,
+          111
+        ],
+        [
+          88,
+          115
+        ],
+        [
+          78,
+          111
+        ],
+        [
+          85,
+          96
+        ],
+        [
+          23,
+          66
+        ],
+        [
+          21,
+          83
+        ],
+        [
+          8,
+          84
+        ],
+        [
+          6,
+          77
+        ],
+        [
+          14,
+          65
+        ],
+        [
+          2,
+          61
+        ]
+      ],
+      "source_size": [
+        120,
+        116
+      ],
+      "native_size": [
+        60,
+        58
+      ],
+      "matting": "polygon plus grass/cool-stone exclusion; original RGB unchanged",
+      "facing": "NE",
+      "mirror": false
+    },
+    {
+      "asset": "bench_nw",
+      "source": "abel_square.png",
+      "box": [
+        1038,
+        438,
+        1155,
+        552
+      ],
+      "outline": [
+        [
+          5,
+          43
+        ],
+        [
+          9,
+          38
+        ],
+        [
+          16,
+          44
+        ],
+        [
+          70,
+          17
+        ],
+        [
+          75,
+          13
+        ],
+        [
+          79,
+          15
+        ],
+        [
+          88,
+          41
+        ],
+        [
+          100,
+          46
+        ],
+        [
+          101,
+          64
+        ],
+        [
+          110,
+          83
+        ],
+        [
+          114,
+          88
+        ],
+        [
+          108,
+          93
+        ],
+        [
+          102,
+          93
+        ],
+        [
+          97,
+          82
+        ],
+        [
+          42,
+          104
+        ],
+        [
+          36,
+          110
+        ],
+        [
+          26,
+          112
+        ],
+        [
+          18,
+          109
+        ],
+        [
+          14,
+          102
+        ],
+        [
+          18,
+          95
+        ],
+        [
+          8,
+          80
+        ],
+        [
+          3,
+          66
+        ],
+        [
+          4,
+          46
+        ]
+      ],
+      "source_size": [
+        117,
+        114
+      ],
+      "native_size": [
+        58,
+        57
+      ],
+      "matting": "polygon plus grass/cool-stone exclusion; original RGB unchanged",
+      "facing": "NW",
+      "mirror": false
+    }
+  ],
+  "materials": {
+    "stone_material": {
+      "source_box": [
+        444,
+        43,
+        476,
+        75
+      ],
+      "native_size": [
+        16,
+        16
+      ],
+      "sampling": "nearest source crop",
+      "tiling": "REPEAT, no mirrored symmetry"
+    },
+    "cobble_material": {
+      "source_box": [
+        968,
+        837,
+        1000,
+        869
+      ],
+      "native_size": [
+        16,
+        16
+      ],
+      "sampling": "nearest source crop",
+      "tiling": "REPEAT, no mirrored symmetry"
+    },
+    "water_material": {
+      "source_box": [
+        263,
+        637,
+        327,
+        669
+      ],
+      "native_size": [
+        32,
+        16
+      ],
+      "sampling": "nearest source crop",
+      "tiling": "REPEAT, no mirrored symmetry"
+    },
+    "grass_material": {
+      "source_box": [
+        628,
+        534,
+        660,
+        550
+      ],
+      "native_size": [
+        64,
+        64
+      ],
+      "sampling": "seed145 original-RGB scatter",
+      "tiling": "REPEAT, no mirrored symmetry"
+    }
+  }
+}
