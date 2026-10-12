@@ -250,10 +250,10 @@
       "id": "tile_inn_checker",
       "sourceFrame": 26,
       "box": [
-        442,
-        246,
-        498,
-        274
+        232,
+        200,
+        288,
+        228
       ],
       "polygon": [
         [
@@ -283,7 +283,8 @@
         28
       ],
       "status": "SOURCE_VISIBLE",
-      "sha256": "88069578da4648535c6a4c75fd21552c906be836fb05f182ea15ba6009977cd3"
+      "sha256": "09b8a5c4e1f28019affc974dc0d31e4b2b4d9ac4ce9fbecc85091b0329b05d95",
+      "notes": "Verified clean observed floor; excludes captured doorway floor graphic."
     },
     {
       "id": "tree_broadleaf",
@@ -2131,7 +2132,12 @@
         38
       ],
       "status": "SOURCE_VISIBLE_PARTIAL",
-      "sha256": "686155be354b7d9ce81a71182b171adaef46f437763e1e67845a77e0aa84ed91"
+      "sha256": "4ba994783bf1816bc1b69fe98c7a8e16b89e7869d4b6073b1033e79db8442cfd",
+      "removedOverlayRows": [
+        0,
+        15
+      ],
+      "notes": "Advertisement-covered upper pixels omitted; only visible lower wooden counter remains."
     },
     {
       "id": "inn_plant_pot",

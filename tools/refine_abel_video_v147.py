@@ -53,7 +53,7 @@ for name,box,poly,anchor,mode in [
  points=[(49+28*i,296+14*i) for i in range(6)] if mode=='rail' else [tuple(np.array(box[:2])+anchor)]
  for xy in points:ps.append(dict(asset=name,scene='east',sourceWorld=(cam+xy).tolist(),anchor=anchor,nativeSize=spec['size'],sourceFrame=28,evidence=spec['status']))
 # A clean observed inn checker patch excludes table supports.
-a=np.array(Image.open(src/'reference_frames/026.png').crop((232,226,288,254)).convert('RGBA'));m=Image.new('L',(56,28));ImageDraw.Draw(m).polygon([(28,0),(55,14),(28,27),(0,14)],fill=255);a[:,:,3]=np.array(m);Image.fromarray(a).save(folder/'tile_inn_checker.png')
+a=np.array(Image.open(src/'reference_frames/026.png').crop((232,200,288,228)).convert('RGBA'));m=Image.new('L',(56,28));ImageDraw.Draw(m).polygon([(28,0),(55,14),(28,27),(0,14)],fill=255);a[:,:,3]=np.array(m);Image.fromarray(a).save(folder/'tile_inn_checker.png')
 for s in d['scenes'].values():s['props'].sort(key=lambda p:p['sourceWorld'][1])
 for p in [folder/'layout.json',src/'layout.json']:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 print('Observed basins/facade/pool details refined, clean inn checker separated')
@@ -70,3 +70,6 @@ for scene in d['scenes'].values():
  for prop in scene['props']:
   if prop['asset'].startswith('bench_'):sp=specs[prop['asset']];prop['anchor']=sp['anchor'];prop['nativeSize']=sp['size']
 for p in [folder/'layout.json',src/'layout.json']:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+
+# The observed inn counter is partial: never turn the on-video advertisement into a room prop.
+a=np.array(Image.open(folder/'inn_counter_segment.png').convert('RGBA'));a[:16,:,3]=0;Image.fromarray(a).save(folder/'inn_counter_segment.png')

@@ -19,4 +19,6 @@ Reconstruction recipes: rebuild_abel_video_v147.py → refine_abel_video_v147.py
 ## Additional keeper UI isolation
 The first72a8af1 focused native stage passed (run38291666474). Actual merchant UI review found the Abel inn still inherited a hardcoded Benjamin/Milles dialogue and tutorial mouse/turn-in branches. Those are now guarded to the original Milles room; the dialogue title reads the current keeper profile and town title. Add actual tap purchase/bank deposit/church healing/save tests and inn dialogue snapshots. Bring npc/profiles.json into exact agreement with all28 runtime profiles. Latest UI/source validation pending a new exact run; first stage passes do not certify these subsequent changes.
 
+Native visual review also rejected two copied screenshot artefacts: the inn floor patch included a doorway floor graphic, and the cropped counter still contained advertisement pixels. Replaced the floor with a clean observed checker patch, omitted16 upper counter rows, and show the selected inn exit as a mobile ground ring. New door tests walk the interior exit and tick actual GameView transition, rather than calling leave directly. Current render/build validation pending the corrected exact run.
+
 Historical handoff: docs/history/CHAT_HANDOFF_PRE_V147_20261012.md.
