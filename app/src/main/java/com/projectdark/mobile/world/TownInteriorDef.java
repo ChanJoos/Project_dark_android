@@ -19,7 +19,7 @@ public final class TownInteriorDef {
  public final List<Prop> props;
  public final int columns,rows,npcU,npcV,customerU,customerV,counterV,counterStart,counterEnd;
  private TownInteriorDef(Kind k,String id,String title,String npc,String outfit,String door){
-  kind=k;mapId=id;this.title=title;com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(com.projectdark.mobile.NpcIdentity.interiorKey(k.name()));npcName=profile.label();this.outfit=profile.outfit;doorId=door;
+  kind=k;mapId=id;this.title=title;com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(com.projectdark.mobile.NpcIdentity.interiorKey(k.name()));npcName=id.startsWith("abel_interior_")?npc:profile.label();this.outfit=profile.outfit;doorId=door;
   columns=k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
   npcU=k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
   counterV=npcV+2;customerU=npcU;customerV=counterV+1;
@@ -79,7 +79,9 @@ public final class TownInteriorDef {
   new TownInteriorDef(Kind.BANK,"milles_interior_bank","밀레스 은행","은행원","mu0000026,mh004,ml230","general_shop_door"),
   new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000015,mh003,ml230","church_door"),
   new TownInteriorDef(Kind.INN,"milles_interior_inn","밀레스 여관","메리 · 여관 주인","mu0000026,mh004,ml230","inn_door")));
- public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;return null;}
+    public static final List<TownInteriorDef> ABEL = Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.REAGENT, "abel_interior_reagent", "아벨 시약상점", "시약상", "", "abel_reagent"), new TownInteriorDef(Kind.EQUIPMENT, "abel_interior_equipment", "아벨 무기상점", "무기상", "", "abel_equipment"), new TownInteriorDef(Kind.BANK, "abel_interior_bank", "아벨 은행", "은행원", "", "abel_bank"), new TownInteriorDef(Kind.CHURCH, "abel_interior_church", "아벨 교회", "사제", "", "abel_church"), new TownInteriorDef(Kind.INN, "abel_interior_inn", "아벨 여관", "여관 주인", "", "abel_inn")));
+ public boolean isAbel(){return mapId.startsWith("abel_interior_");}
+ public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;return null;}
  public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
  private int entryU(){return kind==Kind.BANK?5:6;}

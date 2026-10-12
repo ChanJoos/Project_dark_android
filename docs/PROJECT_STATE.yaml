@@ -1,3 +1,15 @@
+abel_visual_v146:
+  owner: Director_single_editor
+  active_branch: codex/abel-coast-v139
+  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  publication: USER_EXPLICITLY_APPROVED_20261012
+  rejected_versions: [144,145]
+  recovered_assets_checkpoint: 51875a80588f45f60cc5f6f95a8ece4d0b7e0ed5
+  recovery: RECONSTRUCTED_FROM_V145_APK_NOT_EXACT_LOST_COMMIT
+  handoff: docs/ABEL_V146_RECOVERY_CHECKPOINT.md
+  physical_phone: PENDING
+  user_visual: PENDING
+
 abel_punch_travel_v143:
   owner: Director_single_editor
   active_branch: codex/abel-coast-v139
