@@ -4,7 +4,8 @@ import java.util.*;
 /** Registered source-visible geometry. Service names and unobserved joins are adaptations. */
 public final class AbelTownGeometry {
  public static final String ID="MAP_ABEL_TOWN",EAST_ID="MAP_ABEL_EAST_TOWN";
- public static final int SIZE=80;
+ public static final int SIZE=112;public static final int EAST_U=28,EAST_V=4;public static final float EAST_DX=768,EAST_DY=512;
+ public static String canonical(String id){return EAST_ID.equals(id)?ID:id;}
  public static float x(int u,int v){return 2560+(u-v)*32;}
  public static float y(int u,int v){return 64+(u+v)*16;}
  public static boolean contains(String id){return ID.equals(id)||EAST_ID.equals(id);}
@@ -12,9 +13,9 @@ public final class AbelTownGeometry {
   public final String asset;public final float x,y,width,height,anchorX,anchorY,depthY;public final int u,v;public final boolean mirror=false;
   Prop(String a,float sx,float sy,float ax,float ay,float w,float h){asset=a;x=2560+sx*AbelVideoLayout.SCALE;y=64+sy*AbelVideoLayout.SCALE;anchorX=ax*AbelVideoLayout.SCALE;anchorY=ay*AbelVideoLayout.SCALE;width=w*AbelVideoLayout.SCALE;height=h*AbelVideoLayout.SCALE;u=Math.round((sx/28+sy/14)/2);v=Math.round((sy/14-sx/28)/2);depthY=y+Math.max(0,height-anchorY);}
  }
- public static final List<Prop> PROPS=AbelVideoLayout.mainProps(),EAST_PROPS=AbelVideoLayout.eastProps();
- public static List<Prop> props(String id){return EAST_ID.equals(id)?EAST_PROPS:PROPS;}
- public static int tile(String id,int u,int v){if(u<0||v<0||u>=SIZE||v>=SIZE)return 0;return (EAST_ID.equals(id)?AbelVideoLayout.EAST_TILES:AbelVideoLayout.MAIN_TILES)[u].charAt(v)-'0';}
+ public static final List<Prop> PROPS=AbelUnifiedLayout.props(),EAST_PROPS=PROPS;
+ public static List<Prop> props(String id){return PROPS;}
+ public static int tile(String id,int u,int v){if(u<0||v<0||u>=SIZE||v>=SIZE)return 0;return AbelUnifiedLayout.TILES[u].charAt(v)-'0';}
  public static final class Building {
   public final String id,asset,title,interior;public final int u,v,du=4,dv=4;public final float width;public final Prop prop;
   Building(String id,String interior,Prop p){this.id=id;this.interior=interior;asset=p.asset;title="아벨 건물";u=p.u-1;v=p.v-3;prop=p;width=p.width;}
@@ -39,8 +40,8 @@ public final class AbelTownGeometry {
  public static boolean waterCell(int u,int v){return pool(u,v)||channel(u,v);}
  public static boolean benchCell(int u,int v){for(Prop p:PROPS)if(p.asset.startsWith("bench_")&&p.u==u&&p.v==v)return true;return false;}
  public static boolean blocked(int u,int v){return blocked(ID,u,v);}
- public static boolean blocked(String id,int u,int v){if(u<1||v<1||u>=SIZE-1||v>=SIZE-1)return true;if(ID.equals(id))for(Building b:BUILDINGS)if(u==b.prop.u&&v>=b.prop.v-1&&v<=b.prop.v+2)return false;int kind=tile(id,u,v);if(kind==2||kind==4||kind==5)return true;
-  if(ID.equals(id))for(Building b:BUILDINGS)if(b.occupies(u,v))return true;
+ public static boolean blocked(String id,int u,int v){if(u<1||v<1||u>=SIZE-1||v>=SIZE-1||AbelUnifiedLayout.ACTIVE[u].charAt(v)!='1')return true;for(Building b:BUILDINGS)if(u==b.prop.u&&v>=b.prop.v-1&&v<=b.prop.v+2)return false;int kind=tile(id,u,v);if(kind==2||kind==4||kind==5)return true;
+  for(Building b:BUILDINGS)if(b.occupies(u,v))return true;
   for(Prop p:props(id))if(!p.asset.startsWith("building_")&&(p.asset.startsWith("tree_")||p.asset.startsWith("bench_")||p.asset.startsWith("lamp"))&&p.u==u&&p.v==v)return true;
   return false;
  }

@@ -1,3 +1,13 @@
+abel_single_v149:
+  status: IMPLEMENTED_NATIVE_BUILD_PENDING
+  device_report: V148_USER_REPORTED_FAILED
+  runtime_map: MAP_ABEL_TOWN
+  old_east_map: SAVE_ALIAS_ONLY
+  forest_connection: REMOVED
+  source_join: ADAPTED
+  phone: PENDING
+  user_visual: PENDING
+
 abel_repair_v148:
   status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
   supersedes_visual: V147_USER_REJECTED

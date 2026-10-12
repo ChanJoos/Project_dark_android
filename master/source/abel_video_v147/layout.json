@@ -5824,6 +5824,2873 @@
         "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
         "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
       ]
+    },
+    "unified": {
+      "props": [
+        {
+          "asset": "building_two_storey",
+          "scene": "main",
+          "sourceWorld": [
+            181.48,
+            314.74
+          ],
+          "anchor": [
+            48,
+            235
+          ],
+          "nativeSize": [
+            210,
+            276
+          ],
+          "sourceFrame": 5,
+          "evidence": "SOURCE_VISIBLE_PARTIAL_REGISTERED_FACADE"
+        },
+        {
+          "asset": "banner",
+          "scene": "main",
+          "sourceWorld": [
+            -19.51,
+            345.72
+          ],
+          "anchor": [
+            8,
+            102
+          ],
+          "nativeSize": [
+            34,
+            101
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.043345,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            402.49,
+            356.65
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 3,
+          "matchError": 0.016856,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            25.49,
+            357.72
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            362.49,
+            385.65
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 3,
+          "matchError": 0.053282,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "building_awning_corner",
+          "scene": "main",
+          "sourceWorld": [
+            -74.51,
+            404.72
+          ],
+          "anchor": [
+            250,
+            194
+          ],
+          "nativeSize": [
+            297,
+            214
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.021265,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "garden_tree_mass",
+          "scene": "main",
+          "sourceWorld": [
+            356.5,
+            411.75
+          ],
+          "anchor": [
+            110,
+            158
+          ],
+          "nativeSize": [
+            195,
+            160
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "building_two_storey",
+          "scene": "main",
+          "sourceWorld": [
+            461.5,
+            454.75
+          ],
+          "anchor": [
+            48,
+            235
+          ],
+          "nativeSize": [
+            210,
+            276
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            -197.51,
+            497.72
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.034539,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            -212.51,
+            506.72
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            206.5,
+            566.9
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 7,
+          "matchError": 0.008459,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            -813.51,
+            638.34
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 12,
+          "matchError": 0.039563,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            38.49,
+            651.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 8,
+          "matchError": 0.010503,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            166.5,
+            651.9
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 7,
+          "matchError": 0.02907,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            262.5,
+            678.9
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 7,
+          "matchError": 0.018155,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            94.49,
+            679.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 8,
+          "matchError": 0.029175,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -717.51,
+            693.34
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 12,
+          "matchError": 0.015982,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -562.5,
+            708.45
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 13,
+          "matchError": 0.03211371973156929,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            82.49,
+            722.01
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 8,
+          "matchError": 0.050594,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            448,
+            728
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "banner",
+          "scene": "main",
+          "sourceWorld": [
+            -831.51,
+            752.57
+          ],
+          "anchor": [
+            8,
+            102
+          ],
+          "nativeSize": [
+            34,
+            101
+          ],
+          "sourceFrame": 14,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            448,
+            756
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -758.51,
+            806.57
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 14,
+          "matchError": 0.05041012167930603,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            0,
+            840
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            672,
+            840
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            0,
+            868
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            672,
+            868
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -325.51,
+            889.34
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 12,
+          "matchError": 0.014659,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -1053.5,
+            889.67
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 15,
+          "matchError": 0.021068,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -926.5,
+            890.78
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 16,
+          "matchError": 0.01875762641429901,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -1150.5,
+            890.78
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 16,
+          "matchError": 0.03152579814195633,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -1389.52,
+            945.89
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 17,
+          "matchError": 0.01537,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            896,
+            952
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            896,
+            980
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            -1289.5,
+            988.78
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 16,
+          "matchError": 0.032184,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            -954.52,
+            988.89
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 17,
+          "matchError": 0.04125644266605377,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "main",
+          "sourceWorld": [
+            1484.0,
+            995.0
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 25,
+          "matchError": 0.04455,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1679.53,
+            1004.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.008387,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "building_awning_corner",
+          "scene": "main",
+          "sourceWorld": [
+            1353.0,
+            1007.0
+          ],
+          "anchor": [
+            250,
+            194
+          ],
+          "nativeSize": [
+            297,
+            214
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "building_awning_long",
+          "scene": "main",
+          "sourceWorld": [
+            -547.51,
+            1030.57
+          ],
+          "anchor": [
+            178,
+            242
+          ],
+          "nativeSize": [
+            207,
+            258
+          ],
+          "sourceFrame": 14,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1623.53,
+            1032.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.005815,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -745.5,
+            1043.67
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 15,
+          "matchError": 0.020336,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            672,
+            1064
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1606.0,
+            1071.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.016304,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp_main",
+          "scene": "main",
+          "sourceWorld": [
+            1313.0,
+            1086.0
+          ],
+          "anchor": [
+            13,
+            129
+          ],
+          "nativeSize": [
+            27,
+            130
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.023572126403450966,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            672,
+            1092
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            1008,
+            1120
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1466.0,
+            1141.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.037136,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            1008,
+            1148
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1550.0,
+            1155.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.016485,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -969.52,
+            1155.89
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 17,
+          "matchError": 0.015775,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -325.99,
+            1170.04
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 43,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1343.53,
+            1172.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            -672,
+            1176
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "lamp",
+          "scene": "main",
+          "sourceWorld": [
+            1372.0,
+            1191.0
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.047975,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            1482.0,
+            1198.0
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.035357,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1287.53,
+            1200.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.001151,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            -672,
+            1204
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1326.0,
+            1211.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.020464,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_back_down",
+          "scene": "east",
+          "sourceWorld": [
+            337.99,
+            1211.29
+          ],
+          "anchor": [
+            57,
+            51
+          ],
+          "nativeSize": [
+            65,
+            55
+          ],
+          "sourceFrame": 45,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1231.53,
+            1228.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.001557,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_back_down",
+          "scene": "east",
+          "sourceWorld": [
+            394.0,
+            1239.42
+          ],
+          "anchor": [
+            57,
+            51
+          ],
+          "nativeSize": [
+            65,
+            55
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.00647,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1175.53,
+            1256.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.002593,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            -896,
+            1288
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            1120,
+            1288
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            -896,
+            1316
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            1120,
+            1316
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "sailing_ship",
+          "scene": "main",
+          "sourceWorld": [
+            -1500.53,
+            1322.08
+          ],
+          "anchor": [
+            195,
+            334
+          ],
+          "nativeSize": [
+            390,
+            346
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            101.0,
+            1322.42
+          ],
+          "anchor": [
+            38,
+            63
+          ],
+          "nativeSize": [
+            62,
+            67
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flower_red_clump",
+          "scene": "east",
+          "sourceWorld": [
+            -435.5,
+            1341.01
+          ],
+          "anchor": [
+            67.5,
+            38
+          ],
+          "nativeSize": [
+            135,
+            39
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            560,
+            1344
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            157.0,
+            1350.49
+          ],
+          "anchor": [
+            38,
+            63
+          ],
+          "nativeSize": [
+            62,
+            67
+          ],
+          "sourceFrame": 47,
+          "matchError": 0.046315,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            560,
+            1372
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            -1344,
+            1400
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1550.5,
+            1421.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.023974,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            -189.0,
+            1424.01
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            -1344,
+            1428
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            1738.5,
+            1430.25
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.047603,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1746.5,
+            1435.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.00548,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1522.5,
+            1435.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.024347,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            251.99,
+            1443.29
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 45,
+          "matchError": 0.02596,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1494.5,
+            1449.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.014396,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            -1008,
+            1456
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1690.5,
+            1463.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.015816,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1466.51,
+            1463.3400000000001
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.016296,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1662.5,
+            1477.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.012652,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            -1008,
+            1484
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1634.5,
+            1491.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.013177,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1410.5,
+            1491.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.013252,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1606.5,
+            1505.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.001675,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1382.5,
+            1505.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.012626,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            1027.5,
+            1505.46
+          ],
+          "anchor": [
+            38,
+            63
+          ],
+          "nativeSize": [
+            62,
+            67
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.005081,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -606.0,
+            1506.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 27,
+          "matchError": 0.00616,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "east",
+          "sourceWorld": [
+            1204.51,
+            1507.34
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.026462,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            112.0,
+            1513.42
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1354.5,
+            1519.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.01217,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1326.5,
+            1533.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.011444,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1550.5,
+            1533.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.016925,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1522.5,
+            1547.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.016034,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            1272.5,
+            1549.25
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.009813,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_back_up",
+          "scene": "east",
+          "sourceWorld": [
+            57.0,
+            1552.42
+          ],
+          "anchor": [
+            10,
+            58
+          ],
+          "nativeSize": [
+            65,
+            62
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1494.5,
+            1561.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.012849,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            605.02,
+            1574.77
+          ],
+          "anchor": [
+            38,
+            63
+          ],
+          "nativeSize": [
+            62,
+            67
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.003442,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1466.51,
+            1575.34
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            1167.51,
+            1575.51
+          ],
+          "anchor": [
+            38,
+            63
+          ],
+          "nativeSize": [
+            62,
+            67
+          ],
+          "sourceFrame": 39,
+          "matchError": 0.004272,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            -28.0,
+            1583.42
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.043696,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_front_up",
+          "scene": "east",
+          "sourceWorld": [
+            371.02,
+            1585.77
+          ],
+          "anchor": [
+            28,
+            71
+          ],
+          "nativeSize": [
+            69,
+            75
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.004898,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_front_up",
+          "scene": "east",
+          "sourceWorld": [
+            1325.5,
+            1586.25
+          ],
+          "anchor": [
+            28,
+            71
+          ],
+          "nativeSize": [
+            69,
+            75
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.049927,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -628.0,
+            1599.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            661.02,
+            1602.77
+          ],
+          "anchor": [
+            38,
+            63
+          ],
+          "nativeSize": [
+            62,
+            67
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.048436,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1410.51,
+            1603.34
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.011268,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "fountain",
+          "scene": "east",
+          "sourceWorld": [
+            -479.0,
+            1607.01
+          ],
+          "anchor": [
+            56,
+            119
+          ],
+          "nativeSize": [
+            112,
+            127
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -600.0,
+            1613.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1382.51,
+            1617.34
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.010879,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            -896,
+            1624
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -572.0,
+            1627.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1354.5,
+            1631.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.012601,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -544.0,
+            1641.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_front_up",
+          "scene": "east",
+          "sourceWorld": [
+            259.02,
+            1641.77
+          ],
+          "anchor": [
+            28,
+            71
+          ],
+          "nativeSize": [
+            69,
+            75
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1326.5,
+            1645.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.001416,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            -896,
+            1652
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -516.0,
+            1655.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -488.0,
+            1669.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "bench_pool",
+          "scene": "east",
+          "sourceWorld": [
+            -316.0,
+            1672.01
+          ],
+          "anchor": [
+            28,
+            71
+          ],
+          "nativeSize": [
+            69,
+            75
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_CLEAR_SAME_FACING_REUSE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "east",
+          "sourceWorld": [
+            -254.0,
+            1674.01
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "signpost",
+          "scene": "east",
+          "sourceWorld": [
+            -109.0,
+            1682.01
+          ],
+          "anchor": [
+            22,
+            42
+          ],
+          "nativeSize": [
+            39,
+            43
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "garden_foreground_grove",
+          "scene": "east",
+          "sourceWorld": [
+            -531.0,
+            1708.01
+          ],
+          "anchor": [
+            128,
+            118
+          ],
+          "nativeSize": [
+            256,
+            121
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "lamp_pool",
+          "scene": "east",
+          "sourceWorld": [
+            -392.0,
+            1711.01
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            26,
+            119
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE_PARTIAL",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -157.99,
+            1786.91
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 51,
+          "matchError": 0.01117,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1018.51,
+            1799.51
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 39,
+          "matchError": 0.019418,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            990.5,
+            1813.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.01546,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            962.5,
+            1827.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.016563,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            672,
+            1848
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+        },
+        {
+          "asset": "rowing_boat",
+          "scene": "east",
+          "sourceWorld": [
+            1384.51,
+            1858.51
+          ],
+          "anchor": [
+            109,
+            134
+          ],
+          "nativeSize": [
+            220,
+            140
+          ],
+          "sourceFrame": 39,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            672,
+            1876
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET",
+          "sourceDistrict": "east"
+        }
+      ],
+      "gridRows": [
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555000000000000000000000000000000000000000000000000000000000000000055555555555555555555555555555555555555555555",
+        "5550000005000000000000000000000000000000000000000000000000000000000005555555555555555555555555555555555555555555",
+        "5500000055000000000000000000000000000000000000000000000000000000000000555555555555555555555555555555555555555555",
+        "5500000555000000000000010000000000050000000000000000000000000000000000055555555555555555555555555555555555555555",
+        "5500005555000000000000011000000000055000000000000000010000000000001000005555555555555555555555555555555555555555",
+        "5500055555000000000000011000000000055500000000000000011055000000001400000555555555555555555555555555555555555555",
+        "5500555555000000000000111000000000005500000000000001111055500000001440000055555555555555555555555555555555555555",
+        "5000055555500000000000011000000000055500000000000000011055500000001444000005555555555555555555555555555555555555",
+        "0000005555000000000500011030000000005550000000000000011005500000000444400000555555555555555555555555555555555555",
+        "0000000000000000000555511030300000105500000000000000011055550000000005500000055555555555555555555555555555555555",
+        "0000000000000000001055511030300000100000000000010000011005550000000000050000005555555555555555555555555555555555",
+        "0000000000000000001055511030300010000000000000010000011000550000000055555500000555555555555555555555555555555555",
+        "0000000000000000100055511030300010000000000331300000011000000000000055555000000055555555555555555555555555555555",
+        "0000000001111111100000011030000010000000000001000000011000000000100055005054400005555555555555555555555555555555",
+        "0000050000011111111111111033301111111111111111111111111000000000000000055554440005555555555555555555555555555555",
+        "0555055030011000111111111033301111111111000111101111111000000000000405555054440005555555555555555555555555555555",
+        "0005555550011000000000000030300000000000000000000000011000000000001445505054440005555555555555555555555555555555",
+        "0000055550011000000000000030300000000000000000000000011000000000001400500550000005555555555555555555555555555555",
+        "0050005550011000000000000030300000000000000000000050011000500000001405505550000005555555555555555555555555555555",
+        "0550105550011000000000000030300000000000000000005550011055500000001440055500000005555555555555555555555555555555",
+        "0550000000011000000005000030300000000000000000000550011005500000001444055000000055555555555555555555555555555555",
+        "0550500000011000000050000333000033000033000000000550011005500000001444450000000055555555555555555555555555555555",
+        "0555000000011000105005000033055533300000000000000555011005550000001444405555500055555555555555555555555555555555",
+        "0550000001111000005555555000305055500000000000000550011000500000001444005555500055555555555555555555555555555555",
+        "5000000000011000055555555110050005000000000000000050001000000000000440005555500055555555555555555555555555555555",
+        "5501113300011000105550555110000000000000000000000000000000000000000000005555500055555555555555555555555555555555",
+        "5500300000011001105500001110555550000000000000000000555550005555500000005555500555555555555555555555555555555555",
+        "5500011111111000100000001110555550000000000000000000555550005555500000000000000555555555555555555555555555555555",
+        "5500001111111300000000001111555550000000000000000000555550005555500000000000000555555555555555555555555555555555",
+        "5500000111111110000000001111555550000000000000000000555550005555500000000000000555555555555555555555555555555555",
+        "5500000013331110555550000111555550000001000000000000555550005555500055555000000555555555555555555555555555555555",
+        "5500000000311100555550000111000000000000000000000000000000000000000055555000000555555555555555555555555555555555",
+        "5500000000111000555550000111100000000000111110000000000000000000000055555000005555555555555555555555555555555555",
+        "5500000000010000555550000111100000000000000110000000000000000000000055555000005555555555555555555555555555555555",
+        "5500000000000000555550000011100000000000000110010000000000000000000055555000005555555555555555555555555555555555",
+        "5500000000000000000000000011100000000000000110000000000000000000000000000000005555555555555555555555555555555555",
+        "5500000000000000000000000011110000001000000111111110000000000000000000000000005555555555555555555555555555555555",
+        "5500000000000000000000000011110000000000000110010101000000010100000000000000005555555555555555555555555555555555",
+        "5500000000000000555550000001110000000000000110001000000000101000000000005555555555555555555555555555555555555555",
+        "5500000000000000555550000001111111111111111110010000010100000100000000005555555555555555555555555555555555555555",
+        "5500000000000000555550000001111111111111111110001000001000001000000000005555555555555555555555555555555555555555",
+        "5500000000000000555550000001111000000000000000010000010100000122222000005555555555555555555555555555555555555555",
+        "5500000000000000555550000000111000000000000000001000001000001022222000005555555555555555555555555555555555555555",
+        "5500000000000000000000000000111000000000000000000101000101010122222000000000555555555555555555555555555555555555",
+        "5500000000000000000000000000111100000000000000001010000010101022222005000000555555555555555555555555555555555555",
+        "5500000000000000000000000000111100000000000000010101000101010022222005500000555555555555555555555555555555555555",
+        "5500000000000000555550005555511100000002222200001000101000001022222005500000555555555555555555555555555555555555",
+        "5500000000000000555550005555511100000002222200010000010100000122222005550000555555555555555555555555555555555555",
+        "5500000000000000555550005555511110000002222200001000001000001022222005500000555555555555555555555555555555555555",
+        "5500000000000000555550005555511110000002222200010000010100000122222005500005555555555555555555555555555555555555",
+        "5500000000000000555550005555501110000002222200001010101010101000000005000005555555555555555555555555555555555555",
+        "5500000000000000000000000000001110000002222200010101010101010100000000000005555555555555555555555555555555555555",
+        "5500000000000000000000000000001111000002222200000000000000001100000000000005555555555555555555555555555555555555",
+        "5500000000000000000000000000001111000000000000000000000000001100100000000005555555555555555555555555555555555555",
+        "5500010000000000000055555000000111005555500000000000000000001100000005000005555555555555555555555555555555555555",
+        "5500110000000000000055555000000111005555522220044444444400001011111110000055555555555555555555555555555555555555",
+        "5000110000000000000055555000000111105555500020022222222220001110000111000055555555555555555555555555555555555555",
+        "0000110000000000000055555000000111105555500020022222222220001111000010000055555555555555555555555555555555555555",
+        "0000110000000010000055555000000011105555500000022222222223000000000000000055555555555555555555555555555555555555",
+        "5000110000301300000010000000000011100000000020022222222223000000110000000055555555555555555555555555555555555555",
+        "5500110000001000000011000000000011110000000023000000000000000000111000000055555555555555555555555555555555555555",
+        "5500111111111111111111100000000011110002222223000000000000000000111000000555555555555555555555555555555555555555",
+        "5500010011100011001111005555500001110000000000000000000000000000111300000555555555555555555555555555555555555555",
+        "5500000000000000000000005555500001110000000000031313130313131300001000000555555555555555555555555555555555555555",
+        "5500000000050000500000005555500001111000000000013131313131313100100000000555555555555555555555555555555555555555",
+        "5500000000005000050000005555500001111000000000031303031303031300110000005555555555555555555555555555555555555555",
+        "5550000005555555550000005555500000111000000000013030313130303100111000005555555555555555555555555555555555555555",
+        "5555000000555555500000000000000000111000000000031303031303031300110000005555555555555555555555555555555555555555",
+        "5555500000000000000000000000000000111100000000013030313130303100100000055555555555555555555555555555555555555555",
+        "5555550000000000000000000000001000111100000000031303031303031300000000555555555555555555555555555555555555555555",
+        "5555550000000000000000000000000000011100000000003131313131313100000005555555555555555555555555555555555555555555",
+        "5555555000000000000000000033100000011100000000000313131313131300000055555555555555555555555555555555555555555555",
+        "5555555500000000000000111111100000011112000000000031303130313000000555555555555555555555555555555555555555555555",
+        "5555555550000000000000111111100010011112200000000003000300030000005555555555555555555555555555555555555555555555",
+        "5555555555000000000000000000000000001112220000000000555550000000055555555555555555555555555555555555555555555555",
+        "5555555555500000000000000000000000001112222000000000555550000000555555555555555555555555555555555555555555555555",
+        "5555555555500000001000000000000000001112222200000000555550000005555555555555555555555555555555555555555555555555",
+        "5555555555550000011000000000000000001112222200000000555550000055555555555555555555555555555555555555555555555555",
+        "5555555555555000000000000000000000000002222200000000555550000555555555555555555555555555555555555555555555555555",
+        "5555555555555500000000000000000000000002222200000000000000055555555555555555555555555555555555555555555555555555",
+        "5555555555555550000000000000000000000002222200000000000000555555555555555555555555555555555555555555555555555555",
+        "5555555555555555000000000000000000000002222200000000000005555555555555555555555555555555555555555555555555555555",
+        "5555555555555555500000444444444444444442222200000000000055555555555555555555555555555555555555555555555555555555",
+        "5555555555555555550000022222222222222222222222200000005555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555000002222222222222222222222000000055555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555500000222222222202222222220000000555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555550000022222220550022222200000005555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555000002222220555502222000000055555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555500000222022055552220000005555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555550000020002000022200000055555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555000000000000222000000555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555500000000000020000005555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555550000000000000000555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555000000000005555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555500000055555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
+        "5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+      ],
+      "activeRows": [
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000",
+        "0001111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000",
+        "0011111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000",
+        "0001111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000",
+        "0000111111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000",
+        "0000011111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000",
+        "0000001111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000",
+        "0000001111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000",
+        "0000000111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000",
+        "0000000011111111111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000",
+        "0000000001111111111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000",
+        "0000000000111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000",
+        "0000000000011111111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000",
+        "0000000000011111111111111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000",
+        "0000000000001111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000",
+        "0000000000000111111111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000",
+        "0000000000000011111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000",
+        "0000000000000001111111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000",
+        "0000000000000000111111111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000",
+        "0000000000000000011111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000",
+        "0000000000000000001111111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000011111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000001111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000111111111111111111111111111100000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000011111111111111111111111110000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000001111111111111111111111100000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000111111111111111111111000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000011111111111111111110000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000001111111111111111000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000111111111110000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000011111100000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "eastOffsetTiles": [
+        28,
+        4
+      ],
+      "scope": "SINGLE_RUNTIME_TOWN; observed districts retained, translation/landscaped joins/bounded grassy outskirts ADAPTED; original entire map extent unknown"
     }
   },
   "scope": "Source-visible only. Missing pixels, building identities and full topology remain unresolved. Ground extension and service joins are ADAPTED."

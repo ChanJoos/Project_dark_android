@@ -108,9 +108,10 @@ public final class F5mSaveStore {
     r.applyDerivedGrowth();
     if(active==null||!active.writable)return;
     SharedPreferences p=active.prefs;
-    if(r.currentMapId().equals(p.getString("map_id",null))){
-      float x=p.getFloat("player_x",r.player().x),y=p.getFloat("player_y",r.player().y);
-      if(Float.isFinite(x)&&Float.isFinite(y)&&x>=RuntimeState.WORLD_MIN_X&&x<=RuntimeState.WORLD_MAX_X&&y>=RuntimeState.WORLD_MIN_Y&&y<=RuntimeState.WORLD_MAX_Y){r.player().x=x;r.player().y=y;}
+    boolean oldEast=com.projectdark.mobile.world.AbelTownGeometry.EAST_ID.equals(p.getString("map_id",null))&&com.projectdark.mobile.world.AbelTownGeometry.ID.equals(r.currentMapId());
+    if(oldEast||r.currentMapId().equals(p.getString("map_id",null))){
+      float x=p.getFloat("player_x",r.player().x)+(oldEast?com.projectdark.mobile.world.AbelTownGeometry.EAST_DX:0),y=p.getFloat("player_y",r.player().y)+(oldEast?com.projectdark.mobile.world.AbelTownGeometry.EAST_DY:0);
+      if(r.positionWithinMapBounds(x,y)&&!r.blocked(x,y)){r.player().x=x;r.player().y=y;}
     }
     if(r.currentMapId().equals(p.getString("inn_mouse_map",null)))for(RuntimeState.Monster m:r.monsters())if("milles_mouse_proto".equals(m.id)){
       int hp=p.getInt("inn_mouse_hp",m.hp);float x=p.getFloat("inn_mouse_x",m.x),y=p.getFloat("inn_mouse_y",m.y);

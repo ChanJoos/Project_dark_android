@@ -48,7 +48,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     camera=map.newCamera(viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
-    presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
+    presentation=new WorldStepInterpolator(tileStepSeconds(),runtime.player().x,runtime.player().y);
     CharacterRenderer.setPresentationWalkClock(0f);
   }
 
@@ -70,7 +70,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     camera=new WorldCameraTransform(minX,maxX,minY,maxY,viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
-    presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
+    presentation=new WorldStepInterpolator(tileStepSeconds(),runtime.player().x,runtime.player().y);
     CharacterRenderer.setPresentationWalkClock(0f);
   }
 
@@ -215,6 +215,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   @Override public float worldX(){return runtime.player().x;}
+  @Override public float tileStepSeconds(){String id=runtime.currentMapId();return AbelTownGeometry.contains(id)||id.startsWith("abel_interior_")?.25f:WorldMoveTargetController.TILE_STEP_SECONDS;}
   @Override public float worldY(){return runtime.player().y;}
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;
