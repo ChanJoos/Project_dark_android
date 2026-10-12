@@ -5702,6 +5702,44 @@
           "sourceFrame": 26,
           "matchError": 0.0,
           "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "inn_table_back",
+          "scene": "inn",
+          "sourceWorld": [
+            60,
+            125
+          ],
+          "anchor": [
+            61,
+            58
+          ],
+          "nativeSize": [
+            121,
+            63
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_OCCLUDED_DINING_LOCATION_SAME_OBSERVED_TABLE_FAMILY"
+        },
+        {
+          "asset": "inn_table_back",
+          "scene": "inn",
+          "sourceWorld": [
+            176,
+            197
+          ],
+          "anchor": [
+            61,
+            58
+          ],
+          "nativeSize": [
+            121,
+            63
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_OCCLUDED_DINING_LOCATION_SAME_OBSERVED_TABLE_FAMILY"
         }
       ],
       "gridRows": [

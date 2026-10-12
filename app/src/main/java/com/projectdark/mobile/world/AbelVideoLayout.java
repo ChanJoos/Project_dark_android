@@ -115,6 +115,6 @@ p.add(new AbelTownGeometry.Prop("rail_up",318.500f,1365.460f,1.000f,49.000f,35.0
 p.add(new AbelTownGeometry.Prop("rail_up",290.500f,1379.460f,1.000f,49.000f,35.000f,53.000f));
 p.add(new AbelTownGeometry.Prop("rowing_boat",712.510f,1410.510f,109.000f,134.000f,220.000f,140.000f));
 return Collections.unmodifiableList(p);}
-public static final float[][] INN_PROPS={{519.500f,29.000f},{545.000f,38.000f},{564.000f,80.000f},{397.000f,114.000f},{368.000f,147.000f},{424.000f,150.000f},{235.000f,152.000f},{495.000f,218.000f},{389.000f,269.000f}};
-public static final String[] INN_ASSETS={"inn_barrel","inn_plant_pot","inn_stool_alt","inn_counter_segment","inn_stool","inn_stool_alt","inn_table_back","inn_table_mugs","inn_table_bottles"};
+public static final float[][] INN_PROPS={{519.500f,29.000f},{545.000f,38.000f},{564.000f,80.000f},{397.000f,114.000f},{368.000f,147.000f},{424.000f,150.000f},{235.000f,152.000f},{495.000f,218.000f},{389.000f,269.000f},{60.000f,125.000f},{176.000f,197.000f}};
+public static final String[] INN_ASSETS={"inn_barrel","inn_plant_pot","inn_stool_alt","inn_counter_segment","inn_stool","inn_stool_alt","inn_table_back","inn_table_mugs","inn_table_bottles","inn_table_back","inn_table_back"};
 private AbelVideoLayout(){} }
