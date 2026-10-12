@@ -72,16 +72,16 @@ with zipfile.ZipFile(apk_path) as apk:
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
-assert "versionCode='146'" in badging and "versionName='1.46-abel-ground-supports'" in badging, badging[:300]
-expected_package = 'com.projectdark.mobile.v146test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
+assert "versionCode='147'" in badging and "versionName='1.47-abel-source-town'" in badging, badging[:300]
+expected_package = 'com.projectdark.mobile.v147test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
 resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'resources', str(apk_path)], text=True)
 assert 'name='+expected_package in resource_table, resource_table[:400]
 for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','player_shirt_mu0000001_source'):
     assert ':drawable/'+drawable in resource_table, drawable
-info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v146test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
+info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v147test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope="V146 Abel town floor and full-support bench repair with recovered town integration; whole-map/district/door/route/save/cache checks; V143 retained names/basic punch/visible Noah travel: 13 runtime candidate identities/12 art families, all seven newly observed video forms, per-zone roster <=5 art families/60 source-hit pairs, 72/96/108 actors and shared navigation/AI/Resolver/reward/save. KingArk fake/real are adapted solo encounters sharing one partially obscured screenshot reconstruction, NOT original party/event fidelity. Names of unlabelled forms and Crab/Berserker visual joins remain pending. Full original roster/animation/topology and phone/visual acceptance NOT VERIFIED",
+            scope="V147 Abel source-visible main/east district geometry, 53 source sprites, intact bench support contact pivots, five adapted service door/room joins, unique fixed-SW player-style Abel NPCs and matching keeper dialogue/UI avatars; actual door/exit/NPC/merchant purchase/bank/healing/restart and12 round-trip native checks. Original whole-map extent, clipped facades, role identities and unseen interiors remain partial/ADAPTED; phone and user visual acceptance pending",
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance='PENDING')
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))

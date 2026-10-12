@@ -21,4 +21,6 @@ The first72a8af1 focused native stage passed (run38291666474). Actual merchant U
 
 Native visual review also rejected two copied screenshot artefacts: the inn floor patch included a doorway floor graphic, and the cropped counter still contained advertisement pixels. Replaced the floor with a clean observed checker patch, omitted16 upper counter rows, and show the selected inn exit as a mobile ground ring. New door tests walk the interior exit and tick actual GameView transition, rather than calling leave directly. Current render/build validation pending the corrected exact run.
 
+Final NPC UI audit: Abel services also reused the old Milles illustrated portrait sheets, so a new male keeper could still show a shared female portrait. Abel service dialogue panels now render that keeper’s exact registered player-style paper doll (fixed SW idle), matching the world avatar and unique outfit. Milles portrait art remains unchanged. APK verifier’s obsolete146 package/version checks corrected to147; they affected verification metadata, not runtime. Current final native/build evidence pending.
+
 Historical handoff: docs/history/CHAT_HANDOFF_PRE_V147_20261012.md.
