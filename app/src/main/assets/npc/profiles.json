@@ -253,6 +253,15 @@
       "outfit": "mu0000025,mh009,ml240",
       "weapon": null,
       "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "abel_coast_departure",
+      "name": "Kenneth",
+      "rank": 22,
+      "role": "아벨 해안 이동",
+      "outfit": "mu0000055,mh132,ml255",
+      "weapon": null,
+      "rationale": "V148 distinct real wearable profile; fixed SW IDLE"
     }
   ]
 }

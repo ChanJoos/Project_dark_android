@@ -20,8 +20,8 @@ public final class TownInteriorDef {
  public final int columns,rows,npcU,npcV,customerU,customerV,counterV,counterStart,counterEnd;
  private TownInteriorDef(Kind k,String id,String title,String npc,String outfit,String door){
   kind=k;mapId=id;this.title=title;npcId=com.projectdark.mobile.NpcIdentity.interiorKey(id,k.name());com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(npcId);npcName=profile.label();this.outfit=profile.outfit;doorId=door;
-  columns=k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
-  npcU=k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
+  columns=k==Kind.INN&&id.startsWith("abel_")?17:k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=k==Kind.INN&&id.startsWith("abel_")?16:k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
+  npcU=k==Kind.INN&&id.startsWith("abel_")?10:k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=k==Kind.INN&&id.startsWith("abel_")?4:k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
   counterV=npcV+2;customerU=npcU;customerV=counterV+1;
   counterStart=k==Kind.BANK?4:3;counterEnd=k==Kind.EQUIPMENT?11:k==Kind.BANK?8:10;
   List<Prop> p=new ArrayList<>();
@@ -65,7 +65,16 @@ public final class TownInteriorDef {
    p.add(new Prop("storage_sack",11,10,25));p.add(new Prop("storage_sack",12,10,25));p.add(new Prop("storage_crate",12,6,32));
    p.add(new Prop("open_book",5,4,23,42,false));p.add(new Prop("bottle_tray",8,4,28,42,false));
   }
-if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();for(int i=0;i<AbelVideoLayout.INN_ASSETS.length;i++){String asset=AbelVideoLayout.INN_ASSETS[i];float wx=128+AbelVideoLayout.INN_PROPS[i][0]*AbelVideoLayout.SCALE,wy=132+AbelVideoLayout.INN_PROPS[i][1]*AbelVideoLayout.SCALE;int tu=Math.max(1,Math.min(columns-2,Math.round(((wx-480)/32+(wy-132)/16)/2))),tv=Math.max(1,Math.min(rows-2,Math.round(((wy-132)/16-(wx-480)/32)/2)));boolean table=asset.startsWith("inn_table");p.add(new Prop("abel_video:"+asset,tu,tv,table?120:32,0,table,table?2:1,table?2:1));}}
+if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
+ // A complete, explicitly adapted L counter encloses the keeper; discarded screenshot sliver.
+ for(int u=7;u<=13;u++)p.add(new Prop("joined_counter",u,6,64));
+ for(int v=2;v<6;v++)p.add(new Prop("joined_counter_sw",7,v,64));
+ for(int i=0;i<AbelVideoLayout.INN_ASSETS.length;i++){String asset=AbelVideoLayout.INN_ASSETS[i];if(asset.equals("inn_counter_segment"))continue;float wx=480+(AbelVideoLayout.INN_PROPS[i][0]-310)*AbelVideoLayout.SCALE,wy=132+(AbelVideoLayout.INN_PROPS[i][1]+100)*AbelVideoLayout.SCALE;int tu=Math.max(1,Math.min(columns-2,Math.round(((wx-480)/32+(wy-132)/16)/2))),tv=Math.max(1,Math.min(rows-2,Math.round(((wy-132)/16-(wx-480)/32)/2)));boolean table=asset.startsWith("inn_table");p.add(new Prop("abel_video:"+i+":"+asset,tu,tv,table?120:32,0,true,table?2:1,table?2:1));}
+ p.add(new Prop("inn_world_hearth",1,4,96,0,true,1,2));p.add(new Prop("storage_barrel",2,1,35));
+ // Remaining observed dining-table locations reuse the supplied table family, not new art.
+ p.add(new Prop("inn_world_table",2,9,110,0,true,2,1));p.add(new Prop("inn_world_chair_ne",3,10,32));p.add(new Prop("inn_world_chair_sw",2,8,32));
+ p.add(new Prop("inn_world_table",5,12,110,0,true,2,1));p.add(new Prop("inn_world_chair_ne",6,13,32));p.add(new Prop("inn_world_chair_sw",5,11,32));
+ p.add(new Prop("open_book",9,6,23,42,false));p.add(new Prop("bottle_tray",12,6,28,42,false));}
   props=Collections.unmodifiableList(p);
  }
  private static void dining(List<Prop> p,int u,int v,boolean food){
@@ -85,7 +94,8 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();for(int i=0;i<AbelVid
  public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;return null;}
  public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
- private int entryU(){return kind==Kind.BANK?5:6;}
+ public float minX(){return isAbel()&&kind==Kind.INN?-64:MIN_X;}public float maxX(){return isAbel()&&kind==Kind.INN?1056:MAX_X;}public float maxY(){return isAbel()&&kind==Kind.INN?680:MAX_Y;}
+ private int entryU(){return isAbel()&&kind==Kind.INN?13:kind==Kind.BANK?5:6;}
  public float spawnX(){return x(entryU(),rows-2);}public float spawnY(){return y(entryU(),rows-2);}public float exitX(){return x(entryU(),rows-1);}public float exitY(){return y(entryU(),rows-1);}
  public float npcX(){return x(npcU,npcV)-12;}public float npcY(){return y(npcU,npcV)-6;}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
  public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}

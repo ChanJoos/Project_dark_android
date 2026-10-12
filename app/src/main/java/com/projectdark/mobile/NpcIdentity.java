@@ -34,6 +34,7 @@ public final class NpcIdentity {
   new Profile("abel_coast_guide","Patrick",45,"아벨 해안 조사","mu0000365,mh124,ml255",null),
   new Profile("abel_supplier","Aaron",50,"아벨 보급","mu0000237,mh009,ml240",null),
   new Profile("interior_inn","Benjamin",39,"여관 주인","mu0000025,mh011,ml243",null),
+  new Profile("abel_coast_departure","Kenneth",22,"아벨 해안 이동","mu0000055,mh132,ml255",null),
   new Profile("abel_town_travel","Kevin",21,"밀레스 이동","mu0000102,mh006,ml243",null),
   new Profile("abel_interior_reagent","Richard",7,"아벨 시약상","mu0000117,mh007,ml255","mw024"),
   new Profile("abel_interior_equipment","Andrew",17,"아벨 장비상","mu0000055,mh008,ml243","mw015"),

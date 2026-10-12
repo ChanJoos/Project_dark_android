@@ -1,3 +1,9 @@
+## 2026-10-13 — V148 user-reported visual failure, concrete repair in progress
+
+User rejects V147 bench feet and unfinished inn. V147 VISUAL_REJECTED_USER_REPORTED; previous native/build success did not prove visible feet. Root cause reproduced in supplied frames: narrow silhouette/crop and wood RGB filter discarded grey iron feet. V148 re-extracts full observed feet with traced silhouette, original RGB and deeper foot-region assertions. No generated pixels. User orders coast travel from a new Abel NPC only: unique Kenneth/케네스29th profile in east near harbor(53,35), fixed SW idle player paper doll. Milles Noah offers forest/Abel TOWN only; coast action only on east NPC dialog, east auto-coast portal removed, auto objective navigation stops at this NPC. Existing unlock and rewards preserved.
+
+Inn adds complete adapted walls/L-counter/dining/hearth and paid50G HP/MP rest; original checker/source furniture preserved. Source-prop instances use indexed IDs, fixing duplicate stool overwrites; source coordinates/feet/collision/depth aligned in larger17×16 room with proper bounds. Partial advertisement counter sliver unused. Original hidden room wall/layout remains ADAPTED, not source-proof. IMPLEMENTED_CANDIDATE; exact CI/native/phone/user visual pending. Continue same PR195/branch; do not deliver old147 as this fix.
+
 ## V147 user audit —2026-10-13
 
 52 media assets and runtime uploaded first in9eae03f. Bench contact/complete source support, independent Abel NPC identities, recorded inn facade,5 functional rooms and legal arrivals/gates corrected. Source map remains partial; source footprint2029/1692 cells, original full extent unknown. Exact current native/build evidence PENDING. Acceptance and continuation: docs/ABEL_VIDEO_V147.md.

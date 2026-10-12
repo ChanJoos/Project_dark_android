@@ -1,3 +1,9 @@
+## 2026-10-13 — V148 user-reported visual failure, concrete repair in progress
+
+User rejects V147 bench feet and unfinished inn. V147 VISUAL_REJECTED_USER_REPORTED; previous native/build success did not prove visible feet. Root cause reproduced in supplied frames: narrow silhouette/crop and wood RGB filter discarded grey iron feet. V148 re-extracts full observed feet with traced silhouette, original RGB and deeper foot-region assertions. No generated pixels. User orders coast travel from a new Abel NPC only: unique Kenneth/케네스29th profile in east near harbor(53,35), fixed SW idle player paper doll. Milles Noah offers forest/Abel TOWN only; coast action only on east NPC dialog, east auto-coast portal removed, auto objective navigation stops at this NPC. Existing unlock and rewards preserved.
+
+Inn adds complete adapted walls/L-counter/dining/hearth and paid50G HP/MP rest; original checker/source furniture preserved. Source-prop instances use indexed IDs, fixing duplicate stool overwrites; source coordinates/feet/collision/depth aligned in larger17×16 room with proper bounds. Partial advertisement counter sliver unused. Original hidden room wall/layout remains ADAPTED, not source-proof. IMPLEMENTED_CANDIDATE; exact CI/native/phone/user visual pending. Continue same PR195/branch; do not deliver old147 as this fix.
+
 ## 2026-10-13 — V147 uploaded and exact native/build verified
 
 Runtime/APK source `3125ab808b01c71049e271043ff10954112e3350`; focused Actions38294650809 SUCCESS. Independently downloaded preview/native/APK artifact SHA256 and ZIP CRC verified.114 unique passing tests/23 suites,0 failures/errors/skips: actual GameView five doors/inside walking exits/keeper UI/purchase/bank deposit/healing/restart,12 main→east→coast round trips, all28 distinct player-style NPC profiles and retained forest/HUD/input/cache/combat/skill/save regressions. Actual latest screenshots reviewed; no physical-phone or user-visual acceptance claimed.

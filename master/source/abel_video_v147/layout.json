@@ -777,213 +777,569 @@
       "id": "bench_front_down",
       "sourceFrame": 46,
       "box": [
-        190,
-        76,
-        247,
-        134
+        188,
+        74,
+        250,
+        150
       ],
       "polygon": [
         [
           4,
-          0
+          29
         ],
         [
-          50,
+          16,
           20
         ],
         [
+          18,
+          10
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          52,
+          24
+        ],
+        [
           56,
-          32
+          23
+        ],
+        [
+          58,
+          25
+        ],
+        [
+          55,
+          37
+        ],
+        [
+          52,
+          47
+        ],
+        [
+          52,
+          56
         ],
         [
           48,
-          57
+          58
         ],
         [
-          0,
-          39
+          47,
+          54
+        ],
+        [
+          41,
+          61
+        ],
+        [
+          35,
+          62
+        ],
+        [
+          34,
+          59
+        ],
+        [
+          40,
+          54
+        ],
+        [
+          39,
+          52
+        ],
+        [
+          12,
+          40
+        ],
+        [
+          12,
+          46
+        ],
+        [
+          4,
+          47
+        ],
+        [
+          4,
+          44
+        ],
+        [
+          8,
+          41
+        ],
+        [
+          5,
+          38
+        ],
+        [
+          4,
+          37
         ]
       ],
       "mode": "wood",
       "anchor": [
-        29,
-        56
+        38,
+        63
       ],
       "size": [
-        57,
-        60
+        62,
+        67
       ],
-      "status": "SOURCE_VISIBLE",
-      "sha256": "63445645cdcc513d0a01fe7e0a9157c26ce22aae445ef9a5643d7092acd51e75",
+      "status": "SOURCE_VISIBLE_FULL_FEET",
+      "sha256": "e17b760eca94af18af39150bc6d80cb96be7db72e91aee7f28016d28f5a239d4",
       "nativeCropSize": [
         57,
         58
       ],
-      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
+      "anchorContract": "FULL_SOURCE_FOOT_CONTACT_PLUS_4PX_GUTTER",
+      "footRegion": [
+        0,
+        50,
+        62,
+        63
+      ]
     },
     {
       "id": "bench_front_up",
       "sourceFrame": 54,
       "box": [
-        127,
-        190,
-        189,
-        251
+        124,
+        187,
+        193,
+        265
       ],
       "polygon": [
         [
-          0,
-          28
+          7,
+          37
         ],
         [
-          50,
-          0
+          9,
+          34
+        ],
+        [
+          12,
+          37
+        ],
+        [
+          15,
+          42
+        ],
+        [
+          38,
+          24
+        ],
+        [
+          44,
+          20
+        ],
+        [
+          46,
+          18
+        ],
+        [
+          49,
+          19
+        ],
+        [
+          51,
+          34
+        ],
+        [
+          56,
+          37
         ],
         [
           61,
-          8
+          38
         ],
         [
-          61,
-          30
+          63,
+          42
         ],
         [
-          48,
-          55
+          62,
+          49
         ],
         [
-          17,
-          60
+          57,
+          52
         ],
         [
-          3,
-          48
+          59,
+          56
+        ],
+        [
+          60,
+          57
+        ],
+        [
+          55,
+          58
+        ],
+        [
+          54,
+          54
+        ],
+        [
+          30,
+          66
+        ],
+        [
+          30,
+          68
+        ],
+        [
+          32,
+          69
+        ],
+        [
+          27,
+          70
+        ],
+        [
+          25,
+          67
+        ],
+        [
+          19,
+          64
+        ],
+        [
+          18,
+          66
+        ],
+        [
+          15,
+          66
+        ],
+        [
+          15,
+          62
+        ],
+        [
+          13,
+          58
+        ],
+        [
+          12,
+          47
         ]
       ],
       "mode": "wood",
       "anchor": [
-        30,
-        61
+        28,
+        71
       ],
       "size": [
-        62,
-        65
+        69,
+        75
       ],
-      "status": "SOURCE_VISIBLE",
-      "sha256": "9bc97c278a0475ad6c26b32ef7afe1155f78e704824ceca35edafc9b679c8acf",
+      "status": "SOURCE_VISIBLE_FULL_FEET",
+      "sha256": "7debc53a7479710070cf0d402a0446daeae43668dd9e332c925761d789c7083c",
       "nativeCropSize": [
         62,
         61
       ],
-      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
+      "anchorContract": "FULL_SOURCE_FOOT_CONTACT_PLUS_4PX_GUTTER",
+      "footRegion": [
+        0,
+        60,
+        69,
+        71
+      ]
     },
     {
       "id": "bench_back_up",
       "sourceFrame": 46,
       "box": [
-        173,
-        304,
-        235,
-        367
+        172,
+        302,
+        237,
+        374
       ],
       "polygon": [
         [
-          4,
+          0,
+          35
+        ],
+        [
+          5,
           34
         ],
         [
-          43,
-          0
+          7,
+          38
         ],
         [
-          58,
-          0
+          11,
+          39
         ],
         [
-          61,
-          31
+          13,
+          32
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          20,
+          25
         ],
         [
           47,
+          11
+        ],
+        [
+          49,
+          9
+        ],
+        [
+          52,
+          9
+        ],
+        [
+          54,
+          11
+        ],
+        [
+          51,
+          23
+        ],
+        [
+          49,
+          27
+        ],
+        [
+          46,
+          34
+        ],
+        [
+          42,
+          38
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          36,
+          42
+        ],
+        [
+          32,
+          44
+        ],
+        [
+          29,
+          46
+        ],
+        [
+          24,
+          49
+        ],
+        [
+          19,
+          51
+        ],
+        [
+          15,
+          53
+        ],
+        [
+          12,
+          57
+        ],
+        [
+          8,
+          57
+        ],
+        [
+          6,
+          52
+        ],
+        [
+          4,
           50
         ],
         [
-          16,
-          62
-        ],
-        [
           0,
-          49
+          48
         ]
       ],
       "mode": "wood",
       "anchor": [
-        31,
-        55
+        10,
+        58
       ],
       "size": [
-        62,
-        59
+        65,
+        62
       ],
-      "status": "SOURCE_VISIBLE",
-      "sha256": "27aa7bb13478471c32cd56bf47617a92adaf97a8e7dcc8581df569cecd537963",
+      "status": "SOURCE_VISIBLE_FULL_FEET",
+      "sha256": "dd76295165cf4cf38f54eb50ab0084d19b91511ec82a19c4bc07410cc28d5192",
       "nativeCropSize": [
         62,
         63
       ],
-      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
+      "anchorContract": "FULL_SOURCE_FOOT_CONTACT_PLUS_4PX_GUTTER",
+      "footRegion": [
+        0,
+        50,
+        65,
+        58
+      ]
     },
     {
       "id": "bench_back_down",
       "sourceFrame": 45,
       "box": [
-        534,
-        39,
-        594,
-        92
+        532,
+        36,
+        597,
+        101
       ],
       "polygon": [
         [
-          0,
-          0
+          6,
+          6
         ],
         [
-          15,
-          0
+          9,
+          5
         ],
         [
-          56,
-          27
+          12,
+          7
+        ],
+        [
+          39,
+          23
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          43,
+          26
+        ],
+        [
+          44,
+          33
+        ],
+        [
+          48,
+          34
+        ],
+        [
+          52,
+          30
+        ],
+        [
+          55,
+          30
         ],
         [
           59,
-          40
+          35
+        ],
+        [
+          59,
+          42
+        ],
+        [
+          59,
+          44
+        ],
+        [
+          61,
+          45
+        ],
+        [
+          60,
+          49
+        ],
+        [
+          55,
+          50
         ],
         [
           53,
-          52
+          47
+        ],
+        [
+          50,
+          46
+        ],
+        [
+          44,
+          44
+        ],
+        [
+          41,
+          43
+        ],
+        [
+          34,
+          39
+        ],
+        [
+          28,
+          37
+        ],
+        [
+          21,
+          35
+        ],
+        [
+          15,
+          31
+        ],
+        [
+          11,
+          26
+        ],
+        [
+          10,
+          22
         ],
         [
           8,
-          27
+          21
+        ],
+        [
+          7,
+          15
         ]
       ],
       "mode": "wood",
       "anchor": [
-        31,
-        48
+        57,
+        51
       ],
       "size": [
-        60,
-        52
+        65,
+        55
       ],
-      "status": "SOURCE_VISIBLE",
-      "sha256": "378a3cabfd415dc730b36d69c33d4af34f2c97b93e7c2c3a3cd8ea52d43accd6",
+      "status": "SOURCE_VISIBLE_FULL_FEET",
+      "sha256": "56baf99f16bf2329e1ca2503959e06af8301c21c4d8b39d8a90850783bd9a744",
       "nativeCropSize": [
         60,
         53
       ],
-      "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER"
+      "anchorContract": "FULL_SOURCE_FOOT_CONTACT_PLUS_4PX_GUTTER",
+      "footRegion": [
+        0,
+        43,
+        65,
+        51
+      ]
     },
     {
       "id": "signpost",
@@ -2279,14 +2635,14 @@
         ]
       ],
       "anchor": [
-        30,
-        61
+        28,
+        71
       ],
       "size": [
-        62,
-        65
+        69,
+        75
       ],
-      "status": "SOURCE_CLEAR_SAME_FACING_REUSE",
+      "status": "SOURCE_CLEAR_FULL_FEET_SAME_FACING_REUSE",
       "sourceParent": "bench_front_up",
       "notes": "Replaces tree-occluded fragment with complete matching source bench; no fabricated support pixels.",
       "nativeCropSize": [
@@ -2294,7 +2650,13 @@
         61
       ],
       "anchorContract": "FRONTMOST_SOURCE_SUPPORT_CONTACT_PLUS_4PX_TRANSPARENT_GUTTER",
-      "sha256": "9bc97c278a0475ad6c26b32ef7afe1155f78e704824ceca35edafc9b679c8acf"
+      "sha256": "7debc53a7479710070cf0d402a0446daeae43668dd9e332c925761d789c7083c",
+      "footRegion": [
+        0,
+        60,
+        69,
+        71
+      ]
     },
     {
       "id": "lamp_pool",
@@ -3975,16 +4337,16 @@
           "asset": "bench_back_down",
           "scene": "east",
           "sourceWorld": [
-            -358.01,
+            -334.01,
             763.29
           ],
           "anchor": [
-            31,
-            48
+            57,
+            51
           ],
           "nativeSize": [
-            60,
-            52
+            65,
+            55
           ],
           "sourceFrame": 45,
           "matchError": 0.0,
@@ -3994,16 +4356,16 @@
           "asset": "bench_back_down",
           "scene": "east",
           "sourceWorld": [
-            -302.0,
+            -278.0,
             791.42
           ],
           "anchor": [
-            31,
-            48
+            57,
+            51
           ],
           "nativeSize": [
-            60,
-            52
+            65,
+            55
           ],
           "sourceFrame": 46,
           "matchError": 0.00647,
@@ -4013,16 +4375,16 @@
           "asset": "bench_front_down",
           "scene": "east",
           "sourceWorld": [
-            -578.0,
-            869.42
+            -571.0,
+            874.42
           ],
           "anchor": [
-            29,
-            56
+            38,
+            63
           ],
           "nativeSize": [
-            57,
-            60
+            62,
+            67
           ],
           "sourceFrame": 46,
           "matchError": 0.0,
@@ -4051,16 +4413,16 @@
           "asset": "bench_front_down",
           "scene": "east",
           "sourceWorld": [
-            -522.0,
-            897.49
+            -515.0,
+            902.49
           ],
           "anchor": [
-            29,
-            56
+            38,
+            63
           ],
           "nativeSize": [
-            57,
-            60
+            62,
+            67
           ],
           "sourceFrame": 47,
           "matchError": 0.046315,
@@ -4298,16 +4660,16 @@
           "asset": "bench_front_down",
           "scene": "east",
           "sourceWorld": [
-            348.5,
-            1052.46
+            355.5,
+            1057.46
           ],
           "anchor": [
-            29,
-            56
+            38,
+            63
           ],
           "nativeSize": [
-            57,
-            60
+            62,
+            67
           ],
           "sourceFrame": 38,
           "matchError": 0.005081,
@@ -4507,16 +4869,16 @@
           "asset": "bench_back_up",
           "scene": "east",
           "sourceWorld": [
-            -593.0,
-            1103.42
+            -615.0,
+            1104.42
           ],
           "anchor": [
-            31,
-            55
+            10,
+            58
           ],
           "nativeSize": [
-            62,
-            59
+            65,
+            62
           ],
           "sourceFrame": 46,
           "matchError": 0.0,
@@ -4545,16 +4907,16 @@
           "asset": "bench_front_down",
           "scene": "east",
           "sourceWorld": [
-            -73.98,
-            1121.77
+            -66.98,
+            1126.77
           ],
           "anchor": [
-            29,
-            56
+            38,
+            63
           ],
           "nativeSize": [
-            57,
-            60
+            62,
+            67
           ],
           "sourceFrame": 54,
           "matchError": 0.003442,
@@ -4564,16 +4926,16 @@
           "asset": "bench_front_down",
           "scene": "east",
           "sourceWorld": [
-            488.51,
-            1122.51
+            495.51,
+            1127.51
           ],
           "anchor": [
-            29,
-            56
+            38,
+            63
           ],
           "nativeSize": [
-            57,
-            60
+            62,
+            67
           ],
           "sourceFrame": 39,
           "matchError": 0.004272,
@@ -4602,16 +4964,16 @@
           "asset": "bench_front_up",
           "scene": "east",
           "sourceWorld": [
-            -295.98,
-            1130.77
+            -300.98,
+            1137.77
           ],
           "anchor": [
-            30,
-            61
+            28,
+            71
           ],
           "nativeSize": [
-            62,
-            65
+            69,
+            75
           ],
           "sourceFrame": 54,
           "matchError": 0.004898,
@@ -4621,16 +4983,16 @@
           "asset": "bench_front_up",
           "scene": "east",
           "sourceWorld": [
-            658.5,
-            1131.25
+            653.5,
+            1138.25
           ],
           "anchor": [
-            30,
-            61
+            28,
+            71
           ],
           "nativeSize": [
-            62,
-            65
+            69,
+            75
           ],
           "sourceFrame": 36,
           "matchError": 0.049927,
@@ -4659,16 +5021,16 @@
           "asset": "bench_front_down",
           "scene": "east",
           "sourceWorld": [
-            -17.98,
-            1149.77
+            -10.980000000000018,
+            1154.77
           ],
           "anchor": [
-            29,
-            56
+            38,
+            63
           ],
           "nativeSize": [
-            57,
-            60
+            62,
+            67
           ],
           "sourceFrame": 54,
           "matchError": 0.048436,
@@ -4808,16 +5170,16 @@
           "asset": "bench_front_up",
           "scene": "east",
           "sourceWorld": [
-            -407.98,
-            1186.77
+            -412.98,
+            1193.77
           ],
           "anchor": [
-            30,
-            61
+            28,
+            71
           ],
           "nativeSize": [
-            62,
-            65
+            69,
+            75
           ],
           "sourceFrame": 54,
           "matchError": 0.0,
@@ -4904,12 +5266,12 @@
             1224.01
           ],
           "anchor": [
-            30,
-            61
+            28,
+            71
           ],
           "nativeSize": [
-            62,
-            65
+            69,
+            75
           ],
           "sourceFrame": 28,
           "evidence": "SOURCE_CLEAR_SAME_FACING_REUSE"

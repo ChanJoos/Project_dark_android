@@ -1,3 +1,12 @@
+abel_repair_v148:
+  status: IMPLEMENTED_NATIVE_BUILD_PENDING
+  supersedes_visual: V147_USER_REJECTED
+  coast_departure: ABEL_EAST_NPC_ONLY
+  npc_profiles: 29
+  phone: PENDING
+  user_visual: PENDING
+  handoff: docs/CHAT_HANDOFF.md
+
 abel_video_v147:
   active_branch: codex/abel-coast-v139
   first_media_save: 9eae03fecc650153ca2c0eec7642007f041ac09d
