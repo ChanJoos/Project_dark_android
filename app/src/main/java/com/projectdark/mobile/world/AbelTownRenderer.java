@@ -104,7 +104,7 @@ public final class AbelTownRenderer {
         if (b != null) {
             return b;
         }
-        if(name.startsWith("bench_")){b=completeBench(name);assets.put(name,b);return b;}
+        if(name.startsWith("bench_")){b=(name.equals("bench_sw")||name.equals("bench_se"))?new MillesSourceStyle(context.getAssets()).completeBench(name.equals("bench_se")?"bench_video_cutout_02":"bench_video_cutout_01"):completeBench(name);assets.put(name,b);return b;}
         try {
             InputStream in = this.context.getAssets().open("abel-town-v144/" + name + ".png");
             try {
@@ -186,12 +186,10 @@ public final class AbelTownRenderer {
         material(c,"stone_material",floorAreas.get("stone_material"));
         c.save();c.clipPath(floorAreas.get("stone_material"));floorPaint.setShader(null);floorPaint.setAntiAlias(false);floorPaint.setStyle(Paint.Style.FILL);floorPaint.setAlpha(255);
         for(int u=-2;u<=46;u+=2)for(int v=-2;v<=46;v+=2){float x=fx(u,v),y=fy(u,v);if(x<ox-70||x>ox+c.getWidth()+70||y<oy-40||y>oy+c.getHeight()+40)continue;
-            slab.reset();diamond(slab,u,v,.985f);int tone=((u*13+v*7)&3);floorPaint.setColor(new int[]{0xffb4c0bd,0xffbac5c1,0xffb6c1bd,0xffbdc7c3}[tone]);c.drawPath(slab,floorPaint);
-            floorPaint.setColor(0xffccd5cc);floorPaint.setStrokeWidth(1);c.drawLine(x-63,y,x,y-31,floorPaint);c.drawLine(x,y-31,x+63,y,floorPaint);
+            slab.reset();diamond(slab,u,v,.985f);int tone=((u*13+v*7)&3);floorPaint.setColor(new int[]{0xffb4c0bd,0xffbac5c1,0xffb6c1bd,0xffbdc7c3}[tone]);floorPaint.setAlpha(24);c.drawPath(slab,floorPaint);
+            floorPaint.setColor(0xffc6cec6);floorPaint.setAlpha(85);floorPaint.setStrokeWidth(1);c.drawLine(x-63,y,x,y-31,floorPaint);c.drawLine(x,y-31,x+63,y,floorPaint);
         }c.restore();
-        fill(c,floorAreas.get("cobble_material"),0xff9fa89e);c.save();c.clipPath(floorAreas.get("cobble_material"));
-        for(int yy=(int)oy/8*8;yy<oy+c.getHeight()+8;yy+=8)for(int xx=(int)ox/12*12;xx<ox+c.getWidth()+12;xx+=12){int h=hash(xx,yy);float x=xx+(h&7),y=yy+((h>>>3)&3);floorPaint.setColor(new int[]{0xffbcc1b3,0xffacb1a4,0xff8d978e,0xffc4c7b6}[(h>>>6)&3]);c.drawOval(x,y,x+7+(h&3),y+4,floorPaint);}
-        c.restore();
+        material(c,"cobble_material",floorAreas.get("cobble_material"));floorPaint.setShader(null);floorPaint.setStyle(Paint.Style.FILL);floorPaint.setColor(0xffb3b8ad);floorPaint.setAlpha(65);c.drawPath(floorAreas.get("cobble_material"),floorPaint);
         fill(c,floorAreas.get("water_material"),0xff23617c);c.save();c.clipPath(floorAreas.get("water_material"));
         // World-phased quiet ripples; no paving-derived repeated water bitmap.
         for(int yy=(int)oy/18*18;yy<oy+c.getHeight()+18;yy+=18)for(int xx=(int)ox/31*31;xx<ox+c.getWidth()+31;xx+=31){int h=hash(xx,yy);if((h&3)==0)continue;float x=xx+(h&15),y=yy+((h>>>4)&7);floorPaint.setColor((h&4)==0?0xff33758b:0xff2c6b83);floorPaint.setStrokeWidth(1);c.drawLine(x,y,x+9+(h&7),y-1,floorPaint);if((h&7)==1){floorPaint.setColor(0xff49879a);c.drawLine(x+2,y+2,x+6,y+2,floorPaint);}}
@@ -210,12 +208,12 @@ public final class AbelTownRenderer {
         float cx=36,gy=52,sy=gy-19;
         // Feet and supports meet the same ground projection; neither cutouts nor color-key matting.
         for(int end:new int[]{-1,1})for(int side:new int[]{-1,1}){float x=cx+end*ax*.86f+side*bx*.72f,y=sy+end*ay*.86f+side*by*.72f;
-            q.setColor(0xff20282a);q.setStrokeWidth(3);c.drawLine(x,y,x,y+19,q);q.setColor(0xff566065);q.setStrokeWidth(1);c.drawLine(x-1,y+2,x-1,y+17,q);q.setColor(0xff222a2d);c.drawRect(x-3,y+18,x+4,y+20,q);
+            q.setColor(0xff20282a);q.setStrokeWidth(4);c.drawLine(x,y,x+end*1.5f,y+17,q);q.setColor(0xff566065);q.setStrokeWidth(1);c.drawLine(x-1,y+2,x-1,y+17,q);q.setColor(0xff222a2d);c.drawRect(x-4,y+17,x+5,y+20,q);
         }
         // Back slats lie on the opposite side from the pool-facing seat edge.
         for(int slat=0;slat<3;slat++){float y=sy-by-17+slat*4;wood(c,q,cx-ax-bx,y-ay,cx+ax-bx,y+ay,3.5f);}
         for(int strip=0;strip<4;strip++){float t=-1+strip*.6f;wood(c,q,cx-ax+t*bx,sy-ay+t*by,cx+ax+t*bx,sy+ay+t*by,3);}
-        for(int end:new int[]{-1,1}){q.setColor(0xff20292b);q.setStrokeWidth(2);c.drawLine(cx+end*ax-bx,sy+end*ay-by-18,cx+end*ax-bx,sy+end*ay-by,q);c.drawLine(cx+end*ax-bx,sy+end*ay-by-5,cx+end*ax+bx,sy+end*ay+by-5,q);}
+        for(int end:new int[]{-1,1}){q.setColor(0xff20292b);q.setStrokeWidth(2);c.drawLine(cx+end*ax-bx,sy+end*ay-by-18,cx+end*ax-bx,sy+end*ay-by,q);Path arm=new Path();arm.moveTo(cx+end*ax-bx,sy+end*ay-by-7);arm.quadTo(cx+end*ax+bx+end*3,sy+end*ay+by-12,cx+end*ax+bx,sy+end*ay+by);c.drawPath(arm,q);}
         return b;
     }
     private void wood(Canvas c,Paint q,float x0,float y0,float x1,float y1,float width){q.setStrokeWidth(width);q.setColor(0xff713b20);c.drawLine(x0,y0+1,x1,y1+1,q);q.setStrokeWidth(width-1);q.setColor(0xffb77735);c.drawLine(x0,y0,x1,y1,q);q.setStrokeWidth(1);q.setColor(0xffd19950);c.drawLine(x0,y0-1,x1,y1-1,q);}
