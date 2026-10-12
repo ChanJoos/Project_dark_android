@@ -41,7 +41,7 @@ public final class TownInteriorRenderer {
  }
  private void wall(Canvas c,WorldRuntimeAdapter w,TownInteriorDef d,boolean left){
   int count=(left?d.rows:d.columns)-1;
-  boolean stone=d.kind==TownInteriorDef.Kind.CHURCH,boards=d.kind==TownInteriorDef.Kind.EQUIPMENT||d.kind==TownInteriorDef.Kind.INN;
+  boolean stone=d.kind==TownInteriorDef.Kind.CHURCH||(d.isAbel()&&d.kind==TownInteriorDef.Kind.INN),boards=d.kind==TownInteriorDef.Kind.EQUIPMENT||(d.kind==TownInteriorDef.Kind.INN&&!d.isAbel());
   float height=stone?112:96,sign=left?-1:1;
   WorldCameraTransform.Point origin=w.worldToScreen(TownInteriorDef.x(0,0),TownInteriorDef.y(0,0));
   float x=origin.x,y=origin.y,length=count*32;

@@ -6,13 +6,14 @@ public final class TownInteriorDef {
  public enum Kind { REAGENT,EQUIPMENT,BANK,CHURCH,INN }
  public static final float MIN_X=64,MAX_X=896,MIN_Y=0,MAX_Y=540;
  public static final class Prop {
-  public final String asset;public final int u,v;public final float width,lift;public final boolean blocking;public final int cellsU,cellsV;
+  public final String asset;public final int u,v;public final float width,lift,sourceGroundX,sourceGroundY;public final boolean blocking;public final int cellsU,cellsV;
   public Prop(String a,int u,int v,float w){this(a,u,v,w,0,true);}
   public Prop(String a,int u,int v,float w,float lift,boolean blocking){this(a,u,v,w,lift,blocking,1,1);}
-  public Prop(String a,int u,int v,float w,float lift,boolean blocking,int cellsU,int cellsV){asset=a;this.u=u;this.v=v;width=w;this.lift=lift;this.blocking=blocking;this.cellsU=cellsU;this.cellsV=cellsV;}
+  public Prop(String a,int u,int v,float w,float lift,boolean blocking,int cellsU,int cellsV){this(a,u,v,w,lift,blocking,cellsU,cellsV,Float.NaN,Float.NaN);}
+  public Prop(String a,int u,int v,float w,float lift,boolean blocking,int cellsU,int cellsV,float sx,float sy){sourceGroundX=sx;sourceGroundY=sy;asset=a;this.u=u;this.v=v;width=w;this.lift=lift;this.blocking=blocking;this.cellsU=cellsU;this.cellsV=cellsV;}
   public boolean occupies(int tu,int tv){return blocking&&tu>=u&&tu<u+cellsU&&tv>=v&&tv<v+cellsV;}
-  public float depthY(){return y()+16*(cellsU+cellsV-2);}
-  public float x(){return TownInteriorDef.x(u,v);}public float y(){return TownInteriorDef.y(u,v);}
+  public float depthY(){return y()+(Float.isNaN(sourceGroundY)?16*(cellsU+cellsV-2):0);}
+  public float x(){return Float.isNaN(sourceGroundX)?TownInteriorDef.x(u,v):sourceGroundX;}public float y(){return Float.isNaN(sourceGroundY)?TownInteriorDef.y(u,v):sourceGroundY;}
  }
 
  public final Kind kind;public final String mapId,title,npcName,npcId,outfit,doorId;
@@ -69,7 +70,7 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
  // A complete, explicitly adapted L counter encloses the keeper; discarded screenshot sliver.
  for(int u=7;u<=13;u++)p.add(new Prop("joined_counter",u,6,64));
  for(int v=2;v<6;v++)p.add(new Prop("joined_counter_sw",7,v,64));
- for(int i=0;i<AbelVideoLayout.INN_ASSETS.length;i++){String asset=AbelVideoLayout.INN_ASSETS[i];if(asset.equals("inn_counter_segment"))continue;float wx=480+(AbelVideoLayout.INN_PROPS[i][0]-310)*AbelVideoLayout.SCALE,wy=132+(AbelVideoLayout.INN_PROPS[i][1]+100)*AbelVideoLayout.SCALE;int tu=Math.max(1,Math.min(columns-2,Math.round(((wx-480)/32+(wy-132)/16)/2))),tv=Math.max(1,Math.min(rows-2,Math.round(((wy-132)/16-(wx-480)/32)/2)));boolean table=asset.startsWith("inn_table");p.add(new Prop("abel_video:"+i+":"+asset,tu,tv,table?120:32,0,true,table?2:1,table?2:1));}
+ for(int i=0;i<AbelVideoLayout.INN_ASSETS.length;i++){String asset=AbelVideoLayout.INN_ASSETS[i];if(asset.equals("inn_counter_segment"))continue;float wx=480+(AbelVideoLayout.INN_PROPS[i][0]-310)*AbelVideoLayout.SCALE,wy=132+(AbelVideoLayout.INN_PROPS[i][1]+100)*AbelVideoLayout.SCALE;int tu=Math.max(1,Math.min(columns-2,Math.round(((wx-480)/32+(wy-132)/16)/2))),tv=Math.max(1,Math.min(rows-2,Math.round(((wy-132)/16-(wx-480)/32)/2)));boolean table=asset.startsWith("inn_table");p.add(new Prop("abel_video:"+i+":"+asset,table?tu-1:tu,table?tv-1:tv,table?120:32,0,true,table?2:1,table?2:1,wx,wy));}
  p.add(new Prop("inn_world_hearth",1,4,96,0,true,1,2));p.add(new Prop("storage_barrel",2,1,35));
  // Remaining observed dining-table locations reuse the supplied table family, not new art.
  p.add(new Prop("inn_world_table",2,9,110,0,true,2,1));p.add(new Prop("inn_world_chair_ne",3,10,32));p.add(new Prop("inn_world_chair_sw",2,8,32));
