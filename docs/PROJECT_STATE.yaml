@@ -1,11 +1,17 @@
 abel_visual_v146:
   owner: Director_single_editor
   active_branch: codex/abel-coast-v139
-  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
   publication: USER_EXPLICITLY_APPROVED_20261012
   rejected_versions: [144,145]
   recovered_assets_checkpoint: 51875a80588f45f60cc5f6f95a8ece4d0b7e0ed5
   recovery: RECONSTRUCTED_FROM_V145_APK_NOT_EXACT_LOST_COMMIT
+  runtime_source_sha: 2c60e33efe8c12671e08f26af59f2fe3d9857f05
+  focused_run: 38234421107
+  unique_tests: 113
+  suites: 23
+  apk_artifact: 11740328179
+  evidence: master/changes/V146_BUILD_RUNTIME_RECEIPT.json
   handoff: docs/ABEL_V146_RECOVERY_CHECKPOINT.md
   physical_phone: PENDING
   user_visual: PENDING

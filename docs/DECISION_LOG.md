@@ -1,3 +1,7 @@
+## 2026-10-12 — V146 entry verification follows restored town route
+
+Noah preview enters MAP_ABEL_TOWN before MAP_ABEL_COAST. Retain the restored town route; update the stale coast-only expectation and verify actual town gate travel with no level/EXP/D04 grants. No runtime balance/source-art change. Exact candidate receipt: master/changes/V146_BUILD_RUNTIME_RECEIPT.json; user phone/visual acceptance pending.
+
 ## 2026-10-12 — V146 Abel visual repair and durable source recovery
 
 V144/V145 USER_VISUAL_REJECTED: road/water/floor patterns and bench supports. User explicitly authorized GitHub publication of ongoing work. Checkpoint51875a8 preserves22 recovered town PNGs/manifest and recovery instructions; current integration reconstructed from recovered V145 APK plus retained source records. Exact unpublished V144/V145 commits remain unavailable, not falsely recovered. Full geometry/renderer/integration/native tests are now saved in this branch. New adapted Canvas bench supports/feet/ground anchor and independent coherent floor/water rendering implement Milles V102/V103 lessons. Check docs/ABEL_V146_RECOVERY_CHECKPOINT.md; master/source/abel_v146_recovery contains immutable decompiled evidence. BUILD/NATIVE pending running checks; no repaired APK certified yet. Original whole town coordinates/building identity joins/interiors and user visual acceptance OPEN. Continue samePR195; do not re-audit or regenerate accepted forest/player art.
