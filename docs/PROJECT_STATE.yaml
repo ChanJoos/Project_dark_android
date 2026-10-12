@@ -2,7 +2,14 @@ abel_video_v147:
   active_branch: codex/abel-coast-v139
   first_media_save: 9eae03fecc650153ca2c0eec7642007f041ac09d
   publication: EXPLICITLY_APPROVED_20261013_PUBLISHED
-  status: BENCH_NPC_DOOR_REPAIR_NATIVE_PENDING
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  runtime_source_sha: 3125ab808b01c71049e271043ff10954112e3350
+  focused_run: 38294650809
+  unique_tests: 114
+  suites: 23
+  apk_artifact: 11768851339
+  evidence: master/changes/V147_BUILD_RUNTIME_RECEIPT.json
+  broader_android: IN_PROGRESS_UNCERTIFIED_AT_RECEIPT
   npc_profiles: 28
   interiors: 5
   observed_main_cells: 2029
