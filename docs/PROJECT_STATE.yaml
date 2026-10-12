@@ -1,6 +1,12 @@
 abel_repair_v148:
-  status: IMPLEMENTED_NATIVE_BUILD_PENDING
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
   supersedes_visual: V147_USER_REJECTED
+  runtime_source_sha: 0f88c305e06a83a1ac0372df8ea4a8b6183c5ad9
+  focused_run: 38314035520
+  unique_tests: 117
+  suites: 23
+  apk_artifact: 11775863100
+  evidence: master/changes/V148_BUILD_RUNTIME_RECEIPT.json
   coast_departure: ABEL_EAST_NPC_ONLY
   npc_profiles: 29
   phone: PENDING

@@ -1,0 +1,61 @@
+{
+  "version": 148,
+  "runtime_source": "0f88c305e06a83a1ac0372df8ea4a8b6183c5ad9",
+  "focused_run": 38314035520,
+  "run_url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38314035520",
+  "conclusion": "success",
+  "unique_tests": 117,
+  "suites": 23,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "execution": "Robolectric NATIVE SDK34; not physical phone",
+  "build": {
+    "sourceCommit": "0f88c305e06a83a1ac0372df8ea4a8b6183c5ad9",
+    "runId": "38314035520",
+    "versionCode": 148,
+    "versionName": "1.48-abel-bench-inn-travel",
+    "applicationId": "com.projectdark.mobile.v148test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "2de9946320f733452d01c88bd8c7df48ef94a3f16e4893fdf7cc29e2832ea550",
+    "apkBytes": 69617946,
+    "builtSeoul": "2026-10-13T07:05:03.942501+09:00",
+    "scope": "V147 Abel source-visible main/east district geometry, 53 source sprites, intact bench support contact pivots, five adapted service door/room joins, unique fixed-SW player-style Abel NPCs and matching keeper dialogue/UI avatars; actual door/exit/NPC/merchant purchase/bank/healing/restart and12 round-trip native checks. Original whole-map extent, clipped facades, role identities and unseen interiors remain partial/ADAPTED; phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "current_scope": "Complete observed original bench feet for all four facings, actual floor-foot pixel preservation; Abel inn stone/timber walls, full adapted L counter, source table/bench family, indexed furniture instances, exact source foot depth and collision alignment, 50G paid HP/MP rest with restart; new unique fixed SW player-style Kenneth departure NPC in Abel east; Milles only forest/Abel TOWN, coast only via Abel NPC button; auto-coast portal removed and objective route stops at NPC; twelve actual round trips and lock tests; preserved forest/HUD/skills/combat/save regressions",
+  "visual_review": "Exact latest native four placed bench/floor closeups, inn entry, keeper/rest and coast departure dialogue reviewed. User acceptance pending; V147 remains VISUAL_REJECTED_USER_REPORTED.",
+  "packaged_bytes_verified": "53 PNGs+all Abel pack metadata and 29 NPC profiles byte-match source; APK hash/CRC and all three artifact digests verified",
+  "artifacts": [
+    {
+      "id": 11776336284,
+      "kind": "preview",
+      "digest": "40e078ccd77286dd5f5ab20f00d345b9ad7e5f0d1988840f173c41ad88a10415"
+    },
+    {
+      "id": 11775897929,
+      "kind": "native",
+      "digest": "0495349502a926467a765841f8f03dfc4a9b465a8783b53d97d706ebd9174722"
+    },
+    {
+      "id": 11775863100,
+      "kind": "apk",
+      "digest": "8735fcb99db59473da928adaedb72043c4adc02a61ed2863fd481860310a9583"
+    }
+  ],
+  "broader_android_runs": [
+    38314040776,
+    38314035557
+  ],
+  "broader_android_status": "IN_PROGRESS_UNCERTIFIED_AT_RECEIPT",
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "integration": "draft PR195, unmerged",
+  "remaining_original_scope": [
+    "Whole original map extent and unseen surfaces unknown",
+    "Inn walls/L counter/hearth and occluded table placements ADAPTED; five table placements use observed source art family",
+    "Four other service-role joins and authored rooms remain ADAPTED"
+  ]
+}
