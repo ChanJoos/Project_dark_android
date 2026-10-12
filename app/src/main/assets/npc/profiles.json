@@ -9,7 +9,7 @@
       "role": "마을 경비",
       "outfit": "mu0000059,mh124,ml255",
       "weapon": "mw015",
-      "rationale": "마을 경비의 역할에 맞는 독립 복장·머리 구성"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "milles_gate_proto",
@@ -18,16 +18,16 @@
       "role": "숲길 경비",
       "outfit": "mu0000057,mh108,ml243",
       "weapon": "mw015",
-      "rationale": "숲길 경비의 역할에 맞는 독립 복장·머리 구성"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "pote_travel_guide",
       "name": "Noah",
       "rank": 60,
-      "role": "숲 여행 안내",
+      "role": "아벨·포테 이동",
       "outfit": "mu0000102,mh007,ml240",
       "weapon": null,
-      "rationale": "숲 여행 안내의 역할에 맞는 독립 복장·머리 구성"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "milles_west_proto",
@@ -36,7 +36,7 @@
       "role": "서부 주민",
       "outfit": "mu0000030,mh010,ml243",
       "weapon": null,
-      "rationale": "서부 주민의 역할에 맞는 독립 복장·머리 구성"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "milles_market_proto",
@@ -45,61 +45,7 @@
       "role": "시장 상인",
       "outfit": "mu0000237,mh232,ml240",
       "weapon": null,
-      "rationale": "시장 상인의 역할에 맞는 독립 복장·머리 구성"
-    },
-    {
-      "id": "pote_trail_guide",
-      "name": "Alexander",
-      "rank": 43,
-      "role": "숲길 안내",
-      "outfit": "mu0000365,mh009,ml255",
-      "weapon": null,
-      "rationale": "숲길 안내의 역할에 맞는 독립 복장·머리 구성"
-    },
-    {
-      "id": "interior_reagent",
-      "name": "Henry",
-      "rank": 56,
-      "role": "시약상",
-      "outfit": "mu0000117,mh132,ml240",
-      "weapon": "mw024",
-      "rationale": "시약상의 역할에 맞는 독립 복장·머리 구성"
-    },
-    {
-      "id": "interior_equipment",
-      "name": "Logan",
-      "rank": 78,
-      "role": "장비상",
-      "outfit": "mu0000055,mh005,ml255",
-      "weapon": null,
-      "rationale": "장비상의 역할에 맞는 독립 복장·머리 구성"
-    },
-    {
-      "id": "interior_bank",
-      "name": "Charles",
-      "rank": 11,
-      "role": "은행원",
-      "outfit": "mu0000202,mh006,ml243",
-      "weapon": null,
-      "rationale": "은행원의 역할에 맞는 독립 복장·머리 구성"
-    },
-    {
-      "id": "interior_church",
-      "name": "Joseph",
-      "rank": 8,
-      "role": "사제",
-      "outfit": "mu0000210,mh008,ml240",
-      "weapon": "mw026",
-      "rationale": "사제의 역할에 맞는 독립 복장·머리 구성"
-    },
-    {
-      "id": "interior_inn",
-      "name": "Benjamin",
-      "rank": 39,
-      "role": "여관 주인",
-      "outfit": "mu0000025,mh011,ml243",
-      "weapon": null,
-      "rationale": "여관 주인의 역할에 맞는 독립 복장·머리 구성"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "milles_job_counselor",
@@ -108,7 +54,52 @@
       "role": "직업 상담관",
       "outfit": "mu0000007,mh132,ml255",
       "weapon": "mw015",
-      "rationale": "다섯 기본 직업의 선택과 입문 장비를 안내하는 신규 NPC"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "pote_trail_guide",
+      "name": "Alexander",
+      "rank": 43,
+      "role": "숲길 안내",
+      "outfit": "mu0000365,mh009,ml255",
+      "weapon": null,
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "interior_reagent",
+      "name": "Henry",
+      "rank": 56,
+      "role": "시약상",
+      "outfit": "mu0000117,mh132,ml240",
+      "weapon": "mw024",
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "interior_equipment",
+      "name": "Logan",
+      "rank": 78,
+      "role": "장비상",
+      "outfit": "mu0000055,mh005,ml255",
+      "weapon": null,
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "interior_bank",
+      "name": "Charles",
+      "rank": 11,
+      "role": "은행원",
+      "outfit": "mu0000202,mh006,ml243",
+      "weapon": null,
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "interior_church",
+      "name": "Joseph",
+      "rank": 8,
+      "role": "사제",
+      "outfit": "mu0000210,mh008,ml240",
+      "weapon": "mw026",
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "mentor_warrior",
@@ -117,7 +108,7 @@
       "role": "전사 지도자",
       "outfit": "mu0000059,mh005,ml255",
       "weapon": "mw015",
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "mentor_rogue",
@@ -126,7 +117,7 @@
       "role": "도적 지도자",
       "outfit": "mu0000055,mh010,ml243",
       "weapon": "mw024",
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "mentor_mage",
@@ -135,7 +126,7 @@
       "role": "마법사 지도자",
       "outfit": "mu0000117,mh006,ml240",
       "weapon": "mw024",
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "mentor_cleric",
@@ -144,7 +135,7 @@
       "role": "성직자 지도자",
       "outfit": "mu0000210,mh011,ml243",
       "weapon": "mw026",
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "mentor_monk",
@@ -153,7 +144,7 @@
       "role": "무도가 지도자",
       "outfit": "mu0000057,mh007,ml255",
       "weapon": null,
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "piet_investigator",
@@ -162,7 +153,7 @@
       "role": "피에트 조사 담당",
       "outfit": "mu0000030,mh009,ml243",
       "weapon": null,
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "piet_supplier",
@@ -171,7 +162,7 @@
       "role": "피에트 보급 담당",
       "outfit": "mu0000237,mh124,ml240",
       "weapon": null,
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "piet_purifier",
@@ -180,7 +171,34 @@
       "role": "정화 담당",
       "outfit": "mu0000202,mh008,ml243",
       "weapon": "mw026",
-      "rationale": "역할별 실제 원본 의상·머리·장비 조합"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "abel_coast_guide",
+      "name": "Patrick",
+      "rank": 45,
+      "role": "아벨 해안 조사",
+      "outfit": "mu0000365,mh124,ml255",
+      "weapon": null,
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "abel_supplier",
+      "name": "Aaron",
+      "rank": 50,
+      "role": "아벨 보급",
+      "outfit": "mu0000237,mh009,ml240",
+      "weapon": null,
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+    },
+    {
+      "id": "interior_inn",
+      "name": "Benjamin",
+      "rank": 39,
+      "role": "여관 주인",
+      "outfit": "mu0000025,mh011,ml243",
+      "weapon": null,
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "abel_town_travel",
@@ -189,7 +207,7 @@
       "role": "밀레스 이동",
       "outfit": "mu0000102,mh006,ml243",
       "weapon": null,
-      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "abel_interior_reagent",
@@ -198,7 +216,7 @@
       "role": "아벨 시약상",
       "outfit": "mu0000117,mh007,ml255",
       "weapon": "mw024",
-      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "abel_interior_equipment",
@@ -207,7 +225,7 @@
       "role": "아벨 장비상",
       "outfit": "mu0000055,mh008,ml243",
       "weapon": "mw015",
-      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "abel_interior_bank",
@@ -216,7 +234,7 @@
       "role": "아벨 은행원",
       "outfit": "mu0000202,mh010,ml240",
       "weapon": null,
-      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "abel_interior_church",
@@ -225,7 +243,7 @@
       "role": "아벨 사제",
       "outfit": "mu0000210,mh132,ml255",
       "weapon": "mw026",
-      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     },
     {
       "id": "abel_interior_inn",
@@ -234,7 +252,7 @@
       "role": "아벨 여관 주인",
       "outfit": "mu0000025,mh009,ml240",
       "weapon": null,
-      "rationale": "아벨 독립 ADAPTED 정체성; 기존 등록 원본 복장 조합, 고정 SW idle"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
     }
   ]
 }

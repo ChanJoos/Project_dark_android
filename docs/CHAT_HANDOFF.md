@@ -16,4 +16,7 @@ First checkpoint CI38289735529 failed3 obsolete V146 expectations (direct town�
 
 Reconstruction recipes: rebuild_abel_video_v147.py → refine_abel_video_v147.py → optional add_abel_main_lamps_v147.py → install_abel_video_v147.py → preview_abel_video_v147.py. Generated source/source receipts preserved. Do not run a generic new village reconstruction. Continue the same branch and inspect actual native screenshots after CI; clipped roofs and full original fidelity remain OPEN.
 
+## Additional keeper UI isolation
+The first72a8af1 focused native stage passed (run38291666474). Actual merchant UI review found the Abel inn still inherited a hardcoded Benjamin/Milles dialogue and tutorial mouse/turn-in branches. Those are now guarded to the original Milles room; the dialogue title reads the current keeper profile and town title. Add actual tap purchase/bank deposit/church healing/save tests and inn dialogue snapshots. Bring npc/profiles.json into exact agreement with all28 runtime profiles. Latest UI/source validation pending a new exact run; first stage passes do not certify these subsequent changes.
+
 Historical handoff: docs/history/CHAT_HANDOFF_PRE_V147_20261012.md.
