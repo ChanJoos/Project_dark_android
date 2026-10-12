@@ -8,10 +8,9 @@ import numpy as np,cv2,json,hashlib,argparse
 parser=argparse.ArgumentParser();parser.add_argument('--video',type=Path,required=True);args=parser.parse_args()
 root=Path(__file__).resolve().parents[1];out=root/'app/src/main/assets/abel-video-v147';src=root/'master/source/abel_video_v147';frames=src/'reference_frames'
 out.mkdir(parents=True,exist_ok=True);frames.mkdir(parents=True,exist_ok=True)
-cap=cv2.VideoCapture(str(args.video));images={}
-for i in range(54):
- cap.set(cv2.CAP_PROP_POS_MSEC,(i+.5)*1000);ok,a=cap.read();assert ok
- a=cv2.resize(a[:,210:2130],(640,480),interpolation=cv2.INTER_AREA);a=cv2.cvtColor(a,cv2.COLOR_BGR2RGB);images[i+1]=Image.fromarray(a);images[i+1].save(frames/f'{i+1:03d}.png')
+import subprocess
+subprocess.run(['ffmpeg','-y','-v','error','-i',str(args.video),'-vf','fps=1,crop=1920:1080:210:0,scale=640:480:flags=area',str(frames/'%03d.png')],check=True)
+images={i:Image.open(frames/f'{i:03d}.png').convert('RGB') for i in range(1,55)}
 assets=[]
 def asset(name,n,box,mode='polygon',poly=None,anchor=None,partial=False):
  a=np.array(images[n].crop(box).convert('RGBA'));h,w=a.shape[:2];m=Image.new('L',(w,h));poly=poly or [(0,0),(w-1,0),(w-1,h-1),(0,h-1)];ImageDraw.Draw(m).polygon(poly,fill=255);mask=np.array(m);rgb=a[:,:,:3].astype(float);hsv=cv2.cvtColor(a[:,:,:3],cv2.COLOR_RGB2HSV)
@@ -104,13 +103,20 @@ for key in ['main','east']:
     x=round((u-v)*28-cx);y=round((u+v)*14-cy)
     if not(30<x<605 and 25<y<385):continue
     sample=im[y-3:y+4,x-5:x+6];rgb=np.median(sample.reshape(-1,3),axis=0);hsv=cv2.cvtColor(sample,cv2.COLOR_RGB2HSV);sat=np.median(hsv[:,:,1]);rr,gg,bb=rgb
-    if bb>rr*1.3 and gg>rr*1.06:k=2 if key=='east' else 4
+    if bb>rr*1.3 and gg>rr*1.06:k=4 if bb>gg*1.55 and gg<90 else 2
     elif gg>rr*1.12 and gg>bb*1.15:k=5
     elif rr>bb*1.12 and rr>gg*1.08 and sat<105:k=1
     elif sat<65:k=0 if rgb.mean()>155 else 3
     else:continue
     votes[u,v,k]+=1
- grid=votes.argmax(2);scenes[key]['gridRows']=[''.join(map(str,row)) for row in grid]
+ grid=votes.argmax(2)
+ # Remove isolated object-colour samples; only continuous observed terrain survives.
+ for kind in [2,4,5]:
+  count,labels,stats,_=cv2.connectedComponentsWithStats(np.uint8(grid==kind),4)
+  for j in range(1,count):
+   if stats[j,cv2.CC_STAT_AREA]<8:grid[labels==j]=0
+ if key=='east':grid[15:24,58:62]=2
+ scenes[key]['gridRows']=[''.join(map(str,row)) for row in grid]
  scenes[key]['props'].sort(key=lambda p:p['sourceWorld'][1])
 receipt=dict(sourceVideo=args.video.name,libraryFileId='libfile_b12b5199c538819198ba49f39380eba0',sourceSha256=hashlib.sha256(args.video.read_bytes()).hexdigest(),sourceTile=[56,28],runtimeTile=[64,32],runtimeScale=8/7,assets=assets,views=views,scenes=scenes,scope='Source-visible only. Missing pixels, building identities and full topology remain unresolved. Ground extension and service joins are ADAPTED.')
 for p in [out/'layout.json',src/'layout.json']:p.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
