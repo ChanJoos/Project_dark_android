@@ -1,0 +1,5180 @@
+{
+  "sourceVideo": "Screen_Recording_20261012_192929_YouTube.mp4",
+  "libraryFileId": "libfile_b12b5199c538819198ba49f39380eba0",
+  "sourceSha256": "0ce85617ea9bb94194e4cca0d7bb147fdbdd044c395f3f3aaf1fea04bf25816b",
+  "sourceTile": [
+    56,
+    28
+  ],
+  "runtimeTile": [
+    64,
+    32
+  ],
+  "runtimeScale": 1.1428571428571428,
+  "assets": [
+    {
+      "id": "tile_white",
+      "sourceFrame": 28,
+      "box": [
+        229,
+        69,
+        285,
+        97
+      ],
+      "polygon": [
+        [
+          28,
+          0
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        28,
+        14
+      ],
+      "size": [
+        56,
+        28
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "8894532ee163cf47a9fdafa1baaee4e8a0e20f7573f8fef6f39529a1069e73ac"
+    },
+    {
+      "id": "tile_white_aged",
+      "sourceFrame": 28,
+      "box": [
+        257,
+        83,
+        313,
+        111
+      ],
+      "polygon": [
+        [
+          28,
+          0
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        28,
+        14
+      ],
+      "size": [
+        56,
+        28
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "5d3398b5a9a430476bacf43eaa2a1431165a18c8f124817a7ae1ce0ef755dfcc"
+    },
+    {
+      "id": "tile_brick_rosette",
+      "sourceFrame": 28,
+      "box": [
+        313,
+        27,
+        369,
+        55
+      ],
+      "polygon": [
+        [
+          28,
+          0
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        28,
+        14
+      ],
+      "size": [
+        56,
+        28
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "1740d934a1035228774778dcfb4c3976a6f957669b04d28fe35c97c8e320d74f"
+    },
+    {
+      "id": "tile_blue_water",
+      "sourceFrame": 28,
+      "box": [
+        89,
+        223,
+        145,
+        251
+      ],
+      "polygon": [
+        [
+          28,
+          0
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        28,
+        14
+      ],
+      "size": [
+        56,
+        28
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "e0fdefe20e578a5757197d8d3611f641de163b39f0ebcb41fb3338e176d74d28"
+    },
+    {
+      "id": "tile_rock_paving",
+      "sourceFrame": 54,
+      "box": [
+        313,
+        306,
+        369,
+        334
+      ],
+      "polygon": [
+        [
+          28,
+          0
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        28,
+        14
+      ],
+      "size": [
+        56,
+        28
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "fcaaa6a8bf510fe327786dbdbbe3b09a9153bec17236be4700b148ce9f5765aa"
+    },
+    {
+      "id": "tile_sea_water",
+      "sourceFrame": 19,
+      "box": [
+        525,
+        375,
+        581,
+        403
+      ],
+      "polygon": [
+        [
+          28,
+          0
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        28,
+        14
+      ],
+      "size": [
+        56,
+        28
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "de41493cf39968cf4c714039f84a6fa9d80e26ffd6cd0ba444e0cd2bd653da35"
+    },
+    {
+      "id": "tile_inn_checker",
+      "sourceFrame": 26,
+      "box": [
+        442,
+        246,
+        498,
+        274
+      ],
+      "polygon": [
+        [
+          28,
+          0
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          28,
+          27
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        28,
+        14
+      ],
+      "size": [
+        56,
+        28
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "88069578da4648535c6a4c75fd21552c906be836fb05f182ea15ba6009977cd3"
+    },
+    {
+      "id": "tree_broadleaf",
+      "sourceFrame": 43,
+      "box": [
+        22,
+        46,
+        86,
+        157
+      ],
+      "polygon": [
+        [
+          0,
+          17
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          42
+        ],
+        [
+          43,
+          111
+        ],
+        [
+          28,
+          111
+        ],
+        [
+          21,
+          84
+        ],
+        [
+          0,
+          62
+        ]
+      ],
+      "mode": "tree",
+      "anchor": [
+        35,
+        108
+      ],
+      "size": [
+        64,
+        111
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "f4f366ff07dd923a62c71e0c062ef522db38f745ec9dd2d1a883a84655bfd891"
+    },
+    {
+      "id": "tree_slender",
+      "sourceFrame": 28,
+      "box": [
+        396,
+        267,
+        455,
+        377
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          58,
+          0
+        ],
+        [
+          58,
+          109
+        ],
+        [
+          0,
+          109
+        ]
+      ],
+      "mode": "tree",
+      "anchor": [
+        27,
+        104
+      ],
+      "size": [
+        59,
+        110
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "49bef93ad096e10c3cfb3db29462b4345b2c4567f552306671024730ec225b04"
+    },
+    {
+      "id": "garden_tree_pair",
+      "sourceFrame": 5,
+      "box": [
+        84,
+        177,
+        178,
+        326
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          93,
+          0
+        ],
+        [
+          93,
+          148
+        ],
+        [
+          0,
+          148
+        ]
+      ],
+      "mode": "tree",
+      "anchor": [
+        44,
+        147
+      ],
+      "size": [
+        94,
+        149
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "fa1afbc630beaa1053c1d7fc8443db67be42126bf2c383c57f41ed2e64db62a5"
+    },
+    {
+      "id": "garden_tree_mass",
+      "sourceFrame": 2,
+      "box": [
+        243,
+        39,
+        438,
+        199
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          194,
+          0
+        ],
+        [
+          194,
+          159
+        ],
+        [
+          0,
+          159
+        ]
+      ],
+      "mode": "tree",
+      "anchor": [
+        110,
+        158
+      ],
+      "size": [
+        195,
+        160
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "b5bfa0c1fc627c708c73978c9518d6cdfa10a7fa74f6810b69c0ce7d383d78b9"
+    },
+    {
+      "id": "garden_foreground_grove",
+      "sourceFrame": 28,
+      "box": [
+        18,
+        287,
+        274,
+        408
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          255,
+          0
+        ],
+        [
+          255,
+          120
+        ],
+        [
+          0,
+          120
+        ]
+      ],
+      "mode": "tree",
+      "anchor": [
+        128,
+        118
+      ],
+      "size": [
+        256,
+        121
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "eb8f4134b891c402ff6181b1957f577bb83ceb1a678ddc6f1a7710888b241aa9"
+    },
+    {
+      "id": "flowerbed_orange",
+      "sourceFrame": 28,
+      "box": [
+        396,
+        23,
+        578,
+        132
+      ],
+      "polygon": [
+        [
+          18,
+          51
+        ],
+        [
+          82,
+          0
+        ],
+        [
+          156,
+          27
+        ],
+        [
+          181,
+          67
+        ],
+        [
+          103,
+          108
+        ],
+        [
+          0,
+          64
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        92,
+        98
+      ],
+      "size": [
+        182,
+        109
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "0240a6de2ca091fd99dbf88947fb7c46b946df9bf24456ae1b9359143219a620"
+    },
+    {
+      "id": "flower_red_clump",
+      "sourceFrame": 28,
+      "box": [
+        174,
+        0,
+        309,
+        39
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          134,
+          0
+        ],
+        [
+          134,
+          38
+        ],
+        [
+          0,
+          38
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        67.5,
+        38
+      ],
+      "size": [
+        135,
+        39
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "ab4f2490886198c3a5afcc99d3d9c3750145c84f5621073708a5a04ba1fcb939"
+    },
+    {
+      "id": "fountain",
+      "sourceFrame": 28,
+      "box": [
+        142,
+        185,
+        254,
+        312
+      ],
+      "polygon": [
+        [
+          52,
+          0
+        ],
+        [
+          61,
+          0
+        ],
+        [
+          65,
+          38
+        ],
+        [
+          81,
+          65
+        ],
+        [
+          102,
+          78
+        ],
+        [
+          111,
+          93
+        ],
+        [
+          109,
+          108
+        ],
+        [
+          93,
+          122
+        ],
+        [
+          59,
+          126
+        ],
+        [
+          23,
+          122
+        ],
+        [
+          1,
+          110
+        ],
+        [
+          0,
+          92
+        ],
+        [
+          13,
+          76
+        ],
+        [
+          31,
+          64
+        ],
+        [
+          39,
+          40
+        ],
+        [
+          52,
+          35
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        56,
+        119
+      ],
+      "size": [
+        112,
+        127
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "a2a7f6d3fe0d34a437161111a7a61df63dad5b2ef97b6d7dce7f432da05325b6"
+    },
+    {
+      "id": "lamp",
+      "sourceFrame": 46,
+      "box": [
+        224,
+        207,
+        247,
+        327
+      ],
+      "polygon": [
+        [
+          10,
+          0
+        ],
+        [
+          13,
+          4
+        ],
+        [
+          13,
+          9
+        ],
+        [
+          20,
+          14
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          19,
+          31
+        ],
+        [
+          15,
+          37
+        ],
+        [
+          15,
+          104
+        ],
+        [
+          21,
+          111
+        ],
+        [
+          22,
+          116
+        ],
+        [
+          15,
+          119
+        ],
+        [
+          6,
+          119
+        ],
+        [
+          0,
+          116
+        ],
+        [
+          0,
+          111
+        ],
+        [
+          9,
+          104
+        ],
+        [
+          9,
+          37
+        ],
+        [
+          4,
+          31
+        ],
+        [
+          1,
+          22
+        ],
+        [
+          3,
+          14
+        ],
+        [
+          9,
+          9
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        13,
+        119
+      ],
+      "size": [
+        23,
+        120
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "4ca3718420598bcf8805146c3d12b8c4f2953a2866ab2b6232332538fad3593e"
+    },
+    {
+      "id": "bench_front_down",
+      "sourceFrame": 46,
+      "box": [
+        190,
+        76,
+        247,
+        134
+      ],
+      "polygon": [
+        [
+          4,
+          0
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          56,
+          32
+        ],
+        [
+          48,
+          57
+        ],
+        [
+          0,
+          39
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        29,
+        54
+      ],
+      "size": [
+        57,
+        58
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "81819d246c827b549abb708581c569f3f355d8037e48746cea0c1583c8fa7ee7"
+    },
+    {
+      "id": "bench_front_up",
+      "sourceFrame": 54,
+      "box": [
+        127,
+        190,
+        189,
+        251
+      ],
+      "polygon": [
+        [
+          0,
+          28
+        ],
+        [
+          50,
+          0
+        ],
+        [
+          61,
+          8
+        ],
+        [
+          61,
+          30
+        ],
+        [
+          48,
+          55
+        ],
+        [
+          17,
+          60
+        ],
+        [
+          3,
+          48
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        30,
+        57
+      ],
+      "size": [
+        62,
+        61
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "564723eda2a47ca223043711bde33e46a9a49e5b86db7f3292c7ad2072170bb0"
+    },
+    {
+      "id": "bench_back_up",
+      "sourceFrame": 46,
+      "box": [
+        173,
+        304,
+        235,
+        367
+      ],
+      "polygon": [
+        [
+          4,
+          34
+        ],
+        [
+          43,
+          0
+        ],
+        [
+          58,
+          0
+        ],
+        [
+          61,
+          31
+        ],
+        [
+          47,
+          50
+        ],
+        [
+          16,
+          62
+        ],
+        [
+          0,
+          49
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        31,
+        60
+      ],
+      "size": [
+        62,
+        63
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "c660e4438f400eaa912dedb2aef2dfda1b6fda9ca3aae1c468320005beb74bde"
+    },
+    {
+      "id": "bench_back_down",
+      "sourceFrame": 45,
+      "box": [
+        534,
+        39,
+        594,
+        92
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          56,
+          27
+        ],
+        [
+          59,
+          40
+        ],
+        [
+          53,
+          52
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        31,
+        48
+      ],
+      "size": [
+        60,
+        53
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "400d436a152dfed0555a339d005a368b811530933fc7ba09c10ede56e781b731"
+    },
+    {
+      "id": "signpost",
+      "sourceFrame": 28,
+      "box": [
+        546,
+        337,
+        585,
+        380
+      ],
+      "polygon": [
+        [
+          0,
+          10
+        ],
+        [
+          17,
+          8
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          24,
+          1
+        ],
+        [
+          26,
+          9
+        ],
+        [
+          38,
+          11
+        ],
+        [
+          38,
+          20
+        ],
+        [
+          25,
+          23
+        ],
+        [
+          26,
+          42
+        ],
+        [
+          18,
+          42
+        ],
+        [
+          17,
+          25
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        22,
+        42
+      ],
+      "size": [
+        39,
+        43
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "60959f08389e422118756f0ca9a16f6ced4d9e09426e96f874f934076bd040b1"
+    },
+    {
+      "id": "banner",
+      "sourceFrame": 14,
+      "box": [
+        299,
+        12,
+        333,
+        113
+      ],
+      "polygon": [
+        [
+          2,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          28,
+          83
+        ],
+        [
+          16,
+          102
+        ],
+        [
+          13,
+          46
+        ],
+        [
+          0,
+          34
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        8,
+        102
+      ],
+      "size": [
+        34,
+        101
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "23a7cf7bc9269a941b29406000d040e7f8587039a10121060a08e7b4a6415244"
+    },
+    {
+      "id": "rowing_boat",
+      "sourceFrame": 39,
+      "box": [
+        298,
+        266,
+        518,
+        406
+      ],
+      "polygon": [
+        [
+          0,
+          60
+        ],
+        [
+          45,
+          28
+        ],
+        [
+          76,
+          0
+        ],
+        [
+          109,
+          0
+        ],
+        [
+          151,
+          17
+        ],
+        [
+          196,
+          24
+        ],
+        [
+          217,
+          56
+        ],
+        [
+          219,
+          86
+        ],
+        [
+          168,
+          119
+        ],
+        [
+          80,
+          139
+        ],
+        [
+          30,
+          119
+        ]
+      ],
+      "mode": "ship",
+      "anchor": [
+        109,
+        134
+      ],
+      "size": [
+        220,
+        140
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "200452feee9b1258c228dbcb9794eb47f139f6a73f74a862948b2c894bd2578f"
+    },
+    {
+      "id": "sailing_ship",
+      "sourceFrame": 19,
+      "box": [
+        17,
+        62,
+        407,
+        408
+      ],
+      "polygon": [
+        [
+          0,
+          173
+        ],
+        [
+          104,
+          80
+        ],
+        [
+          119,
+          7
+        ],
+        [
+          142,
+          0
+        ],
+        [
+          165,
+          122
+        ],
+        [
+          223,
+          63
+        ],
+        [
+          238,
+          5
+        ],
+        [
+          254,
+          0
+        ],
+        [
+          277,
+          116
+        ],
+        [
+          333,
+          216
+        ],
+        [
+          369,
+          224
+        ],
+        [
+          389,
+          275
+        ],
+        [
+          386,
+          319
+        ],
+        [
+          318,
+          345
+        ],
+        [
+          176,
+          345
+        ],
+        [
+          46,
+          309
+        ],
+        [
+          0,
+          265
+        ]
+      ],
+      "mode": "ship",
+      "anchor": [
+        195,
+        334
+      ],
+      "size": [
+        390,
+        346
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "86e53620794ad5b9f852baaa425758f15bcdca5c11154310f6154828e1b5fe50"
+    },
+    {
+      "id": "building_two_storey",
+      "sourceFrame": 2,
+      "box": [
+        410,
+        5,
+        620,
+        281
+      ],
+      "polygon": [
+        [
+          2,
+          123
+        ],
+        [
+          12,
+          93
+        ],
+        [
+          37,
+          77
+        ],
+        [
+          48,
+          42
+        ],
+        [
+          63,
+          42
+        ],
+        [
+          67,
+          25
+        ],
+        [
+          179,
+          0
+        ],
+        [
+          197,
+          12
+        ],
+        [
+          209,
+          13
+        ],
+        [
+          209,
+          224
+        ],
+        [
+          83,
+          275
+        ],
+        [
+          2,
+          232
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        48,
+        235
+      ],
+      "size": [
+        210,
+        276
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "e62f5ecdc4e1e979d822503c08bdc51198b6ca89215a7e7d20ae6b5a6bf0886e"
+    },
+    {
+      "id": "building_awning_corner",
+      "sourceFrame": 21,
+      "box": [
+        16,
+        0,
+        313,
+        214
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          228,
+          0
+        ],
+        [
+          271,
+          25
+        ],
+        [
+          287,
+          31
+        ],
+        [
+          296,
+          88
+        ],
+        [
+          289,
+          184
+        ],
+        [
+          243,
+          213
+        ],
+        [
+          182,
+          184
+        ],
+        [
+          140,
+          208
+        ],
+        [
+          0,
+          146
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        250,
+        194
+      ],
+      "size": [
+        297,
+        214
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "291d76ef75b27bd07cc965f5703acc6c12c3e8bcb5ba98b4201f89ff900490e7"
+    },
+    {
+      "id": "building_awning_long",
+      "sourceFrame": 14,
+      "box": [
+        413,
+        150,
+        620,
+        408
+      ],
+      "polygon": [
+        [
+          0,
+          146
+        ],
+        [
+          18,
+          74
+        ],
+        [
+          37,
+          28
+        ],
+        [
+          58,
+          0
+        ],
+        [
+          206,
+          53
+        ],
+        [
+          206,
+          257
+        ],
+        [
+          54,
+          235
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        178,
+        242
+      ],
+      "size": [
+        207,
+        258
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "7c577a85916839092fd3dcfb6f9ba58b2e5d56f8af6fd698c03a53d609781693"
+    },
+    {
+      "id": "coping_up",
+      "sourceFrame": 28,
+      "box": [
+        331,
+        236,
+        389,
+        287
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          57,
+          28
+        ],
+        [
+          57,
+          50
+        ],
+        [
+          0,
+          22
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        0
+      ],
+      "size": [
+        58,
+        51
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "ec5ebff7c030bd67fc5a5c19fd4930d1d2b2bdbf8a1c9cc460cc3631c8a44a71"
+    },
+    {
+      "id": "coping_down",
+      "sourceFrame": 28,
+      "box": [
+        87,
+        169,
+        145,
+        220
+      ],
+      "polygon": [
+        [
+          0,
+          28
+        ],
+        [
+          57,
+          0
+        ],
+        [
+          57,
+          22
+        ],
+        [
+          0,
+          50
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        28
+      ],
+      "size": [
+        58,
+        51
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "77afd83f8b022b04e650351f65518c32b23b7037a3f376ae67e6d2d35709228c"
+    },
+    {
+      "id": "rail_up",
+      "sourceFrame": 37,
+      "box": [
+        418,
+        159,
+        453,
+        212
+      ],
+      "polygon": [
+        [
+          0,
+          20
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          34,
+          5
+        ],
+        [
+          34,
+          33
+        ],
+        [
+          5,
+          52
+        ],
+        [
+          0,
+          44
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        1,
+        49
+      ],
+      "size": [
+        35,
+        53
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "c0e93bc087f1d63ac9849426faf2c656b7f5cacf1cc02de96f75f3e2a58f9210"
+    },
+    {
+      "id": "rail_down",
+      "sourceFrame": 19,
+      "box": [
+        369,
+        212,
+        408,
+        266
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          38,
+          53
+        ],
+        [
+          0,
+          34
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        34
+      ],
+      "size": [
+        39,
+        54
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "f5f204d953490ccbe5914b99f129e39069f695477cfdaf11220dc0eb9c0ccc2d"
+    },
+    {
+      "id": "quay_wall_down",
+      "sourceFrame": 19,
+      "box": [
+        439,
+        271,
+        496,
+        329
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          56,
+          28
+        ],
+        [
+          56,
+          57
+        ],
+        [
+          0,
+          29
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        0
+      ],
+      "size": [
+        57,
+        58
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "4708572e1d7f7b86b2cc10a529c26e663246573bd83fcf522ab08605b334fb91"
+    },
+    {
+      "id": "quay_wall_up",
+      "sourceFrame": 37,
+      "box": [
+        421,
+        205,
+        478,
+        263
+      ],
+      "polygon": [
+        [
+          0,
+          28
+        ],
+        [
+          56,
+          0
+        ],
+        [
+          56,
+          28
+        ],
+        [
+          0,
+          57
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        28
+      ],
+      "size": [
+        57,
+        58
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "3da782ddc48919e02ffc100b542fb4088ad9316769e18b3c259b2d5d820d2842"
+    },
+    {
+      "id": "garden_curb_down",
+      "sourceFrame": 5,
+      "box": [
+        50,
+        297,
+        108,
+        337
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          57,
+          28
+        ],
+        [
+          57,
+          39
+        ],
+        [
+          0,
+          11
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        0
+      ],
+      "size": [
+        58,
+        40
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "a55029aa61489354e05c6238c88e2204b30039298a2491ef40c650c72750cbb5"
+    },
+    {
+      "id": "garden_curb_up",
+      "sourceFrame": 5,
+      "box": [
+        139,
+        285,
+        197,
+        325
+      ],
+      "polygon": [
+        [
+          0,
+          28
+        ],
+        [
+          56,
+          0
+        ],
+        [
+          56,
+          11
+        ],
+        [
+          0,
+          39
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        28
+      ],
+      "size": [
+        58,
+        40
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "616905dcc89a2ed6ee951424d297848583456fccc594442b6f0bf113e72993b1"
+    },
+    {
+      "id": "garden_grass",
+      "sourceFrame": 21,
+      "box": [
+        91,
+        243,
+        127,
+        260
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          35,
+          0
+        ],
+        [
+          35,
+          16
+        ],
+        [
+          0,
+          16
+        ]
+      ],
+      "mode": "polygon",
+      "anchor": [
+        0,
+        0
+      ],
+      "size": [
+        36,
+        17
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "40dcb1dba6c300cf1318971d91bcc4485ef35f3d325653c3f81f2d7105910c8b"
+    },
+    {
+      "id": "inn_table_bottles",
+      "sourceFrame": 26,
+      "box": [
+        331,
+        189,
+        442,
+        276
+      ],
+      "polygon": [
+        [
+          16,
+          0
+        ],
+        [
+          93,
+          29
+        ],
+        [
+          110,
+          61
+        ],
+        [
+          90,
+          80
+        ],
+        [
+          79,
+          77
+        ],
+        [
+          69,
+          86
+        ],
+        [
+          21,
+          65
+        ],
+        [
+          6,
+          64
+        ],
+        [
+          0,
+          49
+        ],
+        [
+          14,
+          29
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        58,
+        80
+      ],
+      "size": [
+        111,
+        87
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "e45b21c26629f56bcf8ed0b044fbc440298ede1bdc381f6d07ffbbf792f98b81"
+    },
+    {
+      "id": "inn_table_mugs",
+      "sourceFrame": 26,
+      "box": [
+        439,
+        145,
+        553,
+        224
+      ],
+      "polygon": [
+        [
+          18,
+          0
+        ],
+        [
+          43,
+          0
+        ],
+        [
+          95,
+          24
+        ],
+        [
+          113,
+          59
+        ],
+        [
+          93,
+          76
+        ],
+        [
+          21,
+          78
+        ],
+        [
+          0,
+          58
+        ],
+        [
+          7,
+          31
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        56,
+        73
+      ],
+      "size": [
+        114,
+        79
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "d5ea2f5ddb25b879bb5798a038b85cd653aa5e0ef2ca2ed65c1385db5f395106"
+    },
+    {
+      "id": "inn_table_back",
+      "sourceFrame": 26,
+      "box": [
+        174,
+        94,
+        295,
+        157
+      ],
+      "polygon": [
+        [
+          11,
+          0
+        ],
+        [
+          79,
+          0
+        ],
+        [
+          119,
+          31
+        ],
+        [
+          107,
+          55
+        ],
+        [
+          81,
+          62
+        ],
+        [
+          10,
+          47
+        ],
+        [
+          0,
+          29
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        61,
+        58
+      ],
+      "size": [
+        121,
+        63
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "2f2ab97eefc8c874a4c267b7e82bef521a8f20fe023671d8410c2957c5b08ed3"
+    },
+    {
+      "id": "inn_stool",
+      "sourceFrame": 26,
+      "box": [
+        356,
+        115,
+        380,
+        150
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          23,
+          0
+        ],
+        [
+          23,
+          34
+        ],
+        [
+          0,
+          34
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        12,
+        32
+      ],
+      "size": [
+        24,
+        35
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "eedd1890d0c5ef6bc8cc8abffcb43c49852ddf6dfbecb12b657348bc751eddeb"
+    },
+    {
+      "id": "inn_stool_alt",
+      "sourceFrame": 26,
+      "box": [
+        411,
+        119,
+        438,
+        152
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          26,
+          32
+        ],
+        [
+          0,
+          32
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        13,
+        31
+      ],
+      "size": [
+        27,
+        33
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "b687e8cda8365b26d02d7c4c5986ddc6c948d3e7a4f950e26ea2ba3636a9f24d"
+    },
+    {
+      "id": "inn_barrel",
+      "sourceFrame": 26,
+      "box": [
+        498,
+        0,
+        541,
+        30
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          42,
+          0
+        ],
+        [
+          42,
+          29
+        ],
+        [
+          0,
+          29
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        21.5,
+        29
+      ],
+      "size": [
+        43,
+        30
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "3a91f053596c448db6441b9a3043a6b81427467141cb38bbcdbada357fde72c9"
+    },
+    {
+      "id": "inn_counter_segment",
+      "sourceFrame": 26,
+      "box": [
+        337,
+        79,
+        456,
+        117
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          118,
+          0
+        ],
+        [
+          118,
+          21
+        ],
+        [
+          62,
+          37
+        ],
+        [
+          0,
+          10
+        ]
+      ],
+      "mode": "wood",
+      "anchor": [
+        60,
+        35
+      ],
+      "size": [
+        119,
+        38
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL",
+      "sha256": "686155be354b7d9ce81a71182b171adaef46f437763e1e67845a77e0aa84ed91"
+    },
+    {
+      "id": "inn_plant_pot",
+      "sourceFrame": 26,
+      "box": [
+        534,
+        11,
+        556,
+        40
+      ],
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          21,
+          28
+        ],
+        [
+          0,
+          28
+        ]
+      ],
+      "mode": "tree",
+      "anchor": [
+        11,
+        27
+      ],
+      "size": [
+        22,
+        29
+      ],
+      "status": "SOURCE_VISIBLE",
+      "sha256": "bed0367da135a207f55eb75100382de887414ab34ef6f580a5cc94db19371d78"
+    },
+    {
+      "id": "tile_grass",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "sourceParent": "garden_grass",
+      "status": "ADAPTED_VISIBLE_MATERIAL"
+    },
+    {
+      "id": "coping_up_edge",
+      "sourceParent": "coping_up",
+      "size": [
+        29,
+        37
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "status": "SOURCE_EDGE_MODULE"
+    },
+    {
+      "id": "coping_down_edge",
+      "sourceParent": "coping_down",
+      "size": [
+        29,
+        37
+      ],
+      "anchor": [
+        0,
+        14
+      ],
+      "status": "SOURCE_EDGE_MODULE"
+    },
+    {
+      "id": "garden_curb_down_edge",
+      "sourceParent": "garden_curb_down",
+      "size": [
+        29,
+        26
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "status": "SOURCE_EDGE_MODULE"
+    },
+    {
+      "id": "garden_curb_up_edge",
+      "sourceParent": "garden_curb_up",
+      "size": [
+        29,
+        26
+      ],
+      "anchor": [
+        0,
+        14
+      ],
+      "status": "SOURCE_EDGE_MODULE"
+    },
+    {
+      "id": "bench_pool",
+      "sourceFrame": 28,
+      "box": [
+        334,
+        318,
+        388,
+        372
+      ],
+      "polygon": [
+        [
+          0,
+          18
+        ],
+        [
+          37,
+          0
+        ],
+        [
+          53,
+          5
+        ],
+        [
+          53,
+          31
+        ],
+        [
+          14,
+          53
+        ],
+        [
+          0,
+          39
+        ]
+      ],
+      "anchor": [
+        27,
+        51
+      ],
+      "size": [
+        54,
+        54
+      ],
+      "status": "SOURCE_VISIBLE"
+    },
+    {
+      "id": "lamp_pool",
+      "sourceFrame": 28,
+      "box": [
+        272,
+        289,
+        298,
+        408
+      ],
+      "polygon": [
+        [
+          11,
+          0
+        ],
+        [
+          16,
+          1
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          22,
+          12
+        ],
+        [
+          25,
+          20
+        ],
+        [
+          20,
+          30
+        ],
+        [
+          16,
+          35
+        ],
+        [
+          16,
+          112
+        ],
+        [
+          23,
+          118
+        ],
+        [
+          5,
+          118
+        ],
+        [
+          10,
+          109
+        ],
+        [
+          10,
+          35
+        ],
+        [
+          4,
+          29
+        ],
+        [
+          0,
+          19
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          10,
+          7
+        ]
+      ],
+      "anchor": [
+        13,
+        119
+      ],
+      "size": [
+        26,
+        119
+      ],
+      "status": "SOURCE_VISIBLE_PARTIAL"
+    },
+    {
+      "id": "pool_rail_down",
+      "sourceFrame": 28,
+      "box": [
+        49,
+        267,
+        80,
+        313
+      ],
+      "polygon": [
+        [
+          0,
+          3
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          17
+        ],
+        [
+          24,
+          22
+        ],
+        [
+          30,
+          17
+        ],
+        [
+          30,
+          45
+        ],
+        [
+          0,
+          29
+        ]
+      ],
+      "anchor": [
+        0,
+        29
+      ],
+      "size": [
+        31,
+        46
+      ],
+      "status": "SOURCE_VISIBLE"
+    }
+  ],
+  "views": [
+    {
+      "frame": 1,
+      "map": "main",
+      "camera": [
+        107.49,
+        266.83
+      ]
+    },
+    {
+      "frame": 2,
+      "map": "main",
+      "camera": [
+        3.5,
+        214.75
+      ]
+    },
+    {
+      "frame": 3,
+      "map": "main",
+      "camera": [
+        -108.51,
+        158.65
+      ]
+    },
+    {
+      "frame": 4,
+      "map": "main",
+      "camera": [
+        -228.5,
+        126.63
+      ]
+    },
+    {
+      "frame": 5,
+      "map": "main",
+      "camera": [
+        -340.51,
+        182.72
+      ]
+    },
+    {
+      "frame": 6,
+      "map": "main",
+      "camera": [
+        -404.52,
+        234.81
+      ]
+    },
+    {
+      "frame": 7,
+      "map": "main",
+      "camera": [
+        -326.5,
+        287.9
+      ]
+    },
+    {
+      "frame": 8,
+      "map": "main",
+      "camera": [
+        -444.51,
+        347.01
+      ]
+    },
+    {
+      "frame": 9,
+      "map": "main",
+      "camera": [
+        -564.52,
+        350.98
+      ]
+    },
+    {
+      "frame": 10,
+      "map": "main",
+      "camera": [
+        -668.51,
+        403.1
+      ]
+    },
+    {
+      "frame": 11,
+      "map": "main",
+      "camera": [
+        -780.51,
+        459.24
+      ]
+    },
+    {
+      "frame": 12,
+      "map": "main",
+      "camera": [
+        -900.51,
+        519.34
+      ]
+    },
+    {
+      "frame": 13,
+      "map": "main",
+      "camera": [
+        -1018.5,
+        578.45
+      ]
+    },
+    {
+      "frame": 14,
+      "map": "main",
+      "camera": [
+        -1138.51,
+        638.57
+      ]
+    },
+    {
+      "frame": 15,
+      "map": "main",
+      "camera": [
+        -1250.5,
+        694.67
+      ]
+    },
+    {
+      "frame": 16,
+      "map": "main",
+      "camera": [
+        -1368.5,
+        753.78
+      ]
+    },
+    {
+      "frame": 17,
+      "map": "main",
+      "camera": [
+        -1488.52,
+        813.89
+      ]
+    },
+    {
+      "frame": 18,
+      "map": "main",
+      "camera": [
+        -1600.52,
+        869.94
+      ]
+    },
+    {
+      "frame": 19,
+      "map": "main",
+      "camera": [
+        -1712.53,
+        926.08
+      ]
+    },
+    {
+      "frame": 20,
+      "map": "main",
+      "camera": [
+        -1740.53,
+        940.09
+      ]
+    },
+    {
+      "frame": 21,
+      "map": "main",
+      "camera": [
+        1087.0,
+        813.0
+      ]
+    },
+    {
+      "frame": 22,
+      "map": "main",
+      "camera": [
+        1087.0,
+        813.0
+      ]
+    },
+    {
+      "frame": 23,
+      "map": "main",
+      "camera": [
+        1087.0,
+        813.0
+      ]
+    },
+    {
+      "frame": 24,
+      "map": "main",
+      "camera": [
+        1087.0,
+        813.0
+      ]
+    },
+    {
+      "frame": 25,
+      "map": "main",
+      "camera": [
+        1087.0,
+        813.0
+      ]
+    },
+    {
+      "frame": 26,
+      "map": "inn",
+      "camera": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 27,
+      "map": "east",
+      "camera": [
+        -1349.0,
+        855.0
+      ]
+    },
+    {
+      "frame": 28,
+      "map": "east",
+      "camera": [
+        -1349.0,
+        855.01
+      ]
+    },
+    {
+      "frame": 29,
+      "map": "east",
+      "camera": [
+        -1349.01,
+        855.01
+      ]
+    },
+    {
+      "frame": 30,
+      "map": "east",
+      "camera": [
+        -1349.01,
+        855.01
+      ]
+    },
+    {
+      "frame": 31,
+      "map": "east",
+      "camera": [
+        -1349.0,
+        855.01
+      ]
+    },
+    {
+      "frame": 32,
+      "map": "east",
+      "camera": [
+        -1349.0,
+        855.01
+      ]
+    },
+    {
+      "frame": 33,
+      "map": "east",
+      "camera": [
+        -1349.0,
+        855.01
+      ]
+    },
+    {
+      "frame": 34,
+      "map": "east",
+      "camera": [
+        -1349.0,
+        855.01
+      ]
+    },
+    {
+      "frame": 35,
+      "map": "east",
+      "camera": [
+        -1349.0,
+        855.02
+      ]
+    },
+    {
+      "frame": 36,
+      "map": "east",
+      "camera": [
+        495.5,
+        859.25
+      ]
+    },
+    {
+      "frame": 37,
+      "map": "east",
+      "camera": [
+        375.51,
+        919.34
+      ]
+    },
+    {
+      "frame": 38,
+      "map": "east",
+      "camera": [
+        257.5,
+        978.46
+      ]
+    },
+    {
+      "frame": 39,
+      "map": "east",
+      "camera": [
+        305.51,
+        1010.51
+      ]
+    },
+    {
+      "frame": 40,
+      "map": "east",
+      "camera": [
+        305.5,
+        1010.5
+      ]
+    },
+    {
+      "frame": 41,
+      "map": "east",
+      "camera": [
+        305.5,
+        1010.51
+      ]
+    },
+    {
+      "frame": 42,
+      "map": "east",
+      "camera": [
+        -935.0,
+        508.0
+      ]
+    },
+    {
+      "frame": 43,
+      "map": "east",
+      "camera": [
+        -1054.99,
+        568.04
+      ]
+    },
+    {
+      "frame": 44,
+      "map": "east",
+      "camera": [
+        -1035.0,
+        620.18
+      ]
+    },
+    {
+      "frame": 45,
+      "map": "east",
+      "camera": [
+        -923.01,
+        676.29
+      ]
+    },
+    {
+      "frame": 46,
+      "map": "east",
+      "camera": [
+        -797.0,
+        739.42
+      ]
+    },
+    {
+      "frame": 47,
+      "map": "east",
+      "camera": [
+        -823.0,
+        788.49
+      ]
+    },
+    {
+      "frame": 48,
+      "map": "east",
+      "camera": [
+        -942.99,
+        848.54
+      ]
+    },
+    {
+      "frame": 49,
+      "map": "east",
+      "camera": [
+        -1060.98,
+        907.69
+      ]
+    },
+    {
+      "frame": 50,
+      "map": "east",
+      "camera": [
+        -1026.99,
+        960.77
+      ]
+    },
+    {
+      "frame": 51,
+      "map": "east",
+      "camera": [
+        -900.99,
+        1023.91
+      ]
+    },
+    {
+      "frame": 52,
+      "map": "east",
+      "camera": [
+        -796.99,
+        1055.91
+      ]
+    },
+    {
+      "frame": 53,
+      "map": "east",
+      "camera": [
+        -676.99,
+        995.82
+      ]
+    },
+    {
+      "frame": 54,
+      "map": "east",
+      "camera": [
+        -564.98,
+        939.77
+      ]
+    }
+  ],
+  "scenes": {
+    "main": {
+      "props": [
+        {
+          "asset": "building_two_storey",
+          "scene": "main",
+          "sourceWorld": [
+            181.48,
+            314.74
+          ],
+          "anchor": [
+            48,
+            235
+          ],
+          "nativeSize": [
+            210,
+            276
+          ],
+          "sourceFrame": 5,
+          "evidence": "SOURCE_VISIBLE_PARTIAL_REGISTERED_FACADE"
+        },
+        {
+          "asset": "banner",
+          "scene": "main",
+          "sourceWorld": [
+            -19.51,
+            345.72
+          ],
+          "anchor": [
+            8,
+            102
+          ],
+          "nativeSize": [
+            34,
+            101
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.043345,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            402.49,
+            356.65
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 3,
+          "matchError": 0.016856,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            362.49,
+            385.65
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 3,
+          "matchError": 0.053282,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "building_awning_corner",
+          "scene": "main",
+          "sourceWorld": [
+            -74.51,
+            404.72
+          ],
+          "anchor": [
+            250,
+            194
+          ],
+          "nativeSize": [
+            297,
+            214
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.021265,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "garden_tree_mass",
+          "scene": "main",
+          "sourceWorld": [
+            356.5,
+            411.75
+          ],
+          "anchor": [
+            110,
+            158
+          ],
+          "nativeSize": [
+            195,
+            160
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "building_two_storey",
+          "scene": "main",
+          "sourceWorld": [
+            461.5,
+            454.75
+          ],
+          "anchor": [
+            48,
+            235
+          ],
+          "nativeSize": [
+            210,
+            276
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            -197.51,
+            497.72
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.034539,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_tree_pair",
+          "scene": "main",
+          "sourceWorld": [
+            -212.51,
+            506.72
+          ],
+          "anchor": [
+            44,
+            147
+          ],
+          "nativeSize": [
+            94,
+            149
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            206.5,
+            566.9
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 7,
+          "matchError": 0.008459,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            -813.51,
+            638.34
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 12,
+          "matchError": 0.039563,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            38.49,
+            651.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 8,
+          "matchError": 0.010503,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            166.5,
+            651.9
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 7,
+          "matchError": 0.02907,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            262.5,
+            678.9
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 7,
+          "matchError": 0.018155,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            94.49,
+            679.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 8,
+          "matchError": 0.029175,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -717.51,
+            693.34
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 12,
+          "matchError": 0.015982,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            82.49,
+            722.01
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 8,
+          "matchError": 0.050594,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "banner",
+          "scene": "main",
+          "sourceWorld": [
+            -831.51,
+            752.57
+          ],
+          "anchor": [
+            8,
+            102
+          ],
+          "nativeSize": [
+            34,
+            101
+          ],
+          "sourceFrame": 14,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "main",
+          "sourceWorld": [
+            -755.51,
+            799.34
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 12,
+          "matchError": 0.046796,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -325.51,
+            889.34
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 12,
+          "matchError": 0.014659,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -1053.5,
+            889.67
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 15,
+          "matchError": 0.021068,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -1389.52,
+            945.89
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 17,
+          "matchError": 0.01537,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            -1289.5,
+            988.78
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 16,
+          "matchError": 0.032184,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "main",
+          "sourceWorld": [
+            1484.0,
+            995.0
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 25,
+          "matchError": 0.04455,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1679.53,
+            1004.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.008387,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "building_awning_corner",
+          "scene": "main",
+          "sourceWorld": [
+            1353.0,
+            1007.0
+          ],
+          "anchor": [
+            250,
+            194
+          ],
+          "nativeSize": [
+            297,
+            214
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "building_awning_long",
+          "scene": "main",
+          "sourceWorld": [
+            -547.51,
+            1030.57
+          ],
+          "anchor": [
+            178,
+            242
+          ],
+          "nativeSize": [
+            207,
+            258
+          ],
+          "sourceFrame": 14,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1623.53,
+            1032.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.005815,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -745.5,
+            1043.67
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 15,
+          "matchError": 0.020336,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1606.0,
+            1071.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.016304,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1466.0,
+            1141.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.037136,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1550.0,
+            1155.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.016485,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -969.52,
+            1155.89
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 17,
+          "matchError": 0.015775,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1343.53,
+            1172.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "main",
+          "sourceWorld": [
+            1372.0,
+            1191.0
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.047975,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "main",
+          "sourceWorld": [
+            1482.0,
+            1198.0
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.035357,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1287.53,
+            1200.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.001151,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1326.0,
+            1211.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 21,
+          "matchError": 0.020464,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1231.53,
+            1228.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.001557,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_down",
+          "scene": "main",
+          "sourceWorld": [
+            -1175.53,
+            1256.08
+          ],
+          "anchor": [
+            0,
+            34
+          ],
+          "nativeSize": [
+            39,
+            54
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.002593,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "sailing_ship",
+          "scene": "main",
+          "sourceWorld": [
+            -1500.53,
+            1322.08
+          ],
+          "anchor": [
+            195,
+            334
+          ],
+          "nativeSize": [
+            390,
+            346
+          ],
+          "sourceFrame": 19,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        }
+      ],
+      "gridRows": [
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000050000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000550000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000005550000000000000100000000000500000000000000000000000000000000000000000000",
+        "00000055550000000000000110000000000550000000000000000100000000000010000000000000",
+        "00000555550000000000000110000000000555000000000000000110550000000014000000000000",
+        "00005555550000000000001110000000000055000000000000011110555000000014400000000000",
+        "00000555555000000000000110000000000555000000000000000110555000000014440000000000",
+        "00000055550000000005000110300000000055500000000000000110055000000004444000000000",
+        "00000000000000000005555110303000001055000000000000000110555500000000055000000000",
+        "00000000000000000010555110303000001000000000000100000110055500000000000500000000",
+        "00000000000000000010555110303000100000000000000100000110005500000000555555000000",
+        "00000000000000001000555110303000100000000003313000000110000000000000555550000000",
+        "00000000011111111000000110300000100000000000010000000110000000001000550050544400",
+        "00000500000111111111111110333011111111111111111111111110000000000000000555544400",
+        "05550550300110001111111110333011111111110001111011111110000000000004055550544400",
+        "00055555500110000000000000303000000000000000000000000110000000000014455050544400",
+        "00000555500110000000000000303000000000000000000000000110000000000014005005500000",
+        "00500055500110000000000000303000000000000000000000500110005000000014055055500000",
+        "05501055500110000000000000303000000000000000000055500110555000000014400555000000",
+        "05500000000110000000050000303000000000000000000005500110055000000014440550000000",
+        "05505000000110000000500003330000330000330000000005500110055000000014444500000000",
+        "05550000000110001050050000330555333000000000000005550110055500000014444000000000",
+        "05500000011110000055555550003050555000000000000005500110005000000014440000000000",
+        "00000000000110000555555550000500050000000000000000500010000000000004400000000000",
+        "00011133000110001055505550000000000000000000000000000000000000000000000000000000",
+        "00003000000110011055000000000000000000000000000000000000000000000000000000000000",
+        "00000111111110001000000000000000000000000000000000000000000000000000000000000000",
+        "00000011111113000000000000000000000000000000000000000000000000000000000000000000",
+        "00000001111111100000000000000000000000000000000000000000000000000000000000000000",
+        "00000000133311100000000000000000000000000000000000000000000000000000000000000000",
+        "00000000003111000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000001110000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000100000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000100000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00001100000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00001100000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00001100000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00001100000000100000000000000000000000000000000000000000000000000000000000000000",
+        "00001100003013000000100000000000000000000000000000000000000000000000000000000000",
+        "00001100000010000000110000000000000000000000000000000000000000000000000000000000",
+        "00001111111111111111111000000000000000000000000000000000000000000000000000000000",
+        "00000100111000110011110000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000500005000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000050000500000000000000000000000000000000000000000000000000000000000000",
+        "00000000055555555500000000000000000000000000000000000000000000000000000000000000",
+        "00000000005555555000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ]
+    },
+    "east": {
+      "props": [
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -997.99,
+            722.04
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 43,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_back_down",
+          "scene": "east",
+          "sourceWorld": [
+            -358.01,
+            763.29
+          ],
+          "anchor": [
+            31,
+            48
+          ],
+          "nativeSize": [
+            60,
+            53
+          ],
+          "sourceFrame": 45,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_back_down",
+          "scene": "east",
+          "sourceWorld": [
+            -302.0,
+            791.42
+          ],
+          "anchor": [
+            31,
+            48
+          ],
+          "nativeSize": [
+            60,
+            53
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.00647,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            -578.0,
+            869.42
+          ],
+          "anchor": [
+            29,
+            54
+          ],
+          "nativeSize": [
+            57,
+            58
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "flower_red_clump",
+          "scene": "east",
+          "sourceWorld": [
+            -1107.5,
+            893.01
+          ],
+          "anchor": [
+            67.5,
+            38
+          ],
+          "nativeSize": [
+            135,
+            39
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            -522.0,
+            897.49
+          ],
+          "anchor": [
+            29,
+            54
+          ],
+          "nativeSize": [
+            57,
+            58
+          ],
+          "sourceFrame": 47,
+          "matchError": 0.046315,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            878.5,
+            973.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.023974,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "flowerbed_orange",
+          "scene": "east",
+          "sourceWorld": [
+            -861.0,
+            976.01
+          ],
+          "anchor": [
+            92,
+            98
+          ],
+          "nativeSize": [
+            182,
+            109
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            1066.5,
+            982.25
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.047603,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1074.5,
+            987.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.00548,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            850.5,
+            987.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.024347,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            -420.01,
+            995.29
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 45,
+          "matchError": 0.02596,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            822.5,
+            1001.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.014396,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            1018.5,
+            1015.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.015816,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            794.51,
+            1015.34
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.016296,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            990.5,
+            1029.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.012652,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            962.5,
+            1043.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.013177,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            738.5,
+            1043.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.013252,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            348.5,
+            1052.46
+          ],
+          "anchor": [
+            29,
+            54
+          ],
+          "nativeSize": [
+            57,
+            58
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.005081,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            934.5,
+            1057.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.001675,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            710.5,
+            1057.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.012626,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -1278.0,
+            1058.0
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 27,
+          "matchError": 0.00616,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "east",
+          "sourceWorld": [
+            532.51,
+            1059.34
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.026462,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            -560.0,
+            1065.42
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            682.5,
+            1071.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.01217,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            654.5,
+            1085.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.011444,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            878.5,
+            1085.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.016925,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            850.5,
+            1099.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.016034,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            600.5,
+            1101.25
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.009813,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_back_up",
+          "scene": "east",
+          "sourceWorld": [
+            -593.0,
+            1103.42
+          ],
+          "anchor": [
+            31,
+            60
+          ],
+          "nativeSize": [
+            62,
+            63
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            822.5,
+            1113.25
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.012849,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            -73.98,
+            1121.77
+          ],
+          "anchor": [
+            29,
+            54
+          ],
+          "nativeSize": [
+            57,
+            58
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.003442,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            488.51,
+            1122.51
+          ],
+          "anchor": [
+            29,
+            54
+          ],
+          "nativeSize": [
+            57,
+            58
+          ],
+          "sourceFrame": 39,
+          "matchError": 0.004272,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            794.51,
+            1127.34
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_up",
+          "scene": "east",
+          "sourceWorld": [
+            -295.98,
+            1130.77
+          ],
+          "anchor": [
+            30,
+            57
+          ],
+          "nativeSize": [
+            62,
+            61
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.004898,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_up",
+          "scene": "east",
+          "sourceWorld": [
+            658.5,
+            1131.25
+          ],
+          "anchor": [
+            30,
+            57
+          ],
+          "nativeSize": [
+            62,
+            61
+          ],
+          "sourceFrame": 36,
+          "matchError": 0.049927,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "lamp",
+          "scene": "east",
+          "sourceWorld": [
+            -700.0,
+            1135.42
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            23,
+            120
+          ],
+          "sourceFrame": 46,
+          "matchError": 0.043696,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_down",
+          "scene": "east",
+          "sourceWorld": [
+            -17.98,
+            1149.77
+          ],
+          "anchor": [
+            29,
+            54
+          ],
+          "nativeSize": [
+            57,
+            58
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.048436,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -1300.0,
+            1151.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            738.51,
+            1155.34
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.011268,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "fountain",
+          "scene": "east",
+          "sourceWorld": [
+            -1151.0,
+            1159.01
+          ],
+          "anchor": [
+            56,
+            119
+          ],
+          "nativeSize": [
+            112,
+            127
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -1272.0,
+            1165.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            710.51,
+            1169.34
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 37,
+          "matchError": 0.010879,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -1244.0,
+            1179.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            682.5,
+            1183.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.012601,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_front_up",
+          "scene": "east",
+          "sourceWorld": [
+            -407.98,
+            1186.77
+          ],
+          "anchor": [
+            30,
+            57
+          ],
+          "nativeSize": [
+            62,
+            61
+          ],
+          "sourceFrame": 54,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -1216.0,
+            1193.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            654.5,
+            1197.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.001416,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -1188.0,
+            1207.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "pool_rail_down",
+          "scene": "east",
+          "sourceWorld": [
+            -1160.0,
+            1221.01
+          ],
+          "anchor": [
+            0,
+            29
+          ],
+          "nativeSize": [
+            31,
+            46
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "bench_pool",
+          "scene": "east",
+          "sourceWorld": [
+            -988.0,
+            1224.01
+          ],
+          "anchor": [
+            27,
+            51
+          ],
+          "nativeSize": [
+            54,
+            54
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_slender",
+          "scene": "east",
+          "sourceWorld": [
+            -926.0,
+            1226.01
+          ],
+          "anchor": [
+            27,
+            104
+          ],
+          "nativeSize": [
+            59,
+            110
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "signpost",
+          "scene": "east",
+          "sourceWorld": [
+            -781.0,
+            1234.01
+          ],
+          "anchor": [
+            22,
+            42
+          ],
+          "nativeSize": [
+            39,
+            43
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "garden_foreground_grove",
+          "scene": "east",
+          "sourceWorld": [
+            -1203.0,
+            1260.01
+          ],
+          "anchor": [
+            128,
+            118
+          ],
+          "nativeSize": [
+            256,
+            121
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "lamp_pool",
+          "scene": "east",
+          "sourceWorld": [
+            -1064.0,
+            1263.01
+          ],
+          "anchor": [
+            13,
+            119
+          ],
+          "nativeSize": [
+            26,
+            119
+          ],
+          "sourceFrame": 28,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -829.99,
+            1338.91
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 51,
+          "matchError": 0.01117,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            346.51,
+            1351.51
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 39,
+          "matchError": 0.019418,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            318.5,
+            1365.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.01546,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rail_up",
+          "scene": "east",
+          "sourceWorld": [
+            290.5,
+            1379.46
+          ],
+          "anchor": [
+            1,
+            49
+          ],
+          "nativeSize": [
+            35,
+            53
+          ],
+          "sourceFrame": 38,
+          "matchError": 0.016563,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "rowing_boat",
+          "scene": "east",
+          "sourceWorld": [
+            712.51,
+            1410.51
+          ],
+          "anchor": [
+            109,
+            134
+          ],
+          "nativeSize": [
+            220,
+            140
+          ],
+          "sourceFrame": 39,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        }
+      ],
+      "gridRows": [
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000100000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000011111000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000011000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000011001000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000011000000000000000000000000000000000000000",
+        "00000000000000000000000000000000100000011111111000000000000000000000000000000000",
+        "00000000000000000000000000000000000000011001010100000001010000000000000000000000",
+        "00000000000000000000000000000000000000011000100000000010100000000000000000000000",
+        "00000000000000000000000000111111111111111001000001010000010000000000000000000000",
+        "00000000000000000000000000011111111111111000100000100000100000000000000000000000",
+        "00000000000000000000000000000000000000000001000001010000012222200000000000000000",
+        "00000000000000000000000000000000000000000000100000100000102222200000000000000000",
+        "00000000000000000000000000000000000000000000010100010101012222200550000000000000",
+        "00000000000000000000000000000000000000000000101000001010102222200550000000000000",
+        "00000000000000000000000000000000000000000001010100010101002222200550000000000000",
+        "00000000000000000000000000000000000222220000100010100000102222200550000000000000",
+        "00000000000000000000000000000000000222220001000001010000012222200555000000000000",
+        "00000000000000000000000000000000000222220000100000100000102222200550000000000000",
+        "00000000000000000000000000000000000222220001000001010000012222200550000000000000",
+        "00000000000000000000000000000000000222220000101010101010100000000550000000000000",
+        "00000000000000000000000000000000000222220001010101010101010000000550000000000000",
+        "00000000000000000000000000000000000222220000000000000000110000000550000000000000",
+        "00000000000000000000000000000000000000000000000000000000110010000550000000000000",
+        "00000000000000000000000000000000000000000000000000000000110000000550000000000000",
+        "00000000000000000000000000000000000002222004444444440000101111111000000000000000",
+        "00000000000000000000000000000000000000002002222222222000111000011100000000000000",
+        "00000000000000000000000000000000000000002002222222222000111100001000000000000000",
+        "00000000000000000000000000000000000000000002222222222300000000000000000000000000",
+        "00000000000000000000000000000000000000002002222222222300000011000000000000000000",
+        "00000000000000000000000000000000000000002300000000000000000011100000000000000000",
+        "00000000000000000000000000000000000222222300000000000000000011100000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000011130000000000000000",
+        "00000000000000000000000000000000000000000003131313031313130000100000000000000000",
+        "00000000000000000000000000000000000000000001313131313131310010000000000000000000",
+        "00000000000000000000000000000000000000000003130303130303130011000000000000000000",
+        "00000000000000000000000000000000000000000001303031313030310011100000000000000000",
+        "00000000000000000000000000000000000000000003130303130303130011000000000000000000",
+        "00000000000000000000000000000000000000000001303031313030310010000000000000000000",
+        "00000000000000000000000000100000000000000003130303130303130000000000000000000000",
+        "00000000000000000000000000000000000000000000313131313131310000000000000000000000",
+        "00000000000000000000003310000000000000000000031313131313130000000000000000000000",
+        "00000000000000000011111110000000000200000000003130313031300000000000000000000000",
+        "00000000000000000011111110001000000220000000000300030003000000000000000000000000",
+        "00000000000000000000000000000000000222000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000222200000000000000000000000000000000000000000",
+        "00000000000000100000000000000000000222220000000000000000000000000000000000000000",
+        "00000000000001100000000000000000000222220000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000222220000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000222220000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000222220000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000222220000000000000000000000000000000000000000",
+        "00000000000000000044444444444444444222220000000000000000000000000000000000000000",
+        "00000000000000000002222222222222222222222220000000000000000000000000000000000000",
+        "00000000000000000000222222222222222222222200000000000000000000000000000000000000",
+        "00000000000000000000022222222220222222222000000000000000000000000000000000000000",
+        "00000000000000000000002222222055002222220000000000000000000000000000000000000000",
+        "00000000000000000000000222222055550222200000000000000000000000000000000000000000",
+        "00000000000000000000000022202205555222000000000000000000000000000000000000000000",
+        "00000000000000000000000002000200002220000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000022200000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000002000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ]
+    },
+    "inn": {
+      "props": [
+        {
+          "asset": "inn_barrel",
+          "scene": "inn",
+          "sourceWorld": [
+            519.5,
+            29.0
+          ],
+          "anchor": [
+            21.5,
+            29
+          ],
+          "nativeSize": [
+            43,
+            30
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "inn_plant_pot",
+          "scene": "inn",
+          "sourceWorld": [
+            545.0,
+            38.0
+          ],
+          "anchor": [
+            11,
+            27
+          ],
+          "nativeSize": [
+            22,
+            29
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "inn_stool_alt",
+          "scene": "inn",
+          "sourceWorld": [
+            564.0,
+            80.0
+          ],
+          "anchor": [
+            13,
+            31
+          ],
+          "nativeSize": [
+            27,
+            33
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.016825,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "inn_counter_segment",
+          "scene": "inn",
+          "sourceWorld": [
+            397.0,
+            114.0
+          ],
+          "anchor": [
+            60,
+            35
+          ],
+          "nativeSize": [
+            119,
+            38
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_PARTIAL"
+        },
+        {
+          "asset": "inn_stool",
+          "scene": "inn",
+          "sourceWorld": [
+            368.0,
+            147.0
+          ],
+          "anchor": [
+            12,
+            32
+          ],
+          "nativeSize": [
+            24,
+            35
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "inn_stool_alt",
+          "scene": "inn",
+          "sourceWorld": [
+            424.0,
+            150.0
+          ],
+          "anchor": [
+            13,
+            31
+          ],
+          "nativeSize": [
+            27,
+            33
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "inn_table_back",
+          "scene": "inn",
+          "sourceWorld": [
+            235.0,
+            152.0
+          ],
+          "anchor": [
+            61,
+            58
+          ],
+          "nativeSize": [
+            121,
+            63
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "inn_table_mugs",
+          "scene": "inn",
+          "sourceWorld": [
+            495.0,
+            218.0
+          ],
+          "anchor": [
+            56,
+            73
+          ],
+          "nativeSize": [
+            114,
+            79
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "inn_table_bottles",
+          "scene": "inn",
+          "sourceWorld": [
+            389.0,
+            269.0
+          ],
+          "anchor": [
+            58,
+            80
+          ],
+          "nativeSize": [
+            111,
+            87
+          ],
+          "sourceFrame": 26,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE"
+        }
+      ],
+      "gridRows": [
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ]
+    }
+  },
+  "scope": "Source-visible only. Missing pixels, building identities and full topology remain unresolved. Ground extension and service joins are ADAPTED."
+}

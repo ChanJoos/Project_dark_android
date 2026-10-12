@@ -4,9 +4,9 @@ import java.util.*;
 public final class CampaignWorld {
  public static final String PIET="MAP_PIET_CAMP";
  public static final String BOSS_D="MAP_POTE_D_BOSS";
- public static final String[] ROUTE={"MAP_POTE_01","MAP_POTE_02",PIET,"MAP_POTE_03",BOSS_D,AbelTownGeometry.ID,AbelCoastGeometry.ENTRY,"MAP_ABEL_COAST_1A","MAP_ABEL_COAST_1B","MAP_ABEL_COAST_2A","MAP_ABEL_COAST_3B","MAP_ABEL_COAST_4C"};
+ public static final String[] ROUTE={"MAP_POTE_01","MAP_POTE_02",PIET,"MAP_POTE_03",BOSS_D,AbelTownGeometry.ID,AbelTownGeometry.EAST_ID,AbelCoastGeometry.ENTRY,"MAP_ABEL_COAST_1A","MAP_ABEL_COAST_1B","MAP_ABEL_COAST_2A","MAP_ABEL_COAST_3B","MAP_ABEL_COAST_4C"};
  public static boolean contains(String id){return Arrays.asList(ROUTE).contains(id)||"MAP_POTE_04".equals(id);}
- public static int zone(String id){if(AbelTownGeometry.ID.equals(id))return 9;if(AbelCoastGeometry.contains(id))return 10+AbelCoastGeometry.index(id);if(BOSS_D.equals(id))return 4;if("MAP_POTE_04".equals(id))return 3;if(id!=null&&id.startsWith("MAP_POTE_")&&id.length()==11)return Integer.parseInt(id.substring(9));return 0;}
+ public static int zone(String id){if(AbelTownGeometry.contains(id))return 9;if(AbelCoastGeometry.contains(id))return 10+AbelCoastGeometry.index(id);if(BOSS_D.equals(id))return 4;if("MAP_POTE_04".equals(id))return 3;if(id!=null&&id.startsWith("MAP_POTE_")&&id.length()==11)return Integer.parseInt(id.substring(9));return 0;}
  public static boolean canEnter(String id,int level,boolean forestComplete){return !AbelCoastGeometry.contains(id)||(level>=41&&forestComplete);}
  public static String title(String id){return PoteCampaignMapDef.forId(id).title;}
  public static String previous(String id){int i=Arrays.asList(ROUTE).indexOf(id);return i<=0?null:ROUTE[i-1];}

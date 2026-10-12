@@ -65,6 +65,7 @@ public final class TownInteriorDef {
    p.add(new Prop("storage_sack",11,10,25));p.add(new Prop("storage_sack",12,10,25));p.add(new Prop("storage_crate",12,6,32));
    p.add(new Prop("open_book",5,4,23,42,false));p.add(new Prop("bottle_tray",8,4,28,42,false));
   }
+if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();for(int i=0;i<AbelVideoLayout.INN_ASSETS.length;i++){String asset=AbelVideoLayout.INN_ASSETS[i];float wx=128+AbelVideoLayout.INN_PROPS[i][0]*AbelVideoLayout.SCALE,wy=132+AbelVideoLayout.INN_PROPS[i][1]*AbelVideoLayout.SCALE;int tu=Math.max(1,Math.min(columns-2,Math.round(((wx-480)/32+(wy-132)/16)/2))),tv=Math.max(1,Math.min(rows-2,Math.round(((wy-132)/16-(wx-480)/32)/2)));boolean table=asset.startsWith("inn_table");p.add(new Prop("abel_video:"+asset,tu,tv,table?120:32,0,table,table?2:1,table?2:1));}}
   props=Collections.unmodifiableList(p);
  }
  private static void dining(List<Prop> p,int u,int v,boolean food){
