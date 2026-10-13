@@ -186,7 +186,11 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   /** Mirrors current RuntimeState player occupancy without making GameView know collision details. */
   @Override public boolean canPlayerOccupy(float x,float y){
-    if(runtime.skillEffects().rooted("player"))return false;
+    return !runtime.skillEffects().rooted("player")&&canPlayerStandAt(x,y);
+  }
+
+  /** Placement is a terrain/occupancy check, independent of timed movement prohibition. */
+  private boolean canPlayerStandAt(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
     if(terrainIndex.blocked(x,y,r))return false;
@@ -248,7 +252,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private void snapPlayerToNearestTraversableTile(){
     WorldMoveTargetController.TileCenter best=null;float bestDistance=Float.MAX_VALUE;
     for(WorldMoveTargetController.TileCenter tile:navigationTiles){
-      if(!canPlayerOccupy(tile.x,tile.y))continue;
+      if(!canPlayerStandAt(tile.x,tile.y))continue;
       float dx=tile.x-runtime.player().x,dy=tile.y-runtime.player().y,d=dx*dx+dy*dy;
       if(d<bestDistance){bestDistance=d;best=tile;}
     }
