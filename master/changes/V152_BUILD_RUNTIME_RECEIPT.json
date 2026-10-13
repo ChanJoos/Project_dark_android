@@ -1,0 +1,87 @@
+{
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "runtime_source_sha": "292026ad8720a24ccbb8c6e260c2323b932e02b9",
+  "focused_run": 38333392441,
+  "job": 115087974736,
+  "focused_conclusion": "SUCCESS",
+  "unique_tests": 126,
+  "suites": 23,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "built_seoul": "2026-10-13T10:50:22.553336+09:00",
+  "application_id": "com.projectdark.mobile.v152test",
+  "apk_sha256": "83de31296ecee4848ca6addbd901284f4c4f4e8a3dc4f28730fd5126b53bf7ed",
+  "apk_bytes": 70166157,
+  "apk_artifact": 11783164535,
+  "native_artifact": 11783269488,
+  "preview_artifact": 11783269136,
+  "artifact_digests": {
+    "apk": "b2bcc122fc4f0841e474fd07a4b2f1ff8d99c90dee39f9f63318c3ca7c9752fc",
+    "native": "36871da18534bfd5a5fdd8d0432a77cbcee03a9977d04482b074285799c47a84",
+    "preview": "4c88cd4446930f566f95f7a43931ba47f308a5b3ecef74b05c8f1593ebf26731"
+  },
+  "independent_checks": [
+    "all3 downloaded archive SHA256 and ZIP CRC",
+    "APK SHA256, embedded source/run/version152 and source/NPC/portal bytes",
+    "126 unique tests across retained stage1 preview and stage2 native XML, no failures/errors/skips",
+    "actual GameView images of all5 entrance portals manually inspected"
+  ],
+  "packaged_source_files_compared": 67,
+  "portals": [
+    {
+      "building": "abel_church",
+      "destination": "abel_interior_church",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_reagent",
+      "destination": "abel_interior_reagent",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_bank",
+      "destination": "abel_interior_bank",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_equipment",
+      "destination": "abel_interior_equipment",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_inn",
+      "destination": "abel_interior_inn",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    }
+  ],
+  "portal_asset": "assets/world/portal/portal_reagent_shop.webp",
+  "portal_size": [
+    40,
+    16
+  ],
+  "portal_rule": "unchanged Milles asset at actual service trigger, facade drawn before threshold marker",
+  "broader_android_runs": {
+    "38333392547": "SUCCESS",
+    "38333396385": "SUCCESS"
+  },
+  "runtime_scope": [
+    "five visible entry markers with48/48 opaque source pixels each",
+    "actual touch-to-navigation-to-entry for every marked service",
+    "retained five door/exit/service/restart checks,82 building wall blocks,12 coast loops,forest/input/skill/save checks"
+  ],
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "integration": "draft PR195, unmerged",
+  "existing_original_scope": "Unchanged V151 source/ADAPTED map and asset limitations; no original-perfect claim"
+}

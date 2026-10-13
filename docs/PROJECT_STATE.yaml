@@ -1,5 +1,10 @@
 abel_entry_portals_v152:
-  status: IMPLEMENTED_CANDIDATE_BUILD_NATIVE_PENDING
+  runtime_source_sha: 292026ad8720a24ccbb8c6e260c2323b932e02b9
+  focused_run: 38333392441
+  unique_tests: 126
+  apk_artifact: 11783164535
+  evidence: master/changes/V152_BUILD_RUNTIME_RECEIPT.json
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
   reported_apk_version: UNKNOWN
   active_branch: codex/abel-coast-v139
   owner: ROOT_SINGLE_EDITOR

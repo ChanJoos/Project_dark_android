@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_CANDIDATE_NATIVE_BUILD_PENDING",
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
   "base_source": "510276cd0a6b686fb62c41c6cc7c6f432956727b",
   "user_report": "Enterable Abel buildings have no visible entrance portal; use the same portal as Milles",
   "reported_apk_version": "UNKNOWN_USER_DID_NOT_SPECIFY",
@@ -14,5 +14,6 @@
     "exact-source candidate APK and native frames reviewed"
   ],
   "phone": "PENDING",
-  "user_visual": "PENDING"
+  "user_visual": "PENDING",
+  "receipt": "master/changes/V152_BUILD_RUNTIME_RECEIPT.json"
 }
