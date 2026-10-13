@@ -164,6 +164,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   public float presentationPlayerY(){return presentation.y();}
   public float presentationWalkClock(){return presentationWalkClock;}
   public boolean presentationMoving(){return presentation.active();}
+  public boolean targetVisibleFrom(float playerX,float playerY,float targetX,float targetY,float padding){return camera.targetVisibleFrom(playerX,playerY,targetX,targetY,padding);}
   public WorldCameraTransform.Point worldToScreen(float worldX,float worldY){return camera.worldToScreen(worldX,worldY);}
   public WorldCameraTransform.Point screenToWorld(float screenX,float screenY){return camera.screenToWorld(screenX,screenY);}
   public FrameSnapshot snapshot(){return frame(movement.snapshot());}

@@ -60,6 +60,13 @@ public final class WorldCameraTransform {
     else if(screenY>maxScreenY)cameraY=clampCameraY(playerWorldY-maxScreenY);
   }
 
+  /** A route goal must keep its target visible across every legal follow dead-zone position. */
+  public boolean targetVisibleFrom(float playerX,float playerY,float targetX,float targetY,float padding){
+    float lowX=clampCameraX(playerX-anchorX-deadZoneHalfWidth),highX=clampCameraX(playerX-anchorX+deadZoneHalfWidth);
+    float lowY=clampCameraY(playerY-anchorY-deadZoneHalfHeight),highY=clampCameraY(playerY-anchorY+deadZoneHalfHeight);
+    return targetX-highX>=padding&&targetX-lowX<=viewportWidth-padding&&targetY-highY>=padding&&targetY-lowY<=viewportHeight-padding;
+  }
+
   public Point worldToScreen(float worldX,float worldY){return new Point(worldX-cameraX,worldY-cameraY);}
   public Point screenToWorld(float screenX,float screenY){return new Point(screenX+cameraX,screenY+cameraY);}
 

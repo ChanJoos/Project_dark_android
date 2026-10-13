@@ -18,7 +18,7 @@ final class SkillApproachController {
   }
   static List<WorldMoveTargetController.TileCenter> path(WorldRuntimeAdapter world,SkillActionContract.Rule rule,RuntimeState.Monster target,float width,float height){
     float tx=target.isMoving?target.moveTargetX:target.x,ty=target.isMoving?target.moveTargetY:target.y;
-    return world.movement().skillApproachPath(tile->Math.abs(tx-tile.x)<=width/2-48&&Math.abs(ty-tile.y)<=height/2-48&&legal(rule,tile.x,tile.y,tx,ty)&&world.hasLineOfSight(tile.x,tile.y,tx,ty));
+    return world.movement().skillApproachPath(tile->world.targetVisibleFrom(tile.x,tile.y,tx,ty,48)&&legal(rule,tile.x,tile.y,tx,ty)&&world.hasLineOfSight(tile.x,tile.y,tx,ty));
   }
   /** Ranged hunting must find a legal casting approach even if the target has no melee approach. */
   static RuntimeState.Monster reachableTarget(WorldRuntimeAdapter world,SkillActionContract.Rule rule,Predicate<RuntimeState.Monster> filter,float width,float height){
