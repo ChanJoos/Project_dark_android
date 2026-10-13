@@ -19,7 +19,8 @@
     "whole-source original tree and rowing boat families; remove contaminated groves/partial flowers/lamps",
     "all live building ground polygons and cached shared navigation/collision mask"
   ],
-  "verification": "IMPLEMENTED_CANDIDATE; exact build/native and phone pending",
+  "verification": "IMPLEMENTED_BUILD_NATIVE_VERIFIED: source8e345ba, Actions38328172051 SUCCESS,125 tests; physical handset/user visual PENDING",
   "originalMapScope": "single canonical town preserved; physical original district join and hidden pixels remain unknown/ADAPTED",
-  "githubAuthorization": "user explicitly preapproved uploads; same draft PR195, no merge or force push"
+  "githubAuthorization": "user explicitly preapproved uploads; same draft PR195, no merge or force push",
+  "repairReceipt": "master/changes/V150_BUILD_RUNTIME_RECEIPT.json"
 }

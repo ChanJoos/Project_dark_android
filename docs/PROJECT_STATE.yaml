@@ -1,3 +1,24 @@
+abel_repair_v150:
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  reported_failure: V149_DEVICE_FAILED_USER_REPORTED
+  runtime_source_sha: 8e345ba92eb0ecfc15ff67b8da7c1c91f60c67e8
+  focused_run: 38328172051
+  unique_tests: 125
+  suites: 23
+  apk_artifact: 11782272277
+  native_artifact: 11782182337
+  preview_artifact: 11781631868
+  evidence: master/changes/V150_BUILD_RUNTIME_RECEIPT.json
+  movement: SHARED_MILLES_POTE_0_60_SECONDS
+  collision: FIVE_FOUNDATIONS_82_DIRECT_WALL_ATTEMPTS_BLOCKED
+  runtime_map: MAP_ABEL_TOWN
+  coast_departure: ABEL_NPC_ONLY
+  original_missing_shapes: ADAPTED
+  phone: PENDING
+  user_visual: PENDING
+  active_branch: codex/abel-coast-v139
+  handoff: docs/CHAT_HANDOFF.md
+
 abel_single_v149:
   status: BUILD_NATIVE_VERIFIED_PHONE_PENDING
   device_report: V148_USER_REPORTED_FAILED
