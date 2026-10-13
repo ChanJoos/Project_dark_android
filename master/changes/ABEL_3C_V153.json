@@ -102,7 +102,7 @@
     },
     {
       "id": "ABEL_KINGARK",
-      "mobile_parameters": "70,8500,38,-15,18,\"NONE\",\"MONSTER_WATER\",150000,300,2.4f",
+      "mobile_parameters": "70,8500,38,-15,18,\"LIFE\",\"MONSTER_WATER\",150000,300,2.4f",
       "evidence": "ADAPTED_MOBILE_SOLO_3C"
     }
   ],
@@ -126,5 +126,6 @@
   "verification_sources_in_progress": [
     "aff3428c6184491d8444501a767cfb99306c1ec8",
     "Actions38347591692"
-  ]
+  ],
+  "learning_scope": "Warrior uses normally learned WindBlade at41 and learns MegaBlade after56 gear/stat growth; other jobs use normal paid learning. Potions bought in finite stock between quest waves; shop journey/UI excluded from balance simulation and covered by separate native regressions."
 }

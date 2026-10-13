@@ -778,11 +778,11 @@ private void drawUtilityRail(Canvas c){
   private RectF slotRect(int index){return slotRectStatic(index,hudRightOffset);}
   private void drawCombatCluster(Canvas c){
     for(int i=0;i<SkillBook.SLOT_COUNT;i++)skillWindow.drawHudSlot(c,slotRect(i),i,skillActions);
-    for(int i=0;i<2;i++){RectF r=MobileHudLayout.potion(i,hudRightOffset);MobileHudSkin.ring(c,r.centerX(),r.centerY(),r.width()/2,false);MobileHudSkin.potion(c,r.centerX(),r.centerY()-4,i==0);UiTheme.center(c,""+inventoryQuantity(i==0?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION"),r.centerX(),r.bottom-3,8,UiTheme.TEXT,true);}
+    for(int i=0;i<2;i++){RectF r=MobileHudLayout.potion(i,hudRightOffset);MobileHudSkin.ring(c,r.centerX(),r.centerY(),r.width()/2,false);MobileHudSkin.potion(c,r.centerX(),r.centerY()-4,i==0);UiTheme.center(c,""+inventoryQuantity(i==0?state.rpg().quickHpPotionId():"IT_B_MP_POTION"),r.centerX(),r.bottom-3,8,UiTheme.TEXT,true);}
     float d=hudRightOffset;MobileHudSkin.combat(c,ATK_X+d,ATK_Y,ATK_R,false,combat.attackReady()&&combat.hasUsableTarget());
     MobileHudSkin.combat(c,AUTO_X+d,AUTO_Y,AUTO_R,true,autoAttackEnabled);
   }
-  private boolean useHudPotion(float x,float y){for(int i=0;i<2;i++)if(MobileHudLayout.potion(i,hudRightOffset).contains(x,y)){String id=i==0?RpgProgressionState.B_SMALL_POTION_ITEM_ID:"IT_B_MP_POTION";if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().useQuickConsumable(id,state)==RpgProgressionState.UseResult.USED))showFeedback(i==0?"회복약 사용":"마나약 사용",FeedbackTone.INFO);else showFeedback("물약이 없거나 회복할 필요가 없습니다",FeedbackTone.INFO);return true;}return false;}
+  private boolean useHudPotion(float x,float y){for(int i=0;i<2;i++)if(MobileHudLayout.potion(i,hudRightOffset).contains(x,y)){String id=i==0?state.rpg().quickHpPotionId():"IT_B_MP_POTION";if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().useQuickConsumable(id,state)==RpgProgressionState.UseResult.USED))showFeedback(i==0?"회복약 사용":"마나약 사용",FeedbackTone.INFO);else showFeedback("물약이 없거나 회복할 필요가 없습니다",FeedbackTone.INFO);return true;}return false;}
 
   private void circleIcon(Canvas c,float cx,float cy,float r,ClassicHudIconAtlas.Icon icon,boolean enabled,boolean pressed){RectF b=new RectF(cx-r,cy-r,cx+r,cy+r);hudIcons.draw(c,p,icon,b,enabled,false,pressed);}
   private void cooldown(Canvas c,float x,float y,float r,float remaining,float total){if(remaining<=0||total<=0)return;float ratio=Math.min(1f,remaining/total);p.setColor(0xA9000000);c.drawArc(new RectF(x-r,y-r,x+r,y+r),-90,360*ratio,true,p);p.setTextSize(8);p.setColor(Color.WHITE);String s=String.format(java.util.Locale.US,"%.1f",remaining);float tw=p.measureText(s);c.drawText(s,x-tw/2,y+3,p);}

@@ -501,6 +501,8 @@ public final class RpgProgressionState {
    * It deliberately refuses unknown items or quantities instead of creating a ground fallback.
    */
   public boolean isConsumable(String itemId){return ItemEffects.usable(itemId);}
+  /** Higher-circle quick healing uses owned normal shop stock; never purchases in combat. */
+  public String quickHpPotionId(){return normalLevel()!=null&&normalLevel()>=41&&inventory.getOrDefault(REAGENT_CURANUM_ITEM_ID,0)>0?REAGENT_CURANUM_ITEM_ID:B_SMALL_POTION_ITEM_ID;}
   public UseResult useQuickConsumable(String id,RuntimeState runtime){UseResult result=useConsumable(id,runtime);if(result==UseResult.USED)campaign.quickUse(id,this);return result;}
   public UseResult useConsumable(String itemId,RuntimeState runtime){
     Integer owned=inventory.get(itemId);if(owned==null||owned<=0)return UseResult.ITEM_NOT_OWNED;
