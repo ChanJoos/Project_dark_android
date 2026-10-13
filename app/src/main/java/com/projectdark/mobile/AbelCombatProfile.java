@@ -19,7 +19,7 @@ public final class AbelCombatProfile {
   add("ABEL_OBS_PURPLE_MAW",58,2100,23,-8,8,"WIND","MONSTER_FREEZE",62000,180,2.1f);
   add("ABEL_BERSERKER",65,4500,34,-12,12,"FIRE","MONSTER_FIRE",95000,190,2f);
   add("ABEL_KINGARK_FAKE",67,6000,32,-10,15,"NONE","MONSTER_FIRE",110000,220,2.2f);
-  add("ABEL_KINGARK",70,8500,38,-15,18,"NONE","MONSTER_WATER",150000,300,2.4f);
+  add("ABEL_KINGARK",70,8500,38,-15,18,"LIFE","MONSTER_WATER",150000,300,2.4f);
  }
  public static AbelCombatProfile forId(String id){if(id==null)return null;int n=id.indexOf('#');return ALL.get(n<0?id:id.substring(0,n));}
  public static Collection<AbelCombatProfile> all(){return Collections.unmodifiableCollection(ALL.values());}
