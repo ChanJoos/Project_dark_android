@@ -423,16 +423,17 @@ public final class GameView extends View {
   }
   private RuntimeState.Monster bestReachableAutoTarget(){return bestReachableAutoTarget(null);}
   private RuntimeState.Monster bestReachableAutoTarget(CampaignProgress.Def hunt){
-    RuntimeState.Monster ranged=null;float distance=Float.MAX_VALUE;
+    RuntimeState.Monster ranged=null;SkillActionContract.Rule rangedRule=null;float distance=Float.MAX_VALUE;
     for(int i=0;i<SkillBook.SLOT_COUNT;i++){
       SkillBook.Entry e=skillBook.get(skillBook.slot(i));if(e==null||!skillBook.usable(e.id)||!skillBook.jobAllowed(e.id))continue;
-      SkillActionContract.Rule r=SkillActionContract.get(e.id);if(!rangedSpell(r)||!r.damage())continue;
+      SkillActionContract.Rule r=SkillActionContract.get(e.id);if(!rangedSpell(r)||!r.damage())continue;rangedRule=r;
       for(RuntimeState.Monster m:state.monsters())if(m.alive&&campaignHuntTarget(hunt,m)&&skillTargetVisible(m.id)&&activeWorld().hasCombatLineOfSight("player",m.id)){
         float d=dist(state.player().x,state.player().y,m.x,m.y);if(d<distance){distance=d;ranged=m;}
       }
       break;
     }
     if(ranged!=null)return ranged;
+    if(rangedRule!=null){RuntimeState.Monster target=SkillApproachController.reachableTarget(activeWorld(),rangedRule,m->campaignHuntTarget(hunt,m),logicalViewportWidth,H);if(target!=null)return target;}
     return activeWorld().selectAutoTarget(monster->campaignHuntTarget(hunt,monster));
   }
 
