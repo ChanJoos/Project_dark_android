@@ -6,9 +6,11 @@ public final class AbelTownRenderer {
  private static final int CHUNK=256,GUTTER=2,LIMIT=32;
  private final Context context;private final Paint p=new Paint();private final RectF dst=new RectF();private final Map<String,Bitmap> assets=new HashMap<>();private final LinkedHashMap<Long,Bitmap> chunks=new LinkedHashMap<>(32,.75f,true);private String map="";private long floorBuilds;public long floorBuildCount(){return floorBuilds;}
  private static final String[] TILE={"tile_white","tile_brick_rosette","tile_blue_water","tile_rock_paving","tile_sea_water","tile_grass"};
+ private Bitmap doorPortal;
  public AbelTownRenderer(Context c){context=c;p.setFilterBitmap(false);p.setAntiAlias(false);}
  private Bitmap image(String name){Bitmap b=assets.get(name);if(b==null)try(InputStream in=context.getAssets().open("abel-video-v147/"+name+".png")){b=BitmapFactory.decodeStream(in);if(b==null)throw new IOException(name);b.prepareToDraw();assets.put(name,b);}catch(IOException e){throw new IllegalStateException("Missing registered Abel asset "+name,e);}return b;}
- public void prepare(){for(String t:TILE)image(t);for(AbelTownGeometry.Prop a:AbelTownGeometry.PROPS)image(a.asset);for(AbelTownGeometry.Prop a:AbelTownGeometry.EAST_PROPS)image(a.asset);}
+ private Bitmap portal(){if(doorPortal==null)try(InputStream in=context.getAssets().open("assets/world/portal/portal_reagent_shop.webp")){doorPortal=BitmapFactory.decodeStream(in);if(doorPortal==null)throw new IOException("door portal");doorPortal.prepareToDraw();}catch(IOException e){throw new IllegalStateException("Missing shared Milles entrance portal",e);}return doorPortal;}
+ public void prepare(){portal();for(String t:TILE)image(t);for(AbelTownGeometry.Prop a:AbelTownGeometry.PROPS)image(a.asset);for(AbelTownGeometry.Prop a:AbelTownGeometry.EAST_PROPS)image(a.asset);}
  public int floorCacheEntries(){return chunks.size();}public long floorCachePixelBytes(){long n=0;for(Bitmap b:chunks.values())n+=b.getAllocationByteCount();return n;}
  private void select(String id){if(id.equals(map))return;chunks.clear();map=id;}
  public void draw(Canvas c,WorldRuntimeAdapter w,List<PoteFieldRenderer.ActorDraw> actors){select(w.runtime().currentMapId());float ox=w.camera().cameraX(),oy=w.camera().cameraY(),vw=w.camera().viewportWidth(),vh=w.camera().viewportHeight();c.drawColor(0xffc6c7ce);
@@ -18,6 +20,9 @@ public final class AbelTownRenderer {
    dst.set(cx*CHUNK-GUTTER-ox,cy*CHUNK-GUTTER-oy,(cx+1)*CHUNK+GUTTER-ox,(cy+1)*CHUNK+GUTTER-oy);c.drawBitmap(b,null,dst,p);
   }
   List<PoteFieldRenderer.ActorDraw> order=new ArrayList<>(actors);for(AbelTownGeometry.Prop a:AbelTownGeometry.props(map)){float left=a.x-ox-a.anchorX,top=a.y-oy-a.anchorY;if(left>vw||left+a.width<0||top>vh||top+a.height<0)continue;order.add(new PoteFieldRenderer.ActorDraw(a.x,a.depthY,a.height,a.width,()->sprite(c,a.asset,left,top,a.width,a.height)));}
+  // Match Milles' 40x16 doorway marker and threshold layer. The facade must
+  // precede its marker so the foundation cannot hide the entrance indication.
+  for(AbelTownGeometry.Building b:AbelTownGeometry.BUILDINGS){float x=b.doorX()-ox,y=b.doorY()-oy;if(x+20<0||x-20>vw||y+8<0||y-8>vh)continue;order.add(new PoteFieldRenderer.ActorDraw(b.doorX(),Math.max(b.doorY(),b.prop.depthY)+.01f,16,40,()->{dst.set(x-20,y-8,x+20,y+8);p.setColor(Color.WHITE);p.setAlpha(255);c.drawBitmap(portal(),null,dst,p);}));}
   order.sort(Comparator.comparingDouble(a->a.y));for(PoteFieldRenderer.ActorDraw a:order)a.draw.run();
  }
  private void floor(Canvas c,float ox,float oy,float vw,float vh){c.drawColor(0xffc6c7ce);float l=ox-64,r=ox+vw+64,t=oy-40,bottom=oy+vh+40;int u0=Math.max(0,(int)Math.floor((l-2560)/64+(t-64)/32)),u1=Math.min(AbelTownGeometry.SIZE-1,(int)Math.ceil((r-2560)/64+(bottom-64)/32)),v0=Math.max(0,(int)Math.floor((t-64)/32-(r-2560)/64)),v1=Math.min(AbelTownGeometry.SIZE-1,(int)Math.ceil((bottom-64)/32-(l-2560)/64));for(int u=u0;u<=u1;u++)for(int v=v0;v<=v1;v++){float x=AbelTownGeometry.x(u,v)-ox,y=AbelTownGeometry.y(u,v)-oy;if(x< -65||x>vw+65||y< -65||y>vh+65)continue;sprite(c,TILE[AbelTownGeometry.tile(map,u,v)],x-32,y-16,64,32);}

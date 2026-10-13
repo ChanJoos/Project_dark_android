@@ -1,3 +1,7 @@
+## 2026-10-13 — V152 Abel entrance portals requested
+
+User reports no visible entry indication in Abel and explicitly asks for Milles-style portals. Exact reported APK version unspecified. Current renderer reproduces omission: existing service triggers work but no marker is drawn. Implemented unchanged Milles source portal asset at all five door centers, identical40x16 bounds and facade-threshold depth; prewarmed once. Existing door/collision/navigation geometry retained. New actual native test checks visible source portal pixels for every facade and uses actual ground touch to enter each matching room. Candidate build/native/phone/visual PENDING. Continue same branch/PR195; user publication preapproval remains in force. Contract master/changes/V152_PORTAL_REPAIR.json.
+
 ## 2026-10-13 — V151 exact final movement/object/collision candidate verified
 
 Runtime/APK source7b90c1967011a2a207d37e0f64a26f224be0e355; focused Actions38330111652/job115077710145 SUCCESS.125 unique passing actual native tests/23 suites,0 failures/errors/skips. Both broader Android38330111586/38330116619 SUCCESS. Original V149 remains DEVICE_FAILED_USER_REPORTED; physical phone and user visual acceptance of V151 PENDING. Entire original map/hidden pixels remain unknown or ADAPTED.
