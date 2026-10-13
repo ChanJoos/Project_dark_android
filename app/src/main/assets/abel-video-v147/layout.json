@@ -2910,6 +2910,12 @@
         45.986,
         223.757
       ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_two_storey",
+      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
+      "originalGenerationFile": "exec-283f9937-9e11-46ce-bf7d-90aa6f17342b.png",
+      "originalGenerationSha256": "302f5ebc813979b3f553083c580dc55a76fbe0e055a594b03a568198dad273c4",
+      "sha256": "650e1ae103bff8dcb484e5048a9c9af3d6f6a49952d80a95498fefd201497534",
       "groundPolygon": [
         [
           4.67,
@@ -2927,12 +2933,7 @@
           139.338,
           149.611
         ]
-      ],
-      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
-      "sourceParent": "building_two_storey",
-      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
-      "originalGenerationFile": "exec-283f9937-9e11-46ce-bf7d-90aa6f17342b.png",
-      "sha256": "650e1ae103bff8dcb484e5048a9c9af3d6f6a49952d80a95498fefd201497534"
+      ]
     },
     {
       "id": "building_awning_corner_complete",
@@ -2944,6 +2945,12 @@
         287.673,
         208.772
       ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_awning_corner",
+      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
+      "originalGenerationFile": "exec-6744b317-ebb9-4ce9-87b0-f14b25bcaae9.png",
+      "originalGenerationSha256": "e02e00cb6eca3353f4c01bb980dd7aeffb4bdf2e3c0362f080fa11fe77b03d4b",
+      "sha256": "5805263825631f534526d5e6515de8c7c190edc37637371555a9d55ada622fbc",
       "groundPolygon": [
         [
           7.008,
@@ -2977,33 +2984,7 @@
           63.234,
           132.879
         ]
-      ],
-      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
-      "sourceParent": "building_awning_corner",
-      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
-      "originalGenerationFile": "exec-6744b317-ebb9-4ce9-87b0-f14b25bcaae9.png",
-      "sha256": "5805263825631f534526d5e6515de8c7c190edc37637371555a9d55ada622fbc"
-    },
-    {
-      "id": "rowing_boat_complete",
-      "size": [
-        181,
-        128
-      ],
-      "anchor": [
-        90,
-        119
-      ],
-      "sourceFrame": 41,
-      "box": [
-        430,
-        225,
-        603,
-        345
-      ],
-      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
-      "sourceParent": "rowing_boat",
-      "sha256": "5a318f8cbd195beb6712161b1ee63560c44af7feafa892d7e2e49408edf03417"
+      ]
     },
     {
       "id": "sailing_ship_complete",
@@ -3017,10 +2998,402 @@
       ],
       "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
       "sourceParent": "sailing_ship",
-      "sourceFrame": 20,
-      "generation": "built-in image_gen complete isolated original boat style; reconstructed missing hull NOT exact recovered source pixels",
+      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
       "originalGenerationFile": "exec-8cf1b7a7-ee93-4a34-a5a0-ee3bd82e9880.png",
+      "originalGenerationSha256": "574871c51f8cdad17fbb55b664653b79ab9790f489a9f5e440ceba42b4ac81d3",
       "sha256": "3585c3a322270627dfd188c5e89473d9fd4dc2a9fb6185188b9427c0ab305770"
+    },
+    {
+      "id": "rowing_boat_complete",
+      "size": [
+        181,
+        128
+      ],
+      "anchor": [
+        90,
+        119
+      ],
+      "sourceFrame": 41,
+      "sourceFrameSha256": "32b37b4733561521ecb8c966ebe49dc2c1b7df25f7b696cc2c52ac001ad173a9",
+      "box": [
+        430,
+        225,
+        603,
+        345
+      ],
+      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+      "sourceParent": "rowing_boat",
+      "sha256": "5a318f8cbd195beb6712161b1ee63560c44af7feafa892d7e2e49408edf03417"
+    },
+    {
+      "id": "fountain_complete",
+      "size": [
+        126,
+        161
+      ],
+      "anchor": [
+        62,
+        152
+      ],
+      "sourceFrame": 28,
+      "sourceFrameSha256": "c1c6c0217b506a18dce57596b47e9ae584971b6d658202fc96c22ac4cc018fe3",
+      "box": [
+        140,
+        180,
+        258,
+        333
+      ],
+      "sourcePolygons": [
+        [
+          [
+            146,
+            276
+          ],
+          [
+            151,
+            265
+          ],
+          [
+            169,
+            253
+          ],
+          [
+            190,
+            249
+          ],
+          [
+            216,
+            252
+          ],
+          [
+            239,
+            268
+          ],
+          [
+            251,
+            282
+          ],
+          [
+            250,
+            301
+          ],
+          [
+            242,
+            313
+          ],
+          [
+            222,
+            323
+          ],
+          [
+            193,
+            328
+          ],
+          [
+            171,
+            323
+          ],
+          [
+            154,
+            312
+          ],
+          [
+            146,
+            299
+          ]
+        ],
+        [
+          [
+            195,
+            233
+          ],
+          [
+            186,
+            245
+          ],
+          [
+            177,
+            248
+          ],
+          [
+            174,
+            283
+          ],
+          [
+            180,
+            300
+          ],
+          [
+            214,
+            300
+          ],
+          [
+            224,
+            281
+          ],
+          [
+            220,
+            254
+          ],
+          [
+            205,
+            242
+          ],
+          [
+            203,
+            232
+          ]
+        ],
+        [
+          [
+            197,
+            192
+          ],
+          [
+            199,
+            191
+          ],
+          [
+            200,
+            217
+          ],
+          [
+            207,
+            230
+          ],
+          [
+            205,
+            243
+          ],
+          [
+            196,
+            246
+          ],
+          [
+            191,
+            241
+          ],
+          [
+            193,
+            228
+          ],
+          [
+            196,
+            218
+          ]
+        ],
+        [
+          [
+            165,
+            239
+          ],
+          [
+            168,
+            239
+          ],
+          [
+            169,
+            286
+          ],
+          [
+            176,
+            302
+          ],
+          [
+            166,
+            301
+          ]
+        ],
+        [
+          [
+            227,
+            241
+          ],
+          [
+            230,
+            241
+          ],
+          [
+            231,
+            285
+          ],
+          [
+            226,
+            302
+          ],
+          [
+            221,
+            301
+          ]
+        ],
+        [
+          [
+            158,
+            251
+          ],
+          [
+            161,
+            251
+          ],
+          [
+            163,
+            279
+          ],
+          [
+            158,
+            285
+          ]
+        ],
+        [
+          [
+            238,
+            255
+          ],
+          [
+            240,
+            254
+          ],
+          [
+            240,
+            286
+          ],
+          [
+            236,
+            286
+          ]
+        ]
+      ],
+      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+      "sha256": "7c9580b9d990ff5e7f930142c367b804f8f921f38ee7c69a7c116f4ff925254b"
+    },
+    {
+      "id": "signpost_complete",
+      "size": [
+        47,
+        52
+      ],
+      "anchor": [
+        21,
+        46
+      ],
+      "sourceFrame": 28,
+      "sourceFrameSha256": "c1c6c0217b506a18dce57596b47e9ae584971b6d658202fc96c22ac4cc018fe3",
+      "box": [
+        546,
+        337,
+        585,
+        381
+      ],
+      "sourcePolygons": [
+        [
+          [
+            546,
+            347
+          ],
+          [
+            563,
+            345
+          ],
+          [
+            564,
+            337
+          ],
+          [
+            570,
+            338
+          ],
+          [
+            572,
+            346
+          ],
+          [
+            584,
+            348
+          ],
+          [
+            584,
+            357
+          ],
+          [
+            571,
+            360
+          ],
+          [
+            563,
+            363
+          ],
+          [
+            546,
+            362
+          ]
+        ],
+        [
+          [
+            562,
+            358
+          ],
+          [
+            568,
+            358
+          ],
+          [
+            567,
+            380
+          ],
+          [
+            560,
+            380
+          ]
+        ]
+      ],
+      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+      "sha256": "2d8f69bb3147174cb9fcf705ece43ae246e1ee242543cbbf17605e9bca8d6ba3"
+    },
+    {
+      "id": "rail_down_clean",
+      "size": [
+        39,
+        54
+      ],
+      "anchor": [
+        4,
+        33
+      ],
+      "sourceParent": "pool_rail_down",
+      "status": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+      "sha256": "923349134079b7431b776a67430dd5be21449f771dd9e2aa077a3af58a2be48f"
+    },
+    {
+      "id": "rail_up_clean",
+      "size": [
+        39,
+        54
+      ],
+      "anchor": [
+        4,
+        49
+      ],
+      "sourceParent": "pool_rail_down",
+      "status": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+      "sha256": "f5b027050e2815c300aeaa9a9040717a30eb58b268c838ec6a1fd7b8d91d8652"
+    },
+    {
+      "id": "lamp_banner_complete",
+      "size": [
+        66,
+        140
+      ],
+      "anchor": [
+        35,
+        137
+      ],
+      "sourceParents": [
+        "banner",
+        "lamp_main"
+      ],
+      "sourceFrame": 14,
+      "status": "ADAPTED_WHOLE_SOURCE_LAMP_WITH_OBSERVED_FLAG",
+      "sha256": "8c92a2677a8448772d17347d3c5bb16c3edb63bffc1ba44d3c9495fca3ef9f30"
     }
   ],
   "views": [
@@ -5971,23 +6344,24 @@
           "sourceParent": "building_two_storey"
         },
         {
-          "asset": "banner",
+          "asset": "lamp_banner_complete",
           "scene": "main",
           "sourceWorld": [
             -19.51,
             345.72
           ],
           "anchor": [
-            8,
-            102
+            35,
+            137
           ],
           "nativeSize": [
-            34,
-            101
+            66,
+            140
           ],
           "sourceFrame": 5,
           "matchError": 0.043345,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_WHOLE_SOURCE_LAMP_WITH_OBSERVED_FLAG",
+          "sourceParent": "banner"
         },
         {
           "asset": "tree_broadleaf",
@@ -6462,23 +6836,24 @@
           "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "banner",
+          "asset": "lamp_banner_complete",
           "scene": "main",
           "sourceWorld": [
             -831.51,
             752.57
           ],
           "anchor": [
-            8,
-            102
+            35,
+            137
           ],
           "nativeSize": [
-            34,
-            101
+            66,
+            140
           ],
           "sourceFrame": 14,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_WHOLE_SOURCE_LAMP_WITH_OBSERVED_FLAG",
+          "sourceParent": "banner"
         },
         {
           "asset": "flowerbed_orange",
@@ -6853,15 +7228,15 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "rail_down",
+          "asset": "rail_down_clean",
           "scene": "main",
           "sourceWorld": [
             -1679.53,
             1004.08
           ],
           "anchor": [
-            0,
-            34
+            4,
+            33
           ],
           "nativeSize": [
             39,
@@ -6869,7 +7244,8 @@
           ],
           "sourceFrame": 19,
           "matchError": 0.008387,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceParent": "rail_down"
         },
         {
           "asset": "building_awning_corner_complete",
@@ -6912,15 +7288,15 @@
           "sourceParent": "building_awning_long"
         },
         {
-          "asset": "rail_down",
+          "asset": "rail_down_clean",
           "scene": "main",
           "sourceWorld": [
             -1623.53,
             1032.08
           ],
           "anchor": [
-            0,
-            34
+            4,
+            33
           ],
           "nativeSize": [
             39,
@@ -6928,7 +7304,8 @@
           ],
           "sourceFrame": 19,
           "matchError": 0.005815,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceParent": "rail_down"
         },
         {
           "asset": "tree_broadleaf",
@@ -7205,15 +7582,15 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_down",
+          "asset": "rail_down_clean",
           "scene": "main",
           "sourceWorld": [
             -1343.53,
             1172.08
           ],
           "anchor": [
-            0,
-            34
+            4,
+            33
           ],
           "nativeSize": [
             39,
@@ -7221,7 +7598,8 @@
           ],
           "sourceFrame": 19,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceParent": "rail_down"
         },
         {
           "asset": "tree_broadleaf",
@@ -7283,15 +7661,15 @@
           "sourceParent": "tree_slender"
         },
         {
-          "asset": "rail_down",
+          "asset": "rail_down_clean",
           "scene": "main",
           "sourceWorld": [
             -1287.53,
             1200.08
           ],
           "anchor": [
-            0,
-            34
+            4,
+            33
           ],
           "nativeSize": [
             39,
@@ -7299,7 +7677,8 @@
           ],
           "sourceFrame": 19,
           "matchError": 0.001151,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceParent": "rail_down"
         },
         {
           "asset": "flowerbed_orange",
@@ -7361,15 +7740,15 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_down",
+          "asset": "rail_down_clean",
           "scene": "main",
           "sourceWorld": [
             -1231.53,
             1228.08
           ],
           "anchor": [
-            0,
-            34
+            4,
+            33
           ],
           "nativeSize": [
             39,
@@ -7377,7 +7756,8 @@
           ],
           "sourceFrame": 19,
           "matchError": 0.001557,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceParent": "rail_down"
         },
         {
           "asset": "bench_back_down",
@@ -7400,15 +7780,15 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_down",
+          "asset": "rail_down_clean",
           "scene": "main",
           "sourceWorld": [
             -1175.53,
             1256.08
           ],
           "anchor": [
-            0,
-            34
+            4,
+            33
           ],
           "nativeSize": [
             39,
@@ -7416,7 +7796,8 @@
           ],
           "sourceFrame": 19,
           "matchError": 0.002593,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceParent": "rail_down"
         },
         {
           "asset": "tree_broadleaf",
@@ -7720,24 +8101,25 @@
           "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1550.5,
             1421.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.023974,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "flowerbed_orange",
@@ -7800,44 +8182,46 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1746.5,
             1435.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.00548,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1522.5,
             1435.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.024347,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "lamp",
@@ -7880,24 +8264,25 @@
           "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1494.5,
             1449.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.014396,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "tree_broadleaf",
@@ -7920,64 +8305,67 @@
           "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1690.5,
             1463.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.015816,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1466.51,
             1463.3400000000001
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 37,
           "matchError": 0.016296,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1662.5,
             1477.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.012652,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "flowerbed_orange",
@@ -8000,84 +8388,88 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1634.5,
             1491.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.013177,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1410.5,
             1491.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.013252,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1606.5,
             1505.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.001675,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1382.5,
             1505.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.012626,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "bench_front_down",
@@ -8161,84 +8553,88 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1354.5,
             1519.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.01217,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1326.5,
             1533.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.011444,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1550.5,
             1533.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.016925,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1522.5,
             1547.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.016034,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "tree_broadleaf",
@@ -8281,24 +8677,25 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1494.5,
             1561.25
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 36,
           "matchError": 0.012849,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "bench_front_down",
@@ -8321,24 +8718,25 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1466.51,
             1575.34
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 37,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "bench_front_down",
@@ -8421,23 +8819,24 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "pool_rail_down",
+          "asset": "rail_down_clean",
           "scene": "east",
           "sourceWorld": [
             -628.0,
             1599.01
           ],
           "anchor": [
-            0,
-            29
+            4,
+            33
           ],
           "nativeSize": [
-            31,
-            46
+            39,
+            54
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "pool_rail_down"
         },
         {
           "asset": "bench_front_down",
@@ -8460,63 +8859,45 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1410.51,
             1603.34
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 37,
           "matchError": 0.011268,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "fountain",
-          "scene": "east",
-          "sourceWorld": [
-            -479.0,
-            1607.01
-          ],
-          "anchor": [
-            56,
-            119
-          ],
-          "nativeSize": [
-            112,
-            127
-          ],
-          "sourceFrame": 28,
-          "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
-        },
-        {
-          "asset": "pool_rail_down",
+          "asset": "rail_down_clean",
           "scene": "east",
           "sourceWorld": [
             -600.0,
             1613.01
           ],
           "anchor": [
-            0,
-            29
+            4,
+            33
           ],
           "nativeSize": [
-            31,
-            46
+            39,
+            54
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "pool_rail_down"
         },
         {
           "asset": "tree_broadleaf",
@@ -8539,43 +8920,45 @@
           "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1382.51,
             1617.34
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 37,
           "matchError": 0.010879,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "pool_rail_down",
+          "asset": "rail_down_clean",
           "scene": "east",
           "sourceWorld": [
             -572.0,
             1627.01
           ],
           "anchor": [
-            0,
-            29
+            4,
+            33
           ],
           "nativeSize": [
-            31,
-            46
+            39,
+            54
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "pool_rail_down"
         },
         {
           "asset": "tree_broadleaf",
@@ -8598,43 +8981,66 @@
           "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "rail_up",
+          "asset": "fountain_complete",
+          "scene": "east",
+          "sourceWorld": [
+            -479.0,
+            1631.01
+          ],
+          "anchor": [
+            62,
+            152
+          ],
+          "nativeSize": [
+            126,
+            161
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+          "sourceDistrict": "east",
+          "sourceParent": "fountain"
+        },
+        {
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1354.5,
             1631.46
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 38,
           "matchError": 0.012601,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "pool_rail_down",
+          "asset": "rail_down_clean",
           "scene": "east",
           "sourceWorld": [
             -544.0,
             1641.01
           ],
           "anchor": [
-            0,
-            29
+            4,
+            33
           ],
           "nativeSize": [
-            31,
-            46
+            39,
+            54
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "pool_rail_down"
         },
         {
           "asset": "bench_front_up",
@@ -8657,24 +9063,25 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1326.5,
             1645.46
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 38,
           "matchError": 0.001416,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "flowerbed_orange",
@@ -8697,42 +9104,44 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "pool_rail_down",
+          "asset": "rail_down_clean",
           "scene": "east",
           "sourceWorld": [
             -516.0,
             1655.01
           ],
           "anchor": [
-            0,
-            29
+            4,
+            33
           ],
           "nativeSize": [
-            31,
-            46
+            39,
+            54
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "pool_rail_down"
         },
         {
-          "asset": "pool_rail_down",
+          "asset": "rail_down_clean",
           "scene": "east",
           "sourceWorld": [
             -488.0,
             1669.01
           ],
           "anchor": [
-            0,
-            29
+            4,
+            33
           ],
           "nativeSize": [
-            31,
-            46
+            39,
+            54
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "pool_rail_down"
         },
         {
           "asset": "bench_pool",
@@ -8775,24 +9184,25 @@
           "sourceParent": "tree_slender"
         },
         {
-          "asset": "signpost",
+          "asset": "signpost_complete",
           "scene": "east",
           "sourceWorld": [
-            -109.0,
+            -114.0,
             1682.01
           ],
           "anchor": [
-            22,
-            42
+            21,
+            46
           ],
           "nativeSize": [
-            39,
-            43
+            47,
+            52
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+          "sourceDistrict": "east",
+          "sourceParent": "signpost"
         },
         {
           "asset": "tree_broadleaf",
@@ -8940,64 +9350,67 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             1018.51,
             1799.51
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 39,
           "matchError": 0.019418,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             990.5,
             1813.46
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 38,
           "matchError": 0.01546,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
-          "asset": "rail_up",
+          "asset": "rail_up_clean",
           "scene": "east",
           "sourceWorld": [
             962.5,
             1827.46
           ],
           "anchor": [
-            1,
+            4,
             49
           ],
           "nativeSize": [
-            35,
-            53
+            39,
+            54
           ],
           "sourceFrame": 38,
           "matchError": 0.016563,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+          "sourceDistrict": "east",
+          "sourceParent": "rail_up"
         },
         {
           "asset": "tree_broadleaf",

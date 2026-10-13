@@ -39,11 +39,14 @@ for p in d['scenes']['east']['props']:
 # Generated missing building/ship portions are explicitly ADAPTED. Full source tree/boat
 # families replace contaminated scene rectangles, retaining the observed ground locations.
 specs={a['id']:a for a in d['assets']}
-replacements={'building_two_storey':'building_two_storey_complete','building_awning_corner':'building_awning_corner_complete','building_awning_long':'building_two_storey_complete','sailing_ship':'sailing_ship_complete','rowing_boat':'rowing_boat_complete','tree_slender':'tree_broadleaf','flower_red_clump':'flowerbed_orange','lamp_pool':'lamp_main'}
+replacements={'building_two_storey':'building_two_storey_complete','building_awning_corner':'building_awning_corner_complete','building_awning_long':'building_two_storey_complete','sailing_ship':'sailing_ship_complete','rowing_boat':'rowing_boat_complete','tree_slender':'tree_broadleaf','flower_red_clump':'flowerbed_orange','lamp_pool':'lamp_main','rail_up':'rail_up_clean','rail_down':'rail_down_clean','pool_rail_down':'rail_down_clean','fountain':'fountain_complete','signpost':'signpost_complete','banner':'lamp_banner_complete'}
 def replace_prop(p,name):
  a=specs[name];p.update(asset=name,anchor=a['anchor'],nativeSize=a['size'],evidence=a['status'],sourceParent=p.get('sourceParent',p['asset']))
 for p in props:
- if p['asset'] in replacements:replace_prop(p,replacements[p['asset']])
+ if p['asset'] in replacements:
+  parent=p['asset'];replace_prop(p,replacements[parent])
+  if parent=='fountain':p['sourceWorld'][1]+=24
+  if parent=='signpost':p['sourceWorld'][0]-=5
 # Finish the unobserved connector as a landscaped public street, using existing source families.
 # Do not alter recorded water, facades or gardens. Tile corridors remain in the same 64x32 lattice.
 for u in range(27,79):
