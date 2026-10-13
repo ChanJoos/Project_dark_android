@@ -111,5 +111,20 @@
     "KingArk HP35%/two-step retreat/one heal12.5% is mobile solo interpretation, not original event rules",
     "no new random drop rates or fabricated source gear art; higher mobile gear reuses approved appearance"
   ],
-  "acceptance": "Five normal jobs and actual native casting frame must pass exact-SHA CI; phone/user visual pending"
+  "acceptance": "Five normal jobs and actual native casting frame must pass exact-SHA CI; phone/user visual pending",
+  "static_balance_receipt": {
+    "ordinary_exp_min": 43000,
+    "ordinary_exp_max": 62000,
+    "level41_required_exp": 757900,
+    "level69_required_exp": 1187200,
+    "pure_hunt_kills_per_level_range": [
+      13,
+      28
+    ],
+    "quest_bonus": "existing milestone progression, separate from pure-hunt kills"
+  },
+  "verification_sources_in_progress": [
+    "aff3428c6184491d8444501a767cfb99306c1ec8",
+    "Actions38347591692"
+  ]
 }

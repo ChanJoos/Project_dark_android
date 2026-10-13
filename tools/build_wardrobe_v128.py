@@ -15,15 +15,15 @@ for m in re.finditer(r'new ItemDefinition\(\s*("[^"]+"|\w+)\s*,\s*"[^"]+"\s*,\s*
  id=json.loads(m[1]) if m[1].startswith('"') else constants.get(m[1]);a=json.loads(m[2]) if m[2].startswith('"') else constants.get(m[2]);
  if id and a:links[id]=a
 for i,job in enumerate(['WARRIOR','ROGUE','MAGE','CLERIC','MARTIAL_ARTIST']):
- for lv in [11,26]:
+ for lv in [11,26,41,56,65]:
   links[f'IT_B_CAMPAIGN_{job}_{lv}']=['mu0000059','mu0000055','mu0000117','mu0000210','mu0000057'][i]
   if job!='MARTIAL_ARTIST':links[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']=links[{'WARRIOR':'IT_B_JOB_WARRIOR_WEAPON','ROGUE':'IT_B_JOB_ROGUE_WEAPON','MAGE':'IT_B_JOB_MAGE_WAND','CLERIC':'IT_B_JOB_CLERIC_WAND'}[job]]
 # Correct semantic mismatches, not just their icon. Preserve existing adapted numerical modifiers.
 rebind={'IT_B_JOB_ROGUE_WEAPON':'mw002','IT_B_JOB_CLERIC_WAND':'mw008','IT_B_JOB_ROGUE_GARMENT':'mu0000004','IT_B_JOB_MONK_GI':'mu0000003'}
 for job,a in [('WARRIOR','mu0000007'),('ROGUE','mu0000004'),('MAGE','mu0000006'),('CLERIC','mu0000015'),('MARTIAL_ARTIST','mu0000003')]:
- for lv in [11,26]:rebind[f'IT_B_CAMPAIGN_{job}_{lv}']=a
+ for lv in [11,26,41,56,65]:rebind[f'IT_B_CAMPAIGN_{job}_{lv}']=a
 for job,a in [('ROGUE','mw002'),('CLERIC','mw008')]:
- for lv in [11,26]:rebind[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']=a
+ for lv in [11,26,41,56,65]:rebind[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']=a
 links.update(rebind)
 # Classic five-circle wardrobe, excluding wigs/cash costumes and higher advancements.
 # This defined source slice is NOT a claim that the entire original game's item set is complete.

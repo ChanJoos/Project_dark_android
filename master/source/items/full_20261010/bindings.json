@@ -1,7 +1,7 @@
 {
-  "currentItems": 422,
-  "newSourceBindings": 87,
-  "reusedSourceBindings": 7,
+  "currentItems": 452,
+  "newSourceBindings": 114,
+  "reusedSourceBindings": 10,
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
       "name": "쌍은귀걸이",
@@ -1068,6 +1068,36 @@
       "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
       "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
     },
+    "IT_B_CAMPAIGN_WARRIOR_41": {
+      "name": "지폰 · 수련",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_41": {
+      "name": "롱소드 · 수련",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "IT_B_CAMPAIGN_WARRIOR_56": {
+      "name": "지폰 · 수련",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_56": {
+      "name": "롱소드 · 수련",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "IT_B_CAMPAIGN_WARRIOR_65": {
+      "name": "지폰 · 수련",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_65": {
+      "name": "롱소드 · 수련",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
     "IT_B_CAMPAIGN_ROGUE_11": {
       "name": "스카웃튜닉 · 수련",
       "assetPath": "item-icons/identity_mu0000004.png",
@@ -1084,6 +1114,36 @@
       "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_TOOL_ROGUE_26": {
+      "name": "에페 · 수련",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "IT_B_CAMPAIGN_ROGUE_41": {
+      "name": "스카웃튜닉 · 수련",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_41": {
+      "name": "에페 · 수련",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "IT_B_CAMPAIGN_ROGUE_56": {
+      "name": "스카웃튜닉 · 수련",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_56": {
+      "name": "에페 · 수련",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "IT_B_CAMPAIGN_ROGUE_65": {
+      "name": "스카웃튜닉 · 수련",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_65": {
       "name": "에페 · 수련",
       "assetPath": "item-icons/8956a8316ba1_epe.png",
       "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
@@ -1108,6 +1168,36 @@
       "assetPath": "item-icons/minimob87_magic_satia.png",
       "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
     },
+    "IT_B_CAMPAIGN_MAGE_41": {
+      "name": "후드로브 · 수련",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_41": {
+      "name": "매직새티아 · 수련",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "IT_B_CAMPAIGN_MAGE_56": {
+      "name": "후드로브 · 수련",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_56": {
+      "name": "매직새티아 · 수련",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
+    "IT_B_CAMPAIGN_MAGE_65": {
+      "name": "후드로브 · 수련",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_65": {
+      "name": "매직새티아 · 수련",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON"
+    },
     "IT_B_CAMPAIGN_CLERIC_11": {
       "name": "맨틀 · 수련",
       "assetPath": "item-icons/identity_mu0000015.png",
@@ -1128,12 +1218,57 @@
       "assetPath": "item-icons/identity_mw008.png",
       "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
+    "IT_B_CAMPAIGN_CLERIC_41": {
+      "name": "맨틀 · 수련",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_41": {
+      "name": "홀리머큐리아 · 수련",
+      "assetPath": "item-icons/identity_mw008.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_CLERIC_56": {
+      "name": "맨틀 · 수련",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_56": {
+      "name": "홀리머큐리아 · 수련",
+      "assetPath": "item-icons/identity_mw008.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_CLERIC_65": {
+      "name": "맨틀 · 수련",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_65": {
+      "name": "홀리머큐리아 · 수련",
+      "assetPath": "item-icons/identity_mw008.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_11": {
       "name": "도복 · 수련",
       "assetPath": "item-icons/identity_mu0000003.png",
       "identityMatch": "EXACT_WEARABLE_APPEARANCE"
     },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_26": {
+      "name": "도복 · 수련",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_41": {
+      "name": "도복 · 수련",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_56": {
+      "name": "도복 · 수련",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_65": {
       "name": "도복 · 수련",
       "assetPath": "item-icons/identity_mu0000003.png",
       "identityMatch": "EXACT_WEARABLE_APPEARANCE"
@@ -1329,6 +1464,21 @@
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
     },
     "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_26": {
+      "name": "MARTIAL_ARTIST tool",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_41": {
+      "name": "MARTIAL_ARTIST tool",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_56": {
+      "name": "MARTIAL_ARTIST tool",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_65": {
       "name": "MARTIAL_ARTIST tool",
       "assetPath": "equipment-icons/170_kintebukuro.png",
       "identityMatch": "ADAPTED_VISUAL_EQUIVALENT"
