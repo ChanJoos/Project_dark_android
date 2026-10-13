@@ -16,6 +16,13 @@ names = {row['id']: row for row in coverage['entries']}
 assert admitted <= names.keys(), 'Spawn identity missing from coverage inventory'
 art = dict(re.findall(r'art.put\("(ABEL_[A-Z_]+)","([^"]+)"\)', (java/'PoteForestMonsterShowcase.java').read_text()))
 rewards = set(re.findall(r'add\(m,"(ABEL_[A-Z_]+)"', (java/'AdaptedCampaignRewardCatalog.java').read_text()))
+# V153 binds EXP/Gold through the same species profile that creates its live HP/level.
+reward_source=(java/'AdaptedCampaignRewardCatalog.java').read_text()
+if 'for(AbelCombatProfile p:AbelCombatProfile.all())' in reward_source:
+    assert 'add(m,p.id,"아벨해안 · 모바일 3써클",p.exp,p.gold)' in reward_source, 'Coast profile reward projection changed'
+    profile_ids=re.findall(r'add\("(ABEL_[A-Z_]+)"', (java/'AbelCombatProfile.java').read_text())
+    assert len(profile_ids)==len(set(profile_ids)), 'Duplicate coast combat profile'
+    rewards.update(profile_ids)
 assert admitted == set(art) == rewards, 'Spawn, art and rewards disagree'
 assets = set()
 for version in (139, 140, 141, 142):
