@@ -44,6 +44,6 @@ public class AbelCombatV153Test {
     assertTrue(s.rpg().campaign().claim(d.id,s.rpg()));assertFalse(s.rpg().campaign().claim(d.id,s.rpg()));assertTrue(F5mSaveStore.checkpointActive());
    }
    assertTrue(s.rpg().normalLevel()>=70);assertTrue(s.rpg().campaign().finished());assertNull(s.rpg().campaign().next(s.rpg()));assertFalse(b.testAccess());assertTrue(casts>0);assertTrue(kills>80);assertTrue(s.rpg().gold()>0);RpgProgressionState copy=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(copy);assertEquals(CampaignProgress.earnedExp(s.rpg()),CampaignProgress.earnedExp(copy));assertEquals(s.rpg().inventory(),copy.inventory());report.put(job,new JSONObject().put("level",s.rpg().normalLevel()).put("kills",kills).put("combatAndNavigationSeconds",seconds).put("skillCasts",casts).put("consumedPaidPotions",potions).put("gold",s.rpg().gold()).put("skill",skill(job)).put("proficiency",b.proficiency(skill(job))).put("scope","Normal stat allocation, paid gear/learning/potions, full original population and live AI/LOS/path/Resolver. One initial safe-point rest, no per-kill rest or damage injection. Quest milestone EXP included; host simulation, not phone acceptance."));
-  }Path p=Paths.get("build/reports/abel-v153/five-jobs-level70.json");Files.createDirectories(p.getParent());Files.writeString(p,report.toString(2));
+  }Path p=Paths.get("build/reports/abel-v153/five-jobs-level70.json");Files.createDirectories(p.getParent());Files.write(p,report.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
 }
