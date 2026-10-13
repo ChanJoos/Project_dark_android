@@ -1,0 +1,133 @@
+{
+  "runtime_source_sha": "7b90c1967011a2a207d37e0f64a26f224be0e355",
+  "focused_run": 38330111652,
+  "job": 115077710145,
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "unique_tests": 125,
+  "suites": 23,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "apk_sha256": "7c73ac041b6d6a3ed494adee2b220cc1a9a754e67a049b5e63ae06db2a4201b2",
+  "apk_bytes": 70165609,
+  "built_seoul": "2026-10-13T10:09:47.398724+09:00",
+  "application_id": "com.projectdark.mobile.v151test",
+  "binary_manifest": {
+    "versionCode": 151,
+    "versionName": "1.51-abel-whole-objects",
+    "compileSdkVersion": 35,
+    "compileSdkVersionCodename": "15",
+    "package": "com.projectdark.mobile.v151test",
+    "platformBuildVersionCode": 35,
+    "platformBuildVersionName": 15
+  },
+  "identity": {
+    "sourceCommit": "7b90c1967011a2a207d37e0f64a26f224be0e355",
+    "runId": "38330111652",
+    "versionCode": 151,
+    "versionName": "1.51-abel-whole-objects"
+  },
+  "source_files_compared": 63,
+  "artifacts": {
+    "apk": {
+      "id": 11782776343,
+      "digest": "cb5d9fdc77fc2d7d7c2a863827bee6c95780df84fd8e98a019310f57308ed4c4"
+    },
+    "native": {
+      "id": 11782531960,
+      "digest": "9d017f84e2537a76952b5180143d3b20d73a2f48d62bc92d441aeea213191857"
+    },
+    "preview": {
+      "id": 11781594453,
+      "digest": "ac5ee3e3d18b4a15ddaaa06ad276bf9ed81e2f47c4a70338e6b90f01b38fa625"
+    }
+  },
+  "verification": "All3 downloaded ZIP digests and CRC verified; APK SHA256,CRC,binary package/version/identity and63 source pack files plus NPC profiles independently compared.125 unique actual testcases/23 suites across preview/native XMLs, zero failures/errors/skips.",
+  "collision": {
+    "buildings": 5,
+    "blockedDirectAttempts": 82,
+    "scope": "Actual world adapter wall-contact steps and all five service approaches; not phone acceptance"
+  },
+  "floor_cache": {
+    "physicalCanvas": [
+      2340,
+      1080
+    ],
+    "logicalViewport": [
+      1170,
+      540
+    ],
+    "coldBuilds": 15,
+    "warmRebuilds": 0,
+    "warmP95Ms": 3.501772,
+    "warmMaxMs": 5.697285,
+    "scope": "Robolectric native CPU; not handset FPS"
+  },
+  "full_frame_cpu": {
+    "frames": 180,
+    "logicalMovementSeconds": 3,
+    "presentationDistance": 178.8854383799342,
+    "pathRequests": 12,
+    "tapRequestMedianMs": 3.031555,
+    "tapRequestP95Ms": 3.856548,
+    "updateMedianMs": 0.121378,
+    "updateP95Ms": 0.192182,
+    "updateMaxMs": 2.008751,
+    "fullDrawMedianMs": 12.8364,
+    "fullDrawP95Ms": 18.946129,
+    "fullDrawMaxMs": 22.55944,
+    "scope": "Robolectric Android native full GameView CPU including actual town movement; NOT handset FPS or elapsed wall-time speed"
+  },
+  "inspected_native_views": [
+    "whole-single-town",
+    "phone-scale-town",
+    "all-live-object-atlas",
+    "source-view-19",
+    "whole-rowing-boat-source41",
+    "source-view-28",
+    "all5 building-foundation contacts/doors",
+    "inn-completed-rest",
+    "coast-departure-dialogue",
+    "four bench-on-floor views"
+  ],
+  "scope": "Shared Milles/Pote/Abel/inn .60s movement and frame policy; one town; full adapted red facades and sailing ship, whole original trees/fountain/small boat/fixtures, clean rail segments restricted to short land gaps; correct original small boat camera/box/anchor origin and adapted water under hulls; all5 foundation ground polygons/shared cached collision;5 rooms/rest/transactions/save,12 coast NPC round trips,29 unique NPC profiles, retained bench feet and forest/HUD/skills/reward/save regressions.166 props/18 live sprite families/62PNG pack.",
+  "limitations": [
+    "Missing building/ship pixels and hidden joins/interiors are ADAPTED; original entire map extent is unknown",
+    "Robolectric native CPU metrics are not handset FPS",
+    "Physical phone and user visual acceptance pending",
+    "Separate test application/fresh profile; no upgrade/save transfer claim"
+  ],
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "integration": {
+    "branch": "codex/abel-coast-v139",
+    "pr": 195,
+    "main": "deed7e52f541edee7651175389a518daa85fcceb",
+    "merged": false
+  },
+  "broader_android_runs": [
+    {
+      "id": 38330111586,
+      "conclusion": "success"
+    },
+    {
+      "id": 38330116619,
+      "conclusion": "success"
+    }
+  ],
+  "environment_recovery": "Transient execution workspace reset after source was published; recovered exact source/three verified Actions artifacts from GitHub without redoing implementation.",
+  "delivery_pending": false,
+  "review_sha256": "be0c2c145cc46702a0060726dbad91bbe29dacfbc032041d0bbe398477ec7cd2",
+  "delivery": {
+    "apk": {
+      "path": "/workspace/scratch/a0527f2cf5e3/deliverables/PROJECT_DARK_V151_TEST.apk",
+      "library_file_id": "libfile_9f717b3fcf388191b7a5bdaee2fd49bf",
+      "metadata_applied": true
+    },
+    "review": {
+      "path": "/workspace/scratch/a0527f2cf5e3/deliverables/ABEL_V151_RUNTIME_REVIEW.png",
+      "library_file_id": "libfile_996f12d40b608191bbd62a2c9908e002",
+      "metadata_applied": true
+    }
+  }
+}

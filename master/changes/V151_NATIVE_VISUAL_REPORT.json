@@ -8,6 +8,9 @@
   "liveFamilies": 18,
   "pngs": 62,
   "regression": "Actual live-layout repaired interval dry-ground assertion plus existing whole boat origin/water,82 building wall contact attempts and all5 doors",
-  "status": "IMPLEMENTED_CANDIDATE",
-  "buildNativePhone": "PENDING"
+  "status": "BUILD_NATIVE_VERIFIED_PHONE_PENDING",
+  "buildNativePhone": "BUILD_SUCCESS_NATIVE125_PASS_PHONE_PENDING",
+  "runtimeSource": "7b90c1967011a2a207d37e0f64a26f224be0e355",
+  "run": 38330111652,
+  "receipt": "master/changes/V151_BUILD_RUNTIME_RECEIPT.json"
 }
