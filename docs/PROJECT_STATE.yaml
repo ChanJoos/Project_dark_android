@@ -1,5 +1,12 @@
 abel_third_circle_v153:
-  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  runtime_source_sha: 6c0bdd21afcf00f32dab744d663d8740ae1c9aaf
+  focused_run: 38364329715
+  primary_unique_tests: 132
+  balance_executions: 5
+  total_passing_executions: 137
+  apk_artifact: 11796691195
+  receipt: master/changes/V153_BUILD_RUNTIME_RECEIPT.json
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/abel-coast-v139
   contract: master/changes/ABEL_3C_V153.json

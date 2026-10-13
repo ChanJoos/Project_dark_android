@@ -1,0 +1,349 @@
+{
+  "status": "IMPLEMENTED_BUILD_ANDROID_NATIVE_VERIFIED_PHONE_VISUAL_PENDING",
+  "source_sha": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+  "active_branch": "codex/abel-coast-v139",
+  "draft_pr": 195,
+  "main_sha_unchanged": "deed7e52f541edee7651175389a518daa85fcceb",
+  "focused_run": 38364329715,
+  "primary_job": 115186846057,
+  "balance_jobs": {
+    "WARRIOR": 115185723798,
+    "MAGE": 115185724082,
+    "CLERIC": 115185724091,
+    "ROGUE": 115185724105,
+    "MARTIAL_ARTIST": 115185724152
+  },
+  "build": {
+    "sourceCommit": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+    "runId": "38364329715",
+    "versionCode": 153,
+    "versionName": "1.53-abel-third-circle",
+    "applicationId": "com.projectdark.mobile.v153test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "5a9d040c8a1ff5d3bf0038bfec13641b5f60a4977159bb8cae2cfa5bedc4185b",
+    "apkBytes": 70174809,
+    "builtSeoul": "2026-10-13T16:52:27.052166+09:00",
+    "scope": "V153 adapted 3-circle combat/profiles/magic/AI, eighteen coast quests to Lv70 and three equipment tiers; five visible Milles-style 40x16 entry portals at the existing service triggers, native portal pixel checks and actual touch-to-entry; common Milles/Pote/Abel .60s movement and frame policy, complete adapted red facades and sailing ship, whole source trees and rowing boat, no live cropped garden/wall fragments; registered ground polygons and cached collision occupancy; single town, all five service doors, NPC coast travel and original benches retained. Generated missing silhouettes are ADAPTED, not original pixels; physical phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "verification": {
+    "primary_unique_tests": 132,
+    "primary_suites": 24,
+    "balance_job_executions": 5,
+    "total_executions": 137,
+    "unique_class_method_pairs": 133,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "downloaded_archive_sha256_and_crc": "PASS",
+    "apk_embedded_source_run_version": "PASS",
+    "independent_packaged_byte_match_count": 87,
+    "independent_packaged_byte_matches": [
+      "abel-town-v144/bench_nw.png",
+      "abel-town-v144/grass_material.png",
+      "abel-town-v144/church.png",
+      "abel-town-v144/water_material.png",
+      "abel-town-v144/bench_ne.png",
+      "abel-town-v144/house.png",
+      "abel-town-v144/fountain.png",
+      "abel-town-v144/stone.png",
+      "abel-town-v144/notice.png",
+      "abel-town-v144/cobble_material.png",
+      "abel-town-v144/bank.png",
+      "abel-town-v144/stone_material.png",
+      "abel-town-v144/cobble.png",
+      "abel-town-v144/grass.png",
+      "abel-town-v144/bench_sw.png",
+      "abel-town-v144/tree.png",
+      "abel-town-v144/water.png",
+      "abel-town-v144/bench_se.png",
+      "abel-town-v144/manifest.json",
+      "abel-town-v144/forge.png",
+      "abel-town-v144/lamp.png",
+      "abel-town-v144/fence.png",
+      "abel-town-v144/inn.png",
+      "abel-video-v147/flowerbed_orange.png",
+      "abel-video-v147/rail_up_clean.png",
+      "abel-video-v147/lamp_pool.png",
+      "abel-video-v147/bench_front_up.png",
+      "abel-video-v147/garden_foreground_grove.png",
+      "abel-video-v147/tree_broadleaf.png",
+      "abel-video-v147/banner.png",
+      "abel-video-v147/quay_wall_up.png",
+      "abel-video-v147/garden_curb_down_edge.png",
+      "abel-video-v147/coping_down.png",
+      "abel-video-v147/coping_up_edge.png",
+      "abel-video-v147/tile_inn_checker.png",
+      "abel-video-v147/inn_stool_alt.png",
+      "abel-video-v147/quay_wall_down.png",
+      "abel-video-v147/tree_slender.png",
+      "abel-video-v147/garden_curb_up_edge.png",
+      "abel-video-v147/fountain.png",
+      "abel-video-v147/rail_up.png",
+      "abel-video-v147/tile_blue_water.png",
+      "abel-video-v147/tile_white_aged.png",
+      "abel-video-v147/coping_down_edge.png",
+      "abel-video-v147/inn_table_bottles.png",
+      "abel-video-v147/building_two_storey.png",
+      "abel-video-v147/garden_curb_up.png",
+      "abel-video-v147/inn_stool.png",
+      "abel-video-v147/garden_tree_mass.png",
+      "abel-video-v147/flower_red_clump.png",
+      "abel-video-v147/building_awning_corner.png",
+      "abel-video-v147/inn_plant_pot.png",
+      "abel-video-v147/sailing_ship_complete.png",
+      "abel-video-v147/bench_front_down.png",
+      "abel-video-v147/tile_rock_paving.png",
+      "abel-video-v147/coping_up.png",
+      "abel-video-v147/tile_white.png",
+      "abel-video-v147/bench_pool.png",
+      "abel-video-v147/signpost.png",
+      "abel-video-v147/lamp_main.png",
+      "abel-video-v147/tile_sea_water.png",
+      "abel-video-v147/fountain_complete.png",
+      "abel-video-v147/building_awning_corner_complete.png",
+      "abel-video-v147/rail_down.png",
+      "abel-video-v147/tile_brick_rosette.png",
+      "abel-video-v147/tile_grass.png",
+      "abel-video-v147/building_two_storey_complete.png",
+      "abel-video-v147/inn_table_mugs.png",
+      "abel-video-v147/signpost_complete.png",
+      "abel-video-v147/inn_barrel.png",
+      "abel-video-v147/inn_table_back.png",
+      "abel-video-v147/garden_curb_down.png",
+      "abel-video-v147/pool_rail_down.png",
+      "abel-video-v147/inn_counter_segment.png",
+      "abel-video-v147/bench_back_up.png",
+      "abel-video-v147/layout.json",
+      "abel-video-v147/rowing_boat.png",
+      "abel-video-v147/building_awning_long.png",
+      "abel-video-v147/garden_grass.png",
+      "abel-video-v147/lamp.png",
+      "abel-video-v147/bench_back_down.png",
+      "abel-video-v147/rail_down_clean.png",
+      "abel-video-v147/sailing_ship.png",
+      "abel-video-v147/rowing_boat_complete.png",
+      "abel-video-v147/garden_tree_pair.png",
+      "abel-video-v147/lamp_banner_complete.png",
+      "assets/world/portal/portal_reagent_shop.webp"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": 11797006485,
+      "name": "abel-coast-v153-preview-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:3f283d209b70c725cd7f6fbe6208860ce14bab50e9a0302a53e930adc8e7309a",
+      "bytes": 40640181,
+      "crc": "PASS"
+    },
+    {
+      "id": 11796691195,
+      "name": "abel-coast-v153-apk-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:b4076e21fe98bef77daffcb8a865a2bc4c6b1d2f83127658680b4e10b110c330",
+      "bytes": 69235357,
+      "crc": "PASS"
+    },
+    {
+      "id": 11796475467,
+      "name": "abel-coast-v153-balance-ROGUE-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:81484d934ac37ff00dc47d395c89986a8f13df24ef2aa7039ecc6cd334797cb1",
+      "bytes": 2722,
+      "crc": "PASS"
+    },
+    {
+      "id": 11796325991,
+      "name": "abel-coast-v153-balance-WARRIOR-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:3716300ebc24cbceb23f1c2228373ba76e7b9c3ab860d280a7aad83e8dbe28c3",
+      "bytes": 2741,
+      "crc": "PASS"
+    },
+    {
+      "id": 11796300999,
+      "name": "abel-coast-v153-balance-MAGE-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:0664ccf1b4db89fa164aba2f4f8e738f9d95cb51294d7bace92a2d4aa1a39c90",
+      "bytes": 2746,
+      "crc": "PASS"
+    },
+    {
+      "id": 11796254423,
+      "name": "abel-coast-v153-native-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:6ff63d2aa583e1b5af8debc8e966246ae7984f7ab4bdd2e2b69b2d19caf74d10",
+      "bytes": 80934494,
+      "crc": "PASS"
+    },
+    {
+      "id": 11796043381,
+      "name": "abel-coast-v153-balance-MARTIAL_ARTIST-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:f7d107596ffb187f8575323e595a7998d1c44abfafed868eae49d84f59c0b9bc",
+      "bytes": 2751,
+      "crc": "PASS"
+    },
+    {
+      "id": 11795639772,
+      "name": "abel-coast-v153-balance-CLERIC-6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "sha256": "sha256:1d0670efe6089da297f595aa13d92bb05711b5ca8a8152e7ce8427801de3a804",
+      "bytes": 2753,
+      "crc": "PASS"
+    }
+  ],
+  "five_job_results": {
+    "MAGE": {
+      "sourceCommit": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "level": 70,
+      "kills": 127,
+      "completedTargetEncounters": 127,
+      "combatAndNavigationSeconds": 464.5600891113281,
+      "skillCasts": 429,
+      "consumedPaidPotions": 162,
+      "gold": 43230,
+      "skill": "SK_마법사_014",
+      "proficiency": 100,
+      "scope": "Normal stat allocation, paid gear/learning, weakness-aware manual choice among normally learned Mage spells, normal Curannum HP1000 and MP100 potions stocked between quest waves through merchant transactions, full authored population and live AI/LOS/path/Resolver. One initial safe-point rest, no per-kill rest or damage injection. Quest milestone EXP included; host simulation, not phone acceptance."
+    },
+    "CLERIC": {
+      "sourceCommit": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "level": 70,
+      "kills": 125,
+      "completedTargetEncounters": 125,
+      "combatAndNavigationSeconds": 467.8592834472656,
+      "skillCasts": 394,
+      "consumedPaidPotions": 153,
+      "gold": 44565,
+      "skill": "SK_성직자_013",
+      "proficiency": 100,
+      "scope": "Normal stat allocation, paid gear/learning, weakness-aware manual choice among normally learned Mage spells, normal Curannum HP1000 and MP100 potions stocked between quest waves through merchant transactions, full authored population and live AI/LOS/path/Resolver. One initial safe-point rest, no per-kill rest or damage injection. Quest milestone EXP included; host simulation, not phone acceptance."
+    },
+    "ROGUE": {
+      "sourceCommit": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "level": 70,
+      "kills": 143,
+      "completedTargetEncounters": 143,
+      "combatAndNavigationSeconds": 1269.0626220703125,
+      "skillCasts": 312,
+      "consumedPaidPotions": 63,
+      "gold": 47765,
+      "skill": "SK_도적_007",
+      "proficiency": 100,
+      "scope": "Normal stat allocation, paid gear/learning, weakness-aware manual choice among normally learned Mage spells, normal Curannum HP1000 and MP100 potions stocked between quest waves through merchant transactions, full authored population and live AI/LOS/path/Resolver. One initial safe-point rest, no per-kill rest or damage injection. Quest milestone EXP included; host simulation, not phone acceptance."
+    },
+    "MARTIAL_ARTIST": {
+      "sourceCommit": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "level": 70,
+      "kills": 138,
+      "completedTargetEncounters": 138,
+      "combatAndNavigationSeconds": 1124.0211181640625,
+      "skillCasts": 188,
+      "consumedPaidPotions": 33,
+      "gold": 48090,
+      "skill": "SK_무도가_007",
+      "proficiency": 100,
+      "scope": "Normal stat allocation, paid gear/learning, weakness-aware manual choice among normally learned Mage spells, normal Curannum HP1000 and MP100 potions stocked between quest waves through merchant transactions, full authored population and live AI/LOS/path/Resolver. One initial safe-point rest, no per-kill rest or damage injection. Quest milestone EXP included; host simulation, not phone acceptance."
+    },
+    "WARRIOR": {
+      "sourceCommit": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+      "level": 70,
+      "kills": 149,
+      "completedTargetEncounters": 134,
+      "combatAndNavigationSeconds": 1192.7882080078125,
+      "skillCasts": 280,
+      "consumedPaidPotions": 35,
+      "gold": 49560,
+      "skill": "SK_전사_006",
+      "proficiency": 100,
+      "scope": "Normal stat allocation, paid gear/learning, weakness-aware manual choice among normally learned Mage spells, normal Curannum HP1000 and MP100 potions stocked between quest waves through merchant transactions, full authored population and live AI/LOS/path/Resolver. One initial safe-point rest, no per-kill rest or damage injection. Quest milestone EXP included; host simulation, not phone acceptance."
+    }
+  },
+  "portal_results": [
+    {
+      "building": "abel_church",
+      "destination": "abel_interior_church",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_reagent",
+      "destination": "abel_interior_reagent",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_bank",
+      "destination": "abel_interior_bank",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_equipment",
+      "destination": "abel_interior_equipment",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    },
+    {
+      "building": "abel_inn",
+      "destination": "abel_interior_inn",
+      "opaquePortalPixels": 48,
+      "visibleMatchingPixels": 48,
+      "touchEntered": true
+    }
+  ],
+  "floor_performance": {
+    "physicalCanvas": [
+      2340,
+      1080
+    ],
+    "logicalViewport": [
+      1170,
+      540
+    ],
+    "coldBuilds": 15,
+    "warmRebuilds": 0,
+    "warmP95Ms": 2.753212,
+    "warmMaxMs": 3.487471,
+    "scope": "Robolectric native CPU; not handset FPS"
+  },
+  "broader_android_runs": {
+    "38364335380": "PENDING",
+    "38364329629": "PENDING"
+  },
+  "implemented": [
+    "13 ADAPTED_MOBILE_SOLO_3C level/HP/MP/AC/MDEF/element/damage/EXP/Gold profiles; original source catalogs retained",
+    "Shared Resolver contact, MP/cooldown/LOS gates, timed poison/blind/root/curse/freeze; visible project-authored particle events",
+    "Berserker low-HP rage and KingArk legal retreat plus once-per-life recovery; saved encounter HP/MP/death/respawn/heal flag",
+    "E01-E18 quests reaching Lv70; paid/rewarded approved-appearance gear tiers41/56/65 and452 item bindings",
+    "Normal high-level HUD quick potion consumes owned Curanum HP1000",
+    "Occupied spawn tiles defer resurrection until actors clear; actual native regression",
+    "Ranged casting approach uses actual camera bounds/dead-zone so reached targets remain visible; actual native regression",
+    "Retained common .60s movement, full facades/props/collision, all five Milles-style portals,32 floor chunks/8652800bytes and60 sprite-hit pairs"
+  ],
+  "failed_attempts": [
+    {
+      "source": "5d7e4da5b9ed485de23ca632fb30fc6c9baba167",
+      "run": 38355801699,
+      "outcome": "Warrior and martial artist passed; Rogue E10 target deadlock and casters E15 potion depletion prevented APK"
+    },
+    {
+      "source": "5531445e190ab60f99169dbca5ce381bb57f693b",
+      "run": 38362677584,
+      "outcome": "Diagnostic used nonexistent predicate; compilation failed; fixed without changing gameplay data"
+    },
+    {
+      "source": "0a809a2fdd43918d328db3c5e64ca64adc589ea4",
+      "run": 38363388426,
+      "outcome": "Exact diagnostics reproduced occupied-tile respawn and camera-relative invisible ranged goal; fixed in final source, all five jobs then passed"
+    }
+  ],
+  "limitations": [
+    "Phone and user visual/play-feel acceptance PENDING; host native simulation is not handset FPS",
+    "Mobile solo values are ADAPTED, not original monster numbers/spells/event reconstruction",
+    "Lv41-70 proof includes ordinary monster EXP and explicit quest milestone EXP; not117 kills of pure grinding",
+    "Finite purchased potions, normally learned skills and allocated stats; Mage manually selects elemental weakness; AUTO weakness selection not certified",
+    "Balance simulation directly enters each quest map and uses merchant transactions between waves. Continuous shop journeys, full NPC-reporting travel and freshLv1->70 handset walkthrough are not part of that simulation; portals/merchant UI/quest/save paths have separate native tests",
+    "Unmerged candidate com.projectdark.mobile.v153test uses a separate fresh test profile; no main merge or older-app save migration claim"
+  ]
+}
