@@ -339,7 +339,9 @@
         111
       ],
       "status": "SOURCE_VISIBLE",
-      "sha256": "f4f366ff07dd923a62c71e0c062ef522db38f745ec9dd2d1a883a84655bfd891"
+      "sha256": "f4f366ff07dd923a62c71e0c062ef522db38f745ec9dd2d1a883a84655bfd891",
+      "silhouetteAudit": "FULL_TRUNK_AND_CANOPY_SOURCE_FRAME_43",
+      "groundRadius": 12
     },
     {
       "id": "tree_slender",
@@ -2897,6 +2899,128 @@
       ],
       "status": "SOURCE_VISIBLE",
       "sha256": "cb30f3f6ff067f003bc33acbf82e7ad7128f0db2cec0de362ddad2ef71d99645"
+    },
+    {
+      "id": "building_two_storey_complete",
+      "size": [
+        232,
+        246
+      ],
+      "anchor": [
+        45.986,
+        223.757
+      ],
+      "groundPolygon": [
+        [
+          4.67,
+          205.444
+        ],
+        [
+          91.545,
+          240.73
+        ],
+        [
+          226.883,
+          183.111
+        ],
+        [
+          139.338,
+          149.611
+        ]
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_two_storey",
+      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
+      "originalGenerationFile": "exec-283f9937-9e11-46ce-bf7d-90aa6f17342b.png",
+      "sha256": "650e1ae103bff8dcb484e5048a9c9af3d6f6a49952d80a95498fefd201497534"
+    },
+    {
+      "id": "building_awning_corner_complete",
+      "size": [
+        328,
+        226
+      ],
+      "anchor": [
+        287.673,
+        208.772
+      ],
+      "groundPolygon": [
+        [
+          7.008,
+          153.704
+        ],
+        [
+          65.547,
+          184.477
+        ],
+        [
+          134.962,
+          160.876
+        ],
+        [
+          266.849,
+          219.647
+        ],
+        [
+          322.38,
+          195.352
+        ],
+        [
+          197.435,
+          136.581
+        ],
+        [
+          134.962,
+          109.741
+        ],
+        [
+          63.234,
+          132.879
+        ]
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_awning_corner",
+      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
+      "originalGenerationFile": "exec-6744b317-ebb9-4ce9-87b0-f14b25bcaae9.png",
+      "sha256": "5805263825631f534526d5e6515de8c7c190edc37637371555a9d55ada622fbc"
+    },
+    {
+      "id": "rowing_boat_complete",
+      "size": [
+        181,
+        128
+      ],
+      "anchor": [
+        90,
+        119
+      ],
+      "sourceFrame": 41,
+      "box": [
+        430,
+        225,
+        603,
+        345
+      ],
+      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+      "sourceParent": "rowing_boat",
+      "sha256": "5a318f8cbd195beb6712161b1ee63560c44af7feafa892d7e2e49408edf03417"
+    },
+    {
+      "id": "sailing_ship_complete",
+      "size": [
+        398,
+        334
+      ],
+      "anchor": [
+        199.0,
+        326
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "sailing_ship",
+      "sourceFrame": 20,
+      "generation": "built-in image_gen complete isolated original boat style; reconstructed missing hull NOT exact recovered source pixels",
+      "originalGenerationFile": "exec-8cf1b7a7-ee93-4a34-a5a0-ee3bd82e9880.png",
+      "sha256": "3585c3a322270627dfd188c5e89473d9fd4dc2a9fb6185188b9427c0ab305770"
     }
   ],
   "views": [
@@ -5828,22 +5952,23 @@
     "unified": {
       "props": [
         {
-          "asset": "building_two_storey",
+          "asset": "building_two_storey_complete",
           "scene": "main",
           "sourceWorld": [
             181.48,
             314.74
           ],
           "anchor": [
-            48,
-            235
+            45.986,
+            223.757
           ],
           "nativeSize": [
-            210,
-            276
+            232,
+            246
           ],
           "sourceFrame": 5,
-          "evidence": "SOURCE_VISIBLE_PARTIAL_REGISTERED_FACADE"
+          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "sourceParent": "building_two_storey"
         },
         {
           "asset": "banner",
@@ -5903,118 +6028,224 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
             362.49,
             385.65
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 3,
           "matchError": 0.053282,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceParent": "tree_slender"
         },
         {
-          "asset": "building_awning_corner",
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            342.5,
+            390.75
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_mass"
+        },
+        {
+          "asset": "building_awning_corner_complete",
           "scene": "main",
           "sourceWorld": [
             -74.51,
             404.72
           ],
           "anchor": [
-            250,
-            194
+            287.673,
+            208.772
           ],
           "nativeSize": [
-            297,
-            214
+            328,
+            226
           ],
           "sourceFrame": 5,
           "matchError": 0.021265,
-          "evidence": "SOURCE_VISIBLE_PARTIAL"
+          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "sourceParent": "building_awning_corner"
         },
         {
-          "asset": "garden_tree_mass",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            356.5,
-            411.75
+            314.5,
+            404.75
           ],
           "anchor": [
-            110,
-            158
+            35,
+            108
           ],
           "nativeSize": [
-            195,
-            160
+            64,
+            111
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_mass"
         },
         {
-          "asset": "building_two_storey",
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            370.5,
+            404.75
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_mass"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            398.5,
+            418.75
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_mass"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            356.5,
+            432.75
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 2,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_mass"
+        },
+        {
+          "asset": "building_two_storey_complete",
           "scene": "main",
           "sourceWorld": [
             461.5,
             454.75
           ],
           "anchor": [
-            48,
-            235
+            45.986,
+            223.757
           ],
           "nativeSize": [
-            210,
-            276
+            232,
+            246
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE_PARTIAL"
+          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "sourceParent": "building_two_storey"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
             -197.51,
             497.72
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.034539,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceParent": "tree_slender"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            -212.51,
-            506.72
+            -226.51,
+            499.72
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -198.51,
+            513.72
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "tree_broadleaf",
@@ -6036,23 +6267,24 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
             -813.51,
             638.34
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 12,
           "matchError": 0.039563,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceParent": "tree_slender"
         },
         {
           "asset": "tree_broadleaf",
@@ -6074,23 +6306,24 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
             166.5,
             651.9
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 7,
           "matchError": 0.02907,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceParent": "tree_slender"
         },
         {
           "asset": "tree_broadleaf",
@@ -6169,42 +6402,64 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            434,
+            721
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
             82.49,
             722.01
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 8,
           "matchError": 0.050594,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceParent": "tree_slender"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            448,
-            728
+            462,
+            735
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "banner",
@@ -6265,42 +6520,84 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            0,
-            840
+            -14,
+            833
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            672,
-            840
+            658,
+            833
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            14,
+            847
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            686,
+            847
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "flowerbed_orange",
@@ -6422,6 +6719,26 @@
           "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
+            882,
+            945
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
             -1389.52,
             945.89
           ],
@@ -6438,23 +6755,24 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            896,
-            952
+            910,
+            959
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "flowerbed_orange",
@@ -6477,23 +6795,24 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
             -1289.5,
             988.78
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 16,
           "matchError": 0.032184,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceParent": "tree_slender"
         },
         {
           "asset": "lamp_main",
@@ -6553,43 +6872,44 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "building_awning_corner",
+          "asset": "building_awning_corner_complete",
           "scene": "main",
           "sourceWorld": [
             1353.0,
             1007.0
           ],
           "anchor": [
-            250,
-            194
+            287.673,
+            208.772
           ],
           "nativeSize": [
-            297,
-            214
+            328,
+            226
           ],
           "sourceFrame": 21,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE_PARTIAL"
+          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "sourceParent": "building_awning_corner"
         },
         {
-          "asset": "building_two_storey",
+          "asset": "building_two_storey_complete",
           "scene": "main",
           "sourceWorld": [
             -547.51,
             1030.57
           ],
           "anchor": [
-            48,
-            235
+            45.986,
+            223.757
           ],
           "nativeSize": [
-            210,
-            276
+            232,
+            246
           ],
           "sourceFrame": 14,
           "matchError": 0.0,
-          "evidence": "ADAPTED_SERVICE_FACADE_REUSE_WHOLE_OBSERVED_FAMILY",
-          "sourceParent": "building_awning_long_observed_fragment"
+          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "sourceParent": "building_awning_long"
         },
         {
           "asset": "rail_down",
@@ -6630,23 +6950,24 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            672,
-            1064
+            658,
+            1057
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "tree_broadleaf",
@@ -6666,6 +6987,26 @@
           "sourceFrame": 21,
           "matchError": 0.016304,
           "evidence": "SOURCE_VISIBLE"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            686,
+            1071
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "lamp_main",
@@ -6707,23 +7048,44 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            1008,
-            1120
+            994,
+            1113
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1022,
+            1127
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "tree_broadleaf",
@@ -6804,6 +7166,26 @@
         },
         {
           "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -686,
+            1169
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
           "scene": "east",
           "sourceWorld": [
             -325.99,
@@ -6842,23 +7224,24 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            -672,
-            1176
+            -658,
+            1183
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "lamp",
@@ -6880,23 +7263,24 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
             1482.0,
             1198.0
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 21,
           "matchError": 0.035357,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceParent": "tree_slender"
         },
         {
           "asset": "rail_down",
@@ -7035,42 +7419,84 @@
           "evidence": "SOURCE_VISIBLE"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            -896,
-            1288
+            -910,
+            1281
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            1120,
-            1288
+            1106,
+            1281
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -882,
+            1295
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            1134,
+            1295
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "flowerbed_orange",
@@ -7113,23 +7539,24 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "sailing_ship",
+          "asset": "sailing_ship_complete",
           "scene": "main",
           "sourceWorld": [
             -1500.53,
             1322.08
           ],
           "anchor": [
-            195,
-            334
+            199.0,
+            326
           ],
           "nativeSize": [
-            390,
-            346
+            398,
+            334
           ],
           "sourceFrame": 19,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE_PARTIAL"
+          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "sourceParent": "sailing_ship"
         },
         {
           "asset": "bench_front_down",
@@ -7152,43 +7579,45 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "flower_red_clump",
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            546,
+            1337
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "flowerbed_orange",
           "scene": "east",
           "sourceWorld": [
             -435.5,
             1341.01
           ],
           "anchor": [
-            67.5,
-            38
+            92,
+            98
           ],
           "nativeSize": [
-            135,
-            39
+            182,
+            109
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE_PARTIAL",
-          "sourceDistrict": "east"
-        },
-        {
-          "asset": "garden_tree_pair",
-          "scene": "main",
-          "sourceWorld": [
-            560,
-            1344
-          ],
-          "anchor": [
-            44,
-            147
-          ],
-          "nativeSize": [
-            94,
-            149
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east",
+          "sourceParent": "flower_red_clump"
         },
         {
           "asset": "bench_front_down",
@@ -7211,6 +7640,26 @@
           "sourceDistrict": "east"
         },
         {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            574,
+            1351
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
           "asset": "flowerbed_orange",
           "scene": "east",
           "sourceWorld": [
@@ -7231,23 +7680,44 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            -1344,
-            1400
+            -1358,
+            1393
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -1330,
+            1407
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "rail_up",
@@ -7390,6 +7860,26 @@
           "sourceDistrict": "east"
         },
         {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -1022,
+            1449
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
           "asset": "rail_up",
           "scene": "east",
           "sourceWorld": [
@@ -7410,23 +7900,24 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            -1008,
-            1456
+            -994,
+            1463
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "rail_up",
@@ -7629,24 +8120,25 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "east",
           "sourceWorld": [
             1204.51,
             1507.34
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 37,
           "matchError": 0.026462,
           "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "sourceDistrict": "east",
+          "sourceParent": "tree_slender"
         },
         {
           "asset": "lamp",
@@ -8027,6 +8519,26 @@
           "sourceDistrict": "east"
         },
         {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -910,
+            1617
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
           "asset": "rail_up",
           "scene": "east",
           "sourceWorld": [
@@ -8047,25 +8559,6 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "garden_tree_pair",
-          "scene": "main",
-          "sourceWorld": [
-            -896,
-            1624
-          ],
-          "anchor": [
-            44,
-            147
-          ],
-          "nativeSize": [
-            94,
-            149
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
-        },
-        {
           "asset": "pool_rail_down",
           "scene": "east",
           "sourceWorld": [
@@ -8083,6 +8576,26 @@
           "sourceFrame": 28,
           "evidence": "SOURCE_VISIBLE",
           "sourceDistrict": "east"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            -882,
+            1631
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "rail_up",
@@ -8241,24 +8754,25 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "tree_slender",
+          "asset": "tree_broadleaf",
           "scene": "east",
           "sourceWorld": [
             -254.0,
             1674.01
           ],
           "anchor": [
-            27,
-            104
+            35,
+            108
           ],
           "nativeSize": [
-            59,
-            110
+            64,
+            111
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
           "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "sourceDistrict": "east",
+          "sourceParent": "tree_slender"
         },
         {
           "asset": "signpost",
@@ -8281,27 +8795,70 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "garden_foreground_grove",
+          "asset": "tree_broadleaf",
           "scene": "east",
           "sourceWorld": [
-            -531.0,
-            1708.01
+            -545.0,
+            1687.01
           ],
           "anchor": [
-            128,
-            118
+            35,
+            108
           ],
           "nativeSize": [
-            256,
-            121
+            64,
+            111
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE_PARTIAL",
-          "sourceDistrict": "east"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceDistrict": "east",
+          "sourceParent": "garden_foreground_grove"
         },
         {
-          "asset": "lamp_pool",
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -573.0,
+            1701.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceDistrict": "east",
+          "sourceParent": "garden_foreground_grove"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -517.0,
+            1701.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceDistrict": "east",
+          "sourceParent": "garden_foreground_grove"
+        },
+        {
+          "asset": "lamp_main",
           "scene": "east",
           "sourceWorld": [
             -392.0,
@@ -8309,15 +8866,58 @@
           ],
           "anchor": [
             13,
-            119
+            129
           ],
           "nativeSize": [
-            26,
-            119
+            27,
+            130
           ],
           "sourceFrame": 28,
-          "evidence": "SOURCE_VISIBLE_PARTIAL",
-          "sourceDistrict": "east"
+          "evidence": "SOURCE_VISIBLE",
+          "sourceDistrict": "east",
+          "sourceParent": "lamp_pool"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -489.0,
+            1715.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceDistrict": "east",
+          "sourceParent": "garden_foreground_grove"
+        },
+        {
+          "asset": "tree_broadleaf",
+          "scene": "east",
+          "sourceWorld": [
+            -531.0,
+            1729.01
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 28,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceDistrict": "east",
+          "sourceParent": "garden_foreground_grove"
         },
         {
           "asset": "tree_broadleaf",
@@ -8400,43 +9000,65 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "garden_tree_pair",
+          "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            672,
-            1848
+            658,
+            1841
           ],
           "anchor": [
-            44,
-            147
+            35,
+            108
           ],
           "nativeSize": [
-            94,
-            149
+            64,
+            111
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET"
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "rowing_boat",
+          "asset": "tree_broadleaf",
+          "scene": "main",
+          "sourceWorld": [
+            686,
+            1855
+          ],
+          "anchor": [
+            35,
+            108
+          ],
+          "nativeSize": [
+            64,
+            111
+          ],
+          "sourceFrame": 5,
+          "matchError": 0.0,
+          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "sourceParent": "garden_tree_pair"
+        },
+        {
+          "asset": "rowing_boat_complete",
           "scene": "east",
           "sourceWorld": [
             1384.51,
             1858.51
           ],
           "anchor": [
-            109,
-            134
+            90,
+            119
           ],
           "nativeSize": [
-            220,
-            140
+            181,
+            128
           ],
           "sourceFrame": 39,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE",
-          "sourceDistrict": "east"
+          "evidence": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+          "sourceDistrict": "east",
+          "sourceParent": "rowing_boat"
         },
         {
           "asset": "flowerbed_orange",

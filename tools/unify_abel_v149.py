@@ -35,12 +35,15 @@ for key in ['main','east']:
 props=copy.deepcopy(d['scenes']['main']['props'])
 for p in d['scenes']['east']['props']:
  a=copy.deepcopy(p);a['sourceWorld']=[a['sourceWorld'][0]+dx,a['sourceWorld'][1]+dy];a['sourceDistrict']='east';props.append(a)
-# The captured long shop facade is cut through its right wall. Keep it in source observations,
-# but use a complete observed facade family for the unverified adapted equipment service.
-whole=next(a for a in d['assets'] if a['id']=='building_two_storey')
+# V150: live objects require complete silhouettes; source archive scenes remain unmodified.
+# Generated missing building/ship portions are explicitly ADAPTED. Full source tree/boat
+# families replace contaminated scene rectangles, retaining the observed ground locations.
+specs={a['id']:a for a in d['assets']}
+replacements={'building_two_storey':'building_two_storey_complete','building_awning_corner':'building_awning_corner_complete','building_awning_long':'building_two_storey_complete','sailing_ship':'sailing_ship_complete','rowing_boat':'rowing_boat_complete','tree_slender':'tree_broadleaf','flower_red_clump':'flowerbed_orange','lamp_pool':'lamp_main'}
+def replace_prop(p,name):
+ a=specs[name];p.update(asset=name,anchor=a['anchor'],nativeSize=a['size'],evidence=a['status'],sourceParent=p.get('sourceParent',p['asset']))
 for p in props:
- if p['asset']=='building_awning_long':
-  p.update(asset='building_two_storey',anchor=whole['anchor'],nativeSize=whole['size'],evidence='ADAPTED_SERVICE_FACADE_REUSE_WHOLE_OBSERVED_FAMILY',sourceParent='building_awning_long_observed_fragment')
+ if p['asset'] in replacements:replace_prop(p,replacements[p['asset']])
 # Finish the unobserved connector as a landscaped public street, using existing source families.
 # Do not alter recorded water, facades or gardens. Tile corridors remain in the same 64x32 lattice.
 for u in range(27,79):
@@ -62,9 +65,18 @@ for u,v in [(u,v) for u in range(18,92,4) for v in range(18,78,4)]:
  reserved.append((u,v))
  for asset,du,dv in [('garden_tree_pair',0,0),('flowerbed_orange',1,1)]:
   a=copy.deepcopy(template[asset]);a['sourceWorld']=[(u+du-v-dv)*28,(u+du+v+dv)*14];a['evidence']='ADAPTED_CONNECTOR_LANDSCAPING_REUSING_OBSERVED_ASSET';props.append(a)
+# Garden screenshots contain adjacent walls and cut trunks. Never render those fragments.
+clean=[]
+for p in props:
+ if p['asset'] in {'garden_tree_pair','garden_tree_mass','garden_foreground_grove'}:
+  offsets=[(-14,-7),(14,7)] if p['asset']=='garden_tree_pair' else [(-42,-7),(-14,-21),(14,-7),(42,7),(0,21)]
+  for dx1,dy1 in offsets:
+   q=copy.deepcopy(p);replace_prop(q,'tree_broadleaf');q['sourceParent']=p['asset'];q['evidence']='ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE';q['sourceWorld']=[p['sourceWorld'][0]+dx1,p['sourceWorld'][1]+dy1];clean.append(q)
+ else:clean.append(p)
+props=clean
 scene=dict(props=sorted(props,key=lambda p:p['sourceWorld'][1]),gridRows=[''.join(map(str,r)) for r in grid],activeRows=[''.join(map(str,r)) for r in active],eastOffsetTiles=[DU,DV],scope='SINGLE_RUNTIME_TOWN; observed districts retained, translation/landscaped joins/bounded grassy outskirts ADAPTED; original entire map extent unknown')
 d['scenes']['unified']=scene
 for p in [folder/'layout.json',root/'master/source/abel_video_v147/layout.json']:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
-p=root/'app/src/main/java/com/projectdark/mobile/world/AbelUnifiedLayout.java';lines=['package com.projectdark.mobile.world;','import java.util.*;','/** V149 single town composition; original observations remain in AbelVideoLayout. */','public final class AbelUnifiedLayout {','public static final String[] TILES={'+','.join(json.dumps(r) for r in scene['gridRows'])+'};','public static final String[] ACTIVE={'+','.join(json.dumps(r) for r in scene['activeRows'])+'};','public static List<AbelTownGeometry.Prop> props(){List<AbelTownGeometry.Prop> p=new ArrayList<>();']
+p=root/'app/src/main/java/com/projectdark/mobile/world/AbelUnifiedLayout.java';lines=['package com.projectdark.mobile.world;','import java.util.*;','/** V150 complete objects in single town composition; original observations remain in AbelVideoLayout. */','public final class AbelUnifiedLayout {','public static final String[] TILES={'+','.join(json.dumps(r) for r in scene['gridRows'])+'};','public static final String[] ACTIVE={'+','.join(json.dumps(r) for r in scene['activeRows'])+'};','public static List<AbelTownGeometry.Prop> props(){List<AbelTownGeometry.Prop> p=new ArrayList<>();']
 for a in scene['props']:lines.append('p.add(new AbelTownGeometry.Prop('+json.dumps(a['asset'])+','+','.join(f'{v:.3f}f' for v in a['sourceWorld']+a['anchor']+a['nativeSize'])+'));')
 lines+=['return Collections.unmodifiableList(p);}','private AbelUnifiedLayout(){} }'];p.write_text('\n'.join(lines)+'\n');print('single scene',len(props),'props',int(active.sum()),'active cells; east tile offset',DU,DV)

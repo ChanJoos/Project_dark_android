@@ -1,0 +1,89 @@
+{
+  "buildings": [
+    {
+      "id": "building_two_storey_complete",
+      "size": [
+        232,
+        246
+      ],
+      "anchor": [
+        45.986,
+        223.757
+      ],
+      "groundPolygon": [
+        [
+          4.67,
+          205.444
+        ],
+        [
+          91.545,
+          240.73
+        ],
+        [
+          226.883,
+          183.111
+        ],
+        [
+          139.338,
+          149.611
+        ]
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_two_storey",
+      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
+      "originalGenerationFile": "exec-283f9937-9e11-46ce-bf7d-90aa6f17342b.png",
+      "sha256": "650e1ae103bff8dcb484e5048a9c9af3d6f6a49952d80a95498fefd201497534"
+    },
+    {
+      "id": "building_awning_corner_complete",
+      "size": [
+        328,
+        226
+      ],
+      "anchor": [
+        287.673,
+        208.772
+      ],
+      "groundPolygon": [
+        [
+          7.008,
+          153.704
+        ],
+        [
+          65.547,
+          184.477
+        ],
+        [
+          134.962,
+          160.876
+        ],
+        [
+          266.849,
+          219.647
+        ],
+        [
+          322.38,
+          195.352
+        ],
+        [
+          197.435,
+          136.581
+        ],
+        [
+          134.962,
+          109.741
+        ],
+        [
+          63.234,
+          132.879
+        ]
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_awning_corner",
+      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
+      "originalGenerationFile": "exec-6744b317-ebb9-4ce9-87b0-f14b25bcaae9.png",
+      "sha256": "5805263825631f534526d5e6515de8c7c190edc37637371555a9d55ada622fbc"
+    }
+  ],
+  "scope": "Complete building repairs ADAPTED; original partial screenshot sprites remain archived and cannot be live outdoor assets. Native runtime/phone verification pending."
+}

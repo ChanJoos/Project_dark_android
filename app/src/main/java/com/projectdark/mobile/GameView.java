@@ -446,7 +446,7 @@ public final class GameView extends View {
     activeWorld().cancelForAction();snapshotAttackFacingTarget();combat.commitAttack();trigger(actionFor(def.kind));
   }
 
-  static float frameDeltaSeconds(float elapsed,boolean abel){return Math.max(0,Math.min(abel?.2f:.05f,elapsed));}
+  static float frameDeltaSeconds(float elapsed,boolean abel){return Math.max(0,Math.min(.05f,elapsed));}
   static float logicalWidthForView(int width,int height){float fittedScale=Math.min(width/W,height/H);return fittedScale<=0?W:width/fittedScale;}
   static float rightHudOffsetForView(int width,int height){return Math.max(0f,logicalWidthForView(width,height)-W);}
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);logicalViewportWidth=logicalWidthForView(w,h);boolean wide=logicalViewportWidth>W+.01f;ox=wide?0:(w-W*scale)/2;oy=(h-H*scale)/2;hudRightOffset=wide?logicalViewportWidth-W:0;hudCenterOffset=hudRightOffset*.5f;worldAdapter.resizeViewport(logicalViewportWidth,H);if(poteFieldAdapter!=null)poteFieldAdapter.resizeViewport(logicalViewportWidth,H);camera=activeWorld().camera();if(reagentShopAdapter!=null)reagentShopAdapter.resizeViewport(logicalViewportWidth,H);}

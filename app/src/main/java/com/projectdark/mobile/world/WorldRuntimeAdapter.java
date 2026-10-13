@@ -215,7 +215,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   @Override public float worldX(){return runtime.player().x;}
-  @Override public float tileStepSeconds(){String id=runtime.currentMapId();return AbelTownGeometry.contains(id)||id.startsWith("abel_interior_")?.25f:WorldMoveTargetController.TILE_STEP_SECONDS;}
+  @Override public float tileStepSeconds(){return WorldMoveTargetController.TILE_STEP_SECONDS;}
   @Override public float worldY(){return runtime.player().y;}
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;

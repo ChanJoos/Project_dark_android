@@ -20,16 +20,16 @@ public final class AbelTownGeometry {
   public final String id,asset,title,interior;public final int u,v,du=4,dv=4;public final float width;public final Prop prop;
   Building(String id,String interior,Prop p){this.id=id;this.interior=interior;asset=p.asset;title="아벨 건물";u=p.u-1;v=p.v-3;prop=p;width=p.width;}
   public float x(){return prop.x;}public float y(){return prop.y;}public float doorX(){return AbelTownGeometry.x(prop.u,prop.v);}public float doorY(){return AbelTownGeometry.y(prop.u,prop.v);}
-  boolean occupies(int a,int b){return a>=u&&a<u+du&&b>=v&&b<v+dv&&!(a==prop.u&&b>=prop.v-1);}
+  boolean occupies(int a,int b){return solidAt(prop,AbelTownGeometry.x(a,b),AbelTownGeometry.y(a,b));}
  }
  public static final List<Building> BUILDINGS;
  private static Prop facade(String asset,float sx,float sy){Prop best=null;float dist=Float.MAX_VALUE;for(Prop p:PROPS)if(p.asset.equals(asset)){float x=(p.x-2560)/AbelVideoLayout.SCALE,y=(p.y-64)/AbelVideoLayout.SCALE,d=(x-sx)*(x-sx)+(y-sy)*(y-sy);if(d<dist){dist=d;best=p;}}if(best==null||dist>36)throw new IllegalStateException("Missing registered service facade "+asset);return best;}
  static {BUILDINGS=Collections.unmodifiableList(Arrays.asList(
- new Building("abel_church","abel_interior_church",facade("building_two_storey",181.48f,314.74f)),
- new Building("abel_reagent","abel_interior_reagent",facade("building_awning_corner",-74.51f,404.72f)),
- new Building("abel_bank","abel_interior_bank",facade("building_two_storey",461.5f,454.75f)),
- new Building("abel_equipment","abel_interior_equipment",facade("building_two_storey",-547.51f,1030.57f)),
- new Building("abel_inn","abel_interior_inn",facade("building_awning_corner",1353f,1007f))));}
+ new Building("abel_church","abel_interior_church",facade("building_two_storey_complete",181.48f,314.74f)),
+ new Building("abel_reagent","abel_interior_reagent",facade("building_awning_corner_complete",-74.51f,404.72f)),
+ new Building("abel_bank","abel_interior_bank",facade("building_two_storey_complete",461.5f,454.75f)),
+ new Building("abel_equipment","abel_interior_equipment",facade("building_two_storey_complete",-547.51f,1030.57f)),
+ new Building("abel_inn","abel_interior_inn",facade("building_awning_corner_complete",1353f,1007f))));}
 
  public static Building forInterior(String id){for(Building b:BUILDINGS)if(Objects.equals(id,b.interior))return b;return null;}
  public static Building doorAt(float px,float py){for(Building b:BUILDINGS)if(Math.hypot(px-b.doorX(),py-b.doorY())<12)return b;return null;}
@@ -40,13 +40,27 @@ public final class AbelTownGeometry {
  public static boolean waterCell(int u,int v){return pool(u,v)||channel(u,v);}
  public static boolean benchCell(int u,int v){for(Prop p:PROPS)if(p.asset.startsWith("bench_")&&p.u==u&&p.v==v)return true;return false;}
  public static boolean blocked(int u,int v){return blocked(ID,u,v);}
- public static boolean blocked(String id,int u,int v){if(u<1||v<1||u>=SIZE-1||v>=SIZE-1||AbelUnifiedLayout.ACTIVE[u].charAt(v)!='1')return true;for(Building b:BUILDINGS)if(u==b.prop.u&&v>=b.prop.v-1&&v<=b.prop.v+2)return false;int kind=tile(id,u,v);if(kind==2||kind==4||kind==5)return true;
-  for(Building b:BUILDINGS)if(b.occupies(u,v))return true;
-  for(Prop p:props(id))if(!p.asset.startsWith("building_")&&(p.asset.startsWith("tree_")||p.asset.startsWith("bench_")||p.asset.startsWith("lamp"))&&p.u==u&&p.v==v)return true;
+ /** Same immutable ground occupancy for path planning, direct steps and save validation. */
+ private static final boolean[][] SOLID=buildSolids();
+ public static boolean blocked(String id,int u,int v){return u<1||v<1||u>=SIZE-1||v>=SIZE-1||SOLID[u][v];}
+ public static boolean solidAt(Prop prop,float px,float py){
+  float[] a=AbelObjectFootprints.vertices(prop.asset);
+  if(a!=null){float lx=(px-prop.x+prop.anchorX)/AbelVideoLayout.SCALE,ly=(py-prop.y+prop.anchorY)/AbelVideoLayout.SCALE;boolean inside=false;
+   for(int i=0,j=a.length-2;i<a.length;j=i,i+=2)if((a[i+1]>ly)!=(a[j+1]>ly)&&lx<(a[j]-a[i])*(ly-a[i+1])/(a[j+1]-a[i+1])+a[i])inside=!inside;return inside;
+  }
+  if(prop.asset.startsWith("tree_"))return Math.abs(px-prop.x)<=15&&Math.abs(py-prop.y)<=11;
+  if(prop.asset.startsWith("bench_")||prop.asset.startsWith("lamp"))return prop.u==Math.round(((px-2560)/32+(py-64)/16)/2)&&prop.v==Math.round(((py-64)/16-(px-2560)/32)/2);
   return false;
  }
+ private static boolean[][] buildSolids(){boolean[][] a=new boolean[SIZE][SIZE];
+  for(int u=0;u<SIZE;u++)for(int v=0;v<SIZE;v++){int k=tile(ID,u,v);a[u][v]=u<1||v<1||u>=SIZE-1||v>=SIZE-1||AbelUnifiedLayout.ACTIVE[u].charAt(v)!='1'||k==2||k==4||k==5;}
+  for(Prop p:PROPS){int radius=p.asset.startsWith("building_")?12:2;for(int u=Math.max(1,p.u-radius);u<Math.min(SIZE-1,p.u+radius+1);u++)for(int v=Math.max(1,p.v-radius);v<Math.min(SIZE-1,p.v+radius+1);v++)if(solidAt(p,x(u,v),y(u,v)))a[u][v]=true;}
+  // Each service has one short marked ground approach, not a corridor cut through its walls.
+  for(Building b:BUILDINGS)for(int v=b.prop.v;v<=b.prop.v+2;v++)if(v>0&&v<SIZE-1)a[b.prop.u][v]=false;
+  return a;
+ }
  public static List<RectF> obstacles(){return obstacles(ID);}
- public static List<RectF> obstacles(String id){List<RectF> a=new ArrayList<>();for(int u=0;u<SIZE;u++)for(int v=0;v<SIZE;v++)if(blocked(id,u,v))a.add(new RectF(x(u,v)-3,y(u,v)-3,x(u,v)+3,y(u,v)+3));return Collections.unmodifiableList(a);}
+ public static List<RectF> obstacles(String id){List<RectF> a=new ArrayList<>();for(int u=0;u<SIZE;u++)for(int v=0;v<SIZE;v++)if(blocked(id,u,v))a.add(new RectF(x(u,v)-12,y(u,v)-6,x(u,v)+12,y(u,v)+6));return Collections.unmodifiableList(a);}
  public static List<WorldMoveTargetController.TileCenter> navigation(){return navigation(ID);}
  public static List<WorldMoveTargetController.TileCenter> navigation(String id){List<WorldMoveTargetController.TileCenter> a=new ArrayList<>();for(int u=1;u<SIZE-1;u++)for(int v=1;v<SIZE-1;v++)if(!blocked(id,u,v))a.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(a);}
  private AbelTownGeometry(){}
