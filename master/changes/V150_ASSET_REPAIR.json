@@ -105,5 +105,6 @@
     "complete source fountain basin and narrow original tower/jets from frame28, source foot shifted24px to retain original position",
     "complete original signpost head/stem, remove isolated floor pixels",
     "whole source lamp with traced original red banner cloth/bracket; fixture placement ADAPTED"
-  ]
+  ],
+  "finalRegistrationRepair": "Original partial rowing crop used pixel407,400 as its world foot. Complete frame41 sprite now derives its origin from camera+box+anchor-padding, preserving whole source pixels at their recorded position. Under both floating hulls water replaces occluded erroneous ground classifications (footprint ADAPTED). Recorded collinear railing runs receive missing 28x14 intervals between original endpoints."
 }

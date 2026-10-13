@@ -47,6 +47,8 @@ for p in props:
   parent=p['asset'];replace_prop(p,replacements[parent])
   if parent=='fountain':p['sourceWorld'][1]+=24
   if parent=='signpost':p['sourceWorld'][0]-=5
+  if parent=='rowing_boat':
+   a=specs['rowing_boat_complete'];view=next(r for r in d['views'] if r['frame']==41);box=a['box'];p['sourceWorld']=[view['camera'][0]+box[0]+a['anchor'][0]-4+dx,view['camera'][1]+box[1]+a['anchor'][1]-4+dy];p['evidence']='SOURCE_VISIBLE_COMPLETE_ROWING_BOAT_ORIGIN_FROM_FRAME41'
 # Finish the unobserved connector as a landscaped public street, using existing source families.
 # Do not alter recorded water, facades or gardens. Tile corridors remain in the same 64x32 lattice.
 for u in range(27,79):
@@ -77,6 +79,37 @@ for p in props:
    q=copy.deepcopy(p);replace_prop(q,'tree_broadleaf');q['sourceParent']=p['asset'];q['evidence']='ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE';q['sourceWorld']=[p['sourceWorld'][0]+dx1,p['sourceWorld'][1]+dy1];clean.append(q)
  else:clean.append(p)
 props=clean
+# Original camera floor votes cannot classify water hidden by a boat. Keep afloat
+# geometry coherent under its hull, never turning an occluded boat into grass/land.
+# Hull footprint inference is ADAPTED; the visible surrounding source water is retained.
+def inside(poly,x,y):
+ result=False
+ for i in range(len(poly)):
+  j=i-1
+  if (poly[i][1]>y)!=(poly[j][1]>y) and x<(poly[j][0]-poly[i][0])*(y-poly[i][1])/(poly[j][1]-poly[i][1])+poly[i][0]:result=not result
+ return result
+hulls={'sailing_ship_complete':([(24,143),(72,235),(188,300),(307,329),(377,310),(397,268),(340,218),(173,105),(62,95)],4),'rowing_boat_complete':([(8,83),(36,116),(96,124),(155,105),(176,73),(174,34),(130,7),(92,10),(45,45)],2)}
+for p in props:
+ if p['asset'] not in hulls:continue
+ poly,kind=hulls[p['asset']];sx,sy=p['sourceWorld'];ax,ay=p['anchor']
+ for u in range(N):
+  for v in range(N):
+   if active[u,v] and any(inside(poly,(u-v)*28-sx+ax+ox,(u+v)*14-sy+ay+oy) for ox in [-28,0,28] for oy in [-28,0,28]):grid[u,v]=kind
+ p['underHullFloorEvidence']='ADAPTED_WATER_FOOTPRINT_BENEATH_SOURCE_VISIBLE_FLOATING_BOAT'
+# A source railing interval is 28x14; incomplete template matches skipped modules.
+# Complete each observed collinear fence run between its recorded endpoints.
+for asset,sign in [('rail_down_clean',1),('rail_up_clean',-1)]:
+ groups=[]
+ for p in [p for p in props if p['asset']==asset]:
+  sx,sy=p['sourceWorld'];line=sy-sign*sx/2;group=next((g for g in groups if abs(g[0]-line)<1),None)
+  if group is None:group=[line,[]];groups.append(group)
+  group[1].append(p)
+ for line,segments in groups:
+  first=min(segments,key=lambda p:p['sourceWorld'][0]);end=max(p['sourceWorld'][0] for p in segments);sx,sy=first['sourceWorld']
+  for i in range(1,round((end-sx)/28)):
+   point=[sx+i*28,sy+sign*i*14]
+   if any(abs(p['sourceWorld'][0]-point[0])<3 and abs(p['sourceWorld'][1]-point[1])<3 for p in segments):continue
+   p=copy.deepcopy(first);p['sourceWorld']=point;p['evidence']='ADAPTED_CONTINUOUS_OBSERVED_RAIL_RUN_SOURCE_INTERVAL_REUSE';props.append(p)
 scene=dict(props=sorted(props,key=lambda p:p['sourceWorld'][1]),gridRows=[''.join(map(str,r)) for r in grid],activeRows=[''.join(map(str,r)) for r in active],eastOffsetTiles=[DU,DV],scope='SINGLE_RUNTIME_TOWN; observed districts retained, translation/landscaped joins/bounded grassy outskirts ADAPTED; original entire map extent unknown')
 d['scenes']['unified']=scene
 for p in [folder/'layout.json',root/'master/source/abel_video_v147/layout.json']:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
