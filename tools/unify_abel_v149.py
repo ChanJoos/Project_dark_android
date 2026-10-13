@@ -105,11 +105,16 @@ for asset,sign in [('rail_down_clean',1),('rail_up_clean',-1)]:
   if group is None:group=[line,[]];groups.append(group)
   group[1].append(p)
  for line,segments in groups:
-  first=min(segments,key=lambda p:p['sourceWorld'][0]);end=max(p['sourceWorld'][0] for p in segments);sx,sy=first['sourceWorld']
-  for i in range(1,round((end-sx)/28)):
-   point=[sx+i*28,sy+sign*i*14]
-   if any(abs(p['sourceWorld'][0]-point[0])<3 and abs(p['sourceWorld'][1]-point[1])<3 for p in segments):continue
-   p=copy.deepcopy(first);p['sourceWorld']=point;p['evidence']='ADAPTED_CONTINUOUS_OBSERVED_RAIL_RUN_SOURCE_INTERVAL_REUSE';props.append(p)
+  ordered=sorted(segments,key=lambda p:p['sourceWorld'][0])
+  for first,last in zip(ordered,ordered[1:]):
+   sx,sy=first['sourceWorld'];steps=round((last['sourceWorld'][0]-sx)/28)
+   # Large collinear gaps may separate two piers. Never bridge an open waterway.
+   if steps>3:continue
+   for i in range(1,steps):
+    point=[sx+i*28,sy+sign*i*14];u=int(np.floor((point[0]/28+point[1]/14)/2+.5));v=int(np.floor((point[1]/14-point[0]/28)/2+.5))
+    if u<0 or v<0 or u>=N or v>=N or not active[u,v] or grid[u,v] in [2,4]:continue
+    if any(abs(p['sourceWorld'][0]-point[0])<3 and abs(p['sourceWorld'][1]-point[1])<3 for p in segments):continue
+    p=copy.deepcopy(first);p['sourceWorld']=point;p['evidence']='ADAPTED_CONTINUOUS_OBSERVED_RAIL_RUN_SOURCE_INTERVAL_REUSE';props.append(p)
 scene=dict(props=sorted(props,key=lambda p:p['sourceWorld'][1]),gridRows=[''.join(map(str,r)) for r in grid],activeRows=[''.join(map(str,r)) for r in active],eastOffsetTiles=[DU,DV],scope='SINGLE_RUNTIME_TOWN; observed districts retained, translation/landscaped joins/bounded grassy outskirts ADAPTED; original entire map extent unknown')
 d['scenes']['unified']=scene
 for p in [folder/'layout.json',root/'master/source/abel_video_v147/layout.json']:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

@@ -1,0 +1,13 @@
+{
+  "previousSource": "8e345ba92eb0ecfc15ff67b8da7c1c91f60c67e8",
+  "preservedReceiptCommit": "ccf1bbba0b1940f81d89a5898e10c26c80150abd",
+  "finding": "Native camera41 showed inferred collinear fence run spanning open water between two distinct piers",
+  "cause": "Inferring entire segment between distant same-diagonal endpoints without terrain guard",
+  "repair": "Fill only gaps no longer than3 intervals on land; preserve separate piers",
+  "objects": 166,
+  "liveFamilies": 18,
+  "pngs": 62,
+  "regression": "Actual live-layout repaired interval dry-ground assertion plus existing whole boat origin/water,82 building wall contact attempts and all5 doors",
+  "status": "IMPLEMENTED_CANDIDATE",
+  "buildNativePhone": "PENDING"
+}

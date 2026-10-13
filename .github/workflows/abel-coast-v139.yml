@@ -1,4 +1,4 @@
-name: V150 Abel map benches interiors NPC portals
+name: V151 Abel map benches interiors NPC portals
 on:
   push:
     branches: [codex/abel-coast-v139]
@@ -97,17 +97,17 @@ jobs:
           python3 tools/validate_master.py
           python3 tools/build_abel_v142.py
           git diff --exit-code -- master/assets/abel_v142
-          python3 tools/audit_abel_coverage.py --output app/build/reports/abel-v150/coverage.json
+          python3 tools/audit_abel_coverage.py --output app/build/reports/abel-v151/coverage.json
           python3 tools/audit_all_skills_v138.py
-          gradle :app:testDebugUnitTest --tests '*AbelTownV150Test' --tests '*AbelCoastV139Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*NpcAppearanceTest' --tests '*OnboardingUiTest' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*AbelTownV151Test' --tests '*AbelCoastV139Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*NpcAppearanceTest' --tests '*OnboardingUiTest' --stacktrace
       - name: Upload actual mobile HUD preview immediately
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: abel-coast-v150-preview-${{ github.sha }}
+          name: abel-coast-v151-preview-${{ github.sha }}
           path: |
             app/build/reports/abel-v139/
-            app/build/reports/abel-v150/
+            app/build/reports/abel-v151/
             app/build/reports/mobile-hud-v136/
             app/build/reports/magic-runtime-v137/
             app/build/test-results/
@@ -118,14 +118,14 @@ jobs:
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v150_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v151_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: abel-coast-v150-native-${{ github.sha }}
+          name: abel-coast-v151-native-${{ github.sha }}
           path: |
             app/build/reports/abel-v139/
-            app/build/reports/abel-v150/
+            app/build/reports/abel-v151/
             app/build/reports/mobile-hud-v136/
             app/build/reports/magic-runtime-v137/
             app/build/reports/classic-ui-v126/
@@ -146,7 +146,7 @@ jobs:
             app/build/reports/tests/
       - uses: actions/upload-artifact@v4
         with:
-          name: abel-coast-v150-apk-${{ github.sha }}
+          name: abel-coast-v151-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
