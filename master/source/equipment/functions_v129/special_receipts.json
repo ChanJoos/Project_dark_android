@@ -66,6 +66,24 @@
       "source": "master/source/equipment/functions_v129/nexon_3578.html",
       "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
     },
+    "IT_B_CAMPAIGN_TOOL_MAGE_41": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_56": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_65": {
+      "name": "매직새티아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
     "IT_B_CAMPAIGN_TOOL_CLERIC_11": {
       "name": "홀리머큐리아",
       "level": 11,
@@ -73,6 +91,24 @@
       "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
     },
     "IT_B_CAMPAIGN_TOOL_CLERIC_26": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_41": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_56": {
+      "name": "홀리머큐리아",
+      "level": 11,
+      "source": "master/source/equipment/functions_v129/nexon_3578.html",
+      "status": "LEVEL_ONLY_OTHER_REQUIREMENTS_PENDING"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_65": {
       "name": "홀리머큐리아",
       "level": 11,
       "source": "master/source/equipment/functions_v129/nexon_3578.html",

@@ -35,8 +35,14 @@ final class SourceItemFunctions {
   r.fillSourceLevel("IT_B_JOB_CLERIC_WAND",11);
   r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_MAGE_11",11);
   r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_MAGE_26",11);
+  r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_MAGE_41",11);
+  r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_MAGE_56",11);
+  r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_MAGE_65",11);
   r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_CLERIC_11",11);
   r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_CLERIC_26",11);
+  r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_CLERIC_41",11);
+  r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_CLERIC_56",11);
+  r.fillSourceLevel("IT_B_CAMPAIGN_TOOL_CLERIC_65",11);
   r.addSourceOptions("IT_SOURCE_146_REDMARINE_4BEA9E11",stats("REGEN",10));
   r.addSourceOptions("IT_SOURCE_146_KAENHORUDEITO_964F13A2",stats("REGEN",10));
   r.addSourceOptions("IT_SOURCE_146_KAZEHORUDEITO_FDA3F599",stats("REGEN",10));
