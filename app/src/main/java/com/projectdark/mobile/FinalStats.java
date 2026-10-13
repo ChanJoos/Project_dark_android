@@ -11,6 +11,7 @@ public final class FinalStats {
     r.baseMaxHp()+v(e,"HP"),r.baseMaxMp()+v(e,"MP"),v(e,"AC"),v(e,"MAGIC_DEFENSE"),v(e,"HIT"),v(e,"DAM"),r.attackElement(),r.defenseElement(),v(e,"DAMAGE_REDUCTION_PCT"),v(e,"FLAT_MITIGATION"),v(e,"AC_IGNORE"),v(e,"MinATK"),v(e,"MaxATK"));
  }
  public static FinalStats neutral(int hp,int mp){return new FinalStats(0,0,0,0,0,hp,mp,0,0,0,0,"NONE","NONE",0,0,0,0,0);}
+ public static FinalStats monster(int lv,int hp,int mp,int ac,int md,int attack,String element){return new FinalStats(0,lv/2,lv/3,lv/2,lv/2,hp,mp,ac,md,lv/10,0,element,element,0,0,0,attack,attack);}
  public FinalStats withEffects(SkillEffectState e,String actor){
   int mode=e.power(actor,"PHOENIX")+e.power(actor,"DRAGON");int curse=e.power(actor,"CURSE");
   return new FinalStats(str,intel,wis,con,dex,maxHp,maxMp,ac-e.power(actor,"ARMOR")+curse+e.power(actor,"ARMOR_BREAK"),magicDefense-Math.max(0,curse-20)/2,

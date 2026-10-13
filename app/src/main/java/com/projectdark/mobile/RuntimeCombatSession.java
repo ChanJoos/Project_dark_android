@@ -155,6 +155,7 @@ public final class RuntimeCombatSession {
       boolean magic="마법".equals(r.kind);
       out.add(new CombatResolver.Definition(r.id,magic?CombatResolver.ActionKind.MAGIC:CombatResolver.ActionKind.SKILL,magic?CombatResolver.ActionState.MAGIC:CombatResolver.ActionState.SKILL,magic?CombatResolver.EffectType.MAGIC_HIT:CombatResolver.EffectType.SKILL_HIT,true,0,1f,Float.MAX_VALUE,r.contact,0));
     }
+    for(String id:AbelCombatProfile.ACTIONS)out.add(AbelCombatProfile.definition(id));
     out.add(new CombatResolver.Definition(MONSTER_BASIC_ACTION_ID,CombatResolver.ActionKind.ATTACK,CombatResolver.ActionState.ATTACK,
         CombatResolver.EffectType.PHYSICAL_HIT,false,0,MonsterAIController.ATTACK_COOLDOWN_B,48f,.24f,MonsterAIController.ATTACK_DAMAGE_B));
     Map<String,CombatResolver.Definition> unique=new LinkedHashMap<>();

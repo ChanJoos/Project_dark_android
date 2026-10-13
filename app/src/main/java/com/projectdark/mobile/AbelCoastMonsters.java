@@ -34,8 +34,8 @@ public final class AbelCoastMonsters {
    // Final coast keeps 108 actors: three blue elites and one of each event
    // identity replace five ordinary slots. Fake/real share one source art set.
    if(area==5)species=i==count-1?"ABEL_KINGARK":i==count-2?"ABEL_KINGARK_FAKE":i>=count-5?"ABEL_BERSERKER":families.get((i+i/12)%3);
-   int hp=species.startsWith("ABEL_KINGARK")?6000:species.equals("ABEL_BERSERKER")?3000:850+area*90;
-   RuntimeState.Monster m=new RuntimeState.Monster(species+"#"+i,name(species),at.x,at.y,hp,"B/ADAPTED_SOURCE_REFERENCED_CANDIDATE");m.campaignRewardProfileId=species;m.respawnSeconds=species.startsWith("ABEL_KINGARK")?60:species.equals("ABEL_BERSERKER")?30:7+i%3;out.add(m);
+   AbelCombatProfile profile=AbelCombatProfile.forId(species);int hp=profile.hp;
+   RuntimeState.Monster m=new RuntimeState.Monster(species+"#"+i,name(species),at.x,at.y,hp,"B/ADAPTED_SOURCE_REFERENCED_CANDIDATE");m.campaignRewardProfileId=species;m.level=profile.level;m.maxMp=profile.mp;m.mp=profile.mp;m.respawnSeconds=species.startsWith("ABEL_KINGARK")?60:species.equals("ABEL_BERSERKER")?30:7+i%3;out.add(m);
   }
   return out;
  }

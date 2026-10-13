@@ -1,0 +1,115 @@
+{
+  "status": "ACCEPTED_IMPLEMENTED_BUILD_NATIVE_PENDING",
+  "user_authorization": "2026-10-13 모두 반영해줘; continuation of V152 code, same PR195",
+  "source_baseline": "908178aacc1255675be568640ca459c2876c3650",
+  "source_paths": [
+    "master/data/Monster_Master.csv",
+    "master/data/Hunting_EXP_Balance.csv",
+    "master/data/Level_EXP_Curve.csv",
+    "master/data/Progression_Master.csv",
+    "master/source/abel_v143/coverage.json",
+    "docs/MONSTER_CREATION_MANUAL.md",
+    "docs/HUNT_MAP_PERFORMANCE_LESSONS.md"
+  ],
+  "before": [
+    "all coast monsters use common damage/AI and no combat level",
+    "HP/EXP disconnected mobile constants",
+    "quests stop at Lv55",
+    "only Lv11/26 campaign gear",
+    "balance tests teleport to attacks and rest after every kill"
+  ],
+  "after": [
+    "13 individual mobile level/HP/MP/AC/MDEF/element/physical/magic/reward profiles",
+    "shared Resolver attacks with windup/resource/cooldown/LOS/control gates and timed statuses",
+    "KingArk retreat and once-per-life recovery; Berserker rage",
+    "18 coast quests complete Lv70 and three normal paid/rewarded gear tiers41/56/65",
+    "five-job continuous full-population path/AI/learned-skill/potion/EXP/save tests"
+  ],
+  "source_evidence": [
+    {
+      "url": "https://lod.nexon.com/community/game/1987?SearchBoard=1",
+      "retrieved": "2026-10-13",
+      "tag": "V_NEXON_HOSTED_PLAYER_TIP",
+      "fact": "2006 tip describes fleeing/healing/magic at low HP; original trigger fraction, frequency and exact spell unresolved"
+    },
+    {
+      "url": "https://lod.nexon.com/community/game/3472?SearchBoard=1",
+      "retrieved": "2026-10-13",
+      "tag": "V_NEXON_HOSTED_PLAYER_MEASUREMENT",
+      "fact": "2008 Berserker Lv88 HP61982 EXP606252 retained in original catalogs. Mobile profile65/4500/95000 is a separate adapted solo projection."
+    }
+  ],
+  "profiles": [
+    {
+      "id": "ABEL_TURTLE",
+      "mobile_parameters": "42,1000,12,-8,4,\"EARTH\",\"\",45000,135,2.2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_ARKPUS",
+      "mobile_parameters": "44,1100,14,-3,8,\"WATER\",\"MONSTER_WATER\",48000,165,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_PONG",
+      "mobile_parameters": "43,850,10,0,5,\"WIND\",\"MONSTER_BLIND\",43000,140,1.8f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_CATERPILLAR",
+      "mobile_parameters": "42,900,11,-2,2,\"EARTH\",\"MONSTER_VENOM_BITE\",44000,145,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_GRAB",
+      "mobile_parameters": "49,1600,18,-15,5,\"EARTH\",\"\",52000,155,2.3f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OBS_SLATE",
+      "mobile_parameters": "48,1300,15,-5,8,\"EARTH\",\"MONSTER_ROOT\",50000,150,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OCTOPUS",
+      "mobile_parameters": "55,1900,21,-7,10,\"WATER\",\"MONSTER_WATER\",58000,170,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_EGG",
+      "mobile_parameters": "54,1400,17,-3,12,\"NONE\",\"MONSTER_CURSE\",55000,160,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_GAS",
+      "mobile_parameters": "57,1600,17,-4,12,\"FIRE\",\"MONSTER_VENOM\",60000,175,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_MAW",
+      "mobile_parameters": "58,2100,23,-8,8,\"WIND\",\"MONSTER_FREEZE\",62000,180,2.1f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_BERSERKER",
+      "mobile_parameters": "65,4500,34,-12,12,\"FIRE\",\"MONSTER_FIRE\",95000,190,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_KINGARK_FAKE",
+      "mobile_parameters": "67,6000,32,-10,15,\"NONE\",\"MONSTER_FIRE\",110000,220,2.2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_KINGARK",
+      "mobile_parameters": "70,8500,38,-15,18,\"NONE\",\"MONSTER_WATER\",150000,300,2.4f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    }
+  ],
+  "missing_original_boundaries": [
+    "spell choice for ordinary species, timing, MP and numeric solo tuning are ADAPTED",
+    "KingArk HP35%/two-step retreat/one heal12.5% is mobile solo interpretation, not original event rules",
+    "no new random drop rates or fabricated source gear art; higher mobile gear reuses approved appearance"
+  ],
+  "acceptance": "Five normal jobs and actual native casting frame must pass exact-SHA CI; phone/user visual pending"
+}

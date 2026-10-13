@@ -7,6 +7,7 @@ public final class AdaptedPoteQuestRewards {
   public static final String POLICY_ID="ADAPTED_POTE_EQUIPMENT_V123";
   private AdaptedPoteQuestRewards(){}
   public static int gearTier(String id){
+    if("E01".equals(id))return 41;if("E09".equals(id))return 56;if("E14".equals(id))return 65;
     return "M06".equals(id)||id.startsWith("J02_")?11:
         "B06".equals(id)||id.startsWith("J03_")?26:0;
   }
@@ -19,6 +20,8 @@ public final class AdaptedPoteQuestRewards {
       out.put("IT_B_CAMPAIGN_TOOL_"+r.currentJobCode()+"_"+tier,1);
     }
     switch(d.id){
+      case "E13":out.put("IT_RING_SILVERAQUA",1);break;
+      case "E16":out.put("IT_NECK_EARTH_PEARL",1);break;
       case "A02":out.put("IT_LEGGING_LEATHER",1);break;
       case "A03":out.put("IT_GLOVE_LEATHER",1);break;
       case "A05":out.put("IT_NECK_WATER_PEARL",1);break;

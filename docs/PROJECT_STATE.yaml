@@ -1,3 +1,12 @@
+abel_third_circle_v153:
+  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/abel-coast-v139
+  contract: master/changes/ABEL_3C_V153.json
+  required_sources: [AGENTS.md, docs/MONSTER_CREATION_MANUAL.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, master/data/Monster_Master.csv, master/data/Hunting_EXP_Balance.csv, master/data/Progression_Master.csv, master/data/Level_EXP_Curve.csv, master/source/abel_v143/coverage.json]
+  phone: PENDING
+  user_visual: PENDING
+
 abel_entry_portals_v152:
   runtime_source_sha: 292026ad8720a24ccbb8c6e260c2323b932e02b9
   focused_run: 38333392441

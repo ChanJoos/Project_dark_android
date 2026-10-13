@@ -101,6 +101,7 @@ public final class F5mSaveStore {
       edit.putString("inn_mouse_map",runtime.currentMapId()).putInt("inn_mouse_hp",m.hp)
           .putFloat("inn_mouse_x",m.isMoving?m.moveTargetX:m.x).putFloat("inn_mouse_y",m.isMoving?m.moveTargetY:m.y);
     }
+    if(com.projectdark.mobile.world.AbelCoastGeometry.contains(runtime.currentMapId()))try{org.json.JSONArray rows=new org.json.JSONArray();for(RuntimeState.Monster m:runtime.monsters())rows.put(new org.json.JSONObject().put("id",m.id).put("hp",m.hp).put("mp",m.mp).put("recovered",m.bossRecovered).put("respawn",m.respawnClock));edit.putString("abel_encounters_v153",new org.json.JSONObject().put("map",runtime.currentMapId()).put("actors",rows).toString());}catch(org.json.JSONException e){throw new IllegalStateException(e);}
     edit.putString("map_id",runtime.currentMapId()).putFloat("player_x",p.x).putFloat("player_y",p.y)
         .putString("skill_effects_v1",runtime.skillEffects().snapshot().toString()).putInt("player_hp",p.alive?p.hp:0).putInt("player_mp",p.mp).putLong("ledger_sequence",runtime.ledger().sequence());
   }
@@ -108,6 +109,7 @@ public final class F5mSaveStore {
     r.applyDerivedGrowth();
     if(active==null||!active.writable)return;
     SharedPreferences p=active.prefs;
+    if(com.projectdark.mobile.world.AbelCoastGeometry.contains(r.currentMapId()))try{String stored=p.getString("abel_encounters_v153",null);if(stored!=null){org.json.JSONObject data=new org.json.JSONObject(stored);if(r.currentMapId().equals(data.getString("map"))){org.json.JSONArray rows=data.getJSONArray("actors");for(int i=0;i<rows.length();i++){org.json.JSONObject row=rows.getJSONObject(i);for(RuntimeState.Monster m:r.monsters())if(m.id.equals(row.getString("id"))){int hp=row.getInt("hp"),mp=row.getInt("mp");if(hp<0||hp>m.maxHp||mp<0||mp>m.maxMp)continue;m.hp=hp;m.mp=mp;m.bossRecovered=row.optBoolean("recovered",false);m.alive=hp>0;m.state=m.alive?RuntimeState.Monster.State.IDLE:RuntimeState.Monster.State.RESPAWN;m.respawnClock=(float)Math.max(0,Math.min(60,row.optDouble("respawn",m.respawnSeconds)));}}}}}catch(Exception ignored){/* Preserve a normal fresh spawn when old/corrupt encounter data cannot be admitted. */}
     boolean oldEast=com.projectdark.mobile.world.AbelTownGeometry.EAST_ID.equals(p.getString("map_id",null))&&com.projectdark.mobile.world.AbelTownGeometry.ID.equals(r.currentMapId());
     if(oldEast||r.currentMapId().equals(p.getString("map_id",null))){
       float x=p.getFloat("player_x",r.player().x)+(oldEast?com.projectdark.mobile.world.AbelTownGeometry.EAST_DX:0),y=p.getFloat("player_y",r.player().y)+(oldEast?com.projectdark.mobile.world.AbelTownGeometry.EAST_DY:0);

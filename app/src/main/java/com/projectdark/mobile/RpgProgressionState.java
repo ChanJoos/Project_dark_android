@@ -260,12 +260,12 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_B_POTE_SHOES","숲길 신발",SHOES_SLOT,"ml230",20,jobSet(),true,null,null,stats("AC",-1,"DEX",3),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_B_PURIFIED_ESSENCE","정화된 숲의 정수",null,null,0,jobSet(),true,null,null,stats(),Evidence.ADAPTED));
     String[] looks={"mu0000059","mu0000055","mu0000117","mu0000210","mu0000057"};
-    for(int i=0;i<CampaignProgress.JOBS.length;i++)for(int level:new int[]{11,26}){
+    for(int i=0;i<CampaignProgress.JOBS.length;i++)for(int level:new int[]{11,26,41,56,65}){
       String job=CampaignProgress.JOBS[i],id="IT_B_CAMPAIGN_"+job+"_"+level;
-      registerItem(new ItemDefinition(id,CampaignProgress.jobName(job)+(level==11?" 견습 장비":" 숙련 장비"),ARMOR_SLOT,looks[i],level,jobSet(job),true,null,null,stats("AC",level==11?-5:-10,"DAM",level==11?3:7,"HP",level==11?80:180,"MP",level==11?80:180),Evidence.ADAPTED));
+      registerItem(new ItemDefinition(id,CampaignProgress.jobName(job)+(level==11?" 견습 장비":level==26?" 숙련 장비":level==41?" 해안 장비":level==56?" 심부 장비":" 최심부 장비"),ARMOR_SLOT,looks[i],level,jobSet(job),true,null,null,stats("AC",level==11?-5:level==26?-10:level==41?-15:level==56?-20:-25,"DAM",level==11?3:level==26?7:level==41?12:level==56?18:23,"HP",level==11?80:level==26?180:level==41?300:level==56?450:600,"MP",level==11?80:level==26?180:level==41?300:level==56?450:600),Evidence.ADAPTED));
       String starter="WARRIOR".equals(job)?"IT_B_JOB_WARRIOR_WEAPON":"ROGUE".equals(job)?"IT_B_JOB_ROGUE_WEAPON":"MAGE".equals(job)?"IT_B_JOB_MAGE_WAND":"IT_B_JOB_CLERIC_WAND";
       ItemDefinition base=items.get(starter);boolean monk="MARTIAL_ARTIST".equals(job),magic="MAGE".equals(job)||"CLERIC".equals(job);
-      registerItem(new ItemDefinition("IT_B_CAMPAIGN_TOOL_"+job+"_"+level,CampaignProgress.jobName(job)+(level==11?" 수련 도구":" 숙련 도구"),monk?"장갑":WEAPON_SLOT,monk?null:base.appearanceId,monk?null:base.basicAttackAction,level,jobSet(job),true,null,null,stats("DAM",level==11?4:9,magic?"INT":"STR",level==11?3:6,magic?"WIS":"CON",level==11?2:4),Evidence.ADAPTED));
+      registerItem(new ItemDefinition("IT_B_CAMPAIGN_TOOL_"+job+"_"+level,CampaignProgress.jobName(job)+(level==11?" 수련 도구":" 숙련 도구"),monk?"장갑":WEAPON_SLOT,monk?null:base.appearanceId,monk?null:base.basicAttackAction,level,jobSet(job),true,null,null,stats("DAM",level==11?4:level==26?9:level==41?15:level==56?22:28,magic?"INT":"STR",level==11?3:level==26?6:level==41?9:level==56?14:18,magic?"WIS":"CON",level==11?2:level==26?4:level==41?6:level==56?9:12),Evidence.ADAPTED));
     }
   }
   public boolean grantCampaignGear(int level){String id="IT_B_CAMPAIGN_"+currentJobCode+"_"+level;if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;equipmentBySlot.put(ARMOR_SLOT,id);return true;}

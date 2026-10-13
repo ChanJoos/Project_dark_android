@@ -47,7 +47,7 @@ public class AbelCoastV139Test {
     assertTrue(F5mSaveStore.transactActive(s.rpg(),b,()->s.rpg().campaign().claim(d.id,s.rpg())));long before=CampaignProgress.earnedExp(s.rpg()),gold=s.rpg().gold();assertFalse(s.rpg().campaign().claim(d.id,s.rpg()));assertEquals(before,CampaignProgress.earnedExp(s.rpg()));assertEquals(gold,s.rpg().gold().longValue());
     assertTrue(F5mSaveStore.checkpointActive());RpgProgressionState restored=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(restored);assertEquals(s.rpg().campaign().snapshot().getJSONArray("complete").toString(),restored.campaign().snapshot().getJSONArray("complete").toString());assertEquals(s.rpg().inventory(),restored.inventory());assertEquals(s.rpg().normalLevel(),restored.normalLevel());
    }
-   assertTrue(s.rpg().campaign().finished());assertNull(s.rpg().campaign().next(s.rpg()));assertTrue(s.rpg().normalLevel()>=55);assertFalse(b.testAccess());assertTrue(s.rpg().gold()>0);assertTrue(s.rpg().inventory().getOrDefault("IT_RING_THREELINEGOLD",0)==0);
+   assertFalse(s.rpg().campaign().finished());assertEquals("E09",s.rpg().campaign().next(s.rpg()).id);assertTrue(s.rpg().normalLevel()>=55);assertFalse(b.testAccess());assertTrue(s.rpg().gold()>0);assertTrue(s.rpg().inventory().getOrDefault("IT_RING_THREELINEGOLD",0)==0);
    report.put(job,new JSONObject().put("level",s.rpg().normalLevel()).put("kills",kills).put("gold",s.rpg().gold()).put("scope","D04 fixture; actual Resolver kills/transactions/checkpoint restore; no handset FPS claim"));
   }Files.createDirectories(Path.of("build/reports/abel-v139"));Files.write(Path.of("build/reports/abel-v139/five-jobs.json"),report.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
