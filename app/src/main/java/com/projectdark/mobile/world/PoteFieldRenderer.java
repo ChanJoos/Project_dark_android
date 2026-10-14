@@ -9,6 +9,8 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
+import android.graphics.BlurMaskFilter;
+import android.graphics.DashPathEffect;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -312,11 +314,14 @@ public final class PoteFieldRenderer {
     for(int i=1;i<points.length;i++)groundCells.lineTo(points[i][0]-ox,points[i][1]-oy);
     if(closeToBottom){groundCells.lineTo(n-ox,n-oy);groundCells.lineTo(64-ox,n-oy);}groundCells.close();
   }
+  private final BlurMaskFilter coastDepthBlur=new BlurMaskFilter(26,BlurMaskFilter.Blur.NORMAL);
+  private final BlurMaskFilter coastWetBlur=new BlurMaskFilter(11,BlurMaskFilter.Blur.NORMAL);
+  private final DashPathEffect coastFoamBreaks=new DashPathEffect(new float[]{17,9,34,13,7,21},0);
   private void drawCoastDepth(Canvas c,float[][] line,float ox,float oy,boolean bottom,float n){
     c.save();c.clipPath(groundCells);pixel.setShader(null);pixel.setStyle(Paint.Style.STROKE);
     groundCells.reset();groundCells.moveTo(line[0][0]-ox,line[0][1]-oy);
     for(int i=1;i<line.length;i++)groundCells.lineTo(line[i][0]-ox,line[i][1]-oy);
-    for(int i=5;i>=1;i--){pixel.setStrokeWidth(i*30);pixel.setColor(i>2?0xff8898a3:0xffb4beb3);pixel.setAlpha(24+i*6);c.drawPath(groundCells,pixel);}
+    pixel.setMaskFilter(coastDepthBlur);pixel.setStrokeWidth(135);pixel.setColor(0xffa2b7b6);pixel.setAlpha(150);c.drawPath(groundCells,pixel);pixel.setMaskFilter(null);
     pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);c.restore();
   }
   private void drawCoastalFloor(Canvas c,String map,float ox,float oy,boolean r){
@@ -335,9 +340,8 @@ public final class PoteFieldRenderer {
     for(float[][] line:new float[][][]{edge,inlet})if(line.length>1){
       groundCells.reset();groundCells.moveTo(line[0][0]-ox,line[0][1]-oy);
       for(int i=1;i<line.length;i++)groundCells.lineTo(line[i][0]-ox,line[i][1]-oy);
-      pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(30);pixel.setColor(r?0xffb6b398:0xffbaaa89);pixel.setAlpha(155);c.drawPath(groundCells,pixel);
-      pixel.setStrokeWidth(4);pixel.setColor(0xffe6e5cd);pixel.setAlpha(135);c.drawPath(groundCells,pixel);
-      pixel.setStrokeWidth(1.3f);pixel.setColor(0xfffbf7e8);pixel.setAlpha(155);c.drawPath(groundCells,pixel);
+      pixel.setStyle(Paint.Style.STROKE);pixel.setMaskFilter(coastWetBlur);pixel.setStrokeWidth(22);pixel.setColor(r?0xffb6b398:0xffbaaa89);pixel.setAlpha(125);c.drawPath(groundCells,pixel);pixel.setMaskFilter(null);
+      pixel.setPathEffect(coastFoamBreaks);pixel.setStrokeWidth(2);pixel.setColor(0xffe9eadf);pixel.setAlpha(130);c.drawPath(groundCells,pixel);pixel.setPathEffect(null);
     }
     pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setShader(null);
   }
