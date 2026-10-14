@@ -83,6 +83,7 @@ badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badg
 assert "versionCode='159'" in badging and "versionName='1.59-coast-source-pairs'" in badging, badging[:300]
 expected_package = 'com.projectdark.mobile.v159test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
+if expected_package.endswith(".v159test"): assert "application-label:'PROJECT DARK V159 TEST'" in badging
 resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'resources', str(apk_path)], text=True)
 assert 'name='+expected_package in resource_table, resource_table[:400]
 for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','player_shirt_mu0000001_source'):
