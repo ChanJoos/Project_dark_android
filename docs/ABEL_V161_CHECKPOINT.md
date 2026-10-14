@@ -1,11 +1,9 @@
-# V161 아벨 전체 외형 재검수
+# V161 아벨 외형 재검수 체크포인트
 
-Base branch: codex/rucesion-coast-v157 / PR197. Base head e7851d22bbc0b58ad672bf8339afec87300a2d83. Latest successful full Android run38626550760. Main41fe6def unchanged.
+Branch codex/rucesion-coast-v157 / PR197. Base e7851d22 full Android38626550760 SUCCESS. Main41fe6def unchanged. User reports V160 shape mismatch: USER_VISUAL_REJECTED.
 
-User rejects V160 Abel shape/scale; V160 size-only change is insufficient. Compare all13 runtime IDs against retained original footage crops. Preserve accepted Rucesion10.
+IMPLEMENTED_CANDIDATE: source-referenced7families84poses, all13 per-ID source audit and occupied-alpha/player calibration. Full contract docs/ABEL_V161_REVIEW.md, sources/prompts/reference crop/hash master/source/abel_v161, change master/changes/ABEL_V161_SOURCE_REPAIR.json. Original atlas/cadence and obscured KingArk/purple ratios remain unresolved. Accepted Rucesion10 retained.
 
-Confirmed defects: Pong hollow ring instead of filled translucent violet jelly with ochre internal markings; caterpillar steep mound instead of wide low spotted mantle with thin protrusions; turtle too domed/round-faced versus low flat layered dark shell. Generated directions/actions remain ADAPTED. Original exact native atlas/cadence not available; do not claim pixel-exact equivalence.
+Source checkpoint011c63a4(Pong/Caterpillar/Turtle), d9f4cbe8(Arkpus/slate/octopus). Initial local push failed for missing HTTPS credential; connector publication succeeded, not an approval rejection. Generated maw extra stalk-mouth rejected internally and replaced with closed-tip source edit; final sheet only is consumed. No original reference bytes overwritten.
 
-Work units: (1) preserve references and per-ID audit; (2) create replacement12pose sets, visible-alpha scale calibration and native comparison; (3) exact-source CI/APK receipt. Completed assets must be committed before proceeding.
-
-Status: SOURCE_AUDIT_IN_PROGRESS. No V161 APK or acceptance claimed.
+Local Master integrity, Python compilation,84 unique independent/padded sprites and diff check pass. Android SDK/Gradle unavailable locally; exact source CI/native/APK pending. Next: publish reviewed implementation, verify focused and common CI, inspect actual native13species/allposes and deliver exact candidate APK/receipt. Do not regenerate committed sources.

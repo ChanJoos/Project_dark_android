@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "status": "ACCEPTED_IMPLEMENTATION_NATIVE_BUILD_PENDING",
+  "task": "V161 user rejects V160 Abel shapes, compare and self-correct all13",
+  "base": "e7851d22bbc0b58ad672bf8339afec87300a2d83",
+  "source": "master/source/abel_v161/calibration.json",
+  "sourceSheets": 7,
+  "frames": 84,
+  "canonicalMonsterStats": "UNCHANGED",
+  "userVisualAcceptance": "PENDING",
+  "rucesionAccepted": "PRESERVED",
+  "originalAtlasAndCadence": "UNAVAILABLE_ADAPTED_GENERATED_POSES",
+  "risks": [
+    "KingArk partly occluded and fake/real appearance unresolved",
+    "Purple source/player comparison occluded",
+    "All ratios manually delimited approximate observations"
+  ],
+  "affected": [
+    "PoteForestMonsterShowcase",
+    "AbelSpriteCalibration",
+    "app/build.gradle"
+  ],
+  "verification": "Exact focused+common Android CI, native13x12pose captures, all10maps and retained performance/AI/save suite"
+}

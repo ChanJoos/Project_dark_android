@@ -27,11 +27,11 @@ public final class PoteForestMonsterShowcase {
     art.put("POTE_SPIRIT","campaign_v3/brown_pote_spirit");
     art.put("POTE_STRONG_GNOLL","campaign_v1/gnoll");art.put("POTE_STRONG_WOLFRIDER","campaign_v1/wolf_rider");art.put("POTE_STRONG_TREANT","campaign_v1/trant");art.put("POTE_CAMPAIGN_ELITE_GNOLL","campaign_v1/gnoll");
     art.replaceAll((id,key)->"campaign_v3/"+key.substring(key.lastIndexOf('/')+1));
-    art.put("ABEL_TURTLE","abel_v139/turtle");art.put("ABEL_ARKPUS","abel_v141/arkpus");
-    art.put("ABEL_PONG","abel_v141/pong");art.put("ABEL_CATERPILLAR","abel_v141/gas");
-    art.put("ABEL_OBS_SLATE","abel_v142/grab");art.put("ABEL_GRAB","abel_v142/armored");
-    art.put("ABEL_OCTOPUS","abel_v142/octopus");art.put("ABEL_OBS_PURPLE_EGG","abel_v142/purple_egg");
-    art.put("ABEL_GAS","abel_v142/orange_float");art.put("ABEL_OBS_PURPLE_MAW","abel_v142/purple_maw");
+    art.put("ABEL_TURTLE","abel_v161/turtle");art.put("ABEL_ARKPUS","abel_v161/arkpus");
+    art.put("ABEL_PONG","abel_v161/pong");art.put("ABEL_CATERPILLAR","abel_v161/caterpillar");
+    art.put("ABEL_OBS_SLATE","abel_v161/slate");art.put("ABEL_GRAB","abel_v142/armored");
+    art.put("ABEL_OCTOPUS","abel_v161/octopus");art.put("ABEL_OBS_PURPLE_EGG","abel_v142/purple_egg");
+    art.put("ABEL_GAS","abel_v142/orange_float");art.put("ABEL_OBS_PURPLE_MAW","abel_v161/maw");
     art.put("ABEL_BERSERKER","abel_v142/blue_boss");
     art.put("ABEL_KINGARK_FAKE","abel_v142/kingark");art.put("ABEL_KINGARK","abel_v142/kingark");
     String[] ruc={"blue_hacon","red_hacon","arkpus","plant_arkpus","kakapo","poison_kakapo","koatl","elect_koatl","tyrant","ariel"};for(int i=0;i<ruc.length;i++)art.put(RucesionCoastMonsters.ALL.get(i),"rucesion_v157/"+ruc[i]);
@@ -41,9 +41,9 @@ public final class PoteForestMonsterShowcase {
 
   private PoteForestMonsterShowcase(){}
   public static List<String> monsterIds(){return IDS;}
-  // V160 source-player silhouette calibration, not PNG canvas size. Other species retained.
-  public static float bodyWidth(String id){String s=species(id);if("ABEL_TURTLE".equals(s))return 60f;if("ABEL_CATERPILLAR".equals(s))return 66f;return s!=null&&s.endsWith("KOATL")?104f:bodyHeight(id);}
-  public static float bodyHeight(String id){String s=species(id);if("LYK_ARIEL".equals(s))return 110f;if("LYK_TYRANT".equals(s))return 95f;if("LYK_KOATL".equals(s))return 84f;if("LYK_ELECT_KOATL".equals(s))return 84f;if("LYK_PLANT_ARKPUS".equals(s)||"LYK_ARKPUS".equals(s))return 84f;if("LYK_BLUE_HACON".equals(s))return 72f;if("LYK_RED_HACON".equals(s))return 72f;if(s!=null&&s.startsWith("LYK_"))return 64f;if(s!=null&&s.startsWith("ABEL_KINGARK"))return 210f;if("ABEL_GAS".equals(s)||"ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_GRAB".equals(s))return 52f;if("ABEL_PONG".equals(s))return 54f;if("ABEL_CATERPILLAR".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 52f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
+  // V161 calibrates occupied silhouette against the same-frame source player.
+  public static float bodyWidth(String id){String s=species(id);float calibrated=s==null?-1:AbelSpriteCalibration.width(s);if(calibrated>0)return calibrated;return s!=null&&s.endsWith("KOATL")?104f:bodyHeight(id);}
+  public static float bodyHeight(String id){String s=species(id);float calibrated=s==null?-1:AbelSpriteCalibration.height(s);if(calibrated>0)return calibrated;if("LYK_ARIEL".equals(s))return 110f;if("LYK_TYRANT".equals(s))return 95f;if("LYK_KOATL".equals(s))return 84f;if("LYK_ELECT_KOATL".equals(s))return 84f;if("LYK_PLANT_ARKPUS".equals(s)||"LYK_ARKPUS".equals(s))return 84f;if("LYK_BLUE_HACON".equals(s))return 72f;if("LYK_RED_HACON".equals(s))return 72f;if(s!=null&&s.startsWith("LYK_"))return 64f;if(s!=null&&s.startsWith("ABEL_KINGARK"))return 210f;if("ABEL_GAS".equals(s)||"ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_GRAB".equals(s))return 52f;if("ABEL_PONG".equals(s))return 54f;if("ABEL_CATERPILLAR".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 52f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){return id==null?null:id.split("#",2)[0];}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}
   public static String artKey(String id){

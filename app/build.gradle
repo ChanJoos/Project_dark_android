@@ -5,12 +5,12 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v160test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V160 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v161test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V161 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 160
-        versionName '1.60-coast-density-scale'
+        versionCode 161
+        versionName '1.61-abel-source-shapes'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
@@ -46,7 +46,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 160, versionName: '1.60-coast-density-scale']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 161, versionName: '1.61-abel-source-shapes']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
@@ -60,6 +60,15 @@ tasks.register('extractWardrobeV128', Copy) {
 }
 tasks.named('preBuild').configure { dependsOn('extractWardrobeV128') }
 
+// Regenerate the reviewed sheets with exact per-family crop/projection metadata.
+tasks.register('generateAbelV161', Exec) {
+    inputs.files(rootProject.fileTree('master/source/abel_v161') { include '*.png' })
+    inputs.file(rootProject.file('tools/build_abel_v161.py'))
+    outputs.dir(layout.buildDirectory.dir('generated/abel-v161-pack'))
+    workingDir rootProject.projectDir
+    commandLine 'python3', 'tools/build_abel_v161.py'
+}
+
 // One synchronized pack removes obsolete species even on incremental builds.
 tasks.register('extractAbelV139', Sync) {
     from(zipTree(rootProject.file('master/assets/abel_v139/generated_assets.zip'))) {
@@ -71,7 +80,9 @@ tasks.register('extractAbelV139', Sync) {
     from(zipTree(rootProject.file('master/assets/abel_v141/generated_assets.zip')))
     from(zipTree(rootProject.file('master/assets/abel_v142/generated_assets.zip')))
     from(zipTree(rootProject.file('master/assets/rucesion_v158/generated_assets.zip')))
+    from(zipTree(layout.buildDirectory.file('generated/abel-v161-pack/generated_assets.zip')))
     into(layout.buildDirectory.dir('generated/abel-v139'))
     includeEmptyDirs = false
 }
+tasks.named('extractAbelV139').configure { dependsOn('generateAbelV161') }
 tasks.named('preBuild').configure { dependsOn('extractAbelV139') }
