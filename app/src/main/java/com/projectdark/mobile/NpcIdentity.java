@@ -40,7 +40,7 @@ public final class NpcIdentity {
   new Profile("abel_interior_equipment","Andrew",17,"아벨 장비상","mu0000055,mh008,ml243","mw015"),
   new Profile("abel_interior_bank","Mark",15,"아벨 은행원","mu0000202,mh010,ml240",null),
   new Profile("abel_interior_church","Edward",28,"아벨 사제","mu0000210,mh132,ml255","mw026"),
-  new Profile("abel_interior_inn","George",27,"아벨 여관 주인","mu0000025,mh009,ml240",null),new Profile("rucesion_town_travel","Harold",83,"아벨 이동","mu0000102,mh007,ml240",null),new Profile("rucesion_beach_keeper","Luke",97,"해변 안내","mu0000365,mh010,ml243",null),new Profile("rucesion_interior_armor","Donald",18,"뤼케시온 방어구상","mu0000055,mh008,ml243","mw015"),new Profile("rucesion_interior_weapon","Scott",40,"뤼케시온 무기상","mu0000055,mh007,ml240","mw015"),new Profile("rucesion_interior_reagent","Jerry",52,"뤼케시온 시약상","mu0000117,mh132,ml255","mw024")));;
+  new Profile("abel_interior_inn","George",27,"아벨 여관 주인","mu0000025,mh009,ml240",null),new Profile("rucesion_town_travel","Harold",83,"아벨 이동","mu0000102,mh124,ml255",null),new Profile("rucesion_beach_keeper","Luke",97,"해변 안내","mu0000365,mh010,ml243",null),new Profile("rucesion_interior_armor","Donald",18,"뤼케시온 방어구상","mu0000055,mh006,ml243","mw015"),new Profile("rucesion_interior_weapon","Scott",40,"뤼케시온 무기상","mu0000055,mh007,ml240","mw015"),new Profile("rucesion_interior_reagent","Jerry",52,"뤼케시온 시약상","mu0000117,mh132,ml255","mw024")));;
  public static Profile forId(String id){
   if(id==null||id.isEmpty())throw new IllegalArgumentException("NPC stable ID required");
   for(Profile p:ALL)if(p.id.equals(id))return p;
