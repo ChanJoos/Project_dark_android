@@ -8,9 +8,10 @@ public final class CoastalHuntLayout {
  public static float nextX(int z){return size(z)-(z==0?256:224);}public static float nextY(int z){return z==0?448:512;}
  private static final Map<Integer,float[][]> LINES=new HashMap<>();
  private static final Map<Integer,List<RectF>> WATER=new HashMap<>();
+ private static float[][] soften(float[][] points,int axis){List<float[]> out=new ArrayList<>();for(int i=1;i<points.length;i++){float[] a=points[i-1],b=points[i];int steps=Math.max(1,(int)Math.ceil((b[axis]-a[axis])/24));for(int k=0;k<steps;k++){float t=k/(float)steps,e=t*t*(3-2*t);float[] q=new float[2];q[axis]=a[axis]+(b[axis]-a[axis])*t;q[1-axis]=a[1-axis]+(b[1-axis]-a[1-axis])*e;out.add(q);}}out.add(points[points.length-1]);return out.toArray(new float[0][]);}
  public static float[][] shoreLine(int z,boolean r){return LINES.computeIfAbsent(z*2+(r?1:0),k->createShoreLine(z,r));}
  private static float[][] createShoreLine(int z,boolean r){
-  if(z==0)return r?new float[][]{{64,620},{200,685},{380,700},{580,640},{768,665}}:new float[][]{{64,660},{230,695},{420,665},{590,620},{768,648}};
+  if(z==0)return soften(r?new float[][]{{64,620},{200,685},{380,700},{580,640},{768,665}}:new float[][]{{64,660},{230,695},{420,665},{590,620},{768,648}},0);
   float[][] line;
   if(r){switch(z){
    case 1:line=new float[][]{{64,2290},{430,2430},{810,2390},{1140,2210},{1510,1970},{1760,1680},{2070,1690},{2300,1910},{2560,2190}};break;
@@ -22,7 +23,7 @@ public final class CoastalHuntLayout {
    case 2:line=new float[][]{{64,2320},{480,2370},{980,2440},{1390,2350},{1710,2050},{1960,1720},{2280,1840},{2560,2140}};break;
    case 3:line=new float[][]{{64,2350},{480,2440},{860,2370},{1100,2150},{1380,2190},{1740,2420},{2190,2410},{2560,2250}};break;
    default:line=new float[][]{{64,2400},{520,2450},{940,2290},{1240,2210},{1530,2330},{1950,2390},{2250,2120},{2560,1940}};}}
-  float factor=size(z)/2560;for(float[] p:line){p[0]*=factor;p[1]*=factor;}line[0][0]=64;return line;
+  float factor=size(z)/2560;for(float[] p:line){p[0]*=factor;p[1]*=factor;}line[0][0]=64;return soften(line,0);
  }
  public static float shore(int z,boolean r,float x){float[][] a=shoreLine(z,r);for(int i=1;i<a.length;i++)if(x<=a[i][0])return a[i-1][1]+(a[i][1]-a[i-1][1])*(x-a[i-1][0])/(a[i][0]-a[i-1][0]);return a[a.length-1][1];}
  /** Source-like west coves instead of putting water only along the bottom of every map. */
@@ -31,7 +32,7 @@ public final class CoastalHuntLayout {
   float[][] a=r&&z==2?new float[][]{{64,290},{340,440},{550,720},{510,1080},{320,1350},{64,1480}}:
    !r&&z==3?new float[][]{{64,650},{330,790},{450,1080},{280,1260},{64,1390}}:
    r&&z==4?new float[][]{{64,230},{430,330},{650,580},{490,820},{64,960}}:new float[0][];
-  float factor=size(z)/2560;for(float[] p:a){p[0]=p[0]==64?64:p[0]*factor;p[1]*=factor;}return a;
+  float factor=size(z)/2560;for(float[] p:a){p[0]=p[0]==64?64:p[0]*factor;p[1]*=factor;}return soften(a,1);
  }
  public static List<RectF> water(int z,boolean r){return WATER.computeIfAbsent(z*2+(r?1:0),k->createWater(z,r));}
  private static List<RectF> createWater(int z,boolean r){List<RectF> out=new ArrayList<>();float n=size(z);for(float x=64;x<n;x+=16)out.add(new RectF(x,Math.min(shore(z,r,x),shore(z,r,x+16)),Math.min(n,x+16),n));float[][] a=inlet(z,r);if(a.length>0)for(float y=a[0][1];y<a[a.length-1][1];y+=16){float edge=64;for(int i=1;i<a.length;i++)if(y>=a[i-1][1]&&y<=a[i][1]){edge=a[i-1][0]+(a[i][0]-a[i-1][0])*(y-a[i-1][1])/(a[i][1]-a[i-1][1]);break;}out.add(new RectF(64,y,edge+8,y+16));}return Collections.unmodifiableList(out);}

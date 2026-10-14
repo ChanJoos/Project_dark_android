@@ -336,8 +336,8 @@ public final class PoteFieldRenderer {
       groundCells.reset();groundCells.moveTo(line[0][0]-ox,line[0][1]-oy);
       for(int i=1;i<line.length;i++)groundCells.lineTo(line[i][0]-ox,line[i][1]-oy);
       pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(30);pixel.setColor(r?0xffb6b398:0xffbaaa89);pixel.setAlpha(155);c.drawPath(groundCells,pixel);
-      pixel.setStrokeWidth(8);pixel.setColor(0xffe6e5cd);pixel.setAlpha(175);c.drawPath(groundCells,pixel);
-      pixel.setStrokeWidth(2);pixel.setColor(0xfffbf7e8);pixel.setAlpha(190);c.drawPath(groundCells,pixel);
+      pixel.setStrokeWidth(4);pixel.setColor(0xffe6e5cd);pixel.setAlpha(135);c.drawPath(groundCells,pixel);
+      pixel.setStrokeWidth(1.3f);pixel.setColor(0xfffbf7e8);pixel.setAlpha(155);c.drawPath(groundCells,pixel);
     }
     pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setShader(null);
   }
