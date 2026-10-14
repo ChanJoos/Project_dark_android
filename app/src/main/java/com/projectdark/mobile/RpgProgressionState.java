@@ -476,7 +476,7 @@ public final class RpgProgressionState {
   private void resolveCampaignDefeat(CombatLedger.Event e,String profileId){
     // Explicitly bound mobile spirits/coast candidates use their adapted HP/reward
     // economy. Keep canonical records and unprofiled source fixtures separate.
-    if(profileId!=null&&("POTE_SPIRIT".equals(profileId)||AbelCoastMonsters.ALL.contains(profileId)||com.projectdark.mobile.world.RucesionCoastMonsters.ALL.contains(profileId))
+    if(profileId!=null&&("POTE_SPIRIT".equals(profileId)||AbelCoastMonsters.ALL.contains(profileId)||RucesionCoastMonsters.ALL.contains(profileId))
         &&profileId.equals(PoteForestMonsterShowcase.species(e.targetId))){
       applyCampaignReward(e,campaignRewards.find(profileId));return;
     }
