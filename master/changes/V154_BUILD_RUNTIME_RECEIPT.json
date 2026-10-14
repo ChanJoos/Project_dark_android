@@ -101,7 +101,19 @@
     }
   ],
   "broaderRuns": {
-    "38492657929": "PENDING",
-    "38492651351": "PENDING"
+    "38492657929": "SUCCESS",
+    "38492651351": "SUCCESS"
+  },
+  "broaderJobs": {
+    "38492657929": 115621260737,
+    "38492651351": 115621240780
+  },
+  "resumedDeliveryVerification": {
+    "apkSha256": "48bea284e42777c9be167adce805272763cf568892fa32be15248080f2f63fa5",
+    "apkArchiveSha256": "a7c25fd3988d271acbe85eb4920648ca646bf936d35273b4425392de37761d78",
+    "previewArchiveSha256": "307164b7647e92a4525d976daeaba3444200ea1d6341c3ea5b9d3241276c0371",
+    "zipCRC": "PASS",
+    "embeddedBuildInfo": "MATCH",
+    "phoneAcceptance": "PENDING"
   }
 }
