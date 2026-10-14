@@ -98,11 +98,19 @@
   "broaderRuns": [
     {
       "id": 38561700451,
-      "status": "IN_PROGRESS"
+      "job": 115844096485,
+      "sourceCommit": "c422ddd3b41874c05be6af872296cea99d47c6f1",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
     },
     {
       "id": 38561708090,
-      "status": "IN_PROGRESS"
+      "job": 115844122559,
+      "sourceCommit": "c422ddd3b41874c05be6af872296cea99d47c6f1",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
     }
-  ]
+  ],
+  "broaderVerification": "Job steps and decoded completed logs confirm all configured audits/native regressions/debug APK verification succeeded; not added to focused89 count and not substituted for delivered focused APK identity",
+  "closure": "Subsequent documentation/receipt/installer script changes preserve app/runtime/assets at tested c422ddd3; delivered APK remains same exact source/run/hash."
 }
