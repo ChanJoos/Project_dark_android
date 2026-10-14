@@ -72,11 +72,19 @@
   "broaderAndroidRuns": [
     {
       "id": 38519167499,
-      "status": "IN_PROGRESS_AT_DELIVERY"
+      "jobId": 115704664836,
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "source": "d2477acba41cbda049a22f432dd8cdc84b60dfbc",
+      "event": "push"
     },
     {
       "id": 38519175185,
-      "status": "IN_PROGRESS_AT_DELIVERY"
+      "jobId": 115704688679,
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "source": "d2477acba41cbda049a22f432dd8cdc84b60dfbc",
+      "event": "pull_request"
     }
   ],
   "ciConfiguration": {
@@ -84,5 +92,15 @@
     "focusedRun": 38519167459,
     "focusedConclusion": "SUCCESS",
     "change": "General Android APK verifier aligned to V156; app/assets diff from delivered859728f is empty."
+  },
+  "resumedClosure": {
+    "dateSeoul": "2026-10-14",
+    "authorization": "User explicitly authorized latest unfinished task continuation and GitHub publication.",
+    "evidence": "Live workflow metadata, job steps and decoded logs; compare859728f to4e7ee2f contains no app/assets changes.",
+    "deliveredApkUnchanged": true,
+    "mainMerged": false,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING",
+    "coastRuntime": "NOT_IMPLEMENTED_SOURCE_GAPS"
   }
 }
