@@ -14,7 +14,7 @@ public final class CoastalHuntLayout {
  private static void reef(List<Prop> out,int z,boolean r,float x,float y,float s){add(out,z,r,"reef_tall",x,y,s,true,false);add(out,z,r,"reef_low",x-85*s,y+42*s,s,true,false);add(out,z,r,"reef_low",x+75*s,y+55*s,s,true,false);add(out,z,r,"boulders",x+120*s,y+95*s,.9f*s,true,false);add(out,z,r,"fern",x-95*s,y+110*s,.9f,false,false);}
  private static void grove(List<Prop> out,int z,boolean r,float x,float y,float s){add(out,z,r,"palm_curve",x,y,s,true,true);add(out,z,r,"banana",x+100,y+75,.9f*s,true,true);add(out,z,r,"palm_fan",x-75,y+110,s,true,true);add(out,z,r,"fern",x+85,y+140,1,false,false);}
  public static List<Prop> props(int z,boolean r){List<Prop> out=new ArrayList<>();float n=size(z);
-  if(z==0){grove(out,z,r,260,210,.85f);reef(out,z,r,550,210,.65f);add(out,z,r,"barrels",460,590,.8f,true,false);add(out,z,r,"driftwood",280,630,.8f,false,false);}
+  if(z==0){grove(out,z,r,260,210,.85f);reef(out,z,r,550,210,.65f);add(out,z,r,"barrels",660,560,.8f,true,false);add(out,z,r,"driftwood",280,630,.8f,false,false);}
   else if(z==1){for(float[] p:new float[][]{{.25f,.28f},{.27f,.58f},{.72f,.78f}})reef(out,z,r,n*p[0],n*p[1],1.8f);grove(out,z,r,n*.69f,n*.25f,1.5f);grove(out,z,r,n*.79f,n*.48f,1.2f);}
   else if(z==2){for(int i=0;i<4;i++){reef(out,z,r,n*.37f,420+i*460,1.65f);reef(out,z,r,n*.73f,650+i*400,1.35f);}grove(out,z,r,650,n*.18f,1.45f);grove(out,z,r,n*.53f,n*.82f,1.3f);}
   else if(z==3){for(float[] p:new float[][]{{.45f,.40f},{.53f,.48f},{.42f,.60f},{.66f,.69f},{.79f,.22f}})reef(out,z,r,n*p[0],n*p[1],2.35f);grove(out,z,r,600,500,1.45f);grove(out,z,r,n*.80f,n*.80f,1.4f);}
