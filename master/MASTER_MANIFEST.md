@@ -318,3 +318,5 @@ Accepted source collection only; no runtime projection. See changes/RUCESION-COA
 ## RUCESION-TOWN-SERVICES-V156
 
 Accepted region merchandise/source wardrobe access beside original baseline. Rucesion seven service doors and regional bank/inn integrate shared commerce/persistence. Source facts, adapted interiors/placement/availability/prices and unresolved Gilenoa/Fisher are explicit in changes/RUCESION-TOWN-SERVICES-V156.json. Native/build evidence pending.
+
+V156 exact candidate native/build receipt: changes/V156_BUILD_RUNTIME_RECEIPT.json (63 tests/11 suites; phone/user visual pending). Original fidelity limits remain in the service contract.

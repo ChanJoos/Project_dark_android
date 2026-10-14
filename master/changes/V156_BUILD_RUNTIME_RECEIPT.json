@@ -1,0 +1,82 @@
+{
+  "build": {
+    "sourceCommit": "859728f570755fda6e0b84ddace1d1038a980c0b",
+    "runId": "38518343144",
+    "versionCode": 156,
+    "versionName": "1.56-rucesion-services",
+    "applicationId": "com.projectdark.mobile.v156test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "ed65768855160a8aa18d0d3b170a08f27ac9b487bc95ee78d886a408e4afbc8d",
+    "apkBytes": 70662173,
+    "builtSeoul": "2026-10-14T14:50:28.183976+09:00",
+    "scope": "Rucesion seven services: weapon, armor, reagent, clothing, banks A/B and inn; source-named regional wardrobe catalog with separated merchandise; atomic trade and shared bank persistence; regional inn paid recovery and actual doors/return/save. Facility identities and source item pixels retained; exact original interior layouts, merchant stock/prices and uncalibrated service positions are ADAPTED. Native verification is distinct from physical phone and user visual approval.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "native": {
+    "tests": 63,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "nativeSuites": 11,
+  "packagedSourceFilesMatch": 300,
+  "status": "IMPLEMENTED_BUILD_VERIFIED_ANDROID_NATIVE_VERIFIED",
+  "sourceTree": "9e69082c0c4c996bd49f27fa9cb417f3538561a2",
+  "runId": 38518343144,
+  "jobId": 115702115534,
+  "artifacts": [
+    {
+      "id": 11872972409,
+      "kind": "apk",
+      "zipSha256": "194e1e2362695f1b11a2aeb6187cd226d990d03caab488ba95d80390b8ed54b4"
+    },
+    {
+      "id": 11873007327,
+      "kind": "native",
+      "zipSha256": "2646f27c9850cd43e24f60b77f8b46d591dfaa8bc2461354660b388a33031b0b"
+    }
+  ],
+  "independentValidation": [
+    "downloaded archives digest and CRC",
+    "embedded sourceCommit/runId/versionCode",
+    "APK digest and CRC",
+    "300 retained town/equipment source files byte-matched"
+  ],
+  "runtimeScope": [
+    "actual seven exterior touch entries and reachable interiors",
+    "four distinct catalog purchase and resale UI with process recreation",
+    "Gold deposit at A and withdrawal at B with saved shared account",
+    "item deposit at A and withdrawal at B with saved shared storage",
+    "50 Gold inn recovery through actual dialogue and saved return",
+    "Abel portals, navigation, movement, forest cache and checkpoint regressions"
+  ],
+  "nativeVisualReviewed": [
+    "clothing-service",
+    "bank-a-item-deposit",
+    "bank-b-item-withdrawal",
+    "bank-b-room",
+    "inn-room",
+    "inn-after-rest"
+  ],
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "originalFidelity": "Source-backed identities/items; facade assignment, interiors, merchant outfits, stocks and prices ADAPTED. Gilenoa/Fisher special services unresolved. No whole-original reconstruction claim.",
+  "failedIntermediateRuns": [
+    38517037665,
+    38517379611,
+    38517806386
+  ],
+  "testCorrection": "Fresh equipment sandbox grants one initial Curanum. Test now verifies native deposit/withdraw deltas relative to actual initial inventory; production bank logic unchanged.",
+  "broaderAndroidRuns": [
+    {
+      "id": 38518343138,
+      "status": "PENDING"
+    },
+    {
+      "id": 38518348595,
+      "status": "PENDING"
+    }
+  ]
+}
