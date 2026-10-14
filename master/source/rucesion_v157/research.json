@@ -52,5 +52,6 @@
     "Original5-job party/event not implemented; Ariel preview only"
   ],
   "texture": "Sand clean44s displayBox[950,80,1130,260]; unchanged original-source Abel water and tropical props",
-  "status": "IMPLEMENTATION_NATIVE_BUILD_PENDING"
+  "status": "IMPLEMENTED_BUILD_AND_NATIVE_VERIFIED",
+  "receipt": "master/changes/V157_BUILD_RUNTIME_RECEIPT.json"
 }

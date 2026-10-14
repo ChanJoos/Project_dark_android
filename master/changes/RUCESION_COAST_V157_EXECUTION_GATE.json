@@ -4,7 +4,7 @@
   "baseMainMerge": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
   "relatedMergedPR": 196,
   "scope": "Rucesion coast original-referenced playable maps, monster appearance/identity and actual zone access",
-  "status": "IMPLEMENTED_CANDIDATE_NATIVE_BUILD_PENDING",
+  "status": "IMPLEMENTED_BUILD_AND_NATIVE_VERIFIED",
   "existingEvidence": {
     "research": "master/source/rucesion_coast_20261014/research.json",
     "imageIndex": "master/source/rucesion_coast_20261014/image_sources.json",
@@ -77,9 +77,10 @@
     "beachNPC Lv71 or explicit preview",
     "Ariel originalparty gate preserved as unresolved/preview-only"
   ],
-  "apkStatus": "EXACT_CI_PENDING",
+  "apkStatus": "EXACT_CI_VERIFIED",
   "sourceTruthPolicy": "Original/observed/adapted/unresolved separated; retained source immutable.",
   "source": "master/source/rucesion_v157/research.json",
   "newArt": "master/assets/rucesion_v157/provenance.json",
-  "tests": "RucesionCoastV157Test"
+  "tests": "RucesionCoastV157Test",
+  "receipt": "master/changes/V157_BUILD_RUNTIME_RECEIPT.json"
 }
