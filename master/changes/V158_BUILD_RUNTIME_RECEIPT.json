@@ -83,7 +83,7 @@
       "runtimeCanvasHeight": 110
     }
   },
-  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "status": "IMPLEMENTED_BUILD_NATIVE_FULL_ANDROID_VERIFIED",
   "runtimeSource": "0e760fd8ccf5481ed7bed01fce78a02f915bed99",
   "focusedRun": 38575338140,
   "focusedJob": 115890818157,
@@ -109,12 +109,16 @@
     {
       "runId": 38575337978,
       "jobId": 115890817186,
-      "status": "IN_PROGRESS_AT_APK_DELIVERY"
+      "status": "IN_PROGRESS_SAME_SOURCE_DUPLICATE_AT_CLOSURE"
     },
     {
       "runId": 38575347594,
       "jobId": 115890851329,
-      "status": "IN_PROGRESS_AT_APK_DELIVERY"
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "source": "0e760fd8ccf5481ed7bed01fce78a02f915bed99",
+      "completedUtc": "2026-10-14T14:11:12Z",
+      "logsInspected": true
     }
   ],
   "retainedFiveJobBalance": {
@@ -148,5 +152,6 @@
     "PROJECT_DARK_V158_COAST.apk",
     "V158_MONSTER_SCALE.png",
     "V158_COAST_MAPS.jpg"
-  ]
+  ],
+  "closure": "Runtime/assets unchanged from delivered exact source; required full configured regression has successful exact-source PR run. Same-source duplicate push remains running and is not claimed successful."
 }

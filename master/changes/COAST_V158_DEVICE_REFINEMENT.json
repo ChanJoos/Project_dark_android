@@ -1,7 +1,7 @@
 {
   "changeId": "COAST-V158-DEVICE-REFINEMENT",
   "dateSeoul": "2026-10-14",
-  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "status": "IMPLEMENTED_BUILD_NATIVE_FULL_ANDROID_VERIFIED",
   "deviceReport": "DEVICE_FAILED_USER_REPORTED_VISUAL_UX",
   "report": [
     "Both coast maps repetitive",
