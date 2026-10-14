@@ -71,12 +71,18 @@
   "testCorrection": "Fresh equipment sandbox grants one initial Curanum. Test now verifies native deposit/withdraw deltas relative to actual initial inventory; production bank logic unchanged.",
   "broaderAndroidRuns": [
     {
-      "id": 38518343138,
-      "status": "PENDING"
+      "id": 38519167499,
+      "status": "IN_PROGRESS_AT_DELIVERY"
     },
     {
-      "id": 38518348595,
-      "status": "PENDING"
+      "id": 38519175185,
+      "status": "IN_PROGRESS_AT_DELIVERY"
     }
-  ]
+  ],
+  "ciConfiguration": {
+    "source": "d2477acba41cbda049a22f432dd8cdc84b60dfbc",
+    "focusedRun": 38519167459,
+    "focusedConclusion": "SUCCESS",
+    "change": "General Android APK verifier aligned to V156; app/assets diff from delivered859728f is empty."
+  }
 }
