@@ -1,0 +1,25 @@
+{
+  "changeId": "RUCESION-COAST-V155-SOURCE-ADMISSION",
+  "status": "ACCEPTED_REFERENCE_ONLY",
+  "userRequirement": "Original-identical Rucesion coast map and monsters; keep existing approved hunting performance. No guessed replacement art/topology.",
+  "implementationStatus": "NOT_IMPLEMENTED_SOURCE_GAPS",
+  "sourceRows": [
+    "Map_Instance_Master:MAP_LYK_COAST",
+    "Monster_Master:LYK_BLUE_HACON/LYK_RED_HACON/LYK_KAKAPO/LYK_POISON_KAKAPO/LYK_TYRANT/LYK_ARIEL",
+    "Gameplay_Screen_Master:SCR_LYK_ARIEL_LAYOUT",
+    "Location_Points:LOC_RUC_COAST"
+  ],
+  "before": "Text-only map/roster, missing original images; wrong barrier layout classification.",
+  "after": "29 immutable capture references with hashes; 2-B visible minimap/joins; source/version/conflict registry; all runtime visual admissions remain pending.",
+  "evidence": "master/source/rucesion_coast_20261014/research.json",
+  "runtimeChanges": [],
+  "sourceBaselineModified": false,
+  "originalAnimationStatus": "PENDING",
+  "wholeMapTopologyStatus": "PENDING",
+  "monsterStatsRatesStatus": "PENDING_EXCEPT_HISTORICAL_TYRANT_REPORT",
+  "partySystemStatus": "NOT_IMPLEMENTED",
+  "requiredNextInput": "Original coast gameplay recording/YouTube link covering town entry, zone transitions, visible monster movement and attacks; static map reference for unsurveyed zones.",
+  "fidelityAcceptance": "NOT_ACCEPTED",
+  "phoneAcceptance": "NOT_BUILT",
+  "validation": "tools/verify_rucesion_coast_sources.py"
+}

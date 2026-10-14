@@ -36,7 +36,8 @@ public final class TownInteriorDef {
    p.add(new Prop("open_book",6,counterV,23,42,false));p.add(new Prop("brass_scale",8,counterV,24,42,false));
   }
   if(k==Kind.EQUIPMENT){
-   p.add(new Prop("weapon_rack",3,1,76));p.add(new Prop("weapon_rack",6,1,76));p.add(new Prop("weapon_rack",11,1,76));
+   String rack=id.equals("rucesion_interior_armor")||id.equals("rucesion_interior_clothing")?"shield_rack":"weapon_rack";
+   p.add(new Prop(rack,3,1,76));p.add(new Prop(rack,6,1,76));p.add(new Prop(rack,11,1,76));
    p.add(new Prop("shield_rack",1,3,72));p.add(new Prop("shield_rack",1,6,64));p.add(new Prop("sword_barrel",12,2,42));p.add(new Prop("sword_barrel",4,2,38));
    p.add(new Prop("shield_rack",2,8,48));p.add(new Prop("storage_crate",12,6,38));p.add(new Prop("storage_barrel",12,7,30));
    p.add(new Prop("weapon_tray",4,counterV,32,42,false));p.add(new Prop("weapon_tray",10,counterV,32,42,false));
@@ -74,6 +75,8 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
  p.add(new Prop("inn_world_hearth",1,4,96,0,true,1,2));p.add(new Prop("storage_barrel",2,1,35));
  // Remaining observed dining-table locations reuse the supplied table family, not new art.
  p.add(new Prop("open_book",9,6,23,42,false));p.add(new Prop("bottle_tray",12,6,28,42,false));}
+  if(id.equals("rucesion_interior_bank_b")){p.add(new Prop("ledger",2,8,40));p.add(new Prop("storage_sack",8,9,28));}
+  if(id.equals("rucesion_interior_clothing")){p.removeIf(o->o.asset.equals("sword_barrel")||o.asset.equals("weapon_tray"));p.add(new Prop("storage_sack",12,2,30));p.add(new Prop("storage_sack",4,2,30));p.add(new Prop("bottle_tray",4,counterV,24,42,false));}
   props=Collections.unmodifiableList(p);
  }
  private static void dining(List<Prop> p,int u,int v,boolean food){
@@ -89,7 +92,7 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
   new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000015,mh003,ml230","church_door"),
   new TownInteriorDef(Kind.INN,"milles_interior_inn","밀레스 여관","메리 · 여관 주인","mu0000026,mh004,ml230","inn_door")));
     public static final List<TownInteriorDef> ABEL = Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.REAGENT, "abel_interior_reagent", "아벨 시약상점", "시약상", "", "abel_reagent"), new TownInteriorDef(Kind.EQUIPMENT, "abel_interior_equipment", "아벨 무기상점", "무기상", "", "abel_equipment"), new TownInteriorDef(Kind.BANK, "abel_interior_bank", "아벨 은행", "은행원", "", "abel_bank"), new TownInteriorDef(Kind.CHURCH, "abel_interior_church", "아벨 교회", "사제", "", "abel_church"), new TownInteriorDef(Kind.INN, "abel_interior_inn", "아벨 여관", "여관 주인", "", "abel_inn")));
- public static final List<TownInteriorDef> RUCESION=Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_armor","뤼케시온 방어구상점","방어구상","","rucesion_armor"),new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_weapon","뤼케시온 무기상점","무기상","","rucesion_weapon"),new TownInteriorDef(Kind.REAGENT,"rucesion_interior_reagent","뤼케시온 시약상점","시약상","","rucesion_reagent")));
+ public static final List<TownInteriorDef> RUCESION=Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_armor","뤼케시온 방어구상점","방어구상","","rucesion_armor"),new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_weapon","뤼케시온 무기상점","무기상","","rucesion_weapon"),new TownInteriorDef(Kind.REAGENT,"rucesion_interior_reagent","뤼케시온 시약상점","시약상","","rucesion_reagent"),new TownInteriorDef(Kind.BANK,"rucesion_interior_bank_a","뤼케시온 은행 A","은행원","","rucesion_bank_a"),new TownInteriorDef(Kind.BANK,"rucesion_interior_bank_b","뤼케시온 은행 B","은행원","","rucesion_bank_b"),new TownInteriorDef(Kind.INN,"rucesion_interior_inn","뤼케시온 여관","판","","rucesion_inn"),new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_clothing","뤼케시온 의상점","체리","","rucesion_clothing")));
  public boolean isRegional(){return isAbel()||mapId.startsWith("rucesion_interior_");}
  public boolean isAbel(){return mapId.startsWith("abel_interior_");}
  public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:RUCESION)if(d.mapId.equals(id))return d;return null;}

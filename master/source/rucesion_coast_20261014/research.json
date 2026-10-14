@@ -1,0 +1,130 @@
+{
+  "dateSeoul": "2026-10-14",
+  "baseCommit": "c33aea5aca62ce5bdde3451725e5ce093d512558",
+  "sources": [
+    {
+      "id": "entry2020",
+      "url": "https://lod.nexon.com/board/1509949442/380449",
+      "evidence": "V_NEXON_HOSTED_PLAYER_QA",
+      "facts": {
+        "minimumLevel": 71,
+        "townPortalReported": [
+          78,
+          7
+        ]
+      },
+      "conflict": "Master Location_Points.csv LOC_RUC_COAST records 78,10. Do not choose a runtime coordinate without actual visual calibration."
+    },
+    {
+      "id": "ariel2005",
+      "url": "https://lod.nexon.com/board/1493172227/28",
+      "evidence": "V_NEXON_HOSTED_PLAYER_GUIDE_2005",
+      "facts": {
+        "route": [
+          "3-D",
+          "crab corridor",
+          "waiting room",
+          "Ariel room",
+          "reward NPC room"
+        ],
+        "party": [
+          "WARRIOR",
+          "ROGUE",
+          "MAGE",
+          "CLERIC",
+          "MARTIAL_ARTIST"
+        ],
+        "materialsEach": 2,
+        "materials": [
+          "blue hacon weapon",
+          "red hacon leg",
+          "kakapo shell",
+          "poison kakapo shell"
+        ],
+        "kingArkClearedWaivesMaterials": true,
+        "crabContactReturnsTo": "3-D",
+        "crabsMove": "sideways",
+        "bossAbilities": [
+          "send party member southwest",
+          "summon Hacon"
+        ],
+        "reward": "Papaya shield"
+      },
+      "limitations": "Historical player guide, not current official server code. Timings, rates and coordinates missing."
+    },
+    {
+      "id": "ariel791",
+      "url": "https://lod.nexon.com/board/1493172227/791",
+      "evidence": "V_NEXON_HOSTED_PLAYER_GUIDE_2005",
+      "facts": {
+        "eventOrigin": "3-D east tent",
+        "party": [
+          "WARRIOR",
+          "ROGUE",
+          "MAGE",
+          "CLERIC",
+          "MARTIAL_ARTIST"
+        ]
+      },
+      "limitations": "Party runtime not presently implemented; do not silently make a solo copy and call original."
+    },
+    {
+      "id": "tyrant2008",
+      "url": "https://lod.nexon.com/community/game/3472?SearchBoard=1",
+      "evidence": "V_NEXON_HOSTED_PLAYER_SENSE_MONSTER_2008",
+      "facts": {
+        "name": "해안의폭군",
+        "level": 98,
+        "hp": 123398,
+        "reportedEXP": 780575,
+        "location": "last zone",
+        "appearanceClaim": "same as western-continent sea pirate",
+        "element": "one of four, random"
+      },
+      "limitations": "EXP explicitly depends on party and level; do not grant reported EXP as unconditional solo reward; sprite claim requires images."
+    },
+    {
+      "id": "swim2019",
+      "url": "https://lod.nexon.com/Community/game/6936?Category2=1&Page=10&SearchBoard=1",
+      "evidence": "V_NEXON_HOSTED_PLAYER_GUIDE_2019",
+      "facts": {
+        "swimmingObserved": true,
+        "lowerBodySubmerged": true,
+        "withoutSkillMayBeTrapped": true
+      },
+      "limitations": "Water topology, exact skill gates and animation not yet established."
+    },
+    {
+      "id": "wrong1495",
+      "url": "https://lod.nexon.com/community/game/1495?SearchBoard=1",
+      "evidence": "V_NEXON_HOSTED_PLAYER_GUIDE_2005",
+      "classification": "BARRIER_EVENT_NOT_RUCESION_COAST_ARIEL_ROOM",
+      "conflict": "Gameplay_Screen_Master.csv SCR_LYK_ARIEL_LAYOUT currently misclassifies this separate barrier-event guide. Preserve baseline; prohibit using its trees/boss positions for coast."
+    },
+    {
+      "id": "minimob137",
+      "url": "https://minimob.tistory.com/137",
+      "evidence": "FAN_GAMEPLAY_SCREENSHOT_2013",
+      "facts": {
+        "imagesRetained": 29,
+        "coastScreens": 27,
+        "image19MapTitle": "뤼케시온 해안 2-B",
+        "image19VisibleJoins": [
+          "2-A",
+          "2-C"
+        ],
+        "image9MapTitle": "뤼케시온해안3-C"
+      },
+      "limitations": "Partial static screens; image19 has label occlusion; no continuous navigation or original animation cadence."
+    },
+    {
+      "id": "update2026",
+      "url": "https://lod.nexon.com/news/update/147557",
+      "evidence": "O_OFFICIAL_PATCH_2026",
+      "facts": {
+        "coastMonsterAttackAndPatternsChanged": true
+      },
+      "limitations": "Historical-guide stats/patterns must retain version; user supplied classic source is required to resolve target version."
+    }
+  ]
+}

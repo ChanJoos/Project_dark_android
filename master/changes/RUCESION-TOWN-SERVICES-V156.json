@@ -1,0 +1,54 @@
+{
+  "id": "RUCESION-TOWN-SERVICES-V156",
+  "status": "IMPLEMENTED_BUILD_VERIFIED_ANDROID_NATIVE_VERIFIED",
+  "base": "745037d47ee449ba4179f457d0c8f91cd86606a9",
+  "sources": [
+    {
+      "url": "https://lod.nexon.com/board/1493172227/4995",
+      "kind": "V_NEXON_HOSTED_PLAYER_2009",
+      "fact": "Rucesion banks A/B; B has Gilenoa. Gilenoa special service not simulated."
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/3008",
+      "kind": "V_NEXON_HOSTED_PLAYER",
+      "fact": "Cherry 40,15; Pan2,6/Fisher13,1 in inn. Exact visual coordinates and original inn layout uncalibrated."
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/3129",
+      "kind": "V_NEXON_HOSTED_PLAYER",
+      "fact": "Cherry sells fourth-circle clothing, reported40,17 conflicts with40,15."
+    }
+  ],
+  "before": "3 connected interiors; no bank/inn/clothing services, equipment stores share entire list",
+  "after": "7 actual linked service interiors; banks share account; inn recovery; source-named Rucesion wardrobe purchases and filtered stock; visible portal labels",
+  "originalReflected": [
+    "bank A/B identities",
+    "inn service",
+    "Pan and Cherry names",
+    "Rucesion equipment source names/stats/appearance bytes"
+  ],
+  "adaptations": [
+    "bank/inn/clothing door allocation to existing facades",
+    "indoor furniture layouts",
+    "Cherry moved into clothing storefront rather than claimed original40,15 position",
+    "keeper clothing and unverified bankers names",
+    "regional availability and 7100Gold armor price / level*100 price policy",
+    "shared bank access and50Gold inn recovery reuse existing mobile policy"
+  ],
+  "unresolved": [
+    "original shop stock and prices",
+    "original bank staff names/room decor/door positions",
+    "Gilenoa services",
+    "Fisher dialogue/quest",
+    "full source wardrobe animation acceptance"
+  ],
+  "invariants": [
+    "original baselineCSV/source images retained",
+    "no approved exterior asset pixel change",
+    "shared commerce rollback and durable checkpoint",
+    "no tutorial mouse in regional inn",
+    "bounded32-chunk floor cache",
+    ".60s movement"
+  ],
+  "verification": "changes/V156_BUILD_RUNTIME_RECEIPT.json; phone/user visual acceptance pending"
+}

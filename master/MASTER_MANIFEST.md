@@ -310,3 +310,13 @@ Accepted mobile reward policy: master/changes/POTE-REWARDS-V123.json → Adapted
 Known supported functions and all408 actual descriptions verified and integrated through PR184. Exact source/build/native evidence: changes/V129_BUILD_RUNTIME_RECEIPT.json. Retained per-item runtime audit: changes/V129_ALL408_RUNTIME_FUNCTION_AUDIT.json. Original unresolved values and unsupported services remain distinct from current adapted rules; no whole-original-function certification.
 
 V130 EQUIPMENT-PERFORMANCE-V130 accepted: stats_v130/catalog.json and field provenance -> SourceEquipmentPerformance -> existing FinalStats/CombatStatPipeline and shared inventory art. DEVICE_FAILED_USER_REPORTED reproduced; exact build/native/APK pending.
+
+## RUCESION-COAST-V155 reference admission
+
+Accepted source collection only; no runtime projection. See changes/RUCESION-COAST-V155-SOURCE-ADMISSION.json.29 hashed captures preserve original pixels as references, not production map textures. Wrong1495 barrier attribution and78,7/78,10 coordinate conflict remain explicit. Original topology/action frames/stats/rates remain pending.
+
+## RUCESION-TOWN-SERVICES-V156
+
+Accepted region merchandise/source wardrobe access beside original baseline. Rucesion seven service doors and regional bank/inn integrate shared commerce/persistence. Source facts, adapted interiors/placement/availability/prices and unresolved Gilenoa/Fisher are explicit in changes/RUCESION-TOWN-SERVICES-V156.json. Native/build evidence pending.
+
+V156 exact candidate native/build receipt: changes/V156_BUILD_RUNTIME_RECEIPT.json (63 tests/11 suites; phone/user visual pending). Original fidelity limits remain in the service contract.

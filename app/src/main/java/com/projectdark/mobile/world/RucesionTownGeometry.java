@@ -18,12 +18,12 @@ public final class RucesionTownGeometry {
  public static int tile(String id,int u,int v){if(u<0||v<0||u>=SIZE||v>=SIZE)return 0;return RucesionLayout.TILES[u].charAt(v)-'0';}
  public static final class Building {
   public final String id,asset,title,interior;public final int u,v,du=4,dv=4;public final float width;public final Prop prop;
-  Building(String id,String interior,Prop p){this.id=id;this.interior=interior;asset=p.asset;title="뤼케시온 건물";u=p.u-1;v=p.v-3;prop=p;width=p.width;}
+  Building(String id,String interior,Prop p){this.id=id;this.interior=interior;asset=p.asset;title=com.projectdark.mobile.world.TownInteriorDef.forMap(interior).title;u=p.u-1;v=p.v-3;prop=p;width=p.width;}
   public float x(){return prop.x;}public float y(){return prop.y;}public float doorX(){return RucesionTownGeometry.x(prop.u,prop.v);}public float doorY(){return RucesionTownGeometry.y(prop.u,prop.v);}
   boolean occupies(int a,int b){return solidAt(prop,RucesionTownGeometry.x(a,b),RucesionTownGeometry.y(a,b));}
  }
  public static final List<Building> BUILDINGS;
- static {BUILDINGS=Collections.unmodifiableList(Arrays.asList(new Building("rucesion_armor","rucesion_interior_armor",PROPS.get(0)),new Building("rucesion_reagent","rucesion_interior_reagent",PROPS.get(1)),new Building("rucesion_weapon","rucesion_interior_weapon",PROPS.get(3))));}
+ static {BUILDINGS=Collections.unmodifiableList(Arrays.asList(new Building("rucesion_armor","rucesion_interior_armor",PROPS.get(0)),new Building("rucesion_reagent","rucesion_interior_reagent",PROPS.get(1)),new Building("rucesion_weapon","rucesion_interior_weapon",PROPS.get(3)),new Building("rucesion_bank_a","rucesion_interior_bank_a",PROPS.get(7)),new Building("rucesion_bank_b","rucesion_interior_bank_b",PROPS.get(22)),new Building("rucesion_inn","rucesion_interior_inn",PROPS.get(8)),new Building("rucesion_clothing","rucesion_interior_clothing",PROPS.get(9))));}
 
  public static Building forInterior(String id){for(Building b:BUILDINGS)if(Objects.equals(id,b.interior))return b;return null;}
  public static Building doorAt(float px,float py){for(Building b:BUILDINGS)if(Math.hypot(px-b.doorX(),py-b.doorY())<12)return b;return null;}
