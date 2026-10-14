@@ -3,7 +3,10 @@ import android.graphics.RectF;import java.util.*;
 /** User-authored V158 square coast layout; stable IDs retain legacy compatibility. */
 public final class RucesionCoastGeometry {
  public static final String ENTRY="MAP_RUCESION_COAST",BOSS="MAP_RUCESION_ARIEL_ROOM";public static final String[] ROUTE={"MAP_RUCESION_COAST","MAP_RUCESION_COAST_1C","MAP_RUCESION_COAST_2C","MAP_RUCESION_COAST_3B","MAP_RUCESION_ARIEL_ROOM"};
- private static final String[] NAMES={"뤼케시온 해안 입구","뤼케시온 해안 1","뤼케시온 해안 2","뤼케시온 해안 3","뤼케시온 해안 보스방"};
+ // Active route is exactly waiting room, hunt 1/2/3, boss. Do not append source subzones.
+ // No additional Rucesion runtime rooms existed in V159. Original subzone references
+ // remain in master/source/rucesion_v157; future route expansion is deliberately inactive.
+ private static final String[] NAMES={"뤼케시온 해안 대기방","뤼케시온 해안 1","뤼케시온 해안 2","뤼케시온 해안 3","뤼케시온 해안 보스방"};
  public static String canonical(String id){return id;}public static boolean contains(String id){return Arrays.asList(ROUTE).contains(canonical(id));}public static int index(String id){return Arrays.asList(ROUTE).indexOf(canonical(id));}public static String title(String id){return NAMES[index(id)];}
  public static float width(String id){return CoastalHuntLayout.size(index(id));}public static float height(String id){return width(id);}public static float shoreY(String id,float x){return CoastalHuntLayout.shore(index(id),true,x);}
  public static final class Prop {public final String asset;public final float x,y,scale;public final boolean solid,canopy;public final RectF footprint;Prop(CoastalHuntLayout.Prop p){asset=p.asset;x=p.x;y=p.y;scale=p.scale;solid=p.solid;canopy=p.canopy;footprint=new RectF(p.footprint);}}

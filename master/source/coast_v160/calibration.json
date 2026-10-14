@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "scope": "V160 original-player-relative Abel calibration; source observation envelopes, runtime alpha bounds and source canvas are distinct",
+  "sourceRecordings": [
+    {
+      "name": "Screen_Recording_20261011_215521_YouTube.mp4",
+      "sha256": "dc9d859037c751df1297a830b39eb8b9a9e037ff4fde28b45dad6b37a3cac211"
+    },
+    {
+      "name": "Screen_Recording_20261012_060245_YouTube.mp4",
+      "sha256": "a60559303ddc91c5d4f339c09aed5b0b68582b2b6446e4cd7189db161610e6d9"
+    }
+  ],
+  "sampledSeconds": {
+    "first": [
+      1,
+      3,
+      5,
+      10,
+      15,
+      20,
+      29
+    ],
+    "second": [
+      2,
+      4.375,
+      9,
+      19,
+      25,
+      35,
+      49,
+      58
+    ]
+  },
+  "observations": [
+    {
+      "species": "caterpillar",
+      "frame": "20261011_215521-29.png",
+      "characterCrop": [
+        1123,
+        328,
+        1181,
+        455
+      ],
+      "monsterCrop": [
+        1598,
+        382,
+        1712,
+        468
+      ],
+      "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+      "envelopeWidthRatio": 0.8976377952755905,
+      "envelopeHeightRatio": 0.6771653543307087
+    },
+    {
+      "species": "pong",
+      "frame": "20261011_215521-10.png",
+      "characterCrop": [
+        1123,
+        325,
+        1186,
+        455
+      ],
+      "monsterCrop": [
+        982,
+        314,
+        1085,
+        394
+      ],
+      "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+      "envelopeWidthRatio": 0.7923076923076923,
+      "envelopeHeightRatio": 0.6153846153846154
+    },
+    {
+      "species": "turtle",
+      "frame": "20261012_060245-4.375.png",
+      "characterCrop": [
+        1146,
+        444,
+        1199,
+        549
+      ],
+      "monsterCrop": [
+        1354,
+        336,
+        1449,
+        393
+      ],
+      "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+      "envelopeWidthRatio": 0.9047619047619048,
+      "envelopeHeightRatio": 0.5428571428571428
+    },
+    {
+      "species": "grab",
+      "frame": "20261012_060245-4.375.png",
+      "characterCrop": [
+        1146,
+        444,
+        1199,
+        549
+      ],
+      "monsterCrop": [
+        1450,
+        419,
+        1548,
+        508
+      ],
+      "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+      "envelopeWidthRatio": 0.9333333333333333,
+      "envelopeHeightRatio": 0.8476190476190476
+    }
+  ],
+  "displayCanvasBeforeAfter": {
+    "ABEL_TURTLE": [
+      [
+        48,
+        48
+      ],
+      [
+        60,
+        52
+      ]
+    ],
+    "ABEL_PONG": [
+      [
+        48,
+        48
+      ],
+      [
+        54,
+        54
+      ]
+    ],
+    "ABEL_CATERPILLAR": [
+      [
+        48,
+        48
+      ],
+      [
+        66,
+        48
+      ]
+    ],
+    "ABEL_GRAB": [
+      [
+        48,
+        48
+      ],
+      [
+        52,
+        52
+      ]
+    ]
+  },
+  "retainedAbelSpecies": [
+    "ABEL_ARKPUS",
+    "ABEL_OBS_SLATE",
+    "ABEL_OCTOPUS",
+    "ABEL_OBS_PURPLE_EGG",
+    "ABEL_GAS",
+    "ABEL_OBS_PURPLE_MAW",
+    "ABEL_BERSERKER",
+    "ABEL_KINGARK_FAKE",
+    "ABEL_KINGARK"
+  ],
+  "retainedReason": "Arkpus approximately player height; slate lower/wider; ordinary 4C silhouettes around player height after transparency. Existing ranges fit observed footage. KingArk source partly obscured, existing adapted giant scale retained; no speculative recalibration.",
+  "spriteBytes": "ALL RETAINED, 192RGBA full resolution; width/height is runtime projection, not regenerated raster",
+  "collision": "Reviewed existing radius12, spawn center spacing90/100 preserved, shared live actors/nav unchanged; cosmetic body widening does not redefine ground contact radius",
+  "rucesionAcceptance": "ALL 10 MONSTERS USER_VISUAL_ACCEPTED_20261015, preserve pixels, palette, size and gait; maps/density not approved by that statement",
+  "limits": "Video motion/direction/occlusion makes source envelopes approximate. Four-facing native stills validate presentation; original exact animation and physical handset acceptance remain separate."
+}

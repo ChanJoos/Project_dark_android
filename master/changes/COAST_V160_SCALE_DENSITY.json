@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "task": "V160 user-requested Abel scale audit, small density reduction and five-room route",
+  "state": "IMPLEMENTED_BUILD_NATIVE_PENDING",
+  "calibration": "master/source/coast_v160/calibration.json",
+  "populations": {
+    "Abel": {
+      "before": [
+        0,
+        72,
+        96,
+        108,
+        108
+      ],
+      "after": [
+        0,
+        65,
+        86,
+        97,
+        97
+      ],
+      "bossPreserved": {
+        "berserker": 3,
+        "fake": 1,
+        "kingark": 1
+      }
+    },
+    "Rucesion": {
+      "before": [
+        0,
+        72,
+        96,
+        96,
+        9
+      ],
+      "after": [
+        0,
+        65,
+        86,
+        86,
+        8
+      ],
+      "bossPreserved": {
+        "ariel": 1,
+        "blueGuards": 7
+      }
+    }
+  },
+  "route": "Waiting room/1/2/3/boss, active five for each coast; no additional V159 Rucesion runtime maps to disable",
+  "retired": "Standalone Abel1B route commented, historical original geometry preserved in git, current save alias1A retained. Source subzone material remains archived, not deleted. No invented inactive Rucesion map definitions.",
+  "performance": "Density reduced for explicit user gameplay preference, not performance shortcut; static graph/live collision/192prewarm/vsync/32floorLRU8652800/60source-hit pairs unchanged.",
+  "acceptance": {
+    "rucesionMonsters": "USER_VISUAL_ACCEPTED",
+    "abelRevisedSizes": "PENDING",
+    "maps": "PENDING"
+  },
+  "originalArielPartyEvent": "NOT_IMPLEMENTED_PREVIEW_ONLY_ZERO_EXP_GOLD"
+}
