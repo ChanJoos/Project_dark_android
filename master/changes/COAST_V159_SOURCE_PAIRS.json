@@ -1,7 +1,7 @@
 {
   "changeId": "COAST_V159_SOURCE_PAIRS",
   "dateSeoul": "2026-10-14",
-  "status": "ACCEPTED_IMPLEMENTED_BUILD_PENDING",
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
   "deviceReport": "V158_USER_VISUAL_REJECTED_COASTS_AND_PAIRED_MONSTERS",
   "owner": "ROOT_SINGLE_EDITOR",
   "requested": [
@@ -96,6 +96,7 @@
     "texture": "app/src/main/assets/coast-v159/water.png",
     "textureSha256": "21bf69245a902dd9f57193d50f5199b911e7fc2224a64313e5e044d59c431e9d",
     "originalColor": "Original includes dark indigo sea; original shore depth/foam not equal to old V158 flat repetitive strip",
-    "status": "IMPLEMENTED_NATIVE_PENDING"
-  }
+    "status": "BUILD_NATIVE_VERIFIED_NEW_USER_VISUAL_PENDING"
+  },
+  "receipt": "master/changes/V159_BUILD_RUNTIME_RECEIPT.json"
 }
