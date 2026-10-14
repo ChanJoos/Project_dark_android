@@ -5,7 +5,7 @@ public final class CoastalHuntLayout {
  public static float size(int zone){return zone==0?768:zone==4?2304:2560;}
  public static float entryX(int zone){return zone==0?288:352;}public static float entryY(int zone){return zone==0?432:size(zone)-448;}
  public static float backX(int zone){return zone==0?128:192;}public static float backY(int zone){return zone==0?512:size(zone)-352;}
- public static float nextX(int zone){return size(zone)-(zone==0?128:224);}public static float nextY(int zone){return zone==0?384:512;}
+ public static float nextX(int zone){return size(zone)-(zone==0?256:224);}public static float nextY(int zone){return zone==0?448:512;}
  public static float shore(int zone,boolean rucesion,float x){float n=size(zone);return zone==0?656:zone==4?n-176:n-230+(float)Math.sin(x/270+zone+(rucesion?.8:0))*52;}
  public static final class Prop {public final String asset;public final float x,y,scale;public final boolean solid,canopy;public final RectF footprint;
   Prop(String a,float x,float y,float s,boolean solid,boolean canopy){asset=a;this.x=x;this.y=y;scale=s;this.solid=solid;this.canopy=canopy;float rx=a.startsWith("reef")?48:a.equals("boulders")?24:a.equals("barrels")?24:14,ry=a.startsWith("reef")?24:a.equals("boulders")?14:10;footprint=new RectF(x-rx*s,y-ry*s,x+rx*s,y+ry*s);}}
