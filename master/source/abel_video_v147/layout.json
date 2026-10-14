@@ -287,63 +287,6 @@
       "notes": "Verified clean observed floor; excludes captured doorway floor graphic."
     },
     {
-      "id": "tree_broadleaf",
-      "sourceFrame": 43,
-      "box": [
-        22,
-        46,
-        86,
-        157
-      ],
-      "polygon": [
-        [
-          0,
-          17
-        ],
-        [
-          18,
-          0
-        ],
-        [
-          57,
-          1
-        ],
-        [
-          63,
-          42
-        ],
-        [
-          43,
-          111
-        ],
-        [
-          28,
-          111
-        ],
-        [
-          21,
-          84
-        ],
-        [
-          0,
-          62
-        ]
-      ],
-      "mode": "tree",
-      "anchor": [
-        35,
-        108
-      ],
-      "size": [
-        64,
-        111
-      ],
-      "status": "SOURCE_VISIBLE",
-      "sha256": "f4f366ff07dd923a62c71e0c062ef522db38f745ec9dd2d1a883a84655bfd891",
-      "silhouetteAudit": "FULL_TRUNK_AND_CANOPY_SOURCE_FRAME_43",
-      "groundRadius": 12
-    },
-    {
       "id": "tree_slender",
       "sourceFrame": 28,
       "box": [
@@ -2537,19 +2480,6 @@
       "sha256": "bed0367da135a207f55eb75100382de887414ab34ef6f580a5cc94db19371d78"
     },
     {
-      "id": "tile_grass",
-      "size": [
-        56,
-        28
-      ],
-      "anchor": [
-        28,
-        14
-      ],
-      "sourceParent": "garden_grass",
-      "status": "ADAPTED_VISIBLE_MATERIAL"
-    },
-    {
       "id": "coping_up_edge",
       "sourceParent": "coping_up",
       "size": [
@@ -2901,92 +2831,6 @@
       "sha256": "cb30f3f6ff067f003bc33acbf82e7ad7128f0db2cec0de362ddad2ef71d99645"
     },
     {
-      "id": "building_two_storey_complete",
-      "size": [
-        232,
-        246
-      ],
-      "anchor": [
-        45.986,
-        223.757
-      ],
-      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
-      "sourceParent": "building_two_storey",
-      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
-      "originalGenerationFile": "exec-283f9937-9e11-46ce-bf7d-90aa6f17342b.png",
-      "originalGenerationSha256": "302f5ebc813979b3f553083c580dc55a76fbe0e055a594b03a568198dad273c4",
-      "sha256": "650e1ae103bff8dcb484e5048a9c9af3d6f6a49952d80a95498fefd201497534",
-      "groundPolygon": [
-        [
-          4.67,
-          205.444
-        ],
-        [
-          91.545,
-          240.73
-        ],
-        [
-          226.883,
-          183.111
-        ],
-        [
-          139.338,
-          149.611
-        ]
-      ]
-    },
-    {
-      "id": "building_awning_corner_complete",
-      "size": [
-        328,
-        226
-      ],
-      "anchor": [
-        287.673,
-        208.772
-      ],
-      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
-      "sourceParent": "building_awning_corner",
-      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
-      "originalGenerationFile": "exec-6744b317-ebb9-4ce9-87b0-f14b25bcaae9.png",
-      "originalGenerationSha256": "e02e00cb6eca3353f4c01bb980dd7aeffb4bdf2e3c0362f080fa11fe77b03d4b",
-      "sha256": "5805263825631f534526d5e6515de8c7c190edc37637371555a9d55ada622fbc",
-      "groundPolygon": [
-        [
-          7.008,
-          153.704
-        ],
-        [
-          65.547,
-          184.477
-        ],
-        [
-          134.962,
-          160.876
-        ],
-        [
-          266.849,
-          219.647
-        ],
-        [
-          322.38,
-          195.352
-        ],
-        [
-          197.435,
-          136.581
-        ],
-        [
-          134.962,
-          109.741
-        ],
-        [
-          63.234,
-          132.879
-        ]
-      ]
-    },
-    {
       "id": "sailing_ship_complete",
       "size": [
         398,
@@ -3002,28 +2846,6 @@
       "originalGenerationFile": "exec-8cf1b7a7-ee93-4a34-a5a0-ee3bd82e9880.png",
       "originalGenerationSha256": "574871c51f8cdad17fbb55b664653b79ab9790f489a9f5e440ceba42b4ac81d3",
       "sha256": "3585c3a322270627dfd188c5e89473d9fd4dc2a9fb6185188b9427c0ab305770"
-    },
-    {
-      "id": "rowing_boat_complete",
-      "size": [
-        181,
-        128
-      ],
-      "anchor": [
-        90,
-        119
-      ],
-      "sourceFrame": 41,
-      "sourceFrameSha256": "32b37b4733561521ecb8c966ebe49dc2c1b7df25f7b696cc2c52ac001ad173a9",
-      "box": [
-        430,
-        225,
-        603,
-        345
-      ],
-      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
-      "sourceParent": "rowing_boat",
-      "sha256": "5a318f8cbd195beb6712161b1ee63560c44af7feafa892d7e2e49408edf03417"
     },
     {
       "id": "fountain_complete",
@@ -3394,6 +3216,141 @@
       "sourceFrame": 14,
       "status": "ADAPTED_WHOLE_SOURCE_LAMP_WITH_OBSERVED_FLAG",
       "sha256": "8c92a2677a8448772d17347d3c5bb16c3edb63bffc1ba44d3c9495fca3ef9f30"
+    },
+    {
+      "id": "building_two_storey_complete",
+      "size": [
+        232,
+        246
+      ],
+      "anchor": [
+        45.986,
+        223.757
+      ],
+      "status": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sha256": "64d9797b850fc96b5bdaf8cb773d15f75e5ddf2b727c8e0dac840b300c75d66e",
+      "atlasBox": [
+        6,
+        40,
+        238,
+        286
+      ],
+      "groundPolygon": [
+        [
+          4.67,
+          205.444
+        ],
+        [
+          91.545,
+          240.73
+        ],
+        [
+          226.883,
+          183.111
+        ],
+        [
+          139.338,
+          149.611
+        ]
+      ]
+    },
+    {
+      "id": "building_awning_corner_complete",
+      "size": [
+        328,
+        226
+      ],
+      "anchor": [
+        287.673,
+        208.772
+      ],
+      "status": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sha256": "4240df23e54b995fa6564bba9d466e4775f718c62f48d933e0b2b71ed3db98e7",
+      "atlasBox": [
+        306,
+        40,
+        594,
+        238
+      ],
+      "groundPolygon": [
+        [
+          7.008,
+          153.704
+        ],
+        [
+          65.547,
+          184.477
+        ],
+        [
+          134.962,
+          160.876
+        ],
+        [
+          266.849,
+          219.647
+        ],
+        [
+          322.38,
+          195.352
+        ],
+        [
+          197.435,
+          136.581
+        ],
+        [
+          134.962,
+          109.741
+        ],
+        [
+          63.234,
+          132.879
+        ]
+      ]
+    },
+    {
+      "id": "tree_broadleaf",
+      "size": [
+        72,
+        119
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "status": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sha256": "fb18a71fe59577f7c9adffdd6518c528799bcb1896847af3beacac44175cca8b",
+      "atlasBox": [
+        606,
+        490,
+        678,
+        609
+      ]
+    },
+    {
+      "id": "rowing_boat_complete",
+      "size": [
+        181,
+        128
+      ],
+      "anchor": [
+        90,
+        119
+      ],
+      "status": "ADAPTED_SOURCE_TRACED_ROWBOAT_REUSE",
+      "sha256": "1bf95175a9c679322df7b12b3abe53a81f85e9b084b19aea94face4547f6cdf3"
+    },
+    {
+      "id": "tile_grass",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "ADAPTED_CLEAR_GRASS_MATERIAL_GAP_FREE_DIAMOND",
+      "sha256": "fd30075c34ea92e01b23af8389a79e94248b22fa734fa74e121af34110289bc2"
     }
   ],
   "views": [
@@ -3878,16 +3835,16 @@
             356.65
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 3,
           "matchError": 0.016856,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "lamp_main",
@@ -4030,16 +3987,16 @@
             566.9
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 7,
           "matchError": 0.008459,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_slender",
@@ -4068,16 +4025,16 @@
             651.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 8,
           "matchError": 0.010503,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_slender",
@@ -4106,16 +4063,16 @@
             678.9
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 7,
           "matchError": 0.018155,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -4125,16 +4082,16 @@
             679.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 8,
           "matchError": 0.029175,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -4144,16 +4101,16 @@
             693.34
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 12,
           "matchError": 0.015982,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "lamp_main",
@@ -4239,16 +4196,16 @@
             889.34
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 12,
           "matchError": 0.014659,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -4258,16 +4215,16 @@
             889.67
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 15,
           "matchError": 0.021068,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "lamp_main",
@@ -4315,16 +4272,16 @@
             945.89
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 17,
           "matchError": 0.01537,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_slender",
@@ -4467,16 +4424,16 @@
             1043.67
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 15,
           "matchError": 0.020336,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -4486,16 +4443,16 @@
             1071.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.016304,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "lamp_main",
@@ -4524,16 +4481,16 @@
             1141.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.037136,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -4543,16 +4500,16 @@
             1155.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.016485,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -4562,16 +4519,16 @@
             1155.89
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 17,
           "matchError": 0.015775,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "rail_down",
@@ -4657,16 +4614,16 @@
             1211.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.020464,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "rail_down",
@@ -4819,16 +4776,16 @@
             722.04
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 43,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "bench_back_down",
@@ -5218,16 +5175,16 @@
             1058.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 27,
           "matchError": 0.00616,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_slender",
@@ -5351,16 +5308,16 @@
             1101.25
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 36,
           "matchError": 0.009813,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "bench_back_up",
@@ -5856,16 +5813,16 @@
             1338.91
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 51,
           "matchError": 0.01117,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "rail_up",
@@ -6340,7 +6297,7 @@
             246
           ],
           "sourceFrame": 5,
-          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "building_two_storey"
         },
         {
@@ -6371,16 +6328,16 @@
             356.65
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 3,
           "matchError": 0.016856,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "lamp_main",
@@ -6409,16 +6366,16 @@
             385.65
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 3,
           "matchError": 0.053282,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
         },
         {
@@ -6429,16 +6386,16 @@
             390.75
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_mass"
         },
         {
@@ -6458,7 +6415,7 @@
           ],
           "sourceFrame": 5,
           "matchError": 0.021265,
-          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "building_awning_corner"
         },
         {
@@ -6469,16 +6426,16 @@
             404.75
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_mass"
         },
         {
@@ -6489,16 +6446,16 @@
             404.75
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_mass"
         },
         {
@@ -6509,16 +6466,16 @@
             418.75
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_mass"
         },
         {
@@ -6529,16 +6486,16 @@
             432.75
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_mass"
         },
         {
@@ -6558,7 +6515,7 @@
           ],
           "sourceFrame": 2,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "building_two_storey"
         },
         {
@@ -6569,16 +6526,16 @@
             497.72
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.034539,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
         },
         {
@@ -6589,16 +6546,16 @@
             499.72
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -6609,16 +6566,16 @@
             513.72
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -6629,16 +6586,16 @@
             566.9
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 7,
           "matchError": 0.008459,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -6648,16 +6605,16 @@
             638.34
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 12,
           "matchError": 0.039563,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
         },
         {
@@ -6668,16 +6625,16 @@
             651.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 8,
           "matchError": 0.010503,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -6687,16 +6644,16 @@
             651.9
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 7,
           "matchError": 0.02907,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
         },
         {
@@ -6707,16 +6664,16 @@
             678.9
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 7,
           "matchError": 0.018155,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -6726,16 +6683,16 @@
             679.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 8,
           "matchError": 0.029175,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -6745,16 +6702,16 @@
             693.34
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 12,
           "matchError": 0.015982,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "lamp_main",
@@ -6783,16 +6740,16 @@
             721
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -6803,16 +6760,16 @@
             722.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 8,
           "matchError": 0.050594,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
         },
         {
@@ -6823,16 +6780,16 @@
             735
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -6902,16 +6859,16 @@
             833
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -6922,16 +6879,16 @@
             833
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -6942,16 +6899,16 @@
             847
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -6962,16 +6919,16 @@
             847
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7022,16 +6979,16 @@
             889.34
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 12,
           "matchError": 0.014659,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -7041,16 +6998,16 @@
             889.67
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 15,
           "matchError": 0.021068,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "lamp_main",
@@ -7098,16 +7055,16 @@
             945
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7118,16 +7075,16 @@
             945.89
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 17,
           "matchError": 0.01537,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -7137,16 +7094,16 @@
             959
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7177,16 +7134,16 @@
             988.78
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 16,
           "matchError": 0.032184,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
         },
         {
@@ -7264,7 +7221,7 @@
           ],
           "sourceFrame": 21,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "building_awning_corner"
         },
         {
@@ -7304,7 +7261,7 @@
           ],
           "sourceFrame": 14,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "building_awning_long"
         },
         {
@@ -7335,16 +7292,16 @@
             1043.67
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 15,
           "matchError": 0.020336,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -7354,16 +7311,16 @@
             1057
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7374,16 +7331,16 @@
             1071.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.016304,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -7393,16 +7350,16 @@
             1071
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7452,16 +7409,16 @@
             1113
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7472,16 +7429,16 @@
             1127
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7492,16 +7449,16 @@
             1141.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.037136,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "flowerbed_orange",
@@ -7531,16 +7488,16 @@
             1155.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.016485,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -7550,16 +7507,16 @@
             1155.89
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 17,
           "matchError": 0.015775,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "tree_broadleaf",
@@ -7569,16 +7526,16 @@
             1169
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7589,16 +7546,16 @@
             1170.04
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 43,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east"
         },
         {
@@ -7629,16 +7586,16 @@
             1183
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7688,16 +7645,16 @@
             1198.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.035357,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
         },
         {
@@ -7748,16 +7705,16 @@
             1211.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 21,
           "matchError": 0.020464,
-          "evidence": "SOURCE_VISIBLE"
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
           "asset": "bench_back_down",
@@ -7887,16 +7844,16 @@
             1281
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7907,16 +7864,16 @@
             1281
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7927,16 +7884,16 @@
             1295
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -7947,16 +7904,16 @@
             1295
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -8048,16 +8005,16 @@
             1337
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -8109,16 +8066,16 @@
             1351
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -8149,16 +8106,16 @@
             1393
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -8169,16 +8126,16 @@
             1407
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -8332,16 +8289,16 @@
             1449
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -8394,16 +8351,16 @@
             1463
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -8622,16 +8579,16 @@
             1506.0
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 27,
           "matchError": 0.00616,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east"
         },
         {
@@ -8642,16 +8599,16 @@
             1507.34
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 37,
           "matchError": 0.026462,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east",
           "sourceParent": "tree_slender"
         },
@@ -8788,16 +8745,16 @@
             1549.25
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 36,
           "matchError": 0.009813,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east"
         },
         {
@@ -9072,16 +9029,16 @@
             1617
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -9133,16 +9090,16 @@
             1631
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -9335,16 +9292,16 @@
             1674.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east",
           "sourceParent": "tree_slender"
         },
@@ -9377,16 +9334,16 @@
             1687.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east",
           "sourceParent": "garden_foreground_grove"
         },
@@ -9398,16 +9355,16 @@
             1701.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east",
           "sourceParent": "garden_foreground_grove"
         },
@@ -9419,16 +9376,16 @@
             1701.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east",
           "sourceParent": "garden_foreground_grove"
         },
@@ -9460,16 +9417,16 @@
             1715.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east",
           "sourceParent": "garden_foreground_grove"
         },
@@ -9481,16 +9438,16 @@
             1729.01
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 28,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east",
           "sourceParent": "garden_foreground_grove"
         },
@@ -9502,16 +9459,16 @@
             1786.91
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 51,
           "matchError": 0.01117,
-          "evidence": "SOURCE_VISIBLE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceDistrict": "east"
         },
         {
@@ -9531,7 +9488,7 @@
           ],
           "sourceFrame": 39,
           "matchError": 0.0,
-          "evidence": "SOURCE_VISIBLE_COMPLETE_ROWING_BOAT_ORIGIN_FROM_FRAME41",
+          "evidence": "ADAPTED_SOURCE_TRACED_ROWBOAT_REUSE",
           "sourceDistrict": "east",
           "sourceParent": "rowing_boat",
           "underHullFloorEvidence": "ADAPTED_WATER_FOOTPRINT_BENEATH_SOURCE_VISIBLE_FLOATING_BOAT"
@@ -9607,16 +9564,16 @@
             1841
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {
@@ -9627,16 +9584,16 @@
             1855
           ],
           "anchor": [
-            35,
-            108
+            39,
+            112
           ],
           "nativeSize": [
-            64,
-            111
+            72,
+            119
           ],
           "sourceFrame": 5,
           "matchError": 0.0,
-          "evidence": "ADAPTED_GARDEN_PLACEMENT_OF_COMPLETE_SOURCE_TREE",
+          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "garden_tree_pair"
         },
         {

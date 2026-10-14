@@ -89,8 +89,10 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
   new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000015,mh003,ml230","church_door"),
   new TownInteriorDef(Kind.INN,"milles_interior_inn","밀레스 여관","메리 · 여관 주인","mu0000026,mh004,ml230","inn_door")));
     public static final List<TownInteriorDef> ABEL = Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.REAGENT, "abel_interior_reagent", "아벨 시약상점", "시약상", "", "abel_reagent"), new TownInteriorDef(Kind.EQUIPMENT, "abel_interior_equipment", "아벨 무기상점", "무기상", "", "abel_equipment"), new TownInteriorDef(Kind.BANK, "abel_interior_bank", "아벨 은행", "은행원", "", "abel_bank"), new TownInteriorDef(Kind.CHURCH, "abel_interior_church", "아벨 교회", "사제", "", "abel_church"), new TownInteriorDef(Kind.INN, "abel_interior_inn", "아벨 여관", "여관 주인", "", "abel_inn")));
+ public static final List<TownInteriorDef> RUCESION=Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_armor","뤼케시온 방어구상점","방어구상","","rucesion_armor"),new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_weapon","뤼케시온 무기상점","무기상","","rucesion_weapon"),new TownInteriorDef(Kind.REAGENT,"rucesion_interior_reagent","뤼케시온 시약상점","시약상","","rucesion_reagent")));
+ public boolean isRegional(){return isAbel()||mapId.startsWith("rucesion_interior_");}
  public boolean isAbel(){return mapId.startsWith("abel_interior_");}
- public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;return null;}
+ public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:RUCESION)if(d.mapId.equals(id))return d;return null;}
  public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
  public float minX(){return isAbel()&&kind==Kind.INN?-64:MIN_X;}public float maxX(){return isAbel()&&kind==Kind.INN?1056:MAX_X;}public float maxY(){return isAbel()&&kind==Kind.INN?680:MAX_Y;}

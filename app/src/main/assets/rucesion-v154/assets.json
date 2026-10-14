@@ -1,0 +1,403 @@
+{
+  "assets": [
+    {
+      "id": "building_yellow_shop",
+      "size": [
+        298,
+        275
+      ],
+      "anchor": [
+        246,
+        263
+      ],
+      "status": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sha256": "6960f624ec39d085a75eec1c0c4fd45e05f14e89d44e26080a21164b29a1059f",
+      "atlasBox": [
+        906,
+        40,
+        1194,
+        306
+      ],
+      "groundPolygon": [
+        [
+          25,
+          181
+        ],
+        [
+          204,
+          268
+        ],
+        [
+          294,
+          230
+        ],
+        [
+          115,
+          143
+        ]
+      ]
+    },
+    {
+      "id": "building_blue_house",
+      "size": [
+        190,
+        216
+      ],
+      "anchor": [
+        51,
+        204
+      ],
+      "status": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sha256": "9878a5515b09579ae216e6c223d33d7a5ee913c37d7b141d93a777b23c948e03",
+      "atlasBox": [
+        1206,
+        40,
+        1396,
+        256
+      ],
+      "groundPolygon": [
+        [
+          15,
+          174
+        ],
+        [
+          91,
+          212
+        ],
+        [
+          180,
+          173
+        ],
+        [
+          103,
+          137
+        ]
+      ]
+    },
+    {
+      "id": "rowing_boat",
+      "size": [
+        197,
+        131
+      ],
+      "anchor": [
+        99,
+        126
+      ],
+      "status": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sha256": "160cc17dd5c0c854c7915a5c2c2141f0ab9ee49cfacc15ec99ef4cbd6f90091a",
+      "atlasBox": [
+        306,
+        490,
+        503,
+        621
+      ]
+    },
+    {
+      "id": "tree_broadleaf",
+      "size": [
+        82,
+        125
+      ],
+      "anchor": [
+        48,
+        116
+      ],
+      "status": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sha256": "2318bad2e32b50a8dd20f3a416951c04e219d10b9ddd8bd14b1f523726d1ade3",
+      "atlasBox": [
+        906,
+        490,
+        988,
+        615
+      ]
+    },
+    {
+      "id": "building_blue_hall",
+      "size": [
+        427,
+        412
+      ],
+      "anchor": [
+        69,
+        284
+      ],
+      "status": "SOURCE_REGISTERED_RGB_WITH_ADAPTED_LAMP_OCCLUSION_PATCH",
+      "sha256": "a272476d1cfebdecb67e6628600c72a075ec699bcdd79559617fa8afa9314dbc",
+      "groundPolygon": [
+        [
+          21,
+          267
+        ],
+        [
+          100,
+          310
+        ],
+        [
+          214,
+          251
+        ],
+        [
+          322,
+          310
+        ],
+        [
+          408,
+          268
+        ],
+        [
+          214,
+          169
+        ]
+      ]
+    },
+    {
+      "id": "pergola_garden",
+      "size": [
+        243,
+        232
+      ],
+      "anchor": [
+        126,
+        224
+      ],
+      "status": "SOURCE_RGB_SEPARATE_PERGOLA_GARDEN",
+      "sha256": "8c3bf0d235393980092c02544cd0b0deadfc607e2c1495405d74ecaac20bcce5"
+    },
+    {
+      "id": "tile_white",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "3b8e831257817d99ebb93345b1002c5da6d09cef7e86576cdf008fc04bbf1ebd"
+    },
+    {
+      "id": "tile_white_aged",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "06f5856737a5b48dc72fdd670bf6c4103caa199b448580902633fe7c624e3399"
+    },
+    {
+      "id": "tile_brick_rosette",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "93abe9fadc510becef121738cdfe094e8ef8be75e6faa7f30d1d189c481320dc"
+    },
+    {
+      "id": "tile_blue_water",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "6493e873eddca99799d858defc5e2c89c78672af54fbb0af5494c4cafaf47831"
+    },
+    {
+      "id": "tile_rock_paving",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "5031590fe0d09eb88d2cd359b98b0a08cea5b9044fa1007ebaed46e94d02c32c"
+    },
+    {
+      "id": "coping_up_edge",
+      "size": [
+        29,
+        37
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "9d61b68c13b0a57a6d5a3920f12d248a3d3c5234d415ec74b93b4141d6429ee6"
+    },
+    {
+      "id": "coping_down_edge",
+      "size": [
+        29,
+        37
+      ],
+      "anchor": [
+        0,
+        14
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "0c7bf3a4cfc6f076d6a1777c4f6e1d2c386a6ad7e6d04fae01e296e18cc41e45"
+    },
+    {
+      "id": "garden_curb_up_edge",
+      "size": [
+        29,
+        26
+      ],
+      "anchor": [
+        0,
+        14
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "3ed4d158cd5aae961159153df433fd0d56cf57145d8fd268644715e9189a54bb"
+    },
+    {
+      "id": "garden_curb_down_edge",
+      "size": [
+        29,
+        26
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "2a2e1cf14b86bacc646cb29ff9f5741bc20f7aece0bd7d86bc46630a5231f55b"
+    },
+    {
+      "id": "lamp_main",
+      "size": [
+        27,
+        130
+      ],
+      "anchor": [
+        13,
+        129
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "076570b60b26abf5e5b91369aea4dadfd96cb2a6d99bfea507428157910572a7"
+    },
+    {
+      "id": "bench_front_up",
+      "size": [
+        69,
+        75
+      ],
+      "anchor": [
+        28,
+        71
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "a8d46cab5f7d1b7604312aa8d36e56fcbb523051db526886a01ec08f057d7529"
+    },
+    {
+      "id": "bench_front_down",
+      "size": [
+        62,
+        67
+      ],
+      "anchor": [
+        38,
+        63
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "c9c24c71d2ccd4d2671a1d904a50ebad1d69300566006d31b352254728b24afa"
+    },
+    {
+      "id": "rail_up_clean",
+      "size": [
+        39,
+        54
+      ],
+      "anchor": [
+        4,
+        49
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "bb3b952a1e2a58831e5d0ad086dc8f2f192995f64fb4e2c3768e166457d11a25"
+    },
+    {
+      "id": "rail_down_clean",
+      "size": [
+        39,
+        54
+      ],
+      "anchor": [
+        4,
+        33
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "e8ea9008628037733c4da1a3a9c567ffa3f830aa5f9577511b29f119bc563336"
+    },
+    {
+      "id": "signpost_complete",
+      "size": [
+        47,
+        52
+      ],
+      "anchor": [
+        21,
+        46
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "01e0844fe74997a609ba75d114b61185e5d1b3663085e713c8299d3658e504b1"
+    },
+    {
+      "id": "flowerbed_orange",
+      "size": [
+        182,
+        109
+      ],
+      "anchor": [
+        92,
+        98
+      ],
+      "status": "REUSED_ISOLATED_SOURCE_MODULE",
+      "sha256": "39594a89000e9b63ef8e3d74e1400051c3208d4af89b9abf309064b5e9dde67b"
+    },
+    {
+      "id": "tile_sea_water",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "SOURCE_VISIBLE_TILE",
+      "sha256": "759982ecb5386a350b6d5ca7e737cd1428a950715a2b397bbb8f46a59f65b9bc"
+    },
+    {
+      "id": "tile_grass",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "status": "ADAPTED_CLEAR_GRASS_MATERIAL_GAP_FREE_DIAMOND",
+      "sha256": "fd30075c34ea92e01b23af8389a79e94248b22fa734fa74e121af34110289bc2"
+    }
+  ],
+  "recovery": "Original unpublished git/source directory was lost. Completed silhouette pixels recovered from the approved PNG atlas. Native hall/pergola recovered from original video. Not bit-identical to lost alpha/resampled thumbnails."
+}

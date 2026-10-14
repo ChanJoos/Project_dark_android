@@ -1,4 +1,4 @@
-name: V153 Abel map benches interiors NPC portals
+name: V154 recovered approved town assets and expanded Rucesion
 on:
   push:
     branches: [codex/abel-coast-v139]
@@ -90,7 +90,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: abel-coast-v153-balance-${{ matrix.job }}-${{ github.sha }}
+          name: town-assets-v154-balance-${{ matrix.job }}-${{ github.sha }}
           path: |
             app/build/reports/abel-v153/
             app/build/test-results/
@@ -171,7 +171,7 @@ jobs:
           gradle-version: '8.11.1'
       - uses: actions/download-artifact@v4
         with:
-          pattern: abel-coast-v153-balance-*-${{ github.sha }}
+          pattern: town-assets-v154-balance-*-${{ github.sha }}
           path: app/build/reports/abel-v153/jobs
       - name: Verify and join all five exact-source hunting receipts
         run: python3 tools/merge_abel_balance_v153.py
@@ -195,14 +195,15 @@ jobs:
           git diff --exit-code -- master/assets/abel_v142
           python3 tools/audit_abel_coverage.py --output app/build/reports/abel-v152/coverage.json
           python3 tools/audit_all_skills_v138.py
-          gradle :app:testDebugUnitTest --tests '*AbelCombatV153Test.profilesBindEverySpeciesAndSourceRewardsRemainSeparate' --tests '*AbelCombatV153Test.actualGameViewShowsMonsterCastParticlesAndLevelWithoutTestAccess' --tests '*AbelCombatV153Test.magicUsesRealWindupMpLosControlAndSavedStatusAndBossRecoversOnlyOnce' --tests '*AbelCombatV153Test.rootedPlacementDoesNotCrashOrPermitWalking' --tests '*AbelCombatV153Test.respawnWaitsForAnUnoccupiedSpawnTile' --tests '*AbelCombatV153Test.rangedBossApproachEndsInsideActualFollowCamera' --tests '*AbelTownV152Test' --tests '*AbelCoastV139Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*NpcAppearanceTest' --tests '*OnboardingUiTest' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*AbelCombatV153Test.profilesBindEverySpeciesAndSourceRewardsRemainSeparate' --tests '*AbelCombatV153Test.actualGameViewShowsMonsterCastParticlesAndLevelWithoutTestAccess' --tests '*AbelCombatV153Test.magicUsesRealWindupMpLosControlAndSavedStatusAndBossRecoversOnlyOnce' --tests '*AbelCombatV153Test.rootedPlacementDoesNotCrashOrPermitWalking' --tests '*AbelCombatV153Test.respawnWaitsForAnUnoccupiedSpawnTile' --tests '*AbelCombatV153Test.rangedBossApproachEndsInsideActualFollowCamera' --tests '*RucesionTownV154Test' --tests '*AbelTownV152Test' --tests '*AbelCoastV139Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*CampaignProgressTest' --tests '*CampaignNavigationTest' --tests '*AdaptedCampaignRewardTest' --tests '*CampaignQuickQuestIntegrationTest' --tests '*NpcAppearanceTest' --tests '*OnboardingUiTest' --stacktrace
       - name: Upload actual mobile HUD preview immediately
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: abel-coast-v153-preview-${{ github.sha }}
+          name: town-assets-v154-preview-${{ github.sha }}
           path: |
             app/build/reports/abel-v139/
+            app/build/reports/town-v154/
             app/build/reports/abel-v152/
             app/build/reports/abel-v153/
             app/build/reports/mobile-hud-v136/
@@ -215,13 +216,14 @@ jobs:
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v153_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v154_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: abel-coast-v153-native-${{ github.sha }}
+          name: town-assets-v154-native-${{ github.sha }}
           path: |
             app/build/reports/abel-v139/
+            app/build/reports/town-v154/
             app/build/reports/abel-v152/
             app/build/reports/abel-v153/
             app/build/reports/mobile-hud-v136/
@@ -244,7 +246,7 @@ jobs:
             app/build/reports/tests/
       - uses: actions/upload-artifact@v4
         with:
-          name: abel-coast-v153-apk-${{ github.sha }}
+          name: town-assets-v154-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
