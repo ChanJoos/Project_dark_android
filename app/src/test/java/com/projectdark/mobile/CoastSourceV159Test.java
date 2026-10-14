@@ -16,6 +16,7 @@ public class CoastSourceV159Test extends CoastRefinementV158Test {
   assertEquals(PoteForestMonsterShowcase.bodyHeight("LYK_PLANT_ARKPUS"),PoteForestMonsterShowcase.bodyHeight("LYK_ARKPUS"),0);
   Bitmap a=pose(r,"LYK_ARKPUS","idle",CharacterRenderer.Direction.SW),b=pose(r,"LYK_PLANT_ARKPUS","idle",CharacterRenderer.Direction.SW);assertEquals("same visible size to plant",bounds(a).height(),bounds(b).height(),3);
  }
+ @Test public void seaUsesLargeOpaqueSourceReferencedTexture()throws Exception{Bitmap b=BitmapFactory.decodeStream(c.getAssets().open("coast-v159/water.png"));assertTrue(b.getWidth()>=1024&&b.getHeight()>=1024);for(int y=0;y<b.getHeight();y+=31)for(int x=0;x<b.getWidth();x+=31)assertEquals(255,Color.alpha(b.getPixel(x,y)));}
  @Test public void bothCoastsHaveUniqueCoastalContoursAndSourceLocalAssemblages(){
   Set<String> signatures=new HashSet<>();for(boolean r:new boolean[]{false,true})for(int z=0;z<5;z++){
    StringBuilder signature=new StringBuilder(Arrays.deepToString(CoastalHuntLayout.shoreLine(z,r)));for(CoastalHuntLayout.Prop p:CoastalHuntLayout.props(z,r))signature.append(p.asset).append(p.x).append(p.y);

@@ -1,0 +1,12 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Asset: opaque seamless game sea surface texture for both Abel/Rucesion coasts. Image1 EDIT TARGET is the tiny old repeated purple/noisy water texture. Images2 and3 are ORIGINAL GAME shoreline reference cameras, use ONLY their visible SEA colors and wave character, never include UI/people/text/beach/palms/rocks. Replace the old conspicuous purple checker/noise look with a large seamless1024x1024 water texture: subdued dark indigo/navy blue grey, irregular fine low contrast flowing horizontal/diagonal pale grey ripples, natural varied patches, subtle tonal depth. Crisp original-game painted pixel surface, NO photoreal ocean, NO bright cyan tropical water, NO violet blocks/checkerboard, NO mirror symmetry, NO straight stripe bands, NO white foam everywhere, NO perspective horizon. Faint understated wave crests only. Top-down/isometric tile surface that can REPEAT seamlessly on all4edges. Opaque full bleed square1024x1024; no objects, no text. Coast wet-sand and surf foam are rendered separately, so no shoreline in this texture.",
+  "target": "master/source/rucesion_v157/water.png",
+  "references": [
+    "qa159/abel2-25.png",
+    "qa158/frame-1.png"
+  ],
+  "result": "app/src/main/assets/coast-v159/water.png",
+  "evidence": "ADAPTED_REFERENCE_GENERATED",
+  "dateSeoul": "2026-10-15"
+}

@@ -75,6 +75,8 @@ with zipfile.ZipFile(apk_path) as apk:
     with zipfile.ZipFile('master/assets/rucesion_v158/generated_assets.zip') as ruc:
         assert len(ruc.namelist())==122
         for name in ruc.namelist():assert apk.read('assets/'+name)==ruc.read(name),name
+    for path in pathlib.Path('app/src/main/assets/coast-v159').glob('*'):
+        assert apk.read('assets/coast-v159/'+path.name)==path.read_bytes(),path
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)

@@ -88,5 +88,14 @@
   "fullPopulations": "retained",
   "originalArielPartyEvent": "NOT_IMPLEMENTED_PREVIEW_ONLY",
   "phoneAcceptance": "PENDING",
-  "newUserVisualAcceptance": "PENDING"
+  "newUserVisualAcceptance": "PENDING",
+  "waterFeedback": {
+    "dateSeoul": "2026-10-15",
+    "report": "User rejects cheap repeated purple sea",
+    "repair": "Large source-camera-referenced native sea texture, muted dark-indigo navy wave detail; sea-only shallow depth, wet sand and surf contour in both coasts",
+    "texture": "app/src/main/assets/coast-v159/water.png",
+    "textureSha256": "21bf69245a902dd9f57193d50f5199b911e7fc2224a64313e5e044d59c431e9d",
+    "originalColor": "Original includes dark indigo sea; original shore depth/foam not equal to old V158 flat repetitive strip",
+    "status": "IMPLEMENTED_NATIVE_PENDING"
+  }
 }

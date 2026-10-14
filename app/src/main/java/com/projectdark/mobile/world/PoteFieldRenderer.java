@@ -312,8 +312,15 @@ public final class PoteFieldRenderer {
     for(int i=1;i<points.length;i++)groundCells.lineTo(points[i][0]-ox,points[i][1]-oy);
     if(closeToBottom){groundCells.lineTo(n-ox,n-oy);groundCells.lineTo(64-ox,n-oy);}groundCells.close();
   }
+  private void drawCoastDepth(Canvas c,float[][] line,float ox,float oy,boolean bottom,float n){
+    c.save();c.clipPath(groundCells);pixel.setShader(null);pixel.setStyle(Paint.Style.STROKE);
+    groundCells.reset();groundCells.moveTo(line[0][0]-ox,line[0][1]-oy);
+    for(int i=1;i<line.length;i++)groundCells.lineTo(line[i][0]-ox,line[i][1]-oy);
+    for(int i=5;i>=1;i--){pixel.setStrokeWidth(i*30);pixel.setColor(i>2?0xff8898a3:0xffb4beb3);pixel.setAlpha(24+i*6);c.drawPath(groundCells,pixel);}
+    pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);c.restore();
+  }
   private void drawCoastalFloor(Canvas c,String map,float ox,float oy,boolean r){
-    Bitmap sand=bitmap(r?"rucesion_v157/sand.png":"abel_v140/sand.png"),water=bitmap(r?"rucesion_v157/water.png":"abel_v140/water.png");
+    Bitmap sand=bitmap(r?"rucesion_v157/sand.png":"abel_v140/sand.png"),water=bitmap("coast-v159/water.png");
     if(sand==null||water==null)throw new IllegalStateException("Missing coast terrain assets");
     int z=r?RucesionCoastGeometry.index(map):AbelCoastGeometry.index(map);float n=CoastalHuntLayout.size(z);
     pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
@@ -321,8 +328,8 @@ public final class PoteFieldRenderer {
     texturePhase.setTranslate(-ox,-oy);earth.setLocalMatrix(texturePhase);pixel.setShader(earth);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     BitmapShader sea=shader(r?"rucesion-water-159":"abel-water-159",water,Shader.TileMode.REPEAT);sea.setLocalMatrix(texturePhase);pixel.setShader(sea);
     float[][] edge=CoastalHuntLayout.shoreLine(z,r),inlet=CoastalHuntLayout.inlet(z,r);
-    coastPath(edge,ox,oy,true,n);c.drawPath(groundCells,pixel);
-    if(inlet.length>0){coastPath(inlet,ox,oy,false,n);c.drawPath(groundCells,pixel);}
+    coastPath(edge,ox,oy,true,n);c.drawPath(groundCells,pixel);drawCoastDepth(c,edge,ox,oy,true,n);
+    if(inlet.length>0){coastPath(inlet,ox,oy,false,n);pixel.setShader(sea);c.drawPath(groundCells,pixel);drawCoastDepth(c,inlet,ox,oy,false,n);}
     pixel.setShader(null);
     // Wet sand and a shallow surf ribbon follow the authored coast, rather than a horizontal ocean strip.
     for(float[][] line:new float[][][]{edge,inlet})if(line.length>1){
@@ -468,7 +475,7 @@ public final class PoteFieldRenderer {
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(CoastSpritePalette.sourcePath(name))){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
       b=CoastSpritePalette.apply(name,b);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/")&&!name.startsWith("abel_v139/")&&!name.startsWith("abel_v140/")&&!name.startsWith("abel_v141/")&&!name.startsWith("rucesion_v157/"))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/")&&!name.startsWith("abel_v139/")&&!name.startsWith("abel_v140/")&&!name.startsWith("abel_v141/")&&!name.startsWith("rucesion_v157/")&&!name.startsWith("coast-v159/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
