@@ -8,7 +8,7 @@ public final class CoastalHuntLayout {
  public static float nextX(int z){return size(z)-(z==0?256:224);}public static float nextY(int z){return z==0?448:512;}
  private static final Map<Integer,float[][]> LINES=new HashMap<>();
  private static final Map<Integer,List<RectF>> WATER=new HashMap<>();
- private static float[][] soften(float[][] points,int axis){List<float[]> out=new ArrayList<>();for(int i=1;i<points.length;i++){float[] a=points[i-1],b=points[i];int steps=Math.max(1,(int)Math.ceil((b[axis]-a[axis])/24));for(int k=0;k<steps;k++){float t=k/(float)steps,e=t*t*(3-2*t);float[] q=new float[2];q[axis]=a[axis]+(b[axis]-a[axis])*t;q[1-axis]=a[1-axis]+(b[1-axis]-a[1-axis])*e;out.add(q);}}out.add(points[points.length-1]);return out.toArray(new float[0][]);}
+ private static float[][] soften(float[][] points,int axis){if(points.length<2)return points;List<float[]> out=new ArrayList<>();for(int i=1;i<points.length;i++){float[] a=points[i-1],b=points[i];int steps=Math.max(1,(int)Math.ceil((b[axis]-a[axis])/24));for(int k=0;k<steps;k++){float t=k/(float)steps,e=t*t*(3-2*t);float[] q=new float[2];q[axis]=a[axis]+(b[axis]-a[axis])*t;q[1-axis]=a[1-axis]+(b[1-axis]-a[1-axis])*e;out.add(q);}}out.add(points[points.length-1]);return out.toArray(new float[0][]);}
  public static float[][] shoreLine(int z,boolean r){return LINES.computeIfAbsent(z*2+(r?1:0),k->createShoreLine(z,r));}
  private static float[][] createShoreLine(int z,boolean r){
   if(z==0)return soften(r?new float[][]{{64,620},{200,685},{380,700},{580,640},{768,665}}:new float[][]{{64,660},{230,695},{420,665},{590,620},{768,648}},0);
