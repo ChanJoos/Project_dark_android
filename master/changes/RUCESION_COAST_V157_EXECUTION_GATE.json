@@ -1,0 +1,75 @@
+{
+  "changeId": "RUCESION-COAST-V157-EXECUTION-GATE",
+  "dateSeoul": "2026-10-14",
+  "baseMainMerge": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "relatedMergedPR": 196,
+  "scope": "Rucesion coast original-referenced playable maps, monster appearance/identity and actual zone access",
+  "status": "REFERENCE_TO_RUNTIME_HANDOFF_NOT_IMPLEMENTED",
+  "existingEvidence": {
+    "research": "master/source/rucesion_coast_20261014/research.json",
+    "imageIndex": "master/source/rucesion_coast_20261014/image_sources.json",
+    "retainedCaptures": 29,
+    "coastScreens": 27,
+    "knownJoin": {
+      "2-B": [
+        "2-A",
+        "2-C"
+      ]
+    },
+    "knownShownMap": "3-C",
+    "minimumEntryLevelHistorical": 71,
+    "entryCoordinateConflict": [
+      [
+        78,
+        10
+      ],
+      [
+        78,
+        7
+      ]
+    ],
+    "masterMonsterIds": [
+      "LYK_BLUE_HACON",
+      "LYK_RED_HACON",
+      "LYK_KAKAPO",
+      "LYK_POISON_KAKAPO",
+      "LYK_TYRANT",
+      "LYK_ARIEL"
+    ]
+  },
+  "implementationPlan": [
+    {
+      "stage": 1,
+      "action": "Inspect attached 2026-10-14 original video with timestamped Sense Monster frames and traverse map-zone portals; capture explicitly observed species/level/HP, coordinates and sprite poses separately from inference",
+      "gate": "Do not invent unresolved values or declare source-unverified topology original"
+    },
+    {
+      "stage": 2,
+      "action": "Establish unique transparent monster assets with 4 diagonal idle/walk/attack poses, bottom-foot anchors and consistent original-referenced visual style",
+      "gate": "Only bind identities to actual visible names/sense labels"
+    },
+    {
+      "stage": 3,
+      "action": "Implement actual Rucesion-to-coast entrance, individual confirmed coast zones/portals, terrain/depth/collision and native quest/saved map restoration through current adapters",
+      "gate": "No mixed Abel coast portals, no unsourced all-zone or solo Ariel assertions"
+    },
+    {
+      "stage": 4,
+      "action": "Re-use accepted HUNT_MAP_PERFORMANCE_LESSONS.md static navigation/floor chunk caches, dynamic occupancy, prewarm and vsync; validate 12 round trips and p95/p99/max",
+      "gate": "No movement slowdown or reduced population/resolution workaround"
+    },
+    {
+      "stage": 5,
+      "action": "Run Android native tests/actual map rendered frames, exact-source APK build and CI; preserve 5 previous world/skill/bank tests and report phone acceptance separately",
+      "gate": "Only claim BUILD_VERIFIED with successful Actions run and artifact SHA"
+    }
+  ],
+  "blockedFacts": [
+    "Original path entry coordinate needs capture (78,7 vs 78,10)",
+    "Full original zone geometry/animation cadence/source version unresolved",
+    "Ariel five-job party mechanic not currently implemented"
+  ],
+  "runtimeChanges": [],
+  "apkStatus": "NOT_BUILT",
+  "sourceTruthPolicy": "Original/observed/adapted/unresolved separated; retained source immutable."
+}
