@@ -1,0 +1,152 @@
+{
+  "apk": {
+    "sourceCommit": "0e760fd8ccf5481ed7bed01fce78a02f915bed99",
+    "runId": "38575338140",
+    "versionCode": 158,
+    "versionName": "1.58-coast-refinement",
+    "applicationId": "com.projectdark.mobile.v158test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "229e94e2091f5d3c2433a9bf705b83f1b47a93f640ccb4e29b7de20265b35945",
+    "apkBytes": 74773688,
+    "builtSeoul": "2026-10-14T22:55:48.374558+09:00",
+    "scope": "V158 device-feedback repair: two768squarearrival camps, three2560squarehunts and2304squareboss per coast; source-named species-specific silhouettes, user-blueHacon and source-greyElectKoatl; legacyAbel1B alias; sharedmovement/collision/AI/resolver/save, preservedpopulations/cache; originalparty event notimplemented; retains seven town services: weapon, armor, reagent, clothing, banks A/B and inn; source-named regional wardrobe catalog with separated merchandise; atomic trade and shared bank persistence; regional inn paid recovery and actual doors/return/save. Facility identities and source item pixels retained; exact original interior layouts, merchant stock/prices and uncalibrated service positions are ADAPTED. Native verification is distinct from physical phone and user visual approval.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "matchedPackagedFiles": 1125,
+  "native": {
+    "suites": 16,
+    "tests": 100,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "performance": {
+    "scope": "Robolectric renderer CPU, not handsetFPS",
+    "p95Ms": 1.815103,
+    "p99Ms": 2.17242,
+    "maxMs": 2.254383,
+    "sourceHitPairsMax": 60,
+    "floorPixelBound": 8652800,
+    "trips": 12
+  },
+  "ratios": {
+    "LYK_BLUE_HACON": {
+      "heightToEquippedPlayer": 0.9629629629629629,
+      "widthToEquippedPlayer": 1.9259259259259258,
+      "runtimeCanvasHeight": 72
+    },
+    "LYK_RED_HACON": {
+      "heightToEquippedPlayer": 1.037037037037037,
+      "widthToEquippedPlayer": 1.8518518518518519,
+      "runtimeCanvasHeight": 66
+    },
+    "LYK_ARKPUS": {
+      "heightToEquippedPlayer": 0.9259259259259259,
+      "widthToEquippedPlayer": 2.074074074074074,
+      "runtimeCanvasHeight": 64
+    },
+    "LYK_PLANT_ARKPUS": {
+      "heightToEquippedPlayer": 1.2222222222222223,
+      "widthToEquippedPlayer": 2.3703703703703702,
+      "runtimeCanvasHeight": 84
+    },
+    "LYK_KAKAPO": {
+      "heightToEquippedPlayer": 0.7962962962962963,
+      "widthToEquippedPlayer": 1.6296296296296295,
+      "runtimeCanvasHeight": 64
+    },
+    "LYK_POISON_KAKAPO": {
+      "heightToEquippedPlayer": 0.8703703703703703,
+      "widthToEquippedPlayer": 1.6296296296296295,
+      "runtimeCanvasHeight": 64
+    },
+    "LYK_KOATL": {
+      "heightToEquippedPlayer": 0.8703703703703703,
+      "widthToEquippedPlayer": 3.1481481481481484,
+      "runtimeCanvasHeight": 100
+    },
+    "LYK_ELECT_KOATL": {
+      "heightToEquippedPlayer": 0.8333333333333334,
+      "widthToEquippedPlayer": 3.111111111111111,
+      "runtimeCanvasHeight": 84
+    },
+    "LYK_TYRANT": {
+      "heightToEquippedPlayer": 1.3518518518518519,
+      "widthToEquippedPlayer": 2.814814814814815,
+      "runtimeCanvasHeight": 95
+    },
+    "LYK_ARIEL": {
+      "heightToEquippedPlayer": 1.6296296296296295,
+      "widthToEquippedPlayer": 3.259259259259259,
+      "runtimeCanvasHeight": 110
+    }
+  },
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "runtimeSource": "0e760fd8ccf5481ed7bed01fce78a02f915bed99",
+  "focusedRun": 38575338140,
+  "focusedJob": 115890818157,
+  "conclusion": "SUCCESS",
+  "artifacts": {
+    "apk": 11900290487,
+    "native": 11900082431,
+    "apkArchiveSha256": "a70549bbd49e6ceb603918c1d0847a3abae63fefda89fd0f18a5216232d95393",
+    "nativeArchiveSha256": "166c335c24250c5a80d522ccbb44d6842bb6dfa87d22bf33c760fd8cd6f03f55"
+  },
+  "verification": [
+    "archive SHA256 and CRC",
+    "APK SHA256/CRC and embedded source/run/version",
+    "1125 packaged source assets/metadata matched",
+    "100 tests/16 suites/0 failures/errors/skips",
+    "actual two camp first cameras, portal walk and returns",
+    "ten full native square-map overviews visually inspected",
+    "equipped approved player next to ten source-bound species visually inspected",
+    "legacy Abel1B save/quest alias",
+    "full populations, shared collision, reachable gates, restart, exactly-once reward fixtures"
+  ],
+  "broaderAndroid": [
+    {
+      "runId": 38575337978,
+      "jobId": 115890817186,
+      "status": "IN_PROGRESS_AT_APK_DELIVERY"
+    },
+    {
+      "runId": 38575347594,
+      "jobId": 115890851329,
+      "status": "IN_PROGRESS_AT_APK_DELIVERY"
+    }
+  ],
+  "retainedFiveJobBalance": {
+    "source": "3905c649a04ee1c72c1965142381fb43304c878b",
+    "testConclusion": "PASS",
+    "overallJobConclusion": "FAILURE_RETAINED_BARRELS_REQUIREMENT",
+    "scope": "normal paid equipment/learned skills/live AI/consecutive progression to70; final changes after this source are camp portal/barrels/render scales/capture harness. Hunting combat profiles unchanged; not re-counted in final100 tests."
+  },
+  "earlierFailedCandidates": [
+    {
+      "source": "0e470cde05391fabb62a2d4657cfe63f22e88547",
+      "reason": "two stale legacy geometry/index test assumptions"
+    },
+    {
+      "source": "3905c649a04ee1c72c1965142381fb43304c878b",
+      "reason": "retained barrel decoration excluded from safe camp footprint"
+    },
+    {
+      "source": "d8af4a2be100c245305600578bd0f603e90d7416",
+      "reason": "retained barrel requirement"
+    }
+  ],
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "originalUnseenLayout": "ADAPTED",
+  "originalArielFiveJobEvent": "NOT_IMPLEMENTED_PREVIEW_ONLY_ZERO_EXP_GOLD",
+  "branch": "codex/rucesion-coast-v157",
+  "pullRequest": 197,
+  "mainMerged": false,
+  "deliveredFiles": [
+    "PROJECT_DARK_V158_COAST.apk",
+    "V158_MONSTER_SCALE.png",
+    "V158_COAST_MAPS.jpg"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "changeId": "COAST-V158-DEVICE-REFINEMENT",
   "dateSeoul": "2026-10-14",
-  "status": "IMPLEMENTED_NATIVE_BUILD_PENDING",
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
   "deviceReport": "DEVICE_FAILED_USER_REPORTED_VISUAL_UX",
   "report": [
     "Both coast maps repetitive",
@@ -79,5 +79,8 @@
       "Retained camp barrels were below tide/corridor exclusion; placed660/560 safely"
     ],
     "fullFiveJobBalance": "Passed at3905c64; final changes affect camp-only portals/barrels, rendering and review capture, not hunting collision/profile/AI/rewards"
-  }
+  },
+  "receipt": "master/changes/V158_BUILD_RUNTIME_RECEIPT.json",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING"
 }
