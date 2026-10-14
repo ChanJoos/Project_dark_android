@@ -1,0 +1,13 @@
+# V154 approved town visuals — recovered source candidate
+
+The user approved the reviewed asset/layout images and GitHub publication on2026-10-14. Actual independent PNGs and runtime map/renderer/service wiring are now restored. The prior unpublished scratch commits390920d/f9daa9d were lost during environment reset; they are not claimed as published/recovered commit objects. The new source candidate and its new CI evidence must be used.
+
+Completed building/tree/boat silhouette RGB is recovered from the retained approved PNG atlas. Alpha was reconstructed from its solid presentation background; the corner/awning thumbnails require nearest-neighbour resampling back to their registered dimensions. Consequently this is not bit-identical to the lost PNG alpha/generation inputs. No new image generation or map-painting was performed. Original Rucesion hall/pergola/grass pixels were re-extracted from the original video using the retained registration recipe. The narrow lamp-occluded wall patch is ADAPTED. Generated completion of hidden building pixels, adapted inland topology and canonical-original uncertainty remain explicit.
+
+Abel has red ribbed/curved roofs; Rucesion has blue mottled surfaces/ivory trim and its separate curved/flat roof families. Trees and rowboats have transparent contours; background capture pixels are excluded. Grass uses a clear18×12 source patch and one-pixel diamond coverage to avoid white repeated gaps.
+
+Rucesion104×104 /24 sprite/tile families /206 props /20 facades /3 merchant interiors and six tested-dialogue round trips are the candidate scope. Beach remains future content. Same64×32 grid/.60s movement and32 floor chunks/8,652,800bytes ceiling, approved player art and V153 combat retained. Five new regional NPC profiles reuse approved paper dolls; unknown-ID hashing keeps its pre-extension modulus29.
+
+Native tests cover district renders/cache, three actual touch entries with save/restore/return, gutters, and six Abel/Rucesion dialogue round trips. Existing Abel service/movement/interior/cache tests are retained. APK build/native/phone results stay PENDING until the exact run/source/APK receipt is recorded. User approval applies to the displayed asset review, not an as-yet-unseen Android runtime screenshot.
+
+Reproduction: source frames are fps2,crop1920:1080:210:0,scale640:480:flags=area from Screen_Recording_20261013_204310_YouTube.mp4. Run tools/recover_town_v154.py --frames PATH then tools/build_rucesion_v154.py. Approved atlas is retained in master/assets/town_v154/approved_atlas.png. Neither a screenshot nor the evidence mosaic is used as a monolithic runtime map texture.
