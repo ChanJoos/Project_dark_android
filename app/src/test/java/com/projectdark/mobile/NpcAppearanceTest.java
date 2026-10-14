@@ -19,9 +19,9 @@ public final class NpcAppearanceTest {
   return b;
  }
  private int[] pixels(Bitmap b){int[] a=new int[b.getWidth()*b.getHeight()];b.getPixels(a,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return a;}
- @Test public void allHumanNpcRoutesHaveDistinctRegisteredAmericanProfilesAndFutureDefaults(){
+ @Test public void allHumanNpcRoutesHaveDistinctRegisteredProfilesAndFutureDefaults(){
   Set<String> names=new HashSet<>(),outfits=new HashSet<>();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context());
-  assertEquals(34,NpcIdentity.ALL.size());
+  assertEquals(38,NpcIdentity.ALL.size());
   for(NpcIdentity.Profile p:NpcIdentity.ALL){
    assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));assertTrue(outfits.add(p.outfit));
    for(String id:p.outfit.split(",")){EquipmentVisualRegistry.Visual v=registry.get(id);assertNotNull("real atlas "+id,v);assertNotNull("real source registration "+id,v.registration);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())assertNotNull(v.registration.idle(d,0));}

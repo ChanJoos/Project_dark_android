@@ -314,3 +314,7 @@ V130 EQUIPMENT-PERFORMANCE-V130 accepted: stats_v130/catalog.json and field prov
 ## RUCESION-COAST-V155 reference admission
 
 Accepted source collection only; no runtime projection. See changes/RUCESION-COAST-V155-SOURCE-ADMISSION.json.29 hashed captures preserve original pixels as references, not production map textures. Wrong1495 barrier attribution and78,7/78,10 coordinate conflict remain explicit. Original topology/action frames/stats/rates remain pending.
+
+## RUCESION-TOWN-SERVICES-V156
+
+Accepted region merchandise/source wardrobe access beside original baseline. Rucesion seven service doors and regional bank/inn integrate shared commerce/persistence. Source facts, adapted interiors/placement/availability/prices and unresolved Gilenoa/Fisher are explicit in changes/RUCESION-TOWN-SERVICES-V156.json. Native/build evidence pending.
