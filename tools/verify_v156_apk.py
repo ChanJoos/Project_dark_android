@@ -15,8 +15,9 @@ with zipfile.ZipFile(apk_path) as apk:
     assert identity['sourceCommit'] == source, identity
     assert identity['runId'] == os.environ['GITHUB_RUN_ID'], identity
     assert identity['versionCode'] == 156, identity
-    for path in pathlib.Path('app/src/main/assets/rucesion-v156').glob('*'):
-        assert apk.read('assets/rucesion-v156/'+path.name)==path.read_bytes(),path
+    assert len(list(pathlib.Path('app/src/main/assets/rucesion-v154').glob('*'))) >= 26
+    for path in pathlib.Path('app/src/main/assets/rucesion-v154').glob('*'):
+        assert apk.read('assets/rucesion-v154/'+path.name)==path.read_bytes(),path
     for path in pathlib.Path('app/src/main/assets/abel-video-v147').glob('*'):
         assert apk.read('assets/abel-video-v147/'+path.name)==path.read_bytes(),path
     for path in pathlib.Path('app/src/main/assets/abel-town-v144').glob('*'):
