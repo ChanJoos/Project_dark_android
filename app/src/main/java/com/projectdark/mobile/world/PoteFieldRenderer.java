@@ -152,7 +152,7 @@ public final class PoteFieldRenderer {
     if(name==null)return;
     Bitmap source=bitmap(name);if(source==null)return;
     Bitmap b=hitRemaining>0f?hitBitmap(name,source):source;
-    float h=PoteForestMonsterShowcase.bodyHeight(id),w=h*b.getWidth()/Math.max(1f,b.getHeight());
+    float h=PoteForestMonsterShowcase.bodyHeight(id),w=PoteForestMonsterShowcase.bodyWidth(id)*b.getWidth()/Math.max(1f,b.getHeight());
     float fx=facingX(direction),fy=facingY(direction);
     boolean spirit="POTE_SPIRIT".equals(PoteForestMonsterShowcase.species(id));
     float anchorX=x+fx*(motion.lunge-motion.recoil),anchorY=y+fy*(motion.lunge-motion.recoil);

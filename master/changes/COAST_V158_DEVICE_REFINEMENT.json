@@ -60,7 +60,7 @@
     "geometry": "Different authored cove/ridge/large central reef/chamber compositions with gate corridors",
     "portal": "Gold ring and hunting-entry label visible at initial camp camera",
     "art": "OnlyBlueHacon and ElectKoatl new12pose sheets; other120set members preserved",
-    "scale": "Species-specific silhouette scale, stable groundY184/192; approved player unchanged",
+    "scale": "Source-calibrated species heights plus broad, low ElectKoatl104x84 canvas; stable184/192 ground. Native comparison uses equipped player body54high/27wide, excluding weapon width; approved player unchanged.",
     "collision": "Scaled solid reef footprints and legal18/14Rucesion ground radii; shared live collision",
     "memory": "32floorLRU/60source-hit pairs; existing prewarm/vsync unchanged"
   },
@@ -68,5 +68,16 @@
     "Originalparty event remains unimplemented, Ariel preview-only",
     "Unobserved original topology remains adapted",
     "New physical-phone and visual acceptance pending"
-  ]
+  ],
+  "nativePreviewReview": {
+    "source": "0e470cde05391fabb62a2d4657cfe63f22e88547",
+    "status": "REVIEWED_PENDING_FINAL",
+    "findings": [
+      "Portal label overlapped quest HUD; moved to512/448 in camp",
+      "Whole-map capture with scaledCanvas culled floor/props; fixed capture to full native canvas before resize",
+      "Native equipped-player-relative ratios reviewed; BlueHacon/plant/rays further calibrated from exact native raster",
+      "Retained camp barrels were below tide/corridor exclusion; placed660/560 safely"
+    ],
+    "fullFiveJobBalance": "Passed at3905c64; final changes affect camp-only portals/barrels, rendering and review capture, not hunting collision/profile/AI/rewards"
+  }
 }
