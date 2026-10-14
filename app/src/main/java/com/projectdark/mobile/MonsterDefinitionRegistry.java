@@ -12,6 +12,7 @@ public final class MonsterDefinitionRegistry {
   private final Map<String,MonsterDefinition> definitions=new LinkedHashMap<>();
 
   public MonsterDefinitionRegistry(){
+    for(AbelCombatProfile p:AbelCombatProfile.all())definitions.put(p.id,new MonsterDefinition(p.id,AbelCoastMonsters.name(p.id),"아벨 모바일 3써클",p.level,p.hp,p.exp,null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));
     // master/data/Monster_Master.csv — exact verified row; region intentionally remains 포테의숲.
     definitions.put("POTE_SPIRIT",new MonsterDefinition(
         "POTE_SPIRIT","포테의정령","포테의숲",48,29201,308950,

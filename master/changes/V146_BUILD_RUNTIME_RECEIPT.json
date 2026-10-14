@@ -1,0 +1,34 @@
+{
+  "sourceCommit": "2c60e33efe8c12671e08f26af59f2fe3d9857f05",
+  "runId": "38234421107",
+  "versionCode": 146,
+  "versionName": "1.46-abel-ground-supports",
+  "applicationId": "com.projectdark.mobile.v146test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "c7512beb13e57245a2447b364087144b69aa843683c1e1c4fb7b7d3baa96f34f",
+  "apkBytes": 68284217,
+  "builtSeoul": "2026-10-12T19:16:18.936651+09:00",
+  "scope": "V146 Abel town floor and full-support bench repair with recovered town integration; whole-map/district/door/route/save/cache checks; V143 retained names/basic punch/visible Noah travel: 13 runtime candidate identities/12 art families, all seven newly observed video forms, per-zone roster <=5 art families/60 source-hit pairs, 72/96/108 actors and shared navigation/AI/Resolver/reward/save. KingArk fake/real are adapted solo encounters sharing one partially obscured screenshot reconstruction, NOT original party/event fidelity. Names of unlabelled forms and Crab/Berserker visual joins remain pending. Full original roster/animation/topology and phone/visual acceptance NOT VERIFIED",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "verifiedTests": 113,
+  "verifiedSuites": 23,
+  "apkArtifact": 11740328179,
+  "nativeArtifact": 11740630264,
+  "previewArtifact": 11740052865,
+  "sourceFilesCompared": 1027,
+  "focusedRun": 38234421107,
+  "focusedJob": 114761473028,
+  "focusedConclusion": "SUCCESS",
+  "broaderAndroidRuns": {
+    "38234421182": "IN_PROGRESS_UNCERTIFIED_AT_RECEIPT",
+    "38234425340": "IN_PROGRESS_UNCERTIFIED_AT_RECEIPT"
+  },
+  "nativeReview": "35 town renders byte-identical between local and CI; whole map,20 GameView districts,5 approaches/interiors and4 bench support views reviewed",
+  "attachmentsRecovered": 23,
+  "ciArchiveSha256": {
+    "v146-ci-native.zip": "ff68c0939f22ba1d216fdece851059a9048bf712981a9ed1df81e2a72f81afa4",
+    "v146-ci-apk.zip": "f938e6bd7c643cf4f0dcbd78b33b3461d3492d3f85cb2035e63cd81012ac93dd"
+  }
+}

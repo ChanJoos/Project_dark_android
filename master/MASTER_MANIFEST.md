@@ -1,3 +1,33 @@
+## 2026-10-14 — V154 approved town assets: exact APK/native candidate verified
+
+Source8d343e5d0bca2763ffd9cfafda544f7ef9680fd8 / treefe451b18efa4b58472ad641fa069faff3c1fb0b8 / focused Actions38492651371(job115622175997) SUCCESS.136 distinct primary native tests/25 suites plus5 job executions=141 passing executions,0 failures/errors/skips. All3 Rucesion touch entries/save/restores/returns,6 actual Abel/Rucesion NPC round trips,8 district renders/whole map/gutters/warm32-chunk cache, retained Abel five portals/services/benches/collision/.60s movement and skill/HUD/forest/save regressions pass. NPC outfits are34 distinct registered combinations; arrival occlusion uses actual source alpha, so transparent padding cannot falsely obscure the avatar. Three failed intermediate builds are retained in the exact receipt.
+
+V154/com.projectdark.mobile.v154test candidate built2026-10-14T10:05:03.704142+09:00,70,660,173bytes,SHA25648bea284e42777c9be167adce805272763cf568892fa32be15248080f2f63fa5. APK11862566805/native11862626815/preview11862792112. Downloaded3 archives SHA/CRC and embedded source/run/version plus112 packaged PNG/metadata/source files independently match. Native entry and full-blue-roof district pictures inspected and saved with APK. Receipt master/changes/V154_BUILD_RUNTIME_RECEIPT.json. User approved prior asset review/publication; PHONE/NEW NATIVE VISUAL acceptance PENDING. Same draftPR195/main unchanged. Wider Android38492657929/38492651351 pending at this recording.
+
+Prior unpublished local commits were lost on reset; restored approved atlas RGB, reconstructed alpha and thumbnail resampling are not bit-identical to lost files. Source hall/pergola/grass recover video RGB; hidden sprite completions/inland topology ADAPTED.104×104/24 families/206 props/20 facades/3 interiors; beach remains future content. Do not label this candidate as main or original entire-town reconstruction.
+
+## 2026-10-14 — V154 approved town assets published; new native checks in progress
+
+User approved asset review and GitHub publication. Restored source9af9055e981568a265a2e6e7fe241251e299e037 on existing PR195 after loss of unpublished scratch commits. Approved completed sprite RGB recovered from retained atlas; alpha and reduced thumbnail resampling are explicitly different from lost files. Rucesion source hall/pergola/grass re-extracted from original video.104×104/24 families/206 props/20 facades/3 merchant interiors plus Abel travel. Source and size/alpha checks pass. First Actions38491048222 exposed an ambiguous Path type in new test compilation; corrected without changing assets; full workflow now calls V154 verifier. Android runtime/APK/phone PENDING until new exact receipt. See docs/TOWN_ASSET_REPAIR_V154.md; do not reuse V153 or lost-local-commit claims as proof. No main merge.
+
+## 2026-10-13 — V153 exact-source third-circle candidate verified
+
+IMPLEMENTED / BUILD VERIFIED / ANDROID NATIVE RUNTIME VERIFIED; PHONE / USER VISUAL PENDING. Same draft PR195 and branch, main unchanged. Source `6c0bdd21afcf00f32dab744d663d8740ae1c9aaf` / Actions38364329715 (primary115186846057) SUCCESS:132 unique primary tests/24 suites plus5 independent job executions =137 passing executions,133 distinct class/method pairs,0 failures/errors/skips. All five normal-job live navigation/AI/Resolver/purchased-gear/learned-skill/paid-potion E01–E18 simulations reachLv70 with positive Gold and117+ actual defeat receipts. Original source catalog remains separate from13 ADAPTED_MOBILE_SOLO_3C profiles. Ordinary EXP and quest milestone EXP are both included; this is not pure-grind pacing.
+
+Final fixes prevent respawning onto an occupied actor tile and route ranged casting goals inside actual clamped follow-camera/dead-zone bounds. Actual regressions and5-job evidence pass. Retained five Milles40x16 portal pixel/touch-entry checks, common .60s movement, whole facades/props/live collision, caches, skills/HUD/save regressions. Eight downloaded artifacts SHA256/CRC validated; embedded identity plus87 packaged source/portal/NPC files independently matched; all five entrance renders and actual monster-cast scene inspected. Native floor warm rebuilds0/p95=2.753212ms is host CPU, not handset FPS.
+
+APK153/com.projectdark.mobile.v153test, built2026-10-13T16:52:27.052166+09:00, 70174809bytes, SHA2565a9d040c8a1ff5d3bf0038bfec13641b5f60a4977159bb8cae2cfa5bedc4185b, artifact11796691195. Preview11797006485/native11796254423. Exact receipt master/changes/V153_BUILD_RUNTIME_RECEIPT.json. Balance maps are entered directly per quest and merchant transactions occur between waves; continuous shop/report journeys are outside the hunting simulation and independently tested UI/portal paths do not claim a handset walkthrough. Mage uses normally learned element-aware manual spell selection; AUTO weakness optimization unverified. Separate test profile; no save migration/main merge claim. Continue physical-phone/user review from this exact receipt without restarting art/map/combat work.
+
+## V143 corrected names/basic punch/Noah exact candidate receipt
+
+master/source/abel_v143/coverage.json and master/changes/V143_BUILD_RUNTIME_RECEIPT.json supersede old identity joins; source601fc35a/Actions38180326177 SUCCESS;109 native tests/22 suites. Phone/user visual and original unresolved names/events remain pending. Source pixels unchanged.
+
+## V142 exact candidate build/native receipt
+
+Source2cb7a9c / Actions38177352950 SUCCESS;105 tests/21 suites;13 candidate identities/12 art families. Original fidelity/event/names/roster closure and phone/user acceptance OPEN. master/changes/V142_BUILD_RUNTIME_RECEIPT.json; original snapshots retained.
+
+V142 candidate adapter amendment: master/changes/ABEL-V142-SECOND-VIDEO-ROSTER.json; additive source/asset/provenance snapshots master/source/abel_v142 and master/assets/abel_v142. Historical Master CSV source unchanged.
+
 ## 2026-10-11 — V138 all221 audit and whole-spell timing integrated
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED / FULL ANDROID CI VERIFIED / INTEGRATED for the documented scope. All221 IDs audited (83 techniques/138 spells):173 Resolver,1 basic,8 linked/passive,18 utility,21 unavailable. All active Spell timing/presentation follows the accepted equipment-adjusted clock and shared1/3s cadence; ordinary reuse0 with source-version exceptions. Technique reuse remains separate/ADAPTED where original seconds are unknown. Upper target-cross/screen AUTO stays ranged; utility alive/control/MP gates reject without charge; missing recipient services do not fake self-success. Dara CHARGE_CAST keeps its existing .35s release/recovery after effective contact. Approved V136 B HUD and source skill pixels retained.

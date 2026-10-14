@@ -1,0 +1,35 @@
+{
+  "source": "DELIVERED_V145_APK",
+  "sha256": "aa1fabd058c3f66dcf549302afe93b433e4935e5ef1b9ede06268a3a2109fab1",
+  "sourceCommitClaim": "NOT_RECOVERED_ORIGINAL_LOST_SOURCE",
+  "files": {
+    "AbelTownGeometry.decompiled.txt": "031dd7ba3ea5e353d8876cfebef76176ef4cd0846cf856b34f9f04a157ede5b7",
+    "AbelTownRenderer.decompiled.txt": "a628d08a4b556021d59194f493e69e51530a2ed8627bb3fea625f3ca7a0ab659"
+  },
+  "rawTownAssetHashes": {
+    "bank.png": "33fa549b2f84394eea24c373a311d647ea0c11f3f18433f903ca5fce9a8fc273",
+    "bench_ne.png": "f61392db0a9f4f298e9cfcbf4f84c868ddf56802afba037ea5040f070537e927",
+    "bench_nw.png": "29d2133115ea4b043b2d609d5f6070e94d658bf7f710c2b286c17f70ff962976",
+    "bench_se.png": "32bdbeda3d171b63079bbbceee9d9c6599a52b541324f718d933f78cfdb779c5",
+    "bench_sw.png": "3d64527a75e573ca988b516ae67db96cd9e36e30c36c3789f14d142bdf8929c5",
+    "church.png": "410d06d6ccc2db0474234922994ef32de7b9663b6fe06722a410483193388715",
+    "cobble.png": "c0533dbd45e5886e3a24eed5b94382c2650ff425853b8999341c61085421101d",
+    "cobble_material.png": "7cb7d7a54d6a97218f1d9e6f41b54d8c3f217ab6ce54511cd19ce95c84322bbd",
+    "fence.png": "1169e5c95f0417fa9fb98592eb3390eaabdef247e1c3387a59432cc3d7d15bbc",
+    "forge.png": "4ce5026c8203b19a08cd3c1f9fcb48af0280718e042edac04a6afcc2311dc9e0",
+    "fountain.png": "ac400d892eba5f14a51075f6b1db2fd6b2fc7de6718d7ef7fd62d72016ac9435",
+    "grass.png": "1e6a212f1136dfa414e1428417821e0842c16bf9dcda7ef720da2c42b23f609d",
+    "grass_material.png": "21fa8430cbe778c51179b36962dbcc53d8897103b39489ffb85dfcca3878390c",
+    "house.png": "8ee6c81b2d44abd0ef7784e439550582dd4ef46b9e42f197b4902651c7c4e501",
+    "inn.png": "49a531d9934ec4504a1662f926db78b362a30b40a9d6d1969706d220f6ff816f",
+    "lamp.png": "16388735c7b6df5afe997fadfbd65814d1c63a089ae45c5eac943d4ad978aa2b",
+    "notice.png": "953fef460afcdbbf212494948421694b9aa2ca52cafb809e14fcc23fa30efd29",
+    "stone.png": "c74fca0f99739ecb0dbb6120372f7d08c10ef5f13c80b6fa121f17c321825aff",
+    "stone_material.png": "516038003984b58c73d9788eef25073f3c355c8cd6f3edb073afd0b156a623d8",
+    "tree.png": "7d84b4c9a85b23aeb704b826e09458a4ed8574f3ec29019e4c5695f53fbc3375",
+    "water.png": "7776e6c0a2d80733d63ff383ddf2ccdabec4a9698601306490048b3db0e4c4e0",
+    "water_material.png": "796c6fc0e8550368621a8d61b8fec9ed3ae463b69d2e189b282904204cc8f8bc"
+  },
+  "benchmark": "Milles V103 complete supports/frontmost-ground-anchor/native whole scene; not alpha counts alone",
+  "status": "V144_V145_VISUAL_REJECTED_V146_CANDIDATE_PENDING"
+}

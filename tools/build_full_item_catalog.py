@@ -12,7 +12,7 @@ def runtime_items():
   ident=json.loads(m[1]) if m[1].startswith('"')else constants.get(m[1])
   if ident:rows[ident]=m[2]
  for job in ('WARRIOR','ROGUE','MAGE','CLERIC','MARTIAL_ARTIST'):
-  for lv in (11,26):
+  for lv in (11,26,41,56,65):
    rows[f'IT_B_CAMPAIGN_{job}_{lv}']=job+' armor';rows[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']=job+' tool'
  for e in json.loads((ROOT/'master/canonical/Accessory_Catalog.json').read_text()):rows.setdefault(e['itemId'],e['name'])
  wardrobe=ROOT/'master/source/equipment/identity_v128/catalog.json'
@@ -67,7 +67,7 @@ CHOICES={
 }
 REUSE={'IT_SHOES':'IT_SOURCE_150_KUTU1_6FDB18DA','IT_TEST_SHOES_ML229':'IT_SOURCE_150_KUTU56_83C01E8B','IT_TEST_SHOES_ML230':'IT_SOURCE_150_KUTU41_24CE5A29','IT_B_POTE_SHOES':'IT_SOURCE_150_KUTU41_24CE5A29','IT_SOURCE_MINIMOB_2':'IT_SOURCE_197_ZEMSTONE_UMI_62F2D328'}
 for job,page,filename,tool in [('WARRIOR',164,'L86_male.gif','IT_B_JOB_WARRIOR_WEAPON'),('ROGUE',165,'L1_male.gif','IT_B_JOB_ROGUE_WEAPON'),('MAGE',166,'L99_male.gif','IT_B_JOB_MAGE_WAND'),('CLERIC',167,'L99_male.gif','IT_B_JOB_CLERIC_WAND'),('MARTIAL_ARTIST',168,'orurosu.gif',None)]:
- for lv in (11,26):
+ for lv in (11,26,41,56,65):
   CHOICES[f'IT_B_CAMPAIGN_{job}_{lv}']=(page,filename,'ADAPTED_VISUAL_EQUIVALENT')
   if tool:CHOICES[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']=CHOICES[tool]
   else:REUSE[f'IT_B_CAMPAIGN_TOOL_{job}_{lv}']='IT_GLOVE_LEATHER' if lv==11 else 'IT_SOURCE_170_KINTEBUKURO_7E1109C9'
@@ -170,7 +170,7 @@ def main():
  mask=ROOT/ring['maskPath'];assert sha(mask)==ring['maskSha256'];im.putalpha(Image.open(mask).convert('L'))
  im.save(ROOT/'app/src/main/assets'/ring['assetPath']);assert sha(ROOT/'app/src/main/assets'/ring['assetPath'])==ring['assetSha256']
  items['IT_RING_THREELINEGOLD']=ring
- runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==422
+ runtime=runtime_items();assert set(items)==set(runtime),(set(runtime)-set(items),set(items)-set(runtime));assert len(items)==452
  manifest=dict(revision='INVENTORY_ART_V131',registeredItems=len(items),policy='Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.',items=items)
  (APP/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
  (SRC/'bindings.json').write_text(json.dumps(dict(currentItems=len(items),newSourceBindings=len(audit),reusedSourceBindings=len(REUSE),items={k:dict(name=runtime[k],assetPath=v['assetPath'],identityMatch=v['identityMatch'])for k,v in items.items()}),ensure_ascii=False,indent=2)+'\n')

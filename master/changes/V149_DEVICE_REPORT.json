@@ -1,0 +1,25 @@
+{
+  "status": "DEVICE_FAILED_USER_REPORTED_V148",
+  "sourceCandidate": "0f88c305e06a83a1ac0372df8ea4a8b6183c5ad9",
+  "deviceVideoLibraryId": "libfile_dd4c425127f08191b1ea461d75bd4893",
+  "videoSha256": "3c7b69354c7a94a6c66bae332ea01ac12dd640ba84d6f77ca22252087f4d5117",
+  "durationSeconds": 14.652644,
+  "recordedSize": [
+    2340,
+    1080
+  ],
+  "recordingAverageFps": 16.38,
+  "recordingFpsIsNotEngineFps": true,
+  "rootCauses": [
+    "Abel floor chunk selection uses physical Canvas2340x1080 instead of logical viewport1170x540, demands more than32 bounded chunks and thrashes",
+    "Floor construction scans entire80x80 grid twice per chunk",
+    "Evicted floor bitmaps manually recycled while Android hardware display lists may reference them",
+    "Game loop .05s dt clamp drops movement time on slow frames",
+    "Town .60s tile step versus source walking reference median4.00036tiles/s",
+    "Town/east split and CampaignWorld.previous(town) points to forest boss",
+    "Generic gate arrival near facades rather than a dedicated plaza"
+  ],
+  "repairs": "One canonical town with offset source districts and landscaped bounded joins, logical viewport/cache/visible tile ranges/no manual recycle, .25s Abel-only steps with .2s catchup cap, isolated forest graph, plaza/harbor arrivals and legacy East migration",
+  "validation": "V149_EXACT_NATIVE_BUILD_VERIFIED_PHYSICAL_PENDING",
+  "evidence": "master/changes/V149_BUILD_RUNTIME_RECEIPT.json"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "USER_APPROVED_REVIEW_PUBLICATION_AUTHORIZED_NATIVE_PENDING",
+  "scope": "Recovered approved atlas pixels; source roof/pergola/grass re-extraction. Lost unpublished commit objects are not recovered. New candidate requires new exact-source native and APK checks.",
+  "approvedAtlasSha256": "518f1291e30e75074587dbb37b0fc4a747faaeff4e80324cc91ddce50e7485af",
+  "sourceVideos": [
+    {
+      "name": "Screen_Recording_20261013_204310_YouTube.mp4",
+      "sha256": "faf34925fd7bdb58b23c2ffacf824823a32b53083658e5ed52d10951c99816e4"
+    },
+    {
+      "name": "Screen_Recording_20261012_192929_YouTube.mp4",
+      "sha256": "0ce85617ea9bb94194e4cca0d7bb147fdbdd044c395f3f3aaf1fea04bf25816b"
+    }
+  ]
+}

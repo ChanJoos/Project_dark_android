@@ -1,0 +1,19 @@
+{
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "base_source": "510276cd0a6b686fb62c41c6cc7c6f432956727b",
+  "user_report": "Enterable Abel buildings have no visible entrance portal; use the same portal as Milles",
+  "reported_apk_version": "UNKNOWN_USER_DID_NOT_SPECIFY",
+  "reproduced_cause": "AbelTownRenderer renders facade props but has no service door marker draw; entry detection already exists",
+  "accepted_change": "Use the unchanged Milles portal_reagent_shop.webp, identical40x16 placement at existing door triggers and a threshold depth just above the facade like Milles",
+  "asset_sha256": "8731381583d35044703b9acbeaf602876009ba59bdb1024866d84035ba8dd6ff",
+  "runtime_scope": "all five enterable service doors only; map geometry, collision, movement, interiors and coast NPC routing preserved",
+  "acceptance": [
+    "all five portals visibly retain >=80% of source opaque portal pixels in real GameView render",
+    "actual ground touch on rendered portal navigates and enters the correct room",
+    "all existing Abel/forest/input/save checks pass",
+    "exact-source candidate APK and native frames reviewed"
+  ],
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "receipt": "master/changes/V152_BUILD_RUNTIME_RECEIPT.json"
+}

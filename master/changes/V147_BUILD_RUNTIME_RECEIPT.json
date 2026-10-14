@@ -1,0 +1,61 @@
+{
+  "version": 147,
+  "runtime_source": "3125ab808b01c71049e271043ff10954112e3350",
+  "run": 38294650809,
+  "run_url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38294650809",
+  "focus_conclusion": "success",
+  "unique_tests": 114,
+  "suites": 23,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "execution": "Robolectric NATIVE SDK34, actual GameView input/render/save paths; not a physical handset",
+  "build": {
+    "sourceCommit": "3125ab808b01c71049e271043ff10954112e3350",
+    "runId": "38294650809",
+    "versionCode": 147,
+    "versionName": "1.47-abel-source-town",
+    "applicationId": "com.projectdark.mobile.v147test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "34a1e6b50466ded145353e489f0b52a99343917135715ce193e97e9873bf70a8",
+    "apkBytes": 69606346,
+    "builtSeoul": "2026-10-13T04:08:01.544218+09:00",
+    "scope": "V147 Abel source-visible main/east district geometry, 53 source sprites, intact bench support contact pivots, five adapted service door/room joins, unique fixed-SW player-style Abel NPCs and matching keeper dialogue/UI avatars; actual door/exit/NPC/merchant purchase/bank/healing/restart and12 round-trip native checks. Original whole-map extent, clipped facades, role identities and unseen interiors remain partial/ADAPTED; phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "assets_verified": "53 Abel PNGs plus other pack metadata and NPC profiles exact packaged byte equality; APK/ZIP CRC and downloaded artifact digests verified",
+  "artifacts": [
+    {
+      "id": 11768851339,
+      "type": "apk",
+      "sha256": "2a27860d5fb980f0abd596d61b251137980d367843ad51fa3d55f7f119bc43f0"
+    },
+    {
+      "id": 11767817174,
+      "type": "native",
+      "sha256": "cebef3d6188868f352c4630fdbb82aa60dbad10f29eaecc6a45ed11ce3150112"
+    },
+    {
+      "id": 11767691776,
+      "type": "preview",
+      "sha256": "c31eb1e09f49b8a8e266e74226ae90673df2e24b92f3bba9a3f44b65c5da30f8"
+    }
+  ],
+  "visual_review": "Latest source native main/east entries, bench-support source view, all five keeper UI frames and source inn floor/exit reviewed. Distinct player-style keeper dialogue avatars match world profiles. User approval pending.",
+  "broader_android_runs": [
+    38294650796,
+    38294659280
+  ],
+  "broader_android_status": "IN_PROGRESS_UNCERTIFIED_AT_RECEIPT",
+  "integration": "draft PR195, unmerged",
+  "original_completion": false,
+  "remaining": [
+    "Whole original map extent unknown; unobserved floor extension ADAPTED",
+    "Hidden/clipped roofs/facades and inn advertisement-covered counter remain partial",
+    "Four exterior service-role joins and four authored interior layouts ADAPTED",
+    "Portals/arrivals selected playable integration topology, original placement unverified",
+    "Physical handset and user visual acceptance pending"
+  ]
+}

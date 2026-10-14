@@ -1,3 +1,181 @@
+abel_third_circle_v153:
+  runtime_source_sha: 6c0bdd21afcf00f32dab744d663d8740ae1c9aaf
+  focused_run: 38364329715
+  primary_unique_tests: 132
+  balance_executions: 5
+  total_passing_executions: 137
+  apk_artifact: 11796691195
+  receipt: master/changes/V153_BUILD_RUNTIME_RECEIPT.json
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/abel-coast-v139
+  contract: master/changes/ABEL_3C_V153.json
+  required_sources: [AGENTS.md, docs/MONSTER_CREATION_MANUAL.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, master/data/Monster_Master.csv, master/data/Hunting_EXP_Balance.csv, master/data/Progression_Master.csv, master/data/Level_EXP_Curve.csv, master/source/abel_v143/coverage.json]
+  phone: PENDING
+  user_visual: PENDING
+
+abel_entry_portals_v152:
+  runtime_source_sha: 292026ad8720a24ccbb8c6e260c2323b932e02b9
+  focused_run: 38333392441
+  unique_tests: 126
+  apk_artifact: 11783164535
+  evidence: master/changes/V152_BUILD_RUNTIME_RECEIPT.json
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  reported_apk_version: UNKNOWN
+  active_branch: codex/abel-coast-v139
+  owner: ROOT_SINGLE_EDITOR
+  contract: master/changes/V152_PORTAL_REPAIR.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/CHAT_HANDOFF.md, app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java, assets/milles/production/maps/milles_garden.json, app/src/main/java/com/projectdark/mobile/world/AbelTownRenderer.java, app/src/main/java/com/projectdark/mobile/world/AbelTownGeometry.java]
+  phone: PENDING
+  user_visual: PENDING
+
+abel_repair_v151:
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  reported_failure: V149_DEVICE_FAILED_USER_REPORTED
+  runtime_source_sha: 7b90c1967011a2a207d37e0f64a26f224be0e355
+  focused_run: 38330111652
+  unique_tests: 125
+  suites: 23
+  apk_artifact: 11782776343
+  native_artifact: 11782531960
+  preview_artifact: 11781594453
+  evidence: master/changes/V151_BUILD_RUNTIME_RECEIPT.json
+  movement: SHARED_MILLES_POTE_0_60_SECONDS
+  collision: FIVE_FOUNDATIONS_82_DIRECT_WALL_ATTEMPTS_BLOCKED
+  runtime_map: MAP_ABEL_TOWN
+  coast_departure: ABEL_NPC_ONLY
+  original_missing_shapes: ADAPTED
+  rail_guard: SHORT_LAND_GAPS_ONLY_SEPARATE_PIERS
+  phone: PENDING
+  user_visual: PENDING
+  active_branch: codex/abel-coast-v139
+  handoff: docs/CHAT_HANDOFF.md
+
+abel_repair_v150:
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  reported_failure: V149_DEVICE_FAILED_USER_REPORTED
+  runtime_source_sha: 8e345ba92eb0ecfc15ff67b8da7c1c91f60c67e8
+  focused_run: 38328172051
+  unique_tests: 125
+  suites: 23
+  apk_artifact: 11782272277
+  native_artifact: 11782182337
+  preview_artifact: 11781631868
+  evidence: master/changes/V150_BUILD_RUNTIME_RECEIPT.json
+  movement: SHARED_MILLES_POTE_0_60_SECONDS
+  collision: FIVE_FOUNDATIONS_82_DIRECT_WALL_ATTEMPTS_BLOCKED
+  runtime_map: MAP_ABEL_TOWN
+  coast_departure: ABEL_NPC_ONLY
+  original_missing_shapes: ADAPTED
+  phone: PENDING
+  user_visual: PENDING
+  active_branch: codex/abel-coast-v139
+  handoff: docs/CHAT_HANDOFF.md
+
+abel_single_v149:
+  status: HISTORICAL_BUILD_NATIVE_USER_REPORTED_FAILED
+  device_report: V149_USER_REPORTED_FAILED
+  runtime_source_sha: f061adbc6da964a13a2d004084e1f269bbc6368f
+  focused_run: 38321606252
+  unique_tests: 120
+  suites: 23
+  apk_artifact: 11779331257
+  evidence: master/changes/V149_BUILD_RUNTIME_RECEIPT.json
+  runtime_map: MAP_ABEL_TOWN
+  old_east_map: SAVE_ALIAS_ONLY
+  forest_connection: REMOVED
+  source_join: ADAPTED
+  phone: FAILED_USER_REPORTED
+  user_visual: REJECTED_USER_REPORTED
+  user_visual: PENDING
+
+abel_repair_v148:
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  supersedes_visual: V147_USER_REJECTED
+  runtime_source_sha: 0f88c305e06a83a1ac0372df8ea4a8b6183c5ad9
+  focused_run: 38314035520
+  unique_tests: 117
+  suites: 23
+  apk_artifact: 11775863100
+  evidence: master/changes/V148_BUILD_RUNTIME_RECEIPT.json
+  coast_departure: ABEL_EAST_NPC_ONLY
+  npc_profiles: 29
+  phone: PENDING
+  user_visual: PENDING
+  handoff: docs/CHAT_HANDOFF.md
+
+abel_video_v147:
+  active_branch: codex/abel-coast-v139
+  first_media_save: 9eae03fecc650153ca2c0eec7642007f041ac09d
+  publication: EXPLICITLY_APPROVED_20261013_PUBLISHED
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  runtime_source_sha: 3125ab808b01c71049e271043ff10954112e3350
+  focused_run: 38294650809
+  unique_tests: 114
+  suites: 23
+  apk_artifact: 11768851339
+  evidence: master/changes/V147_BUILD_RUNTIME_RECEIPT.json
+  broader_android: IN_PROGRESS_UNCERTIFIED_AT_RECEIPT
+  npc_profiles: 28
+  interiors: 5
+  observed_main_cells: 2029
+  observed_east_cells: 1692
+  source_full_map: UNKNOWN
+  phone_visual: PENDING
+  handoff: docs/ABEL_VIDEO_V147.md
+
+abel_visual_v146:
+  owner: Director_single_editor
+  active_branch: codex/abel-coast-v139
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  publication: USER_EXPLICITLY_APPROVED_20261012
+  rejected_versions: [144,145]
+  recovered_assets_checkpoint: 51875a80588f45f60cc5f6f95a8ece4d0b7e0ed5
+  recovery: RECONSTRUCTED_FROM_V145_APK_NOT_EXACT_LOST_COMMIT
+  runtime_source_sha: 2c60e33efe8c12671e08f26af59f2fe3d9857f05
+  focused_run: 38234421107
+  unique_tests: 113
+  suites: 23
+  apk_artifact: 11740328179
+  evidence: master/changes/V146_BUILD_RUNTIME_RECEIPT.json
+  handoff: docs/ABEL_V146_RECOVERY_CHECKPOINT.md
+  physical_phone: PENDING
+  user_visual: PENDING
+
+abel_punch_travel_v143:
+  owner: Director_single_editor
+  active_branch: codex/abel-coast-v139
+  status: BUILD_NATIVE_INPUT_RENDER_VERIFIED_PHONE_PENDING
+  runtime_source_sha: 601fc35a57d259eb24a8c44bc7846f52b0dca1be
+  focused_run: 38180326177
+  unique_tests: 109
+  suites: 22
+  apk_artifact: 11718295007
+  evidence: master/changes/V143_BUILD_RUNTIME_RECEIPT.json
+  device_report: BASIC_PUNCH_MISSING_AND_ABEL_NPC_DISCOVERY_FAILED_USER_REPORTED
+  required_sources: [AGENTS.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/MONSTER_CREATION_MANUAL.md, docs/SKILL_PRESENTATION_CONTRACT.md, docs/SKILL_ABILITY_CONTRACT.md, app/src/main/assets/skill-presentation/catalog.json, master/source/abel_v143/coverage.json]
+  current_original_name_gap: SLATE_AND_NORMAL_KRAKEN_JOIN
+  physical_phone: PENDING
+  user_visual_acceptance: PENDING
+  integration: DRAFT_PR195_UNMERGED
+
+abel_visual_revision:
+  owner: Director_single_editor
+  active_branch: codex/abel-coast-v139
+  status: V142_CANDIDATE_BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/MONSTER_CREATION_MANUAL.md, design/DESIGN_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/abel_v139/research.json, master/source/abel_v141/research.json, master/source/abel_v142/research.json, master/source/abel_v142/coverage.json, docs/ABEL_COAST_V139.md]
+  user_visual_acceptance: PENDING
+  runtime_source_sha: 2cb7a9c837427ff5c96e409aacd45ec4d64d432a
+  focused_run: 38177352950
+  native_unique_tests: 105
+  native_suites: 21
+  apk_artifact: 11716179308
+  evidence: master/changes/V142_BUILD_RUNTIME_RECEIPT.json
+  physical_phone: PENDING
+  original_restoration: OPEN_NAMES_EVENT_RULES_FIDELITY_AND_ROSTER_CLOSURE
+  broader_android: IN_PROGRESS_UNCERTIFIED
+  integration: DRAFT_PR195_UNMERGED
+
 expansion_lv41_plus:
   status: FIRST_ABEL_SCOPE_INTEGRATED_NATIVE_FULL_CI_VERIFIED
   owner: Director_single_editor

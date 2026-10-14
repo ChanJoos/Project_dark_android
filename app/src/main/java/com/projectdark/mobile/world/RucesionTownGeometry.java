@@ -1,0 +1,61 @@
+package com.projectdark.mobile.world;
+import android.graphics.RectF;
+import java.util.*;
+/** Registered source-visible geometry. Service names and unobserved joins are adaptations. */
+public final class RucesionTownGeometry {
+ public static final String ID="MAP_RUCESION_TOWN",EAST_ID="MAP_RUCESION_LEGACY";
+ public static final int SIZE=104;public static final int EAST_U=28,EAST_V=4;public static final float EAST_DX=768,EAST_DY=512;
+ public static String canonical(String id){return EAST_ID.equals(id)?ID:id;}
+ public static float x(int u,int v){return 3328+(u-v)*32;}
+ public static float y(int u,int v){return 64+(u+v)*16;}
+ public static boolean contains(String id){return ID.equals(id)||EAST_ID.equals(id);}
+ public static final class Prop {
+  public final String asset;public final float x,y,width,height,anchorX,anchorY,depthY;public final int u,v;public final boolean mirror=false;
+  Prop(String a,float sx,float sy,float ax,float ay,float w,float h){asset=a;x=3328+sx*AbelVideoLayout.SCALE;y=64+sy*AbelVideoLayout.SCALE;anchorX=ax*AbelVideoLayout.SCALE;anchorY=ay*AbelVideoLayout.SCALE;width=w*AbelVideoLayout.SCALE;height=h*AbelVideoLayout.SCALE;u=Math.round((sx/28+sy/14)/2);v=Math.round((sy/14-sx/28)/2);depthY=y+Math.max(0,height-anchorY);}
+ }
+ public static final List<Prop> PROPS=RucesionLayout.props(),EAST_PROPS=PROPS;
+ public static List<Prop> props(String id){return PROPS;}
+ public static int tile(String id,int u,int v){if(u<0||v<0||u>=SIZE||v>=SIZE)return 0;return RucesionLayout.TILES[u].charAt(v)-'0';}
+ public static final class Building {
+  public final String id,asset,title,interior;public final int u,v,du=4,dv=4;public final float width;public final Prop prop;
+  Building(String id,String interior,Prop p){this.id=id;this.interior=interior;asset=p.asset;title="뤼케시온 건물";u=p.u-1;v=p.v-3;prop=p;width=p.width;}
+  public float x(){return prop.x;}public float y(){return prop.y;}public float doorX(){return RucesionTownGeometry.x(prop.u,prop.v);}public float doorY(){return RucesionTownGeometry.y(prop.u,prop.v);}
+  boolean occupies(int a,int b){return solidAt(prop,RucesionTownGeometry.x(a,b),RucesionTownGeometry.y(a,b));}
+ }
+ public static final List<Building> BUILDINGS;
+ static {BUILDINGS=Collections.unmodifiableList(Arrays.asList(new Building("rucesion_armor","rucesion_interior_armor",PROPS.get(0)),new Building("rucesion_reagent","rucesion_interior_reagent",PROPS.get(1)),new Building("rucesion_weapon","rucesion_interior_weapon",PROPS.get(3))));}
+
+ public static Building forInterior(String id){for(Building b:BUILDINGS)if(Objects.equals(id,b.interior))return b;return null;}
+ public static Building doorAt(float px,float py){for(Building b:BUILDINGS)if(Math.hypot(px-b.doorX(),py-b.doorY())<12)return b;return null;}
+ public static boolean pool(int u,int v){return tile(EAST_ID,u,v)==2;}
+ public static boolean channel(int u,int v){return tile(ID,u,v)==2||tile(ID,u,v)==4;}
+ public static boolean garden(int u,int v){return tile(ID,u,v)==5;}
+ public static boolean road(int u,int v){return tile(ID,u,v)==1;}
+ public static boolean waterCell(int u,int v){return pool(u,v)||channel(u,v);}
+ public static boolean benchCell(int u,int v){for(Prop p:PROPS)if(p.asset.startsWith("bench_")&&p.u==u&&p.v==v)return true;return false;}
+ public static boolean blocked(int u,int v){return blocked(ID,u,v);}
+ /** Same immutable ground occupancy for path planning, direct steps and save validation. */
+ private static final boolean[][] SOLID=buildSolids();
+ public static boolean blocked(String id,int u,int v){return u<1||v<1||u>=SIZE-1||v>=SIZE-1||SOLID[u][v];}
+ public static boolean solidAt(Prop prop,float px,float py){
+  float[] a=RucesionLayout.vertices(prop.asset);
+  if(a!=null){float lx=(px-prop.x+prop.anchorX)/AbelVideoLayout.SCALE,ly=(py-prop.y+prop.anchorY)/AbelVideoLayout.SCALE;boolean inside=false;
+   for(int i=0,j=a.length-2;i<a.length;j=i,i+=2)if((a[i+1]>ly)!=(a[j+1]>ly)&&lx<(a[j]-a[i])*(ly-a[i+1])/(a[j+1]-a[i+1])+a[i])inside=!inside;return inside;
+  }
+  if(prop.asset.startsWith("tree_"))return Math.abs(px-prop.x)<=15&&Math.abs(py-prop.y)<=11;
+  if(prop.asset.startsWith("bench_")||prop.asset.startsWith("lamp"))return prop.u==Math.round(((px-3328)/32+(py-64)/16)/2)&&prop.v==Math.round(((py-64)/16-(px-3328)/32)/2);
+  return false;
+ }
+ private static boolean[][] buildSolids(){boolean[][] a=new boolean[SIZE][SIZE];
+  for(int u=0;u<SIZE;u++)for(int v=0;v<SIZE;v++){int k=tile(ID,u,v);a[u][v]=u<1||v<1||u>=SIZE-1||v>=SIZE-1||RucesionLayout.ACTIVE[u].charAt(v)!='1'||k==2||k==4||k==5;}
+  for(Prop p:PROPS){int radius=p.asset.startsWith("building_")?12:2;for(int u=Math.max(1,p.u-radius);u<Math.min(SIZE-1,p.u+radius+1);u++)for(int v=Math.max(1,p.v-radius);v<Math.min(SIZE-1,p.v+radius+1);v++)if(solidAt(p,x(u,v),y(u,v)))a[u][v]=true;}
+  // Each service has one short marked ground approach, not a corridor cut through its walls.
+  for(Building b:BUILDINGS)for(int v=b.prop.v;v<=b.prop.v+2;v++)if(v>0&&v<SIZE-1)a[b.prop.u][v]=false;
+  return a;
+ }
+ public static List<RectF> obstacles(){return obstacles(ID);}
+ public static List<RectF> obstacles(String id){List<RectF> a=new ArrayList<>();for(int u=0;u<SIZE;u++)for(int v=0;v<SIZE;v++)if(blocked(id,u,v))a.add(new RectF(x(u,v)-12,y(u,v)-6,x(u,v)+12,y(u,v)+6));return Collections.unmodifiableList(a);}
+ public static List<WorldMoveTargetController.TileCenter> navigation(){return navigation(ID);}
+ public static List<WorldMoveTargetController.TileCenter> navigation(String id){List<WorldMoveTargetController.TileCenter> a=new ArrayList<>();for(int u=1;u<SIZE-1;u++)for(int v=1;v<SIZE-1;v++)if(!blocked(id,u,v))a.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(a);}
+ private RucesionTownGeometry(){}
+}

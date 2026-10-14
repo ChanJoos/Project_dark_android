@@ -31,6 +31,7 @@ public final class WorldMoveTargetController {
   }
   public interface NavigationWorld {
     List<TileCenter> navigationTiles();
+    default float tileStepSeconds(){return TILE_STEP_SECONDS;}
     boolean canPlayerOccupy(float worldX,float worldY);
     default boolean canPlayerTraverse(float fromX,float fromY,float toX,float toY){
       float dx=toX-fromX,dy=toY-fromY;
@@ -196,9 +197,9 @@ public final class WorldMoveTargetController {
 
   public Snapshot tick(float dt){
     if(status!=Status.MOVING||dt<=0f)return snapshot();
-    stepClock+=dt;
-    while(status==Status.MOVING&&stepClock+.00001f>=TILE_STEP_SECONDS){
-      stepClock-=TILE_STEP_SECONDS;
+    stepClock+=dt;float seconds=world.tileStepSeconds();
+    while(status==Status.MOVING&&stepClock+.00001f>=seconds){
+      stepClock-=seconds;
       if(waypointIndex>=path.size()){status=Status.REACHED;break;}
       TileCenter from=currentTile(),to=path.get(waypointIndex);
       Direction direction=from==null?null:Direction.between(from.x,from.y,to.x,to.y);

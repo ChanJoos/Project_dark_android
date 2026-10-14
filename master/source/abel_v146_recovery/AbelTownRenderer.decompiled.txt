@@ -1,0 +1,343 @@
+package com.projectdark.mobile.world;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import com.projectdark.mobile.world.AbelTownGeometry;
+import com.projectdark.mobile.world.PoteFieldRenderer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.ToDoubleFunction;
+
+/* loaded from: classes3.dex */
+public final class AbelTownRenderer {
+    private static final int CHUNK = 256;
+    private static final int GUTTER = 2;
+    private static final int LIMIT = 32;
+    private final Context context;
+    private final Paint p = new Paint();
+    private final Map<String, Bitmap> assets = new HashMap();
+    private final LinkedHashMap<Long, Bitmap> chunks = new LinkedHashMap<>(32, 0.75f, true);
+    private final RectF dst = new RectF();
+    private final Path rim = new Path();
+    private final Path slab = new Path();
+    private final Paint floorPaint = new Paint();
+    private final Map<String, BitmapShader> materials = new HashMap();
+    private final Map<String, Path> floorAreas = new LinkedHashMap();
+    private final Path waterRim = new Path();
+
+    private static float fx(float u, float v) {
+        return ((u - v) * 32.0f) + 1536.0f;
+    }
+
+    private static float fy(float u, float v) {
+        return ((u + v) * 16.0f) + 96.0f;
+    }
+
+    private static void diamond(Path path, float u, float v, float radius) {
+        float x = fx(u, v);
+        float y = fy(u, v);
+        path.moveTo(x, y - (radius * 32.0f));
+        path.lineTo((radius * 64.0f) + x, y);
+        path.lineTo(x, (32.0f * radius) + y);
+        path.lineTo(x - (64.0f * radius), y);
+        path.close();
+    }
+
+    private void floorGeometry() {
+        String[] strArr = {"stone_material", "cobble_material", "water_material", "grass_material"};
+        for (int i = 0; i < 4; i++) {
+            String kind = strArr[i];
+            this.floorAreas.put(kind, new Path());
+        }
+        for (int u = 0; u <= 44; u++) {
+            for (int v = 0; v <= 44; v++) {
+                String kind2 = AbelTownGeometry.waterCell(u, v) ? "water_material" : AbelTownGeometry.garden(u, v) ? "grass_material" : AbelTownGeometry.road(u, v) ? "cobble_material" : "stone_material";
+                diamond(this.floorAreas.get(kind2), u, v, 0.5f);
+                if (AbelTownGeometry.waterCell(u, v)) {
+                    float x = fx(u, v);
+                    float y = fy(u, v);
+                    if (!AbelTownGeometry.waterCell(u - 1, v)) {
+                        this.waterRim.moveTo(x - 32.0f, y);
+                        this.waterRim.lineTo(x, y - 16.0f);
+                    }
+                    if (!AbelTownGeometry.waterCell(u, v - 1)) {
+                        this.waterRim.moveTo(x, y - 16.0f);
+                        this.waterRim.lineTo(x + 32.0f, y);
+                    }
+                    if (!AbelTownGeometry.waterCell(u + 1, v)) {
+                        this.waterRim.moveTo(x + 32.0f, y);
+                        this.waterRim.lineTo(x, y + 16.0f);
+                    }
+                    if (!AbelTownGeometry.waterCell(u, v + 1)) {
+                        this.waterRim.moveTo(x, 16.0f + y);
+                        this.waterRim.lineTo(x - 32.0f, y);
+                    }
+                }
+            }
+        }
+    }
+
+    public AbelTownRenderer(Context context) {
+        this.context = context;
+        this.p.setFilterBitmap(false);
+        this.p.setAntiAlias(false);
+        floorGeometry();
+    }
+
+    private Bitmap image(String name) throws IOException {
+        Bitmap b = this.assets.get(name);
+        if (b != null) {
+            return b;
+        }
+        try {
+            InputStream in = this.context.getAssets().open("abel-town-v144/" + name + ".png");
+            try {
+                Bitmap b2 = BitmapFactory.decodeStream(in);
+                if (b2 == null) {
+                    throw new IOException(name);
+                }
+                b2.prepareToDraw();
+                this.assets.put(name, b2);
+                if (in != null) {
+                    in.close();
+                }
+                return b2;
+            } finally {
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Missing Abel town sprite " + name, e);
+        }
+    }
+
+    public int floorCacheEntries() {
+        return this.chunks.size();
+    }
+
+    public long floorCachePixelBytes() {
+        long size = 0;
+        for (Bitmap b : this.chunks.values()) {
+            size += b.getAllocationByteCount();
+        }
+        return size;
+    }
+
+    public void prepare() throws IOException {
+        String[] strArr = {"stone", "cobble", "water", "grass", "bench_ne", "bench_nw", "bench_se", "bench_sw", "stone_material", "cobble_material", "water_material", "grass_material", "lamp", "notice", "fence", "tree", "fountain", "church", "inn", "bank", "forge", "house"};
+        for (int i = 0; i < 22; i++) {
+            String s = strArr[i];
+            image(s);
+        }
+    }
+
+    public void draw(final Canvas c, WorldRuntimeAdapter w, List<PoteFieldRenderer.ActorDraw> actors) {
+        final AbelTownRenderer abelTownRenderer = this;
+        final Canvas canvas = c;
+        final float ox = w.camera().cameraX();
+        final float oy = w.camera().cameraY();
+        canvas.drawColor(-12103853);
+        int x0 = (int) Math.floor(ox / 256.0f);
+        int y0 = (int) Math.floor(oy / 256.0f);
+        int x1 = (int) Math.floor((canvas.getWidth() + ox) / 256.0f);
+        int y1 = (int) Math.floor((canvas.getHeight() + oy) / 256.0f);
+        int cy = y0;
+        while (cy <= y1) {
+            int cx = x0;
+            while (cx <= x1) {
+                long key = (cx << 32) ^ (cy & 4294967295L);
+                Bitmap b = abelTownRenderer.chunks.get(Long.valueOf(key));
+                if (b == null) {
+                    b = Bitmap.createBitmap(260, 260, Bitmap.Config.ARGB_8888);
+                    abelTownRenderer.paintFloor(new Canvas(b), (cx * CHUNK) - 2, (cy * CHUNK) - 2);
+                    abelTownRenderer.chunks.put(Long.valueOf(key), b);
+                    if (abelTownRenderer.chunks.size() > 32) {
+                        Iterator<Map.Entry<Long, Bitmap>> it = abelTownRenderer.chunks.entrySet().iterator();
+                        it.next().getValue().recycle();
+                        it.remove();
+                    }
+                }
+                float f = ((cx * CHUNK) - 2) - ox;
+                float f2 = ((cy * CHUNK) - 2) - oy;
+                int cy2 = cy;
+                int cy3 = cx + 1;
+                int cx2 = cx;
+                int cx3 = cy2 + 1;
+                abelTownRenderer.dst.set(f, f2, ((cy3 * CHUNK) + 2) - ox, ((cx3 * CHUNK) + 2) - oy);
+                canvas.drawBitmap(b, (Rect) null, abelTownRenderer.dst, abelTownRenderer.p);
+                cx = cx2 + 1;
+                cy = cy2;
+            }
+            cy++;
+        }
+        List<PoteFieldRenderer.ActorDraw> ordered = new ArrayList<>(actors);
+        for (final AbelTownGeometry.Building b2 : AbelTownGeometry.BUILDINGS) {
+            ordered.add(new PoteFieldRenderer.ActorDraw(b2.x(), b2.y(), 280.0f, b2.width, new Runnable() { // from class: com.projectdark.mobile.world.AbelTownRenderer$$ExternalSyntheticLambda0
+                @Override // java.lang.Runnable
+                public final void run() throws IOException {
+                    this.f$0.lambda$draw$0(canvas, b2, ox, oy);
+                }
+            }));
+            abelTownRenderer = this;
+            canvas = c;
+        }
+        for (final AbelTownGeometry.Prop prop : AbelTownGeometry.PROPS) {
+            ordered.add(new PoteFieldRenderer.ActorDraw(prop.x, prop.y, 120.0f, prop.width, new Runnable() { // from class: com.projectdark.mobile.world.AbelTownRenderer$$ExternalSyntheticLambda1
+                @Override // java.lang.Runnable
+                public final void run() throws IOException {
+                    this.f$0.lambda$draw$1(c, prop, ox, oy);
+                }
+            }));
+        }
+        ordered.sort(Comparator.comparingDouble(new ToDoubleFunction() { // from class: com.projectdark.mobile.world.AbelTownRenderer$$ExternalSyntheticLambda2
+            /*  JADX ERROR: JadxRuntimeException in pass: ModVisitor
+                jadx.core.utils.exceptions.JadxRuntimeException: Can't remove SSA var: r0v0 double, still in use, count: 1, list:
+                  (r0v0 double) from 0x0006: RETURN (r0v0 double)
+                	at jadx.core.utils.InsnRemover.removeSsaVar(InsnRemover.java:162)
+                	at jadx.core.utils.InsnRemover.unbindResult(InsnRemover.java:127)
+                	at jadx.core.utils.InsnRemover.unbindInsn(InsnRemover.java:91)
+                	at jadx.core.utils.InsnRemover.addAndUnbind(InsnRemover.java:57)
+                	at jadx.core.dex.visitors.ModVisitor.removeStep(ModVisitor.java:468)
+                	at jadx.core.dex.visitors.ModVisitor.visit(ModVisitor.java:97)
+                */
+            @Override // java.util.function.ToDoubleFunction
+            public final double applyAsDouble(java.lang.Object r3) {
+                /*
+                    r2 = this;
+                    com.projectdark.mobile.world.PoteFieldRenderer$ActorDraw r3 = (com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw) r3
+                    double r0 = com.projectdark.mobile.world.AbelTownRenderer.lambda$draw$2(r3)
+                    return r0
+                */
+                throw new UnsupportedOperationException("Method not decompiled: com.projectdark.mobile.world.AbelTownRenderer$$ExternalSyntheticLambda2.applyAsDouble(java.lang.Object):double");
+            }
+        }));
+        for (PoteFieldRenderer.ActorDraw a : ordered) {
+            a.draw.run();
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$draw$0(Canvas c, AbelTownGeometry.Building b, float ox, float oy) throws IOException {
+        building(c, b, ox, oy);
+        if (b.interior != null) {
+            this.p.setColor(-14207942);
+            this.p.setTextSize(9.0f);
+            this.p.setTextAlign(Paint.Align.CENTER);
+            c.drawText(b.title, b.doorX() - ox, (b.doorY() - oy) + 20.0f, this.p);
+            this.p.setColor(-1);
+            this.p.setTextAlign(Paint.Align.LEFT);
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public /* synthetic */ void lambda$draw$1(Canvas c, AbelTownGeometry.Prop prop, float ox, float oy) throws IOException {
+        sprite(c, prop.asset, prop.x - ox, prop.y - oy, prop.width, prop.mirror);
+    }
+
+    private void building(Canvas c, AbelTownGeometry.Building b, float ox, float oy) throws IOException {
+        Bitmap im = image(b.asset);
+        float px = b.asset.equals("church") ? 114.5f : b.asset.equals("inn") ? 106.0f : b.asset.equals("bank") ? 90.0f : b.asset.equals("forge") ? 117.0f : 108.5f;
+        float py = b.asset.equals("church") ? 267.0f : b.asset.equals("inn") ? 269.0f : b.asset.equals("bank") ? 275.0f : b.asset.equals("forge") ? 265.0f : 256.0f;
+        float scale = b.width / im.getWidth();
+        sprite(c, b.asset, (b.doorX() - ((px - (im.getWidth() / 2.0f)) * scale)) - ox, (b.doorY() + ((im.getHeight() - py) * scale)) - oy, b.width, false);
+    }
+
+    private void material(Canvas c, String name, Path area) {
+        BitmapShader shader = this.materials.get(name);
+        if (shader == null) {
+            shader = new BitmapShader(image(name), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+            this.materials.put(name, shader);
+        }
+        this.floorPaint.setShader(shader);
+        this.floorPaint.setStyle(Paint.Style.FILL);
+        this.floorPaint.setColor(-1);
+        this.floorPaint.setAlpha(255);
+        this.floorPaint.setAntiAlias(false);
+        c.drawPath(area, this.floorPaint);
+    }
+
+    private void paintFloor(Canvas c, float ox, float oy) {
+        Canvas canvas = c;
+        canvas.drawColor(-12103853);
+        canvas.save();
+        canvas.translate(-ox, -oy);
+        material(canvas, "stone_material", this.floorAreas.get("stone_material"));
+        canvas.save();
+        canvas.clipPath(this.floorAreas.get("stone_material"));
+        this.floorPaint.setShader(null);
+        this.floorPaint.setStyle(Paint.Style.STROKE);
+        this.floorPaint.setStrokeWidth(0.8f);
+        this.floorPaint.setAntiAlias(true);
+        this.floorPaint.setColor(-8547943);
+        this.floorPaint.setAlpha(130);
+        for (float u = 0.75f; u < 46.0f; u += 2.5f) {
+            for (float v = 0.75f; v < 46.0f; v += 2.5f) {
+                float x = fx(u, v);
+                float y = fy(u, v);
+                if (x >= ox - 100.0f && x <= canvas.getWidth() + ox + 100.0f && y >= oy - 60.0f && y <= canvas.getHeight() + oy + 60.0f) {
+                    this.slab.reset();
+                    diamond(this.slab, u, v, 1.0f);
+                    canvas.drawPath(this.slab, this.floorPaint);
+                    this.floorPaint.setAlpha(70);
+                    float k = -1.0f;
+                    for (float f = 1.0f; k <= f; f = 1.0f) {
+                        canvas.drawLine(fx(u + k, v + f), fy(u + k, v + f), fx(u + k, v + 1.5f), fy(u + k, v + 1.5f), this.floorPaint);
+                        canvas = c;
+                        canvas.drawLine(fx(u + 1.0f, v + k), fy(u + 1.0f, v + k), fx(u + 1.5f, v + k), fy(u + 1.5f, v + k), this.floorPaint);
+                        k += 0.5f;
+                    }
+                    this.floorPaint.setAlpha(130);
+                }
+            }
+        }
+        canvas.restore();
+        material(canvas, "cobble_material", this.floorAreas.get("cobble_material"));
+        material(canvas, "water_material", this.floorAreas.get("water_material"));
+        material(canvas, "grass_material", this.floorAreas.get("grass_material"));
+        this.floorPaint.setShader(null);
+        this.floorPaint.setStyle(Paint.Style.STROKE);
+        this.floorPaint.setAntiAlias(true);
+        this.floorPaint.setColor(-8546658);
+        this.floorPaint.setStrokeWidth(4.0f);
+        this.floorPaint.setAlpha(255);
+        canvas.drawPath(this.waterRim, this.floorPaint);
+        this.floorPaint.setColor(-3877934);
+        this.floorPaint.setStrokeWidth(2.0f);
+        canvas.drawPath(this.waterRim, this.floorPaint);
+        this.floorPaint.setStyle(Paint.Style.FILL);
+        this.floorPaint.setAntiAlias(false);
+        this.floorPaint.setAlpha(255);
+        canvas.restore();
+    }
+
+    private void sprite(Canvas c, String name, float x, float y, float width, boolean mirror) throws IOException {
+        Bitmap b = image(name);
+        float h = (b.getHeight() * width) / b.getWidth();
+        if ((width / 2.0f) + x < 0.0f || x - (width / 2.0f) > c.getWidth() || y < 0.0f || y - h > c.getHeight()) {
+            return;
+        }
+        c.save();
+        if (mirror) {
+            c.translate(x * 2.0f, 0.0f);
+            c.scale(-1.0f, 1.0f);
+        }
+        this.dst.set(x - (width / 2.0f), y - h, (width / 2.0f) + x, y);
+        this.p.setColor(-1);
+        this.p.setAlpha(255);
+        c.drawBitmap(b, (Rect) null, this.dst, this.p);
+        c.restore();
+    }
+}

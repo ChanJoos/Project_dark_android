@@ -1,0 +1,111 @@
+{
+  "buildings": [
+    {
+      "id": "building_two_storey_complete",
+      "size": [
+        232,
+        246
+      ],
+      "anchor": [
+        45.986,
+        223.757
+      ],
+      "groundPolygon": [
+        [
+          4.67,
+          205.444
+        ],
+        [
+          91.545,
+          240.73
+        ],
+        [
+          226.883,
+          183.111
+        ],
+        [
+          139.338,
+          149.611
+        ]
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_two_storey",
+      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
+      "originalGenerationFile": "exec-283f9937-9e11-46ce-bf7d-90aa6f17342b.png",
+      "sha256": "650e1ae103bff8dcb484e5048a9c9af3d6f6a49952d80a95498fefd201497534"
+    },
+    {
+      "id": "building_awning_corner_complete",
+      "size": [
+        328,
+        226
+      ],
+      "anchor": [
+        287.673,
+        208.772
+      ],
+      "groundPolygon": [
+        [
+          7.008,
+          153.704
+        ],
+        [
+          65.547,
+          184.477
+        ],
+        [
+          134.962,
+          160.876
+        ],
+        [
+          266.849,
+          219.647
+        ],
+        [
+          322.38,
+          195.352
+        ],
+        [
+          197.435,
+          136.581
+        ],
+        [
+          134.962,
+          109.741
+        ],
+        [
+          63.234,
+          132.879
+        ]
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_awning_corner",
+      "generation": "built-in image_gen precise-object-edit from original source crop; unseen parts reconstructed, NOT original source pixels",
+      "originalGenerationFile": "exec-6744b317-ebb9-4ce9-87b0-f14b25bcaae9.png",
+      "sha256": "5805263825631f534526d5e6515de8c7c190edc37637371555a9d55ada622fbc"
+    }
+  ],
+  "scope": "Live runtime uses complete silhouette assets. Original partially observed crops remain archived. Three repaired silhouettes are ADAPTED generated completion, never claimed as recovered source pixels. Actual native and phone status recorded separately.",
+  "assetManifest": "master/assets/abel_v150/provenance.json",
+  "normalizer": "tools/repair_abel_objects_v150.py",
+  "treeRepair": "Replace all cropped/contaminated garden group rectangles and slender fragments with individually placed original complete tree_broadleaf source frame43; observed garden anchor plus adapted placement offsets.",
+  "smallBoatRepair": "Original frame41 full rowing boat crop (430,225,603,345), original RGB brown mask,4px transparent margins.",
+  "prompts": {
+    "building_two_storey_complete": "Complete the same cropped isometric red two-storey brick building, white curved gable trim and red curved roof, entire roof/walls/foundation, remove unrelated background, transparent margin; original orthographic view and classic pixel RPG style.",
+    "building_awning_corner_complete": "Complete the same L-shaped red inn/shop, both roof wings and yellow striped awnings/supports; remove floor/player/trees/labels; transparent background, same orthographic classic pixel RPG style.",
+    "sailing_ship_complete": "Extract the same complete two-mast brown wooden sailing boat from frame20 reference, reconstruct missing lower hull; remove water/quay/player/HUD; transparent margin, original isometric pixel style."
+  },
+  "additionalNativeFindings": [
+    "first native camera19 exposed floor/photo rectangles on old rail_up/rail_down",
+    "original fountain crop ended at312 but complete basin reaches328",
+    "signpost polygon/wood threshold cut the thin source stem; flag included nearby leaves and bench"
+  ],
+  "additionalRepairs": [
+    "clean original transparent pool-rail interval plus deterministic horizontal mirror",
+    "complete source fountain basin and narrow original tower/jets from frame28, source foot shifted24px to retain original position",
+    "complete original signpost head/stem, remove isolated floor pixels",
+    "whole source lamp with traced original red banner cloth/bracket; fixture placement ADAPTED"
+  ],
+  "finalRegistrationRepair": "Original partial rowing crop used pixel407,400 as its world foot. Complete frame41 sprite now derives its origin from camera+box+anchor-padding, preserving whole source pixels at their recorded position. Under both floating hulls water replaces occluded erroneous ground classifications (footprint ADAPTED). Recorded collinear railing runs receive missing 28x14 intervals between original endpoints.",
+  "railWaterGuard": "Native final review exposed two different piers whose source fence endpoints share a diagonal. Fill only short (at most3 intervals) gaps on actual land; never span large gaps or water. Existing observed intervals remain preserved."
+}

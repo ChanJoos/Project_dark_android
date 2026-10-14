@@ -1,0 +1,26 @@
+{
+  "reportedAPK": 149,
+  "reportedSource": "f061adbc6da964a13a2d004084e1f269bbc6368f",
+  "status": "DEVICE_FAILED_USER_REPORTED",
+  "newRecordingProvided": false,
+  "userSymptoms": [
+    "movement much slower than Milles/Pote",
+    "clipped buildings and trees",
+    "walking through buildings"
+  ],
+  "reproducedCauses": [
+    "runtime .25s duration mixed with .60s navigation pulse; unique Abel frame clamp",
+    "partial source crop sprites and contaminated garden rectangle masks are live assets",
+    "only generic 4x4 service building footprints; real base extends outside it"
+  ],
+  "repairScope": [
+    "common .60s movement and frame policy",
+    "complete generated/ADAPTED red facades and sailing boat",
+    "whole-source original tree and rowing boat families; remove contaminated groves/partial flowers/lamps",
+    "all live building ground polygons and cached shared navigation/collision mask"
+  ],
+  "verification": "IMPLEMENTED_BUILD_NATIVE_VERIFIED: source8e345ba, Actions38328172051 SUCCESS,125 tests; physical handset/user visual PENDING",
+  "originalMapScope": "single canonical town preserved; physical original district join and hidden pixels remain unknown/ADAPTED",
+  "githubAuthorization": "user explicitly preapproved uploads; same draft PR195, no merge or force push",
+  "repairReceipt": "master/changes/V150_BUILD_RUNTIME_RECEIPT.json"
+}

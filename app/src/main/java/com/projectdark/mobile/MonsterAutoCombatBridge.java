@@ -29,7 +29,8 @@ public final class MonsterAutoCombatBridge {
 
   public String actionId(){return actionId;}
 
-  public Result submit(String monsterId,String targetId){
+  public Result submit(String monsterId,String targetId){return submit(monsterId,targetId,actionId);}
+  public Result submit(String monsterId,String targetId,String actionId){
     CombatActionOrchestrator.Submission submission=actions.submitAuto(monsterId,targetId,actionId);
     Outcome outcome;
     switch(submission.outcome){

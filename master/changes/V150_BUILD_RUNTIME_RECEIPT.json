@@ -1,0 +1,108 @@
+{
+  "runtime_source_sha": "8e345ba92eb0ecfc15ff67b8da7c1c91f60c67e8",
+  "focused_run": 38328172051,
+  "job": 115071598289,
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "unique_tests": 125,
+  "suites": 23,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "apk_sha256": "d061fafcb047fa84fe4dc40ea22ff12b37f1670d57a69d655a510cb0aa33ce81",
+  "apk_bytes": 70166373,
+  "built_seoul": "2026-10-13T09:45:21.563301+09:00",
+  "application_id": "com.projectdark.mobile.v150test",
+  "packaged_source_files_compared": 89,
+  "identity": {
+    "sourceCommit": "8e345ba92eb0ecfc15ff67b8da7c1c91f60c67e8",
+    "runId": "38328172051",
+    "versionCode": 150,
+    "versionName": "1.50-abel-whole-objects"
+  },
+  "artifacts": [
+    {
+      "kind": "native",
+      "id": 11782182337,
+      "digest": "54b63d74bd76fb50fd44fb4334adee468264689a7cb88b4ce0ae5f0df5497852"
+    },
+    {
+      "kind": "apk",
+      "id": 11782272277,
+      "digest": "c366bfbff1470a7118f288256a26e194e9c96f45ddaae087d1e541cdd823e080"
+    },
+    {
+      "kind": "preview",
+      "id": 11781631868,
+      "digest": "bba63394f0cec47c1d59378d01c42942f66c34fd71c5d904a92894cebec76dc8"
+    }
+  ],
+  "collision": {
+    "buildings": 5,
+    "blockedDirectAttempts": 82,
+    "scope": "Actual world adapter wall-contact steps and all five service approaches; not phone acceptance"
+  },
+  "floor_cache": {
+    "physicalCanvas": [
+      2340,
+      1080
+    ],
+    "logicalViewport": [
+      1170,
+      540
+    ],
+    "coldBuilds": 15,
+    "warmRebuilds": 0,
+    "warmP95Ms": 3.519192,
+    "warmMaxMs": 3.622015,
+    "scope": "Robolectric native CPU; not handset FPS"
+  },
+  "full_frame_cpu": {
+    "frames": 180,
+    "logicalMovementSeconds": 3,
+    "presentationDistance": 178.8854383799342,
+    "pathRequests": 12,
+    "tapRequestMedianMs": 1.810586,
+    "tapRequestP95Ms": 2.030137,
+    "updateMedianMs": 0.108739,
+    "updateP95Ms": 0.16096,
+    "updateMaxMs": 1.778857,
+    "fullDrawMedianMs": 11.338052,
+    "fullDrawP95Ms": 15.807029,
+    "fullDrawMaxMs": 21.646793,
+    "scope": "Robolectric Android native full GameView CPU including actual town movement; NOT handset FPS or elapsed wall-time speed"
+  },
+  "inspected_native_views": [
+    "whole-single-town",
+    "phone-scale-town",
+    "all ten source-view scenes",
+    "all five building-foundation scenes",
+    "whole-rowing-boat-source41",
+    "bench-on-floor four facings",
+    "all five service interiors/UI",
+    "coast dialogue and harbor return"
+  ],
+  "scope": [
+    "Milles/Pote/Abel/inn common movement timing",
+    "complete live object silhouettes",
+    "82 direct wall contacts blocked across five building foundations",
+    "five services enter/exit/restart",
+    "12 coast NPC round trips",
+    "single canonical town and safe arrivals",
+    "forest/input/skill/save regression"
+  ],
+  "limitations": [
+    "Robolectric Android native tests are not physical handset evidence",
+    "two building facades and sailing ship have generated ADAPTED missing shapes",
+    "whole original town extent, district join and hidden room geometry remain unresolved/ADAPTED"
+  ],
+  "phone": "PENDING",
+  "user_visual": "PENDING",
+  "integration": "draft PR195, unmerged",
+  "focused_conclusion": "SUCCESS",
+  "broader_android_runs": [
+    38328172076,
+    38328176361
+  ],
+  "broader_android_status": "IN_PROGRESS_UNCERTIFIED_AT_RECEIPT",
+  "runtime_app_tree": "3fc10f80f2f9d3af6e6e9f2f01f98da4b68f1a65"
+}

@@ -1,0 +1,500 @@
+{
+  "assets": [
+    {
+      "id": "building_two_storey_complete",
+      "size": [
+        232,
+        246
+      ],
+      "anchor": [
+        45.986,
+        223.757
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_two_storey",
+      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
+      "originalGenerationFile": "exec-283f9937-9e11-46ce-bf7d-90aa6f17342b.png",
+      "originalGenerationSha256": "302f5ebc813979b3f553083c580dc55a76fbe0e055a594b03a568198dad273c4",
+      "sha256": "650e1ae103bff8dcb484e5048a9c9af3d6f6a49952d80a95498fefd201497534",
+      "groundPolygon": [
+        [
+          4.67,
+          205.444
+        ],
+        [
+          91.545,
+          240.73
+        ],
+        [
+          226.883,
+          183.111
+        ],
+        [
+          139.338,
+          149.611
+        ]
+      ]
+    },
+    {
+      "id": "building_awning_corner_complete",
+      "size": [
+        328,
+        226
+      ],
+      "anchor": [
+        287.673,
+        208.772
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "building_awning_corner",
+      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
+      "originalGenerationFile": "exec-6744b317-ebb9-4ce9-87b0-f14b25bcaae9.png",
+      "originalGenerationSha256": "e02e00cb6eca3353f4c01bb980dd7aeffb4bdf2e3c0362f080fa11fe77b03d4b",
+      "sha256": "5805263825631f534526d5e6515de8c7c190edc37637371555a9d55ada622fbc",
+      "groundPolygon": [
+        [
+          7.008,
+          153.704
+        ],
+        [
+          65.547,
+          184.477
+        ],
+        [
+          134.962,
+          160.876
+        ],
+        [
+          266.849,
+          219.647
+        ],
+        [
+          322.38,
+          195.352
+        ],
+        [
+          197.435,
+          136.581
+        ],
+        [
+          134.962,
+          109.741
+        ],
+        [
+          63.234,
+          132.879
+        ]
+      ]
+    },
+    {
+      "id": "sailing_ship_complete",
+      "size": [
+        398,
+        334
+      ],
+      "anchor": [
+        199.0,
+        326
+      ],
+      "status": "ADAPTED_GENERATED_COMPLETE_SILHOUETTE",
+      "sourceParent": "sailing_ship",
+      "generation": "built-in image_gen reference-preserving completion; missing pixels reconstructed, not recovered original art",
+      "originalGenerationFile": "exec-8cf1b7a7-ee93-4a34-a5a0-ee3bd82e9880.png",
+      "originalGenerationSha256": "574871c51f8cdad17fbb55b664653b79ab9790f489a9f5e440ceba42b4ac81d3",
+      "sha256": "3585c3a322270627dfd188c5e89473d9fd4dc2a9fb6185188b9427c0ab305770"
+    },
+    {
+      "id": "rowing_boat_complete",
+      "size": [
+        181,
+        128
+      ],
+      "anchor": [
+        90,
+        119
+      ],
+      "sourceFrame": 41,
+      "sourceFrameSha256": "32b37b4733561521ecb8c966ebe49dc2c1b7df25f7b696cc2c52ac001ad173a9",
+      "box": [
+        430,
+        225,
+        603,
+        345
+      ],
+      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+      "sourceParent": "rowing_boat",
+      "sha256": "5a318f8cbd195beb6712161b1ee63560c44af7feafa892d7e2e49408edf03417"
+    },
+    {
+      "id": "fountain_complete",
+      "size": [
+        126,
+        161
+      ],
+      "anchor": [
+        62,
+        152
+      ],
+      "sourceFrame": 28,
+      "sourceFrameSha256": "c1c6c0217b506a18dce57596b47e9ae584971b6d658202fc96c22ac4cc018fe3",
+      "box": [
+        140,
+        180,
+        258,
+        333
+      ],
+      "sourcePolygons": [
+        [
+          [
+            146,
+            276
+          ],
+          [
+            151,
+            265
+          ],
+          [
+            169,
+            253
+          ],
+          [
+            190,
+            249
+          ],
+          [
+            216,
+            252
+          ],
+          [
+            239,
+            268
+          ],
+          [
+            251,
+            282
+          ],
+          [
+            250,
+            301
+          ],
+          [
+            242,
+            313
+          ],
+          [
+            222,
+            323
+          ],
+          [
+            193,
+            328
+          ],
+          [
+            171,
+            323
+          ],
+          [
+            154,
+            312
+          ],
+          [
+            146,
+            299
+          ]
+        ],
+        [
+          [
+            195,
+            233
+          ],
+          [
+            186,
+            245
+          ],
+          [
+            177,
+            248
+          ],
+          [
+            174,
+            283
+          ],
+          [
+            180,
+            300
+          ],
+          [
+            214,
+            300
+          ],
+          [
+            224,
+            281
+          ],
+          [
+            220,
+            254
+          ],
+          [
+            205,
+            242
+          ],
+          [
+            203,
+            232
+          ]
+        ],
+        [
+          [
+            197,
+            192
+          ],
+          [
+            199,
+            191
+          ],
+          [
+            200,
+            217
+          ],
+          [
+            207,
+            230
+          ],
+          [
+            205,
+            243
+          ],
+          [
+            196,
+            246
+          ],
+          [
+            191,
+            241
+          ],
+          [
+            193,
+            228
+          ],
+          [
+            196,
+            218
+          ]
+        ],
+        [
+          [
+            165,
+            239
+          ],
+          [
+            168,
+            239
+          ],
+          [
+            169,
+            286
+          ],
+          [
+            176,
+            302
+          ],
+          [
+            166,
+            301
+          ]
+        ],
+        [
+          [
+            227,
+            241
+          ],
+          [
+            230,
+            241
+          ],
+          [
+            231,
+            285
+          ],
+          [
+            226,
+            302
+          ],
+          [
+            221,
+            301
+          ]
+        ],
+        [
+          [
+            158,
+            251
+          ],
+          [
+            161,
+            251
+          ],
+          [
+            163,
+            279
+          ],
+          [
+            158,
+            285
+          ]
+        ],
+        [
+          [
+            238,
+            255
+          ],
+          [
+            240,
+            254
+          ],
+          [
+            240,
+            286
+          ],
+          [
+            236,
+            286
+          ]
+        ]
+      ],
+      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+      "sha256": "7c9580b9d990ff5e7f930142c367b804f8f921f38ee7c69a7c116f4ff925254b"
+    },
+    {
+      "id": "signpost_complete",
+      "size": [
+        47,
+        52
+      ],
+      "anchor": [
+        21,
+        46
+      ],
+      "sourceFrame": 28,
+      "sourceFrameSha256": "c1c6c0217b506a18dce57596b47e9ae584971b6d658202fc96c22ac4cc018fe3",
+      "box": [
+        546,
+        337,
+        585,
+        381
+      ],
+      "sourcePolygons": [
+        [
+          [
+            546,
+            347
+          ],
+          [
+            563,
+            345
+          ],
+          [
+            564,
+            337
+          ],
+          [
+            570,
+            338
+          ],
+          [
+            572,
+            346
+          ],
+          [
+            584,
+            348
+          ],
+          [
+            584,
+            357
+          ],
+          [
+            571,
+            360
+          ],
+          [
+            563,
+            363
+          ],
+          [
+            546,
+            362
+          ]
+        ],
+        [
+          [
+            562,
+            358
+          ],
+          [
+            568,
+            358
+          ],
+          [
+            567,
+            380
+          ],
+          [
+            560,
+            380
+          ]
+        ]
+      ],
+      "status": "SOURCE_VISIBLE_COMPLETE_SILHOUETTE",
+      "sha256": "2d8f69bb3147174cb9fcf705ece43ae246e1ee242543cbbf17605e9bca8d6ba3"
+    },
+    {
+      "id": "rail_down_clean",
+      "size": [
+        39,
+        54
+      ],
+      "anchor": [
+        4,
+        33
+      ],
+      "sourceParent": "pool_rail_down",
+      "status": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+      "sha256": "923349134079b7431b776a67430dd5be21449f771dd9e2aa077a3af58a2be48f"
+    },
+    {
+      "id": "rail_up_clean",
+      "size": [
+        39,
+        54
+      ],
+      "anchor": [
+        4,
+        49
+      ],
+      "sourceParent": "pool_rail_down",
+      "status": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
+      "sha256": "f5b027050e2815c300aeaa9a9040717a30eb58b268c838ec6a1fd7b8d91d8652"
+    },
+    {
+      "id": "lamp_banner_complete",
+      "size": [
+        66,
+        140
+      ],
+      "anchor": [
+        35,
+        137
+      ],
+      "sourceParents": [
+        "banner",
+        "lamp_main"
+      ],
+      "sourceFrame": 14,
+      "status": "ADAPTED_WHOLE_SOURCE_LAMP_WITH_OBSERVED_FLAG",
+      "sha256": "8c92a2677a8448772d17347d3c5bb16c3edb63bffc1ba44d3c9495fca3ef9f30"
+    }
+  ],
+  "scope": "Three silhouettes have generated repairs; source tree and small boat are original visible pixels. No original full Abel topology claim."
+}

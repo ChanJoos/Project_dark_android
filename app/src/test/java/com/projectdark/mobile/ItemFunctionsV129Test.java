@@ -72,7 +72,7 @@ public class ItemFunctionsV129Test {
    if(d.evidence==RpgProgressionState.Evidence.PENDING)pending++;
    rows.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("slot",d.equipSlot==null?JSONObject.NULL:d.equipSlot).put("stats",new JSONObject(d.statModifiers)).put("evidence",d.evidence.name()).put("usable",s.rpg().isConsumable(d.itemId)||s.rpg().isRecall(d.itemId)).put("description",new JSONArray(ItemEffects.description(d))).put("originalFullFunctionVerified",false));
   }
-  assertEquals(422,rows.length());assertTrue(pending>0);File dir=new File("build/reports/item-functions-v129");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all408-runtime-function-audit.json").toPath(),rows.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+  assertEquals(452,rows.length());assertTrue(pending>0);File dir=new File("build/reports/item-functions-v129");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all408-runtime-function-audit.json").toPath(),rows.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void curanumActualInventoryUseButtonRestoresHpConsumesOneAndSurvivesRestart()throws Exception{
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState s=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");

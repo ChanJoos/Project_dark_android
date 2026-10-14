@@ -1,0 +1,363 @@
+{
+  "status": "SOURCE_REFERENCED_ADAPTED_CANDIDATE_USER_ACCEPTANCE_PENDING",
+  "references": [
+    "master/source/abel_v139/reference_screenshots.zip"
+  ],
+  "reference_shortage": "Crab and Pong do not have three independent labelled pose references; original visual identity remains pending. Blue octopus follows historical Blue Arkpus description; not current exact stats.",
+  "source_atlases": [
+    "/workspace/scratch/7d8267b5bf9c/generated_images/exec-107442c0-5231-410b-9a35-1b96a61d7b91.png",
+    "/workspace/scratch/7d8267b5bf9c/generated_images/exec-bd4445c4-9ac0-4ea2-b819-4e65dcc1d891.png"
+  ],
+  "assets": {
+    "abel_v140/banana.png": {
+      "sha256": "0e0c80bd82b32da5d605d983e725beee1bd45e13407f61587c95323b9fd83bbf",
+      "size": [
+        103,
+        140
+      ]
+    },
+    "abel_v140/barrels.png": {
+      "sha256": "8cf2247d04ecec9e0f76808e6a6b72a52078822426baf665e8974757ff120d33",
+      "size": [
+        68,
+        62
+      ]
+    },
+    "abel_v140/bones.png": {
+      "sha256": "611a91a2c5eff4d379d5cbef82a5273b4ea1122850783604d041b8bf3a620a3d",
+      "size": [
+        28,
+        24
+      ]
+    },
+    "abel_v140/boulders.png": {
+      "sha256": "07545e8535169009e3c1b1783c7ad229f4014fe64866f2776942b57e0935af47",
+      "size": [
+        49,
+        50
+      ]
+    },
+    "abel_v140/driftwood.png": {
+      "sha256": "851d7da7933689b02c3b6288cfbbcf1f0ea05aa90d0a0c3d11959fb5b37a7165",
+      "size": [
+        59,
+        34
+      ]
+    },
+    "abel_v140/fern.png": {
+      "sha256": "a0e6007b65f97e5a11a7c10e35b5ca97d9b631ad617d7951006ff80c5b5e9189",
+      "size": [
+        42,
+        55
+      ]
+    },
+    "abel_v140/palm_curve.png": {
+      "sha256": "31b9f013119351c0b4ab74a8b1d0d79621aeab9b296d7445d0dbcb30c204a1c8",
+      "size": [
+        215,
+        215
+      ]
+    },
+    "abel_v140/palm_fan.png": {
+      "sha256": "24e66f80dd7644b8ad3145e74bbaacbc82bcde7f68267f14bde7cfa147b2ddca",
+      "size": [
+        114,
+        165
+      ]
+    },
+    "abel_v140/reef_low.png": {
+      "sha256": "b12390233384220c61d81c9891082944114b183f43954a6b3fe13526cf5fa7d6",
+      "size": [
+        153,
+        115
+      ]
+    },
+    "abel_v140/reef_tall.png": {
+      "sha256": "2a9a97380a843d12b02a4762f214d7cc5e400feb5b121cace1443e5729f86523",
+      "size": [
+        148,
+        155
+      ]
+    },
+    "abel_v140/rock.png": {
+      "sha256": "705c5dc03b26820028247e5d9b72439f93eb47e59bf91cab7c3b8d0929513ccb",
+      "size": [
+        33,
+        38
+      ]
+    },
+    "abel_v140/sand.png": {
+      "sha256": "943731e61fbc7bbbc175b01aa263ec20dc4ff82838bdf59c61b28c6c090049b3",
+      "size": [
+        120,
+        90
+      ]
+    },
+    "abel_v140/shells.png": {
+      "sha256": "95691ef8691b088e966ab4c9e18e43e2f3839ff41c23fd947952d4040c245948",
+      "size": [
+        21,
+        18
+      ]
+    },
+    "abel_v140/water.png": {
+      "sha256": "f1426ede6d60292bc1e766da58793929a91618d59d6262dbe62139c2d206ac1f",
+      "size": [
+        160,
+        32
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/attack_ne.png": {
+      "sha256": "0d604d06f29472ba076758c17fcfbd14a318e952755a445d626fc339a5a41305",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/attack_nw.png": {
+      "sha256": "870d600abecf92642b5fc8cfd7e671953b481114ce4470f4df55b3b32e52847a",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/attack_se.png": {
+      "sha256": "c3fb932a9ccb65d6a7d97f51a75736398932f61636062d61a261ad89ff28f642",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/attack_sw.png": {
+      "sha256": "9287b2592c2d34c68a202a4793631d3b466f1024a69c221b3a43a74a27dfb943",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/idle_ne.png": {
+      "sha256": "5b29ca2f8828f6239eb24a6aa78cf87f04fe8cfd1d348f9c1700fcfa17decca7",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/idle_nw.png": {
+      "sha256": "492de67f573fee966f16fde5f1c0a1c0f979b60ccf0e113ef816648b32bfdee2",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/idle_se.png": {
+      "sha256": "1c64d8911253baf6539be0120b21c9ed1df99c07d0275d6c29f1f45a3b79ebe0",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/idle_sw.png": {
+      "sha256": "f11ac1c8ffbcf9298a2842fe01ab1df22411cdf08075b2dd485151603c3789d0",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/walk_ne.png": {
+      "sha256": "92f9806f3221f24d9863e34800373a5a3328acf07e6eb1e80cc64ca87160de72",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/walk_nw.png": {
+      "sha256": "b0ddc001262a9017df541d08a4be0dc0f53a4a668d9d6ec83a5e09356f65296b",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/walk_se.png": {
+      "sha256": "fadcf45f8b6f6a2babb6f068cf4f77c5116020d8bb7b9a9a4331f9414a3e99cf",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/berserker/walk_sw.png": {
+      "sha256": "1a6adc8d6cda7b31218ae68c2268353722fca75752e4a0edbcea87542ea2f648",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/attack_ne.png": {
+      "sha256": "ee8e82a3ffc70c4819db8d25c4f8867f3d84803ba2e89d0834403081d62b5893",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/attack_nw.png": {
+      "sha256": "c30bc00e4eccfd2bc8dbc0539163eae141202bffea39977c23ccb418501395bb",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/attack_se.png": {
+      "sha256": "223239de8cf9207b6b5f328eed7a1d10321fe6f0c5ed5ae6c5247dcffae65f33",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/attack_sw.png": {
+      "sha256": "73033ce8c51c818c86b3a3e50cd6b85ce0d77c9493108e2a1947a7a5e61901f7",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/idle_ne.png": {
+      "sha256": "8a6da75942c4907cfce1dc8c049c1fc13e9c488c2f86a8ec713580d02754f5ec",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/idle_nw.png": {
+      "sha256": "a6524ec7a1305eba9bdb9449dfd4f5ebc297721647e1813067dbbf1926fc1d71",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/idle_se.png": {
+      "sha256": "03b9836889d56a6b20472fa250496e9809b6f66d4c879ed5ce7c26745a286db9",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/idle_sw.png": {
+      "sha256": "d51002a8796dfc25aff1fcac31063f95c3ecb557aba7ae0b544c799ff552e43f",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/walk_ne.png": {
+      "sha256": "5bcd707b9c39c7eb9b141bd1710cf19312685c9537046f2aca50ee5ba604e58d",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/walk_nw.png": {
+      "sha256": "f934421dfd42680cbd5e0e51f330ca32d1244666affac90a949cd1d2663272b7",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/walk_se.png": {
+      "sha256": "00afd93e08568cd6f7a8aefe7c39ea25dfce98c398730e43c76054c2c97dbc60",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/crab/walk_sw.png": {
+      "sha256": "4e7900c6443cb37c07bd332949f9d362fa87419d5036de0589dd98edfa3e334b",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/attack_ne.png": {
+      "sha256": "650f66d3152c0738ea6d1d58634ca418f9d7e485bf77e209ed21be97743b8560",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/attack_nw.png": {
+      "sha256": "d6876086ab321da2840c04bd02599b9b8248c2087a3e349e95cf6b211a3d7607",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/attack_se.png": {
+      "sha256": "992282e0a96dd094d476f8557ef4b5df6db40f329dcdb1200119199672ce89e6",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/attack_sw.png": {
+      "sha256": "b630c553a516c6127121bba226344aa5ff00be5d36f559ea7212ba44c56901ee",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/idle_ne.png": {
+      "sha256": "831cac9f04fbbd95df03f8e63d7e69d111832be4c6cef0e3be219beef238594f",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/idle_nw.png": {
+      "sha256": "36b1eec0242c04e4ce041ed452e8d6c76918e7cc1315b337524ad821cfc1dd0a",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/idle_se.png": {
+      "sha256": "bd2e7da793de711f73be54c3357bcc72b6c7522762e2cd357596db76b1b6a199",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/idle_sw.png": {
+      "sha256": "2002be28bd65b238f2ba801d2919f4b2431cf33d2a3675b746d0ea70c304e770",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/walk_ne.png": {
+      "sha256": "2927430282965905007c8e148ae4f5fbcf93972d648d42cd2ed02b36fa8fd057",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/walk_nw.png": {
+      "sha256": "89bc34f939258f601906c164f2d5ed2531d16e2285e694596448510faa1c1407",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/walk_se.png": {
+      "sha256": "8b4c55d104d78a7bcc610f8247e12f15555c28f2bbda70ea38579f8a52c10ccb",
+      "size": [
+        192,
+        192
+      ]
+    },
+    "pote_monsters_generated_v1/sprites/abel_v140/pong/walk_sw.png": {
+      "sha256": "0e5125b53b0cf92ddef666dd8b4d2ac44e51a768204643a98c8343975ee31bbc",
+      "size": [
+        192,
+        192
+      ]
+    }
+  }
+}

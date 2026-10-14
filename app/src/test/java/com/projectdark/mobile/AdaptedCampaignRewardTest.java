@@ -31,8 +31,28 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(20,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(31,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    java.util.Set<String> coast=new java.util.HashSet<>();
+    for(String id:c.entries().keySet())if(id.startsWith("ABEL_")||id.startsWith("ADAPTED_COAST_"))coast.add(id);
+    assertEquals(new java.util.HashSet<>(AbelCoastMonsters.ALL),coast);
+    assertNull(c.find("ADAPTED_COAST_RED_OCTOPUS"));
     assertNotEquals(c.find("POTE_RED").exp,c.find("POTE_SILVER").exp);
+  }
+  @Test public void addedCoastFamiliesUseTheSameExactlyOnceLedgerWithoutInventedDrops(){
+    for(String species:AbelCoastMonsters.ALL){
+      RuntimeState state=new RuntimeState();String map=null;for(String id:com.projectdark.mobile.world.AbelCoastGeometry.ROUTE)if(AbelCoastMonsters.roster(id).contains(species)){map=id;break;}assertNotNull(species,map);state.enterCampaignMap(map,false);
+      RuntimeState.Monster actor=null;for(RuntimeState.Monster m:state.monsters())if(species.equals(m.campaignRewardProfileId)){actor=m;break;}
+      assertNotNull(species,actor);long exp=CampaignProgress.earnedExp(state.rpg()),gold=state.rpg().gold();
+      java.util.Map<String,Integer> inventory=new java.util.LinkedHashMap<>(state.rpg().inventory());
+      AdaptedCampaignRewardCatalog.Reward expected=new AdaptedCampaignRewardCatalog().find(species);
+      state.ledger().add(CombatLedger.Type.MONSTER_DEFEATED,"player",actor.id,0);
+      state.rpg().consumeCombat(state.ledger().snapshot(),state);
+      assertEquals(species,exp+expected.exp,CampaignProgress.earnedExp(state.rpg()));assertEquals(gold+expected.gold,state.rpg().gold().longValue());
+      assertEquals(RpgProgressionState.RewardSource.ADAPTED_CAMPAIGN,state.rpg().rewardHistory().get(0).source);
+      assertEquals(Integer.valueOf(606252),new CanonicalMonsterRewardCatalog().find("ABEL_BERSERKER").exp);
+      assertEquals(inventory,state.rpg().inventory());state.rpg().consumeCombat(state.ledger().snapshot(),state);
+      assertEquals(1,state.rpg().rewardHistory().size());
+    }
   }
   @Test public void admittedSpiritInstancesResolveAdaptedExpExactlyOnceWithoutInventedDrops(){
     RuntimeState state=new RuntimeState();state.enterCampaignMap("MAP_POTE_03",false);

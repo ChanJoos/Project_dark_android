@@ -1,0 +1,36 @@
+{
+  "sourceCommit": "4ba719f088ecdddbb3957d15013572da8b1d8687",
+  "runId": "38144172737",
+  "versionCode": 141,
+  "versionName": "1.41-abel-frame-reference",
+  "applicationId": "com.projectdark.mobile.v141test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "e079018dd4ab46562be3706fbca492e520c44171ff5ddd044ca061743e9f4c2d",
+  "apkBytes": 64362280,
+  "builtSeoul": "2026-10-11T22:48:48.086385+09:00",
+  "scope": "V141 coast frame-reference revision: clustered palms/banana/ferns/reefs, shells/bones/driftwood/barrels, entry-visible shoreline, four reference-reconstructed candidate families, 8 survey objectives Lv41-55, direct travel/preview, existing shared navigation/collision/prewarm/bounded floor cache. Second video 9:31-11:50 playback unavailable; original full-map topology and client animation NOT VERIFIED. Normal growth supports Lv99. Physical phone/visual acceptance pending",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "independentlyVerifiedTests": 104,
+  "verifiedSpriteFiles": 234,
+  "wholeRosterComplete": false,
+  "knownMissing": [
+    "그래브",
+    "크래커/크랩 명칭·외형",
+    "해안의광폭자",
+    "가짜/진짜 킹아크퍼스"
+  ],
+  "video2Frames": "BLOCKED",
+  "unlabelledSilhouettes": 3,
+  "currentScopeHead": "ec035776a011e53a08ed06753b406130a8201f3c",
+  "currentScopeDelta": "coverage/audit only; identical app code and asset bundles to built source",
+  "status": "BUILD_VERIFIED_NATIVE_SCOPE_VERIFIED_PARTIAL_CANDIDATE",
+  "focusedJob": 114483952099,
+  "artifacts": {
+    "apk": 11703644426,
+    "preview": 11703843439,
+    "native": 11703589672
+  },
+  "originalComplete": false
+}

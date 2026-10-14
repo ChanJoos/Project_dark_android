@@ -1,0 +1,14 @@
+{
+  "main": {
+    "observedCameraFootprintCells": 2029,
+    "runtimeBudgetCells": 6400,
+    "sourceFullMapExtent": "UNKNOWN",
+    "outsideFootprint": "ADAPTED_PLAIN_FLOOR_EXTENSION"
+  },
+  "east": {
+    "observedCameraFootprintCells": 1692,
+    "runtimeBudgetCells": 6400,
+    "sourceFullMapExtent": "UNKNOWN",
+    "outsideFootprint": "ADAPTED_PLAIN_FLOOR_EXTENSION"
+  }
+}

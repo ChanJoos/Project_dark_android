@@ -1,0 +1,243 @@
+{
+  "status": "IMPLEMENTED_BUILD_ANDROID_NATIVE_VERIFIED_PHONE_VISUAL_PENDING",
+  "user_authorization": "2026-10-13 모두 반영해줘; continuation of V152 code, same PR195",
+  "source_baseline": "908178aacc1255675be568640ca459c2876c3650",
+  "source_paths": [
+    "master/data/Monster_Master.csv",
+    "master/data/Hunting_EXP_Balance.csv",
+    "master/data/Level_EXP_Curve.csv",
+    "master/data/Progression_Master.csv",
+    "master/source/abel_v143/coverage.json",
+    "docs/MONSTER_CREATION_MANUAL.md",
+    "docs/HUNT_MAP_PERFORMANCE_LESSONS.md"
+  ],
+  "before": [
+    "all coast monsters use common damage/AI and no combat level",
+    "HP/EXP disconnected mobile constants",
+    "quests stop at Lv55",
+    "only Lv11/26 campaign gear",
+    "balance tests teleport to attacks and rest after every kill"
+  ],
+  "after": [
+    "13 individual mobile level/HP/MP/AC/MDEF/element/physical/magic/reward profiles",
+    "shared Resolver attacks with windup/resource/cooldown/LOS/control gates and timed statuses",
+    "KingArk retreat and once-per-life recovery; Berserker rage",
+    "18 coast quests complete Lv70 and three normal paid/rewarded gear tiers41/56/65",
+    "five-job continuous full-population path/AI/learned-skill/potion/EXP/save tests"
+  ],
+  "source_evidence": [
+    {
+      "url": "https://lod.nexon.com/community/game/1987?SearchBoard=1",
+      "retrieved": "2026-10-13",
+      "tag": "V_NEXON_HOSTED_PLAYER_TIP",
+      "fact": "2006 tip describes fleeing/healing/magic at low HP; original trigger fraction, frequency and exact spell unresolved"
+    },
+    {
+      "url": "https://lod.nexon.com/community/game/3472?SearchBoard=1",
+      "retrieved": "2026-10-13",
+      "tag": "V_NEXON_HOSTED_PLAYER_MEASUREMENT",
+      "fact": "2008 Berserker Lv88 HP61982 EXP606252 retained in original catalogs. Mobile profile65/4500/95000 is a separate adapted solo projection."
+    }
+  ],
+  "profiles": [
+    {
+      "id": "ABEL_TURTLE",
+      "mobile_parameters": "42,1000,12,-8,4,\"EARTH\",\"\",45000,135,2.2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_ARKPUS",
+      "mobile_parameters": "44,1100,14,-3,8,\"WATER\",\"MONSTER_WATER\",48000,165,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_PONG",
+      "mobile_parameters": "43,850,10,0,5,\"WIND\",\"MONSTER_BLIND\",43000,140,1.8f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_CATERPILLAR",
+      "mobile_parameters": "42,900,11,-2,2,\"EARTH\",\"MONSTER_VENOM_BITE\",44000,145,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_GRAB",
+      "mobile_parameters": "49,1600,18,-15,5,\"EARTH\",\"\",52000,155,2.3f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OBS_SLATE",
+      "mobile_parameters": "48,1300,15,-5,8,\"EARTH\",\"MONSTER_ROOT\",50000,150,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OCTOPUS",
+      "mobile_parameters": "55,1900,21,-7,10,\"WATER\",\"MONSTER_WATER\",58000,170,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_EGG",
+      "mobile_parameters": "54,1400,17,-3,12,\"NONE\",\"MONSTER_CURSE\",55000,160,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_GAS",
+      "mobile_parameters": "57,1600,17,-4,12,\"FIRE\",\"MONSTER_VENOM\",60000,175,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_MAW",
+      "mobile_parameters": "58,2100,23,-8,8,\"WIND\",\"MONSTER_FREEZE\",62000,180,2.1f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_BERSERKER",
+      "mobile_parameters": "65,4500,34,-12,12,\"FIRE\",\"MONSTER_FIRE\",95000,190,2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_KINGARK_FAKE",
+      "mobile_parameters": "67,6000,32,-10,15,\"NONE\",\"MONSTER_FIRE\",110000,220,2.2f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    },
+    {
+      "id": "ABEL_KINGARK",
+      "mobile_parameters": "70,8500,38,-15,18,\"LIFE\",\"MONSTER_WATER\",150000,300,2.4f",
+      "evidence": "ADAPTED_MOBILE_SOLO_3C"
+    }
+  ],
+  "missing_original_boundaries": [
+    "spell choice for ordinary species, timing, MP and numeric solo tuning are ADAPTED",
+    "KingArk HP35%/two-step retreat/one heal12.5% is mobile solo interpretation, not original event rules",
+    "no new random drop rates or fabricated source gear art; higher mobile gear reuses approved appearance"
+  ],
+  "acceptance": "Five normal jobs and actual native casting frame must pass exact-SHA CI; phone/user visual pending",
+  "static_balance_receipt": {
+    "ordinary_exp_min": 43000,
+    "ordinary_exp_max": 62000,
+    "level41_required_exp": 757900,
+    "level69_required_exp": 1187200,
+    "pure_hunt_kills_per_level_range": [
+      13,
+      28
+    ],
+    "quest_bonus": "existing milestone progression, separate from pure-hunt kills"
+  },
+  "verification_sources_in_progress": [
+    "aff3428c6184491d8444501a767cfb99306c1ec8",
+    "Actions38347591692"
+  ],
+  "learning_scope": "Warrior uses normally learned WindBlade at41 and learns MegaBlade after56 gear/stat growth; other jobs use normal paid learning. Potions bought in finite stock between quest waves; shop journey/UI excluded from balance simulation and covered by separate native regressions.",
+  "runtime_source_sha": "6c0bdd21afcf00f32dab744d663d8740ae1c9aaf",
+  "receipt": "master/changes/V153_BUILD_RUNTIME_RECEIPT.json",
+  "verification": {
+    "primary_unique_tests": 132,
+    "primary_suites": 24,
+    "balance_job_executions": 5,
+    "total_executions": 137,
+    "unique_class_method_pairs": 133,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "downloaded_archive_sha256_and_crc": "PASS",
+    "apk_embedded_source_run_version": "PASS",
+    "independent_packaged_byte_match_count": 87,
+    "independent_packaged_byte_matches": [
+      "abel-town-v144/bench_nw.png",
+      "abel-town-v144/grass_material.png",
+      "abel-town-v144/church.png",
+      "abel-town-v144/water_material.png",
+      "abel-town-v144/bench_ne.png",
+      "abel-town-v144/house.png",
+      "abel-town-v144/fountain.png",
+      "abel-town-v144/stone.png",
+      "abel-town-v144/notice.png",
+      "abel-town-v144/cobble_material.png",
+      "abel-town-v144/bank.png",
+      "abel-town-v144/stone_material.png",
+      "abel-town-v144/cobble.png",
+      "abel-town-v144/grass.png",
+      "abel-town-v144/bench_sw.png",
+      "abel-town-v144/tree.png",
+      "abel-town-v144/water.png",
+      "abel-town-v144/bench_se.png",
+      "abel-town-v144/manifest.json",
+      "abel-town-v144/forge.png",
+      "abel-town-v144/lamp.png",
+      "abel-town-v144/fence.png",
+      "abel-town-v144/inn.png",
+      "abel-video-v147/flowerbed_orange.png",
+      "abel-video-v147/rail_up_clean.png",
+      "abel-video-v147/lamp_pool.png",
+      "abel-video-v147/bench_front_up.png",
+      "abel-video-v147/garden_foreground_grove.png",
+      "abel-video-v147/tree_broadleaf.png",
+      "abel-video-v147/banner.png",
+      "abel-video-v147/quay_wall_up.png",
+      "abel-video-v147/garden_curb_down_edge.png",
+      "abel-video-v147/coping_down.png",
+      "abel-video-v147/coping_up_edge.png",
+      "abel-video-v147/tile_inn_checker.png",
+      "abel-video-v147/inn_stool_alt.png",
+      "abel-video-v147/quay_wall_down.png",
+      "abel-video-v147/tree_slender.png",
+      "abel-video-v147/garden_curb_up_edge.png",
+      "abel-video-v147/fountain.png",
+      "abel-video-v147/rail_up.png",
+      "abel-video-v147/tile_blue_water.png",
+      "abel-video-v147/tile_white_aged.png",
+      "abel-video-v147/coping_down_edge.png",
+      "abel-video-v147/inn_table_bottles.png",
+      "abel-video-v147/building_two_storey.png",
+      "abel-video-v147/garden_curb_up.png",
+      "abel-video-v147/inn_stool.png",
+      "abel-video-v147/garden_tree_mass.png",
+      "abel-video-v147/flower_red_clump.png",
+      "abel-video-v147/building_awning_corner.png",
+      "abel-video-v147/inn_plant_pot.png",
+      "abel-video-v147/sailing_ship_complete.png",
+      "abel-video-v147/bench_front_down.png",
+      "abel-video-v147/tile_rock_paving.png",
+      "abel-video-v147/coping_up.png",
+      "abel-video-v147/tile_white.png",
+      "abel-video-v147/bench_pool.png",
+      "abel-video-v147/signpost.png",
+      "abel-video-v147/lamp_main.png",
+      "abel-video-v147/tile_sea_water.png",
+      "abel-video-v147/fountain_complete.png",
+      "abel-video-v147/building_awning_corner_complete.png",
+      "abel-video-v147/rail_down.png",
+      "abel-video-v147/tile_brick_rosette.png",
+      "abel-video-v147/tile_grass.png",
+      "abel-video-v147/building_two_storey_complete.png",
+      "abel-video-v147/inn_table_mugs.png",
+      "abel-video-v147/signpost_complete.png",
+      "abel-video-v147/inn_barrel.png",
+      "abel-video-v147/inn_table_back.png",
+      "abel-video-v147/garden_curb_down.png",
+      "abel-video-v147/pool_rail_down.png",
+      "abel-video-v147/inn_counter_segment.png",
+      "abel-video-v147/bench_back_up.png",
+      "abel-video-v147/layout.json",
+      "abel-video-v147/rowing_boat.png",
+      "abel-video-v147/building_awning_long.png",
+      "abel-video-v147/garden_grass.png",
+      "abel-video-v147/lamp.png",
+      "abel-video-v147/bench_back_down.png",
+      "abel-video-v147/rail_down_clean.png",
+      "abel-video-v147/sailing_ship.png",
+      "abel-video-v147/rowing_boat_complete.png",
+      "abel-video-v147/garden_tree_pair.png",
+      "abel-video-v147/lamp_banner_complete.png",
+      "assets/world/portal/portal_reagent_shop.webp"
+    ]
+  },
+  "limitations": [
+    "Phone and user visual/play-feel acceptance PENDING; host native simulation is not handset FPS",
+    "Mobile solo values are ADAPTED, not original monster numbers/spells/event reconstruction",
+    "Lv41-70 proof includes ordinary monster EXP and explicit quest milestone EXP; not117 kills of pure grinding",
+    "Finite purchased potions, normally learned skills and allocated stats; Mage manually selects elemental weakness; AUTO weakness selection not certified",
+    "Balance simulation directly enters each quest map and uses merchant transactions between waves. Continuous shop journeys, full NPC-reporting travel and freshLv1->70 handset walkthrough are not part of that simulation; portals/merchant UI/quest/save paths have separate native tests",
+    "Unmerged candidate com.projectdark.mobile.v153test uses a separate fresh test profile; no main merge or older-app save migration claim"
+  ]
+}

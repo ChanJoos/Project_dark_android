@@ -1,0 +1,40 @@
+{
+  "sourceCommit": "824853992a1b96d6d30973cf93cbf59efcdb5e0c",
+  "runId": "38139162377",
+  "versionCode": 140,
+  "versionName": "1.40-abel-reference",
+  "applicationId": "com.projectdark.mobile.v140test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "a96be2cf580a9f4eefe5195625db7de2f9d7b34efca88fb6dfc7672ca22d3739",
+  "apkBytes": 64160460,
+  "builtSeoul": "2026-10-11T21:32:06.876704+09:00",
+  "scope": "V140 coast visual revision: clustered palms/banana/ferns/reefs, shells/bones/driftwood/barrels, entry-visible shoreline, five adapted candidate monster families, 8 survey objectives Lv41-55, direct travel/preview, existing shared navigation/collision/prewarm/bounded floor cache. KingArk original event and Grab art and exact original monster identity/poses NOT COMPLETE. Normal growth supports Lv99. Physical phone/visual acceptance pending",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "independentAssetByteChecks": {
+    "coast_v139": 28,
+    "coast_v140": 50,
+    "skill_art": 592,
+    "retained_skill_art_from_verified_v139_apk": 592,
+    "pote_sprite_pngs": 168,
+    "pote_sprite_bundle_files": 169
+  },
+  "nativeUniqueTests": 104,
+  "nativeSuites": 21,
+  "failuresErrorsSkips": 0,
+  "status": "BUILD_NATIVE_VERIFIED_REVIEW_CANDIDATE",
+  "focusedJob": 114469242568,
+  "artifacts": {
+    "preview": 11701648663,
+    "native": 11702725064,
+    "apk": 11702615318
+  },
+  "fullAndroid": "IN_PROGRESS_UNCERTIFIED",
+  "pr": 195,
+  "integration": "UNMERGED",
+  "originalFidelity": "PENDING_REFERENCE; Grab art and KingArk event absent",
+  "maxMonsterSourceHitPairs": 60,
+  "floorPixelByteLimit": 8652800,
+  "roundTrips": 12
+}

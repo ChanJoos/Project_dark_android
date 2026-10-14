@@ -48,7 +48,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     camera=map.newCamera(viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
-    presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
+    presentation=new WorldStepInterpolator(tileStepSeconds(),runtime.player().x,runtime.player().y);
     CharacterRenderer.setPresentationWalkClock(0f);
   }
 
@@ -70,7 +70,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     camera=new WorldCameraTransform(minX,maxX,minY,maxY,viewportWidth,viewportHeight);
     camera.snapTo(runtime.player().x,runtime.player().y);
     movement=new WorldMoveTargetController(this,this);
-    presentation=new WorldStepInterpolator(WorldMoveTargetController.TILE_STEP_SECONDS,runtime.player().x,runtime.player().y);
+    presentation=new WorldStepInterpolator(tileStepSeconds(),runtime.player().x,runtime.player().y);
     CharacterRenderer.setPresentationWalkClock(0f);
   }
 
@@ -164,6 +164,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   public float presentationPlayerY(){return presentation.y();}
   public float presentationWalkClock(){return presentationWalkClock;}
   public boolean presentationMoving(){return presentation.active();}
+  public boolean targetVisibleFrom(float playerX,float playerY,float targetX,float targetY,float padding){return camera.targetVisibleFrom(playerX,playerY,targetX,targetY,padding);}
   public WorldCameraTransform.Point worldToScreen(float worldX,float worldY){return camera.worldToScreen(worldX,worldY);}
   public WorldCameraTransform.Point screenToWorld(float screenX,float screenY){return camera.screenToWorld(screenX,screenY);}
   public FrameSnapshot snapshot(){return frame(movement.snapshot());}
@@ -186,7 +187,11 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   /** Mirrors current RuntimeState player occupancy without making GameView know collision details. */
   @Override public boolean canPlayerOccupy(float x,float y){
-    if(runtime.skillEffects().rooted("player"))return false;
+    return !runtime.skillEffects().rooted("player")&&canPlayerStandAt(x,y);
+  }
+
+  /** Placement is a terrain/occupancy check, independent of timed movement prohibition. */
+  private boolean canPlayerStandAt(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
     if(terrainIndex.blocked(x,y,r))return false;
@@ -215,6 +220,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   @Override public float worldX(){return runtime.player().x;}
+  @Override public float tileStepSeconds(){return WorldMoveTargetController.TILE_STEP_SECONDS;}
   @Override public float worldY(){return runtime.player().y;}
   @Override public boolean moveToAdjacentTile(float destinationX,float destinationY,WorldMoveTargetController.Direction direction){
     float startX=runtime.player().x,startY=runtime.player().y;
@@ -247,7 +253,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private void snapPlayerToNearestTraversableTile(){
     WorldMoveTargetController.TileCenter best=null;float bestDistance=Float.MAX_VALUE;
     for(WorldMoveTargetController.TileCenter tile:navigationTiles){
-      if(!canPlayerOccupy(tile.x,tile.y))continue;
+      if(!canPlayerStandAt(tile.x,tile.y))continue;
       float dx=tile.x-runtime.player().x,dy=tile.y-runtime.player().y,d=dx*dx+dy*dy;
       if(d<bestDistance){bestDistance=d;best=tile;}
     }

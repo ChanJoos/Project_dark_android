@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "scope": "All Abel coast monsters in both user videos plus source-backed coastline and event roster; provisional inventory is NOT exhaustive",
+  "rosterClosed": false,
+  "secondVideo": {
+    "id": "VwC1KujHWvg",
+    "start": 571,
+    "end": 710,
+    "frameReview": "BLOCKED_MEDIA_NOT_LOADED"
+  },
+  "firstVideo": {
+    "id": "VxmS9AhpMwQ",
+    "frameReview": "SUPPLIED_34_8S_RECORDING_SAMPLED; full video not reviewed"
+  },
+  "entries": [
+    {
+      "id": "ABEL_TURTLE",
+      "name": "터틀",
+      "scope": "COAST",
+      "evidence": "supplied video/screenshot",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_ARKPUS",
+      "name": "아크퍼스",
+      "scope": "COAST",
+      "evidence": "supplied video/user identity",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_PONG",
+      "name": "퐁퐁이",
+      "scope": "COAST",
+      "evidence": "supplied video/user identity; KingArk material",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_GAS",
+      "name": "가스",
+      "scope": "COAST",
+      "evidence": "supplied video/user identity",
+      "status": "CANDIDATE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_GRAB",
+      "name": "그래브",
+      "scope": "COAST",
+      "evidence": "official 2026-01-15 coast2 spawn fix",
+      "status": "PENDING_REFERENCE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_CRAB",
+      "name": "크래커 / 크랩 명칭 검증 필요",
+      "scope": "COAST",
+      "evidence": "historical crab-shell quest; alias unresolved",
+      "status": "PENDING_REFERENCE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_BERSERKER",
+      "name": "해안의광폭자",
+      "scope": "COAST_ELITE",
+      "evidence": "2008 Nexon-hosted player observation, Blue Arkpus likeness",
+      "status": "PENDING_REFERENCE",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_KINGARK_FAKE",
+      "name": "가짜 킹아크퍼스",
+      "scope": "COAST_EVENT",
+      "evidence": "2008 Nexon-hosted KingArk event",
+      "status": "PENDING_EVENT_AND_ART",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_KINGARK",
+      "name": "킹아크퍼스",
+      "scope": "COAST_EVENT",
+      "evidence": "2008 Nexon-hosted KingArk event, screenshots",
+      "status": "PENDING_EVENT_AND_ART",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_SLUG",
+      "name": "슬러그",
+      "scope": "REGION_CHECK",
+      "evidence": "2005 old Abel dungeon; coast placement unconfirmed",
+      "status": "PENDING_REGION_JOIN",
+      "originalVisualAccepted": false
+    },
+    {
+      "id": "ABEL_ESCOMOID",
+      "name": "에스코모이드",
+      "scope": "REGION_CHECK",
+      "evidence": "2005 old Abel dungeon; coast placement unconfirmed",
+      "status": "PENDING_REGION_JOIN",
+      "originalVisualAccepted": false
+    }
+  ],
+  "rejectedAssets": [
+    "invented crab",
+    "invented blue octopus",
+    "rounded red octopus",
+    "cartoon pong"
+  ],
+  "completionPolicy": "All source intervals reviewed, unknown silhouettes identified, every in-scope species reachable with art/AI/reward/save and native screenshots, original visual acceptance recorded. Candidate count is never whole-roster completion.",
+  "unresolvedSilhouettes": [
+    {
+      "observationId": "ABEL_OBS_3C_BLACK_SPIKED",
+      "shape": "Small black spiked body on sand, center-right",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": null
+    },
+    {
+      "observationId": "ABEL_OBS_3C_PURPLE_FLOATING",
+      "shape": "Purple spotted upright floating body with detached black oval shadow, top-right partial view",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": null
+    },
+    {
+      "observationId": "ABEL_OBS_3C_RED_ROUND",
+      "shape": "Rounded red mantle with multiple tentacles, bottom-right",
+      "source": "master/source/abel_v139/reference_screenshots.zip:kingark-ref-04.jpg",
+      "identity": null
+    }
+  ],
+  "identityPolicy": "Unlabelled observations are NOT separate confirmed species; reconcile with names and versions before closing roster. Rejected generated artwork must not be reused to fill these gaps."
+}

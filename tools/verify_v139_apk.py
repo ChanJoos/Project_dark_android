@@ -14,7 +14,9 @@ with zipfile.ZipFile(apk_path) as apk:
     identity = json.loads(apk.read('assets/build_identity.json'))
     assert identity['sourceCommit'] == source, identity
     assert identity['runId'] == os.environ['GITHUB_RUN_ID'], identity
-    assert identity['versionCode'] == 139, identity
+    assert identity['versionCode'] == 146, identity
+    for path in pathlib.Path('app/src/main/assets/abel-town-v144').glob('*'):
+        assert apk.read('assets/abel-town-v144/'+path.name)==path.read_bytes(),path
     for path in poses:
         packaged = 'assets/pote_monsters_generated_v1/sprites/campaign_v3/giant_mantis/' + path.name
         assert apk.read(packaged) == path.read_bytes(), path
@@ -51,20 +53,33 @@ with zipfile.ZipFile(apk_path) as apk:
     with zipfile.ZipFile("master/assets/abel_v139/generated_assets.zip") as coast:
         assert len(coast.namelist()) == 28
         for name in coast.namelist():
+            if any(part in name for part in ("/red_octopus/","/crab/","/berserker/","/pong/")): continue
             assert apk.read("assets/"+name) == coast.read(name), name
+    with zipfile.ZipFile("master/assets/abel_v140/generated_assets.zip") as coast:
+        assert len(coast.namelist()) == 50
+        for name in coast.namelist():
+            if any(part in name for part in ("/red_octopus/","/crab/","/berserker/","/pong/")): continue
+            assert apk.read("assets/"+name) == coast.read(name), name
+    with zipfile.ZipFile("master/assets/abel_v141/generated_assets.zip") as coast:
+        assert len(coast.namelist()) == 36
+        for name in coast.namelist(): assert apk.read("assets/"+name) == coast.read(name), name
+    with zipfile.ZipFile("master/assets/abel_v142/generated_assets.zip") as coast:
+        assert len(coast.namelist()) == 96
+        for name in coast.namelist(): assert apk.read("assets/"+name) == coast.read(name), name
+    assert not any(any(part in n for part in ("/red_octopus/", "/crab/", "/berserker/", "abel_v140/pong/")) for n in apk.namelist())
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
-assert "versionCode='139'" in badging and "versionName='1.39-abel-coast'" in badging, badging[:300]
-expected_package = 'com.projectdark.mobile.v139test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
+assert "versionCode='146'" in badging and "versionName='1.46-abel-ground-supports'" in badging, badging[:300]
+expected_package = 'com.projectdark.mobile.v146test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
 resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'resources', str(apk_path)], text=True)
 assert 'name='+expected_package in resource_table, resource_table[:400]
 for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','player_shirt_mu0000001_source'):
     assert ':drawable/'+drawable in resource_table, drawable
-info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v139test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
+info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v146test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope="V139 first Abel coast: six source-referenced adapted maps, turtle/red-octopus candidates, 8 survey objectives Lv41-55, direct travel/preview, existing shared navigation/collision/prewarm/bounded floor cache. KingArk original event and remaining original monster art NOT COMPLETE. Normal growth supports Lv99. Physical phone/visual acceptance pending",
+            scope="V146 Abel town floor and full-support bench repair with recovered town integration; whole-map/district/door/route/save/cache checks; V143 retained names/basic punch/visible Noah travel: 13 runtime candidate identities/12 art families, all seven newly observed video forms, per-zone roster <=5 art families/60 source-hit pairs, 72/96/108 actors and shared navigation/AI/Resolver/reward/save. KingArk fake/real are adapted solo encounters sharing one partially obscured screenshot reconstruction, NOT original party/event fidelity. Names of unlabelled forms and Crab/Berserker visual joins remain pending. Full original roster/animation/topology and phone/visual acceptance NOT VERIFIED",
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance='PENDING')
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))

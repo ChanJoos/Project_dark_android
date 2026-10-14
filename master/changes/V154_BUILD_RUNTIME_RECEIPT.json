@@ -1,0 +1,119 @@
+{
+  "sourceCommit": "8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+  "sourceTree": "fe451b18efa4b58472ad641fa069faff3c1fb0b8",
+  "run": 38492651371,
+  "job": 115622175997,
+  "status": "FOCUSED_BUILD_NATIVE_VERIFIED_PHONE_PENDING",
+  "build": {
+    "sourceCommit": "8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+    "runId": "38492651371",
+    "versionCode": 154,
+    "versionName": "1.54-town-assets-rucesion",
+    "applicationId": "com.projectdark.mobile.v154test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "48bea284e42777c9be167adce805272763cf568892fa32be15248080f2f63fa5",
+    "apkBytes": 70660173,
+    "builtSeoul": "2026-10-14T10:05:03.704142+09:00",
+    "scope": "V154 adapted 3-circle combat/profiles/magic/AI, eighteen coast quests to Lv70 and three equipment tiers; five visible Milles-style 40x16 entry portals at the existing service triggers, native portal pixel checks and actual touch-to-entry; common Milles/Pote/Abel .60s movement and frame policy, complete adapted red facades and sailing ship, whole source trees and rowing boat, no live cropped garden/wall fragments; registered ground polygons and cached collision occupancy; single town, all five service doors, NPC coast travel and original benches retained. Generated missing silhouettes are ADAPTED, not original pixels; physical phone and user visual acceptance pending",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "primaryUniqueTests": 136,
+  "primarySuites": 25,
+  "balanceExecutions": 5,
+  "totalPassingExecutions": 141,
+  "packagedByteMatches": 112,
+  "userVisualReview": "APPROVED_BEFORE_NATIVE",
+  "phoneAcceptance": "PENDING",
+  "recoveredPixelProvenance": "Approved atlas RGB recovered; alpha/thumbnail resampling not bit-identical to lost unpublished inputs; hall/pergola/grass source video re-extracted. Hidden completions/topology ADAPTED.",
+  "rucesionTests": [
+    "com.projectdark.mobile.RucesionTownV154Test.allThreeServicesUseActualTouchEntryAndSaveRestoreExitToSameTown",
+    "com.projectdark.mobile.RucesionTownV154Test.cleanObjectSpritesHaveTransparentGutters",
+    "com.projectdark.mobile.RucesionTownV154Test.expandedTownRendersActualNativeDistrictsAndRetainsBoundedWarmCache",
+    "com.projectdark.mobile.RucesionTownV154Test.sixActualNpcRoundTripsPreserveProgressAndRestoreTownSave"
+  ],
+  "artifacts": [
+    {
+      "id": 11862865970,
+      "name": "town-assets-v154-balance-MAGE-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 2747,
+      "digest": "sha256:ed819c8239c88b488585a8d562448e238e40fc3167a939f0c3ffd2e3b9bd193f"
+    },
+    {
+      "id": 11862795630,
+      "name": "town-assets-v154-balance-WARRIOR-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 2740,
+      "digest": "sha256:bc0efa043e2846b0f04863e098a0b28741c9c83fc1b9ecd765b6f58d489fc1f3"
+    },
+    {
+      "id": 11862792112,
+      "name": "town-assets-v154-preview-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 47028413,
+      "digest": "sha256:307164b7647e92a4525d976daeaba3444200ea1d6341c3ea5b9d3241276c0371"
+    },
+    {
+      "id": 11862770972,
+      "name": "town-assets-v154-balance-CLERIC-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 2757,
+      "digest": "sha256:481ac249534bf7e912b64b26d492bd5d93a633286a58edc4ea1d072e28d6b562"
+    },
+    {
+      "id": 11862745615,
+      "name": "town-assets-v154-balance-MARTIAL_ARTIST-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 2755,
+      "digest": "sha256:5cd80953ea55a14b232da70267aa41d051602da61ca32d54a7d59cd2d489ddb1"
+    },
+    {
+      "id": 11862626815,
+      "name": "town-assets-v154-native-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 87361261,
+      "digest": "sha256:bc25ec87b5e43146bd2700ff4f7e196bfc414e07c72989028f3c38be6aa8aebd"
+    },
+    {
+      "id": 11862566805,
+      "name": "town-assets-v154-apk-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 69717004,
+      "digest": "sha256:a7c25fd3988d271acbe85eb4920648ca646bf936d35273b4425392de37761d78"
+    },
+    {
+      "id": 11862199287,
+      "name": "town-assets-v154-balance-ROGUE-8d343e5d0bca2763ffd9cfafda544f7ef9680fd8",
+      "bytes": 2738,
+      "digest": "sha256:058afab4e34755d901e47812b3477101e09501205e85c6bee96ff6385620fc9a"
+    }
+  ],
+  "failedAttempts": [
+    {
+      "source": "9af9055e981568a265a2e6e7fe241251e299e037",
+      "run": 38491048222,
+      "reason": "New native test Path type ambiguous; no APK delivered"
+    },
+    {
+      "source": "71fa654c5c7b48df5ac1fb1e6769213c23205387",
+      "run": 38491416407,
+      "reason": "Two duplicate NPC outfits and transparent-gutter rectangle arrival false positive; all four Rucesion tests passed"
+    },
+    {
+      "source": "ebb6e395cfb17ddf225c059b9328f0b206ea1b0f",
+      "run": 38492276698,
+      "reason": "NPC appearance fixed; only the transparent-gutter rectangle arrival false positive remained"
+    }
+  ],
+  "broaderRuns": {
+    "38492657929": "SUCCESS",
+    "38492651351": "SUCCESS"
+  },
+  "broaderJobs": {
+    "38492657929": 115621260737,
+    "38492651351": 115621240780
+  },
+  "resumedDeliveryVerification": {
+    "apkSha256": "48bea284e42777c9be167adce805272763cf568892fa32be15248080f2f63fa5",
+    "apkArchiveSha256": "a7c25fd3988d271acbe85eb4920648ca646bf936d35273b4425392de37761d78",
+    "previewArchiveSha256": "307164b7647e92a4525d976daeaba3444200ea1d6341c3ea5b9d3241276c0371",
+    "zipCRC": "PASS",
+    "embeddedBuildInfo": "MATCH",
+    "phoneAcceptance": "PENDING"
+  }
+}

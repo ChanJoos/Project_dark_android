@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 422,
+  "registeredItems": 452,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -5278,6 +5278,189 @@
         32
       ]
     },
+    "IT_B_CAMPAIGN_WARRIOR_41": {
+      "appearanceId": "mu0000007",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "assetSha256": "9720e03bf2e4b1c5a3d9b24c3d17bc01e43bda8a686265eba42f3ca34ca5c889",
+      "sourcePath": "master/assets/items/armor/mu0000007_지폰.webp",
+      "sourceSha256": "00b805b25fb9a3ca23f628d99efd048b275d01f6a1bd4298fb226edf253d6d01",
+      "crop": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        16,
+        16
+      ],
+      "name": "지폰",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_WARRIOR_41"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_41": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_41",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/903/longsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ロングソード",
+          "fields": {
+            "画像": "",
+            "名前": "ロングソード",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "20m30 1m2",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/d08a9c24d6f2_longsword.gif",
+      "sourceSha256": "29b089f27e0b0b3bd6ce4893b40e2dc5f2c83bec04e6cf87bc10a8533f16911f",
+      "assetSha256": "a5fb2335954e0c6580ce8218cdd5891e8b27df3f3f3d9a05620755b291e23160",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 128,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw015",
+      "inventoryArtwork": true,
+      "name": "롱소드",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_B_CAMPAIGN_WARRIOR_56": {
+      "appearanceId": "mu0000007",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "assetSha256": "9720e03bf2e4b1c5a3d9b24c3d17bc01e43bda8a686265eba42f3ca34ca5c889",
+      "sourcePath": "master/assets/items/armor/mu0000007_지폰.webp",
+      "sourceSha256": "00b805b25fb9a3ca23f628d99efd048b275d01f6a1bd4298fb226edf253d6d01",
+      "crop": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        16,
+        16
+      ],
+      "name": "지폰",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_WARRIOR_56"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_56": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_56",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/903/longsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ロングソード",
+          "fields": {
+            "画像": "",
+            "名前": "ロングソード",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "20m30 1m2",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/d08a9c24d6f2_longsword.gif",
+      "sourceSha256": "29b089f27e0b0b3bd6ce4893b40e2dc5f2c83bec04e6cf87bc10a8533f16911f",
+      "assetSha256": "a5fb2335954e0c6580ce8218cdd5891e8b27df3f3f3d9a05620755b291e23160",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 128,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw015",
+      "inventoryArtwork": true,
+      "name": "롱소드",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_B_CAMPAIGN_WARRIOR_65": {
+      "appearanceId": "mu0000007",
+      "assetPath": "item-icons/identity_mu0000007.png",
+      "assetSha256": "9720e03bf2e4b1c5a3d9b24c3d17bc01e43bda8a686265eba42f3ca34ca5c889",
+      "sourcePath": "master/assets/items/armor/mu0000007_지폰.webp",
+      "sourceSha256": "00b805b25fb9a3ca23f628d99efd048b275d01f6a1bd4298fb226edf253d6d01",
+      "crop": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        16,
+        16
+      ],
+      "name": "지폰",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_WARRIOR_65"
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_65": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_65",
+      "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/903/longsword.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "ロングソード",
+          "fields": {
+            "画像": "",
+            "名前": "ロングソード",
+            "装備可能LV": "11",
+            "重量": "5",
+            "攻撃力": "20m30 1m2",
+            "耐久": "7000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/d08a9c24d6f2_longsword.gif",
+      "sourceSha256": "29b089f27e0b0b3bd6ce4893b40e2dc5f2c83bec04e6cf87bc10a8533f16911f",
+      "assetSha256": "a5fb2335954e0c6580ce8218cdd5891e8b27df3f3f3d9a05620755b291e23160",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 128,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw015",
+      "inventoryArtwork": true,
+      "name": "롱소드",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
     "IT_B_CAMPAIGN_ROGUE_11": {
       "appearanceId": "mu0000004",
       "assetPath": "item-icons/identity_mu0000004.png",
@@ -5364,6 +5547,189 @@
     },
     "IT_B_CAMPAIGN_TOOL_ROGUE_26": {
       "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_26",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "assetSha256": "1a7b73204964448ef264b807d5128dd83277caba42081e4e7a543de4445ba515",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 55,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw002",
+      "inventoryArtwork": true,
+      "name": "에페",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_B_CAMPAIGN_ROGUE_41": {
+      "appearanceId": "mu0000004",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "assetSha256": "04f6f340c015bf7b2b444a1aca732974d4a5feb30d4a3158584b245754ded9d5",
+      "sourcePath": "master/assets/items/armor/mu0000004_스카웃튜닉.webp",
+      "sourceSha256": "e8ee81f1dbc7b5cc5492338036d1ce843a22691070c53612cb6b9411f3fac91e",
+      "crop": [
+        0,
+        0,
+        16,
+        32
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        16,
+        32
+      ],
+      "name": "스카웃튜닉",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_ROGUE_41"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_41": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_41",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "assetSha256": "1a7b73204964448ef264b807d5128dd83277caba42081e4e7a543de4445ba515",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 55,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw002",
+      "inventoryArtwork": true,
+      "name": "에페",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_B_CAMPAIGN_ROGUE_56": {
+      "appearanceId": "mu0000004",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "assetSha256": "04f6f340c015bf7b2b444a1aca732974d4a5feb30d4a3158584b245754ded9d5",
+      "sourcePath": "master/assets/items/armor/mu0000004_스카웃튜닉.webp",
+      "sourceSha256": "e8ee81f1dbc7b5cc5492338036d1ce843a22691070c53612cb6b9411f3fac91e",
+      "crop": [
+        0,
+        0,
+        16,
+        32
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        16,
+        32
+      ],
+      "name": "스카웃튜닉",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_ROGUE_56"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_56": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_56",
+      "assetPath": "item-icons/8956a8316ba1_epe.png",
+      "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
+      "sourceRows": [
+        {
+          "page": "page_81",
+          "label": "エペ",
+          "fields": {
+            "画像": "",
+            "名前": "エペ",
+            "装備可能LV": "1",
+            "重量": "3",
+            "攻撃力": "3m13 1m2",
+            "耐久": "4000",
+            "コメント": "無し",
+            "入手場所": "ミルレス武器屋"
+          },
+          "sourcePage": "https://w.atwiki.jp/takesi100/pages/81.html"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/8956a8316ba1_epe.gif",
+      "sourceSha256": "6309ebeeb58cca2ce49824a2218ae612b5968b6a2d216fcc67b6d65a91d7a4dc",
+      "assetSha256": "1a7b73204964448ef264b807d5128dd83277caba42081e4e7a543de4445ba515",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH_PLUS_DETACHED_GRAIN",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 55,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw002",
+      "inventoryArtwork": true,
+      "name": "에페",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_B_CAMPAIGN_ROGUE_65": {
+      "appearanceId": "mu0000004",
+      "assetPath": "item-icons/identity_mu0000004.png",
+      "assetSha256": "04f6f340c015bf7b2b444a1aca732974d4a5feb30d4a3158584b245754ded9d5",
+      "sourcePath": "master/assets/items/armor/mu0000004_스카웃튜닉.webp",
+      "sourceSha256": "e8ee81f1dbc7b5cc5492338036d1ce843a22691070c53612cb6b9411f3fac91e",
+      "crop": [
+        0,
+        0,
+        16,
+        32
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        16,
+        32
+      ],
+      "name": "스카웃튜닉",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_ROGUE_65"
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_65": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_65",
       "assetPath": "item-icons/8956a8316ba1_epe.png",
       "sourceUrl": "https://img.atwiki.jp/takesi100/attach/81/898/epe.gif",
       "sourceRows": [
@@ -5504,6 +5870,162 @@
         32
       ]
     },
+    "IT_B_CAMPAIGN_MAGE_41": {
+      "appearanceId": "mu0000006",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "assetSha256": "9d2c2820f0c22a696ab81ed61245f271c39b7f2f231367cfd4b7a1cee1029985",
+      "sourcePath": "master/assets/items/armor/mu0000006_후드로브.webp",
+      "sourceSha256": "e752d9bea6f71dbf3cf358007d077858c691629426c6c1e30091baeb896360f9",
+      "crop": [
+        0,
+        0,
+        18,
+        19
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        18,
+        19
+      ],
+      "name": "후드로브",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_MAGE_41"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_41": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_41",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+      "sourceRows": [
+        {
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 135,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw024",
+      "inventoryArtwork": true,
+      "name": "매직새티아",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_B_CAMPAIGN_MAGE_56": {
+      "appearanceId": "mu0000006",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "assetSha256": "9d2c2820f0c22a696ab81ed61245f271c39b7f2f231367cfd4b7a1cee1029985",
+      "sourcePath": "master/assets/items/armor/mu0000006_후드로브.webp",
+      "sourceSha256": "e752d9bea6f71dbf3cf358007d077858c691629426c6c1e30091baeb896360f9",
+      "crop": [
+        0,
+        0,
+        18,
+        19
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        18,
+        19
+      ],
+      "name": "후드로브",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_MAGE_56"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_56": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_56",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+      "sourceRows": [
+        {
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 135,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw024",
+      "inventoryArtwork": true,
+      "name": "매직새티아",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
+    "IT_B_CAMPAIGN_MAGE_65": {
+      "appearanceId": "mu0000006",
+      "assetPath": "item-icons/identity_mu0000006.png",
+      "assetSha256": "9d2c2820f0c22a696ab81ed61245f271c39b7f2f231367cfd4b7a1cee1029985",
+      "sourcePath": "master/assets/items/armor/mu0000006_후드로브.webp",
+      "sourceSha256": "e752d9bea6f71dbf3cf358007d077858c691629426c6c1e30091baeb896360f9",
+      "crop": [
+        0,
+        0,
+        18,
+        19
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        18,
+        19
+      ],
+      "name": "후드로브",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_MAGE_65"
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_65": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_65",
+      "assetPath": "item-icons/minimob87_magic_satia.png",
+      "sourceUrl": "https://t1.daumcdn.net/cfile/tistory/17326039503F41AD12",
+      "sourceRows": [
+        {
+          "page": "page_87",
+          "label": "매직새티아",
+          "fields": {},
+          "sourcePage": "https://minimob.tistory.com/87"
+        }
+      ],
+      "sourceArchive": "master/source/items/full_20261010/original_sources.zip",
+      "sourceMember": "raw/minimob87_magic_satia.gif",
+      "sourceSha256": "80e935f87cd91aa225c15e3e431ce0b17b9f6e8aa98b53fdecb93baa78da7d2b",
+      "assetSha256": "facbb61578b9600654d1d3882d72a155bbbbc31c6ecb82c166ce91f721619e40",
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA",
+      "backgroundRemoval": "ORIGINAL_SOURCE_ALPHA",
+      "identityMatch": "SOURCE_LABELLED_INVENTORY_ICON",
+      "foregroundPixels": 135,
+      "limitation": "Labelled historical inventory icon, distinct from actor sprite. Source shares artwork across the labelled one/two-hand or magic/holy rows where applicable; actor identity and stats unchanged.",
+      "appearanceId": "mw024",
+      "inventoryArtwork": true,
+      "name": "매직새티아",
+      "nativeSize": [
+        32,
+        32
+      ]
+    },
     "IT_B_CAMPAIGN_CLERIC_11": {
       "appearanceId": "mu0000015",
       "assetPath": "item-icons/identity_mu0000015.png",
@@ -5598,6 +6120,147 @@
       "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_26",
       "inventoryArtwork": false
     },
+    "IT_B_CAMPAIGN_CLERIC_41": {
+      "appearanceId": "mu0000015",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "assetSha256": "197b1d1a1540bbc1d0e2bd2d11d69ac39a3e01390f0da540751e7c587ce33340",
+      "sourcePath": "master/assets/items/armor/mu0000015_맨틀.webp",
+      "sourceSha256": "ddc58fc1ff7323fc7edb30324301ddc0d67a94b4da5ee48d38ebe408e155318d",
+      "crop": [
+        0,
+        0,
+        18,
+        31
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        18,
+        31
+      ],
+      "name": "맨틀",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_CLERIC_41"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_41": {
+      "appearanceId": "mw008",
+      "assetPath": "item-icons/identity_mw008.png",
+      "assetSha256": "f88f31354d27b48dc18837f482624d7de435e7ba0bf2dea51a2501fb5c8f6930",
+      "sourcePath": "master/assets/items/weapon/mw008_홀리머큐리아.webp",
+      "sourceSha256": "e70ecb0971206390c6dc89e7b0f1e0e18dda1bd88016cc4b4f5a265d426cbd4e",
+      "crop": [
+        0,
+        0,
+        19,
+        12
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        19,
+        12
+      ],
+      "name": "홀리머큐리아",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_41",
+      "inventoryArtwork": false
+    },
+    "IT_B_CAMPAIGN_CLERIC_56": {
+      "appearanceId": "mu0000015",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "assetSha256": "197b1d1a1540bbc1d0e2bd2d11d69ac39a3e01390f0da540751e7c587ce33340",
+      "sourcePath": "master/assets/items/armor/mu0000015_맨틀.webp",
+      "sourceSha256": "ddc58fc1ff7323fc7edb30324301ddc0d67a94b4da5ee48d38ebe408e155318d",
+      "crop": [
+        0,
+        0,
+        18,
+        31
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        18,
+        31
+      ],
+      "name": "맨틀",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_CLERIC_56"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_56": {
+      "appearanceId": "mw008",
+      "assetPath": "item-icons/identity_mw008.png",
+      "assetSha256": "f88f31354d27b48dc18837f482624d7de435e7ba0bf2dea51a2501fb5c8f6930",
+      "sourcePath": "master/assets/items/weapon/mw008_홀리머큐리아.webp",
+      "sourceSha256": "e70ecb0971206390c6dc89e7b0f1e0e18dda1bd88016cc4b4f5a265d426cbd4e",
+      "crop": [
+        0,
+        0,
+        19,
+        12
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        19,
+        12
+      ],
+      "name": "홀리머큐리아",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_56",
+      "inventoryArtwork": false
+    },
+    "IT_B_CAMPAIGN_CLERIC_65": {
+      "appearanceId": "mu0000015",
+      "assetPath": "item-icons/identity_mu0000015.png",
+      "assetSha256": "197b1d1a1540bbc1d0e2bd2d11d69ac39a3e01390f0da540751e7c587ce33340",
+      "sourcePath": "master/assets/items/armor/mu0000015_맨틀.webp",
+      "sourceSha256": "ddc58fc1ff7323fc7edb30324301ddc0d67a94b4da5ee48d38ebe408e155318d",
+      "crop": [
+        0,
+        0,
+        18,
+        31
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        18,
+        31
+      ],
+      "name": "맨틀",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_CLERIC_65"
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_65": {
+      "appearanceId": "mw008",
+      "assetPath": "item-icons/identity_mw008.png",
+      "assetSha256": "f88f31354d27b48dc18837f482624d7de435e7ba0bf2dea51a2501fb5c8f6930",
+      "sourcePath": "master/assets/items/weapon/mw008_홀리머큐리아.webp",
+      "sourceSha256": "e70ecb0971206390c6dc89e7b0f1e0e18dda1bd88016cc4b4f5a265d426cbd4e",
+      "crop": [
+        0,
+        0,
+        19,
+        12
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        19,
+        12
+      ],
+      "name": "홀리머큐리아",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Exact wearable thumbnail used as explicit inventory fallback; dedicated inventory illustration unresolved. Orientation is not verified as original inventory orientation.",
+      "itemId": "IT_B_CAMPAIGN_TOOL_CLERIC_65",
+      "inventoryArtwork": false
+    },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_11": {
       "appearanceId": "mu0000003",
       "assetPath": "item-icons/identity_mu0000003.png",
@@ -5643,6 +6306,75 @@
       "nameEvidence": "lod-dressup data/names.json or /api/names",
       "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
       "itemId": "IT_B_CAMPAIGN_MARTIAL_ARTIST_26"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_41": {
+      "appearanceId": "mu0000003",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "assetSha256": "e56ece6746a630f71892c03843b9f7082515a53dbcfbad9c4eb2df1c7751820e",
+      "sourcePath": "master/assets/items/armor/mu0000003_도복.webp",
+      "sourceSha256": "1099883b691b237401bc620bfd882e43b03749b0c074a276339d46c68af9f1cd",
+      "crop": [
+        0,
+        0,
+        12,
+        25
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        12,
+        25
+      ],
+      "name": "도복",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_MARTIAL_ARTIST_41"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_56": {
+      "appearanceId": "mu0000003",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "assetSha256": "e56ece6746a630f71892c03843b9f7082515a53dbcfbad9c4eb2df1c7751820e",
+      "sourcePath": "master/assets/items/armor/mu0000003_도복.webp",
+      "sourceSha256": "1099883b691b237401bc620bfd882e43b03749b0c074a276339d46c68af9f1cd",
+      "crop": [
+        0,
+        0,
+        12,
+        25
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        12,
+        25
+      ],
+      "name": "도복",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_MARTIAL_ARTIST_56"
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_65": {
+      "appearanceId": "mu0000003",
+      "assetPath": "item-icons/identity_mu0000003.png",
+      "assetSha256": "e56ece6746a630f71892c03843b9f7082515a53dbcfbad9c4eb2df1c7751820e",
+      "sourcePath": "master/assets/items/armor/mu0000003_도복.webp",
+      "sourceSha256": "1099883b691b237401bc620bfd882e43b03749b0c074a276339d46c68af9f1cd",
+      "crop": [
+        0,
+        0,
+        12,
+        25
+      ],
+      "projection": "MASTER_NATIVE_THUMBNAIL",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "nativeSize": [
+        12,
+        25
+      ],
+      "name": "도복",
+      "nameEvidence": "lod-dressup data/names.json or /api/names",
+      "limitation": "Original wearable preview of this exact appearance; dedicated inventory illustration not yet recovered. No enlargement or painted pixels.",
+      "itemId": "IT_B_CAMPAIGN_MARTIAL_ARTIST_65"
     },
     "IT_SHIELD_WOOD": {
       "itemId": "IT_SHIELD_WOOD",
@@ -7042,6 +7774,84 @@
     },
     "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_26": {
       "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_26",
+      "asset": "170_kintebukuro.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kintebukuro.gif",
+      "sourceSha256": "1e6eb706066715aadd0bbc760cef18f9050d0f207643bc0921aff15c26eb277e",
+      "assetSha256": "b652c00eb56a53ddc5abdfa2dc3e8b85f43c992d5b34ab9fdd1934c02e7a62ab",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA_MASK",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kintebukuro.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html",
+      "rawPixelAsset": "master/assets/equipment/accessories_20261009/170_kintebukuro.png",
+      "alphaMask": "master/assets/equipment/background_masks_v126/170_kintebukuro.png",
+      "alphaMaskSha256": "28d42e0ae24924de07072736bc3e3bf6d3af51e3403f0c5e87121ccf00082b72",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT",
+      "reusesItemArt": "IT_SOURCE_170_KINTEBUKURO_7E1109C9",
+      "limitation": "Original inventory artwork visual equivalent; exact historical identity not asserted."
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_41": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_41",
+      "asset": "170_kintebukuro.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kintebukuro.gif",
+      "sourceSha256": "1e6eb706066715aadd0bbc760cef18f9050d0f207643bc0921aff15c26eb277e",
+      "assetSha256": "b652c00eb56a53ddc5abdfa2dc3e8b85f43c992d5b34ab9fdd1934c02e7a62ab",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA_MASK",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kintebukuro.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html",
+      "rawPixelAsset": "master/assets/equipment/accessories_20261009/170_kintebukuro.png",
+      "alphaMask": "master/assets/equipment/background_masks_v126/170_kintebukuro.png",
+      "alphaMaskSha256": "28d42e0ae24924de07072736bc3e3bf6d3af51e3403f0c5e87121ccf00082b72",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT",
+      "reusesItemArt": "IT_SOURCE_170_KINTEBUKURO_7E1109C9",
+      "limitation": "Original inventory artwork visual equivalent; exact historical identity not asserted."
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_56": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_56",
+      "asset": "170_kintebukuro.png",
+      "sourcePath": "master/source/equipment/atwiki_20261009/170_kintebukuro.gif",
+      "sourceSha256": "1e6eb706066715aadd0bbc760cef18f9050d0f207643bc0921aff15c26eb277e",
+      "assetSha256": "b652c00eb56a53ddc5abdfa2dc3e8b85f43c992d5b34ab9fdd1934c02e7a62ab",
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_SEPARATE_ALPHA_MASK",
+      "sourceArchive": "master/source/equipment/atwiki_20261009/original_sources.zip",
+      "sourceMember": "170_kintebukuro.gif",
+      "evidence": "HISTORICAL_KOREAN_GAME_FAN_TABLE",
+      "sourceUrl": "https://w.atwiki.jp/takesi100/pages/170.html",
+      "rawPixelAsset": "master/assets/equipment/accessories_20261009/170_kintebukuro.png",
+      "alphaMask": "master/assets/equipment/background_masks_v126/170_kintebukuro.png",
+      "alphaMaskSha256": "28d42e0ae24924de07072736bc3e3bf6d3af51e3403f0c5e87121ccf00082b72",
+      "backgroundRemoval": "SOURCE_SOCKET_SPATIAL_MATCH",
+      "assetPath": "equipment-icons/170_kintebukuro.png",
+      "identityMatch": "ADAPTED_VISUAL_EQUIVALENT",
+      "reusesItemArt": "IT_SOURCE_170_KINTEBUKURO_7E1109C9",
+      "limitation": "Original inventory artwork visual equivalent; exact historical identity not asserted."
+    },
+    "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_65": {
+      "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_65",
       "asset": "170_kintebukuro.png",
       "sourcePath": "master/source/equipment/atwiki_20261009/170_kintebukuro.gif",
       "sourceSha256": "1e6eb706066715aadd0bbc760cef18f9050d0f207643bc0921aff15c26eb277e",

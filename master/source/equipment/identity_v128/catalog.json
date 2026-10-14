@@ -181,6 +181,36 @@
       "name": "롱소드",
       "adaptedVariant": true
     },
+    "IT_B_CAMPAIGN_WARRIOR_41": {
+      "appearanceId": "mu0000007",
+      "name": "지폰",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_41": {
+      "appearanceId": "mw015",
+      "name": "롱소드",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_WARRIOR_56": {
+      "appearanceId": "mu0000007",
+      "name": "지폰",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_56": {
+      "appearanceId": "mw015",
+      "name": "롱소드",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_WARRIOR_65": {
+      "appearanceId": "mu0000007",
+      "name": "지폰",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_WARRIOR_65": {
+      "appearanceId": "mw015",
+      "name": "롱소드",
+      "adaptedVariant": true
+    },
     "IT_B_CAMPAIGN_ROGUE_11": {
       "appearanceId": "mu0000004",
       "name": "스카웃튜닉",
@@ -197,6 +227,36 @@
       "adaptedVariant": true
     },
     "IT_B_CAMPAIGN_TOOL_ROGUE_26": {
+      "appearanceId": "mw002",
+      "name": "에페",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_ROGUE_41": {
+      "appearanceId": "mu0000004",
+      "name": "스카웃튜닉",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_41": {
+      "appearanceId": "mw002",
+      "name": "에페",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_ROGUE_56": {
+      "appearanceId": "mu0000004",
+      "name": "스카웃튜닉",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_56": {
+      "appearanceId": "mw002",
+      "name": "에페",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_ROGUE_65": {
+      "appearanceId": "mu0000004",
+      "name": "스카웃튜닉",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_ROGUE_65": {
       "appearanceId": "mw002",
       "name": "에페",
       "adaptedVariant": true
@@ -221,6 +281,36 @@
       "name": "매직새티아",
       "adaptedVariant": true
     },
+    "IT_B_CAMPAIGN_MAGE_41": {
+      "appearanceId": "mu0000006",
+      "name": "후드로브",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_41": {
+      "appearanceId": "mw024",
+      "name": "매직새티아",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_MAGE_56": {
+      "appearanceId": "mu0000006",
+      "name": "후드로브",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_56": {
+      "appearanceId": "mw024",
+      "name": "매직새티아",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_MAGE_65": {
+      "appearanceId": "mu0000006",
+      "name": "후드로브",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_MAGE_65": {
+      "appearanceId": "mw024",
+      "name": "매직새티아",
+      "adaptedVariant": true
+    },
     "IT_B_CAMPAIGN_CLERIC_11": {
       "appearanceId": "mu0000015",
       "name": "맨틀",
@@ -241,12 +331,57 @@
       "name": "홀리머큐리아",
       "adaptedVariant": true
     },
+    "IT_B_CAMPAIGN_CLERIC_41": {
+      "appearanceId": "mu0000015",
+      "name": "맨틀",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_41": {
+      "appearanceId": "mw008",
+      "name": "홀리머큐리아",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_CLERIC_56": {
+      "appearanceId": "mu0000015",
+      "name": "맨틀",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_56": {
+      "appearanceId": "mw008",
+      "name": "홀리머큐리아",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_CLERIC_65": {
+      "appearanceId": "mu0000015",
+      "name": "맨틀",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_TOOL_CLERIC_65": {
+      "appearanceId": "mw008",
+      "name": "홀리머큐리아",
+      "adaptedVariant": true
+    },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_11": {
       "appearanceId": "mu0000003",
       "name": "도복",
       "adaptedVariant": true
     },
     "IT_B_CAMPAIGN_MARTIAL_ARTIST_26": {
+      "appearanceId": "mu0000003",
+      "name": "도복",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_41": {
+      "appearanceId": "mu0000003",
+      "name": "도복",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_56": {
+      "appearanceId": "mu0000003",
+      "name": "도복",
+      "adaptedVariant": true
+    },
+    "IT_B_CAMPAIGN_MARTIAL_ARTIST_65": {
       "appearanceId": "mu0000003",
       "name": "도복",
       "adaptedVariant": true

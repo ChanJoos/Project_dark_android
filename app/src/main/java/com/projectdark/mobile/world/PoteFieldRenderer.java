@@ -216,7 +216,7 @@ public final class PoteFieldRenderer {
   }
   public static List<RectF> blockingFootprints(String mapId){
     List<RectF> out=new ArrayList<>();
-    if(AbelCoastGeometry.contains(mapId)){for(AbelCoastGeometry.Prop p:AbelCoastGeometry.props(mapId))out.add(new RectF(p.footprint));return Collections.unmodifiableList(out);}
+    if(AbelCoastGeometry.contains(mapId)){for(AbelCoastGeometry.Prop p:AbelCoastGeometry.props(mapId))if(p.solid)out.add(new RectF(p.footprint));return Collections.unmodifiableList(out);}
     for(Placement p:placementsForMap(mapId)){
       if("canopy".equals(p.role))out.add(new RectF(p.x-14f,p.y-10f,p.x+14f,p.y+10f));
       else if("rock".equals(p.role))out.add(new RectF(p.x-19f,p.y-15f,p.x+19f,p.y+15f));
@@ -304,12 +304,18 @@ public final class PoteFieldRenderer {
   }
 
   private void drawCoastFloor(Canvas c,String map,float ox,float oy){
-    Bitmap sand=bitmap("abel_v139/sand.png"),water=bitmap("abel_v139/water.png");
+    Bitmap sand=bitmap("abel_v140/sand.png"),water=bitmap("abel_v140/water.png");
     if(sand==null||water==null)throw new IllegalStateException("Missing Abel coast terrain assets");
     pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
     BitmapShader s=shader("abel-sand",sand,Shader.TileMode.MIRROR);texturePhase.setTranslate(-ox,-oy);s.setLocalMatrix(texturePhase);pixel.setShader(s);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     BitmapShader sea=shader("abel-water",water,Shader.TileMode.MIRROR);sea.setLocalMatrix(texturePhase);pixel.setShader(sea);
-    for(RectF r:AbelCoastGeometry.water(map))c.drawRect(r.left-ox,r.top-oy,r.right-ox,r.bottom-oy,pixel);
+    groundCells.reset();groundCells.moveTo(64-ox,AbelCoastGeometry.shoreY(map,64)-oy);
+    for(float x=96;x<=AbelCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,AbelCoastGeometry.shoreY(map,x)-oy);
+    groundCells.lineTo(AbelCoastGeometry.width(map)-ox,AbelCoastGeometry.height(map)-oy);groundCells.lineTo(64-ox,AbelCoastGeometry.height(map)-oy);groundCells.close();c.drawPath(groundCells,pixel);
+    pixel.setShader(null);pixel.setColor(0xffe4d2a7);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(3f);pixel.setAlpha(170);
+    groundCells.reset();groundCells.moveTo(64-ox,AbelCoastGeometry.shoreY(map,64)-oy);
+    for(float x=96;x<=AbelCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,AbelCoastGeometry.shoreY(map,x)-oy);
+    c.drawPath(groundCells,pixel);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
     pixel.setShader(null);
   }
 
@@ -408,7 +414,7 @@ public final class PoteFieldRenderer {
       }else if("bridge".equals(p.role)){
         c.save();c.rotate(trailAngle(w.runtime().currentMapId(),p.x,p.y)-20f,q.x,q.y);c.drawBitmap(b,null,dst,pixel);c.restore();
       }else{
-        pixel.setAlpha(occludesActor(p,b)?64:255);c.drawBitmap(b,null,dst,pixel);pixel.setAlpha(255);
+        pixel.setAlpha(occludesActor(p,b)?(p.asset.startsWith("abel_v140/")?160:64):255);c.drawBitmap(b,null,dst,pixel);pixel.setAlpha(255);
       }
     }
   }
@@ -445,7 +451,7 @@ public final class PoteFieldRenderer {
     if(cache.containsKey(name))return cache.get(name);
     Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/")&&!name.startsWith("abel_v139/"))
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/")&&!name.startsWith("abel_v139/")&&!name.startsWith("abel_v140/")&&!name.startsWith("abel_v141/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
@@ -522,7 +528,7 @@ public final class PoteFieldRenderer {
   }
   private static List<Placement> buildPlacements(String mapId){
     List<Placement> p=new ArrayList<>();PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);
-    if(AbelCoastGeometry.contains(mapId)){for(AbelCoastGeometry.Prop a:AbelCoastGeometry.props(mapId))p.add(new Placement("abel_v139/"+a.asset+".png",a.x,a.y,1f,"palm".equals(a.asset)?"canopy":"rock",false));return Collections.unmodifiableList(p);}
+    if(AbelCoastGeometry.contains(mapId)){for(AbelCoastGeometry.Prop a:AbelCoastGeometry.props(mapId))p.add(new Placement("abel_v140/"+a.asset+".png",a.x,a.y,a.scale,a.canopy?"canopy":a.solid?"rock":"decoration",false));return Collections.unmodifiableList(p);}
     float[][] trail=PoteForestGeometry.trailCenterline(mapId),creek=PoteForestGeometry.creekCenterline(mapId);
     // Authored macro patches vary by map. Jitter only distributes source sprites inside each patch.
     float[][] patches="MAP_POTE_02".equals(mapId)?new float[][]{{.12f,.16f},{.36f,.23f},{.63f,.13f},{.87f,.32f},{.2f,.64f},{.46f,.71f},{.72f,.81f},{.91f,.66f}}:

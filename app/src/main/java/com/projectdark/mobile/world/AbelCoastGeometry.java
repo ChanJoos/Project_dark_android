@@ -14,15 +14,50 @@ public final class AbelCoastGeometry {
  public static float width(String id){return ENTRY.equals(id)?2304:4096;}
  public static float height(String id){return ENTRY.equals(id)?1536:2048;}
  public static final class Prop {
-  public final String asset;public final float x,y;public final RectF footprint;
-  Prop(String asset,float x,float y){this.asset=asset;this.x=x;this.y=y;float rx="reef".equals(asset)?38:15,ry="reef".equals(asset)?20:10;footprint=new RectF(x-rx,y-ry,x+rx,y+ry);}
+  public final String asset;public final float x,y;public final RectF footprint;public final boolean solid,canopy;public final float scale;
+  Prop(String asset,float x,float y,boolean solid,boolean canopy,float scale){this.asset=asset;this.x=x;this.y=y;this.solid=solid;this.canopy=canopy;this.scale=scale;float rx=asset.startsWith("reef")?48:asset.equals("barrels")?24:14,ry=asset.startsWith("reef")?24:10;footprint=new RectF(x-rx,y-ry,x+rx,y+ry);}
  }
  private static final Map<String,List<Prop>> PROPS=new HashMap<>();
  private static final Map<String,List<RectF>> WATER=new HashMap<>();
  /** One sampled coastline owns both the visible water boundary and its static collision. */
- public static float shoreY(String id,float x){float h=height(id),phase=index(id)*.73f;return h*.73f+(float)Math.sin(x/370f+phase)*95f+(float)Math.sin(x/137f+phase*.5f)*24f;}
+ public static float shoreY(String id,float x){float phase=index(id)*.57f;return Math.max(995f,1010f+(float)Math.sin((x-384)/430f+phase)*76f+(float)Math.sin(x/173f+phase)*20f);}
  public static List<RectF> water(String id){return WATER.computeIfAbsent(id,k->{List<RectF> out=new ArrayList<>();for(float x=64;x<width(k);x+=32){float y=Math.min(shoreY(k,x),shoreY(k,x+32));out.add(new RectF(x,y,Math.min(width(k),x+32),height(k)));}return Collections.unmodifiableList(out);});}
- public static List<Prop> props(String id){return PROPS.computeIfAbsent(id,k->{List<Prop> out=new ArrayList<>();int phase=index(k);for(int i=0;i<28;i++){float x=200+Math.floorMod(i*479+phase*157,(int)width(k)-420),y=200+Math.floorMod(i*271+phase*89,(int)(height(k)*.58f)-260);if(Math.hypot(x-384,y-864)<190||Math.hypot(x-192,y-944)<145||Math.hypot(x-(width(k)-192),y-512)<150)continue;out.add(new Prop(i%4==0?"reef":"palm",x,y));}if(phase==5){out.add(new Prop("reef",1792,880));out.add(new Prop("reef",1920,960));out.add(new Prop("reef",2016,864));}out.sort(Comparator.comparingDouble(p->p.y));return Collections.unmodifiableList(out);});}
- public static List<RectF> obstacles(String id){List<RectF> out=new ArrayList<>(water(id));for(Prop p:props(id))out.add(new RectF(p.footprint));return Collections.unmodifiableList(out);}
+ /** Groves shelter the inland edge; reefs mark coves; debris follows the high-tide line. */
+ public static List<Prop> props(String id){return PROPS.computeIfAbsent(id,k->{List<Prop> out=new ArrayList<>();int phase=index(k);
+  int groves=new int[]{6,7,5,12,10,4}[phase],reefs=new int[]{5,4,10,5,5,12}[phase];
+  for(int g=0;g<groves;g++){float cx=260+g*(width(k)-520)/(groves-1f),cy=g%2==0?540+(g%3)*85:800+(phase%3)*16;
+   for(int j=0;j<7;j++){float angle=j*2.4f+g,r=35+(j%3)*44,x=cx+(float)Math.cos(angle)*r*1.5f,y=cy+(float)Math.sin(angle)*r;
+    String a=j==0?"palm_curve":j==1?"palm_fan":j==2?"banana":"fern";add(out,k,a,x,y,j<3,j<3,1f);}
+  }
+  for(int g=0;g<reefs;g++){float x=620+g*(width(k)-900)/(reefs-1f),y=shoreY(k,x)-80-(g%2)*70;
+   add(out,k,g%2==0?"reef_low":"reef_tall",x,y,true,false,1f);
+   add(out,k,"boulders",x-66,y+22,true,false,.8f);add(out,k,"fern",x+56,y-12,false,false,.8f);
+  }
+  // Observed reefs join into layered masses with plants at their bases. Their
+  // gaps are adapted corridors, not a claim to the unseen original map topology.
+  for(int g=0;g<(phase==0?2:6);g++){
+   float x=700+g*560,y=340+(g%2)*230;
+   add(out,k,"reef_tall",x,y,true,false,1.25f);
+   add(out,k,"reef_low",x-68,y+42,true,false,1.1f);
+   add(out,k,"reef_low",x+60,y+30,true,false,1f);
+   add(out,k,"boulders",x+102,y+56,true,false,.85f);
+   add(out,k,"palm_curve",x-120,y-20,true,true,1f);
+   add(out,k,"banana",x-105,y+38,true,true,.9f);
+   add(out,k,"fern",x-75,y+55,false,false,1.1f);
+   add(out,k,"fern",x+105,y+82,false,false,1f);
+  }
+  for(int j=0;j<48;j++){
+   float x=520+j*(width(k)-780)/47f,y=245+(j*97%620);
+   add(out,k,j%3==0?"bones":j%3==1?"shells":"boulders",x,y,false,false,j%3==2?.4f:.65f);
+  }
+  for(int j=0;j<38;j++){float x=250+j*(width(k)-520)/37f,y=shoreY(k,x)-40-(j%4)*22;String a=j%5==0?"driftwood":j%3==0?"bones":"shells";add(out,k,a,x,y,false,false,1f);}
+  add(out,k,"barrels",640,840,true,false,1f);add(out,k,"banana",700,850,true,true,1f);add(out,k,"fern",675,880,false,false,1f);
+  out.sort(Comparator.comparingDouble(p->p.y));return Collections.unmodifiableList(out);});}
+ private static void add(List<Prop> out,String map,String asset,float x,float y,boolean solid,boolean canopy,float scale){
+  if(x<96||x>width(map)-96||y<120||y>shoreY(map,x)-30)return;
+  if(solid&&(Math.hypot(x-384,y-864)<180||Math.hypot(x-192,y-944)<160||Math.hypot(x-(width(map)-192),y-512)<170||Math.hypot(x-480,y-816)<100))return;
+  out.add(new Prop(asset,x,y,solid,canopy,scale));
+ }
+ public static List<RectF> obstacles(String id){List<RectF> out=new ArrayList<>(water(id));for(Prop p:props(id))if(p.solid)out.add(new RectF(p.footprint));return Collections.unmodifiableList(out);}
  private AbelCoastGeometry(){}
 }
