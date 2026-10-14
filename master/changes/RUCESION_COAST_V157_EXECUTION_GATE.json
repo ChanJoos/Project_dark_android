@@ -4,7 +4,7 @@
   "baseMainMerge": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
   "relatedMergedPR": 196,
   "scope": "Rucesion coast original-referenced playable maps, monster appearance/identity and actual zone access",
-  "status": "REFERENCE_TO_RUNTIME_HANDOFF_NOT_IMPLEMENTED",
+  "status": "IMPLEMENTED_CANDIDATE_NATIVE_BUILD_PENDING",
   "existingEvidence": {
     "research": "master/source/rucesion_coast_20261014/research.json",
     "imageIndex": "master/source/rucesion_coast_20261014/image_sources.json",
@@ -69,7 +69,17 @@
     "Full original zone geometry/animation cadence/source version unresolved",
     "Ariel five-job party mechanic not currently implemented"
   ],
-  "runtimeChanges": [],
-  "apkStatus": "NOT_BUILT",
-  "sourceTruthPolicy": "Original/observed/adapted/unresolved separated; retained source immutable."
+  "runtimeChanges": [
+    "RucesionCoastGeometry",
+    "RucesionCoastMonsters",
+    "RucesionCombatProfiles",
+    "shared campaign/movement/collision/render/AI/resolver/reward/save consumers",
+    "beachNPC Lv71 or explicit preview",
+    "Ariel originalparty gate preserved as unresolved/preview-only"
+  ],
+  "apkStatus": "EXACT_CI_PENDING",
+  "sourceTruthPolicy": "Original/observed/adapted/unresolved separated; retained source immutable.",
+  "source": "master/source/rucesion_v157/research.json",
+  "newArt": "master/assets/rucesion_v157/provenance.json",
+  "tests": "RucesionCoastV157Test"
 }

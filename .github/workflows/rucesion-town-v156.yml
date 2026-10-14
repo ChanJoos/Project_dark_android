@@ -1,7 +1,7 @@
-name: V156 Rucesion complete town services
+name: V157 Rucesion coast and town regressions
 on:
   push:
-    branches: [codex/rucesion-coast-v155]
+    branches: [codex/rucesion-coast-v157]
   workflow_dispatch:
 permissions:
   contents: read
@@ -82,24 +82,26 @@ jobs:
       - name: Source contracts and native town service regressions
         run: |
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*RucesionTownV154Test' --tests '*RucesionServicesV156Test' --tests '*TownInteriorTest' --tests '*AbelTownV152Test' --tests '*NpcAppearanceTest' --tests '*RuntimeCheckpointTest' --tests '*CampaignNavigationTest' --tests '*ForestFloorCacheTest' --tests '*ForestTapProfileTest' --tests '*ContinuousMoveProfileTest' --tests '*GroundTapPathTest' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*RucesionCoastV157Test' --tests '*AdaptedCampaignRewardTest' --tests '*AbelCoastV139Test' --tests '*RucesionTownV154Test' --tests '*RucesionServicesV156Test' --tests '*TownInteriorTest' --tests '*AbelTownV152Test' --tests '*NpcAppearanceTest' --tests '*RuntimeCheckpointTest' --tests '*CampaignNavigationTest' --tests '*ForestFloorCacheTest' --tests '*ForestTapProfileTest' --tests '*ContinuousMoveProfileTest' --tests '*GroundTapPathTest' --stacktrace
       - name: Build and verify exact candidate APK
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v156_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v157_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rucesion-v156-native-${{ github.sha }}
+          name: rucesion-v157-native-${{ github.sha }}
           path: |
+            app/build/reports/rucesion-v157/
+            app/build/reports/abel-v139/
             app/build/reports/town-v156/
             app/build/reports/town-v154/
             app/build/reports/device-review/
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: rucesion-v156-apk-${{ github.sha }}
+          name: rucesion-v157-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json

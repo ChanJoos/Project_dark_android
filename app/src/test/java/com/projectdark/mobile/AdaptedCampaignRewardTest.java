@@ -31,7 +31,7 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(31,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(41,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
     java.util.Set<String> coast=new java.util.HashSet<>();
     for(String id:c.entries().keySet())if(id.startsWith("ABEL_")||id.startsWith("ADAPTED_COAST_"))coast.add(id);
     assertEquals(new java.util.HashSet<>(AbelCoastMonsters.ALL),coast);

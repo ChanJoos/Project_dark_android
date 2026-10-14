@@ -34,13 +34,14 @@ public final class PoteForestMonsterShowcase {
     art.put("ABEL_GAS","abel_v142/orange_float");art.put("ABEL_OBS_PURPLE_MAW","abel_v142/purple_maw");
     art.put("ABEL_BERSERKER","abel_v142/blue_boss");
     art.put("ABEL_KINGARK_FAKE","abel_v142/kingark");art.put("ABEL_KINGARK","abel_v142/kingark");
+    String[] ruc={"blue_hacon","red_hacon","arkpus","plant_arkpus","kakapo","poison_kakapo","koatl","elect_koatl","tyrant","ariel"};for(int i=0;i<ruc.length;i++)art.put(RucesionCoastMonsters.ALL.get(i),"rucesion_v157/"+ruc[i]);
     ART=Collections.unmodifiableMap(art);
     IDS=Collections.unmodifiableList(new ArrayList<>(java.util.Arrays.asList("POTE_PURPLE","POTE_RED","POTE_GREEN","POTE_SILVER","POTE_LYCAN")));
   }
 
   private PoteForestMonsterShowcase(){}
   public static List<String> monsterIds(){return IDS;}
-  public static float bodyHeight(String id){String s=species(id);if(s!=null&&s.startsWith("ABEL_KINGARK"))return 210f;if("ABEL_GAS".equals(s)||"ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_PONG".equals(s))return 48f;if("ABEL_CATERPILLAR".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 48f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
+  public static float bodyHeight(String id){String s=species(id);if("LYK_ARIEL".equals(s))return 170f;if("LYK_TYRANT".equals(s))return 90f;if("LYK_KOATL".equals(s)||"LYK_ELECT_KOATL".equals(s))return 66f;if(s!=null&&s.startsWith("LYK_"))return 52f;if(s!=null&&s.startsWith("ABEL_KINGARK"))return 210f;if("ABEL_GAS".equals(s)||"ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_PONG".equals(s))return 48f;if("ABEL_CATERPILLAR".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 48f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){return id==null?null:id.split("#",2)[0];}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}
   public static String artKey(String id){

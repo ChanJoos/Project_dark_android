@@ -1,0 +1,56 @@
+{
+  "video": {
+    "libraryId": "libfile_55c4204ba5048191a0eb6f741eb8d5d5",
+    "sha256": "16562bf1f9f4113e5dba453ec9975a259a76807dd1f2acb332f40b2a13329e12",
+    "duration": 81.905292
+  },
+  "senses": [
+    {
+      "time": 44.5,
+      "id": "LYK_BLUE_HACON",
+      "level": 82,
+      "observedHp": 20163,
+      "exp": 196250,
+      "attack": "FIRE",
+      "defense": "FIRE"
+    },
+    {
+      "time": 60.5,
+      "id": "LYK_ELECT_KOATL",
+      "level": 98,
+      "observedHp": 22345,
+      "exp": 248570,
+      "attack": "EARTH",
+      "defense": "WATER"
+    },
+    {
+      "time": 78.5,
+      "id": "LYK_TYRANT",
+      "level": 98,
+      "observedHp": 87801,
+      "exp": 1280575,
+      "attack": "WATER",
+      "defense": "LIGHTNING"
+    }
+  ],
+  "userConfirmation": {
+    "timeSeoul": "2026-10-14 20:39",
+    "shellBoss": "아리엘 맞음",
+    "koatlLevel": 98,
+    "arielLevel": 99,
+    "tyrantPhotoLevel": 99
+  },
+  "conflicts": [
+    "Video tyrantLv98 vs photo99; retain both/current video display98",
+    "HistoricalMaster tyrantHP123398/EXP780575 vs video observed87801/1280575; original source snapshots untouched",
+    "Video seal-roomAriel binding is latest user confirmation, not independent original room-topology proof"
+  ],
+  "adaptations": [
+    "Unseen map extent and video-cut joins",
+    "All generated directional motions",
+    "Unsensed canonical stats remainnull; provisional gameplay values separate",
+    "Original5-job party/event not implemented; Ariel preview only"
+  ],
+  "texture": "Sand clean44s displayBox[950,80,1130,260]; unchanged original-source Abel water and tropical props",
+  "status": "IMPLEMENTATION_NATIVE_BUILD_PENDING"
+}
