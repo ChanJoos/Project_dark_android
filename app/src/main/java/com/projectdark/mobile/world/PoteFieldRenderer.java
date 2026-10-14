@@ -167,7 +167,7 @@ public final class PoteFieldRenderer {
       }
     }
     float cx=anchorX,cy=anchorY-motion.lift;
-    float groundInset="POTE_MANTIS".equals(PoteForestMonsterShowcase.species(id))?h/24f:3f;
+    float groundInset=family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
     if(motion.articulated){
       // One reusable 35-vertex mesh: opposing lower-limb beats and upper-body lean.

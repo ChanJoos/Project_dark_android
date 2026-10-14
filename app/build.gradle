@@ -5,12 +5,12 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v157test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V157 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v158test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V158 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 157
-        versionName '1.57-rucesion-coast'
+        versionCode 158
+        versionName '1.58-coast-refinement'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
@@ -46,7 +46,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 157, versionName: '1.57-rucesion-coast']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 158, versionName: '1.58-coast-refinement']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
@@ -70,7 +70,7 @@ tasks.register('extractAbelV139', Sync) {
     }
     from(zipTree(rootProject.file('master/assets/abel_v141/generated_assets.zip')))
     from(zipTree(rootProject.file('master/assets/abel_v142/generated_assets.zip')))
-    from(zipTree(rootProject.file('master/assets/rucesion_v157/generated_assets.zip')))
+    from(zipTree(rootProject.file('master/assets/rucesion_v158/generated_assets.zip')))
     into(layout.buildDirectory.dir('generated/abel-v139'))
     includeEmptyDirs = false
 }

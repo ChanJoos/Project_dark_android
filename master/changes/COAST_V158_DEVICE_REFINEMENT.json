@@ -1,0 +1,72 @@
+{
+  "changeId": "COAST-V158-DEVICE-REFINEMENT",
+  "dateSeoul": "2026-10-14",
+  "status": "IMPLEMENTED_NATIVE_BUILD_PENDING",
+  "deviceReport": "DEVICE_FAILED_USER_REPORTED_VISUAL_UX",
+  "report": [
+    "Both coast maps repetitive",
+    "Empty arrival camp too large; hunting portal undiscoverable",
+    "Horizontal rectangles; use square hunting grounds",
+    "Use coast1,2,3,boss labels",
+    "More large reefs/rocks",
+    "Compare10Rucesion species scale/color/name with supplied original video"
+  ],
+  "observedRootCauses": [
+    "2304-wide empty arrival regions and 4096-wide hunts",
+    "Rucesion52/66 uniform canvas heights made broad rays small; boss170 silhouette oversized relative to source characters",
+    "User clarified blue creature is BLUE_HACON, not KAKAPO",
+    "ElectKoatl prior generated tall narrow silhouette versus source broad grey-ribbed ray"
+  ],
+  "sourceAudit": {
+    "videoSha256": "16562bf1f9f4113e5dba453ec9975a259a76807dd1f2acb332f40b2a13329e12",
+    "reviewTimes": [
+      1,
+      23,
+      34,
+      44.5,
+      55,
+      60.5,
+      70,
+      78.5
+    ],
+    "referenceRoot": "master/source/rucesion_v157",
+    "identity": {
+      "LYK_KAKAPO": "orange/silver ammonite remains source-bound",
+      "LYK_POISON_KAKAPO": "green ammonite remains source-bound",
+      "LYK_KOATL": "brown/copper ribs with navy fins, photoLv98",
+      "LYK_ELECT_KOATL": "silver-grey ribs, dark fins, explicitly sensedLv98/HP22345/EXP248570",
+      "LYK_BLUE_HACON": "User clarified the monster name; blue palette required by latest user instruction, earlier green/beige source and photo-star morphology retained in historical snapshot"
+    },
+    "relativeSilhouetteEnvelopes": "Manually inspected original source character at34s, ordinary monsters around character height, plant octopus taller, rays roughly3x body width, tyrant roughly1.4-1.8x height, shellAriel roughly1.8-2.4x. View-angle/crop variability retained; native ratio report uses equipped body without weapon width, not exact pixel segmentation certification."
+  },
+  "changes": {
+    "arrivalSize": [
+      768,
+      768
+    ],
+    "huntingSize": [
+      2560,
+      2560
+    ],
+    "bossSize": [
+      2304,
+      2304
+    ],
+    "abelLegacyAlias": {
+      "MAP_ABEL_COAST_1B": "MAP_ABEL_COAST_1A"
+    },
+    "allSavedMapIds": "Accepted; canonicalize legacy duplicate and retain quest visited aliases",
+    "populations": "No reduction: Abel72/96/108/108, Rucesion72/96/96/9; both camps0",
+    "geometry": "Different authored cove/ridge/large central reef/chamber compositions with gate corridors",
+    "portal": "Gold ring and hunting-entry label visible at initial camp camera",
+    "art": "OnlyBlueHacon and ElectKoatl new12pose sheets; other120set members preserved",
+    "scale": "Species-specific silhouette scale, stable groundY184/192; approved player unchanged",
+    "collision": "Scaled solid reef footprints and legal18/14Rucesion ground radii; shared live collision",
+    "memory": "32floorLRU/60source-hit pairs; existing prewarm/vsync unchanged"
+  },
+  "unresolved": [
+    "Originalparty event remains unimplemented, Ariel preview-only",
+    "Unobserved original topology remains adapted",
+    "New physical-phone and visual acceptance pending"
+  ]
+}

@@ -190,7 +190,7 @@ public final class RuntimeState {
     for(Monster monster:monsters)if(campaignRewards.find(monster.id)!=null)monster.campaignRewardProfileId=monster.id;
     player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
   }
-  public void enterCampaignMap(String id,boolean fromNext){id=com.projectdark.mobile.world.AbelTownGeometry.canonical(id);
+  public void enterCampaignMap(String id,boolean fromNext){id=com.projectdark.mobile.world.AbelCoastGeometry.canonical(com.projectdark.mobile.world.AbelTownGeometry.canonical(id));
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
     com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
     int zone=map.zone;monsters.addAll(CampaignMonsters.spawnForMap(id));
@@ -298,6 +298,7 @@ public final class RuntimeState {
     return false;
   }
   private float monsterCollisionRadius(Monster monster){
+    String species=PoteForestMonsterShowcase.species(monster.id);if(species!=null&&species.startsWith("LYK_"))return species.equals("LYK_ARIEL")||species.equals("LYK_TYRANT")||species.endsWith("KOATL")?18f:14f;
     return "milles_mouse_proto".equals(monster.id)?7f:"POTE_MANTIS".equals(PoteForestMonsterShowcase.species(monster.id))?18f:"POTE_LYCAN".equals(PoteForestMonsterShowcase.species(monster.id))?16f:MONSTER_RADIUS;
   }
   private boolean npcOccupied(float x,float y,float radius){
