@@ -20,7 +20,7 @@ public class AbelSourceV161Test extends CoastRefinementV158Test {
   Bitmap p=Bitmap.createBitmap(260,240,Bitmap.Config.ARGB_8888);
   player.draw(new Canvas(p),new CharacterRenderer.Pose(90,190,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,v.equipmentVisualRef(),v.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));
   float ph=bounds(p).height();assertTrue(ph>=45&&ph<=60);
-  org.json.JSONArray rows=new org.json.JSONObject(Files.readString(Path.of("../master/source/abel_v161/calibration.json"))).getJSONArray("rows");
+  org.json.JSONArray rows=new org.json.JSONObject(new String(Files.readAllBytes(Path.of("../master/source/abel_v161/calibration.json")),java.nio.charset.StandardCharsets.UTF_8)).getJSONArray("rows");
   assertEquals(13,rows.length());Set<String> ids=new HashSet<>();
   for(int i=0;i<rows.length();i++){
    org.json.JSONObject row=rows.getJSONObject(i);String id=row.getString("id");assertTrue(ids.add(id));
