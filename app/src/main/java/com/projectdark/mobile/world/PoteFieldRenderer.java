@@ -305,36 +305,34 @@ public final class PoteFieldRenderer {
     drawGroundTiles(c,map,ox,oy);drawTrail(c,map,ox,oy);
   }
 
-  private void drawCoastFloor(Canvas c,String map,float ox,float oy){
-    Bitmap sand=bitmap("abel_v140/sand.png"),water=bitmap("abel_v140/water.png");
-    if(sand==null||water==null)throw new IllegalStateException("Missing Abel coast terrain assets");
-    pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
-    BitmapShader s=shader("abel-sand",sand,Shader.TileMode.MIRROR);texturePhase.setTranslate(-ox,-oy);s.setLocalMatrix(texturePhase);pixel.setShader(s);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    BitmapShader sea=shader("abel-water",water,Shader.TileMode.MIRROR);sea.setLocalMatrix(texturePhase);pixel.setShader(sea);
-    groundCells.reset();groundCells.moveTo(64-ox,AbelCoastGeometry.shoreY(map,64)-oy);
-    for(float x=96;x<=AbelCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,AbelCoastGeometry.shoreY(map,x)-oy);
-    groundCells.lineTo(AbelCoastGeometry.width(map)-ox,AbelCoastGeometry.height(map)-oy);groundCells.lineTo(64-ox,AbelCoastGeometry.height(map)-oy);groundCells.close();c.drawPath(groundCells,pixel);
-    pixel.setShader(null);pixel.setColor(0xffe4d2a7);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(3f);pixel.setAlpha(170);
-    groundCells.reset();groundCells.moveTo(64-ox,AbelCoastGeometry.shoreY(map,64)-oy);
-    for(float x=96;x<=AbelCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,AbelCoastGeometry.shoreY(map,x)-oy);
-    c.drawPath(groundCells,pixel);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
-    pixel.setShader(null);
+  private void drawCoastFloor(Canvas c,String map,float ox,float oy){drawCoastalFloor(c,map,ox,oy,false);}
+  private void drawRucesionFloor(Canvas c,String map,float ox,float oy){drawCoastalFloor(c,map,ox,oy,true);}
+  private void coastPath(float[][] points,float ox,float oy,boolean closeToBottom,float n){
+    groundCells.reset();if(points.length==0)return;groundCells.moveTo(points[0][0]-ox,points[0][1]-oy);
+    for(int i=1;i<points.length;i++)groundCells.lineTo(points[i][0]-ox,points[i][1]-oy);
+    if(closeToBottom){groundCells.lineTo(n-ox,n-oy);groundCells.lineTo(64-ox,n-oy);}groundCells.close();
   }
-
-  private void drawRucesionFloor(Canvas c,String map,float ox,float oy){
-    Bitmap sand=bitmap("rucesion_v157/sand.png"),water=bitmap("rucesion_v157/water.png");
-    if(sand==null||water==null)throw new IllegalStateException("Missing Abel coast terrain assets");
+  private void drawCoastalFloor(Canvas c,String map,float ox,float oy,boolean r){
+    Bitmap sand=bitmap(r?"rucesion_v157/sand.png":"abel_v140/sand.png"),water=bitmap(r?"rucesion_v157/water.png":"abel_v140/water.png");
+    if(sand==null||water==null)throw new IllegalStateException("Missing coast terrain assets");
+    int z=r?RucesionCoastGeometry.index(map):AbelCoastGeometry.index(map);float n=CoastalHuntLayout.size(z);
     pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
-    BitmapShader s=shader("rucesion-sand",sand,Shader.TileMode.MIRROR);texturePhase.setTranslate(-ox,-oy);s.setLocalMatrix(texturePhase);pixel.setShader(s);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    BitmapShader sea=shader("rucesion-water",water,Shader.TileMode.MIRROR);sea.setLocalMatrix(texturePhase);pixel.setShader(sea);
-    groundCells.reset();groundCells.moveTo(64-ox,RucesionCoastGeometry.shoreY(map,64)-oy);
-    for(float x=96;x<=RucesionCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,RucesionCoastGeometry.shoreY(map,x)-oy);
-    groundCells.lineTo(RucesionCoastGeometry.width(map)-ox,RucesionCoastGeometry.height(map)-oy);groundCells.lineTo(64-ox,RucesionCoastGeometry.height(map)-oy);groundCells.close();c.drawPath(groundCells,pixel);
-    pixel.setShader(null);pixel.setColor(0xffe4d2a7);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(3f);pixel.setAlpha(170);
-    groundCells.reset();groundCells.moveTo(64-ox,RucesionCoastGeometry.shoreY(map,64)-oy);
-    for(float x=96;x<=RucesionCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,RucesionCoastGeometry.shoreY(map,x)-oy);
-    c.drawPath(groundCells,pixel);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
+    BitmapShader earth=shader(r?"rucesion-sand-159":"abel-sand-159",sand,Shader.TileMode.REPEAT);
+    texturePhase.setTranslate(-ox,-oy);earth.setLocalMatrix(texturePhase);pixel.setShader(earth);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    BitmapShader sea=shader(r?"rucesion-water-159":"abel-water-159",water,Shader.TileMode.REPEAT);sea.setLocalMatrix(texturePhase);pixel.setShader(sea);
+    float[][] edge=CoastalHuntLayout.shoreLine(z,r),inlet=CoastalHuntLayout.inlet(z,r);
+    coastPath(edge,ox,oy,true,n);c.drawPath(groundCells,pixel);
+    if(inlet.length>0){coastPath(inlet,ox,oy,false,n);c.drawPath(groundCells,pixel);}
     pixel.setShader(null);
+    // Wet sand and a shallow surf ribbon follow the authored coast, rather than a horizontal ocean strip.
+    for(float[][] line:new float[][][]{edge,inlet})if(line.length>1){
+      groundCells.reset();groundCells.moveTo(line[0][0]-ox,line[0][1]-oy);
+      for(int i=1;i<line.length;i++)groundCells.lineTo(line[i][0]-ox,line[i][1]-oy);
+      pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(30);pixel.setColor(r?0xffb6b398:0xffbaaa89);pixel.setAlpha(155);c.drawPath(groundCells,pixel);
+      pixel.setStrokeWidth(8);pixel.setColor(0xffe6e5cd);pixel.setAlpha(175);c.drawPath(groundCells,pixel);
+      pixel.setStrokeWidth(2);pixel.setColor(0xfffbf7e8);pixel.setAlpha(190);c.drawPath(groundCells,pixel);
+    }
+    pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setShader(null);
   }
 
   /** Feathered source earth patches overlap at irregular widths; no painted road border. */
@@ -467,8 +465,9 @@ public final class PoteFieldRenderer {
   private static float trailAngle(String map,float x,float y){float[][] pts=PoteForestGeometry.trailCenterline(map);float best=Float.MAX_VALUE,angle=20;for(int i=1;i<pts.length;i++){float d=(float)Math.hypot(x-pts[i][0],y-pts[i][1]);if(d<best){best=d;angle=(float)Math.toDegrees(Math.atan2(pts[i][1]-pts[i-1][1],pts[i][0]-pts[i-1][0]));}}return angle;}
   private Bitmap bitmap(String name){
     if(cache.containsKey(name))return cache.get(name);
-    Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
+    Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(CoastSpritePalette.sourcePath(name))){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
+      b=CoastSpritePalette.apply(name,b);
       if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/")&&!name.startsWith("abel_v139/")&&!name.startsWith("abel_v140/")&&!name.startsWith("abel_v141/")&&!name.startsWith("rucesion_v157/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));

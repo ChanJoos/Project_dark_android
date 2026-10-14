@@ -14,6 +14,7 @@ public final class PoteMonsterMotion {
     out.pose="idle";out.lift=out.lean=out.stride=out.lunge=out.recoil=0f;
     out.articulated=false;
     String species=PoteForestMonsterShowcase.species(id);
+    if("LYK_RED_HACON".equals(species))species="LYK_BLUE_HACON"; // color pair shares the same gait
     boolean plant=species!=null&&(species.contains("PAMFET")||species.contains("PURPLE")
         ||species.contains("RED")||species.contains("GREEN")||species.contains("SILVER")&&!species.contains("WOLF"));
     if("walk".equals(state)){

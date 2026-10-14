@@ -1,4 +1,4 @@
-name: V158 compact square coasts and monster proportions
+name: V159 source-like Abel and Rucesion coasts with matched monster pairs
 on:
   push:
     branches: [codex/rucesion-coast-v157]
@@ -82,19 +82,20 @@ jobs:
       - name: Source contracts and native town service regressions
         run: |
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*CoastRefinementV158Test' --tests '*RucesionCoastV157Test' --tests '*AdaptedCampaignRewardTest' --tests '*AbelCoastV139Test' --tests '*AbelCombatV153Test.profilesBindEverySpeciesAndSourceRewardsRemainSeparate' --tests '*AbelCombatV153Test.actualGameViewShowsMonsterCastParticlesAndLevelWithoutTestAccess' --tests '*AbelCombatV153Test.magicUsesRealWindupMpLosControlAndSavedStatusAndBossRecoversOnlyOnce' --tests '*AbelCombatV153Test.rootedPlacementDoesNotCrashOrPermitWalking' --tests '*AbelCombatV153Test.respawnWaitsForAnUnoccupiedSpawnTile' --tests '*AbelCombatV153Test.rangedBossApproachEndsInsideActualFollowCamera' --tests '*RucesionTownV154Test' --tests '*RucesionServicesV156Test' --tests '*TownInteriorTest' --tests '*AbelTownV152Test' --tests '*NpcAppearanceTest' --tests '*RuntimeCheckpointTest' --tests '*CampaignNavigationTest' --tests '*ForestFloorCacheTest' --tests '*ForestTapProfileTest' --tests '*ContinuousMoveProfileTest' --tests '*GroundTapPathTest' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*CoastSourceV159Test' --tests '*CoastRefinementV158Test' --tests '*RucesionCoastV157Test' --tests '*AdaptedCampaignRewardTest' --tests '*AbelCoastV139Test' --tests '*AbelCombatV153Test.profilesBindEverySpeciesAndSourceRewardsRemainSeparate' --tests '*AbelCombatV153Test.actualGameViewShowsMonsterCastParticlesAndLevelWithoutTestAccess' --tests '*AbelCombatV153Test.magicUsesRealWindupMpLosControlAndSavedStatusAndBossRecoversOnlyOnce' --tests '*AbelCombatV153Test.rootedPlacementDoesNotCrashOrPermitWalking' --tests '*AbelCombatV153Test.respawnWaitsForAnUnoccupiedSpawnTile' --tests '*AbelCombatV153Test.rangedBossApproachEndsInsideActualFollowCamera' --tests '*RucesionTownV154Test' --tests '*RucesionServicesV156Test' --tests '*TownInteriorTest' --tests '*AbelTownV152Test' --tests '*NpcAppearanceTest' --tests '*RuntimeCheckpointTest' --tests '*CampaignNavigationTest' --tests '*ForestFloorCacheTest' --tests '*ForestTapProfileTest' --tests '*ContinuousMoveProfileTest' --tests '*GroundTapPathTest' --stacktrace
       - name: Build and verify exact candidate APK
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v158_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v159_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: coast-v158-native-${{ github.sha }}
+          name: coast-v159-native-${{ github.sha }}
           path: |
             app/build/reports/rucesion-v157/
             app/build/reports/coast-v158/
+            app/build/reports/coast-v159/
             app/build/reports/abel-v139/
             app/build/reports/town-v156/
             app/build/reports/town-v154/
@@ -102,7 +103,7 @@ jobs:
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: coast-v158-apk-${{ github.sha }}
+          name: coast-v159-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json

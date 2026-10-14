@@ -9,7 +9,7 @@ public final class RucesionCoastGeometry {
  public static final class Prop {public final String asset;public final float x,y,scale;public final boolean solid,canopy;public final RectF footprint;Prop(CoastalHuntLayout.Prop p){asset=p.asset;x=p.x;y=p.y;scale=p.scale;solid=p.solid;canopy=p.canopy;footprint=new RectF(p.footprint);}}
  private static final Map<String,List<Prop>> PROPS=new HashMap<>();private static final Map<String,List<RectF>> BLOCKERS=new HashMap<>();
  public static List<Prop> props(String map){return PROPS.computeIfAbsent(canonical(map),k->{List<Prop> out=new ArrayList<>();for(CoastalHuntLayout.Prop p:CoastalHuntLayout.props(index(k),true))out.add(new Prop(p));return Collections.unmodifiableList(out);});}
- public static List<RectF> water(String map){List<RectF> out=new ArrayList<>();for(float x=64;x<width(map);x+=32)out.add(new RectF(x,Math.min(shoreY(map,x),shoreY(map,x+32)),Math.min(width(map),x+32),height(map)));return Collections.unmodifiableList(out);}
+ public static List<RectF> water(String map){return CoastalHuntLayout.water(index(map),true);}
  public static List<RectF> obstacles(String map){return BLOCKERS.computeIfAbsent(canonical(map),k->{List<RectF> out=new ArrayList<>(water(k));for(Prop p:props(k))if(p.solid)out.add(new RectF(p.footprint));return Collections.unmodifiableList(out);});}
  private RucesionCoastGeometry(){}
 }
