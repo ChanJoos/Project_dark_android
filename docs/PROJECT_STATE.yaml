@@ -3,7 +3,7 @@ coast_source_pairs_v159:
   focused_run: 38613954729
   native_tests: 110
   status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
-  broader_android: IN_PROGRESS_AT_APK_DELIVERY
+  broader_android: EXACT_SOURCE_PR_SUCCESS_38613964684
   receipt: master/changes/V159_BUILD_RUNTIME_RECEIPT.json
   user_accepted_species: [LYK_TYRANT, LYK_ARIEL]
   original_plant_eyes: UNRESOLVED_FOLIAGE_OCCLUDED

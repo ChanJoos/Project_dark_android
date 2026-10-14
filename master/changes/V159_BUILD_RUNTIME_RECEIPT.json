@@ -83,7 +83,7 @@
       "runtimeCanvasHeight": 110
     }
   },
-  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "status": "IMPLEMENTED_BUILD_NATIVE_FULL_ANDROID_VERIFIED",
   "focusedRun": 38613954729,
   "focusedJob": 116024115724,
   "conclusion": "SUCCESS",
@@ -117,11 +117,15 @@
     {
       "runId": 38613964684,
       "jobId": 116024149521,
-      "status": "IN_PROGRESS_AT_APK_DELIVERY"
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "source": "615bbd278c93168b7e5f11d8145e94c9ca4f7d6a",
+      "logsInspected": true
     },
     {
       "runId": 38613954756,
-      "status": "IN_PROGRESS_AT_APK_DELIVERY"
+      "status": "completed",
+      "conclusion": "success"
     }
   ],
   "branch": "codex/rucesion-coast-v157",
@@ -160,5 +164,6 @@
       "nativeRun": 38612747520,
       "result": "SUCCESS110tests17suites; final renderer native images inspected. Final source615bbd changes launcher label and its build verification only; runtime/assets identical."
     }
-  ]
+  ],
+  "closure": "Focused110 and exact-source full configured Android PR regressions/build/APK verification passed. All user artifacts delivered. Closure modifies documentation only; APK source and original device acceptance limits retained."
 }
