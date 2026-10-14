@@ -1,6 +1,12 @@
-## 2026-10-15 — V161 all-Abel shape audit candidate, verification pending
+## 2026-10-15 — V161 exact candidate verified and delivered
 
-User rejects V160 size-only repair: all13 source comparison,7new source-referenced families84poses and visible-alpha/player calibration implemented. Source and per-ID decisions master/source/abel_v161; checkpoint docs/ABEL_V161_CHECKPOINT.md. Accepted Rucesion10 retained. Local Master/Python/extraction/diff pass; exact Android/native/APK/phone/user visual PENDING. Original atlas/cadence and occluded KingArk/purple metrics remain unresolved. Continue same PR197; do not recreate source sheets or claim original-identical certification.
+IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED. Source `b7d1f0a52214e88a0dbb6eb46466e8dba29aaf76`; focused Actions38636656452/job116101434216 SUCCESS:120tests/18suites,0failures/errors/skips. Common PR38636665925/job116101468060 and push38636656320/job116101434881 both SUCCESS; exact source and decoded build logs checked.
+
+All13 Abel coast IDs audited;7families84 newly reconstructed poses;10same-frame source/player envelope calibrations. New actual idle/walk/attack four-direction images and original/V160/V161 comparison reviewed. Both ZIP SHA/CRC and1130 packaged source files independently match. APK161/com.projectdark.mobile.v161test built2026-10-15T06:05:26.068905+09:00,80459941bytes,SHA256c715fc1c47d8125d81bfc994a048385c7e0f0487e4610221ff1bc3685eb73b9f. APK and2comparison files saved for delivery. Receipt `master/changes/V161_BUILD_RUNTIME_RECEIPT.json`.
+
+Accepted Rucesion10 retained. Source atlas/cadence unavailable; manual ratios remain approximate. KingArk fake/real and purple exact source ratios unresolved due occlusion. Phone/user visual acceptance PENDING. Original canonical Crab/dungeon region joins remain open, not invented new spawns. Cache60source-hit pairs/32floorLRU and12trips retained; hostCPU p95=2.117406,p99=2.779085,max=3.201713ms is not phoneFPS.
+
+Token interruption/scratch pruning recovered from exact GitHub source and Actions blobs; no asset regeneration. Implementation/required checks/file delivery complete; next concrete action is handset feedback. Same PR197, main41fe6def unchanged. Documentation closure does not relabel the APK source.
 
 ## 2026-10-15 — V159 full common Android verified; task closed
 

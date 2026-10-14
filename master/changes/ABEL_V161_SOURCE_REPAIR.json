@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "ACCEPTED_IMPLEMENTATION_NATIVE_BUILD_PENDING",
+  "status": "ACCEPTED_IMPLEMENTED_BUILD_NATIVE_VERIFIED",
   "task": "V161 user rejects V160 Abel shapes, compare and self-correct all13",
   "base": "e7851d22bbc0b58ad672bf8339afec87300a2d83",
   "source": "master/source/abel_v161/calibration.json",
@@ -20,5 +20,6 @@
     "AbelSpriteCalibration",
     "app/build.gradle"
   ],
-  "verification": "Exact focused+common Android CI, native13x12pose captures, all10maps and retained performance/AI/save suite"
+  "verification": "Exact focused+common Android CI, native13x12pose captures, all10maps and retained performance/AI/save suite",
+  "receipt": "master/changes/V161_BUILD_RUNTIME_RECEIPT.json"
 }
