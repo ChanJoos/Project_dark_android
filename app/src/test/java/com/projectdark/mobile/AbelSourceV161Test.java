@@ -5,7 +5,8 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.robolectric.*;
 import org.robolectric.annotation.*;
-import java.nio.file.*;
+import java.nio.file.Path;
+import java.nio.file.Files;
 import java.util.*;
 import static org.junit.Assert.*;
 /** Independent same-frame original envelopes and missing opaque-jelly regression. */
