@@ -1,0 +1,384 @@
+{
+  "article": "https://minimob.tistory.com/137",
+  "evidence": "FAN_GAMEPLAY_CAPTURE_2013",
+  "purpose": "reference only; no original identity inferred from unlabelled image",
+  "images": [
+    {
+      "index": 0,
+      "url": "https://t1.daumcdn.net/cfile/tistory/21304D4250F2BF8834",
+      "path": "minimob137_00.png",
+      "sha256": "3192c813c7de507840af7ce3fc89f527c38076b3ecdce3c7de2fbd2022512107",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "TOWN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 1,
+      "url": "https://t1.daumcdn.net/cfile/tistory/11498F4250F2BF890D",
+      "path": "minimob137_01.png",
+      "sha256": "8e7b98a1b9f4970f7f05b7e2155864863691d71fe2a35322307322ec19cbf2a4",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 2,
+      "url": "https://t1.daumcdn.net/cfile/tistory/274A554250F2BF8C0B",
+      "path": "minimob137_02.png",
+      "sha256": "cef5c4055c86cb9ac83fefc8b2ae9934938bfab003148c45ebf539e98c870447",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 3,
+      "url": "https://t1.daumcdn.net/cfile/tistory/2540A14250F2BF8D22",
+      "path": "minimob137_03.png",
+      "sha256": "4e27f286661a5e71fd86b9f63e2da745552195f6115f11d28a8a16405d6bf233",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 4,
+      "url": "https://t1.daumcdn.net/cfile/tistory/113CBE4250F2BF8E28",
+      "path": "minimob137_04.png",
+      "sha256": "2e6134553f4bbf13ee669cffa1524e20b1df90d42eccbbc19a34d2a011215311",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 5,
+      "url": "https://t1.daumcdn.net/cfile/tistory/1743664250F2BF9D1A",
+      "path": "minimob137_05.png",
+      "sha256": "cf0eabfce9c9e98529f01549059d19dcbed13d8cd86a4d4273b71887d359b827",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 6,
+      "url": "https://t1.daumcdn.net/cfile/tistory/254B3F4250F2BF9E0A",
+      "path": "minimob137_06.png",
+      "sha256": "cd6c5d1603cbe3b71174eaf62a181a163aceeae3345636c5039d8daefc91fedf",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 7,
+      "url": "https://t1.daumcdn.net/cfile/tistory/264B324250F2BF9F0A",
+      "path": "minimob137_07.png",
+      "sha256": "3a77d58219df1e433b66f62e0ad2df0c5d0589f41d5d338ecb8bcbc781942665",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 8,
+      "url": "https://t1.daumcdn.net/cfile/tistory/1242A14250F2BFA01C",
+      "path": "minimob137_08.png",
+      "sha256": "5ee293335ffefc09d30fb7c00940a15e8ef61d70e4c965ad9f4660d42cba32ba",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 9,
+      "url": "https://t1.daumcdn.net/cfile/tistory/222B6E4650F2BFA12D",
+      "path": "minimob137_09.png",
+      "sha256": "93fd1337ecc539696a208d9013c8ebb3d585eb91682c0cfd029fccd7234caf70",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 10,
+      "url": "https://t1.daumcdn.net/cfile/tistory/27328A4650F2BFA221",
+      "path": "minimob137_10.png",
+      "sha256": "31666cd587e5331c112ab1c7128fcae24813b1321ac899db5ecbd9cd333f096b",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 11,
+      "url": "https://t1.daumcdn.net/cfile/tistory/16298B4650F2BFA430",
+      "path": "minimob137_11.png",
+      "sha256": "6a6f6b49400ca9232a2e548159da62a8ed6fffab61b66248505937c20ea8496f",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 12,
+      "url": "https://t1.daumcdn.net/cfile/tistory/263AF64650F2BFA510",
+      "path": "minimob137_12.png",
+      "sha256": "919ac5a5de7f4eba4d0ed311a16a0230b9353d57200471d2e384c16cdb4817d7",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 13,
+      "url": "https://t1.daumcdn.net/cfile/tistory/222B104650F2BFA62E",
+      "path": "minimob137_13.png",
+      "sha256": "242cd65b231b2141223a78998598ced7551e4393e2ef138a199d1236387c2a4d",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 14,
+      "url": "https://t1.daumcdn.net/cfile/tistory/272E794650F2BFA727",
+      "path": "minimob137_14.png",
+      "sha256": "117025a5f1afdb92e97c7b2f13baa29b372841a159f5083e61b3e16bec86dc8e",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 15,
+      "url": "https://t1.daumcdn.net/cfile/tistory/142A654650F2BFA82F",
+      "path": "minimob137_15.png",
+      "sha256": "f83b84743d72edd0fc33cfd9cfb5618eae529d86093521bb5b8ac8a2fc5320c2",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 16,
+      "url": "https://t1.daumcdn.net/cfile/tistory/18270D4650F2BFA935",
+      "path": "minimob137_16.png",
+      "sha256": "42a3a831c9116709f5db645b6cddff87aeb4ca6f01771a5dbb32aec20ed5c75a",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 17,
+      "url": "https://t1.daumcdn.net/cfile/tistory/193BF64650F2BFAA0E",
+      "path": "minimob137_17.png",
+      "sha256": "46502381daa892090e64f334b46308faa9fe1907667f19d6e3fcb21102084459",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 18,
+      "url": "https://t1.daumcdn.net/cfile/tistory/2141DF4650F2BFAB04",
+      "path": "minimob137_18.png",
+      "sha256": "f68dd4695ebbd4a2a550ac85e536256e748d1cfde2fef5beb32a1bcdc993d994",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 19,
+      "url": "https://t1.daumcdn.net/cfile/tistory/183A9A4650F2BFAC10",
+      "path": "minimob137_19.png",
+      "sha256": "fd6e12256e5778c4685cd0ea55e60bd35a3712e2563f4e124c8b39df710366c9",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 20,
+      "url": "https://t1.daumcdn.net/cfile/tistory/263FC24650F2BFAD08",
+      "path": "minimob137_20.png",
+      "sha256": "8ac596ddb8536cabba30b59cf6f27cee17c1493bfa8cd3b59e9138106feb6a38",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 21,
+      "url": "https://t1.daumcdn.net/cfile/tistory/2729FB4650F2BFAE30",
+      "path": "minimob137_21.png",
+      "sha256": "d5b0f182b14a09e0ba22fdbbc5960e3b58d03d99c6afd9085d8924edd624a714",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 22,
+      "url": "https://t1.daumcdn.net/cfile/tistory/173A104650F2BFB012",
+      "path": "minimob137_22.png",
+      "sha256": "0d8b9d2a40848e6e160c9f2516f7ef81dd11f3257a014a325a6c52cd72274937",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 23,
+      "url": "https://t1.daumcdn.net/cfile/tistory/25070A4450F2BFB127",
+      "path": "minimob137_23.png",
+      "sha256": "724de4baba6d5353a17ae9808e8f3fd2abe8c78d5a83c3553b79e2ed09ebea0c",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 24,
+      "url": "https://t1.daumcdn.net/cfile/tistory/0204714450F2BFB22F",
+      "path": "minimob137_24.png",
+      "sha256": "1d0187988e3a9e3c02be48492cdd6feb57fef6e863db9d25c4ab844f2881d579",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 25,
+      "url": "https://t1.daumcdn.net/cfile/tistory/0117BD4450F2BFB308",
+      "path": "minimob137_25.png",
+      "sha256": "888f108ba3e411414352272618d35b94f5b038db7e2873189d11d899e85ffaa6",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 26,
+      "url": "https://t1.daumcdn.net/cfile/tistory/140AD14450F2BFB41D",
+      "path": "minimob137_26.png",
+      "sha256": "76b0e746c1714d7e9c7d0377420f8495f29ef5e86f2e1903d876cf2457a6bf4f",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 27,
+      "url": "https://t1.daumcdn.net/cfile/tistory/277E874450F2BFB535",
+      "path": "minimob137_27.png",
+      "sha256": "6d8555988e61516bdbfe09f85774c85957b76dde0758cb36a12d77594d4bca03",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "COAST_SCREEN_REFERENCE",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    },
+    {
+      "index": 28,
+      "url": "https://t1.daumcdn.net/cfile/tistory/2507833D50F2C59A36",
+      "path": "minimob137_28.png",
+      "sha256": "89d781a24edcbf8bea49c1354cd47debd3a0f2b2ba24067e3a9ebfa7109a4638",
+      "size": [
+        646,
+        508
+      ],
+      "classification": "UNRELATED_SKILL_SCHOOL",
+      "runtimeUse": "NOT_ADMITTED",
+      "monsterIdentityJoin": "PENDING_LABELLED_REFERENCE"
+    }
+  ]
+}
