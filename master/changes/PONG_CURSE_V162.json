@@ -8,5 +8,11 @@
     "Skill_Ability CURSE20/35/50/65/70 and CLEAR_CURSE variants"
   ],
   "validation": "MonsterCurseV162Test native lifecycle/catalog/alpha/hit/23species poses/palette/cache tests; existing focused/full CI pending.",
-  "preserved": "V161 source84 bytes/alpha/size/poses, Rucesion10 normal appearance, original combat status authority, cache pairs, AI/world/rewards/save."
+  "preserved": "V161 source84 bytes/alpha/size/poses, Rucesion10 normal appearance, original combat status authority, cache pairs, AI/world/rewards/save.",
+  "freshActorLifetime": "Campaign rosters are newly instantiated: clear effects for incoming IDs so species#slot reuse cannot inherit an outgoing curse; player lifetime unchanged.",
+  "priorBuildFailure": {
+    "source": "8d91d1a0aca19b041218ae0d53e728c1a1b7d1cd",
+    "run": 38660233744,
+    "reason": "Unsupported Android ComposeColorFilter compile error; replaced with equivalent precomputed cursed hit tint in68c93d4."
+  }
 }

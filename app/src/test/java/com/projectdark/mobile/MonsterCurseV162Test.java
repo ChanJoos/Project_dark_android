@@ -64,6 +64,7 @@ public class MonsterCurseV162Test {
  }
  @Test public void respawnAndNewMapCannotRetainOldCurse()throws Exception{
   RuntimeState s=coast();RuntimeState.Monster m=pong(s);s.skillEffects().put(m.id,"SK_마법사_002","CURSE",20,100);s.damage(m,m.hp);s.player().x=-10000;s.player().y=-10000;s.tick(m.respawnSeconds+1);assertTrue(m.alive);assertFalse(MonsterCursePalette.active(s.skillEffects(),m.id));
+  s.skillEffects().put(m.id,"SK_마법사_002","CURSE",20,100);s.skillEffects().put("player","fixture","CURSE",20,100);s.enterCampaignMap("MAP_ABEL_COAST_2A",false);s.enterCampaignMap("MAP_ABEL_COAST_1A",false);assertFalse(MonsterCursePalette.active(s.skillEffects(),pong(s).id));assertTrue("player lifetime preserved",MonsterCursePalette.active(s.skillEffects(),"player"));
   RuntimeState fresh=coast();PoteFieldRenderer r=new PoteFieldRenderer();r.prepareMonsters(s);r.prepareMonsters(fresh);assertSame(fresh.skillEffects(),ForestPixelCacheTest.field(r,"monsterEffects"));
  }
 }
