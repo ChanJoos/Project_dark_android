@@ -12,8 +12,14 @@ final class TownTravelWindow {
   List<String> out=new ArrayList<>();
   TownTravel.Destination here=TownTravel.forMap(current);
   for(TownTravel.Destination d:TownTravel.TOWNS)if(here==null||!d.map.equals(here.map))out.add(d.map);
-  if(!com.projectdark.mobile.world.CampaignWorld.PIET.equals(current))out.add(FOREST);return out;
+  if(!com.projectdark.mobile.world.CampaignWorld.PIET.equals(current))out.add(hunting(current));return out;
  }
+ static String hunting(String current){
+  if(com.projectdark.mobile.world.AbelTownGeometry.contains(current))return com.projectdark.mobile.world.AbelCoastGeometry.ENTRY;
+  if(com.projectdark.mobile.world.RucesionTownGeometry.contains(current))return com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY;
+  return FOREST;
+ }
+ static boolean huntingMap(String map){return FOREST.equals(map)||com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)||com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map);}
  static RectF card(int i){float x=270,y=193+i*70;return new RectF(x,y,x+420,y+60);}
  static RectF cardFor(String current,String map){int i=destinations(current).indexOf(map);return i<0?null:card(i);}
  static boolean close(float x,float y){return !PANEL.contains(x,y)||new RectF(661,144,697,180).contains(x,y);}
@@ -25,7 +31,7 @@ final class TownTravelWindow {
   UiTheme.text(c,"마을 이동",272,170,20,0xfff7ecd7,true);
   List<String> ds=destinations(current);
   for(int i=0;i<ds.size();i++){
-   String map=ds.get(i);boolean forest=FOREST.equals(map);RectF r=card(i);
+   String map=ds.get(i);boolean forest=huntingMap(map);RectF r=card(i);
    p.setColor(0xff3b352c);c.drawRoundRect(r,5,5,p);
    p.setStyle(Paint.Style.STROKE);p.setColor(0xff74624c);c.drawRoundRect(r,5,5,p);p.setStyle(Paint.Style.FILL);
    UiTheme.text(c,title(map),r.left+18,r.top+(forest?25:36),17,0xfff4e8d3,true);
@@ -34,7 +40,7 @@ final class TownTravelWindow {
   }
   UiTheme.close(c,679,162);
  }
- static String title(String map){return FOREST.equals(map)?"포테의 숲":TownTravel.forMap(map).title;}
- static String description(String map){return FOREST.equals(map)?"2써클 사냥터 (Lv 11~Lv 40)":"";}
+ static String title(String map){return FOREST.equals(map)?"포테의 숲":com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)?"아벨해안":com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map)?"뤼케시온해안":TownTravel.forMap(map).title;}
+ static String description(String map){return FOREST.equals(map)?"2써클 사냥터 (Lv 11~Lv 40)":com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)?"Lv 41 이상 · 포테 조사 완료":com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map)?"Lv 71 이상":"";}
  private TownTravelWindow(){}
 }

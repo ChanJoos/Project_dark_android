@@ -64,7 +64,7 @@ public final class GameView extends View {
   private final SkillVfxRenderer.Anchors skillAnchors=new SkillVfxRenderer.Anchors(){
     public float x(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldX();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.x;return Float.NaN;}
     public float y(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldY();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.y;return Float.NaN;}
-    public float centerY(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return y(id)-23f;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)){if(inPoteField&&PoteForestMonsterShowcase.containsMonster(m.id))return m.y-("POTE_LYCAN".equals(m.id)?33f:21f);if(inReagentShop&&townInterior.kind==TownInteriorDef.Kind.INN)return m.y-5f;return m.y-10f*WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE;}return Float.NaN;}
+    public float centerY(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return y(id)-23f;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)){if(inPoteField&&PoteForestMonsterShowcase.assetPath(m.id,"idle",CharacterRenderer.Direction.SE)!=null)return m.y-PoteForestMonsterShowcase.bodyHeight(m.id)*.5f+3f;if(inReagentShop&&townInterior.kind==TownInteriorDef.Kind.INN)return m.y-5f;return m.y-10f*WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE;}return Float.NaN;}
   };
   private final WorldEntityPresentationRenderer worldEntityRenderer=new WorldEntityPresentationRenderer();
   private final RpgInventoryPresentation rpgPresentation=new RpgInventoryPresentation();
@@ -349,6 +349,14 @@ public final class GameView extends View {
       return q.x>=0&&q.x<logicalViewportWidth&&q.y>=0&&q.y<H;
     }return false;
   }
+  private String skillResourceFailure(String id){
+    SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null)return "MP가 부족합니다";
+    if("DARA".equals(a.formula))return "다라밀공: 현재 MP "+state.player().mp+" / 필요 1440 · HP 2 이상";
+    if("CRASH".equals(a.formula))return a.name+": HP가 최대 HP의 2% 이하여야 합니다";
+    if("SEMELIA".equals(a.formula))return a.name+": MP 3240 초과 필요";
+    if("METEOR".equals(a.formula))return a.name+": MP 12960 초과 필요";
+    return a.name+" · "+SkillAbilityCatalog.resources(a)+" 필요";
+  }
   private void cast(){submitLearnedAction(SkillDef.CAST_PROTO,Action.CAST);}
   private void skill(){submitLearnedAction(SkillDef.SKILL_PROTO,Action.SKILL);}
   private void kick(){submitLearnedAction(SkillDef.KICK_PROTO,Action.KICK);}
@@ -359,7 +367,7 @@ public final class GameView extends View {
     SkillActionContract.Rule rule=SkillActionContract.get(def.id);boolean self=rule!=null?rule.selfAnchored():def.targetPolicy==SkillDef.TargetPolicy.SELF;if(!self&&!requireTarget())return;
     CombatActionOrchestrator.Submission result=combatSession.submitPlayer(self?RuntimeCombatSession.PLAYER_ID:combat.target().id,def.id);
     if(result.accepted()){if(!self)snapshotAttackFacingTarget();else playerFacing.beginAttack();activeSkillVisualId=def.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(def.id);trigger(visual);}
-    else showFeedback(result.rejectReason==CombatResolver.RejectReason.NOT_LEARNED?"아직 배우지 않은 기술입니다":result.rejectReason==CombatResolver.RejectReason.RESOURCE?"MP가 부족합니다":result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":result.rejectReason==CombatResolver.RejectReason.RANGE?"대상이 사거리 밖에 있습니다":"지금 사용할 수 없습니다",FeedbackTone.WARN);
+    else showFeedback(result.rejectReason==CombatResolver.RejectReason.NOT_LEARNED?"아직 배우지 않은 기술입니다":result.rejectReason==CombatResolver.RejectReason.RESOURCE?skillResourceFailure(def.id):result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":result.rejectReason==CombatResolver.RejectReason.RANGE?"대상이 사거리 밖에 있습니다":"지금 사용할 수 없습니다",FeedbackTone.WARN);
   }
   private Action actionFor(AttackDef.Kind k){switch(k){case THRUST:return Action.THRUST;case THROW:return Action.THROW;case PUNCH:return Action.PUNCH;default:return Action.SWING;}}
   private void tickAutoAttack(WorldMoveTargetController.Snapshot navigation){
@@ -464,7 +472,10 @@ public final class GameView extends View {
     if(TownTravelWindow.close(x,y)){interaction.dismissDialog();activeWorld().cancelForAction();return;}
     String map=TownTravelWindow.hit(state.currentMapId(),x,y);if(map==null)return;
     if(TownTravelWindow.FOREST.equals(map)){campaignAutoRoute=false;if(!WorldDef.ID.equals(state.currentMapId()))travelTown(WorldDef.ID);interaction.dismissDialog();enterPoteField();}
-    else travelTown(map);
+    else if(TownTravelWindow.huntingMap(map)){
+      if(!skillBook.testAccess()&&!com.projectdark.mobile.world.CampaignWorld.canEnter(map,state.rpg().normalLevel(),state.rpg().campaign().forestFinished())){showFeedback(TownTravelWindow.description(map),FeedbackTone.WARN);return;}
+      campaignAutoRoute=false;interaction.dismissDialog();activeWorld().cancelForAction();changeCampaignMap(map,false);
+    }else travelTown(map);
   }
   private void travelTown(String map){
     if(!TownTravel.isTown(map)||!F5mSaveStore.writable())return;
@@ -704,6 +715,11 @@ public final class GameView extends View {
   float renderedPlayerWorldY(){return activeWorld().presentationPlayerY();}
   private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
     SkillPresentationCatalog.Entry selected=skillPresentation.get(activeSkillVisualId);
+    String weaponMotion=WeaponCombatProfile.motion(state.rpg(),selected==null?"EQUIPPED_BASIC":selected.motion);
+    if(isActing()&&presentation==CharacterRenderer.State.ATTACK&&(selected==null||"SK_공통_001".equals(selected.id))&&!"EQUIPPED_BASIC".equals(weaponMotion)){
+      float hit=CombatResolver.attackPrototype(combat.attackDef(),combat.attackMode()).hitTime;
+      if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,weaponMotion,skillPosePhase(actionClock,stateDuration,hit)))return;
+    }
     if(isActing()&&ChungryongWeaponRenderer.equipped(pose.weaponVisualRef)&&((selected==null&&presentation==CharacterRenderer.State.ATTACK)||(selected!=null&&selected.id.startsWith("SK_전사_")&&"SWING".equals(selected.motion)))){
       SkillActionContract.Rule rule=selected==null?null:SkillActionContract.get(selected.id);float contact=rule==null?CombatResolver.attackPrototype(combat.attackDef(),combat.attackMode()).hitTime:rule.contact;
       if(skillBodyRenderer.drawChungryong(c,pose,characterBodyIdentity,ChungryongWeaponRenderer.motion(activeSkillVisualId),skillPosePhase(actionClock,stateDuration,contact)))return;
@@ -725,8 +741,8 @@ public final class GameView extends View {
         else skillBodyRenderer.draw(c,pose,characterBodyIdentity,"IDLE",0);
         return;
       }
-      if("SWING".equals(selected.motion)&&"mm001".equals(characterBodyIdentity)){characterRenderer.draw(c,new CharacterRenderer.Pose(pose.x,pose.y,pose.direction,CharacterRenderer.State.ATTACK,walkClock,actionClock,stateDuration,false,pose.equipmentVisualRef,pose.weaponVisualRef,pose.effectVisualRef,pose.effectFamily,AnimationAction.SWING));return;}
-      if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,selected.motion,skillPosePhase(actionClock,stateDuration,contact)))return;
+      if("SWING".equals(weaponMotion)&&"mm001".equals(characterBodyIdentity)){characterRenderer.draw(c,new CharacterRenderer.Pose(pose.x,pose.y,pose.direction,CharacterRenderer.State.ATTACK,walkClock,actionClock,stateDuration,false,pose.equipmentVisualRef,pose.weaponVisualRef,pose.effectVisualRef,pose.effectFamily,AnimationAction.SWING));return;}
+      if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,weaponMotion,skillPosePhase(actionClock,stateDuration,contact)))return;
     }
     characterRenderer.draw(c,pose);}
 
@@ -783,15 +799,15 @@ private void drawUtilityRail(Canvas c){
       MobileHudSkin.utility(c,glyphs[i],cx,UTILITY_Y0,active);UiTheme.center(c,labels[i],cx,51,6.5f,UiTheme.TEXT,false);
     }drawQuestJournalIcon(c);
   }
-  private void drawStats(Canvas c){if(!statsOpen)return;c.save();c.translate(hudCenterOffset,0);UiTheme.scrim(c);UiTheme.panel(c,new RectF(570,72,936,390),"능력치");UiTheme.close(c,911,91);RpgProgressionState r=state.rpg();FinalStats fs=r.finalStats().withEffects(state.skillEffects(),"player");RpgProgressionState.StatSnapshot ss=r.recomputeStats();UiTheme.text(c,"Lv. "+r.normalLevel(),590,126,11,UiTheme.MUTED,false);UiTheme.right(c,"잔여 포인트  "+r.statPoints(),909,126,11,UiTheme.ACCENT,true);
+  private void drawStats(Canvas c){if(!statsOpen)return;c.save();c.translate(hudCenterOffset,0);UiTheme.scrim(c);UiTheme.panel(c,new RectF(570,72,936,390),"능력치");UiTheme.close(c,911,91);RpgProgressionState r=state.rpg();FinalStats fs=r.finalStats().withEffects(state.skillEffects(),"player");RpgProgressionState.StatSnapshot ss=r.recomputeStats();UiTheme.text(c,"Lv. "+r.normalLevel()+" · "+CampaignProgress.jobName(r.currentJobCode()),590,126,11,UiTheme.MUTED,false);UiTheme.right(c,"잔여 포인트  "+r.statPoints(),909,126,11,UiTheme.ACCENT,true);
     String[] keys={"STR","INT","WIS","CON","DEX"},labels=keys;int[] base={r.str(),r.intel(),r.wis(),r.con(),r.dex()};
     for(int n=0;n<5;n++){float yy=150+n*30;UiTheme.surface(c,new RectF(584,yy-17,752,yy+11),UiTheme.SURFACE,0,5);UiTheme.text(c,labels[n],594,yy,11,UiTheme.TEXT,true);Integer bonus=ss.equipment.get(keys[n]);UiTheme.right(c,base[n]+(bonus!=null&&bonus!=0?" +"+bonus:""),693,yy,12,UiTheme.GOLD,true);UiTheme.button(c,new RectF(705,yy-15,743,yy+9),"+",r.statPoints()>0,false);}
     String[] labels2={"생명력","마나","방어 / 마법방어","명중 / 피해","물리 공격","공격 속성","방어 속성","피해 감소","방어 무시"};
     String[] vals={state.player().hp+" / "+fs.maxHp,state.player().mp+" / "+fs.maxMp,fs.ac+" / "+fs.magicDefense,fs.hit+" / "+fs.dam,""+fs.prototypePhysicalAttack(),"NONE".equals(String.valueOf(fs.attackElement))?"없음":""+fs.attackElement,"NONE".equals(String.valueOf(fs.defenseElement))?"없음":""+fs.defenseElement,fs.damageReductionPct+"% · "+fs.flatMitigation,""+fs.acIgnore};
     for(int n=0;n<9;n++){float yy=150+n*23;UiTheme.text(c,labels2[n],771,yy,9.5f,UiTheme.MUTED,false);UiTheme.right(c,vals[n],915,yy,10.5f,UiTheme.TEXT,true);if(n<8)UiTheme.line(c,771,yy+7,915,yy+7,UiTheme.LINE);}
-    UiTheme.text(c,"STR 물리 · INT 마법 · DEX 명중",590,301,10,UiTheme.MUTED,false);UiTheme.text(c,"기술 조건은 스킬창 → 조건에서 확인",590,322,10,UiTheme.GOLD,false);
+    UiTheme.text(c,"STR 물리 · INT 마법 · DEX 도적 기술",590,301,10,UiTheme.MUTED,false);UiTheme.text(c,"기술 조건은 스킬창 → 조건에서 확인",590,322,10,UiTheme.GOLD,false);
     if(r.canResetIntroAllocation(skillBook))UiTheme.button(c,new RectF(584,330,752,355),"입문 배분 다시 하기",true,false);
-    UiTheme.line(c,590,357,915,357,UiTheme.LINE);UiTheme.text(c,"CON · WIS는 다음 레벨의 HP · MP 성장에 반영됩니다.",590,378,10,UiTheme.MUTED,false);c.restore();
+    UiTheme.line(c,590,357,915,357,UiTheme.LINE);UiTheme.text(c,"다음 레벨: HP +"+r.nextHpGain()+" · MP +"+r.nextMpGain()+" (CON · WIS 배분 반영)",590,378,10,UiTheme.MUTED,false);c.restore();
   }
   private void drawChat(Canvas c){
     RectF r=MobileHudLayout.chat(chatExpanded);MobileHudSkin.fade(c,r);RuntimeMetrics m=state.metrics();

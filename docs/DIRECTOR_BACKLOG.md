@@ -1,3 +1,7 @@
+## 2026-10-15 — V167 post-V166 device failures in progress
+
+User reports V166 equipment/stat/skill/motion/finisher-position failures, Dara no damage and Abel garden/travel defects: DEVICE_FAILED_USER_REPORTED. Root single editor on existing PR197, baseline6c657113, current main41fe6def (live PR base confirmed). Raw60MB recording read locally, not published; original attached wiki snapshots read, conflicting Dara-era formula retained unresolved. Contract master/changes/COMBAT_TOWN_V167.json. Runtime changes and actual-path regression fixtures prepared. Master integrity PASS; BUILD/NATIVE/PHONE/VISUAL PENDING. No new APK delivery or all-equipment-original-complete claim. Resume exact worktree, publish/test source; do not regenerate existing artwork.
+
 ## 2026-10-15 — V166 flowerbed repair verified
 
 User reports V165 Rucesion upper-left flowerbed mixed with pavement: DEVICE_FAILED (user-reported visual). Reproduced in both registered flowerbed PNGs; source capture includes1,745 bright neutral sidewalk pixels, not a renderer tile selection failure. Shared flowerbed reconstructed with built-in image_gen and transparent planted perimeter in both towns; ADAPTED, not recovered original art. Original source bytes retained. Same182x109canvas/92x98anchor/all21placements. All other runtime Java/assets and layout geometry unchanged; V165 lamps, NPC/player scale, service signs, travel, trees, collision and save preserved.

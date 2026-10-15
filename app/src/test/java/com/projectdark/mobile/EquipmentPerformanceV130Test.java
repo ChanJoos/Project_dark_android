@@ -54,7 +54,7 @@ public class EquipmentPerformanceV130Test {
   }
  }
  @Test public void sourceRangesAndNewShieldOwnershipSurviveActualSaveRestore(){
-  RuntimeState s=state();RpgProgressionState r=s.rpg();r.equip("IT_WARDROBE_MW023");r.equip("IT_SHIELD_PHOBOS");int damage=hit(s);int str=r.str();F5mSaveStore.saveRewardsActive(r);assertTrue(F5mSaveStore.writable());
+  RuntimeState s=state();RpgProgressionState r=s.rpg();r.equip("IT_SHIELD_PHOBOS");r.equip("IT_WARDROBE_MW023");assertNull(r.equippedDefinition("방패"));int damage=hit(s);int str=r.str();F5mSaveStore.saveRewardsActive(r);assertTrue(F5mSaveStore.writable());
   F5mSaveStore.install(c);RpgProgressionState copy=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(copy);assertEquals(r.equipment(),copy.equipment());assertEquals(r.inventory(),copy.inventory());assertEquals(str,copy.str());assertEquals(150,copy.finalStats().weaponMinAttack);assertEquals(210,copy.finalStats().weaponMaxAttack);assertEquals(r.finalStats().ac,copy.finalStats().ac);assertEquals(r.finalStats().magicDefense,copy.finalStats().magicDefense);assertTrue(damage>100);
  }
  @Test public void aripelRestoredAttackAndMpOptionReachActualPlayer(){

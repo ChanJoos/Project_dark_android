@@ -16,7 +16,7 @@ final class SkillAbilityExecutor {
   if(!a.supported())return CombatResolver.RejectReason.CONTROL;
   RuntimeState.Player p=state.player();
   if(a.status.equals("TRANSFER"))return CombatResolver.RejectReason.TARGET_DEAD;
-  if(testMode)return null;
+  if(testMode&&!a.formula.equals("DARA"))return null;
   if(!begin&&!a.resourceBurst())return null;
   if(a.formula.equals("CRASH")&&p.hp>Math.max(1,state.rpg().finalStats().maxHp*.02))return CombatResolver.RejectReason.RESOURCE;
   if(a.formula.equals("DARA")&&(p.mp<1440||p.hp<=1))return CombatResolver.RejectReason.RESOURCE;

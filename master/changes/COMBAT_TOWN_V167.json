@@ -1,0 +1,31 @@
+{
+  "id": "COMBAT-TOWN-V167",
+  "status": "ACCEPTED",
+  "baseline": "6c65711380f93a0f994327ddbff297bf5152ab70",
+  "userEvidence": "2026-10-15 post-V166 Rucesion hunt and Abel screenshot",
+  "sourceReferences": [
+    "master/data/Asset_Master.csv:mw016,mw018,mw019,mw021,mw022,mw023,mw170,mw203",
+    "design/CHARACTER_STAT_SYSTEM_V1.md",
+    "master/changes/V138_ALL221_SKILL_AUDIT.json"
+  ],
+  "implementation": [
+    "Explicit two-hand grip and mutually-exclusive shield; preserved source stats",
+    "Four-facing source02 registration and source BODY e two-hand candidate (ADAPTED mapping)",
+    "Resource-based recipient finishers except crashers use stable source-pixel union centre",
+    "Dara no longer bypasses actual prerequisite to show zero-damage release",
+    "CON/WIS next-growth projection from same accumulated growth policy",
+    "Town-local hunting buttons preserve normal unlock gates; Abel manager-adjacent arrival",
+    "Abel 16->6 beds; remove overlapping5trees and163 redundant grass cells; bed blocking shares geometry"
+  ],
+  "unchangedOriginalFacts": [
+    "No fabricated missing equipment stats/jobs",
+    "Dara existing historical (HP+MP-1440)*3.38 retained; uploaded wiki describes a conflicting era, unresolved",
+    "Growth formula remains B, not original confirmed formula"
+  ],
+  "validation": "Master integrity PASS; Android build/native pending exact CI",
+  "pending": [
+    "All-equipment actual audit pending CI; no claim all original item options recovered",
+    "Two-hand exact original animation cadence/source linkage needs native visual review",
+    "Physical phone and user visual acceptance pending"
+  ]
+}

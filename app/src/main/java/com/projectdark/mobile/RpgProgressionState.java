@@ -334,6 +334,8 @@ public final class RpgProgressionState {
   private int baseMaxHp=100,baseMaxMp=100;
   private final LevelGrowthPolicy growthPolicy=new LevelGrowthPolicy.BalancedV1();
   public int str(){return str;} public int intel(){return intel;} public int wis(){return wis;} public int con(){return con;} public int dex(){return dex;} public int statPoints(){return statPoints;}
+  public int nextHpGain(){return normalLevel!=null&&normalLevel>=99?0:growthPolicy.hpGain((normalLevel==null?1:normalLevel)+1,currentJobCode,con);}
+  public int nextMpGain(){return normalLevel!=null&&normalLevel>=99?0:growthPolicy.mpGain((normalLevel==null?1:normalLevel)+1,currentJobCode,wis);}
   public int physicalAttack(){return finalStats().prototypePhysicalAttack();}
   public int baseMaxHp(){return baseMaxHp;} public int baseMaxMp(){return baseMaxMp;}
   public int maxHpGrowth(){return finalStats().maxHp;} public int maxMpGrowth(){return finalStats().maxMp;}
@@ -593,6 +595,8 @@ public final class RpgProgressionState {
         ||incoming==CharacterVisualBinding.GarmentCoverage.LOWER){
       removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage.FULL_BODY);
     }
+    if(WEAPON_SLOT.equals(slot)&&WeaponCombatProfile.grip(def)==WeaponCombatProfile.Grip.TWO_HAND)equipmentBySlot.remove(SHIELD_SLOT);
+    if(SHIELD_SLOT.equals(slot)&&WeaponCombatProfile.grip(equippedDefinition(WEAPON_SLOT))==WeaponCombatProfile.Grip.TWO_HAND)equipmentBySlot.remove(WEAPON_SLOT);
     equipmentBySlot.put(slot,itemId);
     campaign.record("EQUIP",itemId);return EquipResult.EQUIPPED;
   }

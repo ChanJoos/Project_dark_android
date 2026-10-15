@@ -48,13 +48,14 @@ public final class AbelTownGeometry {
   if(a!=null){float lx=(px-prop.x+prop.anchorX)/AbelVideoLayout.SCALE,ly=(py-prop.y+prop.anchorY)/AbelVideoLayout.SCALE;boolean inside=false;
    for(int i=0,j=a.length-2;i<a.length;j=i,i+=2)if((a[i+1]>ly)!=(a[j+1]>ly)&&lx<(a[j]-a[i])*(ly-a[i+1])/(a[j+1]-a[i+1])+a[i])inside=!inside;return inside;
   }
+  if(prop.asset.equals("flowerbed_orange"))return Math.abs(px-prop.x)/(100*AbelVideoLayout.SCALE)+Math.abs(py-(prop.y-35*AbelVideoLayout.SCALE))/(55*AbelVideoLayout.SCALE)<1;
   if(prop.asset.startsWith("tree_"))return Math.abs(px-prop.x)<=15&&Math.abs(py-prop.y)<=11;
   if(prop.asset.startsWith("bench_")||prop.asset.startsWith("lamp"))return prop.u==Math.round(((px-2560)/32+(py-64)/16)/2)&&prop.v==Math.round(((py-64)/16-(px-2560)/32)/2);
   return false;
  }
  private static boolean[][] buildSolids(){boolean[][] a=new boolean[SIZE][SIZE];
   for(int u=0;u<SIZE;u++)for(int v=0;v<SIZE;v++){int k=tile(ID,u,v);a[u][v]=u<1||v<1||u>=SIZE-1||v>=SIZE-1||AbelUnifiedLayout.ACTIVE[u].charAt(v)!='1'||k==2||k==4||k==5;}
-  for(Prop p:PROPS){int radius=p.asset.startsWith("building_")?12:2;for(int u=Math.max(1,p.u-radius);u<Math.min(SIZE-1,p.u+radius+1);u++)for(int v=Math.max(1,p.v-radius);v<Math.min(SIZE-1,p.v+radius+1);v++)if(solidAt(p,x(u,v),y(u,v)))a[u][v]=true;}
+  for(Prop p:PROPS){int radius=p.asset.startsWith("building_")?12:p.asset.equals("flowerbed_orange")?6:2;for(int u=Math.max(1,p.u-radius);u<Math.min(SIZE-1,p.u+radius+1);u++)for(int v=Math.max(1,p.v-radius);v<Math.min(SIZE-1,p.v+radius+1);v++)if(solidAt(p,x(u,v),y(u,v)))a[u][v]=true;}
   // Each service has one short marked ground approach, not a corridor cut through its walls.
   for(Building b:BUILDINGS)for(int v=b.prop.v;v<=b.prop.v+2;v++)if(v>0&&v<SIZE-1)a[b.prop.u][v]=false;
   return a;

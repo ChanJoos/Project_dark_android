@@ -34,7 +34,7 @@ final class SkillBodyRenderer {
     if(p.direction==null)return false;String key=catalog.frameKey(body,motion,p.direction,phase);JSONObject f=key==null?null:catalog.frames.optJSONObject(key);if(f==null)return false;
     Bitmap b=bitmap(f.optString("path"));if(b==null)return false;
     String[] parts=key.split("/");String group=parts[1];int index=Integer.parseInt(parts[2]);
-    boolean mirror=p.direction==CharacterRenderer.Direction.NW||p.direction==CharacterRenderer.Direction.SW;
+    boolean mirror=!"02".equals(group)&&(p.direction==CharacterRenderer.Direction.NW||p.direction==CharacterRenderer.Direction.SW);
     float rootX=p.x,rootY=p.y+8f*SCALE;
     if("JUMP".equals(motion)){paint.setColor(0x50000000);c.drawOval(new RectF(p.x-7,p.y-2,p.x+7,p.y+2),paint);paint.setColor(Color.WHITE);rootY-=jumpLift(phase);}
     c.save();if(mirror)c.scale(-1,1,rootX,rootY);
@@ -43,7 +43,7 @@ final class SkillBodyRenderer {
     float jumpHandX=rootX+(13f*b.getWidth()/17f-(float)f.optDouble("pivotX"))*SCALE;
     float jumpHandY=rootY+(24-b.getHeight()-(float)f.optDouble("offsetY"))*SCALE;
     if(jumpWeapon&&back)chungryong.layer(c,"basic",true,0,jumpHandX,jumpHandY,SCALE);
-    boolean weapon=motion.equals("THRUST")||motion.equals("SWING");
+    boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND");
     if(weapon){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",ChungryongWeaponRenderer.back(p.direction),0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawGear(c,p.weaponVisualRef,group,index,p.direction,rootX,rootY);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);

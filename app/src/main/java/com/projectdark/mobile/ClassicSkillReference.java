@@ -23,6 +23,7 @@ final class ClassicSkillReference {
     if(doc.has("damageImpact"))damageImpact=new Channel(c,"RECIPIENT_DAMAGE",doc.getJSONObject("damageImpact"));
     Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=entries.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=new LinkedHashMap<>();Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}effects.put(id,result);}
     JSONArray rows=read(c,directory+"/references.json").getJSONArray("rows");for(int i=0;i<rows.length();i++){JSONObject row=rows.getJSONObject(i);if(!row.isNull("id"))references.put(row.getString("id"),row);}
+    prewarmCenters();
   }catch(Exception e){throw new IllegalStateException("Classic skill reference",e);}}
   private static JSONObject read(Context c,String path)throws Exception{return new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/"+path),StandardCharsets.UTF_8));}
   boolean has(String id){return effects.containsKey(id);}
@@ -36,5 +37,13 @@ final class ClassicSkillReference {
     canvas.drawBitmap(s.atlas,new Rect(col*s.width,row*s.height+topCrop,(col+1)*s.width,(row+1)*s.height),new RectF(x-pivotX*s.scale,y+(topCrop-pivotY)*s.scale,x+(s.width-pivotX)*s.scale,y+(s.height-pivotY)*s.scale),paint);
     paint.setXfermode(null);canvas.restore();
   }
+  private final Map<Channel,float[]> centers=new IdentityHashMap<>();
+  private void prewarmCenters(){for(Map<String,Channel> channels:effects.values())for(Channel channel:channels.values()){
+    if(!channel.key.contains("RECIPIENT"))continue;
+    CapturedSkillFx.Sequence s=channel.sequence;int l=s.width,t=s.height,r=0,b=0;
+    for(int yy=0;yy<s.atlas.getHeight();yy++)for(int xx=0;xx<s.atlas.getWidth();xx++)if(Color.alpha(s.atlas.getPixel(xx,yy))>24){int x=xx%s.width,y=yy%s.height;l=Math.min(l,x);r=Math.max(r,x+1);t=Math.min(t,y);b=Math.max(b,y+1);}
+    centers.put(channel,l<r?new float[]{(l+r)*.5f,(t+b)*.5f}:new float[]{s.pivotX,s.pivotY});
+  }}
+  void drawCentered(Canvas canvas,Channel channel,float age,float x,float y){float[] p=centers.get(channel);drawRegistered(canvas,channel,age,x,y,p[0],p[1],0,0,false,0);}
   void draw(Canvas canvas,Channel channel,float age,float x,float y){CapturedSkillFx.Sequence s=channel.sequence;int frame=s.frame(age),col=frame%s.columns,row=frame/s.columns;paint.setFilterBitmap(s.filterBitmap);paint.setXfermode(s.normalBlend?null:screen);canvas.drawBitmap(s.atlas,new Rect(col*s.width,row*s.height,(col+1)*s.width,(row+1)*s.height),new RectF(x-s.pivotX*s.scale,y-s.pivotY*s.scale,x+(s.width-s.pivotX)*s.scale,y+(s.height-s.pivotY)*s.scale),paint);paint.setXfermode(null);}
 }

@@ -62,6 +62,6 @@ public class TownPropsV166Test {
     shot.recycle();receipt.add(map+" flowerbed="+i+" x="+xy[0]+" y="+xy[1]);count++;
    }
   }
-  assertEquals(21,count);Files.write(Path.of("build/reports/town-v166/placements.txt"),receipt);
+  assertEquals(11,count);Files.write(Path.of("build/reports/town-v166/placements.txt"),receipt);
  }
 }

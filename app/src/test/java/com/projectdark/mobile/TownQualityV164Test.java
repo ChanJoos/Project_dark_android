@@ -17,7 +17,7 @@ public class TownQualityV164Test {
   for(TownTravel.Destination from:TownTravel.TOWNS){GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(false);travel(v,from.map);RuntimeState s=TownInteriorTest.field(v,"state");helper.approach(v,from.npc);assertEquals(3,TownTravelWindow.destinations(from.map).size());assertFalse(TownTravelWindow.destinations(from.map).contains(from.map));assertNull(TownTravelWindow.cardFor(from.map,from.map));capture(v,"dialog-"+from.map);
    // Empty card gutters must not select a destination or dismiss the dialogue.
    TownInteriorTest.tap(v,480,258);assertEquals(from.map,s.currentMapId());InteractionController dialog=TownInteriorTest.field(v,"interaction");assertTrue(dialog.dialogOpen());TownInteriorTest.tap(v,679,162);assertFalse(dialog.dialogOpen());assertEquals(from.map,s.currentMapId());
-   helper.approach(v,from.npc);RectF forest=TownTravelWindow.cardFor(from.map,TownTravelWindow.FOREST);TownInteriorTest.tap(v,forest.centerX(),forest.centerY());assertEquals(TownTravelWindow.FOREST,s.currentMapId());assertEquals(1,s.rpg().normalLevel().intValue());
+   v.setSkillTestMode(true);helper.approach(v,from.npc);String hunt=TownTravelWindow.hunting(from.map);RectF forest=TownTravelWindow.cardFor(from.map,hunt);TownInteriorTest.tap(v,forest.centerX(),forest.centerY());assertEquals(hunt,s.currentMapId());assertEquals(1,s.rpg().normalLevel().intValue());
   }
  }
  @Test public void allLoadedPropsHaveAssetsAndNativeRepairPreservesCanvasGuttersAndContact()throws Exception{
