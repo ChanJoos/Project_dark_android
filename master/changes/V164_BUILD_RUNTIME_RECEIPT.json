@@ -69,7 +69,7 @@
       ]
     ]
   },
-  "status": "FOCUSED_BUILD_NATIVE_VERIFIED_COMMON_PENDING",
+  "status": "BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING",
   "focusedRun": 38720764643,
   "focusedJob": 116374448272,
   "nativeArtifact": 11966026549,
@@ -87,7 +87,16 @@
     "app/src/main/assets/abel-video-v147/layout.json",
     "app/src/main/assets/rucesion-v154/layout.json"
   ],
-  "apkAttachment": "TRANSFER_FAILED_TWICE_USE_GITHUB_ARTIFACT",
+  "apkAttachment": "SAVED_SUCCESSFULLY",
   "apkDownload": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38720764643/artifacts/11965561778",
-  "commonPushRun": 38720764872
+  "commonPushRun": 38720764872,
+  "commonPr": {
+    "run": 38720772628,
+    "job": 116374474313,
+    "status": "COMPLETED_SUCCESS",
+    "successfulGradleInvocations": 26,
+    "decodedExactSourceConfirmed": true
+  },
+  "apkLibraryFileId": "libfile_f49d6fef6c3081919a351a2d66a84da9",
+  "deliveryFilesSaved": 5
 }

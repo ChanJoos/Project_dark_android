@@ -1,5 +1,5 @@
 town_quality_v164:
-  status: FOCUSED_BUILD_NATIVE_VERIFIED_COMMON_PENDING
+  status: BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING
   active_branch: codex/rucesion-coast-v157
   owner: ROOT_SINGLE_EDITOR
   pull_request: 197
