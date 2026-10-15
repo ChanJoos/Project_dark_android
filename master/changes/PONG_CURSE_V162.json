@@ -24,5 +24,6 @@
     "reason": "Native scaled filter changes transparent alpha. Exact-alpha assertions retained."
   },
   "focusedSelectionRepair": "The V161 source class name is retained; new MonsterCurseV162Test runs explicitly first and in final combined suite. Early focused build success did not execute new curse tests and is not feature acceptance.",
-  "visualIteration": "3a05d68 passed exact-alpha and126native tests, but own reference comparison found oversaturated orange/neon normal Pong. Final material projection now follows independent source gold193/139/91 and violet91/37/121 patch medians; added independent native palette acceptance test. Prior126success is not final APK acceptance."
+  "visualIteration": "3a05d68 passed exact-alpha and126native tests, but own reference comparison found oversaturated orange/neon normal Pong. Final material projection now follows independent source gold193/139/91 and violet91/37/121 patch medians; added independent native palette acceptance test. Prior126success is not final APK acceptance.",
+  "pongCurseCalibration": "Observed16s blue77.5/60.5/153 and warm212/157/96 medians calibrate Pong-specific curse materials. Independent native normal+curse sample checks. Other species keep generic fading; no invented original palette identity."
 }

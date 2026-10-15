@@ -86,5 +86,60 @@
       ]
     },
     "method": "Median native-resolution RGB/HSV from raw crop patches, hue-selected to omit background/other material. RGB screenshots are lossy video observations, not original indexed palette."
+  },
+  "fadedSamples": {
+    "gold": {
+      "rgbMedian": [
+        212,
+        157,
+        96
+      ],
+      "hsvMedian": [
+        0.08530184,
+        0.55828902,
+        0.83137255
+      ],
+      "patches": [
+        [
+          48,
+          26,
+          68,
+          38
+        ],
+        [
+          24,
+          48,
+          35,
+          55
+        ]
+      ]
+    },
+    "blue": {
+      "rgbMedian": [
+        77.5,
+        60.5,
+        153
+      ],
+      "hsvMedian": [
+        0.69415808,
+        0.57143357,
+        0.6
+      ],
+      "patches": [
+        [
+          25,
+          63,
+          40,
+          71
+        ],
+        [
+          85,
+          64,
+          96,
+          72
+        ]
+      ]
+    },
+    "scope": "Pong-specific observed material transfer; other species use generic modest fading, not asserted to share Pong original palette."
   }
 }

@@ -200,7 +200,7 @@ public final class PoteFieldRenderer {
 
   /** Cache a color-only variant: GPU color filters can bleed into transparent scaled edges. */
   private Bitmap curseBitmap(String name,Bitmap source){
-    Bitmap faded=curseCache.get(name);if(faded==null){faded=com.projectdark.mobile.MonsterCursePalette.fadedBitmap(source);curseCache.put(name,faded);}return faded;
+    Bitmap faded=curseCache.get(name);if(faded==null){faded=com.projectdark.mobile.MonsterCursePalette.fadedBitmap(source,name.contains("/abel_v161/pong/"));curseCache.put(name,faded);}return faded;
   }
   private Bitmap hitBitmap(String name,Bitmap source){return tintBitmap(name,source,hitCache);}
   private Bitmap tintBitmap(String name,Bitmap source,Map<String,Bitmap> variants){
