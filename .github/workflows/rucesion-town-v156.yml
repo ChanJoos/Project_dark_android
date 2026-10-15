@@ -1,4 +1,4 @@
-name: V164 Town objects and travel quality
+name: V165 Town lamps and services
 on:
   push:
     branches: [codex/rucesion-coast-v157]
@@ -83,17 +83,18 @@ jobs:
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*TownQualityV164Test' --tests '*AbelTownV152Test' --tests '*RucesionTownV154Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*TownCampaignV163Test' --tests '*NpcAppearanceTest' --tests '*QuestJournalTest' --tests '*CampaignNavigationTest' --tests '*RuntimeCheckpointTest' --tests '*RucesionServicesV156Test' --tests '*MonsterCurseV162Test' --tests '*CampaignProgressTest.definitionsKeepOriginalCurveAndAddMapLocalForestRoute' --tests '*CampaignProgressTest.newForestRouteHasOrderedAtoDObjectivesAndSafeV3Migration' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*TownPolishV165Test' --tests '*TownQualityV164Test' --tests '*AbelTownV152Test' --tests '*RucesionTownV154Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*TownCampaignV163Test' --tests '*NpcAppearanceTest' --tests '*QuestJournalTest' --tests '*CampaignNavigationTest' --tests '*RuntimeCheckpointTest' --tests '*RucesionServicesV156Test' --tests '*MonsterCurseV162Test' --tests '*CampaignProgressTest.definitionsKeepOriginalCurveAndAddMapLocalForestRoute' --tests '*CampaignProgressTest.newForestRouteHasOrderedAtoDObjectivesAndSafeV3Migration' --stacktrace
       - name: Build and verify exact candidate APK
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v164_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v165_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: town-v164-native-${{ github.sha }}
+          name: town-v165-native-${{ github.sha }}
           path: |
+            app/build/reports/town-v165/
             app/build/reports/town-v164/
             app/build/reports/abel-v152/
             app/build/reports/town-v163/
@@ -110,7 +111,7 @@ jobs:
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: town-v164-apk-${{ github.sha }}
+          name: town-v165-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json

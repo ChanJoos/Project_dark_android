@@ -14,9 +14,9 @@ public class TownQualityV164Test {
  void capture(GameView v,String name)throws Exception{Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));save(b,name);b.recycle();}
  @Test public void everyTownHidesItselfAndUsesOnlyVisibleCardsWithSafeGapsCloseAndForest()throws Exception{
   TownCampaignV163Test helper=new TownCampaignV163Test();helper.c=c;
-  for(TownTravel.Destination from:TownTravel.TOWNS){GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(false);travel(v,from.map);RuntimeState s=TownInteriorTest.field(v,"state");helper.approach(v,from.npc);assertEquals(4,TownTravelWindow.destinations(from.map).size());assertFalse(TownTravelWindow.destinations(from.map).contains(from.map));assertNull(TownTravelWindow.cardFor(from.map,from.map));capture(v,"dialog-"+from.map);
+  for(TownTravel.Destination from:TownTravel.TOWNS){GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(false);travel(v,from.map);RuntimeState s=TownInteriorTest.field(v,"state");helper.approach(v,from.npc);assertEquals(3,TownTravelWindow.destinations(from.map).size());assertFalse(TownTravelWindow.destinations(from.map).contains(from.map));assertNull(TownTravelWindow.cardFor(from.map,from.map));capture(v,"dialog-"+from.map);
    // Empty card gutters must not select a destination or dismiss the dialogue.
-   TownInteriorTest.tap(v,480,273);assertEquals(from.map,s.currentMapId());InteractionController dialog=TownInteriorTest.field(v,"interaction");assertTrue(dialog.dialogOpen());TownInteriorTest.tap(v,750,156);assertFalse(dialog.dialogOpen());assertEquals(from.map,s.currentMapId());
+   TownInteriorTest.tap(v,480,258);assertEquals(from.map,s.currentMapId());InteractionController dialog=TownInteriorTest.field(v,"interaction");assertTrue(dialog.dialogOpen());TownInteriorTest.tap(v,679,162);assertFalse(dialog.dialogOpen());assertEquals(from.map,s.currentMapId());
    helper.approach(v,from.npc);RectF forest=TownTravelWindow.cardFor(from.map,TownTravelWindow.FOREST);TownInteriorTest.tap(v,forest.centerX(),forest.centerY());assertEquals(TownTravelWindow.FOREST,s.currentMapId());assertEquals(1,s.rpg().normalLevel().intValue());
   }
  }

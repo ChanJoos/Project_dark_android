@@ -314,7 +314,17 @@
         129
       ],
       "status": "REUSED_ISOLATED_SOURCE_MODULE",
-      "sha256": "076570b60b26abf5e5b91369aea4dadfd96cb2a6d99bfea507428157910572a7"
+      "sha256": "076570b60b26abf5e5b91369aea4dadfd96cb2a6d99bfea507428157910572a7",
+      "runtimeRepairV165": {
+        "status": "SOURCE_REFERENCED_RECONSTRUCTION",
+        "source": "master/source/town_v165/lamp-generated.png",
+        "nativeCanvas": [
+          27,
+          130
+        ],
+        "anchorPreserved": true,
+        "sha256": "88ddc8d8199564dcae3e803dfa0b681cc69bceb7f888b2fd9844c594a08bd8a1"
+      }
     },
     {
       "id": "bench_front_up",

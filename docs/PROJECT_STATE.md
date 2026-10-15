@@ -1,3 +1,9 @@
+## 2026-10-15 — V165 user lamp correction and town polish
+
+User corrected request2026-10-15 22:06 KST: STREETLAMPS, not trees. V165 changes no tree pixels. Five lamp sprites from2retained generated reference repairs preserve original native canvas/anchor; source and before bytes retained under master/source/town_v165. Source metadata reference.json.
+
+Implementation and new focused tests ready; native/APK pending. Resume docs/TOWN_V165_CHECKPOINT.md. No tree changes.
+
 ## 2026-10-15 — V164 final common PR success and file delivery
 
 Exact runtime/APK source e834b49e43c0932374dbd52a8f82ccee939a8f07 passed full common PR Actions38720772628/job116374474313: COMPLETED/SUCCESS,26successful Gradle invocations; decoded logs confirm exact source,0error annotations. This supersedes earlier common-PR-pending notes. Focused38720764643 remains80tests/12suites/0failure/error/skip;33native frames reviewed. Exact APK built19:36:36 KST/SHA256ec9070cb5c79385bcb0d7d4dffb9d7af53350201b17db56b4e116be2c11e038a and3native screenshots plusverification saved successfully (APK libfile_f49d6fef6c3081919a351a2d66a84da9); previous attachment-failed note is superseded for this delivery. IMPLEMENTED/BUILD VERIFIED/HOST ANDROID NATIVE VERIFIED. Physical-phone and user visual acceptance remain PENDING; separate v164test package; main unmerged. Receipt master/changes/V164_BUILD_RUNTIME_RECEIPT.json. No regenerated artwork or new runtime changes in this documentation closure.

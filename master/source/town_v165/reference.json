@@ -1,0 +1,13 @@
+{
+  "status": "NEXON_HOSTED_COMMUNITY_REFERENCE_NOT_OFFICIAL_ART",
+  "page": "https://lod.nexon.com/community/screenshot/128673",
+  "image": "https://storage.nexon.com/Data02/NX_File/4/2/000/00/02/3611966070283307870.bmp",
+  "retrieved": "2026-10-15",
+  "reference": "abel-original.png",
+  "sha256": "928e6798001bc87fe1fbdda7d89ca81cc0c7b25d8a0a1fa8c394c79ee13e7bfa",
+  "generatedRepairs": [
+    "lamp-generated.png",
+    "banner-lamp-generated.png"
+  ],
+  "userCorrection": "2026-10-15 22:06 KST: streetLAMPS, not trees. No tree changes in V165."
+}

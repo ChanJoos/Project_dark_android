@@ -660,7 +660,7 @@ public final class GameView extends View {
     for(RuntimeState.Npc n:state.npcs())if(forestVisible(n.x,n.y,72))actors.add(poteActor(c,n.x,n.y,58,()->drawNpc(c,n)));
     for(RuntimeState.Monster m:state.monsters())if(m.alive&&forestVisible(m.x,m.y,PoteForestMonsterShowcase.bodyHeight(m.id)))actors.add(poteActor(c,m.x,m.y,PoteForestMonsterShowcase.bodyHeight(m.id),()->drawMonster(c,m)));
     actors.add(poteActor(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),52,()->drawCharacter(c)));
-    if(com.projectdark.mobile.world.RucesionTownGeometry.contains(state.currentMapId()))rucesionTownRenderer.draw(c,poteFieldAdapter,actors);else if(com.projectdark.mobile.world.AbelTownGeometry.contains(state.currentMapId()))abelTownRenderer.draw(c,poteFieldAdapter,actors);else poteFieldRenderer.drawScene(c,poteFieldAdapter,actors);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();
+    if(com.projectdark.mobile.world.RucesionTownGeometry.contains(state.currentMapId()))rucesionTownRenderer.draw(c,poteFieldAdapter,actors);else if(com.projectdark.mobile.world.AbelTownGeometry.contains(state.currentMapId()))abelTownRenderer.draw(c,poteFieldAdapter,actors);else poteFieldRenderer.drawScene(c,poteFieldAdapter,actors);TownServiceLabels.draw(c,state.currentMapId(),camera.cameraX(),camera.cameraY(),logicalViewportWidth,H);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();
   }
   private com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw poteActor(Canvas c,float x,float y,float height,Runnable draw){
     return new com.projectdark.mobile.world.PoteFieldRenderer.ActorDraw(x,y,height,height>100f?height:32f,()->{c.save();c.translate(-camera.cameraX(),-camera.cameraY());draw.run();c.restore();});
@@ -672,6 +672,7 @@ public final class GameView extends View {
     for(RuntimeState.Monster m:state.monsters())if(m.alive)actors.add(millesDepth(c,m.y,()->drawMonster(c,m)));
     actors.add(millesDepth(c,worldAdapter.presentationPlayerY(),()->drawCharacter(c)));
     mapRenderer.draw(c,worldAdapter,actors);
+    TownServiceLabels.draw(c,state.currentMapId(),camera.cameraX(),camera.cameraY(),logicalViewportWidth,H);
   }
   private AdaptedMillesMapRenderer.DepthDraw millesDepth(Canvas c,float y,Runnable draw){
     return new AdaptedMillesMapRenderer.DepthDraw(y,()->{c.save();c.translate(-camera.cameraX(),-camera.cameraY());draw.run();c.restore();});

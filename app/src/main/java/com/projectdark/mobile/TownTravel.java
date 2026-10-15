@@ -8,13 +8,13 @@ public final class TownTravel {
   Destination(String map,String npc,String title){this.map=map;this.npc=npc;this.title=title;}
  }
  public static final List<Destination> TOWNS=Collections.unmodifiableList(Arrays.asList(
-  new Destination(WorldDef.ID,"pote_travel_guide","밀레스"),
-  new Destination(CampaignWorld.PIET,"piet_town_travel","피에트 거점"),
-  new Destination(AbelTownGeometry.ID,"abel_town_travel","아벨"),
-  new Destination(RucesionTownGeometry.ID,"rucesion_town_travel","뤼케시온")));
- public static boolean isManager(String npc){for(Destination d:TOWNS)if(d.npc.equals(npc))return true;return false;}
+  new Destination(WorldDef.ID,"pote_travel_guide","밀레스 마을"),
+  new Destination(AbelTownGeometry.ID,"abel_town_travel","아벨 마을"),
+  new Destination(RucesionTownGeometry.ID,"rucesion_town_travel","뤼케시온 마을")));
+ private static final Destination LEGACY_PIET=new Destination(CampaignWorld.PIET,"piet_town_travel","피에트 거점");
+ public static boolean isManager(String npc){if(LEGACY_PIET.npc.equals(npc))return true;for(Destination d:TOWNS)if(d.npc.equals(npc))return true;return false;}
  public static boolean isTown(String map){return forMap(map)!=null;}
- public static Destination forMap(String map){map=AbelTownGeometry.canonical(map);for(Destination d:TOWNS)if(d.map.equals(map))return d;return null;}
+ public static Destination forMap(String map){map=AbelTownGeometry.canonical(map);if(LEGACY_PIET.map.equals(map))return LEGACY_PIET;for(Destination d:TOWNS)if(d.map.equals(map))return d;return null;}
  public static boolean canDepart(String map,String npc){Destination d=forMap(map);return d!=null&&d.npc.equals(npc);}
  public static WorldMoveTargetController.TileCenter center(String map){
   if(WorldDef.ID.equals(map))return new WorldMoveTargetController.TileCenter(512,544);
