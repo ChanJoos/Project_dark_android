@@ -1,0 +1,272 @@
+{
+  "status": "STATIC_VERIFIED_ANDROID_PENDING",
+  "uniqueLoadedAssetFamilies": 29,
+  "placementsBefore": 372,
+  "placementsAfter": 350,
+  "assets": [
+    {
+      "asset": "app/src/main/assets/abel-video-v147/bench_back_down.png",
+      "size": [
+        65,
+        55
+      ],
+      "sha256": "83ef7412e28080a1fa0464263a498181541cb721b876c8aaf868690d9a979a9c",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/bench_back_up.png",
+      "size": [
+        65,
+        62
+      ],
+      "sha256": "d5ff22b3137ac9b935768144113e7c1b579c6cb1152cebcd64961a8b3b88c0fb",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/bench_front_down.png",
+      "size": [
+        62,
+        67
+      ],
+      "sha256": "65e24f9c53fb1c33881daad52aab455d451601f95de53a5519ecea6d9b078b6f",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/bench_front_up.png",
+      "size": [
+        69,
+        75
+      ],
+      "sha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/bench_pool.png",
+      "size": [
+        69,
+        75
+      ],
+      "sha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/building_awning_corner_complete.png",
+      "size": [
+        328,
+        226
+      ],
+      "sha256": "4240df23e54b995fa6564bba9d466e4775f718c62f48d933e0b2b71ed3db98e7",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/building_two_storey_complete.png",
+      "size": [
+        232,
+        246
+      ],
+      "sha256": "64d9797b850fc96b5bdaf8cb773d15f75e5ddf2b727c8e0dac840b300c75d66e",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/flowerbed_orange.png",
+      "size": [
+        182,
+        109
+      ],
+      "sha256": "0240a6de2ca091fd99dbf88947fb7c46b946df9bf24456ae1b9359143219a620",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/fountain_complete.png",
+      "size": [
+        126,
+        161
+      ],
+      "sha256": "7c9580b9d990ff5e7f930142c367b804f8f921f38ee7c69a7c116f4ff925254b",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/lamp.png",
+      "size": [
+        23,
+        120
+      ],
+      "sha256": "4ca3718420598bcf8805146c3d12b8c4f2953a2866ab2b6232332538fad3593e",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/lamp_banner_complete.png",
+      "size": [
+        66,
+        140
+      ],
+      "sha256": "8c92a2677a8448772d17347d3c5bb16c3edb63bffc1ba44d3c9495fca3ef9f30",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/lamp_main.png",
+      "size": [
+        27,
+        130
+      ],
+      "sha256": "cb30f3f6ff067f003bc33acbf82e7ad7128f0db2cec0de362ddad2ef71d99645",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/rail_down_clean.png",
+      "size": [
+        39,
+        54
+      ],
+      "sha256": "923349134079b7431b776a67430dd5be21449f771dd9e2aa077a3af58a2be48f",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/rail_up_clean.png",
+      "size": [
+        39,
+        54
+      ],
+      "sha256": "f5b027050e2815c300aeaa9a9040717a30eb58b268c838ec6a1fd7b8d91d8652",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/rowing_boat_complete.png",
+      "size": [
+        181,
+        128
+      ],
+      "sha256": "1bf95175a9c679322df7b12b3abe53a81f85e9b084b19aea94face4547f6cdf3",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/sailing_ship_complete.png",
+      "size": [
+        398,
+        334
+      ],
+      "sha256": "3585c3a322270627dfd188c5e89473d9fd4dc2a9fb6185188b9427c0ab305770",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/signpost_complete.png",
+      "size": [
+        47,
+        52
+      ],
+      "sha256": "2d8f69bb3147174cb9fcf705ece43ae246e1ee242543cbbf17605e9bca8d6ba3",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/abel-video-v147/tree_broadleaf.png",
+      "size": [
+        72,
+        119
+      ],
+      "sha256": "cd38bf5c952f6f94324af4698e8a3534f49f8f3ec0edc522875379ff02a0defa",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/bench_front_up.png",
+      "size": [
+        69,
+        75
+      ],
+      "sha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/building_blue_hall.png",
+      "size": [
+        427,
+        412
+      ],
+      "sha256": "a272476d1cfebdecb67e6628600c72a075ec699bcdd79559617fa8afa9314dbc",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/building_blue_house.png",
+      "size": [
+        190,
+        216
+      ],
+      "sha256": "9878a5515b09579ae216e6c223d33d7a5ee913c37d7b141d93a777b23c948e03",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/building_yellow_shop.png",
+      "size": [
+        298,
+        275
+      ],
+      "sha256": "6960f624ec39d085a75eec1c0c4fd45e05f14e89d44e26080a21164b29a1059f",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/flowerbed_orange.png",
+      "size": [
+        182,
+        109
+      ],
+      "sha256": "39594a89000e9b63ef8e3d74e1400051c3208d4af89b9abf309064b5e9dde67b",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/lamp_main.png",
+      "size": [
+        27,
+        130
+      ],
+      "sha256": "076570b60b26abf5e5b91369aea4dadfd96cb2a6d99bfea507428157910572a7",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/pergola_garden.png",
+      "size": [
+        243,
+        232
+      ],
+      "sha256": "5094ef718f0e74045e0c033ea20732acd8c18f55abaf9bf0ebcd0a5efc304512",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/rail_down_clean.png",
+      "size": [
+        39,
+        54
+      ],
+      "sha256": "e8ea9008628037733c4da1a3a9c567ffa3f830aa5f9577511b29f119bc563336",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/rail_up_clean.png",
+      "size": [
+        39,
+        54
+      ],
+      "sha256": "bb3b952a1e2a58831e5d0ad086dc8f2f192995f64fb4e2c3768e166457d11a25",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/rowing_boat.png",
+      "size": [
+        197,
+        131
+      ],
+      "sha256": "160cc17dd5c0c854c7915a5c2c2141f0ab9ee49cfacc15ec99ef4cbd6f90091a",
+      "review": "RETAINED_EXISTING_REGISTERED_ASSET"
+    },
+    {
+      "asset": "app/src/main/assets/rucesion-v154/tree_broadleaf.png",
+      "size": [
+        82,
+        125
+      ],
+      "sha256": "7f17192686462210c6c49211155db0fab5fdf27ecd39e3d444f86e3e087ae85c",
+      "review": "REPAIRED_NATIVE_SPRITE"
+    }
+  ],
+  "projectionRepeat": "BYTE_IDENTICAL_GIT_DIFF_EMPTY",
+  "originalObservations": "UNCHANGED",
+  "githubPublication": "BLOCKED_AUTO_APPROVAL_REQUIRES_EXPLICIT_DESTINATION_AND_PAYLOAD"
+}

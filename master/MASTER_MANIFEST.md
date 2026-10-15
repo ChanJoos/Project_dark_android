@@ -1,3 +1,7 @@
+## 2026-10-15 — V164 town quality candidate in progress
+
+Root single editor on PR197/codex/rucesion-coast-v157; main41fe6def unchanged. User visual report: broken Abel/Rucesion props and poor travel UI.10native tree/pergola/bench sprite repairs from4retained built-in image_gen outputs; original canvases/anchors and all source snapshots preserved.22crowded ADAPTED garden trees removed;350props remain. Current town omitted from centered four-card menu, shared visible hit geometry, existing travel/save/hunting authority retained. Contract master/changes/TOWN_QUALITY_V164.json and checkpoint docs/TOWN_V164_CHECKPOINT.md. IMPLEMENTED; Android build/native/user visual acceptance PENDING. No new APK delivered yet. Last V163 exact-source common run38684858042 SUCCESS confirmed live.
+
 ## 2026-10-15 — V162 original Pong palettes and live curse colors verified; delivery ready
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED. APK source `6f3ac7b900299330b7e15c1d374f3d56048c86db`; focused Actions38664473610/job116193095024 SUCCESS:128tests/19suites,0failures/errors/skips. Actual GameView inn scene plus standalone mouse,23coast species×4directions×3poses, hit overlap,10catalog curses, stronger/weak dispel, expiry/respawn/fresh-map lifetime and independent normal/curse material samples pass. Common PR38664479830/job116193114075 and push38664473609/job116193094457 SUCCESS; exact source decoded logs checked,26successful Gradle invocations each.

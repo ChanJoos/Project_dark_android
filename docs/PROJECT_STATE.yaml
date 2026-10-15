@@ -1,3 +1,13 @@
+town_quality_v164:
+  status: IMPLEMENTED_STATIC_VERIFIED_PUSH_BLOCKED_APPROVAL_REQUIRED
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  checkpoint: docs/TOWN_V164_CHECKPOINT.md
+  contract: master/changes/TOWN_QUALITY_V164.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, app/src/main/assets/abel-video-v147/layout.json, app/src/main/assets/rucesion-v154/layout.json]
+
 coast_source_pairs_v159:
   runtime_source_sha: 615bbd278c93168b7e5f11d8145e94c9ca4f7d6a
   focused_run: 38613954729

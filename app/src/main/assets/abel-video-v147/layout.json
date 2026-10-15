@@ -846,7 +846,18 @@
         50,
         62,
         63
-      ]
+      ],
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/bench_front.png",
+        "sha256": "65e24f9c53fb1c33881daad52aab455d451601f95de53a5519ecea6d9b078b6f",
+        "nativeCanvas": [
+          62,
+          67
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "bench_front_up",
@@ -996,7 +1007,18 @@
         60,
         69,
         71
-      ]
+      ],
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/bench_front.png",
+        "sha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13",
+        "nativeCanvas": [
+          69,
+          75
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "bench_back_up",
@@ -1138,7 +1160,18 @@
         50,
         65,
         58
-      ]
+      ],
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/bench_back.png",
+        "sha256": "d5ff22b3137ac9b935768144113e7c1b579c6cb1152cebcd64961a8b3b88c0fb",
+        "nativeCanvas": [
+          65,
+          62
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "bench_back_down",
@@ -1284,7 +1317,18 @@
         43,
         65,
         51
-      ]
+      ],
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/bench_back.png",
+        "sha256": "83ef7412e28080a1fa0464263a498181541cb721b876c8aaf868690d9a979a9c",
+        "nativeCanvas": [
+          65,
+          55
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "signpost",
@@ -2588,7 +2632,18 @@
         60,
         69,
         71
-      ]
+      ],
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/bench_front.png",
+        "sha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13",
+        "nativeCanvas": [
+          69,
+          75
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "lamp_pool",
@@ -3324,7 +3379,18 @@
         490,
         678,
         609
-      ]
+      ],
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/tree.png",
+        "sha256": "cd38bf5c952f6f94324af4698e8a3534f49f8f3ec0edc522875379ff02a0defa",
+        "nativeCanvas": [
+          72,
+          119
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "rowing_boat_complete",
@@ -6379,26 +6445,6 @@
           "sourceParent": "tree_slender"
         },
         {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            342.5,
-            390.75
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 2,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_mass"
-        },
-        {
           "asset": "building_awning_corner_complete",
           "scene": "main",
           "sourceWorld": [
@@ -6442,48 +6488,8 @@
           "asset": "tree_broadleaf",
           "scene": "main",
           "sourceWorld": [
-            370.5,
-            404.75
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 2,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_mass"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
             398.5,
             418.75
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 2,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_mass"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            356.5,
-            432.75
           ],
           "anchor": [
             39,
@@ -6537,46 +6543,6 @@
           "matchError": 0.034539,
           "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
           "sourceParent": "tree_slender"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            -226.51,
-            499.72
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            -198.51,
-            513.72
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "tree_broadleaf",
@@ -6773,26 +6739,6 @@
           "sourceParent": "tree_slender"
         },
         {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            462,
-            735
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
           "asset": "lamp_banner_complete",
           "scene": "main",
           "sourceWorld": [
@@ -6877,46 +6823,6 @@
           "sourceWorld": [
             658,
             833
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            14,
-            847
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            686,
-            847
           ],
           "anchor": [
             39,
@@ -7085,26 +6991,6 @@
           "sourceFrame": 17,
           "matchError": 0.01537,
           "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            910,
-            959
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "flowerbed_orange",
@@ -7343,26 +7229,6 @@
           "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS"
         },
         {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            686,
-            1071
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
           "asset": "lamp_main",
           "scene": "main",
           "sourceWorld": [
@@ -7407,26 +7273,6 @@
           "sourceWorld": [
             994,
             1113
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            1022,
-            1127
           ],
           "anchor": [
             39,
@@ -7577,26 +7423,6 @@
           "matchError": 0.0,
           "evidence": "ADAPTED_SOURCE_RAIL_INTERVAL_WITHOUT_SCREENSHOT_BACKGROUND",
           "sourceParent": "rail_down"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            -658,
-            1183
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "rail_down_clean",
@@ -7877,46 +7703,6 @@
           "sourceParent": "garden_tree_pair"
         },
         {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            -882,
-            1295
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            1134,
-            1295
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
           "asset": "flowerbed_orange",
           "scene": "east",
           "sourceWorld": [
@@ -8059,26 +7845,6 @@
           "sourceDistrict": "east"
         },
         {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            574,
-            1351
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
           "asset": "flowerbed_orange",
           "scene": "east",
           "sourceWorld": [
@@ -8104,26 +7870,6 @@
           "sourceWorld": [
             -1358,
             1393
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            -1330,
-            1407
           ],
           "anchor": [
             39,
@@ -8342,26 +8088,6 @@
           "evidence": "ADAPTED_CONTINUOUS_OBSERVED_RAIL_RUN_SOURCE_INTERVAL_REUSE",
           "sourceDistrict": "east",
           "sourceParent": "rail_up"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            -994,
-            1463
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
         },
         {
           "asset": "rail_up_clean",
@@ -9083,26 +8809,6 @@
           "sourceParent": "pool_rail_down"
         },
         {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            -882,
-            1631
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
           "asset": "fountain_complete",
           "scene": "east",
           "sourceWorld": [
@@ -9348,48 +9054,6 @@
           "sourceParent": "garden_foreground_grove"
         },
         {
-          "asset": "tree_broadleaf",
-          "scene": "east",
-          "sourceWorld": [
-            -573.0,
-            1701.01
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 28,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceDistrict": "east",
-          "sourceParent": "garden_foreground_grove"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "east",
-          "sourceWorld": [
-            -517.0,
-            1701.01
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 28,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceDistrict": "east",
-          "sourceParent": "garden_foreground_grove"
-        },
-        {
           "asset": "lamp_main",
           "scene": "east",
           "sourceWorld": [
@@ -9415,27 +9079,6 @@
           "sourceWorld": [
             -489.0,
             1715.01
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 28,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceDistrict": "east",
-          "sourceParent": "garden_foreground_grove"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "east",
-          "sourceWorld": [
-            -531.0,
-            1729.01
           ],
           "anchor": [
             39,
@@ -9562,26 +9205,6 @@
           "sourceWorld": [
             658,
             1841
-          ],
-          "anchor": [
-            39,
-            112
-          ],
-          "nativeSize": [
-            72,
-            119
-          ],
-          "sourceFrame": 5,
-          "matchError": 0.0,
-          "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
-          "sourceParent": "garden_tree_pair"
-        },
-        {
-          "asset": "tree_broadleaf",
-          "scene": "main",
-          "sourceWorld": [
-            686,
-            1855
           ],
           "anchor": [
             39,

@@ -110,7 +110,18 @@
         490,
         988,
         615
-      ]
+      ],
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/tree.png",
+        "sha256": "7f17192686462210c6c49211155db0fab5fdf27ecd39e3d444f86e3e087ae85c",
+        "nativeCanvas": [
+          82,
+          125
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "building_blue_hall",
@@ -162,7 +173,18 @@
         224
       ],
       "status": "SOURCE_RGB_SEPARATE_PERGOLA_GARDEN",
-      "sha256": "8c3bf0d235393980092c02544cd0b0deadfc607e2c1495405d74ecaac20bcce5"
+      "sha256": "8c3bf0d235393980092c02544cd0b0deadfc607e2c1495405d74ecaac20bcce5",
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/pergola.png",
+        "sha256": "5094ef718f0e74045e0c033ea20732acd8c18f55abaf9bf0ebcd0a5efc304512",
+        "nativeCanvas": [
+          243,
+          232
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "tile_white",
@@ -305,7 +327,18 @@
         71
       ],
       "status": "REUSED_ISOLATED_SOURCE_MODULE",
-      "sha256": "a8d46cab5f7d1b7604312aa8d36e56fcbb523051db526886a01ec08f057d7529"
+      "sha256": "a8d46cab5f7d1b7604312aa8d36e56fcbb523051db526886a01ec08f057d7529",
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/bench_front.png",
+        "sha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13",
+        "nativeCanvas": [
+          69,
+          75
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "bench_front_down",
@@ -318,7 +351,18 @@
         63
       ],
       "status": "REUSED_ISOLATED_SOURCE_MODULE",
-      "sha256": "c9c24c71d2ccd4d2671a1d904a50ebad1d69300566006d31b352254728b24afa"
+      "sha256": "c9c24c71d2ccd4d2671a1d904a50ebad1d69300566006d31b352254728b24afa",
+      "runtimeRepairV164": {
+        "status": "ADAPTED_GENERATED_REPAIR",
+        "source": "master/source/town_v164/generated/bench_front.png",
+        "sha256": "65e24f9c53fb1c33881daad52aab455d451601f95de53a5519ecea6d9b078b6f",
+        "nativeCanvas": [
+          62,
+          67
+        ],
+        "anchorPreserved": true,
+        "method": "alpha128 crop;Lanczos native sizing;binary alpha;mirror only down-facing bench"
+      }
     },
     {
       "id": "rail_up_clean",

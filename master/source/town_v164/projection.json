@@ -1,0 +1,502 @@
+{
+  "status": "ADAPTED_GENERATED_REPAIR",
+  "assets": [
+    {
+      "file": "app/src/main/assets/abel-video-v147/tree_broadleaf.png",
+      "beforeSha256": "fb18a71fe59577f7c9adffdd6518c528799bcb1896847af3beacac44175cca8b",
+      "afterSha256": "cd38bf5c952f6f94324af4698e8a3534f49f8f3ec0edc522875379ff02a0defa"
+    },
+    {
+      "file": "app/src/main/assets/abel-video-v147/bench_front_up.png",
+      "beforeSha256": "7debc53a7479710070cf0d402a0446daeae43668dd9e332c925761d789c7083c",
+      "afterSha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13"
+    },
+    {
+      "file": "app/src/main/assets/abel-video-v147/bench_front_down.png",
+      "beforeSha256": "e17b760eca94af18af39150bc6d80cb96be7db72e91aee7f28016d28f5a239d4",
+      "afterSha256": "65e24f9c53fb1c33881daad52aab455d451601f95de53a5519ecea6d9b078b6f"
+    },
+    {
+      "file": "app/src/main/assets/abel-video-v147/bench_back_up.png",
+      "beforeSha256": "dd76295165cf4cf38f54eb50ab0084d19b91511ec82a19c4bc07410cc28d5192",
+      "afterSha256": "d5ff22b3137ac9b935768144113e7c1b579c6cb1152cebcd64961a8b3b88c0fb"
+    },
+    {
+      "file": "app/src/main/assets/abel-video-v147/bench_back_down.png",
+      "beforeSha256": "56baf99f16bf2329e1ca2503959e06af8301c21c4d8b39d8a90850783bd9a744",
+      "afterSha256": "83ef7412e28080a1fa0464263a498181541cb721b876c8aaf868690d9a979a9c"
+    },
+    {
+      "file": "app/src/main/assets/abel-video-v147/bench_pool.png",
+      "beforeSha256": "7debc53a7479710070cf0d402a0446daeae43668dd9e332c925761d789c7083c",
+      "afterSha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13"
+    },
+    {
+      "file": "app/src/main/assets/rucesion-v154/tree_broadleaf.png",
+      "beforeSha256": "2318bad2e32b50a8dd20f3a416951c04e219d10b9ddd8bd14b1f523726d1ade3",
+      "afterSha256": "7f17192686462210c6c49211155db0fab5fdf27ecd39e3d444f86e3e087ae85c"
+    },
+    {
+      "file": "app/src/main/assets/rucesion-v154/pergola_garden.png",
+      "beforeSha256": "8c3bf0d235393980092c02544cd0b0deadfc607e2c1495405d74ecaac20bcce5",
+      "afterSha256": "5094ef718f0e74045e0c033ea20732acd8c18f55abaf9bf0ebcd0a5efc304512"
+    },
+    {
+      "file": "app/src/main/assets/rucesion-v154/bench_front_up.png",
+      "beforeSha256": "a8d46cab5f7d1b7604312aa8d36e56fcbb523051db526886a01ec08f057d7529",
+      "afterSha256": "77ad908bbc0cee3c953ef2ae713d882c683c10b52364945cff20191c66a74e13"
+    },
+    {
+      "file": "app/src/main/assets/rucesion-v154/bench_front_down.png",
+      "beforeSha256": "c9c24c71d2ccd4d2671a1d904a50ebad1d69300566006d31b352254728b24afa",
+      "afterSha256": "65e24f9c53fb1c33881daad52aab455d451601f95de53a5519ecea6d9b078b6f"
+    }
+  ],
+  "removedCrowdedAdaptedTrees": [
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        342.5,
+        390.75
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 2,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_mass"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        370.5,
+        404.75
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 2,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_mass"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        356.5,
+        432.75
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 2,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_mass"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        -226.51,
+        499.72
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        -198.51,
+        513.72
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        462,
+        735
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        14,
+        847
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        686,
+        847
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        910,
+        959
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        686,
+        1071
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        1022,
+        1127
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        -658,
+        1183
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        -882,
+        1295
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        1134,
+        1295
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        574,
+        1351
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        -1330,
+        1407
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        -994,
+        1463
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        -882,
+        1631
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "east",
+      "sourceWorld": [
+        -573.0,
+        1701.01
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 28,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceDistrict": "east",
+      "sourceParent": "garden_foreground_grove"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "east",
+      "sourceWorld": [
+        -517.0,
+        1701.01
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 28,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceDistrict": "east",
+      "sourceParent": "garden_foreground_grove"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "east",
+      "sourceWorld": [
+        -531.0,
+        1729.01
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 28,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceDistrict": "east",
+      "sourceParent": "garden_foreground_grove"
+    },
+    {
+      "asset": "tree_broadleaf",
+      "scene": "main",
+      "sourceWorld": [
+        686,
+        1855
+      ],
+      "anchor": [
+        39,
+        112
+      ],
+      "nativeSize": [
+        72,
+        119
+      ],
+      "sourceFrame": 5,
+      "matchError": 0.0,
+      "evidence": "RECOVERED_APPROVED_ADAPTED_SPRITE_ATLAS",
+      "sourceParent": "garden_tree_pair"
+    }
+  ],
+  "sourceScenesUnchanged": true,
+  "remainingAbelProps": 144
+}
