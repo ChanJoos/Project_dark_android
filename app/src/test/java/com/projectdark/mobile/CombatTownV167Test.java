@@ -81,6 +81,12 @@ public class CombatTownV167Test {
    assertTrue(id,r>l);assertEquals(id,600,(l+r)*.5f,5f);assertEquals(id,600,(t+b)*.5f,5f);image.recycle();
   }
  }
+ @Test public void identicalSourceWeaponsShareCombatAndBodyMotionAcrossItemIds(){
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);EquipmentActionResolver resolver=new EquipmentActionResolver();
+  for(String id:new String[]{"IT_TEST_WEAPON_MW002","IT_B_JOB_ROGUE_WEAPON","IT_B_CAMPAIGN_TOOL_ROGUE_41","IT_B_JOB_MAGE_WAND","IT_B_JOB_CLERIC_WAND"}){
+   r.unequip("무기");assertEquals(id,RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));assertEquals(id,AnimationAction.THRUST,resolver.resolveBasicAttack(r).animationAction);assertEquals(id,"THRUST",WeaponCombatProfile.motion(r,"SWING"));
+  }
+ }
  @Test public void inventoryAuditRecordsPendingPerformanceRatherThanPassingEmptyOptions()throws Exception{
   RpgProgressionState r=new RpgProgressionState();JSONArray rows=new JSONArray();for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.equippable())rows.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("slot",d.equipSlot).put("stats",new JSONObject(d.statModifiers)).put("jobRestrictionResolved",d.jobRestrictionResolved).put("grip",WeaponCombatProfile.grip(d).name()).put("evidence",d.evidence.name()).put("performancePending",d.statModifiers.isEmpty()));
   File dir=new File("build/reports/combat-town-v167");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all-equipment-audit.json").toPath(),rows.toString(2).getBytes("UTF-8"));assertTrue(rows.length()>100);

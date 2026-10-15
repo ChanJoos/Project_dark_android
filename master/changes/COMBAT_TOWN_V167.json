@@ -22,7 +22,8 @@
     "12 later campaign weapons keep existing8-8 fallback but now expose attack range; all68 weapons audited",
     "41 exact armour class joins and64 explicitly adapted town palette base-option joins; other unknown source options remain pending",
     "Abel arrival separated64-120worldpx from manager",
-    "Captured finisher union centred at recipient instead of directional source pivot"
+    "Captured finisher union centred at recipient instead of directional source pivot",
+    "Epe and established Mage/Cleric wand aliases use the same existing THRUST semantics by source appearance (mw002,mw024,mw008), rather than choosing SWING for test items and THRUST for class versions. Explicit skills still override weapon semantics."
   ],
   "unchangedOriginalFacts": [
     "No fabricated missing equipment stats/jobs",
