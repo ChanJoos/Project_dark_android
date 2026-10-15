@@ -1,11 +1,6 @@
 name: V163 remaining common regressions on unchanged APK runtime
 'on':
-  push:
-    branches:
-    - codex/rucesion-coast-v157
-    paths:
-    - app/src/test/java/com/projectdark/mobile/AbelCoastV139Test.java
-    - .github/workflows/v163-regression-tail.yml
+  # Historical source1a continuation: run manually at that historical ref only.
   workflow_dispatch: {}
 permissions:
   contents: read

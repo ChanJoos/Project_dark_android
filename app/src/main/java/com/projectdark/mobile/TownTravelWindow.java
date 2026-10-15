@@ -1,7 +1,6 @@
 package com.projectdark.mobile;
 
 import android.graphics.*;
-import com.projectdark.mobile.world.WorldDef;
 import java.util.*;
 
 /** Town travel presentation and shared hit geometry; destination authority stays in TownTravel. */
