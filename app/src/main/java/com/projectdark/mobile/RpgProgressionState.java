@@ -561,6 +561,8 @@ public final class RpgProgressionState {
       if(count>owned.get(d.itemId))return false;
     }
     Map<String,Integer> ownCopy=new LinkedHashMap<>(owned);Map<String,String> equipCopy=new LinkedHashMap<>(equipped);
+    // Normalize a legacy two-hand + shield save; ownership is never removed.
+    if(WeaponCombatProfile.grip(items.get(equipCopy.get(WEAPON_SLOT)))==WeaponCombatProfile.Grip.TWO_HAND)equipCopy.remove(SHIELD_SLOT);
     inventory.clear();inventory.putAll(ownCopy);
     equipmentBySlot.clear();equipmentBySlot.putAll(equipCopy);
     return true;

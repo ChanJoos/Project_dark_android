@@ -5,6 +5,7 @@ import android.graphics.*;
 final class MobileHudArtwork {
  private static Bitmap atlas;
  private static SourceItemIconRegistry potionIcons;
+ private static final Paint potionPaint=new Paint();
  private static final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
  static void install(Context context){
   if(potionIcons==null)potionIcons=new SourceItemIconRegistry(context);
@@ -21,6 +22,6 @@ final class MobileHudArtwork {
   if(potionIcons==null)return false;
   Bitmap icon=potionIcons.get(hp?"IT_REAGENT_CURUM":"IT_B_MP_POTION");
   if(icon==null)return false;
-  p.setAlpha(255);p.setColorFilter(null);SourceItemIconRegistry.draw(c,icon,new RectF(x-16,y-16,x+16,y+16),p);return true;
+  potionPaint.setAlpha(255);potionPaint.setColorFilter(null);SourceItemIconRegistry.draw(c,icon,new RectF(x-16,y-16,x+16,y+16),potionPaint);return true;
  }
 }
