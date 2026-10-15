@@ -1,0 +1,97 @@
+name: V163 remaining common regressions on unchanged APK runtime
+'on':
+  push:
+    branches:
+    - codex/rucesion-coast-v157
+    paths:
+    - app/src/test/java/com/projectdark/mobile/AbelCoastV139Test.java
+    - .github/workflows/v163-regression-tail.yml
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+    - name: Install reproducible Abel sprite extraction dependencies
+      run: pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
+    - name: Recover starter gear source manifests
+      run: "python3 tools/collect_peasant_sources.py\npython3 - <<'PY'\nimport json, pathlib, sys\nrows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())\nneed={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010','mu0000001','mu0000002','mu0000003'}\n\
+        got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}\nmissing=need-got\nprint('SOURCE_REGISTRATION_FETCHED',sorted(got & need))\nprint('SOURCE_REGISTRATION_MISSING',sorted(missing))\n\
+        if missing:\n    sys.exit(23)\nPY\nmkdir -p app/src/main/assets/source-registration\ncp qa/peasant-sources/data/type/body/mm001.json app/src/main/assets/source-registration/mm001.json\ncp qa/peasant-sources/data/type/shoes/ml228.json\
+        \ app/src/main/assets/source-registration/ml228.json\ncp qa/peasant-sources/data/type/shield/ms001.json app/src/main/assets/source-registration/ms001.json\ncp qa/peasant-sources/data/type/hair/mh172.json\
+        \ app/src/main/assets/source-registration/mh172.json\ncp qa/peasant-sources/atlas/shoes/ml228.webp app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp\ncp qa/peasant-sources/atlas/shield/ms001.webp\
+        \ app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp\ncp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp\npython3 - <<'PY'\nfrom\
+        \ pathlib import Path\nimport shutil\nspecs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010'],'armor':['mu0000001','mu0000002','mu0000003']}\n\
+        assets=Path('app/src/main/assets/source-registration'); draw=Path('app/src/main/res/drawable-nodpi')\nfor kind, ids in specs.items():\n    for ident in ids:\n        shutil.copy(Path('qa/peasant-sources/data/type')/kind/(ident+'.json'),\
+        \ assets/(ident+'.json'))\n        shutil.copy(Path('qa/peasant-sources/atlas')/kind/(ident+'.webp'), draw/('equip_'+ident+'_source.webp'))\nPY\npython3 - <<'PY'\nimport json\nfrom pathlib import\
+        \ Path\nfor ident in ('mm001','mu0000001','ml228','ms001','mh172'):\n    p=Path('qa/peasant-sources/data/type')\n    found=list(p.glob('*/'+ident+'.json'))\n    if not found: continue\n    d=json.loads(found[0].read_text())\n\
+        \    print('META',ident,{k:v for k,v in d.items() if k!='sprites'})\nfor ident in ('mm001','mu0000001'):\n    found=list(Path('qa/peasant-sources/data/type').glob('*/'+ident+'.json'))\n    d=json.loads(found[0].read_text())\n\
+        \    for g in ('01','02','03','b','c','d','e','f'):\n        if g in d['sprites']: print('BASE_REG',ident,g,d['sprites'][g][:12])\nPY\npython3 - <<'PY'\nimport json, pathlib\nfor ident in ('ml228','ms001','mh172'):\n\
+        \    p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')\n    d=json.loads(p.read_text())\n    sprites=d['sprites']\n    print('REG_MANIFEST',ident,'count',len(sprites))\n\
+        \    for k in list(sprites)[:12]:\n        print('REG',ident,k,sprites[k])\nPY\n"
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+    - uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: 8.11.1
+    - name: Prepare Android SDK
+      run: 'SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+
+        yes | "$SDKMANAGER" --licenses >/dev/null || true
+
+        "$SDKMANAGER" ''platforms;android-35'' ''build-tools;35.0.0''
+
+        '
+    - name: Validate Master DB
+      run: python tools/validate_master.py
+    - name: Verify runtime equals delivered source1a711724
+      run: git diff --exit-code 1a7117248e7c8d65910d70706b1057909f61d015 HEAD -- app/src/main app/build.gradle assets master/assets
+    - name: Render and test POTE production forest and A/B/C/D campaign
+      run: 'gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteVisualReviewTest --stacktrace
+
+        gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest
+        --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.AbelCoastV139Test --tests com.projectdark.mobile.CampaignNavigationTest --tests com.projectdark.mobile.CampaignProgressTest
+        --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest
+        --stacktrace
+
+        '
+    - name: Execute 4-way BODY robe mokdo visual contract audit
+      run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.PlayerFourWayVisualContractAudit
+    - name: Milddok ingestion identity audit
+      run: python master/tools/audit_milddok_ingestion.py
+    - name: Execute Combat v3 FinalStats pipeline audit
+      run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.CombatV3PipelineAudit
+    - name: Execute Growth Core v3 and FinalStats audit
+      run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.GrowthCoreV3Audit
+    - name: Execute Growth v2 coherence audit
+      run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.GrowthV2CoherenceAudit
+    - name: Execute Growth v2 Quest2 and stat progression audit
+      run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.GrowthV2LoopAudit
+    - name: Execute F5M gameplay contract audit
+      run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.F5mAdaptedPrologueQuestAudit
+    - name: Execute F5M production runtime binding audit
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRuntimeBindingTest --stacktrace
+    - name: Execute F5M restart persistence matrix
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
+    - name: Execute runtime checkpoint and legacy migration regression
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest --stacktrace
+    - name: Execute device recording regressions with native source rendering
+      run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceRecordingRegressionTest --tests com.projectdark.mobile.ShirtRenderingRegressionTest --stacktrace
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: v163-regression-tail-${{ github.sha }}
+        path: 'app/build/test-results/
+
+          app/build/reports/tests/'
