@@ -40,7 +40,7 @@ public class TownCampaignV163Test {
    }
    assertEquals(99,r.normalLevel().intValue());assertTrue(r.campaign().finished());assertTrue(kills>=70);receipt.put(new JSONObject().put("job",job).put("level",r.normalLevel()).put("quests",18).put("realFinalContactDefeats",kills).put("fullHpBalanceVerified",false));
   }
-  Path out=Path.of("build/reports/town-v163/progression.json");Files.createDirectories(out.getParent());Files.writeString(out,receipt.toString(2));
+  Path out=Path.of("build/reports/town-v163/progression.json");Files.createDirectories(out.getParent());Files.write(out,receipt.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void finalReportUsesActualTownNpcButtonAndJournalShowsLevel99Endpoint()throws Exception{
   GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(false);RuntimeState s=TownInteriorTest.field(v,"state");afterE18(s,"WARRIOR");JSONArray done=s.rpg().campaign().snapshot().getJSONArray("complete");for(int i=1;i<18;i++)done.put(String.format(Locale.ROOT,"F%02d",i));assertTrue(s.rpg().campaign().restore(s.rpg().campaign().snapshot().put("complete",done)));ProgressionLeveling.restore(s.rpg(),98,0);call(v,"travelTown",RucesionTownGeometry.ID);approach(v,"rucesion_beach_keeper");screenshot(v,"final-report-before");TownInteriorTest.tap(v,667,429);assertEquals("F18",s.rpg().campaign().activeId());approach(v,"rucesion_beach_keeper");screenshot(v,"final-report-ready");TownInteriorTest.tap(v,667,429);assertEquals(99,s.rpg().normalLevel().intValue());assertTrue(s.rpg().campaign().finished());screenshot(v,"final-level99");assertEquals("뤼케시온 최종 보고",CampaignProgress.find("F18").title);assertFalse(CampaignWorld.canEnter(RucesionCoastGeometry.BOSS,99,true));
