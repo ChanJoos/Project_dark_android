@@ -83,7 +83,7 @@ with zipfile.ZipFile(apk_path) as apk:
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
-assert "versionCode='166'" in badging and "versionName='1.65-town-polish'" in badging, badging[:300]
+assert "versionCode='166'" in badging and "versionName='1.66-flowerbed-cleanup'" in badging, badging[:300]
 expected_package = 'com.projectdark.mobile.v166test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
 if expected_package.endswith(".v166test"): assert "application-label:'PROJECT DARK V166 TEST'" in badging
@@ -93,7 +93,7 @@ for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','play
     assert ':drawable/'+drawable in resource_table, drawable
 info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v166test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope="V166 all-town travel, civilian NPC presentation and18Rucesion quests through99; retains normal Pong palette from supplied normal/faded pair and combat-owned CURSE exact-alpha prewarmed RGB variants; expiry/clear/respawn/fresh-map restoration; four states60textures each max35,389,440bytes. Retains V161 all13 Abel coast reference audit;7families84 newly source-referenced poses; occupied-alpha/player ratio calibration for10 observed species, floating purple scale and obscured KingArk pair explicitly unresolved. Accepted Rucesion10 art/scale/motion and shared AI/collision/reward/save/cache retained. Generated direction/action reconstruction is not an original atlas claim.",
+            scope="V166 shared Abel/Rucesion flowerbed repair at21 unchanged placements; captured sidewalk removed; same182x109canvas/92x98anchor. Native flowerbed coverage, all29loaded prop families, V165 continuous lamps/service signs/three destinations/NPC-player equality and existing town/combat/save regressions. Runtime Java, movement, collision, NPC scale and trees unchanged. Phone/user visual acceptance PENDING.",
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance={'RucesionMonsters':'USER_ACCEPTED_20261015','AbelCalibrationAndMaps':'PENDING'})
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))
