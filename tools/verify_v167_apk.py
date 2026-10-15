@@ -1,4 +1,4 @@
-"""Verify the exact V167 flowerbed cleanup APK, its source identity and retained assets."""
+"""Verify the exact V167 combat and town integration APK, its source identity and retained assets."""
 import datetime, hashlib, json, os, pathlib, subprocess, sys, zipfile
 apk_path = pathlib.Path(sys.argv[1])
 source = os.environ['PROJECT_DARK_SOURCE_SHA']
@@ -91,9 +91,9 @@ resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump'
 assert 'name='+expected_package in resource_table, resource_table[:400]
 for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','player_shirt_mu0000001_source'):
     assert ':drawable/'+drawable in resource_table, drawable
-info = dict(identity, applicationId=expected_package, updateCompatibleWithV113=False if expected_package.endswith('.v167test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
+info = dict(identity, applicationId=expected_package, updateCompatibleWithV166=False if expected_package.endswith('.v167test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
-            scope="V167 shared Abel/Rucesion flowerbed repair at21 unchanged placements; captured sidewalk removed; same182x109canvas/92x98anchor. Native flowerbed coverage, all29loaded prop families, V165 continuous lamps/service signs/three destinations/NPC-player equality and existing town/combat/save regressions. Runtime Java, movement, collision, NPC scale and trees unchanged. Phone/user visual acceptance PENDING.",
+            scope="V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance={'RucesionMonsters':'USER_ACCEPTED_20261015','AbelCalibrationAndMaps':'PENDING'})
 (apk_path.parent/'BUILD_INFO.json').write_text(json.dumps(info, ensure_ascii=False, indent=2)+'\n')
 print(json.dumps(info, ensure_ascii=False, indent=2))
