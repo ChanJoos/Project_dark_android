@@ -208,5 +208,22 @@
       "goal": 1,
       "rewardLevel": 99
     }
-  ]
+  ],
+  "civilianAppearance": {
+    "garment": "mu0000001",
+    "head": "registered wigs mh005..mh011",
+    "weapon": null,
+    "shield": null,
+    "excludes": [
+      "mu0000002 leather tunic",
+      "mu0000003 martial outfit"
+    ],
+    "specialExceptions": [
+      "guard",
+      "job mentor",
+      "clergy",
+      "purifier"
+    ]
+  },
+  "verificationReceipt": "V163_BUILD_RUNTIME_RECEIPT.json"
 }

@@ -389,3 +389,6 @@ V156 exact candidate native/build receipt: changes/V156_BUILD_RUNTIME_RECEIPT.js
 
 ## TOWN-CAMPAIGN-V163
 Accepted user-authored all-town network, civilian presentation and18Rucesion quests throughLv99. changes/TOWN_CAMPAIGN_V163.json feeds TownTravel/CampaignJourney/NpcIdentity/CampaignProgress, GameView dialogue/navigation and existing save/reward adapters. Original92CSV/source snapshots unchanged; hunting/Ariel restrictions retained. Build/runtime acceptance pending.
+
+## V163 candidate verification
+Exact9e77bf10 APK/native52pass; retained common tail508c24b8pass and final-source broad rerun pending. Ordinary NPC uses only mu0000001. Receipt changes/V163_BUILD_RUNTIME_RECEIPT.json; review docs/TOWN_QUEST_V163_REVIEW.md. Phone/fullHP balance remain pending; original sources unchanged.
