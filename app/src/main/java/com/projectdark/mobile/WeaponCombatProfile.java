@@ -11,7 +11,7 @@ public final class WeaponCombatProfile {
   return THRUST.contains(d.appearanceId)?AnimationAction.THRUST:d.basicAttackAction==null?AnimationAction.PUNCH:d.basicAttackAction;
  }
  public static String motion(RpgProgressionState r,String requested){
-  if(!"SWING".equals(requested)&&!"THRUST".equals(requested)&&!"PUNCH".equals(requested)&&!"EQUIPPED_BASIC".equals(requested))return requested;
+  if(!"SWING".equals(requested)&&!"EQUIPPED_BASIC".equals(requested))return requested;
   RpgProgressionState.ItemDefinition d=r.equippedDefinition(RpgProgressionState.WEAPON_SLOT);
   if(grip(d)==Grip.TWO_HAND)return "TWO_HAND";
   return d!=null&&basicAction(d)==AnimationAction.THRUST?"THRUST":requested;

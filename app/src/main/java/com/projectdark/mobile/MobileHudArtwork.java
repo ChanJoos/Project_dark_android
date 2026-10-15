@@ -8,7 +8,7 @@ final class MobileHudArtwork {
  private static final Paint potionPaint=new Paint();
  private static final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
  static void install(Context context){
-  if(potionIcons==null)potionIcons=new SourceItemIconRegistry(context);
+  if(potionIcons==null)potionIcons=new SourceItemIconRegistry(context.getApplicationContext());
   if(atlas!=null)return;
   try(java.io.InputStream in=context.getAssets().open("mobile-hud-v136/icons.png")){atlas=BitmapFactory.decodeStream(in);}
   catch(java.io.IOException e){throw new IllegalStateException("Missing approved HUD artwork",e);}
