@@ -487,7 +487,14 @@
         109
       ],
       "status": "SOURCE_VISIBLE",
-      "sha256": "0240a6de2ca091fd99dbf88947fb7c46b946df9bf24456ae1b9359143219a620"
+      "sha256": "0240a6de2ca091fd99dbf88947fb7c46b946df9bf24456ae1b9359143219a620",
+      "runtimeRepairV166": {
+        "status": "ADAPTED_SOURCE_REFERENCED_RECONSTRUCTION",
+        "reason": "Remove captured pavement tiles along back/right flowerbed perimeter",
+        "sha256": "2738d0e467e394e91513c92d91bf38d7b53f43812bf8a25c9fb2a86b91b19dfe",
+        "source": "master/source/town_v166/flowerbed-generated.png",
+        "canvasAndAnchorPreserved": true
+      }
     },
     {
       "id": "flower_red_clump",

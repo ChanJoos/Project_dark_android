@@ -1,0 +1,22 @@
+{
+  "id": "TOWN_PROPS_V166",
+  "status": "ACCEPTED",
+  "evidence": "USER_REPORTED_RUCESION_FLOWERBED_TILE_CONTAMINATION_20261015",
+  "before": "V165 flowerbed includes captured grey/brown sidewalk at back/right perimeter in both towns; DEVICE_FAILED_USER_REPORTED visual defect. Root cause reproduced in registered source PNG.",
+  "after": "One shared orange flowerbed repaired in both towns; clean transparent planted perimeter without captured paving. Original 182x109 canvas,92x98 anchor and all21 placements preserved.",
+  "artStatus": "ADAPTED_SOURCE_REFERENCED_RECONSTRUCTION",
+  "source": [
+    "master/source/town_v166/before",
+    "master/source/town_v166/flowerbed-generated.png"
+  ],
+  "unchanged": [
+    "NPC/player scale",
+    "V165 lamps and travel/services",
+    "trees",
+    "collision",
+    "navigation",
+    "save"
+  ],
+  "validation": "PENDING_NATIVE_AND_BUILD",
+  "phoneVisualAcceptance": "PENDING"
+}

@@ -1,0 +1,32 @@
+{
+  "status": "ADAPTED_SOURCE_REFERENCED_RECONSTRUCTION",
+  "sourceBytesRetained": "before/",
+  "tool": "built-in image_gen",
+  "prompt": "Remove grey/brown pavement tiles around existing orange isometric flowerbed; retain flowers, foliage, perspective; transparent background.",
+  "registration": {
+    "generatedCropAlphaThreshold": 128,
+    "cropBox": [
+      39,
+      34,
+      1583,
+      918
+    ],
+    "registeredSize": [
+      180,
+      107
+    ],
+    "canvas": [
+      182,
+      109
+    ],
+    "offset": [
+      1,
+      1
+    ],
+    "anchor": [
+      92,
+      98
+    ]
+  },
+  "notOriginalRecoveredArt": true
+}

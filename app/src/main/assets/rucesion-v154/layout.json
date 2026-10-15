@@ -425,7 +425,14 @@
         98
       ],
       "status": "REUSED_ISOLATED_SOURCE_MODULE",
-      "sha256": "39594a89000e9b63ef8e3d74e1400051c3208d4af89b9abf309064b5e9dde67b"
+      "sha256": "39594a89000e9b63ef8e3d74e1400051c3208d4af89b9abf309064b5e9dde67b",
+      "runtimeRepairV166": {
+        "status": "ADAPTED_SOURCE_REFERENCED_RECONSTRUCTION",
+        "reason": "Remove captured pavement tiles along back/right flowerbed perimeter",
+        "sha256": "2738d0e467e394e91513c92d91bf38d7b53f43812bf8a25c9fb2a86b91b19dfe",
+        "source": "master/source/town_v166/flowerbed-generated.png",
+        "canvasAndAnchorPreserved": true
+      }
     },
     {
       "id": "tile_sea_water",
