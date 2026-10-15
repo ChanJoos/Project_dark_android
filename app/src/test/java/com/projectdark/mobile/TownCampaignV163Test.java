@@ -20,7 +20,7 @@ public class TownCampaignV163Test {
  @Test public void retainedMillesNpcHasQuestServiceOrTravelAndCiviliansHaveNoWeaponsOrArmor(){
   RuntimeState s=new RuntimeState();Set<String> ids=new HashSet<>();for(RuntimeState.Npc n:s.npcs())ids.add(n.id);assertFalse(ids.contains("milles_west_proto"));assertFalse(ids.contains("milles_gate_proto"));assertTrue(ids.contains("milles_market_proto"));
   for(String id:ids)assertTrue(id,TownTravel.isManager(id)||CampaignProgress.definitions().stream().anyMatch(d->d.npc.equals(id)));
-  EquipmentVisualRegistry art=new EquipmentVisualRegistry(c);for(NpcIdentity.Profile p:NpcIdentity.ALL)if(!NpcIdentity.special(p.id)){assertNull(p.id,p.weapon);assertTrue(p.outfit.startsWith("mu000000"));for(String a:p.outfit.split(","))assertNotNull(a,art.get(a));}
+  EquipmentVisualRegistry art=new EquipmentVisualRegistry(c);for(NpcIdentity.Profile p:NpcIdentity.ALL)if(!NpcIdentity.special(p.id)){assertNull(p.id,p.weapon);assertEquals("mu0000001",p.outfit.split(",")[0]);for(String a:p.outfit.split(","))assertNotNull(a,art.get(a));}
  }
  @Test public void objectiveJourneyFindsBothCoastsAndTownReturnsWithoutSequentialTownDetour(){
   assertEquals(RucesionTownGeometry.ID,CampaignJourney.next(WorldDef.ID,"MAP_RUCESION_COAST_3B"));assertEquals(AbelTownGeometry.ID,CampaignJourney.next(RucesionTownGeometry.ID,"MAP_ABEL_COAST_2A"));assertEquals(RucesionTownGeometry.ID,CampaignJourney.next(AbelTownGeometry.ID,RucesionTownGeometry.ID));assertEquals("MAP_RUCESION_COAST_2C",CampaignJourney.next("MAP_RUCESION_COAST_1C","MAP_RUCESION_COAST_3B"));assertNull(CampaignJourney.next(RucesionTownGeometry.ID,RucesionCoastGeometry.BOSS));

@@ -23,7 +23,7 @@ public final class NpcAppearanceTest {
   Set<String> names=new HashSet<>(),outfits=new HashSet<>();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context());
   assertEquals(40,NpcIdentity.ALL.size());
   for(NpcIdentity.Profile p:NpcIdentity.ALL){
-   assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));outfits.add(p.outfit);if(!NpcIdentity.special(p.id)){assertNull(p.weapon);assertTrue(p.outfit.startsWith("mu000000"));}
+   assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));outfits.add(p.outfit);if(!NpcIdentity.special(p.id)){assertNull(p.weapon);assertEquals("mu0000001",p.outfit.split(",")[0]);}
    for(String id:p.outfit.split(",")){EquipmentVisualRegistry.Visual v=registry.get(id);assertNotNull("real atlas "+id,v);assertNotNull("real source registration "+id,v.registration);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())assertNotNull(v.registration.idle(d,0));}
   }
   RuntimeState s=new RuntimeState();for(RuntimeState.Npc n:s.npcs())assertEquals(NpcIdentity.forId(n.id).label(),n.name);
