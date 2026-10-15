@@ -1,4 +1,6 @@
 package com.projectdark.mobile.world;
+import java.util.HashMap;
+import android.graphics.Color;
 
 import com.projectdark.mobile.CharacterRenderer;
 import com.projectdark.mobile.SpriteAlphaMask;

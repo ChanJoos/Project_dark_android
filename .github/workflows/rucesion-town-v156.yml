@@ -84,6 +84,23 @@ jobs:
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           python3 tools/validate_master.py
           gradle :app:testDebugUnitTest --tests '*CombatTownV167Test' --tests '*EquipmentPerformanceV130Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*SkillAbilityRuntimeTest' --tests '*TownPropsV166Test' --tests '*TownPolishV165Test' --tests '*TownQualityV164Test' --tests '*AbelTownV152Test' --tests '*RucesionTownV154Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*TownCampaignV163Test' --tests '*NpcAppearanceTest' --tests '*QuestJournalTest' --tests '*CampaignNavigationTest' --tests '*RuntimeCheckpointTest' --tests '*RucesionServicesV156Test' --tests '*MonsterCurseV162Test' --tests '*CampaignProgressTest.definitionsKeepOriginalCurveAndAddMapLocalForestRoute' --tests '*CampaignProgressTest.newForestRouteHasOrderedAtoDObjectivesAndSafeV3Migration' --stacktrace
+      - name: Record focused JUnit evidence
+        if: always()
+        run: |
+          python3 - <<'PYTEST'
+          from pathlib import Path
+          import xml.etree.ElementTree as E
+          totals=dict(tests=0,failures=0,errors=0,skipped=0)
+          files=list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
+          for p in files:
+              root=E.parse(p).getroot()
+              for k in totals: totals[k]+=int(root.get(k,0))
+              for case in root.findall('testcase'):
+                  for tag in ('failure','error'):
+                      f=case.find(tag)
+                      if f is not None: print('FAILED',case.get('classname'),case.get('name'),f.get('message',''),(f.text or '')[:2500])
+          print('FOCUSED_JUNIT',totals,'SUITES',len(files))
+          PYTEST
       - name: Build and verify exact candidate APK
         run: |
           gradle :app:assembleDebug

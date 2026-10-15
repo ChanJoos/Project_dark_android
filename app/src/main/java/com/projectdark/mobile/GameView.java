@@ -275,6 +275,13 @@ public final class GameView extends View {
     public boolean save(){return saveSkillSlots();}
     public void testMode(boolean enabled){setSkillTestMode(enabled);}
     public float cooldown(String id){return combatSession.cooldownRemaining(RuntimeCombatSession.PLAYER_ID,"SK_공통_001".equals(id)?RuntimeCombatSession.playerAttackActionId(equipmentActions.resolveBasicAttack(state.rpg()).animationAction):id);}
+    public String currentPower(String id){
+      SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null||!a.damage()&&!a.heal())return "";
+      if("DARA".equals(a.formula)&&state.player().mp<1440)return "MP 1440 이상 필요 · 현재 "+state.player().mp;
+      if("CRASH".equals(a.formula)&&state.player().hp>Math.max(1,state.player().maxHp*.02))return "HP 2% 이하에서 사용 가능";
+      int amount=SkillAbilityCatalog.amount(a,new SkillAbilityCatalog.Snapshot(state.rpg().finalStats().withEffects(state.skillEffects(),"player"),state.player().hp,state.player().mp,state.rpg().normalLevel(),skillBook.testAccess()?100:skillBook.proficiency(id),false));
+      return a.heal()?"현재 능력치 기준 회복 "+amount:"현재 능력치 기준 "+amount+" · 방어 적용 전";
+    }
     public float castSeconds(String id){return combatSession.effectiveCastSeconds(id);}
     public int mpCost(String id,int base){return combatSession.effectiveMpCost(id);}
     public String requirements(SkillBook.Entry e){return new SkillAcquisition(skillBook).description(e,state.rpg());}
