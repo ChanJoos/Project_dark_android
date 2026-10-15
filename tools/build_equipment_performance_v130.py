@@ -8,6 +8,10 @@ SRC = ROOT / 'master/source/equipment/stats_v130'
 def main():
     assert json.loads((ROOT/'master/changes/EQUIPMENT-PERFORMANCE-V130.json').read_text())['status'] == 'ACCEPTED'
     data = json.loads((SRC/'catalog.json').read_text())
+    extension=ROOT/'master/changes/V167_CAMPAIGN_WEAPON_EXTENSIONS.json'
+    if extension.exists():
+        extra=json.loads(extension.read_text());assert extra['status']=='ACCEPTED'
+        data['weapons']+=extra['weapons']
     lines = ['package com.projectdark.mobile;', 'import java.util.*;',
              '/** Generated reviewed performance receipts; adapted fields are explicitly labelled. */',
              'final class SourceEquipmentPerformance {', ' static void install(RpgProgressionState r){']
@@ -33,3 +37,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

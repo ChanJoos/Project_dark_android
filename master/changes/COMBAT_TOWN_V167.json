@@ -50,5 +50,6 @@
       "stale16-bed layout assertion",
       "obsolete caster pivot assertion for recipient finisher"
     ]
-  }
+  },
+  "sourcePreservation": "V130 source catalog restored byte-for-byte (blob8af99da4599839c46f2621dcf34c2502769cdc83).12later campaign ranges are accepted additive change V167_CAMPAIGN_WEAPON_EXTENSIONS.json; runtime generator consumes extension.105armour requirement receipts remain a separate additive change."
 }
