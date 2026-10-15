@@ -85,6 +85,16 @@ public class MonsterCurseV162Test {
   assertEquals(.558f,goldS.get(goldS.size()/2),.10f);assertEquals(.831f,goldV.get(goldV.size()/2),.10f);
   assertEquals(.571f,violetS.get(violetS.size()/2),.13f);assertEquals(.600f,violetV.get(violetV.size()/2),.10f);
  }
+ @Test public void actualIndoorGameViewRoutesCurseAndDispelToVisibleMouse()throws Exception{
+  android.content.Context c=RuntimeEnvironment.getApplication();for(String key:new String[]{"project_dark_f5m_v1","project_dark_skill_book_v1","project_dark_skill_test_v1"})c.getSharedPreferences(key,0).edit().clear().commit();F5mSaveStore.install(c);
+  GameView view=new GameView(c);view.layout(0,0,960,540);F5mAdaptedPrologueQuest quest=TownInteriorTest.field(view,"f5mQuest");assertEquals(F5mAdaptedPrologueQuest.AcceptResult.ACTIVATED,quest.accept());TownInteriorTest.enter(view,TownInteriorDef.forMap("milles_interior_inn"));
+  RuntimeState state=TownInteriorTest.field(view,"state");RuntimeState.Monster mouse=state.monsters().get(0);WorldRuntimeAdapter world=TownInteriorTest.field(view,"reagentShopAdapter");world.camera().snapTo(mouse.x,mouse.y);WorldCameraTransform.Point at=world.worldToScreen(mouse.x,mouse.y);
+  java.lang.reflect.Method draw=GameView.class.getDeclaredMethod("drawReagentShopWorld",Canvas.class);draw.setAccessible(true);
+  Bitmap normal=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);draw.invoke(view,new Canvas(normal));SkillAbilityExecutor ex=new SkillAbilityExecutor(state);ex.testMode=true;ex.apply(mouse.id,"SK_마법사_002");assertTrue(MonsterCursePalette.active(state.skillEffects(),mouse.id));Bitmap cursed=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);draw.invoke(view,new Canvas(cursed));
+  int left=Math.max(0,(int)at.x-22),top=Math.max(0,(int)at.y-42),width=Math.min(44,960-left),height=Math.min(46,540-top);assertTrue(width>0&&height>0);
+  Bitmap before=Bitmap.createBitmap(normal,left,top,width,height),during=Bitmap.createBitmap(cursed,left,top,width,height);sameAlphaChangedRgb(before,during);
+  ex.apply(mouse.id,"SK_성직자_003");Bitmap restored=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);draw.invoke(view,new Canvas(restored));assertArrayEquals(pixels(before),pixels(Bitmap.createBitmap(restored,left,top,width,height)));save(normal,"actual-inn-normal");save(cursed,"actual-inn-curse");save(restored,"actual-inn-dispelled");
+ }
  @Test public void respawnAndNewMapCannotRetainOldCurse()throws Exception{
   RuntimeState s=coast();RuntimeState.Monster m=pong(s);s.skillEffects().put(m.id,"SK_마법사_002","CURSE",20,100);s.damage(m,m.hp);s.player().x=-10000;s.player().y=-10000;s.tick(m.respawnSeconds+1);assertTrue(m.alive);assertFalse(MonsterCursePalette.active(s.skillEffects(),m.id));
   s.skillEffects().put(m.id,"SK_마법사_002","CURSE",20,100);s.skillEffects().put("player","fixture","CURSE",20,100);s.enterCampaignMap("MAP_ABEL_COAST_2A",false);s.enterCampaignMap("MAP_ABEL_COAST_1A",false);assertFalse(MonsterCursePalette.active(s.skillEffects(),pong(s).id));assertTrue("player lifetime preserved",MonsterCursePalette.active(s.skillEffects(),"player"));
