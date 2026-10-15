@@ -26,6 +26,7 @@ android {
             maxHeapSize = '1546m'
             maxParallelForks = 1
             forkEvery = 1
+            testLogging { exceptionFormat = 'full' }
         }
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }

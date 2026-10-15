@@ -18,7 +18,7 @@ public class MonsterCurseV162Test {
  private RuntimeState.Monster pong(RuntimeState s){return s.monsters().stream().filter(m->PoteForestMonsterShowcase.species(m.id).equals("ABEL_PONG")).findFirst().get();}
  private Bitmap render(PoteFieldRenderer r,RuntimeState.Monster m){Bitmap b=Bitmap.createBitmap(240,220,Bitmap.Config.ARGB_8888);r.drawMonster(new Canvas(b),m,120,180);return b;}
  private int[] pixels(Bitmap b){int[] p=new int[b.getWidth()*b.getHeight()];b.getPixels(p,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return p;}
- private void sameAlphaChangedRgb(Bitmap a,Bitmap b){int[] p=pixels(a),q=pixels(b);int changes=0;for(int i=0;i<p.length;i++){assertEquals("alpha/outline/anchor at "+i,p[i]>>>24,q[i]>>>24);if((p[i]>>>24)>128&&p[i]!=q[i])changes++;}assertTrue("visible RGB must change",changes>30);}
+ private void sameAlphaChangedRgb(Bitmap a,Bitmap b){int[] p=pixels(a),q=pixels(b);int changes=0;for(int i=0;i<p.length;i++){assertEquals("alpha/outline/anchor at "+i,p[i]>>>24,q[i]>>>24);if((p[i]>>>24)>128&&p[i]!=q[i])changes++;}assertTrue("visible RGB must change: changed="+changes,changes>30);}
  private void save(Bitmap b,String name)throws Exception{Files.createDirectories(out);try(java.io.OutputStream f=Files.newOutputStream(out.resolve(name+".png"))){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,f));}}
  @Test public void everyCatalogCurseChangesLiveActorAndExpiryRestoresExactly()throws Exception{
   String[] ids={"SK_마법사_002","SK_마법사_011","SK_마법사_024","SK_마법사_053","SK_마법사_046","SK_마법사_047","SK_마법사_048","SK_마법사_049","SK_마법사_050","SK_성직자_012"};
