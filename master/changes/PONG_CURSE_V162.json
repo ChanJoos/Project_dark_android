@@ -14,5 +14,14 @@
     "source": "8d91d1a0aca19b041218ae0d53e728c1a1b7d1cd",
     "run": 38660233744,
     "reason": "Unsupported Android ComposeColorFilter compile error; replaced with equivalent precomputed cursed hit tint in68c93d4."
-  }
+  },
+  "implementationRevision": "Scaled color filter rejected after native0->3/63->0 edge-alpha changes. Prewarm exact-alpha RGB variants and hit variants; map-scoped60perstate, total35,389,440bytes plus786,432mouse variant bytes. Test limits and map entry clear; no per-frame coloring.",
+  "validationFailure": {
+    "source": "fbec696c68ae499ae865087efb4e82b8f434af09",
+    "run": 38661340294,
+    "tests": 6,
+    "failures": 2,
+    "reason": "Native scaled filter changes transparent alpha. Exact-alpha assertions retained."
+  },
+  "focusedSelectionRepair": "The V161 source class name is retained; new MonsterCurseV162Test runs explicitly first and in final combined suite. Early focused build success did not execute new curse tests and is not feature acceptance."
 }

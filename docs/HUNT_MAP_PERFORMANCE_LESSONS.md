@@ -1,3 +1,7 @@
+## V162 curse presentation budget amendment — 2026-10-15
+
+Native tests showed a scaled ColorMatrixColorFilter changes some transparent edge pixels (0→3 and63→0); that route is rejected, not waived. Normal/hit art retains its previous pixels and nearest sampling. Prewarm two extra RGB-only curse/curse-hit states at map entry, preserve every source alpha byte, clear both maps on every map entry. Each of source/hit/curse/curse-hit remains at most60textures,192square: total35,389,440CPU pixel bytes; former source+hit17,694,720budget remains the two-state subset, not the new four-state total. No per-frame shade/decode/allocation. Inn mouse adds48small64square variants=786,432bytes. Existing32floorLRU/8,652,800bytes, live collisions, populations, vsync, save gates unchanged. Native lifecycle/23species×12pose alpha checks and repeated-map cache/time checks required; physical phone memory/FPS acceptance pending.
+
 # 사냥맵 성능 필수 기준 — 포테 V116–V119
 
 2026-10-09 사용자 피드백: “속도문제해결!” USER_REPORTED_RESOLVED. 사용자 메시지는 APK 버전을 명시하지 않았다. 최신 확인 후보는 V119 runtime `02026e910cc068fa54236ce334ae5ea48f188674`, 브랜치 `codex/pote-forest-v112`. 이 피드백을 특정 APK 독립 실측 결과로 바꾸지 않는다. 이전 V118 실패는 과거 기록으로 보존한다.

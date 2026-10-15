@@ -45,7 +45,9 @@ public class MonsterCurseV162Test {
     }
     row++;
    }
-   assertTrue(((Map<?,?>)ForestPixelCacheTest.field(r,"hitCache")).size()<=60);
+   for(String cache:new String[]{"hitCache","curseCache","curseHitCache"})assertTrue(cache,((Map<?,?>)ForestPixelCacheTest.field(r,cache)).size()<=60);
+   long bytes=0;for(String cache:new String[]{"hitCache","curseCache","curseHitCache"})for(Object b:((Map<?,?>)ForestPixelCacheTest.field(r,cache)).values())bytes+=((Bitmap)b).getAllocationByteCount();
+   assertTrue("three variant caches at most26,542,080bytes",bytes<=26542080L);
   }
   assertEquals(23,seen.size());save(grid,"all23-normal-curse-native");
  }

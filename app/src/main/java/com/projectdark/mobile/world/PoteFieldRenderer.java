@@ -60,6 +60,7 @@ public final class PoteFieldRenderer {
   private final List<Placement> depthPlacements=new ArrayList<>();
   private final List<ActorDraw> depthActors=new ArrayList<>();
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
+  private final Map<String,Bitmap> curseCache=new LinkedHashMap<>(),curseHitCache=new LinkedHashMap<>();
   private String preparedMonsterMap;
   private com.projectdark.mobile.SkillEffectState monsterEffects;
   private final PoteMonsterMotion.Frame motion=new PoteMonsterMotion.Frame();
@@ -72,13 +73,14 @@ public final class PoteFieldRenderer {
     monsterEffects=runtime.skillEffects();
     if(runtime.currentMapId().equals(preparedMonsterMap))return;
     cache.keySet().removeIf(key->key.startsWith(PoteForestMonsterShowcase.ASSET_ROOT));
-    hitCache.clear();
+    hitCache.clear();curseCache.clear();curseHitCache.clear();
     java.util.Set<String> loaded=new java.util.HashSet<>();
     for(com.projectdark.mobile.RuntimeState.Monster monster:runtime.monsters()){
       for(String pose:new String[]{"idle","walk","attack"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
         String key=PoteForestMonsterShowcase.assetPath(monster.id,pose,direction);
         if(key==null||!loaded.add(key))continue;
-        Bitmap source=bitmap(key);if(source!=null){source.prepareToDraw();hitBitmap(key,source).prepareToDraw();}
+        Bitmap source=bitmap(key);if(source!=null){source.prepareToDraw();hitBitmap(key,source).prepareToDraw();
+          Bitmap faded=curseBitmap(key,source);faded.prepareToDraw();tintBitmap(key,faded,curseHitCache).prepareToDraw();}
       }
     }
     preparedMonsterMap=runtime.currentMapId();
@@ -129,7 +131,7 @@ public final class PoteFieldRenderer {
   /** Resolved damage uses the existing actor hit timer, retaining pose, alpha and foot anchor. */
   public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
       float actionProgress,float idleClock,float x,float y,boolean hitFlash){
-    drawAnimatedMonster(c,monsterId,state,direction,actionProgress,idleClock,x,y,hitFlash?.14f:0f);
+    drawAnimatedMonster(c,monsterId,state,direction,actionProgress,idleClock,x,y,hitFlash?.14f:0f,false);
   }
 
   /** Live pose/phase is sampled from the same combat and movement state that owns contact. */
@@ -137,19 +139,16 @@ public final class PoteFieldRenderer {
     if(monster==null||!monster.alive)return;
     CharacterRenderer.Direction direction=PoteForestMonsterShowcase.presentationFacing(monster);
     String state=PoteForestMonsterShowcase.poseFor(monster);
-    pixel.setColorFilter(com.projectdark.mobile.MonsterCursePalette.active(monsterEffects,monster.id)
-        ?com.projectdark.mobile.MonsterCursePalette.FADED:null);
-    try{
-      drawAnimatedMonster(c,monster.id,state,direction,PoteForestMonsterShowcase.attackProgress(monster),
-          monster.animationClock,x,y,monster.hitFlash);
-    }finally{pixel.setColorFilter(null);}
+    drawAnimatedMonster(c,monster.id,state,direction,PoteForestMonsterShowcase.attackProgress(monster),
+        monster.animationClock,x,y,monster.hitFlash,
+        com.projectdark.mobile.MonsterCursePalette.active(monsterEffects,monster.id));
   }
 
   private final Matrix monsterPixelMatrix=new Matrix();
   private final float[] monsterPixelValues=new float[9];
 
   private void drawAnimatedMonster(Canvas c,String id,String state,CharacterRenderer.Direction direction,
-      float progress,float clock,float x,float y,float hitRemaining){
+      float progress,float clock,float x,float y,float hitRemaining,boolean cursed){
     if(c==null||"dead".equals(state))return;
     PoteMonsterMotion.sample(id,state,progress,clock,hitRemaining,motion);
     String family=PoteForestMonsterShowcase.species(id);
@@ -159,7 +158,8 @@ public final class PoteFieldRenderer {
     String name=PoteForestMonsterShowcase.assetPath(id,motion.pose,direction);
     if(name==null)return;
     Bitmap source=bitmap(name);if(source==null)return;
-    Bitmap b=hitRemaining>0f?hitBitmap(name,source):source;
+    Bitmap base=cursed?curseBitmap(name,source):source;
+    Bitmap b=hitRemaining>0f?tintBitmap(name,base,cursed?curseHitCache:hitCache):base;
     float h=PoteForestMonsterShowcase.bodyHeight(id),w=PoteForestMonsterShowcase.bodyWidth(id)*b.getWidth()/Math.max(1f,b.getHeight());
     float fx=facingX(direction),fy=facingY(direction);
     boolean spirit="POTE_SPIRIT".equals(PoteForestMonsterShowcase.species(id));
@@ -199,8 +199,12 @@ public final class PoteFieldRenderer {
   }
 
   /** Cache a color-only variant: GPU color filters can bleed into transparent scaled edges. */
-  private Bitmap hitBitmap(String name,Bitmap source){
-    Bitmap hit=hitCache.get(name);if(hit!=null)return hit;
+  private Bitmap curseBitmap(String name,Bitmap source){
+    Bitmap faded=curseCache.get(name);if(faded==null){faded=com.projectdark.mobile.MonsterCursePalette.fadedBitmap(source);curseCache.put(name,faded);}return faded;
+  }
+  private Bitmap hitBitmap(String name,Bitmap source){return tintBitmap(name,source,hitCache);}
+  private Bitmap tintBitmap(String name,Bitmap source,Map<String,Bitmap> variants){
+    Bitmap hit=variants.get(name);if(hit!=null)return hit;
     int width=source.getWidth(),height=source.getHeight();int[] colors=new int[width*height];
     source.getPixels(colors,0,width,0,0,width,height);
     for(int i=0;i<colors.length;i++){
@@ -208,7 +212,7 @@ public final class PoteFieldRenderer {
       int r=Math.min(255,((color>>>16)&255)+96),g=Math.min(255,((color>>>8)&255)+64),b=Math.min(255,(color&255)+64);
       colors[i]=(color&0xff000000)|(r<<16)|(g<<8)|b;
     }
-    hit=source.copy(Bitmap.Config.ARGB_8888,true);hit.setPixels(colors,0,width,0,0,width,height);hitCache.put(name,hit);return hit;
+    hit=source.copy(Bitmap.Config.ARGB_8888,true);hit.setPixels(colors,0,width,0,0,width,height);variants.put(name,hit);return hit;
   }
 
   private static float facingX(CharacterRenderer.Direction d){
