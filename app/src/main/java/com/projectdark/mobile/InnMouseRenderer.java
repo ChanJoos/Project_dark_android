@@ -9,7 +9,7 @@ final class InnMouseRenderer {
   private final EnumMap<CharacterRenderer.Direction,Bitmap[]> images=new EnumMap<>(CharacterRenderer.Direction.class);
   private final Paint p=new Paint();
   private static final android.graphics.ColorFilter HIT=new PorterDuffColorFilter(0xffe9d6b1,PorterDuff.Mode.SRC_ATOP);
-  private static final android.graphics.ColorFilter CURSED_HIT=new ComposeColorFilter(MonsterCursePalette.FADED,HIT);
+  private static final android.graphics.ColorFilter CURSED_HIT=new PorterDuffColorFilter(0xffe8e2db,PorterDuff.Mode.SRC_ATOP);
   private static final String[] ACTIVITY={"idle","walk_a","walk_b","attack"};
   static final float FRAME_SIZE=40f,GROUND_BASELINE=59f;
   InnMouseRenderer(Context context){

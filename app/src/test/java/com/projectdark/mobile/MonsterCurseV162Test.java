@@ -56,6 +56,12 @@ public class MonsterCurseV162Test {
    String accepted=PoteForestMonsterShowcase.assetPath("LYK_TYRANT",pose,d);Bitmap keep=BitmapFactory.decodeStream(c.getAssets().open(accepted));assertSame(keep,CoastSpritePalette.apply(accepted,keep));keep.recycle();
   }
  }
+ @Test public void mouseUsesLiveCurseWithoutLosingHitAndRestores()throws Exception{
+  RuntimeState.Monster mouse=new RuntimeState.Monster("mouse-fixture","mouse",0,0,100,"ADAPTED");SkillEffectState effects=new SkillEffectState();InnMouseRenderer r=new InnMouseRenderer(RuntimeEnvironment.getApplication());
+  Bitmap normal=Bitmap.createBitmap(120,120,Bitmap.Config.ARGB_8888);r.draw(new Canvas(normal),mouse,60,80,effects);
+  effects.put(mouse.id,"SK_마법사_002","CURSE",20,10);Bitmap faded=Bitmap.createBitmap(120,120,Bitmap.Config.ARGB_8888);r.draw(new Canvas(faded),mouse,60,80,effects);sameAlphaChangedRgb(normal,faded);
+  mouse.hitFlash=.1f;Bitmap hit=Bitmap.createBitmap(120,120,Bitmap.Config.ARGB_8888);r.draw(new Canvas(hit),mouse,60,80,effects);sameAlphaChangedRgb(faded,hit);mouse.hitFlash=0;effects.clear(mouse.id);Bitmap restored=Bitmap.createBitmap(120,120,Bitmap.Config.ARGB_8888);r.draw(new Canvas(restored),mouse,60,80,effects);assertArrayEquals(pixels(normal),pixels(restored));
+ }
  @Test public void respawnAndNewMapCannotRetainOldCurse()throws Exception{
   RuntimeState s=coast();RuntimeState.Monster m=pong(s);s.skillEffects().put(m.id,"SK_마법사_002","CURSE",20,100);s.damage(m,m.hp);s.player().x=-10000;s.player().y=-10000;s.tick(m.respawnSeconds+1);assertTrue(m.alive);assertFalse(MonsterCursePalette.active(s.skillEffects(),m.id));
   RuntimeState fresh=coast();PoteFieldRenderer r=new PoteFieldRenderer();r.prepareMonsters(s);r.prepareMonsters(fresh);assertSame(fresh.skillEffects(),ForestPixelCacheTest.field(r,"monsterEffects"));
