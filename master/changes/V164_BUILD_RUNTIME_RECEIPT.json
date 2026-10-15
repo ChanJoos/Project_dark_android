@@ -86,5 +86,8 @@
     "docs/TOWN_V164_CHECKPOINT.md",
     "app/src/main/assets/abel-video-v147/layout.json",
     "app/src/main/assets/rucesion-v154/layout.json"
-  ]
+  ],
+  "apkAttachment": "TRANSFER_FAILED_TWICE_USE_GITHUB_ARTIFACT",
+  "apkDownload": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38720764643/artifacts/11965561778",
+  "commonPushRun": 38720764872
 }
