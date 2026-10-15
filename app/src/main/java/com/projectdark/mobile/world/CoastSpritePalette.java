@@ -29,10 +29,10 @@ public final class CoastSpritePalette {
         Color.colorToHSV(p,hsv);
         if(hsv[2]>.16f&&hsv[1]>.18f){
           if(hsv[0]>245&&hsv[0]<315){
-            hsv[0]=hsv[0]*.35f+272f*.65f;
-            hsv[1]=Math.min(1f,hsv[1]*1.16f);hsv[2]=Math.min(1f,hsv[2]*1.10f);
+            hsv[0]=hsv[0]*.25f+282f*.75f;
+            hsv[1]=Math.min(1f,hsv[1]*.85f);hsv[2]=Math.min(1f,hsv[2]*.90f);
           }else if(hsv[0]>20&&hsv[0]<55){
-            hsv[1]=Math.min(1f,hsv[1]*1.12f);hsv[2]=Math.min(1f,hsv[2]*1.10f);
+            hsv[1]=Math.min(1f,hsv[1]*.98f);hsv[2]=Math.min(1f,hsv[2]*.96f);
           }
           pixels[i]=Color.HSVToColor(a,hsv);
         }

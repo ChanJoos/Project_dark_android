@@ -25,5 +25,66 @@
   "sha256": {
     "pong-normal-9_5s.png": "86bd55992cc9901e5e6becb06576c36e73539091ff5a34261cbec8ba5ed05ef5",
     "pong-faded-16s.png": "653f05183691fd1be3251410404571632331e11601f9b43ef6866ec2839845e3"
+  },
+  "normalSamples": {
+    "gold": {
+      "rgbMedian": [
+        193,
+        139,
+        91
+      ],
+      "hsvMedian": [
+        0.08018868,
+        0.53731343,
+        0.75686275
+      ],
+      "patches": [
+        [
+          50,
+          17,
+          67,
+          27
+        ],
+        [
+          49,
+          30,
+          63,
+          42
+        ],
+        [
+          29,
+          62,
+          40,
+          68
+        ]
+      ]
+    },
+    "violet": {
+      "rgbMedian": [
+        91,
+        37,
+        121
+      ],
+      "hsvMedian": [
+        0.77637131,
+        0.7,
+        0.4745098
+      ],
+      "patches": [
+        [
+          83,
+          58,
+          99,
+          67
+        ],
+        [
+          48,
+          72,
+          76,
+          79
+        ]
+      ]
+    },
+    "method": "Median native-resolution RGB/HSV from raw crop patches, hue-selected to omit background/other material. RGB screenshots are lossy video observations, not original indexed palette."
   }
 }

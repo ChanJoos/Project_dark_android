@@ -64,6 +64,19 @@ public class MonsterCurseV162Test {
   effects.put(mouse.id,"SK_마법사_002","CURSE",20,10);Bitmap faded=Bitmap.createBitmap(120,120,Bitmap.Config.ARGB_8888);r.draw(new Canvas(faded),mouse,60,80,effects);sameAlphaChangedRgb(normal,faded);
   mouse.hitFlash=.1f;Bitmap hit=Bitmap.createBitmap(120,120,Bitmap.Config.ARGB_8888);r.draw(new Canvas(hit),mouse,60,80,effects);sameAlphaChangedRgb(faded,hit);mouse.hitFlash=0;effects.clear(mouse.id);Bitmap restored=Bitmap.createBitmap(120,120,Bitmap.Config.ARGB_8888);r.draw(new Canvas(restored),mouse,60,80,effects);assertArrayEquals(pixels(normal),pixels(restored));
  }
+ @Test public void normalPongMatchesIndependentVideoMaterialSamples(){
+  RuntimeState s=coast();PoteFieldRenderer r=new PoteFieldRenderer();r.prepareMonsters(s);RuntimeState.Monster m=pong(s);m.visualFacing.setLocomotion(CharacterRenderer.Direction.SW);Bitmap b=render(r,m);
+  List<Float> goldS=new ArrayList<>(),goldV=new ArrayList<>(),violetS=new ArrayList<>(),violetV=new ArrayList<>();float[] hsv=new float[3];
+  for(int p:pixels(b)){if(Color.alpha(p)<200)continue;Color.colorToHSV(p,hsv);if(hsv[1]<.2f)continue;
+   if(hsv[0]>10&&hsv[0]<65){goldS.add(hsv[1]);goldV.add(hsv[2]);}
+   if(hsv[0]>240&&hsv[0]<310){violetS.add(hsv[1]);violetV.add(hsv[2]);}
+  }
+  assertTrue(goldS.size()>100);assertTrue(violetS.size()>100);
+  // Raw9.5s source patches: gold193/139/91, violet91/37/121; independent of adapter constants.
+  for(List<Float> v:Arrays.asList(goldS,goldV,violetS,violetV))Collections.sort(v);
+  assertEquals(.537f,goldS.get(goldS.size()/2),.10f);assertEquals(.757f,goldV.get(goldV.size()/2),.10f);
+  assertEquals(.700f,violetS.get(violetS.size()/2),.12f);assertEquals(.475f,violetV.get(violetV.size()/2),.10f);
+ }
  @Test public void respawnAndNewMapCannotRetainOldCurse()throws Exception{
   RuntimeState s=coast();RuntimeState.Monster m=pong(s);s.skillEffects().put(m.id,"SK_마법사_002","CURSE",20,100);s.damage(m,m.hp);s.player().x=-10000;s.player().y=-10000;s.tick(m.respawnSeconds+1);assertTrue(m.alive);assertFalse(MonsterCursePalette.active(s.skillEffects(),m.id));
   s.skillEffects().put(m.id,"SK_마법사_002","CURSE",20,100);s.skillEffects().put("player","fixture","CURSE",20,100);s.enterCampaignMap("MAP_ABEL_COAST_2A",false);s.enterCampaignMap("MAP_ABEL_COAST_1A",false);assertFalse(MonsterCursePalette.active(s.skillEffects(),pong(s).id));assertTrue("player lifetime preserved",MonsterCursePalette.active(s.skillEffects(),"player"));
