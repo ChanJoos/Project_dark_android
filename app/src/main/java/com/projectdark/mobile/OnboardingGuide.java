@@ -13,8 +13,8 @@ final class OnboardingGuide {
   case "QUICK_USE":return "하단 퀵슬롯 물약으로 실제 회복 1회";
   case "SELL":return "남는 마력 물약 1개 판매";default:return "목표 달성";
  }}
- static String chapter(CampaignProgress.Def d){if(d.id.startsWith("E"))return "6장 · 아벨해안 조사";if(d.id.equals("M01")||d.id.equals("M02"))return "1장 · 첫 전투";if(d.id.startsWith("T")||d.id.equals("M03")||d.id.equals("M04")||d.id.equals("M05")||d.id.startsWith("J01"))return "2장 · 모험의 기본기";if(d.level<18)return "3장 · 포테의 숲";if(d.level<30)return "4장 · 피에트 조사";return "5장 · 숲의 결계";}
- static String story(CampaignProgress.Def d){if(d.id.startsWith("E"))return "아벨 조사대: 모래 해변과 암초 지대를 답사하고 터틀과 붉은 문어를 조사해 주세요. 위험한 해안에서도 서로 다른 길을 찾아 안전하게 돌아오세요."; switch(d.kind){
+ static String chapter(CampaignProgress.Def d){if(d.id.startsWith("F"))return "7장 · 뤼케시온과 지존";if(d.id.startsWith("E"))return "6장 · 아벨해안 조사";if(d.id.equals("M01")||d.id.equals("M02"))return "1장 · 첫 전투";if(d.id.startsWith("T")||d.id.equals("M03")||d.id.equals("M04")||d.id.equals("M05")||d.id.startsWith("J01"))return "2장 · 모험의 기본기";if(d.level<18)return "3장 · 포테의 숲";if(d.level<30)return "4장 · 피에트 조사";return "5장 · 숲의 결계";}
+ static String story(CampaignProgress.Def d){if(d.id.startsWith("F"))return "뤼케시온 조사대: 해안의 아홉 개체를 조사하고 마을로 돌아와 최종 보고하세요. 마지막 보고까지 마치면 Lv99에 도달합니다.";if(d.id.startsWith("E"))return "아벨 조사대: 모래 해변과 암초 지대를 답사하고 터틀과 붉은 문어를 조사해 주세요. 위험한 해안에서도 서로 다른 길을 찾아 안전하게 돌아오세요."; switch(d.kind){
   case "STAT":return "마이클: 장비만으로는 부족하지. 성장 포인트를 네 손으로 배분해 보게.";
   case "LEARN":return "마이클: 기술은 책에서 직접 배운다네. 조건과 비용을 먼저 확인하게.";
   case "SLOT":return "마이클: 배운 기술은 퀵슬롯에 올려야 전투 중 바로 쓸 수 있지.";

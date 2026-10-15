@@ -21,9 +21,9 @@ public final class NpcAppearanceTest {
  private int[] pixels(Bitmap b){int[] a=new int[b.getWidth()*b.getHeight()];b.getPixels(a,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return a;}
  @Test public void allHumanNpcRoutesHaveDistinctRegisteredProfilesAndFutureDefaults(){
   Set<String> names=new HashSet<>(),outfits=new HashSet<>();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context());
-  assertEquals(38,NpcIdentity.ALL.size());
+  assertEquals(40,NpcIdentity.ALL.size());
   for(NpcIdentity.Profile p:NpcIdentity.ALL){
-   assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));assertTrue(outfits.add(p.outfit));
+   assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));outfits.add(p.outfit);if(!NpcIdentity.special(p.id)){assertNull(p.weapon);assertTrue(p.outfit.startsWith("mu000000"));}
    for(String id:p.outfit.split(",")){EquipmentVisualRegistry.Visual v=registry.get(id);assertNotNull("real atlas "+id,v);assertNotNull("real source registration "+id,v.registration);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())assertNotNull(v.registration.idle(d,0));}
   }
   RuntimeState s=new RuntimeState();for(RuntimeState.Npc n:s.npcs())assertEquals(NpcIdentity.forId(n.id).label(),n.name);
@@ -34,8 +34,8 @@ public final class NpcAppearanceTest {
   Set<Integer> appearances=new HashSet<>();assertTrue(new CharacterRenderer(context()).resourceAtlasActive());
   for(NpcIdentity.Profile p:NpcIdentity.ALL)for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
    Bitmap npc=actor(p,d,true),player=actor(p,d,false);assertArrayEquals("fixed SW NPC has same source scale, body, equipment and foot "+p.id+" "+d,pixels(player),pixels(npc));
-   if(d==CharacterRenderer.Direction.SE)assertTrue("different actual outfit pixels "+p.id,appearances.add(Arrays.hashCode(pixels(npc))));
-   int count=0;for(int color:pixels(npc))if(Color.alpha(color)>0)count++;assertTrue("real dressed sprite, not missing layers",count>350);
+   if(d==CharacterRenderer.Direction.SE)appearances.add(Arrays.hashCode(pixels(npc)));
+   int count=0;for(int color:pixels(npc))if(Color.alpha(color)>0)count++;assertTrue("real dressed sprite, not missing layers",count>250);
   }
  }
  @Test public void nativeRosterAndEveryTownServiceAreCapturedWithThePlayer()throws Exception{

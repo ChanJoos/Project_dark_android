@@ -386,3 +386,6 @@ Accepted source collection only; no runtime projection. See changes/RUCESION-COA
 Accepted region merchandise/source wardrobe access beside original baseline. Rucesion seven service doors and regional bank/inn integrate shared commerce/persistence. Source facts, adapted interiors/placement/availability/prices and unresolved Gilenoa/Fisher are explicit in changes/RUCESION-TOWN-SERVICES-V156.json. Native/build evidence pending.
 
 V156 exact candidate native/build receipt: changes/V156_BUILD_RUNTIME_RECEIPT.json (63 tests/11 suites; phone/user visual pending). Original fidelity limits remain in the service contract.
+
+## TOWN-CAMPAIGN-V163
+Accepted user-authored all-town network, civilian presentation and18Rucesion quests throughLv99. changes/TOWN_CAMPAIGN_V163.json feeds TownTravel/CampaignJourney/NpcIdentity/CampaignProgress, GameView dialogue/navigation and existing save/reward adapters. Original92CSV/source snapshots unchanged; hunting/Ariel restrictions retained. Build/runtime acceptance pending.

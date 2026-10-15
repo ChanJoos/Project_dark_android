@@ -19,7 +19,7 @@ public class AbelCoastV139Test {
  @Before public void reset(){context=RuntimeEnvironment.getApplication();context.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(context);}
  static void restoreD04(RpgProgressionState r,String job)throws Exception{
   long exp=0;for(int i=1;i<41;i++)exp+=LevelExpCurve.requiredForNext(i);r.grantAdaptedReward((int)exp,10000);assertTrue(r.chooseInitialJob(job));
-  JSONArray complete=new JSONArray();for(CampaignProgress.Def d:r.campaign().route(job))if(!d.id.startsWith("E"))complete.put(d.id);
+  JSONArray complete=new JSONArray();for(CampaignProgress.Def d:r.campaign().route(job))if(!d.id.startsWith("E")&&!d.id.startsWith("F"))complete.put(d.id);
   assertTrue(r.campaign().restore(r.campaign().snapshot().put("complete",complete)));
  }
  @Test public void coastIncludesEveryVideoFamilyAndShorePropsRespectTideAndProtectedReturnCorridor(){
