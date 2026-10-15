@@ -1,0 +1,29 @@
+{
+  "evidence": "USER_CONFIRMED_20261015_NORMAL_VS_CURSED; VIDEO_OBSERVED_COLOR_PAIR",
+  "recording": "Screen_Recording_20261011_215521_YouTube.mp4",
+  "recordingSha256": "dc9d859037c751df1297a830b39eb8b9a9e037ff4fde28b45dad6b37a3cac211",
+  "normal": {
+    "seconds": 9.5,
+    "crop": [
+      925,
+      285,
+      1045,
+      380
+    ]
+  },
+  "faded": {
+    "seconds": 16,
+    "crop": [
+      780,
+      468,
+      895,
+      555
+    ]
+  },
+  "interpretation": "User identifies blue-faded actor as cursed. Video pixels distinguish vivid violet from blue-faded; hidden status memory cannot be recovered from video. No exact original palette-index or effect matrix claim.",
+  "implementation": "Existing code-native CoastSpritePalette material projection preserves V161 source bytes, alpha, all12frames, calibration. MonsterCursePalette applies modest RGB-only cool/desaturated filter from live CURSE effect. Exact curve ADAPTED; other status colors unresolved.",
+  "sha256": {
+    "pong-normal-9_5s.png": "86bd55992cc9901e5e6becb06576c36e73539091ff5a34261cbec8ba5ed05ef5",
+    "pong-faded-16s.png": "653f05183691fd1be3251410404571632331e11601f9b43ef6866ec2839845e3"
+  }
+}

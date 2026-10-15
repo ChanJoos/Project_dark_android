@@ -61,6 +61,7 @@ public final class PoteFieldRenderer {
   private final List<ActorDraw> depthActors=new ArrayList<>();
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
   private String preparedMonsterMap;
+  private com.projectdark.mobile.SkillEffectState monsterEffects;
   private final PoteMonsterMotion.Frame motion=new PoteMonsterMotion.Frame();
   private static final int MESH_COLS=4,MESH_ROWS=6;
   private final float[] motionVertices=new float[(MESH_COLS+1)*(MESH_ROWS+1)*2];
@@ -68,6 +69,7 @@ public final class PoteFieldRenderer {
 
   /** Decode/upload all states at map entry, rather than on a walk turn or first hit. */
   public void prepareMonsters(com.projectdark.mobile.RuntimeState runtime){
+    monsterEffects=runtime.skillEffects();
     if(runtime.currentMapId().equals(preparedMonsterMap))return;
     cache.keySet().removeIf(key->key.startsWith(PoteForestMonsterShowcase.ASSET_ROOT));
     hitCache.clear();
@@ -135,8 +137,12 @@ public final class PoteFieldRenderer {
     if(monster==null||!monster.alive)return;
     CharacterRenderer.Direction direction=PoteForestMonsterShowcase.presentationFacing(monster);
     String state=PoteForestMonsterShowcase.poseFor(monster);
-    drawAnimatedMonster(c,monster.id,state,direction,PoteForestMonsterShowcase.attackProgress(monster),
-        monster.animationClock,x,y,monster.hitFlash);
+    pixel.setColorFilter(com.projectdark.mobile.MonsterCursePalette.active(monsterEffects,monster.id)
+        ?com.projectdark.mobile.MonsterCursePalette.FADED:null);
+    try{
+      drawAnimatedMonster(c,monster.id,state,direction,PoteForestMonsterShowcase.attackProgress(monster),
+          monster.animationClock,x,y,monster.hitFlash);
+    }finally{pixel.setColorFilter(null);}
   }
 
   private final Matrix monsterPixelMatrix=new Matrix();

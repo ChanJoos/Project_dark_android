@@ -14,14 +14,29 @@ public final class CoastSpritePalette {
     return path;
   }
   public static Bitmap apply(String path,Bitmap source){
-    if(source==null||sourcePath(path).equals(path))return source;
+    boolean pong=path.contains("/abel_v161/pong/");
+    if(source==null||(!pong&&sourcePath(path).equals(path)))return source;
     int[] pixels=new int[source.getWidth()*source.getHeight()];
     source.getPixels(pixels,0,source.getWidth(),0,0,source.getWidth(),source.getHeight());
     float[] hsv=new float[3];
     for(int i=0;i<pixels.length;i++){
       int p=pixels[i],a=Color.alpha(p);if(a==0)continue;
       int r=Color.red(p),g=Color.green(p),b=Color.blue(p);
-      if(path.contains("/koatl/")){
+      if(pong){
+        // Normal violet/gold, not the blue-faded cursed actor formerly used as reference.
+        // 20261011 recording 9.5s normal / 16s faded crops: master/source/abel_v162.
+        // Material projection retains every authored pose/alpha/anchor and all dark outlines.
+        Color.colorToHSV(p,hsv);
+        if(hsv[2]>.16f&&hsv[1]>.18f){
+          if(hsv[0]>245&&hsv[0]<315){
+            hsv[0]=hsv[0]*.35f+272f*.65f;
+            hsv[1]=Math.min(1f,hsv[1]*1.16f);hsv[2]=Math.min(1f,hsv[2]*1.10f);
+          }else if(hsv[0]>20&&hsv[0]<55){
+            hsv[1]=Math.min(1f,hsv[1]*1.12f);hsv[2]=Math.min(1f,hsv[2]*1.10f);
+          }
+          pixels[i]=Color.HSVToColor(a,hsv);
+        }
+      }else if(path.contains("/koatl/")){
         // Silver ribs only. Navy membrane, body and tail remain byte-identical.
         int max=Math.max(r,Math.max(g,b)),min=Math.min(r,Math.min(g,b));
         if(max>38&&max-min<max*.19f&&r>=b*.94f){

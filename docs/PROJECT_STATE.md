@@ -1,3 +1,7 @@
+## 2026-10-15 — V162 normal Pong / live curse color correction in progress
+
+User corrected V161 Pong reference: blue-faded monster was cursed, not its normal palette. Supplied 20261011 recording9.5s vivid violet actor and16s blue-faded actor recropped without altering pixels; reference/provenance master/source/abel_v162. Normal palette transferred through existing code-native material adapter; V16184 source poses, alpha, calibration and accepted Rucesion art retained. Live combat-owned CURSE (all catalog stages and screen variants) selects RGB-only shared immutable filter, no extra status texture cache; expiry/dispel/respawn returns normal. Status authority/stacking/combat math unchanged. Root sole editor on existing PR197. Implementation/tests prepared; BUILD/NATIVE/phone acceptance PENDING, no V162 APK yet.
+
 ## 2026-10-15 — V161 exact candidate verified and delivered
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED. Source `b7d1f0a52214e88a0dbb6eb46466e8dba29aaf76`; focused Actions38636656452/job116101434216 SUCCESS:120tests/18suites,0failures/errors/skips. Common PR38636665925/job116101468060 and push38636656320/job116101434881 both SUCCESS; exact source and decoded build logs checked.

@@ -145,7 +145,7 @@ jobs:
         run: |
           python3 tools/generate_skill_abilities.py
           git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_ABILITY_FORMULAS.csv
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillAbilityRuntimeTest --stacktrace
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillAbilityRuntimeTest --tests com.projectdark.mobile.MonsterCurseV162Test --stacktrace
       - name: Verify classic capture sources and projections
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
@@ -261,11 +261,11 @@ jobs:
           name: inn-v93-review-${{ github.sha }}
           path: app/build/reports/device-review/v93-*.png
           if-no-files-found: warn
-      - name: Build and verify exact V161 debug APK
+      - name: Build and verify exact V162 debug APK
         run: |
           gradle :app:assembleDebug --stacktrace
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v161_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v162_apk.py app/build/outputs/apk/debug/app-debug.apk
       - name: Upload focused V96 weapon and jump review
         if: always()
         uses: actions/upload-artifact@v4
