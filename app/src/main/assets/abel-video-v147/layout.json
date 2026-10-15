@@ -725,7 +725,8 @@
           120
         ],
         "anchorPreserved": true,
-        "sha256": "4e11d69f0fc694b45856e4779ef1288c3dd05732e73a71db8669b523ee50f805"
+        "sha256": "e5192e43a8c00bfa1913d80df6a432d57ccdcbd916e7fc54c8590013cbb65067",
+        "crop": "alpha>=128 bounds; retained interior alpha; no binary output threshold"
       }
     },
     {
@@ -2747,7 +2748,8 @@
           119
         ],
         "anchorPreserved": true,
-        "sha256": "39036f06c8e27f69e3772741d5e5a4dd3985b9414e9100c0f89359d303e83808"
+        "sha256": "16e55678ca013ab1154d455dbbcb7f40d9bb0455783f8e8dfae7e27a61d23f8b",
+        "crop": "alpha>=128 bounds; retained interior alpha; no binary output threshold"
       }
     },
     {
@@ -2912,7 +2914,8 @@
           130
         ],
         "anchorPreserved": true,
-        "sha256": "88ddc8d8199564dcae3e803dfa0b681cc69bceb7f888b2fd9844c594a08bd8a1"
+        "sha256": "5002215cf524d5813784628cfdfdecb88f8fc149e625534bb564938b02242fd8",
+        "crop": "alpha>=128 bounds; retained interior alpha; no binary output threshold"
       }
     },
     {
@@ -3309,7 +3312,8 @@
           140
         ],
         "anchorPreserved": true,
-        "sha256": "1ae23aa44e2f23f0bfcf187224a12e7c3dc945eadf6df9cecda0b9bbca49147c"
+        "sha256": "bb0564e92fc234658eeb2b7d585d914dfae9fe7f5dc095ee9c8a45665d8fd6fb",
+        "crop": "alpha>=128 bounds; retained interior alpha; no binary output threshold"
       }
     },
     {

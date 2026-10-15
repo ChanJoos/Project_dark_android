@@ -1,3 +1,7 @@
+## Native-size preflight correction
+
+Initial image_gen alpha contained near-transparent perimeter noise. Naive nonzero-alpha crop shrank poles to27px. Full native preview caught this BEFORE APK delivery. Crop uses alpha>=128 bounds, preserving output interior alpha; poles now115–135px high within unchanged canvases. Native pole-height assertion remains enabled. Initial6abd0c97 candidate superseded by this correction; no redraw.
+
 # V165 town polish checkpoint
 
 Branch codex/rucesion-coast-v157 / PR197; base629e4f34; main41fe6def unchanged. Last exact-source full common success: V164 e834b49e /38720772628 and38720764872.

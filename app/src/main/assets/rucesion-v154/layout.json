@@ -323,7 +323,8 @@
           130
         ],
         "anchorPreserved": true,
-        "sha256": "88ddc8d8199564dcae3e803dfa0b681cc69bceb7f888b2fd9844c594a08bd8a1"
+        "sha256": "5002215cf524d5813784628cfdfdecb88f8fc149e625534bb564938b02242fd8",
+        "crop": "alpha>=128 bounds; retained interior alpha; no binary output threshold"
       }
     },
     {
