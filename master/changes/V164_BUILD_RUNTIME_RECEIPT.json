@@ -1,0 +1,90 @@
+{
+  "sourceCommit": "e834b49e43c0932374dbd52a8f82ccee939a8f07",
+  "runId": "38720764643",
+  "versionCode": 164,
+  "versionName": "1.64-town-quality",
+  "applicationId": "com.projectdark.mobile.v164test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "ec9070cb5c79385bcb0d7d4dffb9d7af53350201b17db56b4e116be2c11e038a",
+  "apkBytes": 80459329,
+  "builtSeoul": "2026-10-15T19:36:36.920661+09:00",
+  "scope": "V164 all-town travel, civilian NPC presentation and18Rucesion quests through99; retains normal Pong palette from supplied normal/faded pair and combat-owned CURSE exact-alpha prewarmed RGB variants; expiry/clear/respawn/fresh-map restoration; four states60textures each max35,389,440bytes. Retains V161 all13 Abel coast reference audit;7families84 newly source-referenced poses; occupied-alpha/player ratio calibration for10 observed species, floating purple scale and obscured KingArk pair explicitly unresolved. Accepted Rucesion10 art/scale/motion and shared AI/collision/reward/save/cache retained. Generated direction/action reconstruction is not an original atlas claim.",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "verifiedTownSourceFiles": 89,
+  "tests": {
+    "tests": 80,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      [
+        "com.projectdark.mobile.TownQualityV164Test",
+        "3"
+      ],
+      [
+        "com.projectdark.mobile.TownCampaignV163Test",
+        "5"
+      ],
+      [
+        "com.projectdark.mobile.CampaignNavigationTest",
+        "4"
+      ],
+      [
+        "com.projectdark.mobile.MonsterCurseV162Test",
+        "8"
+      ],
+      [
+        "com.projectdark.mobile.RuntimeCheckpointTest",
+        "15"
+      ],
+      [
+        "com.projectdark.mobile.AbelTownV152Test",
+        "17"
+      ],
+      [
+        "com.projectdark.mobile.RucesionServicesV156Test",
+        "5"
+      ],
+      [
+        "com.projectdark.mobile.NpcAppearanceTest",
+        "3"
+      ],
+      [
+        "com.projectdark.mobile.CampaignProgressTest",
+        "2"
+      ],
+      [
+        "com.projectdark.mobile.AbelIdentityPunchTravelV143Test",
+        "4"
+      ],
+      [
+        "com.projectdark.mobile.RucesionTownV154Test",
+        "4"
+      ],
+      [
+        "com.projectdark.mobile.QuestJournalTest",
+        "10"
+      ]
+    ]
+  },
+  "status": "FOCUSED_BUILD_NATIVE_VERIFIED_COMMON_PENDING",
+  "focusedRun": 38720764643,
+  "focusedJob": 116374448272,
+  "nativeArtifact": 11966026549,
+  "apkArtifact": 11965561778,
+  "nativeScreensReviewed": 33,
+  "commonRun": 38720772628,
+  "mainMerged": false,
+  "governingInputs": [
+    "AGENTS.md",
+    "docs/DIRECTOR_GUIDE.md",
+    "docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md",
+    "design/DATA_CONTRACT.md",
+    "design/SOURCE_OF_TRUTH.md",
+    "docs/TOWN_V164_CHECKPOINT.md",
+    "app/src/main/assets/abel-video-v147/layout.json",
+    "app/src/main/assets/rucesion-v154/layout.json"
+  ]
+}
