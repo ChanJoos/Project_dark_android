@@ -1,3 +1,11 @@
+## Exact V165 focused verification and saved candidate
+
+Runtime source f46260966a1592700a7343735526cf60ef344647, focused Actions38741585115/job116444384033 SUCCESS:83tests/13suites/0failure/error/skip. Reviewed32town/dialog native frames plus NPC pairs/actual scenes. NPC/player same-outfit pixels identical, scale1.7, manager visible heights51/50/49px(Milles/Abel/Rucesion). No NPC scale or tree change. Shared17service signs;6town pairs/forest/close/gutters verified.
+
+APK165/com.projectdark.mobile.v165test built2026-10-15T22:25:09.282130+09:00,80447229bytes,SHA25658e049fc4f6b1d63ba0620035de1d15bffc6e6be2c383469367dd29b1e3b7f1a. APK artifact11975189912/native11975009837 ZIP SHA/CRC independently verified; embedded identity and89packaged town files match exact source. Truncated local APK transfer resumed from verified byte offset; final full hash/CRC PASS. APK/3review PNGs/verification saved successfully. APK libfile_fb8e636068fc81918ecca8701d226473.
+
+Common PR38741598068/push38741585099 IN_PROGRESS; do not claim full common success yet. Physical phone/user visual PENDING. No main merge. Receipt master/changes/V165_BUILD_RUNTIME_RECEIPT.json. No additional runtime/art changes needed pending regressions and handset feedback.
+
 ## Native-size preflight correction
 
 Initial image_gen alpha contained near-transparent perimeter noise. Naive nonzero-alpha crop shrank poles to27px. Full native preview caught this BEFORE APK delivery. Crop uses alpha>=128 bounds, preserving output interior alpha; poles now115–135px high within unchanged canvases. Native pole-height assertion remains enabled. Initial6abd0c97 candidate superseded by this correction; no redraw.
