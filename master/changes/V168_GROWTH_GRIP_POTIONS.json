@@ -1,0 +1,76 @@
+{
+  "changeId": "V168_GROWTH_GRIP_POTIONS",
+  "status": "ACCEPTED_USER_REQUEST",
+  "baseline": "010040d21de31a48b1c94fe3a89446480059f759",
+  "deviceReport": {
+    "version": 167,
+    "status": "DEVICE_FAILED_USER_REPORTED",
+    "items": [
+      "CON/WIS growth too small/fixed",
+      "two-hand action and asymmetric shield equip",
+      "Abel/Rucesion travel manager location",
+      "HUD potion identity and Curum color"
+    ]
+  },
+  "growth": {
+    "evidence": "ADAPTED_USER_CALIBRATION",
+    "originalFormula": "UNKNOWN",
+    "userExamples": {
+      "stat3": "about 50",
+      "stat60": "130-150 randomized"
+    },
+    "implemented": {
+      "stat3": [
+        45,
+        55
+      ],
+      "stat60": [
+        130,
+        150
+      ],
+      "hp": "CON allocated at each future level",
+      "mp": "WIS allocated at each future level",
+      "random": "independent HP/MP rolls; persisted PRNG state copied/rolled back with RPG transaction",
+      "preview": "range only; no random consumption",
+      "pastLevels": "not recalculated"
+    },
+    "ui": "actual max HP/MP delta on level change"
+  },
+  "grip": {
+    "twoHandThenShield": "TWO_HAND_CONFLICT; no mutation; visible refusal",
+    "shieldThenTwoHand": "remove shield slot; equip weapon; retain inventory",
+    "motion": "include mw_chungryong in two-hand family; route its actual basic attack through existing twohand BODY/blade frames"
+  },
+  "travel": {
+    "maps": [
+      "MAP_ABEL_TOWN",
+      "MAP_RUCESION_TOWN"
+    ],
+    "manager": "nearest connected tile beside registered reagent-shop door",
+    "arrival": "connected legal tile 64-120 world pixels from manager",
+    "originalPositions": "USER_DIRECTED_ADAPTATION"
+  },
+  "artwork": {
+    "hudHp": "IT_REAGENT_CURUM",
+    "hudMp": "IT_B_MP_POTION original maradhiumu source receipt",
+    "curum": {
+      "before": "aliased unmodified Curanum purple bottle",
+      "after": "retained source bottle silhouette; violet-liquid pixels recolored orange with original alpha, glass/cork retained",
+      "evidence": "USER_CONFIRMED_ORANGE_ADAPTED_PALETTE",
+      "originalColorVerification": "PENDING: public searches found item references but no independently verified historical Curum icon; atwiki source page timed out",
+      "unchanged": "Curanum original bitmap/file bytes"
+    },
+    "sources": [
+      "https://lod.nexon.com/cashshop/update/139273",
+      "https://lod.nexon.com/board/1509949442/393824",
+      "https://w.atwiki.jp/takesi100/pages/84.html",
+      "https://img.atwiki.jp/takesi100/attach/84/277/maradhiumu.gif"
+    ]
+  },
+  "validation": {
+    "focused": "PENDING",
+    "common": "PENDING",
+    "phone": "PENDING",
+    "visualAcceptance": "PENDING"
+  }
+}

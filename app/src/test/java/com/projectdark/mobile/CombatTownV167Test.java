@@ -25,7 +25,7 @@ public class CombatTownV167Test {
   high.rpg().restoreStats(3,3,30,30,3,0);assertEquals(1000,high.rpg().baseMaxHp());assertEquals(1000,high.rpg().baseMaxMp());
   int hp=high.rpg().nextHpGain(),mp=high.rpg().nextMpGain();long exp=LevelExpCurve.requiredForNext(30);
   for(RuntimeState s:Arrays.asList(low,high)){assertEquals(1,s.rpg().grantAdaptedReward(exp,0));s.applyDerivedGrowth();}
-  assertEquals(1000+hp,high.rpg().baseMaxHp());assertEquals(1000+mp,high.rpg().baseMaxMp());assertTrue(high.player().maxHp>low.player().maxHp);assertTrue(high.player().maxMp>low.player().maxMp);
+  assertTrue(high.rpg().baseMaxHp()>=1000+LevelGrowthPolicy.minimum(30));assertTrue(high.rpg().baseMaxHp()<=1000+LevelGrowthPolicy.maximum(30));assertTrue(high.rpg().baseMaxMp()>=1000+LevelGrowthPolicy.minimum(30));assertTrue(high.rpg().baseMaxMp()<=1000+LevelGrowthPolicy.maximum(30));assertTrue(high.player().maxHp>low.player().maxHp);assertTrue(high.player().maxMp>low.player().maxMp);
   F5mSaveStore.saveRewardsActive(high.rpg());F5mSaveStore.install(c);RpgProgressionState restored=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(restored);assertEquals(high.rpg().baseMaxHp(),restored.baseMaxHp());assertEquals(high.rpg().baseMaxMp(),restored.baseMaxMp());
  }
  @Test public void intAndDexScaleTheirActualSkillFamilies(){
@@ -34,7 +34,7 @@ public class CombatTownV167Test {
  }
  @Test public void twoHandedOccupancyAndAllFourSourceFacingsAreExplicit()throws Exception{
   RuntimeState s=state();RpgProgressionState r=s.rpg();r.equip("IT_ADAPTED_STARTER_SHIELD");r.equip("IT_WARDROBE_MW016");assertNull(r.equippedDefinition("방패"));assertEquals(WeaponCombatProfile.Grip.TWO_HAND,WeaponCombatProfile.grip(r.equippedDefinition("무기")));assertEquals("TWO_HAND",WeaponCombatProfile.motion(r,"SWING"));
-  r.equip("IT_ADAPTED_STARTER_SHIELD");assertNull(r.equippedDefinition("무기"));
+  assertEquals(RpgProgressionState.EquipResult.TWO_HAND_CONFLICT,r.equip("IT_ADAPTED_STARTER_SHIELD"));assertNotNull(r.equippedDefinition("무기"));assertNull(r.equippedDefinition("방패"));
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(String body:new String[]{"mm001","wm001"})assertEquals(body+"/02/"+CharacterRenderer.actionSourceIndex(d),catalog.frameKey(body,"SWING",d,.5f));
  }
  @Test public void daraCannotSilentlyPreviewZeroAndRealResourcesDamageExactlyOnce()throws Exception{
@@ -92,4 +92,5 @@ public class CombatTownV167Test {
   File dir=new File("build/reports/combat-town-v167");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all-equipment-audit.json").toPath(),rows.toString(2).getBytes("UTF-8"));assertTrue(rows.length()>100);
  }
 }
+
 

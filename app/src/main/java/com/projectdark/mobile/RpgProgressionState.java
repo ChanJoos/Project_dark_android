@@ -23,7 +23,7 @@ public final class RpgProgressionState {
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
   public enum RewardSource { CANONICAL, ADAPTED_TEST, ADAPTED_CAMPAIGN, UNRESOLVED }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
-  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, INVALID_SLOT, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET }
+  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, INVALID_SLOT, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET, TWO_HAND_CONFLICT }
   public enum UseResult { USED, ITEM_NOT_OWNED, NOT_CONSUMABLE, NO_EFFECT }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
 
@@ -338,6 +338,16 @@ public final class RpgProgressionState {
   private int str=3,intel=3,wis=3,con=3,dex=3,statPoints=0;
   private int baseMaxHp=100,baseMaxMp=100;
   private final LevelGrowthPolicy growthPolicy=new LevelGrowthPolicy.BalancedV1();
+  private long growthRandomState=java.util.concurrent.ThreadLocalRandom.current().nextLong();
+  public long growthRandomState(){return growthRandomState;}
+  public void restoreGrowthRandomState(long state){growthRandomState=state;}
+  private int rollGrowth(int stat){
+    growthRandomState=growthRandomState*6364136223846793005L+1442695040888963407L;
+    int min=LevelGrowthPolicy.minimum(stat),width=LevelGrowthPolicy.maximum(stat)-min+1;
+    return min+(int)((growthRandomState>>>1)%width);
+  }
+  public String nextHpGainRange(){return normalLevel!=null&&normalLevel>=99?"0":LevelGrowthPolicy.minimum(con)+"~"+LevelGrowthPolicy.maximum(con);}
+  public String nextMpGainRange(){return normalLevel!=null&&normalLevel>=99?"0":LevelGrowthPolicy.minimum(wis)+"~"+LevelGrowthPolicy.maximum(wis);}
   public int str(){return str;} public int intel(){return intel;} public int wis(){return wis;} public int con(){return con;} public int dex(){return dex;} public int statPoints(){return statPoints;}
   public int nextHpGain(){return normalLevel!=null&&normalLevel>=99?0:growthPolicy.hpGain((normalLevel==null?1:normalLevel)+1,currentJobCode,con);}
   public int nextMpGain(){return normalLevel!=null&&normalLevel>=99?0:growthPolicy.mpGain((normalLevel==null?1:normalLevel)+1,currentJobCode,wis);}
@@ -407,7 +417,7 @@ public final class RpgProgressionState {
     int before=normalLevel==null?1:normalLevel;
     int level=before;long exp=normalExp==null?0L:normalExp;
     while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
-    normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0){for(int lv=before+1;lv<=level;lv++){baseMaxHp+=growthPolicy.hpGain(lv,currentJobCode,con);baseMaxMp+=growthPolicy.mpGain(lv,currentJobCode,wis);}statPoints+=gained*2;}return gained;
+    normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0){for(int lv=before+1;lv<=level;lv++){baseMaxHp+=rollGrowth(con);baseMaxMp+=rollGrowth(wis);}statPoints+=gained*2;}return gained;
   }
 
   /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
@@ -581,6 +591,7 @@ public final class RpgProgressionState {
     if(def==null)return EquipResult.UNKNOWN_ITEM;
     if(!def.equippable())return EquipResult.NOT_EQUIPPABLE;
     if(!acceptsSlot(slot,def))return EquipResult.INVALID_SLOT;
+    if(SHIELD_SLOT.equals(slot)&&WeaponCombatProfile.grip(equippedDefinition(WEAPON_SLOT))==WeaponCombatProfile.Grip.TWO_HAND)return EquipResult.TWO_HAND_CONFLICT;
     if(itemId.equals(equipmentBySlot.get(slot))){
       equipmentBySlot.remove(slot);
       return EquipResult.UNEQUIPPED;
@@ -601,7 +612,6 @@ public final class RpgProgressionState {
       removeEquippedCoverage(CharacterVisualBinding.GarmentCoverage.FULL_BODY);
     }
     if(WEAPON_SLOT.equals(slot)&&WeaponCombatProfile.grip(def)==WeaponCombatProfile.Grip.TWO_HAND)equipmentBySlot.remove(SHIELD_SLOT);
-    if(SHIELD_SLOT.equals(slot)&&WeaponCombatProfile.grip(equippedDefinition(WEAPON_SLOT))==WeaponCombatProfile.Grip.TWO_HAND)equipmentBySlot.remove(WEAPON_SLOT);
     equipmentBySlot.put(slot,itemId);
     campaign.record("EQUIP",itemId);return EquipResult.EQUIPPED;
   }
@@ -631,4 +641,5 @@ public final class RpgProgressionState {
   private void trimRewardHistory(){while(rewardHistory.size()>48)rewardHistory.remove(0);}
   private static int value(Map<String,Integer> map,String key){Integer v=map.get(key);return v==null?0:v;}
 }
+
 

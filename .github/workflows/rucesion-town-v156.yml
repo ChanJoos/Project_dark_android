@@ -1,4 +1,4 @@
-name: V167 Combat and town integration
+name: V168 Growth, grip, travel and potions
 on:
   push:
     branches: [codex/rucesion-coast-v157]
@@ -83,7 +83,7 @@ jobs:
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*EquipmentFoundationV124Test' --tests '*CombatTownV167Test' --tests '*CapturedSkillFxTest' --tests '*EquipmentPerformanceV130Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*SkillAbilityRuntimeTest' --tests '*TownPropsV166Test' --tests '*TownPolishV165Test' --tests '*TownQualityV164Test' --tests '*AbelTownV152Test' --tests '*RucesionTownV154Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*TownCampaignV163Test' --tests '*NpcAppearanceTest' --tests '*QuestJournalTest' --tests '*CampaignNavigationTest' --tests '*RuntimeCheckpointTest' --tests '*RucesionServicesV156Test' --tests '*MonsterCurseV162Test' --tests '*CampaignProgressTest.definitionsKeepOriginalCurveAndAddMapLocalForestRoute' --tests '*CampaignProgressTest.newForestRouteHasOrderedAtoDObjectivesAndSafeV3Migration' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*GrowthGripV168Test' --tests '*EquipmentFoundationV124Test' --tests '*CombatTownV167Test' --tests '*CapturedSkillFxTest' --tests '*EquipmentPerformanceV130Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*SkillAbilityRuntimeTest' --tests '*TownPropsV166Test' --tests '*TownPolishV165Test' --tests '*TownQualityV164Test' --tests '*AbelTownV152Test' --tests '*RucesionTownV154Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*TownCampaignV163Test' --tests '*NpcAppearanceTest' --tests '*QuestJournalTest' --tests '*CampaignNavigationTest' --tests '*RuntimeCheckpointTest' --tests '*RucesionServicesV156Test' --tests '*MonsterCurseV162Test' --tests '*CampaignProgressTest.definitionsKeepOriginalCurveAndAddMapLocalForestRoute' --tests '*CampaignProgressTest.newForestRouteHasOrderedAtoDObjectivesAndSafeV3Migration' --stacktrace
       - name: Record focused JUnit evidence
         if: always()
         run: |
@@ -105,12 +105,13 @@ jobs:
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v167_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v168_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: combat-town-v167-native-${{ github.sha }}
+          name: growth-grip-v168-native-${{ github.sha }}
           path: |
+            app/build/reports/growth-grip-v168/
             app/build/reports/combat-town-v167/
             app/build/reports/equipment-performance-v130/
             app/build/reports/town-v166/
@@ -131,8 +132,9 @@ jobs:
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: combat-town-v167-apk-${{ github.sha }}
+          name: growth-grip-v168-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
+
 

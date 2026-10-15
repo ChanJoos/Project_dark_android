@@ -27,9 +27,25 @@ final class SourceItemIconRegistry {
  Bitmap get(String id){
   if(pending(id))return null;
   JSONObject row=receipt(id);if(row==null)return null;String path=row.optString("assetPath",null);
-  if(path==null)return null;if(cache.containsKey(path))return cache.get(path);
+  if(path==null)return null;
+  String cacheKey="IT_REAGENT_CURUM".equals(id)?id:path;
+  if(cache.containsKey(cacheKey))return cache.get(cacheKey);
+  if("IT_REAGENT_CURUM".equals(id)){
+    Bitmap base=get("IT_REAGENT_CURANUM");
+    if(base==null){base=cache.get(path);}
+    if(base!=null){Bitmap orange=orangeCurum(base);cache.put(cacheKey,orange);return orange;}
+  }
   Bitmap bitmap=null;try(InputStream in=context.getAssets().open(path)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;bitmap=BitmapFactory.decodeStream(in,null,options);}catch(Exception e){throw new IllegalStateException("Missing original item artwork: "+id,e);}
-  cache.put(path,bitmap);return bitmap;
+  if("IT_REAGENT_CURUM".equals(id))bitmap=orangeCurum(bitmap);
+  cache.put(cacheKey,bitmap);return bitmap;
+ }
+ /** USER_CONFIRMED_ORANGE / ADAPTED: original Curum identity is not recovered.
+     Reuse retained bottle silhouette; recolor violet liquid only, preserve alpha/cork/glass. */
+ static Bitmap orangeCurum(Bitmap source){
+  int w=source.getWidth(),h=source.getHeight();int[] pixels=new int[w*h];source.getPixels(pixels,0,w,0,0,w,h);float[] hsv=new float[3];
+  for(int i=0;i<pixels.length;i++){int p=pixels[i];android.graphics.Color.colorToHSV(p,hsv);
+   if(android.graphics.Color.alpha(p)>0&&hsv[1]>.3f&&hsv[0]>=250&&hsv[0]<=335){hsv[0]=28;hsv[1]=Math.max(.65f,hsv[1]);hsv[2]=Math.min(1,hsv[2]*1.65f);pixels[i]=android.graphics.Color.HSVToColor(android.graphics.Color.alpha(p),hsv);}}
+  return Bitmap.createBitmap(pixels,w,h,Bitmap.Config.ARGB_8888);
  }
  /** Center the original bitmap at native size; never enlarge small artwork to fill a socket. */
  static void draw(Canvas canvas,Bitmap bitmap,RectF target,Paint paint){
@@ -41,3 +57,4 @@ final class SourceItemIconRegistry {
  }
  Bitmap get(RpgProgressionState.ItemDefinition d){return d==null?null:get(d.itemId);}
 }
+

@@ -137,7 +137,14 @@ public final class GameView extends View {
     return saved;
   }
 
+  private int observedGrowthLevel=-1,observedGrowthHp,observedGrowthMp;
+  private void observeLevelGrowth(){
+    RpgProgressionState r=state.rpg();int level=r.normalLevel();
+    if(observedGrowthLevel>=0&&level>observedGrowthLevel)showReward("레벨 "+level+" · 최대 HP +"+(r.baseMaxHp()-observedGrowthHp)+" · 최대 MP +"+(r.baseMaxMp()-observedGrowthMp));
+    observedGrowthLevel=level;observedGrowthHp=r.baseMaxHp();observedGrowthMp=r.baseMaxMp();
+  }
   private void update(float dt){
+    observeLevelGrowth();
     state.rpg().campaign().observeBasics(state.rpg(),skillBook);
     quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);
     if(inReagentShop){updateReagentShop(dt);return;}
@@ -727,7 +734,9 @@ public final class GameView extends View {
     String weaponMotion=WeaponCombatProfile.motion(state.rpg(),selected==null?"EQUIPPED_BASIC":selected.motion);
     if(isActing()&&presentation==CharacterRenderer.State.ATTACK&&(selected==null||"SK_공통_001".equals(selected.id))&&!"EQUIPPED_BASIC".equals(weaponMotion)){
       float hit=CombatResolver.attackPrototype(combat.attackDef(),combat.attackMode()).hitTime;
-      if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,weaponMotion,skillPosePhase(actionClock,stateDuration,hit)))return;
+      if("TWO_HAND".equals(weaponMotion)&&ChungryongWeaponRenderer.equipped(pose.weaponVisualRef)){
+        if(skillBodyRenderer.drawChungryong(c,pose,characterBodyIdentity,"twohand",skillPosePhase(actionClock,stateDuration,hit)))return;
+      }else if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,weaponMotion,skillPosePhase(actionClock,stateDuration,hit)))return;
     }
     if(isActing()&&ChungryongWeaponRenderer.equipped(pose.weaponVisualRef)&&((selected==null&&presentation==CharacterRenderer.State.ATTACK)||(selected!=null&&selected.id.startsWith("SK_전사_")&&"SWING".equals(selected.motion)))){
       SkillActionContract.Rule rule=selected==null?null:SkillActionContract.get(selected.id);float contact=rule==null?CombatResolver.attackPrototype(combat.attackDef(),combat.attackMode()).hitTime:rule.contact;
@@ -816,7 +825,7 @@ private void drawUtilityRail(Canvas c){
     for(int n=0;n<9;n++){float yy=150+n*23;UiTheme.text(c,labels2[n],771,yy,9.5f,UiTheme.MUTED,false);UiTheme.right(c,vals[n],915,yy,10.5f,UiTheme.TEXT,true);if(n<8)UiTheme.line(c,771,yy+7,915,yy+7,UiTheme.LINE);}
     UiTheme.text(c,"STR 물리 · INT 마법 · DEX 도적 기술",590,301,10,UiTheme.MUTED,false);UiTheme.text(c,"기술 조건은 스킬창 → 조건에서 확인",590,322,10,UiTheme.GOLD,false);
     if(r.canResetIntroAllocation(skillBook))UiTheme.button(c,new RectF(584,330,752,355),"입문 배분 다시 하기",true,false);
-    UiTheme.line(c,590,357,915,357,UiTheme.LINE);UiTheme.fit(c,"다음 레벨: HP +"+r.nextHpGain()+" · MP +"+r.nextMpGain()+" (CON · WIS 배분 반영)",590,378,325,10,UiTheme.MUTED,false);c.restore();
+    UiTheme.line(c,590,357,915,357,UiTheme.LINE);UiTheme.fit(c,"다음 레벨: HP +"+r.nextHpGainRange()+" · MP +"+r.nextMpGainRange()+" (CON · WIS 배분 반영)",590,378,325,10,UiTheme.MUTED,false);c.restore();
   }
   private void drawChat(Canvas c){
     RectF r=MobileHudLayout.chat(chatExpanded);MobileHudSkin.fade(c,r);RuntimeMetrics m=state.metrics();
@@ -908,7 +917,7 @@ private void drawUtilityRail(Canvas c){
     if(hit==ItemWindow.Hit.ACTION){RpgProgressionState.EquipResult result=state.rpg().unequip(itemWindow.selectedSlot);state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),FeedbackTone.INFO);}
     return true;
   }
-  private String equipResultLabel(RpgProgressionState.EquipResult result){switch(result){case EQUIPPED:return "장착 완료";case UNEQUIPPED:return "해제 완료";case REQUIREMENT_NOT_MET:return "장착 불가 · 조건 미충족";case REQUIREMENT_PENDING:return "장착 보류 · 조건 확인 필요";case INVALID_SLOT:return "장착 부위가 맞지 않습니다";case NOT_EQUIPPABLE:return "장착할 수 없는 아이템";case UNKNOWN_ITEM:return "알 수 없는 아이템";case ITEM_NOT_OWNED:default:return "보유하지 않은 아이템";}}
+  private String equipResultLabel(RpgProgressionState.EquipResult result){switch(result){case EQUIPPED:return "장착 완료";case UNEQUIPPED:return "해제 완료";case REQUIREMENT_NOT_MET:return "장착 불가 · 조건 미충족";case REQUIREMENT_PENDING:return "장착 보류 · 조건 확인 필요";case INVALID_SLOT:return "장착 부위가 맞지 않습니다";case NOT_EQUIPPABLE:return "장착할 수 없는 아이템";case UNKNOWN_ITEM:return "알 수 없는 아이템";case TWO_HAND_CONFLICT:return "양손무기 장착 중에는 방패를 장착할 수 없습니다";case ITEM_NOT_OWNED:default:return "보유하지 않은 아이템";}}
   private boolean handleInventoryTouch(float x,float y){
     if(!inventoryOpen)return false;
     ItemWindow.Hit hit=itemWindow.inventoryTouch(x,y,state.rpg());
@@ -1004,3 +1013,4 @@ private void drawUtilityRail(Canvas c){
   private static boolean circleHit(float x,float y,float cx,float cy,float r){float dx=x-cx,dy=y-cy;return dx*dx+dy*dy<=r*r;}
   private float dist(float a,float b,float c,float d){float x=a-c,y=b-d;return(float)Math.sqrt(x*x+y*y);}
 }
+

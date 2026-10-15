@@ -19,9 +19,10 @@ public final class TownTravel {
  public static WorldMoveTargetController.TileCenter center(String map){
   if(WorldDef.ID.equals(map))return new WorldMoveTargetController.TileCenter(512,544);
   float x=800,y=608;
-  if(AbelTownGeometry.contains(map)){x=AbelTownGeometry.x(50,35);y=AbelTownGeometry.y(50,35);}
-  if(RucesionTownGeometry.contains(map)){x=RucesionTownGeometry.x(41,43);y=RucesionTownGeometry.y(41,43);}
+  if(AbelTownGeometry.contains(map)){AbelTownGeometry.Building shop=AbelTownGeometry.forInterior("abel_interior_reagent");x=shop.doorX()+96;y=shop.doorY()+48;}
+  if(RucesionTownGeometry.contains(map)){RucesionTownGeometry.Building shop=RucesionTownGeometry.forInterior("rucesion_interior_reagent");x=shop.doorX()+96;y=shop.doorY()+48;}
   return CampaignWorld.nearestConnectedTile(map,x,y);
  }
  private TownTravel(){}
 }
+
