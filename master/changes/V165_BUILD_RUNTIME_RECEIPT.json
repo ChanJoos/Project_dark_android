@@ -8,7 +8,7 @@
   "apkSha256": "58e049fc4f6b1d63ba0620035de1d15bffc6e6be2c383469367dd29b1e3b7f1a",
   "apkBytes": 80447229,
   "builtSeoul": "2026-10-15T22:25:09.282130+09:00",
-  "scope": "V165 all-town travel, civilian NPC presentation and18Rucesion quests through99; retains normal Pong palette from supplied normal/faded pair and combat-owned CURSE exact-alpha prewarmed RGB variants; expiry/clear/respawn/fresh-map restoration; four states60textures each max35,389,440bytes. Retains V161 all13 Abel coast reference audit;7families84 newly source-referenced poses; occupied-alpha/player ratio calibration for10 observed species, floating purple scale and obscured KingArk pair explicitly unresolved. Accepted Rucesion10 art/scale/motion and shared AI/collision/reward/save/cache retained. Generated direction/action reconstruction is not an original atlas claim.",
+  "scope": "V165: five source-referenced streetlamp repairs, shared seventeen service signs, simplified three-destination travel with Piet omitted, and NPC/player same-outfit pixel identity. Existing collision, quests, save and combat retained.",
   "bossPoses": 12,
   "phoneAcceptance": "PENDING",
   "userVisualAcceptance": {
@@ -43,9 +43,22 @@
   "apkArtifact": 11975189912,
   "commonPrRun": 38741598068,
   "commonPushRun": 38741585099,
-  "commonStatus": "IN_PROGRESS",
+  "commonStatus": "COMPLETED_SUCCESS",
   "treesChanged": false,
-  "status": "FOCUSED_BUILD_NATIVE_VERIFIED_COMMON_PENDING",
+  "status": "BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING",
   "deliveryFilesSaved": 5,
-  "apkLibraryFileId": "libfile_fb8e636068fc81918ecca8701d226473"
+  "apkLibraryFileId": "libfile_fb8e636068fc81918ecca8701d226473",
+  "commonPr": {
+    "run": 38741598068,
+    "job": 116444423881,
+    "status": "SUCCESS",
+    "successfulGradleInvocations": 26,
+    "decodedExactSourceConfirmed": true
+  },
+  "commonPush": {
+    "run": 38741585099,
+    "job": 116444375863,
+    "status": "SUCCESS"
+  },
+  "mainMerged": false
 }

@@ -14,5 +14,5 @@
   "oldPietSavesPreserved": true,
   "artStatus": "ADAPTED_SOURCE_REFERENCED_RECONSTRUCTION",
   "phoneVisualAcceptance": "PENDING",
-  "validation": "Master PASS; native tests/build pending"
+  "validation": "EXACT_SOURCE_F4626096_FOCUSED83_AND_FULL_COMMON_PR_PUSH_SUCCESS"
 }

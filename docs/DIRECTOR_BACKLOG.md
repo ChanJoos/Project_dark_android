@@ -1,3 +1,9 @@
+## 2026-10-15 — V165 final verification and delivery complete
+
+Exact runtime/APK source f46260966a1592700a7343735526cf60ef344647: focused38741585115/job116444384033 SUCCESS,83tests/13suites/0failure/error/skip; full common PR38741598068/job116444423881 and push38741585099/job116444375863 both COMPLETED/SUCCESS. Decoded PR logs confirm exact source,26successful Gradle invocations and0error annotations. Earlier common-pending notes are superseded. Reviewed32native town/dialog frames and same-outfit NPC/player pairs/actual scenes. NPC scale1.7 is unchanged; identical outfit/facing/foot produces identical pixels; manager heights51/50/49px vary by wardrobe. Five lamp repairs,17shared service signs,6town routes/forest/close/gaps and retained quests/save pass. User corrected trees to lamps; no tree pixels changed.
+
+APK165/com.projectdark.mobile.v165test built2026-10-15T22:25:09.282130+09:00,80447229bytes,SHA25658e049fc4f6b1d63ba0620035de1d15bffc6e6be2c383469367dd29b1e3b7f1a. Source ZIP digests/CRC,embedded exactsource/run/version and89town package files independently verified. APK artifact11975189912/native11975009837. APK,travel screenshot,lamp screenshot,NPCcomparison andverificationJSON saved successfully; APK libfile_fb8e636068fc81918ecca8701d226473. Documentation commits are not the APK source. IMPLEMENTED/BUILD VERIFIED/HOST ANDROID NATIVE VERIFIED; physical phone and user visual acceptance PENDING. Separate test package;main unmerged. Receipt master/changes/V165_BUILD_RUNTIME_RECEIPT.json. No further redraw/rebuild needed absent new failure or handset feedback.
+
 ## 2026-10-15 — V165 user lamp correction and town polish
 
 User corrected request2026-10-15 22:06 KST: STREETLAMPS, not trees. V165 changes no tree pixels. Five lamp sprites from2retained generated reference repairs preserve original native canvas/anchor; source and before bytes retained under master/source/town_v165. Source metadata reference.json.

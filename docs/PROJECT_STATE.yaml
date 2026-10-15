@@ -1,5 +1,5 @@
 town_polish_v165:
-  status: IMPLEMENTED_STATIC_VERIFIED_NATIVE_PENDING
+  status: BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING
   active_branch: codex/rucesion-coast-v157
   owner: ROOT_SINGLE_EDITOR
   pull_request: 197
