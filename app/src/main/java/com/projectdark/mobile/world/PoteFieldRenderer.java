@@ -68,18 +68,34 @@ public final class PoteFieldRenderer {
   private final float[] motionVertices=new float[(MESH_COLS+1)*(MESH_ROWS+1)*2];
   private final RectF monsterDestination=new RectF();
 
+  private final Map<String,float[]> visualCenters=new HashMap<>();
+  private void prepareCenter(String key,Bitmap source){
+    int w=source.getWidth(),h=source.getHeight(),l=w,t=h,r=0,b=0;int[] pixels=new int[w*h];source.getPixels(pixels,0,w,0,0,w,h);
+    for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(Color.alpha(pixels[y*w+x])>24){l=Math.min(l,x);r=Math.max(r,x+1);t=Math.min(t,y);b=Math.max(b,y+1);}
+    visualCenters.put(key,l<r?new float[]{(l+r)*.5f/w,(t+b)*.5f/h}:new float[]{.5f,.5f});
+  }
+  /** Same prewarmed pose, scale, inset and contact motion as the actual monster draw. */
+  public boolean monsterCenter(com.projectdark.mobile.RuntimeState.Monster m,float[] out){
+    CharacterRenderer.Direction d=PoteForestMonsterShowcase.presentationFacing(m);String state=PoteForestMonsterShowcase.poseFor(m);
+    PoteMonsterMotion.sample(m.id,state,PoteForestMonsterShowcase.attackProgress(m),m.animationClock,m.hitFlash,motion);
+    String key=PoteForestMonsterShowcase.assetPath(m.id,motion.pose,d);float[] center=visualCenters.get(key);Bitmap source=cache.get(key);if(center==null||source==null)return false;
+    String family=PoteForestMonsterShowcase.species(m.id);float h=PoteForestMonsterShowcase.bodyHeight(m.id),w=PoteForestMonsterShowcase.bodyWidth(m.id)*source.getWidth()/Math.max(1f,source.getHeight());
+    float inset=family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
+    out[0]=m.x+facingX(d)*(motion.lunge-motion.recoil)+(center[0]-.5f)*w;
+    out[1]=m.y+facingY(d)*(motion.lunge-motion.recoil)-motion.lift-h+inset+center[1]*h;return true;
+  }
   /** Decode/upload all states at map entry, rather than on a walk turn or first hit. */
   public void prepareMonsters(com.projectdark.mobile.RuntimeState runtime){
     monsterEffects=runtime.skillEffects();
     if(runtime.currentMapId().equals(preparedMonsterMap))return;
     cache.keySet().removeIf(key->key.startsWith(PoteForestMonsterShowcase.ASSET_ROOT));
-    hitCache.clear();curseCache.clear();curseHitCache.clear();
+    hitCache.clear();curseCache.clear();curseHitCache.clear();visualCenters.clear();
     java.util.Set<String> loaded=new java.util.HashSet<>();
     for(com.projectdark.mobile.RuntimeState.Monster monster:runtime.monsters()){
       for(String pose:new String[]{"idle","walk","attack"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
         String key=PoteForestMonsterShowcase.assetPath(monster.id,pose,direction);
         if(key==null||!loaded.add(key))continue;
-        Bitmap source=bitmap(key);if(source!=null){source.prepareToDraw();hitBitmap(key,source).prepareToDraw();
+        Bitmap source=bitmap(key);if(source!=null){prepareCenter(key,source);source.prepareToDraw();hitBitmap(key,source).prepareToDraw();
           Bitmap faded=curseBitmap(key,source);faded.prepareToDraw();tintBitmap(key,faded,curseHitCache).prepareToDraw();}
       }
     }

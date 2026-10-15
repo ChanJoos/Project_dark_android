@@ -44,15 +44,35 @@ final class SkillBodyRenderer {
     float jumpHandY=rootY+(24-b.getHeight()-(float)f.optDouble("offsetY"))*SCALE;
     if(jumpWeapon&&back)chungryong.layer(c,"basic",true,0,jumpHandX,jumpHandY,SCALE);
     boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND");
-    if(weapon){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",ChungryongWeaponRenderer.back(p.direction),0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawGear(c,p.weaponVisualRef,group,index,p.direction,rootX,rootY);}
+    if(weapon&&back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",true,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
     for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,group,index,p.direction,rootX,rootY);
+    if(weapon&&!back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",false,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     if(jumpWeapon&&!back)chungryong.layer(c,"basic",false,0,jumpHandX,jumpHandY,SCALE);
     c.restore();return true;
   }
   // Presentation-only takeoff/contact/landing; world position and accepted sphere stay fixed.
   static float jumpLift(float phase){float q=Math.max(0,Math.min(1,phase));return q<1f/3f?12f*q*3:12f*(1-q)*1.5f;}
+  /** Preserve source blade pixels; translate its registered source grip to the current BODY hand. */
+  private void drawHeldWeapon(Canvas c,String id,String body,String group,int index,CharacterRenderer.Direction direction,float x,float y,Bitmap current,JSONObject currentFrame){
+    if("02".equals(group)){drawGear(c,id,group,index,direction,x,y);return;}
+    EquipmentVisualRegistry.Visual v=gear.get(id);JSONObject registration=registration(id);if(v==null||v.atlas==null||registration==null)return;
+    boolean back=ChungryongWeaponRenderer.back(direction);int sourceIndex=back?1:3;
+    JSONArray frames=registration.optJSONObject("sprites").optJSONArray("02");JSONObject f=frames==null?null:frames.optJSONObject(sourceIndex);
+    JSONObject baseFrame=catalog.frames.optJSONObject(body+"/02/"+sourceIndex);if(f==null||baseFrame==null){drawGear(c,id,group,index,direction,x,y);return;}
+    Bitmap base=bitmap(baseFrame.optString("path"));if(base==null)return;
+    CharacterRenderer.Direction sourceDirection=back?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
+    CharacterSemanticRig.Anchors baseRig=CharacterSemanticRig.derive(base,new Rect(0,0,base.getWidth(),base.getHeight()),sourceDirection);
+    float hx,hy;
+    if("e".equals(group)&&index>=16&&index<=23){float[] hand=ChungryongWeaponRenderer.hand(group,index,current.getWidth(),current.getHeight());hx=hand[0];hy=hand[1];}
+    else{CharacterSemanticRig.Anchors rig=CharacterSemanticRig.derive(current,new Rect(0,0,current.getWidth(),current.getHeight()),sourceDirection);hx=rig.dominantHand.x;hy=rig.dominantHand.y;}
+    float dx=hx-(float)currentFrame.optDouble("pivotX")-(baseRig.dominantHand.x-(float)baseFrame.optDouble("pivotX"));
+    float dy=hy-current.getHeight()-(float)currentFrame.optDouble("offsetY")-(baseRig.dominantHand.y-base.getHeight()-(float)baseFrame.optDouble("offsetY"));
+    int w=f.optInt("w"),h=f.optInt("h"),sx=f.optInt("sx"),sy=f.optInt("sy");if(w<=0||h<=0||sx+w>v.atlas.getWidth()||sy+h>v.atlas.getHeight())return;
+    float left=x+(dx-(float)f.optDouble("px")*w)*SCALE,top=y+(dy-h+(float)f.optDouble("py")*h)*SCALE;
+    c.drawBitmap(v.atlas,new Rect(sx,sy,sx+w,sy+h),new RectF(left,top,left+w*SCALE,top+h*SCALE),paint);
+  }
   private void drawGear(Canvas c,String id,String group,int index,CharacterRenderer.Direction direction,float x,float y){
     if(id==null||id.isEmpty())return;EquipmentVisualRegistry.Visual v=gear.get(id);if(v==null||v.atlas==null)return;
     JSONObject j=registration(id);if(j==null)return;JSONObject sprites=j.optJSONObject("sprites");if(sprites==null)return;

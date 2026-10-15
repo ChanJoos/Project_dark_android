@@ -38,10 +38,11 @@ final class ClassicSkillReference {
     paint.setXfermode(null);canvas.restore();
   }
   private final Map<Channel,float[]> centers=new IdentityHashMap<>();
-  private void prewarmCenters(){for(Map<String,Channel> channels:effects.values())for(Channel channel:channels.values()){
-    if(!channel.key.contains("RECIPIENT"))continue;
-    CapturedSkillFx.Sequence s=channel.sequence;int l=s.width,t=s.height,r=0,b=0;
-    for(int yy=0;yy<s.atlas.getHeight();yy++)for(int xx=0;xx<s.atlas.getWidth();xx++)if(Color.alpha(s.atlas.getPixel(xx,yy))>24){int x=xx%s.width,y=yy%s.height;l=Math.min(l,x);r=Math.max(r,x+1);t=Math.min(t,y);b=Math.max(b,y+1);}
+  private void prewarmCenters(){for(Map.Entry<String,Map<String,Channel>> entry:effects.entrySet()){
+    if(!SkillVfxRenderer.recipientFinisher(entry.getKey()))continue;
+    Channel channel=entry.getValue().get("RECIPIENT_CONTACT");if(channel==null)continue;
+    CapturedSkillFx.Sequence s=channel.sequence;int l=s.width,t=s.height,r=0,b=0,w=s.atlas.getWidth(),h=s.atlas.getHeight();int[] pixels=new int[w*h];s.atlas.getPixels(pixels,0,w,0,0,w,h);
+    for(int yy=0;yy<h;yy++)for(int xx=0;xx<w;xx++)if(Color.alpha(pixels[yy*w+xx])>24){int x=xx%s.width,y=yy%s.height;l=Math.min(l,x);r=Math.max(r,x+1);t=Math.min(t,y);b=Math.max(b,y+1);}
     centers.put(channel,l<r?new float[]{(l+r)*.5f,(t+b)*.5f}:new float[]{s.pivotX,s.pivotY});
   }}
   void drawCentered(Canvas canvas,Channel channel,float age,float x,float y){float[] p=centers.get(channel);drawRegistered(canvas,channel,age,x,y,p[0],p[1],0,0,false,0);}

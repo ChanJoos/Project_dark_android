@@ -48,6 +48,22 @@ public class CombatTownV167Test {
    GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);TownQualityV164Test h=new TownQualityV164Test();h.c=c;h.travel(v,town.map);h.capture(v,"v167-arrival-"+town.map);
   }
  }
+ @Test public void coastEffectCentresUseThePrewarmedActualSpriteBody()throws Exception{
+  RuntimeState s=state();s.enterCampaignMap(RucesionCoastGeometry.ROUTE[1],false);PoteFieldRenderer renderer=new PoteFieldRenderer();renderer.prepareMonsters(s);float[] center=new float[2];int n=0;
+  for(RuntimeState.Monster m:s.monsters()){assertTrue(m.id,renderer.monsterCenter(m,center));assertTrue(Float.isFinite(center[0]));assertTrue(center[1]<m.y+10);assertTrue(center[1]>m.y-PoteForestMonsterShowcase.bodyHeight(m.id));n++;}assertTrue(n>0);
+ }
+ @Test public void sourceWeaponMotionsHaveNativeFourFacingMaleFemaleEvidence()throws Exception{
+  SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);Bitmap sheet=Bitmap.createBitmap(960,600,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(sheet);canvas.drawColor(0xffd2c8b5);Paint text=new Paint();text.setColor(Color.BLACK);text.setTextSize(13);
+  int row=0;for(String body:new String[]{"mm001","wm001"})for(String item:new String[]{"IT_TEST_WEAPON_MW002","IT_WARDROBE_MW016"}){
+   RuntimeState state=state();state.rpg().unequip("무기");state.rpg().equip(item);CharacterVisualBinding gear=CharacterVisualBinding.from(state.rpg());String motion=WeaponCombatProfile.motion(state.rpg(),"SWING");int col=0;
+   for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+    float x=90+col++*235,y=120+row*145;canvas.drawText(body+" "+motion+" "+d,x-65,y+20,text);
+    CharacterRenderer.Pose pose=new CharacterRenderer.Pose(x,y,d,CharacterRenderer.State.ATTACK,0,.18f,.5f,false,gear.equipmentVisualRef(),gear.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE,AnimationAction.SWING);
+    assertTrue(body+" "+motion+" "+d,renderer.draw(canvas,pose,body,motion,.4f));
+   }row++;
+  }
+  File dir=new File("build/reports/combat-town-v167");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,"weapon-motions-four-facing.png"))){assertTrue(sheet.compress(Bitmap.CompressFormat.PNG,100,out));}sheet.recycle();
+ }
  @Test public void inventoryAuditRecordsPendingPerformanceRatherThanPassingEmptyOptions()throws Exception{
   RpgProgressionState r=new RpgProgressionState();JSONArray rows=new JSONArray();for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.equippable())rows.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("stats",new JSONObject(d.statModifiers)).put("jobRestrictionResolved",d.jobRestrictionResolved).put("grip",WeaponCombatProfile.grip(d).name()).put("evidence",d.evidence.name()).put("performancePending",d.statModifiers.isEmpty()));
   File dir=new File("build/reports/combat-town-v167");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all-equipment-audit.json").toPath(),rows.toString(2).getBytes("UTF-8"));assertTrue(rows.length()>100);

@@ -15,14 +15,17 @@
     "Dara no longer bypasses actual prerequisite to show zero-damage release",
     "CON/WIS next-growth projection from same accumulated growth policy",
     "Town-local hunting buttons preserve normal unlock gates; Abel manager-adjacent arrival",
-    "Abel 16->6 beds; remove overlapping5trees and163 redundant grass cells; bed blocking shares geometry"
+    "Abel 16->6 beds; remove overlapping5trees and163 redundant grass cells; bed blocking shares geometry",
+    "Source02 uses actual four-direction indices without a second mirror",
+    "Source-body e16-23 motion reuses established Chungryong twohand timing; generic source blades follow current BODY hand",
+    "Finisher effect centres use actual prewarmed sprite alpha bounds and contact motion; metadata cache cleared per map"
   ],
   "unchangedOriginalFacts": [
     "No fabricated missing equipment stats/jobs",
     "Dara existing historical (HP+MP-1440)*3.38 retained; uploaded wiki describes a conflicting era, unresolved",
     "Growth formula remains B, not original confirmed formula"
   ],
-  "validation": "Master integrity PASS; Android build/native pending exact CI",
+  "validation": "Master integrity and268-frame reproducible presentation generation PASS; first common failed only JSON profile key order, corrected. Android focused/native final source pending.",
   "pending": [
     "All-equipment actual audit pending CI; no claim all original item options recovered",
     "Two-hand exact original animation cadence/source linkage needs native visual review",

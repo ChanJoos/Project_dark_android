@@ -61,10 +61,12 @@ public final class GameView extends View {
   private final SkillVfxRenderer skillVfx;
   private String activeSkillVisualId,characterBodyIdentity="mm001";
   private final SkillApproachController skillApproach=new SkillApproachController();
+  private final float[] monsterFxCenter=new float[2];
   private final SkillVfxRenderer.Anchors skillAnchors=new SkillVfxRenderer.Anchors(){
     public float x(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldX();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.x;return Float.NaN;}
     public float y(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldY();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.y;return Float.NaN;}
-    public float centerY(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return y(id)-23f;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)){if(inPoteField&&PoteForestMonsterShowcase.assetPath(m.id,"idle",CharacterRenderer.Direction.SE)!=null)return m.y-PoteForestMonsterShowcase.bodyHeight(m.id)*.5f+3f;if(inReagentShop&&townInterior.kind==TownInteriorDef.Kind.INN)return m.y-5f;return m.y-10f*WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE;}return Float.NaN;}
+    public float centerX(String id){if(inPoteField)for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)&&poteFieldRenderer.monsterCenter(m,monsterFxCenter))return monsterFxCenter[0];return x(id);}
+    public float centerY(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return y(id)-23f;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)){if(inPoteField&&poteFieldRenderer.monsterCenter(m,monsterFxCenter))return monsterFxCenter[1];if(inReagentShop&&townInterior.kind==TownInteriorDef.Kind.INN)return m.y-5f;return m.y-10f*WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE;}return Float.NaN;}
   };
   private final WorldEntityPresentationRenderer worldEntityRenderer=new WorldEntityPresentationRenderer();
   private final RpgInventoryPresentation rpgPresentation=new RpgInventoryPresentation();
@@ -807,7 +809,7 @@ private void drawUtilityRail(Canvas c){
     for(int n=0;n<9;n++){float yy=150+n*23;UiTheme.text(c,labels2[n],771,yy,9.5f,UiTheme.MUTED,false);UiTheme.right(c,vals[n],915,yy,10.5f,UiTheme.TEXT,true);if(n<8)UiTheme.line(c,771,yy+7,915,yy+7,UiTheme.LINE);}
     UiTheme.text(c,"STR 물리 · INT 마법 · DEX 도적 기술",590,301,10,UiTheme.MUTED,false);UiTheme.text(c,"기술 조건은 스킬창 → 조건에서 확인",590,322,10,UiTheme.GOLD,false);
     if(r.canResetIntroAllocation(skillBook))UiTheme.button(c,new RectF(584,330,752,355),"입문 배분 다시 하기",true,false);
-    UiTheme.line(c,590,357,915,357,UiTheme.LINE);UiTheme.text(c,"다음 레벨: HP +"+r.nextHpGain()+" · MP +"+r.nextMpGain()+" (CON · WIS 배분 반영)",590,378,10,UiTheme.MUTED,false);c.restore();
+    UiTheme.line(c,590,357,915,357,UiTheme.LINE);UiTheme.fit(c,"다음 레벨: HP +"+r.nextHpGain()+" · MP +"+r.nextMpGain()+" (CON · WIS 배분 반영)",590,378,325,10,UiTheme.MUTED,false);c.restore();
   }
   private void drawChat(Canvas c){
     RectF r=MobileHudLayout.chat(chatExpanded);MobileHudSkin.fade(c,r);RuntimeMetrics m=state.metrics();
