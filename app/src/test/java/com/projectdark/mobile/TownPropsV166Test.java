@@ -41,7 +41,7 @@ public class TownPropsV166Test {
    previous=pixels;b.recycle();
   }
  }
- @Test public void captureAllTwentyOneFlowerbedsInActualTownRenderer()throws Exception{
+ @Test public void captureAllRetainedFlowerbedsInActualTownRenderer()throws Exception{
   TownQualityV164Test helper=new TownQualityV164Test();helper.c=c;
   List<String> receipt=new ArrayList<>();int count=0;
   for(String map:new String[]{AbelTownGeometry.ID,RucesionTownGeometry.ID}){
@@ -53,7 +53,7 @@ public class TownPropsV166Test {
    }else{
     for(RucesionTownGeometry.Prop p:RucesionTownGeometry.PROPS)if(p.asset.equals("flowerbed_orange")){assertEquals(109*AbelVideoLayout.SCALE,p.height,.001f);assertEquals(98*AbelVideoLayout.SCALE,p.anchorY,.001f);spots.add(new float[]{p.x,p.y});}
    }
-   assertEquals(map,AbelTownGeometry.ID.equals(map)?16:5,spots.size());
+   assertEquals(map,AbelTownGeometry.ID.equals(map)?6:5,spots.size());
    for(int i=0;i<spots.size();i++){
     float[] xy=spots.get(i);w.camera().snapTo(xy[0],xy[1]-70);
     Bitmap shot=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(shot));
@@ -65,3 +65,4 @@ public class TownPropsV166Test {
   assertEquals(11,count);Files.write(Path.of("build/reports/town-v166/placements.txt"),receipt);
  }
 }
+

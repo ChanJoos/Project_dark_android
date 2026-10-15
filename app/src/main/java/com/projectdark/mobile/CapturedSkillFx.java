@@ -25,7 +25,15 @@ final class CapturedSkillFx {
   CapturedSkillFx(Context c){try{
     JSONObject doc=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/captured/manifest.json"),StandardCharsets.UTF_8));JSONObject entries=doc.getJSONObject("skills");
     Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();sequences.put(id,new Sequence(c,entries.getJSONObject(id)));}
+    prepareCenters();
   }catch(Exception e){throw new IllegalStateException("capture manifest",e);}}
+  private final Map<String,float[]> centers=new HashMap<>();
+  private void prepareCenters(){for(Map.Entry<String,Sequence> e:sequences.entrySet()){
+    if(!SkillVfxRenderer.recipientFinisher(e.getKey()))continue;Sequence s=e.getValue();int w=s.atlas.getWidth(),h=s.atlas.getHeight(),l=s.width,t=s.height,r=0,b=0;int[] pixels=new int[w*h];s.atlas.getPixels(pixels,0,w,0,0,w,h);
+    for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(Color.alpha(pixels[y*w+x])>24){int xx=x%s.width,yy=y%s.height;l=Math.min(l,xx);r=Math.max(r,xx+1);t=Math.min(t,yy);b=Math.max(b,yy+1);}
+    centers.put(e.getKey(),l<r?new float[]{(l+r)*.5f,(t+b)*.5f}:new float[]{s.pivotX,s.pivotY});
+  }}
+  void drawCentered(Canvas c,Paint p,String id,float age,float x,float y){Sequence s=get(id);float[] pivot=centers.get(id);if(s==null||pivot==null)return;draw(c,p,id,age,x+(s.pivotX-pivot[0])*s.scale,y+(s.pivotY-pivot[1])*s.scale);}
   Sequence get(String id){return sequences.get(id);}
   void draw(Canvas canvas,Paint paint,String id,float age,float x,float y){Sequence s=get(id);if(s==null)return;int frame=s.frame(age),col=frame%s.columns,row=frame/s.columns;
     paint.setAlpha(255);paint.setFilterBitmap(false);paint.setColorFilter(null);paint.setXfermode(s.normalBlend?null:screen);
@@ -35,3 +43,4 @@ final class CapturedSkillFx {
   void drawDirected(Canvas c,Paint p,String id,float age,float x,float y,float dx,float dy){Sequence s=get(id);if(s==null)return;if(!s.directional){draw(c,p,id,age,x,y);return;}float lift=s.directionPivotLift*s.scale,angle=(float)Math.toDegrees(Math.atan2(dy,dx)),reach=(float)Math.hypot(dx,dy)/(s.sourceForwardDistance*s.scale);reach=Math.max(.5f,Math.min(2f,reach));c.save();c.translate(x,y-lift);c.rotate(angle);c.scale(reach,1);c.translate(-x,-(y-lift));draw(c,p,id,age,x,y);c.restore();}
 
 }
+

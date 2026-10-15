@@ -17,7 +17,12 @@ public final class CampaignWorld {
  public static WorldMoveTargetController.TileCenter backward(){return backward(PoteFieldDef.MAP_ID);}
  public static WorldMoveTargetController.TileCenter backward(String mapId){PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);String key=mapId+":back";return GATES.computeIfAbsent(key,k->nearestConnectedTile(mapId,d.backX,d.backY));}
  public static WorldMoveTargetController.TileCenter arrival(boolean fromNext){return arrival(PoteFieldDef.MAP_ID,fromNext);}
- public static WorldMoveTargetController.TileCenter arrival(String mapId,boolean fromNext){if(RucesionTownGeometry.contains(mapId))return nearestConnectedTile(mapId,RucesionTownGeometry.x(41,41),RucesionTownGeometry.y(41,41));if(AbelTownGeometry.contains(mapId))return nearestConnectedTile(AbelTownGeometry.ID,com.projectdark.mobile.TownTravel.center(mapId).x+32,com.projectdark.mobile.TownTravel.center(mapId).y+16);PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);WorldMoveTargetController.TileCenter gate=fromNext?forward(mapId):backward(mapId);WorldMoveTargetController.TileCenter best=null;float distance=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:connectedTiles(mapId)){float dg=(float)Math.hypot(t.x-gate.x,t.y-gate.y);if(dg<75||dg>110)continue;float q=(float)Math.hypot(t.x-d.entryX,t.y-d.entryY);if(q<distance){distance=q;best=t;}}return best==null?nearestConnectedTile(mapId,d.entryX,d.entryY):best;}
+ public static WorldMoveTargetController.TileCenter arrival(String mapId,boolean fromNext){if(RucesionTownGeometry.contains(mapId))return nearestConnectedTile(mapId,RucesionTownGeometry.x(41,41),RucesionTownGeometry.y(41,41));if(AbelTownGeometry.contains(mapId))return townArrival(mapId);PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);WorldMoveTargetController.TileCenter gate=fromNext?forward(mapId):backward(mapId);WorldMoveTargetController.TileCenter best=null;float distance=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:connectedTiles(mapId)){float dg=(float)Math.hypot(t.x-gate.x,t.y-gate.y);if(dg<75||dg>110)continue;float q=(float)Math.hypot(t.x-d.entryX,t.y-d.entryY);if(q<distance){distance=q;best=t;}}return best==null?nearestConnectedTile(mapId,d.entryX,d.entryY):best;}
+ private static WorldMoveTargetController.TileCenter townArrival(String id){
+  WorldMoveTargetController.TileCenter manager=com.projectdark.mobile.TownTravel.center(id),best=null;float distance=Float.MAX_VALUE;
+  for(WorldMoveTargetController.TileCenter t:connectedTiles(id)){float separation=(float)Math.hypot(t.x-manager.x,t.y-manager.y);if(separation<64||separation>120)continue;float q=(t.x-manager.x-64)*(t.x-manager.x-64)+(t.y-manager.y-32)*(t.y-manager.y-32);if(q<distance){distance=q;best=t;}}
+  if(best==null)throw new IllegalStateException("No legal town arrival near manager "+id);return best;
+ }
  public static WorldMoveTargetController.TileCenter nearestConnectedTile(String mapId,float x,float y){WorldMoveTargetController.TileCenter best=null;float bd=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:connectedTiles(mapId)){float dx=t.x-x,dy=t.y-y,q=dx*dx+dy*dy;if(q<bd){bd=q;best=t;}}return best;}
  private static final Map<String,List<WorldMoveTargetController.TileCenter>> CONNECTED=new HashMap<>();
  /** Terrain-only connected component; prevents spawn/gate anchors on isolated creek banks. */
@@ -29,3 +34,4 @@ public final class CampaignWorld {
  private static boolean terrainEdge(WorldMoveTargetController.TileCenter a,WorldMoveTargetController.TileCenter b,PoteCampaignMapDef def){for(int i=0;i<=12;i++){float x=a.x+(b.x-a.x)*i/12f,y=a.y+(b.y-a.y)*i/12f;if(def.terrainBlocked(x,y,10))return false;}return true;}
  private CampaignWorld(){}
 }
+

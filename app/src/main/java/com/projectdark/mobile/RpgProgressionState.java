@@ -247,6 +247,7 @@ public final class RpgProgressionState {
     SourceWardrobeCatalog.install(this);
     SourceItemFunctions.install(this);
     SourceEquipmentPerformance.install(this);
+    SourceEquipmentRequirements.install(this);
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
@@ -293,6 +294,10 @@ public final class RpgProgressionState {
     ItemDefinition d=items.get(id);if(d==null)throw new IllegalArgumentException("Unknown performance item "+id);
     Map<String,Integer> m=new LinkedHashMap<>(d.statModifiers);m.putAll(values);
     items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel!=null?d.requiredLevel:sourceLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,m,evidence));
+  }
+  void installSourceJob(String id,String job,int level,int ac,boolean adaptedVariant){
+    ItemDefinition d=items.get(id);if(d==null)throw new IllegalArgumentException(id);Map<String,Integer> values=new LinkedHashMap<>(d.statModifiers);values.putIfAbsent("AC",ac);
+    items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel==null?level:d.requiredLevel,jobSet(job),true,d.attackElement,d.defenseElement,values,adaptedVariant?Evidence.ADAPTED:d.evidence==Evidence.PENDING?Evidence.V:d.evidence));
   }
   void fillSourceLevel(String id,int level){
     ItemDefinition d=items.get(id);if(d==null||d.requiredLevel!=null)return;
@@ -626,3 +631,4 @@ public final class RpgProgressionState {
   private void trimRewardHistory(){while(rewardHistory.size()>48)rewardHistory.remove(0);}
   private static int value(Map<String,Integer> map,String key){Integer v=map.get(key);return v==null?0:v;}
 }
+

@@ -64,8 +64,26 @@ public class CombatTownV167Test {
   }
   File dir=new File("build/reports/combat-town-v167");dir.mkdirs();try(FileOutputStream out=new FileOutputStream(new File(dir,"weapon-motions-four-facing.png"))){assertTrue(sheet.compress(Bitmap.CompressFormat.PNG,100,out));}sheet.recycle();
  }
+ @Test public void exactAndPaletteArmourRequirementsReachNormalEquipWithoutDestroyingSourceOptions(){
+  RpgProgressionState r=new RpgProgressionState();String exact="IT_WARDROBE_MU0000013",variant="IT_WARDROBE_MU0000060";
+  assertEquals(RpgProgressionState.RequirementResult.JOB_NOT_MET,r.evaluateRequirements(exact,"WARRIOR",99));
+  assertEquals(RpgProgressionState.RequirementResult.MET,r.evaluateRequirements(exact,"MARTIAL_ARTIST",99));
+  assertEquals(RpgProgressionState.RequirementResult.MET,r.evaluateRequirements(variant,"MARTIAL_ARTIST",99));
+  assertEquals(Integer.valueOf(-19),r.itemDefinitions().get(variant).statModifiers.get("AC"));assertEquals(RpgProgressionState.Evidence.ADAPTED,r.itemDefinitions().get(variant).evidence);
+ }
+ @Test public void capturedFinisherSourceUnionIsCentredOnRecipientPixels(){
+  CapturedSkillFx fx=new CapturedSkillFx(c);Paint paint=new Paint();
+  for(String id:new String[]{"SK_전사_013","SK_도적_020","SK_무도가_020"}){
+   CapturedSkillFx.Sequence sequence=fx.get(id);assertNotNull(id,sequence);Bitmap image=Bitmap.createBitmap(1200,1200,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(image);float age=0;
+   for(int duration:sequence.durations){fx.drawCentered(canvas,paint,id,age+.001f,600,600);age+=duration/1000f;}
+   int l=1200,t=1200,r=0,b=0;int[] pixels=new int[1200*1200];image.getPixels(pixels,0,1200,0,0,1200,1200);
+   for(int y=0;y<1200;y++)for(int x=0;x<1200;x++)if(Color.alpha(pixels[y*1200+x])>24){l=Math.min(l,x);r=Math.max(r,x+1);t=Math.min(t,y);b=Math.max(b,y+1);}
+   assertTrue(id,r>l);assertEquals(id,600,(l+r)*.5f,5f);assertEquals(id,600,(t+b)*.5f,5f);image.recycle();
+  }
+ }
  @Test public void inventoryAuditRecordsPendingPerformanceRatherThanPassingEmptyOptions()throws Exception{
-  RpgProgressionState r=new RpgProgressionState();JSONArray rows=new JSONArray();for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.equippable())rows.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("stats",new JSONObject(d.statModifiers)).put("jobRestrictionResolved",d.jobRestrictionResolved).put("grip",WeaponCombatProfile.grip(d).name()).put("evidence",d.evidence.name()).put("performancePending",d.statModifiers.isEmpty()));
+  RpgProgressionState r=new RpgProgressionState();JSONArray rows=new JSONArray();for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.equippable())rows.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("slot",d.equipSlot).put("stats",new JSONObject(d.statModifiers)).put("jobRestrictionResolved",d.jobRestrictionResolved).put("grip",WeaponCombatProfile.grip(d).name()).put("evidence",d.evidence.name()).put("performancePending",d.statModifiers.isEmpty()));
   File dir=new File("build/reports/combat-town-v167");dir.mkdirs();java.nio.file.Files.write(new File(dir,"all-equipment-audit.json").toPath(),rows.toString(2).getBytes("UTF-8"));assertTrue(rows.length()>100);
  }
 }
+

@@ -26,7 +26,7 @@ public class EquipmentPerformanceV130Test {
    int applied=hit(s);assertTrue(d.itemId,applied>0);
    audit.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("stats",new JSONObject(d.statModifiers)).put("actualPhysicalDamage",applied).put("sourceNote",SourceEquipmentPerformance.note(d.itemId)));count++;
   }
-  assertEquals(56,count);File dir=directory();java.nio.file.Files.write(new File(dir,"all56-weapon-runtime-audit.json").toPath(),audit.toString(2).getBytes("UTF-8"));
+  assertEquals(68,count);File dir=directory();java.nio.file.Files.write(new File(dir,"all68-weapon-runtime-audit.json").toPath(),audit.toString(2).getBytes("UTF-8"));
   r.unequip("무기");r.equip("IT_WARDROBE_MW039");int axe=hit(s);r.unequip("무기");r.equip("IT_WARDROBE_MW023");int gaia=hit(s);assertTrue(gaia>axe+100);
   assertEquals(150,r.finalStats().weaponMinAttack);assertEquals(210,r.finalStats().weaponMaxAttack);
  }
@@ -67,3 +67,4 @@ public class EquipmentPerformanceV130Test {
  }
  File directory(){File dir=new File("build/reports/equipment-performance-v130");dir.mkdirs();return dir;}
 }
+
