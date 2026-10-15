@@ -17,6 +17,7 @@
     "navigation",
     "save"
   ],
-  "validation": "PENDING_NATIVE_AND_BUILD",
-  "phoneVisualAcceptance": "PENDING"
+  "validation": "EXACT_SOURCE_52795517_FOCUSED85_NATIVE50_SCENES_APK_PACKAGING_SUCCESS_COMMON_PENDING",
+  "phoneVisualAcceptance": "PENDING",
+  "receipt": "master/changes/V166_BUILD_RUNTIME_RECEIPT.json"
 }

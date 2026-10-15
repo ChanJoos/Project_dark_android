@@ -1,3 +1,19 @@
+town_props_v166:
+  status: BUILD_NATIVE_VERIFIED_COMMON_PHONE_VISUAL_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  runtime_source: 52795517849d560267d1eea979b154ef1760db13
+  checkpoint: docs/TOWN_V166_CHECKPOINT.md
+  contract: master/changes/TOWN_PROPS_V166.json
+  receipt: master/changes/V166_BUILD_RUNTIME_RECEIPT.json
+  focused_run: 38748723671
+  native_tests: 85
+  native_flowerbed_scenes: 21
+  object_family_scenes: 29
+  phone_visual: PENDING
+
 town_polish_v165:
   status: BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING
   active_branch: codex/rucesion-coast-v157

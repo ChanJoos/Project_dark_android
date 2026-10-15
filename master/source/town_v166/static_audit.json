@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_SPRITES_REVIEWED_NATIVE_PENDING",
+  "status": "STATIC_AND_EXACT_SOURCE_NATIVE_REVIEWED_PHONE_PENDING",
   "uniqueLoadedAssetFamilies": 29,
   "placementsBefore": 372,
   "placementsAfter": 350,
@@ -269,5 +269,9 @@
   "projectionRepeat": "BYTE_IDENTICAL_GIT_DIFF_EMPTY",
   "originalObservations": "UNCHANGED",
   "githubPublication": "BLOCKED_AUTO_APPROVAL_REQUIRES_EXPLICIT_DESTINATION_AND_PAYLOAD",
-  "flowerbedPlacements": 21
+  "flowerbedPlacements": 21,
+  "nativeSource": "52795517849d560267d1eea979b154ef1760db13",
+  "nativeRun": 38748723671,
+  "reviewedFlowerbedScenes": 21,
+  "reviewedObjectFamilyScenes": 29
 }

@@ -1,0 +1,55 @@
+{
+  "sourceCommit": "52795517849d560267d1eea979b154ef1760db13",
+  "runId": "38748723671",
+  "versionCode": 166,
+  "versionName": "1.66-flowerbed-cleanup",
+  "applicationId": "com.projectdark.mobile.v166test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "5591505100ded20234c617b38219ed96a6320c0331f482a49cca9e77d86754fd",
+  "apkBytes": 80434777,
+  "builtSeoul": "2026-10-15T23:14:56.885868+09:00",
+  "scope": "V166 shared Abel/Rucesion flowerbed repair at21 unchanged placements; captured sidewalk removed; same182x109canvas/92x98anchor. Native flowerbed coverage, all29loaded prop families, V165 continuous lamps/service signs/three destinations/NPC-player equality and existing town/combat/save regressions. Runtime Java, movement, collision, NPC scale and trees unchanged. Phone/user visual acceptance PENDING.",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": {
+    "RucesionMonsters": "USER_ACCEPTED_20261015",
+    "AbelCalibrationAndMaps": "PENDING"
+  },
+  "focusedRun": 38748723671,
+  "focusedJob": 116469138899,
+  "focusedStatus": "SUCCESS",
+  "tests": {
+    "tests": 85,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 14,
+  "packagedTownSourceFiles": 112,
+  "nativeFlowerbedFrames": 21,
+  "reviewedObjectFamilyFrames": 29,
+  "nativeScope": "Robolectric Android native graphics; no physical handset",
+  "allFinalReviewFramesPixelEqualToReviewedFrames": true,
+  "apkArtifact": 11980268770,
+  "nativeArtifact": 11979989461,
+  "artifactZIPs": [
+    {
+      "id": 11980268770,
+      "sha256": "7281c7503d78685dd047cbec6db59a7bc2790b9f31f801a62a9c1356628760db"
+    },
+    {
+      "id": 11979989461,
+      "sha256": "5b9fc340ee2ca5bc8f6ba96626c3d47c7467553de01146c1000b7b50bd7b57c2"
+    }
+  ],
+  "commonRuns": {
+    "38748734726": "IN_PROGRESS_AT_DELIVERY",
+    "38748723657": "IN_PROGRESS_AT_DELIVERY"
+  },
+  "phoneVisualAcceptance": "PENDING",
+  "mainMerged": false,
+  "priorAttemptFailure": "Obsolete version-name assertion in APK verification only; corrected; final exact-source focused run succeeds",
+  "chatAttachmentSave": "FAILED_READ_TIMEOUT_NO_V166_ITEMS_OBSERVED",
+  "durableAPK": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38748723671/artifacts/11980268770",
+  "durableNative": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38748723671/artifacts/11979989461"
+}
