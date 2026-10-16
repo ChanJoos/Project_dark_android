@@ -2517,15 +2517,15 @@
       "id": "SK_무도가_012",
       "name": "쿠랄툼",
       "job": "무도가",
-      "kind": "기술",
+      "kind": "마법",
       "before": 2.15,
-      "runtimeSeconds": 2.15,
+      "runtimeSeconds": 0,
       "originalSeconds": null,
-      "status": "RETAINED_ADAPTED_PENDING_ORIGINAL",
-      "source": null,
-      "sourceSnapshotSha256": null,
+      "status": "SOURCE_SPELL_GENERAL_REUSE_POLICY",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415456",
+      "sourceSnapshotSha256": "81f3f6db400af691deee8e536ff6f742d2f2a67ceae8ec581c49640f354ae285",
       "variants": [],
-      "note": "No exact original cooldown found. Preserve existing gameplay value explicitly; not certified original."
+      "note": "Retained labelled2020source calls this a spell. Correct kind and use shared spell cadence/no invented reuse; original exact per-ID cooldown remains unconfirmed. Preserve existing damage/resource values."
     },
     {
       "id": "SK_무도가_013",
@@ -2559,15 +2559,15 @@
       "id": "SK_무도가_015",
       "name": "장풍",
       "job": "무도가",
-      "kind": "기술",
+      "kind": "마법",
       "before": 2.6,
-      "runtimeSeconds": 2.6,
+      "runtimeSeconds": 0,
       "originalSeconds": null,
-      "status": "RETAINED_ADAPTED_PENDING_ORIGINAL",
-      "source": null,
-      "sourceSnapshotSha256": null,
+      "status": "SOURCE_SPELL_GENERAL_REUSE_POLICY",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415456",
+      "sourceSnapshotSha256": "81f3f6db400af691deee8e536ff6f742d2f2a67ceae8ec581c49640f354ae285",
       "variants": [],
-      "note": "No exact original cooldown found. Preserve existing gameplay value explicitly; not certified original."
+      "note": "Retained labelled2020source calls this a spell. Correct kind and use shared spell cadence/no invented reuse; original exact per-ID cooldown remains unconfirmed. Preserve existing damage/resource values."
     },
     {
       "id": "SK_무도가_016",
@@ -2587,15 +2587,15 @@
       "id": "SK_무도가_017",
       "name": "쿠라노토",
       "job": "무도가",
-      "kind": "기술",
+      "kind": "마법",
       "before": 2.6,
-      "runtimeSeconds": 2.6,
+      "runtimeSeconds": 0,
       "originalSeconds": null,
-      "status": "RETAINED_ADAPTED_PENDING_ORIGINAL",
-      "source": null,
-      "sourceSnapshotSha256": null,
+      "status": "SOURCE_SPELL_GENERAL_REUSE_POLICY",
+      "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415456",
+      "sourceSnapshotSha256": "81f3f6db400af691deee8e536ff6f742d2f2a67ceae8ec581c49640f354ae285",
       "variants": [],
-      "note": "No exact original cooldown found. Preserve existing gameplay value explicitly; not certified original."
+      "note": "Retained labelled2020source calls this a spell. Correct kind and use shared spell cadence/no invented reuse; original exact per-ID cooldown remains unconfirmed. Preserve existing damage/resource values."
     },
     {
       "id": "SK_무도가_018",
@@ -3358,6 +3358,53 @@
       "source": "https://lod.nexon.com/News/notice/109865",
       "authority": "OFFICIAL_HOST_USER_SUGGESTION_NOT_RULE",
       "finding": "No-delay leap is a user proposal, not verification of a production zero cooldown."
+    }
+  ],
+  "kindCorrections": [
+    {
+      "id": "SK_무도가_012",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_classic_2020/definitions.json",
+      "sourceSnapshotSha256": "81f3f6db400af691deee8e536ff6f742d2f2a67ceae8ec581c49640f354ae285",
+      "retainedFormula": "NONE",
+      "retainedCoefficient": 0,
+      "retainedMpCost": 0
+    },
+    {
+      "id": "SK_무도가_015",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_classic_2020/definitions.json",
+      "sourceSnapshotSha256": "81f3f6db400af691deee8e536ff6f742d2f2a67ceae8ec581c49640f354ae285",
+      "retainedFormula": "MARTIAL",
+      "retainedCoefficient": 2.054,
+      "retainedMpCost": 0
+    },
+    {
+      "id": "SK_무도가_017",
+      "before": "기술",
+      "after": "마법",
+      "sourceSnapshot": "master/source/skill_fx/naver_classic_2020/definitions.json",
+      "sourceSnapshotSha256": "81f3f6db400af691deee8e536ff6f742d2f2a67ceae8ec581c49640f354ae285",
+      "retainedFormula": "HEAL",
+      "retainedCoefficient": 2.9,
+      "retainedMpCost": 0
+    }
+  ],
+  "researchConflicts": [
+    {
+      "id": "SK_전사_006",
+      "selectedHistoricalSeconds": 12,
+      "alternativeWikiSeconds": 10,
+      "status": "ERA_CONFLICT_NOT_CURRENT_SERVER_CERTIFIED",
+      "source": "https://www.namu.moe/w/어둠의 전설/기술마법"
+    },
+    {
+      "id": "SK_도적_025",
+      "sourceScreenshotSeconds": 23,
+      "status": "SOURCE_PREVIEW_ONLY_SERVICE_UNIMPLEMENTED",
+      "source": "master/source/skill_window/user_reference_20261001.jpg"
     }
   ]
 }

@@ -36,6 +36,7 @@ anchors={'크래셔':('CRASH',3.38),'데빌크래셔':('CRASH',6.76),'매드소�
 policy=json.loads((ROOT/'master/changes/V174_SKILL_TIMING.json').read_text())
 assert policy['status']=='ACCEPTED'
 timing={r['id']:r for r in policy['rows']}
+retained={r['id']:r for r in policy.get('kindCorrections',[])}
 assert set(timing)=={r['id'] for r in cat}
 rows=[]
 for e in cat:
@@ -72,6 +73,8 @@ for e in cat:
  allmp=formula in ('SEMELIA','METEOR','RAGNAROK') or n in ('아마게돈','숨마스텔라','홀리드래곤','데스')
  if allmp:cost=0
  timingRow=timing[e['id']];cd=timingRow['runtimeSeconds']
+ if e['id'] in retained:
+  fixed=retained[e['id']];formula=fixed['retainedFormula'];coef=fixed['retainedCoefficient'];cost=fixed['retainedMpCost']
  if formula=='DARA':cost=0
  duration=8 if n in ('발경','일음지') else 9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
  if n=='이형환위':kind='STATUS';evidence='USER_RULE_V173_RETAINED_BALANCE_ADAPTED';source='User 2026-10-16: front actor leap, opposite tile, random free side fallback'

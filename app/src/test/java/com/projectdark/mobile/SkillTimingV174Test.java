@@ -10,7 +10,7 @@ public class SkillTimingV174Test {
   for(int i=0;i<rows.length();i++){JSONObject row=rows.getJSONObject(i);String id=row.getString("id");assertTrue(ids.add(id));SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);assertNotNull(id,a);assertEquals(id,row.getDouble("runtimeSeconds"),a.cooldown,.00001);assertEquals(row.getString("status"),a.cooldownEvidence);
    if(a.cooldownEvidence.equals("FAN_HISTORICAL_EXPLICIT")){historical++;assertTrue(row.getString("source").startsWith("https://"));assertEquals(64,row.getString("sourceSnapshotSha256").length());}
    if(a.cooldownEvidence.equals("RETAINED_ADAPTED_PENDING_ORIGINAL")){pending++;assertTrue(row.isNull("originalSeconds"));assertEquals(row.getDouble("before"),a.cooldown,0);}
-  }assertEquals(25,historical);assertEquals(52,pending);
+  }assertEquals(25,historical);assertEquals(49,pending);
  }
  @Test public void realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes()throws Exception{
   for(boolean test:new boolean[]{false,true})for(String id:new String[]{"SK_전사_013","SK_전사_022","SK_도적_020","SK_도적_027","SK_무도가_021","SK_무도가_023"}){

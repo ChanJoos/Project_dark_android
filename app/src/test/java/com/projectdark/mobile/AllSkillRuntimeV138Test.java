@@ -32,7 +32,7 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
    RuntimeCombatSession.FrameResult frame=session.tick(session.effectiveCastSeconds(a.id)+.001f);
    assertTrue(a.id+" contact",frame.events.stream().anyMatch(e->e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.actionId.equals(a.id)));
   }
-  assertEquals(221,count);assertEquals(138,spells);
+  assertEquals(221,count);assertEquals(141,spells);
  }
  @Test public void allSpellDefinitionsSeparateSharedCadenceFromExplicitReuse(){
   RuntimeCombatSession s=new RuntimeCombatSession(new RuntimeState(),(a,b)->true,(a,id)->true,a->true);
