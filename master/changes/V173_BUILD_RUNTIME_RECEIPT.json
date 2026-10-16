@@ -2,7 +2,7 @@
   "runtimeSource": "b68a63bf0beac5c880e33c8a42c5d9617855acdb",
   "baseMain": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
   "pullRequest": 197,
-  "implementation": "IMPLEMENTED_BUILD_AND_FOCUSED_NATIVE_VERIFIED_TAIL_PENDING",
+  "implementation": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED",
   "martialSkills": 34,
   "normalAndTestExecutions": 68,
   "phone": "PENDING",
@@ -43,13 +43,21 @@
     "tail": {
       "run": 38895533070,
       "job": 116954978339,
-      "status": "IN_PROGRESS"
+      "status": "SUCCESS",
+      "successfulGradleExecutions": 13,
+      "reusedSuccessfulBaselineSteps": 22,
+      "reusedBaselineRun": 38886133152
     },
     "duplicatePR": {
       "run": 38895541315,
       "job": 116955007426,
-      "status": "IN_PROGRESS"
-    }
+      "status": "IN_PROGRESS_DUPLICATE_NOT_REQUIRED_FOR_DELIVERY"
+    },
+    "repeatFocused": {
+      "run": 38895533092,
+      "status": "SUCCESS"
+    },
+    "implementationEquivalentToApkSource": true
   },
   "apk": {
     "sourceCommit": "b68a63bf0beac5c880e33c8a42c5d9617855acdb",
@@ -72,7 +80,7 @@
     "archiveSha256": "d572a478cffc12a3bc7d30041164adb96c63514ce76c55bfd54e3fdd6dd59ea5",
     "library_file_id": "libfile_6e26a8f0732c819198df8602e920244c",
     "file_id": "file_00000000481c81f5886026449a630eb7",
-    "delivered": false,
+    "delivered": true,
     "verification": "ZIP_CRC_HASH_EMBEDDED_SOURCE_RUN_VERSION_268_BODY_CATALOG_PASS"
   },
   "assets": "SOURCE_RASTER_BYTES_UNCHANGED",
@@ -85,5 +93,6 @@
     "id": 12040970207,
     "sha256": "85253cf168b893438f14fe5462c95e8155f56a1c7e22cfd71674678baf41f41c",
     "visual": "FOUR_FACING_LINE_REVIEWED_GOLD_SCREENSHOT_ACTOR_FRAMING_INSUFFICIENT"
-  }
+  },
+  "closure": "DELIVER_EXISTING_SAVED_CANDIDATE_PHONE_PENDING"
 }
