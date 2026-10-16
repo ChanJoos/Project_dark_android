@@ -68,9 +68,10 @@
     ]
   },
   "validation": {
-    "focused": "PENDING",
-    "common": "PENDING",
+    "focused": "SUCCESS: 38807446765; 133 tests / 21 suites; failures/errors/skips 0",
+    "common": "SUCCESS: 38807446723 and 38807460949; same source c87e943275223b3c230c29fe037db2fce9924b15",
     "phone": "PENDING",
-    "visualAcceptance": "PENDING"
+    "visualAcceptance": "PENDING",
+    "receipt": "master/changes/V168_BUILD_RUNTIME_RECEIPT.json"
   }
 }

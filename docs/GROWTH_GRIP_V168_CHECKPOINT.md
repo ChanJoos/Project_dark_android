@@ -1,3 +1,15 @@
+## 2026-10-16 — V168 resumed: exact-source CI and APK delivery complete
+
+Resumed from existing source `c87e943275223b3c230c29fe037db2fce9924b15` on `codex/rucesion-coast-v157`, PR197; no gameplay or artwork regeneration. main41fe6def remains unmerged. Earlier V168 checkpoint run numbers below are historical; final evidence supersedes their pending status.
+
+IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED. Focused Actions38807446765/job116671847526 SUCCESS: decoded log confirms133 tests/21 suites,0 failures/errors/skips, including8 GrowthGripV168Test scenarios. Common exact-source push38807446723/job116671846634 and PR38807460949/job116671895633 both COMPLETED/SUCCESS; configured build, gameplay, growth, save/migration, map, skill and native regressions passed. No rerun of already-passing checks.
+
+CON/WIS3 yields45–55 and60 yields130–150 independent randomized future-level HP/MP growth; saved random state, rollback, preview and actual growth receipt covered. User-calibrated ADAPTED numbers, original formula UNKNOWN; past maximum HP/MP preserved. Two-hand→shield refuses without mutation; shield→two-hand removes shield slot while retaining ownership. Chungryong basic twohand BODY path retains explicit PUNCH/THRUST/CAST skill motion. Abel/Rucesion managers use reagent-shop door anchors and connected arrival64–120px away. Shared HUD Curum/Maradium art; Curum orange liquid adaptation preserves alpha and original Curanum bytes.
+
+Exact existing APK independently recovered without rebuild: version168/com.projectdark.mobile.v168test, built2026-10-16T06:15:42.730528+09:00,80,441,461bytes, SHA256 `e9500810b2bd3111a14097f3a189ae7c5933a0bb01050d4e40b2704cbfe19889`. Artifact12007432309, archive SHA256 `bd0f9478318539554e34208dfa824cf138505817443dbc847b9794b32060cd48`; ZIP CRC, size/hash and embedded source/run/version match BUILD_INFO. Saved PROJECT_DARK_V168_TEST.apk successfully: libfile_5851f0177470819188e5c44e6c04f997. Separate test app/profile; preserve existing installation/save. This documentation closure is not the APK source.
+
+PHONE / USER VISUAL ACCEPTANCE PENDING. Earlier native five-frame review is retained; this resume did not claim a physical-device run. Ordinary Curum historical original color remains independently UNVERIFIED: renewed official-hosted item-reference searches do not establish icon color. Keep USER_CONFIRMED_ORANGE_ADAPTED_PALETTE, not original-color-certified. Unresolved source equipment options/job conditions and some standing garment overlays remain as recorded in V167/PR197. Next concrete task: exact V168 handset feedback on growth, twohand/shield, both town arrivals and potion appearance; diagnose any reported failure before another candidate. Do not recreate completed work.
+
 # V168 user correction checkpoint
 
 V167 DEVICE_FAILED_USER_REPORTED: insufficient/fixed CON-WIS growth, two-hand motion and equip direction, misplaced town managers, generic HUD potions and Curum color alias. Same PR197, main41fe6def unchanged. Candidate c77c456b4306a78f109539f059140cc7dc38b684 published with17 explicit files.
