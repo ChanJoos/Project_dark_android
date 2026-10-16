@@ -1,6 +1,10 @@
-## 2026-10-17 — V177 equipment direction, size and optical alignment
+## 2026-10-17 — V177 equipment direction, size and optical alignment verified
 
-V176 DEVICE_FAILED_USER_REPORTED_VISUAL: user reports reversed hat/both gloves/armor/shoes, oversized hat/earring/shirt and off-center necklace/armor. V177 flips precisely those slots relative to V176 (left glove now mirrored; right glove returns to native), shrinks hat/earring/starter shirt by15%, and centers necklace/armor by alpha-weighted visible centroid with full-source fit. Weapon direction retained per user. Source artwork bytes preserved. Focused native tests, screenshot review, exact APK and phone/user acceptance PENDING. Existing PR197/main41fe6def remains unmerged candidate. Resume docs/EQUIPMENT_WINDOW_V177_CHECKPOINT.md.
+V176 DEVICE_FAILED_USER_REPORTED_VISUAL retained. V177 flips hat/both gloves/armor/shoes relative to V176; its previously mirrored right glove now returns to native. Hat/earring/starter shirt reduced15%; necklace/armor alpha-weighted centroid centered with full-source fit. Weapon direction retained per user; artwork bytes,inventory rendering,15 slots,FinalStats/equip/ownership/save retained.
+
+IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED at cc04c5df18df5ba602eefbfd93a5792ad5b6c7ce. Focused38944875080/job117121347420 SUCCESS; downloaded JUnit independently parsed60tests/11suites,0failures/errors/skips. All15 relative slot directions,real icon bounds/size/centroids and retained equipment/live-stat/save/input regressions passed. Actual GameView starter/filled/armor frames reviewed. APK source/run/version,archive digests/CRC,skin bytes,APK hash/size verified. Built2026-10-17 03:11:56 KST;80780283bytes,SHA256a5661ba16b3a3c991663ca94e1ecb346d3afcf32e859747c3fc19f3e17a8431d. Saved PROJECT_DARK_V177_TEST.apk and PROJECT_DARK_V177_EQUIPMENT.png; exact receipt master/changes/V177_BUILD_RUNTIME_RECEIPT.json. Main41fe6def/PR197 remains unmerged candidate. Full common38944875040/38944884968 IN_PROGRESS at delivery;phone/user visual acceptance PENDING.
+
+Task implementation/required focused verification/exact candidate delivery complete. Next: V177 phone feedback and existing common CI outcomes. Preserve saved candidate; do not rebuild/reupload or repeat60passing cases merely after interruption. Resume docs/EQUIPMENT_WINDOW_V177_CHECKPOINT.md.
 
 ## 2026-10-16 — V174 leap presentation/facing and confirmed timing corrections verified
 

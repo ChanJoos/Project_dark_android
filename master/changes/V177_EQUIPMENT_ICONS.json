@@ -22,6 +22,7 @@
   },
   "sourceArtwork": "UNCHANGED",
   "inventoryAndStatsAndSave": "UNCHANGED",
-  "verification": "PENDING",
-  "phoneAcceptance": "PENDING"
+  "verification": "BUILD_AND_HOST_ANDROID_NATIVE_VERIFIED_60_TESTS_11_SUITES",
+  "phoneAcceptance": "PENDING",
+  "receipt": "master/changes/V177_BUILD_RUNTIME_RECEIPT.json"
 }
