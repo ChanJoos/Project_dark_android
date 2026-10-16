@@ -1,3 +1,11 @@
+## V174 live validation resume — 2026-10-16 21:43 KST
+
+Runtime implementation source e06af00e127a6d57b51be2bc03cebdd717afb050. Test-only fixes8ac61750a33af24a5ca1b6d3ee54880bcccf7ccf (float tolerance/restore finisher HP/real legal map tiles), then096b2d4ef9d8bda7f6589da0392e827dea7ffd37 (campaign waits real reuse; machine-checked11prefix reuse). App implementation unchanged aftere06. Source classification now3corrected martial spells;221total/141spell/80technique;34runtime cooldown changes,25explicit historical references,49physical/utility original numbers pending.
+
+Preliminary cf016 focused38900596064/job116971595337:214tests/37suites,211pass/3newtestfixturefailures, all corrected at8ac. E06 focused38901023752/job116973009513 and8acfocused38901782976/job116975533384 still running at this checkpoint. E06common38901023707/job116973009046 failed only CampaignProgressTest.eachClassReachesFortyOneThroughResolverKillsAndQuestTurnIns because cast helper repeated5s Shortblade after3s. Corrected at096; baseline11successful prefix checks reused only if app/source inputs unchanged.
+
+Current096 common38902322965, duplicatePR38902329194,focused38902323581 IN_PROGRESS. Do not rebuild from superseded cf016. Inspect active outcomes and actual failures. NoV174APK built/saved/delivered yet. Source bytes preserved. ExistingV173 is user-accepted except leap presentation/facing; keep its prior8s control/full reflection/basic1s rules. Final needs native214cases + common suffix + exactAPK embeddedSHA/run/version/hash and save, then phone review. Do not repeat source research or assets on resume.
+
 ## 2026-10-16 — V174 leap presentation/facing and whole-catalog timing audit candidate
 
 V173 user feedback: other repairs acceptable; leap has no independent particles or jump motion, and must face the crossed actor after landing. User reports all-skill cooldown mismatch. IMPLEMENTED candidate; BUILD/HOST_NATIVE/PHONE PENDING. LEAP uses IDLE/no particles, keeps actor/terrain landing validation and turns toward crossed monster/NPC only after successful effect. No invented leap cooldown: exact original value remains pending.

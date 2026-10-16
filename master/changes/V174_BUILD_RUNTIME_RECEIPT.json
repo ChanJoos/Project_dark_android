@@ -1,0 +1,27 @@
+{
+  "runtimeSource": "e06af00e127a6d57b51be2bc03cebdd717afb050",
+  "validationSource": "096b2d4ef9d8bda7f6589da0392e827dea7ffd37",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "status": "IMPLEMENTED_VALIDATION_IN_PROGRESS",
+  "tests": {
+    "preliminaryRun": 38900596064,
+    "tests": 214,
+    "suites": 37,
+    "passed": 211,
+    "failed": 3,
+    "cause": "Only new fixtures: zero float tolerance, finisher HP not replenished, illegal map coordinate; corrected8ac"
+  },
+  "current": {
+    "focused": 38902323581,
+    "common": 38902322965,
+    "duplicate": 38902329194
+  },
+  "catalog": 221,
+  "spellCount": 141,
+  "cooldownChanges": 34,
+  "historicalExactEntries": 25,
+  "unresolvedPhysicalOrUtilityOriginals": 49,
+  "phone": "PENDING",
+  "apk": "NOT_BUILT_FOR_FINAL_SOURCE"
+}
