@@ -1,6 +1,10 @@
+## V174 verified candidate; original cooldown gaps retained
+
+APK bde8fe34, focused214/37 + resumed common38902322965 SUCCESS. Three martial spell classifications corrected,34reusevalues changed.49physical/utility original numbers remain PENDING; historical measurements and general spell policy are not whole-catalog live-server certification. See changes/V174_BUILD_RUNTIME_RECEIPT.json and changes/V174_SKILL_TIMING.json. Phone acceptance pending.
+
 ## V174 accepted per-ID timing and leap presentation
 
-See changes/V174_SKILL_TIMING.json (221 IDs, explicit evidence,31runtimechanges,52physical/utility originals PENDING). V174 runtime/build/phone verification pending; historical fan values are not live-server certification.
+See changes/V174_SKILL_TIMING.json (221 IDs, explicit evidence,34runtimechanges,49physical/utility originals PENDING). V174 runtime/build/phone verification pending; historical fan values are not live-server certification.
 
 ## V173 user-confirmed martial repair
 
