@@ -25,7 +25,7 @@ public class MotionHudFrameV169Test {
   // Source twohand weapon has c, not e; every used contact must bind the same source cell.
   assertNull(reg.getJSONObject("sprites").optJSONArray("e"));
   for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-   Set<String> keys=new HashSet<>();for(float q:new float[]{.13f,.27f,.34f}){String key=catalog.frameKey(body,"TWO_HAND",d,q);keys.add(key);assertTrue(key,key.contains("/c/"));int i=Integer.parseInt(key.substring(key.lastIndexOf('/')+1));assertNotNull(reg.getJSONObject("sprites").getJSONArray("c").optJSONObject(i));}assertEquals(3,keys.size());
+   Set<String> keys=new HashSet<>();for(float q:new float[]{.13f,.27f,.34f,.55f}){String key=catalog.frameKey(body,"TWO_HAND",d,q);keys.add(key);assertTrue(key,key.contains("/c/"));int i=Integer.parseInt(key.substring(key.lastIndexOf('/')+1));assertNotNull(reg.getJSONObject("sprites").getJSONArray("c").optJSONObject(i));}assertEquals(4,keys.size());
   }
  }
  @Test public void twoHandPreparationAndRecoveryContainNoSourceContactTrail()throws Exception{
