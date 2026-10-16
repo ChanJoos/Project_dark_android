@@ -37,8 +37,10 @@
   "validation": {
     "source": "381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
     "focused": "SUCCESS:38835692405;166tests/29suites;0failures/errors/skips",
-    "common": "IN_PROGRESS:38835692455,38835701504",
+    "common": "SUCCESS:38835692455 and38835701504; exact runtime source381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
     "phone": "PENDING",
-    "visual": "PENDING"
+    "visual": "PENDING",
+    "native": "SUCCESS:19exterior/17interior HUD+input;17motion profiles/2bodies/4facings;8sheets reviewed",
+    "receipt": "master/changes/V169_BUILD_RUNTIME_RECEIPT.json"
   }
 }

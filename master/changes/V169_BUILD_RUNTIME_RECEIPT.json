@@ -16,12 +16,12 @@
     {
       "run": 38835692455,
       "job": 116764192141,
-      "status": "IN_PROGRESS"
+      "status": "SUCCESS"
     },
     {
       "run": 38835701504,
       "job": 116764221400,
-      "status": "IN_PROGRESS"
+      "status": "SUCCESS"
     }
   ],
   "apk": {
@@ -115,5 +115,9 @@
     "Some source garments have no action groups and use standing overlays",
     "Existing original equipment/stat source gaps preserved"
   ],
-  "resume": "Use saved exact APK/artifacts; no rebuild or artwork regeneration. Finish common exact-source CI."
+  "resume": "Completed: inspect exact V169 phone feedback. Retain source/artifact; no rebuild or artwork regeneration on interruption.",
+  "implementation": "IMPLEMENTED",
+  "build": "VERIFIED",
+  "hostAndroidNative": "VERIFIED",
+  "delivery": "SAVED_AND_DELIVERED"
 }
