@@ -1,0 +1,5 @@
+## V178 equipment phone-feedback correction — 2026-10-17
+
+V177 DEVICE_FAILED_USER_REPORTED_VISUAL: phone screenshot shows shoe direction wrong, all earring variants still too large, left glove should face exactly like current right glove, both ring slots need80% sizing for all variants. V178 uses native source direction for both gloves and shoes (flips V177 left glove and shoe); hat/armor mirror retained. Every earring uses .85*.80=.68 of alpha-fit target, every ring/both slots .80. User80% means 20% smaller than current delivered size, not an80% reduction. Previously all earrings already used.85, not only double silver.
+
+Original item/skin bytes, inventory/detail rendering, slots, live FinalStats/equip/save retained. Added entire-catalog raster equality tests for earrings/rings/gloves/shoes plus actual GameView variants. V177 earlier direction assertion updated only for explicitly superseded left-glove/shoe policy. Build/native/screenshots/APK/phone/user acceptance PENDING. Same PR197/branchcodex/rucesion-coast-v157; main41fe6def remains unmerged candidate.

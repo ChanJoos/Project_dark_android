@@ -11,13 +11,12 @@ import org.robolectric.annotation.*;
 public class EquipmentWindowV177Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();for(String n:new String[]{"project_dark_f5m_v1","project_dark_skill_test_v1"})c.getSharedPreferences(n,0).edit().clear().commit();F5mSaveStore.install(c);UiTheme.install(c);}
- @Test public void slotDirectionsFlipTheFiveRequestedSlotsRelativeToV176AndOtherSlotsKeepTheirDirection(){
+ @Test public void slotDirectionsFollowCurrentUserPolicyWithV178GloveAndShoeOverride(){
   Bitmap src=Bitmap.createBitmap(20,20,Bitmap.Config.ARGB_8888);Canvas sc=new Canvas(src);Paint p=new Paint();p.setColor(Color.RED);sc.drawRect(2,2,10,18,p);p.setColor(Color.BLUE);sc.drawRect(10,2,18,18,p);
   for(String slot:ItemWindow.SLOTS){
    Bitmap out=Bitmap.createBitmap(80,80,Bitmap.Config.ARGB_8888);SourceItemIconRegistry.drawEquipmentForSlot(new Canvas(out),src,new RectF(10,10,70,70),p,slot,"fixture");
-   boolean v176Mirrored=RpgProgressionState.RIGHT_GLOVE_SLOT.equals(slot);
-   boolean requested="모자".equals(slot)||"장갑".equals(RpgProgressionState.baseSlot(slot))||"갑옷".equals(slot)||"신발".equals(slot);
-   boolean expected=v176Mirrored^requested;
+   // V178 supersedes the V177 left-glove and shoe direction after phone feedback.
+   boolean expected="모자".equals(slot)||"갑옷".equals(slot);
    assertEquals(slot,expected?Color.BLUE:Color.RED,out.getPixel(25,40));assertEquals(slot,expected?Color.RED:Color.BLUE,out.getPixel(55,40));
   }
  }

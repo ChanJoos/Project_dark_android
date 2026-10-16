@@ -63,12 +63,15 @@ final class SourceItemIconRegistry {
   for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(android.graphics.Color.alpha(pixels[y*w+x])>=16){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
   android.graphics.Rect b=right<left?new android.graphics.Rect():new android.graphics.Rect(left,top,right+1,bottom+1);equipmentBounds.put(bitmap,b);return b;
  }
- // V177 direction is relative to V176: its right glove was already mirrored.
+ // V178 phone feedback: both gloves use the V177 right-slot direction; all shoes flip from V177.
  static boolean equipmentMirrored(String slot){
-  return "모자".equals(slot)||"장갑".equals(slot)||"갑옷".equals(slot)||"신발".equals(slot);
+  return "모자".equals(slot)||"갑옷".equals(slot);
  }
  static float equipmentSize(String slot,String itemId){
-  return "모자".equals(slot)||"귀걸이".equals(slot)||RpgProgressionState.STARTER_SHIRT_ITEM_ID.equals(itemId)?.85f:1f;
+  String base=RpgProgressionState.baseSlot(slot);
+  if("귀걸이".equals(base))return .85f*.8f; // 80% of the delivered V177 size, for every earring.
+  if("반지".equals(base))return .8f; // Both slots, every ring.
+  return "모자".equals(base)||RpgProgressionState.STARTER_SHIRT_ITEM_ID.equals(itemId)?.85f:1f;
  }
  private static final Map<Bitmap,android.graphics.PointF> equipmentCenters=Collections.synchronizedMap(new WeakHashMap<>());
  static android.graphics.PointF equipmentOpticalCenter(Bitmap bitmap){

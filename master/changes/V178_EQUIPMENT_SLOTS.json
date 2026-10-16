@@ -1,0 +1,19 @@
+{
+  "status": "ACCEPTED",
+  "source": "USER_PHONE_SCREENSHOT_20261017_0324_KST",
+  "before": "V177 user-reported shoe/glove direction and oversized accessories",
+  "after": {
+    "nativeDirection": [
+      "장갑",
+      "장갑(오른손)",
+      "신발"
+    ],
+    "earringScaleRelativeToV177": 0.8,
+    "ringScaleRelativeToV177": 0.8,
+    "scope": "EVERY_ITEM_IN_SLOT_BOTH_RING_SLOTS"
+  },
+  "sourceArtwork": "UNCHANGED",
+  "equipStatsSave": "UNCHANGED",
+  "verification": "PENDING",
+  "phoneAcceptance": "PENDING"
+}
