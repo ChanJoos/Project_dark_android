@@ -45,7 +45,7 @@ public class MartialHudAutoRegressionTest {
    }
    save(sheet,"v89-martial-"+entry.id+".png");sheet.recycle();
   }
-  assertEquals(34,reviewed);assertEquals(30,active);
+  assertEquals(34,reviewed);assertEquals(31,active);
  }
  static void advance(GameView view,float seconds)throws Exception{while(seconds>.05f){call(view,"update",float.class,.05f);seconds-=.05f;}if(seconds>0)call(view,"update",float.class,seconds);}
  static void crop(GameView v,Canvas out,int x,int y)throws Exception{

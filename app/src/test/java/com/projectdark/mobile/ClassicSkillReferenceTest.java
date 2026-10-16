@@ -20,8 +20,8 @@ public class ClassicSkillReferenceTest {
   JSONObject references=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/classic/references.json"),StandardCharsets.UTF_8));assertEquals(85,references.getJSONArray("rows").length());
   SkillBook b=SkillBook.load(c);assertNull(b.get("SK_성직자_010"));assertEquals("경신공법",b.get("SK_무도가_033").name);assertEquals("아지토",b.get("SK_무도가_034").name);
   assertEquals(53,b.learningPolicy("SK_무도가_020").getJSONObject("stats").getInt("INT"));assertTrue(b.summary("SK_성직자_007").contains("그룹"));assertEquals(SkillActionContract.Pattern.GROUP,SkillActionContract.get("SK_성직자_007").pattern);
-  assertEquals(SkillActionContract.Pattern.SELF,SkillActionContract.get("SK_성직자_017").pattern);assertEquals(3,SkillActionContract.get("SK_무도가_003").reach);
-  assertFalse(SkillActionContract.get("SK_무도가_003").presentationAllowed());assertFalse(SkillActionContract.get("SK_성직자_025").presentationAllowed());
+  assertEquals(SkillActionContract.Pattern.SELF,SkillActionContract.get("SK_성직자_017").pattern);assertEquals(1,SkillActionContract.get("SK_무도가_003").reach);
+  assertTrue(SkillActionContract.get("SK_무도가_003").presentationAllowed());assertFalse(SkillActionContract.get("SK_성직자_025").presentationAllowed());
   assertEquals("마법",b.get("SK_무도가_020").kind);assertEquals("마법",b.get("SK_무도가_011").kind);
  }
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
@@ -52,7 +52,7 @@ public class ClassicSkillReferenceTest {
   for(String id:reference.effects.keySet()){
    SkillActionContract.Rule rule=SkillActionContract.get(id);if(!rule.presentationAllowed())continue;
    F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=20000;s.player().mp=20000;int before=m.hp;
-   ((CombatController)field(v,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
+   ((CombatController)field(v,"combat")).selectTarget(m);((CanonicalActorFacing)field(v,"playerFacing")).setLocomotion(CharacterRenderer.Direction.SE);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(v,((SkillBook)field(v,"skillBook")).get(id));assertEquals(id,field(v,"activeSkillVisualId"));
    // Production drains queued ACTION_STARTED events in its frame tick, not in submitPlayer.
    Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(v,0f);
