@@ -28,7 +28,7 @@ public class ModernUiTest {
   @Test public void wideWindowsAndTheirCloseTargetsStayAligned()throws Exception{
     GameView v=start(2340,1080);float right=GameView.rightHudOffsetForView(2340,1080),center=right/2;
     tap(v,(742+right)*2,56);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"inventoryOpen"));capture(v,"wide-inventory");tap(v,(914+center)*2,120);assertFalse((Boolean)ItemWindowReferenceTest.field(v,"inventoryOpen"));
-    tap(v,(830+right)*2,56);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"equipmentOpen"));capture(v,"wide-equipment");tap(v,(492+center)*2,122);assertFalse((Boolean)ItemWindowReferenceTest.field(v,"equipmentOpen"));
+    tap(v,(830+right)*2,56);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"equipmentOpen"));capture(v,"wide-equipment");tap(v,(ItemWindow.equipmentClose().centerX()+center)*2,ItemWindow.equipmentClose().centerY()*2);assertFalse((Boolean)ItemWindowReferenceTest.field(v,"equipmentOpen"));
     tap(v,(786+right)*2,56);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"statsOpen"));capture(v,"wide-stats");tap(v,(911+center)*2,182);assertFalse((Boolean)ItemWindowReferenceTest.field(v,"statsOpen"));
     tap(v,(874+right)*2,56);assertTrue(((SkillWindow)ItemWindowReferenceTest.field(v,"skillWindow")).open);capture(v,"wide-skills");tap(v,(610+center)*2,122);assertFalse(((SkillWindow)ItemWindowReferenceTest.field(v,"skillWindow")).open);
     QuestJournalTest.gesture(v,(918+right)*2,56);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"questJournalOpen"));capture(v,"wide-quests");QuestJournalTest.gesture(v,(818+center)*2,156);assertFalse((Boolean)ItemWindowReferenceTest.field(v,"questJournalOpen"));

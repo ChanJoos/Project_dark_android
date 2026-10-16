@@ -94,8 +94,8 @@ public class SkillWindowTest {
     Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);update.invoke(v,.34f);tap(v,duplicate.centerX(),duplicate.centerY());assertEquals(38,r.player().mp);
     session.tick(.01f);assertEquals(68,r.player().hp);
   }
-  @Test public void learnedUnimplementedSkillRegistersAndRestoresWithoutPretendingCombatSupport() throws Exception {
-    SkillBook b=SkillBook.load(context);assertTrue(b.learn("SK_무도가_003",0));assertTrue(b.assign(2,"SK_무도가_003"));assertFalse("unwired recipient must not pretend execution support",b.usable("SK_무도가_003"));SkillBook restored=SkillBook.load(context);assertTrue(restored.restore(b.snapshot()));assertEquals("SK_무도가_003",restored.slot(2));assertTrue(restored.learned("SK_무도가_003"));assertFalse(restored.usable("SK_무도가_003"));
+  @Test public void learnedLeapRegistersAndRestoresWithImplementedCombatSupport() throws Exception {
+    SkillBook b=SkillBook.load(context);b.bindJob(()->"MARTIAL_ARTIST");assertTrue(b.learn("SK_무도가_003",0));assertTrue(b.assign(2,"SK_무도가_003"));assertTrue("V173 leap is implemented for the learned martial job",b.usable("SK_무도가_003"));SkillBook restored=SkillBook.load(context);restored.bindJob(()->"MARTIAL_ARTIST");assertTrue(restored.restore(b.snapshot()));assertEquals("SK_무도가_003",restored.slot(2));assertTrue(restored.learned("SK_무도가_003"));assertTrue(restored.usable("SK_무도가_003"));
     for(SkillDef d:SkillRuntimeCatalog.definitions())assertNotNull("all adaptation IDs must be real Master IDs",b.get(d.id));
   }
   @Test public void commonerCanActuallyLearnRegisterAndUseBasicAttackThroughProductionInput() throws Exception {

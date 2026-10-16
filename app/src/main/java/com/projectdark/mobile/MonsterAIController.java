@@ -119,7 +119,7 @@ public final class MonsterAIController {
   private void tickCoastMonster(RuntimeState state,RuntimeState.Monster m,float dt,AbelCombatProfile p){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());tile.spellClock+=Math.max(0,dt);
     if(state.skillEffects().disabled(m.id)||(state.skillEffects().hidden()||state.skillEffects().has(m.id,"AGGRO_RESET"))&&!state.skillEffects().has(m.id,"TAUNT")){state.cancelMonsterAttack(m);tile.resetClock();return;}
-    if(m.isMoving||m.attackVisualRemaining>0)return;ensureCentered(state,m,tile);
+    if(m.isMoving||m.attackVisualRemaining>0)return;if(!state.skillEffects().rooted(m.id))ensureCentered(state,m,tile);
     float distance=(float)Math.hypot(state.player().x-m.x,state.player().y-m.y);boolean near=CanonicalMeleeTileContract.reachable(m.x,m.y,state.player().x,state.player().y);
     if(m.id.startsWith("ABEL_BERSERKER")&&m.hp<m.maxHp/2&&!state.skillEffects().has(m.id,"DAM"))state.skillEffects().put(m.id,"MONSTER_FIRE","DAM",8,120);
     if(p.id.equals("ABEL_KINGARK")&&!m.bossRecovered&&m.hp<m.maxHp*.35f&&m.mp>=16){
@@ -138,7 +138,7 @@ public final class MonsterAIController {
     boolean taunted=state.skillEffects().has(m.id,"TAUNT");
     if(!taunted&&(state.skillEffects().hidden()||state.skillEffects().has(m.id,"AGGRO_RESET"))){state.cancelMonsterAttack(m);tile.resetClock();return;}
     if(m.isMoving){tile.resetClock();return;}
-    ensureCentered(state,m,tile);
+    if(!state.skillEffects().rooted(m.id))ensureCentered(state,m,tile);
     float dx=state.player().x-m.x;
     float dy=state.player().y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);

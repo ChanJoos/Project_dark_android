@@ -160,19 +160,19 @@ summaries.update({
  '디나르콜룸':'대상에게 걸린 행동 제한 상태를 해제합니다.',
  '디베노메라':'대상에게 걸린 중독 상태를 해제합니다.',
  '디소루메라':'대상에게 걸린 동결 상태를 해제합니다.',
- '이형환위':'대상을 뛰어넘어 반대편으로 이동합니다.',
+ '이형환위':'바라보는 방향의 인접 대상을 뛰어넘습니다. 뒤가 막히면 대상 좌우의 빈칸에 착지합니다.',
  '미종보법':'날렵한 움직임으로 공격 회피율을 높입니다.',
  '양의신권':'기본공격에 추가 타격을 더해 두 번 공격합니다.',
  '통배권':'적을 공격하고 중독으로 지속 피해를 줍니다.',
  '백보신권':'전방의 세 칸에 있는 적을 직선으로 공격합니다.',
- '일음지':'대상에게 실명 효과를 걸어 시야를 줄입니다.',
+ '일음지':'8초 동안 대상의 이동을 막습니다. 가까운 대상은 공격할 수 있습니다.',
  '흡정신공':'체력이 매우 낮아진 적에게서 체력을 흡수합니다.',
  '철포삼':'몸을 단단하게 해 방어 능력을 높입니다.',
  '선풍각':'몸을 회전해 주변의 적을 발차기로 공격합니다.',
- '발경':'적을 공격하고 행동하지 못하게 만듭니다.',
+ '발경':'8초 동안 대상의 이동과 공격을 막습니다.',
  '다라밀공':'체력과 마나를 사용해 적에게 강력한 피해를 줍니다.',
  '구양신공':'체력을 바탕으로 강력한 일격을 가하는 필살 기술입니다.',
- '반탄신공':'적의 공격을 받아쳐 반격합니다.',
+ '반탄신공':'받을 피해를 막고 공격한 몬스터에게 같은 피해를 돌려줍니다.',
  '달마신공':'힘을 모아 강력한 피해를 주는 필살 기술입니다.',
  '연천단각':'단각을 강화한 상위 발차기 기술입니다.',
  '붕신선각':'붕각을 강화한 상위 발차기 기술입니다.',
@@ -229,7 +229,7 @@ for e in catalog:
   if match:
    stats[k]=int(match.group(1));captured_stats.append(k)
  if e['id'] in classic:stats=classic[e['id']]['stats'];captured_stats=keys
- out[e['id']]={'stats':stats,'gold':0 if e['id'] in ['SK_공통_001','SK_공통_002'] else prices[tier],'items':materials.get(e['id'],{}),'summary':classic[e['id']]['description'] if e['id'] in classic else summary(e),'evidence':'PROJECT_ADAPTED_V60','stat_source':'FAN_SEO_2020_CORRECTED_TABLE' if e['id'] in classic else 'USER_CAPTURE' if len(captured_stats)==5 else 'CAPTURE_WITH_PROJECT_DEFAULTS' if captured_stats else 'PROJECT_TIER_POLICY'}
+ out[e['id']]={'stats':stats,'gold':0 if e['id'] in ['SK_공통_001','SK_공통_002'] else prices[tier],'items':materials.get(e['id'],{}),'summary':summary(e) if e['id'] in ('SK_무도가_003','SK_무도가_009','SK_무도가_010','SK_무도가_018','SK_무도가_022') else classic[e['id']]['description'] if e['id'] in classic else summary(e),'evidence':'PROJECT_ADAPTED_V60','stat_source':'FAN_SEO_2020_CORRECTED_TABLE' if e['id'] in classic else 'USER_CAPTURE' if len(captured_stats)==5 else 'CAPTURE_WITH_PROJECT_DEFAULTS' if captured_stats else 'PROJECT_TIER_POLICY'}
 for id in ['skill_proto','kick_proto','cast_proto']:out[id]={'stats':{k:3 for k in keys},'gold':0,'items':{},'summary':'전투 검사에 사용하는 내부 스킬입니다.','evidence':'B_TEST_ONLY'}
 (assets/'mobile_learning.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 print('Mobile skill policies:',len(out))

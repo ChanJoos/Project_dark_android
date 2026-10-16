@@ -15,7 +15,7 @@ import android.graphics.*;
 public class EquipmentPerformanceV130Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);UiTheme.install(c);}
- RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);return s;}
+ RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);s.rpg().bindTwoHandLearning(()->true);return s;}
  int hit(RuntimeState s){RuntimeState.Monster m=s.monsters().get(0);m.hp=10000;m.alive=true;new RuntimeCombatPortAdapter(s,(a,b)->true,(a,b)->true).applyDamage("player",m.id,"attack_proto_swing",8);return 10000-m.hp;}
  @Test public void everyWeaponHasVisiblePerformanceAndEachRangeReachesActualDamage()throws Exception{
   RuntimeState s=state();RpgProgressionState r=s.rpg();JSONArray audit=new JSONArray();int count=0;
@@ -26,7 +26,7 @@ public class EquipmentPerformanceV130Test {
    int applied=hit(s);assertTrue(d.itemId,applied>0);
    audit.put(new JSONObject().put("id",d.itemId).put("name",d.name).put("stats",new JSONObject(d.statModifiers)).put("actualPhysicalDamage",applied).put("sourceNote",SourceEquipmentPerformance.note(d.itemId)));count++;
   }
-  assertEquals(56,count);File dir=directory();java.nio.file.Files.write(new File(dir,"all56-weapon-runtime-audit.json").toPath(),audit.toString(2).getBytes("UTF-8"));
+  assertEquals(68,count);File dir=directory();java.nio.file.Files.write(new File(dir,"all68-weapon-runtime-audit.json").toPath(),audit.toString(2).getBytes("UTF-8"));
   r.unequip("무기");r.equip("IT_WARDROBE_MW039");int axe=hit(s);r.unequip("무기");r.equip("IT_WARDROBE_MW023");int gaia=hit(s);assertTrue(gaia>axe+100);
   assertEquals(150,r.finalStats().weaponMinAttack);assertEquals(210,r.finalStats().weaponMaxAttack);
  }
@@ -54,7 +54,7 @@ public class EquipmentPerformanceV130Test {
   }
  }
  @Test public void sourceRangesAndNewShieldOwnershipSurviveActualSaveRestore(){
-  RuntimeState s=state();RpgProgressionState r=s.rpg();r.equip("IT_WARDROBE_MW023");r.equip("IT_SHIELD_PHOBOS");int damage=hit(s);int str=r.str();F5mSaveStore.saveRewardsActive(r);assertTrue(F5mSaveStore.writable());
+  RuntimeState s=state();RpgProgressionState r=s.rpg();r.equip("IT_SHIELD_PHOBOS");r.equip("IT_WARDROBE_MW023");assertNull(r.equippedDefinition("방패"));int damage=hit(s);int str=r.str();F5mSaveStore.saveRewardsActive(r);assertTrue(F5mSaveStore.writable());
   F5mSaveStore.install(c);RpgProgressionState copy=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(copy);assertEquals(r.equipment(),copy.equipment());assertEquals(r.inventory(),copy.inventory());assertEquals(str,copy.str());assertEquals(150,copy.finalStats().weaponMinAttack);assertEquals(210,copy.finalStats().weaponMaxAttack);assertEquals(r.finalStats().ac,copy.finalStats().ac);assertEquals(r.finalStats().magicDefense,copy.finalStats().magicDefense);assertTrue(damage>100);
  }
  @Test public void aripelRestoredAttackAndMpOptionReachActualPlayer(){
@@ -67,3 +67,4 @@ public class EquipmentPerformanceV130Test {
  }
  File directory(){File dir=new File("build/reports/equipment-performance-v130");dir.mkdirs();return dir;}
 }
+

@@ -52,6 +52,7 @@ final class ItemEffects {
  static int additionalRegeneration(RpgProgressionState r){return (int)Math.min(Integer.MAX_VALUE,(long)r.baseMaxHp()*regeneration(r)/1000);}
  static List<String> description(RpgProgressionState.ItemDefinition d){
   List<String> lines=new ArrayList<>();if(d==null)return lines;
+  if(RpgProgressionState.WEAPON_SLOT.equals(d.equipSlot))lines.add(WeaponCombatProfile.label(d)+" · 장착 시 손 점유와 공격 동작 적용");
   int hp=healHp(d.itemId),mp=healMp(d.itemId);
   if(hp>0)lines.add("사용 시 HP "+hp+" 회복 · 최대 HP 초과 불가");
   if(mp>0)lines.add("사용 시 MP "+mp+" 회복 · 최대 MP 초과 불가");

@@ -1,0 +1,102 @@
+{
+  "changeId": "COAST_V159_SOURCE_PAIRS",
+  "dateSeoul": "2026-10-14",
+  "status": "IMPLEMENTED_BUILD_NATIVE_FULL_ANDROID_VERIFIED",
+  "deviceReport": "V158_USER_VISUAL_REJECTED_COASTS_AND_PAIRED_MONSTERS",
+  "owner": "ROOT_SINGLE_EDITOR",
+  "requested": [
+    "Arkpus and Plant same size to Plant84",
+    "Koatl exact ElectKoatl form, copper ribs only",
+    "PoisonKakapo exact Kakapo geometry, green shell only",
+    "Blue/RedHacon same geometry/pose, color-only variant",
+    "Plant eyes source visibility audit",
+    "Tyrant and Ariel approved: preserve",
+    "Both Abel and Rucesion distinct source-like coasts, no cloned plans"
+  ],
+  "userAcceptedSpecies": [
+    "LYK_TYRANT",
+    "LYK_ARIEL"
+  ],
+  "eyeAudit": "Original Plant at34/55/60.5s is foliage-occluded; no reliable visible eye or pupil identified. Do not assert species eyeless or invent confirmed eyes. Preserve current foliage/face pending clear view.",
+  "originalVideoSources": [
+    {
+      "path": "Screen_Recording_20261011_215521_YouTube.mp4",
+      "sha256": "dc9d859037c751df1297a830b39eb8b9a9e037ff4fde28b45dad6b37a3cac211",
+      "inspectedTimes": [
+        1,
+        10,
+        20,
+        29
+      ],
+      "observed": "Abel1B overlapping grey reefs, mixed palms/banana/ferns, open sand and debris"
+    },
+    {
+      "path": "Screen_Recording_20261012_060245_YouTube.mp4",
+      "sha256": "a60559303ddc91c5d4f339c09aed5b0b68582b2b6446e4cd7189db161610e6d9",
+      "inspectedTimes": [
+        2,
+        9,
+        19,
+        25,
+        35,
+        49,
+        58
+      ],
+      "observed": "Abel2C uneven adjacent reef columns, Abel3C irregular dense palm/fan/banana grove,4C multi-column reefs and broad open fight area"
+    },
+    {
+      "path": "Screen_Recording_20261014_175654_YouTube(1).mp4",
+      "sha256": "16562bf1f9f4113e5dba453ec9975a259a76807dd1f2acb332f40b2a13329e12",
+      "inspectedTimes": [
+        1,
+        23,
+        34,
+        55,
+        60.5
+      ],
+      "observed": "Rucesion entry curved palm silhouettes/shore,1C reef-flanked palm corridor,2C scattered fan/banana groves,3B large overlapping reef masses"
+    }
+  ],
+  "mapPolicy": "Observed local assemblage/spacing motifs, individually authored unseen square extent. No whole original topology certification. Ten distinct coastline/prop plans; no mirrored arena or regular rock rows. Shared renderer/movement/collision/cache retained.",
+  "materials": "Built-in imagegen3 color-reference edits; exact production variants use canonical base PNGs and cache-native pointwise palette mapping during prewarm, preserves all source alpha/geometry/pose/foot and navy fins/metal bands. No extra per-frame decoding or cache pair growth.",
+  "runtimeFiles": [
+    "world/CoastSpritePalette.java",
+    "world/CoastalHuntLayout.java",
+    "world/PoteFieldRenderer.java",
+    "PoteForestMonsterShowcase.java"
+  ],
+  "bodyCanvas": {
+    "Arkpus": 84,
+    "PlantArkpus": 84,
+    "Koatl": [
+      104,
+      84
+    ],
+    "ElectKoatl": [
+      104,
+      84
+    ],
+    "BlueHacon": 72,
+    "RedHacon": 72,
+    "Kakapo": 64,
+    "PoisonKakapo": 64,
+    "Tyrant": 95,
+    "Ariel": 110
+  },
+  "normalEntryAndBalance": "unchanged",
+  "legacySaveAlias": "retained",
+  "fullPopulations": "retained",
+  "originalArielPartyEvent": "NOT_IMPLEMENTED_PREVIEW_ONLY",
+  "phoneAcceptance": "PENDING",
+  "newUserVisualAcceptance": "PENDING",
+  "waterFeedback": {
+    "dateSeoul": "2026-10-15",
+    "report": "User rejects cheap repeated purple sea",
+    "repair": "Large source-camera-referenced native sea texture, muted dark-indigo navy wave detail; sea-only shallow depth, wet sand and surf contour in both coasts",
+    "texture": "app/src/main/assets/coast-v159/water.png",
+    "textureSha256": "21bf69245a902dd9f57193d50f5199b911e7fc2224a64313e5e044d59c431e9d",
+    "originalColor": "Original includes dark indigo sea; original shore depth/foam not equal to old V158 flat repetitive strip",
+    "status": "BUILD_NATIVE_VERIFIED_NEW_USER_VISUAL_PENDING"
+  },
+  "receipt": "master/changes/V159_BUILD_RUNTIME_RECEIPT.json"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "key": "koatl",
+    "referenced_image_paths": [
+      "/workspace/scratch/f23e6042de6e/project-dark/master/source/rucesion_v158/elect_koatl.png",
+      "/workspace/scratch/f23e6042de6e/project-dark/master/source/rucesion_v157/koatl.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit target image1: existing 4-column by3-row twelve-pose game sprite sheet of Elect Koatl. Image2 is COLOR REFERENCE ONLY for copper-brown rib bones. Change ONLY the white/silver bones in the center of EVERY sprite in image1 to the copper-brown/tan bone colors from image2. Keep EXACTLY the broad flat silhouette, navy fins, tail, head, pose, coordinates, sizes, margins and all twelve sprites of image1. Do not use the head or wing shapes from image2. Do not redraw the anatomy. Original-style sharp pixel edges. Actual transparent background, no glow, no shadow background, no text. Maintain same sheet dimensions and 4x3 cell ordering.",
+    "mode": "built-in image_gen",
+    "role": "color reference; runtime uses canonical exact-pose sprite with cached native palette variant"
+  },
+  {
+    "key": "poison_kakapo",
+    "referenced_image_paths": [
+      "/workspace/scratch/f23e6042de6e/project-dark/master/source/rucesion_v157/kakapo.png",
+      "/workspace/scratch/f23e6042de6e/project-dark/master/source/rucesion_v157/poison_kakapo.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Image1 is the exact edit target twelve-pose Kakapo ammonite sprite sheet. Image2 is a GREEN COLOR reference only. Replace ONLY orange shell panels in image1 with rich green shell panels using the green palette of image2. Preserve EXACTLY image1 round smooth spiral shell silhouette, NO SPIKES, no added legs, silver shell bands, crimson tentacles, red mouth, teeth, eye and ALL12 poses/positions/size/transparent padding. Do NOT copy image2 anatomy or posture. Sharp pixel art, genuine transparency. Same4columns by3rows grid, identical poses and geometry as image1, no text or background.",
+    "mode": "built-in image_gen",
+    "role": "color reference; runtime uses canonical exact-pose sprite with cached native palette variant"
+  },
+  {
+    "key": "red_hacon",
+    "referenced_image_paths": [
+      "/workspace/scratch/f23e6042de6e/project-dark/master/source/rucesion_v158/blue_hacon.png",
+      "/workspace/scratch/f23e6042de6e/project-dark/master/source/rucesion_v157/red_hacon.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Image1 exact edit target4-column3-row12pose Blue Hacon starfish sprite sheet; image2 red color reference ONLY. Turn the BLUE starfish skin in image1 to RED/crimson skin with warm light cream highlights as in image2, and dark teal underside to dark burgundy. Keep all white teeth and red mouth interiors, EXACT identical five-arm silhouette, all12poses/angles/positions/dimensions and transparent padding of image1. Do not adopt any different geometry from image2. ONLY recolor, no redesign, no glow. Sharp original-style pixel sprite artwork, genuinely transparent background, no text.",
+    "mode": "built-in image_gen",
+    "role": "color reference; runtime uses canonical exact-pose sprite with cached native palette variant"
+  }
+]

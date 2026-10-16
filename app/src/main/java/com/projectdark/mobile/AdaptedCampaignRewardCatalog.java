@@ -31,6 +31,7 @@ public final class AdaptedCampaignRewardCatalog {
     // Preserve CanonicalMonsterRewardCatalog; override only admitted mobile campaign instances.
     add(m,"POTE_SPIRIT","포테 C · 깊은 숲",40000,82);
     for(AbelCombatProfile p:AbelCombatProfile.all())add(m,p.id,"아벨해안 · 모바일 3써클",p.exp,p.gold);
+    for(AbelCombatProfile p:RucesionCombatProfiles.all())add(m,p.id,"뤼케시온해안 · 영상/임시 적용",p.exp,p.gold);
     rewards=Collections.unmodifiableMap(m);
   }
   private static void add(Map<String,Reward> m,String id,String zone,int exp,long gold){m.put(id,new Reward(id,zone,exp,gold));}

@@ -1,0 +1,37 @@
+{
+  "version": 170,
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_AND_FULL_CI_VERIFIED_DELIVERED",
+  "userCanon": [
+    "Double Attack learned: two full basic damage contacts",
+    "Triple Attack learned: three contacts; highest linked count wins",
+    "Twohand Attack SK_전사_008 ownership required for twohand equip, including equipment profile",
+    "twohand basic uses existing c BODY and exact blade cells, slower preparation/contact/recovery"
+  ],
+  "reference": {
+    "file": "Screen_Recording_20261016_113835_YouTube.mp4",
+    "sha256": "618b0850fae8bdc64a99c0614e21c4fc810d3772da712ac7c93a724c0db27986",
+    "durationSeconds": 29.085896,
+    "inspected": "4-6s and21-22.5s source contact sheets; repeated raises/sweep/follow-through/recovery; overlapping multi-hit numbers",
+    "redistributed": false
+  },
+  "timing": {
+    "evidence": "USER_CONFIRMED_ADAPTED_VIDEO_CALIBRATION_NOT_ORIGINAL_SERVER_NUMBERS",
+    "twoHandCycleSeconds": 0.8,
+    "firstContactSeconds": 0.3,
+    "linkedSpacingSeconds": 0.065
+  },
+  "preserved": [
+    "raw source raster bytes",
+    "movement speed/frame delta and performance caches",
+    "shield refusal and replacement semantics",
+    "save inventory ownership"
+  ],
+  "verification": {
+    "focused": "174 tests /30 suites PASS at5b1f6a7",
+    "common": "38847251455 and38847255631 SUCCESS at8d6b381; app/tools bytes unchanged from5b1f6a7",
+    "exactSourceVerifierRecovery": "38847251517 SUCCESS pinned5b1f6a7",
+    "phone": "PENDING",
+    "visualAcceptance": "PENDING"
+  },
+  "visualReviewCorrection": "738fa18 native review: mw016 c6 has a strike trail. Use true source IDLE before phase .12 and from .68. Inside strike, retain all four consecutive BODY/blade c cells: back0/1/2/3, front4/5/6/7; place c6 trail at first contact, never preparation. Added independent idle-pixel oracle for both bodies/all directions."
+}

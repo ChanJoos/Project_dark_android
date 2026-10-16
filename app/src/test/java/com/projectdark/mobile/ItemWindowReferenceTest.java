@@ -27,7 +27,7 @@ public class ItemWindowReferenceTest {
   GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState state=field(v,"state");ItemWindow w=field(v,"itemWindow");tap(v,830,28);assertTrue((Boolean)field(v,"equipmentOpen"));render(v,"equipment-v74-overview.png");
   Set<String> reached=new HashSet<>();for(int i=0;i<ItemWindow.SLOTS.length;i++){RectF r=ItemWindow.slot(i);tap(v,r.centerX(),r.centerY());assertEquals(ItemWindow.SLOTS[i],w.selectedSlot);reached.add(w.selectedSlot);}assertTrue(reached.contains("갑옷"));assertTrue(reached.containsAll(state.rpg().equipment().keySet()));
   int weapon=Arrays.asList(ItemWindow.SLOTS).indexOf("무기");RectF b=ItemWindow.slot(weapon);tap(v,b.centerX(),b.centerY());render(v,"equipment-v74-selected.png");tap(v,805,490);assertNull(state.rpg().equipment().get("무기"));render(v,"equipment-v74-unequipped.png");
-  tap(v,492,61);assertFalse((Boolean)field(v,"equipmentOpen"));tap(v,830,28);tap(v,640,92);assertFalse((Boolean)field(v,"equipmentOpen"));assertTrue((Boolean)field(v,"statsOpen"));
+  tap(v,ItemWindow.equipmentClose().centerX(),ItemWindow.equipmentClose().centerY());assertFalse((Boolean)field(v,"equipmentOpen"));tap(v,830,28);tap(v,ItemWindow.equipmentStats().centerX(),ItemWindow.equipmentStats().centerY());assertFalse((Boolean)field(v,"equipmentOpen"));assertTrue((Boolean)field(v,"statsOpen"));
  }
  @Test public void filtersAreReadOnlyAndAllOwnedItemsRemainReachable()throws Exception{
   GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=field(v,"state");ItemWindow w=field(v,"itemWindow");Map<String,Integer> owned=new LinkedHashMap<>(s.rpg().inventory());Map<String,String> eq=new LinkedHashMap<>(s.rpg().equipment());tap(v,742,28);

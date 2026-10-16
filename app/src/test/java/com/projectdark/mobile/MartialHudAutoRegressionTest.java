@@ -30,12 +30,12 @@ public class MartialHudAutoRegressionTest {
    int column=0;
    for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
     GameView v=directed(direction);RuntimeState s=field(v,"state");RuntimeState.Monster target=s.monsters().get(0);int hp=target.hp;
-    call(v,"useBookSkill",SkillBook.Entry.class,((SkillBook)field(v,"skillBook")).get(entry.id));assertEquals(entry.id,field(v,"activeSkillVisualId"));
+    call(v,"useBookSkill",SkillBook.Entry.class,((SkillBook)field(v,"skillBook")).get(entry.id));if(MartialSkillPolicy.LEAP.equals(entry.id))assertNull(field(v,"activeSkillVisualId"));else assertEquals(entry.id,field(v,"activeSkillVisualId"));
     assertEquals(direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
     float contact="마법".equals(rule.kind)?((RuntimeCombatSession)field(v,"combatSession")).effectiveCastSeconds(entry.id):rule.contact;
     advance(v,Math.max(0,contact-.01f));assertEquals(entry.id+" no early enemy hit",hp,target.hp);
     SkillVfxRenderer fx=field(v,"skillVfx");assertFalse(entry.id+" no early recipient",fx.pulses.stream().anyMatch(p->!p.caster));
-    advance(v,.011f);assertEquals(direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
+    advance(v,.011f);assertEquals(MartialSkillPolicy.LEAP.equals(entry.id)?CanonicalActorFacing.quantize(target.x-s.player().x,target.y-s.player().y,direction):direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
     if(rule.damage())assertTrue(entry.id+" actual target contact",target.hp<hp);
     for(SkillVfxRenderer.Pulse pulse:fx.pulses){
      if(pulse.sheet.equals("impact"))assertEquals("actual damage recipient",target.id,pulse.anchor);
@@ -45,7 +45,7 @@ public class MartialHudAutoRegressionTest {
    }
    save(sheet,"v89-martial-"+entry.id+".png");sheet.recycle();
   }
-  assertEquals(34,reviewed);assertEquals(30,active);
+  assertEquals(34,reviewed);assertEquals(31,active);
  }
  static void advance(GameView view,float seconds)throws Exception{while(seconds>.05f){call(view,"update",float.class,.05f);seconds-=.05f;}if(seconds>0)call(view,"update",float.class,seconds);}
  static void crop(GameView v,Canvas out,int x,int y)throws Exception{

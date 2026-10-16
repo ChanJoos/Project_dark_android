@@ -1,0 +1,453 @@
+{
+  "schema": 1,
+  "scope": "All13 current Abel coast IDs; fake/real share one candidate family",
+  "sourcePlayerLogicalHeight": 52,
+  "sourceVideos": [
+    {
+      "name": "Screen_Recording_20261011_215521_YouTube.mp4",
+      "sha256": "dc9d859037c751df1297a830b39eb8b9a9e037ff4fde28b45dad6b37a3cac211"
+    },
+    {
+      "name": "Screen_Recording_20261012_060245_YouTube.mp4",
+      "sha256": "a60559303ddc91c5d4f339c09aed5b0b68582b2b6446e4cd7189db161610e6d9"
+    }
+  ],
+  "rows": [
+    {
+      "id": "ABEL_TURTLE",
+      "artKey": "abel_v161/turtle",
+      "reference": "coast_v160/turtle-player-source.png",
+      "review": "Flatten layered dark shell, small navy head; replace12poses",
+      "observation": {
+        "species": "turtle",
+        "frame": "20261012_060245-4.375.png",
+        "characterCrop": [
+          1146,
+          444,
+          1199,
+          549
+        ],
+        "monsterCrop": [
+          1354,
+          336,
+          1449,
+          393
+        ],
+        "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+        "envelopeWidthRatio": 0.9047619047619048,
+        "envelopeHeightRatio": 0.5428571428571428
+      },
+      "canvasWidth": 53.45,
+      "canvasHeight": 50.65,
+      "baselineVisible": [
+        47.05,
+        28.23
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_TURTLE-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_TURTLE-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_ARKPUS",
+      "artKey": "abel_v161/arkpus",
+      "reference": "abel_v141/arkpus-ref.png",
+      "review": "Broader heavy tentacle base, green beads; replace12poses",
+      "observation": {
+        "species": "arkpus",
+        "frame": "20261011_215521-25.png",
+        "characterCrop": [
+          1123,
+          328,
+          1186,
+          455
+        ],
+        "monsterCrop": [
+          650,
+          357,
+          760,
+          490
+        ],
+        "envelopeWidthRatio": 0.8661417322834646,
+        "envelopeHeightRatio": 1.047244094488189,
+        "method": "Manual envelope; approximate and direction/pose-dependent. Floating shadow included for gas. No original atlas claim."
+      },
+      "canvasWidth": 51.78,
+      "canvasHeight": 62.99,
+      "baselineVisible": [
+        45.04,
+        54.46
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_ARKPUS-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_ARKPUS-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_PONG",
+      "artKey": "abel_v161/pong",
+      "reference": "coast_v160/pong-player-source.png",
+      "review": "Filled purple jelly and ochre internal swirls; replace12poses",
+      "observation": {
+        "species": "pong",
+        "frame": "20261011_215521-10.png",
+        "characterCrop": [
+          1123,
+          325,
+          1186,
+          455
+        ],
+        "monsterCrop": [
+          982,
+          314,
+          1085,
+          394
+        ],
+        "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+        "envelopeWidthRatio": 0.7923076923076923,
+        "envelopeHeightRatio": 0.6153846153846154
+      },
+      "canvasWidth": 47.37,
+      "canvasHeight": 49.95,
+      "baselineVisible": [
+        41.2,
+        32.0
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_PONG-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_PONG-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_CATERPILLAR",
+      "artKey": "abel_v161/caterpillar",
+      "reference": "coast_v160/caterpillar-player-source.png",
+      "review": "Low spotted mantle and thin stalks; replace12poses",
+      "observation": {
+        "species": "caterpillar",
+        "frame": "20261011_215521-29.png",
+        "characterCrop": [
+          1123,
+          328,
+          1181,
+          455
+        ],
+        "monsterCrop": [
+          1598,
+          382,
+          1712,
+          468
+        ],
+        "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+        "envelopeWidthRatio": 0.8976377952755905,
+        "envelopeHeightRatio": 0.6771653543307087
+      },
+      "canvasWidth": 55.32,
+      "canvasHeight": 62.6,
+      "baselineVisible": [
+        46.68,
+        35.21
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_CATERPILLAR-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_CATERPILLAR-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_GRAB",
+      "artKey": "abel_v142/armored",
+      "reference": "abel_v142/armored-ref.png",
+      "review": "Retain matching dark silver segmented horned shell; independently recalibrate visible bounds",
+      "observation": {
+        "species": "grab",
+        "frame": "20261012_060245-4.375.png",
+        "characterCrop": [
+          1146,
+          444,
+          1199,
+          549
+        ],
+        "monsterCrop": [
+          1450,
+          419,
+          1548,
+          508
+        ],
+        "method": "Manually delimited outer envelope with a few background pixels; approximate source observation, not automated pixel-perfect segmentation. No labels/HP/effects counted as body. Same frame and no independent resize.",
+        "envelopeWidthRatio": 0.9333333333333333,
+        "envelopeHeightRatio": 0.8476190476190476
+      },
+      "canvasWidth": 54.18,
+      "canvasHeight": 54.25,
+      "baselineVisible": [
+        48.54,
+        44.08
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_GRAB-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_GRAB-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_OBS_SLATE",
+      "artKey": "abel_v161/slate",
+      "reference": "abel_v142/grab-ref.png",
+      "review": "Heavy skirt lobes and recessed maw, remove smiling face; replace12poses",
+      "observation": {
+        "species": "slate",
+        "frame": "20261012_060245-4.375.png",
+        "characterCrop": [
+          1146,
+          444,
+          1199,
+          549
+        ],
+        "monsterCrop": [
+          909,
+          491,
+          1015,
+          562
+        ],
+        "envelopeWidthRatio": 1.0095238095238095,
+        "envelopeHeightRatio": 0.6761904761904762,
+        "method": "Manual envelope; approximate and direction/pose-dependent. Floating shadow included for gas. No original atlas claim."
+      },
+      "canvasWidth": 59.64,
+      "canvasHeight": 53.16,
+      "baselineVisible": [
+        52.5,
+        35.16
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_OBS_SLATE-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_OBS_SLATE-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_OCTOPUS",
+      "artKey": "abel_v161/octopus",
+      "reference": "abel_v142/octopus-ref.png",
+      "review": "Long grounded splayed tentacles; replace12poses",
+      "observation": {
+        "species": "octopus",
+        "frame": "20261012_060245-25.png",
+        "characterCrop": [
+          1150,
+          450,
+          1198,
+          557
+        ],
+        "monsterCrop": [
+          1410,
+          454,
+          1530,
+          566
+        ],
+        "envelopeWidthRatio": 1.1214953271028036,
+        "envelopeHeightRatio": 1.0467289719626167,
+        "method": "Manual envelope; approximate and direction/pose-dependent. Floating shadow included for gas. No original atlas claim."
+      },
+      "canvasWidth": 68.27,
+      "canvasHeight": 66.99,
+      "baselineVisible": [
+        58.31,
+        54.43
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_OCTOPUS-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_OCTOPUS-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_EGG",
+      "artKey": "abel_v142/purple_egg",
+      "reference": "abel_v142/purple_egg-ref.png",
+      "review": "Retain violet mottled hovering oval and detached shadow; occluded source actor prevents exact ratio",
+      "observation": null,
+      "canvasWidth": 60,
+      "canvasHeight": 60,
+      "baselineVisible": [
+        32.81,
+        52.19
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "UNRESOLVED"
+    },
+    {
+      "id": "ABEL_GAS",
+      "artKey": "abel_v142/orange_float",
+      "reference": "abel_v142/orange_float-ref.png",
+      "review": "Retain orange two-lobed spotted body and dangling beads; recalibrate width/height including shadow",
+      "observation": {
+        "species": "gas",
+        "frame": "20261012_060245-25.png",
+        "characterCrop": [
+          1150,
+          450,
+          1198,
+          557
+        ],
+        "monsterCrop": [
+          1686,
+          772,
+          1764,
+          879
+        ],
+        "envelopeWidthRatio": 0.7289719626168224,
+        "envelopeHeightRatio": 1.0,
+        "method": "Manual envelope; approximate and direction/pose-dependent. Floating shadow included for gas. No original atlas claim."
+      },
+      "canvasWidth": 55.14,
+      "canvasHeight": 56.73,
+      "baselineVisible": [
+        37.91,
+        52.0
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_GAS-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_GAS-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_MAW",
+      "artKey": "abel_v161/maw",
+      "reference": "abel_v142/purple_maw-ref.png",
+      "review": "Retain one tooth cavity in body and long stalk; replace12poses, no invented stalk-mouth",
+      "observation": {
+        "species": "maw",
+        "frame": "20261012_060245-25.png",
+        "characterCrop": [
+          1150,
+          450,
+          1198,
+          557
+        ],
+        "monsterCrop": [
+          1114,
+          657,
+          1200,
+          761
+        ],
+        "envelopeWidthRatio": 0.8037383177570093,
+        "envelopeHeightRatio": 0.9719626168224299,
+        "method": "Manual envelope; approximate and direction/pose-dependent. Floating shadow included for gas. No original atlas claim."
+      },
+      "canvasWidth": 57.32,
+      "canvasHeight": 61.42,
+      "baselineVisible": [
+        41.8,
+        50.54
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_OBS_PURPLE_MAW-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_OBS_PURPLE_MAW-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_BERSERKER",
+      "artKey": "abel_v142/blue_boss",
+      "reference": "abel_v142/blue_boss-ref.png",
+      "review": "Retain teal oval mantle/green band/dark limbs; recalibrate",
+      "observation": {
+        "species": "berserker",
+        "frame": "20261012_060245-49.png",
+        "characterCrop": [
+          1150,
+          443,
+          1197,
+          553
+        ],
+        "monsterCrop": [
+          1875,
+          603,
+          1995,
+          713
+        ],
+        "envelopeWidthRatio": 1.0909090909090908,
+        "envelopeHeightRatio": 1.0,
+        "method": "Manual envelope; approximate and direction/pose-dependent. Floating shadow included for gas. No original atlas claim."
+      },
+      "canvasWidth": 68.07,
+      "canvasHeight": 62.01,
+      "baselineVisible": [
+        56.72,
+        52.0
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "APPROXIMATE_ENVELOPE_NOT_NATIVE_ATLAS",
+      "originalSourceCrops": {
+        "player": "master/source/abel_v161/reference/ABEL_BERSERKER-player.png",
+        "monster": "master/source/abel_v161/reference/ABEL_BERSERKER-monster.png"
+      }
+    },
+    {
+      "id": "ABEL_KINGARK_FAKE",
+      "artKey": "abel_v142/kingark",
+      "reference": "abel_v142/kingark-ref-13.jpg",
+      "review": "Same original event art relation unresolved; retain giant candidate, source partly occluded",
+      "observation": null,
+      "canvasWidth": 210,
+      "canvasHeight": 210,
+      "baselineVisible": [
+        172.81,
+        138.91
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "UNRESOLVED"
+    },
+    {
+      "id": "ABEL_KINGARK",
+      "artKey": "abel_v142/kingark",
+      "reference": "abel_v142/kingark-ref-13.jpg",
+      "review": "Original source partly obscured by trees/actors; retain existing adapted giant, do not certify exact ratio",
+      "observation": null,
+      "canvasWidth": 210,
+      "canvasHeight": 210,
+      "baselineVisible": [
+        172.81,
+        138.91
+      ],
+      "acceptance": "PENDING",
+      "evidence": "U_LABEL_AND_VIDEO_OBSERVATION_ADAPTED_POSES",
+      "sourceExact": "UNRESOLVED"
+    }
+  ],
+  "limitations": [
+    "Manual visible envelopes include a few background pixels; exact source atlas/cadence unavailable",
+    "Original KingArk is partly occluded; original fake/real visual distinction unresolved",
+    "Purple floating body has occluded source actor comparison; retained scale not exact-certified",
+    "Slurgh and Escomoid old Abel dungeon records are pending region joins, not silently invented coast spawns"
+  ],
+  "rucesion": "All10 accepted art/size/motion preserved",
+  "attachments": "Current18 supplied JPEG/GIF images inspected: skill tables/FX, not Abel monster references; use retained user original videos instead"
+}

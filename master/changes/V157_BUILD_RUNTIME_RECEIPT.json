@@ -1,0 +1,116 @@
+{
+  "version": 157,
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "baseMain": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "sourceCommit": "c422ddd3b41874c05be6af872296cea99d47c6f1",
+  "implementation": {
+    "maps": 5,
+    "observedZones": [
+      "1-C",
+      "2-C",
+      "3-B"
+    ],
+    "monsterIds": 10,
+    "independentPoses": 120,
+    "normalEntryMinimum": 71,
+    "bossEntry": "EXISTING_SKILL_TEST_PREVIEW_ONLY",
+    "partyEvent": "NOT_IMPLEMENTED",
+    "sourceStats": "Three timestamped Sense observations; current HP not certified undamaged maximum; unsensed canonical fields null, gameplay tuning ADAPTED",
+    "geometry": "Video-observed scenery grammar; dimensions, video-cut joins and spawns ADAPTED"
+  },
+  "nativeScope": {
+    "poseGrid": 120,
+    "sceneCameras": 15,
+    "rendererTrips": 12,
+    "floorCacheLimit": 32,
+    "sourceHitPairLimit": 60,
+    "combat": "All10 final-contact resolver/reward/checkpoint fixtures; not fullHP balance proof",
+    "physicalPhone": "PENDING",
+    "userVisualApproval": "PENDING"
+  },
+  "failedAttempts": [
+    {
+      "run": 38560100839,
+      "reason": "Android API does not expose Files.writeString; switched byte writer"
+    },
+    {
+      "run": 38560504544,
+      "reason": "Tyrant canonical reward precedence and restarted fixture binding; fixed"
+    },
+    {
+      "run": 38561540416,
+      "reason": "Incorrect coast roster package qualification; fixed"
+    }
+  ],
+  "apk": {
+    "sourceCommit": "c422ddd3b41874c05be6af872296cea99d47c6f1",
+    "runId": "38561700387",
+    "versionCode": 157,
+    "versionName": "1.57-rucesion-coast",
+    "applicationId": "com.projectdark.mobile.v157test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "6e62ef162e290bab44dd234e2f90e28273d0ced5a26845d09cbb6180737b5c28",
+    "apkBytes": 74810740,
+    "builtSeoul": "2026-10-14T21:15:41.223546+09:00",
+    "scope": "Rucesion observed1C/2C/3B and user-confirmed shellAriel preview plus entry,10ids/120generatedposes,sharedmovement/AI/resolver/save; provisional geometry/stats, originalparty event notimplemented; retains seven town services: weapon, armor, reagent, clothing, banks A/B and inn; source-named regional wardrobe catalog with separated merchandise; atomic trade and shared bank persistence; regional inn paid recovery and actual doors/return/save. Facility identities and source item pixels retained; exact original interior layouts, merchant stock/prices and uncalibrated service positions are ADAPTED. Native verification is distinct from physical phone and user visual approval.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "matchedPackagedFiles": 1125,
+  "tests": {
+    "suites": 14,
+    "tests": 89,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "performance": {
+    "scope": "Robolectric renderer CPU, not handsetFPS",
+    "p95Ms": 3.153097,
+    "p99Ms": 3.734638,
+    "maxMs": 3.887294,
+    "sourceHitPairsMax": 60,
+    "floorPixelBound": 8652800,
+    "trips": 12
+  },
+  "status": "IMPLEMENTED_BUILD_AND_NATIVE_VERIFIED",
+  "focusedRun": {
+    "id": 38561700387,
+    "job": 115844096162,
+    "conclusion": "SUCCESS",
+    "url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38561700387"
+  },
+  "artifacts": [
+    {
+      "id": 11892337481,
+      "type": "APK",
+      "sha256": "72c6891167ad361e6361175244c9f8481be9420103840c602662a093fd08438d"
+    },
+    {
+      "id": 11892237516,
+      "type": "NATIVE",
+      "sha256": "b20d10af6f82a9c569cc950ad2d0ead8c2e38ade67eca06df331b89d235e4c4d"
+    }
+  ],
+  "nativeVisualReview": "15scene cameras+120pose grid reviewed; final render PNG bytes match inspected candidate; physicalPhone/user approval pending",
+  "broaderRuns": [
+    {
+      "id": 38561700451,
+      "job": 115844096485,
+      "sourceCommit": "c422ddd3b41874c05be6af872296cea99d47c6f1",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "id": 38561708090,
+      "job": 115844122559,
+      "sourceCommit": "c422ddd3b41874c05be6af872296cea99d47c6f1",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS"
+    }
+  ],
+  "broaderVerification": "Job steps and decoded completed logs confirm all configured audits/native regressions/debug APK verification succeeded; not added to focused89 count and not substituted for delivered focused APK identity",
+  "closure": "Subsequent documentation/receipt/installer script changes preserve app/runtime/assets at tested c422ddd3; delivered APK remains same exact source/run/hash."
+}

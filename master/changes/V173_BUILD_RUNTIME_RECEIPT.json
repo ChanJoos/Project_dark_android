@@ -1,0 +1,98 @@
+{
+  "runtimeSource": "b68a63bf0beac5c880e33c8a42c5d9617855acdb",
+  "baseMain": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "implementation": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED",
+  "martialSkills": 34,
+  "normalAndTestExecutions": 68,
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "preliminary": [
+    {
+      "source": "a736d5d263d238eb8adad9053abe90a25d5f4744",
+      "run": 38881880125,
+      "job": 116910310378,
+      "tests": 210,
+      "suites": 36,
+      "passed": 208,
+      "failures": 2,
+      "rootCauses": [
+        "NPC leap rejected by monster-only visibility",
+        "Audit expected an effect instead of dispel removal; first count missed five appended auxiliaries"
+      ]
+    },
+    {
+      "source": "f9d0a766285f32e657f12b8b97450722757ace2f",
+      "run": 38883681458,
+      "job": 116916165739,
+      "status": "TEST_COMPILE_FAILED",
+      "cause": "Wrong WorldDef package only in newly added inn-return test; fixed without app-code changes"
+    }
+  ],
+  "current": {
+    "focused": {
+      "run": 38886123565,
+      "status": "SUCCESS",
+      "tests": 211,
+      "suites": 36,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "tailSource": "8884f5ecb3d70f6e14635549f89157f4f6d7dbd4",
+    "tail": {
+      "run": 38895533070,
+      "job": 116954978339,
+      "status": "SUCCESS",
+      "successfulGradleExecutions": 13,
+      "reusedSuccessfulBaselineSteps": 22,
+      "reusedBaselineRun": 38886133152
+    },
+    "duplicatePR": {
+      "run": 38895541315,
+      "job": 116955007426,
+      "status": "IN_PROGRESS_DUPLICATE_NOT_REQUIRED_FOR_DELIVERY"
+    },
+    "repeatFocused": {
+      "run": 38895533092,
+      "status": "SUCCESS"
+    },
+    "implementationEquivalentToApkSource": true
+  },
+  "apk": {
+    "sourceCommit": "b68a63bf0beac5c880e33c8a42c5d9617855acdb",
+    "runId": "38886123565",
+    "versionCode": 173,
+    "versionName": "1.73-martial-effects",
+    "applicationId": "com.projectdark.mobile.v173test",
+    "updateCompatibleWithV167": false,
+    "apkSha256": "e46892b71b3adb3e35938cf7a3eb07746308849207c94b515d2c5c7af111462f",
+    "apkBytes": 80451429,
+    "builtSeoul": "2026-10-16T19:27:51.190817+09:00",
+    "scope": "V173 all34 martial skill audit: facing actor leap/valid landing, eight-second freeze/root, synchronous front3-cell clean Baekbo contacts, equal incoming reflection, invincibility/DOT and drain clamp; retained martial icon alias, BODY-attached missing outfit clips and shared basic cadence; retained test-mode learned eligibility and startup restore ordering for twohand equip; retained independent linked basic hits, learned twohand equip gate, user-requested shared 1.0s basic cooldown with retained 0.80s twohand visual recovery; retained source c twohand blades, consistent four-facing basic/skill renderer, visible joystick, cached actor visual projection and weapon rigs, lean resource projection; retained persisted random CON/WIS growth and actual level-up receipt; asymmetric two-hand/shield equip; Chungryong two-hand BODY; reagent-shop town managers/arrival; shared orange Curum and original Maradium HUD artwork; retained V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    },
+    "artifact": 12039794581,
+    "archiveSha256": "d572a478cffc12a3bc7d30041164adb96c63514ce76c55bfd54e3fdd6dd59ea5",
+    "library_file_id": "libfile_6e26a8f0732c819198df8602e920244c",
+    "file_id": "file_00000000481c81f5886026449a630eb7",
+    "delivered": true,
+    "verification": "ZIP_CRC_HASH_EMBEDDED_SOURCE_RUN_VERSION_268_BODY_CATALOG_PASS"
+  },
+  "assets": "SOURCE_RASTER_BYTES_UNCHANGED",
+  "adaptations": [
+    "Retained balance coefficients and unconfirmed durations",
+    "Clean cached Baekbo cyan-source projection",
+    "Martial Agito defaults to Milles inn while citizenship is unmodelled"
+  ],
+  "nativeArtifact": {
+    "id": 12040970207,
+    "sha256": "85253cf168b893438f14fe5462c95e8155f56a1c7e22cfd71674678baf41f41c",
+    "visual": "FOUR_FACING_LINE_REVIEWED_GOLD_SCREENSHOT_ACTOR_FRAMING_INSUFFICIENT"
+  },
+  "closure": "DELIVER_EXISTING_SAVED_CANDIDATE_PHONE_PENDING"
+}

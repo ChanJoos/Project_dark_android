@@ -13,6 +13,7 @@ public final class MonsterDefinitionRegistry {
 
   public MonsterDefinitionRegistry(){
     for(AbelCombatProfile p:AbelCombatProfile.all())definitions.put(p.id,new MonsterDefinition(p.id,AbelCoastMonsters.name(p.id),"아벨 모바일 3써클",p.level,p.hp,p.exp,null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));
+    for(AbelCombatProfile p:RucesionCombatProfiles.all())definitions.put(p.id,new MonsterDefinition(p.id,RucesionCoastMonsters.name(p.id),"뤼케시온해안 · 영상 기준 후보",RucesionCoastMonsters.observedLevel(p.id),null,null,null,MonsterDefinition.Evidence.U,MonsterDefinition.Status.PROTOTYPE_PENDING));
     // master/data/Monster_Master.csv — exact verified row; region intentionally remains 포테의숲.
     definitions.put("POTE_SPIRIT",new MonsterDefinition(
         "POTE_SPIRIT","포테의정령","포테의숲",48,29201,308950,

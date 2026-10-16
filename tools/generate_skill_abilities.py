@@ -7,10 +7,10 @@ learn=json.loads((ROOT/'app/src/main/assets/skills/mobile_learning.json').read_t
 rules={r['id']:r for r in csv.DictReader((ROOT/'docs/SKILL_ACTION_DECISIONS.csv').open())}
 # Semantic IDs, not fuzzy name checks, are exported to Java. Values without evidence are ADAPTED.
 statuses={
- 'BASIC':['기본공격'], 'DOOR':['문열기','자물쇠열기'], 'ROOT':['바투','포효'], 'CLEAR_ROOT':['디바투'],
+ 'BASIC':['기본공격'], 'DOOR':['문열기','자물쇠열기'], 'ROOT':['바투','포효','일음지'], 'CLEAR_ROOT':['디바투'],
  'DRAGON':['드래곤모드'], 'PHOENIX':['피닉스모드'], 'PHYSICAL_GUARD':['완전방어','포트리스'], 'TECH_MAGIC_GUARD':['델리스펠라스'],
  'FOCUS':['집중'], 'DISARM':['적무기쳐내기'], 'TAUNT':['레스큐'],
- 'RESET_AGGRO':['아무네지아','콘푸지오'], 'BLIND':['연막탄터뜨리기','딜루메니','일음지'],
+ 'RESET_AGGRO':['아무네지아','콘푸지오'], 'BLIND':['연막탄터뜨리기','딜루메니'],
  'STEALTH':['하이드','하이더'], 'EVASION':['라이트닝무브','미종보법'], 'ARMOR_BREAK':['적갑옷해체'],
  'POISON':['베노미'], 'DEATH_POISON':['데스'], 'SLEEP':['나르콜리'], 'FREEZE':['소루마'],
  'CURSE20':['렌토','렌티아'], 'CURSE35':['바르도','바르데아'], 'CURSE50':['데프레코','데프레타'], 'CURSE65':['프라보','프라베라'], 'CURSE70':['어둠의각인'],
@@ -21,7 +21,7 @@ statuses={
  'CLEAR_CURSE20':['디렌토','디렌타'], 'CLEAR_CURSE35':['디바르도','디바르데아'], 'CLEAR_CURSE50':['디데프레카','디데프레타'],
  'CLEAR_CURSE65':['디프라바','디프라베라'], 'CLEAR_CURSE70':['홀리큐어','홀리큐레스'], 'CLEAR_BLIND':['일루메나','일루메룸'],
  'CLEAR_POISON':['디베노모','디베노메라'], 'CLEAR_SLEEP':['디나르콜리','디나르콜룸'], 'CLEAR_FREEZE':['디소루마','디소루메라'],
- 'SPEED':['경신공','경신공법'], 'BASIC_POWER':['소수신공'], 'REFLECT_TECH':['반탄신공'],
+ 'SPEED':['경신공','경신공법'], 'BASIC_POWER':['소수신공'], 'REFLECT_ALL':['반탄신공'],
  'DRAIN':['흡정신공'], 'PUSH':['밀기'], 'LEAP':['이형환위'], 'CHARGE':['돌진'], 'POISON_HIT':['통배권'], 'FREEZE_HIT':['발경'],
  'TRANSFER':['수혈'], 'CHANGE_ELEMENT':['디내추라'], 'REST':['휴식'],
  'INSPECT':['센스몬스터','센스','탐색','아들레스투','품뒤져보기','센서스'],
@@ -33,6 +33,11 @@ anchors={'크래셔':('CRASH',3.38),'데빌크래셔':('CRASH',6.76),'매드소�
  '암살격':('ASSASSIN',.6336),'암살격진':('ASSASSIN_PLUS',.95),'세멜리아':('SEMELIA',1.815),'메테오':('METEOR',1.815),
  '라그나로크':('RAGNAROK',.454),'다라밀공':('DARA',3.38),'달마신공':('DALMA',.3),'구양신공':('HP_BURST',.6336),'무영신공':('MP_BURST',4),
  '아마게돈':('MP_BURST',1.05),'숨마스텔라':('MP_BURST',.8),'홀리드래곤':('MP_BURST',.65)}
+policy=json.loads((ROOT/'master/changes/V174_SKILL_TIMING.json').read_text())
+assert policy['status']=='ACCEPTED'
+timing={r['id']:r for r in policy['rows']}
+retained={r['id']:r for r in policy.get('kindCorrections',[])}
+assert set(timing)=={r['id'] for r in cat}
 rows=[]
 for e in cat:
  r=rules[e['id']];n=e['name'];c=int(e['circle']) if e['circle'].isdigit() else (7 if '순수' in e['circle'] else 6)
@@ -41,7 +46,7 @@ for e in cat:
  if status in ('POISON_HIT','FREEZE_HIT','DRAIN','CHARGE'):kind='DAMAGE'
  if n=='파천각':kind='DAMAGE'
  # Source gates: player-only Push/ArmorDisarm/HideOther and missing leap recipient.
- if e['id'] in ('SK_도적_004','SK_도적_019','SK_도적_026','SK_무도가_003'):kind='SERVICE'
+ if e['id'] in ('SK_도적_004','SK_도적_019','SK_도적_026'):kind='SERVICE'
  evidence='PROJECT_ADAPTED_V83';source='User 2026-10-02: author unprovided formulas by learning circle/stat requirements'
  # Physical multipliers grow with circle and acquisition burden; martial balance uses STR/CON geometric mean.
  required=learn[e['id']]['stats'];burden=sum(required.values())-15
@@ -67,26 +72,30 @@ for e in cat:
  if n=='금강불괴':cost=200
  allmp=formula in ('SEMELIA','METEOR','RAGNAROK') or n in ('아마게돈','숨마스텔라','홀리드래곤','데스')
  if allmp:cost=0
- cd=round(.8+c*.45,2)
- if n=='쿠로토':cd=2
- if formula=='DARA':cd=12;cost=0
- if formula in ('CRASH','SOUL','ASSASSIN','ASSASSIN_PLUS','DALMA','HP_BURST'):cd=12
- # V138: all Spell entries share cast cadence, not invented per-circle reuse.
- # Explicit PDF reuse exceptions and the retained Dara finisher exception stay separate.
- if e['kind']=='마법':
-  cd={'이모탈':5,'리플렉토':5,'나르콜리':1,'다라밀공':12}.get(n,0)
- duration=9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
+ timingRow=timing[e['id']];cd=timingRow['runtimeSeconds']
+ if e['id'] in retained:
+  fixed=retained[e['id']];formula=fixed['retainedFormula'];coef=fixed['retainedCoefficient'];cost=fixed['retainedMpCost']
+ if formula=='DARA':cost=0
+ duration=8 if n in ('발경','일음지') else 9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
+ if n=='이형환위':kind='STATUS';evidence='USER_RULE_V173_RETAINED_BALANCE_ADAPTED';source='User 2026-10-16: front actor leap, opposite tile, random free side fallback'
+ if n in ('발경','일음지','반탄신공'):evidence='USER_RULE_V173_RETAINED_BALANCE_ADAPTED';source='User 2026-10-16 martial behavior clarification'
  if kind=='HEAL':desc=f'회복 = round((WIS×5 + INT×1.5 + Lv×2)×{coef}); 최대 HP까지'
  elif kind=='DAMAGE':desc={'PHYSICAL':'(무기 공격+STR×3+DAM)','ROGUE':'(무기 공격+STR×1.8+DEX×2.2+DAM)','MARTIAL':'(무기 공격+sqrt(STR×CON)×4+DAM)','MAGIC':'(8+INT×4+WIS+Lv×1.5)','BASIC':'(무기 공격+STR×3+DAM)'}.get(formula,formula)+f' × {coef}'
  else:desc=(e['effect']+f' · {duration}초') if status else ('기본공격/장착 연동' if kind=='PASSIVE' else '대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음')
  exact={'CRASH':f'최대HP × {coef}; 현재HP ≤ 최대HP의2%', 'SOUL':f'현재HP × {coef}; HP90% 소모', 'ASSASSIN':'현재HP × 0.6336 / 강타25%: ×1.69', 'ASSASSIN_PLUS':'현재HP ×0.95 / 강타25%: ×3.5', 'SEMELIA':'max(0, MP-3240) ×1.815', 'METEOR':'max(0, MP-12960) ×1.815', 'RAGNAROK':'MP ×0.454', 'DARA':'max(0, HP+MP-1440) ×3.38', 'DALMA':'현재HP ×0.30; 방어/속성/무적 무시', 'HP_BURST':f'현재HP ×{coef}', 'MP_BURST':f'MP ×{coef}'}
  if formula in exact:desc=exact[formula]
- rows.append(dict(id=e['id'],name=n,job=e['job'],circle=c,kind=kind,formula=formula,coefficient=coef,status=status,mpCost=cost,cooldown=cd,duration=duration,allMp=allmp,evidence=evidence,source=source,description=desc))
+ if n=='이형환위':desc='별도 이펙트/모션 없이 이동하고 착지 후 대상을 바라봄. 바라보는 방향의 인접 몬스터/NPC를 뛰어넘음. 뒤가 막히면 대상 좌우의 빈칸 중 무작위 착지. 대상/착지 공간이 없으면 발동 안 함.'
+ if n=='일음지':desc='8초 동안 이동 불가. 인접한 캐릭터는 공격 가능.'
+ if n=='발경':desc+='; 8초 동안 이동과 공격 불가.'
+ if n=='반탄신공':desc='받을 피해를 막고 공격 몬스터에게 같은 피해를 반사. 16초 유지; 다시 사용하면 해제.'
+ if n=='백보신권':desc+='; 바라보는 방향 전방3칸의 모든 몬스터 동시 공격. 대상 없으면 발동 안 함.'
+ if n=='흡정신공':desc+='; 실제로 줄어든 대상 체력만큼만 흡수.'
+ rows.append(dict(id=e['id'],name=n,job=e['job'],circle=c,kind=kind,formula=formula,coefficient=coef,status=status,mpCost=cost,cooldown=cd,cooldownEvidence=timingRow['status'],cooldownSource=timingRow['source'],duration=duration,allMp=allmp,evidence=evidence,source=source,description=desc))
 (ROOT/'app/src/main/assets/skills/abilities.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
 fields=list(rows[0]);p=ROOT/'docs/SKILL_ABILITY_FORMULAS.csv'
 with p.open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=fields,lineterminator="\n");w.writeheader();w.writerows(rows)
-keys=['id','name','job','circle','kind','formula','coefficient','status','mpCost','cooldown','duration','allMp','evidence','description']
+keys=['id','name','job','circle','kind','formula','coefficient','status','mpCost','cooldown','duration','allMp','evidence','description','cooldownEvidence','cooldownSource']
 lines=['package com.projectdark.mobile;','/** Generated by tools/generate_skill_abilities.py; per-ID source and adapted policies. */','final class SkillAbilityData {',' static final String[][] ROWS={']
 for r in rows:lines.append('  {'+','.join(json.dumps(str(r[k]).lower() if isinstance(r[k],bool) else str(r[k]),ensure_ascii=False) for k in keys)+'},')
 lines+=[' };','}'];(ROOT/'app/src/main/java/com/projectdark/mobile/SkillAbilityData.java').write_text('\n'.join(lines)+'\n')

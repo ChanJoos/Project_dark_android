@@ -225,6 +225,27 @@
         2
       ]
     },
+    "TWO_HAND": {
+      "group": "c",
+      "back": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "front": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "phases": [
+        0,
+        0.23,
+        0.3333333333333333,
+        0.5
+      ]
+    },
     "JUMP": {
       "group": "f",
       "back": [
@@ -4808,11 +4829,11 @@
       "targetSheet": "status",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "poseEvidence": "USER_CONFIRMED_V174_NO_MOTION",
+      "effectEvidence": "USER_CONFIRMED_V174_NO_FX",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "전방 3칸 대상을 뛰어넘는다. · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음. 이동/착지 서비스 미구현: 시전 차단."
+      "note": "바라보는 방향의 인접 몬스터/NPC만 뛰어넘기; 반대편이 막히면 대상 좌우의 가능한 칸 중 무작위 착지; 없으면 발동 안 함; 별도 이펙트/점프 모션 없음; 착지 후 뛰어넘은 대상을 바라봄"
     },
     {
       "id": "SK_무도가_004",
@@ -4914,7 +4935,7 @@
       "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "전방 1~3칸 적 공격 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
+      "note": "현재 바라보는 방향 전방3칸의 몬스터를 같은 시점에 공격; 대상 없으면 발동/접근/이펙트 없음"
     },
     {
       "id": "SK_무도가_010",
@@ -4931,7 +4952,7 @@
       "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "몬스터의 이동을 제한시킨다 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
+      "note": "8초 이동 불가; 인접 캐릭터 공격은 가능"
     },
     {
       "id": "SK_무도가_011",
@@ -4954,7 +4975,7 @@
       "id": "SK_무도가_012",
       "name": "쿠랄툼",
       "job": "무도가",
-      "kind": "기술",
+      "kind": "마법",
       "motion": "MARTIAL_CAST",
       "caster": "NONE",
       "target": "CLASSIC_CAPTURE",
@@ -5005,7 +5026,7 @@
       "id": "SK_무도가_015",
       "name": "장풍",
       "job": "무도가",
-      "kind": "기술",
+      "kind": "마법",
       "motion": "PUNCH",
       "caster": "NONE",
       "target": "CLASSIC_CAPTURE",
@@ -5039,7 +5060,7 @@
       "id": "SK_무도가_017",
       "name": "쿠라노토",
       "job": "무도가",
-      "kind": "기술",
+      "kind": "마법",
       "motion": "MARTIAL_CAST",
       "caster": "NONE",
       "target": "CLASSIC_CAPTURE",
@@ -5067,7 +5088,7 @@
       "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "몬스터 대상을 얼린다. · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
+      "note": "8초 이동/공격 불가; 대미지와 별도로 실제 제어 효과 적용"
     },
     {
       "id": "SK_무도가_019",
@@ -5135,7 +5156,7 @@
       "effectEvidence": "FAN_CLASSIC_CAPTURE_ALPHA_APPROXIMATE",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "기술반사 (토글마법) · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음."
+      "note": "활성 중 자신은 피해를 받지 않고 공격 몬스터가 동일한 피해를 입음; 기존16초 프로젝트 지속시간 유지"
     },
     {
       "id": "SK_무도가_023",

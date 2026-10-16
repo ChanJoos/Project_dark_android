@@ -1,0 +1,64 @@
+{
+  "sourceCommit": "f46260966a1592700a7343735526cf60ef344647",
+  "runId": "38741585115",
+  "versionCode": 165,
+  "versionName": "1.65-town-polish",
+  "applicationId": "com.projectdark.mobile.v165test",
+  "updateCompatibleWithV113": false,
+  "apkSha256": "58e049fc4f6b1d63ba0620035de1d15bffc6e6be2c383469367dd29b1e3b7f1a",
+  "apkBytes": 80447229,
+  "builtSeoul": "2026-10-15T22:25:09.282130+09:00",
+  "scope": "V165: five source-referenced streetlamp repairs, shared seventeen service signs, simplified three-destination travel with Piet omitted, and NPC/player same-outfit pixel identity. Existing collision, quests, save and combat retained.",
+  "bossPoses": 12,
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": {
+    "RucesionMonsters": "USER_ACCEPTED_20261015",
+    "AbelCalibrationAndMaps": "PENDING"
+  },
+  "tests": {
+    "tests": 83,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      "com.projectdark.mobile.RucesionServicesV156Test",
+      "com.projectdark.mobile.RucesionTownV154Test",
+      "com.projectdark.mobile.CampaignNavigationTest",
+      "com.projectdark.mobile.RuntimeCheckpointTest",
+      "com.projectdark.mobile.QuestJournalTest",
+      "com.projectdark.mobile.NpcAppearanceTest",
+      "com.projectdark.mobile.TownPolishV165Test",
+      "com.projectdark.mobile.AbelTownV152Test",
+      "com.projectdark.mobile.TownCampaignV163Test",
+      "com.projectdark.mobile.MonsterCurseV162Test",
+      "com.projectdark.mobile.TownQualityV164Test",
+      "com.projectdark.mobile.AbelIdentityPunchTravelV143Test",
+      "com.projectdark.mobile.CampaignProgressTest"
+    ]
+  },
+  "npcMeasurements": "milles_runtime_proto sameOutfitHeight=51 playerRenderScale=1.7\nMAP_ABEL_TOWN sameOutfitHeight=50 playerRenderScale=1.7\nMAP_RUCESION_TOWN sameOutfitHeight=49 playerRenderScale=1.7\n",
+  "verifiedTownSourceFiles": 89,
+  "focusedRun": 38741585115,
+  "nativeArtifact": 11975009837,
+  "apkArtifact": 11975189912,
+  "commonPrRun": 38741598068,
+  "commonPushRun": 38741585099,
+  "commonStatus": "COMPLETED_SUCCESS",
+  "treesChanged": false,
+  "status": "BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING",
+  "deliveryFilesSaved": 5,
+  "apkLibraryFileId": "libfile_fb8e636068fc81918ecca8701d226473",
+  "commonPr": {
+    "run": 38741598068,
+    "job": 116444423881,
+    "status": "SUCCESS",
+    "successfulGradleInvocations": 26,
+    "decodedExactSourceConfirmed": true
+  },
+  "commonPush": {
+    "run": 38741585099,
+    "job": 116444375863,
+    "status": "SUCCESS"
+  },
+  "mainMerged": false
+}

@@ -2,7 +2,7 @@ package com.projectdark.mobile;
 import java.util.*;
 /** One effect/resource implementation shared by manual, quickslot and AUTO Resolver routes. */
 final class SkillAbilityExecutor {
- interface Movement {boolean movePlayer(float x,float y);boolean moveMonster(RuntimeState.Monster m,float x,float y);}
+ interface Movement {boolean movePlayer(float x,float y);boolean moveMonster(RuntimeState.Monster m,float x,float y);default boolean canLeapPlayer(float x,float y){return false;}default boolean leapPlayer(float x,float y){return false;}}
  final RuntimeState state;final SkillEffectState fx;
  private final Map<String,SkillAbilityCatalog.Snapshot> snapshots=new HashMap<>();private final Set<String> charged=new HashSet<>();
  java.util.function.ToIntFunction<String> proficiency=id->100;java.util.function.DoubleSupplier random=Math::random;boolean testMode;
@@ -16,7 +16,8 @@ final class SkillAbilityExecutor {
   if(!a.supported())return CombatResolver.RejectReason.CONTROL;
   RuntimeState.Player p=state.player();
   if(a.status.equals("TRANSFER"))return CombatResolver.RejectReason.TARGET_DEAD;
-  if(testMode)return null;
+  if(a.status.equals("LEAP")&&MartialSkillPolicy.landings(state,target,movement).isEmpty())return CombatResolver.RejectReason.RANGE;
+  if(testMode&&!a.formula.equals("DARA"))return null;
   if(!begin&&!a.resourceBurst())return null;
   if(a.formula.equals("CRASH")&&p.hp>Math.max(1,state.rpg().finalStats().maxHp*.02))return CombatResolver.RejectReason.RESOURCE;
   if(a.formula.equals("DARA")&&(p.mp<1440||p.hp<=1))return CombatResolver.RejectReason.RESOURCE;
@@ -68,7 +69,11 @@ final class SkillAbilityExecutor {
    case "RESET_AGGRO":fx.put(target,id,"AGGRO_RESET",1,8);if(m!=null){state.cancelMonsterAttack(m);m.state=RuntimeState.Monster.State.IDLE;}break;
    case "TAUNT":
     if(m!=null){fx.remove(target,"AGGRO_RESET");fx.put(target,id,"TAUNT",1,duration);m.state=RuntimeState.Monster.State.CHASE;notice=a.name+" · "+m.name+"이 당신을 추적합니다";}break;
-   case "PUSH":case "LEAP":
+   case "LEAP":
+    java.util.List<float[]> landing=MartialSkillPolicy.landings(state,target,movement);
+    if(!landing.isEmpty()){float[] at=landing.get(Math.min(landing.size()-1,(int)(random.getAsDouble()*landing.size())));movement.leapPlayer(at[0],at[1]);}break;
+   case "REFLECT_ALL":if(fx.has(target,kind))fx.remove(target,kind);else fx.put(target,id,kind,1,duration);break;
+   case "PUSH":
     if(m!=null&&movement!=null){float dx=m.x-state.player().x,dy=m.y-state.player().y;
      boolean ok=kind.equals("PUSH")?movement.moveMonster(m,m.x+dx,m.y+dy):movement.movePlayer(m.x+dx,m.y+dy);
      notice=ok?a.name+" 성공":"이동할 타일이 막혀 있습니다";}break;
@@ -79,21 +84,22 @@ final class SkillAbilityExecutor {
    case "FIND_TRAP":notice="주변 함정 "+traps.size()+"개";break;
    case "CLEAR_TRAP":traps.removeIf(t->SkillActionContract.distance(state.player().x,state.player().y,t.x,t.y)<=2);notice="주변 함정을 해체했습니다";break;
    case "CHANGE_ELEMENT":fx.put(target,id,"CHANGE_ELEMENT",1,duration);notice="대상 방어 속성: 화";break;
-   case "TRAVEL":notice="TRAVEL";break;
+   case "TRAVEL":notice=a.id.equals("SK_무도가_034")?"TRAVEL_MARTIAL":"TRAVEL";break;
    case "STAFF":notice="스태프 사용 허용";break;
    case "TECH_MAGIC_GUARD":case "PHYSICAL_GUARD":
     if(fx.has(target,kind))fx.remove(target,kind);else fx.put(target,id,kind,1,duration);break;
    default:if(!kind.isEmpty())fx.put(target,id,kind,kind.equals("PROTECT")?30:kind.equals("EVASION")?25:kind.equals("BLIND")?50:1,duration);
   }
-  if(m!=null&&fx.disabled(target)){state.cancelMonsterAttack(m);m.isMoving=false;}
+  if(m!=null&&fx.rooted(target))m.isMoving=false;
+  if(m!=null&&fx.disabled(target))state.cancelMonsterAttack(m);
   return status(power);
  }
  void damageStatus(String target,SkillAbilityCatalog.Ability a,int applied){
-  if(applied<=0)return;RuntimeState.Monster m=SkillEffectState.monster(state,target);
+  if(applied<=0&&!a.status.equals("FREEZE_HIT"))return;RuntimeState.Monster m=SkillEffectState.monster(state,target);
   if(a.status.equals("POISON_HIT"))fx.put(target,a.id,"POISON",Math.max(1,applied/8),8);
-  if(a.status.equals("FREEZE_HIT")){fx.put(target,a.id,"FREEZE",1,10);if(m!=null){state.cancelMonsterAttack(m);m.isMoving=false;}}
+  if(a.status.equals("FREEZE_HIT")){fx.put(target,a.id,"FREEZE",1,a.duration);if(m!=null){state.cancelMonsterAttack(m);m.isMoving=false;}}
   if(a.status.equals("CHARGE")&&m!=null&&movement!=null){float dx=m.x-state.player().x,dy=m.y-state.player().y;int d=SkillActionContract.distance(state.player().x,state.player().y,m.x,m.y);if(d>1&&d<6)movement.movePlayer(m.x-dx/d,m.y-dy/d);}
-  if(a.status.equals("DRAIN"))state.player().hp=Math.min(state.player().maxHp,state.player().hp+applied);
+
   if(a.name.equals("기습")||a.name.equals("습격진"))fx.put(target,a.id,"CURSE",20,10);
  }
  private void putStrong(String target,String id,String kind,int n,float duration){if(n>=fx.power(target,kind))fx.put(target,id,kind,n,duration);}

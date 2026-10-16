@@ -1,3 +1,64 @@
+town_props_v166:
+  status: BUILD_NATIVE_VERIFIED_COMMON_PHONE_VISUAL_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  runtime_source: 52795517849d560267d1eea979b154ef1760db13
+  checkpoint: docs/TOWN_V166_CHECKPOINT.md
+  contract: master/changes/TOWN_PROPS_V166.json
+  receipt: master/changes/V166_BUILD_RUNTIME_RECEIPT.json
+  focused_run: 38748723671
+  native_tests: 85
+  native_flowerbed_scenes: 21
+  object_family_scenes: 29
+  phone_visual: PENDING
+
+town_polish_v165:
+  status: BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  checkpoint: docs/TOWN_V165_CHECKPOINT.md
+  contract: master/changes/TOWN_POLISH_V165.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, app/src/main/assets/abel-video-v147/layout.json, app/src/main/assets/rucesion-v154/layout.json]
+
+town_quality_v164:
+  status: BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  checkpoint: docs/TOWN_V164_CHECKPOINT.md
+  contract: master/changes/TOWN_QUALITY_V164.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, app/src/main/assets/abel-video-v147/layout.json, app/src/main/assets/rucesion-v154/layout.json]
+
+coast_source_pairs_v159:
+  runtime_source_sha: 615bbd278c93168b7e5f11d8145e94c9ca4f7d6a
+  focused_run: 38613954729
+  native_tests: 110
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  broader_android: EXACT_SOURCE_PR_SUCCESS_38613964684
+  receipt: master/changes/V159_BUILD_RUNTIME_RECEIPT.json
+  user_accepted_species: [LYK_TYRANT, LYK_ARIEL]
+  original_plant_eyes: UNRESOLVED_FOLIAGE_OCCLUDED
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  main_merged: false
+
+coast_refinement_v158:
+  runtime_source_sha: 0e760fd8ccf5481ed7bed01fce78a02f915bed99
+  focused_run: 38575338140
+  unique_tests: 100
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  broader_android: EXACT_SOURCE_PR_SUCCESS_38575347594
+  duplicate_push: IN_PROGRESS_AT_CLOSURE
+  active_branch: codex/rucesion-coast-v157
+  receipt: master/changes/V158_BUILD_RUNTIME_RECEIPT.json
+  pull_request: 197
+  main_merged: false
+
 abel_third_circle_v153:
   runtime_source_sha: 6c0bdd21afcf00f32dab744d663d8740ae1c9aaf
   focused_run: 38364329715

@@ -1,0 +1,76 @@
+{
+  "runtimeSource": "e06af00e127a6d57b51be2bc03cebdd717afb050",
+  "validationSource": "096b2d4ef9d8bda7f6589da0392e827dea7ffd37",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED",
+  "tests": {
+    "preliminaryRun": 38900596064,
+    "tests": 214,
+    "suites": 37,
+    "passed": 211,
+    "failed": 3,
+    "cause": "Only new fixtures: zero float tolerance, finisher HP not replenished, illegal map coordinate; corrected8ac"
+  },
+  "current": {
+    "focused": {
+      "run": 38903280733,
+      "job": 116980522582,
+      "status": "SUCCESS",
+      "tests": 214,
+      "suites": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "common": {
+      "run": 38902322965,
+      "job": 116977323654,
+      "status": "SUCCESS",
+      "successfulGradleExecutions": 21,
+      "reusedSuccessfulPrefixSteps": 11,
+      "baselineRun": 38901023707
+    },
+    "implementationEquivalent": true
+  },
+  "catalog": 221,
+  "spellCount": 141,
+  "cooldownChanges": 34,
+  "historicalExactEntries": 25,
+  "unresolvedPhysicalOrUtilityOriginals": 49,
+  "phone": "PENDING",
+  "apk": {
+    "sourceCommit": "bde8fe3434d36c93e6ed40c63504cee709aee3ac",
+    "runId": "38903280733",
+    "versionCode": 174,
+    "versionName": "1.74-skill-timing",
+    "applicationId": "com.projectdark.mobile.v174test",
+    "updateCompatibleWithV167": false,
+    "apkSha256": "8700189c7b3074536f4ba4d5c9ff9ca6fd852998a5188f94dc81a6874080f35a",
+    "apkBytes": 80454209,
+    "builtSeoul": "2026-10-16T22:01:34.648182+09:00",
+    "scope": "V174 all34 martial skill audit: facing actor leap/valid landing, eight-second freeze/root, synchronous front3-cell clean Baekbo contacts, equal incoming reflection, invincibility/DOT and drain clamp; retained martial icon alias, BODY-attached missing outfit clips and shared basic cadence; retained test-mode learned eligibility and startup restore ordering for twohand equip; retained independent linked basic hits, learned twohand equip gate, user-requested shared 1.0s basic cooldown with retained 0.80s twohand visual recovery; retained source c twohand blades, consistent four-facing basic/skill renderer, visible joystick, cached actor visual projection and weapon rigs, lean resource projection; retained persisted random CON/WIS growth and actual level-up receipt; asymmetric two-hand/shield equip; Chungryong two-hand BODY; reagent-shop town managers/arrival; shared orange Curum and original Maradium HUD artwork; retained V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    },
+    "artifact": 12047915779,
+    "archiveSha256": "77dd49d6f3cae1ad379f8fe9e15ba3cb62b0aa5cab8bcf94c2addf945f916ac0",
+    "library_file_id": "libfile_edac2b44488c8191b1b0df439f377ff6",
+    "file_id": "file_00000000e8e481f5a2816826467b8f7b",
+    "delivered": true,
+    "verification": "ZIP_CRC_SHA_EMBEDDED_SOURCE_RUN_VERSION_268_BODY_ABILITY_AND_BOTH_CATALOGS_PASS"
+  },
+  "apkSource": "bde8fe3434d36c93e6ed40c63504cee709aee3ac",
+  "originalCooldownScope": "49physical/utility exact originals pending;135general spell policies not individually certified;25historical FAN references not live2026certification",
+  "native": {
+    "artifact": 12047521711,
+    "archiveSha256": "4a48aac0d62006f12d464b03ed96177a78f6a6db39b16cd5fbd9b155e62557c2",
+    "reviewArtifact": 12047339537,
+    "reviewArchiveSha256": "d28432cc6962e8972cb7fc685a2b2f5b6780c3226dbadd83b99ccc79c1ed84f5",
+    "visual": "FOUR_DIRECTION_LEAP_STANDING_NO_PARTICLE_TARGET_FACING_REVIEWED"
+  },
+  "next": "Phone review and primary source evidence for49unconfirmed original cooldowns; retain verified APK and checks on resume"
+}

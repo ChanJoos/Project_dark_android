@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "version": 160,
+  "runtimeSource": "78acb68a5555463ef093f3e1d2e592bdedcf2b4e",
+  "branch": "codex/rucesion-coast-v157",
+  "pullRequest": 197,
+  "mainBase": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "mainMerged": false,
+  "focused": {
+    "run": 38621834344,
+    "job": 116051028349,
+    "conclusion": "SUCCESS",
+    "tests": {
+      "tests": 113,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 17
+    }
+  },
+  "commonAndroid": {
+    "pullRequestRun": 38621845985,
+    "job": 116051070213,
+    "conclusion": "SUCCESS",
+    "duplicatePushRun": 38621834384,
+    "duplicatePushConclusion": "SUCCESS",
+    "duplicatePushJob": 116051029098
+  },
+  "apk": {
+    "sourceCommit": "78acb68a5555463ef093f3e1d2e592bdedcf2b4e",
+    "runId": "38621834344",
+    "versionCode": 160,
+    "versionName": "1.60-coast-density-scale",
+    "applicationId": "com.projectdark.mobile.v160test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "317d52f81520cff3db7cc3bdaa952deaabffb61f46938ee212d5dff32ec0167b",
+    "apkBytes": 78039649,
+    "builtSeoul": "2026-10-15T04:20:47.611669+09:00",
+    "scope": "V160 source-player Abel turtle/pong/grab size calibration and low wide caterpillar66x48; remaining Abel scales retained; all Rucesion monster art/scale/motion USER_ACCEPTED and byte-preserved. Both coasts exactly waiting room/hunt1/2/3/boss; user-requested roughly10percent density reduction Abel0/65/86/97/97 Rucesion0/65/86/86/8; boss identities retained. Historical standalone Abel1B route commented, save alias retained. Existing shared collision/AI/resolver/reward/checkpoint/static graph/prewarm/vsync/32floorLRU/60sprite-hit pairs preserved. Native verification distinct from physical phone acceptance.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    }
+  },
+  "artifacts": [
+    {
+      "kind": "apk",
+      "id": 11921619451,
+      "archiveSha256": "7d566f991cfcf75a2d0fc86db426dd55aaf9b0f683de7cd964268aa7e34b4258"
+    },
+    {
+      "kind": "native",
+      "id": 11922229025,
+      "archiveSha256": "36469adb915119cb4b9f2937e325517bdb75b939d0e48f8c1cc2573e9ad0a150"
+    }
+  ],
+  "independentVerification": {
+    "matchedPackagedFiles": 2561,
+    "zipCRC": "PASS",
+    "embeddedSourceRunVersion": "PASS",
+    "allMonsterRasterBundlesPaletteGaitCollisionWaterBytes": "UNCHANGED_FROM_V159"
+  },
+  "runtimeScaleRatios": [
+    "V160_SOURCE_RATIO ABEL_TURTLE width=0.8518519 height=0.537037",
+    "V160_SOURCE_RATIO ABEL_PONG width=0.7777778 height=0.6111111",
+    "V160_SOURCE_RATIO ABEL_CATERPILLAR width=0.8888889 height=0.6481481",
+    "V160_SOURCE_RATIO ABEL_GRAB width=0.8518519 height=0.7777778"
+  ],
+  "sourceEvidence": "master/source/coast_v160/calibration.json",
+  "performance": {
+    "scope": "Robolectric renderer CPU, not handsetFPS",
+    "p95Ms": 3.194975,
+    "p99Ms": 3.87051,
+    "maxMs": 7.729191,
+    "sourceHitPairsMax": 60,
+    "floorPixelBound": 8652800,
+    "trips": 12
+  },
+  "nativeReviewed": [
+    "Abel13x4directions idle/walk/actual contact attack",
+    "Rucesion10 accepted material/alpha/pose equality preserved",
+    "10square overview maps,24localcamera views",
+    "Both actual first-camera portals/actual enter-return",
+    "Abel1B save alias/restart/shared reward guards/full legal reduced populations/boss identities/cache"
+  ],
+  "delivery": {
+    "files": [
+      "PROJECT_DARK_V160_COAST.apk",
+      "V160_ABEL_COMPARE.png",
+      "V160_ABEL_MONSTERS.png",
+      "V160_COAST_COUNTS.jpg"
+    ],
+    "saved": true,
+    "delivered": true,
+    "sha256": {
+      "PROJECT_DARK_V160_COAST.apk": "317d52f81520cff3db7cc3bdaa952deaabffb61f46938ee212d5dff32ec0167b",
+      "V160_ABEL_COMPARE.png": "f89aa962a7ca136d61d9e5d5ba154518e3fd9dac2c5af1c4fe9cadb4bd82d4bf",
+      "V160_ABEL_MONSTERS.png": "dfe8c0ba29facb6d24f1d06a5e4dbcb6825588415310698051fc2e30dbe1b502",
+      "V160_COAST_COUNTS.jpg": "26f2d0ff9d97de6767ecd4303358dc4b64af46045d1754f57300e114f84887ca"
+    }
+  },
+  "acceptance": {
+    "RucesionMonsters": "USER_VISUAL_ACCEPTED_20261015",
+    "AbelChanges": "PENDING_USER",
+    "Maps": "PENDING_USER",
+    "NewPhysicalPhone": "PENDING"
+  },
+  "history": [
+    {
+      "source": "d698278ccf83316131ce5f681cce6181804edb02",
+      "focusedRun": 38621558223,
+      "conclusion": "SUCCESS_113_NATIVE_TESTS",
+      "apkDelivered": false,
+      "followup": "Common workflow APK verifier still targeted159; changed only android.yml to160 at final78acb68 before delivery. Runtime app bytes identical."
+    }
+  ],
+  "limitations": [
+    "Source envelope ratios approximate across motion/directions/occlusion; not original complete-animation fidelity",
+    "Original Ariel5job party event remains preview-only zeroEXP/Gold",
+    "Host rendererCPU is not physical phoneFPS",
+    "Documentation-only closure does not relabel tested APK source"
+  ],
+  "closure": {
+    "status": "IMPLEMENTATION_BUILD_NATIVE_COMMON_CI_DELIVERY_COMPLETE",
+    "next": "Physical phone feedback; Abel/maps user visual acceptance pending",
+    "testedRuntimeSourceUnchanged": true
+  }
+}

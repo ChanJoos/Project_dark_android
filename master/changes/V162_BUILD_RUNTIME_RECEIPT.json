@@ -1,0 +1,181 @@
+{
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED_ARTIFACT_AVAILABLE",
+  "source": "6f3ac7b900299330b7e15c1d374f3d56048c86db",
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "candidateNotMerged": true,
+  "verification": {
+    "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+    "source": "6f3ac7b900299330b7e15c1d374f3d56048c86db",
+    "apk": {
+      "sourceCommit": "6f3ac7b900299330b7e15c1d374f3d56048c86db",
+      "runId": "38664473610",
+      "versionCode": 162,
+      "versionName": "1.62-pong-curse-palette",
+      "applicationId": "com.projectdark.mobile.v162test",
+      "updateCompatibleWithV113": false,
+      "apkSha256": "874cef5f2b2046fc915a90c9577c1228258dfeebc023d8836189d788388bc8a0",
+      "apkBytes": 80462485,
+      "builtSeoul": "2026-10-15T10:22:44.068597+09:00",
+      "scope": "V162 normal Pong palette from supplied normal/faded pair and combat-owned CURSE exact-alpha prewarmed RGB variants; expiry/clear/respawn/fresh-map restoration; four states60textures each max35,389,440bytes. Retains V161 all13 Abel coast reference audit;7families84 newly source-referenced poses; occupied-alpha/player ratio calibration for10 observed species, floating purple scale and obscured KingArk pair explicitly unresolved. Accepted Rucesion10 art/scale/motion and shared AI/collision/reward/save/cache retained. Generated direction/action reconstruction is not an original atlas claim.",
+      "bossPoses": 12,
+      "phoneAcceptance": "PENDING",
+      "userVisualAcceptance": {
+        "RucesionMonsters": "USER_ACCEPTED_20261015",
+        "AbelCalibrationAndMaps": "PENDING"
+      }
+    },
+    "nativeTests": {
+      "tests": 128,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 19
+    },
+    "packagedSourceFilesChecked": 2067,
+    "hostPerformance": {
+      "scope": "Robolectric renderer CPU, not handsetFPS",
+      "p95Ms": 3.46571,
+      "p99Ms": 5.07871,
+      "maxMs": 5.210656,
+      "sourceHitPairsMax": 60,
+      "floorPixelBound": 8652800,
+      "trips": 12
+    },
+    "github": {
+      "focusedRun": 38664473610,
+      "focusedJob": 116193095024,
+      "commonPR": 38664479830,
+      "commonPRJob": 116193114075,
+      "commonPRConclusion": "success",
+      "artifactIds": [
+        11940488434,
+        11940239101
+      ],
+      "artifactDigests": {
+        "coast-v162-native-6f3ac7b900299330b7e15c1d374f3d56048c86db": "sha256:3b39dd95aeb8ca1de686431d3d48fe5e8904170a5e0061b9421e2586c3d9d191",
+        "coast-v162-apk-6f3ac7b900299330b7e15c1d374f3d56048c86db": "sha256:bba380e20cbc477c8d7b5525e50d169b20a85e40431bbda0bb1d5209e2931e4f"
+      }
+    },
+    "physicalPhoneAcceptance": "PENDING",
+    "userVisualAcceptance": "PENDING",
+    "sourceArchive": "V16184 unchanged frames; normal/faded raw video crops and independent material samples in master/source/abel_v162.",
+    "scope": "23 coast species x12poses,10catalog curses, hit overlap, expiry/dispel/respawn/fresh-map restoration; standalone mouse and actual GameView inn scene. Pong original sampled normal+blue curse materials; other species generic fading. Exact original indexed palette/curve unavailable.",
+    "delivery": "Prepared on GitHub Actions from exact original tested artifacts because local file executor stopped responding; runtime code was not rebuilt or changed.",
+    "files": {
+      "V162_MONSTERS_NORMAL_CURSE.png": {
+        "bytes": 528155,
+        "sha256": "edad24d1962b427627f2845c9de6544315adefe6772a9428c8368d33f0165695"
+      },
+      "PROJECT_DARK_V162_PONG_CURSE.apk": {
+        "bytes": 80462485,
+        "sha256": "874cef5f2b2046fc915a90c9577c1228258dfeebc023d8836189d788388bc8a0"
+      },
+      "V162_INN_NORMAL_CURSE_RESTORE.png": {
+        "bytes": 129098,
+        "sha256": "d5c80afc2994a4ca16d644286b0925a43f1dfc5a07f690235e10316c96f7e465"
+      },
+      "V162_PONG_NORMAL_CURSE_RESTORE.png": {
+        "bytes": 123887,
+        "sha256": "9e422cafd6343915329887d9144fbbd2285432df52f64903f80d3ccd2e8e6674"
+      }
+    }
+  },
+  "ci": {
+    "focused": {
+      "run": 38664473610,
+      "job": 116193095024,
+      "conclusion": "success",
+      "tests": 128,
+      "suites": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "commonPR": {
+      "run": 38664479830,
+      "job": 116193114075,
+      "conclusion": "success",
+      "decodedSuccessfulGradleInvocations": 26,
+      "exactSourceVerified": true
+    },
+    "commonPush": {
+      "run": 38664473609,
+      "job": 116193094457,
+      "conclusion": "success",
+      "decodedSuccessfulGradleInvocations": 26,
+      "exactSourceVerified": true
+    }
+  },
+  "delivery": {
+    "workflowCommit": "a4d7d256d71b5265d5b68f4951478d41a012d9a3",
+    "run": 38666940549,
+    "job": 116200934445,
+    "conclusion": "success",
+    "artifactId": 11943270122,
+    "name": "PROJECT_DARK_V162_COMPLETE_DELIVERY",
+    "bytes": 80076319,
+    "digest": "sha256:404edb8cc76fdf2da59a6ee2b11d70465b0e3bd7d1e5dcc563f6415e9991c1c7",
+    "expiresAt": "2027-01-13T01:40:41Z",
+    "url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38666940549/artifacts/11943270122",
+    "files": [
+      "PROJECT_DARK_V162_PONG_CURSE.apk",
+      "V162_PONG_NORMAL_CURSE_RESTORE.png",
+      "V162_MONSTERS_NORMAL_CURSE.png",
+      "V162_INN_NORMAL_CURSE_RESTORE.png",
+      "V162_VERIFICATION.json"
+    ],
+    "method": "Independent delivery runner rehydrated the two exact tested artifacts; original ZIP SHA256 matched API digest, original APK bytes and128JUnit results verified;2067 packaged source files including84 deterministic V161 frames compared. Runtime source diff is empty. No new runtime rebuild or art regeneration.",
+    "localFileAttachment": "UNAVAILABLE: exec_command and view_image stopped responding across read-only retries; no Library upload was started or claimed. Durable code and completed CI delivery are on GitHub. If workspace returns, save this same bundle; do not regenerate artwork."
+  },
+  "cacheBudget": {
+    "perStateTexturesMax": 60,
+    "states": 4,
+    "monsterCpuPixelBytesMax": 35389440,
+    "extraMouseVariantBytes": 786432,
+    "floorLru": 32,
+    "floorBytes": 8652800,
+    "noPerFrameRasterEditing": true
+  },
+  "preserved": [
+    "V16184 source frames, alpha, occupied-body calibration, pose/facing/foot anchors",
+    "Rucesion10 normal appearance and canonical material pairs",
+    "Movement, collision, AI, combat status strength/timers/dispel rules, inventory rewards and save"
+  ],
+  "priorAttempts": [
+    {
+      "source": "8d91d1a0aca19b041218ae0d53e728c1a1b7d1cd",
+      "result": "COMPILE_FAILED",
+      "reason": "Unsupported Android ComposeColorFilter; replaced with prewarmed mouse hit pixels."
+    },
+    {
+      "source": "68c93d4efc9b17a16d3879cfe957972cc6e0d025",
+      "result": "EARLY_FOCUSED_BUILD_NOT_FEATURE_ACCEPTANCE",
+      "reason": "Version string replacement omitted new curse test and targeted nonexistent AbelSourceV162Test; common job correctly ran new tests and caught2alpha failures. Explicit selection repaired."
+    },
+    {
+      "source": "fbec696c68ae499ae865087efb4e82b8f434af09",
+      "run": 38661340294,
+      "result": "6TESTS_2FAILURES",
+      "reason": "Scaled GPU filter altered edge alpha0->3 and63->0. Exact assertions retained; prewarmed RGB-only raster variants adopted."
+    },
+    {
+      "source": "3a05d6815f8a025c5d5d8aab62484098e0f6acbc",
+      "run": 38661866467,
+      "result": "126PASSED_OWN_COLOR_REVIEW_REJECTED",
+      "reason": "Blanket boost produced excessive orange/neon versus original; independent normal and cursed material samples calibrated."
+    },
+    {
+      "source": "6ed3e7210bc7e65d635f61d34aaf0971605a611e",
+      "run": 38663228987,
+      "result": "127PASSED_INDOOR_CALL_ROUTE_GAP_FOUND",
+      "reason": "Final GameView audit found separate indoor mouse path using no-effects overload. Fixed and covered with an actual inn scene curse/dispel regression."
+    }
+  ],
+  "limits": [
+    "Original indexed palette/exact transformation and full original atlas were not supplied; observed material projection and other-species generic fade remain ADAPTED.",
+    "Physical handset color/memory/FPS and user visual acceptance PENDING. HostCPU measurements are not deviceFPS.",
+    "Source-obscured purple/KingArk exact ratios remain unresolved from V161; no new perfect-original claim."
+  ]
+}

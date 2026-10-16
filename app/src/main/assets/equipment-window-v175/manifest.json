@@ -1,0 +1,19 @@
+{
+  "source": "master/source/equipment_window_v175/reference.jpg",
+  "sourceSha256": "84ef2584877c02d4394e965afb66f549cfe2838f36c54e0cfcab2a4b36e81556",
+  "crop": [
+    94,
+    478,
+    616,
+    1034
+  ],
+  "size": [
+    522,
+    556
+  ],
+  "policy": "USER supplied 2026-10-16: exact screenshot skin, only 15 functional slots; live actor/items/FinalStats. Exposed texture patch replaces omitted source cells and baked actor/items. No invented ornament items.",
+  "files": {
+    "panel.png": "4610703ac114efb382940eeb82691420ccb06d56f33c404f50fe648188e31906",
+    "slot.png": "681cfdd4104d9b802b97c8e016a2fa505e40897895e420a77f682336670c1f3b"
+  }
+}

@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import org.json.*;
 
-/** Exact job/name source crops. Missing images never borrow another skill's art. */
+/** Source crops with the user-approved Jeonggwon -> Tongbaegwon icon alias. */
 final class SkillIconCatalog {
   private final Bitmap atlas;
   private final Map<String,Integer> index=new HashMap<>();
@@ -38,20 +38,22 @@ final class SkillIconCatalog {
       }
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
+  static String iconId(String id){return "SK_무도가_001".equals(id)?"SK_무도가_006":id;}
   SkillWindowSkin windowSkin(){return windowSkin;}
   boolean drawSquare(Canvas c,String id,RectF dest){
+    id=iconId(id);
     if(windowSkin.draw(c,id,dest))return true;
     Bitmap image=presentation.get(id);if(image==null)return false;paint.setFilterBitmap(true);c.drawBitmap(image,null,dest,paint);return true;
   }
-  boolean drawQuickslot(Canvas c,String id,RectF dest){float side=Math.min(dest.width(),dest.height());dest=new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2);
+  boolean drawQuickslot(Canvas c,String id,RectF dest){id=iconId(id);float side=Math.min(dest.width(),dest.height());dest=new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2);
     Path clip=new Path();clip.addRoundRect(dest,3,3,Path.Direction.CW);c.save();c.clipPath(clip);
     boolean result=windowSkin.drawContent(c,id,dest);
     if(!result){Bitmap image=presentation.get(id);if(image!=null){int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));paint.setFilterBitmap(false);c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),dest,paint);result=true;}}
     c.restore();return result;
   }
-  boolean has(String id){return index.containsKey(id);}
+  boolean has(String id){return index.containsKey(iconId(id));}
   boolean draw(Canvas canvas,String id,RectF dest){
-    Integer i=index.get(id);if(i==null)return false;
+    id=iconId(id);Integer i=index.get(id);if(i==null)return false;
     int x=(i%10)*40,y=(i/10)*40;paint.setFilterBitmap(false);
     Path mask=new Path();mask.addRoundRect(dest,dest.width()*.20f,dest.height()*.20f,Path.Direction.CW);
     canvas.save();canvas.clipPath(mask);

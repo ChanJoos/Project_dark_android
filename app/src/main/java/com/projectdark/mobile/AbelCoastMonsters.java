@@ -9,10 +9,10 @@ public final class AbelCoastMonsters {
  /** Observed zone families; unknown proper names remain provisional in source receipts. */
  public static List<String> roster(String map){
   switch(AbelCoastGeometry.index(map)){
-   case 1:case 2:return Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_CATERPILLAR");
-   case 3:return Arrays.asList("ABEL_TURTLE","ABEL_GRAB","ABEL_OBS_SLATE","ABEL_CATERPILLAR","ABEL_PONG");
-   case 4:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_EGG","ABEL_GAS","ABEL_OBS_PURPLE_MAW","ABEL_CATERPILLAR");
-   case 5:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_MAW","ABEL_GAS","ABEL_BERSERKER","ABEL_KINGARK_FAKE","ABEL_KINGARK");
+   case 1:return Arrays.asList("ABEL_TURTLE","ABEL_ARKPUS","ABEL_PONG","ABEL_CATERPILLAR");
+   case 2:return Arrays.asList("ABEL_TURTLE","ABEL_GRAB","ABEL_OBS_SLATE","ABEL_CATERPILLAR","ABEL_PONG");
+   case 3:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_EGG","ABEL_GAS","ABEL_OBS_PURPLE_MAW","ABEL_CATERPILLAR");
+   case 4:return Arrays.asList("ABEL_OCTOPUS","ABEL_OBS_PURPLE_MAW","ABEL_GAS","ABEL_BERSERKER","ABEL_KINGARK_FAKE","ABEL_KINGARK");
    default:return Collections.emptyList();
   }
  }
@@ -23,17 +23,19 @@ public final class AbelCoastMonsters {
    if(t.x<448||Math.hypot(t.x-d.backX,t.y-d.backY)<260||Math.hypot(t.x-d.entryX,t.y-d.entryY)<210||Math.hypot(t.x-(d.entryX+96),t.y-(d.entryY-48))<100||Math.hypot(t.x-d.nextX,t.y-d.nextY)<120)continue;
    boolean open=true;for(WorldMoveTargetController.Direction step:WorldMoveTargetController.Direction.values())if(d.exactCenter(t.x+step.dx,t.y+step.dy)==null){open=false;break;}if(open)clear.add(t);
   }
-  int count=area==1?72:area==2?96:108;
+  // User-requested modest density reduction; boss identities stay present.
+  int count=area==1?65:area==2?86:97;
+  int rows=(count+11)/12;
   Random scatter=new Random(14000L+area*137L);
   for(int i=0;i<count;i++){
-   float tx=280+(i%12)*(d.maxX-560)/11f+scatter.nextInt(177)-88,ty=240+(i/12)*620/(count/12-1f)+scatter.nextInt(101)-50,best=Float.MAX_VALUE;WorldMoveTargetController.TileCenter at=null;
+   float tx=280+(i%12)*(d.maxX-560)/11f+scatter.nextInt(177)-88,ty=240+(i/12)*(d.maxY-600)/(rows-1f)+scatter.nextInt(101)-50,best=Float.MAX_VALUE;WorldMoveTargetController.TileCenter at=null;
    for(WorldMoveTargetController.TileCenter t:clear){boolean close=false;for(RuntimeState.Monster m:out)if(Math.hypot(t.x-m.x,t.y-m.y)<90){close=true;break;}if(close)continue;float q=(t.x-tx)*(t.x-tx)+(t.y-ty)*(t.y-ty);if(q<best){best=q;at=t;}}
    if(at==null)throw new IllegalStateException("Abel spawn clearance "+map+" "+i);
    List<String> families=roster(map);
    String species=families.get((i+i/12)%families.size());
-   // Final coast keeps 108 actors: three blue elites and one of each event
+   // Final coast keeps 97 actors: three blue elites and one of each event
    // identity replace five ordinary slots. Fake/real share one source art set.
-   if(area==5)species=i==count-1?"ABEL_KINGARK":i==count-2?"ABEL_KINGARK_FAKE":i>=count-5?"ABEL_BERSERKER":families.get((i+i/12)%3);
+   if(area==4)species=i==count-1?"ABEL_KINGARK":i==count-2?"ABEL_KINGARK_FAKE":i>=count-5?"ABEL_BERSERKER":families.get((i+i/12)%3);
    AbelCombatProfile profile=AbelCombatProfile.forId(species);int hp=profile.hp;
    RuntimeState.Monster m=new RuntimeState.Monster(species+"#"+i,name(species),at.x,at.y,hp,"B/ADAPTED_SOURCE_REFERENCED_CANDIDATE");m.campaignRewardProfileId=species;m.level=profile.level;m.maxMp=profile.mp;m.mp=profile.mp;m.respawnSeconds=species.startsWith("ABEL_KINGARK")?60:species.equals("ABEL_BERSERKER")?30:7+i%3;out.add(m);
   }

@@ -16,6 +16,7 @@ final class SkillPresentationCatalog {
   Entry get(String id){return entries.get(id);}
   String frameKey(String body,String motion,CharacterRenderer.Direction d,float phase){
     JSONObject p=profiles.optJSONObject(motion);if(p==null)return null;String group=p.optString("group");
+    if("02".equals(group))return body+"/02/"+CharacterRenderer.actionSourceIndex(d);
     boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
     JSONArray a=p.optJSONArray(back?"back":"front");if(a==null||a.length()==0)return null;
     float q=Math.max(0,Math.min(.999f,phase));int n=Math.min(a.length()-1,(int)(q*a.length()));

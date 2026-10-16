@@ -13,12 +13,14 @@ final class MobileHudSkin {
     p.setStrokeWidth(.6f);p.setColor(0x554d4e42);c.drawCircle(x,y,r-2.8f,p);
     p.setColor(active?0xfff4e6b1:0xaaddd0a6);c.drawArc(x-r+1,y-r+1,x+r-1,y+r-1,210,120,false,p);p.setStyle(Paint.Style.FILL);
   }
+  private static final Shader STICK_IDLE=new RadialGradient(-5,-6,28,new int[]{0xdd6a756c,0xd4212a26},null,Shader.TileMode.CLAMP);
+  private static final Shader STICK_ACTIVE=new RadialGradient(-5,-6,28,new int[]{0xee85917e,0xe8324138},null,Shader.TileMode.CLAMP);
   static void joystick(Canvas c,float x,float y,float r,float kx,float ky,boolean active){
-    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(active?0x2413191b:0x0e13191b);c.drawCircle(x,y,r,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);p.setColor(active?0x88c2bea8:0x428e978d);c.drawCircle(x,y,r-1,p);
+    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(active?0x9b13191b:0x8513191b);c.drawCircle(x,y,r,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);p.setColor(active?0xffe9ddba:0xd9c4cbbb);c.drawCircle(x,y,r-1,p);
     p.setStrokeWidth(.5f);p.setColor(active?0x445d695e:0x205d695e);c.drawCircle(x,y,r-4,p);
-    p.setStyle(Paint.Style.FILL);p.setShader(new RadialGradient(kx-5,ky-6,28,new int[]{active?0x665f6961:0x28455047,active?0x44141d18:0x14141d18},null,Shader.TileMode.CLAMP));c.drawCircle(kx,ky,active?23:20,p);p.setShader(null);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);p.setColor(active?0x99d5d2ba:0x507b877d);c.drawCircle(kx,ky,active?23:20,p);p.setStyle(Paint.Style.FILL);
+    c.save();c.translate(kx,ky);p.setStyle(Paint.Style.FILL);p.setShader(active?STICK_ACTIVE:STICK_IDLE);c.drawCircle(0,0,active?23:20,p);p.setShader(null);c.restore();
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);p.setColor(active?0xffffedba:0xffbdc6b0);c.drawCircle(kx,ky,active?23:20,p);p.setStyle(Paint.Style.FILL);
   }
   static void crown(Canvas c,float x,float y){
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xbbb7b4a2);

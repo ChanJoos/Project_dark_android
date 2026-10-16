@@ -1,0 +1,25 @@
+{
+  "id": "V172_MARTIAL_CLOTH_CADENCE",
+  "status": "ACCEPTED",
+  "evidence": "USER_CONFIRMED_20261016; missing outfit clip adaptation explicitly ADAPTED",
+  "source_refs": [
+    "Skill_Master/SK_무도가_001",
+    "Skill_Master/SK_무도가_006",
+    "source-registration/*/sprites",
+    "skill-presentation/catalog.json/frames"
+  ],
+  "before": "Missing Jeonggwon icon; standing equipment overlay on absent action clips; differing basic intervals",
+  "after": "Tongbaegwon exact icon alias; cached BODY attachments for missing clips, authored clips unchanged; all player basic modes share one 1.0 second gate",
+  "reason": "Current explicit user request and source-confirmed floating clothing fallback",
+  "source_artwork": "UNCHANGED",
+  "save_change": "NONE",
+  "validation": "PASS_185_TESTS_33_SUITES_AND_FULL_PUSH_CI_26_GRADLE; HOST_NATIVE_REVIEWED; PHONE_USER_PENDING",
+  "tests": [
+    "MartialClothCadenceV172Test",
+    "LinkedTwoHandV170Test",
+    "MotionHudFrameV169Test",
+    "TestModeTwoHandV171Test"
+  ],
+  "runtimeSource": "2e38f3784a2a3e998016dd623f2be32d4777781c",
+  "receipt": "V172_BUILD_RUNTIME_RECEIPT.json"
+}

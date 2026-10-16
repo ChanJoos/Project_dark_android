@@ -36,9 +36,9 @@ final class ChungryongWeaponRenderer {
   }
   static boolean back(CharacterRenderer.Direction d){return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;}
   static boolean west(CharacterRenderer.Direction d){return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW;}
-  static String group(String motion){return "twohand".equals(motion)?"e":"c";}
+  static String group(String motion){return "c";}
   static int bodyIndex(String motion,boolean back,int n){
-    if("twohand".equals(motion))return (back?16:20)+n;
+    if("twohand".equals(motion))return (back?new int[]{0,0,1,2}:new int[]{4,4,5,7})[n];
     if("horizontal".equals(motion))return new int[]{back?8:6,back?0:4,back?2:7}[n];
     if("vertical".equals(motion))return new int[]{back?8:6,back?9:12,back?10:13}[n];
     return new int[]{back?8:6,back?0:4,back?1:5}[n];

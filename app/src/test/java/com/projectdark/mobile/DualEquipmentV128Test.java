@@ -14,7 +14,7 @@ public class DualEquipmentV128Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);UiTheme.install(c);}
  @Test public void differentAndIdenticalPairsAddExactlyAndRemoveOnlyTheSelectedHand(){
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);int hp=r.finalStats().maxHp,mp=r.finalStats().maxMp,ac=r.finalStats().ac;
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);int hp=r.finalStats().maxHp,mp=r.finalStats().maxMp,ac=r.finalStats().ac;
   String ring="IT_RING_THREELINEGOLD";
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(ring,"반지"));
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(ring,RpgProgressionState.RIGHT_RING_SLOT));
@@ -25,7 +25,7 @@ public class DualEquipmentV128Test {
   assertEquals(ac-3,r.finalStats().ac);r.unequip("장갑");assertEquals(ac-2,r.finalStats().ac);
  }
  @Test public void quantityCannotBeDuplicatedAndMalformedSaveIsRejectedAtomically(){
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(false);r.autoLootResolvedItem("IT_RING_REDJADE",1);
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(false);r.bindTwoHandLearning(()->true);r.autoLootResolvedItem("IT_RING_REDJADE",1);
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot("IT_RING_REDJADE","반지"));
   assertEquals(RpgProgressionState.EquipResult.ITEM_NOT_OWNED,r.equipToSlot("IT_RING_REDJADE",RpgProgressionState.RIGHT_RING_SLOT));
   Map<String,String> invalid=new LinkedHashMap<>(r.equipment());invalid.put(RpgProgressionState.RIGHT_RING_SLOT,"IT_RING_REDJADE");Map<String,String> before=new LinkedHashMap<>(r.equipment());
@@ -33,7 +33,7 @@ public class DualEquipmentV128Test {
   assertEquals(RpgProgressionState.EquipResult.INVALID_SLOT,r.equipToSlot("IT_RING_REDJADE",RpgProgressionState.RIGHT_GLOVE_SLOT));
  }
  @Test public void legacyLeftSlotsAndFourEquippedInstancesSurviveRealSaveRestore(){
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.equipToSlot("IT_RING_REDJADE","반지");r.equipToSlot("IT_RING_THREELINEGOLD",RpgProgressionState.RIGHT_RING_SLOT);r.equipToSlot("IT_GLOVE_LEATHER","장갑");r.equipToSlot("IT_GLOVE_LEATHER",RpgProgressionState.RIGHT_GLOVE_SLOT);
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);r.equipToSlot("IT_RING_REDJADE","반지");r.equipToSlot("IT_RING_THREELINEGOLD",RpgProgressionState.RIGHT_RING_SLOT);r.equipToSlot("IT_GLOVE_LEATHER","장갑");r.equipToSlot("IT_GLOVE_LEATHER",RpgProgressionState.RIGHT_GLOVE_SLOT);
   F5mSaveStore.saveRewardsActive(r);F5mSaveStore.install(c);RpgProgressionState saved=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(saved);
   assertEquals(r.inventory(),saved.inventory());assertEquals(r.equipment(),saved.equipment());assertEquals(r.finalStats().maxHp,saved.finalStats().maxHp);assertEquals(r.finalStats().ac,saved.finalStats().ac);assertTrue(F5mSaveStore.writable());
   // V127 keys remain the left hand. A single old ring never gets duplicated into the right hand.
@@ -48,7 +48,7 @@ public class DualEquipmentV128Test {
   }
  }
  @Test public void everyWearableIdentityResolvesRealFramesAndRendersAnAuditContactSheet()throws Exception{
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);SourceItemIconRegistry icons=new SourceItemIconRegistry(c);EquipmentVisualRegistry wearables=new EquipmentVisualRegistry(c);CharacterRenderer renderer=new CharacterRenderer(c);
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);SourceItemIconRegistry icons=new SourceItemIconRegistry(c);EquipmentVisualRegistry wearables=new EquipmentVisualRegistry(c);CharacterRenderer renderer=new CharacterRenderer(c);
   List<RpgProgressionState.ItemDefinition> gear=new ArrayList<>();Set<String> appearance=new HashSet<>();for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.appearanceId!=null&&!d.appearanceId.equals("mw_chungryong")&&appearance.add(d.appearanceId))gear.add(d);
   Bitmap sheet=Bitmap.createBitmap(1000,((gear.size()+7)/8)*120,Bitmap.Config.ARGB_8888);Canvas cv=new Canvas(sheet);cv.drawColor(UiTheme.BG);int i=0;
   for(RpgProgressionState.ItemDefinition d:gear){

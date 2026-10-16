@@ -155,7 +155,7 @@ public final class F5mSaveStore {
         .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
         .putInt("training_token_qty",quantity(r)).putInt("normal_level",r.normalLevel()).putLong("normal_exp",r.normalExp()).putLong("gold",r.gold())
         .putInt("str",r.str()).putInt("int",r.intel()).putInt("wis",r.wis()).putInt("con",r.con()).putInt("dex",r.dex()).putInt("stat_points",r.statPoints())
-        .putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence())
+        .putLong("growth_random_state_v168",r.growthRandomState()).putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence())
         .putString("job_code_v4",r.currentJobCode()).putString("campaign_v1",r.campaign().snapshot().toString());
   }
   private void restoreRpg(RpgProgressionState r){
@@ -195,6 +195,7 @@ public final class F5mSaveStore {
       if(!staged.restoreJobCode(prefs.getString("job_code_v4","COMMONER")))throw new IllegalArgumentException("Invalid saved job");
       staged.restoreGold(prefs.getLong("gold",0L));
       staged.restoreStats(prefs.getInt("str",3),prefs.getInt("int",3),prefs.getInt("wis",3),prefs.getInt("con",3),prefs.getInt("dex",3),prefs.getInt("stat_points",0));
+      staged.restoreGrowthRandomState(prefs.getLong("growth_random_state_v168",staged.growthRandomState()));
       staged.restoreBaseResources(prefs.getInt("base_max_hp_v3",staged.baseMaxHp()),prefs.getInt("base_max_mp_v3",staged.baseMaxMp()));
       if(prefs.contains("campaign_v1")&&!staged.campaign().restore(new JSONObject(prefs.getString("campaign_v1",""))))throw new IllegalArgumentException("Invalid campaign");
       staged.restoreCombatSequence(prefs.getLong("reward_sequence",0));copyRpg(staged,r);
@@ -206,7 +207,7 @@ public final class F5mSaveStore {
     dest.restoreProgression(source.normalLevel(),source.normalExp());dest.restoreGold(source.gold());
     if(!dest.restoreJobCode(source.currentJobCode()))throw new IllegalArgumentException("Invalid job");
     dest.restoreStats(source.str(),source.intel(),source.wis(),source.con(),source.dex(),source.statPoints());
-    dest.restoreBaseResources(source.baseMaxHp(),source.baseMaxMp());
+    dest.restoreBaseResources(source.baseMaxHp(),source.baseMaxMp());dest.restoreGrowthRandomState(source.growthRandomState());
     if(!dest.restoreOwnedItems(source.inventory(),source.equipment()))throw new IllegalArgumentException("Invalid ownership");
     dest.restoreBank(source.bankGold(),source.bankInventory());
     dest.restoreCombatSequence(source.consumedCombatSequence());
@@ -250,3 +251,4 @@ public final class F5mSaveStore {
     copyRpg(staged,r);q.restore(GrowthQuest2.State.COMPLETED,q.currentCount());return true;
   }
 }
+

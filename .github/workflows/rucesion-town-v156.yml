@@ -1,15 +1,18 @@
-name: V156 Rucesion complete town services
+name: V178 all-variant equipment slot correction
 on:
   push:
-    branches: [codex/rucesion-coast-v155]
+    branches: [codex/rucesion-coast-v157]
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 jobs:
   town:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
+      GH_TOKEN: ${{ github.token }}
+      JAVA_TOOL_OPTIONS: '-Drobolectric.dependency.repo.url=https://repo.maven.apache.org/maven2'
       PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
       ANDROID_HOME: /usr/local/lib/android/sdk
       PROJECT_DARK_SIDE_BY_SIDE: '1'
@@ -79,27 +82,74 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
-      - name: Source contracts and native town service regressions
+      - name: Equipment source contracts and native input/stat regressions
         run: |
+          pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*RucesionTownV154Test' --tests '*RucesionServicesV156Test' --tests '*TownInteriorTest' --tests '*AbelTownV152Test' --tests '*NpcAppearanceTest' --tests '*RuntimeCheckpointTest' --tests '*CampaignNavigationTest' --tests '*ForestFloorCacheTest' --tests '*ForestTapProfileTest' --tests '*ContinuousMoveProfileTest' --tests '*GroundTapPathTest' --stacktrace
+          python3 tools/build_equipment_window_v176.py
+          git diff --exit-code -- app/src/main/assets/equipment-window-v176
+          gradle :app:testDebugUnitTest --tests '*EquipmentWindowV178Test' --tests '*EquipmentWindowV177Test' --tests '*EquipmentWindowV176Test' --tests '*EquipmentWindowV175Test' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*DualEquipmentV128Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*EquipmentPerformanceV130Test' --tests '*GrowthGripV168Test' --tests '*RuntimeCheckpointTest' --stacktrace
+      - name: Record focused JUnit evidence
+        if: always()
+        run: |
+          python3 - <<'PYTEST'
+          from pathlib import Path
+          import xml.etree.ElementTree as E
+          totals=dict(tests=0,failures=0,errors=0,skipped=0)
+          files=list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
+          for p in files:
+              root=E.parse(p).getroot()
+              for k in totals: totals[k]+=int(root.get(k,0))
+              for case in root.findall('testcase'):
+                  for tag in ('failure','error'):
+                      f=case.find(tag)
+                      if f is not None: print('FAILED',case.get('classname'),case.get('name'),f.get('message',''),(f.text or '')[:2500])
+          print('FOCUSED_JUNIT',totals,'SUITES',len(files))
+          PYTEST
       - name: Build and verify exact candidate APK
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v156_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v178_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rucesion-v156-native-${{ github.sha }}
+          name: equipment-window-v178-native-${{ github.sha }}
           path: |
+            app/build/reports/equipment-v178/
+            app/build/reports/equipment-v177/
+            app/build/reports/equipment-v176/
+            app/build/reports/equipment-v175/
+            app/build/reports/identity-v128/
+            app/build/reports/martial-v173/
+            app/build/reports/martial-cloth-v172/
+            app/build/reports/motion-hud-v169/
+            app/build/reports/linked-twohand-v170/
+            app/build/reports/forest-performance/
+            app/build/reports/growth-grip-v168/
+            app/build/reports/combat-town-v167/
+            app/build/reports/equipment-performance-v130/
+            app/build/reports/town-v166/
+            app/build/reports/town-v165/
+            app/build/reports/town-v164/
+            app/build/reports/abel-v152/
+            app/build/reports/town-v163/
+            app/build/reports/rucesion-v157/
+            app/build/reports/coast-v158/
+            app/build/reports/coast-v159/
+            app/build/reports/coast-v160/
+            app/build/reports/abel-v161/
+            app/build/reports/curse-v162/
+            app/build/reports/abel-v139/
             app/build/reports/town-v156/
             app/build/reports/town-v154/
             app/build/reports/device-review/
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: rucesion-v156-apk-${{ github.sha }}
+          name: equipment-window-v178-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
+
+

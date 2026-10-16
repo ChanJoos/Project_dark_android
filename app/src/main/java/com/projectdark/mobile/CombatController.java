@@ -15,7 +15,7 @@ public final class CombatController {
   }
   public float attackCooldown(){return attackCooldown;} public float castCooldown(){return castCooldown;} public float skillCooldown(){return skillCooldown;} public float kickCooldown(){return kickCooldown;}
   public boolean attackReady(){return attackCooldown<=0f;} public boolean castReady(){return castCooldown<=0f;} public boolean skillReady(){return skillCooldown<=0f;} public boolean kickReady(){return kickCooldown<=0f;}
-  public void commitAttack(){attackCooldown=attackDef().cooldown;} public void commitCast(){castCooldown=SkillDef.CAST_PROTO.cooldown;} public void commitSkill(){skillCooldown=SkillDef.SKILL_PROTO.cooldown;} public void commitKick(){kickCooldown=SkillDef.KICK_PROTO.cooldown;}
+  public void commitAttack(){attackCooldown=BasicAttackTiming.BASIC_CYCLE;} public void commitCast(){castCooldown=SkillDef.CAST_PROTO.cooldown;} public void commitSkill(){skillCooldown=SkillDef.SKILL_PROTO.cooldown;} public void commitKick(){kickCooldown=SkillDef.KICK_PROTO.cooldown;}
   public Intent intent(){return intent;} public RuntimeState.Monster approachTarget(){return approachTarget;} public boolean approaching(){return intent!=Intent.NONE&&approachTarget!=null;}
   /** [ADAPTED] Stores a deferred action until the player reaches the action spatial contract. */
   public boolean beginApproach(Intent next){if(next==null||next==Intent.NONE||target==null||!target.alive)return false;intent=next;approachTarget=target;return true;}

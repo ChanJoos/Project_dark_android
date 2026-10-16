@@ -1,0 +1,58 @@
+{
+  "sourceCommit": "c87e943275223b3c230c29fe037db2fce9924b15",
+  "branch": "codex/rucesion-coast-v157",
+  "pullRequest": 197,
+  "mainMerged": false,
+  "scope": "V168_GROWTH_GRIP_POTIONS",
+  "implementation": "IMPLEMENTED",
+  "build": "VERIFIED",
+  "hostAndroidNative": "VERIFIED_PREVIOUS_RUN_RETAINED",
+  "physicalPhone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "focused": {
+    "run": 38807446765,
+    "job": 116671847526,
+    "status": "SUCCESS",
+    "tests": 133,
+    "suites": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "common": [
+    {
+      "run": 38807446723,
+      "job": 116671846634,
+      "status": "SUCCESS"
+    },
+    {
+      "run": 38807460949,
+      "job": 116671895633,
+      "status": "SUCCESS"
+    }
+  ],
+  "apk": {
+    "artifact": 12007432309,
+    "run": 38807446765,
+    "bytes": 80441461,
+    "sha256": "e9500810b2bd3111a14097f3a189ae7c5933a0bb01050d4e40b2704cbfe19889",
+    "builtSeoul": "2026-10-16T06:15:42.730528+09:00",
+    "applicationId": "com.projectdark.mobile.v168test",
+    "versionCode": 168,
+    "archiveSha256": "bd0f9478318539554e34208dfa824cf138505817443dbc847b9794b32060cd48",
+    "verification": [
+      "ZIP CRC",
+      "APK bytes and SHA256",
+      "embedded exact source/run/version"
+    ],
+    "savedFile": "libfile_5851f0177470819188e5c44e6c04f997"
+  },
+  "limits": [
+    "Original growth formula UNKNOWN; user-calibrated adaptation",
+    "Ordinary Curum original color independently UNVERIFIED; user-confirmed orange adaptation",
+    "Separate test package and save",
+    "No physical phone or user visual acceptance",
+    "Main unmerged"
+  ],
+  "resume": "Metadata and delivery closure only; no rebuild or art regeneration."
+}
