@@ -31,5 +31,5 @@
     "visualAcceptance": "PENDING",
     "ci": "PENDING"
   },
-  "visualReviewCorrection": "738fa18 native review: ordinary mw016 c6 includes an attack trail, so never use c6/c8 as ready poses. Render actual source IDLE before phase .12 and from .68; use c0/1/2 and c4/5/7 only within strike. Added independent idle-pixel oracle for both bodies/all directions."
+  "visualReviewCorrection": "738fa18 native review: mw016 c6 has a strike trail. Use true source IDLE before phase .12 and from .68. Inside strike, retain all four consecutive BODY/blade c cells: back0/1/2/3, front4/5/6/7; place c6 trail at first contact, never preparation. Added independent idle-pixel oracle for both bodies/all directions."
 }
