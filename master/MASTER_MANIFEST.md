@@ -1,6 +1,6 @@
-## 2026-10-16 — V175 user screenshot equipment window
+## 2026-10-16 — V175 screenshot equipment window verified
 
-Single Director editor. Accepted task: extract supplied panel pixels and retain only15 requested functional cells, live actor/items and six FinalStats. Retain V174 gameplay. Added paired ornament support without inventing any production items. CI/native/APK/phone pending. Resume exact branch run, inspect native renders before delivering. Contract master/changes/V175_EQUIPMENT_WINDOW.json.
+IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED at eb8e28d2869d50e333e92aff12654ee34d644189, existing PR197/unmerged candidate. Supplied panel/header/rivets/slot bevels/stat labels extracted; only15 functional slots, live actor/items and six FinalStats. Paired ornament support uses central ownership/equip/stat/save rules; no invented production ornament items. Focused38914427926/job117018126464 SUCCESS:50tests/8suites,0failures/errors/skips; final actualGameView overview and live stat equip/unequip/restart frames reviewed. Saved V175 TEST APK, built2026-10-16 23:20:29 KST,80617040bytes,SHA25699938d23084f8055f14852b7b2f53e80db69f2e00a5d927cd43bcceedd05d7a8, artifact12052316602. Source/run/version/skin bytes/hash independently verified. Phone/user acceptance PENDING. Exact common CI result and saved-file identity: master/changes/V175_BUILD_RUNTIME_RECEIPT.json. Resume docs/EQUIPMENT_WINDOW_V175_CHECKPOINT.md; do not regenerate/rebuild/reupload verified delivery after interruption.
 
 ## V174 verified candidate; original cooldown gaps retained
 

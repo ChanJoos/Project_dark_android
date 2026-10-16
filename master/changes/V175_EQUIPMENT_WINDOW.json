@@ -10,5 +10,5 @@
     "no invented production ornament item/bonus",
     "inventory and twohand/shield rules retained"
   ],
-  "verification": "PENDING CI/native/render/APK; phone pending"
+  "verification": "Focused50tests/8suites PASS at eb8e28d, native overview and live footer equip/unequip/restart reviewed, exact APK verified/saved. Common UI modal/font/wide and item-window checks PASS. Full common38914428443 and38914437664 still running long shared-skill group; no full-common success claim. Phone pending."
 }
