@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
+      JAVA_TOOL_OPTIONS: '-Drobolectric.dependency.repo.url=https://repo.maven.apache.org/maven2'
       PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
       ANDROID_HOME: /usr/local/lib/android/sdk
       PROJECT_DARK_SIDE_BY_SIDE: '1'

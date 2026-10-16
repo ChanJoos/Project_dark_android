@@ -14,8 +14,8 @@ public class SkillTimingV174Test {
  }
  @Test public void realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes()throws Exception{
   for(boolean test:new boolean[]{false,true})for(String id:new String[]{"SK_전사_013","SK_전사_022","SK_도적_020","SK_도적_027","SK_무도가_021","SK_무도가_023"}){
-   SkillAbilityRuntimeTest fixtures=new SkillAbilityRuntimeTest();RuntimeState s=fixtures.state();RuntimeCombatSession c=fixtures.session(s);c.setSkillTestMode(test);SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);assertTrue(id,c.submitPlayer("m0",id).accepted());assertEquals(id,a.cooldown,c.cooldownRemaining("player",id),.0001);assertEquals(0,c.cooldownRemaining("player","SK_전사_001"),0);
-   c.tick(a.cooldown-.01f);assertEquals(id,.01f,c.cooldownRemaining("player",id),.001);s.player().hp=20000;assertEquals(id,CombatResolver.RejectReason.COOLDOWN,c.submitPlayer("m0",id).rejectReason);c.tick(.02f);assertEquals(id,0,c.cooldownRemaining("player",id),0);
+   SkillAbilityRuntimeTest fixtures=new SkillAbilityRuntimeTest();RuntimeState s=fixtures.state();RuntimeCombatSession c=fixtures.session(s);c.setSkillTestMode(test);SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);String target=SkillActionContract.get(id).selfAnchored()?"player":"m0";assertTrue(id,c.submitPlayer(target,id).accepted());assertEquals(id,a.cooldown,c.cooldownRemaining("player",id),.0001);assertEquals(0,c.cooldownRemaining("player","SK_전사_001"),0);
+   c.tick(a.cooldown-.01f);assertEquals(id,.01f,c.cooldownRemaining("player",id),.001);s.player().hp=20000;assertEquals(id,CombatResolver.RejectReason.COOLDOWN,c.submitPlayer(target,id).rejectReason);c.tick(.02f);assertEquals(id,0,c.cooldownRemaining("player",id),0);
   }
  }
  @Test public void actualLeapHasNoActionOrParticlesAndFacesCrossedNpcFromAllLandings()throws Exception{
