@@ -1,4 +1,4 @@
-# V173 all29 martial runtime audit
+# V173 all34 martial runtime audit
 
 Existing per-circle coefficients/durations remain ADAPTED unless user confirms. Latest user8s controls/full reflection override historical fan PDF10s/70%. Native normal/test-mode verification pending.
 
@@ -38,3 +38,5 @@ Existing per-circle coefficients/durations remain ADAPTED unless user confirms. 
 | SK_무도가_032 | 쿠로토 | HEAL / HEAL | 10 |
 | SK_무도가_033 | 경신공법 | STATUS / SPEED | 12 |
 | SK_무도가_034 | 아지토 | STATUS / TRAVEL | 14 |
+
+아지토: 국적 데이터가 없으므로 밀레스 여관 귀환을 명시적 ADAPTED 기본값으로 사용한다. 기존 단순 마을 좌표 덮어쓰기를 실제 실내 진입/퇴장·맵 전환 경로로 교체하여 실내/사냥맵에서 안전하게 사용한다. 국가별 원작 목적지 선택은 미구현이다.

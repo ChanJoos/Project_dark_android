@@ -32,5 +32,22 @@
     "Other existing coefficients/costs"
   ],
   "save": "REFLECT_TECH from SK_무도가_022 migrates to REFLECT_ALL; no permanent skill grant",
-  "validation": "PENDING_CI_NATIVE_PHONE"
+  "validation": "PENDING_CI_NATIVE_PHONE",
+  "additional_findings": [
+    "NPC visibility rejected actual quickslot leap; now valid only with NPC attack fail-closed",
+    "Actual catalog has34martial skills including030–034 auxiliaries; corrected initial29 count",
+    "Martial Agito uses explicit adapted Milles inn endpoint via real map transitions; citizenship-specific original destination remains unmodelled"
+  ],
+  "preliminary_validation": {
+    "source": "a736d5d263d238eb8adad9053abe90a25d5f4744",
+    "run": 38881880125,
+    "tests": 210,
+    "suites": 36,
+    "failures": 2,
+    "passed": 208,
+    "causes": [
+      "NPC visibility runtime rejection",
+      "Dispel audit incorrectly expected persistent effect"
+    ]
+  }
 }

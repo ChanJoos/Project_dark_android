@@ -84,7 +84,7 @@ final class SkillAbilityExecutor {
    case "FIND_TRAP":notice="주변 함정 "+traps.size()+"개";break;
    case "CLEAR_TRAP":traps.removeIf(t->SkillActionContract.distance(state.player().x,state.player().y,t.x,t.y)<=2);notice="주변 함정을 해체했습니다";break;
    case "CHANGE_ELEMENT":fx.put(target,id,"CHANGE_ELEMENT",1,duration);notice="대상 방어 속성: 화";break;
-   case "TRAVEL":notice="TRAVEL";break;
+   case "TRAVEL":notice=a.id.equals("SK_무도가_034")?"TRAVEL_MARTIAL":"TRAVEL";break;
    case "STAFF":notice="스태프 사용 허용";break;
    case "TECH_MAGIC_GUARD":case "PHYSICAL_GUARD":
     if(fx.has(target,kind))fx.remove(target,kind);else fx.put(target,id,kind,1,duration);break;

@@ -66,7 +66,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   public int hitCount(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(5,basicHits.getAsInt())):1;}
   public float hitSpacing(String actor,String action){return BasicAttackTiming.HIT_SPACING;}
   public void setVisible(java.util.function.Predicate<String> visible){this.visible=visible;}
-  public boolean visible(String id){return visible.test(id);}
+  public boolean visible(String id){return isNpc(id)||visible.test(id);}
   public java.util.List<String> recipients(String actor,String target,String action){
     SkillActionContract.Rule r=SkillActionContract.get(action);
     if(r==null||!"player".equals(actor))return java.util.Collections.singletonList(target);

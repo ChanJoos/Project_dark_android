@@ -22,10 +22,12 @@ public class MartialMechanicsV173Test {
  RuntimeState.Monster add(RuntimeState s,String id,float x,float y)throws Exception{RuntimeState.Monster m=new RuntimeState.Monster(id,"V173 fixture",x,y,100000,"ADAPTED_TEST");monsters(s).add(m);return m;}
  void movement(RuntimeCombatSession c,RuntimeState s){c.setSkillMovement(new SkillAbilityExecutor.Movement(){public boolean movePlayer(float x,float y){s.player().x=x;s.player().y=y;return true;}public boolean moveMonster(RuntimeState.Monster m,float x,float y){return false;}public boolean canLeapPlayer(float x,float y){return s.canPlayerOccupyActors(x,y);}public boolean leapPlayer(float x,float y){return canLeapPlayer(x,y)&&movePlayer(x,y);}});}
  RuntimeCombatSession session(RuntimeState s){RuntimeCombatSession c=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);movement(c,s);return c;}
- @Test public void all29MartialSkillsHaveLiveEffectsInNormalAndTestModes()throws Exception{
+ @Test public void all34MartialSkillsHaveLiveEffectsInNormalAndTestModes()throws Exception{
   List<String> audit=new ArrayList<>();for(boolean test:new boolean[]{false,true})for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.job.equals("무도가")){
    RuntimeState s=state();RuntimeCombatSession c=session(s);c.setSkillTestMode(test);SkillActionContract.Rule r=SkillActionContract.get(a.id);assertTrue(a.id,a.supported());
    if(a.kind.equals("PASSIVE")){SkillBook b=SkillBook.load(context);b.bindJob(()->"MARTIAL_ARTIST");b.setTestAccess(test);b.learn(a.id,0);assertTrue(a.id,b.basicHits()>=r.hits);c.setBasicHits(b::basicHits);assertTrue(c.submitPlayerBasicAttack("m0").combat.accepted());assertEquals(b.basicHits(),c.tick(.7f).events.stream().filter(e->e.type==CombatResolver.EventType.EFFECT_APPLIED).count());audit.add(a.id+" linked "+r.hits);continue;}
+   if(a.status.startsWith("CLEAR_"))s.skillEffects().put("player","SK_마법사_025",a.status.substring(6),10,8);
+   if(a.status.equals("TRAVEL")){assertTrue(c.useUtility(a.id));assertEquals("TRAVEL_MARTIAL",c.takeSkillNotice());audit.add(a.id+" return-service test="+test);continue;}
    if(a.status.equals("DRAIN")){s.monsters().get(0).hp=10;s.player().hp=1000;}
    if(a.heal())s.player().hp=1000;
    int hp=s.player().hp,mp=s.player().mp,mhp=s.monsters().get(0).hp;
@@ -36,13 +38,15 @@ public class MartialMechanicsV173Test {
    if(a.heal()){assertTrue(s.player().hp>hp);assertTrue(a.id+" heals",events.stream().anyMatch(e->e.hitSemantic==CombatResolver.HitSemantic.HEAL));}
    if(a.kind.equals("STATUS"))switch(a.status){
     case "LEAP":assertEquals(64,s.player().x,0);assertEquals(32,s.player().y,0);break;
+    case "CLEAR_BLIND":assertFalse(s.skillEffects().has("player","BLIND"));break;
+    case "CLEAR_POISON":assertFalse(s.skillEffects().has("player","POISON"));break;
     case "ROOT":assertTrue(s.skillEffects().rooted("m0"));assertFalse(s.skillEffects().disabled("m0"));break;
     default:String kind=a.status.startsWith("ARMOR")?"ARMOR":a.status;assertTrue(a.id,s.skillEffects().has("player",kind));
    }
    if(a.formula.equals("DARA")&&!test){assertEquals(1,s.player().hp);assertEquals(1,s.player().mp);}
    if(test&&!a.formula.equals("DARA")){if(!a.heal()&&!a.status.equals("DRAIN"))assertEquals(a.id+" preview HP",hp,s.player().hp);assertEquals(a.id+" preview MP",mp,s.player().mp);}
    audit.add(a.id+" "+a.name+" "+a.kind+" "+a.status+" test="+test);
-  }assertEquals(58,audit.size());File file=new File("build/reports/martial-v173/all-29-effects.txt");file.getParentFile().mkdirs();try(java.io.PrintWriter out=new java.io.PrintWriter(file)){audit.forEach(out::println);}
+  }assertEquals(68,audit.size());File file=new File("build/reports/martial-v173/all-34-effects.txt");file.getParentFile().mkdirs();try(java.io.PrintWriter out=new java.io.PrintWriter(file)){audit.forEach(out::println);}
  }
  @Test public void facingLeapCrossesMonsterOrNpcAndRejectsAbsentWrongSideAndBlockedLandings()throws Exception{
   for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(boolean npc:new boolean[]{false,true}){
@@ -85,7 +89,7 @@ public class MartialMechanicsV173Test {
   }
  }
  @Test public void martialBuffsChangeDefenseEvasionBasicDamageRegenerationAndSpeed()throws Exception{
-  for(String id:new String[]{"SK_무도가_004","SK_무도가_008","SK_무도가_012","SK_무도가_013","SK_무도가_019","SK_무도가_029"}){
+  for(String id:new String[]{"SK_무도가_004","SK_무도가_008","SK_무도가_012","SK_무도가_013","SK_무도가_019","SK_무도가_029","SK_무도가_033"}){
    RuntimeState s=state();RuntimeCombatSession c=session(s);RuntimeCombatPortAdapter p=field(c,"port");p.abilities.random=()->0;
    int hp=s.player().hp,ac=s.rpg().finalStats().withEffects(s.skillEffects(),"player").ac;
    int baseline=p.applyDamage("m0","player",RuntimeCombatSession.MONSTER_BASIC_ACTION_ID,1000).appliedAmount;s.player().hp=hp;
@@ -96,7 +100,7 @@ public class MartialMechanicsV173Test {
    if(id.endsWith("029"))assertTrue(p.applyDamage("m0","player",RuntimeCombatSession.MONSTER_BASIC_ACTION_ID,1000).appliedAmount<baseline);
    if(id.endsWith("019")){monsterHp=s.monsters().get(0).hp;p.applyDamage("player","m0",RuntimeCombatSession.playerAttackActionId(0),100);assertEquals(baseHit*2,monsterHp-s.monsters().get(0).hp);}
    if(id.endsWith("012")){s.player().hp=1000;s.tick(1);assertTrue(s.player().hp>1000);}
-   if(id.endsWith("008"))assertEquals(1.2f,s.skillEffects().speed(),0);
+   if(id.endsWith("008")||id.endsWith("033"))assertEquals(1.2f,s.skillEffects().speed(),0);
   }
  }
  @Test public void leapValidatesActorLandingsEvenInActorOverlapRoomsAndNeverCrossesTerrain()throws Exception{
@@ -113,6 +117,7 @@ public class MartialMechanicsV173Test {
   for(com.projectdark.mobile.world.WorldMoveTargetController.TileCenter tile:world.navigationTiles()){s.player().x=tile.x;s.player().y=tile.y;if(world.canPlayerLeapTo(tile.x+64,tile.y+32)&&world.canPlayerOccupy(tile.x+32,tile.y+16)){found=true;break;}}assertTrue("actual legal Milles leap",found);
   float x=s.player().x,y=s.player().y;npcs.add(new RuntimeState.Npc("npc_jump","NPC",x+32,y+16,"","B"));((CanonicalActorFacing)field(v,"playerFacing")).setLocomotion(CharacterRenderer.Direction.SE);SkillBook book=field(v,"skillBook");book.assign(0,MartialSkillPolicy.LEAP);slot(v);call(v,"tickSkillCombat",new Class<?>[]{float.class},.15f);assertEquals(x+64,s.player().x,0);assertEquals(y+32,s.player().y,0);assertNull(((SkillApproachController)field(v,"skillApproach")).skillId);
   call(v,"update",new Class<?>[]{float.class},.6f);book.assign(0,"SK_무도가_016");slot(v);call(v,"tickSkillCombat",new Class<?>[]{float.class},.01f);assertTrue(s.skillEffects().has("player","INVINCIBLE"));int hp=s.player().hp;s.damagePlayer(500);assertEquals(hp,s.player().hp);Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));save(b,"actual-milles-quickslot-gold");b.recycle();
+  call(v,"update",new Class<?>[]{float.class},.7f);book.assign(0,"SK_무도가_034");slot(v);assertTrue((Boolean)field(v,"inReagentShop"));assertEquals(com.projectdark.mobile.world.TownInteriorDef.Kind.INN,((com.projectdark.mobile.world.TownInteriorDef)field(v,"townInterior")).kind);call(v,"leaveReagentShop",new Class<?>[]{});assertEquals(com.projectdark.mobile.world.WorldDef.ID,s.currentMapId());
  }
  void slot(GameView v)throws Exception{RectF rect=(RectF)call(v,"slotRect",new Class<?>[]{int.class},0);TownInteriorTest.tap(v,rect.centerX(),rect.centerY());}
  void save(Bitmap b,String name)throws Exception{File f=new File("build/reports/martial-v173/"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}}

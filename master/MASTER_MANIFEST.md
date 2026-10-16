@@ -1,6 +1,6 @@
 ## V173 user-confirmed martial repair
 
-Accepted changes/V173_MARTIAL_EFFECTS.json; all29 audit docs/MARTIAL_EFFECTS_V173_AUDIT.md. User8s controls and complete reflection override historical fan values. Build/native/phone pending.
+Accepted changes/V173_MARTIAL_EFFECTS.json; all34 audit docs/MARTIAL_EFFECTS_V173_AUDIT.md. User8s controls and complete reflection override historical fan values. Build/native/phone pending.
 
 ## V172 verification closure
 

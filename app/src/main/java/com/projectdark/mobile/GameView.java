@@ -268,7 +268,13 @@ public final class GameView extends View {
     }
   }
   private void consumeSkillNotice(){String notice=combatSession.takeSkillNotice();if(notice.isEmpty())return;
-    if(notice.equals("TRAVEL")){if(inPoteField){leavePoteField();}state.player().x=WorldDef.PLAYER_SPAWN_X;state.player().y=WorldDef.PLAYER_SPAWN_Y;activeWorld().snapCameraToPlayer();checkpoint();showFeedback("밀레스 귀환",FeedbackTone.INFO);}
+    if(notice.equals("TRAVEL_MARTIAL")){
+      // Citizenship is not modelled: retain the explicit Milles adaptation, with a real safe inn endpoint.
+      if(inReagentShop)leaveReagentShop();if(inPoteField)leavePoteField();
+      state.player().x=WorldDef.PLAYER_SPAWN_X;state.player().y=WorldDef.PLAYER_SPAWN_Y;
+      for(TownInteriorDef room:TownInteriorDef.ALL)if(room.kind==TownInteriorDef.Kind.INN){enterTownInterior(room);showFeedback("아지토 · 밀레스 여관 귀환",FeedbackTone.INFO);break;}
+    }
+    else if(notice.equals("TRAVEL")){if(inPoteField){leavePoteField();}state.player().x=WorldDef.PLAYER_SPAWN_X;state.player().y=WorldDef.PLAYER_SPAWN_Y;activeWorld().snapCameraToPlayer();checkpoint();showFeedback("밀레스 귀환",FeedbackTone.INFO);}
     else if(notice.equals("DOOR")){RuntimeState.Npc closest=null;for(RuntimeState.Npc n:state.npcs())if(closest==null||state.distanceTo(n)<state.distanceTo(closest))closest=n;if(closest!=null&&state.distanceTo(closest)<80){interaction.request(state,closest);showFeedback("출입 대상 선택",FeedbackTone.INFO);}else showFeedback("열 수 있는 문이 가까이 없습니다",FeedbackTone.WARN);}
     else showFeedback(notice,FeedbackTone.INFO);
   }
