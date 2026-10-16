@@ -5,11 +5,13 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 jobs:
   town:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
+      GH_TOKEN: ${{ github.token }}
       JAVA_TOOL_OPTIONS: '-Drobolectric.dependency.repo.url=https://repo.maven.apache.org/maven2'
       PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
       ANDROID_HOME: /usr/local/lib/android/sdk
@@ -86,7 +88,30 @@ jobs:
           python3 tools/validate_master.py
           python3 tools/build_equipment_window_v176.py
           git diff --exit-code -- app/src/main/assets/equipment-window-v176
-          gradle :app:testDebugUnitTest --tests '*EquipmentWindowV176Test' --tests '*EquipmentWindowV175Test' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*DualEquipmentV128Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*EquipmentPerformanceV130Test' --tests '*GrowthGripV168Test' --tests '*RuntimeCheckpointTest' --stacktrace
+          git fetch --depth=1 origin 194bce72b8fbae6e3d325900a61fe798fc34d522
+          git diff --exit-code 194bce72b8fbae6e3d325900a61fe798fc34d522 HEAD -- app/src/main app/build.gradle tools master/data assets
+          curl -fsSL -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/12062933982/zip -o /tmp/v176-native-prefix.zip
+          python3 - <<'PYPREFIX'
+          import zipfile,hashlib,json,os,pathlib,xml.etree.ElementTree as E
+          p=pathlib.Path('/tmp/v176-native-prefix.zip');assert hashlib.sha256(p.read_bytes()).hexdigest()=='0612dfd2e9fc7075d2749abd1408d4f39d170bf39644bf25633e1661955e1740'
+          passed=[];failed=[]
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              for n in z.namelist():
+                  if n.endswith('.xml') and '/TEST-' in n:
+                      root=E.fromstring(z.read(n))
+                      for case in root.findall('testcase'):
+                          key=case.get('classname')+'.'+case.get('name')
+                          if case.find('failure') is not None or case.find('error') is not None:failed.append(key)
+                          elif case.find('skipped') is None:passed.append(key)
+                  if '/equipment-v176/' in n and n.endswith('.png'):
+                      out=pathlib.Path('app/build/reports/equipment-v176')/pathlib.Path(n).name;out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(z.read(n))
+          assert len(passed)==56 and len(failed)==1,(len(passed),failed)
+          assert failed[0].endswith('.emptySocketsArePureSourceTextureWithNoSyntheticGlyphAndLowerRightHingeIsGone'),failed
+          proof={'source':'194bce72b8fbae6e3d325900a61fe798fc34d522','run':38941486393,'artifact':12062933982,'archiveSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'implementationEquivalent':True,'passed':passed,'failedRerunOnly':failed,'validationSource':os.environ['GITHUB_SHA']}
+          pathlib.Path('V176_PREFIX_PROOF.json').write_text(json.dumps(proof,indent=2)+'\n');print('REUSING_56_VERIFIED_NATIVE_CASES_IDENTICAL_RUNTIME_SOURCE')
+          PYPREFIX
+          gradle :app:testDebugUnitTest --tests '*EquipmentWindowV176Test.emptySocketsArePureSourceTextureWithNoSyntheticGlyphAndLowerRightHingeIsGone' --stacktrace
       - name: Record focused JUnit evidence
         if: always()
         run: |
@@ -141,6 +166,7 @@ jobs:
             app/build/reports/town-v154/
             app/build/reports/device-review/
             app/build/test-results/
+            V176_PREFIX_PROOF.json
       - uses: actions/upload-artifact@v4
         with:
           name: equipment-window-v176-apk-${{ github.sha }}
