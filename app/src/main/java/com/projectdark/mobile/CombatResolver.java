@@ -90,6 +90,7 @@ public final class CombatResolver {
       emit(EventType.EFFECT_APPLIED,p.seq,p.a,target,p.d,p.m,null,x.hitSemantic,x.appliedAmount);
       emit(EventType.HIT_FEEDBACK,p.seq,p.a,target,p.d,p.m,null,x.hitSemantic,x.appliedAmount);
       if(x.defeatedNow){
+        if(target.equals(p.t))p.applied=p.hits-1; // End the combo without cancelling its visual recovery.
         interruptDeath(target,p.a);
         if(x.defeatedTargetKind==DefeatedTargetKind.MONSTER&&x.defeatPublication==DefeatPublication.RESOLVER_OWNS&&defeated.add(target))
           emit(EventType.MONSTER_DEFEATED,p.seq,p.a,target,p.d,p.m,null,x.hitSemantic,0);

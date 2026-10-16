@@ -19,7 +19,7 @@ public class LinkedTwoHandV170Test {
  }
  @Test public void coarseTickStillResolvesEachHitAndLethalFirstHitStopsTheRest(){
   SkillBook b=book();b.learn("SK_전사_005",0);RuntimeState s=state();RuntimeCombatSession x=session(s,b);RuntimeState.Monster m=s.monsters().get(0);assertTrue(x.submitPlayerBasicAttack(m.id).combat.accepted());assertEquals(3,damage(x.tick(.6f)).size());
-  s=state();x=session(s,b);m=s.monsters().get(0);m.hp=1;assertTrue(x.submitPlayerBasicAttack(m.id).combat.accepted());assertEquals(1,damage(x.tick(.6f)).size());assertFalse(m.alive);assertEquals(0,damage(x.tick(.6f)).size());assertFalse(x.playerActionActive());
+  s=state();x=session(s,b);m=s.monsters().get(0);m.hp=1;assertTrue(x.submitPlayerBasicAttack(m.id).combat.accepted());assertEquals(1,damage(x.tick(.6f)).size());assertFalse(m.alive);for(CombatResolver.Event e:x.tick(.01f).events)assertNotEquals(CombatResolver.EventType.ACTION_CANCELLED,e.type);assertEquals(0,damage(x.tick(.6f)).size());assertFalse(x.playerActionActive());
  }
  @Test public void losingRangeBetweenHitsCancelsRemainingDamage(){SkillBook b=book();b.learn("SK_전사_005",0);RuntimeState s=state();RuntimeCombatSession x=session(s,b);RuntimeState.Monster m=s.monsters().get(0);x.submitPlayerBasicAttack(m.id);assertEquals(1,damage(x.tick(.15f)).size());int hp=m.hp;m.x+=1000;assertEquals(0,damage(x.tick(.3f)).size());assertEquals(hp,m.hp);assertFalse(x.playerActionActive());}
  @Test public void twoHandSkillIsRequiredEvenInEquipmentProfileAndFailedEquipPreservesShield(){
