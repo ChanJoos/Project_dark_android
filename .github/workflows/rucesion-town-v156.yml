@@ -1,4 +1,4 @@
-name: V170 Linked basic hits and twohand reference
+name: V171 Test-mode twohand equip hotfix
 on:
   push:
     branches: [codex/rucesion-coast-v157]
@@ -83,7 +83,7 @@ jobs:
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           python3 tools/validate_master.py
-          gradle :app:testDebugUnitTest --tests '*LinkedTwoHandV170Test' --tests '*MotionHudFrameV169Test' --tests '*GrowthGripV168Test' --tests '*ChungryongWeaponTest' --tests '*HudTouchAcceptanceTest' --tests '*MonsterChasePerformanceTest' --tests '*ContinuousMoveProfileTest' --tests '*ForestFloorCacheTest' --tests '*ForestPixelCacheTest' --tests '*MonsterQualityV118Test' --tests '*EquipmentFoundationV124Test' --tests '*CombatTownV167Test' --tests '*CapturedSkillFxTest' --tests '*EquipmentPerformanceV130Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*SkillAbilityRuntimeTest' --tests '*TownPropsV166Test' --tests '*TownPolishV165Test' --tests '*TownQualityV164Test' --tests '*AbelTownV152Test' --tests '*RucesionTownV154Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*TownCampaignV163Test' --tests '*NpcAppearanceTest' --tests '*QuestJournalTest' --tests '*CampaignNavigationTest' --tests '*RuntimeCheckpointTest' --tests '*RucesionServicesV156Test' --tests '*MonsterCurseV162Test' --tests '*CampaignProgressTest.definitionsKeepOriginalCurveAndAddMapLocalForestRoute' --tests '*CampaignProgressTest.newForestRouteHasOrderedAtoDObjectivesAndSafeV3Migration' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*TestModeTwoHandV171Test' --tests '*SkillTestModeTest' --tests '*LinkedTwoHandV170Test' --tests '*MotionHudFrameV169Test' --tests '*GrowthGripV168Test' --tests '*ChungryongWeaponTest' --tests '*HudTouchAcceptanceTest' --tests '*MonsterChasePerformanceTest' --tests '*ContinuousMoveProfileTest' --tests '*ForestFloorCacheTest' --tests '*ForestPixelCacheTest' --tests '*MonsterQualityV118Test' --tests '*EquipmentFoundationV124Test' --tests '*CombatTownV167Test' --tests '*CapturedSkillFxTest' --tests '*EquipmentPerformanceV130Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*SkillAbilityRuntimeTest' --tests '*TownPropsV166Test' --tests '*TownPolishV165Test' --tests '*TownQualityV164Test' --tests '*AbelTownV152Test' --tests '*RucesionTownV154Test' --tests '*AbelIdentityPunchTravelV143Test' --tests '*TownCampaignV163Test' --tests '*NpcAppearanceTest' --tests '*QuestJournalTest' --tests '*CampaignNavigationTest' --tests '*RuntimeCheckpointTest' --tests '*RucesionServicesV156Test' --tests '*MonsterCurseV162Test' --tests '*CampaignProgressTest.definitionsKeepOriginalCurveAndAddMapLocalForestRoute' --tests '*CampaignProgressTest.newForestRouteHasOrderedAtoDObjectivesAndSafeV3Migration' --stacktrace
       - name: Record focused JUnit evidence
         if: always()
         run: |
@@ -105,11 +105,11 @@ jobs:
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v170_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v171_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: linked-twohand-v170-native-${{ github.sha }}
+          name: test-twohand-v171-native-${{ github.sha }}
           path: |
             app/build/reports/motion-hud-v169/
             app/build/reports/linked-twohand-v170/
@@ -135,7 +135,7 @@ jobs:
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: linked-twohand-v170-apk-${{ github.sha }}
+          name: test-twohand-v171-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json

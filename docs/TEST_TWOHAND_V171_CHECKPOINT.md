@@ -1,0 +1,6 @@
+## 2026-10-16 — V171 test-mode twohand hotfix in progress
+
+V170 DEVICE_FAILED_USER_REPORTED: fresh activity advertises all skills learned for testing, but twohand equip refused. Root cause confirmed in source: SkillBook.learned recognizes testAccess while equip binding used owned; MainActivity also set test mode only after GameView restored/normalized equipped items. User confirms all-learned test mode must permit twohand equip. Replace binding with learned; pass initial saved/default mode into GameView before equipment normalization; enforce real-learning requirement when leaving test mode. No permanent skill grants or inventory loss. Normal mode still requires actual learning. Root single editor continues PR197 from6f0a8fb, main41fe6def unchanged.
+
+Added actual MainActivity fresh-default inventory-touch equip, shield refusal, test-mode restart retention, mode-off ownership preservation and normal learned-save/restart regressions. Existing all-skills test-mode contract included in focused CI. Implementation prepared; BUILD/HOST/PHONE verification PENDING. V170 final174/native/source receipts retained; do not regenerate source assets or redo motion/timing work. Contract master/changes/V171_TEST_TWOHAND.json.
+
