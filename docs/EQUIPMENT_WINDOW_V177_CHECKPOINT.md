@@ -1,0 +1,5 @@
+## 2026-10-17 — V177 equipment direction, size and optical alignment
+
+V176 DEVICE_FAILED_USER_REPORTED_VISUAL: user reports reversed hat/both gloves/armor/shoes, oversized hat/earring/shirt and off-center necklace/armor. V177 flips precisely those slots relative to V176 (left glove now mirrored; right glove returns to native), shrinks hat/earring/starter shirt by15%, and centers necklace/armor by alpha-weighted visible centroid with full-source fit. Weapon direction retained per user. Source artwork bytes preserved. Focused native tests, screenshot review, exact APK and phone/user acceptance PENDING. Existing PR197/main41fe6def remains unmerged candidate. Resume docs/EQUIPMENT_WINDOW_V177_CHECKPOINT.md.
+
+Changes are confined to equipment-window icon projection and version177. FinalStats/equip/ownership/save and inventory native-size drawing retained. No duplicate source skin. V176 skin remains retained. Tests cover all15 slot directions relative to V176, real icon size and optical center, actual GameView starter/filled/armor and retained equipment/stat/save/input regressions. Runtime, exact APK, phone and user acceptance PENDING.

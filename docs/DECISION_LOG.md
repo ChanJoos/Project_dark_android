@@ -1,3 +1,7 @@
+## 2026-10-17 — V177 equipment direction, size and optical alignment
+
+V176 DEVICE_FAILED_USER_REPORTED_VISUAL: user reports reversed hat/both gloves/armor/shoes, oversized hat/earring/shirt and off-center necklace/armor. V177 flips precisely those slots relative to V176 (left glove now mirrored; right glove returns to native), shrinks hat/earring/starter shirt by15%, and centers necklace/armor by alpha-weighted visible centroid with full-source fit. Weapon direction retained per user. Source artwork bytes preserved. Focused native tests, screenshot review, exact APK and phone/user acceptance PENDING. Existing PR197/main41fe6def remains unmerged candidate. Resume docs/EQUIPMENT_WINDOW_V177_CHECKPOINT.md.
+
 ## 2026-10-16 — V174 leap presentation/facing and confirmed timing corrections verified
 
 IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED. APK source `bde8fe3434d36c93e6ed40c63504cee709aee3ac`; unchanged game implementation frome06af00e after test/CI-only fixes. PR197/main41fe6def remains unmerged candidate. User accepted V173 other behavior but rejected leap jump/FX and requested facing toward the crossed actor plus original-cooldown audit. LEAP now stays in IDLE with no independent particles and faces the crossed monster/NPC after landing. Original landing/terrain rules and user8s control/full reflection/basic1s retained.

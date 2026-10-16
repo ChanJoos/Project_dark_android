@@ -55,7 +55,7 @@ final class SourceItemIconRegistry {
   paint.setFilterBitmap(false);paint.setAntiAlias(false);
   canvas.drawBitmap(bitmap,null,new RectF(Math.round(target.centerX()-w/2),Math.round(target.centerY()-h/2),Math.round(target.centerX()-w/2)+w,Math.round(target.centerY()-h/2)+h),paint);
  }
- // Equipment-only: fit visible alpha bounds. Native orientation, except paired right glove.
+ // Equipment-only projection; retained source bytes and inventory rendering stay unchanged.
  private static final Map<Bitmap,android.graphics.Rect> equipmentBounds=Collections.synchronizedMap(new WeakHashMap<>());
  static android.graphics.Rect visibleEquipmentBounds(Bitmap bitmap){
   android.graphics.Rect cached=equipmentBounds.get(bitmap);if(cached!=null)return cached;
@@ -63,12 +63,39 @@ final class SourceItemIconRegistry {
   for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(android.graphics.Color.alpha(pixels[y*w+x])>=16){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
   android.graphics.Rect b=right<left?new android.graphics.Rect():new android.graphics.Rect(left,top,right+1,bottom+1);equipmentBounds.put(bitmap,b);return b;
  }
- static void drawEquipment(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,boolean mirrorHand){
+ // V177 direction is relative to V176: its right glove was already mirrored.
+ static boolean equipmentMirrored(String slot){
+  return "모자".equals(slot)||"장갑".equals(slot)||"갑옷".equals(slot)||"신발".equals(slot);
+ }
+ static float equipmentSize(String slot,String itemId){
+  return "모자".equals(slot)||"귀걸이".equals(slot)||RpgProgressionState.STARTER_SHIRT_ITEM_ID.equals(itemId)?.85f:1f;
+ }
+ private static final Map<Bitmap,android.graphics.PointF> equipmentCenters=Collections.synchronizedMap(new WeakHashMap<>());
+ static android.graphics.PointF equipmentOpticalCenter(Bitmap bitmap){
+  android.graphics.PointF cached=equipmentCenters.get(bitmap);if(cached!=null)return cached;
+  android.graphics.Rect src=visibleEquipmentBounds(bitmap);double mass=0,sx=0,sy=0;
+  for(int y=src.top;y<src.bottom;y++)for(int x=src.left;x<src.right;x++){
+   int alpha=android.graphics.Color.alpha(bitmap.getPixel(x,y));if(alpha<16)continue;
+   mass+=alpha;sx+=(x+.5)*alpha;sy+=(y+.5)*alpha;
+  }
+  android.graphics.PointF center=mass==0?new android.graphics.PointF(src.exactCenterX(),src.exactCenterY()):new android.graphics.PointF((float)(sx/mass),(float)(sy/mass));
+  equipmentCenters.put(bitmap,center);return center;
+ }
+ static void drawEquipmentForSlot(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,String slot,String itemId){
+  RectF fitted=new RectF(target);float size=equipmentSize(slot,itemId);fitted.inset(target.width()*(1-size)/2,target.height()*(1-size)/2);
+  drawEquipment(canvas,bitmap,fitted,paint,equipmentMirrored(slot),"목걸이".equals(slot)||"갑옷".equals(slot));
+ }
+ static void drawEquipment(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,boolean mirror){drawEquipment(canvas,bitmap,target,paint,mirror,false);}
+ private static void drawEquipment(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,boolean mirror,boolean optical){
   if(bitmap==null)return;android.graphics.Rect src=visibleEquipmentBounds(bitmap);if(src.isEmpty())return;
-  float scale=Math.min(target.width()/src.width(),target.height()/src.height()),w=src.width()*scale,h=src.height()*scale;
-  RectF dst=new RectF(target.centerX()-w/2,target.centerY()-h/2,target.centerX()+w/2,target.centerY()+h/2);
+  android.graphics.PointF center=optical?equipmentOpticalCenter(bitmap):new android.graphics.PointF(src.exactCenterX(),src.exactCenterY());
+  // Fit both extents about the visible centroid, so optical alignment never clips the source.
+  float halfW=Math.max(center.x-src.left,src.right-center.x),halfH=Math.max(center.y-src.top,src.bottom-center.y);
+  float scale=Math.min(target.width()/(2*halfW),target.height()/(2*halfH));
+  float left=target.centerX()-(center.x-src.left)*scale,top=target.centerY()-(center.y-src.top)*scale;
+  RectF dst=new RectF(left,top,left+src.width()*scale,top+src.height()*scale);
   paint.setFilterBitmap(false);paint.setAntiAlias(false);int save=canvas.save();canvas.clipRect(target);
-  if(mirrorHand)canvas.scale(-1,1,target.centerX(),target.centerY());canvas.drawBitmap(bitmap,src,dst,paint);canvas.restoreToCount(save);
+  if(mirror)canvas.scale(-1,1,target.centerX(),target.centerY());canvas.drawBitmap(bitmap,src,dst,paint);canvas.restoreToCount(save);
  }
  Bitmap get(RpgProgressionState.ItemDefinition d){return d==null?null:get(d.itemId);}
 }
