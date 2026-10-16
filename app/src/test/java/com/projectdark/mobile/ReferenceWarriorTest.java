@@ -19,7 +19,7 @@ public class ReferenceWarriorTest {
   assertEquals(Integer.valueOf(1),s.rpg().inventory().get(RpgProgressionState.REFERENCE_HELM_ITEM_ID));
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,s.rpg().equip(RpgProgressionState.REFERENCE_LEOPARD_ITEM_ID));
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,s.rpg().equip(RpgProgressionState.REFERENCE_HELM_ITEM_ID));
-  s.rpg().equip(ChungryongWeaponRenderer.ITEM);
+  s.rpg().bindTwoHandLearning(()->true);s.rpg().equip(ChungryongWeaponRenderer.ITEM);
   EquipmentVisualRegistry gear=new EquipmentVisualRegistry(c);
   assertNotNull(gear.get("mu0000180").registration.idle(CharacterRenderer.Direction.SW,0));
   assertNotNull(gear.get("mh168").registration.idle(CharacterRenderer.Direction.SW,0));
