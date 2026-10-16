@@ -1,0 +1,5 @@
+# V176 equipment visual correction
+
+V175 DEVICE_FAILED_USER_REPORTED_VISUAL:wrong shield rail,tiny icons,direction concern,empty glyphs,uneven gaps,gold lower-right hinge,crude close. V176 restores the previously interrupted implementation from conversation after scratch pruning; no original reference re-creation.15slots,80px rail pitch,centered hat,earring/ornaments/shield right vertical stack;equipment-only visible-alpha fit;native source orientation/paired right glove mirror;blank empty sockets;source background instead of lower-right hinge;bronze/wood close cross. Inventory source-size renderer and gameplay stats/save remain unchanged.
+
+Existing PR197/main41fe6def. Contract master/changes/V176_EQUIPMENT_POLISH.json. Native tests cover geometry,asymmetric orientation/fit,pure empty socket pixels,hinge removal,actual starter/filled/empty/wide GameView and close,plus retained stats/gear/save regressions. Source/build/native/phone PENDING. V175 full sourceeb8 common38914428443 and38914437664 finished SUCCESS;do not re-audit/rebuild that rejected visual version.

@@ -55,6 +55,21 @@ final class SourceItemIconRegistry {
   paint.setFilterBitmap(false);paint.setAntiAlias(false);
   canvas.drawBitmap(bitmap,null,new RectF(Math.round(target.centerX()-w/2),Math.round(target.centerY()-h/2),Math.round(target.centerX()-w/2)+w,Math.round(target.centerY()-h/2)+h),paint);
  }
+ // Equipment-only: fit visible alpha bounds. Native orientation, except paired right glove.
+ private static final Map<Bitmap,android.graphics.Rect> equipmentBounds=Collections.synchronizedMap(new WeakHashMap<>());
+ static android.graphics.Rect visibleEquipmentBounds(Bitmap bitmap){
+  android.graphics.Rect cached=equipmentBounds.get(bitmap);if(cached!=null)return cached;
+  int w=bitmap.getWidth(),h=bitmap.getHeight(),left=w,top=h,right=-1,bottom=-1;int[] pixels=new int[w*h];bitmap.getPixels(pixels,0,w,0,0,w,h);
+  for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(android.graphics.Color.alpha(pixels[y*w+x])>=16){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
+  android.graphics.Rect b=right<left?new android.graphics.Rect():new android.graphics.Rect(left,top,right+1,bottom+1);equipmentBounds.put(bitmap,b);return b;
+ }
+ static void drawEquipment(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,boolean mirrorHand){
+  if(bitmap==null)return;android.graphics.Rect src=visibleEquipmentBounds(bitmap);if(src.isEmpty())return;
+  float scale=Math.min(target.width()/src.width(),target.height()/src.height()),w=src.width()*scale,h=src.height()*scale;
+  RectF dst=new RectF(target.centerX()-w/2,target.centerY()-h/2,target.centerX()+w/2,target.centerY()+h/2);
+  paint.setFilterBitmap(false);paint.setAntiAlias(false);int save=canvas.save();canvas.clipRect(target);
+  if(mirrorHand)canvas.scale(-1,1,target.centerX(),target.centerY());canvas.drawBitmap(bitmap,src,dst,paint);canvas.restoreToCount(save);
+ }
  Bitmap get(RpgProgressionState.ItemDefinition d){return d==null?null:get(d.itemId);}
 }
 

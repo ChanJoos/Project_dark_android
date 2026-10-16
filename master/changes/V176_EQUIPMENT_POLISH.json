@@ -1,0 +1,16 @@
+{
+  "status": "ACCEPTED",
+  "evidence": "USER 2026-10-16 23:42KST;resume2026-10-17 02:30KST",
+  "prior": "V175 DEVICE_FAILED_USER_REPORTED_VISUAL",
+  "changes": [
+    "shield below earring and ornaments",
+    "80px rail pitch and centered hat",
+    "equipment-only alpha-trim fit;native orientation,paired right-glove mirror",
+    "no empty-slot glyphs",
+    "remove lower-right hinge",
+    "bronze/wood engraved close"
+  ],
+  "orientation": "V175 has no global negative scale. Exact source orientation retained for unpaired icons. Only paired right glove intentionally mirrors. Existing exact-identity wearable thumbnail fallback source limitations retained.",
+  "scope": "Equipment UI only;authoritative stats/save/ownership and inventory native-sized drawing unchanged.",
+  "verification": "PENDING source/native/render/APK/phone"
+}

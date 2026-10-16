@@ -7,14 +7,14 @@ import org.json.*;
 
 /** Reference window rendering/input geometry; no inventory, equipment or stat authority. */
 final class ItemWindow {
-  interface Visuals { void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size); void actor(Canvas c,float x,float y); }
+  interface Visuals { void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size); void actor(Canvas c,float x,float y); default void equipmentIcon(Canvas c,RpgInventoryPresentation.ItemRow row,String slot,float x,float y,float size){icon(c,row,x,y,size);} }
   enum Hit { NONE,CLOSE,SELECT,ACTION,DETAILS,CONSUMED }
   static final int PAGE_SIZE=50;
   static final String[] SLOTS={"모자","귀걸이","목걸이","갑옷","무기","장갑",RpgProgressionState.RIGHT_GLOVE_SLOT,"반지",RpgProgressionState.RIGHT_RING_SLOT,"신발","각반","벨트","방패","장식",RpgProgressionState.SECOND_ORNAMENT_SLOT};
   // Coordinates in the user's 522x556 reference crop. Cosmetic-only source cells omitted.
-  static final float[][] POS={{268,54},{355,72},{109,72},{109,144},{109,216},{40,288},{427,288},{109,288},{355,288},{268,360},{109,360},{355,360},{40,360},{355,144},{427,144}};
+  static final float[][] POS={{226,64},{332,64},{120,64},{120,144},{120,224},{40,304},{412,304},{120,304},{332,304},{226,384},{120,384},{332,384},{332,224},{332,144},{412,144}};
   static final float EQUIP_X=224,EQUIP_Y=35,EQUIP_SCALE=.85f;
-  static RectF equipmentClose(){return new RectF(630,36,667,72);}
+  static RectF equipmentClose(){return new RectF(EQUIP_X+472*EQUIP_SCALE,EQUIP_Y,EQUIP_X+520*EQUIP_SCALE,EQUIP_Y+46*EQUIP_SCALE);}
   static RectF equipmentStats(){return new RectF(224+430*.85f,35+54*.85f,224+493*.85f,35+107*.85f);}
   static int[] equipmentValues(RpgProgressionState r){FinalStats f=r.finalStats();return new int[]{f.str,f.intel,f.wis,f.con,f.dex,f.ac};}
   final Map<String,Bitmap> images=new HashMap<>();
@@ -22,7 +22,7 @@ final class ItemWindow {
   final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
   final RpgInventoryPresentation presentation=new RpgInventoryPresentation();
   int page,filter,effectPage,effectPages=1;boolean details,effectDetails;String selectedSlot,hitItem,hitTargetSlot,detailItemId,pickedTargetSlot;
-  ItemWindow(Context context){try{JSONObject m=new JSONObject(new String(PresentationAssetBytes.read(context,"item-window/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("crops");Iterator<String> keys=m.keys();while(keys.hasNext()){String k=keys.next();Bitmap b=BitmapFactory.decodeStream(context.getAssets().open(m.getJSONObject(k).getString("path")));if(b==null)throw new IllegalStateException(k);images.put(k,b);}}catch(Exception e){throw new IllegalStateException("Item window skin unavailable",e);}for(String key:new String[]{"panel","slot"})try{Bitmap b=BitmapFactory.decodeStream(context.getAssets().open("equipment-window-v175/"+key+".png"));if(b==null)throw new IllegalStateException(key);equipmentImages.put(key,b);}catch(Exception e){throw new IllegalStateException("Equipment reference skin unavailable",e);}}
+  ItemWindow(Context context){try{JSONObject m=new JSONObject(new String(PresentationAssetBytes.read(context,"item-window/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("crops");Iterator<String> keys=m.keys();while(keys.hasNext()){String k=keys.next();Bitmap b=BitmapFactory.decodeStream(context.getAssets().open(m.getJSONObject(k).getString("path")));if(b==null)throw new IllegalStateException(k);images.put(k,b);}}catch(Exception e){throw new IllegalStateException("Item window skin unavailable",e);}for(String key:new String[]{"panel","slot"})try{Bitmap b=BitmapFactory.decodeStream(context.getAssets().open("equipment-window-v176/"+key+".png"));if(b==null)throw new IllegalStateException(key);equipmentImages.put(key,b);}catch(Exception e){throw new IllegalStateException("Equipment reference skin unavailable",e);}}
   static RectF cell(int i){float x=344+(i%10)*58,y=118+(i/10)*58;return new RectF(x,y,x+58,y+58);}
   static RectF slot(int i){float x=EQUIP_X+POS[i][0]*EQUIP_SCALE,y=EQUIP_Y+POS[i][1]*EQUIP_SCALE;return new RectF(x,y,x+69*EQUIP_SCALE,y+69*EQUIP_SCALE);}
   List<RpgInventoryPresentation.ItemRow> rows(RpgProgressionState r){List<RpgInventoryPresentation.ItemRow> out=new ArrayList<>();for(RpgInventoryPresentation.ItemRow row:presentation.inventoryRows(r))if(filter==0||filter==1&&row.equipSlot!=null&&!row.equipSlot.isEmpty()||filter==2&&(r.isConsumable(row.itemId)||r.isRecall(row.itemId)))out.add(row);return out;}
@@ -137,8 +137,7 @@ final class ItemWindow {
       float x=POS[i][0],y=POS[i][1];RectF b=new RectF(x,y,x+70,y+70);
       c.drawBitmap(equipmentImages.get("slot"),null,b,p);
       String id=r.equipment().get(SLOTS[i]);RpgInventoryPresentation.ItemRow row=find(r,id);
-      if(row!=null)v.icon(c,row,x+7,y+7,56);
-      else UiTheme.equipmentGlyph(c,RpgProgressionState.baseSlot(SLOTS[i]),x+35,y+35,18,0xff64533c);
+      if(row!=null)v.equipmentIcon(c,row,SLOTS[i],x+8,y+8,54);
       if(SLOTS[i].equals(selectedSlot)){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xffe6bf77);c.drawRect(x+2,y+2,x+68,y+68,p);p.setStyle(Paint.Style.FILL);}
     }
     // Preserve original stat ordering: STR/INT, WIS/CON, DEX/AC.
@@ -148,7 +147,12 @@ final class ItemWindow {
     p.setTextAlign(Paint.Align.LEFT);
     // The reference's top-right character button opens the full live stat page.
     // Original character/stat button pixels are retained in the skin.
-    c.restore();UiTheme.close(c,649,54);
+    // Source bronze/wood bevel and engraved cross.
+    RectF close=new RectF(479,6,513,40);c.drawBitmap(equipmentImages.get("slot"),null,close,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeCap(Paint.Cap.SQUARE);p.setStrokeWidth(3);p.setColor(0xff21160e);
+    c.drawLine(489,16,503,30,p);c.drawLine(503,16,489,30,p);
+    p.setStrokeWidth(1.5f);p.setColor(0xffd7be89);c.drawLine(488,15,502,29,p);c.drawLine(502,15,488,29,p);
+    p.setStyle(Paint.Style.FILL);c.restore();
     if(selectedSlot!=null){
       RectF b=new RectF(690,155,947,514);panel(c,b,selectedSlot.replace("갑옷","옷"));
       RpgProgressionState.ItemDefinition d=r.equippedDefinition(selectedSlot);
