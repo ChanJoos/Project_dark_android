@@ -1,6 +1,6 @@
 {
   "version": 170,
-  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED_FULL_CI_PENDING",
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_AND_FULL_CI_VERIFIED_DELIVERED",
   "userCanon": [
     "Double Attack learned: two full basic damage contacts",
     "Triple Attack learned: three contacts; highest linked count wins",
@@ -28,7 +28,8 @@
   ],
   "verification": {
     "focused": "174 tests /30 suites PASS at5b1f6a7",
-    "common": "IN_PROGRESS",
+    "common": "38847251455 and38847255631 SUCCESS at8d6b381; app/tools bytes unchanged from5b1f6a7",
+    "exactSourceVerifierRecovery": "38847251517 SUCCESS pinned5b1f6a7",
     "phone": "PENDING",
     "visualAcceptance": "PENDING"
   },

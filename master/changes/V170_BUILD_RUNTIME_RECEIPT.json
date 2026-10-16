@@ -11,11 +11,14 @@
     "skipped": 0
   },
   "common": {
-    "pushRun": 38844874846,
-    "pushJob": 116793013927,
-    "prRun": 38844878505,
-    "prJob": 116793024791,
-    "status": "IN_PROGRESS"
+    "sourceCommit": "8d6b3817214bc1794d911b4423b241531c2bc5f8",
+    "pushRun": 38847251455,
+    "pushJob": 116800467939,
+    "prRun": 38847255631,
+    "prJob": 116800481547,
+    "status": "SUCCESS",
+    "successfulGradleExecutionsEach": 26,
+    "appAndToolsBytesUnchangedFromApkSource": true
   },
   "apk": {
     "sourceCommit": "5b1f6a741ef11f1882dfe2ec7beb7727133529f9",
@@ -62,5 +65,23 @@
     "phone": "PENDING",
     "userVisualAcceptance": "PENDING"
   },
-  "superseded": "738fa18 focused173 PASS APK not delivered: native review caught strike trail during preparation. Final sequence uses all4 original c cells with true IDLE outside strike. d292/a335/766 intermediate commits superseded; complete generator restored and byte/parity checked in5b1f6a7."
+  "superseded": "738fa18 focused173 PASS APK not delivered: native review caught strike trail during preparation. Final sequence uses all4 original c cells with true IDLE outside strike. d292/a335/766 intermediate commits superseded; complete generator restored and byte/parity checked in5b1f6a7.",
+  "verifierRecovery": {
+    "run": 38847251517,
+    "job": 116800468190,
+    "status": "SUCCESS",
+    "sourceCommit": "5b1f6a741ef11f1882dfe2ec7beb7727133529f9",
+    "initialFailure": "38844874846 and38844878505: final verifier expected version169;39gameplay checks and26Gradle executions passed",
+    "reusedSuccessfulGameplayCheckSteps": 39
+  },
+  "delivery": {
+    "status": "DELIVERED_EXISTING_SAVED_APK",
+    "resume": "2026-10-16",
+    "rebuild": false,
+    "reupload": false,
+    "restoredAfterWorkspaceMaintenance": true,
+    "apkSha256Reconfirmed": true,
+    "pr": 197,
+    "mainMerged": false
+  }
 }
