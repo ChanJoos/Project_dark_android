@@ -32,6 +32,7 @@ final class SkillBodyRenderer {
   }
   boolean drawChungryong(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
     if(!ChungryongWeaponRenderer.equipped(p.weaponVisualRef))return false;
+    if("twohand".equals(motion)&&(phase<.12f||phase>=.68f)){motion="basic";phase=0;}
     boolean back=ChungryongWeaponRenderer.back(p.direction);int n=ChungryongWeaponRenderer.frame(motion,phase);
     String group=ChungryongWeaponRenderer.group(motion);int index=ChungryongWeaponRenderer.bodyIndex(motion,back,n);
     JSONObject f=catalog.frames.optJSONObject(body+"/"+group+"/"+index);if(f==null)return false;Bitmap b=bitmap(f.optString("path"));if(b==null)return false;

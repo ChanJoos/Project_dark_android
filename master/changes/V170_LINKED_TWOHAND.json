@@ -1,0 +1,34 @@
+{
+  "version": 170,
+  "status": "IMPLEMENTED_VERIFICATION_PENDING",
+  "userCanon": [
+    "Double Attack learned: two full basic damage contacts",
+    "Triple Attack learned: three contacts; highest linked count wins",
+    "Twohand Attack SK_전사_008 ownership required for twohand equip, including equipment profile",
+    "twohand basic uses existing c BODY and exact blade cells, slower preparation/contact/recovery"
+  ],
+  "reference": {
+    "file": "Screen_Recording_20261016_113835_YouTube.mp4",
+    "sha256": "618b0850fae8bdc64a99c0614e21c4fc810d3772da712ac7c93a724c0db27986",
+    "durationSeconds": 29.085896,
+    "inspected": "4-6s and21-22.5s source contact sheets; repeated raises/sweep/follow-through/recovery; overlapping multi-hit numbers",
+    "redistributed": false
+  },
+  "timing": {
+    "evidence": "USER_CONFIRMED_ADAPTED_VIDEO_CALIBRATION_NOT_ORIGINAL_SERVER_NUMBERS",
+    "twoHandCycleSeconds": 0.8,
+    "firstContactSeconds": 0.3,
+    "linkedSpacingSeconds": 0.065
+  },
+  "preserved": [
+    "raw source raster bytes",
+    "movement speed/frame delta and performance caches",
+    "shield refusal and replacement semantics",
+    "save inventory ownership"
+  ],
+  "verification": {
+    "phone": "PENDING",
+    "visualAcceptance": "PENDING",
+    "ci": "PENDING"
+  }
+}

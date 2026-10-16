@@ -38,6 +38,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
   public CombatResolver.Definition resolveDefinition(String actor,CombatResolver.Definition d){
     AbelCombatProfile profile=AbelCombatProfile.forId(actor);if(profile!=null)return profile.resolve(d);
+    if("player".equals(actor)&&d.actionId.startsWith("attack_proto_"))return new CombatResolver.Definition(d.actionId,d.kind,d.state,d.effectType,d.requiresLearned,d.resourceCost,BasicAttackTiming.cycle(state.rpg(),d.cooldown),d.range,BasicAttackTiming.contact(state.rpg(),d.hitTime),d.damage);
     if(!"player".equals(actor)||d.kind!=CombatResolver.ActionKind.MAGIC)return d;
     SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(d.actionId);
     int base=a==null?d.resourceCost:a.mpCost;
@@ -56,6 +57,8 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private java.util.function.Predicate<String> visible=id->true;
   private java.util.function.IntSupplier basicHits=()->1;
   public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
+  public int hitCount(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(5,basicHits.getAsInt())):1;}
+  public float hitSpacing(String actor,String action){return BasicAttackTiming.HIT_SPACING;}
   public void setVisible(java.util.function.Predicate<String> visible){this.visible=visible;}
   public boolean visible(String id){return visible.test(id);}
   public java.util.List<String> recipients(String actor,String target,String action){
@@ -164,7 +167,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
       if(!ability.fixed()&&state.skillEffects().has(actorId,"ELEMENT_BOOST"))amount=safeScale(amount,1.2);
       if(!ability.fixed())amount=CombatStatPipeline.resolveSkill(amount,channel,attacker,defender).applied;
     }else amount=(profile!=null&&AbelCombatProfile.spell(actionId)?CombatStatPipeline.resolveSkill(amount,channel,attacker,defender):CombatStatPipeline.resolve(amount,channel,attacker,defender)).applied;
-    if(playerActor&&basic){amount=safeScale(amount,Math.max(1,Math.min(5,basicHits.getAsInt())));if(state.skillEffects().has(actorId,"BASIC_POWER")&&abilities.random.getAsDouble()<.3)amount=safeScale(amount,2);}
+    if(playerActor&&basic){if(state.skillEffects().has(actorId,"BASIC_POWER")&&abilities.random.getAsDouble()<.3)amount=safeScale(amount,2);}
     SkillEffectState fx=state.skillEffects();
     if(ability==null||!ability.fixed()){
       if(fx.has(targetId,"INVINCIBLE")||channel==CombatStatPipeline.Channel.PHYSICAL&&fx.has(targetId,"PHYSICAL_GUARD")||!basic&&fx.has(targetId,"TECH_MAGIC_GUARD"))amount=0;

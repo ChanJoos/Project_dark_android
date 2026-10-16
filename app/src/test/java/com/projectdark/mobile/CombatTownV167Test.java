@@ -14,7 +14,7 @@ import com.projectdark.mobile.world.*;
 public class CombatTownV167Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();for(String p:new String[]{"project_dark_f5m_v1","project_dark_skill_test_v1","project_dark_skill_book_v1"})c.getSharedPreferences(p,0).edit().clear().commit();F5mSaveStore.install(c);UiTheme.install(c);}
- RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);return s;}
+ RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);s.rpg().bindTwoHandLearning(()->true);return s;}
  int hit(RuntimeState s){RuntimeState.Monster m=s.monsters().get(0);m.hp=100000;m.alive=true;new RuntimeCombatPortAdapter(s,(a,b)->true,(a,b)->true).applyDamage("player",m.id,"attack_proto_swing",8);return 100000-m.hp;}
  @Test public void sourceEquipmentAndStrengthReachActualHpAndRestore()throws Exception{
   RuntimeState s=state();RpgProgressionState r=s.rpg();r.unequip("무기");r.equip("IT_TEST_WEAPON_MW002");int weak=hit(s);r.unequip("무기");r.equip("IT_WARDROBE_MW023");int strong=hit(s);assertTrue(strong>weak+100);
@@ -82,7 +82,7 @@ public class CombatTownV167Test {
   }
  }
  @Test public void identicalSourceWeaponsShareCombatAndBodyMotionAcrossItemIds(){
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);EquipmentActionResolver resolver=new EquipmentActionResolver();
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);EquipmentActionResolver resolver=new EquipmentActionResolver();
   for(String id:new String[]{"IT_TEST_WEAPON_MW002","IT_B_JOB_ROGUE_WEAPON","IT_B_CAMPAIGN_TOOL_ROGUE_41","IT_B_JOB_MAGE_WAND","IT_B_JOB_CLERIC_WAND"}){
    r.unequip("무기");assertEquals(id,RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));assertEquals(id,AnimationAction.THRUST,resolver.resolveBasicAttack(r).animationAction);assertEquals(id,"THRUST",WeaponCombatProfile.motion(r,"SWING"));
   }

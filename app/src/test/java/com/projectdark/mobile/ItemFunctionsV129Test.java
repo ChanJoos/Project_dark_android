@@ -15,7 +15,7 @@ import android.graphics.*;
 public class ItemFunctionsV129Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
- RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);s.rpg().restoreBaseResources(5000,5000);s.applyDerivedGrowth();s.player().hp=3000;s.player().mp=3000;return s;}
+ RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);s.rpg().bindTwoHandLearning(()->true);s.rpg().restoreBaseResources(5000,5000);s.applyDerivedGrowth();s.player().hp=3000;s.player().mp=3000;return s;}
  String skill(String name){for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.name.equals(name))return a.id;throw new AssertionError(name);}
  @Test public void actualResolverSnapshotsOneSecondReductionAndManaChargeWithoutChangingCooldown(){
   RuntimeState s=state();s.rpg().equipToSlot("IT_WARDROBE_MW062","무기");String id=skill("홀리쇼크");RuntimeCombatPortAdapter p=new RuntimeCombatPortAdapter(s,(a,t)->true,(a,i)->true);

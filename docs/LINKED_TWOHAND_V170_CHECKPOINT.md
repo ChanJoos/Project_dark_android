@@ -1,0 +1,6 @@
+## 2026-10-16 — V170 linked attacks and supplied twohand reference in progress
+
+V169 twohand awkwardness DEVICE_FAILED_USER_REPORTED; private local29.086s video inspected, hash/evidence in master/changes/V170_LINKED_TWOHAND.json. Root single editor continues PR197 frome61b955; main41fe6def unchanged. Actual defect reproduced in source: basicHits multiplied one damage application, not independent contacts. Resolver now snapshots linked count and applies full separate contacts65ms apart with live death/control/range/LOS gates; Triple wins over Double. Twohand equip requires owned SK_전사_008 even in equipment profile; rejection preserves shield/inventory; legacy unlearned equipped blade returns to inventory ownership. Old source-render fixtures explicitly provide eligibility.
+
+Retained original c BODY/blade frames use ready/raise/sweep/follow-through/ready; Chungryong uses source-registered ready recovery. Twohand first contact0.30s and cycle0.80s are video-calibrated ADAPTED values, not certified original server constants. Onehand and movement timing/caches unchanged. IMPLEMENTED, focused/full CI and APK PENDING; PHONE and USER_VISUAL_ACCEPTANCE PENDING. Resume exact branch/worktree; do not recreate completed V168/V169 assets or deliver the previous APK as this change.
+

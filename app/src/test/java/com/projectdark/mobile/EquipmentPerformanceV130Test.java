@@ -15,7 +15,7 @@ import android.graphics.*;
 public class EquipmentPerformanceV130Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);UiTheme.install(c);}
- RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);return s;}
+ RuntimeState state(){RuntimeState s=new RuntimeState();s.rpg().enableEquipmentSandbox(true);s.rpg().bindTwoHandLearning(()->true);return s;}
  int hit(RuntimeState s){RuntimeState.Monster m=s.monsters().get(0);m.hp=10000;m.alive=true;new RuntimeCombatPortAdapter(s,(a,b)->true,(a,b)->true).applyDamage("player",m.id,"attack_proto_swing",8);return 10000-m.hp;}
  @Test public void everyWeaponHasVisiblePerformanceAndEachRangeReachesActualDamage()throws Exception{
   RuntimeState s=state();RpgProgressionState r=s.rpg();JSONArray audit=new JSONArray();int count=0;

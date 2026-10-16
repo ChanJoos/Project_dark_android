@@ -29,7 +29,7 @@ public class AccessoryCatalogV125Test {
   java.nio.file.Files.write(new java.io.File(dir,"accessory-v125-coverage.json").toPath(),new org.json.JSONObject().put("ownedItems",r.inventory().size()).put("definitions",r.itemDefinitions().size()).put("sourceIconsLoaded",connected).put("job",r.currentJobCode()).put("level",r.normalLevel()).put("testRequirementsBypass",r.equipmentSandbox()).toString().getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void fourCircleLeggingsAreSeparateAndChangeRealStats(){
-  RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);int base=r.finalStats().ac;
+  RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);int base=r.finalStats().ac;
   for(Object[] row:new Object[][]{{"가죽각반",11,-2},{"동각반",41,-4},{"은각반",71,-6},{"금각반",99,-8}}){
    RpgProgressionState.ItemDefinition d=named(r,(String)row[0]);assertEquals(row[1],d.requiredLevel);
    assertEquals(RpgProgressionState.RequirementResult.LEVEL_NOT_MET,r.evaluateRequirements(d.itemId,"COMMONER",1));
@@ -38,19 +38,19 @@ public class AccessoryCatalogV125Test {
   s.applyDerivedGrowth();assertTrue(s.player().maxHp>0);
  }
  @Test public void originalModifiersElementsAndSaveRestoreAreConnected()throws Exception{
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);
   RpgProgressionState.ItemDefinition necklace=named(r,"숲의잼스톤목걸이"),belt=named(r,"다크그레이벨트(수)+1");
   int mp=r.finalStats().maxMp,hit=r.finalStats().hit,dam=r.finalStats().dam;
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(necklace.itemId));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(belt.itemId));
   assertEquals(hit+5,r.finalStats().hit);assertEquals(dam+10,r.finalStats().dam);assertTrue(r.finalStats().maxMp>=mp+50);
   assertEquals("숲",r.equippedDefinition("목걸이").attackElement);assertEquals("바다",r.equippedDefinition("벨트").defenseElement);
-  F5mSaveStore.saveRewardsActive(r);F5mSaveStore.install(c);RpgProgressionState restored=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(restored);restored.enableEquipmentSandbox(false);
+  F5mSaveStore.saveRewardsActive(r);F5mSaveStore.install(c);RpgProgressionState restored=new RpgProgressionState();F5mSaveStore.restoreRewardsActive(restored);restored.enableEquipmentSandbox(false);restored.bindTwoHandLearning(()->true);
   assertEquals(r.inventory(),restored.inventory());assertEquals(r.equipment(),restored.equipment());assertEquals(r.finalStats().dam,restored.finalStats().dam);
   restored.restoreOwnedItems(Collections.emptyMap(),Collections.emptyMap());F5mSaveStore.saveRewardsActive(restored);
   GameView reopened=new GameView(c);RpgProgressionState after=((RuntimeState)ItemWindowReferenceTest.field(reopened,"state")).rpg();assertTrue(after.inventory().isEmpty()); // never regrant removed/banked gear on restart
  }
  @Test public void elementalEquipmentFeedsTheCombatPipeline(){
-  RpgProgressionState a=new RpgProgressionState(),d=new RpgProgressionState();a.enableEquipmentSandbox(true);d.enableEquipmentSandbox(true);
+  RpgProgressionState a=new RpgProgressionState(),d=new RpgProgressionState();a.enableEquipmentSandbox(true);a.bindTwoHandLearning(()->true);d.enableEquipmentSandbox(true);d.bindTwoHandLearning(()->true);
   a.equip("IT_NECK_FIRE_PEARL");assertEquals(Integer.valueOf(5),a.equippedDefinition("목걸이").statModifiers.get("HIT"));d.equip("IT_BELT_WATER_LEATHER");
   assertEquals(38,ElementalDamageFormula.apply(100,a.finalStats().attackElement,d.finalStats().defenseElement));
   assertEquals(175,ElementalDamageFormula.apply(100,"생명","암흑"));assertEquals(100,ElementalDamageFormula.apply(100,"숲","숲"));

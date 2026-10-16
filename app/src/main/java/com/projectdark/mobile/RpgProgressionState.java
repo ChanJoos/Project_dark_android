@@ -23,7 +23,7 @@ public final class RpgProgressionState {
   public enum RewardStatus { RESOLVED, PENDING_NO_CANONICAL_MONSTER_REWARD }
   public enum RewardSource { CANONICAL, ADAPTED_TEST, ADAPTED_CAMPAIGN, UNRESOLVED }
   public enum AutoLootResult { LOOTED, INVALID_ITEM, INVALID_QUANTITY, INVENTORY_FULL }
-  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, INVALID_SLOT, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET, TWO_HAND_CONFLICT }
+  public enum EquipResult { EQUIPPED, UNEQUIPPED, ITEM_NOT_OWNED, UNKNOWN_ITEM, NOT_EQUIPPABLE, INVALID_SLOT, REQUIREMENT_PENDING, REQUIREMENT_NOT_MET, TWO_HAND_CONFLICT, TWO_HAND_SKILL_REQUIRED }
   public enum UseResult { USED, ITEM_NOT_OWNED, NOT_CONSUMABLE, NO_EFFECT }
   public enum RequirementResult { MET, PENDING, LEVEL_NOT_MET, JOB_NOT_MET, UNKNOWN_ITEM }
 
@@ -312,6 +312,9 @@ public final class RpgProgressionState {
     ItemDefinition d=items.get(id);if(d==null)return;
     items.put(id,new ItemDefinition(id,name,d.equipSlot,appearance,d.basicAttackAction,d.requiredLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,d.statModifiers,d.evidence));
   }
+  private java.util.function.BooleanSupplier twoHandLearned=()->false;
+  public void bindTwoHandLearning(java.util.function.BooleanSupplier learned){twoHandLearned=java.util.Objects.requireNonNull(learned);}
+  public void enforceTwoHandLearning(){if(WeaponCombatProfile.grip(equippedDefinition(WEAPON_SLOT))==WeaponCombatProfile.Grip.TWO_HAND&&!twoHandLearned.getAsBoolean())equipmentBySlot.remove(WEAPON_SLOT);}
   public boolean equipmentSandbox(){return equipmentSandbox;}
   public void enableEquipmentSandbox(boolean grant){
     equipmentSandbox=true;
@@ -602,6 +605,7 @@ public final class RpgProgressionState {
     RequirementResult requirements=currentRequirements(itemId);
     if(requirements==RequirementResult.PENDING)return EquipResult.REQUIREMENT_PENDING;
     if(requirements!=RequirementResult.MET)return EquipResult.REQUIREMENT_NOT_MET;
+    if(WEAPON_SLOT.equals(slot)&&WeaponCombatProfile.grip(def)==WeaponCombatProfile.Grip.TWO_HAND&&!twoHandLearned.getAsBoolean())return EquipResult.TWO_HAND_SKILL_REQUIRED;
     // Equipment slots stay source-facing (갑옷/각반). Visual coverage is a separate paper-doll concern:
     // FULL_BODY occupies both UPPER and LOWER coverage; UPPER + LOWER may coexist.
     CharacterVisualBinding.GarmentCoverage incoming=

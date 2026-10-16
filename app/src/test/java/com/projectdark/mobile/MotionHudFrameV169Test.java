@@ -44,7 +44,7 @@ public class MotionHudFrameV169Test {
  @Test public void allBasicAndSkillFamiliesRenderBothBodiesWithBoundedWarmWork()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);JSONArray stats=new JSONArray();
   for(String body:new String[]{"mm001","wm001"})for(String item:new String[]{"IT_ADAPTED_PLAYTEST_MOKDO","IT_WARDROBE_MW016",ChungryongWeaponRenderer.ITEM}){
-   RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.unequip("무기");if(!r.inventory().containsKey(item))r.autoLootResolvedItem(item,1);assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(item));CharacterVisualBinding v=CharacterVisualBinding.from(r);renderer.prepare(v.equipmentVisualRef(),v.weaponVisualRef());
+   RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);r.unequip("무기");if(!r.inventory().containsKey(item))r.autoLootResolvedItem(item,1);assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(item));CharacterVisualBinding v=CharacterVisualBinding.from(r);renderer.prepare(v.equipmentVisualRef(),v.weaponVisualRef());
    String motion=WeaponCombatProfile.motion(r,"EQUIPPED_BASIC");assertNotEquals("EQUIPPED_BASIC",motion);Bitmap sheet=Bitmap.createBitmap(720,450,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(sheet);canvas.drawColor(0xffa8a18f);Paint label=new Paint();label.setTextSize(10);label.setColor(Color.BLACK);
    int row=0;for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){int col=0;for(float q:new float[]{0,.17f,.34f,.55f,.85f}){float x=65+col++*140,y=100+row*108;CharacterRenderer.Pose p=new CharacterRenderer.Pose(x,y,d,CharacterRenderer.State.ATTACK,0,q*.5f,.5f,false,v.equipmentVisualRef(),v.weaponVisualRef(),null,CharacterRenderer.EffectFamily.NONE,AnimationAction.SWING);assertTrue(ChungryongWeaponRenderer.equipped(v.weaponVisualRef())?renderer.drawChungryong(canvas,p,body,"twohand",q):renderer.draw(canvas,p,body,motion,q));canvas.drawText(d+" "+q,x-40,y+12,label);}row++;}save(sheet,body+"-"+v.weaponVisualRef()+"-"+motion);sheet.recycle();
   }
@@ -88,7 +88,7 @@ public class MotionHudFrameV169Test {
   System.out.println("V169_ROUTE old_build_1000_ns="+old+" cached_1000_ns="+now+" journal100_ns="+warm+" definitions="+route.size());
  }
  @Test public void leanGrowthProjectionPreservesFullStatsAcrossEquipmentAndRestore(){
-  RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);
+  RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);
   for(String id:new String[]{"IT_WARDROBE_MW016","IT_ADAPTED_STARTER_SHIELD",ChungryongWeaponRenderer.ITEM}){r.autoLootResolvedItem(id,1);r.equip(id);s.applyDerivedGrowth();FinalStats expected=r.finalStats();assertEquals(expected.maxHp,s.player().maxHp);assertEquals(expected.maxMp,s.player().maxMp);}
   r.restoreBaseResources(12000,9000);s.applyDerivedGrowth();assertEquals(r.finalStats().maxHp,s.player().maxHp);assertEquals(r.finalStats().maxMp,s.player().maxMp);
  }
