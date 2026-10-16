@@ -2201,7 +2201,7 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "전방 3칸 대상을 뛰어넘는다.",
+    "summary": "바라보는 방향의 인접 대상을 뛰어넘습니다. 뒤가 막히면 대상 좌우의 빈칸에 착지합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
@@ -2285,7 +2285,7 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "전방 1~3칸 적 공격",
+    "summary": "전방의 세 칸에 있는 적을 직선으로 공격합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
@@ -2299,7 +2299,7 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "몬스터의 이동을 제한시킨다",
+    "summary": "8초 동안 대상의 이동을 막습니다. 가까운 대상은 공격할 수 있습니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
@@ -2411,7 +2411,7 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "몬스터 대상을 얼린다.",
+    "summary": "8초 동안 대상의 이동과 공격을 막습니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },
@@ -2467,7 +2467,7 @@
     },
     "gold": 2500,
     "items": {},
-    "summary": "기술반사 (토글마법)",
+    "summary": "받을 피해를 막고 공격한 몬스터에게 같은 피해를 돌려줍니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "FAN_SEO_2020_CORRECTED_TABLE"
   },

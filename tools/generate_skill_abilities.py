@@ -76,13 +76,19 @@ for e in cat:
  if e['kind']=='마법':
   cd={'이모탈':5,'리플렉토':5,'나르콜리':1,'다라밀공':12}.get(n,0)
  duration=8 if n in ('발경','일음지') else 9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
- if n=='이형환위':kind='STATUS';evidence='USER_CONFIRMED_V173';source='User 2026-10-16: front actor leap, opposite tile, random free side fallback'
- if n in ('발경','일음지','반탄신공'):evidence='USER_CONFIRMED_V173';source='User 2026-10-16 martial behavior clarification'
+ if n=='이형환위':kind='STATUS';evidence='USER_RULE_V173_RETAINED_BALANCE_ADAPTED';source='User 2026-10-16: front actor leap, opposite tile, random free side fallback'
+ if n in ('발경','일음지','반탄신공'):evidence='USER_RULE_V173_RETAINED_BALANCE_ADAPTED';source='User 2026-10-16 martial behavior clarification'
  if kind=='HEAL':desc=f'회복 = round((WIS×5 + INT×1.5 + Lv×2)×{coef}); 최대 HP까지'
  elif kind=='DAMAGE':desc={'PHYSICAL':'(무기 공격+STR×3+DAM)','ROGUE':'(무기 공격+STR×1.8+DEX×2.2+DAM)','MARTIAL':'(무기 공격+sqrt(STR×CON)×4+DAM)','MAGIC':'(8+INT×4+WIS+Lv×1.5)','BASIC':'(무기 공격+STR×3+DAM)'}.get(formula,formula)+f' × {coef}'
  else:desc=(e['effect']+f' · {duration}초') if status else ('기본공격/장착 연동' if kind=='PASSIVE' else '대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음')
  exact={'CRASH':f'최대HP × {coef}; 현재HP ≤ 최대HP의2%', 'SOUL':f'현재HP × {coef}; HP90% 소모', 'ASSASSIN':'현재HP × 0.6336 / 강타25%: ×1.69', 'ASSASSIN_PLUS':'현재HP ×0.95 / 강타25%: ×3.5', 'SEMELIA':'max(0, MP-3240) ×1.815', 'METEOR':'max(0, MP-12960) ×1.815', 'RAGNAROK':'MP ×0.454', 'DARA':'max(0, HP+MP-1440) ×3.38', 'DALMA':'현재HP ×0.30; 방어/속성/무적 무시', 'HP_BURST':f'현재HP ×{coef}', 'MP_BURST':f'MP ×{coef}'}
  if formula in exact:desc=exact[formula]
+ if n=='이형환위':desc='바라보는 방향의 인접 몬스터/NPC를 뛰어넘음. 뒤가 막히면 대상 좌우의 빈칸 중 무작위 착지. 대상/착지 공간이 없으면 발동 안 함.'
+ if n=='일음지':desc='8초 동안 이동 불가. 인접한 캐릭터는 공격 가능.'
+ if n=='발경':desc+='; 8초 동안 이동과 공격 불가.'
+ if n=='반탄신공':desc='받을 피해를 막고 공격 몬스터에게 같은 피해를 반사. 16초 유지; 다시 사용하면 해제.'
+ if n=='백보신권':desc+='; 바라보는 방향 전방3칸의 모든 몬스터 동시 공격. 대상 없으면 발동 안 함.'
+ if n=='흡정신공':desc+='; 실제로 줄어든 대상 체력만큼만 흡수.'
  rows.append(dict(id=e['id'],name=n,job=e['job'],circle=c,kind=kind,formula=formula,coefficient=coef,status=status,mpCost=cost,cooldown=cd,duration=duration,allMp=allmp,evidence=evidence,source=source,description=desc))
 (ROOT/'app/src/main/assets/skills/abilities.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
 fields=list(rows[0]);p=ROOT/'docs/SKILL_ABILITY_FORMULAS.csv'

@@ -201,7 +201,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
 
   /** A leap ignores intervening actors, but its landing and entire terrain path remain legal. */
   public boolean canPlayerLeapTo(float x,float y){
-    if(!canPlayerOccupy(x,y))return false;
+    if(!canPlayerOccupy(x,y)||!runtime.canPlayerOccupyActors(x,y))return false;
     float ax=runtime.player().x,ay=runtime.player().y;int n=Math.max(1,(int)Math.ceil(distance(ax,ay,x,y)/4));
     for(int i=1;i<=n;i++){float q=i/(float)n;if(terrainIndex.blocked(ax+(x-ax)*q,ay+(y-ay)*q,RuntimeState.PLAYER_RADIUS))return false;}return true;
   }

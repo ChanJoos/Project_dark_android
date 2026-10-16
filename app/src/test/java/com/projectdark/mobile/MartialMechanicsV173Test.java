@@ -59,9 +59,9 @@ public class MartialMechanicsV173Test {
  }
  @Test public void freezeStopsMovementAndPendingAttacksButRootStillAllowsAdjacentAttackForExactlyEightSeconds()throws Exception{
   for(String id:new String[]{"SK_무도가_018","SK_무도가_010"}){
-   RuntimeState s=state();RuntimeState.Monster m=s.monsters().get(0);RuntimeCombatSession c=session(s);assertTrue(c.submitPlayer(m.id,id).accepted());c.tick(.15f);boolean freeze=id.endsWith("018");assertEquals(freeze,s.skillEffects().disabled(m.id));assertTrue(s.skillEffects().rooted(m.id));assertEquals(8,s.skillEffects().get(m.id,freeze?"FREEZE":"ROOT").remaining,0);
+   RuntimeState s=state();RuntimeState.Monster m=s.monsters().get(0);RuntimeCombatSession c=session(s);m.isMoving=true;m.moveStartX=m.x;m.moveStartY=m.y;m.moveTargetX=m.x+32;m.moveTargetY=m.y+16;m.moveDuration=.6f;float beforeX=m.x,beforeY=m.y;assertTrue(c.submitPlayer(m.id,id).accepted());c.tick(.15f);assertFalse(m.isMoving);boolean freeze=id.endsWith("018");assertEquals(freeze,s.skillEffects().disabled(m.id));assertTrue(s.skillEffects().rooted(m.id));assertEquals(8,s.skillEffects().get(m.id,freeze?"FREEZE":"ROOT").remaining,0);
    assertFalse(s.tryMoveMonster(m,32,16,36));assertEquals(!freeze,c.monsterAutoBridge().submit(m.id,"player").outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED);
-   s.tick(7.99f);assertTrue(s.skillEffects().rooted(m.id));s.tick(.011f);assertFalse(s.skillEffects().rooted(m.id));
+   s.tick(7.99f);assertEquals(beforeX,m.x,0);assertEquals(beforeY,m.y,0);assertTrue(s.skillEffects().rooted(m.id));s.tick(.011f);assertFalse(s.skillEffects().rooted(m.id));
   }
   RuntimeState s=state();RuntimeState.Monster m=s.monsters().get(0);RuntimeCombatSession c=session(s);assertTrue(c.monsterAutoBridge().submit(m.id,"player").outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED);assertTrue(c.submitPlayer(m.id,"SK_무도가_018").accepted());int hp=s.player().hp;c.tick(.15f);c.tick(.3f);assertEquals(hp,s.player().hp);
  }
@@ -98,6 +98,15 @@ public class MartialMechanicsV173Test {
    if(id.endsWith("012")){s.player().hp=1000;s.tick(1);assertTrue(s.player().hp>1000);}
    if(id.endsWith("008"))assertEquals(1.2f,s.skillEffects().speed(),0);
   }
+ }
+ @Test public void leapValidatesActorLandingsEvenInActorOverlapRoomsAndNeverCrossesTerrain()throws Exception{
+  RuntimeState s=state();monsters(s).clear();((List<?>)field(s,"npcs")).clear();add(s,"front",32,16);
+  java.util.List<com.projectdark.mobile.world.WorldMoveTargetController.TileCenter> tiles=java.util.Arrays.asList(new com.projectdark.mobile.world.WorldMoveTargetController.TileCenter(0,0));
+  WorldRuntimeAdapter w=new WorldRuntimeAdapter(s,960,540,-1000,1000,-1000,1000,tiles,java.util.Collections.emptyList(),false);
+  assertTrue(w.canPlayerLeapTo(64,32));RuntimeState.Monster behind=add(s,"behind",64,32);assertFalse(w.canPlayerLeapTo(64,32));monsters(s).remove(behind);List<RuntimeState.Npc> ns=field(s,"npcs");ns.add(new RuntimeState.Npc("landing_npc","NPC",64,32,"","B"));assertFalse(w.canPlayerLeapTo(64,32));ns.clear();assertTrue(w.canPlayerLeapTo(64,32));
+  WorldRuntimeAdapter blocked=new WorldRuntimeAdapter(s,960,540,-1000,1000,-1000,1000,tiles,java.util.Arrays.asList(new RectF(25,10,38,22)),false);assertFalse(blocked.canPlayerLeapTo(64,32));
+  SkillEffectState old=new SkillEffectState();old.put("player","SK_무도가_022","REFLECT_TECH",1,10);SkillEffectState migrated=new SkillEffectState();assertTrue(migrated.restore(old.snapshot()));assertTrue(migrated.has("player","REFLECT_ALL"));
+  s.skillEffects().put("player","SK_무도가_022","REFLECT_ALL",1,16);s.monsters().get(0).hp=1;RuntimeCombatSession c=session(s);RuntimeCombatPortAdapter port=field(c,"port");int hp=s.player().hp;port.applyDamage("front","player",RuntimeCombatSession.MONSTER_BASIC_ACTION_ID,100);assertEquals(hp,s.player().hp);assertFalse(s.monsters().get(0).alive);assertEquals(1,s.ledger().snapshot().stream().filter(e->e.type==CombatLedger.Type.MONSTER_DEFEATED).count());
  }
  @Test public void actualQuickslotsLeapOverNpcAndApplyInvincibilityWithoutSelectionOrApproach()throws Exception{
   GameView v=new GameView(context);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=field(v,"state");monsters(s).clear();List<RuntimeState.Npc> npcs=field(s,"npcs");npcs.clear();WorldRuntimeAdapter world=(WorldRuntimeAdapter)call(v,"activeWorld",new Class<?>[]{});boolean found=false;
