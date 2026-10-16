@@ -155,14 +155,14 @@ SK_성직자_048,디베노메라,성직자,7,STATUS,NONE,0,CLEAR_POISON,169,0,20
 SK_성직자_049,디소루메라,성직자,7,STATUS,NONE,0,CLEAR_FREEZE,169,0,20,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,소루마 해제 · 20초
 SK_무도가_001,정권,무도가,1,DAMAGE,MARTIAL,1.07,,0,1.25,8,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 1.07
 SK_무도가_002,단각,무도가,2,DAMAGE,MARTIAL,1.349,,0,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 1.349
-SK_무도가_003,이형환위,무도가,2,SERVICE,NONE,0,LEAP,0,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상을 뛰어넘어 뒤로 이동 · 10초
+SK_무도가_003,이형환위,무도가,2,STATUS,NONE,0,LEAP,0,1.7,10,False,USER_CONFIRMED_V173,"User 2026-10-16: front actor leap, opposite tile, random free side fallback",대상을 뛰어넘어 뒤로 이동 · 10초
 SK_무도가_004,미종보법,무도가,2,STATUS,NONE,0,EVASION,17,0,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회피율 증가 계열 · 10초
 SK_무도가_005,양의신권,무도가,2,PASSIVE,NONE,0,,0,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,기본공격/장착 연동
 SK_무도가_006,통배권,무도가,2,DAMAGE,MARTIAL,1.412,POISON_HIT,0,1.7,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 1.412
 SK_무도가_007,붕각,무도가,3,DAMAGE,MARTIAL,1.718,,0,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 1.718
 SK_무도가_008,경신공,무도가,3,STATUS,NONE,0,SPEED,35,0,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,이동속도 증가 의도. 현재/버전별 실제 효과 차이 자료 존재 · 12초
 SK_무도가_009,백보신권,무도가,3,DAMAGE,MARTIAL,1.733,,0,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 1.733
-SK_무도가_010,일음지,무도가,3,STATUS,NONE,0,BLIND,0,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,대상에게 실명/딜루메니 효과 · 12초
+SK_무도가_010,일음지,무도가,3,STATUS,NONE,0,ROOT,0,2.15,8,False,USER_CONFIRMED_V173,User 2026-10-16 martial behavior clarification,대상에게 실명/딜루메니 효과 · 8초
 SK_무도가_011,흡정신공,무도가,3,DAMAGE,MAGIC,1.736,DRAIN,35,0,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(8+INT×4+WIS+Lv×1.5) × 1.736
 SK_무도가_012,쿠랄툼,무도가,3,STATUS,NONE,0,REGEN,0,2.15,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,체력 재생력 향상 · 12초
 SK_무도가_013,철포삼,무도가,3,STATUS,NONE,0,ARMOR10,36,0,12,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,자기무장. 자료상 AC -10 · 12초
@@ -170,11 +170,11 @@ SK_무도가_014,선풍각,무도가,4,DAMAGE,MARTIAL,1.815,,0,2.6,14,False,PROJ
 SK_무도가_015,장풍,무도가,4,DAMAGE,MARTIAL,2.054,,0,2.6,14,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 2.054
 SK_무도가_016,금강불괴,무도가,4,STATUS,NONE,0,INVINCIBLE,200,0,9,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,"무적 마법. 구 팬자료 기준 약 9초 유지, 전딜/후딜 없음. 실패 가능성 및 MP200 자료 존재. · 9초"
 SK_무도가_017,쿠라노토,무도가,4,HEAL,HEAL,2.9,,0,2.6,14,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,회복 = round((WIS×5 + INT×1.5 + Lv×2)×2.9); 최대 HP까지
-SK_무도가_018,발경,무도가,4,DAMAGE,MARTIAL,2.099,FREEZE_HIT,0,2.6,10,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 2.099
+SK_무도가_018,발경,무도가,4,DAMAGE,MARTIAL,2.099,FREEZE_HIT,0,2.6,8,False,USER_CONFIRMED_V173,User 2026-10-16 martial behavior clarification,(무기 공격+sqrt(STR×CON)×4+DAM) × 2.099
 SK_무도가_019,소수신공,무도가,4,STATUS,NONE,0,BASIC_POWER,0,2.6,14,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,기본공격 강화. 구 테스트 자료에서 일정 확률로 기본공격 2배 대미지. · 14초
 SK_무도가_020,다라밀공,무도가,5,DAMAGE,DARA,3.38,,0,12,16,False,MASTER_FORMULA_V,master/data/Skill_Formula_Research.csv + Skill_Damage_Model.csv,"max(0, HP+MP-1440) ×3.38"
 SK_무도가_021,구양신공,무도가,5,DAMAGE,HP_BURST,0.6336,,0,12,16,False,MASTER_FORMULA_V,master/data/Skill_Formula_Research.csv + Skill_Damage_Model.csv,현재HP ×0.6336
-SK_무도가_022,반탄신공,무도가,5,STATUS,NONE,0,REFLECT_TECH,87,0,16,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,반탄/반격 계열 기술 · 16초
+SK_무도가_022,반탄신공,무도가,5,STATUS,NONE,0,REFLECT_ALL,87,0,16,False,USER_CONFIRMED_V173,User 2026-10-16 martial behavior clarification,반탄/반격 계열 기술 · 16초
 SK_무도가_023,달마신공,무도가,5,DAMAGE,DALMA,0.3,,0,12,16,False,MASTER_FORMULA_V,master/data/Skill_Formula_Research.csv + Skill_Damage_Model.csv,현재HP ×0.30; 방어/속성/무적 무시
 SK_무도가_024,연천단각,무도가,6,DAMAGE,MARTIAL,2.912,,0,3.5,18,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 2.912
 SK_무도가_025,붕신선각,무도가,6,DAMAGE,MARTIAL,2.563,,0,3.5,18,False,PROJECT_ADAPTED_V83,User 2026-10-02: author unprovided formulas by learning circle/stat requirements,(무기 공격+sqrt(STR×CON)×4+DAM) × 2.563

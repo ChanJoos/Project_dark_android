@@ -1,0 +1,36 @@
+{
+  "id": "V173_MARTIAL_EFFECTS",
+  "status": "ACCEPTED",
+  "evidence": "USER_CONFIRMED_20261016",
+  "source_refs": [
+    "Skill_Master/SK_무도가_001..029",
+    "docs/SKILL_ACTION_DECISIONS.csv",
+    "supplied skill PDF martial section (historical differences retained)"
+  ],
+  "before": [
+    "Unsupported leap service",
+    "BLIND Ilumji",
+    "10s freeze",
+    "70% non-basic reflect",
+    "direct/DOT immunity bypass",
+    "Baekbo actor fragments + generic impact",
+    "Drain healing before actual HP clamp"
+  ],
+  "after": [
+    "Adjacent facing monster/NPC leap; behind then random safe sides; no empty use",
+    "8s ROOT allows adjacent attack",
+    "8s FREEZE blocks move and attack",
+    "Full equal incoming monster reflection",
+    "Player INVINCIBLE protects damage, not skill HP costs",
+    "Synchronous front3-cell cyan-only retained-source contact",
+    "Drain heals only actual HP lost"
+  ],
+  "artwork": "SOURCE_BYTES_UNCHANGED; runtime cyan selection ADAPTED",
+  "unmodified": [
+    "V172 clothing/icon/1-second basics",
+    "9s invincibility and16s reflect adapted duration",
+    "Other existing coefficients/costs"
+  ],
+  "save": "REFLECT_TECH from SK_무도가_022 migrates to REFLECT_ALL; no permanent skill grant",
+  "validation": "PENDING_CI_NATIVE_PHONE"
+}

@@ -71,6 +71,12 @@ public final class RuntimeCombatSession {
     List<CombatResolver.Event> events=actions.drainEvents(); return new FrameResult(events,actions.actionSnapshots());
   }
 
+  public void setPlayerFacing(java.util.function.Supplier<CharacterRenderer.Direction> f){port.setPlayerFacing(f);}
+  public CombatActionOrchestrator.Submission submitFacingMartial(String id){
+    if(!MartialSkillPolicy.facingOnly(id))throw new IllegalArgumentException(id);
+    String target=MartialSkillPolicy.LINE.equals(id)?PLAYER_ID:port.frontTarget(id);
+    return submitPlayer(target==null?"NO_FRONT_ACTOR":target,id);
+  }
   public void setSkillTestMode(boolean enabled){port.setSkillTestMode(enabled);}
   public void setSkillProficiency(java.util.function.ToIntFunction<String> p){port.setSkillProficiency(p);}
   public void setSkillMovement(SkillAbilityExecutor.Movement m){port.setSkillMovement(m);}
@@ -100,9 +106,9 @@ public final class RuntimeCombatSession {
   private CombatResolver.RejectReason canonicalMeleeRejectReason(String actorId,String targetId,CombatResolver.Definition definition,CombatResolver.InputMode mode){
     SkillActionContract.Rule rule=SkillActionContract.get(definition.actionId);
     if(rule!=null&&PLAYER_ID.equals(actorId)){
-      RuntimeState.Monster target=findMonster(targetId);
-      float tx=PLAYER_ID.equals(targetId)?state.player().x:target==null?Float.NaN:target.x;
-      float ty=PLAYER_ID.equals(targetId)?state.player().y:target==null?Float.NaN:target.y;
+      if(MartialSkillPolicy.LINE.equals(definition.actionId)&&PLAYER_ID.equals(targetId))return null;
+      float[] target=MartialSkillPolicy.position(state,targetId);
+      float tx=target==null?Float.NaN:target[0],ty=target==null?Float.NaN:target[1];
       return SkillActionContract.canStart(rule,state.player().x,state.player().y,tx,ty,PLAYER_ID.equals(targetId)||port.visible(targetId))?null:CombatResolver.RejectReason.RANGE;
     }
     if(!isCanonicalMeleeAction(definition.actionId))return null;

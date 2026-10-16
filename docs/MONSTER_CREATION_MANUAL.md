@@ -1,3 +1,7 @@
+## V173 control acceptance update
+
+User20261016: martial freeze8s blocks movement and attacks; root8s blocks movement while adjacent attacks remain legal. Runtime movement and both coast/prototype AI consult the same effects authority. Native verification pending; no monster artwork, stats or map population change. See master/changes/V173_MARTIAL_EFFECTS.json.
+
 ## 2026-10-15 — V162 original Pong palettes and live curse colors verified; delivery ready
 
 IMPLEMENTED / BUILD VERIFIED / NATIVE RUNTIME VERIFIED. APK source `6f3ac7b900299330b7e15c1d374f3d56048c86db`; focused Actions38664473610/job116193095024 SUCCESS:128tests/19suites,0failures/errors/skips. Actual GameView inn scene plus standalone mouse,23coast species×4directions×3poses, hit overlap,10catalog curses, stronger/weak dispel, expiry/respawn/fresh-map lifetime and independent normal/curse material samples pass. Common PR38664479830/job116193114075 and push38664473609/job116193094457 SUCCESS; exact source decoded logs checked,26successful Gradle invocations each.

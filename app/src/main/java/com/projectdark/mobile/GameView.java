@@ -111,8 +111,11 @@ public final class GameView extends View {
 
   public GameView(Context c){this(c,false);}
   GameView(Context c,boolean initialSkillTestMode){super(c);final boolean freshEquipmentProfile=F5mSaveStore.freshEquipmentTestProfile();UiTheme.install(c);MobileHudArtwork.install(c);questJournalModel=new QuestJournalModel(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);skillBook.setTestAccess(initialSkillTestMode);combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
+    combatSession.setPlayerFacing(playerFacing::presentation);
     combatSession.setSkillMovement(new SkillAbilityExecutor.Movement(){
       public boolean movePlayer(float x,float y){int steps=SkillActionContract.distance(state.player().x,state.player().y,x,y);if(steps==Integer.MAX_VALUE||steps>6||state.skillEffects().rooted("player"))return false;for(int i=1;i<=steps;i++){float q=i/(float)steps;if(!activeWorld().canPlayerOccupy(state.player().x+(x-state.player().x)*q,state.player().y+(y-state.player().y)*q))return false;}if(!activeWorld().canPlayerOccupy(x,y))return false;activeWorld().cancelForAction();state.player().x=x;state.player().y=y;activeWorld().snapCameraToPlayer();return true;}
+      public boolean canLeapPlayer(float x,float y){return activeWorld().canPlayerLeapTo(x,y);}
+      public boolean leapPlayer(float x,float y){if(!canLeapPlayer(x,y))return false;activeWorld().cancelForAction();state.player().x=x;state.player().y=y;activeWorld().snapCameraToPlayer();return true;}
       public boolean moveMonster(RuntimeState.Monster m,float x,float y){return state.tryMoveMonster(m,x-m.x,y-m.y,(float)Math.hypot(x-m.x,y-m.y));}
     });skillBook.bindJob(()->state.rpg().currentJobCode());state.rpg().bindTwoHandLearning(()->skillBook.learned("SK_전사_008"));skillWindow=new SkillWindow(skillBook,new SkillIconCatalog(c));F5mSaveStore.restoreAndBindSkillsActive(skillBook);hudSprites=new HudSpriteCatalog(c);inventoryVisuals=new EquipmentVisualRegistry(c);reagentShopRenderer=new ReagentShopInteriorRenderer(c);townRenderer=new TownInteriorRenderer(c);abelTownRenderer=new com.projectdark.mobile.world.AbelTownRenderer(c);rucesionTownRenderer=new com.projectdark.mobile.world.RucesionTownRenderer(c);townWindow=new TownShopWindow(c);setKeepScreenOn(true);F5mSaveStore.restoreQuestActive(f5mQuest);F5mSaveStore.restoreRewardsActive(state.rpg());state.rpg().enforceTwoHandLearning();state.rpg().enableEquipmentSandbox(F5mSaveStore.writable()&&freshEquipmentProfile);F5mSaveStore.restoreQuest2Active(quest2);quest2.unlockIfPrologueCompleted(f5mQuest);state.rpg().campaign().syncOpening(f5mQuest.state()==F5mAdaptedPrologueQuest.State.COMPLETED,quest2.state()==GrowthQuest2.State.COMPLETED);float[] returnPoint=F5mSaveStore.savedFieldReturnPointActive();fieldReturnX=returnPoint[0];fieldReturnY=returnPoint[1];if(com.projectdark.mobile.world.CampaignWorld.contains(F5mSaveStore.savedMapIdActive())){state.enterCampaignMap(F5mSaveStore.savedMapIdActive(),false);inPoteField=true;}F5mSaveStore.restoreRuntimeActive(state);if(!inPoteField)worldAdapter.snapCameraToPlayer();if(inPoteField){poteFieldRenderer.prepareMonsters(state);if(com.projectdark.mobile.world.RucesionTownGeometry.contains(state.currentMapId()))rucesionTownRenderer.prepare();if(com.projectdark.mobile.world.AbelTownGeometry.contains(state.currentMapId()))abelTownRenderer.prepare();poteFieldAdapter=campaignWorldAdapter();poteFieldAdapter.snapCameraToPlayer();camera=poteFieldAdapter.camera();}F5mSaveStore.bindRuntime(state,f5mQuest,quest2);if(freshEquipmentProfile&&F5mSaveStore.writable())F5mSaveStore.saveRewardsActive(state.rpg());restoreTownInterior();if(inPoteField&&!com.projectdark.mobile.world.RucesionTownGeometry.contains(state.currentMapId())&&!com.projectdark.mobile.world.AbelTownGeometry.contains(state.currentMapId())&&!com.projectdark.mobile.world.AbelCoastGeometry.contains(state.currentMapId())&&!com.projectdark.mobile.world.RucesionCoastGeometry.contains(state.currentMapId()))questJournalModel.visitForest(f5mQuest,quest2);savedLedgerSequence=state.ledger().sequence();if(!F5mSaveStore.writable())showFeedback("저장 데이터를 읽지 못했습니다 · 원본 보존 중",FeedbackTone.WARN);CharacterVisualBinding initialVisuals=playerVisuals();skillBodyRenderer.prepare(initialVisuals.equipmentVisualRef(),initialVisuals.weaponVisualRef());}
   void setSkillTestMode(boolean enabled){
@@ -301,7 +304,7 @@ public final class GameView extends View {
     if(entry==null||isActing()||!state.player().alive)return;
     if(!skillBook.jobAllowed(entry.id)||!skillBook.usable(entry.id)){useBookSkillNow(entry);return;}
     cancelSkillApproach();autoAttackEnabled=false;
-    if("SK_공통_001".equals(entry.id)){useBookSkillNow(entry);return;}
+    if("SK_공통_001".equals(entry.id)||MartialSkillPolicy.facingOnly(entry.id)){useBookSkillNow(entry);return;}
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
     if(rule!=null&&rule.selfAnchored()){useBookSkillNow(entry);return;}
     boolean offensive=rule!=null&&rule.presentationAllowed()&&(!rule.selfAnchored()||rule.damage());
@@ -350,6 +353,13 @@ public final class GameView extends View {
     if(!skillBook.usable(entry.id)){showFeedback(skillBook.learned(entry.id)?"이 기술의 전투 효과는 준비 중입니다":"먼저 기술을 습득하세요",FeedbackTone.WARN);return;}
     if(!automatic)autoAttackEnabled=false;
     if("SK_공통_001".equals(entry.id)){float remaining=skillActions.cooldown(entry.id);if(remaining>0)showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",remaining),FeedbackTone.WARN);else attack();return;}
+    if(MartialSkillPolicy.facingOnly(entry.id)){
+      if(isActing()||!state.player().alive)return;
+      CombatActionOrchestrator.Submission result=combatSession.submitFacingMartial(entry.id);
+      if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;trigger(Action.SKILL);}
+      else showFeedback(result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":"바라보는 방향의 대상 또는 착지 공간이 없습니다",FeedbackTone.WARN);
+      return;
+    }
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
     if(rule!=null&&!rule.presentationAllowed()){
       SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(entry.id);

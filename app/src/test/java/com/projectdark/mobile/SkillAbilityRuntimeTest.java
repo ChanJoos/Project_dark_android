@@ -16,7 +16,7 @@ public class SkillAbilityRuntimeTest {
  Context context;
  @Before public void before(){context=RuntimeEnvironment.getApplication();context.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(context);}
  RuntimeState state()throws Exception{RuntimeState s=new RuntimeState();s.rpg().restoreStats(50,50,50,50,50,0);s.rpg().restoreProgression(80,0);s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=20000;s.player().mp=20000;s.player().x=s.player().y=0;List<RuntimeState.Monster> list=field(s,"monsters");list.clear();int i=0;for(float[] d:new float[][]{{32,16},{-32,-16},{32,-16},{-32,16},{64,0}})list.add(new RuntimeState.Monster("m"+i++,"fixture",d[0],d[1],1000000,"ADAPTED_TEST"));return s;}
- RuntimeCombatSession session(RuntimeState s){return new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);}
+ RuntimeCombatSession session(RuntimeState s){RuntimeCombatSession c=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);c.setSkillMovement(new SkillAbilityExecutor.Movement(){public boolean movePlayer(float x,float y){s.player().x=x;s.player().y=y;return true;}public boolean moveMonster(RuntimeState.Monster m,float x,float y){return false;}public boolean canLeapPlayer(float x,float y){return s.canPlayerOccupyActors(x,y);}public boolean leapPlayer(float x,float y){return movePlayer(x,y);}});return c;}
  @Test public void everyCatalogIdHasAnExplicitAbilityAndDamageScalesByRealStats()throws Exception{
   assertEquals(221,SkillAbilityCatalog.all().size());RuntimeState s=state();FinalStats low=s.rpg().finalStats();s.rpg().restoreStats(99,99,99,99,99,0);FinalStats high=s.rpg().finalStats();int offensive=0,heals=0;
   for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all()){

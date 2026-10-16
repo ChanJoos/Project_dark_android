@@ -7,10 +7,10 @@ learn=json.loads((ROOT/'app/src/main/assets/skills/mobile_learning.json').read_t
 rules={r['id']:r for r in csv.DictReader((ROOT/'docs/SKILL_ACTION_DECISIONS.csv').open())}
 # Semantic IDs, not fuzzy name checks, are exported to Java. Values without evidence are ADAPTED.
 statuses={
- 'BASIC':['기본공격'], 'DOOR':['문열기','자물쇠열기'], 'ROOT':['바투','포효'], 'CLEAR_ROOT':['디바투'],
+ 'BASIC':['기본공격'], 'DOOR':['문열기','자물쇠열기'], 'ROOT':['바투','포효','일음지'], 'CLEAR_ROOT':['디바투'],
  'DRAGON':['드래곤모드'], 'PHOENIX':['피닉스모드'], 'PHYSICAL_GUARD':['완전방어','포트리스'], 'TECH_MAGIC_GUARD':['델리스펠라스'],
  'FOCUS':['집중'], 'DISARM':['적무기쳐내기'], 'TAUNT':['레스큐'],
- 'RESET_AGGRO':['아무네지아','콘푸지오'], 'BLIND':['연막탄터뜨리기','딜루메니','일음지'],
+ 'RESET_AGGRO':['아무네지아','콘푸지오'], 'BLIND':['연막탄터뜨리기','딜루메니'],
  'STEALTH':['하이드','하이더'], 'EVASION':['라이트닝무브','미종보법'], 'ARMOR_BREAK':['적갑옷해체'],
  'POISON':['베노미'], 'DEATH_POISON':['데스'], 'SLEEP':['나르콜리'], 'FREEZE':['소루마'],
  'CURSE20':['렌토','렌티아'], 'CURSE35':['바르도','바르데아'], 'CURSE50':['데프레코','데프레타'], 'CURSE65':['프라보','프라베라'], 'CURSE70':['어둠의각인'],
@@ -21,7 +21,7 @@ statuses={
  'CLEAR_CURSE20':['디렌토','디렌타'], 'CLEAR_CURSE35':['디바르도','디바르데아'], 'CLEAR_CURSE50':['디데프레카','디데프레타'],
  'CLEAR_CURSE65':['디프라바','디프라베라'], 'CLEAR_CURSE70':['홀리큐어','홀리큐레스'], 'CLEAR_BLIND':['일루메나','일루메룸'],
  'CLEAR_POISON':['디베노모','디베노메라'], 'CLEAR_SLEEP':['디나르콜리','디나르콜룸'], 'CLEAR_FREEZE':['디소루마','디소루메라'],
- 'SPEED':['경신공','경신공법'], 'BASIC_POWER':['소수신공'], 'REFLECT_TECH':['반탄신공'],
+ 'SPEED':['경신공','경신공법'], 'BASIC_POWER':['소수신공'], 'REFLECT_ALL':['반탄신공'],
  'DRAIN':['흡정신공'], 'PUSH':['밀기'], 'LEAP':['이형환위'], 'CHARGE':['돌진'], 'POISON_HIT':['통배권'], 'FREEZE_HIT':['발경'],
  'TRANSFER':['수혈'], 'CHANGE_ELEMENT':['디내추라'], 'REST':['휴식'],
  'INSPECT':['센스몬스터','센스','탐색','아들레스투','품뒤져보기','센서스'],
@@ -41,7 +41,7 @@ for e in cat:
  if status in ('POISON_HIT','FREEZE_HIT','DRAIN','CHARGE'):kind='DAMAGE'
  if n=='파천각':kind='DAMAGE'
  # Source gates: player-only Push/ArmorDisarm/HideOther and missing leap recipient.
- if e['id'] in ('SK_도적_004','SK_도적_019','SK_도적_026','SK_무도가_003'):kind='SERVICE'
+ if e['id'] in ('SK_도적_004','SK_도적_019','SK_도적_026'):kind='SERVICE'
  evidence='PROJECT_ADAPTED_V83';source='User 2026-10-02: author unprovided formulas by learning circle/stat requirements'
  # Physical multipliers grow with circle and acquisition burden; martial balance uses STR/CON geometric mean.
  required=learn[e['id']]['stats'];burden=sum(required.values())-15
@@ -75,7 +75,9 @@ for e in cat:
  # Explicit PDF reuse exceptions and the retained Dara finisher exception stay separate.
  if e['kind']=='마법':
   cd={'이모탈':5,'리플렉토':5,'나르콜리':1,'다라밀공':12}.get(n,0)
- duration=9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
+ duration=8 if n in ('발경','일음지') else 9 if n=='금강불괴' else 18 if n=='이모탈' else 10 if status=='FREEZE_HIT' else 6+c*2
+ if n=='이형환위':kind='STATUS';evidence='USER_CONFIRMED_V173';source='User 2026-10-16: front actor leap, opposite tile, random free side fallback'
+ if n in ('발경','일음지','반탄신공'):evidence='USER_CONFIRMED_V173';source='User 2026-10-16 martial behavior clarification'
  if kind=='HEAL':desc=f'회복 = round((WIS×5 + INT×1.5 + Lv×2)×{coef}); 최대 HP까지'
  elif kind=='DAMAGE':desc={'PHYSICAL':'(무기 공격+STR×3+DAM)','ROGUE':'(무기 공격+STR×1.8+DEX×2.2+DAM)','MARTIAL':'(무기 공격+sqrt(STR×CON)×4+DAM)','MAGIC':'(8+INT×4+WIS+Lv×1.5)','BASIC':'(무기 공격+STR×3+DAM)'}.get(formula,formula)+f' × {coef}'
  else:desc=(e['effect']+f' · {duration}초') if status else ('기본공격/장착 연동' if kind=='PASSIVE' else '대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음')

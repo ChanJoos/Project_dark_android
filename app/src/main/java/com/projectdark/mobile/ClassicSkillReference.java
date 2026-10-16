@@ -23,7 +23,7 @@ final class ClassicSkillReference {
     if(doc.has("damageImpact"))damageImpact=new Channel(c,"RECIPIENT_DAMAGE",doc.getJSONObject("damageImpact"));
     Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=entries.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=new LinkedHashMap<>();Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}effects.put(id,result);}
     JSONArray rows=read(c,directory+"/references.json").getJSONArray("rows");for(int i=0;i<rows.length();i++){JSONObject row=rows.getJSONObject(i);if(!row.isNull("id"))references.put(row.getString("id"),row);}
-    prewarmCenters();
+    prewarmCenters();prepareBaekbo();
   }catch(Exception e){throw new IllegalStateException("Classic skill reference",e);}}
   private static JSONObject read(Context c,String path)throws Exception{return new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/"+path),StandardCharsets.UTF_8));}
   boolean has(String id){return effects.containsKey(id);}
@@ -37,6 +37,19 @@ final class ClassicSkillReference {
     canvas.drawBitmap(s.atlas,new Rect(col*s.width,row*s.height+topCrop,(col+1)*s.width,(row+1)*s.height),new RectF(x-pivotX*s.scale,y+(topCrop-pivotY)*s.scale,x+(s.width-pivotX)*s.scale,y+(s.height-pivotY)*s.scale),paint);
     paint.setXfermode(null);canvas.restore();
   }
+  private Bitmap baekbo;private final java.util.List<Rect> baekboFrames=new ArrayList<>();
+  /** Retain cyan burst pixels only; source actor/HP UI residue is never projected onto recipients. */
+  private void prepareBaekbo(){Channel ch=channel(MartialSkillPolicy.LINE,false);if(ch==null)return;
+    CapturedSkillFx.Sequence s=ch.sequence;baekbo=s.atlas.copy(Bitmap.Config.ARGB_8888,true);
+    int[] pixels=new int[baekbo.getWidth()*baekbo.getHeight()];baekbo.getPixels(pixels,0,baekbo.getWidth(),0,0,baekbo.getWidth(),baekbo.getHeight());
+    for(int n=0;n<pixels.length;n++){int color=pixels[n],r=Color.red(color),g=Color.green(color),b=Color.blue(color);if(g<100||b<100||r>=Math.min(g,b)*.7f)pixels[n]=Color.TRANSPARENT;}
+    baekbo.setPixels(pixels,0,baekbo.getWidth(),0,0,baekbo.getWidth(),baekbo.getHeight());
+    for(int frame=0;frame<s.durations.length;frame++){int ox=frame%s.columns*s.width,oy=frame/s.columns*s.height,l=s.width,t=s.height,r=-1,b=-1,count=0;
+      for(int y=0;y<s.height;y++)for(int x=0;x<s.width;x++)if(Color.alpha(pixels[(oy+y)*baekbo.getWidth()+ox+x])>0){count++;l=Math.min(l,x);t=Math.min(t,y);r=Math.max(r,x);b=Math.max(b,y);}
+      if(count>=300)baekboFrames.add(new Rect(ox+l,oy+t,ox+r+1,oy+b+1));
+    }baekbo.prepareToDraw();
+  }
+  void drawBaekboContact(Canvas c,float age,float x,float y){if(baekbo==null||baekboFrames.isEmpty())return;Rect r=baekboFrames.get(Math.min(baekboFrames.size()-1,(int)(age/.32f*baekboFrames.size())));paint.setFilterBitmap(false);c.drawBitmap(baekbo,r,new RectF(x-r.width()/2f,y-r.height()/2f,x+r.width()/2f,y+r.height()/2f),paint);}
   private final Map<Channel,float[]> centers=new IdentityHashMap<>();
   private void prewarmCenters(){for(Map.Entry<String,Map<String,Channel>> entry:effects.entrySet()){
     if(!SkillVfxRenderer.recipientFinisher(entry.getKey()))continue;

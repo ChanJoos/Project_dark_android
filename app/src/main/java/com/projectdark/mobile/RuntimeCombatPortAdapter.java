@@ -28,9 +28,15 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   public void setSkillTestMode(boolean value){abilities.testMode=value;}
   public void setSkillProficiency(java.util.function.ToIntFunction<String> p){abilities.proficiency=p;}
   public void setSkillMovement(SkillAbilityExecutor.Movement m){abilities.movement=m;}
+  private java.util.function.Supplier<CharacterRenderer.Direction> playerFacing;
+  public void setPlayerFacing(java.util.function.Supplier<CharacterRenderer.Direction> facing){playerFacing=facing;}
+  CharacterRenderer.Direction facing(){return playerFacing==null?CharacterRenderer.Direction.SE:playerFacing.get();}
+  String frontTarget(String id){return MartialSkillPolicy.frontTarget(state,id,facing(),this::visible);}
   public String takeSkillNotice(){return abilities.takeNotice();}
   public CombatResolver.RejectReason actionReady(String actor,String target,String id,boolean begin){
     if(begin&&"player".equals(actor)&&MagicTimingPolicy.managed(id)&&spellIntervalRemaining>0)return CombatResolver.RejectReason.ACTION_BUSY;
+    if("player".equals(actor)&&isNpc(target)&&!MartialSkillPolicy.LEAP.equals(id))return CombatResolver.RejectReason.TARGET_DEAD;
+    if("player".equals(actor)&&MartialSkillPolicy.LEAP.equals(id)&&playerFacing!=null&&!java.util.Objects.equals(target,frontTarget(id)))return CombatResolver.RejectReason.RANGE;
     CombatResolver.RejectReason r=abilities.ready(actor,target,id,begin);if(r!=null)return r;
     SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);
     if(begin&&a!=null&&a.damage()&&recipients(actor,target,id).isEmpty())return CombatResolver.RejectReason.TARGET_DEAD;
@@ -53,7 +59,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private final Map<String,Float> cooldowns=new HashMap<>();
   private float spellIntervalRemaining;
   private final Map<String,float[]> directions=new HashMap<>();
-  public void lockDirection(String actor,String target,String id){Position a=position(actor),t=position(target);if(a!=null&&t!=null)directions.put(actor+":"+id,new float[]{t.x-a.x,t.y-a.y});}
+  public void lockDirection(String actor,String target,String id){Position a=position(actor),t=position(target);if(MartialSkillPolicy.facingOnly(id)&&(playerFacing!=null||actor.equals(target)))directions.put(actor+":"+id,MartialSkillPolicy.step(facing()));else if(a!=null&&t!=null)directions.put(actor+":"+id,new float[]{t.x-a.x,t.y-a.y});}
   private java.util.function.Predicate<String> visible=id->true;
   private java.util.function.IntSupplier basicHits=()->1;
   public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
@@ -66,9 +72,11 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(r==null||!"player".equals(actor))return java.util.Collections.singletonList(target);
     Position a=position(actor),t=position(target);java.util.List<String> out=new java.util.ArrayList<>();
     if(a==null||t==null)return out;
+    if(MartialSkillPolicy.LEAP.equals(action))return targetAlive(target)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SINGLE)return visible(target)&&SkillActionContract.canStart(r,a.x,a.y,t.x,t.y,true)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SELF||r.pattern==SkillActionContract.Pattern.ALLY||r.pattern==SkillActionContract.Pattern.GROUP){out.add(actor);return out;}
     float tx=t.x,ty=t.y;float[] intent=directions.get(actor+":"+action);
+    if(intent==null&&MartialSkillPolicy.LINE.equals(action)&&(playerFacing!=null||actor.equals(target)))intent=MartialSkillPolicy.step(facing());
     if(intent!=null&&(r.pattern==SkillActionContract.Pattern.FRONT||r.pattern==SkillActionContract.Pattern.FRONT_BACK)){tx=a.x+intent[0];ty=a.y+intent[1];}
     for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,tx,ty,m.x,m.y,true)&&hasLineOfSight(actor,m.id))out.add(m.id);
     return out;
@@ -101,7 +109,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public boolean actorAlive(String actorId){return entityAlive(actorId);}
-  public boolean targetAlive(String targetId){return entityAlive(targetId);}
+  public boolean targetAlive(String targetId){return entityAlive(targetId)||isNpc(targetId);}
   public boolean canAct(String actorId){return !state.skillEffects().disabled(actorId)&&control.canAct(actorId);}
   public boolean learned(String actorId,String actionId){return learnedActions.learned(actorId,actionId);}
   public boolean cooldownReady(String actorId,String actionId){return cooldownRemaining(actorId,actionId)<=0f;}
@@ -170,6 +178,11 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     }else amount=(profile!=null&&AbelCombatProfile.spell(actionId)?CombatStatPipeline.resolveSkill(amount,channel,attacker,defender):CombatStatPipeline.resolve(amount,channel,attacker,defender)).applied;
     if(playerActor&&basic){if(state.skillEffects().has(actorId,"BASIC_POWER")&&abilities.random.getAsDouble()<.3)amount=safeScale(amount,2);}
     SkillEffectState fx=state.skillEffects();
+    // Reflection redirects the computed incoming hit once, before other immunity; never recurses.
+    if(!playerActor&&"player".equals(targetId)&&fx.has(targetId,"REFLECT_ALL")){
+      RuntimeState.Monster reflected=findMonster(actorId);if(reflected!=null&&amount>0)state.damage(reflected,amount);
+      return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,CombatResolver.HitSemantic.STATUS);
+    }
     if(ability==null||!ability.fixed()){
       if(fx.has(targetId,"INVINCIBLE")||channel==CombatStatPipeline.Channel.PHYSICAL&&fx.has(targetId,"PHYSICAL_GUARD")||!basic&&fx.has(targetId,"TECH_MAGIC_GUARD"))amount=0;
       else if(channel==CombatStatPipeline.Channel.MAGIC&&fx.has(targetId,"MAGIC_GUARD"))amount=safeScale(amount,.5);
@@ -180,10 +193,11 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
       if(fx.has(actorId,"DISARM"))amount=safeScale(amount,.65);
       if(channel==CombatStatPipeline.Channel.MAGIC&&fx.has(targetId,"REFLECT_MAGIC")||!basic&&channel==CombatStatPipeline.Channel.PHYSICAL&&fx.has(targetId,"REFLECT_TECH")&&abilities.random.getAsDouble()<.7){if(playerActor)state.damagePlayer(amount);else{RuntimeState.Monster reflected=findMonster(actorId);state.damage(reflected,amount);}amount=0;}
     }
-    if(playerActor&&amount>0){fx.remove(actorId,"STEALTH");if(!basic&&ability!=null)abilities.damageStatus(targetId,ability,amount);fx.remove(targetId,"SLEEP");}
+    if(playerActor&&ability!=null&&ability.status.equals("FREEZE_HIT")&&entityAlive(targetId))abilities.damageStatus(targetId,ability,amount);
+    if(playerActor&&amount>0){fx.remove(actorId,"STEALTH");if(!basic&&ability!=null&&!ability.status.equals("FREEZE_HIT"))abilities.damageStatus(targetId,ability,amount);fx.remove(targetId,"SLEEP");}
     if(amount<=0||!entityAlive(actorId)||!entityAlive(targetId))
       return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,
-          targetKind(targetId),CombatResolver.HitSemantic.MISS);
+          targetKind(targetId),ability!=null&&ability.status.equals("FREEZE_HIT")?CombatResolver.HitSemantic.STATUS:CombatResolver.HitSemantic.MISS);
 
     if("player".equals(targetId)){
       int before=state.player().hp;
@@ -200,6 +214,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
       int before=monster.hp;
       state.damage(monster,amount);
       int applied=Math.max(0,before-monster.hp);
+      if(playerActor&&ability!=null&&ability.status.equals("DRAIN"))state.player().hp=Math.min(state.player().maxHp,state.player().hp+applied);
       return new CombatResolver.EffectResult(applied,before>0&&!monster.alive,
           CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.MONSTER,
           ability!=null&&(ability.formula.equals("ASSASSIN")||ability.formula.equals("ASSASSIN_PLUS"))&&abilities.snapCritical(actionId)?CombatResolver.HitSemantic.CRIT:CombatResolver.HitSemantic.DAMAGE);
@@ -219,9 +234,11 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private Position position(String id){
     if("player".equals(id))return new Position(state.player().x,state.player().y);
     RuntimeState.Monster monster=findMonster(id);
-    return monster==null?null:new Position(monster.x,monster.y);
+    if(monster!=null)return new Position(monster.x,monster.y);
+    for(RuntimeState.Npc n:state.npcs())if(n.id.equals(id))return new Position(n.x,n.y);return null;
   }
 
+  private boolean isNpc(String id){for(RuntimeState.Npc n:state.npcs())if(n.id.equals(id))return true;return false;}
   private RuntimeState.Monster findMonster(String id){
     if(id==null)return null;
     for(RuntimeState.Monster monster:state.monsters())if(id.equals(monster.id))return monster;

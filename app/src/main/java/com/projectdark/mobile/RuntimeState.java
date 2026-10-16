@@ -217,7 +217,7 @@ public final class RuntimeState {
   public boolean tryMove(float dx,float dy){if(!player.alive||skillEffects.rooted("player"))return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,currentMinX,currentMaxX),ny=clamp(player.y+dy,currentMinY,currentMaxY);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
 
   public boolean tryMoveMonster(Monster m,float desiredDx,float desiredDy,float distance){
-    if(m==null||!m.alive)return false;
+    if(m==null||!m.alive||skillEffects.rooted(m.id))return false;
     MonsterDiagonalLocomotion.Step applied=MonsterDiagonalLocomotion.select(
         m.x,m.y,desiredDx,desiredDy,distance,m.visualFacing.locomotion(),m.detourSign,
         new MonsterDiagonalLocomotion.Occupancy(){
@@ -356,7 +356,7 @@ public final class RuntimeState {
   public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;m.attackVisualRemaining=0f;m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}}
 
   public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.isMoving=false;m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.attackVisualRemaining=0f;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=m.respawnSeconds;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
-  public void damagePlayer(int amount){if(amount<=0||!player.alive)return;skillEffects.stopRest();player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.state=Monster.State.IDLE;}}}
+  public void damagePlayer(int amount){if(amount<=0||!player.alive||skillEffects.has("player","INVINCIBLE"))return;skillEffects.stopRest();player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.state=Monster.State.IDLE;}}}
   public void revivePlayer(){skillEffects.clear("player");player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;player.hitFlash=0f;ledger.add(CombatLedger.Type.PLAYER_REVIVED,"runtime","player",0);}
 
   private float equipmentRegenClock;private int previousEquipmentRegen;

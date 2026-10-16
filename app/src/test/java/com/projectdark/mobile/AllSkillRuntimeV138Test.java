@@ -17,6 +17,7 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
    RuntimeState.Monster m=s.monsters().get(0);m.x=s.player().x+32*Math.max(1,r.minReach);m.y=s.player().y+16*Math.max(1,r.minReach);m.hp=1;
    s.skillEffects().put("player","qa-hidden","STEALTH",1,60);
    RuntimeCombatSession session=new RuntimeCombatSession(s,(x,y)->true,(x,id)->true,x->true);
+   session.setSkillMovement(new SkillAbilityExecutor.Movement(){public boolean movePlayer(float x,float y){s.player().x=x;s.player().y=y;return true;}public boolean moveMonster(RuntimeState.Monster m,float x,float y){return false;}public boolean canLeapPlayer(float x,float y){return true;}public boolean leapPlayer(float x,float y){return movePlayer(x,y);}});
    boolean spell=ItemEffects.magic(a.id);if(spell){spells++;assertTrue(a.id,MagicTimingPolicy.managed(a.id));}
    if(a.id.equals("SK_공통_001")){assertTrue(session.submitPlayerBasicAttack(m.id).combat.accepted());session.tick(.3f);continue;}
    if(!a.supported()){int mp=s.player().mp;assertFalse(a.id,session.useUtility(a.id));assertEquals(a.id,mp,s.player().mp);continue;}

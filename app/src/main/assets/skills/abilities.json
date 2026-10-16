@@ -2656,7 +2656,7 @@
     "name": "이형환위",
     "job": "무도가",
     "circle": 2,
-    "kind": "SERVICE",
+    "kind": "STATUS",
     "formula": "NONE",
     "coefficient": 0,
     "status": "LEAP",
@@ -2664,8 +2664,8 @@
     "cooldown": 1.7,
     "duration": 10,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
+    "evidence": "USER_CONFIRMED_V173",
+    "source": "User 2026-10-16: front actor leap, opposite tile, random free side fallback",
     "description": "대상을 뛰어넘어 뒤로 이동 · 10초"
   },
   {
@@ -2778,14 +2778,14 @@
     "kind": "STATUS",
     "formula": "NONE",
     "coefficient": 0,
-    "status": "BLIND",
+    "status": "ROOT",
     "mpCost": 0,
     "cooldown": 2.15,
-    "duration": 12,
+    "duration": 8,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "대상에게 실명/딜루메니 효과 · 12초"
+    "evidence": "USER_CONFIRMED_V173",
+    "source": "User 2026-10-16 martial behavior clarification",
+    "description": "대상에게 실명/딜루메니 효과 · 8초"
   },
   {
     "id": "SK_무도가_011",
@@ -2917,10 +2917,10 @@
     "status": "FREEZE_HIT",
     "mpCost": 0,
     "cooldown": 2.6,
-    "duration": 10,
+    "duration": 8,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
+    "evidence": "USER_CONFIRMED_V173",
+    "source": "User 2026-10-16 martial behavior clarification",
     "description": "(무기 공격+sqrt(STR×CON)×4+DAM) × 2.099"
   },
   {
@@ -2982,13 +2982,13 @@
     "kind": "STATUS",
     "formula": "NONE",
     "coefficient": 0,
-    "status": "REFLECT_TECH",
+    "status": "REFLECT_ALL",
     "mpCost": 87,
     "cooldown": 0,
     "duration": 16,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
+    "evidence": "USER_CONFIRMED_V173",
+    "source": "User 2026-10-16 martial behavior clarification",
     "description": "반탄/반격 계열 기술 · 16초"
   },
   {

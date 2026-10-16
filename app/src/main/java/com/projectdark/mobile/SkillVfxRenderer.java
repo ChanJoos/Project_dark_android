@@ -31,6 +31,9 @@ final class SkillVfxRenderer {
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
     boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&(e.hitSemantic!=CombatResolver.HitSemantic.MISS);
     if(!caster&&!target)continue;
+    if(MartialSkillPolicy.LINE.equals(id)){
+      if(target){String key=e.actionSequence+":martial-line:"+e.targetId;if(seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"martial-line",0,e.targetId,false,.32f,a.x(e.targetId),a.y(e.targetId)));if(pulses.size()>64)pulses.remove(0);}}continue;
+    }
     // A real resolved damaging contact has its own recipient-only visual channel.
     // Preview (amount zero), misses and healing never pretend the monster took damage.
     if(target&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)&&!e.actorId.equals(e.targetId)){
@@ -56,6 +59,7 @@ boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequenc
   static boolean recipientFinisher(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a!=null&&a.damage()&&a.resourceBurst()&&!"CRASH".equals(a.formula);}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
   void draw(Canvas c,Anchors a){for(Pulse f:pulses){
+    if(f.sheet.equals("martial-line")){classic.drawBaekboContact(c,f.age,a.centerX(f.anchor),a.centerY(f.anchor));continue;}
     if(f.sheet.equals("classic")||f.sheet.equals("rogue")||f.sheet.equals("warrior")||f.sheet.equals("shared")){ClassicSkillReference reference=f.sheet.equals("rogue")?rogue:f.sheet.equals("warrior")?warrior:f.sheet.equals("shared")?shared:classic;float x=a.x(f.anchor),y=a.y(f.anchor);ClassicSkillReference.Channel channel=reference.channel(f.id,f.caster);float cy=a.centerY(f.anchor),cx=a.centerX(f.anchor);
       if(!f.caster&&recipientFinisher(f.id)){reference.drawCentered(c,channel,f.age,Float.isFinite(cx)?cx:f.x,Float.isFinite(cy)?cy:f.y-25);continue;}
       if(f.sheet.equals("classic")&&f.id.startsWith("SK_무도가_")&&!channel.sequence.visualCenter){

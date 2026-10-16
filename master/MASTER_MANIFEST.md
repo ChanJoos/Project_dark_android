@@ -1,3 +1,7 @@
+## V173 user-confirmed martial repair
+
+Accepted changes/V173_MARTIAL_EFFECTS.json; all29 audit docs/MARTIAL_EFFECTS_V173_AUDIT.md. User8s controls and complete reflection override historical fan values. Build/native/phone pending.
+
 ## V172 verification closure
 
 Runtime/APK 2e38f3784a2a3e998016dd623f2be32d4777781c; focused185/33 + full push26Gradle PASS; saved V172 TEST APK. Phone/user pending. Exact artifacts/hashes/save identity: changes/V172_BUILD_RUNTIME_RECEIPT.json.
