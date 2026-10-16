@@ -19,9 +19,12 @@
   "common": {
     "pushRun": 38862282488,
     "pushJob": 116847063857,
+    "pushStatus": "SUCCESS",
+    "successfulGradleExecutions": 26,
     "prRun": 38862291565,
     "prJob": 116847093258,
-    "status": "IN_PROGRESS"
+    "prStatus": "IN_PROGRESS_DUPLICATE",
+    "sourceCommit": "18fb16ef866d5b88878451ca3d5729a33ec0d0ec"
   },
   "apk": {
     "sourceCommit": "18fb16ef866d5b88878451ca3d5729a33ec0d0ec",
@@ -63,6 +66,12 @@
     "embeddedSourceRunVersion": "PASS",
     "all268BodyAndCatalogBytes": "PASS",
     "junitIndependentlyParsed": "182/32 all PASS including4actualActivity/inventory/restart cases",
+    "phone": "PENDING"
+  },
+  "delivery": {
+    "status": "DELIVERED",
+    "mainMerged": false,
+    "pr": 197,
     "phone": "PENDING"
   }
 }
