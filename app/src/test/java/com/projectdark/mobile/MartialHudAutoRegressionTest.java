@@ -30,12 +30,12 @@ public class MartialHudAutoRegressionTest {
    int column=0;
    for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
     GameView v=directed(direction);RuntimeState s=field(v,"state");RuntimeState.Monster target=s.monsters().get(0);int hp=target.hp;
-    call(v,"useBookSkill",SkillBook.Entry.class,((SkillBook)field(v,"skillBook")).get(entry.id));assertEquals(entry.id,field(v,"activeSkillVisualId"));
+    call(v,"useBookSkill",SkillBook.Entry.class,((SkillBook)field(v,"skillBook")).get(entry.id));if(MartialSkillPolicy.LEAP.equals(entry.id))assertNull(field(v,"activeSkillVisualId"));else assertEquals(entry.id,field(v,"activeSkillVisualId"));
     assertEquals(direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
     float contact="마법".equals(rule.kind)?((RuntimeCombatSession)field(v,"combatSession")).effectiveCastSeconds(entry.id):rule.contact;
     advance(v,Math.max(0,contact-.01f));assertEquals(entry.id+" no early enemy hit",hp,target.hp);
     SkillVfxRenderer fx=field(v,"skillVfx");assertFalse(entry.id+" no early recipient",fx.pulses.stream().anyMatch(p->!p.caster));
-    advance(v,.011f);assertEquals(direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
+    advance(v,.011f);assertEquals(MartialSkillPolicy.LEAP.equals(entry.id)?CanonicalActorFacing.quantize(target.x-s.player().x,target.y-s.player().y,direction):direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
     if(rule.damage())assertTrue(entry.id+" actual target contact",target.hp<hp);
     for(SkillVfxRenderer.Pulse pulse:fx.pulses){
      if(pulse.sheet.equals("impact"))assertEquals("actual damage recipient",target.id,pulse.anchor);

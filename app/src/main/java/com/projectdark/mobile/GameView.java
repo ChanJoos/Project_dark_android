@@ -254,6 +254,10 @@ public final class GameView extends View {
         for(RuntimeState.Monster target:state.monsters())if(target.id.equals(e.targetId)){playerFacing.beginAttack(target.x-state.player().x,target.y-state.player().y);break;}
       }
     }
+    for(CombatResolver.Event e:result.events)if(e.type==CombatResolver.EventType.EFFECT_APPLIED&&RuntimeCombatSession.PLAYER_ID.equals(e.actorId)&&MartialSkillPolicy.LEAP.equals(e.actionId)){
+      float[] target=MartialSkillPolicy.position(state,e.targetId);
+      if(target!=null){playerFacing.endAttack();playerFacing.updateLocomotion(target[0]-state.player().x,target[1]-state.player().y);}
+    }
     abelSpellFx.consume(result.events,state);skillVfx.consume(result.events,skillAnchors);consumeSkillNotice();
     // A skill quest is about a successfully accepted use, not whether the target
     // happened to take damage or a heal happened to restore HP on that frame.
@@ -362,7 +366,7 @@ public final class GameView extends View {
     if(MartialSkillPolicy.facingOnly(entry.id)){
       if(isActing()||!state.player().alive)return;
       CombatActionOrchestrator.Submission result=combatSession.submitFacingMartial(entry.id);
-      if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;trigger(Action.SKILL);}
+      if(result.accepted()){if(!MartialSkillPolicy.LEAP.equals(entry.id)){playerFacing.beginAttack();activeSkillVisualId=entry.id;trigger(Action.SKILL);}}
       else showFeedback(result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":"바라보는 방향의 대상 또는 착지 공간이 없습니다",FeedbackTone.WARN);
       return;
     }

@@ -1,3 +1,7 @@
+## V174 accepted per-ID timing and leap presentation
+
+See changes/V174_SKILL_TIMING.json (221 IDs, explicit evidence,31runtimechanges,52physical/utility originals PENDING). V174 runtime/build/phone verification pending; historical fan values are not live-server certification.
+
 ## V173 user-confirmed martial repair
 
 Accepted changes/V173_MARTIAL_EFFECTS.json; all34 audit docs/MARTIAL_EFFECTS_V173_AUDIT.md. User8s controls and complete reflection override historical fan values. Build/native/phone pending.

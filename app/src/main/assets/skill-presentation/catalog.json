@@ -4823,17 +4823,17 @@
       "name": "이형환위",
       "job": "무도가",
       "kind": "기술",
-      "motion": "JUMP",
+      "motion": "IDLE",
       "caster": "NONE",
       "target": "NONE",
       "targetSheet": "status",
       "targetRow": -1,
       "targetAnchor": "TARGET",
-      "poseEvidence": "SOURCE_PIXELS_PROJECT_SELECTION",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "poseEvidence": "USER_CONFIRMED_V174_NO_MOTION",
+      "effectEvidence": "USER_CONFIRMED_V174_NO_FX",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "바라보는 방향의 인접 몬스터/NPC만 뛰어넘기; 반대편이 막히면 대상 좌우의 가능한 칸 중 무작위 착지; 없으면 발동 안 함"
+      "note": "바라보는 방향의 인접 몬스터/NPC만 뛰어넘기; 반대편이 막히면 대상 좌우의 가능한 칸 중 무작위 착지; 없으면 발동 안 함; 별도 이펙트/점프 모션 없음; 착지 후 뛰어넘은 대상을 바라봄"
     },
     {
       "id": "SK_무도가_004",
