@@ -23,12 +23,14 @@
     "push": {
       "run": 38866455116,
       "job": 116860304220,
-      "status": "IN_PROGRESS"
+      "status": "SUCCESS",
+      "successfulGradleExecutions": 26,
+      "sourceIdentityVerified": true
     },
     "pr": {
       "run": 38866460300,
       "job": 116860319913,
-      "status": "IN_PROGRESS"
+      "status": "IN_PROGRESS_DUPLICATE"
     }
   },
   "apk": {
@@ -66,5 +68,17 @@
   "archiveAndEmbeddedIdentity": "PASS",
   "sourceBodyAndCatalogByteEquality": "PASS_268_BODY_PLUS_CATALOG",
   "hostVisualReview": "REVIEWED_BOTH_BODY_FOUR_DIRECTIONS_AND_NINE_MARTIAL_FAMILIES; phone and user acceptance pending",
-  "saveStatus": "NOT_YET_SAVED_OR_DELIVERED"
+  "saveStatus": "SAVED",
+  "saved": {
+    "local_path": "/workspace/scratch/ec71835a364a/delivery/PROJECT_DARK_V172_TEST.apk",
+    "purpose": "create_library_file",
+    "status": "succeeded",
+    "file_id": "file_0000000095b481f596da085a52796c61",
+    "library_file_id": "libfile_4511bbf60b948191a26418ab3c2b674f",
+    "file_name": "PROJECT_DARK_V172_TEST.apk",
+    "local_metadata_applied": true,
+    "path": "/PROJECT_DARK_V172_TEST.apk",
+    "current_version_number": 0
+  },
+  "deliveryStatus": "READY_FOR_USER"
 }

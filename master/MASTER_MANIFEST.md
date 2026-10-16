@@ -1,3 +1,7 @@
+## V172 verification closure
+
+Runtime/APK 2e38f3784a2a3e998016dd623f2be32d4777781c; focused185/33 + full push26Gradle PASS; saved V172 TEST APK. Phone/user pending. Exact artifacts/hashes/save identity: changes/V172_BUILD_RUNTIME_RECEIPT.json.
+
 ## V172 accepted user request
 
 See changes/V172_MARTIAL_CLOTH_CADENCE.json: approved Jeonggwon/Tongbae icon alias, ADAPTED BODY clothing binding and user-selected shared 1s basic interval. Verification pending.

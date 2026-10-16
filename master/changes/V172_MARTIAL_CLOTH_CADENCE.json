@@ -13,11 +13,13 @@
   "reason": "Current explicit user request and source-confirmed floating clothing fallback",
   "source_artwork": "UNCHANGED",
   "save_change": "NONE",
-  "validation": "185_TESTS_33_SUITES_PASS_HOST_NATIVE; FULL_CI_IN_PROGRESS; PHONE_AND_USER_PENDING",
+  "validation": "PASS_185_TESTS_33_SUITES_AND_FULL_PUSH_CI_26_GRADLE; HOST_NATIVE_REVIEWED; PHONE_USER_PENDING",
   "tests": [
     "MartialClothCadenceV172Test",
     "LinkedTwoHandV170Test",
     "MotionHudFrameV169Test",
     "TestModeTwoHandV171Test"
-  ]
+  ],
+  "runtimeSource": "2e38f3784a2a3e998016dd623f2be32d4777781c",
+  "receipt": "V172_BUILD_RUNTIME_RECEIPT.json"
 }
