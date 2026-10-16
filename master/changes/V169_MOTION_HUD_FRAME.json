@@ -24,7 +24,8 @@
     "cached equipment visual projection",
     "resource HP/MP projection without two full FinalStats/map builds each tick",
     "joystick contrast on pale/dark ground and isolate world Canvas from HUD",
-    "skip English name conversion scans for Korean/numeric-only labels"
+    "skip English name conversion scans for Korean/numeric-only labels",
+    "reuse immutable job/legacy/forest routes and ID index instead of nested per-frame route builds"
   ],
   "preserved": [
     "source raster bytes",
@@ -34,8 +35,9 @@
     "save/ownership/growth"
   ],
   "validation": {
-    "focused": "PENDING",
-    "common": "PENDING",
+    "source": "381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
+    "focused": "SUCCESS:38835692405;166tests/29suites;0failures/errors/skips",
+    "common": "IN_PROGRESS:38835692455,38835701504",
     "phone": "PENDING",
     "visual": "PENDING"
   }
