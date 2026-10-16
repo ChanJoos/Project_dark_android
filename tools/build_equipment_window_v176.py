@@ -28,6 +28,7 @@ for x,y in [(110,480),(110,516),(258,480),(258,516),(412,480),(412,516)]:
 im.paste(original.crop((430,54,493,107)),(430,54))
 # Replace the lower-right hinge with clean source background.
 im.paste(original.crop((480,434,522,472)),(480,510))
+im.paste(original.crop((480,464,522,472)),(480,548))
 im.save(out/'panel.png')
 manifest={'source':'master/source/equipment_window_v175/reference.jpg','sourceSha256':hashlib.sha256(src.read_bytes()).hexdigest(),'crop':[94,478,616,1034],'size':[522,556],'policy':'USER V176: shield below ornaments;regular15slots;fitted visible icons;empty sockets;source bronze close;lower-right hinge removed. Exposed texture patch replaces omitted source cells and baked actor/items. No invented ornament items.','files':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.glob('*.png'))}}
 (out/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')

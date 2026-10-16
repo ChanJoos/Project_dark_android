@@ -13,7 +13,7 @@
   ],
   "policy": "USER V176: shield below ornaments;regular15slots;fitted visible icons;empty sockets;source bronze close;lower-right hinge removed. Exposed texture patch replaces omitted source cells and baked actor/items. No invented ornament items.",
   "files": {
-    "panel.png": "05173678197b6e9a78c27e33e2991fd9e5b42ad997c43aea46aeb1653f25eea2",
+    "panel.png": "58a8f6fab841182ee038a1236f719a3fe3c978e941d1593c34401b6d0e718875",
     "slot.png": "681cfdd4104d9b802b97c8e016a2fa505e40897895e420a77f682336670c1f3b"
   }
 }
