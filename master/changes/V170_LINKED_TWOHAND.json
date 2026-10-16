@@ -30,5 +30,6 @@
     "phone": "PENDING",
     "visualAcceptance": "PENDING",
     "ci": "PENDING"
-  }
+  },
+  "visualReviewCorrection": "738fa18 native review: ordinary mw016 c6 includes an attack trail, so never use c6/c8 as ready poses. Render actual source IDLE before phase .12 and from .68; use c0/1/2 and c4/5/7 only within strike. Added independent idle-pixel oracle for both bodies/all directions."
 }

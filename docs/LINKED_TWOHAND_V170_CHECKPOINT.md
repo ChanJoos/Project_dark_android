@@ -4,3 +4,5 @@ V169 twohand awkwardness DEVICE_FAILED_USER_REPORTED; private local29.086s video
 
 Retained original c BODY/blade frames use ready/raise/sweep/follow-through/ready; Chungryong uses source-registered ready recovery. Twohand first contact0.30s and cycle0.80s are video-calibrated ADAPTED values, not certified original server constants. Onehand and movement timing/caches unchanged. IMPLEMENTED, focused/full CI and APK PENDING; PHONE and USER_VISUAL_ACCEPTANCE PENDING. Resume exact branch/worktree; do not recreate completed V168/V169 assets or deliver the previous APK as this change.
 
+
+738fa18 focused173/30 suites PASS, artifact12022212165 APK hash7bed4484, reviewed but SUPERSEDED/NOT DELIVERED: native sheet exposed c6 attack trail during preparation. Ordinary twohand now uses true source IDLE outside strike; new all-body/all-direction idle-pixel oracle. Final exact source/build/native/full checks PENDING. No new APK saved/delivered yet.

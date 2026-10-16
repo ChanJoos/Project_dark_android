@@ -25,7 +25,16 @@ public class MotionHudFrameV169Test {
   // Source twohand weapon has c, not e; every used contact must bind the same source cell.
   assertNull(reg.getJSONObject("sprites").optJSONArray("e"));
   for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-   Set<String> keys=new HashSet<>();for(float q:new float[]{0,.17f,.34f}){String key=catalog.frameKey(body,"TWO_HAND",d,q);keys.add(key);assertTrue(key,key.contains("/c/"));int i=Integer.parseInt(key.substring(key.lastIndexOf('/')+1));assertNotNull(reg.getJSONObject("sprites").getJSONArray("c").optJSONObject(i));}assertEquals(3,keys.size());
+   Set<String> keys=new HashSet<>();for(float q:new float[]{.13f,.27f,.34f}){String key=catalog.frameKey(body,"TWO_HAND",d,q);keys.add(key);assertTrue(key,key.contains("/c/"));int i=Integer.parseInt(key.substring(key.lastIndexOf('/')+1));assertNotNull(reg.getJSONObject("sprites").getJSONArray("c").optJSONObject(i));}assertEquals(3,keys.size());
+  }
+ }
+ @Test public void twoHandPreparationAndRecoveryContainNoSourceContactTrail()throws Exception{
+  SkillBodyRenderer renderer=new SkillBodyRenderer(c,new SkillPresentationCatalog(c));
+  for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+   CharacterRenderer.Pose pose=new CharacterRenderer.Pose(110,190,d,CharacterRenderer.State.ATTACK,0,0,.8f,false,"mu0000001","mw016",null,CharacterRenderer.EffectFamily.NONE,AnimationAction.SWING);
+   Bitmap expected=Bitmap.createBitmap(220,220,Bitmap.Config.ARGB_8888);assertTrue(renderer.draw(new Canvas(expected),pose,body,"IDLE",0));
+   for(float phase:new float[]{0,.70f,.85f}){Bitmap actual=Bitmap.createBitmap(220,220,Bitmap.Config.ARGB_8888);assertTrue(renderer.draw(new Canvas(actual),pose,body,"TWO_HAND",phase));assertTrue("standing outside strike "+body+d+phase,actual.sameAs(expected));actual.recycle();}
+   Bitmap contact=Bitmap.createBitmap(220,220,Bitmap.Config.ARGB_8888);assertTrue(renderer.draw(new Canvas(contact),pose,body,"TWO_HAND",.34f));assertFalse(contact.sameAs(expected));contact.recycle();expected.recycle();
   }
  }
  @Test public void basicAndSkillFourFacingSourcePixelsAreNotDoubleMirrored()throws Exception{

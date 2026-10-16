@@ -52,7 +52,7 @@ final class SkillBodyRenderer {
     if(p.direction==null)return false;
     // group02 is an authored directional contact pose, not a complete temporal clip.
     // Its real source standing preparation/recovery keeps the blade and clothes registered.
-    if(("SWING".equals(motion)||"EQUIPPED_BASIC".equals(motion))&&(phase<1f/3f||phase>=.8f)||"TWO_HAND".equals(motion)&&phase>=.8f)motion="IDLE";
+    if(("SWING".equals(motion)||"EQUIPPED_BASIC".equals(motion))&&(phase<1f/3f||phase>=.8f)||"TWO_HAND".equals(motion)&&(phase<.12f||phase>=.68f))motion="IDLE";
     String key=catalog.frameKey(body,motion,p.direction,phase);JSONObject f=key==null?null:catalog.frames.optJSONObject(key);if(f==null)return false;
     Bitmap b=bitmap(f.optString("path"));if(b==null)return false;
     String[] parts=key.split("/");String group=parts[1];int index=Integer.parseInt(parts[2]);
