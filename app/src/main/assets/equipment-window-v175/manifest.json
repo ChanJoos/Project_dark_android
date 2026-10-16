@@ -14,6 +14,6 @@
   "policy": "USER supplied 2026-10-16: exact screenshot skin, only 15 functional slots; live actor/items/FinalStats. Exposed texture patch replaces omitted source cells and baked actor/items. No invented ornament items.",
   "files": {
     "panel.png": "4610703ac114efb382940eeb82691420ccb06d56f33c404f50fe648188e31906",
-    "slot.png": "58fc7a8ebfd30a80e99d8a8f05c8065f1578f637b1b8947f587338d21780d6ef"
+    "slot.png": "681cfdd4104d9b802b97c8e016a2fa505e40897895e420a77f682336670c1f3b"
   }
 }

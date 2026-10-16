@@ -15,8 +15,11 @@ def paper(box):
  for y in range(y0,y1):
   for x in range(x0,x1):im.putpixel((x,y),texture.getpixel(((x-212)%32,(y-145)%32)))
 paper((24,45,503,449))
-# Empty source bevel from the already-preserved original equipment source.
-slot=Image.open(root/'app/src/main/assets/item-window/slot.png').convert('RGB').resize((70,70),Image.Resampling.LANCZOS)
+# Exact bevel pixels from this reference's weapon cell; remove only its baked icon.
+slot=original.crop((109,216,179,286))
+for y in range(5,65):
+ for x in range(5,65):
+  rgb=texture.getpixel((x%32,y%32));slot.putpixel((x,y),tuple(round(v*.57) for v in rgb))
 slot.save(out/'slot.png')
 # Remove screenshot numeric values, leaving the original six stat label/box pixels.
 for x,y in [(110,480),(110,516),(258,480),(258,516),(412,480),(412,516)]:
