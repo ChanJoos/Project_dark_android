@@ -133,12 +133,13 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   public void commitCooldown(String actorId,String actionId,float cooldown){
     if("player".equals(actorId)&&MagicTimingPolicy.managed(actionId))spellIntervalRemaining=MagicTimingPolicy.SPELL_INTERVAL;
     if(actorId==null||actionId==null)throw new IllegalArgumentException("cooldown identity");
-    if(cooldown<=0f){cooldowns.remove(key(actorId,actionId));return;}
-    cooldowns.put(key(actorId,actionId),cooldown);RuntimeState.Monster m=findMonster(actorId);if(m!=null&&AbelCombatProfile.forId(actorId)!=null)m.attackCooldown=cooldown;
+    if(cooldown<=0f){cooldowns.remove(cooldownKey(actorId,actionId));return;}
+    cooldowns.put(cooldownKey(actorId,actionId),cooldown);RuntimeState.Monster m=findMonster(actorId);if(m!=null&&AbelCombatProfile.forId(actorId)!=null)m.attackCooldown=cooldown;
   }
 
+  private static String cooldownKey(String actor,String action){return key(actor,"player".equals(actor)&&action!=null&&action.startsWith("attack_proto_")?"player_basic_shared":action);}
   public float cooldownRemaining(String actorId,String actionId){
-    Float value=cooldowns.get(key(actorId,actionId));
+    Float value=cooldowns.get(cooldownKey(actorId,actionId));
     return value==null?0f:Math.max(0f,value);
   }
 

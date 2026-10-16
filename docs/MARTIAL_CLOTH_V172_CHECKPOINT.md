@@ -1,0 +1,9 @@
+## 2026-10-16 — V172 martial icon, clothing attachment and 1-second basic interval candidate
+
+User reports (DEVICE_FAILED_USER_REPORTED): Jeonggwon icon missing and clothes float during martial basic/skill actions. Source diagnosis: SK_무도가_001 lacks an icon and SkillBodyRenderer used untouched standing garment coordinates whenever the action group was absent. User explicitly requests Tongbaegwon SK_무도가_006 icon reuse and 1.0-second intervals for ALL basic attacks.
+
+IMPLEMENTED candidate, build/runtime/phone/visual acceptance PENDING. SkillIconCatalog + direct SkillWindowSkin paths resolve the user-approved icon alias. Missing equipment action cells now use cached source-BODY shoulder/pelvis attachments (head/foot/hand for accessories); exact authored action cells retain their source registrations. This is ADAPTED missing-clip skinning, not a claim of recovered original garment animation. Source artwork unchanged. BasicAttackTiming returns 1.0s for every player prototype, CombatController uses the same interval, and RuntimeCombatPortAdapter shares the player-basic cooldown across weapon modes so switching cannot bypass it. First-contact timing, multi-hit spacing, skill cooldowns and existing visual clip durations remain intact.
+
+Added MartialClothCadenceV172Test: icon pixel equality across surfaces, four attack modes/boundary/mode-switch gate, native both BODY/four-direction crouch clothing movement, all martial pose families and bounded warm attachment work, retained V171/170/169 regressions. Version172, 1.72-martial-cloth, separate v172test candidate. Both APK workflows use verify_v172_apk.py. Active PR197 branch continues from996435dd; main41fe6def remains unmerged. Current CI/APK identity to be recorded after execution. Contract master/changes/V172_MARTIAL_CLOTH_CADENCE.json.
+
+Resume exact candidate checks; do not redo V168–V171 or original assets. No phone claim.

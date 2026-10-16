@@ -44,7 +44,7 @@ final class SkillBodyRenderer {
     if(back)chungryong.layer(c,motion,true,n,hx,hy,SCALE);
     float left=x-(float)f.optDouble("pivotX")*SCALE,top=y-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
-    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,group,index,p.direction,x,y);
+    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,body,group,index,p.direction,x,y);
     if(!back)chungryong.layer(c,motion,false,n,hx,hy,SCALE);
     c.restore();return true;
   }
@@ -69,7 +69,7 @@ final class SkillBodyRenderer {
     if(weapon&&back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",true,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
-    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,group,index,p.direction,rootX,rootY);
+    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,body,group,index,p.direction,rootX,rootY);
     if(weapon&&!back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",false,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     if(jumpWeapon&&!back)chungryong.layer(c,"basic",false,0,jumpHandX,jumpHandY,SCALE);
     c.restore();return true;
@@ -81,11 +81,11 @@ final class SkillBodyRenderer {
     JSONObject own=registration(id);
     JSONObject sprites=own==null?null:own.optJSONObject("sprites");
     JSONArray exact=sprites==null?null:sprites.optJSONArray(group);
-    if(exact!=null&&index<exact.length()){drawGear(c,id,group,index,direction,x,y);return;}
+    if(exact!=null&&index<exact.length()){drawGear(c,id,body,group,index,direction,x,y);return;}
     EquipmentVisualRegistry.Visual v=gear.get(id);JSONObject registration=registration(id);if(v==null||v.atlas==null||registration==null)return;
     boolean back=ChungryongWeaponRenderer.back(direction);int sourceIndex=back?1:3;
     JSONArray frames=registration.optJSONObject("sprites").optJSONArray("02");JSONObject f=frames==null?null:frames.optJSONObject(sourceIndex);
-    JSONObject baseFrame=catalog.frames.optJSONObject(body+"/02/"+sourceIndex);if(f==null||baseFrame==null){drawGear(c,id,group,index,direction,x,y);return;}
+    JSONObject baseFrame=catalog.frames.optJSONObject(body+"/02/"+sourceIndex);if(f==null||baseFrame==null){drawGear(c,id,body,group,index,direction,x,y);return;}
     Bitmap base=bitmap(baseFrame.optString("path"));if(base==null)return;
     CharacterRenderer.Direction sourceDirection=back?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
     CharacterSemanticRig.Anchors baseRig=rig(body+"/02/"+sourceIndex,base,sourceDirection);
@@ -99,17 +99,39 @@ final class SkillBodyRenderer {
     float left=x+(dx-(float)f.optDouble("px")*w)*SCALE,top=y+(dy-h+(float)f.optDouble("py")*h)*SCALE;
     c.drawBitmap(v.atlas,new Rect(sx,sy,sx+w,sy+h),new RectF(left,top,left+w*SCALE,top+h*SCALE),paint);
   }
-  private void drawGear(Canvas c,String id,String group,int index,CharacterRenderer.Direction direction,float x,float y){
+  private void drawGear(Canvas c,String id,String body,String group,int index,CharacterRenderer.Direction direction,float x,float y){
     if(id==null||id.isEmpty())return;EquipmentVisualRegistry.Visual v=gear.get(id);if(v==null||v.atlas==null)return;
     JSONObject j=registration(id);if(j==null)return;JSONObject sprites=j.optJSONObject("sprites");if(sprites==null)return;
     JSONArray a=sprites.optJSONArray(group);JSONObject f=a!=null&&index<a.length()?a.optJSONObject(index):null;
-    // Source outfits with no such group retain their real standing cloth layer. No naked fallback.
-    // This is an explicit ADAPTED registration, not a claimed original outfit animation.
+    boolean adapted=f==null;
+    // Missing action clips are attached to the current BODY rig, never left at standing coordinates.
     if(f==null){a=sprites.optJSONArray("01");int n=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE?0:1;f=a!=null&&n<a.length()?a.optJSONObject(n):null;}
     if(f==null)return;int w=f.optInt("w"),h=f.optInt("h"),sx=f.optInt("sx"),sy=f.optInt("sy");if(w<=0||h<=0||sx+w>v.atlas.getWidth()||sy+h>v.atlas.getHeight())return;
     float left=x-(float)f.optDouble("px")*w*SCALE,top=y-(h-(float)f.optDouble("py")*h)*SCALE;
-    c.drawBitmap(v.atlas,new Rect(sx,sy,sx+w,sy+h),new RectF(left,top,left+w*SCALE,top+h*SCALE),paint);
+    c.save();if(adapted){Matrix attachment=attachment(id,body,group,index,direction);c.translate(x,y);c.scale(SCALE,SCALE);c.concat(attachment);c.scale(1/SCALE,1/SCALE);c.translate(-x,-y);}
+    c.drawBitmap(v.atlas,new Rect(sx,sy,sx+w,sy+h),new RectF(left,top,left+w*SCALE,top+h*SCALE),paint);c.restore();
   }
+  private final Map<String,Matrix> attachments=new HashMap<>();
+  int attachmentBuildCount(){return attachments.size();}
+  /** ADAPTED: source pixels remain intact; cached BODY shoulder/pelvis skinning follows crouches. */
+  private Matrix attachment(String id,String body,String group,int index,CharacterRenderer.Direction direction){
+    boolean back=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE;
+    String key=id+"/"+body+"/"+group+"/"+index+"/"+back;
+    Matrix m=attachments.get(key);if(m!=null)return m;m=new Matrix();attachments.put(key,m);
+    JSONObject from=catalog.frames.optJSONObject(body+"/01/"+(back?0:1)),to=catalog.frames.optJSONObject(body+"/"+group+"/"+index);
+    if(from==null||to==null)return m;Bitmap a=bitmap(from.optString("path")),b=bitmap(to.optString("path"));if(a==null||b==null)return m;
+    CharacterRenderer.Direction d=back?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
+    CharacterSemanticRig.Anchors ar=rig(body+"/01/"+(back?0:1),a,d),br=rig(body+"/"+group+"/"+index,b,d);
+    if(id.startsWith("ml")||id.startsWith("wl")){translateAnchor(m,ar.foot,br.foot,from,to,a,b);return m;}
+    if(id.startsWith("mh")||id.startsWith("wh")){translateAnchor(m,new CharacterSemanticRig.Point(ar.shoulder.x,0),new CharacterSemanticRig.Point(br.shoulder.x,0),from,to,a,b);return m;}
+    if(id.startsWith("ms")||id.startsWith("ws")){translateAnchor(m,ar.dominantHand,br.dominantHand,from,to,a,b);return m;}
+    float[] src={localX(ar.shoulder,from),localY(ar.shoulder,from,a),localX(ar.pelvis,from),localY(ar.pelvis,from,a)};
+    float[] dst={localX(br.shoulder,to),localY(br.shoulder,to,b),localX(br.pelvis,to),localY(br.pelvis,to,b)};
+    m.setPolyToPoly(src,0,dst,0,2);return m;
+  }
+  private static float localX(CharacterSemanticRig.Point p,JSONObject f){return p.x-(float)f.optDouble("pivotX");}
+  private static float localY(CharacterSemanticRig.Point p,JSONObject f,Bitmap b){return p.y-b.getHeight()-(float)f.optDouble("offsetY");}
+  private static void translateAnchor(Matrix m,CharacterSemanticRig.Point a,CharacterSemanticRig.Point b,JSONObject from,JSONObject to,Bitmap src,Bitmap dst){m.setTranslate(localX(b,to)-localX(a,from),localY(b,to,dst)-localY(a,from,src));}
   private JSONObject registration(String id){if(registrations.containsKey(id))return registrations.get(id);JSONObject j=null;try{j=new JSONObject(new String(PresentationAssetBytes.read(context,"source-registration/"+id+".json"),StandardCharsets.UTF_8));}catch(Exception ignored){}registrations.put(id,j);return j;}
   private Bitmap bitmap(String path){if(bitmaps.containsKey(path))return bitmaps.get(path);Bitmap b=null;try(java.io.InputStream in=context.getAssets().open("skill-presentation/"+path)){b=BitmapFactory.decodeStream(in);if(b!=null){b.prepareToDraw();bitmapLoads++;}}catch(Exception ignored){}bitmaps.put(path,b);return b;}
 }

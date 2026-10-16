@@ -1,3 +1,7 @@
+## V172 accepted user request
+
+See changes/V172_MARTIAL_CLOTH_CADENCE.json: approved Jeonggwon/Tongbae icon alias, ADAPTED BODY clothing binding and user-selected shared 1s basic interval. Verification pending.
+
 ## 2026-10-16 — V171 test-mode twohand equip fix verified and delivered
 
 V170 DEVICE_FAILED_USER_REPORTED: initial all-learned test mode refused twohand equip. Cause reproduced: equipment used SkillBook.owned while test/UI/combat use learned, and MainActivity applied test mode after saved-equipment validation. V171 consistently uses learned; MainActivity supplies saved/default mode before GameView normalizes equipment. Test mode allows twohand equip without permanent skill grants. Turning test mode OFF restores actual-learning requirement and removes preview-only equipped blade while preserving owned inventory. Normal learned twohand equip/save/restart remains valid. No asset, attack timing/motion, growth, world, movement or performance changes.
