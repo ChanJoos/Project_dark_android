@@ -1,3 +1,9 @@
+## 2026-10-16 — V172 focused native verification and exact APK complete; full CI pending
+
+Runtime/APK source `2e38f3784a2a3e998016dd623f2be32d4777781c`; focused38866455170/job116860304383 SUCCESS:185tests/33suites,0failures/errors/skips. Downloaded archive digests/CRC and JUnit independently verified. Three new cases PASS: identical Jeonggwon/Tongbae icon pixels on all surfaces; all4 basic modes share1s and mode-switch gate; both BODY/four-direction crouching clothes plus nine martial pose families and warm cache bounds. Native sheets visually reviewed, original source268BODY+catalog bytes match APK. Clothing missing-clip binding remains explicit ADAPTED, not original outfit animation.
+
+APK PROJECT_DARK_V172_TEST.apk/com.projectdark.mobile.v172test; built2026-10-16T16:26:35.224890+09:00, 80445873bytes, SHA256`103bfd0f9eac360e8a192519674fb597af21444b6e7604b9210d404f00e241bb`. APK artifact12031493943, native12031921352; receipt master/changes/V172_BUILD_RUNTIME_RECEIPT.json. Full push38866455116/job116860304220 and PR38866460300/job116860319913 still running. Phone/user acceptance PENDING. Resume these existing runs and APK; do not redo assets,185passing tests or rebuild merely after interruption. APK not yet saved/delivered. Next: full CI result, persist this verified APK, final receipt/delivery.
+
 ## 2026-10-16 — V172 martial icon, clothing attachment and 1-second basic interval candidate
 
 User reports (DEVICE_FAILED_USER_REPORTED): Jeonggwon icon missing and clothes float during martial basic/skill actions. Source diagnosis: SK_무도가_001 lacks an icon and SkillBodyRenderer used untouched standing garment coordinates whenever the action group was absent. User explicitly requests Tongbaegwon SK_무도가_006 icon reuse and 1.0-second intervals for ALL basic attacks.
