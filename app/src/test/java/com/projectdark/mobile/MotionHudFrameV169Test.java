@@ -78,6 +78,15 @@ public class MotionHudFrameV169Test {
    MotionEvent e=MotionEvent.obtain(0,0,MotionEvent.ACTION_DOWN,130,374,0);v.onTouchEvent(e);e.recycle();assertTrue(room.mapId,(Boolean)TownInteriorTest.field(v,"joy"));e=MotionEvent.obtain(0,1,MotionEvent.ACTION_UP,130,374,0);v.onTouchEvent(e);e.recycle();assertFalse((Boolean)TownInteriorTest.field(v,"joy"));grid.drawBitmap(image,null,new RectF(i%4*240,i/4*135,(i%4+1)*240,(i/4+1)*135),new Paint());i++;image.recycle();}
   save(sheet,"all-interior-hud");sheet.recycle();System.out.println("V169_INTERIORS="+rooms.size());
  }
+ @Test public void journalFramesReuseRouteWithoutStaleJobOrMigration()throws Exception{
+  RpgProgressionState r=new RpgProgressionState();CampaignProgress campaign=r.campaign();QuestJournalModel model=new QuestJournalModel(c);F5mAdaptedPrologueQuest q=F5mAdaptedPrologueQuest.openingFixture();GrowthQuest2 g=new GrowthQuest2();
+  List<CampaignProgress.Def> route=campaign.route(r.currentJobCode());assertTrue(route.size()>60);int builds=campaign.routeBuildCount();long start=System.nanoTime();for(int n=0;n<100;n++){model.rows(q,g,true,r);assertSame(route,campaign.route(r.currentJobCode()));}long warm=System.nanoTime()-start;assertEquals(builds,campaign.routeBuildCount());
+  List<CampaignProgress.Def> warrior=campaign.route("WARRIOR"),mage=campaign.route("MAGE");assertNotSame(warrior,mage);assertTrue(warrior.stream().anyMatch(d->"J01_WARRIOR".equals(d.id)));assertFalse(mage.stream().anyMatch(d->"J01_WARRIOR".equals(d.id)));
+  JSONObject snapshot=campaign.snapshot();assertTrue(campaign.restore(snapshot));List<CampaignProgress.Def> restored=campaign.route(r.currentJobCode());assertEquals(route.size(),restored.size());for(int i=0;i<route.size();i++)assertEquals(route.get(i).id,restored.get(i).id);
+  // Same historical builder is measured independently; verify byte-identical IDs, no benchmark timing assertion.
+  long old=System.nanoTime();for(int n=0;n<1000;n++)call(campaign,"buildRoute",new Class<?>[]{String.class},r.currentJobCode());old=System.nanoTime()-old;start=System.nanoTime();for(int n=0;n<1000;n++)campaign.route(r.currentJobCode());long now=System.nanoTime()-start;
+  System.out.println("V169_ROUTE old_build_1000_ns="+old+" cached_1000_ns="+now+" journal100_ns="+warm+" definitions="+route.size());
+ }
  @Test public void leanGrowthProjectionPreservesFullStatsAcrossEquipmentAndRestore(){
   RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);
   for(String id:new String[]{"IT_WARDROBE_MW016","IT_ADAPTED_STARTER_SHIELD",ChungryongWeaponRenderer.ITEM}){r.autoLootResolvedItem(id,1);r.equip(id);s.applyDerivedGrowth();FinalStats expected=r.finalStats();assertEquals(expected.maxHp,s.player().maxHp);assertEquals(expected.maxMp,s.player().maxMp);}
