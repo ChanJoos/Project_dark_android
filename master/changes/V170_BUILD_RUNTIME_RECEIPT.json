@@ -1,0 +1,66 @@
+{
+  "sourceCommit": "5b1f6a741ef11f1882dfe2ec7beb7727133529f9",
+  "focused": {
+    "run": 38844874758,
+    "job": 116793013517,
+    "status": "SUCCESS",
+    "tests": 174,
+    "suites": 30,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "common": {
+    "pushRun": 38844874846,
+    "pushJob": 116793013927,
+    "prRun": 38844878505,
+    "prJob": 116793024791,
+    "status": "IN_PROGRESS"
+  },
+  "apk": {
+    "sourceCommit": "5b1f6a741ef11f1882dfe2ec7beb7727133529f9",
+    "runId": "38844874758",
+    "versionCode": 170,
+    "versionName": "1.70-linked-twohand",
+    "applicationId": "com.projectdark.mobile.v170test",
+    "updateCompatibleWithV167": false,
+    "apkSha256": "26b18c68c136d31c41cc0a4a4fd509f616ff92ecc9e32d857c14731c9551336b",
+    "apkBytes": 80444349,
+    "builtSeoul": "2026-10-16T12:25:35.501333+09:00",
+    "scope": "V170 independent linked basic hits, learned twohand equip gate, video-adapted 0.80s twohand cycle; retained source c twohand blades, consistent four-facing basic/skill renderer, visible joystick, cached actor visual projection and weapon rigs, lean resource projection; retained persisted random CON/WIS growth and actual level-up receipt; asymmetric two-hand/shield equip; Chungryong two-hand BODY; reagent-shop town managers/arrival; shared orange Curum and original Maradium HUD artwork; retained V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    }
+  },
+  "artifacts": {
+    "apk": {
+      "id": 12023141254,
+      "archiveSha256": "cee7eb8ef232a062e65c93d9b3d53fa05b4c8c38a1ac98bca71b5986528be674"
+    },
+    "native": {
+      "id": 12023320329,
+      "archiveSha256": "e0385cee0f24cfe984fb35777c25fb38679bc8cad4e42faa6c85683a8cadfa27"
+    }
+  },
+  "library": {
+    "id": "libfile_8a69479d29a481918788fb5c3a2f7501",
+    "fileId": "file_00000000648481f68a25a11a8f5927de",
+    "status": "SAVED",
+    "name": "PROJECT_DARK_V170_TEST.apk"
+  },
+  "verification": {
+    "zipCrc": "PASS",
+    "apkSizeAndHash": "PASS",
+    "embeddedSourceRunVersion": "PASS",
+    "body268SourceBytes": "PASS",
+    "runtimeCatalogBytes": "PASS",
+    "junitIndependentlyParsed": "PASS",
+    "fourTwohandNativeSheetsReviewed": "PASS",
+    "phone": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  },
+  "superseded": "738fa18 focused173 PASS APK not delivered: native review caught strike trail during preparation. Final sequence uses all4 original c cells with true IDLE outside strike. d292/a335/766 intermediate commits superseded; complete generator restored and byte/parity checked in5b1f6a7."
+}

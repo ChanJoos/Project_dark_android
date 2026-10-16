@@ -1,6 +1,6 @@
 {
   "version": 170,
-  "status": "IMPLEMENTED_VERIFICATION_PENDING",
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED_FULL_CI_PENDING",
   "userCanon": [
     "Double Attack learned: two full basic damage contacts",
     "Triple Attack learned: three contacts; highest linked count wins",
@@ -27,9 +27,10 @@
     "save inventory ownership"
   ],
   "verification": {
+    "focused": "174 tests /30 suites PASS at5b1f6a7",
+    "common": "IN_PROGRESS",
     "phone": "PENDING",
-    "visualAcceptance": "PENDING",
-    "ci": "PENDING"
+    "visualAcceptance": "PENDING"
   },
   "visualReviewCorrection": "738fa18 native review: mw016 c6 has a strike trail. Use true source IDLE before phase .12 and from .68. Inside strike, retain all four consecutive BODY/blade c cells: back0/1/2/3, front4/5/6/7; place c6 trail at first contact, never preparation. Added independent idle-pixel oracle for both bodies/all directions."
 }
