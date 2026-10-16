@@ -1,0 +1,53 @@
+{
+  "runtimeSource": "aadb26d4148909399a36d5702346f788c9383ae7",
+  "baseMain": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "implementation": "IMPLEMENTED_PENDING_FINAL_VALIDATION",
+  "martialSkills": 34,
+  "normalAndTestExecutions": 68,
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "preliminary": [
+    {
+      "source": "a736d5d263d238eb8adad9053abe90a25d5f4744",
+      "run": 38881880125,
+      "job": 116910310378,
+      "tests": 210,
+      "suites": 36,
+      "passed": 208,
+      "failures": 2,
+      "rootCauses": [
+        "NPC leap rejected by monster-only visibility",
+        "Audit expected an effect instead of dispel removal; first count missed five appended auxiliaries"
+      ]
+    },
+    {
+      "source": "f9d0a766285f32e657f12b8b97450722757ace2f",
+      "run": 38883681458,
+      "job": 116916165739,
+      "status": "TEST_COMPILE_FAILED",
+      "cause": "Wrong WorldDef package only in newly added inn-return test; fixed without app-code changes"
+    }
+  ],
+  "current": {
+    "focused": {
+      "run": 38883923655,
+      "status": "IN_PROGRESS"
+    },
+    "push": {
+      "run": 38883923599,
+      "status": "IN_PROGRESS"
+    },
+    "pr": {
+      "run": 38883929844,
+      "status": "IN_PROGRESS"
+    }
+  },
+  "apk": "NOT_BUILT_OR_DELIVERED_FOR_FINAL_SOURCE",
+  "assets": "SOURCE_RASTER_BYTES_UNCHANGED",
+  "adaptations": [
+    "Retained balance coefficients and unconfirmed durations",
+    "Clean cached Baekbo cyan-source projection",
+    "Martial Agito defaults to Milles inn while citizenship is unmodelled"
+  ]
+}

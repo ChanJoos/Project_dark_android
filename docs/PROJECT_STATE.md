@@ -1,3 +1,9 @@
+## 2026-10-16 — V173 exact-source validation checkpoint
+
+Current runtime source `aadb26d4148909399a36d5702346f788c9383ae7`, all34martial skills/68normal+test executions. Focused38883923655, full push38883923599, duplicate PR38883929844 IN_PROGRESS. Native a736210/36:208pass/2fail exposed the actual NPC visibility gate and an invalid dispel expectation; corrected. f9d0 app compiled but a test-only wrong WorldDef package stopped all tests; aadb changes only that reference, no app change from f9d0. No final-source APK built/delivered yet. Do not mistake older/superseded runs for this source.
+
+Resume these existing exact-source runs, inspect focused failure logs if any, then native contact/actual quickslot images + complete34effects audit, exact APK archive/embedded identity/hash and durable save. No asset regeneration or V168–V172 redo. Latest user8s control/full reflection are project canon; original fan10s/70% retained as historical only. Agito uses explicit Milles inn adaptation; citizenship-dependent destinations remain unmodelled. Fresh save helpers already staged at /workspace/scratch/ec71835a364a/library_helpers_v173. Source and candidate edits are GitHub-backed, not unsaved user work. Receipt master/changes/V173_BUILD_RUNTIME_RECEIPT.json.
+
 ## V173 validation follow-up
 
 Preliminary a736d5d2 focused38881880125/job116910310378:210tests/36suites,208passed/2failed. Real quickslot NPC leap exposed NPC-excluding visibility, now corrected with NPC damage still fail-closed. Full-catalog audit discovered five late-appended martial auxiliaries (030–034); audit now34skills/68normal+test executions, including actual blindness/poison dispel, heal, speed and explicit adapted return service. First failure at030 was a test expecting a persistent clear-effect instead of verifying debuff removal. Native/CI PENDING until final source runs; no candidate APK delivered.
