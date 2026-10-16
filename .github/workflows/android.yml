@@ -91,33 +91,34 @@ jobs:
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           yes | "$SDKMANAGER" --licenses >/dev/null || true
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
-      - name: Check reusable V173 pre-coverage evidence
+      - name: Check reusable V174 successful prefix evidence
         id: resume
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PYRESUME'
           import json, os, subprocess, urllib.request
-          baseline='b68a63bf0beac5c880e33c8a42c5d9617855acdb'
+          baseline='e06af00e127a6d57b51be2bc03cebdd717afb050'
           subprocess.run(['git','fetch','--depth=1','origin',baseline],check=True)
           changed=subprocess.check_output(['git','diff','--name-only',baseline,'HEAD'],text=True).splitlines()
-          allowed={'.github/workflows/android.yml','app/src/test/java/com/projectdark/mobile/ClassicSkillReferenceTest.java','app/src/test/java/com/projectdark/mobile/MartialHudAutoRegressionTest.java','app/src/test/java/com/projectdark/mobile/SkillWindowTest.java'}
-          reusable=all(p in allowed or p.startswith('docs/') or p.startswith('master/changes/') for p in changed)
-          if reusable:
-              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/38886133152/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+          allowed={'.github/workflows/android.yml','app/src/test/java/com/projectdark/mobile/SkillTimingV174Test.java','app/src/test/java/com/projectdark/mobile/CampaignProgressTest.java','docs/CHAT_HANDOFF.md','docs/PROJECT_STATE.md','docs/DIRECTOR_BACKLOG.md','docs/SKILL_TIMING_V174_CHECKPOINT.md','master/changes/V174_BUILD_RUNTIME_RECEIPT.json'}
+          passed=[]
+          if all(p in allowed for p in changed):
+              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/38901023707/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
               jobs=json.load(urllib.request.urlopen(req))['jobs']
-              job=next(j for j in jobs if j['id']==116924201695)
-              passed=[x for x in job['steps'] if 8<=x['number']<=29]
-              assert len(passed)==22 and all(x['conclusion']=='success' for x in passed)
+              job=next(j for j in jobs if j['id']==116973009046)
+              prefix=[x for x in job['steps'] if 9<=x['number']<20]
+              assert len(prefix)==11 and all(x['conclusion']=='success' for x in prefix)
               assert job['head_sha']==baseline
-              print('REUSING 22 successful pre-tail steps from',baseline,'run 38886133152; only tail tests/docs/CI changed:',changed)
-          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('reuse='+str(reusable).lower()+'\n')
+              passed=[x['name'] for x in prefix]
+              print('REUSING 11 verified prefix checks from',baseline,'run38901023707; changed:',changed)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('passed='+json.dumps(passed)+'\n')
           PYRESUME
       - name: Validate Master DB
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Validate Master DB') }}
         run: python tools/validate_master.py
       - name: Verify V124 source equipment, live combat and staged rewards
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V124 source equipment, live combat and staged rewards') }}
         run: |
           pip install Pillow
           python3 tools/build_accessory_catalog.py
@@ -127,67 +128,67 @@ jobs:
           python3 tools/verify_equipment_icons.py
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.EquipmentFoundationV124Test --tests com.projectdark.mobile.AccessoryCatalogV125Test --tests com.projectdark.mobile.PoteRewardsV123Test --tests com.projectdark.mobile.SkillWindowTest.curanumPurchaseToLearningUsesRealShopInputAndPersists --stacktrace
       - name: Verify generated skill catalog matches Master
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify generated skill catalog matches Master') }}
         run: |
           python tools/generate_skill_catalog.py
           git diff --exit-code -- app/src/main/assets/skills/catalog.json
       - name: Verify project skill learning policy is reproducible
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify project skill learning policy is reproducible') }}
         run: |
           python tools/generate_mobile_skill_policy.py
           git diff --exit-code -- app/src/main/assets/skills/mobile_learning.json
       - name: Verify skill presentation mapping is reproducible
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify skill presentation mapping is reproducible') }}
         run: |
           python tools/generate_skill_presentation.py
           git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
       - name: Audit reusable Milles map assets and layout
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Audit reusable Milles map assets and layout') }}
         run: python tools/assets/audit_milles_map_assets.py
       - name: Verify V101 source metal feet and scenery-only style
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V101 source metal feet and scenery-only style') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.MillesSourceStyleTest --stacktrace
       - name: Verify generated V108 mouse directions and animation frames are reproducible
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify generated V108 mouse directions and animation frames are reproducible') }}
         run: |
           pip install Pillow
           python tools/assets/build_v108_mouse_animation.py
           git diff --exit-code -- assets/milles/production/interiors/v108
       - name: Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
       - name: Verify V90 adapted Milles story quest and shared mouse AI
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V90 adapted Milles story quest and shared mouse AI') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.MillesMousePresentationTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
       - name: Verify V138 all skills, spell timing, range, staff and restart
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V138 all skills, spell timing, range, staff and restart') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MagicRuntimeV137Test --tests com.projectdark.mobile.AllSkillRuntimeV138Test --stacktrace
       - name: Verify V110 learning and retained phone-default quest actions and full campaign route audit
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V110 learning and retained phone-default quest actions and full campaign route audit') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.OnboardingUiTest --tests com.projectdark.mobile.DeviceQuestRegressionTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.MobileHudV135Test --tests com.projectdark.mobile.MobileHudV134Test --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
       - name: Verify V97 quest list, state filters, compact navigation and restart
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V97 quest list, state filters, compact navigation and restart') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
       - name: Verify V99 equipment UI fonts, all modal input and wide native rendering
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V99 equipment UI fonts, all modal input and wide native rendering') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ModernUiTest --stacktrace
       - name: Verify V96 four-way carry, all weapon motions and complete defense jump
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V96 four-way carry, all weapon motions and complete defense jump') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ChungryongWeaponTest --stacktrace
       - name: Verify LV40 monster rewards, job choice, wardrobe and restart
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify LV40 monster rewards, job choice, wardrobe and restart') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.AdaptedCampaignRewardTest --tests com.projectdark.mobile.NpcAppearanceTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
       - name: Verify V95 low-resource Dara recipient release and cancellation
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V95 low-resource Dara recipient release and cancellation') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DaraRecipientFxTest --stacktrace
       - name: Verify V83 per-skill abilities and runtime formulas
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V83 per-skill abilities and runtime formulas') }}
         run: |
           python3 tools/generate_skill_abilities.py
           git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_ABILITY_FORMULAS.csv
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillAbilityRuntimeTest --tests com.projectdark.mobile.MonsterCurseV162Test --stacktrace
       - name: Verify classic capture sources and projections
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify classic capture sources and projections') }}
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           python tools/import_classic_skill_references.py
@@ -198,19 +199,19 @@ jobs:
           git diff --exit-code -- app/src/main/assets/skill-presentation/rogue
           git diff --exit-code -- app/src/main/assets/skill-presentation/classic
       - name: Verify source window crops are reproducible
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify source window crops are reproducible') }}
         run: |
           python tools/extract_skill_window_reference.py
           git diff --exit-code -- app/src/main/assets/skill-window
       - name: Audit every skill FX source and runtime precedence
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Audit every skill FX source and runtime precedence') }}
         run: |
           python3 tools/audit_runtime_skill_fx.py
           git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V81_AUDIT.json
           python3 tools/audit_provided_skill_sources.py
           git diff --exit-code -- docs/REMAINING_ORIGINAL_SKILL_FX.csv docs/verification/PROVIDED_SOURCE_RECHECK_V81.json
       - name: Verify item window source crops and input
-        if: steps.resume.outputs.reuse != 'true'
+        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify item window source crops and input') }}
         run: |
           python3 tools/extract_item_window_reference.py
           git diff --exit-code -- app/src/main/assets/item-window
