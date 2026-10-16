@@ -51,7 +51,7 @@ public class ChungryongWeaponTest {
   }
   @Test public void realWarriorInputsKeepFacingContactAndAllThreeWeaponMotions()throws Exception{
     for(String id:new String[]{"SK_전사_001","SK_전사_006","SK_전사_015"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
-      setup();GameView v=new MartialHudAutoRegressionTest(){ {c=ChungryongWeaponTest.this.c;} }.directed(direction);RuntimeState s=TownInteriorTest.field(v,"state");assertEquals(RpgProgressionState.EquipResult.EQUIPPED,s.rpg().equip(ChungryongWeaponRenderer.ITEM));
+      setup();GameView v=new MartialHudAutoRegressionTest(){ {c=ChungryongWeaponTest.this.c;} }.directed(direction);RuntimeState s=TownInteriorTest.field(v,"state");learnTwoHand(v);assertEquals(RpgProgressionState.EquipResult.EQUIPPED,s.rpg().equip(ChungryongWeaponRenderer.ITEM));
       SkillBook book=TownInteriorTest.field(v,"skillBook");assertTrue(book.assign(0,id));TownInteriorTest.tap(v,672,429);assertEquals(id,TownInteriorTest.field(v,"activeSkillVisualId"));
       SkillActionContract.Rule rule=SkillActionContract.get(id);RuntimeState.Monster target=s.monsters().get(0);int hp=target.hp;advance(v,rule.contact-.01f);assertEquals(hp,target.hp);advance(v,.011f);
       assertEquals(direction,((CanonicalActorFacing)TownInteriorTest.field(v,"playerFacing")).presentation());if(rule.damage())assertTrue("existing resolver contact",target.hp<hp);
@@ -60,7 +60,7 @@ public class ChungryongWeaponTest {
   }
   @Test public void basicAttackAndIndoorSkillUseTheSameEquippedLayer()throws Exception{
     GameView v=new MartialHudAutoRegressionTest(){ {c=ChungryongWeaponTest.this.c;} }.directed(CharacterRenderer.Direction.SE);RuntimeState s=TownInteriorTest.field(v,"state");learnTwoHand(v);s.rpg().equip(ChungryongWeaponRenderer.ITEM);
-    int before=s.monsters().get(0).hp;TownInteriorTest.tap(v,926,449);assertEquals("SWING",TownInteriorTest.field(v,"action").toString());advance(v,.17f);assertEquals("basic has no early hit before shared resolver contact",before,s.monsters().get(0).hp);advance(v,.011f);assertTrue("basic resolves at actual .18s contact",s.monsters().get(0).hp<before);assertEquals(ChungryongWeaponRenderer.APPEARANCE,CharacterVisualBinding.from(s.rpg()).weaponVisualRef());save(render(v),"basic-world");
+    int before=s.monsters().get(0).hp;TownInteriorTest.tap(v,926,449);assertEquals("SWING",TownInteriorTest.field(v,"action").toString());advance(v,.29f);assertEquals("basic has no early hit before shared resolver contact",before,s.monsters().get(0).hp);advance(v,.011f);assertTrue("basic resolves at video-adapted .30s contact",s.monsters().get(0).hp<before);assertEquals(ChungryongWeaponRenderer.APPEARANCE,CharacterVisualBinding.from(s.rpg()).weaponVisualRef());save(render(v),"basic-world");
     setup();InnDetailQuestFxTest inn=new InnDetailQuestFxTest();inn.c=c;v=inn.start();inn.place(v);s=TownInteriorTest.field(v,"state");learnTwoHand(v);s.rpg().equip(ChungryongWeaponRenderer.ITEM);SkillBook b=TownInteriorTest.field(v,"skillBook");b.assign(0,"SK_전사_001");TownInteriorTest.tap(v,672,429);assertEquals("SK_전사_001",TownInteriorTest.field(v,"activeSkillVisualId"));advance(v,.16f);save(render(v),"inn-horizontal");inn.assertVisibleFx(v,s.monsters().get(0).id);
   }
   @Test public void carryStaysOnTheSameVisibleArmDuringWalk(){
