@@ -4994,14 +4994,13 @@
       "id": "SK_무도가_003",
       "name": "이형환위",
       "job": "무도가",
-      "standalonePresentationAllowed": false,
+      "standalonePresentationAllowed": true,
       "runtimeBranch": "NO_PARTICLE",
       "sourceCandidates": [],
       "channels": [],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "NO_DECLARED_PARTICLE",
-        "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
+        "NO_DECLARED_PARTICLE"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",

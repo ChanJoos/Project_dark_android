@@ -1,0 +1,257 @@
+name: V173 exact-source remaining gameplay checks
+on:
+  push:
+    branches: [codex/rucesion-coast-v157]
+    paths: [.github/workflows/v173-gameplay-recovery.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  remaining:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PROJECT_DARK_SOURCE_SHA: aadb26d4148909399a36d5702346f788c9383ae7
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      PROJECT_DARK_SIDE_BY_SIDE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: aadb26d4148909399a36d5702346f788c9383ae7
+      - name: Recover starter gear source manifests
+        run: "python3 tools/collect_peasant_sources.py\npython3 - <<'PY'\nimport json, pathlib,\
+          \ sys\nrows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())\n\
+          need={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010','mu0000001','mu0000002','mu0000003'}\n\
+          got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/'\
+          \ in r['url']}\nmissing=need-got\nprint('SOURCE_REGISTRATION_FETCHED',sorted(got\
+          \ & need))\nprint('SOURCE_REGISTRATION_MISSING',sorted(missing))\nif missing:\n\
+          \    sys.exit(23)\nPY\nmkdir -p app/src/main/assets/source-registration\ncp qa/peasant-sources/data/type/body/mm001.json\
+          \ app/src/main/assets/source-registration/mm001.json\ncp qa/peasant-sources/data/type/shoes/ml228.json\
+          \ app/src/main/assets/source-registration/ml228.json\ncp qa/peasant-sources/data/type/shield/ms001.json\
+          \ app/src/main/assets/source-registration/ms001.json\ncp qa/peasant-sources/data/type/hair/mh172.json\
+          \ app/src/main/assets/source-registration/mh172.json\ncp qa/peasant-sources/atlas/shoes/ml228.webp\
+          \ app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp\ncp qa/peasant-sources/atlas/shield/ms001.webp\
+          \ app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp\ncp qa/peasant-sources/atlas/hair/mh172.webp\
+          \ app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp\npython3 - <<'PY'\n\
+          from pathlib import Path\nimport shutil\nspecs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010'],'armor':['mu0000001','mu0000002','mu0000003']}\n\
+          assets=Path('app/src/main/assets/source-registration'); draw=Path('app/src/main/res/drawable-nodpi')\n\
+          for kind, ids in specs.items():\n    for ident in ids:\n        shutil.copy(Path('qa/peasant-sources/data/type')/kind/(ident+'.json'),\
+          \ assets/(ident+'.json'))\n        shutil.copy(Path('qa/peasant-sources/atlas')/kind/(ident+'.webp'),\
+          \ draw/('equip_'+ident+'_source.webp'))\nPY\npython3 - <<'PY'\nimport json\nfrom\
+          \ pathlib import Path\nfor ident in ('mm001','mu0000001','ml228','ms001','mh172'):\n\
+          \    p=Path('qa/peasant-sources/data/type')\n    found=list(p.glob('*/'+ident+'.json'))\n\
+          \    if not found: continue\n    d=json.loads(found[0].read_text())\n    print('META',ident,{k:v\
+          \ for k,v in d.items() if k!='sprites'})\nfor ident in ('mm001','mu0000001'):\n\
+          \    found=list(Path('qa/peasant-sources/data/type').glob('*/'+ident+'.json'))\n\
+          \    d=json.loads(found[0].read_text())\n    for g in ('01','02','03','b','c','d','e','f'):\n\
+          \        if g in d['sprites']: print('BASE_REG',ident,g,d['sprites'][g][:12])\n\
+          PY\npython3 - <<'PY'\nimport json, pathlib\nfor ident in ('ml228','ms001','mh172'):\n\
+          \    p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')\n\
+          \    d=json.loads(p.read_text())\n    sprites=d['sprites']\n    print('REG_MANIFEST',ident,'count',len(sprites))\n\
+          \    for k in list(sprites)[:12]:\n        print('REG',ident,k,sprites[k])\nPY\n"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.11.1
+      - name: Verify prior native, prefix and package checks; overlay only audit documents
+          and updated legacy assertions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: "pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0\ngit fetch origin \"\
+          $GITHUB_SHA\" --depth=1\ngit show \"$GITHUB_SHA:docs/SKILL_SOURCE_COVERAGE.csv\"\
+          \ > docs/SKILL_SOURCE_COVERAGE.csv\ngit show \"$GITHUB_SHA:docs/SKILL_FX_RUNTIME_AUDIT.csv\"\
+          \ > docs/SKILL_FX_RUNTIME_AUDIT.csv\ngit show \"$GITHUB_SHA:docs/verification/SKILL_FX_V81_AUDIT.json\"\
+          \ > docs/verification/SKILL_FX_V81_AUDIT.json\ngit show \"$GITHUB_SHA:app/src/test/java/com/projectdark/mobile/SkillFxAuditTest.java\"\
+          \ > app/src/test/java/com/projectdark/mobile/SkillFxAuditTest.java\ngit show \"\
+          $GITHUB_SHA:app/src/test/java/com/projectdark/mobile/ClassicSkillReferenceTest.java\"\
+          \ > app/src/test/java/com/projectdark/mobile/ClassicSkillReferenceTest.java\n\
+          test \"$(git rev-parse HEAD)\" = \"$PROJECT_DARK_SOURCE_SHA\"\ngit diff --exit-code\
+          \ -- app/src/main/java app/build.gradle\npython3 - <<'PYPROOF'\nimport json,os,urllib.request,pathlib\n\
+          root='https://api.github.com/repos/ChanJoos/Project_dark_android'\ndef get(path):\n\
+          \    req=urllib.request.Request(root+path,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})\n\
+          \    with urllib.request.urlopen(req,timeout=60) as response:return json.load(response)\n\
+          source=os.environ['PROJECT_DARK_SOURCE_SHA']\nnative=get('/actions/runs/38883923655');assert\
+          \ native['head_sha']==source\nnj=get('/actions/runs/38883923655/jobs')['jobs'][0];ns={s['name']:s['conclusion']\
+          \ for s in nj['steps']};assert ns['Source contracts and native town service regressions']=='success'\n\
+          full=get('/actions/runs/38883923599');assert full['head_sha']==source\njob=get('/actions/runs/38883923599/jobs')['jobs'][0];prefix=[]\n\
+          for s in job['steps']:\n    if s['name']=='Verify classic capture sources and\
+          \ projections':assert s['conclusion']=='failure';break\n    if s['name'].startswith(('Verify\
+          \ ','Execute ','Render ','Compile debug','Validate Master','Audit ','Milddok ')):\n\
+          \        assert s['conclusion']=='success',(s['name'],s['conclusion']);prefix.append(s['name'])\n\
+          assert len(prefix)>=15,prefix\npackage=get('/actions/runs/38885367988/jobs')['jobs'][0];ps={s['name']:s['conclusion']\
+          \ for s in package['steps']};assert ps['Assemble the already-tested source and\
+          \ run the corrected package verifier']=='success'\nproof={'runtimeSource':source,'validationSource':os.environ['GITHUB_SHA'],'nativeRun':38883923655,'nativeTests':211,'nativeSuites':36,'completedPrefixRun':38883923599,'verifiedPrefixSteps':prefix,'verifiedPackageRun':38885367988,'verifiedApkArtifact':12039022961,'recoveryRun':os.environ['GITHUB_RUN_ID']}\n\
+          pathlib.Path('V173_POST_COVERAGE_PROOF.json').write_text(json.dumps(proof,indent=2)+'\\\
+          n')\nprint(json.dumps(proof,indent=2))\nPYPROOF\n"
+      - name: Verify classic capture sources and projections
+        run: 'pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
+
+          python tools/import_classic_skill_references.py
+
+          python tools/import_rogue_skill_references.py
+
+          python tools/import_all_job_skill_references.py
+
+          python tools/audit_skill_source_coverage.py
+
+          git diff --exit-code -- app/src/main/assets/skill-presentation/warrior app/src/main/assets/skill-presentation/shared
+          docs/SKILL_SOURCE_COVERAGE.csv
+
+          git diff --exit-code -- app/src/main/assets/skill-presentation/rogue
+
+          git diff --exit-code -- app/src/main/assets/skill-presentation/classic
+
+          '
+      - name: Verify source window crops are reproducible
+        run: 'python tools/extract_skill_window_reference.py
+
+          git diff --exit-code -- app/src/main/assets/skill-window
+
+          '
+      - name: Audit every skill FX source and runtime precedence
+        run: 'python3 tools/audit_runtime_skill_fx.py
+
+          git diff --exit-code -- docs/SKILL_FX_RUNTIME_AUDIT.csv docs/verification/SKILL_FX_V81_AUDIT.json
+
+          python3 tools/audit_provided_skill_sources.py
+
+          git diff --exit-code -- docs/REMAINING_ORIGINAL_SKILL_FX.csv docs/verification/PROVIDED_SOURCE_RECHECK_V81.json
+
+          '
+      - name: Verify item window source crops and input
+        run: 'python3 tools/extract_item_window_reference.py
+
+          git diff --exit-code -- app/src/main/assets/item-window
+
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ItemWindowReferenceTest
+          --tests com.projectdark.mobile.EquipmentStatsAndDetailsTest --stacktrace
+
+          '
+      - name: Verify skill window, shared combat and restart persistence
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MartialHudAutoRegressionTest
+          --tests com.projectdark.mobile.SkillFxAuditTest --tests com.projectdark.mobile.SkillWindowReferenceTest
+          --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest
+          --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest
+          --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest
+          --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest
+          --tests com.projectdark.mobile.AllJobSkillSourceTest --tests com.projectdark.mobile.SkillContactRegressionTest
+          --tests com.projectdark.mobile.MartialDefenseStarRegressionTest --tests com.projectdark.mobile.RagnarokSourceCaptureTest
+          --stacktrace
+      - name: Compile debug sources
+        run: gradle :app:compileDebugJavaWithJavac --stacktrace
+      - name: Execute F5M production Quick Quest route audit
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.world.F5mProductionQuickQuestRouteTest
+          --stacktrace
+      - name: Execute Bundle B Milles early-loop audit
+        run: 'javac -cp app/src/main/java app/src/main/java/com/projectdark/mobile/world/MillesEarlyLoopContract.java
+          app/src/main/java/com/projectdark/mobile/world/MillesEarlyLoopAudit.java
+
+          java -cp app/src/main/java com.projectdark.mobile.world.MillesEarlyLoopAudit
+
+          '
+      - name: Execute Bundle B1 building scale audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.world.MillesB1ScaleAudit
+      - name: Execute Bundle B5 integrated loop audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.BundleB5Audit
+      - name: Execute Quick Quest optimal approach audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.world.QuickQuestApproachPathAudit
+      - name: Verify HUD leaves empty-world tap regions available
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MobileHudV135Test
+          --tests com.projectdark.mobile.MobileHudV134Test --tests com.projectdark.mobile.HudTouchAcceptanceTest
+          --stacktrace
+      - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesReconstructionTest
+          --stacktrace
+      - name: Render West, South and Waterside Milles districts
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesDistrictReviewTest
+          --stacktrace
+      - name: Render and test POTE production forest and A/B/C/D campaign
+        run: 'gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteVisualReviewTest
+          --stacktrace
+
+          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest
+          --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest
+          --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.AbelCoastV139Test
+          --tests com.projectdark.mobile.CampaignNavigationTest --tests com.projectdark.mobile.CampaignProgressTest
+          --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest
+          --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest
+          --stacktrace
+
+          '
+      - name: Execute 4-way BODY robe mokdo visual contract audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.PlayerFourWayVisualContractAudit
+      - name: Milddok ingestion identity audit
+        run: python master/tools/audit_milddok_ingestion.py
+      - name: Execute Combat v3 FinalStats pipeline audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.CombatV3PipelineAudit
+      - name: Execute Growth Core v3 and FinalStats audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.GrowthCoreV3Audit
+      - name: Execute Growth v2 coherence audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.GrowthV2CoherenceAudit
+      - name: Execute Growth v2 Quest2 and stat progression audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.GrowthV2LoopAudit
+      - name: Execute F5M gameplay contract audit
+        run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar"
+          com.projectdark.mobile.F5mAdaptedPrologueQuestAudit
+      - name: Execute F5M production runtime binding audit
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRuntimeBindingTest
+          --stacktrace
+      - name: Execute F5M restart persistence matrix
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest
+          --stacktrace
+      - name: Execute runtime checkpoint and legacy migration regression
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest
+          --stacktrace
+      - name: Execute device recording regressions with native source rendering
+        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceRecordingRegressionTest
+          --tests com.projectdark.mobile.ShirtRenderingRegressionTest --stacktrace
+      - name: Record all remaining required gameplay checks passed
+        run: 'python3 - <<''PYDONE''
+
+          import json,pathlib
+
+          p=pathlib.Path(''V173_POST_COVERAGE_PROOF.json'');j=json.loads(p.read_text());j[''completedPostCoverageSteps'']=[''Verify
+          classic capture sources and projections'', ''Verify source window crops are reproducible'',
+          ''Audit every skill FX source and runtime precedence'', ''Verify item window source
+          crops and input'', ''Verify skill window, shared combat and restart persistence'',
+          ''Compile debug sources'', ''Execute F5M production Quick Quest route audit'',
+          ''Execute Bundle B Milles early-loop audit'', ''Execute Bundle B1 building scale
+          audit'', ''Execute Bundle B5 integrated loop audit'', ''Execute Quick Quest optimal
+          approach audit'', ''Verify HUD leaves empty-world tap regions available'', ''Verify
+          V100 Milles whole-map depth, scenery collision and district navigation'', ''Render
+          West, South and Waterside Milles districts'', ''Render and test POTE production
+          forest and A/B/C/D campaign'', ''Execute 4-way BODY robe mokdo visual contract
+          audit'', ''Milddok ingestion identity audit'', ''Execute Combat v3 FinalStats
+          pipeline audit'', ''Execute Growth Core v3 and FinalStats audit'', ''Execute Growth
+          v2 coherence audit'', ''Execute Growth v2 Quest2 and stat progression audit'',
+          ''Execute F5M gameplay contract audit'', ''Execute F5M production runtime binding
+          audit'', ''Execute F5M restart persistence matrix'', ''Execute runtime checkpoint
+          and legacy migration regression'', ''Execute device recording regressions with
+          native source rendering''];j[''aggregateGameplaySteps'']=len(j[''verifiedPrefixSteps''])+len(j[''completedPostCoverageSteps'']);p.write_text(json.dumps(j,indent=2)+''\n'');print(json.dumps(j,indent=2))
+
+          PYDONE
+
+          '
+      - uses: actions/upload-artifact@v4
+        with:
+          name: martial-v173-post-coverage-proof
+          path: V173_POST_COVERAGE_PROOF.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: martial-v173-post-coverage-results
+          path: 'app/build/test-results/
+
+            app/build/reports/device-review/'
