@@ -24,7 +24,7 @@ public class MotionHudFrameV169Test {
   // Source twohand weapon has c, not e; every used contact must bind the same source cell.
   assertNull(reg.getJSONObject("sprites").optJSONArray("e"));
   for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-   Set<String> keys=new HashSet<>();for(float q:new float[]{0,.17f,.34f,.85f}){String key=catalog.frameKey(body,"TWO_HAND",d,q);keys.add(key);assertTrue(key,key.contains("/c/"));int i=Integer.parseInt(key.substring(key.lastIndexOf('/')+1));assertNotNull(reg.getJSONObject("sprites").getJSONArray("c").optJSONObject(i));}assertEquals(3,keys.size());
+   Set<String> keys=new HashSet<>();for(float q:new float[]{0,.17f,.34f}){String key=catalog.frameKey(body,"TWO_HAND",d,q);keys.add(key);assertTrue(key,key.contains("/c/"));int i=Integer.parseInt(key.substring(key.lastIndexOf('/')+1));assertNotNull(reg.getJSONObject("sprites").getJSONArray("c").optJSONObject(i));}assertEquals(3,keys.size());
   }
  }
  @Test public void basicAndSkillFourFacingSourcePixelsAreNotDoubleMirrored()throws Exception{
@@ -44,8 +44,8 @@ public class MotionHudFrameV169Test {
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);JSONArray stats=new JSONArray();
   for(String body:new String[]{"mm001","wm001"})for(String item:new String[]{"IT_ADAPTED_PLAYTEST_MOKDO","IT_WARDROBE_MW016",ChungryongWeaponRenderer.ITEM}){
    RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.unequip("무기");if(!r.inventory().containsKey(item))r.autoLootResolvedItem(item,1);assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(item));CharacterVisualBinding v=CharacterVisualBinding.from(r);renderer.prepare(v.equipmentVisualRef(),v.weaponVisualRef());
-   String motion=WeaponCombatProfile.motion(r,"EQUIPPED_BASIC");Bitmap sheet=Bitmap.createBitmap(720,450,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(sheet);canvas.drawColor(0xffa8a18f);Paint label=new Paint();label.setTextSize(10);label.setColor(Color.BLACK);
-   int row=0;for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){int col=0;for(float q:new float[]{0,.17f,.34f,.55f,.85f}){float x=65+col++*140,y=100+row*108;CharacterRenderer.Pose p=new CharacterRenderer.Pose(x,y,d,CharacterRenderer.State.ATTACK,0,q*.5f,.5f,false,v.equipmentVisualRef(),v.weaponVisualRef(),null,CharacterRenderer.EffectFamily.NONE,AnimationAction.SWING);assertTrue(renderer.draw(canvas,p,body,motion,q));canvas.drawText(d+" "+q,x-40,y+12,label);}row++;}save(sheet,body+"-"+v.weaponVisualRef()+"-"+motion);sheet.recycle();
+   String motion=WeaponCombatProfile.motion(r,"EQUIPPED_BASIC");assertNotEquals("EQUIPPED_BASIC",motion);Bitmap sheet=Bitmap.createBitmap(720,450,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(sheet);canvas.drawColor(0xffa8a18f);Paint label=new Paint();label.setTextSize(10);label.setColor(Color.BLACK);
+   int row=0;for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){int col=0;for(float q:new float[]{0,.17f,.34f,.55f,.85f}){float x=65+col++*140,y=100+row*108;CharacterRenderer.Pose p=new CharacterRenderer.Pose(x,y,d,CharacterRenderer.State.ATTACK,0,q*.5f,.5f,false,v.equipmentVisualRef(),v.weaponVisualRef(),null,CharacterRenderer.EffectFamily.NONE,AnimationAction.SWING);assertTrue(ChungryongWeaponRenderer.equipped(v.weaponVisualRef())?renderer.drawChungryong(canvas,p,body,"twohand",q):renderer.draw(canvas,p,body,motion,q));canvas.drawText(d+" "+q,x-40,y+12,label);}row++;}save(sheet,body+"-"+v.weaponVisualRef()+"-"+motion);sheet.recycle();
   }
   Bitmap target=Bitmap.createBitmap(220,220,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(target);
   for(String body:new String[]{"mm001","wm001"})for(String motion:new String[]{"PUNCH","SWING","TWO_HAND","THRUST","CAST","FRONT_KICK","SIDE_KICK","SPIN_KICK","JUMP","THROW","CHARGE_CAST"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(float q:new float[]{0,.17f,.34f,.6f,.85f}){CharacterRenderer.Pose p=new CharacterRenderer.Pose(110,190,d,CharacterRenderer.State.ATTACK,0,q,.5f,false,"mu0000001","mw001",null,CharacterRenderer.EffectFamily.NONE);assertTrue(body+motion+d,renderer.draw(canvas,p,body,motion,q));}
@@ -69,6 +69,13 @@ public class MotionHudFrameV169Test {
    image.recycle();
   }
   save(sheet,"all-map-hud");sheet.recycle();Arrays.sort(times);System.out.println("V169_ALL_MAPS="+maps.size()+" frame_ns p95="+times[(int)(count*.95)]+" p99="+times[(int)(count*.99)]+" max="+times[count-1]);
+ }
+ @Test public void everyInteriorKeepsVisibleStickAndDirectInput()throws Exception{
+  GameView v=new GameView(c);v.layout(0,0,960,540);List<TownInteriorDef> rooms=new ArrayList<>();rooms.addAll(TownInteriorDef.ALL);rooms.addAll(TownInteriorDef.ABEL);rooms.addAll(TownInteriorDef.RUCESION);
+  Bitmap sheet=Bitmap.createBitmap(960,((rooms.size()+3)/4)*135,Bitmap.Config.ARGB_8888);Canvas grid=new Canvas(sheet);int i=0;
+  for(TownInteriorDef room:rooms){call(v,"enterTownInterior",new Class<?>[]{TownInteriorDef.class},room);Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));int z=image.getPixel(88,446);assertTrue(room.mapId,Color.red(z)<150&&Color.green(z)<155);
+   MotionEvent e=MotionEvent.obtain(0,0,MotionEvent.ACTION_DOWN,108,446,0);v.onTouchEvent(e);e.recycle();assertTrue(room.mapId,(Boolean)TownInteriorTest.field(v,"joy"));e=MotionEvent.obtain(0,1,MotionEvent.ACTION_UP,108,446,0);v.onTouchEvent(e);e.recycle();assertFalse((Boolean)TownInteriorTest.field(v,"joy"));grid.drawBitmap(image,null,new RectF(i%4*240,i/4*135,(i%4+1)*240,(i/4+1)*135),new Paint());i++;image.recycle();}
+  save(sheet,"all-interior-hud");sheet.recycle();System.out.println("V169_INTERIORS="+rooms.size());
  }
  @Test public void leanGrowthProjectionPreservesFullStatsAcrossEquipmentAndRestore(){
   RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);

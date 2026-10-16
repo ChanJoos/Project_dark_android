@@ -48,7 +48,11 @@ final class SkillBodyRenderer {
     c.restore();return true;
   }
   boolean draw(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
-    if(p.direction==null)return false;String key=catalog.frameKey(body,motion,p.direction,phase);JSONObject f=key==null?null:catalog.frames.optJSONObject(key);if(f==null)return false;
+    if(p.direction==null)return false;
+    // group02 is an authored directional contact pose, not a complete temporal clip.
+    // Its real source standing preparation/recovery keeps the blade and clothes registered.
+    if(("SWING".equals(motion)||"EQUIPPED_BASIC".equals(motion))&&(phase<1f/3f||phase>=.8f)||"TWO_HAND".equals(motion)&&phase>=.8f)motion="IDLE";
+    String key=catalog.frameKey(body,motion,p.direction,phase);JSONObject f=key==null?null:catalog.frames.optJSONObject(key);if(f==null)return false;
     Bitmap b=bitmap(f.optString("path"));if(b==null)return false;
     String[] parts=key.split("/");String group=parts[1];int index=Integer.parseInt(parts[2]);
     boolean mirror=!"02".equals(group)&&(p.direction==CharacterRenderer.Direction.NW||p.direction==CharacterRenderer.Direction.SW);
@@ -60,7 +64,7 @@ final class SkillBodyRenderer {
     float jumpHandX=rootX+(13f*b.getWidth()/17f-(float)f.optDouble("pivotX"))*SCALE;
     float jumpHandY=rootY+(24-b.getHeight()-(float)f.optDouble("offsetY"))*SCALE;
     if(jumpWeapon&&back)chungryong.layer(c,"basic",true,0,jumpHandX,jumpHandY,SCALE);
-    boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND");
+    boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND")||motion.equals("IDLE");
     if(weapon&&back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",true,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
