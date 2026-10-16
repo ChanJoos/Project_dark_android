@@ -1,0 +1,14 @@
+{
+  "status": "ACCEPTED",
+  "evidence": "USER screenshot and explicit request 2026-10-16 23:04-23:05 KST",
+  "source": "master/source/equipment_window_v175/reference.jpg",
+  "before": "13 generic paper-doll cells and styled stat display",
+  "after": "Screenshot-derived 522x556 panel;15 requested cells;hat1/earring1/necklace1/armor1/weapon1/glove2/ring2/shoes1/greaves1/belt1/shield1/ornament2; six live FinalStats in STR/INT WIS/CON DEX/AC order",
+  "invariants": [
+    "no screenshot items or stat numbers baked into runtime",
+    "paired ornament slot keys use existing ownership/quantity/stat/save validation",
+    "no invented production ornament item/bonus",
+    "inventory and twohand/shield rules retained"
+  ],
+  "verification": "PENDING CI/native/render/APK; phone pending"
+}

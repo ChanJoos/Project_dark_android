@@ -10,16 +10,21 @@ final class ItemWindow {
   interface Visuals { void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size); void actor(Canvas c,float x,float y); }
   enum Hit { NONE,CLOSE,SELECT,ACTION,DETAILS,CONSUMED }
   static final int PAGE_SIZE=50;
-  static final String[] SLOTS={"귀걸이","목걸이","갑옷","모자","반지","무기","방패","장갑","벨트","각반","신발",RpgProgressionState.RIGHT_GLOVE_SLOT,RpgProgressionState.RIGHT_RING_SLOT};
-  // Balanced paper doll: two equal rails, centered head and paired lower slots.
-  static final float[][] POS={{242,134},{438,134},{242,198},{340,94},{242,390},{242,262},{438,262},{242,326},{438,390},{306,390},{374,390},{438,326},{438,198}};
+  static final String[] SLOTS={"모자","귀걸이","목걸이","갑옷","무기","장갑",RpgProgressionState.RIGHT_GLOVE_SLOT,"반지",RpgProgressionState.RIGHT_RING_SLOT,"신발","각반","벨트","방패","장식",RpgProgressionState.SECOND_ORNAMENT_SLOT};
+  // Coordinates in the user's 522x556 reference crop. Cosmetic-only source cells omitted.
+  static final float[][] POS={{268,54},{355,72},{109,72},{109,144},{109,216},{40,288},{427,288},{109,288},{355,288},{268,360},{109,360},{355,360},{40,360},{355,144},{427,144}};
+  static final float EQUIP_X=224,EQUIP_Y=35,EQUIP_SCALE=.85f;
+  static RectF equipmentClose(){return new RectF(630,36,667,72);}
+  static RectF equipmentStats(){return new RectF(224+430*.85f,35+54*.85f,224+493*.85f,35+107*.85f);}
+  static int[] equipmentValues(RpgProgressionState r){FinalStats f=r.finalStats();return new int[]{f.str,f.intel,f.wis,f.con,f.dex,f.ac};}
   final Map<String,Bitmap> images=new HashMap<>();
+  final Map<String,Bitmap> equipmentImages=new HashMap<>();
   final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
   final RpgInventoryPresentation presentation=new RpgInventoryPresentation();
   int page,filter,effectPage,effectPages=1;boolean details,effectDetails;String selectedSlot,hitItem,hitTargetSlot,detailItemId,pickedTargetSlot;
-  ItemWindow(Context context){try{JSONObject m=new JSONObject(new String(PresentationAssetBytes.read(context,"item-window/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("crops");Iterator<String> keys=m.keys();while(keys.hasNext()){String k=keys.next();Bitmap b=BitmapFactory.decodeStream(context.getAssets().open(m.getJSONObject(k).getString("path")));if(b==null)throw new IllegalStateException(k);images.put(k,b);}}catch(Exception e){throw new IllegalStateException("Item window skin unavailable",e);}}
+  ItemWindow(Context context){try{JSONObject m=new JSONObject(new String(PresentationAssetBytes.read(context,"item-window/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("crops");Iterator<String> keys=m.keys();while(keys.hasNext()){String k=keys.next();Bitmap b=BitmapFactory.decodeStream(context.getAssets().open(m.getJSONObject(k).getString("path")));if(b==null)throw new IllegalStateException(k);images.put(k,b);}}catch(Exception e){throw new IllegalStateException("Item window skin unavailable",e);}for(String key:new String[]{"panel","slot"})try{Bitmap b=BitmapFactory.decodeStream(context.getAssets().open("equipment-window-v175/"+key+".png"));if(b==null)throw new IllegalStateException(key);equipmentImages.put(key,b);}catch(Exception e){throw new IllegalStateException("Equipment reference skin unavailable",e);}}
   static RectF cell(int i){float x=344+(i%10)*58,y=118+(i/10)*58;return new RectF(x,y,x+58,y+58);}
-  static RectF slot(int i){return new RectF(POS[i][0],POS[i][1],POS[i][0]+55,POS[i][1]+55);}
+  static RectF slot(int i){float x=EQUIP_X+POS[i][0]*EQUIP_SCALE,y=EQUIP_Y+POS[i][1]*EQUIP_SCALE;return new RectF(x,y,x+70*EQUIP_SCALE,y+70*EQUIP_SCALE);}
   List<RpgInventoryPresentation.ItemRow> rows(RpgProgressionState r){List<RpgInventoryPresentation.ItemRow> out=new ArrayList<>();for(RpgInventoryPresentation.ItemRow row:presentation.inventoryRows(r))if(filter==0||filter==1&&row.equipSlot!=null&&!row.equipSlot.isEmpty()||filter==2&&(r.isConsumable(row.itemId)||r.isRecall(row.itemId)))out.add(row);return out;}
   void image(Canvas c,String key,RectF r){if(key.equals("all")||key.equals("gear")||key.equals("use")){UiTheme.glyph(c,key.equals("all")?"bag":key.equals("gear")?"gear":"potion",r.centerX(),r.centerY(),8,UiTheme.GOLD);}else UiTheme.slot(c,r,false,false);}
   void txt(Canvas c,String s,float x,float y,float size,int color){UiTheme.text(c,s,x,y,size,UiTheme.ink(color),size>=13);}
@@ -124,23 +129,38 @@ final class ItemWindow {
   }
   static int mod(RpgProgressionState.ItemDefinition d,String k){return d==null?0:d.statModifiers.getOrDefault(k,0);}
   void equipment(Canvas c,RpgProgressionState r,String selected,Visuals v){
-    UiTheme.scrim(c);panel(c,new RectF(224,48,511,519),"장비");UiTheme.close(c,493,66);
-    // Draw the centered actor stage before the item cells; it never covers a slot.
-    UiTheme.surface(c,new RectF(311,168,424,337),UiTheme.SURFACE,0,14);v.actor(c,367.5f,315);
-    UiTheme.center(c,"평민 · Lv."+r.normalLevel(),367.5f,359,11,UiTheme.TEXT,true);
-    for(int i=0;i<SLOTS.length;i++){RectF b=slot(i);String id=r.equipment().get(SLOTS[i]);RpgInventoryPresentation.ItemRow row=find(r,id);boolean active=SLOTS[i].equals(selectedSlot);UiTheme.slot(c,b,active,false);if(row!=null){v.icon(c,row,b.left+5,b.top+5,45);}else UiTheme.equipmentGlyph(c,RpgProgressionState.baseSlot(SLOTS[i]),b.centerX(),b.centerY(),17,active?UiTheme.ACCENT:0xffa58a5c);if(RpgProgressionState.pairedSlot(RpgProgressionState.baseSlot(SLOTS[i])))UiTheme.text(c,SLOTS[i].contains("오른")?"우":"좌",b.left+3,b.top+10,8,UiTheme.MUTED,false);}
-    // Independent current stats are read from the established FinalStats authority.
-    FinalStats f=r.finalStats();String[] keys={"STR","INT","WIS","CON","DEX"};int[] total={f.str,f.intel,f.wis,f.con,f.dex},base={r.str(),r.intel(),r.wis(),r.con(),r.dex()};
-    UiTheme.line(c,242,450,493,450,UiTheme.LINE);
-    for(int i=0;i<5;i++){float x=i<3?242:381,y=469+(i<3?i:i-3)*18;UiTheme.text(c,keys[i],x,y,10,UiTheme.MUTED,true);int bonus=total[i]-base[i];UiTheme.right(c,String.valueOf(total[i]),x+69,y,12,UiTheme.TEXT,true);if(bonus!=0)UiTheme.right(c,(bonus>0?"+":"")+bonus,x+111,y,10,UiTheme.ACCENT,true);}
-    // One continuous information sheet, with aligned readouts and contextual details.
-    panel(c,new RectF(533,48,921,519),"장비 정보");
-    button(c,new RectF(549,84,797,112),"상세 능력치");UiTheme.glyph(c,"stats",867,93,13,UiTheme.ACCENT);
-    String[] summary={"HP","MP","AC","HIT","DAM"};int[] values={f.maxHp,f.maxMp,f.ac,f.hit,f.dam};
-    for(int i=0;i<5;i++){float x=553+i*69;UiTheme.center(c,summary[i],x+25,145,10,UiTheme.MUTED,true);UiTheme.center(c,String.valueOf(values[i]),x+25,174,20,UiTheme.TEXT,true);}
-    UiTheme.line(c,549,195,905,195,UiTheme.LINE);
-    if(selectedSlot!=null){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(r.equipment().get(selectedSlot));card(c,r,d,null,new RectF(533,228,921,517),selectedSlot,v);if(d!=null)button(c,new RectF(743,476,893,507),"해제");}
-    else{UiTheme.equipmentGlyph(c,"갑옷",727,305,28,0xff9b7a4f);UiTheme.center(c,"장비를 선택하세요",727,368,16,UiTheme.TEXT,true);UiTheme.center(c,"각 부위의 능력치와 착용 정보를 확인합니다.",727,393,11,UiTheme.MUTED,false);}
+    UiTheme.scrim(c);c.save();c.translate(EQUIP_X,EQUIP_Y);c.scale(EQUIP_SCALE,EQUIP_SCALE);
+    p.setFilterBitmap(false);p.setAlpha(255);c.drawBitmap(equipmentImages.get("panel"),0,0,p);
+    // Actual paper doll, not the character captured in the reference screenshot.
+    v.actor(c,261,310);
+    for(int i=0;i<SLOTS.length;i++){
+      float x=POS[i][0],y=POS[i][1];RectF b=new RectF(x,y,x+70,y+70);
+      c.drawBitmap(equipmentImages.get("slot"),null,b,p);
+      String id=r.equipment().get(SLOTS[i]);RpgInventoryPresentation.ItemRow row=find(r,id);
+      if(row!=null)v.icon(c,row,x+7,y+7,56);
+      else UiTheme.equipmentGlyph(c,RpgProgressionState.baseSlot(SLOTS[i]),x+35,y+35,18,0xff64533c);
+      if(SLOTS[i].equals(selectedSlot)){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xffe6bf77);c.drawRect(x+2,y+2,x+68,y+68,p);p.setStyle(Paint.Style.FILL);}
+    }
+    // Preserve original stat ordering: STR/INT, WIS/CON, DEX/AC.
+    int[] values=equipmentValues(r);int[][] at={{147,504},{147,540},{295,504},{295,540},{449,504},{449,540}};
+    p.setTypeface(Typeface.create(Typeface.SERIF,Typeface.NORMAL));p.setTextSize(24);p.setTextAlign(Paint.Align.RIGHT);p.setColor(0xfff0e6c9);
+    for(int i=0;i<6;i++){float width=p.measureText(String.valueOf(values[i]));p.setTextScaleX(width>37?37/width:1);c.drawText(String.valueOf(values[i]),at[i][0],at[i][1],p);p.setTextScaleX(1);}
+    p.setTextAlign(Paint.Align.LEFT);
+    // The reference's top-right character button opens the full live stat page.
+    // Original character/stat button pixels are retained in the skin.
+    c.restore();UiTheme.close(c,649,54);
+    if(selectedSlot!=null){
+      RectF b=new RectF(690,155,947,514);panel(c,b,selectedSlot.replace("갑옷","옷"));
+      RpgProgressionState.ItemDefinition d=r.equippedDefinition(selectedSlot);
+      if(d==null){UiTheme.center(c,"빈 장비 슬롯",818,238,14,UiTheme.MUTED,false);}
+      else{
+        RpgInventoryPresentation.ItemRow row=find(r,d.itemId);if(row!=null)v.icon(c,row,789,196,58);
+        UiTheme.fit(c,RpgInventoryPresentation.displayName(d.name),706,279,224,14,UiTheme.TEXT,true);
+        UiTheme.fit(c,presentation.requirementLabel(row),706,303,224,11,UiTheme.MUTED,false);
+        int line=0;for(Map.Entry<String,Integer> m:d.statModifiers.entrySet()){if(line==8)break;UiTheme.text(c,m.getKey(),707,329+line*16,11,UiTheme.MUTED,false);UiTheme.right(c,(m.getValue()>0?"+":"")+m.getValue(),927,329+line*16,12,UiTheme.TEXT,false);line++;}
+        button(c,new RectF(743,476,893,507),"해제");
+      }
+    }
   }
   Hit inventoryTouch(float x,float y,RpgProgressionState r){hitItem=null;hitTargetSlot=null;if(new RectF(896,48,940,83).contains(x,y))return Hit.CLOSE;
     if(details&&y>=228){
@@ -154,8 +174,11 @@ final class ItemWindow {
     for(int i=0;i<50;i++)if(cell(i).contains(x,y)){int n=page*50+i;if(n<list.size()){hitItem=list.get(n).itemId;detailItemId=hitItem;pickedTargetSlot=null;details=true;effectDetails=false;effectPage=0;return Hit.SELECT;}return Hit.CONSUMED;}
     return Hit.CONSUMED;
   }
-  Hit equipmentTouch(float x,float y,RpgProgressionState r){hitItem=null;if(selectedSlot!=null&&detailTouch(x,y,533))return Hit.CONSUMED;if(new RectF(476,48,511,84).contains(x,y))return Hit.CLOSE;if(new RectF(549,74,797,112).contains(x,y))return Hit.DETAILS;
+  Hit equipmentTouch(float x,float y,RpgProgressionState r){hitItem=null;
+    if(equipmentClose().contains(x,y))return Hit.CLOSE;
+    if(equipmentStats().contains(x,y)||new RectF(224,35+475*.85f,224+522*.85f,35+556*.85f).contains(x,y))return Hit.DETAILS;
     if(new RectF(743,476,893,507).contains(x,y)&&selectedSlot!=null){hitItem=r.equipment().get(selectedSlot);if(hitItem!=null)return Hit.ACTION;}
-    for(int i=0;i<SLOTS.length;i++)if(slot(i).contains(x,y)){selectedSlot=SLOTS[i];effectDetails=false;effectPage=0;hitItem=r.equipment().get(selectedSlot);return hitItem==null?Hit.CONSUMED:Hit.SELECT;}return Hit.CONSUMED;
+    for(int i=0;i<SLOTS.length;i++)if(slot(i).contains(x,y)){selectedSlot=SLOTS[i];effectDetails=false;effectPage=0;hitItem=r.equipment().get(selectedSlot);return hitItem==null?Hit.CONSUMED:Hit.SELECT;}
+    return Hit.CONSUMED;
   }
 }

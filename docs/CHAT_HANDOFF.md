@@ -1,3 +1,7 @@
+## 2026-10-16 — V175 user screenshot equipment window
+
+Single Director editor. Accepted task: extract supplied panel pixels and retain only15 requested functional cells, live actor/items and six FinalStats. Retain V174 gameplay. Added paired ornament support without inventing any production items. CI/native/APK/phone pending. Resume exact branch run, inspect native renders before delivering. Contract master/changes/V175_EQUIPMENT_WINDOW.json.
+
 ## 2026-10-16 — V174 leap presentation/facing and confirmed timing corrections verified
 
 IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED. APK source `bde8fe3434d36c93e6ed40c63504cee709aee3ac`; unchanged game implementation frome06af00e after test/CI-only fixes. PR197/main41fe6def remains unmerged candidate. User accepted V173 other behavior but rejected leap jump/FX and requested facing toward the crossed actor plus original-cooldown audit. LEAP now stays in IDLE with no independent particles and faces the crossed monster/NPC after landing. Original landing/terrain rules and user8s control/full reflection/basic1s retained.

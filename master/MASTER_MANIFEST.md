@@ -1,3 +1,7 @@
+## 2026-10-16 — V175 user screenshot equipment window
+
+Single Director editor. Accepted task: extract supplied panel pixels and retain only15 requested functional cells, live actor/items and six FinalStats. Retain V174 gameplay. Added paired ornament support without inventing any production items. CI/native/APK/phone pending. Resume exact branch run, inspect native renders before delivering. Contract master/changes/V175_EQUIPMENT_WINDOW.json.
+
 ## V174 verified candidate; original cooldown gaps retained
 
 APK bde8fe34, focused214/37 + resumed common38902322965 SUCCESS. Three martial spell classifications corrected,34reusevalues changed.49physical/utility original numbers remain PENDING; historical measurements and general spell policy are not whole-catalog live-server certification. See changes/V174_BUILD_RUNTIME_RECEIPT.json and changes/V174_SKILL_TIMING.json. Phone acceptance pending.

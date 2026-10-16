@@ -39,9 +39,10 @@ public final class RpgProgressionState {
 
   public static final String RIGHT_GLOVE_SLOT="장갑(오른손)";
   public static final String RIGHT_RING_SLOT="반지(오른손)";
-  public static boolean pairedSlot(String slot){return "장갑".equals(slot)||"반지".equals(slot);}
-  public static String secondSlot(String slot){return "장갑".equals(slot)?RIGHT_GLOVE_SLOT:"반지".equals(slot)?RIGHT_RING_SLOT:null;}
-  public static String baseSlot(String slot){return RIGHT_GLOVE_SLOT.equals(slot)?"장갑":RIGHT_RING_SLOT.equals(slot)?"반지":slot;}
+  public static final String SECOND_ORNAMENT_SLOT="장식(두번째)";
+  public static boolean pairedSlot(String slot){return "장갑".equals(slot)||"반지".equals(slot)||"장식".equals(slot);}
+  public static String secondSlot(String slot){return "장갑".equals(slot)?RIGHT_GLOVE_SLOT:"반지".equals(slot)?RIGHT_RING_SLOT:"장식".equals(slot)?SECOND_ORNAMENT_SLOT:null;}
+  public static String baseSlot(String slot){return RIGHT_GLOVE_SLOT.equals(slot)?"장갑":RIGHT_RING_SLOT.equals(slot)?"반지":SECOND_ORNAMENT_SLOT.equals(slot)?"장식":slot;}
   public static boolean acceptsSlot(String slot,ItemDefinition def){return def!=null&&def.equippable()&&def.equipSlot.equals(baseSlot(slot));}
   public static final String ARMOR_SLOT="갑옷";
   public static final String LOWER_GARMENT_SLOT="각반";
