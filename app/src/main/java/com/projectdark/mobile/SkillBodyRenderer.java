@@ -10,9 +10,26 @@ import java.nio.charset.StandardCharsets;
 final class SkillBodyRenderer {
   private final Context context;private final SkillPresentationCatalog catalog;private final EquipmentVisualRegistry gear;
   private final Map<String,Bitmap> bitmaps=new HashMap<>();private final Map<String,JSONObject> registrations=new HashMap<>();
+  private final Map<String,CharacterSemanticRig.Anchors> rigs=new HashMap<>();
+  private int rigBuilds,bitmapLoads;
+  int rigBuildCount(){return rigBuilds;}
+  int bitmapLoadCount(){return bitmapLoads;}
+  private CharacterSemanticRig.Anchors rig(String key,Bitmap b,CharacterRenderer.Direction d){
+    CharacterSemanticRig.Anchors r=rigs.get(key);if(r==null){r=CharacterSemanticRig.derive(b,new Rect(0,0,b.getWidth(),b.getHeight()),d);rigs.put(key,r);rigBuilds++;}return r;
+  }
   private final Paint paint=new Paint();private final ChungryongWeaponRenderer chungryong;
   static final float SCALE=CharacterRenderer.SOURCE_PRESENTATION_SCALE*43f/51f;
-  SkillBodyRenderer(Context c,SkillPresentationCatalog s){context=c;catalog=s;gear=new EquipmentVisualRegistry(c);chungryong=new ChungryongWeaponRenderer(c);paint.setFilterBitmap(false);}
+  SkillBodyRenderer(Context c,SkillPresentationCatalog s){context=c;catalog=s;gear=new EquipmentVisualRegistry(c);chungryong=new ChungryongWeaponRenderer(c);paint.setFilterBitmap(false);
+    // Predecode retained BODY clips off the draw path. Equipment is prepared on state changes.
+    for(Iterator<String> it=catalog.frames.keys();it.hasNext();){JSONObject f=catalog.frames.optJSONObject(it.next());if(f!=null)bitmap(f.optString("path"));}
+    for(String body:new String[]{"mm001","wm001"})for(int n:new int[]{1,3}){JSONObject f=catalog.frames.optJSONObject(body+"/02/"+n);if(f!=null){Bitmap b=bitmap(f.optString("path"));if(b!=null)rig(body+"/02/"+n,b,n==1?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE);}}
+  }
+  private String preparedEquipment,preparedWeapon;
+  void prepare(String equipment,String weapon){
+    if(Objects.equals(preparedEquipment,equipment)&&Objects.equals(preparedWeapon,weapon))return;
+    for(String id:equipment==null?new String[0]:equipment.split(",")){gear.get(id);registration(id);}
+    gear.get(weapon);registration(weapon);preparedEquipment=equipment;preparedWeapon=weapon;
+  }
   boolean drawChungryong(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
     if(!ChungryongWeaponRenderer.equipped(p.weaponVisualRef))return false;
     boolean back=ChungryongWeaponRenderer.back(p.direction);int n=ChungryongWeaponRenderer.frame(motion,phase);
@@ -56,17 +73,21 @@ final class SkillBodyRenderer {
   static float jumpLift(float phase){float q=Math.max(0,Math.min(1,phase));return q<1f/3f?12f*q*3:12f*(1-q)*1.5f;}
   /** Preserve source blade pixels; translate its registered source grip to the current BODY hand. */
   private void drawHeldWeapon(Canvas c,String id,String body,String group,int index,CharacterRenderer.Direction direction,float x,float y,Bitmap current,JSONObject currentFrame){
-    if("02".equals(group)){drawGear(c,id,group,index,direction,x,y);return;}
+    JSONObject own=registration(id);
+    JSONObject sprites=own==null?null:own.optJSONObject("sprites");
+    JSONArray exact=sprites==null?null:sprites.optJSONArray(group);
+    if(exact!=null&&index<exact.length()){drawGear(c,id,group,index,direction,x,y);return;}
     EquipmentVisualRegistry.Visual v=gear.get(id);JSONObject registration=registration(id);if(v==null||v.atlas==null||registration==null)return;
     boolean back=ChungryongWeaponRenderer.back(direction);int sourceIndex=back?1:3;
     JSONArray frames=registration.optJSONObject("sprites").optJSONArray("02");JSONObject f=frames==null?null:frames.optJSONObject(sourceIndex);
     JSONObject baseFrame=catalog.frames.optJSONObject(body+"/02/"+sourceIndex);if(f==null||baseFrame==null){drawGear(c,id,group,index,direction,x,y);return;}
     Bitmap base=bitmap(baseFrame.optString("path"));if(base==null)return;
     CharacterRenderer.Direction sourceDirection=back?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
-    CharacterSemanticRig.Anchors baseRig=CharacterSemanticRig.derive(base,new Rect(0,0,base.getWidth(),base.getHeight()),sourceDirection);
+    CharacterSemanticRig.Anchors baseRig=rig(body+"/02/"+sourceIndex,base,sourceDirection);
     float hx,hy;
     if("e".equals(group)&&index>=16&&index<=23){float[] hand=ChungryongWeaponRenderer.hand(group,index,current.getWidth(),current.getHeight());hx=hand[0];hy=hand[1];}
-    else{CharacterSemanticRig.Anchors rig=CharacterSemanticRig.derive(current,new Rect(0,0,current.getWidth(),current.getHeight()),sourceDirection);hx=rig.dominantHand.x;hy=rig.dominantHand.y;}
+    else if("c".equals(group)&&index<14){float[] hand=ChungryongWeaponRenderer.hand(group,index,current.getWidth(),current.getHeight());hx=hand[0];hy=hand[1];}
+    else{CharacterSemanticRig.Anchors a=rig(body+"/"+group+"/"+index,current,sourceDirection);hx=a.dominantHand.x;hy=a.dominantHand.y;}
     float dx=hx-(float)currentFrame.optDouble("pivotX")-(baseRig.dominantHand.x-(float)baseFrame.optDouble("pivotX"));
     float dy=hy-current.getHeight()-(float)currentFrame.optDouble("offsetY")-(baseRig.dominantHand.y-base.getHeight()-(float)baseFrame.optDouble("offsetY"));
     int w=f.optInt("w"),h=f.optInt("h"),sx=f.optInt("sx"),sy=f.optInt("sy");if(w<=0||h<=0||sx+w>v.atlas.getWidth()||sy+h>v.atlas.getHeight())return;
@@ -85,5 +106,5 @@ final class SkillBodyRenderer {
     c.drawBitmap(v.atlas,new Rect(sx,sy,sx+w,sy+h),new RectF(left,top,left+w*SCALE,top+h*SCALE),paint);
   }
   private JSONObject registration(String id){if(registrations.containsKey(id))return registrations.get(id);JSONObject j=null;try{j=new JSONObject(new String(PresentationAssetBytes.read(context,"source-registration/"+id+".json"),StandardCharsets.UTF_8));}catch(Exception ignored){}registrations.put(id,j);return j;}
-  private Bitmap bitmap(String path){if(bitmaps.containsKey(path))return bitmaps.get(path);Bitmap b=null;try{b=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/"+path));}catch(Exception ignored){}bitmaps.put(path,b);return b;}
+  private Bitmap bitmap(String path){if(bitmaps.containsKey(path))return bitmaps.get(path);Bitmap b=null;try(java.io.InputStream in=context.getAssets().open("skill-presentation/"+path)){b=BitmapFactory.decodeStream(in);if(b!=null){b.prepareToDraw();bitmapLoads++;}}catch(Exception ignored){}bitmaps.put(path,b);return b;}
 }

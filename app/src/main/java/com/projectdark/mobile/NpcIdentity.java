@@ -56,6 +56,6 @@ public final class NpcIdentity {
  }
  public static String interiorKey(String kind){return "interior_"+kind.toLowerCase(Locale.ROOT);}
  public static String interiorKey(String mapId,String kind){if(mapId.startsWith("rucesion_interior_"))return mapId;return (mapId.startsWith("abel_interior_")?"abel_":"")+interiorKey(kind);}
- public static String text(String original){if(original==null)return null;String value=original.replace("한스","윌리엄").replace("메리","벤저민").replace("멀린","헨리");for(int i=0;i<NAMES.length;i++)value=value.replace(NAMES[i],KOREAN_NAMES[i]);return value;}
+ public static String text(String original){if(original==null)return null;String value=original.replace("한스","윌리엄").replace("메리","벤저민").replace("멀린","헨리");boolean latin=false;for(int i=0;i<value.length();i++){char ch=value.charAt(i);if(ch>='a'&&ch<='z'){latin=true;break;}}if(latin)for(int i=0;i<NAMES.length;i++)value=value.replace(NAMES[i],KOREAN_NAMES[i]);return value;}
  private NpcIdentity(){}
 }

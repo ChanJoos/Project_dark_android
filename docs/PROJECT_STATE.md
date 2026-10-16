@@ -1,3 +1,11 @@
+## 2026-10-16 — V169 motion/HUD/frame regression in progress
+
+V168 DEVICE_FAILED_USER_REPORTED: retained twohand animation not used; onehand other directions wrong; Rucesion coast joystick vanishes; global lag distinct from movement speed. Root single editor resumes existing PR197/codex/rucesion-coast-v157 at cd167454, current main41fe6def unmerged. Source cause reproduced: mw016 (and other named twohand blades) has c cells, not e, while V168 TWO_HAND selected e16..23 and synthesized static blade hand placement. New selection uses existing male/female c cells and matching exact blade cells. Basic/skill route now shares SkillBodyRenderer, excluding the legacy male-only direction/mirror normalization bypass. All original source pixels preserved.
+
+Performance diagnosis: SkillBodyRenderer fallback derived per-pixel hand rigs each attack frame; BODY clips decoded on first draw; character visual projections and two full FinalStats/map snapshots allocated every tick. Cache/predecode source frames/hand rigs and equipment projection; lean HP/MP projection keeps full authoritative values. HUD joystick alpha was extremely low on pale coast sand; improve contrast and isolate world Canvas state. Root-cause contribution to handset total lag is NOT yet quantified. Movement interval, frame delta, collision, actor counts, resolution, combat and saves are unchanged.
+
+Contract master/changes/V169_MOTION_HUD_FRAME.json. Source/metadata integrity PASS; focused/native/all-map/continuous-input/memory and full common CI PENDING. No new verified APK or phone fix claim yet. Resume on exact published SHA, inspect CI errors, source motion contact sheets, all-map HUD and frame/cache statistics before delivery. Phone/user visual acceptance PENDING.
+
 ## 2026-10-16 — V168 resumed: exact-source CI and APK delivery complete
 
 Resumed from existing source `c87e943275223b3c230c29fe037db2fce9924b15` on `codex/rucesion-coast-v157`, PR197; no gameplay or artwork regeneration. main41fe6def remains unmerged. Earlier V168 checkpoint run numbers below are historical; final evidence supersedes their pending status.

@@ -13,6 +13,7 @@ public final class WeaponCombatProfile {
  public static String motion(RpgProgressionState r,String requested){
   if(!"SWING".equals(requested)&&!"EQUIPPED_BASIC".equals(requested))return requested;
   RpgProgressionState.ItemDefinition d=r.equippedDefinition(RpgProgressionState.WEAPON_SLOT);
+  if(d==null)return "PUNCH";
   if(grip(d)==Grip.TWO_HAND)return "TWO_HAND";
   return d!=null&&basicAction(d)==AnimationAction.THRUST?"THRUST":requested;
  }

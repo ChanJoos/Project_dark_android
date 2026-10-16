@@ -145,7 +145,9 @@ public final class RuntimeState {
   public RpgProgressionState rpg(){return rpg;}
   private int appliedBaseMaxHp=100,appliedBaseMaxMp=100;
   public void applyDerivedGrowth(){
-    int newMaxHp=rpg.maxHpGrowth(),newMaxMp=rpg.maxMpGrowth();
+    int hpBonus=0,mpBonus=0;
+    for(String id:rpg.equipment().values()){RpgProgressionState.ItemDefinition d=rpg.itemDefinitions().get(id);if(d!=null){hpBonus+=d.statModifiers.getOrDefault("HP",0);mpBonus+=d.statModifiers.getOrDefault("MP",0);}}
+    int newMaxHp=Math.max(1,rpg.baseMaxHp()+hpBonus),newMaxMp=Math.max(0,rpg.baseMaxMp()+mpBonus);
     int earnedHp=Math.max(0,rpg.baseMaxHp()-appliedBaseMaxHp),earnedMp=Math.max(0,rpg.baseMaxMp()-appliedBaseMaxMp);
     appliedBaseMaxHp=rpg.baseMaxHp();appliedBaseMaxMp=rpg.baseMaxMp();
     player.maxHp=newMaxHp;player.maxMp=newMaxMp;
