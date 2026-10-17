@@ -1,6 +1,6 @@
 {
   "version": 179,
-  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED_FULL_COMMON_PENDING",
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_AND_COMMON_VERIFIED",
   "sourceCommit": "4e5d88579fd9499a73c5a16cb76b9f846117aedf",
   "appMainTree": "e69cac45092b660fcb93d5a3ccd784ee6f23ac57",
   "branch": "codex/rucesion-coast-v157",
@@ -52,8 +52,7 @@
   "common": {
     "run": 39075519707,
     "job": 117521748864,
-    "status": "IN_PROGRESS",
-    "currentGate": "Verify skill window, shared combat and restart persistence",
+    "status": "SUCCESS",
     "reusedPrefix": {
       "source": "d7aaf0bafb2cf6bab694809b82edb519eea7f410",
       "run": 39074826700,
@@ -61,6 +60,15 @@
       "successfulSteps": 15,
       "machineCheckedLimitedTestCiDelta": true,
       "appRuntimeDeltaEmpty": true
+    },
+    "successfulGradleExecutions": 17,
+    "decodedLogInspected": true,
+    "normalPackageApkIsNotDeliveredTestCandidate": true,
+    "duplicate": {
+      "run": 39075523479,
+      "job": 117521760225,
+      "status": "IN_PROGRESS_DUPLICATE_AT_CLOSURE",
+      "policy": "Do not repeat passed checks or hold saved TEST delivery for duplicate; inspect a genuine later failure"
     }
   },
   "priorFindings": [
@@ -100,5 +108,5 @@
   ],
   "phoneAcceptance": "PENDING",
   "userVisualAcceptance": "PENDING",
-  "next": "Complete existing common39075519707; inspect only actual new failure if any. Do not regenerate art,rerun88passing checks,rebuild or reupload saved verified candidate. Then record common result and request concrete phone feedback."
+  "next": "Task implementation,publication,required verification and saved candidate delivery complete. Next is exact V179 phone feedback. Preserve saved TEST APK and source4e5d885; do not regenerate assets,rebuild,reupload or rerun88passing tests merely after interruption."
 }

@@ -1,3 +1,15 @@
+## 2026-10-18 — HC-V179 closure
+
+| Task | Owner | Accepted scope | State | Next |
+|---|---|---|---|---|
+| HC-V179 | Director/root sole editor,existing PR197 | Milles/lobby/two corridors/13rooms/15random/norespawn/sequentialclear/sharedrewards/restart | IMPLEMENTED,BUILD+HOST_NATIVE+COMMON VERIFIED;PHONE/VISUAL PENDING | Exact V179 phone feedback; preserve saved candidate |
+
+Runtime/APK source `4e5d88579fd9499a73c5a16cb76b9f846117aedf`; focused39075519734/job117521748733 SUCCESS:88tests/18suites,0failures/errors/skips. Downloaded XML,APK source/run/version/hash/size,ZIP digests/CRC and22Horror/retained-equipment-window bytes independently checked. Full common39075519707/job117521748864 SUCCESS;decoded logs confirm17successful Gradle executions plus machine-checked reuse of15actually successful prefix stages fromd7aaf0b/run39074826700. Other duplicate CI need not delay this verified delivery.
+
+Saved PROJECT_DARK_V179_TEST.apk/com.projectdark.mobile.v179test,built2026-10-18 07:37:12KST,81123086bytes,SHA256`0be9ff9891bed55af856c632bdb7a700584d63bba3997c12f343bb3abb03d050`;APKartifact12116838324/native12116583957. Saved actual lobby/room PNGs. Full common produces a different normal-package APK; do not substitute it for this verified TEST file.
+
+IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED / COMMON VERIFIED. PHONE AND USER VISUAL ACCEPTANCE PENDING;main41fe6def/PR197 remains unmerged. Next: exact V179 phone feedback. Do not redo assets,88passing cases,build or saved upload after interruption. Exact live evidence/remaining fidelity limits:master/changes/V179_BUILD_RUNTIME_RECEIPT.json;resume docs/HORROR_CASTLE_V179_CHECKPOINT.md.
+
 ## 2026-10-18 — V178 verification and saved candidate delivery complete
 
 V177 DEVICE_FAILED_USER_REPORTED_VISUAL retained: shoe direction, left glove and oversized accessories. V178 uses native source direction for all shoes and both gloves, so left glove matches the previously approved right-slot direction. Every earring is80% of its V177 size (.85*.8=.68 of alpha-fit); both ring slots/every ring are80%. Prior hat/shirt reduction, necklace/armor centering, source artwork,15 slots,FinalStats/equip/ownership/save retained.

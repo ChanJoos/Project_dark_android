@@ -52,7 +52,12 @@
     "sourceArchiveSha256": "9b587be19ee1cb3632bd5ead97c311801e7a9dff5362899c7d915697eb5305a5",
     "originalMonsterAppearance": "PENDING; source human bodies/wardrobes are ADAPTED job representatives, not recovered exact Horror monster sprites",
     "unseenLayouts": "ADAPTED 13-room arrangements use observed reception/library/banquet/lounge themes",
-    "rules": "USER_20261018: Milles manager/lobby/two corridors/many doors/15random/norespawn/01-through13"
+    "rules": "USER_20261018: Milles manager/lobby/two corridors/many doors/15random/norespawn/01-through13",
+    "newUserReference": {
+      "url": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/312424",
+      "status": "UNREAD_HTTP401",
+      "contentUsed": false
+    }
   },
   "affected": [
     "world",
@@ -63,6 +68,43 @@
     "save",
     "travel UI"
   ],
-  "verification": "PENDING",
+  "verification": {
+    "source": "4e5d88579fd9499a73c5a16cb76b9f846117aedf",
+    "focused": {
+      "run": 39075519734,
+      "job": 117521748733,
+      "status": "SUCCESS",
+      "tests": 88,
+      "suites": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "downloadedXmlIndependentlyParsed": true
+    },
+    "common": {
+      "run": 39075519707,
+      "job": 117521748864,
+      "status": "SUCCESS",
+      "reusedPrefix": {
+        "source": "d7aaf0bafb2cf6bab694809b82edb519eea7f410",
+        "run": 39074826700,
+        "job": 117519688314,
+        "successfulSteps": 15,
+        "machineCheckedLimitedTestCiDelta": true,
+        "appRuntimeDeltaEmpty": true
+      },
+      "successfulGradleExecutions": 17,
+      "decodedLogInspected": true,
+      "normalPackageApkIsNotDeliveredTestCandidate": true,
+      "duplicate": {
+        "run": 39075523479,
+        "job": 117521760225,
+        "status": "IN_PROGRESS_DUPLICATE_AT_CLOSURE",
+        "policy": "Do not repeat passed checks or hold saved TEST delivery for duplicate; inspect a genuine later failure"
+      }
+    },
+    "receipt": "V179_BUILD_RUNTIME_RECEIPT.json",
+    "phone": "PENDING"
+  },
   "phoneAcceptance": "PENDING"
 }

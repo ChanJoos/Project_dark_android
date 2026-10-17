@@ -1,3 +1,11 @@
+## V179_HORROR_FIRST_PLAYABLE admission and verification — 2026-10-18
+
+Accepted project delta:changes/V179_HORROR_CASTLE.json. Original Horror_Room_Master/Horror_EXP_Model CSV bytes remain unchanged; latest user13-room sequential policy supersedes original random-next-room project rows in the runtime adapter only. Generator tools/build_horror_v179.py consumes source/horror_v179/original_sources.zip/reference.json and emits app/src/main/assets/horror-v179/manifest.json revisionV179_HORROR_FIRST_PLAYABLE. Source human wardrobes/unseen room geometry are ADAPTED; HP/EXP retainU+B and unknown original costume/balance facts stay unknown. Source gateway312424HTTP401 is not read evidence.
+
+Runtime/APK source `4e5d88579fd9499a73c5a16cb76b9f846117aedf`; focused39075519734/job117521748733 SUCCESS:88tests/18suites,0failures/errors/skips. Downloaded XML,APK source/run/version/hash/size,ZIP digests/CRC and22Horror/retained-equipment-window bytes independently checked. Full common39075519707/job117521748864 SUCCESS;decoded logs confirm17successful Gradle executions plus machine-checked reuse of15actually successful prefix stages fromd7aaf0b/run39074826700. Other duplicate CI need not delay this verified delivery.
+
+Exact delivery receipt:changes/V179_BUILD_RUNTIME_RECEIPT.json. IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED / COMMON VERIFIED. PHONE AND USER VISUAL ACCEPTANCE PENDING;main41fe6def/PR197 remains unmerged. Next: exact V179 phone feedback. Do not redo assets,88passing cases,build or saved upload after interruption. Exact live evidence/remaining fidelity limits:master/changes/V179_BUILD_RUNTIME_RECEIPT.json;resume docs/HORROR_CASTLE_V179_CHECKPOINT.md.
+
 ## 2026-10-18 — V178 verification and saved candidate delivery complete
 
 V177 DEVICE_FAILED_USER_REPORTED_VISUAL retained: shoe direction, left glove and oversized accessories. V178 uses native source direction for all shoes and both gloves, so left glove matches the previously approved right-slot direction. Every earring is80% of its V177 size (.85*.8=.68 of alpha-fit); both ring slots/every ring are80%. Prior hat/shirt reduction, necklace/armor centering, source artwork,15 slots,FinalStats/equip/ownership/save retained.
