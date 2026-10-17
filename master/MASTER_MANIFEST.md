@@ -1,3 +1,13 @@
+## 2026-10-18 — V178 verification and saved candidate delivery complete
+
+V177 DEVICE_FAILED_USER_REPORTED_VISUAL retained: shoe direction, left glove and oversized accessories. V178 uses native source direction for all shoes and both gloves, so left glove matches the previously approved right-slot direction. Every earring is80% of its V177 size (.85*.8=.68 of alpha-fit); both ring slots/every ring are80%. Prior hat/shirt reduction, necklace/armor centering, source artwork,15 slots,FinalStats/equip/ownership/save retained.
+
+IMPLEMENTED / BUILD VERIFIED / HOST ANDROID NATIVE VERIFIED at c9b8b6d308f3543b13fd60b74920cdfa2cc8e4c5. Focused38947398033/job117129880568 SUCCESS:63tests/12suites,0failures/errors/skips. Entire-catalog raster checks:15earrings,20rings/both slots,41gloves/both slots,17shoes. Actual GameView variants/starter frames reviewed before interruption. Exact APK/source/run/version/size/hash and archive CRC verified; saved candidate recovered and independently rehashed on resume without rebuild or duplicate upload.
+
+Full common38947398083/job117129880980 and duplicate38947407637/job117129913443 both SUCCESS. Decoded logs each confirm26successful Gradle executions and exact source/version178. Their normal-package APKs are separate from the delivered TEST candidate. APK PROJECT_DARK_V178_TEST.apk/com.projectdark.mobile.v178test, built2026-10-17 03:30:07 KST,80780255bytes,SHA25679857e16f0b5ffc80f789766ecafb27177809d21a8332174d815f6db0110c7e0. Saved PROJECT_DARK_V178_EQUIPMENT.png accompanies it. Exact receipt master/changes/V178_BUILD_RUNTIME_RECEIPT.json.
+
+PR197/main41fe6def remains unmerged candidate;PHONE AND USER VISUAL ACCEPTANCE PENDING. Task implementation/verification/publication/candidate preparation complete. Next: V178 phone feedback. Do not redo assets,rerun63passing cases,rebuild or reupload the saved candidate after interruption. Resume docs/EQUIPMENT_WINDOW_V178_CHECKPOINT.md.
+
 ## 2026-10-17 — V177 equipment direction, size and optical alignment verified
 
 V176 DEVICE_FAILED_USER_REPORTED_VISUAL retained. V177 flips hat/both gloves/armor/shoes relative to V176; its previously mirrored right glove now returns to native. Hat/earring/starter shirt reduced15%; necklace/armor alpha-weighted centroid centered with full-source fit. Weapon direction retained per user; artwork bytes,inventory rendering,15 slots,FinalStats/equip/ownership/save retained.

@@ -14,6 +14,7 @@
   },
   "sourceArtwork": "UNCHANGED",
   "equipStatsSave": "UNCHANGED",
-  "verification": "PENDING",
-  "phoneAcceptance": "PENDING"
+  "verification": "BUILD_AND_HOST_ANDROID_NATIVE_VERIFIED_63_TESTS_12_SUITES_FULL_COMMON_SUCCESS",
+  "phoneAcceptance": "PENDING",
+  "receipt": "master/changes/V178_BUILD_RUNTIME_RECEIPT.json"
 }
