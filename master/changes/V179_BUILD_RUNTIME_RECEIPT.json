@@ -1,0 +1,104 @@
+{
+  "version": 179,
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED_FULL_COMMON_PENDING",
+  "sourceCommit": "4e5d88579fd9499a73c5a16cb76b9f846117aedf",
+  "appMainTree": "e69cac45092b660fcb93d5a3ccd784ee6f23ac57",
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "merged": false,
+  "focused": {
+    "run": 39075519734,
+    "job": 117521748733,
+    "status": "SUCCESS",
+    "tests": 88,
+    "suites": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "downloadedXmlIndependentlyParsed": true
+  },
+  "apk": {
+    "file": "PROJECT_DARK_V179_TEST.apk",
+    "applicationId": "com.projectdark.mobile.v179test",
+    "builtSeoul": "2026-10-18T07:37:12.351800+09:00",
+    "bytes": 81123086,
+    "sha256": "0be9ff9891bed55af856c632bdb7a700584d63bba3997c12f343bb3abb03d050",
+    "artifact": 12116838324,
+    "archiveBytes": 79994589,
+    "archiveSha256": "1ddf86ac301755c6f354e113a1bc68d29c8d4363421fc3f7e93735b9083f6e98",
+    "embeddedSourceRunVersionVerified": true,
+    "zipCrcVerified": true,
+    "saved": true,
+    "separateTestProfile": true
+  },
+  "native": {
+    "artifact": 12116583957,
+    "archiveBytes": 54088685,
+    "archiveSha256": "494d6fae710358b988cda48847a8644140f364e16a64a83f61fbc904b8603c19",
+    "zipCrcVerified": true,
+    "sourcePackagedBytesIndependentlyMatched": 22,
+    "reviewed": [
+      "actual visible-player lobby arrival",
+      "both corridors",
+      "13 room themes (5 repeating layouts)",
+      "partial fresh-run restart:14alive,1dead,damaged actor exact HP"
+    ],
+    "saved": [
+      "PROJECT_DARK_V179_LOBBY.png",
+      "PROJECT_DARK_V179_ROOM.png"
+    ]
+  },
+  "common": {
+    "run": 39075519707,
+    "job": 117521748864,
+    "status": "IN_PROGRESS",
+    "currentGate": "Verify skill window, shared combat and restart persistence",
+    "reusedPrefix": {
+      "source": "d7aaf0bafb2cf6bab694809b82edb519eea7f410",
+      "run": 39074826700,
+      "job": 117519688314,
+      "successfulSteps": 15,
+      "machineCheckedLimitedTestCiDelta": true,
+      "appRuntimeDeltaEmpty": true
+    }
+  },
+  "priorFindings": [
+    {
+      "source": "7b1600a",
+      "run": 39074442471,
+      "cause": "New test called PlayerActionSubmission.accepted instead of .combat.accepted; fixed c53d2014"
+    },
+    {
+      "source": "d7aaf0b",
+      "run": 39074826691,
+      "status": "79 tests pass but restart fixture reused a fully cleared room; strengthened fresh-run test at1a1097d, old restart image not used as partial-HP evidence"
+    },
+    {
+      "source": "d7aaf0b",
+      "run": 39074826700,
+      "cause": "Existing reward test fixed total41 while40 Horror profiles admitted; fixed by retaining41 non-Horror plus exact40 ID/EXP/gold checks. Runtime rewards not changed"
+    }
+  ],
+  "scope": [
+    "Milles manager entry",
+    "lobby/2corridors/multiple reachable doors",
+    "13rooms with15random actors per room",
+    "no respawn",
+    "all-dead sequential01-through13 then lobby",
+    "shared Resolver/once-only rewards",
+    "seed/dead and living HP restart",
+    "12background trips bounded cache",
+    "retained equipment/stats/input/save"
+  ],
+  "sourceLimitations": [
+    "source video materials/furniture retained; unseen layouts adapted",
+    "source human body/wardrobe combinations are not exact original Horror monster costumes",
+    "Master U+B HP/EXP retained; original full-HP job balance not certified",
+    "free review entry; final MasterLv99/100Gold gate preserved pending",
+    "user cafe13434008/article312424 public article gatewayHTTP401; article unread"
+  ],
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "next": "Complete existing common39075519707; inspect only actual new failure if any. Do not regenerate art,rerun88passing checks,rebuild or reupload saved verified candidate. Then record common result and request concrete phone feedback."
+}
