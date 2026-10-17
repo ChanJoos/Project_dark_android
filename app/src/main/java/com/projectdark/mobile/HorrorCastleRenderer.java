@@ -11,7 +11,7 @@ public final class HorrorCastleRenderer {
  public HorrorCastleRenderer(Context c){for(String n:new String[]{"carpet","wood","wall","tiger","chair","sofa","table","door"})load(c,n);for(int i=0;i<10;i++)load(c,"human_"+i);p.setFilterBitmap(false);}
  private void load(Context c,String n){try(InputStream in=c.getAssets().open("horror-v179/"+n+".png")){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;Bitmap b=BitmapFactory.decodeStream(in,null,o);if(b==null)throw new IllegalStateException(n);b.prepareToDraw();images.put(n,b);}catch(Exception e){throw new IllegalStateException("Horror source "+n,e);}}
  public int backgroundBuilds(){return builds;}public int backgroundBytes(){return background==null?0:background.getAllocationByteCount();}
- public void releaseFloor(){if(background!=null)background.recycle();background=null;map=null;}
+ public void releaseFloor(){background=null;map=null;}
  private void polygon(Canvas c,int color,float... xy){p.setColor(color);path.reset();path.moveTo(xy[0],xy[1]);for(int i=2;i<xy.length;i+=2)path.lineTo(xy[i],xy[i+1]);path.close();c.drawPath(path,p);}
  private void line(Canvas c,int color,float width,float x,float y,float xx,float yy){p.setShader(null);p.setColor(color);p.setStrokeWidth(width);c.drawLine(x,y,xx,yy,p);}
  private void textured(Canvas c,String name,float scale,int color,float... points){BitmapShader shader=new BitmapShader(images.get(name),Shader.TileMode.REPEAT,Shader.TileMode.REPEAT);Matrix m=new Matrix();m.setScale(scale,scale);shader.setLocalMatrix(m);p.setShader(shader);polygon(c,color,points);p.setShader(null);}

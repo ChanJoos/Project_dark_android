@@ -29,5 +29,15 @@
   "sourceArchiveSha256": "9b587be19ee1cb3632bd5ead97c311801e7a9dff5362899c7d915697eb5305a5",
   "originalMonsterAppearance": "PENDING; source human bodies/wardrobes are ADAPTED job representatives, not recovered exact Horror monster sprites",
   "unseenLayouts": "ADAPTED 13-room arrangements use observed reception/library/banquet/lounge themes",
-  "rules": "USER_20261018: Milles manager/lobby/two corridors/many doors/15random/norespawn/01-through13"
+  "rules": "USER_20261018: Milles manager/lobby/two corridors/many doors/15random/norespawn/01-through13",
+  "newUserReference": {
+    "url": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/312424",
+    "date": "2026-10-18",
+    "status": "UNREADABLE_HTTP_401",
+    "attempts": [
+      "web mobile and desktop article URLs inaccessible",
+      "public article gateway returned HTTP401"
+    ],
+    "use": "USER_SUPPLIED_REFERENCE_ONLY; no unseen content incorporated"
+  }
 }
