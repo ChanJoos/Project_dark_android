@@ -90,7 +90,7 @@ jobs:
           git diff --exit-code -- app/src/main/assets/horror-v179
           python3 tools/build_equipment_window_v176.py
           git diff --exit-code -- app/src/main/assets/equipment-window-v176
-          gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*TownQualityV164Test' --tests '*ForestFloorCacheTest' --tests '*MonsterChasePathfinderTest' --tests '*GroundTapPathTest' --tests '*EquipmentWindowV178Test' --tests '*EquipmentWindowV177Test' --tests '*EquipmentWindowV176Test' --tests '*EquipmentWindowV175Test' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*DualEquipmentV128Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*EquipmentPerformanceV130Test' --tests '*GrowthGripV168Test' --tests '*RuntimeCheckpointTest' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*AdaptedCampaignRewardTest' --tests '*TownQualityV164Test' --tests '*ForestFloorCacheTest' --tests '*MonsterChasePathfinderTest' --tests '*GroundTapPathTest' --tests '*EquipmentWindowV178Test' --tests '*EquipmentWindowV177Test' --tests '*EquipmentWindowV176Test' --tests '*EquipmentWindowV175Test' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*DualEquipmentV128Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*EquipmentPerformanceV130Test' --tests '*GrowthGripV168Test' --tests '*RuntimeCheckpointTest' --stacktrace
       - name: Record focused JUnit evidence
         if: always()
         run: |

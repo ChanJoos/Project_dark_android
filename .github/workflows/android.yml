@@ -92,27 +92,27 @@ jobs:
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           yes | "$SDKMANAGER" --licenses >/dev/null || true
           "$SDKMANAGER" 'platforms;android-35' 'build-tools;35.0.0'
-      - name: Check reusable V174 successful prefix evidence
+      - name: Check reusable V179 successful prefix evidence
         id: resume
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PYRESUME'
           import json, os, subprocess, urllib.request
-          baseline='e06af00e127a6d57b51be2bc03cebdd717afb050'
+          baseline='d7aaf0bafb2cf6bab694809b82edb519eea7f410'
           subprocess.run(['git','fetch','--depth=1','origin',baseline],check=True)
           changed=subprocess.check_output(['git','diff','--name-only',baseline,'HEAD'],text=True).splitlines()
-          allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/SkillTimingV174Test.java','app/src/test/java/com/projectdark/mobile/CampaignProgressTest.java','docs/CHAT_HANDOFF.md','docs/PROJECT_STATE.md','docs/DIRECTOR_BACKLOG.md','docs/SKILL_TIMING_V174_CHECKPOINT.md','master/changes/V174_BUILD_RUNTIME_RECEIPT.json'}
+          allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/HorrorCastleV179Test.java','app/src/test/java/com/projectdark/mobile/AdaptedCampaignRewardTest.java'}
           passed=[]
           if all(p in allowed for p in changed):
-              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/38901023707/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39074826700/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
               jobs=json.load(urllib.request.urlopen(req))['jobs']
-              job=next(j for j in jobs if j['id']==116973009046)
-              prefix=[x for x in job['steps'] if 9<=x['number']<20]
-              assert len(prefix)==11 and all(x['conclusion']=='success' for x in prefix)
+              job=next(j for j in jobs if j['id']==117519688314)
+              prefix=[x for x in job['steps'] if 9<=x['number']<24]
+              assert len(prefix)==15 and all(x['conclusion']=='success' for x in prefix)
               assert job['head_sha']==baseline
               passed=[x['name'] for x in prefix]
-              print('REUSING 11 verified prefix checks from',baseline,'run38901023707; changed:',changed)
+              print('REUSING 15 verified prefix checks from',baseline,'run39074826700; changed:',changed)
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('passed='+json.dumps(passed)+'\n')
           PYRESUME
       - name: Validate Master DB

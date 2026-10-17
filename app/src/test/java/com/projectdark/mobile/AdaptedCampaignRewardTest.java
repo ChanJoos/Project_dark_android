@@ -31,7 +31,11 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(41,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(41,c.entries().keySet().stream().filter(id->!id.startsWith("HORROR_")).count());
+    java.util.Set<String> expectedHorror=new java.util.HashSet<>(),actualHorror=new java.util.HashSet<>();
+    for(int type=0;type<10;type++)for(int element=0;element<4;element++){String id=String.format(java.util.Locale.ROOT,"HORROR_%02d_%d",type,element);expectedHorror.add(id);assertEquals(HorrorCastleMonsters.EXP[type],c.find(id).exp);assertEquals(0,c.find(id).gold);}
+    for(String id:c.entries().keySet())if(id.startsWith("HORROR_"))actualHorror.add(id);
+    assertEquals(expectedHorror,actualHorror);assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
     java.util.Set<String> coast=new java.util.HashSet<>();
     for(String id:c.entries().keySet())if(id.startsWith("ABEL_")||id.startsWith("ADAPTED_COAST_"))coast.add(id);
     assertEquals(new java.util.HashSet<>(AbelCoastMonsters.ALL),coast);
