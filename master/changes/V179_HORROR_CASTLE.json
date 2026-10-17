@@ -1,0 +1,68 @@
+{
+  "status": "ACCEPTED_USER_PROTOTYPE",
+  "source": "USER_20261018_0700_KST",
+  "sourceRows": [
+    "Horror_Room_Master HR01/HR02/HR03/HR04/HR05/HR09",
+    "Horror_EXP_Model all10rows"
+  ],
+  "before": "10+ random theme rooms,random next room,no playable Horror map",
+  "after": {
+    "entry": "Milles travel manager",
+    "maps": [
+      "lobby",
+      "corridor1",
+      "corridor2",
+      "room01-through13"
+    ],
+    "monstersPerRoom": 15,
+    "respawn": false,
+    "nextRoom": "SEQUENTIAL_01_THROUGH_13",
+    "completion": "LOBBY",
+    "restart": "SEED_AND_EACH_ACTOR_HP_PRESERVED",
+    "prototypeAccess": "FREE_REVIEW_ENTRY; final Master Lv99/100Gold gate retained as pending final integration"
+  },
+  "evidence": {
+    "video": {
+      "name": "Screen_Recording_20261018_065235_YouTube.mp4",
+      "library_file_id": "libfile_4b5c620ef9488191a7a6560282e1d363",
+      "sha256": "c9a039c1e041b29d2d1a3435c11c9f79902006151a07f51426a782a98d2bde16",
+      "durationSeconds": 118.089,
+      "sourceFrameTimes": [
+        5,
+        26,
+        116
+      ]
+    },
+    "webReferences": [
+      {
+        "url": "https://lod.nexon.com/news/notice/985",
+        "date": "2004-02-13",
+        "evidence": "OFFICIAL_HISTORICAL_LAYOUT_REFERENCE_NOT_CURRENT_CERTIFICATION"
+      },
+      {
+        "url": "https://enjoyoneself-1.tistory.com/entry/어둠-사냥터-호러캐슬과-백작의별장",
+        "evidence": "FAN_2020_TEXT_REFERENCE"
+      },
+      {
+        "url": "https://lod.nexon.com/board/1493172227/4259",
+        "evidence": "NEXON_HOSTED_COMMUNITY_HUNT_REFERENCE"
+      }
+    ],
+    "naverCafe": "Searched 성천직자; no usable public lobby image recovered; no claim of authenticated access",
+    "sourceArchiveSha256": "9b587be19ee1cb3632bd5ead97c311801e7a9dff5362899c7d915697eb5305a5",
+    "originalMonsterAppearance": "PENDING; source human bodies/wardrobes are ADAPTED job representatives, not recovered exact Horror monster sprites",
+    "unseenLayouts": "ADAPTED 13-room arrangements use observed reception/library/banquet/lounge themes",
+    "rules": "USER_20261018: Milles manager/lobby/two corridors/many doors/15random/norespawn/01-through13"
+  },
+  "affected": [
+    "world",
+    "renderer",
+    "runtime",
+    "combat profiles",
+    "rewards",
+    "save",
+    "travel UI"
+  ],
+  "verification": "PENDING",
+  "phoneAcceptance": "PENDING"
+}

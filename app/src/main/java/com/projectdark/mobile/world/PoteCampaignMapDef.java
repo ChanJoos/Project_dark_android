@@ -15,7 +15,7 @@ public final class PoteCampaignMapDef {
   public WorldMoveTargetController.TileCenter exactCenter(float x,float y){if(Math.abs(x-Math.round(x))>=.01f||Math.abs(y-Math.round(y))>=.01f)return null;if(centerLookup==null){centerLookup=new HashMap<>();for(WorldMoveTargetController.TileCenter t:navigationTiles())centerLookup.put(((long)Math.round(t.x)<<32)^(Math.round(t.y)&0xffffffffL),t);}return centerLookup.get(((long)Math.round(x)<<32)^(Math.round(y)&0xffffffffL));}
   public boolean isNavigationCenter(float x,float y){return exactCenter(x,y)!=null;}
   private TerrainObstacleIndex index;
-  public boolean terrainBlocked(float x,float y,float radius){if(index==null)index=new TerrainObstacleIndex(obstacles());return index.blocked(x,y,radius);}
+  public boolean terrainBlocked(float x,float y,float radius){if(HorrorCastleGeometry.contains(id)&&!HorrorCastleGeometry.inside(id,x,y,radius))return true;if(index==null)index=new TerrainObstacleIndex(obstacles());return index.blocked(x,y,radius);}
 
   private PoteCampaignMapDef(String id,int zone,String title,float minX,float maxX,float minY,float maxY,
       float entryX,float entryY,float backX,float backY,float nextX,float nextY,float exitRadius){
@@ -23,8 +23,9 @@ public final class PoteCampaignMapDef {
     this.entryX=entryX;this.entryY=entryY;this.backX=backX;this.backY=backY;this.nextX=nextX;this.nextY=nextY;this.exitRadius=exitRadius;
   }
 
-  public static PoteCampaignMapDef forId(String id){id=AbelCoastGeometry.canonical(AbelTownGeometry.canonical(id));String key=RucesionCoastGeometry.contains(id)||RucesionTownGeometry.contains(id)||AbelTownGeometry.contains(id)||AbelCoastGeometry.contains(id)?id:CampaignWorld.PIET.equals(id)||CampaignWorld.BOSS_D.equals(id)||"MAP_POTE_04".equals(id)?id:id!=null&&id.startsWith("MAP_POTE_")&&id.length()==11?id:"MAP_POTE_01";synchronized(CACHE){PoteCampaignMapDef d=CACHE.get(key);if(d==null){d=create(key);CACHE.put(key,d);}return d;}}
+  public static PoteCampaignMapDef forId(String id){id=AbelCoastGeometry.canonical(AbelTownGeometry.canonical(id));String key=HorrorCastleGeometry.contains(id)||RucesionCoastGeometry.contains(id)||RucesionTownGeometry.contains(id)||AbelTownGeometry.contains(id)||AbelCoastGeometry.contains(id)?id:CampaignWorld.PIET.equals(id)||CampaignWorld.BOSS_D.equals(id)||"MAP_POTE_04".equals(id)?id:id!=null&&id.startsWith("MAP_POTE_")&&id.length()==11?id:"MAP_POTE_01";synchronized(CACHE){PoteCampaignMapDef d=CACHE.get(key);if(d==null){d=create(key);CACHE.put(key,d);}return d;}}
   private static PoteCampaignMapDef create(String id){
+    if(HorrorCastleGeometry.contains(id)){WorldMoveTargetController.TileCenter e=HorrorCastleGeometry.entry(id);return new PoteCampaignMapDef(id,60+HorrorCastleGeometry.room(id),HorrorCastleGeometry.title(id),128,1856,0,960,e.x,e.y,e.x,e.y,e.x,e.y,22);}
     if(RucesionCoastGeometry.contains(id))return new PoteCampaignMapDef(id,40+RucesionCoastGeometry.index(id),RucesionCoastGeometry.title(id),64,RucesionCoastGeometry.width(id),64,RucesionCoastGeometry.height(id),CoastalHuntLayout.entryX(RucesionCoastGeometry.index(id)),CoastalHuntLayout.entryY(RucesionCoastGeometry.index(id)),CoastalHuntLayout.backX(RucesionCoastGeometry.index(id)),CoastalHuntLayout.backY(RucesionCoastGeometry.index(id)),CoastalHuntLayout.nextX(RucesionCoastGeometry.index(id)),CoastalHuntLayout.nextY(RucesionCoastGeometry.index(id)),40);
     if(RucesionTownGeometry.contains(id))return new PoteCampaignMapDef(id,30,"뤼케시온 마을",0,6656,0,3584,RucesionTownGeometry.x(41,41),RucesionTownGeometry.y(41,41),RucesionTownGeometry.x(41,41),RucesionTownGeometry.y(41,41),RucesionTownGeometry.x(41,41),RucesionTownGeometry.y(41,41),40);
     if(AbelTownGeometry.contains(id))return new PoteCampaignMapDef(AbelTownGeometry.ID,9,"아벨 마을",0,6144,0,3584,AbelTownGeometry.x(22,18),AbelTownGeometry.y(22,18),AbelTownGeometry.x(22,18),AbelTownGeometry.y(22,18),AbelTownGeometry.x(81,39),AbelTownGeometry.y(81,39),40);
@@ -37,9 +38,9 @@ public final class PoteCampaignMapDef {
     return new PoteCampaignMapDef("MAP_POTE_01",1,"포테의 숲 A · 입구 숲",PoteFieldDef.MIN_X,PoteFieldDef.MAX_X,PoteFieldDef.MIN_Y,PoteFieldDef.MAX_Y,PoteFieldDef.ENTRY_X,PoteFieldDef.ENTRY_Y,PoteFieldDef.EXIT_X,PoteFieldDef.EXIT_Y,3968,1888,PoteFieldDef.EXIT_RADIUS);
   }
 
-  public List<RectF> obstacles(){if(obstacles==null){if(RucesionCoastGeometry.contains(id))obstacles=RucesionCoastGeometry.obstacles(id);else if(RucesionTownGeometry.contains(id))obstacles=RucesionTownGeometry.obstacles(id);else if(AbelTownGeometry.contains(id))obstacles=AbelTownGeometry.obstacles(id);else if(AbelCoastGeometry.contains(id))obstacles=AbelCoastGeometry.obstacles(id);else if(zone==1||zone==0||"MAP_POTE_04".equals(id))obstacles=PoteFieldDef.obstacles();else obstacles=buildObstacles();}return obstacles;}
+  public List<RectF> obstacles(){if(obstacles==null){if(HorrorCastleGeometry.contains(id))obstacles=HorrorCastleGeometry.obstacles(id);else if(RucesionCoastGeometry.contains(id))obstacles=RucesionCoastGeometry.obstacles(id);else if(RucesionTownGeometry.contains(id))obstacles=RucesionTownGeometry.obstacles(id);else if(AbelTownGeometry.contains(id))obstacles=AbelTownGeometry.obstacles(id);else if(AbelCoastGeometry.contains(id))obstacles=AbelCoastGeometry.obstacles(id);else if(zone==1||zone==0||"MAP_POTE_04".equals(id))obstacles=PoteFieldDef.obstacles();else obstacles=buildObstacles();}return obstacles;}
   public List<WorldMoveTargetController.TileCenter> navigationTiles(){
-    if(navigation!=null)return navigation;
+    if(navigation!=null)return navigation;if(HorrorCastleGeometry.contains(id)){navigation=HorrorCastleGeometry.tiles(id,true);return navigation;}
     if(RucesionTownGeometry.contains(id)){navigation=RucesionTownGeometry.navigation(id);return navigation;}
     if(AbelTownGeometry.contains(id)){navigation=AbelTownGeometry.navigation(id);return navigation;}
     if(zone==1||zone==0||"MAP_POTE_04".equals(id)){navigation=PoteFieldDef.navigationTiles();return navigation;}
@@ -48,7 +49,7 @@ public final class PoteCampaignMapDef {
     navigation=Collections.unmodifiableList(out);return navigation;
   }
   public List<WorldMoveTargetController.TileCenter> groundTiles(){
-    if(ground!=null)return ground;if(zone==1||zone==0||"MAP_POTE_04".equals(id)){ground=PoteFieldDef.groundTiles();return ground;}
+    if(ground!=null)return ground;if(HorrorCastleGeometry.contains(id)){ground=HorrorCastleGeometry.tiles(id,false);return ground;}if(zone==1||zone==0||"MAP_POTE_04".equals(id)){ground=PoteFieldDef.groundTiles();return ground;}
     List<WorldMoveTargetController.TileCenter> out=new ArrayList<>();int row=0;
     for(float y=minY;y<=maxY;y+=16f,row++){float first=minX+((row&1)==0?0f:32f);for(float x=first;x<=maxX;x+=64f)out.add(new WorldMoveTargetController.TileCenter(x,y));}
     ground=Collections.unmodifiableList(out);return ground;

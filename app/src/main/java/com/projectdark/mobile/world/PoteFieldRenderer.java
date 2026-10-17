@@ -87,6 +87,7 @@ public final class PoteFieldRenderer {
     out[1]=m.y+facingY(d)*(motion.lunge-motion.recoil)-motion.lift-h+inset+center[1]*h;return true;
   }
   /** Decode/upload all states at map entry, rather than on a walk turn or first hit. */
+  public void releaseFloorCache(){floorChunks.clear();floorMap="";}
   public void prepareMonsters(com.projectdark.mobile.RuntimeState runtime){
     monsterEffects=runtime.skillEffects();
     if(runtime.currentMapId().equals(preparedMonsterMap))return;

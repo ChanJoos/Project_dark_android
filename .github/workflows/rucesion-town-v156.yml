@@ -1,4 +1,4 @@
-name: V178 all-variant equipment slot correction
+name: V179 Horror Castle first playable
 on:
   push:
     branches: [codex/rucesion-coast-v157]
@@ -86,9 +86,11 @@ jobs:
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           python3 tools/validate_master.py
+          python3 tools/build_horror_v179.py
+          git diff --exit-code -- app/src/main/assets/horror-v179
           python3 tools/build_equipment_window_v176.py
           git diff --exit-code -- app/src/main/assets/equipment-window-v176
-          gradle :app:testDebugUnitTest --tests '*EquipmentWindowV178Test' --tests '*EquipmentWindowV177Test' --tests '*EquipmentWindowV176Test' --tests '*EquipmentWindowV175Test' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*DualEquipmentV128Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*EquipmentPerformanceV130Test' --tests '*GrowthGripV168Test' --tests '*RuntimeCheckpointTest' --stacktrace
+          gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*TownQualityV164Test' --tests '*ForestFloorCacheTest' --tests '*MonsterChasePathfinderTest' --tests '*GroundTapPathTest' --tests '*EquipmentWindowV178Test' --tests '*EquipmentWindowV177Test' --tests '*EquipmentWindowV176Test' --tests '*EquipmentWindowV175Test' --tests '*ModernUiTest' --tests '*ItemWindowReferenceTest' --tests '*DualEquipmentV128Test' --tests '*EquipmentStatsAndDetailsTest' --tests '*EquipmentFoundationV124Test' --tests '*EquipmentPerformanceV130Test' --tests '*GrowthGripV168Test' --tests '*RuntimeCheckpointTest' --stacktrace
       - name: Record focused JUnit evidence
         if: always()
         run: |
@@ -110,12 +112,13 @@ jobs:
         run: |
           gradle :app:assembleDebug
           python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
-          python3 tools/verify_v178_apk.py app/build/outputs/apk/debug/app-debug.apk
+          python3 tools/verify_v179_apk.py app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: equipment-window-v178-native-${{ github.sha }}
+          name: horror-castle-v179-native-${{ github.sha }}
           path: |
+            app/build/reports/horror-v179/
             app/build/reports/equipment-v178/
             app/build/reports/equipment-v177/
             app/build/reports/equipment-v176/
@@ -147,7 +150,7 @@ jobs:
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: equipment-window-v178-apk-${{ github.sha }}
+          name: horror-castle-v179-apk-${{ github.sha }}
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             app/build/outputs/apk/debug/BUILD_INFO.json
