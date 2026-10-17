@@ -1,6 +1,6 @@
 {
   "version": 179,
-  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_AND_COMMON_VERIFIED",
+  "status": "USER_REJECTED_VISUAL_REQUEST_NOT_MET",
   "sourceCommit": "4e5d88579fd9499a73c5a16cb76b9f846117aedf",
   "appMainTree": "e69cac45092b660fcb93d5a3ccd784ee6f23ac57",
   "branch": "codex/rucesion-coast-v157",
@@ -107,6 +107,16 @@
     "user cafe13434008/article312424 public article gatewayHTTP401; article unread"
   ],
   "phoneAcceptance": "PENDING",
-  "userVisualAcceptance": "PENDING",
-  "next": "Task implementation,publication,required verification and saved candidate delivery complete. Next is exact V179 phone feedback. Preserve saved TEST APK and source4e5d885; do not regenerate assets,rebuild,reupload or rerun88passing tests merely after interruption."
+  "userVisualAcceptance": "REJECTED_20261018_0751_KST",
+  "next": "Source-backed original visual diagnosis/repair only; no invented unseen-room or substitute costume completion. No further APK or broad regression sweep before source comparison and actual visual parity. Preserve rejected source/APK and source recording.",
+  "userRejection": {
+    "scope": [
+      "map appearance",
+      "monster appearance",
+      "unrelated broad validation cost"
+    ],
+    "cause": "CONFIRMED_IMPLEMENTATION_MISMATCH: adapted geometry and substitute wardrobes were delivered for original-faithful request",
+    "deviceReproduction": "UNKNOWN",
+    "functionalChecksDoNotProveVisualFidelity": true
+  }
 }

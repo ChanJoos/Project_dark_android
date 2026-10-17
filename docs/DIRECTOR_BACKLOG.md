@@ -1,3 +1,9 @@
+## 2026-10-18 07:51 KST — V179 USER_REJECTED_VISUAL / REQUEST NOT MET
+
+User explicitly rejects V179 map and monster appearance as unlike the original and rejects token/time spent on unrelated Milles/Pote verification. The request was original-faithful reproduction, not an adapted prototype. V179's authored room geometry, five repeated layouts, procedural walls/stairs/pillars and substitute human wardrobe combinations do not satisfy it. The assistant's completed/prototype framing was wrong. Existing88functional tests and successful build/commonCI remain evidence only of their actual scope; they are not original visual fidelity or user acceptance. Physical-device reproduction is UNKNOWN, not newly certified.
+
+Preserve the rejected APK/source4e5d885 and immutable source recording (118.089s; SHA c9a039c1e041b29d2d1a3435c11c9f79902006151a07f51426a782a98d2bde16). No replacement image generation, copied generic costumes, arbitrary unseen-room completion, new APK build or unrelated regression sweep is authorized by this rejection record. Next repair must start with source-frame-to-runtime comparison of original lobby/corridors/observed rooms and actual Horror monster appearance/action frames. Recover original source pixels/registrations; leave unseen or unidentified material PENDING, never mark invented content as accepted. Retain the user's15/norespawn/01-through13 gameplay rule. Verify original visual parity first, then only compilation and changed Horror entry/collision/combat/clear/save paths; broaden regression only for a concrete shared-code impact. Do not rerun entire Milles/Pote suites as the default next step. This record fixes project status; it does not claim any visual repair is implemented.
+
 ## 2026-10-18 — HC-V179 closure
 
 | Task | Owner | Accepted scope | State | Next |
