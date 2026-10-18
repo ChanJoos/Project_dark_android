@@ -34,8 +34,9 @@ public class HorrorCastleMobileV183Test {
    for(HorrorCastleGeometry.Door d:HorrorCastleGeometry.doors(s.currentMapId())){
     assertEquals("MILLES",d.destination);assertTrue(HorrorCastleGeometry.inside(s.currentMapId(),d.x,d.y,0));
    }
+   CanonicalActorFacing facing=ItemWindowReferenceTest.field(v,"playerFacing");facing.beginAttack(CharacterRenderer.Direction.NE);
    HorrorCastleGeometry.Door exit=HorrorCastleGeometry.doors(s.currentMapId()).get(0);s.player().x=exit.x;s.player().y=exit.y;
-   call(v,"checkCampaignGate",new Class<?>[]{});assertEquals(WorldDef.ID,s.currentMapId());
+   call(v,"checkCampaignGate",new Class<?>[]{});assertEquals(WorldDef.ID,s.currentMapId());assertFalse(facing.attackLocked());assertEquals(CharacterRenderer.Direction.SW,facing.presentation());
   }
  }
  @Test public void multipleRecipientsKeepTheAcceptedSkillDirection()throws Exception{
