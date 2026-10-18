@@ -65,6 +65,7 @@ tasks.register('extractHorrorEquipmentV184', Copy) {
     from(zipTree(rootProject.file('master/source/equipment/horror_v184/generated_assets.zip')))
     into(layout.buildDirectory.dir('generated/wardrobe-v128'))
     includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
 }
 tasks.named('extractHorrorEquipmentV184').configure { dependsOn('extractWardrobeV128') }
 tasks.named('preBuild').configure { dependsOn('extractHorrorEquipmentV184') }
