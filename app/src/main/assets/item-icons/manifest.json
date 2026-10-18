@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 612,
+  "registeredItems": 631,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -14468,6 +14468,215 @@
       "foregroundPixels": 463,
       "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
       "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "USER_ITEM_20261018_R01503": {
+      "itemId": "USER_ITEM_20261018_R01503",
+      "assetPath": "item-icons/sparse_v188_mw038.png",
+      "assetSha256": "6ceaf97fcd2aafe0e72aa6d626064052c8f6c800cb059722f83bd9c52c10f896",
+      "appearanceId": "mw038",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw038.webp",
+      "sourceSha256": "1b36d2aeab6a3b80369b2a74a9b6d316af7926ddcfe74b92ed514135dc01a2b5",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R03026": {
+      "itemId": "USER_ITEM_20261018_R03026",
+      "assetPath": "item-icons/sparse_v188_mw042.png",
+      "assetSha256": "e10138e650ca57ee51e4a206121623dad311de1a91024da7fe7ec535b701964a",
+      "appearanceId": "mw042",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw042.webp",
+      "sourceSha256": "5513c669fe91757e6b0427bdead991637a410241e25114ca0fbbd650b8d9b7f8",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R02096": {
+      "itemId": "USER_ITEM_20261018_R02096",
+      "assetPath": "item-icons/sparse_v188_mw052.png",
+      "assetSha256": "567ff2b3223556fd78dce2e709c936124e961df8950b8560ba6d026854d3f80f",
+      "appearanceId": "mw052",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw052.webp",
+      "sourceSha256": "94057474313386587155cfa8fe91d4e26a5cf29400578df1acfa38ebe76e461f",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R01807": {
+      "itemId": "USER_ITEM_20261018_R01807",
+      "assetPath": "item-icons/sparse_v188_mw054.png",
+      "assetSha256": "483588274a90f6fec8a4d48df8223a2629fc07bb2c98a76f546d6e0b1d370359",
+      "appearanceId": "mw054",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw054.webp",
+      "sourceSha256": "448916fc63f4ec9ce1a3aec08265ae75ae22083159763a661df795163ccf0c4d",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R02918": {
+      "itemId": "USER_ITEM_20261018_R02918",
+      "assetPath": "item-icons/sparse_v188_mw076.png",
+      "assetSha256": "656a621c41032cc0782d335ef306292c91eaef5acfbc786427a06d3cbb9be772",
+      "appearanceId": "mw076",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw076.webp",
+      "sourceSha256": "30b7c678504a7f4c55bc43bfccfc4b71fd9076b3d22bc02bbf3a4cb7a14d9f07",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R05301": {
+      "itemId": "USER_ITEM_20261018_R05301",
+      "assetPath": "item-icons/sparse_v188_mw133.png",
+      "assetSha256": "18a10b2116eaf95005a3b11dba88574d6e5017251318ea7ac9254133b48f3286",
+      "appearanceId": "mw133",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw133.webp",
+      "sourceSha256": "e02c3355b150ca3ee7c7f506c98409ccaafd140a2fec6c8223c3437fd5cb1302",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R03843": {
+      "itemId": "USER_ITEM_20261018_R03843",
+      "assetPath": "item-icons/sparse_v188_mw137.png",
+      "assetSha256": "67e10c6d2a82f85aec36d01af8fa8ee983c96b7c4a1b060f238c167cfdc5827b",
+      "appearanceId": "mw137",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw137.webp",
+      "sourceSha256": "9f4350740821a811ae5d13d6a88deb0f457f87608a9618ff3f4305c599b70ad0",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R01201": {
+      "itemId": "USER_ITEM_20261018_R01201",
+      "assetPath": "item-icons/sparse_v188_mw295.png",
+      "assetSha256": "7459bb73924217473246d02ccdde42a9ad7dffd1cfcfbf167ffefb46cc22b974",
+      "appearanceId": "mw295",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw295.webp",
+      "sourceSha256": "b0835146f86508a853aaf845af751f6c89765a762d0aecc32e8e4bd5a48960d8",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R01565": {
+      "itemId": "USER_ITEM_20261018_R01565",
+      "assetPath": "item-icons/sparse_v188_mw295.png",
+      "assetSha256": "7459bb73924217473246d02ccdde42a9ad7dffd1cfcfbf167ffefb46cc22b974",
+      "appearanceId": "mw295",
+      "sourceArchive": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw295.webp",
+      "sourceSha256": "b0835146f86508a853aaf845af751f6c89765a762d0aecc32e8e4bd5a48960d8",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R05473": {
+      "itemId": "USER_ITEM_20261018_R05473",
+      "assetPath": "item-icons/sparse_v188_mw030.png",
+      "assetSha256": "400593043c1b746bb6796bfeafebab7b6963a0b56e63f1f0703c7b1082666175",
+      "appearanceId": "mw030",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw030.webp",
+      "sourceSha256": "aa81210bb010dd422653b3ac960815a5bb04dbae63420aa3f2f55655c17dab53",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R02486": {
+      "itemId": "USER_ITEM_20261018_R02486",
+      "assetPath": "item-icons/sparse_v188_mw031.png",
+      "assetSha256": "518749f4774d78aec8bda0dde4948832fe282c5c4e65571229f64a3017ef0312",
+      "appearanceId": "mw031",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw031.webp",
+      "sourceSha256": "945d12203e96d6ba1860d2a552890ce0458cedc35f3cbeeb2deac52f74ac78cc",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R05502": {
+      "itemId": "USER_ITEM_20261018_R05502",
+      "assetPath": "item-icons/sparse_v188_mw046.png",
+      "assetSha256": "7bdc3f82f555f1f50c959d69393bf74781d3b6e53d41bcdcaf45b35d9262ed2b",
+      "appearanceId": "mw046",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw046.webp",
+      "sourceSha256": "9c91ed11544666b4706a94eeda3e2f3a6f77583d039bb4512686af821751d6fa",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R01881": {
+      "itemId": "USER_ITEM_20261018_R01881",
+      "assetPath": "item-icons/sparse_v188_mw093.png",
+      "assetSha256": "93a24a4c1baa30412ef694d1fe36b8842da38df93662e36201adb48a21900b46",
+      "appearanceId": "mw093",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw093.webp",
+      "sourceSha256": "bf6a0c0c4be3ff39adb3229f48287fefaee8a7d748a265dfb368d3ea0675748c",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R01582": {
+      "itemId": "USER_ITEM_20261018_R01582",
+      "assetPath": "item-icons/sparse_v188_mw140.png",
+      "assetSha256": "7ed3a17a0cb0653de4b12b29217a89e6bde73e4d9428ac9aafea48ad3ec7d20a",
+      "appearanceId": "mw140",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw140.webp",
+      "sourceSha256": "b2594c36cc2366f9990d8b249e0ca836eddd282ed5135f6335cbe2f4060708d8",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R03838": {
+      "itemId": "USER_ITEM_20261018_R03838",
+      "assetPath": "item-icons/sparse_v188_mw142.png",
+      "assetSha256": "f9115f11c18bbe9a6883879cee55a0026efa2d4406846c20b2322b78c0c5a5ac",
+      "appearanceId": "mw142",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw142.webp",
+      "sourceSha256": "d99b366da4a33b1e51b528841b7c3adb650deeca8c4ba49e8f1f625ff74aaaa4",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R01357": {
+      "itemId": "USER_ITEM_20261018_R01357",
+      "assetPath": "item-icons/sparse_v188_mw144.png",
+      "assetSha256": "2afa881d03562a13b297641f09fe3d98fe76b296d717bb9a10e8a41a3d6d7502",
+      "appearanceId": "mw144",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw144.webp",
+      "sourceSha256": "64c9e668950ca1848887eafc947301c1c48f3dcc09d2d44117000c9904f0b933",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R02772": {
+      "itemId": "USER_ITEM_20261018_R02772",
+      "assetPath": "item-icons/sparse_v188_mw175.png",
+      "assetSha256": "2f2d9e07f450494166265a930d65e56389de7ccf69cd87fca6a07ed02577fe81",
+      "appearanceId": "mw175",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw175.webp",
+      "sourceSha256": "2551c724f2b7cdba4622f147aa89b42f49ab51dd00dd41e1155d8deb5d4db1c7",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R01914": {
+      "itemId": "USER_ITEM_20261018_R01914",
+      "assetPath": "item-icons/sparse_v188_mw197.png",
+      "assetSha256": "633173bf7db0043a1a025c715948936dad5e3d55d80f404dfffedbe0a938e41f",
+      "appearanceId": "mw197",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw197.webp",
+      "sourceSha256": "a43738c85a5159ad60ea809640a8ca337cabc3152ca65848f63fc071e181926b",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
+    },
+    "USER_ITEM_20261018_R04303": {
+      "itemId": "USER_ITEM_20261018_R04303",
+      "assetPath": "item-icons/sparse_v188_mw198.png",
+      "assetSha256": "9a9ad4787e6b179304cc934148ffd761d402b9626118adc6044422f0d384700f",
+      "appearanceId": "mw198",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
+      "sourceMember": "atlas/weapon/mw198.webp",
+      "sourceSha256": "ea03d60ecda32232fe1278028b331f5279f3ccf51eff7be198c5aa501ed91523",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_SOURCE_NAME_WITH_EXPLICIT_POSE_OMISSIONS"
     }
   }
 }

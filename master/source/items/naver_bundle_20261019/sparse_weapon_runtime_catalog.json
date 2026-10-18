@@ -1,0 +1,654 @@
+{
+  "status": "PARTIAL_SOURCE_FRAME_COVERAGE_NOT_ALL_LINK_ITEMS",
+  "admitted": [
+    {
+      "itemId": "USER_ITEM_20261018_R01503",
+      "name": "핸드액스",
+      "appearanceId": "mw038",
+      "sourceRow": 1503,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 16,
+        "MaxATK": 26,
+        "LMinATK": 2,
+        "LMaxATK": 3
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03026",
+      "name": "스톤액스",
+      "appearanceId": "mw042",
+      "sourceRow": 3026,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 155,
+        "MaxATK": 175,
+        "LMinATK": 16,
+        "LMaxATK": 19
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02096",
+      "name": "체인",
+      "appearanceId": "mw052",
+      "sourceRow": 2096,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 100,
+        "MaxATK": 105,
+        "LMinATK": 10,
+        "LMaxATK": 13
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": []
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01807",
+      "name": "토마호크",
+      "appearanceId": "mw054",
+      "sourceRow": 1807,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 16,
+        "MaxATK": 26,
+        "LMinATK": 2,
+        "LMaxATK": 3
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02918",
+      "name": "아스카론",
+      "appearanceId": "mw076",
+      "sourceRow": 2918,
+      "stats": {
+        "AC": 5,
+        "HIT": 10,
+        "DAM": 10,
+        "HP": 1000,
+        "MP": -500,
+        "STR": -1,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1,
+        "MinATK": 524,
+        "MaxATK": 564,
+        "LMinATK": 65,
+        "LMaxATK": 72
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05301",
+      "name": "다인블레이드",
+      "appearanceId": "mw133",
+      "sourceRow": 5301,
+      "stats": {
+        "AC": 5,
+        "HIT": 10,
+        "DAM": 10,
+        "HP": 0,
+        "MP": 0,
+        "STR": 1,
+        "DEX": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1,
+        "MinATK": 124,
+        "MaxATK": 264,
+        "LMinATK": 334,
+        "LMaxATK": 354
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03843",
+      "name": "바스타드블레이드",
+      "appearanceId": "mw137",
+      "sourceRow": 3843,
+      "stats": {
+        "AC": 5,
+        "HIT": 10,
+        "DAM": 10,
+        "HP": 0,
+        "MP": 0,
+        "STR": -1,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1,
+        "MinATK": 124,
+        "MaxATK": 264,
+        "LMinATK": 334,
+        "LMaxATK": 394
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01201",
+      "name": "s피닉스크로어5",
+      "appearanceId": "mw295",
+      "sourceRow": 1201,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 534,
+        "MaxATK": 590,
+        "LMinATK": 52,
+        "LMaxATK": 54
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01565",
+      "name": "피닉스크로어5",
+      "appearanceId": "mw295",
+      "sourceRow": 1565,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 534,
+        "MaxATK": 590,
+        "LMinATK": 52,
+        "LMaxATK": 54
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/equipment/horror_v184/original_wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05473",
+      "name": "광단검",
+      "appearanceId": "mw030",
+      "sourceRow": 5473,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 60,
+        "MaxATK": 80,
+        "LMinATK": 5,
+        "LMaxATK": 7
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02486",
+      "name": "월단검",
+      "appearanceId": "mw031",
+      "sourceRow": 2486,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 45,
+        "MaxATK": 65,
+        "LMinATK": 4,
+        "LMaxATK": 6
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05502",
+      "name": "곡단도",
+      "appearanceId": "mw046",
+      "sourceRow": 5502,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 125,
+        "MaxATK": 130,
+        "LMinATK": 12,
+        "LMaxATK": 14
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01881",
+      "name": "크리샤오르",
+      "appearanceId": "mw093",
+      "sourceRow": 1881,
+      "stats": {
+        "AC": 3,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 500,
+        "MP": 500,
+        "STR": 1,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": -2,
+        "CON": -2,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 395,
+        "MaxATK": 425,
+        "LMinATK": 39,
+        "LMaxATK": 42
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01582",
+      "name": "프린세스하프",
+      "appearanceId": "mw140",
+      "sourceRow": 1582,
+      "stats": {
+        "AC": 1,
+        "HIT": 1,
+        "DAM": 1,
+        "HP": 200,
+        "MP": 300,
+        "STR": 1,
+        "DEX": 0,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 34,
+        "MaxATK": 60,
+        "LMinATK": 96,
+        "LMaxATK": 105
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          1,
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03838",
+      "name": "반보우",
+      "appearanceId": "mw142",
+      "sourceRow": 3838,
+      "stats": {
+        "AC": 2,
+        "HIT": 3,
+        "DAM": 5,
+        "HP": 0,
+        "MP": 0,
+        "STR": 2,
+        "DEX": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 93,
+        "MaxATK": 93,
+        "LMinATK": 215,
+        "LMaxATK": 245
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01357",
+      "name": "황금나무의하프",
+      "appearanceId": "mw144",
+      "sourceRow": 1357,
+      "stats": {
+        "AC": 2,
+        "HIT": 2,
+        "DAM": 2,
+        "HP": 0,
+        "MP": 3000,
+        "STR": 2,
+        "DEX": 0,
+        "INT": -2,
+        "WIS": -2,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 44,
+        "MaxATK": 60,
+        "LMinATK": 100,
+        "LMaxATK": 110
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          1,
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02772",
+      "name": "영월궁",
+      "appearanceId": "mw175",
+      "sourceRow": 2772,
+      "stats": {
+        "AC": 2,
+        "HIT": 8,
+        "DAM": 8,
+        "HP": 1000,
+        "MP": 2000,
+        "STR": 2,
+        "DEX": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 113,
+        "MaxATK": 123,
+        "LMinATK": 215,
+        "LMaxATK": 265
+      },
+      "missingSourceFrames": {
+        "01": [],
+        "02": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01914",
+      "name": "커스프람베르그",
+      "appearanceId": "mw197",
+      "sourceRow": 1914,
+      "stats": {
+        "AC": 5,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 500,
+        "MP": 500,
+        "STR": 1,
+        "DEX": 1,
+        "INT": 0,
+        "WIS": -1,
+        "CON": -1,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 335,
+        "MaxATK": 365,
+        "LMinATK": 33,
+        "LMaxATK": 36
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04303",
+      "name": "매직프람베르그",
+      "appearanceId": "mw198",
+      "sourceRow": 4303,
+      "stats": {
+        "AC": 10,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 500,
+        "MP": 500,
+        "STR": 1,
+        "DEX": 1,
+        "INT": 0,
+        "WIS": -1,
+        "CON": -1,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 135,
+        "MaxATK": 165,
+        "LMinATK": 33,
+        "LMaxATK": 36
+      },
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "sourceCoverage": "PARTIAL_SOURCE_POSES_NO_COMPLETION_CLAIM",
+      "missingFramePolicy": "EXPLICIT_SOURCE_GROUP_MISSING_FRAME_NO_GEAR_LAYER_BODY_RETAINED",
+      "originalArchive": "master/source/items/naver_bundle_20261019/wearables.zip"
+    }
+  ]
+}

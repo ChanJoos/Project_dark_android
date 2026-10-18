@@ -81,7 +81,7 @@ final class SkillBodyRenderer {
     JSONObject own=registration(id);
     JSONObject sprites=own==null?null:own.optJSONObject("sprites");
     JSONArray exact=sprites==null?null:sprites.optJSONArray(group);
-    if(SourceEquipmentRegistration.sourceFrame(exact,index)!=null){drawGear(c,id,body,group,index,direction,x,y);return;}
+    if(exact!=null){drawGear(c,id,body,group,index,direction,x,y);return;}
     EquipmentVisualRegistry.Visual v=gear.get(id);JSONObject registration=registration(id);if(v==null||v.atlas==null||registration==null)return;
     boolean back=ChungryongWeaponRenderer.back(direction);int sourceIndex=back?1:3;
     JSONArray frames=registration.optJSONObject("sprites").optJSONArray("02");JSONObject f=SourceEquipmentRegistration.sourceFrame(frames,sourceIndex);
@@ -103,6 +103,8 @@ final class SkillBodyRenderer {
     if(id==null||id.isEmpty())return;EquipmentVisualRegistry.Visual v=gear.get(id);if(v==null||v.atlas==null)return;
     JSONObject j=registration(id);if(j==null)return;JSONObject sprites=j.optJSONObject("sprites");if(sprites==null)return;
     JSONArray a=sprites.optJSONArray(group);JSONObject f=SourceEquipmentRegistration.sourceFrame(a,index);
+    // Explicit source group omissions have no layer; do not substitute a later/standing pose.
+    if(a!=null&&f==null)return;
     boolean adapted=f==null;
     // Missing action clips are attached to the current BODY rig, never left at standing coordinates.
     if(f==null){a=sprites.optJSONArray("01");int n=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE?0:1;f=SourceEquipmentRegistration.sourceFrame(a,n);}
