@@ -1,0 +1,36 @@
+{
+  "sourceCommit": "231ffd54c6418a710af014ad187e39c15c944e20",
+  "runId": "39100325852",
+  "builtAtKST": "2026-10-18T14:23:48.645723+09:00",
+  "apkSha256": "49bbb368c48c6265954130d3b752ebb6650ac732aa7739f0a234066b8fff885c",
+  "apkBytes": 83630930,
+  "identity": {
+    "sourceCommit": "231ffd54c6418a710af014ad187e39c15c944e20",
+    "runId": "39100325852",
+    "versionCode": 180,
+    "versionName": "1.80-horror-preview"
+  },
+  "scope": "Package of previously native-verified Horror runtime; no runtime changes; handset verification pending; exact original maps12-15 pending",
+  "localVerification": {
+    "zipCrc": "PASS",
+    "apkSha256": "PASS",
+    "sourceIdentity": "PASS",
+    "originalHorrorPngCount": 647,
+    "lobbyGrid": [
+      50,
+      20
+    ]
+  },
+  "actionsArtifactId": 12126392114,
+  "signatureVerification": "APK Signature Scheme v2 PASS (Actions job117595102929)",
+  "runtimeSource": "4e1fb08d3dd6fc6c44a6ca0e73564be1f09e80a4",
+  "priorNativeTests": {
+    "source": "c9b40628e36373cc0f81f58d33d31f3bd3f45888",
+    "runId": 39095897134,
+    "tests": 7,
+    "failures": 0
+  },
+  "mainShaAtBuild": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "deliveryStatus": "UNMERGED_CANDIDATE_USER_REQUESTED_PREVIEW_NOT_FULL_PARITY",
+  "libraryFileId": "libfile_9f14bdbd01288191b9461f846d4cd930"
+}

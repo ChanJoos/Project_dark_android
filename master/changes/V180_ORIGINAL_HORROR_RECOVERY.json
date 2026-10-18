@@ -34,7 +34,7 @@
   },
   "visualAcceptance": "USER: roughly matches existing comparison; full original parity pending",
   "phoneVerification": "PENDING",
-  "apk": "NOT_BUILT_NOT_DELIVERABLE_UNTIL_PARITY",
+  "apk": "USER_REQUESTED_PREVIEW_BUILD_VERIFIED_231ffd54; full parity and handset verification pending",
   "sourceArchives": {
     "original_maps.zip": "ffa2d9341b3828db3254620f5b4e94fe04dadc71e2649d9a9fe497e0bea9c5fb",
     "original_monsters.zip": "19537cfc17d0507593dce2d49a1040272c0785c4ad3f9e2f5f685c6648a3b7e2"
@@ -69,5 +69,6 @@
     "minimumConfirmed": 15,
     "finalRoom": null,
     "evidence": "master/source/horror_v180/user_room_references_20261018.json"
-  }
+  },
+  "previewBuildRecord": "master/changes/V180_PREVIEW_APK.json"
 }
