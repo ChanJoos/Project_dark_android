@@ -7,7 +7,9 @@ ROOT=Path(__file__).resolve().parents[1];SRC=ROOT/'master/source/items/naver_bun
 with zipfile.ZipFile(SRC/'archives/293294.zip') as z:raw=z.read('293294/source_01.png')
 source=Image.open(io.BytesIO(raw)).convert('RGB');source_sha=hashlib.sha256(raw).hexdigest();bg=np.array(source.crop((180,25,212,57))).astype(int)
 lines=['package com.projectdark.mobile;','import java.util.*;','/** Historical article labels and explicit recovery only; unknown effects stay unavailable. */','final class LinkedFoodCatalogV187 {',' static void install(RpgProgressionState r){'];review=[]
-with zipfile.ZipFile(SRC/'generated_foods.zip','w',zipfile.ZIP_DEFLATED) as out:
+# Publish only a closed, CRC-checked archive; readers must never see a partial ZIP.
+temporary_pack=SRC/'generated_foods.zip.tmp'
+with zipfile.ZipFile(temporary_pack,'w',zipfile.ZIP_DEFLATED) as out:
  for row in rows:
   ident=row['itemId'];x,y,w,h=row['crop'];im=source.crop((x,y,x+w,y+h)).convert('RGBA');a=np.array(im)[:,:,:3].astype(int);best=None
   for dy in range(32):
@@ -34,6 +36,9 @@ with zipfile.ZipFile(SRC/'generated_foods.zip','w',zipfile.ZIP_DEFLATED) as out:
   # Non-equipment: recovery is routed through ItemEffects, never added to permanent/equipment HP.
   lines.append('  r.registerSourceAccessory(new RpgProgressionState.ItemDefinition('+q(ident)+','+q(row['name'])+',null,null,null,null,Collections.<String>emptySet(),false,null,null,Collections.<String,Integer>emptyMap(),RpgProgressionState.Evidence.FAN));')
   manifest['items'][ident]=dict(itemId=ident,assetPath=path,assetSha256=hashlib.sha256(b).hexdigest(),sourceArchive=str((SRC/'archives/293294.zip').relative_to(ROOT)),sourceMember='293294/source_01.png',sourceSha256=source_sha,crop=row['crop'],projection='SOURCE_RGB_WITH_REVIEWABLE_ALPHA',backgroundSample=[180,25,32,32],foregroundPixels=kept,identityMatch='EXACT_LABELLED_SOURCE_TABLE_ROW',evidence='HISTORICAL_FAN_TABLE');review.append(dict(row,sourceSha256=source_sha,assetSha256=hashlib.sha256(b).hexdigest(),foregroundPixels=kept,backgroundPhase=[best[2],best[3]],runtimeUse='HP_MP_RECOVERY_ONLY' if row['hp'] or row['mp'] else 'UNAVAILABLE_EFFECT_UNKNOWN'))
+with zipfile.ZipFile(temporary_pack) as checked:
+ assert checked.testzip() is None and len(checked.namelist())==len(rows)*3
+temporary_pack.replace(SRC/'generated_foods.zip')
 lines+=[' }',' static final String[] IDS={'+','.join(q(r['itemId']) for r in rows)+'};']
 for key in ['hp','mp']:
  lines.append(' static int '+key+'(String id){if(id==null)return 0;switch(id){')

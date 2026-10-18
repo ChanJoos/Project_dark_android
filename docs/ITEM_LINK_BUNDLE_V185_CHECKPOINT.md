@@ -1,3 +1,9 @@
+## Food pack integrity repair;53item source verified
+
+6ad110fd focused39174541258 SUCCESS: independently downloaded artifact12153604314/archiveSHA5d171d17b6832e9400f077295587b80b276ff605d85b252809a75b6596a894d8/CRC,58tests0failures/errors/skips and23realGameView clothing PNGs. Actual mu0000066 equipment frame inspected; phone/visual acceptance pending. Receipt verification/LINKED_CLOTHING_V186_BUILD.json.
+
+Food f6683972 failed extractLinkedFoodV187 before tests: published ZIP missing central directory; underlying truncation cause UNKNOWN. Added closed/CRC-checked atomic pack publication. Independently frozen valid pack507067bytes/162entries/SHA25652fd930087ac5f76426880b168aefec9f6d0e497f0a5972eb9d867b549657338; GitHub blob independently equals local19f58d203fa88a9b97d7d0c2882260ea5c17b852. New food native/runtime verification remains PENDING. No retry of identical corrupt bytes. Total107implemented rows still NOT complete all15article items.
+
 ## Food slice54rows implemented — verification PENDING
 
 All54labelled food/ingredient rows from article293294 retained in reviewed_foods.json with source crop coordinates.16explicit HP/MP effects use existing consumption authority;38unknown effects remain unavailable (no invented buffs/equipment stats). Source RGB unchanged, separate reviewed alpha/crops embedded for audit. Separate linked_food_granted_v187 bank-aware once-only migration. Combined HP/MP food fixes existing guard so one missing resource can be healed even if the other is full; full/dead no-consumption regression added.

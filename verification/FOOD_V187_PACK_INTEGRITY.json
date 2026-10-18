@@ -1,0 +1,10 @@
+{
+  "bytes": 507067,
+  "sha256": "52fd930087ac5f76426880b168aefec9f6d0e497f0a5972eb9d867b549657338",
+  "gitBlobSHA": "19f58d203fa88a9b97d7d0c2882260ea5c17b852",
+  "zipCRC": "PASS",
+  "entries": 162,
+  "sourceFoodIcons": 54,
+  "sourceStatus": "INCOMPLETE_ALL_LINK_ITEMS",
+  "priorFailure": "Published food ZIP lacked central directory; underlying truncation cause UNKNOWN. Added atomic closed-pack publication and independent frozen snapshot verification."
+}
