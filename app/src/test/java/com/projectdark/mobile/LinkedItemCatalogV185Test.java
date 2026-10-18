@@ -11,7 +11,7 @@ public class LinkedItemCatalogV185Test {
  @Test public void everyReviewedItemHasSourceModifiersIconAndRetainedWeaponFrames() throws Exception {
   Context c=RuntimeEnvironment.getApplication();RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);
   SourceItemIconRegistry icons=new SourceItemIconRegistry(c);EquipmentVisualRegistry visuals=new EquipmentVisualRegistry(c);
-  org.json.JSONArray rows=new org.json.JSONObject(java.nio.file.Files.readString(java.nio.file.Path.of("../master/source/items/naver_bundle_20261019/runtime_catalog.json"))).getJSONArray("admitted");
+  org.json.JSONArray rows=new org.json.JSONObject(new String(java.nio.file.Files.readAllBytes(java.nio.file.Path.of("../master/source/items/naver_bundle_20261019/runtime_catalog.json")),java.nio.charset.StandardCharsets.UTF_8)).getJSONArray("admitted");
   assertEquals(30,rows.length());assertEquals(rows.length(),LinkedItemCatalogV185.IDS.length);
   for(int i=0;i<rows.length();i++){
    org.json.JSONObject source=rows.getJSONObject(i);String id=source.getString("itemId");RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(id);assertNotNull(id,d);assertNotNull(id,icons.get(id));
