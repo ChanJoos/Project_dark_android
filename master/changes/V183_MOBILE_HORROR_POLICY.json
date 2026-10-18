@@ -1,0 +1,27 @@
+{
+  "status": "ACCEPTED_USER_INSTRUCTION",
+  "revision": "V183_MOBILE_HORROR",
+  "supersedes": "V181 door-gated next-room + exit NPC policy",
+  "policy": {
+    "lastKill": "automatic next sequential room;13 returns lobby",
+    "roomNpc": "removed",
+    "roomDoor": "Milles return independent of alive count; shifted to adjacent legal cell; prefer +u",
+    "transition": "cancel old scene resolver actions; clear VFX/visual state/facing lock; SW arrival",
+    "skillFacing": "Keep existing SINGLE primary-target release tracking including lethal hits; bind active sequence/primary target and update once; AREA contacts cannot rotate actor toward later recipients",
+    "labels": "space gender/job names and center labels; retain V182 MPF mapping"
+  },
+  "consumers": [
+    "GameView",
+    "RuntimeState",
+    "HorrorCastleGeometry",
+    "CombatResolver",
+    "RuntimeCombatSession",
+    "SkillVfxRenderer"
+  ],
+  "evidence": "User20261018 request3; sourceeb0c979f; focused39132348710/JUnit41pass",
+  "remaining": [
+    "Phone feedback",
+    "Exact monster-role naming complaint not independently reproduced beyond source MPF mapping/label formatting",
+    "Requests1and2 full equipment and inventory application incomplete"
+  ]
+}
