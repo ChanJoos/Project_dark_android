@@ -1,0 +1,37 @@
+{
+  "sourceCommit": "fb17dc23d2a16854f07908940cb352795f927056",
+  "runId": "39125919097",
+  "builtAtKST": "2026-10-18T21:09:05.275335+09:00",
+  "apkSha256": "1391d1a596d2ad8e524fa619714de92810aa7fc0b72c68518f0907a069be27c3",
+  "apkBytes": 83633090,
+  "identity": {
+    "sourceCommit": "fb17dc23d2a16854f07908940cb352795f927056",
+    "runId": "39125919097",
+    "versionCode": 182,
+    "versionName": "1.82-horror-corrections"
+  },
+  "scope": "Horror portals, gated room travel, one-cell rejection and exit NPC; focused native tests verified; handset verification pending; exact original maps12-15 pending",
+  "nativeTestCounts": {
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "status": "BUILD_AND_FOCUSED_NATIVE_VERIFIED",
+  "artifactId": 12136450719,
+  "artifactZipSha256": "c68e8a52f9ece074f12639a96e7dc4c9cb907aac9b955f917ae7cd878253bb34",
+  "mainMerged": false,
+  "libraryFileId": "libfile_3f842fa1fe1081918ee4636601649fd4",
+  "commonCI": {
+    "run": 39125922172,
+    "status": "IN_PROGRESS",
+    "limitation": "Common pipeline still invokes historical verify_v179_apk.py with hardcoded179 identity; not yet certified for182"
+  },
+  "phoneAcceptance": "PENDING",
+  "remaining": [
+    "All5722items admitted to Master, runtime/inventory/equipment/art mappings pending",
+    "East portal marker47,2 uses legal threshold46,2; original wall occludes presentation; NOT visually accepted",
+    "Horror worn equipment original stats and icons unresolved",
+    "Original rooms12/13 unavailable"
+  ]
+}
