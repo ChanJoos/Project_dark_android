@@ -1,0 +1,236 @@
+[
+  {
+    "id": "mw030",
+    "name": "광단검",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw030.json": "8fbe571b60639a4d2d7e700ff78c747400299dd0d93c1a239e59cf9671c7de4b",
+      "atlas/weapon/mw030.webp": "aa81210bb010dd422653b3ac960815a5bb04dbae63420aa3f2f55655c17dab53"
+    }
+  },
+  {
+    "id": "mw031",
+    "name": "월단검",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw031.json": "790ca0728774e352996d71b1995b42d864da9377a44105d020b3e4980a94eb05",
+      "atlas/weapon/mw031.webp": "945d12203e96d6ba1860d2a552890ce0458cedc35f3cbeeb2deac52f74ac78cc"
+    }
+  },
+  {
+    "id": "mw046",
+    "name": "곡단도",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw046.json": "f117e73970de643d0a735e87a60b8e18b833f91d56180e470f0661a76f8d6839",
+      "atlas/weapon/mw046.webp": "9c91ed11544666b4706a94eeda3e2f3a6f77583d039bb4512686af821751d6fa"
+    }
+  },
+  {
+    "id": "mw049",
+    "name": "타고나이트채찍",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw049.json": "c7f3c3c5b7b1150efa4169292041a2f6ae6943384d3b4de43d1301a5123b950b",
+      "atlas/weapon/mw049.webp": "b8b972b52519ec6baaf9bbf8cd2de5cf52c44655722f2d9fb7fff0defc9d0b7b"
+    }
+  },
+  {
+    "id": "mw050",
+    "name": "미스릴채찍",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw050.json": "63a6df70358032dca6a717eb8451676ab49740034ae7506820654566484c83c5",
+      "atlas/weapon/mw050.webp": "7eb9a96e92c3a1fbfdc4d9781214d05603ade484681e06ff736ef0e13a386842"
+    }
+  },
+  {
+    "id": "mw062",
+    "name": "매직파나",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw062.json": "4b6cd47108b9de4a3c0668d8e2ee69cf8ee733d28bb43c808bbd82211d94aa57",
+      "atlas/weapon/mw062.webp": "689b2de12d21e700b3d04e7e7fba177fb6712b63d73226683f5acca66cb19a5f"
+    }
+  },
+  {
+    "id": "mw067",
+    "name": "매단검",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw067.json": "185590dbbb8529e8dbda12068a2ebded57c07ad54912b24f147adea6f05b23f3",
+      "atlas/weapon/mw067.webp": "b843555906923978f06aad774916df975d6219ae3e23e871399e4f74b852c25d"
+    }
+  },
+  {
+    "id": "mw093",
+    "name": "크리샤오르",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw093.json": "fd0c0295ad139d115db56ea467db313750666b5d398b3ab2cc6f89a7ce1abb7e",
+      "atlas/weapon/mw093.webp": "bf6a0c0c4be3ff39adb3229f48287fefaee8a7d748a265dfb368d3ea0675748c"
+    }
+  },
+  {
+    "id": "mw135",
+    "name": "로운",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw135.json": "d12b6dd4fda3de666a4f2bc8dae275f739ce8f1dc0c178bdb2c6f47de598dacd",
+      "atlas/weapon/mw135.webp": "700cfabc0ff39ecbe625c5c0fd28a89b5cdaf6d172b9580dee5cc788d52206fb"
+    }
+  },
+  {
+    "id": "mw139",
+    "name": "샤인",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw139.json": "b0364e72c5c04134aaba4eb38e4d0457f04fc7f85890e7162e81c61b458bc5fa",
+      "atlas/weapon/mw139.webp": "9783c2861264bd1e0d0a4267ec820bbd3468259bd10d8b7461905b0d0d368402"
+    }
+  },
+  {
+    "id": "mw140",
+    "name": "프린세스하프",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw140.json": "e1ec53f2304c18f44fe8e03b2d77d2a58da39c59134a318150951639fb6d553d",
+      "atlas/weapon/mw140.webp": "b2594c36cc2366f9990d8b249e0ca836eddd282ed5135f6335cbe2f4060708d8"
+    }
+  },
+  {
+    "id": "mw142",
+    "name": "반보우",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw142.json": "fbb8488c0aecbd84604185822199333d844e8d61bb8a4baa0067ea05c68f24ae",
+      "atlas/weapon/mw142.webp": "d99b366da4a33b1e51b528841b7c3adb650deeca8c4ba49e8f1f625ff74aaaa4"
+    }
+  },
+  {
+    "id": "mw143",
+    "name": "마론비쥬",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw143.json": "ebf5b0622db916f1f5e5f3485dee178bba8da247005f7a790e171d888738159b",
+      "atlas/weapon/mw143.webp": "df359e9a63c53eb99c9589bd578b8a025a1cd3af1bdf56c297e65d9114e3b0d3"
+    }
+  },
+  {
+    "id": "mw144",
+    "name": "황금나무의하프",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw144.json": "de594284d394eeaf15487d98dba124254108aa769c0ec9ec74fc6842a74a234f",
+      "atlas/weapon/mw144.webp": "64c9e668950ca1848887eafc947301c1c48f3dcc09d2d44117000c9904f0b933"
+    }
+  },
+  {
+    "id": "mw147",
+    "name": "림피드비쥬",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw147.json": "eec51cafe827851fec683365e831e298e7d8dba874fc1528b32e95f663b2f6a5",
+      "atlas/weapon/mw147.webp": "1abf2d2736d7a19b34ced0aee0145cc52ab08c56095d8cc2a744c201c4459428"
+    }
+  },
+  {
+    "id": "mw175",
+    "name": "영월궁",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw175.json": "86ddc73d4eecbe07e3648c2c4477b29cccaf8eb6d00893b2d5e8646c0bb7e498",
+      "atlas/weapon/mw175.webp": "2551c724f2b7cdba4622f147aa89b42f49ab51dd00dd41e1155d8deb5d4db1c7"
+    }
+  },
+  {
+    "id": "mw187",
+    "name": "매직가디언스태프",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw187.json": "377480c9bb702dd32b866f2569e5fe04c68367ad4e30d604f0d7f41fc6b50e4d",
+      "atlas/weapon/mw187.webp": "0d26a4f9c30e0554d55b178e1d6b79e18baf31a1ac86321096ebbbf48285e48d"
+    }
+  },
+  {
+    "id": "mw197",
+    "name": "커스프람베르그",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw197.json": "ca86c6312978071beccae0f57cf193cec6ee4d8aa8b10a0205d1195b1e1830b8",
+      "atlas/weapon/mw197.webp": "a43738c85a5159ad60ea809640a8ca337cabc3152ca65848f63fc071e181926b"
+    }
+  },
+  {
+    "id": "mw198",
+    "name": "매직프람베르그",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/mw198.json": "984d5bbe55a2f3068d4bfef9b77cd2537ac72f9605503a1d53f1ff8e1f8669d9",
+      "atlas/weapon/mw198.webp": "ea03d60ecda32232fe1278028b331f5279f3ccf51eff7be198c5aa501ed91523"
+    }
+  },
+  {
+    "id": "mw215",
+    "name": "돈파",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw215.json": "d445adabece542e439133ccb458c0d3f9b7dc61de519e2d72d73a65c64c85ed7",
+      "atlas/weapon/mw215.webp": "d964ac137294dd390d82c7afa8e73df22d9f9fa33df53ac1ba96804195208be2"
+    }
+  },
+  {
+    "id": "mw274",
+    "name": "펄스비트",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/mw274.json": "1478720675a9ada24d20a89405d285af0727b21ae2fbabc69563ba6b644d7df5",
+      "atlas/weapon/mw274.webp": "86bdd330a56ba89358d7fd6b5ccaeda1b8e726d6ac69516143ff1394a0c14cb5"
+    }
+  },
+  {
+    "id": "ww032",
+    "name": "혈단검",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/ww032.json": "1d13167a5870445384745558d26f3117cfaba23ca3c73907e3b72c6651cd1a54",
+      "atlas/weapon/ww032.webp": "2510f186621c5c5f79920f3628c32c8eb0300ea47a62a3639aa1b34e0f26fb66"
+    }
+  },
+  {
+    "id": "ww050",
+    "name": "미스릴채찍",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/ww050.json": "1c1e462f474b18eed148c0a1e292896f56c35322bfee7ed915f101c88ec35524",
+      "atlas/weapon/ww050.webp": "0fbc0bbdb5544f194afb79c65e7e6c58321899afb4dcd9e3494bc8b2afd6df2b"
+    }
+  },
+  {
+    "id": "ww136",
+    "name": "골드베리하프",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/ww136.json": "54692b5827971dc6c814edf6aa561a7ba6660e52688737dcfc821857ce9038a3",
+      "atlas/weapon/ww136.webp": "65c10ab47e7d386dd97bcaa3a4fb9465b5909bafd3e9029fa1a0922e1b68e27a"
+    }
+  },
+  {
+    "id": "ww173",
+    "name": "비파",
+    "completeIdleWalkAction": false,
+    "files": {
+      "data/type/weapon/ww173.json": "2184cbd2ea98144bfbbf55540901ae9e752a6466ea8855c12e5e135397e15464",
+      "atlas/weapon/ww173.webp": "efd5dfa023fe2c77a552175f9148dd87fd7f276c9f8bce94d7187174d6383660"
+    }
+  },
+  {
+    "id": "ww268",
+    "name": "비광표",
+    "completeIdleWalkAction": true,
+    "files": {
+      "data/type/weapon/ww268.json": "f59eee74b9c59682d3193bc99097ba958f6474591ce0c93877d220115e2670aa",
+      "atlas/weapon/ww268.webp": "b1fed1ff13f17302a310e11f45f113396892c3cf87b81f37b82124dd1a0c5a53"
+    }
+  }
+]

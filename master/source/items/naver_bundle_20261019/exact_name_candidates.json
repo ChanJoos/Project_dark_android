@@ -1,0 +1,1007 @@
+[
+  {
+    "source": "306941/source_01.png",
+    "label": {
+      "text": "크리샤오르",
+      "top": 273,
+      "bottom": 288,
+      "confidence": 91.324623
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01881",
+        "name": "크리샤오르"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "label": {
+      "text": "커스프람베르그",
+      "top": 398,
+      "bottom": 409,
+      "confidence": 91.85582
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01914",
+        "name": "커스프람베르그"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "label": {
+      "text": "반보우",
+      "top": 1302,
+      "bottom": 1313,
+      "confidence": 89.643196
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03838",
+        "name": "반보우"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "label": {
+      "text": "레드반보우",
+      "top": 1418,
+      "bottom": 1429,
+      "confidence": 93.256775
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05109",
+        "name": "레드반보우"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "label": {
+      "text": "큰개미씨의보우",
+      "top": 1536,
+      "bottom": 1547,
+      "confidence": 88.087654
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01879",
+        "name": "큰개미씨의보우"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "label": {
+      "text": "영월궁",
+      "top": 1766,
+      "bottom": 1777,
+      "confidence": 23.04966
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R02772",
+        "name": "영월궁"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "단검",
+      "top": 1021,
+      "bottom": 1032,
+      "confidence": 96.142151
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05262",
+        "name": "단검"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "설단검",
+      "top": 1137,
+      "bottom": 1148,
+      "confidence": 93.033676
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03535",
+        "name": "설단검"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "매단검",
+      "top": 1872,
+      "bottom": 1890,
+      "confidence": 92.625954
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04366",
+        "name": "매단검"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "월단검",
+      "top": 1990,
+      "bottom": 2001,
+      "confidence": 45.474464
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R02486",
+        "name": "월단검"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "광단검",
+      "top": 2106,
+      "bottom": 2117,
+      "confidence": 89.592857
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05473",
+        "name": "광단검"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "혈단검",
+      "top": 2338,
+      "bottom": 2349,
+      "confidence": 91.389099
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01478",
+        "name": "혈단검"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "곡단도",
+      "top": 2686,
+      "bottom": 2697,
+      "confidence": 83.842209
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05502",
+        "name": "곡단도"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "비설표",
+      "top": 3267,
+      "bottom": 3278,
+      "confidence": 82.943695
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03682",
+        "name": "비설표"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "비중표",
+      "top": 3383,
+      "bottom": 3394,
+      "confidence": 92.858803
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03666",
+        "name": "비중표"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "비매표",
+      "top": 3499,
+      "bottom": 3510,
+      "confidence": 92.863365
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03687",
+        "name": "비매표"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "비광표",
+      "top": 3731,
+      "bottom": 3742,
+      "confidence": 90.19017
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03692",
+        "name": "비광표"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "비일표",
+      "top": 3857,
+      "bottom": 3868,
+      "confidence": 92.499466
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03671",
+        "name": "비일표"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "비연표",
+      "top": 3963,
+      "bottom": 3974,
+      "confidence": 85.791954
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03681",
+        "name": "비연표"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "비혈표",
+      "top": 4089,
+      "bottom": 4100,
+      "confidence": 90.564056
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03652",
+        "name": "비혈표"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "타고나이트채찍",
+      "top": 4432,
+      "bottom": 4443,
+      "confidence": 58.87627
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01852",
+        "name": "타고나이트채찍"
+      }
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "label": {
+      "text": "미스릴채찍",
+      "top": 4548,
+      "bottom": 4559,
+      "confidence": 85.263649
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04173",
+        "name": "미스릴채찍"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_01.png",
+    "label": {
+      "text": "루비나반지",
+      "top": 868,
+      "bottom": 879,
+      "confidence": 93.266167
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04990",
+        "name": "루비나반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_01.png",
+    "label": {
+      "text": "레드가넷반지",
+      "top": 1861,
+      "bottom": 1872,
+      "confidence": 79.547638
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05113",
+        "name": "레드가넷반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_02.png",
+    "label": {
+      "text": "별반지",
+      "top": 55,
+      "bottom": 66,
+      "confidence": 92.635567
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03771",
+        "name": "별반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "메투스의금반지",
+      "top": 983,
+      "bottom": 994,
+      "confidence": 93.235291
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04282",
+        "name": "메투스의금반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "산호반지",
+      "top": 1347,
+      "bottom": 1358,
+      "confidence": 89.422012
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03562",
+        "name": "산호반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "로오의산호반지",
+      "top": 1442,
+      "bottom": 1453,
+      "confidence": 90.612686
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05030",
+        "name": "로오의산호반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "메투스의산호반지",
+      "top": 1575,
+      "bottom": 1592,
+      "confidence": 93.025604
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04263",
+        "name": "메투스의산호반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "셔스의산호반지",
+      "top": 1617,
+      "bottom": 1628,
+      "confidence": 76.261307
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03348",
+        "name": "셔스의산호반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "로오의자수정반지",
+      "top": 1752,
+      "bottom": 1763,
+      "confidence": 84.618576
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05018",
+        "name": "로오의자수정반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "메투스의호안석반지",
+      "top": 2180,
+      "bottom": 2197,
+      "confidence": 84.827194
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04250",
+        "name": "메투스의호안석반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "셔스의호안석반지",
+      "top": 2260,
+      "bottom": 2271,
+      "confidence": 83.863068
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03335",
+        "name": "셔스의호안석반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "메투스의사파이어반지",
+      "top": 2682,
+      "bottom": 2705,
+      "confidence": 84.723351
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04265",
+        "name": "메투스의사파이어반지"
+      }
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "label": {
+      "text": "셔스의사파이어반지",
+      "top": 2719,
+      "bottom": 2742,
+      "confidence": 0.0
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03350",
+        "name": "셔스의사파이어반지"
+      }
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "label": {
+      "text": "대지의홀디트링",
+      "top": 504,
+      "bottom": 514,
+      "confidence": 21.769371
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05211",
+        "name": "대지의홀디트링"
+      }
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "label": {
+      "text": "화려한귀걸이",
+      "top": 1551,
+      "bottom": 1561,
+      "confidence": 48.510685
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01388",
+        "name": "화려한귀걸이"
+      }
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "label": {
+      "text": "리젠트다이아귀걸이",
+      "top": 1947,
+      "bottom": 1964,
+      "confidence": 0.0
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04461",
+        "name": "리젠트다이아귀걸이"
+      }
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "label": {
+      "text": "리젠트다이아귀걸이",
+      "top": 2146,
+      "bottom": 2164,
+      "confidence": 87.42466
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04461",
+        "name": "리젠트다이아귀걸이"
+      }
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "label": {
+      "text": "골드베리하프",
+      "top": 2838,
+      "bottom": 2849,
+      "confidence": 93.071739
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05484",
+        "name": "골드베리하프"
+      }
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "label": {
+      "text": "프린세스하프",
+      "top": 2954,
+      "bottom": 2965,
+      "confidence": 93.113937
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01582",
+        "name": "프린세스하프"
+      }
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "label": {
+      "text": "황금나무의하프",
+      "top": 3070,
+      "bottom": 3081,
+      "confidence": 93.014732
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01357",
+        "name": "황금나무의하프"
+      }
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "label": {
+      "text": "비파",
+      "top": 3302,
+      "bottom": 3313,
+      "confidence": 96.976395
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03653",
+        "name": "비파"
+      }
+    ]
+  },
+  {
+    "source": "292933/source_01.png",
+    "label": {
+      "text": "바다의마기아목걸이",
+      "top": 304,
+      "bottom": 315,
+      "confidence": 34.778831
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03895",
+        "name": "바다의마기아목걸이"
+      }
+    ]
+  },
+  {
+    "source": "292933/source_01.png",
+    "label": {
+      "text": "흑요석몽크목걸이(토)",
+      "top": 1960,
+      "bottom": 1988,
+      "confidence": 40.713535
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01306",
+        "name": "흑요석몽크목걸이(토)"
+      }
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "label": {
+      "text": "칸의목걸이",
+      "top": 386,
+      "bottom": 401,
+      "confidence": 55.328999
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01947",
+        "name": "칸의목걸이"
+      }
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "label": {
+      "text": "매직프람베르그",
+      "top": 873,
+      "bottom": 884,
+      "confidence": 92.975342
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04303",
+        "name": "매직프람베르그"
+      }
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "label": {
+      "text": "로운",
+      "top": 1313,
+      "bottom": 1324,
+      "confidence": 96.830559
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05011",
+        "name": "로운"
+      }
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "label": {
+      "text": "샤인",
+      "top": 1474,
+      "bottom": 1485,
+      "confidence": 94.338242
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03545",
+        "name": "샤인"
+      }
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "label": {
+      "text": "마론비쥬",
+      "top": 1634,
+      "bottom": 1652,
+      "confidence": 74.417068
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04432",
+        "name": "마론비쥬"
+      }
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "label": {
+      "text": "림피드비쥬",
+      "top": 1800,
+      "bottom": 1811,
+      "confidence": 93.279106
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04445",
+        "name": "림피드비쥬"
+      }
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "label": {
+      "text": "매직파나",
+      "top": 1810,
+      "bottom": 1821,
+      "confidence": 93.093452
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04305",
+        "name": "매직파나"
+      }
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "label": {
+      "text": "매직가디언스태프",
+      "top": 2201,
+      "bottom": 2212,
+      "confidence": 91.485634
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04341",
+        "name": "매직가디언스태프"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "뉴비각반",
+      "top": 354,
+      "bottom": 365,
+      "confidence": 92.991623
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05308",
+        "name": "뉴비각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "가죽각반",
+      "top": 401,
+      "bottom": 412,
+      "confidence": 90.034866
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05554",
+        "name": "가죽각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "로오의가죽각반",
+      "top": 539,
+      "bottom": 550,
+      "confidence": 92.451981
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05062",
+        "name": "로오의가죽각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "메투스의가죽각반",
+      "top": 691,
+      "bottom": 715,
+      "confidence": 78.080307
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R04290",
+        "name": "메투스의가죽각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "금각반",
+      "top": 1562,
+      "bottom": 1573,
+      "confidence": 93.18689
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05426",
+        "name": "금각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "셔스의금각반",
+      "top": 1854,
+      "bottom": 1865,
+      "confidence": 39.121796
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03368",
+        "name": "셔스의금각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "레드하트각반",
+      "top": 1967,
+      "bottom": 1978,
+      "confidence": 92.550301
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05107",
+        "name": "레드하트각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "산호각반",
+      "top": 2050,
+      "bottom": 2061,
+      "confidence": 92.361084
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03564",
+        "name": "산호각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "용각반",
+      "top": 2614,
+      "bottom": 2625,
+      "confidence": 92.92379
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R02509",
+        "name": "용각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "용맹의각반",
+      "top": 2693,
+      "bottom": 2704,
+      "confidence": 92.822128
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R02508",
+        "name": "용맹의각반"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "베네티가죽클립",
+      "top": 2780,
+      "bottom": 2791,
+      "confidence": 56.683464
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03786",
+        "name": "베네티가죽클립"
+      }
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "label": {
+      "text": "베네티미스릴클립",
+      "top": 2942,
+      "bottom": 2953,
+      "confidence": 74.639305
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R03785",
+        "name": "베네티미스릴클립"
+      }
+    ]
+  },
+  {
+    "source": "303248/source_00.png",
+    "label": {
+      "text": "돈파",
+      "top": 1961,
+      "bottom": 1979,
+      "confidence": 89.342125
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R05189",
+        "name": "돈파"
+      }
+    ]
+  },
+  {
+    "source": "303248/source_00.png",
+    "label": {
+      "text": "펄스비트",
+      "top": 2766,
+      "bottom": 2777,
+      "confidence": 66.333435
+    },
+    "items": [
+      {
+        "itemId": "USER_ITEM_20261018_R01718",
+        "name": "펄스비트"
+      }
+    ]
+  }
+]
