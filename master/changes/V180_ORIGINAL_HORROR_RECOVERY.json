@@ -1,6 +1,6 @@
 {
   "changeId": "V180_ORIGINAL_HORROR_RECOVERY",
-  "status": "IMPLEMENTED_SOURCE_RECOVERY_NATIVE_PENDING",
+  "status": "KNOWN_ORIGINAL_SOURCE_IMPLEMENTED_NATIVE_VERIFIED_12_13_PENDING",
   "before": "Rejected V179 authored maps and substitute wardrobes",
   "after": "14 recovered original maps +10 actual original MPFs;12/13legacy explicitly pending",
   "userAuthority": "2026-10-18 user original-faithful maps/monsters and web gap fill; continue",
@@ -10,12 +10,57 @@
     "MAP_HORROR_ROOM_13"
   ],
   "sourceRegistry": "master/source/horror_v180/map_sources.json",
-  "nativeVerification": "PENDING",
-  "visualAcceptance": "PENDING",
+  "nativeVerification": {
+    "source": "c9b40628e36373cc0f81f58d33d31f3bd3f45888",
+    "runId": 39095897134,
+    "jobId": 117582142762,
+    "status": "SUCCESS",
+    "tests": 7,
+    "suites": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": [
+      "original-cell navigation/arrivals",
+      "15/norespawn/13-order",
+      "shared combat/reward",
+      "actual GameView entry/corridors/rooms/save restart",
+      "12trip real warm-cache draws",
+      "all native MPF pose cells",
+      "explicit12/13original-source absence"
+    ]
+  },
+  "visualAcceptance": "PENDING_USER / 12_13_NOT_REPAIRED",
   "phoneVerification": "PENDING",
   "apk": "NOT_BUILT_NOT_DELIVERABLE_UNTIL_PARITY",
   "sourceArchives": {
     "original_maps.zip": "ffa2d9341b3828db3254620f5b4e94fe04dadc71e2649d9a9fe497e0bea9c5fb",
     "original_monsters.zip": "19537cfc17d0507593dce2d49a1040272c0785c4ad3f9e2f5f685c6648a3b7e2"
-  }
+  },
+  "runtimeSource": "4e1fb08d3dd6fc6c44a6ca0e73564be1f09e80a4",
+  "comparison": {
+    "file": "HORROR_V180_SOURCE_COMPARISON.png",
+    "library_file_id": "libfile_bc194dffdbf08191b1c225906373b5a2",
+    "imageRuntimeSource": "4e1fb08d3dd6fc6c44a6ca0e73564be1f09e80a4",
+    "artifact": 12124388526,
+    "sha256": "ffe0d140a56f8ae99e0ffd533b830ff576d3b9e77c6a80f8032dd68f35f02434"
+  },
+  "unintendedCommon": {
+    "cause": "rg missing, initial scope condition fell through",
+    "runs": [
+      39095559473,
+      39095556051
+    ],
+    "status": "CANCELED",
+    "fixedCommonRuns": [
+      39095899856,
+      39095897132
+    ],
+    "fixedCompile": "SKIPPED"
+  },
+  "limitations": [
+    "12/13missingexactoriginalmapdata; rejectedlegacyretainedonlyasWIP",
+    "KR exact palette/cadence not independently certified from raw Korean client",
+    "no handset FPS/visual certification"
+  ]
 }

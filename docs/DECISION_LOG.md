@@ -1,3 +1,11 @@
+## 2026-10-18 — V180 known-source runtime verified;12/13 STILL UNRESOLVED
+
+Runtime/source4e1fb08d3dd6fc6c44a6ca0e73564be1f09e80a4; final cache-test/CI headc9b40628e36373cc0f81f58d33d31f3bd3f45888. Focused Actions39095897134/job117582142762 SUCCESS:7tests/1suite,0failures/errors/skips; actual native draws exercise warmed floor cache over12trips. Runtime code unchanged from4e1; later changes onlyCI and the stronger cache fixture. First native39095555903/job117581147935 independently downloaded artifact12124388526,ZIP SHAffe0d140a56f8ae99e0ffd533b830ff576d3b9e77c6a80f8032dd68f35f02434/CRC/XML7/0/0/0checked; actual lobby/corridor/room01/08 images reviewed against source recording. Final nativeartifact12124422686/SHA238b12245b9f8f3ca3b1702772bfbe88086f1ecb80d927e718adcd6c56df3ea9. Original-source graphics do not certify source-obscured Korean palette/timing or phone FPS.
+
+Wrong common runs39095559473/39095556051 started because rg was absent in the runner and the shell condition fell through; both CANCELED. Guard now uses shell built-in, scoped source allowlist passes, final common39095899856/39095897132 compileSKIPPED. No unrelated suite should be repeated for this recovery.
+
+User-facing HORROR_V180_SOURCE_COMPARISON.png saved (libfile_bc194dffdbf08191b1c225906373b5a2). **This is NOT a completed original13-room remake.** Twelve/thirteen still use isolated rejectedV179legacy geometry/rendering; exact source is missing. No new APK was built/delivered and no user/phone visual acceptance is claimed. Preserve user13-stage/15actors/norespawn/save rule. Resume ONLY missing12/13source/parity; keep recovered14maps/10MPFs and passed checks. Do not re-download source archives, redo unrelated Milles/Pote tests, or rebuild a candidate merely after interruption. PR197 remains open/unmerged;main41fe6defunchanged.
+
 ## 2026-10-18 — V180 original Horror recovery IN PROGRESS, not an accepted replacement
 
 Recovered official DarkAges741 hades.dat MPFs363–372; visually matched all10humanoid appearances in supplied Korean recording. Master order maps363/368warriors,365/370rogues,364/369mages,367/372clerics,366/371monks. Replaced substitute wardrobes with original indexed pixels, original anchors,5walk frames and2–4attack frames in four directions. HP/EXP/combat rules unchanged.
