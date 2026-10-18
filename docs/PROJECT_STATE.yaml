@@ -1,3 +1,16 @@
+horror_equipment_v184:
+  status: PARTIAL_BUILD_NATIVE_VERIFIED_SOURCE_GAPS
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  runtime_source: 5381b1e278a45f59024b969bb01120742e64b9ae
+  receipt: master/changes/V184_BUILD_RUNTIME_RECEIPT.json
+  focused_run: 39138901545
+  native_tests: 51
+  all_requested_equipment_complete: false
+  phone_verified: false
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, design/DATA_CONTRACT.md, master/canonical/User_Item_Master_20261018.json, master/source/equipment/horror_v184/runtime_catalog.json]
+
 town_props_v166:
   status: BUILD_NATIVE_VERIFIED_COMMON_PHONE_VISUAL_PENDING
   active_branch: codex/rucesion-coast-v157
