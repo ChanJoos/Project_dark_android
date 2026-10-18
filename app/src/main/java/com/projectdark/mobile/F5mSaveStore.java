@@ -150,7 +150,7 @@ public final class F5mSaveStore {
   private SharedPreferences.Editor writeRpg(SharedPreferences.Editor edit,RpgProgressionState r){
     return edit.putInt("save_schema",SCHEMA)
         // A save authored by V94 already includes the one-time grant, even if the player removed it.
-        .putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).putBoolean("horror_equipment_granted_v184",true).putBoolean("linked_items_granted_v185",true).putBoolean("linked_clothes_granted_v186",true).putBoolean("linked_food_granted_v187",true).putBoolean("sparse_weapons_granted_v188",true).putBoolean("linked_accessories_granted_v189",true)
+        .putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).putBoolean("horror_equipment_granted_v184",true).putBoolean("linked_items_granted_v185",true).putBoolean("linked_clothes_granted_v186",true).putBoolean("linked_food_granted_v187",true).putBoolean("sparse_weapons_granted_v188",true).putBoolean("linked_accessories_granted_v189",true).putBoolean("male_clothes_granted_v190",true)
         .putString("inventory_v2",new JSONObject(r.inventory()).toString())
         .putString("equipment_v2",new JSONObject(r.equipment()).toString())
         .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
@@ -217,6 +217,10 @@ public final class F5mSaveStore {
         for(String id:LinkedAccessoryCatalogV189.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid accessory migration");
       }
+      if(!prefs.getBoolean("male_clothes_granted_v190",false)){
+        for(String id:MaleVillageClothingV190.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid male-clothing migration");
+      }
       staged.restoreProgression(prefs.getInt("normal_level",1),prefs.getLong("normal_exp",0L));
       if(!staged.restoreJobCode(prefs.getString("job_code_v4","COMMONER")))throw new IllegalArgumentException("Invalid saved job");
       staged.restoreGold(prefs.getLong("gold",0L));
@@ -225,7 +229,7 @@ public final class F5mSaveStore {
       staged.restoreBaseResources(prefs.getInt("base_max_hp_v3",staged.baseMaxHp()),prefs.getInt("base_max_mp_v3",staged.baseMaxMp()));
       if(prefs.contains("campaign_v1")&&!staged.campaign().restore(new JSONObject(prefs.getString("campaign_v1",""))))throw new IllegalArgumentException("Invalid campaign");
       staged.restoreCombatSequence(prefs.getLong("reward_sequence",0));copyRpg(staged,r);
-      if(!prefs.getBoolean("chungryong_granted_v94",false)||!prefs.getBoolean("reference_warrior_granted_v107",false)||!prefs.getBoolean("horror_equipment_granted_v184",false)||!prefs.getBoolean("linked_items_granted_v185",false)||!prefs.getBoolean("linked_clothes_granted_v186",false)||!prefs.getBoolean("linked_food_granted_v187",false)||!prefs.getBoolean("sparse_weapons_granted_v188",false)||!prefs.getBoolean("linked_accessories_granted_v189",false))prefs.edit().putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).putBoolean("horror_equipment_granted_v184",true).putBoolean("linked_items_granted_v185",true).putBoolean("linked_clothes_granted_v186",true).putBoolean("linked_food_granted_v187",true).putBoolean("sparse_weapons_granted_v188",true).putBoolean("linked_accessories_granted_v189",true).commit();
+      if(!prefs.getBoolean("chungryong_granted_v94",false)||!prefs.getBoolean("reference_warrior_granted_v107",false)||!prefs.getBoolean("horror_equipment_granted_v184",false)||!prefs.getBoolean("linked_items_granted_v185",false)||!prefs.getBoolean("linked_clothes_granted_v186",false)||!prefs.getBoolean("linked_food_granted_v187",false)||!prefs.getBoolean("sparse_weapons_granted_v188",false)||!prefs.getBoolean("linked_accessories_granted_v189",false)||!prefs.getBoolean("male_clothes_granted_v190",false))prefs.edit().putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).putBoolean("horror_equipment_granted_v184",true).putBoolean("linked_items_granted_v185",true).putBoolean("linked_clothes_granted_v186",true).putBoolean("linked_food_granted_v187",true).putBoolean("sparse_weapons_granted_v188",true).putBoolean("linked_accessories_granted_v189",true).putBoolean("male_clothes_granted_v190",true).commit();
     }catch(Exception invalid){writable=false;}
   }
 
