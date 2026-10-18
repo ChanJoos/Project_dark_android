@@ -125,3 +125,12 @@ tasks.register('extractLinkedClothingV186', Copy) {
 }
 tasks.named('extractLinkedClothingV186').configure { dependsOn('extractLinkedItemsV185') }
 tasks.named('preBuild').configure { dependsOn('extractLinkedClothingV186') }
+
+tasks.register('extractLinkedFoodV187', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_foods.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedFoodV187').configure { dependsOn('extractLinkedClothingV186') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedFoodV187') }

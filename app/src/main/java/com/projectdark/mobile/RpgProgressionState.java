@@ -252,6 +252,8 @@ public final class RpgProgressionState {
     HorrorEquipmentCatalog.install(this);
     LinkedItemCatalogV185.install(this);
     LinkedClothingCatalogV186.install(this);
+    LinkedFoodCatalogV187.install(this);
+    for(String id:LinkedFoodCatalogV187.IDS)inventory.put(id,1);
     for(String id:LinkedClothingCatalogV186.IDS)inventory.put(id,1);
     for(String id:LinkedItemCatalogV185.IDS){ItemDefinition d=items.get(id);inventory.put(id,pairedSlot(d.equipSlot)?2:1);}
     inventory.put(CHUNGRYONG_ITEM_ID,1);
@@ -539,7 +541,8 @@ public final class RpgProgressionState {
       runtime.skillEffects().remove("player","POISON");
     }else{
       int hp=ItemEffects.healHp(itemId),mp=ItemEffects.healMp(itemId);
-      if(hp>0&&p.hp>=p.maxHp||mp>0&&p.mp>=p.maxMp)return UseResult.NO_EFFECT;
+      boolean needsHp=hp>0&&p.hp<p.maxHp,needsMp=mp>0&&p.mp<p.maxMp;
+      if(!needsHp&&!needsMp)return UseResult.NO_EFFECT;
       if(hp>0)p.hp=(int)Math.min(p.maxHp,(long)p.hp+hp);
       if(mp>0)p.mp=(int)Math.min(p.maxMp,(long)p.mp+mp);
     }

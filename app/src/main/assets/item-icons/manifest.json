@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 558,
+  "registeredItems": 612,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -13172,6 +13172,1302 @@
       "sourceSha256": "a9ff3335404ae52a216b991a9717a0e397f7d87c30cbb2585205aa10a36678a5",
       "projection": "EXACT_NATIVE_IDLE0_CROP",
       "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "IT_NA_FOOD_293294_00": {
+      "itemId": "IT_NA_FOOD_293294_00",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_00.png",
+      "assetSha256": "2e989c7caa528dd0e21a7dbb5b91cae3ed837b4c8e19a76104b4073c05720a93",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        25,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 197,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_01": {
+      "itemId": "IT_NA_FOOD_293294_01",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_01.png",
+      "assetSha256": "180c2910fe3e3e7b2aa88fde35bc43230a32e7d8b8fca532dc705d55680aad48",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        62,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 232,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_02": {
+      "itemId": "IT_NA_FOOD_293294_02",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_02.png",
+      "assetSha256": "53cbb5b59c6a17bc65732b605d44d2651400a73fc532560a6788b364b8f0423d",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        99,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 431,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_03": {
+      "itemId": "IT_NA_FOOD_293294_03",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_03.png",
+      "assetSha256": "52eb94a1a84c096558552a856269fa3a5ffda832f15e5f2abdc71d7370420d2b",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        136,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 438,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_04": {
+      "itemId": "IT_NA_FOOD_293294_04",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_04.png",
+      "assetSha256": "2b7e11b67abc369bfda4e214d615b0c7660c53fff6641a8a316b741cec7ae781",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        173,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 411,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_05": {
+      "itemId": "IT_NA_FOOD_293294_05",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_05.png",
+      "assetSha256": "3d4f403633ec4628a3cfb1a7f95e72ee0c7fa74d8d204742732bd1c9c5ccb164",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        210,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 283,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_06": {
+      "itemId": "IT_NA_FOOD_293294_06",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_06.png",
+      "assetSha256": "21301c563eef8d386d6851bc5ca4422a5c82b80dbf6b2544694aa01ee5ae42a8",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        247,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 660,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_07": {
+      "itemId": "IT_NA_FOOD_293294_07",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_07.png",
+      "assetSha256": "d042f6a056f87ca66424c00326dba761225be18a259c52e24a2d50e8f54b6d53",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        284,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 288,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_08": {
+      "itemId": "IT_NA_FOOD_293294_08",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_08.png",
+      "assetSha256": "ac83d13919832371f490ba658f5c930a0bba0da4d0a40f66bba00321f1534150",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        321,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 295,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_09": {
+      "itemId": "IT_NA_FOOD_293294_09",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_09.png",
+      "assetSha256": "df43b48cabe5d9de2160b90c6871e70db8d4e432f7a2008564b4e8f2e5aa9ff1",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        358,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 565,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_10": {
+      "itemId": "IT_NA_FOOD_293294_10",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_10.png",
+      "assetSha256": "b2f7297c3ae4d0fc101ddf926546a37bdfb34198850031a77192e9ffbaa99385",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        395,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 567,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_11": {
+      "itemId": "IT_NA_FOOD_293294_11",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_11.png",
+      "assetSha256": "eaef93d8d68d0069bbe285d72f353410db61c5089b8015d393c23de91e2dae7e",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        432,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 627,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_12": {
+      "itemId": "IT_NA_FOOD_293294_12",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_12.png",
+      "assetSha256": "dc3ec42abb16c40eb8d7474d0997998f7a17127e78db000a786e3450f4635b86",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        469,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 236,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_13": {
+      "itemId": "IT_NA_FOOD_293294_13",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_13.png",
+      "assetSha256": "2fde044a4a9e69edb1f4ace7ff015971cc09c7ea1d1c1960c767567a738593ee",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        506,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 434,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_14": {
+      "itemId": "IT_NA_FOOD_293294_14",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_14.png",
+      "assetSha256": "01e2ca5bd1889624c01e8e950dec703c425165cba9e54ace5a52b2a24d5efdf3",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        543,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 406,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_15": {
+      "itemId": "IT_NA_FOOD_293294_15",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_15.png",
+      "assetSha256": "291d7ad9a72ed469aa7d89a50ec19ac3bd45e16f34f91f1893272d0a27d1ca15",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        580,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 357,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_16": {
+      "itemId": "IT_NA_FOOD_293294_16",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_16.png",
+      "assetSha256": "291d7ad9a72ed469aa7d89a50ec19ac3bd45e16f34f91f1893272d0a27d1ca15",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        617,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 357,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_17": {
+      "itemId": "IT_NA_FOOD_293294_17",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_17.png",
+      "assetSha256": "b1b42ca5adf2a45f095eb95bf7f2d98d7513c5d1d271f56d134ad286333281be",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        654,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 132,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_18": {
+      "itemId": "IT_NA_FOOD_293294_18",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_18.png",
+      "assetSha256": "be2626700f725423fa220673ddd2955aebd2f7b5960b43d88fa89b2c376221c3",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        691,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 514,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_19": {
+      "itemId": "IT_NA_FOOD_293294_19",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_19.png",
+      "assetSha256": "e8d268ae57146592c515826dfd7e8fd2a0e94eab9fed200cff8a3af0e7ef82a6",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        734,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 664,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_20": {
+      "itemId": "IT_NA_FOOD_293294_20",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_20.png",
+      "assetSha256": "e8d268ae57146592c515826dfd7e8fd2a0e94eab9fed200cff8a3af0e7ef82a6",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        771,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 664,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_21": {
+      "itemId": "IT_NA_FOOD_293294_21",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_21.png",
+      "assetSha256": "c7996e76c960c65b64f7fa265ac632662b52163c75c71086a941db6b139cc868",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        808,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 273,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_22": {
+      "itemId": "IT_NA_FOOD_293294_22",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_22.png",
+      "assetSha256": "74e5b77bd6903b91a2e51da1569be17e4ed5476e256c8f11fd115b7ebb7fd9bb",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        845,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 452,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_23": {
+      "itemId": "IT_NA_FOOD_293294_23",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_23.png",
+      "assetSha256": "bc6c0ede0375d16e59ce14102e8856eeb66c671eca47ab61f4e7ce1d10b64b7f",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        891,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 178,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_24": {
+      "itemId": "IT_NA_FOOD_293294_24",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_24.png",
+      "assetSha256": "b6e8e077a1b0cfdfdca3019c74f0406819360a28b8cf8bb12ff7a73fe4f5c627",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        891,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 289,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_25": {
+      "itemId": "IT_NA_FOOD_293294_25",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_25.png",
+      "assetSha256": "c98b18e78b96eb524abfee16586d44ec64dc118b03415e18b1779f67711d5607",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        928,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 516,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_26": {
+      "itemId": "IT_NA_FOOD_293294_26",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_26.png",
+      "assetSha256": "83926fd1f546e01b5db5ddeee5678a3ac7e3c25e7b956340d017f7204b279c30",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        928,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 343,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_27": {
+      "itemId": "IT_NA_FOOD_293294_27",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_27.png",
+      "assetSha256": "99017f776b0154c2ea938d1a1d788bd1c06519414df7452c0eab898d487fa0e4",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        965,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 305,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_28": {
+      "itemId": "IT_NA_FOOD_293294_28",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_28.png",
+      "assetSha256": "1df48bf2b79d70e2fc3129856e8712a987544bd6234ac409d2be34ebe19e0257",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        965,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 524,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_29": {
+      "itemId": "IT_NA_FOOD_293294_29",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_29.png",
+      "assetSha256": "2fa8c6a0c23a2754395b5a185872c444ad7676feeeef2fc892b2a58b4975674d",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1002,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 239,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_30": {
+      "itemId": "IT_NA_FOOD_293294_30",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_30.png",
+      "assetSha256": "e44838fd7bd8e71aa436c961a08bcb12080f990c37c0fd17afa036d45f62a248",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1002,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 339,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_31": {
+      "itemId": "IT_NA_FOOD_293294_31",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_31.png",
+      "assetSha256": "b888aad5e03d97b136273b265320177b3ecc9ff6764f8ea5891c977c3d90f30c",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1039,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 509,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_32": {
+      "itemId": "IT_NA_FOOD_293294_32",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_32.png",
+      "assetSha256": "be7e6948bb007fb0c9f4923fe6a622ca47736a63b2b12ff4d8d9aaa8ec924e8d",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1039,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 496,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_33": {
+      "itemId": "IT_NA_FOOD_293294_33",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_33.png",
+      "assetSha256": "a0c8c7e716adab8f8eb1b31e2ea0fcdd10448c7ea5d142229bc7758b1c4c4fa4",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1076,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 408,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_34": {
+      "itemId": "IT_NA_FOOD_293294_34",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_34.png",
+      "assetSha256": "0ec339b0e2c774a80eb7aaae1f1cb64d1169267d93909bc86f7a1b13b42b8650",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1076,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 467,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_35": {
+      "itemId": "IT_NA_FOOD_293294_35",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_35.png",
+      "assetSha256": "208ac2e8cfbafe16cc84b8d38390b9ebe5002e270fccf09e81f2f125da0bb97e",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1113,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 366,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_36": {
+      "itemId": "IT_NA_FOOD_293294_36",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_36.png",
+      "assetSha256": "3122d9673c5cc78ff1da292c283acd6778f129f9e239fd90e1743338bb08ad51",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1113,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 227,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_37": {
+      "itemId": "IT_NA_FOOD_293294_37",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_37.png",
+      "assetSha256": "09256429e51b6d390f620b46c95c462d3aa0c566e19dd5f61565a02e33fbc8bd",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1150,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 319,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_38": {
+      "itemId": "IT_NA_FOOD_293294_38",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_38.png",
+      "assetSha256": "70d9ce455da7e0d23d968dc379731c8d509a025e13372cdf8d2f988dfdcc3b35",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1150,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 460,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_39": {
+      "itemId": "IT_NA_FOOD_293294_39",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_39.png",
+      "assetSha256": "fb2283a72691370d3f60f2c87262472e1ced1c8157d33e666e95f02abbdd379a",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1187,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 341,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_40": {
+      "itemId": "IT_NA_FOOD_293294_40",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_40.png",
+      "assetSha256": "95611ae6a7ad85e2fa29ce11a7661c8a6c557c5fc9f4f2bc400c189d8833a73b",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1187,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 339,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_41": {
+      "itemId": "IT_NA_FOOD_293294_41",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_41.png",
+      "assetSha256": "1e8fa1d6c2cfe025fa891cb21057585ea4c56997fef5066c2ef83202d1d96a25",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1224,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 297,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_42": {
+      "itemId": "IT_NA_FOOD_293294_42",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_42.png",
+      "assetSha256": "fc4145fde08f770aaf0c4dd4954a6899875072dba5da7b0f834a9c019f634179",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1224,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 259,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_43": {
+      "itemId": "IT_NA_FOOD_293294_43",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_43.png",
+      "assetSha256": "afaea57c459417caffd1e6354ef8e74429629a07a6f62d13935182b073db0c9d",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1261,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 418,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_44": {
+      "itemId": "IT_NA_FOOD_293294_44",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_44.png",
+      "assetSha256": "9b83fe12842d2b7e87e7969f9968db6e83e03c5d7777ef9fca968d8217f1e3ac",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1261,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 403,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_45": {
+      "itemId": "IT_NA_FOOD_293294_45",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_45.png",
+      "assetSha256": "36084c5f54ee7ccdb30ec533f4b6c6f0ad7cb6b15b1251c8cb97f4b089f092ee",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1306,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 310,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_46": {
+      "itemId": "IT_NA_FOOD_293294_46",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_46.png",
+      "assetSha256": "5e29e01579b0f546ccdda296138d3f6d8d577bc0668eea8281daf8f87a73b5fc",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1343,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 459,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_47": {
+      "itemId": "IT_NA_FOOD_293294_47",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_47.png",
+      "assetSha256": "6aef1ef3eb52e18acfa2aacbc3e8c64cbf197a0938ca78f0050a81b8b0c6e9d4",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1380,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 275,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_48": {
+      "itemId": "IT_NA_FOOD_293294_48",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_48.png",
+      "assetSha256": "6b33e7b9fc24f5eebad7b9bac06c17136929a16b0d727be2197aab41575936e9",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1417,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 373,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_49": {
+      "itemId": "IT_NA_FOOD_293294_49",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_49.png",
+      "assetSha256": "19502df3805dd1c2b06f39570c90d35c657e6b25107cb773154e884740e2317d",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1454,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 237,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_50": {
+      "itemId": "IT_NA_FOOD_293294_50",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_50.png",
+      "assetSha256": "b35c1ef794d53100e482d528368bf67113f67a71e82878350d83c67bdac23079",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1491,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 310,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_51": {
+      "itemId": "IT_NA_FOOD_293294_51",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_51.png",
+      "assetSha256": "6e146b5f26865a0de534ff2b21e19b3bcba59c573ddb87078c441f1fd72c0620",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1528,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 538,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_52": {
+      "itemId": "IT_NA_FOOD_293294_52",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_52.png",
+      "assetSha256": "547045303c3b6edddc775b9c89742558ee438db19cac34f483801896b4f6f0d4",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1565,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 446,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
+    },
+    "IT_NA_FOOD_293294_53": {
+      "itemId": "IT_NA_FOOD_293294_53",
+      "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_53.png",
+      "assetSha256": "b6d3fd6f6bdb334edbae9b4be34d40ce771a41c4e1f1b5decb45590a8e2982d2",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1625,
+        32,
+        32
+      ],
+      "projection": "SOURCE_RGB_WITH_REVIEWABLE_ALPHA",
+      "backgroundSample": [
+        180,
+        25,
+        32,
+        32
+      ],
+      "foregroundPixels": 463,
+      "identityMatch": "EXACT_LABELLED_SOURCE_TABLE_ROW",
+      "evidence": "HISTORICAL_FAN_TABLE"
     }
   }
 }

@@ -106,7 +106,7 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          gradle :app:testDebugUnitTest --tests '*HorrorCastleMobileV183Test' --tests '*HorrorEquipmentV184Test' --tests '*LinkedItemCatalogV185Test' --tests '*LinkedClothingV186Test' --tests '*AccessoryCatalogV125Test' --tests '*LeapPlacementV184Test' --tests '*HorrorCastleV179Test' --tests '*SkillPresentationTest' --tests '*Martial*Test' :app:assembleDebug --stacktrace
+          gradle :app:testDebugUnitTest --tests '*HorrorCastleMobileV183Test' --tests '*HorrorEquipmentV184Test' --tests '*LinkedItemCatalogV185Test' --tests '*LinkedClothingV186Test' --tests '*LinkedFoodV187Test' --tests '*AccessoryCatalogV125Test' --tests '*LeapPlacementV184Test' --tests '*HorrorCastleV179Test' --tests '*SkillPresentationTest' --tests '*Martial*Test' :app:assembleDebug --stacktrace
           mkdir -p delivery
           cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_v184_portals.apk
           python3 - <<'PY'

@@ -45,8 +45,8 @@ final class ItemEffects {
   case "아리펠스탭":return "일반 마법 시전 -1초 · 저주 1초";
   case "홀리머큐리아":return "회복 마법 시전시간 0초 (즉시 회복)";
   default:return "";}}
- static int healHp(String id){if(RpgProgressionState.REAGENT_CURANUM_ITEM_ID.equals(id))return 1000;if("IT_REAGENT_CURUM".equals(id))return 200;if("IT_REAGENT_EXCURANUM".equals(id))return 10000;if(RpgProgressionState.B5_SMALL_HP_POTION_ITEM_ID.equals(id))return RpgProgressionState.B5_SMALL_HP_POTION_HEAL;return 0;}
- static int healMp(String id){return "IT_B_MP_POTION".equals(id)?100:0;}
+ static int healHp(String id){if(RpgProgressionState.REAGENT_CURANUM_ITEM_ID.equals(id))return 1000;if("IT_REAGENT_CURUM".equals(id))return 200;if("IT_REAGENT_EXCURANUM".equals(id))return 10000;if(RpgProgressionState.B5_SMALL_HP_POTION_ITEM_ID.equals(id))return RpgProgressionState.B5_SMALL_HP_POTION_HEAL;return LinkedFoodCatalogV187.hp(id);}
+ static int healMp(String id){return "IT_B_MP_POTION".equals(id)?100:LinkedFoodCatalogV187.mp(id);}
  static boolean usable(String id){return healHp(id)>0||healMp(id)>0||RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID.equals(id);}
  static int regeneration(RpgProgressionState r){int n=0;for(String id:r.equipment().values()){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(id);if(d!=null)n+=d.statModifiers.getOrDefault("REGEN",0);}return Math.max(0,n);}
  static int additionalRegeneration(RpgProgressionState r){return (int)Math.min(Integer.MAX_VALUE,(long)r.baseMaxHp()*regeneration(r)/1000);}
